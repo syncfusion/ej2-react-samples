@@ -29,7 +29,7 @@ export const GridSampleOrder: Object = [
     { 'path': 'grid/batch', 'component': 'BatchEdit', 'name': 'Batch Editing', 'order': '06', 'category': 'EDITING' },
     { 'path': 'grid/command-column', 'component': 'CommandColumnEdit', 'name': 'CommandColumn', 'order': '06', 'category': 'EDITING'},
     { 'path': 'grid/exporting', 'component': 'Exporting', 'name': 'Basic', 'order': '07', 'category': 'EXPORTING' },
-    { 'path': 'grid/multipleexporting', 'component': 'MultipleExporting', 'name': 'MultipleExporting', 'order': '07', 'category': 'EXPORTING' },
+    { 'path': 'grid/advanceexporting', 'component': 'AdvanceExporting', 'name': 'Advance Exporting', 'order': '07', 'category': 'EXPORTING'},
     { 'path': 'grid/columnmenu', 'component': 'ColumnMenuSample', 'name': 'Column Menu', 'order': '03', 'category': 'COLUMN', 'type': 'new' },
     { 'path': 'grid/contextmenu', 'component': 'ContextMenuSample', 'name': 'Context Menu', 'order': '01', 'category': 'GRID', 'type': 'new' },
     { 'path': 'grid/columnspanning', 'component': 'ColumnSpanning', 'name': 'Column Spanning', 'order': '03', 'category': 'COLUMN', 'type': 'new' }
