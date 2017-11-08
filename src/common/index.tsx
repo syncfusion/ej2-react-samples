@@ -83,7 +83,7 @@ export let setResponsiveElement: Element = select('.setting-responsive');
 /**
  * Mouse or touch setting
  */
-export let switchText: string = localStorage.getItem('ej2-switch') ||
+let switchText: string = localStorage.getItem('ej2-switch') ||
   (window.screen.width > 1366 ? 'touch' : 'mouse');
 if (Browser.isDevice || window.screen.width <= 850) {
   switchText = 'touch';
@@ -116,7 +116,7 @@ export function setSbLink(): void {
   for (let sb of sbArray) {
     let ele: HTMLFormElement = (select('#' + sb) as HTMLFormElement);
     ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :
-      ('http://npmci.syncfusion.com/production/')) + (sbObj[sb] ? (sb + '/') : '') +
+      ('http://ej2.syncfusion.com/')) + (sbObj[sb] ? (sb + '/') : '') +
       'demos/#/' + (sample ? (sample[1] + (sb !== 'typescript' ? '' : '.html')) : '');
   }
 }

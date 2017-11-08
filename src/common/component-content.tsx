@@ -4,7 +4,7 @@ import { Ajax, Browser, createElement, detach, select } from '@syncfusion/ej2-ba
 import { Tab } from '@syncfusion/ej2-react-navigations'
 import { Tooltip } from '@syncfusion/ej2-react-popups'
 import { TabComponent } from '@syncfusion/ej2-react-navigations';
-import { viewMobilePropPane, selectedTheme, sampleOverlay, switchText, removeOverlay } from './index';
+import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay } from './index';
 import { MyWindow } from './leftpane';
 import * as hljs from './lib/highlightjs';
 
@@ -316,9 +316,6 @@ export class Content extends React.Component<{}, {}>{
             '<div class="sb-icons sb-mobile-setting sb-hide"></div>';
 
         let tabContentToolbar: Element = createElement('div', { className: 'sb-content-toolbar', innerHTML: contentToolbarTemplate });
-        if (switchText === 'mouse') {
-            tabContentToolbar.classList.add('sb-mouse');
-        }
         let ele: HTMLElement = createElement('div', { className: 'copy-tooltip', innerHTML: '<div class="e-icons copycode"></div>' });
         document.getElementById('sb-source-tab').appendChild(ele);
         let copiedTooltip: Tooltip = new Tooltip(
@@ -382,7 +379,7 @@ export class Content extends React.Component<{}, {}>{
                         <div>
                             <div className='sb-demo-section'>
                                 <div className="control-fluid">
-                                    <div id="container-fluid">
+                                    <div className="container-fluid">
                                         <div id="control-content">{routes}</div>
                                     </div>
                                 </div>
