@@ -10,7 +10,7 @@ export class RadioButton extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='radiobutton-control'>
-                        <h4>Select the Payment mode</h4>
+                        <h4>Select a payment method</h4>
                         <div className='row'>
                             <RadioButtonComponent checked={true} label='Credit/Debit card' name='payment' value="credit/debit"></RadioButtonComponent>
                         </div>
