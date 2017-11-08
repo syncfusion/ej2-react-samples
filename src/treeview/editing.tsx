@@ -66,7 +66,7 @@ private allowEditing:boolean = true;
         </div>
         <div id="description">
             <p>The <code>TreeView</code> component has the built-in option to edit and modify the node text in inline by enabling the <code>allowEditing</code> property.</p>
-            <p>For more information, you can refer to the <a href="http://ej2.syncfusion.com/react/documentation/treeview/node-editing.html" target="_blank">Node Editing</a> section from the documentation.</p>
+            <p>For more information, you can refer to the <a href="http://ej2.syncfusion.com/react/documentation/treeview/node-edit.html" target="_blank">Node Editing</a> section from the documentation.</p>
         </div>
       </div>
     )

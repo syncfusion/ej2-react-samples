@@ -49,7 +49,7 @@ private allowMultiSelection:boolean = true;
         <div id="description">
             <p>The <code>TreeView</code> component allows to select multiple nodes by enabling the <code>allowMultiSelection</code> property.</p>
             <p>In this demo, the TreeView is enabled with multiple selection</p>
-            <p>For more information, refer to the <a href="http://ej2.syncfusion.com/react/documentation/treeview/multi-selection.html" target="_blank">Multi Selection</a> section from the documentation.</p>
+            <p>For more information, refer to the <a href="http://ej2.syncfusion.com/react/documentation/treeview/multi-select.html" target="_blank">Multi Selection</a> section from the documentation.</p>
         </div>
       </div>
     )

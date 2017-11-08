@@ -66,7 +66,7 @@ private allowDragAndDrop:boolean = true;
         <div id="description">
             <p>The <code>TreeView</code> component allows the user to drag any node and drop the child or sibling to any other nodes. This is enabled by the <code>allowDragAndDrop</code> property.</p>
             <p>In this demo, TreeView is enabled with multiple selection, and drag and drop.</p>    
-            <p>For more information, you can refer to the <a href="http://ej2.syncfusion.com/react/documentation/treeview/drag-and-drop.html" target="_blank">Drag and Drop</a> section from the documentation.</p>
+            <p>For more information, you can refer to the <a href="http://ej2.syncfusion.com/react/documentation/treeview/drag-drop.html" target="_blank">Drag and Drop</a> section from the documentation.</p>
         </div>
       </div>
     )

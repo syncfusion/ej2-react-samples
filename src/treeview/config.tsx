@@ -4,7 +4,7 @@ export const TreeViewSampleOrder:Object = [
     { 'path': 'treeview/checkbox', 'component':'Checkbox', 'name': 'Checkbox', 'order': '01', 'category': 'TreeView' },    
     { 'path': 'treeview/editing', 'component':'Editing', 'name': 'Node Editing', 'order': '01', 'category': 'TreeView' },
     { 'path': 'treeview/multiselect', 'component':'MultiSelect', 'name': 'Multiple Selection', 'order': '01', 'category': 'TreeView', 'hideOnDevice': 'true' },
-    { 'path': 'treeview/dragdrop', 'component':'Dragdrop', 'name': 'Drag and Drop', 'order': '01', 'category': 'TreeView' },
+    { 'path': 'treeview/dragdrop', 'component':'Dragdrop', 'name': 'Drag and Drop', 'order': '01', 'category': 'TreeView', 'hideOnDevice': 'true' },
     { 'path': 'treeview/template', 'component':'Template', 'name': 'Template', 'order': '01', 'category': 'TreeView' },
     { 'path': 'treeview/rtl', 'component':'RTL', 'name': 'RTL', 'order': '01', 'category': 'TreeView' },
     { 'path': 'treeview/localdata', 'component':'LocalData', 'name': 'Local Data', 'order': '02', 'category': 'Data Binding' },

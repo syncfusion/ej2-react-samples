@@ -45,7 +45,7 @@ export class CustomMask extends SampleBase<{}, {}> {
         values.
         </p>
         <p>For more information, you can refer to the <b><a href="http://ej2.syncfusion.com/react/documentation/maskedtextbox/mask-configuration.html#custom-characters" target="_blank">Custom characters</a></b> and
-         <b><a href="http://ej2.syncfusion.com/react/documentation/maskedtextbox/mask-configuration.html#regular-expression" target="_blank">Regular expression</a></b> sections from the documentation.</p>
+            <b><a href="http://ej2.syncfusion.com/react/documentation/maskedtextbox/mask-configuration.html#regular-expression" target="_blank"> Regular expression</a></b> sections from the documentation.</p>
         </div>
       </div>
     )

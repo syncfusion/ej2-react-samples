@@ -36,7 +36,7 @@ private nodeTemplate: string = '<div><img class="eimage" src="src/treeview/Emplo
         <div id="description">
             <p>The <code>TreeView</code> component has an option to customize the node structure through the <code>nodeTemplate</code> property, so that the tree node can be formed with any custom structure.</p>
             <p>In this demo, the node is formed with the employee's image, name and designation.</p>
-            <p>For more information, you can refer to the <a href="http://ej2.syncfusion.com/react/documentation/treeview/templates.html" target="_blank">Templates</a> section from the documentation.</p>
+            <p>For more information, you can refer to the <a href="http://ej2.syncfusion.com/react/documentation/treeview/template.html" target="_blank">Templates</a> section from the documentation.</p>
         </div>
       </div>
     )
