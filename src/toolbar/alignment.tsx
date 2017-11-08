@@ -64,7 +64,7 @@ export class Alignment extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
     <p>
-        This sample demonstrates the aligning the <code>Toolbar</code> commands. <code>Toolbar</code> commands can be aligned in left , right and center position.
+        This sample demonstrates the aligning the <code>Toolbar</code> commands in left , right and center position.
     </p>
 </div>
         <div id="description">
