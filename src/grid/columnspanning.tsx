@@ -113,6 +113,11 @@ export class ColumnSpanning extends SampleBase<{}, {}> {
                         </ColumnsDirective>
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the Grid component with the column spanning feature. In this sample, we have spanned multiple
+        adjacent cells together.
+    </p>
+                </div>
                 <div id="description">
                     <p>
                         Grid allows to span the multiple adjacent cells. In <a href='http://ej2.syncfusion.com/react/documentation/grid/api-queryCellInfoEventArgs.html'><code>QueryCellInfo</code></a> event, you can define the <code>colSpan</code> attribute to span the cells.

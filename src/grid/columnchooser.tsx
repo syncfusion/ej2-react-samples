@@ -23,6 +23,11 @@ export class ColumnChooser extends SampleBase<{}, {}> {
                         <Inject services={[Toolbar]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the Grid column chooser feature. Click the column chooser
+        icon in the toolbar to open column chooser and you can select columns to hide/show from the checkbox list.
+    </p>
+                </div>
                 <div id="description">
                     <p>The Grid columns can be shown/hidden dynamically by using column chooser.  To enable column chooser behavior, set  <code><a target="_blank" className="code"
                         href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#showColumnChooser-boolean">showColumnChooser

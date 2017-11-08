@@ -25,6 +25,10 @@ export class Grouping extends SampleBase<{}, {}> {
                     <a href="https://en.wikipedia.org/wiki/List_of_prolific_inventors" target='_blank'>Wikipedia: List of Prolific inventors</a>
                     </div>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates grouping feature of the Grid component. In this sample, the Grid data is grouped against
+        Country column. To group any other column simply drag the column header and drop on the group drop area.</p>
+                </div>
                 <div id='description'>
                     <p>The Grid control has options to group the records based on the required column. When grouping is applied, grouped
             records are organized into a hierarchical structure to facilitate easier expansion and collapse of records. To enable

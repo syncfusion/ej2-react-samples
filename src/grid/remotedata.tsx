@@ -26,6 +26,11 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
                 <div id='waitingpopup' className='waitingpopup'>
                     <span id='gif' className='image'></span>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the way of data binding Grid component with remote service. The Grid data source is bound to
+        remote data using DataManager.
+    </p>
+                </div>
                 <div id='description'>
                     <p>The Grid supports data binding. The <code><a target="_blank" className="code"
                         href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#datasource-object---datamanager">

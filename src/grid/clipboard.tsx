@@ -32,6 +32,11 @@ export class Clipboard extends SampleBase<{}, {}> {
                         <Inject services={[Page, Selection, Toolbar]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates copy to clipboard functionality of the Grid component. Select rows and click Copy button from
+        toolbar to copy content. To copy with header click Copy with header button from toolbar.
+    </p>
+                </div>
                 <div id="description">
                     <p>Selected rows or cells data in the Grid can be copied into the clipboard using the Keyboard shortcuts and <code><a target="_blank" className="code"
                         href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#copy">copy

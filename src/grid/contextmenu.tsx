@@ -31,6 +31,11 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
                         <Inject services={[Resize, Group, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the usage of context menu in Grid component. Right click anywhere on the Grid to view context
+        menu.
+    </p>
+                </div>
                 <div id="description">
                     <p>
                         Grid has options to show the context menu when right click on it. To configure the items in context menu, you should define

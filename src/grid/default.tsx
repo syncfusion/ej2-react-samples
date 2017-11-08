@@ -21,6 +21,9 @@ export class Default extends SampleBase<{}, {}> {
             </ColumnsDirective>
           </GridComponent>
         </div>
+        <div id="action-description">
+          <p>This sample demonstrates the default rendering of the Grid with minimum configuration.</p>
+        </div>
         <div id='description'>          
           <p>
             The Grid component is used to display and manipulate tabular data with configuration options to control the way the data

@@ -64,6 +64,10 @@ export class ShowHide extends SampleBase<{}, {}> {
                         </ColumnsDirective>
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates dynamic show hide columns feature of Grid. Click column name from the toolbar to toggle visibility.
+    </p>
+                </div>
                 <div id='description'>
                     <p>
                         The Grid column can be showed/hidden dynamically using <code><a target='_blank' className='code'

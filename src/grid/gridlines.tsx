@@ -48,6 +48,10 @@ export class GridLines extends SampleBase<{}, {}> {
                         </ColumnsDirective>
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates visibility of the grid lines that separates the rows and columns. In this sample, you can change
+        the gridline from the toolbar.</p>
+                </div>
                 <div id='description'>
                     <p>    The  <code><a target='_blank' className='code'
                         href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#gridlines-string'>

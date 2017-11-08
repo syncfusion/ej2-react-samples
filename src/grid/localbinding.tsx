@@ -22,6 +22,10 @@ export class Localbinding extends SampleBase<{}, {}> {
                         <Inject services={[Page]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the way of data binding Grid component with JavaScript object array (local data source).
+    </p>
+                </div>
                 <div id='description'>                 
                     <p>
                        The Grid supports data binding. The  <code><a target='_blank' className='code'

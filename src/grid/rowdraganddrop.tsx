@@ -40,6 +40,11 @@ export class Source extends SampleBase<{}, {}> {
                         </div>
                     </div>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the Grid component with the row drag and drop feature. Drag and drop rows between Grids
+            to move rows.
+        </p>
+                </div>
                 <div id='description'>
                     <p>Grid rows can be dragged and dropped to another Grid or custom controlled by
             enabling <code><a target="_blank" className="code"

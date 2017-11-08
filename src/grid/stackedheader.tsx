@@ -18,6 +18,10 @@ export class StackedHeader extends SampleBase<{}, {}> {
                         </ColumnsDirective>
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the Grid component with the stacked header feature. In this sample, we have shown multiple level of column headers.
+    </p>
+                </div>
                 <div id='description'>
                     <p>The Grid columns can be stacked/grouped in order to show multiple level of column headers. It can be done by setting the  <code><a target='_blank' className='code'
                         href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#columns-column---string---columnmodel'>

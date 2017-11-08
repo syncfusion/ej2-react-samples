@@ -159,6 +159,11 @@ export class Virtualization extends SampleBase<{}, {}> {
                         <Inject services={[VirtualScroll]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the Grid component with the virtual scrolling feature. Click the button at the top of the Grid
+        to load data source and scroll the Grid content vertically and horizontally to load rows and columns respectively.
+    </p>
+                </div>
                 <div id='description'>
                     <p>
                         The Grid UI virtualization allows you to render only rows and columns visible within the view-port without buffering the entire datasource.

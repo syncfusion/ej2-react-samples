@@ -21,6 +21,10 @@ export class Reordering extends SampleBase<{}, {}> {
                         <Inject services={[Reorder]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates reordering of the Grid columns. You can reorder columns by simply drag and drop in the desired column position. 
+    </p>
+                </div>
                 <div id='description'>               
                     <p>
                         Reordering can be enabled by setting  <code><a target='_blank' className='code'

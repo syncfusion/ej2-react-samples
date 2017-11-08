@@ -23,6 +23,11 @@ export class ColumnResizing extends SampleBase<{}, {}> {
                         <Inject services={[Resize]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the Grid column resizing feature. Click and drag at the right corner of each column header to
+        resize the column.
+    </p>
+                </div>
                 <div id="description">
                     <p>The Grid columns can be resized by clicking and dragging at the right corner of columns header. To enable column, resize behavior, set <code><a target="_blank" className="code"
                         href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowresizing-boolean">allowResizing

@@ -25,6 +25,10 @@ export class AutoWrap extends SampleBase<{}, {}> {
                     <a href="https://en.wikipedia.org/wiki/List_of_prolific_inventors" target='_blank'>Wikipedia: List of Prolific inventors</a>
                     </div>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the Grid component with the auto wrap column cell. In this sample, you can see that the <b>main fields of invention</b> column cell content exceeded the available width hence it has been wrapped into multiple lines.
+    </p>
+                </div>
                 <div id='description'>
                     <p>Auto wrap cell content can be enabled using  <code><a target='_blank' className='code'
                         href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#allowtextwrap-boolean'>

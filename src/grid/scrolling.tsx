@@ -24,6 +24,10 @@ export class Scrolling extends SampleBase<{}, {}> {
                         </ColumnsDirective>
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the Grid component with the horizontal and vertical scrollbars to view the exceeded grid content.
+    </p>
+                </div>
                 <div id='description'>
                     <p>The Grid component will show scrollbar when the content exceeds the element width or height. The vertical and horizontal
                     scrollbar will be displayed based on the following criteria.

@@ -44,6 +44,11 @@ export class Hierarchy extends SampleBase<{}, {}> {
                         <Inject services={[DetailRow, Page]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the hierarchical binding of the Grid component. Click the expand button to view the child Grid
+        of a particular record.
+    </p>
+                </div>
                 <div id="description">
                     <p>
                     The Hierarchy Grid is used to display table data in hierarchical structure which can show or hide by clicking on expand or collapse button. 
