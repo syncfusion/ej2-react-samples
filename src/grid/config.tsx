@@ -30,7 +30,6 @@ export const GridSampleOrder: Object = [
     { 'path': 'grid/command-column', 'component': 'CommandColumnEdit', 'name': 'CommandColumn', 'order': '06', 'category': 'EDITING'},
     { 'path': 'grid/exporting', 'component': 'Exporting', 'name': 'Basic', 'order': '07', 'category': 'EXPORTING' },
     { 'path': 'grid/multipleexporting', 'component': 'MultipleExporting', 'name': 'MultipleExporting', 'order': '07', 'category': 'EXPORTING' },
-    { 'path': 'grid/rowheight', 'component': 'RowHeight', 'name': 'Row Height', 'order': '01', 'category': 'GRID' },
     { 'path': 'grid/columnmenu', 'component': 'ColumnMenuSample', 'name': 'Column Menu', 'order': '03', 'category': 'COLUMN', 'type': 'new' },
     { 'path': 'grid/contextmenu', 'component': 'ContextMenuSample', 'name': 'Context Menu', 'order': '01', 'category': 'GRID', 'type': 'new' },
     { 'path': 'grid/columnspanning', 'component': 'ColumnSpanning', 'name': 'Column Spanning', 'order': '03', 'category': 'COLUMN', 'type': 'new' }
