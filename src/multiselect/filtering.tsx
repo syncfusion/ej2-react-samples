@@ -7,6 +7,7 @@ import { SampleBase } from '../common/sample-base';
 import './style.css';
 
 export class Filtering extends SampleBase<{}, {}> {
+  //define the filtering data
   private data: { [key: string]: Object; }[] = [
       { Name: 'Australia', Code: 'AU' },
       { Name: 'Bermuda', Code: 'BM' },
@@ -29,12 +30,16 @@ export class Filtering extends SampleBase<{}, {}> {
       { Name: 'United States', Code: 'US' }
     ];
     private query: Query = new Query();
+    // maps the appropriate column to fields property
     private fields: Object = { text: 'Name', value: 'Code' };
-  public onFiltering = debounce((e: FilteringEventArgs) => {
-    let query = new Query();
-    query = (e.text != "") ? query.where("Name", "startswith", e.text, true) : query;
-    e.updateData(this.data, query);
-  }, 400);
+    // filtering event handler to filter a country
+    public onFiltering = debounce((e: FilteringEventArgs) => {
+      let query = new Query();
+      //frame the query based on search string with filter type.
+      query = (e.text != "") ? query.where("Name", "startswith", e.text, true) : query;
+      //pass the filter data source, filter query to updateData method.
+      e.updateData(this.data, query);
+    }, 400);
   render() {
     return (      
       <div className = 'control-pane'>
@@ -44,6 +49,10 @@ export class Filtering extends SampleBase<{}, {}> {
               <MultiSelectComponent id="comboelement" dataSource={this.data} filtering={this.onFiltering.bind(this)} allowFiltering={true} fields={this.fields} placeholder="Select countries" />
             </div>
         </div>
+        <div id="action-description">
+            <p>This sample demonstrates the filtering functionalities of the MultiSelect. Type a character in the MultiSelect element and choose one or more items from the <code>filtered</code> list.</p>
+        </div>
+        
         <div id="description">
             <p>The MultiSelect has built-in support to filter the data source when <code>allowFiltering</code> is enabled. It performs
                 when characters are typed in the component. In <code>filtering</code> event, you can filter down the data source and

@@ -34,17 +34,23 @@ export class Data extends SampleBase<{}, {}> {
         { Name: 'United Kingdom', Code: 'GB' },
         { Name: 'United States', Code: 'US' }
     ];
+    // bind the DataManager instance to dataSource property
     public productData: DataManager = new DataManager({
         url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Products',
         adaptor: new ODataV4Adaptor,
         crossDomain: true
     });
+    // bind the Query instance to query property
     public query: Query = new Query().select(['ProductID', 'ProductName']);
+    // map the appropriate columns to remote data fields property
     public remoteFields: Object = { value: 'ProductName' };
+    // map the appropriate columns to local data fields property
     private localFields: Object = { value: 'Name' };
+    // AutoComplete object creation
     private localDataObj: AutoCompleteComponent;
+    // AutoComplete Object creation
     private remoteDataObj: AutoCompleteComponent;
-    public loader: HTMLElement;
+    // Bind change event
     onChange(args: ChangeEventArgs) {
         this.localDataObj.autofill = args.checked;
         this.remoteDataObj.autofill = args.checked;
@@ -75,6 +81,7 @@ export class Data extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
+                
             </div>
         );
     }

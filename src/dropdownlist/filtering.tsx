@@ -11,6 +11,7 @@ import './filtering.css';
 export class Filtering extends SampleBase<{}, {}> {
 
   private listObj: DropDownListComponent;
+  //define the filtering data
   private searchData: { [key: string]: Object; }[] = [
     { Name: 'Australia', Code: 'AU' },
     { Name: 'Bermuda', Code: 'BM' },
@@ -32,10 +33,14 @@ export class Filtering extends SampleBase<{}, {}> {
     { Name: 'United Kingdom', Code: 'GB' },
     { Name: 'United States', Code: 'US' }
   ];
+  // maps the appropriate column to fields property
   private fields: Object = { text: 'Name', value: 'Code' };
+  // filtering event handler to filter a Country
   public onFiltering = (e: FilteringEventArgs) => {
     let query: Query = new Query();
+    //frame the query based on search string with filter type.
     query = (e.text !== '') ? query.where('Name', 'startswith', e.text, true) : query;
+    //pass the filter data source, filter query to updateData method.
     e.updateData(this.searchData, query);
   };
 
@@ -47,6 +52,11 @@ export class Filtering extends SampleBase<{}, {}> {
             <DropDownListComponent id="country" ref={(dropdownlist) => { this.listObj = dropdownlist }} dataSource={this.searchData} filtering={this.onFiltering.bind(this)} filterBarPlaceholder='Search a country' allowFiltering={true} fields={this.fields} placeholder="Select a country" popupHeight="220px" />
           </div>
         </div>
+        <div id="action-description">
+            <p>This sample demonstrates the filtering functionalities of the DropDownList. Click the DropDownList element and then type a character in the search box. It will display the
+                filtered list items based on the typed characters.</p>
+        </div>
+        
         <div id="description">
             <p>The DropDownList has built-in support to filter the data source, when <code>allowFiltering</code> is enabled. It performs
                 when characters are typed in the search box. In the <code>filtering</code> event, you can filter down the data source and

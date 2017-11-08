@@ -11,6 +11,7 @@ import { PropertyPane } from './property-pane';
 export class Default extends SampleBase<{}, {}> {
 
   private listObj: ComboBoxComponent;
+  // define the JSON of data
   private sportsData: { [key: string]: Object }[] = [
     { Id: 'Game1', Game: 'American Football' },
     { Id: 'Game2', Game: 'Badminton' },
@@ -23,7 +24,9 @@ export class Default extends SampleBase<{}, {}> {
     { Id: 'Game9', Game: 'Snooker' },
     { Id: 'Game10', Game: 'Tennis' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { text: 'Game', value: 'Id' };
+  // set the value to select an item based on mapped value at initial rendering
   private value: string = 'Game3';
 
   public onChange(): void {
@@ -32,7 +35,7 @@ export class Default extends SampleBase<{}, {}> {
     value.innerHTML = this.listObj.value === null ? 'null' : this.listObj.value.toString();
     text.innerHTML = this.listObj.text === null ? 'null' : this.listObj.text;
   }
-
+  // call the change event's function after initialized the component.
   public rendereComplete(): void {
     this.onChange();
   }
@@ -60,6 +63,7 @@ export class Default extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
+        
       </div>
     );
   }

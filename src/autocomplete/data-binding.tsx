@@ -34,17 +34,23 @@ export class Data extends SampleBase<{}, {}> {
         { Name: 'United Kingdom', Code: 'GB' },
         { Name: 'United States', Code: 'US' }
     ];
+    // bind the DataManager instance to dataSource property
     public productData: DataManager = new DataManager({
         url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Products',
         adaptor: new ODataV4Adaptor,
         crossDomain: true
     });
+    // bind the Query instance to query property
     public query: Query = new Query().select(['ProductID', 'ProductName']);
+    // map the appropriate columns to remote data fields property
     public remoteFields: Object = { value: 'ProductName' };
+    // map the appropriate columns to local data fields property
     private localFields: Object = { value: 'Name' };
+    // AutoComplete object creation
     private localDataObj: AutoCompleteComponent;
+    // AutoComplete Object creation
     private remoteDataObj: AutoCompleteComponent;
-    public loader: HTMLElement;
+    // Bind change event
     onChange(args: ChangeEventArgs) {
         this.localDataObj.autofill = args.checked;
         this.remoteDataObj.autofill = args.checked;
@@ -75,6 +81,11 @@ export class Data extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the different data binding supports of the AutoComplete. Type a character(s) in the AutoComplete element and the remaining characters are automatically filled based on the first matched item.
+                        Also, provided option to enable/disable this <code>autofill</code> feature in the property panel.</p>
+                </div>
+                
                 <div id="description">
                     <p>The AutoComplete loads the data either from local data sources or remote data services through the <code>dataSource</code> property. It supports the data type of <code>array</code> or <code>DataManager</code>.</p>
                     <p>The DataManager, that act as an interface between service endpoint and AutoComplete, will require the follwoing minimal
@@ -95,9 +106,6 @@ export class Data extends SampleBase<{}, {}> {
                         <li><code>WebApiAdaptor</code> - Use this to interact with Web API created under OData standards.</li>
                         <li><code>WebMethodAdaptor</code> - Use this to interact with web methods.</li>
                     </ul>
-                    <p>In this sample, the local data is bound to a collection of countries data and the remote data is bound to a collection of customer data as an instance of <code>DataManager</code>. Also, provided option to enable/disable <code>autofill</code> feature
-                        in the property panel. <code>StartsWith</code> filter type is set in this sample for showcase the autofill behavior.
-                        </p>
                     <p> More information on the data binding feature configuration can be found in the
                         <a href="http://ej2.syncfusion.com/documentation/auto-complete/data-binding.html" target="_blank"> documentation section</a>.
                     </p>

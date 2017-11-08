@@ -11,6 +11,7 @@ import './default.css';
 export class Default extends SampleBase<{}, {}> {
 
   private listObj: ComboBoxComponent;
+  // define the JSON of data
   private sportsData: { [key: string]: Object }[] = [
     { Id: 'Game1', Game: 'American Football' },
     { Id: 'Game2', Game: 'Badminton' },
@@ -23,7 +24,9 @@ export class Default extends SampleBase<{}, {}> {
     { Id: 'Game9', Game: 'Snooker' },
     { Id: 'Game10', Game: 'Tennis' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { text: 'Game', value: 'Id' };
+  // set the value to select an item based on mapped value at initial rendering
   private value: string = 'Game3';
 
   public onChange(): void {
@@ -32,7 +35,7 @@ export class Default extends SampleBase<{}, {}> {
     value.innerHTML = this.listObj.value === null ? 'null' : this.listObj.value.toString();
     text.innerHTML = this.listObj.text === null ? 'null' : this.listObj.text;
   }
-
+  // call the change event's function after initialized the component.
   public rendereComplete(): void {
     this.onChange();
   }
@@ -60,11 +63,13 @@ export class Default extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
+        <div id="action-description">
+            <p>This sample demonstrates the default functionalities of the ComboBox. Type a character in the ComboBox element or click the drodown icon to choose an item from the <code>options</code> list.
+                The selected item's <code>value</code> and <code>text</code> property values will be shown in the property panel.</p>
+        </div>
+        
         <div id="description">
             <p>The <code>ComboBox</code> component allows the user to type a value, or choose an option from the list of predefined options.</p>
-            <p>Default sample illustrate the use of ComboBox that allowing end-users to select an item from <code>options</code> list and the selected item's <code>value</code> and <code>text</code> property values are displayed in the property
-              panel.
-            </p>
             <p> More information on the ComboBox instantiation can be found in the
                 <a href="http://ej2.syncfusion.com/documentation/combo-box/getting-started.html" target="_blank"> documentation section</a>.
             </p>

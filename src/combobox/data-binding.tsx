@@ -13,6 +13,7 @@ import './databinding.css';
 
 export class Data extends SampleBase<{}, {}> {
 
+    // define the JSON of data
     private sportsData: { [key: string]: Object }[] = [
         { Id: 'Game1', Game: 'American Football' },
         { Id: 'Game2', Game: 'Badminton' },
@@ -25,18 +26,24 @@ export class Data extends SampleBase<{}, {}> {
         { Id: 'Game9', Game: 'Snooker' },
         { Id: 'Game10', Game: 'Tennis' }
     ];
+    // bind the DataManager instance to dataSource property
     private customerData: DataManager = new DataManager({
         url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Customers',
         adaptor: new ODataV4Adaptor,
         crossDomain: true
     });
+    // bind the Query instance to query property
     private query: Query = new Query().select(['ContactName', 'CustomerID']);
+    // maps the remote data column to fields property
     private remoteFields: Object = { text: 'ContactName', value: 'CustomerID' };
+    // maps the local data column to fields property
     private localFields: Object = { text: 'Game', value: 'Id' };
     private localDataObj: ComboBoxComponent;
     private remoteDataObj: ComboBoxComponent;
     onChange(args: ChangeEventArgs) {
+        // enable or disable the autofill in local data ComboBox based on CheckBox checked state
         this.localDataObj.autofill = args.checked;
+        // enable or disable the autofill in remote data ComboBox based on CheckBox checked state
         this.remoteDataObj.autofill = args.checked;
     }
     render() {
@@ -64,7 +71,11 @@ export class Data extends SampleBase<{}, {}> {
                             </div> 
                         </PropertyPane>
                     </div>
+                </div>
 
+                <div id="action-description">
+                    <p>This sample demonstrates the different data binding supports of the ComboBox. Type a character(s) in the ComboBox element and the remaining characters are automatically filled based on the first matched item.
+                        Also, provided option to enable/disable this <code>autofill</code> feature in the property panel.</p>
                 </div>
 
                 <div id="description">

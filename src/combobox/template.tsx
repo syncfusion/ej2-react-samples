@@ -10,6 +10,7 @@ import './templates.css';
 export class Templates extends SampleBase<{}, {}> {
 
   private listObj: ComboBoxComponent;
+  // define the JSON of employees data
   private employeesData: { [key: string]: Object }[] = [
     { Name: 'Andrew Fuller', Eimg: '7', Designation: 'Team Lead', Country: 'England' },
     { Name: 'Anne Dodsworth', Eimg: '1', Designation: 'Developer', Country: 'USA' },
@@ -21,8 +22,11 @@ export class Templates extends SampleBase<{}, {}> {
     { Name: 'Robert King', Eimg: '8', Designation: 'Developer ', Country: 'England' },
     { Name: 'Steven Buchanan', Eimg: '10', Designation: 'CEO', Country: 'England' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { text: 'Name', value: 'Eimg' };
+  //set the value to header template
   private headerTemplate: string = '<div class="header"> <span>Photo</span> <span style="margin-left:17px">Employee Info</span></div>';
+  //set the value to item template
   private itemTemplate: string = '<div><img class="empImage" src="src/combobox/Employees/${Eimg}.png" alt="employee"/>' +
   '<div class="ename"> ${Name} </div><div class="job"> ${Designation} </div></div>';
 
@@ -33,6 +37,9 @@ export class Templates extends SampleBase<{}, {}> {
           <div id='template'>
             <ComboBoxComponent id="employees" dataSource={this.employeesData} fields={this.fields} placeholder="Select an employee" itemTemplate={this.itemTemplate} headerTemplate={this.headerTemplate} popupHeight="270px" />
           </div>
+        </div>
+        <div id="action-description">    
+            <p>This sample demonstrates the template functionalities of the ComboBox. Type a character in the ComboBox element or click on the drodown icon to choose an item from the customized list.</p>
         </div>
         <div id="description">
             <p>The ComboBox has been provided with several options to customize each list items, group title, header and footer elements.

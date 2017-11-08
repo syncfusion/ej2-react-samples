@@ -10,6 +10,7 @@ import { SampleBase } from './sample-base';
 
 export class Data extends SampleBase<{}, {}> {
 
+    // define the JSON of data
     private sportsData: { [key: string]: Object }[] = [
         { Id: 'Game1', Game: 'American Football' },
         { Id: 'Game2', Game: 'Badminton' },
@@ -22,13 +23,17 @@ export class Data extends SampleBase<{}, {}> {
         { Id: 'Game9', Game: 'Snooker' },
         { Id: 'Game10', Game: 'Tennis' }
     ];
+    // bind the DataManager instance to dataSource property
     private customerData: DataManager = new DataManager({
         url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Customers',
         adaptor: new ODataV4Adaptor,
         crossDomain: true
     });
+    // bind the Query instance to query property
     private query: Query = new Query().select(['ContactName', 'CustomerID']);
+    // maps the remote data column to fields property
     private remoteFields: Object = { text: 'ContactName', value: 'CustomerID' };
+    // maps the local data column to fields property
     private localFields: Object = { text: 'Game', value: 'Id' };
     render() {
         return (
@@ -48,6 +53,7 @@ export class Data extends SampleBase<{}, {}> {
                     </div>
 
                 </div>
+                
             </div>
         );
     }

@@ -6,6 +6,7 @@ import { SampleBase } from '../common/sample-base';
 import './style.css';
 
 export class Data extends SampleBase<{}, {}> {
+    // define the JSON of country data
     private countries: { [key: string]: Object; }[] = [
         { Name: 'Australia', Code: 'AU' },
         { Name: 'Bermuda', Code: 'BM' },
@@ -27,16 +28,17 @@ export class Data extends SampleBase<{}, {}> {
         { Name: 'United Kingdom', Code: 'GB' },
         { Name: 'United States', Code: 'US' }
     ];
-
-    private typeData: string[] = ["box", "default", "delimiter"];
+    // maps the appropriate column to fields property
     private localFields: Object = { text: 'Name', value: 'Code' };
+    // bind the DataManager instance to dataSource property
     private data: DataManager = new DataManager({
         url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Customers',
         adaptor: new ODataV4Adaptor,
         crossDomain: true
     });
-    private localval: string[] = ["JP", "IN"];
+    // bind the Query instance to query property
     private query: Query = new Query().select(['ContactName', 'CustomerID']);
+    // maps the remote data column to fields property
     private remoteFields: Object = { text: 'ContactName', value: 'CustomerID' };
     render() {
         return (
@@ -55,6 +57,12 @@ export class Data extends SampleBase<{}, {}> {
                         </div>
                     </div>
                 </div>
+                <div id="action-description">
+                    <p>This sample demonstrates the different data binding supports of the DropDownList. Click the MultiSelect element and choose one or more items from the suggestion list. At the very first time, when clicked on the remote data MultiSelect,
+                        the loader icon will be shown until the remote request get the data from server and display it.
+                    </p>
+                </div>
+                
                 <div id="description">
                     <p>The MultiSelect loads the data either from local data sources or remote data services through the <code>dataSource</code> property. It supports the data type of <code>array</code> or <code>DataManager</code>.
                     </p>

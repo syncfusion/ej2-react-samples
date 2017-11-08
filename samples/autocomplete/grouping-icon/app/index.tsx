@@ -10,6 +10,7 @@ import { SampleBase } from './sample-base';
 export class Grouping extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  // define the JSON of data
   private vegetableData: { [key: string]: Object }[] = [
     { Vegetable: 'Cabbage', Category: 'Leafy and Salad', Id: 'item1' },
     { Vegetable: 'Chickpea', Category: 'Beans', Id: 'item2' },
@@ -23,7 +24,9 @@ export class Grouping extends SampleBase<{}, {}> {
     { Vegetable: 'Wheat grass', Category: 'Leafy and Salad', Id: 'item10' },
     { Vegetable: 'Yarrow', Category: 'Leafy and Salad', Id: 'item11' }
   ];
+  // maps the appropriate column to grouping fields property
   private groupFields: Object = { groupBy: 'Category', value: 'Vegetable' };
+  // define the JSON of data
   private socialMediaData: { [key: string]: Object }[] = [
     { Class: 'facebook', SocialMedia: 'Facebook', Id: 'media1' },
     { Class: 'google-plus', SocialMedia: 'Google Plus', Id: 'media2' },
@@ -36,6 +39,7 @@ export class Grouping extends SampleBase<{}, {}> {
     { Class: 'whatsapp', SocialMedia: 'WhatsApp', Id: 'media9' },
     { Class: 'youtube', SocialMedia: 'YouTube', Id: 'media10' }
   ];
+  // maps the appropriate column to icons fields property
   private iconFields: Object = { value: 'SocialMedia', iconCss: 'Class' };
 
   render() {
@@ -55,6 +59,7 @@ export class Grouping extends SampleBase<{}, {}> {
             </div>
           </div>
         </div>
+        
       </div>
     );
   }

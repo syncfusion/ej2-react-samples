@@ -10,6 +10,7 @@ import { SampleBase } from './sample-base';
 export class Templates extends SampleBase<{}, {}> {
 
   private listObj: DropDownListComponent;
+  // define the JSON of data
   private employeesData: { [key: string]: Object }[] = [
     { Name: 'Andrew Fuller', Eimg: '7', Designation: 'Team Lead', Country: 'England' },
     { Name: 'Anne Dodsworth', Eimg: '1', Designation: 'Developer', Country: 'USA' },
@@ -21,10 +22,14 @@ export class Templates extends SampleBase<{}, {}> {
     { Name: 'Robert King', Eimg: '8', Designation: 'Developer ', Country: 'England' },
     { Name: 'Steven Buchanan', Eimg: '10', Designation: 'CEO', Country: 'England' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { text: 'Name', value: 'Eimg' };
+  //set the value to header template
   private headerTemplate: string = '<div class="header"> <span>Photo</span> <span style="margin-left:17px">Employee Info</span></div>';
+  //set the value to item template
   private itemTemplate: string = '<div><img class="empImage" src="http://npmci.syncfusion.com/production/react/demos/src/dropdownlist/Employees/${Eimg}.png" alt="employee"/>' +
   '<div class="ename"> ${Name} </div><div class="job"> ${Designation} </div></div>';
+  //set the value to value template
   private valueTemplate: string = '<div style="width:100%;height:100%;"><img class="value" src="http://npmci.syncfusion.com/production/react/demos/src/dropdownlist/Employees/${Eimg}.png" height="28px" width="28px" alt="employee"/>'
   + '<div class="name"> ${Name} </div></div>';
 
@@ -36,6 +41,7 @@ export class Templates extends SampleBase<{}, {}> {
             <DropDownListComponent id="employees" dataSource={this.employeesData} fields={this.fields} placeholder="Select a game" itemTemplate={this.itemTemplate} valueTemplate={this.valueTemplate} headerTemplate={this.headerTemplate} popupHeight="270px" />
           </div>
         </div>
+        
       </div>
     );
   }

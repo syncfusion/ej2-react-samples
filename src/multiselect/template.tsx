@@ -5,6 +5,7 @@ import { SampleBase } from '../common/sample-base';
 import './templates.css';
 
 export class Templates extends SampleBase<{}, {}> {
+  // define the JSON of data
   private employeesData: { [key: string]: Object }[] = [
     { Name: 'Andrew Fuller', Eimg: '7', Job: 'Team Lead', Country: 'England' },
     { Name: 'Anne Dodsworth', Eimg: '1', Job: 'Developer', Country: 'USA' },
@@ -16,10 +17,14 @@ export class Templates extends SampleBase<{}, {}> {
     { Name: 'Robert King', Eimg: '8', Job: 'Developer ', Country: 'England' },
     { Name: 'Steven Buchanan', Eimg: '10', Job: 'CEO', Country: 'England' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { text: 'Name', value: 'Eimg' };
+  // set the value to headerTemplate property
   private headerTemplate: string = '<div class="header"> <span>Photo</span> <span style="margin-left:17px">Employee Info</span></div>';
+  // set the value to itemTemplate property
   private itemTemplate: string = '<div><img class="empImage" src="src/combobox/Employees/${Eimg}.png" alt="employee"/>' +
-  '<div class="ename"> ${Name} </div><div class="job"> ${Job} </div></div>';
+  '<div class="ms-ename"> ${Name} </div><div class="ms-job"> ${Job} </div></div>';
+  // set the value to valueTemplate property
   private valueTemplate: string = '<div><img class="valueTemp" src="src/combobox/Employees/${Eimg}.png" alt="employee"/>' +
   '<div class="nameTemp"> ${Name} </div></div>';
 
@@ -32,6 +37,10 @@ export class Templates extends SampleBase<{}, {}> {
             <MultiSelectComponent id="multiTemplate" dataSource={this.employeesData} fields={this.fields} mode="box" placeholder="Select employee" itemTemplate={this.itemTemplate} valueTemplate={this.valueTemplate} headerTemplate={this.headerTemplate} />
           </div>
         </div>
+        <div id="action-description">
+            <p>This sample demonstrates the template functionalities of the MultiSelect. Type a character in the MultiSelect element or click on this element to choose one or more items from the customized list.</p>
+        </div>
+        
         <div id="description">
             <p>The MultiSelect has been provided with several options to customize each list items, group title, selected value, header
             and footer elements.

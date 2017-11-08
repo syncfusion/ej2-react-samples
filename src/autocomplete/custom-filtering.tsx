@@ -42,21 +42,27 @@ export class CustomFiltering extends SampleBase<{}, {}> {
     { BookName: 'ASP.NET Web API Succinctly', BookID: 'BOOK57' }, { BookName: 'ASP.NET MVC 4 Mobile Websites Succinctly', BookID: 'BOOK58' },
     { BookName: 'jQuery Succinctly', BookID: 'BOOK59' }, { BookName: 'JavaScript Succinctly', BookID: 'BOOK60' },
   ];
+  // maps the appropriate column to fields property
   private fields: object = { value: 'BookName' };
+  //Bind the filter event
   private onFiltering(e: FilteringEventArgs) {
     let options: Object = {
       keys: ['BookName'],
       includeMatches: true,
       findAllMatches: true
     };
+    // create object from Fuse constructor
     let fuse: Fuse = new Fuse(this.booksData, options);
+    // store the search result data based on typed characters
     let result: any = fuse.search(e.text);
     let data: { [key: string]: Object; }[] = [];
     for (let i: number = 0; i < result.length; i++) {
       data.push(result[i].item as any);
     }
+    // pass the filter data source to updateData method.
     e.updateData(data, null);
     let lists: any = document.getElementById('books_popup').querySelectorAll('.e-list-item');
+    // For highlight the typed characters, pass the result data and list items to highlightSearch method.
     this.highlightSearch(lists, result as any);
   }
   private highlightSearch(listItems: Element[], result: any): void {
@@ -80,6 +86,12 @@ export class CustomFiltering extends SampleBase<{}, {}> {
             <AutoCompleteComponent id="books" dataSource={this.booksData} filtering={this.onFiltering.bind(this)} fields={this.fields} placeholder="e.g. Node.js Succinctly" />
           </div>
         </div>
+
+        <div id="action-description">
+          <p>This sample demonstrates the custom filtering functionalities of the AutoComplete. You can choose
+              an item from the suggestion list that filtered items based on approximate string matching technique.</p>
+        </div>
+
         <div id="description">
           <p> The AutoComplete can be customized to showcase the suggestion list by using <code>filtering</code> event.
           In that, you can use your own libraries to filter the data and update it to AutoComplete suggestion list via <code>updateData</code> method.

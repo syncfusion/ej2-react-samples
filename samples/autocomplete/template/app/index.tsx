@@ -10,6 +10,7 @@ import { SampleBase } from './sample-base';
 export class Templates extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  // define the JSON of data
   private employeesData: { [key: string]: Object }[] = [
     { Name: 'Andrew Fuller', Eimg: '7', Designation: 'Team Lead', Country: 'England' },
     { Name: 'Anne Dodsworth', Eimg: '1', Designation: 'Developer', Country: 'USA' },
@@ -21,8 +22,11 @@ export class Templates extends SampleBase<{}, {}> {
     { Name: 'Robert King', Eimg: '8', Designation: 'Developer ', Country: 'England' },
     { Name: 'Steven Buchanan', Eimg: '10', Designation: 'CEO', Country: 'England' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { value: 'Name' };
+  //set the value to header template
   private headerTemplate: string = '<div class="header"> <span>Photo</span> <span style="margin-left:17px">Employee Info</span></div>';
+  //set the value to item template
   private itemTemplate: string = '<div><img class="empImage" src="http://npmci.syncfusion.com/production/react/demos/src/autocomplete/Employees/${Eimg}.png" alt="employee"/>' +
   '<div class="ename"> ${Name} </div><div class="job"> ${Designation} </div></div>';
 
@@ -34,6 +38,7 @@ export class Templates extends SampleBase<{}, {}> {
             <AutoCompleteComponent id="employees" dataSource={this.employeesData} fields={this.fields} placeholder="e.g. Andrew Fuller" itemTemplate={this.itemTemplate} headerTemplate={this.headerTemplate} popupHeight="350px" />
           </div>
         </div>
+        
       </div>
     );
   }

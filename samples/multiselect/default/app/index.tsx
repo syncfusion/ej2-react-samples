@@ -5,6 +5,7 @@ import { SampleBase } from './sample-base';
 
 
 export class Default extends SampleBase<{}, {}> {
+  // define the JSON of data
   private sportsData: { [key: string]: Object }[] = [
     { Id: 'Game1', Sports: 'American Football' },
     { Id: 'Game2', Sports: 'Badminton' },
@@ -17,12 +18,14 @@ export class Default extends SampleBase<{}, {}> {
     { Id: 'Game9', Sports: 'Snooker' },
     { Id: 'Game10', Sports: 'Tennis' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { text: 'Sports', value: 'Id' };
+  // set the value to select an item based on mapped value at initial rendering
   private value: string = 'Game3';
 
 
   render() {
-    return (      
+    return (
       <div className = 'control-pane'>
         <div id="multisection" className='control-section'>
           <div id="multidefault">
@@ -46,6 +49,7 @@ export class Default extends SampleBase<{}, {}> {
             </div>
             </div>
         </div>
+        
       </div>
     );
   }

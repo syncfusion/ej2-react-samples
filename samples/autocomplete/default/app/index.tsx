@@ -11,6 +11,7 @@ import { PropertyPane } from './property-pane';
 export class Default extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  // define the array of string
   private sportsData: string[] = ['Badminton', 'Basketball', 'Cricket',
     'Football', 'Golf', 'Gymnastics',
     'Hockey', 'Rugby', 'Snooker', 'Tennis'];
@@ -24,6 +25,7 @@ export class Default extends SampleBase<{}, {}> {
             </div>
           </div>
         </div>
+        
       </div>
     );
   }

@@ -7,6 +7,7 @@ import { SampleBase } from './sample-base';
 export class Grouping extends SampleBase<{}, {}> {
 
   private listObj: MultiSelectComponent;
+  //define the data with category
    private vegetableData: { [key: string]: Object }[] = [
         { Vegetable: 'Cabbage', Category: 'Leafy and Salad', Id: 'item1' },
         { Vegetable: 'Chickpea', Category: 'Beans', Id: 'item2' },
@@ -20,6 +21,7 @@ export class Grouping extends SampleBase<{}, {}> {
         { Vegetable: 'Wheat grass', Category: 'Leafy and Salad', Id: 'item10' },
         { Vegetable: 'Yarrow', Category: 'Leafy and Salad', Id: 'item11' }
     ];
+    // map the groupBy field with category column
     private groupFields: Object = { groupBy: 'Category', text: 'Vegetable', value: 'Id' };
   render() {
     return (
@@ -30,6 +32,7 @@ export class Grouping extends SampleBase<{}, {}> {
               <MultiSelectComponent id="grouping" dataSource={this.vegetableData} fields={this.groupFields} placeholder="Select vegetables" />
             </div>
         </div>
+        
       </div>
     );
   }

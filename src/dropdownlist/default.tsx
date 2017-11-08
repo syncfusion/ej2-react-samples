@@ -11,6 +11,7 @@ import './default.css';
 export class Default extends SampleBase<{}, {}> {
 
   private listObj: DropDownListComponent;
+  // define the JSON of data
   private sportsData: { [key: string]: Object }[] = [
     { Id: 'Game1', Game: 'American Football' },
     { Id: 'Game2', Game: 'Badminton' },
@@ -23,16 +24,19 @@ export class Default extends SampleBase<{}, {}> {
     { Id: 'Game9', Game: 'Snooker' },
     { Id: 'Game10', Game: 'Tennis' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { text: 'Game', value: 'Id' };
+  // set the value to select an item based on mapped value at initial rendering
   private value: string = 'Game3';
 
   public onChange(): void {
     let value: Element = document.getElementById('value');
     let text: Element = document.getElementById('text');
+    // update the text and value property values in property panel based on selected item in DropDownList
     value.innerHTML = this.listObj.value === null ? 'null' : this.listObj.value.toString();
     text.innerHTML = this.listObj.text === null ? 'null' : this.listObj.text;
   }
-  
+  // call the change event's function after initialized the component.
   public rendereComplete(): void {
     this.onChange();
   }
@@ -61,6 +65,11 @@ export class Default extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
+        <div id="action-description">
+            <p>This sample demonstrates the default functionalities of the DropDownList. Click the DropDownList element and select an item from the <code>options</code> list.
+            The selected item's <code>value</code> and <code>text</code> property values will be shown the in property panel.</p>
+        </div>
+            
         <div id="description">
             <p>The <code>DropDownList</code> component contains a list of predefined values from that the user can choose a single
                 value. </p>

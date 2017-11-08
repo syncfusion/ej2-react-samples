@@ -11,6 +11,7 @@ import { PropertyPane } from './property-pane';
 export class Highlight extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  // define the JSON of data
   private countries: { [key: string]: Object; }[] = [
     { Name: 'Australia', Code: 'AU' },
     { Name: 'Bermuda', Code: 'BM' },
@@ -32,11 +33,15 @@ export class Highlight extends SampleBase<{}, {}> {
     { Name: 'United Kingdom', Code: 'GB' },
     { Name: 'United States', Code: 'US' }
   ];
+  // maps the appropriate column to fields property
   private fields: object = { value: 'Name' };
+  // define the array of data
   private filterData: string[] = ['Contains', 'StartsWith', 'EndsWith'];
+  // bind change event to modify the filter type of AutoComplete.
   public onChange(args: ChangeEventArgs): void {
     this.listObj.filterType = args.itemData as FilterType;
   }
+  // set width size of DropDownList element.
   public width: string = '150px';
 
   render() {
@@ -60,6 +65,7 @@ export class Highlight extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
+        
       </div>
     );
   }
