@@ -1,8 +1,13 @@
+/**
+ * Tooltip smart position sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { Draggable } from '@syncfusion/ej2-base';
 import { SampleBase } from './sample-base';
+
 const SAMPLE_CSS = `
 #targetContainer {
     border: 1px solid #dddddd;
@@ -21,13 +26,17 @@ const SAMPLE_CSS = `
 
 export class DraggableTooltip extends SampleBase<{}, {}> {
     private tooltipInstance: TooltipComponent;
+
+    //Set tooltip animation
     private tooltipAnimation: Object = {
         open: { effect: 'None' },
         close: { effect: 'None' }
     };
     public rendereComplete(): void {
+
+        //Handle tooltip smart positioning.
         let ele: HTMLElement = document.getElementById('demoSmart');
-        let drag: Draggable = new Draggable(ele, {
+        let drag: Draggable = new Draggable(ele, { //Initialize Draggable for tooltip element
             clone: false,
             dragArea: '#targetContainer',
             drag: (args: any) => {
@@ -54,10 +63,14 @@ export class DraggableTooltip extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section' style={{ position: 'relative' }}>
+
+                    {/* Tooltip element */}
                     <TooltipComponent id='targetContainer' ref={t => this.tooltipInstance = t} content='Drag me anywhere, to start walking with me !!!' offsetX={-15} target='#demoSmart' animation={this.tooltipAnimation}>
                         <div id='demoSmart'></div>
                     </TooltipComponent>
                 </div>
+
+
             </div>
         )
     }

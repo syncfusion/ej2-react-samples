@@ -1,3 +1,7 @@
+/**
+ * ListView Nested Sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
@@ -30,6 +34,7 @@ const FolderCss = `
 }`
 export class Nested extends SampleBase<{}, {}> {
 
+    //Define an array of JSON data
     private dataSource: { [key: string]: Object }[] = [
         {
             id: '01', text: 'Music', icon: 'folder',
@@ -90,6 +95,7 @@ export class Nested extends SampleBase<{}, {}> {
         },
     ];
 
+    //Map appropriate columns to fields property
     private fields: {[key:string]: string} ={
         iconCss: 'icon', tooltip: 'text'
     };
@@ -100,9 +106,13 @@ export class Nested extends SampleBase<{}, {}> {
         <div className='control-section'>
             <style>
                 {FolderCss}
-                </style>
+            </style>
+
+        {/* ListView element */}
         <ListViewComponent id='listview' dataSource={this.dataSource} fields={this.fields} headerTitle='Folders' showIcon={true} showHeader={true} ></ListViewComponent>
         </div>
+
+
       </div>
     )
   }

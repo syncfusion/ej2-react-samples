@@ -1,3 +1,7 @@
+/**
+ * ListView RTL Sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
@@ -6,6 +10,7 @@ import { SampleBase } from './sample-base';
 
 export class RTL extends SampleBase<{}, {}> {
 
+  //Define an array of JSON data
   public data: {[key:string]: string}[] = [
     { text: 'الجیریا', id: 'list-01'},
     { text: 'ارمینیا', id: 'list-02'},
@@ -24,8 +29,12 @@ export class RTL extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
+
+        {/* ListView element */}
         <ListViewComponent id='sample-list' dataSource={this.data} headerTitle='اسم الدولة' enableRtl={true} showHeader={true}></ListViewComponent>
         </div>
+
+
       </div>
     )
   }

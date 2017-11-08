@@ -1,3 +1,7 @@
+/**
+ * Loading ajax content sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TooltipComponent, TooltipEventArgs } from '@syncfusion/ej2-react-popups';
@@ -8,6 +12,8 @@ import { SampleBase } from './sample-base';
 
 export class AjaxContentTooltip extends SampleBase<{}, {}> {
     private tooltipInstance: TooltipComponent;
+
+    //Define an Array of JSON data
     public listViewData: { [key: string]: Object }[] = [
         { id: '1', text: 'Australia' },
         { id: '2', text: 'Bhutan' },
@@ -17,7 +23,11 @@ export class AjaxContentTooltip extends SampleBase<{}, {}> {
         { id: '6', text: 'Switzerland' },
         { id: '7', text: 'United States' }
     ];
+
+    //Map appropriate columns to fields property
     public fields: Object = { text: 'text', tooltip: 'id' };
+
+    //Process tooltip ajax content.
     public onBeforeRender(args: TooltipEventArgs): void {
         this.tooltipInstance.content = 'Loading...';
         this.tooltipInstance.dataBind();
@@ -39,13 +49,19 @@ export class AjaxContentTooltip extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div className='control-pane'>               
+            <div className='control-pane'>
                 <div className='control-section'>
                     <h4 className="list-header">National Sports</h4>
+
+                    {/* Tooltip element */}
                     <TooltipComponent ref={t => this.tooltipInstance = t} className="e-prevent-select" content='Loading...' target="#countrylist [title]" position='right center' beforeRender={this.onBeforeRender.bind(this)}>
+
+                        {/* ListView element */}
                         <ListViewComponent id="countrylist" dataSource={this.listViewData} fields={this.fields}></ListViewComponent>
                     </TooltipComponent>
                 </div>
+
+
             </div>
         )
     }

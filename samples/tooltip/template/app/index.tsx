@@ -1,3 +1,7 @@
+/**
+ * Tooltip template sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TooltipComponent, TooltipEventArgs } from '@syncfusion/ej2-react-popups';
@@ -7,6 +11,8 @@ import { SampleBase } from './sample-base';
 
 export class TemplateTooltip extends SampleBase<{}, {}> {
   private tooltipInstance: TooltipComponent;
+
+  //Tooltip content customization.
   private onBeforeRender(args: TooltipEventArgs) {
     let data: any = [
       { title: 'Bold', name: 'Bold (Ctrl+B)', note: 'Makes your text bold.' },
@@ -32,9 +38,13 @@ export class TemplateTooltip extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
+
+          {/* Tooltip element */}
           <TooltipComponent id="template-tootip" ref={t => this.tooltipInstance = t} target=".toolbar-container [title]" beforeRender={this.onBeforeRender.bind(this)} showTipPointer={false}
             offsetX={70} width={170}>
             <div className="toolbar-container">
+
+              {/* Toolbar element */}
               <ToolbarComponent style={{ margin: '10px auto' }}>
                 <ItemsDirective>
                   <ItemDirective prefixIcon='e-cut-icon tooltip-icons' tooltipText='Cut'></ItemDirective>
@@ -49,6 +59,8 @@ export class TemplateTooltip extends SampleBase<{}, {}> {
             </div>
           </TooltipComponent>
         </div>
+
+
       </div>
     )
   }

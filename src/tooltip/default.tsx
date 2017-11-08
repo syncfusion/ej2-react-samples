@@ -1,3 +1,7 @@
+/**
+ * Tooltip default sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TooltipComponent, Position } from '@syncfusion/ej2-react-popups';
@@ -8,6 +12,8 @@ import { PropertyPane } from '../common/property-pane';
 export class Default extends SampleBase<{}, {}> {
   private dropElement: HTMLSelectElement;
   private tooltipInstance: TooltipComponent;
+
+  //Handle tooltip position based on drop-down value change
   private change(): void {
     this.tooltipInstance.position = this.dropElement.value as Position;
   }
@@ -16,7 +22,11 @@ export class Default extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section row'>
           <div className='col-lg-8' style={{ minHeight: '350px' }}>
+
+            {/* Tooltip element */}
             <TooltipComponent ref={t => this.tooltipInstance = t} content='Lets go green & Save Earth !!!' tabIndex={0} style={{ display: 'block', position: 'absolute', left: 'calc( 50% - 60px)', top: '45%' }}>
+
+              {/* Button element */}
               <ButtonComponent tabIndex={-1}>Show Tooltip</ButtonComponent>
             </TooltipComponent>
           </div>
@@ -50,12 +60,17 @@ export class Default extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
+
+        <div id="action-description">
+          <p>This sample demonstrates the default functionalities of the Tooltip. Hover the button to open the tooltip. For Mobile devices, touch and hold the button to open the tooltip. Change the position of the tooltip by choosing 12 different position.</p>
+        </div>
+
         <div id="description">
           <p>
             This sample illustrates a tooltip, that gets opened on hovering the target labelled “Show Tooltip”. The tooltip can be shown
         on 12 possible positions, by selecting the appropriate position values provided in the dropdown. The applicable tooltip
-        positions are as follows,
-        </p>
+        positions are as follows:
+          </p>
           <ul>
             <li><code>top left</code></li>
             <li><code>top center</code></li>
@@ -70,12 +85,9 @@ export class Default extends SampleBase<{}, {}> {
             <li><code>right center</code></li>
             <li><code>right bottom</code></li>
           </ul>
-          <p>
-            In case, if the tooltip needs to be opened on mobile devices, tap hold on the target labelled “Show Tooltip” instead of hovering
-        and by default, it closes after 1.5 seconds on lift.
-          </p>
-          <p>
-            More information on Tooltip instantiation can be found in this
+          <p>In case, if the tooltip needs to be opened on mobile devices, tap hold on the target labelled “Show Tooltip” instead of hovering
+        and by default, it closes after 1.5 seconds on lift.</p>
+          <p>More information on the Tooltip instantiation can be found in the
         <a href="http://ej2.syncfusion.com/react/documentation/tooltip/getting-started.html" target="_blank"> documentation section</a>.
         </p>
         </div>

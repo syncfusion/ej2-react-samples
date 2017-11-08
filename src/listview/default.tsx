@@ -1,3 +1,7 @@
+/**
+ * ListView Default Sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
@@ -6,6 +10,7 @@ import './listview.css';
 
 export class Default extends SampleBase<{}, {}> {
 
+    //Define an array of JSON data
     public data: { [key: string]: Object }[] = [
         { text: 'Hennessey Venom', id: 'list-01' },
         { text: 'Bugatti Chiron', id: 'list-02' },
@@ -19,6 +24,7 @@ export class Default extends SampleBase<{}, {}> {
         { text: 'Ferrari LaFerrari', id: 'list-10' },
     ];
 
+    //Define an array of JSON data
     public groupData: { [key: string]: Object }[] = [
         {
             'text': 'Audi A4',
@@ -72,6 +78,7 @@ export class Default extends SampleBase<{}, {}> {
         }
     ];
 
+    //Map the appropriate columns to fields property
     public fields: Object = { groupBy: 'category' };
 
   render() {
@@ -80,12 +87,28 @@ export class Default extends SampleBase<{}, {}> {
         <div className='control-section'>
             <div id="flat-list">
                 <h4>Flat List</h4>
+
+                {/* ListView element */}
                 <ListViewComponent id="sample-list-flat" dataSource={this.data}> </ListViewComponent>
             </div>
             <div id="group-list">
                 <h4>Group List</h4>
+
+                {/* Group ListView element */}
                 <ListViewComponent id="sample-list-group" dataSource={this.groupData} fields={this.fields}></ListViewComponent>
             </div>
+        </div>
+
+        <div id="action-description">
+            <p>This sample demonstrates the default functionalities of the ListView. Click any list item to select and highlight an item.</p>
+        </div>
+
+        <div id="description" className="descriptionLayout">
+            <p>ListView component represent data in interactive hierarchical structure interface across different layouts or views, that also has the features of data-binding, template rendering, and grouping.</p>
+
+            <p>The group list allows to group the relevant items under a logical category by mapping the <code>groupBy</code> field.</p>
+
+            <p>In this sample, <b>Cars</b> are grouped based on their <b>category</b>.</p>
         </div>
       </div>
     )

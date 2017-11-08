@@ -1,3 +1,7 @@
+/**
+ * Tooltip default sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TooltipComponent, Position } from '@syncfusion/ej2-react-popups';
@@ -8,6 +12,8 @@ import { PropertyPane } from './property-pane';
 export class Default extends SampleBase<{}, {}> {
   private dropElement: HTMLSelectElement;
   private tooltipInstance: TooltipComponent;
+
+  //Handle tooltip position based on drop-down value change
   private change(): void {
     this.tooltipInstance.position = this.dropElement.value as Position;
   }
@@ -16,7 +22,11 @@ export class Default extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section row'>
           <div className='col-lg-8' style={{ minHeight: '350px' }}>
+
+            {/* Tooltip element */}
             <TooltipComponent ref={t => this.tooltipInstance = t} content='Lets go green & Save Earth !!!' tabIndex={0} style={{ display: 'block', position: 'absolute', left: 'calc( 50% - 60px)', top: '45%' }}>
+
+              {/* Button element */}
               <ButtonComponent tabIndex={-1}>Show Tooltip</ButtonComponent>
             </TooltipComponent>
           </div>
@@ -50,6 +60,8 @@ export class Default extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
+
+
       </div>
     )
   }

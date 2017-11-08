@@ -1,3 +1,7 @@
+/**
+ * ListView Nested Sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
@@ -30,6 +34,7 @@ const FolderCss = `
 }`
 export class Nested extends SampleBase<{}, {}> {
 
+    //Define an array of JSON data
     private dataSource: { [key: string]: Object }[] = [
         {
             id: '01', text: 'Music', icon: 'folder',
@@ -90,6 +95,7 @@ export class Nested extends SampleBase<{}, {}> {
         },
     ];
 
+    //Map appropriate columns to fields property
     private fields: {[key:string]: string} ={
         iconCss: 'icon', tooltip: 'text'
     };
@@ -100,8 +106,21 @@ export class Nested extends SampleBase<{}, {}> {
         <div className='control-section'>
             <style>
                 {FolderCss}
-                </style>
+            </style>
+
+        {/* ListView element */}
         <ListViewComponent id='listview' dataSource={this.dataSource} fields={this.fields} headerTitle='Folders' showIcon={true} showHeader={true} ></ListViewComponent>
+        </div>
+
+        <div id="action-description">
+            <p>This sample demonstrates the nested list functionalities of the ListView. Click any list item to navigate to their sub items. To navigate back to the parent list, click the back icon at the top left area.
+           </p>
+        </div>
+
+        <div id="description">
+            <p>ListView component supports Nested list. To achieve list navigation, the <code>child</code> property should be defined for the nested list in the array of JSON.</p>
+
+            <p>This sample have Nested folder with the sub folders/files.</p>
         </div>
       </div>
     )

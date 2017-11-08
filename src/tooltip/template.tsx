@@ -1,3 +1,7 @@
+/**
+ * Tooltip template sample
+ */
+
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TooltipComponent, TooltipEventArgs } from '@syncfusion/ej2-react-popups';
@@ -7,6 +11,8 @@ import './tooltip-sample.css';
 
 export class TemplateTooltip extends SampleBase<{}, {}> {
   private tooltipInstance: TooltipComponent;
+
+  //Tooltip content customization.
   private onBeforeRender(args: TooltipEventArgs) {
     let data: any = [
       { title: 'Bold', name: 'Bold (Ctrl+B)', note: 'Makes your text bold.' },
@@ -32,9 +38,13 @@ export class TemplateTooltip extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
+
+          {/* Tooltip element */}
           <TooltipComponent id="template-tootip" ref={t => this.tooltipInstance = t} target=".toolbar-container [title]" beforeRender={this.onBeforeRender.bind(this)} showTipPointer={false}
             offsetX={70} width={170}>
             <div className="toolbar-container">
+
+              {/* Toolbar element */}
               <ToolbarComponent style={{ margin: '10px auto' }}>
                 <ItemsDirective>
                   <ItemDirective prefixIcon='e-cut-icon tooltip-icons' tooltipText='Cut'></ItemDirective>
@@ -49,13 +59,19 @@ export class TemplateTooltip extends SampleBase<{}, {}> {
             </div>
           </TooltipComponent>
         </div>
+
+        <div id="action-description">
+          <p>This sample demonstrates the Template functionalities of the Tooltip. Hover the toolbar options to open the tooltip. For Mobile devices, touch and hold the toolbar options to open the tooltip.</p>
+        </div>
+
         <div id="description">
           <p>This sample illustrates the way to display the template content on the tooltip. With the usage of Template, the user
-        can format and structure the HTML content to be displayed on tooltip as per their application needs.</p>
-          <p>In this sample, tooltip is integrated with toolbar component to display the respective icon’s information. Here, the
-        HTML template design is compiled and then the resultant output display is directly assigned to the <code> content</code>property
-        of the tooltip. The template compilation process needs to be done on the <code>beforeRender</code> event of the tooltip.</p>
-          <p>More information on setting template content on Tooltip can be found in this
+        can format and structure the HTML content to be displayed on the tooltip as per their application needs.</p>
+          <p>In this sample, the tooltip is integrated with toolbar component to display the respective icon’s information. Here,
+        the HTML template design is compiled and then the resultant output display is directly assigned to the
+        <code> content</code>property of the tooltip. The template compilation process needs to be done on the
+        <code>beforeRender</code> event of the tooltip.</p>
+          <p>More information about setting template content on the Tooltip can be found in the
         <a href="http://ej2.syncfusion.com/react/documentation/tooltip/content.html#template-content" target="_blank"> documentation section</a>.
         </p>
         </div>
