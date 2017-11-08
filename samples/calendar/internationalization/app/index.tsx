@@ -17,7 +17,6 @@ export class culture extends SampleBase<{}, {}> {
   private calendarInstance: CalendarComponent;
   private dropElement: HTMLSelectElement;
   public onValueChange(): void {
-    debugger
     let globalize: Internationalization = new Internationalization(this.calendarInstance.locale);
     let culture: string = this.dropElement.value;
     this.calendarInstance.locale = culture;
@@ -27,6 +26,10 @@ export class culture extends SampleBase<{}, {}> {
     }
     this.calendarInstance.dataBind();
   }
+  public onChange(args: ChangedEventArgs): void {
+	 let globalize: Internationalization = new Internationalization(this.calendarInstance.locale);
+    (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + globalize.formatDate(this.calendarInstance.value);
+  }
 
   render() {
     return (
@@ -34,7 +37,7 @@ export class culture extends SampleBase<{}, {}> {
         <div className='control-section row'>
           <div className='col-lg-9'>
             <div className='calendar-control-section'>
-              <CalendarComponent change={onChange} locale='de' ref={calendar => this.calendarInstance = calendar} ></CalendarComponent>
+              <CalendarComponent change={this.onChange.bind(this)} locale='de' ref={calendar => this.calendarInstance = calendar} ></CalendarComponent>
               <label id='date_label'>Selected Value:</label>
             </div>
           </div>
@@ -65,7 +68,5 @@ export class culture extends SampleBase<{}, {}> {
     )
   }
 }
-function onChange(args: ChangedEventArgs): void {
-  (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args.value.toLocaleDateString();
-}
+
 ReactDOM.render(<culture />, document.getElementById('sample'));
