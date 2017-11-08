@@ -19,7 +19,7 @@ export class ColumnMenuSample extends SampleBase<{}, {}> {
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='200' ></ColumnDirective>
                             <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='200' format='yMd' textAlign='right' />
                             <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='right' />
-                            <ColumnDirective field='ShipName' headerText='Ship Name' width='200'></ColumnDirective>
+                            <ColumnDirective field='ShipName' headerText='Ship Name' visible={false} width='200'></ColumnDirective>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Resize, Group, Sort, ColumnMenu, Filter, Page]} />
