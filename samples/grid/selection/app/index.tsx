@@ -21,6 +21,7 @@ export class Selectioning extends SampleBase<{}, {}> {
                         <Inject services={[Page, Selection]} />
                     </GridComponent>
                 </div>
+
             </div>
         )
     }

@@ -37,6 +37,10 @@ export class Exporting extends SampleBase<{}, {}> {
             </ColumnsDirective>
             <Inject services={[Page, Toolbar, ExcelExport, PdfExport, Group]} />
           </GridComponent>
+          <div id="action-description">
+          <p>This sample demonstrates the client-side exporting of the Grid, which allows you to export its data to the Excel, Pdf and CSV formats.
+            Use the toolbar buttons to export Grid data to desired format.</p>
+          </div>
           <div id="description">
             <p>Grid supports client-side exporting which allows you to export its data to the Excel, Pdf and CSV formats.</p>
             <p>In this demo, Grouping is applied for <strong><i>ShipCountry</i></strong> column and excelexport, pdfexport and csvexport items are defined in the toolbar. For these toolbar items, we have

@@ -21,6 +21,10 @@ export class Selectioning extends SampleBase<{}, {}> {
                         <Inject services={[Page, Selection]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                  <p>This sample demonstrates the default functionality of the selection in Grid, which allows you to select row or cell through simple mouse down or keyboard interaction.</p>
+                </div>
+
                 <div id='description'>
                     <p>
                         Selection provides an interactive support to highlight the row or cell that you select. Selection can be done through a simple

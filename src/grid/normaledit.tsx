@@ -24,6 +24,15 @@ export class NormalEdit extends SampleBase<{}, {}> {
             </ColumnsDirective>
             <Inject services={[Page, Toolbar, Edit]} />
           </GridComponent>
+          <div id="action-description">
+          <p>This sample demonstrates CRUD operations in Grid. You can perform CRUD operations as follows,</p>
+         <ul>
+                <li><code>Add</code> -  To add new record, click Add toolbar button </li>
+                <li><code>Edit</code> - To edit record, double click a row or click toolbar Edit button after selected a row </li>
+                <li><code>Delete</code> - To delete record, click toolbar Delete button after selected a row </li>
+                <li><code>Update</code>,<code>Cancel</code> - You can save or discard changes by click toolbar Update and cancel button respectively</li>
+            </ul>
+           </div>
         <div id="description">
           <p> The Grid supports CRUD operations. This CRUD operations can be configured in Grid using
             <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html">

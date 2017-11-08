@@ -61,6 +61,9 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                         <Inject services={[Page, Selection]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                <p>This sample demonstrates the selection functionality of the Grid, you can select the type and mode from the desired button</p>
+                </div>
                 <div id='description'>
                     <p>
                         Selection provides an interactive support to highlight the row or cell that you select. Selection can be done through simple

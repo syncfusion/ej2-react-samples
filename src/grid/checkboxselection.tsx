@@ -25,6 +25,10 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
                         <Inject services={[Page, Selection]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                <p>This sample demonstrates the selection functionality of the Grid using checkbox selection, To select and unselect all rows use header checkbox.
+                 To select/unselect particular row, click the desired row.</p>
+                </div>
                 <div id="description">
                     <p>
                         Grid mutliple selection can be achieved with help of checkbox in each row. To render checkbox in each grid row, you need

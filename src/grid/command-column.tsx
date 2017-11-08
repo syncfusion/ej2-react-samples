@@ -27,6 +27,14 @@ export class CommandColumnEdit extends SampleBase<{}, {}> {
             </ColumnsDirective>
             <Inject services={[Page, CommandColumn, Edit]} />
           </GridComponent>
+          <div id="action-description">
+          <p>This sample demonstrates CRUD operations in Grid using command column. You can perform CRUD operations as follows,</p>
+           <ul>
+                  <li><code>Edit</code> - To edit record, double click a row or click Edit button from command column after selected a row </li>
+                  <li><code>Delete</code> - To delete record, click Delete button from command column after selected a row </li>
+                  <li><code>Update</code>,<code>Cancel</code> - You can save or discard changes by click Update and cancel button from command column respectively</li>
+              </ul>
+          </div>
           <div id="description">
           <p>
               The Grid provides an option to render CRUD action buttons in a column by using the CommandColumn feature. The
