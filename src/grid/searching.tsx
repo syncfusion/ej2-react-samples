@@ -22,6 +22,13 @@ export class Searching extends SampleBase<{}, {}> {
                         <Inject services={[Toolbar, Page]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>
+                        This sample demonstrates the Grid searching feature. In this sample, use the search box
+                        from toolbar to search Grid records.
+                    </p>
+                </div>
+
                 <div id='description'>
                     <p>
                         The searching feature enables the user to view the reduced amount of records based on search criteria. It can be enabled by setting  <code><a target='_blank' className='code'

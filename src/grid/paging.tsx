@@ -21,6 +21,12 @@ export class Paging extends SampleBase<{}, {}> {
                         <Inject services={[Page]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>
+                        This sample demonstrates the Grid paging feature. In this sample, click the numeric items to navigate to
+                        particular page. You can also change the page size using the dropdown.
+                    </p>
+                </div>
                 <div id='description'>
                     <p>
                         Paging allows you to display the contents of the Grid component in page segments.

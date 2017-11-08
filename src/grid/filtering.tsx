@@ -43,6 +43,14 @@ export class Filtering extends SampleBase<{}, {}> {
                         <Inject services={[Filter, Page]} />
                     </GridComponent>
                 </div>
+
+                <div id="action-description">
+                    <p>
+                        This sample demonstrates the Grid Default Filtering feature. In this sample, type the value in the
+                        filterbar and press enter to filter particular column.
+                    </p>
+                </div>
+
                 <div id='description'>
                     <p>The filtering feature enables the user to view the reduced amount of records based on filter criteria.
                     It can be enabled by setting <code><a target='_blank' className='code'

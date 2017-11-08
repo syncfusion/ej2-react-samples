@@ -22,6 +22,7 @@ export class Searching extends SampleBase<{}, {}> {
                         <Inject services={[Toolbar, Page]} />
                     </GridComponent>
                 </div>
+
             </div>
         )
     }

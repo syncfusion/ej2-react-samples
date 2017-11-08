@@ -24,6 +24,13 @@ export class Sorting extends SampleBase<{}, {}> {
                         <Inject services={[Page, Sort]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>
+                        This sample demonstrates the Grid multi sorting feature. To sort two or more columns,
+                        hold the CTRL key and click the column header.
+                    </p>
+                </div>
+
                 <div id='description'>
                     <p>
                         Sorting feature enables us to order the data in a particular direction. It can be enabled by setting the  <code><a target='_blank' className='code'

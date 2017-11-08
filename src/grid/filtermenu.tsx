@@ -37,6 +37,14 @@ export class FilterMenu extends SampleBase<{}, {}> {
                         <Inject services={[Filter, Page]} />
                     </GridComponent>
                 </div>
+                <div id="action-description">
+                    <p>
+                        This sample demonstrates the way of filtering Grid columns using menu and checkbox filter UI. In this sample,
+                        click the filtering icon from column header to show filter UI for a particular column. You can change
+                        the filter type from the dropdown.
+                    </p>
+                </div>
+
                 <div id='description'>
                     <p>The filtering feature enables the user to view the reduced amount of records based on filter criteria.
                     It can be enabled by setting <code><a target='_blank' className='code'

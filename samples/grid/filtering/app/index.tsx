@@ -43,6 +43,8 @@ export class Filtering extends SampleBase<{}, {}> {
                         <Inject services={[Filter, Page]} />
                     </GridComponent>
                 </div>
+
+
             </div>
         )
     }

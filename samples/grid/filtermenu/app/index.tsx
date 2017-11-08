@@ -37,6 +37,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
                         <Inject services={[Filter, Page]} />
                     </GridComponent>
                 </div>
+
             </div>
         )
     }

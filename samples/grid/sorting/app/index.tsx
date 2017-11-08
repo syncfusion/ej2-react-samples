@@ -24,6 +24,7 @@ export class Sorting extends SampleBase<{}, {}> {
                         <Inject services={[Page, Sort]} />
                     </GridComponent>
                 </div>
+
             </div>
         )
     }
