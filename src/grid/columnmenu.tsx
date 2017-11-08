@@ -1,0 +1,73 @@
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Group, Sort, ColumnMenu, Filter, Page, Inject } from '@syncfusion/ej2-react-grids';
+import { GroupSettingsModel, FilterSettingsModel } from '@syncfusion/ej2-react-grids';
+import { data } from './data';
+import { SampleBase } from '../common/sample-base';
+import './gridcontextmenu.css';
+
+export class ColumnMenuSample extends SampleBase<{}, {}> {
+    public groupOptions: GroupSettingsModel = { showGroupedColumn: true };
+    public filterSettings: FilterSettingsModel = { type: 'checkbox' };
+    render() {
+        return (
+            <div className='control-pane'>
+                <div className='control-section'>
+                    <GridComponent id='gridcomp' dataSource={data.splice(0, 60)} allowPaging={true} allowGrouping={true} allowSorting={true} allowFiltering={true} showColumnMenu={true} groupSettings={this.groupOptions} filterSettings={this.filterSettings} >
+                        <ColumnsDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='200' textAlign='right' showInColumnChooser={false}></ColumnDirective>
+                            <ColumnDirective field='CustomerName' headerText='Customer Name' width='200' ></ColumnDirective>
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='200' format='yMd' textAlign='right' />
+                            <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='right' />
+                            <ColumnDirective field='ShipName' headerText='Ship Name' width='200'></ColumnDirective>
+                            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200'></ColumnDirective>
+                        </ColumnsDirective>
+                        <Inject services={[Resize, Group, Sort, ColumnMenu, Filter, Page]} />
+                    </GridComponent>
+                </div>
+                <div id="description">
+                    <p>
+                        Grid has option to show column menu when click on multiple icon of each column. The column menu has integrated options to
+                interact the features like sorting, grouping, filtering, column chooser and autoFit. This features can be enabled
+                by defining the
+                <code><a target="_blank" className="code"
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#showcolumnmenu-boolean">showColumnMenu
+                    </a></code> as true. The default items are
+                    </p>
+                    <ul>
+                        <li>
+                            <code>sortAscending</code> - Sort the current column in ascending order.</li>
+                        <li>
+                            <code>sortDescending</code> - Sort the current column in descending order.</li>
+                        <li>
+                            <code>group</code> - Group the current column.</li>
+                        <li>
+                            <code>ungroup</code> - Ungroup the current column.</li>
+                        <li>
+                            <code>autoFit</code> - Auto fit current column.</li>
+                        <li>
+                            <code>autoFitAll</code> - Auto fit all columns.</li>
+                        <li>
+                            <code>columnChooser</code> - Choose the column visibility.</li>
+                        <li>
+                            <code>Filter</code> - Show the filter option as given in
+                    <code>filterSetting-> type</code>.</li>
+                    </ul>
+
+                    <br />
+
+                    <p>
+                        In this demo, Column Menu feature has enabled by defining
+                <code> showColumnMenu </code> as true with sorting, grouping, filtering, column chooser and autoFit options.
+
+                 </p>
+                    <p style={{ fontWeight: 500 }}>Injecting Module:</p>
+                    <p>
+                        Grid component features are segregated into individual feature-wise modules. To use Column menu feature, we need to inject <code>ColumnMenu</code> modeule into the <code>services</code>
+                    </p>
+
+                </div>
+            </div>
+        )
+    }
+}
