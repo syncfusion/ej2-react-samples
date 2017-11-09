@@ -14,59 +14,58 @@ import * as detimeZoneNames from './common/cldr-data/main/de/timeZoneNames.json'
 loadCldr(numberingSystems, degregorian, denumbers, detimeZoneNames);
 
 export class culture extends SampleBase<{}, {}> {
-  private calendarInstance: CalendarComponent;
-  private dropElement: HTMLSelectElement;
-  public onValueChange(): void {
-    let globalize: Internationalization = new Internationalization(this.calendarInstance.locale);
-    let culture: string = this.dropElement.value;
-    this.calendarInstance.locale = culture;
-    globalize = new Internationalization(this.calendarInstance.locale);
-    if (this.calendarInstance.value) {
-      (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + globalize.formatDate(this.calendarInstance.value);
+    private calendarInstance: CalendarComponent;
+    private dropElement: HTMLSelectElement;
+    /*Apply selected locale to the component*/
+    public onValueChange(): void {
+        let globalize: Internationalization = new Internationalization(this.calendarInstance.locale);
+        let culture: string = this.dropElement.value;
+        this.calendarInstance.locale = culture;
+        globalize = new Internationalization(this.calendarInstance.locale);
+        if (this.calendarInstance.value) {
+            (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + globalize.formatDate(this.calendarInstance.value);
+        }
     }
-    this.calendarInstance.dataBind();
-  }
-  public onChange(args: ChangedEventArgs): void {
-	 let globalize: Internationalization = new Internationalization(this.calendarInstance.locale);
-    (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + globalize.formatDate(this.calendarInstance.value);
-  }
 
-  render() {
-    return (
-      <div className='control-pane'>
-        <div className='control-section row'>
-          <div className='col-lg-9'>
-            <div className='calendar-control-section'>
-              <CalendarComponent change={this.onChange.bind(this)} locale='de' ref={calendar => this.calendarInstance = calendar} ></CalendarComponent>
-              <label id='date_label'>Selected Value:</label>
+    render() {
+        return (
+            <div className='control-pane'>
+                <div className='control-section row'>
+                    <div className='col-lg-9'>
+                        <div className='calendar-control-section'>
+                            <CalendarComponent change={onChange} locale='de' ref={calendar => this.calendarInstance = calendar} ></CalendarComponent>
+                            <label id='date_label'>Selected Value:</label>
+                        </div>
+                    </div>
+                    <div className='col-lg-3 property-section'>
+                        <PropertyPane title='Properties'>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                                <tr>
+                                    <td style={{ width: '30%' }}>
+                                        <div className='col-md-4' style={{ paddingTop: '8px' }}>
+                                            Culture
+                    </div>
+                                    </td>
+                                    <td style={{ width: '70%', paddingRight: '10px' }}>
+                                        <div>
+                                            <select id='ddl' name='ddl' onChange={this.onValueChange.bind(this)} className='form-control' style={{ padding: '6px' }} ref={d => this.dropElement = d}>
+                                                <option value='de'>de</option>
+                                                <option value='en'>en</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </PropertyPane>
+                    </div>
+                </div>
+
             </div>
-          </div>
-          <div className='col-lg-3 property-section'>
-            <PropertyPane title='Properties'>
-              <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>
-                      Culture
-                    </div>
-                  </td>
-                  <td style={{ width: '70%', paddingRight: '10px' }}>
-                    <div>
-                      <select id='ddl' name='ddl' onChange={this.onValueChange.bind(this)} className='form-control' style={{ padding: '6px' }} ref={d => this.dropElement = d}>
-                        <option value='de'>de</option>
-                        <option value='en'>en</option>
-                      </select>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-            </PropertyPane>
-          </div>
-        </div>
-
-      </div>
-    )
-  }
+        )
+    }
 }
-
+function onChange(args: ChangedEventArgs): void {
+    /*Displays selected date in the label*/
+    (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args.value.toLocaleDateString();
+}
 ReactDOM.render(<culture />, document.getElementById('sample'));

@@ -6,16 +6,16 @@ import { SampleBase } from './sample-base';
 
 export class Default extends SampleBase<{}, {}> {
 
-  render() {
-    return (
-      <div className='control-pane'>
-        <div className='control-section'>
-          <div className='daterangepicker-control-section'>
-            <DateRangePickerComponent placeholder='Select a range'></DateRangePickerComponent>
-          </div>
-        </div>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div className='control-pane'>
+                <div className='control-section'>
+                    <div className='daterangepicker-control-section'>
+                        <DateRangePickerComponent placeholder='Select a range'></DateRangePickerComponent>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 ReactDOM.render(<Default />, document.getElementById('sample'));

@@ -13,16 +13,16 @@ let maxDate: Date = new Date(currentYear, currentMonth, 27);
 let dateValue: Date = new Date(currentYear, currentMonth, 14);
 export class Range extends SampleBase<{}, {}> {
 
-  render() {
-    return (
-      <div className='control-pane'>
-        <div className='control-section'>
-          <div className='datepicker-control-section'>
-            <DatePickerComponent id="calendar" min={minDate} max={maxDate} value={dateValue} placeholder='Choose a date'></DatePickerComponent>
-          </div>
-        </div>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div className='control-pane'>
+                <div className='control-section'>
+                    <div className='datepicker-control-section'>
+                        <DatePickerComponent id="calendar" min={minDate} max={maxDate} value={dateValue} placeholder='Choose a date'></DatePickerComponent>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 ReactDOM.render(<Range />, document.getElementById('sample'));

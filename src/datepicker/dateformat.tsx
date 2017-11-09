@@ -9,10 +9,12 @@ let dateValue: Date = new Date();
 export class Dateformat extends SampleBase<{}, {}> {
   private datepickerInstance: DatePickerComponent;
   private dropElement: HTMLSelectElement;
+  /*Apply selected format to the component*/
   public onValueChange(): void {
     let dateformat: string = this.dropElement.value;
     this.datepickerInstance.format = dateformat;
   }
+
   render() {
     return (
       <div className='control-pane'>
@@ -45,7 +47,10 @@ export class Dateformat extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
-
+            <div id="action-description">
+                <p>
+                    In this sample, the DatePicker has been configured with the <code>dd-MMM-yy</code> date format. To change this current date format, go to the properties panel at the right side and select a date format from the dropdown options.</p>   
+            </div>
         <div id='description'>
           <p>
             Date Formats sample illustrates the support of custom date format in the DatePicker component by

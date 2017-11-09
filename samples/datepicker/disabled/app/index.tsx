@@ -19,7 +19,7 @@ export class Disabled extends SampleBase<{}, {}> {
 }
 function disabledDate(args: RenderDayCellEventArgs): void {
   if (args.date.getDay() === 0 || args.date.getDay() === 6) {
-    //set 'true' to disable the weekends
+    /*set 'true' to disable the weekends*/
     args.isDisabled = true;
   }
 }

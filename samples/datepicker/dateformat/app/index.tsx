@@ -9,10 +9,12 @@ let dateValue: Date = new Date();
 export class Dateformat extends SampleBase<{}, {}> {
   private datepickerInstance: DatePickerComponent;
   private dropElement: HTMLSelectElement;
+  /*Apply selected format to the component*/
   public onValueChange(): void {
     let dateformat: string = this.dropElement.value;
     this.datepickerInstance.format = dateformat;
   }
+
   render() {
     return (
       <div className='control-pane'>
@@ -45,7 +47,6 @@ export class Dateformat extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
-
       </div>
     )
   }

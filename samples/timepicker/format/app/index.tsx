@@ -9,16 +9,16 @@ let interval: number = 60;
 let customFormat: string = 'HH:mm';
 
 export class Format extends SampleBase<{}, {}> {
-  render() {
-    return (
-      <div className='control-pane format'>
-        <div className='control-section'>
-          <div className='timepicker-control-section'>
-            <TimePickerComponent value={value} step={interval} format={customFormat}></TimePickerComponent>
-          </div>
-        </div>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div className='control-pane format'>
+                <div className='control-section'>
+                    <div className='timepicker-control-section'>
+                        <TimePickerComponent value={value} step={interval} format={customFormat}></TimePickerComponent>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 ReactDOM.render(<Format />, document.getElementById('sample'));

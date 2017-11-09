@@ -20,91 +20,96 @@ loadCldr(numberingSystems, zhgregorian, zhnumbers, degregorian, denumbers, vigre
 
 /*loads the localization text*/
 L10n.load({
-  'de': {
-    'timepicker': {
-      placeholder: 'Zeit auswählen'
+    'de': {
+        'timepicker': {
+            placeholder: 'Zeit auswählen'
+        }
+    },
+    'zh': {
+        'timepicker': {
+            placeholder: '选择时间'
+        }
+    },
+    'vi': {
+        'timepicker': {
+            placeholder: 'Chọn thời gian'
+        }
+    },
+    'en': {
+        'timepicker': {
+            placeholder: 'Select Time'
+        }
+    },
+    'ar': {
+        'timepicker': { placeholder: 'حدد الوقت' }
     }
-  },
-  'zh': {
-    'timepicker': {
-      placeholder: '选择时间'
-    }
-  },
-  'vi': {
-    'timepicker': {
-      placeholder: 'Chọn thời gian'
-    }
-  },
-  'en': {
-    'timepicker': {
-      placeholder: 'Select Time'
-    }
-  },
-  'ar': {
-    'timepicker': { placeholder: 'حدد الوقت' }
-  }
 });
 
 let value: Date = new Date();
 
 export class Globalization extends SampleBase<{}, {}> {
-  private timepickerInstance: TimePickerComponent;
-  private dropElement: HTMLSelectElement;
-  public onValueChange(): void {
-    let culture: string = this.dropElement.value;
-    this.timepickerInstance.locale = culture
-    this.timepickerInstance.enableRtl = culture === 'ar' ? true : false;
-  }
+    private timepickerInstance: TimePickerComponent;
+    private dropElement: HTMLSelectElement;
+    public onValueChange(): void {
+        /*Apply selected locale to the component*/
+        let culture: string = this.dropElement.value;
+        this.timepickerInstance.locale = culture
+        this.timepickerInstance.enableRtl = culture === 'ar' ? true : false;
+    }
 
-  render() {
-    return (
-      <div className='control-pane culture'>
-        <div className='control-section row'>
-          <div className='col-lg-9'>
-            <div className='timepicker-control-section'>
-              <TimePickerComponent value={value} locale='de' ref={calendar => this.timepickerInstance = calendar} ></TimePickerComponent>
-            </div>
-          </div>
-          <div className='col-lg-3 property-section'>
-            <PropertyPane title='Properties'>
-              <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                <tr>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>
-                      Culture
+    render() {
+        return (
+            <div className='control-pane culture'>
+                <div className='control-section row'>
+                    <div className='col-lg-9'>
+                        <div className='timepicker-control-section'>
+                            <TimePickerComponent value={value} locale='de' ref={calendar => this.timepickerInstance = calendar} ></TimePickerComponent>
+                        </div>
                     </div>
-                  </td>
-                  <td style={{ width: '70%', paddingRight: '10px' }}>
-                    <div>
-                      <select id='ddl' name='ddl' onChange={this.onValueChange.bind(this)} className='form-control' style={{ padding: '6px' }} ref={d => this.dropElement = d}>
-                        <option value='ar'>ar</option>
-                        <option value='de' selected>de</option>
-                        <option value='en'>en</option>
-                        <option value='vi'>vi</option>
-                        <option value='zh'>zh</option>
-                      </select>
+                    <div className='col-lg-3 property-section'>
+                        <PropertyPane title='Properties'>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                                <tr>
+                                    <td style={{ width: '30%' }}>
+                                        <div className='col-md-4' style={{ paddingTop: '8px' }}>
+                                            Culture
                     </div>
-                  </td>
-                </tr>
-              </table>
-            </PropertyPane>
-          </div>
-        </div>
-
-        <div id='description'>
-          <p>
-              TimePicker component was rendered with <code>German</code> culture. Here, the time separator and time format are
+                                    </td>
+                                    <td style={{ width: '70%', paddingRight: '10px' }}>
+                                        <div>
+                                            <select id='ddl' name='ddl' onChange={this.onValueChange.bind(this)} className='form-control' style={{ padding: '6px' }} ref={d => this.dropElement = d}>
+                                                <option value='ar'>ar</option>
+                                                <option value='de' selected>de</option>
+                                                <option value='en'>en</option>
+                                                <option value='vi'>vi</option>
+                                                <option value='zh'>zh</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </PropertyPane>
+                    </div>
+                </div>
+                <div id="action-description">
+                    <p>
+                        In this sample, the TimePicker has been configured with <code>German</code> culture. To change this current culture, go to the properties panel at the right side and select a culture from the dropdown options.
+                  </p>
+                </div>
+                <div id='description'>
+                    <p>
+                        TimePicker component was rendered with <code>German</code> culture. Here, the time separator and time format are
               specific to the current culture.
           </p>
-          <p>
-              You can also change the control culture by selecting it from the culture options in the properties panel.
+                    <p>
+                        You can also change the control culture by selecting it from the culture options in the properties panel.
           </p>
-          <p>
-            More information on the internationalization configuration can be found in the <a target='_blank'
-              href='http://ej2.syncfusion.com/react/documentation/base/internationalization.html'>documentation</a> section.
+                    <p>
+                        More information on the internationalization configuration can be found in the <a target='_blank'
+                            href='http://ej2.syncfusion.com/react/documentation/base/internationalization.html'>documentation</a> section.
         </p>
-        </div>
-      </div>
-    )
-  }
+                </div>
+            </div>
+        )
+    }
 }

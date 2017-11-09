@@ -13,6 +13,11 @@ export class Disabled extends SampleBase<{}, {}> {
             <DatePickerComponent renderDayCell={disabledDate} placeholder='Choose a date'></DatePickerComponent>
           </div>
         </div>
+        <div id="action-description">
+    <p>
+        In the following sample, all the weekends (Saturday and Sunday) of a month are <code>disabled</code>, and these dates are restricted to set or select in the DatePicker. 
+   </p>
+</div>
         <div id='description'>
           <p>
               Disabled Dates sample demonstrates how to disable specific dates in the DatePicker by using <code>renderDayCell</code>        event. This event gets triggered on each day cell element creation, that allows you to customize, or disable specific
@@ -28,7 +33,7 @@ export class Disabled extends SampleBase<{}, {}> {
 }
 function disabledDate(args: RenderDayCellEventArgs): void {
   if (args.date.getDay() === 0 || args.date.getDay() === 6) {
-    //set 'true' to disable the weekends
+    /*set 'true' to disable the weekends*/
     args.isDisabled = true;
   }
 }
