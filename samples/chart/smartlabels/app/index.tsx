@@ -6,11 +6,13 @@ import * as React from 'react';
 import { SampleBase } from './sample-base';
 import {
   AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,
-  Inject, AccumulationLegend, AccumulationDataLabel, AccumulationTooltip, PieSeries, IAccLoadedEventArgs, AccumulationTheme
+  Inject, AccumulationLegend, AccumulationDataLabel, PieSeries, IAccLoadedEventArgs, AccumulationTheme,
+  AccumulationTooltip
 } from '@syncfusion/ej2-react-charts';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
 
 export let data1: any[] = [
+  { 'x': 'USA', y: 46, text: 'United States of America: 46' }, 
   { 'x': 'China', y: 26, text: 'China: 26' },
   { 'x': 'Russia', y: 19, text: 'Russia: 19' },
   { 'x': 'Germany', y: 17, text: 'Germany: 17' },
@@ -38,6 +40,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
         <div className='control-section'>
           <AccumulationChartComponent id='pie-chart'
             title='RIO Olympics Gold'
+            tooltip={{ enable: true, format: '${point.x} : ${point.y}%' }}
             load={this.load.bind(this)}
             legendSettings={{
               visible: false

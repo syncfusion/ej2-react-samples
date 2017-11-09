@@ -43,7 +43,7 @@ export class Hilo extends SampleBase<{}, {}> {
                         legendSettings={{ visible: false }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true, shared: true }}
-                        crosshair={{ enable: true, lineType: 'Vertical' }}
+                        crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '80%'}
                         zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
                         title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>

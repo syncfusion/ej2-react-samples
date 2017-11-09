@@ -44,8 +44,7 @@ export class RangeArea extends SampleBase<{}, {}> {
                         primaryXAxis={{
                             valueType: 'DateTime',
                             edgeLabelPlacement: 'Shift',
-                            majorGridLines: { width: 0 },
-                            skeleton: 'MMM'
+                            majorGridLines: { width: 0 }
                         }}
                         legendSettings={{ visible: false }}
                         zoomSettings={{

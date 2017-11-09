@@ -10,13 +10,13 @@ import {
   AccumulationDataLabel, AccumulationTooltip, PieSeries, Inject, IAccLoadedEventArgs, AccumulationTheme,
 } from '@syncfusion/ej2-react-charts';
 export let data1: any[] = [
-  { x: 'Australia', y: 53.3, text: 'Australia' },
-  { x: 'China', y: 55.7, text: 'China' },
-  { x: 'India', y: 60.5, text: 'India' },
-  { x: 'Japan', y: 12.5, text: 'Japan' },
-  { x: 'South Africa', y: 79.4, text: 'South Africa' },
-  { x: 'United Kingdom', y: 70.9, text: 'United Kingdom' },
-  { x: 'United States', y: 45.0, text: 'United States' }
+  { x: 'Australia', y: 53, text: 'AUS: 14%' },
+  { x: 'China', y: 56, text: 'CHN: 15%' },
+  { x: 'India', y: 61, text: 'IND: 16%' },
+  { x: 'Japan', y: 13, text: 'JPN: 3%' },
+  { x: 'South Africa', y: 79, text: 'ZAF: 21%' },
+  { x: 'United Kingdom', y: 71, text: 'UK: 19%' },
+  { x: 'United States', y: 45, text: 'USA: 12%' }
 ];
 export class SemiPie extends SampleBase<{}, {}> {
   public pie: AccumulationChartComponent;
@@ -28,7 +28,7 @@ export class SemiPie extends SampleBase<{}, {}> {
           <div className='col-lg-9'>
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
               title='Agricultural land percentage'
-              tooltip={{ enable: true, format: '${point.x} : ${point.y}%' }}
+              tooltip={{ enable: true, format: '${point.text}' }}
               legendSettings={{ visible: false }}
               load={this.load.bind(this)}
               loaded={this.onChartLoad.bind(this)}

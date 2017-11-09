@@ -77,14 +77,17 @@ export class Stripline extends SampleBase<{}, {}> {
     private loaded: EmitType<ILoadedEventArgs>;
     private change(): void {
         if (this.dropElement.value === 'Vertical') {
-            for (let i: number = 0; i <= 4; i++) {
-                if (i === 3 || i === 4) { this.chartInstance.primaryYAxis.stripLines[i] = {}; }
+            for (let i: number = 0; i < 3; i++) {
                 this.chartInstance.primaryYAxis.stripLines[i].visible = false;
+            }
+            for (let i: number = 0; i <= 4; i++) {
                 this.chartInstance.primaryXAxis.stripLines[i].visible = true;
             }
         } else {
-            for (let i: number = 0; i <= 4; i++) {
+            for (let i: number = 0; i < 3; i++) {
                 this.chartInstance.primaryYAxis.stripLines[i].visible = true;
+            }
+            for (let i: number = 0; i <= 4; i++) {
                 this.chartInstance.primaryXAxis.stripLines[i].visible = false;
             }
         }

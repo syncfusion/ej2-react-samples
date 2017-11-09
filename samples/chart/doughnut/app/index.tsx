@@ -9,10 +9,10 @@ import {
     AccumulationDataLabel, Inject, AccumulationTheme
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-export let data1: any[] = [{ x: 'Labour', y: 28, text: '28%' }, { x: 'Legal', y: 10, text: '10%' },
-{ x: 'Production', y: 20, text: '20%' }, { x: 'License', y: 15, text: '15%' },
-{ x: 'Facilities', y: 23, text: '23%' }, { x: 'Taxes', y: 17, text: '17%' },
-{ x: 'Insurance', y: 12, text: '12%' }];
+export let data1: any[] = [{ x: 'Labour', y: 18, text: '18%' }, { x: 'Legal', y: 8, text: '8%' },
+{ x: 'Production', y: 15, text: '15%' }, { x: 'License', y: 11, text: '11%' },
+{ x: 'Facilities', y: 18, text: '18%' }, { x: 'Taxes', y: 14, text: '14%' },
+{ x: 'Insurance', y: 16, text: '16%' }];
 export class AccumulationDoughnut extends SampleBase<{}, {}> {
     public pie: AccumulationChartComponent;
     render() {

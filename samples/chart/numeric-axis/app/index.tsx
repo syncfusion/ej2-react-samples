@@ -44,6 +44,7 @@ export class Numeric extends SampleBase<{}, {}> {
                             title: 'Death Overs',
                             minimum: 15,
                             maximum: 21,
+                            interval: 1,
                             majorGridLines: { width: 0 }
                         }}
                         load={this.load.bind(this)}

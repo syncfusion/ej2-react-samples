@@ -69,10 +69,19 @@ export class LocalData extends SampleBase<{}, {}> {
                             majorTickLines: { width: 0 },
                             minorTickLines: { width: 0 }
                         }}
+                        crosshair={{
+                            enable: true,
+                            line: {
+                                color: 'rgba(204,214,235,0.25)',
+                                width: Browser.isDevice ? 50 : 20,
+                            },
+                            lineType: 'Vertical'
+                        }}
                         chartArea={{ border: { width: 0 } }}
+                        tooltip={{ enable: true, shared: true }}
                         width={Browser.isDevice ? '100%' : '80%'}
                         title='Stock Price Analysis' loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[LineSeries, DateTime, Legend]} />
+                        <Inject services={[LineSeries, DateTime, Legend, Crosshair, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Product X'
                                 animation={{ enable: true }} type='Line'>
@@ -99,8 +108,8 @@ export class LocalData extends SampleBase<{}, {}> {
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];

@@ -63,7 +63,7 @@ export class InversedAxis extends SampleBase<{}, {}> {
                         pointRender={labelRender}
                         chartArea={{ border: { width: 0 } }}
                         legendSettings={{ visible: false }}
-                        title='Exchange rate (INR per USD)'
+                        title='Exchange Rate (INR per USD)'
                         width={Browser.isDevice ? '100%' : '60%'} loaded={this.onChartLoad.bind(this)}
                         tooltip={{
                             enable: true

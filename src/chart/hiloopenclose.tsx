@@ -46,7 +46,7 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                         }}
                         width={Browser.isDevice ? '100%' : '80%'}
                         legendSettings={{ visible: false }}
-                        crosshair={{ enable: true, lineType: 'Vertical' }}
+                        crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
                         zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
                         title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[HiloOpenCloseSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair]} />

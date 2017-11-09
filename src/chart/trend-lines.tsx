@@ -145,6 +145,7 @@ export class Trend extends SampleBase<{}, {}> {
                     <div className='col-md-8'>
                         <ChartComponent id='charts' ref={chart => this.chartInstance = chart} load={this.load.bind(this)}
                             primaryXAxis={{
+                                edgeLabelPlacement: 'Shift',
                                 majorGridLines: { width: 0 }
                             }}
                             primaryYAxis={{
@@ -156,7 +157,7 @@ export class Trend extends SampleBase<{}, {}> {
                             title='Historical Indian Rupee Rate (INR USD)' loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[Category, Tooltip, ScatterSeries, SplineSeries, LineSeries, Trendlines]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={series1} xName='x' yName='y' name='Apple Inc' type='Scatter' fill='#0066FF'>
+                                <SeriesDirective dataSource={series1} xName='x' yName='y' name='Rupees' type='Spline' fill='#0066FF'>
                                     <TrendlinesDirective>
                                         <TrendlineDirective type='Linear' width={3} marker={{ visible: false }} name='Linear'>
                                         </TrendlineDirective>
