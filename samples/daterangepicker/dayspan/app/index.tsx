@@ -4,20 +4,21 @@ import { DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from './sample-base';
 
 
-export class Minmax extends SampleBase<{}, {}> {
-
-    private minDate: Date = new Date('1/15/2017');
-    private maxDate: Date = new Date('12/20/2017');
+export class dayspan extends SampleBase<{}, {}> {
+    private minDays: number = 5;
+    private maxDays: number = 10;
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='daterangepicker-control-section'>
-                        <DateRangePickerComponent min={this.minDate} max={this.maxDate} placeholder='Select a range'></DateRangePickerComponent>
+                        <DateRangePickerComponent minDays={this.minDays} maxDays={this.maxDays} placeholder='Select a range'></DateRangePickerComponent>
                     </div>
                 </div>
+
             </div>
         )
     }
 }
-ReactDOM.render(<Minmax />, document.getElementById('sample'));
+
+ReactDOM.render(<dayspan />, document.getElementById('sample'));

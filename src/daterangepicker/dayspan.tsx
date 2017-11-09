@@ -4,7 +4,7 @@ import { DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
 import './daterangepicker-component.css';
 
-export class Minmaxdays extends SampleBase<{}, {}> {
+export class dayspan extends SampleBase<{}, {}> {
     private minDays: number = 5;
     private maxDays: number = 10;
     render() {
