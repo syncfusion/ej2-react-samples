@@ -7,10 +7,12 @@ export class Default extends SampleBase<{}, {}>{
   public formValidator: FormValidatorModel;
 
   public rendereComplete(): void {
+    // Initialize the custom function
     let customFunction: (args: Object) => boolean = (args: {}) => {
       return (args as { value: string[] }).value.length <= 5;
     };
     this.formValidator = {
+      // Defines the validation rules
       rules: {
         Required: { required: true },
         Email: { required: true, email: true },
@@ -28,11 +30,13 @@ export class Default extends SampleBase<{}, {}>{
         Regex: { regex: ['^[A-z]+$', 'Allowed only alphabets'] },
         Custom: { custom: [customFunction, 'Allowed char length is 5'] }
       },
+      // Initialize the custom placement
       customPlacement: (inputElement: HTMLElement, errorElement: HTMLElement) => {
         inputElement.parentElement.appendChild(errorElement);
       },
     };
 
+    // Initialize the form-validator
     let formObj: FormValidator;
     formObj = new FormValidator('#htmlFormId', this.formValidator);
   }
@@ -174,6 +178,7 @@ export class Default extends SampleBase<{}, {}>{
             </form>
           </div>
         </div>
+        <div id='description'>
       </div>
     )
   }

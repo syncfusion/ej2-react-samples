@@ -48,7 +48,7 @@ export let samplesList: any = [
         'name': 'Linear Gauge', 'category': 'Data Visualization', 'order': '02', 'path': 'lineargauge', 'samples': LinearGaugeSampleOrder
     },
     {
-        'name': 'FormValidator', 'category': 'Editors', 'order': '04', 'path': 'form-validator', 'samples': FormSampleOrder
+        'name': 'Form Validator', 'category': 'Editors', 'order': '04', 'path': 'form-validator', 'samples': FormSampleOrder
     },
     {
         'name': 'DropDownList', 'category': 'Editors', 'order': '04', 'path': 'dropdownlist', 'samples': DropDownListSampleOrder

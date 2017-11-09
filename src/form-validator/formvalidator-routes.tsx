@@ -10,4 +10,4 @@ export const formvalidatorRoutes = (
     </div>
 )
 
-export const formvalidatorCategory = {"default":{"name":"Default Functionalities","category":"FormValidator"},"defaultSample":"form-validator/default"}
+export const formvalidatorCategory = {"default":{"name":"Default Functionalities","category":"Form Validator"},"defaultSample":"form-validator/default"}

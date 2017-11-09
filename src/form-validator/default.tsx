@@ -7,10 +7,12 @@ export class Default extends SampleBase<{}, {}>{
   public formValidator: FormValidatorModel;
 
   public rendereComplete(): void {
+    // Initialize the custom function
     let customFunction: (args: Object) => boolean = (args: {}) => {
       return (args as { value: string[] }).value.length <= 5;
     };
     this.formValidator = {
+      // Defines the validation rules
       rules: {
         Required: { required: true },
         Email: { required: true, email: true },
@@ -28,11 +30,13 @@ export class Default extends SampleBase<{}, {}>{
         Regex: { regex: ['^[A-z]+$', 'Allowed only alphabets'] },
         Custom: { custom: [customFunction, 'Allowed char length is 5'] }
       },
+      // Initialize the custom placement
       customPlacement: (inputElement: HTMLElement, errorElement: HTMLElement) => {
         inputElement.parentElement.appendChild(errorElement);
       },
     };
 
+    // Initialize the form-validator
     let formObj: FormValidator;
     formObj = new FormValidator('#htmlFormId', this.formValidator);
   }
@@ -181,13 +185,13 @@ export class Default extends SampleBase<{}, {}>{
           </p>
         </div>
         <div id='description'>
+          <div className="description-header">Description</div>
           <p>
-            FormValidator can be used to validate form input elements with the required validation rules.
-    </p>
-          <br />
+            Form Validator can be used to validate the form input elements with the required validation rules.
+      </p>
           <p>
-            The above form is configured with following rules and also we have given example valid values for each field.
-    </p>
+            The above form is configured with the following rules and also, we have given the examples of valid values for each field.
+      </p>
           <table style={{ width: '100%' }}>
             <tr>
               <th>Field</th>
@@ -196,27 +200,27 @@ export class Default extends SampleBase<{}, {}>{
             </tr>
             <tr>
               <td>Required</td>
-              <td>The field must have any value</td>
+              <td>The field must have any value.</td>
               <td>value</td>
             </tr>
             <tr>
               <td>Email</td>
-              <td>The input must have email format</td>
-              <td>test@syncfusion.com</td>
+              <td>The input must have email format.</td>
+              <td>info@syncfusion.com</td>
             </tr>
             <tr>
               <td>URL</td>
-              <td>The input must have URL format</td>
-              <td>https://www.google.co.in/</td>
+              <td>The input must have URL format.</td>
+              <td>https://www.syncfusion.com/</td>
             </tr>
             <tr>
               <td>Date</td>
-              <td>The input must have javascript date format</td>
+              <td>The input must have JavaScript date format.</td>
               <td>04/13/2017</td>
             </tr>
             <tr>
               <td>Date ISO</td>
-              <td>The input must have date ISO format</td>
+              <td>The input must have date ISO format.</td>
               <td>2017-04-13</td>
             </tr>
             <tr>
@@ -226,43 +230,43 @@ export class Default extends SampleBase<{}, {}>{
             </tr>
             <tr>
               <td>Digits</td>
-              <td>The input must have digit format</td>
+              <td>The input must have digit format.</td>
               <td>1</td>
             </tr>
             <tr>
               <td>Max Length</td>
-              <td>The input value must have less than 5 characters length</td>
-              <td>test</td>
+              <td>The input value must have less than 5 characters length.</td>
+              <td>world</td>
             </tr>
             <tr>
               <td>Min Length</td>
-              <td>The input value must have more than 5 characters length</td>
-              <td>testing</td>
+              <td>The input value must have more than 5 characters length.</td>
+              <td>syncfusion</td>
             </tr>
             <tr>
               <td>Range Length</td>
-              <td>The input must have number value from 5 to 10 characters length</td>
-              <td>testing</td>
+              <td>The input must have number value from 5 to 10 characters length.</td>
+              <td>syncfusion</td>
             </tr>
             <tr>
               <td>Max</td>
-              <td>The input must have number value less than or equal to 5</td>
+              <td>The input must have number value less than or equal to 5.</td>
               <td>4</td>
             </tr>
             <tr>
               <td>Min</td>
-              <td>The input must have number value greater than or equal to 5</td>
+              <td>The input must have number value greater than or equal to 5.</td>
               <td>6</td>
             </tr>
             <tr>
               <td>Regex</td>
-              <td>You can use regex to validate the input. The input must be alphabets</td>
-              <td>abc</td>
+              <td>You can use regex to validate the input. The input must be alphabets only.</td>
+              <td>contact</td>
             </tr>
             <tr>
               <td>Custom Function</td>
               <td>You can use custom function to validate the input. The input must have less than or equal to 5 character length
-              </td>
+            </td>
               <td>test</td>
             </tr>
           </table>
