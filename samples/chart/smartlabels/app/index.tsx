@@ -37,7 +37,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <AccumulationChartComponent id='pie-chart'
-            title='Rio Olympics Gold'
+            title='RIO Olympics Gold'
             load={this.load.bind(this)}
             legendSettings={{
               visible: false

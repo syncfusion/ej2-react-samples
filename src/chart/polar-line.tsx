@@ -73,8 +73,13 @@ export class PolarLine extends SampleBase<{}, {}> {
         this.chartInstance.refresh();
     }
     private startAngle(): void {
+        this.chartInstance.series[0].animation.enable = false;
+        this.chartInstance.series[1].animation.enable = false;
         this.chartInstance.primaryXAxis.startAngle = parseInt(this.startangle.value);
+        document.getElementById('st-lbl').innerHTML = 'Start Angle: ' + parseInt(this.startangle.value);
         this.chartInstance.refresh();
+        this.chartInstance.series[0].animation.enable = true;
+        this.chartInstance.series[1].animation.enable = true;
     }
     render() {
         return (
@@ -146,7 +151,7 @@ export class PolarLine extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>Start Angle: </div>
+                                        <div id="st-lbl">Start Angle: 0</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div data-role="rangeslider">

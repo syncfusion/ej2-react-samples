@@ -145,7 +145,6 @@ export class Trend extends SampleBase<{}, {}> {
                     <div className='col-md-8'>
                         <ChartComponent id='charts' ref={chart => this.chartInstance = chart} load={this.load.bind(this)}
                             primaryXAxis={{
-                                title: 'Months',
                                 majorGridLines: { width: 0 }
                             }}
                             primaryYAxis={{

@@ -46,8 +46,7 @@ export class RangeColumn extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '60%'}
                         tooltip={{
-                            enable: true,
-                            format: '${point.x}<br>high: ${point.high}<br>low: ${point.low}'
+                            enable: true
                         }}>
                         <Inject services={[RangeColumnSeries, Tooltip, Category, Legend]} />
                         <SeriesCollectionDirective>

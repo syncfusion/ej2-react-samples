@@ -34,7 +34,7 @@ export class Grouping extends SampleBase<{}, {}> {
         <div className='control-section row'>
           <div className='col-lg-9'>
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
-              title='Rio Olympics Gold'
+              title='RIO Olympics Gold'
               load={this.load.bind(this)}
               tooltip={{ enable: true, format: '${point.x} <br> ${point.y} Medals' }}
               legendSettings={{ visible: false }}

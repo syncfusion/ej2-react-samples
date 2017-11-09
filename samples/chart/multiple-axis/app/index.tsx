@@ -61,6 +61,7 @@ export class MultipleAxis extends SampleBase<{}, {}> {
                                 rowIndex={0} opposedPosition={true}
                                 lineStyle={{ width: 0 }}
                                 minimum={24} maximum={36} interval={2}
+                                majorTickLines={{ width: 0 }}
                                 name='yAxis1'
                                 labelFormat='{value}°C'>
                             </AxisDirective>

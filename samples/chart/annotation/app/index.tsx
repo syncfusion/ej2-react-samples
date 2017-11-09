@@ -66,7 +66,7 @@ export class Annotation extends SampleBase<{}, {}> {
                         chartMouseUp={this.chartMouseUp.bind(this)}
                         selectionMode='Cluster'
                         selectedDataIndexes={[{ series: 0, point: 0 }]}
-                        legendSettings={{ visible: true }}
+                        legendSettings={{ visible: true, toggleVisibility: false }}
                         title="Mobile Game Market by Country">
                         <Inject services={[StackingColumnSeries, Category, Legend, Selection, ChartAnnotation]} />
                         <AnnotationsDirective>
