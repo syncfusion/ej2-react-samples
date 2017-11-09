@@ -33,9 +33,9 @@ export class RadioButton extends SampleBase<{}, {}> {
                         RadioButton is a graphical user interface element that allows to select one option from the choices. It contains checked and unchecked state.
                     </p>
                     <p>
-                        In this sample, Credit/Debit Card option is checked by default, and it can be achieved by using the <code><a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/radio-button/api-radioButtonComponent.html#checked-boolean">checked
-                        </a></code> property.
+                        In this sample, Credit/Debit Card option is checked by default, and it can be achieved by using the <a target="_blank"
+                        href="http://ej2.syncfusion.com/react/documentation/radio-button/api-radioButtonComponent.html#checked-boolean"><code>checked
+                        </code></a> property.
                     </p>
                     <p>
                         More information about RadioButton can be found in this <a target="_blank"

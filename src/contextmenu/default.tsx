@@ -74,9 +74,9 @@ export class Default extends SampleBase<{}, {}> {
                         ContextMenu is a graphical user interface that appears on the user right click/touch hold action. It has support to provide single level/multiple level of ContextMenu.
                     </p>
                     <p>
-                        In this demo, <code><a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/context-menu/api-contextMenuComponent.html#target-string">target
-                        </a></code> property is set as '#contextmenutarget'. Hence, on right clicking the target element, the ContextMenu will open.
+                        In this demo, <a target="_blank"
+                        href="http://ej2.syncfusion.com/react/documentation/context-menu/api-contextMenuComponent.html#target-string"><code>target
+                        </code></a> property is set as '#contextmenutarget'. Hence, on right clicking the target element, the ContextMenu will open.
                     </p>
                     <p>
                         More information about ContextMenu can be found in this <a target="_blank"

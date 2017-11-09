@@ -36,14 +36,14 @@ export class CheckBox extends SampleBase<{}, {}> {
                 CheckBox is a graphical user interface element that allows to select one or more options from the choices. It contains checked, unchecked, and indeterminate states.
             </p>
             <p>
-                In this sample, checked state is achieved by using the 
-                <code><a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#checked-boolean">checked
-                </a></code> property, indeterminate state is achieved by using the <code><a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#indeterminate-boolean">indeterminate
-                </a></code> property, and disabled state is achieved by using the <code><a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#disabled-boolean">disabled
-                </a></code> property.
+                In this sample, checked state is achieved by using the
+                <a target="_blank"
+                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#checked-boolean"><code>checked</code>
+                </a> property, indeterminate state is achieved by using the <a target="_blank"
+                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#indeterminate-boolean"><code>indeterminate</code>
+                </a> property, and disabled state is achieved by using the <a target="_blank"
+                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#disabled-boolean"><code>disabled
+                </code></a> property.
             </p>
             <p>
                 More information about CheckBox can be found in this <a target="_blank"

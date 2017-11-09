@@ -27,6 +27,9 @@ import { TabSampleOrder } from '../tab/config';
 
 export let samplesList: any = [
     {
+        'name': 'ContextMenu', 'category': 'Navigation', 'path': 'contextmenu', 'samples': ContextMenuSampleOrder
+    },
+    {
         'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
     },
     {
@@ -40,9 +43,6 @@ export let samplesList: any = [
     },
     {
         'name': 'Circular Gauge', 'category': 'Data Visualization', 'order': '02', 'path': 'circulargauge', 'samples': CircularGaugeSampleOrder
-    },
-    {
-        'name': 'ContextMenu', 'category': 'Navigation', 'path': 'contextmenu', 'samples': ContextMenuSampleOrder
     },
     {
         'name': 'Linear Gauge', 'category': 'Data Visualization', 'order': '02', 'path': 'lineargauge', 'samples': LinearGaugeSampleOrder

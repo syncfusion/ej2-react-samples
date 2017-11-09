@@ -3,7 +3,7 @@ export const GridSampleOrder: Object = [
     { 'path': 'grid/gridlines', 'component': 'GridLines', 'name': 'GridLines', 'order': '01', 'category': 'GRID' },
     { 'path': 'grid/paging', 'component': 'Paging', 'name': 'Paging', 'order': '01', 'category': 'GRID' },
     { 'path': 'grid/filtering', 'component': 'Filtering', 'name': 'Filtering', 'order': '01', 'category': 'GRID' },
-    { 'path': 'grid/filtermenu', 'component': 'FilterMenu', 'name': 'Filtering Menu', 'order': '01', 'category': 'GRID' },
+    { 'path': 'grid/filtermenu', 'component': 'FilterMenu', 'name': 'Filter Menu', 'order': '01', 'category': 'GRID' },
     { 'path': 'grid/grouping', 'component': 'Grouping', 'name': 'Grouping', 'order': '01', 'category': 'GRID' },
     { 'path': 'grid/sorting', 'component': 'Sorting', 'name': 'Sorting', 'order': '01', 'category': 'GRID' },
     { 'path': 'grid/scrolling', 'component': 'Scrolling', 'name': 'Default Scrolling', 'order': '05', 'category': 'SCROLLING' },
@@ -30,6 +30,7 @@ export const GridSampleOrder: Object = [
     { 'path': 'grid/command-column', 'component': 'CommandColumnEdit', 'name': 'CommandColumn', 'order': '06', 'category': 'EDITING'},
     { 'path': 'grid/exporting', 'component': 'Exporting', 'name': 'Basic', 'order': '07', 'category': 'EXPORTING' },
     { 'path': 'grid/advanceexporting', 'component': 'AdvanceExporting', 'name': 'Advance Exporting', 'order': '07', 'category': 'EXPORTING'},
+    { 'path': 'grid/frozenrows', 'component': 'FrozenRows', 'name': 'Frozen Rows And Columns', 'order': '03', 'category': 'COLUMN', 'type': 'new' },
     { 'path': 'grid/columnmenu', 'component': 'ColumnMenuSample', 'name': 'Column Menu', 'order': '03', 'category': 'COLUMN', 'type': 'new' },
     { 'path': 'grid/contextmenu', 'component': 'ContextMenuSample', 'name': 'Context Menu', 'order': '01', 'category': 'GRID', 'type': 'new' },
     { 'path': 'grid/columnspanning', 'component': 'ColumnSpanning', 'name': 'Column Spanning', 'order': '03', 'category': 'COLUMN', 'type': 'new' }

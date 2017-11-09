@@ -98,9 +98,9 @@ export class Default extends SampleBase<{}, {}> {
                 Button is a graphical user interface element that triggers an event on click action. It contains the text, an image, or both.
             </p>
             <p>
-                In this sample, Play button is a toggle button and it can be enabled by using the <code><a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/button/api-buttonComponent.html#istoggle-boolean">isToggle
-                </a></code> property. To change the text and icon you should handle click event.
+                In this sample, Play button is a toggle button and it can be enabled by using the <a target="_blank"
+                href="http://ej2.syncfusion.com/react/documentation/button/api-buttonComponent.html#istoggle-boolean"><code>isToggle
+                </code></a> property. To change the text and icon you should handle click event.
             </p>
             <p> 
                 More information about Button can be found in this <a target='_blank'
