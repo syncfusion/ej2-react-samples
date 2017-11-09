@@ -1,5 +1,5 @@
 /**
- * Spline inversed sample
+ * Sample for Inversed Spline series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

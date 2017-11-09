@@ -1,5 +1,5 @@
 /**
- * Stacked bar sample
+ * Sample for stackingBar series 
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -68,7 +68,7 @@ export class StackedBar extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         In this example, you can see how to render and configure the stacking bar type charts. Stacks the points in the series horizontally and also you can use <code>stackingGroup</code> property to group the stacking collection based on categories.
-                        You can use <code>border</code>, <code>fill</code> properties to customize the vertical bar. <code>dataLabel</code> is used to represent individual data and its value.
+                        You can use <code>border</code>, <code>fill</code> properties to customize the horizontal bar. <code>dataLabel</code> is used to represent individual data and its value.
                     </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.

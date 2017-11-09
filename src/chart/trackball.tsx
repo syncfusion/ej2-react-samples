@@ -1,5 +1,5 @@
 /**
- * Trackball sample
+ * Sample for Trackball in chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -71,7 +71,7 @@ export class TrackballChart extends SampleBase<{}, {}> {
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Trackball, we need to inject
-                        <code>Trackball</code> module into <code>services</code>.
+                        <code>Tooltip</code> module into <code>services</code>.
                     </p>
                     <p>
                         More information on the Tooltip and Trackball can be found in this &nbsp;

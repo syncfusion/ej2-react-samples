@@ -1,5 +1,5 @@
 /**
- * Polar Stacked Area sample
+ * Sample for Polar Series with drawType StackingArea
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

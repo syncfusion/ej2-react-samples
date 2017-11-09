@@ -1,3 +1,6 @@
+/**
+ * Sample for Annotation
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from './property-pane';
@@ -13,9 +16,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Annotation sample
- */
+
 export class AnnotationsSample extends SampleBase<{}, {}> {
     public gauge: CircularGauge;
     public onChartLoad(args: ILoadedEventArgs): void {

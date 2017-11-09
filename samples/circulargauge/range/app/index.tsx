@@ -1,3 +1,6 @@
+/**
+ * Sample for Ranges
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from './property-pane';
@@ -12,9 +15,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-    /**
-     * Gauge range sample
-     */
+    
 export class Range extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     private startElement: HTMLInputElement;

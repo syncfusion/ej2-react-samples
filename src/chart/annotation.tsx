@@ -15,7 +15,7 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 /**
- * Annotation sample
+ * Sample for annotation
  */
 export function getValue(series: Series[], pointIndex: number, y: number): string {
     let totalValue: number = 0;
@@ -98,7 +98,7 @@ export class Annotation extends SampleBase<{}, {}> {
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To annotation feature in chart, we need to inject
+                        Chart component features are segregated into individual feature-wise modules. To use annotation feature in chart, we need to inject
                         <code>ChartAnnotation</code> module into <code>services</code>.
                   </p>
                     <p>

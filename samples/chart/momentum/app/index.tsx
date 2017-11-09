@@ -1,5 +1,5 @@
 /**
- * Mementum Indicator Sample
+ * Sample for Momentum Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

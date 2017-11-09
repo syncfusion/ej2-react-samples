@@ -1,5 +1,5 @@
 /**
- * Candle Series Sample
+ * Sample for Candle Series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

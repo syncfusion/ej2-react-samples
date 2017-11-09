@@ -1,5 +1,5 @@
 /**
- * Smart labels for pie sample
+ * Samples for Smart Labels in Pie chart
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
@@ -63,7 +63,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
         <div id="description">
           <p> In this example, you can see how to arrange the labels smartly without overlapping with each other. You can use <code>enableSmartLabels</code> property to enable or disable the action. Legend with paging is enabled in this sample.</p>
           <p style={{ fontWeight: 500 }}> Injecting Module </p>
-          <p> Accumulation chart component features are segregated into individual feature-wise modules. To use legend, we need to inject Legend module using <code>AccumulationChart.Inject(AccumulationLegend)</code> method.</p>
+          <p> Accumulation chart component features are segregated into individual feature-wise modules. To use AccumulationDataLabel, we need to inject <code>AccumulationDataLabel</code> into <code>services</code>.</p>
         </div>
       </div>
     )

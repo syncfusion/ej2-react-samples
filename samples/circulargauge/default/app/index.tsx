@@ -1,3 +1,6 @@
+/**
+ * Sample for Gauge default sample
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -9,9 +12,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Gauge default sample
- */
+
 export class Default extends SampleBase<{}, {}> {
 
     render() {

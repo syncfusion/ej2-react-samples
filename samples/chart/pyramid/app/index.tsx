@@ -1,5 +1,5 @@
 /**
- * Pyramid sample
+ * Sample for Pyramid Chart
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';

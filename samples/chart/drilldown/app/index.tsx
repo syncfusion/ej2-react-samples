@@ -1,3 +1,6 @@
+/**
+ * Sample for Drill down in Pie chart
+ */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from './sample-base';

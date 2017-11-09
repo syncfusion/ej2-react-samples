@@ -1,5 +1,5 @@
 /**
- * Polar Stacked Column sample
+ * Sample for Polar Series with drawType Area
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

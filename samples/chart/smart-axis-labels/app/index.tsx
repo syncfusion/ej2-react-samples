@@ -1,5 +1,5 @@
 /**
- * Smart axis label sample
+ * Sample for smart axis labels
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

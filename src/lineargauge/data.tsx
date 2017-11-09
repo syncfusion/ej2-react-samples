@@ -1,3 +1,6 @@
+/**
+ * Sample for data sample
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, AxesDirective, AxisDirective, Annotations, Inject, PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -7,9 +10,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Sample Data
- */
+
 export class Data extends SampleBase<{}, {}> {
     render() {
         return (

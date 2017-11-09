@@ -1,3 +1,6 @@
+/**
+ * Sample for Pointer Imagei in circular gauge
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from './property-pane';
@@ -21,9 +24,7 @@ const SAMPLE_CSS = `
         padding-left: 10px;
         line-height: 30px;
     }`;
-    /**
-     * Gauge image sample
-     */
+    
 export class Image extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     render() {

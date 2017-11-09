@@ -1,5 +1,5 @@
 /**
- * Stacked bar sample
+ * Sample for stackingBar series 
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

@@ -1,5 +1,5 @@
 /**
- * Polar Range column sample
+ * Sample for Polar Series with drawType RangeColumn
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -94,7 +94,7 @@ export class PolarRangeColumn extends SampleBase<{}, {}> {
                     <p><b>Injecting Module</b></p>
                     <p>
                         chart component features are segregated into individual feature-wise modules. To use range column series, we need to Injecting
-                    <code>RangeColumnSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
+                       <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                     <p>
                         More information on the range column series can be found in this &nbsp;

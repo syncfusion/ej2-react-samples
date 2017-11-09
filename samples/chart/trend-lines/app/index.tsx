@@ -1,5 +1,5 @@
 /**
- * Trendline sample
+ * Samples for Trendlines
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

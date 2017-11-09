@@ -1,3 +1,6 @@
+/**
+ * Sample for Multiple Axis
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -11,9 +14,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Compass sample
- */
+
 export class Axes extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     private start: HTMLInputElement;
@@ -200,10 +201,7 @@ export class Axes extends SampleBase<{}, {}> {
                         In this example, you can see how to render and configure multipe axes in gauge. Use <code>axes</code> collection
                     to render multiple axis in gauge. Each axis can be customized with its own <code>pointer</code> and <code>scales</code>.
                     </p>
-                    <br />
-                    <p>
-                        In this sample, two axes with a pointer has been used.
-                    </p>
+                    <br />                    
                     <p>
                         More information on the axis can be found in this
                         <a target="_blank" href="http://ej2.syncfusion.com/documentation"> documentation section</a>.

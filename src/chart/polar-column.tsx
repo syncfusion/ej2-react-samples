@@ -1,5 +1,5 @@
 /**
- * Polar Column sample
+ * Sample for Polar Series with drawType Column
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -115,7 +115,7 @@ export class PolarColumn extends SampleBase<{}, {}> {
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-                    <code>ColumnSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
+                     <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                </p>
                     <p>
                         More information on the column series can be found in this &nbsp;

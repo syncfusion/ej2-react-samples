@@ -1,3 +1,6 @@
+/**
+ * Sample for styles in linear gauge
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -7,9 +10,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-    /**
-     * Linear gauge style sample
-     */
+
 export class Style extends SampleBase<{}, {}> {
     render() {
         return (

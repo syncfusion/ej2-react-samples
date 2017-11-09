@@ -1,3 +1,6 @@
+/**
+ * Sample for Line Series with dashed line
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -57,9 +60,6 @@ const SAMPLE_CSS = `
             stroke-width: 10px;
         }
     }`;
-/**
- * DashedLine sample
- */
 export class DashedLine extends SampleBase<{}, {}> {
 
     render() {

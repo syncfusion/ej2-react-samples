@@ -1,5 +1,5 @@
 /**
- * Semi Pie sample
+ * Sample for Semi pie chart
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';

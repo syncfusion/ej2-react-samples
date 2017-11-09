@@ -1,3 +1,6 @@
+/**
+ * Sample for Multiple Axis
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from './property-pane';
@@ -11,9 +14,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Compass sample
- */
+
 export class Axes extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     private start: HTMLInputElement;

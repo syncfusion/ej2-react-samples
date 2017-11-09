@@ -1,3 +1,6 @@
+/**
+ * Sample for Annotation
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -13,9 +16,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Annotation sample
- */
+
 export class AnnotationsSample extends SampleBase<{}, {}> {
     public gauge: CircularGauge;
     public onChartLoad(args: ILoadedEventArgs): void {
@@ -214,7 +215,7 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
                     <br />
                     <p className='description-header'>Injecting Module</p>
                     <p>Circular gauge component features are segregated into individual feature-wise modules. To use annotation, we need to
-                        inject <code>Annotations</code> module using CircularGauge.Inject(Annotations) method.
+                        inject <code>Annotations</code> into <code>services</code>.
                     </p>
                     <p>
                         More information on the annotation can be found in this

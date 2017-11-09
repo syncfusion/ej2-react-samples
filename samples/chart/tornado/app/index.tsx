@@ -1,5 +1,5 @@
 /**
- * Negative Stack sample
+ * Sample for Tornado chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

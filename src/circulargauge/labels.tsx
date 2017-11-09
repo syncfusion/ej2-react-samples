@@ -1,3 +1,6 @@
+/**
+ * Sample for labels
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -11,9 +14,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-    /**
-     * Gauge labels sample
-     */
+    
 export class Labels extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     private tickOffset: HTMLInputElement;

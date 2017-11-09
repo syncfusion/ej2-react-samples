@@ -1,3 +1,6 @@
+/**
+ * Sample for Gauge default sample
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -9,9 +12,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Gauge default sample
- */
+
 export class Default extends SampleBase<{}, {}> {
 
     render() {
@@ -59,7 +60,7 @@ export class Default extends SampleBase<{}, {}> {
                         of scales in a circular manner.
                         You can use <code>axes</code>, <code>ranges</code>,
                         <code>pointers</code>properties to customize the default appearance of the gauge.
-                        In this sample, a axis with multiple ranges and a pointer has been used.
+                        In this sample, an axis with multiple ranges and a pointer has been used.
                     </p>
                     <p>
                         More information on the gauge can be found in this

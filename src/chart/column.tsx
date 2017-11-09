@@ -1,3 +1,6 @@
+/**
+ * Sample for Column series
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -17,9 +20,6 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Column sample
- */
 export class Column extends SampleBase<{}, {}> {
     render() {
         return (

@@ -1,3 +1,6 @@
+/**
+ * Sample for Linear Gauge Annotation
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, Position, AnnotationsDirective, GaugeTooltip, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -15,9 +18,6 @@ const SAMPLE_CSS = `
         height: 30px;
         margin: 0 auto;
     }`;
-/**
- * Linear Gauge Annotation Sample
- */
 
 export class Annotation extends SampleBase<{}, {}> {
 

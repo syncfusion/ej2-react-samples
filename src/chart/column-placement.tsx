@@ -1,5 +1,5 @@
 /**
- * Column Placement Sample
+ * Sample for Column Series with disabled side by side placement
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

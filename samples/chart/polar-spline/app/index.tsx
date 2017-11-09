@@ -1,5 +1,5 @@
 /**
- * Polar Spline sample
+ * Sample for Polar Series with drawType Spline
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

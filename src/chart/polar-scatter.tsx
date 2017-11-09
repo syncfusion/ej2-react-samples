@@ -1,5 +1,5 @@
 /**
- * Polar Scatter sample
+ * Sample for Polar Series with drawType Scatter
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

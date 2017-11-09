@@ -1,5 +1,5 @@
 /**
- * Range Area sample
+ * Sample for Range Area Series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

@@ -1,5 +1,5 @@
 /**
- * RSI sample
+ * Sample RSI Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

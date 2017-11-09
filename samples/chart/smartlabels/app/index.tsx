@@ -1,5 +1,5 @@
 /**
- * Smart labels for pie sample
+ * Samples for Smart Labels in Pie chart
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';

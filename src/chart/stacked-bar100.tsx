@@ -1,5 +1,5 @@
 /**
- * Stacked Bar 100 sample
+ * Sample for 100 percent StackingBar Series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

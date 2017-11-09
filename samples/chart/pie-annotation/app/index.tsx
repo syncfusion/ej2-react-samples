@@ -1,5 +1,5 @@
 /**
- * Annotation sample
+ * Sample for Annotation in Chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

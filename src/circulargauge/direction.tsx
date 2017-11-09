@@ -1,3 +1,6 @@
+/**
+ * Sample for direction compass
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { PropertyPane } from '../common/property-pane';
@@ -11,9 +14,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-    /**
-     * Gauge direction sample
-     */
+
 export class Direction extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     public pointerColor: DropDownList; public labelColor: DropDownList;

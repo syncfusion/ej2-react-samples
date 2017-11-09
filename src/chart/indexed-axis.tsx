@@ -1,5 +1,5 @@
 /**
- * Indexed Category Axis Sample
+ * Sample for Indexed Category Axis
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

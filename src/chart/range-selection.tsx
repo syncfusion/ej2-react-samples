@@ -1,5 +1,5 @@
 /**
- * Range selection sample
+ * Sample for Range Selection in chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -136,7 +136,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                     <p style={{ "font-weight": 500 }}>Injecting Module</p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use selection feature, we need to inject
-                  <code>Selection</code> module using <code>Chart.Inject(Selection)</code> method.
+                  <code>Selection</code> module into <code>services</code>.
              </p>
                 </div>
             </div>

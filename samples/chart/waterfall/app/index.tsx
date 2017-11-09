@@ -1,5 +1,5 @@
 /**
- * Waterfall sample
+ * Sample for Waterfall series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

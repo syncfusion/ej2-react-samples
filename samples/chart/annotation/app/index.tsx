@@ -15,7 +15,7 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 /**
- * Annotation sample
+ * Sample for annotation
  */
 export function getValue(series: Series[], pointIndex: number, y: number): string {
     let totalValue: number = 0;

@@ -1,3 +1,6 @@
+/**
+ * Sample for Pointer drag
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -10,9 +13,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-    /**
-     * Gauge Drag sample
-     */
+    
 export class Drag extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     private drag: HTMLInputElement;

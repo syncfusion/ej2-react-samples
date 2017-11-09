@@ -1,5 +1,5 @@
 /**
- * Combination Series Sample
+ * Sample for Combination Serie
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -24,9 +24,6 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Combination sample
- */
 export class CombinationSeries extends SampleBase<{}, {}> {
 
     render() {

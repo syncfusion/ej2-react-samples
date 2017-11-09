@@ -1,5 +1,5 @@
 /**
- * Annotation sample
+ * Sample for Annotation in Chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -77,7 +77,7 @@ export class PieAnnotation extends SampleBase<{}, {}> {
             <p>
                 Chart component features are segregated into individual feature-wise modules. To annotation feature in chart, we need to
                 inject
-                <code>ChartAnnotation</code> module using <code>Chart.Inject(ChartAnnotation)</code> method.
+                <code>ChartAnnotation</code> module into <code>services</code>.
             </p>
             <p>
                 More information on the chart annotation can be found in this

@@ -1,5 +1,5 @@
 /**
- * Bar Sample
+ * Sample for Bar series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

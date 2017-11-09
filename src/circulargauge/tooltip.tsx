@@ -1,3 +1,6 @@
+/**
+ * Sample for tooltip
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -21,9 +24,7 @@ const SAMPLE_CSS = `
         padding-left: 10px;
         line-height: 30px;
     }`;
-    /**
-     * Gauge tooltip sample
-     */
+    
 export class Tooltip extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     render() {
@@ -88,7 +89,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                     <br />
                     <p className='description-header'>Injecting Module</p>
                     <p>Circular gauge component features are segregated into individual feature-wise modules. To use tooltip, we need to inject
-                        <code>GaugeTooltip</code> module using CircularGauge.Inject(GaugeTooltip) method.
+                        <code>GaugeTooltip</code> module into services.
                     </p>
                     <p>
                         More information on the tooltip can be found in this

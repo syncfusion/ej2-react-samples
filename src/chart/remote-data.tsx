@@ -1,5 +1,5 @@
 /**
- * Remote data sample
+ * Sample for Remote data binding
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

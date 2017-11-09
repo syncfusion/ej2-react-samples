@@ -1,5 +1,5 @@
 /**
- * Vertical sample
+ * Samples for vertical chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

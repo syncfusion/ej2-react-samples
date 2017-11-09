@@ -1,3 +1,6 @@
+/**
+ * Sample for chart export
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -29,9 +32,6 @@ const SAMPLE_CSS = `
     .e-play-icon::before {
         content: "\\e728";
     }`;
-/**
- * Export Sample
- */
 export class Export extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
     private mode: DropDownListComponent;

@@ -1,5 +1,5 @@
 /**
- * Range Column sample
+ * Sample for RangeColumn series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

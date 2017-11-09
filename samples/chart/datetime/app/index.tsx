@@ -1,5 +1,5 @@
 /**
- * Date Time Axis Sample
+ * Sample for DateTime axis
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

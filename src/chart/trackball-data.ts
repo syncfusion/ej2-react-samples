@@ -1,5 +1,5 @@
 /**
- * Trackball data
+ * Sample for Trackball in chart
  */
 export let john: object[] = [{ x: new Date(2000, 2, 11), y: 15 }, { x: new Date(2000, 9, 14), y: 20 },
 { x: new Date(2001, 2, 11), y: 25 }, { x: new Date(2001, 9, 16), y: 21 },

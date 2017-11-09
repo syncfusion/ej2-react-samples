@@ -1,5 +1,5 @@
 /**
- * Print sample
+ * Sample for Chart print
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

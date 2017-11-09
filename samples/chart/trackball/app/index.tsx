@@ -1,5 +1,5 @@
 /**
- * Trackball sample
+ * Sample for Trackball in chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

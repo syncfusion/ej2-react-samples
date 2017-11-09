@@ -1,5 +1,5 @@
 /**
- * Error Bar Sample
+ * Sample for error bar
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -181,41 +181,37 @@ export class ErrorBarChart extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to arrange the axis labels smartly. When the Axis labels overlap with each other based on
-                the chart dimensions and label size, you can use the <code>labelIntersectAction</code> property of the axis
-                to avoid overlapping.
-            </p>
-                    <p>Chart supports the following by which can be set using <code>labelIntersectAction</code> property.
-            </p>
-                    <ul>
-                        <li><code>Hide</code> - Hide the label when it intersect.</li>
-                        <li><code>Trim</code> - Trim the label when it intersect.</li>
-                        <li><code>Wrap</code> - Wrap the label when it intersect.</li>
-                        <li><code>MultipleRows</code> - Arrange the label in multiple row when it intersect.</li>
-                        <li><code>Rotate45</code> - Rotate the label to 45 degree when it intersect.</li>
-                        <li><code>Rotate90</code> - Rotate the label to 90 degree when it intersect.</li>
-                        <li><code>None</code> - Shows all the labels.</li>
-                    </ul>
-                    <p>Chart supports three types of edge labels placement which can be set using <code>edgeLabelPlacement</code> property.
+                        In this example, you can see how to render and configure the error bar charts. Line type charts are used for cartesian type
+        series. You can use error bar by set <code>visible</code> property to true. You can change the error bar
+        rendering type using <code>type</code> property. like fixedValue, percentage, standardDeviation, standardError and
+        custom) option of errorBar. To change the error bar line length you can use <code>verticalError</code> property.
     </p>
+                    <p>Chart supports the following error bar types.</p>
                     <ul>
-                        <li><code>None</code> - No action will be performed.</li>
-                        <li><code>Hide</code> - Edge label will be hidden .</li>
-                        <li><code>Shift</code> - Shifts the edge labels.</li>
+                        <li><code>Fixed</code> - Renders a fixed type error bar.</li>
+                        <li><code>Percentage</code> - Renders a percentage type error bar.</li>
+                        <li><code>StandardDeviation</code> - Renders a standard deviation type error bar.</li>
+                        <li><code>StandardError</code> - Renders a standard error type error bar.</li>
+                        <li><code>Custom</code> - Renders a custom type error bar.</li>
                     </ul>
+                    <p><b>Injecting Module</b></p>
                     <p>
-                        More information on the smart axis labels can be found in this &nbsp;
+                        Chart component features are segregated into individual feature-wise modules. To use error bar, we need to inject
+        <code>ErrorBar</code> into the <code>@services</code> section.
+    </p>
+                        <p>
+                            More information on the smart axis labels can be found in this &nbsp;
                     <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-                </p>
+                      </p>
                 </div>
-            </div >
-        )
+                </div >
+                )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        document.getElementById('charts').setAttribute('title', '');
-    };
+                    document.getElementById('charts').setAttribute('title', '');
+                };
     public load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
+                    let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
     };

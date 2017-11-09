@@ -1,5 +1,5 @@
 /**
- * EMA Indicator Sample
+ * Sample for EMA Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

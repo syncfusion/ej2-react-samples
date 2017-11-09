@@ -1,5 +1,5 @@
 /**
- * ATR Indicator Sample
+ * Sample for ATR Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

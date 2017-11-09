@@ -1,3 +1,6 @@
+/**
+ * Sample for Axes
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, Point, MarkerType, Placement, AxesDirective, Annotations, AxisDirective, PointersDirective, PointerDirective, AnnotationDirective, AnnotationsDirective, Inject, Pointer } from '@syncfusion/ej2-react-lineargauge';
@@ -5,9 +8,7 @@ import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
-/**
- * Axes sample
- */
+
 export class Axes extends SampleBase<{}, {}> {
     private gaugeInstance: LinearGaugeComponent;
     private rangeMinElement: HTMLInputElement;

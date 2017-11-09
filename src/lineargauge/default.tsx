@@ -1,3 +1,6 @@
+/**
+ * Sample for default gauge
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, AnnotationDirective, Annotations, AnnotationsDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -8,9 +11,6 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 
-/**
- * Default sample
- */
 export class Default extends SampleBase<{}, {}> {
 
     render() {

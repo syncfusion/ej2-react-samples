@@ -1,5 +1,5 @@
 /**
- * Spline sample
+ * Sample for Spline series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

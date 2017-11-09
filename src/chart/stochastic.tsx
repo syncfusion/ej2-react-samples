@@ -1,5 +1,5 @@
 /**
- * Stochastic sample
+ * Sample for Stochastic Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -82,8 +82,7 @@ export class Stochastic extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the Stochastic Indicator. Stochastic Indicator is used to represent the financial datas. You
-                         can use <code>border</code>, <code>fill</code> properties to customize the vertical rect.
+                        In this example, you can see how to render and configure the Stochastic Indicator.
                    </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -92,7 +91,7 @@ export class Stochastic extends SampleBase<{}, {}> {
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Stochastic Indicator, we need to inject
-                       <code>AtrIndicator</code> module into <code>services</code>.
+                       <code>StochasticIndicator</code> module into <code>services</code>.
                   </p>
                     <p>
                         More information on the Stochastic Indicator can be found in this &nbsp;

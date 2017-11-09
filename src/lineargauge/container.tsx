@@ -1,3 +1,6 @@
+/**
+ * Sample for containers
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, Orientation, ContainerType, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -5,9 +8,6 @@ import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
-/**
- * Container sample
- */
 export class Container extends SampleBase<{}, {}> {
     private gaugeInstance: LinearGaugeComponent;
     private orientationElement: DropDownListComponent;

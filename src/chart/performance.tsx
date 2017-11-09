@@ -1,5 +1,5 @@
 /**
- * Performance sample
+ * Sample for Chart performance
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

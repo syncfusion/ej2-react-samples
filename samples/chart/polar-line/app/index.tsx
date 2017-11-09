@@ -1,5 +1,5 @@
 /**
- * Polar Line sample
+ * Sample for Polar Series with drawType Line
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

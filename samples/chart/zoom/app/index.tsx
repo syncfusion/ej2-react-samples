@@ -1,5 +1,5 @@
 /**
- * Zooming and Panning sample
+ * Sample for Zooming in chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

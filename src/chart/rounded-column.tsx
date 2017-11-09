@@ -1,5 +1,5 @@
 /**
- * Rounded column sample
+ * Sample for column series with rounded corner
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -90,7 +90,7 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing
+                        In this example, you can see how to render and configure the column type charts with rounded corner. Column type charts are used for comparing
         the frequency, count, total or average of data in different categories. You can use <code>border</code>,
         <code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual
         data and its value.
@@ -102,7 +102,7 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                     <p style={{ "font-weight": 500 }}>Injecting Module</p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-        <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.
+        <code>ColumnSeries</code> module into <code>services</code>
     </p>
                     <p>
                         More information on the column series can be found in this

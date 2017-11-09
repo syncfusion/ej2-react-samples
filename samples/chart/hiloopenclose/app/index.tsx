@@ -1,5 +1,5 @@
 /**
- * Hilo Open Close Series Sample
+ * Sample for Hilo Open Close Series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

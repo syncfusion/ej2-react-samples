@@ -1,5 +1,5 @@
 /**
- * MACD Indicator Sample
+ * Sample for MACD Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

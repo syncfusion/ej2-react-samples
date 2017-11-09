@@ -1,5 +1,5 @@
 /**
- * Scatter sample
+ * Sample for scatter series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

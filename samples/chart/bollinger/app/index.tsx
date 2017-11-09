@@ -1,5 +1,5 @@
 /**
- * Bollinger Indicator Sample
+ * Sample for Bollinger Band Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

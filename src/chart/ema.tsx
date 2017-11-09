@@ -1,5 +1,5 @@
 /**
- * EMA Indicator Sample
+ * Sample for EMA Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -73,8 +73,7 @@ export class EMA extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the EMA Indicator. EMA Indicator is used to represent the price movements in stock. You can use
-                         <code>border</code>, <code>fill</code> properties to customize the vertical rect.
+                        In this example, you can see how to render and configure the EMA Indicator. 
                    </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.

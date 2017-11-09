@@ -1,5 +1,5 @@
 /**
- * Mementum Indicator Sample
+ * Sample for Momentum Indicator
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -86,8 +86,7 @@ export class Momentum extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the Momentum Indicator. Momentum Indicator is used to represent the price movements in stock. You
-                         can use <code>border</code>, <code>fill</code> properties to customize the vertical rect.
+                        In this example, you can see how to render and configure the Momentum Indicator. 
                    </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.

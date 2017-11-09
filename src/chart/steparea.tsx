@@ -1,5 +1,5 @@
 /**
- * Step Area sample
+ * Sample for Step Area series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -65,8 +65,7 @@ export class StepArea extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the StepArea type charts. This series forms the step line progress, by connecting points through vertical and horizontal lines with area filled.
-                        You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the area. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+                        In this example, you can see how to render and configure the StepArea type charts. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>

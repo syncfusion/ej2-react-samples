@@ -1,5 +1,5 @@
 /**
- * Logarithmic Axis Sample
+ * Samples for Logarithmic Axis
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

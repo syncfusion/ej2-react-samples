@@ -1,5 +1,5 @@
 /**
- * Error Bar Sample
+ * Sample for error bar
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -174,14 +174,14 @@ export class ErrorBarChart extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
-            </div >
-        )
+                </div >
+                )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        document.getElementById('charts').setAttribute('title', '');
-    };
+                    document.getElementById('charts').setAttribute('title', '');
+                };
     public load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
+                    let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
     };

@@ -1,5 +1,5 @@
 /**
- * Box and Whisker Sample
+ * Sample for Box and Whisker
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

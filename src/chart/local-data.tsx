@@ -1,5 +1,5 @@
 /**
- * Local Data Sample
+ * Sample for local data
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

@@ -1,3 +1,6 @@
+/**
+ * Sample for data sample
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -30,9 +33,6 @@ const SAMPLE_CSS = `
         font-family:Roboto";
     }
     `;
-    /**
-     * Data sample
-     */
 export class SampleData extends SampleBase<{}, {}> {
     private grid1: GridComponent;
     private sampleGauge1: CircularGaugeComponent;

@@ -1,5 +1,5 @@
 /**
- * Pareto sample
+ * Sample for Pareto chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -75,7 +75,7 @@ export class ParetoChart extends SampleBase<{}, {}> {
                     <p style={{ "font-weight": 500 }}>Injecting Module</p>
                     <p>
                         In this example, we have used line and column series. To use column and line feature, we need to inject
-                         <code>ColumnSeries</code> <code>LineSeries</code> modules using <code>Chart.Inject(ColumnSeries)</code> <code>Chart.Inject(LineSeries)</code>  method.
+                         <code>ColumnSeries</code> and <code>LineSeries</code> modules into <code>services</code>.
                      </p>
                     <p>
                         More information on the series can be found in this

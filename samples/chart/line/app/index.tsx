@@ -1,5 +1,5 @@
 /**
- * Line Series Sample
+ * Sample for Line Series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

@@ -1,3 +1,6 @@
+/**
+ * Sample for Ranges
+ */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, Position, AnnotationsDirective, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -7,9 +10,6 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 export let range: string[] = ['#9ef47a', '#f4f47a', '#ed5e5e'];
 
-/**
- * Lineargauge range sample
- */
 export class Ranges extends SampleBase<{}, {}> {
     private gaugeInstance: LinearGaugeComponent;
     private indexElement: DropDownListComponent;

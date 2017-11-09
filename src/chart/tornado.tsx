@@ -1,5 +1,5 @@
 /**
- * Negative Stack sample
+ * Sample for Tornado chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -89,11 +89,11 @@ export class NegativeStack extends SampleBase<{}, {}> {
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use bar series, we need to inject
-               <code>BarSeries</code> module into <code>services</code>.
+                        Chart component features are segregated into individual feature-wise modules. To use Stackingbar series, we need to inject
+               <code>StackingBarSeries</code> module into <code>services</code>.
              </p>
                     <p>
-                        More information on the bar series can be found in this &nbsp;
+                        More information on the stackingbar series can be found in this &nbsp;
                 <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
              </p>
                 </div>

@@ -1,5 +1,5 @@
 /**
- * Stacked Area 100 sample
+ * Sample for 100 percent Stacked Area series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

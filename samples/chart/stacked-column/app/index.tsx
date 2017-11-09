@@ -1,5 +1,5 @@
 /**
- * Stacked Column sample
+ * Sample for Stacking Column series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

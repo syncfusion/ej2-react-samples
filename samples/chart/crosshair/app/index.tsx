@@ -1,5 +1,5 @@
 /**
- * Crosshair Sample
+ * Sample for Crosshair in chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

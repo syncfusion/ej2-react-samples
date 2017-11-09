@@ -1,5 +1,5 @@
 /**
- * Polar Range column sample
+ * Sample for Polar Series with drawType RangeColumn
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

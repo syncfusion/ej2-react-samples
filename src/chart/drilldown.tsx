@@ -1,3 +1,6 @@
+/**
+ * Sample for Drill down in Pie chart
+ */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
@@ -78,7 +81,7 @@ export class Drilldown extends SampleBase<{}, {}> {
                     in terms of company.</p>
                     <p> Legend and datalabel is used in this sample.</p>
                     <p style={{ fontWeight: 500 }}>Injecting Module</p>
-                    <p> Accumulation chart component features are segregated into individual feature-wise modules. To use legend, we need to inject Legend module using <code>AccumulationChart.Inject(AccumulationLegend)</code> method. </p>
+                    <p> Accumulation chart component features are segregated into individual feature-wise modules. To use legend, we need to inject Legend module <code>AccumulationLegend</code> into services </p>
                 </div>
             </div>
         )

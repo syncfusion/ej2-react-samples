@@ -1,5 +1,5 @@
 /**
- * Funnel Series Sample
+ * Sample for Funnel Series
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';

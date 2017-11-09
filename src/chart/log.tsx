@@ -1,5 +1,5 @@
 /**
- * Logarithmic Axis Sample
+ * Samples for Logarithmic Axis
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -83,7 +83,7 @@ export class LogAxis extends SampleBase<{}, {}> {
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Logarithmic axis, we need to inject
-                        <code>Logarithmic</code> module using <code>Chart.Inject(Logarithmic)</code> method.
+                        <code>Logarithmic</code> module using <code>servives</code>.
                     </p>
                     <p>
                         More information on the Logarithmic axis can be found in this &nbsp;

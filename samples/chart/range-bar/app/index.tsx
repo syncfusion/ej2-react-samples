@@ -1,5 +1,5 @@
 /**
- * Range bar sample
+ * Sample for Range Bar series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

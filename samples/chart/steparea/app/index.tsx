@@ -1,5 +1,5 @@
 /**
- * Step Area sample
+ * Sample for Step Area series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

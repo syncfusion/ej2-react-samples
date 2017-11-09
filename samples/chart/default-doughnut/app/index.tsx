@@ -1,5 +1,5 @@
 /**
- * Default Doughnut Sample
+ * Sample for Doughnut chart
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';

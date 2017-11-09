@@ -1,3 +1,6 @@
+/**
+ * Sample for Gauge Customization
+ */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -13,9 +16,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-/**
- * Gauge Customization sample
- */
+
 export class Customization extends SampleBase<{}, {}> {
     private gauge1: CircularGauge;
     private usageGauge: CircularGauge = new CircularGauge(DynamicDataSerive.prototype.GetSubGauge1().gauge1);

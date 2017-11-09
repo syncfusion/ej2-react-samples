@@ -1,5 +1,5 @@
 /**
- * Area Empty Sample
+ * Sample for Area series with empty points
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

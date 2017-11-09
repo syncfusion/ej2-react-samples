@@ -1,5 +1,5 @@
 /**
- * Range selection sample
+ * Sample for Range Selection in chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

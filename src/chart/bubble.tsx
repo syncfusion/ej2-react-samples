@@ -1,5 +1,5 @@
 /**
- * Bubble Series Sample
+ * Sample for Bubble Series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

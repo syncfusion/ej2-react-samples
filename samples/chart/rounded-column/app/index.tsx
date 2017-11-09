@@ -1,5 +1,5 @@
 /**
- * Rounded column sample
+ * Sample for column series with rounded corner
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

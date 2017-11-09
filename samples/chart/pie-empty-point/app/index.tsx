@@ -1,5 +1,5 @@
 /**
- * PieEmptyPoint sample
+ * Sample for empty for Pie chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";

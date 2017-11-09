@@ -1,5 +1,5 @@
 /**
- * Range bar sample
+ * Sample for Range Bar series
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -63,7 +63,7 @@ export class RangeBar extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the range column type chart You can use <code>border</code>,
+                        In this example, you can see how to render and configure the range column type chart with inverted manner. You can use <code>border</code>,
                         <code>fill</code> properties to customize the area. <code>dataLabel</code> are used to represent individual data
                         and its value.
                     </p>
