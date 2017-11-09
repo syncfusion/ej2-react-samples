@@ -107,7 +107,7 @@ export class Data extends SampleBase<{}, {}> {
                         <li><code>WebMethodAdaptor</code> - Use this to interact with web methods.</li>
                     </ul>
                     <p> More information on the data binding feature configuration can be found in the
-                        <a href="http://ej2.syncfusion.com/documentation/auto-complete/data-binding.html" target="_blank"> documentation section</a>.
+                        <a href="http://ej2.syncfusion.com/react/documentation/auto-complete/data-binding.html" target="_blank"> documentation section</a>.
                     </p>
                 </div>
             </div>

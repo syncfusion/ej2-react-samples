@@ -84,7 +84,7 @@ export class Data extends SampleBase<{}, {}> {
                         customer data as an instance of <code>DataManager</code>.
                     </p>
                     <p> More information on the data binding feature configuration can be found in the
-                        <a href="http://ej2.syncfusion.com/documentation/drop-down-list/data-binding.html" target="_blank"> documentation section</a>.
+                        <a href="http://ej2.syncfusion.com/react/documentation/drop-down-list/data-binding.html" target="_blank"> documentation section</a>.
                     </p>
                 </div>
             </div>

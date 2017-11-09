@@ -75,7 +75,7 @@ export class Highlight extends SampleBase<{}, {}> {
         
             <p>This sample illustrates that, the searched characters on the country suggestion list items are highlighted.</p>
             <p> More information on the highlight search feature configuration can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/auto-complete/how-to.html#custom-highlight-search" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/auto-complete/how-to.html#custom-highlight-search" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

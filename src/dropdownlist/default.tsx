@@ -77,7 +77,7 @@ export class Default extends SampleBase<{}, {}> {
                 panel.
             </p>
             <p> More information on the DropDownList instantiation can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/drop-down-list/getting-started.html" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/drop-down-list/getting-started.html" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

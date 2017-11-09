@@ -70,7 +70,7 @@ export class Grouping extends SampleBase<{}, {}> {
         
             <p>The 2nd AutoComplete is populated with icons which is rendered by mapping the <code>iconCss</code> field.</p>
             <p> More information on the grouping feature configuration can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/auto-complete/grouping.html" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/auto-complete/grouping.html" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

@@ -51,7 +51,7 @@ export class Templates extends SampleBase<{}, {}> {
                 <li><code>HeaderTemplate</code> - To customize the header element.</li>
             </ul>
             <p> More information on the template feature configuration can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/combo-box/templates.html" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/combo-box/templates.html" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

@@ -42,7 +42,7 @@ export class Grouping extends SampleBase<{}, {}> {
             <p>The grouping sample illustrates how the vegetables are grouped based on its category.</p>
         
             <p>More information on the grouping feature configuration can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/multi-select/grouping.html" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/multi-select/grouping.html" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

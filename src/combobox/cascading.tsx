@@ -112,7 +112,7 @@ export class Cascading extends SampleBase<{}, {}> {
                 ComboBox value. This can be configured by using the <code>change</code> event of parent ComboBox. Within
                 that change event handler, you should load the data to child ComboBox based on the selected value of parent ComboBox.</p>
             <p> More information on the Cascading feature configuration can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/combo-box/how-to.html#configure-the-cascading-combobox" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/combo-box/how-to.html#configure-the-cascading-combobox" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

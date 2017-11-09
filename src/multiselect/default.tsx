@@ -63,7 +63,7 @@ export class Default extends SampleBase<{}, {}> {
                 <li><b>Delimiter</b> - selected items will be visualized in text content.</li>
             </ul>
             <p> More information on the MultiSelect instantiation can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/multi-select/getting-started.html" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/multi-select/getting-started.html" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

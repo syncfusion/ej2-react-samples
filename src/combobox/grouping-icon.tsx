@@ -70,7 +70,7 @@ export class Grouping extends SampleBase<{}, {}> {
         
             <p>The 2nd ComboBox is populated with icons that is rendered by mapping the <code>iconCss</code> field.</p>
             <p> More information on the grouping feature configuration can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/combo-box/grouping.html" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/combo-box/grouping.html" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

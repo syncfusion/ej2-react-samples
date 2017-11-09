@@ -114,7 +114,7 @@ export class Cascading extends SampleBase<{}, {}> {
             <p>In this sample, if a country is selected from countries DropDownList, the respective states will be loaded in the second DropDownList
                 and the same has to be done between states and cities DropDownList.</p>
             <p> More information on the Cascading feature configuration can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/drop-down-list/how-to.html#configure-the-cascading-combobox" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/drop-down-list/how-to.html#configure-the-cascading-combobox" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

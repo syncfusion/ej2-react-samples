@@ -59,7 +59,7 @@ export class Filtering extends SampleBase<{}, {}> {
                 return the resulted data to MultiSelect via <code>updateData</code> method to display its list items.</p>
             <p>This sample illustrates that, query the data source and pass the resulted data to MultiSelect through the <code>updateData</code> method in <code>filtering</code> event.</p>
             <p>More information on the filtering feature configuration can be found in the
-                <a href="http://ej2.syncfusion.com/documentation/multi-select/filtering.html" target="_blank"> documentation section</a>.
+                <a href="http://ej2.syncfusion.com/react/documentation/multi-select/filtering.html" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>
