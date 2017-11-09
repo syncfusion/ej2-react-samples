@@ -157,9 +157,9 @@ export class Trend extends SampleBase<{}, {}> {
                             title='Historical Indian Rupee Rate (INR USD)' loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[Category, Tooltip, ScatterSeries, SplineSeries, LineSeries, Trendlines]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={series1} xName='x' yName='y' name='Rupees' type='Spline' fill='#0066FF' marker= { { visible: true } }>
+                                <SeriesDirective dataSource={series1} xName='x' yName='y' name='Rupees' type='Spline' marker= { { visible: true } }>
                                     <TrendlinesDirective>
-                                        <TrendlineDirective type='Linear' width={3} marker={{ visible: false }} name='Linear'>
+                                        <TrendlineDirective type='Linear' width={3} marker={{ visible: false }} name='Linear' fill='#C64A75'>
                                         </TrendlineDirective>
                                     </TrendlinesDirective>
                                 </SeriesDirective>

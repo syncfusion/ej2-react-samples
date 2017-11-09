@@ -9,7 +9,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from './property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { EmitType } from '@syncfusion/ej2-base';
+import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from './sample-base';
 
 export let data1: any[] = [
@@ -44,7 +44,7 @@ export class PolarRangeColumn extends SampleBase<{}, {}> {
                 <div className='control-section row'>
                     <div className='col-md-8'>
                         <ChartComponent id='charts' ref={chart => this.chartInstance = chart}
-                            primaryXAxis={{ valueType: 'Category', title: 'month', startAngle: 90, labelPlacement: 'OnTicks', interval: 1 }}
+                            primaryXAxis={{ valueType: 'Category', title: 'month', startAngle: 90, labelPlacement: 'OnTicks', interval: 1,  coefficient: Browser.isDevice ? 80 : 100}}
                             primaryYAxis={{ labelFormat: '{value}˚C', minimum: 0, maximum: 20, interval: 5 }}
                             title='Maximum and Minimum Temperature' loaded={this.onChartLoad.bind(this)}
                             load={this.load.bind(this)}
