@@ -97,9 +97,16 @@ if (isMobile) {
   select('.sb-left-pane-footer').appendChild(select('.sb-footer-left'));
   select('.sb-left-pane').classList.add('sb-hide');
   leftToggle.classList.remove('toggle-active');
-
 } else {
   leftPane.classList.remove('sb-hide');
+}
+/**
+ * Tab View
+ */
+if (isTablet || (Browser.isDevice && isPc)) {
+  leftToggle.classList.remove('toggle-active');
+  select('.sb-left-pane').classList.add('sb-hide');
+  select('.sb-right-pane').classList.add('control-fullview');
 }
 changeMouseOrTouch(switchText);
 localStorage.removeItem('ej2-switch');
@@ -552,6 +559,9 @@ export function toggleLeftPane(): void {
       leftPane.style.overflowY = '';
       resizeManualTrigger = true;
       window.dispatchEvent(new Event('resize'));
+      if (Browser.isDevice) {
+        window.dispatchEvent(new Event('orientationchange'));
+      }
       resizeManualTrigger = false;
     }
   });
@@ -593,7 +603,7 @@ function processResize(e: any): void {
     if (footer.parentElement.classList.contains('sb-left-pane-footer')) {
       select('.sb-footer').appendChild(footer);
     }
-    if (isTablet) {
+    if (isTablet || (Browser.isDevice && isPc)) {
       if (!leftPane.classList.contains('sb-hide')) {
         toggleLeftPane();
       }
@@ -601,9 +611,9 @@ function processResize(e: any): void {
         if (!rightPane.classList.contains('control-fullview')) {
           rightPane.classList.add('control-fullview');
         }
-      }, 500);
+      }, 600);
     }
-    if (isPc) {
+    if (isPc && !Browser.isDevice) {
       if (isVisible('.sb-left-pane')) {
         rightPane.classList.remove('control-fullview');
       } else {

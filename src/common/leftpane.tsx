@@ -10,6 +10,7 @@ import { selectDefaultTab } from './component-content';
 
 let isMobile: boolean;
 let isTablet: boolean;
+let isPc: boolean;
 let sampleOrder: string[] = [];
 let controlSampleData: any = {};
 
@@ -186,14 +187,16 @@ export class LeftPane extends React.Component<{}, {}> {
         if (path) {
             this.controlListRefresh(arg.node || arg.item);
             if (path !== curHashCollection) {
+                isMobile = window.matchMedia('(max-width:550px)').matches;
+                isTablet = window.matchMedia('(min-width:600px) and (max-width: 850px)').matches;
+                isPc = window.matchMedia('(min-width:850px)').matches;
                 sampleOverlay();
                 let theme: string = location.hash.split('/')[1] || 'material';
-                location.hash = '#/' + theme + path;
-            }
-            isMobile = window.matchMedia('(max-width:550px)').matches;
-            isTablet = window.matchMedia('(min-width:600px) and (max-width: 850px)').matches;
-            if ((arg.item && isMobile && !select('.sb-left-pane').classList.contains('sb-hide')) || (isTablet && isLeftPaneOpen())) {
-                toggleLeftPane();
+                if (arg.item && ((isMobile && !select('.sb-mobile-left-pane').classList.contains('sb-hide')) ||
+                    ((isTablet || (Browser.isDevice && isPc)) && isLeftPaneOpen()))) {
+                    toggleLeftPane();
+                }
+                setTimeout(() => { location.hash = '#/' + theme + path; }, 600);
             }
         }
     }
