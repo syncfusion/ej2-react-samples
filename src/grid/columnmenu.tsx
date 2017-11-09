@@ -16,8 +16,8 @@ export class ColumnMenuSample extends SampleBase<{}, {}> {
                     <GridComponent id='gridcomp' dataSource={data.splice(0, 60)} allowPaging={true} allowGrouping={true} allowSorting={true} allowFiltering={true} showColumnMenu={true} groupSettings={this.groupOptions} filterSettings={this.filterSettings} >
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='200' textAlign='right' showInColumnChooser={false}></ColumnDirective>
-                            <ColumnDirective field='CustomerName' headerText='Customer Name' width='200' ></ColumnDirective>
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='200' format='yMd' textAlign='right' />
+                            <ColumnDirective field='CustomerName' headerText='Customer Name'></ColumnDirective>
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' textAlign='right' />
                             <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='right' />
                             <ColumnDirective field='ShipName' headerText='Ship Name' visible={false} width='200'></ColumnDirective>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200'></ColumnDirective>

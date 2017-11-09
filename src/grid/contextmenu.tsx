@@ -22,8 +22,8 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
                         editSettings={this.editing}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='200' textAlign='right' isPrimaryKey={true}></ColumnDirective>
-                            <ColumnDirective field='CustomerName' headerText='Customer Name' width='200' ></ColumnDirective>
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='200' format='yMd' textAlign='right' />
+                            <ColumnDirective field='CustomerName' headerText='Customer Name'></ColumnDirective>
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' textAlign='right' />
                             <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='right' />
                             <ColumnDirective field='ShipName' headerText='Ship Name' width='200'></ColumnDirective>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200'></ColumnDirective>
