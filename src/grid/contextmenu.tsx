@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Group, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
 import { GroupSettingsModel, FilterSettingsModel, ContextMenuItem, EditSettingsModel } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
@@ -8,17 +8,17 @@ import './gridcontextmenu.css';
 
 export class ContextMenuSample extends SampleBase<{}, {}> {
     public groupOptions: GroupSettingsModel = { showGroupedColumn: true };
-    public contextMenuItems: ContextMenuItem[] = ['sortAscending', 'sortDescending', 'group', 'ungroup',
-        'autoFit', 'autoFitAll', 'copy', 'edit', 'delete', 'save', 'cancel',
-        'pdfExport', 'excelExport', 'csvExport', 'firstPage', 'prevPage',
+    public contextMenuItems: ContextMenuItem[] = ['autoFit', 'autoFitAll',
+        'sortAscending', 'sortDescending', 'copy', 'edit', 'delete', 'save',
+        'cancel', 'pdfExport', 'excelExport', 'csvExport', 'firstPage', 'prevPage',
         'lastPage', 'nextPage'];
     public editing: EditSettingsModel = { allowDeleting: true, allowEditing: true }
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent id='gridcomp' dataSource={data.splice(0, 60)} allowPaging={true} allowGrouping={true} allowSorting={true}
-                        groupSettings={this.groupOptions} allowExcelExport={true} allowPdfExport={true} contextMenuItems={this.contextMenuItems}
+                    <GridComponent id='gridcomp' dataSource={data.splice(0, 60)} allowPaging={true} allowSorting={true}
+                        allowExcelExport={true} allowPdfExport={true} contextMenuItems={this.contextMenuItems}
                         editSettings={this.editing}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='200' textAlign='right' isPrimaryKey={true}></ColumnDirective>
@@ -28,13 +28,14 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
                             <ColumnDirective field='ShipName' headerText='Ship Name' width='200'></ColumnDirective>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200'></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Resize, Group, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
+                        <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the usage of context menu in Grid component. Right click anywhere on the Grid to view context
-        menu.
-    </p>
+                    <p>
+                        This sample demonstrates the usage of context menu in Grid component. Right click anywhere on the Grid to view context
+                        menu.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
@@ -43,7 +44,7 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
                 <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#contextmenuitems-contextmenuitem---contextmenuitemmodel">contextMenuItems
                     </a></code>. Each item will be shown based on it target. The default items are
-            </p>
+                    </p>
                     <ul>
                         <li>
                             <code>edit</code> - Edit the current record.</li>
