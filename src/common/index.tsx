@@ -634,6 +634,13 @@ function processResize(e: any): void {
  * Theme Loading
  */
 function loadTheme(theme: string): void {
+  let body: HTMLElement = document.body;
+  if (body.classList.length > 0) {
+      for (let themeItem of themeCollection) {
+        body.classList.remove(themeItem);
+      }
+  }
+  body.classList.add(theme);
   themeList.querySelector('.active').classList.remove('active');
   themeList.querySelector('#' + theme).classList.add('active');
   let ajax: Ajax = new Ajax('./styles/' + theme + '.css', 'GET', true);
