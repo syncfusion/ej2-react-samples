@@ -13,7 +13,7 @@ import * as detimeZoneNames from './common/cldr-data/main/de/timeZoneNames.json'
 /*  loadCldr method to load the culture specific JSON file.*/
 loadCldr(numberingSystems, degregorian, denumbers, detimeZoneNames);
 
-export class culture extends SampleBase<{}, {}> {
+export class Culture extends SampleBase<{}, {}> {
     private calendarInstance: CalendarComponent;
     private dropElement: HTMLSelectElement;
     /*Apply selected locale to the component*/
@@ -26,6 +26,11 @@ export class culture extends SampleBase<{}, {}> {
             (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + globalize.formatDate(this.calendarInstance.value);
         }
     }
+    public onChange(args: ChangedEventArgs): void {
+        /*Displays selected date in the label*/
+        let globalize: Internationalization = new Internationalization(this.calendarInstance.locale);
+        (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + globalize.formatDate(this.calendarInstance.value);
+    }
 
     render() {
         return (
@@ -33,7 +38,7 @@ export class culture extends SampleBase<{}, {}> {
                 <div className='control-section row'>
                     <div className='col-lg-9'>
                         <div className='calendar-control-section'>
-                            <CalendarComponent change={onChange} locale='de' ref={calendar => this.calendarInstance = calendar} ></CalendarComponent>
+                            <CalendarComponent change={this.onChange.bind(this)} locale='de' ref={calendar => this.calendarInstance = calendar} ></CalendarComponent>
                             <label id='date_label'>Selected Value:</label>
                         </div>
                     </div>
@@ -44,7 +49,7 @@ export class culture extends SampleBase<{}, {}> {
                                     <td style={{ width: '30%' }}>
                                         <div className='col-md-4' style={{ paddingTop: '8px' }}>
                                             Culture
-                    </div>
+                                        </div>
                                     </td>
                                     <td style={{ width: '70%', paddingRight: '10px' }}>
                                         <div>
@@ -64,8 +69,5 @@ export class culture extends SampleBase<{}, {}> {
         )
     }
 }
-function onChange(args: ChangedEventArgs): void {
-    /*Displays selected date in the label*/
-    (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args.value.toLocaleDateString();
-}
-ReactDOM.render(<culture />, document.getElementById('sample'));
+
+ReactDOM.render(<Culture />, document.getElementById('sample'));

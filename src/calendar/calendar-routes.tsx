@@ -4,7 +4,7 @@ import { Default } from './default';
 import { Range } from './range';
 import { Disabled } from './disabled';
 import { Special } from './special';
-import { culture } from './internationalization';
+import { Culture } from './internationalization';
 
 
 export const calendarRoutes = (
@@ -13,7 +13,7 @@ export const calendarRoutes = (
          <Route  path='/:theme/calendar/range' component={ Range }/>
          <Route  path='/:theme/calendar/disabled' component={ Disabled }/>
          <Route  path='/:theme/calendar/special' component={ Special }/>
-         <Route  path='/:theme/calendar/internationalization' component={ culture }/>
+         <Route  path='/:theme/calendar/internationalization' component={ Culture }/>
 
     </div>
 )
