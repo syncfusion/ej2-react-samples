@@ -22,7 +22,7 @@ export class Presets extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        Click the DateRangePicker icon to view and select the list of custom preset ranges. Select the custom range option which is provided in the end of this list to open date range picker popup calendar for selecting custom ranges.
+                        Click the DateRangePicker icon to view and select the list of custom preset ranges. Select the custom range option which is provided at the end of this list to open date range picker popup calendar for selecting custom ranges.
                     </p>    
                 </div>
                 <div id='description'>
