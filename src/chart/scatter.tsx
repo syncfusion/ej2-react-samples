@@ -61,7 +61,7 @@ export class Scatter extends SampleBase<{}, {}> {
                         primaryXAxis={{ title: 'Height (cm)', minimum: 145, maximum: 185, interval: 10, majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift', labelFormat: '{value}cm' }}
                         primaryYAxis={{ title: 'Weight (kg)', minimum: 60, maximum: 90, labelFormat: '{value}kg', rangePadding: 'None' }}
                         load={this.load.bind(this)}
-                        title='Height Vs Weight'
+                        title='Height vs Weight'
                         loaded={this.onChartLoad.bind(this)}
                         tooltip={{ enable: true }}
                         width={Browser.isDevice ? '100%' : '60%'}

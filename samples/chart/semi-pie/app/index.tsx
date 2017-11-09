@@ -27,7 +27,7 @@ export class SemiPie extends SampleBase<{}, {}> {
         <div className='control-section row'>
           <div className='col-lg-9'>
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
-              title='Agricultural land percentage'
+              title='Agricultural Land Percentage'
               tooltip={{ enable: true, format: '${point.text}' }}
               legendSettings={{ visible: false }}
               load={this.load.bind(this)}

@@ -40,7 +40,7 @@ export class StackedColumn100 extends SampleBase<{}, {}> {
                             minorTickLines: { width: 0 }
                         }}
                         primaryYAxis={{
-                            title: 'GDP (%) Per Annum',
+                            title: 'GDP (%) per Annum',
                             rangePadding: 'None',
                             interval: 20,
                             majorTickLines: { width: 0 },

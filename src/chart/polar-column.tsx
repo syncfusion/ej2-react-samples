@@ -59,7 +59,8 @@ export class PolarColumn extends SampleBase<{}, {}> {
                             primaryXAxis={{
                                 valueType: 'Category',
                                 labelPlacement: 'OnTicks',
-                                coefficient: Browser.isDevice ? 80 : 100
+                                coefficient: Browser.isDevice ? 80 : 100,
+                                interval :1
                             }}
                             primaryYAxis={{
                                 maximum: 250, interval: 50, minimum: 0, labelFormat: '{value}M'

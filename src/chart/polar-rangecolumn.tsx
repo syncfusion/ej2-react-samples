@@ -44,7 +44,7 @@ export class PolarRangeColumn extends SampleBase<{}, {}> {
                 <div className='control-section row'>
                     <div className='col-md-8'>
                         <ChartComponent id='charts' ref={chart => this.chartInstance = chart}
-                            primaryXAxis={{ valueType: 'Category', title: 'month', startAngle: 90, labelPlacement: 'OnTicks' }}
+                            primaryXAxis={{ valueType: 'Category', title: 'month', startAngle: 90, labelPlacement: 'OnTicks', interval: 1 }}
                             primaryYAxis={{ labelFormat: '{value}˚C', minimum: 0, maximum: 20, interval: 5 }}
                             title='Maximum and Minimum Temperature' loaded={this.onChartLoad.bind(this)}
                             load={this.load.bind(this)}
