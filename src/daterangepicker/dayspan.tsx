@@ -4,7 +4,7 @@ import { DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
 import './daterangepicker-component.css';
 
-export class dayspan extends SampleBase<{}, {}> {
+export class DaySpan extends SampleBase<{}, {}> {
     private minDays: number = 5;
     private maxDays: number = 10;
     render() {
@@ -23,7 +23,9 @@ export class dayspan extends SampleBase<{}, {}> {
                     <p>
                         DateRangePicker has <code>minDays</code> and <code>maxDays</code> supports to force the user to select the minimum and maximum number of days in the range. Only the values in this range will be enabled.
           </p>
-		  	<p>We may have seen in hotel booking website that we can book rooms as packages like 3 or 5 days packages. For this scenario we can use minDays and maxDays.</p>
+		  	<p>
+              For example, in some hotel booking website, we need to book rooms that includes packages like minimum 3 days to maximum 5 days. For this scenario this feature can be used.
+			</p>
 
             <p>More information on the DateRangePicker minDays/maxDays support can be found in the
               <a href="http://ej2.syncfusion.com/react/documentation/daterangepicker/range-selection.html#range-span"

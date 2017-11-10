@@ -4,7 +4,7 @@ import { DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from './sample-base';
 
 
-export class daterange extends SampleBase<{}, {}> {
+export class DateRange extends SampleBase<{}, {}> {
 
     private minDate: Date = new Date('1/15/2017');
     private maxDate: Date = new Date('12/20/2017');
@@ -20,4 +20,4 @@ export class daterange extends SampleBase<{}, {}> {
         )
     }
 }
-ReactDOM.render(<daterange />, document.getElementById('sample'));
+ReactDOM.render(<DateRange />, document.getElementById('sample'));

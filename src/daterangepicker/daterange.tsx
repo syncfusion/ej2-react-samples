@@ -4,7 +4,7 @@ import { DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
 import './daterangepicker-component.css';
 
-export class daterange extends SampleBase<{}, {}> {
+export class DateRange extends SampleBase<{}, {}> {
 
     private minDate: Date = new Date('1/15/2017');
     private maxDate: Date = new Date('12/20/2017');
