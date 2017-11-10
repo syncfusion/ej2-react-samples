@@ -49,9 +49,9 @@ export class Default extends SampleBase<{}, {}> {
                     </CircularGaugeComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates default rendering of circular gauge.
-                    </p>
+                <p>
+                This sample illustrates the default rendering of circular gauge.
+           </p>
                 </div>
                 <div id="description">
                     <p>

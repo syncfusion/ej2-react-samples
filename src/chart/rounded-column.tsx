@@ -84,9 +84,9 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates column type series with rounded corners.
-                    </p>
+                <p>
+                This sample illustrates a rounded column series. Data points values are showed by using data label.
+            </p>
                 </div>
                 <div id="description">
                     <p>

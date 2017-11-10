@@ -76,9 +76,9 @@ export class Funnel extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>
-            This sample demonstrates funnel chart for website visitors for various purposes. You can change neck height and neck width of a funnel chart using <code>Neck Width</code> and <code>Neck Height</code> in the property panel.
-          </p>
+        <p>
+        This sample visualizes the data about website visitors by using default funnel series. Datalabel shows the Information about the points.
+    </p>
         </div>
         <div id="description">
           <p> In this example, you can see how to render and configure the funnel chart. <code>dataLabel</code> are used to represent individual data and its value.</p>

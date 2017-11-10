@@ -61,9 +61,10 @@ export class AreaEmpty extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates area series with empty points.
-                    </p>
+                <p>
+                This sample illustrates an area series with empty points. 
+                Data points with null points are dropped here.
+            </p>
                 </div>
                 <div id="description">
                     <p>

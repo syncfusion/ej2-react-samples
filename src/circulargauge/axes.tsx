@@ -192,9 +192,9 @@ export class Axes extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates customization of multiple axis in circular gauge. You can select axis by using <code>Axis</code>. Direction, start and end angle of the selected axis can be set by <code>Direction</code>, <code>Start Angle</code> and <code>End Angle</code> respectively.
-                    </p>
+                <p>
+                This sample visualizes the multiple axes in the gauge and options are available to change the direction, start, and end angle of an axis.
+            </p>
                 </div>
                 <div id="description">
                     <p>

@@ -87,9 +87,9 @@ export class Zooming extends SampleBase<{}, {}> {
                     </defs>
                 </svg>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates zooming feature in chart. You can pinch on chart or by using mouse scroll, zooming on a chart can be performed.
-                    </p>
+                <p>
+                This sample illustrates zooming feature in chart. The change can be zoomed by pinching or by mouse wheel. 
+            </p>
                 </div>
                 <div id="description">
                     <p>This sample demonstrates the zooming and panning behavior in chart.</p>

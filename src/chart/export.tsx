@@ -107,9 +107,9 @@ export class Export extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates export feature in chart. By clicking <code>Export </code>, you can export chart. you can change export type using <code>Export type</code>.
-                    </p>
+                <p>
+                This sample illustrates the export feature in chart. By clicking <code>Export</code>, you can export the chart in PNG or JPEG format.
+            </p>
                 </div>
                 <div id="description">
                     <p>

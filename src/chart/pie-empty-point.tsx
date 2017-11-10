@@ -83,9 +83,9 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates empty point rendering for accumulation chart. You can change mode of empty point by using <code>Empty Point Mode</code> in property panel.
-                    </p>
+                <p>
+                This sample illustrates an organization’s annual product-wise profit analysis with the empty point functionality in pie series.  The Mode of empty point can be changed by using <code>Empty Point Mode</code> in property panel.
+            </p>
                 </div>
                 <div id="description">
                     <p>

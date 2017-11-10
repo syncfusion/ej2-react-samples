@@ -138,9 +138,9 @@ export class Data extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demostrates ranges, pointers and annotation features in linear gauge.
-    </p>
+                <p>
+                This sample illustrates exercise tracking of an athlete by using ranges, pointers, and annotation features available in linear gauge.
+            </p>
                 </div>
                 <div id="description">
                     <p>

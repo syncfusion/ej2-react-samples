@@ -77,9 +77,9 @@ export class PolarRangeColumn extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates polar series with range column type for temperature variation. Series type can be changed by <code>Series Type</code>
-                    </p>
+                <p>
+                This sample demonstrates polar series with range column type for temperature variation. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+            </p>
                 </div>
                 <div id="description">
                     <p>

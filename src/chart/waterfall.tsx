@@ -81,9 +81,9 @@ export class Waterfall extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates waterfall series for a company's various expenses and income.
-                    </p>
+                <p>
+                This sample visualizes the revenue and profits of a company by using default waterfall series in the chart. Tooltip shows the information about the profits earned by each department on the company.
+            </p>
                 </div>
                 <div id="description">
                     <p>

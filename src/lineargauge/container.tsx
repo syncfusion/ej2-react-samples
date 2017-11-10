@@ -80,7 +80,7 @@ export class Container extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demostrates type of containers used in linear gauge. Orientation and container type of linear gauge can be changed by <code>Orientation</code> and <code>Container Type</code>
+                    This sample demonstrates the type of containers used in linear gauge. Orientation and container type of linear gauge can be changed by using <code>Orientation</code> and <code>Container Type</code> options.
                     </p>
                 </div>
                 <div id="description">

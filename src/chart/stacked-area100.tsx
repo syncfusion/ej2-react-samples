@@ -76,9 +76,10 @@ export class StackedArea100 extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates 100 percent stacked area series type in the chart.
-                    </p>
+                <p>
+                Percentage of sales for four ethical products are visualized with default 100% stacked area series in chart. 
+                Legend in the sample shows the information about the series.
+            </p>
                 </div>
                 <div id="description">
                     <p>

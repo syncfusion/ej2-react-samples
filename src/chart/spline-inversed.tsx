@@ -64,9 +64,10 @@ export class SplineInversed extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates spline type series in inverted manner.
-                    </p>
+                <p>
+                This sample illustrates a spline series by inversing X and Y Axis. 
+                Data points are enhanced with marker and tooltip.
+            </p>
                 </div>
                 <div id="description">
                     <p>

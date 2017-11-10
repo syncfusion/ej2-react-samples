@@ -175,9 +175,9 @@ export class ErrorBarChart extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates error bar in a  series for sales distribution of car over a period. In property panel, you have options to change error bar type, drawing mode and drawing direction of error bar by means of dropdown. And also you can change vertical and horizontal error values.
-                    </p>
+                <p>
+                This sample visualizes the errors in sales distribution of a car for a certain period with error bar in the chart. In property panel, the options are available to change error bar type, drawing mode, and drawing direction of error bar by means of dropdown
+            </p>
                 </div>
                 <div id="description">
                     <p>

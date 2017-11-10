@@ -68,9 +68,9 @@ export class ColumnPlacement extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates column type series with side by side placement.
-                    </p>
+                <p>
+                This sample illustrates four column series. Each column is rendered with different column width and it is placed  behind to another one.
+            </p>
                 </div>
                 <div id="description">
                     <p>

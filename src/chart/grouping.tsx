@@ -83,9 +83,9 @@ export class Grouping extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>
-            This sample demonstrates grouping for pie chart. You can change grouping value by using <code>Group To</code> property.
-          </p>
+        <p>
+        This sample illustrates the grouping functionality in pie series.  The grouping value can be changed by using <code>Group To</code> property.
+    </p>
         </div>
         <div id="description">
           <p> In this example, you can see how to <code>group</code> points in pie chart.</p>

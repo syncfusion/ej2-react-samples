@@ -138,9 +138,9 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates datalabel template support. In this sample, images are placed as datalabel by means of templates.
-                    </p>
+                <p>
+                This sample illustrates datalabel template support in the chart. In this sample, images are placed as datalabel by means of templates.
+            </p>
                 </div>
                 <div id="description">
                     <p>

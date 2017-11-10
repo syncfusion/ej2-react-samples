@@ -57,9 +57,9 @@ export class RangeBar extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates to achieve range bar series by inverting the range column.
-                    </p>
+                <p>
+                This sample illustrates a range column series by inversing its X and Y  Axes. Tooltip shows the information about the data points.
+            </p>
                 </div>
                 <div id="description">
                     <p>

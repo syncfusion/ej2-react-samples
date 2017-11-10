@@ -77,9 +77,9 @@ export class Tooltip extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates rendering tooltip in circular gauge. To see tooltip in action , hover pointer or tap on pointer.
-                    </p>
+                <p>
+                This sample visualizes the tooltip of pointer value in gauge. To see the tooltip in action, hover pointer or tap the pointer.
+            </p>
                 </div>
                 <div id="description">
                     <p>

@@ -102,9 +102,10 @@ export class StackedArea extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates stacked area series type in the chart.
-                    </p>
+                <p>
+                Trend in the sales of ethical product is visualized with default stacked area series in chart. 
+                Legend in the sample shows the information about the series.
+            </p>
                 </div>
                 <div id="description">
                     <p>

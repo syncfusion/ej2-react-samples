@@ -96,9 +96,9 @@ export class PolarArea extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates polar series with area type for average sales comparision of products in recent year. Series type can be changed by <code>Series Type</code>
-                    </p>
+                <p>
+                This sample demonstrates polar series with area type for average sales comparison of products in recent year.  The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+            </p>
                 </div>
                 <div id="description">
                     <p>

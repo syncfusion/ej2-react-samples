@@ -62,9 +62,9 @@ export class ParetoChart extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates pareto chart such that it contains both line and column charts.
-                    </p>
+                <p>
+                This sample illustrates a pareto chart with line and column series. Trackball shows the information about the data point closest to the mouse
+            </p>
                 </div>
                 <div id="description">
                     <p>

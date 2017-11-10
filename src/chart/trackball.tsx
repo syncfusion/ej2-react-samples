@@ -55,9 +55,9 @@ export class TrackballChart extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demostrates trackball feature in chart. To show trackball, hover or touch on this chart and you can see group of values that are nearer to your hover or touch.
-                    </p>
+                <p>
+                This sample illustrates trackball feature in chart. To show trackball, hover or long press the chart and you can see the point value near to the mouse point.
+            </p>
                 </div>
                 <div id="description">
                     <p>

@@ -58,9 +58,9 @@ export class RangeColumn extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates range column series  for temperature comparision of two countries for a week.
-                    </p>
+                <p>
+                This sample visualizes the maximum and minimum temperatures for a week of different countries with default range column series in the chart. Tooltip shows the information about the data points.
+            </p>
                 </div>
                 <div id="description">
                     <p>

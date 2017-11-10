@@ -48,9 +48,9 @@ export class AccumulationDoughnut extends SampleBase<{}, {}> {
                     </AccumulationChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates doughnut chart for a project break down statistics.
-                    </p>
+                <p>
+                This sample visualizes the project cost breakdown statistics by using doughnut series. Datalabel shows the Information about the points. 
+            </p>
                 </div>
                 <div id="description">
                     <p> In this example, you can see how to render doughnut chart. You can use <code>radius</code> and <code>innerRadius</code> properties to render the doughnut and also use <code>border</code>, <code>fill</code> properties to customize the point. <code>dataLabel</code> are used to represent individual data and its value.</p>

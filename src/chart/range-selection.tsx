@@ -109,9 +109,9 @@ export class RangeSelection extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates selection feature in chart. You can change selection mode, by changing <code>Selection Mode</code> in properities. Also, multiple selection could be enabled by <code>Enable MultiplecSelection</code>.
-                    </p>
+                <p>
+                This sample illustrates the range selection feature in chart. Data can be selected under region by drag and drop.
+            </p>
                 </div>
                 <div id="description">
                     <p>

@@ -74,9 +74,9 @@ export class NegativeStack extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates stacked bar series type with negative values.
-                    </p>
+                <p>
+                This sample illustrates stacked bar with negative data points. Data points values are showed by using data label.
+            </p>
                 </div>
                 <div id="description">
                     <p>

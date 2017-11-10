@@ -69,9 +69,9 @@ export class Symbols extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates rendering of symbols in chart. In line based series, data points could be represented by symbols.
-                    </p>
+                <p>
+                This sample illustrates the rendering of symbols in chart. In line based series, data points can be annotated by using symbols.
+            </p>
                 </div>
                 <div id="description">
                     <p>

@@ -92,9 +92,9 @@ export class Bubble extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates bubble series for comparision of GDP and literacy rate for different countries.
-                    </p>
+                <p>
+                This sample visualizes the  Literacy Rate and GDP Growth Rate of world countries by using bubble series in the chart. Tooltip shows the information about the  countries.
+            </p>
                 </div>
                 <div id="description">
                     <p>

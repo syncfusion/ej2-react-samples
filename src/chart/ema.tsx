@@ -67,9 +67,10 @@ export class EMA extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates Exponential Moving Average indicator in the chart.
-                    </p>
+                <p>
+                This sample illustrates a stock chart with candle series and an Exponential Moving Average indicator. 
+                Trackball shows the information about the stock and signal value of a day.
+           </p>
                 </div>
                 <div id="description">
                     <p>

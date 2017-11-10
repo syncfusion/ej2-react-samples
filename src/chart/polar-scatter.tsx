@@ -104,9 +104,9 @@ export class PolarScatter extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates polar series with scatter type for GDP for different countries in recent years. Series type can be changed by <code>Series Type</code>
-                    </p>
+                <p>
+                This sample demonstrates polar series with scatter type for GDP for different countries in recent years. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+            </p>
                 </div>
                 <div id="description">
                     <p>

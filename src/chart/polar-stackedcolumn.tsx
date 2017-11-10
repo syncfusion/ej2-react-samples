@@ -110,8 +110,8 @@ export class PolarStackedColumn extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates polar series with stacking column type. Series type can be changed by <code>Series Type</code>
-                    </p>
+                    This sample demonstrates polar series with stacking column type. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel. 
+                </p>
                 </div>
                 <div id="description">
                     <p>

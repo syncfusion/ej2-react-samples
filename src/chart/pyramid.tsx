@@ -45,9 +45,10 @@ export class Pyramid extends SampleBase<{}, {}> {
           </AccumulationChartComponent>
         </div>
         <div id="action-description">
-          <p>
-            This sample demonstrates pyramid chart for food comparision.
-          </p>
+        <p>
+        This sample visualizes food comparison data by using pyramid series. 
+        Datalabel shows the Information about the points.
+    </p>
         </div>
         <div id="description">
           <p> In this example, you can see how to render pyramid chart. <code>dataLabel</code> are used to represent individual data and its value.</p>

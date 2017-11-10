@@ -70,9 +70,10 @@ export class Bollinger extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates bollinger indicator in the chart.
-                    </p>
+                <p>
+                This sample illustrates a stock chart with candle series and a Bollinger band indicator. 
+                Trackball shows the information about the stock, signalline, upperline, and lowerline value of a day.
+           </p>
                 </div>
                 <div id="description">
                     <p>

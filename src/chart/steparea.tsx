@@ -59,9 +59,9 @@ export class StepArea extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates step area series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes the data about electricity production by using renewable and non-renewable resources by using default step area series in the chart. 
+            </p>
                 </div>
                 <div id="description">
                     <p>

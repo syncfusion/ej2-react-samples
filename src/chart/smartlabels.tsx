@@ -59,9 +59,9 @@ export class SmartLabels extends SampleBase<{}, {}> {
           </AccumulationChartComponent>
         </div>
         <div id="action-description">
-          <p>
-            This sample demonstrates pie chart with smart labels enabled for gold medals won by various countries in Rio Olympics.
-          </p>
+        <p>
+        This sample illustrates the Rio Olympic’s gold medal count by using smart labels in the chart. The smart label placement for a series can be shown, when it contains more of points.
+    </p>
         </div>
         <div id="description">
           <p> In this example, you can see how to arrange the labels smartly without overlapping with each other. You can use <code>enableSmartLabels</code> property to enable or disable the action. Legend with paging is enabled in this sample.</p>

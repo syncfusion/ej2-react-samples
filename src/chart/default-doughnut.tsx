@@ -55,9 +55,9 @@ export class Doughnut extends SampleBase<{}, {}> {
           <div id="center_title" style={{ visibility: 'hidden', position: 'absolute' }}>Expenses <br /> Year 2013</div>
         </div>
         <div id="action-description">
-          <p>
-            This sample demonstrates doughnut chart for a educational institutional revenue with legends placed in chart.
-          </p>
+        <p>
+        This sample illustrates an educational institute’s revenue by using the pie with legend series. The legend will be displayed at right side of the chart.
+    </p>
         </div>
         <div id="description">
           <p> In this example, you can see how to render doughnut chart. You can use <code>radius</code> and <code>innerRadius</code> properties to render the doughnut and also use <code>border</code>, <code>fill</code> properties to customize the point. <code>dataLabel</code> are used to represent individual data and its value.</p>

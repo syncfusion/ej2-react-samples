@@ -86,9 +86,9 @@ export class Annotation extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates annotation feature in chart. Accumulation chart is placed in cartesian chart by using annotation.
-                    </p>
+                <p>
+                This sample demonstrates annotation feature in chart. Accumulation chart is placed in cartesian chart by using annotation.
+            </p>
                 </div>
                 <div id="description">
                     <p>

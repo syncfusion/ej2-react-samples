@@ -286,9 +286,9 @@ export class SampleData extends SampleBase<{}, {}> {
                         </div>
                     </div>
                     <div id="action-description">
-                        <p>
-                            This sample demonstrates live data sample in circular gauge.
-                        </p>
+                    <p>
+                    This sample demonstrates the live data sample in circular gauge.
+                </p>
                     </div>
                     <div id="description">
                         <p>

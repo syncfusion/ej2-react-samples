@@ -171,9 +171,10 @@ export class Labels extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates customization of major ticks and minor ticks in circular gauge. Major and minor ticks of axis can be selected by <code>Ticks</code>. Tick position and label position of the axis can be changed by <code>Tick Position</code> and <code>Label Position</code>. Offset and height of the ticks can be modified by <code>Tick Offset</code> and <code>Tick Height</code>.
-                    </p>
+                <p>
+                This sample illustrates how to customize the ticks and labels of an axis. 
+                Position, offset, and height of the tick and label can be changed by using the options provided in the property panel.
+            </p>
                 </div>
                 <div id="description">
                     <p>

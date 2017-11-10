@@ -95,8 +95,8 @@ export class Annotation extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates placing annotation in linear gauge. Images are placed as annotation in linear gauge.
-                    </p>
+                        This sample illustrates the CPU Utilization of a resource by using annotation feature.
+            </p>
                 </div>
                 <div id="description">
                     <p>

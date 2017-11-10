@@ -86,9 +86,9 @@ export class Performance extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates performance of EJ2 chart such that it calculates time required to render 100K points when you click <code>Load 100K Points</code>.
-                    </p>
+                <p>
+                This sample demonstrates the performance of EJ2 chart to render 100K points
+            </p>
                 </div>
                 <div id="description">
                     <p>

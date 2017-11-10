@@ -91,9 +91,9 @@ export class SemiPie extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>
-            This sample demonstrates semi pie chart for agriculture land percentages of various countries.
-          </p>
+        <p>
+        This sample illustrates the agriculture land percentages of various countries by using a pie series. It has options to change the angle and radius of the series.
+    </p>
         </div>
         <div id="description">
           <p> In this example, you can see how to render semi pie and doughnut chart. Using <code>startAngle</code>, <code>endAngle</code> properties, we can achieve this semi pie chart. Property panel to change the angle is provided with this sample.</p>

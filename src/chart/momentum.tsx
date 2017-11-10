@@ -80,9 +80,9 @@ export class Momentum extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates momentum indicator in the chart.
-                    </p>
+                <p>
+                This sample illustrates a stock chart with candle series and a momentum indicator. Trackball shows the information about the stock, signalline, and upperline value of a day.
+           </p>
                 </div>
                 <div id="description">
                     <p>

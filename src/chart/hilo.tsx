@@ -56,9 +56,10 @@ export class Hilo extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates hilo series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes the AAPL historical data with default HILO series in the chart. 
+                Tooltip and crosshair show the information about the data and period.
+           </p>
                 </div>
                 <div id="description">
                     <p>

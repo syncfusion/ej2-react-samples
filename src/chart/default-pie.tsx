@@ -105,9 +105,9 @@ export class Pie extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>
-            This sample demonstrates pie chart for mobile browser usage statistics. For pie chart, you can change start angle of chart by <code>Pie Angle</code> in properties panel. Outer radius for pie chart can be changed by <code>Outer Radius</code>. Explode Index and explode radius for chart can be changed by <code>Explode Radius</code> and <code>Explode Index</code>
-          </p>
+        <p>
+        This sample demonstrates pie chart for mobile browser usage statistics. For pie chart, you can change start angle of chart by <code>Pie Angle</code> in properties panel. Outer radius for pie chart can be changed by <code>Outer Radius</code>. Explode Index and explode radius for chart can be changed by <code>Explode Radius</code> and <code>Explode Index</code>
+    </p>
         </div>
         <div id="description">
           <p> In this example, you can see how to render and configure the pie chart. You can use <code>border</code>, <code>fill</code> properties to customize the pie point. <code>dataLabel</code> are used to represent individual data and its value.</p>

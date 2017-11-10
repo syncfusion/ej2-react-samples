@@ -84,6 +84,11 @@ export class Candle extends SampleBase<{}, {}> {
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
+                <div id="action-description">
+    <p>
+        This sample visualizes the AAPL historical data with default candle series in the chart. Tooltip and crosshair show the information about the data and period.
+   </p>
+</div>
                 <div id="description">
                     <p>
                         In this example, you can see how to render and configure the Candle type charts. Candle type chart is used to represent the price movements in stock.

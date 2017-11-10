@@ -198,9 +198,9 @@ export class Stripline extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates strip lines for an axis to highlight a particular region. Orientation can be changed by <code>StripLine Orientation</code> in properities panel.
-                    </p>
+                <p>
+                This sample highlights certain range in an axis by using stripline feature.
+            </p>
                 </div>
                 <div id="description">
                     <p>

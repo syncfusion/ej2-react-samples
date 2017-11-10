@@ -75,9 +75,9 @@ export class RangeArea extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates range area series  for temperature variation for a week.
-                    </p>
+                <p>
+                This sample visualizes the maximum and minimum temperatures  of different months with default range area series in the chart. Zoom the chart to check the temperature for week or day.
+            </p>
                 </div>
                 <div id="description">
                     <p>

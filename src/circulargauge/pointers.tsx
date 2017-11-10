@@ -304,9 +304,9 @@ export class Pointers extends SampleBase<{}, {}> {
                         </div>
                     </div>
                     <div id="action-description">
-                        <p>
-                            This sample demonstrates customization of various type of pointers in circular gauge.
-                        </p>
+                    <p>
+                    This sample visualizes the different types of pointers which are available in the gauge.
+                </p>
                     </div>
                     <div id="description">
                         <p>

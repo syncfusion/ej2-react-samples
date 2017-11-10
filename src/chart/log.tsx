@@ -67,9 +67,9 @@ export class LogAxis extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates logarithmic axis in vertical axis.
-                    </p>
+                <p>
+                This sample demonstrates the rendering of logarithmic axis in the chart.
+            </p>
                 </div>
                 <div id="description">
                     <p>

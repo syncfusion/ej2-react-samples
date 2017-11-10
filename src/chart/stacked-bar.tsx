@@ -61,9 +61,9 @@ export class StackedBar extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates stacked bar series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes sales comparison of different fruits with default stacked bar series in chart. Legend in the sample shows the information about the series.
+            </p>
                 </div>
                 <div id="description">
                     <p>

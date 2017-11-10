@@ -93,9 +93,9 @@ export class LocalData extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates plotting local data for stock price analysis of two products for a period.
-                    </p>
+                <p>
+                This sample illustrates  plotting of local data about stock price analysis of two products for a certain period.
+            </p>
                 </div>
                 <div id="description">
                     <p>

@@ -86,9 +86,9 @@ export class MultipleAxis extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates multiple axis chart by plotting temperature in celsious in an axis and temperature in farenheit in another axis.
-                    </p>
+                <p>
+                This sample illustrates multiple axis in chart to represent the temperature in Celsius in an axis and Fahrenheit  in another axis.
+            </p>
                 </div>
                 <div id="description">
                     <p>

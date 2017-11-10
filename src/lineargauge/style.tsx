@@ -99,9 +99,9 @@ export class Style extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates customizing sample in linear gauge.
-                    </p>
+                <p>
+                This sample visualizes the available customizing options in linear gauge.
+            </p>
                 </div>
                 <div id="description">
                     <p>

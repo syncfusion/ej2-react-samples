@@ -91,9 +91,10 @@ export class Bar extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates bar series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes the data about UK trade in food groups of the year 2015 with default bar series in the chart. 
+                Data points values are showed by using data label.
+            </p>
                 </div>
                 <div id="description">
                     <p>

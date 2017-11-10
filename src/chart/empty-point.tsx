@@ -104,9 +104,9 @@ export class EmptyPoint extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates empty point rendering for chart. You can change mode of empty point by using <code>Empty Point Mode</code> in property panel.
-                    </p>
+                <p>
+                This sample illustrates the empty point functionality in chart series. The mode of empty point can be changed by using <code>Empty Point Mode</code> in property panel.
+            </p>
                 </div>
                 <div id="description">
                     <p>

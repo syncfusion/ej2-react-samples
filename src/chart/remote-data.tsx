@@ -96,9 +96,9 @@ export class RemoteData extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates fetching remote data for the chart.
-                    </p>
+                <p>
+                This sample illustrates how to retrieve remote the data for chart.
+            </p>
                 </div>
                 <div id="description">
                     <p>The Chart supports data binding. The <code> dataSource</code> property can be assigned with the instance of <code><a target="_blank"

@@ -74,9 +74,9 @@ export class CrosshairChart extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates crosshair feature in chart. To see crosshair, hover or touch this chart and you can see instantaneous values of where you hovered.
-                    </p>
+                <p>
+                This sample illustrates crosshair feature in chart. To see crosshair, hover or long press the chart.
+            </p>
                 </div>
                 <div id="description">
                     <p>

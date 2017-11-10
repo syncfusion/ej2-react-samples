@@ -100,9 +100,9 @@ export class PolarColumn extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates polar series with column type mobile market subscriptions in differnt countries. Series type can be changed by <code>Series Type</code>
-                    </p>
+                <p>
+                This sample demonstrates polar series with column type for mobile market subscriptions in different countries. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel. 
+            </p>
                 </div>
                 <div id="description">
                     <p>

@@ -78,9 +78,9 @@ export class RSI extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates Relative Strength Index indicator in the chart.
-                    </p>
+                <p>
+                This sample illustrates a stock chart with candle series and a Relative Strength Index indicator. Trackball shows the information about the stock, signalline, lowerline, and upperline value of a day. 
+           </p>
                 </div>
                 <div id="description">
                     <p>

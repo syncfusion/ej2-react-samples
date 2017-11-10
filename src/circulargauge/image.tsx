@@ -88,9 +88,9 @@ export class Image extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates placing images in circular gauge.
-                    </p>
+                <p>
+                This sample visualizes the short-put distance covered by the athletes by using the image pointer in gauge.
+            </p>
                 </div>
                 <div id="description">
                     <p>

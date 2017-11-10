@@ -89,9 +89,9 @@ export class StackedColumn extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates stacked column series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes mobile game market for different countries with default stacked column series in chart. Legend in the sample shows the information about those series.
+            </p>
                 </div>
                 <div id="description">
                     <p>

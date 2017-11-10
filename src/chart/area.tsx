@@ -65,9 +65,10 @@ export class Area extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates area series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes the data about average sales comparison of two products by using default area series in the chart. 
+                Legend in the sample shows the information about the series.
+            </p>
                 </div>
                 <div id="description">
                     <p>

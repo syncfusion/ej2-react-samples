@@ -124,6 +124,11 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
+                <div id="action-description">
+    <p>
+        Labels in an axis can be placed smartly when it intersects with each other. Intersect action and edge label placement can be changed by using property panel.
+    </p>
+</div>
                 <div id="description">
                     <p>
                         In this example, you can see how to arrange the axis labels smartly. When the Axis labels overlap with each other based on

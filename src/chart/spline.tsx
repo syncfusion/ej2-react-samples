@@ -115,8 +115,9 @@ export class Spline extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates spline series type in the chart.
-                    </p>
+                        This sample visualizes the NC weather report for the year 2016 with default spline series in the chart.
+                Low and high temperature of the year are indicated by using annotation.
+            </p>
                 </div>
                 <div id="description">
                     <p>

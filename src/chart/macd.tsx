@@ -89,7 +89,7 @@ export class Macd extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates Moving Average Convergence Divergence indicator in the chart.
+                        This sample illustrates a stock chart with candle series and a Moving Average Convergence Divergence indicator. Trackball shows the information about the stock, signalline, Macdline, and Histogram value of a day.
                     </p>
                 </div>
                 <div id="description">
@@ -114,8 +114,8 @@ export class Macd extends SampleBase<{}, {}> {
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];

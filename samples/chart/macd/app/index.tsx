@@ -91,8 +91,8 @@ export class Macd extends SampleBase<{}, {}> {
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];

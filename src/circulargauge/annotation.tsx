@@ -203,9 +203,10 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
                     </CircularGaugeComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates placing annotation in circular gauge. Hour gauge and minute gauge are placed as annotation in circular gauge.
-                    </p>
+                <p>
+                This sample illustrates a clock by using annotation feature in the gauge. 
+                Hour and minute gauge are placed as annotation in circular gauge.
+           </p>
                 </div>
                 <div id="description">
                     <p>

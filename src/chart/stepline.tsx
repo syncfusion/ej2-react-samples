@@ -78,9 +78,10 @@ export class StepLine extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates step line series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes the unemployment rate from 1975 to 2010 with default stepline series in the chart. 
+                Data points are enhanced with marker and tooltip.
+            </p>
                 </div>
                 <div id="description">
                     <p>

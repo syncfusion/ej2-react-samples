@@ -187,9 +187,9 @@ export class Axes extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates customization axes in linear gauge. You can change minimium and maximum value of pointer by using <code>Axis Minimum</code> and <code>Axis Maximum</code> in property panel. Inversed and opposed position of an axis can be changed by <code>Axis Inversed</code> and <code>Axis Opposed</code>. Type of pointer and placing marker can be customized by <code>Pointer Type</code> and <code>Marker Placement</code>.
-                    </p>
+                <p>
+                This sample illustrates the axis and pointers feature in the linear gauge. Axis and pointers can be customized by using options available in the panel.
+             </p>
                 </div>
                 <div id="description">
                     <p>

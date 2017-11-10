@@ -73,9 +73,10 @@ export class StackedColumn100 extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates 100 percent stacking column series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes percentage of domestic product growth of four different countries with default 100% stacked column series in chart. 
+                Legend in the sample shows the information about the series.
+            </p>
                 </div>
                 <div id="description">
                     <p>

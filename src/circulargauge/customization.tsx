@@ -207,9 +207,10 @@ export class Customization extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates customization of circulargauge.
-                    </p>
+                <p>
+                This sample illustrates how to customize the gauge with pointers. 
+                Options to change the color and type of the pointer are available in the property panel.
+            </p>
                 </div>
                 <div id="description">
                     <p>

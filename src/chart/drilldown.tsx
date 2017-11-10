@@ -72,9 +72,9 @@ export class Drilldown extends SampleBase<{}, {}> {
                     </AccumulationChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates drill down sample with pie chart for a automobiles sales by category. By clicking one category, you can navigate to other sub-category by which companies are differentiated.
-                    </p>
+                <p>
+                This sample demonstrates drill down sample with pie chart for a automobiles sales by category. By clicking one category, you can navigate to other sub-category by which companies are differentiated.
+            </p>
                 </div>
                 <div id="description">
                     <p> In this example, you can see how to achieve <code>drilldown</code> concept using pie control. An automobile sales has been shown by different category, on clicking each category, you can navigate to next level, which shows the sales of those category

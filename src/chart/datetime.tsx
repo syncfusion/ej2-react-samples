@@ -79,9 +79,9 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates rendering of date time axis for chart by using weather statistics of Alaska for a year.
-                    </p>
+                <p>
+                This sample demonstrates the rendering of date time axis in the chart with weather statistics analysis of Alaska for a year.
+            </p>
                 </div>
                 <div id="description">
                     <p>

@@ -40,9 +40,9 @@ export class Default extends SampleBase<{}, {}> {
                     </LinearGaugeComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates default rendering of linear gauge.
-                    </p>
+                <p>
+                This sample illustrates the default rendering of linear gauge.
+           </p>
                 </div>
                 <div id="description">
                     <p>

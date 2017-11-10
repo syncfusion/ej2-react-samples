@@ -60,9 +60,10 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates HiloOpenClose series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes the AAPL historical data with default HILO Open Close series in the chart. 
+                Tooltip and crosshair show the information about the data and period.
+           </p>
                 </div>
                 <div id="description">
                     <p>

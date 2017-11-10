@@ -83,9 +83,9 @@ export class CombinationSeries extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates combination series of stacked column and line series for annual GDP growth of France.
-                    </p>
+                <p>
+                This sample illustrates a combination of line and stacked column series. Tooltip shows the information about the data point.
+            </p>
                 </div>
                 <div id="description">
                     <p>

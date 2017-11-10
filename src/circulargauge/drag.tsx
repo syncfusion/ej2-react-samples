@@ -121,9 +121,9 @@ export class Drag extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates pointer drag in circular gauge. Position of pointer value can be changed by <code>Pointer Value</code> and drag of pointer can be enabled or disabled by <code>Enable Drag</code>.
-                    </p>
+                <p>
+                This sample visualizes pointer drag in circular gauge. Position of pointer value can be changed by using <code>Pointer Value</code> and we can drag the pointer by enabling drag option.
+            </p>
                 </div>
                 <div id="description">
                     <p>

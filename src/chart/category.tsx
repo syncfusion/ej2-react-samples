@@ -94,9 +94,9 @@ export class CategoryAxis extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates rendering of category axis for a chart by using internet users of different country.
-                    </p>
+                <p>
+                This sample demonstrates the rendering of category axis in the chart with internet users of different countries.
+            </p>
                 </div>
                 <div id="description">
                     <p>

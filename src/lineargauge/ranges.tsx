@@ -185,9 +185,9 @@ export class Ranges extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates customization of range in linear gauge. Ranges of linear gauge are seperated into three categories Low, Medium and High. For each range, start, end and color can be changed by <code>Range Start</code>, <code>Range End</code> and <code>Range Color</code> respectively. Start and end width of axis for each range can be changed by <code>Start Width</code> and <code>End Width</code>.
-                    </p>
+                <p>
+                This sample illustrates how to highlight a region in an axis by using ranges in gauge. Start, end, color, and width of the range can be changed by using the options provided in the property panel.
+            </p>
                 </div>
                 <div id="description">
                     <p>

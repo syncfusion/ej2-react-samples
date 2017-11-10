@@ -47,9 +47,9 @@ export class VerticalChart extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates vertical chart such that orientation of x-axis is changed to vertical and orientation of y-axis is changed to horizontal.
-    </p>
+                <p>
+                This sample illustrates the vertical chart by changing the orientation of x-axis to vertical and y-axis to horizontal.
+            </p>
                 </div>
                 <div id="description">
                     <p>

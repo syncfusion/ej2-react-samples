@@ -72,9 +72,10 @@ export class Line extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates line series type in the chart.
-                    </p>
+                <p>
+                This sample visualizes the consumer price data with default line series in the chart. 
+                Data points are enhanced with marker and tooltip
+            </p>
                 </div>
                 <div id="description">
                     <p>

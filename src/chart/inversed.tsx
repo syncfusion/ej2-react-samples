@@ -78,9 +78,9 @@ export class InversedAxis extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates inversed position of horizontal axis and vertical axis to plot exchange rate over a period.
-                    </p>
+                <p>
+                This sample illustrates inversed axis in chart to plot exchange rate over a period.
+            </p>
                 </div>
                 <div id="description">
                     <p>

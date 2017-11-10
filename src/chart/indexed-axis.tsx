@@ -105,9 +105,9 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates rendering of indexed category axis for a chart by using two series.
-                    </p>
+                <p>
+                This sample demonstrates the rendering of indexed category axis in the chart by using two series.
+            </p>
                 </div>
                 <div id="description">
                     <p>

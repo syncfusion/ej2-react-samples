@@ -79,9 +79,9 @@ export class Scatter extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates scatter series for height and weight comparision of male and female.
-                    </p>
+                <p>
+                This sample compares the height and weight of the genders by using default scatter series in the chart. Tooltip shows the information about the data.
+            </p>
                 </div>
                 <div id="description">
                     <p>

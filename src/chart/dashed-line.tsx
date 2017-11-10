@@ -112,9 +112,10 @@ export class DashedLine extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates line type series with dash-array support.
-                    </p>
+                <p>
+                This sample illustrates a line series with dash array. 
+                Dashed lines are animated by using css animation.
+            </p>
                 </div>
                 <div id="description">
                     <p>

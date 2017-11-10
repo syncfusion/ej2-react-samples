@@ -134,9 +134,10 @@ export class Direction extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates model of magnetic compass. Pointer color and label color of the circular gauge can be modified by <code>Pointer Color</code> and <code>Label Color</code>.
-                    </p>
+                <p>
+                This sample illustrates how to make a direction compass by using the features in gauge. 
+                Color of the needle and direction labels can be customized by using options.
+            </p>
                 </div>
                 <div id="description">
                     <p>

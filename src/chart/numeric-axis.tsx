@@ -93,9 +93,9 @@ export class Numeric extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates rendering of numeric axis for chart by using England and West indies cricket match.
-                    </p>
+                <p>
+                This sample demonstrates the rendering of numeric axis in the chart with England and West indies cricket match data.
+            </p>
                 </div>
                 <div id="description">
                     <p>

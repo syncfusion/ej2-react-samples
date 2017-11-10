@@ -58,9 +58,9 @@ export class TMA extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates Triangle Moving Average indicator in the chart.
-                    </p>
+                <p>
+                This sample illustrates a stock chart with candle series and a Triangle Moving Average indicator. Trackball shows the information about the stock and signal value of a day.
+           </p>
                 </div>
                 <div id="description">
                     <p>
