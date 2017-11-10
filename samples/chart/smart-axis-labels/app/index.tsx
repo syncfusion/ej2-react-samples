@@ -42,7 +42,6 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
     private droplist: { [key: string]: Object }[] = [
         { value: 'Hide' },
         { value: 'Trim' },
-        { value: 'Radar' },
         { value: 'Wrap' },
         { value: 'MultipleRows' },
         { value: 'Rotate45' },

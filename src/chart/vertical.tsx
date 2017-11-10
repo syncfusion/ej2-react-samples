@@ -84,7 +84,7 @@ export class VerticalChart extends SampleBase<{}, {}> {
     public liveData(data: any[], series: Series): any[] {
         this.count = this.count + 1;
         let newData: any[] = data;
-        if (this.count > 350 || getElement('container-vertical') === null) {
+        if (this.count > 350 || getElement('charts-vertical') === null) {
             clearInterval(clrInterval);
         } else if (this.count > 300) {
             newData.push({ x: this.getXValue(data), y: this.getRandomArbitrary(0, 0) });
