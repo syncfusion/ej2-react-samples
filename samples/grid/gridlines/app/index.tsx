@@ -27,7 +27,7 @@ export class GridLines extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section row'>
+                <div className='control-section'>
                     <div className='e-statustext'>Select Grid Line</div>
                     <ToolbarComponent id="toolbar" onClick={this.click.bind(this)} >
                         <ItemsDirective>
