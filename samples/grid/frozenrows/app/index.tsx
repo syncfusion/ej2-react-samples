@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Resize } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Resize, Sort } from '@syncfusion/ej2-react-grids';
 import { data } from '../data';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
@@ -23,8 +23,8 @@ export class FrozenRows extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <div className=' col-lg-8'>
-          <GridComponent dataSource={data.slice(0, 50)} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} ref={g => this.grid = g}>
+          <div className='col-lg-8'>
+          <GridComponent dataSource={data.slice(0, 50)} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} allowSorting={true} allowMultiSorting={false} ref={g => this.grid = g}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='right'></ColumnDirective>
               <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' />
@@ -37,9 +37,9 @@ export class FrozenRows extends SampleBase<{}, {}> {
               <ColumnDirective field='ShipCity' headerText='Ship City' width='250'></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250'></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Freeze, Resize]} />
+            <Inject services={[Freeze, Resize, Sort]} />
           </GridComponent>
-          </div>
+        </div>
         <div className='col-lg-4 property-section'>
             <PropertyPane title='Properties'>
               <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
