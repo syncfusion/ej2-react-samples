@@ -113,7 +113,7 @@ export class Nested extends SampleBase<{}, {}> {
         </div>
 
         <div id="action-description">
-            <p>This sample demonstrates the nested list functionalities of the ListView. Click any list item to navigate to their sub items. To navigate back to the parent list, click the back icon at the top left area.
+            <p>This sample demonstrates the nested list functionalities, which allows to navigate to the sub list-items by click on any item and navigate back to list-item by using top left back icon.
            </p>
         </div>
 

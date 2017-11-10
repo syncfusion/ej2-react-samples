@@ -62,7 +62,7 @@ export class AjaxContentTooltip extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="action-description">
-                    <p>This sample demonstrates the AJAX functionalities of the Tooltip. Hover the list item to open the tooltip. For Mobile devices, touch and hold the list item to open the tooltip.</p>
+                    <p>This sample demonstrates the AJAX functionalities of the Tooltip which will open by Hover or Touch-hold action on list-item.</p>
                 </div>
 
                 <div id="description">

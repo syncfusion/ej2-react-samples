@@ -61,7 +61,7 @@ export class TemplateTooltip extends SampleBase<{}, {}> {
         </div>
 
         <div id="action-description">
-          <p>This sample demonstrates the Template functionalities of the Tooltip. Hover the toolbar options to open the tooltip. For Mobile devices, touch and hold the toolbar options to open the tooltip.</p>
+          <p>This sample demonstrates the Template functionalities of the Tooltip which will open by Hover or Touch-hold action on Toolbar option.</p>
         </div>
 
         <div id="description">
