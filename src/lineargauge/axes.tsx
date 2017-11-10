@@ -65,8 +65,7 @@ export class Axes extends SampleBase<{}, {}> {
 
     private typeChange() {
         this.gaugeInstance.axes[0].pointers[0].type = this.typeElement.value as Point;
-        this.placeElement.enabled = (this.typeElement.value === 'Marker') ? true : false;
-        this.markerElement.disabled = (this.typeElement.value === 'Marker') ? false : true;
+        this.placeElement.enabled = (this.typeElement.value === 'Marker');
         this.gaugeInstance.refresh();
     }
 

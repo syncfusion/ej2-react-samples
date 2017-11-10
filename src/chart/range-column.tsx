@@ -41,7 +41,7 @@ export class RangeColumn extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' style={{ textAlign: "center" }}
                         primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 } }}
                         primaryYAxis={{ labelFormat: '{value}˚C', maximum: 20, edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }}
-                        title='Maximum and minimum Temperature' loaded={this.onChartLoad.bind(this)}
+                        title='Maximum and Minimum Temperature' loaded={this.onChartLoad.bind(this)}
                         load={this.load.bind(this)}
                         chartArea={{ border: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '60%'}

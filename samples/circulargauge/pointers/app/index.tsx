@@ -117,7 +117,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                                 </PointersDirective>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Range Bar</div>'
-                                                        angle={180} radius='20%'></AnnotationDirective>
+                                                        angle={180} zIndex='1' radius='20%'></AnnotationDirective>
                                                 </AnnotationsDirective>
                                             </AxisDirective>
                                         </AxesDirective>
@@ -148,7 +148,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                                 </PointersDirective>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Triangle</div>'
-                                                        angle={180} radius='20%'></AnnotationDirective>
+                                                        angle={180} zIndex='1' radius='20%'></AnnotationDirective>
                                                 </AnnotationsDirective>
                                             </AxisDirective>
                                         </AxesDirective>
@@ -193,7 +193,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                                 </PointersDirective>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Needle</div>'
-                                                        angle={180} radius='20%'></AnnotationDirective>
+                                                        angle={180} zIndex='1' radius='20%'></AnnotationDirective>
                                                 </AnnotationsDirective>
                                             </AxisDirective>
                                         </AxesDirective>
@@ -250,7 +250,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                                 </PointersDirective>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Multiple Needle</div>'
-                                                        angle={180} radius='25%'></AnnotationDirective>
+                                                        angle={180} zIndex='1' radius='25%'></AnnotationDirective>
                                                 </AnnotationsDirective>
                                             </AxisDirective>
                                         </AxesDirective>
@@ -294,7 +294,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                                 </PointersDirective>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Live Update</div>'
-                                                        angle={180} radius='20%'></AnnotationDirective>
+                                                        angle={180} zIndex='1' radius='20%'></AnnotationDirective>
                                                 </AnnotationsDirective>
                                             </AxisDirective>
                                         </AxesDirective>
