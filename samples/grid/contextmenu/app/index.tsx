@@ -21,12 +21,12 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
                         allowExcelExport={true} allowPdfExport={true} contextMenuItems={this.contextMenuItems}
                         editSettings={this.editing}>
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' width='200' textAlign='right' isPrimaryKey={true}></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='right' isPrimaryKey={true}></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name'></ColumnDirective>
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' textAlign='right' />
-                            <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='right' />
+                            <ColumnDirective field='Freight' headerText='Freight' format='C2' textAlign='right' editType='numericedit' />
                             <ColumnDirective field='ShipName' headerText='Ship Name' width='200'></ColumnDirective>
-                            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200'></ColumnDirective>
+                            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit'></ColumnDirective>
+                            <ColumnDirective field='ShipCity' headerText='Ship City' width='150'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
                     </GridComponent>
