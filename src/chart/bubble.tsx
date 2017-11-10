@@ -98,7 +98,7 @@ export class Bubble extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the bubble type charts.A bubble chart is a type of chart that displays three dimensions of data. Each points is drawn as a bubble, where bubble's size deponds on <code>size</code> property.
+                        In this example, you can see how to render and configure the bubble type charts.A bubble chart is a type of chart that displays three dimensions of data. Each points is drawn as a bubble, where bubble's size depends on <code>size</code> property.
                         You can use <code>fill</code> property to customize the data appearance.
                   </p>
                     <p>

@@ -81,7 +81,7 @@ export class Drilldown extends SampleBase<{}, {}> {
                     in terms of company.</p>
                     <p> Legend and datalabel is used in this sample.</p>
                     <p style={{ fontWeight: 500 }}>Injecting Module</p>
-                    <p> Accumulation chart component features are segregated into individual feature-wise modules. To use legend, we need to inject Legend module <code>AccumulationLegend</code> into services </p>
+                    <p> Accumulation chart component features are segregated into individual feature-wise modules. To use datalabel, we need to inject DataLabel module <code>AccumulationDataLabel</code> into services </p>
                 </div>
             </div>
         )

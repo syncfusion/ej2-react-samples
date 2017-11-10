@@ -99,7 +99,7 @@ export class MultipleAxis extends SampleBase<{}, {}> {
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                     </p>
                     <p>
-                        More information on the multipe axis can be found in this &nbsp;
+                        More information on the multiple axis can be found in this &nbsp;
                         <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-axis.html">documentation section</a>.
                     </p>
                 </div>

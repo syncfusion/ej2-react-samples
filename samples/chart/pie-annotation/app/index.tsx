@@ -7,7 +7,7 @@ import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, AnnotationsDirective, AnnotationDirective,
     StackingColumnSeries, Category, Legend, Selection, IMouseEventArgs,
     IAccLoadedEventArgs, ChartAnnotation, AccumulationChart, AccumulationDataLabel, IAnimationCompleteEventArgs,
-    AccumulationTheme, ChartTheme
+    AccumulationTheme, ChartTheme, IAccResizeEventArgs
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from './sample-base';
@@ -121,6 +121,9 @@ export class PieAnnotation extends SampleBase<{}, {}> {
             }],
             legendSettings: { visible: false },
             theme: (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme,
+            resized: (args: IAccResizeEventArgs) => {
+                location.reload();
+            }
         });
         this.pie.appendTo('#chart_annotation');
     }

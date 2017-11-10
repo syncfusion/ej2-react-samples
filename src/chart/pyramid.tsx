@@ -51,9 +51,9 @@ export class Pyramid extends SampleBase<{}, {}> {
     </p>
         </div>
         <div id="description">
-          <p> In this example, you can see how to render pyramid chart. <code>dataLabel</code> are used to represent individual data and its value.</p>
+          <p> In this example, you can see how to render pyramid chart. <code>dataLabel</code> is used to represent individual data and its value.</p>
           <p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
-          <p> <code>Legends</code> are disabled in this example, the information about it can be read using <code>Tooltips</code>.</p>
+          <p> <code>Legends</code> are disabled in this example, the information about it can be read using <code>Tooltip</code>.</p>
           <p><b>Injecting Module</b></p>
           <p>
             Chart component features are segregated into individual feature-wise modules. To use Pyramid series, we need to inject

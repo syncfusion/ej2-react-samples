@@ -33,7 +33,7 @@ export class VerticalChart extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         loaded={this.onChartLoad.bind(this)}
                         primaryYAxis={{
-                            title: 'Vilocity (m/s)', majorGridLines: { width: 0 }, minimum: -15, maximum: 15, interval: 5
+                            title: 'Velocity (m/s)', majorGridLines: { width: 0 }, minimum: -15, maximum: 15, interval: 5
                         }}
                         chartArea={{ border: { width: 0 } }}
                         isTransposed={true}

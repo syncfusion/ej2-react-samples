@@ -65,7 +65,7 @@ export class RangeColumn extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         In this example, you can see how to render and configure the range column type chart. You can use <code>border</code>,
-                        <code>fill</code> properties to customize the area. <code>dataLabel</code> are used to represent individual data
+                        <code>fill</code> properties to customize the Columns. <code>dataLabel</code> are used to represent individual data
                         and its value.
                     </p>
                     <p>
