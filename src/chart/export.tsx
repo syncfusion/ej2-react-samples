@@ -96,8 +96,8 @@ export class Export extends SampleBase<{}, {}> {
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '100%' }}>
-                                        <div id="btn-control">
+                                    <td>
+                                        <div id="btn-control"  style={{ 'margin-left': '60px' }}>
                                             <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>

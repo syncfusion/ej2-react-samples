@@ -205,7 +205,7 @@ export class Trend extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '20%' }}>
                                         <div>
-                                            <NumericTextBoxComponent id="polynomial" value={0} min={1} max={20} step={1} disabled={true} change={this.checkPolynomialOrder.bind(this)} ref={d => this.polynomialElement = d} />
+                                            <NumericTextBoxComponent id="polynomial" value={0} min={1} max={20} step={1} enabled={false} change={this.checkPolynomialOrder.bind(this)} ref={d => this.polynomialElement = d} />
                                         </div>
                                     </td>
                                 </tr>
@@ -215,7 +215,7 @@ export class Trend extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '20%' }}>
                                         <div>
-                                            <NumericTextBoxComponent id="period" value={0} min={1} max={20} step={1} disabled={true} change={this.checkPeriod.bind(this)} ref={d => this.periodElement = d} />
+                                            <NumericTextBoxComponent id="period" value={0} min={1} max={20} step={1} enabled={false} change={this.checkPeriod.bind(this)} ref={d => this.periodElement = d} />
                                         </div>
                                     </td>
                                 </tr>

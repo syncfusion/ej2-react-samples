@@ -46,7 +46,7 @@ export class StackedBar100 extends SampleBase<{}, {}> {
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} xName='x' yName='y' name='Apple' type='StackingBar100'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data} xName='x' yName='y1' name='orange' type='StackingBar100'>
+                            <SeriesDirective dataSource={data} xName='x' yName='y1' name='Orange' type='StackingBar100'>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data} xName='x' yName='y2' name='Wastage' type='StackingBar100'>
                             </SeriesDirective>
