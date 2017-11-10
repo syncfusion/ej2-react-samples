@@ -20,6 +20,7 @@ let categoryName: string;
 let propBorder: HTMLElement = createElement('div', { className: 'sb-property-border' });
 export let sampleNameElement: Element = select('#component-name>.sb-sample-text');
 
+let rightPane: Element = select('.sb-right-pane');
 export let sourceTab: Tab;
 
 let mobilePropPane: Element = select('.sb-mobile-prop-pane');
@@ -260,7 +261,8 @@ function processDeviceDependables(): void {
 }
 
 export function intialLoadScrollTop(): void {
-    select('.sb-right-pane').scrollTop = 0;
+    isMobile = window.matchMedia('(max-width:550px)').matches;
+    isMobile ? rightPane.scrollTop = 74 : rightPane.scrollTop = 0;   
 }
 
 export function renderDescriptions(): void {
@@ -286,7 +288,7 @@ export function onComponentLoad(): void {
         propBorder.classList.add('sb-hide');
     }
     let mobileSetting: Element = select('.sb-mobile-setting');
-    isMobile = window.matchMedia('(max-width:550px)').matches;;
+    isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile && mobileSetting) {
         if (propPanel) {
             mobileSetting.classList.remove('sb-hide');

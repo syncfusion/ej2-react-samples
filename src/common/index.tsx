@@ -492,7 +492,10 @@ export function removeOverlay(): void {
   if (!sbBodyOverlay.classList.contains('sb-hide')) {
     sbBodyOverlay.classList.add('sb-hide');
   }
-  sbRightPane.scrollTop = 0;
+  isMobile = window.matchMedia('(max-width:550px)').matches;
+  if (!isMobile) {
+    sbRightPane.scrollTop = 0;
+  }
 }
 
 export function sampleOverlay(): void {
@@ -673,6 +676,8 @@ function loadTheme(theme: string): void {
     setSelectList();
     removeOverlay();
     ReactDOM.render(<Content />, document.getElementById('tab-component'));
-    document.querySelector('.sb-right-pane').scrollTop = 0;
+    if (!isMobile) {
+      document.querySelector('.sb-right-pane').scrollTop = 0;      
+    }
   });
 }
