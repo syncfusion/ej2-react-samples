@@ -10,7 +10,7 @@ export class Default extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <div className='calendar-control-section'>
+                    <div className='calendar-control-section' style={{ overflow: 'auto' }}>
                         <CalendarComponent change={onchange} ></CalendarComponent>
                         <label id='date_label'>Selected Value:</label>
                     </div>

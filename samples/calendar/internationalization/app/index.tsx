@@ -37,7 +37,7 @@ export class Culture extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-9'>
-                        <div className='calendar-control-section'>
+                        <div className='calendar-control-section' style={{ overflow: 'auto' }}>
                             <CalendarComponent change={this.onChange.bind(this)} locale='de' ref={calendar => this.calendarInstance = calendar} ></CalendarComponent>
                             <label id='date_label'>Selected Value:</label>
                         </div>
