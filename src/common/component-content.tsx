@@ -369,7 +369,7 @@ export class Content extends React.Component<{}, {}>{
         return (
             <TabComponent id='content-tab' className='sb-content-tab' selecting={preventTabSwipe} ref={t => sourceTab = t}>
                 <div id="sb-content" className='sb-content-section'>
-                    <div id='sb-content-header' className="e-header sb-content-tab-header">
+                    <div id='sb-content-header' className="e-tab-header sb-content-tab-header">
                         <div>
                             <span className="sb-icons sb-icon-Demo"></span> DEMO </div>
                         <div>
@@ -388,7 +388,7 @@ export class Content extends React.Component<{}, {}>{
                         <div>
                             <div className='sb-source-section'>
                                 <TabComponent id='sb-source-tab' className="sb-source-code-section" headerPlacement="Bottom" selecting={preventTabSwipe}>
-                                    <div id='sb-content-header' className="e-header sb-content-tab-header">
+                                    <div id='sb-content-header' className="e-tab-header sb-content-tab-header">
                                         <div>
                                             <span className="sb-ts-snippet-header"></span></div>
                                     </div>
