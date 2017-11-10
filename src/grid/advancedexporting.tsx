@@ -3,9 +3,9 @@ import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar, ExcelExport, PdfExport } from '@syncfusion/ej2-react-grids';
 import { data, employeeData } from './data';
 import { SampleBase } from '../common/sample-base';
-import { ClickEventArgs } from '@syncfusion/ej2-navigations'
+import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 
-export class AdvanceExporting extends SampleBase<{}, {}> {
+export class AdvancedExporting extends SampleBase<{}, {}> {
   public toolbarOptions: any = ['excelexport', 'pdfexport'];
   private firstGridInstance: GridComponent;
   private secondGridInstance: GridComponent;
