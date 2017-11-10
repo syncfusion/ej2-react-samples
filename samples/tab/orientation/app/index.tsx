@@ -95,7 +95,7 @@ export class Orientation extends SampleBase<{}, {}> {
                     <div className='col-lg-8'>
                         {/* Render the Tab Component */}
                         <TabComponent ref={(tab) => { this.tabObj = tab }} showCloseButton={ true } heightAdjustMode='None' height={320}>
-                            <div className="e-header">
+                            <div className="e-tab-header">
                                 <div>Rome</div>
                                 <div>Paris</div>
                                 <div>London</div>
