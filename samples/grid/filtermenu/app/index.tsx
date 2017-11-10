@@ -9,8 +9,8 @@ export class FilterMenu extends SampleBase<{}, {}> {
 
     private gridInstance: GridComponent;
     private filterType: { [key: string]: Object }[] = [
-        { text: 'menu', value: 'menu' },
-        { text: 'checkbox', value: 'checkbox' },
+        { text: 'Menu', value: 'menu' },
+        { text: 'Checkbox', value: 'checkbox' },
     ];
     public filterSettings: any = { type: 'menu' }
     private fields: Object = { text: 'text', value: 'value' };
