@@ -16,19 +16,19 @@ export class Default extends SampleBase<{}, {}>{
       rules: {
         Required: { required: true },
         Email: { required: true, email: true },
-        Url: { url: true },
-        Date: { date: true },
-        DateISO: { dateIso: true },
-        Number: { number: true },
-        Digits: { digits: true },
-        MaxLength: { maxLength: 5 },
-        MinLength: { minLength: 5 },
-        RangeLength: { rangeLength: [5, 10] },
-        Range: { range: [5, 10] },
-        Max: { max: 5 },
-        Min: { min: 5 },
-        Regex: { regex: ['^[A-z]+$', 'Allowed only alphabets'] },
-        Custom: { custom: [customFunction, 'Allowed char length is 5'] }
+        Url: { required: true, url: true },
+        Date: { required: true, date: true },
+        DateISO: { required: true, dateIso: true },
+        Number: { required: true, number: true },
+        Digits: { required: true, digits: true },
+        MaxLength: { required: true, maxLength: 5 },
+        MinLength: { required: true, minLength: 5 },
+        RangeLength: { required: true, rangeLength: [5, 10] },
+        Range: { required: true, range: [5, 10] },
+        Max: { required: true, max: 5 },
+        Min: { required: true, min: 5 },
+        Regex: { required: true, regex: ['^[A-z]+$', 'Allowed only alphabets'] },
+        Custom: { required: true, custom: [customFunction, 'Allowed char length is 5'] }
       },
       // Initialize the custom placement
       customPlacement: (inputElement: HTMLElement, errorElement: HTMLElement) => {
@@ -44,12 +44,12 @@ export class Default extends SampleBase<{}, {}>{
   render() {
     return (
       <div className='control-pane'>
-        <div className='control-section'>
+        <div className='col-lg-12 control-section'>
           <div className='content-wrapper' style={{ marginBottom: '25px' }}>
             <form id='htmlFormId' className='htmlForm-horizontal'>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='required' name='Required' data-msg-containerid='requiredError' />
+                  <input type='text' id='required' name='Required' required data-msg-containerid='requiredError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='required'>Required</label>
                 </div>
@@ -57,7 +57,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='email' name='Email' data-msg-containerid='emailError' />
+                  <input type='text' id='email' name='Email' required data-msg-containerid='emailError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='email'>Email</label>
                 </div>
@@ -65,7 +65,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='url' name='Url' data-msg-containerid='urlError' />
+                  <input type='text' id='url' name='Url' required data-msg-containerid='urlError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='url'>URL</label>
                 </div>
@@ -73,7 +73,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='date' name='Date' data-msg-containerid='dateError' />
+                  <input type='text' id='date' name='Date' required data-msg-containerid='dateError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='date'>Date</label>
                 </div>
@@ -81,7 +81,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='dateIso' name='DateISO' data-msg-containerid='dateisoError' />
+                  <input type='text' id='dateIso' name='DateISO' required data-msg-containerid='dateisoError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='dateIso'>Date ISO (YYYY-MM-DD)</label>
                 </div>
@@ -89,7 +89,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='number' name='Number' data-msg-containerid='numberError' />
+                  <input type='text' id='number' name='Number' required data-msg-containerid='numberError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='number'>Integer or Decimal</label>
                 </div>
@@ -97,7 +97,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='digits' name='Digits' data-msg-containerid='digitError' />
+                  <input type='text' id='digits' name='Digits' required data-msg-containerid='digitError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='digits'>Positive Integer</label>
                 </div>
@@ -105,7 +105,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='maxlen' name='MaxLength' data-msg-containerid='maxlenError' />
+                  <input type='text' id='maxlen' name='MaxLength' required data-msg-containerid='maxlenError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='maxlen'>Maximum 5 characters</label>
                 </div>
@@ -113,7 +113,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='minlen' name='MinLength' data-msg-containerid='minlenError' />
+                  <input type='text' id='minlen' name='MinLength' required data-msg-containerid='minlenError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='minlen'>Minimum 5 characters</label>
                 </div>
@@ -121,7 +121,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='rangelen' name='RangeLength' data-msg-containerid='rangelenError' />
+                  <input type='text' id='rangelen' name='RangeLength' required data-msg-containerid='rangelenError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='rangelen'>Characters length between 5 to 10</label>
                 </div>
@@ -129,7 +129,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='range' name='Range' data-msg-containerid='rangeError' />
+                  <input type='text' id='range' name='Range' required data-msg-containerid='rangeError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='range'>Value between 5 to 10</label>
                 </div>
@@ -137,7 +137,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='max' name='Max' data-msg-containerid='maxError' />
+                  <input type='text' id='max' name='Max' required data-msg-containerid='maxError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='max'>Max (maximum value 5)</label>
                 </div>
@@ -145,7 +145,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='min' name='Min' data-msg-containerid='minError' />
+                  <input type='text' id='min' name='Min' required data-msg-containerid='minError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='min'>Min (minimum value 5)</label>
                 </div>
@@ -153,7 +153,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='regex' name='Regex' data-msg-containerid='regexError' />
+                  <input type='text' id='regex' name='Regex' required data-msg-containerid='regexError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='regex'>Regex (accepts alphabets only)</label>
                 </div>
@@ -161,7 +161,7 @@ export class Default extends SampleBase<{}, {}>{
               </div>
               <div className='form-group'>
                 <div className='e-float-input'>
-                  <input type='text' id='custom' name='Custom' data-msg-containerid='customError' />
+                  <input type='text' id='custom' name='Custom' required data-msg-containerid='customError' />
                   <span className='e-float-line'></span>
                   <label className='e-float-text' htmlFor='custom'>Custom Function (maximum 5 characters)</label>
                 </div>
