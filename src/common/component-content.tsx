@@ -306,6 +306,22 @@ export class Content extends React.Component<{}, {}>{
 
     public componentDidMount(): void {
 
+        /**
+         * Default Sample Redirection
+         */
+        let sampleOrder: string[] = window.sampleOrder;
+        let hash: string[] = location.hash.split('/').slice(1);
+        if (sampleOrder.indexOf(hash.slice(1).join('/')) === -1) {
+            let path: string;
+            for (let sample of sampleOrder) {
+                if (sample.indexOf(hash[1] + '/') !== -1) {
+                    path = hash[0] + '/' + sample;
+                    break;
+                }
+            }
+            location.hash = path ? path : '#/material/chart/line';
+        }
+
         let hsplitter: string = '<div class="sb-toolbar-splitter sb-custom-item"></div>';
         let openNewTemplate: string = '<div class="sb-custom-item sb-open-new-wrapper"><a id="openNew" target="_blank">' +
             '<div class="sb-icons sb-icon-Popout"></div></a></div>';
