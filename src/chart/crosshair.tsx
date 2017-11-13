@@ -38,7 +38,7 @@ export class CrosshairChart extends SampleBase<{}, {}> {
                             }
                         }}
                         width={Browser.isDevice ? '100%' : '80%'}
-                        title='Weather Condition' loaded={this.onChartLoad.bind(this)}
+                        title='Conns,Inc Stock Details' loaded={this.onChartLoad.bind(this)}
                         crosshair={{ enable: true }}
                         legendSettings={{ visible: false }}>
                         <Inject services={[LineSeries, HiloOpenCloseSeries, Crosshair, DateTime]} />
