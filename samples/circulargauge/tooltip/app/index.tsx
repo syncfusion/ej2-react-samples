@@ -76,12 +76,6 @@ export class Tooltip extends SampleBase<{}, {}> {
                         </CircularGaugeComponent>
                     </div>
                 </div>
-                <div id="description">
-                    <p>
-                        In this example, you can see how to show the tooltip for pointer in gauge, to see the tooltip in action, hover pointer or
-                        tap on pointer in touch enabled devices.
-                    </p>
-                    <br />
             </div>
         )
     }

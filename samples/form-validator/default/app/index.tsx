@@ -178,7 +178,6 @@ export class Default extends SampleBase<{}, {}>{
             </form>
           </div>
         </div>
-        <div id='description'>
       </div>
     )
   }

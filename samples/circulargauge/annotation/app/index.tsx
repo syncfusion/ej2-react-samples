@@ -202,12 +202,6 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
                         </AxesDirective>
                     </CircularGaugeComponent>
                 </div>
-                <div id="description">
-                    <p>
-                        In this example, you can see how to use annotation in the circular gauge. Annotations are used to mark the specific area
-                        of interest in gauge with texts, shapes or images. In this sample <code>minutes</code> and <code>seconds</code>        sub gauges are achieved using <code>annotation</code> feature.
-                    </p>
-                    <br />
             </div >
         )
     }
