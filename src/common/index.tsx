@@ -574,10 +574,10 @@ export function toggleLeftPane(): void {
  * Resize event processing
  */
 function processResize(e: any): void {
-  if (resizeManualTrigger) {
+  isMobile = document.body.offsetWidth <= 550;
+  if (resizeManualTrigger || (isMobile && !select('.sb-mobile-right-pane').classList.contains('sb-hide'))) {
     return;
   }
-  isMobile = document.body.offsetWidth <= 550;
   isTablet = document.body.offsetWidth >= 550 && document.body.offsetWidth <= 850;
   isPc = document.body.offsetWidth >= 850;
   processDeviceDependables();
