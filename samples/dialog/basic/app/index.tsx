@@ -74,7 +74,7 @@ export class Basic extends SampleBase<{}, {}> {
   render() { 
     return (
       <div className = 'control-pane'>
-        <div id='target' className='control-section'>
+        <div id='target' className='control-section' style={{'min-height':'350px'}}>
             {/* Buttons to open the corresponding Dialog */}
             <button className="e-control e-btn dlgbtn" onClick={this.buttonClick.bind(this)} id="alertBtn">Alert</button>        
             <button className="e-control e-btn dlgbtn" onClick={this.buttonClick.bind(this)} id="confirmBtn">Confirm</button>        

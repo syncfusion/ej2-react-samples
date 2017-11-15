@@ -42,7 +42,7 @@ export class Modal extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section row'>
-            <div id='target' className='col-lg-8'>
+            <div id='target' className='col-lg-8' style={{'min-height':'350px'}}>
             <button className="e-control e-btn dlgbtn" style={{position:'absolute'}} onClick={this.buttonClick.bind(this)}>Open</button>
             {/* Rendering modal Dialog by enabling 'isModal' as true */}
             <DialogComponent id="modalDialog" isModal={true} buttons={this.buttons} header='Software Update' width='335px' content='Your current software version is up to date.' 

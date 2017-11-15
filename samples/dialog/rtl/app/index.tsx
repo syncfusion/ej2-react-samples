@@ -46,7 +46,7 @@ private rtlContent: string = '<div>Are you sure you want to delete sea.jpg?</div
   render() {
     return (
       <div className = 'control-pane'>
-        <div id='target' className='control-section'>
+        <div id='target' className='control-section' style={{'min-height':'350px'}}>
             <button className="e-control e-btn dlgbtn" onClick={this.buttonClick.bind(this)} id="dialogBtn">Open</button>        
             {/* Render Dialog in RTL format by setting 'enableRtl' as true */}
             <DialogComponent id="dialog" enableRtl={true} showCloseIcon={true} animationSettings={this.animationSettings} width='300px' content={this.rtlContent} ref={dialog => this.dialogInstance = dialog}
