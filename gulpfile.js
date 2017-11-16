@@ -126,22 +126,8 @@ gulp.task('plnkr-json', function() {
     var bgRegex = /background-image: url\(\'\.\/src/g;
     var render = '\nReactDOM.render(<{{:Comp}} />, document.getElementById(\'sample\'));';
     var dSrc = 'demos/src/';
-    var bucketName = process.env.AWS_STAGING_BUCKET || 'npmci.syncfusion.com';
-    var link = 'http://' + bucketName + '/';
-    var sbLink = link;
-    if (process.env.BRANCH_NAME === "master") {
-        link += 'packages/production/';
-        sbLink += 'production/react/';
-    } else {
-        link += 'packages/development/';
-        sbLink += 'development/react/';
-    }
-    if(process.env.BRANCH_NAME && process.env.BRANCH_NAME.indexOf('hotfix-') !== -1) {
-        link = 'http://cdn.syncfusion.com/ej2/';
-        sbLink = 'http://ej2.syncfusion.com/react/';
-    }
-    link = 'http://cdn.syncfusion.com/ej2/'; //Dependency Packages Link
-    sbLink = 'http://ej2.syncfusion.com/react/'; //Sample Browser support Link
+    var link = 'http://cdn.syncfusion.com/ej2/'; //Dependency Packages Link
+    var sbLink = 'http://ej2.syncfusion.com/react/'; //Sample Browser support Link
     sys = sys.replace(/{{:CDN_LINK}}/g, link);
     ind = ind.replace(/{{:CDN_LINK}}/g, link);
     var comp;
