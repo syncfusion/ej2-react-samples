@@ -1,0 +1,23 @@
+ .control-section .content-wrapper.sample-mask {
+        width: 30%;
+        margin: 0 auto;
+        min-width: 185px;
+    }
+    
+  .sample-mask .control-label {
+        padding: 24px 0px 10px 0px;
+        font-size: 12px;
+        opacity: 1;
+    }
+
+    .control-section .col-lg-8 .content-wrapper.sample-mask {
+        width: 45%;
+    }
+    
+    .mask-wrap:first-child {
+        margin-top: 50px;
+    }
+    
+    .mask-wrap {
+        margin-top: 35px;
+    }

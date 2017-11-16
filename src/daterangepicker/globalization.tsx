@@ -1,4 +1,4 @@
-import * as ReactDOM from 'react-dom';
+﻿import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import './daterangepicker-component.css';
 import { loadCldr, L10n } from '@syncfusion/ej2-base';

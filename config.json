@@ -1,0 +1,4 @@
+{                       
+    "styleDependency":["ej2"],
+     "ts": ["./src/**/*.tsx","./src/**/*.ts", "!./node_modules/**/*.ts","!./node_modules/**/*.tsx"]
+}

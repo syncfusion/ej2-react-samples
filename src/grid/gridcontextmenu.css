@@ -1,0 +1,10 @@
+/**
+* ej2 grid Context Menu styles
+*/
+
+.e-colmenu.e-contextmenu {
+    width: auto !important;
+}
+.e-contextmenu-wrapper ul.e-contextmenu {
+    width: auto !important;
+}

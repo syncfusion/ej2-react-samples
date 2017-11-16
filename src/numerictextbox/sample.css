@@ -1,0 +1,15 @@
+ .control-section .content-wrapper.sample-numeric {
+        width: 30%;
+        margin: 0 auto;
+        min-width: 185px;
+    }
+
+.format-wrapper .e-float-input.e-numeric.e-input-group { 
+    margin-bottom: 40px; 
+}
+
+.sample-numeric .control-label {
+    padding: 24px 0px 10px 0px;
+    font-size: 12px;
+    opacity: 1;
+}

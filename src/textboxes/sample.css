@@ -1,0 +1,75 @@
+.control-section.input-content-wrapper .e-input-picture:before {
+    content: '\e7b3';
+    font-family: e-icons;
+}
+
+.control-section.input-content-wrapper .e-input-calendar:before {
+    content: "";
+    font-family: e-icons;
+    font-size: 13px;
+}
+
+.control-section.input-content-wrapper .e-input-group.e-small { /* csslint allow: adjoining-classes */
+    padding-top: 5px;
+}
+
+.control-section.input-content-wrapper .control-label {
+    font-size: 12px;
+    opacity: 0.54;
+    padding:24px 0 0;
+}
+
+@media only screen and (max-width: 480px) {
+    .control-section.input-content-wrapper .col-xs-6,
+    .control-section.input-content-wrapper .col-xs-4,
+    .control-section.input-content-wrapper .col-xs-12 {
+        box-sizing: border-box;
+        padding: 10px 5px;
+        width: 100%;
+    }
+	.control-section.input-content-wrapper div.row {
+        padding: 0px 15px;
+    }
+}
+
+#description td { /* csslint allow: adjoining-classes */
+    vertical-align: top;
+}
+
+.control-section.input-content-wrapper .custom-padding-10 {
+    padding:10px 0 0;
+}
+
+.control-section.input-content-wrapper .custom-padding-5 {
+    padding:5px 0;
+}
+
+.control-section.input-content-wrapper .custom-width {
+    width: 100%;
+}
+
+.control-section.input-content-wrapper .custom-padding-bottom-10 {
+    padding-bottom: 10px;
+}
+
+.control-section .row.custom-margin {
+    margin-top: 20px;
+}
+
+.e-bigger .control-section .row.custom-margin {
+    margin-top: 15px;
+}
+
+ @media only screen and (max-width: 480px) {
+        .control-section.input-content-wrapper .content-wrapper,
+        {
+            width: 92%;
+        }
+        .control-section.input-content-wrapper .col-xs-6,
+        .control-section.input-content-wrapper .col-xs-4,
+        .control-section.input-content-wrapper .col-xs-12 {
+            padding: 10px 5px;
+            width: 100%;
+        }
+        
+    }

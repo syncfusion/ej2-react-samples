@@ -1,0 +1,35 @@
+.radiobutton-control {
+    margin: 5% 0 5% 40%;
+}
+
+@media only screen and (max-width: 700px) {
+    .radiobutton-control {
+        margin-left: 35%;
+        margin-top: 8%;
+    }
+
+    .control-section {
+        min-height: 200px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .radiobutton-control {
+        margin-top: 20%;
+        margin-left: 21%;
+        margin-bottom: 27%;
+    }
+}
+
+.control-section .row {
+    margin: 20px 0;
+}
+
+.radiobutton-control h4 {
+    color: rgba(0, 0, 0, 0.64);
+    font-size: 18px;
+}
+
+.e-bigger .radiobutton-control h4 {
+    font-size: 20px;
+}

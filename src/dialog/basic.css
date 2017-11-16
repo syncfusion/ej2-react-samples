@@ -1,0 +1,23 @@
+.e-btn-hide {
+    display: none;
+}
+
+.dlgbtn {
+    margin-right: 10px;
+}
+
+.control-section {
+    height: 100%;
+}
+
+#target{
+    height: 100%;
+    min-height: 350px;
+}
+
+#promptDialog table {
+    border-collapse: separate;
+    border-spacing: 10px;
+    width: 100%;
+    padding: 0px 20px 20px;
+}

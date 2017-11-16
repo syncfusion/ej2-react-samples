@@ -32,9 +32,11 @@
 		"@types/react-dom": "^15.5.1",
 		"@types/react-router": "^4.0.12",
 		"@types/react-router-dom": "^4.0.5",
+		"browser-sync": "^2.18.13",
 		"css-loader": "^0.28.4",
 		"elasticlunr": "0.9.5",
 		"fuse.js": "^3.2.0",
+		"webpack": "2.5.1",
 		"gulp-webpack": "^1.5.0",
 		"postcss-loader": "^2.0.6",
 		"style-loader": "^0.18.2",
@@ -42,6 +44,8 @@
 		"gulp": "^3.9.1",
 		"gulp-sass": "^3.1.0",
 		"gulp-typescript": "^3.1.6",
+		"run-sequence": "^2.2.0",
+        "shelljs": "^0.7.8",
 		"requirejs": "^2.3.3",
 		"typescript": "2.3.4"
 	},
@@ -52,6 +56,7 @@
 		}
 	},
 	"scripts": {
-		"build": "gulp build"
+		"build": "gulp build",
+		"serve": "gulp serve"
 	}
 }
