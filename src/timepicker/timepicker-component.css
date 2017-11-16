@@ -1,0 +1,21 @@
+.timepicker-control-section {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 5% 0;
+}
+
+.timepicker-control-section.range {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1% 0;
+}
+
+.control-pane.format .control-section, .control-pane.culture  .control-section,
+.control-pane.default  .control-section, .control-pane.range .control-section {
+    height: 100%;
+}
+
+.e-bigger .control-pane.format .control-section, .e-bigger .control-pane.culture  .control-section,
+.e-bigger .control-pane.default  .control-section, .e-bigger .control-pane.range  .control-section {
+    margin-top: 60px;
+}

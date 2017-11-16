@@ -1,0 +1,8 @@
+.control-styles {
+    margin: 0 auto; 
+    width:400px; 
+    padding-top: 30px;
+}
+.e-bigger .control-styles {
+    width:300px;
+}

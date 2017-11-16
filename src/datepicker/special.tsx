@@ -1,4 +1,4 @@
-import * as ReactDOM from 'react-dom';
+﻿import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DatePickerComponent, RenderDayCellEventArgs } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';

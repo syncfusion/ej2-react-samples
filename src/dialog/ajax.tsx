@@ -34,7 +34,7 @@ export class AjaxContent extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div id='target' className='control-section' style={{'min-height':'350px'}}>
+                <div id='target' className='control-section'>
                     {/* Render button to open the Dialog  */}
                     <button className="e-control e-btn dlgbtn" onClick={this.buttonClick.bind(this)} id="dialogBtn">Open</button>
                     {/* Render the Dialog */}

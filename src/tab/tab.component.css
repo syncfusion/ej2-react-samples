@@ -1,0 +1,72 @@
+.tab-control-section  .e-content .e-item {
+    font-size: 12px;
+    padding: 10px;
+    text-align: justify;
+}
+.tab-control-section  .e-headertext {
+    font-weight: 500;
+}
+.e-bigger .tab-control-section .e-tab .e-list-item {
+    border-bottom: 1px solid gainsboro;
+}
+.tab-control-section  .e-tab .e-list-item {
+    height: 63px;
+    border-bottom: 1px solid gainsboro;
+}
+.tab-control-section  .e-tab .e-list-item:last-child {
+    border-bottom: 1px solid gainsboro;
+}
+.e-bigger .tab-control-section  .e-tab .e-list-item {
+    height: 63px;
+}
+.tab-control-section .template-container {
+    height: 100%;
+    padding-top: 7px;
+}
+.tab-control-section .left {
+    display: inline-block;
+    vertical-align: top;
+}
+.tab-control-section .empImg {
+    height: 48px;
+    width: 48px;
+}
+.tab-control-section .name, .role {
+    line-height: normal;
+}
+.tab-control-section .name {
+    font-weight: 500;
+}
+.tab-control-section .role {
+    color: grey;
+    font-weight: 100;
+}
+.tab-control-section .info {
+    padding: 7px 0 0 15px;
+}
+.tab-control-section .content-title {
+    height: 50px;
+    display: table;
+    margin: 0 auto;
+}
+.tab-control-section .cnt-text {
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 18px;
+    font-weight: 600;
+}
+.tab-control-section .e-tab .e-listview .e-text {
+    display: block;
+    text-align: center;
+}
+.tab-control-section .property-panel-content {
+    padding: 10px;
+}
+@media only screen and (min-width: 1824px) {
+    .tab-control-section .col-lg-8.adaptive {
+        width: 40%;
+    }
+    .e-bigger .tab-control-section .col-lg-8.adaptive {
+        width: 45%;
+    }
+}

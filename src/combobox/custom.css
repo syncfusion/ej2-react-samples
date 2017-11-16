@@ -1,0 +1,10 @@
+#customvalues {
+    margin: 0 auto;
+    width: 270px;
+    padding-top: 15px;
+}
+
+#nodata {
+    height: 55px;
+    opacity: .7;
+}
