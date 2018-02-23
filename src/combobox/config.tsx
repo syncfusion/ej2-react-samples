@@ -1,9 +1,10 @@
 export const ComboBoxSampleOrder:Object = [
-    { 'path': 'combobox/default', 'component':'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'ComboBox' },
-    { 'path': 'combobox/grouping-icon', 'component':'Grouping', 'name': 'Grouping and Icons', 'order': '01', 'category': 'ComboBox' },
-    { 'path': 'combobox/data-binding', 'component':'Data', 'name': 'Data Binding', 'order': '01', 'category': 'ComboBox' },
-    { 'path': 'combobox/custom-value', 'component':'Custom', 'name': 'Custom Value', 'order': '01', 'category': 'ComboBox' },
-    { 'path': 'combobox/filtering', 'component':'Filtering', 'name': 'Filtering', 'order': '01', 'category': 'ComboBox' },
-    { 'path': 'combobox/template', 'component':'Templates', 'name': 'Templates', 'order': '01', 'category': 'ComboBox' },
-    { 'path': 'combobox/cascading', 'component':'Cascading', 'name': 'Cascading', 'order': '01', 'category': 'ComboBox' }
+    { 'path': 'combobox/default', 'component':'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'ComboBox', 'api': '{"ComboBox": ["popupHeight", "index", "change", "placeholder"]}' },
+    { 'path': 'combobox/grouping-icon', 'component':'Grouping', 'name': 'Grouping and Icons', 'order': '01', 'category': 'ComboBox', 'api': '{"ComboBox": ["dataSource", "fields", "placeholder", "popupHeight"]}' },
+    { 'path': 'combobox/data-binding', 'component':'Data', 'name': 'Data Binding', 'order': '01', 'category': 'ComboBox', 'api': '{"ComboBox": ["dataSource", "fields", "query", "sortOrder", "autofill", "popupHeight", "placeholder"]}' },
+    { 'path': 'combobox/custom-value', 'component':'Custom', 'name': 'Custom Value', 'order': '01', 'category': 'ComboBox', 'api': '{"ComboBox": ["dataSource", "fields", "placeholder", "popupHeight", "allowFiltering", "noRecordsTemplate", "filtering", "width"]}' },
+    { 'path': 'combobox/filtering', 'component':'Filtering', 'name': 'Filtering', 'order': '01', 'category': 'ComboBox', 'api': '{"ComboBox": ["dataSource", "fields", "allowFiltering", "filtering", "placeholder", "popupHeight"]}' },
+    { 'path': 'combobox/template', 'component':'Templates', 'name': 'Templates', 'order': '01', 'category': 'ComboBox', 'api': '{"ComboBox": ["dataSource", "fields", "headerTemplate", "itemTemplate", "placeholder", "popupHeight"]}' },
+    { 'path': 'combobox/cascading', 'component':'Cascading', 'name': 'Cascading', 'order': '01', 'category': 'ComboBox', 'api': '{"ComboBox": ["dataSource", "allowCustom", "fields", "change", "placeholder", "popupHeight", "value", "enabled"]}' },
+    { 'path': 'combobox/diacritics-filtering', 'component':'DiacriticsFiltering', 'name': 'Diacritics Filtering', 'order': '01', 'category': 'ComboBox', 'api': '{"ComboBox": ["dataSource", "ignoreAccent", "placeholder","allowFiltering"]}', 'type': 'new' }
 ]

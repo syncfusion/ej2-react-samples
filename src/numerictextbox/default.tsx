@@ -39,12 +39,10 @@ export class Default extends SampleBase<{}, {}> {
             The NumericTextBox component is used to get the number inputs from the user. The input values can be increased or decreased with a predefined step value.
           </p>
           <p>
-            In this demo, the default NumericTextBox is rendered with the percent and currency formats as specified in
-            <a href="https://msdn.microsoft.com/en-us/library/dwhawy9k.aspx" target="_blank"> MSDN</a>.
+            In this demo, the default NumericTextBox is rendered with the percent and currency formats as specified in <a href="https://msdn.microsoft.com/en-us/library/dwhawy9k.aspx" target="_blank">MSDN</a>.
           </p>
           <p>
-            More information on the NumericTextBox instantiation can be found in the
-            <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/getting-started.html" target="_blank"> documentation section</a>.
+            More information on the NumericTextBox instantiation can be found in the <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/getting-started.html" target="_blank">documentation section</a>.
           </p>
         </div>
       </div>

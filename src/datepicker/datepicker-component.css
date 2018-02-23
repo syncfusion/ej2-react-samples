@@ -7,24 +7,44 @@
 .e-calendar.e-rtl{
     max-width: 332px;
 }
+
 .e-bigger .e-calendar.e-rtl {
     max-width: 332px;
 }
 
 /* special dates sample styles */
 
-span.e-icons.highlight {
+.e-customStyle span.e-icons.highlight {
     margin-top: -13px;
     display: block;
     margin-left: 4px;
 }
 
-span.e-icons.highlight,
-span.e-icons.highlight:before {
+.e-customStyle span.e-icons.highlight,
+.e-customStyle span.e-icons.highlight:before {
     color: rgb(0, 0, 255);
 }
 
-span.e-icons.highlight:before {
+.highcontrast .e-customStyle td.birthday span.e-icons.highlight,
+.highcontrast .e-customStyle td.birthday span.e-icons.highlight:before {
+    color: #ff6161;
+}
+
+.highcontrast .e-customStyle td.farewell span.e-icons.highlight,
+.highcontrast .e-customStyle td.farewell span.e-icons.highlight::before {
+    color: #2bc700;
+}
+
+.highcontrast .e-customStyle td.vacation span.e-icons.highlight,
+.highcontrast .e-customStyle td.vacation span.e-icons.highlight::before {
+    color: #ff7d1a;
+}
+
+.e-customStyle .e-other-month span.e-icons.highlight:before {
+    content: "";
+}
+
+.e-customStyle span.e-icons.highlight:before {
     content: "\e865";
     vertical-align: middle;
     margin-right: 3px;
@@ -34,57 +54,36 @@ span.e-icons.highlight:before {
     font-weight: normal;
 }
 
-.e-bigger.e-calendar span.e-icons.highlight:before,
-.e-bigger .e-calendar span.e-icons.highlight:before {
+#format{
+    padding-bottom: 15px;
+    width: 200px;
+    left: 80px;
+    top: 40px;
+}
+
+.e-bigger .e-customStyle .e-calendar span.e-icons.highlight:before,
+.e-customStyle.e-bigger .e-calendar span.e-icons.highlight:before {
     top: -3px;
 }
 
-.e-selected span.e-icons.highlight:before {
+.e-customStyle .e-selected span.e-icons.highlight:before {
     color: #fff;
 }
 
-span.e-icons.highlight,
-.e-calendar .e-content span.special,
-.e-calendar .e-content span.daycell {
+.e-customStyle span.e-icons.highlight,
+.e-customStyle .e-calendar .e-content span.special,
+.e-customStyle .e-calendar .e-content span.daycell {
     font-weight: bold;
 }
 
-span.special.e-day.federal {
+.e-customStyle span.special.e-day.birthday {
     color: orangered;
 }
 
-span.special.e-day.luther {
+.e-customStyle span.special.e-day.farewell {
     color: rgba(0, 0, 255, 1);
 }
 
-span.special.e-day.Washington {
+.e-customStyle span.special.e-day.vacation {
     color: rgba(60, 118, 61, 1);
-}
-
-span.special.e-day.memorial {
-    color: rgba(138, 109, 59, 1);
-}
-
-span.special.e-day.independence {
-    color: rgba(64, 255, 229, 1);
-}
-
-span.special.e-day.labour {
-    color: rgba(169, 68, 66, 1);
-}
-
-span.special.e-day.columbus {
-    color: rgba(139, 0, 139, 1);
-}
-
-span.special.e-day.veterans {
-    color: rgba(152, 251, 152, 1);
-}
-
-span.special.e-day.thanksgiving {
-    color: rgba(100, 149, 237, 1);
-}
-
-span.special.e-day.christmas {
-    color: rgba(255, 69, 0, 1);
 }

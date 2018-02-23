@@ -1,0 +1,18 @@
+.upload_wrapper, .rtl_wrapper,.validation_wrapper {
+    max-width: 400px;
+	margin: auto;
+}
+
+.upload_wrapper .e-upload, .rtl_wrapper .e-upload, .validation_wrapper .e-upload {
+    width: 100%;
+    position: relative;
+    margin-top: 15px;
+}
+
+.upload_wrapper .e-upload .e-upload-drag-hover, .rtl_wrapper .e-upload .e-upload-drag-hover,  .validation_wrapper .e-upload .e-upload-drag-hover {
+    margin: 0;
+}
+
+.property-panel-content {
+    min-height: 200px;
+}

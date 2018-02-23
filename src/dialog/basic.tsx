@@ -13,31 +13,31 @@ export class Basic extends SampleBase<{}, {}> {
             'click': () => {
             this.alertDialogInstance.hide();
             },
-            buttonModel: { content: 'Dismiss', cssClass: 'e-flat', isPrimary: true }
+            buttonModel: { content: 'Dismiss', isPrimary: true }
         }];
     private confirmButton:Object[]= [{
             'click': () => {
                 this.confirmDialogInstance.hide();
             },
-            buttonModel: { content: 'Yes', cssClass: 'e-flat', isPrimary: true }},
+            buttonModel: { content: 'Yes', isPrimary: true }},
             {
                 'click': () => {
                 this.confirmDialogInstance.hide();
             },
-            buttonModel: { content: 'No', cssClass: 'e-flat' }
+            buttonModel: { content: 'No' }
         }];
 
     private promptButtons:Object[]= [{
             'click': () => {
                 this.promptDialogInstance.hide();
             },
-            buttonModel: { content: 'Connect', cssClass: 'e-flat', isPrimary: true }
+            buttonModel: { content: 'Connect', isPrimary: true }
         },
         {
             'click': () => {
                 this.promptDialogInstance.hide();
             },
-             buttonModel: { cssClass: 'e-flat', content: 'Cancel' }
+             buttonModel: { content: 'Cancel' }
         }];
 
     private animationSettings:Object= { effect: 'None' };
@@ -74,14 +74,14 @@ export class Basic extends SampleBase<{}, {}> {
   render() { 
     return (
       <div className = 'control-pane'>
-        <div id='target' className='control-section'>
+        <div id='target' className='control-section' style={{'min-height':'350px'}}>
             {/* Buttons to open the corresponding Dialog */}
             <button className="e-control e-btn dlgbtn" onClick={this.buttonClick.bind(this)} id="alertBtn">Alert</button>        
             <button className="e-control e-btn dlgbtn" onClick={this.buttonClick.bind(this)} id="confirmBtn">Confirm</button>        
             <button className="e-control e-btn dlgbtn" onClick={this.buttonClick.bind(this)} id="promptBtn">Prompt</button>        
             {/* Render alert Dialog */}
             <DialogComponent id="alertDialog" header='Low Battery' animationSettings={this.animationSettings} width='250px' content='10% of battery remaining' ref={alertdialog => this.alertDialogInstance = alertdialog}
-            target='#target' visible={true} buttons={this.alertButtons} open={this.dialogOpen.bind(this)} close={this.dialogClose.bind(this)}></DialogComponent>
+            target='#target' visible={false} buttons={this.alertButtons} open={this.dialogOpen.bind(this)} close={this.dialogClose.bind(this)}></DialogComponent>
             {/* Render confirmation Dialog */}
             <DialogComponent id="confirmDialog" header='Delete Multiple Items' animationSettings={this.animationSettings} width='400px' content='Are you sure you want to permanently delete all of these items?' ref={dialog => this.confirmDialogInstance = dialog}
             target='#target' visible={false} buttons={this.confirmButton} open={this.dialogOpen.bind(this)} close={this.dialogClose.bind(this)}></DialogComponent>
@@ -110,18 +110,16 @@ export class Basic extends SampleBase<{}, {}> {
         </div>
     <div id="action-description">
     <p>
-    This sample demonstrates the different types of Dialog like alert, confirm, and prompt.
-    The buttons “Alert”, “Confirm”, and “Prompt” will be shown after closing the alert Dialog.
-    These buttons are used to open the corresponding Dialogs.
+    This sample demonstrates that you can create different types of custom dialogs such as alert, confirm, and prompt dialogs. The buttons “alert”, “confirm”, and “prompt” are used to open the corresponding dialogs. 
     </p>
     </div>
     <div id="description">
         <p>
-        The Dialog control is used to display messages such as supplementary content like images and text, 
-        and an interactive content like form components within a web page. The following are the two types of Dialogs:
+        The dialog control is used to create alert, prompt, and confirmation dialogs using content, and buttons property. The content property accepts both string and HTML element as content.
         <ul>
-            <li>Modal - The user should work with the Dialog before interacting with the parent application.</li>
-            <li>Modeless - It allows to interact with the parent application when the Dialog stay on the page.</li>
+            <li>Alert - Used to show errors, warnings, and information that needs user awareness.</li>
+            <li>Prompt - Used to get input from the user.</li>
+            <li>Confirmation - Used to get approval from user that appears before any critical action.</li>
         </ul>
         </p>
         <p>

@@ -17,7 +17,7 @@ export class Default extends SampleBase<{}, {}> {
     'Hockey', 'Rugby', 'Snooker', 'Tennis'];
   render() {
     return (
-      <div className='control-pane'>
+      <div id='combodefault' className='control-pane'>
         <div className='control-section'>
           <div className='col-lg-12 control-wrappers'>
             <div id='default'>

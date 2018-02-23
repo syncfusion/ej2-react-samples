@@ -12,10 +12,10 @@ export class Reordering extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <GridComponent dataSource={employeeData} allowReordering={true}>
                         <ColumnsDirective>
-                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='120' textAlign="right"></ColumnDirective>
+                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='120' textAlign="Right"></ColumnDirective>
                             <ColumnDirective field='FirstName' headerText='Name' width='140'></ColumnDirective>
                             <ColumnDirective field='Title' headerText='Title' width='170' />
-                            <ColumnDirective field='HireDate' headerText='Hired Date' width='120' format='yMd' textAlign="right" />
+                            <ColumnDirective field='HireDate' headerText='Hired Date' width='120' format='yMd' textAlign="Right" />
                             <ColumnDirective field='ReportsTo' headerText='Reports To' width='120'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Reorder]} />

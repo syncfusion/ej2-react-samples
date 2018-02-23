@@ -5,7 +5,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     CircularGaugeComponent, AxesDirective, AxisDirective, Inject,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective
+    PointersDirective, PointerDirective, RangesDirective, RangeDirective,
+    GaugeTheme, ILoadedEventArgs
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -15,6 +16,11 @@ const SAMPLE_CSS = `
 
 export class Default extends SampleBase<{}, {}> {
 
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -22,13 +28,12 @@ export class Default extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent id='gauge'>
+                    <CircularGaugeComponent load={this.load.bind(this)} id='gauge'>
                         <AxesDirective>
                             <AxisDirective radius='80%' startAngle={230} endAngle={130}
                                 majorTicks={{ width: 0 }} lineStyle={{ width: 8, color: '#E0E0E0' }}
                                 minorTicks={{ width: 0 }} labelStyle={{
                                     font: {
-                                        color: '#424242',
                                         fontFamily: 'Roboto',
                                         size: '12px',
                                         fontWeight: 'Regular'
@@ -41,6 +46,7 @@ export class Default extends SampleBase<{}, {}> {
                                         color: '#757575',
                                         border: { width: 0 }
                                     }} needleTail ={{
+                                        color: '#757575',
                                         length: '25%'
                                     }} />
                                 </PointersDirective>

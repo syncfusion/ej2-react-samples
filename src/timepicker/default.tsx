@@ -11,16 +11,16 @@ export class Default extends SampleBase<{}, {}> {
             <div className='control-pane default'>
                 <div className='control-section'>
                     <div className='timepicker-control-section'>
-                        <TimePickerComponent placeholder='Select a Time'></TimePickerComponent>
+                        <TimePickerComponent ></TimePickerComponent>
                     </div>
                 </div>
                 <div id="action-description">
                     <p>
-                        The following sample demonstrates the default functionalities of the TimePicker. Click the TimePicker icon to select a desired time and the selected time value will be displayed in the TimePicker element.</p>    
+                        The following sample demonstrates the default functionalities of the TimePicker. Click the TimePicker icon to select a desired time and the selected time value will be displayed in the TimePicker element.</p>
                 </div>
                 <div id='description'>
                     <p>
-                        A <code>TimePicker</code> is an interactive control that provides an option to select a value from popup list or
+                        A <code>TimePicker</code> is an interactive component that provides an option to select a value from popup list or
               set a desired time value.
           </p>
                     <p> 	More information about TimePicker and it's configuration can be found in the  <a target='_blank'

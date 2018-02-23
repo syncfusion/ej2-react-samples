@@ -79,7 +79,7 @@ export class Default extends SampleBase<{}, {}> {
 
                     <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                            <ButtonComponent cssClass='e-flat' iconCss='e-icons e-open-icon' iconPosition='right'>Open</ButtonComponent>
+                            <ButtonComponent cssClass='e-flat' iconCss='e-icons e-open-icon' iconPosition='Right'>Open</ButtonComponent>
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">

@@ -1,14 +1,23 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Toolbar, ExcelExport, PdfExport, Group } from '@syncfusion/ej2-react-grids';
-import { data } from './data';
+import { orderDetails } from './data';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations'
 import { SampleBase } from '../common/sample-base';
-
+let refresh: Boolean;
 export class Exporting extends SampleBase<{}, {}> {
-  public toolbarOptions: any = ['excelexport', 'pdfexport', 'csvexport'];
+  public toolbarOptions: any = ['ExcelExport', 'PdfExport', 'CsvExport'];
   public groupOptions: Object = { showDropArea : false , columns: ['ShipCountry'] };
   private gridInstance: GridComponent;
+  public dataBound() {
+    if (refresh) {
+      this.gridInstance.groupColumn('ShipCountry');
+      refresh = false;
+     }
+   }
+  public load() {
+      refresh = (this as any).refreshing;
+   }
   public toolbarClick(args: ClickEventArgs): void {
     switch (args.item.text) {
       case 'PDF Export':
@@ -26,13 +35,14 @@ export class Exporting extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={data.slice(0,200)} ref={grid => this.gridInstance = grid} toolbar={this.toolbarOptions} allowPaging={true} 
-          allowExcelExport={true} allowPdfExport={true} allowGrouping={true} toolbarClick={this.toolbarClick.bind(this)} groupSettings={this.groupOptions} >
+          <GridComponent dataSource={orderDetails} ref={ grid => this.gridInstance = grid} toolbar={this.toolbarOptions} allowPaging={true} 
+          allowExcelExport={true} allowPdfExport={true} allowGrouping={true} toolbarClick={this.toolbarClick.bind(this)} groupSettings={this.groupOptions}
+           dataBound={this.dataBound.bind(this)} load={this.load}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='right'></ColumnDirective>
-              <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='right' ></ColumnDirective>
-              <ColumnDirective field='ShipName' headerText='Ship Name' width='170' ></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
+              <ColumnDirective field='CustomerID' headerText='Customer ID' width='150'></ColumnDirective>
+              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right'></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' ></ColumnDirective>
             </ColumnsDirective>
             <Inject services={[Page, Toolbar, ExcelExport, PdfExport, Group]} />

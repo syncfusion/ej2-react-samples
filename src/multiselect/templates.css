@@ -1,10 +1,10 @@
-.control-styles {
-    margin: 0 auto; 
-    width:400px; 
-    padding-top: 30px;
+#multitemp.control-pane .control-section {
+    width: 80%;
+    margin: 0 auto;
+    min-width: 185px;
 }
-.e-bigger .control-styles {
-    width:300px;
+.e-bigger #multitemp.control-pane .control-section {
+    width: 100%;
 }
 
 #multiTemplate_popup .header {
@@ -21,6 +21,11 @@
     border-bottom: 1px solid #ccc;
     color: #0078d7;
     font-weight: 400;
+}
+
+.highcontrast #employees_popup .header {
+        color: #fff;
+        background-color: #000;
 }
 
 .bootstrap #multiTemplate_popup .header {
@@ -90,11 +95,22 @@
     margin: 10px 16px;
 }
 
-#multitemplate .nameTemp {
-        padding: 0 0 0 28px;
-        line-height: 1.2em;
+.e-bigger #multitemplate .nameTemp {
+    padding: 2px 0 0 35px;
+    line-height: 1.2em;
 }
-#multitemplate .valueTemp {
+
+ #multitemplate .nameTemp {
+    padding: 5px 0px 0px 35px;
+    line-height: 1.2em;
+}
+
+ .bootstrap #multitemplate .nameTemp {
+    padding: 2px 0px 0px 35px;
+    line-height: 1.2em;
+}
+
+.e-bigger #multitemplate .valueTemp {
         border-radius: 50%;
         float: left;
         margin-top: -6px;
@@ -104,11 +120,22 @@
         width: 26px;
 }
 
-.fabric #multitemplate .valueTemp {
-      margin-top: -3px;
+#multitemplate .valueTemp {
+        border-radius: 50%;
+        float: left;
+        margin-top: 1px;
+        position: relative;
+        left: 0px;
+        height: 26px;
+        width: 26px;
+}
+
+.fabric #multitemplate .valueTemp,
+.highcontrast #multitemplate .valueTemp {
+      margin-top: 1px;
 }
 .e-bigger #multitemplate .valueTemp { 
-    margin-top: -6px;  
+    margin-top: -4px;  
     height: 30px;
     width: 30px;
 }
@@ -117,17 +144,19 @@
     width: 32px;
     margin-top: -8px;
 }
-.fabric #multitemplate .nameTemp {
+.fabric #multitemplate .nameTemp,
+.highcontrast #multitemplate .nameTemp{
     width: 123px;
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 0 0 36px;
     position: relative;
-    bottom: 22px;
+    bottom: 23px;
     margin-right: -27px;
 }
 
-.e-bigger.fabric #multitemplate .nameTemp {
+.e-bigger.fabric #multitemplate .nameTemp,
+.e-bigger.highcontrast #multitemplate .nameTemp {
     bottom: 24px;
 }
 
@@ -154,14 +183,19 @@
     margin-right: -24px;
 }
 
-.bootstrap #multitemplate .valueTemp {
+.e-bigger.bootstrap #multitemplate .valueTemp {
     height: 30px;
     width: 30px;
     left: -10px;
+    margin-top: 0px;
+}
+
+.bootstrap #multitemplate .valueTemp {
+    margin-top: -7px;
 }
 
 .e-bigger.bootstrap #multitemplate .nameTemp {
-    bottom: 24px;
+    bottom: 23px;
     padding: 0 0 0 36px;
 }
 

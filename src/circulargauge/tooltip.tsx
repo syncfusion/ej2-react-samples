@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
-    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, AxisDirective, ITooltipRenderEventArgs, Inject, AnnotationsDirective, AnnotationDirective,
+    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, ITooltipRenderEventArgs, Inject, AnnotationsDirective, AnnotationDirective,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTooltip, TickModel, getRangeColor,
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
@@ -27,6 +27,11 @@ const SAMPLE_CSS = `
     
 export class Tooltip extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -36,8 +41,10 @@ export class Tooltip extends SampleBase<{}, {}> {
                 <div className='control-section row'>
                     <div className='col-lg-12'>
                         <CircularGaugeComponent title='Tooltip Customization' loaded={this.onChartLoad.bind(this)} tooltipRender={this.tooltipRender.bind(this)} id='tooltip-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
+                            load={this.load.bind(this)}
                             titleStyle={{ size: '15px', color: 'grey' }} tooltip={{
                                 enable: true,
+                                fill: 'transparent',
                                 template: '<div id="gauge-tooltip"><div id="templateWrap">'
                                           + '<img src="src/circulargauge/images/range1.png" />'
                                           + '<img src="src/circulargauge/images/range3.png" /><div class="des"><span>${Math.round(pointers[0].value)} MPH</span></div></div></div>',

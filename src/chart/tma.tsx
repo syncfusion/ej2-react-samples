@@ -28,9 +28,7 @@ export class TMA extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            intervalType: 'Months',
                             majorGridLines: { width: 0 },
-                            skeleton: 'yMd',
                             zoomFactor: 0.2, zoomPosition: 0.6,
                             crosshairTooltip: { enable: true },
                         }}
@@ -44,7 +42,7 @@ export class TMA extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true, shared: true }}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+                        zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true}}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries, TmaIndicator]} />
                         <SeriesCollectionDirective>
@@ -58,8 +56,8 @@ export class TMA extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates a stock chart with candle series and a Triangle Moving Average indicator. Trackball shows the information about the stock and signal value of a day.
+                    <p>
+                        This sample illustrates a stock chart with candle series and a Triangle Moving Average indicator. Trackball shows the information about the stock and signal value of a day.
            </p>
                 </div>
                 <div id="description">

@@ -64,3 +64,14 @@
     }
 }
 
+.e-small-icon::before {
+    content: '\e997';
+}
+
+.e-medium-icon::before {
+    content: '\e94c';
+}
+
+.e-big-icon::before {
+    content: '\e74c';
+}

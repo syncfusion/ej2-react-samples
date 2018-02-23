@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { LinearGaugeComponent, Position, AnnotationsDirective, GaugeTooltip, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
+import { LinearGaugeComponent, ILoadedEventArgs, Position, AnnotationsDirective, GaugeTooltip, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, LinearGaugeTheme } from '@syncfusion/ej2-react-lineargauge';
 import { SampleBase } from '../common/sample-base';
 
 export let range: string[] = ['#30b32d', '#ffdd00', '#f03e3e'];
@@ -21,6 +21,11 @@ const SAMPLE_CSS = `
 
 export class Annotation extends SampleBase<{}, {}> {
 
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -30,7 +35,7 @@ export class Annotation extends SampleBase<{}, {}> {
 
                 </style>
                 <div className='control-section'>
-                    <LinearGaugeComponent id='gauge' rangePalettes={range} orientation='Horizontal'>
+                    <LinearGaugeComponent load={this.load.bind(this)} id='gauge' rangePalettes={range} orientation='Horizontal'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective maximum={90} majorTicks={{ interval: 10, height: 0 }} minorTicks={{ height: 0 }} line={{ width: 0 }} labelStyle={{ font: { size: '0px' } }}>

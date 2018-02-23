@@ -74,7 +74,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                             chartArea={{ border: { width: 0 } }}
                             legendSettings={{ visible: true, toggleVisibility: false }}
                             title='Profit Comparision of A and B' loaded={this.onChartLoad.bind(this)}
-                            selectionMode='DragXY'
+                            selectionMode='None'
                             load={this.load.bind(this)}>
                             <Inject services={[Selection, Legend, ColumnSeries, Category, ScatterSeries]} />
                             <SeriesCollectionDirective>
@@ -100,7 +100,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="DragXY" />
+                                            <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="None" />
                                         </div>
                                     </td>
                                 </tr>

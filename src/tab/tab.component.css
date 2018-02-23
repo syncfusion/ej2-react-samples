@@ -41,7 +41,7 @@
     color: grey;
     font-weight: 100;
 }
-.tab-control-section .info {
+.tab-control-section .info-div {
     padding: 7px 0 0 15px;
 }
 .tab-control-section .content-title {
@@ -69,4 +69,95 @@
     .e-bigger .tab-control-section .col-lg-8.adaptive {
         width: 45%;
     }
+}
+.e-content .e-item {
+    font-size: 12px;
+    margin: 10px;
+}
+
+#amount {
+    text-align: right;
+    font-size: 15px;
+    padding: 15px 0px;
+}
+
+#passenger-table th {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid gainsboro;
+}
+
+#passenger-table td,
+#passenger-table th {
+    padding: 10px;
+}
+
+#passenger-table td {
+    border: 1px solid gainsboro;
+}
+
+.name-header {
+    width: 200px;
+}
+
+.age-header {
+    width: 80px;
+}
+
+.gender-header {
+    width: 120px;
+}
+
+.type-header {
+    width: 150px;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+.search-item {
+    padding-right: 50px;
+    padding-bottom: 20px;
+}
+
+.item-title {
+    font-weight: 500;
+    padding-top: 10px;
+}
+
+@media (max-width: 450px) {
+    .e-sample-resize-container {
+        height: 450px;
+    }
+    .responsive-align {
+        width: 75%;
+        margin: 0 auto;
+    }
+    .search-item {
+        padding: 0 0 20px 0;
+        width: 100%;
+    }
+}
+
+#err1,
+#err2,
+#err3 {
+    font-weight: bold;
+    color: red;
+    display: block;
+    margin-top: 15px;
+}
+
+.wizard-title {
+    font-size: 15px;
+}
+
+#PassengersList {
+    overflow: auto;
+}
+#passenger-table {
+    min-width: 500px;
+    width: 100%;
 }

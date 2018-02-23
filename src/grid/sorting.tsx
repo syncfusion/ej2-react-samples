@@ -6,19 +6,19 @@ import { SampleBase } from '../common/sample-base';
 
 export class Sorting extends SampleBase<{}, {}> {
 
-    public sortingOptions: Object = { columns: [{ field: 'Freight', direction: 'ascending' }, { field: 'CustomerName', direction: 'descending' }] };
+    public sortingOptions: Object = { columns: [{ field: 'Freight', direction: 'Ascending' }, { field: 'CustomerName', direction: 'Descending' }] };
 
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={data} allowPaging={true} allowSorting={true} sortSettings={this.sortingOptions}>
+                    <GridComponent dataSource={data} allowPaging={true} allowSorting={true} pageSettings={{ pageCount: 5 }} sortSettings={this.sortingOptions}>
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' width='150' textAlign='right'></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='150' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='170'></ColumnDirective>
-                            <ColumnDirective field='OrderDate' headerText='Order Date' width='155' format='yMd' textAlign='right' />
-                            <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='right' />
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' width='155' textAlign='right' ></ColumnDirective>
+                            <ColumnDirective field='OrderDate' headerText='Order Date' width='155' format='yMd' textAlign='Right' />
+                            <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='Right' />
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' width='155' textAlign='Right' ></ColumnDirective>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='170'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Page, Sort]} />

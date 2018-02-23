@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { LinearGaugeComponent, Orientation, ContainerType, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
+import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, Orientation, ContainerType, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -20,6 +20,11 @@ export class Container extends SampleBase<{}, {}> {
         this.gaugeInstance.container.type = this.containerElement.value as ContainerType;
         this.gaugeInstance.refresh();
     }
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+    }
     private droplist: { [key: string]: Object }[] = [
         { value: 'Vertical' },
         { value: 'Horizontal' }
@@ -34,15 +39,15 @@ export class Container extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <LinearGaugeComponent id='gauge' ref={gauge => this.gaugeInstance = gauge} title='Temperature Measure' container={{ width: 13, type: 'Thermometer', roundedCornerRadius: 5 }}>
+                        <LinearGaugeComponent load={this.load.bind(this)} id='gauge' ref={gauge => this.gaugeInstance = gauge} title='Temperature Measure' container={{ width: 13, type: 'Thermometer', roundedCornerRadius: 5 }}>
                             <AxesDirective>
-                                <AxisDirective minimum={0} maximum={180} line={{ width: 0 }} minorTicks={{ color: '#9e9e9e' }} majorTicks={{ interval: 20, color: '#9e9e9e' }} labelStyle={{ font: { color: '#000000' } }}>
+                                <AxisDirective minimum={0} maximum={180} line={{ width: 0 }} minorTicks={{ color: '#9e9e9e' }} majorTicks={{ interval: 20, color: '#9e9e9e' }}>
                                     <PointersDirective>
                                         <PointerDirective value={90} height={13} width={13} type='Bar' roundedCornerRadius={5} color='#f02828'>
                                         </PointerDirective>
                                     </PointersDirective>
                                 </AxisDirective>
-                                <AxisDirective minimum={0} maximum={180} opposedPosition={true} line={{ width: 0 }} majorTicks={{ interval: 20 }} labelStyle={{ font: { color: '#000000' } }}>
+                                <AxisDirective minimum={0} maximum={180} opposedPosition={true} line={{ width: 0 }} majorTicks={{ interval: 20 }}>
                                     <PointersDirective>
                                         <PointerDirective width={0}>
                                         </PointerDirective>

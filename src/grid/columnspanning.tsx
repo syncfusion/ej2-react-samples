@@ -92,9 +92,9 @@ export class ColumnSpanning extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={columnSpanData} queryCellInfo={this.queryCellInfoEvent.bind(this)} allowTextWrap={true} height='auto' width='auto' gridLines='both' >
+                    <GridComponent dataSource={columnSpanData} queryCellInfo={this.queryCellInfoEvent.bind(this)} allowTextWrap={true} height='auto' width='auto' gridLines='Both' >
                         <ColumnsDirective>
-                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' isPrimaryKey={true} textAlign='right'></ColumnDirective>
+                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' isPrimaryKey={true} textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='EmployeeName' headerText='Employee Name' width='200' ></ColumnDirective>
                             <ColumnDirective field='9:00' headerText='9:00 AM' width='120'></ColumnDirective>
                             <ColumnDirective field='9:30' headerText='9:30 AM' width='120'></ColumnDirective>

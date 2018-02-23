@@ -43,11 +43,13 @@ export class Default extends SampleBase<{}, {}> {
 
   render() {
     return (
-      <div className='control-pane'>
+      <div id="dropdowndefault" className='control-pane'>
         <div className='control-section'>
-          <div className='col-lg-9 control-wrappers'>
-            <div id='default'>
-              <DropDownListComponent id="games" dataSource={this.sportsData} ref={(dropdownlist) => { this.listObj = dropdownlist }} fields={this.fields} change={this.onChange.bind(this)} placeholder="Select a game" value={this.value} popupHeight="220px" />
+          <div className='col-lg-8'>
+            <div className="content-wrapper">
+              <div id='default'>
+                <DropDownListComponent id="games" dataSource={this.sportsData} ref={(dropdownlist) => { this.listObj = dropdownlist }} fields={this.fields} change={this.onChange.bind(this)} placeholder="Select a game" value={this.value} popupHeight="220px" />
+              </div>
             </div>
           </div>
           <div className='col-lg-3 property-section'>

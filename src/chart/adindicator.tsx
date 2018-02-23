@@ -35,10 +35,8 @@ export class AccumulationDistribution extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            intervalType: 'Months',
                             majorGridLines: { width: 0 },
                             zoomFactor: 0.2, zoomPosition: 0.6,
-                            skeleton: 'yMd',
                             crosshairTooltip: { enable: true },
                         }}
                         primaryYAxis={{
@@ -55,7 +53,7 @@ export class AccumulationDistribution extends SampleBase<{}, {}> {
                         axisLabelRender={this.axisLableRender.bind(this)}
                         chartArea={{ border: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '80%'}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+                        zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, StripLine, DateTime, Zoom, Logarithmic, Crosshair, LineSeries,
                             AccumulationDistributionIndicator]} />

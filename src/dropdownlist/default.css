@@ -1,8 +1,15 @@
-.col-lg-9 {
+#dropdowndefault .col-lg-9 {
     min-height: 250px;
 }
 #default {
     margin: 0 auto;
     width: 250px !important;
     padding-top: 15px;
+}
+#dropdowndefault .property-panel-content {
+    overflow: hidden;
+}
+
+#dropdowndefault .property-section{
+    left:90px;
 }

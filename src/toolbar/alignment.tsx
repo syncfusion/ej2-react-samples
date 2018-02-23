@@ -14,14 +14,14 @@ export class Alignment extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <div className= 'control'  style = {{margin: '25px 0' }}>
+          <div className= 'control tbar-sample'  style = {{margin: '25px 0' }}>
           {/* Render the Toolbar Component */}
           <ToolbarComponent>
             <ItemsDirective>
               <ItemDirective prefixIcon = 'e-tbar-menu-icon tb-icons' tooltipText = 'Menu'></ItemDirective>
-              <ItemDirective template = {template} align = 'center'></ItemDirective>
-              <ItemDirective prefixIcon = 'e-tbar-search-icon tb-icons' tooltipText = 'Search' align = 'right'></ItemDirective>
-              <ItemDirective prefixIcon = 'e-tbar-settings-icon tb-icons' tooltipText = 'Popup' align = 'right'></ItemDirective>
+              <ItemDirective template = {template} align = 'Center'></ItemDirective>
+              <ItemDirective prefixIcon = 'e-tbar-search-icon tb-icons' tooltipText = 'Search' align = 'Right'></ItemDirective>
+              <ItemDirective prefixIcon = 'e-tbar-settings-icon tb-icons' tooltipText = 'Popup' align = 'Right'></ItemDirective>
             </ItemsDirective>
           </ToolbarComponent>
           <div className='e-mail-items'>

@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
+    CircularGaugeComponent, ILoadedEventArgs, GaugeTheme, AxesDirective, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
@@ -22,6 +22,11 @@ export class Labels extends SampleBase<{}, {}> {
     private labelOffset: HTMLInputElement;
     private isMajorTicks: boolean = true;
     private loaded: boolean = false;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     public ticksOffset(): void {
         let value: number = +this.tickOffset.value;
         if (this.isMajorTicks) {
@@ -54,7 +59,7 @@ export class Labels extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <CircularGaugeComponent id='range-container' loaded={this.onChartLoad.bind(this)} ref={gauge => this.gauge = gauge}>
+                        <CircularGaugeComponent load={this.load.bind(this)} id='range-container' loaded={this.onChartLoad.bind(this)} ref={gauge => this.gauge = gauge}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
                                 <AxisDirective startAngle={210} endAngle={150} radius='75%' minimum={0} maximum={180}
@@ -66,7 +71,7 @@ export class Labels extends SampleBase<{}, {}> {
                                     }} labelStyle={{
                                         position: 'Outside', autoAngle: true,
                                         font: {
-                                            size: '10px', color: '#333333'
+                                            size: '10px'
                                         }
                                     }}>
                                     <AnnotationsDirective>

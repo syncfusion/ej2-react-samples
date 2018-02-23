@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     CircularGaugeComponent, AxesDirective, AxisDirective, Inject, ILoadedEventArgs,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective,
-    Annotations, AnnotationDirective, AnnotationsDirective
+    Annotations, AnnotationDirective, AnnotationsDirective, GaugeTheme,
 } from '@syncfusion/ej2-react-circulargauge';
 import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
 import { SampleBase } from '../common/sample-base';
@@ -35,6 +35,11 @@ const SAMPLE_CSS = `
     `;
 export class SampleData extends SampleBase<{}, {}> {
     private grid1: GridComponent;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     private sampleGauge1: CircularGaugeComponent;
     private sampleGauge2: CircularGaugeComponent;
     private sampleGauge3: CircularGaugeComponent;
@@ -125,7 +130,7 @@ export class SampleData extends SampleBase<{}, {}> {
                         <div className="col-sm-12">
                             <div className="row">
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} ref={gauge => this.sampleGauge1 = gauge} id='sample1-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} ref={gauge => this.sampleGauge1 = gauge} id='sample1-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={230} endAngle={130} minimum={0} maximum={100}
@@ -164,7 +169,8 @@ export class SampleData extends SampleBase<{}, {}> {
                                                             color: '#777777'
                                                         }}
                                                         needleTail={{
-                                                            length: '25%'
+                                                            length: '25%',
+                                                            color: '#777777'
                                                         }}>
                                                     </PointerDirective>
                                                 </PointersDirective>
@@ -173,7 +179,7 @@ export class SampleData extends SampleBase<{}, {}> {
                                     </CircularGaugeComponent>
                                 </div>
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} ref={gauge => this.sampleGauge2 = gauge} id='sample2-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} ref={gauge => this.sampleGauge2 = gauge} id='sample2-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={230} endAngle={130} minimum={0} maximum={100}
@@ -212,7 +218,8 @@ export class SampleData extends SampleBase<{}, {}> {
                                                             color: '#777777'
                                                         }}
                                                         needleTail={{
-                                                            length: '25%'
+                                                            length: '25%',
+                                                            color: '#777777'
                                                         }}>
                                                     </PointerDirective>
                                                 </PointersDirective>
@@ -221,7 +228,7 @@ export class SampleData extends SampleBase<{}, {}> {
                                     </CircularGaugeComponent>
                                 </div>
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} ref={gauge => this.sampleGauge3 = gauge} loaded={this.onChartLoad.bind(this)} id='sample3-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} ref={gauge => this.sampleGauge3 = gauge} loaded={this.onChartLoad.bind(this)} id='sample3-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={230} endAngle={130} minimum={0} maximum={100}
@@ -260,7 +267,8 @@ export class SampleData extends SampleBase<{}, {}> {
                                                             color: '#777777'
                                                         }}
                                                         needleTail={{
-                                                            length: '25%'
+                                                            length: '25%',
+                                                            color: '#777777'
                                                         }}>
                                                     </PointerDirective>
                                                 </PointersDirective>

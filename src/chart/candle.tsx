@@ -19,6 +19,13 @@ const SAMPLE_CSS = `
     /**
      * Candle sample
      */
+    let date1: Date=new Date(2017, 1, 1);
+    let returnValue: any=  chartData.filter(filterValue);
+    function filterValue(value:{x:Date,high:number,low:number} ):any {
+     if(value.x >= date1){
+         return value.x,value.high,value.low;
+        }
+    }
 export class Candle extends SampleBase<{}, {}> {
 
     render() {
@@ -32,8 +39,9 @@ export class Candle extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            skeleton: 'yMd', zoomFactor: 0.2, zoomPosition: 0.6,
-                            crosshairTooltip: { enable: true },
+                           minimum:new Date( 2016, 12, 31),
+                           maximum:new Date( 2017, 9, 31),
+                           crosshairTooltip: { enable: true },
                             majorGridLines: { width: 0 }
                         }}
                         primaryYAxis={{
@@ -57,7 +65,6 @@ export class Candle extends SampleBase<{}, {}> {
                         axisLabelRender={this.axisLabelRender.bind(this)}
                         tooltipRender={this.tooltipLabelRender.bind(this)}
                         chartArea={{ border: { width: 0 } }}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
                         title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, StripLine, Category, Tooltip, DateTime, Zoom, ColumnSeries, Logarithmic, Crosshair]} />
                         <RowsDirective>
@@ -67,17 +74,17 @@ export class Candle extends SampleBase<{}, {}> {
                             </RowDirective>
                         </RowsDirective>
                         <AxesDirective>
-                            <AxisDirective name='secondary' minimum={50} maximum={180} interval={40} opposedPosition={true} rowIndex={1} majorGridLines={{ width: 1 }}
+                            <AxisDirective name='secondary' minimum={100} maximum={180} interval={20} opposedPosition={true} rowIndex={1} majorGridLines={{ width: 1 }}
                                 labelFormat='${value}' title='Price' plotOffset={30} lineStyle={{ width: 0 }}>
                             </AxisDirective>
                         </AxesDirective>
                         <SeriesCollectionDirective>
                             <SeriesDirective type='Column'
-                                dataSource={chartData} animation={{ enable: true }} xName='x' yName='volume'
+                                dataSource={returnValue} animation={{ enable: true }} xName='x' yName='volume'
                                 name='Volume'>
                             </SeriesDirective>
                             <SeriesDirective type='Candle' yAxisName='secondary' bearFillColor='#2ecd71' bullFillColor='#e74c3d'
-                                dataSource={chartData} animation={{ enable: true }}
+                                dataSource={returnValue} animation={{ enable: true }}
                                 xName='x' low='low' high='high' open='open' close='close' name='Apple Inc'
                                 volume='volume'>
                             </SeriesDirective>
@@ -127,8 +134,8 @@ export class Candle extends SampleBase<{}, {}> {
     }
     public tooltipLabelRender(args: ITooltipRenderEventArgs): void {
         if (!args.series.index) {
-            args.textCollections = 'Volume : <b>' +
-                this.getLabelText(args.textCollections.split('<b>')[1].split('</b>')[0]) + '</b>';
+            args.text = 'Volume : <b>' +
+                this.getLabelText(args.text.split('<b>')[1].split('</b>')[0]) + '</b>';
         }
     }
     public getLabelText: Function = (value: number): string => {

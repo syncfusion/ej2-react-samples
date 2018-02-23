@@ -76,14 +76,12 @@ export class Internationalization extends SampleBase<{}, {}> {
         <div id="description">
           <p>
             The NumericTextBox comes with built-in internationalization support to adapt based on the culture. You can change the culture
-            of the component using the
-            <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/api-numericTextBoxComponent.html#locale-string" target="_blank">locale</a> property,
+            of the component using the <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/api-numericTextBoxComponent.html#locale-string" target="_blank">locale</a> property,
             that format the currency symbol, decimal separator, and group separators.
           </p>
           <p>In this demo, NumericTextBox control renders with the German culture.</p>
           <p>
-            More information on the internationalization configuration can be found in the
-            <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/internationalization.html" target="_blank"> documentation section</a>.
+            More information on the internationalization configuration can be found in the <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/internationalization.html" target="_blank">documentation section</a>.
           </p>
         </div>
       </div >

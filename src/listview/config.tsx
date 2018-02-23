@@ -1,6 +1,9 @@
 export const ListViewSampleOrder: Object = [
-    { 'path': 'listview/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'ListView' },
-    { 'path': 'listview/remote-list', 'component': 'Remote', 'name': 'Remote Data', 'order': '01', 'category': 'ListView' },
-    { 'path': 'listview/nested-list', 'component': 'Nested', 'name': 'Nested List', 'order': '01', 'category': 'ListView' },
-    { 'path': 'listview/rtl', 'component': 'RTL', 'name': 'RTL', 'order': '01', 'category': 'ListView' }
+    { 'path': 'listview/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'ListView', 'api': '{"ListViewComponent": ["dataSource", "fields", "appendTo"]}' },
+    { 'path': 'listview/remote-list', 'component': 'Remote', 'name': 'Remote Data', 'order': '01', 'category': 'ListView', 'api': '{"ListViewComponent": ["dataSource", "fields", "headerTitle", "showHeader", "query", "appendTo"]}' },
+    { 'path': 'listview/check-list', 'component': 'Checklist', 'name': 'Checklist', 'order': '01', 'category': 'ListView', 'type': 'new', 'api': '{"ListViewComponent": ["dataSource", "fields", "headerTitle", "showHeader", "showIcon", "appendTo"]}' },
+    { 'path': 'listview/nested-list', 'component': 'Nested', 'name': 'Nested List', 'order': '01', 'category': 'ListView', 'api': '{"ListViewComponent": ["dataSource", "fields", "showCheckBox", "appendTo"]}' },
+    { 'path': 'listview/template', 'component': 'Template', 'name': 'Template', 'order': '02', 'category': 'Customization', 'api': '{"ListViewComponent": ["dataSource", "fields", "headerTitle", "showHeader", "template", "appendTo"]}' },
+    { 'path': 'listview/group-template', 'component': 'GroupTemplate', 'name': 'Group Template', 'order': '02', 'category': 'Customization', 'api': '{"ListViewComponent": ["dataSource", "fields", "headerTitle", "showHeader", "template", "groupTemplate", "appendTo"]}' },
+    { 'path': 'listview/call-history', 'component': 'CallHistory', 'name': 'Call History', 'order': '03', 'category': 'Use Case', 'type': 'new', 'api': '{"ListViewComponent": ["dataSource", "fields", "select", "showIcon", "appendTo"]}' }
 ]

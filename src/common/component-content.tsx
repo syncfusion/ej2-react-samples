@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { routes, category } from './all-routes';
 import { Ajax, Browser, createElement, detach, select } from '@syncfusion/ej2-base';
+import { GridComponent, ColumnsDirective, ColumnDirective, Edit, Toolbar, Page, Inject } from '@syncfusion/ej2-react-grids';
 import { Tab } from '@syncfusion/ej2-react-navigations'
 import { Tooltip } from '@syncfusion/ej2-react-popups'
 import { TabComponent } from '@syncfusion/ej2-react-navigations';
 import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay } from './index';
+import * as samplesJSON from './all-routes';
 import { MyWindow } from './leftpane';
 import * as hljs from './lib/highlightjs';
 
@@ -17,6 +19,7 @@ let propRegex: RegExp = /-3/;
 let controlName: string;
 let sampleName: string;
 let categoryName: string;
+let apiGrid: any;
 let propBorder: HTMLElement = createElement('div', { className: 'sb-property-border' });
 export let sampleNameElement: Element = select('#component-name>.sb-sample-text');
 
@@ -43,7 +46,7 @@ export function selectDefaultTab(): void {
         sourceTab.selectedItem = 0;
     }
 }
-
+window.apiList = (samplesJSON as any).apiList
 /**
  * Description Rendering
  */
@@ -156,6 +159,20 @@ function renderSampleHeader(): void {
         breadCrumSeperator.style.display = 'none';
     }
     breadCrumbSample.innerHTML = sampleName;
+
+    let title: HTMLElement = document.querySelector('title');
+    let txt: string = title.innerHTML;
+    let num: number = txt.indexOf('-');
+    if (num !== -1) {
+        txt = txt.slice(0, num + 1);
+        txt += ' ' + controlName + ' > ' + sampleName;
+    }
+    else {
+        txt += ' - ' + controlName + ' > ' + sampleName;
+    }
+    title.innerHTML = txt;
+    
+   
 }
 function toInitiaUpper(str: string) {
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
@@ -168,7 +185,8 @@ function plunker(results: string): void {
         detach(prevForm);
     }
     let form: HTMLFormElement = createElement('form') as HTMLFormElement;
-    form.setAttribute('action', 'http://plnkr.co/edit/?p=preview');
+    let res: string = ((location.href as any).includes('ej2.syncfusion.com') ? 'https:' : 'http:') + '//plnkr.co/edit/?p=preview';
+    form.setAttribute('action', res);
     form.setAttribute('method', 'post');
     form.setAttribute('target', '_blank');
     form.id = 'plnkr-form';
@@ -251,7 +269,7 @@ function copyCode(): void {
     detach(textArea);
     (select('.copy-tooltip') as any).ej2_instances[0].close();
 }
-      
+
 function processDeviceDependables(): void {
     if (Browser.isDevice) {
         select('.sb-desktop-setting').classList.add('sb-hide');
@@ -262,7 +280,7 @@ function processDeviceDependables(): void {
 
 export function intialLoadScrollTop(): void {
     isMobile = window.matchMedia('(max-width:550px)').matches;
-    isMobile ? rightPane.scrollTop = 74 : rightPane.scrollTop = 0;   
+    isMobile ? rightPane.scrollTop = 74 : rightPane.scrollTop = 0;
 }
 
 export function renderDescriptions(): void {
@@ -301,6 +319,22 @@ export function onComponentLoad(): void {
         }
     }
 }
+export function checkApiTableDataSource(): void {
+    if (!(select('#content-tab') as any).ej2_instances) {
+        return;
+    }
+    let hash: string[] = location.hash.split('/');
+    let data: Object[] = window.apiList[hash[2] + '/' + hash[3].replace('.html', '')] || [];
+    if (!data.length) {
+        (select('#content-tab') as any).ej2_instances[0].hideTab(2);
+        apiGrid.dataSource = [];
+        
+    } else {
+        (select('#content-tab') as any).ej2_instances[0].hideTab(2, false);
+        apiGrid.dataSource = data;
+       
+    }
+}
 
 export class Content extends React.Component<{}, {}>{
 
@@ -337,9 +371,28 @@ export class Content extends React.Component<{}, {}>{
         let ele: HTMLElement = createElement('div', { className: 'copy-tooltip', innerHTML: '<div class="e-icons copycode"></div>' });
         document.getElementById('sb-source-tab').appendChild(ele);
         let copiedTooltip: Tooltip = new Tooltip(
-            { content: 'Copied', position: 'bottom center', opensOn: 'click', closeDelay: 500 }, '.copy-tooltip');
+            { content: 'Copied to clipboard', position: 'BottomCenter', opensOn: 'Click', closeDelay: 500 }, '.copy-tooltip');
         select('#sb-content-header').appendChild(tabContentToolbar);
+
+        let openNew: Tooltip = new Tooltip({
+            content: 'Open in New Window'
+        });
+
+        openNew.appendTo('.sb-open-new-wrapper');
         
+        let previous: Tooltip = new Tooltip({
+            content: 'Previous Sample'
+        });
+        previous.appendTo('#prev-sample');
+
+        let next: Tooltip = new Tooltip({
+            content: 'Next Sample'
+        });
+
+        next.appendTo('#next-sample');
+
+
+
         /**
          * plnkr trigger
          */
@@ -350,14 +403,14 @@ export class Content extends React.Component<{}, {}>{
             }
         });
         select('.copycode').addEventListener('click', copyCode);
-        
+
         /**
          * Property Panel Border
          */
         select('.sb-sample-content-area').firstChild.appendChild(propBorder);
 
         processDeviceDependables();
-        
+
         onComponentLoad();
 
         select('.sb-mobile-setting').addEventListener('click', viewMobilePropPane);
@@ -372,6 +425,7 @@ export class Content extends React.Component<{}, {}>{
         setNavButtonState();
         intialLoadScrollTop();
         removeOverlay();
+        checkApiTableDataSource();
     }
 
     public componentWillReceiveProps(): void {
@@ -389,9 +443,11 @@ export class Content extends React.Component<{}, {}>{
                 <div id="sb-content" className='sb-content-section'>
                     <div id='sb-content-header' className="e-tab-header sb-content-tab-header">
                         <div>
-                            <span className="sb-icons sb-icon-Demo"></span> DEMO </div>
+                            <span className="sb-icons sb-icon-Demo"></span> <span className="sb-tab-title"> DEMO </span></div>
                         <div>
-                            <span className="sb-icons sb-icon-Code"></span> SOURCE </div>
+                            <span className="sb-icons sb-icon-Code"></span><span className="sb-tab-title"> SOURCE </span></div>
+                        <div>
+                            <span className="sb-icons sb-icon-API"></span><span className="sb-tab-title"> API </span></div>
                     </div>
                     <div className="e-content sb-sample-content-area">
                         <div>
@@ -418,6 +474,16 @@ export class Content extends React.Component<{}, {}>{
                                 </TabComponent>
                             </div>
                         </div>
+                        <div>
+                            <GridComponent id='api-grid' dataSource={[]} ref={l => apiGrid = l}>
+                                    <ColumnsDirective>
+                                    <ColumnDirective field='name' headerText='name'  template='#template' width='180' textAlign='Center'></ColumnDirective>
+                                    <ColumnDirective field='type' headerText='Type' width='180' ></ColumnDirective>
+                                    <ColumnDirective field='description' headerText='Description' template='#template-description'  width='200'/>
+                                    </ColumnsDirective>
+                            </GridComponent>
+                        </div>
+
                     </div>
                 </div>
             </TabComponent>

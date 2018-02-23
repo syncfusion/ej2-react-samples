@@ -3,3 +3,6 @@
     width: 250px !important;
     padding-top: 15px;
 }
+#autodata .control-section {
+    overflow:auto;
+}

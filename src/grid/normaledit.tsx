@@ -5,7 +5,7 @@ import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class NormalEdit extends SampleBase<{}, {}> {
-  public toolbarOptions: any = ['add', 'edit', 'delete', 'update', 'cancel'];
+  public toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true };
   public editparams: any = { params: { popupHeight: '300px' } };
   public validationRule: Object = { required: true};
@@ -16,9 +16,9 @@ export class NormalEdit extends SampleBase<{}, {}> {
         <div className='control-section'>
           <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='right' validationRules={this.validationRule} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.validationRule} isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRule}></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='right' editType='numericedit' ></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' ></ColumnDirective>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='170' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
             </ColumnsDirective>
@@ -40,12 +40,12 @@ export class NormalEdit extends SampleBase<{}, {}> {
           </p>
           <p>The available modes are,</p>
           <ul>
-              <li><code>Inline</code></li>
+              <li><code>Normal</code></li>
               <li><code>Dialog</code></li>
               <li><code>Batch</code></li>
           </ul>
           <p>
-              In this demo, Inline mode is enabled for editing. You can start edit any row by double clicking on it or clicking on toolbar’s
+              In this demo, Normal mode is enabled for editing. You can start edit any row by double clicking on it or clicking on toolbar’s
               <code>Edit</code> button, then the currently selected row will be changed to edited state. You can change the row values
               and save edited data to datasource.
           </p>

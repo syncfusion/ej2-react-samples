@@ -3,6 +3,7 @@
     width: 250px !important;
     padding-top: 15px;
 }
+
 @font-face {
     font-family: 'Socialicons';
     src:
@@ -14,6 +15,10 @@
 .e-list-icon {
     font-family: 'Socialicons' !important;
     color: rgba(0, 0, 0, .57);
+}
+.highcontrast .e-list-icon {
+    font-family: 'Socialicons' !important;
+    color: rgba(255, 255, 255, .57);
 }
 
 .twitter:before {

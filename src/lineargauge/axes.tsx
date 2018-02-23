@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { LinearGaugeComponent, Point, MarkerType, Placement, AxesDirective, Annotations, AxisDirective, PointersDirective, PointerDirective, AnnotationDirective, AnnotationsDirective, Inject, Pointer } from '@syncfusion/ej2-react-lineargauge';
+import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, Point, MarkerType, Placement, AxesDirective, Annotations, AxisDirective, PointersDirective, PointerDirective, AnnotationDirective, AnnotationsDirective, Inject, Pointer } from '@syncfusion/ej2-react-lineargauge';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -19,6 +19,11 @@ export class Axes extends SampleBase<{}, {}> {
     private typeElement: DropDownListComponent;
     private placeElement: DropDownListComponent;
     private markerElement: HTMLSelectElement;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+    }
     private minChange() {
         this.gaugeInstance.axes[0].minimum = parseInt(this.rangeMinElement.value, 10);
         document.getElementById('minValue').innerHTML = 'Axis Minimum <span>&nbsp;&nbsp;&nbsp;' + this.rangeMinElement.value;
@@ -87,10 +92,10 @@ export class Axes extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <LinearGaugeComponent id='gauge' ref={gauge => this.gaugeInstance = gauge} orientation='Horizontal'>
+                        <LinearGaugeComponent load={this.load.bind(this)} id='gauge' ref={gauge => this.gaugeInstance = gauge} orientation='Horizontal'>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective line={{ color: '#9E9E9E' }} majorTicks={{ color: '#9E9E9E', interval: 10 }} minorTicks={{ color: '#9E9E9E', interval: 2 }} labelStyle={{ font: { color: '#424242' }, offset: 48 }}>
+                                <AxisDirective line={{ color: '#9E9E9E' }} majorTicks={{ color: '#9E9E9E', interval: 10 }} minorTicks={{ color: '#9E9E9E', interval: 2 }} labelStyle={{ offset: 48 }}>
                                     <PointersDirective>
                                         <PointerDirective value={10} height={15} width={15} color='#757575' offset={30}>
                                         </PointerDirective>
@@ -98,7 +103,7 @@ export class Axes extends SampleBase<{}, {}> {
                                 </AxisDirective>
                             </AxesDirective>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div id="pointer" style="width:70px"><h1 style="font-size:14px;color:#424242">${axes[0].pointers[0].currentValue} MPH</h1></div>'
+                                <AnnotationDirective content='<div id="pointer" style="width:70px"><h1 style="font-size:14px;">${axes[0].pointers[0].currentValue} MPH</h1></div>'
                                     axisIndex={0}
                                     axisValue={10}
                                     x={10}

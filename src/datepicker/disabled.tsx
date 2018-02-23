@@ -10,7 +10,7 @@ export class Disabled extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className='datepicker-control-section'>
-            <DatePickerComponent renderDayCell={disabledDate} placeholder='Choose a date'></DatePickerComponent>
+            <DatePickerComponent renderDayCell={disabledDate}></DatePickerComponent>
           </div>
         </div>
         <div id="action-description">

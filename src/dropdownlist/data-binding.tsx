@@ -4,7 +4,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { DataManager, Query, ODataV4Adaptor } from '@syncfusion/ej2-data';
+import { DataManager, Query, ODataAdaptor } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import './databinding.css';
 
@@ -25,8 +25,8 @@ export class Data extends SampleBase<{}, {}> {
     ];
     // bind the DataManager instance to dataSource property
     private customerData: DataManager = new DataManager({
-        url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Customers',
-        adaptor: new ODataV4Adaptor,
+        url: 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Customers',
+        adaptor: new ODataAdaptor,
         crossDomain: true
     });
     // bind the Query instance to query property

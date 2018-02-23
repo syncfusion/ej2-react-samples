@@ -1,0 +1,152 @@
+.material button#sendButton {
+    top: 4px;
+    position: relative;
+}
+.e-bigger.material button#sendButton {
+    right: 7px;
+}
+.bootstrap button#sendbtn {
+    margin-right: 1%;
+}
+.material .target-element .e-dialog .e-dlg-header-content {
+    background-color: #3f51b5;
+}
+.fabric .target-element .e-dialog .e-dlg-header-content {
+    background-color: #0078d7;
+}
+.bootstrap .target-element .e-dialog .e-dlg-header-content {
+    background-color: #428bca;
+}
+.highcontrast .target-element .e-dialog .e-dlg-header-content {
+    background-color: #ffd939;
+}
+.material.e-bigger .target-element .e-dialog .e-footer-content {
+    padding-left: 23px;
+}
+
+.target-element .e-dlg-header-content .e-btn.e-dlg-closeicon-btn,  .e-bigger .target-element .e-dialog .e-btn.e-dlg-closeicon-btn {
+    top: 16px;
+    left: -11px;
+}
+.target-element .e-dialog .e-dlg-header {
+    position: relative;
+    top: 10px;
+    left: 7px;
+}
+.target-element .e-dialog .e-footer-content, .highcontrast.e-bigger .e-dialog .e-footer-content {
+    padding: 20px;
+}
+.target-element .e-dialog .e-dlg-content {
+    padding: 0;
+}
+.fabric button#sendButton, .highcontrast button#sendButton {
+    position: relative;
+}
+
+.fabric button#sendbtn, .highcontrast button#sendbtn {
+    top: -2px;
+}
+
+ .fabric .target-element input.e-input,  .highcontrast .target-element input.e-input {
+    float: left;
+    height: 35px;
+}
+
+.e-bigger.highcontrast button#sendbtn {
+    margin-right: -17px;
+    margin-top: -2%;
+}
+
+.target-element .e-dialog .e-dlg-header-content {
+    padding: 6px;
+}
+.e-bigger.e-dialog .e-dlg-header-content, .e-bigger .target-element .e-dialog .e-dlg-header-content {
+    padding: 8px;
+}
+.target-element .e-open-icon::before {
+    content: '\e782';
+}
+.target-element .e-dialog .e-dlg-header >img.img2 {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.target-element input.e-input {
+    width: 75%;
+    float: left;
+}
+.e-bigger.bootstrap .target-element input.e-input {
+    height: 39px;
+}
+.target-element .e-icon-settings.e-icons {
+    float: left;
+    position: relative;
+    left: 16%;
+    top: -33px;
+}
+
+.fabric .target-element .e-icon-settings.e-icons, .highcontrast .target-element .e-icon-settings.e-icons {
+    top: -37px;
+}
+
+.e-bigger.fabric .target-element .e-icon-settings.e-icons, .e-bigger.highcontrast .target-element .e-icon-settings.e-icons {
+    top: -35px;
+}
+.target-element .dialogContent .dialogText {
+    font-size: 13px;
+    padding: 5%;
+    word-wrap: break-word;
+    border-radius: 6px;
+    text-align: justify;
+    font-style: initial;
+    display: block;
+}
+.target-element .e-dlg-header .e-icon-settings, .target-element .e-icon-btn {
+    color: #fff;
+}
+
+.target-element .dialogContent .dialogText, .target-element .dialogContent .dialogText  {
+    background-color: #f5f5f5;
+}
+
+.material .target-element .e-dialog .e-footer-content, .fabric .target-element .e-dialog .e-footer-content {
+    border-top: 0.5px solid rgba(0, 0, 0, 0.42);
+}
+.highcontrast .target-element .e-dialog .e-footer-content, .fabric .target-element .e-dialog .e-footer-content {
+    padding: 20px 25px;
+}
+
+.highcontrast .target-element .e-dialog .e-footer-content {
+    border-top: 0.5px solid #fff;
+}
+.highcontrast .target-element .dialogContent .dialogText { 
+    background-color: #bfbfbf;
+}
+.target-element .dialogContent {
+    display: block;
+    font-size: 15px;
+    word-wrap: break-word;
+    text-align: center;
+    color: #DCDCDC;
+    font-style: italic;
+    border-radius: 6px;
+    padding: 3%;
+    position: relative;
+    top: 25px;
+}
+.e-bigger.e-dialog .e-dlg-content, .e-bigger .target-element .e-dialog .e-dlg-content {
+    padding: 0;
+}
+.e-bigger .target-element .e-dialog .dialogContent {
+    top: 20px;
+}
+.bootstrap .target-element .dialogContent {
+    top: 7px;
+}
+.control-wrapper .e-control.e-dialog {
+    width: 30%;
+}
+.target-element .e-dialog .e-dlg-header-content .e-icon-dlg-close {
+  color: #fff;
+}

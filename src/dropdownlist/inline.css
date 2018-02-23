@@ -1,0 +1,40 @@
+
+
+#template {
+    margin: 0 auto;
+    width: 325px;
+}
+
+.inlinecss.e-ddl .e-input-group-icon.e-ddl-icon {
+    display: none;
+}
+
+.inlinecss.e-ddl .e-control.e-dropdownlist.e-input {
+    font-size: 17px;
+    font-weight: 500;
+    margin: -8px 0px 0px 4px;
+    padding: 0px;
+}
+
+.material .inlinecss.e-ddl .e-control.e-dropdownlist.e-input {
+    margin: -1px 0px 0px 4px;
+}
+
+.bootstrap .inlinecss.e-ddl .e-control.e-dropdownlist.e-input {
+    margin: -4px 0px 0px 3px;
+}
+
+#contentText .e-input-group.e-control-wrapper.e-ddl::before,
+#contentText .e-input-group.e-control-wrapper.e-ddl::after {
+    content: none;
+}
+
+#contentText .e-input-group.e-control-wrapper.e-ddl,
+#contentText .e-input-group.e-control-wrapper.e-ddl:hover,
+#contentText .e-input-group.e-ddl.e-input-focus,
+#contentText .e-input-group.e-ddl.e-input-focus::before,
+#contentText .e-input-group.e-ddl.e-input-focus::after {
+    border-width: 0px;
+    border: none;
+    box-shadow: none;
+}

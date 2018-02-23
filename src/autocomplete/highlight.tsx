@@ -58,7 +58,7 @@ export class Highlight extends SampleBase<{}, {}> {
               <table id="property" title="Properties" style={{ width: "100%", marginTop: "15px" }}>
                 <tr>
                   <td style={{ width: "50%" }}>FilterType :</td>
-                  <td> <DropDownListComponent id="filter-type" dataSource={this.filterData} change={this.onChange.bind(this)} width={this.width} placeholder="Select a type" text='Contains' />
+                  <td> <DropDownListComponent id="filter-type" dataSource={this.filterData} change={this.onChange.bind(this)} placeholder="Select a type" text='Contains' />
                   </td>
                 </tr>
               </table>

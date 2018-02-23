@@ -2,6 +2,7 @@
         width: 30%;
         margin: 0 auto;
         min-width: 185px;
+        max-width: 350px;
     }
     
   .sample-mask .control-label {
@@ -9,7 +10,10 @@
         font-size: 12px;
         opacity: 1;
     }
-
+    .property-panel-content{
+        overflow: auto;
+    }
+    
     .control-section .col-lg-8 .content-wrapper.sample-mask {
         width: 45%;
     }

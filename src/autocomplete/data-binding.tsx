@@ -6,7 +6,7 @@ import * as React from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
-import { DataManager, Query, ODataV4Adaptor } from '@syncfusion/ej2-data';
+import { DataManager, Query, ODataAdaptor } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './databinding.css';
@@ -36,8 +36,8 @@ export class Data extends SampleBase<{}, {}> {
     ];
     // bind the DataManager instance to dataSource property
     public productData: DataManager = new DataManager({
-        url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Products',
-        adaptor: new ODataV4Adaptor,
+        url: 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Products',
+        adaptor: new ODataAdaptor,
         crossDomain: true
     });
     // bind the Query instance to query property
@@ -57,7 +57,7 @@ export class Data extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div className='control-pane'>
+            <div id='autodata' className='control-pane'>
                 <div className='control-section'>
                     <div className='col-lg-9'>
                         <div className='col-lg-6'>
@@ -75,7 +75,7 @@ export class Data extends SampleBase<{}, {}> {
                     </div>
                     <div className='col-lg-3 property-section'>
                         <PropertyPane title='Properties'>
-                            <div  style={{marginLeft: '75px', paddingTop:'35px'}}>
+                            <div  style={{paddingTop:'35px'}}>
                             <CheckBoxComponent checked={true} label='Autofill' change={ this.onChange.bind(this) } ></CheckBoxComponent>
                             </div>                            
                         </PropertyPane>

@@ -25,7 +25,7 @@ export class CustomTag extends SampleBase<{}, {}> {
         <div className='control-section'>
             <div id='multidefault' className="control-styles">
               <h4>Custom Values</h4>
-              <MultiSelectComponent id="customelement" dataSource={this.gameList} fields={this.fields} mode="box" placeholder="Favorite sports" allowCustomValue={true} />
+              <MultiSelectComponent id="customelement" dataSource={this.gameList} fields={this.fields} mode="Box" placeholder="Favorite sports" allowCustomValue={true} />
             </div>
         </div>
         <div id="action-description">

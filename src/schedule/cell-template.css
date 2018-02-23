@@ -1,0 +1,20 @@
+.cell-template.e-schedule .e-month-view .e-work-cells {
+  position: relative;
+}
+
+.cell-template.e-schedule .templatewrap {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+}
+
+.cell-template.e-schedule .templatewrap img {
+  width: 30px;
+  height: 30px;
+}
+
+.cell-template.e-schedule .caption {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}

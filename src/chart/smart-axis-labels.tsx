@@ -5,23 +5,26 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Tooltip, DataLabel, IPointRenderEventArgs,
-    ILoadedEventArgs, Category, ColumnSeries, Inject, LabelIntersectAction, EdgeLabelPlacement, ChartTheme
+    ILoadedEventArgs, Category, ColumnSeries, Inject, LabelIntersectAction, EdgeLabelPlacement, ChartTheme,
+    AxisPosition
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors } from './theme-color';
 
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
-    let materialColors: string[] = ['#00bdae', '#404041', '#357cd2', '#e56590', '#f8b883', '#70ad47', '#dd8abd', '#7f84e8', '#7bb4eb',
-        '#ea7a57', '#404041', '#00bdae'];
-    let fabricColors: string[] = ['#4472c4', '#ed7d31', '#ffc000', '#70ad47', '#5b9bd5',
-        '#c1c1c1', '#6f6fe2', '#e269ae', '#9e480e', '#997300', '#4472c4', '#70ad47', '#ffc000', '#ed7d31'];
     let selectedTheme: string = location.hash.split('/')[1];
+    selectedTheme = selectedTheme ? selectedTheme : 'material';
     if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-        args.fill = fabricColors[args.point.index];
+        args.fill = fabricColors[args.point.index % 10];
+    } else if (selectedTheme === 'material') {
+        args.fill = materialColors[args.point.index % 10];
+    } else if (selectedTheme === 'highcontrast') {
+        args.fill = highContrastColors[args.point.index % 10];
     } else {
-        args.fill = materialColors[args.point.index];
+        args.fill = bootstrapColors[args.point.index % 10];
     }
 };
 
@@ -58,11 +61,20 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
         this.chartInstance.series[0].animation.enable = false;
         this.chartInstance.refresh();
     };
+    private xpos(): void {
+        this.chartInstance.primaryXAxis.labelPosition = this.posElement.value as AxisPosition;
+        this.chartInstance.refresh();
+    };
     private modeElement: DropDownListComponent;
     private modelist: { [key: string]: Object }[] = [
         { value: 'None' },
         { value: 'Hide' },
         { value: 'Shift' }
+    ];
+    private posElement: DropDownListComponent;
+    private poslist: { [key: string]: Object }[] = [
+        { value: 'Inside' },
+        { value: 'Outside' }    
     ];
     render() {
         return (
@@ -81,7 +93,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                             }}
                             chartArea={{ border: { width: 0 } }}
                             primaryYAxis={{
-                                labelStyle: { color: 'white' },
+                                labelStyle: { size: '0px' },
                                 majorTickLines: { width: 0 },
                                 majorGridLines: { width: 0 },
                                 lineStyle: { width: 0 },
@@ -117,6 +129,16 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                                         <div>Edge Label<br/>Placement: </div></td>
                                     <td style={{ padding: 10}}>
                                         <DropDownListComponent width="120px" id="selmode" change={this.mode.bind(this)} ref={d => this.modeElement = d} dataSource={this.modelist} fields={{ text: 'value', value: 'value' }} value="None" />
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td>
+                                        <div>Label Position: </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <DropDownListComponent width="120px" id="labmode" change={this.xpos.bind(this)} ref={d => this.posElement = d} dataSource={this.poslist} fields={{ text: 'value', value: 'value' }} value="Outside" />
+                                        </div>
                                     </td>
                                 </tr>
                             </table>

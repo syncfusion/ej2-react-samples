@@ -98,7 +98,7 @@ export class PieAnnotation extends SampleBase<{}, {}> {
         chart.setAttribute('title', '');
         if (this.isRender) {
             this.pie.destroy();
-            this.pie = new AccumulationChart(this.pie = new AccumulationChart({
+            this.pie = new AccumulationChart({
                 background: 'transparent',
                 series: [{
                     radius: '65%', animation: { enable: false },
@@ -111,7 +111,7 @@ export class PieAnnotation extends SampleBase<{}, {}> {
                     args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
                 },
                 legendSettings: { visible: false }
-            }));
+            });
             this.pie.appendTo('#chart_annotation');
         }
     };

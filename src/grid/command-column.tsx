@@ -5,22 +5,22 @@ import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class CommandColumnEdit extends SampleBase<{}, {}> {
-  public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, allowEditOnDblClick: false };
   public editparams: any = { params: { popupHeight: '300px' } };
   public validationRule: Object = { required: true};
-  public commands: any = [{ type: 'edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat' } },
-  { type: 'delete', buttonOption: { iconCss: 'e-icons e-delete', cssClass: 'e-flat' } },
-  { type: 'save', buttonOption: { iconCss: 'e-icons e-update', cssClass: 'e-flat' } },
-  { type: 'cancel', buttonOption: { iconCss: 'e-icons e-cancel-icon', cssClass: 'e-flat' } }];
+  public commands: any = [{ type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat' } },
+  { type: 'Delete', buttonOption: { iconCss: 'e-icons e-delete', cssClass: 'e-flat' } },
+  { type: 'Save', buttonOption: { iconCss: 'e-icons e-update', cssClass: 'e-flat' } },
+  { type: 'Cancel', buttonOption: { iconCss: 'e-icons e-cancel-icon', cssClass: 'e-flat' } }];
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={data}  allowPaging={true} editSettings={this.editSettings}>
+          <GridComponent id='gridcomp' dataSource={data}  allowPaging={true} pageSettings={{ pageCount: 5 }} editSettings={this.editSettings}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='right' validationRules={this.validationRule}></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' isPrimaryKey={true} validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRule}></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='right' editType='numericedit' ></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' ></ColumnDirective>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='170' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
               <ColumnDirective headerText='Manage Records' width='160' commands={this.commands}></ColumnDirective>
@@ -48,10 +48,10 @@ export class CommandColumnEdit extends SampleBase<{}, {}> {
           </p>
           <p>The built-in command button are,</p>
           <ul>
-             <li><code>edit</code></li>
-             <li><code>delete</code></li>
-             <li><code>cancel</code></li>
-             <li><code>save</code></li>
+             <li><code>Edit</code></li>
+             <li><code>Delete</code></li>
+             <li><code>Cancel</code></li>
+             <li><code>Save</code></li>
          </ul>
          <p style={{ fontWeight: 500 }}>Injecting Module</p>
          <p>

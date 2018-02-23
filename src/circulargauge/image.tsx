@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
-    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
+    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel, getRangeColor,
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
@@ -27,6 +27,11 @@ const SAMPLE_CSS = `
     
 export class Image extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -35,7 +40,7 @@ export class Image extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-lg-12'>
-                        <CircularGaugeComponent title='Short Put Distance' loaded={this.onChartLoad.bind(this)} id='image-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
+                        <CircularGaugeComponent load={this.load.bind(this)} title='Short Put Distance' loaded={this.onChartLoad.bind(this)} id='image-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
                             titleStyle={{ size: '18px' }} centerY="57%'">
                             <Inject services={[Annotations]} />
                             <AxesDirective>

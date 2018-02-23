@@ -2,15 +2,15 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import {TreeViewComponent} from '@syncfusion/ej2-react-navigations';
-import { DataManager, Query, ODataV4Adaptor } from '@syncfusion/ej2-data';
+import { DataManager, Query, ODataAdaptor } from '@syncfusion/ej2-data';
 import './remotedata.css';
 
 export class RemoteData extends SampleBase<{}, {}> {
 
 // Use data manager to get tree data from remote source
 public data: DataManager = new DataManager({
-    url: 'http://services.odata.org/V4/Northwind/Northwind.svc',
-    adaptor: new ODataV4Adaptor,
+    url: 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc',
+    adaptor: new ODataAdaptor,
     crossDomain: true,
 });
 

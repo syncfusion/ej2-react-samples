@@ -1,8 +1,10 @@
 export const DropDownListSampleOrder:Object = [
-    { 'path': 'dropdownlist/default', 'component':'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'DropDownList' },
-    { 'path': 'dropdownlist/grouping-icon', 'component':'Grouping', 'name': 'Grouping and Icons', 'order': '01', 'category': 'DropDownList' },
-    { 'path': 'dropdownlist/data-binding', 'component':'Data', 'name': 'Data Binding', 'order': '01', 'category': 'DropDownList' },
-    { 'path': 'dropdownlist/filtering', 'component':'Filtering', 'name': 'Filtering', 'order': '01', 'category': 'DropDownList' },
-    { 'path': 'dropdownlist/template', 'component':'Templates', 'name': 'Templates', 'order': '01', 'category': 'DropDownList' },
-    { 'path': 'dropdownlist/cascading', 'component':'Cascading', 'name': 'Cascading', 'order': '01', 'category': 'DropDownList' }
+    { 'path': 'dropdownlist/default', 'component':'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'DropDownList', 'api': '{"DropDownList": ["popupHeight", "placeholder", "index", "change"]}' },
+    { 'path': 'dropdownlist/grouping-icon', 'component':'Grouping', 'name': 'Grouping and Icons', 'order': '01', 'category': 'DropDownList', 'api': '{"DropDownList": ["dataSource", "fields", "popupHeight", "placeholder"]}' },
+    { 'path': 'dropdownlist/data-binding', 'component':'Data', 'name': 'Data Binding', 'order': '01', 'category': 'DropDownList', 'api': '{"DropDownList": ["dataSource", "fields", "query", "sortOrder", "autofill", "popupHeight", "placeholder"]}' },
+    { 'path': 'dropdownlist/filtering', 'component':'Filtering', 'name': 'Filtering', 'order': '01', 'category': 'DropDownList', 'api': '{"DropDownList": ["dataSource", "fields", "allowFiltering", "filtering", "filterBarPlaceholder", "popupHeight", "placeholder"]}' },
+    { 'path': 'dropdownlist/template', 'component':'Templates', 'name': 'Templates', 'order': '01', 'category': 'DropDownList', 'api': '{"DropDownList": ["dataSource", "fields","headerTemplate", "itemTemplate", "valueTemplate", "popupHeight", "placeholder"]}' },
+    { 'path': 'dropdownlist/cascading', 'component':'Cascading', 'name': 'Cascading', 'order': '01', 'category': 'DropDownList', 'api': '{"DropDownList": ["dataSource", "fields", "change", "placeholder", "popupHeight", "value", "enabled"]}' },
+    { 'path': 'dropdownlist/inline', 'component':'Inline', 'name': 'Inline', 'order': '01', 'category': 'DropDownList', 'api': '{"DropDownList": ["dataSource", "fields", "value"]}', 'type': 'new' },
+    { 'path': 'dropdownlist/diacritics-filtering', 'component':'DiacriticsFiltering', 'name': 'Diacritics Filtering', 'order': '01', 'category': 'DropDownList', 'api': '{"DropDownList": ["dataSource", "ignoreAccent", "placeholder","allowFiltering"]}', 'type': 'new' }
 ]

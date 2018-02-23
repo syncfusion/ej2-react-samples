@@ -89,5 +89,10 @@ export class Column extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+         if (selectedTheme === 'highcontrast') {
+            args.chart.series[0].marker.dataLabel.font.color = '#000000';
+            args.chart.series[1].marker.dataLabel.font.color = '#000000';
+            args.chart.series[2].marker.dataLabel.font.color = '#000000';
+            }
     };
 }

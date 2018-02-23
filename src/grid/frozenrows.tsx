@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Resize, Sort } from '@syncfusion/ej2-react-grids';
-import { data } from './data';
+import { orderDetails } from './data';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
@@ -24,14 +24,14 @@ export class FrozenRows extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className='col-lg-8'>
-          <GridComponent dataSource={data.slice(0, 50)} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} allowSorting={true} allowMultiSorting={false} ref={g => this.grid = g}>
+          <GridComponent dataSource={orderDetails} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} allowSorting={true} allowMultiSorting={false} ref={g => this.grid = g}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='right'></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' />
               <ColumnDirective field='CustomerID' headerText='Customer ID' width='130'></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='180'></ColumnDirective>
-              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='right' />
-              <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='180' format='yMd' textAlign='right'></ColumnDirective>
+              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right' />
+              <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='180' format='yMd' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='300'></ColumnDirective>
               <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270'></ColumnDirective>
               <ColumnDirective field='ShipCity' headerText='Ship City' width='250'></ColumnDirective>
@@ -48,7 +48,7 @@ export class FrozenRows extends SampleBase<{}, {}> {
                     <div>Frozen Rows </div>
                   </td>
                   <td style={{ width: '70%', paddingRight: '10px' }}>
-                    <div>
+                    <div style={{ minWidth: '148px' }}>
                       {/* Render NumericTextbox component with specific range for frozen rows */}
                       <NumericTextBoxComponent min={0} max={5} value={2} ref={numeric => this.rowInstance = numeric}></NumericTextBoxComponent>
                     </div>
@@ -59,16 +59,16 @@ export class FrozenRows extends SampleBase<{}, {}> {
                     <div>Frozen Columns </div>
                   </td>
                   <td style={{ width: '70%', paddingRight: '10px' }}>
-                    <div>
+                    <div style={{ minWidth: '148px' }}>
                       {/* Render NumericTextbox component with specific range for frozen columns */}
-                      <NumericTextBoxComponent min={1} max={Browser.isDevice ? 1 : 2} value={1} ref={numeric => this.columnInstance = numeric}></NumericTextBoxComponent>
+                      <NumericTextBoxComponent min={0} max={Browser.isDevice ? 1 : 2} value={1} ref={numeric => this.columnInstance = numeric}></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td></td>
                   <td>
-                    <div style={{ float: 'right', marginRight: '10px' }}>
+                    <div style={{ float: 'Right', marginRight: '10px' }}>
                       {/* Render Button component in properties panel */}
                       <ButtonComponent onClick={ this.btnClick.bind(this) }>Set</ButtonComponent>
                     </div>

@@ -5,8 +5,8 @@ import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class BatchEdit extends SampleBase<{}, {}> {
-  public toolbarOptions: any = ['add', 'delete', 'update', 'cancel'];
-  public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'batch' };
+  public toolbarOptions: any = ['Add', 'Delete', 'Update', 'Cancel'];
+  public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Batch' };
   public editparams: any = { params: { popupHeight: '300px' } };
   public validationRule: Object = { required: true };
   public pageSettings: Object = { pageCount: 5};
@@ -16,9 +16,9 @@ export class BatchEdit extends SampleBase<{}, {}> {
         <div className='control-section'>
           <GridComponent dataSource={data} pageSettings={this.pageSettings} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='right' validationRules={this.validationRule} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.validationRule} isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRule}></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='right' editType='numericedit' ></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' ></ColumnDirective>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='170' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
             </ColumnsDirective>
@@ -40,7 +40,7 @@ export class BatchEdit extends SampleBase<{}, {}> {
             </p>
             <p>The available modes are,</p>
             <ul>
-              <li><code>Inline</code></li>
+              <li><code>Normal</code></li>
               <li><code>Dialog</code></li>
               <li><code>Batch</code></li>
             </ul>

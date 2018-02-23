@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Animation, Browser, extend, select } from '@syncfusion/ej2-base';
 import { ListViewComponent, ListView, SelectEventArgs } from '@syncfusion/ej2-react-lists';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
-import { DataManager, Query } from '@syncfusion/ej2-data';
+import { DataManager, Query, DataUtil } from '@syncfusion/ej2-data';
 import { samplesList } from './sample-list';
 import { toggleLeftPane, isLeftPaneOpen, sampleOverlay } from './index';
 import { selectDefaultTab } from './component-content';
@@ -16,6 +16,7 @@ let controlSampleData: any = {};
 
 export interface MyWindow extends Window {
     sampleOrder: string[];
+    apiList : any;
 }
 
 declare let window: MyWindow;
@@ -87,6 +88,8 @@ export class LeftPane extends React.Component<{}, {}> {
      * ListView Configuration
      */
     public fields: Object = { id: 'id', text: 'name', groupBy: 'order', htmlAttributes: 'data' };
+    public nodeTemplate: string = '<div class="sb-tree-component"> <span class="e-component text" role="listitem">${name}' +
+    '${if(type)}<span class="e-samplestatus ${type}"></span>${/if}</span';
     public groupTemlate: string = '${if(items[0]["category"])}<div class="e-text-content">' +
     '<span class="e-list-text">${items[0].category}</span></div>${/if}';
     public template: string = '<div class="e-text-content e-icon-wrapper"> <span class="e-list-text" role="listitem">${name}' +
@@ -128,10 +131,9 @@ export class LeftPane extends React.Component<{}, {}> {
         let pid: number;
         let tempList: any[] = [];
         let category: string = '';
-        let categories: string[] = [];
+        let categories: Object[] = [];
         let order: any = {};
-        let res: any =  new DataManager(list).executeLocal(new Query().sortBy('order').select('category'));
-        categories = res.filter((val: string,ind:number) => { return res.indexOf(val) == ind; })
+        categories = DataUtil.distinct(list, 'category');
         for (let j: number = 0; j < categories.length; j++) {
             tempList = tempList.concat({ id: id, name: categories[j], order: j, hasChild: true, expanded: true });
             pid = id;
@@ -143,6 +145,7 @@ export class LeftPane extends React.Component<{}, {}> {
                             id: id,
                             pid: pid,
                             name: list[k].name,
+                            type: list[k].type,
                             url: {
                                 'data-path': '/' + list[k].samples[0].path,
                                 'control-name': list[k].path,
@@ -192,7 +195,7 @@ export class LeftPane extends React.Component<{}, {}> {
                 isPc = window.matchMedia('(min-width:850px)').matches;
                 sampleOverlay();
                 let theme: string = location.hash.split('/')[1] || 'material';
-                if (arg.item && ((isMobile && !select('.sb-left-pane').classList.contains('sb-hide')) ||
+                if (arg.item && ((isMobile && !select('#left-sidebar').classList.contains('sb-hide')) ||
                     ((isTablet || (Browser.isDevice && isPc)) && isLeftPaneOpen()))) {
                     toggleLeftPane();
                 }
@@ -207,6 +210,7 @@ export class LeftPane extends React.Component<{}, {}> {
                 <TreeViewComponent id='controlTree' cssClass="sb-hide" nodeClicked={this.controlSelect = this.controlSelect.bind(this)}
                     className='e-view'
                     fields={this.treeFields}
+                    nodeTemplate={this.nodeTemplate}
                     ref={t => this.treeControl = t}
                 />
                 <div id="controlSamples" className="e-view">

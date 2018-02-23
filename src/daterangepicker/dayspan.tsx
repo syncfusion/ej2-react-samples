@@ -12,12 +12,12 @@ export class DaySpan extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='daterangepicker-control-section'>
-                        <DateRangePickerComponent minDays={this.minDays} maxDays={this.maxDays} placeholder='Select a range'></DateRangePickerComponent>
+                        <DateRangePickerComponent minDays={this.minDays} maxDays={this.maxDays}></DateRangePickerComponent>
                     </div>
                 </div>
                 <div id="action-description">
                     <p>
-                        In this sample, your date range selection is restricted to select minimum four days and maximum ten days.</p>    
+                        In this sample, your date range selection is restricted to select minimum five days and maximum ten days.</p>    
                 </div>
                 <div id="description">
                     <p>

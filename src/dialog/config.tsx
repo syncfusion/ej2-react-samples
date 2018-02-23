@@ -1,6 +1,7 @@
 export const DialogSampleOrder:Object = [
-    { 'path': 'dialog/basic', 'component':'Basic', 'name': 'Basic Usage', 'order': '01', 'category': 'Dialog' },
-    { 'path': 'dialog/modal', 'component':'Modal', 'name': 'Modal', 'order': '01', 'category': 'Dialog' },
-    { 'path': 'dialog/ajax', 'component':'AjaxContent', 'name': 'Ajax Content', 'order': '01', 'category': 'Dialog' },
-    { 'path': 'dialog/rtl', 'component':'RTL', 'name': 'RTL', 'order': '01', 'category': 'Dialog' }
+    { 'path': 'dialog/default', 'component':'DefaultFunctionalities', 'name': 'Default Functionalities', 'type': 'update', 'order': '01', 'category': 'Dialog', 'api': '{"Dialog": [ "header", "content", "target", "showCloseIcon", "buttons", "animationSettings", "closeOnEscape", "width", "open", "close", "visible", "show", "hide" ]}' },
+    { 'path': 'dialog/basic', 'component':'Basic', 'name': 'Custom Dialogs', 'type': 'update', 'order': '01', 'category': 'Dialog', 'api': '{"Dialog": [ "header", "content", "target", "showCloseIcon", "buttons", "animationSettings", "closeOnEscape", "width", "open", "close", "visible", "show", "hide"]}' },
+    { 'path': 'dialog/modal', 'component':'Modal', 'name': 'Modal', 'order': '01', 'category': 'Dialog', 'api': '{"Dialog": [ "header", "content", "target", "showCloseIcon", "buttons", "animationSettings", "isModal", "width", "open", "close", "show", "hide", "overlayClick"]}' },
+    { 'path': 'dialog/template', 'component':'Template', 'name': 'Template', 'type': 'new', 'order': '01', 'category': 'Dialog', 'api': '{"Dialog": [ "header", "content", "target", "showCloseIcon", "buttons", "animationSettings", "isModal", "width", "open", "close", "show", "hide"]}' },
+    { 'path': 'dialog/ajax', 'component':'AjaxContent', 'name': 'Ajax Content', 'type': 'update', 'order': '01', 'category': 'Dialog', 'api': '{"Dialog": [ "header", "content", "target", "showCloseIcon", "buttons", "animationSettings", "width", "open", "close", "show"]}' }
 ]

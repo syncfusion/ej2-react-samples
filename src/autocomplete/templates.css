@@ -18,6 +18,11 @@
     color: #0078d7;
     font-weight: 400;
 }
+.highcontrast #employees_popup .header {
+        color: #fff;
+        background-color: #000;
+}
+
 #employees_popup .ename {
     display: block !important;
     opacity: .87;

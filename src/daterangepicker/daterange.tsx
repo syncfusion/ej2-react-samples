@@ -13,7 +13,7 @@ export class DateRange extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='daterangepicker-control-section'>
-                        <DateRangePickerComponent min={this.minDate} max={this.maxDate} placeholder='Select a range'></DateRangePickerComponent>
+                        <DateRangePickerComponent min={this.minDate} max={this.maxDate}></DateRangePickerComponent>
                     </div>
                 </div>
                 <div id="action-description">

@@ -10,7 +10,7 @@ import {
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { fabricColors, bootstrapColors, materialColors } from './theme-color';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors } from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
@@ -38,6 +38,8 @@ export class Export extends SampleBase<{}, {}> {
     private type: { [key: string]: Object }[] = [
         { value: 'JPEG' },
         { value: 'PNG' },
+        { value: 'SVG' },
+        { value: 'PDF' }
     ];
     render() {
         return (
@@ -134,11 +136,13 @@ export class Export extends SampleBase<{}, {}> {
     };
     public labelRender(args: IPointRenderEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'material';
         if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
             args.fill = fabricColors[args.point.index % 10];
         } else if (selectedTheme === 'material') {
             args.fill = materialColors[args.point.index % 10];
+        } else if (selectedTheme === 'highcontrast') {
+            args.fill = highContrastColors[args.point.index % 10];
         } else {
             args.fill = bootstrapColors[args.point.index % 10];
         }

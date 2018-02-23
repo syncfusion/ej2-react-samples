@@ -28,14 +28,14 @@ export class SemiPie extends SampleBase<{}, {}> {
           <div className='col-lg-9'>
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
               title='Agricultural Land Percentage'
-              tooltip={{ enable: true, format: '${point.text}' }}
+              tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               legendSettings={{ visible: false }}
               load={this.load.bind(this)}
               loaded={this.onChartLoad.bind(this)}
             >
               <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
               <AccumulationSeriesCollectionDirective>
-                <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' startAngle={270} endAngle={90}
+                <AccumulationSeriesDirective name='Agricultural' dataSource={data1} xName='x' yName='y' startAngle={270} endAngle={90}
                   radius='90%' innerRadius='40%'
                   dataLabel={{
                     visible: true, position: 'Outside',
