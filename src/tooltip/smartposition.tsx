@@ -62,7 +62,7 @@ export class DraggableTooltip extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ position: 'relative' }}>
+                <div className='control-section'>
 
                     {/* Tooltip element */}
                     <TooltipComponent id='targetContainer' ref={t => this.tooltipInstance = t} content='Drag me anywhere, to start walking with me !!!' offsetX={-15} target='#demoSmart' animation={this.tooltipAnimation}>

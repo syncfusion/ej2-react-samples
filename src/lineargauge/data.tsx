@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { LinearGaugeComponent, AxesDirective, AxisDirective, Annotations, Inject, PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective } from '@syncfusion/ej2-react-lineargauge';
+import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, Annotations, Inject, PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective } from '@syncfusion/ej2-react-lineargauge';
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -12,6 +12,11 @@ const SAMPLE_CSS = `
     }`;
 
 export class Data extends SampleBase<{}, {}> {
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -20,16 +25,15 @@ export class Data extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section'>
                     <div className="row">
-                        <LinearGaugeComponent style={{ height: "300px" }} id='gauge1' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0', border: { width: 0 }, offset: 30 }}>
+                        <LinearGaugeComponent load={this.load.bind(this)} style={{ height: "300px" }} id='gauge1' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0', border: { width: 0 }, offset: 30 }}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective line={{ offset: 30 }} labelStyle={{ font: { color: '#424242' }, offset: 50 }}>
+                                <AxisDirective line={{ offset: 30 }} labelStyle={{ offset: 50 }}>
                                     <PointersDirective>
                                         <PointerDirective value={10} placement='Near'
                                             offset={-60}
                                             height={10}
                                             width={10}
-                                            color='#424242'
                                             markerType='Triangle'>
                                         </PointerDirective>
                                     </PointersDirective>
@@ -54,7 +58,7 @@ export class Data extends SampleBase<{}, {}> {
                                     x={50}
                                     y={-130}>
                                 </AnnotationDirective>
-                                <AnnotationDirective content='<div id="pointerText" style="width:60px;"><p style="font-size:15px;color:#30b32d;">10 MPH</p></div>'
+                                <AnnotationDirective content='<div id="pointerText" style="width:60px;"><p style="font-size:15px;">10 MPH</p></div>'
                                     axisIndex={0}
                                     zIndex= '1'
                                     axisValue={10}
@@ -64,16 +68,15 @@ export class Data extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div className="row">
-                        <LinearGaugeComponent style={{ height: "250px" }} id='gauge2' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0', border: { width: 0 }, offset: -50 }}>
+                        <LinearGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} id='gauge2' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0', border: { width: 0 }, offset: -50 }}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective line={{ offset: 30 }} labelStyle={{ font: { color: '#424242' }, offset: 50 }}>
+                                <AxisDirective line={{ offset: 30 }} labelStyle={{ offset: 50 }}>
                                     <PointersDirective>
                                         <PointerDirective value={28} placement='Near'
                                             offset={-60}
                                             height={10}
                                             width={10}
-                                            color='#424242'
                                             markerType='Triangle'>
                                         </PointerDirective>
                                     </PointersDirective>
@@ -91,7 +94,7 @@ export class Data extends SampleBase<{}, {}> {
                                     x={50}
                                     y={-110}>
                                 </AnnotationDirective>
-                                <AnnotationDirective content='<div id="pointerText" style="width:60px;"><p style="font-size:15px;color:#30b32d;">28 MPH</p></div>'
+                                <AnnotationDirective content='<div id="pointerText" style="width:60px;"><p style="font-size:15px;">28 MPH</p></div>'
                                     axisIndex={0}
                                     axisValue={28}
                                     y={-70}>
@@ -100,16 +103,15 @@ export class Data extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div className="row">
-                        <LinearGaugeComponent style={{ height: "250px" }} id='gauge3' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0', border: { width: 0 }, offset: -90 }}>
+                        <LinearGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} id='gauge3' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0', border: { width: 0 }, offset: -90 }}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective maximum={10} line={{ offset: 30 }} labelStyle={{ font: { color: '#424242' }, offset: 50, format: '{value}k' }}>
+                                <AxisDirective maximum={10} line={{ offset: 30 }} labelStyle={{ offset: 50, format: '{value}k' }}>
                                     <PointersDirective>
                                         <PointerDirective value={2} placement='Near'
                                             offset={-60}
                                             height={10}
                                             width={10}
-                                            color='#424242'
                                             markerType='Triangle'>
                                         </PointerDirective>
                                     </PointersDirective>
@@ -127,7 +129,7 @@ export class Data extends SampleBase<{}, {}> {
                                     x={50}
                                     y={-120}>
                                 </AnnotationDirective>
-                                <AnnotationDirective content='<div id="pointerText" style="width:100px;"><p style="font-size:15px;color:#30b32d;">2000 Steps</p></div>'
+                                <AnnotationDirective content='<div id="pointerText" style="width:100px;"><p style="font-size:15px;">2000 Steps</p></div>'
                                     axisIndex={0}
                                     zIndex= '1'
                                     axisValue={2.2}

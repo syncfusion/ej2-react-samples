@@ -11,10 +11,10 @@ export class AutoWrap extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={inventoryData} allowPaging={true} allowTextWrap={true} height='400'>
+                    <GridComponent dataSource={inventoryData} allowPaging={true} pageSettings={{ pageCount: 5 }} allowTextWrap={true} height='400'>
                         <ColumnsDirective>
-                            <ColumnDirective field='Inventor' headerText='Inventor' width='180' textAlign='right'></ColumnDirective>
-                            <ColumnDirective field='NumberofPatentFamilies' headerText='Number of Patent Families' width='180' textAlign='right'></ColumnDirective>
+                            <ColumnDirective field='Inventor' headerText='Inventor' width='180' textAlign='Right'></ColumnDirective>
+                            <ColumnDirective field='NumberofPatentFamilies' headerText='Number of Patent Families' width='180' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='Country' headerText='Country' width='140' />
                             <ColumnDirective field='Active' headerText='Active' width='120' />
                             <ColumnDirective field='Mainfieldsofinvention' headerText='Main Fields of Invention' width='200'></ColumnDirective>

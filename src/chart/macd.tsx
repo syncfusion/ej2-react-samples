@@ -28,9 +28,10 @@ export class Macd extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            intervalType: 'Months', majorGridLines: { width: 0 },
-                            skeleton: 'yMd',
-                            crosshairTooltip: { enable: true }, zoomFactor: 0.2, zoomPosition: 0.6
+                            majorGridLines: { width: 0 },
+                            zoomFactor: 0.2, zoomPosition: 0.6,
+                            crosshairTooltip: { enable: true },
+
                         }}
                         primaryYAxis={{
                             title: 'Price',
@@ -43,7 +44,7 @@ export class Macd extends SampleBase<{}, {}> {
                         width={Browser.isDevice ? '100%' : '80%'}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
                         chartArea={{ border: { width: 0 } }}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+                        zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries,
                             MacdIndicator, StripLine, ColumnSeries]} />

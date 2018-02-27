@@ -27,13 +27,13 @@ export class Pyramid extends SampleBase<{}, {}> {
               visible: false,
             }}
             load={this.load.bind(this)}
-            tooltip={{ enable: true, format: '${point.x}: ${point.y} cal' }}
+            tooltip={{ enable: true, format: '${point.x} : <b>${point.y} cal</b>' }}
             loaded={this.onChartLoad.bind(this)}
             resized={this.chartResized.bind(this)}
           >
             <Inject services={[AccumulationDataLabel, AccumulationTooltip, PyramidSeries, AccumulationLegend, AccumulationSelection]} />
             <AccumulationSeriesCollectionDirective>
-              <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' type='Pyramid' width='45%' height='80%'
+              <AccumulationSeriesDirective name='Food' dataSource={data1} xName='x' yName='y' type='Pyramid' width='45%' height='80%'
                 neckWidth='15%' gapRatio={0.03} explode={true} emptyPointSettings={{ mode: 'Drop', fill: 'red' }}
                 dataLabel={{
                   visible: true, position: 'Inside',

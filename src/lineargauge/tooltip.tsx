@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { LinearGaugeComponent, Position, IAxisLabelRenderEventArgs, ILoadedEventArgs, ILoadEventArgs, IResizeEventArgs, ITooltipRenderEventArgs, GaugeTooltip, AnnotationsDirective, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
+import { LinearGaugeComponent, LinearGaugeTheme, Position, IAxisLabelRenderEventArgs, ILoadedEventArgs, ILoadEventArgs, IResizeEventArgs, ITooltipRenderEventArgs, GaugeTooltip, AnnotationsDirective, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -13,6 +13,11 @@ const SAMPLE_CSS = `
      */
 export class Tooltip extends SampleBase<{}, {}> {
     private gaugeInstance: LinearGaugeComponent;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -82,6 +87,9 @@ export class Tooltip extends SampleBase<{}, {}> {
     }
 
     public gaugeLoad(args: ILoadEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
         let width: number = Number(document.getElementById('tooltipContainer').offsetWidth);
         if (width < 500) {
             args.gauge.axes[1].majorTicks.interval = 2;

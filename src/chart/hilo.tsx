@@ -15,6 +15,13 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
 	}`;
+    let date1: Date=new Date(2017, 1, 1);
+    let returnValue: any=  chartData.filter(filterValue);
+    function filterValue(value:{x:Date,high:number,low:number} ):any {
+     if(value.x >= date1){
+         return value.x,value.high,value.low;
+        }
+    }
 export class Hilo extends SampleBase<{}, {}> {
 
     render() {
@@ -27,15 +34,16 @@ export class Hilo extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            skeleton: 'yMd', zoomFactor: 0.2, zoomPosition: 0.6,
+                          minimum:new Date( 2016, 12, 31),
+                          maximum:new Date( 2017, 9, 31),
                             crosshairTooltip: { enable: true },
                             majorGridLines: { width: 0 }
                         }}
                         primaryYAxis={{
                             title: 'Price',
-                            minimum: 50,
-                            maximum: 170,
-                            interval: 30,
+                            minimum: 100,
+                            maximum: 180,
+                            interval: 20,
                             labelFormat: '${value}',
                             lineStyle: { width: 0 },
                             majorTickLines: { width: 0 }
@@ -45,11 +53,11 @@ export class Hilo extends SampleBase<{}, {}> {
                         tooltip={{ enable: true, shared: true }}
                         crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '80%'}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+                      
                         title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[HiloSeries, Tooltip, DateTime, Logarithmic, Crosshair, Zoom]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={chartData} xName='x' yName='low' name='Apple Inc' type='Hilo' low='low'
+                            <SeriesDirective dataSource={returnValue} xName='x' yName='low' name='Apple Inc' type='Hilo' low='low'
                                 high='high'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>

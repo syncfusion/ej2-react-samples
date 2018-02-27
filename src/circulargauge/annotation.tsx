@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
     CircularGaugeComponent, AxesDirective, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, ILoadedEventArgs
+    PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, ILoadedEventArgs, GaugeTheme
 } from '@syncfusion/ej2-react-circulargauge';
 import { CircularGauge, Pointer } from '@syncfusion/ej2-circulargauge';
 import { SampleBase } from '../common/sample-base';
@@ -30,6 +30,11 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
         location.reload();
     }
 
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     public calcTime(offset: string): Date {
         let date: Date = new Date();
         let localTime: number = date.getTime();
@@ -143,7 +148,7 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent id='annotation-container' ref={gauge => this.gauge = gauge}
+                    <CircularGaugeComponent load={this.load.bind(this)} id='annotation-container' ref={gauge => this.gauge = gauge}
                         loaded={this.onChartLoad.bind(this)}
                         resized={this.onResized.bind(this)}
                         centerY='45%'

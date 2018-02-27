@@ -30,11 +30,11 @@ export class Templates extends SampleBase<{}, {}> {
 
   render() {
     return (
-      <div className='control-pane'>
+      <div id='multitemp' className='control-pane'>
         <div className='control-section'>
           <div id='multitemplate' className="control-styles">
             <h4>Template</h4>
-            <MultiSelectComponent id="multiTemplate" dataSource={this.employeesData} fields={this.fields} mode="box" placeholder="Select employee" itemTemplate={this.itemTemplate} valueTemplate={this.valueTemplate} headerTemplate={this.headerTemplate} />
+            <MultiSelectComponent id="multiTemplate" dataSource={this.employeesData} fields={this.fields} mode="Box" placeholder="Select employee" itemTemplate={this.itemTemplate} valueTemplate={this.valueTemplate} headerTemplate={this.headerTemplate} />
           </div>
         </div>
         <div id="action-description">

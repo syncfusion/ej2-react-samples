@@ -4,7 +4,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject, Annotations, AnnotationDirective,
+    CircularGaugeComponent, GaugeTheme, AxesDirective, AxisDirective, Inject, Annotations, AnnotationDirective,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective
 } from '@syncfusion/ej2-react-circulargauge';
 import { ILoadedEventArgs, IResizeEventArgs, CircularGauge, PointerModel, AnnotationModel } from '@syncfusion/ej2-circulargauge';
@@ -49,6 +49,11 @@ export class Dynamic extends SampleBase<{}, {}> {
     public cloudAngle: number = 10;
     public tickHeight: number = 10;
     public gaugeLineStyle: Object = { width: 0 };
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     public gaugeLabelStyle: Object = {
         position: 'Inside', format: '####', font: { size: '14px', color: '#565656' }
     };
@@ -90,6 +95,9 @@ export class Dynamic extends SampleBase<{}, {}> {
     }];
 
     public gaugeLoad(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
         let width: number = args.gauge.element.offsetWidth;
         let height: number = args.gauge.element.offsetHeight;
         if (width < 700) {

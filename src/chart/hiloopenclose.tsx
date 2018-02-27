@@ -16,6 +16,13 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
 	}`;
+let date1: Date = new Date(2017, 1, 1);
+let returnValue: any = chartData.filter(filterValue);
+function filterValue(value: { x: Date, high: number, low: number }): any {
+    if (value.x >= date1) {
+        return value.x, value.high, value.low;
+    }
+}
 export class HiloOpenClose extends SampleBase<{}, {}> {
 
     render() {
@@ -28,8 +35,9 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            skeleton: 'yMd', zoomFactor: 0.2, zoomPosition: 0.6,
                             crosshairTooltip: { enable: true },
+                            minimum: new Date(2016, 12, 31),
+                            maximum: new Date(2017, 12, 31),
                             majorGridLines: { width: 0 }
                         }}
                         primaryYAxis={{
@@ -47,12 +55,12 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                         width={Browser.isDevice ? '100%' : '80%'}
                         legendSettings={{ visible: false }}
                         crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+
                         title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[HiloOpenCloseSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective type='HiloOpenClose'
-                                dataSource={chartData} animation={{ enable: true }}
+                                dataSource={returnValue} animation={{ enable: true }}
                                 bearFillColor='#2ecd71' bullFillColor='#e74c3d'
                                 xName='x' low='low' high='high' open='open' close='close' name='Apple Inc'>
                             </SeriesDirective>
@@ -60,8 +68,8 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample visualizes the AAPL historical data with default HILO Open Close series in the chart. 
+                    <p>
+                        This sample visualizes the AAPL historical data with default HILO Open Close series in the chart.
                 Tooltip and crosshair show the information about the data and period.
            </p>
                 </div>
@@ -87,8 +95,8 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];

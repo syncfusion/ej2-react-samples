@@ -120,5 +120,9 @@ export class Numeric extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+          if (selectedTheme === 'highcontrast') {
+               args.chart.series[0].fill = '#57BCFF';
+               args.chart.series[1].fill = '#E58184';
+            }
     };
 }

@@ -41,14 +41,16 @@ export class Default extends SampleBase<{}, {}> {
   }
   render() {
     return (
-      <div className='control-pane'>
+      <div id='combodefault' className='control-pane'>
         <div className='control-section'>
-          <div className='col-lg-9 control-wrappers'>
-            <div id='default'>
-              <ComboBoxComponent id="games" dataSource={this.sportsData} ref={(combobox) => { this.listObj = combobox }} fields={this.fields} change={this.onChange.bind(this)} placeholder="Select a game" value={this.value} popupHeight="220px" />
+          <div className='col-lg-8'>
+            <div className="content-wrapper">
+              <div id='default'>
+                <ComboBoxComponent id="games" dataSource={this.sportsData} ref={(combobox) => { this.listObj = combobox }} fields={this.fields} change={this.onChange.bind(this)} placeholder="Select a game" value={this.value} popupHeight="220px" />
+              </div>
             </div>
           </div>
-          <div className='col-lg-3 property-section'>
+          <div id='combopanel' className='col-lg-4 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' style={{ width: '100%', margin: '10px' }}>
                 <tr>

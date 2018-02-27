@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { LinearGaugeComponent, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
+import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -12,6 +12,11 @@ const SAMPLE_CSS = `
     }`;
 
 export class Style extends SampleBase<{}, {}> {
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -20,15 +25,14 @@ export class Style extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section'>
                     <div className="row">
-                        <LinearGaugeComponent style={{ height: "150px" }} id='gauge1' orientation='Horizontal'>
+                        <LinearGaugeComponent load={this.load.bind(this)} style={{ height: "150px" }} id='gauge1' orientation='Horizontal'>
                             <AxesDirective>
-                                <AxisDirective line={{ color: '#9E9E9E' }} majorTicks={{ interval: 10, color: '#9E9E9E' }} minorTicks={{ color: '#9E9E9E' }} labelStyle={{ font: { color: '#424242' } }}>
+                                <AxisDirective line={{ color: '#9E9E9E' }} majorTicks={{ interval: 10, color: '#9E9E9E' }} minorTicks={{ color: '#9E9E9E' }}>
                                     <PointersDirective>
                                         <PointerDirective value={80}
                                             offset={10}
                                             height={13}
-                                            width={13}
-                                            color='#424242'>
+                                            width={13}>
                                         </PointerDirective>
                                     </PointersDirective>
                                 </AxisDirective>
@@ -36,15 +40,14 @@ export class Style extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div className="row">
-                        <LinearGaugeComponent style={{ height: "150px" }} id='gauge2' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0', border: { width: 0 }, offset: -20 }}>
+                        <LinearGaugeComponent load={this.load.bind(this)} style={{ height: "150px" }} id='gauge2' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0', border: { width: 0 }, offset: -20 }}>
                             <AxesDirective>
-                                <AxisDirective majorTicks={{ interval: 10 }} line={{ offset: 30 }} labelStyle={{ font: { color: '#424242' }, offset: 50 }}>
+                                <AxisDirective majorTicks={{ interval: 10 }} line={{ offset: 30 }} labelStyle={{ offset: 50 }}>
                                     <PointersDirective>
                                         <PointerDirective value={10} placement='Near'
                                             offset={-50}
                                             height={15}
                                             width={15}
-                                            color='#424242'
                                             markerType='Triangle'>
                                         </PointerDirective>
                                     </PointersDirective>
@@ -57,15 +60,14 @@ export class Style extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div className="row">
-                        <LinearGaugeComponent style={{ height: "150px" }} id='gauge3' orientation='Horizontal'>
+                        <LinearGaugeComponent load={this.load.bind(this)} style={{ height: "150px" }} id='gauge3' orientation='Horizontal'>
                             <AxesDirective>
-                                <AxisDirective majorTicks={{ interval: 10, color: '#9E9E9E' }} minorTicks={{ color: '#9E9E9E' }} line={{ offset: -20, color: '#9E9E9E' }} labelStyle={{ font: { color: '#424242' } }}>
+                                <AxisDirective majorTicks={{ interval: 10, color: '#9E9E9E' }} minorTicks={{ color: '#9E9E9E' }} line={{ offset: -20, color: '#9E9E9E' }}>
                                     <PointersDirective>
                                         <PointerDirective value={70}
                                             offset={20}
                                             height={13}
-                                            width={13}
-                                            color='#424242'>
+                                            width={13}>
                                         </PointerDirective>
                                         <PointerDirective value={70} type='Bar'
                                             height={10}
@@ -77,15 +79,14 @@ export class Style extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div className="row">
-                        <LinearGaugeComponent style={{ height: "150px" }} id='gauge4' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0' }}>
+                        <LinearGaugeComponent load={this.load.bind(this)} style={{ height: "150px" }} id='gauge4' orientation='Horizontal' container={{ width: 30, backgroundColor: '#e0e0e0' }}>
                             <AxesDirective>
-                                <AxisDirective majorTicks={{ height: 0 }} minorTicks={{ height: 0 }} line={{ width: 0 }} labelStyle={{ font: { color: '#424242' }, offset: 60 }}>
+                                <AxisDirective majorTicks={{ height: 0 }} minorTicks={{ height: 0 }} line={{ width: 0 }} labelStyle={{ offset: 60 }}>
                                     <PointersDirective>
                                         <PointerDirective value={60} placement='Near'
                                             offset={-55}
                                             height={15}
                                             width={15}
-                                            color='#424242'
                                             markerType='Triangle'>
                                         </PointerDirective>
                                         <PointerDirective type='Bar' value={60}

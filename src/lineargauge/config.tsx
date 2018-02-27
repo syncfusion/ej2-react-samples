@@ -1,5 +1,5 @@
 export const LinearGaugeSampleOrder: Object = [
-    { 'path': 'lineargauge/default', 'component': 'Default', 'name': 'Default', 'order': '01', 'category': 'Linear Gauge' },
+    { 'path': 'lineargauge/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'Linear Gauge' },
     { 'path': 'lineargauge/container', 'component': 'Container', 'name': 'Container', 'order': '01', 'category': 'Linear Gauge' },
     { 'path': 'lineargauge/data', 'component': 'Data', 'name': 'Data Sample', 'order': '01', 'category': 'Linear Gauge' },
     { 'path': 'lineargauge/ranges', 'component': 'Ranges', 'name': 'Ranges', 'order': '01', 'category': 'Linear Gauge' },

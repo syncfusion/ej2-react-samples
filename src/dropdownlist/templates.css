@@ -21,11 +21,17 @@
     font-weight: 400;
 }
 
+.highcontrast #employees_popup .header {
+        color: #fff;
+        background-color: #000;
+}
+    
 #employees_popup .ename {
     display: block !important;
     opacity: .87;
     font-size: 16px;
     margin-top: 8px;
+    padding: 6px 0 0;
 }
 
 #template .name {
@@ -72,7 +78,9 @@
     line-height: 42px;
     height: 80px;
 }
-
+.e-bigger .e-name {
+    padding:1px 0 0;
+}
 .e-bigger #employees_popup.e-popup .empImage {
     margin: 10px 16px;
 }

@@ -19,7 +19,7 @@ public employees: { [key: string]: Object }[] = [
 private fields: Object = { dataSource: this.employees,  id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild' };
 private cssClass:string = "custom";
 // Template to render tree node
-private nodeTemplate: string = '<div><img class="eimage" src="src/treeview/Employees/${eimg}.png" alt="${eimg}"/>' +
+private nodeTemplate: string = '<div><img class="eimage" src="src/images/employees/${eimg}.png" alt="${eimg}"/>' +
   '<div class="ename">${name}</div><div class="ejob">${job}</div></div>';
   render() {
     return (       

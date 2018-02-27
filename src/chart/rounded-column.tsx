@@ -9,7 +9,7 @@ import {
     Tooltip, IPointRenderEventArgs, ITooltipRenderEventArgs, ChartTheme
 } from '@syncfusion/ej2-react-charts';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
-import { fabricColors, bootstrapColors, materialColors } from './theme-color';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -25,17 +25,19 @@ export let data1: any[] = [
 ];
 export let labelRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'Material';
+    selectedTheme = selectedTheme ? selectedTheme : 'material';
     if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
         args.fill = fabricColors[args.point.index % 10];
     } else if (selectedTheme === 'material') {
         args.fill = materialColors[args.point.index % 10];
+    } else if (selectedTheme === 'highcontrast') {
+        args.fill = highContrastColors[args.point.index % 10];
     } else {
         args.fill = bootstrapColors[args.point.index % 10];
     }
 };
 export let tooltipRender: EmitType<ITooltipRenderEventArgs> = (args: ITooltipRenderEventArgs) => {
-    let tooltip: string = args.textCollections;
+    let tooltip: string = args.text;
     if (tooltip.indexOf('BGD') > -1) {
         tooltip = tooltip.replace('BGD', 'Bangladesh');
     } else if (tooltip.indexOf('BTN') > -1) {
@@ -47,7 +49,7 @@ export let tooltipRender: EmitType<ITooltipRenderEventArgs> = (args: ITooltipRen
     } else {
         tooltip = tooltip.replace('MYS', 'Malaysia');
     }
-    args.textCollections = tooltip;
+    args.text = tooltip;
 };
 export class RoundedColumn extends SampleBase<{}, {}> {
 
@@ -59,7 +61,8 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section'>
                     <ChartComponent id='charts' style={{ textAlign: "center" }}
-                        primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 } }}
+                        primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, tickPosition: 'Inside',
+                        labelPosition:'Inside', labelStyle: { color: '#ffffff' } }}
                         primaryYAxis={{ minimum: 0, maximum: 300, interval: 50, majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' } }}
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
@@ -79,10 +82,10 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
-                    <div style={{ float: 'right', marginRight: '10px' }}>Source:
-					<a href="https://blogs.scientificamerican.com/extinction-countdown/tiger-populations-increasing/" target="_blank"> www.worldweatheronline.com</a>
+                     <div style={{ float: 'right', marginRight: '10px' }}>Source:
+				<a href="https://blogs.scientificamerican.com/extinction-countdown/tiger-populations-increasing/" target="_blank">blogs.scientificamerican.com</a>
                     </div>
-                </div>
+                     </div>
                 <div id="action-description">
                 <p>
                 This sample illustrates a rounded column series. Data points values are showed by using data label.

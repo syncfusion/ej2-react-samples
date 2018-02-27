@@ -7,10 +7,12 @@ import './toolbar.component.css'
 export class Popup extends SampleBase<{}, {}> {
 
   render () {
+    let today: Date = new Date();
+    let ele: string = '<div class = "e-tool-name">' + today.toLocaleString('en-us', { month: 'long' }) + ' ' + today.getFullYear() + '</div>';
     return (
       <div className = 'control-pane'>
-        <div className='control-section'>
-          <div className= 'control toolbar-sample'  style = {{margin: '25px 0' }}>
+        <div className='control-section tbar-control-section'>
+          <div className= 'control toolbar-sample tbar-sample'  style = {{margin: '25px 0' }}>
           {/* Render the Toolbar Component with Popup mode */}
           <ToolbarComponent overflowMode = 'Popup'>
              <ItemsDirective>
@@ -51,6 +53,20 @@ export class Popup extends SampleBase<{}, {}> {
                 <ItemDirective prefixIcon = 'e-design-icon tb-icons' text = 'Design' tooltipText = 'Design Chart' showTextOn = 'Overflow'/>
              </ItemsDirective>
           </ToolbarComponent>
+          <br></br>
+          <br></br>
+          <ToolbarComponent overflowMode = 'Popup'>
+            <ItemsDirective>
+              <ItemDirective template = {ele} overflow ='Show'/>
+              <ItemDirective prefixIcon = 'e-icon-day e-icons'  tooltipText = 'Today' text = 'Today' overflow ='Hide' align ='Right'/>
+              <ItemDirective type = 'Separator'/>
+              <ItemDirective prefixIcon = 'e-icon-week e-icons'  tooltipText = 'Week' text = 'Week' overflow ='Hide' align ='Right'/>
+              <ItemDirective prefixIcon = 'e-icon-month e-icons'  tooltipText = 'Month' text = 'Month' overflow ='Hide' align ='Right'/>
+              <ItemDirective prefixIcon = 'e-icon-year e-icons'  tooltipText = 'Year' text = 'Year' overflow ='Hide' align ='Right'/>
+              <ItemDirective prefixIcon = 'e-print e-icons'  tooltipText = 'Print' text = 'Print' overflow ='Hide' showAlwaysInPopup = {true}/>
+              <ItemDirective prefixIcon = 'e-reccurence-icon e-icons'  tooltipText = 'Sync' text = 'Sync' overflow ='Hide' showAlwaysInPopup = {true}/>
+            </ItemsDirective>
+          </ToolbarComponent>
          </div>
         </div>
         <div id="action-description">
@@ -60,9 +76,17 @@ export class Popup extends SampleBase<{}, {}> {
      </div>
         <div id="description">
           <p>
-            Popup mode display can be enabled to view primary priority items in toolbar and secondary priority items in the popup. Popup
-        will be shown when content exceeds the available viewing area.
-    </p>
+            Popup mode display can be enabled to view primary priority items in toolbar and secondary priority items in the popup.
+          </p>
+          <ul>
+             <li>
+                 In first Toolbar, the popup will be shown when the content exceeds the available viewing area.
+             </li>
+             <li>
+                 The second Toolbar is set with priority for specific toolbar items using <strong><code> <a target="_blank" className="code"
+                 href="http://ej2.syncfusion.com/documentation/toolbar/api-item.html#showalwaysinpopup-boolean">showAlwaysInPopup</a></code> </strong>, which is always displayed in the popup.
+             </li>
+          </ul>
           <br>
           </br>
           <p>

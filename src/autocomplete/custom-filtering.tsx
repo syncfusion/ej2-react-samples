@@ -80,7 +80,7 @@ export class CustomFiltering extends SampleBase<{}, {}> {
   }
   render() {
     return (
-      <div className='control-pane'>
+      <div id='autocustom' className='control-pane'>
         <div className='control-section'>
           <div id='custom-filtering'>
             <AutoCompleteComponent id="books" dataSource={this.booksData} filtering={this.onFiltering.bind(this)} fields={this.fields} placeholder="e.g. Node.js Succinctly" />

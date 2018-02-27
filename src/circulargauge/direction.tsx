@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { PropertyPane } from '../common/property-pane';
 import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject,
+    CircularGaugeComponent, AxesDirective, AxisDirective, Inject, ILoadedEventArgs, GaugeTheme,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, IAxisLabelRenderEventArgs
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
@@ -22,6 +22,11 @@ export class Direction extends SampleBase<{}, {}> {
     public onLabelRender(args: IAxisLabelRenderEventArgs): void {
         args.text = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', ''][args.value];
     };
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     public onChartLoad(args: {}): void {
         if (!this.loaded) {
             this.loaded = true;
@@ -55,7 +60,7 @@ export class Direction extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <CircularGaugeComponent id='direction-gauge' ref={gauge => this.gauge = gauge}
+                        <CircularGaugeComponent load={this.load.bind(this)} id='direction-gauge' ref={gauge => this.gauge = gauge}
                             axisLabelRender={this.onLabelRender.bind(this)} loaded={this.onChartLoad.bind(this)}>
                             <AxesDirective>
                                 <AxisDirective radius='70%' startAngle={0} endAngle={360}
@@ -71,7 +76,7 @@ export class Direction extends SampleBase<{}, {}> {
                                         color: '#9E9E9E'
                                     }} labelStyle={{
                                         font: {
-                                            size: '12px', color: '#333333', fontFamily: 'Roboto'
+                                            size: '12px', fontFamily: 'Roboto'
                                         },
                                         useRangeColor: true,
                                         autoAngle: true,

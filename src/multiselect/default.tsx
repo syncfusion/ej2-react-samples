@@ -32,19 +32,19 @@ export class Default extends SampleBase<{}, {}> {
             <div className="control-styles">
             <h4>Default Mode</h4>
             <div>
-              <MultiSelectComponent id="defaultelement" dataSource={this.sportsData} mode="default" fields={this.fields} placeholder="Favorite Sports" />
+              <MultiSelectComponent id="defaultelement" dataSource={this.sportsData} mode="Default" fields={this.fields} placeholder="Favorite Sports" />
             </div>
             </div>
             <div className="control-styles">
             <h4>Box Mode</h4>
             <div>
-              <MultiSelectComponent id="boxelement" dataSource={this.sportsData} mode="box" fields={this.fields} placeholder="Favorite Sports" />
+              <MultiSelectComponent id="boxelement" dataSource={this.sportsData} mode="Box" fields={this.fields} placeholder="Favorite Sports" />
             </div>
             </div>
             <div className="control-styles">
            <h4> Delimiter Mode</h4>
             <div>
-              <MultiSelectComponent id="delimiterelement" dataSource={this.sportsData} mode="delimiter" fields={this.fields} placeholder="Favorite Sports" />
+              <MultiSelectComponent id="delimiterelement" dataSource={this.sportsData} mode="Delimiter" fields={this.fields} placeholder="Favorite Sports" />
             </div>
             </div>
             </div>

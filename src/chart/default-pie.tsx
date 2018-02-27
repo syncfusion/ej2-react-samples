@@ -29,12 +29,12 @@ export class Pie extends SampleBase<{}, {}> {
               load={this.load.bind(this)}
               legendSettings={{ visible: false }}
               enableSmartLabels={true}
-              tooltip={{ enable: true, format: '${point.x} <br> ${point.y} %' }}
+              tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               loaded={this.onChartLoad.bind(this)}
             >
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
-                <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y'
+                <AccumulationSeriesDirective dataSource={data1} name='Browser' xName='x' yName='y'
                   explode={true} explodeOffset='10%' explodeIndex={0}
                   dataLabel={{
                     visible: true,

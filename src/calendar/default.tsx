@@ -21,7 +21,7 @@ export class Default extends SampleBase<{}, {}> {
                         </p>
                 </div>
                 <div id='description'>
-                    A Calendar is a graphical user interface control which provides the multi-view
+                    A Calendar is a graphical user interface component which provides the multi-view
           representation to display and select a
           date. Also, provide options to navigate in different levels of views like month, year, decade.
           <p>

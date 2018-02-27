@@ -10,13 +10,13 @@ export class Selectioning extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={data} allowPaging={true} selectionSettings={{ type: 'multiple' }}>
+                    <GridComponent dataSource={data} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={{ type: 'Multiple' }}>
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="right"></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-                            <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='right' />
-                            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='right' />
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="right"></ColumnDirective>
+                            <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' />
+                            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Page, Selection]} />
                     </GridComponent>
@@ -39,8 +39,8 @@ export class Selectioning extends SampleBase<{}, {}> {
                     </a></code> property.
             They are</p>
                     <ul>
-                        <li><code>single</code> - Enabled by default. Allows the user to select single row/cell at a time.</li>
-                        <li><code>multiple</code> - Allows the user to select more than one row/cell at a time.</li>
+                        <li><code>Single</code> - Enabled by default. Allows the user to select single row/cell at a time.</li>
+                        <li><code>Multiple</code> - Allows the user to select more than one row/cell at a time.</li>
                     </ul>
                     <p>Also, supports three modes of selection which can be set using <code><a target="_blank" className="code"
                         href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#selectionsettings-selectionsettingsmodel">
@@ -48,9 +48,9 @@ export class Selectioning extends SampleBase<{}, {}> {
                        </a></code> property. They are
                       </p>
                     <ul>
-                        <li><code>row</code> - Enabled by default. Enables the row selection in Grid.</li>
-                        <li><code>cell</code> - Enables the cell selection in Grid.</li>
-                        <li><code>both</code> - Enables both the row and cell selection in Grid. Clicking any cell will select both row and cell
+                        <li><code>Row</code> - Enabled by default. Enables the row selection in Grid.</li>
+                        <li><code>Cell</code> - Enables the cell selection in Grid.</li>
+                        <li><code>Both</code> - Enables both the row and cell selection in Grid. Clicking any cell will select both row and cell
                 simultaneously</li>
                     </ul>
                     <p>To perform the multi-selection, hold <strong>CTRL</strong> key and click the desired rows/cells. To select range of rows/cells,

@@ -40,7 +40,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
         <div className='control-section'>
           <AccumulationChartComponent id='pie-chart'
             title='RIO Olympics Gold'
-            tooltip={{ enable: true, format: '${point.x} : ${point.y}%' }}
+            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
             load={this.load.bind(this)}
             legendSettings={{
               visible: false
@@ -48,7 +48,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
             loaded={this.onChartLoad.bind(this)}>
             <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
             <AccumulationSeriesCollectionDirective>
-              <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y'
+              <AccumulationSeriesDirective name='RIO' dataSource={data1} xName='x' yName='y'
                 dataLabel={{
                   visible: true, position: 'Outside',
                   connectorStyle: { length: '10%' }, name: 'text',

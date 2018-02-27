@@ -55,10 +55,10 @@ export class Range extends SampleBase<{}, {}> {
             <div className='control-pane range'>
                 <div className='control-section'>
                     <div className='timepicker-control-section range'>
-                        <TimePickerComponent id="mintimepick" placeholder='Start Time' ref={(mintimepick) => { this.startObject = mintimepick }} change={this.onEnableEndTime.bind(this)}></TimePickerComponent>
+                        <TimePickerComponent id="mintimepick"  ref={(mintimepick) => { this.startObject = mintimepick }} change={this.onEnableEndTime.bind(this)}></TimePickerComponent>
                     </div>
                     <div className='timepicker-control-section range'>
-                        <TimePickerComponent id="maxtimepick" enabled={false} placeholder='End Time' ref={(maxtimepick) => { this.endObject = maxtimepick }} ></TimePickerComponent>
+                        <TimePickerComponent id="maxtimepick" enabled={false}  ref={(maxtimepick) => { this.endObject = maxtimepick }} ></TimePickerComponent>
                     </div>
                     <div className='timepicker-control-section range'>
                         <CheckBoxComponent id="checkbox" ref={(checkbox) => { this.checkObj = checkbox }} label="Business Hours" change={this.changeTime.bind(this)}></CheckBoxComponent>
@@ -66,13 +66,13 @@ export class Range extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        Select a start time from the first TimePicker and then the second TimePicker will be enabled. Select an end time from the second TimePicker to get a <code>time range</code>. Click the Business Hours checkbox to change both the TimePickers to <code>read-only</code> state.</p>    
+                        Select a start time from the first TimePicker and then the second TimePicker will be enabled. Select an end time from the second TimePicker to get a <code>time range</code>. Click the Business Hours checkbox to change both the TimePickers to <code>read-only</code> state.</p>
                 </div>
                 <div id='description'>
                     <p>Time Range sample illustrates the appointment time selection scenario with the start and end time option. Here, two TimePicker
               components are used to select the start and end time.</p>
                     <p>Before the start time selection, the end time TimePicker is in disable state. When the start time is selected, then you
-              will be able to select the end time or else, need to select the entire business hours 9:00 to 18:00 from the <code>Business Hours</code>        option. Once the options are checked, both the TimePicker components goes to readonly state.
+              will be able to select the end time or else, need to select the entire business hours 9:00 to 18:00 from the <code>Business Hours</code> option. Once the options are checked, both the TimePicker components goes to readonly state.
           </p>
                     <p>More information about time range restriction can be found in the  <a target='_blank'
                         href='http://ej2.syncfusion.com/react/documentation/timepicker/time-range.html'>documentation</a>  section.</p>

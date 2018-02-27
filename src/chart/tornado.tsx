@@ -25,7 +25,7 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 export let textRender: EmitType<ITooltipRenderEventArgs> = (args: ITooltipRenderEventArgs) => {
-    args.textCollections = args.textCollections.indexOf('-') > 0 ? args.textCollections.replace('-', '') : args.textCollections;
+    args.text = args.text.indexOf('-') > 0 ? args.text.replace('-', '') : args.text;
 };
 export class NegativeStack extends SampleBase<{}, {}> {
 

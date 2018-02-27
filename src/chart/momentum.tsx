@@ -28,8 +28,8 @@ export class Momentum extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            intervalType: 'Months', majorGridLines: { width: 0 }, zoomFactor: 0.2, zoomPosition: 0.6,
-                            skeleton: 'yMd',
+                            majorGridLines: { width: 0 },
+                            zoomFactor: 0.2, zoomPosition: 0.6,
                             crosshairTooltip: { enable: true }
                         }}
                         primaryYAxis={{
@@ -45,7 +45,7 @@ export class Momentum extends SampleBase<{}, {}> {
                         crosshair={{ enable: true, lineType: 'Vertical' }}
                         chartArea={{ border: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '80%'}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+                        zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries,
                             MomentumIndicator, StripLine]} />
@@ -80,13 +80,13 @@ export class Momentum extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates a stock chart with candle series and a momentum indicator. Trackball shows the information about the stock, signalline, and upperline value of a day.
+                    <p>
+                        This sample illustrates a stock chart with candle series and a momentum indicator. Trackball shows the information about the stock, signalline, and upperline value of a day.
            </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the Momentum Indicator. 
+                        In this example, you can see how to render and configure the Momentum Indicator.
                    </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -106,8 +106,8 @@ export class Momentum extends SampleBase<{}, {}> {
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];

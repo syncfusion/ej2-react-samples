@@ -6,15 +6,15 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
-import {DataManager, Query, ODataV4Adaptor } from '@syncfusion/ej2-data';
+import {DataManager, Query } from '@syncfusion/ej2-data';
 import './listview.css';
 
 export class Remote extends SampleBase<{}, {}> {
 
     //Initialize dataSource with the DataManager instance.
     public dataSource: DataManager = new DataManager({
-      url: 'http://services.odata.org/V4/Northwind/Northwind.svc',
-      adaptor: new ODataV4Adaptor
+      url: '//js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/',
+      crossDomain: true
   });
 
     //Initialize query with the Query instance to get specified set of data

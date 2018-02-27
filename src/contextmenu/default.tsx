@@ -11,7 +11,7 @@ export class Default extends SampleBase<{}, {}> {
         effect: Browser.isDevice ? 'ZoomIn' : 'SlideDown'
     };
     public content: string = Browser.isDevice ? 'Touch hold to open the ContextMenu' : 
-        'Right click / Touch hold to open the ContextMenu';
+        'Right click/Touch hold to open the ContextMenu';
     
     //ContextMenu items definition
     public menuItems: MenuItemModel[] = [
@@ -21,7 +21,7 @@ export class Default extends SampleBase<{}, {}> {
         },
         {
             text: 'Copy',
-            iconCss: 'e-cm-icons e-copy'
+            iconCss: 'e-cm-icons e-cm-copy'
         },
         {
             text: 'Paste',

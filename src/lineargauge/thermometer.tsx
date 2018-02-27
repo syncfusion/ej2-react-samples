@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { LinearGaugeComponent, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective } from '@syncfusion/ej2-react-lineargauge';
+import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective } from '@syncfusion/ej2-react-lineargauge';
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -11,6 +11,11 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
 	}`;
 export class Thermometer extends SampleBase<{}, {}> {
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+    }
 
     render() {
         return (
@@ -19,7 +24,7 @@ export class Thermometer extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <LinearGaugeComponent id='gauge' container={{ height: 350, width: 20, type: 'Thermometer' }}>
+                    <LinearGaugeComponent load={this.load.bind(this)} id='gauge' container={{ height: 350, width: 20, type: 'Thermometer' }}>
                         <AxesDirective>
                             <AxisDirective minimum={-40} maximum={120} line={{ width: 0 }} minorTicks={{ interval: 2 }} majorTicks={{ interval: 20 }} labelStyle={{ font: { color: '#000000' } }}>
                                 <PointersDirective>

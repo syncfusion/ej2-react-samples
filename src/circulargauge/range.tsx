@@ -7,7 +7,7 @@ import { PropertyPane } from '../common/property-pane';
 import {
     CircularGaugeComponent, AxesDirective, AxisDirective, Inject,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective,
-    Annotations, AnnotationsDirective, AnnotationDirective
+    Annotations, AnnotationsDirective, AnnotationDirective, ILoadedEventArgs, GaugeTheme,
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
@@ -24,6 +24,11 @@ export class Range extends SampleBase<{}, {}> {
     private endWidthElement: HTMLInputElement;
     private enableElement: HTMLInputElement;
     private loaded: boolean = false;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     public start(): void {
         let index: number = +this.listObj.value;
         let min: number = +this.startElement.value;
@@ -76,7 +81,7 @@ export class Range extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <CircularGaugeComponent id='range-container' ref={gauge => this.gauge = gauge} loaded={this.onChartLoad.bind(this)}>
+                        <CircularGaugeComponent load={this.load.bind(this)} id='range-container' ref={gauge => this.gauge = gauge} loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
                                 <AxisDirective startAngle={210} radius='80%' endAngle={150} minimum={0} maximum={120}
@@ -89,14 +94,15 @@ export class Range extends SampleBase<{}, {}> {
                                     }} labelStyle={{
                                         position: 'Inside',
                                         font: {
-                                            size: '12px', color: '#424242',
+                                            size: '12px',
                                             fontFamily: 'Roboto', fontStyle: 'Regular'
                                         },
                                         useRangeColor: false
                                     }}>
                                     <PointersDirective>
                                         <PointerDirective value={65} radius='60%' color='#757575' pointerWidth={8} needleTail={{
-                                            length: '18%'
+                                            length: '18%',
+                                            color: '#757575' 
                                         }} cap={{
                                             radius: 7,
                                             color: '#757575'

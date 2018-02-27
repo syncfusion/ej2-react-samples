@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
-    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, AxisDirective, IPointerDragEventArgs, Inject, AnnotationsDirective, AnnotationDirective,
+    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, IPointerDragEventArgs, Inject, AnnotationsDirective, AnnotationDirective,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel, getRangeColor,
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
@@ -23,6 +23,11 @@ export class Drag extends SampleBase<{}, {}> {
         let pointerValue: number = +this.drag.value;
         document.getElementById('pointerValue').innerHTML = 'Pointer Value <span> &nbsp;&nbsp;&nbsp;' + Math.round(pointerValue);
         this.setPointersValue(this.gauge, pointerValue);
+    }
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
     }
     public pointerDragChange(): void {
         let value: boolean = this.pointerDrag.checked;
@@ -55,7 +60,7 @@ export class Drag extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-9'>
-                        <CircularGaugeComponent loaded={this.onChartLoad.bind(this)} dragMove={this.dragMove.bind(this)} dragEnd={this.dragEnd.bind(this)} id='drag-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}>
+                        <CircularGaugeComponent load={this.load.bind(this)} loaded={this.onChartLoad.bind(this)} dragMove={this.dragMove.bind(this)} dragEnd={this.dragEnd.bind(this)} id='drag-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
                                 <AxisDirective startAngle={210} endAngle={140} radius='80%' minimum={0} maximum={120}

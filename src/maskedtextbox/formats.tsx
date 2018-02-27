@@ -47,8 +47,8 @@ export class Formats extends SampleBase<{}, {}> {
                     <td style={{ width: '50%' }}>
                       <div>Mask</div>
                     </td>
-                    <td style={{ width: '50%', paddingRight: '10px' }}>
-                      <div>
+                    <td style={{ width: '50%', paddingRight: '0px' }}>
+                      <div style={{ maxWidth: '200px' }}>
                         <input id="input1" type="text" onKeyUp={this.sampleKeyUp.bind(this)} />
                       </div>
                     </td>
@@ -57,8 +57,8 @@ export class Formats extends SampleBase<{}, {}> {
                     <td style={{ width: '50%' }}>
                       <div>Prompt Character</div>
                     </td>
-                    <td style={{ width: '50%', paddingRight: '10px' }}>
-                      <div>
+                    <td style={{ width: '50%', paddingRight: '0px' }}>
+                      <div style={{ maxWidth: '200px' }}>
                         <DropDownListComponent id="ddlelement" dataSource={this.promptData} ref={(dropdownlist) => { this.listObj = dropdownlist }} fields={this.ddlFields} value='_' change={this.onDdlChange.bind(this)} popupHeight="220px" />
                       </div>
                     </td>
@@ -67,7 +67,7 @@ export class Formats extends SampleBase<{}, {}> {
                     <td style={{ width: '50%' }}>
                       <div>Value</div>
                     </td>
-                    <td style={{ width: '50%', paddingRight: '10px' }}>
+                    <td style={{ width: '50%', paddingRight: '0px' }}>
                       <div id="val1"></div>
                     </td>
                   </tr>
@@ -75,7 +75,7 @@ export class Formats extends SampleBase<{}, {}> {
                     <td style={{ width: '50%', paddingTop: '5px', paddingBottom: '10px' }}>
                       <div>Masked Value</div>
                     </td>
-                    <td style={{ width: '50%', paddingRight: '10px', paddingTop: '5px', paddingBottom: '10px' }}>
+                    <td style={{ width: '50%', paddingRight: '0px', paddingTop: '5px', paddingBottom: '10px' }}>
                       <div id="val2"></div>
                     </td>
                   </tr>

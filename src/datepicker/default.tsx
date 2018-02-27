@@ -11,7 +11,7 @@ export class Default extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='datepicker-control-section'>
-                        <DatePickerComponent placeholder='Choose a date'></DatePickerComponent>
+                        <DatePickerComponent></DatePickerComponent>
                     </div>
                 </div>
                 <div id="action-description">
@@ -20,7 +20,7 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
                 <div id='description'>
                     <p>
-                        The <code>DatePicker</code> is a graphical user interface control that allows the user to select, or to enter a date value.
+                        The <code>DatePicker</code> is a graphical user interface component that allows the user to select, or to enter a date value.
                    </p>
                     <p>More information on the DatePicker instantiation can be found in the
               <a href="http://ej2.syncfusion.com/react/documentation/datepicker/getting-started.html" target="_blank"> documentation section</a>.

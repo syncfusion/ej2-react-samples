@@ -54,6 +54,16 @@ let bootstrapWomen: string = '<div style="background-color:#f7ce69;border-radius
     '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px"><span>' +
     '${point.y}M </span></div></div>';
+let highcontrastMan: string = '<div style="background-color:#79ECE4;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let highcontrastWomen: string = '<div style="background-color:#E98272;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px"><span>' +
+    '${point.y}M </span></div></div>';
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -75,7 +85,6 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                             interval: Browser.isDevice ? 2 : 1,
                             edgeLabelPlacement: 'Shift',
                             labelStyle: {
-                                color: '#606060',
                                 fontFamily: 'Roboto',
                                 fontStyle: 'medium',
                                 size: '14px'
@@ -88,7 +97,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                             labelFormat: '{value}M',
                             title: Browser.isDevice ? '' : 'Population',
                             labelStyle: {
-                                color: '#606060', fontFamily: 'Roboto',
+                                fontFamily: 'Roboto',
                                 fontStyle: 'medium', size: '14px'
                             },
                             interval: 80,
@@ -100,7 +109,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                             }
                         }}
                         titleStyle={{
-                            color: '#606060', fontFamily: 'Roboto',
+                            fontFamily: 'Roboto',
                             fontStyle: 'medium', size: '14px'
                         }}
                         chartArea={{ border: { width: 0 } }}
@@ -138,8 +147,8 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates datalabel template support in the chart. In this sample, images are placed as datalabel by means of templates.
+                    <p>
+                        This sample illustrates datalabel template support in the chart. In this sample, images are placed as datalabel by means of templates.
             </p>
                 </div>
                 <div id="description">
@@ -166,6 +175,8 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
             args.template = args.series.name === 'Male' ? materialMan : materialWomen;
         } else if (theme === 'Fabric') {
             args.template = args.series.name === 'Male' ? fabricMan : fabricWomen;
+        } else if (theme === 'Highcontrast') {
+            args.template = args.series.name === 'Male' ? highcontrastMan : highcontrastWomen;
         } else {
             args.template = args.series.name === 'Male' ? bootstrapMan : bootstrapWomen;
         }
@@ -177,7 +188,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
         theme = args.chart.theme;
     };
     public loaded(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
 }

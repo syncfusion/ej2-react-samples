@@ -12,11 +12,11 @@ export class Scrolling extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <GridComponent dataSource={data} height="400">
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' width='150' textAlign='right'></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='150' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='160'></ColumnDirective>
-                            <ColumnDirective field='OrderDate' headerText='Order Date' width='155' format='yMd' textAlign='right' />
-                            <ColumnDirective field='Freight' headerText='Freight' width='130' format='C2' textAlign='right' />
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='155' format='yMd' textAlign='right'></ColumnDirective>
+                            <ColumnDirective field='OrderDate' headerText='Order Date' width='155' format='yMd' textAlign='Right' />
+                            <ColumnDirective field='Freight' headerText='Freight' width='130' format='C2' textAlign='Right' />
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='155' format='yMd' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='ShipName' headerText='Ship Name' width='170'></ColumnDirective>
                             <ColumnDirective field='ShipAddress' headerText='Ship Address' width='170'></ColumnDirective>
                             <ColumnDirective field='ShipCity' headerText='Ship City' width='150'></ColumnDirective>

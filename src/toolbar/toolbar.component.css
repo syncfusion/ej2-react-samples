@@ -11,7 +11,7 @@
 
 @media only screen and (min-width: 1224px) {
     .toolbar-sample {
-        width: 75%;
+        width: 700px;
     }
 }
 
@@ -23,6 +23,7 @@
 
 .toolbar-sample {
     margin: auto;
+    max-width: 700px;
 }
 
 .e-tbar-btn .tb-icons {
@@ -224,4 +225,48 @@
     margin-right: 10px;
     float: left;
     height: 60px;
+}
+
+.tbar-control-section {
+    overflow: inherit;
+    height: 40px;
+}
+
+.e-icon-week:before {
+    content: '\e951';
+}
+
+.e-print:before {
+    content: '\e813';
+}
+
+.e-icon-month:before {
+    content: '\e93c';
+}
+
+.e-icon-year:before {
+    content: '\e812';
+}
+
+.e-reccurence-icon:before {
+    content: '\e80d';
+    font-weight: 700;
+}
+
+.e-icon-day:before {
+    content: '\e970';
+}
+
+.e-tool-name {
+    font-style: normal;
+    font-size: 16px;
+    cursor: default;
+}
+
+.material .e-bigger .tbar-sample .e-toolbar .e-tbar-btn .e-icons {
+    font-size: 18px;
+}
+
+.material .tbar-sample .e-toolbar .e-tbar-btn .e-icons {
+    font-size: 16px;
 }

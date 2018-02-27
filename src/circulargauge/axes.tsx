@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
     CircularGaugeComponent, AxesDirective, AxisDirective, Inject, isCompleteAngle,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, ILoadedEventArgs
+    PointersDirective, PointerDirective, RangesDirective, RangeDirective, ILoadedEventArgs, GaugeTheme
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
@@ -22,6 +22,11 @@ export class Axes extends SampleBase<{}, {}> {
     private axisIndex: number = 0;
     private loaded: boolean = false;
     public axis: DropDownList; public direction: DropDownList;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     public onChartLoad(args: ILoadedEventArgs): void {
         let id: string = args.gauge.element.id;
         document.getElementById(id).setAttribute('title', '');
@@ -83,7 +88,7 @@ export class Axes extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <CircularGaugeComponent id='range-container' title="Gauge with Multiple Axes" titleStyle={{
+                        <CircularGaugeComponent load={this.load.bind(this)} id='range-container' title="Gauge with Multiple Axes" titleStyle={{
                             color: 'gray',
                             size: '16px'
                         }} ref={gauge => this.gauge = gauge}
@@ -125,7 +130,7 @@ export class Axes extends SampleBase<{}, {}> {
                                         height: 5, color: '#E84011'
                                     }} labelStyle={{
                                         position: 'Outside', autoAngle: true,
-                                        hiddenLabel: 'None', font: { color: '#E84011' }
+                                        hiddenLabel: 'None'
                                     }}>
                                     <PointersDirective>
                                         <PointerDirective value={120} radius='100%' color='#C62E0A'

@@ -6,7 +6,8 @@ import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
     CircularGaugeComponent, AxesDirective, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel
+    PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel, GaugeTheme,
+    ILoadedEventArgs
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 import { CircularGauge } from '@syncfusion/ej2-circulargauge';
@@ -28,6 +29,11 @@ export class Customization extends SampleBase<{}, {}> {
     private loaded: boolean = false;
     private pointerValueElement: HTMLInputElement;
     public barColor: DropDownList; public rangeColor: DropDownList; public pointerColor: DropDownList;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     public random(): void {
         if (this.isClicked) {
             this.gauge1.destroy();
@@ -101,7 +107,7 @@ export class Customization extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <CircularGaugeComponent id='customization-container' loaded={this.onChartLoad.bind(this)} ref={gauge => this.gauge1 = gauge}
+                        <CircularGaugeComponent load={this.load.bind(this)} id='customization-container' loaded={this.onChartLoad.bind(this)} ref={gauge => this.gauge1 = gauge}
                             centerY='70%'>
                             <Inject services={[Annotations]} />
                             <AxesDirective>

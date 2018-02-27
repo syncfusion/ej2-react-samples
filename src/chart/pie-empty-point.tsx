@@ -48,7 +48,7 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
                             title='Annual Product-Wise Profit Analysis'
                             load={this.load.bind(this)}
                             legendSettings={{ visible: false }}
-                            tooltip={{ enable: true, format: '${series.name}<br>${point.x} : ${point.y}' }}
+                            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}</b>' }}
                             loaded={this.onChartLoad.bind(this)}
                         >
                             <Inject services={[PieSeries, AccumulationDataLabel, AccumulationTooltip]} />

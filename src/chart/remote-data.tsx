@@ -9,12 +9,12 @@ import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, IPointRenderEventArgs, ChartTheme,
     Legend, Category, ColumnSeries, Tooltip, IAxisLabelRenderEventArgs, ILoadedEventArgs, DataLabel
 } from '@syncfusion/ej2-react-charts';
-import { bootstrapColors, fabricColors, materialColors } from './theme-color'
+import { bootstrapColors, fabricColors, materialColors, highContrastColors } from './theme-color'
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
 export let dataManager = new DataManager({
-    url: 'http://mvc.syncfusion.com/Services/Northwnd.svc/Tasks/'
+    url: 'https://mvc.syncfusion.com/Services/Northwnd.svc/Tasks/'
 });
 export let query: Query = new Query().take(5).where('Estimate', 'lessThan', 3, false);
 export let labelRender: EmitType<IAxisLabelRenderEventArgs> = (args: IAxisLabelRenderEventArgs): void => {
@@ -96,8 +96,8 @@ export class RemoteData extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates how to retrieve remote the data for chart.
+                    <p>
+                        This sample illustrates how to retrieve remote the data for chart.
             </p>
                 </div>
                 <div id="description">
@@ -134,11 +134,13 @@ export class RemoteData extends SampleBase<{}, {}> {
     }
     public pointRender(args: IPointRenderEventArgs) {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'material';
         if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
             args.fill = fabricColors[args.point.index % 10];
         } else if (selectedTheme === 'material') {
             args.fill = materialColors[args.point.index % 10];
+        } else if (selectedTheme === 'highcontrast') {
+            args.fill = highContrastColors[args.point.index % 10];
         } else {
             args.fill = bootstrapColors[args.point.index % 10];
         }

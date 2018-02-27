@@ -38,7 +38,7 @@ export class Templates extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div id='template'>
-            <DropDownListComponent id="employees" dataSource={this.employeesData} fields={this.fields} placeholder="Select a game" itemTemplate={this.itemTemplate} valueTemplate={this.valueTemplate} headerTemplate={this.headerTemplate} popupHeight="270px" />
+            <DropDownListComponent id="employees" dataSource={this.employeesData} fields={this.fields} placeholder="Select an employee" itemTemplate={this.itemTemplate} valueTemplate={this.valueTemplate} headerTemplate={this.headerTemplate} popupHeight="270px" />
           </div>
         </div>
         <div id="action-description">

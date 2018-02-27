@@ -34,14 +34,14 @@ export class Doughnut extends SampleBase<{}, {}> {
             enableSmartLabels={true}
             load={this.load.bind(this)}
             animationComplete={this.onAnimationComplete.bind(this)}
-            tooltip={{ enable: true, format: '${point.x} <br> Composition: ${point.y}%' }}
+            tooltip={{ enable: true, header: '<b>${point.x}</b>', format: 'Composition: <b>${point.y}%</b>' }}
             textRender={this.onTextRender.bind(this)}
             loaded={this.onChartLoad.bind(this)}
             selectionMode={'Point'}
           >
             <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection]} />
             <AccumulationSeriesCollectionDirective>
-              <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' innerRadius='40%' startAngle={0}
+              <AccumulationSeriesDirective  name='Revenue' dataSource={data1} xName='x' yName='y' innerRadius='40%' startAngle={0}
                 endAngle={360}
                 dataLabel={{
                   visible: true, position: 'Inside',

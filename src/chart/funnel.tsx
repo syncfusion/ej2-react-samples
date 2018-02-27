@@ -26,7 +26,7 @@ export class Funnel extends SampleBase<{}, {}> {
             <AccumulationChartComponent id='funnel-chart' ref={funnel => this.funnel = funnel}
               title='Website Visitors'
               load={this.load.bind(this)}
-              tooltip={{ enable: true, format: '${point.x} : ${point.y} %' }}
+              tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               resized={this.onChartResized.bind(this)}
               loaded={this.onChartLoad.bind(this)}
             >

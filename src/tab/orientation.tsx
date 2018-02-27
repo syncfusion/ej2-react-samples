@@ -13,7 +13,7 @@ export class Orientation extends SampleBase<{}, {}> {
     public list2: ListViewComponent;
     public list3: ListViewComponent;
     private templateString: string = '<div class="template-container"><div class="left"><img class="empImg" ' +
-    'src="src/dropdownlist/Employees/${id}.png" alt="${id}" /></div><div class="left info"><div class="name">' +
+    'src="src/dropdownlist/Employees/${id}.png" alt="${id}" /></div><div class="left info-div"><div class="name">' +
     '${name}</div> <div class="role">${role}</div></div></div>';
 
      // Mapping ListView component dataSource property

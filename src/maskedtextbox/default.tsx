@@ -31,7 +31,7 @@ export class Default extends SampleBase<{}, {}> {
         <div id="action-description">
         <p>
         This sample demonstrates that the default functionalities of MaskedTextBox component.
-        Enter numeric value for “Mobile Number” textbox then press tab key and then enter “Country ISO Code” in alphabetic format, then type “D.O.P” in numeric format.
+        Enter numeric value for “Mobile Number” textbox then press tab key and then enter “Country ISO Code” in alphabetic format, then type “D.O.B” in numeric format.
         Finally enter the “Product Key” in alpha numeric format.
         </p>
         </div>

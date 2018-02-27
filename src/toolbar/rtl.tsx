@@ -1,6 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective, OverflowMode } from '@syncfusion/ej2-react-navigations';
+import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './toolbar.component.css'
@@ -9,18 +10,37 @@ import './toolbar.component.css'
 
 export class RTL extends SampleBase<{}, {}> {
 
-    private dropElement: HTMLSelectElement;
-    private toolbarInstance: ToolbarComponent;
-    public  change(): void {
-       this.toolbarInstance.overflowMode  =  this.dropElement.value as OverflowMode;
-       this.toolbarInstance.dataBind();
+  private dropElement: HTMLSelectElement;
+  private toolbarInstance: ToolbarComponent;
+
+  // Mapping DropDownList dataSource property
+  private mData: { [key: string]: Object }[] = [
+    {'value':'scrollable', 'text': 'Scrollable'}, {'value':'popup', 'text': 'Popup'}
+  ];
+
+  // Mapping DropDownList fields property
+  private fields: object = { text: 'text', value: 'value' };
+
+  // Mapping DropDownList value property
+  private mVal: string = 'scrollable';
+
+
+  public changeOverflowMode(e: ChangeEventArgs): void {
+    let placement: string = (document.getElementById('mode') as HTMLSelectElement).value;
+    if (placement === 'Popup') {
+      this.toolbarInstance.overflowMode = 'Popup';
+    } else {
+      this.toolbarInstance.overflowMode = 'Scrollable';
     }
+    this.toolbarInstance.dataBind();
+  }
+
   render () {
     return (
       <div className = 'control-pane'>
         <div className='control-section'>
           <div className= ' col-lg-8'>
-            <div className = 'control' style = {{margin: '25px 0 ' }} >
+            <div className = 'control tbar-sample' style = {{margin: '25px 0 ' }} >
             {/* Render the Toolbar Component with RTL mode */}
           <ToolbarComponent enableRtl = {true}  ref={toolbar => this.toolbarInstance = toolbar}>
              <ItemsDirective>
@@ -70,10 +90,8 @@ export class RTL extends SampleBase<{}, {}> {
           <td style={{ width: '70%', paddingRight: '10px' }}>
             <div>
               {/* DropDown for switching Toolbar overflowMode property */}
-              <select id="drop" className="form-control" onChange={this.change.bind(this)} style= {{padding: '6px'}} ref={d => this.dropElement = d}>
-                <option value="Scrollable">Scrollable</option>
-                <option value="Popup">Popup</option>
-              </select>
+              <DropDownListComponent id='mode' width={'90%'} dataSource={this.mData} fields={this.fields} value={this.mVal}
+              change={this.changeOverflowMode.bind(this)}  />
             </div>
           </td>
         </tr>

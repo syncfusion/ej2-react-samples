@@ -11,7 +11,7 @@ export class Default extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='daterangepicker-control-section'>
-                        <DateRangePickerComponent placeholder='Select a range'></DateRangePickerComponent>
+                        <DateRangePickerComponent></DateRangePickerComponent>
                     </div>
                 </div>
                 <div id="action-description">

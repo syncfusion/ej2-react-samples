@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     CircularGaugeComponent, AxesDirective, AxisDirective, Inject, ILoadedEventArgs,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations,
-    AnnotationDirective, AnnotationsDirective
+    AnnotationDirective, AnnotationsDirective, GaugeTheme,
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -19,6 +19,11 @@ export class Pointers extends SampleBase<{}, {}> {
     private gauge6: CircularGaugeComponent;
     public tooltipInterval1: Object;
     public tooltipInterval2: Object;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+    }
     public onChartLoad(args: ILoadedEventArgs): void {
         let id: string = args.gauge.element.id;
         document.getElementById(id).setAttribute('title', '');
@@ -62,7 +67,7 @@ export class Pointers extends SampleBase<{}, {}> {
                         <div className="col-sm-12">
                             <div className="row">
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} loaded={this.onChartLoad.bind(this)} id='pointer1-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} loaded={this.onChartLoad.bind(this)} id='pointer1-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}
@@ -93,7 +98,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                     </CircularGaugeComponent>
                                 </div>
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} loaded={this.onChartLoad.bind(this)} id='pointer2-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} loaded={this.onChartLoad.bind(this)} id='pointer2-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}
@@ -124,7 +129,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                     </CircularGaugeComponent>
                                 </div>
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} loaded={this.onChartLoad.bind(this)} id='pointer3-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} loaded={this.onChartLoad.bind(this)} id='pointer3-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}
@@ -161,7 +166,7 @@ export class Pointers extends SampleBase<{}, {}> {
                         <div className="col-sm-12">
                             <div className="row">
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} centerY="40%" ref={gauge => this.gauge4 = gauge} loaded={this.onChartLoad.bind(this)} id='pointer4-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} centerY="40%" ref={gauge => this.gauge4 = gauge} loaded={this.onChartLoad.bind(this)} id='pointer4-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}
@@ -200,7 +205,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                     </CircularGaugeComponent>
                                 </div>
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} centerY="40%" loaded={this.onChartLoad.bind(this)} id='pointer5-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} centerY="40%" loaded={this.onChartLoad.bind(this)} id='pointer5-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}
@@ -257,7 +262,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                     </CircularGaugeComponent>
                                 </div>
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent style={{ height: "250px" }} ref={gauge => this.gauge6 = gauge} centerY="40%" loaded={this.onChartLoad.bind(this)} id='pointer6-container'>
+                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} ref={gauge => this.gauge6 = gauge} centerY="40%" loaded={this.onChartLoad.bind(this)} id='pointer6-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}

@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { Ajax, Animation, Browser, closest, createElement, enableRipple, select, selectAll } from '@syncfusion/ej2-base';
+import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, closest, createElement, enableRipple, select, selectAll } from '@syncfusion/ej2-base';
 import { Button } from '@syncfusion/ej2-react-buttons';
 import { ListBase } from '@syncfusion/ej2-react-lists';
 import { DataManager, DataUtil, Query } from '@syncfusion/ej2-data';
@@ -10,8 +10,28 @@ import { DropDownList } from '@syncfusion/ej2-react-dropdowns'
 import * as elasticlunr from './lib/elasticlunr';
 import * as searchJson from './search-index.json';
 import { LeftPane, setSelectList } from './leftpane';
+import { Sidebar } from '@syncfusion/ej2-navigations';
+import { Locale } from './locale-string';
 import { Content } from './component-content';
 import '../../node_modules/es6-promise/dist/es6-promise';
+import * as numberingSystems from '../common/cldr-data/supplemental/numberingSystems.json';
+import * as currencyData from '../common/cldr-data/supplemental/currencyData.json';
+import * as deCultureData from '../common/cldr-data/main/de/all.json';
+import * as arCultureData from '../common/cldr-data/main/ar/all.json';
+import * as swissCultureDate from '../common/cldr-data/main/fr-CH/all.json';
+import * as enCultureData from '../common/cldr-data/main/fr-CH/all.json';
+import * as chinaCultureData from '../common/cldr-data/main/zh/all.json';
+let cBlock: string[] = ['ts-src-tab', 'html-src-tab'];
+const matchedCurrency: { [key: string]: string } = {
+  'en': 'USD',
+  'de': 'EUR',
+  'ar': 'AED',
+  'zh': 'CNY',
+  'fr-CH': 'CHF'
+};
+loadCldr(numberingSystems, chinaCultureData, enCultureData, swissCultureDate, currencyData, deCultureData, arCultureData);
+L10n.load(Locale);
+setCulture('en');
 
 /**
  * Mobile View
@@ -33,7 +53,7 @@ let resizeManualTrigger: boolean = false;
  */
 export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'material';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['material', 'fabric', 'bootstrap'];
+const themeCollection: string[] = ['material', 'fabric', 'bootstrap', 'highcontrast'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**
@@ -47,6 +67,9 @@ let sbBodyOverlay: HTMLElement = select('.sb-body-overlay') as HTMLElement;
 let sbHeader: HTMLElement = select('#sample-header') as HTMLElement;
 let leftPane: HTMLElement = select('.sb-left-pane') as HTMLElement;
 let mobileOverlay: Element = select('.sb-mobile-overlay');
+let resetSearch: Element = select('.sb-reset-icon');
+export let sidebar: Sidebar;
+let settingsidebar: Sidebar;
 
 /**
  * SB Popups
@@ -60,15 +83,32 @@ let settingElement: HTMLElement = select('.sb-setting-btn') as HTMLElement;
 let openedPopup: any;
 let headerThemeSwitch: HTMLElement = document.getElementById('header-theme-switcher');
 let prevAction: string;
-
 let themeDropDown: DropDownList;
+let cultureDropDown: DropDownList;
+let currencyDropDown: DropDownList;
+isMobile = window.matchMedia('(max-width:550px)').matches;
+if (Browser.isDevice || isMobile) {
+  if (sidebar) {
+    sidebar.destroy();
+  }
+  sidebar = new Sidebar({ width: '280px', showBackdrop: true, closeOnDocumentClick: true, enableGestures: false });
+  sidebar.appendTo('#left-sidebar');
+} else {
+  sidebar = new Sidebar({
+    width: '282px', target: (document.querySelector('.sb-content ') as HTMLElement),
+    showBackdrop: false,
+    closeOnDocumentClick: false,
+    enableGestures: false
+  });
+  sidebar.appendTo('#left-sidebar');
+}
 
 /**
  * constant to process the sample url
  */
 const urlRegex: RegExp = /(npmci\.syncfusion\.com|ej2\.syncfusion\.com)(\/)(development|production)*/;
 const sampleRegex: RegExp = /#\/(([^\/]+\/)+[^\/\.]+)/;
-const sbArray: string[] = ['angular', 'typescript', 'javascript'];
+const sbArray: string[] = ['angular', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc'];
 const sbObj: { [index: string]: string } = { 'angular': 'angular', 'typescript': '', 'javascript': 'javascript' };
 
 /**
@@ -95,17 +135,14 @@ overlay();
  */
 if (isMobile) {
   select('.sb-left-pane-footer').appendChild(select('.sb-footer-left'));
-  select('.sb-left-pane').classList.add('sb-hide');
+  select('#left-sidebar').classList.add('sb-hide');
   leftToggle.classList.remove('toggle-active');
-} else {
-  leftPane.classList.remove('sb-hide');
 }
 /**
  * Tab View
  */
 if (isTablet || (Browser.isDevice && isPc)) {
   leftToggle.classList.remove('toggle-active');
-  select('.sb-left-pane').classList.add('sb-hide');
   select('.sb-right-pane').classList.add('control-fullview');
 }
 changeMouseOrTouch(switchText);
@@ -122,9 +159,14 @@ export function setSbLink(): void {
   let sample: string[] = href.match(sampleRegex);
   for (let sb of sbArray) {
     let ele: HTMLFormElement = (select('#' + sb) as HTMLFormElement);
-    ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :
-      ('http://ej2.syncfusion.com/')) + (sbObj[sb] ? (sb + '/') : '') +
-      'demos/#/' + (sample ? (sample[1] + (sb !== 'typescript' ? '' : '.html')) : '');
+    if (sb === 'aspnetcore' || sb === 'aspnetmvc') {
+      ele.href = sb === 'aspnetcore' ? 'https://aspdotnetcore.syncfusion.com' : 'https://aspnetmvc.syncfusion.com';
+
+    } else {
+      ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :
+        ('https://ej2.syncfusion.com/')) + (sbObj[sb] ? (sb + '/') : '') +
+        'demos/#/' + (sample ? (sample[1] + (sb !== 'typescript' ? '' : '.html')) : '');
+    }
   }
 }
 
@@ -167,11 +209,18 @@ function renderSbPopups(): void {
   settingsPopup = new Popup(document.getElementById('settings-popup'), {
     offsetX: -245,
     offsetY: 5,
+    zIndex: 1001,
     relateTo: settingElement as HTMLElement,
     position: { X: 'right', Y: 'bottom' }
     , collision: { X: 'flip', Y: 'flip' }
   });
+  settingsidebar = new Sidebar({
+    position: 'Right', width: '282', zIndex: '1003', showBackdrop: true, type: 'Over',
+    closeOnDocumentClick: true
+  });
+  settingsidebar.appendTo('#right-sidebar');
   if (!isMobile) {
+    settingsidebar.hide();
     settingsPopup.hide();
   } else {
     select('.sb-mobile-preference').appendChild(select('#settings-popup'));
@@ -183,6 +232,25 @@ function renderSbPopups(): void {
     index: 0,
     change: (e: any) => { switchTheme(e.value); }
   });
+  cultureDropDown = new DropDownList({
+    index: 0,
+    change: (e: any) => {
+      let value: string = e.value;
+      currencyDropDown.value = matchedCurrency[value];
+      setCulture(e.value);
+      if (value == 'ar') {
+        changeRtl(true);
+      } else {
+        changeRtl(false);
+      }
+    }
+  });
+  currencyDropDown = new DropDownList({
+    index: 0,
+    change: (e: any) => { setCurrencyCode(e.value); }
+  });
+  cultureDropDown.appendTo('#sb-setting-culture');
+  currencyDropDown.appendTo('#sb-setting-currency');
   themeDropDown.appendTo('#sb-setting-theme');
 
   /**
@@ -192,7 +260,7 @@ function renderSbPopups(): void {
   let nextbutton: Button = new Button(
     {
       iconCss: 'sb-icons sb-icon-Next',
-      cssClass: 'e-flat', iconPosition: 'right'
+      cssClass: 'e-flat', iconPosition: 'Right'
     }, '#mobile-next-sample');
 }
 
@@ -224,6 +292,11 @@ function switchTheme(str: string): void {
     location.hash = hash.join('/');
   }
 }
+searchOverlay.addEventListener('click', searchOverlayClick);
+function searchOverlayClick() {
+    toggleSearchOverlay();
+}
+
 
 /**
  * Header Click Event Handling
@@ -289,12 +362,24 @@ function setMouseOrTouch(e: MouseEvent): void {
   localStorage.setItem('ej2-switch', switchType);
   location.reload();
 }
+function resetInput(arg: MouseEvent): void {
+  arg.preventDefault();
+  arg.stopPropagation();
+  (document.getElementById('search-input') as HTMLInputElement).value = '';
+  document.getElementById('search-input-wrapper').setAttribute('data-value', '');
+  searchPopup.hide();
+}
 
 /**
  * Binding events for sample browser operations
  */
 function bindEvents(): void {
   document.getElementById('sb-switcher').addEventListener('click', (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    sbHeaderClick('changeSampleBrowser');
+  });
+  select('.sb-header-text-right').addEventListener('click', (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     sbHeaderClick('changeSampleBrowser');
@@ -329,6 +414,7 @@ function bindEvents(): void {
   leftToggle.addEventListener('click', toggleLeftPane);
   mobileOverlay.addEventListener('click', toggleMobileOverlay);
   select('.sb-header-settings').addEventListener('click', viewMobilePrefPane);
+  resetSearch.addEventListener('click', resetInput);
 
   document.getElementById('switch-sb').addEventListener('click', (e: MouseEvent) => {
     let target: Element = closest(e.target as any, 'li');
@@ -371,70 +457,75 @@ function bindEvents(): void {
  */
 function onsearchInputChange(e: KeyboardEvent): void {
   if (e.keyCode === 27) {
-      toggleSearchOverlay();
+    toggleSearchOverlay();
   }
   let searchString: string = (e.target as any).value;
   // changeInputIcons(searchString.length > 0);
   if (searchString.length <= 2) {
-      searchPopup.hide();
-      return;
+    searchPopup.hide();
+    return;
   }
   let val: any = [];
   val = searchInstance.search(searchString, {
-      fields: {
-          component: { boost: 1 },
-          name: { boost: 2 }
-      },
-      expand: true,
-      boolean: 'AND',
+    fields: {
+      component: { boost: 1 },
+      name: { boost: 2 }
+    },
+    expand: true,
+    boolean: 'AND',
   });
   if (val.length) {
-      let data: DataManager = new DataManager(val);
-      let controls: any = data.executeLocal(new Query().take(10).select('doc'));
-      let ds: any = DataUtil.group(controls, 'component');
-      let dataSource: { [key: string]: Object }[] & Object[] = [];
-      for (let j: number = 0; j < ds.length; j++) {
-          let itemObj: any = ds[j].items;
-          let field: string = 'name';
-          let grpItem: { [key: string]: Object } = {};
-          let hdr: string = 'isHeader';
-          grpItem[field] = ds[j].key;
-          grpItem[hdr] = true;
-          grpItem.items = itemObj;
-          dataSource.push(grpItem);
-          for (let k: number = 0; k < itemObj.length; k++) {
-              dataSource.push(itemObj[k]);
-          }
+    let data: DataManager = new DataManager(val);
+    let controls: any = data.executeLocal(new Query().take(10).select('doc'));
+
+    let controlsAccess: any = [];
+    for (let cont of controls) {
+      controlsAccess.push(cont.doc);
+    }
+    let ds: any = DataUtil.group(controlsAccess, 'component');
+    let dataSource: { [key: string]: Object }[] & Object[] = [];
+    for (let j: number = 0; j < ds.length; j++) {
+      let itemObj: any = ds[j].items;
+      let field: string = 'name';
+      let grpItem: { [key: string]: Object } = {};
+      let hdr: string = 'isHeader';
+      grpItem[field] = ds[j].key;
+      grpItem[hdr] = true;
+      grpItem.items = itemObj;
+      dataSource.push(grpItem);
+      for (let k: number = 0; k < itemObj.length; k++) {
+        dataSource.push(itemObj[k]);
       }
-      let ele: any = ListBase.createList(dataSource, {
-          fields: { id: 'uid', groupBy: 'component', text: 'name' },
-          template: '<div class="e-text-content e-icon-wrapper" data="${path}" uid="${uid}">' +
-          '<span class="e-list-text" role="list-item">' +
-          '${name}</span></div>',
-          groupTemplate:
-          '${if(items[0]["component"])}<div class="e-text-content"><span class="e-search-group">${items[0].component}</span>' +
-          '</div>${/if}'
-      });
-      searchPopup.element.innerHTML = '';
-      highlight(searchString, ele);
-      searchPopup.element.appendChild(ele);
-      searchPopup.show();
+    }
+    let ele: any = ListBase.createList(dataSource, {
+      fields: { id: 'uid', groupBy: 'component', text: 'name' },
+      template: '<div class="e-text-content e-icon-wrapper" data="${path}" uid="${uid}">' +
+        '<span class="e-list-text" role="list-item">' +
+        '${name}</span></div>',
+      groupTemplate:
+        '${if(items[0]["component"])}<div class="e-text-content"><span class="e-search-group">${items[0].component}</span>' +
+        '</div>${/if}'
+    });
+    searchPopup.element.innerHTML = '';
+    highlight(searchString, ele);
+    searchPopup.element.appendChild(ele);
+    searchPopup.show();
   } else {
-      searchPopup.element.innerHTML = '<div class="search-no-record">We’re sorry. We cannot find any matches for your search term.</div>';
-      searchPopup.show();
+    searchPopup.element.innerHTML = '<div class="search-no-record">We’re sorry. We cannot find any matches for your search term.</div>';
+    searchPopup.show();
   }
 }
 function highlight(searchString: string, listElement: any): void {
   let regex: RegExp = new RegExp(searchString.split(' ').join('|'), 'gi');
   let contentElements: any[] = selectAll('.e-list-item .e-text-content .e-list-text', listElement);
   for (let i: number = 0; i < contentElements.length; i++) {
-      let spanText: any = select('.sb-highlight');
-      if (spanText) {
-          contentElements[i].innerHTML = contentElements[i].text;
-      }
-      contentElements[i].innerHTML = contentElements[i].innerHTML.replace(regex, (matched: string) => {
-          return '<span class="sb-highlight">' + matched + '</span>';
-      });
+    let spanText: any = select('.sb-highlight');
+    if (spanText) {
+      contentElements[i].innerHTML = contentElements[i].text;
+    }
+    contentElements[i].innerHTML = contentElements[i].innerHTML.replace(regex, (matched: string) => {
+      return '<span class="sb-highlight">' + matched + '</span>';
+    });
   }
 }
 /**
@@ -442,17 +533,11 @@ function highlight(searchString: string, listElement: any): void {
  */
 function toggleRightPane(): void {
   themeDropDown.index = themeCollection.indexOf(selectedTheme);
-  let mRightPane: HTMLElement = select('.sb-mobile-right-pane') as HTMLElement;
-  select('.sb-mobile-overlay').classList.toggle('sb-hide');
-  let reverse: boolean = mRightPane.classList.contains('sb-hide');
-  mRightPane.classList.remove('sb-hide');
-  toggleAnim.animate(mRightPane, {
-    name: reverse ? 'SlideRightIn' : 'SlideRightOut', end: (): void => {
-      if (!reverse) {
-        mRightPane.classList.add('sb-hide');
-      }
-    }
-  });
+  select('#right-sidebar').classList.remove('sb-hide');
+  if (isMobile) {
+    settingsidebar.toggle();
+  }
+
 }
 function viewMobilePrefPane(): void {
   select('.sb-mobile-prop-pane').classList.add('sb-hide');
@@ -465,7 +550,7 @@ export function viewMobilePropPane(): void {
   toggleRightPane();
 }
 export function isLeftPaneOpen(): boolean {
-  return leftToggle.classList.contains('toggle-active');
+  return sidebar.isOpen();
 }
 function isVisible(elem: string): boolean {
   return !select(elem).classList.contains('sb-hide');
@@ -496,6 +581,21 @@ export function removeOverlay(): void {
   if (!isMobile) {
     sbRightPane.scrollTop = 0;
   }
+  if (cultureDropDown.value == 'ar') {
+    changeRtl(true);
+  }
+}
+
+function changeRtl(isShow: boolean): void {
+  let elementlist: any = selectAll('.e-control', document.getElementById('control-content'));
+  for (let control of elementlist) {
+    let eleinstance: Object[] = (control as any).ej2_instances;
+    if (eleinstance) {
+      for (let instance of eleinstance) {
+        (instance as any).enableRtl = isShow;
+      }
+    }
+  }
 }
 
 export function sampleOverlay(): void {
@@ -522,109 +622,85 @@ function overlay(): void {
 
 export function toggleLeftPane(): void {
   isMobile = document.body.offsetWidth <= 550;
-  let rightPane: HTMLElement = select('.sb-right-pane') as HTMLElement;
-  let reverse: boolean = leftPane.classList.contains('sb-hide');
-  if (reverse) {
+  select('#left-sidebar').classList.remove('sb-hide');
+  let reverse: boolean = sidebar.isOpen();
+  if (!reverse) {
     leftToggle.classList.add('toggle-active');
-    mobileOverlay.classList.remove('sb-hide');
+
   } else {
     leftToggle.classList.remove('toggle-active');
-    mobileOverlay.classList.add('sb-hide');
+    //mobileOverlay.classList.add('sb-hide');
   }
-  if (!isMobile) {
-    rightPane.classList.add('control-transition');
-    rightPane.style.overflowY = 'hidden';
-    if (!reverse) {
-      rightPane.classList.add('control-animate');
-      rightPane.classList.remove('control-fullview');
-    } else {
-      rightPane.classList.add('control-reverse-animate');
-      rightPane.classList.add('control-fullview');
-    }
-  }
-  leftPane.classList.remove('sb-hide');
-  leftPane.style.overflowY = 'hidden';
-  toggleAnim.animate(leftPane, {
-    name: reverse ? 'SlideLeftIn' : 'SlideLeftOut', end: (): void => {
+
+  if (sidebar) {
+    reverse = sidebar.isOpen();
+    if (reverse) {
+      sidebar.hide();
       if (!isMobile) {
-        rightPane.classList.remove('control-transition');
-        rightPane.style.overflowY = 'auto';
-        if (!reverse) {
-          rightPane.classList.remove('control-animate');
-        } else {
-          rightPane.classList.remove('control-reverse-animate');
-        }
-        rightPane.classList.toggle('control-fullview');
+        resizeManualTrigger = true;
+        setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 200);
       }
-      if (!reverse) {
-        leftPane.classList.add('sb-hide');
-      }
-      leftPane.style.overflowY = '';
+    } else {
+      sidebar.show();
       resizeManualTrigger = true;
-      window.dispatchEvent(new Event('resize'));
-      if (Browser.isDevice) {
-        window.dispatchEvent(new Event('orientationchange'));
+      if (!isMobile) {
+        setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 200);
       }
-      resizeManualTrigger = false;
     }
-  });
+  }
 }
+
 
 /**
  * Resize event processing
  */
 function processResize(e: any): void {
+  let toggle: boolean = sidebar.isOpen();
+
+
   isMobile = document.body.offsetWidth <= 550;
-  if (resizeManualTrigger || (isMobile && !select('.sb-mobile-right-pane').classList.contains('sb-hide'))) {
+  isTablet = document.body.offsetWidth >= 550 && document.body.offsetWidth <= 850;
+
+  if (resizeManualTrigger || (isMobile && select('#right-sidebar').classList.contains('sb-hide'))) {
     return;
   }
-  isTablet = document.body.offsetWidth >= 550 && document.body.offsetWidth <= 850;
+
   isPc = document.body.offsetWidth >= 850;
   processDeviceDependables();
   let leftPane: Element = select('.sb-left-pane');
   let rightPane: Element = select('.sb-right-pane');
   let footer: Element = select('.sb-footer-left');
   let pref: Element = select('#settings-popup');
+  if (toggle) {
+    toggleLeftPane();
+  }
   if (isMobile) {
     if (!footer.parentElement.classList.contains('sb-left-pane-footer')) {
       select('.sb-left-pane-footer').appendChild(footer);
+
     }
-    if (!leftPane.classList.contains('sb-hide')) {
-      toggleLeftPane();
-    }
+
+
     if (!pref.parentElement.classList.contains('sb-mobile-preference')) {
       select('.sb-mobile-preference').appendChild(pref);
     }
     settingsPopup.show();
-    let propPanel: Element = select('#control-content .property-section');
-    if (propPanel) {
-      select('.sb-mobile-prop-pane').appendChild(propPanel);
-      select('.sb-mobile-setting').classList.remove('sb-hide');
-    }
+
   }
   if (isTablet || isPc) {
     if (footer.parentElement.classList.contains('sb-left-pane-footer')) {
       select('.sb-footer').appendChild(footer);
     }
-    if (isTablet || (Browser.isDevice && isPc)) {
-      if (!leftPane.classList.contains('sb-hide')) {
-        toggleLeftPane();
-      }
-      setTimeout(() => {
-        if (!rightPane.classList.contains('control-fullview')) {
-          rightPane.classList.add('control-fullview');
-        }
-      }, 600);
-    }
+
     if (isPc && !Browser.isDevice) {
       if (isVisible('.sb-left-pane')) {
         rightPane.classList.remove('control-fullview');
-      } else {
-        toggleLeftPane();
       }
+
     }
     if (pref.parentElement.classList.contains('sb-mobile-preference')) {
       select('#sb-popup-section').appendChild(pref);
+      settingsidebar.hide();
       settingsPopup.hide();
     }
     let mobilePropPane: Element = select('.sb-mobile-prop-pane .property-section');
@@ -649,9 +725,9 @@ function processResize(e: any): void {
 function loadTheme(theme: string): void {
   let body: HTMLElement = document.body;
   if (body.classList.length > 0) {
-      for (let themeItem of themeCollection) {
-        body.classList.remove(themeItem);
-      }
+    for (let themeItem of themeCollection) {
+      body.classList.remove(themeItem);
+    }
   }
   body.classList.add(theme);
   themeList.querySelector('.active').classList.remove('active');
@@ -677,7 +753,7 @@ function loadTheme(theme: string): void {
     removeOverlay();
     ReactDOM.render(<Content />, document.getElementById('tab-component'));
     if (!isMobile) {
-      document.querySelector('.sb-right-pane').scrollTop = 0;      
+      document.querySelector('.sb-right-pane').scrollTop = 0;
     }
   });
 }

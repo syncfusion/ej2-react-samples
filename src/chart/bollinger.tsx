@@ -31,10 +31,8 @@ export class Bollinger extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            intervalType: 'Months',
                             majorGridLines: { width: 0 },
-                            zoomFactor: 0.6, zoomPosition: 0.6,
-                            skeleton: 'yMd',
+                            zoomFactor: 0.2, zoomPosition: 0.6,
                             crosshairTooltip: { enable: true }
                         }}
                         primaryYAxis={{
@@ -51,7 +49,7 @@ export class Bollinger extends SampleBase<{}, {}> {
                         legendSettings={{ visible: false }}
                         width={Browser.isDevice ? '100%' : '80%'}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+                        zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries, RangeAreaSeries,
                             BollingerBands]} />
@@ -70,8 +68,8 @@ export class Bollinger extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates a stock chart with candle series and a Bollinger band indicator. 
+                    <p>
+                        This sample illustrates a stock chart with candle series and a Bollinger band indicator.
                 Trackball shows the information about the stock, signalline, upperline, and lowerline value of a day.
            </p>
                 </div>
@@ -97,8 +95,8 @@ export class Bollinger extends SampleBase<{}, {}> {
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];

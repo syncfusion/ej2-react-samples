@@ -8,7 +8,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class GridLines extends SampleBase<{}, {}> {
 
-    public lines: String = "default";
+    public lines: String = "Default";
     private gridInstance: GridComponent;
     public click(e: MouseEvent): void {
         let element: HTMLElement = e.target as HTMLElement;
@@ -20,7 +20,7 @@ export class GridLines extends SampleBase<{}, {}> {
         element = (element.tagName === 'BUTTON' ? element.firstElementChild : element) as HTMLElement;
         removeClass([].slice.apply(document.getElementsByClassName('e-ghidden')), 'e-ghidden');
         addClass([element.parentElement.parentElement], 'e-ghidden');
-        this.lines = element.innerHTML.toLowerCase();
+        this.lines = element.innerHTML;
         this.gridInstance.gridLines = this.lines as GridLine;
         this.gridInstance.refresh();
     }
@@ -35,16 +35,16 @@ export class GridLines extends SampleBase<{}, {}> {
                             <ItemDirective text="None" />
                             <ItemDirective text="Both" />
                             <ItemDirective text="Horizontal" />
-                            <ItemDirective text="vertical" />
+                            <ItemDirective text="Vertical" />
                         </ItemsDirective>
                     </ToolbarComponent>
                     <br />
-                    <GridComponent dataSource={employeeData} ref={grid => this.gridInstance = grid} gridLines='default'>
+                    <GridComponent dataSource={employeeData} ref={grid => this.gridInstance = grid} gridLines='Default'>
                         <ColumnsDirective>
-                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='right' />
+                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' />
                             <ColumnDirective field='FirstName' headerText='FirstName' width='125' />
                             <ColumnDirective field='Title' headerText='Title' width='180' />
-                            <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format={{ skeleton: 'yMd', type: 'date' }} textAlign='right' />
+                            <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format={{ skeleton: 'yMd', type: 'date' }} textAlign='Right' />
                         </ColumnsDirective>
                     </GridComponent>
                 </div>
@@ -56,11 +56,11 @@ export class GridLines extends SampleBase<{}, {}> {
                     <p>    The  <code><a target='_blank' className='code'
                         href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#gridlines-string'>
                         gridLines</a></code> property is used to control the line visibility that separates the rows and columns. The Grid allow us to display the following grid lines,</p>
-                    <ul><li><code>default</code> - Shows the Horizontal line.</li>
-                        <li><code>none</code> - Shows no line.</li>
-                        <li><code>both </code>- Shows both Horizontal and Vertical lines.</li>
-                        <li><code>horizontal</code> - Shows the Horizontal line.</li>
-                        <li><code>vertical</code> - Shows the Vertical line.</li></ul>
+                    <ul><li><code>Default</code> - Shows the Horizontal line.</li>
+                        <li><code>None</code> - Shows no line.</li>
+                        <li><code>Both </code>- Shows both Horizontal and Vertical lines.</li>
+                        <li><code>Horizontal</code> - Shows the Horizontal line.</li>
+                        <li><code>Vertical</code> - Shows the Vertical line.</li></ul>
 
                     <p>In this demo, you can modify the display of gridlines by selecting values in the toolbar.</p>
 

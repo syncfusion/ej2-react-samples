@@ -3,18 +3,29 @@ import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Group, Sort, Inject } from '@syncfusion/ej2-react-grids';
 import { inventoryData } from './data';
 import { SampleBase } from '../common/sample-base';
-
+let refresh: Boolean;
 export class Grouping extends SampleBase<{}, {}> {
 
     public groupOptions: Object = { showGroupedColumn: false, columns: ['Country'] };
+    private gridInstance: GridComponent;
+    public dataBound() {
+    if(refresh) {
+      this.gridInstance.groupColumn('Country');
+       refresh = false;
+     }
+   }
+    public load() {
+      refresh = (this as any).refreshing;
+   }
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={inventoryData} allowPaging={true} pageSettings={{ pageSize: 9 }} allowGrouping={true} groupSettings={this.groupOptions} allowSorting={true} height="320">
+                    <GridComponent dataSource={inventoryData} allowPaging={true} ref={ grid => this.gridInstance = grid} pageSettings={{ pageCount: 5 }} allowGrouping={true} groupSettings={this.groupOptions} allowSorting={true} height="320"
+                    dataBound={this.dataBound.bind(this)} load={this.load}>
                         <ColumnsDirective>
                             <ColumnDirective field='Inventor' headerText='Inventor Name' width='180' ></ColumnDirective>
-                            <ColumnDirective field='NumberofPatentFamilies' headerText='Number of Patent Families' width='220' textAlign='right'></ColumnDirective>
+                            <ColumnDirective field='NumberofPatentFamilies' headerText='Number of Patent Families' width='220' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='Country' headerText='Country' width='140' />
                             <ColumnDirective field='Active' headerText='Active' width='120' />
                             <ColumnDirective field='Mainfieldsofinvention' headerText='Main fields of invention' width='200'></ColumnDirective>

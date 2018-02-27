@@ -10,6 +10,13 @@
     padding: 1% 0;
 }
 
+.globalize-property-section{
+    padding-bottom: 15px;
+    width: 200px;
+    left: 80px;
+    top: 40px;
+}
+
 .control-pane.format .control-section, .control-pane.culture  .control-section,
 .control-pane.default  .control-section, .control-pane.range .control-section {
     height: 100%;
@@ -18,4 +25,61 @@
 .e-bigger .control-pane.format .control-section, .e-bigger .control-pane.culture  .control-section,
 .e-bigger .control-pane.default  .control-section, .e-bigger .control-pane.range  .control-section {
     margin-top: 60px;
+}
+
+/*list formatting samples styles*/
+.e-timepicker.e-popup li span {
+    color: #b7b1b1;
+}
+
+
+.e-custom-style.e-timepicker.e-popup li.e-disabled span {
+    height: 25px;
+    width: 25px;
+    font-size: 15px;
+}
+
+.e-custom-style.e-timepicker.e-popup li.e-disabled span:before {
+    content: '\e212';
+    position: absolute;
+    right: 10px;
+    line-height: 36px;
+}
+
+.e-bigger .e-custom-style.e-timepicker.e-popup li.e-disabled span:before {
+    line-height: 48px;
+}
+
+/*list formatting samples styles*/
+.e-custom-style.e-timepicker.e-popup li.e-disabled span {
+    color: #b7b1b1;
+}
+
+.e-custom-style.e-timepicker.e-popup li span {
+    color: #727070;
+}
+
+.highcontrast .e-custom-style.e-timepicker.e-popup li.e-hover span:hover,
+.highcontrast .e-custom-style.e-timepicker.e-popup li.e-active.e-hover span {
+    color: #fff;
+}
+.highcontrast .e-custom-style.e-timepicker.e-popup li.e-active span{
+    color: #000;
+}
+
+.e-custom-style.e-timepicker.e-popup li.e-disabled span {
+    height: 25px;
+    width: 25px;
+    font-size: 15px;
+}
+
+.e-custom-style.e-timepicker.e-popup li.e-disabled span:before {
+    content: '\e212';
+    position: absolute;
+    right: 10px;
+    line-height: 36px;
+}
+
+.e-bigger .e-custom-style.e-timepicker.e-popup li.e-disabled span:before {
+    line-height: 48px;
 }

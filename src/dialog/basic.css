@@ -3,7 +3,7 @@
 }
 
 .dlgbtn {
-    margin-right: 10px;
+    margin-right: 8%;
 }
 
 .control-section {
@@ -12,7 +12,6 @@
 
 #target{
     height: 100%;
-    min-height: 350px;
 }
 
 #promptDialog table {

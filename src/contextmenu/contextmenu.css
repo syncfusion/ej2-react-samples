@@ -59,7 +59,7 @@
     content: '\e262';
 }
 
-.e-menu-item .e-copy::before {
+.e-menu-item .e-cm-copy::before {
     content: '\e263';
 }
 
@@ -91,7 +91,7 @@
     content: '\e252';
 }
 
-.fabric .e-menu-item .e-copy::before {
+.fabric .e-menu-item .e-cm-copy::before {
     content: '\e255';
 }
 
@@ -123,7 +123,7 @@
     content: '\e247';
 }
 
-.bootstrap .e-menu-item .e-copy::before {
+.bootstrap .e-menu-item .e-cm-copy::before {
     content: '\e249';
 }
 

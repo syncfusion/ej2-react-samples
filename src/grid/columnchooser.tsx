@@ -1,26 +1,26 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Toolbar, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Toolbar, ColumnChooser, Inject } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
-export class ColumnChooser extends SampleBase<{}, {}> {
-    public toolbarOptions: any = ['columnchooser'];
+export class ColChooser extends SampleBase<{}, {}> {
+    public toolbarOptions: any = ['ColumnChooser'];
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} showColumnChooser={true} >
+                    <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} showColumnChooser={true} pageSettings={{ pageCount: 5 }} >
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='right'></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' showInColumnChooser={false}></ColumnDirective>
-                            <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='right' />
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format='yMd' textAlign='right' />
-                            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='right' />
+                            <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' />
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format='yMd' textAlign='Right' />
+                            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' visible={false} width='150'></ColumnDirective>
                             <ColumnDirective field='ShipCity' headerText='Ship City' visible={false} width='150'></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Toolbar]} />
+                        <Inject services={[Toolbar,ColumnChooser]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">
@@ -43,6 +43,14 @@ export class ColumnChooser extends SampleBase<{}, {}> {
                         In this demo,  when the user clicks column chooser icon from the toolbar then the column chooser menu will open.
                    User can show or hide the columns by changing the state of the checkbox..
         </p>
+        
+        <p style={{ fontWeight: 500 }}>Injecting Module:</p>
+        
+        <p>
+            Grid component features are segregated into individual feature-wise modules. To use column chooser feature, we need to inject
+                          <code>ColumnChooser</code> module into the <code>services</code>.
+        </p>
+
                 </div>
             </div >
         )

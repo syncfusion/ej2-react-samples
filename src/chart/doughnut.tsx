@@ -26,12 +26,12 @@ export class AccumulationDoughnut extends SampleBase<{}, {}> {
                         }}
                         enableSmartLabels={true}
                         load={this.load.bind(this)}
-                        tooltip={{ enable: true, format: '${point.x} <br> ${point.y} %' }}
+                        tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
                         loaded={this.onChartLoad.bind(this)}
                     >
                         <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
                         <AccumulationSeriesCollectionDirective>
-                            <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' innerRadius='40%' startAngle={0}
+                            <AccumulationSeriesDirective name='Project' dataSource={data1} xName='x' yName='y' innerRadius='40%' startAngle={0}
                                 endAngle={360} radius='70%' explode={true} explodeOffset='10%' explodeIndex={3}
                                 dataLabel={{
                                     visible: true,

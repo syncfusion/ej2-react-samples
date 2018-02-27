@@ -38,13 +38,13 @@ const SAMPLE_CSS = `
     }`;
 
 export class Virtualization extends SampleBase<{}, {}> {
-    public names: string[] = ['hardire', 'abramjo01', 'aubucch01', "Hook", "Rumpelstiltskin", "Belle", "Emma", "Regina", "Aurora", "Elsa", "Anna", "Snow White",
-        "Prince Charming", "Cora", "Zelena", "August", "Mulan", "Graham", "Discord", "Will", "Robin Hood", "Jiminy Cricket", "Henry", "Neal", "Red",
-        "Aaran", "Aaren", "Aarez", "Aarman", "Aaron", "Aaron-James", "Aarron", "Aaryan", "Aaryn", "Aayan", "Aazaan", "Abaan", "Abbas", "Abdallah", "Abdalroof",
-        "Abdihakim", "Abdirahman", "Abdisalam", "Abdul", "Abdul-Aziz", "Abdulbasir", "Abdulkadir", "Abdulkarem", "Abdulkhader", "Abdullah", "Abdul-Majeed", "Abdulmalik",
-        "Abdul-Rehman", "Abdur", "Abdurraheem", "Abdur-Rahman", "Abdur-Rehmaan", "Abel", "Abhinav", "Abhisumant", "Abid", "Abir", "Abraham", "Abu", "Abubakar", "Ace", "Adain", "Adam",
-        "Adam-James", "Addison", "Addisson", "Adegbola", "Adegbolahan", "Aden", "Adenn", "Adie", "Adil", "Aditya", "Adnan", "Adrian", "Adrien", "Aedan", "Aedin", "Aedyn", "Aeron", "Afonso",
-        "Ahmad", "Ahmed", "Ahmed-Aziz", "Ahoua", "Ahtasham", "Aiadan", "Aidan", "Aiden", "Aiden-Jack", "Aiden-Vee"];
+    public names: string[] = ['VINET', 'TOMSP', 'HANAR', 'VICTE', 'SUPRD', 'HANAR', 'CHOPS', 'RICSU', 'WELLI','HILAA', 'ERNSH', 'CENTC',
+    'OTTIK', 'QUEDE', 'RATTC', 'ERNSH', 'FOLKO', 'BLONP', 'WARTH', 'FRANK', 'GROSR', 'WHITC', 'WARTH', 'SPLIR', 'RATTC', 'QUICK', 'VINET',
+    'MAGAA', 'TORTU', 'MORGK', 'BERGS', 'LEHMS', 'BERGS', 'ROMEY', 'ROMEY', 'LILAS', 'LEHMS', 'QUICK', 'QUICK', 'RICAR', 'REGGC', 'BSBEV',
+    'COMMI', 'QUEDE', 'TRADH', 'TORTU', 'RATTC', 'VINET', 'LILAS', 'BLONP', 'HUNGO', 'RICAR', 'MAGAA', 'WANDK', 'SUPRD', 'GODOS', 'TORTU',
+    'OLDWO', 'ROMEY', 'LONEP', 'ANATR', 'HUNGO', 'THEBI', 'DUMON', 'WANDK', 'QUICK', 'RATTC', 'ISLAT', 'RATTC', 'LONEP', 'ISLAT', 'TORTU',
+    'WARTH', 'ISLAT', 'PERIC', 'KOENE', 'SAVEA', 'KOENE', 'BOLID', 'FOLKO', 'FURIB', 'SPLIR', 'LILAS', 'BONAP', 'MEREP', 'WARTH', 'VICTE',
+    'HUNGO', 'PRINI', 'FRANK', 'OLDWO', 'MEREP', 'BONAP', 'SIMOB', 'FRANK', 'LEHMS', 'WHITC', 'QUICK', 'RATTC', 'FAMIA'];
     public virtualData: Object[] = [];
     public grid: GridComponent;
     public date1: number;
@@ -134,27 +134,27 @@ export class Virtualization extends SampleBase<{}, {}> {
                             <ColumnDirective field='FIELD7' headerText='GS' width='120' ></ColumnDirective>
                             <ColumnDirective field='FIELD8' headerText='Minutes' width='120' ></ColumnDirective>
                             <ColumnDirective field='FIELD9' headerText='Points' width='130' ></ColumnDirective>
-                            <ColumnDirective field='FIELD10' headerText='oRebounds' width='140' ></ColumnDirective>
-                            <ColumnDirective field='FIELD11' headerText='dRebounds' width='140' ></ColumnDirective>
-                            <ColumnDirective field='FIELD12' headerText='Rebounds' width='130' ></ColumnDirective>
+                            <ColumnDirective field='FIELD10' headerText='OREB' width='140' ></ColumnDirective>
+                            <ColumnDirective field='FIELD11' headerText='DREB' width='140' ></ColumnDirective>
+                            <ColumnDirective field='FIELD12' headerText='REB' width='130' ></ColumnDirective>
                             <ColumnDirective field='FIELD13' headerText='Assists' width='120' ></ColumnDirective>
                             <ColumnDirective field='FIELD14' headerText='Steals' width='120' ></ColumnDirective>
                             <ColumnDirective field='FIELD15' headerText='Blocks' width='120' ></ColumnDirective>
                             <ColumnDirective field='FIELD16' headerText='Turnovers' width='140' ></ColumnDirective>
                             <ColumnDirective field='FIELD17' headerText='PF' width='100' ></ColumnDirective>
-                            <ColumnDirective field='FIELD18' headerText='fgAttempted' width='150' ></ColumnDirective>
-                            <ColumnDirective field='FIELD19' headerText='fgMade' width='120' ></ColumnDirective>
-                            <ColumnDirective field='FIELD20' headerText='ftAttempted' width='150' ></ColumnDirective>
-                            <ColumnDirective field='FIELD21' headerText='ftMade' width='140' ></ColumnDirective>
-                            <ColumnDirective field='FIELD22' headerText='ThreeAttempted' width='170' ></ColumnDirective>
-                            <ColumnDirective field='FIELD23' headerText='ThreeMade' width='150' ></ColumnDirective>
-                            <ColumnDirective field='FIELD24' headerText='PostGP' width='120' ></ColumnDirective>
-                            <ColumnDirective field='FIELD25' headerText='PostGS' width='120' ></ColumnDirective>
-                            <ColumnDirective field='FIELD26' headerText='PostMinutes' width='150' ></ColumnDirective>
-                            <ColumnDirective field='FIELD27' headerText='PostPoints' width='140' ></ColumnDirective>
-                            <ColumnDirective field='FIELD28' headerText='PostoRebounds' width='160' ></ColumnDirective>
-                            <ColumnDirective field='FIELD29' headerText='PostdRebounds' width='160' ></ColumnDirective>
-                            <ColumnDirective field='FIELD30' headerText='PostRebounds' width='160' ></ColumnDirective>
+                            <ColumnDirective field='FIELD18' headerText='FGA' width='150' ></ColumnDirective>
+                            <ColumnDirective field='FIELD19' headerText='FGM' width='120' ></ColumnDirective>
+                            <ColumnDirective field='FIELD20' headerText='FTA' width='150' ></ColumnDirective>
+                            <ColumnDirective field='FIELD21' headerText='FTM' width='140' ></ColumnDirective>
+                            <ColumnDirective field='FIELD22' headerText='Three Attempted' width='170' ></ColumnDirective>
+                            <ColumnDirective field='FIELD23' headerText='Three Made' width='150' ></ColumnDirective>
+                            <ColumnDirective field='FIELD24' headerText='Post GP' width='120' ></ColumnDirective>
+                            <ColumnDirective field='FIELD25' headerText='Post GS' width='120' ></ColumnDirective>
+                            <ColumnDirective field='FIELD26' headerText='Post Minutes' width='150' ></ColumnDirective>
+                            <ColumnDirective field='FIELD27' headerText='Post Points' width='140' ></ColumnDirective>
+                            <ColumnDirective field='FIELD28' headerText='Post OREB' width='160' ></ColumnDirective>
+                            <ColumnDirective field='FIELD29' headerText='Post DREB' width='160' ></ColumnDirective>
+                            <ColumnDirective field='FIELD30' headerText='Post REB' width='160' ></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[VirtualScroll]} />
                     </GridComponent>

@@ -42,8 +42,11 @@ export class AreaEmpty extends SampleBase<{}, {}> {
                         }}
                         primaryYAxis={{
                             title: 'Rates',
-                            majorGridLines: { width: 0 },
-                            labelFormat: '{value}M'
+                            labelFormat: '{value}M',
+                            lineStyle: { width: 0 },
+                            majorTickLines: { width: 0 },
+                            minorTickLines: { width: 0 },
+                            minimum: 1, maximum: 5, interval: 1
                         }}
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}

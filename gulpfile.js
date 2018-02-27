@@ -8,7 +8,46 @@ var glob = require('glob');
 var fs = require('fs');
 var configRegex = /\[(.*)\]/;
 var shelljs = require('shelljs');
-var runSequence = require('run-sequence')
+var runSequence = require('run-sequence');
+
+function extend(copied, first, second, deep) {
+    var result = copied || {};
+    var length = arguments.length;
+    if (deep) {
+        length = length - 1;
+    }
+    var _loop_1 = function (i) {
+        if (!arguments_1[i]) {
+            return 'continue';
+        }
+        var obj1 = arguments_1[i];
+        Object.keys(obj1).forEach(function (key) {
+            var src = result[key];
+            var copy = obj1[key];
+            var clone;
+            if (deep && isObject(copy)) {
+                clone = isObject(src) ? src : {};
+                result[key] = extend({}, clone, copy, true);
+            }
+            else {
+                result[key] = copy;
+            }
+        });
+    };
+    var arguments_1 = arguments;
+    for (var i = 1; i < length; i++) {
+        _loop_1(i);
+    }
+    return result;
+}
+function isObject(obj) {
+    var objCon = {};
+    return (!isNullOrUndefined(obj) && obj.constructor === objCon.constructor);
+}
+
+ function isNullOrUndefined(value) {
+    return value === undefined || value === null;
+}
 
 gulp.task('scripts', function (done) {
     var ts = require('gulp-typescript');
@@ -21,6 +60,20 @@ gulp.task('scripts', function (done) {
             done();
         });
 });
+gulp.task('create-locale', function () {
+    var localeJson = glob.sync('./src/**/locale.json', { silent: true });
+    if(localeJson.length) {
+       // baseUtil;
+    var obj = {};
+    for (var i = 0; i < localeJson.length; i++) {
+        var compentLocale = JSON.parse(fs.readFileSync(localeJson[i]));
+        obj = extend({},obj,compentLocale,true);
+    }
+    fs.writeFileSync('./src/common/locale-string.ts', 'export let Locale: Object='+JSON.stringify(obj)+';');
+} else {
+    fs.writeFileSync('./src/common/locale-string.ts', 'export let Locale: Object={};');
+}
+})
 
 /**
  * Compile styles
@@ -47,6 +100,8 @@ gulp.task('generate-router', function (done) {
         this.addField('name');
         this.setRef('uid');
     });
+    var apiData = JSON.parse(fs.readFileSync('./src/common/api-table', 'utf8'));
+    var apiReference = {};
     var uid = 0;
     for (var file of files) {
         var routeconfig = '';
@@ -68,8 +123,33 @@ gulp.task('generate-router', function (done) {
             category[configs.path.split('/')[1]] = { 'name': configs.name, 'category': configs.category };
             var curSearchObject = {name:configs.name,uid:uid,path:configs.path};
             curSearchObject.component =  configs.path.split('/')[0].replace(/-/g,'');
+            var url = configs.path.split('/')[1];
             instance.addDoc(curSearchObject);
             uid++;
+            if(configs.api){
+                var apiList= JSON.parse(configs.api);
+                var apiconfig = apiList|| {};
+                            var data = [];
+                            var canUpdate = false;
+                            var ObjectKeys = Object.keys(apiconfig);
+                            for (var key of ObjectKeys) {
+                                var classProperties = apiData[key];
+                                if (!classProperties) {
+                                    continue;
+                                }
+                                var propertyCollection = apiconfig[key];
+                                for (var prop of propertyCollection) {
+                                    var propData = classProperties[prop];
+                                    if (propData) {
+                                        canUpdate = true;
+                                        data.push(propData);
+                                    }
+                                }
+                            }
+                            if (canUpdate) {
+                                apiReference[curSearchObject.component + '/' +url] = data;
+                            }
+                        }
         }
         category['defaultSample'] = configCollection[0].path;
         var routeContent = fs.readFileSync('./src/common/templates/route-template', 'utf8');
@@ -87,12 +167,13 @@ gulp.task('generate-router', function (done) {
     allroutes = allroutes.replace(/{{imports}}/,imports);
     allroutes = allroutes.replace(/{{routerCollection}}/,compRoutes);
     allroutes = allroutes.replace(/{{category}}/, categories);
+    allroutes = allroutes +'\n\n' + 'export let apiList:any=' + JSON.stringify(apiReference);
     fs.writeFileSync('./src/common/all-routes.tsx',allroutes);
     fs.writeFileSync('./src/common/search-index.json', JSON.stringify(instance.toJSON()));
     done();
 });
 gulp.task('build', function (done) {
-    runSequence('generate-router','styles','scripts','bundle', 'plnkr-json', done);
+    runSequence('create-locale','generate-router','styles','scripts','bundle', 'plnkr-json', done);
 });
 
 gulp.task('bundle', function () {

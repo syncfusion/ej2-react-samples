@@ -7,17 +7,17 @@ import { PropertyPane } from '../common/property-pane';
 
 export class Searching extends SampleBase<{}, {}> {
 
-    public toolbarOptions: any = ['search'];
+    public toolbarOptions: any = ['Search'];
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section row'>
-                    <GridComponent dataSource={categoryData} toolbar={this.toolbarOptions} allowPaging={true} pageSettings={{ pageSize: 10 }} >
+                    <GridComponent dataSource={categoryData} toolbar={this.toolbarOptions} allowPaging={true} pageSettings={{ pageSize: 10, pageCount: 5 }} >
                         <ColumnsDirective>
                             <ColumnDirective field='CategoryName' headerText='Category Name' width='170'></ColumnDirective>
                             <ColumnDirective field='ProductName' headerText='Product Name' width='150'></ColumnDirective>
-                            <ColumnDirective field='QuantityPerUnit' headerText='Quantity PerUnit' width='180' textAlign='right' />
-                            <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='right' />
+                            <ColumnDirective field='QuantityPerUnit' headerText='Quantity PerUnit' width='180' textAlign='Right' />
+                            <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='Right' />
                         </ColumnsDirective>
                         <Inject services={[Toolbar, Page]} />
                     </GridComponent>

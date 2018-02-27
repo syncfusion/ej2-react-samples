@@ -34,24 +34,24 @@ export class Default extends SampleBase<{}, {}> {
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>Position</div>
+                <td style={{ width: '30%', paddingTop: '4px'  }}>
+                <div>Position</div>
                   </td>
                   <td style={{ width: '70%', paddingRight: '10px' }}>
                     <div>
                       <select id='ddl' name='ddl' onChange={this.change.bind(this)} className='form-control' style={{ padding: '6px' }} ref={d => this.dropElement = d}>
-                        <option value="top left">Top Left</option>
-                        <option value="top center" selected>Top Center</option>
-                        <option value="top right">Top Right</option>
-                        <option value="bottom left">Bottom Left</option>
-                        <option value="bottom center">Bottom Center</option>
-                        <option value="bottom right">Bottom Right</option>
-                        <option value="left top">Left Top</option>
-                        <option value="left center">Left Center</option>
-                        <option value="left bottom">Left Bottom</option>
-                        <option value="right top">Right Top</option>
-                        <option value="right center">Right Center</option>
-                        <option value="right bottom">Right Bottom</option>
+                        <option value="TopLeft">Top Left</option>
+                        <option value="TopCenter" selected>Top Center</option>
+                        <option value="TopRight">Top Right</option>
+                        <option value="BottomLeft">Bottom Left</option>
+                        <option value="BottomCenter">Bottom Center</option>
+                        <option value="BottomRight">Bottom Right</option>
+                        <option value="LeftTop">Left Top</option>
+                        <option value="LeftCenter">Left Center</option>
+                        <option value="LeftBottom">Left Bottom</option>
+                        <option value="RightTop">Right Top</option>
+                        <option value="RightCenter">Right Center</option>
+                        <option value="RightBottom">Right Bottom</option>
                       </select>
                     </div>
                   </td>
@@ -72,18 +72,18 @@ export class Default extends SampleBase<{}, {}> {
         positions are as follows:
           </p>
           <ul>
-            <li><code>top left</code></li>
-            <li><code>top center</code></li>
-            <li><code>top right</code></li>
-            <li><code>bottom left</code></li>
-            <li><code>bottom center</code></li>
-            <li><code>bottom right</code></li>
-            <li><code>left top</code></li>
-            <li><code>left center</code></li>
-            <li><code>left bottom</code></li>
-            <li><code>right top</code></li>
-            <li><code>right center</code></li>
-            <li><code>right bottom</code></li>
+            <li><code>TopLeft</code></li>
+            <li><code>TopCenter</code></li>
+            <li><code>TopRight</code></li>
+            <li><code>BottomLeft</code></li>
+            <li><code>BottomCenter</code></li>
+            <li><code>BottomRight</code></li>
+            <li><code>LeftTop</code></li>
+            <li><code>LeftCenter</code></li>
+            <li><code>LeftBottom</code></li>
+            <li><code>RightTop</code></li>
+            <li><code>RightCenter</code></li>
+            <li><code>RightBottom</code></li>
           </ul>
           <p>In case, if the tooltip needs to be opened on mobile devices, tap hold on the target labelled “Show Tooltip” instead of hovering
         and by default, it closes after 1.5 seconds on lift.</p>

@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Filter, Inject } from '@syncfusion/ej2-react-grids';
 import { categoryData } from './data';
 import { SampleBase } from '../common/sample-base';
@@ -7,11 +8,23 @@ import "./sample.css";
 export class Filtering extends SampleBase<{}, {}> {
 
     private gridInstance: GridComponent;
-    public onChange(): void {
-        if ((document.getElementById('ddl') as HTMLInputElement).value === 'All') {
+    private filData: { [key: string]: Object }[] = [
+        { id: '1', category: 'All' },
+        { id: '2', category: 'Beverages' },
+        { id: '3', category: 'Condiments' },
+        { id: '4', category: 'Confections' },
+        { id: '5', category: 'Dairy Products' },
+        { id: '6', category: 'Grains/Cereals' },
+        { id: '7', category: 'Meat/Poultry' },
+        { id: '8', category: 'Produce' },
+        { id: '9', category: 'Seafood' }
+    ];
+    private fields: Object = { text: 'category', value: 'id' };
+    public onChange(sel: { itemData: { item: number, category: string } }): void {
+        if (sel.itemData.category === 'All') {
             this.gridInstance.clearFiltering();
         } else {
-            this.gridInstance.filterByColumn('CategoryName', 'equal', (document.getElementById('ddl') as HTMLInputElement).value);
+            this.gridInstance.filterByColumn('CategoryName', 'equal', sel.itemData.category);
         }
     }
     render() {
@@ -20,25 +33,15 @@ export class Filtering extends SampleBase<{}, {}> {
                 <div className='control-section row'>
                     <div style={{ padding: '14px 0' }}>
                         <div className="select-wrap">
-                            <select id='ddl' onChange={this.onChange.bind(this)} >
-                                <option disabled selected hidden>Select category to filter</option>
-                                <option value="All">ALL</option>
-                                <option value="Beverages">Beverages</option>
-                                <option value="Confections">Confections</option>
-                                <option value="Dairy Products">Dairy Products</option>
-                                <option value="Grains/Cereals">Grains/Cereals</option>
-                                <option value="Meat/Poultry">Meat/Poultry</option>
-                                <option value="Produce">Produce</option>
-                                <option value="Seafood">Seafood</option>
-                            </select>
-                        </div>                    
+                            <DropDownListComponent id="ddlelement" dataSource={this.filData} fields={this.fields} change={this.onChange.bind(this)} placeholder="Select category to filter" width="200px" />
                         </div>
-                    <GridComponent dataSource={categoryData} allowPaging={true} ref={grid => this.gridInstance = grid} pageSettings={{ pageSize: 10 }} allowFiltering={true}>
+                    </div>
+                    <GridComponent dataSource={categoryData} allowPaging={true} ref={grid => this.gridInstance = grid} pageSettings={{ pageSize: 10, pageCount: 5 }} allowFiltering={true}>
                         <ColumnsDirective>
                             <ColumnDirective field='CategoryName' headerText='Category Name' width='170'></ColumnDirective>
                             <ColumnDirective field='ProductName' headerText='Product Name' width='150'></ColumnDirective>
-                            <ColumnDirective field='QuantityPerUnit' headerText='Quantity PerUnit' width='180' textAlign='right'></ColumnDirective>
-                            <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='right'></ColumnDirective>
+                            <ColumnDirective field='QuantityPerUnit' headerText='Quantity PerUnit' width='180' textAlign='Right'></ColumnDirective>
+                            <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='Right'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Filter, Page]} />
                     </GridComponent>
@@ -59,8 +62,8 @@ export class Filtering extends SampleBase<{}, {}> {
                     A filter bar row will be rendered next to header which allows the end-users to filter data by entering text within its cells.</p>
                     <p>Filterbar uses two modes which specifies how to start filtering. They are,</p>
                     <ul>
-                        <li><code>onenter</code> - Enabled by default, filter will be initiated after pressing <code>Enter</code> key.</li>
-                        <li><code>immediate</code> - Filter will start after user ends typing. This uses a time delay of <i>1500ms</i>
+                        <li><code>OnEnter</code> - Enabled by default, filter will be initiated after pressing <code>Enter</code> key.</li>
+                        <li><code>Immediate</code> - Filter will start after user ends typing. This uses a time delay of <i>1500ms</i>
                             to initiate filter after use stops typing.
                            It can be overridden using the <code><a target='_blank' className='code'
                                 href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#filtersettings-filtersettingsmodel'>

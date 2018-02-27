@@ -59,7 +59,7 @@ export class RangeArea extends SampleBase<{}, {}> {
                             }}
                         chartArea={{ border: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '80%'}
-                        title='Maximum and Minimum Temperature' loaded={this.onChartLoad.bind(this)}>
+                        title='Temperature Variation' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[RangeAreaSeries, Category, DateTime, Zoom]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={series1} border={{

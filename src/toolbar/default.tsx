@@ -10,7 +10,7 @@ export class Default extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <div className= 'control toolbar-sample'  style = {{margin: '25px 0' }}>
+          <div className= 'control toolbar-sample tbar-sample'  style = {{margin: '25px 0' }}>
           {/* Render the Toolbar Component */}
           <ToolbarComponent>
              <ItemsDirective>

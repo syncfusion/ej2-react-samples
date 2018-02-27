@@ -1,0 +1,60 @@
+.schedule-header-bar.e-schedule .e-schedule-toolbar .user-icon {
+  background-image: url('./src/schedule/images/1.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  min-width: 24px !important;
+  width: 24px !important;
+}
+
+.schedule-header-bar.e-schedule .e-schedule-toolbar .e-toolbar-items .e-schedule-user-icon .e-tbar-btn:hover {
+  background-color: inherit;
+}
+
+.schedule-header-bar.e-schedule .e-schedule-toolbar .e-toolbar-items .e-schedule-user-icon .e-tbar-btn-text {
+  display: none;
+}
+
+.e-profile-wrapper {
+  width: 210px;
+  height: 80px;
+  background-color: #fafafa;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.e-profile-wrapper .profile-container {
+  display: flex;
+  padding: 10px;
+}
+
+.e-profile-wrapper .profile-image {
+  background-image: url('./src/schedule/images/1.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: inset 0 0 1px #e0e0e0, inset 0 0 14px rgba(0, 0, 0, 0.2);
+  width: 60px;
+  height: 60px;
+}
+
+.e-profile-wrapper .content-wrap {
+  padding-left: 10px;
+}
+
+.e-profile-wrapper .name {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.e-profile-wrapper .destination {
+  font-size: 12px;
+}
+
+.e-profile-wrapper .status {
+  font-size: 11px;
+}

@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { LinearGaugeComponent, Position, AnnotationsDirective, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
+import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, Position, AnnotationsDirective, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -19,6 +19,11 @@ export class Ranges extends SampleBase<{}, {}> {
     private startWidthElement: HTMLInputElement;
     private endWidthElement: HTMLInputElement;
     private colorElement: HTMLInputElement;
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+    }
     private indexChange() {
         this.startElement.value = this.gaugeInstance.axes[0].ranges[parseInt(this.indexElement.value as string, 10)].start.toString();
         this.endElement.value = this.gaugeInstance.axes[0].ranges[parseInt(this.indexElement.value as string, 10)].end.toString();
@@ -79,12 +84,12 @@ export class Ranges extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <LinearGaugeComponent id='gauge' ref={gauge => this.gaugeInstance = gauge} orientation='Horizontal'>
+                        <LinearGaugeComponent load={this.load.bind(this)} id='gauge' ref={gauge => this.gaugeInstance = gauge} orientation='Horizontal'>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective majorTicks={{ height: 0 }} minorTicks={{ height: 0 }} line={{ width: 0 }} labelStyle={{ format: '{value}%', font: { color: '#424242' }, offset: 30 }}>
+                                <AxisDirective majorTicks={{ height: 0 }} minorTicks={{ height: 0 }} line={{ width: 0 }} labelStyle={{ format: '{value}%', offset: 30 }}>
                                     <PointersDirective>
-                                        <PointerDirective value={35} color='#757575' height={10} width={10} offset={-40} markerType='Triangle' placement='Near'>
+                                        <PointerDirective value={35} height={10} width={10} offset={-40} markerType='Triangle' placement='Near'>
                                         </PointerDirective>
                                     </PointersDirective>
                                     <RangesDirective>
@@ -98,7 +103,7 @@ export class Ranges extends SampleBase<{}, {}> {
                                 </AxisDirective>
                             </AxesDirective>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div id="pointer" style="width:20px"><h1 style="font-size:18px;color:#424242">35</h1></div>'
+                                <AnnotationDirective content='<div id="pointer" style="width:20px"><h1 style="font-size:18px;">35</h1></div>'
                                     axisIndex={0}
                                     axisValue={35}
                                     zIndex= '1'

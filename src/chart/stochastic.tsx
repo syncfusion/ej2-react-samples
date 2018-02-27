@@ -28,15 +28,14 @@ export class Stochastic extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            intervalType: 'Months', majorGridLines: { width: 0 },
+                            majorGridLines: { width: 0 },
                             zoomFactor: 0.2, zoomPosition: 0.6,
-                            skeleton: 'yMd',
                             crosshairTooltip: { enable: true },
                         }}
                         primaryYAxis={{
                             title: 'Price',
                             labelFormat: '${value}',
-                            minimum: 80, maximum: 170,
+                            minimum: 50, maximum: 170,
                             plotOffset: 25,
                             interval: 30, rowIndex: 1, opposedPosition: true, lineStyle: { width: 0 }
                         }}
@@ -45,7 +44,7 @@ export class Stochastic extends SampleBase<{}, {}> {
                         width={Browser.isDevice ? '100%' : '80%'}
                         chartArea={{ border: { width: 0 } }}
                         legendSettings={{ visible: false }}
-                        zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+                        zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries,
                             StochasticIndicator, StripLine]} />
@@ -76,8 +75,8 @@ export class Stochastic extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates a stock chart with candle series and an Stochastic indicator. Trackball shows the information about the stock and indicator value of a day.
+                    <p>
+                        This sample illustrates a stock chart with candle series and an Stochastic indicator. Trackball shows the information about the stock and indicator value of a day.
            </p>
                 </div>
                 <div id="description">

@@ -18,7 +18,7 @@ export class Range extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='datepicker-control-section'>
-                        <DatePickerComponent id="calendar" min={minDate} max={maxDate} value={dateValue} placeholder='Choose a date'></DatePickerComponent>
+                        <DatePickerComponent id="calendar" min={minDate} max={maxDate} value={dateValue} ></DatePickerComponent>
                     </div>
                 </div>
                 <div id="action-description">

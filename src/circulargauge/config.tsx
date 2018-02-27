@@ -1,5 +1,5 @@
 export const CircularGaugeSampleOrder:Object = [
-    { 'path': 'circulargauge/default', 'component':'Default', 'name': 'Default', 'order': '01', 'category': 'CIRCULAR GAUGE' },
+    { 'path': 'circulargauge/default', 'component':'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'CIRCULAR GAUGE' },
     { 'path': 'circulargauge/range', 'component':'Range', 'name': 'Range', 'order': '01', 'category': 'CIRCULAR GAUGE' },
     { 'path': 'circulargauge/labels', 'component':'Labels', 'name': 'Tick and Labels', 'order': '01', 'category': 'CIRCULAR GAUGE' },
     { 'path': 'circulargauge/annotation', 'component':'AnnotationsSample', 'name': 'Annotations', 'order': '01', 'category': 'CIRCULAR GAUGE' },

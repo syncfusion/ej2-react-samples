@@ -24,7 +24,7 @@ export class AjaxContentTooltip extends SampleBase<{}, {}> {
         { id: '7', text: 'United States' }
     ];
 
-    //Map appropriate columns to fields property
+    //Map appropriate columns to fields property.
     public fields: Object = { text: 'text', tooltip: 'id' };
 
     //Process tooltip ajax content.
@@ -54,7 +54,7 @@ export class AjaxContentTooltip extends SampleBase<{}, {}> {
                     <h4 className="list-header">National Sports</h4>
 
                     {/* Tooltip element */}
-                    <TooltipComponent ref={t => this.tooltipInstance = t} className="e-prevent-select" content='Loading...' target="#countrylist [title]" position='right center' beforeRender={this.onBeforeRender.bind(this)}>
+                    <TooltipComponent ref={t => this.tooltipInstance = t} className="e-prevent-select" content='Loading...' target="#countrylist [title]" position='RightCenter' beforeRender={this.onBeforeRender.bind(this)}>
 
                         {/* ListView element */}
                         <ListViewComponent id="countrylist" dataSource={this.listViewData} fields={this.fields}></ListViewComponent>

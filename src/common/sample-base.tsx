@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { setResponsiveElement, selectedTheme, setSbLink, removeOverlay } from './index';
 import { setSelectList } from './leftpane';
-import { sampleNameElement, onComponentLoad, setNavButtonState, intialLoadScrollTop, renderDescriptions } from './component-content';
+import { sampleNameElement, onComponentLoad, setNavButtonState, intialLoadScrollTop, renderDescriptions,checkApiTableDataSource } from './component-content';
 import { select } from '@syncfusion/ej2-base';
 
 export class SampleBase<P, S> extends React.PureComponent<RouteComponentProps<any> & P, S>{
@@ -33,7 +33,7 @@ export class SampleBase<P, S> extends React.PureComponent<RouteComponentProps<an
         intialLoadScrollTop();
         setSelectList();
         removeOverlay();
-
+        checkApiTableDataSource();
         this.rendereComplete();
     }
 

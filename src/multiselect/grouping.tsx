@@ -25,9 +25,9 @@ export class Grouping extends SampleBase<{}, {}> {
     private groupFields: Object = { groupBy: 'Category', text: 'Vegetable', value: 'Id' };
   render() {
     return (
-      <div className='control-pane'>
+      <div id='multigroup' className='control-pane'>
         <div className='control-section'>
-            <div id="multigroup" className="control-styles">
+            <div id="ms-multigroup" className="control-styles">
               <h4>Grouping</h4>
               <MultiSelectComponent id="grouping" dataSource={this.vegetableData} fields={this.groupFields} placeholder="Select vegetables" />
             </div>

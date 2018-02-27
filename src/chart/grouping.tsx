@@ -36,7 +36,7 @@ export class Grouping extends SampleBase<{}, {}> {
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
               title='RIO Olympics Gold'
               load={this.load.bind(this)}
-              tooltip={{ enable: true, format: '${point.x} <br> ${point.y} Medals' }}
+              tooltip={{ enable: true, format: '${point.x} : <b>${point.y} Medals</b>' }}
               legendSettings={{ visible: false }}
               textRender={this.onTextRender.bind(this)}
               pointRender={this.onPointRender.bind(this)}
@@ -45,7 +45,7 @@ export class Grouping extends SampleBase<{}, {}> {
             >
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
-                <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' animation={{ enable: true }}
+                <AccumulationSeriesDirective name='RIO' dataSource={data1} xName='x' yName='y' animation={{ enable: true }}
                   radius='70%'
                   groupTo='10' startAngle={0}
                   endAngle={360}
