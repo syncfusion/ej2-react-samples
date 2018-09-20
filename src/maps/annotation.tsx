@@ -4,13 +4,13 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Annotations, Marker, MarkersDirective, MarkerDirective
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { africa_continent } from './MapData/africa_continent';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -59,7 +59,7 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Annotations, Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={africa_continent}
+                                <LayerDirective shapeData= {new MapAjax(location.origin + location.pathname + 'src/maps/map-data/africa-continent.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     shapeSettings={{

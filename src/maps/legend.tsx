@@ -4,14 +4,13 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Legend, MapsTooltip, ITooltipRenderEventArgs
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { World_Map } from './MapData/WorldMap';
-import { Population_Density } from './MapData/PopulationDensity';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -43,10 +42,10 @@ export class LegendMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Legend, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={World_Map}
+                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={Population_Density}
+                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/legend-datasource.json')}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath: 'name',
@@ -111,9 +110,10 @@ export class LegendMaps extends SampleBase<{}, {}> {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    //tslint:disable
     public tooltip(args: ITooltipRenderEventArgs): void {
-        if (args.content.toString().indexOf('density') > -1) {
+        if (!args.options['data']) {
             args.cancel = true;
-            }
+        }
     }
 }

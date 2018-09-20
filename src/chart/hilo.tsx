@@ -15,7 +15,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
 	}`;
-    let date1: Date=new Date(2017, 1, 1);
+    let date1: Date=new Date('2017, 1, 1');
     let returnValue: any=  chartData.filter(filterValue);
     function filterValue(value:{x:Date,high:number,low:number} ):any {
      if(value.x >= date1){
@@ -34,8 +34,8 @@ export class Hilo extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                          minimum:new Date( 2016, 12, 31),
-                          maximum:new Date( 2017, 9, 31),
+                          minimum:new Date( '2016, 12, 31'),
+                          maximum:new Date( '2017, 9, 30'),
                             crosshairTooltip: { enable: true },
                             majorGridLines: { width: 0 }
                         }}
@@ -66,7 +66,7 @@ export class Hilo extends SampleBase<{}, {}> {
                 <div id="action-description">
                 <p>
                 This sample visualizes the AAPL historical data with default HILO series in the chart. 
-                Tooltip and crosshair show the information about the data and period.
+                Tooltip and crosshair shows the information about the data and period.
            </p>
                 </div>
                 <div id="description">

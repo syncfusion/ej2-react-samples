@@ -1,6 +1,6 @@
 /* content area styles */
 
-  .responsive {
+.responsive {
     width: 80%;
 }
 
@@ -151,3 +151,24 @@ body {
     float: left;
 }
 /* end of sidebar styles */
+/* newTab support styles */
+
+.ej2-new .sb-header,
+.ej2-new .sb-bread-crumb,
+.ej2-new #action-description,
+.ej2-new #description-section,
+.ej2-new #description {
+    display: none
+}
+   
+.ej2-new .container-fluid,
+.ej2-new .container-fluid .control-section,
+#sidebar-section {
+    padding: 0px;
+}
+   
+.ej2-new .content.e-view {
+    top: 0px;
+}
+ 
+/* end of newTab support styles */

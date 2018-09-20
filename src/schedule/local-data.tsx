@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject } from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { zooEventsData, applyCategoryColor } from './datasource';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -22,9 +22,9 @@ export class LocalData extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2018, 1, 15)} ref={t => this.scheduleObj = t}
+            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 1, 15)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data }} eventRendered={this.onEventRendered.bind(this)}>
-              <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+              <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>

@@ -31,10 +31,13 @@ export class SampleBase<P, S> extends React.PureComponent<RouteComponentProps<an
         onComponentLoad();
         setNavButtonState();
         intialLoadScrollTop();
-        setSelectList();
-        removeOverlay();
-        checkApiTableDataSource();
-        this.rendereComplete();
+        setTimeout(()=>{
+         setSelectList();
+         removeOverlay();
+         checkApiTableDataSource();
+         this.rendereComplete();
+        });
+        
     }
 
 }    

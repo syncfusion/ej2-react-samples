@@ -1,8 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewsModelDirective,
-  Day, Week, Month, EventRenderedArgs, Inject
+  ScheduleComponent, ViewsDirective, ViewDirective,
+  Day, Week, Month, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { recurrenceData, applyCategoryColor } from './datasource';
 import './schedule-component.css';
@@ -25,14 +25,14 @@ export class RecurrenceEvents extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='500px' selectedDate={new Date(2018, 1, 20)} ref={t => this.scheduleObj = t}
+            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 1, 20)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data }} eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
-                <ViewsModelDirective option='Day' />
-                <ViewsModelDirective option='Week' />
-                <ViewsModelDirective option='Month' />
+                <ViewDirective option='Day' />
+                <ViewDirective option='Week' />
+                <ViewDirective option='Month' />
               </ViewsDirective>
-              <Inject services={[Day, Week, Month]} />
+              <Inject services={[Day, Week, Month, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -44,7 +44,7 @@ export class RecurrenceEvents extends SampleBase<{}, {}> {
             It can be defined through <code>recurrenceRule</code> field which should accept the valid rule string following
              the <a target="_blank" href="https://tools.ietf.org/html/rfc5545#section-3.3.10">
               iCalendar</a> specifications. The recurring events are differentiated from other events by a repeat marker added
-      to the right-bottom of it. These events can repeat on daily, weekly, monthly or yearly basis.
+to the right-bottom of it. These events can repeat on daily, weekly, monthly or yearly basis.
           </p>
           <p>
             Here, the daily patterned events are depicted in blue color, weekly events are differentiated with green color, monthly events

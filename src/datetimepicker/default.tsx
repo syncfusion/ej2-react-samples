@@ -24,7 +24,7 @@ export class Default extends SampleBase<{}, {}> {
                         The <code>DateTimePicker</code> is a graphical user interface component that allows the user to select, or to enter a date time value.
                    </p>
                     <p>More information on the DateTimePicker instantiation can be found in the
-              <a href="http://ej2.syncfusion.com/react/documentation/datetimepicker/getting-started.html" target="_blank"> documentation section</a>.
+              <a href="https://ej2.syncfusion.com/react/documentation/datetimepicker/getting-started.html" target="_blank"> documentation section</a>.
           </p>
                 </div>
             </div>

@@ -35,8 +35,7 @@ export class SelectionChart extends SampleBase<{}, {}> {
     private droplist: { [key: string]: Object }[] = [
         { value: 'Point' },
         { value: 'Series' },
-        { value: 'Cluster' },
-        { value: 'None' }
+        { value: 'Cluster' }
     ];
     private checkElement: HTMLInputElement;
     private loaded: EmitType<ILoadedEventArgs>;

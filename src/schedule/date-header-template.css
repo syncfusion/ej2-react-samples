@@ -1,4 +1,5 @@
-.schedule-date-header-template.e-schedule .e-vertical-view .e-header-cells {
+.schedule-date-header-template.e-schedule .e-vertical-view .e-header-cells,
+.schedule-date-header-template.e-schedule .e-timeline-month-view .e-header-cells {
   padding: 0;
   text-align: center !important;
 }

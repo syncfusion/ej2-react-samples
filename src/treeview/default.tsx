@@ -100,7 +100,7 @@ private fields: object = { dataSource: this.hierarchicalData, id: 'id', text: 'n
     return (       
       <div className = 'control-pane'>
         <div className='control-section'>
-        <div className='control_wrapper'>
+        <div className='tree-control_wrapper'>
             {/* Render TreeView */}
             <TreeViewComponent fields={this.fields} />
         </div>

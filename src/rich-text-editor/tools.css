@@ -1,0 +1,34 @@
+#rteTools .rte-control-section {
+    margin: 0 auto;
+}
+
+#rteTools {
+    overflow: hidden;
+}
+
+#rteTools .e-code-mirror::before {
+    content: '\e345';
+}
+
+#rteTools .e-html-preview::before {
+    content: '\e350';
+}
+
+#rteTools .CodeMirror-linenumber,
+#rteTools .CodeMirror-gutters {
+    display: none;
+}
+
+.sb-header {
+    z-index: 100 !important;
+}
+
+#rteTools .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rteTools .content-wrapper {
+    width: auto;
+    margin: 0;
+}

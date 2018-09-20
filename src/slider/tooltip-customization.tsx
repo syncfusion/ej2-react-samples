@@ -59,34 +59,42 @@ const slidercss = `
 
 
 
-.e-slider-tooltip.e-tooltip-wrap.e-popup.e-slider-tooltip .e-tip-content,
-.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range .e-tip-content.e-material-tooltip-show {
-    color: #333;
+.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-slider-tooltip .e-tip-content,
+.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-material-range .e-tip-content.e-material-tooltip-show {
+  color: #333;
 }
 
-.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range .e-arrow-tip-inner {
-    color: #ffd939;
+.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-material-range .e-arrow-tip-inner {
+  color: #ffd939;
 }
 
-.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range.e-slider-horizontal-before .e-arrow-tip-outer {
-    border-top-color: #ffd939;
+.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-material-range.e-slider-horizontal-before .e-arrow-tip-outer {
+  border-top-color: #ffd939;
 
 }
 
-.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range.e-slider-horizontal-after .e-arrow-tip-outer {
-    border-bottom-color: #ffd939;
+.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-material-range.e-slider-horizontal-after .e-arrow-tip-outer {
+  border-bottom-color: #ffd939;
 }
 
 .e-slider-container .e-slider#slider01 .e-range,
 .e-slider-container .e-slider#out .e-range {
-    background-color: #0375be;
-    z-index: unset;
+  background-color: #0375be;
+  z-index: unset;
 }
 
-.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range,
-.e-slider-tooltip.e-tooltip-wrap.e-popup {
-    background-color: #ffd939;
-    border-color: #ffd939;
+.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range.e-tooltip-cutomization,
+.e-slider-tooltip.e-tooltip-wrap.e-popup.e-tooltip-cutomization {
+  background-color: #ffd939;
+  border-color: #ffd939;
+}
+
+.bootstrap .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-outer {
+  border-top-color: #ffd939;
+}
+
+.bootstrap .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-inner {
+  color: #ffd939;
 }
 
 `
@@ -108,10 +116,10 @@ export class TooltipCustomization extends SampleBase<{}, {}> {
     };
     // Initialize tooltip with placement
     public tooltip: object = {
-        placement: 'Before', isVisible: true
+        placement: 'Before', isVisible: true, cssClass: 'e-tooltip-cutomization'
     };
     public sliderTooltip: object = {
-        placement: 'Before', isVisible: true
+        placement: 'Before', isVisible: true, cssClass: 'e-tooltip-cutomization'
     };
     private timeObj: SliderComponent;
     private sliderObj: SliderComponent;

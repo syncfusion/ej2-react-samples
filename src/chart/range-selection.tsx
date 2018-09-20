@@ -41,8 +41,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
     private droplist: { [key: string]: Object }[] = [
         { value: 'DragXY' },
         { value: 'DragX' },
-        { value: 'DragY' },
-        { value: 'None' }
+        { value: 'DragY' }
     ];
     private change(): void {
         this.chartInstance.selectionMode = this.dropElement.value as SelectionMode;

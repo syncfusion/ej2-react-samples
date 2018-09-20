@@ -1,13 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewsModelDirective, View, Day, Week, WorkWeek, Month,
-  EventRenderedArgs, Inject
+  ScheduleComponent, ViewsDirective, ViewDirective, View, Day, Week, WorkWeek, Month,
+  EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { zooEventsData, applyCategoryColor } from './datasource';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
-import { DropDownList, ChangeEventArgs } from '@syncfusion/ej2-dropdowns';
+import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
@@ -18,17 +18,17 @@ import { PropertyPane } from '../common/property-pane';
 export class Views extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
   private data: Object[] = extend([], zooEventsData, null, true) as Object[];
-  public rendereComplete(): void {
-    // Initialize DropDownList component for views
-    let dropDownListObject: DropDownList = new DropDownList({
-      change: (args: ChangeEventArgs) => {
-        this.scheduleObj.currentView = args.value as View;
-        this.scheduleObj.dataBind();
-      }
-    });
-    dropDownListObject.appendTo('#currentview');
+  private viewOptions: { [key: string]: Object }[] = [
+    { text: 'Day', value: 'Day' },
+    { text: 'Week', value: 'Week' },
+    { text: 'WorkWeek', value: 'WorkWeek' },
+    { text: 'Month', value: 'Month' }
+  ];
+  private fields: object = { text: 'text', value: 'value' };
+  private onViewChange(args: ChangeEventArgs): void {
+    this.scheduleObj.currentView = args.value as View;
+    this.scheduleObj.dataBind();
   }
-
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -38,16 +38,16 @@ export class Views extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='550px' ref={schedule => this.scheduleObj = schedule}
+            <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
               selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
-                <ViewsModelDirective option='Day' />
-                <ViewsModelDirective option='Week' />
-                <ViewsModelDirective option='WorkWeek' />
-                <ViewsModelDirective option='Month' />
+                <ViewDirective option='Day' />
+                <ViewDirective option='Week' />
+                <ViewDirective option='WorkWeek' />
+                <ViewDirective option='Month' />
               </ViewsDirective>
-              <Inject services={[Day, Week, WorkWeek, Month]} />
+              <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -55,18 +55,15 @@ export class Views extends SampleBase<{}, {}> {
           <PropertyPane title='Properties'>
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
-                <tr id='' style={{ height: '50px' }}>
+                <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Current view:</div>
+                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Current view</div>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div>
-                      <select id='currentview' name='currentview' style={{ padding: '6px' }} defaultValue='Week'>
-                        <option value='Day'>Day</option>
-                        <option value='Week'>Week</option>
-                        <option value='WorkWeek'>Work Week</option>
-                        <option value='Month'>Month</option>
-                      </select>
+                      <DropDownListComponent style={{ padding: '6px' }} value={'Week'} fields={this.fields} dataSource={this.viewOptions}
+                        change={this.onViewChange.bind(this)}>
+                      </DropDownListComponent>
                     </div>
                   </td>
                 </tr>

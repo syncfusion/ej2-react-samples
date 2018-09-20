@@ -7,29 +7,65 @@ import {detach, isNullOrUndefined} from '@syncfusion/ej2-base';
 import './template.css';
 
 
-export class Template extends SampleBase<{}, {}> {
+export class Template extends SampleBase<{}, {hideDialog: boolean}> {
     private dialogInstance: DialogComponent;
     private proxy: any;
-    buttonClick() {
-        this.dialogInstance.show();
+    private buttonRef;
+    private buttonElement: HTMLElement;
+    constructor(props: {}) {
+        super(props);
+        this.state = {
+            hideDialog : true
+        };
+        this.buttonElement = null;
+        this.buttonRef = element => {
+            this.buttonElement = element;
+        };
     }
-    dialogClose() {
-        (document.querySelectorAll('.dlgbtn')[0] as HTMLElement).style.display='inline-block';
+    public header(data: any): JSX.Element {
+        return (
+        <div>
+            <span className="e-avatar template-image e-avatar-xsmall e-avatar-circle"></span>
+            <div id="dlg-template" title="Nancy" className="e-icon-settings">Nancy</div>
+        </div>
+        );
     }
-    dialogOpen() {
-        (document.querySelectorAll('.dlgbtn')[0] as HTMLElement).style.display='none';
+    public footerTemplate(data: any): JSX.Element {
+        return (
+            <div>
+                <input id="inVal" className="e-input" type="text" placeholder="Enter your message here!"/>
+                <button id="sendButton" className="e-control e-btn e-primary" data-ripple="true">Send</button>
+            </div>
+        );
+    }
+    public content(data: any): JSX.Element {
+        return (
+            <div className="dialogContent">
+                <span className="dialogText">Greetings Nancy! When will you share me the source files of the project?</span>
+            </div>
+        );
+    }
+    private buttonClick(): void {
+        this.setState({ hideDialog: true });
+    }
+    private dialogClose(): void {
+        this.setState({ hideDialog: false });
+        this.buttonElement.style.display='inline-block';
+    }
+    private dialogOpen(): void {
+        this.setState({ hideDialog: true });
+        this.buttonElement.style.display='none';
     }
 
-    updateTextValue () : void {
+    private updateTextValue(): void {
         let enteredVal: HTMLInputElement = document.getElementById('inVal') as HTMLInputElement;
         let dialogTextElement: HTMLElement = document.getElementsByClassName('dialogText')[0] as HTMLElement;
-        let dialogTextWrap : HTMLElement = document.getElementsByClassName('dialogContent')[0] as HTMLElement;
         if ( enteredVal.value !== '') {
             dialogTextElement.innerHTML = enteredVal.value;
         }
         enteredVal.value = '';
     }
-    rendereComplete() {
+    public rendereComplete(): void {
         this.proxy = this;
         this.dialogInstance.target = document.getElementById('target');
         (document.getElementById('sendButton')as HTMLElement).onkeydown = (e: any) => {
@@ -44,26 +80,23 @@ export class Template extends SampleBase<{}, {}> {
             this.updateTextValue();
         };
     }
-  render() {
-    const icontemp: string = '<button id="sendButton" class="e-control e-btn e-primary" data-ripple="true">' + 'Send</button>';
-    const headerimg: string = '<img class="img2" src="src/dialog/images/1.png" alt="header image"/>';
-    const message: string = 'Greetings Nancy! When will you share me the source files of the project?';
+  public render(): JSX.Element {
     return (
       <div className='control-pane'>
         <div className='control-section row'>
-            <div id='target' className='col-lg-10 target-element' style={{'min-height':'350px'}}>
-            <button className="e-control e-btn dlgbtn" style={{position:'absolute'}} onClick={this.buttonClick.bind(this)}>Open</button>
-            <DialogComponent 
-               header={headerimg + '<div title="Nancy" class="e-icon-settings e-icons" style="padding: 3px;">Nancy</div>'}
-               footerTemplate= {'<input id="inVal" class="e-input" type="text" placeholder="Enter your message here!"/>' + icontemp }
-               content= {'<div class="dialogContent"><span class="dialogText">' + message + '</span></div>'}
+            <div id='target' className='col-lg-12 target-element'>
+            <button className="e-control e-btn dlgbtn dlgbtn-position" ref={this.buttonRef} onClick={this.buttonClick.bind(this)}>Open</button>
+            <DialogComponent header={this.header as any}
+               footerTemplate= {this.footerTemplate as any}
+               content= {this.content as any}
                showCloseIcon= {true}
                ref={dialog => this.dialogInstance = dialog}
                target= '#target'
-               width= {'65%'}
+               width= {'437px'}
                open= {this.dialogOpen.bind(this)}
                close= {this.dialogClose.bind(this)}
-               height= {'85%'}
+               height= {'255px'}
+               visible={this.state.hideDialog}
             ></DialogComponent>
             </div>
         </div>
@@ -82,6 +115,6 @@ export class Template extends SampleBase<{}, {}> {
         documentation section</a>.</p>
         </div>
       </div>
-    )
+    );
   }
 }

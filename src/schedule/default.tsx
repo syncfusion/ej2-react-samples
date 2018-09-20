@@ -1,8 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewsModelDirective,
-  Day, Week, WorkWeek, Month, Agenda, Inject
+  ScheduleComponent, ViewsDirective, ViewDirective,
+  Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { scheduleData } from './datasource';
 import './schedule-component.css';
@@ -18,7 +18,6 @@ import { PropertyPane } from '../common/property-pane';
 export class Default extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
   private data: Object[] = extend([], scheduleData, null, true) as Object[];
-  /*view selected date to the schedule component*/
   private change(args: ChangeEventArgs): void {
     this.scheduleObj.selectedDate = args.value;
     this.scheduleObj.dataBind();
@@ -29,16 +28,16 @@ export class Default extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent height='550px' ref={schedule => this.scheduleObj = schedule}
+            <ScheduleComponent height='650px' ref={schedule => this.scheduleObj = schedule}
               selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}>
               <ViewsDirective>
-                <ViewsModelDirective option='Day' />
-                <ViewsModelDirective option='Week' />
-                <ViewsModelDirective option='WorkWeek' />
-                <ViewsModelDirective option='Month' />
-                <ViewsModelDirective option='Agenda' />
+                <ViewDirective option='Day' />
+                <ViewDirective option='Week' />
+                <ViewDirective option='WorkWeek' />
+                <ViewDirective option='Month' />
+                <ViewDirective option='Agenda' />
               </ViewsDirective>
-              <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+              <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -48,7 +47,7 @@ export class Default extends SampleBase<{}, {}> {
               <tbody>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Current Date:</div>
+                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Current Date</div>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div className='datepicker-control-section'>
@@ -100,7 +99,7 @@ export class Default extends SampleBase<{}, {}> {
               <td>Single tapping on events, opens the popup showing event information.</td>
             </tr>
             <tr>
-              <td style={{ verticalAlign:'top', padding: '4px 0' }}>Tap hold </td>
+              <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Tap hold </td>
               <td>
                 <ol style={{ paddingLeft: '12px' }}>
                   <li>Tap holding on cells, opens the new event editor. </li>
@@ -117,10 +116,10 @@ export class Default extends SampleBase<{}, {}> {
           <p>
             <strong>Module Injection</strong>
           </p>
-          <p>The key Schedule functionalities are maintained as individual feature-wise modules. 
-            Therefore to avail with a particular feature, 
-            appropriate module needs to be injected using <code>services</code> property under <code>Inject</code> tag. 
-            For example, 
+          <p>The key Schedule functionalities are maintained as individual feature-wise modules.
+            Therefore to avail with a particular feature,
+            appropriate module needs to be injected using <code>services</code> property under <code>Inject</code> tag.
+            For example,
             to work with the day view on Schedule – it is necessary to inject the Day module
              using <code>services</code> property under <code>Inject</code> tag.
           </p>

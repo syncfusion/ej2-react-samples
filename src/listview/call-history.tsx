@@ -9,17 +9,24 @@ import { TabComponent, SelectEventArgs, TabItemsDirective, TabItemDirective } fr
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { data1 } from './newsData';
-import './callhistory.css';
+import './call-history.css';
 
 export class CallHistory extends SampleBase<{}, {}> {
-    
+
     //Map the appropriate columns to fields property
     public fields: Object = { text: 'text', groupBy: 'category' };
 
     public styleNone = { display: "none" };
 
-    public template: string = '<div class="${icon} wrapper"> <div class="template-content">${text}</div> <div class="subContent">' +
-        '<span class="${type} subicons"></span><span>${group}, ${time}</span></div>  </div>';
+    public listTemplate(data: any): JSX.Element {
+        return (
+
+            <div className="e-list-wrapper e-list-avatar e-list-multi-line">
+                <span className="e-avatar e-icon"></span>
+                <span className="e-list-item-header">{data.text}</span> <span className={`${data.type} e-list-content`}>{data.group}, {data.time}</span>
+            </div>
+        );
+    }
 
     public allInstance: ListViewComponent;
     public receivedInstance: ListViewComponent;
@@ -42,15 +49,23 @@ export class CallHistory extends SampleBase<{}, {}> {
         return newData;
     }
 
+    onCreated() {
+        if (!Browser.isDevice) {
+            document.getElementsByClassName('layoutWrapper')[0].classList.add('e-device-layout');
+        } else {
+            document.getElementsByClassName('tabContainer')[0].classList.add('e-visbile-layer');
+        }
+    }
+
     setlectedHanlder(args: SelectEventArgs) {
         let element01: any = document.getElementById('all');
         let element02: any = document.getElementById('received');
         let element03: any = document.getElementById('missed');
         if (element01.ej2_instances !== undefined) {
-          this.listObjects = [element01.ej2_instances[0], element02.ej2_instances[0], element03.ej2_instances[0]];
-          let newData: any;
-          newData = this.filterData(data1, this.type[args.selectedIndex]);
-          this.listObjects[args.selectedIndex].dataSource = newData;
+            this.listObjects = [element01.ej2_instances[0], element02.ej2_instances[0], element03.ej2_instances[0]];
+            let newData: any;
+            newData = this.filterData(data1, this.type[args.selectedIndex]);
+            this.listObjects[args.selectedIndex].dataSource = newData;
         }
     }
 
@@ -65,7 +80,7 @@ export class CallHistory extends SampleBase<{}, {}> {
                         <div className="layout">
                             <div id="list-container">
                                 <div className="tabContainer">
-                                    <TabComponent id="tab" ref={tab => this.tab = tab} selected={this.setlectedHanlder.bind(this)}>
+                                    <TabComponent id="tab" ref={tab => this.tab = tab} selected={this.setlectedHanlder.bind(this)} created={this.onCreated}>
                                         <TabItemsDirective>
                                             <TabItemDirective header={this.headerText[0]} content={"#all"} />
                                             <TabItemDirective header={this.headerText[1]} content={"#received"} />
@@ -73,12 +88,12 @@ export class CallHistory extends SampleBase<{}, {}> {
                                         </TabItemsDirective>
                                     </TabComponent>
                                 </div>
-                                <ListViewComponent id="all" dataSource={data1} fields={this.fields} style={this.styleNone}
-                                    template={this.template} ref={(listview) => { this.allInstance = listview }}></ListViewComponent>
-                                <ListViewComponent id="received" dataSource={data1} fields={this.fields} style={this.styleNone}
-                                    template={this.template} ref={(listview) => { this.receivedInstance = listview }}></ListViewComponent>
-                                <ListViewComponent id="missed" dataSource={data1} fields={this.fields} style={this.styleNone}
-                                    template={this.template} ref={(listview) => { this.missedInstance = listview }}></ListViewComponent>
+                                <ListViewComponent id="all" dataSource={data1} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
+                                    template={this.listTemplate as any} ref={(listview) => { this.allInstance = listview }} ></ListViewComponent>
+                                <ListViewComponent id="received" dataSource={data1} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
+                                    template={this.listTemplate as any} ref={(listview) => { this.receivedInstance = listview }}></ListViewComponent>
+                                <ListViewComponent id="missed" dataSource={data1} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
+                                    template={this.listTemplate as any} ref={(listview) => { this.missedInstance = listview }}></ListViewComponent>
                             </div>
                         </div>
                         <div className="outerButton"> </div>
@@ -86,15 +101,12 @@ export class CallHistory extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="action-description">
-                    <p>This sample demonstrates the call history application using listview. Click on the checklist to filter the data in contacts
-        list.</p>
+                <p>This sample demonstrates the use-case of call history application using <code>listview</code>. Click on the navigation tab to filter contacts based on call logs such as received, missed and all.</p>
                 </div>
 
                 <div id="description" className="descriptionLayout">
-                    <p>This sample filters out the data from listview based on the data selected from the checklist. Here, listview utilizes the
-            <code>template</code>
-                        <code>showIcon</code> properties to repesent the call history application. The Tab component is used in this sample for navigation purposes.
-        </p>
+                <p>This sample filters the data based on selection of tab and update the <a href="https://ej2.syncfusion.com/react/documentation/list-view/api-listViewComponent.html#datasource"><code>dataSource</code></a> for listview.</p>
+
                 </div>
             </div>
         )

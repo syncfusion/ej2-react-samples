@@ -63,7 +63,7 @@ export class PolarColumn extends SampleBase<{}, {}> {
                                 interval :1
                             }}
                             primaryYAxis={{
-                                maximum: 250, interval: 50, minimum: 0, labelFormat: '{value}M'
+                                labelFormat: '{value}M'
                             }}
                             load={this.load.bind(this)}
                             title="Top 10 Mobile Markets by Number of Subscriptions" loaded={this.onChartLoad.bind(this)}

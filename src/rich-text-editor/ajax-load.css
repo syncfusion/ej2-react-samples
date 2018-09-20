@@ -1,0 +1,13 @@
+#rteAjax .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rteAjax {
+    overflow: hidden;
+}
+
+#rteAjax .content-wrapper {
+    width: auto;
+    margin: 0;
+}

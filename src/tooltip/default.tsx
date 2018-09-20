@@ -9,13 +9,23 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
-export class Default extends SampleBase<{}, {}> {
-  private dropElement: HTMLSelectElement;
-  private tooltipInstance: TooltipComponent;
-
+interface tooltipComponentProps {
+  position : string;
+}
+interface tooltipComponentState {
+  position : string;
+}
+export class Default extends SampleBase<tooltipComponentProps, tooltipComponentState> {
+  
+  constructor(props) { 
+    super(props);
+    this.state = { position: 'TopCenter'};
+    }
   //Handle tooltip position based on drop-down value change
-  private change(): void {
-    this.tooltipInstance.position = this.dropElement.value as Position;
+  private change(args): void {
+    this.setState({
+      position : args.currentTarget.value as Position
+    });
   }
   render() {
     return (
@@ -24,7 +34,7 @@ export class Default extends SampleBase<{}, {}> {
           <div className='col-lg-8' style={{ minHeight: '350px' }}>
 
             {/* Tooltip element */}
-            <TooltipComponent ref={t => this.tooltipInstance = t} content='Lets go green & Save Earth !!!' tabIndex={0} style={{ display: 'block', position: 'absolute', left: 'calc( 50% - 60px)', top: '45%' }}>
+            <TooltipComponent content='Lets go green & Save Earth !!!' position={this.state.position} tabIndex={0} style={{ display: 'block', position: 'absolute', left: 'calc( 50% - 60px)', top: '45%' }}>
 
               {/* Button element */}
               <ButtonComponent tabIndex={-1}>Show Tooltip</ButtonComponent>
@@ -39,7 +49,7 @@ export class Default extends SampleBase<{}, {}> {
                   </td>
                   <td style={{ width: '70%', paddingRight: '10px' }}>
                     <div>
-                      <select id='ddl' name='ddl' onChange={this.change.bind(this)} className='form-control' style={{ padding: '6px' }} ref={d => this.dropElement = d}>
+                      <select id='ddl' name='ddl' onChange={this.change.bind(this)} className='form-control' style={{ padding: '6px' }} >
                         <option value="TopLeft">Top Left</option>
                         <option value="TopCenter" selected>Top Center</option>
                         <option value="TopRight">Top Right</option>

@@ -97,6 +97,7 @@ export class Multilevellabels extends SampleBase<{}, {}> {
                                             ]
                                         }])
                             }}
+                            width={Browser.isDevice ? '100%' : '80%'}
                             chartArea={{ border: { width: 0 } }}
                             primaryYAxis={{
                                 minimum: 0, maximum: 120, interval: 30,

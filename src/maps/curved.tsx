@@ -4,14 +4,14 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     Marker, MapsTooltip, MarkersDirective, MarkerDirective, NavigationLine, Zoom
 } from '@syncfusion/ej2-react-maps';
 import { SampleBase } from '../common/sample-base';
-import { World_Map } from './MapData/WorldMap';
-import { markerLocation } from './MapData/MapLocation';
-import { data } from './MapData/NavigationData';
+import { markerLocation } from './map-data/map-location';
+import { data } from './map-data/navigation-data';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -48,7 +48,7 @@ export class CurvedMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip, NavigationLine, Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={World_Map}
+                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
                                     shapeDataPath = {'name'}
                                     shapePropertyPath = {'name'}
                                     dataSource = {[

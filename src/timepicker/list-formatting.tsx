@@ -71,7 +71,7 @@ export class Formatting extends SampleBase<{}, {}> {
                     the timepicker popup list.
           </p>
                     <p> 	More information about TimePicker and it's configuration can be found in the  <a target='_blank'
-                        href='http://ej2.syncfusion.com/react/documentation/timepicker/getting-started.html#adding-timepicker-component-to-the-application'>documentation</a>  section.
+                        href='https://ej2.syncfusion.com/react/documentation/timepicker/getting-started.html#adding-timepicker-component-to-the-application'>documentation</a>  section.
           </p>
                 </div>
             </div>

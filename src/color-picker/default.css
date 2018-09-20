@@ -1,0 +1,18 @@
+#default-control {
+    margin: 30px auto;
+    padding-top: 50px;
+    text-align: center;
+}
+
+#default-control h4 {
+    color: rgba(0, 0, 0, 0.64);
+    margin-bottom: 20px;
+}
+
+.highcontrast #default-control h4 {
+    color: #fff;
+}
+
+.e-bigger #default-control h4 {
+    font-size: 20px;
+}

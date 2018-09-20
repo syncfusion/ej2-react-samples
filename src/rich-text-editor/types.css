@@ -1,0 +1,45 @@
+#rteTypes .property-section {
+    top: -20px;
+    width: 200px;
+}
+
+#rteTypes img {
+    width: 300px;
+}
+
+.sb-header {
+    z-index: 100 !important;
+}
+
+#rteTypes .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rteTypes .e-richtexteditor .e-rte-content {
+    height: 100%;
+}
+
+#rteTypes {
+    overflow: hidden;
+    padding-right: 10px;
+}
+
+#rteTypes .property-panel-content {
+    overflow: inherit;
+    min-height: 0;
+}
+
+#rteTypes .content-wrapper {
+    width: auto;
+    margin: 0;
+}
+
+#rteTypes .property-panel-header {
+    padding-top: 22px;
+    padding-bottom: 20px;
+}
+
+#rteTypes .property-panel-content div {
+    padding-left: 0;
+}

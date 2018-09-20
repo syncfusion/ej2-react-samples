@@ -1,0 +1,86 @@
+.form-group {
+ padding-top: 11px; 
+ }
+ 
+ .form-group .e-upload.e-control.e-keyboard{
+	display: none;
+ }
+ .form-group .address-field{
+    resize: none;
+}
+#control_wrapper {
+    max-width: 500px;
+    margin: auto;
+    border: 0.5px solid #BEBEBE;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    padding: 1% 4% 2%;
+    background: #f9f9f9;
+}
+.highcontrast #control_wrapper {
+	background: #000;
+}
+
+.e-float-input.upload-area {
+  width: 75%;
+}
+
+.e-bigger.fabric .e-float-input.upload-area, .e-bigger.highcontrast .e-float-input.upload-area {
+  width: 72%;
+  display: block;
+}
+
+.material .e-float-input.upload-area button#browse {
+    float: right;
+	margin-right: -106px;
+	margin-top: -26px;
+}
+
+.e-bigger.material .e-float-input.upload-area button#browse {
+    margin-top: -36px;
+    margin-right: -106px;
+}
+
+.fabric .e-float-input.upload-area button#browse, .highcontrast .e-float-input.upload-area button#browse {
+    float: right;
+	margin-right: -106px;
+	margin-top: -32px;
+}
+.e-bigger.fabric .e-float-input.upload-area button#browse, .e-bigger.highcontrast .e-float-input.upload-area button#browse {
+	margin-right: -120px;
+    margin-top: -40px;
+}
+.bootstrap .e-float-input.upload-area button#browse {
+    float: right;
+	margin-right: -106px;
+	margin-top: -35px;
+}
+.e-bigger.bootstrap .e-float-input.upload-area button#browse {
+	margin-top: -40px;
+}
+
+.form-title {
+    text-align: center;
+}
+
+.submitBtn .desc {
+    margin: 2% 23% 0% 18%;
+}
+@media only screen and (max-width: 500px) {
+    .submitBtn .desc {
+        margin: 12px;
+    }
+    .upload-area, .e-bigger .upload-area {
+        width: 60%;
+    }
+}
+
+.submitBtn {
+    text-align: center;
+	position: relative;
+}
+
+.form-group #mobile-no input[type=number]::-webkit-inner-spin-button,
+.form-group #mobile-no input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

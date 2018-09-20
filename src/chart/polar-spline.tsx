@@ -82,11 +82,6 @@ export class PolarSpline extends SampleBase<{}, {}> {
                                 labelFormat: '{value}°',
                                 coefficient: Browser.isDevice ? 80 : 100
                             }}
-                            primaryYAxis={{
-                                minimum: -20,
-                                interval: 5,
-                                maximum: 0
-                            }}
                             load={this.load.bind(this)}
                             title='Microphone Types Polar Patterns' loaded={this.onChartLoad.bind(this)}
                             tooltip={{ enable: true, format: '${series.name}<br> ${point.x}: ${point.y}' }}>

@@ -71,7 +71,7 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>Empty Point Mode: </div></td>
+                                        <div>Empty Point Mode </div></td>
                                     <td style={{ width: '40%' }}>
                                         <div>
                                             <DropDownListComponent width="120px" id="selmode" change={this.mode.bind(this)} ref={d => this.modeElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Drop" />

@@ -1,0 +1,28 @@
+{
+    "name": "Avatar",
+    "directory": "avatar",
+    "category": "Layout",
+    "samples": [
+        {
+            "url": "default",
+            "name": "Default",
+            "category": "Avatar"
+        }, {
+            "url": "types",
+            "name": "Types",
+            "category": "Avatar"
+        }, {
+            "url": "listview",
+            "name": "ListView",
+            "category": "Integration"
+        }, {
+            "url": "badge",
+            "name": "Badge",
+            "category": "Integration"
+        }, {
+            "url": "card",
+            "name": "Card",
+            "category": "Integration"
+        }
+    ]
+}

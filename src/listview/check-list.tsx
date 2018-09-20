@@ -89,7 +89,7 @@ export class Checklist extends SampleBase<{}, {}> {
                 <h4>Flat List</h4>
 
                 {/* ListView element */}
-                <ListViewComponent id="sample-list-flat" dataSource={this.data} showCheckBox={true}> </ListViewComponent>
+                <ListViewComponent id="sample-list-flat" dataSource={this.data} showCheckBox={true}></ListViewComponent>
             </div>
             <div id="group-list">
                 <h4>Group List</h4>

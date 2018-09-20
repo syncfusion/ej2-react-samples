@@ -29,6 +29,7 @@ export class Pie extends SampleBase<{}, {}> {
               load={this.load.bind(this)}
               legendSettings={{ visible: false }}
               enableSmartLabels={true}
+              enableAnimation={false}
               tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               loaded={this.onChartLoad.bind(this)}
             >
@@ -52,54 +53,72 @@ export class Pie extends SampleBase<{}, {}> {
           <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+              <tbody>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div>Pie Angle:
-                        <p id="anglevalue" style={{ fontWeight: 'normal' }}>0</p>
+                    <div>Pie Angle                        
                     </div>
                   </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '50%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" onChange={this.pieangle.bind(this)} ref={s => this.slider = s} id="pieangle" defaultValue="0" min="0" max="360" style={{ width: '90%' }} />
                     </div>
                   </td>
+                  <td style={{ width: '20%' }}>
+                  <div>
+                  <p id="anglevalue" style={{ fontWeight: 'normal',  paddingTop: 'inherit' }}>0</p>
+                  </div>
+                  </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div>Outer Radius:
-                                <p id="radius" style={{ fontWeight: 'normal' }}>0.8</p>
+                    <div>Outer Radius                               
                     </div>
                   </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '50%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" onChange={this.pieradius.bind(this)} ref={s => this.slider = s} id="pieradius" defaultValue="80" min="0" max="80" style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
+                  <td style={{ width: '20%' }}>
+                  <div>
+                    <p id="radius" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>0.8</p>
+                  </div>
+                  </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div>Explode Radius:
-                                <p id="exploderadius" style={{ fontWeight: 'normal' }}>0.1</p>
+                    <div>Explode Radius                              
                     </div>
                   </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '50%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" onChange={this.pieexploderadius.bind(this)} ref={s => this.slider = s} id="pieexploderadius" defaultValue="10" min="0" max="40" style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
+                  <td style={{ width: '20%' }}>
+                  <div>
+                  <p id="exploderadius" style={{ fontWeight: 'normal' , paddingTop: 'inherit' }}>0.1</p>
+                  </div>
+                  </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div>Explode Index:
-                                <p id="explodeindex" style={{ fontWeight: 'normal' }}>5</p>
+                    <div>Explode Index                                
                     </div>
                   </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '50%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" onChange={this.pieexplodeindex.bind(this)} ref={s => this.slider = s} id="pieexplodeindex" defaultValue="5" min="0" max="6" style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
+                  <td style={{ width: '20%' }}>
+                  <div>
+                  <p id="explodeindex" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>5</p>
+                  </div>
+                  </td>
                 </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>

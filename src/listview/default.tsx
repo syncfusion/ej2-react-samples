@@ -89,7 +89,7 @@ export class Default extends SampleBase<{}, {}> {
                 <h4>Flat List</h4>
 
                 {/* ListView element */}
-                <ListViewComponent id="sample-list-flat" dataSource={this.data}> </ListViewComponent>
+                <ListViewComponent id="sample-list-flat" dataSource={this.data}></ListViewComponent>
             </div>
             <div id="group-list">
                 <h4>Group List</h4>

@@ -51,7 +51,7 @@ function showHideControlTree(): void {
 export function setSelectList(): void {
     let hash: string[] = location.hash.split('/');
     let list: ListView = (select('#controlList') as any).ej2_instances[0];
-    let control: Element = select('[control-name="' + hash[2] + '"]') || select('[control-name="chart"]');
+    let control: Element = select('[control-name="' + hash[2] + '"]') || select('[control-name="grid"]');
     if (control) {
         let data: any = list.dataSource;
         let samples: any = controlSampleData[control.getAttribute('control-name')];
@@ -69,7 +69,7 @@ export function setSelectList(): void {
         if (select('#controlList').classList.contains('sb-hide')) {
             showHideControlTree();            
         }
-        list.selectItem(select('[data-path="/chart/line"]'));
+        list.selectItem(select('[data-path="/grid/overview"]'));
     }
 }
 
@@ -88,12 +88,15 @@ export class LeftPane extends React.Component<{}, {}> {
      * ListView Configuration
      */
     public fields: Object = { id: 'id', text: 'name', groupBy: 'order', htmlAttributes: 'data' };
-    public nodeTemplate: string = '<div class="sb-tree-component"> <span class="e-component text" role="listitem">${name}' +
-    '${if(type)}<span class="e-samplestatus ${type}"></span>${/if}</span';
+    public nodeTemplate: string = '<div><span class="tree-text">${name}</span>' +
+    '${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">Updated</span>' +
+    '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">${type}</span>${/if}${/if}</div>';
     public groupTemlate: string = '${if(items[0]["category"])}<div class="e-text-content">' +
     '<span class="e-list-text">${items[0].category}</span></div>${/if}';
     public template: string = '<div class="e-text-content e-icon-wrapper"> <span class="e-list-text" role="listitem">${name}' +
-    '${if(type)}<span class="e-samplestatus ${type}"></span>${/if}</span>${if(directory)}<div class="e-icons e-icon-collapsible"></div>${/if}</div>';
+    '</span>${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type}">Updated</span>' +
+    '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type}">${type}</span>${/if}${/if}' +
+    '${if(directory)}<div class="e-icons e-icon-collapsible"></div>${/if}</div>';
     /**
      * Listview Control
      */
@@ -216,13 +219,13 @@ export class LeftPane extends React.Component<{}, {}> {
                 <div id="controlSamples" className="e-view">
                     <div id="sb-left-back" className="back">
                         <div className="e-icons back-icon"></div>
-                        <div className='control-name'>ALL CONTROLS</div>
+                        <div className='control-name'>All Controls</div>
                     </div>
                     <ListViewComponent id='controlList' select={this.controlSelect}
                         actionComplete={setSelectList}
                         className='e-view sb-control-list-top'
                         fields={this.fields}
-                        dataSource={this.controlSampleData[location.hash.split('/')[2]] || this.controlSampleData.chart}
+                        dataSource={this.controlSampleData[location.hash.split('/')[2]] || this.controlSampleData.grid}
                         groupTemplate={this.groupTemlate}
                         template={this.template}
                         ref={l => this.listControl = l}

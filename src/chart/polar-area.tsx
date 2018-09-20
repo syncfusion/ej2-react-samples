@@ -57,9 +57,6 @@ export class PolarArea extends SampleBase<{}, {}> {
                             }}
                             primaryYAxis={{
                                 title: 'Revenue in Millions',
-                                minimum: 0,
-                                maximum: 4,
-                                interval: 1,
                                 labelFormat: '{value}M'
                             }}
                             load={this.load.bind(this)}

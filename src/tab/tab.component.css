@@ -1,6 +1,7 @@
 .tab-control-section  .e-content .e-item {
     font-size: 12px;
     padding: 10px;
+    margin: 10px;
     text-align: justify;
 }
 .tab-control-section  .e-headertext {
@@ -69,10 +70,6 @@
     .e-bigger .tab-control-section .col-lg-8.adaptive {
         width: 45%;
     }
-}
-.e-content .e-item {
-    font-size: 12px;
-    margin: 10px;
 }
 
 #amount {
@@ -160,4 +157,7 @@
 #passenger-table {
     min-width: 500px;
     width: 100%;
+}
+.tab-control-section .e-listview:not(.e-list-template) .e-list-item {
+    height: 63px;
 }

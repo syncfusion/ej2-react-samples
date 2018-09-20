@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
-import './groupTemplate.css';
+import './group-template.css';
 import { groupDataSource } from './newsData';
 
 export class GroupTemplate extends SampleBase<{}, {}> {
@@ -16,25 +16,30 @@ export class GroupTemplate extends SampleBase<{}, {}> {
     //Map the appropriate columns to fields property
     public fields: Object = { text: 'Name', groupBy: 'order' };
 
-    //Set customized group-header template
-    public groupTemplate: string = '<div><span class="category">${items[0].category}</span></div>';
-
     //Set customized list template
-    public template: string = '<div class="settings">'
-        + '<div class="icon ${class}"></div>'
-        + '<div class="_container"> ${if(content)}'
-        + '<div class="name">${Name}</div>'
-        + '<div class="template-content">${content}</div> ${else}'
-        + '<div class="_name">${Name}</div> ${/if} </div>'
-        + '</div>';
+    listTemplate(data: any): JSX.Element {
+        return(
+            <div className="settings e-list-wrapper e-list-multi-line e-list-avatar">
+            <span className={`icon ${data.class} e-avatar`}></span>
+            <span className="e-list-item-header">{data.Name}</span>
+            <span className="e-list-content">{data.content}</span>
+        </div>
+        );
+    }
 
+    //Set customized group-header template
+    groupTemplate(data: any): JSX.Element {
+        return(
+            <div className="e-list-wrapper"><span className="e-list-item-content">{data.items[0].category}</span></div>
+        );
+    }
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
                     {/* ListView element */}
                     <ListViewComponent id='groupedList' dataSource={groupDataSource} headerTitle='Settings' showHeader={true} fields={this.fields}
-                        template={this.template} groupTemplate={this.groupTemplate}
+                        cssClass="e-list-template" template={this.listTemplate as any} groupTemplate={this.groupTemplate as any}
                         ref={(listview) => { this.listviewInstance = listview }}></ListViewComponent>
                 </div>
 

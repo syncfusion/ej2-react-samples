@@ -36,7 +36,7 @@ export class Formats extends SampleBase<{}, {}> {
           <div className=' col-lg-8'>
             <div className="content-wrapper sample-mask">
               <div className="control-label">Formats</div>
-              <MaskedTextBoxComponent mask='(999)-999-9999' floatLabelType='Never' change={this.maskChange} ref={mask => this.maskInstance = mask}></MaskedTextBoxComponent>
+              <MaskedTextBoxComponent mask='(999)-999-9999' floatLabelType='Never' created={this.onCreated.bind(this)} change={this.maskChange} ref={mask => this.maskInstance = mask}></MaskedTextBoxComponent>
             </div>
           </div>
           <div className='col-lg-4 property-section'>
@@ -103,13 +103,8 @@ export class Formats extends SampleBase<{}, {}> {
   private maskInstance: MaskedTextBoxComponent;
   private curValue: string;
 
-  public rendereComplete(): void {
-    /**custom render complete function */
-    let ele: HTMLInputElement = (document.getElementById('input1') as HTMLInputElement);
-    ele.value = '(999)-999-9999';
-    Input.createInput({
-      element: ele
-    });
+  public onCreated(): void {
+    (document.getElementById('input1') as HTMLInputElement).value = this.maskInstance.mask;
     (document.getElementById('val2') as HTMLElement).innerHTML = this.maskInstance.getMaskedValue();
   }
 

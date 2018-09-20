@@ -19,7 +19,7 @@ export class BatchEdit extends SampleBase<{}, {}> {
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.validationRule} isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' ></ColumnDirective>
-              <ColumnDirective field='ShipName' headerText='Ship Name' width='170' ></ColumnDirective>
+              <ColumnDirective field='OrderDate' headerText='Order Date' editType='datepickeredit' format='yMd' width='170' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
             </ColumnsDirective>
             <Inject services={[Page, Toolbar, Edit]} />

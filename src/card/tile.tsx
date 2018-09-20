@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import { compile, detach } from '@syncfusion/ej2-base';
-import { cardBook } from './datasource';
+import { cardBook } from './data-source';
 import { MultiSelect, SelectEventArgs, RemoveEventArgs } from '@syncfusion/ej2-dropdowns';
 import { Query, DataManager, Predicate } from '@syncfusion/ej2-data';
 import './card.component.css';
@@ -11,7 +11,7 @@ import './card.component.css';
 interface FilterKey {
     Code: string;
 }
-let templateStr: string = "<div class='e-card ${if(isHorizontal)} e-card-horizontal ${/if}'>${if(cardImage)}<div class='e-card-image' style='background-image:url(${cardImage.url})'>${if(cardImage.title)}<div class='e-card-title'>${cardImage.title}</div>${/if}</div>${/if}${if(cardTitle)}<div class='e-card-title'>${cardTitle}</div>${/if}${if(header_title||header_subtitle||header_img)}<div class='e-card-header'>${if(header_img)}<div class='e-card-header-image ${if(header_img.isRounded)} e-card-corner ${/if}' style='background-image:url(${header_img.url})'></div>${/if}${if(header_title||header_subtitle)}<div class='e-card-header-caption'>${if(header_title)}<div class='e-card-header-title'>${header_title}</div>${/if}${if(header_subtitle)}<div class='e-card-sub-title'>${header_subtitle}</div>${/if}</div>${/if}</div>${/if}${if(cardContent)}<div class='e-card-content'>${cardContent}</div>${/if}${if(card_action_btn)}<div class='e-card-actions ${if(card_action_btn.isVertical)} e-card-vertical ${/if}'>${for(action_btn of card_action_btn.action_btns)}${if(action_btn.tag==='a')}<a href='${action_btn.href}' target='${action_btn.target}'>${action_btn.text}</a>${else}<button class='e-card-btn'>${action_btn.text}</button>${/if}${/for}</div>${/if}</div>";
+let templateStr: string = "<div class='e-card ${if(isHorizontal)} e-card-horizontal ${/if}'>${if(cardImage)}<div class='e-card-image' style='background-image:url(${cardImage.url})'>${if(cardImage.title)}<div class='e-card-title'>${cardImage.title}</div>${/if}</div>${/if}${if(cardTitle)}<div class='e-card-title'>${cardTitle}</div>${/if}${if(header_title||header_subtitle||header_img)}<div class='e-card-header'>${if(header_img)}<div class='e-card-header-image ${if(header_img.isRounded)} e-card-corner ${/if}' style='background-image:url(${header_img.url})'></div>${/if}${if(header_title||header_subtitle)}<div class='e-card-header-caption'>${if(header_title)}<div class='e-card-header-title'>${header_title}</div>${/if}${if(header_subtitle)}<div class='e-card-sub-title'>${header_subtitle}</div>${/if}</div>${/if}</div>${/if}${if(cardContent)}<div class='e-card-content'>${cardContent}</div>${/if}${if(card_action_btn)}<div class='e-card-actions ${if(card_action_btn.isVertical)} e-card-vertical ${/if}'>${for(action_btn of card_action_btn.action_btns)}${if(action_btn.tag==='a')}<a href='${action_btn.href}' target='${action_btn.target}' class='e-btn e-outline e-primary'>${action_btn.text}</a>${else}<button class='e-card-btn'>${action_btn.text}</button>${/if}${/for}</div>${/if}</div>";
 let cardTemplateFn: (data: object) => HTMLCollection = compile(templateStr);
 let card: HTMLCollection; let cardEle: HTMLElement; let cardObj: JSON[] = cardBook as JSON[]; let data: Object[] = []; let multiSelectData: Object[] = []; let searchData: Object[] = [];
 let searchValCount: number = 0; let filterCategory: { [key: string]: Object; }[] = [{ Name: 'Client-Side', Code: 'client' }, { Name: 'Server-Side', Code: 'server' }, { Name: 'Front-End', Code: 'ui' }];
