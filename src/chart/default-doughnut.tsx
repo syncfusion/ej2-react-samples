@@ -7,7 +7,7 @@ import { SampleBase } from '../common/sample-base';
 import {
   AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip,
   IAccAnimationCompleteEventArgs, AccPoints, IAccTextRenderEventArgs, AccumulationSelection, Inject,
-  IAccLoadedEventArgs, AccumulationChart, AccumulationTheme
+  IAccLoadedEventArgs, AccumulationChart, AccumulationTheme, Selection
 } from '@syncfusion/ej2-react-charts';
 import { Browser, getInstance } from '@syncfusion/ej2-base';
 export let data1: any[] = [
@@ -32,14 +32,14 @@ export class Doughnut extends SampleBase<{}, {}> {
               position: 'Right', height: '28%', width: '44%'
             }}
             enableSmartLabels={true}
+            selectionMode={'Point'}
             load={this.load.bind(this)}
             animationComplete={this.onAnimationComplete.bind(this)}
-            tooltip={{ enable: true, header: '<b>${point.x}</b>', format: 'Composition: <b>${point.y}%</b>' }}
+            tooltip={{ enable: false }}
             textRender={this.onTextRender.bind(this)}
             loaded={this.onChartLoad.bind(this)}
-            selectionMode={'Point'}
           >
-            <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection]} />
+            <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection, Selection]} />
             <AccumulationSeriesCollectionDirective>
               <AccumulationSeriesDirective  name='Revenue' dataSource={data1} xName='x' yName='y' innerRadius='40%' startAngle={0}
                 endAngle={360}

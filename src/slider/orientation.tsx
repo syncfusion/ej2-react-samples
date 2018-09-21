@@ -54,6 +54,8 @@ export class Orientation extends SampleBase<{}, {}> {
     private rangeObj: SliderComponent;
     private minRangeObj: SliderComponent;
     public ticks: any; tooltip: any;
+    // Checkbox Instance
+    public checkbox: CheckBoxComponent;
     // Checkbox change handlers
     public enableDisableTicks(args: ChangeEventArgs): void {
         this.ticks = { placement: args.checked ? 'Before' : 'None', largeStep: 20, smallStep: 5, showSmallTicks: true };
@@ -72,9 +74,9 @@ export class Orientation extends SampleBase<{}, {}> {
 
     public refreshTooltip(e: any): void {
         if (!isNullOrUndefined(document.getElementById('slider01')) &&
-        !isNullOrUndefined((document.getElementById('slider01') as any).ej2_instances[0]) && !isNullOrUndefined(document.getElementById('slider02')) &&
-        !isNullOrUndefined((document.getElementById('slider02') as any).ej2_instances[0]) && !isNullOrUndefined(document.getElementById('slider03')) &&
-        !isNullOrUndefined((document.getElementById('slider03') as any).ej2_instances[0])) {
+            !isNullOrUndefined((document.getElementById('slider01') as any).ej2_instances[0]) && !isNullOrUndefined(document.getElementById('slider02')) &&
+            !isNullOrUndefined((document.getElementById('slider02') as any).ej2_instances[0]) && !isNullOrUndefined(document.getElementById('slider03')) &&
+            !isNullOrUndefined((document.getElementById('slider03') as any).ej2_instances[0])) {
             let element01: any = document.getElementById('slider01');
             let element02: any = document.getElementById('slider02');
             let element03: any = document.getElementById('slider03');
@@ -105,13 +107,13 @@ export class Orientation extends SampleBase<{}, {}> {
                                     <td>
                                         <div className="sliderwrap">
                                             {/* Initialize  Slider component with type MinRange and Vertical orientation */}
-                                            <SliderComponent id={"slider02"} value={30} type='MinRange' orientation='Vertical' ref={(slider) => { this.rangeObj = slider }} />
+                                            <SliderComponent id={"slider02"} value={30} type='MinRange' orientation='Vertical' ref={(slider) => { this.minRangeObj = slider }} />
                                         </div>
                                     </td>
                                     <td>
                                         <div className="sliderwrap">
                                             {/* Initialize Range Slider component with type Range and Vertical orientation */}
-                                            <SliderComponent id={"slider03"} value={[30, 70]} type='Range' orientation='Vertical' ref={(slider) => { this.minRangeObj = slider }} />
+                                            <SliderComponent id={"slider03"} value={[30, 70]} type='Range' orientation='Vertical' ref={(slider) => { this.rangeObj = slider }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -124,7 +126,7 @@ export class Orientation extends SampleBase<{}, {}> {
                             <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
                                 <tbody>
                                     <tr>
-                                        <td style={{ width: '50%',paddingTop: '10px' }}>
+                                        <td style={{ width: '50%', paddingTop: '10px' }}>
                                             <div className="userselect">Ticks</div>
                                         </td>
                                         <td style={{ width: '50%', paddingRight: '10px' }}>
@@ -135,17 +137,16 @@ export class Orientation extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style={{ width: '50%',paddingTop: '10px' }}>
+                                        <td style={{ width: '50%', paddingTop: '10px' }}>
                                             <div className="userselect">Tooltip</div>
                                         </td>
                                         <td style={{ width: '50%', paddingRight: '10px' }}>
                                             <div style={{ paddingleft: 0, paddingtop: 0 }}>
                                                 {/* Initialize Range CheckBox component */}
-                                                <CheckBoxComponent checked={false} change={this.enableDisableTooltip.bind(this)}></CheckBoxComponent>
+                                                <CheckBoxComponent checked={false} change={this.enableDisableTooltip.bind(this)} />
                                             </div>
                                         </td>
                                     </tr>
-
                                 </tbody>
                             </table>
                         </PropertyPane>
@@ -168,9 +169,10 @@ export class Orientation extends SampleBase<{}, {}> {
                         handle value in Vertical Orientation</li>
                         <li>Range – allows us to select a range of values with two handles, where the handles was connected with a range selection
                         in Vertical Orientation</li>
+                        <p>The dragInterval is used to drag both handles using the range bar which is also applicable only to the range slider.</p>
                         <p>
                             In this demo we can see the Default, MinRange and Range slider types.
-                    </p>
+                        </p>
                         <p>For more information, we can refer the
                         <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/getting-started.html?lang=es6#orientation">Orientation</a> section from the documentation.</p>
                     </ul>

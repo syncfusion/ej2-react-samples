@@ -53,7 +53,13 @@ export class Swipeable extends SampleBase<{}, {}> {
         if (ele.parentElement.querySelector('.card-out-left')) {
             ele.parentElement.querySelector('.card-out-left').classList.remove('card-out-left');
         }
-        e.swipeDirection === 'Right' ? ele.classList.add('card-out') : ele.classList.add('card-out-left');
+        if (e.swipeDirection === 'Right') {
+            ele.classList.add('card-out');
+        } else if (e.swipeDirection === 'Left') {
+            ele.classList.add('card-out-left');
+        } else {
+            return;
+        }
         ele.parentElement.insertBefore(ele, ele.parentElement.children[0]);
         swipeable();
         ele.style.removeProperty('left');

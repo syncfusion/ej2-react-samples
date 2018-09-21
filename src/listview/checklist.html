@@ -1,0 +1,60 @@
+<div class="col-lg-12 control-section">
+    <div id="flat-list">
+        <h4>Flat List</h4>
+
+    <!-- ListView element -->
+    <div id="listview-def" tabindex="1">
+    </div>
+    </div>
+    <div id="group-list">
+    <h4>Group List</h4>
+
+    <!-- Group ListView element -->
+    <div id="listview-grp" tabindex="1">
+    </div>
+    </div>
+
+    <div id="action-description">
+        <p>This sample demonstrates the checkbox functionalities of the ListView. Click multiple list item to check or uncheck the items.</p>
+    </div>
+
+    <div id="description">
+        <p>ListView component support checkbox feature which used to select multiple items from the list. This feature can be
+		enabled by the property <code>showCheckBox</code>.</p>
+
+        <p>In this sample, the checkbox is enabled on default list and group list.</p>
+    </div>
+</div>
+<style>
+    #listview-def,#listview-grp {
+        border: 1px solid #dddddd;
+        border-radius: 3px;
+    }
+    .control-section{
+        overflow: auto;
+    }
+    #flat-list,
+    #group-list {
+        width: 49%;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    #flat-list h4, #group-list h4 {
+        padding-left: 16px;
+    }
+    #flat-list {
+        float: left;
+    }
+
+    #group-list {
+        float: right;
+    }
+
+    @media screen and (max-width: 590px) {
+        #flat-list,
+        #group-list {
+            width: 100%;
+        }
+    }
+</style>

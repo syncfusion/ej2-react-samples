@@ -1,11 +1,14 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, ViewsDirective, ViewsModelDirective, Day, Week, WorkWeek, Month, PopupOpenEventArgs, EventRenderedArgs, Inject } from '@syncfusion/ej2-react-schedule';
+import {
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
+  PopupOpenEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
+} from '@syncfusion/ej2-react-schedule';
 import { doctorsEventData } from './datasource';
 import './editor-template.css';
 import { extend } from '@syncfusion/ej2-base';
-import { DateTimePicker } from '@syncfusion/ej2-calendars';
-import { DropDownList } from '@syncfusion/ej2-dropdowns';
+import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 
 /**
@@ -18,22 +21,7 @@ export class EditorTemplate extends SampleBase<{}, {}> {
   private onPopupOpen(args: PopupOpenEventArgs): void {
     if (args.type === 'Editor') {
       let statusElement: HTMLInputElement = args.element.querySelector('#EventType') as HTMLInputElement;
-      if (!statusElement.classList.contains('e-dropdownlist')) {
-        let dropDownListObject: DropDownList = new DropDownList({
-          placeholder: 'Choose status', value: statusElement.value,
-          dataSource: ['New', 'Requested', 'Confirmed']
-        });
-        dropDownListObject.appendTo(statusElement);
-        statusElement.setAttribute('name', 'EventType');
-      }
-      let startElement: HTMLInputElement = args.element.querySelector('#StartTime') as HTMLInputElement;
-      if (!startElement.classList.contains('e-datetimepicker')) {
-        new DateTimePicker({ value: new Date(startElement.value) || new Date() }, startElement);
-      }
-      let endElement: HTMLInputElement = args.element.querySelector('#EndTime') as HTMLInputElement;
-      if (!endElement.classList.contains('e-datetimepicker')) {
-        new DateTimePicker({ value: new Date(endElement.value) || new Date() }, endElement);
-      }
+      statusElement.setAttribute('name', 'EventType');
     }
   }
   private onEventRendered(args: EventRenderedArgs): void {
@@ -56,38 +44,46 @@ export class EditorTemplate extends SampleBase<{}, {}> {
         args.cancel = true;
       }
     }
-
   }
-  private editorTemplate: string = '<table class="custom-event-editor" width="100%" cellpadding="5"><tbody>' +
-    '<tr><td class="e-textlabel">Summary</td><td colspan="4">' +
-    '<input id="Subject" class="e-field e-input" type="text" value="" name="Subject" style="width: 100%" />' +
-    '</td></tr><tr><td class="e-textlabel">Status</td><td colspan="4">' +
-    '<input type="text" id="EventType" name="EventType" class="e-field" style="width: 100%" />' +
-    '</td></tr><tr><td class="e-textlabel">From</td><td colspan="4">' +
-    '<input id="StartTime" class="e-field" type="text" name="StartTime" />' +
-    '</td></tr><tr><td class="e-textlabel">To</td><td colspan="4">' +
-    '<input id="EndTime" class="e-field" type="text" name="EndTime" />' +
-    '</td></tr><tr><td class="e-textlabel">Reason</td><td colspan="4">' +
-    '<textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50"' +
-    'style="width: 100%; height: 60px !important; resize: vertical"></textarea></td></tr></tbody></table>';
-
+  private editorTemplate(props): JSX.Element {
+    return (<table className="custom-event-editor" style={{ width: '100%', cellpadding: '5' }}><tbody>
+      <tr><td className="e-textlabel">Summary</td><td style={{ colspan: '4' }}>
+        <input id="Summary" className="e-field e-input" type="text" name="Subject" style={{ width: '100%' }} />
+      </td></tr>
+      <tr><td className="e-textlabel">Status</td><td style={{ colspan: '4' }}>
+        <DropDownListComponent id="EventType" placeholder='Choose status' className="e-field" style={{ width: '100%' }}
+          dataSource={['New', 'Requested', 'Confirmed']}>
+        </DropDownListComponent>
+      </td></tr>
+      <tr><td className="e-textlabel">From</td><td style={{ colspan: '4' }}>
+        <DateTimePickerComponent id="StartTime" className="e-field"></DateTimePickerComponent>
+      </td></tr>
+      <tr><td className="e-textlabel">To</td><td style={{ colspan: '4' }}>
+        <DateTimePickerComponent id="EndTime" className="e-field"></DateTimePickerComponent>
+      </td></tr>
+      <tr><td className="e-textlabel">Reason</td><td style={{ colspan: '4' }}>
+        <textarea id="Description" className="e-field e-input" name="Description" rows={3} cols={50}
+          style={{ width: '100%', height: '60px !important', resize: 'vertical' }}></textarea>
+      </td></tr></tbody></table >
+    );
+  }
   render() {
     return (
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2018, 1, 15)}
+            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 1, 15)}
               ref={schedule => this.scheduleObj = schedule}
-              eventSettings={{ dataSource: this.data }} editorTemplate={this.editorTemplate}
+              eventSettings={{ dataSource: this.data }} editorTemplate={this.editorTemplate.bind(this)}
               showQuickInfo={false} popupOpen={this.onPopupOpen.bind(this)} eventRendered={this.onEventRendered.bind(this)}
               actionBegin={this.onActionBegin.bind(this)}>
               <ViewsDirective>
-                <ViewsModelDirective option='Day' />
-                <ViewsModelDirective option='Week' />
-                <ViewsModelDirective option='WorkWeek' />
-                <ViewsModelDirective option='Month' />
+                <ViewDirective option='Day' />
+                <ViewDirective option='Week' />
+                <ViewDirective option='WorkWeek' />
+                <ViewDirective option='Month' />
               </ViewsDirective>
-              <Inject services={[Day, Week, WorkWeek, Month]} />
+              <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -125,8 +121,8 @@ export class EditorTemplate extends SampleBase<{}, {}> {
             The additional restriction has been added to the Schedule cells such that if a cell already contains an appointment – then
             it should be prevented to book with multiple appointments on the same time
              for which the <code>isSlotAvailable</code> method is used.
-            This method returns true, if the underlying cell is available for adding new events
-             by checking whether it already has any events in it.
+This method returns true, if the underlying cell is available for adding new events
+by checking whether it already has any events in it.
           </p>
         </div>
       </div>

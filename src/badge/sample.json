@@ -1,0 +1,30 @@
+{
+    "name": "Badge",
+    "directory": "badge",
+    "category": "Notifications",
+    "samples": [{
+        "url": "default",
+        "name": "Default",
+        "category": "Badge"
+    }, {
+        "url": "types",
+        "name": "Types",
+        "category": "Badge"
+    }, {
+        "url": "notification",
+        "name": "Notification",
+        "category": "Badge"
+    }, {
+        "url": "listview",
+        "name": "ListView",
+        "category": "Integration"
+    }, {
+        "url": "accordion",
+        "name": "Accordion",
+        "category": "Integration"
+    }, {
+        "url": "toolbar",
+        "name": "Toolbar",
+        "category": "Integration"
+    }]
+}

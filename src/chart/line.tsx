@@ -74,7 +74,7 @@ export class Line extends SampleBase<{}, {}> {
                 <div id="action-description">
                 <p>
                 This sample visualizes the consumer price data with default line series in the chart. 
-                Data points are enhanced with marker and tooltip
+                Data points are enhanced with marker and tooltip.
             </p>
                 </div>
                 <div id="description">

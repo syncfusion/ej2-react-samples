@@ -1,0 +1,15 @@
+.control-pane .modal-dialog-target {
+    min-height: 350px;
+}
+.property-panel-table.table-width {
+    width: 100%;
+}
+.table-td {
+    width: 60%;
+}
+.dialog-td-font {
+    font-size: 13px;
+}
+.dlgbtn.dlgbtn-position {
+    position: absolute;
+}

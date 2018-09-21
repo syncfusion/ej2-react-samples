@@ -1,7 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Inject } from '@syncfusion/ej2-react-schedule';
-import { scheduleData } from './datasource';
+import {
+  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda,
+  EventRenderedArgs, Inject, Resize, DragAndDrop
+} from '@syncfusion/ej2-react-schedule';
+import { scheduleData, applyCategoryColor } from './datasource';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
@@ -13,7 +16,12 @@ import { PropertyPane } from '../common/property-pane';
  */
 
 export class Events extends SampleBase<{}, {}> {
+  private scheduleObj: ScheduleComponent;
   private data: Object[] = extend([], scheduleData, null, true) as Object[];
+
+  private onEventRendered(args: EventRenderedArgs): void {
+    applyCategoryColor(args, this.scheduleObj.currentView);
+  }
 
   private onClear(): void {
     document.getElementById('EventLog').innerHTML = '';
@@ -61,14 +69,15 @@ export class Events extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2018, 1, 15)}
-              eventSettings={{ dataSource: this.data }} created={this.onCreate.bind(this)}
+            <ScheduleComponent ref={schedule => this.scheduleObj = schedule} width='100%' height='650px'
+              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }} created={this.onCreate.bind(this)}
+              eventRendered={this.onEventRendered.bind(this)}
               actionBegin={this.onActionBegin.bind(this)} actionComplete={this.onActionComplete.bind(this)}
               actionFailure={this.onActionFailure.bind(this)} cellClick={this.onCellClick.bind(this)}
               cellDoubleClick={this.onCellDoubleClick.bind(this)} destroyed={this.onDestroyed.bind(this)}
               navigating={this.onNavigating.bind(this)} eventClick={this.onEventClick.bind(this)}
               popupOpen={this.onPopupOpen.bind(this)}>
-              <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+              <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -76,14 +85,14 @@ export class Events extends SampleBase<{}, {}> {
           <PropertyPane title='Event Trace'>
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
-                <tr id='' style={{ height: '250px' }}>
+                <tr style={{ height: '250px' }}>
                   <td>
                     <div className='eventarea' style={{ height: '245px', overflow: 'auto' }}>
                       <span className='EventLog' id='EventLog' style={{ wordBreak: 'normal' }}></span>
                     </div>
                   </td>
                 </tr>
-                <tr id='' style={{ height: '50px' }}>
+                <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
                     <div className='evtbtn' style={{ paddingBottom: '10px' }}>
                       <ButtonComponent title='Clear' onClick={this.onClear.bind(this)}>Clear</ButtonComponent>

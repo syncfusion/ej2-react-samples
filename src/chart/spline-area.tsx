@@ -57,11 +57,9 @@ export class SplineArea extends SampleBase<{}, {}> {
                             edgeLabelPlacement: 'Shift'
                         }}
                         primaryYAxis={{
-                            minimum: 0,
-                            maximum: 4,
-                            interval: 1,
                             labelFormat: '{value}%',
                             lineStyle: { width: 0 },
+                            maximum: 4, interval: 1,
                             majorTickLines: { width: 0 },
                             minorTickLines: { width: 0 }
                         }}

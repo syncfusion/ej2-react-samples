@@ -75,16 +75,12 @@ export class Spline extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
                         primaryYAxis={{
-                            minimum: 0,
-                            maximum: 40,
-                            interval: 10,
                             labelFormat: '{value}°C',
                             lineStyle: { width: 0 },
                             majorTickLines: { width: 0 },
                             minorTickLines: { width: 0 }
                         }}
                         tooltip={{ enable: true }}
-                        legendSettings={{ toggleVisibility: false }}
                         title='NC Weather Report - 2016' loaded={this.onChartLoad.bind(this)}
                         animationComplete={this.animationComplete.bind(this)}>
                         <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation]} />

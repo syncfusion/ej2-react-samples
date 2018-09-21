@@ -3,9 +3,12 @@
  .main.content {
     text-align: center;
     font-size: 20px;
+    padding: 15px;
+}
+
+.textArea {
     height: 300px;
     line-height: 300px;
-    padding: 15px;
 }
 
 @media(max-width:550px) {
@@ -127,3 +130,27 @@ body {
     padding: 22px;
 }
 /* end of sidebar styles */
+/* newTab support styles */
+
+.ej2-new .sb-header,
+.ej2-new .sb-bread-crumb,
+.ej2-new #action-description,
+.ej2-new #description-section,
+.ej2-new #description {
+    display: none
+}
+   
+.ej2-new .container-fluid,
+.ej2-new .container-fluid .control-section,
+#sidebar-section {
+    padding: 0px;
+}
+
+.ej2-new .sample-browser>.content.e-view {
+    top: 0px;
+    padding: 0px;
+    text-align: initial
+}
+
+
+/* end of newTab support styles */

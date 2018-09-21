@@ -23,7 +23,7 @@ export class Default extends SampleBase<{}, {}> {
                         <code>DateRangePicker</code> is an interactive component that allows the user to select a range from the calendar, or to set a range value.
         </p>
                     <p>More information on the DateRangePicker instantiation can be found in the
-            <a href="http://ej2.syncfusion.com/react/documentation/daterangepicker/" target="_blank"> documentation section</a>.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/daterangepicker/getting-started.html" target="_blank"> documentation section</a>.</p>
                 </div>
             </div>
         )

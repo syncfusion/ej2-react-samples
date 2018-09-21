@@ -38,9 +38,6 @@ export class StackedBar extends SampleBase<{}, {}> {
                         width={Browser.isDevice ? '100%' : '60%'}
                         chartArea={{ border: { width: 0 } }}
                         primaryYAxis={{
-                            minimum: -20,
-                            maximum: 60,
-                            interval: 20,
                             lineStyle: { width: 0 },
                             majorTickLines: { width: 0 },
                             labelFormat: '{value}%',

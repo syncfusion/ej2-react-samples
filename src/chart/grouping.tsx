@@ -7,8 +7,9 @@ import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import {
   AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, AccumulationTooltip,
-  IAccTextRenderEventArgs, AccumulationTheme, Inject, AccumulationDataLabel, IAccPointRenderEventArgs, IAccLoadedEventArgs
+  IAccTextRenderEventArgs, AccumulationTheme, Inject, AccumulationDataLabel, IAccPointRenderEventArgs, IAccLoadedEventArgs, GroupModes
 } from '@syncfusion/ej2-react-charts';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 export let data1: any[] = [
   { 'x': 'China', y: 26, text: 'China: 26' },
   { 'x': 'Russia', y: 19, text: 'Russia: 19' },
@@ -28,6 +29,21 @@ export let data1: any[] = [
 export class Grouping extends SampleBase<{}, {}> {
   public pie: AccumulationChartComponent;
   private slider: HTMLInputElement;
+  private dropElement: DropDownListComponent;
+  private change(): void {
+    this.pie.series[0].groupMode = this.dropElement.value as GroupModes;
+    let currentValue: number = this.dropElement.value === 'Point' ? 9 : 8;
+    this.pie.series[0].groupTo = currentValue.toString();
+    this.pie.series[0].animation.enable = false;
+    document.getElementById('clubtext').innerHTML = currentValue.toString();
+    this.pie.removeSvg();
+    this.pie.refreshSeries();
+    this.pie.refreshChart();
+  };
+  private droplist: { [key: string]: Object }[] = [
+    { value: 'Point' },
+    { value: 'Value' }
+  ];
   render() {
     return (
       <div className='control-pane'>
@@ -36,7 +52,7 @@ export class Grouping extends SampleBase<{}, {}> {
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
               title='RIO Olympics Gold'
               load={this.load.bind(this)}
-              tooltip={{ enable: true, format: '${point.x} : <b>${point.y} Medals</b>' }}
+              tooltip={{ enable: false }}
               legendSettings={{ visible: false }}
               textRender={this.onTextRender.bind(this)}
               pointRender={this.onPointRender.bind(this)}
@@ -45,9 +61,9 @@ export class Grouping extends SampleBase<{}, {}> {
             >
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
-                <AccumulationSeriesDirective name='RIO' dataSource={data1} xName='x' yName='y' animation={{ enable: true }}
+                <AccumulationSeriesDirective name='RIO' dataSource={data1} xName='x' yName='y' animation={{ enable: true } } explode={true}
                   radius='70%'
-                  groupTo='10' startAngle={0}
+                  groupTo='9' groupMode='Point' startAngle={0}
                   endAngle={360}
                   innerRadius='0%'
                   dataLabel={{
@@ -66,30 +82,44 @@ export class Grouping extends SampleBase<{}, {}> {
           <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+              <tbody>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '60%' }}>
-                    <div>Group To:
-                        <p id="clubtext" style={{ fontWeight: 'normal' }}>10</p>
-                    </div>
+                  <td style={{ width: '50%' }}>
+                    <div>Mode </div>
                   </td>
-                  <td style={{ width: '40%' }}>
-                    <div>
-                      <input type="range" name="clubvalue" onChange={this.onClubvalue.bind(this)} ref={slider => this.slider = slider} defaultValue="10" min="0" max="27" id="clubvalue" style={{ marginLeft: '-5px' }} />
-                    </div>
+                  <td style={{ padding: 10, width: '40%'}} colSpan={2}>
+                    <DropDownListComponent width={120} id="modes" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Point" />
                   </td>
                 </tr>
+                <tr style={{ height: '50px' }}>
+                  <td style={{ width: '30%' }}>
+                    <div>Group To                       
+                    </div>
+                  </td>
+                  <td style={{ width: '50%' }}>
+                    <div>
+                      <input type="range" name="clubvalue" onChange={this.onClubvalue.bind(this)} ref={slider => this.slider = slider} defaultValue="9" min="0" max="27" id="clubvalue" style={{ marginLeft: '-5px' }} />
+                    </div>
+                  </td>
+                  <td style={{ width: '20%'}}>
+                  <div>
+                      <p id="clubtext" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>9</p>
+                  </div>
+                  </td>
+                </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>
         </div>
         <div id="action-description">
-        <p>
-        This sample illustrates the grouping functionality in pie series.  The grouping value can be changed by using <code>Group To</code> property.
+          <p>
+            This sample illustrates the grouping functionality in pie series.  The grouping value can be changed by using <code>Group To</code> property.
     </p>
         </div>
         <div id="description">
           <p> In this example, you can see how to <code>group</code> points in pie chart.</p>
-          <p> Points having value below the <code>'groupTo'</code> value are grouped and showed as separate point. You can customise the apearance of the point using <code>'poinRender'</code> event.</p>
+          <p> Points having value below the <code>'groupTo'</code> value are grouped and showed as separate point. You can view this points on mouse click and can customize this point using <code>'pointRender'</code> event. </p>
           <p> DataLabel is used to represent individual data and its value.</p>
         </div>
       </div>
@@ -99,7 +129,7 @@ export class Grouping extends SampleBase<{}, {}> {
     args.text = args.point.x + ' ' + args.point.y;
   };
   public onPointRender(args: IAccPointRenderEventArgs): void {
-    if ((args.point.x as string).indexOf('Others') > -1) {
+    if (args.point.isClubbed || args.point.isSliced) {
       args.fill = '#D3D3D3';
     }
   };

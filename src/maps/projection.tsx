@@ -4,6 +4,7 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Zoom, Legend,
     ProjectionType, MapsTooltip
@@ -12,8 +13,6 @@ import { Browser } from '@syncfusion/ej2-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
-import { World_Map } from './MapData/WorldMap';
-import { unCountries } from './MapData/UNOCountries';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -64,10 +63,10 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Legend, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={World_Map}
+                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='Country'
-                                    dataSource={unCountries}
+                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/projection-datasource.json')}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath: 'Country'
@@ -96,7 +95,7 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>Selection Mode:</div>
+                                        <div>Projection Type:</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>

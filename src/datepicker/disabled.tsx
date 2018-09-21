@@ -5,12 +5,20 @@ import { SampleBase } from '../common/sample-base';
 import './datepicker-component.css';
 
 export class Disabled extends SampleBase<{}, {}> {
+
+  public disabledDate(args: RenderDayCellEventArgs): void {
+    if (args.date.getDay() === 0 || args.date.getDay() === 6) {
+      /*set 'true' to disable the weekends*/
+      args.isDisabled = true;
+    }
+  }
+
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <div className='datepicker-control-section'>
-            <DatePickerComponent renderDayCell={disabledDate}></DatePickerComponent>
+            <DatePickerComponent renderDayCell={this.disabledDate}></DatePickerComponent>
           </div>
         </div>
         <div id="action-description">
@@ -24,16 +32,10 @@ export class Disabled extends SampleBase<{}, {}> {
               dates in the DatePicker. Here the weekend dates are disabled by using renderDayCell.
           </p>
           <p>More information on the disabled dates can be found in the
-              <a href="http://ej2.syncfusion.com/react/documentation/datepicker/customization.html" target="_blank"> documentation section</a>.
+              <a href="https://ej2.syncfusion.com/react/documentation/datepicker/customization.html" target="_blank"> documentation section</a>.
           </p>
         </div>
       </div>
     )
-  }
-}
-function disabledDate(args: RenderDayCellEventArgs): void {
-  if (args.date.getDay() === 0 || args.date.getDay() === 6) {
-    /*set 'true' to disable the weekends*/
-    args.isDisabled = true;
   }
 }

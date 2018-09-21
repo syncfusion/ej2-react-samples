@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, ViewsDirective, ViewsModelDirective, MonthAgenda, Inject } from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, ViewsDirective, ViewDirective, MonthAgenda, Inject } from '@syncfusion/ej2-react-schedule';
 import { fifaEventsData } from './datasource';
 import './month-agenda.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -18,10 +18,10 @@ export class MonthAgendaView extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper schedule-wrapper'>
-            <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2018, 5, 20)}
+            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 5, 20)}
               eventSettings={{ dataSource: this.data }}>
               <ViewsDirective>
-                <ViewsModelDirective option='MonthAgenda' />
+                <ViewDirective option='MonthAgenda' />
               </ViewsDirective>
               <Inject services={[MonthAgenda]} />
             </ScheduleComponent>
@@ -33,11 +33,11 @@ export class MonthAgendaView extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             In this demo, the active view of Schedule is set to <code>MonthAgenda</code> and no other view options are provided
-             to <code>views</code> property. 
-             This view is designed by considering the combination of both the calendar and agenda layout together,
-            so that whenever a particular date is selected – the events belonging to that date will be displayed on the event
-            section at the bottom. Also, the dates which holds one or more events are marked with a round indicator below that
-            date.
+             to <code>views</code> property.
+ This view is designed by considering the combination of both the calendar and agenda layout together,
+so that whenever a particular date is selected – the events belonging to that date will be displayed on the event
+section at the bottom. Also, the dates which holds one or more events are marked with a round indicator below that
+date.
           </p>
           <p>
             On double clicking the date cells, the user can open the default event editor to create events. The events displayed on this

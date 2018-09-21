@@ -1,6 +1,9 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject } from '@syncfusion/ej2-react-schedule';
+import {
+  ScheduleComponent, Day, Week, WorkWeek, Month,
+  EventRenderedArgs, Inject, Resize, DragAndDrop
+} from '@syncfusion/ej2-react-schedule';
 import { scheduleData, applyCategoryColor } from './datasource';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -40,7 +43,7 @@ export class EditorFieldValidation extends SampleBase<{}, {}> {
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2018, 1, 15)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data, fields: this.fields }} eventRendered={this.onEventRendered.bind(this)}>
-              <Inject services={[Day, Week, WorkWeek, Month]} />
+              <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -54,14 +57,14 @@ export class EditorFieldValidation extends SampleBase<{}, {}> {
         <code>location</code>,
         <code>description</code>,
         <code>startTime</code> and
-        <code>endTime</code> are made to undergo validation such that if it is left as blank, then the default required validation message will
-            be displayed in a separate tooltip, on clicking a save button.
+        <code>endTime</code> are made to undergo validation such that if it is left as blank, then the default required validation message
+                                                                         will be displayed in a separate tooltip, on clicking a save button.
           </p>
           <p>
-            Additionally, the regex condition has been added to the <code>location</code> field, 
+            Additionally, the regex condition has been added to the <code>location</code> field,
             so that if any special characters are typed into it, then the custom validation message will be displayed.
-            The <code>description</code> field 
-            has been validated to restrict the character count to be typed into it between 5 and 500 and not beyond that. 
+            The <code>description</code> field
+            has been validated to restrict the character count to be typed into it between 5 and 500 and not beyond that.
              This validation can be given by making use of the <code>validation</code> API
               available within each <code>fields</code> of <code>eventSettings</code> property.
           </p>

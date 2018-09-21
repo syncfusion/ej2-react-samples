@@ -11,12 +11,19 @@
     max-width: 332px;
 }
 
-#format{
+#right-sidebar #format{
     padding-bottom: 15px;
     width: 200px;
-    left: 80px;
+    left: 20px;
     top: 40px;
-} 
+}
+
+#control-content #format{
+    padding-bottom: 15px;
+    width: 200px;
+    left: 200px;
+    top: 65px;
+}
 
 /* special dates sample styles */
 
@@ -51,7 +58,7 @@
 }
 
 .e-customStyle span.e-icons.highlight:before {
-    content: "\e865";
+    content: "\e790";
     vertical-align: middle;
     margin-right: 3px;
     font-size: 4px;

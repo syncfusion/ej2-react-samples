@@ -1,5 +1,5 @@
 .schedule-header-bar.e-schedule .e-schedule-toolbar .user-icon {
-  background-image: url('./src/schedule/images/1.png');
+  background-image: url('./src/schedule/images/nancy.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,7 +30,7 @@
 }
 
 .e-profile-wrapper .profile-image {
-  background-image: url('./src/schedule/images/1.png');
+  background-image: url('./src/schedule/images/nancy.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -44,7 +44,7 @@
   padding-left: 10px;
 }
 
-.e-profile-wrapper .name {
+.e-profile-wrapper .resource-name {
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
@@ -53,6 +53,16 @@
 
 .e-profile-wrapper .destination {
   font-size: 12px;
+}
+
+.e-profile-wrapper .status-icon {
+  height:6px;
+  width:6px;
+  background:green;
+  border-radius:100%;
+  float:left;
+  margin-right:4px;
+  margin-top:4px;
 }
 
 .e-profile-wrapper .status {

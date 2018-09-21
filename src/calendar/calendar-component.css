@@ -47,7 +47,7 @@
 }
 
 .e-customStyle span.e-icons.highlight:before {
-    content: "\e865";
+    content: "\e790";
     vertical-align: middle;
     margin-right: 3px;
     font-size: 4px;
@@ -81,4 +81,35 @@
 
 body.highcontrast #date_label {
     color: white;
+}
+
+#control_wrapper {
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+#control_wrapper.multiselectWrapper {
+    float: none;
+    box-shadow: none;
+    background: transparent;
+    border : none;
+}
+
+.contentValue {
+    padding: 10px;
+    overflow: auto;
+    max-height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.valuesWrapper {
+    margin: 0 auto;
+    float: none;
+    padding: 0;
+    max-width: 370px;
+}
+
+body.highcontrast .contentValue {
+    border: 1px solid #969696
 }

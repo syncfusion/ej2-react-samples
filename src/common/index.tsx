@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, closest, createElement, enableRipple, select, selectAll } from '@syncfusion/ej2-base';
+import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, createElement, closest, enableRipple, select, selectAll } from '@syncfusion/ej2-base';
 import { Button } from '@syncfusion/ej2-react-buttons';
 import { ListBase } from '@syncfusion/ej2-react-lists';
 import { DataManager, DataUtil, Query } from '@syncfusion/ej2-data';
@@ -108,8 +108,8 @@ if (Browser.isDevice || isMobile) {
  */
 const urlRegex: RegExp = /(npmci\.syncfusion\.com|ej2\.syncfusion\.com)(\/)(development|production)*/;
 const sampleRegex: RegExp = /#\/(([^\/]+\/)+[^\/\.]+)/;
-const sbArray: string[] = ['angular', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc'];
-const sbObj: { [index: string]: string } = { 'angular': 'angular', 'typescript': '', 'javascript': 'javascript' };
+const sbArray: string[] = ['angular', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc', 'vue'];
+const sbObj: { [index: string]: string } = { 'angular': 'angular', 'typescript': '', 'javascript': 'javascript', 'vue' : 'vue'};
 
 /**
  * constant for search operations
@@ -123,8 +123,7 @@ export let setResponsiveElement: Element = select('.setting-responsive');
 /**
  * Mouse or touch setting
  */
-let switchText: string = localStorage.getItem('ej2-switch') ||
-  (window.screen.width > 1366 ? 'touch' : 'mouse');
+let switchText: string = localStorage.getItem('ej2-switch') || 'mouse';
 if (Browser.isDevice || window.screen.width <= 850) {
   switchText = 'touch';
 }
@@ -207,7 +206,6 @@ function renderSbPopups(): void {
     , collision: { X: 'flip', Y: 'flip' }
   });
   settingsPopup = new Popup(document.getElementById('settings-popup'), {
-    offsetX: -245,
     offsetY: 5,
     zIndex: 1001,
     relateTo: settingElement as HTMLElement,
@@ -497,7 +495,7 @@ function onsearchInputChange(e: KeyboardEvent): void {
         dataSource.push(itemObj[k]);
       }
     }
-    let ele: any = ListBase.createList(dataSource, {
+    let ele: any = ListBase.createList(createElement, dataSource, {
       fields: { id: 'uid', groupBy: 'component', text: 'name' },
       template: '<div class="e-text-content e-icon-wrapper" data="${path}" uid="${uid}">' +
         '<span class="e-list-text" role="list-item">' +
@@ -550,7 +548,7 @@ export function viewMobilePropPane(): void {
   toggleRightPane();
 }
 export function isLeftPaneOpen(): boolean {
-  return sidebar.isOpen();
+  return sidebar.isOpen;
 }
 function isVisible(elem: string): boolean {
   return !select(elem).classList.contains('sb-hide');
@@ -623,7 +621,7 @@ function overlay(): void {
 export function toggleLeftPane(): void {
   isMobile = document.body.offsetWidth <= 550;
   select('#left-sidebar').classList.remove('sb-hide');
-  let reverse: boolean = sidebar.isOpen();
+  let reverse: boolean = sidebar.isOpen;
   if (!reverse) {
     leftToggle.classList.add('toggle-active');
 
@@ -633,17 +631,17 @@ export function toggleLeftPane(): void {
   }
 
   if (sidebar) {
-    reverse = sidebar.isOpen();
+    reverse = sidebar.isOpen;
     if (reverse) {
       sidebar.hide();
-      if (!isMobile) {
+      if (!isMobile && !isTablet) {
         resizeManualTrigger = true;
         setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 200);
       }
     } else {
       sidebar.show();
       resizeManualTrigger = true;
-      if (!isMobile) {
+      if (!isMobile && !isTablet) {
         setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 200);
       }
     }
@@ -655,11 +653,15 @@ export function toggleLeftPane(): void {
  * Resize event processing
  */
 function processResize(e: any): void {
-  let toggle: boolean = sidebar.isOpen();
+  let toggle: boolean = sidebar.isOpen;
 
 
   isMobile = document.body.offsetWidth <= 550;
   isTablet = document.body.offsetWidth >= 550 && document.body.offsetWidth <= 850;
+  if (isTablet) {
+    resizeManualTrigger = false;
+  }
+
 
   if (resizeManualTrigger || (isMobile && select('#right-sidebar').classList.contains('sb-hide'))) {
     return;
@@ -671,10 +673,16 @@ function processResize(e: any): void {
   let rightPane: Element = select('.sb-right-pane');
   let footer: Element = select('.sb-footer-left');
   let pref: Element = select('#settings-popup');
-  if (toggle) {
+  if (toggle && !isPc) {
     toggleLeftPane();
   }
-  if (isMobile) {
+  if (isMobile || isTablet) {
+    sidebar.target = null;
+    sidebar.showBackdrop = true;
+    sidebar.closeOnDocumentClick = true;
+    if (isTablet) {
+      select('.sb-footer').appendChild(footer);
+    }
     if (!footer.parentElement.classList.contains('sb-left-pane-footer')) {
       select('.sb-left-pane-footer').appendChild(footer);
 
@@ -687,7 +695,10 @@ function processResize(e: any): void {
     settingsPopup.show();
 
   }
-  if (isTablet || isPc) {
+  if (isPc) {
+    sidebar.target = (document.querySelector('.sb-content ') as HTMLElement)
+    sidebar.showBackdrop = false;
+    sidebar.closeOnDocumentClick = false;
     if (footer.parentElement.classList.contains('sb-left-pane-footer')) {
       select('.sb-footer').appendChild(footer);
     }
@@ -749,11 +760,14 @@ function loadTheme(theme: string): void {
     ReactDOM.render(<LeftPane />
       , document.getElementById('left-pane-component')
     );
+    setTimeout(()=>{
     setSelectList();
-    removeOverlay();
+    //removeOverlay();
     ReactDOM.render(<Content />, document.getElementById('tab-component'));
     if (!isMobile) {
       document.querySelector('.sb-right-pane').scrollTop = 0;
     }
+    });
+    
   });
 }

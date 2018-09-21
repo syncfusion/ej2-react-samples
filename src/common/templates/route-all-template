@@ -9,7 +9,7 @@ export const routes = (
 {{routerCollection}}
         {
             (location.hash) === ""   ?
-            <Redirect from = '/' exact to="material/chart/line" />:
+            <Redirect from = '/' exact to="material/grid/overview" />:
             null
         }
     </div>

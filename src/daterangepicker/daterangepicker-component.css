@@ -8,9 +8,16 @@
     max-width: 350px;
 }
 
-#format{
+#right-sidebar #format{
     padding-bottom: 15px;
     width: 200px;
-    left: 80px;
+    left: 20px;
     top: 40px;
-} 
+}
+
+#control-content #format{
+    padding-bottom: 15px;
+    width: 200px;
+    left: 200px;
+    top: 65px;
+}

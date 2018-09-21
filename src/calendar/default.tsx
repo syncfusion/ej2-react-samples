@@ -6,12 +6,17 @@ import './calendar-component.css';
 
 export class Default extends SampleBase<{}, {}> {
 
+    public onchange(args: ChangedEventArgs): void {
+        /*Displays selected date in the label*/
+        (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args.value.toLocaleDateString();
+    }
+
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='calendar-control-section' style={{ overflow: 'auto' }}>
-                        <CalendarComponent change={onchange} ></CalendarComponent>
+                        <CalendarComponent change={this.onchange} ></CalendarComponent>
                         <label id='date_label'>Selected Value:</label>
                     </div>
                 </div>
@@ -26,14 +31,10 @@ export class Default extends SampleBase<{}, {}> {
           date. Also, provide options to navigate in different levels of views like month, year, decade.
           <p>
              More information on the calendar instantiation can be found in this <a target='_blank'
-             href='http://ej2.syncfusion.com/react/documentation/calendar/getting-started.html'>documentation</a> section.
+             href='https://ej2.syncfusion.com/react/documentation/calendar/getting-started.html'>documentation</a> section.
           </p>
                 </div>
             </div>
         )
     }
-}
-function onchange(args: ChangedEventArgs): void {
-    /*Displays selected date in the label*/
-    (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args.value.toLocaleDateString();
 }

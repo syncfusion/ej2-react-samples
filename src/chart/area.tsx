@@ -43,10 +43,8 @@ export class Area extends SampleBase<{}, {}> {
                         }}
                         primaryYAxis={{
                             title: 'Revenue in Millions',
-                            minimum: 2,
-                            maximum: 5,
-                            interval: 1,
                             labelFormat: '{value}M',
+                            interval: 1,
                             lineStyle: { width: 0 },
                             majorTickLines: { width: 0 },
                             minorTickLines: { width: 0 }

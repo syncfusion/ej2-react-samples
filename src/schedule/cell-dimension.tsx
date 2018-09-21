@@ -1,6 +1,9 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, ViewsDirective, ViewsModelDirective, Day, Week, WorkWeek, Month, ActionEventArgs, EventRenderedArgs, Inject } from '@syncfusion/ej2-react-schedule';
+import {
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
+  ActionEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
+} from '@syncfusion/ej2-react-schedule';
 import { employeeEventData, applyCategoryColor } from './datasource';
 import './cell-dimension.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -31,16 +34,16 @@ export class CellDimension extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent cssClass='schedule-cell-dimension' width='100%' height='550px' ref={schedule => this.scheduleObj = schedule}
+            <ScheduleComponent cssClass='schedule-cell-dimension' width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
               selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}
               created={this.onCreated} actionComplete={this.onActionComplete.bind(this)} eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
-                <ViewsModelDirective option='Day' />
-                <ViewsModelDirective option='Week' />
-                <ViewsModelDirective option='WorkWeek' />
-                <ViewsModelDirective option='Month' />
+                <ViewDirective option='Day' />
+                <ViewDirective option='Week' />
+                <ViewDirective option='WorkWeek' />
+                <ViewDirective option='Month' />
               </ViewsDirective>
-              <Inject services={[Day, Week, WorkWeek, Month]} />
+              <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -50,9 +53,7 @@ export class CellDimension extends SampleBase<{}, {}> {
         </div>
         <div id='description'>
           <p>
-            In this demo, the height and width of the Schedule cells are set by overriding the default CSS class. By doing so, it also
-            needs to adjust the outer event wrapper element to cope with the CSS changes which can be done by calling the 
-            <code>adjustEventWrapper</code> method.
+            In this demo, the height and width of the Schedule cells are set by overriding the default CSS class.
         </p>
         </div>
       </div>

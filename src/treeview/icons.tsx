@@ -62,7 +62,7 @@ private fields: Object = { dataSource: this.hierarchicalData, id: 'nodeId', text
         <div className='control-section'>
         <div className='control_wrapper'>
             {/* Render the TreeView with image icons */}
-            <TreeViewComponent fields={this.fields} sortOrder = 'Ascending' />
+            <TreeViewComponent id="treeview" fields={this.fields} sortOrder = 'Ascending' />
         </div>
         </div>
         <div id="action-description">

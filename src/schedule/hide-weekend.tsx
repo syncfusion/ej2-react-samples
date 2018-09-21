@@ -1,6 +1,9 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, ViewsDirective, ViewsModelDirective, Day, Week, Month, EventRenderedArgs, Inject } from '@syncfusion/ej2-react-schedule';
+import {
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, TimelineViews,
+  TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop
+} from '@syncfusion/ej2-react-schedule';
 import { employeeEventData, applyCategoryColor } from './datasource';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -54,15 +57,17 @@ export class HideWeekend extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='550px' ref={t => this.scheduleObj = t}
-              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }} showWeekend={false}
+            <ScheduleComponent width='100%' height='650px' ref={t => this.scheduleObj = t} workDays={[1, 3, 4, 5]}
+              workHours={{ start: '08:00' }} selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }} showWeekend={false}
               eventRendered={this.OnEventRendered.bind(this)}>
               <ViewsDirective>
-                <ViewsModelDirective option='Day' />
-                <ViewsModelDirective option='Week' />
-                <ViewsModelDirective option='Month' />
+                <ViewDirective option='Day' />
+                <ViewDirective option='Week' />
+                <ViewDirective option='Month' />
+                <ViewDirective option='TimelineWeek' />
+                <ViewDirective option='TimelineMonth' />
               </ViewsDirective>
-              <Inject services={[Day, Week, Month]} />
+              <Inject services={[Day, Week, Month, TimelineViews, TimelineMonth, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -72,7 +77,7 @@ export class HideWeekend extends SampleBase<{}, {}> {
               <tbody>
                 <tr id='' style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Work days:</div>
+                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Work days</div>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div className='multi-prop'>
@@ -87,7 +92,7 @@ export class HideWeekend extends SampleBase<{}, {}> {
                 </tr>
                 <tr id='' style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Weekend days:</div>
+                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Weekend days</div>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div className='evtbtn' style={{ paddingBottom: '10px' }}>
@@ -106,13 +111,13 @@ export class HideWeekend extends SampleBase<{}, {}> {
         </div>
         <div id='description'>
           <p>
-           In this demo, the <code>showWeekend</code> property is used either to show or hide the weekend days of a week
-           and it is not applicable on <code>workweek</code> view. By default, it is set to <code>true</code>. 
-           The days which are not a part of the working days collection of a Schedule are usually considered as weekend days here.
+            In this demo, the <code>showWeekend</code> property is used either to show or hide the weekend days of a week
+           and it is not applicable on <code>workweek</code> view. By default, it is set to <code>true</code>.
+                             The days which are not a part of the working days collection of a Schedule are usually considered as weekend days here.
           </p>
           <p>
-          Here, the working days are defined as <code>[1, 3, 4, 5]</code> on Schedule. 
-          Therefore, the remaining days (0, 2, 6 – Sunday, Tuesday and Saturday) are considered as weekend days
+            Here, the working days are defined as <code>[1, 3, 4, 5]</code> on Schedule.
+            Therefore, the remaining days (0, 2, 6 – Sunday, Tuesday and Saturday) are considered as weekend days
           and will be hidden from the views as the <code>showWeekend</code> property is set to false.
           </p>
         </div>

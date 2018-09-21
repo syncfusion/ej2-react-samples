@@ -25,6 +25,8 @@ export class Funnel extends SampleBase<{}, {}> {
           <div className='col-lg-9'>
             <AccumulationChartComponent id='funnel-chart' ref={funnel => this.funnel = funnel}
               title='Website Visitors'
+              legendSettings={{ toggleVisibility: false }}
+              enableAnimation={false}
               load={this.load.bind(this)}
               tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               resized={this.onChartResized.bind(this)}
@@ -47,30 +49,40 @@ export class Funnel extends SampleBase<{}, {}> {
           <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+              <tbody>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div>Neck Width:
-                        <p id="neckWidth" style={{ fontWeight: 'normal' }}>15%</p>
+                    <div>Neck Width                        
                     </div>
                   </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '50%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" onChange={this.pyramidneckWidth.bind(this)} ref={s => this.slider = s} id="pyramidNeckWidth" defaultValue="15" min="0" max="45" style={{ width: '90%' }} />
                     </div>
                   </td>
+                  <td style={{ width: '20%' }}>
+                  <div>
+                  <p id="neckWidth" style={{ fontWeight: 'normal',  paddingTop: 'inherit' }}>15%</p>
+                  </div>
+                  </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div>Neck Height:
-                                <p id="neckHeight" style={{ fontWeight: 'normal' }}>18%</p>
+                    <div>Neck Height                               
                     </div>
                   </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '50%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" onChange={this.pyramidneckHeight.bind(this)} ref={s => this.slider = s} id="pyramidNeckHeight" defaultValue="0" min="0" max="50" style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
+                  <td style={{ width: '20%' }}>
+                  <div>
+                  <p id="neckHeight" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>18%</p>
+                  </div>
+                  </td>
                 </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>

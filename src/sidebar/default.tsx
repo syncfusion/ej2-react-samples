@@ -18,7 +18,7 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
                 <div id="wrapper">
                     <title>Essential JS 2  for React- Sidebar > Default functionalities</title>
-                    <div className="col-lg-12 col-sm-12 col-md-12">
+                    <div className="col-lg-12 col-sm-12 col-md-12" id="sidebar-section">
                         <span id="hamburger" className="e-icons menu default" onClick={this.openClick.bind(this)} ></span>
                         <SidebarComponent id="default-sidebar" ref={Sidebar => this.sidebarobj = Sidebar} >
                             <div className="title-header">
@@ -61,7 +61,7 @@ export class Default extends SampleBase<{}, {}> {
     }
     //open new Tab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'samples/sidebar/default/index.html');
+        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/default/index.html');
     }
 
     // change the Sidebar position

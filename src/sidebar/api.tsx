@@ -35,7 +35,7 @@ export class API extends SampleBase<{}, {}> {
                 </div>
                 <div id="wrapper">
                     <title>Essential JS 2 for React - Sidebar > API</title>
-                    <div className="col-lg-12 col-sm-12 col-md-12">
+                    <div className="col-lg-12 col-sm-12 col-md-12" id="sidebar-section">
                         <span id="hamburger" className="e-icons menu" onClick={this.openClick.bind(this)} ></span>
                         <SidebarComponent id="default-sidebar" ref={Sidebar => this.sidebarInstance = Sidebar} >
                             <div className="title-header">
@@ -100,7 +100,7 @@ export class API extends SampleBase<{}, {}> {
 
     // open new tab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'samples/sidebar/api/index.html');
+        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/api/index.html');
     }
 
     toggleSidebar(): void {

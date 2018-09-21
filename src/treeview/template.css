@@ -1,27 +1,20 @@
-.control_wrapper {
-    max-width: 500px;
-    margin: auto;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
-}
-.custom.e-treeview .e-fullrow {
-    height: 72px;
-}
-.custom.e-treeview .e-list-text {
-    line-height: normal;
-}
-.eimage {
-    float: left;
-    padding: 11px 16px 11px 0;
-    height: 48px;
-    width: 48px;
-    box-sizing: content-box;
-}
-.ename {
-    font-size: 16px;
-    padding: 14px 0 0;
-}
-.ejob {
-    font-size: 14px;
-    opacity: .87;
-}
+    .tree-control-wrapper {
+        max-width: 320px;
+        margin: auto;
+        border: 1px solid #dddddd;
+        border-radius: 3px;
+    }
+    .template-tree.e-treeview .e-list-text {
+        width: 100%;
+    }
+    .template-tree.e-treeview .textcontent {
+        float:left;
+    }
+    .template-tree.e-treeview .countcontainer {
+        margin-right: 5px; 
+        float:right;
+    }
+    .material .treeCount.e-badge {
+        vertical-align: middle;
+    }
+    

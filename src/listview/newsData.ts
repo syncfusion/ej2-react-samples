@@ -23,51 +23,6 @@ export let newsData: any = [
         + ' Twitter.</p>'
     },
     {
-        'title': 'Must Reads: 5 Big Data E-books to upend your development',
-        'description': 'Did you know our first e-book was published in May 2012? jQuery Succinctly was the start of over...',
-        'content': '<p>Did you know our first e-book was published in May 2012? jQuery Succinctly was'
-        + 'the start of over one hundred free e-books written to help developers get free access to'
-        + 'software development resources and strategies. Capturing and understanding big data is by'
-        + 'far one of the most-asked-about topics across both our support and learning'
-        + 'sites.</p><p>Ranked in order of popularity, here are Succinctly e-books related to big data'
-        + 'to add to your reading list:</p><p>5. Hadoop Succinctly</p><p>An Apache open source project'
-        + ', Hadoop stores huge amounts of data in safe, reliable storage and runs complex queries'
-        + 'over data in an efficient way. It is at the core of a whole host of the most popular big'
-        + 'data tools. Mastering Hadoop ensures you get the best out of all these tools and better'
-        + 'insight from your data. Elton Stoneman’s Hadoop Succinctly explains how Hadoop works, what'
-        + 'goes on in the cluster, demonstrating how to move data in and out of Hadoop, and how to'
-        + 'query it efficiently. It also walks through a Java MapReduce example, illustrates how to'
-        + 'write the same query in Python and .NET, and discusses the wider Hadoop ecosystem.</p><p>4. '
-        + 'Cassandra Succinctly</p><p>Apache Cassandra is an open-source distributed database system'
-        + 'noted for its consistency, its ability to run on commodity hardware, and its easy'
-        + 'deployment to cloud infrastructure. With Cassandra Succinctly by Marko Švaljek, you will'
-        + 'learn the architecture behind Cassandra that makes it a reliable system, including how'
-        + 'hashes are used to identify where data is stored, how choosing the right replication factor'
-        + 'can enhance or hinder performance, and how the system handles updating and deleting data.'
-        + 'By the end of the book, you will be able to store and model data using the Cassandra Query'
-        + 'Language, and use Cassandra within your own applications.</p><p>3. Spark'
-        + 'Succinctly</p><p>Mastering big data requires an aptitude at every step of information'
-        + 'processing. Post-processing, one of the most important steps, is where you find Apache'
-        + 'Spark frequently employed. Spark Succinctly, by Marko Švaljek, addresses Spark’s use in the'
-        + 'ultimate step in handling big data. This e-book, the third installment in Švaljek’s IoT'
-        + 'series, teaches the basics of using Spark and explores how to work with RDDs, Scala and'
-        + 'Python tasks, JSON files, and Cassandra.</p><p>2. Neural Networks Using C#'
-        + 'Succinctly</p><p>Neural networks are an exciting field of software development used to'
-        + 'calculate outputs from input data. While the idea seems simple enough, the implications of'
-        + 'such networks are staggering—think optical character recognition, speech recognition, and'
-        + 'regression analysis. With Neural Networks Using C# Succinctly by James McCaffrey, you\'ll'
-        + 'learn how to create your own neural network to solve classification problems, or problems'
-        + 'where the outcomes can only be one of several values. Learn about encoding and normalizing'
-        + 'data, activation functions and how to choose the right one, and ultimately how to train a'
-        + 'neural network to find weights and bias values that provide accurate predictions.</p><p>1. '
-        + 'Data Capture and Extraction with C# Succinctly</p><p>Capturing and extracting information'
-        + 'is one of the most important tasks a developer can perform, and making this task more'
-        + 'engaging without relying entirely on specialized tools is an efficient way to improve'
-        + 'productivity. In Data Capture and Extraction with C# Succinctly, author Ed Freitas guides'
-        + 'readers toward getting more out of C# in minimal time.</p><p>Let us know which one is your'
-        + 'favorite in the comments!</p>'
-    },
-    {
         'title': 'The Syncfusion Global License: Your Questions, Answered ',
         'description': 'Syncfusion recently hosted a webinar to cover the ins and outs of the Syncfusion global...',
         'content': '<p>Syncfusion recently hosted a webinar to cover the ins and outs of the'
@@ -191,89 +146,6 @@ export let newsData: any = [
         + 'which covers the insanity of the modern web.</p>'
     },
     {
-        'title': 'Guest Blog: Exporting the data grid to a specific PDF page in Xamarin.Forms',
-        'description': 'This guest blog post was written by Dave Lasike. He can be found on Twitter at @davelasike...',
-        'content': '<p>This guest blog post was written by Dave Lasike. He can be found on Twitter at'
-        + '@davelasike.</p><p>Recently I was asked to prototype a cross-platform application for a community-based education'
-        + 'provider. The application was designed to replace a form being used to assess students’ driving abilities. The'
-        + 'tricky part came when deciding how to display the assessment sheet, a grid displaying driving assessment data, in a'
-        + 'mobile application. My initial thinking was to do something like a list view within a list view, or a custom grid'
-        + 'with rows and columns containing buttons within each cell. However, Syncfusion’s data grid control for'
-        + 'Xamarin.Forms provided an easy out-of-the-box solution to do what we needed, and allowed us to customize a range of'
-        + 'features to meet the client’s requirements.</p><p>With the release of Essential Studio 2017 Volume 3 Service Pack 2'
-        + '(version 15.3.0.33), a StartPageIndex property was added, which allows you to specify which page in a PDF document'
-        + 'you want the data grid control to be rendered to.</p><p>Previous to this release, the data grid could only be'
-        + 'rendered to the first page of a PDF document. This wasn’t a bad thing, but if you tried to create a PDF document'
-        + 'based on a specific design, you had a great control that worked well across mobile platforms but could only be'
-        + 'rendered on the first page of every PDF document as opposed to a specific page, which often conflicted with what we'
-        + 'needed to achieve.</p><p>The first step was to clear out the portable class library that is generated when creating'
-        + 'a Xamarin.Forms project. If you haven’t considered using .NET Standard, there are several blog posts online that'
-        + 'show how to implement a .NET Standard library into your project (see this post from Nick Randolph in particular).'
-        + 'There are also blog posts that show how to install PCL NuGet packages into .NET Standard libraries (see this post'
-        + 'from James Montemagno).</p><p>Once the .NET Standard library was up and running, it was time to take a look at'
-        + 'Syncfusion’s data grid control. To use it, you need to import the appropriate Syncfusion NuGet packages.'
-        + 'Implementing the control is relatively easy. The Syncfusion documentation is excellent. With small code snippets,'
-        + 'getting started and testing out the controls is a case of just reading through the documentation, copying the code'
-        + 'snippet, and playing around to suit your needs. I won’t cover creating the data grid control or creating the model'
-        + 'here, as those are covered extensively in the getting started documentation.</p><p>What I want to focus on is the'
-        + 'StartPageIndex property and how to implement it into your code when generating a PDF document with the data grid'
-        + 'control. At the time of this writing, there is no documentation on the StartPageIndex property. However, it is'
-        + 'fairly easy to implement given it is an int that takes the page number you want to render the control to.</p><p>In'
-        + 'my case, I had a page that I wanted to create before the data grid. To do this, I created the PDF document, added'
-        + 'the required pages, and then added the data grid control to the second page.</p><p>The following image shows the'
-        + 'data grid being rendered to the second page in the PDF document.</p><p>Data grid rendered on the second page of the'
-        + 'PDF document</p><p>This was a quick overview of how to render the data grid control to a specific page using the'
-        + 'StartPageIndex property. As you can see from the screenshot, there is a range of customizations (e.g., different'
-        + 'colored cells) that you can add to your data grid and render to PDF if required by attaching to the different'
-        + 'events that are raised when generating the PDF.</p>'
-    },
-    {
-        'title': 'What’s Coming from Microsoft this Fall',
-        'description': 'On October 17, Microsoft will release its Fall Creators Update for the Windows 10 platform...',
-        'content': '<p>On October 17, Microsoft will release its Fall Creators Update for the Windows 10 platform. Much like'
-        + 'its previous counterpart, the Spring Creators Update, the release is set to deliver more features to Windows 10 for'
-        + 'both developers and users, with particular emphasis this time around on app modernization, mixed reality, and game'
-        + 'development and software updates.</p><p>App modernization is the term Microsoft used in its press event to'
-        + 'encompass the features that will affect most Windows 10 users and developers. The updates primarily serve to make'
-        + 'using Windows 10 easier and more productive all around. Some significant highlights include device relay, which'
-        + 'allows you to continue a project you’re currently working on on a different device, whether it’s Windows, iOS, or'
-        + 'Android; activity feed, which lets you pick up where you left off in a past project; and OneDrive files on-demand,'
-        + 'where you can access your OneDrive files through Windows File Explorer immediately without having to download them'
-        + 'first.</p><p>Another significant modernization update is the Fluent Design System, which seems to be the next'
-        + 'descendant of the Modern UI design that was launched with the Windows 8 OS. Like its parent designs, the Fluent'
-        + 'Design System is intended to provide a more pleasurable and intuitive UI experience, one that will behave the same'
-        + 'across desktop, tablet, mobile, and even virtual reality devices. The UI changes in the new design are subtle but'
-        + 'omnipresent, mostly tweaking things like lighting, motion, and scale to bring a new depth to interactive elements.'
-        + 'Finally, the Fall Creators Update is also delivering much-demanded tweaks to update and privacy options that have'
-        + 'often been obscured or unavailable, to give users finer control over their machines.</p><p>Fluent Design UI.'
-        + 'Source: Microsoft.</p><p>Mixed reality is on the spectrum between virtual reality, fully immersive experiences'
-        + 'provided by devices like the Oculus Rift, and augmented reality, experiences that overlay digital images on the'
-        + 'physical world like the Microsoft HoloLens. The Fall Creators Update opens up Windows 10 to new mixed reality'
-        + 'devices from prominent manufacturers like Acer, Dell, and Lenovo. These devices are unique additions to the reality'
-        + 'ecosystem for their simple setup and low cost barrier. The headsets start at $399, and all it takes to use them is'
-        + 'to plug them into your Windows machine via HDMI and USB cables. No external cameras or cumbersome accessories to'
-        + 'set up. All Windows mixed reality apps are built on the Universal Windows Platform, and developers can begin'
-        + 'working on apps for the new devices right now with developer kits offered by Acer and HP.</p><p>The HP Windows'
-        + 'Mixed Reality Headset</p><p>On the gaming front, the Fall Creators Update aims to improve UWP games through greater'
-        + 'resources available on the Xbox One, meaning more CPU cores, more RAM, and full access to the GPU. In addition, a'
-        + 'new Xbox Live Creators Program provides game developers a simpler certification process for getting their games'
-        + 'published, and full access to Xbox Live features like leaderboards, statistics, and cloud saves. Game developers'
-        + 'are also being given greater control over how their games are offered in the Store, with the ability to manage'
-        + 'release dates, subscription add-ons, sales to existing customers, game trailers, and more. With the insane rise of'
-        + 'video game streaming over the past couple years, perhaps the most impressive update for gamers in the Fall Creators'
-        + 'Update is the new Mixer app, a streaming app capable of supporting four simultaneous players that provides deep'
-        + 'viewer interactivity rarely found in other streaming services. It’s not only a streaming service, but also a'
-        + 'development platform for building custom interactive integrations. Mixer is built into Windows 10 and Xbox One,'
-        + 'allowing millions of gamers to begin streaming from their devices with only a few clicks and little to no'
-        + 'code.</p><p>Many Fall Creators Update features affect the Xbox One.</p><p>These are just a handful of the dozens of'
-        + 'updates coming on October 17. For more insights, you can check out the numerous videos available on Windows Dev'
-        + 'Center that highlight these features and more, like increased Windows Ink compatibility, new UWP and Xamarin'
-        + 'features, and Visual Studio improvements. Right now, developers can download the Windows 10 Fall Creators Update'
-        + 'SDK to begin preparing their apps for the October 17 release.</p><p>What are some of your most anticipated features'
-        + ' Let us know in the comments below, or on Twitter and Facebook. We’re pretty excited about annotation support in'
-        + 'EPUBs coming to Microsoft Edge!</p>'
-    },
-    {
         'title': 'Employees Wake Up and Lace Up for Making Strides',
         'description': 'The American Cancer Society reports that each year collectively more than one million people...',
         'content': '<p>The American Cancer Society reports that each year collectively more than one'
@@ -310,9 +182,9 @@ export let dataSource: any = [
         title: newsData[1].title,
         description: newsData[1].description,
         text: 'Syncfusion Blog',
-        imgSrc: 'src/listview/images/2.png', timeStamp: 'Syncfusion Blog - October 18, 2017',
+        imgSrc: 'src/listview/images/3.png', timeStamp: 'Syncfusion Blog - October 18, 2017',
         child: [{
-            id: '02_1', title: newsData[1].title, category: newsData[1].title, text: newsData[1].title,
+            id: '03_1', title: newsData[1].title, category: newsData[1].title, text: newsData[1].title,
             imgSrc: '', heading: '', timeStamp: '', description: newsData[1].content
         }]
     },
@@ -321,9 +193,9 @@ export let dataSource: any = [
         title: newsData[2].title,
         description: newsData[2].description,
         text: 'Syncfusion Blog',
-        imgSrc: 'src/listview/images/3.png', timeStamp: 'Syncfusion Blog - October 18, 2017',
+        imgSrc: 'src/listview/images/4.png', timeStamp: 'Syncfusion Blog - October 18, 2017',
         child: [{
-            id: '03_1', title: newsData[2].title, category: newsData[2].title, text: newsData[2].title,
+            id: '04_1', title: newsData[2].title, category: newsData[2].title, text: newsData[2].title,
             imgSrc: '', heading: '', timeStamp: '', description: newsData[2].content
         }]
     },
@@ -332,43 +204,10 @@ export let dataSource: any = [
         title: newsData[3].title,
         description: newsData[3].description,
         text: 'Syncfusion Blog',
-        imgSrc: 'src/listview/images/4.png', timeStamp: 'Syncfusion Blog - October 18, 2017',
-        child: [{
-            id: '04_1', title: newsData[3].title, category: newsData[3].title, text: newsData[3].title,
-            imgSrc: '', heading: '', timeStamp: '', description: newsData[3].content
-        }]
-    },
-    {
-        id: '05',
-        title: newsData[4].title,
-        description: newsData[4].description,
-        text: 'Syncfusion Blog',
-        imgSrc: 'src/listview/images/5.png', timeStamp: 'Syncfusion Blog - October 17, 2017',
-        child: [{
-            id: '05_1', title: newsData[4].title, category: newsData[4].title, text: newsData[4].title,
-            imgSrc: '', heading: '', timeStamp: '', description: newsData[4].content
-        }]
-    },
-    {
-        id: '06',
-        title: newsData[5].title,
-        description: newsData[5].description,
-        text: 'Syncfusion Blog',
-        imgSrc: 'src/listview/images/6.png', timeStamp: 'Syncfusion Blog - October 17, 2017',
-        child: [{
-            id: '06_1', title: newsData[5].title, category: newsData[5].title, text: newsData[5].title,
-            imgSrc: '', heading: '', timeStamp: '', description: newsData[5].content
-        }]
-    },
-    {
-        id: '07',
-        title: newsData[6].title,
-        description: newsData[6].description,
-        text: 'Syncfusion Blog',
         imgSrc: 'src/listview/images/7.png', timeStamp: 'Syncfusion Blog - October 13, 2017',
         child: [{
-            id: '07_1', title: newsData[6].title, category: newsData[6].title, text: newsData[6].title,
-            imgSrc: '', heading: '', timeStamp: '', description: newsData[6].content
+            id: '07_1', title: newsData[3].title, category: newsData[3].title, text: newsData[3].title,
+            imgSrc: '', heading: '', timeStamp: '', description: newsData[3].content
         }]
     }
 
@@ -377,13 +216,13 @@ export let dataSource: any = [
 export let groupDataSource: any = [
     { Name: 'WI-FI', content: 'Disabled', id: '1', class: 'wifi', category: 'Wireless & networks', order: 0 },
     { Name: 'Bluetooth', content: 'Disabled', id: '2', class: 'bluetooth', category: 'Wireless & networks', order: 0 },
-    { Name: 'SIM cards', id: '3', class: 'sim', category: 'Wireless & networks', order: 0 },
+    { Name: 'SIM cards', id: '3', content: 'AT&T', class: 'sim', category: 'Wireless & networks', order: 0 },
     { Name: 'Display', content: 'Adaptive brightness is OFF', id: '4', class: 'display', category: 'Device', order: 1 },
     { Name: 'Sound', content: 'Ringer volume at 50%', id: '5', class: 'sound', category: 'Device', order: 1 },
     { Name: 'Battery', content: '85%', id: '5', class: 'battery', category: 'Device', order: 1 },
     { Name: 'Users', content: 'Signed in as Albert', id: '6', class: 'user', category: 'Device', order: 1 },
     { Name: 'Location', content: 'ON / High accuracy', id: '7', class: 'location', category: 'Personal', order: 2 },
-    { Name: 'Security', id: '8', class: 'security', category: 'Personal', order: 2 },
+    { Name: 'Security', id: '8', content: 'Screen Lock', class: 'security', category: 'Personal', order: 2 },
     { Name: 'Languages & input', content: 'English (US)', id: '9', class: 'language', category: 'Personal', order: 2 }
 ];
 

@@ -42,7 +42,7 @@ export class SidebarWithList extends SampleBase<{}, {}> {
                             </div>
                         </SidebarComponent>
                         <div>
-                            <div className="main content">Application content</div>
+                            <div className="main content textArea">Application content</div>
                         </div>
                     </div>
                 </div>
@@ -58,13 +58,13 @@ export class SidebarWithList extends SampleBase<{}, {}> {
 
     //open newTab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'samples/sidebar/sidebar-list/index.html');
+        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/sidebar-list/index.html');
     }
 
     //close the sidebar when list item selected
     onSelect(args:any): void {
         this.sidebarobj.hide();
-        document.querySelector('.content').textContent = args.text + ' Page Content';
+        document.querySelector('.textArea').textContent = args.text + ' Page Content';
     }
 
     //open the sidebar

@@ -1,0 +1,212 @@
+[
+    {
+        "rank": 1,
+        "name": "China",
+        "value": 746662194,
+        "color": "#7F38A0",
+        "population": 746662194
+    },
+    {
+        "rank": 2,
+        "name": "India",
+        "value": 391292635,
+        "color": "#7F38A0 ",
+        "population": 391292635
+    },
+    {
+        "rank": 3,
+        "name": "United States",
+        "value": 245436423,
+        "color": "#99295D ",
+        "population": 245436423
+    },
+    {
+        "rank": 4,
+        "name": "Brazil",
+        "value": 123927230,
+        "color": "#364A98",
+        "population": 123927230
+    },
+    {
+        "rank": 5,
+        "name": "Japan",
+        "value": 117528631,
+        "color": "#7F38A0 ",
+        "population": 117528631
+    },
+    {
+        "rank": 6,
+        "name": "Russia",
+        "value": 110003284,
+        "color": "#2E769F",
+        "population": 110003284
+    },
+    {
+        "rank": 7,
+        "name": "Mexico",
+        "value": 75937568,
+        "color": "#99295D ",
+        "population": 75937568
+    },
+    {
+        "rank": 8,
+        "name": "Germany",
+        "value": 73436503,
+        "color": "#2E769F",
+        "population": 73436503
+    },
+    {
+        "rank": 9,
+        "name": "Indonesia",
+        "value": 66244991,
+        "color": "#7F38A0 ",
+        "population": 66244991
+    },
+    {
+        "rank": 10,
+        "name": "United Kingdom",
+        "value": 62354410,
+        "color": "#2E769F",
+        "population": 62354410
+    },
+    {
+        "rank": 11,
+        "name": "Philippines",
+        "value": 57342723,
+        "color": "#7F38A0 ",
+        "population": 57342723
+    },
+    {
+        "rank": 12,
+        "name": "France",
+        "value": 55413854,
+        "color": "#2E769F",
+        "population": 55413854
+    },
+    {
+        "rank": 13,
+        "name": "Nigeria",
+        "value": 47743541,
+        "color": "#816F28",
+        "population": 47743541
+    },
+    {
+        "rank": 14,
+        "name": "South Africa",
+        "value": 47094267,
+        "color": "#816F28",
+        "population": 47094267
+    },
+    {
+        "rank": 15,
+        "name": "Turkey",
+        "value": 46395500,
+        "color": "#2E769F",
+        "population": 46395500
+    },
+    {
+        "rank": 16,
+        "name": "Vietnam",
+        "value": 43974618,
+        "color": "#7F38A0 ",
+        "population": 43974618
+    },
+    {
+        "rank": 17,
+        "name": "Iran",
+        "value": 42731675,
+        "color": "#7F38A0 ",
+        "population": 42731675
+    },
+    {
+        "rank": 18,
+        "name": "Egypt",
+        "value": 37519531,
+        "color": "#816F28",
+        "population": 37519531
+    },
+    {
+        "rank": 19,
+        "name": "Spain",
+        "value": 37337607,
+        "color": "#2E769F",
+        "population": 37337607
+    },
+    {
+        "rank": 20,
+        "name": "Italy",
+        "value": 36442438,
+        "color": "#2E769F",
+        "population": 36442438
+    },
+    {
+        "rank": 21,
+        "name": "Thailand",
+        "value": 32710169,
+        "color": "#7F38A0 ",
+        "population": 32710169
+    },
+    {
+        "rank": 22,
+        "name": "Canada",
+        "value": 32602776,
+        "color": "#99295D ",
+        "population": 32602776
+    },
+    {
+        "rank": 23,
+        "name": "Argentina",
+        "value": 30758972,
+        "color": "#364A98",
+        "population": 30758972
+    },
+    {
+        "rank": 24,
+        "name": "South Africa",
+        "value": 30248355,
+        "color": "#816F28",
+        "population": 30248355
+    },
+    {
+        "rank": 25,
+        "name": "Pakistan",
+        "value": 29965859,
+        "color": "#7F38A0 ",
+        "population": 29965859
+    },
+    {
+        "rank": 26,
+        "name": "Bangladesh",
+        "value": 29738660,
+        "color": "#7F38A0 ",
+        "population": 29738660
+    },
+    {
+        "rank": 27,
+        "name": "Colombia",
+        "value": 28287098,
+        "color": "#364A98",
+        "population": 28287098
+    },
+    {
+        "rank": 28,
+        "name": "Poland",
+        "value": 28018492,
+        "color": "#2E769F",
+        "population": 28018492
+    },
+    {
+        "rank": 29,
+        "name": "Malaysia",
+        "value": 24572446,
+        "color": "#7F38A0 ",
+        "population": 24572446
+    },
+    {
+        "rank": 30,
+        "name": "Saudi Arabia",
+        "value": 23803319,
+        "color": "#7F38A0 ",
+        "population": 23803319
+    }
+]

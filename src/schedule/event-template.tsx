@@ -1,44 +1,54 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, ViewsDirective, ViewsModelDirective, Day, Week, Inject } from '@syncfusion/ej2-react-schedule';
+import {
+  ScheduleComponent, ViewsDirective, ViewDirective,
+  Day, Week, TimelineViews, Inject, Resize, DragAndDrop
+} from '@syncfusion/ej2-react-schedule';
 import { webinarData } from './datasource';
 import './event-template.css';
 import { Browser, Internationalization, extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 
 /**
- * Schedule editot template sample
+ * Schedule event template sample
  */
 
-// Used in templates to get time string
-let instance: Internationalization = new Internationalization();
-(window as TemplateFunction).getTimeString = (value: Date) => {
-  return instance.formatDate(value, { skeleton: 'hm' });
-};
-interface TemplateFunction extends Window {
-  getTimeString?: Function;
-}
-
 export class EventTemplate extends SampleBase<{}, {}> {
-  private scheduleObj: ScheduleComponent;
   private data: Object[] = extend([], webinarData, null, true) as Object[];
-  private eventTemplate: string = '<div class="template-wrap" style="background:${SecondaryColor}">' +
-    '<div class="subject" style="background:${PrimaryColor}">${Subject}</div>' +
-    '<div class="time" style="background:${PrimaryColor}">Time: ${getTimeString(data.StartTime)} - ${getTimeString(data.EndTime)}</div>' +
-    '<div class="image"><img src="src/schedule/images/${ImageName}.svg" alt="${ImageName}" />' +
-    '</div><div class="description">${Description}</div><div class="footer" style="background:${PrimaryColor}"></div></div>';
+  private instance: Internationalization = new Internationalization();
+  private getTimeString(value: Date) {
+    return this.instance.formatDate(value, { skeleton: 'hm' });
+  }
+
+  private eventTemplate(props): JSX.Element {
+    return (<div className="template-wrap" style={{ background: props.SecondaryColor }}>
+      <div className="subject" style={{ background: props.PrimaryColor }}>{props.Subject}</div>
+      <div className="time" style={{ background: props.PrimaryColor }}>
+        Time: {this.getTimeString(props.StartTime)} - {this.getTimeString(props.EndTime)}</div>
+      <div className="image"><img src={"src/schedule/images/" + props.ImageName + ".svg"} alt={props.ImageName} /></div>
+      <div className="event-description">{props.Description}</div>
+      <div className="footer" style={{ background: props.PrimaryColor }}></div></div>
+    );
+  }
+  private timelineEventTemplate(props): JSX.Element {
+    return (<div className="template-wrap" style={{ background: props.PrimaryColor }}>
+      <div className="subject" style={{ background: props.SecondaryColor, borderRightWidth: 15, borderLeftWidth: 15, borderLeftColor: props.PrimaryColor, borderRightColor: props.PrimaryColor, borderLeftStyle: 'solid', borderRightStyle: 'solid' }}>{props.Subject}</div>
+    </div>
+    );
+  }
 
   render() {
     return (
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent cssClass='event-template' width='100%' height='550px' selectedDate={new Date(2018, 1, 15)}
-              currentView='Week' eventSettings={{ dataSource: this.data, template: this.eventTemplate }}>
+            <ScheduleComponent cssClass='event-template' width='100%' height='550px' selectedDate={new Date(2018, 1, 15)} readonly={true}
+              startHour='08:00' endHour='18:00' workHours={{ start: '08:00' }} eventSettings={{ dataSource: this.data }}>
               <ViewsDirective>
-                <ViewsModelDirective option={Browser.isDevice ? 'Day' : 'Week'} />
+                <ViewDirective option={Browser.isDevice ? 'Day' : 'Week'} eventTemplate={this.eventTemplate.bind(this)} />
+                <ViewDirective option={Browser.isDevice ? 'TimelineDay' : 'TimelineWeek'} eventTemplate={this.timelineEventTemplate.bind(this)} />
               </ViewsDirective>
-              <Inject services={[Day, Week]} />
+              <Inject services={[Day, Week, TimelineViews, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -48,9 +58,9 @@ export class EventTemplate extends SampleBase<{}, {}> {
         out and shaded with specific color based on its status.</p>
         </div>
         <div id='description'>
-          <p>With the usage of template, 
-            the user can format and change the default appearance of the events by making use of the <code>template</code> option 
-            which is available within the <code>eventSettings</code> property. 
+          <p>With the usage of template,
+            the user can format and change the default appearance of the events by making use of the <code>template</code> option
+            which is available within the <code>eventSettings</code> property.
         Here, the HTML template design is compiled and then the resultant output will be displayed directly on the events.
           </p>
         </div>

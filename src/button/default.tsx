@@ -42,7 +42,7 @@ export class Default extends SampleBase<{}, {}> {
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                            <ButtonComponent cssClass='e-flat'>Flat</ButtonComponent>
+                            <ButtonComponent cssClass='e-flat e-primary'>Flat</ButtonComponent>
                         </div>
                     </div>
 
@@ -72,14 +72,14 @@ export class Default extends SampleBase<{}, {}> {
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                            <ButtonComponent cssClass='e-flat' ref={(scope) => { this.btnobj = scope; }} iconCss='e-icons e-play-icon' 
+                            <ButtonComponent cssClass='e-flat e-primary' ref={(scope) => { this.btnobj = scope; }} iconCss='e-icons e-play-icon' 
                             isToggle onClick={ this.btnClick.bind(this) }>Play</ButtonComponent>
                         </div>
                     </div>
 
                     <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                            <ButtonComponent cssClass='e-flat' iconCss='e-icons e-open-icon' iconPosition='Right'>Open</ButtonComponent>
+                            <ButtonComponent cssClass='e-flat e-primary' iconCss='e-icons e-open-icon' iconPosition='Right'>Open</ButtonComponent>
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">

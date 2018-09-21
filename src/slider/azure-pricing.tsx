@@ -477,7 +477,7 @@ export class Cloudpricing extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className="col-lg-10 control-section">
-                    <div className="content-wrapper">
+                    <div className="cloud-content-wrapper">
                         <div id="pricing-slider" className="pricing-slider">
                             <style>{slidercss}</style>
                             <div className="row">
@@ -539,7 +539,7 @@ export class Cloudpricing extends SampleBase<{}, {}> {
                                         <div className="slider-button">
                                             <ButtonComponent className="dlgbtn" id="btn" isPrimary={true} onClick={this.btnClick.bind(this)} ref={(button) => { this.buttonObj = button }}>Signup Now!</ButtonComponent>
                                         </div>
-                                        <div id="dialogWrapper" className="content-wrapper">
+                                        <div id="dialogWrapper" className="cloud-content-wrapper">
                                             {/* Initialize alert Dialog  */}
                                             <DialogComponent id="alertDialog" animationSettings={this.animationSettings} width='360px' content={this.content} ref={(alertdialog) => { this.alertDialogObj = alertdialog }} showCloseIcon={false}
                                                 target={this.target} visible={false} buttons={this.buttons} closeOnEscape={false}></DialogComponent>

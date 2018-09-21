@@ -1,0 +1,17 @@
+#rte .rte-control-section {
+    margin: 0 auto;
+}
+
+#rte {
+    overflow: hidden;
+}
+
+#rte .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rte .content-wrapper {
+    width: auto;
+    margin: 0;
+}

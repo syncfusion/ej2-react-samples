@@ -1,0 +1,47 @@
+#progress-button-control {
+    width: 100%;
+    margin: 8% 0;
+    text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+    #progress-button-control {
+        margin-left: -11%;
+    }
+}
+
+.progress-button-section {
+    width: 80%;
+    margin: auto;
+}
+
+#progress-button-control .col-xs-12 {
+    margin: 18px 0;
+}
+
+#contract.e-progress-active .e-btn-content {
+    display: none;
+}
+
+#contract {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1) 100ms;
+}
+
+.e-progress-btn .e-play-icon::before {
+    content: '\e798';
+    font-size: 12px;
+}
+
+.e-bigger .e-progress-btn .e-play-icon::before {
+    font-size: 14px;
+}
+
+.e-progress-btn .e-download-icon::before {
+    content: '\e824';
+}
+
+.fabric #roundbtn .e-play-icon,
+.bootstrap #roundbtn .e-play-icon,
+.highcontrast #roundbtn .e-play-icon {
+    margin-top: -2px;
+}

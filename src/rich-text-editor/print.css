@@ -1,0 +1,13 @@
+#rtePrint .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rtePrint {
+    overflow: hidden;
+}
+
+#rtePrint .content-wrapper {
+    width: auto;
+    margin: 0;
+}
