@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DateRangePickerComponent, PresetsDirective, PresetDirective } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
-import './daterangepicker-component.css';
+import './preset-style.css';
 
 export class Presets extends SampleBase<{}, {}> {
     public today: Date = new Date(new Date().toDateString());
@@ -29,6 +29,19 @@ export class Presets extends SampleBase<{}, {}> {
                             </PresetsDirective>
                         </DateRangePickerComponent>
                     </div>
+                </div>
+                <div id="action-description">
+                    <p>
+                        Click/Touch the DateRangePicker popup icon to view and select the list of custom preset ranges. Select the custom range option which is provided at the end of this list to open date range picker popup calendar for selecting custom ranges.
+		            </p>
+                </div>
+                <div id='description'>
+                    <p>
+                        The <code>DateRangePicker</code> component has presets support to display the collection of required ranges in the popup element. User can select a required range from the list and the selected range value will be updated in the component.
+		</p>
+                    <p>More information on the DateRangePicker presets support can be found in the
+        <a href="https://ej2.syncfusion.com/react/documentation/daterangepicker/customization/#preset-ranges" target="_blank">documentation section</a>.
+		</p>
                 </div>
             </div>
         )

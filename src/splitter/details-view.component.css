@@ -1,0 +1,65 @@
+.details-view .e-avatar.e-avatar-xlarge {
+    font-size: 22px;
+}
+.details-view .header-image {
+    text-align: center;
+    margin-top: 7px;
+}
+.details-view .e-custom-card .e-avatar {
+    font-size: 40px;
+    position: absolute;
+    top: calc(0% - 1.5em);
+    left: calc(50% - 1.5em);
+    box-shadow: 0 16px 28px -8px rgba(0, 0, 0, .36), 0 4px 15px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+}
+.details-view {
+    margin: 20px auto;
+    max-width: 710px;
+}
+/* ListView template customization */
+
+.splitter-list .e-content .e-list-parent .e-list-item .e-list-wrapper .showUI {
+    display: flex;
+}
+.splitter-list .e-content .e-list-parent .e-list-item .e-list-wrapper .hideUI {
+    display: none;
+}
+.splitter-list .e-content .e-list-parent .e-list-item {
+    padding: 3px 0;
+}
+.splitter-list .e-content .e-list-parent .e-list-item .e-list-wrapper .R {
+    background: lightgrey;
+}
+.splitter-list .e-content .e-list-parent .e-list-item .e-list-wrapper .M {
+    background: lightblue;
+}
+
+.highcontrast .splitter-list .e-content .e-list-parent .e-list-item.e-active {
+    background: #ffd939;
+    color: #000000;
+}
+.details-view table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: calc(100% - 20px);
+    margin: 10px;
+}
+.details-view table th,
+.details-view table td {
+    font-weight: normal;
+    padding: 5px;
+    text-align: left;
+    border: 1px solid #ddd
+}
+.details-view .e-bold {
+    font-weight: 550;
+}
+.details-view .profile-name {
+    font-weight: 550;
+    font-size: 14px;
+    text-align: center;
+}
+
+#detailSplitter #ui-list .e-listview {
+    border: none;
+}

@@ -109,7 +109,7 @@ gulp.task('generate-router', function (done) {
         var routes = ''
         var path = file.slice(0, file.lastIndexOf('/'));
         var compName = path.slice(path.lastIndexOf('/') + 1);
-        var componentName = compName.replace('-', '');
+        var componentName = compName.replace(/-/g, '');
         var curfile = JSON.stringify(fs.readFileSync(file, 'utf8'));
         var trimmedFile = curfile.replace(/\\n|\\r/g, '');
         routeconfig = trimmedFile.match(configRegex)[1];

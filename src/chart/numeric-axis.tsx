@@ -49,9 +49,6 @@ export class Numeric extends SampleBase<{}, {}> {
                         }}
                         load={this.load.bind(this)}
                         primaryYAxis={{
-                            minimum: 0,
-                            maximum: 25,
-                            interval: 5,
                             majorGridLines: { width: 0 },
                             majorTickLines: { width: 0 },
                             lineStyle: { width: 0 },
@@ -119,7 +116,7 @@ export class Numeric extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
           if (selectedTheme === 'highcontrast') {
                args.chart.series[0].fill = '#57BCFF';
                args.chart.series[1].fill = '#E58184';

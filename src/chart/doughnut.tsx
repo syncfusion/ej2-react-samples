@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import {
-    AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, AccumulationTooltip, IAccLoadedEventArgs,
+    AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, IAccLoadedEventArgs,
     AccumulationDataLabel, Inject, AccumulationTheme
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
@@ -22,14 +22,15 @@ export class AccumulationDoughnut extends SampleBase<{}, {}> {
                     <AccumulationChartComponent id="pie-chart"
                         title='Project Cost Breakdown'
                         legendSettings={{
-                            visible: false
+                            visible: true,
+                            position: 'Top'
                         }}
                         enableSmartLabels={true}
                         load={this.load.bind(this)}
-                        tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
+                        tooltip={{ enable: false }}
                         loaded={this.onChartLoad.bind(this)}
                     >
-                        <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
+                        <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel]} />
                         <AccumulationSeriesCollectionDirective>
                             <AccumulationSeriesDirective name='Project' dataSource={data1} xName='x' yName='y' innerRadius='40%' startAngle={0}
                                 endAngle={360} radius='70%' explode={true} explodeOffset='10%' explodeIndex={3}
@@ -69,6 +70,7 @@ export class AccumulationDoughnut extends SampleBase<{}, {}> {
     public load(args: IAccLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").
+        replace(/light/i, "Light")  as AccumulationTheme;
     };
 }

@@ -44,7 +44,7 @@ export class SplineInversed extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         width={Browser.isDevice ? '100%' : '60%'}
                         chartArea={{ border: { width: 0 } }}
-                        primaryYAxis={{ minimum: -5, maximum: 35, interval: 10, labelFormat: '{value}°C', majorGridLines: { width: 0 } }}
+                        primaryYAxis={{ labelFormat: '{value}°C', majorGridLines: { width: 0 } }}
                         tooltip={{ enable: true, format: '${series.name} (°c) <br>${point.x} : ${point.y}' }}
                         title='Climate Graph - 2012' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[SplineSeries, Category, Legend, Tooltip]} />
@@ -99,6 +99,6 @@ export class SplineInversed extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

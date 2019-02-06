@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    AreaSeries, DateTime, Legend, Zoom, ILoadedEventArgs, ChartTheme
+    AreaSeries, DateTime, Legend, Zoom, ILoadedEventArgs, ChartTheme, ScrollBar
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
@@ -67,10 +67,10 @@ export class Zooming extends SampleBase<{}, {}> {
                         legendSettings={{ visible: false }}
                         zoomSettings={{
                             enableMouseWheelZooming: true, enablePinchZooming: true,
-                            enableSelectionZooming: true, mode: 'X'
+                            enableSelectionZooming: true, mode: 'X', enableScrollbar: true
                         }}
                         title='Sales History of Product X' loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[AreaSeries, DateTime, Legend, Zoom]} />
+                        <Inject services={[AreaSeries, DateTime, Legend, Zoom, ScrollBar]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} xName='x' yName='y' name='Product X' border={{ width: 0.5, color: '#00bdae' }}
                                 animation={{ enable: false }} fill='url(#gradient-chart)' type='Area'>
@@ -132,6 +132,6 @@ export class Zooming extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

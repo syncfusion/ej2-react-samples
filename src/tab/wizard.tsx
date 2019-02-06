@@ -37,6 +37,7 @@ export class Wizard extends SampleBase<{}, {}> {
   public dateMax: Date = new Date(this.today.getTime() + 60 * 24 * 60 * 60 * 1000);
   public fields: Object = { id: "id", text: "text", value: "text" };
   public autoCompleteFields: Object = { text: 'name', value: 'name' };
+  public dateValue = new Date();
 
   public headerText: any = [
     { "text": "New Booking" },
@@ -85,11 +86,6 @@ export class Wizard extends SampleBase<{}, {}> {
   public dlgCreated(): void {
     let proxy: any = this;
     proxy.hide();
-  }
-
-  public focusIn(): void {
-    let proxy: any = this;
-    proxy.show();
   }
 
   public tabSelected(e: SelectEventArgs): void {
@@ -251,7 +247,7 @@ export class Wizard extends SampleBase<{}, {}> {
                 </div>
                 <div className="row">
                   <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-                    <DatePickerComponent ref={calendar => this.journeyDate = calendar} width='100%' placeholder='Journey Date' floatLabelType='Auto' min={this.dateMin} max={this.dateMax} focus={this.focusIn}></DatePickerComponent>
+                    <DatePickerComponent ref={calendar => this.journeyDate = calendar} width='100%' placeholder='Journey Date' floatLabelType='Auto' min={this.dateMin} max={this.dateMax} value={this.dateValue}></DatePickerComponent>
                   </div>
                   <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
                     <DropDownListComponent ref={dropdownlist => this.ticketType = dropdownlist} dataSource={this.quotas} placeholder='Ticket type' floatLabelType='Auto' fields={this.fields}></DropDownListComponent>
@@ -380,7 +376,7 @@ export class Wizard extends SampleBase<{}, {}> {
                 <TabItemDirective header={this.headerText[3]} content={"#confirm"} disabled={true} />
               </TabItemsDirective>
             </TabComponent>
-            <DialogComponent ref={dialog => this.alertDlg = dialog} header="Success" width={250} isModal={true} visible={false} content='Your payment successfully processed' target={this.dlgTarget} buttons={this.dlgButtons} created={this.dlgCreated}></DialogComponent>
+            <DialogComponent ref={dialog => this.alertDlg = dialog} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content='Your payment successfully processed' target={this.dlgTarget} buttons={this.dlgButtons} created={this.dlgCreated}></DialogComponent>
           </div >
         </div >
         <div id="action-description">
@@ -390,13 +386,13 @@ export class Wizard extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-            Tab items can be disabled dynamically by passing the index and boolean value to the <a target="_blank" href="http://ej2.syncfusion.com/documentation/tab/api-tab.html?lang=typescript#enabletab">enableTab</a> method.
+            Tab items can be disabled dynamically by passing the index and boolean value to the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tab/#enabletab">enableTab</a> method.
           </p>
           <p>
             You can design wizard like sample with Tab using the in-built API and customizing the content with proper validations.
           </p>
           <p>
-            More information about Tab can be found in this <a target="_blank" href="http://ej2.syncfusion.com/documentation/tab/getting-started.html"> documentation</a> section.
+            More information about Tab can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/"> documentation</a> section.
           </p>
         </div>
       </div >

@@ -1,18 +1,17 @@
+
 /**
  * Projection sample
  */
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
-    ProjectionType, MapsTooltip, Legend
+    ProjectionType, MapsTooltip, Legend, ITooltipRenderEventArgs
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { world_cup } from './MapData/SouthAmerica_Countries';
-import { World_Map } from './MapData/WorldMap';
-import { ITooltipRenderEventArgs } from "@syncfusion/ej2-react-circulargauge";
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -27,7 +26,7 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-md-12'>
-                        <MapsComponent id="maps" tooltipRender={this.tooltip} loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}
+                        <MapsComponent id="maps" tooltipRender={this.tooltipRender.bind(this)} loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}
                             zoomSettings={{
                                 enable: false
                             }}
@@ -48,14 +47,14 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[MapsTooltip, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={World_Map}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={world_cup}
+                                    dataSource={new MapAjax('./src/maps/map-data/tooltip-datasource.json')}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath: 'name',
-                                        template: '<div id="template" style="  max-width: 90px;background: rgba(53, 63, 76, 0.90); width:50px; opacity: 90%;background: rgba(53, 63, 76, 0.90);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.40);padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;border: 1px #abb9c6">'+
+                                        template: '<div id="tooltemplate" style="width: 90px;background: rgba(53, 63, 76, 0.90); opacity: 90%;background: rgba(53, 63, 76, 0.90);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.40);padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;border: 1px #abb9c6">'+
                                             '<div style="font-size:13px;color:#ffffff;font-weight: 500;"><center>${country}</center></div>'+
                                             '<hr style="margin-top: 2px;margin-bottom:5px;border:0.5px solid #DDDDDD">'+
                                             '<div><span style="font-size:13px;color:#cccccc">Finalist : </span><span style="font-size:13px;color:#ffffff;font-weight: 500;">${value1}</span></div>'+
@@ -119,8 +118,9 @@ export class TooltipMaps extends SampleBase<{}, {}> {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
-    public tooltip(args: ITooltipRenderEventArgs): void {
-        if (args.content.toString().indexOf('undefined') > -1) {
+    //tslint:disable
+    public tooltipRender(args: ITooltipRenderEventArgs): void {
+        if (!args.options['data']) {
             args.cancel = true;
         }
     }

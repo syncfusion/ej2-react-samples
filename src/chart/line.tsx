@@ -74,7 +74,7 @@ export class Line extends SampleBase<{}, {}> {
                 <div id="action-description">
                 <p>
                 This sample visualizes the consumer price data with default line series in the chart. 
-                Data points are enhanced with marker and tooltip
+                Data points are enhanced with marker and tooltip.
             </p>
                 </div>
                 <div id="description">
@@ -106,6 +106,7 @@ export class Line extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

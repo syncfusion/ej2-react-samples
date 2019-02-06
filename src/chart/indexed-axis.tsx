@@ -39,11 +39,15 @@ export class IndexedAxis extends SampleBase<{}, {}> {
         if (this.chartInstance.primaryXAxis.isIndexed) {
             this.chartInstance.series[0].type = 'Column';
             this.chartInstance.series[1].type = 'Column';
+            this.chartInstance.series[0].marker.visible = false;
+            this.chartInstance.series[1].marker.visible = false;
             this.chartInstance.primaryXAxis.labelRotation = 0;
             this.chartInstance.crosshair.line.width = 1;
         } else {
             this.chartInstance.series[0].type = 'Line';
             this.chartInstance.series[1].type = 'Line';
+            this.chartInstance.series[0].marker.visible = true;
+            this.chartInstance.series[1].marker.visible = true;
             this.chartInstance.primaryXAxis.labelRotation = 90;
             this.chartInstance.crosshair.line.width = 0;
         }
@@ -67,7 +71,6 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                                 isIndexed: true
                             }}
                             primaryYAxis={{
-                                minimum: 0, interval: 2, maximum: 8,
                                 title: 'GDP Growth Rate',
                                 labelFormat: '{value}%'
                             }}
@@ -79,10 +82,10 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                             <Inject services={[Legend, Category, LineSeries, ColumnSeries, Tooltip, Crosshair]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='2015' width={2}
-                                    type='Column' marker={{ visible: true, height: 10, width: 10 }}>
+                                    type='Column' marker={{ visible: false, height: 10, width: 10 }}>
                                 </SeriesDirective>
                                 <SeriesDirective dataSource={data2} xName='x' yName='y' name='2016' width={2}
-                                    type='Column' marker={{ visible: true, height: 10, width: 10 }}>
+                                    type='Column' marker={{ visible: false, height: 10, width: 10 }}>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>
@@ -130,6 +133,7 @@ export class IndexedAxis extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

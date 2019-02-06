@@ -1,0 +1,22 @@
+#rteIFrame .e-rte-content body{
+    color: black;
+    background-color: white;
+}
+
+.sb-header {
+    z-index: 100 !important;
+}
+
+#rteIFrame .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rteIFrame {
+    overflow: hidden;
+}
+
+#rteIFrame .content-wrapper {
+    width: auto;
+    margin: 0;
+}

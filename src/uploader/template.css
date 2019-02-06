@@ -48,12 +48,12 @@
     top: 4px;
 }
 
-.property-section.uploader-panel {
+.property-section.template-panel .property-panel-section {
     position: relative;
-    left: 5%;
+    padding-left: 30px;
 }
-.e-bigger .property-section.uploader-panel {
-    left: 6%;
+.e-bigger .property-section.template-panel .property-panel-section {
+     padding-left: 35px;
 }
 .template_wrapper .file-size {
     padding: 4px;
@@ -152,11 +152,9 @@
     border-radius: 2px;
 }
 .highcontrast #dropArea progress {
-    border: none;
     background-color: #000000;
 }
 .highcontrast .template_wrapper progress::-webkit-progress-bar {
-    border: none;
     background-color: #000000;
 }
 .material .template_wrapper progress::-webkit-progress-value {

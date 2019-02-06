@@ -1,0 +1,16 @@
+/**
+* ej2 Menu styles
+*/
+#apiMenu {
+    margin-top: 45px;
+    text-align: center;
+}
+
+.property-panel-content {
+    padding: 0 10px 10px 0;
+    overflow: auto;
+}
+
+.menu-section .property-panel-content .e-multiselect {
+    padding: 0;
+}

@@ -38,7 +38,7 @@ export class RangeBar extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <ChartComponent id='charts' style={{ textAlign: "center" }}
                         primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 } }}
-                        primaryYAxis={{ labelFormat: '{value}˚F', minimum: 0, maximum: 100, interval: 20, edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }}
+                        primaryYAxis={{ labelFormat: '{value}˚F', edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }}
                         title='Temperature Variation' loaded={this.onChartLoad.bind(this)}
                         load={this.load.bind(this)}
                         isTransposed={true}
@@ -91,6 +91,6 @@ export class RangeBar extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

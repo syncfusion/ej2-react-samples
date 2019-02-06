@@ -1,0 +1,23 @@
+
+
+#rteMarkdown .e-richtexteditor textarea.e-content {
+    float: left;
+}
+#rteMarkdown .e-richtexteditor .e-rte-content {
+    overflow: hidden;
+}
+#rteMarkdown .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e350';
+}
+#rteMarkdown .e-icon-btn .e-md-preview::before {
+    content: '\e345';
+}
+
+#rteMarkdown {
+    overflow: hidden;
+}
+
+#rteMarkdown .content-wrapper {
+    width: auto;
+    margin: 0;
+}

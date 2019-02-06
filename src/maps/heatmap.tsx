@@ -4,14 +4,15 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, MapsTooltip, Legend, Marker, MarkersDirective, MarkerDirective
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { India } from './MapData/India';
-import { population } from './MapData/IndiaPopulation';
+import * as data from './map-data/heatmap-datasource.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -70,14 +71,14 @@ export class HeatMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={India}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/india.json')}
                                     shapePropertyPath='NAME_1'
                                     shapeDataPath='Name'
-                                    dataSource={population}
+                                    dataSource={datasource.heatmap}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath:'population',
-                                        format: 'State: ${Name} <br> Population: ${population} <br>'
+                                        format: 'State: ${Name} <br> Population: ${population}'
                                     }}
                                     shapeSettings={{
                                         border: {

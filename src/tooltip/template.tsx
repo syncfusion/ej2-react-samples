@@ -9,9 +9,18 @@ import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2
 import { SampleBase } from '../common/sample-base';
 import './tooltip-sample.css';
 
-export class TemplateTooltip extends SampleBase<{}, {}> {
-  private tooltipInstance: TooltipComponent;
+interface tooltipComponentProps {
+  content : string;
+}
+interface tooltipComponentState {
+  content : string;
+}
+export class TemplateTooltip extends SampleBase<tooltipComponentProps, tooltipComponentState> {
 
+ constructor(props) { 
+  super(props);
+  this.state = { content : ''};
+}
   //Tooltip content customization.
   private onBeforeRender(args: TooltipEventArgs) {
     let data: any = [
@@ -30,7 +39,9 @@ export class TemplateTooltip extends SampleBase<{}, {}> {
     ];
     for (let i: number = 0; i < data.length; i++) {
       if (data[i].title === args.target.getAttribute('title')) {
-        this.tooltipInstance.content = '<h6>' + data[i].name + '</h6><p>' + data[i].note + '</p>';
+        this.setState({
+          content : '<h6>' + data[i].name + '</h6><p>' + data[i].note + '</p>'
+        });
       }
     }
   };
@@ -40,7 +51,7 @@ export class TemplateTooltip extends SampleBase<{}, {}> {
         <div className='control-section'>
 
           {/* Tooltip element */}
-          <TooltipComponent id="template-tootip" ref={t => this.tooltipInstance = t} target=".toolbar-container [title]" beforeRender={this.onBeforeRender.bind(this)} showTipPointer={false}
+          <TooltipComponent id="template-tootip" content={this.state.content} target=".toolbar-container [title]" beforeRender={this.onBeforeRender.bind(this)} showTipPointer={false}
             offsetX={70} width={170}>
             <div className="toolbar-container">
 

@@ -29,7 +29,9 @@ export class Pie extends SampleBase<{}, {}> {
               load={this.load.bind(this)}
               legendSettings={{ visible: false }}
               enableSmartLabels={true}
-              tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
+              enableAnimation={false}
+              center={{x: '50%', y: '50%'}}
+              tooltip={{ enable: false, format: '${point.x} : <b>${point.y}%</b>' }}
               loaded={this.onChartLoad.bind(this)}
             >
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
@@ -100,13 +102,37 @@ export class Pie extends SampleBase<{}, {}> {
                     </div>
                   </td>
                 </tr>
+                <tr style={{ height: '50px' }}>
+                  <td style={{ width: '30%' }}>
+                    <div>Center X
+                                <p id="xvalue" style={{ fontWeight: 'normal' }}>50%</p>
+                    </div>
+                  </td>
+                  <td style={{ width: '70%' }}>
+                    <div data-role="rangeslider">
+                      <input type="range" name="range-min" onChange={this.piecenterx.bind(this)} ref={s => this.slider = s} id="x" defaultValue="50" min="0" max="100" style={{ marginLeft: '-5px' }} />
+                    </div>
+                  </td>
+                </tr>
+                <tr style={{ height: '50px' }}>
+                  <td style={{ width: '30%' }}>
+                    <div>Center Y
+                                <p id="yvalue" style={{ fontWeight: 'normal' }}>50%</p>
+                    </div>
+                  </td>
+                  <td style={{ width: '70%' }}>
+                    <div data-role="rangeslider">
+                      <input type="range" name="range-min" onChange={this.piecentery.bind(this)} ref={s => this.slider = s} id="y" defaultValue="50" min="0" max="100" style={{ marginLeft: '-5px' }} />
+                    </div>
+                  </td>
+                </tr>
               </table>
             </PropertyPane>
           </div>
         </div>
         <div id="action-description">
         <p>
-        This sample demonstrates pie chart for mobile browser usage statistics. For pie chart, you can change start angle of chart by <code>Pie Angle</code> in properties panel. Outer radius for pie chart can be changed by <code>Outer Radius</code>. Explode Index and explode radius for chart can be changed by <code>Explode Radius</code> and <code>Explode Index</code>
+        This sample demonstrates pie chart for mobile browser usage statistics. <code>Datalabel</code> shows the Information about the points.
     </p>
         </div>
         <div id="description">
@@ -157,12 +183,31 @@ export class Pie extends SampleBase<{}, {}> {
     this.pie.refreshSeries();
     this.pie.refreshChart();
   };
+  public piecenterx(e: Event): void {
+    let x: string = (document.getElementById('x') as HTMLSelectElement).value;
+    this.pie.center.x = x + '%';
+    document.getElementById('xvalue').innerHTML = x + '%';
+    this.pie.series[0].animation.enable = false;
+    this.pie.removeSvg();
+    this.pie.refreshSeries();
+    this.pie.refreshChart();
+  };
+  public piecentery(e: Event): void {
+    let y: string = (document.getElementById('y') as HTMLSelectElement).value;
+    this.pie.center.y = y + '%';
+    document.getElementById('yvalue').innerHTML = y + '%';
+    this.pie.series[0].animation.enable = false;
+    this.pie.removeSvg();
+    this.pie.refreshSeries();
+    this.pie.refreshChart();
+  };
   public onChartLoad(args: IAccLoadedEventArgs): void {
     document.getElementById('pie-chart').setAttribute('title', '');
   };
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").
+    replace(/light/i, "Light") as AccumulationTheme;
   };
 }

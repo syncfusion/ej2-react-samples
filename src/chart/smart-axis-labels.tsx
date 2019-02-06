@@ -13,6 +13,7 @@ import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { fabricColors, bootstrapColors, materialColors, highContrastColors } from './theme-color';
+import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -31,7 +32,7 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
 export let data1: any[] = [{ x: 'South Korea', y: 39 }, { x: 'India', y: 61 },
 { x: 'Pakistan', y: 20 }, { x: 'Germany', y: 65 },
 { x: 'Australia', y: 16 }, { x: 'Italy', y: 29 },
-{ x: 'France', y: 45 }, { x: 'Saudi Arabia', y: 10 },
+{ x: 'France', y: 45 }, { x: 'United Arab Emirates', y: 10 },
 { x: 'Russia', y: 41 }, { x: 'Mexico', y: 31 },
 { x: 'Brazil', y: 76 }, { x: 'China', y: 51 }];
 
@@ -41,6 +42,8 @@ const SAMPLE_CSS = `
 	}`;
 export class SmartAxisLabels extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
+    private widthElement: NumericTextBoxComponent;
+    private checkElement: HTMLInputElement;
     private dropElement: DropDownListComponent;
     private droplist: { [key: string]: Object }[] = [
         { value: 'Hide' },
@@ -61,6 +64,15 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
         this.chartInstance.series[0].animation.enable = false;
         this.chartInstance.refresh();
     };
+    private trim(): void {
+        this.chartInstance.primaryXAxis.enableTrim = this.checkElement.checked;
+        this.chartInstance.refresh();
+    };
+    private xwid(): void {
+        this.chartInstance.primaryXAxis.maximumLabelWidth = this.widthElement.value;
+        this.chartInstance.series[0].animation.enable = false;
+        this.chartInstance.refresh();
+    }
     private xpos(): void {
         this.chartInstance.primaryXAxis.labelPosition = this.posElement.value as AxisPosition;
         this.chartInstance.refresh();
@@ -141,6 +153,24 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                 </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '60%' }}>
+                                        <div>Enable Trim:</div>
+                                    </td>
+                                    <td style={{ width: '40%' }}>
+                                        <div>
+                                            <input type="checkbox" id="trimmode" defaultChecked={false} onChange={this.trim.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.checkElement = d} />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '60%' }}>
+                                        <div>Maximum Label Width:</div>
+                                    </td>
+                                    <td style={{ padding: 10, width: '40%' }}>
+                                        <NumericTextBoxComponent width={120} value={34} min={1} change={this.xwid.bind(this)} ref={d => this.widthElement = d} />
+                                    </td>
+                                </tr>
                             </table>
                         </PropertyPane>
                     </div>
@@ -190,6 +220,6 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

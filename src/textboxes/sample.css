@@ -1,5 +1,5 @@
 .control-section.input-content-wrapper .e-input-picture:before {
-    content: '\e7b3';
+    content: '\e335';
     font-family: e-icons;
 }
 
@@ -10,13 +10,17 @@
 }
 
 .control-section.input-content-wrapper .e-input-group.e-small { /* csslint allow: adjoining-classes */
-    padding-top: 5px;
+    padding-top: 0px;
 }
 
 .control-section.input-content-wrapper .control-label {
     font-size: 12px;
     opacity: 0.54;
     padding:24px 0 0;
+}
+
+.control-section.input-content-wrapper div.row {
+    padding: 0 30px;
 }
 
 @media only screen and (max-width: 480px) {
@@ -28,7 +32,7 @@
         width: 100%;
     }
 	.control-section.input-content-wrapper div.row {
-        padding: 0px 15px;
+        padding: 0 15px;
     }
 }
 
@@ -61,8 +65,7 @@
 }
 
  @media only screen and (max-width: 480px) {
-        .control-section.input-content-wrapper .content-wrapper,
-        {
+        .control-section.input-content-wrapper .content-wrapper {
             width: 92%;
         }
         .control-section.input-content-wrapper .col-xs-6,
@@ -73,3 +76,7 @@
         }
         
     }
+
+.control-section.input-content-wrapper .col-xs-12.col-sm-12.col-lg-12.col-md-12 {
+    padding: 0px 15px;
+}

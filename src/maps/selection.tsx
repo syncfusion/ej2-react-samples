@@ -4,14 +4,13 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, IShapeSelectedEventArgs, Selection, Highlight, MapsTooltip, Legend
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { usMap } from './MapData/USA';
-import { electionData } from './MapData/ElectionData';
 import { ChartComponent, StackingBarSeries, Category, DataLabel, SeriesCollectionDirective, SeriesDirective } from '@syncfusion/ej2-react-charts';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 const SAMPLE_CSS = `
@@ -118,10 +117,10 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[MapsTooltip, Selection, Highlight, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={usMap}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='State'
-                                    dataSource={electionData}
+                                    dataSource={new MapAjax('./src/maps/map-data/selection-datasource.json')}
                                     tooltipSettings={{
                                         visible: false
                                     }}

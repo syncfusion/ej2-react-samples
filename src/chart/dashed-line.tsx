@@ -81,10 +81,10 @@ export class DashedLine extends SampleBase<{}, {}> {
                         primaryYAxis={{
                             labelFormat: '{value}%',
                             rangePadding: 'None',
+                            lineStyle: { width: 0 },
                             minimum: 0,
                             maximum: 40,
                             interval: 10,
-                            lineStyle: { width: 0 },
                             majorTickLines: { width: 0 },
                             minorTickLines: { width: 0 }
                         }}
@@ -146,6 +146,7 @@ export class DashedLine extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

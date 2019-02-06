@@ -4,14 +4,15 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, Legend,
-    ProjectionType, MarkersDirective, MarkerDirective
+    ProjectionType, MarkersDirective, MarkerDirective, IResizeEventArgs
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { AccumulationChart, PieSeries, AccumulationTooltip, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective } from '@syncfusion/ej2-react-charts';
-import { world_continent } from './MapData/Continent';
+
 AccumulationChart.Inject(PieSeries, AccumulationTooltip);
 const SAMPLE_CSS = `
     .control-fluid {
@@ -27,7 +28,7 @@ export class PieMaps extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-md-12'>
-                        <MapsComponent id="maps" loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}
+                        <MapsComponent id="maps" resize={this.resize.bind(this)} loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}
                             titleSettings= {{
                                 text: 'Top 6 largest countries age group details',
                                 textStyle: {
@@ -45,7 +46,7 @@ export class PieMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={world_continent}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/continent.json')}
                                     shapeSettings={{
                                         fill: '#E5E5E5',
                                         colorMapping: [
@@ -136,6 +137,7 @@ export class PieMaps extends SampleBase<{}, {}> {
             </div>
         )
     }
+    public chartCollection: AccumulationChart[] = [];
     public onMapsLoad(args: ILoadedEventArgs): void {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
@@ -165,6 +167,7 @@ export class PieMaps extends SampleBase<{}, {}> {
         ]
         });
         chart.appendTo('#marker1');
+        this.chartCollection.push(chart);
         let chart1: AccumulationChart = new AccumulationChart({
             background: 'transparent',
             width: '70',
@@ -191,6 +194,7 @@ export class PieMaps extends SampleBase<{}, {}> {
         ]
         });
         chart1.appendTo('#marker2');
+        this.chartCollection.push(chart1);
         let chart2: AccumulationChart = new AccumulationChart({
             background: 'transparent',
             width: '70',
@@ -217,6 +221,7 @@ export class PieMaps extends SampleBase<{}, {}> {
             ]
         });
         chart2.appendTo('#marker3');
+        this.chartCollection.push(chart2);
         let chart3: AccumulationChart = new AccumulationChart({
             background: 'transparent',
             width: '70',
@@ -243,6 +248,7 @@ export class PieMaps extends SampleBase<{}, {}> {
             ]
         });
         chart3.appendTo('#marker4');
+        this.chartCollection.push(chart3);
         let chart4: AccumulationChart = new AccumulationChart({
             background: 'transparent',
             width: '70',
@@ -269,6 +275,7 @@ export class PieMaps extends SampleBase<{}, {}> {
             ]
         });
         chart4.appendTo('#marker5');
+        this.chartCollection.push(chart4);
         let chart5: AccumulationChart = new AccumulationChart({
             background: 'transparent',
             width: '70',
@@ -296,10 +303,16 @@ export class PieMaps extends SampleBase<{}, {}> {
             ]
         });
         chart5.appendTo('#marker6');
+        this.chartCollection.push(chart5);
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    public resize(args: IResizeEventArgs): void {
+		for (let i: number = 0; i < this.chartCollection.length; i++) {			
+			this.chartCollection[i].destroy();
+		}
+	}
 }

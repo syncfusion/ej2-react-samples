@@ -1,55 +1,54 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, ViewsDirective, ViewsModelDirective, View, Day, Week, WorkWeek, Month, RenderCellEventArgs, EventRenderedArgs, Inject } from '@syncfusion/ej2-react-schedule';
-import { scheduleData, applyCategoryColor } from './datasource';
+import {
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, TimelineMonth,
+  RenderCellEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
+} from '@syncfusion/ej2-react-schedule';
+import { applyCategoryColor } from './helper';
 import './date-header-template.css';
 import { Internationalization, extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { DataManager, Query } from '@syncfusion/ej2-data';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule date header template sample
  */
 
-let instance: Internationalization = new Internationalization();
-(window as TemplateFunction).getDateHeaderText = (value: Date) => {
-  return instance.formatDate(value, { skeleton: 'Ed' });
-};
-let getWeather: Function = (value: Date) => {
-  switch (value.getDay()) {
-    case 0:
-      return '<img class="weather-image" src="src/schedule/images/weather-clear.svg"/><div class="weather-text">25°C</div>';
-    case 1:
-      return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">18°C</div>';
-    case 2:
-      return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/><div class="weather-text">10°C</div>';
-    case 3:
-      return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">16°C</div>';
-    case 4:
-      return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/><div class="weather-text">8°C</div>';
-    case 5:
-      return '<img class="weather-image" src="src/schedule/images/weather-clear.svg"/><div class="weather-text">27°C</div>';
-    case 6:
-      return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">17°C</div>';
-    default:
-      return null;
-  }
-};
-(window as TemplateFunction).getWeather = getWeather;
-
-interface TemplateFunction extends Window {
-  getDateHeaderText?: Function;
-  getWeather?: Function;
-}
-
 export class DateHeaderTemplate extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], scheduleData, null, true) as Object[];
-  private dateHeaderTemplate: string = '<div class="date-text">${getDateHeaderText(data.date)}</div>${getWeather(data.date)}';
+  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private instance: Internationalization = new Internationalization();
+  private getDateHeaderText(value: Date): string {
+    return this.instance.formatDate(value, { skeleton: 'Ed' });
+  }
+  private getWeather(value: Date) {
+    switch (value.getDay()) {
+      case 0:
+        return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" /><div class="weather-text">25°C</div>';
+      case 1:
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">18°C</div>';
+      case 2:
+        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/><div class="weather-text">10°C</div>';
+      case 3:
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">16°C</div>';
+      case 4:
+        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/><div class="weather-text">8°C</div>';
+      case 5:
+        return '<img class="weather-image" src="src/schedule/images/weather-clear.svg"/><div class="weather-text">27°C</div>';
+      case 6:
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">17°C</div>';
+      default:
+        return null;
+    }
+  }
+  private dateHeaderTemplate(props): JSX.Element {
+    return (<div><div>{this.getDateHeaderText(props.date)}</div><div className="date-text"
+      dangerouslySetInnerHTML={{ __html: this.getWeather(props.date) }}></div></div>);
+  }
   private onRenderCell(args: RenderCellEventArgs): void {
-    if (args.elementType === 'monthCells') {
+    if (args.elementType === 'monthCells' && this.scheduleObj.currentView === 'Month') {
       let ele: Element = document.createElement('div');
-      ele.innerHTML = getWeather(args.date);
+      ele.innerHTML = this.getWeather(args.date);
       (args.element).appendChild(ele.firstChild);
     }
   }
@@ -63,16 +62,17 @@ export class DateHeaderTemplate extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='550px' cssClass='schedule-date-header-template' ref={t => this.scheduleObj = t}
+            <ScheduleComponent width='100%' height='650px' cssClass='schedule-date-header-template' ref={t => this.scheduleObj = t}
               renderCell={this.onRenderCell.bind(this)} eventRendered={this.onEventRendered.bind(this)} selectedDate={new Date(2018, 1, 15)}
-              eventSettings={{ dataSource: this.data }} dateHeaderTemplate={this.dateHeaderTemplate}>
+              eventSettings={{ dataSource: this.data }} dateHeaderTemplate={this.dateHeaderTemplate.bind(this)}>
               <ViewsDirective>
-                <ViewsModelDirective option='Day' />
-                <ViewsModelDirective option='Week' />
-                <ViewsModelDirective option='WorkWeek' />
-                <ViewsModelDirective option='Month' />
+                <ViewDirective option='Day' />
+                <ViewDirective option='Week' />
+                <ViewDirective option='WorkWeek' />
+                <ViewDirective option='Month' />
+                <ViewDirective option='TimelineMonth' />
               </ViewsDirective>
-              <Inject services={[Day, Week, WorkWeek, Month]} />
+              <Inject services={[Day, Week, WorkWeek, Month, TimelineMonth, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>

@@ -25,6 +25,7 @@ export class Funnel extends SampleBase<{}, {}> {
           <div className='col-lg-9'>
             <AccumulationChartComponent id='funnel-chart' ref={funnel => this.funnel = funnel}
               title='Website Visitors'
+              legendSettings={{ toggleVisibility: false }}
               load={this.load.bind(this)}
               tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               resized={this.onChartResized.bind(this)}
@@ -117,7 +118,8 @@ export class Funnel extends SampleBase<{}, {}> {
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+    args.accumulation.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+    replace(/-dark/i, "Dark") as AccumulationTheme;
     if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
       args.accumulation.series[0].width = '80%';
       args.accumulation.series[0].height = '70%';

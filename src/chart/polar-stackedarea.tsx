@@ -57,11 +57,6 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
                                 interval: 1,
                                 coefficient: Browser.isDevice ? 80 : 100
                             }}
-                            primaryYAxis={{
-                                minimum: 0,
-                                interval: 5000,
-                                maximum: 20000
-                            }}
                             load={this.load.bind(this)}
                             title="GDP, Current Prices (in Billions)" loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[StackingAreaSeries, Legend, Category, PolarSeries, RadarSeries, Tooltip]} />
@@ -128,6 +123,6 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

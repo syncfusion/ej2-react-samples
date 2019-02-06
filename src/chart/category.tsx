@@ -25,14 +25,14 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     }
 };
 export let data: any[] = [
-    { x: 'GER', y: 72 },
-    { x: 'RUS', y: 103.1 },
-    { x: 'BRZ', y: 139.1 },
-    { x: 'IND', y: 462.1 },
-    { x: 'CHN', y: 721.4 },
-    { x: 'USA', y: 286.9 },
-    { x: 'GBR', y: 115.1 },
-    { x: 'NGR', y: 97.2 },
+    { x: 'Germany', y: 72, country: 'GER: 72'},
+    { x: 'Russia', y: 103.1, country: 'RUS: 103.1'},
+    { x: 'Brazil', y: 139.1, country: 'BRZ: 139.1'},
+    { x: 'India', y: 462.1, country: 'IND: 462.1'},
+    { x: 'China', y: 721.4, country: 'CHN: 721.4'},
+    { x: 'United States Of America', y: 286.9, country: 'USA: 286.9'},
+    { x: 'Great Britain', y: 115.1, country: 'GBR: 115.1'},
+    { x: 'Nigeria', y: 97.2, country: 'NGR: 97.2'},
 ];
 
 const SAMPLE_CSS = `
@@ -56,7 +56,8 @@ export class CategoryAxis extends SampleBase<{}, {}> {
                         primaryXAxis={{
                             title: 'Country',
                             valueType: 'Category',
-                            majorGridLines: { width: 0 }
+                            majorGridLines: { width: 0 },
+                            enableTrim: true,
                         }}
                         primaryYAxis={{
                             minimum: 0,
@@ -76,10 +77,10 @@ export class CategoryAxis extends SampleBase<{}, {}> {
                         legendSettings={{ visible: false }}
                         title={Browser.isDevice ? 'Internet Users in Million – 2016' : 'Internet Users – 2016'}
                         pointRender={pointRender} loaded={this.onChartLoad.bind(this)}
-                        tooltip={{ enable: true, format: '${point.x} : ${point.y}' }}>
+                        tooltip={{ enable: true, format: '${point.tooltip}' }}>
                         <Inject services={[BarSeries, Legend, Tooltip, DataLabel, Category]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} xName='x' yName='y' type='Bar' width={2}
+                            <SeriesDirective dataSource={data} xName='x' yName='y' type='Bar' width={2} tooltipMappingName='country'
                                 marker={{
                                     dataLabel: {
                                         visible: true,
@@ -131,6 +132,7 @@ export class CategoryAxis extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

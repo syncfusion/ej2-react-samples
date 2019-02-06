@@ -1,0 +1,4 @@
+div#target.control-section.dialog-draggable {
+    overflow: visible;
+    min-height: 350px;
+}

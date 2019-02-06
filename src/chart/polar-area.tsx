@@ -57,9 +57,6 @@ export class PolarArea extends SampleBase<{}, {}> {
                             }}
                             primaryYAxis={{
                                 title: 'Revenue in Millions',
-                                minimum: 0,
-                                maximum: 4,
-                                interval: 1,
                                 labelFormat: '{value}M'
                             }}
                             load={this.load.bind(this)}
@@ -126,6 +123,6 @@ export class PolarArea extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

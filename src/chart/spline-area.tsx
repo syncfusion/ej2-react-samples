@@ -57,11 +57,9 @@ export class SplineArea extends SampleBase<{}, {}> {
                             edgeLabelPlacement: 'Shift'
                         }}
                         primaryYAxis={{
-                            minimum: 0,
-                            maximum: 4,
-                            interval: 1,
                             labelFormat: '{value}%',
                             lineStyle: { width: 0 },
+                            maximum: 4, interval: 1,
                             majorTickLines: { width: 0 },
                             minorTickLines: { width: 0 }
                         }}
@@ -116,6 +114,6 @@ export class SplineArea extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

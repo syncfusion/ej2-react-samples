@@ -55,11 +55,9 @@ export class StepLine extends SampleBase<{}, {}> {
                         }}
                         load={this.load.bind(this)}
                         primaryYAxis={{
-                            minimum: 0,
-                            maximum: 20,
                             lineStyle: { width: 0 },
-                            majorTickLines: { width: 0 },
                             interval: 5,
+                            majorTickLines: { width: 0 },
                             labelFormat: '{value}%'
                         }}
                         width={Browser.isDevice ? '100%' : '60%'}
@@ -113,6 +111,6 @@ export class StepLine extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

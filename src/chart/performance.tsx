@@ -45,7 +45,7 @@ export class Performance extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
     render() {
         return (
@@ -87,7 +87,7 @@ export class Performance extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample demonstrates the performance of EJ2 chart to render 100K points
+                This sample demonstrates the performance of EJ2 chart to render 100K points.
             </p>
                 </div>
                 <div id="description">

@@ -4,15 +4,13 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Marker, MarkerDirective, Zoom, DataLabel, MarkersDirective, MapsTooltip
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { usMap } from './MapData/USA';
-import { California } from './MapData/California';
-import { Texas } from './MapData/Texas';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -65,7 +63,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, Zoom, DataLabel, Marker, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={usMap}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapeSettings={{
                                         fill: '#E5E5E5',
                                         border: {
@@ -81,7 +79,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                                     }}
                                 >
                                 </LayerDirective>
-                                <LayerDirective shapeData={California} type='SubLayer'
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/california.json')} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.6)',
@@ -128,7 +126,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
 
                                 </LayerDirective>
 
-                                <LayerDirective shapeData={Texas} type='SubLayer'
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/texas.json')} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.5)',

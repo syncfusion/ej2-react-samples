@@ -1,0 +1,55 @@
+.rte-event-panel #EventLog b{
+    color: #388e3c;
+    word-break: normal;
+}
+.rte-event-panel hr {
+    margin: 1px 10px 1px 0px;
+    border-top: 1px solid #eee;
+}
+.rte-event-panel .eventarea {
+    height: 245px;
+    overflow: auto;
+}
+.rte-event-panel .evtbtn {
+    padding-bottom: 10px;
+}
+.rte-control-section {
+    margin: 0 auto;
+}
+
+.property-section .right-side {
+    padding-left: 10px;
+}
+
+.property-section .left-side {
+    padding: 5px;
+    width: 25%
+}
+
+.sb-header {
+    z-index: 100 !important;
+}
+
+#rteEvent .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#rteEvent.control-section {
+    overflow: hidden;
+    padding-right: 10px;
+}
+
+#rteEvent .content-wrapper {
+    width: auto;
+    margin: 0;
+}
+
+#rteEventProperty .property-panel-content {
+    overflow: inherit;
+}
+
+#rteEventProperty .property-panel-header {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}

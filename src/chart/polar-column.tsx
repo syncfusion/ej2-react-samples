@@ -63,7 +63,7 @@ export class PolarColumn extends SampleBase<{}, {}> {
                                 interval :1
                             }}
                             primaryYAxis={{
-                                maximum: 250, interval: 50, minimum: 0, labelFormat: '{value}M'
+                                labelFormat: '{value}M'
                             }}
                             load={this.load.bind(this)}
                             title="Top 10 Mobile Markets by Number of Subscriptions" loaded={this.onChartLoad.bind(this)}
@@ -132,6 +132,6 @@ export class PolarColumn extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

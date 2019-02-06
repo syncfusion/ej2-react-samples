@@ -233,7 +233,7 @@
 }
 
 .e-icon-week:before {
-    content: '\e951';
+    content: "\e319";
 }
 
 .e-print:before {
@@ -245,22 +245,26 @@
 }
 
 .e-icon-year:before {
-    content: '\e812';
+    content: "\e318";
 }
 
 .e-reccurence-icon:before {
-    content: '\e80d';
+    content: "\e309";
     font-weight: 700;
 }
 
 .e-icon-day:before {
-    content: '\e970';
+    content: "\e322";
 }
 
 .e-tool-name {
     font-style: normal;
     font-size: 16px;
     cursor: default;
+}
+
+.tb-rtl-sample-section {
+    width: 100% !important;
 }
 
 .material .e-bigger .tbar-sample .e-toolbar .e-tbar-btn .e-icons {

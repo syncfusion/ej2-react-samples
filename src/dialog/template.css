@@ -1,5 +1,5 @@
 .material button#sendButton {
-    top: 4px;
+    top: 2px;
     position: relative;
 }
 .e-bigger.material button#sendButton {
@@ -24,17 +24,19 @@
     padding-left: 23px;
 }
 
-.target-element .e-dlg-header-content .e-btn.e-dlg-closeicon-btn,  .e-bigger .target-element .e-dialog .e-btn.e-dlg-closeicon-btn {
-    top: 16px;
+.target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn {
+    top: 5px;
+    left: -11px;
+}
+.e-bigger .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn {
+    top: 3px;
     left: -11px;
 }
 .target-element .e-dialog .e-dlg-header {
     position: relative;
-    top: 10px;
-    left: 7px;
 }
 .target-element .e-dialog .e-footer-content, .highcontrast.e-bigger .e-dialog .e-footer-content {
-    padding: 20px;
+    padding: 15px;
 }
 .target-element .e-dialog .e-dlg-content {
     padding: 0;
@@ -46,7 +48,9 @@
 .fabric button#sendbtn, .highcontrast button#sendbtn {
     top: -2px;
 }
-
+.fabric.e-bigger .target-element .e-dialog .e-footer-content .e-btn, .highcontrast.e-bigger .target-element .e-dialog .e-footer-content .e-btn {
+    margin-top: -3px;
+}
  .fabric .target-element input.e-input,  .highcontrast .target-element input.e-input {
     float: left;
     height: 35px;
@@ -66,12 +70,13 @@
 .target-element .e-open-icon::before {
     content: '\e782';
 }
-.target-element .e-dialog .e-dlg-header >img.img2 {
+#dlg-template {
+    display: inline-block;
+    padding: 0px 10px;
+    vertical-align: middle;
     height: 40px;
-    width: 40px;
-    border-radius: 50%;
+    line-height: 40px;
 }
-
 .target-element input.e-input {
     width: 75%;
     float: left;
@@ -82,7 +87,7 @@
 .target-element .e-icon-settings.e-icons {
     float: left;
     position: relative;
-    left: 16%;
+    left: 14%;
     top: -33px;
 }
 
@@ -121,25 +126,21 @@
     border-top: 0.5px solid #fff;
 }
 .highcontrast .target-element .dialogContent .dialogText { 
-    background-color: #bfbfbf;
+    background-color :  rgba(255,255,255,0.20);
 }
 .target-element .dialogContent {
     display: block;
     font-size: 15px;
     word-wrap: break-word;
     text-align: center;
-    color: #DCDCDC;
     font-style: italic;
     border-radius: 6px;
     padding: 3%;
     position: relative;
-    top: 25px;
+    top: 5px;
 }
 .e-bigger.e-dialog .e-dlg-content, .e-bigger .target-element .e-dialog .e-dlg-content {
     padding: 0;
-}
-.e-bigger .target-element .e-dialog .dialogContent {
-    top: 20px;
 }
 .bootstrap .target-element .dialogContent {
     top: 7px;
@@ -149,4 +150,43 @@
 }
 .target-element .e-dialog .e-dlg-header-content .e-icon-dlg-close {
   color: #fff;
+}
+.fabric .target-element .e-dialog .e-btn.e-dlg-closeicon-btn:hover span{
+    color: #8ECBFF;
+}
+.material .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+.material .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus {
+    background-color: rgba(255,255,255, 0.10);
+}
+.material .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:active .e-icon-dlg-close ,
+.material .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus .e-icon-dlg-close,
+.material .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover .e-icon-dlg-close {
+    color: #fff;
+}
+
+.e-bigger .target-element .e-dialog.e-rtl .e-dlg-header-content .e-dlg-closeicon-btn.e-btn {
+    top: 2px;
+    margin-left: 20px;
+}
+.target-element .e-dialog.e-rtl .e-dlg-header-content .e-dlg-closeicon-btn.e-btn {
+    top: 4px;
+    margin-left: 20px;
+}
+.target-element .e-rtl input.e-input {
+    width: 75%;
+    float: right;
+    margin-right: 9px;
+}
+.target-element .e-dialog .e-dlg-header-content .e-dlg-header .e-avatar.template-image {
+    background-image: url(src/dialog/images/1.png);
+    vertical-align: middle;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+}
+.control-section .target-element {
+    min-height: 350px;
+}
+.dlgbtn.dlgbtn-position {
+    position: absolute;
 }

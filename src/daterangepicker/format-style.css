@@ -1,0 +1,16 @@
+.daterangepicker-control-section {
+    max-width: 246px;
+    margin: 30px auto;
+    padding-top: 50px;
+}
+
+.daterangepicker-control-section.format {
+    max-width: 350px;
+}
+
+#format{
+    padding-bottom: 15px;
+    width: 200px;
+    left: 80px;
+    top: 40px;
+} 

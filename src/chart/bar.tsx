@@ -44,8 +44,6 @@ export class Bar extends SampleBase<{}, {}> {
                                 majorGridLines: { width: 0 }
                             }}
                             primaryYAxis={{
-                                minimum: 0,
-                                maximum: 3.2,
                                 labelFormat: '{value}B',
                                 edgeLabelPlacement: 'Shift',
                                 majorGridLines: { width: 0 },
@@ -125,7 +123,8 @@ export class Bar extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     };
 
 }

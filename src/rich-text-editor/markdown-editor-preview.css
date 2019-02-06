@@ -1,0 +1,45 @@
+#rtePreview .e-richtexteditor textarea.e-content#markdownPreview_editable-content {
+    float: left;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+#rtePreview #markdownPreview .e-richtexteditor .e-rte-content .e-content{
+    min-height: 150px;
+}
+
+#rtePreview #markdownPreview .e-richtexteditor .e-rte-content {
+    overflow: hidden;
+}
+
+#rtePreview .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e350';
+}
+
+#rtePreview .e-icon-btn .e-md-preview::before {
+    content: '\e345';
+}
+
+#rtePreview .e-rte-content #markdownPreviewhtml-preview.e-content {
+    float: right;
+    width: 50%;
+    overflow: auto;
+    height: inherit;
+    padding: 8px;
+    height: 100%;
+}
+
+#rtePreview #markdownPreview .e-rte-content .e-content.e-pre-source {
+    width: 100%;
+}
+
+.sb-header {
+    z-index: 100 !important;
+}
+
+#rtePreview {
+    overflow: hidden;
+}
+
+#rtePreview .content-wrapper {
+    width: auto;
+    margin: 0;
+}

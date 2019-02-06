@@ -7,17 +7,9 @@ import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
 import './template.css';
-import { dataSource } from './newsData';
+import { dataSource } from './listData';
 
 export class Template extends SampleBase<{}, {}> {
-
-    private template: string = '<div id="postContainer" ${if(category!==null)} class = "clearfix desc"${else}'
-        + 'class = "clearfix" ${/if}> ${if(imgSrc!=="")} <div id="postImg"> <img src=${imgSrc} /> </div>'
-        + '${/if}  <div id="content"> <div id="heading">${title} </div>'
-        + '<div class="description" >${description} </div> ${if(timeStamp!=="")}  <div id="info"><div id="logo"> <div id="share">'
-        + '<span class="share"></span> </div> <div id="comments"> <span class="comments"></span> </div>'
-        + '<div id="bookmark"> <span class="bookmark"></span> </div></div> <div class="timeStamp">'
-        + '${timeStamp} </div> ${/if} </div> </div></div>';
 
     private listviewInstance: ListViewComponent;
     //Customizing the elements to perform our own events
@@ -26,6 +18,29 @@ export class Template extends SampleBase<{}, {}> {
     private bookmark: any;
     private description: any;
     private timeStamp: any;
+
+    listTemplate(data: any): JSX.Element {
+        return (
+
+            <div className={data.category !== undefined ? "clearfix desc e-list-wrapper e-list-multi-line e-list-avatar'" : "clearfix e-list-wrapper e-list-multi-line e-list-avatar"} >
+                {
+                    data.imgSrc !== "" ?
+                        <img className='e-avatar' src={`${data.imgSrc}`} /> : ""
+                }
+                <span className="e-list-item-header">{data.title} </span>
+                <span className="e-list-content e-text-overflow" dangerouslySetInnerHTML={{ __html: data.description }} ></span>
+                {
+                    data.timeStamp !== "" ?
+                        <div>
+                            <div id="list-logo">
+                                <span className="bookmark"></span>
+                                <span className="comments"></span>
+                                <span className="share"></span>
+                            </div>
+                        <div className="timeStamp">{data.timeStamp}</div></div> : ""
+                }
+            </div>);
+    }
 
     onComplete(): void {
         let instance: any = document.getElementById('listview_template');
@@ -39,7 +54,7 @@ export class Template extends SampleBase<{}, {}> {
             }
         } else {
             let headerEle: HTMLElement = instance.element.querySelector('.e-list-header') as HTMLElement;
-            let headerElement: HTMLElement = instance.element.querySelector('#info') as HTMLElement;
+            let headerElement: HTMLElement = instance.element.querySelector('#list-logo') as HTMLElement;
             let clone: HTMLElement = headerElement.cloneNode(true) as HTMLElement;
             headerEle.appendChild(clone);
         }
@@ -47,7 +62,7 @@ export class Template extends SampleBase<{}, {}> {
         this.share = document.getElementsByClassName('share');
         this.comments = document.getElementsByClassName('comments');
         this.bookmark = document.getElementsByClassName('bookmark');
-        this.description = document.getElementsByClassName('description');
+        this.description = document.getElementsByClassName('e-list-content');
         this.timeStamp = document.getElementsByClassName('timeStamp');
         this.postActions();
     }
@@ -92,8 +107,8 @@ export class Template extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     {/* ListView element */}
-                    <ListViewComponent id='listview_template' dataSource={dataSource} headerTitle='Syncfusion Blog' showHeader={true}
-                        actionComplete={this.onComplete.bind(this)} template={this.template} ref={(listview) => { this.listviewInstance = listview }}></ListViewComponent>
+                    <ListViewComponent id='listview_template' dataSource={dataSource} headerTitle='Syncfusion Blog' showHeader={true} cssClass = 'e-list-template'
+                        actionComplete={this.onComplete.bind(this)} template={this.listTemplate as any} ref={(listview) => { this.listviewInstance = listview }}></ListViewComponent>
                 </div>
 
                 <div id="action-description">

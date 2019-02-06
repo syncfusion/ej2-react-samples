@@ -38,16 +38,16 @@ export class CheckBox extends SampleBase<{}, {}> {
             <p>
                 In this sample, checked state is achieved by using the
                 <a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#checked-boolean"><code>checked</code>
+                href="https://ej2.syncfusion.com/react/documentation/api/check-box/#checked"><code>checked</code>
                 </a> property, indeterminate state is achieved by using the <a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#indeterminate-boolean"><code>indeterminate</code>
+                href="https://ej2.syncfusion.com/react/documentation/api/check-box/#indeterminate"><code>indeterminate</code>
                 </a> property, and disabled state is achieved by using the <a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/check-box/api-checkBoxComponent.html#disabled-boolean"><code>disabled
+                href="https://ej2.syncfusion.com/react/documentation/api/check-box/#disabled"><code>disabled
                 </code></a> property.
             </p>
             <p>
                 More information about CheckBox can be found in this <a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/check-box/getting-started.html">
+                href="https://ej2.syncfusion.com/react/documentation/check-box/getting-started">
                 documentation section</a>.
             </p>
         </div>

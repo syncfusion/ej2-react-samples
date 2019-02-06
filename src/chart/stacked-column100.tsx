@@ -55,7 +55,7 @@ export class StackedColumn100 extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
                         title='Gross Domestic Product Growth' loaded={this.onChartLoad.bind(this)}
-                        tooltip={{ enable: true }}>
+                        tooltip={{ enable: true, format: '${point.x} : <b>${point.y} (${point.percentage}%)</b>' }}>
                         <Inject services={[StackingColumnSeries, Legend, Tooltip, DataLabel, Category]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} xName='x' yName='y' name='UK' type='StackingColumn100'>
@@ -108,6 +108,6 @@ export class StackedColumn100 extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

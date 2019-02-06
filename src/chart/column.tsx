@@ -32,7 +32,7 @@ export class Column extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 } }}
                         primaryYAxis={{
-                            minimum: 0, maximum: 50, interval: 10, majorGridLines: { width: 0 },
+                            majorGridLines: { width: 0 },
                             majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' }
                         }}
                         chartArea={{ border: { width: 0 } }}
@@ -62,7 +62,7 @@ export class Column extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing the frequency, count, total or average of data in different categories.
-                       You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual data and its value.
+                       You can use <code>border</code>, <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual data and its value.
                    </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -88,7 +88,8 @@ export class Column extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
          if (selectedTheme === 'highcontrast') {
             args.chart.series[0].marker.dataLabel.font.color = '#000000';
             args.chart.series[1].marker.dataLabel.font.color = '#000000';

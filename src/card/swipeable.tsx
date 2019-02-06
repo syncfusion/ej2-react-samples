@@ -53,7 +53,13 @@ export class Swipeable extends SampleBase<{}, {}> {
         if (ele.parentElement.querySelector('.card-out-left')) {
             ele.parentElement.querySelector('.card-out-left').classList.remove('card-out-left');
         }
-        e.swipeDirection === 'Right' ? ele.classList.add('card-out') : ele.classList.add('card-out-left');
+        if (e.swipeDirection === 'Right') {
+            ele.classList.add('card-out');
+        } else if (e.swipeDirection === 'Left') {
+            ele.classList.add('card-out-left');
+        } else {
+            return;
+        }
         ele.parentElement.insertBefore(ele, ele.parentElement.children[0]);
         swipeable();
         ele.style.removeProperty('left');
@@ -188,7 +194,7 @@ export class Swipeable extends SampleBase<{}, {}> {
                         The sample illustrates stacked collection of card overlapping each other, which can be bound to swipe actions to move cards
         one after the other. CSS animation is used to achieve swiping on every left or right swipe.
         <p>More information about Card can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/card/getting-started.html">
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
                                 documentation</a> section. </p>
                     </p>
                 </div>

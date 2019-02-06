@@ -21,7 +21,7 @@ export class SidebarWithList extends SampleBase<{}, {}> {
         return (
             <div className="control-section">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    Click the button to view the sample
+                Click/Touch the button to view the sample
                  </div>
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                     <a className="e-btn" id="newTab" target="_blank" onClick={this.newTabClick.bind(this)}>Open in new Tab</a>
@@ -42,12 +42,12 @@ export class SidebarWithList extends SampleBase<{}, {}> {
                             </div>
                         </SidebarComponent>
                         <div>
-                            <div className="main content">Application content</div>
+                            <div className="main content textArea">Application content</div>
                         </div>
                     </div>
                 </div>
                 <div id="action-description">
-                    <p> Click the button to view the Sidebar sample in new tab.</p>
+                    <p> Click/Touch the button to view the Sidebar sample in new tab.</p>
                 </div>
                 <div id="description">
                     <p>I In this sample, the ListView component is placed inside the Sidebar for navigation.</p>
@@ -58,13 +58,13 @@ export class SidebarWithList extends SampleBase<{}, {}> {
 
     //open newTab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'samples/sidebar/sidebar-list/index.html');
+        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/sidebar-list/index.html');
     }
 
     //close the sidebar when list item selected
     onSelect(args:any): void {
         this.sidebarobj.hide();
-        document.querySelector('.content').textContent = args.text + ' Page Content';
+        document.querySelector('.textArea').textContent = args.text + ' Page Content';
     }
 
     //open the sidebar

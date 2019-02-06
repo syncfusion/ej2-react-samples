@@ -68,7 +68,7 @@ export class Drilldown extends SampleBase<{}, {}> {
                         <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries, AccumulationAnnotation]} />
                         <AccumulationSeriesCollectionDirective>
                             <AccumulationSeriesDirective dataSource={this.data} xName='x' yName='y' dataLabel={this.dataLabel} radius='70%'
-                                explode={true} explodeIndex={2} explodeOffset='10%'>
+                                explode={false} >
                             </AccumulationSeriesDirective>
                         </AccumulationSeriesCollectionDirective>
                     </AccumulationChartComponent>
@@ -164,7 +164,8 @@ export class Drilldown extends SampleBase<{}, {}> {
     public load(args: IAccLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").
+        replace(/light/i, "Light")  as AccumulationTheme;
         if (selectedTheme === 'highcontrast'){
             args.accumulation.series[0].dataLabel.font.color="white";
             args.accumulation.annotations[0].content = content;

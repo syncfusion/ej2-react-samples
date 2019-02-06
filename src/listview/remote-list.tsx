@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
-import {DataManager, Query } from '@syncfusion/ej2-data';
+import {DataManager, Query, ODataV4Adaptor } from '@syncfusion/ej2-data';
 import './listview.css';
 
 export class Remote extends SampleBase<{}, {}> {

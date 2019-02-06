@@ -28,14 +28,14 @@ export class API extends SampleBase<{}, {}> {
         return (
             <div className="control-section">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    Click the button to view the sample
+                    Click/Touch the button to view the sample
             </div>
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                     <a className="e-btn" id="newTab" onClick={this.newTabClick.bind(this)} target="_blank">Open in new tab</a>
                 </div>
                 <div id="wrapper">
                     <title>Essential JS 2 for React - Sidebar > API</title>
-                    <div className="col-lg-12 col-sm-12 col-md-12">
+                    <div className="col-lg-12 col-sm-12 col-md-12" id="sidebar-section">
                         <span id="hamburger" className="e-icons menu" onClick={this.openClick.bind(this)} ></span>
                         <SidebarComponent id="default-sidebar" ref={Sidebar => this.sidebarInstance = Sidebar} >
                             <div className="title-header">
@@ -85,7 +85,7 @@ export class API extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates the Sidebar component with its features. Click the button to view the Sidebar sample in a new tab.
+                        This sample demonstrates the Sidebar component with its features. Click/Touch the button to view the Sidebar sample in a new tab.
                     </p>
                 </div>
                 <div id="description">
@@ -100,7 +100,7 @@ export class API extends SampleBase<{}, {}> {
 
     // open new tab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'samples/sidebar/api/index.html');
+        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/api/index.html');
     }
 
     toggleSidebar(): void {

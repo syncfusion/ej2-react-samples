@@ -5,14 +5,15 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, MapsTooltip, Marker, MarkersDirective, MarkerDirective
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { topPopulation } from './MapData/MarkerLocation';
-import { World_Map } from './MapData/WorldMap';
+import * as data from './map-data/top-population.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -42,10 +43,10 @@ export class MarkerMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={World_Map}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='Country'
-                                    dataSource={topPopulation}
+                                    dataSource={ datasource.population }
                                     shapeSettings={{
                                         fill: '#C3E6ED'
                                     }}
@@ -59,9 +60,9 @@ export class MarkerMaps extends SampleBase<{}, {}> {
                                                    color: '#285255',
                                                    width: 2
                                                 }}
-                                            dataSource={topPopulation}
+                                            dataSource={ datasource.population }
                                             tooltipSettings={{
-                                                template: '<div id="template" style="  max-width: 165px;background: rgba(53, 63, 76, 0.90); opacity: 90%;background: rgba(53, 63, 76, 0.90);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.40);padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;border: 1px #abb9c6;border-radius: 4px;">'+
+                                                template: '<div id="markertooltiptemplate" style="width: 170px;opacity: 90%;background: rgba(53, 63, 76, 0.90);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.40);padding:10px;border: 1px #abb9c6;border-radius: 4px;">'+
                                                 '<div style="font-size:13px;color:#ffffff;font-weight: 500;"><center>${name}</center></div>'+
                                                 '<hr style="margin-top: 2px;margin-bottom:5px;border:0.5px solid #DDDDDD">'+
                                                 '<div><span style="font-size:13px;color:#cccccc">Country : </span><span style="font-size:13px;color:#ffffff;font-weight: 500;">${Country}</span></div>'+

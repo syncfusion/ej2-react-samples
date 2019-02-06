@@ -95,7 +95,7 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                     <p>
                         In this example, you can see how to render and configure the column type charts with rounded corner. Column type charts are used for comparing
         the frequency, count, total or average of data in different categories. You can use <code>border</code>,
-        <code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual
+        <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual
         data and its value.
     </p>
                     <p>
@@ -123,6 +123,6 @@ export class RoundedColumn extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

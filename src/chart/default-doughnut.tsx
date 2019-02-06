@@ -7,7 +7,7 @@ import { SampleBase } from '../common/sample-base';
 import {
   AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip,
   IAccAnimationCompleteEventArgs, AccPoints, IAccTextRenderEventArgs, AccumulationSelection, Inject,
-  IAccLoadedEventArgs, AccumulationChart, AccumulationTheme
+  IAccLoadedEventArgs, AccumulationChart, AccumulationTheme, Selection
 } from '@syncfusion/ej2-react-charts';
 import { Browser, getInstance } from '@syncfusion/ej2-base';
 export let data1: any[] = [
@@ -32,14 +32,14 @@ export class Doughnut extends SampleBase<{}, {}> {
               position: 'Right', height: '28%', width: '44%'
             }}
             enableSmartLabels={true}
+            selectionMode={'Point'}
             load={this.load.bind(this)}
             animationComplete={this.onAnimationComplete.bind(this)}
             tooltip={{ enable: true, header: '<b>${point.x}</b>', format: 'Composition: <b>${point.y}%</b>' }}
             textRender={this.onTextRender.bind(this)}
             loaded={this.onChartLoad.bind(this)}
-            selectionMode={'Point'}
           >
-            <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection]} />
+            <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection, Selection]} />
             <AccumulationSeriesCollectionDirective>
               <AccumulationSeriesDirective  name='Revenue' dataSource={data1} xName='x' yName='y' innerRadius='40%' startAngle={0}
                 endAngle={360}
@@ -74,8 +74,8 @@ export class Doughnut extends SampleBase<{}, {}> {
     let centerTitle: HTMLDivElement = document.getElementById('center_title') as HTMLDivElement;
     centerTitle.style.fontSize = this.getFontSize(args.accumulation.initialClipRect.width);
     let rect: ClientRect = centerTitle.getBoundingClientRect();
-    centerTitle.style.top = (args.accumulation.center.y + args.accumulation.element.offsetTop - (rect.height / 2)) + 'px';
-    centerTitle.style.left = (args.accumulation.center.x + args.accumulation.element.offsetLeft - (rect.width / 2)) + 'px';
+    centerTitle.style.top = (args.accumulation.origin.y + args.accumulation.element.offsetTop - (rect.height / 2)) + 'px';
+    centerTitle.style.left = (args.accumulation.origin.x + args.accumulation.element.offsetLeft - (rect.width / 2)) + 'px';
     centerTitle.style.visibility = 'visible';
     let points: AccPoints[] = args.accumulation.visibleSeries[0].points;
     for (let point of points) {
@@ -106,6 +106,7 @@ export class Doughnut extends SampleBase<{}, {}> {
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").
+    replace(/light/i, "Light") as AccumulationTheme;
   };
 }

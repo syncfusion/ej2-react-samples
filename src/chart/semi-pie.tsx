@@ -36,7 +36,9 @@ export class SemiPie extends SampleBase<{}, {}> {
               <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
               <AccumulationSeriesCollectionDirective>
                 <AccumulationSeriesDirective name='Agricultural' dataSource={data1} xName='x' yName='y' startAngle={270} endAngle={90}
-                  radius='90%' innerRadius='40%'
+                  radius='90%' 
+                  explode= { true }
+                  innerRadius='40%'
                   dataLabel={{
                     visible: true, position: 'Outside',
                     connectorStyle: { length: '10%' }, name: 'text',
@@ -135,6 +137,7 @@ export class SemiPie extends SampleBase<{}, {}> {
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+    replace(/-dark/i, "Dark") as AccumulationTheme;
   };
 }

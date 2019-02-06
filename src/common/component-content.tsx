@@ -25,6 +25,7 @@ export let sampleNameElement: Element = select('#component-name>.sb-sample-text'
 
 let rightPane: Element = select('.sb-right-pane');
 export let sourceTab: Tab;
+export let sourceTab1: Tab;
 
 let mobilePropPane: Element = select('.sb-mobile-prop-pane');
 
@@ -44,6 +45,9 @@ function preventTabSwipe(e: any): void {
 export function selectDefaultTab(): void {
     if (sourceTab) {
         sourceTab.selectedItem = 0;
+    }
+    if(sourceTab1){
+        sourceTab1.selectedItem = 0;
     }
 }
 window.apiList = (samplesJSON as any).apiList
@@ -116,15 +120,28 @@ function renderSourceTabContent(): void {
         hljs.highlightBlock(select('#ts-src-tab'));
         select('.sb-ts-snippet-header').innerHTML = hash.slice(3) + '.tsx';
     });
-    let plunk: Ajax = new Ajax('src/' + path + '-plnkr.json', 'GET', false);
+    let ajaxJsx: Ajax = new Ajax('src/' + path + '.jsx', 'GET', true);
+    ajaxJsx.send().then((value: Object): void => {
+        let tsxstring = value.toString();
+        tsxstring = getStringWithOutDescription(tsxstring, /(\'|\")action-description/g);
+        tsxstring = getStringWithOutDescription(tsxstring, /(\'|\")description/g);
+        let content: string = tsxstring.replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        select('#js-src-tab').innerHTML = content;
+        hljs.highlightBlock(select('#js-src-tab'));
+        select('.sb-js-snippet-header').innerHTML = hash.slice(3) + '.jsx';
+    });
+    let plunk: Ajax = new Ajax('src/' + path + '-stack.json', 'GET', false);
     let p3: Promise<Ajax> = plunk.send();
     p3.then((result: Object) => {
-        (select('#open-plnkr') as any).disabled = false;
+        if(select('#open-plnkr') as any){
+            (select('#open-plnkr') as any).disabled = false;
+        }
         plunker(result as string);
     });
     let openNew: HTMLFormElement = (select('#openNew') as HTMLFormElement);
     if (openNew) {
-        openNew.href = location.href.split('#')[0] + 'samples/' + path + '/index.html';
+        openNew.href = location.href.split('#')[0]  + path + '/';
     }
 }
 
@@ -161,16 +178,7 @@ function renderSampleHeader(): void {
     breadCrumbSample.innerHTML = sampleName;
 
     let title: HTMLElement = document.querySelector('title');
-    let txt: string = title.innerHTML;
-    let num: number = txt.indexOf('-');
-    if (num !== -1) {
-        txt = txt.slice(0, num + 1);
-        txt += ' ' + controlName + ' > ' + sampleName;
-    }
-    else {
-        txt += ' - ' + controlName + ' > ' + sampleName;
-    }
-    title.innerHTML = txt;
+    title.innerHTML = controlName + ' · ' + sampleName + ' · Syncfusion React UI Components';
     
    
 }
@@ -180,26 +188,35 @@ function toInitiaUpper(str: string) {
 
 function plunker(results: string): void {
     let plnkr: { [key: string]: Object } = JSON.parse(results);
-    let prevForm: Element = select('#plnkr-form');
+    let prevForm: Element = select('#stack-form');
     if (prevForm) {
         detach(prevForm);
     }
     let form: HTMLFormElement = createElement('form') as HTMLFormElement;
-    let res: string = ((location.href as any).includes('ej2.syncfusion.com') ? 'https:' : 'http:') + '//plnkr.co/edit/?p=preview';
+    let res: string = ((location.href as any).indexOf('ej2.syncfusion.com') !== -1 ? 'https:' : 'http:') + '//stackblitz.com/run';
     form.setAttribute('action', res);
     form.setAttribute('method', 'post');
     form.setAttribute('target', '_blank');
-    form.id = 'plnkr-form';
+    form.id = 'stack-form';
     form.style.display = 'none';
     document.body.appendChild(form);
     let plunks: string[] = Object.keys(plnkr);
     for (let x: number = 0; x < plunks.length; x++) {
-        let ip: HTMLElement = createElement('input');
-        ip.setAttribute('type', 'hidden');
-        ip.setAttribute('value', plnkr[plunks[x]] as string);
-        ip.setAttribute('name', 'files[' + plunks[x] + ']');
-        form.appendChild(ip);
+        createStackInput((plunks[x] === 'dependencies' ? 'project[dependencies]' : 'project[files][' + plunks[x] + ']'),
+            plnkr[plunks[x]] as string, form);
     }
+    createStackInput('project[template]', 'create-react-app', form);
+    createStackInput('project[description]', 'Essential JS 2 Sample', form);
+    createStackInput('project[settings]', '{"compile":{"clearConsole":true}}', form);
+}
+
+function createStackInput(name: string, value: string, form: HTMLFormElement): void {
+    let input: HTMLElement = createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('value', value.replace(/{{theme}}/g, selectedTheme).replace(/{{ripple}}/,
+        (selectedTheme === 'material') ? 'import { enableRipple } from \'@syncfusion/ej2-base\';\nenableRipple(true);\n' : ''));
+    input.setAttribute('name', name);
+    form.appendChild(input);
 }
 
 function onNextButtonClick(): void {
@@ -338,6 +355,7 @@ export function checkApiTableDataSource(): void {
 
 export class Content extends React.Component<{}, {}>{
 
+    public tabContentToolbar: Element;
     public componentDidMount(): void {
 
         /**
@@ -353,26 +371,42 @@ export class Content extends React.Component<{}, {}>{
                     break;
                 }
             }
-            location.hash = path ? path : '#/material/chart/line';
+            location.hash = path ? path : '#/material/grid/overview';
         }
 
+        select('#mobile-next-sample').addEventListener('click', onNextButtonClick);
+        select('#mobile-prev-sample').addEventListener('click', onPrevButtonClick);
+        /**
+         * Property Panel Border
+         */
+        select('.sb-sample-content-area').firstChild.appendChild(propBorder);
+
+        /**
+         * Navigation Button Click events
+         */
+    }
+    public tabRendered(): void {
         let hsplitter: string = '<div class="sb-toolbar-splitter sb-custom-item"></div>';
         let openNewTemplate: string = '<div class="sb-custom-item sb-open-new-wrapper"><a id="openNew" target="_blank">' +
             '<div class="sb-icons sb-icon-Popout"></div></a></div>';
         let sampleNavigation: string = '<div class="sb-custom-item sample-navigation"><button id="prev-sample" class="sb-navigation-prev">' +
             '<span class="sb-icons sb-icon-Previous"></span></button><button  id="next-sample" class="sb-navigation-next">' +
             '<span class="sb-icons sb-icon-Next"></span></button></div>';
-        let plnrTemplate: string = '<span class="sb-icons sb-icons-plnkr"></span><span class="sb-plnkr-text">EDIT IN PLUNKER</span>';
+        let plnrTemplate: string = '<span class="sb-icons sb-icons-plnkr"></span><span class="sb-plnkr-text">Edit in StackBlitz</span>';
         let contentToolbarTemplate: string = '<div class="sb-desktop-setting"><button id="open-plnkr" class="sb-custom-item sb-plnr-section">' +
             plnrTemplate + '</button>' + hsplitter + openNewTemplate + hsplitter + '</div>' + sampleNavigation +
             '<div class="sb-icons sb-mobile-setting sb-hide"></div>';
 
-        let tabContentToolbar: Element = createElement('div', { className: 'sb-content-toolbar', innerHTML: contentToolbarTemplate });
+        this.tabContentToolbar = createElement('div', { className: 'sb-content-toolbar', innerHTML: contentToolbarTemplate });
+        select('#sb-content-header').appendChild(this.tabContentToolbar);
+        
+        /**
+         * code for copyToolTip
+         */
         let ele: HTMLElement = createElement('div', { className: 'copy-tooltip', innerHTML: '<div class="e-icons copycode"></div>' });
         document.getElementById('sb-source-tab').appendChild(ele);
         let copiedTooltip: Tooltip = new Tooltip(
             { content: 'Copied to clipboard', position: 'BottomCenter', opensOn: 'Click', closeDelay: 500 }, '.copy-tooltip');
-        select('#sb-content-header').appendChild(tabContentToolbar);
 
         let openNew: Tooltip = new Tooltip({
             content: 'Open in New Window'
@@ -388,46 +422,32 @@ export class Content extends React.Component<{}, {}>{
         let next: Tooltip = new Tooltip({
             content: 'Next Sample'
         });
-
-        next.appendTo('#next-sample');
-
-
-
-        /**
+        select('#right-pane').addEventListener('scroll', function (event) {
+            next.close();
+            openNew.close();
+            previous.close();
+        });
+       next.appendTo('#next-sample');
+           /**
          * plnkr trigger
          */
         select('#open-plnkr').addEventListener('click', () => {
-            let plnkrForm: HTMLFormElement = select('#plnkr-form') as HTMLFormElement;
+            let plnkrForm: HTMLFormElement = select('#stack-form') as HTMLFormElement;
             if (plnkrForm) {
                 plnkrForm.submit();
             }
         });
-        select('.copycode').addEventListener('click', copyCode);
-
-        /**
-         * Property Panel Border
-         */
-        select('.sb-sample-content-area').firstChild.appendChild(propBorder);
-
-        processDeviceDependables();
-
-        onComponentLoad();
-
-        select('.sb-mobile-setting').addEventListener('click', viewMobilePropPane);
-        /**
-         * Navigation Button Click events
-         */
-        select('#next-sample').addEventListener('click', onNextButtonClick);
-        select('#mobile-next-sample').addEventListener('click', onNextButtonClick);
-        select('#prev-sample').addEventListener('click', onPrevButtonClick);
-        select('#mobile-prev-sample').addEventListener('click', onPrevButtonClick);
-
-        setNavButtonState();
-        intialLoadScrollTop();
-        removeOverlay();
-        checkApiTableDataSource();
+       select('.copycode').addEventListener('click', copyCode);
+       select('#next-sample').addEventListener('click', onNextButtonClick);
+       select('#prev-sample').addEventListener('click', onPrevButtonClick);
+       select('.sb-mobile-setting').addEventListener('click', viewMobilePropPane);
+       processDeviceDependables();
+       setNavButtonState();
+       onComponentLoad();
+       intialLoadScrollTop();
+       removeOverlay();
+       checkApiTableDataSource();
     }
-
     public componentWillReceiveProps(): void {
         /**
          * Sample Control Name change
@@ -439,7 +459,7 @@ export class Content extends React.Component<{}, {}>{
 
     render(): any {
         return (
-            <TabComponent id='content-tab' className='sb-content-tab' selecting={preventTabSwipe} ref={t => sourceTab = t}>
+            <TabComponent id='content-tab' className='sb-content-tab' selecting={preventTabSwipe} ref={t => sourceTab = t} created={this.tabRendered}>
                 <div id="sb-content" className='sb-content-section'>
                     <div id='sb-content-header' className="e-tab-header sb-content-tab-header">
                         <div>
@@ -465,10 +485,15 @@ export class Content extends React.Component<{}, {}>{
                                     <div id='sb-content-header' className="e-tab-header sb-content-tab-header">
                                         <div>
                                             <span className="sb-ts-snippet-header"></span></div>
+                                        <div>
+                                            <span className="sb-js-snippet-header"></span></div>
                                     </div>
                                     <div className="e-content sb-sample-content-area">
                                         <div>
                                             <div id="ts-src-tab" className="ts-source-content sb-src-code javascript"></div>
+                                        </div>
+                                        <div>
+                                            <div id="js-src-tab" className="ts-source-content sb-src-code javascript"></div>
                                         </div>
                                     </div>
                                 </TabComponent>

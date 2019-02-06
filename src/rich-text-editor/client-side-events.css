@@ -1,0 +1,47 @@
+#EventLog b{
+    color: #388e3c;
+}
+hr {
+    margin: 1px 10px 1px 0px;
+    border-top: 1px solid #eee;
+}
+#rteEvent .control-wrapper {
+    margin: 0 auto;
+}
+
+.property-section .right-side {
+    padding-left: 10px;
+}
+
+.property-section .left-side {
+    padding: 5px;
+    width: 25%
+}
+
+.sb-header {
+    z-index: 100;
+}
+
+#rteEvent .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#div#rteEvent.control-section {
+    overflow: hidden;
+    padding-right: 10px;
+}
+
+#rteEvent .content-wrapper {
+    width: auto;
+    margin: 0;
+}
+
+#rteEventProperty .property-panel-section .property-panel-content {
+    overflow: inherit;
+}
+
+#rteEventProperty .property-panel-section .property-panel-header {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}

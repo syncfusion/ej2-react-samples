@@ -10,8 +10,13 @@ import { Ajax } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import './tooltip-sample.css';
 
-export class AjaxContentTooltip extends SampleBase<{}, {}> {
-    private tooltipInstance: TooltipComponent;
+interface tooltipComponentProps {
+    content : string;
+}
+interface tooltipComponentState {
+    content : string;
+}
+export class AjaxContentTooltip extends SampleBase<tooltipComponentProps, tooltipComponentState> {
 
     //Define an Array of JSON data
     public listViewData: { [key: string]: Object }[] = [
@@ -26,25 +31,28 @@ export class AjaxContentTooltip extends SampleBase<{}, {}> {
 
     //Map appropriate columns to fields property.
     public fields: Object = { text: 'text', tooltip: 'id' };
-
+    constructor(props) { 
+        super(props);
+        this.state = { content : 'Loading...'};
+    }
     //Process tooltip ajax content.
     public onBeforeRender(args: TooltipEventArgs): void {
-        this.tooltipInstance.content = 'Loading...';
-        this.tooltipInstance.dataBind();
         let ajax: Ajax = new Ajax('./src/tooltip/tooltipdata.json', 'GET', true);
         ajax.send().then(
             (result: any) => {
                 result = JSON.parse(result);
                 for (let i: number = 0; i < result.length; i++) {
                     if (result[i].Id === args.target.getAttribute('data-content')) {
-                        this.tooltipInstance.content = "<div class='contentWrap'><span class=" + result[i].Class + "></span><div class='def'>" + result[i].Sports + "</div></div>";
+                        this.setState({
+                            content : "<div class='contentWrap'><span class=" + result[i].Class + "></span><div class='def'>" + result[i].Sports + "</div></div>"
+                        });
                     }
                 }
-                this.tooltipInstance.dataBind();
             },
             (reason: any) => {
-                this.tooltipInstance.content = reason.message;
-                this.tooltipInstance.dataBind();
+                this.setState({
+                    content : reason.message
+                });
             });
     }
     render() {
@@ -54,7 +62,7 @@ export class AjaxContentTooltip extends SampleBase<{}, {}> {
                     <h4 className="list-header">National Sports</h4>
 
                     {/* Tooltip element */}
-                    <TooltipComponent ref={t => this.tooltipInstance = t} className="e-prevent-select" content='Loading...' target="#countrylist [title]" position='RightCenter' beforeRender={this.onBeforeRender.bind(this)}>
+                    <TooltipComponent className="e-prevent-select" content={this.state.content} target="#countrylist [title]" position='RightCenter' beforeRender={this.onBeforeRender.bind(this)}>
 
                         {/* ListView element */}
                         <ListViewComponent id="countrylist" dataSource={this.listViewData} fields={this.fields}></ListViewComponent>

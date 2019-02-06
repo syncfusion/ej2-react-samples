@@ -10,6 +10,13 @@ export class Responsive extends SampleBase<{}, {}> {
     private tabObj: TabComponent;
 
     // Change event funtion for DropDownList component   
+    public changeOrientationMode(e: ChangeEventArgs): void {
+        let placement: string = (document.getElementById('orientation') as HTMLSelectElement).value;
+        this.tabObj.headerPlacement = placement as any;
+        this.tabObj.dataBind();
+    }
+
+    // Change event funtion for DropDownList component   
     public changeOverflowMode(e: ChangeEventArgs): void {
         let placement: string = (document.getElementById('mode') as HTMLSelectElement).value;
         if (placement === 'Popup') {
@@ -21,6 +28,12 @@ export class Responsive extends SampleBase<{}, {}> {
     }
 
     // Mapping DropDownList dataSource property
+    private oData: { [key: string]: Object }[] = [
+        {'value':'top', 'text': 'Top'}, {'value':'bottom', 'text': 'Bottom'},
+        {'value':'left', 'text': 'Left'}, {'value':'right', 'text': 'Right'}
+    ];
+
+    // Mapping DropDownList dataSource property
     private mData: { [key: string]: Object }[] = [
         {'value':'scrollable', 'text': 'Scrollable'}, {'value':'popup', 'text': 'Popup'}
     ];
@@ -30,6 +43,10 @@ export class Responsive extends SampleBase<{}, {}> {
 
     // Mapping DropDownList value property
     private mVal: string = 'scrollable';
+
+    // Mapping DropDownList value property
+    private orientVal: string = 'top';
+
     render() {
         let headertext: any;
         // Mapping Tab items Header property
@@ -40,7 +57,7 @@ export class Responsive extends SampleBase<{}, {}> {
                 <div className='control-section tab-control-section row'>
                     <div className='col-lg-8 adaptive'>
                         {/* Render the Tab Component */}
-                        <TabComponent ref={(tab) => { this.tabObj = tab }} heightAdjustMode='Auto'>
+                        <TabComponent ref={(tab) => { this.tabObj = tab }} heightAdjustMode='None' height='250px'>
                             <TabItemsDirective>
                                 <TabItemDirective header= { headertext[0] }
                                     content= { 'HyperText Markup Language, commonly referred to as HTML, is the standard markup ' +
@@ -118,6 +135,18 @@ export class Responsive extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td style={{ width: '50%' }}>
+                                        <div>Header Placement</div>
+                                    </td>
+                                    <td style={{ width: '50%' }}>
+                                        <div>
+                                            {/* Render the DropDownList Component */}
+                                            <DropDownListComponent id='orientation' dataSource={this.oData} fields={this.fields} 
+                                            value={this.orientVal} width={'90%'} change={this.changeOrientationMode.bind(this)}  />
+                                        </div>
+                                    </td>
+                                </tr>
                             </table>
                         </PropertyPane>
                     </div>
@@ -132,13 +161,17 @@ export class Responsive extends SampleBase<{}, {}> {
                         The <code>Tab</code> is adaptable to the available space when the tab items exceed the view space.
                     </p>
                     <p>
+                        The <code>Tab</code> allows to place the header section inside the Tab component either at
+                        <code>top / bottom / left / right</code> position by using <code>headerPlacement</code> property.
+                    </p>
+                    <p>
                         You can assign overflowMode property value as <code>Scrollable / Popup</code>. By default scrollable mode of
                         tab is enabled when tab item exceeds the view range.
                         In this sample, users can change the <code>overflowMode</code> by selecting the dropdown options.
                     </p>
                     <p>
                         More information about Tab can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/tab/getting-started.html">  documentation
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">  documentation
                         </a> section.
                     </p>
                 </div>

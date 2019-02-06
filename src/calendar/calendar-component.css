@@ -3,82 +3,34 @@
     margin: 0 auto;
 }
 
-
-/* lable styles */
-
-#date_label {
-    margin-top: 20px;
-    display: block;
-    color: rgba(0, 0, 0, 0.58);
-    font-weight: 500;
-    margin-left: 5px;
-}
-
 /* special dates sample styles */
 
-.e-customStyle span.e-icons.highlight {
-    margin-top: -13px;
-    display: block;
-    margin-left: 4px;
+#control_wrapper.multiselectWrapper {
+    max-width: 330px;
+    margin: 0 auto;
 }
 
-.e-customStyle .e-other-month span.e-icons.highlight:before {
-    content: "";
+#control_wrapper.multiselectWrapper {
+    float: none;
 }
 
-.e-customStyle span.e-icons.highlight,
-.e-customStyle span.e-icons.highlight:before {
-    color: rgb(0, 0, 255);
+.contentValue {
+    padding: 10px;
+    overflow: auto;
+    max-height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.highcontrast .e-customStyle td.birthday span.e-icons.highlight,
-.highcontrast .e-customStyle td.birthday span.e-icons.highlight:before {
-    color: #ff6161;
+.valuesWrapper {
+    margin: 0 auto;
+    float: none;
+    padding: 0;
+    max-width: 370px;
 }
 
-.highcontrast .e-customStyle td.farewell span.e-icons.highlight,
-.highcontrast .e-customStyle td.farewell span.e-icons.highlight::before {
-    color: #2bc700;
+body.highcontrast .contentValue {
+    border: 1px solid #969696
 }
 
-.highcontrast .e-customStyle td.vacation span.e-icons.highlight,
-.highcontrast .e-customStyle td.vacation span.e-icons.highlight::before {
-    color: #ff7d1a;
-}
-
-.e-customStyle span.e-icons.highlight:before {
-    content: "\e865";
-    vertical-align: middle;
-    margin-right: 3px;
-    font-size: 4px;
-    position: relative;
-    top: -1px;
-    font-weight: normal;
-}
-
-.e-bigger .e-customStyle.e-calendar span.e-icons.highlight:before,
-.e-customStyle.e-bigger.e-calendar span.e-icons.highlight:before {
-    top: -3px;
-}
-
-.e-customStyle .e-selected span.e-icons.highlight:before {
-    color: #fff;
-}
-
-.e-customStyle span.e-icons.highlight,
-.e-customStyle.e-calendar .e-content span.special,
-.e-customStyle.e-calendar .e-content span.daycell {
-    font-weight: bold;
-}
-
-.e-customStyle.e-calendar .e-content span.special {
-    color: red;
-}
-
-.e-customStyle.e-calendar .e-content span.daycell {
-    color: #ff9e00;
-}
-
-body.highcontrast #date_label {
-    color: white;
-}
+/* end of custom generated icons styles */

@@ -34,11 +34,11 @@ export class Scatter extends SampleBase<{}, {}> {
 
                         }}
                         primaryYAxis={{
-                            minimum: 50,
-                            maximum: 80,
                             majorTickLines: {
                                 width: 0
                             },
+                            minimum: 50,
+                            maximum: 80,
                             lineStyle: {
                                 width: 0
                             },
@@ -102,6 +102,6 @@ export class Scatter extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

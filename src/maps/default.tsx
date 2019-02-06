@@ -3,13 +3,14 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MarkersDirective, MarkerDirective, Marker, Legend, Zoom, MapsTooltip
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { World_Map } from './MapData/WorldMap';
-import { dafaultData } from './MapData/salesCountry';
+import * as data from './map-data/default-datasource.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -48,10 +49,10 @@ export class DefaultMaps extends SampleBase<{}, {}> {
                     >
                         <Inject services={[Marker, Legend, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={World_Map}
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                 shapePropertyPath='continent'
                                 shapeDataPath='continent'
-                                dataSource={dafaultData}
+                                dataSource={datasource.default}
                                 shapeSettings={{
                                     colorValuePath: 'color'
                                 }}

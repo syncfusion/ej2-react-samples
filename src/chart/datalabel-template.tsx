@@ -114,7 +114,12 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                         }}
                         chartArea={{ border: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '60%'}
-                        title='Population of India ( 2010 - 2016 )' load={this.loadPre.bind(this)}
+                        title= 'Population of India Statistics'
+                        subTitle= '(2010 - 2016)'
+                        subTitleStyle= {{
+                            textAlignment: 'Far'
+                        }}
+                        load={this.loadPre.bind(this)}
                         loaded={this.loaded.bind(this)}
                         textRender={this.textRender.bind(this)}>
                         <Inject services={[LineSeries, DataLabel, Category, Legend]} />
@@ -175,8 +180,6 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
             args.template = args.series.name === 'Male' ? materialMan : materialWomen;
         } else if (theme === 'Fabric') {
             args.template = args.series.name === 'Male' ? fabricMan : fabricWomen;
-        } else if (theme === 'Highcontrast') {
-            args.template = args.series.name === 'Male' ? highcontrastMan : highcontrastWomen;
         } else {
             args.template = args.series.name === 'Male' ? bootstrapMan : bootstrapWomen;
         }
@@ -184,7 +187,8 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
     public loadPre(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
         theme = args.chart.theme;
     };
     public loaded(args: ILoadedEventArgs): void {

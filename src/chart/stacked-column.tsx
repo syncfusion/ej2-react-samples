@@ -57,10 +57,10 @@ export class StackedColumn extends SampleBase<{}, {}> {
                         }}
                         primaryYAxis={{
                             title: 'Sales',
+                            lineStyle: { width: 0 },
                             minimum: 0,
                             maximum: 500,
-                            interval: 100,
-                            lineStyle: { width: 0 },
+                            interval: 100,                
                             majorTickLines: { width: 0 },
                             majorGridLines: { width: 1 },
                             minorGridLines: { width: 1 },
@@ -123,6 +123,6 @@ export class StackedColumn extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

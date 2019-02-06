@@ -4,6 +4,7 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Zoom, Legend,
     ProjectionType
@@ -11,8 +12,6 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
-import { World_Map } from './MapData/WorldMap';
-import { randomcountriesData } from './MapData/salesCountry';
 import { SliderComponent, Slider, SliderChangeEventArgs } from '@syncfusion/ej2-react-inputs';
 
 const SAMPLE_CSS = `
@@ -87,9 +86,22 @@ const SAMPLE_CSS = `
         height: 8px;
         top: calc(50% - 4px);
         border-radius: 5px;
+    }
+
+    #range > * {
+        padding: 0px !important;
     }`;
+
+const slidercss = `  
+    .content-wrapper {
+        width: 40%;
+        margin: 0 auto;
+        min-width: 100px;
+    }`;
+
 export class ZoomingMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
+    private animationElement: SliderComponent;
     public sliderchange(args: SliderChangeEventArgs): void {
         this.mapInstance.zoomModule.toolBarZooming(args.value as number, 'ZoomIn');
     }
@@ -115,10 +127,11 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={World_Map}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='continent'
                                     shapeDataPath='continent'
-                                    dataSource={randomcountriesData}
+                                    dataSource={new MapAjax('./src/maps/map-data/zooming-datasource.json')}
+                                    animationDuration={500}
                                     shapeSettings={{
                                         autofill: true,
                                         colorValuePath: 'color'
@@ -181,6 +194,17 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                 </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '80%' }}>
+                                        <div id="range1">Animation Duration <span>&nbsp;&nbsp;&nbsp;500ms</span> </div>
+                                    </td>
+                                    <td>
+                                        <div className="content-wrapper">
+                                            <style> {slidercss} </style>
+                                            <SliderComponent id="range" change={this.animationChange.bind(this)} ref={(slider) => this.animationElement = slider} name="animationRange" step={250} value={500} min={0} max={1000} />
+                                        </div>
+                                    </td>
+                                </tr>
 
                             </table>
                         </PropertyPane>
@@ -188,17 +212,17 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                    This sample depicts the zooming and panning options in the maps. You can customize these options by changing the zooming option to Zooming, Mouse wheel zoom, Pinch zoom, Single-click zoom, and Double-click zoom in the Properties panel. Slider control has been placed to zoom the map at the bottom.
+                        This sample depicts the zooming and panning options in the maps. You can customize these options by changing the zooming option to Zooming, Mouse wheel zoom, Pinch zoom, Single-click zoom, and Double-click zoom in the Properties panel. Slider control has been placed to zoom the map at the bottom.
                     </p>
                 </div>
                 <div id="description">
-                <p>
-                    In this example, you can see how to zoom and pan the map. The support has been provided for zooming with toolbar, rectangle zoom, pinch zoom, mouse wheel zoom, single-click and double-click zoom 
+                    <p>
+                        In this example, you can see how to zoom and pan the map. The support has been provided for zooming with toolbar, rectangle zoom, pinch zoom, mouse wheel zoom, single-click and double-click zoom
                 </p>
-                <br/>
-                  <p style={{fontweight: 500}}>Injecting Module</p>
-                     <p>
-                           Maps component features are segregated into individual feature-wise modules. To use the zooming feature, inject the <code>zoom</code> module using the Maps.Inject(zoom) method.
+                    <br />
+                    <p style={{ fontweight: 500 }}>Injecting Module</p>
+                    <p>
+                        Maps component features are segregated into individual feature-wise modules. To use the zooming feature, inject the <code>zoom</code> module using the Maps.Inject(zoom) method.
                      </p>
                 </div>
             </div>
@@ -213,7 +237,7 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
-    
+
     public mousewheel(): void {
         let element: HTMLInputElement = (document.getElementById('mousewheel')) as HTMLInputElement;
         this.mapInstance.zoomSettings.mouseWheelZoom = element.checked;
@@ -250,5 +274,10 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
         } else {
             ele1.disabled = false;
         }
+    }
+    public animationChange() {
+        this.mapInstance.layers[0].animationDuration = parseInt(this.animationElement.value.toString(), 10);
+        this.mapInstance.refresh();
+        document.getElementById('range1').innerHTML = 'Animation Duration <span>&nbsp;&nbsp;&nbsp;' + (parseInt(this.animationElement.value.toString(), 10)) + 'ms';
     }
 }

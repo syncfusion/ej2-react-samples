@@ -82,11 +82,6 @@ export class PolarSpline extends SampleBase<{}, {}> {
                                 labelFormat: '{value}°',
                                 coefficient: Browser.isDevice ? 80 : 100
                             }}
-                            primaryYAxis={{
-                                minimum: -20,
-                                interval: 5,
-                                maximum: 0
-                            }}
                             load={this.load.bind(this)}
                             title='Microphone Types Polar Patterns' loaded={this.onChartLoad.bind(this)}
                             tooltip={{ enable: true, format: '${series.name}<br> ${point.x}: ${point.y}' }}>
@@ -154,6 +149,6 @@ export class PolarSpline extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

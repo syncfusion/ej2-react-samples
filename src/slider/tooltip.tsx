@@ -69,9 +69,9 @@ export class Tooltip extends SampleBase<{}, {}> {
     // Handler used to reposition the tooltip on page scroll
     public onScroll(): void {
         if (!isNullOrUndefined(document.getElementById('slider01')) &&
-        !isNullOrUndefined((document.getElementById('slider01') as any).ej2_instances[0]) &&
-        !isNullOrUndefined(document.getElementById('slider02')) &&
-        !isNullOrUndefined((document.getElementById('slider02') as any).ej2_instances[0])) {
+            !isNullOrUndefined((document.getElementById('slider01') as any).ej2_instances[0]) &&
+            !isNullOrUndefined(document.getElementById('slider02')) &&
+            !isNullOrUndefined((document.getElementById('slider02') as any).ej2_instances[0])) {
             let element01: any = document.getElementById('slider01');
             let element02: any = document.getElementById('slider02');
             element01.ej2_instances[0].refreshTooltip();
@@ -158,6 +158,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                         <li>
                             <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-slider.html?lang=es6#max-string---number">max </a> – to specify maximum value of the slider</li>
                     </ul>
+                    <p>The dragInterval is used to drag both handles using the range bar which is also applicable only to the range slider.</p>
                     <p>For more information, we can refer the
         <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/ticks.html?lang=es6">ticks</a> section from the documentation.</p>
                 </div>
