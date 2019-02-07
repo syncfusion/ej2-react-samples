@@ -25,7 +25,7 @@ export class Data extends SampleBase<{}, {}> {
     // bind the Query instance to query property
     public query: Query = new Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount();
     // map the appropriate columns to remote data fields property
-    public remoteFields: Object = { text: 'FirstName', value: 'EmployeeID' };
+    public remoteFields: Object = { value: 'FirstName' };
     // map the appropriate columns to local data fields property
     private localFields: Object = { value: 'Name' };
     // AutoComplete object creation
