@@ -49,7 +49,7 @@ export class Formats extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingRight: '0px' }}>
                       <div style={{ maxWidth: '200px' }}>
-                        <input id="input1" type="text" onKeyUp={this.sampleKeyUp.bind(this)} />
+                        <input id="input1" type="text" className='e-input' onKeyUp={this.sampleKeyUp.bind(this)} />
                       </div>
                     </td>
                   </tr>

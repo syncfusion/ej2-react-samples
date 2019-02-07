@@ -7,7 +7,7 @@ import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
 import './template.css';
-import { dataSource } from './newsData';
+import { dataSource } from './listData';
 
 export class Template extends SampleBase<{}, {}> {
 

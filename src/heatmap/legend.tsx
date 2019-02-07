@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
-import { legentSampleData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
@@ -51,7 +51,7 @@ export class LegendPlacement extends SampleBase<{}, {}> {
                                 labels: ['12AM', '2AM', '4AM', '6AM', '8AM', '10AM', '12PM',
                                     '2PM', '4PM', '6PM', '8PM', '10PM']
                             }}
-                            dataSource={legentSampleData}
+                            dataSource={(data as any).legentSampleData}
                             cellSettings={{
                                 showLabel: false,
                                 format: '{value} C'
@@ -60,12 +60,14 @@ export class LegendPlacement extends SampleBase<{}, {}> {
                             paletteSettings={{
                                 palette: [{ value: 0, color: '#6EB5D0' },
                                 { value: 10, color: '#7EDCA2' },
-                                { value: 20, color: '#DCD57E' },
+                                { value: 19, color: '#DCD57E' },
+                                { value: 22, color: '#DCD57E' }                    
                                 ]
                             }}
                             load={this.load.bind(this)}
                             legendSettings={{
                                 position: 'Left',
+                                labelFormat: '{value}\xB0 C',
                             }}>
                             <Inject services={[Legend, Tooltip]} />
                         </HeatMapComponent>

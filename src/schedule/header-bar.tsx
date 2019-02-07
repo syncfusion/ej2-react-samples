@@ -4,7 +4,7 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Month, Inject,
   ActionEventArgs, ToolbarActionArgs, EventRenderedArgs, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { employeeEventData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './header-bar.css';
 import { createElement, compile, extend } from '@syncfusion/ej2-base';
 import { ItemModel } from '@syncfusion/ej2-react-navigations';
@@ -13,6 +13,7 @@ import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { Popup } from '@syncfusion/ej2-popups';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule header customization sample
@@ -22,7 +23,7 @@ export class HeaderBar extends SampleBase<{}, {}> {
   public scheduleObj: ScheduleComponent;
   private checkboxObj: CheckBoxComponent;
   private profilePopup: Popup;
-  private data: Object[] = extend([], employeeEventData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
 
   private onActionBegin(args: ActionEventArgs & ToolbarActionArgs): void {
     if (args.requestType === 'toolbarItemRendering') {
@@ -52,11 +53,11 @@ export class HeaderBar extends SampleBase<{}, {}> {
     scheduleElement.parentElement.appendChild(userContentEle);
 
     let userIconEle: HTMLElement = scheduleElement.querySelector('.e-schedule-user-icon') as HTMLElement;
-    let getDOMString: (data: object) => HTMLCollection = compile('<div class="profile-container"><div class="profile-image">' +
+    let getDOMString: (data: object) => NodeList = compile('<div class="profile-container"><div class="profile-image">' +
       '</div><div class="content-wrap"><div class="resource-name">Nancy</div>' +
       '<div class="destination">Product Manager</div><div class="status">' +
       '<div class="status-icon"></div>Online</div></div></div>');
-    let output: HTMLCollection = getDOMString({});
+    let output: NodeList = getDOMString({});
     this.profilePopup = new Popup(userContentEle, {
       content: output[0] as HTMLElement,
       relateTo: userIconEle,
@@ -114,23 +115,23 @@ export class HeaderBar extends SampleBase<{}, {}> {
           </PropertyPane>
         </div>
         <div id='action-description'>
-          <p>This demo shows the way of adding custom items into the Schedule header bar. Here, an employee image is added to the
+          <p>This demo shows the way of adding custom items into the Scheduler header bar. Here, an employee image is added to the
           header bar, clicking on which will open the popup showing that person's short profile information.</p>
         </div>
         <div id='description'>
           <p>
             In this demo, a popup has been designed separately with a person’s profile info and kept in a hidden state initially. A custom
-          item has been added to the Schedule header bar within the <code>actionBegin</code> event by checking for the request type as
-        <code>toolbarItemRendering</code> which triggers at the time of header bar items rendering on the Schedule.
+          item has been added to the Scheduler header bar within the <code>actionBegin</code> event by checking for the request type as
+        <code>toolbarItemRendering</code> which triggers at the time of header bar items rendering on the Scheduler.
           </p>
           <p>
             Once the items are added,
             the click action is being bound to it in the <code>actionComplete</code> event by checking for
-            the request type as <code>toolbarItemRendered</code> which triggers after the items are rendered on the Schedule.
+            the request type as <code>toolbarItemRendered</code> which triggers after the items are rendered on the Scheduler.
             The appropriate action of showing or hiding the popup on clicking the custom item has been done within it.
           </p>
           <p>
-            In case, if the header bar of Schedule needs to be hidden,
+            In case, if the header bar of Scheduler needs to be hidden,
             it can be done by setting false to <code>showHeaderBar</code> property.
           </p>
         </div>

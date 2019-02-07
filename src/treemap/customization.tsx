@@ -8,8 +8,9 @@ import {
 	TreeMapComponent, Inject, TreeMapTooltip, TreeMapTheme,
 	ILoadedEventArgs
 } from '@syncfusion/ej2-react-treemap';
-import { Metals } from './treemap-data/metals';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/metal.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -35,7 +36,7 @@ export class Customization extends SampleBase<{}, {}> {
 							text: 'US Gold medal categories in Summer Olympics - 2016',
 							textStyle: { size: '15px' }
 						}}
-						dataSource={Metals}
+						dataSource={datasource.metal}
 						weightValuePath='Gold'
 						tooltipSettings={{			// To config tooltip for treemap
 							visible: true,

@@ -59,7 +59,7 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Annotations, Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData= {new MapAjax(location.origin + location.pathname + 'src/maps/map-data/africa-continent.json')}
+                                <LayerDirective shapeData= {new MapAjax('./src/maps/map-data/africa-continent.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     shapeSettings={{

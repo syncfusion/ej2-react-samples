@@ -84,7 +84,7 @@ export class Sorting extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }}>
                         </PivotViewComponent>
@@ -128,7 +128,7 @@ export class Sorting extends SampleBase<{}, {}> {
                                         <td></td>
                                         <td>
                                             <div className='row' style={{ float: 'right', paddingRight: '15px' }}>
-                                                <ButtonComponent ref={(scope) => { this.applyBtn = scope; }} onClick={this.onClick.bind(this)} iconCss='e-icons e-apply-icon' cssClass='e-flat' isPrimary={true}>Apply</ButtonComponent>
+                                                <ButtonComponent ref={(scope) => { this.applyBtn = scope; }} onClick={this.onClick.bind(this)} cssClass='e-flat' isPrimary={true}>Apply</ButtonComponent>
                                             </div>
                                         </td>
                                     </tr>

@@ -117,10 +117,10 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[MapsTooltip, Selection, Highlight, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='State'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/selection-datasource.json')}
+                                    dataSource={new MapAjax('./src/maps/map-data/selection-datasource.json')}
                                     tooltipSettings={{
                                         visible: false
                                     }}

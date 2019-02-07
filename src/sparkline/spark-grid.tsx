@@ -17,8 +17,8 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 
-export class GridData {
-    public EmployeeID: string;
+export interface GridData {
+    EmployeeID: string;
 }
 
 export class SparkGrid extends SampleBase<{}, {}> {

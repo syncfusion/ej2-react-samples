@@ -1,9 +1,3 @@
-.control-section {
-    overflow: auto;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
 .sample_container.avatar-badge .avatar-sub-block {
     display: inline-block;
     position: relative;

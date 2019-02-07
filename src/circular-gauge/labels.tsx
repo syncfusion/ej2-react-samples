@@ -9,6 +9,7 @@ import {
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
+import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 const SAMPLE_CSS = `
     .control-fluid {
@@ -20,6 +21,8 @@ export class Labels extends SampleBase<{}, {}> {
     private tickOffset: HTMLInputElement;
     private tickHeight: HTMLInputElement;
     private labelOffset: HTMLInputElement;
+    private tooltipElement: CheckBoxComponent;
+    private lastLabel: CheckBoxComponent;
     private isMajorTicks: boolean = true;
     private loaded: boolean = false;
     public load(args: ILoadedEventArgs): void {
@@ -53,6 +56,11 @@ export class Labels extends SampleBase<{}, {}> {
         document.getElementById('labelOffsetValue').innerHTML = 'Label Offset <span>&nbsp;&nbsp;&nbsp;' + value;
         this.gauge.refresh();
     }
+    public showLastLabel(): void {
+        let showLastLabel: HTMLInputElement = (document.getElementById('enable') as HTMLInputElement);
+        this.gauge.axes[0].showLastLabel = this.lastLabel.checked;
+        this.gauge.refresh();
+    }
     public ticks: DropDownList; public tickPosition: DropDownList; public labelPosition: DropDownList;
     render() {
         return (
@@ -62,7 +70,7 @@ export class Labels extends SampleBase<{}, {}> {
                         <CircularGaugeComponent load={this.load.bind(this)} id='range-container' loaded={this.onChartLoad.bind(this)} ref={gauge => this.gauge = gauge}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective startAngle={210} endAngle={150} radius='75%' minimum={0} maximum={180}
+                                <AxisDirective startAngle={210} endAngle={150} radius='75%' minimum={0} maximum={170}
                                     majorTicks={{
                                         position: 'Inside', color: '#757575', width: 2, height: 10, interval: 20
                                     }} lineStyle={{ width: 2, color: '#9E9E9E' }}
@@ -171,6 +179,16 @@ export class Labels extends SampleBase<{}, {}> {
                                             </div>
                                         </td>
                                     </tr>
+                                    <tr style={{ "height": "30px" }}>
+                                    <td style={{ "width": "50%" }}>
+                                        <div> enablePointer </div>
+                                    </td>
+                                    <td style={{ "width": "50%" }}>
+                                        <div>
+                                            <CheckBoxComponent change={this.showLastLabel.bind(this)} ref={d => this.lastLabel = d} id='enable' disabled={false} />
+                                        </div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </PropertyPane>

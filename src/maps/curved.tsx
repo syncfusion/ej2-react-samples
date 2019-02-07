@@ -10,8 +10,10 @@ import {
     Marker, MapsTooltip, MarkersDirective, MarkerDirective, NavigationLine, Zoom
 } from '@syncfusion/ej2-react-maps';
 import { SampleBase } from '../common/sample-base';
-import { markerLocation } from './map-data/map-location';
-import { data } from './map-data/navigation-data';
+import * as data1 from './map-data/curved-datasource.json';
+import * as data2 from './map-data/navigation-datasource.json';
+let datasource1: any = data1 as any;
+let datasource2: any = data2 as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -48,7 +50,7 @@ export class CurvedMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip, NavigationLine, Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapeDataPath = {'name'}
                                     shapePropertyPath = {'name'}
                                     dataSource = {[
@@ -77,11 +79,11 @@ export class CurvedMaps extends SampleBase<{}, {}> {
                                             }
                                         ]
                                     }}
-                                    navigationLineSettings={data}
+                                    navigationLineSettings={datasource2.navigation}
                                 >
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} shape='Circle' fill='white' width={4}  animationDuration={0} border={{color:'black', width:1}}
-                                    dataSource={markerLocation}
+                                    dataSource={datasource1.location}
                                     >
                                     </MarkerDirective>
                                     <MarkerDirective visible={true}

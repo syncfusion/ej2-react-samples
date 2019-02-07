@@ -117,13 +117,13 @@ export class CustomPalette extends SampleBase<{}, {}> {
               palettes.</li>
             <li>Using the
             <code>
-                <a target="_blank" className="code" href="http://ej2.syncfusion.com/documentation/colorpicker/api-colorpicker.html#presetColors-object">presetColors
+                <a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/color-picker/#presetcolors">presetColors
                 </a>
               </code> property, you can specify the custom colors to be loaded.</li>
           </ul>
           <p>
             More information about ColorPicker can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/colorpicker/getting-started.html">
+        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/color-picker/how-to/customize-colorpicker/">
               documentation section</a>.</p>
         </div>
       </div >

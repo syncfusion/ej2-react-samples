@@ -93,7 +93,7 @@ export class LeftPane extends React.Component<{}, {}> {
     '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">${type}</span>${/if}${/if}</div>';
     public groupTemlate: string = '${if(items[0]["category"])}<div class="e-text-content">' +
     '<span class="e-list-text">${items[0].category}</span></div>${/if}';
-    public template: string = '<div class="e-text-content e-icon-wrapper"> <span class="e-list-text" role="listitem">${name}' +
+    public template: string = '<div class="e-text-content ${if(type)}e-icon-wrapper${/if}"> <span class="e-list-text" role="listitem">${name}' +
     '</span>${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type}">Updated</span>' +
     '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type}">${type}</span>${/if}${/if}' +
     '${if(directory)}<div class="e-icons e-icon-collapsible"></div>${/if}</div>';

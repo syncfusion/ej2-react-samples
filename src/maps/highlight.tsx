@@ -168,7 +168,7 @@ export class HighlightMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Marker,MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/okalahoma.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/okalahoma.json')}
                                     shapeSettings={{
                                         fill: '#F5F5F5',
                                         border:{ color: '#EEDA97', width: 1}

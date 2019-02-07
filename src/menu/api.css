@@ -14,8 +14,3 @@
 .menu-section .property-panel-content .e-multiselect {
     padding: 0;
 }
-
-.menu-section .col-lg-8.control-section,
-.menu-section.control-section {
-    overflow: visible !important;
-}

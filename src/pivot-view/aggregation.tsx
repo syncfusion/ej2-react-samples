@@ -12,7 +12,7 @@ import { SampleBase } from '../common/sample-base';
 
 let dataSource: IDataOptions = {
     enableSorting: true,
-    formatSettings: [{ name: 'ProCost', format: 'C0' }, { name: 'PowUnits', format: 'N0' }],
+    formatSettings: [{ name: 'ProCost', format: 'C' }],
     drilledMembers: [{ name: 'EnerType', items: ['Biomass', 'Free Energy'] }],
     columns: [
         { name: 'EnerType', caption: 'Energy Type' },
@@ -49,12 +49,26 @@ export class Aggregation extends SampleBase<{}, {}> {
     private qData: { [key: string]: Object }[] = [
         { 'value': 'Max', 'text': 'Max' }, { 'value': 'Min', 'text': 'Min' },
         { 'value': 'Count', 'text': 'Count' }, { 'value': 'Sum', 'text': 'Sum' },
-        { 'value': 'Avg', 'text': 'Average' }
+        { 'value': 'Avg', 'text': 'Average' }, { 'value': 'DistinctCount', 'text': 'Distinct Count' },
+        { 'value': 'Product', 'text': 'Product' }, { 'value': 'Index', 'text': 'Index' },
+        { 'value': 'PopulationStDev', 'text': 'Population StDev' }, { 'value': 'SampleStDev', 'text': 'Sample StDev' },
+        { 'value': 'RunningTotals', 'text': 'Running Totals' }, { 'value': 'DifferenceFrom', 'text': 'Difference From' },
+        { 'value': 'PercentageOfDifferenceFrom', 'text': '% of Difference From' }, { 'value': 'PercentageOfGrandTotal', 'text': '% of Grand Total' },
+        { 'value': 'PercentageOfColumnTotal', 'text': '% of Column Total' }, { 'value': 'PercentageOfRowTotal', 'text': '% of Row Total' },
+        { 'value': 'PercentageOfParentTotal', 'text': '% of Parent Total' }, { 'value': 'PercentageOfParentColumnTotal', 'text': '% of Parent Column Total' },
+        { 'value': 'PercentageOfParentRowTotal', 'text': '% of Parent Row Total' }
     ];
 
     private cData: { [key: string]: Object }[] = [
         { 'value': 'Max', 'text': 'Max' }, { 'value': 'Min', 'text': 'Min' },
-        { 'value': 'Sum', 'text': 'Sum' }, { 'value': 'Avg', 'text': 'Average' }
+        { 'value': 'Sum', 'text': 'Sum' }, { 'value': 'Avg', 'text': 'Average' },
+        { 'value': 'Product', 'text': 'Product' }, { 'value': 'Index', 'text': 'Index' },
+        { 'value': 'PopulationStDev', 'text': 'Population StDev' }, { 'value': 'SampleStDev', 'text': 'Sample StDev' },
+        { 'value': 'RunningTotals', 'text': 'Running Totals' }, { 'value': 'DifferenceFrom', 'text': 'Difference From' },
+        { 'value': 'PercentageOfDifferenceFrom', 'text': '% of Difference From' }, { 'value': 'PercentageOfGrandTotal', 'text': '% of Grand Total' },
+        { 'value': 'PercentageOfColumnTotal', 'text': '% of Column Total' }, { 'value': 'PercentageOfRowTotal', 'text': '% of Row Total' },
+        { 'value': 'PercentageOfParentTotal', 'text': '% of Parent Total' }, { 'value': 'PercentageOfParentColumnTotal', 'text': '% of Parent Column Total' },
+        { 'value': 'PercentageOfParentRowTotal', 'text': '% of Parent Row Total' }
     ];
 
 
@@ -72,7 +86,7 @@ export class Aggregation extends SampleBase<{}, {}> {
         for (let vCnt: number = 0; vCnt < this.pivotGridObj.dataSource.values.length; vCnt++) {
             if (this.pivotGridObj.dataSource.values[vCnt].name === fieldName) {
                 this.pivotGridObj.dataSource.values[vCnt].type = summaryType;
-                isAvail = (this.pivotGridObj.dataSource.values as any)[vCnt].properties ? false : true;
+                isAvail = true;
             }
         }
         if (isAvail) {
@@ -87,10 +101,10 @@ export class Aggregation extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ overflow: 'initial' }}>
+                <div className='control-section'>
                     <div className='col-lg-9 adaptive'>
-                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} showFieldList={true} width={'100%'} height={'300'} gridSettings={{columnWidth: 140}}>
-                        <Inject services={[FieldList]} />
+                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} showFieldList={true} width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }}>
+                            <Inject services={[FieldList]} />
                         </PivotViewComponent>
                     </div>
                     <div className='col-lg-3 property-section'>
@@ -122,30 +136,21 @@ export class Aggregation extends SampleBase<{}, {}> {
 
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the aggregate types in the pivotgrid widget. In this sample, you can change the aggregate types
-        for value fields using a dropdown list separately.</p>
+                    <p>This sample demonstrates the aggregate types in the pivot table widget.</p>
                 </div>
                 <div id="description">
-                    <p>The pivotgrid widget supports different types of aggregation for value fields. The aggregate type can be set using the type
-                        property of the value field. The built-in aggregates are:
+                    <p>
+                        In this sample, you can change the aggregate types for value fields using the dropdown list separately. The aggregate type can be set using the <code>type</code> property of the value field. The built-in aggregates are:
                     </p>
-                    <ul>
-                        <li>
-                            <code>Sum</code>
-                        </li>
-                        <li>
-                            <code>Average</code>
-                        </li>
-                        <li>
-                            <code>Min</code>
-                        </li>
-                        <li>
-                            <code>Max</code>
-                        </li>
-                        <li>
-                            <code>Count</code>
-                        </li>
-                    </ul>
+                    <p>
+                        <code>Sum</code>, <code>Average</code>, <code>Min</code>, <code>Max</code>, <code>Count</code>, <code>Distinct Count</code>, <code>Product</code>,
+                        <code>Index</code>, <code>Population StDev</code>, <code>Sample StDev</code>, <code>Population Var</code>, <code>Sample Var</code>, <code>Running Totals</code>,
+                        <code>Difference From</code>, <code>% of Difference From</code>, <code>% of Grand Total</code>, <code>% of Column Total</code>, <code>% of Row Total</code>,
+                        <code>% of Parent Total</code>, <code>% of Parent Column Total</code>, <code>% of Parent Row Total.</code>
+                    </p>
+                    <p>
+                        To achieve aggregation through UI, navigate to <b>"User Interaction > Field List"</b> sample and click and open the value field settings menu to experience the same.
+                    </p>
                 </div>
             </div>
         )

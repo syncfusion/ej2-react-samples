@@ -5,10 +5,11 @@ import {
   ScheduleComponent, Day, Week, WorkWeek, Month, Agenda,
   PopupOpenEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { eventsData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule editor custom fields sample
@@ -16,7 +17,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class EditorCustomField extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], eventsData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).eventsData, null, true) as Object[];
   private onPopupOpen(args: PopupOpenEventArgs): void {
     if (args.type === 'Editor') {
       // Create required custom elements in initial time
@@ -70,8 +71,8 @@ export class EditorCustomField extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             In this demo, the additional field is added to the default event editor by making use of the
-        <code>popupOpen</code> event which gets triggered before the event editor getting opened on Schedule.
-        <code>popupOpen</code> is a client-side event that triggers before any of the popups getting opened on Schedule.
+        <code>popupOpen</code> event which gets triggered before the event editor getting opened on Scheduler.
+        <code>popupOpen</code> is a client-side event that triggers before any of the popups getting opened on Scheduler.
           </p>
           <p>
             Here, the additional field (any of the form elements) is needed to be provided with the common class

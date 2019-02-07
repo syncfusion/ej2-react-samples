@@ -21,7 +21,7 @@ export class SidebarWithList extends SampleBase<{}, {}> {
         return (
             <div className="control-section">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    Click the button to view the sample
+                Click/Touch the button to view the sample
                  </div>
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                     <a className="e-btn" id="newTab" target="_blank" onClick={this.newTabClick.bind(this)}>Open in new Tab</a>
@@ -47,7 +47,7 @@ export class SidebarWithList extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p> Click the button to view the Sidebar sample in new tab.</p>
+                    <p> Click/Touch the button to view the Sidebar sample in new tab.</p>
                 </div>
                 <div id="description">
                     <p>I In this sample, the ListView component is placed inside the Sidebar for navigation.</p>

@@ -7,8 +7,9 @@ import {
 	TreeMapComponent, Inject, TreeMapTooltip,
 	ILoadedEventArgs, TreeMapLegend, TreeMapTheme
 } from '@syncfusion/ej2-react-treemap';
-import { Airport_Count } from './treemap-data/airport-count';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/airport-count.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -46,7 +47,7 @@ export class Tooltip extends SampleBase<{}, {}> {
 									size: '15px'
 								}
 							}}
-							dataSource={Airport_Count}
+							dataSource={datasource.airport}
 							weightValuePath='Count'
 							equalColorValuePath='Count'
 							legendSettings={{			// To config legend for treemap

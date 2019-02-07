@@ -103,7 +103,7 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Selection]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/seat-selection.json')} geometryType='Normal'
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/seat-selection.json')} geometryType='Normal'
                                     shapeSettings={{
                                         colorValuePath: 'fill'
                                     }}
@@ -155,7 +155,7 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
             </div >
             <div id="action-description">
                 <p>
-                    This sample demonstrates the rendering of normal geometry type shapes on the map. We have rendered normal geometry type shapes to represent the bus seat selection layout. Available, booked, and selected seats will be displayed in different colors.
+                This sample visualizes a seating chart, in which the seats can be selected similarly to bus seat booking. Available, booked, and selected seats will be displayed in different colors.
                 </p>	
                 </div>
                 <div id="description">
@@ -165,7 +165,7 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
         <br/>
             <p style={{fontweight: 500}}>Injecting Module</p>
             <p>
-             Maps component features are segregated into individual feature-wise modules. To use the selection, inject the <code>Selection</code> module using the <code>Maps.Inject(Selection)</code> method.
+             Maps component features are segregated into individual feature-wise modules. To use the selection, inject the <code>Selection</code> module using the <code>Maps.Inject(Selection)</code> method. More information on the selection can be found in this documentation section.
             </p>
         </div>
             </div >

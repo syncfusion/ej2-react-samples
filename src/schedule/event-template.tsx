@@ -4,17 +4,17 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective,
   Day, Week, TimelineViews, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { webinarData } from './datasource';
 import './event-template.css';
 import { Browser, Internationalization, extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule event template sample
  */
 
 export class EventTemplate extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], webinarData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).webinarData, null, true) as Object[];
   private instance: Internationalization = new Internationalization();
   private getTimeString(value: Date) {
     return this.instance.formatDate(value, { skeleton: 'hm' });

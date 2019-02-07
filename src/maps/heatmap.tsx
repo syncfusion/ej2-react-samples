@@ -11,6 +11,8 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as data from './map-data/heatmap-datasource.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -69,10 +71,10 @@ export class HeatMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/india.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/india.json')}
                                     shapePropertyPath='NAME_1'
                                     shapeDataPath='Name'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/heatmap-datasource.json')}
+                                    dataSource={datasource.heatmap}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath:'population',

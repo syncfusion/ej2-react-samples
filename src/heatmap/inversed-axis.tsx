@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
-import { inveredAxisData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
@@ -47,7 +47,7 @@ export class InversedAxis extends SampleBase<{}, {}> {
                                     '1990-1995', '1995-2000', '2000-2005', '2005-2010', '2010-2015'],
                                 isInversed: true
                             }}
-                            dataSource={inveredAxisData}
+                            dataSource={(data as any).inveredAxisData}
                             cellSettings={{
                                 border: { width: 0 },
                                 showLabel: false,

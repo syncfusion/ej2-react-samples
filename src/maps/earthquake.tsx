@@ -92,7 +92,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/asia.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/asia.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     shapeSettings={{

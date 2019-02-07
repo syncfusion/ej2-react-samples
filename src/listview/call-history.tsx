@@ -8,7 +8,7 @@ import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { TabComponent, SelectEventArgs, TabItemsDirective, TabItemDirective } from '@syncfusion/ej2-react-navigations';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { data1 } from './newsData';
+import { callHistoryData } from './listData';
 import './call-history.css';
 
 export class CallHistory extends SampleBase<{}, {}> {
@@ -64,7 +64,7 @@ export class CallHistory extends SampleBase<{}, {}> {
         if (element01.ej2_instances !== undefined) {
             this.listObjects = [element01.ej2_instances[0], element02.ej2_instances[0], element03.ej2_instances[0]];
             let newData: any;
-            newData = this.filterData(data1, this.type[args.selectedIndex]);
+            newData = this.filterData(callHistoryData, this.type[args.selectedIndex]);
             this.listObjects[args.selectedIndex].dataSource = newData;
         }
     }
@@ -88,11 +88,11 @@ export class CallHistory extends SampleBase<{}, {}> {
                                         </TabItemsDirective>
                                     </TabComponent>
                                 </div>
-                                <ListViewComponent id="all" dataSource={data1} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
+                                <ListViewComponent id="all" dataSource={callHistoryData} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
                                     template={this.listTemplate as any} ref={(listview) => { this.allInstance = listview }} ></ListViewComponent>
-                                <ListViewComponent id="received" dataSource={data1} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
+                                <ListViewComponent id="received" dataSource={callHistoryData} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
                                     template={this.listTemplate as any} ref={(listview) => { this.receivedInstance = listview }}></ListViewComponent>
-                                <ListViewComponent id="missed" dataSource={data1} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
+                                <ListViewComponent id="missed" dataSource={callHistoryData} fields={this.fields} style={this.styleNone} cssClass='e-list-template'
                                     template={this.listTemplate as any} ref={(listview) => { this.missedInstance = listview }}></ListViewComponent>
                             </div>
                         </div>
@@ -101,12 +101,15 @@ export class CallHistory extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="action-description">
-                <p>This sample demonstrates the use-case of call history application using <code>listview</code>. Click on the navigation tab to filter contacts based on call logs such as received, missed and all.</p>
+                    <p>This sample demonstrates the call history application using listview. Click on the checklist to filter the data in contacts
+        list.</p>
                 </div>
 
                 <div id="description" className="descriptionLayout">
-                <p>This sample filters the data based on selection of tab and update the <a href="https://ej2.syncfusion.com/react/documentation/list-view/api-listViewComponent.html#datasource"><code>dataSource</code></a> for listview.</p>
-
+                    <p>This sample filters out the data from listview based on the data selected from the checklist. Here, listview utilizes the
+            <code>template</code>
+                        <code>showIcon</code> properties to repesent the call history application. The Tab component is used in this sample for navigation purposes.
+        </p>
                 </div>
             </div>
         )

@@ -106,7 +106,7 @@ export class ColorAndSizeAttributes extends SampleBase<{}, {}> {
                         legendSettings={{
                             visible: true,
                         }}>
-                        <Inject services={[Adaptor, Tooltip]} />
+                        <Inject services={[Adaptor, Tooltip,Legend]} />
                     </HeatMapComponent>
                     <div id="source">Source:
                         <a href="https://en.wikipedia.org" target='_blank'>https://en.wikipedia.org/</a>

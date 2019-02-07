@@ -7,8 +7,9 @@ import {
 	TreeMapComponent, LevelsDirective, LevelDirective, Inject, TreeMapLegend, TreeMapTooltip,
 	ILoadedEventArgs, IItemMoveEventArgs, TreeMapTheme
 } from '@syncfusion/ej2-react-treemap';
-import { CarSales } from './treemap-data/car-sale';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/car-sales.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -48,7 +49,7 @@ export class Default extends SampleBase<{}, {}> {
 						rangeColorValuePath='Sales'
 						format={"n"}
 						useGroupingSeparator={true}
-						dataSource={CarSales}
+						dataSource={datasource.car_sale}
 						legendSettings={{
 							visible: true,
 							position: 'Top',

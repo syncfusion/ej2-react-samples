@@ -80,7 +80,7 @@ export class AjaxContent extends SampleBase<{}, {hideDialog: boolean;}> {
                 </div>
                 <div id="action-description">
                 <p>
-                    This sample demonstrates that the content of dialog can be loaded from external HTML file. Click "more details" on dialog to load the content dynamically from external HTML file. Click “open” to show the dialog again, if it is closed. 
+                    This example demonstrates that the content of dialog can be loaded from external HTML file. Click "more details" on dialog to load the content dynamically from external HTML file. Click “open” to show the dialog again, if it is closed. 
                 </p>
                 </div>
                 <div id="description">

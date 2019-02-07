@@ -53,7 +53,7 @@ export class PrintView extends SampleBase<{}, {}> {
                     <title>Essential JS 2 for React - DocumentEditor &gt; Print</title>
                     <input type="file" id="uploadfileButton" style={{ position: 'fixed', left: '-100em' }} />
                     <div id="panel">
-                        <div id='documenteditor_titlebar'>
+                        <div id='documenteditor_titlebar' className="e-de-ctn-title">
                         </div>
                         <div id="documenteditor_container_panel" style={{ position: 'relative' }}>
                             <DocumentEditorComponent id="container" ref={(scope) => { this.documenteditor = scope; }} enablePrint={true} style={{ width: '100%', height: '100%' }} />

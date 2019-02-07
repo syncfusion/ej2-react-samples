@@ -11,9 +11,10 @@ import {
 	TreeMapComponent, LevelsDirective, LevelDirective, Inject, TreeMapTooltip,
 	ILoadedEventArgs, IResizeEventArgs, TreeMapTheme, ITreeMapTooltipRenderEventArgs
 } from '@syncfusion/ej2-react-treemap';
-import { Continent_Data } from './treemap-data/pie-chart';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/continent_data.json';
 AccumulationChart.Inject(AccumulationTooltip, PieSeries, DataLabel, AccumulationChart);
+let datasource: any = data as any;
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -188,7 +189,7 @@ export class Pie extends SampleBase<{}, {}> {
 							}}
 							format={"n"}
 							useGroupingSeparator={true}
-							dataSource={Continent_Data}
+							dataSource={datasource.continent}
 							weightValuePath='Population'
 							leafItemSettings={{			// To config leafitem customization for treemap
 								labelPath: 'Gender',

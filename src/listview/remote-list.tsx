@@ -31,7 +31,7 @@ export class Remote extends SampleBase<{}, {}> {
         <div className='control-section'>
 
         {/* ListView element */}
-        <ListViewComponent id='remote-list' dataSource={this.dataSource} fields={this.fields} query={this.query} headerTitle='Products' showHeader={true}></ListViewComponent>
+        <ListViewComponent id='sample-list' dataSource={this.dataSource} fields={this.fields} query={this.query} headerTitle='Products' showHeader={true}></ListViewComponent>
         </div>
 
         <div id="action-description">

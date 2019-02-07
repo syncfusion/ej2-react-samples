@@ -111,25 +111,29 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                <p>
-        This sample visualizes the World Population Report with default column series in the chart. 
-        Data points values are showed by using data label.
-    </p>
+                    <p>
+                        This sample visualizes the Olympic medal count in Rio with default column series in the chart.
+                        Data points values are showed by using data label.
+            </p>
                 </div>
                 <div id="description">
-                <p>
-        In this example, you can see how to render and configure the recurrence stripline in chart. Striplines are used to annotate the highlighted region with some notes. You
-        can use <code>border</code>,
-        <code>fill</code> <code>dash-array</code> properties to customize the striplines.
-    </p>
+                    <p>
+                        In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing
+                        the frequency, count, total or average of data in different categories. You can use <code>border</code>,
+                        <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual
+                        data and its value.
+                </p>
+                    <p>
+                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                </p>
                     <br></br>
                     <p>Injecting Module</p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use strip line, we need to inject
-        <code>Strpline</code> module using <code>Chart.Inject(Strpline)</code> method.
+                        Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
+        <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.
     </p>
                     <p>
-                        More information on the strip line can be found in this
+                        More information on the column series can be found in this
         <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
     </p>
                 </div>
@@ -141,6 +145,6 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
     load(args) {
         let selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

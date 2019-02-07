@@ -22,6 +22,7 @@
     text-align: center;
 }
 
+/* Menu item icons */
 .menu-control .em-icons.e-file::before {
     content: '\e886';
 }
@@ -30,22 +31,22 @@
     content: '\e822';
 }
 
-.menu-control .em-icons.e-cut::before {
+.e-menu-wrapper .em-icons.e-cut::before {
     content: '\e5a9';
 }
 
-.menu-control .em-icons.e-copy::before {
+.e-menu-wrapper .em-icons.e-copy::before {
     content: '\e5b3';
 }
 
-.menu-control .em-icons.e-paste::before {
+.e-menu-wrapper .em-icons.e-paste::before {
     content: '\e5b2';
 }
 
-.menu-control .em-icons.e-open::before {
+.e-menu-wrapper .em-icons.e-open::before {
     content: '\e885';
 }
 
-.menu-control .e-icons.e-save::before {
+.e-menu-wrapper .e-icons.e-save::before {
     content: '\e954';
 }

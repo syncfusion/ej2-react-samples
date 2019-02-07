@@ -1,15 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    ScheduleComponent, ViewsDirective, ViewDirective,
+    ScheduleComponent, ViewsDirective, ViewDirective, Agenda,
     TimelineViews, TimelineMonth, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { scheduleData, timelineData } from './datasource';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { DatePickerComponent, ChangeEventArgs } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule timeline sample
@@ -17,7 +17,8 @@ import { PropertyPane } from '../common/property-pane';
 
 export class TimelineView extends SampleBase<{}, {}> {
     private scheduleObj: ScheduleComponent;
-    private data: Object[] = extend([], scheduleData.concat(timelineData), null, true) as Object[];
+    private data: Object[] =
+        extend([], (dataSource as any).scheduleData.concat((dataSource as any).timelineData), null, true) as Object[];
     private change(args: ChangeEventArgs): void {
         this.scheduleObj.selectedDate = args.value;
         this.scheduleObj.dataBind();
@@ -37,7 +38,7 @@ export class TimelineView extends SampleBase<{}, {}> {
                                 <ViewDirective option='TimelineMonth' />
                                 <ViewDirective option='Agenda' />
                             </ViewsDirective>
-                            <Inject services={[TimelineViews, TimelineMonth, Resize, DragAndDrop]} />
+                            <Inject services={[TimelineViews, TimelineMonth, Agenda, Resize, DragAndDrop]} />
                         </ScheduleComponent>
                     </div>
                 </div>
@@ -51,7 +52,8 @@ export class TimelineView extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div className='datepicker-control-section'>
-                                            <DatePickerComponent value={new Date(2018, 1, 15)} change={this.change.bind(this)}></DatePickerComponent>
+                                            <DatePickerComponent value={new Date(2018, 1, 15)} showClearButton={false}
+                                                change={this.change.bind(this)}></DatePickerComponent>
                                         </div>
                                     </td>
                                 </tr>

@@ -6,28 +6,21 @@ import * as React from 'react';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import './inline.css';
+import * as data from './dataSource.json';
 
 export class Inline extends SampleBase<{}, {}> {
 
   private listObj: DropDownListComponent;
+  private temp:string = 'employees';
   // define the JSON of data
-  private employeesData: { [key: string]: Object }[] = [
-    { Name: 'Andrew', Eimg: '7' },
-    { Name: 'Anne', Eimg: '1' },
-    { Name: 'Janet', Eimg: '3' },
-    { Name: 'Laura', Eimg: '2' },
-    { Name: 'Michael', Eimg: '9' },
-    { Name: 'Nancy', Eimg: '4' },
-    { Name: 'Robert', Eimg: '8' },
-    { Name: 'Steven', Eimg: '10' }
-  ];
+  private employeesData: { [key: string]: Object }[] = data[this.temp];
   // maps the appropriate column to fields property
   private fields: object = { text: 'Name' };
   render() {
     return (
       <div className='control-pane'>
-        <div className='control-section' id='inline-container'>
-          <div id='inline' style= {{ paddingTop: '75px'}} >
+        <div className='control-section'>
+          <div id='inline' style= {{padding: '100px 100px 100px 250px'}}>
             <span id="contentText">React top expert of this week is
             <DropDownListComponent id="inline" cssClass="inlinecss" dataSource={this.employeesData} fields={this.fields} placeholder="Select an employee" popupHeight="200px" width="60px" popupWidth="140px" value='Michael' />
             </span>

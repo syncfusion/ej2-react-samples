@@ -159,7 +159,7 @@ export function setSbLink(): void {
   for (let sb of sbArray) {
     let ele: HTMLFormElement = (select('#' + sb) as HTMLFormElement);
     if (sb === 'aspnetcore' || sb === 'aspnetmvc') {
-      ele.href = sb === 'aspnetcore' ? 'https://aspdotnetcore.syncfusion.com' : 'https://aspnetmvc.syncfusion.com';
+       ele.href = sb === 'aspnetcore' ? 'https://ej2.syncfusion.com/aspnetcore/' : 'https://ej2.syncfusion.com/aspnetmvc/';
 
     } else {
       ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :

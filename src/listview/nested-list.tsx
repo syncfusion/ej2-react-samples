@@ -7,6 +7,7 @@ import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
 import './listview.css';
+import{ nestedListData } from './listData'
 
 const FolderCss = `
 .e-listview .e-list-icon {
@@ -34,67 +35,6 @@ const FolderCss = `
 }`
 export class Nested extends SampleBase<{}, {}> {
 
-    //Define an array of JSON data
-    private dataSource: { [key: string]: Object }[] = [
-        {
-            id: '01', text: 'Music', icon: 'folder',
-            child: [
-                { id: '01-01', text: 'Gouttes.mp3', icon: 'file' }
-            ]
-        },
-        {
-            id: '02', text: 'Videos', icon: 'folder',
-            child: [
-                { id: '02-01', text: 'Naturals.mp4', icon: 'file' },
-                { id: '02-02', text: 'Wild.mpeg', icon: 'file' },
-            ]
-        },
-        {
-            id: '03', text: 'Documents', icon: 'folder',
-            child: [
-                { id: '03-01', text: 'Environment Pollution.docx', icon: 'file' },
-                { id: '03-02', text: 'Global Water, Sanitation, & Hygiene.docx', icon: 'file' },
-                { id: '03-03', text: 'Global Warming.ppt', icon: 'file' },
-                { id: '03-04', text: 'Social Network.pdf', icon: 'file' },
-                { id: '03-05', text: 'Youth Empowerment.pdf', icon: 'file' },
-            ]
-        },
-        {
-            id: '04', text: 'Pictures', icon: 'folder',
-            child: [
-                {
-                    id: '04-01', text: 'Camera Roll', icon: 'folder',
-                    child: [
-                        { id: '04-01-01', text: 'WIN_20160726_094117.JPG', icon: 'file' },
-                        { id: '04-01-02', text: 'WIN_20160726_094118.JPG', icon: 'file' },
-                        { id: '04-01-03', text: 'WIN_20160726_094119.JPG', icon: 'file' }
-                    ]
-                },
-                {
-                    id: '04-02', text: 'Wind.jpg', icon: 'file'
-                },
-                {
-                    id: '04-02', text: 'Stone.jpg', icon: 'file'
-                },
-                {
-                    id: '04-02', text: 'Home.jpg', icon: 'file'
-                },
-                {
-                    id: '04-02', text: 'Bridge.png', icon: 'file'
-                }
-            ]
-        },
-        {
-            id: '05', text: 'Downloads', icon: 'folder',
-            child: [
-                { id: '05-01', text: 'UI-Guide.pdf', icon: 'file' },
-                { id: '05-02', text: 'Tutorials.zip', icon: 'file' },
-                { id: '05-03', text: 'Game.exe', icon: 'file' },
-                { id: '05-04', text: 'TypeScript.7z', icon: 'file' },
-            ]
-        },
-    ];
-
     //Map appropriate columns to fields property
     private fields: {[key:string]: string} ={
         iconCss: 'icon', tooltip: 'text'
@@ -109,7 +49,7 @@ export class Nested extends SampleBase<{}, {}> {
             </style>
 
         {/* ListView element */}
-        <ListViewComponent id='listview' dataSource={this.dataSource} fields={this.fields} headerTitle='Folders' showIcon={true} showHeader={true} ></ListViewComponent>
+        <ListViewComponent id='listview' dataSource={nestedListData} fields={this.fields} headerTitle='Folders' showIcon={true} showHeader={true} ></ListViewComponent>
         </div>
 
         <div id="action-description">

@@ -52,7 +52,7 @@ listTemplate(data: any): JSX.Element {
     return (
     <span>
         <span className='fileListwrapper'><span className= {`icon template-icons sf-icon-${data.type}`}></span>
-        <span className='upload-name file-name'>{data.name} ( {data.size} bytes )</span>
+        <span className='upload-name file-name'>{data.name} ({data.size} bytes)</span>
         <span className='upload-status'>{data.status}</span></span>
         <span className='e-icons e-file-remove-btn' title='Remove'></span>
     </span>
@@ -131,18 +131,18 @@ public render(): JSX.Element {
         </div>
         </div>
         <div id="action-description">
-        <p> This sample demonstrates how to configure custom drop area of the Uploader. 
+        <p> This example demonstrates how to configure custom drop area of the Uploader. 
             You can drop the files into specified custom drop area location to upload.  </p>
     </div>
     <div id="description">
         <p>
             The Uploader component allows to set any external element as drop area using the &nbsp; 
-            <a target="_blank" href="https://ej2.syncfusion.com/documentation/uploader/api-uploader.html?lang=typescript#droparea">
+            <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/uploader/#droparea">
              dropArea</a> property.
         </p>
         <p>
             More information on the drag-and-drop can be found on this
-            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/file-source.html#drag-and-drop"> documentation section</a>.
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/file-source/#drag-and-drop"> documentation section</a>.
         </p>
     </div>
         </div>);

@@ -8,9 +8,10 @@ import {
 	TreeMapComponent, LabelAlignment, Inject, TreeMapLegend, TreeMapTooltip,
 	ILoadedEventArgs, TreeMapTheme
 } from '@syncfusion/ej2-react-treemap';
-import { Country_Population } from './treemap-data/country-population';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/country-population.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -50,7 +51,7 @@ export class Datalabel extends SampleBase<{}, {}> {
 								text: 'Countries ordered based on Population - 2017',
 								textStyle: { size: '15px' }
 							}}
-							dataSource={Country_Population}
+							dataSource={datasource.population}
 							tooltipSettings={{			// To config tooltip for treemap
 								visible: true,
 								format: '${Country} : ${Population}'

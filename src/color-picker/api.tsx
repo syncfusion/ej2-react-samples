@@ -1,63 +1,62 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ColorPickerComponent, ColorPickerMode, Input, ColorPickerEventArgs } from '@syncfusion/ej2-react-inputs';
+import { ColorPickerComponent, ColorPickerMode, ColorPickerEventArgs } from '@syncfusion/ej2-react-inputs';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { CheckBox, ChangeEventArgs } from '@syncfusion/ej2-buttons';
+import { DropDownListComponent, ChangeEventArgs as DdlChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
+import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import './api.css';
-
-export class Api extends SampleBase<{}, {}> {
-  private defaultObj: ColorPickerComponent;
-
-  private listObj: DropDownListComponent;
-
-  private type: { [key: string]: Object }[] = [
-    { mode: 'Picker' },
-    { mode: 'Palette' }
-  ];
-
-  private ddlFields: object = { text: 'mode', value: 'mode' };
-
-  public onDdlChange(args: ChangeEventArgs): void {
-    this.defaultObj.mode = this.listObj.value as ColorPickerMode;
+interface ApiSample {
+  colorValue: string
+  mode: ColorPickerMode;
+  disabled: boolean;
+  showButtons: boolean;
+  modeSwitcher: boolean;
+}
+export class Api extends SampleBase<{}, ApiSample> {
+  constructor() {
+    super();
+    this.state = {
+      colorValue: '#0db1e7',
+      mode: 'Picker',
+      disabled: false,
+      showButtons: true,
+      modeSwitcher: true
+    };
   }
-
-  public onDisableChange(args: ChangeEventArgs): void {
-    this.defaultObj.disabled = args.checked;
+  type: { [key: string]: Object }[] = [ { mode: 'Picker' }, { mode: 'Palette' } ];
+  ddlFields: object = { text: 'mode', value: 'mode' };
+  onDdlChange(args: DdlChangeEventArgs): void {
+    this.setState({ mode: args.value as ColorPickerMode });
   }
-
-  public onButtonChange(args: any): void {
-    this.defaultObj.showButtons = args.checked;
+  onDisableChange(args: ChangeEventArgs): void {
+    this.setState({ disabled: args.checked });
   }
-
-  public onModeChange(args: any): void {
-    this.defaultObj.modeSwitcher = args.checked;
+  onButtonChange(args: ChangeEventArgs): void {
+    this.setState({ showButtons: args.checked });
   }
-
-  public changeValue(e: Event): void {
-    this.defaultObj.value = (e.target as HTMLInputElement).value;
+  onModeChange(args: ChangeEventArgs): void {
+    this.setState({ modeSwitcher : args.checked });
   }
-
-  public onChange(args: ColorPickerEventArgs): void {
-    (document.getElementById('hex-input') as HTMLInputElement).value = args.currentValue.hex;
+  changeValue(e: Event): void {
+    const val: string = (e.target as HTMLInputElement).value;
+    // Sets to color picker default color value if user types the invalid hex code.
+    this.setState({ colorValue: val && val.length > 2 ? (val[0] !== '#' ? `#${val}` : val) : '#008000'  });
   }
-
-  public rendereComplete(): void {
-    /**custom render complete function */
-    let ele: HTMLInputElement = (document.getElementById('hex-input') as HTMLInputElement);
-    ele.value = '#0db1e7';
-    Input.createInput({ element: ele });
+  rendereComplete(): void {
+    (this.refs.hexInput as HTMLInputElement).value = this.state.colorValue;
   }
-
+  onChange(args: ColorPickerEventArgs): void {
+    (this.refs.hexInput as HTMLInputElement).value = args.currentValue.hex;
+  }
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
           <div id='api-control' className='col-lg-8'>
             <h4>Choose a color</h4>
-            <ColorPickerComponent id='color-picker' value='#0db1e7' ref={(scope) => { this.defaultObj = scope; }} change={this.onChange.bind(this)} ></ColorPickerComponent>
+            <ColorPickerComponent id='color-picker' mode={this.state.mode} disabled={this.state.disabled} showButtons={this.state.showButtons} value={this.state.colorValue} modeSwitcher={this.state.modeSwitcher} change={this.onChange.bind(this)}></ColorPickerComponent>
           </div>
           <div className='col-lg-4 property-section'>
             <PropertyPane title='Properties'>
@@ -69,7 +68,7 @@ export class Api extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingRight: '0px' }}>
                       <div style={{ maxWidth: '200px' }}>
-                        <input id="hex-input" type="text" onChange={this.changeValue.bind(this)} />
+                        <input id="hex-input" ref="hexInput" type="text" className="e-input" maxLength={9} onInput={this.changeValue.bind(this)} />
                       </div>
                     </td>
                   </tr>
@@ -79,7 +78,7 @@ export class Api extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingRight: '0px' }}>
                       <div style={{ maxWidth: '200px' }}>
-                        <DropDownListComponent id="ddlelement" dataSource={this.type} ref={(dropdownlist) => { this.listObj = dropdownlist }} fields={this.ddlFields} value='Picker' change={this.onDdlChange.bind(this)} popupHeight="220px" />
+                        <DropDownListComponent id="ddlelement" dataSource={this.type} fields={this.ddlFields} value='Picker' change={this.onDdlChange.bind(this)} popupHeight="220px" />
                       </div>
                     </td>
                   </tr>
@@ -138,7 +137,7 @@ export class Api extends SampleBase<{}, {}> {
           </ul>
           <p>
             More information about ColorPicker can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/colorpicker/getting-started.html">
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/color-picker/">
               documentation section</a>.</p>
         </div>
       </div >

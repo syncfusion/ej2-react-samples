@@ -4,10 +4,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
-	TreeMapComponent, LevelsDirective, LevelDirective, Inject, TreeMapTooltip,
+	TreeMapComponent, LevelsDirective, LevelDirective, Inject, TreeMapTooltip, TreeMapAjax,
 	ILoadedEventArgs, TreeMapTheme, IDrillStartEventArgs, ITreeMapTooltipRenderEventArgs
 } from '@syncfusion/ej2-react-treemap';
-import { DrillDown } from './treemap-data/drilldown-sample';
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
     .control-fluid {
@@ -56,7 +55,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 						enableDrillDown={true}
 						format={"n"}
 						useGroupingSeparator={true}
-						dataSource={DrillDown}
+						dataSource={new TreeMapAjax('./src/treemap/treemap-data/drilldown-sample.json')}
 						weightValuePath='Population'
 						tooltipSettings={{			// To config tooltip for treemap
 							visible: true,

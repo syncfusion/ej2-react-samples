@@ -4,12 +4,12 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective,
   Day, Week, TimelineViews, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { scheduleData } from './datasource';
 import './schedule-component.css';
 import { extend, Internationalization } from '@syncfusion/ej2-base';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule Timescale sample
@@ -17,7 +17,7 @@ import { PropertyPane } from '../common/property-pane';
 
 export class Timescale extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], scheduleData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
   private instance = new Internationalization();
   private majorSlotTemplate(props): JSX.Element {
     return (<div>{this.instance.formatDate(props.date, { skeleton: 'hm' })}</div>);
@@ -151,14 +151,14 @@ export class Timescale extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
           <p>
-            This demo depicts how to customize the grid lines of schedule with different duration, count and also, how to
+            This demo depicts how to customize the grid lines of scheduler with different duration, count and also, how to
             apply template
             customizations on it.
           </p>
         </div>
         <div id="description">
           <p>
-            In this demo, schedule has been allowed to display different number of grid lines per hour assigned with
+            In this demo, scheduler has been allowed to display different number of grid lines per hour assigned with
             different duration
             to each cell, by making use of the
             <code>interval</code> and <code>slotCount</code> properties.

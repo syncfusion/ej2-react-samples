@@ -7,23 +7,14 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './default.css';
+import * as data from './dataSource.json';
 
 export class Default extends SampleBase<{}, {}> {
 
   private listObj: DropDownListComponent;
   // define the JSON of data
-  private sportsData: { [key: string]: Object }[] = [
-    { Id: 'Game1', Game: 'American Football' },
-    { Id: 'Game2', Game: 'Badminton' },
-    { Id: 'Game3', Game: 'Basketball' },
-    { Id: 'Game4', Game: 'Cricket' },
-    { Id: 'Game5', Game: 'Football' },
-    { Id: 'Game6', Game: 'Golf' },
-    { Id: 'Game7', Game: 'Hockey' },
-    { Id: 'Game8', Game: 'Rugby' },
-    { Id: 'Game9', Game: 'Snooker' },
-    { Id: 'Game10', Game: 'Tennis' }
-  ];
+  private temp:string = 'sportsData';
+  private sportsData: { [key: string]: Object }[] = data[this.temp];
   // maps the appropriate column to fields property
   private fields: object = { text: 'Game', value: 'Id' };
   // set the value to select an item based on mapped value at initial rendering

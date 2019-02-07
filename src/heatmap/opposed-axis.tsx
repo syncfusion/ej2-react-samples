@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
-import { opposedAxisData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from "../common/property-pane";
@@ -47,7 +47,7 @@ export class OpposedAxis extends SampleBase<{}, {}> {
                                     'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                                 opposedPosition: true
                             }}
-                            dataSource={opposedAxisData}
+                            dataSource={(data as any).opposedAxisData}
                             legendSettings={{
                                 visible: false
                             }}

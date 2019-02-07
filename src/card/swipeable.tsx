@@ -194,7 +194,7 @@ export class Swipeable extends SampleBase<{}, {}> {
                         The sample illustrates stacked collection of card overlapping each other, which can be bound to swipe actions to move cards
         one after the other. CSS animation is used to achieve swiping on every left or right swipe.
         <p>More information about Card can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/card/getting-started.html">
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
                                 documentation</a> section. </p>
                     </p>
                 </div>

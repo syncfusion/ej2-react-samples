@@ -47,7 +47,7 @@ export class CalculatedFieldClass extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ overflow: 'initial' }}>
+                <div className='control-section'>
                     <div className='col-lg-9 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} showFieldList={true} width={'100%'} height={'300'} allowCalculatedField={true} gridSettings={{columnWidth: 140}}>
                             <Inject services={[CalculatedField, FieldList]} />

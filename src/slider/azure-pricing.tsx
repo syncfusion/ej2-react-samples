@@ -454,7 +454,7 @@ export class Cloudpricing extends SampleBase<{}, {}> {
         let processorPrice: HTMLElement = document.getElementById('processorPrice');
         this.onChange(processorPrice, (this.processorSlider.value as number), 'CORE');
         let memoryPrice: HTMLElement = document.getElementById('memoryPrice');
-        this.onChange(memoryPrice, (this.processorSlider.value as number), 'GB');
+        this.onChange(memoryPrice, (this.memorySlider.value as number), 'GB');
         let storgePrice: HTMLElement = document.getElementById('storgePrice');
         this.onChange(storgePrice, (this.storageSlider.value as number), 'GB');
         let cloudPrice: HTMLElement = document.getElementById('cloudPrice');

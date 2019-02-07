@@ -37,11 +37,7 @@ export class Orientation extends SampleBase<{}, {}> {
     // Change event funtion for DropDownList component   
     public changeOrientationMode(e: ChangeEventArgs): void {
         let placement: string = (document.getElementById('orientation') as HTMLSelectElement).value;
-        if (placement === 'Bottom') {
-            this.tabObj.headerPlacement = 'Bottom';
-        } else {
-            this.tabObj.headerPlacement = 'Top';
-        }
+        this.tabObj.headerPlacement = placement as any;
         this.tabObj.dataBind();
     }
 
@@ -65,7 +61,8 @@ export class Orientation extends SampleBase<{}, {}> {
 
     // Mapping DropDownList dataSource property
     private oData: { [key: string]: Object }[] = [
-        {'value':'top', 'text': 'Top'}, {'value':'bottom', 'text': 'Bottom'}
+        {'value':'top', 'text': 'Top'}, {'value':'bottom', 'text': 'Bottom'},
+        {'value':'left', 'text': 'Left'}, {'value':'right', 'text': 'Right'}
     ];
 
     // Mapping DropDownList fields property
@@ -175,7 +172,7 @@ export class Orientation extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         The <code>Tab</code> allows to place the header section inside the Tab component either at
-                        <code>top / bottom</code> position by using <code>headerPlacement</code> property.
+                        <code>top / bottom / left / right</code> position by using <code>headerPlacement</code> property.
                     </p>
                     <p>
                         This sample illustrates the use of header placement and <code>showCloseButton</code> property.
@@ -192,7 +189,7 @@ export class Orientation extends SampleBase<{}, {}> {
                         If above classes not included in root element default style will applied in Tab component.
                     </p>
                     <p>
-                        More information about Tab can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/tab/getting-started.html">
+                        More information about Tab can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">
                         documentation</a> section.
                     </p>
                 </div>

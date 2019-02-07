@@ -3,23 +3,14 @@ import * as React from 'react';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import './default.css';
+import * as data from './dataSource.json';
 
 export class Default extends SampleBase<{}, {}> {
+  private temp:string = 'sportsData';
   // define the JSON of data
-  private sportsData: { [key: string]: Object }[] = [
-    { Id: 'Game1', Sports: 'American Football' },
-    { Id: 'Game2', Sports: 'Badminton' },
-    { Id: 'Game3', Sports: 'Basketball' },
-    { Id: 'Game4', Sports: 'Cricket' },
-    { Id: 'Game5', Sports: 'Football' },
-    { Id: 'Game6', Sports: 'Golf' },
-    { Id: 'Game7', Sports: 'Hockey' },
-    { Id: 'Game8', Sports: 'Rugby' },
-    { Id: 'Game9', Sports: 'Snooker' },
-    { Id: 'Game10', Sports: 'Tennis' }
-  ];
+  private sportsData: { [key: string]: Object }[] = data[this.temp];
   // maps the appropriate column to fields property
-  private fields: object = { text: 'Sports', value: 'Id' };
+  private fields: object = { text: 'Game', value: 'Id' };
   // set the value to select an item based on mapped value at initial rendering
   private value: string = 'Game3';
 

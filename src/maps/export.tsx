@@ -21,6 +21,7 @@ const SAMPLE_CSS = `
 #btn-control {
     width: 100%;
     text-align: center;
+    text-transform:none !important;
 }
 .e-play-icon::before {
     content: "\\e728";
@@ -52,7 +53,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapeSettings=
                                     {{
                                         fill: 'lightgrey',
@@ -111,7 +112,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                                 <tr style={{ height: '50px' }}>
                                     <td>
                                         <div id="btn-control" style={{ 'margin-left': '60px' }}>
-                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>

@@ -42,7 +42,9 @@ export class MasterDetail extends SampleBase<{}, {}> {
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='100' ></ColumnDirective>
                             <ColumnDirective field='Freight' headerText='Freight' width='100' format='C2' type='number' />
+                            <ColumnDirective field='ShipName' headerText='Ship Name' width='150'></ColumnDirective>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
+                            <ColumnDirective field='ShipAddress' headerText='Ship Address' width='150'></ColumnDirective>
                         </ColumnsDirective>
                     </GridComponent>
                 </div>

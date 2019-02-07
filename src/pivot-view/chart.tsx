@@ -6,7 +6,7 @@ import { Pivot_Data } from './data-source'
 import { IGridValues, IAxisSet, PivotEngine } from '@syncfusion/ej2-pivotview';
 import { Chart, Category, Legend, Tooltip, ColumnSeries, Series, LineSeries, SeriesModel, ILoadedEventArgs, ChartTheme } from '@syncfusion/ej2-charts';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
-import { extend } from '@syncfusion/ej2-base';
+import { extend, Browser, addClass } from '@syncfusion/ej2-base';
 import './chart.css';
 
 /**
@@ -45,6 +45,9 @@ export class ChartIntegration extends SampleBase<{}, {}> {
         this.onChartLoad();
     }
     onChartLoad(): void {
+        if (Browser.isDevice) {
+            addClass([document.getElementById('ddldiv')], 'e-device');
+        }
         if (this.onInit && this.pivotGridObj) {
             this.onInit = false;
             this.engineModule = extend({}, this.pivotGridObj.engineModule, null, true) as PivotEngine;
@@ -129,7 +132,7 @@ export class ChartIntegration extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='col-lg-12 control-section'>
+                <div className='col-lg-12 control-section' style={{ overflow: 'auto' }}>
                     <PivotViewComponent id='PivotView' ref={d => this.pivotGridObj = d} dataSource={dataSource} width={'100%'} height={'300'} dataBound={this.onChartLoad} gridSettings={{ columnWidth: 120 }}>
                     </PivotViewComponent>
                     <br />

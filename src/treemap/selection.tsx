@@ -9,9 +9,10 @@ import {
 	TreeMapComponent, HighLightMode, SelectionMode, LevelsDirective, LevelDirective, Inject,
 	TreeMapHighlight, TreeMapSelection, ILoadedEventArgs, TreeMapTheme
 } from '@syncfusion/ej2-react-treemap';
-import { importData } from './treemap-data/import';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/import.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -92,7 +93,7 @@ export class Selection extends SampleBase<{}, {}> {
 								labelPosition: 'Center',
 								gap: 10
 							}}
-							dataSource={importData}
+							dataSource={datasource.import}
 							weightValuePath='sales'>
 							<Inject services={[TreeMapHighlight, TreeMapSelection]} />
 							<LevelsDirective>

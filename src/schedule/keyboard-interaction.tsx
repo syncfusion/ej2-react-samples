@@ -4,10 +4,11 @@ import {
   ScheduleComponent, Day, Week, WorkWeek, Month, Agenda,
   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { zooEventsData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule keyboard interaction sample
@@ -15,7 +16,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class KeyboardInteraction extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], zooEventsData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).zooEventsData, null, true) as Object[];
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -40,13 +41,13 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id='action-description'>
-          <p>This demo showcases the keyboard shortcuts applicable on Schedule and also lists out in below description,
-            how those applicable shortcuts interacts with Schedule actions.</p>
+          <p>This demo showcases the keyboard shortcuts applicable on Scheduler and also lists out in below description,
+            how those applicable shortcuts interacts with Scheduler actions.</p>
         </div>
         <div id='description'>
-          <p>All the Schedule actions can be controlled via keyboard keys and is availed by using
+          <p>All the Scheduler actions can be controlled via keyboard keys and is availed by using
         <code>allowKeyboardInteraction</code> property which is set to true by default. The applicable key combinations and its relative functionalities are listed
-                                                below.
+                                                    below.
           </p>
           <table style={{ width: '100%' }}>
             <tr>
@@ -62,13 +63,13 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
                 <kbd>Alt</kbd> +
                 <kbd>j</kbd>
               </td>
-              <td>Focuses the Schedule [Provided from application end].</td>
+              <td>Focuses the Scheduler [Provided from application end].</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
                 <kbd>Tab</kbd>
               </td>
-              <td>Focuses the first or active item on the schedule header bar and then move the focus to the next available event
+              <td>Focuses the first or active item on the scheduler header bar and then move the focus to the next available event
                 elements. If no events present, then focus moves out of the component.</td>
             </tr>
             <tr>
@@ -77,7 +78,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
                 <kbd>Tab</kbd>
               </td>
               <td>Reverse focusing of the Tab functionality. Inverse focusing of event elements from the last one and then move
-                onto the first or active item on Schedule header bar and then moves out of the component.</td>
+                onto the first or active item on Scheduler header bar and then moves out of the component.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
@@ -122,7 +123,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
                 <kbd>Alt</kbd> +
                 <kbd>Number</kbd> keys (from 1 to 6)
             </td>
-              <td>To switch between the views on Schedule.</td>
+              <td>To switch between the views on Scheduler.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
@@ -143,7 +144,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
                 <kbd>Left</kbd> or
                 <kbd>Right Arrow</kbd> keys
             </td>
-              <td>On pressing any of these keys when focus is currently on the Schedule header bar, moves the focus to the previous
+              <td>On pressing any of these keys when focus is currently on the Scheduler header bar, moves the focus to the previous
                 or next items in the header bar.</td>
             </tr>
             <tr>
@@ -164,7 +165,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
               <td style={{ padding: '4px 0' }}>
                 <kbd>Home</kbd> key
             </td>
-              <td>To move the selection to the first cell of Schedule.</td>
+              <td>To move the selection to the first cell of Scheduler.</td>
             </tr>
           </table>
         </div>

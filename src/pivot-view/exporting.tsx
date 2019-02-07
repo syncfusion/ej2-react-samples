@@ -64,7 +64,7 @@ export class Exporting extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ overflow: 'initial' }}>
+                <div className='control-section'>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} allowExcelExport={true} allowPdfExport={true} showFieldList={true} width={'100%'} height={'300'} gridSettings={{columnWidth: 140}}>
                             <Inject services={[FieldList]} />
@@ -89,7 +89,7 @@ export class Exporting extends SampleBase<{}, {}> {
                                         <td></td>
                                         <td>
                                             <div id="btn-control" style={{ float: 'right' }}>
-                                                <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-apply-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                                <ButtonComponent onClick={this.onClick.bind(this)} cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                             </div>
                                         </td>
                                     </tr>

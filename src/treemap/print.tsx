@@ -8,17 +8,19 @@ import {
 	TreeMapComponent, ExportType, Inject, TreeMapTooltip,
 	ILoadedEventArgs, TreeMapTheme
 } from '@syncfusion/ej2-react-treemap';
-import { ProductSale } from './treemap-data/product';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/product.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }
 	#btn-control {
         width: 100%;
-        text-align: center;
+		text-align: center;
+		text-transform:none !important;
     }
 	.e-play-icon::before {
         content: "\\e813";
@@ -62,7 +64,7 @@ export class Print extends SampleBase<{}, {}> {
 								text: 'Top 10 best selling smartphone brands - 2017',
 								textStyle: { size: '15px' }
 							}}
-							dataSource={ProductSale}
+							dataSource={datasource.product}
 							layoutType='SliceAndDiceVertical'
 							weightValuePath='Percentage'
 							rangeColorValuePath='Percentage'
@@ -119,14 +121,14 @@ export class Print extends SampleBase<{}, {}> {
 								<tr>
 									<td>
 										<div id="btn-control">
-											<ButtonComponent onClick={this.onClick1.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+											<ButtonComponent onClick={this.onClick1.bind(this)}  style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<div id="btn-control">
-											<ButtonComponent onClick={this.onClick2.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+											<ButtonComponent onClick={this.onClick2.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Print</ButtonComponent>
 										</div>
 									</td>
 								</tr>

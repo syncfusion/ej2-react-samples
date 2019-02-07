@@ -54,7 +54,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[DataLabel,MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     dataLabelSettings={{
                                         visible: true,
                                         labelPath: 'name',
@@ -75,7 +75,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
                     </div>
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '110%' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Show Labels</div>

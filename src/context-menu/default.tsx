@@ -1,13 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ContextMenuComponent, MenuAnimationSettings, MenuEventArgs, MenuItemModel } from '@syncfusion/ej2-react-navigations';
+import { ContextMenuComponent, MenuAnimationSettingsModel, MenuEventArgs, MenuItemModel } from '@syncfusion/ej2-react-navigations';
 import { select, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import './context-menu.css';
 
 export class Default extends SampleBase<{}, {}> {
     public menuObj: ContextMenuComponent;
-    public animationSettings: MenuAnimationSettings = {
+    public animationSettings: MenuAnimationSettingsModel = {
         effect: Browser.isDevice ? 'ZoomIn' : 'SlideDown'
     };
     public content: string = Browser.isDevice ? 'Touch hold to open the ContextMenu' : 
@@ -75,12 +75,15 @@ export class Default extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         In this demo, <a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/context-menu/api-contextMenuComponent.html#target-string"><code>target
+                        href="https://ej2.syncfusion.com/react/documentation/api/context-menu/#target"><code>target
                         </code></a> property is set as '#contextmenutarget'. Hence, on right clicking the target element, the ContextMenu will open.
                     </p>
                     <p>
+                        In mobile, the sub menu opens in a single layer with option for switching back to parent menu.
+                    </p>
+                    <p>
                         More information about ContextMenu can be found in this <a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/context-menu/getting-started.html">
+                        href="https://ej2.syncfusion.com/react/documentation/context-menu/getting-started/">
                         documentation section</a>.
                     </p>
                 </div>

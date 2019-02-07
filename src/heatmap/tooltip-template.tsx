@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme } from '@syncfusion/ej2-react-heatmap';
 import { ITooltipEventArgs, Inject } from '@syncfusion/ej2-react-heatmap';
-import { defaultTableDataSource } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS: any = `
@@ -41,7 +41,7 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
                         yAxis={{
                             labels: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010'],
                         }}
-                        dataSource={defaultTableDataSource}
+                        dataSource={(data as any).defaultTableDataSource}
                         cellSettings={{
                             border: {
                                 width: 0
@@ -51,6 +51,18 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
                         legendSettings={{
                             visible: false,
                         }}
+                        tooltipSettings= {{
+                            fill: '#265259',
+                            textStyle: {
+                                color: '#FFFFFF',
+                                size:"12px"
+                            },
+                            border:{
+                                width:1,
+                                color:"#98BABF"
+                            }               
+                        }}
+                
                         paletteSettings={{
                             palette: [{ value: 0, color: '#C2E7EC' },
                             { value: 0.6, color: '#AEDFE6' },

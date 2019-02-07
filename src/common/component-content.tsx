@@ -178,7 +178,7 @@ function renderSampleHeader(): void {
     breadCrumbSample.innerHTML = sampleName;
 
     let title: HTMLElement = document.querySelector('title');
-    title.innerHTML = controlName + ' · ' + sampleName + ' · Essential JS 2 for React · Syncfusion';
+    title.innerHTML = controlName + ' · ' + sampleName + ' · Syncfusion React UI Components';
     
    
 }
@@ -193,7 +193,7 @@ function plunker(results: string): void {
         detach(prevForm);
     }
     let form: HTMLFormElement = createElement('form') as HTMLFormElement;
-    let res: string = ((location.href as any).includes('ej2.syncfusion.com') ? 'https:' : 'http:') + '//stackblitz.com/run';
+    let res: string = ((location.href as any).indexOf('ej2.syncfusion.com') !== -1 ? 'https:' : 'http:') + '//stackblitz.com/run';
     form.setAttribute('action', res);
     form.setAttribute('method', 'post');
     form.setAttribute('target', '_blank');

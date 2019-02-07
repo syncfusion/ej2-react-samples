@@ -4,10 +4,11 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
   ActionEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { employeeEventData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './cell-dimension.css';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule cell dimension sample
@@ -15,7 +16,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class CellDimension extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], employeeEventData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
   private onCreated(): void {
     let scheduleObj: any = this;
     scheduleObj.adjustEventWrapper();
@@ -48,12 +49,12 @@ export class CellDimension extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id='action-description'>
-          <p>This demo shows how to set the width and height of the cells by overriding the default CSS classes, so that the Schedule
+          <p>This demo shows how to set the width and height of the cells by overriding the default CSS classes, so that the Scheduler
         events are viewable in a zoomed in style.</p>
         </div>
         <div id='description'>
           <p>
-            In this demo, the height and width of the Schedule cells are set by overriding the default CSS class.
+            In this demo, the height and width of the Scheduler cells are set by overriding the default CSS class.
         </p>
         </div>
       </div>

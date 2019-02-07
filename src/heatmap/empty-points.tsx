@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
-import { emptyPointDataSource } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS: any = `
@@ -37,7 +37,7 @@ export class EmptyPoints extends SampleBase<{}, {}> {
                             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May',
                                 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                         }}
-                        dataSource={emptyPointDataSource}
+                        dataSource={(data as any).emptyPointDataSource}
                         cellSettings={{
                             showLabel: true,
                             border: { width: 0, color: 'white' },

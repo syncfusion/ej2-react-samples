@@ -1,0 +1,4 @@
+div#target.control-section.dialog-resizable {
+    overflow: visible;
+    min-height: 350px;
+}

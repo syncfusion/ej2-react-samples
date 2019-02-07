@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DateTimePickerComponent, RenderDayCellEventArgs } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
-import './datetimepicker-component.css';
+import './disabled-style.css';
 
 export class Disabled extends SampleBase<{}, {}> {
 
@@ -23,8 +23,9 @@ export class Disabled extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
           <p>
-            In the following sample, all the weekends (Saturday and Sunday) of a month are <code>disabled</code>, and these dates are restricted to set or select in the DateTimePicker.
-   </p>
+              In the following sample, all the weekends (Saturday and Sunday) of a month are
+              <code>disabled</code>, and these dates are restricted to set or select in the DateTimePicker.
+             </p>
         </div>
         <div id='description'>
           <p>
@@ -32,7 +33,7 @@ export class Disabled extends SampleBase<{}, {}> {
               dates in the DateTimePicker. Here the weekend dates are disabled by using renderDayCell.
           </p>
           <p>More information on the disabled dates can be found in the
-              <a href="https://ej2.syncfusion.com/react/documentation/datetimepicker/customization.html" target="_blank"> documentation section</a>.
+              <a href="https://ej2.syncfusion.com/react/documentation/datetimepicker/customization/" target="_blank"> documentation section</a>.
           </p>
         </div>
       </div>

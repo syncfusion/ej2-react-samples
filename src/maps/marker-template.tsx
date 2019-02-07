@@ -48,7 +48,7 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/australia.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/australia.json')}
                                     tooltipSettings={{
                                         visible: false
                                     }}

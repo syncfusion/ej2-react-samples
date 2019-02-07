@@ -32,15 +32,17 @@ export class Grouping extends SampleBase<{}, {}> {
             this.pivotGridObj.groupingBarSettings.showFilterIcon = args.checked;
         } else if (args.event.target.id === 'sort') {
             this.pivotGridObj.groupingBarSettings.showSortIcon = args.checked;
-        } else {
+        } else if (args.event.target.id === 'remove') {
             this.pivotGridObj.groupingBarSettings.showRemoveIcon = args.checked;
+        } else {
+            this.pivotGridObj.groupingBarSettings.showValueTypeIcon = args.checked;
         }
     }
 
     render() {
         return (
             <div className='control-pane'>
-                <div className='col-lg-9 control-section' style={{ overflow: 'initial' }}>
+                <div className='col-lg-9 control-section' id='pivot-grid-section' style={{ overflow: 'initial' }}>
                     <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotGridObj = scope; }} dataSource={dataSource} width={'100%'} height={'300'} showGroupingBar={true} showFieldList={true} gridSettings={{columnWidth: 140}}>
                         <Inject services={[GroupingBar, FieldList]} />
                     </PivotViewComponent>
@@ -66,6 +68,13 @@ export class Grouping extends SampleBase<{}, {}> {
                                 <tr style={{height:'50px'}}>
                                     <td>
                                         <div>
+                                            <CheckBoxComponent id='summary' checked={true} label='Show Value Type Icon' change={this.onChange.bind(this)} ></CheckBoxComponent>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style={{height:'50px'}}>
+                                    <td>
+                                        <div>
                                             <CheckBoxComponent id='remove' checked={true} label='Show Remove Icon' change={this.onChange.bind(this)} ></CheckBoxComponent>
                                         </div>
                                     </td>
@@ -84,7 +93,8 @@ export class Grouping extends SampleBase<{}, {}> {
                         To enable grouping bar, set the
                             <code>showGroupingBar</code> property as true.</p>
                     <p>
-                        Filter and sort icons allow displaying selective records and ordering them in ascending or descending order. The remove icon
+                        Filter and sort icons allow displaying selective records and ordering them in ascending or descending order. The value type icon
+                        allows to display values based on selected aggregate type. The remove icon
                         allows the user to remove the field from the report.
                                 </p>
                     <p>

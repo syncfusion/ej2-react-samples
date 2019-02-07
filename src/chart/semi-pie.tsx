@@ -28,7 +28,6 @@ export class SemiPie extends SampleBase<{}, {}> {
           <div className='col-lg-9'>
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
               title='Agricultural Land Percentage'
-              enableAnimation={false}
               tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               legendSettings={{ visible: false }}
               load={this.load.bind(this)}
@@ -53,26 +52,22 @@ export class SemiPie extends SampleBase<{}, {}> {
           <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-              <tbody>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div>Start Angle                       
+                  <td style={{ width: '60%' }}>
+                    <div>Start Angle:
+                          <p id="startangle" style={{ fontWeight: 'normal' }}>270</p>
                     </div>
                   </td>
-                  <td style={{ width: '50%' }}>
+                  <td style={{ width: '40%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" ref={slider => this.slider = slider} id="range-min" defaultValue="270" min="0" max="360" onChange={this.startangle.bind(this)} style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
-                  <td style={{ width: '20%' }}>
-                  <div>
-                  <p id="startangle" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>270</p>
-                  </div>
-                  </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '60%' }}>
-                    <div>End Angle                       
+                    <div>End Angle:
+                          <p id="endangle" style={{ fontWeight: 'normal' }}>90</p>
                     </div>
                   </td>
                   <td style={{ width: '40%' }}>
@@ -80,29 +75,19 @@ export class SemiPie extends SampleBase<{}, {}> {
                       <input type="range" name="range-min" ref={slider => this.slider = slider} id="range-max" defaultValue="90" min="0" max="360" onChange={this.endangle.bind(this)} style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
-                  <td style={{ width: '40%' }}>
-                    <div>
-                      <p id="endangle" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>90</p>
-                    </div>
-                  </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div>Inner Radius                         
+                  <td style={{ width: '60%' }}>
+                    <div>Inner Radius:
+                          <p id="innerradius" style={{ fontWeight: 'normal' }}>0.40</p>
                     </div>
                   </td>
-                  <td style={{ width: '50%' }}>
+                  <td style={{ width: '40%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="innerRadius" ref={slider => this.slider = slider} id="inner-radius" defaultValue="40" min="0" max="50" onChange={this.onChange.bind(this)} style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
-                  <td style={{ width: '40%' }}>
-                    <div>
-                    <p id="innerradius" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>0.40</p>
-                    </div>
-                  </td>
                 </tr>
-                </tbody>
               </table>
             </PropertyPane>
           </div>
@@ -152,6 +137,7 @@ export class SemiPie extends SampleBase<{}, {}> {
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+    replace(/-dark/i, "Dark") as AccumulationTheme;
   };
 }

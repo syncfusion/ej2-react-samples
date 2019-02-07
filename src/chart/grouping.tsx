@@ -82,32 +82,26 @@ export class Grouping extends SampleBase<{}, {}> {
           <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-              <tbody>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '50%' }}>
-                    <div>Mode </div>
+                    <div>Mode: </div>
                   </td>
-                  <td style={{ padding: 10, width: '40%'}} colSpan={2}>
+                  <td style={{ padding: 10, width: '50%' }}>
                     <DropDownListComponent width={120} id="modes" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Point" />
                   </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div>Group To                       
+                  <td style={{ width: '60%' }}>
+                    <div>Group To:
+                        <p id="clubtext" style={{ fontWeight: 'normal' }}>9</p>
                     </div>
                   </td>
-                  <td style={{ width: '50%' }}>
+                  <td style={{ width: '40%' }}>
                     <div>
                       <input type="range" name="clubvalue" onChange={this.onClubvalue.bind(this)} ref={slider => this.slider = slider} defaultValue="9" min="0" max="27" id="clubvalue" style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
-                  <td style={{ width: '20%'}}>
-                  <div>
-                      <p id="clubtext" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>9</p>
-                  </div>
-                  </td>
                 </tr>
-                </tbody>
               </table>
             </PropertyPane>
           </div>
@@ -119,7 +113,7 @@ export class Grouping extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p> In this example, you can see how to <code>group</code> points in pie chart.</p>
-          <p> Points having value below the <code>'groupTo'</code> value are grouped and showed as separate point. You can view this points on mouse click and can customize this point using <code>'pointRender'</code> event. </p>
+          <p> Points having value below the <code>'groupTo'</code> value are grouped and showed as separate point. You can customise the apearance of the point using <code>'poinRender'</code> event.</p>
           <p> DataLabel is used to represent individual data and its value.</p>
         </div>
       </div>
@@ -148,6 +142,6 @@ export class Grouping extends SampleBase<{}, {}> {
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as AccumulationTheme;
   };
 }

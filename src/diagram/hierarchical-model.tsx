@@ -20,21 +20,8 @@ import { DataManager } from "@syncfusion/ej2-data";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
+import { hierarchicalTree } from './diagram-data';
 
-export let hierarchicalTree: object[] = [
-  { Name: "Diagram", fillColor: "#916DAF" },
-  { Name: "Layout", Category: "Diagram" },
-  { Name: "Tree Layout", Category: "Layout" },
-  { Name: "Organizational Chart", Category: "Layout" },
-  { Name: "Hierarchical Tree", Category: "Tree Layout" },
-  { Name: "Radial Tree", Category: "Tree Layout" },
-  { Name: "Mind Map", Category: "Hierarchical Tree" },
-  { Name: "Family Tree", Category: "Hierarchical Tree" },
-  { Name: "Management", Category: "Organizational Chart" },
-  { Name: "Human Resources", Category: "Management" },
-  { Name: "University", Category: "Management" },
-  { Name: "Business", Category: "Management" }
-];
 
 export interface EmployeeInfo {
   Name: string;
