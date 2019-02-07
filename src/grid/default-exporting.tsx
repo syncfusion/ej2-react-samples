@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Toolbar, ExcelExport, PdfExport, Group } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
-import { ClickEventArgs } from '@syncfusion/ej2-navigations'
+import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { SampleBase } from '../common/sample-base';
 let refresh: Boolean;
 export class Exporting extends SampleBase<{}, {}> {

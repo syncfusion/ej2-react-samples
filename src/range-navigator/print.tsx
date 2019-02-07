@@ -162,13 +162,15 @@ export class Print extends SampleBase<{}, {}> {
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                 replace(/-dark/i, "Dark") as ChartTheme;
         this.chartRendered = true;
     };
     public rangeLoad(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                 replace(/-dark/i, "Dark") as ChartTheme;
         args.rangeNavigator.stepLineSeriesModule=new StepLineSeries();
         args.rangeNavigator.dateTimeModule = new DateTime(args.rangeNavigator as any);
         args.rangeNavigator.series[0].type = "StepLine";

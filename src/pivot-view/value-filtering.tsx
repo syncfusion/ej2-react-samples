@@ -116,7 +116,7 @@ export class ValueFilter extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotGridObj = pivotview }} dataSource={dataSource} width={'100%'} height={'300'} dataBound={this.ondataBound} gridSettings={{ columnWidth: 140 }}>
                         </PivotViewComponent>

@@ -52,10 +52,10 @@ export class BubbleMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Bubble, MapsTooltip, Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/bubble-datasource.json')}
+                                    dataSource={new MapAjax('./src/maps/map-data/bubble-datasource.json')}
                                     shapeSettings={{
                                         fill: '#E5E5E5'
                                     }}

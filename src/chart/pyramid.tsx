@@ -69,7 +69,8 @@ export class Pyramid extends SampleBase<{}, {}> {
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+    replace(/-dark/i, "Dark") as AccumulationTheme;
     if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
       args.accumulation.series[0].width = '80%';
       args.accumulation.series[0].height = '70%';

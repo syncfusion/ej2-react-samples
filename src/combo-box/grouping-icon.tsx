@@ -6,39 +6,19 @@ import * as React from 'react';
 import { ComboBoxComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import './icons.css';
+import * as data from './dataSource.json';
 
 export class Grouping extends SampleBase<{}, {}> {
 
   private listObj: ComboBoxComponent;
+  private temp:string = 'vegetableData';
   //define the data with category
-  private vegetableData: { [key: string]: Object }[] = [
-    { Vegetable: 'Cabbage', Category: 'Leafy and Salad', Id: 'item1' },
-    { Vegetable: 'Chickpea', Category: 'Beans', Id: 'item2' },
-    { Vegetable: 'Garlic', Category: 'Bulb and Stem', Id: 'item3' },
-    { Vegetable: 'Green bean', Category: 'Beans', Id: 'item4' },
-    { Vegetable: 'Horse gram', Category: 'Beans', Id: 'item5' },
-    { Vegetable: 'Nopal', Category: 'Bulb and Stem', Id: 'item6' },
-    { Vegetable: 'Onion', Category: 'Bulb and Stem', Id: 'item7' },
-    { Vegetable: 'Pumpkins', Category: 'Leafy and Salad', Id: 'item8' },
-    { Vegetable: 'Spinach', Category: 'Leafy and Salad', Id: 'item9' },
-    { Vegetable: 'Wheat grass', Category: 'Leafy and Salad', Id: 'item10' },
-    { Vegetable: 'Yarrow', Category: 'Leafy and Salad', Id: 'item11' }
-  ];
+  private vegetableData: { [key: string]: Object }[] = data[this.temp];
   // map the groupBy field with Category column
   private groupFields: Object = { groupBy: 'Category', text: 'Vegetable', value: 'Id' };
+  private tempData:string = 'socialMedia';
   //define the data with icon class
-  private socialMediaData: { [key: string]: Object }[] = [
-    { Class: 'facebook', SocialMedia: 'Facebook', Id: 'media1' },
-    { Class: 'google-plus', SocialMedia: 'Google Plus', Id: 'media2' },
-    { Class: 'instagram', SocialMedia: 'Instagram', Id: 'media3' },
-    { Class: 'linkedin', SocialMedia: 'LinkedIn', Id: 'media4' },
-    { Class: 'skype', SocialMedia: 'Skype', Id: 'media5' },
-    { Class: 'tumblr', SocialMedia: 'Tumblr', Id: 'media6' },
-    { Class: 'twitter', SocialMedia: 'Twitter', Id: 'media7' },
-    { Class: 'vimeo', SocialMedia: 'Vimeo', Id: 'media8' },
-    { Class: 'whatsapp', SocialMedia: 'WhatsApp', Id: 'media9' },
-    { Class: 'youtube', SocialMedia: 'YouTube', Id: 'media10' }
-  ];
+  private socialMediaData: { [key: string]: Object }[] = data[this.tempData];
   // map the iconCss field with Class column
   private iconFields: Object = { text: 'SocialMedia', value: 'Id', iconCss: 'Class' };
 

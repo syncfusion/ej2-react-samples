@@ -66,19 +66,19 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
             </DialogComponent>
         <div id="action-description">
             <p>
-                This sample demonstrates how to open or close the dialog with animation effects by clicking the appropriate button.
+                This example demonstrates how to open or close the dialog with animation effects by clicking the appropriate button.
             </p>
         </div>
         <div id="description">
             <p>
                 The dialog can be opened or closed with animation effect using the <a target="_blank" 
-            href="https://ej2.syncfusion.com/react/documentation/dialog/api-dialogComponent.html#animationsettings">animationSettings</a> property.
+            href="https://ej2.syncfusion.com/react/documentation/api/dialog/#animationsettings">animationSettings</a> property.
             You can also customize the duration of animation and delay to begin animation.
             Disables the dialog's animation by setting the animation effect as none.    
             </p>
             <p>
                 More information on the animation effect of Dialog can be found in the <a target="_blank" 
-                href="https://ej2.syncfusion.com/react/documentation/dialog/animation.html">
+                href="https://ej2.syncfusion.com/react/documentation/dialog/animation/">
                 documentation section</a>.
             </p>
          </div>

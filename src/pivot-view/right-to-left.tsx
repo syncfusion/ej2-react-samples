@@ -26,7 +26,7 @@ export class RTL extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <PivotViewComponent id='PivotView' dataSource={dataSource} showGroupingBar={true} width={'100%'} height={'300'} showFieldList={true} allowCalculatedField={true} enableRtl={true} gridSettings={{columnWidth: 140}}>
                         <Inject services={[GroupingBar, FieldList, CalculatedField]} />
                     </PivotViewComponent>

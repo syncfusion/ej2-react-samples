@@ -12,11 +12,11 @@ import {
   ConnectorConstraints,
   VerticalAlignment,
   HorizontalAlignment,
-  ShapeAnnotationModel,
+  ShapeAnnotationModel, AnnotationConstraints,
   SnapConstraints
 } from "@syncfusion/ej2-react-diagrams";
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
-import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
+import { ButtonComponent, CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 import {
   NumericTextBoxComponent,
   ColorPickerComponent,
@@ -121,6 +121,16 @@ let fontType: { [key: string]: Object }[] = [
   { type: '"Verdana") ', text: "Cubic Bezaier" }
 ];
 
+let templateList: { [key: string]: Object }[] = [
+  { value: "none", text: "None" },
+  { value: "industry", text: "Industry Competitors" },
+  { value: "suppliers", text: "Suppliers" },
+  { value: "potential", text: "Potential Entrants" },
+  { value: "buyers", text: "Buyers" },
+  { value: "substitutes", text: "Substitutes" }
+];
+
+
 let diagramInstance: DiagramComponent;
 let node: NodeModel;
 let fontFamily: DropDownListComponent;
@@ -129,6 +139,8 @@ let fontColor: ColorPickerComponent;
 let bold: ButtonComponent;
 let italic: ButtonComponent;
 let underLine: ButtonComponent;
+let templateData: DropDownListComponent;
+
 const sample_css = `.image-pattern-style {
   background-color: white;
   background-size: contain;
@@ -197,6 +209,8 @@ const sample_css = `.image-pattern-style {
   padding: 0px;
 }`;
 export class GettingStartedAnnotation extends SampleBase<{}, {}> {
+  private fields: object = { text: 'text', value: 'value' };
+
   rendereComplete() {
     diagramInstance.select([diagramInstance.nodes[0]]);
     bold.element.onclick = () => {
@@ -464,19 +478,53 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                       />
                     </div>
                   </div>
+                  <div className="row" style= {{paddingTop: "10px"}}>
+                     <div className="row row-header"> 
+                         Templates 
+                     </div>
+                  <div className="row col-xs-8" style= {{paddingLeft: "0px", paddingTop: "8px"}}>
+                  <DropDownListComponent
+                        id="template"
+                        fields={this.fields}
+                        popupWidth={200}
+                        width={"100%"}
+                        placeholder={"select a template"}
+                        dataSource={templateList}
+                        change={() => {
+                          changed("template");
+                        }}
+                        ref={template => (templateData = template)}
+                      />
+                 </div>
+               </div>
+              <div className="row" style={{paddingTop: "10px"}}>
+                <div className="row row-header"> 
+                    Behaviour
                 </div>
+              <div className="row" style= {{paddingTop: "8px"}}>
+                <CheckBoxComponent
+                  id="labelConstraints"
+                  label={"labelConstraints"}
+                  checked={false}
+                  change={() => {
+                    changed("interaction");
+                  }}
+                  />
               </div>
-            </div>
+           </div>
           </div>
         </div>
-        <div id="action-description">
+      </div>
+    </div>
+  </div>
+    <div id="action-description">
           <p>
             This sample illustrates the competitive environment of a business
             through five forces chart. The elements of the five force chart is
             described using nodes and annotations. Customizing the position and
             appearance of the annotation is illustrated in this example.
           </p>
-        </div>
+      </div>
         <div id="description">
           <p>
             This example shows how to add textual descriptions to shapes and how
@@ -523,6 +571,22 @@ function changed(value: string): void {
         (node.annotations[j].style as TextStyleModel).bold = true;
       } else if (value === "italic") {
         (node.annotations[j].style as TextStyleModel).italic = true;
+      }else if (value === 'template') {
+        if (templateData.value.toString() === 'none') {
+            node.annotations[j].template = '';
+            node.annotations[j].width = undefined;
+            node.annotations[j].height = undefined;
+        } else {
+             node.annotations[j].width = 25;
+             node.annotations[j].height = 25;
+             node.annotations[j].template =
+                 '<img src="src/diagram/Images/annotation/' + templateData.value.toString() + '.svg" style="width:100%;height:100%" />';
+          }
+      } else if (value === 'interaction') {
+        let annot: ShapeAnnotationModel = node.annotations[j];
+        if (annot && annot.constraints) {
+          annot.constraints = annot.constraints ^ AnnotationConstraints.Interaction;
+        }
       }
       diagramInstance.dataBind();
     }

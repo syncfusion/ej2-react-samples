@@ -7,14 +7,14 @@ import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './default.css';
+import * as data from './dataSource.json';
 
 export class Default extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  private temp:string = 'sportsData';
   // define the array of string
-  private sportsData: string[] = ['Badminton', 'Basketball', 'Cricket',
-    'Football', 'Golf', 'Gymnastics',
-    'Hockey', 'Rugby', 'Snooker', 'Tennis'];
+  private sportsData: string[] =data[this.temp];
   render() {
     return (
       <div id='combodefault' className='control-pane'>

@@ -162,7 +162,7 @@ export class Filtering extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotGridObj = pivotview }} dataSource={dataSource} width={'100%'} height={'300'} dataBound={this.ondataBound} gridSettings={{ columnWidth: 140 }}>
                             <Inject services={[FieldList]} />
@@ -210,7 +210,7 @@ export class Filtering extends SampleBase<{}, {}> {
                                         <td></td>
                                         <td>
                                             <div id="btn-control" style={{ float: 'right', marginRight: '4px' }}>
-                                                <ButtonComponent id='apply' ref={(scope) => { applyBtn = scope; }} onClick={this.onClick.bind(this)} iconCss='e-icons e-apply-icon' isPrimary={true}>Apply</ButtonComponent>
+                                                <ButtonComponent id='apply' ref={(scope) => { applyBtn = scope; }} onClick={this.onClick.bind(this)} isPrimary={true}>Apply</ButtonComponent>
                                             </div>
                                         </td>
                                     </tr>

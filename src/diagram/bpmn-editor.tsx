@@ -377,6 +377,7 @@ export class BpmnEditor extends SampleBase<{}, {}> {
   }
   render() {
     return (
+      <div className="control-pane">
       <div className="control-section">
         <div className="sb-mobile-palette-bar">
           <div id="palette-icon" style={{ float: "right", role: "button" }} className="e-ddb-icons1 e-toggle-palette"></div>
@@ -487,6 +488,7 @@ export class BpmnEditor extends SampleBase<{}, {}> {
           </p>
           <br />
         </div>
+      </div>
       </div>
     );
   }

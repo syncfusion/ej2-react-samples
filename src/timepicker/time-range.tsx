@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
-import './timepicker-component.css';
+import './range-style.css';
 
 export class Range extends SampleBase<{}, {}> {
     private endObject: TimePickerComponent;
@@ -65,7 +65,8 @@ export class Range extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        Select a start time from the first TimePicker and then the second TimePicker will be enabled. Select an end time from the second TimePicker to get a <code>time range</code>. Click the Business Hours checkbox to change both the TimePickers to <code>read-only</code> state.</p>
+                        Select a start time from the first TimePicker and then the second TimePicker will be enabled. Select an end time from the second TimePicker to get a <code>time range</code>. Click/Touch the Business Hours checkbox to change both the TimePickers to <code>read-only</code> state.
+                    </p>
                 </div>
                 <div id='description'>
                     <p>Time Range sample illustrates the appointment time selection scenario with the start and end time option. Here, two TimePicker
@@ -74,7 +75,7 @@ export class Range extends SampleBase<{}, {}> {
               will be able to select the end time or else, need to select the entire business hours 9:00 to 18:00 from the <code>Business Hours</code> option. Once the options are checked, both the TimePicker components goes to readonly state.
           </p>
                     <p>More information about time range restriction can be found in the  <a target='_blank'
-                        href='https://ej2.syncfusion.com/react/documentation/timepicker/time-range.html'>documentation</a>  section.</p>
+                        href='https://ej2.syncfusion.com/react/documentation/timepicker/time-range/'>documentation</a>  section.</p>
                 </div>
             </div>
         )

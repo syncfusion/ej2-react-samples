@@ -38,6 +38,7 @@ export class Customization extends SampleBase<{}, {}> {
     private tooltipElement: CheckBoxComponent;
     private tracklineElement: CheckBoxComponent;
     private axislineElement: CheckBoxComponent;
+    private enableRTLElement: CheckBoxComponent;
     private axisElement: SliderComponent;
 
     private droplist: { [key: string]: Object }[] = [
@@ -119,6 +120,15 @@ export class Customization extends SampleBase<{}, {}> {
         }
 
         this.tooltipChange();
+
+        if ((element1.value === 'Sales Percentage' && this.percentage.enableRtl === true) ||
+            (element1.value === 'Sales Count' && this.sales.enableRtl === true)) {
+            this.enableRTLElement.checked = true;
+        } else {
+            this.enableRTLElement.checked = false;
+        }
+
+        this.rtlChange();
 
         if ((element1.value === 'Sales Percentage' && this.percentage.tooltipSettings.trackLineSettings.visible === true) ||
             (element1.value === 'Sales Count' && this.sales.tooltipSettings.trackLineSettings.visible === true)) {
@@ -271,6 +281,13 @@ export class Customization extends SampleBase<{}, {}> {
         let spark: SparklineComponent = element1.value === 'Sales Percentage' ? this.percentage : this.sales;
         spark.axisSettings.value = value;
         document.getElementById('axisval').innerHTML = "Axis Value <span>" + value;
+        spark.refresh();
+    }
+
+    private rtlChange() {
+        let element1: HTMLInputElement = (document.getElementById('spark') as HTMLInputElement);
+        let spark: SparklineComponent = element1.value === 'Sales Percentage' ? this.percentage : this.sales;
+        spark.enableRtl  = this.enableRTLElement.checked;
         spark.refresh();
     }
 
@@ -473,6 +490,16 @@ export class Customization extends SampleBase<{}, {}> {
                                     <td style={{ "width": "50%" }}>
                                         <div>
                                             <CheckBoxComponent change={this.datalabelChange.bind(this)} ref={d => this.datalabelElement = d} id='datalabel' disabled={false} />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style={{ "height": "30px" }}>
+                                    <td style={{ "width": "50%" }}>
+                                        <div> Enable RTL </div>
+                                    </td>
+                                    <td style={{ "width": "50%" }}>
+                                        <div>
+                                            <CheckBoxComponent change={this.rtlChange.bind(this)} ref={d => this.enableRTLElement = d} id='enableRTL' disabled={false} />
                                         </div>
                                     </td>
                                 </tr>

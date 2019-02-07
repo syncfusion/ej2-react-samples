@@ -7,14 +7,14 @@ import {
 import './timeline-resources.css';
 import { extend, Internationalization, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { roomData } from './datasource';
+import * as dataSource from './datasource.json';
 
 /**
  * schedule room scheduler sample
  */
 
 export class TimelineResource extends SampleBase<{}, {}> {
-    private data: Object[] = extend([], roomData, null, true) as Object[];
+    private data: Object[] = extend([], (dataSource as any).roomData, null, true) as Object[];
     private scheduleObj: ScheduleComponent;
     private instance: Internationalization = new Internationalization();
     private getRoomName(value: ResourceDetails) {
@@ -62,11 +62,6 @@ export class TimelineResource extends SampleBase<{}, {}> {
     }
     private onRenderCell(args: RenderCellEventArgs): void {
         if (args.element.classList.contains('e-work-cells')) {
-            if (args.date.getHours() === 13) {
-                args.element.classList.add('e-read-only-cells');
-                args.element.classList.add('e-lunch-break');
-                args.element.innerHTML = '<span>Lunch Break </span>';
-            }
             if (args.date < new Date(2018, 6, 31, 0, 0)) {
                 args.element.setAttribute('aria-readonly', 'true');
                 args.element.classList.add('e-read-only-cells');
@@ -152,8 +147,7 @@ export class TimelineResource extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         Here, the timeline view is grouped with single level of resources by making use of the
-                        <code>group</code> property. Also, the lunch time blocking is done by applying styles on those cells through the
-                        <code>renderCell</code> event. The event editor and popup is prevented to open on those blocked time slots as well as on the past bookings
+                        <code>group</code> property. Also, the lunch time blocking is done by block event. The event editor and popup is prevented to open on those blocked time slots as well as on the past bookings
                         by making use of the
                         <code>popupOpen</code> event. The
                         <code>eventRendered</code> event is utilized in order to make the bookings done on past dates as read-only. To block more than one bookings

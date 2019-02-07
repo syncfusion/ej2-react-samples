@@ -17,38 +17,7 @@ import {
 import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
-
-export let artificialIntelligence: object[] = [
-  { Name: "Artificial Intelligence", fillColor: "#916DAF", branch: "root" },
-  { Name: "Machine Learning", Category: "Artificial Intelligence" },
-  {
-    Name: "Natural Language Processing (NLP)",
-    Category: "Artificial Intelligence"
-  },
-  { Name: "Speech", Category: "Artificial Intelligence" },
-  { Name: "Expert Systems", Category: "Artificial Intelligence" },
-  {
-    Name: "Planning, Scheduling, and Optimization",
-    Category: "Artificial Intelligence"
-  },
-  { Name: "Robotics", Category: "Artificial Intelligence" },
-  { Name: "Vision", Category: "Artificial Intelligence" },
-  { Name: " Deep Learning ", Category: "Machine Learning" },
-  { Name: "Predictive Analytics ", Category: "Machine Learning" },
-  { Name: "Translation ", Category: "Natural Language Processing (NLP)" },
-  {
-    Name: "Classification",
-    Category: "Natural Language Processing (NLP)"
-  },
-  {
-    Name: "Information Extraction",
-    Category: "Natural Language Processing (NLP)"
-  },
-  { Name: "Speech to Text", Category: "Speech" },
-  { Name: "Text to Speech", Category: "Speech" },
-  { Name: "Image Recognition ", Category: "Vision" },
-  { Name: "Machine Vision", Category: "Vision" }
-];
+import { artificialIntelligence, DataInfo } from './diagram-data';
 
 export interface DataInfo {
   [key: string]: string;

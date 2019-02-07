@@ -91,7 +91,16 @@
             "conditionalFormating": "Bedingte Formatierung",
             "apply": "Sich bewerben",
             "condition": "Bedingung hinzufügen",
-            "formatLabel": "Format"
+            "formatLabel": "Format",
+            "valueFieldSettings": "Wertfeldeinstellungen",
+            "sourceName": "Feldname :",
+            "sourceCaption": "Feldbeschriftung:",
+            "summarizeValuesBy": "Werte zusammenfassen nach:",
+            "baseField": "Basisfeld:",
+            "baseItem": "Basisartikel:",
+            "example": "z.B :",
+            "details": "Einzelheiten",
+            "manageRecords": "Datensätze verwalten"
         },
         "pivotfieldlist": {
             "staticFieldList": "Drehpunktfeld Liste",
@@ -172,7 +181,15 @@
             "labelTextContent": "Zeigen Sie die Artikel, für die das Label",
             "dateTextContent": "Zeigen Sie die Artikel an, für die das Datum gilt",
             "valueTextContent": "Zeige die Gegenstände für welche",
-            "And": "und"
+            "And": "und",
+            "valueFieldSettings": "Wertfeldeinstellungen",
+            "sourceName": "Feldname :",
+            "sourceCaption": "Feldbeschriftung:",
+            "summarizeValuesBy": "Werte zusammenfassen nach:",
+            "baseField": "Basisfeld:",
+            "baseItem": "Basisartikel:",
+            "example": "z.B :",
+            "deferLayoutUpdate": "Verschieben Sie das Layout-Update"
         }
     },
     "ar": {
@@ -267,7 +284,16 @@
             "conditionalFormating": "تنسيق مشروط",
             "apply": "تطبيق",
             "condition": "اضافة الشرط",
-            "formatLabel": "شكل"
+            "formatLabel": "شكل",
+            "valueFieldSettings": "إعدادات مجال القيمة",
+            "sourceName": "اسم الحقل :",
+            "sourceCaption": "التعليق الميداني:",
+            "summarizeValuesBy": "تلخيص القيم من خلال:",
+            "baseField": "حقل القاعدة:",
+            "baseItem": "العنصر الأساسي:",
+            "example": "على سبيل المثال:",
+            "details": "تفاصيل",
+            "manageRecords": "إدارة السجلات"
         },
         "pivotfieldlist": {
             "staticFieldList": "قم بتدوير الحقول",
@@ -348,7 +374,15 @@
             "labelTextContent": "إظهار العناصر التي لها التسمية",
             "dateTextContent": "إظهار العناصر التي التاريخ",
             "valueTextContent": "إظهار العناصر التي",
-            "And": "و"
+            "And": "و",
+            "valueFieldSettings": "إعدادات مجال القيمة",
+            "sourceName": "اسم الحقل :",
+            "sourceCaption": "التعليق الميداني:",
+            "summarizeValuesBy": "تلخيص القيم من خلال:",
+            "baseField": "حقل القاعدة:",
+            "baseItem": "العنصر الأساسي:",
+            "example": "على سبيل المثال:",
+            "deferLayoutUpdate": "تأجيل تخطيط التحديث"
         }
     },
     "en": {
@@ -443,7 +477,16 @@
             "conditionalFormating": "Conditional Formatting",
             "apply": "APPLY",
             "condition": "Add Condition",
-            "formatLabel": "Format"
+            "formatLabel": "Format",
+            "valueFieldSettings": "Value field settings",
+            "sourceName": "Field name :",
+            "sourceCaption": "Field caption :",
+            "summarizeValuesBy": "Summarize values by :",
+            "baseField": "Base field :",
+            "baseItem": "Base item :",
+            "example": "e.g:",
+            "details": "Details",
+            "manageRecords": "Manage Records"
         },
         "pivotfieldlist": {
             "staticFieldList": "Pivot Field List",
@@ -524,7 +567,15 @@
             "labelTextContent": "Show the items for which the label",
             "dateTextContent": "Show the items for which the date",
             "valueTextContent": "Show the items for which",
-            "And": "and"
+            "And": "and",
+            "valueFieldSettings": "Value field settings",
+            "sourceName": "Field name :",
+            "sourceCaption": "Field caption :",
+            "summarizeValuesBy": "Summarize values by :",
+            "baseField": "Base field :",
+            "baseItem": "Base item :",
+            "example": "e.g:",
+            "deferLayoutUpdate": "Defer Layout Update"
         }
     },
     "zh": {
@@ -619,7 +670,16 @@
             "conditionalFormating": "條件格式",
             "apply": "應用",
             "condition": "添加條件",
-            "formatLabel": "格式"
+            "formatLabel": "格式",
+            "valueFieldSettings": "值字段設置",
+            "sourceName": "字段名稱：",
+            "sourceCaption": "現場標題：",
+            "summarizeValuesBy": "通過以下方式匯總值：",
+            "baseField": "基地：",
+            "baseItem": "基本項目：",
+            "example": "例如：",
+            "details": "細節",
+            "manageRecords": "管理记录"
         },
         "pivotfieldlist": {
             "staticFieldList": "樞軸欄位清單",
@@ -700,7 +760,15 @@
             "labelTextContent": "顯示標籤的項目",
             "dateTextContent": "顯示物品的日期",
             "valueTextContent": "顯示項目的哪些",
-            "And": "而"
+            "And": "而",
+            "valueFieldSettings": "值字段設置",
+            "sourceName": "字段名稱：",
+            "sourceCaption": "現場標題：",
+            "summarizeValuesBy": "通過以下方式匯總值：",
+            "baseField": "基地：",
+            "baseItem": "基本項目：",
+            "example": "例如：",
+            "deferLayoutUpdate": "延遲佈局更新"
         }
     },
     "fr-CH": {
@@ -795,7 +863,16 @@
             "conditionalFormating": "Mise en forme conditionnelle",
             "apply": "Appliquer",
             "condition": "Ajouter une condition",
-            "formatLabel": "Format"
+            "formatLabel": "Format",
+            "valueFieldSettings": "Paramètres du champ de valeur",
+            "sourceName": "Nom de domaine :",
+            "sourceCaption": "Légende du champ:",
+            "summarizeValuesBy": "Résumer les valeurs par:",
+            "baseField": "Champ de base:",
+            "baseItem": "Élément de base:",
+            "example": "par exemple :",
+            "details": "Détails",
+            "manageRecords": "gérer les enregistrements"
         },
         "pivotfieldlist": {
             "staticFieldList": "Liste des champs de pivot",
@@ -876,7 +953,15 @@
             "labelTextContent": "Afficher les articles pour lesquels l'étiquette",
             "dateTextContent": "Afficher les articles pour lesquels la date",
             "valueTextContent": "Afficher les articles pour lesquels",
-            "And": "et"
+            "And": "et",
+            "valueFieldSettings": "Paramètres du champ de valeur",
+            "sourceName": "Nom de domaine :",
+            "sourceCaption": "Légende du champ:",
+            "summarizeValuesBy": "Résumer les valeurs par:",
+            "baseField": "Champ de base:",
+            "baseItem": "Élément de base:",
+            "example": "par exemple :",
+            "deferLayoutUpdate": "Différer la mise à jour de la mise en page"
         }
     }
 }

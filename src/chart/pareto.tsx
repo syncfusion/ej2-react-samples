@@ -50,34 +50,26 @@ export class ParetoChart extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample illustrates a pareto chart with line and column series. Trackball shows the information about the data point
-                closest to the mouse
+                <p>
+                This sample illustrates a pareto chart with line and column series. Trackball shows the information about the data point closest to the mouse
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the pareto charts. Pareto charts are used to find the cumulative
-        values of of data in different categories. You can use <code>border</code>,
-        <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual
-                        data and its value.
-    </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
+                        In this example, you can see how to render and configure the different type of charts. You can render any combination of series in chart except bar.
+                 Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                </p>
                     <br />
                     <p style={{ "font-weight": 500 }}>Injecting Module</p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use pareto series, we need to inject
-        <code>ParetoSeries</code>,<code>ColumnSeries</code> and <code>LineSeries</code> module using
-        <code>Chart.Inject(ParetoSeries, ColumnSeries, LineSeries)</code> method.
-    </p>
+                    In this example, we have used pareto series with the help of column and line series. To use pareto feature, we need to inject
+            <code>ParetoSeries</code> <code>ColumnSeries</code> <code>LineSeries</code> modules using
+            <code>Chart.Inject(ParetoSeries)</code> <code>Chart.Inject(ColumnSeries)</code> <code>Chart.Inject(LineSeries)</code>  method.
+            </p>
                     <p>
-                        More information on the column series can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation
-                            section
-        </a>.
-    </p>
+                        More information on the series can be found in this
+                         <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                     </p>
                 </div>
             </div>
         )
@@ -90,6 +82,6 @@ export class ParetoChart extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

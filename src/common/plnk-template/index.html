@@ -7,6 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="{{:meta}}">    
     <meta name="author" content="Syncfusion" />
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico" />
     <script type="text/javascript">
         var themeName = location.hash || 'material';
         themeName = themeName.replace('#','');
@@ -14,8 +15,8 @@
         document.write('<link href="{{:CDN_LINK}}' + themeName + '.css" rel="stylesheet">');
     </script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://ej2.syncfusion.com/react/demos/{{:canonical}}"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.38/system.js"></script>
-    <script src="systemjs.config.js"></script>
     <link href="index.css" rel="stylesheet" />
      <style>
         #loader {
@@ -168,10 +169,11 @@
             border-color: transparent;
         }
 
-        .sb-bread-crumb {
+        .sb-bread-crumb  h1{
             padding-left: 20px;
             padding-top: 24px;
             padding-bottom: 10px;
+            margin: 0;
         }
 
         .category-allcontrols a, .category-text a, .crumb-sample {
@@ -289,12 +291,12 @@
                 <div class='sb-header-right sb-right sb-table'>
                     <div class='sb-header-item sb-table-cell'>
                         <div class='product-style'>
-                            <div><a href="https://www.syncfusion.com/products/react/{{:header2}}">PRODUCT TOUR</a></div>
+                            <div><a href="https://www.syncfusion.com/react-ui-components/{{:header2}}">PRODUCT TOUR</a></div>
                         </div>
                     </div>
                     <div class='sb-header-item sb-table-cell'>
                         <div class="sb-header-item sb-table-cell sb-download-wrapper">
-                            <a href="https://www.syncfusion.com/downloads/essential-js2" target="_blank">
+                            <a href="https://www.syncfusion.com/downloads/react" target="_blank">
                                 <button id="download-now" class="sb-download-btn">
                                     <span class="sb-download-text">DOWNLOAD</span>
                                 </button>
@@ -307,13 +309,13 @@
             <div class ='content e-view'>
             <div class='sample-content'>
                 <div id="sample-bread-crumb" class="sb-bread-crumb">
-                    <div class="sb-bread-crumb-text">
-                        <div class="category-allcontrols"><a href="https://ej2.syncfusion.com/react/demos"><span>All Controls</span></a></div>
+                    <h1 class="sb-bread-crumb-text">
+                        <div class="category-allcontrols"><a href="https://ej2.syncfusion.com/react/demos/"><span>All Controls</span></a></div>
                         <div class="category-seperator sb-icons"> / </div>
                         <div class="category-text bread-ctext"><a href="https://ej2.syncfusion.com/react/demos/#/material/{{:header2}}/default.html"><span>{{:header}}</span></a></div>
                         <div class="category-seperator sb-icons"> / </div>
                         <div class="crumb-sample">{{:header1}}</div>
-                    </div>
+                    </h1>
                 </div>
                 <div class="control-content">
                 <div id="action-description">
@@ -349,6 +351,8 @@
                 
             </div>
         </div>
-          
+        <script src="./app/index.min.js"></script>
+        <script src="../../{{:repoScript}}"></script> 
+
 </body>
 </html>

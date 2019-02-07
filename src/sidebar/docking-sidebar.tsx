@@ -15,7 +15,7 @@ export class Dock extends SampleBase<{}, {}> {
         return (
             <div className="control-section">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    Click the button to view the sample
+                Click/Touch the button to view the sample
                </div>
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                     <a className="e-btn" id="newTab" target="_blank" onClick={this.newTabClick.bind(this)} >Open in new tab</a>
@@ -66,7 +66,7 @@ export class Dock extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    Click the button to view the Sidebar sample in new tab.
+                Click/Touch the button to view the Sidebar sample in new tab.
              </div>
                 <div id="description">
                     This sample demonstrates the dock state. Here the list item has icon with text representation. On dock state only the icon

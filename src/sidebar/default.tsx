@@ -11,7 +11,7 @@ export class Default extends SampleBase<{}, {}> {
         return (
             <div className="control-section">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    Click the button to view the sample
+                Click/Touch the button to view the sample
                  </div>
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                     <a className="e-btn" id="newTab" onClick={this.newTabClick.bind(this)} target="_blank">Open in new Tab</a>
@@ -47,7 +47,7 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        Click the button to view the Sidebar sample in new tab.
+                    Click/Touch the button to view the Sidebar sample in new tab.
                 </p>
                 </div>
                 <div id="description">

@@ -112,7 +112,7 @@ public render(): JSX.Element {
       <div className = 'control-pane'>
 			<div className='control-section col-lg-12 uploadpreview'>
                 <h4 className="form-title">Photo Contest</h4>
-                    <div className="control_wrapper" id="control_wrapper">
+                    <div className="control_wrapper uploader-form" id="control_wrapper">
                         <form id="formTemp"  method="post">
                             <div className="form-group" >
                                 <div className="e-float-input">
@@ -172,7 +172,7 @@ public render(): JSX.Element {
             </div>
             <div id="description">
                 <p>The Uploader component works in synchronous mode using HTML form.When the end-user submits the form, the selected files are submitted to server with the <code>name</code> attribute of input element.</p>
-                <p>More information on the form support can be found on this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/form-support.html"> documentation section</a>.</p>
+                <p>More information on the form support can be found on this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/form-support/"> documentation section</a>.</p>
             </div>
       </div>
     );

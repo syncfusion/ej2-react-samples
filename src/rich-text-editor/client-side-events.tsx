@@ -126,7 +126,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
         }
     }
     public actionCompleteHandler(): void {
-        setTimeout(() => { (this.rteObj as any).defaultRTE.toolbarModule.refreshToolbarOverflow(); }, 400);
+        setTimeout(() => { (this.rteObj as any).toolbarModule.refreshToolbarOverflow(); }, 400);
     }
 
   render() {

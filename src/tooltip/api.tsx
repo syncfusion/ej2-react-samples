@@ -6,6 +6,7 @@ import { ButtonComponent, CheckBoxComponent } from "@syncfusion/ej2-react-button
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import * as ReactDOM from 'react-dom';
 import * as React from "react";
 import { PropertyPane } from "../common/property-pane";
 import { SampleBase } from "../common/sample-base";
@@ -22,14 +23,14 @@ export class ApiTooltip extends SampleBase<{}, {}> {
 
     public onClick(args: any): void {
         if (!args.target.classList.contains("e-control") && !args.target.classList.contains("e-btn")) {
-            if (this.tooltip && !this.tooltip.isSticky && document.getElementsByClassName("e-tooltip-wrap").length > 0) {
+            if (!this.tooltip.isSticky && document.getElementsByClassName("e-tooltip-wrap").length > 0) {
                 this.tooltip.close();
             }
         }
     }
 
     public onScroll(): void {
-        if (this.tooltip && document.getElementsByClassName("e-tooltip-wrap").length > 0) {
+        if (document.getElementsByClassName("e-tooltip-wrap").length > 0) {
             this.tooltip.close();
         }
     }

@@ -1,7 +1,8 @@
+import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { CalendarComponent, ChangedEventArgs } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
-import './calendar-component.css';
+import './multi-style.css';
 
 export class MultipleSelection extends SampleBase<{}, {}> {
 
@@ -36,8 +37,7 @@ export class MultipleSelection extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        The following sample demonstrates the multiple date selection functionalities of the Calendar.
-                         Click the desired date from the calendar and the selected date will be added to the values property of the calendar.
+                    The following sample demonstrates the multiple date selection functionalities of the Calendar. Click /Touch the desired date from the Calendar and the selected date will be added to the values property of the calendar.
                    </p>
                 </div>
                 <div id="description">
@@ -47,7 +47,7 @@ export class MultipleSelection extends SampleBase<{}, {}> {
             <code>values</code> properties . Here 10, 15 and 25 date's are selected.
         </p>
                     <p>More information on the calendar instantiation can be found in this
-            <a href="https://ej2.syncfusion.com/documentation/calendar/getting-started.html#create-a-simple-calendar" target="_blank">
+            <a href="https://ej2.syncfusion.com/documentation/calendar/getting-started/#create-a-simple-calendar" target="_blank">
                             documentation section</a>.</p>
                 </div>
             </div>);

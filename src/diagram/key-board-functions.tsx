@@ -21,19 +21,8 @@ import {
 import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
+import { keyBoardData, DataInfo } from './diagram-data';
 
-export let keyBoardData: object[] = [
-  { id: "A", fill: "#3498DB" },
-  { id: "B", ancestor: "A", fill: "#E74C3C" },
-  { id: "C", ancestor: "A", fill: "#E74C3C" },
-  { id: "D", ancestor: "A", fill: "#E74C3C" },
-  { id: "E", ancestor: "B", fill: "#F39C12" },
-  { id: "F", ancestor: "B", fill: "#F39C12" },
-  { id: "G", ancestor: "F", fill: "#8E44AD" },
-  { id: "H", ancestor: "F", fill: "#8E44AD" },
-  { id: "I", ancestor: "G", fill: "#1E8449" },
-  { id: "J", ancestor: "G", fill: "#1E8449" }
-];
 
 export interface DataInfo {
   [key: string]: string;

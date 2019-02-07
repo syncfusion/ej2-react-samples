@@ -3,23 +3,11 @@ import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import {TreeViewComponent} from '@syncfusion/ej2-react-navigations';
 import './template.css';
-export class Template extends SampleBase<{}, {}> {
+import * as dataSource from './dataSource.json';
 
-public mailBox: { [key: string]: Object }[] = [
-        { id: 1, name: 'Favorites', hasChild: true },
-        { id: 2, pid: 1, name: 'Sales Reports', count: '4' },
-        { id: 3, pid: 1, name: 'Sent Items' },
-        { id: 4, pid: 1, name: 'Marketing Reports ', count: '6'},
-        { id: 5, name: 'My Folder', hasChild: true, expanded: true },
-        { id: 6, pid: 5, name: 'Inbox',  selected: true , count: '20'},
-        { id: 7, pid: 5,  name: 'Drafts', count: '5'},
-        { id: 8, pid: 5,  name: 'Deleted Items'},
-        { id: 9, pid: 5, name: 'Sent Items' },
-        { id: 10, pid: 5, name: 'Sales Reports' , count: '4'},
-        { id: 11, pid: 5, name: 'Marketing Reports', count: '6' },
-        { id: 12, pid: 5, name: 'Outbox'},
-];
-private fields: Object = { dataSource: this.mailBox,  id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild' };
+export class Template extends SampleBase<{}, {}> {
+data = dataSource as any;
+private fields: Object = { dataSource: this.data.templateData,  id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild' };
 private cssClass: string = "template-tree";
 private nodeTemplate(data: any): JSX.Element {
         return (         

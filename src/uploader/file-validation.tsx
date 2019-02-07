@@ -72,14 +72,14 @@ public render(): JSX.Element {
 			</div>
 
 			<div id="action-description">
-				<p>This sample demonstrates how to validate the files before uploading it to server. Only document files (DOC, DOCX, XLS, XLSX),
+				<p>This example demonstrates how to validate the files before uploading it to server. Only document files (DOC, DOCX, XLS, XLSX),
 					and the files should contain minimum 10 KB and maximum 28 MB sizes to upload it into server.This sample limits maximum files count as 5 to upload.</p>
 			</div>
 			<div id="description">
 				<p>The Uploader component allows to validate the file’s type, and limit the file size using allowedExtensions, minFileSize, and maxFileSize properties.
 				You can also achieve limit the files count before uploading it using select event. </p>
 				 
-				<p>For more information, you can refer to the Validation section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/validation.html">documentation section</a>.</p>
+				<p>For more information, you can refer to the Validation section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/validation/">documentation section</a>.</p>
 			</div>
       </div>
     );

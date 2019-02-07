@@ -127,10 +127,10 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='continent'
                                     shapeDataPath='continent'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/zooming-datasource.json')}
+                                    dataSource={new MapAjax('./src/maps/map-data/zooming-datasource.json')}
                                     animationDuration={500}
                                     shapeSettings={{
                                         autofill: true,

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
-import { renderModeData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 import { RadioButtonComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
@@ -53,7 +53,7 @@ export class RenderMode extends SampleBase<{}, {}> {
                                 labels: ['1965-1970', '1970-1975', '1975-1980', '1980-1985', '1985-1990',
                                     '1990-1995', '1995-2000', '2000-2005', '2005-2010', '2010-2015']
                             }}
-                            dataSource={renderModeData}
+                            dataSource={(data as any).renderModeData}
                             paletteSettings={{
                                 palette: [{ color: '#C06C84' },
                                 { color: '#355C7D' }

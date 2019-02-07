@@ -61,21 +61,21 @@ export class DropDownButton extends SampleBase<{}, {}> {
                     <p>
                         In this sample, DropDownButton contains icon, content and list of action items, and can be added using
                     <code>
-                            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/drop-down-button/api-dropDownButton.html#iconcss">iconCss,
+                            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-button/#iconcss">iconCss,
                             </a>
                     </code>
                     <code>
-                            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/drop-down-button/api-dropDownButton.html#content">content
+                            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-button/#content">content
                             </a>
                     </code>and
                     <code>
-                            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/drop-down-button/api-dropDownButton.html#items">items
+                            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-button/#items">items
                             </a>
                     </code>property.
                     </p>
                     <p>
                         More information about DropDownButton can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/drop-down-button/getting-started.html">
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/drop-down-button/getting-started">
                             documentation section</a>.
                     </p>
                 </div>

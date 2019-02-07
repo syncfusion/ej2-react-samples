@@ -1,6 +1,29 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { IScrollChangeEventArgs, DiagramComponent, NodeModel, ConnectorModel, BasicShapeModel, Node, Connector, Diagram, DiagramTools } from '@syncfusion/ej2-react-diagrams'
+import {
+    Node,
+    TextElement,
+    HierarchicalTree,
+    ConnectorConstraints,
+    Segments,
+    SelectorConstraints,
+    DiagramComponent,
+    Inject
+  } from "@syncfusion/ej2-react-diagrams";
+  import {
+    StackPanel,
+    PointPortModel,
+    Connector,
+    BasicShapeModel
+  } from "@syncfusion/ej2-react-diagrams";
+  import {
+    Diagram,
+    NodeModel,
+    ConnectorModel,
+    IScrollChangeEventArgs,
+    DiagramTools,
+    PortVisibility
+  } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from '../common/sample-base';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ToolbarComponent, ClickEventArgs } from '@syncfusion/ej2-react-navigations';

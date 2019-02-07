@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
-import { tableBubbleData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
@@ -54,7 +54,7 @@ export class BubbleTypes extends SampleBase<{}, {}> {
                         yAxis={{
                             labels: ['1995', '2000', '2005', '2010', '2015']
                         }}
-                        dataSource={tableBubbleData}
+                        dataSource={(data as any).tableBubbleData}
                         cellSettings={{
                             border: {
                                 width: 1

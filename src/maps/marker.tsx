@@ -12,7 +12,8 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { topPopulation } from './map-data/marker-location';
+import * as data from './map-data/top-population.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -42,10 +43,10 @@ export class MarkerMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='Country'
-                                    dataSource={ topPopulation }
+                                    dataSource={ datasource.population }
                                     shapeSettings={{
                                         fill: '#C3E6ED'
                                     }}
@@ -59,7 +60,7 @@ export class MarkerMaps extends SampleBase<{}, {}> {
                                                    color: '#285255',
                                                    width: 2
                                                 }}
-                                            dataSource={ topPopulation }
+                                            dataSource={ datasource.population }
                                             tooltipSettings={{
                                                 template: '<div id="markertooltiptemplate" style="width: 170px;opacity: 90%;background: rgba(53, 63, 76, 0.90);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.40);padding:10px;border: 1px #abb9c6;border-radius: 4px;">'+
                                                 '<div style="font-size:13px;color:#ffffff;font-weight: 500;"><center>${name}</center></div>'+

@@ -47,10 +47,10 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[MapsTooltip, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/tooltip-datasource.json')}
+                                    dataSource={new MapAjax('./src/maps/map-data/tooltip-datasource.json')}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath: 'name',

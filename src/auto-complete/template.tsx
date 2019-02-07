@@ -5,38 +5,31 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
-import './template.css';
+import './templates.css';
+import * as data from './dataSource.json';
 
 export class Templates extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  private temp:string = 'empList';
   // define the JSON of data
-  private employeesData: { [key: string]: Object }[] = [
-    { Name: 'Andrew Fuller', Eimg: '7', Designation: 'Team Lead', Country: 'England' },
-    { Name: 'Anne Dodsworth', Eimg: '1', Designation: 'Developer', Country: 'USA' },
-    { Name: 'Janet Leverling', Eimg: '3', Designation: 'HR', Country: 'USA' },
-    { Name: 'Laura Callahan', Eimg: '2', Designation: 'Product Manager', Country: 'USA' },
-    { Name: 'Margaret Peacock', Eimg: '6', Designation: 'Developer', Country: 'USA' },
-    { Name: 'Michael Suyama', Eimg: '9', Designation: 'Team Lead', Country: 'USA' },
-    { Name: 'Nancy Davolio', Eimg: '4', Designation: 'Product Manager', Country: 'USA' },
-    { Name: 'Robert King', Eimg: '8', Designation: 'Developer ', Country: 'England' },
-    { Name: 'Steven Buchanan', Eimg: '10', Designation: 'CEO', Country: 'England' }
-  ];
+  private employeesData: { [key: string]: Object }[] =data[this.temp];
   // maps the appropriate column to fields property
   private fields: object = { value: 'Name' };
- //set the value to header template
- private headerTemplate(data: any): JSX.Element {
-  return (
-    <div className="header"> <span>Photo</span> <span className="columnHeader">Employee Info</span></div>
-      );
-  }
-  //set the value to item template
-  private itemTemplate(data: any): JSX.Element {
+  //set the value to header template
+  private headerTemplate(data: any): JSX.Element {
     return (
-      <div><img className="empImage" src={"src/auto-complete/Employees/"+`${data.Eimg}`+".png"} alt="employee"/>
-      <div className="ename"> {data.Name} </div><div className="job"> {data.Designation} </div></div>
+      <div className="header"> <span>Photo</span> <span className="columnHeader">Employee Info</span></div>
         );
     }
+    //set the value to item template
+    private itemTemplate(data: any): JSX.Element {
+      return (
+        <div><img className="empImage" src= {"src/auto-complete/Employees/" + data.Eimg +".png"} alt="employee"/>
+        <div className="ename"> {data.Name} </div><div className="job"> {data.Designation} </div></div>
+          );
+      }
+
   render() {
     return (
       <div className='control-pane'>

@@ -1,20 +1,20 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ProgressButtonComponent, SpinSettings, AnimationSettings } from '@syncfusion/ej2-react-splitbuttons';
+import { ProgressButtonComponent, SpinSettingsModel, AnimationSettingsModel } from '@syncfusion/ej2-react-splitbuttons';
 import { SampleBase } from '../common/sample-base';
 import './progress-button.css';
 
 export class ProgressButton extends SampleBase<{}, {}> {
 
     public contractBtn: ProgressButtonComponent;
-    public spinRight: SpinSettings = { position: 'Right' };
-    public spinTop: SpinSettings = { position: 'Top' };
-    public spinBottom: SpinSettings = { position: 'Bottom' };
-    public spinCenter: SpinSettings = { position: 'Center' };
-    public zoomOut: AnimationSettings = { effect: 'ZoomOut' };
-    public slideLeft: AnimationSettings = { effect: 'SlideLeft' };
-    public slideRight: AnimationSettings = { effect: 'SlideRight' };
-    public zoomIn: AnimationSettings = { effect: 'ZoomIn' };
+    public spinRight: SpinSettingsModel = { position: 'Right' };
+    public spinTop: SpinSettingsModel = { position: 'Top' };
+    public spinBottom: SpinSettingsModel = { position: 'Bottom' };
+    public spinCenter: SpinSettingsModel = { position: 'Center' };
+    public zoomOut: AnimationSettingsModel = { effect: 'ZoomOut' };
+    public slideLeft: AnimationSettingsModel = { effect: 'SlideLeft' };
+    public slideRight: AnimationSettingsModel = { effect: 'SlideRight' };
+    public zoomIn: AnimationSettingsModel = { effect: 'ZoomIn' };
     public duration: number = 4000;
 
     public contractBegin() {
@@ -56,7 +56,7 @@ export class ProgressButton extends SampleBase<{}, {}> {
                                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                                     <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                                         <ProgressButtonComponent id="roundbtn" spinSettings={this.spinCenter} animationSettings={this.zoomOut} cssClass="e-round e-small e-success"
-                                            iconCss="e-icons e-play-icon"></ProgressButtonComponent>
+                                            iconCss="e-btn-sb-icons e-play-icon"></ProgressButtonComponent>
                                     </div>
 
                                     <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
@@ -93,7 +93,7 @@ export class ProgressButton extends SampleBase<{}, {}> {
                                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                                     <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                                         <ProgressButtonComponent content="Download" enableProgress duration={this.duration} cssClass="e-hide-spinner e-progress-top"
-                                            iconCss="e-icons e-download-icon"></ProgressButtonComponent>
+                                            iconCss="e-btn-sb-icons e-download-icon"></ProgressButtonComponent>
                                     </div>
 
                                     <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
@@ -117,21 +117,21 @@ export class ProgressButton extends SampleBase<{}, {}> {
                         In this sample, the progress button contains the content, spinner, progress indicator, and a list of related features that
                         can be achieved using
                     <code>
-                            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/progress-button/api-progressButton.html#content">content,
+                            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/progress-button/#content">content,
                     </a>
                         </code>
                         <code>
-                            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/progress-button/api-progressButton.html#cssClass">cssClass,
+                            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/progress-button/#cssclass">cssClass,
                     </a>
                         </code>and
                     <code>
-                            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/progress-button/api-progressButton.html#enableProgress">enableProgress
+                            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/progress-button/#enableprogress">enableProgress
                     </a>
                         </code>property.
                     </p>
                     <p>
                         More information about progress button can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/progress-button/getting-started.html">
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/progress-button/getting-started">
                             documentation section</a>.
                     </p>
                 </div>

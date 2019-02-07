@@ -56,15 +56,15 @@ export class Switch extends SampleBase<{}, {}> {
                     <p>
                         In this sample, checked state is achieved by using the
                         <a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/switch/api-switchComponent.html#checked-boolean">
+                        href="https://ej2.syncfusion.com/react/documentation/api/switch/#checked">
                         <code>checked</code>
                         </a> property, and disabled state is achieved by using the <a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/switch/api-switchComponent.html#disabled-boolean"><code>disabled
+                        href="https://ej2.syncfusion.com/react/documentation/api/switch/#disabled"><code>disabled
                         </code></a> property.
                     </p>
                     <p>
                         More information on Switch can be found in the <a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/switch/getting-started.html">
+                        href="https://ej2.syncfusion.com/react/documentation/switch/getting-started">
                         documentation section</a>.
                     </p>
                 </div>

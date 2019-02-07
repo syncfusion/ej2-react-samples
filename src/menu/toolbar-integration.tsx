@@ -1,130 +1,29 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { MenuComponent, MenuItemModel, ToolbarComponent, ItemsDirective, ItemDirective, MenuAnimationSettings } from '@syncfusion/ej2-react-navigations';
-import { DropDownButtonComponent, ItemModel } from '@syncfusion/ej2-react-splitbuttons';
+import { MenuComponent, MenuItemModel, ToolbarComponent, ItemsDirective, ItemDirective, MenuAnimationSettingsModel } from '@syncfusion/ej2-react-navigations';
+import { DropDownButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
+import { removeClass } from  '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import './toolbar-integration.css';
+import * as dataSource from './menu-data.json';
 
 export class ToolbarIntegration extends SampleBase<{}, {}> {
-    public searchTemplate: string = '<div class="e-input-group"><input class="e-input" type="text" placeholder="Search" /><span class="em-icons e-search"></span></div>';
+    public data = dataSource as any;
+    public searchTemplate: string = '<div class="e-input-group"><input class="e-input" type="text" placeholder="Search" /><span class="e-input-group-icon em-icons e-search"></span></div>';
     public tbObj: ToolbarComponent;
 
-    public items: ItemModel[] = [
-        { text: 'My Profile' },
-        { text: 'Orders' },
-        { text: 'Rewards' },
-        { text: 'Logout' }
-    ];
-
     private menuTemplate(): JSX.Element {
-        return (<MenuComponent id="menuele" items={this.menuItems} animationSettings={this.animation} />);
+        return (<MenuComponent id="menuele" items={this.data.toolbarIntegrationData} />);
     }
 
     private ddbTemplate(): any {
-        return (<DropDownButtonComponent id="userDBtn" content='Andrew' created={this.onCreated.bind(this)} items={this.items}></DropDownButtonComponent>);
+        return (<DropDownButtonComponent id="userDBtn" content='Andrew' created={this.onCreated.bind(this)} items={this.data.userData}></DropDownButtonComponent>);
     }
 
     public onCreated(): void {
         this.tbObj.refreshOverflow();
+        removeClass([this.tbObj.element.querySelector('.e-shopping-cart')], 'e-icons');
     }
-
-    public animation: MenuAnimationSettings = { effect: 'None' };
-
-    //Menu items definition
-    public menuItems: MenuItemModel[] = [
-        {
-            text: 'Appliances',
-            items: [
-                {
-                    text: 'Kitchen',
-                    items: [
-                        { text: 'Electric Cookers' },
-                        { text: 'Coffee Makers' },
-                        { text: 'Blenders' }
-                    ]
-                },
-                {
-                    text: 'Washing Machine',
-                    items: [
-                        { text: 'Fully Automatic' },
-                        { text: 'Semi Automatic' }
-                    ]
-                },
-                {
-                    text: 'Air Conditioners',
-                    items: [
-                        { text: 'Inverter ACs' },
-                        { text: 'Split ACs' },
-                        { text: 'Window ACs' }
-                    ]
-                }
-            ]
-        },
-        {
-            text: 'Accessories',
-            items: [
-                {
-                    text: 'Mobile',
-                    items: [
-                        { text: 'Headphones' },
-                        { text: 'Memory Cards' },
-                        { text: 'Power Banks' }
-                    ]
-                },
-                {
-                    text: 'Computer',
-                    items: [
-                        { text: 'Pendrives' },
-                        { text: 'External Hard Disks' },
-                        { text: 'Monitors' }
-                    ]
-                }
-            ]
-        },
-        {
-            text: 'Fashion',
-            items: [
-                {
-                    text: 'Men',
-                    items: [
-                        { text: 'Shirts' },
-                        { text: 'Jackets' },
-                        { text: 'Track Suits' }
-                    ]
-                },
-                {
-                    text: 'Women',
-                    items: [
-                        { text: 'Kurtas' },
-                        { text: 'Salwars' },
-                        { text: 'Sarees' }
-                    ]
-                }
-            ]
-        },
-        {
-            text: 'Home & Living',
-            items: [
-                {
-                    text: 'Furniture',
-                    items: [
-                        { text: 'Beds' },
-                        { text: 'Mattresses' },
-                        { text: 'Dining Tables' }
-                    ]
-                },
-                {
-                    text: 'Decor',
-                    items: [
-                        { text: 'Clocks' },
-                        { text: 'Wall Decals' },
-                        { text: 'Paintings' }
-                    ]
-                }
-            ]
-        }
-    ];
-
     render() {
         return (
             <div className='control-pane'>
@@ -150,7 +49,7 @@ export class ToolbarIntegration extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information about menu can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/menu/getting-started.html">
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/use-case-scenarios/#menu-in-toolbar">
                             documentation</a> section.
                     </p>
                 </div>

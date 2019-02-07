@@ -1,7 +1,22 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./src/common/index.js",
+    mode : (/hotfix\/|release\/|master/).test(process.env.BRANCH_NAME) ? 'production' : 'development',
+    entry: { 'src/common/index.js': './src/common/index.js' },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /node_modules/,
+                    chunks: 'initial',
+                    name: 'common',
+                    priority: 10,
+                    enforce: true
+                }
+            }
+        },
+        runtimeChunk: false
+    },
     output: {
         filename: "bundle.js",
         path: __dirname + "/dist"
@@ -34,16 +49,6 @@ module.exports = {
             'process.env': {
                 NODE_ENV: JSON.stringify('production')
             }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            beautify: false,
-            output: {
-                comments: false
-            },
-            compress: {
-                warnings: false,
-                unused: true
-            }
-        }),
+        })
     ]
 }

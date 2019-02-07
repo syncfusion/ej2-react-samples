@@ -2,7 +2,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor } from '@syncfusion/ej2-react-heatmap';
 import { SampleBase } from '../common/sample-base';
-
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;

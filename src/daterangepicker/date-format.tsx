@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import './daterangepicker-component.css';
+import './format-style.css';
 import { DateRangePickerComponent, RenderDayCellEventArgs } from '@syncfusion/ej2-react-calendars';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { FloatLabelType } from '@syncfusion/ej2-react-inputs';
@@ -15,7 +15,7 @@ export class Format extends SampleBase<{}, {}> {
   private dataTypes: { [key: string]: Object }[] = [
     {  value: 'dd\'\/\'MMM\'\/\'yy hh:mm a', text: 'dd/MMM/yy hh:mm a' },
     {  value: 'yyyy\'\/\'MM\'\/\'dd HH:mm', text: 'yyyy/MM/dd HH:mm' },
-    {  value: 'dd\'\/\'MMMM HH:mm', text: 'dd/MMMM hh:mm a' },
+    {  value: 'dd\'\/\'MMMM\'\/\'yyyy', text: 'dd/MMMM/yyyy' },
   ];
   private fields: object = { value: 'value', text: 'text' };
   public waterMark: string = 'Format';
@@ -46,7 +46,8 @@ export class Format extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
           <p>
-            In this sample, the DateRangePicker has been configured with the <code>dd-MMM-yy hh:mm a</code> date time format. To change this current date format, go to the properties panel at the right side and select a date format from the dropdown options.</p>
+            In this sample, the DateRangePicker has been configured with the <code> dd/MMM/yy hh:mm a</code> date time format. To change this current date time format, go to the properties panel at the right side and select a date format from the dropdown options. For mobile mode touch the icon at the right side and select a date time format from the dropdown options.
+          </p>
         </div>
         <div id='description'>
           <p>
@@ -54,7 +55,7 @@ export class Format extends SampleBase<{}, {}> {
             using the <code>format</code> property. You can also change the date format by selecting it from the format options in the properties
             panel.
         </p>
-        <p> More information on the date format configuration can be found in the <a href="https://ej2.syncfusion.com/react/documentation/daterangepicker/globalization.html#date-format" target="_blank"> documentation section</a>.</p>
+        <p> More information on the date format configuration can be found in the <a href="https://ej2.syncfusion.com/react/documentation/daterangepicker/globalization/#date-format" target="_blank"> documentation section</a>.</p>
         </div>
       </div>
     )

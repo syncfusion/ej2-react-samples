@@ -62,7 +62,7 @@ export class DefaultFunctionalities extends SampleBase<{}, {hideDialog: boolean;
         </div>
         <div id="action-description">
         <p>
-        This sample demonstrates the default rendering of the dialog component with minimum configuration. Click close or press ESC  to close the dialog. Click “open” to show the dialog again, if it is closed.
+        This example demonstrates the default rendering of the dialog component with minimum configuration. Click close or press ESC  to close the dialog. Click “open” to show the dialog again, if it is closed.
         </p>
         </div>
         <div id="description">

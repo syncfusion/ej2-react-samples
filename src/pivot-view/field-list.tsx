@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { PivotViewComponent, IDataOptions, IDataSet, PivotFieldListComponent, Inject, CalculatedField, dataBound } from '@syncfusion/ej2-react-pivotview';
-import { Browser, setStyleAttribute, prepend } from '@syncfusion/ej2-base';
+import { PivotViewComponent, IDataOptions, PivotFieldListComponent, Inject, CalculatedField, FieldList as PivotFieldList } from '@syncfusion/ej2-react-pivotview';
+import { Browser, setStyleAttribute } from '@syncfusion/ej2-base';
 import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
 
@@ -47,29 +47,32 @@ export class FieldList extends SampleBase<{}, {}> {
         }
     }
     afterPivotPopulate(): void {
-        if (this.fieldlistObj && this.pivotGridObj) {
+        if (!Browser.isDevice && this.fieldlistObj && this.pivotGridObj) {
             this.fieldlistObj.update(this.pivotGridObj);
         }
     }
     rendereComplete(): void {
         this.fieldlistObj.updateView(this.pivotGridObj);
-        if (Browser.isDevice) {
-            prepend([document.getElementById('PivotFieldList')], document.getElementById('PivotView'));
-        }
         this.fieldlistObj.update(this.pivotGridObj);
     }
     ondataBound(): void {
-        this.pivotGridObj.toolTip.destroy();
+        this.pivotGridObj.tooltip.destroy();
+        if (Browser.isDevice) {
+            this.pivotGridObj.element.style.width = '100%';
+            this.pivotGridObj.allowCalculatedField = true;
+            this.pivotGridObj.showFieldList = true;
+        }
         this.pivotGridObj.refresh();
     }
     onLoad(): void {
         if (Browser.isDevice) {
             (this as any).renderMode = 'Popup';
             (this as any).target = '.control-section';
-            document.getElementById('PivotFieldList').removeAttribute('style');
             setStyleAttribute(document.getElementById('PivotFieldList'), {
+				'width': 0,
                 'height': 0,
-                'float': 'left'
+                'float': 'left',
+                'display': 'none'
             });
         }
     }
@@ -79,8 +82,9 @@ export class FieldList extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className="control-section">
-                    <PivotViewComponent id='PivotView' ref={d => this.pivotGridObj = d} enginePopulated={this.afterPivotPopulate.bind(this)} width={'99%'} height={'530'} gridSettings={{ columnWidth: 140 }}>
+                <div className="control-section" style={{ overflow: 'auto' }}>
+                    <PivotViewComponent id='PivotView' ref={d => this.pivotGridObj = d} enginePopulated={this.afterPivotPopulate.bind(this)} width={'99%'} height={'580'} gridSettings={{ columnWidth: 140 }}>
+                    <Inject services={[CalculatedField, PivotFieldList]} />
                     </PivotViewComponent>
                     <PivotFieldListComponent id='PivotFieldList' ref={d => this.fieldlistObj = d} enginePopulated={this.afterPopulate.bind(this)} dataSource={dataSource} renderMode={"Fixed"} allowCalculatedField={true} load={this.onLoad} dataBound={this.ondataBound.bind(this)}>
                         <Inject services={[CalculatedField]} />

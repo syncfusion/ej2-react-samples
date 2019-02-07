@@ -7,7 +7,7 @@ import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
 import './group-template.css';
-import { groupDataSource } from './newsData';
+import { groupDataSource } from './listData';
 
 export class GroupTemplate extends SampleBase<{}, {}> {
 

@@ -12,10 +12,10 @@ export class Default extends SampleBase<{}, {}> {
         let proxy: any = this;
         if (proxy.btnobj.element.classList.contains('e-active')) {
             proxy.btnobj.content = 'Pause';
-            proxy.btnobj.iconCss = 'e-icons e-pause-icon';
+            proxy.btnobj.iconCss = 'e-btn-sb-icons e-pause-icon';
         }else {
             proxy.btnobj.content = 'Play';
-            proxy.btnobj.iconCss = 'e-icons e-play-icon';
+            proxy.btnobj.iconCss = 'e-btn-sb-icons e-play-icon';
         }
     }
 
@@ -68,18 +68,18 @@ export class Default extends SampleBase<{}, {}> {
 
                     <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                            <ButtonComponent cssClass='e-small e-round' iconCss='e-icons e-add-icon' isPrimary></ButtonComponent>
+                            <ButtonComponent cssClass='e-small e-round' iconCss='e-btn-sb-icons e-add-icon' isPrimary></ButtonComponent>
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                            <ButtonComponent cssClass='e-flat e-primary' ref={(scope) => { this.btnobj = scope; }} iconCss='e-icons e-play-icon' 
+                            <ButtonComponent cssClass='e-flat e-primary' ref={(scope) => { this.btnobj = scope; }} iconCss='e-btn-sb-icons e-play-icon' 
                             isToggle onClick={ this.btnClick.bind(this) }>Play</ButtonComponent>
                         </div>
                     </div>
 
                     <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                            <ButtonComponent cssClass='e-flat e-primary' iconCss='e-icons e-open-icon' iconPosition='Right'>Open</ButtonComponent>
+                            <ButtonComponent cssClass='e-flat e-primary' iconCss='e-btn-sb-icons e-open-icon' iconPosition='Right'>Open</ButtonComponent>
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
@@ -99,12 +99,12 @@ export class Default extends SampleBase<{}, {}> {
             </p>
             <p>
                 In this sample, Play button is a toggle button and it can be enabled by using the <a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/button/api-buttonComponent.html#istoggle-boolean"><code>isToggle
+                href="https://ej2.syncfusion.com/react/documentation/api/button/#istoggle"><code>isToggle
                 </code></a> property. To change the text and icon you should handle click event.
             </p>
             <p> 
                 More information about Button can be found in this <a target='_blank'
-                href='http://ej2.syncfusion.com/react/documentation/button/getting-started.html'>documentation section</a>.
+                href='https://ej2.syncfusion.com/react/documentation/button/getting-started'>documentation section</a>.
             </p>
         </div>
       </div>

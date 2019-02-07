@@ -7,25 +7,14 @@ import { ComboBoxComponent, FilteringEventArgs } from '@syncfusion/ej2-react-dro
 import { Query } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import './custom.css';
+import * as data from './dataSource.json';
 
 export class Custom extends SampleBase<{}, {}> {
 
   private listObj: ComboBoxComponent;
+  private temp:string = 'countries';
   // defined the JSON of data
-  private searchData: { [key: string]: Object; }[] = [
-    { Name: 'Australia', Code: 'AU' },
-    { Name: 'Bermuda', Code: 'BM' },
-    { Name: 'Canada', Code: 'CA' },
-    { Name: 'Cameroon', Code: 'CM' },
-    { Name: 'Denmark', Code: 'DK' },
-    { Name: 'France', Code: 'FR' },
-    { Name: 'Finland', Code: 'FI' },
-    { Name: 'Germany', Code: 'DE' },
-    { Name: 'Greenland', Code: 'GL' },
-    { Name: 'Hong Kong', Code: 'HK' },
-    { Name: 'India', Code: 'IN' },
-    { Name: 'Italy', Code: 'IT' }
-  ];
+  private searchData: { [key: string]: Object; }[] = data[this.temp];
   // maps the appropriate column to fields property
   private fields: Object = { text: 'Name', value: 'Code' };
   // set the template content when the typed character(s) is not present in the list

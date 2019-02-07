@@ -6,12 +6,13 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { MapAjax } from '@syncfusion/ej2-maps';
 import {
-    MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
+    MapsComponent, Inject, ILoadedEventArgs, ILoadEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Selection, Highlight, IShapeSelectedEventArgs, MarkersDirective, MarkerDirective, Marker, MapsTooltip
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { PropertyPane } from '../common/property-pane';
+import * as data from './map-data/default-datasource.json';
+let datasource: any = data as any;
 // Data ref
 const SAMPLE_CSS = `
     .control-fluid {
@@ -31,6 +32,7 @@ let markers: object[] = [
 interface ShapeData {
     continent?: string;
 }
+let touchmove: boolean;
 export class DrilldownMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     private change(): void {
@@ -45,7 +47,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
     }
     private shapeSelected(args: IShapeSelectedEventArgs) {
         let shape: Object = (args.shapeData as ShapeData).continent;
-        if(this.mapInstance.baseLayerIndex === 0) {
+        if(this.mapInstance.baseLayerIndex === 0 && !touchmove) {
             if (shape === 'Africa') {
                 this.mapInstance.baseLayerIndex = 1;
                 this.mapInstance.refresh();
@@ -73,7 +75,8 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
             document.getElementById('text').innerHTML = shape as string;
             document.getElementById('symbol').style.visibility = 'visible';
             
-        }        
+        }
+        touchmove = false;
     }
     render() {
         return (
@@ -92,7 +95,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
 
                
                 <div className='col-md-12'>
-                    <MapsComponent id="maps" ref={m => this.mapInstance = m}  loaded={this.onMapsLoad.bind(this)} load={this.load} shapeSelected={this.shapeSelected.bind(this)}
+                    <MapsComponent id="maps" ref={m => this.mapInstance = m}  loaded={this.loaded} load={this.load} shapeSelected={this.shapeSelected.bind(this)}
                         zoomSettings={{
                             enable: false
                         }}
@@ -100,10 +103,10 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                     >
                         <Inject services={[Selection, Highlight, Marker, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')} layerType='Geometry'
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} layerType='Geometry'
                                 shapePropertyPath='continent'
                                 shapeDataPath='continent'
-                                dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/default-datasource.json')}
+                                dataSource={datasource.default}
                                 shapeSettings={{
                                     colorValuePath: 'drillColor'
                                 }}
@@ -125,7 +128,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                     </MarkerDirective>
                                 </MarkersDirective>
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/africa.json')} layerType='Geometry'
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/africa.json')} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#80306A'
                                 }}
@@ -140,7 +143,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/europe.json')} layerType='Geometry'
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/europe.json')} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#622D6C'
                                 }}
@@ -154,7 +157,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/asia.json')} layerType='Geometry'
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/asia.json')} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#462A6D'
                                 }}
@@ -168,7 +171,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/north-america.json')} layerType='Geometry'
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/north-america.json')} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#C13664'
                                 }}
@@ -182,7 +185,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/south-america.json')} layerType='Geometry'
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/south-america.json')} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#9C3367'
                                 }}
@@ -196,7 +199,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/oceania.json')} layerType='Geometry'
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/oceania.json')} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#2A2870'
                                 }}
@@ -228,13 +231,20 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
             </div >
         )
     }
-    public onMapsLoad(args: ILoadedEventArgs): void {
-        let maps: Element = document.getElementById('maps');
-        maps.setAttribute('title', '');
-    };
+    //public onMapsLoad(args: ILoadedEventArgs): void {
+    //};
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    public loaded(args: ILoadEventArgs): void {        
+        let maps: Element = document.getElementById('maps');
+        maps.setAttribute('title', '');
+        let mapsSVG: HTMLElement = document.getElementById('mapdrilldown_svg') as HTMLElement;
+        if (mapsSVG) {
+            mapsSVG.addEventListener('touchmove', (e: MouseEvent) => { touchmove = true; }, false);
+        }
+    };
+
 }

@@ -8,9 +8,10 @@ import {
 	TreeMapComponent, LayoutMode, Inject, TreeMapTooltip,
 	ILoadedEventArgs, TreeMapTheme
 } from '@syncfusion/ej2-react-treemap';
-import { econmics } from './treemap-data/economics';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/economics.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -51,7 +52,7 @@ export class Layout extends SampleBase<{}, {}> {
 								text: 'Top 10 countries by GDP Nominal - 2015',
 								textStyle: { size: '15px' }
 							}}
-							dataSource={econmics}
+							dataSource={datasource.economics}
 							weightValuePath='GDP'
 							tooltipSettings={{          // To config tooltip for treemap 
 								visible: true,

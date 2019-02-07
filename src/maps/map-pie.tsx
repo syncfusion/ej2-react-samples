@@ -46,7 +46,7 @@ export class PieMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/continent.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/continent.json')}
                                     shapeSettings={{
                                         fill: '#E5E5E5',
                                         colorMapping: [

@@ -63,7 +63,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, Zoom, DataLabel, Marker, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapeSettings={{
                                         fill: '#E5E5E5',
                                         border: {
@@ -79,7 +79,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                                     }}
                                 >
                                 </LayerDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/california.json')} type='SubLayer'
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/california.json')} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.6)',
@@ -126,7 +126,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
 
                                 </LayerDirective>
 
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/texas.json')} type='SubLayer'
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/texas.json')} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.5)',

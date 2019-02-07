@@ -1,0 +1,25 @@
+#accordionSplitter .e-splitter #content {
+    padding: 18px;
+}
+#accordionSplitter {
+    margin: 20px auto;
+    max-width: 600px;
+    min-height: 370px;
+}
+
+.accordion-splitter-content {
+    padding: 12px;
+}
+
+#splitter-01 .e-accordion .e-acrdn-item .e-acrdn-panel .e-acrdn-content {
+    padding: 0px;
+}
+#splitter-01 .e-accordion, 
+#splitter-01 .e-accordion .e-acrdn-item.e-select, 
+#splitter-01 .e-accordion .e-acrdn-item.e-selected.e-select > .e-acrdn-header {
+    border: none;
+}
+#splitter-01 .e-acrdn-header-content {
+    display: block;
+    text-decoration: none;
+}

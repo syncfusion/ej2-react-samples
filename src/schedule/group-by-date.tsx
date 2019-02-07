@@ -4,16 +4,16 @@ import {
   Day, Week, Month, Agenda, ScheduleComponent, ViewsDirective,
   ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { resourceData } from './datasource';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * schedule resources group-bydate sample
  */
 
 export class GroupByDate extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], resourceData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).resourceData, null, true) as Object[];
   private resourceData: Object[] = [
     { text: 'Alice', id: 1, color: '#1aaa55' },
     { text: 'Smith', id: 2, color: '#7fa900' },
@@ -59,7 +59,7 @@ export class GroupByDate extends SampleBase<{}, {}> {
             In this demo, there are 2 resources defined namely
             <strong>Alice</strong> and
             <strong>Smith</strong> under the resource
-            <code>dataSource</code>. The Schedule can be switched to group by date, by setting
+            <code>dataSource</code>. The Scheduler can be switched to group by date, by setting
             <code>true</code> to the option
             <code>byDate</code> within the
             <code>group</code> property.

@@ -3,23 +3,11 @@ import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
 import './listview.css';
-
-// tslint:disable:max-line-length
+import { listData } from './datasource';
 
 // *  Sample for CSS avatar component
 
 export class Listview extends SampleBase<{}, {}> {
-
-    //Define an array of JSON data
-    public data: { [key: string]: Object }[] = [
-        { id: 's_01', text: 'Robert', avatar: '', pic: 'pic04' },
-        { id: 's_02', text: 'Nancy', avatar: 'N', pic: '' },
-        { id: 's_05', text: 'John', pic: 'pic01', avatar: '' },
-        { id: 's_03', text: 'Andrew', avatar: 'A', pic: '' },
-        { id: 's_06', text: 'Michael', pic: 'pic02', avatar: '' },
-        { id: 's_07', text: 'Steven', pic: 'pic03', avatar: '' },
-        { id: 's_08', text: 'Margaret', avatar: 'M', pic: '' }
-    ];
 
     public listTemplate(data: any): JSX.Element {
         let letterAvatar = <span className='e-avatar e-avatar-small e-avatar-circle'>{data.avatar}</span>
@@ -38,7 +26,7 @@ export class Listview extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className="sample_container listview">
                     {/* ListView element */}
-                    <ListViewComponent id='letterAvatarList' dataSource={this.data} headerTitle='Contacts' showHeader={true}
+                    <ListViewComponent id='letterAvatarList' dataSource={listData} headerTitle='Contacts' showHeader={true}
                         sortOrder="Ascending" template={this.listTemplate as any}></ListViewComponent>
                 </div>
 

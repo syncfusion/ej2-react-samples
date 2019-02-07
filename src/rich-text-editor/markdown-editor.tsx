@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, MarkdownEditor, Inject, Toolbar, Image, Link, IToolbarItems, QuickToolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, MarkdownEditor, Inject, Toolbar, Image, Link, IToolbarItems, QuickToolbar, Table } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
 import * as Marked from 'marked';
@@ -25,7 +25,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     // RichTextEditor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|',
     'Formats', 'OrderedList', 'UnorderedList', '|',
-    'CreateLink', 'Image', '|',
+    'CreateLink', 'Image', 'CreateTable', '|',
     {
         tooltipText: 'Preview',
         template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
@@ -51,17 +51,23 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     public fullPreview(): void {
         let id: string = this.rteObj.getID() + 'html-preview';
         let htmlPreview: HTMLElement = this.rteObj.element.querySelector('#' + id);
+        let previewTextArea: HTMLElement = this.rteObj.element.querySelector('.e-rte-content') as HTMLElement;
         if (this.mdsource.classList.contains('e-active')) {
             this.mdsource.classList.remove('e-active');
             this.mdsource.parentElement.title = 'Preview';
             this.textArea.style.display = 'block';
             htmlPreview.style.display = 'none';
+            previewTextArea.style.overflow = 'hidden';
         } else {
             this.mdsource.classList.add('e-active');
             if (!htmlPreview) {
                 htmlPreview = createElement('div', { className: 'e-content e-pre-source' });
                 htmlPreview.id = id;
                 this.textArea.parentNode.appendChild(htmlPreview);
+                previewTextArea.style.overflow = 'auto';
+            }
+            if(previewTextArea.style.overflow === 'hidden') {
+                previewTextArea.style.overflow = 'auto';
             }
             this.textArea.style.display = 'none';
             htmlPreview.style.display = 'block';
@@ -79,10 +85,10 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
             this.fullPreview();
             if ((e.currentTarget as HTMLElement).classList.contains('e-active')) {
                 this.rteObj.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
-                'UnorderedList', 'CreateLink', 'Image', 'Formats', 'Undo', 'Redo']);
+                'UnorderedList', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Undo', 'Redo']);
             } else {
                 this.rteObj.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
-                'UnorderedList', 'CreateLink', 'Image', 'Formats', 'Undo', 'Redo']);
+                'UnorderedList', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Undo', 'Redo']);
             }
         });
     }
@@ -94,7 +100,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                         <RichTextEditorComponent id="markdownRTE"
                             ref={(richtexteditor) => { this.rteObj = richtexteditor }} editorMode='Markdown'
                             height='250px' valueTemplate={this.template} toolbarSettings={this.toolbarSettings} >
-                            <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar]} />
+                            <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar, Table]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>
@@ -112,6 +118,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                         <li><code>Alignment</code> - Aligns the content with left, center, and right margins.</li>
                         <li><code>Format</code> – Formats the sentence in different ways such as heading level, quotation, and code snippet</li>
                         <li><code>Styles</code> – Allows you to apply inline styles to the selected content like bold, italic, and more.</li>
+                        <li><code>Tables</code> – Allows you to insert a table with header.</li>
                     </ul>
                     <p><b>Injecting Module</b></p>
                     <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor</code> modules into the services.</p>

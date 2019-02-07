@@ -1,7 +1,3 @@
-.control-section {
-    overflow: auto;
-}
-
 /* Media Quries for various devices */
 
 @media only screen and (max-width: 965px) {

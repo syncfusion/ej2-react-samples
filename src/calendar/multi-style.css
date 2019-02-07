@@ -1,0 +1,36 @@
+.calendar-control-section {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* special dates sample styles */
+
+#control_wrapper.multiselectWrapper{
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+#control_wrapper.multiselectWrapper {
+    float: none;
+}
+
+.contentValue {
+    padding: 10px;
+    overflow: auto;
+    max-height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.valuesWrapper {
+    margin: 0 auto;
+    float: none;
+    padding: 0;
+    max-width: 370px;
+}
+
+body.highcontrast .contentValue {
+    border: 1px solid #969696
+}
+
+/* end of custom generated icons styles */

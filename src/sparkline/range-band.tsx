@@ -31,9 +31,9 @@ const SAMPLE_CSS = `
         padding: 0px !important;
     }`;
 
-export class GridData {
-    public id: string;
-}
+export interface GridData {
+    id: string;
+};
 
 export class RangeBand extends SampleBase<{}, {}> {
     private sparklineInstance: SparklineComponent;

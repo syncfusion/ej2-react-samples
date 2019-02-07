@@ -22,6 +22,7 @@ export class GridLines extends SampleBase<{}, {}> {
         addClass([element.parentElement.parentElement], 'e-ghidden');
         this.lines = element.innerHTML;
         this.gridInstance.gridLines = this.lines as GridLine;
+        this.gridInstance.dataBind();
         this.gridInstance.refresh();
     }
     render() {

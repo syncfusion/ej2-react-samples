@@ -205,29 +205,7 @@ let handles: UserHandleModel[] = [
   }
 ];
 
-//Defines the clone tool used to copy Node/Connector
-class CloneTool extends MoveTool {
-  public mouseDown(args: MouseEventArgs): void {
-    let newObject: any;
-    if (diagramInstance.selectedItems.nodes.length > 0) {
-      newObject = cloneObject(
-        diagramInstance.selectedItems.nodes[0]
-      ) as NodeModel;
-    } else {
-      newObject = cloneObject(
-        diagramInstance.selectedItems.connectors[0]
-      ) as ConnectorModel;
-    }
-    newObject.id += randomId();
-    diagramInstance.paste([newObject]);
-    args.source = diagramInstance.nodes[
-      diagramInstance.nodes.length - 1
-    ] as IElement;
-    args.sourceWrapper = args.source.wrapper;
-    super.mouseDown(args);
-    this.inAction = true;
-  }
-}
+
 
 export class UserHandle extends SampleBase<{}, {}> {
   rendereComplete() {
@@ -400,6 +378,29 @@ export class UserHandle extends SampleBase<{}, {}> {
         </div>
       </div>
     );
+  }
+}
+//Defines the clone tool used to copy Node/Connector
+class CloneTool extends MoveTool {
+  public mouseDown(args: MouseEventArgs): void {
+    let newObject: any;
+    if (diagramInstance.selectedItems.nodes.length > 0) {
+      newObject = cloneObject(
+        diagramInstance.selectedItems.nodes[0]
+      ) as NodeModel;
+    } else {
+      newObject = cloneObject(
+        diagramInstance.selectedItems.connectors[0]
+      ) as ConnectorModel;
+    }
+    newObject.id += randomId();
+    diagramInstance.paste([newObject]);
+    args.source = diagramInstance.nodes[
+      diagramInstance.nodes.length - 1
+    ] as IElement;
+    args.sourceWrapper = args.source.wrapper;
+    super.mouseDown(args);
+    this.inAction = true;
   }
 }
 

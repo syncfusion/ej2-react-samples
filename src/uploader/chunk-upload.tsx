@@ -104,17 +104,15 @@ public render(): JSX.Element {
         </div>
         <div id="action-description">
 
-        <p>This sample demonstrates the chunk upload functionalities of the Uploader component. Browse the files which you want to upload to the server. 
-        The selected files are submitted to server on upload button click based on the selected chunk size.
-        Also, You can pause the uploading file and resuming it. Once the upload got failed, it will retry automatically.
-        Even it fails to upload in auto retry, retry button will be enabled to retry the upload later.</p>
+        <p>This example demonstrates the chunk upload functionalities of the Uploader component.
+          Browse or drag-and-drop a large file to upload with pause, resume, and retry options. </p>
 
-        <p>Also, provided option to change the chunk size values from the property panel</p>
+        <p>Also, configured property panel to change the chunk size dynamically.</p>
         </div>
         <div id="description">
 
           <p>When the file size is large or transfer the file with slow network connection, the chunk upload feature slices the files and upload the sliced chunks to server in sequential order
-           using the <a href="https://ej2.syncfusion.com/react/documentation/uploader/api-asyncSettingsModel.html#chunksize"
+           using the <a href="https://ej2.syncfusion.com/react/documentation/api/uploader/asyncSettingsModel#chunksize"
             target="_blank">&nbsp;chunkSize</a> API. It will slice the files and upload it in sequential order.</p>
           
           <p>The sample is configured with the following options:</p>
@@ -128,7 +126,7 @@ public render(): JSX.Element {
           <p>
             If the application lost its connection (<code>offline</code>), the upload component pauses the process automatically. After the connection is up (<code>online</code>), the upload component will resume its process.
           </p>
-          <p>More information on the Uploader instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/chunk-upload.html">documentation section</a>.</p>
+          <p>More information on the Uploader instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/chunk-upload/">documentation section</a>.</p>
         </div>
       </div>
     );

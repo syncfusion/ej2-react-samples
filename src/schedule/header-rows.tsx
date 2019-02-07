@@ -8,14 +8,15 @@ import {
 import './resources.css';
 import { extend, Internationalization } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { headerRowData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
+import * as dataSource from './datasource.json';
 
 /**
  * schedule header rows sample
  */
 
 export class HeaderRows extends SampleBase<{}, {}> {
-    private data: Object[] = extend([], headerRowData, null, true) as Object[];
+    private data: Object[] = extend([], (dataSource as any).headerRowData, null, true) as Object[];
     private scheduleObj: ScheduleComponent;
     private instance: Internationalization = new Internationalization();
     private getMonthDetails(value: CellTemplateArgs) {

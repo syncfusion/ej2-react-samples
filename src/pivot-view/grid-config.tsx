@@ -75,7 +75,7 @@ export class GridConfig extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ overflow: 'initial' }}>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <div className='col-lg-9 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} width={'100%'} height={'300'} showFieldList={true} gridSettings={{ allowReordering: true, allowResizing: true, columnWidth:140 }} >
                             <Inject services={[FieldList]} />

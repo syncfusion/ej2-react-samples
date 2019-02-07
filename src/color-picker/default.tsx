@@ -30,12 +30,13 @@ export class Default extends SampleBase<{}, {}> {
               <li>By clicking the format switching icon at the right side of the input text area, switch between palette and picker mode.</li>
               <li>By clicking the mode switching icon at the left bottom of the popup, switch between palette and picker mode.</li>
               <li>Using the
-                <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/color-picker/api-colorPickerComponent.html#value-string"><code>value
+                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/color-picker/#value"><code>value
                 </code></a> property, set the color value to picker and palette initially.</li>
             </ul>
+            <p>In mobile mode, the popup opens at the center of the viewport.</p>
             <p>
               More information about ColorPicker can be found in this
-              <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/colorpicker/getting-started.html"> documentation section</a>.</p>
+              <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/color-picker/getting-started/"> documentation section</a>.</p>
           </p>
         </div>
 

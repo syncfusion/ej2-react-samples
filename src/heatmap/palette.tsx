@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
-import { palatteSampleData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 import { RadioButtonComponent, ChangeEventArgs, CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
@@ -60,7 +60,7 @@ export class Palette extends SampleBase<{}, {}> {
                                 labels: ['Agriculture', 'Energy', 'Administration', 'Health', 'Interior',
                                     'Justice', 'NASA', 'Transportation']
                             }}
-                            dataSource={palatteSampleData}
+                            dataSource={(data as any).palatteSampleData}
                             paletteSettings={{
                                 palette: [{ value: 4.3, color: '#FFFFDA' },
                                 { value: 7, color: '#EDF8B6' },

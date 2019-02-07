@@ -134,7 +134,7 @@ export class Reveal extends SampleBase<{}, {}> {
                     <p>
                         Cards in this sample have a hidden content within the DOM which is available behind the visible element.
         <p> More information about Card can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/card/getting-started.html">
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
                                 documentation</a> section. </p>
                     </p>
                 </div>

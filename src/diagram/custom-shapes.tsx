@@ -25,10 +25,12 @@ let node1: NodeModel = {
   height: 300,
   shape: shape
 };
+let diagramInstance: DiagramComponent;
 
 export class HtmlNode extends SampleBase<{}, {}> {
   rendereComplete() {
     getHtmlContent();
+    diagramInstance.fitToPage();
   }
   render() {
     return (
@@ -38,6 +40,7 @@ export class HtmlNode extends SampleBase<{}, {}> {
         >
           <DiagramComponent
             id="diagram"
+            ref={diagram => (diagramInstance = diagram)}
             width={"100%"}
             height={"640px"}
             nodes={[node1]}

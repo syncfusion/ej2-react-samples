@@ -1,3 +1,4 @@
+import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar,
     Edit, Inject, DialogEditEventArgs } from '@syncfusion/ej2-react-grids';
@@ -14,6 +15,7 @@ export class DialogTemplate extends SampleBase<{}, {}> {
   public toolbarOptions: any = ['Add', 'Edit', 'Delete'];
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog', template: this.dialogTemplate };
   public validationRules = { required: true };
+  public orderidRules: Object = { required: true, number: true };
   public pageSettings: Object = {pageCount: 5};
 
   dialogTemplate(props: IOrderModel): any {
@@ -36,7 +38,7 @@ export class DialogTemplate extends SampleBase<{}, {}> {
           <GridComponent dataSource={orderData} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}
             actionComplete={this.actionComplete.bind(this)}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.validationRules} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRules}></ColumnDirective>
               <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' ></ColumnDirective>

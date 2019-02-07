@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
 import { Adaptor, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
 import { SampleBase } from '../common/sample-base';
-import { largeData } from './data';
+import * as data from './data.json';
 import { Internationalization } from "@syncfusion/ej2-base";
 
 const SAMPLE_CSS: any = `
@@ -61,7 +61,7 @@ export class LargeData extends SampleBase<{}, {}> {
                         }}
                         load={this.load.bind(this)}
                         tooltipRender={this.tooltipTemplate}
-                        dataSource={largeData}>
+                        dataSource={(data as any).largeData}>
                         <Inject services={[Legend, Tooltip, Adaptor]} />
                     </HeatMapComponent>
                 </div>

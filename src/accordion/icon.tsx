@@ -98,7 +98,7 @@ export class Icons extends SampleBase<{}, {}> {
         the some of the games list.
     </p>
     <p>
-        More information about Accordion can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accordion/getting-started.html">
+        More information about Accordion can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accordion/getting-started/">
         documentation</a> section.
     </p>
      </p>
