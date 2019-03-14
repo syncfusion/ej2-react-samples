@@ -86,7 +86,7 @@ export class CustomFormat extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div id="dropdowndefault" className='control-pane'>
+            <div className='control-pane'>
                 <div className='control-section' id="rteCustomFormat">
                     <div className="content-wrapper">
                             <RichTextEditorComponent id="markdownRTE"

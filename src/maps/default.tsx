@@ -9,6 +9,8 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as data from './map-data/default-datasource.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -47,10 +49,10 @@ export class DefaultMaps extends SampleBase<{}, {}> {
                     >
                         <Inject services={[Marker, Legend, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                 shapePropertyPath='continent'
                                 shapeDataPath='continent'
-                                dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/default-datasource.json')}
+                                dataSource={datasource.default}
                                 shapeSettings={{
                                     colorValuePath: 'color'
                                 }}
@@ -97,6 +99,7 @@ export class DefaultMaps extends SampleBase<{}, {}> {
                         </LayersDirective>
                     </MapsComponent>
                 </div>
+                {/* Source Link */}
                 <div style={{float: 'right', marginright: '10px'}}>Source: 
        <a href="https://craft.co/youtube/locations" target="_blank">craft.co/youtube/locations</a>
        </div>
@@ -124,9 +127,11 @@ export class DefaultMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

@@ -138,7 +138,7 @@ export class APIs extends SampleBase<{}, {}> {
     public refreshTooltip(e: any): void {
         let element01: any = document.getElementById('slider');
         if (!isNullOrUndefined(element01)) {
-            element01.ej2_instances[0].refreshTooltip();
+            element01.ej2_instances[0].refreshTooltip(element01.ej2_instances[0].tooltipTarget);
         }
     }
     public sliderChange(args: SliderChangeEventArgs): void {

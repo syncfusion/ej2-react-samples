@@ -6,10 +6,6 @@
     width: 80% !important;
 }
 
-.e-apply-icon::before {
-    content: '\e728';
-}
-
 .hdrlabel {
     font-size: 13px;
 }

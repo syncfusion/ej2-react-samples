@@ -24,11 +24,13 @@ export class Drag extends SampleBase<{}, {}> {
         document.getElementById('pointerValue').innerHTML = 'Pointer Value <span> &nbsp;&nbsp;&nbsp;' + Math.round(pointerValue);
         this.setPointersValue(this.gauge, pointerValue);
     }
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
     }
+    // custom code end
     public pointerDragChange(): void {
         let value: boolean = this.pointerDrag.checked;
         this.gauge.enablePointerDrag = value;
@@ -96,6 +98,7 @@ export class Drag extends SampleBase<{}, {}> {
                             </AxesDirective>
                         </CircularGaugeComponent>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-lg-3 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
@@ -146,6 +149,7 @@ export class Drag extends SampleBase<{}, {}> {
             </div>
         )
     }
+    // Code for Property Panel
     public onChartLoad(args: ILoadedEventArgs): void {
         document.getElementById('drag-container').setAttribute('title', '');
     };

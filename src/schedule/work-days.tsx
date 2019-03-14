@@ -4,12 +4,13 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Week, WorkWeek, Month, TimelineViews, TimelineMonth,
   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { employeeEventData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule Work days sample
@@ -17,7 +18,7 @@ import { PropertyPane } from '../common/property-pane';
 
 export class WorkDays extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], employeeEventData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
   private workDays: number[] = [1, 3, 5];
   private workDaysOptions: { [key: string]: Object }[] = [
     { text: 'Mon, Wed, Fri', value: '1,3,5' },
@@ -53,7 +54,7 @@ export class WorkDays extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule} workHours={{ start: '08:00' }}
-              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }} workDays={this.workDays}
+              currentView='WorkWeek' selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }} workDays={this.workDays}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Week' />
@@ -103,7 +104,7 @@ export class WorkDays extends SampleBase<{}, {}> {
         </div>
         <div id='description'>
           <p>
-            In this demo, the working days of a week can be set on Schedule using the <code>workDays</code> property
+            In this demo, the working days of a week can be set on Scheduler using the <code>workDays</code> property
             which accepts the collection of day indexes (from 0 to 6) of a week.
             By default, it is set to <code>[1, 2, 3, 4, 5]</code> and in this demo,
             it has been set to <code>[1, 3, 5]</code> which means that <code>Monday, Wednesday, Friday</code>
@@ -111,8 +112,8 @@ export class WorkDays extends SampleBase<{}, {}> {
             applies only on these given working days.
           </p>
           <p>
-            The first day of the week can also be set on the Schedule by making use of the <code>firstDayOfWeek</code> property,
-            doing so which will make the Schedule to start with that day.
+            The first day of the week can also be set on the Scheduler by making use of the <code>firstDayOfWeek</code> property,
+            doing so which will make the Scheduler to start with that day.
           </p>
           <p>
             <strong>Note: </strong> Here, Sunday is always denoted as 0, Monday as 1 and so on.

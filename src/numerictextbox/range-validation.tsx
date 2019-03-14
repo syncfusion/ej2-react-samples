@@ -74,7 +74,7 @@ export class Range extends SampleBase<{}, {}> {
         
         <div id="description">
           <p>
-            The NumericTextBox has the options to restrict the input value between a specific range using the <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/api-numericTextBoxComponent.html#min-number" target="_blank">min</a>, <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/api-numericTextBoxComponent.html#max-number" target="_blank">max</a>, and <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/api-numericTextBoxComponent.html#strictmode-boolean" target="_blank">strictMode</a> properties.
+            The NumericTextBox has the options to restrict the input value between a specific range using the <a href="https://ej2.syncfusion.com/react/documentation/api/numerictextbox#min" target="_blank">min</a>, <a href="https://ej2.syncfusion.com/react/documentation/api/numerictextbox#max" target="_blank">max</a>, and <a href="https://ej2.syncfusion.com/react/documentation/api/numerictextbox#strictmode" target="_blank">strictMode</a> properties.
           </p>
           <ul>
             <li>
@@ -91,7 +91,7 @@ export class Range extends SampleBase<{}, {}> {
             this range.
           </p>
           <p>
-            More information on the range validation configuration can be found in the <a href="http://ej2.syncfusion.com/react/documentation/numerictextbox/getting-started.html#range-validation" target="_blank">documentation section</a>.
+            More information on the range validation configuration can be found in the <a href="https://ej2.syncfusion.com/react/documentation/numerictextbox/getting-started/#range-validation" target="_blank">documentation section</a>.
           </p>
         </div>
       </div >

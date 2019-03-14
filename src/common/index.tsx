@@ -53,7 +53,7 @@ let resizeManualTrigger: boolean = false;
  */
 export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'material';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['material', 'fabric', 'bootstrap', 'highcontrast'];
+const themeCollection: string[] = ['material', 'fabric', 'bootstrap', 'bootstrap4', 'highcontrast'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**
@@ -159,7 +159,7 @@ export function setSbLink(): void {
   for (let sb of sbArray) {
     let ele: HTMLFormElement = (select('#' + sb) as HTMLFormElement);
     if (sb === 'aspnetcore' || sb === 'aspnetmvc') {
-      ele.href = sb === 'aspnetcore' ? 'https://aspdotnetcore.syncfusion.com' : 'https://aspnetmvc.syncfusion.com';
+       ele.href = sb === 'aspnetcore' ? 'https://ej2.syncfusion.com/aspnetcore/' : 'https://ej2.syncfusion.com/aspnetmvc/';
 
     } else {
       ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :
@@ -472,10 +472,18 @@ function onsearchInputChange(e: KeyboardEvent): void {
     expand: true,
     boolean: 'AND',
   });
-  if (val.length) {
-    let data: DataManager = new DataManager(val);
+  let value: any = [];
+  if (Browser.isDevice) {
+      for (let file of val) {
+          if (file.doc.hideOnDevice !== true) {
+              value = value.concat(file);
+          }
+      }
+  }
+  let searchValue = Browser.isDevice ? value : val;
+  if (searchValue.length) {
+    let data: DataManager = new DataManager(searchValue);
     let controls: any = data.executeLocal(new Query().take(10).select('doc'));
-
     let controlsAccess: any = [];
     for (let cont of controls) {
       controlsAccess.push(cont.doc);
@@ -771,3 +779,4 @@ function loadTheme(theme: string): void {
     
   });
 }
+

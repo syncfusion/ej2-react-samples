@@ -12,11 +12,13 @@ const SAMPLE_CSS = `
     }`;
 
 export class Data extends SampleBase<{}, {}> {
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
     }
+    // custom code end
     render() {
         return (
             <div className='control-pane'>

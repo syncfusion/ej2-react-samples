@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     StepLineSeries, SplineAreaSeries, ChartComponent, SeriesCollectionDirective,
     RangeNavigatorComponent, DateTime, ExportType, SeriesDirective, ILoadedEventArgs,
-    IChangedEventArgs, IRangeLoadedEventArgs, ChartTheme, Inject, Tooltip
+    IChangedEventArgs, IRangeLoadedEventArgs, ChartTheme, Inject, Tooltip, Export
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
@@ -48,7 +48,7 @@ const SAMPLE_CSS = `
          .e-print-icon::before {
             content: '\\e813';
         }`;
-export class Export extends SampleBase<{}, {}> {
+export class RangeExport extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
     private rangeInstance: RangeNavigatorComponent;
     private mode: DropDownListComponent;
@@ -112,7 +112,7 @@ export class Export extends SampleBase<{}, {}> {
                         tooltip={{
                             enable: true, shared: true
                         }}>
-                        <Inject services={[SplineAreaSeries, DateTime, Tooltip]} />
+                        <Inject services={[SplineAreaSeries, DateTime, Tooltip, Export]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={dateTimeData}
                             xName='xDate' yName='Close' border={{ width: 2}}
@@ -196,20 +196,23 @@ export class Export extends SampleBase<{}, {}> {
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
         let chartTheme: string = args.chart.theme;
         args.chart.series[0].fill = regionColor[themes.indexOf(chartTheme)];
         args.chart.series[0].border.color = borderColor[themes.indexOf(chartTheme)];
         this.chartRendered = true;
     };
+    // custom code start
     public rangeLoad(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                 replace(/-dark/i, "Dark") as ChartTheme;
     };
+    // custom code end
     public exportClick(e: Event): void {
         let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
-        this.rangeInstance.export(
+        this.chartInstance.exportModule.export(
             (this.mode.value as ExportType), fileName, null, [this.rangeInstance,this.chartInstance]
         );
     }

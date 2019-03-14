@@ -18,8 +18,8 @@ export class Sorting extends SampleBase<{}, {}> {
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='170'></ColumnDirective>
                             <ColumnDirective field='OrderDate' headerText='Order Date' width='155' format='yMd' textAlign='Right' />
                             <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='Right' />
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' width='155' textAlign='Right' ></ColumnDirective>
-                            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='170'></ColumnDirective>
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' width='150' textAlign='Right' ></ColumnDirective>
+                            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Page, Sort]} />
                     </GridComponent>

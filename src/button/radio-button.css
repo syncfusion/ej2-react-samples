@@ -1,7 +1,7 @@
 .radiobutton-control {
     margin: 5% 0 5% 40%;
 }
-
+/* custom code start */
 @media only screen and (max-width: 700px) {
     .radiobutton-control {
         margin-left: 35%;
@@ -33,3 +33,8 @@
 .e-bigger .radiobutton-control h4 {
     font-size: 20px;
 }
+
+.highcontrast .radiobutton-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+/* custom code end */

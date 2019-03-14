@@ -100,8 +100,8 @@ export class Limits extends SampleBase<{}, {}> {
             !isNullOrUndefined((document.getElementById('minrange') as any).ej2_instances[0]) &&
             !isNullOrUndefined(document.getElementById('range')) &&
             !isNullOrUndefined((document.getElementById('range') as any).ej2_instances[0])) {
-            (document.getElementById('minrange') as any).ej2_instances[0].refreshTooltip();
-            (document.getElementById('range') as any).ej2_instances[0].refreshTooltip();
+            (document.getElementById('minrange') as any).ej2_instances[0].refreshTooltip((document.getElementById('minrange') as any).ej2_instances[0].tooltipTarget);
+            (document.getElementById('range') as any).ej2_instances[0].refreshTooltip((document.getElementById('range') as any).ej2_instances[0].tooltipTarget);
         }
     }
 

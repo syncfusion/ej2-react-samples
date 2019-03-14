@@ -6,6 +6,7 @@ import {
   StackPanel,
   ComplexHierarchicalTree,
   VerticalAlignment,
+  randomId,
   HorizontalAlignment,
   DiagramElement,
   TextElement,
@@ -21,80 +22,8 @@ import {
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
+import { pertChartData, DataInfo } from './diagram-data';
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
-
-export let pertChartData: object[] = [
-  {
-    id: "Start Project",
-    branch: "root",
-    duration: "4",
-    startDate: "04/19/2018",
-    endDate: " 08/19/2018"
-  },
-  {
-    id: "Design",
-    Category: "Start Project",
-    duration: "2",
-    startDate: "08/20/2018",
-    endDate: "10/20/2018"
-  },
-  {
-    id: "Formalize Specification",
-    Category: "Start Project",
-    duration: "2",
-    startDate: "10/21/2018",
-    endDate: "12/22/2018"
-  },
-  {
-    id: "Write Documentation",
-    Category: "Start Project",
-    duration: "1",
-    startDate: "12/23/2018",
-    endDate: "01/22/2019"
-  },
-  {
-    id: "Release Prototype",
-    Category: "Design",
-    duration: "1",
-    startDate: "01/23/2019",
-    endDate: " 02/23/2019"
-  },
-  {
-    id: "Testing",
-    Category: ["Formalize Specification", "Release Prototype"],
-    duration: "2",
-    startDate: "02/24/2019",
-    endDate: "04/22/2019"
-  },
-  {
-    id: "Release Project",
-    Category: "Release Prototype",
-    duration: "1",
-    startDate: "04/23/2019",
-    endDate: "05/24/2019"
-  },
-  {
-    id: "Review Changes",
-    Category: "Write Documentation",
-    duration: "1",
-    startDate: "05/25/2019",
-    endDate: "06/26/2019"
-  },
-  {
-    id: "Publish Documentation",
-    Category: "Review Changes",
-    duration: "1",
-    startDate: "06/21/2019",
-    endDate: "07/22/2019"
-  },
-  {
-    id: "Finish",
-    Category: ["Publish Documentation", "Release Project"],
-    duration: "1",
-    startDate: "07/23/2019",
-    endDate: "08/24/2019"
-  }
-];
 
 export interface DataInfo {
   [key: string]: string;
@@ -108,6 +37,7 @@ function getTextElement(
 ): DiagramElement {
   let textElement: TextElement = new TextElement();
   textElement.content = text;
+  textElement.id = randomId();
   textElement.width = width;
   textElement.height = 25;
   textElement.horizontalAlignment = alignment;
@@ -243,10 +173,12 @@ export class PertChart extends SampleBase<{}, {}> {
 function getNodeTemplate(node: NodeModel): StackPanel {
   let table: StackPanel = new StackPanel();
   table.style.fill = "#0069d9";
+  table.id = randomId();
   table.orientation = "Vertical";
   let nameKey: string = "id";
   let stack: StackPanel = new StackPanel();
   stack.children = [];
+  stack.id = randomId();
   stack.height = 25;
   stack.orientation = "Horizontal";
   stack.style.fill = "white";

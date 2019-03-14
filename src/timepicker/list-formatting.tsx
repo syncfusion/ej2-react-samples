@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TimePickerComponent, ItemEventArgs } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
-import './timepicker-component.css';
+import './list-style.css';
 
 export class Formatting extends SampleBase<{}, {}> {
 
@@ -40,7 +40,6 @@ export class Formatting extends SampleBase<{}, {}> {
 
         //disable the specific time from the selection
         if ((minutes / 60) % 3 === 0) {
-            span.classList.add('e-icons');
             //disable the time values by addeding the e-disabled class.
             args.element.classList.add('e-disabled');
         }
@@ -60,7 +59,8 @@ export class Formatting extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        The following sample demonstrates the popup list element in specific time duration. click the time icon to select the desired value. </p>
+                        The following sample demonstrates the popup list element in specific time duration. Click/Touch the TimePicker popup icon to select the desired value.
+                    </p>
                 </div>
                 <div id='description'>
                     <p>
@@ -71,7 +71,7 @@ export class Formatting extends SampleBase<{}, {}> {
                     the timepicker popup list.
           </p>
                     <p> 	More information about TimePicker and it's configuration can be found in the  <a target='_blank'
-                        href='https://ej2.syncfusion.com/react/documentation/timepicker/getting-started.html#adding-timepicker-component-to-the-application'>documentation</a>  section.
+                        href='https://ej2.syncfusion.com/react/documentation/timepicker/getting-started/#adding-timepicker-component-to-the-application'>documentation</a>  section.
           </p>
                 </div>
             </div>

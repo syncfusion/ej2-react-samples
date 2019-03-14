@@ -4,13 +4,14 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek,
   Month, TimelineViews, TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { employeeEventData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule Work Hour sample
@@ -18,7 +19,7 @@ import { PropertyPane } from '../common/property-pane';
 
 export class WorkHours extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], employeeEventData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
 
   private onSubmit(): void {
     let start: HTMLInputElement = document.getElementById('startTime') as HTMLInputElement;
@@ -101,7 +102,7 @@ export class WorkHours extends SampleBase<{}, {}> {
           </p>
           <p>
             To set discontinuous working hours on a day,
-            then the default <code>workHours</code> on Schedule needs to be disabled
+            then the default <code>workHours</code> on Scheduler needs to be disabled
              by setting false to <code>highlight</code> option within it.
             Then, make use of the <code>setWorkHours</code> method
             which accepts the days collection and the start & end hour values as parameters.

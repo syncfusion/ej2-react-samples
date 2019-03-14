@@ -80,9 +80,9 @@ export class Orientation extends SampleBase<{}, {}> {
             let element01: any = document.getElementById('slider01');
             let element02: any = document.getElementById('slider02');
             let element03: any = document.getElementById('slider03');
-            element01.ej2_instances[0].refreshTooltip();
-            element02.ej2_instances[0].refreshTooltip();
-            element03.ej2_instances[0].refreshTooltip();
+            element01.ej2_instances[0].refreshTooltip(element01.ej2_instances[0].tooltipTarget);
+            element02.ej2_instances[0].refreshTooltip(element02.ej2_instances[0].tooltipTarget);
+            element03.ej2_instances[0].refreshTooltip(element03.ej2_instances[0].tooltipTarget);
         }
     }
 

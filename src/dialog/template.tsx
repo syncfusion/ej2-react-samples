@@ -102,7 +102,7 @@ export class Template extends SampleBase<{}, {hideDialog: boolean}> {
         </div>
         <div id="action-description">
         <p>
-        This sample demonstrates the template functionalities of the dialog component. The dialog's header and footer is configured with HTML template. 
+        This example demonstrates the template functionalities of the dialog component. The dialog's header and footer is configured with HTML template. 
         The typed content will be replaced every time when clicking the "send" button.
         </p>
         </div>
@@ -111,7 +111,7 @@ export class Template extends SampleBase<{}, {hideDialog: boolean}> {
         The dialog component displays HTML template content on the header and footer. The user can set any HTML element as header and footer with the usage of content and footer template properties.
         </p>
         <p>More information on the modal behavior of Dialog can be found in
-        the <a target="_blank" href="http://ej2.syncfusion.com/15.4.23/react/documentation/dialog/template.html">
+        the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/dialog/template/">
         documentation section</a>.</p>
         </div>
       </div>

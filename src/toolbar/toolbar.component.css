@@ -40,6 +40,8 @@
     font-size: 17px;
   }
   
+/* custom code start*/
+
 .e-cut-icon:before {
     content: "\e719"
 }
@@ -176,6 +178,98 @@
     content: "\e702";
 }
 
+.fabric .e-icon-day:before {            
+    content: '\e317';
+}
+
+.fabric .e-icon-month:before {
+    content: '\e93a';
+}
+
+.fabric .e-icon-week:before {
+    content: '\e31f';
+}
+
+.fabric .e-reccurence-icon:before,
+.highcontrast .e-reccurence-icon:before {      
+    content: '\e309';
+    font-weight: 700;      
+}
+
+.fabric .e-print:before,
+.highcontrast .e-print:before,
+.bootstrap .e-print:before {      
+    content: '\e7df';
+}
+
+.highcontrast .e-icon-day:before {      
+    content: '\e317';
+}
+
+.highcontrast .e-icon-month:before {
+    content: '\e93a';
+}
+
+.highcontrast .e-icon-week:before {
+    content: "\e31f";
+}
+
+.bootstrap .e-icon-day:before {            
+    content: '\e318';
+}
+
+.bootstrap .e-icon-week:before {
+    content: '\e320';
+}
+
+.bootstrap .e-icon-month:before {
+    content: '\e960';
+}
+
+.bootstrap .e-reccurence-icon:before {      
+    content: '\e308';
+    font-weight: 700;      
+}
+
+.e-icon-week:before {
+    content: "\e315";
+}
+
+.e-print:before {
+    content: '\e813';
+}
+
+.e-icon-month:before {
+    content: '\e93c';
+}
+
+.e-icon-year:before {
+    content: "\e318";
+}
+
+.e-reccurence-icon:before {
+    content: "\e308";
+    font-weight: 700;
+}
+
+.e-icon-day:before {
+    content: "\e322";
+}
+
+.fabric .e-icon-year:before {
+    content: "\e317";
+}
+
+ .material .e-icon-year:before {
+    content: "\e31b";
+}
+
+  .highcontrast .e-icon-year:before {
+    content: "\e317";
+}
+
+/* custom code end*/
+
 .e-mail-time {
     float: right;
 }
@@ -230,31 +324,6 @@
 .tbar-control-section {
     overflow: inherit;
     height: 40px;
-}
-
-.e-icon-week:before {
-    content: "\e319";
-}
-
-.e-print:before {
-    content: '\e813';
-}
-
-.e-icon-month:before {
-    content: '\e93c';
-}
-
-.e-icon-year:before {
-    content: "\e318";
-}
-
-.e-reccurence-icon:before {
-    content: "\e309";
-    font-weight: 700;
-}
-
-.e-icon-day:before {
-    content: "\e322";
 }
 
 .e-tool-name {

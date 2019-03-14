@@ -1,13 +1,27 @@
 .control-section.input-content-wrapper .e-input-picture:before {
-    content: '\e7b3';
+    content: '\e335';
     font-family: e-icons;
 }
 
 .control-section.input-content-wrapper .e-input-calendar:before {
-    content: "";
+    content: "\e901";
     font-family: e-icons;
     font-size: 13px;
 }
+
+.fabric .control-section.input-content-wrapper .e-input-calendar:before {
+    content:'\e93a';
+}
+.bootstrap .control-section.input-content-wrapper .e-input-calendar:before {
+    content:'\e960';
+}
+.bootstrap4 .control-section.input-content-wrapper .e-input-calendar:before {
+    content:'\e7be';
+}
+.highcontrast .control-section.input-content-wrapper .e-input-calendar:before {
+    content:'\e93a';
+}
+
 
 .control-section.input-content-wrapper .e-input-group.e-small { /* csslint allow: adjoining-classes */
     padding-top: 0px;
@@ -79,4 +93,12 @@
 
 .control-section.input-content-wrapper .col-xs-12.col-sm-12.col-lg-12.col-md-12 {
     padding: 0px 15px;
+}
+.multiline-wrapper {
+    margin: 40px 200px;
+}
+.multiline-property .left-side{
+    font-size: 14px;
+    padding: 8px;
+    width: 50%;
 }

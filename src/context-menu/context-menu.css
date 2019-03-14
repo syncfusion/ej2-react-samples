@@ -18,6 +18,8 @@
     text-transform: none;
 }
 
+/* custom code start */
+
 #contextmenu-control {
     margin: 5% 25%;
     width: auto;
@@ -46,6 +48,8 @@
         font-size: 12px;
     }
 }
+
+/* custom code end */
 
 .e-menu-item .e-cut::before {
     content: '\e264';

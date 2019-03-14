@@ -1,6 +1,34 @@
 export const TimePickerSampleOrder: Object = [
-    { 'path': 'timepicker/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'TimePicker', 'api':'{"TimePickerComponent": [ "placeholder" ]}', 'description': 'A simple and lightweight TimePicker component for React for selecting times that is customizable to fit large-scale applications'},
-    { 'path': 'timepicker/time-range', 'component': 'Range', 'name': 'Time Range', 'order': '01', 'category': 'TimePicker', 'api':'{"TimePicker": [ "placeholder", "value", "readonly", "enabled", "min", "change" ]}', 'description': 'TimePicker widget for React with min and max time options to restrict time selection within a defined duration like the next 30 minutes, the next 4 hours, etc' },
-    { 'path': 'timepicker/time-format', 'component': 'Format', 'name': 'Format', 'order': '01' , 'category': 'TimePicker',  'api':'{"TimePicker": [ "value", "step", "format" ]}', 'description': 'Customizable TimePicker widget for React with options to change the time display format based on the preferred culture for improved readability'},
-    { 'path': 'timepicker/list-formatting', 'component': 'Formatting', 'name': 'Time Duration', 'order': '01' , 'category': 'TimePicker','api':'{"TimePicker": [ "value", "itemRender" ]}', 'description': 'A simple TimePicker widget for React for highlighting a set of time intervals in a pop-up by adding custom styles based on you needs'}
+    {
+        'path': 'timepicker/default', 'component': 'Default', 'name': 'Default Functionalities', 'description': 'This example demonstrates a simple, mobile-friendly and responsive React TimePicker to select a time.', 'order': '01', 'category': 'TimePicker', 'api': '{"TimePickerComponent": [ "placeholder" ]}',
+        'sourceFiles': [
+            { 'displayName': 'default.tsx', 'path': 'src/timepicker/default.tsx' },
+            { 'displayName': 'default.jsx', 'path': 'src/timepicker/default.jsx' },
+            { 'displayName': 'default-style.css', 'path': 'src/timepicker/default-style.css' }
+        ]
+    },
+    {
+        'path': 'timepicker/time-range', 'component': 'Range', 'name': 'Time Range', 'description': 'This example demonstrates how to disable the specific range of times(min and max) in a React TimePicker.', 'order': '01', 'category': 'TimePicker', 'api': '{"TimePicker": [ "placeholder", "value", "readonly", "enabled", "min", "change" ]}',
+        'sourceFiles': [
+            { 'displayName': 'time-range.tsx', 'path': 'src/timepicker/time-range.tsx' },
+            { 'displayName': 'time-range.jsx', 'path': 'src/timepicker/time-range.jsx' },
+            { 'displayName': 'range-style.css', 'path': 'src/timepicker/range-style.css' }
+        ]
+    },
+    {
+        'path': 'timepicker/time-format', 'component': 'Format', 'name': 'Format', 'description': 'This example demonstrates how to change the time format in the input field based on the format in a React TimePicker', 'order': '01', 'category': 'TimePicker', 'api': '{"TimePicker": [ "value", "step", "format" ]}',
+        'sourceFiles': [
+            { 'displayName': 'time-format.tsx', 'path': 'src/timepicker/time-format.tsx' },
+            { 'displayName': 'time-format.jsx', 'path': 'src/timepicker/time-format.jsx' },
+            { 'displayName': 'format-style.css', 'path': 'src/timepicker/format-style.css' }
+        ]
+    },
+    {
+        'path': 'timepicker/list-formatting', 'component': 'Formatting', 'name': 'Time Duration', 'description': 'This example demonstrates how to disable specific times like past time, current time in a React TimePicker', 'order': '01', 'category': 'TimePicker', 'api': '{"TimePicker": [ "value", "itemRender" ]}',
+        'sourceFiles': [
+            { 'displayName': 'list-formatting.tsx', 'path': 'src/timepicker/list-formatting.tsx' },
+            { 'displayName': 'list-formatting.jsx', 'path': 'src/timepicker/list-formatting.jsx' },
+            { 'displayName': 'list-style.css', 'path': 'src/timepicker/list-style.css' }
+        ]
+    }
 ]

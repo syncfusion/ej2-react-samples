@@ -168,7 +168,7 @@ export class HighlightMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Marker,MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/okalahoma.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/okalahoma.json')}
                                     shapeSettings={{
                                         fill: '#F5F5F5',
                                         border:{ color: '#EEDA97', width: 1}
@@ -203,6 +203,7 @@ export class HighlightMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                 </div>
+                {/* Source Link */}
                 <div style={{float: 'right', marginright: '10px'}}>Source: 
        <a href="https://www.google.co.in/maps/search/atm+in+oklahoma/@35.3864432,-98.2888719,8z/data=!3m1!4b1" target="_blank">www.google.co.in/maps</a>
     </div>
@@ -228,9 +229,11 @@ export class HighlightMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

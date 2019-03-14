@@ -22,11 +22,14 @@ export class Direction extends SampleBase<{}, {}> {
     public onLabelRender(args: IAxisLabelRenderEventArgs): void {
         args.text = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', ''][args.value];
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
     }
+    // custom code end
+    // Code for Property Panel
     public onChartLoad(args: {}): void {
         if (!this.loaded) {
             this.loaded = true;
@@ -101,6 +104,7 @@ export class Direction extends SampleBase<{}, {}> {
                             </AxesDirective>
                         </CircularGaugeComponent>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>

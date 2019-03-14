@@ -76,7 +76,7 @@ export class Alignment extends SampleBase<{}, {}> {
           <p>
             <strong>Toolbar</strong> commands can be aligned in left , right and center positions. By default, all the
         commands are left aligned. User can customize the alignment of each toolbar item using <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/documentation/toolbar/api-item.html#align-string">  align</a></code> property. Possible
+              href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#align">  align</a></code> property. Possible
       values are as follows.
     </p>
           <br></br>

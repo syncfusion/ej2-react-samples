@@ -4,6 +4,8 @@
     text-align: center;
 }
 
+/* custom code start */
+
 .splitbutton-section {
     width: 80%;
     margin: auto;
@@ -12,6 +14,8 @@
 #splitbutton-control .col-sm-6 {
     margin: 25px 0;
 }
+
+/* custom code end */
 
 @font-face {
     font-family: 'e-btn-icons';

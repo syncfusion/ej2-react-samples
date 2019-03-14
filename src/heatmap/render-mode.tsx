@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
-import { renderModeData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 import { RadioButtonComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
@@ -13,6 +14,7 @@ const SAMPLE_CSS: any = `
 #source{
     float: right; margin-right: 10p
 }`;
+// custom code end
 /**
  * Heatmap Palette mode sample
  */
@@ -30,9 +32,11 @@ export class RenderMode extends SampleBase<{}, {}> {
         return (
             <div>
                 <div className='col-md-9 control-section'>
+                    {/* custom code start */}
                     <style>
                         {SAMPLE_CSS}
                     </style>
+                    {/* custom code end */}
                         <HeatMapComponent id='heatmap-container' ref={t => this.heatmap = t}
                             titleSettings={{
                                 text: 'Net Migration Rate of Northern Europe From 1965 to 2015',
@@ -53,7 +57,7 @@ export class RenderMode extends SampleBase<{}, {}> {
                                 labels: ['1965-1970', '1970-1975', '1975-1980', '1980-1985', '1985-1990',
                                     '1990-1995', '1995-2000', '2000-2005', '2005-2010', '2010-2015']
                             }}
-                            dataSource={renderModeData}
+                            dataSource={(data as any).renderModeData}
                             paletteSettings={{
                                 palette: [{ color: '#C06C84' },
                                 { color: '#355C7D' }

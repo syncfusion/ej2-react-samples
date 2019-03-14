@@ -29,12 +29,13 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
     public onResized(args: Object) {
         location.reload();
     }
-
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
     }
+    // custom code end
     public calcTime(offset: string): Date {
         let date: Date = new Date();
         let localTime: number = date.getTime();
@@ -146,9 +147,11 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+            {/* custom code start*/}
                 <style>
                     {SAMPLE_CSS}
                 </style>
+            {/* custom code end*/}
                 <div className='control-section'>
                     <CircularGaugeComponent load={this.load.bind(this)} id='annotation-container' ref={gauge => this.gauge = gauge}
                         loaded={this.onChartLoad.bind(this)}

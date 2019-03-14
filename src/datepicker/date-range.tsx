@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
-import './datepicker-component.css';
+import './range-style.css';
 
 export class Range extends SampleBase<{}, {}> {
 
@@ -20,7 +20,9 @@ export class Range extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        In the following sample, a specific date ranges from 7th to 27th of the current month has been set to select from the calendar. All the other dates are out of range and <code>restricted</code> to set or select.</p>    
+                        Date Range sample illustrates the date selection within the specific range in a calendar by using min and max properties.
+                        Here, the date selection range was <code>restricted</code> within a range from 7th to 27th days in a month.
+                    </p>    
                 </div>
                 <div id='description'>
                     <p>

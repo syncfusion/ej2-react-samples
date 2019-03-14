@@ -64,7 +64,7 @@ export class Default extends SampleBase<{}, {}> {
           </p>
           <p>
             More information about Tab can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/tab/getting-started.html"> documentation</a> section.
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/"> documentation</a> section.
           </p>
         </div>
       </div>

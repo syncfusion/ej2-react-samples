@@ -146,7 +146,7 @@ export class Default extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
         <p>
-            This sample demonstrates the default functionalities of the <code>TextBox</code> component. Type a character in the TextBox element or focus-in to the TextBox for floating the label text. The label will be positioned back to TextBox on focus-out without value.
+            This example demonstrates the default functionalities of the <code>TextBox</code> component. Type a character in the TextBox element or focus-in to the TextBox for floating the label text. The label will be positioned back to TextBox on focus-out without value.
         </p>
     </div>
         <div id="description">

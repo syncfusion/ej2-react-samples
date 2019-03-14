@@ -1,6 +1,6 @@
-/* ListView position alignment */
+ /* ListView position alignment */
 
-#listview_template.e-listview {
+ #listview_template.e-listview {
     max-width: 400px;
     margin: auto;
     border-radius: 2px;
@@ -10,30 +10,10 @@
 
 /* ListView header alignment */
 
-.e-bigger #listview_template.e-listview .e-list-header,
-#listview_template.e-listview .e-list-header{
-height: 64px;
-padding: 16px;
-line-height: 28px;
-font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif", "-apple-system", "BlinkMacSystemFont";
-}
-
-.e-bigger #listview_template.e-listview .e-list-header .e-text,
-#listview_template.e-listview .e-list-header .e-text{
-font-size: 20px;
-line-height: 30px;
-}
-
-.e-bigger #listview_template.e-listview .e-list-header .e-but-back,
-#listview_template.e-listview .e-list-header .e-but-back{
-padding-top: 0px;
-margin-top: 2px;
-}
-
-
-.e-bigger #listview_template.e-listview .e-list-header #list-logo,
 #listview_template.e-listview .e-list-header #list-logo {
-    margin-top: -27px;
+    margin-top: 2.5px;
+    position: absolute;
+    right: 20px;
 }
 
 /* ListView template customization */
@@ -49,22 +29,12 @@ margin-top: 2px;
     padding-left: 122px;
 }
 
-#listview_template.e-listview.e-list-template .e-list-wrapper.e-list-multi-line{
-    padding-top: 16px;
-    padding-bottom: 16px;
-}
-
 #listview_template.e-listview.e-list-template .e-list-wrapper.e-list-multi-line.e-list-avatar .e-avatar {
     background: transparent;
     width: 90px;
-    height: 120px;
+    height: 90px;
     top: 50%;
     transform: translateY(-50%);
-}
-
-.highcontrast #listview_template.e-listview.e-list-template .e-list-item.e-active .e-list-content,
-.highcontrast #listview_template.e-listview.e-list-template .e-list-item.e-active .e-list-item-header  {
-color: white;
 }
 
 #listview_template.e-listview .e-list-item.e-hover {
@@ -97,10 +67,6 @@ color: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.highcontrast #listview_template.e-listview .e-list-item.e-level-1.e-has-child {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-}
-
 #listview_template.e-listview .e-list-item.e-level-1.e-has-child:last-child {
     border-bottom: 0px solid rgba(0, 0, 0, 0.12)
 }
@@ -126,7 +92,7 @@ color: white;
 
 #listview_template.e-listview .bookmark::before {
     content: "\e700";
-    margin-right: 0;
+    margin-right: 12px;
     font-size: 16px;
 }
 
@@ -138,7 +104,7 @@ color: white;
 
 #listview_template.e-listview .comments::before {
     content: "\e703";
-    margin-right: 6px;
+    margin-right: 12px;
     font-size: 15px;
 }
 
@@ -151,7 +117,7 @@ color: white;
 }
 
 .highcontrast #listview_template.e-listview .e-list-item.e-active {
-    background-color: #000;
+    background-color: #333333;
     color: #fff;
 }
 
@@ -171,9 +137,9 @@ color: white;
 }
 
 .highcontrast #listview_template.e-listview .e-list-item.e-hover {
-    background-color: #000;
+    background-color: #333333;
     color: #fff;
-    border-color: #000;
+    border-color: #333333;
 }
 
 .highcontrast #listview_template.e-listview .e-list-item.e-has-child.e-hover {

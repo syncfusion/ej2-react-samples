@@ -4,10 +4,11 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective,
   Day, Week, Month, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { recurrenceData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule Recurrence events sample
@@ -15,7 +16,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class RecurrenceEvents extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], recurrenceData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).recurrenceData, null, true) as Object[];
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -37,7 +38,7 @@ export class RecurrenceEvents extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id='action-description'>
-          <p>This demo showcases the schedule with recurring meetings handled by a top-level manager on a regular pattern.</p>
+          <p>This demo showcases the scheduler with recurring meetings handled by a top-level manager on a regular pattern.</p>
         </div>
         <div id='description'>
           <p>In this demo, the recurrence events are defined with different repeat patterns.
@@ -51,6 +52,37 @@ to the right-bottom of it. These events can repeat on daily, weekly, monthly or 
             are depicted in orange color and the yearly event is depicted in the all-day section with another green shade for
             reference.
           </p>
+          <p>
+            Scheduler requires only the <code>startTime</code> and <code>endTime</code> fields as mandatory to be mapped from the dataSource. The
+        Scheduler events can be categorized into 3 types based on its time range and all-day type.
+          </p>
+          <table style={{ width: '100%' }}>
+            <tr>
+              <th style={{ width: '100px' }}>
+                <strong>Event</strong>
+              </th>
+              <th>
+                <strong>Description</strong>
+              </th>
+            </tr>
+            <tr>
+              <td style={{ padding: '4px 0' }}>Normal events</td>
+              <td>The events that has its start and end time duration on the same date.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: '4px 0' }}>Spanned events</td>
+              <td>
+                The events on which its start and end time spans over multiple days and usually displays together with all-day events.
+              </td>
+            </tr>
+            <tr>
+              <td style={{ padding: '4px 0' }}>All-day events</td>
+              <td>
+                The events that are defined as all-day in its event object by setting <code>isAllDay</code> to true.
+                It usually renders at the date header section of the Scheduler where no time-cells are present.
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     );

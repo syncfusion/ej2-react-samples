@@ -9,6 +9,7 @@ import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 export class Container extends SampleBase<{}, {}> {
+    // Code for Property Panel
     private gaugeInstance: LinearGaugeComponent;
     private orientationElement: DropDownListComponent;
     private containerElement: DropDownListComponent;
@@ -20,11 +21,13 @@ export class Container extends SampleBase<{}, {}> {
         this.gaugeInstance.container.type = this.containerElement.value as ContainerType;
         this.gaugeInstance.refresh();
     }
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
     }
+    // custom code end
     private droplist: { [key: string]: Object }[] = [
         { value: 'Vertical' },
         { value: 'Horizontal' }
@@ -57,6 +60,7 @@ export class Container extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div className='col-lg-4 property-section'>
+                    {/* Property Panel */}
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>

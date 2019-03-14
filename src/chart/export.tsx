@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, ChartTheme,
-    ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, ExportType
+    ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, ExportType, Export
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
@@ -32,7 +32,7 @@ const SAMPLE_CSS = `
     .e-play-icon::before {
         content: "\\e728";
     }`;
-export class Export extends SampleBase<{}, {}> {
+export class ChartExport extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
     private mode: DropDownListComponent;
     private type: { [key: string]: Object }[] = [
@@ -68,7 +68,7 @@ export class Export extends SampleBase<{}, {}> {
                             load={this.load.bind(this)}
                             title="Top 10 Countries Using Solar Power" loaded={this.onChartLoad.bind(this)}
                             tooltip={{ enable: true }}>
-                            <Inject services={[ColumnSeries, Category, Legend]} />
+                            <Inject services={[ColumnSeries, Category, Legend, Export]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' width={2}
                                     type='Column'>
@@ -129,11 +129,14 @@ export class Export extends SampleBase<{}, {}> {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
+        // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").
+        replace(/light/i, "Light") as ChartTheme;
     };
+        // custom code end
     public labelRender(args: IPointRenderEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'material';
@@ -149,6 +152,6 @@ export class Export extends SampleBase<{}, {}> {
     }
     public onClick(e: Event): void {
         let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
-        this.chartInstance.export((this.mode.value as ExportType), fileName);
+        this.chartInstance.exportModule.export((this.mode.value as ExportType), fileName);
     }
 }

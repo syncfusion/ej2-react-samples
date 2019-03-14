@@ -115,7 +115,7 @@ export class Format extends SampleBase<{}, {}> {
             let element02: any = document.getElementById('slider02');
             let element03: any = document.getElementById('slider03');
             for (let slider of [element01, element02, element03]) {
-                slider.ej2_instances[0].refreshTooltip();
+                slider.ej2_instances[0].refreshTooltip(slider.ej2_instances[0].tooltipTarget);
             }
         }
     }

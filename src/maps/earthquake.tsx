@@ -92,7 +92,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/asia.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/asia.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     shapeSettings={{
@@ -117,6 +117,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                             </LayersDirective>
                         </MapsComponent>
                     </div>
+                    {/* Source Link */}
                     <div style={{float: 'right', marginright: '10px'}}>Source: 
                         <a href="https://en.wikipedia.org/wiki/2009_Sumatra_earthquakes" target="_blank">en.wikipedia.org</a>
                     </div>
@@ -143,9 +144,11 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

@@ -7,32 +7,14 @@ import { AutoCompleteComponent, ChangeEventArgs, DropDownListComponent, FilterTy
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './highlight.css';
+import * as data from './dataSource.json';
 
 export class Highlight extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  private temp:string = 'countries';
   // define the JSON of data
-  private countries: { [key: string]: Object; }[] = [
-    { Name: 'Australia', Code: 'AU' },
-    { Name: 'Bermuda', Code: 'BM' },
-    { Name: 'Canada', Code: 'CA' },
-    { Name: 'Cameroon', Code: 'CM' },
-    { Name: 'Denmark', Code: 'DK' },
-    { Name: 'France', Code: 'FR' },
-    { Name: 'Finland', Code: 'FI' },
-    { Name: 'Germany', Code: 'DE' },
-    { Name: 'Greenland', Code: 'GL' },
-    { Name: 'Hong Kong', Code: 'HK' },
-    { Name: 'India', Code: 'IN' },
-    { Name: 'Italy', Code: 'IT' },
-    { Name: 'Japan', Code: 'JP' },
-    { Name: 'Mexico', Code: 'MX' },
-    { Name: 'Norway', Code: 'NO' },
-    { Name: 'Poland', Code: 'PL' },
-    { Name: 'Switzerland', Code: 'CH' },
-    { Name: 'United Kingdom', Code: 'GB' },
-    { Name: 'United States', Code: 'US' }
-  ];
+  private countries: { [key: string]: Object; }[] = data[this.temp];
   // maps the appropriate column to fields property
   private fields: object = { value: 'Name' };
   // define the array of data

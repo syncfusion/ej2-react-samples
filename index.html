@@ -2,20 +2,38 @@
 <html>
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WLQL39J');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Essential JS 2 for React">
+    <meta name="description" content="Explore and learn Syncfusion React UI components library using large collection of feature-wise examples for each components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Essential JS 2 for React</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Demos, Examples of Syncfusion React UI Components</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link href="src/common/lib/content/roboto.css" rel="stylesheet">
+    <link href="src/common/lib/content/bootstrap.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.ico" />
     <style id="themelink"></style>
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" href="./src/common/lib/highlightjs/styles/default.css" />
+    <link href="src/common/lib/content/codemirror.css" rel="stylesheet"></link>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write('<script src="src/common/lib/content/bluebird.min.js"><\/script>');
+        }
+    </script>
 </head>
 
 <body class='e-view'>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLQL39J"height="0"width="0"style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div hidden id="sync-analytics" data-queue="EJ2 - React - Demos"></div>
     <aside id='left-sidebar'>
         <div class='sb-left-pane e-view'>
                 <div class="sb-left-pane-header">
@@ -36,11 +54,11 @@
                 <div id="left-pane-component"></div>
                 <div class='sb-left-pane-footer'>
                     <div class="sb-mobile-header-buttons">
-                        <a href='https://www.syncfusion.com/products/essential-js2' target="_blank">
-                            <div class="sb-mobile-header-button">
+                        <a href='https://www.syncfusion.com/react-ui-components' target="_blank">
+                            <div class="sb-mobile-header-about">
                                 About</div>
                         </a>
-                        <a href='https://www.syncfusion.com/downloads/essential-js2' target="_blank" ><div class="sb-mobile-header-button">Pricing</div></a>
+                        <a href='https://www.syncfusion.com/downloads/react' target="_blank" ><div class="sb-mobile-header-price">Pricing</div></a>
                     </div>
                 </div>
             </div>
@@ -94,11 +112,11 @@
                 <div class="sb-header-item sb-table-cell  sb-header-settings sb-icons"></div>
                 <div class="sb-header-splitter sb-download-splitter"></div>
                 <div class='sb-header-item sb-table-cell sb-download-wrapper'>
-                    <button id='download-now' class='sb-download-btn'>
-                        <a href='https://www.syncfusion.com/downloads/essential-js2' target="_blankss">
+                    <a href='https://www.syncfusion.com/downloads/react' target="_blank">                    
+                        <button id='download-now' class='sb-download-btn'>
                             <span class='sb-download-text'>Download Now</span>
-                        </a>
-                    </button>
+                        </button>
+                    </a>                        
                 </div>
             </div>
 
@@ -111,7 +129,7 @@
                         <a id='angular'>Angular</a>
                     </li>
                     <li>
-                        <a id='typescript'>TypeScript</a>
+                        <a id='typescript'>JavaScript</a>
                     </li>
                     <li>
                         <a id='javascript'>JavaScript (ES5)</a>
@@ -121,6 +139,9 @@
                     </li>
                     <li>
                         <a id='aspnetmvc'>ASP.NET MVC</a>
+                    </li>
+                    <li>
+                        <a id='vue'>Vue</a>
                     </li>
                 </ul>
             </div>
@@ -138,6 +159,10 @@
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Bootstrap</span>
                     </li>
+                    <!-- <li class="e-list" id="bootstrap4">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Bootstrap4</span>
+                    </li> -->
                     <li class="e-list" id="highcontrast">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">High Contrast</span>
@@ -160,6 +185,7 @@
                                 <option value="material">Material</option>
                                 <option value="fabric">Fabric</option>
                                 <option value="bootstrap">Bootstrap</option>
+                                <!-- <option value="bootstrap4">Bootstrap4</option> -->
                                 <option value="highcontrast">High Contrast</option>
                             </select>
                         </div>
@@ -170,8 +196,8 @@
                             <div class='sb-setting-text'>Mode Selection</div>
                         </div>
                         <div class='setting-content btn-group setting-responsive'>
-                            <div id='touch' class="sb-responsive-items">Touch</div>
-                            <div id='mouse' class="sb-responsive-items">Mouse</div>
+                            <div id='touch' class="sb-responsive-items set-border-radious-touch">Touch</div>
+                            <div id='mouse' class="sb-responsive-items set-border-radious-mouse">Mouse</div>
                         </div>
                     </div>
                     <div class='sb-setting-item sb-setting-culture'>
@@ -181,7 +207,7 @@
                             </div>
                             <div class='setting-content'>
                                 <select id='sb-setting-culture' class='sb-setting-culture-select'>
-                                    <option value="en">English*</option>
+                                    <option value="en">English</option>
                                     <option value="de">German - Germany*</option>
                                     <option value="fr-CH">French - Switzerland*</option>
                                     <option value="ar">Arabic*</option>
@@ -221,7 +247,7 @@
                 </div>
                 <div class='sb-desktop-wrapper'>
                     <div id='component-name' class='sb-component-name sb-rightpane-padding'>
-                        <span class='sb-sample-text'></span>
+                        <h1 class='sb-sample-text'></h1>
                     </div>
                     <div id='sample-bread-crumb' class='sb-bread-crumb sb-rightpane-padding'>
                         <div class='sb-bread-crumb-text'>
@@ -239,20 +265,20 @@
                     <div class="sb-footer">
                         <div class="sb-footer-left">
                             <div class="sb-footer-links">
-                                <a href="https://help.syncfusion.com/essential-js2/react/documentation/" target="_blank">
+                                <a href="http://ej2.syncfusion.com/react/documentation" target="_blank">
                                     <div class="sb-footer-link">Documentation</div>
                                 </a>
-                                <a href="https://www.syncfusion.com/forums/essential-js2" target="_blank">
+                                <a href="https://www.syncfusion.com/forums/react-js2" target="_blank">
                                     <div class="sb-footer-link">Forum</div>
                                 </a>
-                                <a href="https://www.syncfusion.com/blogs/" target="_blank">
+                                <a href="https://blog.syncfusion.com/" target="_blank">
                                     <div class="sb-footer-link">Blog</div>
                                 </a>
                                 <a href="https://www.syncfusion.com/kb" target="_blank">
                                     <div class="sb-footer-link">Knowledge Base</div>
                                 </a>
                             </div>
-                            <div class="sb-footer-copyright">Copyright © 2001-2018 Syncfusion Inc.</div>
+                            <div class="sb-footer-copyright">Copyright © 2001-2019 Syncfusion Inc.</div>
                         </div>
                         <div class="sb-footer-logo">
                             <a href="//www.syncfusion.com" target="_blank">
@@ -299,7 +325,6 @@
             <div class='sb-api-content'>${description}</div>
         </div>
     </script>
-
     <script src="./dist/bundle.js"></script>
 
 </body>

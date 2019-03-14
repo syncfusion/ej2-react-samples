@@ -5,8 +5,8 @@ import { PivotViewComponent, IDataOptions, IDataSet, FieldList } from '@syncfusi
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, Inject } from '@syncfusion/ej2-react-dropdowns';
 import { ChangeEventArgs as Args } from '@syncfusion/ej2-buttons';
-import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
+import * as pivotData from './pivot-data/Pivot_Data.json';
 
 /**
  * PivotView Exporting Sample.
@@ -17,7 +17,8 @@ const SAMPLE_CSS = `
     width: 100%;
     height: 100%;
 }`;
-
+/* tslint:disable */
+let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSource: IDataOptions = {
     values: [{ name: 'In_Stock', caption: 'In Stock' }, { name: 'Sold', caption: 'Units Sold' },
     { name: 'Amount', caption: 'Sold Amount' }],
@@ -64,7 +65,7 @@ export class Exporting extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ overflow: 'initial' }}>
+                <div className='control-section'>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} allowExcelExport={true} allowPdfExport={true} showFieldList={true} width={'100%'} height={'300'} gridSettings={{columnWidth: 140}}>
                             <Inject services={[FieldList]} />
@@ -89,7 +90,7 @@ export class Exporting extends SampleBase<{}, {}> {
                                         <td></td>
                                         <td>
                                             <div id="btn-control" style={{ float: 'right' }}>
-                                                <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-apply-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                                <ButtonComponent onClick={this.onClick.bind(this)} cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                             </div>
                                         </td>
                                     </tr>

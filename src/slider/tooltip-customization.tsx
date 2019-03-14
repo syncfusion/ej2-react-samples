@@ -22,8 +22,8 @@ const slidercss = `
     margin-top: 40px;
 }
 
-#slider01 .e-material-handle,
-#out .e-material-handle,
+#slider01 .e-handle,
+#out .e-handle,
 .bootstrap #out .e-handle,
 .bootstrap #slider01 .e-handle,
 .fabric #out .e-handle,
@@ -59,42 +59,41 @@ const slidercss = `
 
 
 
-.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-slider-tooltip .e-tip-content,
-.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-material-range .e-tip-content.e-material-tooltip-show {
-  color: #333;
+.e-slider-tooltip.e-tooltip-wrap.e-popup.e-slider-tooltip .e-tip-content,
+.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range .e-tip-content.e-material-tooltip-show {
+    color: #333;
 }
 
-.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-material-range .e-arrow-tip-inner {
-  color: #ffd939;
+.e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-inner{
+    color: #ffd939;
 }
 
-.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-material-range.e-slider-horizontal-before .e-arrow-tip-outer {
-  border-top-color: #ffd939;
-
+.e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-outer {
+    border-top-color: #ffd939;
 }
 
-.e-slider-tooltip.e-tooltip-wrap.e-tooltip-cutomization.e-popup.e-material-range.e-slider-horizontal-after .e-arrow-tip-outer {
-  border-bottom-color: #ffd939;
+.e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-outer {
+    border-bottom-color: #ffd939;
 }
 
 .e-slider-container .e-slider#slider01 .e-range,
 .e-slider-container .e-slider#out .e-range {
-  background-color: #0375be;
-  z-index: unset;
+    background-color: #0375be;
+    z-index: unset;
 }
-
-.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range.e-tooltip-cutomization,
-.e-slider-tooltip.e-tooltip-wrap.e-popup.e-tooltip-cutomization {
-  background-color: #ffd939;
-  border-color: #ffd939;
+.e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-default.e-slider-horizontal-after,
+.e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-default.e-slider-horizontal-before,
+.e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup {
+    background-color: #ffd939;
+    border-color: #ffd939;
 }
 
 .bootstrap .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-outer {
-  border-top-color: #ffd939;
+    border-top-color: #ffd939;
 }
 
 .bootstrap .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-inner {
-  color: #ffd939;
+    color: #ffd939;
 }
 
 `
@@ -145,10 +144,10 @@ export class TooltipCustomization extends SampleBase<{}, {}> {
             args.text = 'Until ' + new Date(Number(args.text)).toLocaleTimeString('en-us', custom);
         }
     }
-    public onCreated01(args: any): void {
-        let element01: any = document.getElementById('slider01');
-        element01.ej2_instances[0].keyUp({ keyCode: 9, target: element01.ej2_instances[0].secondHandle });
-        element01.ej2_instances[0].secondHandle.focus();
+    public onCreated02(args: any): void {
+        let element01: any = document.getElementById('out');
+        element01.ej2_instances[0].keyUp({ keyCode: 9, target: element01.ej2_instances[0].firstHandle });
+        element01.ej2_instances[0].firstHandle.focus();
     }
     public sliderTicks: any = {
         placement: 'After',
@@ -174,8 +173,8 @@ export class TooltipCustomization extends SampleBase<{}, {}> {
             !isNullOrUndefined((document.getElementById('out') as any).ej2_instances[0])) {
             let element01: any = document.getElementById('slider01');
             let element02: any = document.getElementById('out');
-            element01.ej2_instances[0].refreshTooltip();
-            element02.ej2_instances[0].refreshTooltip();
+            element01.ej2_instances[0].refreshTooltip(element01.ej2_instances[0].tooltipTarget);
+            element02.ej2_instances[0].refreshTooltip(element02.ej2_instances[0].tooltipTarget);
         }
     }
 
@@ -195,14 +194,14 @@ export class TooltipCustomization extends SampleBase<{}, {}> {
                                 <span className="label-text">Background color</span>
                             </label>
 
-                            <SliderComponent id="slider01" value={this.value} min={this.min} max={this.max} step={3600000 / 6} ticks={this.ticks} type="Range" tooltip={this.tooltip} tooltipChange={this.tooltipChangeHandler.bind(this)} ref={(slider) => { this.timeObj = slider }} created={this.onCreated01.bind(this)} renderingTicks={this.onRenderingTicks.bind(this)} />
+                            <SliderComponent id="slider01" value={this.value} min={this.min} max={this.max} step={3600000 / 6} ticks={this.ticks} type="Range" tooltip={this.tooltip} tooltipChange={this.tooltipChangeHandler.bind(this)} ref={(slider) => { this.timeObj = slider }} renderingTicks={this.onRenderingTicks.bind(this)} />
                         </div>
                         <div className="sliderwrap">
                             <label className="labeltext userselect">
                                 <span className="label-text">Color and text</span>
                             </label>
                             {/* Ticks slider element - */}
-                            <SliderComponent id="out" value={new Date(2013, 6, 13, 17).getTime()} min={this.sliderMin} max={this.sliderMax} step={3600000 / 6} ticks={this.sliderTicks} type="MinRange" tooltip={this.sliderTooltip} tooltipChange={this.tooltipChangeHandler.bind(this)} ref={(slider) => { this.sliderObj = slider }} renderingTicks={this.onRenderingTicks.bind(this)} />
+                            <SliderComponent id="out" value={new Date(2013, 6, 13, 17).getTime()} min={this.sliderMin} max={this.sliderMax} step={3600000 / 6} ticks={this.sliderTicks} type="MinRange" tooltip={this.sliderTooltip} tooltipChange={this.tooltipChangeHandler.bind(this)} created={this.onCreated02.bind(this)} ref={(slider) => { this.sliderObj = slider }} renderingTicks={this.onRenderingTicks.bind(this)} />
                         </div>
                     </div>
                 </div>

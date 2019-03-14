@@ -10,9 +10,6 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
     private animationSettings: Object;
     constructor(props: {}) {
         super(props);
-        this.state = {
-            hideDialog : true
-        };
         this.dlgButton = [{
             click: this.dialogButtonClick.bind(this),
             buttonModel: { content: 'Hide', isPrimary: true }
@@ -21,13 +18,7 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
         this.animationSettings = { effect: 'Zoom' };
     }
     private dialogButtonClick(): void {
-        this.setState({ hideDialog: false });
-    }
-    private dialogOpen(): void {
-        this.setState({ hideDialog: true });
-    }
-    private dialogClose(): void {
-        this.setState({ hideDialog: false });
+        this.defaultDialogInstance.hide();
     }
     private buttonClick(args: any): void {
         let dialog: DialogComponent = this.defaultDialogInstance;
@@ -36,7 +27,7 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
         txt = (txt === 'Zoom In/Out') ? 'Zoom In or Out' : txt;
         dialog.content = 'The dialog is configured with animation effect. It is opened or closed with "' + txt + '" animation.';
         dialog.animationSettings = { effect: effects, duration: 400 };
-        this.setState({ hideDialog: true });
+        dialog.show();
     }
 
   public render(): JSX.Element {
@@ -61,24 +52,24 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
             </div>
         </div>
             <DialogComponent id='dialog' isModal={true} header='Animation Dialog' showCloseIcon={true} animationSettings={this.animationSettings} width='285px' ref={defaultDialog => this.defaultDialogInstance = defaultDialog}
-            target='#target' buttons={this.dlgButton} visible={this.state.hideDialog} open={this.dialogOpen.bind(this)} close={this.dialogClose.bind(this)}>
+            target='#target' buttons={this.dlgButton}>
             <span>The dialog is configured with animation effect. It is opened or closed with "Zoom In or Out" animation.</span>
             </DialogComponent>
         <div id="action-description">
             <p>
-                This sample demonstrates how to open or close the dialog with animation effects by clicking the appropriate button.
+                This example demonstrates how to open or close the dialog with animation effects by clicking the appropriate button.
             </p>
         </div>
         <div id="description">
             <p>
                 The dialog can be opened or closed with animation effect using the <a target="_blank" 
-            href="https://ej2.syncfusion.com/react/documentation/dialog/api-dialogComponent.html#animationsettings">animationSettings</a> property.
+            href="https://ej2.syncfusion.com/react/documentation/api/dialog/#animationsettings">animationSettings</a> property.
             You can also customize the duration of animation and delay to begin animation.
             Disables the dialog's animation by setting the animation effect as none.    
             </p>
             <p>
                 More information on the animation effect of Dialog can be found in the <a target="_blank" 
-                href="https://ej2.syncfusion.com/react/documentation/dialog/animation.html">
+                href="https://ej2.syncfusion.com/react/documentation/dialog/animation/">
                 documentation section</a>.
             </p>
          </div>

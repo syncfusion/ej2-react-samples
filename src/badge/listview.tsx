@@ -3,21 +3,8 @@ import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import './listview.css';
-
+import { dataSource } from './listData';
 export class ListView extends SampleBase<{}, {}> {
-
-    // Datasource for listview, badge field is the class data for Badges
-    public dataSource: { [key: string]: Object }[] = [
-        { id: 'p_01', text: 'Primary', messages: '3 New', badge: 'e-badge e-badge-primary', icons: 'primary', type: 'Primary' },
-        { id: 'p_02', text: 'Social', messages: '27 New', badge: 'e-badge e-badge-secondary', icons: 'social', type: 'Primary' },
-        { id: 'p_03', text: 'Promotions', messages: '7 New', badge: 'e-badge e-badge-success', icons: 'promotion', type: 'Primary' },
-        { id: 'p_04', text: 'Updates', messages: '13 New', badge: 'e-badge e-badge-info', icons: 'updates', type: 'Primary' },
-        { id: 'p_05', text: 'Starred', messages: '', badge: '', icons: 'starred', type: 'All Labels' },
-        { id: 'p_06', text: 'Important', messages: '2 New', badge: 'e-badge e-badge-danger', icons: 'important', type: 'All Labels' },
-        { id: 'p_07', text: 'Sent', messages: '', badge: '', icons: 'sent', type: 'All Labels' },
-        { id: 'p_08', text: 'Outbox', messages: '', badge: '', icons: 'outbox', type: 'All Labels' },
-        { id: 'p_09', text: 'Drafts', messages: '7 New', badge: 'e-badge e-badge-warning', icons: 'draft', type: 'All Labels' },
-    ];
 
     // Map fields
     public fields: object = { groupBy: 'type' };
@@ -42,7 +29,7 @@ export class ListView extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <div className="sample_container badge-list">
                         {/* Listview element */}
-                        <ListViewComponent id="lists" dataSource={this.dataSource} fields={this.fields} headerTitle='Inbox' showHeader={true} template={this.listTemplate as any} actionComplete={this.onActionComplete.bind(this)} ></ListViewComponent>
+                        <ListViewComponent id="lists" dataSource={dataSource} fields={this.fields} headerTitle='Inbox' showHeader={true} template={this.listTemplate as any} actionComplete={this.onActionComplete.bind(this)} ></ListViewComponent>
                     </div>
                 </div>
                 <div id="action-description">

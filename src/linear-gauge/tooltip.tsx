@@ -13,11 +13,13 @@ const SAMPLE_CSS = `
      */
 export class Tooltip extends SampleBase<{}, {}> {
     private gaugeInstance: LinearGaugeComponent;
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
     }
+    // custom code end
     render() {
         return (
             <div className='control-pane'>
@@ -27,7 +29,7 @@ export class Tooltip extends SampleBase<{}, {}> {
 
                 </style>
                 <div className='control-section'>
-                    <LinearGaugeComponent id='tooltipContainer' ref={gauge => this.gaugeInstance = gauge} orientation='Horizontal' axisLabelRender={this.labelRender.bind(this)} load={this.gaugeLoad.bind(this)} loaded={this.gaugeLoaded.bind(this)} resized={this.gaugeResized.bind(this)} tooltipRender={this.tooltipRender.bind(this)} container={{ width: 140, border: { width: 2, color: '#a6a6a6' } }} tooltip={{ enable: true, fill: '#fffff', textStyle: { color: '#fffff' } }} >
+                    <LinearGaugeComponent id='tooltipContainer' ref={gauge => this.gaugeInstance = gauge} orientation='Horizontal' axisLabelRender={this.labelRender.bind(this)} load={this.gaugeLoad.bind(this)} loaded={this.gaugeLoaded.bind(this)} resized={this.gaugeResized.bind(this)} tooltipRender={this.tooltipRender.bind(this)} container={{ width: 140, border: { width: 2, color: '#a6a6a6' } }} tooltip={{ enable: true }} >
                         <Inject services={[Annotations, GaugeTooltip]} />
                         <AxesDirective>
                             <AxisDirective minimum={0} maximum={10} majorTicks={{ interval: 1 }} minorTicks={{ interval: 0.2 }} line={{ offset: 140 }} labelStyle={{ font: { color: '#000000' } }}>

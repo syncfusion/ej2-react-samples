@@ -66,13 +66,11 @@ body {
 }
 
 #documenteditor_titlebar {
-    background-color: #2B3481;
     border-bottom: 1px solid #2B3481;
     height: 36px;
     line-height: 26px;
     width: 100%;
     font-size: 12px;
-    color: #ffffff;
     padding-left: 15px;
     padding-right: 10px;
 }

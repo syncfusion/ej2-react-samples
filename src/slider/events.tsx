@@ -72,7 +72,7 @@ export class Events extends SampleBase<{}, {}> {
         if (!isNullOrUndefined(document.getElementById('minrange')) &&
         !isNullOrUndefined((document.getElementById('minrange') as any).ej2_instances[0])) {
             let element01: any = document.getElementById('minrange');
-            element01.ej2_instances[0].refreshTooltip();
+            element01.ej2_instances[0].refreshTooltip(element01.ej2_instances[0].tooltipTarget);
         }
     }
 

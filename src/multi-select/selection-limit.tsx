@@ -6,31 +6,13 @@ import { PropertyPane } from '../common/property-pane';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import './checkbox.css';
+import * as data from './dataSource.json';
 
 export class SelectionLimit extends SampleBase<{}, {}> {
 
+  private temp:string = 'countries';
   //define the data with category
-  private countries: { [key: string]: Object; }[] = [
-    { Name: 'Australia', Code: 'AU' },
-    { Name: 'Bermuda', Code: 'BM' },
-    { Name: 'Canada', Code: 'CA' },
-    { Name: 'Cameroon', Code: 'CM' },
-    { Name: 'Denmark', Code: 'DK' },
-    { Name: 'France', Code: 'FR' },
-    { Name: 'Finland', Code: 'FI' },
-    { Name: 'Germany', Code: 'DE' },
-    { Name: 'Greenland', Code: 'GL' },
-    { Name: 'Hong Kong', Code: 'HK' },
-    { Name: 'India', Code: 'IN' },
-    { Name: 'Italy', Code: 'IT' },
-    { Name: 'Japan', Code: 'JP' },
-    { Name: 'Mexico', Code: 'MX' },
-    { Name: 'Norway', Code: 'NO' },
-    { Name: 'Poland', Code: 'PL' },
-    { Name: 'Switzerland', Code: 'CH' },
-    { Name: 'United Kingdom', Code: 'GB' },
-    { Name: 'United States', Code: 'US' }
-  ];
+  private countries: { [key: string]: Object; }[] = data[this.temp];
   // maps the appropriate column to fields property
   private checkFields: Object = { text: 'Name', value: 'Code' };
 

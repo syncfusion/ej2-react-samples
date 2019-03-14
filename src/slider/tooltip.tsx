@@ -74,8 +74,8 @@ export class Tooltip extends SampleBase<{}, {}> {
             !isNullOrUndefined((document.getElementById('slider02') as any).ej2_instances[0])) {
             let element01: any = document.getElementById('slider01');
             let element02: any = document.getElementById('slider02');
-            element01.ej2_instances[0].refreshTooltip();
-            element02.ej2_instances[0].refreshTooltip();
+            element01.ej2_instances[0].refreshTooltip(element01.ej2_instances[0].tooltipTarget);
+            element02.ej2_instances[0].refreshTooltip(element02.ej2_instances[0].tooltipTarget);
         }
     }
 

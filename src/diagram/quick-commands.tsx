@@ -205,29 +205,7 @@ let handles: UserHandleModel[] = [
   }
 ];
 
-//Defines the clone tool used to copy Node/Connector
-class CloneTool extends MoveTool {
-  public mouseDown(args: MouseEventArgs): void {
-    let newObject: any;
-    if (diagramInstance.selectedItems.nodes.length > 0) {
-      newObject = cloneObject(
-        diagramInstance.selectedItems.nodes[0]
-      ) as NodeModel;
-    } else {
-      newObject = cloneObject(
-        diagramInstance.selectedItems.connectors[0]
-      ) as ConnectorModel;
-    }
-    newObject.id += randomId();
-    diagramInstance.paste([newObject]);
-    args.source = diagramInstance.nodes[
-      diagramInstance.nodes.length - 1
-    ] as IElement;
-    args.sourceWrapper = args.source.wrapper;
-    super.mouseDown(args);
-    this.inAction = true;
-  }
-}
+
 
 export class UserHandle extends SampleBase<{}, {}> {
   rendereComplete() {
@@ -235,12 +213,14 @@ export class UserHandle extends SampleBase<{}, {}> {
     diagramInstance.select([diagramInstance.nodes[0]]);
     document.getElementById("appearance").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
+      // custom code start
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
       if (selectedElement.length) {
         selectedElement[0].classList.remove("e-selected-style");
       }
+      // custom code end
       if (target.className === "image-pattern-style") {
         switch (target.id) {
           case "left":
@@ -258,12 +238,14 @@ export class UserHandle extends SampleBase<{}, {}> {
     };
     document.getElementById("pattern").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
+      // custom code start
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
       if (selectedElement.length) {
         selectedElement[0].classList.remove("e-selected-style");
       }
+      // custom code end
       if (target.className === "image-pattern-style") {
         switch (target.id) {
           case "pattern1":
@@ -402,6 +384,29 @@ export class UserHandle extends SampleBase<{}, {}> {
     );
   }
 }
+//Defines the clone tool used to copy Node/Connector
+class CloneTool extends MoveTool {
+  public mouseDown(args: MouseEventArgs): void {
+    let newObject: any;
+    if (diagramInstance.selectedItems.nodes.length > 0) {
+      newObject = cloneObject(
+        diagramInstance.selectedItems.nodes[0]
+      ) as NodeModel;
+    } else {
+      newObject = cloneObject(
+        diagramInstance.selectedItems.connectors[0]
+      ) as ConnectorModel;
+    }
+    newObject.id += randomId();
+    diagramInstance.paste([newObject]);
+    args.source = diagramInstance.nodes[
+      diagramInstance.nodes.length - 1
+    ] as IElement;
+    args.sourceWrapper = args.source.wrapper;
+    super.mouseDown(args);
+    this.inAction = true;
+  }
+}
 
 //Enable the clone Tool for UserHandle.
 function getTool(action: string): ToolBase {
@@ -419,11 +424,15 @@ function setuserhandleposition(
 ): void {
   diagramInstance.selectedItems.userHandles[0].offset = offset;
   diagramInstance.selectedItems.userHandles[0].side = side;
+  // custom code start
   target.classList.add("e-selected-style");
+  // custom code end
 }
 //set the style of the userhandle.
 function applyuserhandlestyle(bgcolor: string, target: HTMLElement): void {
   diagramInstance.selectedItems.userHandles[0].backgroundColor = bgcolor;
   diagramInstance.selectedItems.userHandles[0].pathColor = "White";
+  // custom code start
   target.classList.add("e-selected-style");
+  // custom code end
 }

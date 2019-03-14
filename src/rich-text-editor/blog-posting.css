@@ -35,6 +35,10 @@
     clear: both;
 }
 
+.highcontrast #rteUseCase .control-wrapper .header {
+    color: #fff;    
+}
+
 @media (max-width: 550px) {
     #rteUseCase .control-wrapper .forum {
         padding: 20px 20px 60px 20px;
@@ -48,6 +52,9 @@
         border: 1px solid #d8d8c0;
         padding: 10px 90px 60px 90px;
         box-shadow: 2px 2px 2px 2px #f5f5ef;
+    }
+    .highcontrast #rteUseCase .control-wrapper .forum {
+        border: 1px solid #fff;
     }
 }
 
@@ -76,6 +83,10 @@
     font-size: 13px;
     font-family: roboto, SegoeUI;
     color: #000000;
+}
+
+.highcontrast #rteUseCase .control-wrapper .explain {
+    color: #fff;
 }
 
 #rteUseCase .control-wrapper .separator {
@@ -217,10 +228,18 @@
     font-size: 13px;
 }
 
+.highcontrast #rteUseCase .control-wrapper .posting {
+    color: #fff;
+}
+
 #rteUseCase .control-wrapper .authorname {
     font-family: SegoeUI-Semibold;
     color: #000000;
     font-size: 13px;
+}
+
+.highcontrast #rteUseCase .control-wrapper .authorname {
+    color: #fff;
 }
 
 #rteUseCase .control-wrapper .detailsAnswer {

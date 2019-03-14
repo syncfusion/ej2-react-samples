@@ -182,7 +182,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to arrange the axis labels and how to trim the axis label smartly. When the Axis labels overlap with each other based on
+                        In this example, you can see how to arrange the axis labels smartly. When the Axis labels overlap with each other based on
                 the chart dimensions and label size, you can use the <code>labelIntersectAction</code> property of the axis
                 to avoid overlapping.
             </p>
@@ -217,9 +217,11 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
         chart.setAttribute('title', '');
 
     };
+        // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
+        // custom code end
 }

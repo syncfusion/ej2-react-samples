@@ -32,3 +32,10 @@
     width: auto;
     margin: 0;
 }
+
+.highcontrast #rteTools .cm-s-default .cm-tag {color: #00ff00;}
+.highcontrast #rteTools .cm-s-default .cm-string {color: #ffd939;}
+.highcontrast #rteTools .cm-s-default .cm-attribute {color: #f00;}
+.highcontrast #rteTools .CodeMirror {
+    background: black;
+}

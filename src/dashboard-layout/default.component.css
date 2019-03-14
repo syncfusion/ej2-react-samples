@@ -1,0 +1,47 @@
+#default_dashboard.e-dashboardlayout {
+    padding: 10px;
+}
+
+#default_dashboard.e-dashboardlayout.e-control .e-panel:hover span {
+    display: block;
+}
+
+#default_dashboard.e-dashboardlayout .e-panel .e-panel-container .text-align {
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
+
+#default_dashboard .e-close-icon {
+    padding: 10px;
+    float: right;
+    display: none;
+}
+
+#default_dashboard .e-clear-icon::before {
+    content: '\e932';
+    font-size: 12px;
+    font-family: 'e-icons';
+}
+
+#default_dashboard .text-align {
+    line-height: 160px;
+}
+
+#default_dashboard .e-clear-icon {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+#default_target .addContainer{
+    padding: 5px;
+    text-align: end;
+    height: 35px;
+    width: 100%
+}
+
+#default_target #add{
+    float: right;
+}
