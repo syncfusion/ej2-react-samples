@@ -503,7 +503,7 @@ function addEvents(): void {
     }
   }
 }
-
+// custom code start
 function openPalette(): void {
   let paletteSpace: HTMLElement = document.getElementById('palette-space');
   isMobile = window.matchMedia('(max-width:550px)').matches;
@@ -515,3 +515,4 @@ function openPalette(): void {
     }
   }
 }
+// custom code end

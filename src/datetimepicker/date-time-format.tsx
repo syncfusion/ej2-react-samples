@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import './datetimepicker-component.css';
+import './format-style.css';
 import { DateTimePickerComponent, RenderDayCellEventArgs } from '@syncfusion/ej2-react-calendars';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { FloatLabelType } from '@syncfusion/ej2-react-inputs';
@@ -45,7 +45,11 @@ export class Dateformat extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
           <p>
-            In this sample, the DateTimePicker has been configured with the <code>dd-MMM-yy hh:mm a</code> datetime format. To change this current datetime format, go to the properties panel at the right side and select a datetime format from the dropdown options.</p>
+            In this sample, the DateTimePicker has been configured with the
+            <code>dd-MMM-yy hh:mm a</code> date time format.
+            To change this current date time format, go to the properties panel at the right side and select a date format from the dropdown options.
+            For mobile mode touch the icon at the right side and select a date time format from the dropdown options.
+          </p>
         </div>
         <div id='description'>
           <p>

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, Sort } from '@syncfusion/ej2-react-grids';
 import {Grid} from '@syncfusion/ej2-grids';
 import { employeeData, customerData, orderDatas } from './data';
 import { SampleBase } from '../common/sample-base';
@@ -34,7 +34,7 @@ export class Hierarchy extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={employeeData} childGrid={this.childGrid}  >
+                    <GridComponent dataSource={employeeData} childGrid={this.childGrid} allowSorting={true} >
                         <ColumnsDirective>
                             <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' />
                             <ColumnDirective field='FirstName' headerText='Name' width='125' />
@@ -42,7 +42,7 @@ export class Hierarchy extends SampleBase<{}, {}> {
                             <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format={{ skeleton: 'yMd', type: 'date' }} textAlign='Right' />
                             <ColumnDirective field='ReportsTo' headerText='Reports To' width='135' textAlign='Right' />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Page]} />
+                        <Inject services={[DetailRow, Page, Sort]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">

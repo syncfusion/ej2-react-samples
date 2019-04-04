@@ -47,10 +47,10 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[MapsTooltip, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/tooltip-datasource.json')}
+                                    dataSource={new MapAjax('./src/maps/map-data/tooltip-datasource.json')}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath: 'name',
@@ -88,6 +88,7 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                 </div>
+                {/* Source Link */}
                 <div style={{float: 'right', marginright: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/List_of_Cricket_World_Cup_finals" target="_blank">en.wikipedia.org</a>
     </div>
@@ -113,12 +114,14 @@ export class TooltipMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
     //tslint:disable
+    // custom code end
     public tooltipRender(args: ITooltipRenderEventArgs): void {
         if (!args.options['data']) {
             args.cancel = true;

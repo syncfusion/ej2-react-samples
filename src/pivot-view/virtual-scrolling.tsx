@@ -127,7 +127,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ overflow: 'auto' }}>
+                <div className='control-section'>
                     <div id="btn-control" style={{ marginBottom: '5px' }}>
                         <ButtonComponent id='apply' className='e-info' ref={(scope) => { applyBtn = scope; }} onClick={this.onClick.bind(this)} isPrimary={true}>Load 100K Data</ButtonComponent>
                         <span id="popup">

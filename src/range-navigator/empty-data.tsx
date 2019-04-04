@@ -181,6 +181,19 @@ export class EmptyData extends SampleBase<{}, {}> {
             </div >
         )
     }
+ // custom code start
+    public rangeLoad(args: IRangeLoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                 replace(/-dark/i, "Dark") as ChartTheme;
+        let rangeTheme:string = args.rangeNavigator.theme;
+        args.rangeNavigator.series[0].type = "Area";
+        args.rangeNavigator.series[0].fill= 'url(#' + rangeTheme.toLowerCase() + '-gradient-chart)';
+        args.rangeNavigator.series[0].border.width = 2;
+        args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(rangeTheme)];
+    };
+ // custom code end
     public changed(args: IChangedEventArgs): void {
         if (this.chartInstance && this.chartRendered) {
              this.chartInstance.primaryXAxis.zoomFactor = args.zoomFactor;
@@ -191,25 +204,17 @@ export class EmptyData extends SampleBase<{}, {}> {
            zoomPosition = args.zoomPosition;
         }
        };
+           // custom code start
     public chartLoad(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
         let chartTheme:string = args.chart.theme;
         args.chart.series[0].fill= 'url(#' + chartTheme.toLowerCase() + '-gradient-chart)';
         args.chart.series[0].border.color = borderColor[themes.indexOf(chartTheme)];
         this.chartRendered = true;
     };
-    public rangeLoad(args: IRangeLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
-        let rangeTheme:string = args.rangeNavigator.theme;
-        args.rangeNavigator.series[0].type = "Area";
-        args.rangeNavigator.series[0].fill= 'url(#' + rangeTheme.toLowerCase() + '-gradient-chart)';
-        args.rangeNavigator.series[0].border.width = 2;
-        args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(rangeTheme)];
-    };
+          // custom code end
 }

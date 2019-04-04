@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
-import {DataManager, Query, ODataV4Adaptor } from '@syncfusion/ej2-data';
+import {DataManager, Query } from '@syncfusion/ej2-data';
 import './listview.css';
 
 export class Remote extends SampleBase<{}, {}> {
@@ -31,7 +31,7 @@ export class Remote extends SampleBase<{}, {}> {
         <div className='control-section'>
 
         {/* ListView element */}
-        <ListViewComponent id='remote-list' dataSource={this.dataSource} fields={this.fields} query={this.query} headerTitle='Products' showHeader={true}></ListViewComponent>
+        <ListViewComponent id='sample-list' dataSource={this.dataSource} fields={this.fields} query={this.query} headerTitle='Products' showHeader={true}></ListViewComponent>
         </div>
 
         <div id="action-description">

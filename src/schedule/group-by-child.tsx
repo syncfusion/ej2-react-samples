@@ -4,16 +4,16 @@ import {
   Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective,
   ResourceDirective, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { resourceTeamData } from './datasource';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * schedule resources group-bychild sample
  */
 
 export class GroupByChild extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], resourceTeamData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).resourceTeamData, null, true) as Object[];
   private projectData: Object[] = [
     { text: 'PROJECT 1', id: 1, color: '#cb6bb2' },
     { text: 'PROJECT 2', id: 2, color: '#56ca85' }

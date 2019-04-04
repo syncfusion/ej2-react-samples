@@ -2,13 +2,13 @@
  padding-top: 11px; 
  }
  
- .form-group .e-upload.e-control.e-keyboard{
+ .form-group .e-upload.e-keyboard {
 	display: none;
  }
  .form-group .address-field{
     resize: none;
 }
-#control_wrapper {
+.control_wrapper.uploader-form {
     max-width: 500px;
     margin: auto;
     border: 0.5px solid #BEBEBE;
@@ -16,7 +16,7 @@
     padding: 1% 4% 2%;
     background: #f9f9f9;
 }
-.highcontrast #control_wrapper {
+.highcontrast .control_wrapper.uploader-form {
 	background: #000;
 }
 
@@ -40,7 +40,9 @@
     margin-right: -106px;
 }
 
-.fabric .e-float-input.upload-area button#browse, .highcontrast .e-float-input.upload-area button#browse {
+.fabric .e-float-input.upload-area button#browse,
+.bootstrap4 .e-float-input.upload-area button#browse, 
+.highcontrast .e-float-input.upload-area button#browse {
     float: right;
 	margin-right: -106px;
 	margin-top: -32px;

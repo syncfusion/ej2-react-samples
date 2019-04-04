@@ -7,14 +7,14 @@ import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './default.css';
+import * as data from './dataSource.json';
 
 export class Default extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  private temp:string = 'sportsData';
   // define the array of string
-  private sportsData: string[] = ['Badminton', 'Basketball', 'Cricket',
-    'Football', 'Golf', 'Gymnastics',
-    'Hockey', 'Rugby', 'Snooker', 'Tennis'];
+  private sportsData: string[] =data[this.temp];
   render() {
     return (
       <div id='combodefault' className='control-pane'>
@@ -35,7 +35,7 @@ export class Default extends SampleBase<{}, {}> {
             <p>The default sample illustrates the use of AutoComplete that allows the end-users to select an item from the suggestion list.
             </p>
             <p> More information on the AutoComplete instantiation can be found in the
-                <a href="http://ej2.syncfusion.com/react/documentation/auto-complete/getting-started.html" target="_blank"> documentation section</a>.
+                <a href="https://ej2.syncfusion.com/react/documentation/auto-complete/getting-started/" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

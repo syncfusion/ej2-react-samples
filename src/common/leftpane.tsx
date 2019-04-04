@@ -93,7 +93,7 @@ export class LeftPane extends React.Component<{}, {}> {
     '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">${type}</span>${/if}${/if}</div>';
     public groupTemlate: string = '${if(items[0]["category"])}<div class="e-text-content">' +
     '<span class="e-list-text">${items[0].category}</span></div>${/if}';
-    public template: string = '<div class="e-text-content e-icon-wrapper"> <span class="e-list-text" role="listitem">${name}' +
+    public template: string = '<div class="e-text-content ${if(type)}e-icon-wrapper${/if}"> <span class="e-list-text" role="listitem">${name}' +
     '</span>${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type}">Updated</span>' +
     '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type}">${type}</span>${/if}${/if}' +
     '${if(directory)}<div class="e-icons e-icon-collapsible"></div>${/if}</div>';
@@ -118,11 +118,17 @@ export class LeftPane extends React.Component<{}, {}> {
     public getDataSource(): { [key: string]: Object; }[] {
         if (Browser.isDevice) {
             let tempData: any = extend([], samplesList);
+            let tempLists: any = [];
             for (let temp of tempData) {
+                if(temp.hideOnDevice == true)
+                {
+                    continue;
+                }
                 let data: DataManager = new DataManager(temp.samples);
                 temp.samples = data.executeLocal(new Query().where('hideOnDevice', 'notEqual', true));
+                tempLists = tempLists.concat(temp);
             }
-            return tempData;
+            return tempLists;
         }
         return samplesList;
     }
@@ -218,7 +224,7 @@ export class LeftPane extends React.Component<{}, {}> {
                 />
                 <div id="controlSamples" className="e-view">
                     <div id="sb-left-back" className="back">
-                        <div className="e-icons back-icon"></div>
+                        <div className="sb-icons sb-icon-Back"></div>
                         <div className='control-name'>All Controls</div>
                     </div>
                     <ListViewComponent id='controlList' select={this.controlSelect}

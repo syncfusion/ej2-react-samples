@@ -16,12 +16,13 @@ const sparklineStyle1 = { "width": "150px", "height": "50px", "text-align": "cen
 
 export class Default extends SampleBase<{}, {}> {
     private sparklineInstance: SparklineComponent;
-
+    // custom code start
     public load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SparklineTheme;
     }
+    // custom code end
     render() {
         return (
             <div className='control-pane'>
@@ -1095,6 +1096,7 @@ export class Default extends SampleBase<{}, {}> {
                         </div>
                     </div>
                 </div>
+                {/* Source Link */}
                 <div style={{ "float": "right", "margin-right": "10px" }}>Source:
                 <a href="https://www.indexmundi.com/g/g.aspx?v=21&amp;v=21000&amp;v=24&amp;v=25&amp;v=27&amp;c=as&amp;c=ch&amp;c=fr&amp;c=gm&amp;c=in&amp;c=rs&amp;c=sn&amp;c=sz&amp;c=uk&amp;c=us&amp;l=en/" target="_blank"> www.indexmundi.com</a>
                 </div>

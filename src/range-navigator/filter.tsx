@@ -110,12 +110,14 @@ export class Customization extends SampleBase<{}, {}> {
             this.grid1.refresh();
         }
     };
+    // custom code start
     public load(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     };
-
+    // custom code end
     public gridCreated(args: Object): void {
         this.gridRender = true;
     }

@@ -96,7 +96,7 @@ export class IFrame extends SampleBase<{}, {}> {
   }
   render() {
     return (
-      <div id="dropdowndefault" className='control-pane'>
+      <div className='control-pane'>
         <div className='control-section' id='rteIFrame'>
           <div className="content-wrapper">
             <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}

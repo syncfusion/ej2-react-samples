@@ -35,11 +35,13 @@ const SAMPLE_CSS = `
     `;
 export class SampleData extends SampleBase<{}, {}> {
     private grid1: GridComponent;
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
     }
+    // custom code end
     private sampleGauge1: CircularGaugeComponent;
     private sampleGauge2: CircularGaugeComponent;
     private sampleGauge3: CircularGaugeComponent;

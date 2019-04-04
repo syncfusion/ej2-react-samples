@@ -9,21 +9,27 @@ export class BatchEdit extends SampleBase<{}, {}> {
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Batch' };
   public editparams: any = { params: { popupHeight: '300px' } };
   public validationRule: Object = { required: true };
+  public orderidRules: Object = { required: true, number: true };
   public pageSettings: Object = { pageCount: 5};
+
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={data} pageSettings={this.pageSettings} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings}>
-            <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.validationRule} isPrimaryKey={true}></ColumnDirective>
-              <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRule}></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' ></ColumnDirective>
-              <ColumnDirective field='OrderDate' headerText='Order Date' editType='datepickeredit' format='yMd' width='170' ></ColumnDirective>
-              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
-            </ColumnsDirective>
-            <Inject services={[Page, Toolbar, Edit]} />
-          </GridComponent>
+          <div className='col-md-9'>
+              <GridComponent dataSource={data} pageSettings={this.pageSettings} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings}>
+                <ColumnsDirective>
+                  <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+                  <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRule}></ColumnDirective>
+                  <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' ></ColumnDirective>
+                  <ColumnDirective field='OrderDate' headerText='Order Date' editType='datepickeredit' format='yMd' width='170' ></ColumnDirective>
+                  <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
+                </ColumnsDirective>
+                <Inject services={[Page, Toolbar, Edit]} />
+              </GridComponent>
+            </div>
+
+
         <div id="action-description">
           <p>This sample demonstrates CRUD operations in Grid. You can perform CRUD operations as follows,</p>
          <ul>

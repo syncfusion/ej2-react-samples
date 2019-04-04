@@ -21,6 +21,10 @@
     color: rgba(255, 255, 255, .57);
 }
 
+.bootstrap4 #icons_popup .e-list-icon {
+    color: #495057;
+}
+
 .twitter:before {
     content: "\a701";
 }

@@ -87,7 +87,7 @@ export class Types extends SampleBase<{}, {}> {
                         <li>Warning -  The <code>e-toast-warning</code> class applies the color and background for showing warning message.</li>
                         <li>Danger -  The <code>e-toast-danger</code> class applies the color and background for showing error/failure toast.</li>
                     </ul>
-                    <p>More information about Toast can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/toast/getting-started.html">
+                    <p>More information about Toast can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/toast/getting-started/">
         documentation section</a>.</p>
                 </div>
             </div>

@@ -7,15 +7,16 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="{{:meta}}">    
     <meta name="author" content="Syncfusion" />
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico" />
     <script type="text/javascript">
         var themeName = location.hash || 'material';
         themeName = themeName.replace('#','');
         window.ripple = (themeName === "material")
-        document.write('<link href="{{:CDN_LINK}}' + themeName + '.css" rel="stylesheet">');
+        document.write('<link href="../../styles/' + themeName + '.css" rel="stylesheet">');
     </script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://ej2.syncfusion.com/react/demos/{{:canonical}}"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.38/system.js"></script>
-    <script src="systemjs.config.js"></script>
     <link href="index.css" rel="stylesheet" />
      <style>
         #loader {
@@ -168,10 +169,11 @@
             border-color: transparent;
         }
 
-        .sb-bread-crumb {
+        .sb-bread-crumb  h1{
             padding-left: 20px;
             padding-top: 24px;
             padding-bottom: 10px;
+            margin: 0;
         }
 
         .category-allcontrols a, .category-text a, .crumb-sample {
@@ -261,7 +263,127 @@
         #actionDes {
             opacity: 0.75;
         }
+/*sb-icons declaration*/
 
+@font-face {
+    font-family: 'sbicons';
+      src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.sb-icons {
+    font-family: 'sbicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sb-icon-Next:before {
+    content: '\e91b';
+}
+
+.sb-icon-Previous:before {
+    content: '\e91f';
+}
+
+#next-sample,
+#prev-sample {
+    font-size: 18px;
+    border: 0.5px solid#E5E5E5;
+    background: #FFFFFF;
+    display: inline-table;
+    padding: 2px 5px 0px 5px;
+}
+
+.sb-navigation-next a, .sb-navigation-prev a{
+    color: #636363;
+    text-decoration: none;
+}
+
+#prev-sample {
+    border-radius: 4px 0px 0px 4px;
+}
+
+#next-sample {
+    border-radius: 0px 4px 4px 0px;
+    float: right;
+}
+
+#next-sample:hover,
+#prev-sample:hover{
+background-color: #D8D8D8;
+text-decoration: none; 
+}
+
+.sb-sample-navigation {
+    font-size: 18px;
+    color: #5a5a5a;
+    cursor: pointer;
+}
+
+.sb-custom-item {
+    padding-right: 15px;
+    padding-left: 30px;
+    display: inline-table;
+    padding-top: 20px;
+}
+
+a.e-disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+
+
+@media (max-width: 550px) {
+        
+        .sb-headers {
+            height: 48px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
+            z-index: 1001;
+            opacity: 100;
+        }
+        .sb-header {
+            display: none;
+        }
+        .syncfusion-logo {
+            float: left;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .sync-logo {
+            padding-right: 0px;
+            padding-left: 8px;
+            background: url(../../styles/images/SyncfusionLogo.svg) no-repeat right;
+            height: 40px;
+            width: 40px;
+        }
+        .sb-icon-notification {
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 18px;
+            transform: rotate(-180deg);
+            color: #5D5D5D;
+            opacity: 100%;
+        }
+        #sb-header-text {
+            padding-left: 0%;
+        }
+    
+        .sb-icon-notification:before {
+            content: "\ea08";
+        }
+    
+        .product a:hover{
+        color: #5D5D5D;
+        text-decoration: none;
+    }
+}
 
     </style>
 </head>
@@ -289,12 +411,12 @@
                 <div class='sb-header-right sb-right sb-table'>
                     <div class='sb-header-item sb-table-cell'>
                         <div class='product-style'>
-                            <div><a href="https://www.syncfusion.com/products/react/{{:header2}}">PRODUCT TOUR</a></div>
+                            <div><a href="https://www.syncfusion.com/react-ui-components/{{:header2}}">PRODUCT TOUR</a></div>
                         </div>
                     </div>
                     <div class='sb-header-item sb-table-cell'>
                         <div class="sb-header-item sb-table-cell sb-download-wrapper">
-                            <a href="https://www.syncfusion.com/downloads/essential-js2" target="_blank">
+                            <a href="https://www.syncfusion.com/downloads/react" target="_blank">
                                 <button id="download-now" class="sb-download-btn">
                                     <span class="sb-download-text">DOWNLOAD</span>
                                 </button>
@@ -304,16 +426,52 @@
                 </div>
     
             </div>
+            <div id='sample-header' class="sb-headers" role="banner">
+                <div class='sb-header-left sb-left sb-table'>
+                    <div class='sb-header-item sb-table-cell'>
+                        <div class="syncfusion-logo">
+                            <a href="https://ej2.syncfusion.com/home/react.html" target="" rel="noopener noreferrer">
+                                <div class="sync-logo"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class='sb-header-item sb-table-cell'>
+                        <div id='sb-header-text' class='e-sb-header-text'>
+                            <span class='sb-header-text-left'>Essential JS 2 for React</span>
+                        </div>
+                    </div>
+                </div>
+                    <div class='sb-header-right sb-right sb-table'>
+                        <div class='sb-header-item sb-table-cell'>
+                            <div class="product">
+                                <a href="https://www.syncfusion.com/react-ui-components/{{:header2}}">
+                                <div class="sb-icon-notification sb-icons"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    
             <div class ='content e-view'>
             <div class='sample-content'>
                 <div id="sample-bread-crumb" class="sb-bread-crumb">
-                    <div class="sb-bread-crumb-text">
-                        <div class="category-allcontrols"><a href="https://ej2.syncfusion.com/react/demos"><span>All Controls</span></a></div>
+                            <div class="sb-custom-item sb-sample-navigation sb-right sb-header-right sb-table-cell">
+                                <div id="prev-sample" class="sb-navigation-prev e-control e-tooltip " aria-label="previous sample" title="Previous Sample">
+                                    <a {{:anchor-prev}} class='{{:disabled-prev}}'><span class="sb-icons sb-icon-Previous"></span></a>
+                            
+                                </div>
+                                <div id="next-sample" class="sb-navigation-next e-control e-tooltip" aria-label="next sample" title="Next Sample">
+                                    <a {{:anchor-next}} class='{{:disabled-next}}'><span class="sb-icons sb-icon-Next"></span></a>
+                            
+                                </div>
+                            </div>
+                    <h1 class="sb-bread-crumb-text">
+                        <div class="category-allcontrols"><a href="https://ej2.syncfusion.com/react/demos/"><span>All Controls</span></a></div>
                         <div class="category-seperator sb-icons"> / </div>
                         <div class="category-text bread-ctext"><a href="https://ej2.syncfusion.com/react/demos/#/material/{{:header2}}/default.html"><span>{{:header}}</span></a></div>
                         <div class="category-seperator sb-icons"> / </div>
                         <div class="crumb-sample">{{:header1}}</div>
-                    </div>
+                    </h1>
                 </div>
                 <div class="control-content">
                 <div id="action-description">
@@ -349,6 +507,8 @@
                 
             </div>
         </div>
-          
+        <script src="./app/index.min.js"></script>
+        <script src="../../{{:repoScript}}"></script> 
+
 </body>
 </html>

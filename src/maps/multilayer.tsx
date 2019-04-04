@@ -63,7 +63,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, Zoom, DataLabel, Marker, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapeSettings={{
                                         fill: '#E5E5E5',
                                         border: {
@@ -79,7 +79,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                                     }}
                                 >
                                 </LayerDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/california.json')} type='SubLayer'
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/california.json')} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.6)',
@@ -126,7 +126,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
 
                                 </LayerDirective>
 
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/texas.json')} type='SubLayer'
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/texas.json')} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.5)',
@@ -180,6 +180,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                 </div>
+                {/* Source Link */}
                 <div style={{float: 'right', marginright: '10px'}}>Source: 
                     <a href="http://www.samsung.com/semiconductor/about-us/location/" target="_blank">www.samsung.com</a>
                 </div>
@@ -203,9 +204,11 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

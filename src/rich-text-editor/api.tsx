@@ -16,7 +16,7 @@ export class RTEApi extends SampleBase<{}, {}> {
     private rteObj: RichTextEditorComponent;
     public rendereComplete(): void {
         let maxLength: NumericTextBox = new NumericTextBox({
-            value: 560,
+            value: 1000,
             min: 555,
             max: 2000,
             format: 'n0',
@@ -111,7 +111,7 @@ export class RTEApi extends SampleBase<{}, {}> {
                         <td style={{ padding: '8px', width: '50%' }}><div>Max Length </div></td>
                         <td>
                             <div style={{ paddingLeft: '10px' }}>
-                                <input id="maxlength" type="text" className="form-control" value="1000"/>
+                                <input id="maxlength" type="text" className="form-control" />
                             </div>
                         </td>
                     </tr>
@@ -186,7 +186,8 @@ export class RTEApi extends SampleBase<{}, {}> {
                 <li>Click the <code>selectAll</code> button selecting all text content in the RTE.</li>
             </ul>
             <p><b>Injecting Module</b></p>
-            <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor</code> modules into the services.</p>
+            <p>RichTextEditor component features are segregated into individual feature-wise modules.
+            To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor</code> modules into the services.</p>
         </div>
         </div>
     );

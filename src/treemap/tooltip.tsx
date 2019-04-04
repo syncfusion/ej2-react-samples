@@ -7,8 +7,9 @@ import {
 	TreeMapComponent, Inject, TreeMapTooltip,
 	ILoadedEventArgs, TreeMapLegend, TreeMapTheme
 } from '@syncfusion/ej2-react-treemap';
-import { Airport_Count } from './treemap-data/airport-count';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/airport-count.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -16,12 +17,13 @@ const SAMPLE_CSS = `
 
 export class Tooltip extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
-
+	// custom code start
 	public load(args: ILoadedEventArgs): void {
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as TreeMapTheme;
 	}
+	// custom code end
 	render() {
 		return (
 			<div className='control-pane'>
@@ -46,7 +48,7 @@ export class Tooltip extends SampleBase<{}, {}> {
 									size: '15px'
 								}
 							}}
-							dataSource={Airport_Count}
+							dataSource={datasource.airport}
 							weightValuePath='Count'
 							equalColorValuePath='Count'
 							legendSettings={{			// To config legend for treemap
@@ -102,6 +104,7 @@ export class Tooltip extends SampleBase<{}, {}> {
 						</TreeMapComponent>
 					</div>
 				</div >
+				{/* Source Link */}
 				<div style={{ float: 'right', marginright: '10px' }}>Source:
        <a href="https://en.wikipedia.org/wiki/List_of_international_airports_by_country" target="_blank">en.wikipedia.org</a>
 				</div>

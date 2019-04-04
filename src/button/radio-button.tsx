@@ -34,12 +34,12 @@ export class RadioButton extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         In this sample, Credit/Debit Card option is checked by default, and it can be achieved by using the <a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/radio-button/api-radioButtonComponent.html#checked-boolean"><code>checked
+                        href="https://ej2.syncfusion.com/react/documentation/api/radio-button/#checked"><code>checked
                         </code></a> property.
                     </p>
                     <p>
                         More information about RadioButton can be found in this <a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/radio-button/getting-started.html">
+                        href="https://ej2.syncfusion.com/react/documentation/radio-button/getting-started">
                         documentation section</a>.
                     </p>
                 </div>

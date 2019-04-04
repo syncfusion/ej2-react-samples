@@ -11,6 +11,7 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -34,6 +35,7 @@ const SAMPLE_CSS = `
         color: white;
         font-size: 25px;
     }`;
+    // custom code end
 export class AnnotationMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     render() {
@@ -59,7 +61,7 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Annotations, Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData= {new MapAjax(location.origin + location.pathname + 'src/maps/map-data/africa-continent.json')}
+                                <LayerDirective shapeData= {new MapAjax('./src/maps/map-data/africa-continent.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     shapeSettings={{
@@ -107,6 +109,7 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
 <div id="compass-maps" style={{ display: 'none' }}>
     <img src="src/maps/images/compass.svg" height="75px" width="75px"/>
 </div>
+{/* Source Link */}
 <div style={{float: 'right', marginright: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/Africa" target="_blank">en.wikipedia.org</a>
     </div>
@@ -132,9 +135,11 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

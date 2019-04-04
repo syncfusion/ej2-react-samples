@@ -4,13 +4,14 @@ import {
   ScheduleComponent, Day, Week, WorkWeek, Month, Agenda,
   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { eventsData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './tooltip.css';
 import { extend } from '@syncfusion/ej2-base';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule event tooltip sample
@@ -18,7 +19,7 @@ import { PropertyPane } from '../common/property-pane';
 
 export class Tooltip extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], eventsData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).eventsData, null, true) as Object[];
   private template(props): JSX.Element {
     return (<div className="tooltip-wrap">
       <div className={"image " + props.EventType}></div>
@@ -95,14 +96,14 @@ export class Tooltip extends SampleBase<{}, {}> {
           </PropertyPane>
         </div>
         <div id='action-description'>
-          <p>This demo illustrates how to enable tooltip on schedule events as well as the way to customize it. The tooltip can be
+          <p>This demo illustrates how to enable tooltip on scheduler events as well as the way to customize it. The tooltip can be
         customized to display any of the information in a formatted style by making use of the tooltip template option.</p>
         </div>
         <div id='description'>
           <p>
             In this demo, the tooltip is enabled to display on events by setting true to <code>enableTooltip</code> option
              within the <code>eventSettings</code> property. After enabling the default tooltip,
-            it is customized to display the needed event information along with
+           it is customized to display the needed event information along with
             the appropriate images by making use of the <code>tooltipTemplate</code> option within the <code>eventSettings</code>.
           </p>
           <p>

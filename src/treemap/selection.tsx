@@ -9,9 +9,10 @@ import {
 	TreeMapComponent, HighLightMode, SelectionMode, LevelsDirective, LevelDirective, Inject,
 	TreeMapHighlight, TreeMapSelection, ILoadedEventArgs, TreeMapTheme
 } from '@syncfusion/ej2-react-treemap';
-import { importData } from './treemap-data/import';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/import.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -21,7 +22,7 @@ export class Selection extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
 	private highlightModeElement: DropDownListComponent;
 	private selectionModeElement: DropDownListComponent;
-
+	// Code for Property Panel
 	private droplist1: { [key: string]: Object }[] = [
 		{ value: 'Item' },
 		{ value: 'Child' },
@@ -56,12 +57,13 @@ export class Selection extends SampleBase<{}, {}> {
 		this.treemapInstance.selectionSettings.mode = this.selectionModeElement.value as SelectionMode;
 		this.treemapInstance.refresh();
 	}
-
+	// custom code start
 	public load(args: ILoadedEventArgs): void {
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as TreeMapTheme;
 	}
+	// custom code end
 	render() {
 		return (
 			<div className='control-pane'>
@@ -92,7 +94,7 @@ export class Selection extends SampleBase<{}, {}> {
 								labelPosition: 'Center',
 								gap: 10
 							}}
-							dataSource={importData}
+							dataSource={datasource.import}
 							weightValuePath='sales'>
 							<Inject services={[TreeMapHighlight, TreeMapSelection]} />
 							<LevelsDirective>
@@ -100,10 +102,12 @@ export class Selection extends SampleBase<{}, {}> {
 								<LevelDirective groupPath='product' fill='#a4d1f2' headerAlignment='Center' groupGap={2} />
 							</LevelsDirective>
 						</TreeMapComponent>
+						{/* Source Link */}
 						<div style={{ float: 'right', marginright: '10px' }}>Source:
        <a href="https://www.indexmundi.com/united_states/imports_commodities.html" target="_blank">www.indexmundi.com</a>
 						</div>
 					</div>
+					{/* Property Panel */}
 					<div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
 							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>

@@ -41,7 +41,8 @@ export class RangeSelection extends SampleBase<{}, {}> {
     private droplist: { [key: string]: Object }[] = [
         { value: 'DragXY' },
         { value: 'DragX' },
-        { value: 'DragY' }
+        { value: 'DragY' },
+        { value: 'None' }
     ];
     private change(): void {
         this.chartInstance.selectionMode = this.dropElement.value as SelectionMode;
@@ -73,7 +74,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                             chartArea={{ border: { width: 0 } }}
                             legendSettings={{ visible: true, toggleVisibility: false }}
                             title='Profit Comparision of A and B' loaded={this.onChartLoad.bind(this)}
-                            selectionMode='None'
+                            selectionMode='DragXY'
                             load={this.load.bind(this)}>
                             <Inject services={[Selection, Legend, ColumnSeries, Category, ScatterSeries]} />
                             <SeriesCollectionDirective>
@@ -99,7 +100,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="None" />
+                                            <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="DragXY" />
                                         </div>
                                     </td>
                                 </tr>
@@ -144,9 +145,11 @@ export class RangeSelection extends SampleBase<{}, {}> {
     public onChartLoad(args: ILoadedEventArgs): void {
         document.getElementById('charts').setAttribute('title', '');
     };
+        // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
+        // custom code end
 }

@@ -17,11 +17,11 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 export let data1: any[] = [
-    { x: 'BGD', y: 106, text: 'Bangaladesh' },
-    { x: 'BTN', y: 103, text: 'Bhutn' },
-    { x: 'NPL', y: 198, text: 'Nepal' },
-    { x: 'THA', y: 189, text: 'Thiland' },
-    { x: 'MYS', y: 250, text: 'Malaysia' }
+    { x: 'Egg', y: 106 },
+    { x: 'Fish', y: 103 },
+    { x: 'Misc', y: 198 },
+    { x: 'Tea', y: 189 },
+    { x: 'Fruits', y: 250 }
 ];
 export let labelRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -36,21 +36,8 @@ export let labelRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = bootstrapColors[args.point.index % 10];
     }
 };
-export let tooltipRender: EmitType<ITooltipRenderEventArgs> = (args: ITooltipRenderEventArgs) => {
-    let tooltip: string = args.text;
-    if (tooltip.indexOf('BGD') > -1) {
-        tooltip = tooltip.replace('BGD', 'Bangladesh');
-    } else if (tooltip.indexOf('BTN') > -1) {
-        tooltip = tooltip.replace('BTN', 'Bhutan');
-    } else if (tooltip.indexOf('NPL') > -1) {
-        tooltip = tooltip.replace('NPL', 'Nepal');
-    } else if (tooltip.indexOf('THA') > -1) {
-        tooltip = tooltip.replace('THA', 'Thailand');
-    } else {
-        tooltip = tooltip.replace('MYS', 'Malaysia');
-    }
-    args.text = tooltip;
-};
+
+let count: number = 0;
 export class RoundedColumn extends SampleBase<{}, {}> {
 
     render() {
@@ -60,19 +47,18 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
+                    <ChartComponent id='charts2' style={{ textAlign: "center" }}
                         primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, tickPosition: 'Inside',
                         labelPosition:'Inside', labelStyle: { color: '#ffffff' } }}
                         primaryYAxis={{ minimum: 0, maximum: 300, interval: 50, majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' } }}
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
-                        title='Tiger Population - 2016'
+                        title='Trade in Food Groups'
                         loaded={this.onChartLoad.bind(this)}
                         legendSettings={{ visible: false }}
                         width={Browser.isDevice ? '100%' : '60%'}
-                        tooltip={{ enable: true }}
+                        tooltip={{ enable: false }}
                         pointRender={labelRender}
-                        tooltipRender={tooltipRender}
                     >
                         <Inject services={[ColumnSeries, DataLabel, Category, Tooltip]} />
                         <SeriesCollectionDirective>
@@ -82,9 +68,6 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
-                     <div style={{ float: 'right', marginRight: '10px' }}>Source:
-				<a href="https://blogs.scientificamerican.com/extinction-countdown/tiger-populations-increasing/" target="_blank">blogs.scientificamerican.com</a>
-                    </div>
                      </div>
                 <div id="action-description">
                 <p>
@@ -116,13 +99,59 @@ export class RoundedColumn extends SampleBase<{}, {}> {
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
+        let chart: Element = document.getElementById('charts2');
         chart.setAttribute('title', '');
+        args.chart.loaded = null;
+        let columninterval = setInterval(
+            () => {
+                if (document.getElementById('charts2')) {
+                    if (count === 0) {
+                        args.chart.series[0].dataSource = [
+                            { x: 'Egg', y: 206 },
+                            { x: 'Fish', y: 123},
+                            { x: 'Misc', y: 48 },
+                            { x: 'Tea', y: 240 },
+                            { x: 'Fruits', y: 170 }
+                        ];
+                        args.chart.animate();
+                        count++;
+                    }
+                    else if (count === 1) {
+                        args.chart.series[0].dataSource = [
+                            { x: 'Egg', y: 86 },
+                            { x: 'Fish', y: 173 },
+                            { x: 'Misc', y: 188 },
+                            { x: 'Tea', y: 109 },
+                            { x: 'Fruits', y: 100 }
+                        ];
+                        args.chart.animate();
+                        count++;
+                    }
+                    else if (count === 2) {
+                        args.chart.series[0].dataSource = [
+                            { x: 'Egg', y: 156 },
+                            { x: 'Fish', y: 33 },
+                            { x: 'Misc', y: 260 },
+                            { x: 'Tea', y: 200 },
+                            { x: 'Fruits', y: 30 }
+                        ];
+                        args.chart.animate();
+                        count = 0;
+                    }
+                } else {
+                    clearInterval(columninterval);
+                }
+            },
+            2000
+        );
 
     };
+        // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
+   
+        // custom code end
 }

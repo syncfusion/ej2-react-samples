@@ -21,6 +21,7 @@ const SAMPLE_CSS = `
 #btn-control {
     width: 100%;
     text-align: center;
+    text-transform:none !important;
 }
 .e-play-icon::before {
     content: "\\e728";
@@ -52,7 +53,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapeSettings=
                                     {{
                                         fill: 'lightgrey',
@@ -83,10 +84,12 @@ export class ExportMaps extends SampleBase<{}, {}> {
                                 </LayerDirective>
                             </LayersDirective>
                         </MapsComponent>
+                        {/* Source Link */}
                         <div style={{ float: 'right', marginright: '10px' }}>Source:
                 <a href="http://www.emapsworld.com/world-seven-wonder-map.html" target="_blank">en.wikipedia.org</a>
                         </div>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%' }}>
@@ -111,7 +114,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                                 <tr style={{ height: '50px' }}>
                                     <td>
                                         <div id="btn-control" style={{ 'margin-left': '60px' }}>
-                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>
@@ -145,11 +148,13 @@ export class ExportMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
     public onClick(e: Event): void {
         let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
         this.mapInstance.export((this.mode.value as ExportType), fileName);

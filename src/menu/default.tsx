@@ -8,14 +8,14 @@ import './default.css';
  * Menu default sample
  */
 export class Default extends SampleBase<{}, {}> {
-    //Menu items definition
+    // Menu items definition
     public menuItems: MenuItemModel[] = [
         {
             text: 'File',
             iconCss: 'em-icons e-file',
             items: [
                 { text: 'Open', iconCss: 'em-icons e-open' },
-                { text: 'Save', iconCss: 'e-icons e-save' },
+                { text: 'Save', iconCss: 'em-icons e-save' },
                 { separator: true },
                 { text: 'Exit' }
             ]
@@ -87,8 +87,11 @@ export class Default extends SampleBase<{}, {}> {
                         In this demo, the menu is rendered with default type of <b>Horizontal</b> orientation. Using <code>orientation</code> property, you can change the orientation to <b>Vertical</b>.
                     </p>
                     <p>
+                        In mobile, the parent menu becomes scrollable if its size exceeds the viewport size.
+                    </p>
+                    <p>
                         More information about menu can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/menu/getting-started.html">
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/getting-started">
                             documentation</a> section.
                     </p>
                 </div>

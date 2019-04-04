@@ -1,10 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
-import { PivotViewComponent, IDataOptions, FieldList, Inject, ConditionalFormatting } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, FieldList, Inject, ConditionalFormatting, IDataSet } from '@syncfusion/ej2-react-pivotview';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
+import * as pivotData from './pivot-data/Pivot_Data.json';
 
 /**
  * PivotView Sample with Calculated Fields.
@@ -23,7 +23,8 @@ const SAMPLE_CSS = `
     width: 80%;
     margin-left: 20px;
 }`;
-
+/* tslint:disable */
+let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSource: IDataOptions = {
     data: Pivot_Data,
     expandAll: false,
@@ -84,7 +85,7 @@ export class ConditionalFormattingClass extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ overflow: 'initial' }}>
+                <div className='control-section'>
                     <div className='col-lg-9 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} showFieldList={true} width={'100%'} height={'300'} allowConditionalFormatting={true} gridSettings={{ columnWidth: 100 }}>
                             <Inject services={[ConditionalFormatting, FieldList]} />

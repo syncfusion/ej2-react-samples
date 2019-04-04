@@ -29,11 +29,13 @@ export class Customization extends SampleBase<{}, {}> {
     private loaded: boolean = false;
     private pointerValueElement: HTMLInputElement;
     public barColor: DropDownList; public rangeColor: DropDownList; public pointerColor: DropDownList;
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
     }
+    // custom code end
     public random(): void {
         if (this.isClicked) {
             this.gauge1.destroy();
@@ -42,6 +44,7 @@ export class Customization extends SampleBase<{}, {}> {
             this.usageGauge.destroy();
         }
         this.randomGauge.appendTo('#customization-container');
+        // Code for Property Panel
         this.isUsage = false;
         this.pointerValueElement.min = '1000';
         this.pointerValueElement.max = '2000';
@@ -141,6 +144,7 @@ export class Customization extends SampleBase<{}, {}> {
                             </AxesDirective>
                         </CircularGaugeComponent>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>

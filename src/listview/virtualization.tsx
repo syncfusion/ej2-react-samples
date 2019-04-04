@@ -50,21 +50,22 @@ export class UiVirtualization extends SampleBase<{}, {}> {
             this.dataSource[ds[1]] = data;
         });
     }
-
+    // Set customized list template
     public template: string = '<div class="e-list-wrapper e-list-avatar">' +
     '<span class="e-avatar e-avatar-circle ${icon} ${$imgUrl ? \'hideUI\' : \'showUI\' }">' +
     '${icon}</span> <img class="e-avatar e-avatar-circle ${$imgUrl ? \'showUI\' : \'hideUI\' }" ' +
     'src="${$imgUrl ?  $imgUrl : \' \' }" />' +
     '<span class="e-list-content">${name}</span></div>';
-
+    // Set dropdown list data
     public ddlDatasource = [
         { value: '1', text: '1k' },
         { value: '5', text: '5k' },
         { value: '10', text: '10k' },
         { value: '25', text: '25k' }
     ];
+    //Map the appropriate columns to DropDownList fields property
     public ddlFields: Object = { text: 'text', value: 'value' };
-
+    //Map the appropriate columns to ListView fields property
     public fields: Object = { text: 'name' };
 
     public onActionComplete() {
@@ -99,6 +100,7 @@ export class UiVirtualization extends SampleBase<{}, {}> {
                 <div className='ui-control-section control-section'>
                     <div className='col-lg-8'>
                         <div className="content-wrapper" >
+                            {/* ListView element */}
                             <ListViewComponent id='ui-list' dataSource={this.dataSource.data1} enableVirtualization={true} headerTitle="Contacts" fields={this.fields} cssClass="e-list-template"
                                 height={500} template={this.template} actionComplete={this.onActionComplete.bind(this)} ref={(listview) => { this.listviewInstance = listview }} actionBegin={this.onActionBegin.bind(this)} showHeader={true} >
                                 <Inject services={[Virtualization]} />
@@ -115,6 +117,7 @@ export class UiVirtualization extends SampleBase<{}, {}> {
                                         </td>
                                         <td style={{ width: '50%', paddingRight: '10px' }} >
                                             <div>
+                                                {/* DropDownList element */}
                                                 <DropDownListComponent id='ddl' dataSource={this.ddlDatasource} fields={this.ddlFields} index={0} change={this.onChange.bind(this)} placeholder="Select a range"
                                                     popupHeight="200px" />
                                             </div>
@@ -137,11 +140,17 @@ export class UiVirtualization extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="action-description">
-                <p>This sample demonstrates the <code>ListView</code> component with the virtual scrolling feature. Scroll the list content to experience the list items dynamic rendering and load more data into listview using dropdownlist.</p>
+                    <p>This sample demonstrates the default functionalities of UI virtualization. Scroll list item to experience UI virtualization.
+                </p>
                 </div>
 
                 <div id="description">
-                <p>UI virtualization is an optimization technique to avoid unnecessarily constructing and rendering objects for list items by loading only visible list items in a view port. This helps improve list view performance when loading a large number of items. The list items are updated dynamically while users scroll the list. The virtualization can be enabled by using <a href="https://ej2.syncfusion.com/react/documentation/list-view/api-listViewComponent.html#enablevirtualization">enablevirtualization</a> API in Listview.</p>
+                <p>
+                    UI virtualization is an optimization technique to avoid unnecessarily constructing and rendering objects for list
+                    items by loading only visible list items in a view port. This helps improve list view performance when loading a large
+                    number of items. The list items are updated dynamically while users scroll the list. The virtualization can be enabled
+                    by using <a href="https://ej2.syncfusion.com/documentation/list-view/api-listView.html?lang=typescript#enablevirtualization">enablevirtualization</a> API in Listview.
+                </p>
                 </div>
             </div>
         )

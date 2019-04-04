@@ -1,3 +1,4 @@
+/* custom code start*/
 .property-panel-content .e-checkbox-wrapper.personal .e-label {
     color: #808080;
 }
@@ -22,13 +23,14 @@
     border-color: transparent;
 }
 
-.dynamic-resource.e-schedule .e-month-view .e-appointment {
-    border-color: transparent;
-}
-
 .highcontrast .property-panel-content .e-checkbox-wrapper.e-resource .e-frame.e-check,
 .bootstrap .property-panel-content .e-checkbox-wrapper.e-resource .e-frame.e-check {
     color: #fff;
+}
+/* custom code end*/
+
+.dynamic-resource.e-schedule .e-month-view .e-appointment {
+    border-color: transparent;
 }
 
 .dynamic-resource.e-schedule .e-timeline-view .e-resource-left-td,

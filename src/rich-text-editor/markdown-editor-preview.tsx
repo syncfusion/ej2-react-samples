@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, MarkdownEditor, Inject, Toolbar, Image, Link, IToolbarItems, RichTextEditor, QuickToolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, MarkdownEditor, Inject, Toolbar, Image, Link, IToolbarItems, RichTextEditor, QuickToolbar, Table } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { createElement, KeyboardEventArgs, isNullOrUndefined, addClass, removeClass, Browser } from '@syncfusion/ej2-base';
 import * as Marked from 'marked';
@@ -25,7 +25,7 @@ We can add our own custom formation syntax for the Markdown formation, [sample l
 The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content`;
 
     // RichTextEditor items list
-    private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', '|',
+    private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', 'CreateTable', '|',
     { tooltipText: 'Preview', template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
         '<span class="e-btn-icon e-md-preview e-icons"></span></button>' },
     { tooltipText: 'Split Editor', template: '<button id="MD_Preview" class="e-tbar-btn e-control e-btn e-icon-btn">' +
@@ -41,7 +41,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
         items: this.items
     };
 
-    public markDownConversion(): void {
+    public MarkDownConversion(): void {
         if (this.mdSplit.classList.contains('e-active')) {
             let id: string = this.rteObj.getID() + 'html-view';
             let htmlPreview: HTMLElement = this.rteObj.element.querySelector('#' + id);
@@ -79,7 +79,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     }
     public rendereComplete(): void {
         this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
-        this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => { this.markDownConversion(); });
+        this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => { this.MarkDownConversion(); });
         let rteObj: RichTextEditor = this.rteObj;
         this.mdsource = document.getElementById('preview-code');
         this.mdsource.addEventListener('click', (e: MouseEvent) => {
@@ -87,12 +87,12 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
             if ((e.currentTarget as HTMLElement).classList.contains('e-active')) {
                 rteObj.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
                     'Formats', 'OrderedList', 'UnorderedList', '|',
-                    'CreateLink', 'Image', 'Undo', 'Redo']);
+                    'CreateLink', 'Image', 'CreateTable', 'Undo', 'Redo']);
                 (e.currentTarget as HTMLElement).parentElement.nextElementSibling.classList.add('e-overlay');
             } else {
                 rteObj.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
                     'Formats', 'OrderedList', 'UnorderedList', '|',
-                    'CreateLink', 'Image', 'Undo', 'Redo']);
+                    'CreateLink', 'Image', 'CreateTable', 'Undo', 'Redo']);
                 (e.currentTarget as HTMLElement).parentElement.nextElementSibling.classList.remove('e-overlay');
             }
         });
@@ -119,7 +119,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                 this.mdSplit.classList.remove('e-active');
                 this.mdsource.classList.remove('e-active');
             }
-            this.markDownConversion();
+            this.MarkDownConversion();
         }
         setTimeout(function () { this.rteObj.toolbarModule.refreshToolbarOverflow(); }, 400);
     }
@@ -147,7 +147,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     }
     render() {
         return (
-            <div id="dropdowndefault" className='control-pane'>
+            <div className='control-pane'>
                 <div className='control-section' id="rtePreview">
                     <div className="content-wrapper">
                             <RichTextEditorComponent  id="markdownPreview"
@@ -156,7 +156,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                                 editorMode='Markdown' height= '300px'
                                 ref={(richtexteditor) => { this.rteObj = richtexteditor }}
                                 value={this.value} toolbarSettings={this.toolbarSettings} >
-                                <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar]} />
+                                <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar, Table]} />
                             </RichTextEditorComponent>
                     </div>
                 </div>

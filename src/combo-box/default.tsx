@@ -7,23 +7,14 @@ import { ComboBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdo
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './default.css';
+import * as data from './dataSource.json';
 
 export class Default extends SampleBase<{}, {}> {
 
   private listObj: ComboBoxComponent;
+  private temp:string = 'sportsData';
   // define the JSON of data
-  private sportsData: { [key: string]: Object }[] = [
-    { Id: 'Game1', Game: 'American Football' },
-    { Id: 'Game2', Game: 'Badminton' },
-    { Id: 'Game3', Game: 'Basketball' },
-    { Id: 'Game4', Game: 'Cricket' },
-    { Id: 'Game5', Game: 'Football' },
-    { Id: 'Game6', Game: 'Golf' },
-    { Id: 'Game7', Game: 'Hockey' },
-    { Id: 'Game8', Game: 'Rugby' },
-    { Id: 'Game9', Game: 'Snooker' },
-    { Id: 'Game10', Game: 'Tennis' }
-  ];
+  private sportsData: { [key: string]: Object }[] =data[this.temp];
   // maps the appropriate column to fields property
   private fields: object = { text: 'Game', value: 'Id' };
   // set the value to select an item based on mapped value at initial rendering
@@ -73,7 +64,7 @@ export class Default extends SampleBase<{}, {}> {
         <div id="description">
             <p>The <code>ComboBox</code> component allows the user to type a value, or choose an option from the list of predefined options.</p>
             <p> More information on the ComboBox instantiation can be found in the
-                <a href="http://ej2.syncfusion.com/react/documentation/combo-box/getting-started.html" target="_blank"> documentation section</a>.
+                <a href="https://ej2.syncfusion.com/react/documentation/combo-box/getting-started/" target="_blank"> documentation section</a>.
             </p>
         </div>
       </div>

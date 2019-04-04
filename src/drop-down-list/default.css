@@ -1,6 +1,13 @@
 #dropdowndefault .col-lg-9 {
     min-height: 250px;
 }
+
+#dropdowndefault .content-wrapper {
+    max-width: 246px;
+    margin: 30px auto;
+    padding-top: 50px;
+}
+
 #default {
     margin: 0 auto;
     width: 250px !important;
@@ -11,5 +18,7 @@
 }
 
 #dropdowndefault .property-section{
-    left:90px;
+    padding-bottom: 15px;
+    width: 200px;
+    left: 80px;
 }

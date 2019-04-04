@@ -1,14 +1,16 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
-import { calendarDataSource } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { Internationalization } from "@syncfusion/ej2-base";
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
 }`;
+// custom code end
 /**
  * Schedule Default sample
  */
@@ -16,9 +18,11 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
                 </style>
+                {/* custom code end */}
                 <div className='control-section'>
                     <HeatMapComponent id='heatmap-container'
                         titleSettings={{
@@ -40,13 +44,14 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
                             showLabelOn: 'Months',
                             labelFormat: 'MMM',
                             increment: 7,
+                            labelIntersectAction: 'Rotate45',
                         }}
                         yAxis={{
                             labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
                             isInversed: true,
                         }}
-                        dataSource={calendarDataSource}
-                        cellSettings={{
+                        dataSource={(data as any).calendarDataSource}
+                            cellSettings={{
                             showLabel: false,
                             border: { color: 'white' }
                         }}

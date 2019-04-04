@@ -159,7 +159,7 @@ export class Templates extends SampleBase<{}, {}> {
                         <li>Alarm toast is integrated with button and drop-down list that allows to set timeOut for toast and close it.</li>
                         <li>Dynamic toast opened based on the data source given to add mail reminder notifications and it can be hidden using the close button available.</li>
                     </ul>
-                    <p>More information about Toast can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/toast/getting-started.html">
+                    <p>More information about Toast can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/toast/getting-started/">
         documentation section</a>.</p>
                 </div>
             </div>

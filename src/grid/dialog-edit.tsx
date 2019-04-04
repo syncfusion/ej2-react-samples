@@ -9,6 +9,7 @@ export class DialogEdit extends SampleBase<{}, {}> {
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   public editparams: any = { params: { popupHeight: '300px' } };
   public validationRules = { required: true };
+  public orderidRules: Object = { required: true, number: true };
   public pageSettings: Object = {pageCount: 5};
   render() {
     return (
@@ -16,7 +17,7 @@ export class DialogEdit extends SampleBase<{}, {}> {
         <div className='control-section'>
           <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.validationRules} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRules}></ColumnDirective>
               <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit'></ColumnDirective>
               <ColumnDirective field='OrderDate' headerText='Order Date' editType='datepickeredit' format='yMd' width='170' ></ColumnDirective>

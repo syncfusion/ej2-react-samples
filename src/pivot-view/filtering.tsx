@@ -1,21 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
-import { PivotViewComponent, IDataOptions, FieldList, FilterType } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, FieldList, FilterType, IDataSet } from '@syncfusion/ej2-react-pivotview';
 import { FilterModel } from '@syncfusion/ej2-pivotview/src/pivotview/model/dataSource-model';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import {
     DropDownListComponent, ChangeEventArgs, Inject, CheckBoxSelection, MultiSelectComponent, SelectEventArgs,
     RemoveEventArgs, PopupEventArgs
 } from '@syncfusion/ej2-react-dropdowns';
-import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
+import * as pivotData from './pivot-data/Pivot_Data.json';
 import './filtering.css';
 
 /**
  * PivotView Filtering Sample.
  */
-
+/* tslint:disable */
+let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSource: IDataOptions = {
     values: [{ name: 'In_Stock', caption: 'In Stock' }, { name: 'Sold', caption: 'Units Sold' },
     { name: 'Amount', caption: 'Sold Amount' }],
@@ -162,7 +163,7 @@ export class Filtering extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotGridObj = pivotview }} dataSource={dataSource} width={'100%'} height={'300'} dataBound={this.ondataBound} gridSettings={{ columnWidth: 140 }}>
                             <Inject services={[FieldList]} />
@@ -210,7 +211,7 @@ export class Filtering extends SampleBase<{}, {}> {
                                         <td></td>
                                         <td>
                                             <div id="btn-control" style={{ float: 'right', marginRight: '4px' }}>
-                                                <ButtonComponent id='apply' ref={(scope) => { applyBtn = scope; }} onClick={this.onClick.bind(this)} iconCss='e-icons e-apply-icon' isPrimary={true}>Apply</ButtonComponent>
+                                                <ButtonComponent id='apply' ref={(scope) => { applyBtn = scope; }} onClick={this.onClick.bind(this)} isPrimary={true}>Apply</ButtonComponent>
                                             </div>
                                         </td>
                                     </tr>

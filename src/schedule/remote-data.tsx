@@ -28,16 +28,16 @@ export class RemoteData extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id='action-description'>
-          <p>This demo showcases the way of binding remote services to Schedule component. Here, the DataManager is used to bind the
-            remote data with Schedule.</p>
+          <p>This demo showcases the way of binding remote services to Scheduler component. Here, the DataManager is used to bind the
+            remote data with Scheduler.</p>
         </div>
         <div id='description'>
           <p>
-            Schedule can be bound to remote services by assigning the <code>dataSource</code> property with the instance of
+            Scheduler can be bound to remote services by assigning the <code>dataSource</code> property with the instance of
         <code><a target="_blank" className='code' href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a>
             </code>.
         </p>
-          <p>The DataManager here acts as an interface between the service endpoint and the Schedule, and will require the below minimal
+          <p>The DataManager here acts as an interface between the service endpoint and the Scheduler, and will require the below minimal
               information to interact with the service endpoint properly.
         </p>
           <ul>

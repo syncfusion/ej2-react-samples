@@ -117,11 +117,13 @@ export class Waterfall extends SampleBase<{}, {}> {
         value = Math.round((value * 100)) / 100;
         args.text = value.toString();
     };
+        // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
+        // custom code end
     public axisLabelRender(args: IAxisLabelRenderEventArgs): void {
         if (args.axis.name === 'primaryYAxis') {
             args.text = '$' + Number(args.text) / 1000 + 'B';

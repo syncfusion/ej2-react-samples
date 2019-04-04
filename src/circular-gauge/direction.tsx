@@ -22,11 +22,14 @@ export class Direction extends SampleBase<{}, {}> {
     public onLabelRender(args: IAxisLabelRenderEventArgs): void {
         args.text = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', ''][args.value];
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
     }
+    // custom code end
+    // Code for Property Panel
     public onChartLoad(args: {}): void {
         if (!this.loaded) {
             this.loaded = true;
@@ -67,18 +70,15 @@ export class Direction extends SampleBase<{}, {}> {
                                     minimum={0} maximum={8}
                                     majorTicks={{
                                         height: 15,
-                                        interval: 1,
-                                        color: '#9E9E9E'
-                                    }} lineStyle={{ width: 10, color: '#E0E0E0' }}
+                                        interval: 1
+                                    }} lineStyle={{ width: 10 }}
                                     minorTicks={{
                                         height: 10,
-                                        interval: 0.5,
-                                        color: '#9E9E9E'
+                                        interval: 0.5
                                     }} labelStyle={{
                                         font: {
                                             size: '12px', fontFamily: 'Roboto'
                                         },
-                                        useRangeColor: true,
                                         autoAngle: true,
                                         hiddenLabel: 'Last'
                                     }}>
@@ -95,12 +95,13 @@ export class Direction extends SampleBase<{}, {}> {
                                         }} />
                                     </PointersDirective>
                                     <RangesDirective>
-                                        <RangeDirective start={7} end={7} color='#f03e3e' />
+                                        <RangeDirective start={7} end={7}  />
                                     </RangesDirective>
                                 </AxisDirective>
                             </AxesDirective>
                         </CircularGaugeComponent>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>

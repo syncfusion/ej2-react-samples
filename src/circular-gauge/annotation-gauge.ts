@@ -7,7 +7,7 @@ CircularGauge.Inject(Annotations);
 
 export function gauge2(): CircularGauge {
     let gauge2: CircularGauge = new CircularGauge({
-        titleStyle: { color: 'black' },
+        background :'transparent',
         axes: [
             {
                 startAngle: 0, endAngle: 0,
@@ -16,11 +16,11 @@ export function gauge2(): CircularGauge {
                     {
                         start: 0, end: 3,
                         startWidth: 4, endWidth: 4,
-                        color: 'rgba(29,29,29,0.4)'
+                        color: 'rgba(128,128,128)'
                     }, {
                         start: 3, end: 12,
                         startWidth: 4, endWidth: 4,
-                        color: 'rgba(168,145,102,0.1)'
+                        color: 'rgba(192,192,192)'
                     }
                 ],
                 annotations: [{
@@ -43,7 +43,6 @@ export function gauge2(): CircularGauge {
                 labelStyle: {
                     hiddenLabel: 'First',
                     font: {
-                        color: '#8c8c8c',
                         size: '0px'
                     },
                     autoAngle: false
@@ -61,17 +60,13 @@ export function gauge2(): CircularGauge {
                 pointers: [{
                     radius: '70%',
                     pointerWidth: 2,
-                    color: 'rgba(29,29,29,1)',
                     cap: {
-                        color: 'rgba(29,29,29,1)',
                         radius: 2,
                         border: {
-                            width: 0.2,
-                            color: 'rgba(168,145,102,1)'
+                            width: 0.2
                         }
                     },
                     needleTail: {
-                        color: 'rgba(168,145,102,1)',
                         length: '10%'
                     }, animation: {
                         enable: false,

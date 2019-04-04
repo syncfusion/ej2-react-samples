@@ -11,23 +11,25 @@ import {
 	TreeMapComponent, LevelsDirective, LevelDirective, Inject, TreeMapTooltip,
 	ILoadedEventArgs, IResizeEventArgs, TreeMapTheme, ITreeMapTooltipRenderEventArgs
 } from '@syncfusion/ej2-react-treemap';
-import { Continent_Data } from './treemap-data/pie-chart';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/continent_data.json';
 AccumulationChart.Inject(AccumulationTooltip, PieSeries, DataLabel, AccumulationChart);
-
+let datasource: any = data as any;
+// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-
+// custom code end
 export class Pie extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
-
+	// custom code start
 	public load(args: ILoadedEventArgs): void {
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as TreeMapTheme;
 	}
+	// custom code end
 
 	public loaded(args: ILoadedEventArgs): void {
 		let template: Element = document.getElementById(args.treemap.element.id + '_Label_Template_Group');
@@ -188,7 +190,7 @@ export class Pie extends SampleBase<{}, {}> {
 							}}
 							format={"n"}
 							useGroupingSeparator={true}
-							dataSource={Continent_Data}
+							dataSource={datasource.continent}
 							weightValuePath='Population'
 							leafItemSettings={{			// To config leafitem customization for treemap
 								labelPath: 'Gender',
@@ -205,6 +207,7 @@ export class Pie extends SampleBase<{}, {}> {
 							</LevelsDirective>
 						</TreeMapComponent>
 					</div>
+					{/* Source Link */}
 					<div style={{ float: 'right', marginright: '10px' }}>Source:
        <a href="http://en.worldstat.info/Asia/" target="_blank">en.worldstat.info</a>
 					</div>

@@ -4,16 +4,17 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, TimelineViews,
   TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { employeeEventData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { MultiSelectComponent, CheckBoxSelection, MultiSelectChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
- *  Schedule hide weekend sample
+ *  Schedule hide non-working days sample
  */
 
 MultiSelectComponent.Inject(CheckBoxSelection);
@@ -21,7 +22,7 @@ MultiSelectComponent.Inject(CheckBoxSelection);
 export class HideWeekend extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
   private btnObj: ButtonComponent;
-  private data: Object[] = extend([], employeeEventData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
   private weekDays: { [key: string]: Object; }[] = [
     { Name: 'Sunday', Value: '0' },
     { Name: 'Monday', Value: '1' },
@@ -77,7 +78,7 @@ export class HideWeekend extends SampleBase<{}, {}> {
               <tbody>
                 <tr id='' style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Work days</div>
+                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Working days</div>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div className='multi-prop'>
@@ -92,7 +93,7 @@ export class HideWeekend extends SampleBase<{}, {}> {
                 </tr>
                 <tr id='' style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Weekend days</div>
+                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Non-Working days</div>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div className='evtbtn' style={{ paddingBottom: '10px' }}>
@@ -106,17 +107,17 @@ export class HideWeekend extends SampleBase<{}, {}> {
           </PropertyPane>
         </div>
         <div id='action-description'>
-          <p>This demo depicts the way to show or hide the weekend days of a week on Schedule. The days whichever not specified in
+          <p>This demo depicts the way to show or hide the weekend days of a week on Scheduler. The days whichever not specified in
           working days collections will be taken into consideration as weekend days.</p>
         </div>
         <div id='description'>
           <p>
             In this demo, the <code>showWeekend</code> property is used either to show or hide the weekend days of a week
            and it is not applicable on <code>workweek</code> view. By default, it is set to <code>true</code>.
-                             The days which are not a part of the working days collection of a Schedule are usually considered as weekend days here.
+                              The days which are not a part of the working days collection of a Scheduler are usually considered as weekend days here.
           </p>
           <p>
-            Here, the working days are defined as <code>[1, 3, 4, 5]</code> on Schedule.
+            Here, the working days are defined as <code>[1, 3, 4, 5]</code> on Scheduler.
             Therefore, the remaining days (0, 2, 6 – Sunday, Tuesday and Saturday) are considered as weekend days
           and will be hidden from the views as the <code>showWeekend</code> property is set to false.
           </p>

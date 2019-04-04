@@ -17,18 +17,19 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 
-export class GridData {
-    public EmployeeID: string;
+export interface GridData {
+    EmployeeID: string;
 }
 
 export class SparkGrid extends SampleBase<{}, {}> {
     private sparklineInstance: SparklineComponent;
-
+    // custom code start
     public load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SparklineTheme;
     }
+    // custom code end
 
     private lineData: Object[] = [
         [0, 6, 4, 1, 3, 2, 5],
@@ -132,7 +133,6 @@ export class SparkGrid extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <GridComponent dataSource={orderdata} resizing={this.renderSparkline.bind(this)} load={this.renderSparkline.bind(this)}
                         allowSelection={false}
-                        enableColumnVirtualization={true}
                         enableHover={true}
                         height='400'>
                         <ColumnsDirective>

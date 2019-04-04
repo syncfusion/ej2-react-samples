@@ -6,36 +6,27 @@ import * as React from 'react';
 import { ComboBoxComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
-import { DataManager, Query, ODataAdaptor } from '@syncfusion/ej2-data';
+import { DataManager, Query, WebApiAdaptor } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './data-binding.css';
+import * as data from './dataSource.json';
 
 export class Data extends SampleBase<{}, {}> {
 
+    private temp:string = 'sportsData';
     // define the JSON of data
-    private sportsData: { [key: string]: Object }[] = [
-        { Id: 'Game1', Game: 'American Football' },
-        { Id: 'Game2', Game: 'Badminton' },
-        { Id: 'Game3', Game: 'Basketball' },
-        { Id: 'Game4', Game: 'Cricket' },
-        { Id: 'Game5', Game: 'Football' },
-        { Id: 'Game6', Game: 'Golf' },
-        { Id: 'Game7', Game: 'Hockey' },
-        { Id: 'Game8', Game: 'Rugby' },
-        { Id: 'Game9', Game: 'Snooker' },
-        { Id: 'Game10', Game: 'Tennis' }
-    ];
+    private sportsData: { [key: string]: Object }[] =data[this.temp];
     // bind the DataManager instance to dataSource property
     private customerData: DataManager = new DataManager({
-        url: 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Customers',
-        adaptor: new ODataAdaptor,
+        url: 'https://ej2services.syncfusion.com/production/web-services/api/Employees',
+        adaptor: new WebApiAdaptor,
         crossDomain: true
     });
     // bind the Query instance to query property
-    private query: Query = new Query().select(['ContactName', 'CustomerID']);
+    private query: Query = new Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount();
     // maps the remote data column to fields property
-    private remoteFields: Object = { text: 'ContactName', value: 'CustomerID' };
+    private remoteFields: Object = { text: 'FirstName', value: 'EmployeeID' };
     // maps the local data column to fields property
     private localFields: Object = { text: 'Game', value: 'Id' };
     private localDataObj: ComboBoxComponent;
@@ -53,14 +44,14 @@ export class Data extends SampleBase<{}, {}> {
                     <div className='col-lg-9'>
                         <div className='col-lg-6'>
                             <div id="local">
-                                <h4> Local Data</h4>
+                                <h3> Local Data</h3>
                                 <ComboBoxComponent id="games" dataSource={this.sportsData} ref={(combobox) => { this.localDataObj = combobox }} fields={this.localFields} placeholder="Select a game" popupHeight="220px" autofill={true} />
                             </div>
                         </div>
                         <div className='col-lg-6'>
                             <div id="remote">
-                                <h4>Remote Data</h4>
-                                <ComboBoxComponent id="customers" dataSource={this.customerData} ref={(combobox) => { this.remoteDataObj = combobox }} sortOrder="Ascending" query={this.query} fields={this.remoteFields} placeholder="Select a customer" autofill={true} popupHeight="220px" />
+                                <h3>Remote Data</h3>
+                                <ComboBoxComponent id="customers" dataSource={this.customerData} ref={(combobox) => { this.remoteDataObj = combobox }} sortOrder="Ascending" query={this.query} fields={this.remoteFields} placeholder="Select a name" autofill={true} popupHeight="220px" />
                             </div>
                         </div>
                     </div>

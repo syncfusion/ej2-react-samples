@@ -7,11 +7,9 @@ import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
 import './group-template.css';
-import { groupDataSource } from './newsData';
+import { groupDataSource } from './listData';
 
 export class GroupTemplate extends SampleBase<{}, {}> {
-
-    private listviewInstance: ListViewComponent;
 
     //Map the appropriate columns to fields property
     public fields: Object = { text: 'Name', groupBy: 'order' };
@@ -40,7 +38,7 @@ export class GroupTemplate extends SampleBase<{}, {}> {
                     {/* ListView element */}
                     <ListViewComponent id='groupedList' dataSource={groupDataSource} headerTitle='Settings' showHeader={true} fields={this.fields}
                         cssClass="e-list-template" template={this.listTemplate as any} groupTemplate={this.groupTemplate as any}
-                        ref={(listview) => { this.listviewInstance = listview }}></ListViewComponent>
+                        ></ListViewComponent>
                 </div>
 
                 <div id="action-description">

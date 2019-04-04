@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor } from '@syncfusion/ej2-react-heatmap';
 import { SampleBase } from '../common/sample-base';
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
@@ -10,6 +11,7 @@ const SAMPLE_CSS: any = `
 #source{
     float: right; margin-right: 10p
 }`;
+// custom code end
 /**
  * Heatmap JSON data binding sample
  */
@@ -89,9 +91,11 @@ export class JsonCell extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
                 </style>
+                {/* custom code end */}
                 <div className='control-section'>
                     <HeatMapComponent id='heatmap-container'
                         titleSettings={{

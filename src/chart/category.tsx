@@ -30,7 +30,7 @@ export let data: any[] = [
     { x: 'Brazil', y: 139.1, country: 'BRZ: 139.1'},
     { x: 'India', y: 462.1, country: 'IND: 462.1'},
     { x: 'China', y: 721.4, country: 'CHN: 721.4'},
-    { x: 'United States Of America', y: 286.9, country: 'USA: 286.9'},
+    { x: 'United States<br>Of America', y: 286.9, country: 'USA: 286.9'},
     { x: 'Great Britain', y: 115.1, country: 'GBR: 115.1'},
     { x: 'Nigeria', y: 97.2, country: 'NGR: 97.2'},
 ];
@@ -57,7 +57,7 @@ export class CategoryAxis extends SampleBase<{}, {}> {
                             title: 'Country',
                             valueType: 'Category',
                             majorGridLines: { width: 0 },
-                            enableTrim: true,
+                            enableTrim: false,
                         }}
                         primaryYAxis={{
                             minimum: 0,
@@ -129,9 +129,12 @@ export class CategoryAxis extends SampleBase<{}, {}> {
         let  chart:  Element  =  document.getElementById('charts');
         chart.setAttribute('title',  '');
     };
+        // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     };
+        // custom code end
 }

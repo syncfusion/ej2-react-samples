@@ -11,9 +11,25 @@ import './card.component.css';
 interface FilterKey {
     Code: string;
 }
-let templateStr: string = "<div class='e-card ${if(isHorizontal)} e-card-horizontal ${/if}'>${if(cardImage)}<div class='e-card-image' style='background-image:url(${cardImage.url})'>${if(cardImage.title)}<div class='e-card-title'>${cardImage.title}</div>${/if}</div>${/if}${if(cardTitle)}<div class='e-card-title'>${cardTitle}</div>${/if}${if(header_title||header_subtitle||header_img)}<div class='e-card-header'>${if(header_img)}<div class='e-card-header-image ${if(header_img.isRounded)} e-card-corner ${/if}' style='background-image:url(${header_img.url})'></div>${/if}${if(header_title||header_subtitle)}<div class='e-card-header-caption'>${if(header_title)}<div class='e-card-header-title'>${header_title}</div>${/if}${if(header_subtitle)}<div class='e-card-sub-title'>${header_subtitle}</div>${/if}</div>${/if}</div>${/if}${if(cardContent)}<div class='e-card-content'>${cardContent}</div>${/if}${if(card_action_btn)}<div class='e-card-actions ${if(card_action_btn.isVertical)} e-card-vertical ${/if}'>${for(action_btn of card_action_btn.action_btns)}${if(action_btn.tag==='a')}<a href='${action_btn.href}' target='${action_btn.target}' class='e-btn e-outline e-primary'>${action_btn.text}</a>${else}<button class='e-card-btn'>${action_btn.text}</button>${/if}${/for}</div>${/if}</div>";
-let cardTemplateFn: (data: object) => HTMLCollection = compile(templateStr);
-let card: HTMLCollection; let cardEle: HTMLElement; let cardObj: JSON[] = cardBook as JSON[]; let data: Object[] = []; let multiSelectData: Object[] = []; let searchData: Object[] = [];
+
+interface cardData {
+    header_title: string;
+    header_subtitle: string;
+    cardImage: any;
+    isHorizontal: string;
+    cardTitle: string;
+    header_img: any;
+    cardContent: string;
+    card_action_btn: any;
+
+}
+
+interface cardInterface {
+    data: cardData;
+}
+
+
+let card: NodeList; let cardEle: HTMLElement; let cardObj: JSON[] = cardBook as JSON[]; let data: Object[] = []; let multiSelectData: Object[] = []; let searchData: Object[] = [];
 let searchValCount: number = 0; let filterCategory: { [key: string]: Object; }[] = [{ Name: 'Client-Side', Code: 'client' }, { Name: 'Server-Side', Code: 'server' }, { Name: 'Front-End', Code: 'ui' }];
 let emptyData: boolean = true;
 
@@ -23,10 +39,10 @@ function cardRendering(cardObj: Object[]): void {
     let errorContent: HTMLElement = document.querySelector('.tile_layout .row.error') as HTMLElement;
     if (cardObj.length > 0) {
         errorContent.style.display = 'none';
-        cardObj.forEach((data: Object, index: number): void => {
-            card = cardTemplateFn(data); cardEle = document.getElementById('card_sample_' + (++index));
+        cardObj.forEach((data: cardData, index) => {
+            cardEle = document.getElementById('card_sample_' + (++index));
             if (cardEle) {
-                cardEle.appendChild(card[0]);
+                ReactDOM.render(<CardRender data={data} />, cardEle  );
             }
         });
     } else {
@@ -34,12 +50,13 @@ function cardRendering(cardObj: Object[]): void {
     }
 }
 /* Funtion for Destroying Cards */
-function destroyAllCard(): void {
-    let cards: NodeList = document.querySelectorAll('.card-control-section .e-card');
-    [].slice.call(cards).forEach((el: HTMLElement) => {
-        detach(el);
+function destroyAllCard() {
+    let cards = document.querySelectorAll('.card-control-section .e-card');
+    [].slice.call(cards).forEach((el) => {
+        ReactDOM.unmountComponentAtNode(el.parentElement);
     });
 }
+
 export class Tile extends SampleBase<{}, {}> {
 
     public rendereComplete(): void {
@@ -197,15 +214,48 @@ export class Tile extends SampleBase<{}, {}> {
                         Card is a small container in which user can show defined content in specific structure and it is flexible and extensible.
                     This sample demonstrates to render the
                     <code>Card</code> Using
-                    <a target="_blank" href="http://ej2.syncfusion.com/documentation/base/template-engine.html"> Template Engine</a> and it can be filtered based on
-                    <a target="_blank" href="http://ej2.syncfusion.com/documentation/data/getting-started.html">
+                    <a target="_blank" href="https://ej2.syncfusion.com/documentation/common/template-engine/"> Template Engine</a> and it can be filtered based on
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/data/getting-started/">
                             data Manager</a>.
                     <p> More information about Card can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/card/getting-started.html">
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
                                 documentation</a> section. </p>
                     </p>
                 </div>
             </div>
         );
     }
+}
+
+class CardRender extends React.Component {
+    props: cardInterface;
+    headerTitleSubCheck = this.props.data.header_title.length >0 || this.props.data.header_subtitle.length >0;
+    headerCheck = this.props.data.header_title.length >0 || this.props.data.header_subtitle.length >0 || this.props.data.header_img.length >0;
+    bgimageUrl  = "url(" + this.props.data.cardImage.url + ")";
+   render() {
+       return( 
+       <div className= { this.props.data.isHorizontal ? 'e-card e-card-horizontal' : 'e-card' }>
+       { this.props.data.cardImage && <div  className='e-card-image' style={{ backgroundImage: this.bgimageUrl }} > { this.props.data.cardImage.title && <div  className='e-card-title'>{this.props.data.cardImage.title}</div> } </div> }
+       { this.props.data.cardTitle && <div  className='e-card-title'>{this.props.data.cardTitle}</div> }
+       { this.headerCheck && 
+         <div className='e-card-header'>
+           { this.props.data.header_img && <div  className= { this.props.data.header_img.isRounded ? 'e-card-header-image e-card-corner' : 'e-card-header-image e-card-corner'} ></div> }
+           { this.headerTitleSubCheck &&    
+             <div className='e-card-header-caption'>
+                {this.props.data.header_title &&  <div className='e-card-header-title'>{this.props.data.header_title}</div> }
+                {this.props.data.header_subtitle &&  <div className='e-card-sub-title'>{this.props.data.header_subtitle}</div> }
+             </div>
+           }
+         </div>
+       }
+       {this.props.data.cardContent && <div  className='e-card-content'>{this.props.data.cardContent}</div> }
+       {this.props.data.card_action_btn && 
+          <div  className={this.props.data.card_action_btn.isVertical ?'e-card-actions e-card-vertical' : 'e-card-actions' } >
+               {this.props.data.card_action_btn.action_btns.map(function(actBtn){
+                   return actBtn.tag === "a" ? <a key={actBtn.text} href= {actBtn.href} target = { actBtn.target } className='e-btn e-outline e-primary'> { actBtn.text }</a> : <button key={actBtn.text} className='e-card-btn'>{ actBtn.text }</button> ;
+               })}
+          </div> }
+       </div>
+       );
+   }
 }

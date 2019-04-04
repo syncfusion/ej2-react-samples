@@ -1,19 +1,20 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
-import { PivotViewComponent, IDataOptions, Operators } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, Operators, IDataSet } from '@syncfusion/ej2-react-pivotview';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { MaskedTextBoxComponent, MaskChangeEventArgs } from '@syncfusion/ej2-react-inputs';
 import { FilterModel } from '@syncfusion/ej2-pivotview/src/pivotview/model/dataSource-model';
-import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
+import * as pivotData from './pivot-data/Pivot_Data.json';
 import './filtering.css';
 
 /**
  * PivotView Filtering Sample.
  */
-
+/* tslint:disable */
+let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSource: IDataOptions = {
     allowLabelFilter: true,
     values: [{ name: 'In_Stock', caption: 'In Stock' }, { name: 'Sold', caption: 'Units Sold' },
@@ -137,7 +138,7 @@ export class LabelFilter extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotGridObj = pivotview }} dataSource={dataSource} width={'100%'} height={'300'} dataBound={this.ondataBound} gridSettings={{ columnWidth: 140 }}>
                         </PivotViewComponent>

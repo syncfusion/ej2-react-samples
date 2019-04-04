@@ -2,14 +2,13 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
   WorkWeek, Month, ScheduleComponent, TreeViewArgs, ViewsDirective, ViewDirective, ResourcesDirective,
-  ResourceDirective, PopupOpenEventArgs, ActionEventArgs, RenderCellEventArgs, EventFieldsMapping, ResourceDetails, Inject,
-  ResizeEventArgs, DragEventArgs
+  ResourceDirective, PopupOpenEventArgs, ActionEventArgs, RenderCellEventArgs, EventFieldsMapping, ResourceDetails, Inject
 } from '@syncfusion/ej2-react-schedule';
 import { addClass } from '@syncfusion/ej2-base';
 import './group-custom-work-days.css';
-import { doctorData } from './datasource';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * schedule resources group-custom-work-days sample
@@ -17,7 +16,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class GroupCustomWorkDays extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], doctorData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).doctorData, null, true) as Object[];
   private resourceData: Object[] = [
     { text: 'Will Smith', id: 1, color: '#ea7a57', workDays: [1, 2, 4, 5], startHour: '08:00', endHour: '15:00' },
     { text: 'Alice', id: 2, color: 'rgb(53, 124, 210)', workDays: [1, 3, 5], startHour: '08:00', endHour: '17:00' },
@@ -41,14 +40,26 @@ export class GroupCustomWorkDays extends SampleBase<{}, {}> {
   }
 
   private onActionBegin(args: ActionEventArgs): void {
-    if (args.requestType === 'eventCreate' && (args.data as Object[]).length > 0) {
-      let eventData: { [key: string]: Object } = args.data[0] as { [key: string]: Object };
+    let isEventChange: boolean = (args.requestType === 'eventChange');
+    if ((args.requestType === 'eventCreate' && (args.data as Object[]).length > 0) || isEventChange) {
+      let eventData: { [key: string]: Object } = (isEventChange) ? args.data as { [key: string]: Object } :
+        args.data[0] as { [key: string]: Object };
       let eventField: EventFieldsMapping = this.scheduleObj.eventFields;
       let startDate: Date = eventData[eventField.startTime] as Date;
       let endDate: Date = eventData[eventField.endTime] as Date;
       let resourceIndex: number = [1, 2, 3].indexOf(eventData.DoctorId as number);
-      args.cancel = !this.scheduleObj.isSlotAvailable(startDate, endDate, resourceIndex);
+      args.cancel = !this.isValidTime(startDate, endDate, resourceIndex);
+      if (!args.cancel) {
+        args.cancel = !this.scheduleObj.isSlotAvailable(startDate, endDate, resourceIndex);
+      }
     }
+  }
+
+  private isValidTime(startDate: Date, endDate: Date, resIndex: number): boolean {
+    let resource: ResourceDetails = this.scheduleObj.getResourcesByIndex(resIndex);
+    let startHour: number = parseInt(resource.resourceData.startHour.toString().slice(0, 2), 10);
+    let endHour: number = parseInt(resource.resourceData.endHour.toString().slice(0, 2), 10);
+    return (startHour <= startDate.getHours() && endHour >= endDate.getHours());
   }
 
   private onPopupOpen(args: PopupOpenEventArgs): void {
@@ -70,14 +81,6 @@ export class GroupCustomWorkDays extends SampleBase<{}, {}> {
     );
   }
 
-  private onResizeStart(args: ResizeEventArgs): void {
-    args.cancel = true;
-  }
-
-  private onDragStart(args: DragEventArgs): void {
-    args.cancel = true;
-  }
-
   render() {
     return (
       <div className='schedule-control-section'>
@@ -96,7 +99,7 @@ export class GroupCustomWorkDays extends SampleBase<{}, {}> {
                 }
               }}
               actionBegin={this.onActionBegin.bind(this)} popupOpen={this.onPopupOpen.bind(this)} renderCell={this.onRenderCell.bind(this)}
-              resizeStart={this.onResizeStart.bind(this)} group={{ resources: ['Doctors'] }} dragStart={this.onDragStart.bind(this)}>
+              group={{ resources: ['Doctors'] }}>
               <ResourcesDirective>
                 <ResourceDirective field='DoctorId' title='Doctor Name' name='Doctors'
                   dataSource={this.resourceData} textField='text' idField='id' groupIDField='groupId' colorField='color'
@@ -136,7 +139,7 @@ export class GroupCustomWorkDays extends SampleBase<{}, {}> {
             more appointments can be added to that cell which has been prevented by making use of the
             <code>isSlotAvailable</code> function within the
             <code>actionBegin</code> event checking for
-            <code>eventCreate</code> request type. The resource header is customized by making use of the
+            <code>eventCreate</code> and <code>eventChange</code> request type. The resource header is customized by making use of the
             <code>resourceHeaderTemplate</code> option.
           </p>
         </div>

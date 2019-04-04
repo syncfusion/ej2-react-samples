@@ -154,12 +154,12 @@ export class Basic extends SampleBase<{}, {hideAlertDialog: boolean, hideConfirm
         </div>
     <div id="action-description">
     <p>
-    This sample demonstrates that you can create different types of custom dialogs such as alert, confirm, and prompt dialogs. The buttons “alert”, “confirm”, and “prompt” are used to open the corresponding dialogs. 
+    This example demonstrates that you can create different types of custom dialogs such as alert, confirm, and prompt dialogs. The buttons “alert”, “confirm”, and “prompt” are used to open the corresponding dialogs. 
     </p>
     </div>
     <div id="description">
         <p>
-        The dialog control is used to create alert, prompt, and confirmation dialogs using content, and buttons property. The content property accepts both string and HTML element as content.
+        The dialog component is used to create alert, prompt, and confirmation dialogs using content, and buttons property. The content property accepts both string and HTML element as content.
         </p>
         <ul>
             <li>Alert - Used to show errors, warnings, and information that needs user awareness.</li>
@@ -168,7 +168,7 @@ export class Basic extends SampleBase<{}, {hideAlertDialog: boolean, hideConfirm
         </ul>
         <p>
         More information on the Dialog instantiation can be found in the <a target="_blank" 
-            href="http://ej2.syncfusion.com/react/documentation/dialog/getting-started.html">
+            href="http://ej2.syncfusion.com/react/documentation/dialog/getting-started/">
             documentation section</a>.
             </p>
     </div>

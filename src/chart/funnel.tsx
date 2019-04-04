@@ -26,7 +26,6 @@ export class Funnel extends SampleBase<{}, {}> {
             <AccumulationChartComponent id='funnel-chart' ref={funnel => this.funnel = funnel}
               title='Website Visitors'
               legendSettings={{ toggleVisibility: false }}
-              enableAnimation={false}
               load={this.load.bind(this)}
               tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               resized={this.onChartResized.bind(this)}
@@ -49,40 +48,30 @@ export class Funnel extends SampleBase<{}, {}> {
           <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-              <tbody>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div>Neck Width                        
+                    <div>Neck Width:
+                        <p id="neckWidth" style={{ fontWeight: 'normal' }}>15%</p>
                     </div>
                   </td>
-                  <td style={{ width: '50%' }}>
+                  <td style={{ width: '70%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" onChange={this.pyramidneckWidth.bind(this)} ref={s => this.slider = s} id="pyramidNeckWidth" defaultValue="15" min="0" max="45" style={{ width: '90%' }} />
                     </div>
                   </td>
-                  <td style={{ width: '20%' }}>
-                  <div>
-                  <p id="neckWidth" style={{ fontWeight: 'normal',  paddingTop: 'inherit' }}>15%</p>
-                  </div>
-                  </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
-                    <div>Neck Height                               
+                    <div>Neck Height:
+                                <p id="neckHeight" style={{ fontWeight: 'normal' }}>18%</p>
                     </div>
                   </td>
-                  <td style={{ width: '50%' }}>
+                  <td style={{ width: '70%' }}>
                     <div data-role="rangeslider">
                       <input type="range" name="range-min" onChange={this.pyramidneckHeight.bind(this)} ref={s => this.slider = s} id="pyramidNeckHeight" defaultValue="0" min="0" max="50" style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
-                  <td style={{ width: '20%' }}>
-                  <div>
-                  <p id="neckHeight" style={{ fontWeight: 'normal', paddingTop: 'inherit' }}>18%</p>
-                  </div>
-                  </td>
                 </tr>
-                </tbody>
               </table>
             </PropertyPane>
           </div>
@@ -125,16 +114,18 @@ export class Funnel extends SampleBase<{}, {}> {
   public onChartLoad(args: IAccLoadedEventArgs): void {
     document.getElementById('funnel-chart').setAttribute('title', '');
   };
-
+    // custom code start
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+    args.accumulation.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+    replace(/-dark/i, "Dark") as AccumulationTheme;
     if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
       args.accumulation.series[0].width = '80%';
       args.accumulation.series[0].height = '70%';
     }
   };
+      // custom code end
 
   public onChartResized(args: IAccResizeEventArgs): void {
     let bounds: ClientRect = document.getElementById('funnel-chart').getBoundingClientRect();

@@ -6,6 +6,14 @@
     content: "\e354";
 }
 
+.bootstrap4 .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-left::before {
+    content: "\e752";
+}
+
+.bootstrap4 .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-right::before {
+    content: "\e778";
+}
+
 #rteImage .e-richtexteditor .e-rte-content .e-content {
     float: left;
     width: 100%;

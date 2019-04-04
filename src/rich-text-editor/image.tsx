@@ -52,7 +52,7 @@ export class ImageSample extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div id="dropdowndefault" className='control-pane'>
+            <div className='control-pane'>
                 <div className='control-section' id='rteImage'>
                     <div className="content-wrapper">
                             <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}

@@ -50,7 +50,7 @@ public render(): JSX.Element {
 						>
 							<FilesDirective>
 								<UploadedFilesDirective name="Nature" size={25000} type=".png"></UploadedFilesDirective>
-								<UploadedFilesDirective name="TypeScript succintly" size={12000} type=".pdf"></UploadedFilesDirective>
+								<UploadedFilesDirective name="TypeScript succinctly" size={12000} type=".pdf"></UploadedFilesDirective>
 								<UploadedFilesDirective name="ASP.NET" size={17000} type=".docx"></UploadedFilesDirective>
 							</FilesDirective>
 						</UploaderComponent>
@@ -65,13 +65,13 @@ public render(): JSX.Element {
 					</div>
 			</div>
 			<div id="action-description">
-				<p>This sample demonstrates how to pre-load the files of the Uploader. The already uploaded files are configured in file list to view and remove them.</p>
+				<p>This example demonstrates how to pre-load the files of the Uploader. The already uploaded files are configured in file list to view and remove them.</p>
 			</div>
 			<div id="description">
 				<p>The Uploader component allows to load initial list of files which are already uploaded in server. The preload files are useful to view and remove from server.
 				Also, you can achieve state persistence on page refresh.</p>
 				
-				<p>For more information, you can refer to the Preload Files section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/asynchronous.html#preload-files">documentation section</a>.</p>
+				<p>For more information, you can refer to the Preload Files section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/async/#preload-files">documentation section</a>.</p>
 				
 				<p>To achieve state persistence, you can refer to this How-to section.</p>
 			</div>

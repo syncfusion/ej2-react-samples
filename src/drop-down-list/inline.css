@@ -1,12 +1,9 @@
+
 #template {
     margin: 0 auto;
     width: 325px;
 }
 
-#inline-container {
-    margin: 0px auto;
-    width:325px;
-}
 .inlinecss.e-ddl .e-input-group-icon.e-ddl-icon {
     display: none;
 }

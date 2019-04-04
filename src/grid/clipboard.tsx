@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
@@ -10,12 +11,26 @@ export class Clipboard extends SampleBase<{}, {}> {
     public selectionsettings: Object = { type: 'Multiple' };
     public toolbarOptions: any = [{ text: 'Copy', tooltipText: 'Copy', prefixIcon: 'e-copy', id: 'copy' }, { text: 'Copy With Header', tooltipText: 'Copy With Header', prefixIcon: 'e-copy', id: 'copyHeader' }];
     private gridInstance: GridComponent;
+    private visible = false;
+    private animationSettings = { effect: 'None' };
+    private alertDialogInstance: DialogComponent;
+    private alertButtons = [{
+        // Click the footer buttons to hide the Dialog
+        click: () => {
+            this.alertDialogInstance.hide();
+        },
+        buttonModel: { content: 'OK', isPrimary: true }
+    }];
     clickHandler(args: any) {
-        let withHeader: boolean = false;
-        if (args.item.id === 'copyHeader') {
-            withHeader = true;
+        if(this.gridInstance.getSelectedRecords().length>0) {
+            let withHeader: boolean = false;
+            if (args.item.id === 'copyHeader') {
+                withHeader = true;
+            }
+            this.gridInstance.copy(withHeader);
+        } else {
+            this.alertDialogInstance.show();
         }
-        this.gridInstance.copy(withHeader);
     }
     render() {
         return (
@@ -32,6 +47,8 @@ export class Clipboard extends SampleBase<{}, {}> {
                         <Inject services={[Page, Selection, Toolbar]} />
                     </GridComponent>
                 </div>
+                <DialogComponent id="alertDialog" header='Copy with Header' visible={this.visible} animationSettings={this.animationSettings} width='300px' content='Atleast one row should be selected to copy with header' ref={alertdialog => this.alertDialogInstance = alertdialog}
+            target='.control-section' buttons={this.alertButtons} ></DialogComponent>
                 <div id="action-description">
                     <p>This sample demonstrates copy to clipboard functionality of the Grid component. Select rows and click Copy button from
         toolbar to copy content. To copy with header click Copy with header button from toolbar.

@@ -19,11 +19,13 @@ export class Pointers extends SampleBase<{}, {}> {
     private gauge6: CircularGaugeComponent;
     public tooltipInterval1: Object;
     public tooltipInterval2: Object;
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
     }
+    // custom code end
     public onChartLoad(args: ILoadedEventArgs): void {
         let id: string = args.gauge.element.id;
         document.getElementById(id).setAttribute('title', '');

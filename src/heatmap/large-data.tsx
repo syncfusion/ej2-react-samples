@@ -3,13 +3,15 @@ import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
 import { Adaptor, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
 import { SampleBase } from '../common/sample-base';
-import { largeData } from './data';
+import * as data from './data.json';
 import { Internationalization } from "@syncfusion/ej2-base";
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
 }`;
+// custom code end
 /**
  * Heatmap Large data sample
  */
@@ -18,9 +20,11 @@ export class LargeData extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
                 </style>
+                {/* custom code end */}
                 <div className='control-section'>
                     <HeatMapComponent id='heatmap-container'
                         titleSettings={{
@@ -61,7 +65,7 @@ export class LargeData extends SampleBase<{}, {}> {
                         }}
                         load={this.load.bind(this)}
                         tooltipRender={this.tooltipTemplate}
-                        dataSource={largeData}>
+                        dataSource={(data as any).largeData}>
                         <Inject services={[Legend, Tooltip, Adaptor]} />
                     </HeatMapComponent>
                 </div>

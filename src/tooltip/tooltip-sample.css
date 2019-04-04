@@ -170,3 +170,12 @@
         top: 1px;
     }
 }
+
+.bootstrap4 .e-tooltip-wrap.e-ajax-content .contentWrap {
+    padding: 0; 
+    line-height: 18px;
+}
+
+.bootstrap4 .e-tooltip-wrap.e-ajax-content .def {
+    display: inline-block;
+}

@@ -6,11 +6,12 @@ import * as ReactDOM from "react-dom";
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import {
     SmithchartComponent, SmithchartSeriesCollectionDirective, SmithchartSeriesDirective, SmithchartTheme,
-    ISmithchartLoadedEventArgs, ExportType, Inject, TooltipRender, SmithchartLegend
+    ISmithchartLoadedEventArgs, SmithchartExportType, Inject, TooltipRender, SmithchartLegend
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -18,6 +19,7 @@ const SAMPLE_CSS = `
     #btn-control {
         width: 100%;
         text-align: center;
+        text-transform:none !important;
     }
     .e-play-icon::before {
         content: "\\e728";
@@ -25,7 +27,9 @@ const SAMPLE_CSS = `
     .e-play-icon::before {
         content: "\\e813";
     }`;
+    // custom code end
 export class Print extends SampleBase<{}, {}> {
+    // Code for Property Panel
     private smithchartInstance: SmithchartComponent;
     private positionElement: HTMLInputElement;
     private mode: DropDownListComponent;
@@ -43,14 +47,15 @@ export class Print extends SampleBase<{}, {}> {
     }
     public onClick1(e: Event): void {
         let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
-        this.smithchartInstance.export((this.mode.value as ExportType), fileName);
+        this.smithchartInstance.export((this.mode.value as SmithchartExportType), fileName);
     }
-
+    // custom code start
     public load(args: ISmithchartLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SmithchartTheme;
     }
+    // custom code end
     render() {
         return (
             <div className='control-pane'>
@@ -84,6 +89,7 @@ export class Print extends SampleBase<{}, {}> {
                         </SmithchartSeriesCollectionDirective>
                     </SmithchartComponent>
                 </div>
+                {/* Property Panel*/}
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
@@ -110,14 +116,14 @@ export class Print extends SampleBase<{}, {}> {
                             <tr>
                                 <td>
                                     <div id="btn-control">
-                                        <ButtonComponent onClick={this.onClick1.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                        <ButtonComponent onClick={this.onClick1.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div id="btn-control">
-                                        <ButtonComponent onClick={this.onClick2.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+                                        <ButtonComponent onClick={this.onClick2.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Print</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>

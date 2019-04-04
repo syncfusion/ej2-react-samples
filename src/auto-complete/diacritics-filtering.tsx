@@ -6,25 +6,12 @@ import * as React from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import './custom-filtering.css';
+import * as data from './dataSource.json';
 
 export class DiacriticsFiltering extends SampleBase<{}, {}> {
 
-  private diacriticsData: string[] = [
-    'Águilas',
-    'Ajedrez',
-    'Ala Delta',
-    'Álbumes de Música',
-    'Alusivos',
-    'Análisis de Escritura a Mano',
-    'Dyarbakır',
-    'Derepazarı ',
-    'Gülümsemek ',
-    'Teşekkürler', 
-    'Güle güle.',
-    'Gülhatmi',
-    'Gülünç'
-  ];
-
+  private temp:string = 'data';
+  private diacriticsData: string[] =data[this.temp];
   render() {
     return (
       <div className='control-pane'>

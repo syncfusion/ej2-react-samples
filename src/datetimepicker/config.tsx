@@ -1,7 +1,42 @@
 export const DateTimeOrder: Object = [
-    { 'path': 'datetimepicker/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'DateTimePicker', 'api':'{"DateTimePickerComponent": []}', 'description': 'A simple, lightweight, and easily customizable DateTimePicker component for React for selecting specific date and time values based on your needs' },
-    { 'path': 'datetimepicker/date-time-range', 'component': 'Range', 'name': 'DateTime Range', 'order': '01', 'category': 'DateTimePicker', 'api':'{"DatePicker": [ "min", "max", "value" ]}', 'description': 'Flexible DateTimePicker component for React that restricts date selection from a defined range of values like the current month, past dates, next week, future dates, etc'  },
-    { 'path': 'datetimepicker/date-time-format', 'component': 'Dateformat', 'name': 'Format', 'order': '01', 'category': 'DateTimePicker', 'api':'{"DateTimePicker": [ "format", "value"]}', 'description': 'Flexible DateTimePicker for React with options to customize date and time formats based on the preferred culture to improved readability' },
-    { 'path': 'datetimepicker/disabled', 'component': 'Disabled', 'name': 'Disabled Dates', 'order': '01', 'category': 'DateTimePicker', 'api':'{"DateTimePicker": ["renderDayCell" ]}', 'description': 'Customizable DateTimePicker widget for React with disabled dates and times that restrict selection for specific date and time durations' },
-    { 'path': 'datetimepicker/special-dates', 'component': 'Special', 'name': 'Special Dates', 'order': '01', 'category': 'DateTimePicker', 'api':'{"DateTimePicker": [ "renderDayCell", "value"]}', 'description': 'Flexible DateTimePicker component for React that restricts date selection from a defined range of values like the current month, past dates, next week, future dates, etc' }
+    {
+        'path': 'datetimepicker/default', 'component': 'Default', 'name': 'Default Functionalities', 'description': 'This example demonstrates a simple, mobile-friendly and responsive React DateTimePicker to select both a date and time', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DateTimePickerComponent": []}',
+        'sourceFiles': [
+            { 'displayName': 'default.tsx', 'path': 'src/datetimepicker/default.tsx' },
+            { 'displayName': 'default.jsx', 'path': 'src/datetimepicker/default.jsx' },
+            { 'displayName': 'default-style.css', 'path': 'src/datetimepicker/default-style.css' }
+        ]
+    },
+    {
+        'path': 'datetimepicker/date-time-range', 'component': 'Range', 'name': 'DateTime Range', 'description': 'This example demonstrates how to disables the specific range of dates and times (min and max) in a React DateTimePicker', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DatePicker": [ "min", "max", "value" ]}',
+        'sourceFiles': [
+            { 'displayName': 'date-time-range.tsx', 'path': 'src/datetimepicker/date-time-range.tsx' },
+            { 'displayName': 'date-time-range.jsx', 'path': 'src/datetimepicker/date-time-range.jsx' },
+            { 'displayName': 'range-style.css', 'path': 'src/datetimepicker/range-style.css' }
+        ]
+    },
+    {
+        'path': 'datetimepicker/date-time-format', 'component': 'Dateformat', 'name': 'Format', 'description': 'This example demonstrates how to change the date and time format in the input field based on the format in a React DateTimePicker', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DateTimePicker": [ "format", "value"]}',
+        'sourceFiles': [
+            { 'displayName': 'date-time-format.tsx', 'path': 'src/datetimepicker/date-time-format.tsx' },
+            { 'displayName': 'date-time-format.jsx', 'path': 'src/datetimepicker/date-time-format.jsx' },
+            { 'displayName': 'format-style.css', 'path': 'src/datetimepicker/format-style.css' }
+        ]
+    },
+    {
+        'path': 'datetimepicker/disabled', 'component': 'Disabled', 'name': 'Disabled Dates', 'description': 'Customizable DateTimePicker widget for React with disabled dates and times that restrict selection for specific date and time durations', 'order': '01', 'category': 'DateTimePicker', 'api':'{"DateTimePicker": ["renderDayCell" ]}',
+        'sourceFiles': [
+            { 'displayName': 'disabled.tsx', 'path': 'src/datetimepicker/disabled.tsx' },
+            { 'displayName': 'disabled.jsx', 'path': 'src/datetimepicker/disabled.jsx' },
+            { 'displayName': 'disabled-style.css', 'path': 'src/datetimepicker/disabled-style.css' }
+        ]
+    },
+    {
+        'path': 'datetimepicker/special-dates', 'component': 'Special', 'name': 'Special Dates', 'description': 'This example demonstrates how to highlight the specific dates and times like weekends, holidays and special dates in a React DateTimePicker', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DateTimePicker": [ "renderDayCell", "value"]}',
+        'sourceFiles': [
+            { 'displayName': 'special-dates.tsx', 'path': 'src/datetimepicker/special-dates.tsx' },
+            { 'displayName': 'special-dates.jsx', 'path': 'src/datetimepicker/special-dates.jsx' },
+            { 'displayName': 'special-style.css', 'path': 'src/datetimepicker/special-style.css' }
+        ]
+    }
 ]

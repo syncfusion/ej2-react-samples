@@ -7,6 +7,7 @@ import {
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
@@ -14,6 +15,7 @@ const SAMPLE_CSS: any = `
 #source{
     float: right; margin-right: 10p
 }`;
+// custom code end
 /**
  * Schedule Default sample
  */
@@ -59,9 +61,11 @@ export class ColorAndSizeAttributes extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
                 </style>
+                {/* custom code end */}
                 <div className='control-section'>
                     <HeatMapComponent id='heatmap-container'
                         titleSettings={{
@@ -106,7 +110,7 @@ export class ColorAndSizeAttributes extends SampleBase<{}, {}> {
                         legendSettings={{
                             visible: true,
                         }}>
-                        <Inject services={[Adaptor, Tooltip]} />
+                        <Inject services={[Adaptor, Tooltip,Legend]} />
                     </HeatMapComponent>
                     <div id="source">Source:
                         <a href="https://en.wikipedia.org" target='_blank'>https://en.wikipedia.org/</a>

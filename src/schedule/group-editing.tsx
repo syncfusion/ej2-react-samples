@@ -5,16 +5,16 @@ import {
   ViewsDirective, ViewDirective, ResourceDetails, Inject, TimelineViews, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './group-editing.css';
-import { resourceConferenceData } from './datasource';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * schedule resources group-editing sample
  */
 
 export class GroupEditing extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], resourceConferenceData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).resourceConferenceData, null, true) as Object[];
   private resourceData: Object[] = [
     { Text: 'Margaret', Id: 1, Color: '#1aaa55' },
     { Text: 'Robert', Id: 2, Color: '#357cd2' },

@@ -103,7 +103,7 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Selection]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/seat-selection.json')} geometryType='Normal'
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/seat-selection.json')} geometryType='Normal'
                                     shapeSettings={{
                                         colorValuePath: 'fill'
                                     }}
@@ -175,11 +175,13 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
     private clearseats(): void {
         seatInfo.innerHTML = '';
         let selected: HTMLCollection = document.getElementsByClassName('ShapeselectionMapStyle');

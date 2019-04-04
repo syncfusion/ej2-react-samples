@@ -19,11 +19,14 @@ export class Ranges extends SampleBase<{}, {}> {
     private startWidthElement: HTMLInputElement;
     private endWidthElement: HTMLInputElement;
     private colorElement: HTMLInputElement;
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
     }
+    // custom code end
+    // Code for Property Panel
     private indexChange() {
         this.startElement.value = this.gaugeInstance.axes[0].ranges[parseInt(this.indexElement.value as string, 10)].start.toString();
         this.endElement.value = this.gaugeInstance.axes[0].ranges[parseInt(this.indexElement.value as string, 10)].end.toString();
@@ -112,6 +115,7 @@ export class Ranges extends SampleBase<{}, {}> {
                             </AnnotationsDirective>
                         </LinearGaugeComponent>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>

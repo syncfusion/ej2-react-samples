@@ -6,11 +6,11 @@
 		margin-top: 5px;
     }
     .bootstrap .ajaxcontent .e-dialog .e-dlg-header >img.img1 {
-        height: 20px;
-        width: 20px;
-        float: left;
-        margin-right: 10px;
         margin-top: 1px;
+    }
+
+    .bootstrap4 .ajaxcontent .e-dialog .e-dlg-header >img.img1 {
+        margin-top: 0px;
     }
     
     .fabric .ajaxcontent .e-dialog, .bootstrap .ajaxcontent .e-dialog {
@@ -35,6 +35,11 @@
     .ajaxcontent .e-dlg-header-content {
        min-height: 65px; 
     }
+
+    .bootstrap4 .ajaxcontent .e-dlg-header-content {
+       min-height: 50px; 
+    }
+ 
     .ajaxcontent .e-btn .e-btn-icon{
 	  margin-top: -14px;
 	}

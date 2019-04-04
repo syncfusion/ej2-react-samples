@@ -8,8 +8,9 @@ import {
 	TreeMapComponent, Inject, TreeMapTooltip, TreeMapTheme,
 	ILoadedEventArgs
 } from '@syncfusion/ej2-react-treemap';
-import { Metals } from './treemap-data/metals';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/metal.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -17,12 +18,13 @@ const SAMPLE_CSS = `
 
 export class Customization extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
-
+	// Custom code start
 	public load(args: ILoadedEventArgs): void {
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as TreeMapTheme;
 	}
+	// custom code end
 	render() {
 		return (
 			<div className='control-pane'>
@@ -35,7 +37,7 @@ export class Customization extends SampleBase<{}, {}> {
 							text: 'US Gold medal categories in Summer Olympics - 2016',
 							textStyle: { size: '15px' }
 						}}
-						dataSource={Metals}
+						dataSource={datasource.metal}
 						weightValuePath='Gold'
 						tooltipSettings={{			// To config tooltip for treemap
 							visible: true,
@@ -53,6 +55,7 @@ export class Customization extends SampleBase<{}, {}> {
 						<Inject services={[TreeMapTooltip]} />
 					</TreeMapComponent>
 				</div>
+				{/* Source Link */}
 				<div style={{ float: 'right', marginright: '10px' }}>Source:
        <a href=" https://en.wikipedia.org/wiki/United_States_at_the_2016_Summer_Olympics" target="_blank"> en.wikipedia.org</a>
 				</div>

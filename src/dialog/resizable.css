@@ -1,0 +1,12 @@
+div#target.control-section.dialog-resizable {
+    overflow: visible;
+    min-height: 350px;
+}
+
+.material .dialog-resizable #resizableDialog.e-dialog, .bootstrap .dialog-resizable #resizableDialog.e-dialog, 
+.bootstrap4 .dialog-resizable #resizableDialog.e-dialog {
+    min-height: 125px;
+}
+.fabric .dialog-resizable #resizableDialog.e-dialog, .highcontrast .dialog-resizable #resizableDialog.e-dialog {
+    min-height: 135px;
+}

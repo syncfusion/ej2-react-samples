@@ -77,6 +77,9 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
                     </ul>
 
                     <br />
+                    <p>
+                        While using the Grid in a touch device environment, touch and hold the Grid row cell to show the context menu.
+                    </p>
 
                     <p>
                         In this demo, Context Menu feature has enabled by defining the

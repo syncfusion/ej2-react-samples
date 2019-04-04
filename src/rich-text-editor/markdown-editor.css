@@ -1,5 +1,4 @@
 
-
 #rteMarkdown .e-richtexteditor textarea.e-content {
     float: left;
 }
@@ -11,6 +10,13 @@
 }
 #rteMarkdown .e-icon-btn .e-md-preview::before {
     content: '\e345';
+}
+.bootstrap4 #rteMarkdown .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e790';
+}
+
+.bootstrap4 #rteMarkdown .e-icon-btn .e-md-preview::before {
+    content: '\e787';
 }
 
 #rteMarkdown {

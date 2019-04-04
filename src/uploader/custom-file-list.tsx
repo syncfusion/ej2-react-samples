@@ -177,11 +177,11 @@ public render(): JSX.Element {
 				</div>
 			</div>
 			<div id="action-description">
-				<p>This sample demonstrates how to customize the file list with template. Browse or select the files to view the file list template.</p>
+				<p>This example demonstrates how to customize the file list with template. Browse or select the files to view the file list template.</p>
 			</div>
 			<div id="description">
 				<p>The Uploader component allows to customize its file list using template property. The template used for each file in file list.</p>
-				<p>For more information, you can refer to the Template section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/template.html#custom-template">documentation section</a>.</p>
+				<p>For more information, you can refer to the Template section from this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/template/#custom-template">documentation section</a>.</p>
 			</div>
 		</div>
     );

@@ -49,7 +49,7 @@ export class Formats extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingRight: '0px' }}>
                       <div style={{ maxWidth: '200px' }}>
-                        <input id="input1" type="text" onKeyUp={this.sampleKeyUp.bind(this)} />
+                        <input id="input1" type="text" className='e-input' onKeyUp={this.sampleKeyUp.bind(this)} />
                       </div>
                     </td>
                   </tr>
@@ -93,8 +93,8 @@ export class Formats extends SampleBase<{}, {}> {
         <div id="description">
           <p>Here, the "Value" and "Masked Value" labels from the properties panel returns the raw value (unmasked value) and masked value of the MaskedTextBox component.
           You can also get these raw value and masked value anytime through
-          the <b><a href="http://ej2.syncfusion.com/react/documentation/maskedtextbox/api-maskedTextBoxComponent.html#value-string" target="_blank">value</a></b> property
-          and <b><a href="http://ej2.syncfusion.com/react/documentation/maskedtextbox/api-maskedTextBoxComponent.html#getmaskedvalue" target="_blank">getMaskedValue</a></b> method.
+          the <b><a href="https://ej2.syncfusion.com/react/documentation/api/maskedtextbox/#value" target="_blank">value</a></b> property
+          and <b><a href="https://ej2.syncfusion.com/react/documentation/api/maskedtextbox/#getmaskedvalue" target="_blank">getMaskedValue</a></b> method.
           </p>
         </div>
       </div>

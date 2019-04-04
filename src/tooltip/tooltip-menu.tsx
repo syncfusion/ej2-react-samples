@@ -5,6 +5,7 @@
 import { ListViewComponent } from "@syncfusion/ej2-react-lists";
 import { ItemDirective, ItemsDirective, ToolbarComponent } from "@syncfusion/ej2-react-navigations";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import * as ReactDOM from 'react-dom';
 import * as React from "react";
 import { SampleBase } from "../common/sample-base";
 import "./tooltip-menu.css";
@@ -45,14 +46,14 @@ export class TooltipMenu extends SampleBase<{}, {}> {
 
     public onClick(args: any): void {
         if (!args.target.parentNode.parentNode.classList.contains("e-toolbar-item")) {
-            if (this.tooltip && document.getElementsByClassName("e-tooltip-wrap").length > 0) {
+            if (document.getElementsByClassName("e-tooltip-wrap").length > 0) {
                 this.tooltip.close();
             }
         }
     }
 
     public onScroll(): void {
-        if (this.tooltip && document.getElementsByClassName("e-tooltip-wrap").length > 0) {
+        if (document.getElementsByClassName("e-tooltip-wrap").length > 0) {
             this.tooltip.close();
         }
     }
@@ -60,7 +61,7 @@ export class TooltipMenu extends SampleBase<{}, {}> {
     public onBeforeRender(args: any): void {
         let data: any = [{ title: "Wireless & networks" }, { title: "Device" }, { title: "Personal" }];
         for (let i: number = 0; i < data.length; i++) {
-            if (this.tooltip && data[i].title === args.target.parentElement.getAttribute("title")) {
+            if (data[i].title === args.target.parentElement.getAttribute("title")) {
                 this.tooltip.close();
                 this.listData = this.data[i];
             }

@@ -58,11 +58,11 @@ export class AjaxContent extends SampleBase<{}, {hideDialog: boolean;}> {
     public dialogOpen(): void {
         this.buttonElement.style.display='none';
     }
-	private innerContent: string = `On October 17, Microsoft will release its Fall Creators Update for the Windows 10 platform.
-    Much like its previous counter part, the Spring Creators Update, the release is set to deliver more features to Windows 10
-    for both developers and users with particular emphasis this time around on app modernization, mixed reality
-    and game development and software updates. App modernization is the term Microsoft used in its press event to encompass the
-    features that will affect most Windows 10 users and developers. The updates primarily serve to make using Windows 10`
+    private innerContent: string = `On October 17, Microsoft will release its Fall Creators Update for the Windows
+    10 platform. Much like its previous counterpart, the Spring Creators Update, the release is set to deliver more 
+    features to Windows 10 for both developers and users, with particular emphasis this time around on app modernization,
+    mixed reality, and game development and software updates. App modernization is the term Microsoft used in its press 
+    event to encompass the features that will affect most Windows 10 users and developers.`
 
     public render(): JSX.Element {
         return (
@@ -80,7 +80,7 @@ export class AjaxContent extends SampleBase<{}, {hideDialog: boolean;}> {
                 </div>
                 <div id="action-description">
                 <p>
-                    This sample demonstrates that the content of dialog can be loaded from external HTML file. Click "more details" on dialog to load the content dynamically from external HTML file. Click “open” to show the dialog again, if it is closed. 
+                    This example demonstrates that the content of dialog can be loaded from external HTML file. Click "more details" on dialog to load the content dynamically from external HTML file. Click “open” to show the dialog again, if it is closed. 
                 </p>
                 </div>
                 <div id="description">

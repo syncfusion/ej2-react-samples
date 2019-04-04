@@ -73,22 +73,16 @@ export class Orientation extends SampleBase<{}, {}> {
     }
 
     public refreshTooltip(e: any): void {
-        if (!isNullOrUndefined(document.getElementById('slider01')) &&
-            !isNullOrUndefined((document.getElementById('slider01') as any).ej2_instances[0]) && !isNullOrUndefined(document.getElementById('slider02')) &&
-            !isNullOrUndefined((document.getElementById('slider02') as any).ej2_instances[0]) && !isNullOrUndefined(document.getElementById('slider03')) &&
-            !isNullOrUndefined((document.getElementById('slider03') as any).ej2_instances[0])) {
-            let element01: any = document.getElementById('slider01');
-            let element02: any = document.getElementById('slider02');
-            let element03: any = document.getElementById('slider03');
-            element01.ej2_instances[0].refreshTooltip();
-            element02.ej2_instances[0].refreshTooltip();
-            element03.ej2_instances[0].refreshTooltip();
+        if (this.defaultObj && this.rangeObj && this.minRangeObj) {
+            (this.defaultObj as any).refreshTooltip((this.defaultObj as any).tooltipTarget);
+            (this.minRangeObj as any).refreshTooltip((this.minRangeObj as any).tooltipTarget);
+            (this.rangeObj as any).refreshTooltip((this.rangeObj as any).tooltipTarget);
         }
     }
 
     render() {
         if (!isNullOrUndefined(document.getElementById('right-pane'))) {
-            document.getElementById('right-pane').addEventListener('scroll', this.refreshTooltip);
+            document.getElementById('right-pane').addEventListener('scroll', this.refreshTooltip.bind(this));
         }
         return (
             <div className='control-pane' style={{ overflow: 'hidden' }}>

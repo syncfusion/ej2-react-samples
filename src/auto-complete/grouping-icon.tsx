@@ -6,39 +6,19 @@ import * as React from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import './icons.css';
+import * as data from './dataSource.json';
 
 export class Grouping extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
+  private temp:string = 'vegetableData';
   // define the JSON of data
-  private vegetableData: { [key: string]: Object }[] = [
-    { Vegetable: 'Cabbage', Category: 'Leafy and Salad', Id: 'item1' },
-    { Vegetable: 'Chickpea', Category: 'Beans', Id: 'item2' },
-    { Vegetable: 'Garlic', Category: 'Bulb and Stem', Id: 'item3' },
-    { Vegetable: 'Green bean', Category: 'Beans', Id: 'item4' },
-    { Vegetable: 'Horse gram', Category: 'Beans', Id: 'item5' },
-    { Vegetable: 'Nopal', Category: 'Bulb and Stem', Id: 'item6' },
-    { Vegetable: 'Onion', Category: 'Bulb and Stem', Id: 'item7' },
-    { Vegetable: 'Pumpkins', Category: 'Leafy and Salad', Id: 'item8' },
-    { Vegetable: 'Spinach', Category: 'Leafy and Salad', Id: 'item9' },
-    { Vegetable: 'Wheat grass', Category: 'Leafy and Salad', Id: 'item10' },
-    { Vegetable: 'Yarrow', Category: 'Leafy and Salad', Id: 'item11' }
-  ];
+  private vegetableData: { [key: string]: Object }[] = data[this.temp];
   // maps the appropriate column to grouping fields property
   private groupFields: Object = { groupBy: 'Category', value: 'Vegetable' };
+  private tempData:string = 'socialMedia';
   // define the JSON of data
-  private socialMediaData: { [key: string]: Object }[] = [
-    { Class: 'facebook', SocialMedia: 'Facebook', Id: 'media1' },
-    { Class: 'google-plus', SocialMedia: 'Google Plus', Id: 'media2' },
-    { Class: 'instagram', SocialMedia: 'Instagram', Id: 'media3' },
-    { Class: 'linkedin', SocialMedia: 'LinkedIn', Id: 'media4' },
-    { Class: 'skype', SocialMedia: 'Skype', Id: 'media5' },
-    { Class: 'tumblr', SocialMedia: 'Tumblr', Id: 'media6' },
-    { Class: 'twitter', SocialMedia: 'Twitter', Id: 'media7' },
-    { Class: 'vimeo', SocialMedia: 'Vimeo', Id: 'media8' },
-    { Class: 'whatsapp', SocialMedia: 'WhatsApp', Id: 'media9' },
-    { Class: 'youtube', SocialMedia: 'YouTube', Id: 'media10' }
-  ];
+  private socialMediaData: { [key: string]: Object }[] =data[this.tempData];
   // maps the appropriate column to icons fields property
   private iconFields: Object = { value: 'SocialMedia', iconCss: 'Class' };
 
@@ -48,13 +28,13 @@ export class Grouping extends SampleBase<{}, {}> {
         <div className='control-section' id='autoIcon'>
           <div className='col-lg-6'>
             <div id="group">
-              <h4>Grouping</h4>
+              <h3>Grouping</h3>
               <AutoCompleteComponent id="vegetables" showPopupButton={true} dataSource={this.vegetableData} fields={this.groupFields} placeholder="e.g. Cabbage" />
             </div>
           </div>
           <div className='col-lg-6'>
             <div id="icon">
-              <h4> Icons</h4>
+              <h3> Icons</h3>
               <AutoCompleteComponent id="icons" showPopupButton={true} dataSource={this.socialMediaData} fields={this.iconFields} placeholder="e.g. Facebook" />
             </div>
           </div>

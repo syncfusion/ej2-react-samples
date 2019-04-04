@@ -4,9 +4,10 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { fifaEventsData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule view based configuration sample
@@ -14,7 +15,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class ExtendedViews extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], fifaEventsData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).fifaEventsData, null, true) as Object[];
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }

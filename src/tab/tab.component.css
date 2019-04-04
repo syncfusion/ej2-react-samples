@@ -1,7 +1,6 @@
 .tab-control-section  .e-content .e-item {
     font-size: 12px;
     padding: 10px;
-    margin: 10px;
     text-align: justify;
 }
 .tab-control-section  .e-headertext {
@@ -60,6 +59,8 @@
     display: block;
     text-align: center;
 }
+
+/* custom code start*/
 .tab-control-section .property-panel-content {
     padding: 10px;
 }
@@ -71,6 +72,8 @@
         width: 45%;
     }
 }
+
+/* custom code end*/
 
 #amount {
     text-align: right;

@@ -106,7 +106,7 @@ export class Vertical extends SampleBase<{}, {}> {
                     <p>
                         The vertical card sample illustrate card contents in vertically aligned layout with header, content, and action buttons.
                     <p>More information about Card can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/card/getting-started.html">
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/card/getting-started/">
                                 documentation</a> section.</p>
                     </p>
                 </div>
