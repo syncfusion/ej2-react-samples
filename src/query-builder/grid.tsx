@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { QueryBuilderComponent, ColumnsModel, RuleModel, QueryBuilder } from '@syncfusion/ej2-react-querybuilder';
+import { QueryBuilderComponent, ColumnsModel, RuleModel, QueryBuilder, RuleChangeEventArgs } from '@syncfusion/ej2-react-querybuilder';
 import { Query, Predicate, DataManager } from '@syncfusion/ej2-data';
 import { hardwareData } from './data-source';
 import { GridComponent, Page, Inject, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
@@ -14,8 +14,8 @@ export class DataGrid extends SampleBase<{}, {}> {
     public gridObj: GridComponent;
     public datamanager: DataManager = new DataManager(hardwareData);
     public query: Query = new Query().select(['TaskID', 'Name', 'Category', 'SerialNo', 'InvoiceNo', 'Status']);
-    updateRule(): void {
-        let predicate: Predicate = this.qbObj.getPredicate({ condition: this.qbObj.rule.condition, rules: this.qbObj.rule.rules });
+    updateRule(args: RuleChangeEventArgs): void {
+        let predicate: Predicate = this.qbObj.getPredicate(args.rule);
         if (isNullOrUndefined(predicate)) {
             this.gridObj.query = new Query().select(['TaskID', 'Name', 'Category', 'SerialNo', 'InvoiceNo', 'Status']);
             } else {
@@ -23,6 +23,10 @@ export class DataGrid extends SampleBase<{}, {}> {
             .where(predicate);
             }
             this.gridObj.refresh();
+    }
+
+    onGridCreated(): void {
+        this.updateRule({rule: this.qbObj.getValidRules(this.qbObj.rule) });
     }
 
     columnData: ColumnsModel[] = [
@@ -53,15 +57,15 @@ export class DataGrid extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section qb-section'>
                     <div className='row'>
-                        <div className='col-lg-12 control-section'>
+                        <div className='col-lg-12 control-section qb-section'>
                             <QueryBuilderComponent width='100%' dataSource={hardwareData} columns={this.columnData}
-                                rule={this.importRules} change={this.updateRule.bind(this)} ref={(scope) => { this.qbObj = scope; }}>
+                                rule={this.importRules} ruleChange={this.updateRule.bind(this)} ref={(scope) => { this.qbObj = scope; }}>
                             </QueryBuilderComponent>
                         </div>
-                        <div className='col-lg-12 control-section'>
+                        <div className='col-lg-12 control-section qb-section'>
                             <div className='content-wrapper'>
                                 <GridComponent allowPaging={true} dataSource={this.datamanager} width='100%'
-                                    ref={(scope) => { this.gridObj = scope; }} query={this.query} created={this.updateRule.bind(this)}>
+                                    ref={(scope) => { this.gridObj = scope; }} query={this.query} created={this.onGridCreated.bind(this)}>
                                     <ColumnsDirective>
                                         <ColumnDirective field='TaskID' headerText='Task ID' width='120' textAlign='Right' />
                                         <ColumnDirective field='Name' headerText='Name' width='140' />

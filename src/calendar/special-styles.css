@@ -20,6 +20,13 @@
     margin-left: 4px;
 }
 
+.bootstrap4 .e-customStyle span.e-icons.highlight:before {
+    vertical-align: none;
+}
+.bootstrap4 .e-customStyle span.e-icons.highlight {
+    margin-bottom: 3px;
+}
+
 .e-customStyle .e-other-month span.e-icons.highlight:before {
     content: "";
 }

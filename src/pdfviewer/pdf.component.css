@@ -62,11 +62,13 @@ div#magnificationToolbar.e-toolbar .e-toolbar-items {
     font-size: 12px;
 }
 
-.e-pv-download-document-icon::before {
+#topToolbar .e-pv-download-document-icon::before {
+	padding-left: 4px;
     content: '\ed05';
 }
 
-.e-pv-print-document-icon::before {
+#topToolbar .e-pv-print-document-icon::before {
+	padding-left: 1px;
     content: '\ed08';
 }
 

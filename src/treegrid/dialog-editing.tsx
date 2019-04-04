@@ -25,7 +25,7 @@ export class Dialog extends SampleBase<{}, {}> {
               <ColumnDirective field='taskName' headerText='Task Name' width='150' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='110' textAlign='Right'
                 editType='datepickeredit' format='yMd' validationRules={this.validationRule1} />
-              <ColumnDirective field='startDate' headerText='End Date' width='130' textAlign='Right'
+              <ColumnDirective field='endDate' headerText='End Date' width='130' textAlign='Right'
                 editType='datepickeredit' format='yMd' />
               <ColumnDirective field='duration' headerText='Duration' width='90' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />

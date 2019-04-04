@@ -10,7 +10,6 @@
         line-height: 1.5;
         font-size: 13px;
         font-weight: 500;
-        color: rgba(0, 0, 0, 0.61);
     }
 
     #api_property .row .e-btn {
@@ -30,10 +29,6 @@
         text-align: center;
     }
 
-    #api_dashboard.e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
-        color: rgba(0, 0, 0, 0.54);
-    }
-
     #api_dashboard .e-panel-content {
         height: calc(100% - 28px);
         width: 100%;
@@ -44,11 +39,6 @@
         padding: 12px 0 12px 0;
     }
     
-    
-    #api_dashboard.e-dashboardlayout.e-control .e-panel:hover {
-        border: 0px;
-    }
-    
     #api_dashboard.e-dashboardlayout.e-control .e-panel .e-panel-header {
         font-size: 15px;
         font-weight: 500;
@@ -56,7 +46,7 @@
         padding: 10px;
         vertical-align: middle;
         background-color: rgba(0, 0, 0, .03);
-        border-bottom: 0.5px solid rgba(0, 0, 0, .125);
+        border-bottom: 0.5px solid #e3e3e3;
     }
     
     #api_property .row {
@@ -95,11 +85,5 @@
     
     div#control_dash {
         border: 1px solid lightgray;
-    }
-
-    #api_dashboard.e-dashboardlayout.e-control .e-panel,
-    #api_dashboard.e-dashboardlayout.e-control .e-panel:hover,
-    #api_dashboard.e-dashboardlayout.e-control .e-panel:active {
-        border: 1px solid rgba(0, 0, 0, .125);
     }
 

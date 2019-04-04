@@ -32,7 +32,7 @@ export class Default extends SampleBase<{}, {}> {
                     <CircularGaugeComponent load={this.load.bind(this)} id='gauge'>
                         <AxesDirective>
                             <AxisDirective radius='80%' startAngle={230} endAngle={130}
-                                majorTicks={{ width: 0 }} lineStyle={{ width: 8, color: '#E0E0E0' }}
+                                majorTicks={{ width: 0 }} lineStyle={{ width: 8 }}
                                 minorTicks={{ width: 0 }} labelStyle={{
                                     font: {
                                         fontFamily: 'Roboto',
@@ -42,12 +42,10 @@ export class Default extends SampleBase<{}, {}> {
                                     offset: -5
                                 }}>
                                 <PointersDirective>
-                                    <PointerDirective value={60} radius='60%' color='#757575' pointerWidth={7} cap={{
+                                    <PointerDirective value={60} radius='60%'  pointerWidth={7} cap={{
                                         radius: 8,
-                                        color: '#757575',
                                         border: { width: 0 }
                                     }} needleTail ={{
-                                        color: '#757575',
                                         length: '25%'
                                     }} />
                                 </PointersDirective>

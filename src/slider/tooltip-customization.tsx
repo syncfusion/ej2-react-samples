@@ -144,11 +144,6 @@ export class TooltipCustomization extends SampleBase<{}, {}> {
             args.text = 'Until ' + new Date(Number(args.text)).toLocaleTimeString('en-us', custom);
         }
     }
-    public onCreated02(args: any): void {
-        let element01: any = document.getElementById('out');
-        element01.ej2_instances[0].keyUp({ keyCode: 9, target: element01.ej2_instances[0].firstHandle });
-        element01.ej2_instances[0].firstHandle.focus();
-    }
     public sliderTicks: any = {
         placement: 'After',
         // 3 * 3600000 milliseconds = 3 Hour
@@ -168,21 +163,15 @@ export class TooltipCustomization extends SampleBase<{}, {}> {
 
     // Handler used to reposition the tooltip on page scroll
     public onScroll(): void {
-        if (!isNullOrUndefined(document.getElementById('slider01')) &&
-            !isNullOrUndefined((document.getElementById('slider01') as any).ej2_instances[0]) && !isNullOrUndefined(document.getElementById('out')) &&
-            !isNullOrUndefined((document.getElementById('out') as any).ej2_instances[0])) {
-            let element01: any = document.getElementById('slider01');
-            let element02: any = document.getElementById('out');
-            element01.ej2_instances[0].refreshTooltip(element01.ej2_instances[0].tooltipTarget);
-            element02.ej2_instances[0].refreshTooltip(element02.ej2_instances[0].tooltipTarget);
+        if (this.sliderObj && this.timeObj) {
+            (this.timeObj as any).refreshTooltip((this.timeObj as any).tooltipTarget);
+            (this.sliderObj as any).refreshTooltip((this.sliderObj as any).tooltipTarget);
         }
     }
 
-
-
     render() {
         if (!isNullOrUndefined(document.getElementById('right-pane'))) {
-            document.getElementById('right-pane').addEventListener('scroll', this.onScroll);
+            document.getElementById('right-pane').addEventListener('scroll', this.onScroll.bind(this));
         }
         return (
             <div className='control-pane'>
@@ -201,7 +190,7 @@ export class TooltipCustomization extends SampleBase<{}, {}> {
                                 <span className="label-text">Color and text</span>
                             </label>
                             {/* Ticks slider element - */}
-                            <SliderComponent id="out" value={new Date(2013, 6, 13, 17).getTime()} min={this.sliderMin} max={this.sliderMax} step={3600000 / 6} ticks={this.sliderTicks} type="MinRange" tooltip={this.sliderTooltip} tooltipChange={this.tooltipChangeHandler.bind(this)} created={this.onCreated02.bind(this)} ref={(slider) => { this.sliderObj = slider }} renderingTicks={this.onRenderingTicks.bind(this)} />
+                            <SliderComponent id="out" value={new Date(2013, 6, 13, 17).getTime()} min={this.sliderMin} max={this.sliderMax} step={3600000 / 6} ticks={this.sliderTicks} type="MinRange" tooltip={this.sliderTooltip} tooltipChange={this.tooltipChangeHandler.bind(this)} ref={(slider) => { this.sliderObj = slider }} renderingTicks={this.onRenderingTicks.bind(this)} />
                         </div>
                     </div>
                 </div>

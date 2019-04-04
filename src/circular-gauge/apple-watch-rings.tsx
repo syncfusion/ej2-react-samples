@@ -29,6 +29,8 @@ const SAMPLE_CSS = `
     margin-left: 62px !important;
     margin-top: 6% !important;
     text-align: left !important;
+    border: 0px solid #dddddd;
+    min-height: auto;
     position: absolute;
 }
 

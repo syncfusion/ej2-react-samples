@@ -49,7 +49,7 @@ export class Editing extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent dataSource={editingData} dateFormat={'MMM dd, y'}
+          <GanttComponent id='Editing' dataSource={editingData} dateFormat={'MMM dd, y'}
             treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings}
@@ -99,25 +99,19 @@ export class Editing extends SampleBase<{}, {}> {
             This CRUD operations can be configured in Gantt chart using <code>editSettings</code> and
         <code>allowTaskbarEditing</code>. Gantt chart
                 has two modes to manipulate the datasource
-        <li><code>Normal</code></li>
             <li><code>Auto</code></li>
+            <li><code>Dialog</code></li>
             In this demo, <code>Auto</code> mode is enabled for editing. On the TreeGrid side, you can start editing any row
             by double
             clicking on it or clicking on toolbar’s Edit button, then the currently selected row will be changed to edited
             state. On the chart side, you can edit the tasks using edit dialog by double clicking on the taskbars and you
             can edit the dependency connector lines using drag and drop action with connector line points available on the
             either side of taskbar.
-    </p>
-          <p>Injecting Module:</p>
+          </p>
           <p>
             Gantt component features are segregated into individual feature-wise modules. To use editing feature, inject the
-        Edit module using the <code>Gantt.Inject(Edit)</code> method. To use a selection, inject the
-        Selection module using the <code>Gantt.Inject(Selection)</code> method, and use a sort by injecting the Sort
-                module using
-                the <code>Gantt.Inject(Sort)</code> method. To use markers, inject the
-        DayMarkers module using the <code>Gantt.Inject(DayMarkers)</code> method.
-
-    </p>
+            <code>Edit</code> module. To use a selection feature, inject the <code>Selection</code> module.
+          </p>
         </div>
       </div>
     )

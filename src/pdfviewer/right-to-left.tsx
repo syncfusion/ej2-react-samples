@@ -58,9 +58,9 @@ L10n.load({
 			'Opacity': 'غموض',
 			'Color edit': 'غير اللون',
 			'Opacity edit': 'تغيير التعتيم',
-			'highlight': 'تسليط الضوء',
-			'underline': 'أكد',
-			'strikethrough': 'يتوسطه',
+			'Highlight context': 'تسليط الضوء',
+			'Underline context': 'أكد',
+			'Strikethrough context': 'يتوسطه',
 			'Open text': 'افتح',
 			'First text': 'الصفحة الأولى',
 			'Previous text': 'الصفحة السابقة',
@@ -71,7 +71,7 @@ L10n.load({
 			'Selection text': 'اختيار',
 			'Pan text': 'مقلاة',
 			'Print text': 'طباعة',
-			'Seach text': 'بحث',
+			'Search text': 'بحث',
 			'Annotation Edit text': 'تحرير التعليق التوضيحي'
         }
     }

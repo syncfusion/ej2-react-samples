@@ -780,3 +780,6 @@ function loadTheme(theme: string): void {
   });
 }
 
+if ('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/src/service-worker.js');
+  }

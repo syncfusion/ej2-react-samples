@@ -9,8 +9,24 @@
 .accordion-control-section .e-accordion .e-acrdn-icons {
     font-family: 'acrdn-icons' !important;
     font-size: 16px;
+    vertical-align: middle;
 }
 
+.bootstrap4 .e-acrdn-icons {
+    font-size: 14px !important;
+}
+
+.e-bigger.bootstrap4 .e-acrdn-icons {
+    font-size: 16px !important;
+}
+
+.e-bigger.bootstrap4 .e-acrdn-icons:not(.e-icons) {
+    padding: 0 12px 0 0 !important;
+}
+
+.bootstrap4 .e-acrdn-icons:not(.e-icons) {
+    padding: 0 8px 0 0 !important;
+}
 .cycle_BMX::before {
     content: "\e702"
 }

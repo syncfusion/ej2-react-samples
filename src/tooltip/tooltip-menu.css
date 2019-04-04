@@ -141,3 +141,15 @@
     #tooltipMenu-list .language:before {
         content: "\e710";
     }
+
+    .bootstrap4 .e-tooltip-menu-settings.e-tooltip-wrap.e-popup {
+		border-color: rgba(0, 0, 0, .15);
+	}
+	
+	.bootstrap4 .e-tooltip-menu-settings.e-tooltip-wrap.e-popup .e-listview {
+		border: 0;
+	}
+	
+	.bootstrap4 .e-tooltip-menu-settings.e-tooltip-wrap.e-popup .e-arrow-tip-outer.e-tip-top {
+		border-bottom: 6px solid rgba(0, 0, 0, .15);
+	}

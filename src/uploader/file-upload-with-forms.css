@@ -40,7 +40,9 @@
     margin-right: -106px;
 }
 
-.fabric .e-float-input.upload-area button#browse, .highcontrast .e-float-input.upload-area button#browse {
+.fabric .e-float-input.upload-area button#browse,
+.bootstrap4 .e-float-input.upload-area button#browse, 
+.highcontrast .e-float-input.upload-area button#browse {
     float: right;
 	margin-right: -106px;
 	margin-top: -32px;

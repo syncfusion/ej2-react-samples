@@ -57,6 +57,11 @@
 .e-visbile-layer {
     visibility: visible;
 }
+
+.bootstrap4 .layout #list-container .e-listview .e-active .e-icon {
+    color: #fff;
+}
+
 /* ListView customization */
 
 @font-face {

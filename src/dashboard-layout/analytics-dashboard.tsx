@@ -254,7 +254,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
                         <Inject services={[SplineAreaSeries, DateTime, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='Jan'
-                                opacity={0.5} type='SplineArea' width={2} fill="#db3673c4">
+                                opacity={0.5} type='SplineArea' width={2} fill="rgb(239, 183, 202)">
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' name='Feb'
                                 opacity={0.5} type='SplineArea' width={2} fill="rgb(14, 64, 152, .6)">
@@ -323,7 +323,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
                             <SeriesDirective dataSource={
                                  [{ x: 'Jan', y: 37 }, { x: 'Feb', y: 23 }, { x: 'Mar', y: 18 }]
                             } xName='x' yName='y' name='Mobile' type='Column'
-                                marker={{ dataLabel: { visible: false, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }}>
+                                marker={{ dataLabel: { visible: false, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }}  fill='#e56691'>
                             </SeriesDirective>
                             <SeriesDirective dataSource={
                                 [{ x: 'Jan', y: 38 }, { x: 'Feb', y: 17 }, { x: 'Mar', y: 26 }]
@@ -340,7 +340,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
         return (
             <div>
                 <div className="control-section" id="target_dash">
-                <div className="col-lg-12 col-sm-12 col-md-12" id="panel-section">
+                <div className="col-lg-12 col-sm-12 col-md-12" id="dashboard_sidebar_section">
                     <div id="analytic_head">
                             <div className="header">
                                 <div className="menu"><span className="e-icons expand"></span></div>
@@ -396,13 +396,11 @@ export class SEODashboard extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                         <p>
-                            This sample demonstrates the properties of Dashboard Layout component from the property pane.
-                            Select any combination of properties from the property pane to customize the Dashboard Layout.
+                        The following sample demonstrates the usecase of DashboardLayout component in realtime SEO data analysis.
                         </p>
                 </div>
                 <div id="description">
-                        This sample allows to configure the <code>cellSize</code>, <code>cellSpacing</code>, <code>allowFloating</code> and
-                        <code>allowPushing</code> properties of the Dashboard Layout component.
+                The sample demonstrates the realtime SEO data analytics dashboard layout.
                 </div>
             </div>
         );

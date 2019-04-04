@@ -29,7 +29,7 @@ export class Default extends SampleBase<{}, {}> {
                     <LinearGaugeComponent load={this.load.bind(this)} id='gauge' orientation='Horizontal'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
-                            <AxisDirective minorTicks={{ color: '#9E9E9E', interval: 2 }} majorTicks={{ color: '#9E9E9E', interval: 10 }} labelStyle={{ font: { color: '#424242' }, offset: 48 }}>
+                            <AxisDirective minorTicks={{  interval: 2 }} majorTicks={{ interval: 10 }} labelStyle={{ font: { color: '#424242' }, offset: 48 }}>
                                 <PointersDirective>
                                     <PointerDirective value={10} placement='Near' height={15} width={15} offset={-50} markerType='Triangle'>
                                     </PointerDirective>

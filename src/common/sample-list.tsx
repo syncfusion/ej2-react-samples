@@ -54,6 +54,7 @@ import { QueryBuilderSampleOrder } from '../query-builder/config';
 import { DashboardLayoutSampleOrder } from '../dashboard-layout/config';
 import { FileManagerSampleOrder } from '../file-manager/config';
 import { GanttSampleOrder } from '../gantt/config';
+import { ListBoxSampleOrder } from '../list-box/config';
 
 export let samplesList: any = [
     {
@@ -105,7 +106,7 @@ export let samplesList: any = [
         'name': 'Button', 'category': 'Editors', 'order': '04', 'path': 'button', 'samples': ButtonSampleOrder
     },
     {
-        'name': 'DocumentEditor', 'category': 'Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
+        'name': 'DocumentEditor', 'category': 'Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder, 'type': 'update'
     },
     {
         'name': 'RichTextEditor', 'type': 'update', 'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
@@ -144,10 +145,22 @@ export let samplesList: any = [
         'name': 'MultiSelect Dropdown', 'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder,
     },
     {
-        'name': 'Sidebar', 'category': 'Navigation', 'path': 'sidebar', 'samples': SidebarSampleOrder, 'type': 'update'
+        'name': 'List Box', 'category': 'Dropdowns', 'ftName': 'list-box', 'order': '04', 'path': 'list-box', 'samples': ListBoxSampleOrder, 'type':'preview'
     },
     {
-        'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder, 'type':'update'
+        'name': 'Accordion', 'category': 'Navigation', 'path': 'accordion', 'samples': AccordionSampleOrder
+    },
+    {
+        'name': 'Context Menu', 'category': 'Navigation', 'path': 'context-menu', 'samples': ContextMenuSampleOrder, 'ftName': 'context-menu'
+    },
+    {
+        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager', 'type': 'preview'
+    },
+    {
+        'name': 'Menu Bar', 'category': 'Navigation', 'path': 'menu', 'samples': MenuSampleOrder, 'ftName': 'menu-bar'
+    },
+    {
+        'name': 'Sidebar', 'category': 'Navigation', 'path': 'sidebar', 'samples': SidebarSampleOrder, 'type': 'update'
     },
     {
         'name': 'Tabs', 'category': 'Navigation', 'path': 'tab', 'samples': TabSampleOrder
@@ -156,16 +169,7 @@ export let samplesList: any = [
 		'name': 'Toolbar', 'category': 'Navigation', 'path': 'toolbar', 'samples': ToolbarSampleOrder
     },
     {
-        'name': 'Context Menu', 'category': 'Navigation', 'path': 'context-menu', 'samples': ContextMenuSampleOrder, 'ftName': 'context-menu'
-    },
-    {
-        'name': 'Menu Bar', 'category': 'Navigation', 'path': 'menu', 'samples': MenuSampleOrder, 'ftName': 'menu-bar'
-    },
-    {
-        'name': 'Accordion', 'category': 'Navigation', 'path': 'accordion', 'samples': AccordionSampleOrder
-    },
-    {
-        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager', 'type': 'preview'
+        'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder, 'type':'update'
     },
     {
         'name': 'Badge', 'category': 'Notifications', 'order': '01', 'path': 'badge', 'samples': BadgeSampleOrder
@@ -191,23 +195,26 @@ export let samplesList: any = [
     {
         'name': 'Color Picker', 'category': 'Inputs', 'order': '04', 'path': 'color-picker', 'samples': ColorPickerSampleOrder, 'ftName': 'color-picker'
     },
+	{
+        'name': 'Avatar', 'category': 'Layout', 'order': '05', 'path': 'avatar', 'samples': AvatarSampleOrder
+    },
     {
-        'name': 'ListView', 'category': 'Layout', 'order': '05', 'path': 'listview', 'samples': ListViewSampleOrder
+        'name': 'Card', 'category': 'Layout', 'order': '05', 'path': 'card', 'samples': CardSampleOrder
+    },
+    {
+        'name': 'Dashbaord Layout', 'category': 'Layout', 'order': '05', 'path': 'dashboard-layout', 'samples': DashboardLayoutSampleOrder, 'type':'preview'
     },
     {
         'name': 'Dialog', 'category': 'Layout', 'order': '05', 'path': 'dialog', 'samples': DialogSampleOrder, 'ftName' :'modal-dialog'
     },
     {
+        'name': 'ListView', 'category': 'Layout', 'order': '05', 'path': 'listview', 'samples': ListViewSampleOrder
+    },
+    {
+        'name': 'Splitter', 'category': 'Layout', 'order': '05', 'path': 'splitter', 'samples': SplitterSampleOrder, 'type':'update'
+    },
+    {
         'name': 'Tooltip', 'category': 'Layout', 'order': '05', 'path': 'tooltip', 'samples': TooltipSampleOrder
-    },
-    {
-        'name': 'Card', 'category': 'Layout', 'path': 'card', 'samples': CardSampleOrder
-    },
-	{
-        'name': 'Avatar', 'category': 'Layout', 'path': 'avatar', 'samples': AvatarSampleOrder
-    },
-    {
-        'name': 'Splitter', 'category': 'Layout', 'path': 'splitter', 'samples': SplitterSampleOrder, 'type':'update'
     },
     {
         'name': 'In-place Editor', 'category': 'Editors', 'path': 'inplace-editor', 'samples': InPlaceEditorSampleOrder       
@@ -217,9 +224,6 @@ export let samplesList: any = [
     },
 	{
         'name': 'PDF Viewer', 'type': 'update', 'category': 'Viewer', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'
-    },
-    {
-        'name': 'Dashbaord Layout', 'category': 'Layout', 'path': 'dashboard-layout', 'samples': DashboardLayoutSampleOrder, 'type':'preview'
     }
 
 ];

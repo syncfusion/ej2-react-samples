@@ -51,7 +51,7 @@ export class RemoteData extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent dataSource={this.dataSource} allowSorting={true} dateFormat={'MMM dd, y'}
+          <GanttComponent id='RemoteData' dataSource={this.dataSource} allowSorting={true} dateFormat={'MMM dd, y'}
             treeColumnIndex={0} allowSelection={true} highlightWeekends={false} includeWeekend={true}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} gridLines={this.gridLines} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings}
@@ -78,8 +78,8 @@ export class RemoteData extends SampleBase<{}, {}> {
           <p>
             The <code>dataSource</code> property in Gantt chart can be assigned with the instance of
         <code>DataManager</code> to bind remote data.
-                    The DataManager, which will act as an interface between the service endpoint and the Gantt chart, will require
-                    the below minimal information to interact with service endpoint properly.
+                        The DataManager, which will act as an interface between the service endpoint and the Gantt chart, will require
+                        the below minimal information to interact with service endpoint properly.
         <li><code>DataManager->url</code> - Defines the service endpoint to fetch data</li>
             <li><code>DataManager->adaptor</code> - Defines the adaptor option. By default, ODataAdaptor is used for remote
             binding.</li>
@@ -97,12 +97,11 @@ export class RemoteData extends SampleBase<{}, {}> {
         <code>dataSource</code>
             property.
             More information on the data binding can be found in this documentation section.
-    </p>
-          <p>Injecting Module:</p>
+          </p>
           <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
-        Selection module using the <code>Gantt.Inject(Selection)</code> method
-    </p>
+            Gantt component features are segregated into individual feature-wise modules. To use a selection feature, inject the
+            <code>Selection</code> module.
+          </p>
         </div>
       </div>
     )

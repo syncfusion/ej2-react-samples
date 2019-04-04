@@ -44,3 +44,7 @@
     display: inline-block;
     width: 100%;
 }
+
+#splitter1 #splitter-tree ul.e-list-parent.e-ul {
+	padding: 0 0 0 16px;
+}

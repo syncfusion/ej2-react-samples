@@ -95,6 +95,9 @@ export class OutlookLayout extends SampleBase<{}, {}> {
         this.splitterInstance.element.querySelector('#lastname-target').appendChild(this.textBox2.element.parentElement);
         this.splitterInstance.element.querySelector('#subject-target').appendChild(this.textBox3.element.parentElement);
     }
+    private onSplitterResize(): void {
+        this.rteObj.refresh();
+    }
     public render(): JSX.Element {
         return (
             <div id="target" className="control-section outlook-style" >
@@ -107,7 +110,7 @@ export class OutlookLayout extends SampleBase<{}, {}> {
             <TreeViewComponent id='splitter-tree' fields= {this.treeFields} nodeTemplate = {this.nodeTemplate} ref={(tree) => { this.treeInstance = tree }}/>
             <ListViewComponent id='groupedList-split' fields = { this.listFields } className ='splitter-list' dataSource = {this.dataSource}
             cssClass = {'e-list-template'} groupTemplate = {this.grouptemplate} template = {this.listTemplate} ref={(listview) => { this.listViewObj = listview }}/>
-                    <SplitterComponent id="splitter1" height="493px" width="100%" ref={(splitter) => { this.splitterInstance = splitter }} created={this.onCreate.bind(this)}>
+                    <SplitterComponent id="splitter1" height="493px" width="100%" ref={(splitter) => { this.splitterInstance = splitter }} created={this.onCreate.bind(this)} resizeStop={this.onSplitterResize.bind(this)}>
                         <PanesDirective>
                             <PaneDirective size={this.paneSize1} min={this.minimumSize1} content={this.content1}>
                             </PaneDirective>

@@ -32,10 +32,10 @@ export class Container extends SampleBase<{}, {}> {
         { value: 'Vertical' },
         { value: 'Horizontal' }
     ];
-    private modelist: { [key: string]: Object }[] = [
+    private modelist: { [key: string]: Object }[] = [        
+        { value: 'Thermometer' },
         { value: 'Normal' },
-        { value: 'RoundedRectangle' },
-        { value: 'Thermometer' }
+        { value: 'RoundedRectangle' }
     ];
     render() {
         return (
@@ -79,7 +79,7 @@ export class Container extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                     <div style={{ paddingBottom: '20px', width: '90%' }}>
-                                    <DropDownListComponent width={120} id="containerMode" style={{ "width": "90%" }} change={this.containerChange.bind(this)} className="form-control" ref={d => this.containerElement = d} dataSource={this.modelist} fields={{text: 'value', value: 'value'}} value="Normal"/>
+                                    <DropDownListComponent width={120} id="containerMode" style={{ "width": "90%" }} change={this.containerChange.bind(this)} className="form-control" ref={d => this.containerElement = d} dataSource={this.modelist} fields={{text: 'value', value: 'value'}} value="Thermometer"/>
                                     </div>
                                     </td>
                                 </tr>

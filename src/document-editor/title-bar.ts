@@ -53,7 +53,7 @@ export class TitleBar {
         this.tileBarDiv.appendChild(this.documentTitleContentEditor);
         this.documentTitleContentEditor.setAttribute('title', documentTileText);
         let btnStyles: string = 'float:right;background: transparent;box-shadow:none; font-family: inherit;border-color: transparent;'
-            + 'border-radius: 2px;color:inherit;font-size:12px;text-transform:capitalize;height:28px;font-weight:400';
+            + 'border-radius: 2px;color:inherit;font-size:12px;text-transform:capitalize;height:28px;font-weight:400;margin-top: 2px;';
         // tslint:disable-next-line:max-line-length
         this.print = this.addButton('e-de-icon-Print e-de-padding-right', printText, btnStyles, 'de-print', printToolTip, false) as Button;
         this.open = this.addButton('e-de-icon-Open e-de-padding-right', openText, btnStyles, 'de-open', openText, false) as Button;

@@ -58,6 +58,7 @@ export class ResponsivePanel extends SampleBase<{}, {}> {
 
     private width: string = '290px';
     private target: string = '.main-content';
+	private mediaQuery: string = '(min-width: 600px)';
     private fields: object = { dataSource: this.data, id: 'nodeId', text: 'nodeText', child: 'nodeChild' };
     render() {
         return (
@@ -78,7 +79,7 @@ export class ResponsivePanel extends SampleBase<{}, {}> {
                                 <li className='header-style float-right support border-left'><b>Support</b></li>
                             </ul>
                         </div>
-                        <SidebarComponent id="sidebar-treeview" ref={Sidebar => this.sidebarobj = Sidebar} width={this.width} target={this.target}>
+                        <SidebarComponent id="sidebar-treeview" ref={Sidebar => this.sidebarobj = Sidebar} width={this.width} target={this.target} mediaQuery={this.mediaQuery}>
                             <div className='main-menu'>
                                 <div className='table-content'>
                                     <input type='text' placeholder='Search...' className='search-icon'></input>
@@ -112,6 +113,13 @@ export class ResponsivePanel extends SampleBase<{}, {}> {
                     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
                     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 <div className='line'></div>
+                <h2 className='sidebar-heading'> Lorem Ipsum Dolor</h2>
+                <p className='paragraph-content'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			    <div className='line'></div>
                 <h2 className='sidebar-heading'> Lorem Ipsum Dolor</h2>
                 <p className='paragraph-content'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud

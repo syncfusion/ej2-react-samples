@@ -58,8 +58,8 @@ const SAMPLE_CSS = `
 .pulse-css:before,
 .pulse-css:after {
     content: '';
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -71,10 +71,34 @@ const SAMPLE_CSS = `
     left: 0;
     margin: auto;
     transform: scale(0.5);
-    animation: pulse-me 2s linear infinite;
+    animation: pulse-css1 2s linear infinite;
 }
 
-@keyframes pulse-me {
+.parent_css {
+    width: 13px;
+    height: 13px;
+    background: #D2691E;
+    position: relative;
+    animation-delay: 5s;
+}
+
+.parent_css:before,
+.parent_css:after {
+    content: '';
+    width: 9px;
+    height: 9px;
+    background-color: #D2691E;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform: scale(0.5);
+    animation: pulse-css1 3s linear infinite;
+}
+
+@keyframes pulse-css1 {
     0% {
         transform: scale(0.5);
         opacity: 0;
@@ -89,47 +113,7 @@ const SAMPLE_CSS = `
         transform: scale(5);
         opacity: 0;
     }
-}
-
-.pulse-css1 {
-    width: 13px;
-    height: 13px;
-    background: #D2691E;
-    position: relative;
-    animation-delay: 5s;
-}
-
-.pulse-css1:before,
-.pulse-css1:after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    background-color: #D2691E;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    transform: scale(0.5);
-    animation: pulse-me1 3s linear infinite;
 }`;
-let markers: object[] = [
-    { latitude: 15.758401, longitude: 101.155642, name: 'Thailand' },
-    { latitude: 57.725612, longitude: -101.802160, name: 'Canada' },
-    { latitude: 39.634177, longitude: 42.410740, name: 'Turkey'  },
-    { latitude: 22.860388, longitude: 79.739066, name: 'India' },
-    { latitude: -24.763753, longitude: 134.852191, name: 'Australia' },
-    { latitude: 34.611098, longitude: 104.189872, name: 'China' },
-    { latitude: -12.354844, longitude: -49.017709, name: 'Brazil'  },
-    { latitude: 3.450682, longitude: -72.943141, name: 'Colombia' },
-    { latitude: 62.448268, longitude: 97.251835, name: 'Russia' },
-    { latitude: 65.931163, longitude: -45.812820, name: 'Greenland' },
-    { latitude: -21.206222, longitude: 17.122018, name: 'Namibia' },
-    { latitude: 35.839969, longitude: 137.904641, name: 'Japan' },
-    { latitude: 46.582184, longitude: 2.232903, name: 'France' },
-    { latitude: 0.390617, longitude: 37.893734, name: 'Kenya' }
-];
 export class CyberAttackMaps extends SampleBase<{}, {}> {
 
     render() {
@@ -244,15 +228,30 @@ export class CyberAttackMaps extends SampleBase<{}, {}> {
                                 ]} >
                                 <MarkersDirective>
                                     <MarkerDirective visible={true}
-                                        template='<div id="template"><div class="pulse-css"><br /><div class="name">{{:name}}</div></div></div>'
+                                        template='<div id="marker_template"><div class="pulse-css"><br /><div class="name">{{:name}}</div></div></div>'
                                         animationDuration={0}
                                         height= {15}
                                         width={15}
-                                        dataSource={markers}
+                                        dataSource={[
+                                            { latitude: 15.758401, longitude: 101.155642, name: 'Thailand' },
+                                            { latitude: 57.725612, longitude: -101.802160, name: 'Canada' },
+                                            { latitude: 39.634177, longitude: 42.410740, name: 'Turkey'  },
+                                            { latitude: 22.860388, longitude: 79.739066, name: 'India' },
+                                            { latitude: -24.763753, longitude: 134.852191, name: 'Australia' },
+                                            { latitude: 34.611098, longitude: 104.189872, name: 'China' },
+                                            { latitude: -12.354844, longitude: -49.017709, name: 'Brazil'  },
+                                            { latitude: 3.450682, longitude: -72.943141, name: 'Colombia' },
+                                            { latitude: 62.448268, longitude: 97.251835, name: 'Russia' },
+                                            { latitude: 65.931163, longitude: -45.812820, name: 'Greenland' },
+                                            { latitude: -21.206222, longitude: 17.122018, name: 'Namibia' },
+                                            { latitude: 35.839969, longitude: 137.904641, name: 'Japan' },
+                                            { latitude: 46.582184, longitude: 2.232903, name: 'France' },
+                                            { latitude: 0.390617, longitude: 37.893734, name: 'Kenya' }
+                                        ]}
                                     >
                                     </MarkerDirective>
                                     <MarkerDirective visible={true}
-                                    template='<div id="parent_template" ><div class="pulse-css1"><br/><div class="name" style="margin-left: -10px;margin-top: -2px">United States</div></div></div>'
+                                    template='<div id="parent_template"><div class="parent_css"><br/><div class="name" style="margin-left: -10px;margin-top: -2px">United States</div></div></div>'
                                     height={20}
                                     width= {20}
                                     animationDuration={0}

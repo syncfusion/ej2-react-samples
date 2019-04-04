@@ -1,15 +1,6 @@
 
-#predefine_dashboard.e-dashboardlayout .e-panel .e-panel-container .e-panel-header {
-  color: rgba(0, 0, 0, 0.61);
-}
-
 #predefine_dashboard.e-dashboardlayout .e-panel .e-panel-container .e-panel-header .e-header-text {
   padding: 12px 0 12px 0;
-}
-
-
-#predefine_dashboard.e-dashboardlayout .e-panel:hover {
-  border: 0px;
 }
 
 #predefine_dashboard .e-panel .e-panel-container .e-panel-header {

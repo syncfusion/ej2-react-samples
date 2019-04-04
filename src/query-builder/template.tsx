@@ -1,10 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { QueryBuilderComponent, ColumnsModel, RuleModel } from '@syncfusion/ej2-react-querybuilder';
+import { QueryBuilderComponent, ColumnsModel, RuleModel, RuleChangeEventArgs } from '@syncfusion/ej2-react-querybuilder';
 import { getComponent, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { RadioButtonComponent, CheckBox } from '@syncfusion/ej2-react-buttons';
-import { DropDownList, MultiSelect } from '@syncfusion/ej2-react-dropdowns';
-import { Slider, TextBox } from '@syncfusion/ej2-react-inputs';
+import { DropDownList } from '@syncfusion/ej2-react-dropdowns';
+import { Slider } from '@syncfusion/ej2-react-inputs';
 import { expenseData } from './data-source';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
@@ -14,56 +14,14 @@ export class Template extends SampleBase<{}, {}> {
     elem: HTMLElement;
     dropDownObj: DropDownList;
     boxObj: CheckBox;
-    multiSelectObj: MultiSelect;
     qryBldrObj: QueryBuilderComponent;
     radioButton: RadioButtonComponent;
-    textBox: TextBox;
-    inOperators: string [] = ['in', 'notin'];
     checked: boolean;
     txtAreaElem: Element = document.getElementById('ruleContent');
+    validRule: RuleModel;
     filter: ColumnsModel[] = [
         {
-            field: 'Category', label: 'Category', type: 'string', template: {
-                create: () => {
-                    this.elem = document.createElement('input');
-                    this.elem.setAttribute('type', 'text');
-                    return this.elem;
-                },
-                destroy: (args: { elementId: string }) => {
-                    this.multiSelectObj = getComponent(document.getElementById(args.elementId), 'multiselect') as MultiSelect;
-                    if (this.multiSelectObj) {
-                        this.multiSelectObj.destroy();
-                    }
-                    this.textBox = getComponent(document.getElementById(args.elementId), 'textbox') as TextBox;
-                    if (this.textBox) {
-                        this.textBox.destroy();
-                    }
-                },
-                write: (args: { elements: Element, values: string[] | string, operator: string }) => {
-                    if (this.inOperators.indexOf(args.operator) > -1) {  
-                    this.multiSelectObj = new MultiSelect({
-                        dataSource: ['Food', 'Travel', 'Shopping', 'Mortgage', 'Salary', 'Clothing', 'Bills'],
-                        value: args.values as string [],
-                        mode: 'CheckBox',
-                        placeholder: 'Select category',
-                        change: (e: any) => {
-                            this.qryBldrObj.notifyChange(e.value, e.element);
-                        }
-                    });
-                    this.multiSelectObj.appendTo('#' + args.elements.id);
-                } else {
-                    this.textBox = new TextBox({
-                        placeholder: 'Value',
-                        input: (e: any) => {
-                            this.qryBldrObj.notifyChange(e.value, e.event.target);
-                        }
-                    });
-                    this.textBox.appendTo('#' + args.elements.id);
-                    this.textBox.value = args.values as string;
-                    this.textBox.dataBind();
-                }
-                }
-            }
+            field: 'Category', label: 'Category', type: 'string',
         },
         {
             field: 'PaymentMode', label: 'Payment Mode', type: 'string', template: {
@@ -73,10 +31,6 @@ export class Template extends SampleBase<{}, {}> {
                     return this.elem;
                 },
                 destroy: (args: { elementId: string }) => {
-                    this.multiSelectObj = getComponent(document.getElementById(args.elementId), 'multiselect') as MultiSelect;
-                    if (this.multiSelectObj) {
-                        this.multiSelectObj.destroy();
-                    }
                     this.dropDownObj = getComponent(document.getElementById(args.elementId), 'dropdownlist') as DropDownList;
                     if (this.dropDownObj) {
                         this.dropDownObj.destroy();
@@ -84,19 +38,6 @@ export class Template extends SampleBase<{}, {}> {
                 },
                 write: (args: { elements: Element, values: string[] | string, operator: string }) => {
                     let ds: string[] = ['Cash', 'Debit Card', 'Credit Card', 'Net Banking', 'Wallet'];
-                    if (this.inOperators.indexOf(args.operator) > -1) {
-                        this.multiSelectObj = new MultiSelect({
-                            dataSource: ds,
-                            value: args.values as string [],
-                            mode: 'CheckBox',
-                            placeholder: 'Select Transaction',
-                            change: (e: any) => {
-                                this.qryBldrObj.notifyChange(e.value, e.element);
-                            }
-                        });
-                        this.multiSelectObj.appendTo('#' + args.elements.id);
-                   
-                } else {
                     this.dropDownObj = new DropDownList({
                         dataSource: ds,
                         value: args.values ? args.values as string : ds[0],
@@ -106,13 +47,10 @@ export class Template extends SampleBase<{}, {}> {
                     });
                     this.dropDownObj.appendTo('#' + args.elements.id);
                 }
-                }
             },
             operators: [
                 { key: 'Equal', value: 'equal' },
-                { key: 'Not Equal', value: 'notequal' },
-                { key: 'In', value: 'in' },
-                { key: 'Not In', value: 'notin' }
+                { key: 'Not Equal', value: 'notequal' }
             ]
         },
         {
@@ -178,45 +116,36 @@ export class Template extends SampleBase<{}, {}> {
         }
     ];
 
-    updateRule(): void {
+    updateRule(args: RuleChangeEventArgs): void {
         this.txtAreaElem = document.getElementById('ruleContent');
         if (this.radioButton.checked) {
-            (this.txtAreaElem as HTMLInputElement).value = this.qryBldrObj.getSqlFromRules({
-                condition: this.qryBldrObj.rule.condition,
-                rules: this.qryBldrObj.rule.rules
-            });
+            (this.txtAreaElem as HTMLInputElement).value = this.qryBldrObj.getSqlFromRules(args.rule);
         } else {
-            (this.txtAreaElem as HTMLInputElement).value = JSON.stringify({
-                condition: this.qryBldrObj.rule.condition,
-                rules: this.qryBldrObj.rule.rules
-            }, null, 4);
+            (this.txtAreaElem as HTMLInputElement).value = JSON.stringify(args.rule, null, 4);
         }
     }
 
     changeValue(): void {
         this.txtAreaElem = document.getElementById('ruleContent');
+        this.validRule = this.qryBldrObj.getValidRules(this.qryBldrObj.rule);
         if (this.radioButton.checked) {
-            (this.txtAreaElem as HTMLInputElement).value = this.qryBldrObj.getSqlFromRules(this.qryBldrObj.rule);
+            (this.txtAreaElem as HTMLInputElement).value = this.qryBldrObj.getSqlFromRules(this.validRule);
         } else {
-            (this.txtAreaElem as HTMLInputElement).value = JSON.stringify({
-                condition: this.qryBldrObj.rule.condition,
-                rules: this.qryBldrObj.rule.rules
-            }, null, 4);
+            (this.txtAreaElem as HTMLInputElement).value = JSON.stringify(this.validRule, null, 4);
 
         }
     }
     onCreated(): void {
-        (document.getElementById('ruleContent') as HTMLInputElement).value = JSON.stringify({
-            condition: this.qryBldrObj.rule.condition, rule: this.qryBldrObj.rule.rules
-        }, null, 4);
+        (document.getElementById('ruleContent') as HTMLInputElement).value = JSON.stringify(this.qryBldrObj.getValidRules(this.qryBldrObj.rule), null, 4);
     }
 
      // Handler used to reposition the tooltip on page scroll
-     onScroll(): void {
-        if (!isNullOrUndefined(document.getElementsByClassName('ticks_slider')[0]) &&
-            !isNullOrUndefined((document.getElementsByClassName('ticks_slider')[0] as any).ej2_instances[0])) {
-            let element01: any = document.getElementsByClassName('ticks_slider')[0];
-            element01.ej2_instances[0].refreshTooltip();
+    onScroll(): void {
+        let tooltip: HTMLCollection = document.getElementsByClassName('e-handle e-control e-tooltip');
+        let i: number; let len: number = tooltip.length, tooltipObj: any;
+        for (i = 0; i < len; i++) {
+			tooltipObj = (tooltip[i] as any).ej2_instances[0];
+			tooltipObj.refresh(tooltipObj.element);
         }
     }
     importRules: RuleModel = {
@@ -262,7 +191,7 @@ export class Template extends SampleBase<{}, {}> {
             <div className='control-pane querybuilder-pane'>
                 <div className='col-lg-8 control-section'>
                     <QueryBuilderComponent dataSource={expenseData} columns={this.filter} width='100%' rule={this.importRules}
-                        ref={(scope) => { this.qryBldrObj = scope; }} created={this.onCreated.bind(this)}  change={this.updateRule.bind(this)} >
+                        ref={(scope) => { this.qryBldrObj = scope; }} created={this.onCreated.bind(this)}  ruleChange={this.updateRule.bind(this)} >
                     </QueryBuilderComponent>
                 </div>
                 <div className='col-lg-4 property-section'>

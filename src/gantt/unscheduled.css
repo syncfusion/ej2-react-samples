@@ -1,0 +1,6 @@
+#Unscheduled .e-add-icon:before {
+  content: "\e506"
+}
+.bootstrap4 #Unscheduled .e-add-icon:before {
+  content: "\e783"
+}

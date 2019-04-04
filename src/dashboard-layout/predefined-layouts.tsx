@@ -109,11 +109,11 @@ export class PredefinedLayouts extends SampleBase<{}, {}> {
           </div>
         </div >
         <div id="action-description">
-          <p>This sample demonstrates the properties of Dashboard Layout component from the property pane. Select any combination of properties from the property pane to customize the Dashboard Layout.</p>
+          <p>This sample demonstrates, the functionality of dynamically updating the panels inside the DashboardLayout by slecting it from the pre-defined values in the properties panel. Go to the properties panel section and select any of the pre-defined layout,
+        based on selection the panles are updated in the dashboard layout dynamically inside the DashboardLayout. Click the <code>reset</code> button to reset the panels settings of the layout.</p>
         </div>
         <div id="description">
-          This sample allows to configure the <code>cellSize</code>, <code>cellSpacing</code>, <code>allowFloating</code> and
-          <code>allowPushing</code> properties of the Dashboard Layout component.
+        This sample demonstrates how to update the panels dynamically in the dashboard layout component.
         </div>
       </div>
     );

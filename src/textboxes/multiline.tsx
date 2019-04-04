@@ -27,7 +27,7 @@ constructor(props: {}) {
     this.fields = { text: 'Label', value: 'Id' };
 }
 private enabledHandler(args: ChangeEventArgs): void {
-    this.textareaObj.enabled = args.checked;
+    this.textareaObj.enabled = !args.checked;
 }
 private readonlyHandler(args: ChangeEventArgs): void {
     this.textareaObj.readonly = args.checked;
@@ -69,9 +69,9 @@ public render(): JSX.Element {
                   </td>
                 </tr>
                 <tr>
-                  <td className='left-side'>Enabled</td>
+                  <td className='left-side'>Disabled</td>
                   <td>
-                  <CheckBoxComponent checked={true} ref={(scope) => { this.enabledObj = scope; }} change={ this.enabledHandler.bind(this) } ></CheckBoxComponent>
+                  <CheckBoxComponent checked={false} ref={(scope) => { this.enabledObj = scope; }} change={ this.enabledHandler.bind(this) } ></CheckBoxComponent>
                   </td>
                 </tr>
                 <tr>

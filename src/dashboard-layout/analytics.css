@@ -7,7 +7,6 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     height: 55px;
     position: relative;
-    background-color: #fff;
   }
 
   #analytic_dashboard.e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
@@ -26,7 +25,7 @@
     height: 100% !important;
   }
 
-  #panel-section {
+  #dashboard_sidebar_section {
     padding: 0px !important;
     border: 1px solid rgba(0, 0, 0, 0.12);
   }
@@ -79,7 +78,7 @@
     text-align: center;
   }
 
-  #panel-section .e-icons::before {
+  #dashboard_sidebar_section .e-icons::before {
     font-size: 20px;
   }
 
@@ -183,16 +182,15 @@
   padding: 0px;
 }
 
-#panel-section span.e-icons {
+#dashboard_sidebar_section span.e-icons {
   line-height: 2;
 }
 
-#panel-section .e-open .e-icons {
+#dashboard_sidebar_section .e-open .e-icons {
   margin-right: 16px;
 }
 
 #target_dash .analysis {
-  margin-left: 13px;
   font-size: 18px;
   padding: 12px;
   text-align: left;
@@ -218,7 +216,7 @@
 
 #target_dash .card-content.text {
   font-size: 15px;
-  text-align: end;
+  text-align: right;
   color: #66696b;
 }
 
@@ -229,7 +227,7 @@
 
 #target_dash .card-content.number {
   font-size: 16px;
-  text-align: end;
+  text-align: right;
   padding-top: 10px;
 }
 
@@ -267,11 +265,11 @@
 #target_dash .searchContent {
   display: inline-block;
   position: absolute;
-  left: 7%;
+  left: 60px;
 }
 
 #target_dash .e-panel-content {
-  height: calc(100% - 35px);
+  height: calc(100% - 35px) !important;
   width: 100%;
 }
 
@@ -299,7 +297,7 @@
   margin: 10px 0 0 10px;
 }
 
-#target_dash #panel-section .card .e-icons {
+#target_dash #dashboard_sidebar_section .card .e-icons {
   position: absolute;
   top: 20%;
   left: 12%;
@@ -319,4 +317,22 @@
 
 #target_dash .dashboardParent {
   width: 100%;
+}
+
+/* styles for highcontrast theme */
+
+body.highcontrast #dashboard_sidebar_section {
+  border: 1px solid #969696;
+}
+
+body.highcontrast #target_dash .header {
+  border-bottom: 1px solid #969696;
+}
+
+body.highcontrast #dockSideDash .e-icons::before {
+  color: #fff;
+}
+
+body.highcontrast #dockSideDash li.sidebar-item.filterHover, body.highcontrast #dockSideDash {
+  background: #000;
 }

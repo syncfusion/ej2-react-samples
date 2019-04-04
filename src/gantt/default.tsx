@@ -22,12 +22,15 @@ export class Default extends SampleBase<{}, {}> {
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
+  public projectStartDate: Date = new Date('03/24/2019');
+  public projectEndDate: Date = new Date('07/06/2019');
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent dataSource={projectNewData} highlightWeekends={true}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'>
+          <GanttComponent id='Default' dataSource={projectNewData} highlightWeekends={true}
+            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
             <EventMarkersDirective>
               <EventMarkerDirective day={this.eventMarkerDay1} label='Research phase' ></EventMarkerDirective>
               <EventMarkerDirective day={this.eventMarkerDay2} label='Design phase' ></EventMarkerDirective>
@@ -47,17 +50,15 @@ export class Default extends SampleBase<{}, {}> {
             In this example, you can see how to render a Gantt chart with the provided data source. The default timeline
             view week-day mode is applied to Gantt chart. The dependency lines are enabled in this example to represent the
             execution order or the hierarchy between the phases.
-    </p>
+          </p>
           <p>
             Tooltip is enabled for all the UI in this example. To see the tooltip in action, hover the mouse over or tap
             taskbars, timeline units and dependency lines in touch enabled devices.
-    </p>
-          <p>Injecting Module:</p>
+          </p>
           <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
-        Selection module using the <code>Gantt.Inject(Selection)</code> method. To use markers, inject the
-        DayMarkers module using the <code>Gantt.Inject(DayMarkers)</code> method.
-    </p>
+            Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
+            <code>Selection</code>, <code>DayMarkers</code> modules.
+        </p>
         </div>
       </div>
     )

@@ -53,17 +53,18 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
     }
     public updateSubGauge2(): void {
         this.subGauge2 = new CircularGauge({
+            background: 'transparent',
             axes: [{
-                ranges: [{ start: 0, end: 3, startWidth: 4, endWidth: 4, color: 'rgba(29,29,29,0.4)' },
-                { start: 3, end: 12, startWidth: 4, endWidth: 4, color: 'rgba(168,145,102,0.1)' }],
-                labelStyle: { hiddenLabel: 'First', font: { color: '#8c8c8c', size: '0px' }, autoAngle: false },
+                ranges: [{ start: 0, end: 3, startWidth: 4, endWidth: 4, color: 'rgba(128,128,128)' },
+                { start: 3, end: 12, startWidth: 4, endWidth: 4, color: 'rgba(192,192,192)' }],
+                labelStyle: { hiddenLabel: 'First', font: {  size: '0px' }, autoAngle: false },
                 majorTicks: { width: 1, height: 5, interval: 1 },
                 minorTicks: { height: 3, width: 0.5, interval: 0.2 }, minimum: 0, maximum: 12,
                 pointers: [{
-                    radius: '70%', pointerWidth: 2, color: 'rgba(29,29,29,1)',
+                    radius: '70%', pointerWidth: 2, 
                     cap: {
-                        color: 'rgba(29,29,29,1)', radius: 2, border: { width: 0.2, color: 'rgba(168,145,102,1)' }
-                    }, needleTail: { color: 'rgba(168,145,102,1)', length: '10%' }, animation: { enable: false, duration: 500 }
+                         radius: 2, border: { width: 0.2 }
+                    }, needleTail: { length: '10%' }, animation: { enable: false, duration: 500 }
                 }], startAngle: 0, endAngle: 0, lineStyle: { width: 0 }
             }],
             load: ((args: ILoadedEventArgs): void => {
@@ -134,8 +135,8 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
         } else {
             gauge.setPointerValue(0, 0, hour); gauge.setPointerValue(0, 1, minutes); gauge.setPointerValue(0, 2, seconds);
             hourValue = (Math.floor(returnTime.getHours()) % 12);
-            content = '<div id="hr" style="background-color:rgba(226, 226, 226, 0.4);' +
-                'color:rgba(29,29,29,0.9);padding:4px;font-size:12px;">' +
+            content = '<div id="hr" style="background-color:rgba(128,128,128);' +
+                'color:white;padding:4px;font-size:12px;">' +
                 (hourValue === 0 ? 12 : hourValue) + ':' + Math.floor(returnTime.getMinutes()) +
                 (returnTime.getHours() >= 12 ? ' PM' : ' AM') + '</div>';
             gauge.setAnnotationValue(0, 2, content); let date: Date = new Date();
@@ -157,17 +158,17 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
                         loaded={this.onChartLoad.bind(this)}
                         resized={this.onResized.bind(this)}
                         centerY='45%'
-                        titleStyle={{ color: 'black', size: '16px' }}>
+                        titleStyle={{ size: '16px' }}>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective startAngle={0} endAngle={0} radius={Browser.isDevice ? '90%' : '70%'} minimum={0} maximum={12}
                                 majorTicks={{
-                                    width: 2, height: 14, interval: 1, color: 'rgb(29,29,29)'
+                                    width: 2, height: 14, interval: 1
                                 }} lineStyle={{ width: 0 }}
                                 minorTicks={{
-                                    height: 4, width: 1, interval: 0.2, color: 'rgb(29,29,29)'
+                                    height: 4, width: 1, interval: 0.2
                                 }} labelStyle={{
-                                    hiddenLabel: 'First', font: { color: 'rgb(29,29,29)' }, autoAngle: false
+                                    hiddenLabel: 'First', autoAngle: false
                                 }}>
                                 <AnnotationsDirective>
                                     <AnnotationDirective content='<div id="minutes" style="width:75px;height:75px;"></div>'
@@ -176,7 +177,7 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
                                     <AnnotationDirective content='<div id="seconds" style="width:75px;height:75px;"></div>'
                                         angle={180} radius='50%' zIndex='1'>
                                     </AnnotationDirective>
-                                    <AnnotationDirective content='<div id="hr" style="background-color:rgba(29,29,29,0.6); color:white;font-size:12px;">11:11 AM</div>'
+                                    <AnnotationDirective content='<div id="hr" style="background-color:rgba(128,128,128); color:white;font-size:12px;">11:11 AM</div>'
                                         angle={90} radius='40%' zIndex='1'>
                                     </AnnotationDirective>
                                     <AnnotationDirective content='<div id="tm" style="font-size:10px;">21-06-17</div>'
@@ -184,29 +185,28 @@ export class AnnotationsSample extends SampleBase<{}, {}> {
                                     </AnnotationDirective>
                                 </AnnotationsDirective>
                                 <PointersDirective>
-                                    <PointerDirective pointerWidth={5} radius='40%' color='rgba(29,29,29,0.8)'
-                                        border={{ width: 0, color: '#679EEF' }}
-                                        cap={{ radius: 0, border: { width: 0, color: 'red' } }}
+                                    <PointerDirective pointerWidth={5} radius='40%'
+                                        border={{ width: 0 }}
+                                        cap={{ radius: 0, border: { width: 0 } }}
                                         needleTail={{ length: '0%' }} animation={{ enable: false }}>
                                     </PointerDirective>
-                                    <PointerDirective radius='60%' pointerWidth={5} color='rgba(29,29,29,0.8)'
-                                        border={{ width: 0, color: '#2856B6' }}
-                                        cap={{ color: 'rgba(29,29,29,0.8)', radius: 0, border: { width: 0, color: 'red' } }}
+                                    <PointerDirective radius='60%' pointerWidth={5} 
+                                        border={{ width: 0 }}
+                                        cap={{  radius: 0, border: { width: 0 } }}
                                         needleTail={{ length: '0%' }}
                                         animation={{ enable: false }}>
                                     </PointerDirective>
                                     <PointerDirective radius='70%'
                                         pointerWidth={1}
-                                        color='rgba(29,29,29,0.8)'
-                                        cap={{ color: 'white', radius: 4, border: { width: 2, color: 'rgba(29,29,29,0.8)' } }}
-                                        border={{ width: 2, color: 'rgba(29,29,29,0.8)' }}
-                                        needleTail={{ color: 'rgba(29,29,29,0.8)', length: '20%', border: { width: 2, color: 'rgba(29,29,29,0.8)' } }}
+                                        cap={{ radius: 4, border: { width: 2} }}
+                                        border={{ width: 2,  }}
+                                        needleTail={{  length: '20%', border: { width: 2 } }}
                                         animation={{ enable: false, duration: 500 }}>
                                     </PointerDirective>
                                 </PointersDirective>
                                 <RangesDirective>
-                                    <RangeDirective start={0} end={3} color='rgba(29,29,29,0.6)' />
-                                    <RangeDirective start={3} end={12} color='rgba(226, 226, 226, 0.6)' />
+                                    <RangeDirective start={0} end={3} color='rgba(128,128,128)' />
+                                    <RangeDirective start={3} end={12} color='rgba(192,192,192)' />
                                 </RangesDirective>
                             </AxisDirective>
                         </AxesDirective>

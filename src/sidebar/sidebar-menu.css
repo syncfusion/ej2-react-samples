@@ -28,14 +28,6 @@
      margin: 0;
  }
 
- @media(max-width:500px) {
-
-     #header .right-header.list.support,
-     #header .right-header.list.tour {
-         display: none;
-     }
- }
-
  /* text input styles */
  #header .search-icon {
      float: left;

@@ -10,6 +10,9 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
     private animationSettings: Object;
     constructor(props: {}) {
         super(props);
+        this.state = {
+            hideDialog : true
+        };
         this.dlgButton = [{
             click: this.dialogButtonClick.bind(this),
             buttonModel: { content: 'Hide', isPrimary: true }
@@ -18,7 +21,10 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
         this.animationSettings = { effect: 'Zoom' };
     }
     private dialogButtonClick(): void {
-        this.defaultDialogInstance.hide();
+        this.setState({ hideDialog: false });
+    }
+    private dialogClose(): void {
+        this.setState({ hideDialog: false });
     }
     private buttonClick(args: any): void {
         let dialog: DialogComponent = this.defaultDialogInstance;
@@ -27,9 +33,8 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
         txt = (txt === 'Zoom In/Out') ? 'Zoom In or Out' : txt;
         dialog.content = 'The dialog is configured with animation effect. It is opened or closed with "' + txt + '" animation.';
         dialog.animationSettings = { effect: effects, duration: 400 };
-        dialog.show();
+        this.setState({ hideDialog: true });
     }
-
   public render(): JSX.Element {
     return (
       <div className = 'control-pane'>
@@ -52,7 +57,7 @@ export class Animation extends SampleBase<{}, {hideDialog: boolean;}> {
             </div>
         </div>
             <DialogComponent id='dialog' isModal={true} header='Animation Dialog' showCloseIcon={true} animationSettings={this.animationSettings} width='285px' ref={defaultDialog => this.defaultDialogInstance = defaultDialog}
-            target='#target' buttons={this.dlgButton}>
+            target='#target' buttons={this.dlgButton} visible={this.state.hideDialog} beforeClose={this.dialogClose.bind(this)}>
             <span>The dialog is configured with animation effect. It is opened or closed with "Zoom In or Out" animation.</span>
             </DialogComponent>
         <div id="action-description">

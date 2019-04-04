@@ -17,10 +17,10 @@ import { extend } from '@syncfusion/ej2-base';
 
 export class AdaptiveRows extends SampleBase<{}, {}> {
     private data: Object[] = extend([], (dataSource as any).roomData, null, true) as Object[];
-    private scheduleObj: ScheduleComponent;    
+    private scheduleObj: ScheduleComponent;
 
     private onChange(args: ChangeEventArgs): void {
-        this.scheduleObj.enableAdaptiveRows = args.checked;
+        this.scheduleObj.rowAutoHeight = args.checked;
     }
 
     private ownerData: Object[] = [
@@ -41,7 +41,7 @@ export class AdaptiveRows extends SampleBase<{}, {}> {
                 <div className='col-lg-9 control-section'>
                     <div className='control-wrapper'>
                     <ScheduleComponent cssClass='adaptive-rows' ref={schedule => this.scheduleObj = schedule} width='100%'
-                            height='650px' selectedDate={new Date(2018, 7, 1)} enableAdaptiveRows={true}
+                            height='650px' selectedDate={new Date(2018, 7, 1)} rowAutoHeight={true}
                             eventSettings={{
                                 dataSource: this.data,
                                 fields: {
@@ -73,7 +73,7 @@ export class AdaptiveRows extends SampleBase<{}, {}> {
                             <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '100%' }}>
-                                        <CheckBoxComponent id='adaptive-rows' checked={true} label='Enable Adaptive rows'
+                                        <CheckBoxComponent id='adaptive-rows' checked={true} label='Row Auto Height'
                                             change={this.onChange.bind(this)} ></CheckBoxComponent>
                                     </td>
                                 </tr>
@@ -90,7 +90,7 @@ export class AdaptiveRows extends SampleBase<{}, {}> {
 
                 <div id="description">
                     <p>
-                        In this example, <code>enableAdaptiveRows</code> property is set as <code>true</code> to auto-adjust the height
+                        In this example, <code>rowAutoHeight</code> property is set as <code>true</code> to auto-adjust the height
                         of work cells based
                         on the number of appointments present in the same time ranges. Also, this functionality is applicable only on
                         all the timeline views as well as on the calendar month view. When this option is disabled, the height of the

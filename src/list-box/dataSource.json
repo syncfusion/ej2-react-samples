@@ -1,0 +1,73 @@
+{
+    "groupa":[
+        { "Name": "Australia", "Code": "AU" },
+        { "Name": "Bermuda", "Code": "BM" },
+        { "Name": "Canada", "Code": "CA" },
+        { "Name": "Cameroon", "Code": "CM" },
+        { "Name": "Denmark", "Code": "DK" },
+        { "Name": "France", "Code": "FR" },
+        { "Name": "Finland", "Code": "FI" },
+        { "Name": "Germany", "Code": "DE" },
+        { "Name": "Hong Kong", "Code": "HK" }
+    ],
+    "groupb": [
+        { "Name": "India", "Code": "IN" },
+        { "Name": "Italy", "Code": "IT" },
+        { "Name": "Japan", "Code": "JP" },
+        { "Name": "Mexico", "Code": "MX" },
+        { "Name": "Norway", "Code": "NO" },
+        { "Name": "Poland", "Code": "PL" },
+        { "Name": "Switzerland", "Code": "CH" },
+        { "Name": "United Kingdom", "Code": "GB" },
+        { "Name": "United States", "Code": "US" }
+    ],
+    "dragAndDropA":[
+        { "Name": "Australia", "Code": "AU" },
+        { "Name": "Bermuda", "Code": "BM" },
+        { "Name": "Canada", "Code": "CA" },
+        { "Name": "Cameroon", "Code": "CM" },
+        { "Name": "Denmark", "Code": "DK" },
+        { "Name": "France", "Code": "FR" },
+        { "Name": "Finland", "Code": "FI" },
+        { "Name": "Germany", "Code": "DE" },
+        { "Name": "Hong Kong", "Code": "HK" }
+    ],
+    "dragAndDropB": [
+        { "Name": "India", "Code": "IN" },
+        { "Name": "Italy", "Code": "IT" },
+        { "Name": "Japan", "Code": "JP" },
+        { "Name": "Mexico", "Code": "MX" },
+        { "Name": "Norway", "Code": "NO" },
+        { "Name": "Poland", "Code": "PL" },
+        { "Name": "Switzerland", "Code": "CH" },
+        { "Name": "United Kingdom", "Code": "GB" },
+        { "Name": "United States", "Code": "US" }
+    ],
+    "vegetableData": [
+        { "Vegetable": "Cabbage", "Category": "Leafy and Salad", "Id": "item1" },
+        { "Vegetable": "Spinach", "Category": "Leafy and Salad", "Id": "item2" },
+        { "Vegetable": "Wheat grass", "Category": "Leafy and Salad", "Id": "item3" },
+        { "Vegetable": "Yarrow", "Category": "Leafy and Salad", "Id": "item4" },
+        { "Vegetable": "Pumpkins", "Category": "Leafy and Salad", "Id": "item5" },
+        { "Vegetable": "Chickpea", "Category": "Beans", "Id": "item6" },
+        { "Vegetable": "Green bean", "Category": "Beans", "Id": "item7" },
+        { "Vegetable": "Horse gram", "Category": "Beans", "Id": "item8" },
+        { "Vegetable": "Garlic", "Category": "Bulb and Stem", "Id": "item9" },
+        { "Vegetable": "Nopal", "Category": "Bulb and Stem", "Id": "item10" },
+        { "Vegetable": "Onion", "Category": "Bulb and Stem", "Id": "item11" }
+    ],
+    "info": [
+        { "text": "Hennessey Venom", "id": "list-01" },
+        { "text": "Bugatti Chiron", "id": "list-02" },
+        { "text": "Bugatti Veyron Super Sport", "id": "list-03" },
+        { "text": "SSC Ultimate Aero", "id": "list-04" },
+        { "text": "Koenigsegg CCR", "id": "list-05" },
+        { "text": "McLaren F1", "id": "list-06" },
+        { "text": "Aston Martin One- 77", "id": "list-07" },
+        { "text": "Jaguar XJ220", "id": "list-08" },
+        { "text": "McLaren P1", "id": "list-09" },
+        { "text": "Ferrari LaFerrari", "id": "list-10" }
+    ],
+    "sort": [{ "type": "None" }, { "type": "Ascending" }, { "type": "Descending" }],
+    "selectionMode": [{ "type": "Single" }, { "type": "Multiple" }]
+}

@@ -3,26 +3,28 @@ import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import { DashboardLayoutComponent, PanelModel, PanelsDirective, PanelDirective } from '@syncfusion/ej2-react-layouts';
 import { ButtonComponent, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
-import { TextBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-inputs';
+import { NumericTextBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-inputs';
 import './properties.component.css';
 
 export class Properties extends SampleBase<{}, {}> {
 
-    private count: number = 4;
+    private count: number = 5;
 
     public onAdd(): void {
+        this.count = this.count + 1;
         let proxy: any = this;
         let panel: PanelModel[] = [{
             'id': this.count.toString() + '_layout', 'sizeX': 2, 'sizeY': 2, 'row': 0, 'col': 0,
-            header: '<div>Panel' + this.count.toString() + '</div>', content: '<div></div>'
+            header: '<div>Panel ' + this.count.toString() + '</div>', content: '<div></div>'
         }];
-        this.count = this.count + 1;
         proxy.dashboardObj.addPanel(panel[0]);
     }
 
     public remove(): void {
-        for (let i: number = this.dashboardObj.panels.length - 1; i < this.dashboardObj.panels.length; i++) {
-            this.dashboardObj.removePanel(this.dashboardObj.panels[this.dashboardObj.panels.length - 1 - i].id);
+        if (this.dashboardObj.panels.length != 0) {
+            for (let i: number = this.dashboardObj.panels.length - 1; i < this.dashboardObj.panels.length; i++) {
+                this.dashboardObj.removePanel(this.dashboardObj.panels[this.dashboardObj.panels.length - 1 - i].id);
+            }
         }
     }
 
@@ -49,7 +51,7 @@ export class Properties extends SampleBase<{}, {}> {
 
     }
     public dashboardObj: DashboardLayoutComponent;
-    public txtObj: TextBoxComponent;
+    public txtObj: NumericTextBoxComponent;
     private cellSpacing: number[] = [5, 5];
 
     // custom code start
@@ -83,7 +85,7 @@ export class Properties extends SampleBase<{}, {}> {
                             <div className="form-group row">
                                 <label className="col-sm-4 col-form-label form-label">CellSpacing</label>
                                 <span className="col-sm-8">
-                                    <TextBoxComponent className="col-sm-4" type="number" placeholder={"Ex: 10"} value={'10'} floatLabelType="Never" id="cellSpacing" change={this.onCellChange.bind(this)} />
+                                    <NumericTextBoxComponent className="col-sm-4" type="text" placeholder={"Ex: 10"} value={10} min={1} max={20} floatLabelType="Never" id="cellSpacing" change={this.onCellChange.bind(this)} />
                                 </span>
                             </div>
                             <div className="form-group row">
@@ -108,11 +110,11 @@ export class Properties extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the properties of Dashboard Layout component from the property pane. Select any combination of properties from the property pane to customize the Dashboard Layout.</p>
+                    <p>This sample demonstrates the properties of DashboardLayout component from the property pane. Select any combination of properties from the property pane to customize the DashboardLayout.</p>
                 </div>
                 <div id="description">
-                    This sample allows to configure the <code>cellSize</code>, <code>cellSpacing</code>, <code>allowFloating</code> and
-                    <code>allowPushing</code> properties of the Dashboard Layout component.
+                This sample allows to configure the <code>cellSize</code>, <code>cellSpacing</code>, <code>allowFloating</code> and
+    <code>allowPushing</code> properties of the dashboard layout component.
                 </div>
             </div>
         );

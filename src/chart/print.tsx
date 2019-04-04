@@ -27,7 +27,7 @@ const SAMPLE_CSS = `
         text-align: center;
     }
     .e-play-icon::before {
-        content: "\\e813";
+        content: "\\e34b";
     }`;
 export class Print extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;

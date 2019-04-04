@@ -3,6 +3,10 @@
     font-family: e-icons;
 }
 
+.bootstrap4 .control-section.input-content-wrapper .e-input-picture:before {
+    content: '\e776';
+}
+
 .control-section.input-content-wrapper .e-input-calendar:before {
     content: "\e901";
     font-family: e-icons;

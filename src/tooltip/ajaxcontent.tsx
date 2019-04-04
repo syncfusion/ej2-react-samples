@@ -62,7 +62,7 @@ export class AjaxContentTooltip extends SampleBase<tooltipComponentProps, toolti
                     <h4 className="list-header">National Sports</h4>
 
                     {/* Tooltip element */}
-                    <TooltipComponent className="e-prevent-select" content={this.state.content} target="#countrylist [title]" position='RightCenter' beforeRender={this.onBeforeRender.bind(this)}>
+                    <TooltipComponent className="e-prevent-select" cssClass="e-ajax-content" content={this.state.content} target="#countrylist [title]" position='RightCenter' beforeRender={this.onBeforeRender.bind(this)}>
 
                         {/* ListView element */}
                         <ListViewComponent id="countrylist" dataSource={this.listViewData} fields={this.fields}></ListViewComponent>

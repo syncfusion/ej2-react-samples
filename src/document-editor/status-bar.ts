@@ -45,7 +45,7 @@ export class StatusBar {
         let zoomBtn: HTMLButtonElement = createElement('button', {
             id: 'documenteditor-zoom',
             // tslint:disable-next-line:max-line-length
-            className: 'e-de-statusbar-zoom'
+            className: 'e-de-print-statusbar'
         }) as HTMLButtonElement;
         this.statusBarDiv.appendChild(zoomBtn);
         zoomBtn.setAttribute('title', 'Zoom level. Click or tap to open the Zoom options.');

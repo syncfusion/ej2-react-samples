@@ -42,11 +42,11 @@ const SAMPLE_CSS = `
             text-align: center;
         }
         .e-export-icon::before {
-            content: '\\e728';
+            content: '\\e720';
         }
     
          .e-print-icon::before {
-            content: '\\e813';
+            content: '\\e34b';
         }`;
 export class RangeExport extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;

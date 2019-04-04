@@ -11,24 +11,26 @@ export class Default extends SampleBase<{}, {}> {
     
     public dashboardObj: DashboardLayoutComponent;
     private cellSpacing: number[] = [5, 5];
+    private count: number = 8;
 
-    onCloseIconHandler(): void {
+    onCloseIconHandler(event: any): void {
         let proxy: any = this;
         let panel: any = event.target;
-        if (panel.closest('.e-panel')) {
-            proxy.dashboardObj.removePanel(panel.closest('.e-panel').id);
+        if (panel.offsetParent) {
+            proxy.dashboardObj.removePanel(panel.offsetParent.id);
         }
     }
     
     btnClick(): void {
         let proxy: any = this;
-        let count: number = 8;
         let panel: PanelModel[] = [{
-            'id': count.toString() + '_layout', 'sizeX': 1, 'sizeY': 1, 'row': 0, 'col': 0,
-            content: '<span id="close" class="e-close-icon e-clear-icon"></span><div class="text-align">' + count.toString() + '</div>'
+            'id': this.count.toString() + '_layout', 'sizeX': 1, 'sizeY': 1, 'row': 0, 'col': 0,
+            content: '<span id="close" class="e-close-icon e-clear-icon"></span><div class="text-align">' + this.count.toString() + '</div>'
         }];
-        count = count + 1;
         proxy.dashboardObj.addPanel(panel[0]);
+        let closeIcon : any = document.getElementById(this.count.toString() + '_layout').querySelector('.e-clear-icon');
+        closeIcon.addEventListener('click', this.onCloseIconHandler.bind(this));
+        this.count = this.count + 1;
     }
 
     rendereComplete() {
@@ -99,14 +101,13 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        The following sample demonstrates the default functionalities of the Dashboard Layout component.
-                         Click the <code>Add Panel</code> button to add panels dynamically to the Dashboard Layout.
+                    The following sample demonstrates the default functionalities of the DashboardLayout component. Click the <code>Add Panel</code> button to add panels dynamically to the dashboard layout.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        The Dashboard Layout component provides the capability to arrange, resize and
-                         reorder the panels within the Dashboard Layout.
+                        The DashboardLayout component provides the capability to arrange, resize and
+                         reorder the panels within the dashboard layout.
                     </p>
                 </div>
             </div>

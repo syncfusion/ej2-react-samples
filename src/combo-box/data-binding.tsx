@@ -44,13 +44,13 @@ export class Data extends SampleBase<{}, {}> {
                     <div className='col-lg-9'>
                         <div className='col-lg-6'>
                             <div id="local">
-                                <h4> Local Data</h4>
+                                <h3> Local Data</h3>
                                 <ComboBoxComponent id="games" dataSource={this.sportsData} ref={(combobox) => { this.localDataObj = combobox }} fields={this.localFields} placeholder="Select a game" popupHeight="220px" autofill={true} />
                             </div>
                         </div>
                         <div className='col-lg-6'>
                             <div id="remote">
-                                <h4>Remote Data</h4>
+                                <h3>Remote Data</h3>
                                 <ComboBoxComponent id="customers" dataSource={this.customerData} ref={(combobox) => { this.remoteDataObj = combobox }} sortOrder="Ascending" query={this.query} fields={this.remoteFields} placeholder="Select a name" autofill={true} popupHeight="220px" />
                             </div>
                         </div>

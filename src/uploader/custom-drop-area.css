@@ -90,6 +90,17 @@ span#dropText {
     background-color: #000;
 }
 
+.bootstrap4 #customTarget {
+  background-color: #e9ecef;
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+}
+.bootstrap4 .font-icons {
+  color: #495057;
+}
+.bootstrap4 .dropText {
+  color: #212529;
+}
+
 #customTarget .font-icons {
   position: relative;
   top: 25%;

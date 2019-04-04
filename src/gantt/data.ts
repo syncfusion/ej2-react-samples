@@ -986,3 +986,156 @@ export let baselineData: Object[] = [
         EndDate: new Date('03/05/2018 06:30:00 PM')
     }
 ];
+
+export let unscheduledData: Object[] = [
+    {
+        TaskId: 1, TaskName: 'Task 1', StartDate: new Date('01/03/2019'),
+        EndDate: new Date('01/08/2019'), Duration: '5', TaskType: ''
+    },
+    {
+        TaskId: 2, TaskName: 'Task 2', Duration: '5', TaskType: 'Task with duration only'
+    },
+    {
+        TaskId: 3, TaskName: 'Task 3', StartDate: new Date('01/03/2019'), TaskType: 'Task with start date only'
+    },
+    {
+        TaskId: 4, TaskName: 'Task 4', EndDate: new Date('01/08/2019'), TaskType: 'Task with end date only'
+    },
+];
+
+export let customizedData: Object[] = [
+    {
+        TaskId: 1, TaskName: 'Oscar moments', Performance: 'Jimmy kimmel hosts the show',
+        StartDate: new Date('03/05/2018 06:00:00 PM'), EndDate: new Date('03/05/2018 06:15:00 PM')
+    },
+    {
+        TaskId: 2, TaskName: 'Actor in a supporting role', Predecessor: '1FS',
+        StartDate: new Date('03/05/2018 06:16:00 PM'), EndDate: new Date('03/05/2018 06:25:00 PM'),
+        Winner: 'Sam Rockwell', Movie: 'Three Billboards Outside Ebbing, Missouri.'
+    },
+    {
+        TaskId: 3, TaskName: 'Hair and makeup', Movie: 'Darkest Hour', Predecessor: '2FS',
+        StartDate: new Date('03/05/2018 06:26:00 PM'), EndDate: new Date('03/05/2018 06:32:00 PM')
+    },
+    {
+        TaskId: 4, TaskName: 'Costume design', Winner: 'Mark Bridges', Movie: 'Phantom Thread', Predecessor: '3FS',
+        StartDate: new Date('03/05/2018 06:33:00 PM'), EndDate: new Date('03/05/2018 06:40:00 PM')
+    },
+    {
+        TaskId: 5, TaskName: 'Documentary feature', Winner: 'Bryan Fogel', Movie: ' Icarus', Predecessor: '4FS',
+        StartDate: new Date('03/05/2018 06:41:00 PM'), EndDate: new Date('03/05/2018 06:58:00 PM')
+    },
+    {
+        TaskId: 6, TaskName: 'Best sound editing and sound mixing', Winner: 'Richard King and Alex Gibson', Movie: 'Dunkirk',
+        StartDate: new Date('03/05/2018 06:59:00 PM'), EndDate: new Date('03/05/2018 07:10:00 PM'), Predecessor: '5FS'
+    },
+    {
+        TaskId: 7, TaskName: 'Production design', Movie: 'The Shape of Water', Predecessor: '6FS',
+        StartDate: new Date('03/05/2018 07:11:00 PM'), EndDate: new Date('03/05/2018 07:15:00 PM')
+    },
+    {
+        TaskId: 8, TaskName: 'Oscar performance', Performance: 'Second performance of the night is "Remember Me" from Coco',
+        StartDate: new Date('03/05/2018 07:16:00 PM'), EndDate: new Date('03/05/2018 07:23:00 PM'), Predecessor: '7FS'
+    },
+    {
+        TaskId: 9, TaskName: 'Best foreign language film goes', Movie: 'A Fantastic Woman', Predecessor: '8FS',
+        StartDate: new Date('03/05/2018 07:24:00 PM'), EndDate: new Date('03/05/2018 07:29:00 PM')
+    },
+    {
+        TaskId: 10, TaskName: 'Best supporting actress', Winner: 'Allison Janney', Movie: 'I, Tonya',
+        StartDate: new Date('03/05/2018 07:30:00 PM'), EndDate: new Date('03/05/2018 07:35:00 PM'), Predecessor: '9FS'
+    },
+    {
+        TaskId: 11, TaskName: 'Best animated short', Winner: 'Kobe Bryant', Movie: 'Dear Basketball',
+        StartDate: new Date('03/05/2018 07:36:00 PM'), EndDate: new Date('03/05/2018 07:45:00 PM'), Predecessor: '10FS'
+    },
+    {
+        TaskId: 12, TaskName: 'Award for best animated feature.', Movie: 'Coco', Predecessor: '11FS',
+        StartDate: new Date('03/05/2018 07:46:00 PM'), EndDate: new Date('03/05/2018 07:52:00 PM')
+    },
+    {
+        TaskId: 13, TaskName: 'Best visual effects.', Movie: 'Blade Runner 2049', Predecessor: '12FS',
+        StartDate: new Date('03/05/2018 07:53:00 PM'), EndDate: new Date('03/05/2018 07:56:00 PM')
+    },
+    {
+        TaskId: 14, TaskName: 'Achievement in film editing', Movie: 'Dunkirk', Predecessor: '13FS',
+        StartDate: new Date('03/05/2018 07:57:00 PM'), EndDate: new Date('03/05/2018 07:59:00 PM')
+    },
+    {
+        TaskId: 15, TaskName: 'Oscar moments', Performance: 'Jimmy Kimmel surprises moviegoers along with celebrities',
+        StartDate: new Date('03/05/2018 08:00:00 PM'), EndDate: new Date('03/05/2018 08:09:00 PM'), Predecessor: '14FS'
+    },
+    {
+        TaskId: 16, TaskName: 'Best documentary short', Movie: 'Heaven is a Traffic Jam on the 405', Predecessor: '15FS',
+        StartDate: new Date('03/05/2018 08:10:00 PM'), EndDate: new Date('03/05/2018 08:12:00 PM')
+    },
+    {
+        TaskId: 17, TaskName: 'Best live action short film', Movie: 'The Silent Child', Predecessor: '16FS',
+        StartDate: new Date('03/05/2018 08:13:00 PM'), EndDate: new Date('03/05/2018 08:15:00 PM')
+    },
+    {
+        TaskId: 18, TaskName: 'Oscar performance',
+        Performance: 'Jimmy Kimmel surprCommon and Andra Day performs "Stand Up for Something" by "Marshall"',
+        StartDate: new Date('03/05/2018 08:16:00 PM'), EndDate: new Date('03/05/2018 08:25:00 PM'), Predecessor: '17FS'
+    },
+    {
+        TaskId: 19, TaskName: 'Oscar moments',
+        Performance: 'The Oscars are showcasing the #MeToo and #TimesUp movements with a montage and interviews with actors and filmmakers',
+        StartDate: new Date('03/05/2018 08:26:00 PM'), EndDate: new Date('03/05/2018 08:29:00 PM'), Predecessor: '18FS'
+    },
+    {
+        TaskId: 20, TaskName: 'Oscar for best adapted screenplay', Winner: 'James Ivory', Movie: 'Call Me By Your Name',
+        StartDate: new Date('03/05/2018 08:30:00 PM'), EndDate: new Date('03/05/2018 08:35:00 PM'), Predecessor: '19FS'
+    },
+    {
+        TaskId: 21, TaskName: 'Oscar for best original screenplay', Winner: 'Jordan Peele', Movie: 'Get Out',
+        StartDate: new Date('03/05/2018 08:36:00 PM'), EndDate: new Date('03/05/2018 08:44:00 PM'), Predecessor: '20FS'
+    },
+    {
+        TaskId: 22, TaskName: 'Oscar moments',
+        Performance: 'Who’s trending on Twitter at the Oscars? Actors Timothée Chalamet, Chadwick Boseman,' +
+            'Tom Holland, Lupita Nyong’o and Adam Rippon.',
+        StartDate: new Date('03/05/2018 08:40:00 PM'), EndDate: new Date('03/05/2018 08:45:00 PM'), Predecessor: '21FS'
+    },
+    {
+        TaskId: 23, TaskName: 'Best cinematography', Winner: 'Roger A. Deakins', Movie: 'Blade Runner 2049',
+        StartDate: new Date('03/05/2018 08:46:00 PM'), EndDate: new Date('03/05/2018 08:48:00 PM'), Predecessor: '22FS'
+    },
+    {
+        TaskId: 24, TaskName: 'Oscar performance',
+        Performance: 'Keala Settle performs the nominated song "This is Me" from "The Greatest Showman".',
+        StartDate: new Date('03/05/2018 08:49:00 PM'), EndDate: new Date('03/05/2018 08:54:00 PM'), Predecessor: '23FS'
+    },
+    {
+        TaskId: 25, TaskName: 'Best original score', Movie: 'The Shape of Water', Predecessor: '24FS',
+        StartDate: new Date('03/05/2018 08:55:00 PM'), EndDate: new Date('03/05/2018 08:59:00 PM')
+    },
+    {
+        TaskId: 26, TaskName: 'Award for original song', Winner: 'Remember Me', Movie: 'Coco', Predecessor: '25FS',
+        StartDate: new Date('03/05/2018 09:00:00 PM'), EndDate: new Date('03/05/2018 09:07:00 PM')
+    },
+    {
+        TaskId: 27, TaskName: 'Oscar moments', Performance: 'Time to pay tribute to those in the cinema world we lost last year',
+        StartDate: new Date('03/05/2018 09:05:00 PM'), EndDate: new Date('03/05/2018 09:11:00 PM'), Predecessor: '26FS'
+    },
+    {
+        TaskId: 28, TaskName: 'Oscar for best director', Winner: 'Guillermo del Toro', Movie: 'The Shape of Water',
+        StartDate: new Date('03/05/2018 09:12:00 PM'), EndDate: new Date('03/05/2018 09:19:00 PM'), Predecessor: '27FS'
+    },
+    {
+        TaskId: 29, TaskName: 'Best actor in a leading role', Winner: 'Gary Oldman', Movie: 'The Shape of Water',
+        StartDate: new Date('03/05/2018 09:20:00 PM'), EndDate: new Date('03/05/2018 09:29:00 PM'), Predecessor: '28FS'
+    },
+    {
+        TaskId: 30, TaskName: 'Best leading actress', Winner: 'Frances McDormand', Movie: 'Three Billboards Outside Ebbing, Missouri',
+        StartDate: new Date('03/05/2018 09:30:00 PM'), EndDate: new Date('03/05/2018 09:44:00 PM'), Predecessor: '29FS'
+    },
+    {
+        TaskId: 31, TaskName: 'Oscar for best picture.', Movie: 'The Shape of Water', Predecessor: '30FS',
+        StartDate: new Date('03/05/2018 09:45:00 PM'), EndDate: new Date('03/05/2018 10:00:00 PM')
+    },
+    {
+        TaskId: 32, TaskName: 'Oscar moments', Performance: '90th Academy awards wind-up', Predecessor: '31FS',
+        StartDate: new Date('03/05/2018 10:00:00 PM'), EndDate: new Date('03/05/2018 10:00:00 PM'), Duration: 0
+    }
+];

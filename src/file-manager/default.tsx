@@ -32,7 +32,7 @@ export class Default extends SampleBase<{},{}> {
                         downloadUrl: this.hostUrl + 'api/FileManager/Download'
                     }}
                     view = {"LargeIcons"}
-                    toolbarSettings = {{visible: true}} contextMenuSettings={{visible: true}} navigationPaneSettings={{visible: false}}>
+                    navigationPaneSettings={{visible: false}}>
                 <Inject services={[ NavigationPane, DetailsView, LargeIconsView, ContextMenu,BreadCrumbBar, Toolbar]} />
                     </FileManagerComponent>
                 </div>

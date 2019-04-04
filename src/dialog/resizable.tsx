@@ -43,7 +43,7 @@ export class Resizable extends SampleBase<{}, {hideDialog: boolean;}> {
         <div id='target' className='col-lg-12 control-section dialog-resizable'>        
             <button className='e-control e-btn dlgbtn' ref ={this.buttonRef} onClick={this.buttonClick.bind(this)} id='dialogBtn'>Open Dialog</button>                
             {/* Render resizable Dialog */}
-            <DialogComponent id='resizableDialog' header='Resize Me' allowDragging={true} showCloseIcon={true} animationSettings={this.animationSettings} width='300px' ref={resizableDialog => this.resizableDialogInstance = resizableDialog}
+            <DialogComponent id='resizableDialog' header='Resize Me!!!' allowDragging={true} showCloseIcon={true} animationSettings={this.animationSettings} width='300px' ref={resizableDialog => this.resizableDialogInstance = resizableDialog}
             target='#target' visible={this.state.hideDialog} enableResize={true} open={this.dialogOpen} close={this.dialogClose}>
             This is a dialog with resizable support.
             </DialogComponent>

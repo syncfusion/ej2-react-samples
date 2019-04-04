@@ -30,7 +30,7 @@ const SAMPLE_CSS = `
         text-align: center;
     }
     .e-play-icon::before {
-        content: "\\e728";
+        content: "\\e720";
     }`;
 export class ChartExport extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;

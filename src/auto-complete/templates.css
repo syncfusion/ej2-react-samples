@@ -30,6 +30,10 @@
     background-color: #000;
 }
 
+.bootstrap4 #employees_popup .header {
+    color: #6c757d;
+}
+
 #employees_popup .ename {
     display: block !important;
     opacity: .87;
@@ -67,4 +71,20 @@
 
 .e-bigger #template .e-input-group .e-input-value {
     padding: 2px;
+}
+
+.bootstrap4 #employees_popup .empImage {
+    margin: 4px 16px;
+}
+
+.bootstrap4 #employees_popup .job {
+    margin-top: 0;
+}
+
+.e-bigger.bootstrap4 #employees_popup .job {
+    margin-top: -18px;
+}
+
+.e-bigger.bootstrap4 #employees_popup .ename {
+    margin-top: 4px;
 }

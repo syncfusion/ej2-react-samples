@@ -9,7 +9,7 @@ import { CheckBox, ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
 
-const slidercss = `  
+const slidercss = `
 .content-wrapper {
     width: 52%;
     margin: 0 auto;
@@ -136,9 +136,8 @@ export class APIs extends SampleBase<{}, {}> {
         args.checked ? this.defaultObj.showButtons = true : this.defaultObj.showButtons = false;
     }
     public refreshTooltip(e: any): void {
-        let element01: any = document.getElementById('slider');
-        if (!isNullOrUndefined(element01)) {
-            element01.ej2_instances[0].refreshTooltip(element01.ej2_instances[0].tooltipTarget);
+        if (this.defaultObj) {
+            (this.defaultObj as any).refreshTooltip((this.defaultObj as any).tooltipTarget);
         }
     }
     public sliderChange(args: SliderChangeEventArgs): void {
@@ -147,7 +146,7 @@ export class APIs extends SampleBase<{}, {}> {
 
     render() {
         if (!isNullOrUndefined(document.getElementById('right-pane'))) {
-            document.getElementById('right-pane').addEventListener('scroll', this.refreshTooltip);
+            document.getElementById('right-pane').addEventListener('scroll', this.refreshTooltip.bind(this));
         }
         return (
             <div className='control-pane'>

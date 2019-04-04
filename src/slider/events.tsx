@@ -7,7 +7,7 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
 
-const slidercss = `  
+const slidercss = `
 .content-wrapper {
     width: 52%;
     margin: 0 auto;
@@ -69,16 +69,14 @@ export class Events extends SampleBase<{}, {}> {
     }
 
     public refreshTooltip(e: any): void {
-        if (!isNullOrUndefined(document.getElementById('minrange')) &&
-        !isNullOrUndefined((document.getElementById('minrange') as any).ej2_instances[0])) {
-            let element01: any = document.getElementById('minrange');
-            element01.ej2_instances[0].refreshTooltip(element01.ej2_instances[0].tooltipTarget);
+        if (this.defaultObj) {
+            (this.defaultObj as any).refreshTooltip((this.defaultObj as any).tooltipTarget);
         }
     }
 
     render() {
         if (!isNullOrUndefined(document.getElementById('right-pane'))) {
-            document.getElementById('right-pane').addEventListener('scroll', this.refreshTooltip);
+            document.getElementById('right-pane').addEventListener('scroll', this.refreshTooltip.bind(this));
         }
         return (
             <div className='control-pane'>

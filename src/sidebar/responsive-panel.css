@@ -10,7 +10,7 @@
 
 #header-section .header-style {
     line-height: 40px;
-    height: 40px;
+    height: 55px;
     padding: 8px;
     list-style: none;
     text-align: center;
@@ -24,6 +24,7 @@
 
 #header-section .float-left {
     float: left;
+	padding-right: 0px;
 }
 
 #header-section .icon-menu {
@@ -161,7 +162,6 @@ body {
     padding: 0px;
     height: 100%;
     text-align: initial;
-    overflow: hidden;
 }
 
 /* end of newTab support styles */

@@ -49,7 +49,11 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
       hiddenColumns.value = hiddenColumns.value + column.headerText + '\n';
     }
   }
-
+  
+  private created() {
+    this.buttonObj2.disabled = true;
+  }
+  
   private showClick() {
     let columnName: string = this.dropdownObj.value.toString();
     let column: Column = this.treegridObj.getColumnByField(columnName);
@@ -95,13 +99,13 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                   <tr>
                      <td style={{ width: '30%' }}>
                         <div>
-                          <ButtonComponent id='hide'
+                          <ButtonComponent id='hide' 
                             ref={button=> this.buttonObj = button} onClick={ this.btnClick.bind(this) }> Hide </ButtonComponent>
                         </div>
                      </td>
                      <td style={{ width: '70%' }}>
                         <div>
-                          <ButtonComponent id='show' disabled={true}
+                          <ButtonComponent id='show' created={this.created.bind(this)}
                             ref={button=> this.buttonObj2 = button} onClick={ this.showClick.bind(this) }> Show </ButtonComponent>
                         </div>
                      </td>

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, Inject, Filter, Toolbar, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Filter, Toolbar, ColumnsDirective, ColumnDirective, Selection } from '@syncfusion/ej2-react-gantt';
 import { filteredData } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -37,8 +37,8 @@ export class Filtering extends SampleBase<{}, {}> {
   };
   public actionCompleteEvent(args): any {
     if (args.requestType == "filterafteropen" && (args.columnName === "StartDate" || args.columnName === "EndDate")) {
-      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(1969, 5, 16);
-      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(1969, 8, 16);
+      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(1969, 5, 1);
+      args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(1969, 8, 30);
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].showTodayButton = false;
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].dataBind();
     }
@@ -47,7 +47,7 @@ export class Filtering extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent dataSource={filteredData} durationUnit='Hour' treeColumnIndex={0} toolbar={this.toolbar}
+          <GanttComponent id='Filtering' dataSource={filteredData} durationUnit='Hour' treeColumnIndex={0} toolbar={this.toolbar}
             allowFiltering={true} includeWeekend={true} allowSorting={true} dateFormat='MM/dd/yyyy hh:mm:ss'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} taskFields={this.taskFields}
             timelineSettings={this.timelineSettings} splitterSettings={this.splitterSettings}
@@ -60,7 +60,7 @@ export class Filtering extends SampleBase<{}, {}> {
               <ColumnDirective field='EndDate' headerText='End Date'></ColumnDirective>
               <ColumnDirective field='Predecessor' headerText='Predecessor'></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Filter, Toolbar]} />
+            <Inject services={[Filter, Toolbar, Selection]} />
           </GanttComponent>
           <div style={{ float: 'right', margin: '10px' }}>Source:
             <a href="https://en.wikipedia.org/wiki/Apollo_11#Launch_and_flight_to_lunar_orbit"
@@ -97,14 +97,11 @@ export class Filtering extends SampleBase<{}, {}> {
             not have any parent and child record then only the filtered records are displayed.</li>
             <li><code>None</code> - Only the filtered records are displayed.</li>
           </p>
-          <p>Injecting Module:</p>
           <p>
             Gantt component features are segregated into individual feature-wise modules. To use filtering feature, we need
-        to inject <code>Filter</code> using the <code>Gantt.Inject(Filter)</code> method, and use a toolbar by injecting
-                    the Toolbar
-                    module using
-        the <code>Gantt.Inject(Toolbar)</code> method.
-    </p>
+            to inject <code>Filter</code> module, and use the toolbar support we need to inject <code>Toolbar</code> module.
+            To use a selection, inject the <code>Selection</code> module.
+          </p>
         </div>
       </div>
     )

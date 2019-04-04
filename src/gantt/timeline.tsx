@@ -28,6 +28,7 @@ export class Timeline extends SampleBase<{}, {}> {
   private bottomTierUnit: DropDownListComponent;
   private topTierCount: NumericTextBoxComponent;
   private bottomTierCount: NumericTextBoxComponent;
+  private timelineUnitSize: NumericTextBoxComponent;
   public projectStartDate = new Date('02/03/2019');
   public projectEndDate = new Date('03/23/2019');
   public timelineSettings: any = {
@@ -72,7 +73,6 @@ export class Timeline extends SampleBase<{}, {}> {
     { id: 'h : mm a', format: '0 : 00 AM' },
   ];
   public unit: { [key: string]: Object }[] = [
-    { id: 'None', unit: 'None' },
     { id: 'Year', unit: 'Year' },
     { id: 'Month', unit: 'Month' },
     { id: 'Week', unit: 'Week' },
@@ -128,6 +128,8 @@ export class Timeline extends SampleBase<{}, {}> {
       this.topTierformat.dataSource = this.hourformat;
     }
     this.topTierformat.refresh();
+    this.updateUnitWidth(unit, 'top');
+    this.ganttInstance.timelineSettings.topTier.unit = unit as TimelineViewMode;
   }
   public bottomUnitChange(e): any {
     let unit: string = e.value;
@@ -144,6 +146,8 @@ export class Timeline extends SampleBase<{}, {}> {
       this.bottomTierformat.dataSource = this.hourformat;
     }
     this.bottomTierformat.refresh();
+    this.updateUnitWidth(unit, 'bottom');
+    this.ganttInstance.timelineSettings.bottomTier.unit = unit as TimelineViewMode;
   }
   public bottomFormatChange(e): any {
     let format: string = e.value;
@@ -153,6 +157,10 @@ export class Timeline extends SampleBase<{}, {}> {
     let format: string = e.value;
     this.ganttInstance.timelineSettings.topTier.format = format.toString();
   }
+  public unitWidth(e): any {
+    let width: number = e.value;
+    this.ganttInstance.timelineSettings.timelineUnitSize = width;
+  }
   private unitField: any = { text: 'unit', value: 'id' }
   private formatField: any = { text: 'format', value: 'id' };
   render() {
@@ -160,7 +168,7 @@ export class Timeline extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className='col-lg-8'>
-            <GanttComponent ref={gantt => this.ganttInstance = gantt} dataSource={projectData} renderBaseline={true} allowSorting={true}
+            <GanttComponent id='Timeline' ref={gantt => this.ganttInstance = gantt} dataSource={projectData} renderBaseline={true} allowSorting={true}
               treeColumnIndex={1} allowSelection={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
               taskFields={this.taskFields} timelineSettings={this.timelineSettings} highlightWeekends={true}
               height='410px' resourceNameMapping='resourceName' resourceIDMapping='resourceId'
@@ -174,6 +182,17 @@ export class Timeline extends SampleBase<{}, {}> {
           <div className='col-lg-4 property-section'>
             <PropertyPane title='Properties'>
               <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+                <tr>
+                  <td style={{ width: '30%' }}>
+                    <div>Unit width</div>
+                  </td>
+                  <td style={{ width: '70%' }}>
+                    <div>
+                        <NumericTextBoxComponent ref={NumericTextBox => this.timelineUnitSize = NumericTextBox} format='n' value={33} min={10} change={this.unitWidth.bind(this)}></NumericTextBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr></tr>
                 <tr>
                   <td style={{ width: '30%' }}>
                     <div><b>Top tier</b></div>
@@ -190,7 +209,7 @@ export class Timeline extends SampleBase<{}, {}> {
                   </td>
                   <td style={{ width: '70%' }}>
                     <div>
-                      <NumericTextBoxComponent ref={NumericTextBox => this.topTierCount = NumericTextBox} id="count" format='##' min={1} max={50} value={1} className="form-control" change={this.topTierCountchange.bind(this)}></NumericTextBoxComponent>
+                      <NumericTextBoxComponent ref={NumericTextBox => this.topTierCount = NumericTextBox} id="count" format='n' min={1} max={50} value={1} className="form-control" change={this.topTierCountchange.bind(this)}></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>
@@ -239,7 +258,7 @@ export class Timeline extends SampleBase<{}, {}> {
                   </td>
                   <td style={{ width: '70%' }}>
                     <div>
-                      <NumericTextBoxComponent ref={NumericTextBox => this.bottomTierCount = NumericTextBox} id="count" format='##' min={1} max={50} value={1} className="form-control" change={this.bottomTierCountchange.bind(this)}></NumericTextBoxComponent>
+                      <NumericTextBoxComponent ref={NumericTextBox => this.bottomTierCount = NumericTextBox} id="count" format='n' min={1} max={50} value={1} className="form-control" change={this.bottomTierCountchange.bind(this)}></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>
@@ -285,29 +304,54 @@ export class Timeline extends SampleBase<{}, {}> {
         <div id="description">
           <p>
             In this example, you can see how to change the timeline settings in Gantt chart. The top and bottom timeline
-        header texts can be customized by using the <code>timelineSettings.topTier</code> and <code>timelineSettings.bottomTier</code> properties.
-                                                                  Using these properties, you can change the format, count, and units of the timeline header texts.
-    </p>
+            header texts can be customized by using the <code>timelineSettings.topTier</code> and <code>timelineSettings.bottomTier</code> properties                                                          Using these properties, you can change the format, count, and units of the timeline header texts.
+          </p>
           <p>
             Gantt chart has built-in support for many timeline modes such as minutes, hour, day, week, month and year.
-    </p>
-          <p> The
-        default timeline headers can also be replaced with custom header texts by using the <code>formatter</code> method.
-    </p>
+          </p>
+          <p> 
+            The default timeline headers can also be replaced with custom header texts by using the <code>formatter</code> method.
+          </p>
           <p>
             Tooltip is enabled by default for the timeline headers, to see the tooltip in action, hover a point or tap on a
             point in touch enabled devices.
-    </p>
-          <p style={{ fontWeight: 500 }}>Injecting Module:</p>
+          </p>
           <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
-        Selection module using the <code>Gantt.Inject(Selection)</code> method, and use a sort by injecting the Sort
-                                                                module using
-        the <code>Gantt.Inject(Sort)</code> method. To use markers, inject the
-        DayMarkers module using the <code>Gantt.Inject(DayMarkers)</code> method.
-    </p>
+            Gantt component features are segregated into individual feature-wise modules. To use a selection support, inject the
+            <code>Selection</code> module. To use markers in Gantt, inject the <code>DayMarkers</code> module.
+          </p>
         </div>
       </div>
     )
   }
+  private updateUnitWidth(unit: string, tier: string): void {
+   let topUnit: string = tier === 'top' ? unit : this.ganttInstance.timelineSettings.topTier.unit;
+   let bottomUnit: string = tier === 'bottom' ? unit : this.ganttInstance.timelineSettings.bottomTier.unit;
+   let units: string[] = ['None', 'Hour', 'Day', 'Week', 'Month', 'Year'];
+   let bootomCellUnit: string;
+   let unitWidth: number;
+   if (units.indexOf(topUnit) === 0 && units.indexOf(bottomUnit) === 0) {
+       bootomCellUnit = 'Day';
+   } else if (units.indexOf(topUnit) === 0 && units.indexOf(bottomUnit) > 0) {
+       bootomCellUnit = bottomUnit;
+   } else if (units.indexOf(topUnit) > 0 && units.indexOf(bottomUnit) === 0) {
+       bootomCellUnit = topUnit;
+   } else if (units.indexOf(topUnit) <= units.indexOf(bottomUnit)) {
+       bootomCellUnit = topUnit;
+   } else {
+       bootomCellUnit = bottomUnit;
+   }
+   if (bootomCellUnit === 'Year') {
+       unitWidth = 2000;
+   } else if (bootomCellUnit === 'Month') {
+       unitWidth = 300;
+   } else if (bootomCellUnit === 'Week') {
+       unitWidth = 150;
+   } else if (bootomCellUnit === 'Day') {
+       unitWidth = 33;
+   } else if (bootomCellUnit === 'Hour') {
+       unitWidth = 25;
+   }
+   this.timelineUnitSize.value = unitWidth;
+   }  
 }

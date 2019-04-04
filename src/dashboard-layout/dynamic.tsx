@@ -115,7 +115,7 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                         <Inject services={[SplineAreaSeries, DateTime, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={splineData1} xName='x' yName='y' name='Jan'
-                                opacity={0.5} type='SplineArea' width={2} fill='#e56590e6'>
+                                opacity={0.5} type='SplineArea' width={2} fill='rgb(239, 183, 202)'>
                             </SeriesDirective>
                             <SeriesDirective dataSource={splineData2} xName='x' yName='y' name='Feb'
                                 opacity={0.5} type='SplineArea' width={2}  fill='rgb(0, 189, 174)'>
@@ -143,13 +143,13 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                         <Inject services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='Jan' type='Column'
-                                marker={{ dataLabel: { visible: false }}} fill = '#00bdaed1'>
+                                marker={{ dataLabel: { visible: false }}} fill = '#00bdae'>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' name='Feb' type='Column'
-                                marker={{ dataLabel: { visible: false }}} fill = '#e56691e8'>
+                                marker={{ dataLabel: { visible: false }}} fill = '#e56691'>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data3} xName='x' yName='y' name='Mar' type='Column'
-                                marker={{ dataLabel: { visible: false }}} fill = '#357cd2bf'>
+                                marker={{ dataLabel: { visible: false }}} fill = '#357cd2'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -177,7 +177,7 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
               <AccumulationSeriesCollectionDirective>
                 <AccumulationSeriesDirective dataSource={pieData} name='Earnings' xName='x' yName='y'
                   dataLabel={{ visible: true, position: 'Inside', name: 'value', font: { fontWeight: '600' }}}
-                  radius='100%' innerRadius="40%" palettes ={ ['#00bdaed1', '#357cd2bf', '#e56691e8']}>
+                  radius='100%' innerRadius="40%" palettes ={ ['#00bdae', '#357cd2', '#e56691']}>
                 </AccumulationSeriesDirective>
               </AccumulationSeriesCollectionDirective>
             </AccumulationChartComponent>
@@ -216,16 +216,16 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        The following sample demonstrates a editable dashboard layout. Initially the Dashboard Layout component
+                        The following sample demonstrates a editable dashboard layout. Initially the DashboardLayout component
                         doesn't allow to drag, resize or reorder the panels. After clicking the edit button, the layout becomes 
                          editable which allows to drag and reorder the panels as per the requirement and also you can
                         add new panels to the layout with predefined templates by clicking the add new button and reorder them
-                        by dragging and placing in the required position.Drag and resizing of the panles are not applicable 
+                        by dragging and placing in the required position. Drag and resizing of the panles are not applicable 
                         in mobile resolution.
                     </p>
                 </div>
                 <div id="description">
-                    The following sample demonstrates about using the Dashboard Layout as an editable layout.
+                The following sample demonstrates about using the dashboard layout as an editable layout.
                 </div>
                 <DialogComponent id="listdialog" width="500px" height="260px" visible={this.state.hideDialog} header={"Add a widget"} showCloseIcon={true}
                 animationSettings={{effect:'Zoom'}} isModal={true} target='#edit_target' ref={(scope) => { this.dialogObj = scope; }} content= {this.content as any}>

@@ -65,7 +65,12 @@ export class CustomTool extends SampleBase<{}, {}> {
 public onInsert(): void {
     let activeEle: Element = this.dialogObj.element.querySelector('.char_block.e-active');
     if (activeEle) {
-        this.ranges.insertNode(document.createTextNode(activeEle.textContent));
+        if (this.rteObj.formatter.getUndoRedoStack().length === 0) {
+          this.rteObj.formatter.saveData();
+        }
+        this.rteObj.executeCommand('insertText', activeEle.textContent);
+        this.rteObj.formatter.saveData();
+        (this.rteObj as any).formatter.enableUndo(this.rteObj);
     }
     this.dialogOverlay();
 }

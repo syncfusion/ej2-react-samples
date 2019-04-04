@@ -100,7 +100,6 @@ export class Range extends SampleBase<{}, {}> {
                                 <AxisDirective startAngle={210} radius='80%' endAngle={150} minimum={0} maximum={120}
                                     majorTicks={{
                                         height: 10, offset: 5,
-                                        color: '#9E9E9E'
                                     }} lineStyle={{ width: 10, color: 'transparent' }}
                                     minorTicks={{
                                         height: 0
@@ -113,12 +112,10 @@ export class Range extends SampleBase<{}, {}> {
                                         useRangeColor: false
                                     }}>
                                     <PointersDirective>
-                                        <PointerDirective value={65} radius='60%' color='#757575' pointerWidth={8} needleTail={{
-                                            length: '18%',
-                                            color: '#757575' 
+                                        <PointerDirective value={65} radius='60%'  pointerWidth={8} needleTail={{
+                                            length: '18%' 
                                         }} cap={{
-                                            radius: 7,
-                                            color: '#757575'
+                                            radius: 7
                                         }} />
                                     </PointersDirective>
                                     <RangesDirective>

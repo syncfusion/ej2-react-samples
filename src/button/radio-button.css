@@ -26,7 +26,6 @@
 }
 
 .radiobutton-control h4 {
-    color: rgba(0, 0, 0, 0.64);
     font-size: 18px;
 }
 
@@ -34,7 +33,4 @@
     font-size: 20px;
 }
 
-.highcontrast .radiobutton-control h4 {
-    color: rgba(255, 255, 255, 0.64);
-}
 /* custom code end */

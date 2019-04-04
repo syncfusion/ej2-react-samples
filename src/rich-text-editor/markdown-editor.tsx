@@ -41,7 +41,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
         items: this.items
     };
 
-    public markDownConversion(): void {
+    public MarkDownConversion(): void {
         if (this.mdsource.classList.contains('e-active')) {
             let id: string = this.rteObj.getID() + 'html-view';
             let htmlPreview: HTMLElement = this.rteObj.element.querySelector('#' + id);
@@ -72,7 +72,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     public rendereComplete(): void {
         this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
         this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => {
-            this.markDownConversion();
+            this.MarkDownConversion();
         });
         this.mdsource = document.getElementById('preview-code');
         this.mdsource.addEventListener('click', (e: MouseEvent) => {

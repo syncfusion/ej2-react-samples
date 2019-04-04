@@ -261,11 +261,7 @@ export class ColorMap extends SampleBase<{}, {}> {
                             position: 'Bottom', height: '10',
                             width: '80%', mode: 'Interactive',
                             titleStyle: {
-                                size: '18px',
-                                fontStyle: 'Medium',
-                                fontFamily: 'Roboto, Noto, Sans-serif',
-                                fontWeight: 'Medium',
-                                opacity: 0.5
+                                size: '18px'
                             },
                             title: { text: 'Inches' }
                         }}>

@@ -79,7 +79,7 @@ export class Formsupport extends SampleBase<{}, {}> {
                     required: [true, '* Enter your name']
                 },
                 'email': {
-                    required: [true, '* Enter your email']
+                    required: [true, '* Please enter valid email']
                 },
                 'upload': {
                     required: [true, '* Select any file']
