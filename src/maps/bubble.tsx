@@ -15,10 +15,12 @@ import { internetUsers } from './map-data/population-data';
 interface Data {
     value?: number;
 }
+// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
+    // custom code end
 export class BubbleMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     private bubbleRendering(args: IBubbleRenderingEventArgs): void {
@@ -52,10 +54,10 @@ export class BubbleMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Bubble, MapsTooltip, Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/bubble-datasource.json')}
+                                    dataSource={new MapAjax('./src/maps/map-data/bubble-datasource.json')}
                                     shapeSettings={{
                                         fill: '#E5E5E5'
                                     }}
@@ -80,6 +82,7 @@ export class BubbleMaps extends SampleBase<{}, {}> {
                             </LayersDirective>
                         </MapsComponent>
                     </div>
+                    {/* Source Link */}
                     <div style={{float: 'right', marginright: '10px'}}>Source: 
                         <a href="https://en.wikipedia.org/wiki/List_of_countries_by_number_of_Internet_users" target="_blank">en.wikipedia.org</a>
                     </div>
@@ -110,9 +113,11 @@ export class BubbleMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

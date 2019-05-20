@@ -12,6 +12,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -25,8 +26,10 @@ const slidercss = `
         margin: 0 auto;
         min-width: 100px;
     }`;
+    // custom code end
 
 export class Customization extends SampleBase<{}, {}> {
+    // Code for Property Panel
     private smithchartInstance: SmithchartComponent;
     private radiusElement: SliderComponent;
     private positionElement: DropDownListComponent;
@@ -95,7 +98,7 @@ export class Customization extends SampleBase<{}, {}> {
         this.smithchartInstance.legendSettings.position = this.positionElement.value.toString();
         this.smithchartInstance.refresh();
     }
-
+    // custom code start
     public load(args: ISmithchartLoadedEventArgs): void {
         args.smithchart.title.text = 'Impedance Transmission';
         args.smithchart.title.visible = true;
@@ -103,6 +106,7 @@ export class Customization extends SampleBase<{}, {}> {
         theme = theme ? theme : 'Material';
         args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SmithchartTheme;
     }
+    // custom code end
     render() {
         return (
             <div className='control-pane'>
@@ -150,6 +154,7 @@ export class Customization extends SampleBase<{}, {}> {
                         </SmithchartSeriesCollectionDirective>
                     </SmithchartComponent>
                 </div>
+                {/* Property Panel */}
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>

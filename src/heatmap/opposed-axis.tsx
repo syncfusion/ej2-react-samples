@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
-import { opposedAxisData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from "../common/property-pane";
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
@@ -13,6 +14,7 @@ const SAMPLE_CSS: any = `
 #source{
     float: right; margin-right: 10p
 }`;
+// custom code end
 /**
  * Schedule Default sample
  */
@@ -22,9 +24,11 @@ export class OpposedAxis extends SampleBase<{}, {}> {
         return (
             <div>
                 <div className='col-md-9 control-section'>
+                    {/* custom code start */}
                     <style>
                         {SAMPLE_CSS}
                     </style>
+                    {/* custom code end */}
                         <HeatMapComponent id='heatmap-container' ref={t => this.heatmap = t}
                             titleSettings={{
                                 text: 'Monthly Flight Traffic at JFK Airport',
@@ -47,7 +51,7 @@ export class OpposedAxis extends SampleBase<{}, {}> {
                                     'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                                 opposedPosition: true
                             }}
-                            dataSource={opposedAxisData}
+                            dataSource={(data as any).opposedAxisData}
                             legendSettings={{
                                 visible: false
                             }}

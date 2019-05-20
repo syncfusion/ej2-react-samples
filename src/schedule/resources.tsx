@@ -117,6 +117,7 @@ export class Resources extends SampleBase<{}, {}> {
         return finalData;
     }
 
+    //custom code start 
     private generateEvents(scheduleObj: Schedule): Object[] {
         let collections: Object[] = [];
         let dataCollections: { [key: string]: Object }[] = [
@@ -163,6 +164,7 @@ export class Resources extends SampleBase<{}, {}> {
         let filteredCollection: Object[] = this.filterByFare(collections, scheduleObj);
         return filteredCollection;
     }
+    //custom code end 
 
     private template(props): JSX.Element {
         return (<div className="template-wrap">
@@ -257,7 +259,7 @@ export class Resources extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This demo illustrates how to customize the schedule to showcase it as an
+                        This demo illustrates how to customize the scheduler to showcase it as an
                        <strong>Airfare calendar</strong> depicting the lowest available price on each day of a month for a specific route,
                                    say between Barcelona and Los Angeles.
                     </p>
@@ -265,18 +267,18 @@ export class Resources extends SampleBase<{}, {}> {
 
                 <div id="description">
                     <p>
-                        In this demo, Schedule initially displays the fare of the airline service which offers lowest price on each day by
-                         comparing between the 3 available airlines. Here, the 3 airline services acts as the Schedule resources.
+                        In this demo, Scheduler initially displays the fare of the airline service which offers lowest price on each day by
+                         comparing between the 3 available airlines. Here, the 3 airline services acts as the Scheduler resources.
                         Appointment collection has been dynamically generated for a month (for all the 3 resources) within the
                         <code>generateEvents</code> method and then filtered externally based on the ascending Fare value within the
-                        <code>filterByFare</code> method. Since each day of the Schedule needs to display only a single appointment showing
+                        <code>filterByFare</code> method. Since each day of the Scheduler needs to display only a single appointment showing
                          the fare value, therefore it’s been queried to take only the first 30 values from the sorted list and assigned it
                           to the Schedule
                         <code>dataSource</code>. Here, the filtering process needs to be carried out during the
-                        <code>databinding</code> event and therefore, the dataSource of Schedule is assigned within this event.
+                        <code>databinding</code> event and therefore, the dataSource of Scheduler is assigned within this event.
                     </p>
                     <p>
-                        Schedule has been rendered in a readonly mode and therefore no editing actions are allowed here.
+                        Scheduler has been rendered in a readonly mode and therefore no editing actions are allowed here.
                          To customize the look of the appointments that displays the fare value,
                         <code>template</code> option within the
                         <code>eventSettings</code> is being used. To highlight the day that holds the overall lowest price of a month,

@@ -4,10 +4,11 @@ import {
   ScheduleComponent, Day, Week, WorkWeek, Month,
   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { scheduleData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule editor validation sample
@@ -15,7 +16,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class EditorFieldValidation extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], scheduleData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -41,24 +42,24 @@ export class EditorFieldValidation extends SampleBase<{}, {}> {
       <div className='schedule-control-scetion'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2018, 1, 15)} ref={t => this.scheduleObj = t}
+            <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2019, 0, 10)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data, fields: this.fields }} eventRendered={this.onEventRendered.bind(this)}>
               <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
         <div id='action-description'>
-          <p>This demo shows the way of adding default and custom validation rules to the editor fields of Schedule.</p>
+          <p>This demo shows the way of adding default and custom validation rules to the editor fields of Scheduler.</p>
         </div>
         <div id='description'>
           <p>
-            In this demo, the specific fields of Schedule editor window such as
+            In this demo, the specific fields of Scheduler editor window such as
         <code>subject</code>,
         <code>location</code>,
         <code>description</code>,
         <code>startTime</code> and
         <code>endTime</code> are made to undergo validation such that if it is left as blank, then the default required validation message
-                                                                         will be displayed in a separate tooltip, on clicking a save button.
+                                                                                 will be displayed in a separate tooltip, on clicking a save button.
           </p>
           <p>
             Additionally, the regex condition has been added to the <code>location</code> field,

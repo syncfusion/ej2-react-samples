@@ -1,3 +1,4 @@
+/* custom code start */
 /* Switch Styles */
 .switch-content {
   margin: 45px auto;
@@ -26,6 +27,7 @@
   font-weight: 400;
   font-size: 13px;
 }
+/* custom code end */
 
 .switch-control .e-disabled {
   pointer-events: none;

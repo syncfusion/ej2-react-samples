@@ -2,11 +2,12 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor } from '@syncfusion/ej2-react-heatmap';
 import { SampleBase } from '../common/sample-base';
-
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
 }`;
+// custom code end
 /**
  * Heatmap Default sample
  */
@@ -15,9 +16,11 @@ export class Default extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
                 </style>
+                {/* custom code end */}
                 <div className='control-section'>
                     <HeatMapComponent id='heatmap-container'
                         titleSettings={{

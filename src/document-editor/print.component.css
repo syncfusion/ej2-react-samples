@@ -57,22 +57,29 @@ body {
     top: 0;
 }
 
-.e-de-statusbar-zoom {
+.e-de-print-statusbar {
+    background-color: #F1F1F1;
+    border: 0;
+    color: #000;
     float: right;
-    text-align: center;
-    padding: 2px;
-    line-height: 19px;
-    margin-top: 1px;
+    height: 26px;
+}
+
+.e-bigger .e-de-print-statusbar {
+    background-color: #F1F1F1;
+    border: 0;
+    color: #000;
+    float: right;
+    height: 26px;
+    padding-top: 0;
 }
 
 #documenteditor_titlebar {
-    background-color: #2B3481;
     border-bottom: 1px solid #2B3481;
     height: 36px;
     line-height: 26px;
     width: 100%;
     font-size: 12px;
-    color: #ffffff;
     padding-left: 15px;
     padding-right: 10px;
 }

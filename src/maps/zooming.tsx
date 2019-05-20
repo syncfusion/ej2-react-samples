@@ -127,10 +127,10 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='continent'
                                     shapeDataPath='continent'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/zooming-datasource.json')}
+                                    dataSource={new MapAjax('./src/maps/map-data/zooming-datasource.json')}
                                     animationDuration={500}
                                     shapeSettings={{
                                         autofill: true,
@@ -232,12 +232,13 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
-
+    // custom code end
     public mousewheel(): void {
         let element: HTMLInputElement = (document.getElementById('mousewheel')) as HTMLInputElement;
         this.mapInstance.zoomSettings.mouseWheelZoom = element.checked;

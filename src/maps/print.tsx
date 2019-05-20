@@ -14,6 +14,8 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as data from './map-data/print-datasource.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
 .control-fluid {
     padding: 0px !important;
@@ -21,6 +23,7 @@ const SAMPLE_CSS = `
 #btn-control {
     width: 100%;
     text-align: center;
+    text-transform:none !important;
 }
 .e-play-icon::before {
     content: "\\e813";
@@ -58,10 +61,10 @@ export class PrintMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Legend, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/print-datasource.json')}
+                                    dataSource={datasource.print}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath: 'population',
@@ -101,17 +104,19 @@ export class PrintMaps extends SampleBase<{}, {}> {
                                 </LayerDirective>
                             </LayersDirective>
                         </MapsComponent>
+                        {/* Source Link */}
                         <div style={{ float: 'right', marginright: '10px', marginBottom: '0px' }}>Source:
                 <a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population" target="_blank">en.wikipedia.org</a>
                         </div>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '100%' }}>
                                         <div id="btn-control">
-                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>
@@ -145,11 +150,13 @@ export class PrintMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
     public tooltipRender(args: ITooltipRenderEventArgs): void {
         if (args.options.toString().indexOf('population') > -1) {
             args.cancel = true;

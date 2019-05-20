@@ -11,7 +11,10 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { penisular_location, penisular_marker } from './map-data/map-location';
+import * as data1 from './map-data/penisular-marker.json';
+import * as data2 from './map-data/penisular-location.json';
+let datasource1: any = data1 as any;
+let datasource2: any = data2 as any;
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -66,11 +69,11 @@ export class NavigationLineMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Marker, MapsTooltip, NavigationLine]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapeSettings={{
                                         fill: '#789071'
                                     }}
-                                    navigationLineSettings={ penisular_location }
+                                    navigationLineSettings={ datasource2.location }
                                 >
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} shape='Circle' fill='white' width={10} height={10}  animationDuration={0}
@@ -78,7 +81,7 @@ export class NavigationLineMaps extends SampleBase<{}, {}> {
                                         visible: true,
                                         valuePath: 'title'
                                     }}
-                                    dataSource={ penisular_marker }
+                                    dataSource={ datasource1.marker }
                                     >
                                     </MarkerDirective>
                                     <MarkerDirective visible={true} template= '<div id="marker1" style="font-size: 12px;color:white">ALTAMIRA</div>' dataSource={ [{ latitude: 22.403410892712124, longitude: -100.0 }]} animationDuration={0}>
@@ -96,6 +99,7 @@ export class NavigationLineMaps extends SampleBase<{}, {}> {
                             </LayersDirective>
                         </MapsComponent>
                     </div>
+                    {/* Source Link */}
                     <div style={{float: 'right', marginright: '10px'}}>Source: 
        <a href="http://www.lineaships.com/en/linea-peninsular/" target="_blank">www.lineaships.com</a>
     </div>
@@ -122,9 +126,11 @@ export class NavigationLineMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

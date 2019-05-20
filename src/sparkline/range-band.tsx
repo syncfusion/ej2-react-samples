@@ -31,21 +31,21 @@ const SAMPLE_CSS = `
         padding: 0px !important;
     }`;
 
-export class GridData {
-    public id: string;
+export interface GridData {
+    id: string;
 }
 
 export class RangeBand extends SampleBase<{}, {}> {
     private sparklineInstance: SparklineComponent;
     private minElement: SliderComponent;
     private maxElement: SliderComponent;
-
+    // custom code start
     public load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SparklineTheme;
     }
-
+    // custom code end
     private lineData: Object[] = [
         [0, 6, 4, 1, 3, 2, 5],
         [5, 4, 6, 3, 1, 2, 0],
@@ -143,7 +143,6 @@ export class RangeBand extends SampleBase<{}, {}> {
                     <GridComponent dataSource={products} resizing={this.renderSparkline.bind(this)} load={this.renderSparkline.bind(this)}
                         height='400'
                         allowSelection={false}
-                        enableColumnVirtualization={true}
                         enableHover={true}>
                         <ColumnsDirective>
                             <ColumnDirective field='name' headerText='Name' textAlign='Right' width='50' />
@@ -156,6 +155,7 @@ export class RangeBand extends SampleBase<{}, {}> {
                         </ColumnsDirective>
                     </GridComponent>
                 </div>
+                {/* Property Panel */}
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>

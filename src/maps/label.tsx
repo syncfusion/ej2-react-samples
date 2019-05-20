@@ -19,6 +19,7 @@ const SAMPLE_CSS = `
     }`;
 export class LabelMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
+    // Code for Property panel
     private dropElement1: DropDownListComponent;
     private dropElement2: DropDownListComponent;
     private droplist: { [key: string]: Object }[] = [
@@ -54,7 +55,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[DataLabel,MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     dataLabelSettings={{
                                         visible: true,
                                         labelPath: 'name',
@@ -73,9 +74,10 @@ export class LabelMaps extends SampleBase<{}, {}> {
                             </LayersDirective>
                         </MapsComponent>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '110%' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Show Labels</div>
@@ -134,9 +136,11 @@ export class LabelMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

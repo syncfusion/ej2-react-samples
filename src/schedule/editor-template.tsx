@@ -4,12 +4,12 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
   PopupOpenEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { doctorsEventData } from './datasource';
 import './editor-template.css';
 import { extend } from '@syncfusion/ej2-base';
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule editor template sample
@@ -17,7 +17,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class EditorTemplate extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], doctorsEventData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).doctorsEventData, null, true) as Object[];
   private onPopupOpen(args: PopupOpenEventArgs): void {
     if (args.type === 'Editor') {
       let statusElement: HTMLInputElement = args.element.querySelector('#EventType') as HTMLInputElement;
@@ -114,11 +114,11 @@ export class EditorTemplate extends SampleBase<{}, {}> {
           </p>
           <p>
             Within the <code>eventRendered</code> event that triggers before every appointment getting rendered
-             on the Schedule user interface,
+             on the Scheduler user interface,
         the colors for the appointments are set based on its status which is retrieved from the appointment data.
           </p>
           <p>
-            The additional restriction has been added to the Schedule cells such that if a cell already contains an appointment – then
+            The additional restriction has been added to the Scheduler cells such that if a cell already contains an appointment – then
             it should be prevented to book with multiple appointments on the same time
              for which the <code>isSlotAvailable</code> method is used.
 This method returns true, if the underlying cell is available for adding new events

@@ -276,7 +276,8 @@ export class PeriodSelectorCandle extends SampleBase<{}, {}> {
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                 replace(/-dark/i, "Dark") as ChartTheme;
         args.chart.tooltip.format = args.chart.series[0].type === 'Candle' ?
                 '${point.x}<br/>High : <b>${point.high}</b><br/>Low : <b>${point.low}</b><br/>' +
                 'Open : <b>${point.open}</b><br/>Close : <b>${point.close}</b>' :
@@ -286,14 +287,16 @@ export class PeriodSelectorCandle extends SampleBase<{}, {}> {
     public rangeLoad(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                 replace(/-dark/i, "Dark") as ChartTheme;
         args.rangeNavigator.periodSelectorSettings.height = document.body.className.indexOf('e-bigger') > -1 ? 56 : 42;
         this.range1Rendered = true;
     };
     public rangeLoad2(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                 replace(/-dark/i, "Dark") as ChartTheme;
         args.rangeNavigator.dateTimeModule = new DateTime(args.rangeNavigator as any);
         this.range2Rendered = true;
     };

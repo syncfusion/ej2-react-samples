@@ -7,18 +7,17 @@ import * as React from 'react';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SampleBase } from '../common/sample-base';
 import './template.css';
-import { dataSource } from './newsData';
+import { dataSource } from './listData';
 
 export class Template extends SampleBase<{}, {}> {
 
-    private listviewInstance: ListViewComponent;
     //Customizing the elements to perform our own events
     private share: any;
     private comments: any;
     private bookmark: any;
     private description: any;
     private timeStamp: any;
-
+    // Set customized list template
     listTemplate(data: any): JSX.Element {
         return (
 
@@ -66,7 +65,7 @@ export class Template extends SampleBase<{}, {}> {
         this.timeStamp = document.getElementsByClassName('timeStamp');
         this.postActions();
     }
-
+    // EventHnadler to Comments, BookMarks and Share Icons
     postActions(): void {
         for (let i: number = 0; i < this.comments.length; i++) {
             this.comments[i].setAttribute('title', 'We can customize this element to perform our own action');
@@ -108,7 +107,7 @@ export class Template extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     {/* ListView element */}
                     <ListViewComponent id='listview_template' dataSource={dataSource} headerTitle='Syncfusion Blog' showHeader={true} cssClass = 'e-list-template'
-                        actionComplete={this.onComplete.bind(this)} template={this.listTemplate as any} ref={(listview) => { this.listviewInstance = listview }}></ListViewComponent>
+                        actionComplete={this.onComplete.bind(this)} template={this.listTemplate as any}></ListViewComponent>
                 </div>
 
                 <div id="action-description">

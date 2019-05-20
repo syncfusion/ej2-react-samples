@@ -71,7 +71,7 @@ export class RemoteData extends SampleBase<{}, {}> {
               parentId: "ReportsTo",
               dataManager: new DataManager(
                 {
-                  url: "http://mvc.syncfusion.com/Services/Northwnd.svc/",
+                  url: "https://mvc.syncfusion.com/Services/Northwnd.svc/",
                   crossDomain: true
                 },
                 new Query()

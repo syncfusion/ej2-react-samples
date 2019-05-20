@@ -46,7 +46,7 @@ export class PieMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/continent.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/continent.json')}
                                     shapeSettings={{
                                         fill: '#E5E5E5',
                                         colorMapping: [
@@ -114,10 +114,12 @@ export class PieMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                 </div>
+                {/* Source Link */}
                 <div style={{float: 'right', marginright: '10px'}}>Source: 
                 <a href="http://www.nationmaster.com/country-info/stats/People/Age-structure/55--64-years" target="_blank">www.nationmaster.com</a>
                
-               </div> <div id="action-description">
+               </div>
+                <div id="action-description">
                <p>
                    This sample visualizes the placing of pie charts on the maps. Pie chart is rendered with the age group detais of top 6 largest countries.
               </p>
@@ -305,11 +307,13 @@ export class PieMaps extends SampleBase<{}, {}> {
         chart5.appendTo('#marker6');
         this.chartCollection.push(chart5);
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
     public resize(args: IResizeEventArgs): void {
 		for (let i: number = 0; i < this.chartCollection.length; i++) {			
 			this.chartCollection[i].destroy();

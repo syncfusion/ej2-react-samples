@@ -43,7 +43,7 @@ export class CustomFormat extends SampleBase<{}, {}> {
         selectionTags: {'Bold': '__',  'Italic': '_'}
     });
 
-    public markDownConversion(): void {
+    public MarkDownConversion(): void {
         if (this.mdsource.classList.contains('e-active')) {
             let id: string = (this.rteObj as any).getID() + 'html-view';
             let htmlPreview: HTMLElement = (this.rteObj as any).element.querySelector('#' + id);
@@ -77,7 +77,7 @@ export class CustomFormat extends SampleBase<{}, {}> {
         this.mdPreview = document.getElementById('MD_Preview');
         this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
         this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => {
-            this.markDownConversion();
+            this.MarkDownConversion();
         });
         this.mdsource = document.getElementById('preview-code');
         this.mdsource.addEventListener('click', (e: MouseEvent) => {
@@ -86,7 +86,7 @@ export class CustomFormat extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div id="dropdowndefault" className='control-pane'>
+            <div className='control-pane'>
                 <div className='control-section' id="rteCustomFormat">
                     <div className="content-wrapper">
                             <RichTextEditorComponent id="markdownRTE"

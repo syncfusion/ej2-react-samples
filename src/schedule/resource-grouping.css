@@ -3,13 +3,14 @@
     text-align: left;
 }
 
+/* custom code start*/
 .schedule-demo-heading {
     font-size: 16px;
     padding-bottom: 15px;
     text-align: center;
     font-weight: 500
 }
-
+/* custom code end*/
 .schedule-group.e-schedule .e-agenda-view .template-wrap {
     display: table;
     width: inherit;
@@ -83,9 +84,10 @@
     .schedule-group.e-schedule.e-device .template-wrap .airline-seats {
         display: none;
     }
-
+/* custom code start*/
 @media (max-width: 550px) {
     .schedule-demo-heading {
         font-size: 14px;
     }
 }
+/* custom code end*/

@@ -10,6 +10,7 @@ import { Browser } from '@syncfusion/ej2-base';
 export class Default extends SampleBase<{}, {}> {
 // Uploader component
 public checkboxObj: CheckBoxComponent;
+public checkboxObj1: CheckBoxComponent;
 public uploadObj: UploaderComponent;
 private asyncSettings: object ;
 private dropContainerRef;
@@ -35,6 +36,10 @@ private onChange(args: ChangeEventArgs): void {
     this.uploadObj.autoUpload = args.checked;
     this.uploadObj.clearAll();
 }
+private onChanged(args: ChangeEventArgs): void {
+    this.uploadObj.sequentialUpload = args.checked;
+    this.uploadObj.clearAll();
+}
 private onRemoveFile(args: RemovingEventArgs): void {
     args.postRawFile = false;
 }
@@ -54,16 +59,18 @@ public render(): JSX.Element {
         </div>
         <div className='property-section col-lg-3'>
             <PropertyPane title='Properties'>
-                <div  className='default-check'>
+                <div className = 'panel-style'>
                     <CheckBoxComponent checked={true} label='Auto Upload' ref={(scope) => { this.checkboxObj = scope; }} change={ this.onChange.bind(this) } ></CheckBoxComponent>
+                </div>
+                <div className = 'panel-style'>
+                    <CheckBoxComponent checked={false} label='Sequential Upload' ref={(scope) => { this.checkboxObj1 = scope; }} change={ this.onChanged.bind(this) } ></CheckBoxComponent>
                 </div>
             </PropertyPane>
         </div>
         </div>
         <div id="action-description">
-        <p>This sample demonstrates the default functionalities of the Uploader component. Browse the files which you want to upload to the server. 
-           The selected files are submitted to server on upload button click. If you click on the clear button, the selected / uploaded files are cleared from list.</p>
-        <p>Also, provided option to enable/disable the auto upload feature in the property panel</p>
+        <p>This example demonstrates the default functionalities of the file upload component with auto upload and sequential upload options.
+            Browse or drag-and-drop the files which you want to upload to the server and upload it.</p>
         </div>
         <div id="description">
         <p>The Uploader component is useful to upload images, documents, and other files. By default, the component allows to upload multiple files to browse and upload it to server.
@@ -72,7 +79,7 @@ public render(): JSX.Element {
             The uploaded files can be removed by click on the bin button.</p>
         <p>The progress bar displays for each file upload to denote its upload progress. 
             Once the file upload gets success, the progress bar disappear and corresponding upload status message will be displayed in same place.</p>
-        <p>More information on the Uploader instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/getting-started.html">documentation section</a>.</p>
+        <p>More information on the Uploader instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/uploader/getting-started/">documentation section</a>.</p>
         </div>
       </div>
     );

@@ -42,7 +42,7 @@ export class RuleGenerate extends SampleBase<{}, {}> {
         <div id='action-description'>
           <p>This demo showcases the recurrence rule generation based on the options selected from the Recurrence editor and it usually
             follows the <a href='https://tools.ietf.org/html/rfc5545#section-3.3.10' target='_blank'>iCalendar</a> specifications. This
-            generated recurrence rule string is a valid one to be used with the Schedule event’s recurrence rule field.</p>
+            generated recurrence rule string is a valid one to be used with the Scheduler event’s recurrence rule field.</p>
         </div>
         <div id='description'>
           <p>

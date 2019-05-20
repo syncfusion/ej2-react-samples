@@ -1,0 +1,43 @@
+.e-custom-parent {
+    background-color: #6d619b;
+    border: 1px solid #3f51b5;
+}
+
+.e-custom-moments {
+    background-color: #7ab748;
+    border: 1px solid #3f51b5;
+}
+
+.e-custom-performance {
+    background-color: #ad7a66;
+    border: 1px solid #3f51b5;
+}
+
+.oscar {
+    content:url("src/gantt/images/oscar.svg");
+}
+
+.face-mask {
+    content:url("src/gantt/images/face-mask.svg");
+}
+
+.moments {
+    content:url("src/gantt/images/moments.svg");
+}
+
+.moments, .face-mask, .oscar{
+    position:relative;
+    top:14px;
+    left:5px;
+    padding-right:4px;  
+}
+
+#TaskbarTemplate .e-milestone-top {
+    border-bottom-color: #7ab748 !important;
+    border-bottom:  1px solid #3f51b5;
+}
+
+#TaskbarTemplate .e-milestone-bottom{
+    border-top-color: #7ab748 !important;
+    border-top:  1px solid #3f51b5;
+}

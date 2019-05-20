@@ -48,7 +48,7 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/australia.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/australia.json')}
                                     tooltipSettings={{
                                         visible: false
                                     }}
@@ -109,6 +109,7 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
                             </LayersDirective>
                         </MapsComponent>
                     </div>
+                    {/* Source Link */}
                     <div style={{float: 'right', marginright: '10px'}}>Source: 
                         <a href="http://www.bom.gov.au/calendar/annual/climate.shtml" target="_blank">www.bom.gov.au</a>
                     </div>
@@ -135,9 +136,11 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

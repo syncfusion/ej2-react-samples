@@ -9,7 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import { TooltipDataModel, TicksDataModel, LimitDataModel } from '@syncfusion/ej2-inputs';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
-const slidercss = `  
+const slidercss = `
 .content-wrapper {
     width: 52%;
     margin: 0 auto;
@@ -96,18 +96,15 @@ export class Limits extends SampleBase<{}, {}> {
     }
 
     public refreshTooltip(e: any): void {
-        if (!isNullOrUndefined(document.getElementById('minrange')) &&
-            !isNullOrUndefined((document.getElementById('minrange') as any).ej2_instances[0]) &&
-            !isNullOrUndefined(document.getElementById('range')) &&
-            !isNullOrUndefined((document.getElementById('range') as any).ej2_instances[0])) {
-            (document.getElementById('minrange') as any).ej2_instances[0].refreshTooltip();
-            (document.getElementById('range') as any).ej2_instances[0].refreshTooltip();
+        if (this.minEndObj && this.rangeObj) {
+            (this.minRangeObj as any).refreshTooltip((this.minRangeObj as any).tooltipTarget);
+            (this.rangeObj as any).refreshTooltip((this.rangeObj as any).tooltipTarget);
         }
     }
 
     render() {
         if (!isNullOrUndefined(document.getElementById('right-pane'))) {
-            document.getElementById('right-pane').addEventListener('scroll', this.refreshTooltip);
+            document.getElementById('right-pane').addEventListener('scroll', this.refreshTooltip.bind(this));
         }
         return (
             <div className='control-pane'>

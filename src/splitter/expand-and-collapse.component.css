@@ -1,0 +1,24 @@
+.splitter-expand .splitter-content-expand {
+    padding: 12px;
+}
+.control-section.splitter-expand{            
+    max-height: 380px;
+	min-height: 350px;
+    margin-bottom: 15px;
+    margin-top: 10px;    
+}
+
+.splitter-expand .e-pane #splitter2 {
+    border: none;
+}
+
+/* styles to hide scroll bars */
+.splitter-expand .e-pane.e-pane-horizontal.e-scrollable::-webkit-scrollbar,
+.splitter-expand .e-pane.e-pane-vertical.e-scrollable::-webkit-scrollbar {
+    display: none; 
+}
+
+.splitter-expand .e-pane.e-pane-horizontal.e-scrollable, .splitter-expand .e-pane.e-pane-vertical.e-scrollable {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}

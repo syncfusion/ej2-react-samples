@@ -2,15 +2,16 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews,
-  TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop
+   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { employeeEventData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { TimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule start and end hour sample
@@ -18,7 +19,7 @@ import { PropertyPane } from '../common/property-pane';
 
 export class DayHourLimit extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], employeeEventData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
 
   private onSubmit(): void {
     let start: HTMLInputElement = document.getElementById('startTime') as HTMLInputElement;
@@ -42,10 +43,10 @@ export class DayHourLimit extends SampleBase<{}, {}> {
               <ViewsDirective>
                 <ViewDirective option='Day' />
                 <ViewDirective option='Week' />
+                <ViewDirective option='TimelineDay' />
                 <ViewDirective option='TimelineWeek' />
-                <ViewDirective option='TimelineMonth' />
               </ViewsDirective>
-              <Inject services={[Day, Week, TimelineViews, TimelineMonth, Resize, DragAndDrop]} />
+              <Inject services={[Day, Week, TimelineViews, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>
@@ -89,7 +90,7 @@ export class DayHourLimit extends SampleBase<{}, {}> {
             thus limiting it to display only the given hour range.</p>
         </div>
         <div id='description'>
-          <p>In this demo, the Schedule is made to display from 8 AM to 8 PM and the rest of the hours are hidden, as it is restricted
+          <p>In this demo, the Scheduler is made to display from 8 AM to 8 PM and the rest of the hours are hidden, as it is restricted
         to start from <code>08:00</code> hours and end on <code>20:00</code> hours
          by setting to <code>startHour</code> and <code>endHour</code> properties respectively.
           </p>

@@ -1,0 +1,31 @@
+#rteAPIProperty .property-panel-content div {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.property-panel-table td {
+    width: 50%;
+    margin-top: 3px;
+}
+
+#defaultPasteCleanup {
+    overflow: hidden;
+}
+
+#rteAPIProperty .property-panel-content {
+    overflow: inherit;
+}
+
+#rteAPIProperty .property-panel-header {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+#rteAPI .content-wrapper {
+    width: auto;
+    margin: 0;
+}
+
+.pasteStyle td label {
+    margin-top: -30px;
+}

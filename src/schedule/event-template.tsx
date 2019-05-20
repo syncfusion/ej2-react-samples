@@ -4,17 +4,17 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective,
   Day, Week, TimelineViews, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { webinarData } from './datasource';
 import './event-template.css';
 import { Browser, Internationalization, extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule event template sample
  */
 
 export class EventTemplate extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], webinarData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).webinarData, null, true) as Object[];
   private instance: Internationalization = new Internationalization();
   private getTimeString(value: Date) {
     return this.instance.formatDate(value, { skeleton: 'hm' });
@@ -57,6 +57,7 @@ export class EventTemplate extends SampleBase<{}, {}> {
         design is automatically replaced onto the usual event editor. Here, a doctor’s daily appointment with his patients is listed
         out and shaded with specific color based on its status.</p>
         </div>
+        {/* custom code start */}
         <div id='description'>
           <p>With the usage of template,
             the user can format and change the default appearance of the events by making use of the <code>template</code> option
@@ -64,6 +65,7 @@ export class EventTemplate extends SampleBase<{}, {}> {
         Here, the HTML template design is compiled and then the resultant output will be displayed directly on the events.
           </p>
         </div>
+        {/* custom code end*/}
       </div>
     );
   }

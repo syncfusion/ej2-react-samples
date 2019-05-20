@@ -93,7 +93,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-md-12'>
-                        <MapsComponent id="maps" loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}                            
+                        <MapsComponent id="container" loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}                            
                             zoomSettings={{
                                 enable: false
                             }}
@@ -117,10 +117,10 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[MapsTooltip, Selection, Highlight, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='State'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/selection-datasource.json')}
+                                    dataSource={new MapAjax('./src/maps/map-data/selection-datasource.json')}
                                     tooltipSettings={{
                                         visible: false
                                     }}
@@ -204,6 +204,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
 
                     </div>
                 </div>
+                {/* Source Link */}
                 <div style={{float: 'right', marginright: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/United_States_presidential_election,_2016" target="_blank">en.wikipedia.org</a>
     </div>
@@ -226,14 +227,16 @@ export class SelectionMaps extends SampleBase<{}, {}> {
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {
-        let maps: Element = document.getElementById('maps');
+        let maps: Element = document.getElementById('container');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
     public shapeSelected(args: IShapeSelectedEventArgs): void {
         if (args.shapeData !== isNullOrUndefined) {
             let matched: string = navigator.userAgent;

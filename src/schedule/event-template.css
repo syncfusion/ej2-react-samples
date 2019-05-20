@@ -21,6 +21,8 @@
   height: 100%;
   width: 100%;
   padding: 10px 25%;
+  box-shadow: none;
+  border-radius: initial;
 }
 
 .event-template.e-schedule .template-wrap .subject {

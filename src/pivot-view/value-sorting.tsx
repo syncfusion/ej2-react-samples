@@ -1,8 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PivotViewComponent, IDataOptions, IDataSet, FieldList, Inject } from '@syncfusion/ej2-react-pivotview';
-import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
+import * as pivotData from './pivot-data/Pivot_Data.json';
 
 /**
  * PivotView Value Sorting sample.
@@ -13,7 +13,8 @@ const SAMPLE_CSS = `
     width: 100%;
     height: 100%;
 }`;
-
+/* tslint:disable */
+let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSource: IDataOptions = {
     valueSortSettings: {
         headerText: 'FY 2015##In Stock',
@@ -39,7 +40,7 @@ export class ValueSorting extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ overflow: 'initial' }}>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <PivotViewComponent id='PivotView' dataSource={dataSource} width={'100%'} height={'300'} showFieldList={true} enableValueSorting={true} gridSettings={{columnWidth: 140}}>
                         <Inject services={[FieldList]} />
                     </PivotViewComponent>

@@ -41,7 +41,7 @@ export class Remote extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section'>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <PivotViewComponent id='PivotView' dataSource={dataSource} width={'100%'} height={'300'} gridSettings={{columnWidth: 120}}>
                     </PivotViewComponent>
                 </div>

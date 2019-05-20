@@ -7,7 +7,7 @@ import { PropertyPane } from '../common/property-pane';
 import { SliderComponent } from "@syncfusion/ej2-react-inputs";
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { SparklineComponent, SparklineTheme, VisibleType, ISparklineLoadedEventArgs, SparklineTooltip, Inject } from '@syncfusion/ej2-react-charts';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns'
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
     .control-fluid {
@@ -39,7 +39,8 @@ export class Customization extends SampleBase<{}, {}> {
     private tracklineElement: CheckBoxComponent;
     private axislineElement: CheckBoxComponent;
     private axisElement: SliderComponent;
-
+    private rtlElement: CheckBoxComponent;
+    // Code for Property Panel
     private droplist: { [key: string]: Object }[] = [
         { value: 'Sales Percentage' },
         { value: 'Sales Count' },
@@ -80,6 +81,7 @@ export class Customization extends SampleBase<{}, {}> {
         let low: CheckBoxComponent = this.lowElement;
         let label: CheckBoxComponent = this.datalabelElement;
         let marker: CheckBoxComponent = this.markerElement;
+        let rtl: CheckBoxComponent = this.rtlElement;
         let spark: SparklineComponent = element1.value === 'Sales Percentage' ? this.percentage : this.sales;
 
         if (!marker.checked && !label.checked) {
@@ -137,6 +139,15 @@ export class Customization extends SampleBase<{}, {}> {
         }
 
         this.axislineChange();
+
+		this.rtlChange();
+		
+        if ((element1.value === 'Sales Percentage' && this.percentage.enableRtl === true) ||
+            (element1.value === 'Sales Count' && this.sales.enableRtl === true)) {
+            this.rtlElement.checked = true;
+        } else {
+            this.rtlElement.checked = false;
+        }        
 
         if (element1.value === 'Sales Percentage' && this.percentage.axisSettings.value !== 0) {
             this.axisElement.value = this.percentage.axisSettings.value;
@@ -239,6 +250,13 @@ export class Customization extends SampleBase<{}, {}> {
         spark.refresh();
     }
 
+    private rtlChange() {
+        let element1: HTMLInputElement = (document.getElementById('spark') as HTMLInputElement);
+        let spark: SparklineComponent = element1.value === 'Sales Percentage' ? this.percentage : this.sales;
+        spark.enableRtl = this.rtlElement.checked ? true : false;
+        spark.refresh();
+    }
+
     private tooltipChange() {
         let element1: HTMLInputElement = (document.getElementById('spark') as HTMLInputElement);
         let spark: SparklineComponent = element1.value === 'Sales Percentage' ? this.percentage : this.sales;
@@ -273,13 +291,13 @@ export class Customization extends SampleBase<{}, {}> {
         document.getElementById('axisval').innerHTML = "Axis Value <span>" + value;
         spark.refresh();
     }
-
+    // custom code start
     public load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SparklineTheme;
     }
-
+    // custom code end
     render() {
         return (
             <div className='control-pane'>
@@ -398,11 +416,12 @@ export class Customization extends SampleBase<{}, {}> {
                             </table>
                         </div>
                     </div>
+                    {/* Source Link */}
                     <div style={{ "float": "right", "margin-right": "10px" }}>Source: <a href=" http://carsalesbase.com/global-car-sales-2017" target="_blank">carsalesbase.com</a>
                     </div>
                 </div>
 
-
+                {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
@@ -473,6 +492,16 @@ export class Customization extends SampleBase<{}, {}> {
                                     <td style={{ "width": "50%" }}>
                                         <div>
                                             <CheckBoxComponent change={this.datalabelChange.bind(this)} ref={d => this.datalabelElement = d} id='datalabel' disabled={false} />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style={{ "height": "30px" }}>
+                                    <td style={{ "width": "50%" }}>
+                                        <div> EnableRTL </div>
+                                    </td>
+                                    <td style={{ "width": "50%" }}>
+                                        <div>
+                                            <CheckBoxComponent change={this.rtlChange.bind(this)} ref={d => this.rtlElement = d} id='rtl' disabled={false} />
                                         </div>
                                     </td>
                                 </tr>

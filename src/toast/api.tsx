@@ -202,7 +202,7 @@ render() {
                 </div>
                   <div className="input-form">
                     <div className="e-float-input e-input-group">
-                        <input className="e-input" id="timeOut" name="Digits" value="5000" required/>
+                        <input className="e-input" id="timeOut" name="Digits" defaultValue="5000" required/>
                         <span className="e-float-line"></span>
                         <label className="e-float-text">TimeOut</label>
                     </div>
@@ -259,7 +259,7 @@ render() {
                        <li><code>Animation</code> – Enables to define the toast show and hide animation.</li>
                        <li><code>Close button</code> – Show close button to hide toast irrespective of time out.</li>
                     </ul>
-                    <p>More information about Toast can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/toast/getting-started.html">
+                    <p>More information about Toast can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/toast/getting-started/">
         documentation section</a>.</p>
                 </div>
     </div>
