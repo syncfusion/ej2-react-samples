@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ScheduleComponent, ViewsDirective, ViewDirective, Agenda, Inject } from '@syncfusion/ej2-react-schedule';
-import { generateObject } from './datasource';
+import { generateObject } from './helper';
 import { NumericTextBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-inputs';
 import './schedule-component.css';
 import { DropDownListComponent, ChangeEventArgs as DropDownChangeArgs } from '@syncfusion/ej2-react-dropdowns';
@@ -93,15 +93,15 @@ export class AgendaView extends SampleBase<{}, {}> {
         </div>
         <div id='description'>
           <p>
-            In this demo, Agenda view is set as active view on Schedule and made its <code>allowVirtualScrolling</code> option as false.
+            In this demo, Agenda view is set as active view on Scheduler and made its <code>allowVirtualScrolling</code> option as false.
             With this settings, the Agenda view loads the initial data for the next 7 days count
-             from the date value assigned to the <code>selectedDate</code> property of the Schedule.
+             from the date value assigned to the <code>selectedDate</code> property of the Scheduler.
             The initial data loading for 7 days count is due to the default value assigned to the <code>agendaDaysCount</code> property
              which can be customized as per the user needs.
           </p>
           <p>
             When the <code>allowVirtualScrolling</code> property is set to true,
-            the user is allowed to scroll through all the events simply by scrolling up and down upto the last event available in Schedule.
+            the user is allowed to scroll through all the events simply by scrolling up and down upto the last event available in Scheduler.
           </p>
           <p>
             By default, the days which doesn’t have any events will be hidden on this view –

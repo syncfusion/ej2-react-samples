@@ -55,7 +55,7 @@ export class Popup extends SampleBase<{}, {}> {
           </ToolbarComponent>
           <br></br>
           <br></br>
-          <ToolbarComponent overflowMode = 'Popup'>
+          <ToolbarComponent overflowMode = 'Popup' id="toolbar_popalways">
             <ItemsDirective>
               <ItemDirective template = {ele} overflow ='Show'/>
               <ItemDirective prefixIcon = 'e-icon-day e-icons'  tooltipText = 'Today' text = 'Today' overflow ='Hide' align ='Right'/>
@@ -84,14 +84,14 @@ export class Popup extends SampleBase<{}, {}> {
              </li>
              <li>
                  The second Toolbar is set with priority for specific toolbar items using <strong><code> <a target="_blank" className="code"
-                 href="http://ej2.syncfusion.com/documentation/toolbar/api-item.html#showalwaysinpopup-boolean">showAlwaysInPopup</a></code> </strong>, which is always displayed in the popup.
+                 href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#showalwaysinpopup">showAlwaysInPopup</a></code> </strong>, which is always displayed in the popup.
              </li>
           </ul>
           <br>
           </br>
           <p>
             You can set priority to toolbar item using <strong><code> <a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/documentation/toolbar/api-item.html#overflow-string"> overflow</a></code> </strong>        property. Possible values are as follows,
+              href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#overflow"> overflow</a></code> </strong>        property. Possible values are as follows,
     </p>
           <table style={{ width: "100%" }}>
             <tr>

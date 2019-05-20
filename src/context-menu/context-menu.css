@@ -18,6 +18,8 @@
     text-transform: none;
 }
 
+/* custom code start */
+
 #contextmenu-control {
     margin: 5% 25%;
     width: auto;
@@ -31,7 +33,6 @@
     padding: 10px;
     position: relative;
     text-align: center;
-    color: gray;
     line-height: 17;
     font-size: 14px;
 }
@@ -46,6 +47,8 @@
         font-size: 12px;
     }
 }
+
+/* custom code end */
 
 .e-menu-item .e-cut::before {
     content: '\e264';

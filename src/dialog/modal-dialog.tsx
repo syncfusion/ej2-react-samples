@@ -93,8 +93,8 @@ export class Modal extends SampleBase<{}, {hideDialog: boolean;}> {
                 </div>
         <div id="action-description">
         <p>
-        This sample demonstrates that the modal behavior of dialog component. Choose "close on overlay" option from property panel to decide whether the dialog can be closed when clicking overlay.
-        Click “open” to show the dialog again, if it is in closed state. 
+        This example demonstrates that the modal behavior of dialog component. Choose "close on overlay" option from property panel to decide whether the dialog can be closed when clicking overlay.
+        Click "open" to show the dialog again, if it is in closed state. 
         </p>
         </div>
         <div id="description">
@@ -102,7 +102,7 @@ export class Modal extends SampleBase<{}, {hideDialog: boolean;}> {
             The modal dialog prevents to access the parent application. So, the user should interact with the dialog before continuing with the parent application. 
         </p>
         <p>More information on the modal behavior of Dialog can be found in
-        the <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/dialog/getting-started.html#modal-dialog">
+        the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/dialog/getting-started/#modal-dialog">
         documentation section</a>.</p>
         </div>
       </div>

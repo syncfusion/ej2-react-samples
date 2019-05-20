@@ -2,14 +2,14 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
   ScheduleComponent, ViewsDirective, ViewDirective,
-  Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop
+  Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop, DragEventArgs
 } from '@syncfusion/ej2-react-schedule';
-import { scheduleData } from './datasource';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { DatePickerComponent, ChangeEventArgs } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule Default sample
@@ -17,10 +17,14 @@ import { PropertyPane } from '../common/property-pane';
 
 export class Default extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], scheduleData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
   private change(args: ChangeEventArgs): void {
     this.scheduleObj.selectedDate = args.value;
     this.scheduleObj.dataBind();
+  }
+
+  private onDragStart(args: DragEventArgs): void {
+    args.navigation.enable = true;
   }
 
   render() {
@@ -29,7 +33,8 @@ export class Default extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}>
+              selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}
+              dragStart={(this.onDragStart.bind(this))}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
                 <ViewDirective option='Week' />
@@ -51,7 +56,8 @@ export class Default extends SampleBase<{}, {}> {
                   </td>
                   <td style={{ width: '70%' }}>
                     <div className='datepicker-control-section'>
-                      <DatePickerComponent value={new Date(2018, 1, 15)} change={this.change.bind(this)}></DatePickerComponent>
+                      <DatePickerComponent value={new Date(2019, 0, 10)} showClearButton={false}
+                        change={this.change.bind(this)}></DatePickerComponent>
                     </div>
                   </td>
                 </tr>
@@ -60,17 +66,18 @@ export class Default extends SampleBase<{}, {}> {
           </PropertyPane>
         </div>
         <div id='action-description'>
-          <p>This demo showcases how the flat Schedule looks like with its default set of minimal configurations. Here, some of the
+          <p>This demo showcases how the flat Scheduler looks like with its default set of minimal configurations. Here, some of the
           documentary shows are displayed as events parallel to its relevant telecast timings. The show names are given as
           event's subject and simply notified of the start and end of it.</p>
         </div>
-        <div id='description'>
+        <div id="description">
           <p>
-            The Schedule is an event calendar which facilitates user with the common Outlook-calendar features, thus allowing them to
-            plan and manage the appointments and its time in an efficient manner. It comes with 6 different view modes as listed
-            below, out of which the
-        <code>Week</code> view is set as active.
-    </p>
+            The React Scheduler, a.k.a. event calendar, facilitates almost all calendar features, thus allowing users
+            to manage their time efficiently. It features easy resource scheduling, appointments rescheduling through
+            editor pop-ups, drag and drop, and a resizing action. It includes wide variety of view modes with unique
+            configuration options for each view. The available view modes are listed below, out of which the <code>Week</code>
+            view is set as active.
+          </p>
           <ul>
             <li>Day</li>
             <li>Week</li>
@@ -78,10 +85,14 @@ export class Default extends SampleBase<{}, {}> {
             <li>Month</li>
             <li>Agenda</li>
             <li>Month Agenda</li>
+            <li>Timeline Day</li>
+            <li>Timeline Week</li>
+            <li>Timeline Work Week</li>
+            <li>Timeline Month</li>
           </ul>
-          <p>To navigate between views and dates, the navigation options are available at the Schedule header bar and the active view
-              option is highlighted in it by default. The date range of the active view will also be displayed in the header bar,
-        clicking on which will open a calendar popup for ease of required date selection. </p>
+          <p>To navigate between views and dates, the navigation options are available at the Scheduler header bar and the
+              active view option is highlighted by default. The date range of the active view will also be displayed in the
+              header bar, clicking on which will open a calendar popup for ease of desired date selection.</p>
           <p>
             <strong>Touch actions on Mobile mode</strong>
           </p>
@@ -95,20 +106,27 @@ export class Default extends SampleBase<{}, {}> {
               </th>
             </tr>
             <tr>
-              <td style={{ padding: '4px 0' }}>Single Tap</td>
-              <td>Single tapping on events, opens the popup showing event information.</td>
+              <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Single Tap</td>
+              <td>
+                <ol style={{ paddingLeft: '12px' }}>
+                  <li>Single tapping on events, opens the popup showing event information</li>
+                  <li>Single tapping on cells, will display a “+” icon on the cell. Again tapping on it will open the
+                      new event editor.
+                    </li>
+                </ol>
+              </td>
             </tr>
             <tr>
               <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Tap hold </td>
               <td>
                 <ol style={{ paddingLeft: '12px' }}>
-                  <li>Tap holding on cells, opens the new event editor. </li>
-                  <li>Tap holding on events, opens a small popup at the top holding the options to edit or delete and also
-                      displays the selected event’s subject. As a continuation of this action, if user keeps on single
-                      tapping on other events will allow the multiple event selection along with that popup remaining in
-                      opened state counting the number of events selected.
+                  <li>Tap holding on events, opens a small popup at the top holding the options to edit or delete and
+                      also displays the selected event's subject. As a continuation of this action, if user keeps on
+                      single tapping on other events, it will allow the multiple event selection. Also, the previous
+                      popup remains in opened state, showing the count of the number of events selected. </li>
+                  <li>Tap holding the events will also open the tooltip on Scheduler.
                     </li>
-                  <li>Tap holding the events will also open the tooltip on Schedule.</li>
+                  <li>Tap hold the event and try moving it over the scheduler to enable drag and drop action.</li>
                 </ol>
               </td>
             </tr>
@@ -124,8 +142,8 @@ export class Default extends SampleBase<{}, {}> {
              using <code>services</code> property under <code>Inject</code> tag.
           </p>
           <p>
-            <strong> Note:</strong> In case, if the module of active view is not injected from the application end – then the Schedule
-            is configured to display the first available option in the <code>views</code> property.
+            <strong> Note:</strong>In case, if the module of active view is not injected from the application end – then
+            the Scheduler is configured to display the first available option in the <code>views</code> property.
           </p>
         </div>
       </div>

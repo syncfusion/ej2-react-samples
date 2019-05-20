@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
-import { palatteSampleData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 import { RadioButtonComponent, ChangeEventArgs, CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
@@ -13,6 +14,7 @@ const SAMPLE_CSS: any = `
 #source{
     float: right; margin-right: 10p
 }`;
+// custom code end
 /**
  * Heatmap Palette mode sample
  */
@@ -37,9 +39,11 @@ export class Palette extends SampleBase<{}, {}> {
         return (
             <div>
                 <div className='col-md-9 control-section'>
+                {/* custom code start */}
                     <style>
                         {SAMPLE_CSS}
                     </style>
+                {/* custom code end */}    
                         <HeatMapComponent id='heatmap-container' ref={t => this.heatmap = t}
                             titleSettings={{
                                 text: 'U.S. Government Energy Consumption by Agency (Trillion Btu)',
@@ -60,7 +64,7 @@ export class Palette extends SampleBase<{}, {}> {
                                 labels: ['Agriculture', 'Energy', 'Administration', 'Health', 'Interior',
                                     'Justice', 'NASA', 'Transportation']
                             }}
-                            dataSource={palatteSampleData}
+                            dataSource={(data as any).palatteSampleData}
                             paletteSettings={{
                                 palette: [{ value: 4.3, color: '#FFFFDA' },
                                 { value: 7, color: '#EDF8B6' },

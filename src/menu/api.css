@@ -6,16 +6,11 @@
     text-align: center;
 }
 
-.property-panel-content {
+.menu-section .property-panel-content {
     padding: 0 10px 10px 0;
     overflow: auto;
 }
 
 .menu-section .property-panel-content .e-multiselect {
     padding: 0;
-}
-
-.menu-section .col-lg-8.control-section,
-.menu-section.control-section {
-    overflow: visible !important;
 }

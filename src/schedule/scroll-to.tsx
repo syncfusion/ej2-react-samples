@@ -4,12 +4,13 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews,
   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { scheduleData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { TimePickerComponent, ChangeEventArgs } from '@syncfusion/ej2-react-calendars';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule scroll to particular hour sample
@@ -17,7 +18,7 @@ import { PropertyPane } from '../common/property-pane';
 
 export class ScrollTo extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], scheduleData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
   /*Apply scroll to the schedule component*/
   private onChange(args: ChangeEventArgs): void {
     this.scheduleObj.scrollTo(args.text);
@@ -33,7 +34,7 @@ export class ScrollTo extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -68,7 +69,7 @@ export class ScrollTo extends SampleBase<{}, {}> {
           <p>This demo illustrates the way of manually scrolling to specific time on Schedule.</p>
         </div>
         <div id='description'>
-          <p>In this demo, the way of manually scrolling to specific time on schedule has been demonstrated by making
+          <p>In this demo, the way of manually scrolling to specific time on scheduler has been demonstrated by making
              use of the <code>scrollTo</code> method of Schedule.
           </p>
         </div>

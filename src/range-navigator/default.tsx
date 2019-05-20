@@ -45,6 +45,10 @@ const SAMPLE_CSS = `
         stop-color: #a16ee5;
     }
 
+    #bootstrap4-gradient-chart stop {
+        stop-color: #a16ee5;
+    }
+
     #highcontrast-gradient-chart stop {
         stop-color: #79ECE4;
     }
@@ -104,6 +108,10 @@ export class Default extends SampleBase<{}, {}> {
                         <stop offset="0"></stop>
                         <stop offset="1"></stop>
                     </linearGradient>
+                    <linearGradient id="bootstrap4-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0"></stop>
+                        <stop offset="1"></stop>
+                    </linearGradient>
                     <linearGradient id="highcontrast-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                         <stop offset="0"></stop>
                         <stop offset="1"></stop>
@@ -135,13 +143,16 @@ export class Default extends SampleBase<{}, {}> {
             </div>
         )
     }
+        // custom code start
     public load(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
         let rangeTheme: string= args.rangeNavigator.theme;
         args.rangeNavigator.series[0].fill = 'url(#' + rangeTheme.toLowerCase() + '-gradient-chart)';
         args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(rangeTheme)];
         args.rangeNavigator.navigatorStyleSettings.selectedRegionColor= regionColor[themes.indexOf(rangeTheme)];
     };
+        // custom code end
 }

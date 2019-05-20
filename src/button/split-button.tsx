@@ -65,16 +65,16 @@ export class SplitButton extends SampleBase<{}, {}> {
                 </p>
                     <p>
                         In this sample, SplitButton contains icon, content and list of action items, and can be added using
-                        <code><a target="_blank" href="http://ej2.syncfusion.com/react/documentation/split-button/api-splitButton.html#iconCss-string">iconCss,
+                        <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/split-button/#iconcss">iconCss,
                         </a></code>
-                        <code><a target="_blank" href="http://ej2.syncfusion.com/react/documentation/split-button/api-splitButton.html#content-string">content
+                        <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/split-button/#content">content
                         </a></code>and
-                        <code><a target="_blank" href="http://ej2.syncfusion.com/react/documentation/split-button/api-splitButton.html#items">items
+                        <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/split-button/#items">items
                         </a></code>property.
                     </p>
                     <p>
                         More information about SplitButton can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/split-button/getting-started.html">
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/split-button/getting-started">
                             documentation section</a>.
                     </p>
                 </div>

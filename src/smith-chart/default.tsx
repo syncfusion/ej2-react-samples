@@ -10,14 +10,16 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+//custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
 
-
+// custom code end
 
 export class Default extends SampleBase<{}, {}> {
+    // Code for Property Panel
     private smithchartInstance: SmithchartComponent;
     private dropElement: DropDownListComponent;
 
@@ -31,7 +33,7 @@ export class Default extends SampleBase<{}, {}> {
         this.smithchartInstance.renderType = element;
         this.smithchartInstance.refresh();
     }
-
+    // custom code start
     public load(args: ISmithchartLoadedEventArgs): void {
         args.smithchart.title.text = 'Transmission details';
         args.smithchart.title.visible = true;
@@ -39,6 +41,7 @@ export class Default extends SampleBase<{}, {}> {
         theme = theme ? theme : 'Material';
         args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SmithchartTheme;
     }
+    // custom code end
     render() {
         return (
             <div className='control-pane'>
@@ -77,6 +80,7 @@ export class Default extends SampleBase<{}, {}> {
                         </SmithchartSeriesCollectionDirective>
                     </SmithchartComponent>
                 </div>
+                {/* Property Panel */}
                 <div className='col-md-3 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>

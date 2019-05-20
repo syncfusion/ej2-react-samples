@@ -6,44 +6,26 @@ import * as React from 'react';
 import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
-import { DataManager, Query, ODataAdaptor } from '@syncfusion/ej2-data';
+import { DataManager, Query, WebApiAdaptor } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './data-binding.css';
+import * as data from './dataSource.json';
 
 export class Data extends SampleBase<{}, {}> {
 
-    private countries: { [key: string]: Object; }[] = [
-        { Name: 'Australia', Code: 'AU' },
-        { Name: 'Bermuda', Code: 'BM' },
-        { Name: 'Canada', Code: 'CA' },
-        { Name: 'Cameroon', Code: 'CM' },
-        { Name: 'Denmark', Code: 'DK' },
-        { Name: 'France', Code: 'FR' },
-        { Name: 'Finland', Code: 'FI' },
-        { Name: 'Germany', Code: 'DE' },
-        { Name: 'Greenland', Code: 'GL' },
-        { Name: 'Hong Kong', Code: 'HK' },
-        { Name: 'India', Code: 'IN' },
-        { Name: 'Italy', Code: 'IT' },
-        { Name: 'Japan', Code: 'JP' },
-        { Name: 'Mexico', Code: 'MX' },
-        { Name: 'Norway', Code: 'NO' },
-        { Name: 'Poland', Code: 'PL' },
-        { Name: 'Switzerland', Code: 'CH' },
-        { Name: 'United Kingdom', Code: 'GB' },
-        { Name: 'United States', Code: 'US' }
-    ];
+    private temp:string = 'countries';
+    private countries: { [key: string]: Object; }[] = data[this.temp];
     // bind the DataManager instance to dataSource property
     public productData: DataManager = new DataManager({
-        url: 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Products',
-        adaptor: new ODataAdaptor,
+        url: 'https://ej2services.syncfusion.com/production/web-services/api/Employees',
+        adaptor: new WebApiAdaptor,
         crossDomain: true
     });
     // bind the Query instance to query property
-    public query: Query = new Query().select(['ProductID', 'ProductName']);
+    public query: Query = new Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount();
     // map the appropriate columns to remote data fields property
-    public remoteFields: Object = { value: 'ProductName' };
+    public remoteFields: Object = { value: 'FirstName' };
     // map the appropriate columns to local data fields property
     private localFields: Object = { value: 'Name' };
     // AutoComplete object creation
@@ -62,14 +44,14 @@ export class Data extends SampleBase<{}, {}> {
                     <div className='col-lg-9'>
                         <div className='col-lg-6'>
                             <div id="local">
-                                <h4> Local Data</h4>
+                                <h3> Local Data</h3>
                                 <AutoCompleteComponent id="country" dataSource={this.countries} ref={(autocomplete) => { this.localDataObj = autocomplete }} fields={this.localFields} popupHeight="250px" placeholder="e.g. Australia" autofill={true} filterType='StartsWith' />
                             </div>
                         </div>
                         <div className='col-lg-6'>
                             <div id="remote">
-                                <h4>Remote Data</h4>
-                                <AutoCompleteComponent id="products" dataSource={this.productData} query={this.query} ref={(autocomplete) => { this.remoteDataObj = autocomplete }} sortOrder="Ascending" fields={this.remoteFields} autofill={true} placeholder="e.g. Alice Mutton" suggestionCount={5} filterType='StartsWith' />
+                                <h3>Remote Data</h3>
+                                <AutoCompleteComponent id="products" dataSource={this.productData} query={this.query} ref={(autocomplete) => { this.remoteDataObj = autocomplete }} sortOrder="Ascending" fields={this.remoteFields} autofill={true} placeholder="e.g. Andrew Fuller" suggestionCount={5} filterType='StartsWith' />
                             </div>
                         </div>
                     </div>

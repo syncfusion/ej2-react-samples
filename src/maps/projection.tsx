@@ -13,6 +13,8 @@ import { Browser } from '@syncfusion/ej2-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as data from './map-data/projection-datasource.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -63,10 +65,10 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Legend, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='Country'
-                                    dataSource={new MapAjax(location.origin + location.pathname + 'src/maps/map-data/projection-datasource.json')}
+                                    dataSource={datasource.projection}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath: 'Country'
@@ -90,6 +92,7 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                             </LayersDirective>
                         </MapsComponent>
                     </div>
+                    {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
@@ -107,6 +110,7 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
+                {/* Source Link */}
                 <div style={{float: 'right', marginright: '10px' }}>Source: 
                 <a href ="https://en.wikipedia.org/wiki/List_of_members_of_the_United_Nations_Security_Council" target="_blank">en.wikipedia.org</a>
                 </div>
@@ -131,9 +135,11 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
     };
+    // custom code end
 }

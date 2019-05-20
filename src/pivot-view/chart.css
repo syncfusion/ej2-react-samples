@@ -10,7 +10,11 @@
     margin-top: -452px;
 }
 
-@media only screen and (max-width: 400px) {
+#ddldiv.e-device {
+    margin-top: -480px;
+}
+
+@media only screen and (max-width: 500px) {
     ddldiv {
         margin-top: -480px;
     }

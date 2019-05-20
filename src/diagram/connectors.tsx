@@ -8,6 +8,7 @@ import {
   Segments,
   SelectorConstraints,
   DiagramComponent,
+  randomId,
   Inject
 } from "@syncfusion/ej2-react-diagrams";
 import {
@@ -450,6 +451,7 @@ export class Connectors extends SampleBase<{}, {}> {
 function setNodeTemplate(): StackPanel {
   let canvas: StackPanel = new StackPanel();
   canvas.children = [];
+  canvas.id = randomId();
   canvas.style.strokeWidth = 0;
   canvas.style.fill = "#e6e0eb";
   canvas.children.push(getTextElement("Events", "#a6a1e0"));
@@ -462,6 +464,7 @@ function setNodeTemplate(): StackPanel {
 //creation of the TextElement.
 function getTextElement(text: string, color: string): TextElement {
   let textElement: TextElement = new TextElement();
+  textElement.id = randomId();
   textElement.width = 80;
   textElement.height = 35;
   textElement.content = text;
@@ -571,7 +574,9 @@ function applyConnectorStyle(
     };
     diagramInstance.dataBind();
   }
+  // custom code start
   target.classList.add("e-selected-style");
+  // custom code end
 }
 //ConnectorStyle customization
 function defaultConnectorStyle(type: Segments, target: HTMLElement): void {
@@ -590,5 +595,7 @@ function defaultConnectorStyle(type: Segments, target: HTMLElement): void {
     };
     diagramInstance.dataBind();
   }
+  // custom code start
   target.classList.add("e-selected-style");
+  // custom code end
 }

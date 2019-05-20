@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
-import { tableBubbleData } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
@@ -13,6 +14,7 @@ const SAMPLE_CSS: any = `
 #source{
     float: right; margin-right: 10p
 }`;
+// custom code end
 /**
  * Schedule Default sample
  */
@@ -33,9 +35,11 @@ export class BubbleTypes extends SampleBase<{}, {}> {
         return (
             <div>
                 <div className='col-md-9 control-section'>
+                    {/* custom code start */}
                     <style>
                         {SAMPLE_CSS}
                     </style>
+                    {/* custom code end */}
                     <HeatMapComponent id='heatmap-container' ref={t => this.heatmap = t}
                         titleSettings={{
                             text: 'Female Participation Rate in Labor Force for the Countries',
@@ -54,7 +58,7 @@ export class BubbleTypes extends SampleBase<{}, {}> {
                         yAxis={{
                             labels: ['1995', '2000', '2005', '2010', '2015']
                         }}
-                        dataSource={tableBubbleData}
+                        dataSource={(data as any).tableBubbleData}
                         cellSettings={{
                             border: {
                                 width: 1

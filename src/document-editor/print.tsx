@@ -41,33 +41,23 @@ export class PrintView extends SampleBase<{}, {}> {
         window.addEventListener('resize', (): void => { this.updateContainerSize(); });
     }
     render() {
-        return (<div>
+        return (<div className='control-pane'>
             <div className="control-section">
-                <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    Click the button to view the sample
-    </div>
-                <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    <a className="e-btn" id="newTab" onClick={this.newTabClick.bind(this)} target="_blank">Open in new tab</a>
-                </div>
-                <div id="wrapper">
-                    <title>Essential JS 2 for React - DocumentEditor &gt; Print</title>
-                    <input type="file" id="uploadfileButton" style={{ position: 'fixed', left: '-100em' }} />
-                    <div id="panel">
-                        <div id='documenteditor_titlebar'>
+                <input type="file" id="uploadfileButton" style={{ position: 'fixed', left: '-100em' }} />
+                <div id="panel">
+                <div id='documenteditor_titlebar' className="e-de-ctn-title">
                         </div>
                         <div id="documenteditor_container_panel" style={{ position: 'relative' }}>
                             <DocumentEditorComponent id="container" ref={(scope) => { this.documenteditor = scope; }} enablePrint={true} style={{ width: '100%', height: '100%' }} />
                         </div>
-                        <div id="documenteditor_statusbar">
+                    <div id="documenteditor_statusbar">
+                    </div>
+                    <div className="overlay" id="popup-overlay" style={{ display: 'block;' }}></div>
+                        <div id="waiting-popup">
+                            <svg className="circular" height="40" width="40">
+                                <circle className="circle-path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
+                            </svg>
                         </div>
-                    </div>
-                    <div className="overlay" id="popup-overlay" style={{ display: 'block;' }}>
-                    </div>
-                    <div id='waiting-popup'>
-                        <svg className="circular" height="40" width="40">
-                            <circle className="circle-path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
-                        </svg>
-                    </div>
                 </div>
             </div>
             <div id="action-description">
@@ -92,9 +82,6 @@ export class PrintView extends SampleBase<{}, {}> {
         );
     }
 
-    newTabClick = (): void => {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'document-editor/print/index.html#fabric');
-    }
 
     onFileChange = (args: any): void => {
         if (args.target.files[0]) {
@@ -119,8 +106,6 @@ export class PrintView extends SampleBase<{}, {}> {
         // tslint: enable               
         let waitingPopUp: HTMLElement = document.getElementById('waiting-popup');
         let overlay: HTMLElement = document.getElementById('popup-overlay');
-        overlay.style.display = 'block';
-        waitingPopUp.style.display = 'block';
         this.documentLoader.loadDefault(defaultDocument);
         this.documenteditor.documentName = 'Getting Started';
         waitingPopUp.style.display = 'none';

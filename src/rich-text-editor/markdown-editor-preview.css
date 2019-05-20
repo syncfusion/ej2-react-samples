@@ -18,6 +18,14 @@
     content: '\e345';
 }
 
+.bootstrap4 #rtePreview .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e790';
+}
+
+.bootstrap4 #rtePreview .e-icon-btn .e-md-preview::before {
+    content: '\e787';
+}
+
 #rtePreview .e-rte-content #markdownPreviewhtml-preview.e-content {
     float: right;
     width: 50%;

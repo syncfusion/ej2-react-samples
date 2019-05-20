@@ -377,6 +377,7 @@ export class BpmnEditor extends SampleBase<{}, {}> {
   }
   render() {
     return (
+      <div className="control-pane">
       <div className="control-section">
         <div className="sb-mobile-palette-bar">
           <div id="palette-icon" style={{ float: "right", role: "button" }} className="e-ddb-icons1 e-toggle-palette"></div>
@@ -488,6 +489,7 @@ export class BpmnEditor extends SampleBase<{}, {}> {
           <br />
         </div>
       </div>
+      </div>
     );
   }
 }
@@ -531,7 +533,7 @@ function addEvents(): void {
     }
   }
 }
-
+// custom code start
 function openPalette(): void {
   let paletteSpace: HTMLElement = document.getElementById('palette-space');
   isMobile = window.matchMedia('(max-width:550px)').matches;
@@ -543,7 +545,7 @@ function openPalette(): void {
     }
   }
 }
-
+// custom code end
 function contextMenuClick(args: MenuEventArgs): void {
   diagram = diagramInstance;
   if (diagram.selectedItems.nodes.length > 0) {

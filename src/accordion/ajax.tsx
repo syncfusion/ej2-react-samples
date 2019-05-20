@@ -180,7 +180,7 @@ export class AjaxContent extends SampleBase<{}, {}> {
                         This sample illustrates the external webpage content loaded inside the Accordion panel by using AJAX library.
     </p>
                     <p>
-                        More information about Accordion can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accordion/getting-started.html">
+                        More information about Accordion can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accordion/getting-started/">
                             documentation</a> section.
     </p>
                 </div>

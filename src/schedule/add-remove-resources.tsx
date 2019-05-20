@@ -5,10 +5,10 @@ import {
     ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './add-remove-resources.css';
-import { holidayData, birthdayData, companyData, personalData } from './datasource';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as dataSource from './datasource.json';
 
 /**
  * schedule add and remove resources dynamically
@@ -23,9 +23,12 @@ export class AddRemoveResources extends SampleBase<{}, {}> {
         { CalendarText: 'Holiday', CalendarId: 4, CalendarColor: '#808000' }
     ];
 
+    // custom code start
     private generateCalendarData(): Object[] {
-        return [...personalData, ...companyData, ...birthdayData, ...holidayData];
+        return [...(dataSource as any).personalData, ...(dataSource as any).companyData,
+        ...(dataSource as any).birthdayData, ...(dataSource as any).holidayData];
     }
+    // custom code end
 
     private onChange(args: ChangeEventArgs): void {
         let value: number = parseInt((args.event.target as Element).getAttribute('value'), 10);
@@ -92,14 +95,14 @@ export class AddRemoveResources extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This demo illustrates how to dynamically add or remove resources to and from the Schedule layout.
+                        This demo illustrates how to dynamically add or remove resources to and from the Scheduler layout.
                     </p>
                 </div>
 
                 <div id="description">
                     <p>
-                        In this demo, Schedule is initially displayed with single resource with its related set of appointments. When the additional
-                        checkboxes given are checked and unchecked, the respective resources gets added up or removed from the schedule layout.
+                        In this demo, Scheduler is initially displayed with single resource with its related set of appointments. When the additional
+                        checkboxes given are checked and unchecked, the respective resources gets added up or removed from the scheduler layout.
                         To add new resources dynamically,
                         <code>addResource</code> method is used which accepts the arguments such as resource object, resource name (within which level, the resource
                         object to be added) and index (position where the resource needs to be added). To remove the resources dynamically,

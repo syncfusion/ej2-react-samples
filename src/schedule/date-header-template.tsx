@@ -4,10 +4,11 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, TimelineMonth,
   RenderCellEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { scheduleData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './date-header-template.css';
 import { Internationalization, extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  * Schedule date header template sample
@@ -15,7 +16,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class DateHeaderTemplate extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], scheduleData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
   private instance: Internationalization = new Internationalization();
   private getDateHeaderText(value: Date): string {
     return this.instance.formatDate(value, { skeleton: 'Ed' });
@@ -23,7 +24,7 @@ export class DateHeaderTemplate extends SampleBase<{}, {}> {
   private getWeather(value: Date) {
     switch (value.getDay()) {
       case 0:
-        return '<img className="weather-image"  src= "src/schedule/images/weather-clear.svg" /><div className="weather-text">25°C</div>';
+        return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" /><div class="weather-text">25°C</div>';
       case 1:
         return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">18°C</div>';
       case 2:
@@ -62,7 +63,7 @@ export class DateHeaderTemplate extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' cssClass='schedule-date-header-template' ref={t => this.scheduleObj = t}
-              renderCell={this.onRenderCell.bind(this)} eventRendered={this.onEventRendered.bind(this)} selectedDate={new Date(2018, 1, 15)}
+              renderCell={this.onRenderCell.bind(this)} eventRendered={this.onEventRendered.bind(this)} selectedDate={new Date(2019, 0, 10)}
               eventSettings={{ dataSource: this.data }} dateHeaderTemplate={this.dateHeaderTemplate.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />

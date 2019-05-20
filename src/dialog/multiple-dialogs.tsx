@@ -75,7 +75,7 @@ export class MultipleDialogs extends SampleBase<{}, {hideDialog1: boolean, hideD
             </DialogComponent>
             <div id="action-description">
                 <p>
-                This sample demonstrates how to display multiple dialogs one over the other.
+                This example demonstrates how to display multiple dialogs one over the other.
                 The second dialog is configured with draggable behavior to adjust its position.
                 You can invoke the second dialog from first dialog's button.
                 Enable the "open dialog" button to reopen the dialog if the first dialog is closed.
@@ -86,7 +86,7 @@ export class MultipleDialogs extends SampleBase<{}, {hideDialog1: boolean, hideD
                 You can configure the dialog as a parent and child, and invoke the child dialog from its parent dialog.
                 In addition, multiple dialogs can be shown at a time in a page.
                 The Z- index order will be controlled automatically in the browser and manually using the<a target="_blank" 
-                href="https://ej2.syncfusion.com/react/documentation/dialog/api-dialogComponent.html#zindex"> zIndex </a> property.
+                href="https://ej2.syncfusion.com/react/documentation/api/dialog/#zindex"> zIndex </a> property.
                 </p>
             </div>
         </div>

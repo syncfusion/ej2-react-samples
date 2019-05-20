@@ -3,9 +3,8 @@ import * as React from 'react';
 import { SidebarComponent, SidebarType } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
-import { enableRipple } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import './sidebarapi-component.css';
+import './api.css';
 export class API extends SampleBase<{}, {}> {
     public sidebarInstance: SidebarComponent;
     public documentClickBtn: ButtonComponent;
@@ -28,7 +27,7 @@ export class API extends SampleBase<{}, {}> {
         return (
             <div className="control-section">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    Click the button to view the sample
+                    Click/Touch the button to view the sample
             </div>
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                     <a className="e-btn" id="newTab" onClick={this.newTabClick.bind(this)} target="_blank">Open in new tab</a>
@@ -85,7 +84,7 @@ export class API extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates the Sidebar component with its features. Click the button to view the Sidebar sample in a new tab.
+                        This sample demonstrates the Sidebar component with its features. Click/Touch the button to view the Sidebar sample in a new tab.
                     </p>
                 </div>
                 <div id="description">

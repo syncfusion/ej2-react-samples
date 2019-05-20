@@ -25,9 +25,9 @@ export class ButtonGroup extends SampleBase<{}, {}> {
             <div className="row">
                 <p className="h5">Default</p>
                 <div id="bgicon" className="e-btn-group">
-                    <ButtonComponent iconCss='e-icons e-btngrp-watch'></ButtonComponent>
-                    <ButtonComponent iconCss='e-icons e-btngrp-star'></ButtonComponent>
-                    <ButtonComponent iconCss='e-icons e-btngrp-download'></ButtonComponent>
+                    <ButtonComponent iconCss='bg-icons e-btngrp-watch'></ButtonComponent>
+                    <ButtonComponent iconCss='bg-icons e-btngrp-star'></ButtonComponent>
+                    <ButtonComponent iconCss='bg-icons e-btngrp-download'></ButtonComponent>
                 </div>
             </div>
             <div className="row">
@@ -46,15 +46,15 @@ export class ButtonGroup extends SampleBase<{}, {}> {
                 <div id="iconandtext" className="e-btn-group">
                     <input type="checkbox" id="bold" name="fontstyle" value="bold" checked />
                     <label className="e-btn" htmlFor="bold">
-                        <span className="e-btn-icon e-icons e-btngrp-bold e-icon-left"></span>Bold
+                        <span className="e-btn-icon bg-icons e-btngrp-bold e-icon-left"></span>Bold
                     </label>
                     <input type="checkbox" id="italic" name="fontstyle" value="italic" />
                     <label className="e-btn" htmlFor="italic">
-                        <span className="e-btn-icon e-icons e-btngrp-italic e-icon-left"></span>Italic
+                        <span className="e-btn-icon bg-icons e-btngrp-italic e-icon-left"></span>Italic
                     </label>
                     <input type="checkbox" id="underline" name="fontstyle" value="underline" />
                     <label className="e-btn" htmlFor="underline">
-                        <span className="e-btn-icon e-icons e-btngrp-underline e-icon-left"></span>Underline
+                        <span className="e-btn-icon bg-icons e-btngrp-underline e-icon-left"></span>Underline
                     </label>
                 </div>
             </div>
@@ -78,7 +78,7 @@ export class ButtonGroup extends SampleBase<{}, {}> {
     </ul>
     <p>
         More information on ButtonGroup can be found in this 
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/button-group/getting-started.html">
+        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/button-group/getting-started">
             documentation section</a>.
     </p>
 </div>

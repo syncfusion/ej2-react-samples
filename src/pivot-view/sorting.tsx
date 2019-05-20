@@ -1,18 +1,19 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
-import { PivotViewComponent, IDataOptions, Inject, FieldList } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, Inject, FieldList, IDataSet } from '@syncfusion/ej2-react-pivotview';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
-import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent, ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs as Args } from '@syncfusion/ej2-buttons';
+import * as pivotData from './pivot-data/Pivot_Data.json';
 import './sorting.css';
 
 /**
  * PivotView Member Sorting sample.
  */
-
+/* tslint:disable */
+let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSource: IDataOptions = {
     rows: [{ name: 'Country' }, { name: 'Products' }],
     formatSettings: [{ name: 'Amount', format: 'C0' }],
@@ -84,7 +85,7 @@ export class Sorting extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section' style={{ overflow: 'auto' }}>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotGridObj = pivotview }} dataSource={dataSource} width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }}>
                         </PivotViewComponent>
@@ -128,7 +129,7 @@ export class Sorting extends SampleBase<{}, {}> {
                                         <td></td>
                                         <td>
                                             <div className='row' style={{ float: 'right', paddingRight: '15px' }}>
-                                                <ButtonComponent ref={(scope) => { this.applyBtn = scope; }} onClick={this.onClick.bind(this)} iconCss='e-icons e-apply-icon' cssClass='e-flat' isPrimary={true}>Apply</ButtonComponent>
+                                                <ButtonComponent ref={(scope) => { this.applyBtn = scope; }} onClick={this.onClick.bind(this)} cssClass='e-flat' isPrimary={true}>Apply</ButtonComponent>
                                             </div>
                                         </td>
                                     </tr>

@@ -1,0 +1,27 @@
+#defaultSplitter #panetext {
+    font-size: 11px;
+}
+#defaultSplitter #pane-heading {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+#defaultSplitter .pane1 {
+    margin: 20px auto;
+    max-width: 440px;
+}
+#defaultSplitter .pane2 {
+    margin: 20px auto;
+    max-width: 440px;
+}
+
+#defaultSplitter .e-splitter .splitter-content {
+    text-align: center;
+    height: 100%;
+}
+
+#defaultSplitter .e-splitter .e-pane,
+#defaultSplitter .e-splitter .splitter-content {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

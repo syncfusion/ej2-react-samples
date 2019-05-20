@@ -1,13 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
-import { emptyPointDataSource } from './data';
+import * as data from './data.json';
 import { SampleBase } from '../common/sample-base';
 
+// custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
 }`;
+// custom code end
 /**
  * Schedule Default sample
  */
@@ -15,9 +17,11 @@ export class EmptyPoints extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
                 </style>
+                {/* custom code end */}
                 <div className='control-section'>
                     <HeatMapComponent id='heatmap-container'
                         titleSettings={{
@@ -37,7 +41,7 @@ export class EmptyPoints extends SampleBase<{}, {}> {
                             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May',
                                 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                         }}
-                        dataSource={emptyPointDataSource}
+                        dataSource={(data as any).emptyPointDataSource}
                         cellSettings={{
                             showLabel: true,
                             border: { width: 0, color: 'white' },

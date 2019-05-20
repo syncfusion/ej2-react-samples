@@ -2,13 +2,18 @@
  * Dynamic source
  */
 
-import { CircularGauge } from '@syncfusion/ej2-circulargauge';
-import { Annotations, IAxisLabelRenderEventArgs } from '@syncfusion/ej2-circulargauge';
+import { CircularGauge, ILoadedEventArgs, GaugeTheme } from '@syncfusion/ej2-circulargauge';
+import { Annotations } from '@syncfusion/ej2-circulargauge';
 CircularGauge.Inject(Annotations);
 
 export class DynamicDataSerive {
     GetSubGauge1(): any {
         let gauge1: CircularGauge = new CircularGauge({
+            load: (args1: ILoadedEventArgs) => {
+                let selectedTheme: string = location.hash.split('/')[1];
+                selectedTheme = selectedTheme ? selectedTheme : 'Material';
+                args1.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+            },
             axes: [{
                 annotations: [{
                     content: '<div style="color:#666666;font-size:35px;">50.5GB</div>',
@@ -45,6 +50,11 @@ export class DynamicDataSerive {
             }]
         });
         let gauge2: CircularGauge = new CircularGauge({
+            load: (args2: ILoadedEventArgs) => {
+                let selectedTheme: string = location.hash.split('/')[1];
+                selectedTheme = selectedTheme ? selectedTheme : 'Material';
+                args2.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+            },
             centerY: '70%',
             axes: [{
                 annotations: [{

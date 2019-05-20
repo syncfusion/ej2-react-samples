@@ -4,10 +4,11 @@ import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, Agenda, ResourcesDirective, ResourceDirective,
   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
-import { fifaEventsData, applyCategoryColor } from './datasource';
+import { applyCategoryColor } from './helper';
 import './views-configuration.css';
 import { Internationalization, extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as dataSource from './datasource.json';
 
 /**
  *  Schedule view based configuration sample
@@ -15,7 +16,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class ViewConfigurations extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], fifaEventsData, null, true) as Object[];
+  private data: Object[] = extend([], (dataSource as any).fifaEventsData, null, true) as Object[];
   private instance: Internationalization = new Internationalization();
   private getTimeString(value: Date) {
     return this.instance.formatDate(value, { skeleton: 'Hm' });
