@@ -41,7 +41,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
         items: this.items
     };
 
-    public MarkDownConversion(): void {
+    public markdownConversion(): void {
         if (this.mdSplit.classList.contains('e-active')) {
             let id: string = this.rteObj.getID() + 'html-view';
             let htmlPreview: HTMLElement = this.rteObj.element.querySelector('#' + id);
@@ -79,7 +79,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     }
     public rendereComplete(): void {
         this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
-        this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => { this.MarkDownConversion(); });
+        this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => { this.markdownConversion(); });
         let rteObj: RichTextEditor = this.rteObj;
         this.mdsource = document.getElementById('preview-code');
         this.mdsource.addEventListener('click', (e: MouseEvent) => {
@@ -119,11 +119,13 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                 this.mdSplit.classList.remove('e-active');
                 this.mdsource.classList.remove('e-active');
             }
-            this.MarkDownConversion();
+            this.markdownConversion();
         }
-        setTimeout(function () { this.rteObj.toolbarModule.refreshToolbarOverflow(); }, 400);
+        this.rteObj.toolbarModule.refreshToolbarOverflow();
     }
     public handleFullScreen(e: any): void {
+        let sbCntEle: HTMLElement = document.querySelector('.sb-content.e-view');
+        let sbHdrEle: HTMLElement = document.querySelector('.sb-header.e-view');
         let leftBar: HTMLElement;
         let transformElement: HTMLElement;
         if (Browser.isDevice) {
@@ -134,10 +136,16 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
             transformElement = document.querySelector('#right-pane');
         }
         if (e.targetItem === 'Maximize') {
+            if (Browser.isDevice && Browser.isIos) {
+                addClass([sbCntEle, sbHdrEle], ['hide-header']);
+            }
             addClass([leftBar], ['e-close']); removeClass([leftBar], ['e-open']);
             if (!Browser.isDevice) { transformElement.style.marginLeft = '0px'; }
             transformElement.style.transform = 'inherit';
         } else if (e.targetItem === 'Minimize') {
+            if (Browser.isDevice && Browser.isIos) {
+                removeClass([sbCntEle, sbHdrEle], ['hide-header']);
+            }
             removeClass([leftBar], ['e-close']);
             if (!Browser.isDevice) { 
             addClass([leftBar], ['e-open']);

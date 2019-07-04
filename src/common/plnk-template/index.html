@@ -12,7 +12,7 @@
         var themeName = location.hash || 'material';
         themeName = themeName.replace('#','');
         window.ripple = (themeName === "material")
-        document.write('<link href="../../styles/' + themeName + '.css" rel="stylesheet">');
+        document.write('<link href="{{:CDN_LINK}}' + themeName + '.css" rel="stylesheet">');
     </script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="canonical" href="https://ej2.syncfusion.com/react/demos/{{:canonical}}"/>

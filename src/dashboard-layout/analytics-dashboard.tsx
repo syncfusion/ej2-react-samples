@@ -6,15 +6,15 @@ import { DashboardLayoutComponent, PanelModel, PanelDirective, PanelsDirective }
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { MapAjax } from '@syncfusion/ej2-maps';
 import {
-    MapsComponent, LayersDirective, LayerDirective, MarkersDirective, MarkerDirective, Marker, Legend as MapsLegend, MapsTooltip
+    MapsComponent, LayersDirective, LayerDirective, MapsTheme, MarkersDirective, MarkerDirective, Marker, Legend as MapsLegend, MapsTooltip
 } from '@syncfusion/ej2-react-maps';
 import './analytics.css';
 import * as data from './default-datasource.json';
 import {
     AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,
-    AccumulationLegend, Legend, PieSeries, AccumulationTooltip,SeriesCollectionDirective,
-    AccumulationDataLabel, ChartComponent, ColumnSeries,Category, SeriesDirective,Tooltip,DataLabel,
-    DateTime, SplineAreaSeries, Inject
+    AccumulationLegend, Legend, PieSeries, ChartTheme, AccumulationTooltip,SeriesCollectionDirective, AccumulationTheme,
+    AccumulationDataLabel, ChartComponent, ILoadedEventArgs,  IAccLoadedEventArgs, ColumnSeries,Category, SeriesDirective,Tooltip,DataLabel,
+    DateTime, SplineAreaSeries, Inject 
   } from '@syncfusion/ej2-react-charts';
 
 export let expensedata: any[] = [
@@ -92,6 +92,27 @@ export class SEODashboard extends SampleBase<{}, {}> {
         count = count + 1;
         proxy.dashboardObj.addPanel(panel[0]);
     }
+    public load(args: IAccLoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast')  as AccumulationTheme;
+    }
+    public Chartload(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast')  as ChartTheme;
+         if (selectedTheme === 'highcontrast') {
+            args.chart.series[0].marker.dataLabel.fill = '#000000';
+            args.chart.series[1].marker.dataLabel.fill = '#000000';
+            }
+    };
+    public Mapload(args: any): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast')  as MapsTheme;
+    };
+
+
     public dashboardObj: DashboardLayoutComponent;
     private cellSpacing: number [] = [5,5];
 
@@ -141,6 +162,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
         return(
             <div style={{height:"100%", width:"100%"}}>
         <MapsComponent id="maps"
+                        load={this.Mapload}
                         zoomSettings={{
                             enable: false
                         }}
@@ -201,7 +223,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
     public pie(): JSX.Element{
         return(
             <div style={{height:"100%", width:"100%"}}>
-                 <AccumulationChartComponent id='pie'
+              <AccumulationChartComponent  id='pie'
               legendSettings={{ visible: false }}
               enableSmartLabels={true}
               height="100%"
@@ -209,7 +231,8 @@ export class SEODashboard extends SampleBase<{}, {}> {
               enableAnimation={false}
               selectionMode ={"Point"}
               center={{x: '50%', y: '50%'}}
-              tooltip={{ enable: false, header:"<b>${point.x}</b>" ,format: 'Composition : <b>${point.y}%</b>' }}>
+              tooltip={{ enable: false, header:"<b>${point.x}</b>" ,format: 'Composition : <b>${point.y}%</b>' }}
+              load={this.load.bind(this)}>
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
                 <AccumulationSeriesDirective dataSource={expensedata} name='Revenue' xName='Device' yName='Amount'
@@ -235,6 +258,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
         return(
             <div style={{height:"100%", width:"100%"}}>
                 <ChartComponent id='visitorsChart' style={{ textAlign: "center" }}
+                load={this.Chartload.bind(this)}
                 legendSettings={{visible: false}}
                         primaryXAxis={{
                             valueType: 'DateTime',
@@ -276,7 +300,8 @@ export class SEODashboard extends SampleBase<{}, {}> {
               enableAnimation={false}
               selectionMode ={"Point"}
               center={{x: '50%', y: '50%'}}
-              tooltip={{ enable: false, header:"<b>${point.x}</b>" ,format: 'Composition : <b>${point.y}%</b>' }}>
+              tooltip={{ enable: false, header:"<b>${point.x}</b>" ,format: 'Composition : <b>${point.y}%</b>' }}
+              load={this.load.bind(this)}>
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
                 <AccumulationSeriesDirective dataSource={
@@ -305,6 +330,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
         return(
             <div style={{height:"100%", width:"100%"}}>
                   <ChartComponent id='colChart' style={{ textAlign: "center" }}
+                     load={this.Chartload.bind(this)}
                      legendSettings={{ visible: false }}
                         primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 } }}
                         primaryYAxis={{
@@ -382,11 +408,11 @@ export class SEODashboard extends SampleBase<{}, {}> {
                                         <PanelDirective sizeX={2} sizeY={1} row={0} col={0} content={this.card1 as any} ></PanelDirective>
                                         <PanelDirective sizeX={2} sizeY={1} row={0} col={2} content={this.card2 as any}></PanelDirective>
                                         <PanelDirective sizeX={2} sizeY={1} row={0} col={4} content={this.card3 as any}></PanelDirective>
-                                        <PanelDirective sizeX={2} sizeY={2} row={1} col={0} content={this.pie as any} header="<div>Active Visitors</div>"></PanelDirective>
-                                        <PanelDirective sizeX={2} sizeY={2} row={1} col={2} content={this.map as any} header="<div>Regional Map</div>"></PanelDirective>
-                                        <PanelDirective sizeX={2} sizeY={2} row={1} col={4} content={this.colChart as any} header="<div>Visitors by Type</div>"></PanelDirective>
-                                        <PanelDirective sizeX={2} sizeY={2} row={3} col={0} content={this.pieChart as any} header="<div>Useage Statistics</div>"></PanelDirective>
-                                        <PanelDirective sizeX={4} sizeY={2} row={3} col={2} content={this.visitorsChart as any} header="<div>Traffic History</div>"></PanelDirective>
+                                        <PanelDirective sizeX={2} sizeY={2} row={1} col={0} content={this.pie.bind(this) as any} header="<div>Active Visitors</div>"></PanelDirective>
+                                        <PanelDirective sizeX={2} sizeY={2} row={1} col={2} content={this.map.bind(this) as any} header="<div>Regional Map</div>"></PanelDirective>
+                                        <PanelDirective sizeX={2} sizeY={2} row={1} col={4} content={this.colChart.bind(this) as any} header="<div>Visitors by Type</div>"></PanelDirective>
+                                        <PanelDirective sizeX={2} sizeY={2} row={3} col={0} content={this.pieChart.bind(this) as any} header="<div>Useage Statistics</div>"></PanelDirective>
+                                        <PanelDirective sizeX={4} sizeY={2} row={3} col={2} content={this.visitorsChart.bind(this) as any} header="<div>Traffic History</div>"></PanelDirective>
                                     </PanelsDirective>
                                 </DashboardLayoutComponent>
                             </div>

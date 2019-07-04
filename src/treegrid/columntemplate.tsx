@@ -58,8 +58,7 @@ export class ColumnTemplate extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={textdata} treeColumnIndex={0} childMapping='Children'
-              allowPaging='true' height='410' rowDataBound={this.rowDataBound.bind(this)}>
+          <TreeGridComponent dataSource={textdata} treeColumnIndex={0} childMapping='Children' height='410' rowDataBound={this.rowDataBound.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='EmpID' headerText='Employee ID' width='95'></ColumnDirective>
               <ColumnDirective field='Name' headerText='Name' width='90'></ColumnDirective>

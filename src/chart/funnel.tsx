@@ -10,11 +10,22 @@ import {
   Inject, AccumulationLegend, FunnelSeries, AccumulationTooltip, IAccLoadedEventArgs,
   AccumulationDataLabel, IAccResizeEventArgs, AccumulationTheme
 } from '@syncfusion/ej2-react-charts';
-export let data1: any[] = [{ x: 'Renewed', y: 18.20, text: '18.20%' },
-{ x: 'Subscribed', y: 27.3, text: '27.3%' },
-{ x: 'Support', y: 55.9, text: '55.9%' },
-{ x: 'Downloaded', y: 76.8, text: '76.8%' },
-{ x: 'Visited', y: 100, text: '100%' }];
+export let data1: any[] = [ { x: "China", y: 1409517397, text: "China" },
+{ x: "India", y: 1339180127, text: "India" },
+{ x: "United States", y: 324459463, text: "United States" },
+{ x: "Indonesia", y: 263991379, text: "Indonesia" },
+{ x: "Brazil", y: 209288278, text: "Brazil" },
+{ x: "Pakistan", y: 197015955, text: "Pakistan" },
+{ x: "Nigeria", y: 190886311, text: "Nigeria" },
+{ x: "Bangladesh", y: 164669751, text: "Bangladesh" },
+{ x: "Russia", y: 143989754, text: "Russia" },
+{ x: "Mexico", y: 129163276, text: "Mexico" },
+{ x: "Japan", y: 127484450, text: " Japan" },
+{ x: "Ethiopia", y: 104957438, text: "Ethiopia" },
+{ x: "Philippines", y: 104918090, text: "Philippines" },
+{ x: "Egypt", y: 97553151, text: "Egypt" },
+{ x: "Vietnam", y: 95540800, text: "Vietnam" },
+{ x: "Germany", y: 82114224, text: "Germany" }];
 export class Funnel extends SampleBase<{}, {}> {
   public funnel: AccumulationChartComponent;
   private slider: HTMLInputElement;
@@ -24,21 +35,18 @@ export class Funnel extends SampleBase<{}, {}> {
         <div className='control-section row'>
           <div className='col-lg-9'>
             <AccumulationChartComponent id='funnel-chart' ref={funnel => this.funnel = funnel}
-              title='Website Visitors'
-              legendSettings={{ toggleVisibility: false }}
+              title='Top populated countries in 2017'
               load={this.load.bind(this)}
-              tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
+              tooltip={{ enable: true, format: '${point.x} : <b>${point.y}</b>' }}
               resized={this.onChartResized.bind(this)}
               loaded={this.onChartLoad.bind(this)}
             >
-              <Inject services={[AccumulationLegend, FunnelSeries, AccumulationTooltip, AccumulationDataLabel]} />
+              <Inject services={[FunnelSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
                 <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' type='Funnel' width='60%' height='80%'
-                  neckWidth='15%' gapRatio={0.03} neckHeight='18%' explode={true}
+                  neckWidth='15%' gapRatio={0.03} neckHeight='18%' explode={false}
                   dataLabel={{
-                    name: 'text', visible: true, position: 'Inside', font: {
-                      fontWeight: '600'
-                    }
+                    name: 'text', visible: true, position: 'Outside', connectorStyle: { length: "6%" }
                   }}
                 >
                 </AccumulationSeriesDirective>
@@ -78,11 +86,11 @@ export class Funnel extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
         <p>
-        This sample visualizes the data about website visitors by using default funnel series. Datalabel shows the Information about the points.
+        This sample visualizes the data about population of different countries by using default funnel series. Datalabel shows the Information about the points and are arranged smartly.
     </p>
         </div>
         <div id="description">
-          <p> In this example, you can see how to render and configure the funnel chart. <code>dataLabel</code> is used to represent individual data and its value.</p>
+          <p> In this example, you can see how to render funnel chart.<code>dataLabel</code> is used to represent individual data and its value, here the labels are arranged smartly to avoid the overlap.</p>
           <p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
           <p><b>Injecting Module</b></p>
           <p>
@@ -114,18 +122,16 @@ export class Funnel extends SampleBase<{}, {}> {
   public onChartLoad(args: IAccLoadedEventArgs): void {
     document.getElementById('funnel-chart').setAttribute('title', '');
   };
-    // custom code start
+
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-    replace(/-dark/i, "Dark") as AccumulationTheme;
+    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
     if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
       args.accumulation.series[0].width = '80%';
       args.accumulation.series[0].height = '70%';
     }
   };
-      // custom code end
 
   public onChartResized(args: IAccResizeEventArgs): void {
     let bounds: ClientRect = document.getElementById('funnel-chart').getBoundingClientRect();

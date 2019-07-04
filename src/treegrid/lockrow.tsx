@@ -22,6 +22,12 @@ const SAMPLE1_CSS = `
 }
 .highcontrast .disableRow .e-rowcell{
   color: #757575;
+}
+.bootstrap4 .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .35);
+}
+.material .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .38);
 }`;
 {/* custom code end */}
 export class LockRow extends SampleBase<{}, {}> {

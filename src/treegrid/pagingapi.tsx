@@ -118,7 +118,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
-                        <NumericTextBoxComponent width="90px" id='pagesize' format='##' min={1} max={200} value={12}
+                        <NumericTextBoxComponent id='pagesize' format='##' min={1} max={200} value={12} width='110px'
                           ref={numeric=> this.pageSizeObj = numeric} change={this.changeNum.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>
@@ -130,7 +130,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
-                        <NumericTextBoxComponent width="90px" id='pagecount' format='##' min={1} max={4} value={2}
+                        <NumericTextBoxComponent id='pagecount' format='##' min={1} max={4} value={2} width='110px'
                           ref={numeric=> this.pageCountObj = numeric} change={this.countChange.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>
@@ -142,7 +142,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
-                        <NumericTextBoxComponent width="90px" id='currentpage' format='##' min={1} max={17} value={1}
+                        <NumericTextBoxComponent id='currentpage' format='##' min={1} max={17} value={1} width='110px'
                           ref={numeric=> this.currentPageObj = numeric} change={this.currentPageChange.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>

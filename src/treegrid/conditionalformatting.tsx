@@ -80,7 +80,7 @@ export class Format extends SampleBase<{}, {}> {
       </div>
       <div id="action-description">
         <p>This samples demonstrates the way of customizing the cells by adding icons for Priority column and
-            highlight the cells of Duration column based on certain condition using queryCellInfo event.
+            highlight the cells of Progress column based on certain condition using queryCellInfo event.
         </p>
       </div>
 
@@ -89,7 +89,7 @@ export class Format extends SampleBase<{}, {}> {
            for every cell. In that event handler, you can get QueryCellInfoEventArgs that contains the details of the cell.
         </p>
         <p>
-          In this demo, we have customized the column values by adding icons for Priority column and highlighted the Duration column
+          In this demo, we have customized the column values by adding icons for Priority column and highlighted the Progress column
             based on certain condition using queryCellInfo event.
         </p>
 </div>

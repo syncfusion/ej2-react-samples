@@ -12,5 +12,5 @@ export const StockChartSampleOrder: Object = [
     { 'path': 'stock-chart/period-customization', 'component': 'PeroidCustomization', 'name': 'Intraday', 'order': '01', 'category': 'Stock Chart' },
     { 'path': 'stock-chart/disabled-navigator', 'component': 'Navigator', 'name': 'Hide Range Selector', 'order': '01', 'category': 'Stock Chart' },
     { 'path': 'stock-chart/disabled-period', 'component': 'PeriodSelector', 'name': 'Hide Period Selector', 'order': '01', 'category': 'Stock Chart' },
-    { 'path': 'stock-chart/stock-events', 'component': 'StockEvents', 'name': 'Stock Events', 'order': '01', 'category': 'Stock Chart' ,'type':'new' }
+    { 'path': 'stock-chart/stock-events', 'component': 'StockEvents', 'name': 'Stock Events', 'order': '01', 'category': 'Stock Chart' }
 ]

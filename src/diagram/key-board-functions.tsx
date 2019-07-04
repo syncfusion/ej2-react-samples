@@ -74,7 +74,7 @@ export class KeyBoardInteraction extends SampleBase<{}, {}> {
               dataSourceSettings={{
                 id: "id",
                 parentId: "ancestor",
-                dataManager: new DataManager(keyBoardData as JSON[]),
+                dataSource: new DataManager(keyBoardData as JSON[]),
                 doBinding: (nodeModel: NodeModel, data: DataInfo) => {
                   nodeModel.annotations = [
                     {

@@ -4,6 +4,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { RichTextEditorComponent, MarkdownEditor, Inject, Toolbar, Image, Link, IToolbarItems, QuickToolbar, Table } from '@syncfusion/ej2-react-richtexteditor';
+import { MarkdownFormatter } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
 import * as Marked from 'marked';
@@ -41,7 +42,9 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
         items: this.items
     };
 
-    public MarkDownConversion(): void {
+    private formatter: object =  new MarkdownFormatter({ listTags: { 'OL': '1., 2., 3.'} });
+
+    public markdownConversion(): void {
         if (this.mdsource.classList.contains('e-active')) {
             let id: string = this.rteObj.getID() + 'html-view';
             let htmlPreview: HTMLElement = this.rteObj.element.querySelector('#' + id);
@@ -72,7 +75,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     public rendereComplete(): void {
         this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
         this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => {
-            this.MarkDownConversion();
+            this.markdownConversion();
         });
         this.mdsource = document.getElementById('preview-code');
         this.mdsource.addEventListener('click', (e: MouseEvent) => {
@@ -93,7 +96,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                     <div className="content-wrapper">
                         <RichTextEditorComponent id="markdownRTE"
                             ref={(richtexteditor) => { this.rteObj = richtexteditor }} editorMode='Markdown'
-                            height='250px' valueTemplate={this.template} toolbarSettings={this.toolbarSettings} >
+                            height='250px' valueTemplate={this.template} formatter={this.formatter} toolbarSettings={this.toolbarSettings} >
                             <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar, Table]} />
                         </RichTextEditorComponent>
                     </div>

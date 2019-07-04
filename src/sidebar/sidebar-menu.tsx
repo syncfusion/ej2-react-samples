@@ -148,7 +148,8 @@ export class SidebarWithMenu extends SampleBase<{}, {}> {
 
     //open newTab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/sidebar-menu/index.html');
+        let URL = location.href.replace(location.search,'');
+        document.getElementById('newTab').setAttribute('href', URL.split('#')[0] + 'sidebar/sidebar-menu/index.html');
     }
     //open the sidebar
     openClick(): void {

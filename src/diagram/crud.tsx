@@ -101,7 +101,7 @@ export class Crud extends SampleBase<{}, {}> {
 
   // custom code start
   private dlgButtonClick(): void {
-    let dialogHeader: string = dialogInstance.header;
+    let dialogHeader: string | HTMLElement  = dialogInstance.header;
     let description: string = (document.getElementById('Description') as HTMLInputElement).value;
     let color: string = (document.getElementById('Color') as HTMLInputElement).value;
     let selectedItem: NodeModel | ConnectorModel;

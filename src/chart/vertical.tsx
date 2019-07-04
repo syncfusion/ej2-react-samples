@@ -14,11 +14,11 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-let clrInterval: number;
 
 export class VerticalChart extends SampleBase<{}, {}> {
-    private chart: ChartComponent;
+    private chartInstance: ChartComponent;
     private count: number = 0;
+    private clrInterval: number;
     render() {
         return (
             <div className='control-pane'>
@@ -26,7 +26,7 @@ export class VerticalChart extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <ChartComponent id='charts-vertical' style={{ textAlign: "center" }}
+                    <ChartComponent id='charts-vertical' ref={chart => this.chartInstance = chart} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             title: 'Time (s)', majorGridLines: { width: 0 }
                         }}
@@ -65,11 +65,11 @@ export class VerticalChart extends SampleBase<{}, {}> {
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts-vertical');
-        chart.setAttribute('title', '');
-
-        clrInterval =
-            setInterval(() => {
+        //let chart: Element = document.getElementById('charts-vertical');
+        this.chartInstance.loaded = null;
+        //chart.setAttribute('title', '');
+        this.clrInterval =
+            +setInterval(() => {
                 args.chart.series[0].dataSource = this.liveData(args.chart.series[0].dataSource as any[], args.chart.series[0] as Series);
                 args.chart.refresh();
             },
@@ -87,7 +87,7 @@ export class VerticalChart extends SampleBase<{}, {}> {
         this.count = this.count + 1;
         let newData: any[] = data;
         if (this.count > 350 || getElement('charts-vertical') === null) {
-            clearInterval(clrInterval);
+            clearInterval(this.clrInterval);
         } else if (this.count > 300) {
             newData.push({ x: this.getXValue(data), y: this.getRandomArbitrary(0, 0) });
         } else if (this.count > 250) {

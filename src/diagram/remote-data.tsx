@@ -69,7 +69,7 @@ export class RemoteData extends SampleBase<{}, {}> {
             dataSourceSettings={{
               id: "EmployeeID",
               parentId: "ReportsTo",
-              dataManager: new DataManager(
+              dataSource: new DataManager(
                 {
                   url: "https://mvc.syncfusion.com/Services/Northwnd.svc/",
                   crossDomain: true

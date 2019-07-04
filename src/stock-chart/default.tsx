@@ -4,7 +4,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
-    StockChartComponent, StockChartSeriesCollectionDirective, StockChartSeriesDirective, Inject,ITooltipRenderEventArgs,
+    StockChartComponent, StockChartSeriesCollectionDirective, StockChartSeriesDirective, Inject,ITooltipRenderEventArgs, IStockChartEventArgs, ChartTheme,
     DateTime, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines
 } from '@syncfusion/ej2-react-charts';
 import {
@@ -53,6 +53,7 @@ export class Default extends SampleBase<{}, {}> {
                         tooltip={{ enable: true, shared: true }}
                         tooltipRender={tooltipRender}
                         crosshair={{ enable: true }}
+                        load={this.load.bind(this)}
                         title= 'AAPL Stock Price'
                         titleStyle={{
                             fontWeight: '500', color: '#424242 '
@@ -91,5 +92,11 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
             </div>
         )
+    }
+    public load(args: IStockChartEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+         replace(/-dark/i, "Dark") as ChartTheme;
     }
 }

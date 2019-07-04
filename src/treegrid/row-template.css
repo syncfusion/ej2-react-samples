@@ -1,0 +1,15 @@
+.e-treegrid .border {
+    border-color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    border-width: 1px 0 0 0;
+}
+
+.e-treegrid .tempimg {
+    width: 60px;
+    height: 60px;
+    vertical-align: baseline;
+    border-radius: 50px;
+    margin-left: 20px;
+    background-repeat: no-repeat;
+
+}

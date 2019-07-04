@@ -1,7 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
-import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
@@ -15,7 +14,15 @@ export class LocalData extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
   private data: Object[] = extend([], (dataSource as any).zooEventsData, null, true) as Object[];
   private onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, this.scheduleObj.currentView);
+    let categoryColor: string = args.data.CategoryColor as string;
+    if (!args.element || !categoryColor) {
+        return;
+    }
+    if (this.scheduleObj.currentView === 'Agenda') {
+        (args.element.firstChild as HTMLElement).style.borderLeftColor = categoryColor;
+    } else {
+        args.element.style.backgroundColor = categoryColor;
+    }
   }
 
   render() {
@@ -38,6 +45,7 @@ export class LocalData extends SampleBase<{}, {}> {
             data transfer and load time. In this sample, the <code>dataSource</code> property
              available within the <code>eventSettings</code> needs to be assigned with the valid local JSON data.
           </p>
+          <p>The <code>eventRendered</code> event is used to customize the events. In this sample, background color of the event is changed based on the custom field 'CategoryColor'</p>
         </div>
       </div>
     );

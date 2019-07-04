@@ -83,7 +83,7 @@ export class Radial extends SampleBase<{}, {}> {
                 //sets the fields to bind
                 id: "Id",
                 parentId: "ReportingPerson",
-                dataManager: new DataManager(radialTree as JSON[]), //binds the data with the nodes
+                dataSource: new DataManager(radialTree as JSON[]), //binds the data with the nodes
                 doBinding: (
                   nodeModel: NodeModel,
                   data: DataInfo,

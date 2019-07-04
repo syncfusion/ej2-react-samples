@@ -127,7 +127,7 @@ export class HierarchicalModel extends SampleBase<{}, {}> {
                 //sets the fields to bind
                 id: "Name",
                 parentId: "Category",
-                dataManager: new DataManager(hierarchicalTree as JSON[]), //binds the data with the nodess
+                dataSource: new DataManager(hierarchicalTree as JSON[]), //binds the data with the nodess
                 doBinding: (
                   nodeModel: NodeModel,
                   data: object,

@@ -63,10 +63,10 @@ export class Taskbar extends SampleBase<{}, {}> {
     if (props.TaskName == 'Oscar moments') {
       return (<div className="e-gantt-child-taskbar e-custom-moments" style={{height: "100%", borderRadius: "5px"}}>
         {
-          props.ganttProperties.duration < 4 ?
-            <img className="moments" height="32" width="32" /> :
+          props.taskDuration < 4 ?
+            <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" /> :
             <div>
-              <img className="moments" height="32" width="32" />
+              <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" />
               <span className="e-task-label" style={{ position: "absolute", top: "15px", fontSize: "12px", textOoverflow: "ellipsis", height: "90%", overflow: "hidden" }}>{props.Performance}</span>
             </div>
         }
@@ -76,10 +76,10 @@ export class Taskbar extends SampleBase<{}, {}> {
     else if (props.TaskName == 'Oscar performance') {
       return (<div className="e-gantt-child-taskbar e-custom-performance" style={{height: "100%", borderRadius: "5px"}}>
         {
-          props.ganttProperties.duration <= 5 ?
-            <img className="face-mask" height="32" width="32" /> :
+          props.taskDuration <= 5 ?
+            <img className="face-mask" src="src/gantt/images/face-mask.svg" height="32" width="32" /> :
             <div>
-              <img className="face-mask" height="32" width="32" />
+              <img className="face-mask" src="src/gantt/images/face-mask.svg" height="32" width="32" />
               <span className="e-task-label e-oscar-performance" style={{ position: "absolute", top: "5px", fontSize: "12px", textOverflow: "ellipsis", height: "90%", overflow: "hidden" }}>{props.Performance}</span>
             </div>
         }
@@ -88,16 +88,16 @@ export class Taskbar extends SampleBase<{}, {}> {
     } else {
       return (
         <div className="e-gantt-parent-taskbar e-custom-parent" style={{height: "100%", borderRadius: "5px", textOverflow: "ellipsis"}}>
-          {props.ganttProperties.duration < 4 ?
-            <img className="oscar" height="32" width="32" /> :
+          {props.taskDuration < 4 ?
+            <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" /> :
             props.Winner && props.Movie ?
               <div>
-                <img className="oscar" height="32" width="32" />
+                <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" />
                 <span className="e-task-label" style={{ position: "absolute", top: "13px", fontSize: "14px" }} >{props.Winner}</span>
                 <span className="e-task-label" style={{ position: "absolute", top: "33px", fontSize: "10px", textOverflow: "ellipsis" }}>{props.Movie}</span>
               </div> : props.Movie ?
                 <div>
-                  <img className="oscar" height="32" width="32" />
+                  <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" />
                   <span className="e-task-label e-oscar-movie" style={{ position: "absolute", top: "24px", fonSize: "12px", textOverflow: "ellipsis" }}>{props.Movie} </span>
                 </div> :
                 <span className="e-task-label"></span>
@@ -111,7 +111,7 @@ export class Taskbar extends SampleBase<{}, {}> {
   public milstoneTemplate(props): any {
     return (<div style={{ marginTop: "-7px" }}>
       <div className="e-gantt-milestone" style={{ position: "absolute" }}>
-        <img className="moments" height="24" width="48" />
+        <img className="moments" src="src/gantt/images/moments.svg" height="24" width="48" />
         <div className="e-milestone-top" style={{ borderRightWidth: "26px", marginTop: "-24px", borderLeftWidth: "26px", borderBottomWidth: "26px" }}></div>
         <div className="e-milestone-bottom" style={{ top: "26px", borderRightWidth: "26px", borderLeftWidth: "26px", borderTopWidth: "26px" }}></div>
       </div>

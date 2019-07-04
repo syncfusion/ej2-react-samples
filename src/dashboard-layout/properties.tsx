@@ -21,7 +21,7 @@ export class Properties extends SampleBase<{}, {}> {
     }
 
     public remove(): void {
-        if (this.dashboardObj.panels.length != 0) {
+        if (this.dashboardObj.panels.length > 0) {
             for (let i: number = this.dashboardObj.panels.length - 1; i < this.dashboardObj.panels.length; i++) {
                 this.dashboardObj.removePanel(this.dashboardObj.panels[this.dashboardObj.panels.length - 1 - i].id);
             }
@@ -35,18 +35,10 @@ export class Properties extends SampleBase<{}, {}> {
     public onChange(args: any): void {
         let proxy: any = this;
         if (args.event.currentTarget.id === 'floating') {
-            if (args.checked) {
-                proxy.dashboardObj.allowFloating = true;
-            } else {
-                proxy.dashboardObj.allowFloating = false;
-            }
+            proxy.dashboardObj.allowFloating = args.checked;
         }
         if (args.event.currentTarget.id === 'resizing') {
-            if (args.checked) {
-                proxy.dashboardObj.allowResizing = true;
-            } else {
-                proxy.dashboardObj.allowResizing = false;
-            }
+            proxy.dashboardObj.allowResizing = args.checked;
         }
 
     }
@@ -113,8 +105,9 @@ export class Properties extends SampleBase<{}, {}> {
                     <p>This sample demonstrates the properties of DashboardLayout component from the property pane. Select any combination of properties from the property pane to customize the DashboardLayout.</p>
                 </div>
                 <div id="description">
-                This sample allows to configure the <code>cellSize</code>, <code>cellSpacing</code>, <code>allowFloating</code> and
-    <code>allowPushing</code> properties of the dashboard layout component.
+                This sample allows to configure the <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#cellspacing" target="_blank">cellSpacing</a></code>, 
+                <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowfloating" target="_blank">allowFloating</a></code> and
+                <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowresizing" target="_blank">allowResizing</a></code> properties of the dashboard layout component.
                 </div>
             </div>
         );

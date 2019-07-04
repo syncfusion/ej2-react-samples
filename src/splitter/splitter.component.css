@@ -19,9 +19,14 @@
     height: 100%;
 }
 
-#defaultSplitter .e-splitter .e-pane,
-#defaultSplitter .e-splitter .splitter-content {
+#defaultSplitter .e-rtl .splitter-content{
+    justify-content: initial;
+      text-align: initial;
+}
+
+.splitter-content {
     align-items: center;
     justify-content: center;
     display: flex;
 }
+

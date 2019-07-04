@@ -110,7 +110,7 @@ export class SymmetricLayout extends SampleBase<{}, {}> {
               dataSourceSettings={{
                 id: "Id",
                 parentId: "Source",
-                dataManager: new DataManager(data)
+                dataSource: new DataManager(data)
               }}
               //Sets the constraints of the SnapSettings
               snapSettings={{ constraints: SnapConstraints.None }}

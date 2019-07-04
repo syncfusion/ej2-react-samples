@@ -9,6 +9,8 @@ import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as dataSource from './datasource.json';
+import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
+import { PropertyPane } from '../common/property-pane';
 
 /**
  * Schedule Recurrence events sample
@@ -21,10 +23,13 @@ export class RecurrenceEvents extends SampleBase<{}, {}> {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
 
+  private onChange(args: ChangeEventArgs): void {
+    this.scheduleObj.eventSettings.editFollowingEvents = args.checked;
+  }
   render() {
     return (
       <div className='schedule-control-section'>
-        <div className='control-section'>
+        <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 1, 20)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data }} eventRendered={this.onEventRendered.bind(this)}>
@@ -37,6 +42,21 @@ export class RecurrenceEvents extends SampleBase<{}, {}> {
             </ScheduleComponent>
           </div>
         </div>
+        <div className='col-lg-3 property-section'>
+          <PropertyPane title='Properties'>
+            <table id='property' title='Properties' style={{ width: '100%' }}>
+              <tbody>
+                <tr style={{ height: '50px' }}>
+                  <td style={{ width: '100%' }}>
+                    <CheckBoxComponent id='editFollowingEvents' checked={false} label='Enable Following Events'
+                      change={this.onChange.bind(this)} ></CheckBoxComponent>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </PropertyPane>
+        </div>
+
         <div id='action-description'>
           <p>This demo showcases the scheduler with recurring meetings handled by a top-level manager on a regular pattern.</p>
         </div>

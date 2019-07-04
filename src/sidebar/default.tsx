@@ -60,7 +60,8 @@ export class Default extends SampleBase<{}, {}> {
     }
     //open new Tab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/default/index.html');
+        let URL = location.href.replace(location.search,'');
+        document.getElementById('newTab').setAttribute('href', URL.split('#')[0] + 'sidebar/default/index.html');
     }
 
     // change the Sidebar position

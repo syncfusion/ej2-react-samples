@@ -19,6 +19,10 @@ _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-FeMale::before{
     background-color:#0078d6; 
 }
 
+.bootstrap4 .empimg{
+    background-color:#0078d6; 
+}
+
 #Emptext{
 top: -12px;
 left: 41px;

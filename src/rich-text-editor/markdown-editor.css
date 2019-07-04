@@ -19,10 +19,6 @@
     content: '\e787';
 }
 
-#rteMarkdown {
-    overflow: hidden;
-}
-
 #rteMarkdown .content-wrapper {
     width: auto;
     margin: 0;

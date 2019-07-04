@@ -52,7 +52,7 @@ export class Overview extends SampleBase<{}, {}> {
               dataSourceSettings={{
                 id: "Id",
                 parentId: "ReportingPerson",
-                dataManager: new DataManager(data)
+                dataSource: new DataManager(data)
               }} //Sets the default values of Node
               getNodeDefaults={(obj: Node, diagram: Diagram) => {
                 obj.height = 50;

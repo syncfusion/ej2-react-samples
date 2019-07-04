@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, TimelineViews, TimelineMonth,
   EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
@@ -34,8 +34,10 @@ export class CellDimension extends SampleBase<{}, {}> {
                 <ViewDirective option='Week' />
                 <ViewDirective option='WorkWeek' />
                 <ViewDirective option='Month' />
+                <ViewDirective option='TimelineWeek' />
+                <ViewDirective option='TimelineMonth' />
               </ViewsDirective>
-              <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
+              <Inject services={[Day, Week, WorkWeek, Month, TimelineViews, TimelineMonth, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>

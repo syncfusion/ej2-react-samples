@@ -117,9 +117,9 @@ export class Drilldown extends SampleBase<{}, {}> {
 						}}>
 						<Inject services={[TreeMapTooltip]} />
 						<LevelsDirective>
-							<LevelDirective groupPath= 'Continent' border={{ color: 'black', width: 0.5 }} />
-							<LevelDirective groupPath='States' border={{ color: 'black', width: 0.5 }} />
-							<LevelDirective groupPath='Region' showHeader={true} border={{ color: 'black', width: 0.5 }} />
+							<LevelDirective groupPath= 'Continent' fill= '#336699' border={{ color: 'black', width: 0.5 }} />
+							<LevelDirective groupPath='States' fill='#336699' border={{ color: 'black', width: 0.5 }} />
+							<LevelDirective groupPath='Region' showHeader={true} fill='#336699' border={{ color: 'black', width: 0.5 }} />
 						</LevelsDirective>
 					</TreeMapComponent>
 				</div>

@@ -31,7 +31,7 @@ export class ShowHide extends SampleBase<{}, {}> {
         } else {
             this.gridInstance.hideColumns(element.innerHTML);
         }
-
+        this.flag = true;
     }
     public dataBound(): void {
         this.flag = true;

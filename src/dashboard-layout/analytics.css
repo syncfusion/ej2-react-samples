@@ -48,7 +48,7 @@
     #target_dash #pie,
     #target_dash #maps{
         width: 100% !important;
-        height: 40% !important;
+        height: 100% !important;
     } 
   }
 /* custom code start*/
@@ -335,4 +335,11 @@ body.highcontrast #dockSideDash .e-icons::before {
 
 body.highcontrast #dockSideDash li.sidebar-item.filterHover, body.highcontrast #dockSideDash {
   background: #000;
+}
+body.highcontrast #analytic_dashboard.e-dashboardlayout.e-control .e-panel {
+  background: #000;
+}
+
+body.highcontrast #analytic_dashboard.e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
+  color: rgba(255, 255, 255, 0.54);
 }

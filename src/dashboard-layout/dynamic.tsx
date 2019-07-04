@@ -206,7 +206,7 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                     </div>
                 </div>
                 <DashboardLayoutComponent id="edit_dashboard" columns={2} cellSpacing={this.cellSpacing} ref={(scope) => { this.dashboardObj = scope; }} 
-                 resizeStop={ this.onPanelResize.bind(this) } allowResizing={true}>
+                 resizeStop={ this.onPanelResize.bind(this) } allowResizing={false} allowDragging={false}>
                 <PanelsDirective>
                     <PanelDirective sizeX={1} sizeY={1} row={0} col={0} content={this.lineTemplate as any} header="<div>Line Chart</div>"></PanelDirective>
                     <PanelDirective sizeX={1} sizeY={1} row={0} col={1} content={this.pieTemplate as any} header="<div>Pie Chart</div>"></PanelDirective>
@@ -217,7 +217,9 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                 <div id="action-description">
                     <p>
                         The following sample demonstrates a editable dashboard layout. Initially the DashboardLayout component
-                        doesn't allow to drag, resize or reorder the panels. After clicking the edit button, the layout becomes 
+                        doesn't allow to <a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowdragging" target="_blank">drag</a>, 
+                        <a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowresizing" target="_blank">resize</a> or reorder the panels. 
+                        After clicking the edit button, the layout becomes 
                          editable which allows to drag and reorder the panels as per the requirement and also you can
                         add new panels to the layout with predefined templates by clicking the add new button and reorder them
                         by dragging and placing in the required position. Drag and resizing of the panles are not applicable 

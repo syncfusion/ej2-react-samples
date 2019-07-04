@@ -70,9 +70,7 @@ export class ExportToExcel extends SampleBase<{}, {}> {
         <p>
             <strong>Module Injection</strong>
         </p>
-        <p>Tostart using Excel exporting functionality in Scheduler, you need to import the <code>ExcelExport</code> module from
-        <code>@syncfusion/ej2-schedule</code> package and then inject it using the <code>Schedule.Inject(ExcelExport)</code>
-        method.
+        <p>To start using Excel exporting functionality in Scheduler, we need to inject <code>ExcelExport</code> module into the services.
         </p>
         </div>
       </div>

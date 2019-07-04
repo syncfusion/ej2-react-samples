@@ -32,7 +32,7 @@ export class CheckboxColumn extends SampleBase<{}, {}> {
             can be enabled by <code>showCheckbox</code> property as true in columns API.
           </p>
           <p>
-            For hierarchy selection between the records, we need to enable the <code>autoCheckHierarchy</code> property.
+            For hierarchy selection between the records, we need to enable the <code>enableHierarchySelection</code> property.
           </p>  
           <p>
               While using TreeGrid in a touch device, you have an option to select the checkboxes by tapping on the checkbox.

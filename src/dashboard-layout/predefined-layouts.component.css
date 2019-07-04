@@ -129,3 +129,6 @@
 div#predefine_control {
   border: 1px solid lightgray;
 }
+ body.highcontrast #predefine_dashboard .panel-content {
+        color: rgba(255, 255, 255, 0.54);
+}

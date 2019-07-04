@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
-  Inject, Resize, DragAndDrop
+  Inject, Resize, DragAndDrop, PopupOpenEventArgs, ActionEventArgs, DragEventArgs, ResizeEventArgs
 } from '@syncfusion/ej2-react-schedule';
 import './read-only-events.css';
 import { SampleBase } from '../common/sample-base';
@@ -14,12 +14,33 @@ import { getReadOnlyEventsData } from './helper';
 
 export class ReadonlyEvents extends SampleBase<{}, {}> {
   private data: Object[] = getReadOnlyEventsData();
+  private onPopupOpen(args: PopupOpenEventArgs): void {
+    if ((!args.target.classList.contains('e-appointment') && (args.type === 'QuickInfo')) || (args.type === 'Editor')) {
+      args.cancel = this.onEventCheck(args);
+    }
+  }
+  private onActionBegin(args: ActionEventArgs): void {
+    if ((args.requestType === 'eventCreate') || args.requestType === 'eventChange') {
+      args.cancel = this.onEventCheck(args);
+    }
+  }
+  private onDragStop(args: DragEventArgs): void {
+    args.cancel = this.onEventCheck(args);
+  }
+  private onResizeStop(args: ResizeEventArgs): void {
+    args.cancel = this.onEventCheck(args);
+  }
+  private onEventCheck(args: any): boolean {
+    let eventObj: any = args.data instanceof Array ? args.data[0] : args.data;
+    return (eventObj.StartTime < new Date());
+  }
   render() {
     return (
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='650px' eventSettings={{ dataSource: this.data }}>
+            <ScheduleComponent width='100%' height='650px' eventSettings={{ dataSource: this.data }} popupOpen={this.onPopupOpen.bind(this)}
+              actionBegin={this.onActionBegin.bind(this)} dragStop={this.onDragStop.bind(this)} resizeStop={this.onResizeStop.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
                 <ViewDirective option='Week' />
