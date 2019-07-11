@@ -22,11 +22,11 @@ export class DropDowns extends SampleBase<{}, {}> {
     // define the array of string
     private dropDownData: string[] = ['Australia', 'Bermuda', 'Canada', 'Cameroon', 'Denmark', 'Finland', 'Greenland', 'Poland'];
 
-    private dropDownModel: object = { dataSource: this.dropDownData, placeholder: 'Find a countries' };
+    private dropDownModel: object = { dataSource: this.dropDownData, placeholder: 'Find a country' };
 
-    private autoCompleteModel: object = { dataSource: this.dropDownData, placeholder: ' Type to search countries' };
+    private autoCompleteModel: object = { dataSource: this.dropDownData, placeholder: ' Type to search country' };
 
-    private comboBoxModel: object = { dataSource: this.dropDownData, placeholder: 'Find a countries' };
+    private comboBoxModel: object = { dataSource: this.dropDownData, placeholder: 'Find a country' };
 
     private multiSelectModel: object = { dataSource: this.dropDownData, placeholder: 'Choose the countries', mode: 'Box', width: 150 };
 

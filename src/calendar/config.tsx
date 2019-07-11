@@ -40,7 +40,7 @@ export const CalendarSampleOrder: Object = [
         ]
     },
     {
-        'path': 'calendar/month-picker', 'component': 'MonthPicker', 'name': 'Month Picker', 'description': 'The React Calendar component can act as a month and year picker. It helps you to select a month or year quickly with all month related properties.', 'order': '01', 'category': 'Calendar', 'type': 'new', 'api': '{"Calendar": [ "start", "depth", "change" ]}',
+        'path': 'calendar/month-picker', 'component': 'MonthPicker', 'name': 'Month Picker', 'description': 'The React Calendar component can act as a month and year picker. It helps you to select a month or year quickly with all month related properties.', 'order': '01', 'category': 'Calendar', 'api': '{"Calendar": [ "start", "depth", "change" ]}',
         'sourceFiles': [
             { 'displayName': 'month-picker.tsx', 'path': 'src/calendar/month-picker.tsx' },
             { 'displayName': 'month-picker.jsx', 'path': 'src/calendar/month-picker.jsx' },

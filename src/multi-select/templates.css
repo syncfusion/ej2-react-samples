@@ -236,3 +236,40 @@
 .bootstrap.e-bigger #multitemplate .e-multi-select-wrapper .e-chips.e-mob-chip.e-chip-selected .valueTemp {
     left: 0px;
 }
+
+.bootstrap4 #multitemplate .nameTemp {
+    padding: 0px 0px 0px 26px;
+    line-height: 1.2em;
+    margin-top: 1px;
+}
+
+.bootstrap4 #multitemplate .valueTemp {
+    margin-left: -6px;
+    height: 22px;
+    width: 22px;
+    margin-top: -4px;
+}
+
+.bootstrap4 #multiTemplate_popup .ms-job {
+    margin-top: 0;
+}
+
+.e-bigger.bootstrap4 #multiTemplate_popup .ms-job {
+    margin-top: -15px;
+}
+
+.bootstrap4 #multiTemplate_popup .empImage {
+    margin: 1px 16px;
+}
+
+.e-bigger.bootstrap4 #multitemplate .valueTemp {
+    margin-left: -6px;
+    height: 26px;
+    width: 26px;
+    margin-top: -4px;
+}
+
+.e-bigger.bootstrap4 #multitemplate .nameTemp {
+    padding: 0 0 0 26px;
+    line-height: 1.6em;
+}

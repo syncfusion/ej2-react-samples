@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Filter, Toolbar, Page } from '@syncfusion/ej2-react-treegrid';
 import { treesampleData } from './data';
 import { SampleBase } from '../common/sample-base';
@@ -9,10 +10,12 @@ export class ToolbarTemplate extends SampleBase<{}, {}> {
 
   public treegridObj: TreeGridComponent;
 
-  public toolbarOptions: any = ['ExpandAll', 'CollapseAll', {text: 'Quick Filter', tooltipText: 'Quick Filter', id: 'refresh'}]
+  public toolbarOptions: any = ['ExpandAll', 'CollapseAll', {text: 'Quick Filter', tooltipText: 'Quick Filter', id: 'filter'}]
 
-  private toolbarClick(): void {
-    this.treegridObj.filterByColumn("taskName","startswith","Testing");
+  private toolbarClick(args: ClickEventArgs): void { 
+    if (args.item.id === 'filter') {
+      this.treegridObj.filterByColumn("taskName","startswith","Testing");
+    }
   }
 
   render() {

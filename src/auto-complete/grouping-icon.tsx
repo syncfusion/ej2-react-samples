@@ -28,13 +28,13 @@ export class Grouping extends SampleBase<{}, {}> {
         <div className='control-section' id='autoIcon'>
           <div className='col-lg-6'>
             <div id="group">
-              <h3>Grouping</h3>
+              <h4>Grouping</h4>
               <AutoCompleteComponent id="vegetables" showPopupButton={true} dataSource={this.vegetableData} fields={this.groupFields} placeholder="e.g. Cabbage" />
             </div>
           </div>
           <div className='col-lg-6'>
             <div id="icon">
-              <h3> Icons</h3>
+              <h4> Icons</h4>
               <AutoCompleteComponent id="icons" showPopupButton={true} dataSource={this.socialMediaData} fields={this.iconFields} placeholder="e.g. Facebook" />
             </div>
           </div>

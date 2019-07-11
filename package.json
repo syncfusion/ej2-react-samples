@@ -8,6 +8,7 @@
 		"@syncfusion/ej2": "*",
 		"@syncfusion/ej2-react-base": "*",
 		"@syncfusion/ej2-react-buttons": "*",
+		"@syncfusion/ej2-react-barcode-generator": "*",
 		"@syncfusion/ej2-react-calendars": "*",
 		"@syncfusion/ej2-react-charts": "*",
 		"@syncfusion/ej2-react-diagrams": "*",

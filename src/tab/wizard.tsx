@@ -38,6 +38,8 @@ export class Wizard extends SampleBase<{}, {}> {
   public fields: Object = { id: "id", text: "text", value: "text" };
   public autoCompleteFields: Object = { text: 'name', value: 'name' };
   public dateValue = new Date();
+  public result: Object[] = [];
+  public reserved: Object[] = [];
 
   public headerText: any = [
     { "text": "New Booking" },
@@ -88,7 +90,12 @@ export class Wizard extends SampleBase<{}, {}> {
     proxy.hide();
   }
 
-  public tabSelected(e: SelectEventArgs): void {
+  public focusIn() {
+    const proxy: any = this;
+    proxy.show();
+}
+
+  public tabSelecting(e: SelectEventArgs): void {
     if (e.isSwiped) {
       e.cancel = true;
     }
@@ -107,10 +114,9 @@ export class Wizard extends SampleBase<{}, {}> {
           if (this.startPoint.value && this.startPoint.value === this.endPoint.value) {
             document.getElementById("err1").innerText = "* Arrival point can't be same as Departure";
           } else {
-            this.tab.enableTab(0, false);
             this.tab.enableTab(1, true);
+            this.tab.enableTab(0, false);
             this.filterTrains(e);
-            this.tab.select(1);
             document.getElementById("err1").innerText = "";
             document.getElementById("err2").innerText = "";
           }
@@ -124,7 +130,6 @@ export class Wizard extends SampleBase<{}, {}> {
           document.getElementById("err2").innerText = "* Select your convenient train";
         } else {
           this.tab.enableTab(2, true);
-          this.tab.select(2);
           this.tab.enableTab(1, false);
           document.getElementById("err2").innerText = "";
         }
@@ -138,7 +143,6 @@ export class Wizard extends SampleBase<{}, {}> {
           document.getElementById("err3").innerText = "* Please enter passenger details";
         } else {
           this.tab.enableTab(3, true);
-          this.tab.select(3);
           this.tab.enableTab(2, false);
           document.getElementById("err3").innerText = "";
           this.finalizeDetails(e);
@@ -171,7 +175,6 @@ export class Wizard extends SampleBase<{}, {}> {
 
   public filterTrains(args: RowSelectEventArgs): void {
     /* Generating trains based on source and destination chosen */
-    let result: Object[] = [];
     let fromCity: string = this.startPoint.value as string;
     let toCity: string = this.endPoint.value as string;
     let count: number = Math.floor((Math.random() * 3) + 2);
@@ -183,15 +186,17 @@ export class Wizard extends SampleBase<{}, {}> {
       details["Departure"] = fromCity;
       details["Arrival"] = toCity;
       details["Availability"] = Math.floor((Math.random() * 20) + 20);
-      result.push(details);
+      this.result.push(details);
     }
-    this.availTrainGrid.dataSource = result;
-    this.availTrainGrid.dataBind();
+
+  }
+
+  public availableTrainGridcreated(): void {
+    this.availTrainGrid.dataSource = this.result;
   }
 
   public finalizeDetails(args: RowSelectEventArgs): void {
     /* Get the passenger details and update table with name and other details for confirmation */
-    let reserved: Object[] = [];
     let passCount: any = 0;
     let name1: any = document.getElementById("pass_name1");
     let name2: any = document.getElementById("pass_name2");
@@ -206,7 +211,7 @@ export class Wizard extends SampleBase<{}, {}> {
         details["PassName"] = (i === 1) ? name1.value : (i === 2) ? name2.value : name3.value;
         details["Gender"] = (gender === "") ? "Male" : gender;
         details["Berth"] = berth;
-        if (details["PassName"] !== "") { reserved.push(details); }
+        if (details["PassName"] !== "") { this.reserved.push(details); }
         passCount++;
       }
       let calcFare: any = 0;
@@ -225,160 +230,189 @@ export class Wizard extends SampleBase<{}, {}> {
         displayAmt.innerText = "Total payable amount: $" + passCount * (150 + calcFare)
       }
     }
-    this.ticketDetailGrid.dataSource = reserved;
   }
 
+  public ticketDetailGridcreated(): void {
+    this.ticketDetailGrid.dataSource = this.reserved;
+  }
+
+  public content0() {
+    return (<div id="booking">
+    <div className="wizard-title">Plan your journey</div>
+    <div className="responsive-align">
+      <div className="row">
+        <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
+          <DropDownListComponent ref={dropdownlist => {this.startPoint = dropdownlist;}} width="100%" dataSource={this.cities} fields={this.autoCompleteFields} placeholder="From" floatLabelType="Auto"/>
+        </div>
+        <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
+          <DropDownListComponent ref={dropdownlist => {this.endPoint = dropdownlist;}} width="100%" dataSource={this.cities} fields={this.autoCompleteFields} placeholder="To" floatLabelType="Auto"/>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
+          <DatePickerComponent ref={calendar => (this.journeyDate = calendar)} width="100%" placeholder="Journey Date" floatLabelType="Auto" min={this.dateMin} max={this.dateMax} focus={this.focusIn}/>
+        </div>
+        <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
+          <DropDownListComponent ref={dropdownlist => (this.ticketType = dropdownlist)} dataSource={this.quotas} placeholder="Ticket type" floatLabelType="Auto" fields={this.fields}/>
+        </div>
+      </div>
+      <div className="btn-container">
+        <button id="searchNext" className="e-btn" onClick={this.btnClicked.bind(this)}>
+          Search Train
+        </button>
+      </div>
+      <span id="err1"/>
+    </div>
+  </div>);
+  }
+  public content1() {
+    return (<div id="selectTrain">
+    <div className="wizard-title">Select the train from the list </div>
+    <GridComponent ref={grid => (this.availTrainGrid = grid)} width="100%" rowSelected={this.trainSelected.bind(this)}  created={this.availableTrainGridcreated.bind(this)}>
+      <ColumnsDirective>
+        <ColumnDirective field="TrainNo" headerText="Train No" width={120} type="number"/>
+        <ColumnDirective field="Name" headerText="Name" width={140}/>
+        <ColumnDirective field="Departure" headerText="Departure" width={120}/>
+        <ColumnDirective field="Arrival" headerText="Arrival" width={140}/>
+        <ColumnDirective field="Availability" headerText="Availability" width={140} type="number"/>
+      </ColumnsDirective>
+    </GridComponent>
+    <br />
+    <div className="btn-container">
+      <button id="goToSearch" className="e-btn" onClick={this.btnClicked.bind(this)}>
+        Back
+      </button>
+      <button id="bookTickets" className="e-btn" onClick={this.btnClicked.bind(this)}>
+        Continue
+      </button>
+    </div>
+    <span id="err2"/>
+  </div>);
+  }
+  public content2() {
+    return (<div id="details">
+    <div className="details-page wizard-title">
+      Enter the passenger details
+    </div>
+    <div id="PassengersList">
+      <table id="passenger-table">
+        <colgroup>
+          <col />
+          <col />
+          <col />
+          <col />
+          <col />
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th className="name-header">Name</th>
+            <th className="age-header">Age</th>
+            <th className="gender-header">Gender</th>
+            <th className="type-header">Berth Preference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input className="e-input" id="pass_name1" type="text" placeholder="Passenger Name"/>
+            </td>
+            <td>
+              <NumericTextBoxComponent ref={numerictextbox => {this.pass_age1 = numerictextbox;}} showSpinButton={false} min={1} max={100} value={18} format="n0"/>
+            </td>
+            <td>
+              <DropDownListComponent ref={dropdownlist => {this.pass_gender1 = dropdownlist;}} dataSource={this.gender} text="Male" fields={this.fields}/>
+            </td>
+            <td>
+              <DropDownListComponent ref={dropdownlist => {this.pass_berth1 = dropdownlist;}} dataSource={this.berths} placeholder="Optional" fields={this.fields}/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input id="pass_name2" className="e-input" type="text" placeholder="Passenger Name"/>
+            </td>
+            <td>
+              <NumericTextBoxComponent showSpinButton={false} min={1} max={100} value={18} format="n0"/>
+            </td>
+            <td>
+              <DropDownListComponent ref={dropdownlist => {this.pass_gender2 = dropdownlist;}} dataSource={this.gender} text="Male" fields={this.fields}/>
+            </td>
+            <td>
+              <DropDownListComponent ref={dropdownlist => {this.pass_berth2 = dropdownlist;}} dataSource={this.berths} placeholder="Optional" fields={this.fields}/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input id="pass_name3" className="e-input" type="text" placeholder="Passenger Name"/>
+            </td>
+            <td>
+              <NumericTextBoxComponent showSpinButton={false} min={1} max={100} value={18} format="n0"/>
+            </td>
+            <td>
+              <DropDownListComponent ref={dropdownlist => {this.pass_gender3 = dropdownlist;}} dataSource={this.gender} text="Male" fields={this.fields}/>
+            </td>
+            <td>
+              <DropDownListComponent ref={dropdownlist => {this.pass_berth3 = dropdownlist;}} dataSource={this.berths} placeholder="Optional" fields={this.fields}/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <div className="btn-container">
+      <button id="goBackToBook" className="e-btn" onClick={this.btnClicked.bind(this)}>
+        Back
+      </button>
+      <button id="confirmTickets" className="e-btn" onClick={this.btnClicked.bind(this)}>
+        Continue
+      </button>
+    </div>
+    <span id="err3"/>
+  </div>);
+}
+  public content3() {
+    return (<div id="confirm">
+    <div className="tab-title1 wizard-title">
+      Confirm the details and proceed
+    </div>
+    <GridComponent ref={grid => (this.ticketDetailGrid = grid)} width="100%"  created={this.ticketDetailGridcreated.bind(this)}>
+      <ColumnsDirective>
+        <ColumnDirective field="TrainNo" headerText="Train No" width={120} type="number"/>
+        <ColumnDirective field="PassName" headerText="Name" width={140}/>
+        <ColumnDirective field="Gender" headerText="Gender" width={120}/>
+        <ColumnDirective field="Berth" headerText="Berth" width={140}/>
+      </ColumnsDirective>
+    </GridComponent>
+    <br />
+    <div id="amount"/>
+    <br />
+    <div className="btn-container">
+      <button id="goBackDetails" className="e-btn" onClick={this.btnClicked.bind(this)}>
+        Back
+      </button>
+      <button id="makePayment" className="e-btn" onClick={this.btnClicked.bind(this)}>
+        Pay
+      </button>
+    </div>
+  </div>);
+}
+
   render() {
-    const hideDiv = { display: "none" };
     return (
       <div>
         <div className="col-lg-12 control-section e-tab-section">
           <div className="e-sample-resize-container">
-            <div id="booking" style={hideDiv}>
-              <div className="wizard-title">Plan your journey</div>
-              <div className="responsive-align">
-                <div className='row'>
-                  <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-                    <DropDownListComponent ref={(dropdownlist) => { this.startPoint = dropdownlist }} width="100%" dataSource={this.cities} fields={this.autoCompleteFields} placeholder='From' floatLabelType="Auto"></DropDownListComponent>
-                  </div>
-                  <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-                    <DropDownListComponent ref={(dropdownlist) => { this.endPoint = dropdownlist }} width="100%" dataSource={this.cities} fields={this.autoCompleteFields} placeholder='To' floatLabelType="Auto"></DropDownListComponent>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-                    <DatePickerComponent ref={calendar => this.journeyDate = calendar} width='100%' placeholder='Journey Date' floatLabelType='Auto' min={this.dateMin} max={this.dateMax} value={this.dateValue}></DatePickerComponent>
-                  </div>
-                  <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-                    <DropDownListComponent ref={dropdownlist => this.ticketType = dropdownlist} dataSource={this.quotas} placeholder='Ticket type' floatLabelType='Auto' fields={this.fields}></DropDownListComponent>
-                  </div>
-                </div>
-                <div className="btn-container">
-                  <button id="searchNext" className="e-btn" onClick={this.btnClicked.bind(this)}>Search Train</button>
-                </div>
-                <span id="err1"></span>
-              </div>
-            </div >
-            <div id="selectTrain" style={hideDiv}>
-              <div className="wizard-title">Select the train from the list </div>
-              <GridComponent ref={grid => this.availTrainGrid = grid} width='100%' rowSelected={this.trainSelected.bind(this)}>
-                <ColumnsDirective>
-                  <ColumnDirective field="TrainNo" headerText="Train No" width={120} type="number"></ColumnDirective>
-                  <ColumnDirective field="Name" headerText="Name" width={140}></ColumnDirective>
-                  <ColumnDirective field="Departure" headerText="Departure" width={120}></ColumnDirective>
-                  <ColumnDirective field="Arrival" headerText="Arrival" width={140}></ColumnDirective>
-                  <ColumnDirective field="Availability" headerText="Availability" width={140} type="number"></ColumnDirective>
-                </ColumnsDirective>
-              </GridComponent>
-              <br />
-              <div className="btn-container">
-                <button id="goToSearch" className="e-btn" onClick={this.btnClicked.bind(this)}>Back</button>
-                <button id="bookTickets" className="e-btn" onClick={this.btnClicked.bind(this)}>Continue</button>
-              </div>
-              <span id="err2"></span>
-            </div>
-            <div id="details" style={hideDiv}>
-              <div className="details-page wizard-title">Enter the passenger details</div>
-              <div id="PassengersList">
-                <table id="passenger-table">
-                  <colgroup>
-                    <col />
-                    <col />
-                    <col />
-                    <col />
-                    <col />
-                    <col />
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th className="name-header">Name</th>
-                      <th className="age-header">Age</th>
-                      <th className="gender-header">Gender</th>
-                      <th className="type-header">Berth Preference</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <input className="e-input" id="pass_name1" type="text" placeholder="Passenger Name" />
-                      </td>
-                      <td>
-                        <NumericTextBoxComponent ref={(numerictextbox) => { this.pass_age1 = numerictextbox }} showSpinButton={false} min={1} max={100} value={18} format='n0'></NumericTextBoxComponent>
-                      </td>
-                      <td>
-                        <DropDownListComponent ref={(dropdownlist) => { this.pass_gender1 = dropdownlist }} dataSource={this.gender} text="Male" fields={this.fields}></DropDownListComponent>
-                      </td>
-                      <td>
-                        <DropDownListComponent ref={(dropdownlist) => { this.pass_berth1 = dropdownlist }} dataSource={this.berths} placeholder="Optional" fields={this.fields}></DropDownListComponent>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <input id="pass_name2" className="e-input" type="text" placeholder="Passenger Name" />
-                      </td>
-                      <td>
-                        <NumericTextBoxComponent showSpinButton={false} min={1} max={100} value={18} format="n0"></NumericTextBoxComponent>
-                      </td>
-                      <td>
-                        <DropDownListComponent ref={(dropdownlist) => { this.pass_gender2 = dropdownlist }} dataSource={this.gender} text="Male" fields={this.fields}></DropDownListComponent>
-                      </td>
-                      <td>
-                        <DropDownListComponent ref={(dropdownlist) => { this.pass_berth2 = dropdownlist }} dataSource={this.berths} placeholder="Optional" fields={this.fields}></DropDownListComponent>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <input id="pass_name3" className="e-input" type="text" placeholder="Passenger Name" />
-                      </td>
-                      <td>
-                        <NumericTextBoxComponent showSpinButton={false} min={1} max={100} value={18} format="n0"></NumericTextBoxComponent>
-                      </td>
-                      <td>
-                        <DropDownListComponent ref={(dropdownlist) => { this.pass_gender3 = dropdownlist }} dataSource={this.gender} text="Male" fields={this.fields}></DropDownListComponent>
-                      </td>
-                      <td>
-                        <DropDownListComponent ref={(dropdownlist) => { this.pass_berth3 = dropdownlist }} dataSource={this.berths} placeholder="Optional" fields={this.fields}></DropDownListComponent>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <br />
-              <div className="btn-container">
-                <button id="goBackToBook" className="e-btn" onClick={this.btnClicked.bind(this)}>Back</button>
-                <button id="confirmTickets" className="e-btn" onClick={this.btnClicked.bind(this)}>Continue</button>
-              </div>
-              <span id="err3"></span>
-            </div>
-            <div id="confirm" style={hideDiv}>
-              <div className="tab-title1 wizard-title">Confirm the details and proceed</div>
-              <GridComponent ref={grid => this.ticketDetailGrid = grid} width='100%'>
-                <ColumnsDirective>
-                  <ColumnDirective field="TrainNo" headerText="Train No" width={120} type="number"></ColumnDirective>
-                  <ColumnDirective field="PassName" headerText="Name" width={140}></ColumnDirective>
-                  <ColumnDirective field="Gender" headerText="Gender" width={120}></ColumnDirective>
-                  <ColumnDirective field="Berth" headerText="Berth" width={140}></ColumnDirective>
-                </ColumnsDirective>
-              </GridComponent>
-              <br />
-              <div id="amount"></div>
-              <br />
-              <div className="btn-container">
-                <button id="goBackDetails" className="e-btn" onClick={this.btnClicked.bind(this)}>Back</button>
-                <button id="makePayment" className="e-btn" onClick={this.btnClicked.bind(this)}>Pay</button>
-              </div>
-            </div>
-            <TabComponent id="tab-wizard" ref={tab => this.tab = tab} heightAdjustMode="None" height={390} selecting={this.tabSelected.bind(this)}>
+            <TabComponent id="tab-wizard" ref={tab => (this.tab = tab)} heightAdjustMode="None" height={390} selecting={this.tabSelecting.bind(this)}>
               <TabItemsDirective>
-                <TabItemDirective header={this.headerText[0]} content={"#booking"} />
-                <TabItemDirective header={this.headerText[1]} content={"#selectTrain"} disabled={true} />
-                <TabItemDirective header={this.headerText[2]} content={"#details"} disabled={true} />
-                <TabItemDirective header={this.headerText[3]} content={"#confirm"} disabled={true} />
+                <TabItemDirective header={this.headerText[0]} content={this.content0.bind(this)}/>
+                <TabItemDirective header={this.headerText[1]} content={this.content1.bind(this)} disabled={true}/>
+                <TabItemDirective header={this.headerText[2]} content={this.content2.bind(this)} disabled={true}/>
+                <TabItemDirective header={this.headerText[3]} content={this.content3.bind(this)} disabled={true}/>
               </TabItemsDirective>
             </TabComponent>
-            <DialogComponent ref={dialog => this.alertDlg = dialog} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content='Your payment successfully processed' target={this.dlgTarget} buttons={this.dlgButtons} created={this.dlgCreated}></DialogComponent>
-          </div >
-        </div >
+            <DialogComponent ref={dialog => (this.alertDlg = dialog)} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content="Your payment successfully processed" target={this.dlgTarget} buttons={this.dlgButtons} created={this.dlgCreated.bind(this)}/>
+          </div>
+        </div>
         <div id="action-description">
           <p>
             This sample demonstrates simple train reservation wizard that enable/disable Tab items based on sequential validation of each Tab content.

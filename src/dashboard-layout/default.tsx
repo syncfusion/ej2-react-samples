@@ -106,8 +106,8 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        The DashboardLayout component provides the capability to arrange, resize and
-                         reorder the panels within the dashboard layout.
+                    The DashboardLayout component provides the capability to arrange, <a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowresizing" target="_blank">resize</a> and 
+                        reorder the panels within the dashboard layout.
                     </p>
                 </div>
             </div>

@@ -126,3 +126,7 @@
 .bootstrap4 #template .name {
     padding: 8px 42px;
 }
+
+.e-bigger.bootstrap4 #template .name {
+    padding: 11px 42px;
+}

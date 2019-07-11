@@ -42,13 +42,11 @@ export class Performance extends SampleBase<{}, {}> {
         }
         this.dt1 = 0;
     };
-        // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
     };
-        // custom code end
     render() {
         return (
             <div className='control-pane'>
@@ -57,7 +55,7 @@ export class Performance extends SampleBase<{}, {}> {
                         <ChartComponent id='charts' ref={chart => this.chart = chart} loaded={this.onChartLoad.bind(this)}
                             primaryXAxis={{
                                 majorGridLines: { color: 'transparent' }
-                            }} load={this.load.bind(this)} legendSettings={{ visible: false }}>
+                            }} enableCanvas={true} load={this.load.bind(this)} legendSettings={{ visible: false }}>
                             <Inject services={[LineSeries, Legend]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective name='Series1' type='Line' animation={{ enable: false }}>
@@ -89,12 +87,12 @@ export class Performance extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample demonstrates the performance of EJ2 chart to render 100K points.
+                This sample demonstrates the performance of EJ2 chart to render 100K points in canvas mode.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        Chart includes several data rendering optimizations to achieve the best possible performance when plotting large volumes of data as well as handling high frequency real-time data.In this demo, chart is rendered with 100K points.
+                    Chart includes several data rendering optimizations to achieve the best possible performance when plotting large volumes of data as well as handling high frequency real-time data.In this demo, chart is rendered with 100K points in canvas mode.
                     </p>
                 </div>
             </div>

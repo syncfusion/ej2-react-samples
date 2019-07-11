@@ -144,7 +144,7 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
               dataSourceSettings={{
                 id: "Name",
                 parentId: "ReportingPerson",
-                dataManager: new DataManager(multiParentData as JSON[]),
+                dataSource: new DataManager(multiParentData as JSON[]),
                 doBinding: (
                   nodeModel: NodeModel,
                   data: DataInfo,

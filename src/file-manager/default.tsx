@@ -3,13 +3,16 @@ import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import {CheckBoxComponent, ChangeEventArgs} from '@syncfusion/ej2-react-buttons';
-import { FileManagerComponent, Inject, LargeIconsView, NavigationPane, DetailsView, Toolbar, ContextMenu, BreadCrumbBar } from '@syncfusion/ej2-react-filemanager';
+import { FileManagerComponent, Inject, NavigationPane, Toolbar } from '@syncfusion/ej2-react-filemanager';
 
 const defaultcss = `
 #all-property-table .property-panel-section .property-panel-content table#property tr {
     height: 50px;
 }`
 
+/**
+ * File Manager API sample
+ */
 export class Default extends SampleBase<{},{}> {
 
     private hostUrl: string = "https://ej2services.syncfusion.com/production/web-services/";
@@ -33,7 +36,7 @@ export class Default extends SampleBase<{},{}> {
                     }}
                     view = {"LargeIcons"}
                     navigationPaneSettings={{visible: false}}>
-                <Inject services={[ NavigationPane, DetailsView, LargeIconsView, ContextMenu,BreadCrumbBar, Toolbar]} />
+                <Inject services={[ NavigationPane, Toolbar]} />
                     </FileManagerComponent>
                 </div>
                 <div id="all-property-table" className='col-lg-4 property-section'>
@@ -60,6 +63,11 @@ export class Default extends SampleBase<{},{}> {
                 <div id="description">
                     <p>The File Manager component is used to explore a file system through a web application, similar to the windows explorer for windows.
                         It supports all the basic file operations such as create, rename, delete and so on.</p>
+
+                    <p>
+                        <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install 
+                        <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.
+                     </p>
                 </div>
             </div>
         );

@@ -85,7 +85,8 @@ export class UseCase extends SampleBase<{}, {}> {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
         rightPane.addEventListener( 'scroll', ()=> {
-        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
+        let element : HTMLElement =document.getElementById('editorMode');
+        let mode: string = element && (element as HTMLSelectElement).value;
         if (mode === 'Inline') {
         return;
         }

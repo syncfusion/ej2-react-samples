@@ -76,7 +76,8 @@ export class Dock extends SampleBase<{}, {}> {
 
     // open new Tab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/docking-sidebar/index.html');
+        let URL = location.href.replace(location.search,'');
+        document.getElementById('newTab').setAttribute('href', URL.split('#')[0] + 'sidebar/docking-sidebar/index.html');
     }
     positionChange(args: any) {
         //RadioButton change event handler

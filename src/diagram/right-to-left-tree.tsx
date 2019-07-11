@@ -37,7 +37,7 @@ export class RTLTree extends SampleBase<{}, {}> {
               dataSourceSettings={{
                 id: "Name",
                 parentId: "Category",
-                dataManager: new DataManager(artificialIntelligence),
+                dataSource: new DataManager(artificialIntelligence),
                 doBinding: (
                   nodeModel: NodeModel,
                   data: DataInfo,

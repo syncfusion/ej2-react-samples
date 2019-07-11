@@ -75,7 +75,7 @@ export class SplineArea extends SampleBase<{}, {}> {
                             <SeriesDirective dataSource={data2} xName='x' yName='y' name='France'
                                 opacity={0.5} type='SplineArea' width={2}>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='Germany'
+                            <SeriesDirective dataSource={data3} xName='x' yName='y' name='Germany'
                                 opacity={0.5} type='SplineArea' width={2}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>

@@ -1,6 +1,8 @@
-#Unscheduled .e-add-icon:before {
-  content: "\e506"
+#Unscheduled .e-add-icon::before {
+  content: '\e506';
+  font-family: 'e-icons';
 }
-.bootstrap4 #Unscheduled .e-add-icon:before {
-  content: "\e783"
+.bootstrap4 #Unscheduled .e-add-icon::before {
+  content: '\e783';
+  font-family: 'e-icons';
 }

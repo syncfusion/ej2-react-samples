@@ -58,7 +58,8 @@ export class SidebarWithList extends SampleBase<{}, {}> {
 
     //open newTab
     newTabClick(): void {
-        document.getElementById('newTab').setAttribute('href', location.href.split('#')[0] + 'sidebar/sidebar-list/index.html');
+        let URL = location.href.replace(location.search,'');
+        document.getElementById('newTab').setAttribute('href', URL.split('#')[0] + 'sidebar/sidebar-list/index.html');
     }
 
     //close the sidebar when list item selected

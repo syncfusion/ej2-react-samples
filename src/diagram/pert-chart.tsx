@@ -86,7 +86,7 @@ export class PertChart extends SampleBase<{}, {}> {
               dataSourceSettings={{
                 id: "id",
                 parentId: "Category",
-                dataManager: new DataManager(pertChartData as JSON[]), //binds the external data with node
+                dataSource: new DataManager(pertChartData as JSON[]), //binds the external data with node
                 doBinding: (
                   nodeModel: NodeModel,
                   data: object,

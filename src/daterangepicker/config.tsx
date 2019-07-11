@@ -40,7 +40,7 @@ export const DateRangePickerSampleOrder: Object = [
         ]
     },
     {
-        'path': 'daterangepicker/month-range-picker', 'component': 'MonthRangePicker', 'name': 'Month Range Picker', 'description': 'The React DateRangePicker component can act as a month and year picker. It helps you to select a month or year quickly with all months related properties.', 'order': '01', 'category': 'DateRangePicker', 'type': 'new', 'api': '{"DateRangePicker": [ "start", "depth", "change" ]}',
+        'path': 'daterangepicker/month-range-picker', 'component': 'MonthRangePicker', 'name': 'Month Range Picker', 'description': 'The React DateRangePicker component can act as a month and year picker. It helps you to select a month or year quickly with all months related properties.', 'order': '01', 'category': 'DateRangePicker', 'api': '{"DateRangePicker": [ "start", "depth", "change" ]}',
         'sourceFiles': [
             { 'displayName': 'month-range-picker.tsx', 'path': 'src/daterangepicker/month-range-picker.tsx' },
             { 'displayName': 'month-range-picker.jsx', 'path': 'src/daterangepicker/month-range-picker.jsx' },

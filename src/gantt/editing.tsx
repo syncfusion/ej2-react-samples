@@ -39,7 +39,7 @@ export class Editing extends SampleBase<{}, {}> {
   };
   public labelSettings: any = {
     leftLabel: 'TaskName',
-    rightLabel: '${if(taskData.subtasks)}${taskData.Duration} ${else if(resources)}${resources}${/if}'
+    rightLabel: 'resources'
   };
   public eventMarkerDay1: Date = new Date('4/17/2019');
   public eventMarkerDay2: Date = new Date('5/3/2019');

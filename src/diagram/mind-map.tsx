@@ -109,7 +109,7 @@ export class MindMap extends SampleBase<{}, {}> {
               dataSourceSettings={{
                 id: "id",
                 parentId: "parentId",
-                dataManager: items,
+                dataSource: items,
                 root: String(1)
               }}
               //sets node default value

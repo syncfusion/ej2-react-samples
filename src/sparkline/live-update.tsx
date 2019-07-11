@@ -49,7 +49,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
             if (this.sparkInstance == null)
                 this.sparkInstance = args.sparkline as SparklineComponent;
             if (this.temp1 == null)
-                this.temp1 = this.sparkInstance.dataSource.length - 1;
+                this.temp1 = (this.sparkInstance.dataSource as Object[]).length - 1;
             if (this.timer1 != null)
                 clearInterval(this.timer1)
             this.timer1 = setInterval(this.update(), 500);
@@ -61,7 +61,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
             if (this.sparkInstance1 == null)
                 this.sparkInstance1 = args.sparkline as SparklineComponent;
             if (this.temp3 == null)
-                this.temp3 = this.sparkInstance1.dataSource.length - 1;
+                this.temp3 = (this.sparkInstance1.dataSource as Object[]).length - 1;
             if (this.timer2 != null)
                 clearInterval(this.timer2)
             this.timer2 = setInterval(this.update2(), 500);
@@ -73,7 +73,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
             if (this.sparkInstance2 == null)
                 this.sparkInstance2 = args.sparkline as SparklineComponent;
             if (this.temp2 == null)
-                this.temp2 = this.sparkInstance2.dataSource.length - 1;
+                this.temp2 = (this.sparkInstance2.dataSource as Object[]).length - 1;
             if (this.timer3 != null)
                 clearInterval(this.timer3)
             this.timer3 = setInterval(this.update1(), 500);
@@ -85,7 +85,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
             if (this.sparkInstance3 == null)
                 this.sparkInstance3 = args.sparkline as SparklineComponent;
             if (this.temp4 == null)
-                this.temp4 = this.sparkInstance3.dataSource.length - 1;
+                this.temp4 = (this.sparkInstance3.dataSource as Object[]).length - 1;
             if (this.timer4 != null)
                 clearInterval(this.timer4)
             this.timer4 = setInterval(this.update4(), 500);
@@ -95,8 +95,8 @@ export class LiveUpdate extends SampleBase<{}, {}> {
     public update(): void {
         if (this.sparkInstance.element.className.indexOf('e-sparkline') > -1) {
             let value: number = ((Math.random() * 100) + 5) % 50;
-            this.sparkInstance.dataSource.push({ x: ++this.temp1, yval: value });
-            this.sparkInstance.dataSource.shift();
+            (this.sparkInstance.dataSource as Object[]).push({ x: ++this.temp1, yval: value });
+            (this.sparkInstance.dataSource as Object[]).shift();
             this.sparkInstance.refresh();
             let cpu: Element = document.getElementById('cpu');
             cpu.innerHTML = ((value / 150) * 100).toFixed(0) + '% ' + ((value * 3) / 100).toFixed(2) + 'GHz';
@@ -106,8 +106,8 @@ export class LiveUpdate extends SampleBase<{}, {}> {
     public update2(): void {
         if (this.sparkInstance1.element.className.indexOf('e-sparkline') > -1) {
             let value: number = ((Math.random() * 100) + 5) % 80;
-            this.sparkInstance1.dataSource.push({ x: ++this.temp3, yval: value });
-            this.sparkInstance1.dataSource.shift();
+            (this.sparkInstance1.dataSource as Object[]).push({ x: ++this.temp3, yval: value });
+            (this.sparkInstance1.dataSource as Object[]).shift();
             this.sparkInstance1.refresh();
             let disk: Element = document.getElementById('disk');
             disk.innerHTML = value.toFixed(0) + '%';
@@ -122,8 +122,8 @@ export class LiveUpdate extends SampleBase<{}, {}> {
             } else {
                 value = 6 - (value / 10);
             }
-            this.sparkInstance2.dataSource.push({ x: ++this.temp2, yval: value });
-            this.sparkInstance2.dataSource.shift();
+            (this.sparkInstance2.dataSource as Object[]).push({ x: ++this.temp2, yval: value });
+            (this.sparkInstance2.dataSource as Object[]).shift();
             this.sparkInstance2.refresh();
             let memory: Element = document.getElementById('memory');
             let gb: string = parseFloat(value.toString().replace('0', '')).toFixed(1);
@@ -134,8 +134,8 @@ export class LiveUpdate extends SampleBase<{}, {}> {
     public update4(): void {
         if (this.sparkInstance3.element.className.indexOf('e-sparkline') > -1) {
             let value: number = ((Math.random() * 100) + 5) % 80;
-            this.sparkInstance3.dataSource.push({ x: ++this.temp3, yval: value });
-            this.sparkInstance3.dataSource.shift();
+            (this.sparkInstance3.dataSource as Object[]).push({ x: ++this.temp3, yval: value });
+            (this.sparkInstance3.dataSource as Object[]).shift();
             this.sparkInstance3.refresh();
             let net: Element = document.getElementById('net');
             net.innerHTML = 'R: ' + value.toFixed(0) + 'Kbps';

@@ -15,7 +15,7 @@ export const TreeViewSampleOrder:Object = [
             { 'displayName': 'check-box.tsx', 'path': 'src/treeview/check-box.tsx' },
             { 'displayName': 'check-box.jsx', 'path': 'src/treeview/check-box.jsx' },
             { 'displayName': 'checkbox-data.json', 'path': 'src/treeview/dataSource/checkbox-data.json' }
-        ], 'type': 'update' },
+        ]},
     { 'path': 'treeview/node-editing', 'component':'Editing', 'name': 'Node Editing', 'order': '01', 'category': 'TreeView',  'description': 'This demo showcases the node editing functionality of tree view, you can edit any node text by double click on it or pressing F2.', 'api':'{"TreeViewComponent":["fields","allowEditing"] }', 'sourceFiles': [
             { 'displayName': 'node-editing.tsx', 'path': 'src/treeview/node-editing.tsx' },
             { 'displayName': 'node-editing.jsx', 'path': 'src/treeview/node-editing.jsx' },

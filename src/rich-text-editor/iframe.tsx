@@ -69,6 +69,8 @@ export class IFrame extends SampleBase<{}, {}> {
     items: this.items
   };
   public handleFullScreen(e: any): void {
+    let sbCntEle: HTMLElement = document.querySelector('.sb-content.e-view');
+    let sbHdrEle: HTMLElement = document.querySelector('.sb-header.e-view');
     let leftBar: HTMLElement;
     let transformElement: HTMLElement;
     if (Browser.isDevice) {
@@ -79,11 +81,17 @@ export class IFrame extends SampleBase<{}, {}> {
       transformElement = document.querySelector('#right-pane');
     }
     if (e.targetItem === 'Maximize') {
+      if (Browser.isDevice && Browser.isIos) {
+        addClass([sbCntEle, sbHdrEle], ['hide-header']);
+      }
       addClass([leftBar], ['e-close']);
       removeClass([leftBar], ['e-open']);
       if (!Browser.isDevice) { transformElement.style.marginLeft = '0px'; }
         transformElement.style.transform = 'inherit';
     } else if (e.targetItem === 'Minimize') {
+      if (Browser.isDevice && Browser.isIos) {
+        removeClass([sbCntEle, sbHdrEle], ['hide-header']);
+      }
         removeClass([leftBar], ['e-close']);
         if (!Browser.isDevice) {
           addClass([leftBar], ['e-open']);

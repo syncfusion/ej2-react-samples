@@ -16,29 +16,48 @@ export class CustomContextMenu extends SampleBase<{}, {}> {
   public editSettings: EditSettingsModel  = { allowEditing: true, allowAdding: true, allowDeleting: true };
   public contextMenuItems: ContextMenuItemModel[] = [
     {text: 'Collapse the Row', target: '.e-content', id: 'collapserow'},
-    {text: 'Expand the Row', target: '.e-content', id: 'expandrow'}
+    {text: 'Expand the Row', target: '.e-content', id: 'expandrow'},
+    { text: 'Collapse All', target: '.e-headercontent', id: 'collapseall' },
+    { text: 'Expand All', target: '.e-headercontent', id: 'expandall' }
   ];
 
   private contextMenuOpen(args: BeforeOpenCloseEventArgs): void {
     let elem: Element = args.event.target as Element;
-    let uid: string = elem.closest('.e-row').getAttribute('data-uid');
-    if (isNullOrUndefined(getValue('hasChildRecords', this.treegridObj.grid.getRowObjectFromUID(uid).data))) {
+    let row: Element = elem.closest('.e-row');
+    let uid: string = row && row.getAttribute('data-uid');
+    let items: NodeListOf<Element> = document.querySelectorAll('.e-menu-item');
+    for (let i: number = 0; i < items.length; i++) {
+      items.item(i).setAttribute('style','display: none;');
+    }
+    if (elem.closest('.e-row')) {
+      if ( isNullOrUndefined(uid) ||isNullOrUndefined(getValue('hasChildRecords', this.treegridObj.grid.getRowObjectFromUID(uid).data))) {
         args.cancel = true;
+      } else {
+        let flag: boolean = getValue('expanded', this.treegridObj.grid.getRowObjectFromUID(uid).data);
+        let val: string = flag ? 'none' : 'block';
+        document.querySelectorAll('li#expandrow')[0].setAttribute('style', 'display: ' + val + ';');
+        val = !flag ? 'none' : 'block';
+        document.querySelectorAll('li#collapserow')[0].setAttribute('style', 'display: ' + val + ';');
+      }
     } else {
-      let flag: boolean = getValue('expanded', this.treegridObj.grid.getRowObjectFromUID(uid).data);
-      let val: string = flag ? 'none' : 'block';
-      document.querySelectorAll('li#expandrow')[0].setAttribute('style', 'display: ' + val + ';');
-      val = !flag ? 'none' : 'block';
-      document.querySelectorAll('li#collapserow')[0].setAttribute('style', 'display: ' + val + ';');
+      let len = this.treegridObj.element.querySelectorAll('.e-treegridexpand').length;
+      if (len !== 0) {
+         document.querySelectorAll('li#collapseall')[0].setAttribute('style', 'display: block;');
+      } else {
+        document.querySelectorAll('li#expandall')[0].setAttribute('style', 'display: block;');
+      }
     }
   }
 
   private contextMenuClick(args: MenuEventArgs): void {
-    this.treegridObj.getColumnByField('taskID');
     if (args.item.id === 'collapserow') {
       this.treegridObj.collapseRow(this.treegridObj.getSelectedRows()[0] as HTMLTableRowElement, this.treegridObj.getSelectedRecords()[0]);
-    } else {
+    } else if (args.item.id === 'expandrow') {
       this.treegridObj.expandRow(this.treegridObj.getSelectedRows()[0] as HTMLTableRowElement, this.treegridObj.getSelectedRecords()[0]);
+    } else if (args.item.id === 'collapseall') {
+      this.treegridObj.collapseAll();
+    } else if (args.item.id === 'expandall') {
+      this.treegridObj.expandAll();
     }
   }
 
@@ -69,7 +88,7 @@ export class CustomContextMenu extends SampleBase<{}, {}> {
 </div>
 
 <div id="action-description">
-    <p>This sample demonstrates the usage of custom context menu in TreeGrid component. Right click anywhere on the
+    <p>This sample demonstrates the usage of custom context menu in TreeGrid component. Right click anywhere on a parent row in the
         TreeGrid to view custom context menu.
     </p>
 </div>

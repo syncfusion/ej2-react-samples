@@ -57,7 +57,7 @@ export class ImageSample extends SampleBase<{}, {}> {
                     <div className="content-wrapper">
                             <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
                                 toolbarClick={this.onToolbarClick.bind(this)} valueTemplate={this.template} quickToolbarSettings={this.quickToolbarSettings}>
-                                <Inject services={[HtmlEditor, Toolbar, Image, QuickToolbar]} />
+                                <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
                             </RichTextEditorComponent>
                     </div>
                 </div>

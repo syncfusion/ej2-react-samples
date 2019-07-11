@@ -41,13 +41,6 @@ export class DetailsView extends SampleBase<{}, {}> {
             let data: { [key: string]: string | object }[] = this.commonData.slice();
             this.dataSource[ds[1]] = data;
         });
-
-        this.liElement = document.getElementById('ui-list');
-
-        if (Browser.isDevice) {
-            this.liElement.classList.add('ui-mobile');
-        }
-
     }
 
     private template: string = '<div class="e-list-wrapper e-list-avatar">' +
@@ -84,6 +77,12 @@ export class DetailsView extends SampleBase<{}, {}> {
         (this.splitterInstance as any).element.querySelectorAll('.e-pane')[1].setAttribute('id','content');
         let cont: HTMLElement = this.splitterInstance.element.querySelector("#ui-list");
         cont.appendChild(this.listViewObj.element);
+
+        this.liElement = document.getElementById('ui-list');
+
+        if (Browser.isDevice) {
+            this.liElement.classList.add('ui-mobile');
+        }
     }
     public render(): JSX.Element {
         return (

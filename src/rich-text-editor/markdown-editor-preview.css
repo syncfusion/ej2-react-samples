@@ -31,7 +31,6 @@
     width: 50%;
     overflow: auto;
     height: inherit;
-    padding: 8px;
     height: 100%;
 }
 
@@ -50,4 +49,12 @@
 #rtePreview .content-wrapper {
     width: auto;
     margin: 0;
+}
+
+.sb-content.e-view.hide-header {
+    top: 0 !important;
+}
+
+.sb-header.e-view.hide-header {
+    display: none;
 }

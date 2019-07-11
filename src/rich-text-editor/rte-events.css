@@ -53,3 +53,11 @@
     padding-top: 40px;
     padding-bottom: 20px;
 }
+
+.sb-content.e-view.hide-header {
+    top: 0 !important;
+}
+
+.sb-header.e-view.hide-header {
+    display: none;
+}

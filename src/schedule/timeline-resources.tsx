@@ -47,8 +47,7 @@ export class TimelineResource extends SampleBase<{}, {}> {
             } else if (args.requestType === 'eventChange') {
                 data = args.data as { [key: string]: Object };
             }
-            let groupIndex: number = this.scheduleObj.eventBase.getGroupIndexFromEvent(data);
-            if (!this.scheduleObj.isSlotAvailable(data.StartTime as Date, data.EndTime as Date, groupIndex as number)) {
+            if (!this.scheduleObj.isSlotAvailable(data)) {
                 args.cancel = true;
             }
         }
@@ -79,7 +78,7 @@ export class TimelineResource extends SampleBase<{}, {}> {
                 args.type === 'DeleteAlert') ? data.element[0] : args.target;
             if (!isNullOrUndefined(target) && target.classList.contains('e-work-cells')) {
                 if ((target.classList.contains('e-read-only-cells')) ||
-                    (!this.scheduleObj.isSlotAvailable(data.startTime as Date, data.endTime as Date, data.groupIndex as number))) {
+                    (!this.scheduleObj.isSlotAvailable(data))) {
                     args.cancel = true;
                 }
             } else if (!isNullOrUndefined(target) && target.classList.contains('e-appointment') &&

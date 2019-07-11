@@ -40,7 +40,7 @@ export const DatePickerSampleOrder: Object = [
         ]
     },
     {
-        'path': 'datepicker/month-picker', 'component': 'MonthPicker', 'name': 'Month Picker', 'description': 'The React DatePicker component can act as a month and year picker. It helps you to select a month or year quickly with all months related properties.', 'order': '01', 'category': 'DatePicker', 'type': 'new', 'api': '{"DatePicker": [ "start", "depth", "change" ]}',
+        'path': 'datepicker/month-picker', 'component': 'MonthPicker', 'name': 'Month Picker', 'description': 'The React DatePicker component can act as a month and year picker. It helps you to select a month or year quickly with all months related properties.', 'order': '01', 'category': 'DatePicker', 'api': '{"DatePicker": [ "start", "depth", "change" ]}',
         'sourceFiles': [
             { 'displayName': 'month-picker.tsx', 'path': 'src/datepicker/month-picker.tsx' },
             { 'displayName': 'month-picker.jsx', 'path': 'src/datepicker/month-picker.jsx' },

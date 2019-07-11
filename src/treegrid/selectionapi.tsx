@@ -78,7 +78,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div id='numericbox' style={{ minWidth: '130px' }}>
                         <NumericTextBoxComponent id='start' format='##' min={0} max={11} ref={numeric=> this.numericObj = numeric}
-                        width='70%'>
+                        width='110px'>
                         </NumericTextBoxComponent>
                       </div>
                     </td>
@@ -90,7 +90,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div id='numericbox' style={{ minWidth: '130px' }}>
                         <NumericTextBoxComponent id='to' format='##' min={0} max={11} ref={numeric=> this.numericObj2 = numeric}
-                        width='70%'>
+                        width='110px'>
                         </NumericTextBoxComponent>
                       </div>
                     </td>

@@ -230,7 +230,7 @@ export class OrganizationModel extends SampleBase<{}, {}> {
               dataSourceSettings={{
                 id: "Id",
                 parentId: "Manager",
-                dataManager: new DataManager(localBindData as JSON[]),
+                dataSource: new DataManager(localBindData as JSON[]),
                 doBinding: (
                   nodeModel: NodeModel,
                   data: object,

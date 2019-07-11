@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
-  PopupOpenEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
+  EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './editor-template.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -18,12 +18,6 @@ import * as dataSource from './datasource.json';
 export class EditorTemplate extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
   private data: Object[] = extend([], (dataSource as any).doctorsEventData, null, true) as Object[];
-  private onPopupOpen(args: PopupOpenEventArgs): void {
-    if (args.type === 'Editor') {
-      let statusElement: HTMLInputElement = args.element.querySelector('#EventType') as HTMLInputElement;
-      statusElement.setAttribute('name', 'EventType');
-    }
-  }
   private onEventRendered(args: EventRenderedArgs): void {
     switch (args.data.EventType) {
       case 'Requested':
@@ -38,34 +32,35 @@ export class EditorTemplate extends SampleBase<{}, {}> {
     }
   }
   private onActionBegin(args: { [key: string]: Object }): void {
-    if (args.requestType === 'eventCreate') {
-      let data: { [key: string]: Object } = args.data as { [key: string]: Object };
-      if (!this.scheduleObj.isSlotAvailable(data.StartTime as Date, data.EndTime as Date)) {
+    if (args.requestType === 'eventCreate' || args.requestType === 'eventChange') {
+      let data: any = args.data instanceof Array ? args.data[0] : args.data;
+      if (!(this.scheduleObj as ScheduleComponent).isSlotAvailable(data.StartTime as Date, data.EndTime as Date)) {
         args.cancel = true;
       }
     }
   }
-  private editorTemplate(props): JSX.Element {
-    return (<table className="custom-event-editor" style={{ width: '100%', cellpadding: '5' }}><tbody>
+  private editorTemplate(props: any): JSX.Element {
+    return ((props !== undefined) ? <table className="custom-event-editor" style={{ width: '100%', cellpadding: '5' }}><tbody>
       <tr><td className="e-textlabel">Summary</td><td style={{ colspan: '4' }}>
         <input id="Summary" className="e-field e-input" type="text" name="Subject" style={{ width: '100%' }} />
       </td></tr>
       <tr><td className="e-textlabel">Status</td><td style={{ colspan: '4' }}>
-        <DropDownListComponent id="EventType" placeholder='Choose status' className="e-field" style={{ width: '100%' }}
+        <DropDownListComponent id="EventType" placeholder='Choose status' data-name='EventType' className="e-field" style={{ width: '100%' }}
           dataSource={['New', 'Requested', 'Confirmed']}>
         </DropDownListComponent>
       </td></tr>
       <tr><td className="e-textlabel">From</td><td style={{ colspan: '4' }}>
-        <DateTimePickerComponent id="StartTime" className="e-field"></DateTimePickerComponent>
+        <DateTimePickerComponent id="StartTime" format='dd/MM/yy hh:mm a' data-name="StartTime" value={new Date(props.startTime || props.StartTime)}
+          className="e-field"></DateTimePickerComponent>
       </td></tr>
       <tr><td className="e-textlabel">To</td><td style={{ colspan: '4' }}>
-        <DateTimePickerComponent id="EndTime" className="e-field"></DateTimePickerComponent>
+        <DateTimePickerComponent id="EndTime" format='dd/MM/yy hh:mm a' data-name="EndTime" value={new Date(props.endTime || props.EndTime)}
+          className="e-field"></DateTimePickerComponent>
       </td></tr>
       <tr><td className="e-textlabel">Reason</td><td style={{ colspan: '4' }}>
         <textarea id="Description" className="e-field e-input" name="Description" rows={3} cols={50}
           style={{ width: '100%', height: '60px !important', resize: 'vertical' }}></textarea>
-      </td></tr></tbody></table >
-    );
+      </td></tr></tbody></table > : <div></div>);
   }
   render() {
     return (
@@ -73,10 +68,9 @@ export class EditorTemplate extends SampleBase<{}, {}> {
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 1, 15)}
-              ref={schedule => this.scheduleObj = schedule}
-              eventSettings={{ dataSource: this.data }} editorTemplate={this.editorTemplate.bind(this)}
-              showQuickInfo={false} popupOpen={this.onPopupOpen.bind(this)} eventRendered={this.onEventRendered.bind(this)}
-              actionBegin={this.onActionBegin.bind(this)}>
+              ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.data }}
+              editorTemplate={this.editorTemplate.bind(this)} actionBegin={this.onActionBegin.bind(this)}
+              showQuickInfo={false} eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
                 <ViewDirective option='Week' />

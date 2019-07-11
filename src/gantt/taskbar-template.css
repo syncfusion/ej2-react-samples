@@ -13,18 +13,6 @@
     border: 1px solid #3f51b5;
 }
 
-.oscar {
-    content:url("src/gantt/images/oscar.svg");
-}
-
-.face-mask {
-    content:url("src/gantt/images/face-mask.svg");
-}
-
-.moments {
-    content:url("src/gantt/images/moments.svg");
-}
-
 .moments, .face-mask, .oscar{
     position:relative;
     top:14px;

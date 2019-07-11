@@ -44,13 +44,13 @@ export class Data extends SampleBase<{}, {}> {
                     <div className='col-lg-9'>
                         <div className='col-lg-6'>
                             <div id="local">
-                                <h3> Local Data</h3>
+                                <h4> Local Data</h4>
                                 <AutoCompleteComponent id="country" dataSource={this.countries} ref={(autocomplete) => { this.localDataObj = autocomplete }} fields={this.localFields} popupHeight="250px" placeholder="e.g. Australia" autofill={true} filterType='StartsWith' />
                             </div>
                         </div>
                         <div className='col-lg-6'>
                             <div id="remote">
-                                <h3>Remote Data</h3>
+                                <h4>Remote Data</h4>
                                 <AutoCompleteComponent id="products" dataSource={this.productData} query={this.query} ref={(autocomplete) => { this.remoteDataObj = autocomplete }} sortOrder="Ascending" fields={this.remoteFields} autofill={true} placeholder="e.g. Andrew Fuller" suggestionCount={5} filterType='StartsWith' />
                             </div>
                         </div>

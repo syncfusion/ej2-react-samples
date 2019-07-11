@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     StockChartComponent, StockChartSeriesCollectionDirective, StockChartSeriesDirective, Inject,ITooltipRenderEventArgs,Crosshair,IAxisLabelRenderEventArgs,
     DateTime, Tooltip, RangeTooltip, ColumnSeries, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
-    StockChartRowsDirective, StockChartRowDirective, StockChartAxesDirective, StockChartAxisDirective
+    StockChartRowsDirective, StockChartRowDirective, StockChartAxesDirective, StockChartAxisDirective, IStockChartEventArgs, ChartTheme
 } from '@syncfusion/ej2-react-charts';
 import {
     EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator,
@@ -54,6 +54,7 @@ export class MultiPane extends SampleBase<{}, {}> {
                         tooltipRender={tooltipRender}
                         axisLabelRender={this.axisLabelRender.bind(this)}
                         crosshair={{enable: true }}
+                        load={this.load.bind(this)}
                         title= 'AAPL Historical'
                         titleStyle={{
                             fontWeight: '500', color: '#424242 '
@@ -107,5 +108,11 @@ export class MultiPane extends SampleBase<{}, {}> {
         if (args.axis.name === "primaryYAxis") {
             args.text = text / 100000000 + 'B';
         }
+    }
+    public load(args: IStockChartEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+         replace(/-dark/i, "Dark") as ChartTheme;
     }
 }
