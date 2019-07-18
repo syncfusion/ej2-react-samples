@@ -67,7 +67,9 @@ npm run build
         <td>
             <a href="src/pivot-view">Pivot Table (Preview)</a>
         </td>
-        <td></td>
+        <td>
+            <a href="src/treegrid">Tree Grid</a>
+        </td>
     </tr>
     <tr>
         <td colspan="3" rowspan="1">
