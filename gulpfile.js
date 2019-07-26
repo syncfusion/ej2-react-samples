@@ -75,6 +75,13 @@ gulp.task('create-locale', function () {
 }
 })
 
+gulp.task('serve', function () {
+    shelljs.exec('node --max-old-space-size=8192 node_modules/gulp/bin/gulp serve-max', { silent: false });
+});
+
+
+
+
 /**
  * Compile styles
  */
@@ -109,7 +116,7 @@ gulp.task('generate-router', function (done) {
         var routes = ''
         var path = file.slice(0, file.lastIndexOf('/'));
         var compName = path.slice(path.lastIndexOf('/') + 1);
-        var componentName = compName.replace('-', '');
+        var componentName = compName.replace(/-/g, '');
         var curfile = JSON.stringify(fs.readFileSync(file, 'utf8'));
         var trimmedFile = curfile.replace(/\\n|\\r/g, '');
         routeconfig = trimmedFile.match(configRegex)[1];
@@ -346,7 +353,7 @@ function getStringWithOutDescription(code, descRegex) {
         }
         return lines.join('\n');
     }
-gulp.task('serve', ['build'], function (done) {
+gulp.task('serve-max', ['build'], function (done) {
     var browserSync = require('browser-sync');
     var bs = browserSync.create('Essential JS 2 react');
     var options = {
