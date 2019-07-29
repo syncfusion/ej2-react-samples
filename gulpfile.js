@@ -180,7 +180,7 @@ gulp.task('generate-router', function (done) {
     done();
 });
 gulp.task('build', function (done) {
-    runSequence('create-locale','generate-router','styles','scripts','bundle', 'plnkr-json', done);
+    runSequence('create-locale','generate-router','styles','scripts','bundle','plnkr-json','cssfile', done);
 });
 
 gulp.task('bundle', function () {
@@ -363,4 +363,8 @@ gulp.task('serve-max', ['build'], function (done) {
         ui: false
     };
     bs.init(options, done);
+});
+gulp.task('cssfile', function () {
+    gulp.src('./node_modules/@syncfusion/ej2/*.css')
+    .pipe(gulp.dest('./styles/'));
 });
