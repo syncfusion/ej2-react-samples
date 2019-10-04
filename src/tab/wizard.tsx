@@ -86,12 +86,12 @@ export class Wizard extends SampleBase<{}, {}> {
   }];
 
   public dlgCreated(): void {
-    let proxy: any = this;
+    let proxy: any = this.alertDlg;
     proxy.hide();
   }
 
   public focusIn() {
-    const proxy: any = this;
+    const proxy: any = this.journeyDate;
     proxy.show();
 }
 
@@ -250,7 +250,7 @@ export class Wizard extends SampleBase<{}, {}> {
       </div>
       <div className="row">
         <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-          <DatePickerComponent ref={calendar => (this.journeyDate = calendar)} width="100%" placeholder="Journey Date" floatLabelType="Auto" min={this.dateMin} max={this.dateMax} focus={this.focusIn}/>
+          <DatePickerComponent ref={calendar => (this.journeyDate = calendar)} width="100%" placeholder="Journey Date" floatLabelType="Auto" min={this.dateMin} max={this.dateMax} focus={this.focusIn.bind(this)}/>
         </div>
         <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
           <DropDownListComponent ref={dropdownlist => (this.ticketType = dropdownlist)} dataSource={this.quotas} placeholder="Ticket type" floatLabelType="Auto" fields={this.fields}/>

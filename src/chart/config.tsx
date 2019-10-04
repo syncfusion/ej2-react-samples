@@ -49,12 +49,12 @@ export const ChartSampleOrder:Object = [
     { 'path': 'chart/sma', 'component':'SMA', 'name': 'SMA', 'order': '07', 'category': 'Technical Indicators' },
     { 'path': 'chart/stochastic', 'component':'Stochastic', 'name': 'Stochastic', 'order': '07', 'category': 'Technical Indicators' },
     { 'path': 'chart/tma', 'component':'TMA', 'name': 'TMA', 'order': '07', 'category': 'Technical Indicators' },
-    { 'path': 'chart/performance', 'component':'Performance', 'name': 'Benchmark', 'order': '08', 'category': 'Performance', 'type': 'update' },
-    { 'path': 'chart/default-pie', 'component': 'Pie', 'name': 'Pie', 'order': '09', 'category': 'Accumulation Charts'},
+    { 'path': 'chart/performance', 'component':'Performance', 'name': 'Benchmark', 'order': '08', 'category': 'Performance' },
+    { 'path': 'chart/default-pie', 'component': 'Pie', 'name': 'Pie', 'order': '09', 'category': 'Accumulation Charts', 'type': 'update'},
     { 'path': 'chart/pie-radius', 'component': 'PieRadius', 'name': 'Pie with Various Radius', 'order': '09', 'category': 'Accumulation Charts'},
-    { 'path': 'chart/doughnut', 'component': 'AccumulationDoughnut', 'name': 'Doughnut', 'order': '09', 'category': 'Accumulation Charts'},
+    { 'path': 'chart/doughnut', 'component': 'AccumulationDoughnut', 'name': 'Doughnut', 'order': '09', 'category': 'Accumulation Charts', 'type': 'update'},
     { 'path': 'chart/pyramid', 'component': 'Pyramid', 'name': 'Pyramid', 'order': '09', 'category': 'Accumulation Charts'},
-    { 'path': 'chart/funnel', 'component': 'Funnel', 'name': 'Funnel', 'order': '09', 'category': 'Accumulation Charts', 'type': 'update'},
+    { 'path': 'chart/funnel', 'component': 'Funnel', 'name': 'Funnel', 'order': '09', 'category': 'Accumulation Charts'},
     { 'path': 'chart/default-doughnut', 'component': 'Doughnut', 'name': 'Pie With Legend', 'order': '09', 'category': 'Accumulation Charts'},
     { 'path': 'chart/semi-pie', 'component': 'SemiPie', 'name': 'Semi Pie', 'order': '09', 'category': 'Accumulation Charts'},
     { 'path': 'chart/smartlabels', 'component': 'SmartLabels', 'name': 'Smart Labels', 'order': '09', 'category': 'Accumulation Charts'},
@@ -94,9 +94,9 @@ export const ChartSampleOrder:Object = [
     { 'path': 'chart/print', 'component':'Print', 'name': 'Print', 'order': '14', 'category': 'Print and Export'},
     { 'path': 'chart/export', 'component':'ChartExport', 'name': 'Export', 'order': '14', 'category': 'Print and Export'},
     { 'path': 'chart/selection', 'component':'SelectionChart', 'name': 'Selection', 'order': '15', 'category': 'User Interaction' },
-    { 'path': 'chart/range-selection', 'component':'RangeSelection', 'name': 'Range Selection', 'order': '15', 'category': 'User Interaction' },
+    { 'path': 'chart/range-selection', 'component':'RangeSelection', 'name': 'Range Selection', 'order': '15', 'category': 'User Interaction', 'type': 'update' },
     { 'path': 'chart/crosshair', 'component':'CrosshairChart', 'name': 'Crosshair', 'order': '15', 'category': 'User Interaction' },
     { 'path': 'chart/trackball', 'component':'TrackballChart', 'name': 'Trackball', 'order': '15', 'category': 'User Interaction' },
     { 'path': 'chart/zoom', 'component':'Zooming', 'name': 'Zooming and Panning', 'order': '15', 'category': 'User Interaction'},
-    { 'path': 'chart/data-editing', 'component':'DataEdit', 'name': 'Data Editing', 'order': '15', 'category': 'User Interaction', 'type':'new'}
+    { 'path': 'chart/data-editing', 'component':'DataEdit', 'name': 'Data Editing', 'order': '15', 'category': 'User Interaction' }
 ]

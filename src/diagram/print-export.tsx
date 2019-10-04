@@ -252,8 +252,8 @@ let items: ItemModel[] = [
 
 
 
-const SAMPLE_CSS = `   .e-bigger #toolbar_default .e-icons.e-caret,
-#toolbar_default .e-icons.e-caret {
+const SAMPLE_CSS = `   .e-bigger #toolbar_diagram .e-icons.e-caret,
+#toolbar_diagram .e-icons.e-caret {
     font-size: 12px;
     margin-right: 0px;
 }
@@ -291,7 +291,7 @@ export class PrintExport extends SampleBase<{}, {}> {
           {/* create and add printing and exporting option in ToolBar. */}
           <ToolbarComponent
             style={{ width: "100%", height: "10%", marginTop: "10px" }}
-            id="toolbar_default"
+            id="toolbar_diagram"
             clicked={onItemClick}
           >
             <ItemsDirective>

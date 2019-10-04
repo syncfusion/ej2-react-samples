@@ -27,7 +27,7 @@ export class UnscheduledTask extends SampleBase<{}, {}> {
     columnIndex: 4
   };
   public columns: any = [
-    {field: 'TaskId', width: 60 },
+    {field: 'TaskId', width: 75 },
     {field: 'TaskName', width: 80 },
     {field: 'StartDate', width: 120},          
     {field: 'EndDate', width: 120 },        

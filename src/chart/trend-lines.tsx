@@ -97,10 +97,10 @@ export class Trend extends SampleBase<{}, {}> {
             this.forwardForecast = this.backwardForecast = this.polynomialOrder = false;
             this.period = true;
         }
-        (document.getElementById('forwardForecast') as HTMLInputElement).disabled = this.forwardForecast;
-        (document.getElementById('backwardForecast') as HTMLInputElement).disabled = this.backwardForecast;
-        (document.getElementById('polynomial') as HTMLInputElement).disabled = this.polynomialOrder;
-        (document.getElementById('period') as HTMLInputElement).disabled = this.period;
+        this.forwardElement.enabled = !this.forwardForecast;
+		this.backwardElement.enabled = !this.backwardForecast;
+		this.polynomialElement.enabled = !this.polynomialOrder;
+		this.periodElement.enabled = !this.period;
         this.chartInstance.refresh();
     }
     private checkForwardForecast(e: Event): void {

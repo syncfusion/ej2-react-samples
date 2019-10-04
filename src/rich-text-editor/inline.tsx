@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, Inject, ToolbarType, QuickToolbar, Image, Link, HtmlEditor, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Inject, QuickToolbar, Image, Link, HtmlEditor, Toolbar, InlineModeModel, FormatModel, FontFamilyModel, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
@@ -14,31 +14,27 @@ export class Inline extends SampleBase<{}, {}> {
   private rteObj: RichTextEditorComponent;
   public checkboxObj: CheckBoxComponent;
 
-  // set the value to RichTextEditor
-  private template: string = `<p>The sample is configured with inline mode of editor. Initially, the editor is rendered without a <a href="https://ej2.syncfusion.com/home/" target='_blank'>toolbar</a>. The toolbar becomes visible only when the content is selected.</p>`;
-
   change(args: ChangeEventArgs): void {
     this.rteObj.inlineMode.onSelection = (args as any).checked;
-    this.rteObj.dataBind();
   }
-  private inlineMode: object = {
+  private inlineMode: InlineModeModel = {
     enable: true,
     onSelection: true
   };
-  private format: object = {
+  private format: FormatModel = {
     width: 'auto'
   }
-  private fontFamily: object = {
+  private fontFamily: FontFamilyModel = {
     width: 'auto'
   }
   // RichTextEditor items list
   private items: string[] = ['Bold', 'Italic', 'Underline',
-  'Formats', '-', 'Alignments', 'OrderedList', 'UnorderedList',
-  'CreateLink'];
+    'Formats', '-', 'Alignments', 'OrderedList', 'UnorderedList',
+    'CreateLink'];
 
   //RichTextEditor ToolbarSettings
-  private toolbarSettings: object = {
-      items: this.items
+  private toolbarSettings: ToolbarSettingsModel = {
+    items: this.items
   };
   render() {
     return (
@@ -46,10 +42,11 @@ export class Inline extends SampleBase<{}, {}> {
         <div className='control-section' id='rteInline'>
           <div className='col-lg-8' >
             <div className="content-wrapper">
-                <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
-                  valueTemplate={this.template} inlineMode={this.inlineMode} toolbarSettings={ this.toolbarSettings} format={this.format} fontFamily={this.fontFamily}>
-                  <Inject services={[Image, Link, QuickToolbar, HtmlEditor, Toolbar]} />
-                </RichTextEditorComponent>
+              <RichTextEditorComponent id="inlineRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
+                inlineMode={this.inlineMode} toolbarSettings={this.toolbarSettings} format={this.format} fontFamily={this.fontFamily}>
+                <p>The sample is configured with inline mode of editor. Initially, the editor is rendered without a <a href="https://ej2.syncfusion.com/home/" target='_blank'>toolbar</a>. The toolbar becomes visible only when the content is selected.</p>
+                <Inject services={[Image, Link, QuickToolbar, HtmlEditor, Toolbar]} />
+              </RichTextEditorComponent>
             </div>
           </div>
           <div className='col-lg-4 property-section'>

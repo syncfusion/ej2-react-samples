@@ -85,13 +85,17 @@ export class LegendMaps extends SampleBase<{}, {}> {
         this.mapInstance.refresh();
     }
     
+    private toggleLegendChange(args: ChangeEventArgs) {
+        this.mapInstance.legendSettings.toggleLegendSettings.enable = args.checked;
+        this.mapInstance.refresh();
+    }
     render() {
         return (
             <div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='col-lg-9 control-section'>
+                <div className='col-lg-8 control-section'>
                     <MapsComponent id="maps" tooltipRender={this.tooltip} loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}
                         zoomSettings={{
                             enable: false
@@ -101,7 +105,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                             position: 'Top'
                         }}
                         titleSettings={{
-                            text: 'Population density (per square kilometers) - 2015',
+                            text: 'Population density (per square kilometer) - 2015',
                             textStyle: {
                                 size: '16px'
                             }
@@ -115,7 +119,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                                 tooltipSettings={{
                                     visible: true,
                                     valuePath: 'name',
-                                    format: '${name} : ${density} per square kms'
+                                    format: '${name} : ${density}'
                                 }}
                                 shapeSettings={{
                                     colorValuePath: 'density',
@@ -150,12 +154,12 @@ export class LegendMaps extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Property Panel */}
-					<div className='col-lg-3 property-section'>
+					<div className='col-lg-4 property-section'>
 						<PropertyPane title='Properties'>
 							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 								<tr>
 									<td>
-										<div>Type</div>
+										<div>Legend mode</div>
 									</td>
 									<td>
 										<div>
@@ -165,7 +169,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
 								</tr>
 								<tr>
 									<td>
-										<div>Position</div>
+										<div>Legend position </div>
 									</td>
 									<td>
 										<div>
@@ -173,13 +177,23 @@ export class LegendMaps extends SampleBase<{}, {}> {
 										</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<div>Remaining items in datasource</div>
-									</td>
-									<td>
-										<div>
+								<tr style= {{ height: "50px"}}>
+                                    <td style= {{width: "80%"}}>
+                                        <div className="property-text" style= {{padding: "0px;"}}>Show legend for remaining data source items</div>
+                                    </td>
+                                    <td style= {{width: "20%" }} >
+                                        <div className="col">
 											<CheckBoxComponent id="datasource" change={this.dataChange.bind(this)} />
+										</div>
+									</td>
+								</tr>
+                                <tr style= {{height: "50px" }}>
+                                    <td style= {{width: "70%"}}>
+                                        <div className="property-text" style= {{ padding: "0px;"}}>Show population density when the legend item is toggled</div>
+                                    </td>
+                                    <td style= {{width: "20%" }}>
+                                        <div className="col">
+											<CheckBoxComponent id="toggleLegend" change={this.toggleLegendChange.bind(this)} />
 										</div>
 									</td>
 								</tr>
@@ -193,7 +207,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                       In this example, you can see how to render a legend in the maps. A legend item denotes the value of a shape. Any number of legend items can be added to the legend. You can bind the desired colors to the shapes, if its values are within the specified range using the ColorMapping property.
+                       In this example, you can see how to render a legend in the maps. A legend item denotes the value of a shape. Any number of legend items can be added to the legend. You can bind the desired colors to the shapes, if its values are within the specified range using the ColorMapping property. You can also show or hide color mapping related to population density when toggling the legend item
                     </p>
                     <p>
                         Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.

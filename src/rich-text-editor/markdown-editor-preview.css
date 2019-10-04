@@ -6,10 +6,6 @@
     min-height: 150px;
 }
 
-#rtePreview #markdownPreview .e-richtexteditor .e-rte-content {
-    overflow: hidden;
-}
-
 #rtePreview .e-icon-btn.e-active .e-md-preview::before {
     content: '\e350';
 }
@@ -40,10 +36,6 @@
 
 .sb-header {
     z-index: 100 !important;
-}
-
-#rtePreview {
-    overflow: hidden;
 }
 
 #rtePreview .content-wrapper {

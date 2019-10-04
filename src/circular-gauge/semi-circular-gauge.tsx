@@ -80,6 +80,12 @@ export class SemiGauge extends SampleBase<{}, {}> {
         this.gauge.refresh();
     }
 
+    public hideLabel(): void {
+        let labelIntersect: boolean = (document.getElementById('hidelabel') as HTMLInputElement).checked;
+        this.gauge.axes[0].hideIntersectingLabel = labelIntersect;
+        this.gauge.refresh();
+    }
+
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -94,7 +100,7 @@ export class SemiGauge extends SampleBase<{}, {}> {
                 <div className='col-lg-8 control-section'>
                     <CircularGaugeComponent load={this.load.bind(this)} ref={gauge => this.gauge = gauge} id='gauge'>
                         <AxesDirective>
-                            <AxisDirective radius='80%' startAngle={270} endAngle={90} minimum={0} maximum={100}
+                            <AxisDirective radius='80%' startAngle={270} endAngle={90} minimum={0} maximum={100} hideIntersectingLabel={true}
                                 lineStyle={{ width: 0, color: '#0450C2' }}
                                 labelStyle={{
                                     font: {
@@ -103,7 +109,7 @@ export class SemiGauge extends SampleBase<{}, {}> {
                                     position: 'Outside',
                                     autoAngle: true
                                 }}
-                                majorTicks={{ position: 'Inside', width: 2, height: 12, interval: 20 }}
+                                majorTicks={{ position: 'Inside', width: 2, height: 12, interval: 4 }}
                                 minorTicks={{ position: 'Inside', width: 1, height: 5, interval: 2 }}>
                                 <PointersDirective>
                                     <PointerDirective animation={{enable: false}} value={30} radius='75%' color='#FF9200' pointerWidth={7}
@@ -160,7 +166,7 @@ export class SemiGauge extends SampleBase<{}, {}> {
                                             <div>Radius based on angle</div>
                                         </td>
                                         <td>
-                                            <div>
+                                            <div style={{paddingTop: '0px'}}>
                                                 <CheckBoxComponent id='angle' change={this.angleChange.bind(this)} ref={d => this.angleElement = d} />
                                             </div>
                                         </td>
@@ -185,6 +191,16 @@ export class SemiGauge extends SampleBase<{}, {}> {
                                             </div>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            <div>Hide intersecting labels</div>
+                                        </td>
+                                        <td>
+                                            <div style={{paddingTop: '0px'}}>
+                                                <CheckBoxComponent id='hidelabel' checked={true} change={this.hideLabel.bind(this)} ref={d => this.angleElement = d} />
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </PropertyPane>
@@ -196,7 +212,7 @@ export class SemiGauge extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render the circular gauge with modified start and end angles to form semi or quarter circular gauges. By enabling the radius based on angle option, the radius of circular gauge will be calculated based on the start and end angles.
+                    In this example, you can see how to render the circular gauge with modified start and end angles to form semi or quarter circular gauges. By enabling the radius based on angle option, the radius of circular gauge will be calculated based on the start and end angles. You can also hide the intersect labels using `hideIntersectingLabel` property.
                     </p>
                     <p>
                         For more information on ranges, refer to this

@@ -15,8 +15,8 @@ export let data1: any[] = [
   { x: 'India', y: 61, text: 'IND: 16%' },
   { x: 'Japan', y: 13, text: 'JPN: 3%' },
   { x: 'South Africa', y: 79, text: 'ZAF: 21%' },
-  { x: 'United Kingdom', y: 71, text: 'UK: 19%' },
-  { x: 'United States', y: 45, text: 'USA: 12%' }
+  { x: 'United Kingdom', y: 68, text: 'UK: 19%' },
+  { x: 'United States', y: 48, text: 'USA: 12%' }
 ];
 export class SemiPie extends SampleBase<{}, {}> {
   public pie: AccumulationChartComponent;

@@ -108,6 +108,12 @@ export class PivotToolbar extends SampleBase<{}, {}> {
             type: 'Separator'
         });
     }
+    chartOnLoad(args): void {
+        let selectedTheme = location.hash.split("/")[1];
+        selectedTheme = selectedTheme ? selectedTheme : "Material";
+        args.chart.theme =
+            selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1);
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -115,7 +121,7 @@ export class PivotToolbar extends SampleBase<{}, {}> {
                     <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} showFieldList={true} gridSettings={{ columnWidth: 140 }}
                         allowExcelExport={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                         newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
-                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)}>
+                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ load: this.chartOnLoad.bind(this) }}>
                         <Inject services={[FieldList, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting]} />
                     </PivotViewComponent>
                 </div>

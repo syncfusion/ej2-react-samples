@@ -3,10 +3,6 @@
     width: 100%;
 }
 
-#rteInline {
-    overflow: hidden;
-}
-
 #rteInline .content-wrapper {
     width: auto;
     margin: 0;

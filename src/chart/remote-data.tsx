@@ -14,7 +14,7 @@ import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
 export let dataManager = new DataManager({
-    url: 'https://mvc.syncfusion.com/Services/Northwnd.svc/Tasks/'
+    url: 'https://ej2services.syncfusion.com/production/web-services/api/Orders'
 });
 export let query: Query = new Query().take(5).where('Estimate', 'lessThan', 3, false);
 export let labelRender: EmitType<IAxisLabelRenderEventArgs> = (args: IAxisLabelRenderEventArgs): void => {
@@ -89,7 +89,7 @@ export class RemoteData extends SampleBase<{}, {}> {
                         tooltip={{ enable: true }}>
                         <Inject services={[ColumnSeries, Legend, Category, Tooltip, DataLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={dataManager} xName='Assignee' type='Column' yName='Estimate' name='Story Point' query={query}
+                            <SeriesDirective dataSource={dataManager} xName='CustomerID' type='Column' yName='Freight' name='Story Point' query={query}
                                 animation={{ enable: false }} marker={{ dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>

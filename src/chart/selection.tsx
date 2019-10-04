@@ -35,8 +35,7 @@ export class SelectionChart extends SampleBase<{}, {}> {
     private droplist: { [key: string]: Object }[] = [
         { value: 'Point' },
         { value: 'Series' },
-        { value: 'Cluster' },
-        { value: 'None' }
+        { value: 'Cluster' }
     ];
     private checkElement: HTMLInputElement;
     private loaded: EmitType<ILoadedEventArgs>;
@@ -120,7 +119,7 @@ export class SelectionChart extends SampleBase<{}, {}> {
                     <p>
                         Tap to select a point or series, double tap and drag to enable rectangular selection in touch enabled devices.
                     </p>
-                    <p>Chart supports five mode of selection which can be set using <code>SelectionMode</code> property.
+                    <p>Chart supports seven mode of selection which can be set using <code>SelectionMode</code> property.
                     </p>
                     <ul>
                         <li><code>Series</code> - Select the series in chart.</li>
@@ -129,6 +128,7 @@ export class SelectionChart extends SampleBase<{}, {}> {
                         <li><code>DragXY</code> - Rectangular selection with respect to both axis.</li>
                         <li><code>DragX</code> - Rectangular selection with respect to horizontal axis.</li>
                         <li><code>DragY</code> - Rectangular selection with respect to vertical axis.</li>
+                        <li><code>Lasso</code> - Select free form of selection area points.</li>
                     </ul>
                     <br></br>
                     <p><b>Injecting Module</b></p>

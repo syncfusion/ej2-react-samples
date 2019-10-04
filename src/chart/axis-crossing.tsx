@@ -138,7 +138,7 @@ export class AxisCrossing extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <input type="checkbox" id="axisElements" onChange={this.axisElements.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.crossValue = d} />
+                                            <input type="checkbox" id="axisElements" onChange={this.axisElements.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.crossValue = d} checked />
                                         </div>
                                     </td>
                                 </tr>

@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     StockChartComponent, StockChartSeriesCollectionDirective, StockChartSeriesDirective, Inject,
     DateTime, StripLine, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, 
-    RangeAreaSeries, Trendlines ,ChartTheme ,IStockChartEventArgs
+    RangeAreaSeries, Trendlines ,ChartTheme ,IStockChartEventArgs, Crosshair
 } from '@syncfusion/ej2-react-charts';
 import {
     EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator,
@@ -45,6 +45,8 @@ export class StockEvents extends SampleBase<{}, {}> {
                         seriesType={[]}
                         trendlineType={[]}
                         title={'AAPL Stock Price'}
+                        tooltip={{ enable: true }}
+                        crosshair={{ enable: true }}
                         chartArea={{ border: { width: 0 } }}
                         stockEvents= {[
                             { date: new Date(2012, 3, 1), text: 'Q2', description: '2012 Quarter2 starts', type: 'Flag' },
@@ -88,7 +90,7 @@ export class StockEvents extends SampleBase<{}, {}> {
                               textStyle: { color: 'white' }, background: '#f48a21', border: { color: '#f48a21' } }
                         ]}
                     >
-                        <Inject services={[DateTime, StripLine, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
+                        <Inject services={[DateTime, StripLine, LineSeries, Crosshair, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,
                         AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator]} />
                         <StockChartSeriesCollectionDirective>

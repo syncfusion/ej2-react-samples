@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
     CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, ITooltipRenderEventArgs, Inject, AnnotationsDirective, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTooltip, TickModel, getRangeColor,
+    PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTooltip, TickModel, getRangeColor, IPointerDragEventArgs,
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -47,10 +47,11 @@ export class Tooltip extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-lg-12'>
-                        <CircularGaugeComponent title='Tooltip Customization' loaded={this.onChartLoad.bind(this)} tooltipRender={this.tooltipRender.bind(this)} id='tooltip-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
+                        <CircularGaugeComponent title='Tooltip Customization' loaded={this.onChartLoad.bind(this)} tooltipRender={this.tooltipRender.bind(this)} dragEnd={this.dragEnd.bind(this)} id='tooltip-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
                             load={this.load.bind(this)}
                             titleStyle={{ size: '15px', color: 'grey' }} tooltip={{
-                                enable: true,                                
+                                enable: true,
+                                type: ['Range', 'Pointer'],                             
 								enableAnimation: false
                             }}>
                             <Inject services={[GaugeTooltip]} />
@@ -85,13 +86,12 @@ export class Tooltip extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample visualizes the tooltip of pointer value in gauge. To see the tooltip in action, hover pointer or tap the pointer.
+                This sample visualizes the tooltip of pointer value and ranges in gauge. To see the tooltip in action, hover pointer or tap the pointer
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to show the tooltip for pointer in gauge, to see the tooltip in action, hover pointer or
-                        tap on pointer in touch enabled devices.
+                    This sample visualizes the tooltip of pointer value and ranges in gauge. To see the tooltip in action, hover pointer or tap the pointer
                     </p>
                     <br />
                     <p className='description-header'>Injecting Module</p>
@@ -111,11 +111,51 @@ export class Tooltip extends SampleBase<{}, {}> {
     };
 
     public tooltipRender(args: ITooltipRenderEventArgs): void {
-        let imageName: string = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? 'min' : 'max');
-        let borderColor: string = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? '#3A5DC8' : '#33BCBD');
-		args.tooltip.template = '<div id="templateWrap" style="border:2px solid ' + borderColor +
-           '"><img src="src/circular-gauge/images/' + imageName + '.png"/><div class="des" style="color: ' +
-           borderColor + '"><span>${value} MPH</span></div></div>';
+        let imageName: string; let borderColor: string;
+		let textColor: string;
+        if(args.pointer) {
+            imageName = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? 'min' : 'max');
+            borderColor = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? '#3A5DC8' : '#33BCBD');
+            textColor = this.gauge.theme.toLowerCase() === 'highcontrast' ? 'White' : borderColor;
+            if (this.gauge.theme.toLowerCase() === 'highcontrast') {
+                args.tooltip.template = '<div id="templateWrap" style="border:2px solid ' + borderColor +
+               ';background-color:black"><img src="src/circular-gauge/images/' + imageName + '.png"/><div class="des" style="color: ' +
+               textColor + '"><span>${value} MPH</span></div></div>';
+            } else {
+                args.tooltip.template = '<div id="templateWrap" style="border:2px solid ' + borderColor +
+               '"><img src="src/circular-gauge/images/' + imageName + '.png"/><div class="des" style="color: ' +
+               borderColor + '"><span>${value} MPH</span></div></div>';
+            }
+            
+        } else if (args.range){
+            imageName = ((args.range.start >= 0 && args.range.end <= 50)) ? 'min' : 'max';
+            borderColor = ((args.range.start >= 0 && args.range.end <= 50)) ? '#3A5DC8' : '#33BCBD';
+			textColor = this.gauge.theme.toLowerCase() === 'highcontrast' ? 'White' : borderColor;
+            let start : number = args.range.start;
+            let end : number = args.range.end;
+            if (this.gauge.theme.toLowerCase() === 'highcontrast') {
+                args.tooltip.rangeSettings.template = '<div id=templateWrap style="padding:5px;border:2px solid' + borderColor + ';color: ' +
+                textColor + ';background-color:black"><img src="src/circular-gauge/images/' + imageName +
+                '.png"/> <span>' + start + ' - ' + end + ' MPH  </span> </div>';
+            } else {
+                args.tooltip.rangeSettings.template = '<div id=templateWrap style="padding:5px;border:2px solid' + borderColor + ';color: ' +
+                borderColor + '"><img src="src/circular-gauge/images/' + imageName +
+                '.png"/> <span>' + start + ' - ' + end + ' MPH  </span> </div>';
+            }
 
+            
+        }
+    };
+    public dragEnd(args: IPointerDragEventArgs): void {
+        if(args.currentValue >= 0 && args.currentValue <= 50) {
+            args.pointer.color = "#3A5DC8";
+            args.pointer.cap.border.color = "#3A5DC8";
+        } else {
+            args.pointer.color = "#33BCBD";
+            args.pointer.cap.border.color = "#33BCBD";
+        }
+		args.pointer.value = args.currentValue;
+        args.pointer.animation.enable = false;
+        this.gauge.refresh();
     };
 }

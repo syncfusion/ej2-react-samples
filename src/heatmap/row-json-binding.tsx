@@ -55,8 +55,8 @@ export class JsonRow extends SampleBase<{}, {}> {
                             title: { text: 'Olympic Year' },
                             labels: ['2000', '2004', '2008', '2012', '2016'],
                         }}
-                        dataSource={{
-                            data: this.jsonTableData,
+                        dataSource={this.jsonTableData}
+                        dataSourceSettings={{
                             isJsonData: true,
                             adaptorType: 'Table',
                             xDataMapping: 'Region',

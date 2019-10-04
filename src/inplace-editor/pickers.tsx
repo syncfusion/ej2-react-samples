@@ -1,8 +1,9 @@
-import * as ReactDOM from 'react-dom';
+import { DatePickerModel, DateRangePickerModel, DateTimePickerModel, TimePickerModel } from '@syncfusion/ej2-calendars';
+import { ChangeEventArgs as DropDownChangeArgs, DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
+import { DateRangePicker, Inject, InPlaceEditorComponent, RenderMode, TimePicker } from '@syncfusion/ej2-react-inplace-editor';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
-import { DropDownListComponent, ChangeEventArgs as DropDownChangeArgs } from '@syncfusion/ej2-react-dropdowns';
-import { InPlaceEditorComponent, Inject, TimePicker, DateRangePicker } from '@syncfusion/ej2-react-inplace-editor';
 import { SampleBase } from '../common/sample-base';
 import './pickers.component.css';
 
@@ -14,6 +15,7 @@ export class Pickers extends SampleBase<{}, {}> {
     private timeObj: InPlaceEditorComponent;
     private dateTimeObj: InPlaceEditorComponent;
     private dateRangeObj: InPlaceEditorComponent;
+    private editorMode: DropDownListComponent
 
     private dateValue: Date = new Date('5/23/2017');
 
@@ -21,13 +23,13 @@ export class Pickers extends SampleBase<{}, {}> {
 
     private dateRangeValue: Date[] = [new Date('5/23/2017'), new Date('7/5/2017')];
 
-    private datePickerModel: object = { placeholder: 'Select a date' };
+    private datePickerModel: DatePickerModel = { placeholder: 'Select a date' };
 
-    private timePickerModel: object = { placeholder: 'Select a time', value: new Date('5/23/2017,12:00 PM') };
+    private timePickerModel: TimePickerModel = { placeholder: 'Select a time', value: new Date('5/23/2017,12:00 PM') };
 
-    private dateTimePickerModel: object = { placeholder: 'Select a date and time' };
+    private dateTimePickerModel: DateTimePickerModel = { placeholder: 'Select a date and time' };
 
-    private dateRangePickerModel: object = { placeholder: 'Select a date range' };
+    private dateRangePickerModel: DateRangePickerModel = { placeholder: 'Select a date range' };
 
     // Mapping DropDownList dataSource property
     private editorData: { [key: string]: Object }[] = [
@@ -35,46 +37,46 @@ export class Pickers extends SampleBase<{}, {}> {
     ];
 
     // Mapping DropDownList fields property
-    private dropDownFields: object = { text: 'text', value: 'value' };
+    private dropDownFields: FieldSettingsModel = { text: 'text', value: 'value' };
 
     // Mapping DropDownList value property
     private dropDownVal: string = 'inline';
 
     // Change event funtion for DropDownList component   
     public changeEditorMode(e: DropDownChangeArgs): void {
-        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
-        this.dateObj.mode = mode as any;
-        this.timeObj.mode = mode as any;
-        this.dateTimeObj.mode = mode as any;
-        this.dateRangeObj.mode = mode as any;
+        let mode: string = this.editorMode.value as string;
+        this.dateObj.mode = mode as RenderMode;
+        this.timeObj.mode = mode as RenderMode;
+        this.dateTimeObj.mode = mode as RenderMode;
+        this.dateRangeObj.mode = mode as RenderMode;
         this.dateObj.dataBind();
         this.timeObj.dataBind();
         this.dateTimeObj.dataBind();
         this.dateRangeObj.dataBind();
     }
-    rendereComplete () {
+    rendereComplete() {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
-        rightPane.addEventListener( 'scroll', ()=> {
-        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
-        if (mode === 'Inline') {
-        return;
+            rightPane.addEventListener('scroll', () => {
+                let mode: string = this.editorMode.value as string;
+                if (mode === 'Inline') {
+                    return;
+                }
+                if (this.dateObj && (this.dateObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+                    this.dateObj.enableEditMode = false;
+                }
+                if (this.timeObj && (this.timeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+                    this.timeObj.enableEditMode = false;
+                }
+                if (this.dateTimeObj && (this.dateTimeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+                    this.dateTimeObj.enableEditMode = false;
+                }
+                if (this.dateRangeObj && (this.dateRangeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+                    this.dateRangeObj.enableEditMode = false;
+                }
+            });
         }
-        if (this.dateObj && (this.dateObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-        this.dateObj.enableEditMode = false;
-        }
-        if (this.timeObj && (this.timeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-        this.timeObj.enableEditMode = false;
-        }
-        if (this.dateTimeObj && (this.dateTimeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-        this.dateTimeObj.enableEditMode = false;
-        }
-        if (this.dateRangeObj && (this.dateRangeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-        this.dateRangeObj.enableEditMode = false;
-        }
-        });
-        }
-        }
+    }
 
     render() {
         return (
@@ -85,8 +87,8 @@ export class Pickers extends SampleBase<{}, {}> {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <label className="control-label" style={{ 'text-align': 'left ', 'font-size': '14px', 'fontWeight': 400 }}>
-                                        DatePicker </label>
+                                        <label className="control-label" style={{ textAlign: 'left', fontSize: '14px', fontWeight: 400 }}>
+                                            DatePicker </label>
                                     </td>
                                     <td>
                                         <InPlaceEditorComponent ref={(date) => { this.dateObj = date }} id='datePickerEle' mode='Inline' type='Date' value={this.dateValue} model={this.datePickerModel} >
@@ -95,8 +97,8 @@ export class Pickers extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label className="control-label" style={{ 'text-align': 'left ', 'font-size': '14px', 'fontWeight': 400 }}>
-                                        TimePicker </label>
+                                        <label className="control-label" style={{ textAlign: 'left', fontSize: '14px', fontWeight: 400 }}>
+                                            TimePicker </label>
                                     </td>
                                     <td>
                                         <InPlaceEditorComponent ref={(time) => { this.timeObj = time }} id='timePickerEle' mode='Inline' type='Time' value={this.dateValue} model={this.timePickerModel} >
@@ -106,8 +108,8 @@ export class Pickers extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label className="control-label" style={{ 'text-align': 'left ', 'font-size': '14px', 'fontWeight': 400 }}>
-                                        DateTimePicker </label>
+                                        <label className="control-label" style={{ textAlign: 'left', fontSize: '14px', fontWeight: 400 }}>
+                                            DateTimePicker </label>
                                     </td>
                                     <td>
                                         <InPlaceEditorComponent ref={(dateTime) => { this.dateTimeObj = dateTime }} id='dateTimePickerEle' mode='Inline' type='DateTime' value={this.dateTimeValue} model={this.dateTimePickerModel} >
@@ -116,7 +118,7 @@ export class Pickers extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label className="control-label" style={{ 'text-align': 'left ', 'font-size': '14px', 'fontWeight': 400 }}>
+                                        <label className="control-label" style={{ textAlign: 'left', fontSize: '14px', fontWeight: 400 }}>
                                             DateRangePicker </label>
                                     </td>
                                     <td>
@@ -140,7 +142,7 @@ export class Pickers extends SampleBase<{}, {}> {
                                     <td>
                                         <div>
                                             {/* Render the DropDownList Component */}
-                                            <DropDownListComponent id='editorMode' className='form-control' dataSource={this.editorData} fields={this.dropDownFields}
+                                            <DropDownListComponent ref={(drop) => { this.editorMode = drop }} id='editorMode' className='form-control' dataSource={this.editorData} fields={this.dropDownFields}
                                                 value={this.dropDownVal} width={'90%'} change={this.changeEditorMode.bind(this)} />
                                         </div>
                                     </td>

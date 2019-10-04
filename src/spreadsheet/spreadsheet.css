@@ -1,0 +1,7 @@
+.control-section.spreadsheet-control {
+    height: 550px;
+}
+
+#sb-content .e-spreadsheet .e-tab .e-tab-text {
+    display: inherit;
+}

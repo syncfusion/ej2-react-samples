@@ -29,6 +29,17 @@ export class Default extends SampleBase<{}, {}> {
     return (
       <div className = 'control-pane'>
         <div className='control-section input-content-wrapper'>
+            <div className="row custom-margin material2">
+                <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6"><b>Outlined and Filled</b></div>
+            </div>
+            <div className="row custom-margin custom-padding-5 material2">
+                <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <TextBoxComponent placeholder="Outlined" cssClass="e-outline" floatLabelType="Auto" />
+                </div>
+                <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <TextBoxComponent placeholder="Filled" cssClass="e-filled" floatLabelType="Auto" />
+                </div>
+            </div>
             <div className="row custom-margin">
                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6"><b>Floating Label</b></div>
             </div>
@@ -159,6 +170,14 @@ export class Default extends SampleBase<{}, {}> {
                 <tr>
                     <th>Types</th>
                     <th>Description</th>
+                </tr>
+                <tr>
+                <td>Outlined & Filled textbox</td>
+                <td>You can render the following two types of text fields in the material theme by adding <b>e-outline</b> and <b>e-filled</b> class to cssClass API.
+                    <ul>
+                        <li>Filled text fields</li>
+                        <li>Outlined text fields</li>
+                    </ul> </td>
                 </tr>
                 <tr>
                     <td>Floating Label</td>

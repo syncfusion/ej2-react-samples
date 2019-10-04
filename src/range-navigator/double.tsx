@@ -54,7 +54,7 @@ export class NumericAxis extends SampleBase<{}, {}> {
                         <div id="title">Score Comparision AUS vs SL</div>
                     </div>
                     <div className="row">
-                        <RangeNavigatorComponent id='rangenavigator' ref={rangenavigator => this.rangenavigator1 = rangenavigator} style={{ textAlign: "center" }}
+                        <RangeNavigatorComponent id='double' ref={rangenavigator => this.rangenavigator1 = rangenavigator} style={{ textAlign: "center" }}
                             labelPosition='Outside'
                             tooltip={{ enable: true }}
                             load={this.rangeLoad.bind(this)}

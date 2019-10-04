@@ -50,16 +50,16 @@ export class DropDownButton extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                <p>This sample demonstrates the default functionalities of the DropDownMenu.
-                   Clicking DropDownMenu will display popup with list of action items.</p>
+                <p>This sample demonstrates the default functionalities of the DropDownButton.
+                   Clicking DropDownButton will display popup with list of action items.</p>
                 </div>
                 <div id="description">
                 <p>
-                    The DropDownMenu component is used to toggle contextual overlays for displaying list of action items.
+                    The DropDownButton component is used to toggle contextual overlays for displaying list of action items.
                     It can contain both text and images.
                 </p>
                     <p>
-                        In this sample, DropDownMenu contains icon, content and list of action items, and can be added using
+                        In this sample, DropDownButton contains icon, content and list of action items, and can be added using
                     <code>
                             <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/drop-down-button/#iconcss">iconCss,
                             </a>
@@ -74,7 +74,7 @@ export class DropDownButton extends SampleBase<{}, {}> {
                     </code>property.
                     </p>
                     <p>
-                        More information about DropDownMenu can be found in this
+                        More information about DropDownButton can be found in this
                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/drop-down-button/getting-started">
                             documentation section</a>.
                     </p>

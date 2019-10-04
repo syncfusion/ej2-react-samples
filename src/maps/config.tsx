@@ -35,7 +35,7 @@ export const MapSampleOrder: Object = [
         ], 'description': 'This demo for Essential JS2 Maps control indicates the temperature of various cities of Australia in marker templates.', 'order': '02', 'category': 'Features'
     },
     {
-        'path': 'maps/marker-cluster', 'component': 'MarkerCluster', 'name': 'Marker Clustering', 'type': 'new', 'sourceFiles': [
+        'path': 'maps/marker-cluster', 'component': 'MarkerCluster', 'name': 'Marker Clustering', 'sourceFiles': [
             { 'displayName': 'marker-cluster.tsx', 'path': './src/maps/marker-cluster.tsx' },
             { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' },
             { 'displayName': 'marker-cluster.json', 'path': './src/maps/map-data/marker-cluster.json' }
@@ -63,7 +63,7 @@ export const MapSampleOrder: Object = [
         ], 'description': 'This demo for Essential JS2 Maps control illustrates the sea routes between various cities for shipping.', 'order': '02', 'category': 'Features'
     },
     {
-        'path': 'maps/legend', 'component': 'LegendMaps', 'name': 'Legend', 'sourceFiles': [
+        'path': 'maps/legend', 'component': 'LegendMaps', 'name': 'Legend', 'type': 'update', 'sourceFiles': [
             { 'displayName': 'legend.tsx', 'path': './src/maps/legend.tsx' },
             { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' },
             { 'displayName': 'legend-datasource.json', 'path': './src/maps/map-data/legend-datasource.json' }
@@ -179,7 +179,7 @@ export const MapSampleOrder: Object = [
         ], 'description': 'This demo for Essential JS2 Maps control depicts to display the cyber attacks and threats from various countries to USA.', 'order': '06', 'category': 'Use Cases'
     },
     {
-        'path': 'maps/dynamic-marker', 'component': 'DynamicMarker', 'name': 'Dynamic Markers', 'type': 'new', 'sourceFiles': [
+        'path': 'maps/dynamic-marker', 'component': 'DynamicMarker', 'name': 'Dynamic Markers', 'sourceFiles': [
             { 'displayName': 'dynamic-marker.tsx', 'path': './src/maps/dynamic-marker.tsx' },
             { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' }
         ], 'description': 'This demo for Essential JS2 Maps control visualizes the dynamically added the marker and navigation line.', 'order': '06', 'category': 'Use Cases'

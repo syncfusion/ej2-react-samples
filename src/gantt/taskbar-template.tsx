@@ -63,7 +63,7 @@ export class Taskbar extends SampleBase<{}, {}> {
     if (props.TaskName == 'Oscar moments') {
       return (<div className="e-gantt-child-taskbar e-custom-moments" style={{height: "100%", borderRadius: "5px"}}>
         {
-          props.taskDuration < 4 ?
+          props.ganttProperties.duration < 4 ?
             <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" /> :
             <div>
               <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" />
@@ -76,7 +76,7 @@ export class Taskbar extends SampleBase<{}, {}> {
     else if (props.TaskName == 'Oscar performance') {
       return (<div className="e-gantt-child-taskbar e-custom-performance" style={{height: "100%", borderRadius: "5px"}}>
         {
-          props.taskDuration <= 5 ?
+          props.ganttProperties.duration <= 5 ?
             <img className="face-mask" src="src/gantt/images/face-mask.svg" height="32" width="32" /> :
             <div>
               <img className="face-mask" src="src/gantt/images/face-mask.svg" height="32" width="32" />
@@ -88,7 +88,7 @@ export class Taskbar extends SampleBase<{}, {}> {
     } else {
       return (
         <div className="e-gantt-parent-taskbar e-custom-parent" style={{height: "100%", borderRadius: "5px", textOverflow: "ellipsis"}}>
-          {props.taskDuration < 4 ?
+          {props.ganttProperties.duration < 4 ?
             <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" /> :
             props.Winner && props.Movie ?
               <div>

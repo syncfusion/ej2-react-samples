@@ -84,7 +84,7 @@ export class PolarSpline extends SampleBase<{}, {}> {
                             }}
                             load={this.load.bind(this)}
                             title='Microphone Types Polar Patterns' loaded={this.onChartLoad.bind(this)}
-                            tooltip={{ enable: true, format: '${series.name}<br> ${point.x}: ${point.y}' }}>
+                            tooltip={{ enable: true }}>
                             <Inject services={[SplineSeries, Legend, Tooltip, Category, PolarSeries, RadarSeries]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='Cardioid (unidirectional)' type='Polar'

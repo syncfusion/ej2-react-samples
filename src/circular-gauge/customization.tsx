@@ -34,16 +34,18 @@ export class Customization extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        this.usageGauge.appendTo('#customization-container1');
     }
     // custom code end
     public random(): void {
         if (this.isClicked) {
             this.gauge1.destroy();
             this.isClicked = false;
+            this.randomGauge.appendTo('#customization-container');
         } else {
-            this.usageGauge.destroy();
+            document.getElementById('customization-container1').style.display = 'none';
         }
-        this.randomGauge.appendTo('#customization-container');
+        document.getElementById('customization-container').style.display = 'block';
         // Code for Property Panel
         this.isUsage = false;
         this.pointerValueElement.min = '1000';
@@ -65,10 +67,10 @@ export class Customization extends SampleBase<{}, {}> {
         if (this.isClicked) {
             this.gauge1.destroy();
             this.isClicked = false;
-        } else {
-            this.randomGauge.destroy();
+            this.randomGauge.appendTo('#customization-container');
         }
-        this.usageGauge.appendTo('#customization-container');
+        document.getElementById('customization-container').style.display = 'none';
+        document.getElementById('customization-container1').style.display = 'block';
         this.isUsage = true;
         this.pointerValueElement.min = '0.5';
         this.pointerValueElement.max = '100';
@@ -110,7 +112,7 @@ export class Customization extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
-                        <CircularGaugeComponent load={this.load.bind(this)} id='customization-container' loaded={this.onChartLoad.bind(this)} ref={gauge => this.gauge1 = gauge}
+                        <CircularGaugeComponent style={{display: 'block'}} load={this.load.bind(this)} id='customization-container' loaded={this.onChartLoad.bind(this)} ref={gauge => this.gauge1 = gauge}
                             centerY='70%'>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
@@ -143,6 +145,7 @@ export class Customization extends SampleBase<{}, {}> {
                                 </AxisDirective>
                             </AxesDirective>
                         </CircularGaugeComponent>
+                        <CircularGaugeComponent style={{display: 'none'}} id="customization-container1"></CircularGaugeComponent>
                     </div>
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>

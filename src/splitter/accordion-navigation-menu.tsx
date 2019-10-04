@@ -7,7 +7,7 @@ import {
   PanesDirective
 } from "@syncfusion/ej2-react-layouts";
 import { Ajax } from "@syncfusion/ej2-base";
-import { ListViewComponent } from "@syncfusion/ej2-react-lists";
+import { ListViewComponent, SelectEventArgs } from "@syncfusion/ej2-react-lists";
 import {
   ExpandEventArgs,
   AccordionComponent,
@@ -30,17 +30,12 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
   ];
   private splitterInstance: SplitterComponent;
   private accordionInstance: AccordionComponent;
-  private beforeBegin(): void {
-    let list2: HTMLElement = document.querySelector("#split-list2");
-    let list3: HTMLElement = document.querySelector("#split-list3");
-    list2.style.display = "none";
-    list3.style.display = "none";
-  }
-  private onCreate(e: any): void {
-    let cont: HTMLElement = this.splitterInstance.element.querySelector(
-      ".e-pane"
-    );
-    cont.appendChild(this.accordionInstance.element);
+  public list2: ListViewComponent;
+  public list3: ListViewComponent;
+
+  public rendereComplete(): void {
+    this.list2.element.style.display = "none";
+    this.list3.element.style.display = "none";
   }
 
   private ListData1: { [key: string]: Object }[] = [
@@ -76,8 +71,8 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
       }
     }
   }
-  private onSelect(e: any): void {
-    let listid: string = e.item.dataset.uid;
+  private onSelect(e: SelectEventArgs): void {
+    let listid: string = (e.item as HTMLElement).dataset.uid;
     switch (listid) {
       case "1":
         let ajax: Ajax = new Ajax(
@@ -86,7 +81,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax.send().then();
-        ajax.onSuccess = (data: any) => {
+        ajax.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -97,7 +92,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax1.send().then();
-        ajax1.onSuccess = (data: any) => {
+        ajax1.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -108,7 +103,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax2.send().then();
-        ajax2.onSuccess = (data: any) => {
+        ajax2.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -119,7 +114,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax3.send().then();
-        ajax3.onSuccess = (data: any) => {
+        ajax3.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -130,7 +125,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax4.send().then();
-        ajax4.onSuccess = (data: any) => {
+        ajax4.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -141,7 +136,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax5.send().then();
-        ajax5.onSuccess = (data: any) => {
+        ajax5.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -152,7 +147,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax6.send().then();
-        ajax6.onSuccess = (data: any) => {
+        ajax6.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -163,7 +158,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax7.send().then();
-        ajax7.onSuccess = (data: any) => {
+        ajax7.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -174,7 +169,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
           true
         );
         ajax8.send().then();
-        ajax8.onSuccess = (data: any) => {
+        ajax8.onSuccess = (data: string | HTMLElement) => {
           this.splitterInstance.paneSettings[1].content = data;
         };
         break;
@@ -199,28 +194,9 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
     }
   }
 
-  public render(): JSX.Element {
+  private accordionElement(): JSX.Element {
     return (
-      <div id="accordionSplitter" className="control-section">
-        {/* ListView element */}
-        <div id="list_wrapper">
-          <ListViewComponent
-            id="split-list1"
-            actionBegin={this.beforeBegin}
-            dataSource={this.ListData1}
-            select={this.onSelect.bind(this)}
-          />
-          <ListViewComponent
-            id="split-list2"
-            dataSource={this.ListData2}
-            select={this.onSelect.bind(this)}
-          />
-          <ListViewComponent
-            id="split-list3"
-            dataSource={this.ListData3}
-            select={this.onSelect.bind(this)}
-          />
-          <AccordionComponent
+      <AccordionComponent
             id="split_pane1"
             ref={accordion => (this.accordionInstance = accordion)}
             expanding={this.expanding.bind(this)}
@@ -229,29 +205,65 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
             <AccordionItemsDirective>
               <AccordionItemDirective
                 header={"ASP.NET"}
-                content={"#split-list1"}
+                content={this.splitlist1.bind(this)}
                 expanded={true}
               />
               <AccordionItemDirective
                 header={"ASP.NET MVC"}
-                content={"#split-list2"}
+                content={this.splitlist2.bind(this)}
               />
               <AccordionItemDirective
                 header={"JavaScript"}
-                content={"#split-list3"}
+                content={this.splitlist3.bind(this)}
               />
             </AccordionItemsDirective>
           </AccordionComponent>
-        </div>
+    );
+  };
+
+  private splitlist1(): JSX.Element {
+    return (
+      <ListViewComponent
+      id="split-list1"
+      dataSource={this.ListData1}
+      select={this.onSelect.bind(this)}
+    />
+      );
+  };
+
+  private splitlist2(): JSX.Element {
+    return (
+      <ListViewComponent
+      id="split-list2"
+      ref={(listview) => { this.list2 = listview }}
+      dataSource={this.ListData2}
+      select={this.onSelect.bind(this)}
+    />
+      );
+  };
+
+  private splitlist3(): JSX.Element {
+    return (
+      <ListViewComponent
+      id="split-list3"
+      ref={(listview) => { this.list3 = listview }}
+      dataSource={this.ListData3}
+      select={this.onSelect.bind(this)}
+    />   
+      );
+  };
+
+  public render(): JSX.Element {
+    return (
+      <div id="accordionSplitter" className="control-section">
         <div id="splitter-01" className="splitter-custom">
           <SplitterComponent
             height="288px"
             width="100%"
             ref={splitter => (this.splitterInstance = splitter)}
-            created={this.onCreate.bind(this)}
           >
             <PanesDirective>
-              <PaneDirective size={"35%"} min={"30%"} />
+              <PaneDirective size={"35%"} min={"30%"} content={this.accordionElement.bind(this)} />
               <PaneDirective size={"65%"} min={"45%"} />
             </PanesDirective>
           </SplitterComponent>

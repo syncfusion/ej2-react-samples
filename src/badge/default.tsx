@@ -8,7 +8,7 @@ export class Default extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section default'>
+                <div className='control-section default badge-samples'>
                     <div className="sample_container badge-default">
                         <div className="e-btn-group e-custom-button">
                             <button id="update" className="e-btn">Updates

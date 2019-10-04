@@ -94,7 +94,16 @@
         }
         
     }
-
+.e-outline.e-float-input,
+.e-outline.e-float-input.e-control-wrapper {
+    margin-top: 0;
+}
+.fabric .row.material2,
+.bootstrap .row.material2,
+.bootstrap4 .row.material2,
+.highcontrast .row.material2 {
+    display: none;
+}
 .control-section.input-content-wrapper .col-xs-12.col-sm-12.col-lg-12.col-md-12 {
     padding: 0px 15px;
 }

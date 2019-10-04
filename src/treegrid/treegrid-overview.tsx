@@ -11,7 +11,7 @@ import './treegrid-overview.css';
 export class Overview extends SampleBase<{}, {}> {
   
   public gridTemplate(props): any { 
-    return (<div><div style={{display: 'inline-block'}}>
+    return (<div style={{display: 'inline'}}><div style={{display: 'inline-block'}}>
     <img className='e-image'></img>     
     </div><div style={{ display: 'inline-block', paddingLeft: '6px'}}>{props.name}</div></div>);
   }
@@ -125,7 +125,7 @@ export class Overview extends SampleBase<{}, {}> {
           allowFiltering='true' allowSorting='true' filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}
           queryCellInfo={this.queryCellinfo.bind(this)}>
             <ColumnsDirective>
-              <ColumnDirective field='name' headerText='Province' width='170' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
+              <ColumnDirective field='name' headerText='Province' width='190' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
               <ColumnDirective field='population' headerText='Populationf (Million)' allowFiltering={false} valueAccessor={this.populationValue} textAlign='Right' width='200'></ColumnDirective>
               <ColumnDirective field='gdp' headerText='GDP Rate %' width='145' template={this.gdptemplate} />
               <ColumnDirective field='rating' headerText='Credit Rating' width='190' template={this.ratingtemplate}  />

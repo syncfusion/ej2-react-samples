@@ -76,7 +76,7 @@ export class Funnel extends SampleBase<{}, {}> {
                   </td>
                   <td style={{ width: '70%' }}>
                     <div data-role="rangeslider">
-                      <input type="range" name="range-min" onChange={this.pyramidneckHeight.bind(this)} ref={s => this.slider = s} id="pyramidNeckHeight" defaultValue="0" min="0" max="50" style={{ marginLeft: '-5px' }} />
+                      <input type="range" name="range-min" onChange={this.pyramidneckHeight.bind(this)} ref={s => this.slider = s} id="pyramidNeckHeight" defaultValue="18" min="0" max="50" style={{ marginLeft: '-5px' }} />
                     </div>
                   </td>
                 </tr>

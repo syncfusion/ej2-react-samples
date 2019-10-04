@@ -1,13 +1,12 @@
 /**
  * RichTextEditor markdown overview sample
  */
-import * as ReactDOM from 'react-dom';
-import * as React from 'react';
-import { RichTextEditorComponent, MarkdownEditor, Inject, Toolbar, Image, Link, IToolbarItems, QuickToolbar, Table } from '@syncfusion/ej2-react-richtexteditor';
-import { MarkdownFormatter } from '@syncfusion/ej2-react-richtexteditor';
-import { SampleBase } from '../common/sample-base';
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
+import { Image, Inject, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, QuickToolbar, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import * as Marked from 'marked';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { SampleBase } from '../common/sample-base';
 import './markdown-editor.css';
 
 export class MarkDown extends SampleBase<{}, {}> {
@@ -25,24 +24,25 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
 
     // RichTextEditor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|',
-    'Formats', 'OrderedList', 'UnorderedList', '|',
-    'CreateLink', 'Image', 'CreateTable', '|',
-    {
-        tooltipText: 'Preview',
-        template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
-        '<span class="e-btn-icon e-md-preview e-icons"></span></button>'
-    }, '|', 'Undo', 'Redo'];
+        'Formats', 'OrderedList', 'UnorderedList', 'SuperScript', 'SubScript', '|',
+        'CreateLink', 'Image', 'CreateTable', '|',
+        {
+            tooltipText: 'Preview',
+            template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
+                '<span class="e-btn-icon e-md-preview e-icons"></span></button>'
+        }, '|', 'Undo', 'Redo'];
+
 
     private textArea: HTMLTextAreaElement;
     private mdsource: HTMLElement;
     private mdPreview: HTMLElement;
 
     //RichTextEditor ToolbarSettings
-    private toolbarSettings: object = {
+    private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
 
-    private formatter: object =  new MarkdownFormatter({ listTags: { 'OL': '1., 2., 3.'} });
+    private formatter: MarkdownFormatter = new MarkdownFormatter({ listTags: { 'OL': '1., 2., 3.' } });
 
     public markdownConversion(): void {
         if (this.mdsource.classList.contains('e-active')) {
@@ -82,10 +82,10 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
             this.fullPreview();
             if ((e.currentTarget as HTMLElement).classList.contains('e-active')) {
                 this.rteObj.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
-                'UnorderedList', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Undo', 'Redo']);
+                    'UnorderedList', 'SuperScript', 'SubScript', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Undo', 'Redo']);
             } else {
                 this.rteObj.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
-                'UnorderedList', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Undo', 'Redo']);
+                    'UnorderedList', 'SuperScript', 'SubScript', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Undo', 'Redo']);
             }
         });
     }
@@ -104,7 +104,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                 <div id="action-description">
                     <p>This sample demonstrates markdown editing in the rich text editor with complete features.</p>
                 </div>
-        
+
                 <div id="description">
                     <p>The rich text editor supports markdown editing when the <code>editorMode</code> is set to mode property of the RichTextEditor</p>
                     <p>The editor’s toolbar contains commands to format the markdown content. The toolbar consists of:</p>
@@ -118,8 +118,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                         <li><code>Tables</code> – Allows you to insert a table with header.</li>
                     </ul>
                     <p><b>Injecting Module</b></p>
-                    <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor</code> modules into the services.</p>
-
+                    <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, QuickToolbar, Table</code> modules into the services.</p>
                     <p>The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
                 </div>
             </div>

@@ -48,14 +48,14 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     let record: IGanttData = args.rowData;
     if (args.type !== 'Header') {
         if (!record.hasChildRecords) {
-            document.querySelectorAll('li#expandrow')[0].setAttribute('style', 'display: none;');
-            document.querySelectorAll('li#collapserow')[0].setAttribute('style', 'display: none;');
+          args.hideItems.push('Collapse the Row');
+          args.hideItems.push('Expand the Row');
         } else {
-            let flag: boolean = record.expanded;
-            let val: string = flag ? 'none' : 'block';
-            document.querySelectorAll('li#expandrow')[0].setAttribute('style', 'display: ' + val + ';');
-            val = !flag ? 'none' : 'block';
-            document.querySelectorAll('li#collapserow')[0].setAttribute('style', 'display: ' + val + ';');
+            if(record.expanded) {
+              args.hideItems.push('Expand the Row');
+            } else {
+                args.hideItems.push('Collapse the Row');
+            }
         }
     }
   }
@@ -63,10 +63,10 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
   private contextMenuClick(args: ContextMenuClickEventArgs): void {
     let record: IGanttData = args.rowData;
     if (args.item.id === 'collapserow') {
-        this.ganttInstance.collapseByID(record.ganttProperties.taskId);
+        this.ganttInstance.collapseByID(Number(record.ganttProperties.taskId));
     }
     if (args.item.id === 'expandrow') {
-        this.ganttInstance.expandByID(record.ganttProperties.taskId);
+        this.ganttInstance.expandByID(Number(record.ganttProperties.taskId));
     }
   }
   public contextMenuItems: (string | ContextMenuItemModel)[] = ['AutoFitAll', 'AutoFit', 'TaskInformation', 'DeleteTask', 'Save', 'Cancel',
