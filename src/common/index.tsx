@@ -34,7 +34,7 @@ L10n.load(Locale);
 setCulture('en');
 
 /**
- * Mobile View
+ * Mobile View.
  */
 let isMobile: boolean = window.matchMedia('(max-width:550px)').matches;
 /**
@@ -72,7 +72,7 @@ export let sidebar: Sidebar;
 let settingsidebar: Sidebar;
 
 /**
- * SB Popups
+ * SB Popups.
  */
 let switcherPopup: Popup;
 let themeSwitherPopup: Popup;
@@ -91,14 +91,15 @@ if (Browser.isDevice || isMobile) {
   if (sidebar) {
     sidebar.destroy();
   }
-  sidebar = new Sidebar({ width: '280px', showBackdrop: true, closeOnDocumentClick: true, enableGestures: false });
+  sidebar = new Sidebar({ width: '280px', showBackdrop: true, closeOnDocumentClick: true, enableGestures: false,change:resizeFunction  });
   sidebar.appendTo('#left-sidebar');
 } else {
   sidebar = new Sidebar({
     width: '282px', target: (document.querySelector('.sb-content ') as HTMLElement),
     showBackdrop: false,
     closeOnDocumentClick: false,
-    enableGestures: false
+    enableGestures: false,
+    change:resizeFunction
   });
   sidebar.appendTo('#left-sidebar');
 }
@@ -108,8 +109,8 @@ if (Browser.isDevice || isMobile) {
  */
 const urlRegex: RegExp = /(npmci\.syncfusion\.com|ej2\.syncfusion\.com)(\/)(development|production)*/;
 const sampleRegex: RegExp = /#\/(([^\/]+\/)+[^\/\.]+)/;
-const sbArray: string[] = ['angular', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc', 'vue'];
-const sbObj: { [index: string]: string } = { 'angular': 'angular', 'typescript': '', 'javascript': 'javascript', 'vue' : 'vue'};
+const sbArray: string[] = ['angular', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc', 'vue', 'blazor'];
+const sbObj: { [index: string]: string } = { 'angular': 'angular', 'typescript': '', 'javascript': 'javascript', 'vue' : 'vue', 'blazor': 'blazor'};
 
 /**
  * constant for search operations
@@ -360,6 +361,14 @@ function setMouseOrTouch(e: MouseEvent): void {
   localStorage.setItem('ej2-switch', switchType);
   location.reload();
 }
+
+function resizeFunction(): void {
+  if (!isMobile && !isTablet) {
+      resizeManualTrigger = true;
+      setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 200);
+  }
+}
+
 function resetInput(arg: MouseEvent): void {
   arg.preventDefault();
   arg.stopPropagation();
@@ -644,14 +653,10 @@ export function toggleLeftPane(): void {
       sidebar.hide();
       if (!isMobile && !isTablet) {
         resizeManualTrigger = true;
-        setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 200);
       }
     } else {
       sidebar.show();
       resizeManualTrigger = true;
-      if (!isMobile && !isTablet) {
-        setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 200);
-      }
     }
   }
 }

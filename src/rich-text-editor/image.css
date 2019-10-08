@@ -19,10 +19,6 @@
     width: 100%;
 }
 
-#rteImage {
-    overflow: hidden;
-}
-
 #rteImage .content-wrapper {
     width: auto;
     margin: 0;

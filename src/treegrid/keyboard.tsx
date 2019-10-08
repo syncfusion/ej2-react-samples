@@ -23,10 +23,10 @@ export class KeyBoard extends SampleBase<{}, {}> {
               editSettings={this.editSettings}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='90' textAlign='Right'></ColumnDirective>
-                <ColumnDirective field='taskName' headerText='Task Name' width='230'
+                <ColumnDirective field='taskName' headerText='Task Name' width='240'
                   validationRules={this.validationRule}></ColumnDirective>
                 <ColumnDirective field='startDate' headerText='Start Date' format='yMd' textAlign='Right' editType='datepickeredit'
-                  validationRules={this.validationRule1} width='160' />
+                  validationRules={this.validationRule1} width='105' />
                 <ColumnDirective field='duration' headerText='Duration' width='120' textAlign='Right' editType='numericedit' 
                   edit={this.editparams} validationRules={this.validationRule2} />
                 <ColumnDirective field='progress' headerText='Progress' width='130' textAlign='Right' editType='numericedit'

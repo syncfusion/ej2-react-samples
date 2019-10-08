@@ -284,7 +284,7 @@ export class Serialization extends SampleBase<{}, {}> {
           className="control-section"
         >
           <ToolbarComponent
-            id="toolbar"
+            id="toolbar_diagram"
             style={{ width: "100%", height: "10%", marginTop: "10px" }}
             clicked={(args: ClickEventArgs) => {
               if (args.item.text === "New") {

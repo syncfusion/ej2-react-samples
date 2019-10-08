@@ -56,8 +56,8 @@ export class ArrayCell extends SampleBase<{}, {}> {
                         yAxis={{
                             labels: ['2000', '2005', '2010', '2011', '2012', '2013', '2014'],
                         }}
-                        dataSource={{
-                            data: this.arrayCellData,
+                        dataSource={this.arrayCellData}
+                        dataSourceSettings={{
                             isJsonData: false,
                             adaptorType: 'Cell'
                         }}

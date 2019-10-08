@@ -27,7 +27,7 @@ export class AccumulationDoughnut extends SampleBase<{}, {}> {
                         }}
                         enableSmartLabels={true}
                         load={this.load.bind(this)}
-                        tooltip={{ enable: false }}
+                        tooltip={{ enable: true }}
                         loaded={this.onChartLoad.bind(this)}
                     >
                         <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel]} />
@@ -50,7 +50,8 @@ export class AccumulationDoughnut extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample visualizes the project cost breakdown statistics by using doughnut series. Datalabel shows the Information about the points. 
+                This sample visualizes the project cost breakdown statistics by using doughnut series. Datalabel shows the Information about the points.
+                While hovering on the slice, border will be highlighted.
             </p>
                 </div>
                 <div id="description">

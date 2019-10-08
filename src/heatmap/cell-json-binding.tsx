@@ -113,14 +113,14 @@ export class JsonCell extends SampleBase<{}, {}> {
                         yAxis={{
                             labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016'],
                         }}
-                        dataSource={{
-                            data: this.jsonCellData,
+                        dataSourceSettings={{
                             isJsonData: true,
                             adaptorType: 'Cell',
                             xDataMapping: 'rowid',
                             yDataMapping: 'columnid',
                             valueMapping: 'value'
                         }}
+                        dataSource={this.jsonCellData}
                         cellSettings={{
                             border: {
                                 radius: 4,

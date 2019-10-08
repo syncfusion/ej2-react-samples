@@ -83,8 +83,8 @@ export class ColorAndSizeAttributes extends SampleBase<{}, {}> {
                         yAxis={{
                             labels:  ['Jan-Feb', 'Mar-Apr', 'May-Jun', 'Jul-Aug', 'Sep-Oct', 'Nov-Dec'],
                         }}
-                        dataSource={{
-                            data: this.jsonCellBubbleData,
+                        dataSource={this.jsonCellBubbleData}
+                        dataSourceSettings={{
                             isJsonData: true,
                             adaptorType: 'Cell',
                             xDataMapping: 'Year',

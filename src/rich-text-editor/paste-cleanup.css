@@ -8,10 +8,6 @@
     margin-top: 3px;
 }
 
-#defaultPasteCleanup {
-    overflow: hidden;
-}
-
 #rteAPIProperty .property-panel-content {
     overflow: inherit;
 }

@@ -159,7 +159,7 @@ export class Crud extends SampleBase<{}, {}> {
       <div className='control-section'>
         <div style= {{width: '100%', height: '10%'}}>
           <ToolbarComponent
-            id='toolbar'
+            id='toolbar_diagram'
             ref={toolbar => (toolbarObj = toolbar)}
             items={[
               {

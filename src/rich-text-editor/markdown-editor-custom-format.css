@@ -2,10 +2,6 @@
     float: left;
 }
 
-#rteCustomFormat .e-richtexteditor .e-rte-content {
-    overflow: hidden;
-}
-
 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
     content: '\e350';
 }
@@ -36,10 +32,6 @@
 #rteCustomFormat .e-richtexteditor .e-rte-content .e-content {
     float: left;
     width: 100%;
-}
-
-#rteCustomFormat {
-    overflow: hidden;
 }
 
 #rteCustomFormat .content-wrapper {

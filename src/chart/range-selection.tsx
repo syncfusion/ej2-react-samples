@@ -38,14 +38,23 @@ const SAMPLE_CSS = `
 export class RangeSelection extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
     private dropElement: DropDownListComponent;
+    private checkElement: HTMLInputElement;
     private droplist: { [key: string]: Object }[] = [
         { value: 'DragXY' },
         { value: 'DragX' },
         { value: 'DragY' },
-        { value: 'None' }
+        { value: 'Lasso' }
     ];
     private change(): void {
         this.chartInstance.selectionMode = this.dropElement.value as SelectionMode;
+        this.chartInstance.series[0].animation.enable = false;
+        this.chartInstance.series[1].animation.enable = false;
+        this.chartInstance.refresh();
+    }
+    private check(): void {
+        this.chartInstance.allowMultiSelection = this.checkElement.checked;
+        this.chartInstance.series[0].animation.enable = false;
+        this.chartInstance.series[1].animation.enable = false;
         this.chartInstance.refresh();
     }
 
@@ -104,6 +113,14 @@ export class RangeSelection extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                 </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '80%' }}>
+                                        <div>Enable MultipleSelection:</div>
+                                    </td>
+                                    <td style={{ width: '20%' }}>
+                                        <div><input type="checkbox" id="select" onChange={this.check.bind(this)} ref={d => this.checkElement = d} /></div>
+                                    </td>
+                                </tr>
                             </table>
                         </PropertyPane>
                     </div>
@@ -122,7 +139,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                     <p>
                         Tap to select a point or series, double tap and drag to enable rectangular selection in touch enabled devices.
             </p>
-                    <p>Chart supports five mode of selection which can be set using <code>SelectionMode</code> property.
+                    <p>Chart supports seven mode of selection which can be set using <code>SelectionMode</code> property.
             </p>
                     <ul>
                         <li><code>Series</code> - Select the series in chart.</li>
@@ -131,6 +148,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                         <li><code>DragXY</code> - Rectangular selection with respect to both axis.</li>
                         <li><code>DragX</code> - Rectangular selection with respect to horizontal axis.</li>
                         <li><code>DragY</code> - Rectangular selection with respect to vertical axis.</li>
+                        <li><code>Lasso</code> - Select free form of selection area points.</li>
                     </ul>
                     <br />
                     <p style={{ "font-weight": 500 }}>Injecting Module</p>

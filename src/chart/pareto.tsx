@@ -51,7 +51,7 @@ export class ParetoChart extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample illustrates a pareto chart with line and column series. Trackball shows the information about the data point closest to the mouse
+                This sample illustrates a Pareto chart with line and column series. Trackball shows the information about the data point closest to the mouse
             </p>
                 </div>
                 <div id="description">
@@ -68,7 +68,7 @@ export class ParetoChart extends SampleBase<{}, {}> {
             </p>
                     <p>
                         More information on the series can be found in this
-                         <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/chartSeriesType/"> documentation section</a>.
                      </p>
                 </div>
             </div>

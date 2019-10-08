@@ -31,7 +31,7 @@ export class Pie extends SampleBase<{}, {}> {
               enableSmartLabels={true}
               enableAnimation={false}
               center={{x: '50%', y: '50%'}}
-              tooltip={{ enable: false, format: '${point.x} : <b>${point.y}%</b>' }}
+              tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
               loaded={this.onChartLoad.bind(this)}
             >
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
@@ -133,6 +133,7 @@ export class Pie extends SampleBase<{}, {}> {
         <div id="action-description">
         <p>
         This sample demonstrates pie chart for mobile browser usage statistics. <code>Datalabel</code> shows the Information about the points.
+        While hovering on the slice, border will be highlighted.
     </p>
         </div>
         <div id="description">

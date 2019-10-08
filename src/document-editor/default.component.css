@@ -141,16 +141,3 @@ body {
     margin: 1px 10px 1px 0px;
     border-top: 1px solid #eee;
 }
-
-.property-panel-table div {
-    padding-left: 0px;
-}
-
-.heading-section {
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
-
-.control-label {
-    padding-bottom: 15px;
-}

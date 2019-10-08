@@ -2,10 +2,6 @@
     margin: 0 auto;
 }
 
-#rteTools {
-    overflow: hidden;
-}
-
 #rteTools .e-code-mirror::before {
     content: '\e345';
 }

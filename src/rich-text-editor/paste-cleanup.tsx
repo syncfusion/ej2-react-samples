@@ -1,85 +1,88 @@
 /**
  * RichTextEditor Paste Cleanup sample
  */
-import * as ReactDOM from 'react-dom';
+import { DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
+import { Count, HtmlEditor, Image, Inject, Link, PasteCleanup, PasteCleanupSettingsModel, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
-import { DropDownList } from '@syncfusion/ej2-react-dropdowns';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor, Count, QuickToolbar, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
-import { SampleBase } from '../common/sample-base';
+import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
+import { SampleBase } from '../common/sample-base';
 import './paste-cleanup.css';
 
 export class PasteCleanupRTE extends SampleBase<{}, {}> {
 
     private rteObj: RichTextEditorComponent;
-    private pasteCleanupSettings: object = {
+    private formatOption: DropDownListComponent;
+    private pasteCleanupSettings: PasteCleanupSettingsModel = {
         prompt: true,
         plainText: false,
         keepFormat: false
     };
-    public rendereComplete(): void {
-        let formatOption: DropDownList = new DropDownList({
-            index: 0,
-            popupHeight: '200px',
-            change: () => { 
-                if (formatOption.value === 'prompt') {
-                    this.rteObj.pasteCleanupSettings.prompt = true;
-                } else if (formatOption.value === 'plainText') {
-                    this.rteObj.pasteCleanupSettings.prompt = false;
-                    this.rteObj.pasteCleanupSettings.plainText = true;
-                } else if (formatOption.value === 'keepFormat') {
-                    this.rteObj.pasteCleanupSettings.prompt = false;
-                    this.rteObj.pasteCleanupSettings.plainText = false;
-                    this.rteObj.pasteCleanupSettings.keepFormat = true;
-                } else if (formatOption.value === 'cleanFormat') {
-                    this.rteObj.pasteCleanupSettings.prompt = false;
-                    this.rteObj.pasteCleanupSettings.plainText = false;
-                    this.rteObj.pasteCleanupSettings.keepFormat = false;
-                }
-                this.rteObj.dataBind();
-            }
-        });
-        formatOption.appendTo('#formattingOption');
-        let allowedStylePropsElem: HTMLElement = document.getElementById('allowedStyleProperties');
-        let deniedTagsElem: HTMLElement = document.getElementById('deniedTags');
-        let deniedAttrsElem: HTMLElement = document.getElementById('deniedAttributes');
-        allowedStylePropsElem.addEventListener('blur', (e: FocusEvent) => {
-            this.rteObj.pasteCleanupSettings.allowedStyleProps = (eval)('[' + (e.target as HTMLInputElement).value + ']' );
-            this.rteObj.dataBind();
-        });
-        deniedAttrsElem.addEventListener('blur', (e: FocusEvent) => {
-            this.rteObj.pasteCleanupSettings.deniedAttrs = (eval)('[' + (e.target as HTMLInputElement).value + ']' );
-            this.rteObj.dataBind();
-        });
-        deniedTagsElem.addEventListener('blur', (e: FocusEvent) => {
-            this.rteObj.pasteCleanupSettings.deniedTags = (eval)('[' + (e.target as HTMLInputElement).value + ']' );
-            this.rteObj.dataBind();
-        });
+    private allowedStylePropertiesEle: HTMLInputElement;
+    private allowedStylePropertiesRef: React.Ref<HTMLInputElement>;
+    private deniedTagsEle: HTMLInputElement;
+    private deniedTagsRef: React.Ref<HTMLInputElement>;
+    private deniedAttributesEle: HTMLInputElement;
+    private deniedAttributesRef: React.Ref<HTMLInputElement>;
+
+    constructor(props) {
+        super(props);
+        this.allowedStylePropertiesEle = null;
+        this.allowedStylePropertiesRef = element => {
+            this.allowedStylePropertiesEle = element;
+        };
+        this.deniedTagsEle = null;
+        this.deniedTagsRef = element => {
+            this.deniedTagsEle = element;
+        };
+        this.deniedAttributesEle = null;
+        this.deniedAttributesRef = element => {
+            this.deniedAttributesEle = element;
+        };
     }
 
-    // set the value to RichTextEditor
-    private template: string = `<p>RichTextEditor is a WYSIWYG editing control which will reduce the effort for users while trying to express their formatting word content as HTML or Markdown format.</p>
-    <p><b>Paste cleanup properties:</b></p>
-    <ul>
-        <li>
-            <p>prompt - specifies whether to enable the prompt when pasting in RichTextEditor.</p>
-        </li>
-        <li>
-            <p>plainText - specifies whether to paste as plain text or not in RichTextEditor.</p>
-        </li>
-        <li>
-            <p>keepFormat- specifies whether to keep or remove the format when pasting in RichTextEditor.</p>
-        </li>
-        <li>
-            <p>deniedTags - specifies the tags to restrict when pasting in RichTextEditor.</p>
-        </li>
-        <li>
-            <p>deniedAttributes - specifies the attributes to restrict when pasting in RichTextEditor.</p>
-        </li>
-        <li>
-            <p>allowedStyleProperties - specifies the allowed style properties when pasting in RichTextEditor.</p>
-        </li>
-    </ul>`;
+    private popupHeight: string = '200px';
+    private value: string = "prompt";
+    private fields: FieldSettingsModel = { text: "text", value: "value" };
+    private formatData: { [key: string]: Object }[] = [
+        { text: 'Prompt', value: 'prompt' },
+        { text: 'Plain Text', value: 'plainText' },
+        { text: 'Keep Format', value: 'keepFormat' },
+        { text: 'Clean Format', value: 'cleanFormat' }
+    ];
+
+    private formatChange = (): void => {
+        if (this.formatOption.value === 'prompt') {
+            this.rteObj.pasteCleanupSettings.prompt = true;
+        } else if (this.formatOption.value === 'plainText') {
+            this.rteObj.pasteCleanupSettings.prompt = false;
+            this.rteObj.pasteCleanupSettings.plainText = true;
+        } else if (this.formatOption.value === 'keepFormat') {
+            this.rteObj.pasteCleanupSettings.prompt = false;
+            this.rteObj.pasteCleanupSettings.plainText = false;
+            this.rteObj.pasteCleanupSettings.keepFormat = true;
+        } else if (this.formatOption.value === 'cleanFormat') {
+            this.rteObj.pasteCleanupSettings.prompt = false;
+            this.rteObj.pasteCleanupSettings.plainText = false;
+            this.rteObj.pasteCleanupSettings.keepFormat = false;
+        }
+    }
+
+    public rendereComplete(): void {
+
+        let allowedStylePropsElem: HTMLElement = this.allowedStylePropertiesEle;
+        let deniedTagsElem: HTMLElement = this.deniedTagsEle;
+        let deniedAttrsElem: HTMLElement = this.deniedAttributesEle;
+        allowedStylePropsElem.addEventListener('blur', (e: FocusEvent) => {
+            this.rteObj.pasteCleanupSettings.allowedStyleProps = (eval)('[' + (e.target as HTMLInputElement).value + ']');
+        });
+        deniedAttrsElem.addEventListener('blur', (e: FocusEvent) => {
+            this.rteObj.pasteCleanupSettings.deniedAttrs = (eval)('[' + (e.target as HTMLInputElement).value + ']');
+        });
+        deniedTagsElem.addEventListener('blur', (e: FocusEvent) => {
+            this.rteObj.pasteCleanupSettings.deniedTags = (eval)('[' + (e.target as HTMLInputElement).value + ']');
+        });
+    }
 
     render() {
         return (
@@ -87,8 +90,30 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                 <div className='col-lg-8'>
                     <div className='control-section' id="rteAPI">
                         <div className='rte-control-section'>
-                            <RichTextEditorComponent id="defaultPasteCleanup" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
-                                valueTemplate={this.template} pasteCleanupSettings={this.pasteCleanupSettings}>
+                            <RichTextEditorComponent id="PasteCleanup" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
+                                pasteCleanupSettings={this.pasteCleanupSettings}>
+                                <p>RichTextEditor is a WYSIWYG editing control which will reduce the effort for users while trying to express their formatting word content as HTML or Markdown format.</p>
+                                <p><b>Paste cleanup properties:</b></p>
+                                <ul>
+                                    <li>
+                                        <p>prompt - specifies whether to enable the prompt when pasting in RichTextEditor.</p>
+                                    </li>
+                                    <li>
+                                        <p>plainText - specifies whether to paste as plain text or not in RichTextEditor.</p>
+                                    </li>
+                                    <li>
+                                        <p>keepFormat- specifies whether to keep or remove the format when pasting in RichTextEditor.</p>
+                                    </li>
+                                    <li>
+                                        <p>deniedTags - specifies the tags to restrict when pasting in RichTextEditor.</p>
+                                    </li>
+                                    <li>
+                                        <p>deniedAttributes - specifies the attributes to restrict when pasting in RichTextEditor.</p>
+                                    </li>
+                                    <li>
+                                        <p>allowedStyleProperties - specifies the allowed style properties when pasting in RichTextEditor.</p>
+                                    </li>
+                                </ul>
                                 <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, PasteCleanup]} />
                             </RichTextEditorComponent>
                         </div>
@@ -99,15 +124,10 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                         <table id="property" title="Properties" className="pasteStyle" style={{ width: '100%', margin: '10px' }}>
                             <tbody>
                                 <tr>
-                                <td style={{ padding: '8px', width: '50%' }}><div>Prompt </div></td>
+                                    <td style={{ padding: '8px', width: '50%' }}><div>Prompt </div></td>
                                     <td>
                                         <div style={{ paddingLeft: '10px' }}>
-                                            <select id="formattingOption"> 
-                                                <option value="prompt">Prompt</option>
-                                                <option value="plainText">Plain Text</option>
-                                                <option value="keepFormat">Keep Format</option>
-                                                <option value="cleanFormat">Clean Format</option>
-                                            </select>
+                                            <DropDownListComponent id="formattingOption" dataSource={this.formatData} ref={(dropdownlist) => { this.formatOption = dropdownlist }} fields={this.fields} change={this.formatChange.bind(this)} value={this.value} popupHeight={this.popupHeight} />
                                         </div>
                                     </td>
                                 </tr>
@@ -115,7 +135,7 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                                     <td style={{ padding: '8px', width: '50%' }}><div>Denied Tags </div></td>
                                     <td>
                                         <div style={{ paddingLeft: '10px' }}>
-                                            <input type="text" id="deniedTags" className="e-input" placeholder="'img[!href]', 'h1'" />
+                                            <input type="text" id="deniedTags" ref={this.deniedTagsRef} className="e-input" placeholder="'img[!href]', 'h1'" />
                                         </div>
                                     </td>
                                 </tr>
@@ -123,7 +143,7 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                                     <td style={{ padding: '8px', width: '50%' }}><div>Denied Attributes </div></td>
                                     <td>
                                         <div style={{ paddingLeft: '10px' }}>
-                                            <input id="deniedAttributes" type="text" className="e-input" placeholder="'id', 'title'" />
+                                            <input id="deniedAttributes" ref={this.deniedAttributesRef} type="text" className="e-input" placeholder="'id', 'title'" />
                                         </div>
                                     </td>
                                 </tr>
@@ -131,7 +151,7 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                                     <td style={{ padding: '8px', width: '50%' }}><div>Allowed Style Properties </div></td>
                                     <td>
                                         <div style={{ paddingLeft: '10px' }}>
-                                            <input id="allowedStyleProperties" type="text" className="e-input" placeholder="'href', 'style'" />
+                                            <input id="allowedStyleProperties" ref={this.allowedStylePropertiesRef} type="text" className="e-input" placeholder="'href', 'style'" />
                                         </div>
                                     </td>
                                 </tr>
@@ -167,13 +187,13 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                                 <li><code>['a[href, target]']</code> - paste the content by filtering anchor tags that have the 'href' and 'target' attributes.</li>
                             </ul>
                         </li>
-                        <br/>
+                        <br />
                         <li>Fill the <code>denied attributes</code> to paste the content by filtering out these attributes from the content. For example:
                             <ul>
                                 <code>['id', 'title']</code> - This will remove the attributes 'id' and 'title' from all tags.
                             </ul>
                         </li>
-                        <br/>
+                        <br />
                         <li>Fill the <code>allowed style properties</code> to paste the content by accepting these style attributes and removing other attributes. For example:
                             <ul>
                                 <code>['color', 'margin']</code> - This will allow only the style properties 'color' and 'margin' in each pasted element.
@@ -181,7 +201,7 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                         </li>
                     </ul>
                     <p><b>Injecting Module</b></p>
-                    <p>The previous features were built as modules to be included in your application. For example, inject the <code>'PasteCleanup'</code> module using <code>RichTextEditor.Inject (Toolbar, Link, Image, Count, HtmlEditor, PasteCleanup)</code> to use the paste cleanup feature.</p>
+                    <p>The previous features were built as modules to be included in your application. For example, inject the <code>'PasteCleanup'</code> module using <code>RichTextEditor.Inject (Toolbar, Link, Image, QuickToolbar, Count, HtmlEditor, PasteCleanup)</code> to use the paste cleanup feature.</p>
                 </div>
             </div>
         );

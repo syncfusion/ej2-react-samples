@@ -92,14 +92,14 @@ export class Candle extends SampleBase<{}, {}> {
                             </AxisDirective>
                         </AxesDirective>
                         <SeriesCollectionDirective>
-                        <SeriesDirective type='Candle' yAxisName='secondary' bearFillColor='#2ecd71' bullFillColor='#e74c3d'
-                                dataSource={chartData} animation={{ enable: true }}
-                                xName='x' low='low' high='high' open='open' close='close' name='Apple Inc'
-                                volume='volume'>
-                            </SeriesDirective>
                             <SeriesDirective type='Column'
                                 dataSource={chartData} animation={{ enable: true }} xName='x' yName='volume'
                                 name='Volume'>
+                            </SeriesDirective>
+                            <SeriesDirective type='Candle' yAxisName='secondary' bearFillColor='#2ecd71' bullFillColor='#e74c3d'
+                                dataSource={chartData} animation={{ enable: true }}
+                                xName='x' low='low' high='high' open='open' close='close' name='Apple Inc'
+                                volume='volume'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>

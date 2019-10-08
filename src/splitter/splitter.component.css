@@ -24,9 +24,9 @@
       text-align: initial;
 }
 
-.splitter-content {
+#defaultSplitter .e-splitter .e-pane,
+#defaultSplitter .e-splitter .splitter-content  {
     align-items: center;
     justify-content: center;
     display: flex;
 }
-

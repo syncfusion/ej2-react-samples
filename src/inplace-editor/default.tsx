@@ -1,11 +1,14 @@
-import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
-import { InPlaceEditorComponent } from '@syncfusion/ej2-react-inplace-editor';
+import { InPlaceEditorComponent, RenderMode, EditableType } from '@syncfusion/ej2-react-inplace-editor';
+import { TextBoxModel, NumericTextBoxModel, MaskedTextBoxModel } from '@syncfusion/ej2-react-inputs';
+import { FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
 import { DropDownListComponent, ChangeEventArgs as dropdownsChange } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import './inplace.component.css';
+import { PopupSettingsModel } from '@syncfusion/ej2-inplace-editor/src/inplace-editor/base/models-model';
 
 // tslint:disable:max-line-length
 
@@ -14,70 +17,71 @@ export class Default extends SampleBase<{}, {}> {
     private numericObj: InPlaceEditorComponent;
     private maskObj: InPlaceEditorComponent;
     private editableon: DropDownListComponent
-    
-    private textModel: object = { placeholder: 'Enter employee name' };
+    private editorMode: DropDownListComponent
 
-    private popupSettings: object = { title: 'Enter Employee Name' };
+    private textModel: TextBoxModel = { placeholder: 'Enter employee name' };
 
-    private numericModel: object = { format: 'c2', value: 100, placeholder: 'Currency format' };
+    private popupSettings: PopupSettingsModel = { title: 'Enter Employee Name' };
 
-    private maskModel: object = { mask: '000-000-0000' };
+    private numericModel: NumericTextBoxModel = { format: 'c2', value: 100, placeholder: 'Currency format' };
+
+    private maskModel: MaskedTextBoxModel = { mask: '000-000-0000' };
 
     // Mapping DropDownList dataSource property
     private dropDownData: { [key: string]: Object }[] = [
-        {'value':'inline', 'text': 'Inline'}, {'value':'popup', 'text': 'Popup'}
+        { 'value': 'Inline', 'text': 'Inline' }, { 'value': 'popup', 'text': 'Popup' }
     ];
 
     // Mapping DropDownList fields property
-    private dropDownFields: object = { text: 'text', value: 'value' };
+    private dropDownFields: FieldSettingsModel = { text: 'text', value: 'value' };
 
     // Mapping DropDownList value property
-    private dropDownVal: string = 'inline';
+    private dropDownVal: string = 'Inline';
 
     // Mapping DropDownList dataSource property
     private editableData: { [key: string]: Object }[] = [
-        {'value':'Click', 'text': 'Click'}, {'value':'DblClick', 'text': 'Double Click'}, {'value':'EditIconClick', 'text': 'Edit Icon Click'}
+        { 'value': 'Click', 'text': 'Click' }, { 'value': 'DblClick', 'text': 'Double Click' }, { 'value': 'EditIconClick', 'text': 'Edit Icon Click' }
     ];
 
     // Mapping DropDownList fields property
-    private editableFields: object = { text: 'text', value: 'value' };
+    private editableFields: FieldSettingsModel = { text: 'text', value: 'value' };
 
     // Mapping DropDownList value property
     private editableVal: string = 'Click';
 
     // Change event funtion for DropDownList component   
     public changeEditorMode(e: dropdownsChange): void {
-        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
-        this.textObj.mode  = this.numericObj.mode =  this.maskObj.mode = mode as any;
+        let mode: string = this.editorMode.value as string;
+        this.textObj.mode = this.numericObj.mode = this.maskObj.mode = mode as RenderMode;
         this.textObj.dataBind();
         this.numericObj.dataBind();
         this.maskObj.dataBind();
     }
 
-    rendereComplete () {
+    rendereComplete(): void {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
-        rightPane.addEventListener( 'scroll', ()=> {
-        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
-        if (mode === 'Inline') {
-        return;
+            rightPane.addEventListener('scroll', () => {
+                let mode: string = this.editorMode.value as string;
+                if (mode === 'Inline') {
+                    return;
+                }
+                if (this.textObj && (this.textObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+                    this.textObj.enableEditMode = false;
+                }
+                if (this.numericObj && (this.numericObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+                    this.numericObj.enableEditMode = false;
+                }
+                if (this.maskObj && (this.maskObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+                    this.maskObj.enableEditMode = false;
+                }
+            });
         }
-        if (this.textObj && (this.textObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-            this.textObj.enableEditMode = false;
-        }
-        if (this.numericObj && (this.numericObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-            this.numericObj.enableEditMode = false;
-        }
-        if (this.maskObj && (this.maskObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-        this.maskObj.enableEditMode = false;
-        }
-        });
-        }
-        }
+    }
     // Change event funtion for DropDownList component   
     public onEditableOn(e: dropdownsChange): void {
         let editableValue: string = this.editableon.value as string;
-        this.textObj.editableOn = this.numericObj.editableOn =  this.maskObj.editableOn = editableValue as any;
+        this.textObj.editableOn = this.numericObj.editableOn = this.maskObj.editableOn = editableValue as EditableType;
         this.textObj.dataBind();
         this.numericObj.dataBind();
         this.maskObj.dataBind();
@@ -100,18 +104,18 @@ export class Default extends SampleBase<{}, {}> {
                         <table>
                             <tr>
                                 <td>
-                                    <label className="control-label" style={{ 'text-align': 'left ', 'font-size': '14px', 'fontWeight': 400 }}>
-                                    TextBox </label>
+                                    <label className="control-label" style={{ textAlign: 'left', fontSize: '14px', fontWeight: 400 }}>
+                                        TextBox </label>
                                 </td>
                                 <td>
-                                    <InPlaceEditorComponent ref={(text) => { this.textObj = text }} id='inplace_editor' mode='Inline' type='Text' value='Andrew' model={this.textModel} popupSettings={this.popupSettings} >
+                                    <InPlaceEditorComponent ref={(text) => { this.textObj = text }} id='textboxEle' mode='Inline' type='Text' value='Andrew' model={this.textModel} popupSettings={this.popupSettings} >
                                     </InPlaceEditorComponent>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <label className="control-label" style={{ 'text-align': 'left ', 'font-size': '14px', 'fontWeight': 400 }}>
-                                    NumericTextBox </label>
+                                    <label className="control-label" style={{ textAlign: 'left', fontSize: '14px', fontWeight: 400 }}>
+                                        NumericTextBox </label>
                                 </td>
                                 <td>
                                     <InPlaceEditorComponent ref={(numeric) => { this.numericObj = numeric }} id='numericTextBoxEle' mode='Inline' type='Numeric' value='$100.00' model={this.numericModel}  >
@@ -120,8 +124,8 @@ export class Default extends SampleBase<{}, {}> {
                             </tr>
                             <tr>
                                 <td>
-                                    <label className="control-label" style={{ 'text-align': 'left ', 'font-size': '14px', 'fontWeight': 400 }}>
-                                    MaskedTextBox </label>
+                                    <label className="control-label" style={{ textAlign: 'left', fontSize: '14px', fontWeight: 400 }}>
+                                        MaskedTextBox </label>
                                 </td>
                                 <td>
                                     <InPlaceEditorComponent ref={(mask) => { this.maskObj = mask }} id='maskedTextBoxEle' mode='Inline' type='Mask' value='012-345-6789' model={this.maskModel}  >
@@ -132,58 +136,58 @@ export class Default extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div className='col-lg-4 property-section' id="defaultProperty">
-                  <PropertyPane title='Properties'>
-                    <table id="property" title="Properties" className="property-panel-table">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>Mode</div>
-                                </td>
-                                <td>
-                                    <div>
-                                        {/* Render the DropDownList Component */}
-                                        <DropDownListComponent  id='editorMode' className='form-control' dataSource={this.dropDownData} fields={this.dropDownFields} 
-                                        value={this.dropDownVal} width={'90%'} change={this.changeEditorMode.bind(this)}  />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>Editable On</div>
-                                </td>
-                                <td>
-                                    <div>
-                                        {/* Render the DropDownList Component */}
-                                        <DropDownListComponent ref={(edit) => { this.editableon = edit }}  id='editableon' className='form-control' dataSource={this.editableData} fields={this.editableFields} 
-                                        value={this.editableVal} width={'90%'} change={this.onEditableOn.bind(this)}  />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>Show Buttons</div>
-                                </td>
-                                <td>
-                                    <div>
-                                        {/* Render the CheckBox Component */}
-                                        <CheckBoxComponent id='showbuttons' checked={true} labelPosition='Before' change={this.onChange.bind(this) } />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>Disable</div>
-                                </td>
-                                <td>
-                                    <div>
-                                        {/* Render the CheckBox Component */}
-                                        <CheckBoxComponent id='editorEnable' checked={false} labelPosition='Before' change={this.onChangeEnable.bind(this) } />
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                  </PropertyPane>
+                    <PropertyPane title='Properties'>
+                        <table id="property" title="Properties" className="property-panel-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div>Mode</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {/* Render the DropDownList Component */}
+                                            <DropDownListComponent ref={(edit) => { this.editorMode = edit }} id='editorMode' className='form-control' dataSource={this.dropDownData} fields={this.dropDownFields}
+                                                value={this.dropDownVal} width={'90%'} change={this.changeEditorMode.bind(this)} />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>Editable On</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {/* Render the DropDownList Component */}
+                                            <DropDownListComponent ref={(edit) => { this.editableon = edit }} id='editableon' className='form-control' dataSource={this.editableData} fields={this.editableFields}
+                                                value={this.editableVal} width={'90%'} change={this.onEditableOn.bind(this)} />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>Show Buttons</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {/* Render the CheckBox Component */}
+                                            <CheckBoxComponent id='showbuttons' checked={true} labelPosition='Before' change={this.onChange.bind(this)} />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>Disable</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {/* Render the CheckBox Component */}
+                                            <CheckBoxComponent id='editorEnable' checked={false} labelPosition='Before' change={this.onChangeEnable.bind(this)} />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </PropertyPane>
                 </div>
                 <div id="action-description">
                     <p>
@@ -192,7 +196,7 @@ export class Default extends SampleBase<{}, {}> {
                         switch to the editable state and save or cancel it by clicking the actions buttons.
                     </p>
                 </div>
-               <div id="description">
+                <div id="description">
                     <p>
                         The <code>In-place Editor</code> component is used to edit values in place and update them to the server.
                     </p>
@@ -204,11 +208,11 @@ export class Default extends SampleBase<{}, {}> {
                         <ul>
                             <li>
                                 <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/inplace-editor/#mode">
-                                Inline</a>
+                                    Inline</a>
                             </li>
                             <li>
                                 <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/inplace-editor/#mode">
-                                Pop-up</a>
+                                    Pop-up</a>
                             </li>
                         </ul>
                     </p>
@@ -230,7 +234,7 @@ export class Default extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information on the <code>In-place Editor</code> instantiation can be found in the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/inplace-editor/getting-started/">
-                        documentation section</a>.
+                            documentation section</a>.
                     </p>
                 </div>
             </div>

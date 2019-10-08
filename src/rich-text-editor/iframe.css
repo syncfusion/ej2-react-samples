@@ -12,10 +12,6 @@
     width: 100%;
 }
 
-#rteIFrame {
-    overflow: hidden;
-}
-
 #rteIFrame .content-wrapper {
     width: auto;
     margin: 0;

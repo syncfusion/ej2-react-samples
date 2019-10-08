@@ -20,7 +20,7 @@
     margin: 4px;
 }
 
-.code-editor .splitter-content {
+.code-editor .splitter-editor-content {
     padding: 12px;
 }
 .code-editor .splitter-image {
@@ -30,6 +30,6 @@
     margin-top: 10px;
 }
 
-.e-pane #splitter1 {
+#codeEditor {
     border: none;
 }

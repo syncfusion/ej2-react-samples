@@ -11,7 +11,7 @@ export class Accordion extends SampleBase<{}, {}> {
 
     public accordionTemplate(): JSX.Element {
         return (
-            <div style={{ display: 'none' }}>
+            <div>
                 <li className='msg'>
                     <span className='e-acrdn-icons e-content-icon people'></span>
                     Message Thread
@@ -38,7 +38,7 @@ export class Accordion extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section badge-samples'>
                     <div className="sample_container badge-accordion">
                         <AccordionComponent id="accordion" created={this.onCreated.bind(this)}>
                             <AccordionItemsDirective>

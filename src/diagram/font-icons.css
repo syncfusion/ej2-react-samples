@@ -340,11 +340,7 @@
   content: "\e700";
 }
 
-.e-toolbar
-  .e-toolbar-items
-  .e-toolbar-item
-  .e-tbar-btn.e-btn.e-tbtn-txt
-  .e-icons.e-btn-icon {
+#toolbar_diagram.e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-btn.e-tbtn-txt .e-icons.e-btn-icon  {
   padding: 3px;
 }
 .showDropdown {

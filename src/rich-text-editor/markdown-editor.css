@@ -2,9 +2,7 @@
 #rteMarkdown .e-richtexteditor textarea.e-content {
     float: left;
 }
-#rteMarkdown .e-richtexteditor .e-rte-content {
-    overflow: hidden;
-}
+
 #rteMarkdown .e-icon-btn.e-active .e-md-preview::before {
     content: '\e350';
 }

@@ -1,6 +1,6 @@
 {
 	"name": "@syncfusion/ej2-react-samples",
-	"version": "16.1.24",
+	"version": "17.3.14",
 	"description": "Essential JS 2 Sample Browser for React",
 	"author": "Syncfusion Inc.",
 	"license": "SEE LICENSE IN license",
@@ -36,6 +36,7 @@
 		"@syncfusion/ej2-react-pdfviewer": "*",
 		"@syncfusion/ej2-react-querybuilder": "*",
 		"@syncfusion/ej2-react-gantt": "*",
+		"@syncfusion/ej2-react-spreadsheet": "*",
 		"@types/react": "^15.0.24",
 		"@types/react-dom": "^15.5.1",
 		"@types/react-router": "4.0.19",

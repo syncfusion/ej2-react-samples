@@ -1,8 +1,8 @@
 /**
  * RichTextEditor usecase sample
  */
-import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
@@ -10,35 +10,41 @@ import './blog-posting.css';
 export class Forums extends SampleBase<{}, {}> {
 
     private rteObj: RichTextEditorComponent;
+    private answerSectionEle: HTMLDivElement;
+    private answerSectionRef: React.Ref<HTMLDivElement>;
+    private answerCountEle: HTMLDivElement;
+    private answerCountRef: React.Ref<HTMLDivElement>;
+    private answerEle: HTMLDivElement;
+    private answerRef: React.Ref<HTMLDivElement>;
 
-    public rendereComplete(): void {
-        let buttonEle: HTMLElement = document.getElementById('rteSubmit');
-        let cancelEle: HTMLElement = document.getElementById('rteCancel');
-        cancelEle.addEventListener('click', (e: any) => {
-            this.resetMessage();
-        });
-        let empCount: number = 0;
-        buttonEle.addEventListener('click', (e: any) => {
-            this.postMessage();
-        });
+    constructor(props) {
+        super(props);
+        this.answerSectionRef = element => {
+            this.answerSectionEle = element;
+        };
+        this.answerCountRef = element => {
+            this.answerCountEle = element;
+        };
+        this.answerRef = element => {
+            this.answerEle = element;
+        };
     }
 
     private resetMessage(): void {
         let answerElement: Element = this.rteObj.contentModule.getEditPanel();
         answerElement.innerHTML = '';
         this.rteObj.value = '';
-        this.rteObj.dataBind();
         this.rteObj.refresh();
     }
 
     private postMessage(): void {
         let empCount: number = 0;
         let answerElement: HTMLElement = this.rteObj.contentModule.getEditPanel() as HTMLElement;
-        let comment: string = answerElement.innerHTML;
+        let comment: string = this.rteObj.getHtml();
         let empList: string[] = ['emp1', 'emp2', 'emp3'];
         let nameListList: string[] = ['Anne Dodsworth', 'Janet Leverling', 'Laura Callahan'];
         if (comment !== null && comment.trim() !== '' && answerElement.innerText.trim() !== '') {
-            let answer: HTMLElement = document.querySelector('.answer');
+            let answer: HTMLElement = this.answerEle;
             let cloneAnswer: HTMLElement = answer.cloneNode(true) as HTMLElement;
             let authorName: HTMLElement = cloneAnswer.querySelector('.authorname');
             let logo: HTMLElement = cloneAnswer.querySelector('.logos');
@@ -62,15 +68,14 @@ export class Forums extends SampleBase<{}, {}> {
             timeZone.innerHTML = 'Answered on ' + day + ', ' + new Date().getFullYear() + ' ' + hr;
             let postContent: HTMLElement = cloneAnswer.querySelector('.posting');
             postContent.innerHTML = comment;
-            let postElement: HTMLElement = document.querySelector('.answerSection');
+            let postElement: HTMLElement = this.answerSectionEle;
             postElement.appendChild(cloneAnswer);
-            let countEle: HTMLElement = document.querySelector('.answerCount');
+            let countEle: HTMLElement = this.answerCountEle;
             let count: number = parseInt(countEle.innerHTML, null);
             count = count + 1;
             countEle.innerHTML = count.toString() + ' Answers';
             answerElement.innerHTML = '';
             this.rteObj.value = '';
-            this.rteObj.dataBind();
             this.rteObj.refresh();
         }
     }
@@ -103,10 +108,10 @@ export class Forums extends SampleBase<{}, {}> {
                                     <table>
                                         <tr>
                                             <td>
-                                            <div className='questionar'> </div>
+                                                <div className='questionar'> </div>
                                             </td>
                                             <td>
-                                            <div className='Questionarname'>Kimberly</div>
+                                                <div className='Questionarname'>Kimberly</div>
                                             </td>
                                         </tr>
                                     </table>
@@ -122,40 +127,40 @@ export class Forums extends SampleBase<{}, {}> {
                                     <div className='tags'>
                                         <div className='tagSection'>
                                             <table>
-                                            <tr>
-                                                <td>
-                                                    <div className='tag'> HTML </div>
-                                                </td>
-                                                <td>
-                                                    <div className='tag'> JavaScript </div>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div className='tag'> HTML </div>
+                                                    </td>
+                                                    <td>
+                                                        <div className='tag'> JavaScript </div>
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </div>
                                         <div className='questionLikes'>
                                             <table>
-                                            <tr>
-                                                <td>
-                                                    <span className='e-icon e-like questionSide'>
-                                                        <img className='e-icon' src='./src/rich-text-editor/images/like.svg'/>
-                                                        <span>Like</span>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className='e-icon e-dislike'>
-                                                        <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg'/>
-                                                        <span>Dislike</span>
-                                                    </span>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span className='e-icon e-like questionSide'>
+                                                            <img className='e-icon' src='./src/rich-text-editor/images/like.svg' />
+                                                            <span>Like</span>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span className='e-icon e-dislike'>
+                                                            <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg' />
+                                                            <span>Dislike</span>
+                                                        </span>
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='answerSection'>
-                                <div className='answerCount'>1 Answer</div>
-                                <div className='answer'>
+                            <div className='answerSection' ref={this.answerSectionRef} >
+                                <div className='answerCount' ref={this.answerCountRef} >1 Answer</div>
+                                <div className='answer' ref={this.answerRef} >
                                     <table>
                                         <tr>
                                             <td rowSpan={2}>
@@ -177,18 +182,18 @@ export class Forums extends SampleBase<{}, {}> {
                                     <div className='likeAnswer'>
                                         <table>
                                             <tr>
-                                            <td>
-                                                <span className='e-icon e-like'>
-                                                    <img className='e-icon' src='./src/rich-text-editor/images/like.svg'/>
-                                                    <span>Like</span>
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span className='e-icon e-dislike'>
-                                                    <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg'/>
-                                                    <span>Dislike</span>
-                                                </span>
-                                            </td>
+                                                <td>
+                                                    <span className='e-icon e-like'>
+                                                        <img className='e-icon' src='./src/rich-text-editor/images/like.svg' />
+                                                        <span>Like</span>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span className='e-icon e-dislike'>
+                                                        <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg' />
+                                                        <span>Dislike</span>
+                                                    </span>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -196,12 +201,12 @@ export class Forums extends SampleBase<{}, {}> {
                             </div>
                             <div id="createpostholder">
                                 <form>
-                                    <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}>
+                                    <RichTextEditorComponent id="blogpost" ref={(richtexteditor) => { this.rteObj = richtexteditor }}>
                                         <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
-                                        </RichTextEditorComponent>
+                                    </RichTextEditorComponent>
                                     <div id='buttonSection'>
-                                        <ButtonComponent id="rteCancel" type='button'>Cancel</ButtonComponent>
-                                        <ButtonComponent id="rteSubmit" cssClass='e-primary' type='button'>Reply</ButtonComponent>
+                                        <ButtonComponent id="rteCancel" onClick={this.resetMessage.bind(this)} type='button'>Cancel</ButtonComponent>
+                                        <ButtonComponent id="rteSubmit" onClick={this.postMessage.bind(this)} cssClass='e-primary' type='button'>Reply</ButtonComponent>
                                     </div>
                                 </form>
                             </div>
@@ -218,8 +223,8 @@ export class Forums extends SampleBase<{}, {}> {
                         word content as HTML or Markdown format. So, RichTextEditor can easily customized to use for blog posting, forums
                         as an editor for response.</p>
                     <p><b>Injecting Module</b></p>
-                    <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor</code> modules into the services.</p>
+                    <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
                 </div>
             </div >);
-        }
     }
+}

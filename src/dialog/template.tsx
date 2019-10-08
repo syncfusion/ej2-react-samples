@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
-import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
-import {detach, isNullOrUndefined} from '@syncfusion/ej2-base';
 import './template.css';
 
 
@@ -22,7 +20,7 @@ export class Template extends SampleBase<{}, {hideDialog: boolean}> {
             this.buttonElement = element;
         };
     }
-    public header(data: any): JSX.Element {
+    public header(): JSX.Element {
         return (
         <div>
             <span className="e-avatar template-image e-avatar-xsmall e-avatar-circle"></span>
@@ -30,7 +28,7 @@ export class Template extends SampleBase<{}, {hideDialog: boolean}> {
         </div>
         );
     }
-    public footerTemplate(data: any): JSX.Element {
+    public footerTemplate(): JSX.Element {
         return (
             <div>
                 <input id="inVal" className="e-input" type="text" placeholder="Enter your message here!"/>
@@ -38,7 +36,7 @@ export class Template extends SampleBase<{}, {hideDialog: boolean}> {
             </div>
         );
     }
-    public content(data: any): JSX.Element {
+    public content(): JSX.Element {
         return (
             <div className="dialogContent">
                 <span className="dialogText">Greetings Nancy! When will you share me the source files of the project?</span>
@@ -71,11 +69,9 @@ export class Template extends SampleBase<{}, {hideDialog: boolean}> {
         (document.getElementById('sendButton')as HTMLElement).onkeydown = (e: any) => {
                 if (e.keyCode === 13) { this.updateTextValue(); }
         };
-
         (document.getElementById('inVal')as HTMLElement).onkeydown = (e: any) => {
             if (e.keyCode === 13) { this.updateTextValue(); }
         };
-
         document.getElementById('sendButton').onclick = (): void => {
             this.updateTextValue();
         };
@@ -102,17 +98,19 @@ export class Template extends SampleBase<{}, {hideDialog: boolean}> {
         </div>
         <div id="action-description">
         <p>
-        This example demonstrates the template functionalities of the dialog component. The dialog's header and footer is configured with HTML template. 
-        The typed content will be replaced every time when clicking the "send" button.
+            This example demonstrates the template functionalities of the dialog component. The dialog's header and footer is configured with HTML template. 
+            The typed content will be replaced every time when clicking the "send" button.
         </p>
         </div>
         <div id="description">
         <p>
-        The dialog component displays HTML template content on the header and footer. The user can set any HTML element as header and footer with the usage of content and footer template properties.
+            The dialog component displays HTML template content on the header and footer. The user can set any HTML element as header and footer with the usage of content and footer template properties.
         </p>
-        <p>More information on the modal behavior of Dialog can be found in
-        the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/dialog/template/">
-        documentation section</a>.</p>
+        <p>
+            More information on the modal behavior of Dialog can be found in
+            the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/dialog/template/">
+            documentation section</a>.
+        </p>
         </div>
       </div>
     );

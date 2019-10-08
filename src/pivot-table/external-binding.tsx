@@ -99,8 +99,8 @@ export class Integration extends SampleBase<{}, {}> {
                     title: { text: this.pivotObj.dataSourceSettings.values.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
                     labels: this.yLabels,
                 },
-                dataSource: {
-                    data: this.jsonDataSource,
+                dataSource: this.jsonDataSource,
+                dataSourceSettings: {
                     isJsonData: true,
                     adaptorType: 'Table',
                     xDataMapping: 'xMember',
@@ -112,7 +112,7 @@ export class Integration extends SampleBase<{}, {}> {
                 },
             }, '#heatmap');
         } else {
-            (this.heatmap.dataSource as any).data = this.jsonDataSource;
+            this.heatmap.dataSource = this.jsonDataSource;
             this.heatmap.xAxis = {
                 title: { text: this.pivotObj.dataSourceSettings.rows.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
                 labels: this.xLabels,

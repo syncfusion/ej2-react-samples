@@ -8,7 +8,7 @@ export class Notification extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section badge-samples'>
                     <div className="sample_container badge-notification">
                         <div className="layout">
                             <div className="margin">

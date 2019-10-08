@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-import { SplitterComponent } from '@syncfusion/ej2-react-layouts';
+import { SplitterComponent, PanesDirective, PaneDirective } from '@syncfusion/ej2-react-layouts';
 import './splitter.component.css';
 
 /**
@@ -9,39 +9,80 @@ import './splitter.component.css';
  */
 
 export class Basic extends SampleBase<{}, {}> {
-    // horizontal panesettings
-    private paneSettings: { [key: string]: Object }[] = [
-        {
-            size: '25%', min: '60px', content: `<div class="splitter-content">
-            <div>Left pane<div id='panetext'>size: 25%</div><div id='panetext'>min: 60px</div>
-            </div></div>` },
-        {
-            size: '50%', min: '60px', content: `<div class="splitter-content">
-          <span>Middle pane<div id='panetext'>size: 50%</div><div id='panetext'>min: 60px</div></span>
-          </div>` },
-        {
-            size: '25%', min: '60px', content: `<div class="splitter-content">
-        <span>Right pane<div id='panetext'>size: 25%</div><div id='panetext'>min: 60px</div></span>
-        </div>` }
-    ];
-    // vertical panesettings
-    private verticalpaneSettings: { [key: string]: Object }[] = [
-        { size: '30%', min: '60px', content: `<div class="splitter-content"><span>Top pane<div id='panetext'>size: 30%</div><div id='panetext'>min: 60px</div></span></div>` },
-        { size: '40%', min: '60px', content: `<div class="splitter-content"><span>Middle pane<div id='panetext'>size: 40%</div><div id='panetext'>min: 60px</div></span></div>` },
-        { size: '30%', min: '60px', content: `<div class="splitter-content"><span>Bottom pane<div id='panetext'>size: 30%</div><div id='panetext'>min: 60px</div></span></div>` }
-    ];
+    // horizontal Splitter content
+    private hPaneContent1(): JSX.Element {
+        return (
+            <div className="splitter-content">
+                <div> Left pane
+                    <div id='panetext'>size: 25%</div>
+                    <div id='panetext'>min: 60px</div>
+                </div>
+            </div>
+        );
+    };
+
+    private hPaneContent2(): JSX.Element {
+        return (
+            <div className="splitter-content">
+                <span>Middle pane<div id='panetext'>size: 50%</div><div id='panetext'>min: 60px</div></span>
+            </div>
+        );
+    };
+
+    private hPaneContent3(): JSX.Element {
+        return (
+            <div className="splitter-content">
+                <span>Right pane<div id='panetext'>size: 25%</div><div id='panetext'>min: 60px</div></span>
+            </div>
+        );
+    };
+
+    // vertical Splitter content
+    private vPaneContent1(): JSX.Element {
+        return (
+            <div className="splitter-content">
+                <span>Top pane<div id='panetext'>size: 30%</div><div id='panetext'>min: 60px</div></span>
+            </div>
+        );
+    };
+
+    private vPaneContent2(): JSX.Element {
+        return (
+            <div className="splitter-content">
+                <span>Middle pane<div id='panetext'>size: 40%</div><div id='panetext'>min: 60px</div></span>
+            </div>
+        );
+    };
+
+    private vPaneContent3(): JSX.Element {
+        return (
+            <div className="splitter-content">
+                <span>Bottom pane<div id='panetext'>size: 30%</div><div id='panetext'>min: 60px</div></span>
+            </div>
+        );
+    };
 
     public render(): JSX.Element {
         return (
             <div id="defaultSplitter" className="control-section" >
                 <div className="pane1">
                     <div id="pane-heading">Horizontal Splitter</div>
-                    <SplitterComponent height="110px" width="100%" separatorSize={4} paneSettings={this.paneSettings}>
+                    <SplitterComponent height="110px" width="100%" separatorSize={4}>
+                        <PanesDirective>
+                            <PaneDirective size="25%" min="60px" content = {this.hPaneContent1}/>
+                            <PaneDirective size="50%" min="60px" content = {this.hPaneContent2}/>
+                            <PaneDirective size="25%" min="60px" content = {this.hPaneContent3}/>
+                        </PanesDirective>
                     </SplitterComponent>
                 </div>
                 <div className="pane2">
                     <div id="pane-heading">Vertical Splitter</div>
-                    <SplitterComponent height="240px" width="100%" orientation="Vertical" separatorSize={4} paneSettings={this.verticalpaneSettings}>
+                    <SplitterComponent height="240px" width="100%" orientation="Vertical" separatorSize={4}>
+                        <PanesDirective>
+                            <PaneDirective size="30%" min="60px" content={this.vPaneContent1} />
+                            <PaneDirective size="40%" min="60px" content={this.vPaneContent2} />
+                            <PaneDirective size="30%" min="60px" content={this.vPaneContent3} />
+                        </PanesDirective>
                     </SplitterComponent>
                 </div>
                 <div id="action-description">

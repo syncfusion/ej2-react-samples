@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-import { closest, Touch, SwipeEventArgs } from '@syncfusion/ej2-base';
+import { closest, Touch, SwipeEventArgs, isNullOrUndefined } from '@syncfusion/ej2-base';
 import './card.component.css';
 
 // tslint:disable:max-line-length
@@ -44,7 +44,7 @@ export class Swipeable extends SampleBase<{}, {}> {
 
     public touchSwipeHandler(e: SwipeEventArgs): void {
         let ele: HTMLElement = closest((e.originalEvent.target as Element), '.e-card') as HTMLElement;
-        if (!ele.classList.contains('e-card')) {
+        if (isNullOrUndefined(ele)) {
             return;
         }
         if (ele.parentElement.querySelector('.card-out')) {

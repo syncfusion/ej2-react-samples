@@ -1,12 +1,12 @@
 /**
  * RichTextEditor markdown preview sample
  */
-import * as ReactDOM from 'react-dom';
-import * as React from 'react';
-import { RichTextEditorComponent, MarkdownEditor, Inject, Toolbar, Image, Link, IToolbarItems, RichTextEditor, QuickToolbar, Table } from '@syncfusion/ej2-react-richtexteditor';
-import { SampleBase } from '../common/sample-base';
-import { createElement, KeyboardEventArgs, isNullOrUndefined, addClass, removeClass, Browser } from '@syncfusion/ej2-base';
+import { addClass, Browser, createElement, isNullOrUndefined, KeyboardEventArgs, removeClass } from '@syncfusion/ej2-base';
+import { Image, Inject, IToolbarItems, Link, MarkdownEditor, QuickToolbar, RichTextEditor, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, ActionCompleteEventArgs } from '@syncfusion/ej2-react-richtexteditor';
 import * as Marked from 'marked';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { SampleBase } from '../common/sample-base';
 import './markdown-editor-preview.css';
 
 export class Preview extends SampleBase<{}, {}> {
@@ -26,10 +26,14 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
 
     // RichTextEditor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', 'CreateTable', '|',
-    { tooltipText: 'Preview', template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
-        '<span class="e-btn-icon e-md-preview e-icons"></span></button>' },
-    { tooltipText: 'Split Editor', template: '<button id="MD_Preview" class="e-tbar-btn e-control e-btn e-icon-btn">' +
-        '<span class="e-btn-icon e-view-side e-icons"></span></button>' }, 'FullScreen', '|', 'Undo', 'Redo'];
+        {
+            tooltipText: 'Preview', template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
+                '<span class="e-btn-icon e-md-preview e-icons"></span></button>'
+        },
+        {
+            tooltipText: 'Split Editor', template: '<button id="MD_Preview" class="e-tbar-btn e-control e-btn e-icon-btn">' +
+                '<span class="e-btn-icon e-view-side e-icons"></span></button>'
+        }, 'FullScreen', '|', 'Undo', 'Redo'];
 
     private textArea: HTMLTextAreaElement;
     private mdsource: HTMLElement;
@@ -37,7 +41,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     private htmlPreview: HTMLElement;
 
     //RichTextEditor ToolbarSettings
-    private toolbarSettings: object = {
+    private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
 
@@ -99,14 +103,14 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
         this.mdSplit = document.getElementById('MD_Preview');
         this.mdSplit.addEventListener('click', (e: MouseEvent) => {
             if (rteObj.element.classList.contains('e-rte-full-screen')) { this.fullPreview({ mode: true, type: '' }); }
-                this.mdsource.classList.remove('e-active');
+            this.mdsource.classList.remove('e-active');
             if (!rteObj.element.classList.contains('e-rte-full-screen')) {
                 rteObj.showFullScreen();
             }
         });
     }
     public actionComplete(e: any): void {
-        if(e.targetItem === 'Maximize' && isNullOrUndefined(e.args)) {
+        if (e.targetItem === 'Maximize' && isNullOrUndefined(e.args)) {
             this.fullPreview({ mode: true, type: '' })
         }
         else if (!this.mdSplit.parentElement.classList.contains('e-overlay')) {
@@ -147,9 +151,10 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                 removeClass([sbCntEle, sbHdrEle], ['hide-header']);
             }
             removeClass([leftBar], ['e-close']);
-            if (!Browser.isDevice) { 
-            addClass([leftBar], ['e-open']);
-            transformElement.style.marginLeft = leftBar.offsetWidth + 'px'; }
+            if (!Browser.isDevice) {
+                addClass([leftBar], ['e-open']);
+                transformElement.style.marginLeft = leftBar.offsetWidth + 'px';
+            }
             transformElement.style.transform = 'translateX(0px)';
         }
     }
@@ -158,23 +163,23 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
             <div className='control-pane'>
                 <div className='control-section' id="rtePreview">
                     <div className="content-wrapper">
-                            <RichTextEditorComponent  id="markdownPreview"
-                                actionBegin={this.handleFullScreen.bind(this)}
-                                actionComplete={this.actionComplete.bind(this)}
-                                editorMode='Markdown' height= '300px'
-                                ref={(richtexteditor) => { this.rteObj = richtexteditor }}
-                                value={this.value} toolbarSettings={this.toolbarSettings} >
-                                <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar, Table]} />
-                            </RichTextEditorComponent>
+                        <RichTextEditorComponent id="markdownPreview"
+                            actionBegin={this.handleFullScreen.bind(this)}
+                            actionComplete={this.actionComplete.bind(this)}
+                            editorMode='Markdown' height='300px'
+                            ref={(richtexteditor) => { this.rteObj = richtexteditor }}
+                            value={this.value} toolbarSettings={this.toolbarSettings} >
+                            <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar, Table]} />
+                        </RichTextEditorComponent>
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates how to preview markdown changes in rich text editor. 
-        Type or edit the display text, and apply format to view the preview of markdown. 
+                    <p>This sample demonstrates how to preview markdown changes in rich text editor.
+        Type or edit the display text, and apply format to view the preview of markdown.
         You can preview the markdown changes immediately in the preview area.</p>
                 </div>
                 <div id="description">
-                <p>The rich text editor allows you to preview markdown changes immediately using <code>preview</code>. 
+                    <p>The rich text editor allows you to preview markdown changes immediately using <code>preview</code>.
                 The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
                 </div>
             </div>

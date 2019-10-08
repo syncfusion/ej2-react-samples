@@ -45,7 +45,7 @@ export class SplineInversed extends SampleBase<{}, {}> {
                         width={Browser.isDevice ? '100%' : '60%'}
                         chartArea={{ border: { width: 0 } }}
                         primaryYAxis={{ labelFormat: '{value}°C', majorGridLines: { width: 0 } }}
-                        tooltip={{ enable: true, format: '${series.name} (°c) <br>${point.x} : ${point.y}' }}
+                        tooltip={{ enable: true }}
                         title='Climate Graph - 2012' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[SplineSeries, Category, Legend, Tooltip]} />
                         <SeriesCollectionDirective>

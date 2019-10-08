@@ -26,7 +26,7 @@ export class ListView extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section badge-samples'>
                     <div className="sample_container badge-list">
                         {/* Listview element */}
                         <ListViewComponent id="lists" dataSource={dataSource} fields={this.fields} headerTitle='Inbox' showHeader={true} template={this.listTemplate as any} actionComplete={this.onActionComplete.bind(this)} ></ListViewComponent>

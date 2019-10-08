@@ -48,7 +48,7 @@ export class Radial extends SampleBase<{}, {}> {
         <div className="content-wrapper" style={{ width: "100%" }}>
             {/* create and add ZoomIn,ZoomOut and Reset options in ToolBar. */}
             <ToolbarComponent
-              id="toolbar_default"
+              id="toolbar_diagram"
               clicked={onItemClick}
               items={[
                 {

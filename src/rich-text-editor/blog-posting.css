@@ -298,10 +298,6 @@
     width: 100%;
 }
 
-#rteUseCase {
-    overflow: hidden;
-}
-
 #rteUseCase .content-wrapper {
     width: auto;
     margin: 0;
