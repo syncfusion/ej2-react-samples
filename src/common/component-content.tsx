@@ -93,7 +93,7 @@ function rendercopycode(): void {
 }
 
 function dynamicTab(e: any): void {
-    let blockEle: HTMLElement = select('#sb-source-tab > .e-content > #e-content_' + e.selectedIndex) as HTMLElement;
+    let blockEle: HTMLElement = select('#sb-source-tab > .e-content > #e-content'+this.tabId+'_' + e.selectedIndex) as HTMLElement;
     let codeEle: any = blockEle.children[0];
     codeEle.innerHTML = (srcTab.items[e.selectedIndex] as any).data;
     codeEle.innerHTML = codeEle.innerHTML.replace(reg,'');
@@ -101,7 +101,7 @@ function dynamicTab(e: any): void {
 }
 
 function dynamicTabCreation(obj: any): void {
-    let blockEle: Element = obj.element.querySelector('#e-content_' + obj.selectedItem).children[0];
+    let blockEle: Element = obj.element.querySelector('#e-content'+obj.tabId+'_' + obj.selectedItem).children[0];
     blockEle.innerHTML = obj.items[obj.selectedItem].data;
     blockEle.innerHTML = blockEle.innerHTML.replace(reg,'');
     highlightCode(blockEle);

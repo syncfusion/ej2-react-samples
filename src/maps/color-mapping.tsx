@@ -274,10 +274,10 @@ export class ColorMap extends SampleBase<{}, {}> {
                                 shapeSettings={{
                                     colorValuePath: 'inches',
                                     fill: '#E5E5E5',
-                                    border: {
+                                    /*border: {
                                         color: 'black',
                                         width: 0.2
-                                    },
+                                    },*/
                                     colorMapping: [
                                         {
                                             from: 0.1, to: 1, color: '#DEEBAE', label: '0 - 1'

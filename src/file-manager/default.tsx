@@ -15,7 +15,7 @@ const defaultcss = `
  */
 export class Default extends SampleBase<{},{}> {
 
-    private hostUrl: string = "https://ej2services.syncfusion.com/production/web-services/";
+    private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
     public fmObj: FileManagerComponent;
 
     public toolCheck(args: ChangeEventArgs): void {

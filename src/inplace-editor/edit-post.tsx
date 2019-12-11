@@ -99,21 +99,33 @@ export class UseCase extends SampleBase<{}, {}> {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
             rightPane.addEventListener('scroll', () => {
-                let element: HTMLElement = this.editorMode.element;;
-                let mode: string = element && (element as HTMLSelectElement).value;
-                if (mode === 'Inline') {
-                    return;
-                }
-                if (this.titleObj && this.titleObj.element.querySelectorAll('.e-editable-open')) {
-                    this.titleObj.enableEditMode = false;
-                }
-                if (this.tagObj && this.tagObj.element.querySelectorAll('.e-editable-open')) {
-                    this.tagObj.enableEditMode = false;
-                }
-                if (this.rteObj && this.rteObj.element.querySelectorAll('.e-editable-open')) {
-                    this.rteObj.enableEditMode = false;
-                }
+                this.scrollRightPane();
             });
+        }
+    }
+
+    componentWillUnmount() {
+        let rightPane: HTMLElement = document.getElementById('right-pane');
+        if (rightPane) {
+            rightPane.removeEventListener('scroll', () => {
+                this.scrollRightPane();
+            });
+        }
+    }
+
+    private scrollRightPane = () => {
+        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
+        if (mode === 'Inline') {
+            return;
+        }
+        if (this.titleObj && this.titleObj.element.querySelectorAll('.e-editable-open')) {
+            this.titleObj.enableEditMode = false;
+        }
+        if (this.tagObj && this.tagObj.element.querySelectorAll('.e-editable-open')) {
+            this.tagObj.enableEditMode = false;
+        }
+        if (this.rteObj && this.rteObj.element.querySelectorAll('.e-editable-open')) {
+            this.rteObj.enableEditMode = false;
         }
     }
 

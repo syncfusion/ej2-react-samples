@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ej2_base_1 = require("@syncfusion/ej2-base");
 ej2_base_1.enableRipple(window.ripple);
-var SampleBase = (function (_super) {
+var SampleBase = /** @class */ (function (_super) {
     __extends(SampleBase, _super);
     function SampleBase() {
         return _super !== null && _super.apply(this, arguments) || this;

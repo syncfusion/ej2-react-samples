@@ -1,0 +1,89 @@
+#defaultDialog {
+    left: 23%;
+    top: 0%! important;
+}
+
+#targetElement .dlgbtn {
+    margin-right: 10px;
+}
+
+#targetElement {
+    height: 100%;
+    min-height: 500px;
+}
+
+@media screen and (min-width: 150px) and (max-width: 480px) {
+    .control-section {
+        margin-bottom: 30px;
+    }
+    .control-wrapper {
+        margin-bottom: 0px;
+    }
+}
+
+#defaultDialog .form-title {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.70);
+}
+
+#defaultDialog .e-error,
+#defaultDialog .e-float-text {
+    font-weight: 500;
+}
+
+#defaultDialog .e-custom-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+#defaultDialog #formId {
+    padding-top: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+    background: #f9f9f9;
+    height: 250px;
+    overflow-y: scroll;
+}
+
+.highcontrast #defaultDialog form,
+.highcontrast #defaultDialog .header {
+    color: #fff;
+    background: #000000;
+}
+
+#defaultDialog .header {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+#defaultDialog .form-horizontal .form-group {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+#defaultDialog .e-submit-btn {
+    height: 40px;
+    width: 150px;
+}
+
+#defaultDialog .e-reset-btn {
+    height: 40px;
+    width: 150px;
+}
+
+#defaultDialog .submitRow {
+    width: 320px;
+    margin: 0px auto;
+    height: 100px;
+    padding-top: 25px;
+}
+
+#defaultDialog #charts {
+    text-align: center;
+}

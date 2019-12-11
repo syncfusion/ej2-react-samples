@@ -88,13 +88,13 @@ export class PolarSpline extends SampleBase<{}, {}> {
                             <Inject services={[SplineSeries, Legend, Tooltip, Category, PolarSeries, RadarSeries]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='Cardioid (unidirectional)' type='Polar'
-                                    drawType='Spline' dashArray='5 5 2' width={2}>
+                                    drawType='Spline' dashArray='5 5 2' width={2} isClosed = {false}>
                                 </SeriesDirective>
                                 <SeriesDirective dataSource={data2} xName='x' yName='y' name='Omnidirectional' type='Polar'
-                                    drawType='Spline' dashArray='2' width={2}>
+                                    drawType='Spline' dashArray='2' width={2} isClosed = {false}>
                                 </SeriesDirective>
                                 <SeriesDirective dataSource={data3} xName='x' yName='y' name='Bidirectional' type='Polar'
-                                    drawType='Spline' width={2}>
+                                    drawType='Spline' width={2} isClosed = {false}>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>

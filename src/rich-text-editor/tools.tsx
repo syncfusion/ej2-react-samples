@@ -149,6 +149,7 @@ export class Overview extends SampleBase<{}, {}> {
             <li><code>FullScreen</code> - Stretches the editor to the maximum width and height of the browser window.</li>
             <li><code>Format</code> – Formats the sentence in different ways such as heading level, quotation, and code snippet</li>
             <li><code>Styles</code> – Allows you to apply inline styles to the selected content like bold, italic, and more.</li>
+            <li><code>Insert Code</code> - Allows you to apply code format to the selected parent nodes. In the above sample, the style for the code format ('pre' tag) is applied by adding the background color.</li>
           </ul>
           <p><b>Injecting Module</b></p>
           <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table</code> modules into the services.</p>

@@ -64,7 +64,6 @@ export class Tooltip extends SampleBase<{}, {}> {
 									size: '13px'
 								},
 								fill: '#6699cc',
-								border: { width: 1, color: 'white' },
 								colorMapping: [
 									{
 										value: 25,
