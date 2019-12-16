@@ -62,20 +62,31 @@ export class Default extends SampleBase<{}, {}> {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
             rightPane.addEventListener('scroll', () => {
-                let mode: string = this.editorMode.value as string;
-                if (mode === 'Inline') {
-                    return;
-                }
-                if (this.textObj && (this.textObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.textObj.enableEditMode = false;
-                }
-                if (this.numericObj && (this.numericObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.numericObj.enableEditMode = false;
-                }
-                if (this.maskObj && (this.maskObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.maskObj.enableEditMode = false;
-                }
+                this.scrollRightPane();
             });
+        }
+    }
+    componentWillUnmount() {
+        let rightPane: HTMLElement = document.getElementById('right-pane');
+        if (rightPane) {
+            rightPane.removeEventListener('scroll', () => {
+                this.scrollRightPane();
+            });
+        }
+    }
+    private scrollRightPane = () => {
+        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
+        if (mode === 'Inline') {
+            return;
+        }
+        if (this.textObj && (this.textObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.textObj.enableEditMode = false;
+        }
+        if (this.numericObj && (this.numericObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.numericObj.enableEditMode = false;
+        }
+        if (this.maskObj && (this.maskObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.maskObj.enableEditMode = false;
         }
     }
     // Change event funtion for DropDownList component   

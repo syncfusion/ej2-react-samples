@@ -154,11 +154,11 @@ export class Customization extends SampleBase<{}, {}> {
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <img id='random' src="src/circular-gauge/images/gauge-1.png" style={{ marginLeft: '25px', marginTop: '10px' }} onClick={this.random.bind(this)} ref={d => this.image1 = d} />
+                                            <img id='random' src="src/circular-gauge/images/gauge-1.png" alt="Customized gauge 1" style={{ marginLeft: '25px', marginTop: '10px' }} onClick={this.random.bind(this)} ref={d => this.image1 = d} />
                                             <div id="random_line" style={{ display: "block", left: "0px", background: "#ff4081", "padding-top": "0px", height: "2px", width: "85px", margin: "2px 2px 2px 17px" }}></div>
                                         </td>
                                         <td>
-                                            <img id='usage' src="src/circular-gauge/images/gauge-2.png" style={{ marginLeft: '25px', marginTop: '10px' }} onClick={this.usage.bind(this)} ref={d => this.image2 = d} />
+                                            <img id='usage' src="src/circular-gauge/images/gauge-2.png" alt="Customized gauge 2" style={{ marginLeft: '25px', marginTop: '10px' }} onClick={this.usage.bind(this)} ref={d => this.image2 = d} />
                                             <div id="usage_line" style={{ display: "none", left: "0px", background: "#ff4081", "padding-top": "0px", height: "2px", width: "85px", margin: "2px 2px 2px 17px" }}></div>
                                         </td>
                                     </tr>

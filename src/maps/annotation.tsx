@@ -107,7 +107,7 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
     </div>
 </div>
 <div id="compass-maps" style={{ display: 'none' }}>
-    <img src="src/maps/images/compass.svg" height="75px" width="75px"/>
+    <img src="src/maps/images/compass.svg" alt="Direction compass" height="75px" width="75px"/>
 </div>
 {/* Source Link */}
 <div style={{float: 'right', marginright: '10px'}}>Source: 

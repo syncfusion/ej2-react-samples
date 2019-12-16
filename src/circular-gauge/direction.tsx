@@ -51,7 +51,7 @@ export class Direction extends SampleBase<{}, {}> {
                 width: 100,
                 change: () => {
                     let rangeColor: string = this.labelColor.value.toString();
-                    this.gauge.axes[0].ranges[0].color = rangeColor;
+                    this.gauge.axes[0].labelStyle.font.color = rangeColor;
                     this.gauge.refresh();
                 }
             });

@@ -133,12 +133,12 @@ export class OutlookLayout extends SampleBase<{}, {}> {
     ];
     private treeFields: FieldsSettingsModel = { dataSource: this.mailBox, id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild' };
     private onSplitterResize(): void {
-        this.rteObj.refresh();
+        this.rteObj.refreshUI();
     }
     public render(): JSX.Element {
         return (
             <div id="target" className="control-section outlook-style" >
-                <SplitterComponent id="splitter1" height="493px" width="100%" ref={(splitter) => { this.splitterInstance = splitter }} resizeStop={this.onSplitterResize.bind(this)}>
+                <SplitterComponent id="splitter1" height="493px" width="100%" ref={(splitter) => { this.splitterInstance = splitter }} resizing={this.onSplitterResize.bind(this)}>
                     <PanesDirective>
                         <PaneDirective size={this.paneSize1} min={this.minimumSize1} content={this.content1.bind(this)}>
                         </PaneDirective>

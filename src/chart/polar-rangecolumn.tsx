@@ -4,8 +4,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme
+    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType, DataLabel,
+    RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme, ITextRenderEventArgs
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -13,10 +13,9 @@ import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 
 export let data1: any[] = [
-    { x: 'Jan', low: 1.7, high: 7.1 }, { x: 'Feb', low: 1.9, high: 7.7 }, { x: 'Mar', low: 1.2, high: 7.5 },
-    { x: 'Apr', low: 2.5, high: 9.8 }, { x: 'May', low: 4.7, high: 11.4 }, { x: 'Jun', low: 6.4, high: 14.4 },
-    { x: 'Jul', low: 9.6, high: 17.2 }, { x: 'Aug', low: 10.7, high: 17.9 }, { x: 'Sep', low: 7.5, high: 15.1 },
-    { x: 'Oct', low: 3.0, high: 10.5 }, { x: 'Nov', low: 1.2, high: 7.9 }, { x: 'Dec', low: 4.1, high: 9.1 }
+    { x: 'Jan', low: 2, high: 7 }, { x: 'Feb', low: 3, high: 7 },
+    { x: 'Mar', low: 3, high: 7 }, { x: 'Apr', low: 4, high: 9 },
+    { x: 'May', low: 6, high: 11 }, { x: 'June', low: 8, high: 14 }
 ];
 
 const SAMPLE_CSS = `
@@ -45,16 +44,18 @@ export class PolarRangeColumn extends SampleBase<{}, {}> {
                     <div className='col-md-8'>
                         <ChartComponent id='charts' ref={chart => this.chartInstance = chart}
                             primaryXAxis={{ valueType: 'Category', title: 'month', startAngle: 90, labelPlacement: 'OnTicks', interval: 1,  coefficient: Browser.isDevice ? 80 : 100}}
-                            primaryYAxis={{ labelFormat: '{value}˚C', minimum: 0, maximum: 20, interval: 5 }}
+                            primaryYAxis={{ labelFormat: '{value}˚C', minimum: 0, maximum: 15, interval: 5 }}
                             title='Maximum and Minimum Temperature' loaded={this.onChartLoad.bind(this)}
                             load={this.load.bind(this)}
+                            textRender={(args: ITextRenderEventArgs) => {
+                                args.text = args.text.replace('˚C', '');
+                            }}
                             legendSettings={{ visible: false }}
-                            tooltip={{
-                                enable: true
-                            }}>
-                            <Inject services={[RangeColumnSeries, Tooltip, Category, PolarSeries, RadarSeries]} />
+                            >
+                            <Inject services={[RangeColumnSeries, Tooltip, Category, PolarSeries, RadarSeries, DataLabel]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data1} xName='x' low='low' high='high' type='Polar' drawType='RangeColumn' name="Germany" border={{ width: 3, color: 'white' }}>
+                                <SeriesDirective dataSource={data1} xName='x' low='low' high='high' type='Polar' drawType='RangeColumn' name="Germany" border={{ width: 3, color: 'white' }}
+                                marker={{ dataLabel: { visible: true, position: 'Top', font: { color: '#ffffff', fontWeight: '600'}, enableRotation: true }}}>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>

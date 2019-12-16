@@ -39,12 +39,8 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
         }
     }
     onPanelResize(args: ResizeArgs): void {
-        if (args.element && args.element.querySelector('.e-panel-container .e-panel-content div div') &&
-            this.dashboardObj.element.querySelector('.e-holder')) {
+        if (args.element && args.element.querySelector('.e-panel-container .e-panel-content div div')) {
             let chartObj: any = ((args.element.querySelector('.e-panel-container .e-panel-content div div')) as any).ej2_instances[0];
-            let holderElementHeight: number = parseInt(((this.dashboardObj.element.querySelector('.e-holder')) as any).style.height, 10);
-            let panelContanierElement: HTMLElement = args.element.querySelector('.e-panel-content');
-            panelContanierElement.style.height = holderElementHeight - 35 + 'px';
             chartObj.height = '95%';
             chartObj.width = '100%';
             chartObj.refresh();

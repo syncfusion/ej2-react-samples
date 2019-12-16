@@ -29,8 +29,8 @@ export class Popup extends SampleBase<{}, {}> {
                 <ItemDirective prefixIcon = 'e-bullets-icon tb-icons'  tooltipText = 'Bullets'  overflow ='Show' text = 'Bullets'/>
                 <ItemDirective prefixIcon = 'e-numbering-icon tb-icons'  tooltipText = 'Numbering'  overflow ='Show' text = 'Numbering'/>
                 <ItemDirective type = 'Separator'/>
-                <ItemDirective prefixIcon = 'e-undo-icon tb-icons'  tooltipText = 'Undo'  text = 'Undo'/>
-                <ItemDirective prefixIcon = 'e-redo-icon tb-icons'  tooltipText = 'Redo'  text = 'Redo'/>
+                <ItemDirective prefixIcon = 'e-tbar-undo-icon tb-icons'  tooltipText = 'Undo'  text = 'Undo'/>
+                <ItemDirective prefixIcon = 'e-tbar-redo-icon tb-icons'  tooltipText = 'Redo'  text = 'Redo'/>
                 <ItemDirective type = 'Separator'/>
                 <ItemDirective prefixIcon = 'e-alignleft-icon tb-icons'  tooltipText = 'Align_Left' text = 'Left'
                  showTextOn = 'Overflow' overflow ='Show'/>

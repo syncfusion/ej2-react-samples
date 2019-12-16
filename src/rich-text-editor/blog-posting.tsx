@@ -6,6 +6,7 @@ import * as ReactDOM from 'react-dom';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
+import { isNullOrUndefined as isNOU } from '@syncfusion/ej2-base';
 import './blog-posting.css';
 export class Forums extends SampleBase<{}, {}> {
 
@@ -43,7 +44,8 @@ export class Forums extends SampleBase<{}, {}> {
         let comment: string = this.rteObj.getHtml();
         let empList: string[] = ['emp1', 'emp2', 'emp3'];
         let nameListList: string[] = ['Anne Dodsworth', 'Janet Leverling', 'Laura Callahan'];
-        if (comment !== null && comment.trim() !== '' && answerElement.innerText.trim() !== '') {
+        if (comment !== null && comment.trim() !== '' && (answerElement.innerText.trim() !== '' ||
+        !isNOU(answerElement.querySelector('img')) || !isNOU(answerElement.querySelector('table')))) {
             let answer: HTMLElement = this.answerEle;
             let cloneAnswer: HTMLElement = answer.cloneNode(true) as HTMLElement;
             let authorName: HTMLElement = cloneAnswer.querySelector('.authorname');

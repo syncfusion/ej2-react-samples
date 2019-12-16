@@ -13,6 +13,8 @@ import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { SliderComponent, Slider, SliderChangeEventArgs } from '@syncfusion/ej2-react-inputs';
+import * as data from './map-data/zooming-datasource.json';
+let datasource: any = data as any;
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -130,7 +132,7 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                                 <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='continent'
                                     shapeDataPath='continent'
-                                    dataSource={new MapAjax('./src/maps/map-data/zooming-datasource.json')}
+                                    dataSource={datasource}
                                     animationDuration={500}
                                     shapeSettings={{
                                         autofill: true,
@@ -257,24 +259,24 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
     public doubletab(): void {
         let element: HTMLInputElement = (document.getElementById('doubletap')) as HTMLInputElement;
         this.mapInstance.zoomSettings.doubleClickZoom = element.checked;
-        this.mapInstance.zoomSettings.zoomOnClick = (!element.checked);
         let ele1: HTMLInputElement = document.getElementById('singletap') as HTMLInputElement;
         if (element.checked) {
             ele1.disabled = true;
         } else {
             ele1.disabled = false;
         }
+        this.mapInstance.refresh();
     }
     public singletap(): void {
         let element: HTMLInputElement = (document.getElementById('singletap')) as HTMLInputElement;
         let ele1: HTMLInputElement = document.getElementById('doubletap') as HTMLInputElement;
         this.mapInstance.zoomSettings.zoomOnClick = element.checked;
-        this.mapInstance.zoomSettings.doubleClickZoom = (!element.checked);
         if (element.checked) {
             ele1.disabled = true;
         } else {
             ele1.disabled = false;
         }
+        this.mapInstance.refresh();
     }
     public animationChange() {
         this.mapInstance.layers[0].animationDuration = parseInt(this.animationElement.value.toString(), 10);

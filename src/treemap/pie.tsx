@@ -79,7 +79,8 @@ export class Pie extends SampleBase<{}, {}> {
 					xName: 'x',
 					yName: 'y'
 				}
-			]
+			],
+			legendSettings: {visible: false}
 		});
 		chart.appendTo('#' + id);
 		this.chartCollection.push(chart);

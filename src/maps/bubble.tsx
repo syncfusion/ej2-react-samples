@@ -12,6 +12,8 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { internetUsers } from './map-data/population-data';
+import * as data from './map-data/bubble-datasource.json';
+let datasource: any = data as any;
 interface Data {
     value?: number;
 }
@@ -57,7 +59,7 @@ export class BubbleMaps extends SampleBase<{}, {}> {
                                 <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={new MapAjax('./src/maps/map-data/bubble-datasource.json')}
+                                    dataSource={datasource}
                                     shapeSettings={{
                                         fill: '#E5E5E5'
                                     }}

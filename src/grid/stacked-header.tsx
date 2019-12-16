@@ -37,7 +37,7 @@ export class StackedHeader extends SampleBase<{}, {}> {
 
                     <p>In this demo, the columns <b>OrderDate</b>, <b>Freight</b> are grouped under <b>Order Details</b>, the columns <b>ShippedDate</b>, <b>ShipCountry</b> are grouped under<b> Ship Details</b>. </p>
                     <p> More information on the Stacked Header feature configuration can be found in this
-                    <a target='_blank' href='http://ej2.syncfusion.com/react/documentation/api/grid.html#columns'> documentation section</a>.
+                    <a target='_blank' href='http://ej2.syncfusion.com/react/documentation/api/grid/column/#columns'> documentation section</a>.
                  </p>
                 </div>
             </div>

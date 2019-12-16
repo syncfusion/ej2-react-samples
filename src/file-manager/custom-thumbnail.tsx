@@ -9,7 +9,7 @@ import './custom-thumbnail.css';
  */
 export class CustomThumbnail extends SampleBase<{},{}> {
 
-    private hostUrl: string = "https://ej2services.syncfusion.com/production/web-services/";
+    private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
     public render(): JSX.Element {
         return(
             <div>

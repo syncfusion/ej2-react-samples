@@ -54,30 +54,41 @@ export class Pickers extends SampleBase<{}, {}> {
         this.dateTimeObj.dataBind();
         this.dateRangeObj.dataBind();
     }
-    rendereComplete() {
+    rendereComplete(): void {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
             rightPane.addEventListener('scroll', () => {
-                let mode: string = this.editorMode.value as string;
-                if (mode === 'Inline') {
-                    return;
-                }
-                if (this.dateObj && (this.dateObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.dateObj.enableEditMode = false;
-                }
-                if (this.timeObj && (this.timeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.timeObj.enableEditMode = false;
-                }
-                if (this.dateTimeObj && (this.dateTimeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.dateTimeObj.enableEditMode = false;
-                }
-                if (this.dateRangeObj && (this.dateRangeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.dateRangeObj.enableEditMode = false;
-                }
+                this.scrollRightPane();
             });
         }
     }
 
+    componentWillUnmount() {
+        let rightPane: HTMLElement = document.getElementById('right-pane');
+        if (rightPane) {
+            rightPane.removeEventListener('scroll', () => {
+                this.scrollRightPane();
+            });
+        }
+    }
+    private scrollRightPane = () => {
+        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
+        if (mode === 'Inline') {
+            return;
+        }
+        if (this.dateObj && (this.dateObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.dateObj.enableEditMode = false;
+        }
+        if (this.timeObj && (this.timeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.timeObj.enableEditMode = false;
+        }
+        if (this.dateTimeObj && (this.dateTimeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.dateTimeObj.enableEditMode = false;
+        }
+        if (this.dateRangeObj && (this.dateRangeObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.dateRangeObj.enableEditMode = false;
+        }
+    }
     render() {
         return (
             <div className='control-pane'>

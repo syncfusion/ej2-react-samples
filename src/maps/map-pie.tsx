@@ -166,7 +166,8 @@ export class PieMaps extends SampleBase<{}, {}> {
                 xName: 'x',
                 yName: 'y'
             }
-        ]
+        ],
+		legendSettings: {visible: false}
         });
         chart.appendTo('#marker1');
         this.chartCollection.push(chart);

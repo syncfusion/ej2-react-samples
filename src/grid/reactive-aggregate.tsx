@@ -63,7 +63,7 @@ export class ReactiveAggregate extends SampleBase<{}, {}> {
     </p>
             <p>
               By default, reactive aggregate update is not supported by inline and dialog edit modes. But, we can refresh aggregates manually. Please refer to the <a target="_blank"
-                href="https://ej2.syncfusion.com/react/documentation/grid/aggregates.html#refresh-aggregates-in-inline-edit-mode">
+                href="http://ej2.syncfusion.com/react/documentation/grid/aggregate/#refresh-aggregates-in-inline-edit-mode">
                 documentation.</a>
             </p>
           </div>

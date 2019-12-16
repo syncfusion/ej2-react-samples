@@ -1,0 +1,35 @@
+import * as React from 'react';
+import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
+import { SampleBase } from '../common/sample-base';
+import './datepicker-component.css';
+export class Disabled extends SampleBase {
+    disabledDate(args) {
+        if (args.date.getDay() === 0 || args.date.getDay() === 6) {
+            /*set 'true' to disable the weekends*/
+            args.isDisabled = true;
+        }
+    }
+    render() {
+        return (<div className='control-pane'>
+        <div className='control-section'>
+          <div className='datepicker-control-section'>
+            <DatePickerComponent renderDayCell={this.disabledDate}></DatePickerComponent>
+          </div>
+        </div>
+        <div id="action-description">
+    <p>
+    In the following sample, all the weekends (Saturday and Sunday) of a month are disabled, and these dates are <code>restricted</code> to set or select in the DatePicker.
+   </p>
+</div>
+        <div id='description'>
+          <p>
+              Disabled Dates sample demonstrates how to disable specific dates in the DatePicker by using <code>renderDayCell</code>        event. This event gets triggered on each day cell element creation, that allows you to customize, or disable specific
+              dates in the DatePicker. Here the weekend dates are disabled by using renderDayCell.
+          </p>
+          <p>More information on the disabled dates can be found in the
+              <a href="https://ej2.syncfusion.com/react/documentation/datepicker/customization/" target="_blank"> documentation section</a>.
+          </p>
+        </div>
+      </div>);
+    }
+}

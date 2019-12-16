@@ -64,7 +64,7 @@ export class CommandColumnEdit extends SampleBase<{}, {}> {
          <p>
              More information on the commandcolumn configuration can be found in this
              <a target="_blank"
-             href="http://ej2.syncfusion.com/react/documentation/grid/column.html#command-column">
+             href="http://ej2.syncfusion.com/react/documentation/grid/edit/#command-column">
               documentation section</a>.
          </p>
       </div>

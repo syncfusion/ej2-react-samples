@@ -26,6 +26,9 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     allowTaskbarEditing: true,
     showDeleteConfirmDialog: true
   };
+  public splitterSettings: any = {
+    columnIndex: 2
+  };
   private ganttInstance: GanttComponent;
   public projectStartDate: Date = new Date('03/25/2019');
   public projectEndDate: Date = new Date('07/28/2019');
@@ -85,7 +88,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
             treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true} allowSorting={true} allowResizing={true} 
             contextMenuItems={this.contextMenuItems}  contextMenuOpen={this.contextMenuOpen.bind(this)} contextMenuClick={this.contextMenuClick.bind(this)}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
-            taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings}
+            taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceNameMapping='resourceName' resourceIDMapping='resourceId' resources={editingResources}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='50' ></ColumnDirective>

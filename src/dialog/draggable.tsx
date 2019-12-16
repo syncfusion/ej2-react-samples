@@ -41,7 +41,7 @@ export class Draggable extends SampleBase<{}, { hideDialog: boolean; }> {
                 <div id='target' className='col-lg-12 control-section dialog-draggable'>
                     <button className='e-control e-btn dlgbtn' ref={this.buttonRef} onClick={this.buttonClick.bind(this)} id='dialogBtn'>Open Dialog</button>
                     {/* Render alert Dialog */}
-                    <DialogComponent id='defaultDialog' header='Drag Me!!!' isModal={true} showCloseIcon={true} allowDragging={true} animationSettings={this.animationSettings} width='300px' 
+                    <DialogComponent id='dialogDraggable' header='Drag Me!!!' isModal={true} showCloseIcon={true} allowDragging={true} animationSettings={this.animationSettings} width='300px' 
                         target='#target' visible={this.state.hideDialog} open={this.dialogOpen} close={this.dialogClose}>
                         This is a dialog with draggable support.
             </DialogComponent>

@@ -11,7 +11,6 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { axesData } from './stock-data';
 import { SampleBase } from '../common/sample-base';
-import { BaseTooltip } from "@syncfusion/ej2-charts/src/common/user-interaction/tooltip";
 
 let data: Object[] = axesData;
 export let zoomFactor : number;

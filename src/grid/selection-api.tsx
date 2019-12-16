@@ -101,7 +101,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                     <p>In this demo, click the toolbar options to toggle between the selection type and selection mode available in Grid.</p>
                     <p>
                         More information on the selection configuration can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/grd/api-gridComponent.html#selectionsettings-selectionsettingsmodel"> documentation section</a>.
+            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/api/grid/#selectrows"> documentation section</a>.
         </p>
 
                 </div>

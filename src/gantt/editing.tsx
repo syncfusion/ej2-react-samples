@@ -24,6 +24,9 @@ export class Editing extends SampleBase<{}, {}> {
     allowTaskbarEditing: true,
     showDeleteConfirmDialog: true
   };
+  public splitterSettings: any = {
+    columnIndex: 2
+  };
   public projectStartDate: Date = new Date('03/25/2019');
   public projectEndDate: Date = new Date('07/28/2019');
   public gridLines: any = 'Both';
@@ -52,7 +55,7 @@ export class Editing extends SampleBase<{}, {}> {
           <GanttComponent id='Editing' dataSource={editingData} dateFormat={'MMM dd, y'}
             treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
-            taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings}
+            taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceNameMapping='resourceName' resourceIDMapping='resourceId' resources={editingResources}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='60' ></ColumnDirective>

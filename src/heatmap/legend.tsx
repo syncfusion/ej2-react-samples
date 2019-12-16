@@ -40,7 +40,7 @@ export class LegendPlacement extends SampleBase<{}, {}> {
                 {/* custom code end */}    
                         <HeatMapComponent id='heatmap-container' ref={t => this.heatmap = t}
                             titleSettings={{
-                                text: 'Hourly Weather Forecast (in Celsius)',
+                                text: 'Hourly Weather Forecast',
                                 textStyle: {
                                     size: '15px',
                                     fontWeight: '500',
@@ -70,8 +70,11 @@ export class LegendPlacement extends SampleBase<{}, {}> {
                             }}
                             load={this.load.bind(this)}
                             legendSettings={{
-                                position: 'Left',
+                                position: 'Bottom',
                                 labelFormat: '{value}\xB0 C',
+                                title:{
+                                    text: "Celsius"
+                                }
                             }}>
                             <Inject services={[Legend, Tooltip]} />
                         </HeatMapComponent>
@@ -88,7 +91,7 @@ export class LegendPlacement extends SampleBase<{}, {}> {
                                         <div>
                                             <DropDownListComponent width="120px" id="LegendPosition" change={this.change.bind(this)}
                                                 ref={d => this.dropElement = d} dataSource={this.droplist}
-                                                fields={{ text: 'value', value: 'value' }} text="Left" value="Left" />
+                                                fields={{ text: 'value', value: 'value' }} text="Bottom" value="Bottom" />
                                         </div>
                                     </td>
                                 </tr>

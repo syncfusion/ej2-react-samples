@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, TrendlineDirective, TrendlinesDirective, Inject,
-    Tooltip, LineSeries, ScatterSeries, ILoadedEventArgs, SplineSeries, Trendlines, Category, ChartTheme
+    Tooltip, LineSeries, ScatterSeries, ILoadedEventArgs, SplineSeries, Trendlines, Category, ChartTheme, Legend
 } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
@@ -155,11 +155,11 @@ export class Trend extends SampleBase<{}, {}> {
                             tooltip={{ enable: true }}
                             chartArea={{ border: { width: 0 } }}
                             title='Historical Indian Rupee Rate (INR USD)' loaded={this.onChartLoad.bind(this)}>
-                            <Inject services={[Category, Tooltip, ScatterSeries, SplineSeries, LineSeries, Trendlines]} />
+                            <Inject services={[Category, Tooltip, ScatterSeries, SplineSeries, LineSeries, Trendlines, Legend]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={series1} xName='x' yName='y' name='Rupees' type='Spline' marker= { { visible: true } }>
                                     <TrendlinesDirective>
-                                        <TrendlineDirective type='Linear' width={3} marker={{ visible: false }} name='Linear' fill='#C64A75'>
+                                        <TrendlineDirective type='Linear' width={3} marker={{ visible: false }} name='Trends' fill='#C64A75'>
                                         </TrendlineDirective>
                                     </TrendlinesDirective>
                                 </SeriesDirective>

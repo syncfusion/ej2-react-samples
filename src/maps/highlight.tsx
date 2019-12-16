@@ -150,7 +150,7 @@ export class HighlightMaps extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                 <div style={{width:350,margin:'auto',paddingBottom:20}}>
-                          <img src="src/maps/images/atm.png" style={{width:25,height:25,float:'left'}}>
+                          <img src="src/maps/images/atm.png" alt="ATM indication" style={{width:25,height:25,float:'left'}}>
                           </img>
                           <div id="sampletitle" style={{fontWeight:400, paddingLeft:30,fontSize: 18}}>ATM locations in Oklahoma, USA</div>
                     </div>

@@ -71,10 +71,10 @@ export class PrintMaps extends SampleBase<{}, {}> {
                                         format: 'State: ${name} <br> Population: ${population}'
                                     }}
                                     shapeSettings={{
-                                        border: {
+                                        /*border: {
                                             width: 0.5,
                                             color: 'gray'
-                                        },
+                                        },*/
                                         colorValuePath: 'population',
                                         colorMapping: [
                                             {

@@ -22,7 +22,7 @@ export const MapSampleOrder: Object = [
         ], 'description': 'This demo for Essential JS2 Maps control depicts the layer along with sublayers for California and Texas.', 'order': '02', 'category': 'Features'
     },
     {
-        'path': 'maps/marker', 'component': 'MarkerMaps', 'name': 'Marker', 'sourceFiles': [
+        'path': 'maps/marker', 'component': 'MarkerMaps', 'name': 'Marker', 'type': 'update', 'sourceFiles': [
             { 'displayName': 'marker.tsx', 'path': './src/maps/marker.tsx' },
             { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' },
             { 'displayName': 'top-population.json', 'path': './src/maps/map-data/top-population.json' }
@@ -63,7 +63,7 @@ export const MapSampleOrder: Object = [
         ], 'description': 'This demo for Essential JS2 Maps control illustrates the sea routes between various cities for shipping.', 'order': '02', 'category': 'Features'
     },
     {
-        'path': 'maps/legend', 'component': 'LegendMaps', 'name': 'Legend', 'type': 'update', 'sourceFiles': [
+        'path': 'maps/legend', 'component': 'LegendMaps', 'name': 'Legend', 'sourceFiles': [
             { 'displayName': 'legend.tsx', 'path': './src/maps/legend.tsx' },
             { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' },
             { 'displayName': 'legend-datasource.json', 'path': './src/maps/map-data/legend-datasource.json' }
@@ -119,6 +119,13 @@ export const MapSampleOrder: Object = [
             { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' },
             { 'displayName': 'zooming-datasource.json', 'path': './src/maps/map-data/zooming-datasource.json' }
         ], 'description': 'This demo for Essential JS2 Maps control depicts the properties required to zoom and pan the rendered map.', 'order': '04', 'category': 'User Interaction'
+    },
+    {
+        'path': 'maps/programmatic-zoom', 'component': 'ProgrammaticZoomMaps', 'name': 'Zoom to fit all markers', 'type': 'new', 'sourceFiles': [
+            { 'displayName': 'programmatic-zoom.tsx', 'path': './src/maps/programmatic-zoom.tsx' },
+            { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' },
+            { 'displayName': 'southamerica-country-capitals.json', 'path': './src/maps/map-data/southamerica-country-capitals.json' }
+        ], 'description': 'This demo for Essential JS2 Maps control demonstrates capitals of south american counntries usign markers.', 'order': '04', 'category': 'User Interaction'
     },
     {
         'path': 'maps/drilldown', 'component': 'DrilldownMaps', 'name': 'Drill down', 'sourceFiles': [
@@ -195,6 +202,13 @@ export const MapSampleOrder: Object = [
             { 'displayName': 'map-with-slider.tsx', 'path': './src/maps/map-with-slider.tsx' },
             { 'displayName': 'north-america.json', 'path': './src/maps/map-data/north-america.json ' },
             { 'displayName': 'population-growth.json', 'path': './src/maps/map-data/population-growth.json' }
+        ], 'description': 'This demo for Essential JS2 Maps control demonstrates the average annual population growth of the countries in the North America continent.', 'order': '06', 'category': 'Use Cases'
+    },
+    {
+        'path': 'maps/sales-maps', 'component': 'SalesMaps', 'name': 'Sales map ', 'type': 'new', 'sourceFiles': [
+            { 'displayName': 'sales-maps.tsx', 'path': './src/maps/sales-maps.tsx' },
+            { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' },
+            { 'displayName': 'sales-map.json', 'path': './src/maps/map-data/sales-map.json' }
         ], 'description': 'This demo for Essential JS2 Maps control demonstrates the average annual population growth of the countries in the North America continent.', 'order': '06', 'category': 'Use Cases'
     },
     {

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, TimelineViewMode, Inject, EventMarkersDirective, EventMarkerDirective, Selection, Sort, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, TimelineViewMode, Inject, Selection, Sort, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectData, projectResources } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -46,7 +46,6 @@ export class Timeline extends SampleBase<{}, {}> {
   private splitterSettings: any = {
     columnIndex: 0
   };
-  private eventMarkerDay1: Date = new Date('02/08/2019');
   public yearformat: { [key: string]: Object }[] = [
     { id: 'MMM "yy', format: 'Jan "18' },
     { id: 'y', format: '2018' },
@@ -173,9 +172,6 @@ export class Timeline extends SampleBase<{}, {}> {
               taskFields={this.taskFields} timelineSettings={this.timelineSettings} highlightWeekends={true}
               height='410px' resourceNameMapping='resourceName' resourceIDMapping='resourceId'
               resources={projectResources} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}>
-              <EventMarkersDirective>
-                <EventMarkerDirective day={this.eventMarkerDay1} label='Project kick-off' ></EventMarkerDirective>
-              </EventMarkersDirective>
               <Inject services={[Selection, Sort, DayMarkers]} />
             </GanttComponent>
           </div>
