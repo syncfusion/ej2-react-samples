@@ -59,23 +59,35 @@ export class DropDowns extends SampleBase<{}, {}> {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
             rightPane.addEventListener('scroll', () => {
-                let mode: string = this.editorMode.value as string;
-                if (mode === 'Inline') {
-                    return;
-                }
-                if (this.editObj && (this.editObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.editObj.enableEditMode = false;
-                }
-                if (this.multiObj && (this.multiObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.multiObj.enableEditMode = false;
-                }
-                if (this.dropObj && (this.dropObj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.dropObj.enableEditMode = false;
-                }
-                if (this.comboObbj && (this.comboObbj.element.querySelectorAll('.e-editable-open').length > 0)) {
-                    this.comboObbj.enableEditMode = false;
-                }
+                this.scrollRightPane();
             });
+        }
+    }
+    componentWillUnmount() {
+        let rightPane: HTMLElement = document.getElementById('right-pane');
+        if (rightPane) {
+            rightPane.removeEventListener('scroll', () => {
+                this.scrollRightPane();
+            });
+        }
+    }
+    private scrollRightPane = () => {
+
+        let mode: string =  (document.getElementById('editorMode') as HTMLSelectElement).value;
+        if (mode === 'Inline') {
+            return;
+        }
+        if (this.editObj && (this.editObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.editObj.enableEditMode = false;
+        }
+        if (this.multiObj && (this.multiObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.multiObj.enableEditMode = false;
+        }
+        if (this.dropObj && (this.dropObj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.dropObj.enableEditMode = false;
+        }
+        if (this.comboObbj && (this.comboObbj.element.querySelectorAll('.e-editable-open').length > 0)) {
+            this.comboObbj.enableEditMode = false;
         }
     }
 

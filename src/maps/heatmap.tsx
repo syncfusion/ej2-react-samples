@@ -81,10 +81,10 @@ export class HeatMaps extends SampleBase<{}, {}> {
                                         format: 'State: ${Name} <br> Population: ${population}'
                                     }}
                                     shapeSettings={{
-                                        border: {
+                                        /*border: {
                                             width: 0.2,
                                             color: 'white'
-                                        },
+                                        },*/
                                         colorValuePath: 'population',
                                         colorMapping:colormapping
                                     }}

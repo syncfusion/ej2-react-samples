@@ -16,7 +16,7 @@ export class ResizableEditor extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section' id="rte">
           <div className='rte-control-section'>
-            <RichTextEditorComponent id="resizeRTE" enableResize={this.resize}  >
+            <RichTextEditorComponent id="resizeRTE" enableResize={this.resize} height='250px'>
               <p>The rich text editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
   Users can format their content using standard toolbar commands.</p>
               <Inject services={[HtmlEditor, Toolbar, Image, Link, Resize, QuickToolbar]} />

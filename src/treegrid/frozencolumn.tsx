@@ -28,7 +28,7 @@ export class FrozenColumn extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                 <p>
-            The freezing feature enables the user to freeze certain columns to scroll remaining movable content. This can be achieved by setting <b>frozenColumns</b> property.
+        The freezing feature enables the user to freeze certain columns to scroll remaining movable content. This can be achieved by setting <b>frozenColumns</b> property.
     </p>
     <p>
         Note: In this demo sample, the first two columns is set to frozen by using the <code><a target="_blank" className="code"
