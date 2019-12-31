@@ -49,7 +49,7 @@ export class FileUpload extends SampleBase<{},{hideDialog: boolean}> {
         this.setState({ hideDialog: true });
         this.filemanagerObj.refresh();
     }
-    private hostUrl: string = "https://ej2services.syncfusion.com/production/web-services/";
+    private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
     private contextmenuItems: string[] = ['Open', '|', 'Cut', 'Copy', 'Delete', 'Rename', '|', 'Details'];
     public render(): JSX.Element {
         return(

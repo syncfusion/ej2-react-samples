@@ -47,10 +47,14 @@ export class ImageSample extends SampleBase<{}, {}> {
             let transform: number = (imgEle.style.transform === '') ? 0 :
                 parseInt(imgEle.style.transform.split('(')[1].split(')')[0], 10);
             imgEle.style.transform = 'rotate(' + (transform + 90) + 'deg)';
+            this.rteObj.formatter.saveData();
+            this.rteObj.formatter.enableUndo(this.rteObj);
         } else if (e.item.tooltipText === 'Rotate Left') {
             let transform: number = (imgEle.style.transform === '') ? 0 :
                 Math.abs(parseInt(imgEle.style.transform.split('(')[1].split(')')[0], 10));
             imgEle.style.transform = 'rotate(-' + (transform + 90) + 'deg)';
+            this.rteObj.formatter.saveData();
+            this.rteObj.formatter.enableUndo(this.rteObj);
         }
     }
 

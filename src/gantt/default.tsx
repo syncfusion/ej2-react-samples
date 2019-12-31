@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, Inject, EventMarkersDirective, EventMarkerDirective, Selection, DayMarkers } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Selection } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -15,10 +15,6 @@ export class Default extends SampleBase<{}, {}> {
     dependency: 'Predecessor',
     child: 'subtasks'
   };
-  public eventMarkerDay1: Date = new Date('04/09/2019');
-  public eventMarkerDay2: Date = new Date('04/30/2019');
-  public eventMarkerDay3: Date = new Date('05/23/2019');
-  public eventMarkerDay4: Date = new Date('06/20/2019');
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
@@ -28,16 +24,10 @@ export class Default extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='Default' dataSource={projectNewData} highlightWeekends={true}
+          <GanttComponent id='Default' dataSource={projectNewData}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
-            <EventMarkersDirective>
-              <EventMarkerDirective day={this.eventMarkerDay1} label='Research phase' ></EventMarkerDirective>
-              <EventMarkerDirective day={this.eventMarkerDay2} label='Design phase' ></EventMarkerDirective>
-              <EventMarkerDirective day={this.eventMarkerDay3} label='Production phase' ></EventMarkerDirective>
-              <EventMarkerDirective day={this.eventMarkerDay4} label='Sales and marketing phase' ></EventMarkerDirective>
-            </EventMarkersDirective>
-            <Inject services={[Selection, DayMarkers]} />
+            <Inject services={[Selection]} />
           </GanttComponent>
         </div>
         <div id="action-description">
@@ -56,8 +46,8 @@ export class Default extends SampleBase<{}, {}> {
             taskbars, timeline units and dependency lines in touch enabled devices.
           </p>
           <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
-            <code>Selection</code>, <code>DayMarkers</code> modules.
+            Gantt component features are segregated into individual feature-wise modules. To use a selection support we need to inject the
+            <code>Selection</code> module.
         </p>
         </div>
       </div>

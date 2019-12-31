@@ -16,7 +16,7 @@ export class ForeignKeyColumn extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={orderDetails} allowPaging={true} ref={grid => this.gridInstance = grid} allowFiltering={true}
+                    <GridComponent dataSource={orderDetails.slice()} allowPaging={true} ref={grid => this.gridInstance = grid} allowFiltering={true}
                         allowSorting={true} editSettings={{ allowEditing: true, allowDeleting: true, allowAdding: true }}
                         filterSettings={{ type: 'Menu' }} toolbar={this.toolbarOptions}>
                         <ColumnsDirective>

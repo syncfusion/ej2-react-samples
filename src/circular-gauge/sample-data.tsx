@@ -149,7 +149,7 @@ export class SampleData extends SampleBase<{}, {}> {
                                                 }}>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective
-                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
+                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for Germany"/><div class="fontDes">${pointers[0].value}%</div></div></div>'
                                                         angle={180} zIndex='1'
                                                         radius='30%' />
                                                     <AnnotationDirective
@@ -198,7 +198,7 @@ export class SampleData extends SampleBase<{}, {}> {
                                                 }}>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective
-                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
+                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for USA" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
                                                         angle={180} zIndex='1'
                                                         radius='30%' />
                                                     <AnnotationDirective
@@ -247,7 +247,7 @@ export class SampleData extends SampleBase<{}, {}> {
                                                 }}>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective
-                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/negative.png" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
+                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/negative.png" alt="Negative value for UK" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
                                                         angle={180} zIndex='1'
                                                         radius='30%' />
                                                     <AnnotationDirective

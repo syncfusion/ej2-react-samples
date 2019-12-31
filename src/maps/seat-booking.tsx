@@ -88,12 +88,12 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
                 <div className='control-section row'>
                     <div className='col-md-8'>
                     <div style={{width:200,margin:'auto',paddingBottom:20}}>
-                          <img src="src/maps/images/bus-icon.png" style={{width:25,height:25,float:'left'}}>
+                          <img src="src/maps/images/bus-icon.png" alt="Bus icon" style={{width:25,height:25,float:'left'}}>
                           </img>
                           <div id="sampletitle">Bus seat selection</div>
                     </div>
                     <div style={{border:'3px solid darkgray',width:200,display:'block',margin:'auto'}}>
-                    <img src="src/maps/images/wheel.png" style={{width:30,height:30,marginLeft:'18%',marginTop:10}}></img>
+                    <img src="src/maps/images/wheel.png" alt="Stering wheel icon" style={{width:30,height:30,marginLeft:'18%',marginTop:10}}></img>
                         <MapsComponent id="maps" loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m} 
                          zoomSettings={{
                                 enable: false

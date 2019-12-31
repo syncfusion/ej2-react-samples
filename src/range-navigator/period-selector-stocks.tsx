@@ -13,10 +13,10 @@ import {
     TmaIndicator, Points, VisibleLabels, IPointRenderEventArgs,
     IAxisLabelRenderEventArgs, IAxisRangeCalculatedEventArgs, LineSeries, StripLine
 } from '@syncfusion/ej2-react-charts';
-import { withInBounds } from '@syncfusion/ej2-charts/src/common/utils/helper';
-import { Browser, remove } from '@syncfusion/ej2-base'
+import { withInBounds } from '@syncfusion/ej2-charts';
+import { Browser, remove } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import { getElement } from '@syncfusion/ej2-svg-base/src/tooltip/helper';
+import { getElement } from '@syncfusion/ej2-svg-base';
 import { chartData } from './stock-chart-data';
 
 export let zoomFactor : number;

@@ -13,6 +13,8 @@ import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { ChartComponent, StackingBarSeries, Category, DataLabel, SeriesCollectionDirective, SeriesDirective } from '@syncfusion/ej2-react-charts';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
+import * as data from './map-data/selection-datasource.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -120,7 +122,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                                 <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='State'
-                                    dataSource={new MapAjax('./src/maps/map-data/selection-datasource.json')}
+                                    dataSource={datasource}
                                     tooltipSettings={{
                                         visible: false
                                     }}

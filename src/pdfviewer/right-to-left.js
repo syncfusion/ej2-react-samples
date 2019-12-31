@@ -1,0 +1,183 @@
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ej2_react_pdfviewer_1 = require("@syncfusion/ej2-react-pdfviewer");
+var sample_base_1 = require("../common/sample-base");
+var ej2_base_1 = require("@syncfusion/ej2-base");
+ej2_base_1.L10n.load({
+    'ar-AE': {
+        'PdfViewer': {
+            'Apply': 'تطبيق',
+            'Automatic': 'تلقائي',
+            'Bookmarks': 'المرجعية',
+            'Cancel': 'إلغاء',
+            'Copy': 'نسخ',
+            'Download': 'تحميل',
+            'Download file': 'تحميل الملف',
+            'Enter Password': 'هذا المستند محمي بكلمة مرور. يرجى إدخال كلمة مرور.',
+            'File Corrupted': 'ملف تالف',
+            'File Corrupted Content': 'الملف تالف ولا يمكن فتحه.',
+            'Find in document': 'ابحث في المستند',
+            'Fit Page': 'لائق بدنيا الصفحة',
+            'Fit Width': 'لائق بدنيا عرض',
+            'Go To First Page': 'عرض الصفحة الأولى',
+            'Go To Last Page': 'عرض الصفحة الأخيرة',
+            'GoToPage': 'انتقل إلى صفحة',
+            'Invalid Password': 'كلمة سر خاطئة. حاول مرة اخرى.',
+            'Match case': 'حالة مباراة',
+            'Next Page': 'عرض الصفحة التالية',
+            'No Text Found': 'لم يتم العثور على نص',
+            'No matches': 'انتهى العارض من البحث في المستند. لم يتم العثور على مزيد من التطابقات',
+            'OK': 'حسنا',
+            'Open': 'فتح الملف',
+            'Page Number': 'رقم الصفحة الحالية',
+            'Page Thumbnails': 'مصغرات الصفحة',
+            'Panning': 'وضع عموم',
+            'Password Protected': 'كلمة المرور مطلوبة',
+            'PdfViewer': 'قوات الدفاع الشعبي المشاهد',
+            'Previous Page': 'عرض الصفحة السابقة',
+            'Print': 'اطبع الملف',
+            // tslint:disable-next-line:max-line-length
+            'Server error': 'خدمة الانترنت لا يستمع. يعتمد قوات الدفاع الشعبي المشاهد على خدمة الويب لجميع ميزاته. يرجى بدء خدمة الويب للمتابعة.',
+            'Text Search': 'بحث عن نص',
+            'Text Selection': 'أداة اختيار النص',
+            'Zoom': 'تكبير',
+            'Zoom In': 'تكبير في',
+            'Zoom Out': 'تكبير خارج',
+            'Undo': 'فك',
+            'Redo': 'فعل ثانية',
+            'Annotation': 'إضافة أو تعديل التعليقات التوضيحية',
+            'Highlight': 'تسليط الضوء على النص',
+            'Underline': 'تسطير النص',
+            'Strikethrough': 'نص يتوسطه خط',
+            'Delete': 'حذف التعليق التوضيحي',
+            'Opacity': 'غموض',
+            'Color edit': 'غير اللون',
+            'Opacity edit': 'تغيير التعتيم',
+            'Highlight context': 'تسليط الضوء',
+            'Underline context': 'أكد',
+            'Strikethrough context': 'يتوسطه',
+            'Open text': 'افتح',
+            'First text': 'الصفحة الأولى',
+            'Previous text': 'الصفحة السابقة',
+            'Next text': 'الصفحة التالية',
+            'Last text': 'آخر صفحة',
+            'Zoom in text': 'تكبير',
+            'Zoom out text': 'تصغير',
+            'Selection text': 'اختيار',
+            'Pan text': 'مقلاة',
+            'Print text': 'طباعة',
+            'Search text': 'بحث',
+            'Annotation Edit text': 'تحرير التعليق التوضيحي',
+            'Line Thickness': 'سمك الخط',
+            'Line Properties': 'خط الخصائص',
+            'Start Arrow': 'ابدأ السهم',
+            'End Arrow': 'نهاية السهم',
+            'Line Style': 'أسلوب الخط',
+            'Fill Color': 'ملء اللون',
+            'Line Color': ' الخط اللون',
+            'None': 'لا شيء',
+            'Open Arrow': 'افتح',
+            'Closed Arrow': 'مغلق',
+            'Round Arrow': 'مستدير',
+            'Square Arrow': 'مربع',
+            'Diamond Arrow': 'الماس',
+            'Cut': 'يقطع',
+            'Paste': 'معجون',
+            'Delete Context': 'حذف',
+            'Properties': 'الخصائص',
+            'Add Stamp': 'إضافة الطوابع',
+            'Add Shapes': 'أضف الأشكال',
+            'Stroke edit': 'تغيير لون السكتة الدماغية',
+            'Change thickness': 'تغيير سمك الحدود',
+            'Add line': 'إضافة خط',
+            'Add arrow': 'سهم إضافة',
+            'Add rectangle': 'أضف مستطيل',
+            'Add circle': 'إضافة دائرة',
+            'Add polygon': 'أضف مضلع',
+            'Add Comments': 'أضف تعليقات',
+            'Comments': 'تعليقات',
+            'No Comments Yet': 'لا توجد تعليقات حتى الآن',
+            'Accepted': 'وافقت',
+            'Completed': 'منجز',
+            'Cancelled': 'ألغيت',
+            'Rejected': 'مرفوض',
+            'Leader Length': 'زعيم الطول',
+            'Scale Ratio': 'نسبة مقياس',
+            'Calibrate': 'عاير',
+            'Calibrate Distance': 'معايرة المسافة',
+            'Calibrate Perimeter': 'معايرة محيط',
+            'Calibrate Area': 'عاير منطقة',
+            'Calibrate Radius': 'معايرة نصف القطر',
+            'Calibrate Volume': 'معايرة الحجم',
+            'Depth': 'عمق',
+            'Closed': 'مغلق',
+            'Round': 'مستدير',
+            'Square': 'ميدان',
+            'Diamond': 'الماس',
+            'Edit': 'تصحيح',
+            'Comment': 'تعليقات',
+            'Comment Panel': 'لوحة التعليقات',
+            'Set Status': 'تعيين الحالة',
+            'Post': 'بريد',
+            'Page': 'صفحة',
+            'Add a comment': 'أضف تعليق',
+            'Add a reply': 'أضف رد',
+            'Import Annotations': 'استيراد التعليقات التوضيحية',
+            'Export Annotations': 'شروح التصدير',
+            'Add': 'أضف',
+            'Clear': 'واضح',
+            'Bold': 'بالخط العريض',
+            'Italic': 'مائل',
+            'Strikethroughs': 'يتوسطه',
+            'Underlines': 'تحت الخط',
+            'Superscript': 'حرف فوقي',
+            'Subscript': 'الفرعية النصي',
+            'Align left': 'محاذاة اليسار',
+            'Align right': 'محاذاة اليمين',
+            'Center': 'مركز',
+            'Justify': 'برر',
+            'Font color': 'لون الخط',
+            'Text Align': 'محاذاة النص',
+            'Text Properties': 'نوع الخط',
+            'Draw Signature': 'ارسم التوقيع',
+            'Create': 'خلق',
+            'Font family': 'خط العائلة',
+            'Font size': 'حجم الخط',
+            'Free Text': 'نص حر'
+        }
+    }
+});
+var RightToLeft = (function (_super) {
+    __extends(RightToLeft, _super);
+    function RightToLeft() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    RightToLeft.prototype.render = function () {
+        return (React.createElement("div", null,
+            React.createElement("div", { className: 'control-section' },
+                React.createElement(ej2_react_pdfviewer_1.PdfViewerComponent, { id: "container", documentPath: "RTLText.pdf", serviceUrl: "https://ej2services.syncfusion.com/production/web-services/api/pdfviewer", enableRtl: true, locale: 'ar-AE', style: { 'height': '640px' } },
+                    React.createElement(ej2_react_pdfviewer_1.Inject, { services: [ej2_react_pdfviewer_1.Toolbar, ej2_react_pdfviewer_1.Magnification, ej2_react_pdfviewer_1.Navigation, ej2_react_pdfviewer_1.LinkAnnotation, ej2_react_pdfviewer_1.BookmarkView, ej2_react_pdfviewer_1.ThumbnailView, ej2_react_pdfviewer_1.Print, ej2_react_pdfviewer_1.TextSelection, ej2_react_pdfviewer_1.TextSearch, ej2_react_pdfviewer_1.Annotation, ej2_react_pdfviewer_1.FormFields] }))),
+            React.createElement("div", { id: "action-description" },
+                React.createElement("p", null, "RTL provides an option to switch the text direction and layout of the PDF Viewer from right to left. It improves the user experiences and accessibility for users who use right-to-left languages (Arabic, Farsi, Urdu, etc.). To enable RTL PDF Viewer, set the enableRtl to true.")),
+            React.createElement("div", { id: "description" },
+                React.createElement("p", null, "In this example, you can see PDF Viewer right-to-left and the locale set in arabic[locale value is ar-AE]"),
+                React.createElement("p", null, "By default, locale value is en-US. If you want to change the en-US culture to a different culture, you have to change the locale accordingly."),
+                React.createElement("p", null,
+                    "More information on the PDF Viewer features can be found in this ",
+                    React.createElement("a", { target: "_blank", href: "https://ej2.syncfusion.com/react/documentation/pdfviewer/getting-started/" }, "documentation section"),
+                    "."))));
+    };
+    return RightToLeft;
+}(sample_base_1.SampleBase));
+exports.RightToLeft = RightToLeft;

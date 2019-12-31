@@ -49,6 +49,7 @@ import { InPlaceEditorSampleOrder } from '../inplace-editor/config';
 import { PivotViewSampleOrder } from '../pivot-table/config';
 import {ChipsSampleOrder} from '../chips/config';
 import { StockChartSampleOrder } from '../stock-chart/config';
+import { BulletChartSampleOrder } from '../bullet-chart/config';
 import { TreeGridSampleOrder } from '../treegrid/config';
 import { PdfViewerSampleOrder } from '../pdfviewer/config';
 import { QueryBuilderSampleOrder } from '../query-builder/config';
@@ -66,7 +67,7 @@ export let samplesList: any = [
         'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder, 'type':'update'
     },
     {
-        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type': 'update'
+        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
     },
     {
         'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder, 'type': 'preview'
@@ -75,7 +76,7 @@ export let samplesList: any = [
         'name': 'Chart', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'type': 'update', 'ftName': 'chart'
     },
     {
-        'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'samples': DiagramSampleOrder, 'type': 'update'
+        'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'samples': DiagramSampleOrder
     },
     {
         'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
@@ -87,10 +88,10 @@ export let samplesList: any = [
         'name': 'TreeMap', 'category': 'Data Visualization', 'order': '11', 'path': 'treemap', 'samples': TreemapOrder, 'ftName' :'treemap'
     },
 	{
-        'name': 'Heatmap Chart', 'category': 'Data Visualization', 'order': '06', 'path': 'heatmap', 'samples': HeatmapSampleOrder, 'ftName' :'heatmap-chart'
+        'name': 'Heatmap Chart', 'category': 'Data Visualization', 'order': '06', 'path': 'heatmap', 'samples': HeatmapSampleOrder, 'ftName' :'heatmap-chart', 'type':'update'
     },
     {
-        'name': 'Circular Gauge', 'category': 'Data Visualization', 'type': 'update', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
+        'name': 'Circular Gauge', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
     },
     {
         'name': 'Linear Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'linear-gauge', 'samples': LinearGaugeSampleOrder, 'ftName' :'lineargauge'
@@ -102,10 +103,13 @@ export let samplesList: any = [
         'name': 'Smith Chart', 'category': 'Data Visualization', 'order': '09', 'path': 'smith-chart', 'samples': SmithChartOrder, 'ftName' :'smithchart'
     },
     {
-        'name': 'Barcode', 'category': 'Data Visualization', 'order': '02', 'path': 'barcode', 'samples': BarcodeSampleOrder, 'type': 'new'
+        'name': 'Barcode', 'category': 'Data Visualization', 'order': '02', 'path': 'barcode', 'samples': BarcodeSampleOrder
     },
     {
         'name': 'Range Selector', 'category': 'Data Visualization', 'order': '08', 'path': 'range-navigator', 'samples': RangeNavigatorSampleOrder, 'ftName': 'rangenavigator'
+    },
+    {
+        'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder, 'type':'preview'
     },
     {
         'name': 'Chips', 'category': 'Editors', 'order': '04', 'path': 'chips', 'samples': ChipsSampleOrder
@@ -114,16 +118,16 @@ export let samplesList: any = [
         'name': 'Button', 'category': 'Editors', 'order': '04', 'path': 'button', 'samples': ButtonSampleOrder
     },
     {
-        'name': 'DocumentEditor', 'category': 'Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
+        'name': 'DocumentEditor', 'type': 'update', 'category': 'Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
     },
     {
         'name': 'RichTextEditor', 'type': 'update', 'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
-        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
+        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
     },
 	{
-        'name': 'Gantt', 'category': 'Calendars', 'order': '02', 'path': 'gantt', 'samples': GanttSampleOrder, "type": "new"
+        'name': 'Gantt', 'category': 'Calendars', 'order': '02', 'path': 'gantt', 'samples': GanttSampleOrder, "type": "update"
     },
     {
         'name': 'Calendar', 'category': 'Calendars', 'order': '04', 'path': 'calendar', 'samples': CalendarSampleOrder
@@ -204,7 +208,7 @@ export let samplesList: any = [
         'name': 'ListView', 'category': 'Layout', 'order': '05', 'path': 'listview', 'samples': ListViewSampleOrder
     },
     {
-        'name': 'Dialog', 'category': 'Layout', 'order': '05', 'path': 'dialog', 'samples': DialogSampleOrder, 'ftName' :'modal-dialog'
+        'name': 'Dialog', 'type': 'update', 'category': 'Layout', 'order': '05', 'path': 'dialog', 'samples': DialogSampleOrder, 'ftName' :'modal-dialog'
     },
     {
         'name': 'Tooltip', 'category': 'Layout', 'order': '05', 'path': 'tooltip', 'samples': TooltipSampleOrder
@@ -228,7 +232,7 @@ export let samplesList: any = [
         'name': 'PDF Viewer', 'type': 'update', 'category': 'Viewer', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'
     },
     {
-        'name': 'Dashbaord Layout', 'category': 'Layout', 'path': 'dashboard-layout', 'samples': DashboardLayoutSampleOrder
+        'name': 'Dashboard Layout', 'category': 'Layout', 'path': 'dashboard-layout', 'samples': DashboardLayoutSampleOrder
     },
     {
         'name': 'List Box', 'category': 'Dropdowns', 'ftName': 'list-box', 'order': '04', 'path': 'list-box', 'samples': ListBoxSampleOrder

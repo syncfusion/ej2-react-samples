@@ -8,13 +8,13 @@ import { FileManagerComponent, Inject, NavigationPane, DetailsView, Toolbar } fr
  */
 export class Azure extends SampleBase<{},{}> {
 
-    private hostUrl: string = "https://ej2services.syncfusion.com/production/web-services/";
+    private hostUrl: string = "https://ej2-azure-aspcore-service.azurewebsites.net/";
     public render(): JSX.Element {
         return(
             <div>
                 <div className="control-section">
                     <FileManagerComponent id="azure-file" ajaxSettings = {{
-                        url: this.hostUrl + 'api/AzureFileManager/AzureFileoperations',
+                        url: this.hostUrl + 'api/AzureFileManager/AzureFileOperations',
                         getImageUrl: this.hostUrl + 'api/AzureFileManager/AzureGetImage',
                         uploadUrl: this.hostUrl + 'api/AzureFileManager/AzureUpload',
                         downloadUrl: this.hostUrl + 'api/AzureFileManager/AzureDownload'

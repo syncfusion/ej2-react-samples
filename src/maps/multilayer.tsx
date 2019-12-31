@@ -11,6 +11,10 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as data from './map-data/california.json';
+let datasource: any = data as any;
+import * as data1 from './map-data/texas.json';
+let datasource1: any = data1 as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -79,7 +83,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                                     }}
                                 >
                                 </LayerDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/california.json')} type='SubLayer'
+                                <LayerDirective shapeData={datasource} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.6)',
@@ -126,7 +130,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
 
                                 </LayerDirective>
 
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/texas.json')} type='SubLayer'
+                                <LayerDirective shapeData={datasource1} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.5)',

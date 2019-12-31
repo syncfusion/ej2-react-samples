@@ -12,6 +12,8 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as data from './map-data/tooltip-datasource.json';
+let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -50,7 +52,7 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                                 <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
-                                    dataSource={new MapAjax('./src/maps/map-data/tooltip-datasource.json')}
+                                    dataSource={datasource}
                                     tooltipSettings={{
                                         visible: true,
                                         valuePath: 'name',
