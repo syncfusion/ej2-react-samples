@@ -359,7 +359,7 @@ function getStringWithOutDescription(code, descRegex) {
         }
         return lines.join('\n');
     }
-gulp.task('serve-max', ['-react-build'], function (done) {
+gulp.task('serve-max', ['react-build'], function (done) {
     var browserSync = require('browser-sync');
     var bs = browserSync.create('Essential JS 2 react');
     var options = {
