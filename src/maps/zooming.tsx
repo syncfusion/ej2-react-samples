@@ -158,6 +158,16 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '80%' }}>
+                                        <div>Panning</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" onClick={this.panning.bind(this)} defaultChecked={true} id="panning" style={{ marginTop: '15px' }} />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '80%' }}>
                                         <div>Mouse wheel zoom</div>
                                     </td>
                                     <td>
@@ -214,12 +224,13 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample depicts the zooming and panning options in the maps. You can customize these options by changing the zooming option to Zooming, Mouse wheel zoom, Pinch zoom, Single-click zoom, and Double-click zoom in the Properties panel. Slider control has been placed to zoom the map at the bottom.
+                        This sample depicts the zooming and panning options in the maps. You can customize these options by changing the Zooming, Panning, Mouse wheel zoom, Pinch zoom, Single-click zoom, and Double-click zoom in the Properties panel.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to zoom and pan the map. The support has been provided for zooming with toolbar, rectangle zoom, pinch zoom, mouse wheel zoom, single-click and double-click zoom
+                        In this example, you can see how to zoom and pan the map. The support has been provided for zooming with the toolbar, rectangle zoom, pinch zoom, mouse wheel zoom, single-click, and double-click zoom.Panning can be enabled or disabled using
+                        the Panning option. When it is disabled, the map will switch to zooming mode.
                 </p>
                     <br />
                     <p style={{ fontweight: 500 }}>Injecting Module</p>
@@ -254,6 +265,11 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
     public zooming(): void {
         let element: HTMLInputElement = (document.getElementById('zoom')) as HTMLInputElement;
         this.mapInstance.zoomSettings.enable = element.checked;
+        this.mapInstance.refresh();
+    }
+    public panning(): void {
+        let element: HTMLInputElement = (document.getElementById('panning')) as HTMLInputElement;
+        this.mapInstance.zoomSettings.enablePanning = element.checked;
         this.mapInstance.refresh();
     }
     public doubletab(): void {

@@ -26,14 +26,14 @@ export class RemoteData extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-    <p>This sample demonstrates the way of binding remote services to TreeGrid component. Here, the DataManager is used to bind the remote data with TreeGrid.
+    <p>This sample demonstrates the way of binding remote services to Tree Grid component. Here, the DataManager is used to bind the remote data with Tree Grid.
     </p>
 </div>
     <div id="description">
-        <p>TreeGrid can be bound to remote services by assigning the <code>dataSource</code> property with the instance of <code>
+        <p>Tree Grid can be bound to remote services by assigning the <code>dataSource</code> property with the instance of <code>
                 DataManager</code>.</p>
 
-        <p>The DataManager, which will act as an interface between the service endpoint and the TreeGrid, will require the below minimal information to interact with service endpoint properly.
+        <p>The DataManager, which will act as an interface between the service endpoint and the Tree Grid, will require the below minimal information to interact with service endpoint properly.
         </p>
         <ul>
             <li><code>DataManager->url</code> - Defines the service endpoint to fetch data</li>

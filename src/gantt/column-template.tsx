@@ -30,6 +30,10 @@ public template: any = this.columnTemplate.bind(this);
     resourceInfo: 'resources',
     child: 'subtasks'
   };
+  public resourceFields: any = {
+    id: 'resourceId',
+    name: 'resourceName'
+  };
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
@@ -42,7 +46,7 @@ public template: any = this.columnTemplate.bind(this);
     return (
     <div className='control-pane'>
        <div className='control-section'>
-          <GanttComponent id='ColumnMenu' rowHeight={60} resourceNameMapping='resourceName' resourceIDMapping='resourceId' resources={editingResources}
+          <GanttComponent id='ColumnMenu' rowHeight={60} resourceFields={this.resourceFields} resources={editingResources}
             dataSource={templateData} highlightWeekends={true} splitterSettings={this.splitterSettings}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>

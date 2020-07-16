@@ -60,13 +60,13 @@ export class Search extends SampleBase<{}, {}> {
          </div>
         </div>
         <div id="action-description">
-          <p> This sample demonstrates the TreeGrid searching feature. In this sample, use the search box from toolbar to search 
-              TreeGrid records and the hierarchy mode of searching can be changed using property panel.
+          <p> This sample demonstrates the Tree Grid searching feature. In this sample, use the search box from toolbar to search 
+              Tree Grid records and the hierarchy mode of searching can be changed using property panel.
           </p>
         </div>
 
         <div id="description">
-          <p>The TreeGrid has an option to search its content using the search method with search key as the parameter.</p>
+          <p>The Tree Grid has an option to search its content using the search method with search key as the parameter.</p>
           <p>The tree grid supports different types of search mode through the <code>searchSettings.hierarchyMode property</code>.</p>
           <p>The following are the types of search modes available in the tree grid.</p>
           <ul>
@@ -78,12 +78,12 @@ export class Search extends SampleBase<{}, {}> {
             If the searched records do not have any parent and child records, it displays only the searched record.</li>
             <li><code>None</code> - Displays only the searched record.</li>
            </ul>
-           <p>In this demo, The TreeGrid toolbar provides an option to search the TreeGrid's records. The user can type the text box in the
+           <p>In this demo, The Tree Grid toolbar provides an option to search the Tree Grid's records. The user can type the text box in the
               toolbar and click search button or press Enter key to perform search operation.And also we have an option to change the 
               searching hierarchy mode through the dropdown.</p>
             <p>Injecting Module:</p>
             <p>
-              TreeGrid features are segregated into individual feature-wise modules. To use searching feature, we need to inject <code>Filter</code>
+              Tree Grid features are segregated into individual feature-wise modules. To use searching feature, we need to inject <code>Filter</code>
                 module into the <code>services</code>.
             </p>
             <p>More information on the searching configuration can be found in this documentation section.</p>

@@ -1,11 +1,14 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, RangeSettingsDirective, RangeSettingDirective, RowsDirective, RowDirective, CellsDirective, CellDirective, ColumnDirective } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, RangesDirective, RangeDirective, RowsDirective, RowDirective, CellsDirective, CellDirective, ColumnDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { DataManager } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import './spreadsheet.css';
 import { CustomAdaptor } from './CustomAdaptor';
 
+/**
+ * Remote data binding sample
+ */
 
 export class RemoteDataBinding extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
@@ -17,10 +20,8 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
         crossDomain: true
     });
 
-    public onDataBound(): void {
-        if (this.spreadsheet.sheets[this.spreadsheet.activeSheetTab - 1].name === 'Shipment Details' && !this.spreadsheet.isOpen) {
-            this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A1:G1');
-        }
+    public onCreated(): void {
+        this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A1:G1');
     }
 
     render() {
@@ -29,12 +30,12 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
                 <div className='control-section spreadsheet-control'>
                     <SpreadsheetComponent openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open'
                         saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'
-                        ref={(ssObj) => { this.spreadsheet = ssObj }} dataBound={this.onDataBound.bind(this)}>
+                        ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)}>
                             <SheetsDirective>
                             <SheetDirective name='Shipment Details'>
-                                <RangeSettingsDirective>
-                                    <RangeSettingDirective dataSource={this.data} showFieldAsHeader={false} startCell='A2'></RangeSettingDirective>
-                                </RangeSettingsDirective>
+                                <RangesDirective>
+                                    <RangeDirective dataSource={this.data} showFieldAsHeader={false} startCell='A2'></RangeDirective>
+                                </RangesDirective>
                                 <RowsDirective>
                                     <RowDirective>
                                         <CellsDirective>
@@ -92,11 +93,11 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         In this demo, remote data is bound by assigning service data as an instance of <code>DataManager</code> to the
-                        <code>dataSource</code> property under the rangeSettings of sheet.
+                        <code>dataSource</code> property under the <code>ranges</code> of sheet.
                     </p>
                     <p>
                         More information about remote data binding can be found in this
-                        <a target="_blank" href="https://ej2.syncfusion.com/documentation/spreadsheet/getting-started"> documentation</a> section.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/data-binding/#remote-data"> documentation</a> section.
                     </p>
                 </div>
             </div>

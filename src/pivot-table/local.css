@@ -1,0 +1,12 @@
+.e-pivotview {
+    width: 100%;
+    height: 100%;
+}
+
+.sb-sample-content-area {
+    min-height: 255px !important;
+}
+.component-section {
+    min-height: 255px !important;
+    padding-top: 5px;
+}

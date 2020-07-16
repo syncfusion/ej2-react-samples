@@ -88,7 +88,7 @@ export class NavigationLineMaps extends SampleBase<{}, {}> {
                                         </MarkerDirective>
                                         <MarkerDirective visible={true} template= '<div id="marker2" style="font-size: 12px;color:white">HOUSTON</div>' dataSource={ [ { latitude: 30.332197482973, longitude: -95.36270141601562 }]} animationDuration={0}>
                                               </MarkerDirective>
-                                              <MarkerDirective visible={true} template= '<div id="marker3" style="font-size: 12px;color:white">PANAMA CITY</div>' dataSource={ [ { latitude: 30.380747605060766, longitude: -85.81283569335938 }]} animationDuration={0}>
+                                              <MarkerDirective visible={true} template= '<div id="marker3" style="font-size: 12px;color:white">PANAMA CITY</div>' dataSource={ [ { latitude: 30.380747605060766, longitude: -85.81283569335938 }]} animationDuration={0} offset={{x: 0, y: -15}}>
                                                   </MarkerDirective>
                                                   <MarkerDirective visible={true} template= '<div id="marker4" style="font-size: 12px;color:white">TAMPA</div>' dataSource={ [  { latitude: 27.9337540167772, longitude: -81.15908447265625 }]} animationDuration={0}>
                                                        </MarkerDirective>

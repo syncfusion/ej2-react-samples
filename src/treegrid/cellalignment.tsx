@@ -89,7 +89,7 @@ export class CellAlign extends SampleBase<{}, {}> {
         </div>
       </div>
         <div id="action-description">
-          <p>This sample demonstrates the text alignment functionalities of the treegrid columns.</p>
+          <p>This sample demonstrates the text alignment functionalities of the Tree Grid columns.</p>
         </div>
         <div id='description'>
           <p>

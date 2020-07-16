@@ -6,8 +6,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { MapAjax } from '@syncfusion/ej2-maps';
 import {
-    MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Legend,
-    ProjectionType, MapsTooltip, SmartLabelMode, IntersectAction, ITooltipRenderEventArgs
+    ProjectionType, MapsTooltip, LayersDirective, MapsTheme, ILoadedEventArgs, LayerDirective, MapsComponent, Inject, Legend, SmartLabelMode, IntersectAction, ITooltipRenderEventArgs, Print
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
@@ -16,30 +15,16 @@ import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import * as data from './map-data/print-datasource.json';
 let datasource: any = data as any;
-const SAMPLE_CSS = `
-.control-fluid {
-    padding: 0px !important;
-}
-#btn-control {
-    width: 100%;
-    text-align: center;
-    text-transform:none !important;
-}
-.e-play-icon::before {
-    content: "\\e813";
-}`;
+
 export class PrintMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
 
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
                 <div className='control-section row'>
                     <div className='col-md-8'>
-                        <MapsComponent id="maps" tooltipRender={this.tooltipRender.bind(this)} loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}
+                    <MapsComponent id="maps" tooltipRender={this.tooltipRender.bind(this)} loaded={this.onMapsLoad.bind(this)} load={this.load} allowPrint={true} ref={m => this.mapInstance = m}
                             useGroupingSeparator={true}
                             format={"n"}
                             legendSettings={{
@@ -49,7 +34,10 @@ export class PrintMaps extends SampleBase<{}, {}> {
                                 height: '10',
                                 width: '350',
                                 labelDisplayMode: 'Trim',
-                                alignment: 'Center'
+                                alignment: 'Center',
+                                textStyle: {
+                                    color: '#757575'
+                                },
                             }}
 
                             titleSettings={{
@@ -59,7 +47,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
                                 }
                             }}
                         >
-                            <Inject services={[Legend, MapsTooltip]} />
+                            <Inject services={[Legend, MapsTooltip, Print]} />
                             <LayersDirective>
                                 <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
                                     shapePropertyPath='name'
@@ -116,7 +104,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '100%' }}>
                                         <div id="btn-control">
-                                            <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Print</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>
@@ -132,16 +120,20 @@ export class PrintMaps extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the print. The rendered maps can be printed directly from the browser by calling the public method <code>print</code>. Also this sample visualizes the State-wise US population in the year 2010.
-             </p>
+						In this example, you can see how to render and configure the print functionality. The rendered maps can
+                        be printed directly from the browser by calling the <code>print</code> method when
+                        <code>allowPrint</code> is set as true. Also this sample visualizes the State-wise US population
+                        in the year 2010.
+                        <br /> <br/>
+                        <b>Injecting Module</b>
+                        <br /> <br/>
+                        Maps component features are segregated into individual feature-wise modules. To use a legend, inject
+                        the Legend module using the <code> Legend </code> module into the <code>services</code>.To make use of the print support, we need to
+                        inject the <code>Maps</code> module using the <code> Print </code> module into the <code>services</code>.
+                </p>
                     <p>
-                        Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.
-                 </p>
-                    <br />
-                    <p style={{ fontWeight: 500 }}>Injecting Module</p>
-                    <p>
-                        Maps component features are segregated into individual feature-wise modules. To use a legend, inject the <code>Legend</code> module using the <code>Maps.Inject(Legend)</code> method.
-                 </p>
+                        More information on print can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/maps/print/#print">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

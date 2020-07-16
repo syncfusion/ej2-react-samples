@@ -1,5 +1,5 @@
 /**
- * RichTextEditor image sample
+ * Rich Text Editor image sample
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
@@ -81,7 +81,7 @@ export class ImageSample extends SampleBase<{}, {}> {
                                 toolbarClick={this.onToolbarClick.bind(this)} quickToolbarSettings={this.quickToolbarSettings}>
                                     <p>Rich Text Editor allows to insert images from online source as well as local computer where you want to insert the image in your content.</p>
                                     <p><b>Get started Quick Toolbar to click on the image</b></p>
-                                    <p>It is possible to add custom style on the selected image inside the RichTextEditor through quick toolbar.</p>
+                                    <p>It is possible to add custom style on the selected image inside the Rich Text Editor through quick toolbar.</p>
                                     <img id='rteImageID' style={{ width: '300px', height: '300px', transform: 'rotate(0deg)'}} alt="Logo" src="./src/rich-text-editor/images/RTEImage-Feather.png" />
                                 <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
                             </RichTextEditorComponent>
@@ -114,12 +114,12 @@ export class ImageSample extends SampleBase<{}, {}> {
                     </div>
 
                     <div id="action-description">
-                        <p>This sample demonstrates the option to insert the image to the RichTextEditor content. Click the image button from the
+                        <p>This sample demonstrates the option to insert the image to the Rich Text Editor content. Click the image button from the
                         toolbar item to insert the image.</p>
                     </div>
 
                     <div id="description">
-                        <p>Image tools used to insert an image to the RichTextEditor and click on the image to easily customize the image using quick toolbar.
+                        <p>Image tools used to insert an image to the Rich Text Editor and click on the image to easily customize the image using quick toolbar.
                         The quick toolbar has the following items</p>
                         <ul>
                             <li><code>Replace</code> – can replace the image with some other image.</li>
@@ -137,7 +137,7 @@ export class ImageSample extends SampleBase<{}, {}> {
                         The commands must be passed as string collection to image, text, and link attributes of the quickToolbarSettings property.
     
                     <p><b>Injecting Module:</b></p>
-                        <p>RichTextEditor component features are segregated into individual feature-wise modules. To use image tool, we need to inject <code>Image</code> modules into the services.</p>
+                        <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use image tool, we need to inject <code>Image</code> modules into the services.</p>
                     </div>
                 </div>
                 );

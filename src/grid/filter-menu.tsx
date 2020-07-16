@@ -50,7 +50,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>The filtering feature enables the user to view the reduced amount of records based on filter criteria.
                     It can be enabled by setting <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowfiltering-boolean'>allowFiltering
+                            href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowfiltering'>allowFiltering
                    </a></code> property as true.</p>
                     <p>Grid supports the following filter types.  They are, </p>
                     <ul>
@@ -61,7 +61,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
                     </ul>
                     <p>
                         you can enale the filter type by setting <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/documentation/grid/api-filterSettings.html?lang=typescript#type-string'>
+                        href='http://ej2.syncfusion.com/react/documentation/grid/api-filterSettings.html#type'>
                         filterSettings->type</a>
                         </code>
                     </p>

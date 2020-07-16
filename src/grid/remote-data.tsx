@@ -33,7 +33,7 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
                 </div>
                 <div id='description'>
                     <p>The Grid supports data binding. The <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#datasource-object---datamanager">
+                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#datasource">
                         dataSource
         </a></code> property can be assigned with the instance of <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">
@@ -58,13 +58,13 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
                     <p>In this demo, remote data is bound by assigning service data as an instance of <code><a target="_blank" className="code"
                         href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">
                         DataManager</a></code> to the <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#datasource-object---datamanager">
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#datasource">
                             dataSource
         </a></code> property.</p>
 
                     <p>
                         More information on the data binding can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#datasource-object---datamanager">documentation section</a>.
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/data-binding.html#remote-data">documentation section</a>.
         </p>
                 </div>
             </div>

@@ -15,6 +15,7 @@ export class Axes extends SampleBase<{}, {}> {
     private rangeMaxElement: HTMLInputElement;
     private inversedElement: HTMLInputElement;
     private opposedElement: HTMLInputElement;
+    private lastLabelElement: HTMLInputElement;
     private labelElement: HTMLInputElement;
     private typeElement: DropDownListComponent;
     private placeElement: DropDownListComponent;
@@ -66,6 +67,11 @@ export class Axes extends SampleBase<{}, {}> {
         this.gaugeInstance.refresh();
     }
 
+    private lastLabelChange() {
+        this.gaugeInstance.axes[0].showLastLabel = this.lastLabelElement.checked;
+        this.gaugeInstance.refresh();
+    }
+
     private labelChange() {
         this.gaugeInstance.axes[0].labelStyle.format = this.labelElement.value.indexOf('{value}') > -1 ? this.labelElement.value : this.gaugeInstance.axes[0].labelStyle.format;
         this.gaugeInstance.refresh();
@@ -98,9 +104,9 @@ export class Axes extends SampleBase<{}, {}> {
                         <LinearGaugeComponent load={this.load.bind(this)} id='gauge' ref={gauge => this.gaugeInstance = gauge} orientation='Horizontal'>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective line={{ color: '#9E9E9E' }} majorTicks={{ color: '#9E9E9E', interval: 10 }} minorTicks={{ color: '#9E9E9E', interval: 2 }} labelStyle={{ offset: 48 }}>
+                                <AxisDirective line={{ color: '#9E9E9E' }} majorTicks={{ color: '#9E9E9E', interval: 20 }} minorTicks={{ color: '#9E9E9E', interval: 2 }} maximum={115} labelStyle={{ offset: 48 }}>
                                     <PointersDirective>
-                                        <PointerDirective value={10} height={15} width={15} color='#757575' offset={30}>
+                                        <PointerDirective value={20} height={15} width={15} color='#757575' offset={30}>
                                         </PointerDirective>
                                     </PointersDirective>
                                 </AxisDirective>
@@ -108,7 +114,7 @@ export class Axes extends SampleBase<{}, {}> {
                             <AnnotationsDirective>
                                 <AnnotationDirective content='<div id="pointer" style="width:70px"><h1 style="font-size:14px;">${axes[0].pointers[0].currentValue} MPH</h1></div>'
                                     axisIndex={0}
-                                    axisValue={10}
+                                    axisValue={20}
                                     x={10}
                                     y={60}
                                     zIndex='1'>
@@ -122,21 +128,21 @@ export class Axes extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
-                                        <div id='minValue'>Axis Minimum <span>&nbsp;&nbsp;&nbsp;40</span> </div>
+                                        <div id='minValue'>Axis Minimum <span>&nbsp;&nbsp;&nbsp;0</span> </div>
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.minChange.bind(this)} ref={d => this.rangeMinElement = d} name="range-min" step='5' id="min" defaultValue="0" min="0" max="100" style={{ width: '100px' }} />
+                                            <input type="range" onChange={this.minChange.bind(this)} ref={d => this.rangeMinElement = d} name="range-min" step='5' id="min" defaultValue="0" min="0" max="115" style={{ width: '100px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
-                                        <div id='maxValue'>Axis Maximum <span>&nbsp;&nbsp;&nbsp;80</span> </div>
+                                        <div id='maxValue'>Axis Maximum <span>&nbsp;&nbsp;&nbsp;115</span> </div>
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.maxChange.bind(this)} ref={d => this.rangeMaxElement = d} step='5' id="max" defaultValue="80" min="0" max="100" style={{ width: '100px' }} />
+                                            <input type="range" onChange={this.maxChange.bind(this)} ref={d => this.rangeMaxElement = d} step='5' id="max" defaultValue="115" min="0" max="115" style={{ width: '100px' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -162,6 +168,16 @@ export class Axes extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
+                                        <div>Show Last Label</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="checkbox" onChange={this.lastLabelChange.bind(this)} ref={d => this.lastLabelElement = d} id='lastlabel' />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         <div>Label Format</div>
                                     </td>
                                     <td>
@@ -172,7 +188,7 @@ export class Axes extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Pointer type</div>
+                                        <div>Pointer Type</div>
                                     </td>
                                     <td>
                                         <div>

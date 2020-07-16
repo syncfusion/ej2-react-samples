@@ -23,15 +23,15 @@ export class SelfReference extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the way of binding self-referential flat data to TreeGrid component.</p>
+          <p>This sample demonstrates the way of binding self-referential flat data to Tree Grid component.</p>
         </div>
         <div id='description'>
           <p>
-          TreeGrid can be bound either to local or remote data services. The <code>dataSource</code> property can be assigned either 
+          Tree Grid can be bound either to local or remote data services. The <code>dataSource</code> property can be assigned either 
           with the array of JavaScript objects or instance of <code>DataManager</code>.
       </p>
           <p>
-          In this demo, the array of self-referential flat data with parent ID is assigned as the data source to the TreeGrid.
+          In this demo, the array of self-referential flat data with parent ID is assigned as the data source to the Tree Grid.
       </p>
           <p>
           More information on the self-referential data binding can be found in this documentation section.

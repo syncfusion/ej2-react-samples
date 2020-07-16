@@ -13,6 +13,7 @@ import {
   } from '@syncfusion/ej2-react-diagrams';
 
   import { SampleBase } from "../common/sample-base";
+  let diagramInstance: DiagramComponent;
 
   let nodes: NodeModel[] = [
     {
@@ -151,6 +152,9 @@ let connectors: ConnectorModel[] = [
   ];
 
   export class UMLClassDiagram extends SampleBase<{}, {}> {
+    rendereComplete() {
+      diagramInstance.fitToPage();
+    }
     render() {
         return (
             <div className="control-section">
@@ -158,6 +162,7 @@ let connectors: ConnectorModel[] = [
                 id="diagram"
                 width={"100%"}
                 height={"800px"}
+                ref={diagram => (diagramInstance = diagram)}
                 nodes={nodes}
                 connectors={connectors}
                  //Sets the default values of a node

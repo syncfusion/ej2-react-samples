@@ -3,16 +3,12 @@ import * as React from 'react';
 import { PivotViewComponent, IDataOptions, IDataSet, FieldList, Inject } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
 import * as pivotData from './pivot-data/Pivot_Data.json';
+import './value-sorting.css';
 
 /**
  * PivotView Value Sorting sample.
  */
 
-const SAMPLE_CSS = `
-.e-pivotview {
-    width: 100%;
-    height: 100%;
-}`;
 /* tslint:disable */
 let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSourceSettings: IDataOptions = {
@@ -37,9 +33,6 @@ export class ValueSorting extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
                 <div className='control-section' style={{ overflow: 'auto' }}>
                     <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} showFieldList={true} enableValueSorting={true} gridSettings={{columnWidth: 140}}>
                         <Inject services={[FieldList]} />

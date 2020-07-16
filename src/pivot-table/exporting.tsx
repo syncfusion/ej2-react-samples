@@ -7,16 +7,12 @@ import { DropDownListComponent, Inject } from '@syncfusion/ej2-react-dropdowns';
 import { ChangeEventArgs as Args } from '@syncfusion/ej2-buttons';
 import { SampleBase } from '../common/sample-base';
 import * as pivotData from './pivot-data/Pivot_Data.json';
+import './exporting.css';
 
 /**
  * PivotView Exporting Sample.
  */
 
-const SAMPLE_CSS = `
-.e-pivotview {
-    width: 100%;
-    height: 100%;
-}`;
 /* tslint:disable */
 let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSourceSettings: IDataOptions = {
@@ -62,9 +58,6 @@ export class Exporting extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
                 <div className='control-section'>
                     <div className='col-lg-8 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} allowExcelExport={true} allowPdfExport={true} showFieldList={true} width={'100%'} height={'300'} gridSettings={{columnWidth: 140}}>

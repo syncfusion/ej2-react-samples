@@ -155,6 +155,7 @@ export class Connectors extends SampleBase<{}, {}> {
     }
   }
   rendereComplete() {
+    diagramInstance.fitToPage();
     document.getElementById("appearance").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
       let selectedElement: HTMLCollection = document.getElementsByClassName(

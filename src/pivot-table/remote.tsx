@@ -2,54 +2,103 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PivotViewComponent, IDataOptions, IDataSet } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
-import { DataManager, Query, ReturnOption, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
+import './remote.css';
 
 /**
  * PivotView sample for Remote data source.
  */
 
-const SAMPLE_CSS = `
-.e-pivotview {
-    width: 100%;
-    height: 100%;
-}`;
+export class Remote extends SampleBase<{}, {}> {
+    private pivotObj: PivotViewComponent;
+    private fields: object = { text: 'text', value: 'value' };
+    private contentTypes: { [key: string]: Object }[] = [
+        { 'value': 'JSON', 'text': 'JSON' },
+        { 'value': 'CSV', 'text': 'CSV' }
+    ];
 
-let remoteData: IDataSet[];
-let dataSourceSettings: IDataOptions;
-new DataManager({
-    url: 'https://bi.syncfusion.com/northwindservice/api/orders',
-    adaptor: new WebApiAdaptor,
-    crossDomain: true
-}).executeQuery(new Query().take(8)).then((e: ReturnOption) => {
-    remoteData = e.result as IDataSet[];
-    dataSourceSettings = {
-        dataSource: remoteData as IDataSet[],
+    private remoteData: DataManager = new DataManager({
+        url: 'https://bi.syncfusion.com/northwindservice/api/orders',
+        adaptor: new WebApiAdaptor,
+        crossDomain: true
+    });
+    private jsonReport: IDataOptions = {
+        dataSource: this.remoteData as DataManager,
+        type: 'JSON',
         expandAll: true,
         filters: [],
         columns: [{ name: 'ProductName', caption: 'Product Name' }],
         rows: [{ name: 'ShipCountry', caption: 'Ship Country' }, { name: 'ShipCity', caption: 'Ship City' }],
         formatSettings: [{ name: 'UnitPrice', format: 'C0' }],
         values: [{ name: 'Quantity' }, { name: 'UnitPrice', caption: 'Unit Price' }]
-    }
-});
+    };
 
-export class Remote extends SampleBase<{}, {}> {
+    private csvReport: IDataOptions = {
+        url: 'https://bi.syncfusion.com/productservice/api/sales',
+        type: 'CSV',
+        expandAll: false,
+        enableSorting: true,
+        formatSettings: [{ name: 'Total Cost', format: 'C0' }, { name: 'Total Revenue', format: 'C0' }, { name: 'Total Profit', format: 'C0' }],
+        drilledMembers: [{ name: 'Item Type', items: ['Baby Food'] }],
+        rows: [
+            { name: 'Region' },
+            { name: 'Country' }
+        ],
+        columns: [
+            { name: 'Item Type' },
+            { name: 'Sales Channel' }
+        ],
+        values: [
+            { name: 'Total Cost' },
+            { name: 'Total Revenue' },
+            { name: 'Total Profit' }
+        ],
+        filters: []
+    };
+
+
+    ddlOnChange(args: ChangeEventArgs): void {
+        if (args.value === 'JSON') {
+            this.pivotObj.dataSourceSettings = this.jsonReport;
+        } else if (args.value === 'CSV') {
+            this.pivotObj.dataSourceSettings = this.csvReport;
+        }
+    }
 
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
-                <div className='control-section' style={{ overflow: 'auto' }}>
-                    <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} gridSettings={{columnWidth: 120}}>
-                    </PivotViewComponent>
+                <div className='control-section component-section' style={{ overflow: 'auto' }}>
+                    <div id='dropdown-control' style={{ marginBottom: '5px' }}>
+                        <table style={{ width: '350px' }}>
+                            <tbody>
+                                <tr style={{ height: '50px' }}>
+                                    <td>
+                                        <div><b>Content Type:</b>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div>
+                                                <DropDownListComponent placeholder={'Content Type'} fields={this.fields} change={this.ddlOnChange.bind(this)} id="contenttype" index={0} enabled={true} dataSource={this.contentTypes} />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='content-wrapper'>
+                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={this.jsonReport} width={'100%'} height={'300'} gridSettings={{ columnWidth: 120 }}>
+                        </PivotViewComponent>
+                    </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates basic rendering of the pivot table bound to JSON data pulled from a remote server.</p>
+                    <p>This sample demonstrates basic rendering of the pivot table bound to JSON or CSV data pulled from a remote server.</p>
                 </div>
                 <div id="description">
-                    <p>The pivot table supports JSON data source. The
+                    <p>The pivot table supports JSON and CSV data source. The
                         <code>dataSourceSettings->dataSource</code> property can be assigned with the result of DataManager to bind remote data.</p>
                                     The
                     <code>DataManager</code>, which will act as an interface between the service endpoint and the pivot table, will require the below minimal
@@ -60,10 +109,10 @@ export class Remote extends SampleBase<{}, {}> {
                         <li>
                             <code>DataManager->adaptor</code> - Defines the adaptor option. Here,
                             <code>WebApiAdaptor</code> is used for remote binding.</li>
-                                    </ul>
+                    </ul>
                                     In this demo, remote data is bound by assigning service data as an instance of
                     <code>DataManager</code> to the
-                    <code>dataSourceSettings->dataSource</code> property.
+                    <code>dataSourceSettings->dataSource</code> property. But for CSV, the service URL is directly set to <code>url</code> for remote data consumption.
                 </div>
             </div>
         )

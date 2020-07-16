@@ -1,5 +1,5 @@
 /**
- * RichTextEditor markdown overview sample
+ * Rich Text Editor markdown overview sample
  */
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
 import { Image, Inject, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, QuickToolbar, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
@@ -13,7 +13,7 @@ export class MarkDown extends SampleBase<{}, {}> {
 
     private rteObj: RichTextEditorComponent;
 
-    // set the value to RichTextEditor
+    // set the value to Rich Text Editor
     private template: string = `The sample is added to showcase **markdown editing**.
 
 Type or edit the content and apply formatting to view markdown formatted content.
@@ -22,7 +22,7 @@ We can add our own custom formation syntax for the Markdown formation, [sample l
     
 The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content`;
 
-    // RichTextEditor items list
+    // Rich Text Editor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|',
         'Formats', 'OrderedList', 'UnorderedList', 'SuperScript', 'SubScript', '|',
         'CreateLink', 'Image', 'CreateTable', '|',
@@ -37,7 +37,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     private mdsource: HTMLElement;
     private mdPreview: HTMLElement;
 
-    //RichTextEditor ToolbarSettings
+    //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
@@ -102,11 +102,11 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates markdown editing in the rich text editor with complete features.</p>
+                    <p>This sample demonstrates markdown editing in the Rich Text Editor with complete features.</p>
                 </div>
 
                 <div id="description">
-                    <p>The rich text editor supports markdown editing when the <code>editorMode</code> is set to mode property of the RichTextEditor</p>
+                    <p>The Rich Text Editor supports markdown editing when the <code>editorMode</code> is set to mode property of the Rich Text Editor</p>
                     <p>The editor’s toolbar contains commands to format the markdown content. The toolbar consists of:</p>
                     <ul>
                         <li><code>Lists</code> - Ordered and unordered list types.</li>
@@ -118,7 +118,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                         <li><code>Tables</code> – Allows you to insert a table with header.</li>
                     </ul>
                     <p><b>Injecting Module</b></p>
-                    <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, QuickToolbar, Table</code> modules into the services.</p>
+                    <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, QuickToolbar, Table</code> modules into the services.</p>
                     <p>The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
                 </div>
             </div>

@@ -52,7 +52,7 @@ export class BatchEdit extends SampleBase<{}, {}> {
             </ul>
             <p>
               In this demo, Batch mode is enabled for editing by defining <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html#mode-string">
+                href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html#mode">
                 editSettings.mode
               </a></code> as <code>batch</code>. You can start editing by double clicking a cell and can change the cell value.
               The edited cell will be highlighted while navigating to a new cell, so that you know which cells had been edited.

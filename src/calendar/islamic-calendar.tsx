@@ -37,7 +37,7 @@ export class IslamicCalendar extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div className='control-pane'>
+            <div className='control-pane e-react-islamic-calendar'>
                 <div className='control-section'>
                     <div className='calendar-control-section' style={{ overflow: 'auto' }}>
                         <CalendarComponent calendarMode={this.calendarMode} renderDayCell={this.disableDate.bind(this)} change={this.valueChange}>

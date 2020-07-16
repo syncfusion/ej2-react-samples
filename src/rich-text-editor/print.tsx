@@ -1,5 +1,5 @@
 /**
- * RichTextEditor print sample
+ * Rich Text Editor print sample
  */
 import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
@@ -11,11 +11,11 @@ export class Print extends SampleBase<{}, {}> {
 
     private rteObj: RichTextEditorComponent;
 
-    // RichTextEditor items list
+    // Rich Text Editor items list
     private items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments',
         'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode', 'Undo', 'Redo', 'Print'];
 
-    //RichTextEditor ToolbarSettings
+    //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
@@ -27,7 +27,7 @@ export class Print extends SampleBase<{}, {}> {
                     <div className="content-wrapper">
                         <RichTextEditorComponent id="print" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
                             toolbarSettings={this.toolbarSettings} >
-                            <p>The rich text editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
+                            <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
     Users can format their content using standard toolbar commands.</p>
                             <p><b>Key features:</b></p>
                             <ul><li><p>Provides &lt;IFRAME&gt; and &lt;DIV&gt; modes</p></li>
@@ -46,7 +46,7 @@ export class Print extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates how to print the content of the rich text editor. Click the print command which placed in toolbar of RTE to print the editor’s content.</p>
+                    <p>This sample demonstrates how to print the content of the Rich Text Editor. Click the print command which placed in toolbar of RTE to print the editor’s content.</p>
                 </div>
             </div>
         );

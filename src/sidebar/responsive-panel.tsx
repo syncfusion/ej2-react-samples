@@ -62,7 +62,7 @@ export class ResponsivePanel extends SampleBase<{}, {}> {
     private fields: object = { dataSource: this.data, id: 'nodeId', text: 'nodeText', child: 'nodeChild' };
     render() {
         return (
-            <div className="control-section">
+            <div className="control-section sidebar-tree">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                     Click/Touch the button to view the sample
                  </div>

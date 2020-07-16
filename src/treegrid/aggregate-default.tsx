@@ -75,11 +75,11 @@ export class AggregateRow extends SampleBase<{}, {}> {
         </div>
       </div>
         <div id="action-description">
-          <p>This sample demonstrates aggregate functionality of the TreeGrid. In this sample, the aggregate value for the columns 
+          <p>This sample demonstrates aggregate functionality of the Tree Grid. In this sample, the aggregate value for the columns 
               “Total Units” and “Unit Weight” is displayed in column footer and provide an option to show child summary.</p>
         </div>
         <div id='description'>
-        <p>The TreeGrid supports aggregates which will be displayed at the footer and every hierarchy level.
+        <p>The Tree Grid supports aggregates which will be displayed at the footer and every hierarchy level.
             The aggregate configurations can be provided by the <code> aggregates</code> property.</p>
             <p>The built-in aggregates are,</p>
               <ul>
@@ -94,7 +94,7 @@ export class AggregateRow extends SampleBase<{}, {}> {
                 The custom aggregate value can be accessed inside template using the key <code>${'custom'}</code></li>
              </ul>
         <p>
-          In this demo, the <code>footerTemplate</code> property is used to display three different aggregates in the TreeGrid footer. 
+          In this demo, the <code>footerTemplate</code> property is used to display three different aggregates in the Tree Grid footer. 
         <ul>
             <li>Showing minimum aggregate for “Total Units” column and the footerTemplate using
                 its type name as <code>(${'Min'})</code>.</li>
@@ -105,7 +105,7 @@ export class AggregateRow extends SampleBase<{}, {}> {
         <p>The template expression should be provided inside <code>${'...'}</code> the interpolation syntax.</p>
         <p>Injecting Module:</p>
         <p>
-          TreeGrid features are segregated into individual feature-wise modules.
+          Tree Grid features are segregated into individual feature-wise modules.
           To use aggregate feature, we need to inject <code>Aggregate</code> module into the services.
         </p>
         <p> More information about aggregate can be found in this documentation section.</p>

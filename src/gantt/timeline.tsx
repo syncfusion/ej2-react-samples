@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GanttComponent, TimelineViewMode, Inject, Selection, Sort, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
-import { projectData, projectResources } from './data';
+import { projectData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { CheckBoxComponent, CheckBox } from '@syncfusion/ej2-react-buttons';
@@ -62,8 +62,8 @@ export class Timeline extends SampleBase<{}, {}> {
     { id: 'EEE MMM dd', format: 'Mon Jan 01' },
   ];
   public dayformat: { [key: string]: Object }[] = [
-    { id: 'EEE, dd', format: 'Mon, 01' },
-    { id: 'E', format: 'Mon' },
+    { id: '', format: 'M' },
+    { id: 'EEE', format: 'Mon' },
     { id: 'dd', format: '01' },
   ];
   public hourformat: { [key: string]: Object }[] = [
@@ -170,8 +170,7 @@ export class Timeline extends SampleBase<{}, {}> {
             <GanttComponent id='Timeline' ref={gantt => this.ganttInstance = gantt} dataSource={projectData} renderBaseline={true} allowSorting={true}
               treeColumnIndex={1} allowSelection={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
               taskFields={this.taskFields} timelineSettings={this.timelineSettings} highlightWeekends={true}
-              height='410px' resourceNameMapping='resourceName' resourceIDMapping='resourceId'
-              resources={projectResources} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}>
+              height='410px' labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}>
               <Inject services={[Selection, Sort, DayMarkers]} />
             </GanttComponent>
           </div>
@@ -280,7 +279,7 @@ export class Timeline extends SampleBase<{}, {}> {
                   <td style={{ width: '70%' }}>
                     <div>
                       <DropDownListComponent ref={DropDownList => this.bottomTierformat = DropDownList} id='btFormat' tabIndex={1} dataSource={this.dayformat}
-                        fields={this.formatField} change={this.bottomFormatChange.bind(this)}></DropDownListComponent>
+                        fields={this.formatField} value='' change={this.bottomFormatChange.bind(this)}></DropDownListComponent>
                     </div>
                   </td>
                 </tr>

@@ -50,7 +50,7 @@ export class DetailTemplate extends SampleBase<{}, {}> {
                     </TreeGridComponent>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the TreeGrid component with the detail template feature.
+                    <p>This sample demonstrates the Tree Grid component with the detail template feature.
     </p>
                 </div>
                 <div id="description">
@@ -64,7 +64,7 @@ export class DetailTemplate extends SampleBase<{}, {}> {
     </p>
                     <p>In this demo, we have presented Employee Information with image in the detail row.</p>
                     <p>Injecting Module:
-                        TreeGrid features are segregated into individual feature-wise modules. To use detail template feature, we need to
+                        Tree Grid features are segregated into individual feature-wise modules. To use detail template feature, we need to
     inject <code>DetailRow</code> using the <code>services</code> section.
 </p>
                 </div>

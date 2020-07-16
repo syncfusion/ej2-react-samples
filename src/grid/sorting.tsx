@@ -34,7 +34,7 @@ export class Sorting extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>
                         Sorting feature enables us to order the data in a particular direction. It can be enabled by setting the  <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#allowsorting-boolean'>
+                            href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#allowsorting'>
                             allowSorting</a></code> as true.</p>
 
                     <p>To sort a Grid column simply click the column header. The icons (ascending) and (descending) specifies the sort direction of a column.</p>

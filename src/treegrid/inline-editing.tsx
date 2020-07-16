@@ -71,7 +71,7 @@ export class Editing extends SampleBase<{}, {}> {
           </div>
       </div>
         <div id="action-description">
-          <p>This sample demonstrates CRUD operations in TreeGrid. You can perform CRUD operations as follows,</p>
+          <p>This sample demonstrates CRUD operations in Tree Grid. You can perform CRUD operations as follows,</p>
           <ul>
             <li><code>Add</code> -  To add new record, click Add toolbar button </li>
             <li><code>Edit</code> - To edit record, double click a row or click toolbar Edit button after selected a row </li>
@@ -81,7 +81,7 @@ export class Editing extends SampleBase<{}, {}> {
           </ul>
         </div>
         <div id='description'>
-          <p>The TreeGrid supports CRUD operations. This CRUD operations can be configured in TreeGrid using editSettings. Also, it has
+          <p>The Tree Grid supports CRUD operations. This CRUD operations can be configured in Tree Grid using editSettings. Also, it has
             different modes to manipulate the datasource.</p>
           <ul>
             <li><code>Row</code></li>
@@ -95,7 +95,7 @@ export class Editing extends SampleBase<{}, {}> {
             We have also provided an option in property panel to select the edit mode as Cell or Row to change <code>mode</code> of editing.
           </p>
           <p>Injecting Module:</p>
-          <p>TreeGrid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
+          <p>Tree Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
              <code>Edit</code> module into the <code>services</code>.</p>
           <p>
             More information on the selection configuration can be found in this documentation section.

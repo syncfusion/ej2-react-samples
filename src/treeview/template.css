@@ -8,11 +8,18 @@
         width: 100%;
     }
     .template-tree.e-treeview .textcontent {
-        float:left;
+        float: left;
+    }
+    .template-tree.e-treeview.e-rtl .textcontent {
+        float: right;
     }
     .template-tree.e-treeview .countcontainer {
-        margin-right: 5px; 
-        float:right;
+        float: right;
+        margin-right: 5px
+    }
+    .template-tree.e-treeview.e-rtl .countcontainer {
+        float: left;
+        margin-left: 5px
     }
     .material .treeCount.e-badge {
         vertical-align: middle;

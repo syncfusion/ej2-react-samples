@@ -36,7 +36,7 @@ export class ColumnMenuSample extends SampleBase<{}, {}> {
                 interact the features like sorting, grouping, filtering, column chooser and autoFit. This features can be enabled
                 by defining the
                 <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#showcolumnmenu-boolean">showColumnMenu
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#showcolumnmenu">showColumnMenu
                     </a></code> as true. The default items are
                     </p>
                     <ul>

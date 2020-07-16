@@ -5,12 +5,16 @@ import { orderDetails } from './data';
 import { SampleBase } from '../common/sample-base';
 import './spreadsheet.css';
 
+/**
+ * Cell Formatting sample
+ */
+
 export class CellFormatting extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
     public rows: RowModel[] = [
         {
             height: 36,
-            // Applying cell formatting through cell binding
+            //Applying cell formatting through cell binding
             cells: [{ style: { textAlign: 'right' } }, { style: { textIndent: '2pt' } }, { style: { textAlign: 'right' } },
             { style: { textIndent: '2pt' } }, { index: 5, style: { textAlign: 'right' } },
             { index: 7, style: { textAlign: 'center' } }, { index: 8, style: { textAlign: 'right' } }]
@@ -21,32 +25,32 @@ export class CellFormatting extends SampleBase<{}, {}> {
 
     public sheetSettings: SheetModel[] = [{
         name: 'Order Details',
-        rangeSettings: [{ dataSource: orderDetails }],
+        ranges: [{ dataSource: orderDetails }],
         columns: [{ width: 80 }, { width: 140 }, { width: 100 }, { width: 232 }, { width: 120 }, { width: 100 },
         { width: 100 }, { width: 120 }, { width: 80 }],
+
         rows: this.rows,
         showGridLines: false
     }];
 
-    public beforeDataBound(): void {
-        if (this.spreadsheet.activeSheetTab === 1 && !this.spreadsheet.isOpen) {
-            // Skip setting cell formatting for other sheets.
-            if (this.spreadsheet.sheets[this.spreadsheet.activeSheetTab - 1].name !== 'Order Details') { return; }
-            // Applying cell formatting dynamically using cellFormat method.
-            this.spreadsheet.cellFormat({ fontWeight: 'bold', backgroundColor: '#4b5366', color: '#ffffff', fontSize: '12pt' }, 'A1:I1');
-            this.spreadsheet.cellFormat({ fontWeight: 'bold', textIndent: '2pt' }, 'B2:B16');
-            this.spreadsheet.cellFormat({ fontStyle: 'italic', textIndent: '2pt' }, 'D2:D16');
-            this.spreadsheet.cellFormat({ textIndent: '2pt' }, 'E1:E16');
-            this.spreadsheet.cellFormat({ textIndent: '2pt' }, 'G1:G16');
-            this.spreadsheet.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'H2:H16');
-            this.spreadsheet.cellFormat({ fontFamily: 'Helvetica New', verticalAlign: 'middle' }, 'A1:I16');
-        }
+    public createdHandler(): void {
+        //Applying cell formatting dynamically using cellFormat method.
+        this.spreadsheet.cellFormat({ fontWeight: 'bold', backgroundColor: '#4b5366', color: '#ffffff', fontSize: '12pt' }, 'A1:I1');
+        this.spreadsheet.cellFormat({ fontWeight: 'bold', textIndent: '2pt' }, 'B2:B16');
+        this.spreadsheet.cellFormat({ fontStyle: 'italic', textIndent: '2pt' }, 'D2:D16');
+        this.spreadsheet.cellFormat({ textIndent: '2pt' }, 'E1:E16');
+        this.spreadsheet.cellFormat({ textIndent: '2pt' }, 'G1:G16');
+        this.spreadsheet.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'H2:H16');
+        this.spreadsheet.cellFormat({ fontFamily: 'Helvetica New', verticalAlign: 'middle' }, 'A1:I16');
+        //Applying border to a range
+        this.spreadsheet.setBorder({ border: '1px solid #e0e0e0' }, 'A1:I16', 'Outer');
+        this.spreadsheet.setBorder({ border: '1px solid #e0e0e0' }, 'A2:I15', 'Horizontal');
     }
 
     public beforeCellRender(args: CellRenderEventArgs): void {
-        if (this.spreadsheet.sheets[this.spreadsheet.activeSheetTab - 1].name === 'Order Details' &&  !this.spreadsheet.isOpen) {
+        if (this.spreadsheet.sheets[this.spreadsheet.activeSheetIndex].name === 'Order Details' &&  !this.spreadsheet.isOpen) {
             if (args.cell && args.cell.value) {
-                // Applying cell formatting before rendering the particular cell.
+                //Applying cell formatting before rendering the particular cell.
                 switch (args.cell.value) {
                     case 'Delivered':
                         this.spreadsheet.cellFormat({ color: '#10c469', textDecoration: 'line-through' }, args.address);
@@ -70,14 +74,14 @@ export class CellFormatting extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section spreadsheet-control'>
                     <SpreadsheetComponent showRibbon={false} showFormulaBar={false} sheets={this.sheetSettings}
-                        ref={(ssObj) => { this.spreadsheet = ssObj }} beforeDataBound={this.beforeDataBound.bind(this)}
+                        ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.createdHandler.bind(this)}
                         beforeCellRender={this.beforeCellRender.bind(this)} >
                     </SpreadsheetComponent>
                 </div>
                 <div id="action-description">
                     <p>
                         This sample demonstrates the <code>Spreadsheet</code> cell formatting feature by applying different styles to a
-            range of cells .
+            range of cells.
             </p>
                 </div>
                 <div id="description">
@@ -98,7 +102,7 @@ export class CellFormatting extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information about <code>cell formatting</code> can be found in this 
-        <a target="_blank" href="https://ej2.syncfusion.com/documentation/spreadsheet/getting-started"> documentation</a> section.
+        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/formatting/#text-and-cell-formatting"> documentation</a> section.
                     </p>
                 </div>
             </div>

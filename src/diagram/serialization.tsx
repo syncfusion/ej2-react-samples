@@ -64,7 +64,7 @@ let nodes: NodeModel[] = [
     annotations: [
       {
         content: "Ready to Get Up?",
-        margin: { top: 25, left: 10, right: 10, bottom: 10 }
+        margin: { top: 10, left: 10, right: 10, bottom: 10 }
       }
     ],
     style: { fill: "#c5efaf", strokeColor: "#797979" }

@@ -18,7 +18,7 @@ export class SidebarWithList extends SampleBase<{}, {}> {
     public fields: object = { tooltip: 'text' };
     render() {
         return (
-            <div className="control-section">
+            <div className="control-section sidebar-list">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                 Click/Touch the button to view the sample
                  </div>

@@ -97,6 +97,8 @@ let node: NodeModel;
 
 export class GettingStartedNodes extends SampleBase<{}, {}> {
   rendereComplete() {
+    diagramInstance.fitToPage();
+
     //Click event for Appearance of the Property Panel
     document.getElementById("appearance").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
@@ -190,16 +192,15 @@ export class GettingStartedNodes extends SampleBase<{}, {}> {
               height={"645px"}
               nodes={sdlc}
               connectors={connections}
-              getNodeDefaults={(node: SdlcNodeModel) => {
+              getNodeDefaults={(obj: NodeModel) => {
                 //Sets the default values of a node
-                let obj: NodeModel = {};
                 obj.width = 100;
                 obj.height = 100;
-                obj.shape = { shape: "Ellipse" };
+                obj.shape = { type: "Basic",shape: "Ellipse" };
                 obj.style = { fill: "#37909A", strokeColor: "#024249" };
                 obj.annotations = [
                   {
-                    content: node.text,
+                    content: (obj as SdlcNodeModel).text,
                     margin: { left: 10, right: 10 },
                     style: {
                       color: "white",

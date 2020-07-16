@@ -193,7 +193,7 @@
      }
  }
  
- .col-md-12,body{
+ .sidebar-menu .col-md-12,body{
     padding:0px;
  }
  /*body styles */
@@ -218,7 +218,7 @@
 
 .ej2-new .container-fluid,
 .ej2-new .container-fluid .control-section,
-#sidebar-section, body, .col-md-12 {
+#sidebar-section, body, .sidebar-menu .col-md-12 {
     padding: 0px;
 }
 

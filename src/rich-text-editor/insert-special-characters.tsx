@@ -1,5 +1,5 @@
 /**
- * RichTextEditor custom toolbar sample
+ * Rich Text Editor custom toolbar sample
  */
 import { DialogComponent, ButtonPropsModel } from '@syncfusion/ej2-react-popups';
 import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
@@ -32,7 +32,7 @@ export class InsertSpecialCharacters extends SampleBase<{}, {}> {
   public dialogCtn: HTMLElement;
   public saveSelection: NodeSelection;
   public dialogObj: DialogComponent;
-  // RichTextEditor items list
+  // Rich Text Editor items list
   private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'OrderedList',
     'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode',
     {
@@ -41,7 +41,7 @@ export class InsertSpecialCharacters extends SampleBase<{}, {}> {
     }, '|', 'Undo', 'Redo'
   ];
 
-  //RichTextEditor ToolbarSettings
+  //Rich Text Editor ToolbarSettings
   private toolbarSettings: ToolbarSettingsModel = {
     items: this.items
   };
@@ -182,18 +182,18 @@ export class InsertSpecialCharacters extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>This sample shows how to add your own commands to toolbar of the rich text editor.
+          <p>This sample shows how to add your own commands to toolbar of the Rich Text Editor.
             The <code>“Ω” </code>  command is added to insert special characters in the editor.
             Click the “Ω” command to show the special characters list, and then choose the character to be inserted in the editor.
           </p>
         </div>
         <div id="description">
-          <p>The rich text editor allows you to configure your own commands to its toolbar using <code>toolbarSettings</code> property.
+          <p>The Rich Text Editor allows you to configure your own commands to its toolbar using <code>toolbarSettings</code> property.
             The command can be plain text, icon, or HTML template.
             You can also define the order and group where the command should be included.
             Bind the action to the command by getting its instance. </p>
           <p><b>Injecting Module</b></p>
-          <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
         </div>
       </div>
     );

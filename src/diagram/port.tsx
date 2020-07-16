@@ -449,6 +449,7 @@ const sample_css = `
 }`;
 export class Port extends SampleBase<{}, {}> {
   rendereComplete() {
+    diagramInstance.fitToPage();
     diagramInstance.select([diagramInstance.nodes[0]]);
   }
   render() {

@@ -14,6 +14,7 @@ import {
   DiagramComponent,
   Inject,
   UndoRedo,
+  Rect
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
 //import { ExpandMode } from "@syncfusion/ej2-react-navigations";
@@ -357,6 +358,9 @@ const SAMPLE_CSS = `
 export class UmlActivityDiagram extends SampleBase<{}, {}> {
   rendereComplete() {
     addEvents();
+    let rect: Rect = document.getElementById('diagram-space').getBoundingClientRect() as Rect;
+    let panX: number = (rect.width - rect.x)/ 2;
+    diagramInstance.pan(panX, 0);
   }
   render() {
     return (

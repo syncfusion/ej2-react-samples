@@ -3,7 +3,7 @@ import * as React from 'react';
 import {
     ScheduleComponent, ViewsDirective, ViewDirective,
     TimelineMonth, getWeekNumber, Inject, CellTemplateArgs, EventRenderedArgs,
-    HeaderRowDirective, HeaderRowsDirective, Resize, DragAndDrop
+    HeaderRowDirective, HeaderRowsDirective, Resize, DragAndDrop, getWeekLastDate
 } from '@syncfusion/ej2-react-schedule';
 import './resources.css';
 import { extend, Internationalization } from '@syncfusion/ej2-base';
@@ -23,7 +23,7 @@ export class HeaderRows extends SampleBase<{}, {}> {
         return this.instance.formatDate((value as CellTemplateArgs).date, { skeleton: 'yMMMM' });
     }
     private getWeekDetails(value: CellTemplateArgs) {
-        return 'Week ' + getWeekNumber((value as CellTemplateArgs).date);;
+        return 'Week ' + getWeekNumber(getWeekLastDate(value.date, 0));
     }
 
     private monthTemplate(props): JSX.Element {

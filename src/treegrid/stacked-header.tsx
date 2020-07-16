@@ -29,11 +29,11 @@ export class Stacked extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the TreeGrid component with the stacked header feature. In this sample, we have 
+          <p>This sample demonstrates the Tree Grid component with the stacked header feature. In this sample, we have 
             shown multiple levels of column header.</p>
         </div>
         <div id='description'>
-          <p>The TreeGrid columns can be stacked/grouped in order to show multiple levels of column header.
+          <p>The Tree Grid columns can be stacked/grouped in order to show multiple levels of column header.
             It can be done by setting the <code>columns->columns property</code>.</p>
           <p>In this demo, the columns <b>Order ID</b>, <b>Order Name</b>, <b>Order Date</b> are grouped under Order Details,
             the columns <b>Shipment Category</b>,<b>Shipped Date</b>, <b>Units</b> are grouped under Shipment Details and

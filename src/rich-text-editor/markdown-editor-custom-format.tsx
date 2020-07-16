@@ -1,5 +1,5 @@
 /**
- * RichTextEditor custom format sample
+ * Rich Text Editor custom format sample
  */
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
 import { Image, Inject, ToolbarSettingsModel, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
@@ -13,10 +13,10 @@ export class CustomFormat extends SampleBase<{}, {}> {
 
     private rteObj: RichTextEditorComponent;
 
-    // set the value to RichTextEditor
+    // set the value to Rich Text Editor
     private template: string = `The sample is configured with customized markdown syntax using the __formatter__ property. Type the content and click the toolbar item to view customized markdown syntax. For unordered list, you need to add a plus sign before the word (e.g., + list1). Or To make a phrase bold, you need to add two underscores before and after the phrase (e.g., __this text is bold__).`;
 
-    // RichTextEditor items list
+    // Rich Text Editor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|',
         'Formats', 'OrderedList', 'UnorderedList', '|',
         'CreateLink', 'Image', '|',
@@ -30,7 +30,7 @@ export class CustomFormat extends SampleBase<{}, {}> {
     private mdsource: HTMLElement;
     private mdPreview: HTMLElement;
 
-    //RichTextEditor ToolbarSettings
+    //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
@@ -104,10 +104,10 @@ export class CustomFormat extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="description">
-                    The rich text editor allows you to customize the markdown syntax by overriding its default syntax. Configure the customized
+                    The Rich Text Editor allows you to customize the markdown syntax by overriding its default syntax. Configure the customized
                     markdown syntax using the <code>formatter</code>property
                     <p><b>Injecting Module</b></p>
-                    <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, QuickToolbar</code> modules into the services.</p>
+                    <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, QuickToolbar</code> modules into the services.</p>
                     <p>The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
                 </div>
             </div>

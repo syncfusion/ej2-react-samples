@@ -130,17 +130,17 @@ export class Virtualization extends SampleBase<{}, {}> {
                         The Grid UI virtualization allows you to render only rows and columns visible within the view-port without buffering the entire datasource.
                         Grid supports row and column virtualization.
                         To enable row virtualization, set <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#enablevirtualization-boolean">
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#enablevirtualization">
                             enableVirtualization </a></code> property as true. For column virtualization, set <code><a target="_blank" className="code"
-                                href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#enablecolumnvirtualization-boolean">
+                                href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#enablecolumnvirtualization">
                                 enableColumnVirtualization
                         </a></code> property as true.
                     </p>
                     <p>
                         Note: The <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#height-string---number">
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#height">
                             height</a></code> property must be defined when enabling <code><a target="_blank" className="code"
-                                href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#enablevirtualization-boolean">
+                                href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#enablevirtualization">
                                 enableVirtualization </a></code>.
                     </p>
                     <p>

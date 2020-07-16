@@ -59,7 +59,7 @@ export class Filtering extends SampleBase<{}, {}> {
          </div>
         </div>
         <div id="action-description">
-          <p> This sample demonstrates the default support of filterbar in TreeGrid.In this sample, type the value
+          <p> This sample demonstrates the default support of filterbar in Tree Grid.In this sample, type the value
             in the filterbar and press enter to filter particular column.The filtering is based on hierarchy mode.</p>
         </div>
         <div id="description">
@@ -73,10 +73,10 @@ export class Filtering extends SampleBase<{}, {}> {
               filter after use stops typing. It can be overridden using the <code>filterSettings->immediateModeDelay
               </code> property.</li>
           </ul>
-          <p>TreeGrid provides support for a set of filtering modes with <code>hierarchyMode</code> property. The below are the
-            type of filter mode available in TreeGrid.</p>
+          <p>Tree Grid provides support for a set of filtering modes with <code>hierarchyMode</code> property. The below are the
+            type of filter mode available in Tree Grid.</p>
           <ul>
-            <li><code>Parent</code> - This is the default filter hierarchy mode in TreeGrid. The filtered records are displayed with its
+            <li><code>Parent</code> - This is the default filter hierarchy mode in Tree Grid. The filtered records are displayed with its
               parent records, if the filtered records not have any parent record then the filtered record only displayed.</li>
             <li><code>Child</code> - The filtered records are displayed with its child record, if the filtered records do not have any child
               record then only the filtered records are displayed.</li>
@@ -87,7 +87,7 @@ export class Filtering extends SampleBase<{}, {}> {
           <br/>
           <p>Injecting Module:</p>
           <p>
-            TreeGrid features are segregated into individual feature-wise modules. To use filtering feature, we need to inject
+            Tree Grid features are segregated into individual feature-wise modules. To use filtering feature, we need to inject
             <code>Filter</code> module into the <code>services</code>.
           </p>
           <p>

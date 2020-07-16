@@ -24,12 +24,12 @@ export class AutoWrap extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the TreeGrid component with the auto wrap column cell feature. In this sample, you can see 
+          <p>This sample demonstrates the Tree Grid component with the auto wrap column cell feature. In this sample, you can see 
                 that Task Name column cell content exceeded the available width hence it has been wrapped into multiple lines.</p>
         </div>
         <div id='description'>
           <p>
-            Auto wrap cell content can be enabled using <code>allowTextWrap</code> property of the TreeGrid. Setting this 
+            Auto wrap cell content can be enabled using <code>allowTextWrap</code> property of the Tree Grid. Setting this 
             property will wrap cell text on multiple lines.This feature is useful to view the cell content when it exceeds the cell width.
          </p>
          <p>

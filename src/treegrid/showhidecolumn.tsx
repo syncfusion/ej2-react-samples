@@ -126,10 +126,10 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
         </div>
       </div>
         <div id="action-description">
-          <p>This sample demonstrates the text alignment functionalities of the treegrid columns.</p>
+          <p>This sample demonstrates the text alignment functionalities of the Tree Grid columns.</p>
         </div>
         <div id='description'>
-          <p>The TreeGrid column can be showed/hidden dynamically using <code>showColumns
+          <p>The Tree Grid column can be showed/hidden dynamically using <code>showColumns
               </code> and <code>hideColumns</code> method of the Grid.</p>
           <p>In this demo, the columns can be showed and hidden by selecting the column name in the dropdown
               and click the Show or Hide buttons to toggle visibility. And the column`s visibility is toggled based on the 

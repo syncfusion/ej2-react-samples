@@ -48,11 +48,11 @@ export class Source extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>Grid rows can be dragged and dropped to another Grid or custom controlled by
             enabling <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowrowdraganddrop-boolean">
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowrowdraganddrop">
                             allowRowDragAndDrop
         </a></code> property. The target control on which the
             Grid rows has to be dropped can be set by using <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#rowdropsettings-rowdropsettingsmodel">
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#rowdropsettings">
                             rowDropSettings->targetID</a></code> property.</p>
                     <p>The Selection feature should be enabled to select the rows. Multiple rows can be selected by
             simply clicking and dragging inside the Grid.</p>
@@ -69,7 +69,7 @@ export class Source extends SampleBase<{}, {}> {
                     <p>
                         More information on the row drag and drop can be found in this
             <a target="_blank"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#rowdropsettings-rowdropsettingsmodel">
+                            href="https://ej2.syncfusion.com/react/documentation/grid/row.html#drag-and-drop">
                             documentation section</a>.
         </p>
 

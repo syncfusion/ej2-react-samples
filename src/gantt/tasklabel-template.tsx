@@ -16,6 +16,10 @@ export class TasklabelTemplate extends SampleBase<{}, {}> {
     resourceInfo: 'resources',
     child: 'subtasks'
   };
+  public resourceFields: any = {
+    id: 'resourceId',
+    name: 'resourceName'
+  };
   public templateLeft: any = this.LeftLabelTemplate;
   public LeftLabelTemplate(props) {
     return(<span>{props.TaskName} [ {props.Progress}% ]</span>);
@@ -54,7 +58,7 @@ export class TasklabelTemplate extends SampleBase<{}, {}> {
             rowHeight='46' treeColumnIndex={1} splitterSettings={this.splitterSettings}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
-            resourceNameMapping='resourceName' resourceIDMapping='resourceId' resources={editingResources}>
+            resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='60'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>

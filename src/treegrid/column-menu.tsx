@@ -30,7 +30,7 @@ export class TreeGridColumnMenu extends SampleBase<{}, {}> {
               each column to open the column menu.</p>
         </div>
         <div id='description'>
-          <p>TreeGrid has an option to show column menu while click on multiple icon of each column. The column menu has
+          <p>Tree Grid has an option to show column menu while click on multiple icon of each column. The column menu has
               an integrated option to interact the features like sorting, filtering, column chooser and and autoFit.
               This features can be enabled by defining the <code>showColumnMenu</code> as true. The default items are
           </p>
@@ -46,7 +46,7 @@ export class TreeGridColumnMenu extends SampleBase<{}, {}> {
             </code> as true with sorting, filtering, column chooser and autoFit options.
           </p>
           <p>Injecting Module:</p>
-          <p>TreeGrid features are segregated into individual feature-wise modules. To use column menu feature, we need to inject 
+          <p>Tree Grid features are segregated into individual feature-wise modules. To use column menu feature, we need to inject 
           <code>ColumnMenu</code> module into the <code>services</code>.</p>
           <p>More information about Column Menu can be found in this documentation section.</p>
         </div>

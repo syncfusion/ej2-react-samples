@@ -180,6 +180,12 @@ gulp.task('generate-router', function (done) {
     done();
 });
 gulp.task('build', function (done) {
+    if( shelljs.exec('node --max-old-space-size=4096 ./node_modules/gulp/bin/gulp.js react-build').code!==0){
+      process.exit(1);   
+    }
+});
+
+gulp.task('react-build', function (done) {
     runSequence('create-locale','generate-router','styles','scripts','bundle','plnkr-json','cssfile', done);
 });
 
@@ -353,7 +359,7 @@ function getStringWithOutDescription(code, descRegex) {
         }
         return lines.join('\n');
     }
-gulp.task('serve-max', ['build'], function (done) {
+gulp.task('serve-max', ['-react-build'], function (done) {
     var browserSync = require('browser-sync');
     var bs = browserSync.create('Essential JS 2 react');
     var options = {

@@ -25,17 +25,17 @@ export class Paging extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the TreeGrid paging feature. In this sample, click the numeric items to navigate to another page. 
+          <p>This sample demonstrates the Tree Grid paging feature. In this sample, click the numeric items to navigate to another page. 
               You can also change the page size using the dropdown.</p>
         </div>
         <div id='description'>
-          <p>Paging allows you to display the contents of the TreeGrid in page segments. By default, paging is disabled. To enable paging,
+          <p>Paging allows you to display the contents of the Tree Grid in page segments. By default, paging is disabled. To enable paging,
               set <code>allowPaging</code> property to true. <code>pageSettings->pageSizes</code> property enables a dropdown in pager
-              which allows you to change the number of records in the TreeGrid dynamically.</p>
-          <p>In this demo, the TreeGrid is rendered with <code>pageSettings->pageSizes</code> set to true and have an option 
-              to change the pagesize of treegrid dynamically.</p>
+              which allows you to change the number of records in the Tree Grid dynamically.</p>
+          <p>In this demo, the Tree Grid is rendered with <code>pageSettings->pageSizes</code> set to true and have an option 
+              to change the pagesize of Tree Grid dynamically.</p>
           <p>Injecting Module:
-              TreeGrid features are segregated into individual feature-wise modules. To use paging feature, we need to inject <code>Page</code> 
+              Tree Grid features are segregated into individual feature-wise modules. To use paging feature, we need to inject <code>Page</code> 
                 module into the <code>services</code>.
           </p>
           <p>

@@ -11,6 +11,9 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import * as data from './treemap-data/rtl-data.json';
+let datasource: any = data as any;
+
 // custom code start
 const SAMPLE_CSS = `
     .control-fluid {
@@ -47,7 +50,7 @@ export class RTL extends SampleBase<{}, {}> {
 						useGroupingSeparator={true}
 						enableRtl={true}
 						renderDirection = 'TopRightBottomLeft'
-						dataSource={new TreeMapAjax('./src/treemap/treemap-data/rtl-data.json')}
+						dataSource={datasource.rtl}
 						weightValuePath='Size'
 						tooltipSettings={{			// To config tooltip for treemap
 							visible: true,

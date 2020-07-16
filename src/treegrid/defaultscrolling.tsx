@@ -23,26 +23,26 @@ export class DefaultScrolling extends SampleBase<{}, {}> {
                 </TreeGridComponent>
                 </div>
                 <div id="action-description">
-    <p>This sample demonstrates the TreeGrid component with the horizontal and vertical scrollbars to view the exceeded TreeGrid content.
+    <p>This sample demonstrates the Tree Grid component with the horizontal and vertical scrollbars to view the exceeded Tree Grid content.
     </p>
 </div>
 <div id="description">
-     <p>The TreeGrid will show scrollbar when the content exceeds the element width or height. 
+     <p>The Tree Grid will show scrollbar when the content exceeds the element width or height. 
         The vertical and horizontal scrollbar will be displayed based on the following criteria.
     </p>
     <ul>
         <li>The vertical scrollbar appears 
-            when the total height of rows present in TreeGrid exceeds its element height.</li>
+            when the total height of rows present in Tree Grid exceeds its element height.</li>
         <li>The horizontal scrollbar appears 
-            when the sum of column`s width exceeds TreeGrid element width.</li>
+            when the sum of column`s width exceeds Tree Grid element width.</li>
     </ul>
     <p>
-        The TreeGrid provides a way to use a custom layout for its rows using template feature. The 
+        The Tree Grid provides a way to use a custom layout for its rows using template feature. The 
         <code><a target="_blank" className="code"
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#height">height
         </a></code> and  <code><a target="_blank" className="code"
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#width">width
-        </a></code> property is used to set the TreeGrid height and width respectively. 
+        </a></code> property is used to set the Tree Grid height and width respectively. 
     The value of these properties can be a numeric value, pixel(<code>px</code>) or percentage (<code>%</code>).   
     </p>
     <p>
@@ -50,8 +50,8 @@ export class DefaultScrolling extends SampleBase<{}, {}> {
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#height">height
         </a></code> and  <code><a target="_blank" className="code"
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#width">width
-        </a></code>  property of the TreeGrid is set to <strong><em>400</em></strong> and <strong><em>auto</em></strong>
-        respectively. Now, the TreeGrid will render with vertical scrollbar when the total height of rows 
+        </a></code>  property of the Tree Grid is set to <strong><em>400</em></strong> and <strong><em>auto</em></strong>
+        respectively. Now, the Tree Grid will render with vertical scrollbar when the total height of rows 
         exceeds its element height and horizontal scrollbar will appear when the
         total column width exceeds the element width.
     </p>

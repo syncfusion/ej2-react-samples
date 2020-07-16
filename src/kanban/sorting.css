@@ -1,0 +1,26 @@
+.e-kanban .e-card-footer-css {
+    align-self: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+}
+
+.e-kanban .e-rank {
+    font-size: 12px;
+}
+
+.e-kanban .e-Low {
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/trivial.svg);
+}
+.e-kanban .e-High {
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/major.svg);
+}
+.e-kanban .e-Critical {
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/critical.svg);
+}
+.e-kanban .e-Normal {
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/minor.svg);
+}

@@ -32,7 +32,7 @@ export class Searching extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>
                         The searching feature enables the user to view the reduced amount of records based on search criteria. It can be enabled by setting  <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowsearching-boolean'>
+                            href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowsearching'>
                             allowSearching</a></code> property as true.
           </p>
                     <p>

@@ -138,20 +138,20 @@ export class UseCase extends SampleBase<{}, {}> {
                             <div id="submitDialog"></div>
                             <form id="formId" className="form-horizontal">
                                 <div className="form-group">
-                                    <label className="col-sm-6 control-label" style={{ textAlign: "left", fontSize: "14px", fontWeight: 400 }}>
+                                    <label className="col-sm-6 control-label" style={{ textAlign: "left", fontSize: "14px", fontWeight: 700 }}>
                                         Title</label>
                                     <InPlaceEditorComponent ref={(title) => { this.titleObj = title }} id='inplace_title_editor' data-underline='false' mode='Inline' emptyText='Enter your question title' name='Title' value='Succinctly E-Book about TypeScript' validationRules={this.textValidationRules} model={this.textModel} >
                                     </InPlaceEditorComponent>
                                 </div>
                                 <div className="form-group">
-                                    <label className="col-sm-6 control-label" style={{ textAlign: "left", fontSize: "14px", fontWeight: 400 }}>
+                                    <label className="col-sm-6 control-label" style={{ textAlign: "left", fontSize: "14px", fontWeight: 700 }}>
                                         Comments</label>
                                     <InPlaceEditorComponent ref={(rte) => { this.rteObj = rte }} id='inplace_comment_editor' data-underline='false' mode='Inline' type='RTE' editableOn='EditIconClick' submitOnEnter={false} value='The extensive adoption of JavaScript for application development, and the ability to use HTML and JavaScript to create Windows Store apps, has made JavaScript a vital part of the Windows development ecosystem. Microsoft has done extensive work to make JavaScript easier to use.' emptyText='Enter your comment' name='rte' validationRules={this.rteValidationRules} model={this.rteModel} popupSettings={this.popupSettings} >
                                         <Inject services={[Rte]} />
                                     </InPlaceEditorComponent>
                                 </div>
                                 <div className="form-group">
-                                    <label className="col-sm-6 control-label" style={{ textAlign: "left", fontSize: "14px", fontWeight: 400 }}>
+                                    <label className="col-sm-6 control-label" style={{ textAlign: "left", fontSize: "14px", fontWeight: 700 }}>
                                         Tags</label>
                                     <InPlaceEditorComponent ref={(tag) => { this.tagObj = tag }} id='inplace_tag_editor' data-underline='false' mode='Inline' type='MultiSelect' created={this.create.bind(this)} value={this.multiValue} emptyText='Enter your tags' name='Tag' actionSuccess={this.selectionActionSuccess.bind(this)} validationRules={this.selectValidationRules} model={this.selectModel} >
                                         <Inject services={[MultiSelect]} />

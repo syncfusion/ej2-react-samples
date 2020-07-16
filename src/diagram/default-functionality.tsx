@@ -316,10 +316,12 @@ let gridlines: GridlinesModel = {
   lineColor: "#e0e0e0",
   lineIntervals: interval
 };
+let diagramInstance: DiagramComponent;
 
 export class Default extends SampleBase<{}, {}> {
   rendereComplete() {
     addEvents();
+    diagramInstance.fitToPage();
   }
   render() {
     return (
@@ -391,6 +393,7 @@ export class Default extends SampleBase<{}, {}> {
             >
               <DiagramComponent
                 id="diagram"
+                ref={diagram => (diagramInstance = diagram)}
                 width={"100%"}
                 height={"700px"}
                 snapSettings={{

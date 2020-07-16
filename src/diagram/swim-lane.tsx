@@ -412,6 +412,8 @@ let diagramInstance: DiagramComponent;
 export class SwimLane extends SampleBase<{}, {}> {
   rendereComplete() {
     addEvents();
+    diagramInstance.fitToPage();
+
   }
   render() {
     return (

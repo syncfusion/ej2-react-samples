@@ -305,7 +305,7 @@ let diagramInstance: DiagramComponent;
 
 export class ShapeGallery extends SampleBase<{}, {}> {
   rendereComplete() {
-    diagramInstance.fitToPage({ mode: "Width" });
+    diagramInstance.fitToPage({ mode: "Height" });
   }
   render() {
     return (
@@ -319,7 +319,7 @@ export class ShapeGallery extends SampleBase<{}, {}> {
               id="diagram"
               ref={diagram => (diagramInstance = diagram)}
               width={"100%"}
-              height={"499px"}
+              height={"800px"}
               snapSettings={{ constraints: SnapConstraints.None }}
               nodes={getNodes()}
               //Defines the default node and connector properties

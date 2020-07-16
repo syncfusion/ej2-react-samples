@@ -47,7 +47,7 @@ export class DialogEdit extends SampleBase<{}, {}> {
               </ul>
             <p>
               In this demo, Dialog mode is enabled for editing by defining <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html#mode-string">
+              href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html#mode">
               editSettings.mode
               </a></code> as <code>dialog</code>. You can start editing by double clicking a row or clicking on toolbar's <code>Edit</code> 
               button, then the currently selected row will be shown on a dialog and you can change the row values and save

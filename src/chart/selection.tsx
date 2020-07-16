@@ -2,16 +2,14 @@
  * Sample for Selection in chart
  */
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs,
-    Selection, SelectionMode, ColumnSeries, Legend, Category, ScatterSeries, ChartTheme,
+    Selection, SelectionMode, ColumnSeries, Legend, Category, ScatterSeries, ChartTheme, HighlightMode,
+    SelectionPattern, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
-import { EmitType } from '@syncfusion/ej2-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
-import { Browser } from '@syncfusion/ej2-base';
 
 export let data1: any[] = [
     { x: 'CHN', y: 17 }, { x: 'USA', y: 19 },
@@ -32,20 +30,64 @@ export let data3: any[] = [
 export class SelectionChart extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
     private dropElement: DropDownListComponent;
+    private patternDropDownList: DropDownListComponent;
+    private highlightDropDownList: DropDownListComponent;
     private droplist: { [key: string]: Object }[] = [
         { value: 'Point' },
         { value: 'Series' },
         { value: 'Cluster' }
     ];
+    private patternTypes: { [key: string]: Object }[] = [
+        { value: 'None' },
+        { value: 'DiagonalForward' },
+        { value: 'Chessboard' },
+        { value: 'Triangle' },
+        { value: 'Box' },
+        { value: 'HorizontalDash' }
+    ];
+    private patternTypes2: { [key: string]: Object }[] = [
+        { value: 'None' },
+        { value: 'Dots' },
+        { value: 'Chessboard' },
+        { value: 'Triangle' },
+        { value: 'Tile' },
+        { value: 'Grid' }
+    ];
     private checkElement: HTMLInputElement;
-    private loaded: EmitType<ILoadedEventArgs>;
-    private previousType: SelectionMode = 'Point';
     private change(): void {
+        let checkBox: HTMLInputElement = document.getElementById('highlightCheckbox') as HTMLInputElement;
         this.chartInstance.selectionMode = this.dropElement.value as SelectionMode;
+        if (checkBox.checked) {
+            this.chartInstance.highlightMode = this.dropElement.value as HighlightMode;
+        } else {
+            this.chartInstance.highlightMode = 'None';
+        }
         this.chartInstance.dataBind();
     }
     private check(): void {
         this.chartInstance.isMultiSelect = this.checkElement.checked;
+    }
+
+    private selectionChange(): void {
+        this.chartInstance.selectionPattern = this.patternDropDownList.value as SelectionPattern;
+    }
+
+    private hightlightPatternChange(): void {
+        let checkBox: HTMLInputElement = document.getElementById('highlightCheckbox') as HTMLInputElement;
+        if (checkBox.checked) {
+            this.chartInstance.highlightPattern = this.highlightDropDownList.value as SelectionPattern;
+        } else {
+            this.chartInstance.highlightPattern = 'None';
+        }
+    }
+
+    private highlightChange(e: React.ChangeEvent<HTMLInputElement>): void {
+        if (e.target.checked) {
+            this.chartInstance.highlightMode = this.chartInstance.selectionMode as HighlightMode;
+            this.chartInstance.highlightPattern = this.highlightDropDownList.value as SelectionPattern;
+        } else {
+            this.chartInstance.highlightMode = this.chartInstance.highlightPattern = 'None';
+        }
     }
 
     render() {
@@ -68,8 +110,11 @@ export class SelectionChart extends SampleBase<{}, {}> {
                             load={this.load.bind(this)}
                             title='Age Distribution by Country' loaded={this.onChartLoad.bind(this)}
                             legendSettings={{ visible: true, toggleVisibility: false }}
-                            selectionMode='Point'>
-                            <Inject services={[Selection, ColumnSeries, Legend, Category, ScatterSeries]} />
+                            selectionMode='Point'
+                            highlightMode='None'
+                            selectionPattern='None'
+                            highlightPattern='None'>
+                            <Inject services={[Selection, ColumnSeries, Legend, Category, ScatterSeries, Highlight]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' width={2} yName='y' name='Age 0-14' type='Column'>
                                 </SeriesDirective>
@@ -95,10 +140,38 @@ export class SelectionChart extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '80%' }}>
-                                        <div>Enable MultipleSelection:</div>
+                                        <div>Enable Multi-selection:</div>
                                     </td>
                                     <td style={{ width: '20%' }}>
                                         <div><input type="checkbox" id="select" onChange={this.check.bind(this)} ref={d => this.checkElement = d} /></div>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '60%' }}>
+                                        <div>Selection Patterns:</div>
+                                    </td>
+                                    <td style={{ width: '40%' }}>
+                                        <div>
+                                            <DropDownListComponent width="120px" id="patternMode" change={this.selectionChange.bind(this)} ref={d => this.patternDropDownList = d} dataSource={this.patternTypes} fields={{ text: 'value', value: 'value' }} value="None" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '80%' }}>
+                                        <div>Enable Hightlight Pattern:</div>
+                                    </td>
+                                    <td style={{ width: '20%' }}>
+                                        <div><input type="checkbox" id="highlightCheckbox" onChange={this.highlightChange.bind(this)} /></div>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '60%' }}>
+                                        <div>Highlight Patterns:</div>
+                                    </td>
+                                    <td style={{ width: '40%' }}>
+                                        <div>
+                                            <DropDownListComponent width="120px" id="highpattern" change={this.hightlightPatternChange.bind(this)} ref={d => this.highlightDropDownList = d} dataSource={this.patternTypes2} fields={{ text: 'value', value: 'value' }} value="None" />
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
@@ -106,9 +179,10 @@ export class SelectionChart extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates the selection feature in chart. To select a specific point, click  the point. The selection mode can be changed by changing Selection Mode in panel. <code>Multiple selection</code> also can be enabled by <code>Enable MultipleSelection.</code>
-            </p>
+                    <p>
+                        This sample illustrates the selection feature in chart. To select a specific point, click  the point. The selection mode can be changed by changing Selection Mode in panel. <code>Multiple selection</code> also can be enabled by <code>Enable Multiple
+                        Selection.</code>
+                    </p>
                 </div>
                 <div id="description">
                     <p>
@@ -145,11 +219,11 @@ export class SelectionChart extends SampleBase<{}, {}> {
         chart.setAttribute('title', '');
         chart.setAttribute('align', 'center');
     };
-        // custom code start
+    // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
-        // custom code end
+    // custom code end  
 }

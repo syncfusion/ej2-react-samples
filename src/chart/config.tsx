@@ -148,7 +148,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the error-bar series.'
     },
     {
-        'path': 'chart/trend-lines', 'component': 'Trend', 'name': 'Trendlines', 'order': '06', 'category': 'Other Types',  'type': 'update',
+        'path': 'chart/trend-lines', 'component': 'Trend', 'name': 'Trendlines', 'order': '06', 'category': 'Other Types',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the trend-lines chart.'
     },
     {
@@ -232,7 +232,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render semi-pie and doughnut charts.'
     },
     {
-        'path': 'chart/smartlabels', 'component': 'SmartLabels', 'name': 'Smart Labels', 'order': '09', 'category': 'Accumulation Charts',
+        'path': 'chart/smartlabels', 'component': 'SmartLabels', 'name': 'Smart Labels', 'order': '09', 'category': 'Accumulation Charts', 'type': 'update',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to arrange the labels smartly without overlapping with each other.'
     },
     {
@@ -276,7 +276,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render wind rose using stacking column in polar and radar charts.'
     },
     {
-        'path': 'chart/polar-rangecolumn', 'component': 'PolarRangeColumn', 'name': 'Range Column', 'order': '10', 'category': 'Polar Radar',  'type': 'update',
+        'path': 'chart/polar-rangecolumn', 'component': 'PolarRangeColumn', 'name': 'Range Column', 'order': '10', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render range column in polar and radar charts.'
     },
     {
@@ -360,7 +360,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the data label template.'
     },
     {
-        'path': 'chart/tooltip-template', 'component': 'ChartTooltipTemplate', 'name' :'Tooltip Template', 'order' : '13','category': 'Chart Customization', 'type' :'new',
+        'path': 'chart/tooltip-template', 'component': 'ChartTooltipTemplate', 'name' :'Tooltip Template', 'order' : '13','category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the tooltip template.'
     },
     {
@@ -380,7 +380,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo for Essential JS2 Chart control shows how to export the charts to Excel, PDF, and image formats such as SVG, JPEG, and PNG at client-side.'
     },
     {
-        'path': 'chart/selection', 'component': 'SelectionChart', 'name': 'Selection', 'order': '15', 'category': 'User Interaction',
+        'path': 'chart/selection', 'component': 'SelectionChart', 'name': 'Selection', 'order': '15', 'category': 'User Interaction', 
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the selection behavior in chart.'
     },
     {

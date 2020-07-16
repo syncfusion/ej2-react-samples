@@ -86,6 +86,9 @@ let prevAction: string;
 let themeDropDown: DropDownList;
 let cultureDropDown: DropDownList;
 let currencyDropDown: DropDownList;
+let newYear: number = new Date().getFullYear();
+let copyRight: HTMLElement= document.querySelector('.sb-footer-copyright');
+copyRight.innerHTML = "Copyright © 2001 - " + newYear + " Syncfusion Inc.";
 isMobile = window.matchMedia('(max-width:550px)').matches;
 if (Browser.isDevice || isMobile) {
   if (sidebar) {

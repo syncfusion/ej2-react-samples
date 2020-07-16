@@ -130,7 +130,7 @@ let markers1: object[] = [
          { latitude: 35.3492258, longitude: -97.5294113 },
         { latitude: 35.5260794, longitude: -98.7032318 },
         { latitude: 34.7827916, longitude: -98.3001709 },
-         { latitude: 34.0793936, longkitude: -98.5583496 },
+         { latitude: 34.0793936, longitude: -98.5583496 },
         { latitude: 36.1434199, longitude: -97.0690155 },
         { latitude: 36.0170318, longitude: -96.11063 },
         { latitude: 36.1608845, longitude: -96.0205078 },

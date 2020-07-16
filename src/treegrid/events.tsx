@@ -22,58 +22,58 @@ export class Events extends SampleBase<{}, {}> {
   public taskNameRule: Object = { required: true };
 
   public created(): void {
-    this.appendElement('TreeGrid <b>created</b> event called<hr>');
+    this.appendElement('Tree Grid <b>created</b> event called<hr>');
   }
   public collapsing(): void {
-    this.appendElement('TreeGrid <b>collapsing</b> event called<hr>');
+    this.appendElement('Tree Grid <b>collapsing</b> event called<hr>');
   }
   public collapsed(): void {
-    this.appendElement('TreeGrid <b>collapsed</b> event called<hr>');
+    this.appendElement('Tree Grid <b>collapsed</b> event called<hr>');
   }
   public expanded(): void {
-    this.appendElement('TreeGrid <b>expanded</b> event called<hr>');
+    this.appendElement('Tree Grid <b>expanded</b> event called<hr>');
   }
   public expanding(): void {
-    this.appendElement('TreeGrid <b>expanding</b> event called<hr>');
+    this.appendElement('Tree Grid <b>expanding</b> event called<hr>');
   }
   public beginEdit(): void {
-    this.appendElement('TreeGrid <b>beginEdit</b> event called<hr>');
+    this.appendElement('Tree Grid <b>beginEdit</b> event called<hr>');
   }
   public columnDragStart(): void {
-    this.appendElement('TreeGrid <b>columnDragStart</b> event called<hr>');
+    this.appendElement('Tree Grid <b>columnDragStart</b> event called<hr>');
   }
   public columnDrop(): void {
-    this.appendElement('TreeGrid <b>columnDrop</b> event called<hr>');
+    this.appendElement('Tree Grid <b>columnDrop</b> event called<hr>');
   }
   public columnDrag(): void {
-    this.appendElement('TreeGrid <b>columnDrag</b> event called<hr>');
+    this.appendElement('Tree Grid <b>columnDrag</b> event called<hr>');
   }
   public load(): void {
-    this.appendElement('TreeGrid <b>load</b> event called<hr>');
+    this.appendElement('Tree Grid <b>load</b> event called<hr>');
   }
   public create(): void {
-    this.appendElement('TreeGrid <b>create</b> event called<hr>');
+    this.appendElement('Tree Grid <b>create</b> event called<hr>');
   }
   public actionBegin(): void {
-    this.appendElement('TreeGrid <b>actionBegin</b> event called<hr>');
+    this.appendElement('Tree Grid <b>actionBegin</b> event called<hr>');
   }
   public actionComplete(): void {
-    this.appendElement('TreeGrid <b>actionComplete</b> event called<hr>');
+    this.appendElement('Tree Grid <b>actionComplete</b> event called<hr>');
   }
   public dataBound(): void {
-    this.appendElement('TreeGrid <b>dataBound</b> event called<hr>');
+    this.appendElement('Tree Grid <b>dataBound</b> event called<hr>');
   }
   public rowSelecting(): void {
-    this.appendElement('TreeGrid <b>rowSelecting</b> event called<hr>');
+    this.appendElement('Tree Grid <b>rowSelecting</b> event called<hr>');
   }
   public rowSelected(): void {
-    this.appendElement('TreeGrid <b>rowSelected</b> event called<hr>');
+    this.appendElement('Tree Grid <b>rowSelected</b> event called<hr>');
   }
   public rowDeselecting(): void {
-    this.appendElement('TreeGrid <b>rowDeselecting</b> event called<hr>');
+    this.appendElement('Tree Grid <b>rowDeselecting</b> event called<hr>');
   }
   public rowDeselected(): void {
-    this.appendElement('TreeGrid <b>rowDeselected</b> event called<hr>');
+    this.appendElement('Tree Grid <b>rowDeselected</b> event called<hr>');
   }
 
   public appendElement(html: string) : void {
@@ -140,15 +140,15 @@ export class Events extends SampleBase<{}, {}> {
         </div>
       </div>
         <div id="action-description">
-            <p>This sample demonstrates all the events that have been triggered on all the TreeGrid operations with the help of Event Trace
+            <p>This sample demonstrates all the events that have been triggered on all the Tree Grid operations with the help of Event Trace
                 panel.
             </p>
         </div>
         <div id="description">
-            <p>The TreeGrid triggers events based on its actions. The events can be used as an extension
+            <p>The Tree Grid triggers events based on its actions. The events can be used as an extension
                 point to perform custom operations.
             </p>
-            <p>In this demo, perform TreeGrid actions like paging, sorting, reordering, filtering etc. and see
+            <p>In this demo, perform Tree Grid actions like paging, sorting, reordering, filtering etc. and see
                 the <strong>Event Trace</strong> panel for the events emitted.
             </p>
             <p>More information on the Grid events can be found in the documentation section.

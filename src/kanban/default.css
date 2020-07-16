@@ -1,0 +1,72 @@
+.e-kanban .e-card-footer-css {
+	align-self: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+}
+.e-kanban .e-improvement {
+    background-image: url(https://syncfusion.atlassian.net/secure/viewavatar?size=medium&avatarId=15507&avatarType=issuetype);
+}
+.e-kanban .e-story {
+    background-image: url(https://syncfusion.atlassian.net/secure/viewavatar?size=medium&avatarId=15515&avatarType=issuetype);
+}
+.e-kanban .e-epic {
+    background-image: url(https://syncfusion.atlassian.net/secure/viewavatar?size=medium&avatarId=15507&avatarType=issuetype);
+}
+.e-kanban .e-bug {
+    background-image: url(https://syncfusion.atlassian.net/secure/viewavatar?size=medium&avatarId=15503&avatarType=issuetype);
+}
+.e-kanban .e-others {
+    background-image: url(https://syncfusion.atlassian.net/images/icons/issuetypes/documentation.png);
+}
+.e-kanban .e-low {
+    margin-right: auto;
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/trivial.svg);
+}
+.e-kanban .e-high {
+    margin-right: auto;
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/major.svg);
+}
+.e-kanban .e-critical {
+    margin-right: auto;
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/critical.svg);
+}
+.e-kanban .e-release {
+    margin-right: auto;
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/critical.svg);
+}
+.e-kanban .e-normal {
+    margin-right: auto;
+    background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/minor.svg);
+}
+.e-kanban .e-nancy-davloio {
+    background-image: url(src/kanban/images/Nancy%20Davloio.png);
+}
+.e-kanban .e-andrew-fuller {
+    background-image: url(src/kanban/images/Andrew%20Fuller.png);
+}
+.e-kanban .e-janet-leverling {
+    background-image: url(src/kanban/images/Janet%20Leverling.png);
+}
+.e-kanban .e-steven-walker {
+    background-image: url(src/kanban/images/Steven%20walker.png);
+}
+.e-kanban .e-michael-suyama {
+    background-image: url(src/kanban/images/Michael%20Suyama.png);
+}
+.e-kanban .e-robert-king {
+    background-image: url(src/kanban/images/Robert%20King.png);
+}
+.e-kanban .e-margaret-hamilt {
+    background-image: url(src/kanban/images/Margaret%20hamilt.png);
+}
+  
+.e-kanban .e-nancy-davloio, .e-kanban .e-andrew-fuller, .e-kanban .e-janet-leverling,
+.e-kanban .e-steven-walker, .e-kanban .e-michael-suyama, .e-kanban .e-robert-king, .e-kanban .e-margaret-hamilt  {
+    border-radius: 72px;
+    height: 24px;
+    width: 24px;
+}

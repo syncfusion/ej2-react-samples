@@ -2,16 +2,11 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PivotViewComponent, IDataOptions, IDataSet } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
+import './default.css';
 
 /**
  * PivotView Default Sample.
  */
-
-const SAMPLE_CSS = `
-.e-pivotview {
-    width: 100%;
-    height: 100%;
-}`;
 
 let dataSourceSettings: IDataOptions = {
     enableSorting: true,
@@ -192,11 +187,8 @@ export class Default extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
                 <div className='control-section' style={{ overflow: 'auto' }}>
-                    <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} gridSettings={{columnWidth: 140}}>
+                    <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'290'} gridSettings={{columnWidth: 140}}>
                     </PivotViewComponent>
                 </div>
                 <div id="action-description">

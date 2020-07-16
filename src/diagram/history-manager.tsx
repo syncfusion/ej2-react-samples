@@ -129,7 +129,7 @@ let redoInstance: ButtonComponent;
 
 export class HistoryManager extends SampleBase<{}, {}> {
   rendereComplete() {
-    diagramInstance.fitToPage({ mode: 'Width' });
+    diagramInstance.fitToPage({ mode: 'Height' });
     document.getElementById("undo").onclick = (args: MouseEvent) => {
       diagramInstance.undo();
     }
@@ -156,8 +156,8 @@ export class HistoryManager extends SampleBase<{}, {}> {
             <DiagramComponent
               id="diagram"
               ref={diagram => (diagramInstance = diagram)}
-              width={"500px"}
-              height={"580px"}
+              width={"100%"}
+              height={"600px"}
               snapSettings={{ constraints: SnapConstraints.None }}
               nodes={nodes}
               connectors={connectors}

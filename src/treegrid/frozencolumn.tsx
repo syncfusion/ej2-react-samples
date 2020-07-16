@@ -24,7 +24,7 @@ export class FrozenColumn extends SampleBase<{}, {}> {
                 </TreeGridComponent>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the frozen columns feature of the TreeGrid. Scroll the movable content horizontally to view the frozen columns with the content.</p>
+                    <p>This sample demonstrates the frozen columns feature of the Tree Grid. Scroll the movable content horizontally to view the frozen columns with the content.</p>
                 </div>
                 <div id="description">
                 <p>
@@ -37,7 +37,7 @@ export class FrozenColumn extends SampleBase<{}, {}> {
     </p>
     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
     <p>
-        TreeGrid features are segregated into individual feature-wise modules. 
+        Tree Grid features are segregated into individual feature-wise modules. 
         To use frozen columns feature, we need to inject
         <code><a target="_blank" className="code"
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/frozenrowsandcolumns"> Freeze </a> </code> module into the <code>services</code>.

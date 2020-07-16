@@ -15,8 +15,8 @@ import {
   ColorPickerEventArgs
 } from "@syncfusion/ej2-react-inputs";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
-import { CheckBoxChangeEventArgs } from "@syncfusion/ej2-grids";
-import { EJ2Instance } from "@syncfusion/ej2-navigations";
+import { CheckBoxChangeEventArgs } from "@syncfusion/ej2-grids"; 
+
 
 let canShowError: boolean = false;
 let customFn: (args: { [key: string]: string }) => boolean = (args: { [key: string]: string }) => {

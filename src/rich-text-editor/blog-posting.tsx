@@ -1,5 +1,5 @@
 /**
- * RichTextEditor usecase sample
+ * Rich Text Editor usecase sample
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -120,11 +120,11 @@ export class Forums extends SampleBase<{}, {}> {
                                 </div>
                                 <div className='questionHeader'>
                                     <div className='header'>
-                                        How to add a custom item to the toolbar of RichTextEditor
+                                        How to add a custom item to the toolbar of Rich Text Editor
                                     </div>
                                     <div className='detailsQuestion'>Posted on May 7, 2018 6.10 PM</div>
                                     <div className='explain'>
-                                        I want to add a custom icon, “code-mirror” to the toolbar of RichTextEditor and display the RichTextEditor content in code-mirror format.
+                                        I want to add a custom icon, “code-mirror” to the toolbar of Rich Text Editor and display the Rich Text Editor content in code-mirror format.
                                     </div>
                                     <div className='tags'>
                                         <div className='tagSection'>
@@ -179,7 +179,7 @@ export class Forums extends SampleBase<{}, {}> {
                                         </tr>
                                     </table>
                                     <div className='posting'>
-                                        To add a custom icon <b>code-mirror</b> to the toolbar, you have to use template option of the <b>toolbarSettings</b>. To know more about adding custom icons, refer to <a href='https://ej2.syncfusion.com/home/' target='_blank'>custom tool</a> sample of RichTextEditor.
+                                        To add a custom icon <b>code-mirror</b> to the toolbar, you have to use template option of the <b>toolbarSettings</b>. To know more about adding custom icons, refer to <a href='https://ej2.syncfusion.com/home/' target='_blank'>custom tool</a> sample of Rich Text Editor.
                                     </div>
                                     <div className='likeAnswer'>
                                         <table>
@@ -216,16 +216,16 @@ export class Forums extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates how to design forum application using rich text editor. You can type the content and click reply
+                    <p>This sample demonstrates how to design forum application using Rich Text Editor. You can type the content and click reply
                         button to post it. </p>
                 </div>
 
                 <div id="description">
-                    <p>RichTextEditor is a WYSIWYG editing control which will reduce the effort for users while trying to express their formatting
-                        word content as HTML or Markdown format. So, RichTextEditor can easily customized to use for blog posting, forums
+                    <p>Rich Text Editor is a WYSIWYG editing control which will reduce the effort for users while trying to express their formatting
+                        word content as HTML or Markdown format. So, Rich Text Editor can easily customized to use for blog posting, forums
                         as an editor for response.</p>
                     <p><b>Injecting Module</b></p>
-                    <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                    <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
                 </div>
             </div >);
     }

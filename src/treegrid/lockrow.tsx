@@ -124,12 +124,12 @@ export class LockRow extends SampleBase<{}, {}> {
         <div id="action-description">
           <p>
             This samples demonstrates the way of preventing editing for certain row and disable the locked rows
-              to differentiate edit and non-editable rows in TreeGrid.
+              to differentiate edit and non-editable rows in Tree Grid.
           </p>
         </div>
         <div id="description">
           <p>
-            The TreeGrid supports CRUD operations. This CRUD operations can be configured in TreeGrid using <code>editSettings</code>.
+            The Tree Grid supports CRUD operations. This CRUD operations can be configured in Tree Grid using <code>editSettings</code>.
             Also, it has different modes to manipulate the datasource.
           </p>
           <p> The available modes are,</p>
@@ -140,12 +140,12 @@ export class LockRow extends SampleBase<{}, {}> {
           </ul>
           <p>
             In this sample, we have provided an option in property panel to prevent editing for certain rows. Using <code>beginEdit</code>
-              event of treegrid, we prevent the editing for selected Task ID row in the dropdown and disable the corresponding row using
-              <code>rowDataBound</code> event of TreeGrid.
+              event of Tree Grid, we prevent the editing for selected Task ID row in the dropdown and disable the corresponding row using
+              <code>rowDataBound</code> event of Tree Grid.
           </p>
 
           <p>Injecting Module:</p>
-          <p>TreeGrid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
+          <p>Tree Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
              <code>Edit</code> module into the <code>services</code>.</p>
           <p>
             More information on the selection configuration can be found in this documentation section.

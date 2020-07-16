@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
     CircularGaugeComponent, ILoadedEventArgs, GaugeTheme, AxesDirective, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel
+    PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel, Position
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
@@ -134,6 +134,7 @@ export class Labels extends SampleBase<{}, {}> {
                                             <div>
                                                 <select id="tickposition" className="form-control" style={{ width: '90%' }}>
                                                     <option value="Inside"> Inside</option>
+                                                    <option value="Cross">Cross</option>
                                                     <option value="Outside">Outside</option>
                                                 </select>
                                             </div>
@@ -147,6 +148,7 @@ export class Labels extends SampleBase<{}, {}> {
                                             <div>
                                                 <select id="labelposition" className="form-control" style={{ width: '90%' }}>
                                                     <option value="Outside"> Outside</option>
+                                                    <option value="Cross">Cross</option>
                                                     <option value="Inside">Inside</option>
                                                 </select>
                                             </div>
@@ -248,9 +250,9 @@ export class Labels extends SampleBase<{}, {}> {
                 change: () => {
                     let value: string = this.tickPosition.value.toString();
                     if (this.isMajorTicks) {
-                        this.gauge.axes[0].majorTicks.position = value == 'Inside' ? 'Inside' : 'Outside';
+                        this.gauge.axes[0].majorTicks.position = value as Position;
                     } else {
-                        this.gauge.axes[0].minorTicks.position = value == 'Inside' ? 'Inside' : 'Outside';
+                        this.gauge.axes[0].minorTicks.position = value as Position;
                     }
                     this.gauge.refresh();
                 }
@@ -261,7 +263,7 @@ export class Labels extends SampleBase<{}, {}> {
                 index: 0, width: 130,
                 change: () => {
                     let value: string = this.labelPosition.value.toString();
-                    this.gauge.axes[0].labelStyle.position = value == 'Inside' ? 'Inside' : 'Outside';
+                    this.gauge.axes[0].labelStyle.position = value as Position;
                     this.gauge.refresh();
                 }
             });

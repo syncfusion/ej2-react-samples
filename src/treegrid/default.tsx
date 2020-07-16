@@ -23,20 +23,20 @@ export class Default extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the default rendering of the TreeGrid with minimum configuration.</p>
+          <p>This sample demonstrates the default rendering of the Tree Grid with minimum configuration.</p>
         </div>
         <div id='description'>
           <p>
-            The TreeGrid is used to represent the hierarchical data in a tabular format, combining the visual representation of Grid and TreeView controls.
+            The Tree Grid is used to represent the hierarchical data in a tabular format, combining the visual representation of Grid and TreeView controls.
             It represents the data from <code>
               DataManager</code>
  binding data fields to columns or self-referential datasource.
       </p>
           <p>
-            In this demo, the TreeGrid is populated with its minimum default settings.
+            In this demo, the Tree Grid is populated with its minimum default settings.
       </p>
           <p>
-            More information on the TreeGrid instantiation can be found in this <a target='_blank' href='#'> documentation section.</a>
+            More information on the Tree Grid instantiation can be found in this <a target='_blank' href='#'> documentation section.</a>
       </p>
 
         </div>

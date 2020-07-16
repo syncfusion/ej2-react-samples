@@ -30,9 +30,9 @@ export class ColumnResizing extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>The Grid columns can be resized by clicking and dragging at the right corner of columns header. To enable column, resize behavior, set <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowresizing-boolean">allowResizing
+                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowresizing">allowResizing
                         </a></code> property as true. You can also prevent the resize of the particular column by setting
-                        <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-columnModel.html#allowresizing-boolean">columns->allowResizing
+                        <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-columnModel.html#allowresizing">columns->allowResizing
                         </a></code> as false in columns definition.
                 
                         And, by double clicking at the right corner of column header, the respective column width will get auto adjusted to its fit by <code><a target="_blank" className="code"
@@ -41,8 +41,8 @@ export class ColumnResizing extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         In this demo, allowResizing feature have enabled through by setting the <code> allowResizing </code> property to true and <b>Order ID</b> column can be resized
-                        between the range of  <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-columnModel.html#minwidth-string---number">minWidth (120px)
-                            </a></code> and <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-columnModel.html#maxwidth-string---number">maxWidth (300px).
+                        between the range of  <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-columnModel.html#minwidth">minWidth (120px)
+                            </a></code> and <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-columnModel.html#maxwidth">maxWidth (300px).
                                 </a></code> Also, column resizing has been disabled in the <b>Shipped Date</b> column. 
                     </p>
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>

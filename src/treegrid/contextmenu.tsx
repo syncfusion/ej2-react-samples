@@ -43,14 +43,14 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-    <p>This sample demonstrates the usage of context menu in TreeGrid component. Right click anywhere on the Grid to view context
+    <p>This sample demonstrates the usage of context menu in Tree Grid component. Right click anywhere on the Grid to view context
         menu.
     </p>
 </div>
 
 <div id="description">
     <p>
-        TreeGrid has an option to show the context menu when right click on it. To configure the items in context menu, you should define 
+        Tree Grid has an option to show the context menu when right click on it. To configure the items in context menu, you should define 
         either default or custom item in <code>contextMenuItems</code>.Each item will be shown based on its target. The default items are 
     </p>
     <ul>
@@ -81,7 +81,7 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
 
     <p>Injecting Module:</p>
     <p>
-        TreeGrid features are segregated into individual feature-wise modules. 
+        Tree Grid features are segregated into individual feature-wise modules. 
         To use context menu feature, we need to inject <code>ContextMenu</code> module into the <code>services</code>.
     </p>
 </div>

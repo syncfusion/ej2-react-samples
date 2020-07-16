@@ -6,6 +6,7 @@ import { BulletChartRightToLeft } from './right-to-left';
 import { BulletChartBarCustomization } from './bar-customization';
 import { BulletChartCustomization } from './customization';
 import { BulletChartTooltip } from './tooltip';
+import { BulletLegend } from './bullet-legend';
 
 
 export const bulletchartRoutes = (
@@ -16,8 +17,9 @@ export const bulletchartRoutes = (
          <Route  path='/:theme/bullet-chart/bar-customization' component={ BulletChartBarCustomization }/>
          <Route  path='/:theme/bullet-chart/customization' component={ BulletChartCustomization }/>
          <Route  path='/:theme/bullet-chart/tooltip' component={ BulletChartTooltip }/>
+         <Route  path='/:theme/bullet-chart/bullet-legend' component={ BulletLegend }/>
 
     </div>
 )
 
-export const bulletchartCategory = {"default":{"name":"Default","category":"Bullet Chart"},"multiple-data":{"name":"Multiple Data","category":"Bullet Chart"},"right-to-left":{"name":"RTL","category":"Bullet Chart"},"bar-customization":{"name":"Feature and Target Bar","category":"Bullet Chart"},"customization":{"name":"Range and Label Settings","category":"Bullet Chart"},"tooltip":{"name":"Tooltip Template","category":"Bullet Chart"},"defaultSample":"bullet-chart/default"}
+export const bulletchartCategory = {"default":{"name":"Default","category":"Bullet Chart"},"multiple-data":{"name":"Multiple Data","category":"Bullet Chart"},"right-to-left":{"name":"RTL","category":"Bullet Chart"},"bar-customization":{"name":"Feature and Target Bar","category":"Bullet Chart"},"customization":{"name":"Range and Label Settings","category":"Bullet Chart"},"tooltip":{"name":"Tooltip Template","category":"Bullet Chart"},"bullet-legend":{"name":"Legend","category":"Bullet Chart"},"defaultSample":"bullet-chart/default"}

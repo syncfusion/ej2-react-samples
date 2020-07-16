@@ -5,16 +5,12 @@ import { PivotViewComponent, IDataOptions, FieldList, Inject, CalculatedField, I
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import * as pivotData from './pivot-data/Pivot_Data.json';
+import './calculated-field.css';
 
 /**
  * PivotView Sample with Calculated Fields.
  */
 
-const SAMPLE_CSS = `
-.e-pivotview {
-    width: 100%;
-    height: 100%;
-}`;
 /* tslint:disable */
 let Pivot_Data: IDataSet[] = (pivotData as any).data;
 let dataSourceSettings: IDataOptions = {
@@ -45,9 +41,6 @@ export class CalculatedFieldClass extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
                 <div className='control-section'>
                     <div className='col-lg-9 adaptive'>
                         <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} showFieldList={true} width={'100%'} height={'300'} allowCalculatedField={true} gridSettings={{columnWidth: 140}}>

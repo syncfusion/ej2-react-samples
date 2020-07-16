@@ -38,7 +38,11 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                                 position: 'Left',
                                 orientation: 'Vertical',
                                 height: '70%',
-                                width: '10'
+                                width: '10',
+                                textStyle: {
+                                    color: '#757575'
+                                }
+
                             }}
                             titleSettings={{
                                 text: 'Finalist in Cricket World Cup',

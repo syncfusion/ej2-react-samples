@@ -1,5 +1,5 @@
 /**
- * RichTextEditor overview sample
+ * Rich Text Editor overview sample
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
@@ -18,7 +18,7 @@ export class Overview extends SampleBase<{}, {}> {
 
   private rteObj: RichTextEditorComponent;
 
-  // RichTextEditor items list
+  // Rich Text Editor items list
   private items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
     'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
     'LowerCase', 'UpperCase', '|',
@@ -28,7 +28,7 @@ export class Overview extends SampleBase<{}, {}> {
     'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
   ];
 
-  //RichTextEditor ToolbarSettings
+  //Rich Text Editor ToolbarSettings
   private toolbarSettings: ToolbarSettingsModel = {
     items: this.items
   };
@@ -122,14 +122,14 @@ export class Overview extends SampleBase<{}, {}> {
               showCharCount={true} actionBegin={this.handleFullScreen.bind(this)}
               actionComplete={this.actionCompleteHandler.bind(this)} maxLength={2000} toolbarSettings={this.toolbarSettings}>
               <div>
-                <p>The rich text editor is WYSIWYG ("what you see is what you get") editor useful to create and edit content, and return the valid <a href='https://ej2.syncfusion.com/home/' target='_blank'>HTML markup</a> or <a href='https://ej2.syncfusion.com/home/' target='_blank'>markdown</a> of the content</p> <p><b>Toolbar</b></p><ol><li> <p>Toolbar contains commands to align the text, insert link, insert image, insert list, undo/redo operations, HTML view, etc</p></li><li><p>Toolbar is fully customizable </p></li></ol> <p><b>Links</b></p><ol><li><p>You can insert a hyperlink with its corresponding dialog </p></li><li><p>Attach a hyperlink to the displayed text. </p></li><li><p>Customize the quick toolbar based on the hyperlink </p> </li></ol><p><b>Image.</b></p><ol><li><p>Allows you to insert images from an online source as well as the local computer </p> </li><li><p>You can upload an image</p></li><li><p>Provides an option to customize quick toolbar for an image</p></li></ol><img alt="Logo" src="./src/rich-text-editor/images/RTEImage-Feather.png" style={{ width: '300px' }} />
+                <p>The Rich Text Editor is WYSIWYG ("what you see is what you get") editor useful to create and edit content, and return the valid <a href='https://ej2.syncfusion.com/home/' target='_blank'>HTML markup</a> or <a href='https://ej2.syncfusion.com/home/' target='_blank'>markdown</a> of the content</p> <p><b>Toolbar</b></p><ol><li> <p>Toolbar contains commands to align the text, insert link, insert image, insert list, undo/redo operations, HTML view, etc</p></li><li><p>Toolbar is fully customizable </p></li></ol> <p><b>Links</b></p><ol><li><p>You can insert a hyperlink with its corresponding dialog </p></li><li><p>Attach a hyperlink to the displayed text. </p></li><li><p>Customize the quick toolbar based on the hyperlink </p> </li></ol><p><b>Image.</b></p><ol><li><p>Allows you to insert images from an online source as well as the local computer </p> </li><li><p>You can upload an image</p></li><li><p>Provides an option to customize quick toolbar for an image</p></li></ol><img alt="Logo" src="./src/rich-text-editor/images/RTEImage-Feather.png" style={{ width: '300px' }} />
               </div>
               <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, Table]} />
             </RichTextEditorComponent>
           </div>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the full features of rich text editor that includes all the tools and functionalities.</p>
+          <p>This sample demonstrates the full features of Rich Text Editor that includes all the tools and functionalities.</p>
         </div>
 
         <div id="description">
@@ -152,7 +152,7 @@ export class Overview extends SampleBase<{}, {}> {
             <li><code>Insert Code</code> - Allows you to apply code format to the selected parent nodes. In the above sample, the style for the code format ('pre' tag) is applied by adding the background color.</li>
           </ul>
           <p><b>Injecting Module</b></p>
-          <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table</code> modules into the services.</p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, Table</code> modules into the services.</p>
         </div>
       </div>
     );

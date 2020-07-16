@@ -1,20 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, RangeSettingsDirective, RangeSettingDirective, RowsDirective, RowDirective, CellsDirective, CellDirective, CellStyleModel, ColumnDirective } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, RangesDirective, RangeDirective, RowsDirective, RowDirective, CellsDirective, CellDirective, CellStyleModel, ColumnDirective } from '@syncfusion/ej2-react-spreadsheet';
 import { defaultData } from './data';
 import { SampleBase } from '../common/sample-base';
 import './spreadsheet.css';
+
+/**
+ * Default Spreadsheet sample
+ */
 
 export class Default extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
     public boldRight: CellStyleModel = { fontWeight: 'bold', textAlign: 'right' };
     public bold: CellStyleModel = { fontWeight: 'bold' };
 
-    public onDataBound(): void {
-        if (this.spreadsheet.sheets[this.spreadsheet.activeSheetTab - 1].name === 'Car Sales Report' && !this.spreadsheet.isOpen) {
-            this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle' }, 'A1:F1');
-            this.spreadsheet.numberFormat('$#,##0.00', 'F2:F31');
-        }
+    public onCreated(): void {
+        this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle' }, 'A1:F1');
+        this.spreadsheet.numberFormat('$#,##0.00', 'F2:F31');
     }
 
     render() {
@@ -23,12 +25,12 @@ export class Default extends SampleBase<{}, {}> {
                 <div className='control-section spreadsheet-control'>
                     <SpreadsheetComponent openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open'
                         saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'
-                        ref={(ssObj) => { this.spreadsheet = ssObj }} dataBound={this.onDataBound.bind(this)} >
+                        ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)} >
                         <SheetsDirective>
                             <SheetDirective name="Car Sales Report">
-                                <RangeSettingsDirective>
-                                    <RangeSettingDirective dataSource={defaultData}></RangeSettingDirective>
-                                </RangeSettingsDirective>
+                                <RangesDirective>
+                                    <RangeDirective dataSource={defaultData}></RangeDirective>
+                                </RangesDirective>
                                 <RowsDirective>
                                     <RowDirective index={30}>
                                         <CellsDirective>
@@ -57,16 +59,16 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        The <code>Spreadsheet</code> component is used to organize and analyze data in a tabular format.
+                        The <code>Spreadsheet</code> component is used to organize and analyze data in tabular format.
                         It has a built-in calculation library that supports most commonly used formulas. Excel workbook files can be
                         imported and exported by providing <code>openUrl</code> &
                         <code>saveUrl</code> property.
                     </p>
                     <p>
                         Data binding can be achieved by setting an array of JavaScript objects or an instance of Data Manager to the
-                        <code>dataSource</code> property under the rangeSettings of sheet. The <code>cellFormat</code> and
+                        <code>dataSource</code> property under the <code>ranges</code> of sheet. The <code>cellFormat</code> and
                         <code>numberFormat</code>
-                        methods are used to apply format to a range of cells in the <code>dataBound</code> event.
+                        methods are used to apply format to a range of cells in the <code>created</code> event.
                     </p>
                     <p>
                         More information about the Spreadsheet component can be found in this
