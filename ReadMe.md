@@ -1,124 +1,38 @@
-# React Sample Configuration
+# Syncfusion React UI Components samples
 
-## Adding your sample folder
-Create  new folder in 'src' location and name the folder as control name for example "grid” it is control name.
+This repository contains the demos of [Syncfusion React UI Components](https://www.syncfusion.com/react-ui-components?utm_medium=listing&utm_source=github&utm_campaign=ej2-react-samples). This is the best place to check our components to get more insight about the usage of APIs.
 
-_Note: Do not use whitespace at any cause in folder’s name. Use “-” instead of space._
+This section guides you to use the Syncfusion React UI Components samples in your applications.
 
-## Adding the sample
+* [Requirements to run the demo](#requirements-to-run-the-demo)
+* [Documentation](#documentation)
+* [License](#license)
+* [Using the samples](#using-the-samples)
+* [Components Catalog](#components-catalog)
+* [Support and Feedback](#support-and-feedback)
 
-Add the sample component tsx file in the sample folder.Below steps are need to be considered on sample creation
+## Requirements to run the demo
 
- * Sample component must extend the "SampleBase" component class from the path "src/common/sample-base" file.
- * Sample tag  must be enclosed between the "control-section" div.
- * In all samples description is need to be added. Add sample description  within the div tag with id as **description**.
+The samples requires the below requirements to run.
 
-```javascript
-import * as ReactDOM from 'react-dom';
-import * as React from 'react';
-import { SampleBase } from '../common/sample-base';
-export class Default extends SampleBase<{}, {}> {
-  
-  render() {
-    return (       
-      <div className = 'control-pane'>
-        <div className='control-section'>
-          //sample component tags
-        </div>
-        <div id="description">
-          // sample description
-        </div>
-      </div>
-    )
-  }
-}
+* [Node.js](https://nodejs.org/en/)
 
-```
-Refer the  [sample](https://gitlab.syncfusion.com/essential-studio/development/src/grid/default.tsx ) for example sample component.
+## Documentation
 
-Note: Do not use whitespace at any cause in file’s name. Use “-” instead of space.
+All components documentation for the Syncfusion React UI components can be found on [Syncfusion Help](https://ej2.syncfusion.com/react/documentation/?utm_source=github&utm_medium=listing&utm_campaign=ej2-react-samples). All API documentation can be found at the [API Reference](https://ej2.syncfusion.com/react/documentation/api?utm_source=github&utm_medium=listing&utm_campaign=ej2-react-samples).
 
-## Adding property section
-To add  the "propertypane”  in the sample use tag `PropertyPane` from "common/property-pane" .Configure your sample properties as like below code snippet.
+## License
 
-```
-<PropertyPane title='Properties'>
-                <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
-                    <tr>
-                        <td style={{ width: '30%' }}>
-                            <div className="col-md-4" style={{ paddingTop: "8px" }}>
-                                GridLines
-                    </div>
-                        </td>
-                        <td style={{ width: '70%', paddingRight: '10px' }}>
-                            <div>
-                                <select id="ddl" name="ddl" onChange={this.change.bind(this)} className="form-control" style={{ padding: "6px" }} ref={d => this.dropElement = d}>
-                                    <option value="default">Default</option>
-                                    <option value="both">Both</option>
-                                    <option value="none">None</option>
-                                    <option value="horizontal">Horizontal</option>
-                                    <option value="vertical">Vertical</option>
-                                </select>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </PropertyPane>
+Syncfusion React UI (Essential JS 2) components library is available under the Syncfusion Essential Studio program,  and can be licensed either under the Syncfusion Community License Program or the Syncfusion commercial license.
 
-```
-Refer the  [PropertyPanesample](https://gitlab.syncfusion.com/essential-studio/development/src/grid/gridlines.tsx ) for propertyPane example.
+To be qualified for the Syncfusion Community License Program you must have a gross revenue of less than one (1) million U.S. dollars ($1,000,000.00 USD) per year and have less than five (5) developers in your organization, and agree to be bound by Syncfusion’s terms and conditions.
 
-## Add Routing for your sample
+Customers who do not qualify for the community license can contact sales@syncfusion.com for commercial licensing options.
 
-Create the "config.tsx” file inside of your control folder.Configure your "config.tsx file" file as like below code snippet.
+Under no circumstances can you use this product without (1) either a Community License or a commercial license and (2) without agreeing and abiding by Syncfusion’s license containing all terms and conditions.
 
-```
-export const GridSampleOrder:Object = [
-    { 'path': 'grid/default', 'component':'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'Grid' },
-    { 'path': 'grid/gridlines', 'component':'GridLines', 'name': 'GridLines', 'order': '01', 'category': 'Grid', hideOnDevice: true }
-]
-
-```
-
-**Fields Description:**
-
- path : Specifies the sample router path. Path must be same as "sampleFolderName/sampleFileName".
- component: Specifies the name of the sample component.
- name: Specifies the sample name to be displayed.
- order: Specifies the order in which sample to be displayed.
- category: Specifies the sample category.
-
-*Note: set **hideOnDevice** as true if you want to hide a sample in devices.*
-
-## Configure Sample List
-
-Add your samples in “samplelist.tsx” located in “/src/common” folder
-1.	Import your sampleOrder  array from the component config file.
-2.	Add your samples in samplesList as Like below
-
-```
-import * as React from 'react';
-import { GridSampleOrder } from '../grid/config';
-
-export let samplesList: any = [
-
-    {
-        'name': 'Grid', 'category': 'Grids', 'order': '02', 'path': 'grid', 'samples': GridSampleOrder
-    }
-];
-```
-
-## Adding your control dependency
-
-Add your dependency in “package.json” file inside the dependencies.
-
-Note: Here, '\*' Specifies that install the latest published package form the online. '\*' is recommended for Syncfusion packages.
-
-```
-"dependencies": {
-        "@syncfusion/ej2-react-grids": "*"
-},
-```
+The Syncfusion license that contains the terms and conditions can be found at
+[https://www.syncfusion.com/content/downloads/syncfusion_license.pdf](https://www.syncfusion.com/content/downloads/syncfusion_license.pdf)
 
 ## Using the samples
 
@@ -138,10 +52,333 @@ To compile the source files, use the below command
 npm run build
 ```
 
-### Run your Sample Browser
+## Components Catalog
 
-To run your sample browser you can use any of the following command.
+<table>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>GRIDS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/grid">DataGrid</a>
+        </td>
+        <td>
+            <a href="src/pivot-view">Pivot Table (Preview)</a>
+        </td>
+        <td>
+            <a href="src/treegrid">Tree Grid</a>
+        </td>
+     </tr>
+     <tr>    
+        <td>
+            <a href="src/spreadsheet">Spreadsheet</a>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>DATA VISUALIZATION<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/chart">Charts</a>
+        </td>
+        <td>
+            <a href="src/stock-chart">Stock Chart</a>
+        </td>
+        <td>
+            <a href="src/circular-gauge">Circular Gauge</a>
+        </td>
+     </tr>
+     <tr>      
+        <td>
+            <a href="src/diagram">Diagram</a>
+        </td>
+        <td>
+            <a href="src/heatmap-chart">HeatMap Chart</a>
+        </td>
+        <td>
+            <a href="src/linear-gauge">Linear Gauge</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/maps">Maps</a>
+        </td>
+        <td>
+            <a href="src/range-navigator">Range Selector</a>
+        </td>
+        <td>
+            <a href="src/smith-chart">Smith Chart</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/barcode">Barcode Generator</a>
+        </td>
+        <td>
+            <a href="src/sparkline">Sparkline Charts</a>
+        </td>
+        <td>
+            <a href="src/treemap">TreeMap</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>EDITORS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/rich-text-editor">Rich Text Editor (Preview)</a>
+        </td>
+        <td>
+            <a href="src/document-editor">Word Processor (Preview)</a>
+        </td>
+        <td>
+            <a href="src/inplace-editor">In-place Editor</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>CALENDARS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/schedule">Scheduler</a>
+        </td>
+        <td>
+            <a href="src/calendar">Calendar</a>
+        </td>
+        <td>
+            <a href="src/datepicker">DatePicker</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/daterangepicker">Date Range Picker</a>
+        </td>
+        <td>
+            <a href="src/datetimepicker">DateTime Picker</a>
+        </td>
+        <td>
+            <a href="src/timepicker">Time Picker</a>
+        </td>
+    </tr>
+        <td>
+            <a href="src/gantt">Gantt Chart</a>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>BUTTONS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/button">Button</a>
+        </td>
+        <td>
+            <a href="src/button/button-group.tsx">Button Group</a>
+        </td>
+        <td>
+            <a href="src/button/drop-down-button.tsx">Dropdown Menu</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/button/progress-button.tsx">Progress Button (Preview)</a>
+        </td>
+        <td>
+            <a href="src/button/split-button.tsx">Split Button</a>
+        </td>
+        <td>
+            <a href="src/chips">Chips</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>DROPDOWNS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/auto-complete">AutoComplete</a>
+        </td>
+        <td>
+            <a href="src/combo-box">ComboBox</a>
+        </td>
+        <td>
+            <a href="src/drop-down-list">Dropdown List</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/multi-select">MultiSelect Dropdown</a>
+        </td>
+        <td>
+            <a href="src/drop-down-tree">Dropdown Tree</a>
+        </td>
+        <td>
+            <a href="src/list-box">ListBox</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>NAVIGATION<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/accordion">Accordion</a>
+        </td>
+        <td>
+            <a href="src/context-menu">Context Menu</a>
+        </td>
+        <td>
+            <a href="src/menu">Menu Bar (Preview)</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/sidebar">Sidebar</a>
+        </td>
+        <td>
+            <a href="src/tab">Tabs</a>
+        </td>
+        <td>
+            <a href="src/toolbar">Toolbar</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/treeview">TreeView</a>
+        </td>
+        <td>
+            <a href="src/file-manager">File Manager</a>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>INPUTS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/textboxes">TextBox</a>
+        </td>
+        <td>
+            <a href="src/maskedtextbox">Input Mask</a>
+        </td>
+         <td>
+            <a href="src/numerictextbox">Numeric Textbox</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/button/radio-button.tsx">Radio Button</a>
+        </td>
+        <td>
+            <a href="src/button/check-box.tsx">Checkbox</a>
+        </td>
+        <td>
+            <a href="src/color-picker">Color Picker</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/uploader">File Upload</a>
+        </td>
+        <td>
+            <a href="src/slider">Range Slider</a>
+        </td>
+        <td>
+            <a href="src/button/switch.tsx">Toggle Switch Button</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>LAYOUT<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/avatar">Avatar</a>
+        </td>
+        <td>
+            <a href="src/card">Card</a>
+        </td>
+        <td>
+            <a href="src/dialog">Dialog</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/listview">ListView</a>
+        </td>
+        <td>
+            <a href="src/tooltip">Tooltip</a>
+        </td>
+        <td>
+            <a href="src/splitter">Splitter</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/dashboard-layout">Dashboard Layout</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>NOTIFICATIONS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/badge">Badge</a>
+        </td>
+        <td>
+            <a href="src/toast">Toast</a>
+        </td>
+        <td>
+            <a href="src/progress-bar">Progress-bar</a>
+        </td>
+    </tr>
+     <tr>
+        <td colspan="3" rowspan="1">
+            <b>VIEWER<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/pdfviewer">PDF Viewer</a>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>FORMS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/query-builder">Query Builder</a>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 
-```
-npm run serve
-```
+## Support and Feedback
+
+* For any other queries, reach our [Syncfusion support team](https://www.syncfusion.com/support/directtrac/incidents/newincident?utm_source=github&utm_medium=listing&utm_campaign=ej2-react-samples) or post the queries through the [community forums](https://www.syncfusion.com/forums?utm_source=github&utm_medium=listing&utm_campaign=ej2-react-samples).
+
+* To renew the subscription, click [here](https://www.syncfusion.com/sales/products?utm_source=github&utm_medium=listing&utm_campaign=ej2-react-samples) or contact our sales team at <salessupport@syncfusion.com>.
