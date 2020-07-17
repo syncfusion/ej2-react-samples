@@ -47,13 +47,13 @@ export class RowHeight extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the row height feature of the TreeGrid. In this demo, the rowHeight for all the TreeGrid rows can be
+          <p>This sample demonstrates the row height feature of the Tree Grid. In this demo, the rowHeight for all the Tree Grid rows can be
               changed as 20px, 40px and 60px through ToolBar button click.</p>
         </div>
         <div id='description'>
-          <p>TreeGrid has provide an option to customize the row height by using <code>rowHeight</code> property of treegrid.
+          <p>Tree Grid has provide an option to customize the row height by using <code>rowHeight</code> property of Tree Grid.
           </p>
-          <p>In this sample, we have enabled an option in Toolbar to customize the row height of TreeGrid to 20px, 40px and 60px.
+          <p>In this sample, we have enabled an option in Toolbar to customize the row height of Tree Grid to 20px, 40px and 60px.
           </p>
         </div>
       </div>

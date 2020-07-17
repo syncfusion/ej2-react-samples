@@ -45,12 +45,12 @@ export class CustomBinding extends SampleBase<{}, {}> {
             In this demo, simply select the paging and click the column header to sort a column, multiple sorting is also enabled.
             To group a specify column, drag and drop the column in the group drop area.
             To enable paging, sorting and grouping, set the <code><a target="_blank" className="code"
-            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowpaging-boolean">
+            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowpaging">
             allowPaging
             </a></code> , <code><a target="_blank" className="code"
-            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowsorting-boolean">
+            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowsorting">
             allowSorting </a></code> and <code><a target="_blank" className="code"
-            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowgrouping-boolean">
+            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowgrouping">
             allowGrouping</a></code> as true.
         </p>
         <p style={{ fontWeight: 500 }}>Injecting Module:</p>

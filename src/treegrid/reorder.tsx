@@ -99,14 +99,14 @@ export class Reorders extends SampleBase<{}, {}> {
           </PropertyPane>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates reordering feature of the TreeGrid columns.You can reorder columns by simply
+          <p>This sample demonstrates reordering feature of the Tree Grid columns.You can reorder columns by simply
               drag and drop in the desired column position. You can also reorder columns by simply drag and drop
               in the desired column position.</p>
         </div>
         <div id='description'>
           <p>
             Reordering can be enabled by setting <code>allowReordering</code> property as true. Reordering can be done by drag and drop the
-            column header from one index to another index within the TreeGrid.
+            column header from one index to another index within the Tree Grid.
 
             The location in which the column to be placed, will be indicated by two arrows symbols
           </p>
@@ -114,7 +114,7 @@ export class Reorders extends SampleBase<{}, {}> {
             In this demo, you can reorder columns by drag and drop.
          </p>
          <p>Injecting Module:</p>
-         <p>TreeGrid features are segregated into individual feature-wise modules. To use reordering feature, we need to
+         <p>Tree Grid features are segregated into individual feature-wise modules. To use reordering feature, we need to
               inject <code>Reorder</code> module into the <code>services</code>.</p>
           <p>
             More information about Column Reorder can be found in this documentation section.

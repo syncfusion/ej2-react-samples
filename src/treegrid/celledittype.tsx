@@ -39,7 +39,7 @@ export class EditType extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
         <p>
-            This sample demonstrates the supported cell edit types of TreeGrid columns. The list of cell edit types are as follows,
+            This sample demonstrates the supported cell edit types of Tree Grid columns. The list of cell edit types are as follows,
         </p>
         <ul>
             <li><code>NumericTextBox</code> component for integers, double, and decimal data types.</li>
@@ -56,7 +56,7 @@ export class EditType extends SampleBase<{}, {}> {
              editType based on data type of the column.
         </p>
         <p>
-            In this sample, we show the following editTypes for the TreeGrid columns
+            In this sample, we show the following editTypes for the Tree Grid columns
         </p>
         <ul>
             <li><code>NumericTextBox</code></li>
@@ -67,7 +67,7 @@ export class EditType extends SampleBase<{}, {}> {
             <li><code>Checkbox</code></li>
         </ul>
           <p>Injecting Module:</p>
-          <p>TreeGrid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
+          <p>Tree Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
              <code>Edit</code>module into the <code>services</code>.</p>
           <p>
             More information on the selection configuration can be found in this documentation section.

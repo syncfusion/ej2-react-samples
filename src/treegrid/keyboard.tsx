@@ -179,7 +179,7 @@ export class KeyBoard extends SampleBase<{}, {}> {
                 <b>Ctrl + j</b>
             </td>
             <td style={{ width: '30%' }}>
-                Focus TreeGrid element
+                Focus Tree Grid element
             </td>
         </tr>
               </table>
@@ -187,11 +187,11 @@ export class KeyBoard extends SampleBase<{}, {}> {
         </div>
       </div>
         <div id="action-description">
-          <p>This demo showcases the keyboard shortcuts applicable on TreeGrid and also lists out in below description, how those
-            applicable shortcuts interacts with TreeGrid actions.</p>
+          <p>This demo showcases the keyboard shortcuts applicable on Tree Grid and also lists out in below description, how those
+            applicable shortcuts interacts with Tree Grid actions.</p>
         </div>
         <div id='description'>
-          <p>All the TreeGrid actions can be controlled via keyboard keys and is availed by using <code>allowKeyboardInteraction</code>
+          <p>All the Tree Grid actions can be controlled via keyboard keys and is availed by using <code>allowKeyboardInteraction</code>
               property which is set to true by default. The applicable key combinations and its relative functionalities are listed below,
           </p>
           <p>
@@ -218,7 +218,7 @@ export class KeyBoard extends SampleBase<{}, {}> {
                 <tr><td style={{ width:'70%' }}><code>Shift + Right/Left/Down/Up</code></td><td>Multiple Cell Selection</td></tr>
                 <tr><td><code>Ctrl + Shift + Up Arrow</code></td><td>Collapse selected parent row</td></tr>
                 <tr><td><code>Ctrl + Shift + Down Arrow</code></td><td>Expand selected parent row</td></tr>
-                <tr><td><code>Ctrl + j</code></td><td>Focus TreeGrid element</td></tr>
+                <tr><td><code>Ctrl + j</code></td><td>Focus Tree Grid element</td></tr>
                 <tr><td><code>Tab</code></td><td>Go to next cell for editing</td></tr>
                 <tr><td><code>Shift + Tab</code></td><td>Go to previous cell for editing</td></tr>
                 <tr><td><code>PageDown</code></td><td>Go to Next page</td></tr>

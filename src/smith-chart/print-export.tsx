@@ -115,14 +115,14 @@ export class Print extends SampleBase<{}, {}> {
                             </tr>
                             <tr>
                                 <td>
-                                    <div id="btn-control">
+                                    <div id="btn-control" style={{ 'margin-left': '60px' }}>
                                         <ButtonComponent onClick={this.onClick1.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div id="btn-control">
+                                    <div id="btn-control" style={{ 'margin-left': '60px' }}>
                                         <ButtonComponent onClick={this.onClick2.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Print</ButtonComponent>
                                     </div>
                                 </td>

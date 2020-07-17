@@ -23,19 +23,19 @@ export class CheckboxColumn extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the checkbox column selection functionality of TreeGrid. Click on any parent record checkbox then the child record checkboxes will get selected and
+          <p>This sample demonstrates the checkbox column selection functionality of Tree Grid. Click on any parent record checkbox then the child record checkboxes will get selected and
         parent record checkbox will get selected while checking all of its child items.</p>
         </div>
         <div id='description'>
           <p>
-            The TreeGrid component can be rendered with checkbox on existing column and also this
+            The Tree Grid component can be rendered with checkbox on existing column and also this
             can be enabled by <code>showCheckbox</code> property as true in columns API.
           </p>
           <p>
             For hierarchy selection between the records, we need to enable the <code>enableHierarchySelection</code> property.
           </p>  
           <p>
-              While using TreeGrid in a touch device, you have an option to select the checkboxes by tapping on the checkbox.
+              While using Tree Grid in a touch device, you have an option to select the checkboxes by tapping on the checkbox.
          </p>
           <p>
               More information on the checkbox selection configuration can be found in this documentation section.

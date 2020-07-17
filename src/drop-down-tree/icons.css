@@ -1,0 +1,23 @@
+.dropdowntree-icons .control_wrapper {
+    margin: 0 auto;
+    width: 320px !important;
+    padding-top: 15px;
+}
+.dropdowntree-icon .e-treeview .e-list-img {
+    width: 25px;
+    height: 25px;
+}
+.dropdowntree-icon .e-treeview .e-list-icon {
+    background-repeat: no-repeat;
+    background-image: url(src/images/icons/file_icons.png);
+    height: 20px;
+}
+.dropdowntree-icon .e-treeview .e-list-icon.folder { background-position: -10px -552px }
+.dropdowntree-icon .e-treeview .e-list-icon.docx { background-position: -10px -20px }
+.dropdowntree-icon .e-treeview .e-list-icon.ppt { background-position: -10px -48px }
+.dropdowntree-icon .e-treeview .e-list-icon.pdf { background-position: -10px -104px }
+.dropdowntree-icon .e-treeview .e-list-icon.images { background-position: -10px -132px }
+.dropdowntree-icon .e-treeview .e-list-icon.zip { background-position: -10px -188px }
+.dropdowntree-icon .e-treeview .e-list-icon.audio { background-position: -10px -244px }
+.dropdowntree-icon .e-treeview .e-list-icon.video { background-position: -10px -272px }
+.dropdowntree-icon .e-treeview .e-list-icon.exe { background-position: -10px -412px }

@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import {
 	TreeMapComponent, ExportType, Inject, TreeMapTooltip,
-	ILoadedEventArgs, TreeMapTheme
+	ILoadedEventArgs, TreeMapTheme, Print, PdfExport, ImageExport
 } from '@syncfusion/ej2-react-treemap';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
@@ -26,7 +26,7 @@ const SAMPLE_CSS = `
         content: "\\e813";
     }`;
 
-export class Print extends SampleBase<{}, {}> {
+export class PrintExport extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
 	private mode: DropDownListComponent;
 	private nameElement: HTMLInputElement;
@@ -35,7 +35,7 @@ export class Print extends SampleBase<{}, {}> {
 		{ text: 'JPEG', value: 'JPEG' },
 		{ text: 'PNG', value: 'PNG' },
 		{ text: 'SVG', value: 'SVG' },
-		{ text: 'PF', value: 'PDF' },
+		{ text: 'PDF', value: 'PDF' },
 	];
 
 	public onClick2(e: Event): void {
@@ -60,7 +60,7 @@ export class Print extends SampleBase<{}, {}> {
 				</style>
 				<div className='control-section'>
 					<div className='col-md-9'>
-						<TreeMapComponent load={this.load.bind(this)} id='treemap-container' ref={m => this.treemapInstance = m}
+					<TreeMapComponent load={this.load.bind(this)} id='treemap-container' allowPrint={true} allowPdfExport={true} allowImageExport={true} ref={m => this.treemapInstance = m}
 							titleSettings={{			//To config title for treemap
 								text: 'Top 10 best selling smartphone brands - 2017',
 								textStyle: { size: '15px' }
@@ -90,7 +90,7 @@ export class Print extends SampleBase<{}, {}> {
 									}
 								]
 							}}>
-							<Inject services={[TreeMapTooltip]} />
+							<Inject services={[TreeMapTooltip, Print, ImageExport, PdfExport]} />
 						</TreeMapComponent>
 						<div style={{ float: 'right', marginright: '10px' }}>Source:
        <a href=" http://zeenews.india.com/photos/business/worlds-10-best-selling-smartphone-brands-2033958/samsung-2033959" target="_blank">zeenews.india.com</a>
@@ -122,14 +122,14 @@ export class Print extends SampleBase<{}, {}> {
 								</tr>
 								<tr>
 									<td>
-										<div id="btn-control">
+										<div id="btn-control"  style={{ 'margin-left': '50%' }}>
 											<ButtonComponent onClick={this.onClick1.bind(this)}  style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<div id="btn-control">
+										<div id="btn-control" style={{ 'margin-left': '50%' }}>
 											<ButtonComponent onClick={this.onClick2.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Print</ButtonComponent>
 										</div>
 									</td>
@@ -145,8 +145,19 @@ export class Print extends SampleBase<{}, {}> {
 				</div>
 				<div id="description">
 					<p>
-						In this example, you can see how to export and print the rendered TreeMap. The TreeMap can be exported to JPEG, PNG, SVG, and PDF formats.
+					In this example, you can see how to export and print the rendered treemap. The TreeMap can
+						be exported to JPEG, PNG, SVG, and PDF formats. Print functionality is done by <code>print</code>
+						method when <code>allowPrint</code> is set as true. Export functionality is done by
+						<code>export</code> method when <code>allowImageExport</code> and
+						<code>allowPdfExport</code> is set as true.
+                        <br/><br/>
+						<b>Injecting Module:</b><br/>
+						<br/>
+						To make use of the print and export support, we need to inject the <code>Print</code> module into the <code> services </code>.
 					</p>
+					<p>
+        				More information on print and export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treemap/print-and-export">documentation section</a>.
+    				</p>
 				</div>
 			</div >
 		)

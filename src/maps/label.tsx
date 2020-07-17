@@ -94,7 +94,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <DropDownListComponent width="120px" index={0} change={this.smartlabel.bind(this)} ref={d => this.dropElement2 = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} placeholder='Select smartlabel mode' />
+                                        <DropDownListComponent width="80px" index={0} change={this.smartlabel.bind(this)} ref={d => this.dropElement2 = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} placeholder='Select smartlabel mode' />
                                         </div>
                                     </td>
                                 </tr><tr style={{ height: '50px' }}>
@@ -103,7 +103,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <DropDownListComponent width="120px" index={1} change={this.intersectaction.bind(this)} ref={d => this.dropElement1 = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} placeholder='Select intersect action' />
+                                        <DropDownListComponent width="80px" index={1} change={this.intersectaction.bind(this)} ref={d => this.dropElement1 = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} placeholder='Select intersect action' />
                                         </div>
                                     </td>
                                 </tr>

@@ -64,7 +64,7 @@ export class EditTemplate extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
         <p>
-            This samples demonstrates the TreeGrid Cell Edit template feature. Using Cell Edit Template feature we have rendered
+            This samples demonstrates the Tree Grid Cell Edit template feature. Using Cell Edit Template feature we have rendered
               the AutoComplete component for “<b>Task Name</b>” column.
         </p>
     </div>
@@ -79,7 +79,7 @@ export class EditTemplate extends SampleBase<{}, {}> {
             <li><code>destroy</code> - It is used to destroy the component.</li>
         </ul>
         <p>
-            In this demo, we have rendered the AutoComplete component for “Task Name” column of TreeGrid using <code>edit</code> property.
+            In this demo, we have rendered the AutoComplete component for “Task Name” column of Tree Grid using <code>edit</code> property.
         </p>
         <p>
         <br/> More information about Cell Edit template can be found in this documentation section.

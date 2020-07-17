@@ -121,7 +121,7 @@ export class Selection extends SampleBase<{}, {}> {
         <div id='description'>
           <p>Selection provides an interactive support to highlight the row or cell that you select. Selection can be done
               through a simple Mouse down or Keyboard interaction.To enable selection, set <code>allowSelection</code> as true.</p>
-          <p>TreeGrid supports two types of selection which can be set using <code>selectionSettings->type</code> property. They are,</p>
+          <p>Tree Grid supports two types of selection which can be set using <code>selectionSettings->type</code> property. They are,</p>
           <ul>
             <li><code>Single</code> - Enabled by default. Allows the user to select single row/cell at a time.</li>
             <li><code>Multiple</code> - Allows the user to select more than one row/cell at a time.</li>
@@ -133,7 +133,7 @@ export class Selection extends SampleBase<{}, {}> {
             <li><code>Both</code> - Enables both the row and cell selection in Grid. Clicking any cell will select both row and cell
               simultaneously</li>
           </ul>
-          <p>The treegrid supports two types of cell selection mode that can be set by using the
+          <p>The Tree Grid supports two types of cell selection mode that can be set by using the
               <code>selectionSettings.cellSelectionMode</code>. They are:</p>
           <ul>
             <li><code>flow</code> - The Flow value is set by default. The range of cells are selected between the start index and end index
@@ -143,7 +143,7 @@ export class Selection extends SampleBase<{}, {}> {
           </ul>
           <p>To perform the multi-selection, hold CTRL key and click the desired rows/cells. To select range of rows/cells,
               hold SHIFT key and click the rows/cells.</p>
-          <p>While using the TreeGrid in a touch device environment, there is an option for multi-selection through single tap on the row
+          <p>While using the Tree Grid in a touch device environment, there is an option for multi-selection through single tap on the row
               and it will show a popup with the multi-selection symbol.Tap the icon to enable multi-selection in a single tap.</p>
           <p>In this demo, select the selection type and selection mode from the properties panel to do the selection. The cell selection
               mode dropdown is enabled only when we select type as multiple and mode as cell in property panel.</p>

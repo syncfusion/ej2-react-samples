@@ -25,13 +25,13 @@ export class DragAndDrop extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the TreeGrid component with the row drag and drop feature within same tree grid. It provides the way to drop the row, above, below or child
+          <p>This sample demonstrates the Tree Grid component with the row drag and drop feature within same Tree Grid. It provides the way to drop the row, above, below or child
             to the target row with the respective to the target row position.</p>
         </div>
         <div id='description'>
           <p>Row drag and drop enabled by setting <code>allowRowDragAndDrop</code> property as true.</p>
           <p>
-            TreeGrid features are segregated into individual feature-wise modules. To use row drag and drop feature, we need to inject
+            Tree Grid features are segregated into individual feature-wise modules. To use row drag and drop feature, we need to inject
             <code>RowDD</code> module into the <code>services</code>.
           </p>
         </div>

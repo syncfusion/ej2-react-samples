@@ -3,7 +3,8 @@ import * as React from 'react';
 import {
     PivotViewComponent, IDataOptions, Inject, FieldList, CalculatedField,
     Toolbar, PDFExport, ExcelExport, ConditionalFormatting, SaveReportArgs,
-    FetchReportArgs, LoadReportArgs, RemoveReportArgs, RenameReportArgs, ToolbarArgs
+    FetchReportArgs, LoadReportArgs, RemoveReportArgs, RenameReportArgs, ToolbarArgs,
+    NumberFormatting
 } from '@syncfusion/ej2-react-pivotview';
 import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
@@ -20,7 +21,7 @@ let dataSourceSettings: IDataOptions = {
     formatSettings: [{ name: 'Amount', format: 'C0' }],
     dataSource: Pivot_Data,
     expandAll: false,
-    values: [{ name: 'In_Stock', caption: 'In Stock' }, { name: 'Sold', caption: 'Units Sold' },
+    values: [{ name: 'Sold', caption: 'Units Sold' },
     { name: 'Amount', caption: 'Sold Amount' }],
     filters: [{ name: 'Product_Categories', caption: 'Product Categories' }]
 };
@@ -29,7 +30,7 @@ export class PivotToolbar extends SampleBase<{}, {}> {
 
     public pivotObj: any;
     public toolbarOptions: any = ['New', 'Save', 'SaveAs', 'Rename', 'Remove', 'Load',
-        'Grid', 'Chart', 'Export', 'SubTotal', 'GrandTotal', 'ConditionalFormatting', 'FieldList'];
+        'Grid', 'Chart', 'Export', 'SubTotal', 'GrandTotal', 'Formatting', 'FieldList'];
 
 
     saveReport(args: any): void {
@@ -88,13 +89,20 @@ export class PivotToolbar extends SampleBase<{}, {}> {
         }
     }
     renameReport(args: RenameReportArgs): void {
-        let reportCollection: string[] = [];
+        let reportsCollection: any[] = [];
         if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
-            reportCollection = JSON.parse(localStorage.pivotviewReports);
+            reportsCollection = JSON.parse(localStorage.pivotviewReports);
         }
-        reportCollection.map(function (item: any): any { if (args.reportName === item.reportName) { item.reportName = args.rename; } });
+        if (args.isReportExists) {
+            for (let i: number = 0; i < reportsCollection.length; i++) {
+                if (reportsCollection[i].reportName === args.rename) {
+                    reportsCollection.splice(i, 1);
+                }
+            }
+        }
+        reportsCollection.map(function (item: any): any { if (args.reportName === item.reportName) { item.reportName = args.rename; } });
         if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
-            localStorage.pivotviewReports = JSON.stringify(reportCollection);
+            localStorage.pivotviewReports = JSON.stringify(reportsCollection);
         }
     }
     newReport(): void {
@@ -118,11 +126,11 @@ export class PivotToolbar extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section' id='pivot-table-section' style={{ overflow: 'initial' }}>
-                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} showFieldList={true} gridSettings={{ columnWidth: 140 }}
-                        allowExcelExport={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
+                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'450'} showFieldList={true} gridSettings={{ columnWidth: 140 }}
+                        allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                         newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
-                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ load: this.chartOnLoad.bind(this) }}>
-                        <Inject services={[FieldList, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting]} />
+                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis',load: this.chartOnLoad.bind(this) }}>
+                        <Inject services={[FieldList, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting, NumberFormatting]} />
                     </PivotViewComponent>
                 </div>
 
@@ -195,6 +203,12 @@ export class PivotToolbar extends SampleBase<{}, {}> {
                                 <code>Conditional formatting:</code>
                             </td>
                             <td>Allows user to customize cells base on certain conditions.</td>
+                        </tr>
+                        <tr>
+                            <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
+                                <code>Number formatting:</code>
+                            </td>
+                            <td>Allows user to dynamically apply number formatting to value fields.</td>
                         </tr>
                         <tr>
                             <td style={{ verticalAlign: 'top', padding: '4px 0' }}>

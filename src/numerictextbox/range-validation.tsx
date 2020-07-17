@@ -113,6 +113,6 @@ export class Range extends SampleBase<{}, {}> {
 
     this.numericInstance.min = min;
     this.numericInstance.max = max;
-    this.numericInstance.step = step;
+    this.numericInstance.step = isNaN(step) ? 1 : step;
   }
 }

@@ -153,7 +153,7 @@ body {
 
 .ej2-new .container-fluid,
 .ej2-new .container-fluid .control-section,
-#sidebar-section, body, .col-md-12 {
+#sidebar-section, body, .sidebar-tree .col-md-12 {
     padding: 0px;
 }
 

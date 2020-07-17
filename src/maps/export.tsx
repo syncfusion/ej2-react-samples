@@ -6,8 +6,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { MapAjax } from '@syncfusion/ej2-maps';
 import {
-    MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Zoom, Legend,
-    ProjectionType, MapsTooltip, ExportType, Marker, MarkersDirective, MarkerDirective
+    ProjectionType, MapsComponent, MapsTooltip, ExportType, Marker, MarkersDirective, MarkerDirective, ShapeLayerType,
+    PdfExport, ImageExport, Inject, LayersDirective, LayerDirective, ILoadedEventArgs, MapsTheme
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
@@ -24,17 +24,34 @@ const SAMPLE_CSS = `
     text-transform:none !important;
 }
 .e-play-icon::before {
-    content: "\\e728";
+      content: '\\e728';
 }`;
 export class ExportMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     private mode: DropDownListComponent;
+    private mapType: DropDownListComponent;
     private type: { [key: string]: Object }[] = [
         { value: 'JPEG' },
         { value: 'PNG' },
-        { value: 'SVG' },
-        { value: 'PDF' }
+        { value: 'PDF' },
+        { value: 'SVG' }
     ];
+    private maptype: { [key: string]: Object }[] = [
+        { value: 'Geometry' },
+        { value: 'OSM' }
+    ];
+    private mapTypeChange(): void {
+        if (this.mapType.value === 'OSM') {
+            if (this.mode.value === 'SVG') {
+                this.mode.value = 'JPEG';
+            }
+            this.mode.dataSource = this.type.slice(0, 3);
+        } else {
+            this.mode.dataSource = this.type;
+        }
+        this.mapInstance.layers[0].layerType = this.mapType.value as ShapeLayerType;
+        this.mapInstance.refresh();
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -43,7 +60,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-md-8'>
-                        <MapsComponent id="maps" loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}
+                        <MapsComponent allowPdfExport={true} allowImageExport={true} id="maps" loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m}
                             titleSettings={{
                                 text: 'Location of the Wonders in the World',
                                 textStyle: {
@@ -51,7 +68,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                                 },
                             }}
                         >
-                            <Inject services={[Marker, MapsTooltip]} />
+                            <Inject services={[Marker, MapsTooltip, PdfExport, ImageExport]} />
                             <LayersDirective>
                                 <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
                                     shapeSettings=
@@ -95,6 +112,14 @@ export class ExportMaps extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%' }}>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "20%" }}>
+                                        Map Type:
+                        </td>
+                                    <td style={{ width: "30%" }}>
+                                        <DropDownListComponent width={80} id="maptype" value="Geometry" change={this.mapTypeChange.bind(this)} ref={d => this.mapType = d} dataSource={this.maptype} fields={{ text: 'value', value: 'value' }} placeholder="Geometry" />
+                                    </td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "20%" }}>
                                         Export Type:
                         </td>
                                     <td style={{ width: "30%" }}>
@@ -114,7 +139,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                                 <tr style={{ height: '50px' }}>
                                     <td>
                                         <div id="btn-control" style={{ 'margin-left': '60px' }}>
-                                            <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
+                                        <ButtonComponent onClick={this.onClick.bind(this)} style={{ width: '100px' }} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>
@@ -124,21 +149,25 @@ export class ExportMaps extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates the exporting feature in Maps. By clicking the Export button, you can export the map in PNG, JPEG, SVG or in PDF formats.
+                        This sample illustrates the exporting feature in Maps. You can modify the map type to geometric or OSM using the Map type dropdown list in this sample. By clicking the Export button, you can export the map in PNG, JPEG, SVG or in PDF formats.
                 </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the export. The rendered map can be exported as either JPEG, PNG, SVG and PDF formats. It can be achieved using Blob and it is supported only in modern browsers. Also this sample visualizes the locations of the wonders in the world using markers.
+                    In this example, you can see how to render and configure the export functionality. The rendered map
+                        can be exported as either JPEG, PNG, SVG and PDF formats. Also this sample visualizes the locations of
+                        the wonders in the world using markers. Export functionality is done by <code>export</code> method
+                        when <code>allowImageExport</code> and <code>allowPdfExport</code> is set as true.
+                        <br/><br/>
+                        <b>Injecting Module</b><br/><br/>
+                        Maps component features are segregated into individual feature-wise modules. To use a marker, inject
+                        the Marker module using the <code> Marker </code> module into the <code> services </code>. To make use of the export support, we need
+                        to inject the <code>Maps</code> module using the <code> ImageExport
+                        </code> and <code> PdfExport </code> modules into the <code> services </code>.
                 </p>
-                    <p>
-                        Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.
-                    </p>
-                    <br />
-                    <p style={{ fontWeight: 500 }}>Injecting Module</p>
-                    <p>
-                        Maps component features are segregated into individual feature-wise modules. To use a marker, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
-                    </p>
+                <p>
+                   More information on export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/maps/print/#export">documentation section</a>.
+                  </p>
 
                 </div>
             </div>

@@ -5,6 +5,7 @@ import { PivotViewComponent, IDataOptions, IDataSet, FieldList, Inject, SummaryT
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import * as rData from './pivot-data/rData.json';
+import './aggregation.css';
 
 /**
  * PivotView Aggregation Sample.
@@ -33,12 +34,6 @@ let dataSourceSettings: IDataOptions = {
 };
 
 let pivotObj: PivotViewComponent;
-
-const SAMPLE_CSS = `
-.e-pivotview {
-    width: 100%;
-    height: 100%;
-}`;
 
 export class Aggregation extends SampleBase<{}, {}> {
 
@@ -115,12 +110,9 @@ export class Aggregation extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
                 <div className='control-section'>
                     <div className='col-lg-9 adaptive'>
-                        <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} load={this.onLoad} dataSourceSettings={dataSourceSettings} showFieldList={true} width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }}>
+                        <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} load={this.onLoad} dataSourceSettings={dataSourceSettings} showFieldList={true} width={'100%'} height={'290'} gridSettings={{ columnWidth: 140 }}>
                             <Inject services={[FieldList]} />
                         </PivotViewComponent>
                     </div>

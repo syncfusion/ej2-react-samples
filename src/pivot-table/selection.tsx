@@ -37,8 +37,8 @@ export class Selection extends SampleBase<{}, {}> {
         { 'value': 'Both', 'text': 'Both' }
     ];
     private types: { [key: string]: Object }[] = [
-        { 'value': 'Single', 'text': 'Single' },
-        { 'value': 'Multiple', 'text': 'Multiple' }
+        { 'value': 'Multiple', 'text': 'Multiple' },
+        { 'value': 'Single', 'text': 'Single' }
     ];
     onSelected(args: PivotCellSelectedEventArgs): void {
         document.getElementById('EventLog').innerHTML = '';
@@ -154,10 +154,10 @@ export class Selection extends SampleBase<{}, {}> {
                     <p>To perform the multiselection, hold <strong>CTRL</strong> key and click the desired cells.
                         To select range of cells, hold <strong>SHIFT</strong> key and click the cells.</p>
                     <p>While using the pivot table in a touch device environment, tap over a row, column, or other cells.
-                        This results in a pop-up with a multiselect icon. Now tap the icon to proceed with multiselection.
+                    This results in a pop-up with a multiselect icon. Now tap the icon to proceed with multiselection.
                     </p>
                     <p>In this demo, pick the selection type and selection mode from the properties panel in order to perform the
-                        desired selection process.
+                    desired selection process.
                         The selected cell information can be seen in the Event Trace part with the help of the <code>cellSelected</code>
                         event.
                     </p>

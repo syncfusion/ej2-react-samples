@@ -194,7 +194,8 @@ export class PieMaps extends SampleBase<{}, {}> {
                 xName: 'x',
                 yName: 'y'
             }
-        ]
+        ],
+        legendSettings: {visible: false}
         });
         chart1.appendTo('#marker2');
         this.chartCollection.push(chart1);
@@ -221,7 +222,8 @@ export class PieMaps extends SampleBase<{}, {}> {
                     xName: 'x',
                     yName: 'y'
                 }
-            ]
+            ],
+            legendSettings: {visible: false}
         });
         chart2.appendTo('#marker3');
         this.chartCollection.push(chart2);
@@ -248,7 +250,8 @@ export class PieMaps extends SampleBase<{}, {}> {
                     xName: 'x',
                     yName: 'y'
                 }
-            ]
+            ],
+            legendSettings: {visible: false}
         });
         chart3.appendTo('#marker4');
         this.chartCollection.push(chart3);
@@ -275,7 +278,8 @@ export class PieMaps extends SampleBase<{}, {}> {
                 xName: 'x',
                 yName: 'y'
                 }
-            ]
+            ],
+            legendSettings: {visible: false}
         });
         chart4.appendTo('#marker5');
         this.chartCollection.push(chart4);
@@ -303,7 +307,8 @@ export class PieMaps extends SampleBase<{}, {}> {
                     xName: 'x',
                     yName: 'y'
                 }
-            ]
+            ],
+            legendSettings: {visible: false}
         });
         chart5.appendTo('#marker6');
         this.chartCollection.push(chart5);

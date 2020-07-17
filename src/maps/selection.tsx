@@ -112,7 +112,8 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                                 width: '80%',
                                 textStyle: {
                                     fontWeight: '400',
-                                    size: '14px'
+                                    size: '14px',
+                                    color: '#757575'
                                 }
                             }}
                             shapeSelected={this.shapeSelected.bind(this)}

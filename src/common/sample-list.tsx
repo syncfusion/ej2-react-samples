@@ -5,10 +5,12 @@ import { TextBoxSampleOrder } from '../textboxes/config';
 import { ComboBoxSampleOrder } from '../combo-box/config';
 import { AutoCompleteSampleOrder } from '../auto-complete/config';
 import { DropDownListSampleOrder } from '../drop-down-list/config';
+import { DropDownTreeSampleOrder } from '../drop-down-tree/config';
 import { ListViewSampleOrder } from '../listview/config';
 import { ToolbarSampleOrder } from '../toolbar/config';
 import { AccordionSampleOrder } from '../accordion/config';
 import { ScheduleSampleOrder } from '../schedule/config';
+import { KanbanSampleOrder } from '../kanban/config';
 import { CardSampleOrder } from '../card/config';
 import { AvatarSampleOrder } from '../avatar/config';
 import { SplitterSampleOrder } from '../splitter/config';
@@ -42,7 +44,7 @@ import { SparklineOrder } from '../sparkline/config';
 import { SmithChartOrder } from '../smith-chart/config';
 import { TreemapOrder } from '../treemap/config';
 import { ColorPickerSampleOrder } from '../color-picker/config';
-import { HeatmapSampleOrder } from '../heatmap/config';
+import { HeatmapSampleOrder } from '../heatmap-chart/config';
 import { DocumentEditorSampleOrder } from '../document-editor/config';
 import { RichTextEditorSampleOrder } from '../rich-text-editor/config';
 import { InPlaceEditorSampleOrder } from '../inplace-editor/config';
@@ -50,6 +52,7 @@ import { PivotViewSampleOrder } from '../pivot-table/config';
 import {ChipsSampleOrder} from '../chips/config';
 import { StockChartSampleOrder } from '../stock-chart/config';
 import { BulletChartSampleOrder } from '../bullet-chart/config';
+import { ProgressBarSampleOrder } from '../progress-bar/config';
 import { TreeGridSampleOrder } from '../treegrid/config';
 import { PdfViewerSampleOrder } from '../pdfviewer/config';
 import { QueryBuilderSampleOrder } from '../query-builder/config';
@@ -61,16 +64,16 @@ import { ListBoxSampleOrder } from '../list-box/config';
 
 export let samplesList: any = [
     {
-        'name': 'Data Grid', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
+        'name': 'Data Grid', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder, 'type': 'update'
     },
     {
         'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder, 'type':'update'
     },
     {
-        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
+        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'type': 'update', 'ftName' :'treegrid'
     },
     {
-        'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder, 'type': 'preview'
+        'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder, 'type': 'update'
     },
     {
         'name': 'Chart', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'type': 'update', 'ftName': 'chart'
@@ -85,16 +88,16 @@ export let samplesList: any = [
         'name': 'Maps', 'category': 'Data Visualization', 'type': 'update', 'order': '07', 'path': 'maps', 'samples': MapSampleOrder, 'ftName' :'maps'
     },
     {
-        'name': 'TreeMap', 'category': 'Data Visualization', 'order': '11', 'path': 'treemap', 'samples': TreemapOrder, 'ftName' :'treemap'
+        'name': 'TreeMap', 'type': 'update', 'category': 'Data Visualization', 'order': '11', 'path': 'treemap', 'samples': TreemapOrder, 'ftName' :'treemap'
     },
 	{
-        'name': 'Heatmap Chart', 'category': 'Data Visualization', 'order': '06', 'path': 'heatmap', 'samples': HeatmapSampleOrder, 'ftName' :'heatmap-chart', 'type':'update'
+        'name': 'HeatMap Chart', 'category': 'Data Visualization', 'order': '06', 'path': 'heatmap-chart', 'samples': HeatmapSampleOrder, 'ftName' :'heatmap-chart', 'type':'update'
     },
     {
-        'name': 'Circular Gauge', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
+        'name': 'Circular Gauge', 'type': 'update', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
     },
     {
-        'name': 'Linear Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'linear-gauge', 'samples': LinearGaugeSampleOrder, 'ftName' :'lineargauge'
+        'name': 'Linear Gauge', 'type': 'update', 'category': 'Data Visualization', 'order': '04', 'path': 'linear-gauge', 'samples': LinearGaugeSampleOrder, 'ftName' :'lineargauge'
     },
     {
         'name': 'Sparkline Charts', 'category': 'Data Visualization', 'order': '10', 'path': 'sparkline', 'samples': SparklineOrder, 'ftName' :'sparkline'
@@ -109,7 +112,10 @@ export let samplesList: any = [
         'name': 'Range Selector', 'category': 'Data Visualization', 'order': '08', 'path': 'range-navigator', 'samples': RangeNavigatorSampleOrder, 'ftName': 'rangenavigator'
     },
     {
-        'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder, 'type':'preview'
+        'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder,
+    },
+    {
+        'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'type': 'preview'
     },
     {
         'name': 'Chips', 'category': 'Editors', 'order': '04', 'path': 'chips', 'samples': ChipsSampleOrder
@@ -121,10 +127,10 @@ export let samplesList: any = [
         'name': 'DocumentEditor', 'type': 'update', 'category': 'Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
     },
     {
-        'name': 'RichTextEditor', 'type': 'update', 'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
+        'name': 'RichTextEditor',  'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
-        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
+        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
     },
 	{
         'name': 'Gantt', 'category': 'Calendars', 'order': '02', 'path': 'gantt', 'samples': GanttSampleOrder, "type": "update"
@@ -154,6 +160,9 @@ export let samplesList: any = [
         'name': 'Dropdown List', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
     },
     {
+        'name': 'Dropdown Tree', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder, 'type': 'update'
+    },
+    {
         'name': 'MultiSelect Dropdown', 'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
     },
     {
@@ -178,13 +187,16 @@ export let samplesList: any = [
         'name': 'Accordion', 'category': 'Navigation', 'path': 'accordion', 'samples': AccordionSampleOrder
     },
     {
-        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager', 'type': 'update'
+        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
     },
     {
         'name': 'Badge', 'category': 'Notifications', 'order': '01', 'path': 'badge', 'samples': BadgeSampleOrder
     },
     {
         'name': 'Toast', 'category': 'Notifications', 'order': '02', 'path': 'toast', 'samples': ToastSampleOrder
+    },
+    {
+        'name': 'Progress Bar', 'category': 'Notifications', 'order': '03', 'path': 'progress-bar', 'samples': ProgressBarSampleOrder, 'type': 'update'
     },
     {
         'name': 'Input Mask', 'category': 'Inputs', 'order': '04', 'path': 'maskedtextbox', 'samples': MaskedTextBoxOrder
@@ -208,7 +220,7 @@ export let samplesList: any = [
         'name': 'ListView', 'category': 'Layout', 'order': '05', 'path': 'listview', 'samples': ListViewSampleOrder
     },
     {
-        'name': 'Dialog', 'type': 'update', 'category': 'Layout', 'order': '05', 'path': 'dialog', 'samples': DialogSampleOrder, 'ftName' :'modal-dialog'
+        'name': 'Dialog', 'category': 'Layout', 'order': '05', 'path': 'dialog', 'samples': DialogSampleOrder, 'ftName' :'modal-dialog'
     },
     {
         'name': 'Tooltip', 'category': 'Layout', 'order': '05', 'path': 'tooltip', 'samples': TooltipSampleOrder
@@ -229,7 +241,7 @@ export let samplesList: any = [
         'name': 'Query Builder', 'category': 'Forms', 'path': 'query-builder', 'samples': QueryBuilderSampleOrder       
     },
 	{
-        'name': 'PDF Viewer', 'type': 'update', 'category': 'Viewer', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'
+        'name': 'PDF Viewer', 'category': 'Viewer', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'type': 'update', 'ftName': 'pdfviewer'
     },
     {
         'name': 'Dashboard Layout', 'category': 'Layout', 'path': 'dashboard-layout', 'samples': DashboardLayoutSampleOrder

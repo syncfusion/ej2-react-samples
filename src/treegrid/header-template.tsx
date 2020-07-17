@@ -55,12 +55,12 @@ export class HeaderTemplate extends SampleBase<{}, {}> {
         </div>
       </div>
       <div id="action-description">
-        <p>This sample demonstrates the TreeGrid header template feature. In this sample, we have shown custom icons in the column headers.
+        <p>This sample demonstrates the Tree Grid header template feature. In this sample, we have shown custom icons in the column headers.
         </p>
       </div>
       <div id="description">
         <p>
-          The TreeGrid provides a way to define a custom element in header element. <code>columns->headertemplate</code> property accepts
+          The Tree Grid provides a way to define a custom element in header element. <code>columns->headertemplate</code> property accepts
            either string or HTML element`s ID value, which will be used as the template for the header cell.  
         </p>
         <p> In this demo, we have render customized template for all column headers.</p> 

@@ -1,5 +1,5 @@
 /**
- * RichTextEditor events sample
+ * Rich Text Editor events sample
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -25,7 +25,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
         };
     }
 
-    // RichTextEditor items list
+    // Rich Text Editor items list
     private items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
         'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
         'LowerCase', 'UpperCase', '|',
@@ -34,7 +34,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
         'CreateLink', 'Image', '|', 'ClearFormat', 'Print',
         'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'];
 
-    //RichTextEditor ToolbarSettings
+    //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
@@ -43,7 +43,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
         this.EventLogEle.innerHTML = '';
     }
     private create(): void {
-        this.appendElement('RichTextEditor <b>create</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>create</b> event called<hr>');
     }
     private actionBegin(args: ActionBeginEventArgs): void {
         this.appendElement('<b>' + args.requestType + '</b> action is called<hr>');
@@ -54,79 +54,79 @@ export class RTEEvents extends SampleBase<{}, {}> {
         this.actionCompleteHandler();
     }
     private focus(): void {
-        this.appendElement('RichTextEditor <b>focus</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>focus</b> event called<hr>');
     }
     private blur(): void {
-        this.appendElement('RichTextEditor <b>blur</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>blur</b> event called<hr>');
     }
     private change(): void {
-        this.appendElement('RichTextEditor <b>change</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>change</b> event called<hr>');
     }
     private toolbarClick(): void {
-        this.appendElement('RichTextEditor <b>toolbar click</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>toolbar click</b> event called<hr>');
     }
     private beforeDialogOpen(): void {
-        this.appendElement('RichTextEditor <b>beforeDialogOpen</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>beforeDialogOpen</b> event called<hr>');
     }
 
     private dialogOpen(): void {
-        this.appendElement('RichTextEditor <b>dialogOpen</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>dialogOpen</b> event called<hr>');
     }
 
     private dialogClose(): void {
-        this.appendElement('RichTextEditor <b>dialogClose</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>dialogClose</b> event called<hr>');
     }
 
     private beforeQuickToolbarOpen(): void {
-        this.appendElement('RichTextEditor <b>beforeQuickToolbarOpen</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>beforeQuickToolbarOpen</b> event called<hr>');
     }
 
     private quickToolbarOpen(): void {
-        this.appendElement('RichTextEditor <b>quickToolbarOpen</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>quickToolbarOpen</b> event called<hr>');
     }
 
     private quickToolbarClose(): void {
-        this.appendElement('RichTextEditor <b>quickToolbarClose</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>quickToolbarClose</b> event called<hr>');
     }
 
     private imageSelected(): void {
-        this.appendElement('RichTextEditor <b>imageSelected</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>imageSelected</b> event called<hr>');
     }
 
     private imageUploading(): void {
-        this.appendElement('RichTextEditor <b>imageUploading</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>imageUploading</b> event called<hr>');
     }
 
     private imageUploadSuccess(): void {
-        this.appendElement('RichTextEditor <b>imageUploadSuccess</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>imageUploadSuccess</b> event called<hr>');
     }
 
     private imageUploadFailed(): void {
-        this.appendElement('RichTextEditor <b>imageUploadFailed</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>imageUploadFailed</b> event called<hr>');
     }
 
     private imageRemoving(): void {
-        this.appendElement('RichTextEditor <b>imageRemoving</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>imageRemoving</b> event called<hr>');
     }
 
     private destroyed(): void {
-        this.appendElement('RichTextEditor <b>destroyed</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>destroyed</b> event called<hr>');
     }
 
     private beforeSanitizeHtml(): void {
-        this.appendElement('RichTextEditor <b>beforeSanitizeHtml</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>beforeSanitizeHtml</b> event called<hr>');
     }
 
     private resizing(): void {
-        this.appendElement('RichTextEditor <b>resizing</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>resizing</b> event called<hr>');
     }
 
     private resizeStart(): void {
-        this.appendElement('RichTextEditor <b>resizeStart</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>resizeStart</b> event called<hr>');
     }
 
     private resizeStop(): void {
-        this.appendElement('RichTextEditor <b>resizeStop</b> event called<hr>');
+        this.appendElement('Rich Text Editor <b>resizeStop</b> event called<hr>');
     }
     private appendElement(html: string): void {
         let span: HTMLElement = document.createElement('span');
@@ -201,7 +201,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                             resizing={this.resizing.bind(this)}
                             resizeStart={this.resizeStart.bind(this)}
                             resizeStop={this.resizeStop.bind(this)}>
-                            <p>The rich text editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
+                            <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
   Users can format their content using standard toolbar commands.</p>
                             <p><b>Key features:</b></p>
                             <ul>
@@ -262,11 +262,11 @@ export class RTEEvents extends SampleBase<{}, {}> {
                     </PropertyPane>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the events that trigger on every action of the rich text editor. The event details are showcased in the event trace panel.</p>
+                    <p>This sample demonstrates the events that trigger on every action of the Rich Text Editor. The event details are showcased in the event trace panel.</p>
                 </div>
 
                 <div id="description">
-                    <p>The rich text editor triggers the events based on its actions.
+                    <p>The Rich Text Editor triggers the events based on its actions.
                 The events can be used as an extension point to perform custom operations.</p>
                     <ul>
                         <li><code>change</code> - Triggers when the editor gets blurred and changes are made to the content.</li>
@@ -293,7 +293,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                         <li><code>resizeStop</code> – Triggers only when stop resize the image</li>
                     </ul>
                     <p><b>Injecting Module</b></p>
-                    <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                    <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
                 </div>
             </div>
         );

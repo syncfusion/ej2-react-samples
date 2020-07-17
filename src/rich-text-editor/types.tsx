@@ -1,5 +1,5 @@
 /**
- * RichTextEditor toolbar types sample
+ * Rich Text Editor toolbar types sample
  */
 import { addClass, Browser, removeClass } from '@syncfusion/ej2-base';
 import { ChangeEventArgs as checked, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
@@ -17,7 +17,7 @@ export class Type extends SampleBase<{}, {}> {
   private listObj: DropDownListComponent;
   public checkboxObj: CheckBoxComponent;
 
-  // RichTextEditor items list
+  // Rich Text Editor items list
   private items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
     'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
     'LowerCase', 'UpperCase', '|',
@@ -26,7 +26,7 @@ export class Type extends SampleBase<{}, {}> {
     'CreateLink', 'Image', '|', 'ClearFormat', 'Print',
     'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'];
 
-  //RichTextEditor ToolbarSettings
+  //Rich Text Editor ToolbarSettings
   private toolbarSettings: ToolbarSettingsModel = {
     type: ToolbarType.Expand,
     items: this.items,
@@ -100,7 +100,7 @@ export class Type extends SampleBase<{}, {}> {
             <RichTextEditorComponent id="typesRTE" ref={(scope) => { this.rteObj = scope; }}
               floatingToolbarOffset={0} toolbarSettings={this.toolbarSettings}
               actionBegin={this.handleFullScreen.bind(this)} actionComplete={this.actionCompleteHandler.bind(this)}>
-              <p>The rich text editor is WYSIWYG ("what you see is what you get") editor useful to create and edit content, and return the valid HTML markup or markdown of the content</p>
+              <p>The Rich Text Editor is WYSIWYG ("what you see is what you get") editor useful to create and edit content, and return the valid HTML markup or markdown of the content</p>
               <p><b>Toolbar</b></p>
               <ol>
                 <li>
@@ -176,18 +176,18 @@ export class Type extends SampleBase<{}, {}> {
           </div>
         </div >
         <div id="action-description">
-          <p>This sample demonstrates the different behavior of toolbar support in the rich text editor. Change the toolbar type as multiRow or expand from the property panel to see its appearance . Check or uncheck the floating toolbar in property panel to look on its behavior.</p>
+          <p>This sample demonstrates the different behavior of toolbar support in the Rich Text Editor. Change the toolbar type as multiRow or expand from the property panel to see its appearance . Check or uncheck the floating toolbar in property panel to look on its behavior.</p>
         </div>
         <div id="description">
           <p><code>Floating</code>: set boolean value to toolbarSettings.enableFloating property to enable or disable the floating toolbar.</p>
-          <p> The rich text editor allows you to configure different types of toolbar using <code>toolbarSettings.type</code> property. The types of
+          <p> The Rich Text Editor allows you to configure different types of toolbar using <code>toolbarSettings.type</code> property. The types of
             toolbar are: </p>
           <ul>
             <li><code>Expand</code>: The toolbar hides the overflowing items in the next row. Click the expand arrow to view overflowing toolbar items</li>
             <li><code>Multi Row</code>: The toolbar hides the overflowing items in the next row.</li>
           </ul>
           <p><b>Injecting Module</b></p>
-          <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
         </div>
       </div >
     );

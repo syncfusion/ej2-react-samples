@@ -1,5 +1,5 @@
 /**
- * RichTextEditor tribute sample
+ * Rich Text Editor tribute sample
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';

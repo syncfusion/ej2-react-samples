@@ -17,7 +17,7 @@ import {
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 import { DropDownList, ChangeEventArgs } from '@syncfusion/ej2-dropdowns';
 import { CheckBoxChangeEventArgs } from "@syncfusion/ej2-grids";
-import { EJ2Instance } from "@syncfusion/ej2-navigations";
+
 
 
 let canShowError: boolean = false;

@@ -1,45 +1,94 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PivotViewComponent, IDataOptions, IDataSet } from '@syncfusion/ej2-react-pivotview';
+import { isNullOrUndefined } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import { csvdata } from './pivot-data/csvData';
 import * as localData from './pivot-data/rData.json';
+import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
+import './local.css';
 
 /**
  * PivotView sample for Local data source.
  */
 
-const SAMPLE_CSS = `
-.e-pivotview {
-    width: 100%;
-    height: 100%;
-}`;
 /* tslint:disable */
 let data: IDataSet[] = (localData as any).data;
-let dataSourceSettings: IDataOptions = {
-    expandAll: false,
-    enableSorting: true,
-    formatSettings: [{ name: 'ProCost', format: 'C0' }, { name: 'PowUnits', format: 'N0' }],
-    drilledMembers: [{ name: 'EnerType', items: ['Biomass', 'Free Energy'] }],
-    rows: [
-        { name: 'Year', caption: 'Production Year' },
-        { name: 'HalfYear', caption: 'Half Year' },
-        { name: 'Quarter', caption: 'Quarter' }
-    ],
-    columns: [
-        { name: 'EnerType', caption: 'Energy Type' },
-        { name: 'EneSource', caption: 'Energy Source' }
-    ],
-    values: [
-        { name: 'PowUnits', caption: 'Units (GWh)' },
-        { name: 'ProCost', caption: 'Cost (MM)' }
-    ],
-    filters: []
-};
-let pivotObj: PivotViewComponent;
 
 export class Local extends SampleBase<{}, {}> {
+    private pivotObj: PivotViewComponent;
+    private fields: object = { text: 'text', value: 'value' };
+    private contentTypes: { [key: string]: Object }[] = [
+        { 'value': 'JSON', 'text': 'JSON' },
+        { 'value': 'CSV', 'text': 'CSV' }
+    ];
 
-    onLoad(): void {
+    private jsonReport: IDataOptions = {
+        dataSource: this.groupDate(data),
+        type: 'JSON',
+        expandAll: false,
+        enableSorting: true,
+        formatSettings: [{ name: 'ProCost', format: 'C0' }, { name: 'PowUnits', format: 'N0' }],
+        drilledMembers: [{ name: 'EnerType', items: ['Biomass', 'Free Energy'] }],
+        rows: [
+            { name: 'Year', caption: 'Production Year' },
+            { name: 'HalfYear', caption: 'Half Year' },
+            { name: 'Quarter', caption: 'Quarter' }
+        ],
+        columns: [
+            { name: 'EnerType', caption: 'Energy Type' },
+            { name: 'EneSource', caption: 'Energy Source' }
+        ],
+        values: [
+            { name: 'PowUnits', caption: 'Units (GWh)' },
+            { name: 'ProCost', caption: 'Cost (MM)' }
+        ],
+        filters: []
+    };
+
+    private csvReport: IDataOptions = {
+        type: 'CSV',
+        expandAll: false,
+        enableSorting: true,
+        formatSettings: [{ name: 'Total Cost', format: 'C0' }, { name: 'Total Revenue', format: 'C0' }, { name: 'Total Profit', format: 'C0' }],
+        drilledMembers: [{ name: 'Item Type', items: ['Baby Food'] }],
+        rows: [
+            { name: 'Region' },
+            { name: 'Country' }
+        ],
+        columns: [
+            { name: 'Item Type' },
+            { name: 'Sales Channel' }
+        ],
+        values: [
+            { name: 'Total Cost' },
+            { name: 'Total Revenue' },
+            { name: 'Total Profit' }
+        ],
+        filters: []
+    };
+
+    ddlOnChange(args: ChangeEventArgs): void {
+        if (args.value === 'JSON') {
+            this.pivotObj.dataSourceSettings = this.jsonReport;
+        } else if (args.value === 'CSV') {
+            this.csvReport.dataSource = this.getCSVData();
+            this.pivotObj.dataSourceSettings = this.csvReport;
+        }
+    }
+
+    getCSVData(): string[][] {
+        let dataSource: string[][] = [];
+        let jsonObject: string[] = csvdata.split(/\r?\n|\r/);
+        for (let i: number = 0; i < jsonObject.length; i++) {
+            if (!isNullOrUndefined(jsonObject[i]) && jsonObject[i] !== '') {
+                dataSource.push(jsonObject[i].split(','));
+            }
+        }
+        return dataSource;
+    }
+
+    groupDate(data: IDataSet[]): IDataSet[] {
         if (data[0].Year === undefined) {
             let date: Date;
             for (let ln: number = 0, lt: number = data.length; ln < lt; ln++) {
@@ -54,27 +103,44 @@ export class Local extends SampleBase<{}, {}> {
                 delete (data[ln].Date);
             }
         }
-        pivotObj.dataSourceSettings.dataSource = data;
+        return data;
     }
 
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
-                <div className='control-section' style={{ overflow: 'auto' }}>
-                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} load={this.onLoad} dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} gridSettings={{columnWidth: 120}}>
-                    </PivotViewComponent>
+                <div className='control-section component-section' style={{ overflow: 'auto' }}>
+                    <div id='dropdown-control' style={{ marginBottom: '5px' }}>
+                        <table style={{ width: '350px' }}>
+                            <tbody>
+                                <tr style={{ height: '50px' }}>
+                                    <td>
+                                        <div><b>Content Type:</b>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div>
+                                                <DropDownListComponent placeholder={'Content Type'} fields={this.fields} change={this.ddlOnChange.bind(this)} id="contenttype" index={0} enabled={true} dataSource={this.contentTypes} />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='content-wrapper'>
+                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={this.jsonReport} width={'100%'} height={'290'} gridSettings={{ columnWidth: 120 }}>
+                        </PivotViewComponent>
+                    </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates basic rendering of the pivot table bound to JSON data extracted from a local file.</p>
+                    <p>This sample demonstrates basic rendering of the pivot table bound to JSON or CSV data extracted from a local file.</p>
                 </div>
                 <div id="description">
-                    <p>The pivot table supports JSON data source. The
-                        <code>dataSourceSettings->dataSource</code> property can be assigned with the JSON data to populate the pivot table.</p>
-                    <p>In this demo, the JSON data is assigned from an external file.</p>
-
+                    <p>The pivot table supports JSON and CSV data source. The
+                        <code>dataSourceSettings->dataSource</code> property can be assigned with the source data to populate the pivot table.</p>
+                    <p>In this demo, the JSON and CSV data is assigned from an external file.</p>
                 </div>
             </div>
         )

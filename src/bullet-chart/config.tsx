@@ -5,7 +5,7 @@ export const BulletChartSampleOrder = [
         'name': 'Default',
         'order': '01',
         'category': 'Bullet Chart',
-        'description': 'This demo for Essential JS2 Range Navigator control shows the default rendering of bullet graph with data.'
+        'description': 'This demo for Essential JS2 Bullet Chart control shows the default rendering of bullet graph with data.'
     },
     {
         'path': 'bullet-chart/multiple-data',
@@ -13,7 +13,7 @@ export const BulletChartSampleOrder = [
         'name': 'Multiple Data',
         'category': 'Bullet Chart',
         'order': '01',
-        'description': 'This demo for Essential JS2 Range Navigator control shows the default rendering of bullet graph with data.'
+        'description': 'This demo for Essential JS2 Bullet Chart control shows the default rendering of bullet graph with data.'
     },
     {
         'path': 'bullet-chart/right-to-left',
@@ -21,7 +21,7 @@ export const BulletChartSampleOrder = [
         'name': 'RTL',
         'category': 'Bullet Chart',
         'order': '01',
-        'description': 'This demo for Essential JS2 Range Navigator control shows the default rendering of bullet graph with data.'
+        'description': 'This demo for Essential JS2 Bullet Chart control shows the default rendering of bullet graph with data.'
     },
     {
         'path': 'bullet-chart/bar-customization',
@@ -29,7 +29,7 @@ export const BulletChartSampleOrder = [
         'name': 'Feature and Target Bar',
         'order': '01',
         'category': 'Bullet Chart',
-        'description': 'This demo for Essential JS2 Range Navigator control shows the default rendering of bullet graph with data.'
+        'description': 'This demo for Essential JS2 Bullet Chart control shows the default rendering of bullet graph with data.'
     },
     {
         'path': 'bullet-chart/customization',
@@ -37,7 +37,7 @@ export const BulletChartSampleOrder = [
         'name': 'Range and Label Settings',
         'order': '01',
         'category': 'Bullet Chart',
-        'description': 'This demo for Essential JS2 Range Navigator control shows the default rendering of bullet graph with data.'
+        'description': 'This demo for Essential JS2 Bullet Chart control shows the default rendering of bullet graph with data.'
     },
     {
         'path': 'bullet-chart/tooltip',
@@ -45,7 +45,15 @@ export const BulletChartSampleOrder = [
         'name': 'Tooltip Template',
         'order': '01',
         'category': 'Bullet Chart',
-        'description': 'This demo for Essential JS2 Range Navigator control shows the tooltip template rendering in bullet chart.'
+        'description': 'This demo for Essential JS2 Bullet Chart control shows the tooltip template rendering in bullet chart.'
+    },
+    {
+        'path': 'bullet-chart/bullet-legend',
+        'component': 'BulletLegend',
+        'name': 'Legend',
+        'order': '01',        
+        'category': 'Bullet Chart',
+        'description': 'This demo for Essential JS2 Bullet Chart control shows the legend rendering for targets in bullet chart.'
     }
     
 ]

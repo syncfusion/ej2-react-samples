@@ -261,7 +261,11 @@ export class ColorMap extends SampleBase<{}, {}> {
                             position: 'Bottom', height: '10',
                             width: '80%', mode: 'Interactive',
                             titleStyle: {
-                                size: '18px'
+                                size: '18px',
+                                color: '#757575'
+                            },
+                            textStyle: {
+                                color: '#757575'
                             },
                             title: { text: 'Inches' }
                         }}>

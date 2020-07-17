@@ -92,7 +92,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                                     <PointerDirective value={80} radius='100%' color='rgb(0,171,169)' type="Marker" markerShape="InvertedTriangle" markerHeight={15} markerWidth={15} />
                                                 </PointersDirective>
                                                 <AnnotationsDirective>
-                                                    <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Inverted Triangle</div>'
+                                                    <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Marker</div>'
                                                         angle={180} zIndex='1' radius='20%'></AnnotationDirective>
                                                 </AnnotationsDirective>
                                             </AxisDirective>
@@ -131,44 +131,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                     </CircularGaugeComponent>
                                 </div>
                                 <div className="col-sm-4">
-                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} loaded={this.onChartLoad.bind(this)} id='pointer3-container'>
-                                        <Inject services={[Annotations]} />
-                                        <AxesDirective>
-                                            <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}
-                                                lineStyle={{
-                                                    width: 3, color: '#1E7145'
-                                                }}
-                                                majorTicks={{
-                                                    width: 1,
-                                                    height: 0,
-                                                    interval: 100
-                                                }}
-                                                minorTicks={{
-                                                    height: 0,
-                                                    width: 0,
-                                                }} labelStyle={{
-                                                    position: 'Outside',
-                                                    font: { size: '0px', color: '#1E7145' }
-                                                }}>
-                                                <PointersDirective>
-                                                    <PointerDirective value={70} radius='100%' color='#1E7145' type="Marker" markerShape="Triangle" markerHeight={15} markerWidth={15} />
-                                                </PointersDirective>
-                                                <AnnotationsDirective>
-                                                    <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Triangle</div>'
-                                                        angle={180} zIndex='1' radius='20%'></AnnotationDirective>
-                                                </AnnotationsDirective>
-                                            </AxisDirective>
-                                        </AxesDirective>
-                                    </CircularGaugeComponent>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <div className="row">
-                                <div className="col-sm-4">
-                                    <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} centerY="40%" ref={gauge => this.gauge4 = gauge} loaded={this.onChartLoad.bind(this)} id='pointer4-container'>
+                                <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} ref={gauge => this.gauge4 = gauge} loaded={this.onChartLoad.bind(this)} id='pointer4-container'>
                                         <Inject services={[Annotations]} />
                                         <AxesDirective>
                                             <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}
@@ -205,6 +168,52 @@ export class Pointers extends SampleBase<{}, {}> {
                                             </AxisDirective>
                                         </AxesDirective>
                                     </CircularGaugeComponent>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <div className="row">
+                                <div className="col-sm-4">
+                                <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} centerY="40%" loaded={this.onChartLoad.bind(this)} id='pointer3-container'>
+                                        <Inject services={[Annotations]} />
+                                        <AxesDirective>
+                                            <AxisDirective startAngle={270} endAngle={90} radius='90%' minimum={0} maximum={100}
+                                                lineStyle={{
+                                                    width: 3, color: '#1E7145'
+                                                }}
+                                                majorTicks={{
+                                                    width: 1,
+                                                    height: 0,
+                                                    interval: 100
+                                                }}
+                                                minorTicks={{
+                                                    height: 0,
+                                                    width: 0,
+                                                }} labelStyle={{
+                                                    position: 'Outside',
+                                                    font: { size: '0px', color: '#1E7145' }
+                                                }}>
+                                                <PointersDirective>
+                                                    <PointerDirective value={70} radius='80%' color='green' pointerWidth={2} needleStartWidth={4} needleEndWidth={4}
+                                                     cap={{
+                                                        radius: 8,
+                                                        color: 'green'
+                                                    }}
+                                                    needleTail={{
+                                                        length: '0%'
+                                                    }}
+                                                    />
+                                                </PointersDirective>
+                                                <AnnotationsDirective>
+                                                    <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px; padding-top: 26px">Customized Needle</div>'
+                                                        angle={180} zIndex='1' radius='20%'></AnnotationDirective>
+                                                </AnnotationsDirective>
+                                            </AxisDirective>
+                                        </AxesDirective>
+                                    </CircularGaugeComponent>
+                                   
                                 </div>
                                 <div className="col-sm-4">
                                     <CircularGaugeComponent load={this.load.bind(this)} style={{ height: "250px" }} centerY="40%" loaded={this.onChartLoad.bind(this)} id='pointer5-container'>
@@ -256,7 +265,7 @@ export class Pointers extends SampleBase<{}, {}> {
                                                         }} />
                                                 </PointersDirective>
                                                 <AnnotationsDirective>
-                                                    <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Multiple Needle</div>'
+                                                    <AnnotationDirective content='<div style="color:#757575; font-family:Roboto; font-size:14px;">Multiple Needles</div>'
                                                         angle={180} zIndex='1' radius='25%'></AnnotationDirective>
                                                 </AnnotationsDirective>
                                             </AxisDirective>

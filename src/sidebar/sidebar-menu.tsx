@@ -96,7 +96,7 @@ export class SidebarWithMenu extends SampleBase<{}, {}> {
     private target: string = '.main-content';
     render() {
         return (
-            <div className="control-section">
+            <div className="control-section sidebar-menu">
                 <div className="col-lg-12 col-sm-12 col-md-12 center">
                     Click/Touch the button to view the sample
                  </div>

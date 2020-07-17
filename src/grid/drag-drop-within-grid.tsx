@@ -30,7 +30,7 @@ export class DragWithinGrid extends SampleBase<{}, {}> {
         <div id="description">
             <p>Row drag and drop enabled by settting  
                 <code><a target="_blank" className="code"
-            href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#allowrowdraganddrop-boolean">
+            href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#allowrowdraganddrop">
             allowRowDragAndDrop
             </a></code> property as true. 
             </p>   

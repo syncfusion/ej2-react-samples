@@ -19,6 +19,10 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
     baselineEndDate: 'BaselineEndDate',
     child: 'subtasks'
   };
+  public resourceFields: any = {
+    id: 'resourceId',
+    name: 'resourceName'
+  };
   public templateTaskbar: any = this.taskbarTooltip;
   public taskbarTooltip(props) {
     var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
@@ -84,8 +88,7 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
           <GanttComponent id='TooltipTemplate' ref={gantt => this.ganttInstance = gantt} dataSource={tooltipData} highlightWeekends={true}
             renderBaseline={true} treeColumnIndex={1} tooltipSettings={this.tooltipSettings}
             splitterSettings={this.splitterSettings} taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
-            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceNameMapping='resourceName'
-            resourceIDMapping='resourceId' resources={editingResources}>
+            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='60'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>

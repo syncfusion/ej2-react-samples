@@ -35,7 +35,7 @@ export const TreemapOrder:Object = [
         {'displayName': 'selection.tsx', 'path': 'src/treemap/selection.tsx'},
         {'displayName': 'import.json', 'path': 'src/treemap/treemap-data/import.json'}
     ], 'description':'This demo for Essential JS2 TreeMap control depicts the details of goods imported by Japan. Selection and highlight options have been enabled.', 'order': '01', 'category': 'TreeMap' },
-    { 'path': 'treemap/print', 'component':'Print', 'name': 'Print & Export', 'sourceFiles': [
+    { 'path': 'treemap/print', 'component':'PrintExport', 'type': 'update', 'name': 'Print & Export', 'sourceFiles': [
         {'displayName': 'print.tsx', 'path': 'src/treemap/print.tsx'},
         {'displayName': 'product.json', 'path': 'src/treemap/treemap-data/product.json'}
     ], 'description':'This demo for Essential JS2 TreeMap control depicts the top 10 best-selling smartphone brands. Print and export options have been enabled.', 'order': '01', 'category': 'TreeMap' },

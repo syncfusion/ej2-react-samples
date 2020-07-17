@@ -1,5 +1,5 @@
 /**
- * RichTextEditor Auto Save sample
+ * Rich Text Editor Auto Save sample
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -11,10 +11,10 @@ import { PropertyPane } from '../common/property-pane';
 export class AutoSave extends SampleBase<{}, {}> {
     private rteObj: RichTextEditorComponent;
     private switchObj: SwitchComponent;
-    // RichTextEditor items list
+    // Rich Text Editor items list
     private items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments',
         'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode', 'Undo', 'Redo'];
-    //RichTextEditor ToolbarSettings
+    //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };

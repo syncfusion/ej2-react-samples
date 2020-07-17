@@ -31,20 +31,20 @@ export class Paging extends SampleBase<{}, {}> {
                     <p>
                         Paging allows you to display the contents of the Grid component in page segments.
                         By default, paging is disabled. To enable paging, set <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowpaging-boolean'>
+                            href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowpaging'>
                             allowPaging</a></code> property to true.
             <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes-boolean---number'>
+                            href='http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes'>
                             pageSettings->pagesizes</a></code>property enables a dropdown in pager which allows you to change the number of records in the Grid dynamically.
                     </p>
                     <p>
                         In this demo, the Grid is rendered with
         <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes-boolean---number">
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes">
                             pageSettings->pageSizes
         </a></code> set to true and
         <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes-boolean---number">
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagecount">
                             pageSettings->pageCount
         </a></code> set to 4.
         </p>

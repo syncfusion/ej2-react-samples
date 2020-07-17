@@ -5,6 +5,7 @@ import { PivotViewComponent, IDataOptions, IDataSet } from '@syncfusion/ej2-reac
 import { SampleBase } from '../common/sample-base';
 import { RadioButtonComponent } from '@syncfusion/ej2-react-buttons';
 import * as pivotData from './pivot-data/Pivot_Data.json';
+import './editing.css';
 
 /**
  * PivotView Sample with Edit Options.
@@ -22,12 +23,6 @@ let dataSourceSettings: IDataOptions = {
     { name: 'Amount', caption: 'Sold Amount' }],
     filters: []
 };
-
-const SAMPLE_CSS = `
-.e-pivotview {
-    width: 100%;
-    height: 100%;
-}`;
 
 export class Editing extends SampleBase<{}, {}> {
 
@@ -52,12 +47,9 @@ export class Editing extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
                 <div className='control-section'>
                     <div className='col-lg-9 adaptive'>
-                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} showTooltip={false} dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }} editSettings={{ allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal' }}>
+                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} showTooltip={false} dataSourceSettings={dataSourceSettings} width={'100%'} height={'290'} gridSettings={{ columnWidth: 140 }} editSettings={{ allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal' }}>
                         </PivotViewComponent>
                     </div>
                     <div className='col-lg-3 property-section'>

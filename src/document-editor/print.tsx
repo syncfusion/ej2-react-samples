@@ -48,7 +48,7 @@ export class PrintView extends SampleBase<{}, {}> {
                 <div id='documenteditor_titlebar' className="e-de-ctn-title">
                         </div>
                         <div id="documenteditor_container_panel" style={{ position: 'relative' }}>
-                            <DocumentEditorComponent id="container" ref={(scope) => { this.documenteditor = scope; }} enablePrint={true} style={{ width: '100%', height: '100%' }} />
+                            <DocumentEditorComponent id="container" ref={(scope) => { this.documenteditor = scope; }} enablePrint={true} />
                         </div>
                     <div id="documenteditor_statusbar">
                     </div>
@@ -107,7 +107,7 @@ export class PrintView extends SampleBase<{}, {}> {
         let waitingPopUp: HTMLElement = document.getElementById('waiting-popup');
         let overlay: HTMLElement = document.getElementById('popup-overlay');
         this.documentLoader.loadDefault(defaultDocument);
-        this.documenteditor.documentName = 'Getting Started';
+        this.documenteditor.documentName = 'Print';
         waitingPopUp.style.display = 'none';
         overlay.style.display = 'none';
     }
@@ -115,8 +115,10 @@ export class PrintView extends SampleBase<{}, {}> {
         let titleBarDiv: HTMLElement = document.getElementById('documenteditor_titlebar');
         let statusBarDiv: HTMLElement = document.getElementById('documenteditor_statusbar');
         if (this.containerPanel && titleBarDiv && statusBarDiv) {
-            this.containerPanel.style.height = (window.innerHeight -
-                (titleBarDiv.offsetHeight + statusBarDiv.offsetHeight)) + 'px';
+            var height = (window.innerHeight -
+                    (titleBarDiv.offsetHeight + statusBarDiv.offsetHeight)) + 'px';
+            this.containerPanel.style.height = height;
+            this.documenteditor.height = height;
         }
     }
     applyPageCountAndDocumentTitle = (): void => {

@@ -39,7 +39,7 @@ export class Command extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
         <p>
-            This sample demonstrates CRUD operations in TreeGrid using command column. You can perform CRUD operations as follows,
+            This sample demonstrates CRUD operations in Tree Grid using command column. You can perform CRUD operations as follows,
         </p>
         <ul>
             <li><code>Edit</code> - To edit record, double click a row or click Edit button from command column after selected a row.</li>
@@ -50,7 +50,7 @@ export class Command extends SampleBase<{}, {}> {
         </div>
         <div id="description">
         <p>
-            The TreeGrid provides an option to render CRUD action buttons in a column by using the <b>CommandColumn</b> feature.
+            The Tree Grid provides an option to render CRUD action buttons in a column by using the <b>CommandColumn</b> feature.
               The <code>columns->commands</code> property accepts array of CommandModel object. The predefined command button
               can be defined by using type property.
         </p>
@@ -64,7 +64,7 @@ export class Command extends SampleBase<{}, {}> {
             <li><code>Save</code></li>
         </ul>
           <p>Injecting Module:</p>
-          <p>TreeGrid features are segregated into individual feature-wise modules. To use editing feature,
+          <p>Tree Grid features are segregated into individual feature-wise modules. To use editing feature,
              we need to inject <code>Edit</code> module into the <code>services</code>.</p>
           <p>
             More information on the selection configuration can be found in this documentation section.

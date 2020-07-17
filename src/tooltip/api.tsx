@@ -22,17 +22,21 @@ export class ApiTooltip extends SampleBase<{}, {}> {
     public data: string[] = ["Click", "Hover", "Auto"];
 
     public onClick(args: any): void {
+        if (this.tooltip != null) {
         if (!args.target.classList.contains("e-control") && !args.target.classList.contains("e-btn")) {
             if (!this.tooltip.isSticky && document.getElementsByClassName("e-tooltip-wrap").length > 0) {
                 this.tooltip.close();
             }
         }
     }
+    }
 
     public onScroll(): void {
+        if (this.tooltip != null) {
         if (document.getElementsByClassName("e-tooltip-wrap").length > 0) {
             this.tooltip.close();
         }
+    }
     }
 
     public created(): void {
@@ -64,8 +68,10 @@ export class ApiTooltip extends SampleBase<{}, {}> {
     }
 
     public checkboxChange(args: any) {
+        if(this.tooltip != null) {
         this.tooltip.close();
         this.tooltip.isSticky = args.checked;
+        }
     }
     render() {
         return (

@@ -18,6 +18,7 @@ export class Drag extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
     private drag: HTMLInputElement;
     private pointerDrag: HTMLInputElement;
+    private rangesDrag: HTMLInputElement;
     private content: string = '<div style="font-size: 14px;color:#E5C31C;font-weight: lighter;font-style: oblique;"><span>';
     public dragChange(): void {
         let pointerValue: number = +this.drag.value;
@@ -35,6 +36,10 @@ export class Drag extends SampleBase<{}, {}> {
         let value: boolean = this.pointerDrag.checked;
         this.gauge.enablePointerDrag = value;
     }
+    public rangesDragChange(): void {
+        let value: boolean = this.rangesDrag.checked;
+        this.gauge.enableRangeDrag = value;
+    }
     public setPointersValue(circulargauge: CircularGaugeComponent, pointerValue: number): void {
         let color: string;
         if (pointerValue >= 0 && pointerValue <= 40) {
@@ -46,8 +51,8 @@ export class Drag extends SampleBase<{}, {}> {
         }
         circulargauge.axes[0].pointers[0].color = color;
         circulargauge.axes[0].pointers[1].color = color;
-        circulargauge.axes[0].pointers[0].animation.enable = true;
-        circulargauge.axes[0].pointers[1].animation.enable = true;
+        circulargauge.axes[0].pointers[0].animation.enable = false;
+        circulargauge.axes[0].pointers[1].animation.enable = false;
         circulargauge.axes[0].pointers[0].needleTail.color = color;
         circulargauge.axes[0].pointers[1].needleTail.color = color;
         circulargauge.axes[0].pointers[0].cap.border.color = color;
@@ -115,11 +120,21 @@ export class Drag extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: "50px" }}>
                                         <td style={{ width: "20%" }}>
-                                            <div id='enablePointer'>Enable Drag</div>
+                                            <div id='enablePointer'>Allow Pointer Drag</div>
                                         </td>
                                         <td style={{ width: "40%" }}>
                                             <div>
                                                 <input type="checkbox" onChange={this.pointerDragChange.bind(this)} ref={d => this.pointerDrag = d} id="enable" defaultChecked={true} style={{ width: "90%" }} />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style={{ height: "50px" }}>
+                                        <td style={{ width: "20%" }}>
+                                            <div id='enablePointer'>Allow Ranges Drag</div>
+                                        </td>
+                                        <td style={{ width: "40%" }}>
+                                            <div>
+                                                <input type="checkbox" onChange={this.rangesDragChange.bind(this)} ref={d => this.rangesDrag = d} id="rangeDragEnable" style={{ width: "90%" }} />
                                             </div>
                                         </td>
                                     </tr>
@@ -160,6 +175,9 @@ export class Drag extends SampleBase<{}, {}> {
         this.gauge.setAnnotationValue(0, 0, this.content + Math.round(args.currentValue) + ' MPH</span></div > ');
     };
     public dragEnd(args: IPointerDragEventArgs): void {
-        this.setPointersValue(this.gauge, Math.round(args.currentValue));
+        // this.setPointersValue(this.gauge, Math.round(args.currentValue));
+        if (isNaN(args.rangeIndex)) {
+            this.setPointersValue(this.gauge, Math.round(args.currentValue));
+        }
     };
 }

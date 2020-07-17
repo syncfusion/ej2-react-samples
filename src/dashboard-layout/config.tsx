@@ -9,7 +9,8 @@ export const DashboardLayoutSampleOrder:Object = [
     'sourceFiles':[
         { 'displayName': 'predefined-layouts.tsx', 'path': 'src/dashboard-layout/predefined-layouts.tsx' },
         { 'displayName': 'predefined-layouts.jsx', 'path': 'src/dashboard-layout/predefined-layouts.jsx' },
-        { 'displayName': 'predefined-layouts.css', 'path': 'src/dashboard-layout/predefined-layouts.component.css' }
+        { 'displayName': 'predefined-layouts.css', 'path': 'src/dashboard-layout/predefined-layouts.component.css' },
+        { 'displayName': 'panel-data.ts', 'path': 'src/dashboard-layout/panel-data.ts' }
     ] },
     { 'path': 'dashboard-layout/properties', 'component':'Properties', 'name': 'API', 'description':'This sample demonstrates the most frequently used API combinations and dynamic addition and removal of panels within the layout.', 'order': '01', 'category': 'Dashboard Layout',
     'sourceFiles': [
@@ -27,6 +28,8 @@ export const DashboardLayoutSampleOrder:Object = [
     'sourceFiles': [
         { 'displayName': 'analytics.tsx', 'path': 'src/dashboard-layout/analytics-dashboard.tsx' },
         { 'displayName': 'analytics.jsx', 'path': 'src/dashboard-layout/analytics-dashboard.jsx' },
-        { 'displayName': 'analytics.css', 'path': 'src/dashboard-layout/analytics.css' }
+        { 'displayName': 'analytics.css', 'path': 'src/dashboard-layout/analytics.css' },
+        { 'displayName': 'default-datasource.json', 'path': 'src/dashboard-layout/default-datasource.json' },
+        { 'displayName': 'world-map.json', 'path': 'src/dashboard-layout/world-map.json' }
     ] }
 ]

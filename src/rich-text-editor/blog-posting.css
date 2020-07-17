@@ -226,6 +226,7 @@
     margin-top: 12px;
     font-family: roboto, SegoeUI;
     font-size: 13px;
+    overflow-wrap: break-word;
 }
 
 .highcontrast #rteUseCase .control-wrapper .posting {

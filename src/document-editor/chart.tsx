@@ -24,8 +24,8 @@ export class DocumentEditorChart extends SampleBase<{}, {}> {
             <div className='control-section'>
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
-                    <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block', 'height': '590px' }}
-                        enableToolbar={true} locale='en-US' />
+                    <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
+                       height={'590px'} enableToolbar={true} locale='en-US' />
                 </div>
             </div>
             <div id="action-description">

@@ -373,7 +373,7 @@ let diagramInstance: DiagramComponent;
 
 export class BpmnEditor extends SampleBase<{}, {}> {
   rendereComplete() {
-
+    diagramInstance.fitToPage();
   }
   render() {
     return (
@@ -425,7 +425,7 @@ export class BpmnEditor extends SampleBase<{}, {}> {
             id="diagram"
             ref={diagram => (diagramInstance = diagram)}
             width={"100%"}
-            height={"469px"}
+            height={"445px"}
             snapSettings={{ constraints: 0 }}
             nodes={nodes}
             connectors={connectors}

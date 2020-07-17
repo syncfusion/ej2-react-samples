@@ -71,7 +71,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
         </a></code> as true.
         </p>
                     <p>Grid component supports two types of selection which can be set using <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#selectionsettings-selectionsettingsmodel">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#type">
                         selectionSettings->type
         </a></code> property.
             They are,</p>
@@ -80,7 +80,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                         <li><code>Multiple</code> - Allows the user to select more than one row/cell at a time.</li>
                     </ul>
                     <p>Also, supports three modes of selection which can be set using <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#selectionsettings-selectionsettingsmodel">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#mode">
                         selectionSettings->mode
         </a></code> property. They
             are,
@@ -101,7 +101,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                     <p>In this demo, click the toolbar options to toggle between the selection type and selection mode available in Grid.</p>
                     <p>
                         More information on the selection configuration can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/api/grid/#selectrows"> documentation section</a>.
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/grid/selection.html#selection"> documentation section</a>.
         </p>
 
                 </div>

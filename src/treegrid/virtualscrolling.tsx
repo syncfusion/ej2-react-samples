@@ -23,12 +23,12 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                 </TreeGridComponent>
                 </div>
         <div id="action-description">
-        <p>This sample demonstrates the TreeGrid component with the virtual scrolling feature. Scroll the TreeGrid content vertically to load rows.
+        <p>This sample demonstrates the Tree Grid component with the virtual scrolling feature. Scroll the Tree Grid content vertically to load rows.
         </p>
        </div>
 <div id="description">
     <p>
-    The TreeGrid UI virtualization allows you to render only rows visible within the view-port without buffering the entire datasource.
+    The Tree Grid UI virtualization allows you to render only rows visible within the view-port without buffering the entire datasource.
         To enable the virtualization, set
         <code><a target="_blank" className="code"
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#enablevirtualization">enableVirtualization
@@ -43,7 +43,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
     </p>
     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
     <p>
-        TreeGrid features are segregated into individual feature-wise modules. 
+        Tree Grid features are segregated into individual feature-wise modules. 
         To use virtual scrolling feature, we need to inject
         <code> VirtualScroll </code> module into the <code>services</code>.
     </p>

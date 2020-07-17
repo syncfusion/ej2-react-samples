@@ -143,7 +143,7 @@ export class RowSpanning extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        Grid allows to span the row cells. In <a href='http://ej2.syncfusion.com/documentation/grid/api-queryCellInfoEventArgs.html?lang=typescript'><code>QueryCellInfo</code></a>
+                        Grid allows to span the row cells. In <a href='http://ej2.syncfusion.com/documentation/grid/api-queryCellInfoEventArgs.html'><code>QueryCellInfo</code></a>
                         event, you can define the <code>rowSpan</code> attributes to span the cells.
                     </p>
                     <p>

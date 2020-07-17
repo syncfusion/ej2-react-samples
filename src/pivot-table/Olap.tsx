@@ -6,7 +6,7 @@ import {
     FetchReportArgs, LoadReportArgs, RemoveReportArgs, RenameReportArgs, ToolbarArgs
 } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
-import './Olap.css';
+import './olap.css';
 
 /**
  * PivotView ToolBar Sample Olap.
@@ -93,9 +93,16 @@ export class OlapSample extends SampleBase<{}, {}> {
         }
     }
     renameReport(args: RenameReportArgs): void {
-        let reportsCollection: string[] = [];
+        let reportsCollection: any[] = [];
         if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
             reportsCollection = JSON.parse(localStorage.pivotviewReports);
+        }
+        if (args.isReportExists) {
+            for (let i: number = 0; i < reportsCollection.length; i++) {
+                if (reportsCollection[i].reportName === args.rename) {
+                    reportsCollection.splice(i, 1);
+                }
+            }
         }
         reportsCollection.map(function (item: any): any { if (args.reportName === item.reportName) { item.reportName = args.rename; } });
         if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
@@ -123,10 +130,10 @@ export class OlapSample extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section' id='pivot-table-section' style={{ overflow: 'initial' }}>
-                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'600'} showFieldList={true} showGroupingBar={true} gridSettings={{ columnWidth: 140 }}
+                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'500'} showFieldList={true} showGroupingBar={true} gridSettings={{ columnWidth: 140 }}
                         allowExcelExport={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                         newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
-                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ load: this.chartOnLoad.bind(this) }}>
+                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis',load: this.chartOnLoad.bind(this) }}>
                         <Inject services={[FieldList, GroupingBar, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting]} />
                     </PivotViewComponent>
                 </div>

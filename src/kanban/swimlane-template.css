@@ -1,0 +1,15 @@
+.kanban-swimlane-template .swimlane-template {
+    font-size: 15px;
+    font-weight: 500;
+    padding-left: 4px;
+}
+
+.kanban-swimlane-template .swimlane-template img {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
+.kanban-swimlane-template .swimlane-template span {
+    padding-left: 10px;
+}

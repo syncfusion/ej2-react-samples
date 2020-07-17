@@ -21,6 +21,10 @@ export class HeaderTemplate extends SampleBase<{}, {}> {
     resourceInfo: 'resources',
     child: 'subtasks'
   };
+  public resourceFields: any = {
+    id: 'resourceId',
+    name: 'resourceName'
+  };
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
@@ -36,7 +40,7 @@ export class HeaderTemplate extends SampleBase<{}, {}> {
         {SAMPLE_CSS}
         </style>
         <div className='control-section'>
-          <GanttComponent id='ColumnMenu' resourceNameMapping='resourceName' resourceIDMapping='resourceId' resources={editingResources}
+          <GanttComponent id='ColumnMenu' resourceFields={this.resourceFields} resources={editingResources}
             dataSource={templateData} highlightWeekends={true} splitterSettings={this.splitterSettings}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>

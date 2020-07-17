@@ -13,18 +13,22 @@ export class HtmlContentTooltip extends SampleBase<{}, {}> {
     public tooltipObj: TooltipComponent;
 
     public onClick(args: any): void {
+        if(this.tooltipObj != null) {
         if (!args.target.classList.contains('e-control') &&
             !args.target.classList.contains('e-btn')) {
             if (document.getElementsByClassName('e-tooltip-wrap').length > 0) {
                 this.tooltipObj.close();
             }
         }
+        }
     }
 
     public onScroll(): void {
+        if(this.tooltipObj != null) {
         if (document.getElementsByClassName('e-tooltip-wrap').length > 0) {
             this.tooltipObj.close();
         }
+    }
     }
 
     public created(): void {

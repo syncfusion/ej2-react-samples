@@ -1,5 +1,5 @@
 /**
- * RichTextEditor inline sample
+ * Rich Text Editor inline sample
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
@@ -27,12 +27,12 @@ export class Inline extends SampleBase<{}, {}> {
   private fontFamily: FontFamilyModel = {
     width: 'auto'
   }
-  // RichTextEditor items list
+  // Rich Text Editor items list
   private items: string[] = ['Bold', 'Italic', 'Underline',
     'Formats', '-', 'Alignments', 'OrderedList', 'UnorderedList',
     'CreateLink'];
 
-  //RichTextEditor ToolbarSettings
+  //Rich Text Editor ToolbarSettings
   private toolbarSettings: ToolbarSettingsModel = {
     items: this.items
   };
@@ -71,10 +71,10 @@ export class Inline extends SampleBase<{}, {}> {
         </div>
 
         <div id="description">
-          <p>The rich text editor provides an option to display toolbar on demand using mode property. Set mode as inline to enable
+          <p>The Rich Text Editor provides an option to display toolbar on demand using mode property. Set mode as inline to enable
             inline editor. The toolbar becomes visible only when the content is selected</p>
           <p><b>Injecting Module</b></p>
-          <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
         </div>
       </div>
     );

@@ -73,6 +73,7 @@ let verticalSpacingObj: NumericTextBoxComponent;
 
 export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
   rendereComplete() {
+    diagramInstance.fitToPage();
     //Click Event for Appearance of the layout.
     document.getElementById("appearance").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;

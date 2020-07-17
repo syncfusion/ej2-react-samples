@@ -1,5 +1,5 @@
 /**
- * RichTextEditor Iframe sample
+ * Rich Text Editor Iframe sample
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -16,7 +16,7 @@ export class IFrame extends SampleBase<{}, {}> {
     enable: true
   };
 
-  // RichTextEditor items list
+  // Rich Text Editor items list
   private items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
     'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
     'LowerCase', 'UpperCase', 'SuperScript', 'SubScript', '|',
@@ -26,7 +26,7 @@ export class IFrame extends SampleBase<{}, {}> {
     'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
   ];
 
-  //RichTextEditor ToolbarSettings
+  //Rich Text Editor ToolbarSettings
   private toolbarSettings: ToolbarSettingsModel = {
     items: this.items
   };
@@ -73,7 +73,7 @@ export class IFrame extends SampleBase<{}, {}> {
             <RichTextEditorComponent id="iframeRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
               height={'500px'} actionBegin={this.handleFullScreen.bind(this)} actionComplete={this.actionCompleteHandler.bind(this)} toolbarSettings={this.toolbarSettings}
               iframeSettings={this.iframeSetting}>
-              <p>The rich text editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
+              <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
   Users can format their content using standard toolbar commands.</p>
 
               <p><b>Key features:</b></p>
@@ -115,14 +115,14 @@ export class IFrame extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the default rendering of the rich text editor in <code>iframe mode</code>.</p>
+          <p>This sample demonstrates the default rendering of the Rich Text Editor in <code>iframe mode</code>.</p>
         </div>
 
         <div id="description">
-          <p>The rich text editor is WYSIWYG ("what you see is what you get") editor that is used to create and edit content, and return valid HTML markup. The editor provides a standard toolbar to format content using its commands. The toolbar contains commands to align the text, insert link, insert image,
+          <p>The Rich Text Editor is WYSIWYG ("what you see is what you get") editor that is used to create and edit content, and return valid HTML markup. The editor provides a standard toolbar to format content using its commands. The toolbar contains commands to align the text, insert link, insert image,
             insert list, undo/redo the operation, HTML view, and more.</p>
           <p><b>Injecting Module</b></p>
-          <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
         </div>
       </div>
     );

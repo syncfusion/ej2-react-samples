@@ -40,7 +40,7 @@ export class ToolbarTemplate extends SampleBase<{}, {}> {
       </div>
       <div id="action-description">
         <p>This sample explains the way of rendering custom template element <code>Quick Filter</code> in a toolbar and while click
-            on the icon filters the <code>Task Name</code> column in TreeGrid using API
+            on the icon filters the <code>Task Name</code> column in Tree Grid using API
         </p>
     </div>
 

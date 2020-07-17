@@ -67,6 +67,14 @@ npm run build
         <td>
             <a href="src/pivot-view">Pivot Table (Preview)</a>
         </td>
+        <td>
+            <a href="src/treegrid">Tree Grid</a>
+        </td>
+     </tr>
+     <tr>    
+        <td>
+            <a href="src/spreadsheet">Spreadsheet</a>
+        </td>
         <td></td>
     </tr>
     <tr>
@@ -79,7 +87,18 @@ npm run build
             <a href="src/chart">Charts</a>
         </td>
         <td>
+            <a href="src/stock-chart">Stock Chart</a>
+        </td>
+        <td>
             <a href="src/circular-gauge">Circular Gauge</a>
+        </td>
+     </tr>
+     <tr>      
+        <td>
+            <a href="src/diagram">Diagram</a>
+        </td>
+        <td>
+            <a href="src/heatmap-chart">HeatMap Chart</a>
         </td>
         <td>
             <a href="src/linear-gauge">Linear Gauge</a>
@@ -87,32 +106,25 @@ npm run build
     </tr>
     <tr>
         <td>
-            <a href="src/diagram">Diagram (Preview)</a>
-        </td>
-        <td>
-            <a href="src/heatmap">Heatmap chart</a>
-        </td>
-        <td>
             <a href="src/maps">Maps</a>
         </td>
-    </tr>
-    <tr>
         <td>
             <a href="src/range-navigator">Range Selector</a>
         </td>
         <td>
             <a href="src/smith-chart">Smith Chart</a>
         </td>
-        <td>
-            <a href="src/sparkline">Sparkline Charts</a>
-        </td>
     </tr>
     <tr>
         <td>
+            <a href="src/barcode">Barcode Generator</a>
+        </td>
+        <td>
+            <a href="src/sparkline">Sparkline Charts</a>
+        </td>
+        <td>
             <a href="src/treemap">TreeMap</a>
         </td>
-        <td></td>
-        <td></td>
     </tr>
     <tr>
         <td colspan="3" rowspan="1">
@@ -126,7 +138,9 @@ npm run build
         <td>
             <a href="src/document-editor">Word Processor (Preview)</a>
         </td>
-        <td></td>
+        <td>
+            <a href="src/inplace-editor">In-place Editor</a>
+        </td>
     </tr>
     <tr>
         <td colspan="3" rowspan="1">
@@ -155,6 +169,12 @@ npm run build
             <a href="src/timepicker">Time Picker</a>
         </td>
     </tr>
+        <td>
+            <a href="src/gantt">Gantt Chart</a>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
     <tr>
         <td colspan="3" rowspan="1">
             <b>BUTTONS<b>
@@ -178,7 +198,9 @@ npm run build
         <td>
             <a href="src/button/split-button.tsx">Split Button</a>
         </td>
-        <td></td>
+        <td>
+            <a href="src/chips">Chips</a>
+        </td>
     </tr>
     <tr>
         <td colspan="3" rowspan="1">
@@ -200,8 +222,12 @@ npm run build
         <td>
             <a href="src/multi-select">MultiSelect Dropdown</a>
         </td>
-        <td></td>
-        <td></td>
+        <td>
+            <a href="src/drop-down-tree">Dropdown Tree</a>
+        </td>
+        <td>
+            <a href="src/list-box">ListBox</a>
+        </td>
     </tr>
     <tr>
         <td colspan="3" rowspan="1">
@@ -234,7 +260,9 @@ npm run build
         <td>
             <a href="src/treeview">TreeView</a>
         </td>
-        <td></td>
+        <td>
+            <a href="src/file-manager">File Manager</a>
+        </td>
         <td></td>
     </tr>
     <tr>
@@ -298,7 +326,14 @@ npm run build
         <td>
             <a href="src/tooltip">Tooltip</a>
         </td>
-        <td></td>
+        <td>
+            <a href="src/splitter">Splitter</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/dashboard-layout">Dashboard Layout</a>
+        </td>
     </tr>
     <tr>
         <td colspan="3" rowspan="1">
@@ -312,6 +347,32 @@ npm run build
         <td>
             <a href="src/toast">Toast</a>
         </td>
+        <td>
+            <a href="src/progress-bar">Progress-bar</a>
+        </td>
+    </tr>
+     <tr>
+        <td colspan="3" rowspan="1">
+            <b>VIEWER<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/pdfviewer">PDF Viewer</a>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3" rowspan="1">
+            <b>FORMS<b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="src/query-builder">Query Builder</a>
+        </td>
+        <td></td>
         <td></td>
     </tr>
 </table>

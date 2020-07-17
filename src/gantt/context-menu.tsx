@@ -19,6 +19,10 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     notes: 'info',
     resourceInfo: 'resources'
   };
+  public resourceFields: any = {
+    id: 'resourceId',
+    name: 'resourceName'
+  };
   public editSettings: any = {
     allowAdding: true,
     allowEditing: true,
@@ -73,7 +77,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     }
   }
   public contextMenuItems: (string | ContextMenuItemModel)[] = ['AutoFitAll', 'AutoFit', 'TaskInformation', 'DeleteTask', 'Save', 'Cancel',
-  'SortAscending', 'SortDescending', 'Add', 'DeleteDependency', 'Convert',
+  'SortAscending', 'SortDescending', 'Add', 'DeleteDependency', 'Convert', 'Indent', 'Outdent',
   {text: 'Collapse the Row', target: '.e-content', id: 'collapserow'} as ContextMenuItemModel,
   {text: 'Expand the Row', target: '.e-content', id: 'expandrow'} as ContextMenuItemModel];
   public eventMarkerDay1: Date = new Date('4/17/2019');
@@ -89,7 +93,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
             contextMenuItems={this.contextMenuItems}  contextMenuOpen={this.contextMenuOpen.bind(this)} contextMenuClick={this.contextMenuClick.bind(this)}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
-            height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceNameMapping='resourceName' resourceIDMapping='resourceId' resources={editingResources}>
+            height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='50' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
@@ -132,6 +136,8 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
             <li><code>AutoFitAll</code> - Auto fit all columns.</li>
             <li><code>AutoFit</code> - Auto fit the current column.</li>
             <li><code>TaskInformation</code> - Edit the current record.</li>
+            <li><code>Indent</code> - Indent the selected record to one level</li>
+            <li><code>Outdent</code> - Outdent the selected record to one level</li>
             <li><code>DeleteTask</code> - Delete the current record.</li>
             <li><code>Save</code> - Save the edited record.</li>
             <li><code>Cancel</code> - Cancel the edited state.</li>

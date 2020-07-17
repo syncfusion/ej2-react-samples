@@ -1,0 +1,20 @@
+.property-panel-content .e-constraint-table {
+    width: 100%
+}
+
+.property-panel-content .e-constraint-label {
+    width: 40%
+}
+
+.property-panel-content .e-validate {
+    padding-top: 13px;
+    text-align: center;
+}
+
+.property-panel-content td {
+    padding-top: 10px;
+}
+
+.property-panel-header {
+    padding-bottom: 0px;
+}

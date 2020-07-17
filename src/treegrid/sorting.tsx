@@ -147,7 +147,7 @@ export class Sorting extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
             <p>
-               This sample demonstrates the TreeGrid multi sorting feature. To sort two or more columns,
+               This sample demonstrates the Tree Grid multi sorting feature. To sort two or more columns,
                 hold the CTRL key and click the column header.
             </p>
         </div>
@@ -157,13 +157,13 @@ export class Sorting extends SampleBase<{}, {}> {
                 Sorting feature enables us to order the data in a particular direction. It can be enabled by
                 setting the <code>allowSorting</code> as true.</p>
             <p className="e-grid" style={{ border:'none' }}>
-                To sort a TreeGrid column by simply click the column header. The icons <span className="e-icons e-icon-ascending">
+                To sort a Tree Grid column by simply click the column header. The icons <span className="e-icons e-icon-ascending">
                 </span>(ascending) and <span className="e-icons e-icon-descending"></span>(descending)
                 specifies the sort direction of a column.</p>
-            <p>By default, multi-sorting is enabled in TreeGrid, to sort multiple column hold <strong>CTRL</strong> key and click the column
+            <p>By default, multi-sorting is enabled in Tree Grid, to sort multiple column hold <strong>CTRL</strong> key and click the column
                 header. To clear sort for a column, hold <strong>SHIFT</strong> key and click the column header.</p>
-            <p> While using TreeGrid in a touch device, you have an option for multi sorting in single tap on the treegrid header.
-                 By tapping on the treegrid header, it will show the toggle button in small popup with sort icon. 
+            <p> While using Tree Grid in a touch device, you have an option for multi sorting in single tap on the Tree Grid header.
+                 By tapping on the Tree Grid header, it will show the toggle button in small popup with sort icon. 
                  Now tap the button to enable the multi-sorting in single tap.
             </p>
             <p>In this demo, </p>
@@ -174,7 +174,7 @@ export class Sorting extends SampleBase<{}, {}> {
             </ul>
             <p>Injecting Module:</p>
             <p>
-               TreeGrid features are segregated into individual feature-wise modules. To use sorting feature, we need to inject
+               Tree Grid features are segregated into individual feature-wise modules. To use sorting feature, we need to inject
                 <code>Sort</code> module into the <code>services</code>.
             </p>
             <p>

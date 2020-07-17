@@ -51,7 +51,7 @@ export class RowHeight extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>
                         The Grid has support to provide <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#rowheight-number'>
+                            href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#rowheight'>
                             rowHeight</a></code> property.</p>
                 </div>
             </div>

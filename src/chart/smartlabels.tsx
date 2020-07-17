@@ -39,7 +39,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <AccumulationChartComponent id='pie-chart'
-            title='RIO Olympics Gold'
+            title='Rio Olympics Gold'
             tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
             load={this.load.bind(this)}
             legendSettings={{
@@ -48,10 +48,10 @@ export class SmartLabels extends SampleBase<{}, {}> {
             loaded={this.onChartLoad.bind(this)}>
             <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
             <AccumulationSeriesCollectionDirective>
-              <AccumulationSeriesDirective name='RIO' dataSource={data1} xName='x' yName='y'
+              <AccumulationSeriesDirective name='RIO' dataSource={data1} xName='x' yName='y' startAngle={60}
                 dataLabel={{
                   visible: true, position: 'Outside',
-                  connectorStyle: { length: '10%' }, name: 'text',
+                  connectorStyle: { length: '20px', type: 'Curve' }, name: 'text',
                 }}
               >
               </AccumulationSeriesDirective>
@@ -66,7 +66,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
         <div id="description">
           <p> In this example, you can see how to arrange the labels smartly without overlapping with each other. You can use <code>enableSmartLabels</code> property to enable or disable the action. Legend with paging is enabled in this sample.</p>
           <p style={{ fontWeight: 500 }}> Injecting Module </p>
-          <p> Accumulation chart component features are segregated into individual feature-wise modules. To use AccumulationDataLabel, we need to inject <code>AccumulationDataLabel</code> into <code>services</code>.</p>
+          <p> Accumulation chart component features are segregated into individual feature-wise modules. To use DataLabel, we need to inject <code>AccumulationDataLabel</code> into <code>services</code>.</p>
         </div>
       </div>
     )

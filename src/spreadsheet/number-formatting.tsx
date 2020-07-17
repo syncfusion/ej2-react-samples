@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, RangeSettingsDirective, RangeSettingDirective, RowsDirective, RowDirective, CellsDirective, CellDirective, CellStyleModel, ColumnDirective, getFormatFromType } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, RangesDirective, RangeDirective, RowsDirective, RowDirective, CellsDirective, CellDirective, CellStyleModel, ColumnDirective, getFormatFromType } from '@syncfusion/ej2-react-spreadsheet';
 import { numberFormatData } from './data';
 import { SampleBase } from '../common/sample-base';
 import './spreadsheet.css';
@@ -9,19 +9,17 @@ export class NumberFormatting extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
     public bold: CellStyleModel = { fontWeight: 'bold' };
 
-    public onDataBound(): void {
-        if (this.spreadsheet.sheets[this.spreadsheet.activeSheetTab - 1].name === 'Restaurant Invoice' && !this.spreadsheet.isOpen) {
-            this.spreadsheet.cellFormat({ fontWeight: 'bold' }, 'A1:E2');
-            this.spreadsheet.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'A3:E3');
-            this.spreadsheet.cellFormat({ textAlign: 'center' }, 'A4:A14');
-            this.spreadsheet.cellFormat({ textAlign: 'center' }, 'C4:C14');
-            this.spreadsheet.cellFormat({ backgroundColor: '#F9FBE7' }, 'A4:E15');
-            this.spreadsheet.cellFormat({ backgroundColor: '#1E88E5', color: '#F5F5F5' }, 'A1:E2');
-            this.spreadsheet.cellFormat({ backgroundColor: '#BBDEFB' }, 'A3:E3');
-            this.spreadsheet.cellFormat({ backgroundColor: '#B3E5FC' }, 'A15:E17');
-            this.spreadsheet.numberFormat('$#,##0.00', 'D4:E14');
-            this.spreadsheet.numberFormat('$#,##0.00', 'E15:E17');
-        }
+    public onCreated(): void {
+        this.spreadsheet.cellFormat({ fontWeight: 'bold' }, 'A1:E2');
+        this.spreadsheet.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'A3:E3');
+        this.spreadsheet.cellFormat({ textAlign: 'center' }, 'A4:A14');
+        this.spreadsheet.cellFormat({ textAlign: 'center' }, 'C4:C14');
+        this.spreadsheet.cellFormat({ backgroundColor: '#F9FBE7' }, 'A4:E15');
+        this.spreadsheet.cellFormat({ backgroundColor: '#1E88E5', color: '#F5F5F5' }, 'A1:E2');
+        this.spreadsheet.cellFormat({ backgroundColor: '#BBDEFB' }, 'A3:E3');
+        this.spreadsheet.cellFormat({ backgroundColor: '#B3E5FC' }, 'A15:E17');
+        this.spreadsheet.numberFormat('$#,##0.00', 'D4:E14');
+        this.spreadsheet.numberFormat('$#,##0.00', 'E15:E17');
     }
 
     render() {
@@ -29,12 +27,12 @@ export class NumberFormatting extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section spreadsheet-control'>
                     <SpreadsheetComponent showRibbon={false} showFormulaBar={false} 
-                        ref={(ssObj) => { this.spreadsheet = ssObj }} dataBound={this.onDataBound.bind(this)} >
+                        ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)} >
                         <SheetsDirective>
                             <SheetDirective name='Restaurant Invoice' selectedRange='E17'>
-                                <RangeSettingsDirective>
-                                    <RangeSettingDirective dataSource={numberFormatData} startCell='A3'></RangeSettingDirective>
-                                </RangeSettingsDirective>
+                                <RangesDirective>
+                                    <RangeDirective dataSource={numberFormatData} startCell='A3'></RangeDirective>
+                                </RangesDirective>
                                 <RowsDirective>
                                     <RowDirective height={30}>
                                         <CellsDirective>
@@ -94,7 +92,7 @@ export class NumberFormatting extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information about number formatting can be found in this
-                        <a target="_blank" href="https://ej2.syncfusion.com/documentation/spreadsheet/getting-started"> documentation</a> section.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/formatting/#number-formatting"> documentation</a> section.
                     </p>
                 </div>
             </div>

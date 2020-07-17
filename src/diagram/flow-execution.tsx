@@ -118,7 +118,7 @@ export class FlowExecution extends SampleBase<{}, {}> {
         <div id="flowExecitionPropertySection" className="col-lg-4 property-section">
           <div className="property-panel-header"> Choose a flow</div>
           <div className="row property-panel-content" id="appearance" >
-            <div className="row property-panel-content">
+            <div className="row property-panel-content" style={{ overflow: "hidden" }}>
               <div className="row">
                 <div className="col-xs-7">
                   <RadioButtonComponent

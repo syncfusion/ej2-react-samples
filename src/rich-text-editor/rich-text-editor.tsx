@@ -1,5 +1,5 @@
 /**
- * RichTextEditor default sample
+ * Rich Text Editor default sample
  */
 import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
@@ -17,7 +17,7 @@ export class Default extends SampleBase<{}, {}> {
         <div className='control-section' id="rte">
           <div className='rte-control-section'>
             <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }} >
-              <p>The rich text editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
+              <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
   Users can format their content using standard toolbar commands.</p>
               <p><b>Key features:</b></p>
               <ul>
@@ -57,11 +57,11 @@ export class Default extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the default rendering of the rich text editor with minimum configuration.</p>
+          <p>This sample demonstrates the default rendering of the Rich Text Editor with minimum configuration.</p>
         </div>
 
         <div id="description">
-          <p>The rich text editor is WYSIWYG ("what you see is what you get") editor that is used to create and
+          <p>The Rich Text Editor is WYSIWYG ("what you see is what you get") editor that is used to create and
             edit content, and return valid HTML markup. The editor provides a standard toolbar to format content using its commands.
             The toolbar contains commands to align the text,
               insert link, insert image, insert list, undo/redo the operation, HTML view, and more.</p>

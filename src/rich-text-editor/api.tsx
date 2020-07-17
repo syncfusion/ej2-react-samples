@@ -1,5 +1,5 @@
 /**
- * RichTextEditor API sample
+ * Rich Text Editor API sample
  */
 import { ChangeEventArgs as checked } from '@syncfusion/ej2-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-inputs';
@@ -62,7 +62,7 @@ export class RTEApi extends SampleBase<{}, {}> {
                         <div className='rte-control-section'>
                             <RichTextEditorComponent id="API" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
                                 showCharCount={true} maxLength={1000}>
-                                <p>RichTextEditor is a WYSIWYG editing control which will reduce the effort for users while trying to express their formatting word content as HTML or Markdown format.</p>
+                                <p>Rich Text Editor is a WYSIWYG editing control which will reduce the effort for users while trying to express their formatting word content as HTML or Markdown format.</p>
                                 <p><b>API’s:</b></p>
                                 <ul>
                                     <li>
@@ -159,8 +159,8 @@ export class RTEApi extends SampleBase<{}, {}> {
                     </PropertyPane>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrate the usage of API in RichTextEditor, use the properties panel to change the maximum length, read
-                only mode, disable status, to get value, enable HTML encode, select all content and get selected HTML from the RichTextEditor.</p>
+                    <p>This sample demonstrate the usage of API in Rich Text Editor, use the properties panel to change the maximum length, read
+                only mode, disable status, to get value, enable HTML encode, select all content and get selected HTML from the Rich Text Editor.</p>
                 </div>
 
                 <div id="description">
@@ -175,8 +175,8 @@ export class RTEApi extends SampleBase<{}, {}> {
                         <li>Click the <code>selectAll</code> button selecting all text content in the RTE.</li>
                     </ul>
                     <p><b>Injecting Module</b></p>
-                    <p>RichTextEditor component features are segregated into individual feature-wise modules.
-            To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                    <p>Rich Text Editor component features are segregated into individual feature-wise modules.
+            To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
                 </div>
             </div>
         );

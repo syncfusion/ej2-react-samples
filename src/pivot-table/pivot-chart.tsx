@@ -48,6 +48,10 @@ export class ChartIntegration extends SampleBase<{}, {}> {
         { 'value': 'Polar', 'text': 'Polar' },
         { 'value': 'Radar', 'text': 'Radar' },
         { 'value': 'Pareto', 'text': 'Pareto' },
+        { 'value': 'Pie', 'text': 'Pie' },
+        { 'value': 'Doughnut', 'text': 'Doughnut' },
+        { 'value': 'Funnel', 'text': 'Funnel' },
+        { 'value': 'Pyramid', 'text': 'Pyramid' },
     ];
 
     ddlOnChange(args: ChangeEventArgs): void {
@@ -125,8 +129,15 @@ export class ChartIntegration extends SampleBase<{}, {}> {
                     <p><code>StackingArea100</code></p>
                     <p><code>Polar</code></p>
                     <p><code>Radar</code></p>
+                    <p><code>Pie</code></p>
+                    <p><code>Doughnut</code></p>
+                    <p><code>Funnel</code></p>
+                    <p><code>Pyramid</code></p>
                     In the sample, the field list option is enabled, through which you can see the result in the chart by altering
         the report dynamically.
+                    <p>
+                        The drill down/up operation in the accumulation charts, such as pie, doughnut, funnel and pyramid, can be performed using the context menu on the click over the appropriate series.
+                    </p>
                     <p>
                         <strong>Injecting Module:</strong>
                     </p>

@@ -44,10 +44,10 @@ export class BulletChartDefault extends SampleBase<{}, {}> {
                         interval={50}
                         title='Revenue'
                         titlePosition={ Browser.isDevice ? 'Top' : 'Left'}
-                        labelFormat='{value}$'
-                        subtitle='U.S. $ (1,000s)'
+                        labelFormat='$ {value}K'
+                        subtitle='U.S. $'
                         dataSource={[{ value: 270, target: 250 }]}
-                        margin = {{left:  (Browser.isDevice ? 10: 10)}}
+                        margin = {{left:  (Browser.isDevice ? 10: 60)}}
                         load = {this.bulletLoad.bind(this)}>
                         <Inject services={[BulletTooltip]}/>
                         <BulletRangeCollectionDirective>

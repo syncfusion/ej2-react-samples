@@ -17,7 +17,7 @@ import {
 import { FormValidator, FormValidatorModel } from '@syncfusion/ej2-inputs';
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 import { CheckBoxChangeEventArgs } from "@syncfusion/ej2-grids";
-import { EJ2Instance } from "@syncfusion/ej2-navigations";
+
 
 
 let canShowError: boolean = false;

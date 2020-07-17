@@ -60,7 +60,10 @@ export class HeatMaps extends SampleBase<{}, {}> {
                                 height: '10',
                                 width: '350',
                                 alignment: 'Center',
-                                labelDisplayMode: 'Trim'
+                                labelDisplayMode: 'Trim',
+                                textStyle: {
+                                    color: '#757575'
+                                }
                             }}
                             titleSettings={{
                                 text: "State wise India's population - 2011",

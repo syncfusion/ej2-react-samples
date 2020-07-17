@@ -1,5 +1,5 @@
 /**
- * RichTextEditor Ajax content sample
+ * Rich Text Editor Ajax content sample
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
@@ -32,9 +32,9 @@ export class AjaxContent extends SampleBase<{}, {}> {
           <p>This sample demonstrates how to load content to the editor from an external source using <code>Ajax library</code>. </p>
         </div>
         <div id="description">
-          <p>The rich text editor allows you to load content from an external source. The sample content is loaded from “Ajax_content.html” file using AJAX library, and when the event is <code>successful</code> the content is loaded into the editor using <code>value</code> property</p>
+          <p>The Rich Text Editor allows you to load content from an external source. The sample content is loaded from “Ajax_content.html” file using AJAX library, and when the event is <code>successful</code> the content is loaded into the editor using <code>value</code> property</p>
           <p><b>Injecting Module</b></p>
-          <p>RichTextEditor component features are segregated into individual feature-wise modules. To use richtexteditor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+          <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
         </div>
       </div>
     );

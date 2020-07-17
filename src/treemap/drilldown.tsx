@@ -12,6 +12,9 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { Alignment } from "@syncfusion/ej2-charts";
+import * as data from './treemap-data/drilldown-sample.json';
+let datasource: any = data as any;
+
 // custom code start
 const SAMPLE_CSS = `
     .control-fluid {
@@ -103,7 +106,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 						enableDrillDown={true}
 						format={"n"}
 						useGroupingSeparator={true}
-						dataSource={new TreeMapAjax('./src/treemap/treemap-data/drilldown-sample.json')}
+						dataSource={datasource.drilldown}
 						weightValuePath='Population'
 						tooltipSettings={{			// To config tooltip for treemap
 							visible: true,

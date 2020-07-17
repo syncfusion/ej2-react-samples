@@ -87,8 +87,8 @@ export class FrozenRows extends SampleBase<{}, {}> {
           </p>
           <p>
               In this demo sample, the first column and two rows are set to frozen by using the <a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#frozenrows-number"><code>frozenRows</code></a> and
-              <a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#frozencolumns-number"><code>frozenColumns
+              href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#frozenrows"><code>frozenRows</code></a> and
+              <a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#frozencolumns"><code>frozenColumns
               </code></a> properties.
           </p>
           <p style={{ fontWeight: 500 }}>Injecting Module:</p>

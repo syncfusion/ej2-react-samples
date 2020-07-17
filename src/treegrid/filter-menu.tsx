@@ -78,7 +78,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
          </div>
         </div>
         <div id="action-description">
-          <p> This sample demonstrates the way of filtering TreeGrid columns using menu and excel filter UI. In this sample,
+          <p> This sample demonstrates the way of filtering Tree Grid columns using menu and excel filter UI. In this sample,
             click the filtering icon from column header to show filter UI for a particular column. You can change the filter type
             from the properties panel.
           </p>
@@ -86,17 +86,17 @@ export class FilterMenu extends SampleBase<{}, {}> {
         <div id="description">
           <p>The filtering feature enables the user to view the reduced amount of records based on filter criteria. It can be enabled
             by setting <code>allowFiltering</code> property as true.</p>
-            <p>TreeGrid supports the following filter types. They are </p>
+            <p>Tree Grid supports the following filter types. They are </p>
         <ul>
             <li><code>FilterBar</code></li>
                 <li><code>Menu</code></li>
                 <li><code>Excel</code></li>
         </ul>
         you can change the filter type by setting <code>filterSettings->type</code>
-          <p>TreeGrid provides support for a set of filtering modes with hierarchyMode property.
-            The below are the type of filter mode available in TreeGrid. </p>
+          <p>Tree Grid provides support for a set of filtering modes with hierarchyMode property.
+            The below are the type of filter mode available in Tree Grid. </p>
           <ul>
-            <li><code>Parent</code> - This is the default filter hierarchy mode in TreeGrid.The filtered records are displayed with its
+            <li><code>Parent</code> - This is the default filter hierarchy mode in Tree Grid.The filtered records are displayed with its
                 parent records, if the filtered records not have any parent record then the filtered record only displayed.</li>
             <li><code>Child</code> - The filtered records are displayed with its child record, if the filtered records do not have any
                 child record then only the filtered records are displayed.</li>
@@ -107,7 +107,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
           <p> In this demo, filter menu enabled by default, you can switch to other hierarchy mode of filtering by using dropdown.</p>
           <p>Injecting Module:</p>
           <p>
-            TreeGrid features are segregated into individual feature-wise modules. To use filtering feature, we need to inject
+            Tree Grid features are segregated into individual feature-wise modules. To use filtering feature, we need to inject
             <code>Filter</code> module into the <code>services</code>.
           </p>
           <p>

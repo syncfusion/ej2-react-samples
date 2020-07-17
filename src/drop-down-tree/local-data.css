@@ -1,0 +1,9 @@
+.dropdowntree-local .nested-data, .dropdowntree-local .list-data {
+    padding: 15px;
+    margin-bottom: 25px;
+}
+.dropdowntree-local #local {
+    margin: 0 auto;
+    width: 250px !important;
+    padding-top: 15px;
+}

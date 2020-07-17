@@ -1,8 +1,9 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-import { DocumentEditorContainerComponent, Toolbar } from '@syncfusion/ej2-react-documenteditor';
+import { DocumentEditorContainerComponent, Toolbar, CommentDeleteEventArgs } from '@syncfusion/ej2-react-documenteditor';
 import { TitleBar } from './title-bar';
+import { DialogUtility } from '@syncfusion/ej2-popups';
 
 import './default.component.css';
 DocumentEditorContainerComponent.Inject(Toolbar);
@@ -14,19 +15,20 @@ export class Comments extends SampleBase<{}, {}> {
     public titleBar: TitleBar;
     public rendereComplete(): void {
         this.container.serviceUrl = this.hostUrl + 'api/documenteditor/';
-        this.container.showPropertiesPane = false;
-        this.container.documentEditor.currentUser = 'Nancy Davolio';
+        this.container.documentEditor.pageOutline = '#E0E0E0';
+        this.container.documentEditor.acceptTab = true;
         this.container.documentEditor.resize();
         this.titleBar = new TitleBar(document.getElementById('documenteditor_titlebar'), this.container.documentEditor, true);
         this.onLoadDefault();
     }
+
     render() {
         return (<div className='control-pane'>
             <div className='control-section'>
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
-                    <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block', 'height': '590px' }}
-                        enableToolbar={true} locale='en-US'  />
+                    <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
+                      height={'590px'}  enableToolbar={true} showPropertiesPane={false} locale='en-US' userColor = '#b70f34' currentUser='Nancy Davolio'/>
                 </div>
             </div>
             <div id="action-description">
@@ -60,10 +62,25 @@ export class Comments extends SampleBase<{}, {}> {
         // tslint:enable        
         this.container.documentEditor.open(JSON.stringify(defaultDocument));
         this.container.documentEditor.documentName = 'Comments';
+        this.container.documentEditor.showComments = true;
         this.titleBar.updateDocumentTitle();
         this.container.documentChange = (): void => {
         this.titleBar.updateDocumentTitle();
         this.container.documentEditor.focusIn();
         };
+        this.container.commentDelete = (args:CommentDeleteEventArgs):void =>
+        {
+            if(args.author !== this.container.documentEditor.currentUser)
+            {
+                args.cancel=true;
+                DialogUtility.alert({
+                    title: 'Information',
+                    content: "Delete restriction enabled. Only the author of the comment can delete it.",
+                    showCloseIcon: true,
+                    closeOnEscape: true,
+                });
+        }
+    }
+        
     }
 }

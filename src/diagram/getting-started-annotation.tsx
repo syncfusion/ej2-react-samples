@@ -212,6 +212,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
   private fields: object = { text: 'text', value: 'value' };
 
   rendereComplete() {
+    diagramInstance.fitToPage();
     diagramInstance.select([diagramInstance.nodes[0]]);
     bold.element.onclick = () => {
       changed("bold");
@@ -389,7 +390,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                   </div>
                 </div>
 
-                <div className="row property-panel-content" style={{ paddingTop: "10px" }}>
+                <div className="row property-panel-content" style={{ paddingTop: "10px" , overflow: "hidden"}}>
                   <div className="row row-header">Appearance</div>
                   <div className="row" style={{ paddingTop: "8px" }}>
                     <div className="col-xs-4 column-style">

@@ -1,5 +1,5 @@
 /**
- * RichTextEditor markdown preview sample
+ * Rich Text Editor markdown preview sample
  */
 import { addClass, Browser, createElement, isNullOrUndefined, KeyboardEventArgs, removeClass } from '@syncfusion/ej2-base';
 import { Image, Inject, IToolbarItems, Link, MarkdownEditor, QuickToolbar, RichTextEditor, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, ActionCompleteEventArgs } from '@syncfusion/ej2-react-richtexteditor';
@@ -13,18 +13,18 @@ export class Preview extends SampleBase<{}, {}> {
 
     private rteObj: RichTextEditorComponent;
 
-    // set the value to RichTextEditor
-    private value: string = `In RichTextEditor , you click the toolbar buttons to format the words and the changes are visible immediately. 
+    // set the value to Rich Text Editor
+    private value: string = `In Rich Text Editor , you click the toolbar buttons to format the words and the changes are visible immediately. 
 Markdown is not like that. When you format the word in Markdown format, you need to add Markdown syntax to the word to indicate which words 
 and phrases should look different from each other
     
-RichTextEditor supports markdown editing when the editorMode set as **markdown** and using both *keyboard interaction* and *toolbar action*, you can apply the formatting to text.
+Rich Text Editor supports markdown editing when the editorMode set as **markdown** and using both *keyboard interaction* and *toolbar action*, you can apply the formatting to text.
     
 We can add our own custom formation syntax for the Markdown formation, [sample link](https://ej2.syncfusion.com/home/).
     
 The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content`;
 
-    // RichTextEditor items list
+    // Rich Text Editor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', 'CreateTable', '|',
         {
             tooltipText: 'Preview', template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
@@ -40,7 +40,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     private mdSplit: HTMLElement;
     private htmlPreview: HTMLElement;
 
-    //RichTextEditor ToolbarSettings
+    //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
     };
@@ -174,12 +174,12 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates how to preview markdown changes in rich text editor.
+                    <p>This sample demonstrates how to preview markdown changes in Rich Text Editor.
         Type or edit the display text, and apply format to view the preview of markdown.
         You can preview the markdown changes immediately in the preview area.</p>
                 </div>
                 <div id="description">
-                    <p>The rich text editor allows you to preview markdown changes immediately using <code>preview</code>.
+                    <p>The Rich Text Editor allows you to preview markdown changes immediately using <code>preview</code>.
                 The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
                 </div>
             </div>

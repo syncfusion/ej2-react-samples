@@ -52,8 +52,8 @@ export class DocumentEditorAutoSave extends SampleBase<{}, {}> {
             <div className="col-lg-9 control-section">
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
-                    <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block', 'height': '590px' }}
-                        enableToolbar={true} locale='en-US' />
+                    <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block'}}
+                        enableToolbar={true} height={'590px'} locale='en-US' />
                 </div>
             </div>
             <div className="col-lg-3 property-section">

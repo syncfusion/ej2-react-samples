@@ -24,15 +24,15 @@ export class RowHover extends SampleBase<{}, {}> {
           </TreeGridComponent>
       </div>
         <div id="action-description">
-          <p>This sample demonstrates the TreeGrid component with the row hover feature. Move the mouse over the 
-              TreeGrid rows to see the hover effect.</p>
+          <p>This sample demonstrates the Tree Grid component with the row hover feature. Move the mouse over the 
+              Tree Grid rows to see the hover effect.</p>
         </div>
         <div id='description'>
           <p>Row Hover feature enables us to identify the current row by highlighting them with the mouse hovers. This can be enabled by 
               setting the <code>enableHover</code> property as true,
           </p>
           <p>In this demo, by enabling the <code>enableHover</code> property, you can move the mouse
-              over TreeGrid rows to see the hover effect.
+              over Tree Grid rows to see the hover effect.
           </p>
         </div>
       </div>

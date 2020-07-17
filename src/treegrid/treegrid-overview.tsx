@@ -138,18 +138,18 @@ export class Overview extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the overview of basic treegrid features such as sorting, filtering, conditional formatting, column template and scrolling.</p>
+          <p>This sample demonstrates the overview of basic Tree Grid features such as sorting, filtering, conditional formatting, column template and scrolling.</p>
         </div>
         <div id='description'>
           <p>
-            The TreeGrid is used to represent the hierarchical data in a tabular format, combining the visual representation of Grid and TreeView controls. 
+            The Tree Grid is used to represent the hierarchical data in a tabular format, combining the visual representation of Grid and TreeView controls. 
             It represents the data from datasource such as an array of JSON objects, OData web services, or DataManager binding data fields to columns or self-referential datasource.
           </p>
           <p>
-            In this demo, TreeGrid features such as <code>sorting, filtering, conditional formatting, column template and scrolling</code> are used.
+            In this demo, Tree Grid features such as <code>sorting, filtering, conditional formatting, column template and scrolling</code> are used.
           </p>
           <p>
-            More information on the TreeGrid instantiation can be found in this <a target='_blank' href='#'> documentation section.</a>
+            More information on the Tree Grid instantiation can be found in this <a target='_blank' href='#'> documentation section.</a>
           </p>
         </div>
       </div>
