@@ -79,20 +79,12 @@ gulp.task('serve', function () {
     shelljs.exec('node --max-old-space-size=8192 node_modules/gulp/bin/gulp serve-max', { silent: false });
 });
 
-
-
-
 /**
  * Compile styles
  */
 gulp.task('styles', function () {
-    var sass = require('gulp-sass');
-    return gulp.src(['./**/*.scss', '!./node_modules/**/*.scss'], { base: './' })
-        .pipe(sass({
-            outputStyle: 'expanded',
-            includePaths: './node_modules/@syncfusion/'
-        }))
-        .pipe(gulp.dest('.'));
+    gulp.src('./node_modules/@syncfusion/ej2/*.css')
+    .pipe(gulp.dest('./styles/'));
 });
 
 gulp.task('generate-router', function (done) {
@@ -186,7 +178,7 @@ gulp.task('build', function (done) {
 });
 
 gulp.task('react-build', function (done) {
-    runSequence('create-locale','generate-router','styles','scripts','bundle','plnkr-json','cssfile', done);
+    runSequence('create-locale','generate-router','styles','scripts','bundle','plnkr-json', done);
 });
 
 gulp.task('bundle', function () {
@@ -370,7 +362,4 @@ gulp.task('serve-max', ['react-build'], function (done) {
     };
     bs.init(options, done);
 });
-gulp.task('cssfile', function () {
-    gulp.src('./node_modules/@syncfusion/ej2/*.css')
-    .pipe(gulp.dest('./styles/'));
-});
+
