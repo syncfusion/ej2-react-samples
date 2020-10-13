@@ -15,7 +15,8 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
     dependency: 'Predecessor',
     child: 'subtasks',
     work: 'work',
-    resourceInfo: 'resources'
+    resourceInfo: 'resources',
+    type: 'taskType'
   };
   public resourceFields: any = {
     id: 'resourceId',

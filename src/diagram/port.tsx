@@ -14,7 +14,9 @@ import {
 import { SampleBase } from "../common/sample-base";
 import {
   ChangeEventArgs,
-  DropDownListComponent
+  DropDownListComponent,
+  CheckBoxSelection,
+  Inject
 } from "@syncfusion/ej2-react-dropdowns";
 import {
   MultiSelectComponent,
@@ -30,8 +32,8 @@ import {
 let diagramInstance: DiagramComponent;
 let portDrop: DropDownListComponent;
 let portVisibilityDrop: MultiSelectComponent;
-let portFillDrop: DropDownListComponent;
-let portBorderDrop: DropDownListComponent;
+let portFillDrop: ColorPickerComponent;
+let portBorderDrop: ColorPickerComponent;
 let portShapeDrop: DropDownListComponent;
 let portSizeNum: NumericTextBoxComponent;
 let portWidthNum: NumericTextBoxComponent;
@@ -540,10 +542,12 @@ export class Port extends SampleBase<{}, {}> {
                         popupHeight={"280px"}
                         popupWidth={"180px"}
                         change={portVisibilityDropOnChange}
-                        ref={portVisibilityref =>
-                          (portVisibilityDrop = portVisibilityref)
+                        ref={(portVisibilityref) =>
+                          {portVisibilityDrop = portVisibilityref}
                         }
-                      />
+                      >
+                        <Inject services={[CheckBoxSelection]} />
+                      </MultiSelectComponent>
                     </div>
                   </div>
                   <div className="col-lg-6">
@@ -580,7 +584,7 @@ export class Port extends SampleBase<{}, {}> {
                             port[j].style.fill = arg.currentValue.rgba;
                           }
                         }}
-                        ref={fillcolor => (fillColor = fillcolor)}
+                        ref={fillcolor => (portFillDrop = fillcolor)}
                       />
                     </div>
                   </div>
@@ -598,7 +602,7 @@ export class Port extends SampleBase<{}, {}> {
                             port[j].style.strokeColor = arg.currentValue.rgba;
                           }
                         }}
-                        ref={strokecolor => (strokeColor = strokecolor)}
+                        ref={strokecolor => (portBorderDrop = strokecolor)}
                       />
                     </div>
                   </div>
@@ -689,22 +693,23 @@ function selectChange(args: any): void {
       if (args.newValue[0] instanceof Node && selectedElement.length) {
         selectedElement[0].classList.remove("e-remove-selection");
         let port: PointPortModel[] = getPort();
-        portVisibilityDrop.value = [] as number[];
+       let portVisibilityCollection: number[] =[];
         if (PortVisibility.Visible & port[0].visibility) {
-          portVisibilityDrop.value.push(PortVisibility.Visible);
+          portVisibilityCollection.push(PortVisibility.Visible);
         }
         if (PortVisibility.Hidden & port[0].visibility) {
-          portVisibilityDrop.value.push(PortVisibility.Hidden);
+          portVisibilityCollection.push(PortVisibility.Hidden);
         }
         if (PortVisibility.Hover & port[0].visibility) {
-          portVisibilityDrop.value.push(PortVisibility.Hover);
+          portVisibilityCollection.push(PortVisibility.Hover);
         }
         if (PortVisibility.Connect & port[0].visibility) {
-          portVisibilityDrop.value.push(PortVisibility.Connect);
+          portVisibilityCollection.push(PortVisibility.Connect);
         }
-        if (portVisibilityDrop.value.length === 0) {
+        if (portVisibilityDrop.value !== null && portVisibilityDrop.value.length === 0) {
           portVisibilityDrop.placeholder = 'Select Visibility';
         }
+        portVisibilityDrop.value = portVisibilityCollection;
         portVisibilityDrop.dataBind();
         portFillDrop.value = port[0].style.fill;
         portFillDrop.dataBind();

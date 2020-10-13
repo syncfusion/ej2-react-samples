@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { QueryBuilderComponent, ColumnsModel, RuleModel, RuleChangeEventArgs } from '@syncfusion/ej2-react-querybuilder';
+import { QueryBuilderComponent, QueryBuilder, ColumnsModel, RuleModel, RuleChangeEventArgs } from '@syncfusion/ej2-react-querybuilder';
 import { getComponent, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { RadioButtonComponent, CheckBox } from '@syncfusion/ej2-react-buttons';
 import { DropDownList } from '@syncfusion/ej2-react-dropdowns';
@@ -10,7 +10,17 @@ import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import './template.css';
 
-export class Template extends SampleBase<{}, {}> {
+interface RuleValue {
+    textareaValue?: string;
+}
+
+export class Template extends SampleBase<{}, RuleValue> {
+    constructor() {
+        super();
+        this.state = {
+            textareaValue: ''
+        }
+    }
     elem: HTMLElement;
     dropDownObj: DropDownList;
     boxObj: CheckBox;
@@ -136,7 +146,10 @@ export class Template extends SampleBase<{}, {}> {
         }
     }
     onCreated(): void {
-        (document.getElementById('ruleContent') as HTMLInputElement).value = JSON.stringify(this.qryBldrObj.getValidRules(this.qryBldrObj.rule), null, 4);
+        let queryBuilder: QueryBuilder = getComponent(document.getElementById('querybuilder'), 'query-builder') as QueryBuilder;
+        this.setState({
+            textareaValue: JSON.stringify(queryBuilder.getValidRules(queryBuilder.rule), null, 4)
+        })
     }
 
      // Handler used to reposition the tooltip on page scroll
@@ -190,8 +203,8 @@ export class Template extends SampleBase<{}, {}> {
         return (
             <div className='control-pane querybuilder-pane'>
                 <div className='col-lg-8 control-section'>
-                    <QueryBuilderComponent dataSource={expenseData} columns={this.filter} width='100%' rule={this.importRules}
-                        ref={(scope) => { this.qryBldrObj = scope; }} created={this.onCreated.bind(this)}  ruleChange={this.updateRule.bind(this)} >
+                    <QueryBuilderComponent id = 'querybuilder' dataSource={expenseData} columns={this.filter} width='100%' rule={this.importRules}
+                        ref={(scope) => { this.qryBldrObj = scope; }} ruleChange={this.updateRule.bind(this)} created = { this.onCreated.bind(this)}>
                     </QueryBuilderComponent>
                 </div>
                 <div className='col-lg-4 property-section'>
@@ -214,7 +227,7 @@ export class Template extends SampleBase<{}, {}> {
                             </tr>
                             <tr>
                                 <td colSpan={2} >
-                                    <textarea id='ruleContent' readOnly={true} />
+                                    <textarea id='ruleContent' readOnly={true} value={this.state.textareaValue}/>
                                 </td>
                             </tr>
                         </table>

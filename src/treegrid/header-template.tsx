@@ -21,7 +21,7 @@ export class HeaderTemplate extends SampleBase<{}, {}> {
       {/* custom code end */}
         <div className='control-section'>
           <div>
-            <TreeGridComponent dataSource={headerData} treeColumnIndex={0} childMapping='subtasks' allowPaging='true'>
+            <TreeGridComponent dataSource={headerData} treeColumnIndex={0} childMapping='subtasks' height='350' allowPaging='true'>
               <ColumnsDirective>
                 <ColumnDirective field='taskName' width='220'
                  headerTemplate={() => {

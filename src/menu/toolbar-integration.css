@@ -77,9 +77,6 @@
 	color: #6c757d;
 	box-shadow: none;
 }
-.bootstrap4 .toolbar-menu-control .e-menu-wrapper ul {
-    background-color: transparent;
-}
 @media only screen and (max-width: 1300px) {
     .toolbar-menu-control {
         width: auto;

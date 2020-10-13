@@ -85,7 +85,7 @@ export class Sorting extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sortData} treeColumnIndex={0} childMapping= 'subtasks' allowPaging='true'
+            <TreeGridComponent dataSource={sortData} treeColumnIndex={0} childMapping= 'subtasks' height='350' allowPaging='true'
                allowSorting='true' sortSettings={this.sortingOptions} ref={treegrid=> this.treegridObj = treegrid}
                actionComplete={ this.sort.bind(this) }>
             <ColumnsDirective>

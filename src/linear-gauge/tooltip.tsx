@@ -46,14 +46,14 @@ export class Tooltip extends SampleBase<{}, {}> {
                             </AxisDirective>
                         </AxesDirective>
                         <AnnotationsDirective>
-                            <AnnotationDirective content='<div id="first"><h1 style="font-size:15px;color: #686868"">Inches</h1></div>'
+                            <AnnotationDirective content='<div id="first"><h1 style="font-size:15px;color: #686868">Inches</h1></div>'
                                 axisIndex={0}
                                 axisValue={5.4}
                                 x={35}
                                 y={-58}
                                 zIndex='1'>
                             </AnnotationDirective>
-                            <AnnotationDirective content='<div id="second"><h1 style="font-size:15px;color: #686868"">Centimeters</h1></div>'
+                            <AnnotationDirective content='<div id="second"><h1 style="font-size:15px;color: #686868">Centimeters</h1></div>'
                                 axisIndex={1}
                                 axisValue={16.5}
                                 x={50}

@@ -53,7 +53,7 @@ export class DeferUpdate extends SampleBase<{}, {}> {
             this.fieldlistObj.updateView(this.pivotObj);
         }
         this.pivotObj.notify('ui-update', this.pivotObj);
-        if (!Browser.isDevice) {
+        if (this.fieldlistObj && !Browser.isDevice) {
             this.fieldlistObj.notify('tree-view-update', this.fieldlistObj);
         }
     }

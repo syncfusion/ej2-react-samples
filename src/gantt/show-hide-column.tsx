@@ -36,27 +36,27 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
   }
 
   private hideButtonClick() {
-    let dropValue: string = this.dropdownObj.value.toString();
-    let columnName: string =  this.ganttObj.treeGrid.getColumnByField(dropValue).headerText;
-    this.ganttObj.hideColumn(columnName);
+    if ( this.dropdownObj.value) {
+      let dropValue: string = this.dropdownObj.value.toString();
+      let columnName: string =  this.ganttObj.treeGrid.getColumnByField(dropValue).headerText;
+      this.ganttObj.hideColumn(columnName);
       this.hideButtonObj.disabled = true;
       this.showButtonObj.disabled = false;
       let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
       hiddenColumns.value = hiddenColumns.value + columnName + '\n';
-    
-  }
-  private created() {
-    this.showButtonObj.disabled = true;
+    }
   }
   
   private showButtonClick() {
-    let dropValue: string = this.dropdownObj.value.toString();
-    let columnName: string = this.ganttObj.treeGrid.getColumnByField(dropValue).headerText;
-    this.ganttObj.showColumn(columnName);
-    this.showButtonObj.disabled = true;
-    this.hideButtonObj.disabled = false;
-    let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
-    hiddenColumns.value = hiddenColumns.value.replace(columnName + '\n', '');
+    if ( this.dropdownObj.value) {
+      let dropValue: string = this.dropdownObj.value.toString();
+      let columnName: string = this.ganttObj.treeGrid.getColumnByField(dropValue).headerText;
+      this.ganttObj.showColumn(columnName);
+      this.showButtonObj.disabled = true;
+      this.hideButtonObj.disabled = false;
+      let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
+      hiddenColumns.value = hiddenColumns.value.replace(columnName + '\n', '');
+    }
   }
 
   public taskFields: any = {
@@ -100,7 +100,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div id='columnddl'>
                          <DropDownListComponent width="120px" id="dropDown" change={this.change.bind(this)}
-                            dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="TaskID"
+                            dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }}
                             ref={dropdown=> this.dropdownObj = dropdown} />
                       </div>
                     </td>
@@ -114,7 +114,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                      </td>
                      <td style={{ width: '70%' }}>
                         <div>
-                          <ButtonComponent id='show' created={this.created.bind(this)}
+                          <ButtonComponent id='show'
                             ref={button=> this.showButtonObj = button} onClick={ this.showButtonClick.bind(this) }> Show </ButtonComponent>
                         </div>
                      </td>
