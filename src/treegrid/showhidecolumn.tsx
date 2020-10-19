@@ -22,19 +22,6 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
     { id: 'progress', name: 'Progress' }
   ];
 
-  private change(args: ChangeEventArgs): void {
-    let columnName: string = args.value.toString();
-    let column: Column = this.treegridObj.getColumnByField(columnName);
-    if (column.visible === undefined || column.visible) {
-      this.buttonObj2.disabled = true;
-      this.buttonObj.disabled = false;
-    } else {
-      this.buttonObj.disabled = true;
-      this.buttonObj2.disabled = false;
-    }
-  }
-
-
 
   private btnClick() {
     let columnName: string = this.dropdownObj.value.toString();
@@ -43,23 +30,15 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
       alert('Atleast one Column should be visible');
     } else {
       this.treegridObj.grid.hideColumns(column.headerText, 'headerText');
-      this.buttonObj.disabled = true;
-      this.buttonObj2.disabled = false;
       let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
       hiddenColumns.value = hiddenColumns.value + column.headerText + '\n';
     }
-  }
-  
-  private created() {
-    this.buttonObj2.disabled = true;
   }
   
   private showClick() {
     let columnName: string = this.dropdownObj.value.toString();
     let column: Column = this.treegridObj.getColumnByField(columnName);
     this.treegridObj.grid.showColumns(column.headerText, 'headerText');
-    this.buttonObj2.disabled = true;
-    this.buttonObj.disabled = false;
     let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
     hiddenColumns.value = hiddenColumns.value.replace(column.headerText + '\n', '');
   }
@@ -69,7 +48,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' allowPaging='true' 
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
               ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageSize: 10 }}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right'></ColumnDirective>
@@ -90,7 +69,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div id='columnddl'>
-                         <DropDownListComponent width="120px" id="ddlelement" change={this.change.bind(this)}
+                         <DropDownListComponent width="120px" id="ddlelement"
                             dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="taskID"
                             ref={dropdown=> this.dropdownObj = dropdown} />
                       </div>
@@ -105,7 +84,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                      </td>
                      <td style={{ width: '70%' }}>
                         <div>
-                          <ButtonComponent id='show' created={this.created.bind(this)}
+                          <ButtonComponent id='show' 
                             ref={button=> this.buttonObj2 = button} onClick={ this.showClick.bind(this) }> Show </ButtonComponent>
                         </div>
                      </td>

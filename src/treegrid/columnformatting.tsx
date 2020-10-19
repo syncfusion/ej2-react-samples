@@ -67,7 +67,7 @@ export class ColumnFormat extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={formatData} treeColumnIndex={1} childMapping='subtasks' allowPaging='true' 
+            <TreeGridComponent dataSource={formatData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
               ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageCount: 5 }}>
               <ColumnsDirective>
                 <ColumnDirective field='orderID' headerText='Order ID' width='110' textAlign='Right'></ColumnDirective>

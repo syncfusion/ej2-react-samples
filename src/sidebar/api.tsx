@@ -33,7 +33,6 @@ export class API extends SampleBase<{}, {}> {
                     <a className="e-btn" id="newTab" onClick={this.newTabClick.bind(this)} target="_blank">Open in new tab</a>
                 </div>
                 <div id="wrapper">
-                    <title>Essential JS 2 for React - Sidebar > API</title>
                     <div className="col-lg-12 col-sm-12 col-md-12" id="sidebar-section">
                         <span id="hamburger" className="e-icons menu" onClick={this.openClick.bind(this)} ></span>
                         <SidebarComponent id="default-sidebar" ref={Sidebar => this.sidebarInstance = Sidebar} >

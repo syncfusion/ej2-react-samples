@@ -66,7 +66,7 @@ export class VerticalChart extends SampleBase<{}, {}> {
     }
     public onChartLoad(args: ILoadedEventArgs): void {
         //let chart: Element = document.getElementById('charts-vertical');
-        this.chartInstance.loaded = null;
+        args.chart.loaded = null;
         //chart.setAttribute('title', '');
         this.clrInterval =
             +setInterval(() => {

@@ -23,7 +23,7 @@ export class ToolbarTemplate extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div>
-            <TreeGridComponent dataSource={treesampleData} treeColumnIndex={1} childMapping='subtasks' allowPaging='true' allowFiltering='true'
+            <TreeGridComponent dataSource={treesampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' allowFiltering='true'
               toolbar={this.toolbarOptions} ref={treegrid=> this.treegridObj = treegrid} toolbarClick={this.toolbarClick.bind(this)}
               filterSettings={{ type:'Menu'}} pageSettings={{ pageSize: 11 }}>
               <ColumnsDirective>

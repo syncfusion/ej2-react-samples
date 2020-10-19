@@ -1,7 +1,7 @@
 export const KanbanSampleOrder: Object = [
     { 'path': 'kanban/overview', 'component': 'Overview', 'name': 'Overview', 'order': '01', 'category': 'Kanban', 'api': '{"KanbanComponent": ["dataSource", "keyField", "columns", "cardSettings", "swimlaneSettings", "enableTooltip"] }', 'description': 'This example demonstrates the overview functionalities of Kanban component. Enabled most features such as templating, swimlane and more in the Kanban board.' },
     {
-        'path': 'kanban/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'Kanban', 'type': 'update', 'api':
+        'path': 'kanban/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'Kanban',  'api':
             '{"KanbanComponent": [ "dataSource", "keyField", "columns", "cardSettings", "dialogSettings"] }',
         'description': 'The example demonstrates the default functionalities of JS Kanban with very minimal essential settings such as data source, columns, and card details.'
     },
@@ -21,12 +21,12 @@ export const KanbanSampleOrder: Object = [
         'description': 'The example explains how to handle the CRUD (Create, Read, Update, and Delete) actions on the JS Kanban cards from the application end.'
     },
     {
-        'path': 'kanban/search-filter', 'component': 'SearchFilter', 'name': 'Search and Filter Cards', 'order': '01', 'category': 'Kanban', 'type': 'new', 'api':
+        'path': 'kanban/search-filter', 'component': 'SearchFilter', 'name': 'Search and Filter Cards', 'order': '01', 'category': 'Kanban',  'api':
             '{"KanbanComponent": [ "dataSource", "keyField", "columns", "cardSettings", "swimlaneSettings", "query"] }',
         'description': 'The example demo shows how to filter the cards and make searching when more number of cards on a JavaScript Kanban board that helps you to focus.'
     },
     {
-        'path': 'kanban/sorting', 'component': 'Sorting', 'name': 'Sorting Cards', 'order': '01', 'category': 'Kanban', 'type': 'new', 'api':
+        'path': 'kanban/sorting', 'component': 'Sorting', 'name': 'Sorting Cards', 'order': '01', 'category': 'Kanban',  'api':
             '{"KanbanComponent": [ "dataSource", "keyField", "columns", "cardSettings", "sortSettings"] }',
         'description': 'The example demonstrates how to sort the cards in the ascending or descending based on the data source order or indexing or custom field on the Kanban board.'
     },

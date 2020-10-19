@@ -11,7 +11,7 @@ export class TreeGridColumnMenu extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' allowPaging='true'
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
                 pageSettings={{ pageSize: 10 }} allowSorting='true' allowFiltering='true' showColumnMenu='true'
                 filterSettings={{ type:'Menu'}} >
             <ColumnsDirective>

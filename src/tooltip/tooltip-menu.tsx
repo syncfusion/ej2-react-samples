@@ -5,6 +5,7 @@
 import { ListViewComponent } from "@syncfusion/ej2-react-lists";
 import { ItemDirective, ItemsDirective, ToolbarComponent } from "@syncfusion/ej2-react-navigations";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import { closest } from '@syncfusion/ej2-base';
 import * as ReactDOM from 'react-dom';
 import * as React from "react";
 import { SampleBase } from "../common/sample-base";
@@ -14,6 +15,7 @@ export class TooltipMenu extends SampleBase<{}, {}> {
     public tooltip: TooltipComponent;
     public list: ListViewComponent;
     public fields: any = { text: "Name", iconCss: "icon" };
+    public animationSettings: any = { effect: "None", duration: 0, delay: 0 };
     public listData;
     public data1 = [
         { Name: "WI-FI", id: "1", icon: "wifi" },
@@ -45,16 +47,20 @@ export class TooltipMenu extends SampleBase<{}, {}> {
     }
 
     public onClick(args: any): void {
-        if (!args.target.parentNode.parentNode.classList.contains("e-toolbar-item")) {
-            if (document.getElementsByClassName("e-tooltip-wrap").length > 0) {
-                this.tooltip.close();
+        let targetEle: any;
+        if (args) {
+            targetEle = closest(args.target, '.e-toolbar-item');
+        }
+        if (!targetEle) {
+            if (document.getElementsByClassName("e-tooltip-wrap").length > 0 && this.tooltip) {
+                this.tooltip.close(this.animationSettings);
             }
         }
     }
 
     public onScroll(): void {
-        if (document.getElementsByClassName("e-tooltip-wrap").length > 0) {
-            this.tooltip.close();
+        if (document.getElementsByClassName("e-tooltip-wrap").length > 0 && this.tooltip) {
+            this.tooltip.close(this.animationSettings);
         }
     }
 
@@ -62,7 +68,9 @@ export class TooltipMenu extends SampleBase<{}, {}> {
         let data: any = [{ title: "Wireless & networks" }, { title: "Device" }, { title: "Personal" }];
         for (let i: number = 0; i < data.length; i++) {
             if (data[i].title === args.target.parentElement.getAttribute("title")) {
-                this.tooltip.close();
+                if (document.getElementsByClassName("e-tooltip-wrap").length > 0) {
+                    this.tooltip.close(this.animationSettings);
+                }
                 this.listData = this.data[i];
             }
         }
@@ -128,11 +136,11 @@ export class TooltipMenu extends SampleBase<{}, {}> {
                     <p>
                         Tooltip has been integrated with Listview component to display the Tooltip menu. With
                         the help of
-                        <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html?lang=typescript#beforerender">
+                        <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#beforerender">
                             beforeRender
                         </a>
                         event, dataSource for ListView changed and its instance assigned to
-                        <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html?lang=typescript#content">
+                        <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#content">
                             content
                         </a>
                         of Tooltip to appear like menu. On clicking the Toolbar items, the corresponding

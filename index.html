@@ -17,11 +17,20 @@
     <link rel="manifest" href="./manifest.webmanifest">
     <link href="src/common/lib/content/roboto.css" rel="stylesheet">
     <link href="src/common/lib/content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"></link>
     <link rel="shortcut icon" href="favicon.ico" />
     <style id="themelink"></style>
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" href="./src/common/lib/highlightjs/styles/default.css" />
     <link href="src/common/lib/content/codemirror.css" rel="stylesheet"></link>
+    <script>
+        var orgin = location.origin;
+        var baseref = location.href.split('#')[0].replace(orgin, '');
+        if (baseref.charAt(baseref.length - 1) !== '/') {
+            baseref += '/';
+        }
+        document.write('<base href="' + baseref + '">');
+    </script>
     <script type="text/javascript">
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
             document.write('<script src="src/common/lib/content/bluebird.min.js"><\/script>');
@@ -118,9 +127,14 @@
                 <div class='sb-header-item sb-table-cell sb-download-wrapper'>
                     <a href='https://www.syncfusion.com/downloads/react' target="_blank">                    
                         <button id='download-now' class='sb-download-btn'>
-                            <span class='sb-download-text'>Download Now</span>
+                            <span class='sb-download-text'>FREE TRIAL</span>
                         </button>
-                    </a>                        
+                    </a>
+                    <a href='https://www.npmjs.com/search?q=ej2-react' target="_blank">
+                        <button class='sb-npm-btn'>
+                            <img class="npm-svg" src="styles/images/NPM.svg" alt="npm icon"></span><span class="doc-npm-link">Install NPM</span>
+                        </button>
+                    </a>
                 </div>
             </div>
 
@@ -269,6 +283,38 @@
                     <div id='tab-component'></div>
                     <div class='description-section sb-rightpane-padding'>
                     </div>
+                    <div class="ad-wrapper">
+                        <div id='ad-image' class="ad-img">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-12">
+                                        <div id="ad-banner-head" class="ad-header">Transform your React web apps today with Syncfusion React components</div>
+                                    </div>
+                                    <div class="col-sm-12 cnt-area">
+                                        <div class="ad-cnt-area">
+                                            <div class="ad-cnt-pt">
+                                                <div class="ad-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
+                                                <div class="cnt-text">65+ high-performance and responsive UI components</div>
+                                            </div>
+                                            <div class="ad-cnt-pt">
+                                                <div class="ad-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
+                                                <div class="cnt-text">Dedicated support</div>
+                                            </div>
+                                            <div class="ad-cnt-pt">
+                                                <div class="ad-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
+                                                <div class="cnt-text">Hassle-free licensing</div>
+                                            </div>
+                                        </div>
+                                        <a style="color:#ffff;text-decoration:none;"
+                                            href="https://www.syncfusion.com/downloads/react">
+                                            <div class="free-trial">TRY IT FOR FREE</div>
+                                        </a>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
                     <div class="sb-footer">
                         <div class="sb-footer-left">
                             <div class="sb-footer-links">
@@ -332,6 +378,7 @@
             <div class='sb-api-content'>${description}</div>
         </div>
     </script>
+     <script src="./dist/0.bundle.js"></script>
     <script src="./dist/bundle.js"></script>
 
 </body>

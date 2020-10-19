@@ -361,6 +361,3 @@ function CreateConnector(
   };
   return connector;
 }
-function created() {
-
-}

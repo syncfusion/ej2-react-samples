@@ -21,7 +21,7 @@ export class Overview extends SampleBase<{}, {}> {
   ];
 
   private cardRendered(args: CardRenderedEventArgs): void {
-    let val: string = args.data.Priority as string;
+    let val: string = (args.data as { [key: string]: Object }).Priority as string;
     addClass([args.element], val);
   };
 

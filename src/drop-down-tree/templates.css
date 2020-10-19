@@ -1,6 +1,6 @@
 .dropdowntree-templates .control_wrapper {
     margin: 0 auto;
-    width: 360px !important;
+    max-width: 360px;
     padding-top: 15px;
 }
 
