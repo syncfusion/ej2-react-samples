@@ -80,9 +80,6 @@ gulp.task('serve', gulp.series(function () {
     shelljs.exec('node --max-old-space-size=8192 node_modules/gulp/bin/gulp serve-max', { silent: false });
 }));
 
-
-
-
 /**
  * Compile styles
  */
@@ -374,8 +371,10 @@ gulp.task('serve-max', gulp.series('react-build', function (done) {
     };
     bs.init(options, done);
 }));
+
 gulp.task('cssfile', gulp.series(function (done) {
     gulp.src('./node_modules/@syncfusion/ej2/*.css')
     .pipe(gulp.dest('./styles/'));
     done();
 }));
+
