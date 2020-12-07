@@ -81,7 +81,7 @@ export class Aggregation extends SampleBase<{}, {}> {
                 delete (data[ln].Date);
             }
         }
-        (this as any).dataSourceSettings.dataSource = data;
+        pivotObj.dataSourceSettings.dataSource = data;
     }
 
 

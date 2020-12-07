@@ -149,7 +149,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
                 delete (data[ln].Date);
             }
         }
-        (this as any).dataSourceSettings.dataSource = data;
+        pivotObj.dataSourceSettings.dataSource = data;
     }
 
     render() {

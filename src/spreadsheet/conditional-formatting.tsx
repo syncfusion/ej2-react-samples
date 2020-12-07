@@ -15,15 +15,12 @@ import './spreadsheet.css';
 export class ConditionalFormatting extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
     public onCreated(): void {
-        this.spreadsheet.merge('A1:H1');
-        this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A2:H2');
-        this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle', fontSize: '13pt' }, 'A1:H1');
-        this.spreadsheet.numberFormat('$#,##0.00', 'F3:F18');
+        this.spreadsheet.merge('A1:G1');
+        this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A2:G2');
+        this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle', fontSize: '13pt' }, 'A1:G1');
         this.spreadsheet.conditionalFormat({ type: 'BlueDataBar', range: 'D3:D18' });
-        this.spreadsheet.conditionalFormat({ type: 'GreenDataBar', range: 'E3:E18' });
-        this.spreadsheet.conditionalFormat({ type: 'ThreeStars', range: 'H3:H18' });
-        this.spreadsheet.conditionalFormat({ type: 'Top10Items', value:'1', format:{ style:{ color: '#ffffff', backgroundColor: '#009999', fontWeight: 'bold'}}, range: 'F3:F18' });
-        this.spreadsheet.conditionalFormat({ type: 'Bottom10Items', value:'1', format:{ style:{ color: '#ffffff', backgroundColor: '#c68d53', fontWeight: 'bold'}}, range: 'F3:F18' });
+        this.spreadsheet.conditionalFormat({ type: 'OrangeDataBar', range: 'E3:E18' });
+        this.spreadsheet.conditionalFormat({ type: 'ThreeStars', range: 'G3:G18' });
     }
 
     render() {
@@ -47,7 +44,7 @@ export class ConditionalFormatting extends SampleBase<{}, {}> {
                             </RangesDirective>
                             <ConditionalFormatsDirective>
                                   <ConditionalFormatDirective type='GYRColorScale' range='C3:C18'></ConditionalFormatDirective>
-                                  <ConditionalFormatDirective type='LessThan' cFColor='RedFT' value='8/30/2019' range='G3:G18'>
+                                  <ConditionalFormatDirective type='LessThan' cFColor='RedFT' value='8/30/2019' range='F3:F18'>
                                   </ConditionalFormatDirective>
                             </ConditionalFormatsDirective>
                             <ColumnsDirective>
@@ -56,7 +53,6 @@ export class ConditionalFormatting extends SampleBase<{}, {}> {
                                 <ColumnDirective width={72}></ColumnDirective>
                                 <ColumnDirective width={113}></ColumnDirective>
                                 <ColumnDirective width={113}></ColumnDirective>
-                                <ColumnDirective width={77}></ColumnDirective>
                                 <ColumnDirective width={97}></ColumnDirective>
                                 <ColumnDirective width={73}></ColumnDirective>
                             </ColumnsDirective>
@@ -80,10 +76,6 @@ export class ConditionalFormatting extends SampleBase<{}, {}> {
             price and selling price column, highlight cell rules in last updated column and rating icon sets applied in
             rating column by using the <code>conditionalFormat</code> method and <code>conditionalFormats</code> property
             in sheets model.
-        </p>
-        <p>
-           In the Profit column, we have applied conditional formatting custom format. Using the support you can set cell
-           styles like color, background color, font style, font weight and underline etc.
         </p>
         <p>
             More information about the Spreadsheet component can be found in this

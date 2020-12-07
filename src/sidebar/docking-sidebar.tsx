@@ -20,6 +20,7 @@ export class Dock extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-lg-12 col-sm-12 col-md-12" id="sidebar-section">
                     <div id="wrapper">
+                        <title>Essential JS 2 for React - Sidebar > Dock</title>
                         <SidebarComponent id="dockSidebar" ref={Sidebar => this.dockBar = Sidebar} enableDock={this.enableDock} dockSize={this.dockSize} width={this.width} >
                             <div className="dock">
                                 <ul>

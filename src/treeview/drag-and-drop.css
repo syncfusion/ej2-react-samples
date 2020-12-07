@@ -29,9 +29,6 @@
         float: right;
         font-family: 'cross-circle';
     }
-    .e-rtl .custom-delete {
-        float: left;
-    }
     .fabric.e-bigger #list.e-listview .e-list-item,
     .highcontrast.e-bigger #list.e-listview .e-list-item {
         line-height: 43px;

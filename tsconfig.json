@@ -2,7 +2,7 @@
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "module": "commonjs",
         "target": "es5",
         "jsx": "react",
@@ -10,8 +10,5 @@
     },
     "include": [
         "./src/**/*"
-    ],
-    "exclude": [
-        "node_modules"
     ]
 }

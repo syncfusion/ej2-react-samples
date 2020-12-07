@@ -8,7 +8,7 @@ var glob = require('glob');
 var fs = require('fs');
 var configRegex = /\[(.*)\]/;
 var shelljs = require('shelljs');
-var runSequence = require('run-sequence');
+var runSequence = require('gulp4-run-sequence');
 
 function extend(copied, first, second, deep) {
     var result = copied || {};
@@ -49,7 +49,7 @@ function isObject(obj) {
     return value === undefined || value === null;
 }
 
-gulp.task('scripts', function (done) {
+gulp.task('scripts', gulp.series(function (done) {
     var ts = require('gulp-typescript');
     var tsProject = ts.createProject('tsconfig.json', { typescript: require('typescript') });
 
@@ -59,8 +59,8 @@ gulp.task('scripts', function (done) {
         .on('end', function () {
             done();
         });
-});
-gulp.task('create-locale', function () {
+}));
+gulp.task('create-locale', gulp.series(function (done) {
     var localeJson = glob.sync('./src/**/locale.json', { silent: true });
     if(localeJson.length) {
        // baseUtil;
@@ -73,21 +73,27 @@ gulp.task('create-locale', function () {
 } else {
     fs.writeFileSync('./src/common/locale-string.ts', 'export let Locale: Object={};');
 }
-})
+done();
+}));
 
-gulp.task('serve', function () {
+gulp.task('serve', gulp.series(function () {
     shelljs.exec('node --max-old-space-size=8192 node_modules/gulp/bin/gulp serve-max', { silent: false });
-});
+}));
 
 /**
  * Compile styles
  */
-gulp.task('styles', function () {
-    gulp.src('./node_modules/@syncfusion/ej2/*.css')
-    .pipe(gulp.dest('./styles/'));
-});
+gulp.task('styles', gulp.series(function () {
+    var sass = require('gulp-sass');
+    return gulp.src(['./**/*.scss', '!./node_modules/**/*.scss'], { base: './' })
+        .pipe(sass({
+            outputStyle: 'expanded',
+            includePaths: './node_modules/@syncfusion/'
+        }))
+        .pipe(gulp.dest('.'));
+}));
 
-gulp.task('generate-router', function (done) {
+gulp.task('generate-router', gulp.series(function (done) {
     var imports = '';
     var compRoutes = '';
     var allconfig = '';
@@ -170,24 +176,26 @@ gulp.task('generate-router', function (done) {
     fs.writeFileSync('./src/common/all-routes.tsx',allroutes);
     fs.writeFileSync('./src/common/search-index.json', JSON.stringify(instance.toJSON()));
     done();
-});
-gulp.task('build', function (done) {
-    if( shelljs.exec('node --max-old-space-size=4096 ./node_modules/gulp/bin/gulp.js react-build').code!==0){
+}));
+gulp.task('build', gulp.series(function (done) {
+    // var sValue = shelljs.exec('node --max-old-space-size=4096 ./node_modules/gulp/bin/gulp.js react-build', { silent: true });
+    if( shelljs.exec('node --max-old-space-size=4096 ./node_modules/gulp/bin/gulp.js react-build').code !==0){
       process.exit(1);   
     }
-});
+    done();
+}));
 
-gulp.task('react-build', function (done) {
-    runSequence('create-locale','generate-router','styles','scripts','bundle','plnkr-json', done);
-});
+gulp.task('react-build', gulp.series(function (done) {
+    runSequence('create-locale','generate-router','styles','scripts','bundle','plnkr-json','cssfile', done);
+}));
 
-gulp.task('bundle', function () {
+gulp.task('bundle', gulp.series(function () {
     return gulp.src("./src/common/index.js")
     .pipe(gulpWebpack(webpackConfig,webpack))
     .pipe(gulp.dest('dist/'));
-});
+}));
 
-gulp.task('plnkr-json', function() {
+gulp.task('plnkr-json', gulp.series(function(done) {
     var files = glob.sync('./src/**/*.tsx', { silent: true, ignore: [
         './src/common/**/*.tsx', './src/**/*-routes.tsx', './src/**/config.tsx'] });
     var sys = fs.readFileSync('./src/common/plnk-template/systemjs.config.js','utf8');
@@ -323,7 +331,8 @@ gulp.task('plnkr-json', function() {
         }
 
     }
-});
+    done();
+}));
 function getStringWithOutDescription(code, descRegex) {
         var lines = code.split('\n');
         var desStartLine = null;
@@ -351,7 +360,7 @@ function getStringWithOutDescription(code, descRegex) {
         }
         return lines.join('\n');
     }
-gulp.task('serve-max', ['react-build'], function (done) {
+gulp.task('serve-max', gulp.series('react-build', function (done) {
     var browserSync = require('browser-sync');
     var bs = browserSync.create('Essential JS 2 react');
     var options = {
@@ -361,5 +370,11 @@ gulp.task('serve-max', ['react-build'], function (done) {
         ui: false
     };
     bs.init(options, done);
-});
+}));
+
+gulp.task('cssfile', gulp.series(function (done) {
+    gulp.src('./node_modules/@syncfusion/ej2/*.css')
+    .pipe(gulp.dest('./styles/'));
+    done();
+}));
 

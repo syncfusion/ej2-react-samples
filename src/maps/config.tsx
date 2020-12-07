@@ -141,14 +141,14 @@ export const MapSampleOrder: Object = [
         ], 'description': 'This demo for Essential JS2 Maps control demonstrates drill down with all the continents in the initial view and countries on drill.', 'order': '04', 'category': 'User Interaction'
     },
     {
-        'path': 'maps/print', 'component': 'PrintMaps', 'name': 'Print', 'sourceFiles': [
+        'path': 'maps/print', 'component': 'PrintMaps', 'type': 'update', 'name': 'Print', 'sourceFiles': [
             { 'displayName': 'print.tsx', 'path': './src/maps/print.tsx' },
             { 'displayName': 'usa.json', 'path': './src/maps/map-data/usa.json ' },
             { 'displayName': 'print-datasource.json', 'path': './src/maps/map-data/print-datasource.json ' }
         ], 'description': 'This demo for Essential JS2 Maps control illustrates the printing functionality in the maps control.', 'order': '05', 'category': 'Print and Export'
     },
     {
-        'path': 'maps/export', 'component': 'ExportMaps', 'name': 'Export', 'sourceFiles': [
+        'path': 'maps/export', 'component': 'ExportMaps', 'type': 'update', 'name': 'Export', 'sourceFiles': [
             { 'displayName': 'export.tsx', 'path': './src/maps/export.tsx' },
             { 'displayName': 'world-map.tsx', 'path': './src/maps/map-data/world-map.json' }
         ], 'description': 'This demo for Essential JS2 Maps control illustrates the exporting functionality in the maps control.', 'order': '05', 'category': 'Print and Export'

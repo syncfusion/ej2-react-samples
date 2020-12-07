@@ -96,6 +96,7 @@ export class Overview extends SampleBase<{}, {}> {
       (args.cell.querySelector('.bar')as HTMLElement).style.width = args.data[args.column.field] * 10 + '%';
       args.cell.querySelector('.barlabel').textContent = args.data[args.column.field] + '%';
     }
+     
     if (args.column.field === 'name') {
       let parentItem: ITreeData = getObject('parentItem', args.data);
       let imageElement = (args.cell as Element).querySelector('.e-image') as HTMLImageElement;

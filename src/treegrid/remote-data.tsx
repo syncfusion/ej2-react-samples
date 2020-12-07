@@ -12,7 +12,7 @@ export class RemoteData extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={this.data} ref={treegrid => this.treegridInstance = treegrid} hasChildMapping='isParent' height='350'
+          <TreeGridComponent dataSource={this.data} ref={treegrid => this.treegridInstance = treegrid} hasChildMapping='isParent'
               pageSettings={{ pageCount: 3 }} treeColumnIndex={1} allowPaging='true' idMapping= 'TaskID' parentIdMapping='parentItem'>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='Task ID' width='120' textAlign='Right'></ColumnDirective>

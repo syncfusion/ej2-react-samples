@@ -55,7 +55,7 @@ export class Reorders extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} allowPaging='true' childMapping='subtasks' height='350' allowReordering='true' 
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} allowPaging='true' childMapping='subtasks' allowReordering='true' 
               pageSettings={{ pageCount: 4, pageSize: 11 }} ref={treegrid=> this.treegridObj = treegrid}
               actionComplete= {this.actionComplete.bind(this)} >
             <ColumnsDirective>

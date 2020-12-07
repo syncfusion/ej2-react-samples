@@ -83,7 +83,7 @@ export class DraggableTooltip extends SampleBase<{}, {}> {
                 On further dragging, the <code>refresh</code> method of the tooltip needs to be called to reposition it
                 continuously and on drag stop, the tooltip will be hidden by using it’s <code>close</code> method.</p>
                     <p>More information on dynamic positioning of the tooltip can be found in the
-        <a href="https://ej2.syncfusion.com/react/documentation/tooltip/position/#dynamic-positioning" target="_blank"> documentation section</a>.
+        <a href="http://ej2.syncfusion.com/react/documentation/tooltip/position.html#dynamic-positioning" target="_blank"> documentation section</a>.
                     </p>
                 </div>
             </div>

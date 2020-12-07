@@ -301,8 +301,8 @@ export class PrintExport extends SampleBase<{}, {}> {
               </ItemDirective>
               <ItemDirective type={"Button"} text="Print"
                 prefixIcon="e-diagram-icons e-diagram-print" />
-             {/* <ItemDirective type={"Input"} template={checkboxTemplate} */}
-              /> 
+              <ItemDirective type={"Input"} template={checkboxTemplate}
+              />
             </ItemsDirective>
           </ToolbarComponent>
           {/* initialization of the Diagram. */}

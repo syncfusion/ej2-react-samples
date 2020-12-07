@@ -97,7 +97,7 @@ export class Events extends SampleBase<{}, {}> {
          {/* custom code end */}
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' allowPaging='true' 
               ref={treegrid=> this.treegridObj = treegrid} editSettings={{ allowEditing: true }} allowReordering='true'
               allowSorting='true' pageSettings={{ pageCount: 5 }} load={this.load.bind(this)} created={this.created.bind(this)}
               actionBegin={this.actionBegin.bind(this)} actionComplete={this.actionComplete.bind(this)}

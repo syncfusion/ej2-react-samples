@@ -80,7 +80,7 @@ export class AjaxContentTooltip extends SampleBase<tooltipComponentProps, toolti
                     <p>The AJAX request should be made within the <code>beforeRender</code> event of the tooltip, and on every success, the corresponding
                 retrieved data will be set to the <code>content</code> property of the tooltip.</p>
                     <p>More information on loading dynamic tooltip content can be found in the
-        <a href="https://ej2.syncfusion.com/react/documentation/tooltip/content/#dynamic-content-via-ajax" target="_blank"> documentation section</a>.</p>
+        <a href="http://ej2.syncfusion.com/react/documentation/tooltip/content.html#dynamic-content-via-ajax" target="_blank"> documentation section</a>.</p>
                 </div>
             </div>
         )

@@ -46,7 +46,7 @@ export class Clipboard extends SampleBase<{}, {}> {
         return (<div className='control-pane'>
         <div className='control-section'>
           <div className='col-md-9'>
-           <TreeGridComponent dataSource={sampleData} ref={treegrid => this.treegridInstance = treegrid} height='350' treeColumnIndex={1} childMapping='subtasks' allowPaging='true' allowSelection='true' 
+           <TreeGridComponent dataSource={sampleData} ref={treegrid => this.treegridInstance = treegrid} treeColumnIndex={1} childMapping='subtasks' allowPaging='true' allowSelection='true' 
            selectionSettings={{ type: 'Multiple' }} pageSettings={{ pageSize: 10 }} toolbar={this.toolbarOptions}  toolbarClick={this.toolbarClick.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='90' textAlign='Right'></ColumnDirective>

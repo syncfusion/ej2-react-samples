@@ -63,7 +63,7 @@ export class Filtering extends SampleBase<{}, {}> {
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                             <tr>
-                                <div className='checkbox-control' style={{marginLeft: '0px'}}>
+                                <div className='checkbox-control' style={{marginLeft: '0px', paddingLeft: '0px'}}>
                                     <CheckBoxComponent label='Enable Filterbar operator' labelPosition='Before' ref={(scope) => { this.checkboxObj = scope; }} change={this.onChanged.bind(this)}></CheckBoxComponent>
                                 </div>
                             </tr>

@@ -10,7 +10,7 @@ export class TreeGridColumnChooser extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' allowPaging='true'
                 pageSettings={{ pageSize: 10 }} showColumnChooser='true' toolbar={this.toolbarOptions}>
               <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='100' textAlign='Right'></ColumnDirective>

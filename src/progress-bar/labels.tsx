@@ -28,6 +28,9 @@ const SAMPLE_CSS = `
     border-radius: 4px;
     text-transform: capitalize;
 }
+#success_Lineartrack, #info_Lineartrack, #warning_Lineartrack, #danger_Lineartrack {
+    opacity: 1 !important;
+}
     `;
 /**
  * Area sample
@@ -43,7 +46,11 @@ export class ProgressBarLabels extends SampleBase<{}, {}> {
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
         if (args.progressBar.theme === 'Material') {
-            args.progressBar.trackColor = '#EAEAEA';
+            args.progressBar.trackColor = '#eee';
+        }
+        if (selectedTheme === 'highcontrast') {
+            args.progressBar.labelStyle.color = '#000000';
+            args.progressBar.trackColor = '#969696';
         }
     }
     private replayClick(): void {

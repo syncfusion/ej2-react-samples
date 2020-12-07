@@ -194,28 +194,28 @@ export class ApiTooltip extends SampleBase<{}, {}> {
                     <ul>
                         <li>
                             Any change made to a textbox in the property pane will be reflected in the tooltip
-                            <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#content">
+                            <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html#content">
                                 content
                             </a>
                         </li>
                         <li>
-                            <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#issticky">
+                            <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html?lang=typescript#issticky">
                                 StickyMode
                             </a>
                             can be enabled by checking the sticky mode option in the property pane.
                         </li>
                         <li>
-                            <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#height">
+                            <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html?lang=typescript#height">
                                 Height
                             </a>
                             and
-                            <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#width">
+                            <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html?lang=typescript#width">
                                 width
                             </a>
                             can be changed from the property pane.
                         </li>
                         <li>
-                            <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#openson">
+                            <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html?lang=typescript#openson">
                                 OpenMode
                             </a>
                             can be changed from the property pane.

@@ -68,7 +68,6 @@ export class Crud extends SampleBase<{}, {}> {
             sourceDropdown.dataSource= getDataSource();
             sourceDropdown.dataBind();
           }}
-
         />
         </div>
         <div className='showDropdown' style={{ paddingTop: '14px' }}>
@@ -83,7 +82,6 @@ export class Crud extends SampleBase<{}, {}> {
             targetDropdown.dataSource= getDataSource();
             targetDropdown.dataBind();
           }}
-
         />
         </div>
       </div>
@@ -228,7 +226,6 @@ export class Crud extends SampleBase<{}, {}> {
             created={(args: Event) => {
               enableToolbarItems(false);
             }}
-
           />
         </div>
         <div style= {{width: '100%', height: '80%', borderWidth: '0 1px 1px 1px', borderStyle: 'solid', borderColor:'#D7D7D7'}}>

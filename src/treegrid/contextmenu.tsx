@@ -22,7 +22,7 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' allowPaging='true'
             editSettings={this.editSettings} pageSettings={this.pageSettings} contextMenuItems={this.contextMenuItems} allowSorting='true'
             allowExcelExport='true' allowPdfExport='true'>
             <ColumnsDirective>

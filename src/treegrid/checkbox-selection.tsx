@@ -12,7 +12,7 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={2} childMapping='subtasks' height='350' allowPaging='true'
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={2} childMapping='subtasks' allowPaging='true'
             selectionSettings={this.selectionsettings}>
             <ColumnsDirective>
               <ColumnDirective type='checkbox' width='50'></ColumnDirective>

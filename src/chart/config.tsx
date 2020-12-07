@@ -56,10 +56,6 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the stacking area series.'
     },
     {
-        'path': 'chart/stacked-step-area', 'component': 'StackedStepArea', 'name': 'Stacked Step Area', 'order': '02', 'category': 'Area Charts', 'type': 'new',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the stacking step area series.'
-    },
-    {
         'path': 'chart/stacked-area100', 'component': 'StackedArea100', 'name': '100% Stacked Area', 'order': '02', 'category': 'Area Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the 100 percent stacking area series.'
     },
@@ -236,7 +232,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render semi-pie and doughnut charts.'
     },
     {
-        'path': 'chart/smartlabels', 'component': 'SmartLabels', 'name': 'Smart Labels', 'order': '09', 'category': 'Accumulation Charts',
+        'path': 'chart/smartlabels', 'component': 'SmartLabels', 'name': 'Smart Labels', 'order': '09', 'category': 'Accumulation Charts', 'type': 'update',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to arrange the labels smartly without overlapping with each other.'
     },
     {

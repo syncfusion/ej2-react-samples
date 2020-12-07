@@ -17,6 +17,10 @@
     display: flex;
     padding: 0 10px;
     outline-color: transparent;
+   }
+.e-template-menu.e-menu-wrapper .e-ul .e-menu-item{
+    height: 36px;
+    line-height: 36px;
 }
 
 /* custom code end */

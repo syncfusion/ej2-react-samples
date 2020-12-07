@@ -53,7 +53,7 @@ public hide(): void {
                 <li><code>DataManager->adaptor</code> - Defines the adaptor option. By default, ODataAdaptor is used for remote binding.</li>
             </ul>
             <p>In this demo, the TreeView is bound with the dataSource from the Northwind remote service by using the DataManager instance.</p>
-            <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/react/documentation/treeview/data-binding/#remote-data" target="_blank">Data Binding</a> section from the documentation.</p>
+            <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/react/documentation/treeview/data-binding/" target="_blank">Data Binding</a> section from the documentation.</p>
         </div>
       </div>
     )

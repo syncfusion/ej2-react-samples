@@ -10,7 +10,7 @@ export class Stacked extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={stackedData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+          <TreeGridComponent dataSource={stackedData} treeColumnIndex={1} childMapping= 'subtasks' allowPaging='true'
             pageSettings={{ pageCount: 5 }}>
             <ColumnsDirective>
             <ColumnDirective columns={[{ field: 'orderID', headerText: 'Order ID', width: 90, textAlign: 'Right' },

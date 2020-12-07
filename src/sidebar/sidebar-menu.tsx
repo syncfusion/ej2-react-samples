@@ -104,6 +104,7 @@ export class SidebarWithMenu extends SampleBase<{}, {}> {
                     <a className="e-btn" id="newTab" target="_blank" onClick={this.newTabClick.bind(this)}>Open in new Tab</a>
                 </div>
                 <div id="wrapper">
+                    <title>Essential JS 2 for React - Sidebar > Sidebar with ListView </title>
                     <div className="col-lg-12 col-sm-12 col-md-12">
                         <div className="header-section dock-menu" id="header">
                             <ul className="header-list">

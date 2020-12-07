@@ -33,7 +33,3 @@
 #codeEditor {
     border: none;
 }
-
-div.e-pane-vertical > div:first-child {
-    height: 100%;
-}

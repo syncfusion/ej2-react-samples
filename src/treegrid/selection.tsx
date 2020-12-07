@@ -59,7 +59,7 @@ export class Selection extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' allowPaging='true'
               allowSelection='true' selectionSettings={{ type: 'Multiple' }} pageSettings={{ pageSize: 10 }}
               ref={treegrid=> this.treegridObj = treegrid}>
             <ColumnsDirective>
