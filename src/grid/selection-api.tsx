@@ -2,6 +2,8 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings } from '@syncfusion/ej2-react-grids';
+import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
+import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -9,7 +11,13 @@ export class SelectionAPI extends SampleBase<{}, {}> {
 
     public selectionsettings: Object = { type: 'Multiple' };
     private ToolbarInstance: ToolbarComponent;
+    public checkboxObj: CheckBoxComponent;
     private gridInstance: GridComponent;
+    public selectingEvents(e: any): void{
+        if((this as any).selectionSettings.allowColumnSelection){
+            e.cancel = true;
+        }
+    }
     public click(e: MouseEvent): void {
         let element: HTMLElement = e.target as HTMLElement;
         let options: {
@@ -35,6 +43,22 @@ export class SelectionAPI extends SampleBase<{}, {}> {
         this.gridInstance.selectionSettings = isType ? { type: val } as SelectionSettings : { mode: val } as SelectionSettings;
         this.gridInstance.refresh();
     }
+    public setColumnSelection(args: ChangeEventArgs): void {
+        this.gridInstance.clearSelection();
+        if (args.checked) {
+            this.ToolbarInstance.enableItems(1, false);
+            this.gridInstance.selectionSettings.allowColumnSelection = true;
+        }
+        else {
+            this.ToolbarInstance.enableItems(1, true);
+            this.gridInstance.selectionSettings.allowColumnSelection = false;
+        }
+    }
+    public checkboxTemp(): any {
+        return (<CheckBoxComponent label='Enable Column Selection' ref={(columnSelection) => { this.checkboxObj = columnSelection; }}
+         change={this.setColumnSelection.bind(this)} />);
+    }
+    public template: any = this.checkboxTemp;
 
     render() {
         return (
@@ -45,10 +69,12 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                         <ItemsDirective>
                             <ItemDirective text="Multiple" cssClass='e-gtype' />
                             <ItemDirective text="Row" cssClass='e-gmode' />
+                            <ItemDirective template={this.template.bind(this)} />
                         </ItemsDirective>
                     </ToolbarComponent>
                     <br />
-                    <GridComponent dataSource={data} ref={grid => this.gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={this.selectionsettings}>
+                    <GridComponent dataSource={data} ref={grid => this.gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={this.selectionsettings}
+                    rowSelecting={this.selectingEvents} cellSelecting={this.selectingEvents}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
@@ -64,7 +90,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                 </div>
                 <div id='description'>
                     <p>
-                        Selection provides an interactive support to highlight the row or cell that you select. Selection can be done through simple
+                        Selection provides an interactive support to highlight the row or cell or column that you select. Selection can be done through simple
             Mouse down or Keyboard interaction. To enable selection, set <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowselection-boolean">
                             allowSelection
@@ -76,8 +102,8 @@ export class SelectionAPI extends SampleBase<{}, {}> {
         </a></code> property.
             They are,</p>
                     <ul>
-                        <li><code>Single</code> - Enabled by default. Allows the user to select single row/cell at a time.</li>
-                        <li><code>Multiple</code> - Allows the user to select more than one row/cell at a time.</li>
+                        <li><code>Single</code> - Enabled by default. Allows the user to select single row/cell/column at a time.</li>
+                        <li><code>Multiple</code> - Allows the user to select more than one row/cell/column at a time.</li>
                     </ul>
                     <p>Also, supports three modes of selection which can be set using <code><a target="_blank" className="code"
                         href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#mode">
@@ -92,8 +118,12 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                 simultaneously
             </li>
                     </ul>
-                    <p>To perform the multi-selection, hold <strong>CTRL</strong> key and click the desired rows/cells. To select range of rows/cells,
-            hold <strong>SHIFT</strong> key and click the rows/cells.</p>
+                    <p>To perform the column selection, enable the <code><a target="_blank" className="code"
+                    href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#allowcolumnselection">
+                    selectionSettings->allowColumnSelection
+                    </a></code> property.</p>
+                    <p>To perform the multi-selection, hold <strong>CTRL</strong> key and click the desired rows/cells/columns. To select range of rows/cells/columns,
+            hold <strong>SHIFT</strong> key and click the rows/cells/columns.</p>
                     <p>While using the Grid in a touch device environment, there is an option for multi-selection through a single tap on the
             row and it will show a popup with the multi-selection symbol. Tap the icon to enable multi-selection in a single
             tap.

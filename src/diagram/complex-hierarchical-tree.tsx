@@ -4,8 +4,8 @@ import {
   Node,
   Connector,
   ComplexHierarchicalTree,
-  DataBinding,
-  DiagramComponent,
+  DataBinding,LineDistribution,
+  DiagramComponent,ConnectionPointOrigin,
   Diagram,
   NodeModel,
   Inject,
@@ -18,6 +18,11 @@ import {
   NumericTextBoxComponent,
   ChangeEventArgs
 } from "@syncfusion/ej2-react-inputs";
+import {
+  CheckBox,
+  ChangeEventArgs as CheckBoxChangeEventArgs
+} from "@syncfusion/ej2-react-buttons";
+import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 import { multiParentData, DataInfo } from './diagram-data';
 
 const SAMPLE_CSS = `.image-pattern-style {
@@ -72,6 +77,17 @@ let horizontalSpacingObj: NumericTextBoxComponent;
 let verticalSpacingObj: NumericTextBoxComponent;
 
 export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
+  private lock(): void {
+    let lock1: HTMLInputElement = document.getElementById(
+      "lock"
+    ) as HTMLInputElement;
+    if (lock1.checked) {
+      diagramInstance.layout.connectionPointOrigin = ConnectionPointOrigin.DifferentPoint;
+   }
+   else {
+    diagramInstance.layout.connectionPointOrigin = ConnectionPointOrigin.SamePoint;
+   }
+  }
   rendereComplete() {
     diagramInstance.fitToPage();
     //Click Event for Appearance of the layout.
@@ -117,6 +133,7 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
               layout={
                 {
                   type: "ComplexHierarchicalTree",
+                  connectionPointOrigin:ConnectionPointOrigin.DifferentPoint,
                   horizontalSpacing: 40,
                   verticalSpacing: 40,
                   orientation: "TopToBottom",
@@ -166,7 +183,7 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
               }
               snapSettings={{ constraints: 0 }}
             >
-              <Inject services={[DataBinding, ComplexHierarchicalTree]} />
+              <Inject services={[DataBinding, ComplexHierarchicalTree, LineDistribution]} />
             </DiagramComponent>
           </div>
         </div>
@@ -314,6 +331,16 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
                 />
               </div>
             </div>
+            <div className="row property-panel-content" style={{ paddingTop: "10px" }}>
+            <div className="row" style={{ paddingTop: "8px" }}>
+              <CheckBoxComponent
+                checked={true}
+                label="Prevent Connector Overlapping"
+                id="lock"
+                change={this.lock.bind(this)}
+              />
+            </div>
+          </div>
           </div>
         </div>
         <div id="action-description">

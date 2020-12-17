@@ -39,13 +39,11 @@ export class RangeBand extends SampleBase<{}, {}> {
     private sparklineInstance: SparklineComponent;
     private minElement: SliderComponent;
     private maxElement: SliderComponent;
-    // custom code start
     public load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SparklineTheme;
     }
-    // custom code end
     private lineData: Object[] = [
         [0, 6, 4, 1, 3, 2, 5],
         [5, 4, 6, 3, 1, 2, 0],

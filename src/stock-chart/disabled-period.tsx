@@ -88,12 +88,12 @@ export class PeriodSelector extends SampleBase<{}, {}> {
             </div>
         )
     }
-        // custom code start
+        
     public load(args: IStockChartEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
          replace(/-dark/i, "Dark") as  ChartTheme;
     };
-      // custom code end
+      
 }

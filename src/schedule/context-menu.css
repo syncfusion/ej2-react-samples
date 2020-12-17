@@ -47,6 +47,26 @@
     content: '\e823';
 }
 
+.bootstrap4 .schedule-context-menu .e-menu-item .today::before {
+  content: '\e7be';
+}
+
+.bootstrap4 .schedule-context-menu .e-menu-item .edit::before {
+  content: '\e78f';
+}
+
+.bootstrap4 .schedule-context-menu .e-menu-item .delete::before {
+  content: '\e773';
+}
+
+.bootstrap4 .schedule-context-menu .e-menu-item .new::before {
+  content: '\e759';
+}
+
+.bootstrap4 .schedule-context-menu .e-menu-item .recurrence::before {
+  content: '\e7c8';
+}
+
 .highcontrast .schedule-context-menu .e-menu-item .recurrence::before,
 .fabric .schedule-context-menu .e-menu-item .recurrence::before {
     content: '\e309';

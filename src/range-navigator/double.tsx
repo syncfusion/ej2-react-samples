@@ -155,14 +155,13 @@ export class NumericAxis extends SampleBase<{}, {}> {
                     '</div>');
                 }
     };
-        // custom code start
     public rangeLoad(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark") as ChartTheme;
     };
-        // custom code end
+        
     public renderTooltip(args:IRangeTooltipRenderEventArgs):void{
         let text: number = parseFloat(args.text[0]);
         text = Math.round(text);

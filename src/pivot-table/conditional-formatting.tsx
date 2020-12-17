@@ -22,6 +22,9 @@ const SAMPLE_CSS = `
 #reset-format {
     width: 80%;
     margin-left: 20px;
+}
+#PivotViewcontainerwrapper {
+    height: auto !important;
 }`;
 /* tslint:disable */
 let Pivot_Data: IDataSet[] = (pivotData as any).data;

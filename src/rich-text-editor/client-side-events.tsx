@@ -129,9 +129,11 @@ export class RTEEvents extends SampleBase<{}, {}> {
         this.appendElement('Rich Text Editor <b>resizeStop</b> event called<hr>');
     }
     private appendElement(html: string): void {
-        let span: HTMLElement = document.createElement('span');
-        span.innerHTML = html;
-        this.EventLogEle.insertBefore(span, this.EventLogEle.firstChild);
+        if (this.EventLogEle) {
+            let span: HTMLElement = document.createElement('span');
+            span.innerHTML = html;
+            this.EventLogEle.insertBefore(span, this.EventLogEle.firstChild);
+        }
     }
     public handleFullScreen(e: any): void {
         let sbCntEle: HTMLElement = document.querySelector('.sb-content.e-view');

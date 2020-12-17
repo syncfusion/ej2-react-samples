@@ -36,16 +36,16 @@ export class Events extends SampleBase<{}, {}> {
         this.appendElement('Kanban <b>Data Bound</b> event called<hr>');
     }
     private OnCardRendered(args: CardRenderedEventArgs): void {
-        this.appendElement('Kanban - ' + args.data.Id + ' - <b>Card Rendered</b> event called<hr>');
+        this.appendElement('Kanban - ' + (args.data as { [key: string]: Object }).Id + ' - <b>Card Rendered</b> event called<hr>');
     }
     private OnQueryCellInfo(): void {
         this.appendElement('Kanban <b>Query Cell Info</b> event called<hr>');
     }
     private OnCardClick(args: CardClickEventArgs): void {
-        this.appendElement('Kanban - ' + args.data.Id + ' - <b>Card Click</b> event called<hr>');
+        this.appendElement('Kanban - ' + (args.data as { [key: string]: Object }).Id + ' - <b>Card Click</b> event called<hr>');
     }
     private OnCardDoubleClick(args: CardClickEventArgs): void {
-        this.appendElement('Kanban - ' + args.data.Id + ' - <b>Card Double Click</b> event called<hr>');
+        this.appendElement('Kanban - ' + (args.data as { [key: string]: Object }).Id + ' - <b>Card Double Click</b> event called<hr>');
     }
     private OnDragStart(): void {
         this.appendElement('Kanban <b>Drag Start</b> event called<hr>');

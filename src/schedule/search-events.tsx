@@ -44,29 +44,36 @@ export class SearchEvents extends SampleBase<{}, {}> {
     let endDate: Date;
     let formElements: HTMLInputElement[] = [].slice.call(document.querySelectorAll('.event-search .search-field'));
     formElements.forEach((node: HTMLInputElement) => {
-      if (node.value && node.value !== '') {
-        let fieldOperator: string = 'contains';
-        let predicateCondition: string = 'or';
-        let fieldValue: string | Date = node.value;
-        let matchCase: boolean = true;
-        if (node.classList.contains('e-datepicker')) {
-          fieldOperator = node.classList.contains('e-start-time') ? 'greaterthanorequal' : 'lessthanorequal';
+      let fieldOperator: string;
+      let predicateCondition: string;
+      let fieldValue: string | Date;
+      let fieldInstance: DatePicker;
+      if (node.value && node.value !== '' && !node.classList.contains('e-datepicker')) {
+        fieldOperator = 'contains';
+        predicateCondition = 'or';
+        fieldValue = node.value;
+        searchObj.push({
+          field: node.getAttribute('data-name'), operator: fieldOperator, value: fieldValue, predicate: predicateCondition,
+          matchcase: true
+        });
+      }
+      if (node.classList.contains('e-datepicker') && (((node as any) as EJ2Instance).ej2_instances[0] as DatePicker).value) {
+        fieldInstance = ((node as any) as EJ2Instance).ej2_instances[0] as DatePicker;
+        fieldValue = fieldInstance.value;
+        if (node.classList.contains('e-start-time')) {
+          fieldOperator = 'greaterthanorequal';
           predicateCondition = 'and';
-          let fieldInstance: DatePicker = ((node as any) as EJ2Instance).ej2_instances[0] as DatePicker;
-          fieldValue = fieldInstance.value;
-          if (node.classList.contains('e-start-time')) {
-            startDate = new Date(+fieldValue);
-          }
-          if (node.classList.contains('e-end-time')) {
-            let date: Date = new Date(+fieldInstance.value);
-            fieldValue = new Date(date.setDate(date.getDate() + 1));
-            endDate = fieldValue;
-          }
-          matchCase = false;
+          startDate = new Date(+fieldValue);
+        } else {
+          fieldOperator = 'lessthanorequal';
+          predicateCondition = 'and';
+          let date: Date = new Date(+fieldInstance.value);
+          fieldValue = new Date(date.setDate(date.getDate() + 1));
+          endDate = fieldValue;
         }
         searchObj.push({
           field: node.getAttribute('data-name'), operator: fieldOperator, value: fieldValue, predicate: predicateCondition,
-          matchcase: matchCase
+          matchcase: false
         });
       }
     });

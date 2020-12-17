@@ -32,6 +32,7 @@ export class Performance extends SampleBase<{}, {}> {
         this.chart.series[0].dataSource = series1;
         this.chart.series[0].xName = 'x';
         this.chart.series[0].yName = 'y';
+        this.chart.legendSettings.visible = false;
         this.chart.refresh();
     }
     public onChartLoad(args: ILoadedEventArgs): void {

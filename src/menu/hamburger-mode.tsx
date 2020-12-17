@@ -60,7 +60,7 @@ export class HamburgerMenu extends SampleBase<{}, HamburgerMenuSample> {
                                 <div className="speaker">
                                     <div className="camera"></div>
                                 </div>
-                                <div className="layout-menu">
+                                <div className="layout">
                                     <div id="container">
                                     <MenuComponent id="menu" items={this.data.hamburgerData} showItemOnClick={this.state.showItemOnClick}
                                     hamburgerMode={this.state.hamburgerMode} ref={(scope) => { this.menuObj = scope; }} created={this.menuCreated.bind(this)}></MenuComponent>

@@ -3,7 +3,8 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, ToolbarSettingsModel, IFrameSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
 import './iframe.css';
@@ -11,6 +12,8 @@ import './iframe.css';
 export class IFrame extends SampleBase<{}, {}> {
 
   private rteObj: RichTextEditorComponent;
+
+  private hostUrl: string = 'https://ej2-aspcore-service.azurewebsites.net/';
 
   private iframeSetting: IFrameSettingsModel = {
     enable: true
@@ -22,9 +25,20 @@ export class IFrame extends SampleBase<{}, {}> {
     'LowerCase', 'UpperCase', 'SuperScript', 'SubScript', '|',
     'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
     'Outdent', 'Indent', '|',
-    'CreateTable', 'CreateLink', 'Image', '|', 'ClearFormat', 'Print',
+    'CreateTable', 'CreateLink', 'Image', 'FileManager', '|', 'ClearFormat', 'Print',
     'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
   ];
+
+  private fileManagerSettings: FileManagerSettingsModel = {
+    enable: true,
+    path: '/Pictures/Food',
+    ajaxSettings: {
+      url: this.hostUrl + 'api/FileManager/FileOperations',
+      getImageUrl: this.hostUrl + 'api/FileManager/GetImage',
+      uploadUrl: this.hostUrl + 'api/FileManager/Upload',
+      downloadUrl: this.hostUrl + 'api/FileManager/Download'
+    }
+  }
 
   //Rich Text Editor ToolbarSettings
   private toolbarSettings: ToolbarSettingsModel = {
@@ -72,7 +86,7 @@ export class IFrame extends SampleBase<{}, {}> {
           <div className="content-wrapper">
             <RichTextEditorComponent id="iframeRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
               height={'500px'} actionBegin={this.handleFullScreen.bind(this)} actionComplete={this.actionCompleteHandler.bind(this)} toolbarSettings={this.toolbarSettings}
-              iframeSettings={this.iframeSetting}>
+              iframeSettings={this.iframeSetting} fileManagerSettings={this.fileManagerSettings}>
               <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
   Users can format their content using standard toolbar commands.</p>
 
@@ -110,7 +124,7 @@ export class IFrame extends SampleBase<{}, {}> {
                   <p>Creates bulleted and numbered lists.</p>
                 </li>
               </ul>
-              <Inject services={[Toolbar, Image, Link, HtmlEditor, Table, QuickToolbar]} />
+              <Inject services={[Toolbar, Image, Link, HtmlEditor, Table, QuickToolbar, FileManager]} />
             </RichTextEditorComponent>
           </div>
         </div>

@@ -1123,6 +1123,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "144",
         "Purchase Price": "$169.50",
         "Selling Price": "$172.00",
+        "Profit": "=E3-D3",
         "Last Updated": "5/25/19",
         "Rating": "4.5"
     },
@@ -1132,6 +1133,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "116",
         "Purchase Price": "$21.80",
         "Selling Price": "$23.00",
+        "Profit": "=E4-D4",
         "Last Updated": "7/28/19",
         "Rating": "4.0"
     },
@@ -1141,6 +1143,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "438",
         "Purchase Price": "$26.80",
         "Selling Price": "$29.00",
+        "Profit": "=E5-D5",
         "Last Updated": "3/30/20",
         "Rating": "4.25"
     },
@@ -1150,6 +1153,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "486",
         "Purchase Price": "$23.50",
         "Selling Price": "$25.00",
+        "Profit": "=E6-D6",
         "Last Updated": "8/20/19",
         "Rating": "3.5"
     },
@@ -1159,6 +1163,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "176",
         "Purchase Price": "$56.50",
         "Selling Price": "$59.00",
+        "Profit": "=E7-D7",
         "Last Updated": "2/2/20",
         "Rating": "4.5"
     },
@@ -1168,6 +1173,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "0",
         "Purchase Price": "$22.50",
         "Selling Price": "$25.00",
+        "Profit": "=E8-D8",
         "Last Updated": "11/11/19",
         "Rating": "5.0"
     },
@@ -1177,6 +1183,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "116",
         "Purchase Price": "$175.00",
         "Selling Price": "$177.00",
+        "Profit": "=E9-D9",
         "Last Updated": "4/13/19",
         "Rating": "4.75"
     },
@@ -1186,6 +1193,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "58",
         "Purchase Price": "$32.00",
         "Selling Price": "$35.00",
+        "Profit": "=E10-D10",
         "Last Updated": "2/14/20",
         "Rating": "4.4"
     },
@@ -1195,6 +1203,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "232",
         "Purchase Price": "$18.90",
         "Selling Price": "$19.00",
+        "Profit": "=E11-D11",
         "Last Updated": "6/10/19",
         "Rating": "3.9"
     },
@@ -1204,6 +1213,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "405",
         "Purchase Price": "$33.90",
         "Selling Price": "$35.00",
+        "Profit": "=E12-D12",
         "Last Updated": "5/28/19",
         "Rating": "3.75"
     },
@@ -1213,6 +1223,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "47",
         "Purchase Price": "$153.50",
         "Selling Price": "$155.00",
+        "Profit": "=E13-D13",
         "Last Updated": "12/18/19",
         "Rating": "3.9"
     },
@@ -1222,6 +1233,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "232",
         "Purchase Price": "$201.25",
         "Selling Price": "$204.00",
+        "Profit": "=E14-D14",
         "Last Updated": "3/13/20",
         "Rating": "4.35"
     },
@@ -1231,6 +1243,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "210",
         "Purchase Price": "$182.25",
         "Selling Price": "$185.00",
+        "Profit": "=E15-D15",
         "Last Updated": "8/26/19",
         "Rating": "4.0"
     },
@@ -1240,6 +1253,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "225",
         "Purchase Price": "$34.80",
         "Selling Price": "$38.00",
+        "Profit": "=E16-D16",
         "Last Updated": "1/12/20",
         "Rating": "4.2"
     },
@@ -1249,6 +1263,7 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "373",
         "Purchase Price": "$104.800",
         "Selling Price": "$108.00",
+        "Profit": "=E17-D17",
         "Last Updated": "4/12/19",
         "Rating": "3.25"
     },
@@ -1258,7 +1273,60 @@ export const conditionalFormatting: Object[] =[
         "Quantity": "216",
         "Purchase Price": "$19.00",
         "Selling Price": "$21.00",
+        "Profit": "=E18-D18",
         "Last Updated": "11/22/19",
         "Rating": "3.85"
+    }
+]
+
+export const GDPData: Object[] = [
+    {
+        "Country": "USA",
+        "Year 2017": "18.00",
+        "Year 2018": "20.40",
+        "Year 2019": "21.42",
+        "Year 2020": "19.48"
+    },
+    {
+        "Country": "China",
+        "Year 2017": "11.00",
+        "Year 2018": "14.00",
+        "Year 2019": "14.32",
+        "Year 2020": "12.23"
+    },
+    {
+        "Country": "Japan",
+        "Year 2017": "4.4",
+        "Year 2018": "5.10",
+        "Year 2019": "5.08",
+        "Year 2020": "4.87"
+    },
+    {
+        "Country": "Germany",
+        "Year 2017": "3.3",
+        "Year 2018": "4.20",
+        "Year 2019": "3.84",
+        "Year 2020": "3.69"
+    },
+    {
+        "Country": "India",
+        "Year 2017": "2.00",
+        "Year 2018": "2.85",
+        "Year 2019": "2.87",
+        "Year 2020": "2.65"
+    },
+    {
+        "Country": "UK",
+        "Year 2017": "2.90",
+        "Year 2018": "2.94",
+        "Year 2019": "2.82",
+        "Year 2020": "2.63"
+    },
+    {
+        "Country": "France",
+        "Year 2017": "2.40",
+        "Year 2018": "2.93",
+        "Year 2019": "2.71",
+        "Year 2020": "2.58"
     }
 ];

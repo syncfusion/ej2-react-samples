@@ -30,8 +30,9 @@ let dataSourceSettings: IDataOptions = {
     filters: []
 };
 
-let pivotObj: PivotViewComponent;
 export class CellTemplate extends SampleBase<{}, {}> {
+
+    private pivotObj: PivotViewComponent;
 
     private cellTemplate(props): JSX.Element {
         return (<span className="tempwrap e-pivot-trend-neutral pv-icons"></span>);
@@ -40,19 +41,19 @@ export class CellTemplate extends SampleBase<{}, {}> {
     /* jshint ignore:start */
     trend(): void {
         let cTable: HTMLElement[] = [].slice.call(document.getElementsByClassName("e-table"));
-        let colLen: number = pivotObj.pivotValues[3].length;
+        let colLen: number = this.pivotObj.pivotValues[3].length;
         let cLen: number = cTable[3].children[0].children.length;
         let rLen: number = cTable[3].children[1].children.length;
         let rowIndx: number;
 
         for (let k = 0; k < rLen; k++) {
-            if (pivotObj.pivotValues[k] && pivotObj.pivotValues[k][0] !== undefined) {
-                rowIndx = ((pivotObj.pivotValues[k][0]) as IAxisSet).rowIndex;
+            if (this.pivotObj.pivotValues[k] && this.pivotObj.pivotValues[k][0] !== undefined) {
+                rowIndx = ((this.pivotObj.pivotValues[k][0]) as IAxisSet).rowIndex;
                 break;
             }
         }
         var rowHeaders = [].slice.call(cTable[2].children[1].querySelectorAll('td'));
-        var rows = pivotObj.dataSourceSettings.rows;
+        var rows = this.pivotObj.dataSourceSettings.rows;
         if (rowHeaders.length > 1) {
             for (var i = 0, Cnt = rows; i < Cnt.length; i++) {
                 var fields = {};
@@ -84,11 +85,11 @@ export class CellTemplate extends SampleBase<{}, {}> {
                                 if (prevNode) {
                                     prevRi = prevNode.getAttribute("index");
                                 }
-                                if (ri && ri < [].slice.call(pivotObj.pivotValues).length) {
-                                    if ((pivotObj.pivotValues[prevRi][ci]).value > (pivotObj.pivotValues[ri][ci]).value && node.querySelector('.tempwrap')) {
+                                if (ri && ri < [].slice.call(this.pivotObj.pivotValues).length) {
+                                    if ((this.pivotObj.pivotValues[prevRi][ci]).value > (this.pivotObj.pivotValues[ri][ci]).value && node.querySelector('.tempwrap')) {
                                         let trendElement: HTMLElement = node.querySelector('.tempwrap');
                                         trendElement.className = trendElement.className.replace('e-pivot-trend-neutral', 'e-pivot-trend-loss');
-                                    } else if ((pivotObj.pivotValues[prevRi][ci]).value < (pivotObj.pivotValues[ri][ci]).value && node.querySelector('.tempwrap')) {
+                                    } else if ((this.pivotObj.pivotValues[prevRi][ci]).value < (this.pivotObj.pivotValues[ri][ci]).value && node.querySelector('.tempwrap')) {
                                         let trendElement: HTMLElement = node.querySelector('.tempwrap');
                                         trendElement.className = trendElement.className.replace('e-pivot-trend-neutral', 'e-pivot-trend-profit');
                                     }
@@ -113,14 +114,14 @@ export class CellTemplate extends SampleBase<{}, {}> {
                             if (prevNode) {
                                 prevRi = prevNode.getAttribute("index");
                             }
-                            if (ri < [].slice.call(pivotObj.pivotValues).length) {
+                            if (ri < [].slice.call(this.pivotObj.pivotValues).length) {
                                 let cRowFieldName: string = (cTable[2].children[1].children[row].childNodes[0] as HTMLElement).getAttribute('fieldname');
                                 let prevRowFieldName: string = (cTable[2].children[1].children[row - 1].childNodes[0] as HTMLElement).getAttribute('fieldname');
-                                if ((pivotObj.pivotValues[prevRi][ci]).value > (pivotObj.pivotValues[ri][ci]).value && node.querySelector('.tempwrap') &&
+                                if ((this.pivotObj.pivotValues[prevRi][ci]).value > (this.pivotObj.pivotValues[ri][ci]).value && node.querySelector('.tempwrap') &&
                                     cRowFieldName === prevRowFieldName) {
                                     let trendElement: HTMLElement = node.querySelector('.tempwrap');
                                     trendElement.className = trendElement.className.replace('e-pivot-trend-neutral', 'e-pivot-trend-loss');
-                                } else if ((pivotObj.pivotValues[prevRi][ci]).value < (pivotObj.pivotValues[ri][ci]).value && node.querySelector('.tempwrap') &&
+                                } else if ((this.pivotObj.pivotValues[prevRi][ci]).value < (this.pivotObj.pivotValues[ri][ci]).value && node.querySelector('.tempwrap') &&
                                     cRowFieldName === prevRowFieldName) {
                                     let trendElement: HTMLElement = node.querySelector('.tempwrap');
                                     trendElement.className = trendElement.className.replace('e-pivot-trend-neutral', 'e-pivot-trend-profit');
@@ -149,7 +150,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
                 delete (data[ln].Date);
             }
         }
-        pivotObj.dataSourceSettings.dataSource = data;
+        (this as any).dataSourceSettings.dataSource = data;
     }
 
     render() {
@@ -157,7 +158,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section' style={{ overflow: 'auto' }}>
                     <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }}
-                        load={this.onLoad} dataBound={this.trend} ref={(pivotview) => { pivotObj = pivotview }} cellTemplate={this.cellTemplate.bind(this)}>
+                        load={this.onLoad} dataBound={this.trend.bind(this)} ref={(pivotview) => { this.pivotObj = pivotview }} cellTemplate={this.cellTemplate.bind(this)}>
                     </PivotViewComponent>
                 </div>
                 <div id="action-description">

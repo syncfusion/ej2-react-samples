@@ -49,13 +49,11 @@ export class Print extends SampleBase<{}, {}> {
         let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
         this.smithchartInstance.export((this.mode.value as SmithchartExportType), fileName);
     }
-    // custom code start
     public load(args: ISmithchartLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SmithchartTheme;
     }
-    // custom code end
     render() {
         return (
             <div className='control-pane'>

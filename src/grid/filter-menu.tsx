@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Filter, Inject, FilterType } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Sort, Filter, Inject, FilterType } from '@syncfusion/ej2-react-grids';
 import { orderDataSource } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -28,7 +28,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
                     <div style={{ padding: '14px' }}>
                         <DropDownListComponent id="ddlelement" dataSource={this.filterType} fields={this.fields} change={this.onChange.bind(this)} index={0} popupHeight="150px" width="200px" />
                     </div>
-                    <GridComponent dataSource={orderDataSource} allowPaging={true} ref={grid => this.gridInstance = grid} pageSettings={{ pageSize: 10, pageCount: 5 }} allowFiltering={true} filterSettings={this.filterSettings}>
+                    <GridComponent dataSource={orderDataSource} allowSorting={true} allowPaging={true} ref={grid => this.gridInstance = grid} pageSettings={{ pageSize: 10, pageCount: 5 }} allowFiltering={true} filterSettings={this.filterSettings}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
@@ -36,14 +36,14 @@ export class FilterMenu extends SampleBase<{}, {}> {
                             <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Filter, Page]} />
+                        <Inject services={[Filter, Page, Sort]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">
                     <p>
                         This sample demonstrates the way of filtering Grid columns using menu, checkbox and excel filter UI. In this sample,
-                        click the filtering icon from column header to show filter UI for a particular column. You can change
-                        the filter type from the dropdown.
+                        click the filtering icon from column header to show filter UI for a particular column. You can change the filter type from the properties dropdown and while 
+                        Excel filter type is selected, you can sort the column using the sorting option available in the excel filter dialog
                     </p>
                 </div>
 

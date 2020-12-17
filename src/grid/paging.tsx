@@ -1,8 +1,18 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { L10n } from '@syncfusion/ej2-base';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
+
+L10n.load({
+    'en-US': {
+        'pager': {
+            'currentPageInfo': '',
+            'totalItemsInfo': '{1} to {2} of {0}',
+        }
+    }
+});
 
 export class Paging extends SampleBase<{}, {}> {
 
@@ -10,7 +20,7 @@ export class Paging extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={data} allowPaging={true} height={365} pageSettings={{ pageCount: 4, pageSizes: true }}>
+                    <GridComponent dataSource={data}  locale='en-US' allowPaging={true} height={365} pageSettings={{ pageCount: 4, pageSizes: true }}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
@@ -48,6 +58,7 @@ export class Paging extends SampleBase<{}, {}> {
                             pageSettings->pageCount
         </a></code> set to 4.
         </p>
+        <p>Changed default pager details information using the <code>totalItemsInfo</code> locale property.</p>
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
                     <p>
                         Grid component features are segregated into individual feature-wise modules. To use paging feature, we need to inject <code>Page</code> module into the <code>services</code>.</p>

@@ -27,39 +27,42 @@ export class AxisCrossing extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
     private dropElement: DropDownListComponent;
     private crossValue: HTMLInputElement;
+    private checkboxElement: HTMLInputElement;
     private numericValue: NumericTextBoxComponent;
+    private isChecked: boolean = true;
     private droplist: { [key: string]: Object }[] = [
         { value: 'X' },
         { value: 'Y' },
     ];
     private change(): void {
-        let target: HTMLInputElement = document.getElementById('axisElements') as HTMLInputElement;
+        
         if (this.dropElement.value === 'X') {
-            target.checked = this.chartInstance.primaryXAxis.placeNextToAxisLine;
+            this.crossValue.checked = this.chartInstance.primaryXAxis.placeNextToAxisLine;
             this.numericValue.value = +this.chartInstance.primaryXAxis.crossesAt;
         } else {
-            target.checked = this.chartInstance.primaryYAxis.placeNextToAxisLine;
+            this.crossValue.checked = this.chartInstance.primaryYAxis.placeNextToAxisLine;
             this.numericValue.value = +this.chartInstance.primaryYAxis.crossesAt;
         }
         this.chartInstance.dataBind();
     };
-    private axisElements(): void {
-        let target: HTMLInputElement = document.getElementById('axisElements') as HTMLInputElement;
-        if (this.dropElement.value === 'X') {
-            this.chartInstance.primaryXAxis.placeNextToAxisLine = target.checked;
-        } else {
-            this.chartInstance.primaryYAxis.placeNextToAxisLine = target.checked;
-        }
-        this.chartInstance.dataBind();
-    };
+    
     private crosshingValue(): void {
-        if (this.dropElement.value === 'X') {
+        if (this.dropElement.index === 0) {
             this.chartInstance.primaryXAxis.crossesAt = this.numericValue.value;
         } else {
             this.chartInstance.primaryYAxis.crossesAt = this.numericValue.value;
         }
         this.chartInstance.dataBind();
     };
+
+    private handleCheckboxChange = (e) => {
+        if (this.dropElement.index === 0) {
+            this.chartInstance.primaryXAxis.placeNextToAxisLine = this.checkboxElement.checked;
+        } else {
+            this.chartInstance.primaryYAxis.placeNextToAxisLine = this.checkboxElement.checked;
+        }
+        this.chartInstance.dataBind();
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -117,7 +120,7 @@ export class AxisCrossing extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="X" />
+                                            <DropDownListComponent index={0} width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="X" />
                                         </div>
                                     </td>
                                 </tr>
@@ -138,7 +141,7 @@ export class AxisCrossing extends SampleBase<{}, {}> {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <input type="checkbox" id="axisElements" onChange={this.axisElements.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.crossValue = d} checked />
+                                            <input type="checkbox" id="axisElements" onChange={(e) => this.handleCheckboxChange(e)} style={{ marginLeft: '-5px' }} defaultChecked={true} ref={d => this.checkboxElement = d} />
                                         </div>
                                     </td>
                                 </tr>

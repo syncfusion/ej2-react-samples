@@ -128,11 +128,11 @@ export class TooltipMenu extends SampleBase<{}, {}> {
                     <p>
                         Tooltip has been integrated with Listview component to display the Tooltip menu. With
                         the help of
-                        <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html?lang=typescript#beforerender">
+                        <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#beforerender">
                             beforeRender
                         </a>
                         event, dataSource for ListView changed and its instance assigned to
-                        <a href="https://ej2.syncfusion.com/documentation/tooltip/api-tooltip.html?lang=typescript#content">
+                        <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#content">
                             content
                         </a>
                         of Tooltip to appear like menu. On clicking the Toolbar items, the corresponding

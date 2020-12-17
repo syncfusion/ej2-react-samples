@@ -5,6 +5,7 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar,
 import { sampleData } from './data';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { SampleBase } from '../common/sample-base';
+import { DialogUtility } from '@syncfusion/ej2-popups';
 
 export class Export extends SampleBase<{}, {}> {
 
@@ -12,14 +13,22 @@ export class Export extends SampleBase<{}, {}> {
   private treegridInstance: TreeGridComponent;
 
   public toolbarClick(args: ClickEventArgs): void {
-    switch (args.item.text) {
-      case 'PDF Export':
+    switch (args.item.id) {
+      case this.treegridInstance.grid.element.id + '_pdfexport':
+      if (this.treegridInstance.enableRtl === true && this.treegridInstance.locale === 'ar') {
+        let innercontent: any = 'You need custom fonts to export Arabic characters, refer this'
+             + '<a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/pdf-export/#add-custom-font-for-pdf-exporting">'
+             + 'documentation section</a>';
+            DialogUtility.alert({content: innercontent});
+      }
+      else {
         this.treegridInstance.pdfExport();
+      }
         break;
-      case 'Excel Export':
+      case this.treegridInstance.grid.element.id + '_excelexport':
         this.treegridInstance.excelExport();
         break;
-      case 'CSV Export':
+      case this.treegridInstance.grid.element.id + '_csvexport':
         this.treegridInstance.csvExport();
         break;
     }

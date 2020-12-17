@@ -118,7 +118,9 @@ export class Wizard extends SampleBase<{}, {}> {
             this.tab.enableTab(0, false);
             this.filterTrains(e);
             document.getElementById("err1").innerText = "";
-            document.getElementById("err2").innerText = "";
+            if (document.getElementById("err2")) {
+              document.getElementById("err2").innerText = "";
+            }
           }
         } else {
           document.getElementById("err1").innerText = "* Please fill all the details before proceeding";
@@ -222,11 +224,11 @@ export class Wizard extends SampleBase<{}, {}> {
           calcFare = calcFare + this.cities[i].fare;
       }
       let displayAmt: any = document.getElementById("amount");
-      if (this.ticketType.value === 'Economy Class') {
+      if (this.ticketType.value === 'Economy Class' && displayAmt) {
         displayAmt.innerText = "Total payable amount: $" + passCount * (300 + calcFare)
-      } else if (this.ticketType.value === 'Business Class') {
+      } else if (this.ticketType.value === 'Business Class' && displayAmt) {
         displayAmt.innerText = "Total payable amount: $" + passCount * (500 + calcFare)
-      } else if (this.ticketType.value === 'Common Class') {
+      } else if (this.ticketType.value === 'Common Class' && displayAmt) {
         displayAmt.innerText = "Total payable amount: $" + passCount * (150 + calcFare)
       }
     }

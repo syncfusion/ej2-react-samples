@@ -15,7 +15,7 @@ import { getReadOnlyEventsData } from './helper';
 export class ReadonlyEvents extends SampleBase<{}, {}> {
   private data: Object[] = getReadOnlyEventsData();
   private onPopupOpen(args: PopupOpenEventArgs): void {
-    if ((!args.target.classList.contains('e-appointment') && (args.type === 'QuickInfo')) || (args.type === 'Editor')) {
+    if ((args.target && !args.target.classList.contains('e-appointment') && (args.type === 'QuickInfo')) || (args.type === 'Editor')) {
       args.cancel = this.onEventCheck(args);
     }
   }

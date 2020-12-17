@@ -493,7 +493,12 @@ L10n.load({
             "Update Fields": "تحديث الحقول",
             "Update cross reference fields": "تحديث حقول الإسناد الترافقي",
             "Track Changes": "تتبع التغييرات التي تم إجراؤها في المستند",
-            "TrackChanges": "تعقب التغيرات"
+            "TrackChanges": "تعقب التغيرات",
+            "Insert Footnote": "أدخل حاشية سفلي",
+            "Insert Endnote": "أدخل تعليق ختامي",
+            "Footnote Tooltip": "أدخل حاشية سفلية (Alt + Ctrl + F).",
+            "Endnote Tooltip": "أدخل تعليقًا ختاميًا (Alt + Ctrl + F)."
+
         },
         'colorpicker': {
             'Apply': 'تطبيق',

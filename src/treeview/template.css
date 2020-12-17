@@ -24,4 +24,7 @@
     .material .treeCount.e-badge {
         vertical-align: middle;
     }
+    .template-tree.e-treeview.e-interaction.e-fullrow-wrap .e-text-content {
+        pointer-events: none;
+    }
     

@@ -18,9 +18,6 @@ export class FileUpload extends SampleBase<{},{hideDialog: boolean}> {
     private animationSettings;
     constructor(props: {}) {
         super(props);
-        this.state = {
-            hideDialog : false
-        };
         this.animationSettings = { effect: 'None' };
     }
 
@@ -41,12 +38,15 @@ export class FileUpload extends SampleBase<{},{hideDialog: boolean}> {
             args.cancel = true;
             if (file.size <= 0 ) { file.size = 10000; }
             this.fileUploadObj.files = [{name: file.name, size: file.size, type: file.type }];
-            this.setState({ hideDialog: false});
+            this.dialogObj.hide();
         }
     }
 
     btnClick(): void {
-        this.setState({ hideDialog: true });
+        this.dialogObj.show();
+        this.dialogOpen();
+        this.filemanagerObj.path = '/';
+        this.filemanagerObj.selectedItems = [];
         this.filemanagerObj.refresh();
     }
     private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
@@ -61,7 +61,7 @@ export class FileUpload extends SampleBase<{},{hideDialog: boolean}> {
                 </div>
                 <div id='target' className="control-section">
                     <DialogComponent width='850px' id='dialog' target={'#target'} ref={(scope) => {this.dialogObj = scope}} header="Select a file" showCloseIcon={true} 
-                        visible={this.state.hideDialog} open={this.dialogOpen.bind(this)} close={this.dialogClose.bind(this)} animationSettings={this.animationSettings} >
+                        visible={false} open={this.dialogOpen.bind(this)} close={this.dialogClose.bind(this)} animationSettings={this.animationSettings} >
                         <FileManagerComponent id="filemanager" ref = {(scope) => {this.filemanagerObj = scope}} ajaxSettings = {{
                             url: this.hostUrl + "api/FileManager/FileOperations",
                             getImageUrl: this.hostUrl + "api/FileManager/GetImage",

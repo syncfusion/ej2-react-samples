@@ -69,10 +69,9 @@ export class DetailsView extends SampleBase<{}, {}> {
                 break;
         }
     }
-    private onActionComplete(): void {
-        this.listViewObj.selectItem(this.dataSource.data1[0]);
-    }
+
     private onCreate(): void {
+        this.listViewObj.selectItem(this.dataSource.data1[0]);
         this.splitterInstance.element.querySelectorAll('.e-pane')[0].setAttribute('id', 'ui-list');
         this.splitterInstance.element.querySelectorAll('.e-pane')[1].setAttribute('id', 'content');
         this.liElement = this.splitterInstance.element.querySelector("#ui-list");
@@ -85,7 +84,6 @@ export class DetailsView extends SampleBase<{}, {}> {
         return(
             <ListViewComponent className='splitter-list' height='289' dataSource={this.dataSource.data1}
             enableVirtualization={true} cssClass={'e-list-template'} template={this.template} select={this.onSelect.bind(this)}
-            actionComplete={this.onActionComplete.bind(this)}
             ref={(listview) => { this.listViewObj = listview }}>
             <Inject services={[Virtualization]} /> </ListViewComponent>
         );

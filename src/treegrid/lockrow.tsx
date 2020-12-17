@@ -83,7 +83,7 @@ export class LockRow extends SampleBase<{}, {}> {
         {/* custom code end */}
         <div className='control-section'>
           <div className = 'col-md-8'> 
-           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' allowPaging='true'
+           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
             editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}
             enableHover='false' rowDataBound={this.rowDataBound.bind(this)} ref={treegrid=> this.treegridObj = treegrid}
             beginEdit={this.beginEdit.bind(this)}>

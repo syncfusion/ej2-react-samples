@@ -352,8 +352,8 @@ let symbols: NodeModel[] = [
 ];
 let sourcePoint: PointModel = { x: 0, y: 0 };
 let targetPoint: PointModel = { x: 40, y: 40 };
-let targetDecorator: DecoratorModel = { shape: 'Arrow' };
-let style: StrokeStyleModel = { strokeWidth: 2 };
+let targetDecorator: DecoratorModel = { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} };
+let style: StrokeStyleModel = { strokeWidth: 2, strokeColor: '#757575' };
 
 // initializes the connector symbols to the UML Shapes in the symbol palette.
 let connectorSymbols: ConnectorModel[] = [
@@ -691,7 +691,7 @@ function getSymbolDefaults(symbol: NodeModel): void {
   if (symbol.id === 'arrow1') {
     symbol.width = 75; symbol.height = 60;
     symbol.offsetX = 160; symbol.offsetY = 135;
-    symbol.style.strokeColor = '#5C90DF';
+    symbol.style.strokeColor = '#757575';
     symbol.style.fill = 'white';
   } else {
     if (symbol.id === 'remoteController') {
