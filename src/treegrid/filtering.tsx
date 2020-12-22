@@ -28,7 +28,7 @@ export class Filtering extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div className = 'col-md-9'>
            <TreeGridComponent dataSource={sampleData} ref={treegrid => this.treegridInstance = treegrid} treeColumnIndex={1}
-            childMapping= 'subtasks' allowPaging='true' allowFiltering='true'
+            childMapping= 'subtasks' height='350' allowPaging='true' allowFiltering='true'
             filterSettings={{ mode:'Immediate', type:'FilterBar', hierarchyMode:'Parent'}}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='90' textAlign='Right'></ColumnDirective>

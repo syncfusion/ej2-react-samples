@@ -47,14 +47,13 @@ export class DeferUpdate extends SampleBase<{}, {}> {
     private pivotObj: PivotViewComponent;
     afterPopulate(): void {
         if (this.fieldlistObj && this.pivotObj) {
-            this.fieldlistObj.updateView(this.pivotObj);
-        }
-        if (this.fieldlistObj && this.pivotObj && this.fieldlistObj.isRequiredUpdate) {
-            this.fieldlistObj.updateView(this.pivotObj);
-        }
-        this.pivotObj.notify('ui-update', this.pivotObj);
-        if (!Browser.isDevice) {
-            this.fieldlistObj.notify('tree-view-update', this.fieldlistObj);
+            if (this.fieldlistObj.isRequiredUpdate) {
+                this.fieldlistObj.updateView(this.pivotObj);
+            }
+            this.pivotObj.notify('ui-update', this.pivotObj);
+            if (!Browser.isDevice) {
+                this.fieldlistObj.notify('tree-view-update', this.fieldlistObj);
+            }
         }
     }
     afterPivotPopulate(): void {

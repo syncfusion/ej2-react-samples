@@ -197,7 +197,7 @@ export class LogarithmicAxis extends SampleBase<{}, {}> {
         zoomPosition = args.zoomPosition;
      }
     };
-     // custom code start
+     
      public chartLoad(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
@@ -217,7 +217,7 @@ export class LogarithmicAxis extends SampleBase<{}, {}> {
         args.rangeNavigator.series[0].border.width = 2;
         args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(args.rangeNavigator.theme)];
     };
-     // custom code end
+     
     public renderLabel(args: ILabelRenderEventsArgs):void{
         args.text = (+args.text).toExponential().toLocaleUpperCase();
     };

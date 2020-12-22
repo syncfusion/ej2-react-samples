@@ -33,9 +33,9 @@ let dataSourceSettings: IDataOptions = {
     filters: []
 };
 
-let pivotObj: PivotViewComponent;
-
 export class Aggregation extends SampleBase<{}, {}> {
+
+    private pivotObj: PivotViewComponent;
 
     private fields: object = { text: 'text', value: 'value' };
 
@@ -81,7 +81,7 @@ export class Aggregation extends SampleBase<{}, {}> {
                 delete (data[ln].Date);
             }
         }
-        pivotObj.dataSourceSettings.dataSource = data;
+        (this as any).dataSourceSettings.dataSource = data;
     }
 
 
@@ -95,14 +95,14 @@ export class Aggregation extends SampleBase<{}, {}> {
 
     public setSummaryType(fieldName: string, summaryType: SummaryTypes): void {
         let isAvail: boolean = false;
-        for (let vCnt: number = 0; vCnt < pivotObj.dataSourceSettings.values.length; vCnt++) {
-            if (pivotObj.dataSourceSettings.values[vCnt].name === fieldName) {
-                pivotObj.dataSourceSettings.values[vCnt].type = summaryType;
+        for (let vCnt: number = 0; vCnt < this.pivotObj.dataSourceSettings.values.length; vCnt++) {
+            if (this.pivotObj.dataSourceSettings.values[vCnt].name === fieldName) {
+                this.pivotObj.dataSourceSettings.values[vCnt].type = summaryType;
                 isAvail = true;
             }
         }
         if (isAvail) {
-            pivotObj.updateDataSource();
+            this.pivotObj.updateDataSource();
         }
     }
 
@@ -112,7 +112,7 @@ export class Aggregation extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div className='col-lg-9 adaptive'>
-                        <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} load={this.onLoad} dataSourceSettings={dataSourceSettings} showFieldList={true} width={'100%'} height={'290'} gridSettings={{ columnWidth: 140 }}>
+                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} load={this.onLoad} dataSourceSettings={dataSourceSettings} showFieldList={true} width={'100%'} height={'290'} gridSettings={{ columnWidth: 140 }}>
                             <Inject services={[FieldList]} />
                         </PivotViewComponent>
                     </div>

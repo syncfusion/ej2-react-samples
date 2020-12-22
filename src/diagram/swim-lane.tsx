@@ -45,10 +45,10 @@ let pathData: string = 'M 120 24.9999 C 120 38.8072 109.642 50 96.8653 50 L 23.1
   '0 11.1928 10.3578 0 23.135 0 L 96.8653 0 C 109.642 0 120 11.1928 120 24.9999 Z';
 let middle: number = 0;
 let port: PointPortModel[] = [
-  { id: 'Port1', offset: { x: 0, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
-  { id: 'Port2', offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
-  { id: 'Port3', offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
-  { id: 'Port4', offset: { x: 0.5, y: 1 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw }
+  { id: 'Port1', offset: { x: 0, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Default | PortConstraints.Draw },
+  { id: 'Port2', offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Default | PortConstraints.Draw },
+  { id: 'Port3', offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Default | PortConstraints.Draw },
+  { id: 'Port4', offset: { x: 0.5, y: 1 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Default | PortConstraints.Draw }
 ]
 const SAMPLE_CSS = `.sb-mobile-palette {
   width: 195px;
@@ -63,10 +63,10 @@ let nodes: NodeModel[] = [
     id: 'swimlane',
     shape: {
       type: 'SwimLane',
+      orientation: 'Horizontal',
       header: {
         annotation: { content: 'SALES PROCESS FLOW CHART', style: { fill: 'transparent' } },
         height: 50, style: { fontSize: 11 },
-        orientation: 'Horizontal',
       },
       lanes: [
         {
@@ -182,7 +182,7 @@ let nodes: NodeModel[] = [
       phases: [
         {
           id: 'phase1', offset: 170,
-          header: { content: { content: 'Phase' } }
+          header: { annotation: { content: 'Phase' } }
         }
       ],
       phaseSize: 20,
@@ -229,7 +229,7 @@ let palettes: PaletteModel[] = [
   {
     id: 'flow', expanded: true, title: 'Flow Shapes', symbols: [
       {
-        id: 'Terminator', addInfo: { tooltip: 'Terminator' }, width: 50, height: 60, shape: { type: 'Flow', shape: 'Terminator' }, style: { strokeWidth: 1 }, ports: [
+        id: 'Terminator', addInfo: { tooltip: 'Terminator' }, width: 50, height: 60, shape: { type: 'Flow', shape: 'Terminator' }, style: { strokeWidth: 1, strokeColor: '#757575' }, ports: [
           { offset: { x: 0, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
@@ -237,7 +237,7 @@ let palettes: PaletteModel[] = [
         ]
       },
       {
-        id: 'Process', addInfo: { tooltip: 'Process' }, width: 50, height: 60, shape: { type: 'Flow', shape: 'Process' }, style: { strokeWidth: 1 }, ports: [
+        id: 'Process', addInfo: { tooltip: 'Process' }, width: 50, height: 60, shape: { type: 'Flow', shape: 'Process' }, style: { strokeWidth: 1, strokeColor: '#757575' }, ports: [
           { offset: { x: 0, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
@@ -245,7 +245,7 @@ let palettes: PaletteModel[] = [
         ]
       },
       {
-        id: 'Decision', addInfo: { tooltip: 'Decision' }, width: 50, height: 50, shape: { type: 'Flow', shape: 'Decision' }, style: { strokeWidth: 1 }, ports: [
+        id: 'Decision', addInfo: { tooltip: 'Decision' }, width: 50, height: 50, shape: { type: 'Flow', shape: 'Decision' }, style: { strokeWidth: 1, strokeColor: '#757575' }, ports: [
           { offset: { x: 0, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
@@ -253,7 +253,7 @@ let palettes: PaletteModel[] = [
         ]
       },
       {
-        id: 'Document', addInfo: { tooltip: 'Document' }, width: 50, height: 50, shape: { type: 'Flow', shape: 'Document' }, style: { strokeWidth: 1 }, ports: [
+        id: 'Document', addInfo: { tooltip: 'Document' }, width: 50, height: 50, shape: { type: 'Flow', shape: 'Document' }, style: { strokeWidth: 1, strokeColor: '#757575' }, ports: [
           { offset: { x: 0, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
@@ -266,7 +266,7 @@ let palettes: PaletteModel[] = [
           { offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 0.5, y: 1 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw }
-        ], style: { strokeWidth: 1 }
+        ], style: { strokeWidth: 1, strokeColor: '#757575' }
       },
       {
         id: 'data', width: 50, height: 50, addInfo: { tooltip: 'Data' }, shape: { type: 'Flow', shape: 'Data' }, ports: [
@@ -274,7 +274,7 @@ let palettes: PaletteModel[] = [
           { offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw },
           { offset: { x: 0.5, y: 1 }, visibility: PortVisibility.Connect | PortVisibility.Hover, constraints: PortConstraints.Draw }
-        ], style: { strokeWidth: 1 }
+        ], style: { strokeWidth: 1, strokeColor: '#757575' }
       },
     ]
   },
@@ -288,8 +288,8 @@ let palettes: PaletteModel[] = [
           type: 'SwimLane', lanes: [
             {
               id: 'lane1',
-              style: { strokeColor: 'black' }, height: 60, width: 150,
-              header: { width: 50, height: 50, style: { strokeColor: 'black', fontSize: 11 } },
+              style: { strokeColor: '#757575' }, height: 60, width: 150,
+              header: { width: 50, height: 50, style: { strokeColor: '#757575', fontSize: 11 } },
             }
           ],
           orientation: 'Horizontal', isLane: true
@@ -305,8 +305,8 @@ let palettes: PaletteModel[] = [
           lanes: [
             {
               id: 'lane1',
-              style: { strokeColor: 'black' }, height: 150, width: 60,
-              header: { width: 50, height: 50, style: { strokeColor: 'black', fontSize: 11 } },
+              style: { strokeColor: '#757575' }, height: 150, width: 60,
+              header: { width: 50, height: 50, style: { strokeColor: '#757575', fontSize: 11 } },
             }
           ],
           orientation: 'Vertical', isLane: true
@@ -320,22 +320,24 @@ let palettes: PaletteModel[] = [
         id: 'verticalPhase', addInfo: { tooltip: 'Vertical phase' },
         shape: {
           type: 'SwimLane',
-          phases: [{ style: { strokeWidth: 1, strokeDashArray: '3,3', strokeColor: '#A9A9A9' }, }],
+          phases: [{ style: { strokeWidth: 1, strokeDashArray: '3,3', strokeColor: '#757575' }, }],
           annotations: [{ text: '' }],
-          orientation: 'Vertical', isPhase: true
+          orientation: 'Vertical', isPhase: true,
         },
         height: 60,
-        width: 140
+        width: 140,
+        style: { strokeColor: '#757575' },
       }, {
         id: 'horizontalPhase', addInfo: { tooltip: 'Horizontal phase' },
         shape: {
           type: 'SwimLane',
-          phases: [{ style: { strokeWidth: 1, strokeDashArray: '3,3', strokeColor: '#A9A9A9' }, }],
+          phases: [{ style: { strokeWidth: 1, strokeDashArray: '3,3', strokeColor: '#757575' }, }],
           annotations: [{ text: '' }],
           orientation: 'Horizontal', isPhase: true
         },
         height: 60,
-        width: 140
+        width: 140,
+        style: { strokeColor: '#757575' },
       }
     ]
   },
@@ -343,19 +345,19 @@ let palettes: PaletteModel[] = [
     id: 'connectors', expanded: true, symbols: [
       {
         id: 'Link1', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 40, y: 40 },
-        targetDecorator: { shape: 'Arrow' }, style: { strokeWidth: 1 }
+        targetDecorator: { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} }, style: { strokeWidth: 1, strokeColor: '#757575' }
       },
       {
         id: 'Link2', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 40, y: 40 },
-        targetDecorator: { shape: 'Arrow' }, style: { strokeWidth: 1, strokeDashArray: '4 4' }
+        targetDecorator: { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} }, style: { strokeWidth: 1, strokeDashArray: '4 4', strokeColor: '#757575' }
       },
       {
         id: 'Link21', type: 'Straight', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-        targetDecorator: { shape: 'Arrow' }, style: { strokeWidth: 1 }
+        targetDecorator: { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} }, style: { strokeWidth: 1, strokeColor: '#757575' }
       },
       {
         id: 'Link22', type: 'Straight', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-        targetDecorator: { shape: 'Arrow' }, style: { strokeWidth: 1, strokeDashArray: '4 4' }
+        targetDecorator: { shape: 'Arrow', style: {strokeColor: '#757575', fill: '#757575'} }, style: { strokeWidth: 1, strokeDashArray: '4 4', strokeColor: '#757575' }
       }
     ], title: 'Connectors'
   }

@@ -26,7 +26,7 @@ const slidercss = `
         margin: 0 auto;
         min-width: 100px;
     }`;
-    // custom code end
+// custom code end
 
 export class Customization extends SampleBase<{}, {}> {
     // Code for Property Panel
@@ -98,7 +98,7 @@ export class Customization extends SampleBase<{}, {}> {
         this.smithchartInstance.legendSettings.position = this.positionElement.value.toString();
         this.smithchartInstance.refresh();
     }
-    // custom code start
+    
     public load(args: ISmithchartLoadedEventArgs): void {
         args.smithchart.title.text = 'Impedance Transmission';
         args.smithchart.title.visible = true;
@@ -106,7 +106,7 @@ export class Customization extends SampleBase<{}, {}> {
         theme = theme ? theme : 'Material';
         args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SmithchartTheme;
     }
-    // custom code end
+    
     render() {
         return (
             <div className='control-pane'>

@@ -57,6 +57,7 @@ export class RemoteData extends SampleBase<{}, {}> {
             taskFields={this.taskFields} gridLines={this.gridLines} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings}
             height='410px'>
             <ColumnsDirective>
+			  <ColumnDirective field='TaskId' visible={false}></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Task Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='Duration'></ColumnDirective>

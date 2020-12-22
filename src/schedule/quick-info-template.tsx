@@ -175,7 +175,7 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
             <div className='schedule-control-section'>
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
-                        <ScheduleComponent id="schedule" ref={(schedule: ScheduleComponent) => this.scheduleObj = schedule} height="650px"
+                        <ScheduleComponent id="schedule" cssClass='quick-info-template' ref={(schedule: ScheduleComponent) => this.scheduleObj = schedule} height="650px"
                             selectedDate={new Date(2020, 0, 9)} eventSettings={{ dataSource: this.scheduleData }} quickInfoTemplates={{
                                 header: this.headerTemplate.bind(this),
                                 content: this.contentTemplate.bind(this),

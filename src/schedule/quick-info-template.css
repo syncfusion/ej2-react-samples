@@ -1,34 +1,35 @@
-.quick-info-header {
+.quick-info-template .quick-info-header {
   background-color: white;
   padding: 8px 18px;
 }
 
-.quick-info-header-content {
+.quick-info-template .quick-info-header-content {
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
   padding: 5px 10px 5px;
 }
 
-.quick-info-title {
+.quick-info-template .quick-info-title {
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.48px;
   height: 22px;
 }
 
-.duration-text {
+.quick-info-template .duration-text {
   font-size: 11px;
   letter-spacing: 0.33px;
   height: 14px;
 }
 
-.content-area {
+.quick-info-template .content-area {
+  margin: 0;
   padding: 10px;
   width: auto;
 }
 
-.event-content {
+.quick-info-template .event-content {
   height: 90px;
   display: flex;
   flex-direction: column;
@@ -36,9 +37,9 @@
   padding: 0 15px;
 }
 
-.meeting-type-wrap,
-.meeting-subject-wrap,
-.notes-wrap {
+.quick-info-template .meeting-type-wrap,
+.quick-info-template .meeting-subject-wrap,
+.quick-info-template .notes-wrap {
   font-size: 11px;
   color: #666;
   letter-spacing: 0.33px;
@@ -46,13 +47,13 @@
   padding: 5px;
 }
 
-.event-content div label {
+.quick-info-template .event-content div label {
   display: inline-block;
   min-width: 45px;
   color: #666;
 }
 
-.event-content div span {
+.quick-info-template .event-content div span {
   font-size: 11px;
   color: #151515;
   letter-spacing: 0.33px;
@@ -60,24 +61,24 @@
   padding-left: 8px;
 }
 
-.cell-footer.e-btn {
+.quick-info-template .cell-footer.e-btn {
   background-color: #ffffff;
   border-color: #878787;
   color: #878787;
 }
 
-.cell-footer {
+.quick-info-template .cell-footer {
   padding-top: 10px;
 }
 
-.e-quick-popup-wrapper .e-cell-popup .e-popup-content {
+.quick-info-template .e-quick-popup-wrapper .e-cell-popup .e-popup-content {
   padding: 0 14px;
 }
 
-.e-quick-popup-wrapper .e-event-popup .e-popup-footer {
+.quick-info-template .e-quick-popup-wrapper .e-event-popup .e-popup-footer {
   display: block;
 }
 
-.e-quick-popup-wrapper .e-popup-footer button:first-child {
+.quick-info-template .e-quick-popup-wrapper .e-popup-footer button:first-child {
   margin-right: 5px;
 }

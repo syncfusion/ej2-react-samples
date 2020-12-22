@@ -63,7 +63,7 @@ export class AjaxContent extends SampleBase<{}, {}> {
         }
         function HWSW() {
             return (
-                <div id="Hard_Soft_features" style={{ display: 'none' }}>
+                <div id="Hard_Soft_features">
                     <table>
                         <tbody><tr>
                             <th rowSpan={3}> Hardware</th>

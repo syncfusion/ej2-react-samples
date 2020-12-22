@@ -143,7 +143,7 @@ export class Default extends SampleBase<{}, {}> {
             </div>
         )
     }
-        // custom code start
+
     public load(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -154,5 +154,4 @@ export class Default extends SampleBase<{}, {}> {
         args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(rangeTheme)];
         args.rangeNavigator.navigatorStyleSettings.selectedRegionColor= regionColor[themes.indexOf(rangeTheme)];
     };
-        // custom code end
 }

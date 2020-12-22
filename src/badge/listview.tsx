@@ -14,7 +14,7 @@ export class ListView extends SampleBase<{}, {}> {
             <div className='listWrapper' style={{ width: 'inherit', height: 'inherit' }}>
                 <span className={`${data.icons} list_svg`}>&nbsp;</span>
                 <span className='list_text'>{data.text}</span>
-                <span className={data.badge} style={{ float: 'right', marginTop: '16px', fontSize: '12px' }}>
+                <span className={data.badge}>
                     {data.messages}</span>
             </div>
         );

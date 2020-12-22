@@ -19,7 +19,7 @@ const SAMPLE_CSS = `
   }`;
 {/* custom code end */}
 export class CustomAggregate extends SampleBase<{}, {}> {
-
+  public item: string = 'Frozen seafood'; 
 
   public treegridObj: TreeGridComponent;
 
@@ -35,10 +35,9 @@ export class CustomAggregate extends SampleBase<{}, {}> {
   public customAggregateFn(data: Object): any{
     let sampleData: Object[] = getObject('result', data);
     let countLength: number; countLength = 0;
-    sampleData.filter((item: Object) => {
-        let data: string = getObject('category', item);
-        let inputEle: HTMLInputElement = document.getElementById("mytext") as HTMLInputElement;
-        let value: string = inputEle.value;
+    sampleData.filter((record: Object) => {
+        let data: string = getObject('category', record);
+        let value: string = this.item;
         if (data === value) {
             countLength++;
         }
@@ -54,20 +53,16 @@ export class CustomAggregate extends SampleBase<{}, {}> {
     if (!isNullOrUndefined(this.listObj)) {
       this.listObj.destroy();
     }
-    let inputEle: HTMLInputElement = document.getElementById("mytext") as HTMLInputElement;
-    let value: string = inputEle.value;
-
     this.listObj = new DropDownList({
         dataSource: this.foods,
         fields: { value: 'food' },
         placeholder: 'Select a Category',
         width: '130px',
-        value: value,
+        value: this.item,
         change: () => {
             setTimeout(
                 () => {
-                  let inputEle: HTMLInputElement = document.getElementById("mytext") as HTMLInputElement;
-                  inputEle.value = this.listObj.value.toString();
+                  this.item = this.listObj.value.toString();
                   this.treegridObj.refresh();
                 },300);
           }
@@ -84,8 +79,6 @@ export class CustomAggregate extends SampleBase<{}, {}> {
         </style>
         {/* custom code end */}
         <div className='control-section'>
-            <input type='hidden' value='Frozen seafood' id='mytext'></input>
-
             <TreeGridComponent dataSource={summaryData} treeColumnIndex={1} childMapping='subtasks' height='400'
                 ref={treegrid=> this.treegridObj = treegrid} dataBound={this.dataBound.bind(this)}>
               <ColumnsDirective>
@@ -100,7 +93,7 @@ export class CustomAggregate extends SampleBase<{}, {}> {
                 <AggregateDirective showChildSummary={false}>
                   <AggregateColumnsDirective>
                   <AggregateColumnDirective columnName='category' type='Custom'
-                        customAggregate={this.customAggregateFn} footerTemplate={this.custom}> </AggregateColumnDirective>
+                        customAggregate={this.customAggregateFn.bind(this)} footerTemplate={this.custom}> </AggregateColumnDirective>
                   </AggregateColumnsDirective>
                   </AggregateDirective>
             </AggregatesDirective>

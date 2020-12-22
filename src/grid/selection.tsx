@@ -22,12 +22,12 @@ export class Selectioning extends SampleBase<{}, {}> {
                     </GridComponent>
                 </div>
                 <div id="action-description">
-                  <p>This sample demonstrates the default functionality of the selection in Grid, which allows you to select row or cell through simple mouse down or keyboard interaction.</p>
+                  <p>This sample demonstrates the default functionality of the selection in Grid, which allows you to select row or cell or column through simple mouse down or keyboard interaction.</p>
                 </div>
 
                 <div id='description'>
                     <p>
-                        Selection provides an interactive support to highlight the row or cell that you select. Selection can be done through a simple
+                        Selection provides an interactive support to highlight the row or cell or column that you select. Selection can be done through a simple
             Mouse down or Keyboard interaction. To enable selection, set <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowselection">
                             allowSelection
@@ -39,8 +39,8 @@ export class Selectioning extends SampleBase<{}, {}> {
                     </a></code> property.
             They are</p>
                     <ul>
-                        <li><code>Single</code> - Enabled by default. Allows the user to select single row/cell at a time.</li>
-                        <li><code>Multiple</code> - Allows the user to select more than one row/cell at a time.</li>
+                        <li><code>Single</code> - Enabled by default. Allows the user to select single row/cell/column at a time.</li>
+                        <li><code>Multiple</code> - Allows the user to select more than one row/cell/column at a time.</li>
                     </ul>
                     <p>Also, supports three modes of selection which can be set using <code><a target="_blank" className="code"
                         href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#mode">
@@ -53,8 +53,12 @@ export class Selectioning extends SampleBase<{}, {}> {
                         <li><code>Both</code> - Enables both the row and cell selection in Grid. Clicking any cell will select both row and cell
                 simultaneously</li>
                     </ul>
-                    <p>To perform the multi-selection, hold <strong>CTRL</strong> key and click the desired rows/cells. To select range of rows/cells,
-                       hold <strong>SHIFT</strong> key and click the rows/cells.</p>
+                    <p>To perform the column selection, enable the <code><a target="_blank" className="code"
+                    href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#allowcolumnselection">
+                    selectionSettings->allowColumnSelection
+                    </a></code> property.</p>
+                    <p>To perform the multi-selection, hold <strong>CTRL</strong> key and click the desired rows/cells/columns. To select range of rows/cells/columns,
+                       hold <strong>SHIFT</strong> key and click the rows/cells/columns.</p>
                     <p>While using the Grid in a touch device environment, there is an option for multi-selection through a single tap on the
                         row and it will show a popup with the multi-selection symbol. Tap the icon to enable multi-selection in a single
                        tap.

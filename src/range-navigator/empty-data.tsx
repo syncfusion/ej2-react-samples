@@ -189,7 +189,7 @@ export class EmptyData extends SampleBase<{}, {}> {
             </div >
         )
     }
- // custom code start
+ 
     public rangeLoad(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -201,7 +201,7 @@ export class EmptyData extends SampleBase<{}, {}> {
         args.rangeNavigator.series[0].border.width = 2;
         args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(rangeTheme)];
     };
- // custom code end
+ 
     public changed(args: IChangedEventArgs): void {
         if (this.chartInstance && this.chartRendered) {
              this.chartInstance.primaryXAxis.zoomFactor = args.zoomFactor;
@@ -212,7 +212,7 @@ export class EmptyData extends SampleBase<{}, {}> {
            zoomPosition = args.zoomPosition;
         }
        };
-           // custom code start
+           
     public chartLoad(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
@@ -224,5 +224,5 @@ export class EmptyData extends SampleBase<{}, {}> {
         args.chart.series[0].border.color = borderColor[themes.indexOf(chartTheme)];
         this.chartRendered = true;
     };
-          // custom code end
+          
 }

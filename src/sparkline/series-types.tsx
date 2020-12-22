@@ -41,13 +41,11 @@ const SAMPLE_CSS = `
     }`;
 
 export class Series extends SampleBase<{}, {}> {
-    // custom code start
     public load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SparklineTheme;
     }
-    // custom code end
     render() {
         return (
             <div className='control-pane'>

@@ -202,7 +202,7 @@ export class RTL extends SampleBase<{}, {}> {
         args.chart.series[0].border.width = 2;
         this.chartRendered = true;
     };
-     // custom code start
+     
     public rangeLoad(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -214,5 +214,5 @@ export class RTL extends SampleBase<{}, {}> {
         args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(rangeTheme)];
         args.rangeNavigator.series[0].border.width = 2;
     };
-     // custom code end
+     
 }

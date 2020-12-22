@@ -202,14 +202,14 @@ export class RangeExport extends SampleBase<{}, {}> {
         args.chart.series[0].border.color = borderColor[themes.indexOf(chartTheme)];
         this.chartRendered = true;
     };
-    // custom code start
+    
     public rangeLoad(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
                  replace(/-dark/i, "Dark") as ChartTheme;
     };
-    // custom code end
+    
     public exportClick(e: Event): void {
         let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
         this.chartInstance.exportModule.export(

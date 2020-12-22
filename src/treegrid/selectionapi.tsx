@@ -48,7 +48,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
               {/* custom code end */}
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' allowPaging='true' 
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
               allowSelection='true' ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageSize: 10 }}
               selectionSettings={{ type:'Multiple'}}>
               <ColumnsDirective>

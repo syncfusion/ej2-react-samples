@@ -172,27 +172,27 @@ let items: (NodeModel | ConnectorModel)[] = [
 let connections: ConnectorModel[] = [
   {
     id: 'Link1', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeColor: '#444' }
+    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeColor: '#757575' }
   },
   {
     id: 'Link11', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeDashArray: '5,5', strokeColor: '#444' }
+    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeDashArray: '5,5', strokeColor: '#757575' }
   },
   {
     id: 'Link21', type: 'Straight', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeColor: '#444' }
+    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeColor: '#757575' }
   },
   {
     id: 'Link22', type: 'Straight', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 },
-    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeDashArray: '5,5', strokeColor: '#444' }
+    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeDashArray: '5,5', strokeColor: '#757575' }
   },
   {
     id: 'Link3', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 }, cornerRadius: 5,
-    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeColor: '#444' }
+    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeColor: '#757575' }
   },
   {
     id: 'Link31', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 60, y: 60 }, cornerRadius: 5,
-    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeDashArray: '5,5', strokeColor: '#444' }
+    targetDecorator: { shape: 'None' }, style: { strokeWidth: 1, strokeDashArray: '5,5', strokeColor: '#757575' }
   }
 ];
 
@@ -319,6 +319,9 @@ export class LogicCircuit extends SampleBase<{}, {}> {
                 symbolHeight={60}
                 symbolWidth={62}
                 symbolPreview={{ height: 50, width: 50 }}
+                getNodeDefaults={(symbol: NodeModel): void => {
+                  symbol.style.strokeColor = '#757575';
+                }}
                 getSymbolInfo={(symbol: NodeModel): SymbolInfo => {
                   return { fit: true };
                 }}

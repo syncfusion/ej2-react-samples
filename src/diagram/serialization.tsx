@@ -222,15 +222,15 @@ let connectorSymbols: ConnectorModel[] = [
     type: "Orthogonal",
     sourcePoint: { x: 0, y: 0 },
     targetPoint: { x: 40, y: 40 },
-    targetDecorator: { shape: "Arrow" },
-    style: { strokeWidth: 2 }
+    targetDecorator: { shape: "Arrow", style: {strokeColor: '#757575', fill: '#757575'} },
+    style: { strokeWidth: 2, strokeColor: '#757575' }
   },
   {
     id: "link2",
     type: "Orthogonal",
     sourcePoint: { x: 0, y: 0 },
     targetPoint: { x: 40, y: 40 },
-    style: { strokeWidth: 2 },
+    style: { strokeWidth: 2, strokeColor: '#757575' },
     targetDecorator: { shape: "None" }
   },
   {
@@ -238,15 +238,15 @@ let connectorSymbols: ConnectorModel[] = [
     type: "Straight",
     sourcePoint: { x: 0, y: 0 },
     targetPoint: { x: 40, y: 40 },
-    targetDecorator: { shape: "Arrow" },
-    style: { strokeWidth: 2 }
+    targetDecorator: { shape: "Arrow", style: {strokeColor: '#757575', fill: '#757575'} },
+    style: { strokeWidth: 2, strokeColor: '#757575' }
   },
   {
     id: "link4",
     type: "Straight",
     sourcePoint: { x: 0, y: 0 },
     targetPoint: { x: 40, y: 40 },
-    style: { strokeWidth: 2 },
+    style: { strokeWidth: 2, strokeColor: '#757575' },
     targetDecorator: { shape: "None" }
   },
   {
@@ -254,7 +254,7 @@ let connectorSymbols: ConnectorModel[] = [
     type: "Bezier",
     sourcePoint: { x: 0, y: 0 },
     targetPoint: { x: 40, y: 40 },
-    style: { strokeWidth: 2 },
+    style: { strokeWidth: 2, strokeColor: '#757575' },
     targetDecorator: { shape: "None" }
   }
 ];
@@ -349,6 +349,7 @@ export class Serialization extends SampleBase<{}, {}> {
                   }
                 ]} //set default value for Node.
                 getNodeDefaults={(symbol: NodeModel): void => {
+                  symbol.style.strokeColor= '#757575';
                   if (
                     symbol.id === "Terminator" ||
                     symbol.id === "Process" ||

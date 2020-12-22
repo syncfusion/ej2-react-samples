@@ -53,7 +53,7 @@ export class Templates extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section dropdowntree-templates'>
           <div className='control_wrapper'>
-            <DropDownTreeComponent fields={this.fields} placeholder="Select an employee" itemTemplate={this.itemTemplate} footerTemplate={this.footerTemplate} headerTemplate={this.headerTemplate} popupHeight="270px" cssClass="ddt-template" width="360px" />
+            <DropDownTreeComponent fields={this.fields} placeholder="Select an employee" itemTemplate={this.itemTemplate} footerTemplate={this.footerTemplate} headerTemplate={this.headerTemplate} popupHeight="270px" cssClass="ddt-template" width="100%" />
           </div>
         </div>
         <div id="action-description">

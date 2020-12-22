@@ -378,117 +378,120 @@ export class BpmnEditor extends SampleBase<{}, {}> {
   render() {
     return (
       <div className="control-pane">
-      <div className="control-section">
-        <div className="sb-mobile-palette-bar">
-          <div id="palette-icon" style={{ float: "right", role: "button" }} className="e-ddb-icons1 e-toggle-palette"></div>
-        </div>
-        <div
-          id="palette-space"
-          className="sb-mobile-palette"
-        >
-          <SymbolPaletteComponent
-            id="symbolpalette"
-            expandMode="Multiple"
-            palettes={[
-              {
-                id: "Bpmn",
-                expanded: true,
-                symbols: bpmnShapes,
-                iconCss: "e-diagram-icons1 e-diagram-Bpmn",
-                title: "Bpmn Shapes"
-              },
-              {
-                id: "connectors",
-                expanded: true,
-                symbols: getConnectors(),
-                iconCss: "e-diagram-icons1 e-diagram-connector",
-                title: "Connectors"
-              }
-            ]}
-            width={"100%"}
-            height={"471px"}
-            symbolHeight={60}
-            symbolWidth={60}
-            symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
-            getSymbolInfo={(symbol: NodeModel): SymbolInfo => {
-              return { fit: true };
-            }}
-          ><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
-          </SymbolPaletteComponent>
-        </div>
+        <div className="control-section">
+          <div className="sb-mobile-palette-bar">
+            <div id="palette-icon" style={{ float: "right", role: "button" }} className="e-ddb-icons1 e-toggle-palette"></div>
+          </div>
+          <div
+            id="palette-space"
+            className="sb-mobile-palette"
+          >
+            <SymbolPaletteComponent
+              id="symbolpalette"
+              expandMode="Multiple"
+              palettes={[
+                {
+                  id: "Bpmn",
+                  expanded: true,
+                  symbols: bpmnShapes,
+                  iconCss: "e-diagram-icons1 e-diagram-Bpmn",
+                  title: "Bpmn Shapes"
+                },
+                {
+                  id: "connectors",
+                  expanded: true,
+                  symbols: getConnectors(),
+                  iconCss: "e-diagram-icons1 e-diagram-connector",
+                  title: "Connectors"
+                }
+              ]}
+              width={"100%"}
+              height={"471px"}
+              symbolHeight={60}
+              symbolWidth={60}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getNodeDefaults={(symbol: NodeModel): void => {
+                symbol.style.strokeColor = '#757575';
+              }}
+              getSymbolInfo={(symbol: NodeModel): SymbolInfo => {
+                return { fit: true };
+              }}
+            ><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </div>
 
-        <div
-          id="diagram-space"
-          className="sb-mobile-diagram sb-bpmn-editor"
-        >
-          <DiagramComponent
-            id="diagram"
-            ref={diagram => (diagramInstance = diagram)}
-            width={"100%"}
-            height={"445px"}
-            snapSettings={{ constraints: 0 }}
-            nodes={nodes}
-            connectors={connectors}
-            //Sets the default values of a node
-            contextMenuSettings={contextMenu}
-            contextMenuOpen={contextMenuOpen}
-            contextMenuClick={contextMenuClick}
-            dragEnter={(args: IDragEnterEventArgs): void => {
-              let obj: NodeModel = args.element as NodeModel;
-              if (obj instanceof Node) {
-                if (!(obj.shape as BpmnShape).activity.subProcess.collapsed) {
-                  (obj.shape as BpmnShape).activity.subProcess.transaction.cancel.visible = true;
-                  (obj.shape as BpmnShape).activity.subProcess.transaction.failure.visible = true;
-                  (obj.shape as BpmnShape).activity.subProcess.transaction.success.visible = true;
-                } else {
-                  let oWidth: number = obj.width;
-                  let oHeight: number = obj.height;
-                  let ratio: number = 100 / obj.width;
-                  obj.width = 100;
-                  obj.height *= ratio;
-                  obj.offsetX += (obj.width - oWidth) / 2;
-                  obj.offsetY += (obj.height - oHeight) / 2;
+          <div
+            id="diagram-space"
+            className="sb-mobile-diagram sb-bpmn-editor"
+          >
+            <DiagramComponent
+              id="diagram"
+              ref={diagram => (diagramInstance = diagram)}
+              width={"100%"}
+              height={"445px"}
+              snapSettings={{ constraints: 0 }}
+              nodes={nodes}
+              connectors={connectors}
+              //Sets the default values of a node
+              contextMenuSettings={contextMenu}
+              contextMenuOpen={contextMenuOpen}
+              contextMenuClick={contextMenuClick}
+              dragEnter={(args: IDragEnterEventArgs): void => {
+                let obj: NodeModel = args.element as NodeModel;
+                if (obj instanceof Node) {
+                  if (!(obj.shape as BpmnShape).activity.subProcess.collapsed) {
+                    (obj.shape as BpmnShape).activity.subProcess.transaction.cancel.visible = true;
+                    (obj.shape as BpmnShape).activity.subProcess.transaction.failure.visible = true;
+                    (obj.shape as BpmnShape).activity.subProcess.transaction.success.visible = true;
+                  } else {
+                    let oWidth: number = obj.width;
+                    let oHeight: number = obj.height;
+                    let ratio: number = 100 / obj.width;
+                    obj.width = 100;
+                    obj.height *= ratio;
+                    obj.offsetX += (obj.width - oWidth) / 2;
+                    obj.offsetY += (obj.height - oHeight) / 2;
+                  }
                 }
               }
-            }
-            }
-          ><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
-          </DiagramComponent>
-        </div>
-        <div id="action-description">
-          <p>
-            This sample visualizes the hotel booking reservation
-            system with built-in BPMN shapes.
+              }
+            ><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </DiagramComponent>
+          </div>
+          <div id="action-description">
+            <p>
+              This sample visualizes the hotel booking reservation
+              system with built-in BPMN shapes.
           </p>
-        </div>
-        <div id="description">
-          <p>
-            This example shows how to create a simple flow chart using the
+          </div>
+          <div id="description">
+            <p>
+              This example shows how to create a simple flow chart using the
             diagram control. The <code>nodes</code> property can be used to
-            define different stages of a process. To define the flow between
+                define different stages of a process. To define the flow between
             different stages, the <code>connectors</code> property can be used.
             The <code>getNodeDefaults</code> and{" "}
-            <code>getConnectorDefaults</code> properties define the default
-            behavior of shapes and connectors.
+              <code>getConnectorDefaults</code> properties define the default
+              behavior of shapes and connectors.
           </p>
 
-          <p>
-            To easily build flow diagrams, few shapes are predefined and added
-            to symbol palette. You can drag-and-drop predefined shapes into the
+            <p>
+              To easily build flow diagrams, few shapes are predefined and added
+              to symbol palette. You can drag-and-drop predefined shapes into the
             drawing area. The <code>symbols</code> property allows you to add
-            predefined symbols to the palette.
+                predefined symbols to the palette.
           </p>
 
-          <p>In this example, undo and redo support is enabled.</p>
-          <p style={{ fontWeight: 500 }}>Injecting Module</p>
-          <p>
-            The diagram component’s features are segregated into individual
+            <p>In this example, undo and redo support is enabled.</p>
+            <p style={{ fontWeight: 500 }}>Injecting Module</p>
+            <p>
+              The diagram component’s features are segregated into individual
             feature-wise modules. To enable undo and redo support, inject{" "}
-            <code>UndoRedo</code> module into <code>services</code>.
+              <code>UndoRedo</code> module into <code>services</code>.
           </p>
-          <br />
+            <br />
+          </div>
         </div>
-      </div>
       </div>
     );
   }
@@ -498,24 +501,25 @@ function getConnectors(): ConnectorModel[] {
   let connectorSymbols: ConnectorModel[] = [
     {
       id: 'Link1', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 40, y: 40 },
-      targetDecorator: { shape: 'Arrow' }, style: { strokeWidth: 2 }
+      targetDecorator: { shape: 'Arrow', style: { strokeColor: '#757575', fill: '#757575' } }, style: { strokeWidth: 2, strokeColor: '#757575' }
     },
     {
       id: 'Link2', type: 'Orthogonal', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 40, y: 40 },
-      targetDecorator: { shape: 'Arrow' }, style: { strokeWidth: 2, strokeDashArray: '4 4' }
+      targetDecorator: { shape: 'Arrow', style: { strokeColor: '#757575', fill: '#757575' } }, style: { strokeWidth: 2, strokeDashArray: '4 4', strokeColor: '#757575' }
     },
     {
       id: 'Link3', type: 'Straight', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 40, y: 40 },
-      targetDecorator: { shape: 'Arrow' }, style: { strokeWidth: 2 }
+      targetDecorator: { shape: 'Arrow', style: { strokeColor: '#757575', fill: '#757575' } }, style: { strokeWidth: 2, strokeColor: '#757575' }
     },
     {
       id: 'link4', sourcePoint: { x: 0, y: 0 }, targetPoint: { x: 40, y: 40 }, type: 'Orthogonal',
+      targetDecorator: { style: { strokeColor: '#757575', fill: '#757575' } },
       shape: {
         type: 'Bpmn',
         flow: 'Association',
         association: 'Directional'
       }, style: {
-        strokeDashArray: '2,2'
+        strokeDashArray: '2,2', strokeColor: '#757575'
       },
     },
   ];
