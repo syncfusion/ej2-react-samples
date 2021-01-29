@@ -44,7 +44,7 @@ export class Aggregation extends SampleBase<{}, {}> {
     private qData: { [key: string]: Object }[] = [
         { 'value': 'Max', 'text': 'Max' }, { 'value': 'Min', 'text': 'Min' },
         { 'value': 'Count', 'text': 'Count' }, { 'value': 'Sum', 'text': 'Sum' },
-        { 'value': 'Avg', 'text': 'Average' }, { 'value': 'DistinctCount', 'text': 'Distinct Count' },
+        { 'value': 'Avg', 'text': 'Average' }, { 'value': 'Median', 'text': 'Median' }, { 'value': 'DistinctCount', 'text': 'Distinct Count' },
         { 'value': 'Product', 'text': 'Product' }, { 'value': 'Index', 'text': 'Index' },
         { 'value': 'PopulationStDev', 'text': 'Population StDev' }, { 'value': 'SampleStDev', 'text': 'Sample StDev' },
         { 'value': 'RunningTotals', 'text': 'Running Totals' }, { 'value': 'DifferenceFrom', 'text': 'Difference From' },
@@ -56,7 +56,7 @@ export class Aggregation extends SampleBase<{}, {}> {
 
     private cData: { [key: string]: Object }[] = [
         { 'value': 'Max', 'text': 'Max' }, { 'value': 'Min', 'text': 'Min' },
-        { 'value': 'Sum', 'text': 'Sum' }, { 'value': 'Avg', 'text': 'Average' },
+        { 'value': 'Sum', 'text': 'Sum' }, { 'value': 'Avg', 'text': 'Average' }, { 'value': 'Median', 'text': 'Median' },
         { 'value': 'Product', 'text': 'Product' }, { 'value': 'Index', 'text': 'Index' },
         { 'value': 'PopulationStDev', 'text': 'Population StDev' }, { 'value': 'SampleStDev', 'text': 'Sample StDev' },
         { 'value': 'RunningTotals', 'text': 'Running Totals' }, { 'value': 'DifferenceFrom', 'text': 'Difference From' },
@@ -145,14 +145,14 @@ export class Aggregation extends SampleBase<{}, {}> {
 
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the aggregate types like sum, average, min, max, count, distinct count, and more in the pivot table for quick business analysis. End users can also change the aggregation type of each field bound to the value axis in the field list at runtime.</p>
+                    <p>This sample demonstrates the aggregate types like sum, average, median, min, max, count, distinct count, and more in the pivot table for quick business analysis. End users can also change the aggregation type of each field bound to the value axis in the field list at runtime.</p>
                 </div>
                 <div id="description">
                     <p>
                         In this sample, you can change the aggregate types for value fields using the dropdown list separately. The aggregate type can be set using the <code>type</code> property of the value field. The built-in aggregates are:
                     </p>
                     <p>
-                        <code>Sum</code>, <code>Average</code>, <code>Min</code>, <code>Max</code>, <code>Count</code>, <code>Distinct Count</code>, <code>Product</code>,
+                        <code>Sum</code>, <code>Average</code>, <code>Median</code>, <code>Min</code>, <code>Max</code>, <code>Count</code>, <code>Distinct Count</code>, <code>Product</code>,
                         <code>Index</code>, <code>Population StDev</code>, <code>Sample StDev</code>, <code>Population Var</code>, <code>Sample Var</code>, <code>Running Totals</code>,
                         <code>Difference From</code>, <code>% of Difference From</code>, <code>% of Grand Total</code>, <code>% of Column Total</code>, <code>% of Row Total</code>,
                         <code>% of Parent Total</code>, <code>% of Parent Column Total</code>, <code>% of Parent Row Total.</code>
