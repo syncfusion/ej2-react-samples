@@ -1,12 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, BeforeSelectEventArgs, CellStyleModel, RowsDirective, RowDirective, CellsDirective, RangesDirective, RangeDirective, CellDirective, getFormatFromType, ColumnDirective, CellRenderEventArgs, ScrollSettingsModel } from '@syncfusion/ej2-react-spreadsheet';
+import { SpreadsheetComponent, SheetsDirective, SheetDirective, ColumnsDirective, CellStyleModel, RowsDirective, RowDirective, CellsDirective, RangesDirective, RangeDirective, CellDirective, ColumnDirective, ScrollSettingsModel } from '@syncfusion/ej2-react-spreadsheet';
+import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
+import { RadioButtonComponent, ButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { DropDownListComponent, MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
+import { SelectionSettingsModel } from '@syncfusion/ej2-spreadsheet';
 import { SampleBase } from '../common/sample-base';
 import './spreadsheet.css';
-import { TextBox } from '@syncfusion/ej2-inputs';
-import { DatePicker } from '@syncfusion/ej2-calendars';
-import { RadioButton } from '@syncfusion/ej2-buttons';
-import { DropDownList, MultiSelect } from '@syncfusion/ej2-dropdowns';
 
 /**
  * CellTemplate sample
@@ -15,60 +15,74 @@ import { DropDownList, MultiSelect } from '@syncfusion/ej2-dropdowns';
 export class CellTemplate extends SampleBase<{}, {}> {
     public spreadsheet: SpreadsheetComponent;
     public scrollSettings: ScrollSettingsModel = { isFinite: true };
+    public selectionSettings: SelectionSettingsModel = { mode: 'None' };
     public boldCenter: CellStyleModel = { fontWeight: 'bold', textAlign: 'center' , fontSize: '12pt', verticalAlign: 'middle',
     textDecoration: 'underline'
 };
 
+    public nameTextbox(): JSX.Element {
+        return (
+            <TextBoxComponent placeholder="Name"></TextBoxComponent>
+        );
+    }
+
+    public dobTextbox(): JSX.Element {
+        return (
+            <TextBoxComponent placeholder="DOB"></TextBoxComponent>
+        );
+    }
+
+    public genderRadioButton(): JSX.Element {
+        return (
+            <div>
+                <RadioButtonComponent name="gender" value="male" label="Male"></RadioButtonComponent>
+                <RadioButtonComponent  name="gender" value="female" label="Female"></RadioButtonComponent>
+            </div>
+        );
+    }
+
+    public dropDownList(): JSX.Element {
+        let experience: string[] =  ['0 - 1 year', '1 - 3 years', '3 - 5 years', '5 - 10 years'];
+        return (
+            <DropDownListComponent placeholder="Experience" dataSource={experience}></DropDownListComponent>
+        );
+    }
+
+    public multiSelect(): JSX.Element {
+        let languages: string[] = ['JAVA', 'C#', 'SQL'];
+        return (
+            <MultiSelectComponent placeholder="Areas of Interest" showClearButton={false} dataSource={languages}></MultiSelectComponent>
+        );
+    }
+
+    public mobileNoTextbox(): JSX.Element {
+        return (
+            <TextBoxComponent placeholder="Mobile Number"></TextBoxComponent>
+        );
+    }
+
+    public emailTextbox(): JSX.Element {
+        return (
+            <TextBoxComponent placeholder="Email"></TextBoxComponent>
+        );
+    }
+
+    public textArea(): JSX.Element {
+        return (
+            <TextBoxComponent multiline={true}></TextBoxComponent>
+        );
+    }
+
+    public button(): JSX.Element {
+        return (
+            <ButtonComponent content="Add" style={{float:"right"}} cssClass="e-flat"></ButtonComponent>
+        );
+    }
+
     public onCreated(): void {
         this.spreadsheet.cellFormat({ fontWeight: 'bold' }, 'B2:B9');
-    }
-    public beforeSelect(args: BeforeSelectEventArgs): void {
-        args.cancel = true;
-    }
-    public beforeCellRender(args: CellRenderEventArgs): void {
-        if (this.spreadsheet.activeSheetIndex === 0) {
-            let target: HTMLInputElement = args.element.firstElementChild as HTMLInputElement;
-            switch (args.address) {
-                case 'B1':
-                    (args.element as HTMLTableCellElement).colSpan = 2;
-                    break;
-                case 'C2':
-                    new TextBox({ placeholder: 'Name' }, target);
-                    break;
-                case 'C3':
-                    new DatePicker({ placeholder: 'DOB',  }, target);
-                    break;
-                case 'C4':
-                    new RadioButton({ label: 'Male' }, args.element.firstElementChild.firstElementChild as HTMLInputElement);
-                    new RadioButton({ label: 'Female' }, args.element.firstElementChild.lastElementChild as HTMLInputElement);
-                    break;
-                case 'C5':
-                    let experience: string[] =  ['0 - 1 year', '1 - 3 years', '3 - 5 years', '5 - 10 years'];
-                    new DropDownList({
-                        placeholder: 'Experience',
-                        dataSource: experience
-                    }, target);
-                    break;
-                case 'C6':
-                    let languages: string[] = ['JAVA', 'C#', 'SQL'];
-                    new MultiSelect({
-                        showClearButton: false,
-                        placeholder: 'Areas of Interest',
-                        dataSource: languages
-                    }, target);
-                    break;
-                case 'C7':
-                    new TextBox({ placeholder: 'Mobile Number' }, target);
-                    break;
-                case 'C8':
-                    new TextBox({ placeholder: 'Email'}, target);
-                    break;
-                case 'C9':
-                    new TextBox(null, target);
-                    break;
-            }
-        }
-
+        // Merges B1 and C1 cells
+        this.spreadsheet.merge('B1:C1');
     }
 
     render() {
@@ -77,7 +91,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
                 <div className='control-section spreadsheet-control'>
                     <SpreadsheetComponent showRibbon={false} showFormulaBar= {false} allowOpen= {false} allowSave= {false}
                         ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)} name= {'Candidates List'}
-                        beforeCellRender={this.beforeCellRender.bind(this)} beforeSelect={this.beforeSelect.bind(this)} scrollSettings={this.scrollSettings} >
+                        scrollSettings={this.scrollSettings} allowEditing={false} selectionSettings = {this.selectionSettings}>
                         <SheetsDirective>
                             <SheetDirective name='Registration Form' rowCount= {40} colCount= {30} showGridLines= {false}>
                                 <RowsDirective>
@@ -132,11 +146,15 @@ export class CellTemplate extends SampleBase<{}, {}> {
                                     <ColumnDirective width={350}></ColumnDirective>
                                 </ColumnsDirective>
                                 <RangesDirective>
-                                    <RangeDirective template='<input />' address='C2:C3'></RangeDirective>
-                                    <RangeDirective template= '<div><input type="radio" name="gender" value="male" /><input type="radio" name="gender" value="female"/></div>' address={'C4'}></RangeDirective>
-                                    <RangeDirective template='<input />' address='C5:C8'></RangeDirective>
-                                    <RangeDirective template='<textarea rows="3"/>' address={'C9'}></RangeDirective>
-                                    <RangeDirective template='<button class="e-btn e-flat" style="float:right">Add</button>' address={'C11'}></RangeDirective>
+                                    <RangeDirective template={this.nameTextbox} address='C2'></RangeDirective>
+                                    <RangeDirective template={this.dobTextbox} address='C3'></RangeDirective>
+                                    <RangeDirective template={this.genderRadioButton} address='C4'></RangeDirective>
+                                    <RangeDirective template={this.dropDownList} address='C5'></RangeDirective>
+                                    <RangeDirective template={this.multiSelect} address='C6'></RangeDirective>
+                                    <RangeDirective template={this.mobileNoTextbox} address='C7'></RangeDirective>
+                                    <RangeDirective template={this.emailTextbox} address='C8'></RangeDirective>
+                                    <RangeDirective template={this.textArea} address='C9'></RangeDirective>
+                                    <RangeDirective template={this.button} address='C11'></RangeDirective>
                                 </RangesDirective>
                             </SheetDirective>
                         </SheetsDirective>
