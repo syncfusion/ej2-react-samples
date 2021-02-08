@@ -55,7 +55,7 @@ export class Bollinger extends SampleBase<{}, {}> {
                             BollingerBands]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={chartData} width={2}
-                                xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open'
+                                xName='x' low='low' high='high' close='close' volume='volume' open='open'
                                 name='Apple Inc' bearFillColor='#2ecd71' bullFillColor='#e74c3d'
                                 type='Candle' animation={{ enable: false }}>
                             </SeriesDirective>
