@@ -25,7 +25,7 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
   };
   public templateTaskbar: any = this.taskbarTooltip;
   public taskbarTooltip(props) {
-    var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
+    var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
     return(<table>
       {props.ganttProperties.resourceNames &&
       <tr>

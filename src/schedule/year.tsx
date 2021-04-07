@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective,
+    ScheduleComponent, ViewsDirective, ViewDirective, Resize, DragAndDrop, ResourcesDirective, ResourceDirective,
     EventRenderedArgs, Inject, Year as YearView, TimelineYear
 } from '@syncfusion/ej2-react-schedule';
 import './schedule-component.css';
@@ -82,7 +82,7 @@ export class Year extends SampleBase<{}, {}> {
                                 <ViewDirective option='TimelineYear' displayName='Horizontal TimelineYear' isSelected={true} />
                                 <ViewDirective option='TimelineYear' displayName='Vertical TimelineYear' orientation="Vertical" group={{ resources: ['Categories'] }} />
                             </ViewsDirective>
-                            <Inject services={[YearView, TimelineYear]} />
+                            <Inject services={[YearView, TimelineYear, Resize, DragAndDrop]} />
                         </ScheduleComponent>
                     </div>
                 </div>

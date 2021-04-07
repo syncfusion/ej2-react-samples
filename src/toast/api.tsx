@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { SampleBase } from '../common/sample-base';
-import { ToastComponent, ToastBeforeOpenArgs } from '@syncfusion/ej2-react-notifications';
+import { ToastComponent, ToastBeforeOpenArgs, ProgressDirectionType } from '@syncfusion/ej2-react-notifications';
 import { Effect, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent, ChangeEventArgs, ButtonComponent } from '@syncfusion/ej2-react-buttons';
@@ -48,6 +48,7 @@ export class Api extends SampleBase<{}, {}> {
     private toastObj: ToastComponent;
     private dropDownListShowEase: DropDownListComponent;
     private dropDownListHideEase: DropDownListComponent;
+    private dropDownListProgressDirection: DropDownListComponent;
     private dropDownListShow: DropDownListComponent;
     private dropDownListHide: DropDownListComponent;
     private toastBtnShow: ButtonComponent;
@@ -57,6 +58,10 @@ export class Api extends SampleBase<{}, {}> {
     private showData: { [key: string]: Object }[] = [
         { Id: 'ease', Text: 'Ease' },
         { Id: 'linear', Text: 'Linear' }
+    ];
+    private directionData: { [key: string]: Object }[] = [
+        { Id: 'Rtl', Text: 'Right to Left' },
+        { Id: 'Ltr', Text: 'Left to Right' }
     ];
     private animationData: { [key: string]: Object }[] = [
         { Id: 'SlideBottomIn', Effect: 'Slide Bottom In' },
@@ -105,8 +110,10 @@ export class Api extends SampleBase<{}, {}> {
         { Id: 'ZoomOut', Effect: 'Zoom Out' }
     ];
     private showFields: FieldSettingsModel = { text: 'Text', value: 'Id' };
+    private directionFields: FieldSettingsModel = { text: 'Text', value: 'Id' };
     private animationFields: FieldSettingsModel = { text: 'Effect', value: 'Id' };
     private easeValue: string = 'ease';
+    private directionValue: string = 'Rtl';
     private animationValue: string = 'SlideBottomIn';
     private animationHideValue: string = 'SlideBottomOut';
     public closeOnChange(e: ChangeEventArgs): void {
@@ -149,6 +156,9 @@ export class Api extends SampleBase<{}, {}> {
     }
     public onShowEase(): void {
         this.toastObj.animation.show.easing = this.dropDownListShowEase.value.toString();
+    }
+    public onProgressDirection(): void {
+        this.toastObj.progressDirection = this.dropDownListProgressDirection.value.toString() as ProgressDirectionType;
     }
     public showChange(): void {
         this.toastObj.animation.show.effect = this.dropDownListShow.value as Effect;
@@ -237,6 +247,9 @@ export class Api extends SampleBase<{}, {}> {
                                 </div>
                                 <div className="group-form e-group">
                                     <CheckBoxComponent id='actionButtons' label='Action Buttons' change={this.OnactionBtnChange.bind(this)}></CheckBoxComponent>
+                                </div>
+                                <div className="input-form">
+                                    <DropDownListComponent ref={(dropdownlist) => { this.dropDownListProgressDirection = dropdownlist }} id="ProgressDirection" floatLabelType="Auto" dataSource={this.directionData} fields={this.directionFields} placeholder="ProgressDirection" change={this.onProgressDirection.bind(this)} value={this.directionValue} />
                                 </div>
                                 <div className="input-form">
                                     <div className="e-float-input e-input-group">

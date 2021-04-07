@@ -28,11 +28,11 @@ export class ProtectSheet extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section spreadsheet-control'>
                     <SpreadsheetComponent
-                        ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)}
+                        password= 'spreadsheet' openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open'
+                        saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save' ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)}
                         beforeCellRender={this.beforeCellRender.bind(this)} >
                         <SheetsDirective>
                             <SheetDirective name='EMI Calculator' isProtected={true}>
-
                                 <RowsDirective>
                                     <RowDirective>
                                         <CellsDirective>
@@ -110,18 +110,18 @@ export class ProtectSheet extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates protect sheet and lock cell feature with EMI calculation scenario as example.
-    </p>
+                        This sample demonstrates protect sheet and protect workbook with EMI calculation scenario as an example. To unprotect the sheet, click the unprotect sheet button in the Data tab. Meanwhile, to unprotect the workbook, click the unprotect workbook button in the data tab and provide the password as <code>spreadsheet</code> in the dialog box.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this demo, `EMI Schedule` sheet is locked using <code>isProtected</code> property.
-    </p>
+                        Protect sheet helps you to prevent the users from modifying the data in the spreadsheet. Protect workbook helps you to protect the workbook with a password. In this demo, the `EMI Schedule` sheet is locked using <code>isProtected</code> property inside the `Sheet` property and protect the workbook with a password using <code>password</code> property.
+                    </p>
                     <p>
                         More information about protect sheet and lock cell feature can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/protect-sheet/">
-                            documentation</a> section.
-    </p>
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/protect-sheet/">
+                        documentation</a> section.
+                    </p>
                 </div>
             </div>
         )

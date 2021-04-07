@@ -93,9 +93,7 @@ export class CellFormatting extends SampleBase<{}, {}> {
                     </p>
                         <p>
                             In this sample, gridlines are hidden using the <code>showGridLines</code> property and the styles are
-            applied using the <code>
-                                <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/spreadsheet/cellModel/#style">style</a>
-                            </code> property and <code>
+            applied using the <code>style</code> property and <code>
                                 <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/spreadsheet/#cellFormat">cellFormat</a>
                             </code> method.
                     </p>

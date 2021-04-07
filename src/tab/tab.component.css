@@ -164,3 +164,32 @@
 .tab-control-section .e-listview:not(.e-list-template) .e-list-item {
     height: 63px;
 }
+
+#draggableTab .e-content .e-item {
+    font-size: 12px;
+    padding: 10px;
+    text-align: justify;
+}
+#draggableTab .e-upload {
+    width: 300px;
+}
+#TabContainer .property-panel-header {
+    text-align: center;
+    padding-bottom: 0;
+}
+.treeview-external-drag-tab .e-list-item,
+.e-bigger .treeview-external-drag-tab .e-list-item {
+    border: 0.5px solid #E1E7EC;
+    line-height: 15px;
+    padding: 0 5px;
+}
+.treeview-external-drag-tab .e-list-item.e-hover>.e-fullrow,
+.treeview-external-drag-tab .e-list-item.e-active>.e-fullrow,
+.treeview-external-drag-tab .e-list-item.e-active.e-hover>.e-fullrow,
+.e-bigger .treeview-external-drag-tab .e-list-item.e-hover>.e-fullrow,
+.e-bigger .treeview-external-drag-tab .e-list-item.e-active>.e-fullrow,
+.e-bigger .treeview-external-drag-tab .e-list-item.e-active.e-hover>.e-fullrow {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none !important;
+}

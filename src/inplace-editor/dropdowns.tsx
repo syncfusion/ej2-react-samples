@@ -34,14 +34,14 @@ export class DropDowns extends SampleBase<{}, {}> {
 
     // Mapping DropDownList dataSource property
     private editorData: { [key: string]: Object }[] = [
-        { 'value': 'inline', 'text': 'Inline' }, { 'value': 'popup', 'text': 'Popup' }
+        { 'value': 'Inline', 'text': 'Inline' }, { 'value': 'Popup', 'text': 'Popup' }
     ];
 
     // Mapping DropDownList fields property
     private dropDownFields: FieldSettingsModel = { text: 'text', value: 'value' };
 
     // Mapping DropDownList value property
-    private dropDownVal: string = 'inline';
+    private dropDownVal: string = 'Inline';
 
     // Change event funtion for DropDownList component   
     public changeEditorMode(e: DropDownChangeArgs): void {
@@ -58,23 +58,18 @@ export class DropDowns extends SampleBase<{}, {}> {
     rendereComplete(): void {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
-            rightPane.addEventListener('scroll', () => {
-                this.scrollRightPane();
-            });
+            rightPane.addEventListener('scroll', this.scrollRightPane);
         }
     }
     componentWillUnmount() {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
-            rightPane.removeEventListener('scroll', () => {
-                this.scrollRightPane();
-            });
+            rightPane.removeEventListener('scroll', this.scrollRightPane);
         }
     }
     private scrollRightPane = () => {
-
-        let mode: string =  (document.getElementById('editorMode') as HTMLSelectElement).value;
-        if (mode === 'Inline') {
+        let mode: HTMLSelectElement =  (document.getElementById('editorMode') as HTMLSelectElement);
+        if (mode && mode.value === 'Inline') {
             return;
         }
         if (this.editObj && (this.editObj.element.querySelectorAll('.e-editable-open').length > 0)) {

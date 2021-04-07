@@ -497,7 +497,9 @@ L10n.load({
             "Insert Footnote": "أدخل حاشية سفلي",
             "Insert Endnote": "أدخل تعليق ختامي",
             "Footnote Tooltip": "أدخل حاشية سفلية (Alt + Ctrl + F).",
-            "Endnote Tooltip": "أدخل تعليقًا ختاميًا (Alt + Ctrl + F)."
+            "Endnote Tooltip": "أدخل تعليقًا ختاميًا (Alt + Ctr l + F).",
+            "AllCaps":"كل قبعات",
+            "Change case Tooltip":"تغيير الحالةلة"
 
         },
         'colorpicker': {

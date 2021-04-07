@@ -376,6 +376,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
     },
     {
+        'path': 'chart/range-color-mapping', 'component': 'RangeColorMapping', 'name': 'Range Color Mapping', 'order': '13', 'category': 'Chart Customization', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range color mapping.'
+    },
+    {
         'path': 'chart/print', 'component': 'Print', 'name': 'Print', 'order': '14', 'category': 'Print and Export',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to print the entire chart.'
     },

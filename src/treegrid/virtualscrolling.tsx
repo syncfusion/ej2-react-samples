@@ -7,7 +7,9 @@ import { SampleBase } from '../common/sample-base';
 export class VirtualScrolling extends SampleBase<{}, {}> {
     
     render() {
-        dataSource();
+        if (virtualData.length === 0) {
+            dataSource();
+        }
         return (
             <div className='control-pane'>
                 <div className='control-section'>

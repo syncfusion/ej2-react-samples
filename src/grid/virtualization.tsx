@@ -44,13 +44,14 @@ export class Virtualization extends SampleBase<{}, {}> {
     public date1: number;
     public date2: number;
     public flag: boolean = true;
+    public data: Object[] =[];
 
     public onclick() {
-        if (!virtualData.length) {
+        if (!this.data.length) {
             this.show();
             datasource();
             this.date1 = new Date().getTime();
-            this.grid.dataSource = virtualData;
+            this.grid.dataSource = this.data = virtualData;
         } else {
             this.flag = true; 
             this.show();

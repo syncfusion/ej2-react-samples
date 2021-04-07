@@ -1,0 +1,1097 @@
+{
+    "accordion": {
+        "ControlName": "Accordion",
+        "Samples": {
+            "default":"Default Functionalities",
+            "ajax":"Ajax Content",
+            "icon":"Icons"
+        }
+    },
+    "auto-complete": {
+        "ControlName": "AutoComplete",
+        "Samples": {
+            "default":"Default Functionalities",
+    "grouping-icon":"Grouping and Icons",
+    "data-binding":"Data Binding",
+    "template":"Templates",
+    "highlight":"Highlight",
+    "custom-filtering":"Custom Filtering",
+    "diacritics-filtering":"Diacritics Filtering"
+        }
+    },
+    "avatar": {
+        "ControlName": "Avatar",
+        "Samples": {
+            "default": "Default",
+            "types": "Types",
+            "badge": "Badge",
+            "listview": "ListView",
+            "card": "Card"
+        }
+    },
+    "badge": {
+        "ControlName": "Badge",
+        "Samples": {
+            "default": "Default",
+            "types": "Types",
+            "notification": "Notification",
+            "listview": "ListView",
+            "accordion": "Accordion",
+            "toolbar": "Toolbar"
+        }
+    },
+    "barcode": {
+        "ControlName": "Barcode",
+        "Samples": {
+            "ean8": "EAN-8",
+            "code128": "Code 128",
+            "code128A": "Code 128A",
+            "code128B": "Code 128B",
+            "code128C": "Code 128C",
+            "code93": "Code 93",
+            "code32": "Code 32",
+            "default-functionality": "Codabar",
+            "ean13": "EAN-13",
+            "upca": "UPC-A",
+            "upce": "UPC-E",
+            "code39": "Code39",
+            "code39Extd": "Code 39 Extended",
+            "qrcode": "QR Code",
+            "datamatrix": "Data Matrix"
+        }
+    },
+    "bullet-chart": {
+        "ControlName": "BulletChart",
+        "Samples": {
+            "default":"Default",
+            "local-data":"Local Data",
+            "right-to-left":"RTL",
+            "value-target-color":"value-target-color",
+            "customization":"Customization"
+        }
+    },
+    "button": {
+        "ControlName": "Button",
+        "Samples": {
+            "default": "Default Functionalities",
+            "button-group": "Button Group",
+            "checkbox": "Checkbox",
+            "radio-button": "Radio Button",
+            "dropdown-button": "Dropdown Menu",
+            "split-button": "Split Button",
+            "switch": "Switch",
+            "progress-button": "Progress Button"
+        }
+    },
+    "calendar": {
+        "ControlName": "Calendar",
+        "Samples": {
+            "default": "Default Functionalities",
+            "date-range": "Date Range",
+            "disabled": "Disabled Dates",
+            "special-dates": "Special Dates",
+            "multi-selection": "Multiple Selection",
+            "month-picker": "Month Picker",
+            "islamic-calendar": "Islamic Calendar"
+        }
+    },
+    "card": {
+        "ControlName": "Card",
+        "Samples": {
+            "basic": "Basic Card",
+            "vertical": "Vertical Card",
+            "horizontal": "Horizontal Card",
+            "swipeable": "Swipeable Card",
+            "flip": "Flip Card",
+            "reveal": "Reveal Card",
+            "tile": "Tile View"
+        }
+    },
+    "chart": {
+        "ControlName": "Chart",
+        "Samples": {
+            "line": "Line",
+            "spline": "Spline",
+            "stepline": "Step Line",
+            "dashed-line": "Dashed Line",
+            "spline-inversed": "Inversed Spline",
+            "line-segments": "Line Zone",
+            "line-multi-line": "Multi Colored Line",
+            "stacked-line": "Stacked Line",
+            "stacked-line-100": "100% Stacked Line",
+            "area": "Area",
+            "spline-area": "Spline Area",
+            "steparea": "Step Area",
+            "rangearea": "Range Area",
+            "stacked-area": "Stacked Area",
+            "stacked-area100": "100% Stacked Area",
+            "area-empty": "Area - Empty Points",
+            "area-segments": "Area Zone",
+            "column": "Column",
+            "rounded-column": "Rounded Column",
+            "column-placement": "Back to Back Column",
+            "range-column": "Range Column",
+            "range-bar": "Inversed Range Column",
+            "bar": "Bar",
+            "stacked-column": "Stacked Column",
+            "stacked-column100": "100% Stacked Column",
+            "stacked-bar": "Stacked Bar",
+            "stacked-bar100": "100% Stacked Bar",
+            "tornado": "Negative Stack",
+            "hilo": "Hilo",
+            "hiloopenclose": "Hilo Open Close",
+            "candle": "Candle",
+            "scatter": "Scatter",
+            "bubble": "Bubble",
+            "waterfall": "Waterfall",
+            "histogram": "Histogram",
+            "box-whisker": "Box and Whisker",
+            "error-bar": "Error Bar",
+            "trend-lines": "Trendlines",
+            "combination-series": "Combination Series",
+            "pareto": "Pareto Chart",
+            "adindicator": "Accumulation Distribution",
+            "atrindicator": "ATR",
+            "bollinger": "Bollinger",
+            "ema": "EMA",
+            "macd": "MACD",
+            "momentum": "Momentum",
+            "rsi": "RSI",
+            "sma": "SMA",
+            "stochastic": "Stochastic",
+            "tma": "TMA",
+            "performance": "Benchmark",
+            "default-pie": "Pie",
+            "pie-radius": "Pie with Various Radius",
+            "doughnut": "Doughnut",
+            "pyramid": "Pyramid",
+            "funnel": "Funnel",
+            "default-doughnut": "Pie With Legend",
+            "semi-pie": "Semi Pie",
+            "smartlabels": "Smart Labels",
+            "drilldown": "Drilldown",
+            "grouping": "Grouping",
+            "pie-empty-point": "Empty Points",
+            "polar-line": "Line",
+            "polar-spline": "Spline",
+            "polar-area": "Area",
+            "polar-stackedarea": "Stacked Area",
+            "polar-scatter": "Scatter",
+            "polar-column": "Column",
+            "polar-stackedcolumn": "Wind Rose",
+            "polar-rangecolumn": "Range Column",
+            "local-data": "Local Data",
+            "remote-data": "Remote Data",
+            "lazy-loading": "Lazy Loading",
+            "numeric-axis": "Numeric Axis",
+            "datetime": "DateTime Axis",
+            "datetime-category": "DateTime Category Axis",
+            "category": "Category Axis",
+            "indexed-axis": "Indexed Category Axis",
+            "log": "Log Axis",
+            "multiple-axis": "Multiple Axis",
+            "inversed": "Inversed Axis",
+            "stripline": "Strip Line",
+            "strip-line-recurrence": "Strip Line Recurrence",
+            "smart-axis-labels": "Smart Labels",
+            "multi-level-label": "Multi Level Labels",
+            "axis-crossing": "Axes Crossing",
+            "sorting": "Sorting",
+            "symbols": "Symbols",
+            "annotation": "Annotation",
+            "datalabel-template": "DataLabel Template",
+            "vertical": "Vertical Chart",
+            "empty-point": "Empty Points",
+            "print": "Print",
+            "export": "Export",
+            "selection": "Selection",
+            "range-selection": "Range Selection",
+            "crosshair": "Crosshair",
+            "trackball": "Trackball",
+            "zoom": "Zooming and Panning",
+            "data-editing": "Data Editing"
+        }
+    },
+    "chips": {
+        "ControlName": "Chips",
+        "Samples": {
+            "default": "Default Functionalities",
+            "api": "API"
+        }
+    },
+    "circular-gauge": {
+        "ControlName": "Circular Gauge",
+        "Samples": {
+            "default": "Default Functionalities",
+            "range": "Range",
+            "labels": "Tick and Labels",
+            "annotation": "Annotations",
+            "customization": "Gauge Customization",
+            "semi-circular-gauge": "Semi-Circular Gauge",
+            "arc-gauge": "Arc Gauge",
+            "legend": "Legend",
+            "direction": "Direction Compass",
+            "image": "Pointer Image",
+            "pointers": "Pointer Customization",
+            "axes": "Multiple Axis",
+            "drag": "Pointer Drag",
+            "tooltip": "Tooltip",
+            "sample-data": "Data Sample",
+            "apple-watch-rings": "Apple Watch Rings",
+            "speedometer": "Speedometer"
+        }
+    },
+    "color-picker": {
+        "ControlName": "Color Picker",
+        "Samples": {
+            "default": "Default Functionalities",
+            "inline": "Inline Mode",
+            "custom": "Custom Palettes",
+            "api": "API"
+        }
+    },
+    "combo-box": {
+        "ControlName": "Combobox",
+        "Samples": {
+            "default": "Default Functionalities",
+        "grouping-icon": "Grouping and Icons",
+        "data-binding": "Data Binding",
+        "custom-value": "Custom Value",
+        "filtering": "Filtering",
+        "template": "Templates",
+        "cascading": "Cascading",
+        "diacritics-filtering": "Diacritics Filtering"
+        }
+    },
+    "context-menu": {
+        "ControlName": "Context Menu",
+        "Samples": {
+            "default": "Default Functionalities"
+        }
+    },
+    "dashboard-layout": {
+        "ControlName": "Dashboard Layout",
+        "Samples": {
+            "default": "Default Functionalities",
+            "predefined-layouts": "Predefined Layouts",
+            "properties": "API",
+            "dynamic": "Editable Dashboard",
+            "analytics-dashboard": "SEO Analytics Dashboard"
+        }
+    },
+    "datepicker": {
+        "ControlName": "DatePicker",
+        "Samples": {
+            "default": "Default Functionalities",
+            "date-range": "Date Range",
+            "date-format": "Format",
+            "disabled": "Disabled Dates",
+            "special-dates": "Special Dates",
+            "month-picker": "Month Picker"
+        }
+    },
+    "daterangepicker": {
+        "ControlName": "DateRangePicker",
+        "Samples": {
+            "default": "Default Functionalities",
+            "date-range": "Date Range",
+            "day-span": "Day Span",
+            "date-format": "Format",
+            "presets": "Preset Ranges",
+            "month-range-picker": "Month Range Picker"
+        }
+    },
+    "datetimepicker": {
+        "ControlName": "DateTimePicker",
+        "Samples": {
+            "default": "Default Functionalities",
+            "date-time-range": "DateTime Range",
+            "date-time-format": "Format",
+            "disabled": "Disabled Dates",
+            "special-dates": "Special Dates"
+        }
+    },
+    "diagram": {
+        "ControlName": "Diagram",
+        "Samples": {
+            "default-functionality": "Default Functionalities",
+            "shape-gallery": "Shapes",
+            "getting-started-node": "Nodes",
+            "connectors": "Connectors",
+            "getting-started-annotation": "Annotations",
+            "port": "Ports",
+            "swim-lane": "SwimLane",
+            "diagram-events": "Events",
+            "tooltip": "Tooltip",
+            "history-manager": "HistoryManager",
+            "flow-execution": "Flow Execution",
+            "custom-shapes": "Complex Shapes",
+            "line-routing": "LineRouting",
+            "bpmn-editor": "BPMN Editor",
+            "logic-circuit": "Logic circuit Diagram",
+            "uml-activity": "UML Activity Diagram",
+            "network-diagram": "Network Diagram",
+            "Uml-class-diagram": "UML Class Diagram",
+            "hierarchical-model": "Hierarchical Tree",
+            "organization-model": "Organization Chart",
+            "radial-tree": "Radial Tree",
+            "mind-map": "Mind Map",
+            "symmetric-layout": "Symmetric Layout",
+            "complex-hierarchical-tree": "Complex Hierarchical Tree",
+            "right-to-left-tree": "RTL Tree",
+            "pert-chart": "PERT Chart",
+            "drawing-tool": "Drawing Tools",
+            "key-board-functions": "Keyboard Interaction",
+            "quick-commands": "User Handle",
+            "symbol-palette": "Symbol Palette",
+            "overview": "Overview Panel",
+            "serialization": "Serialization",
+            "print-export": "Print and Export",
+            "local-data": "Local Data",
+            "remote-data": "Remote Data",
+            "crud": "CRUD",
+            "venn-diagram": "Venn Diagram",
+            "fishbone-diagram": "Fishbone Diagram"
+        }
+    },
+    "dialog": {
+        "ControlName": "Dialog",
+        "Samples": {
+            "default": "Default Functionalities",
+            "custom-dialog": "Custom Dialogs",
+            "modal-dialog": "Modal",
+            "template": "Template",
+            "dialog-contents-via-ajax": "Ajax Content",
+            "draggable": "Draggable",
+            "resizable": "Resizable",
+            "position": "Positioning",
+            "animation": "Animation",
+            "multiple-dialogs": "Multiple Dialogs"
+        }
+    },
+    "document-editor": {
+        "ControlName": "DocumentEditor",
+        "Samples": {
+            "default": "Default Functionalities",
+            "character-formatting": "Character Formatting",
+            "paragraph-formatting": "Paragraph Formatting",
+            "styles": "Styles",
+            "bullets-and-numbering": "Bullets and Numbering",
+            "links-and-bookmarks": "Hyperlinks and Bookmarks",
+            "table-formatting": "Table Formatting",
+            "section-formatting": "Section Formatting",
+            "headers-and-footers": "Headers and Footers",
+            "table-of-contents": "Table of Contents",
+            "print": "Print",
+            "right-to-left": "Right To Left",
+            "custom-context-menu": "Custom Context Menu",
+            "auto-save": "Auto Save",
+            "chart": "Chart Preservation",
+            "document-protection": "Document Protection"
+        }
+    },
+    "drop-down-list": {
+        "ControlName": "Dropdown List",
+        "Samples": {
+            "default": "Default Functionalities",
+            "grouping-icon": "Grouping and Icons",
+            "data-binding": "Data Binding",
+            "filtering": "Filtering",
+            "template": "Templates",
+            "cascading": "Cascading",
+            "inline": "Inline",
+            "diacritics-filtering": "Diacritics Filtering"
+        }
+    },
+    "drop-down-tree": {
+        "ControlName": "Dropdown Tree",
+        "Samples": {
+            "default": "Default Functionalities",
+            "local-data": "Local Data",
+            "remote-data": "Remote Data"
+        }
+    },
+    "file-manager": {
+        "ControlName": "File Manager",
+        "Samples": {
+            "overview": "Overview",
+            "custom-thumbnail": "Custom Thumbnails",
+            "default": "API",
+            "drag-drop": "Drag and Drop",
+            "file-upload": "File Upload",
+            "azure-service": "Azure Blob Provider",
+            "sql-server-provider": "SQL Database Provider",
+            "nodejs-file-provider": "NodeJS File Provider",
+            "AmazonS3Provider": "Amazon S3 File Provider",
+            "firebase": "Firebase Realtime File Provider",
+            "FTP-file-provider":"FTP File Provider"
+        }
+    },
+    "form-validator": {
+        "ControlName": "Form Validator",
+        "Samples": {
+            "default": "Default Functionalities"
+        }
+    },
+    "gantt": {
+        "ControlName": "Gantt",
+        "Samples": {
+            "default": "Default Functionalities",
+            "editing": "Editing",
+            "context-menu": "Context Menu",
+            "exporting": "Exporting",
+            "filtering": "Filtering",
+            "events": "Events",
+            "keyboard-interactions": "Keyboard Interactions",
+            "local-data": "Local Data",
+            "remote-data": "Remote Data",
+            "self-reference-data": "Self Reference Data",
+            "work-week": "Workweek",
+            "working-time-range": "Working Time Range",
+            "holidays": "Holidays",
+            "resource-allocation": "Resource Allocation",
+            "event-markers": "Event Markers",
+            "indicators": "Indicators",
+            "baseline": "Baseline",
+            "unscheduled-task": "Unscheduled Tasks",
+            "timeline": "Timeline API",
+            "zooming": "Zooming",
+            "column-menu": "Column Menu",
+            "show-hide-column": "Show or Hide Column",
+            "reorder": "Column Reorder",
+            "resizing": "Column Resize",
+            "column-template": "Column Template",
+            "header-template": "Header Template",
+            "taskbar-template": "Taskbar Template",
+            "tasklabel-template": "Task Label Template",
+            "tooltip-template": "Tooltip Template",
+            "toolbar-template": "Toolbar Template",
+            "grid-lines": "Grid Lines",
+            "sorting": "Default",
+            "sorting-api": "Sorting API"
+        }
+    },
+    "grid": {
+        "ControlName": "Grid",
+        "Samples": {
+            "overview": "Overview",
+            "default": "Default Functionalities",
+            "grouping": "Grouping",
+            "grid-lines": "GridLines",
+            "hierarchy": "Hierarchy Grid",
+            "clipboard": "Clipboard",
+            "context-menu": "Context Menu",
+            "master-detail": "Master/Detail",
+            "scrolling": "Default Scrolling",
+            "virtualization": "Virtual Scrolling",
+            "local-binding": "Local Data",
+            "remote-data": "Remote Data",
+            "custom-binding": "Custom Binding",
+            "auto-wrap": "AutoWrap Column cells",
+            "show-hide": "Show or Hide Column",
+            "stacked-header": "Stacked Header",
+            "reorder": "Reorder",
+            "column-chooser": "Column Chooser",
+            "column-resizing": "Column Resize",
+            "column-spanning": "Column Spanning",
+            "column-template": "Column Template",
+            "frozen-rows": "Frozen Rows And Columns",
+            "column-menu": "Column Menu",
+            "foreign-key": "Foreign Key Column",
+            "row-height": "Row Height",
+            "row-template": "Row Template",
+            "detail-template": "Detail Template",
+            "row-drag-drop": "Row Drag and Drop",
+            "drag-drop-within-grid": "Row Drag And Drop Within Grid",
+            "row-spanning": "Row Spanning",
+            "sorting": "Sorting",
+            "filtering": "Default Filtering",
+            "filter-menu": "Filter Menu",
+            "searching": "Search",
+            "paging": "Paging",
+            "selection": "Default Selection",
+            "selection-api": "Selection API",
+            "checkbox-selection": "Checkbox Selection",
+            "aggregate-default": "Default Aggregate",
+            "aggregate-group": "Group and Caption aggregate",
+            "reactive-aggregate": "Reactive Aggregate",
+            "normal-edit": "Inline Editing",
+            "dialog-edit": "Dialog Editing",
+            "dialog-template": "Dialog Template",
+            "batch": "Batch Editing",
+            "command-column": "CommandColumn",
+            "default-exporting": "Default Exporting",
+            "advanced-exporting": "Advanced Exporting",
+            "master-details-export": "Hierarchy Exporting",
+            "print": "Print"
+        }
+    },
+    "heatmap-chart": {
+        "ControlName": "HeatMap Chart",
+        "Samples": {
+            "default": "Default Functionalities",
+            "calendar-heatmap": "Calendar Heatmap",
+            "bubble-types": "Bubble Types",
+            "color-and-size-attributes": "Color and Size Attributes",
+            "array-row": "Row",
+            "array-cell": "Cell",
+            "row-json-binding": "JSON Row",
+            "cell-json-binding": "JSON Cell",
+            "empty-points": "Empty points",
+            "inversed-axis": "Inversed Axis",
+            "opposed-axis": "Opposed Axis",
+            "MultiLevelLabels": "Multi Level Labels",
+            "cell-selection": "Selection",
+            "legend": "Legend Placement",
+            "large-data": "Large Data",
+            "palette": "Palette Mode",
+            "render-mode": "Rendering mode",
+            "tooltip-template": "Tooltip Template"
+        }
+    },
+    "inplace-editor": {
+        "ControlName": "In-place Editor",
+        "Samples": {
+            "default": "Overview",
+            "dropdowns": "DropDown Components",
+            "pickers": "Date Components",
+            "edit-post": "Edit Post"
+        }
+    },
+    "kanban": {
+        "ControlName": "Kanban",
+        "Samples": {
+            "overview": "Overview",
+            "default": "Default",
+            "swimlane": "Swimlane",
+            "stacked-header": "Stacked Header",
+            "dialog-editing": "Dialog Editing",
+            "local-data": "Local Data",
+            "remote-data": "Remote Data",
+            "header-template": "Header Template",
+            "swimlane-template": "Swimlane Template",
+            "card-template": "Card Template",
+            "tooltip-template": "Tooltip Template",
+            "toggle-columns": "Toggle Columns",
+            "show-hide": "Show or Hide Column",
+            "wip-validation": "WIP Validation",
+            "api": "API",
+            "events": "Events"
+        }
+    },
+    "linear-gauge": {
+        "ControlName": "Linear Gauge",
+        "Samples": {
+            "default": "Default Functionalities",
+            "container": "Container",
+            "data": "Data Sample",
+            "ranges": "Ranges",
+            "axes": "Axes and Pointers",
+            "annotation": "Annotation",
+            "tooltip": "Tooltip",
+            "style": "Styles"
+        }
+    },
+    "list-box": {
+        "ControlName": "List Box",
+        "Samples": {
+            "default": "Default Functionalities",
+            "dual-list-box": "Dual ListBox",
+            "drag-and-drop": "Drag And Drop",
+            "checkbox": "Checkbox",
+            "api": "API"
+        }
+    },
+    "listview": {
+        "ControlName": "ListView",
+        "Samples": {
+            "default": "Default Functionalities",
+            "remote-list": "Remote Data",
+            "check-list": "Checklist",
+            "nested-list": "Nested List",
+            "virtualization": "Virtualization",
+            "template": "Template",
+            "group-template": "Group Template",
+            "call-history": "Call History"
+        }
+    },
+    "maps": {
+        "ControlName": "Maps",
+        "Samples": {
+            "default": "Default Functionalities",
+            "projection": "Projection",
+            "multilayer": "Multi-layers",
+            "marker": "Marker",
+            "marker-template": "Marker template",
+            "marker-cluster": "Marker Clustering",
+            "label": "Labels",
+            "bubble": "Bubble",
+            "navigation-line": "Navigation Lines",
+            "legend": "Legend",
+            "color-mapping": "Color Mapping",
+            "annotation": "Annotations",
+            "osm": "OpenStreetMap",
+            "osm-with-navigation-lines": "OSM with Navigation Lines",
+            "osm-with-sublayers": "OSM with Sublayer",
+            "tooltip": "Tooltip",
+            "selection": "Selection & Highlight",
+            "zooming": "Zooming & Panning",
+            "drilldown": "Drill down",
+            "print": "Print",
+            "export": "Export",
+            "heatmap": "Heat Map",
+            "curved": "Flight routes",
+            "earthquake": "Earthquake indication",
+            "highlight": "Highlighted region",
+            "cyber-attack-map": "Cyber Attack Map",
+            "dynamic-marker": "Dynamic Markers",
+            "map-pie": "Map with Pie chart",
+            "map-with-slider": "Map with Slider",
+            "seat-booking": "Bus seat booking"
+        }
+    },
+    "maskedtextbox": {
+        "ControlName": "Input Mask",
+        "Samples": {
+            "default": "Default Functionalities",
+            "custom-mask": "Custom Mask",
+            "formats": "Formats"
+        }
+    },
+    "menu": {
+        "ControlName": "Menu Bar",
+        "Samples": {
+            "default": "Default Functionalities",
+            "data-binding": "Data Binding",
+            "scrollable": "Scrollable",
+            "template": "Template",
+            "hamburger-mode": "Hamburger Mode",
+            "api": "API",
+            "toolbar-integration": "Toolbar Integration"
+        }
+    },
+    "multi-select": {
+        "ControlName": "MultiSelect Dropdown",
+        "Samples": {
+            "default": "Default Functionalities",
+            "data-binding": "Data Binding",
+            "grouping": "Grouping",
+            "template": "Templates",
+            "filtering": "Filtering",
+            "custom-value": "Custom Values",
+            "chip-customization": "Chip Customization",
+            "checkbox": "CheckBox",
+            "grouping-with-checkbox": "Grouping with CheckBox",
+            "selection-limit": "Selection Limit",
+            "diacritics-filtering": "Diacritics Filtering"
+        }
+    },
+    "numerictextbox": {
+        "ControlName": "Numeric Textbox",
+        "Samples": {
+            "default": "Default Functionalities",
+            "range-validation": "Range Validation",
+            "custom-format": "Custom Format",
+            "restrict-decimals": "Restrict Decimals"
+        }
+    },
+    "pager": {
+        "ControlName": "Pager",
+        "Samples": {
+             
+        }
+    },
+    "pdfviewer": {
+        "ControlName": "PDF Viewer",
+        "Samples": {
+            "default": "Default",
+            "custom-toolbar": "Custom Toolbar",
+            "right-to-left": "Right To Left",
+            "form-filling": "Form Filling"
+        }
+    },
+    "pivot-table": {
+        "ControlName": "Pivot Table",
+        "Samples": {
+            "default": "Default Functionalities",
+            "local": "Local Data",
+            "remote": "Remote Data",
+            "Olap": "OLAP",
+            "pivot-chart": "Pivot Chart",
+            "external-binding": "External Binding",
+            "field-list": "Field List",
+            "grouping-bar": "Grouping Bar",
+            "conditional-formatting": "Conditional Formatting",
+            "selection": "Selection",
+            "summary-customization": "Show/Hide Totals",
+            "grouping": "Grouping",
+            "tool-bar": "Toolbar",
+            "calculated-field": "Calculated Field",
+            "aggregation": "Aggregation",
+            "sorting": "Default Sorting",
+            "value-sorting": "Value Sorting",
+            "filtering": "Default Filtering",
+            "label-filtering": "Label Filtering",
+            "value-filtering": "Value Filtering",
+            "virtual-scrolling": "Virtual Scrolling",
+            "cell-template": "Cell Template",
+            "drill-through": "Drill Through",
+            "editing": "Editing",
+            "hyper-link": "Hyperlink",
+            "defer-update": "Defer Layout Update",
+            "exporting": "Export"
+        }
+    },
+    "query-builder": {
+        "ControlName": "Query Builder",
+        "Samples": {
+            "default": "Default Functionalities",
+            "template": "Template",
+            "grid": "Integration with Data Grid"
+        }
+    },
+    "range-navigator": {
+        "ControlName": "Range Selector",
+        "Samples": {
+            "default": "Default",
+            "light-weight": "Lightweight",
+            "date-time": "DateTime",
+            "double": "Numeric Axis",
+            "logarithmic": "Logarithmic Axis",
+            "multilevel": "Multilevel Labels",
+            "period-selector": "Default",
+            "period-selector-stocks": "Stock Chart",
+            "empty-data": "Empty Points",
+            "filter": "Filter",
+            "export": "Print and Export",
+            "right-to-left": "RTL"
+        }
+    },
+    "rich-text-editor": {
+        "ControlName": "Rich Text Editor",
+        "Samples": {
+            "tools": "Overview",
+            "rich-text-editor": "Default Functionalities",
+            "image": "Image",
+            "inline": "Inline",
+            "paste-cleanup": "Paste from MS Word",
+            "iframe": "IFrame",
+            "print": "Print",
+            "ajax-load": "Ajax Content",
+            "resize-editor": "Resizable Editor",
+            "api": "API",
+            "client-side-events": "Events",
+            "blog-posting": "Use Case",
+            "auto-save": "Auto Save",
+            "types": "Type",
+            "insert-emoticons": "Insert Emoticons",
+            "insert-special-characters": "Insert Special Characters",
+            "markdown-editor": "Overview",
+            "markdown-editor-preview": "Preview",
+            "markdown-editor-custom-format": "Custom Format",
+            "tribute": "Tribute JS"
+        }
+    },
+    "schedule": {
+        "ControlName": "Scheduler",
+        "Samples": {
+            "default": "Default Functionalities",
+            "local-data": "Local Data",
+            "remote-data": "Remote Data",
+            "calendar-integration": "Sync Google Calendar",
+            "recurrence-events": "Recurring Events",
+            "block-events": "Blocking Dates and Time",
+            "search-events": "Search Events",
+            "timezone": "Timezone",
+            "external-drag-drop": "External Drag and Drop",
+            "virtual-scrolling": "Virtual Scrolling",
+            "views": "Basic Views",
+            "timeline": "Timeline Views",
+            "agenda": "Agenda View",
+            "month-agenda": "Month Agenda View",
+            "year": "Year View",
+            "views-configuration": "Individual View Settings",
+            "extended-views": "View Intervals",
+            "timeline-resources": "Room Scheduler",
+            "resources": "Fare Calendar",
+            "resource": "Resources",
+            "group-editing": "Shared Events",
+            "group-custom-work-days": "Different Work Days",
+            "add-remove-resources": "Show/Hide Resources",
+            "adaptive-rows": "Row Auto Height",
+            "resource-grouping": "Horizontal Grouping",
+            "timeline-resource-grouping": "Timeline Grouping",
+            "group-by-date": "Date-wise Grouping",
+            "group-by-child": "Hierarchical Grouping",
+            "cell-template": "Cell",
+            "date-header-template": "Date Header",
+            "event-template": "Events",
+            "tooltip": "Tooltip",
+            "editor-validation": "Field Validation",
+            "editor-custom-field": "Additional Fields",
+            "editor-template": "Editor Template",
+            "header-rows": "Header Rows",
+            "time-scale": "Timescale",
+            "context-menu": "Context Menu",
+            "header-bar": "Header Bar",
+            "scroll-to": "Scroll Time",
+            "work-days": "Work Days",
+            "hide-weekend": "Hide Non-Working Days",
+            "work-hours": "Work Hours",
+            "start-end-hour": "Day Hour Limit",
+            "cell-dimension": "Cell Dimension",
+            "read-only-events": "Read-only Events",
+            "excel-export": "Excel Exporting",
+            "calendar-export-import": "Export and Import ICS",
+            "print": "Print",
+            "recurrence-editor-generate-rule": "Rule Generator",
+            "recurrence-editor-populate-rule": "Populate Rule",
+            "keyboard-interaction": "Keyboard Interaction",
+            "events": "Events"
+        }
+    },
+    "sidebar": {
+        "ControlName": "Sidebar",
+        "Samples": {
+            "default": "Default Functionalities",
+            "docking-sidebar": "Dock",
+            "api": "API",
+            "sidebar-menu": "Sidebar Menu",
+            "responsive-panel": "Responsive Panel",
+            "sidebar-list": "Sidebar With ListView"
+        }
+    },
+    "slider": {
+        "ControlName": "Range Slider",
+        "Samples": {
+            "default": "Default Functionalities",
+            "ticks": "Ticks",
+            "tooltip": "Tooltip",
+            "orientation": "Vertical Orientation",
+            "format": "Formatting",
+            "limits": "Limits",
+            "api": "API",
+            "events": "Events",
+            "thumb-customization": "Thumb",
+            "selection-bar-customization": "Bar",
+            "ticks-customization": "Ticks",
+            "tooltip-customization": "Tooltip",
+            "azure-pricing": "Cloud Pricing"
+        }
+    },
+    "smith-chart": {
+        "ControlName": "Smith Chart",
+        "Samples": {
+            "default": "Default",
+            "custom": "Customization",
+            "print-export": "Print and Export"
+        }
+    },
+    "sparkline": {
+        "ControlName": "Sparkline Charts",
+        "Samples": {
+            "default": "Default",
+            "series-types": "Series Types",
+            "axis-types": "Axis Value Types",
+            "spark-grid": "Sparkline in Grid",
+            "customization": "Customization",
+            "live-update": "Live Update",
+            "range-band": "Range Band"
+        }
+    },
+    "splitter": {
+        "ControlName": "Splitter",
+        "Samples": {
+            "default": "Default Functionalities",
+            "expand-and-collapse": "Expand and Collapse",
+            "accordion-navigation-menu": "Accordion Navigation Menu",
+            "details-view": "Details View",
+            "outlook-style-layout": "Outlook-style Layout",
+            "code-editor-layout": "Code Editor Layout"
+        }
+    },
+    "spreadsheet": {
+        "ControlName": "Spreadsheet",
+        "Samples": {
+            "default": "Default Functionalities",
+            "formula": "Formula",
+            "cell-data-binding": "Cell Data Binding",
+            "remote-data-binding": "Remote Data Binding",
+            "cell-formatting": "Cell Formatting",
+            "number-formatting": "Number Formatting"
+        }
+    },
+    "stock-chart": {
+        "ControlName": "Stock Chart",
+        "Samples": {
+            "default": "Default",
+            "ohlc": "OHLC",
+            "multi-pane": "Candlestick and volume",
+            "multiple-series": "Multiple Series",
+            "spline": "Spline",
+            "area": "Area",
+            "spline-area": "Spline Area",
+            "inversed-area": "Inversed Area",
+            "plot-line": "Plot lines",
+            "strip-line": "Plot band",
+            "period-customization": "Intraday",
+            "disabled-navigator": "Hide Range Selector",
+            "disabled-period": "Hide Period Selector",
+            "stock-events": "Stock Events"
+        }
+    },
+    "tab": {
+        "ControlName": "Tab",
+        "Samples": {
+            "default": "Default Functionalities",
+            "orientation": "Orientation",
+            "responsive-modes": "Responsive Modes",
+            "wizard": "Wizard"
+        }
+    },
+    "textboxes": {
+        "ControlName": "TextBox",
+        "Samples": {
+            "default": "Default Functionalities",
+            "multiline": "Multiline TextBox"
+        }
+    },
+    "timepicker": {
+        "ControlName": "TimePicker",
+        "Samples": {
+            "default": "Default Functionalities",
+            "time-range": "Time Range",
+            "time-format": "Format",
+            "list-formatting": "Time Duration"
+        }
+    },
+    "toast": {
+        "ControlName": "Toast",
+        "Samples": {
+            "default": "Default",
+            "types": "Types",
+            "templates": "Templates",
+            "positions": "Positions",
+            "api": "API"
+        }
+    },
+    "toolbar": {
+        "ControlName": "Toolbar",
+        "Samples": {
+            "default": "Default Functionalities",
+            "popup": "Popup",
+            "alignment": "Alignment"
+        }
+    },
+    "tooltip": {
+        "ControlName": "Tooltip",
+        "Samples": {
+            "default": "Default Functionalities",
+        "template": "Template",
+        "ajaxcontent": "Ajax Content",
+        "smartposition": "Smart Positioning",
+        "tooltip-menu": "Tooltip Menu",
+        "html-content": "HTML Content",
+        "api": "API"
+        }
+    },
+    "treegrid": {
+        "ControlName": "Tree Grid",
+        "Samples": {
+            "treegrid-overview": "Overview",
+            "default": "Default Functionalities",
+            "localdata": "Local Data",
+            "remote-data": "Remote Data",
+            "selfreference": "Self Reference",
+            "columnformatting": "Column Formatting",
+            "columntemplate": "Column Template",
+            "reorder": "Reorder",
+            "column-menu": "Column Menu",
+            "cellalignment": "Cell Alignment",
+            "autowrap": "AutoWrap Column Cells",
+            "showhidecolumn": "Show or Hide Column",
+            "header-template": "Header Template",
+            "stacked-header": "Stacked Header",
+            "checkbox-column": "Checkbox Column",
+            "frozencolumn": "Frozen Column",
+            "rowhover": "Row Hover",
+            "rowheight": "Row Height",
+            "row-template": "Row Template",
+            "detail-template": "Detail Template",
+            "drag-drop": "Drag And Drop",
+            "inline-editing": "Inline Editing",
+            "dialog-editing": "Dialog Editing",
+            "lockrow": "Lock Row",
+            "celledittype": "Cell Edit Type",
+            "commandcolumn": "Command Column",
+            "edittemplate": "Edit Template",
+            "sorting": "Multi Sorting",
+            "sortingapi": "Sorting API",
+            "filtering": "Default Filtering",
+            "filter-menu": "Menu Filter",
+            "searching": "Search",
+            "paging": "Default Paging",
+            "pagingapi": "Paging API",
+            "defaultscrolling": "Default Scrolling",
+            "virtualscrolling": "Virtual Scrolling",
+            "selection": "Default Selection",
+            "selectionapi": "Selection API",
+            "checkbox-selection": "Checkbox Selection",
+            "aggregate-default": "Default Aggregate",
+            "custom-aggregate": "Custom Aggregate",
+            "contextmenu": "Default Context Menu",
+            "customcontextmenu": "Custom Context Menu",
+            "export": "Default Exporting",
+            "print": "Print",
+            "conditionalformatting": "Conditional Formatting",
+            "toolbar-template": "Toolbar Template",
+            "events": "Events",
+            "keyboard": "KeyBoard Interaction",
+            "gridlines": "Grid Lines"
+        }
+    },
+    "treemap": {
+        "ControlName": "TreeMap",
+        "Samples": {
+            "default": "Default Functionalities",
+            "layout": "Layout",
+            "drilldown": "Drilldown",
+            "customization": "Customization",
+            "label": "Data Label",
+            "tooltip": "Tooltip",
+            "election": "Legend",
+            "color-mapping": "Color Mapping",
+            "selection": "Selection & Highlight",
+            "print": "Print & Export",
+            "pie": "Treemap with Pie",
+            "rtl": "RTL"
+        }
+    },
+    "treeview": {
+        "ControlName": "Tree View",
+        "Samples": {
+            "default": "Default Functionalities",
+            "icons": "Icons and Images",
+            "check-box": "Checkbox",
+            "node-editing": "Node Editing",
+            "multiple-selection": "Multiple Selection",
+            "drag-and-drop": "Drag and Drop",
+            "template": "Template",
+            "local-data": "Local Data",
+            "remote-data": "Remote Data"
+        }
+    },
+    "uploader": {
+        "ControlName": "Uploader",
+        "Samples": {
+            "default": "Default Functionalities",
+            "chunk-upload": "Chunk Upload",
+            "custom-file-list": "Template",
+            "preload-files": "Preload files",
+            "file-validation": "File Validation",
+            "image-preview": "Image Preview",
+            "file-upload-with-forms": "Form Support",
+            "custom-drop-area": "Custom Drop Area"
+        }
+    }
+}

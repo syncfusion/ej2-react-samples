@@ -44,7 +44,7 @@ export class Inline extends SampleBase<{}, {}> {
             <div className="content-wrapper">
               <RichTextEditorComponent id="inlineRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}
                 inlineMode={this.inlineMode} toolbarSettings={this.toolbarSettings} format={this.format} fontFamily={this.fontFamily}>
-                <p>The sample is configured with inline mode of editor. Initially, the editor is rendered without a <a href="https://ej2.syncfusion.com/home/" target='_blank'>toolbar</a>. The toolbar becomes visible only when the content is selected.</p>
+                <p>The sample is configured with the inline mode of the editor. Initially, the editor is rendered without a <a href="https://ej2.syncfusion.com/home/" target='_blank'>toolbar</a>. The toolbar becomes visible only when the content is selected.</p>
                 <Inject services={[Image, Link, QuickToolbar, HtmlEditor, Toolbar]} />
               </RichTextEditorComponent>
             </div>

@@ -26,7 +26,6 @@ const SAMPLE_CSS = `
 export class AxisCrossing extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
     private dropElement: DropDownListComponent;
-    private crossValue: HTMLInputElement;
     private checkboxElement: HTMLInputElement;
     private numericValue: NumericTextBoxComponent;
     private isChecked: boolean = true;
@@ -37,10 +36,10 @@ export class AxisCrossing extends SampleBase<{}, {}> {
     private change(): void {
         
         if (this.dropElement.value === 'X') {
-            this.crossValue.checked = this.chartInstance.primaryXAxis.placeNextToAxisLine;
+            this.checkboxElement.checked = this.chartInstance.primaryXAxis.placeNextToAxisLine;
             this.numericValue.value = +this.chartInstance.primaryXAxis.crossesAt;
         } else {
-            this.crossValue.checked = this.chartInstance.primaryYAxis.placeNextToAxisLine;
+            this.checkboxElement.checked = this.chartInstance.primaryYAxis.placeNextToAxisLine;
             this.numericValue.value = +this.chartInstance.primaryYAxis.crossesAt;
         }
         this.chartInstance.dataBind();

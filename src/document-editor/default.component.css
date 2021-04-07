@@ -156,11 +156,5 @@ body {
      font-weight: 600;
      font-size: 14px;
     }
-    .sf-icon-FinishMerge:before { content: "\e700";font-family: 'Font Mail merge icon' !important;
-        color: rgba(0, 0, 0, 0.54);
-        font-weight: 600;
-        font-size: 14px; }
-    .sf-icon-InsertMergeField:before { content: "\e701";font-family: 'Font Mail merge icon' !important;
-        color: rgba(0, 0, 0, 0.54);
-        font-weight: 600;
-        font-size: 14px; }
+    .sf-icon-FinishMerge:before { content: "\e700"; }
+    .sf-icon-InsertMergeField:before { content: "\e701"; }

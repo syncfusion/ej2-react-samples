@@ -203,7 +203,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                             resizing={this.resizing.bind(this)}
                             resizeStart={this.resizeStart.bind(this)}
                             resizeStop={this.resizeStop.bind(this)}>
-                            <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
+                            <p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
   Users can format their content using standard toolbar commands.</p>
                             <p><b>Key features:</b></p>
                             <ul>
@@ -226,7 +226,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                                     <p>Supports third-party library integration.</p>
                                 </li>
                                 <li>
-                                    <p>Allows preview of modified content before saving it.</p>
+                                    <p>Allows a preview of modified content before saving it.</p>
                                 </li>
                                 <li>
                                     <p>Handles images, hyperlinks, video, hyperlinks, uploads, etc.</p>

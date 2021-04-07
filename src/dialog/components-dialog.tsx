@@ -31,35 +31,35 @@ export class ComponentsDialog extends SampleBase<{}, { hideDialog: boolean; }> {
     private buttonRef: React.Ref<HTMLButtonElement>;
     private scheduleObj: ScheduleComponent;
 
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            hideDialog: true
-        };
-        this.buttonRef = element => {
-            this.buttonEle = element;
-        };
-        this.buttons = [{
-            click: () => {
-                this.dialogInstance.hide();
-            },
-            buttonModel: {
-                content: 'OK',
-                isPrimary: true
-            }
-        },
-        {
-            click: () => {
-                this.dialogInstance.hide();
-            },
-            buttonModel: {
-                content: 'CANCEL',
-            }
-        }];
-        this.animationSettings = { effect: 'None' };
-        
-     
-    }
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      hideDialog: true
+    };
+    this.buttonRef = element => {
+      this.buttonEle = element;
+    };
+    this.buttons = [{
+      click: () => {
+        this.dialogInstance.hide();
+      },
+      buttonModel: {
+        content: 'OK',
+        isPrimary: true
+      }
+    },
+    {
+      click: () => {
+        this.dialogInstance.hide();
+      },
+      buttonModel: {
+        content: 'CANCEL',
+      }
+    }];
+    this.animationSettings = { effect: 'None' };
+
+
+  }
 
   public floatFocus(args: any): void {
     args.target.parentElement.classList.add('e-input-focus');
@@ -70,8 +70,8 @@ export class ComponentsDialog extends SampleBase<{}, { hideDialog: boolean; }> {
   public onSubmitClick(): void {
     if(this.formObject.validate()) {
       this.formObject.element.reset();
-        }
     }
+  }
     public data1: any[] = [
         { x: new Date(2005, 0, 1), y: 21 }, { x: new Date(2006, 0, 1), y: 24 },
         { x: new Date(2007, 0, 1), y: 36 }, { x: new Date(2008, 0, 1), y: 38 },
@@ -277,14 +277,13 @@ public onChartLoad(args: ILoadedEventArgs): void {
     chart.setAttribute('title',  '');
 };
     private buttonClick(): void {
-        this.setState({ hideDialog: true });
+    this.dialogInstance.show();
     }
     private dialogClose(): void {
-        this.setState({ hideDialog: false });
-        this.buttonEle.style.display = "block";
+    this.buttonEle.style.display = "block";
     }
     private dialogOpen(): void {
-        this.buttonEle.style.display = "none";
+    this.buttonEle.style.display = "none";
     }
 
     public rendereComplete(): void {
@@ -314,7 +313,7 @@ public onChartLoad(args: ILoadedEventArgs): void {
             <div className='control-pane'>
                 <div id='targetElement' className='control-section col-lg-12 defaultDialogComponent dialog-target'>
                     <button className="e-control e-btn dlgbtn" ref={this.buttonRef} onClick={this.buttonClick.bind(this)} id="dialogBtn"> Open</button>
-              <DialogComponent id="defaultDialog" showCloseIcon={true} animationSettings={this.animationSettings} visible={this.state.hideDialog} width={'700px'} ref={dialog => this.dialogInstance = dialog}
+          <DialogComponent id="defaultDialog" showCloseIcon={true} animationSettings={this.animationSettings} visible={true} width={'700px'} ref={dialog => this.dialogInstance = dialog}
                 target={'#targetElement'} header='Syncfusion Components inside Dialog' buttons={this.buttons} open={this.dialogOpen.bind(this)} close={this.dialogClose.bind(this)}>
                 <TabComponent id="tab-wizard" ref={(tab) => { this.tabObj = tab }}>
                   <TabItemsDirective>

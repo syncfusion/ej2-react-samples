@@ -49,7 +49,7 @@ export class Default extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <div className='row'>
                         <div className='col-lg-12 control-section'>
-                            <QueryBuilderComponent width='70%' dataSource={employeeData} columns={this.columnData}
+                            <QueryBuilderComponent dataSource={employeeData} columns={this.columnData}
                                 rule={this.importRules} created={this.createdControl.bind(this)} ref={(scope) => { this.qbObj = scope; }} >
                             </QueryBuilderComponent>
                         </div>

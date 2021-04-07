@@ -659,6 +659,11 @@ div#sample-header {
     font-size: 25px;
 }
 
+.bootstrap4 .copycode::before{
+    content:'\e77b';
+    font-size:25px;
+}
+
 .copy-tooltip {
     height: 32px;
     width: 32px;
@@ -2451,7 +2456,6 @@ RTE toolbar not visible in fullscreen
 }
 
 .sb-npm-btn {
-    display: none;
     background: #fff;
     border: 1px solid #3c78ef;
     border-radius: 3px;

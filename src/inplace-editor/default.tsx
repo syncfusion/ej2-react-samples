@@ -61,22 +61,18 @@ export class Default extends SampleBase<{}, {}> {
     rendereComplete(): void {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
-            rightPane.addEventListener('scroll', () => {
-                this.scrollRightPane();
-            });
+            rightPane.addEventListener('scroll', this.scrollRightPane);
         }
     }
     componentWillUnmount() {
         let rightPane: HTMLElement = document.getElementById('right-pane');
         if (rightPane) {
-            rightPane.removeEventListener('scroll', () => {
-                this.scrollRightPane();
-            });
+            rightPane.removeEventListener('scroll', this.scrollRightPane);
         }
     }
     private scrollRightPane = () => {
-        let mode: string = (document.getElementById('editorMode') as HTMLSelectElement).value;
-        if (mode === 'Inline') {
+        let mode: HTMLSelectElement = (document.getElementById('editorMode') as HTMLSelectElement);
+        if (mode && mode.value === 'Inline') {
             return;
         }
         if (this.textObj && (this.textObj.element.querySelectorAll('.e-editable-open').length > 0)) {

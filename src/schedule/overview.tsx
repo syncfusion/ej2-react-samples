@@ -28,6 +28,7 @@ export class Overview extends SampleBase<{}, {}> {
   private contextMenuObj: ContextMenuComponent;
   private isTimelineView: boolean = false;
   private selectedTarget: Element;
+  private targetElement: HTMLElement;
   private intl: Internationalization = new Internationalization();
   private weekDays: { [key: string]: Object }[] = [
     { text: 'Sunday', value: 0 },
@@ -125,6 +126,18 @@ export class Overview extends SampleBase<{}, {}> {
     { Name: '12 hours', Value: 720 }
   ];
   private minorSlotData: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  private timeFormatData: { [key: string]: Object }[] = [
+    { Name: "12 hours", Value: "hh:mm a" },
+    { Name: "24 hours", Value: "HH:mm" }
+  ];
+
+  private weekNumberData: { [key: string]: Object }[] = [
+    { Name: 'Off', Value: 'Off' },
+    { Name: 'First Day of Year', Value: 'FirstDay' },
+    { Name: 'First Full Week', Value: 'FirstFullWeek' },
+    { Name: 'First Four-Day Week', Value: 'FirstFourDayWeek' }
+  ];
 
   private updateLiveTime(): void {
     let scheduleTimezone: string = this.scheduleObj ? this.scheduleObj.timezone : 'Etc/GMT';
@@ -244,13 +257,13 @@ export class Overview extends SampleBase<{}, {}> {
     );
   }
 
-  private weekNumberTemplate(): JSX.Element {
+  private multiDragTemplate(): JSX.Element {
     return (
       <div style={{ height: '46px', lineHeight: '23px' }}>
         <div className='icon-child' style={{ textAlign: 'center' }}>
-          <SwitchComponent id='week_number' checked={false} change={(args: SwitchEventArgs) => { this.scheduleObj.showWeekNumber = args.checked as boolean; }} />
+          <SwitchComponent id='multi_drag' checked={false} change={(args: SwitchEventArgs) => { this.scheduleObj.allowMultiDrag = args.checked as boolean; }} />
         </div>
-        <div className='text-child' style={{ fontSize: '14px' }}>Week Number</div>
+        <div className='text-child' style={{ fontSize: '14px' }}>Allow Multi Drag</div>
       </div>
     );
   }
@@ -548,11 +561,11 @@ export class Overview extends SampleBase<{}, {}> {
                       <ItemDirective prefixIcon='e-icons e-schedule-agenda-view' tooltipText='Agenda' text='Agenda' />
                       <ItemDirective tooltipText='Timeline Views' text='Timeline Views' template={this.timelineTemplate.bind(this)} />
                       <ItemDirective type='Separator' />
-                      <ItemDirective tooltipText='Week Number' text='Week Number' template={this.weekNumberTemplate.bind(this)} />
                       <ItemDirective tooltipText='Grouping' text='Grouping' template={this.groupTemplate.bind(this)} />
                       <ItemDirective tooltipText='Gridlines' text='Gridlines' template={this.gridlineTemplate.bind(this)} />
                       <ItemDirective tooltipText='Row Auto Height' text='Row Auto Height' template={this.autoHeightTemplate.bind(this)} />
                       <ItemDirective tooltipText='Tooltip' text='Tooltip' template={this.tooltipTemplate.bind(this)} />
+                      <ItemDirective tooltipText='Allow Multi Drag' text='Allow Multi Drag' template={this.multiDragTemplate.bind(this)} />
                     </ItemsDirective>
                   </ToolbarComponent>
                 </div>
@@ -604,11 +617,11 @@ export class Overview extends SampleBase<{}, {}> {
                           remove(newEventElement);
                           removeClass([document.querySelector('.e-selected-cell') as Element], 'e-selected-cell');
                         }
-                        let targetElement: HTMLElement = args.event.target as HTMLElement;
-                        if (closest(targetElement, '.e-contextmenu')) {
+                        this.targetElement = args.event.target as HTMLElement;
+                        if (closest(this.targetElement, '.e-contextmenu')) {
                           return;
                         }
-                        this.selectedTarget = closest(targetElement, '.e-appointment,.e-work-cells,.e-vertical-view .e-date-header-wrap .e-all-day-cells,.e-vertical-view .e-date-header-wrap .e-header-cells');
+                        this.selectedTarget = closest(this.targetElement, '.e-appointment,.e-work-cells,.e-vertical-view .e-date-header-wrap .e-all-day-cells,.e-vertical-view .e-date-header-wrap .e-header-cells');
                         if (isNullOrUndefined(this.selectedTarget)) {
                           args.cancel = true;
                           return;
@@ -639,7 +652,8 @@ export class Overview extends SampleBase<{}, {}> {
                           case 'Add':
                           case 'AddRecurrence':
                             let selectedCells: Element[] = this.scheduleObj.getSelectedElements();
-                            let activeCellsData: CellClickEventArgs = this.scheduleObj.getCellDetails(selectedCells.length > 0 ? selectedCells : this.selectedTarget);
+                            let activeCellsData: CellClickEventArgs = this.scheduleObj.getCellDetails(this.targetElement) ||
+                            this.scheduleObj.getCellDetails(selectedCells.length > 0 ? selectedCells : this.selectedTarget);
                             if (selectedMenuItem === 'Add') {
                               this.scheduleObj.openEditor(activeCellsData, 'Add');
                             } else {
@@ -768,6 +782,31 @@ export class Overview extends SampleBase<{}, {}> {
                       <div className='col-right'>
                         <DropDownListComponent id="slotInterval" width={170} dataSource={this.minorSlotData} value={2} popupHeight={150}
                           change={(args: ChangeEventArgs) => { this.scheduleObj.timeScale.slotCount = args.value as number; }} />
+                      </div>
+                    </div>
+                    <div className='col-row'>
+                      <div className='col-left'>
+                        <label style={{ lineHeight: '34px', margin: '0' }}>Time Format</label>
+                      </div>
+                      <div className='col-right'>
+                        <DropDownListComponent id="timeFormat" width={170} dataSource={this.timeFormatData} fields={{ text: 'Name', value: 'Value' }} value={"hh:mm a"} popupHeight={150}
+                          change={(args: ChangeEventArgs) => { this.scheduleObj.timeFormat = args.value as any; }} />
+                      </div>
+                    </div>
+                    <div className='col-row'>
+                      <div className='col-left'>
+                        <label style={{ lineHeight: '34px', margin: '0' }}>Week Numbers</label>
+                      </div>
+                      <div className='col-right'>
+                        <DropDownListComponent id="weekNumber" width={170} dataSource={this.weekNumberData} fields={{ text: 'Name', value: 'Value' }} value={"Off"} popupHeight={150}
+                          change={(args: ChangeEventArgs) => {
+                            if (args.value == "Off") {
+                              this.scheduleObj.showWeekNumber = false;
+                            } else {
+                              this.scheduleObj.showWeekNumber = true;
+                              this.scheduleObj.weekRule = args.value as any;
+                            }
+                          }} />
                       </div>
                     </div>
                   </div>

@@ -173,7 +173,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
     </p>
                     <p>
                     More information about cell template feature can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/documentation/spreadsheet/getting-started">
+        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/getting-started">
                             documentation</a> section.
     </p>
                 </div>

@@ -172,7 +172,7 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
               <div className="title-container">
                 <h1 className="title-text">Waiting List</h1>
               </div>
-              <TreeViewComponent ref={tree => this.treeObj = tree} cssClass='treeview-external-drag' nodeTemplate={this.treeTemplate.bind(this)} fields={this.fields} nodeDragStop={this.onTreeDragStop.bind(this)} nodeDragging={this.onItemDrag.bind(this)} allowDragAndDrop={this.allowDragAndDrops} />
+              <TreeViewComponent ref={tree => this.treeObj = tree} cssClass='treeview-external-drag' dragArea=".drag-sample-wrapper" nodeTemplate={this.treeTemplate.bind(this)} fields={this.fields} nodeDragStop={this.onTreeDragStop.bind(this)} nodeDragging={this.onItemDrag.bind(this)} allowDragAndDrop={this.allowDragAndDrops} />
             </div>
           </div>
         </div>

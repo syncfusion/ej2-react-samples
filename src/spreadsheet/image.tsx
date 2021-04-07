@@ -127,7 +127,7 @@ export class Image extends SampleBase<{}, {}> {
                 </p>
                 <p>
                     More information about the Spreadsheet component can be found in this <a target="_blank" href=
-                    "https://ej2.syncfusion.com/documentation/spreadsheet/getting-started"> documentation</a> section.
+                    "https://ej2.syncfusion.com/react/documentation/spreadsheet/getting-started"> documentation</a> section.
                 </p>
                 </div>
             </div>

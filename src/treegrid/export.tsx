@@ -6,9 +6,11 @@ import { sampleData } from './data';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { SampleBase } from '../common/sample-base';
 import { DialogUtility } from '@syncfusion/ej2-popups';
+import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
+import { PropertyPane } from '../common/property-pane';
 
 export class Export extends SampleBase<{}, {}> {
-
+  public collapsedStatePersist: boolean = true;
   public toolbarOptions: any = ['ExcelExport', 'PdfExport', 'CsvExport'];
   private treegridInstance: TreeGridComponent;
 
@@ -22,11 +24,17 @@ export class Export extends SampleBase<{}, {}> {
             DialogUtility.alert({content: innercontent});
       }
       else {
-        this.treegridInstance.pdfExport();
+        let pdfExportProperties = {
+          isCollapsedStatePersist: this.collapsedStatePersist
+        };
+        this.treegridInstance.pdfExport(pdfExportProperties);
       }
         break;
       case this.treegridInstance.grid.element.id + '_excelexport':
-        this.treegridInstance.excelExport();
+        let excelExportProperties = {
+          isCollapsedStatePersist: this.collapsedStatePersist
+        };
+        this.treegridInstance.excelExport(excelExportProperties);
         break;
       case this.treegridInstance.grid.element.id + '_csvexport':
         this.treegridInstance.csvExport();
@@ -34,10 +42,19 @@ export class Export extends SampleBase<{}, {}> {
     }
   }
 
+  public onChange(args: ChangeEventArgs): void {
+    if (args.checked) {
+      this.collapsedStatePersist = true;
+   } else {
+      this.collapsedStatePersist = false;
+  }
+  }
+
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
+          <div className = 'col-md-9'>
           <TreeGridComponent dataSource={sampleData} ref={ treegrid => this.treegridInstance = treegrid} treeColumnIndex={1}
             childMapping= 'subtasks' toolbar={this.toolbarOptions} toolbarClick={this.toolbarClick.bind(this)} height='410'
             allowExcelExport={true} allowPdfExport={true}>
@@ -52,10 +69,24 @@ export class Export extends SampleBase<{}, {}> {
             </ColumnsDirective>
             <Inject services={[Toolbar, ExcelExport, PdfExport]} />
           </TreeGridComponent>
+          </div>
+        <div className='col-md-3 property-section'>
+          <PropertyPane title='Export Customization'>
+              <table id='property'  className='property-panel-table' style={{ width: '100%' }}>
+                  <tr style={{ height: '50px' }}>
+                    <td style={{ width: '60%' }}>
+                        <CheckBoxComponent checked={true} label="Persist collapsed state" labelPosition="Before"
+                         change={ this.onChange.bind(this) } ></CheckBoxComponent>
+                    </td>
+                  </tr>
+              </table>
+          </PropertyPane>
         </div>
+      </div>
         <div id="action-description">
           <p>This sample demonstrates the client-side exporting of the Tree Grid, which allows you to
                 export its data to the Excel, Pdf and CSV formats. Use the toolbar buttons to export Tree Grid data to desired format. </p>
+                <p>By using the Persist collapsed state checkbox we can persist the Expand/Collpase state of Tree Grid in exported document </p>
         </div>
         <div id="description">
           <p>Tree Grid supports client-side exporting which allows you to export its data to the Excel, Pdf and CSV formats.</p>

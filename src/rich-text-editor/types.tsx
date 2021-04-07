@@ -100,14 +100,14 @@ export class Type extends SampleBase<{}, {}> {
             <RichTextEditorComponent id="typesRTE" ref={(scope) => { this.rteObj = scope; }}
               floatingToolbarOffset={0} toolbarSettings={this.toolbarSettings}
               actionBegin={this.handleFullScreen.bind(this)} actionComplete={this.actionCompleteHandler.bind(this)}>
-              <p>The Rich Text Editor is WYSIWYG ("what you see is what you get") editor useful to create and edit content, and return the valid HTML markup or markdown of the content</p>
+              <p>The Rich Text Editor is a WYSIWYG ("what you see is what you get") editor useful to create and edit content, and return the valid HTML markup or markdown of the content</p>
               <p><b>Toolbar</b></p>
               <ol>
                 <li>
-                  <p>Toolbar contains commands to align the text, insert link, insert image, insert list, undo/redo operations, HTML view, etc </p>
+                  <p>The Toolbar contains commands to align the text, insert a link, insert an image, insert list, undo/redo operations, HTML view, etc </p>
                 </li>
                 <li>
-                  <p>Toolbar is fully customizable </p>
+                  <p>The Toolbar is fully customizable </p>
                 </li>
               </ol>
               <p><b>Links</b></p>
@@ -143,7 +143,7 @@ export class Type extends SampleBase<{}, {}> {
                   <p>You can upload an image </p>
                 </li>
                 <li>
-                  <p>Provides an option to customize quick toolbar for an image </p>
+                  <p>Provides an option to customize the quick toolbar for an image </p>
                 </li>
               </ol>
               <img alt="Logo" src="./src/rich-text-editor/images/RTEImage-Feather.png" />

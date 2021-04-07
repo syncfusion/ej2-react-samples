@@ -71,11 +71,11 @@ export class Chart extends SampleBase<{}, {}> {
         <p>
             In this demo, the chart has been inserted in the specific cell position by using the <code>chart</code>
             property in the cell object. You can also insert a chart by using the <a target="_blank"
-            href="https://ej2.syncfusion.com/javascript/documentation/api/spreadsheet#insertchart">insertChart</a>
-            method.
+            href="https://ej2.syncfusion.com/javascript/documentation/api/spreadsheet#insertchart"> insertChart</a>
+             method.
             To enable or disable this feature use the <a target="_blank"
-            href="https://ej2.syncfusion.com/javascript/documentation/api/spreadsheet#allowchart">allowChart</a>
-            property in Spreadsheet.
+            href="https://ej2.syncfusion.com/javascript/documentation/api/spreadsheet#allowchart"> allowChart</a>
+             property in Spreadsheet.
         </p>
         <p>
             This sample is configured with import and export options. Use <b>Ctrl + O</b> to open an excel file
@@ -83,8 +83,7 @@ export class Chart extends SampleBase<{}, {}> {
         </p>
         <p>
             More information about the Spreadsheet component can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/documentation/spreadsheet/getting-started">
-             documentation</a> section.
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/getting-started"> documentation</a> section.
         </p>
     </div>
     </div>

@@ -12,7 +12,7 @@ export const KanbanSampleOrder: Object = [
     },
     {
         'path': 'kanban/workflow', 'component': 'Workflow', 'name': 'Workflow', 'order': '01', 'category': 'Kanban', 'api':
-            '{"KanbanComponent": ["dataSource", "keyField", "columns", "cardSettings"] }', 'type': 'new',
+            '{"KanbanComponent": ["dataSource", "keyField", "columns", "cardSettings"] }',
         'description': 'The example demonstrates a workflow feature that controls the flow of cards while drag-and-drop the cards between the columns.'
     },
     {

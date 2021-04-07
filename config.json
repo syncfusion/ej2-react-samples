@@ -111,6 +111,8 @@
 		"wip",
 		"validation",
 		"csvData",
-		"progressbar"
+		"progressbar",
+		"workflow",
+		"resizable"
 	]
 }

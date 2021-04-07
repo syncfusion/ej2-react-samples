@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { PivotViewComponent, IDataOptions, IDataSet } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, IDataSet, LoadEventArgs } from '@syncfusion/ej2-react-pivotview';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { csvdata } from './pivot-data/csvData';
@@ -106,6 +106,12 @@ export class Local extends SampleBase<{}, {}> {
         return data;
     }
 
+    onLoad(args: LoadEventArgs): void {
+        if (args.dataSourceSettings.type === 'CSV') {
+            args.dataSourceSettings.dataSource = this.getCSVData();
+        }
+    }
+
     render() {
         return (
             <div className='control-pane'>
@@ -130,7 +136,7 @@ export class Local extends SampleBase<{}, {}> {
                         </table>
                     </div>
                     <div className='content-wrapper'>
-                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={this.jsonReport} width={'100%'} height={'290'} gridSettings={{ columnWidth: 120 }}>
+                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} load={this.onLoad.bind(this)} dataSourceSettings={this.jsonReport} width={'100%'} height={'290'} gridSettings={{ columnWidth: 120 }}>
                         </PivotViewComponent>
                     </div>
                 </div>
