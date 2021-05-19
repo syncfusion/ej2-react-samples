@@ -15,7 +15,7 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-// custom code end
+
 
 export class Default extends SampleBase<{}, {}> {
     // Code for Property Panel

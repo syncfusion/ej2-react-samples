@@ -66,7 +66,7 @@ export class Pyramid extends SampleBase<{}, {}> {
   public onChartLoad(args: IAccLoadedEventArgs): void {
     document.getElementById('pyramid-chart').setAttribute('title', '');
   };
-      // custom code start
+      
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -77,7 +77,7 @@ export class Pyramid extends SampleBase<{}, {}> {
       args.accumulation.series[0].height = '70%';
     }
   };
-    // custom code end
+    
   public chartResized(args: IAccResizeEventArgs): void {
     let bounds: ClientRect = document.getElementById('pyramid-chart').getBoundingClientRect();
     if (bounds.width < bounds.height) {

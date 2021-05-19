@@ -30,7 +30,13 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
   ];
   private splitterInstance: SplitterComponent;
   private accordionInstance: AccordionComponent;
+  public list2: ListViewComponent;
+  public list3: ListViewComponent;
 
+  public rendereComplete(): void {
+    this.list2.element.style.display = "none";
+    this.list3.element.style.display = "none";
+  }
 
   private ListData1: { [key: string]: Object }[] = [
     { text: "Grid", id: "1" },
@@ -229,6 +235,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
     return (
       <ListViewComponent
       id="split-list2"
+      ref={(listview) => { this.list2 = listview }}
       dataSource={this.ListData2}
       select={this.onSelect.bind(this)}
     />
@@ -239,6 +246,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
     return (
       <ListViewComponent
       id="split-list3"
+      ref={(listview) => { this.list3 = listview }}
       dataSource={this.ListData3}
       select={this.onSelect.bind(this)}
     />   

@@ -136,7 +136,7 @@ export class Candle extends SampleBase<{}, {}> {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
-        // custom code start
+        
     public load(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
@@ -145,7 +145,7 @@ export class Candle extends SampleBase<{}, {}> {
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark") as ChartTheme;
     };
-        // custom code end
+        
     public axisLabelRender(args: IAxisLabelRenderEventArgs): void {
         if (args.axis.name === 'primaryYAxis') {
             args.text = this.getLabelText(+args.text);

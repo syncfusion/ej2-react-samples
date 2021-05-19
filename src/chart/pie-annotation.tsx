@@ -115,13 +115,13 @@ export class PieAnnotation extends SampleBase<{}, {}> {
             this.pie.appendTo('#chart_annotation');
         }
     };
-        // custom code start
+        
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
-        // custom code end
+        
     public chartMouseUp(args: IMouseEventArgs) {
         if (args.target.indexOf('Point') > -1 && args.target.indexOf('annotation') === -1) {
             let pointIndex: number = parseInt(args.target[args.target.length - 1], 10);

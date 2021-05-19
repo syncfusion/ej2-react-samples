@@ -61,12 +61,12 @@ export class PieRadius extends SampleBase<{}, {}> {
       </div>
     )
   }
-      // custom code start
+      
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
     args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
     replace(/-dark/i, "Dark") as AccumulationTheme;
   };
-     // custom code end
+     
 }

@@ -113,7 +113,7 @@ export class Numeric extends SampleBase<{}, {}> {
         let  chart:  Element  =  document.getElementById('charts');
         chart.setAttribute('title',  '');
     };
-        // custom code start
+        
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -123,5 +123,5 @@ export class Numeric extends SampleBase<{}, {}> {
                args.chart.series[1].fill = '#E58184';
             }
     };
-        // custom code end
+        
 }

@@ -29,7 +29,7 @@ export class Dragdrop extends SampleBase<{}, {}> {
     public i: number = 0;
 
     public onTabCreate(): void {
-        let tabElement = document.getElementById("#draggableTab");
+        let tabElement = document.getElementById("draggableTab");
         if (!isNullOrUndefined(tabElement)) {
             tabElement.querySelector(".e-tab-header").classList.add("e-droppable");
             tabElement.querySelector(".e-content").classList.add("tab-content");
@@ -57,8 +57,8 @@ export class Dragdrop extends SampleBase<{}, {}> {
         let dropElement: any = args.target.closest("#draggableTab .e-toolbar-item");
         if (dropElement != null) {
             let tabElement = document.querySelector("#draggableTab");
-            let itemPosition = (args.event.clientX < dropElement.getBoundingClientRect().left +
-                dropElement.offsetWidth / 2) ? 0 : 1;
+            let itemPosition = (((args.event.type.indexOf('touch') > -1) ? args.event.changedTouches[0].clientX
+                : args.event.clientX) < dropElement.getBoundingClientRect().left + dropElement.offsetWidth / 2) ? 0 : 1
             let dropItemIndex = [].slice.call(tabElement.querySelectorAll(".e-toolbar-item")).indexOf(dropElement) + itemPosition;
             let tabContent;
             switch (args.draggedNodeData.text) {
@@ -92,13 +92,8 @@ export class Dragdrop extends SampleBase<{}, {}> {
             let newTabItem = [{ header: { text: args.draggedNodeData.text.toString() }, content: tabContent }];
             this.tabObj.addTab(newTabItem, dropItemIndex);
             this.treeObj.removeNodes([args.draggedNode]);
-            args.cancel = true;
-        } else {
-            let dropNode = args.target.closest("#ListView .e-list-item ");
-            if (!isNullOrUndefined(dropNode) && args.dropIndicator === "e-drop-in") {
-                args.cancel = true;
-            }
         }
+        args.cancel = true;
     }
 
     public onNodeDrag(args: DragAndDropEventArgs) {
@@ -180,11 +175,11 @@ export class Dragdrop extends SampleBase<{}, {}> {
 
     public DropDownList() {
         let sportsData = ['Badminton', 'Cricket', 'Football', 'Golf', 'Tennis'];
-        return (<DropDownListComponent dataSource={sportsData} placeholder='Select a game' />);
+        return (<DropDownListComponent width='200px' dataSource={sportsData} placeholder='Select a game' />);
     }
 
     public DatePicker() {
-        return (<DatePickerComponent placeholder='Enter date' />);
+        return (<DatePickerComponent width='200px' placeholder='Enter date' />);
     }
 
     public Calendar() {

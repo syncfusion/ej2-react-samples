@@ -161,7 +161,7 @@ export class Drilldown extends SampleBase<{}, {}> {
     public onChartLoad(args: IAccLoadedEventArgs): void {
         document.getElementById('pie-chart').setAttribute('title', '');
     };
-        // custom code start
+        
     public load(args: IAccLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -172,5 +172,5 @@ export class Drilldown extends SampleBase<{}, {}> {
             args.accumulation.annotations[0].content = content;
          }
     };
-        // custom code end
+        
 }

@@ -96,12 +96,12 @@ export class EMA extends SampleBase<{}, {}> {
         chart.setAttribute('title', '');
         chart.setAttribute('align', 'center');
     };
-        // custom code start
+        
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").
         replace(/light/i, "Light")  as ChartTheme;
     };
-        // custom code end
+        
 }

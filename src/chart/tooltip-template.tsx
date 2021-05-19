@@ -117,5 +117,5 @@ Tooltip is enabled in this example, to see the tooltip in action, hover a point 
         let  chart:  Element  =  document.getElementById('chartTooltip');
         chart.setAttribute('title',  '');
     };
-        // custom code end
+        
 }

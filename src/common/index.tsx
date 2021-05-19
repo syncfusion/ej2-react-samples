@@ -761,10 +761,10 @@ function loadTheme(theme: string): void {
   body.classList.add(theme);
   themeList.querySelector('.active').classList.remove('active');
   themeList.querySelector('#' + theme).classList.add('active');
+  let doc: HTMLFormElement = document.getElementById('themelink') as HTMLFormElement;
+  doc.setAttribute('href','./styles/' + theme + '.css');
   let ajax: Ajax = new Ajax('./styles/' + theme + '.css', 'GET', true);
   ajax.send().then((result: any) => {
-    let doc: HTMLFormElement = document.getElementById('themelink') as HTMLFormElement;
-    doc.innerHTML = result;
     selectedTheme = theme;
     //renderPopups
     renderSbPopups();

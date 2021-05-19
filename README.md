@@ -119,7 +119,92 @@ Note: Here, '\*' Specifies that install the latest published package form the on
         "@syncfusion/ej2-react-grids": "*"
 },
 ```
-## Run your Sample Browser
+# Using the samples
+
+## Installing
+
+Before installation check `@syncfusion:registry=http://nexus.syncfusion.com/repository/ej2-production/` is available in npmrc file. Then use the below command to install all dependent packages.
+
+```
+npm install
+```
+
+## Build
+
+Use `npm run build` command to compile the source files. It calls the following tasks synchronously,
+
+1. SEO changes
+2. Build
+3. Styles ship
+4. Site-map generate.
+
+### SEO changes
+
+It will set meta data and description for the h1 tag to show our components first in search engine. Use the below command to run it individual. 
+
+```
+gulp SEO-changes
+```
+
+### Build
+
+Use the below command to generate scripts, styles, locale and sample lists.
+
+```
+gulp build
+```
+It runs the following tasks synchronously,
+
+1. Scripts
+2. Styles
+
+#### **Scripts**
+
+ It compiles the Typescript files and use the below command to run this task.
+
+```
+gulp scripts
+```
+
+#### **Styles**
+
+`gulp styles` command is used to compile default themes. It calls the following two tasks synchronously.
+
+1. Default theme
+2. Compile styles
+
+#### Default theme
+
+Use the below command to generate default theme files.
+
+```
+gulp default-theme
+```
+
+#### Compile Styles
+It compiles the scss file to css file. To run this task use the below command,
+
+```
+gulp compile-styles
+```
+
+### Styles Shipping
+
+It copies css files for themes from node_modules. Use the below command to run it individual.
+
+```
+gulp styles-ship
+```
+
+### Site map generation
+
+The below command combines sample of all components and store it in sitemap-demos.xml file to index our components, samples, documents in search engine.
+
+```
+gulp sitemap-generate
+```
+
+## Running the Sample Browser
 
 To run your sample browser you can use any of the following command.
 

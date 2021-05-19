@@ -184,7 +184,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
             args.template = args.series.name === 'Male' ? bootstrapMan : bootstrapWomen;
         }
     };
-        // custom code start
+        
     public loadPre(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -192,7 +192,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
         replace(/-dark/i, "Dark") as ChartTheme;
         theme = args.chart.theme;
     };
-        // custom code end
+        
     public loaded(args: ILoadedEventArgs): void {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');

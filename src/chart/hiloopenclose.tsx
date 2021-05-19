@@ -104,7 +104,7 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
             </div>
         )
     }
-       // custom code start
+       
     public load(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
@@ -113,7 +113,7 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark") as ChartTheme;
     };
-        // custom code end
+        
     public axisLabelRender(args: IAxisLabelRenderEventArgs): void {
         if (args.axis.title === 'Price') {
             args.text = '$' + args.text;
