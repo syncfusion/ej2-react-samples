@@ -154,7 +154,7 @@ export class Template extends SampleBase<{}, {}> {
             'label': 'Category',
             'field': 'Category',
             'type': 'string',
-            'operator': 'in',
+            'operator': 'equal',
             'value': ['Clothing']
         },
         {

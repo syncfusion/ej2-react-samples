@@ -5,7 +5,7 @@ export const StockChartSampleOrder: Object = [
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with Hilo Open Close series.' },
     { 'path': 'stock-chart/multi-pane', 'component': 'MultiPane', 'name': 'Candlestick and volume', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with candle series.' },
-    { 'path': 'stock-chart/multiple-series', 'component': 'MultipleSeries', 'name': 'Multiple Series', 'order': '01', 'category': 'Stock Chart',
+    { 'path': 'stock-chart/multiple-series', 'component': 'MultipleSeries', 'name': 'Multiple Series', 'order': '01', 'category': 'Stock Chart', 'type': 'update',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with multiple series.' },
     { 'path': 'stock-chart/spline', 'component': 'Spline', 'name': 'Spline', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with Spline series.' },

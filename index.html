@@ -25,7 +25,7 @@
     <link href="src/common/lib/content/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"></link>
     <link rel="shortcut icon" href="favicon.ico" />
-    <link id="themelink" href="styles/material.css" rel="stylesheet" />
+    <style id="themelink"></style>
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" href="./src/common/lib/highlightjs/styles/default.css" />
     <link href="src/common/lib/content/codemirror.css" rel="stylesheet"></link>
@@ -136,7 +136,7 @@
                             <span class='sb-download-text'>FREE TRIAL</span>
                         </button>
                     </a>
-                    <a href='https://www.npmjs.com/search?q=ej2-react' target="_blank" style=" display: none; ">
+                    <a href='https://www.npmjs.com/search?q=ej2-react' target="_blank">
                         <button class='sb-npm-btn'>
                             <img class="npm-svg" src="styles/images/NPM.svg" alt="npm icon"></span><span class="doc-npm-link">Install NPM</span>
                         </button>
@@ -190,6 +190,14 @@
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Bootstrap4</span>
                     </li>
+				    <li class="e-list" id="tailwind">
+                    <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                    <span class="switch-text">Tailwind</span>
+                    </li>
+                    <!--<li class="e-list" id="tailwind-dark">-->
+                    <!--<span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>-->
+                    <!--<span class="switch-text">Tailwind Dark</span>-->
+                    <!--</li>-->
                     <li class="e-list" id="highcontrast">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">High Contrast</span>
@@ -213,6 +221,8 @@
                                 <option value="fabric">Fabric</option>
                                 <option value="bootstrap">Bootstrap</option>
                                 <option value="bootstrap4">Bootstrap4</option>
+                                <!--<option value="tailwind-dark">Tailwind Dark</option>-->
+                                <option value="tailwind">Tailwind</option>
                                 <option value="highcontrast">High Contrast</option>
                             </select>
                         </div>

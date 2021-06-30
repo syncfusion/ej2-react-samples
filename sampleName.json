@@ -64,10 +64,14 @@
         "ControlName": "BulletChart",
         "Samples": {
             "default":"Default",
+            "multiple-data":"Multiple Data",
             "local-data":"Local Data",
             "right-to-left":"RTL",
+            "bar-customization":"Feature and Target Bar",
             "value-target-color":"value-target-color",
-            "customization":"Customization"
+            "customization":"Customization",
+            "tooltip":"Tooltip Template",
+            "bullet-legend":"Legend"
         }
     },
     "button": {
@@ -230,12 +234,14 @@
             "semi-circular-gauge": "Semi-Circular Gauge",
             "arc-gauge": "Arc Gauge",
             "legend": "Legend",
+            "gradient-color":"Gradient Color",
             "direction": "Direction Compass",
             "image": "Pointer Image",
             "pointers": "Pointer Customization",
             "axes": "Multiple Axis",
             "drag": "Pointer Drag",
             "tooltip": "Tooltip",
+            "export":"Print & Export",
             "sample-data": "Data Sample",
             "apple-watch-rings": "Apple Watch Rings",
             "speedometer": "Speedometer"
@@ -322,16 +328,17 @@
             "port": "Ports",
             "swim-lane": "SwimLane",
             "diagram-events": "Events",
-            "tooltip": "Tooltip",
+            "tool-tip": "Tooltip",
             "history-manager": "HistoryManager",
             "flow-execution": "Flow Execution",
             "custom-shapes": "Complex Shapes",
             "line-routing": "LineRouting",
+            "virtualization":"Virtualization",
             "bpmn-editor": "BPMN Editor",
             "logic-circuit": "Logic circuit Diagram",
-            "uml-activity": "UML Activity Diagram",
+            "activity": "UML Activity Diagram",
             "network-diagram": "Network Diagram",
-            "Uml-class-diagram": "UML Class Diagram",
+            "activity-class": "UML Class Diagram",
             "hierarchical-model": "Hierarchical Tree",
             "organization-model": "Organization Chart",
             "radial-tree": "Radial Tree",
@@ -366,7 +373,8 @@
             "resizable": "Resizable",
             "position": "Positioning",
             "animation": "Animation",
-            "multiple-dialogs": "Multiple Dialogs"
+            "multiple-dialogs": "Multiple Dialogs",
+            "components-dialog":"Components inside Dialog"
         }
     },
     "document-editor": {
@@ -386,8 +394,12 @@
             "right-to-left": "Right To Left",
             "custom-context-menu": "Custom Context Menu",
             "auto-save": "Auto Save",
+            "toolbar-customization":"Toolbar Customization",
             "chart": "Chart Preservation",
-            "document-protection": "Document Protection"
+            "document-protection": "Document Protection",
+            "web-layout":"Web Layout",
+            "comments":"Comments",
+            "form-fields": "Form Fields"
         }
     },
     "drop-down-list": {
@@ -407,6 +419,11 @@
         "ControlName": "Dropdown Tree",
         "Samples": {
             "default": "Default Functionalities",
+            "icons":"Icons and Images",
+            "checkbox":"Checkbox",
+            "multiple-selection":"Multiple Selection",
+            "template":"Template",
+            "filtering":"Filtering",
             "local-data": "Local Data",
             "remote-data": "Remote Data"
         }
@@ -424,7 +441,8 @@
             "nodejs-file-provider": "NodeJS File Provider",
             "AmazonS3Provider": "Amazon S3 File Provider",
             "firebase": "Firebase Realtime File Provider",
-            "FTP-file-provider":"FTP File Provider"
+            "FTP-file-provider":"FTP File Provider",
+            "ibm-cos-node-file-provider":"IBM Cloud File Provider"
         }
     },
     "form-validator": {
@@ -438,18 +456,25 @@
         "Samples": {
             "default": "Default Functionalities",
             "editing": "Editing",
+            "selection":"Selection",
             "context-menu": "Context Menu",
             "exporting": "Exporting",
             "filtering": "Filtering",
             "events": "Events",
             "keyboard-interactions": "Keyboard Interactions",
+            "drag-and-drop":"Row Drag And Drop",
+            "split-tasks":"Split Tasks",
+            "virtual-scroll":"VirtualScroll",
             "local-data": "Local Data",
             "remote-data": "Remote Data",
             "self-reference-data": "Self Reference Data",
             "work-week": "Workweek",
             "working-time-range": "Working Time Range",
             "holidays": "Holidays",
+            "taskMode":"Task Scheduling Mode",
             "resource-allocation": "Resource Allocation",
+            "resource-view":"Resource View",
+            "resource-multi-taskbar":"Resource Multi Taskbar",
             "event-markers": "Event Markers",
             "indicators": "Indicators",
             "baseline": "Baseline",
@@ -477,6 +502,7 @@
             "overview": "Overview",
             "default": "Default Functionalities",
             "grouping": "Grouping",
+            "lazy-load-grouping":"Lazy Load Grouping",
             "grid-lines": "GridLines",
             "hierarchy": "Hierarchy Grid",
             "clipboard": "Clipboard",
@@ -484,6 +510,7 @@
             "master-detail": "Master/Detail",
             "scrolling": "Default Scrolling",
             "virtualization": "Virtual Scrolling",
+            "infinite-scrolling": "Infinite Scrolling",
             "local-binding": "Local Data",
             "remote-data": "Remote Data",
             "custom-binding": "Custom Binding",
@@ -496,6 +523,7 @@
             "column-spanning": "Column Spanning",
             "column-template": "Column Template",
             "frozen-rows": "Frozen Rows And Columns",
+            "frozen-api":"Frozen API",
             "column-menu": "Column Menu",
             "foreign-key": "Foreign Key Column",
             "row-height": "Row Height",
@@ -540,11 +568,12 @@
             "empty-points": "Empty points",
             "inversed-axis": "Inversed Axis",
             "opposed-axis": "Opposed Axis",
-            "MultiLevelLabels": "Multi Level Labels",
+            "multi-level-labels": "Multi Level Labels",
             "cell-selection": "Selection",
             "legend": "Legend Placement",
             "large-data": "Large Data",
             "palette": "Palette Mode",
+            "color-range":"Color Range",
             "render-mode": "Rendering mode",
             "tooltip-template": "Tooltip Template"
         }
@@ -564,8 +593,11 @@
             "overview": "Overview",
             "default": "Default",
             "swimlane": "Swimlane",
+            "workflow":"Workflow",
             "stacked-header": "Stacked Header",
             "dialog-editing": "Dialog Editing",
+            "search-filter":"Search and Filter Cards",
+            "sorting":"Sorting Cards",
             "local-data": "Local Data",
             "remote-data": "Remote Data",
             "header-template": "Header Template",
@@ -588,8 +620,10 @@
             "ranges": "Ranges",
             "axes": "Axes and Pointers",
             "annotation": "Annotation",
+            "gradient-color":"Gradient Color",
             "tooltip": "Tooltip",
-            "style": "Styles"
+            "style": "Styles",
+            "export":"Print & Export"
         }
     },
     "list-box": {
@@ -636,6 +670,7 @@
             "tooltip": "Tooltip",
             "selection": "Selection & Highlight",
             "zooming": "Zooming & Panning",
+            "programmatic-zoom":"Zoom to fit all markers",
             "drilldown": "Drill down",
             "print": "Print",
             "export": "Export",
@@ -647,6 +682,7 @@
             "dynamic-marker": "Dynamic Markers",
             "map-pie": "Map with Pie chart",
             "map-with-slider": "Map with Slider",
+            "sales-maps":"Sales map",
             "seat-booking": "Bus seat booking"
         }
     },
@@ -707,7 +743,10 @@
             "default": "Default",
             "custom-toolbar": "Custom Toolbar",
             "right-to-left": "Right To Left",
-            "form-filling": "Form Filling"
+            "form-filling": "Form Filling",
+            "form-designer": "Form Designer",
+            "annotations": "Annotations",
+            "hand-written": "Handwritten Signature"
         }
     },
     "pivot-table": {
@@ -716,7 +755,7 @@
             "default": "Default Functionalities",
             "local": "Local Data",
             "remote": "Remote Data",
-            "Olap": "OLAP",
+            "olap": "OLAP",
             "pivot-chart": "Pivot Chart",
             "external-binding": "External Binding",
             "field-list": "Field List",
@@ -783,6 +822,7 @@
             "client-side-events": "Events",
             "blog-posting": "Use Case",
             "auto-save": "Auto Save",
+            "file-browser":"File Browser",
             "types": "Type",
             "insert-emoticons": "Insert Emoticons",
             "insert-special-characters": "Insert Special Characters",
@@ -795,6 +835,7 @@
     "schedule": {
         "ControlName": "Scheduler",
         "Samples": {
+            "overview":"Overview",
             "default": "Default Functionalities",
             "local-data": "Local Data",
             "remote-data": "Remote Data",
@@ -804,6 +845,7 @@
             "search-events": "Search Events",
             "timezone": "Timezone",
             "external-drag-drop": "External Drag and Drop",
+            "inline-editing": "Inline Editing",
             "virtual-scrolling": "Virtual Scrolling",
             "views": "Basic Views",
             "timeline": "Timeline Views",
@@ -827,6 +869,7 @@
             "date-header-template": "Date Header",
             "event-template": "Events",
             "tooltip": "Tooltip",
+            "quick-info-template":"Quick Info Template",
             "editor-validation": "Field Validation",
             "editor-custom-field": "Additional Fields",
             "editor-template": "Editor Template",
@@ -915,10 +958,16 @@
         "Samples": {
             "default": "Default Functionalities",
             "formula": "Formula",
+            "protect-sheet":"Protect Sheet",
             "cell-data-binding": "Cell Data Binding",
             "remote-data-binding": "Remote Data Binding",
             "cell-formatting": "Cell Formatting",
-            "number-formatting": "Number Formatting"
+            "number-formatting": "Number Formatting",
+            "conditional-formatting":"Conditional Formatting",
+            "sorting-and-filtering":"Sorting and Filtering",
+            "chart":"Chart",
+            "image":"Image",
+            "cell-template":"Cell Template"
         }
     },
     "stock-chart": {
@@ -1000,9 +1049,11 @@
         "Samples": {
             "treegrid-overview": "Overview",
             "default": "Default Functionalities",
+            "clipboard":"Clipboard",
             "localdata": "Local Data",
             "remote-data": "Remote Data",
             "selfreference": "Self Reference",
+            "column-chooser":"Column Chooser",
             "columnformatting": "Column Formatting",
             "columntemplate": "Column Template",
             "reorder": "Reorder",
@@ -1020,6 +1071,7 @@
             "detail-template": "Detail Template",
             "drag-drop": "Drag And Drop",
             "inline-editing": "Inline Editing",
+            "batch-edit":"Batch Editing",
             "dialog-editing": "Dialog Editing",
             "lockrow": "Lock Row",
             "celledittype": "Cell Edit Type",

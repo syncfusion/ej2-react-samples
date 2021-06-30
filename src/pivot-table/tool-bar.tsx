@@ -129,7 +129,7 @@ export class PivotToolbar extends SampleBase<{}, {}> {
                     <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'450'} showFieldList={true} gridSettings={{ columnWidth: 140 }}
                         allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                         newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
-                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis',load: this.chartOnLoad.bind(this) }}>
+                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis', load: this.chartOnLoad.bind(this) }}>
                         <Inject services={[FieldList, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting, NumberFormatting]} />
                     </PivotViewComponent>
                 </div>
@@ -184,7 +184,10 @@ export class PivotToolbar extends SampleBase<{}, {}> {
                             <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
                                 <code>Pivot Chart and its types:</code>
                             </td>
-                            <td>Allows user to view data in graphical format. The chart types include column, bar, line, area, etc.</td>
+                            <td>Allows user to view data in graphical format. The chart types include column, bar, line, area, etc. It
+                                also has options for showing and hiding legends and displaying chart series of different measures on
+                                single and multiple axes.
+                            </td>
                         </tr>
                         <tr>
                             <td style={{ verticalAlign: 'top', padding: '4px 0' }}>

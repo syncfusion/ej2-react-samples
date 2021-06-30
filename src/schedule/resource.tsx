@@ -10,6 +10,7 @@ import { SampleBase } from '../common/sample-base';
 import { Query, Predicate } from '@syncfusion/ej2-data';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { CheckBox } from '@syncfusion/ej2-buttons';
+import { PropertyPane } from '../common/property-pane';
 import * as dataSource from './datasource.json';
 
 export class Resource extends SampleBase<{}, {}> {
@@ -60,31 +61,33 @@ export class Resource extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div className='col-lg-3 property-section'>
-                    <table id="property" title="Resources" className='property-panel-table' style={{ width: '100%' }}>
-                        <tbody>
-                            <tr style={{ height: '50px' }}>
-                                <td style={{ width: '100%' }}>
-                                    <CheckBoxComponent ref={checkboxObj => this.ownerOneObj = checkboxObj} value='1'
-                                        id='margaret' cssClass='margaret' checked={true} label='Margaret'
-                                        change={this.onChange.bind(this)} ></CheckBoxComponent>
-                                </td>
-                            </tr>
-                            <tr style={{ height: '50px' }}>
-                                <td style={{ width: '100%' }}>
-                                    <CheckBoxComponent ref={checkboxObj => this.ownerTwoObj = checkboxObj} value='2'
-                                        id='robert' cssClass='robert' checked={true} label='Robert'
-                                        change={this.onChange.bind(this)} ></CheckBoxComponent>
-                                </td>
-                            </tr>
-                            <tr style={{ height: '50px' }}>
-                                <td style={{ width: '100%' }}>
-                                    <CheckBoxComponent ref={checkboxObj => this.ownerThreeObj = checkboxObj} value='3'
-                                        id='laura' cssClass='laura' checked={true} label='Laura'
-                                        change={this.onChange.bind(this)} ></CheckBoxComponent>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <PropertyPane title='Properties'>
+                        <table id="property" title="Resources" className='property-panel-table'>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <CheckBoxComponent ref={checkboxObj => this.ownerOneObj = checkboxObj} value='1'
+                                            id='margaret' cssClass='margaret' checked={true} label='Margaret'
+                                            change={this.onChange.bind(this)} ></CheckBoxComponent>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <CheckBoxComponent ref={checkboxObj => this.ownerTwoObj = checkboxObj} value='2'
+                                            id='robert' cssClass='robert' checked={true} label='Robert'
+                                            change={this.onChange.bind(this)} ></CheckBoxComponent>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <CheckBoxComponent ref={checkboxObj => this.ownerThreeObj = checkboxObj} value='3'
+                                            id='laura' cssClass='laura' checked={true} label='Laura'
+                                            change={this.onChange.bind(this)} ></CheckBoxComponent>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </PropertyPane>
                 </div>
                 <div id="action-description">
                     <p>This example demonstrates how to dynamically show or hide the appointments of resources on Scheduler based on

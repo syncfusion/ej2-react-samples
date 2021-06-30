@@ -17,6 +17,14 @@
     content: '\e787';
 }
 
+.tailwind #rteMarkdown .e-icon-btn .e-md-preview::before {
+    content: '\e7d0';
+}
+
+.tailwind #rteMarkdown .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e748';
+}
+
 #rteMarkdown .content-wrapper {
     width: auto;
     margin: 0;

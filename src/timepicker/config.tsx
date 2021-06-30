@@ -30,5 +30,13 @@ export const TimePickerSampleOrder: Object = [
             { 'displayName': 'list-formatting.jsx', 'path': 'src/timepicker/list-formatting.jsx' },
             { 'displayName': 'list-style.css', 'path': 'src/timepicker/list-style.css' }
         ]
+    },
+    {
+        'path': 'timepicker/input-mask', 'component': 'MaskSupport', 'name': 'Mask Support', 'description': 'This example demonstrates a simple, mobile-friendly and responsive React TimePicker to select a date with mask support.', 'order': '01', 'category': 'TimePicker', 'api': '{"TimePicker": ["enableMask"]}','type': 'new',
+        'sourceFiles': [
+            { 'displayName': 'input-mask.tsx', 'path': 'src/timepicker/input-mask.tsx' },
+            { 'displayName': 'input-mask.jsx', 'path': 'src/timepicker/input-mask.jsx' },
+            { 'displayName': 'default-style.css', 'path': 'src/timepicker/default-style.css' }
+        ]
     }
 ]

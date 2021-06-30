@@ -41,7 +41,7 @@ export class ParagraphFormatView extends SampleBase<{}, {}> {
                         <li>Line spacing.</li>
                         <li>List format.</li>
                     </ul>
-                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/paragraph-format/">documentation section.</a>
                     </p>
                 </div>
             </div>

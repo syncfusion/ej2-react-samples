@@ -126,8 +126,8 @@ export class Image extends SampleBase<{}, {}> {
                     This sample is configured with import and export options. Use <b>Ctrl + O</b> to open an excel file and <b>Ctrl + S</b> to save an excel file with a picture.
                 </p>
                 <p>
-                    More information about the Spreadsheet component can be found in this <a target="_blank" href=
-                    "https://ej2.syncfusion.com/react/documentation/spreadsheet/getting-started"> documentation</a> section.
+                    More information about the image can be found in this <a target="_blank" href=
+                    "https://ej2.syncfusion.com/react/documentation/spreadsheet/illustrations/#image"> documentation</a> section.
                 </p>
                 </div>
             </div>

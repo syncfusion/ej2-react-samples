@@ -27,6 +27,7 @@ import {
 } from '@syncfusion/ej2-react-dropdowns';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { Ajax } from '@syncfusion/ej2-base';
 
 let diagramInstance: DiagramComponent;
 let dialogInstance: DialogComponent;
@@ -187,6 +188,15 @@ export class Crud extends SampleBase<{}, {}> {
                 prefixIcon: 'e-ddb-crudicons e-delete',
                 id: 'Delete',
                 text: 'Delete'
+              },
+              {
+                type: 'Separator'
+              },
+              {
+                text: 'Reset',
+                tooltipText: 'Reset',
+                prefixIcon: 'e-ddc-icons e-reset',
+                id: 'Reset'
               }
             ]}
             clicked={(args: ClickEventArgs) => {
@@ -223,6 +233,13 @@ export class Crud extends SampleBase<{}, {}> {
                     targetDropdown.dataSource = getDataSource();
                     targetDropdown.dataBind();
                 }
+              }
+              switch (args.item.tooltipText) {
+                case 'Reset':
+                  let callback = new Ajax("https://js.syncfusion.com/demos/ejServices/api/Diagram/ResetData", 'POST');
+                  callback.send().then();
+                  diagramInstance.refreshDiagram();
+                  diagramInstance.refresh();
               }
             }}
             created={(args: Event) => {

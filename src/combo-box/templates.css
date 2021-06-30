@@ -87,3 +87,13 @@
 .e-bigger.bootstrap4 #employees_popup .ename {
     margin-top: 4px;
 }
+
+.tailwind #employees_popup .job {
+    margin-top: -10px;
+    margin-bottom: 4px;
+}
+
+.e-bigger.tailwind #employees_popup .job {
+    margin-top: -15px;
+    margin-bottom: 4px;
+}

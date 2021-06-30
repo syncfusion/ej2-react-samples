@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { PivotViewComponent, GroupingBar, IDataOptions, IDataSet, Inject, FieldList } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, GroupingBar, IDataOptions, IDataSet, Inject } from '@syncfusion/ej2-react-pivotview';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -19,9 +19,9 @@ let dataSourceSettings: IDataOptions = {
     formatSettings: [{ name: 'Amount', format: 'C0' }],
     dataSource: Pivot_Data,
     expandAll: false,
-    values: [{ name: 'In_Stock', caption: 'In Stock' }, { name: 'Sold', caption: 'Units Sold' },
+    values: [{ name: 'Sold', caption: 'Units Sold' },
     { name: 'Amount', caption: 'Sold Amount' }],
-    filters: [{ name: 'Product_Categories', caption: 'Product Categories' }]
+    filters: []
 };
 
 export class GroupingBarSample extends SampleBase<{}, {}> {
@@ -44,8 +44,8 @@ export class GroupingBarSample extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='col-lg-9 control-section' id='pivot-table-section' style={{ overflow: 'initial' }}>
-                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'450'} showGroupingBar={true} showFieldList={true} gridSettings={{columnWidth: 140}}>
-                        <Inject services={[GroupingBar, FieldList]} />
+                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'450'} showGroupingBar={true} groupingBarSettings={{showFieldsPanel: true}} gridSettings={{columnWidth: 140}}>
+                        <Inject services={[GroupingBar]} />
                     </PivotViewComponent>
                 </div>
                 <div className="col-lg-3 property-section">
@@ -91,20 +91,26 @@ export class GroupingBarSample extends SampleBase<{}, {}> {
                     <p>The pivot table grouping bar option automatically populates fields from the bound data source and allows end users
                         to drag fields between different axes such as columns, rows, values, and filters, and create pivot table at runtime.
                         To enable grouping bar, set the
-                            <code>showGroupingBar</code> property as true.</p>
+                        <code>showGroupingBar</code> property as true.</p>
                     <p>
                         Filter and sort icons allow displaying selective records and ordering them in ascending or descending order. The value type icon
                         allows to display values based on selected aggregate type. The remove icon
                         allows the user to remove the field from the report.
-                                </p>
+                    </p>
+                    <p>
+                        The fields panel, which is located above the grouping bar, displays the fields that are available in the data
+                        source but are not bound in the report. The fields can be dragged and dropped into the appropriate axis. In
+                        addition, any field removed from any axes will be automatically added to the fields panel. The fields panel can
+                        be displayed by setting the <code>showFieldsPanel</code> property in the <code>groupingBarSettings</code> to **true**.
+                    </p>
                     <p>
                         <strong>Injecting Module:</strong>
                     </p>
                     <p>
                         The pivot table features are segregated into individual modules. To take advantage of grouping bar support, we need
                         to inject the
-                                    <code> GroupingBar</code> module into the
-                                    <code> services</code>.
+                        <code> GroupingBar</code> module into the
+                        <code> services</code>.
                     </p>
                 </div>
             </div>

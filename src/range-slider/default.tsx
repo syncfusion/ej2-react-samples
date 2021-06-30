@@ -74,7 +74,7 @@ export class Default extends SampleBase<{}, {}> {
             </p>
             <p>
               More information on the Slider instantiation can be found in this
-                <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/getting-started.html">
+                <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/range-slider/getting-started.html">
                 documentation section</a>
             </p>
           </ul>

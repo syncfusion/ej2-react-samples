@@ -159,7 +159,7 @@ export class Format extends SampleBase<{}, {}> {
                         event in Ticks</li>
                     </ul>
                     <p>For more information, we can refer the
-                    <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/format.html?lang=es6">Format</a> section from the documentation.</p>
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/format/">Format</a> section from the documentation.</p>
                 </div>
 
             </div>

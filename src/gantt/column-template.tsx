@@ -7,7 +7,7 @@ import { SampleBase } from '../common/sample-base';
 export class ColumnTemplate extends SampleBase<{}, {}> {
 
   public columnTemplate(props): any {
-    var src = 'src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
+    var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
     if((props.ganttProperties.resourceNames)){
     return ( 
     <div className='columnTemplate'>

@@ -3,8 +3,8 @@
         "outDir": "./dist/",
         "sourceMap": true,
         "noImplicitAny": false,
-         "skipLibCheck": true,
         "module": "commonjs",
+         "skipLibCheck": true,
         "target": "es5",
         "jsx": "react",
         "lib": ["es5", "es6","es2015.promise", "dom"]

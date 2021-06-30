@@ -18,6 +18,14 @@
     content: '\e787';
 }
 
+.tailwind #rteCustomFormat .e-icon-btn .e-md-preview::before {
+    content: '\e7d0';
+}
+
+.tailwind #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e748';
+}
+
 #rteCustomFormat .e-rte-content .e-content {
     float: right;
     width: 50%;

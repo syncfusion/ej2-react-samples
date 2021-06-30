@@ -40,7 +40,7 @@ export class TableOfContentsView extends SampleBase<{}, {}> {
                         <li>Heading levels: The range of heading levels to be included in the table can be customized.</li>
                         <li>Styles: The style for each level of the table can be customized.</li>
                     </ul>
-                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/table-of-contents/">documentation section.</a>
                     </p>
                 </div>
             </div>

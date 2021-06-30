@@ -204,7 +204,7 @@ export class Limits extends SampleBase<{}, {}> {
                             <table>
                                 <tr>
                                     <td>
-                                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-limitData.html?lang=es6#minstart">minStart</a>
+                                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/limitData/#minstart">minStart</a>
                                     </td>
                                     <td>
                                         - &nbsp;&nbsp;Used to set minimum limit value for first handle.
@@ -212,7 +212,7 @@ export class Limits extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-limitData.html?lang=es6#minend">minEnd</a>
+                                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/limitData/#minend">minEnd</a>
                                     </td>
                                     <td>
                                         - &nbsp;&nbsp;Used to set maximum limit value for first handle.
@@ -220,7 +220,7 @@ export class Limits extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-limitData.html?lang=es6#maxstart">maxStart</a>
+                                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/limitData/#maxstart">maxStart</a>
                                     </td>
                                     <td>
                                         - &nbsp;&nbsp;Used to set minimum limit value for second handle.
@@ -228,7 +228,7 @@ export class Limits extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-limitData.html?lang=es6#maxend">maxEnd</a>
+                                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/limitData/#minstart">maxEnd</a>
                                     </td>
                                     <td>
                                         - &nbsp;&nbsp;Used to set maximum limit value for first handle.
@@ -236,7 +236,7 @@ export class Limits extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-limitData.html?lang=es6#starthandlefixed">startHandleFixed</a>
+                                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/limitData/#starthandlefixed">startHandleFixed</a>
                                     </td>
                                     <td>
                                         - &nbsp;&nbsp;Used to lock the first handle in the current position.
@@ -244,7 +244,7 @@ export class Limits extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-limitData.html?lang=es6#endhandlefixed">endHandleFixed</a>
+                                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/limitData/#endhandlefixed">endHandleFixed</a>
                                     </td>
                                     <td>
                                         - &nbsp;&nbsp;Used to lock the second handle in the current position.
@@ -259,7 +259,7 @@ export class Limits extends SampleBase<{}, {}> {
                         and the minimum and maximum limit of the second handle is set to 60 and 90 respectively.
                     </li>
                         </ul>
-                        <p>For more information, refer to the <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/limits.html?lang=es6">limits</a> section from the documentation.</p>
+                        <p>For more information, refer to the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/limits/">limits</a> section from the documentation.</p>
                     </div>
                 </div>
             </div>

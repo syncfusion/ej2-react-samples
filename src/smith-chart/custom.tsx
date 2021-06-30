@@ -12,7 +12,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
-
+// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -26,7 +26,7 @@ const slidercss = `
         margin: 0 auto;
         min-width: 100px;
     }`;
-
+// custom code end
 
 export class Customization extends SampleBase<{}, {}> {
     // Code for Property Panel

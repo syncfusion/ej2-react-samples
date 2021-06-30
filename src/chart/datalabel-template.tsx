@@ -47,7 +47,7 @@ let fabricWomen: string = '<div style="background-color:#ed7d31;border-radius: 3
 let bootstrapMan: string = '<div style="background-color:#a16ee5;border-radius: 3px;width: 68px">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
     '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
-    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px"><span>' +
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y}M </span></div></div>';
 let bootstrapWomen: string = '<div style="background-color:#f7ce69;border-radius: 3px;width: 68px">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
@@ -62,7 +62,17 @@ let highcontrastMan: string = '<div style="background-color:#79ECE4;border-radiu
 let highcontrastWomen: string = '<div style="background-color:#E98272;border-radius: 3px;">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
     '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
-    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px"><span>' +
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let tailwindMan: string = '<div style="background-color:#79ECE4;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let tailwindWomen: string = '<div style="background-color:#E98272;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y}M </span></div></div>';
 
 const SAMPLE_CSS = `
@@ -180,6 +190,8 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
             args.template = args.series.name === 'Male' ? materialMan : materialWomen;
         } else if (theme === 'Fabric') {
             args.template = args.series.name === 'Male' ? fabricMan : fabricWomen;
+        } else if (theme === 'Tailwind') {
+            args.template = args.series.name === 'Male' ? tailwindMan : tailwindWomen;
         } else {
             args.template = args.series.name === 'Male' ? bootstrapMan : bootstrapWomen;
         }

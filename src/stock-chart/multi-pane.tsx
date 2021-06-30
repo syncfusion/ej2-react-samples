@@ -77,7 +77,7 @@ export class MultiPane extends SampleBase<{}, {}> {
                         <StockChartSeriesCollectionDirective>
                             <StockChartSeriesDirective dataSource={chartData} xName='x' yName='close' type='Candle' yAxisName='yAxis1' >
                             </StockChartSeriesDirective>
-                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='volume' type='Column'>
+                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='volume' type='Column' enableTooltip={false}>
                             </StockChartSeriesDirective>
                         </StockChartSeriesCollectionDirective>
                     </StockChartComponent>

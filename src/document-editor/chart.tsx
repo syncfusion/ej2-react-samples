@@ -34,7 +34,7 @@ export class DocumentEditorChart extends SampleBase<{}, {}> {
             <div id="description">
                 <div>
                     <p>With Document Editor, you can see the chart reports from your word document</p>
-                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/chart/">documentation section.</a>
                     </p>
                 </div>
             </div>

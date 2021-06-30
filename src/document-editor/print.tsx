@@ -2,6 +2,8 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
 import { DocumentEditorComponent, DocumentEditor, ViewChangeEventArgs, Print } from '@syncfusion/ej2-react-documenteditor';
+import { TooltipComponent, Position } from '@syncfusion/ej2-react-popups';
+import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { DocumentLoader } from './document-loader';
 import { TitleBar } from './title-bar';
 import { StatusBar } from './status-bar';
@@ -18,9 +20,9 @@ export class PrintView extends SampleBase<{}, {}> {
     public documentLoader: DocumentLoader;
     public rendereComplete(): void {
         this.containerPanel = document.getElementById('documenteditor_container_panel');
-        this.updateContainerSize();
         this.documenteditor.pageOutline = '#E0E0E0';
         this.documenteditor.resize();
+        this.documenteditor.documentEditorSettings.printDevicePixelRatio = 2;
         this.documentLoader = new DocumentLoader(this.documenteditor);
         this.onLoadDefault();
         this.documenteditor.viewChange = (e: ViewChangeEventArgs) => {
@@ -33,22 +35,21 @@ export class PrintView extends SampleBase<{}, {}> {
         this.statusBar = new StatusBar(document.getElementById('documenteditor_statusbar'), this.documenteditor);
         this.applyPageCountAndDocumentTitle();
         document.getElementById('uploadfileButton').addEventListener('change', this.onFileChange);
-        window.addEventListener('resize', this.updateContainerSize);
+        
         document.getElementById('uploadfileButton').setAttribute('accept', '.doc,.docx,.rtf,.txt,.sfdt');
         this.documenteditor.zoomFactorChange = (): void => {
             this.statusBar.updateZoomContent();
         };
-        window.addEventListener('resize', (): void => { this.updateContainerSize(); });
     }
     render() {
         return (<div className='control-pane'>
-            <div className="control-section">
+            <div className="col-lg-8 control-section">
                 <input type="file" id="uploadfileButton" style={{ position: 'fixed', left: '-100em' }} />
                 <div id="panel">
                 <div id='documenteditor_titlebar' className="e-de-ctn-title">
                         </div>
                         <div id="documenteditor_container_panel" style={{ position: 'relative' }}>
-                            <DocumentEditorComponent id="container" ref={(scope) => { this.documenteditor = scope; }} enablePrint={true} />
+                            <DocumentEditorComponent id="container" ref={(scope) => { this.documenteditor = scope; }} height={'590px'} enablePrint={true} />
                         </div>
                     <div id="documenteditor_statusbar">
                     </div>
@@ -59,6 +60,25 @@ export class PrintView extends SampleBase<{}, {}> {
                             </svg>
                         </div>
                 </div>
+            </div>
+            <div className="col-lg-4 property-section">
+                <div style={{'paddingTop': '20px'}}>
+                    <b >Document Editor settings</b>
+                </div>
+                <table style={{'marginTop': '10px', 'marginBottom': '30px'}}>
+                    <tr>
+                        <td style={{'width': '50%'}}>
+                            <span style={{'paddingRight': '10px'}}>Device pixel ratio:</span>
+                        </td>
+                        <td style={{'width': '50%'}}>
+                            <TooltipComponent target='#printNumeric' content='Specifies the device pixel ratio for the image generated while printing the document.'>
+                                <NumericTextBoxComponent id='printNumeric' width='120px' value={2} min={1} max={10} step={0.5} format='n'
+                                    decimals={1} change={this.onPixelRatioChange.bind(this)} >
+                                </NumericTextBoxComponent>
+                            </TooltipComponent>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div id="action-description">
                 <p>This sample demonstrates how to view and print Word documents online using document editor.</p>
@@ -72,9 +92,9 @@ export class PrintView extends SampleBase<{}, {}> {
                 <ul>
                     <li>Open Word documents with document elements like text, images, hyperlinks, tables, bookmarks, page numbers, tables of contents, headers, and footers.</li>
                     <li>Scroll or navigate to specific pages.</li>
-                    <li>Print Word documents.</li>
+                    <li>Print Word documents in required quality by using your own device pixel ratio.</li>
                 </ul>
-                <p style={{ display: 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                <p style={{ display: 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/print/">documentation section.</a>
 
                 </p>
             </div>
@@ -82,6 +102,10 @@ export class PrintView extends SampleBase<{}, {}> {
         );
     }
 
+
+    onPixelRatioChange = (args: any): void  => {
+        this.documenteditor.documentEditorSettings.printDevicePixelRatio = args.value;
+    }
 
     onFileChange = (args: any): void => {
         if (args.target.files[0]) {

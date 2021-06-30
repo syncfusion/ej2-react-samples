@@ -4,7 +4,10 @@ import {
     ScheduleComponent, ViewsDirective, ViewDirective, Resize, DragAndDrop, ResourcesDirective, ResourceDirective,
     EventRenderedArgs, Inject, Year as YearView, TimelineYear
 } from '@syncfusion/ej2-react-schedule';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import './schedule-component.css';
+import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 
 /**
@@ -18,9 +21,24 @@ export class Year extends SampleBase<{}, {}> {
         { text: 'Steven', id: 2, color: '#7fa900' },
         { text: 'Robert', id: 3, color: '#ea7a57' },
         { text: 'Smith', id: 4, color: '#5978ee' },
-        { text: 'Micheal', id: 5, color: '#df5286' }
+        { text: 'Michael', id: 5, color: '#df5286' }
     ];
     private data: Object[] = this.generateEvents();
+    private months: { [key: string]: Object }[] = [
+        { text: 'January', value: 0 },
+        { text: 'February', value: 1 },
+        { text: 'March', value: 2 },
+        { text: 'April', value: 3 },
+        { text: 'May', value: 4 },
+        { text: 'June', value: 5 },
+        { text: 'July', value: 6 },
+        { text: 'August', value: 7 },
+        { text: 'September', value: 8 },
+        { text: 'October', value: 9 },
+        { text: 'November', value: 10 },
+        { text: 'December', value: 11 }
+    ];
+    private fields: Object = { text: 'text', value: 'value' };
 
     private onEventRendered(args: EventRenderedArgs): void {
         let eventColor: string = args.data.EventColor as string;
@@ -29,6 +47,14 @@ export class Year extends SampleBase<{}, {}> {
         } else {
             args.element.style.backgroundColor = eventColor;
         }
+    }
+
+    private firstMonthOfYear(args: { [key: string]: Object }) {
+        this.scheduleObj.firstMonthOfYear = args.value as number;
+    }
+
+    private numberOfMonths(args: { [key: string]: Object }) {
+        this.scheduleObj.monthsCount = args.value as number;
     }
 
     private generateEvents(count: number = 250, date: Date = new Date()): Object[] {
@@ -68,31 +94,60 @@ export class Year extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='schedule-control-section'>
-                <div className='col-lg-12 control-section'>
+                <div className='col-lg-9 control-section'>
                     <div className='control-wrapper'>
-                        <ScheduleComponent width='100%' height='555px' ref={schedule => this.scheduleObj = schedule}
-                            eventSettings={{ dataSource: this.data }} eventRendered={this.onEventRendered.bind(this)}>
+                        <ScheduleComponent width='100%' height='555px' cssClass="year-view" ref={schedule => this.scheduleObj = schedule}
+                            eventSettings={{ dataSource: this.data }} firstMonthOfYear={0} monthsCount={12} eventRendered={this.onEventRendered.bind(this)}>
                             <ResourcesDirective>
                                 <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true}
                                     dataSource={this.categoriesData} textField='text' idField='id' colorField='color'>
                                 </ResourceDirective>
                             </ResourcesDirective>
                             <ViewsDirective>
-                                <ViewDirective option='Year' />
-                                <ViewDirective option='TimelineYear' displayName='Horizontal TimelineYear' isSelected={true} />
+                                <ViewDirective option='Year' isSelected={true} />
+                                <ViewDirective option='TimelineYear' displayName='Horizontal TimelineYear' />
                                 <ViewDirective option='TimelineYear' displayName='Vertical TimelineYear' orientation="Vertical" group={{ resources: ['Categories'] }} />
                             </ViewsDirective>
                             <Inject services={[YearView, TimelineYear, Resize, DragAndDrop]} />
                         </ScheduleComponent>
                     </div>
                 </div>
+                <div className='col-lg-3 property-section'>
+                    <PropertyPane title='Properties'>
+                        <table id='property' title='Properties' className='property-panel-table year-property-panel'>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <DropDownListComponent id="firstMonthElement" placeholder="First month of year" floatLabelType="Always" fields={this.fields} value={0} dataSource={this.months} change={this.firstMonthOfYear.bind(this)}>
+                                            </DropDownListComponent>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <NumericTextBoxComponent id="numberOfMonthsElement" placeholder="Number of months" floatLabelType="Always" format='###.##' min={1} max={24} value={12} change={this.numberOfMonths.bind(this)} />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </PropertyPane>
+                </div>
                 <div id='action-description'>
-                    <p>This demo shows the experience of showing the annual year events in a single view with different orientations.</p>
+                    <p>
+                        This example showcases the year and timeline year views of the Scheduler with the firstMonthOfYear and
+                        monthCount properties customizations. Once the property value has been changed in the properties, it will be
+                        reflected in the Scheduler.
+                    </p>
                 </div>
                 <div id='description'>
                     <p>
-                        In this demo, we have showcased the year and timeline year views that help to view the appointment in an annual calendar view. The view options are enabled by using the views property.
-                        In the <code>TimelineYear</code>, <code>Horizontal</code> and <code>Vertical</code> orientations are available to view the events with a different layout.
+                        In this demo, we have showcased the year and timeline year views that help to view the appointment in an annual calendar view.
+                        The view options are enabled by using the views property. In the <code>TimelineYear</code>, <code>Horizontal</code> and <code>Vertical</code>
+                        orientations are available to view the events with a different layout. Also this demo explains the customization of the different
+                        starting month of the year using <code>firstMonthOfYear</code> property and the number of months using the <code>monthsCount</code> property.
                     </p>
                     <p>
                         <strong>Module Injection</strong>

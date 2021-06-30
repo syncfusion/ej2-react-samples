@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { extend, Internationalization } from '@syncfusion/ej2-base';
+import { extend, Internationalization, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
@@ -72,13 +72,17 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
     public buttonClickActions(e: Event) {
         const quickPopup: HTMLElement = this.scheduleObj.element.querySelector('.e-quick-popup-wrapper') as HTMLElement;
         const getSlotData: Function = (): { [key: string]: Object } => {
-            const cellDetails: CellClickEventArgs = this.scheduleObj.getCellDetails(this.scheduleObj.getSelectedElements());
+            let cellDetails: CellClickEventArgs = this.scheduleObj.getCellDetails(this.scheduleObj.getSelectedElements());
+            if (isNullOrUndefined(cellDetails)) {
+                cellDetails = this.scheduleObj.getCellDetails(this.scheduleObj.activeCellsData.element);
+            }
             const addObj: { [key: string]: Object } = {};
             addObj.Id = this.scheduleObj.getEventMaxID();
-            addObj.Subject = this.titleObj.value;
+            addObj.Subject = isNullOrUndefined(this.titleObj.value) ? 'Add title' : this.titleObj.value;
             addObj.StartTime = new Date(+cellDetails.startTime);
             addObj.EndTime = new Date(+cellDetails.endTime);
-            addObj.Description = this.notesObj.value;
+            addObj.IsAllDay = cellDetails.isAllDay;
+            addObj.Description = isNullOrUndefined(this.notesObj.value) ? 'Add notes' : this.notesObj.value;
             addObj.RoomId = this.eventTypeObj.value;
             return addObj;
         };

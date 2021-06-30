@@ -46,5 +46,13 @@ export const DatePickerSampleOrder: Object = [
             { 'displayName': 'month-picker.jsx', 'path': 'src/datepicker/month-picker.jsx' },
             { 'displayName': 'monthpicker-style.css', 'path': 'src/datepicker/monthpicker-style.css' }
         ]
+    },
+    {
+        'path': 'datepicker/input-mask', 'component': 'MaskSupport', 'name': 'Mask Support', 'description': 'This example demonstrates a simple, mobile-friendly and responsive React DatePicker to select a date with mask support.', 'order': '01', 'category': 'DatePicker', 'api': '{"DatePickerComponent": [ "enableMask"]}', 'type': 'new',
+        'sourceFiles': [
+            { 'displayName': 'input-mask.tsx', 'path': 'src/datepicker/input-mask.tsx' },
+            { 'displayName': 'input-mask.jsx', 'path': 'src/datepicker/input-mask.jsx' },
+            { 'displayName': 'mask-style.css', 'path': 'src/datepicker/mask-style.css' }
+        ]
     }
 ]

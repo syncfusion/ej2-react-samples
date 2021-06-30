@@ -39,7 +39,7 @@ export class SectionFormatView extends SampleBase<{}, {}> {
                         <li>Header distance from the top.</li>
                         <li>Footer distance from the bottom.</li>
                     </ul>
-                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/section-format/">documentation section.</a>
                     </p>
                 </div>
             </div>

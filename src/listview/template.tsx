@@ -61,7 +61,6 @@ export class Template extends SampleBase<{}, {}> {
         this.share = document.getElementsByClassName('share');
         this.comments = document.getElementsByClassName('comments');
         this.bookmark = document.getElementsByClassName('bookmark');
-        this.description = document.getElementsByClassName('e-list-content');
         this.timeStamp = document.getElementsByClassName('timeStamp');
         this.postActions();
     }
@@ -88,12 +87,6 @@ export class Template extends SampleBase<{}, {}> {
             });
         }
 
-        for (let i: number = 0; i < this.description.length; i++) {
-            this.description[i].addEventListener('click', (event: any) => {
-                event.stopPropagation();
-            });
-        }
-
         for (let i: number = 0; i < this.timeStamp.length; i++) {
             this.timeStamp[i].addEventListener('click', (event: any) => {
                 event.stopPropagation();
@@ -111,17 +104,15 @@ export class Template extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="action-description">
-                    <p>This sample demonstrates the Template functionalities of the ListView. Click any news header or thumbnail to open the
-        complete article. To navigate back to the news list, click the back icon at the top left area.
-    </p>
+                    <p>This sample demonstrates the template functionalities of the ListView. Click any news header or thumbnail to open
+                       the complete article. To navigate back to the news list, click the back icon at the top left area.
+                    </p>
                 </div>
 
                 <div id="description">
-                    <p>The above template represents the customizability of the ListView component. Here, data is loaded from JSON and its value
-        is directly mapped to our ListView datasource to load the content.</p>
-
-                    <p>This sample, also have the additional elements like bookmark, comments, and share that can be customized to perform the
-        appropriate action by adding our own events.</p>
+                    <p>The above template represents the customizability of the ListView component. Here, list data is loaded and its value is directly mapped to your ListView datasource to load the content.</p>
+    
+                    <p>This sample also have the additional elements such as bookmark, comments, and share that can be customized to perform the appropriate action by adding your own events.</p>
                 </div>
             </div>
         )

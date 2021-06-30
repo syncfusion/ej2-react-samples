@@ -35,7 +35,7 @@ export class Cascading extends SampleBase<{}, {}> {
 
   public countryChange(): void {
     // enable the state ComboBox
-    this.stateObj.enabled = true;
+    this.stateObj.enabled = this.countryObj.value != null;
     // query the data source based on country ComboBox selected value
     let tempQuery: Query = new Query().where('CountryId', 'equal', this.countryObj.value);
     this.stateObj.query = tempQuery;

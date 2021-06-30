@@ -11,7 +11,7 @@ import {
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
-
+// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -27,7 +27,7 @@ const SAMPLE_CSS = `
     .e-play-icon::before {
         content: "\\e813";
     }`;
-    
+    // custom code end
 export class Print extends SampleBase<{}, {}> {
     // Code for Property Panel
     private smithchartInstance: SmithchartComponent;

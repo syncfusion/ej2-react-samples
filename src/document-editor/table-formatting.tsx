@@ -39,7 +39,7 @@ export class TableFormatView extends SampleBase<{}, {}> {
                         <li>Horizontal and vertical cell merge.</li>
                         <li>Borders and shading.</li>
                     </ul>
-                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/table-format/">documentation section.</a>
                     </p>
                 </div>
             </div>

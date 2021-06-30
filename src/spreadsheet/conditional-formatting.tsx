@@ -87,7 +87,7 @@ export class ConditionalFormatting extends SampleBase<{}, {}> {
         </p>
         <p>
             More information about the Spreadsheet component can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/getting-started">
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/formatting/#conditional-formatting">
             documentation</a> section.
         </p>
     </div>

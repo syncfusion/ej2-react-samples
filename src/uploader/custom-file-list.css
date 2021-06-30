@@ -131,6 +131,13 @@
 .bootstrap4 .template_wrapper .close-icon-container.delete-icon::before {
     content: '\e773';
 }
+.tailwind .template_wrapper .close-icon-container.delete-icon::before {
+    content: '\e78d';
+}
+
+.tailwind .template_wrapper .close-icon-container.delete-icon {
+    top: 10px;
+}
 
 
 .template_wrapper .close-icon-container:hover {

@@ -34,7 +34,7 @@ export class Cascading extends SampleBase<{}, {}> {
   private cityFields: Object = { text: 'CityName', value: 'CityId' };
 
   public countryChange(): void {
-    this.stateObj.enabled = true;
+    this.stateObj.enabled = this.countryObj.value != null;
     // query the data source based on country DropDownList selected value
     let tempQuery: Query = new Query().where('CountryId', 'equal', this.countryObj.value);
     this.stateObj.query = tempQuery;

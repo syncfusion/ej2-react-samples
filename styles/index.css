@@ -2456,6 +2456,7 @@ RTE toolbar not visible in fullscreen
 }
 
 .sb-npm-btn {
+    display: none;
     background: #fff;
     border: 1px solid #3c78ef;
     border-radius: 3px;
@@ -2465,6 +2466,7 @@ RTE toolbar not visible in fullscreen
     color: #3c78ef;
     margin: 0px 0 0 11px;
     cursor: pointer;
+    display:none;
 }
 
 .doc-npm-link {
@@ -2491,4 +2493,16 @@ RTE toolbar not visible in fullscreen
     bottom: -1px;
     width: 20%;
     right: 3px;
+}
+
+.tailwind .e-samplestatus.new.tree, .tailwind .e-samplestatus.update.tree, .tailwind .e-samplestatus.preview.tree {
+    margin: 12px 0;
+    height: 22px;
+    margin-top: 8px;
+}
+ 
+.tailwind .e-samplestatus.new, .tailwind .e-samplestatus.update, .tailwind .e-samplestatus.preview {
+    margin: 12px 0;
+    height: 22px;
+    margin-top: 2px;
 }

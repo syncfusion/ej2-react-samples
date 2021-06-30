@@ -10,7 +10,7 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import {
     EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator,
-    AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator ,Export
+    AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator ,Export, RangeTooltip
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { aapl } from './stock-data';
@@ -91,7 +91,7 @@ export class StockEvents extends SampleBase<{}, {}> {
                         ]}
                     >
                         <Inject services={[DateTime, StripLine, LineSeries, Crosshair, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
-                        EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,
+                        EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export, RangeTooltip,
                         AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator]} />
                         <StockChartSeriesCollectionDirective>
                             <StockChartSeriesDirective dataSource={aapl} xName='x' yName='high' type='Spline' name='google' close='high'>

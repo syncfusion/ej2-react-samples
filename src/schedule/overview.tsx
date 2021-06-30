@@ -11,7 +11,7 @@ import {
 import {
   ResourcesModel, ScheduleComponent, Day, Week, WorkWeek, Month, Year, TimelineViews, TimelineMonth, TimelineYear,
   ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop, Agenda, Print,
-  ICalendarImport, ICalendarExport, CellClickEventArgs, Timezone, CurrentAction
+  ExcelExport, ICalendarImport, ICalendarExport, CellClickEventArgs, Timezone, CurrentAction
 } from '@syncfusion/ej2-react-schedule';
 import { DropDownButtonComponent, ItemModel, MenuEventArgs } from '@syncfusion/ej2-react-splitbuttons';
 import { addClass, Browser, closest, extend, Internationalization, isNullOrUndefined, removeClass, remove } from '@syncfusion/ej2-base';
@@ -28,7 +28,6 @@ export class Overview extends SampleBase<{}, {}> {
   private contextMenuObj: ContextMenuComponent;
   private isTimelineView: boolean = false;
   private selectedTarget: Element;
-  private targetElement: HTMLElement;
   private intl: Internationalization = new Internationalization();
   private weekDays: { [key: string]: Object }[] = [
     { text: 'Sunday', value: 0 },
@@ -323,7 +322,11 @@ export class Overview extends SampleBase<{}, {}> {
   private getHeaderStyles(data: { [key: string]: Object }): Object {
     if (data.elementType === 'event') {
       let resourceData: { [key: string]: Object } = this.getResourceData(data);
-      return { background: resourceData.CalendarColor, color: '#FFFFFF' };
+      let calendarColor: string = '#3f51b5';
+      if (resourceData) {
+        calendarColor = (resourceData.CalendarColor).toString();
+      }
+      return { background: calendarColor, color: '#FFFFFF' };
     } else {
       return { alignItems: 'center', color: '#919191' };
     }
@@ -342,19 +345,27 @@ export class Overview extends SampleBase<{}, {}> {
 
   public getEventType(data: { [key: string]: string }): string {
     const resourceData: { [key: string]: Object } = this.getResourceData(data);
-    return resourceData.CalendarText as string;
+    let calendarText: string = '';
+      if (resourceData) {
+        calendarText = resourceData.CalendarText.toString();
+    }
+    return calendarText;
   }
 
   public buttonClickActions(e: Event) {
     const quickPopup: HTMLElement = this.scheduleObj.element.querySelector('.e-quick-popup-wrapper') as HTMLElement;
     const getSlotData: Function = (): { [key: string]: Object } => {
-      const cellDetails: CellClickEventArgs = this.scheduleObj.getCellDetails(this.scheduleObj.getSelectedElements());
+      let cellDetails: CellClickEventArgs = this.scheduleObj.getCellDetails(this.scheduleObj.getSelectedElements());
+      if (isNullOrUndefined(cellDetails)) {
+        cellDetails = this.scheduleObj.getCellDetails(this.scheduleObj.activeCellsData.element);
+      }
       const addObj: { [key: string]: Object } = {};
       addObj.Id = this.scheduleObj.getEventMaxID();
-      addObj.Subject = this.titleObj.value;
+      addObj.Subject = isNullOrUndefined(this.titleObj.value) ? 'Add title' : this.titleObj.value;
       addObj.StartTime = new Date(+cellDetails.startTime);
       addObj.EndTime = new Date(+cellDetails.endTime);
-      addObj.Description = this.notesObj.value;
+      addObj.IsAllDay = cellDetails.isAllDay;
+      addObj.Description = isNullOrUndefined(this.notesObj.value) ? 'Add notes' : this.notesObj.value;
       addObj.CalendarId = this.eventTypeObj.value;
       return addObj;
     };
@@ -444,6 +455,34 @@ export class Overview extends SampleBase<{}, {}> {
         }
       </div>
     );
+  }
+
+  private getDateHeaderText(value: Date): string {
+    return this.intl.formatDate(value, { skeleton: 'Ed' });
+  }
+  private getWeather(value: Date) {
+    switch (value.getDay()) {
+      case 0:
+        return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" /><div class="weather-text">25°C</div>';
+      case 1:
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">18°C</div>';
+      case 2:
+        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/><div class="weather-text">10°C</div>';
+      case 3:
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">16°C</div>';
+      case 4:
+        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/><div class="weather-text">8°C</div>';
+      case 5:
+        return '<img class="weather-image" src="src/schedule/images/weather-clear.svg"/><div class="weather-text">27°C</div>';
+      case 6:
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">17°C</div>';
+      default:
+        return null;
+    }
+  }
+  private dateHeaderTemplate(props): JSX.Element {
+    return (<div><div>{this.getDateHeaderText(props.date)}</div><div className="date-text"
+      dangerouslySetInnerHTML={{ __html: this.getWeather(props.date) }}></div></div>);
   }
 
   private onResourceChange(args: MultiSelectChangeEventArgs): void {
@@ -585,7 +624,7 @@ export class Overview extends SampleBase<{}, {}> {
                 <div className='left-panel'>
                   <div className='overview-scheduler'>
                     <ScheduleComponent id='scheduler' cssClass='schedule-overview' ref={(schedule: ScheduleComponent) => this.scheduleObj = schedule} width='100%' height='100%'
-                      group={{ resources: ['Calendars'] }} timezone='UTC' eventSettings={{ dataSource: generateEvents() }} quickInfoTemplates={{
+                      group={{ resources: ['Calendars'] }} timezone='UTC' eventSettings={{ dataSource: generateEvents() }} dateHeaderTemplate={this.dateHeaderTemplate.bind(this)} quickInfoTemplates={{
                         header: this.headerTemplate.bind(this),
                         content: this.contentTemplate.bind(this),
                         footer: this.footerTemplate.bind(this)
@@ -608,7 +647,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <ViewDirective option='TimelineMonth' />
                         <ViewDirective option='TimelineYear' />
                       </ViewsDirective>
-                      <Inject services={[Day, Week, WorkWeek, Month, Year, Agenda, TimelineViews, TimelineMonth, TimelineYear, DragAndDrop, Resize, Print, ICalendarImport, ICalendarExport]} />
+                      <Inject services={[Day, Week, WorkWeek, Month, Year, Agenda, TimelineViews, TimelineMonth, TimelineYear, DragAndDrop, Resize, Print, ExcelExport, ICalendarImport, ICalendarExport]} />
                     </ScheduleComponent>
                     <ContextMenuComponent id='ContextMenu' cssClass='schedule-context-menu' ref={(menu: ContextMenuComponent) => this.contextMenuObj = menu} target='.e-schedule' items={this.contextMenuItems}
                       beforeOpen={(args: BeforeOpenCloseMenuEventArgs) => {
@@ -617,11 +656,11 @@ export class Overview extends SampleBase<{}, {}> {
                           remove(newEventElement);
                           removeClass([document.querySelector('.e-selected-cell') as Element], 'e-selected-cell');
                         }
-                        this.targetElement = args.event.target as HTMLElement;
-                        if (closest(this.targetElement, '.e-contextmenu')) {
+                        let targetElement: HTMLElement = args.event.target as HTMLElement;
+                        if (closest(targetElement, '.e-contextmenu')) {
                           return;
                         }
-                        this.selectedTarget = closest(this.targetElement, '.e-appointment,.e-work-cells,.e-vertical-view .e-date-header-wrap .e-all-day-cells,.e-vertical-view .e-date-header-wrap .e-header-cells');
+                        this.selectedTarget = closest(targetElement, '.e-appointment,.e-work-cells,.e-vertical-view .e-date-header-wrap .e-all-day-cells,.e-vertical-view .e-date-header-wrap .e-header-cells');
                         if (isNullOrUndefined(this.selectedTarget)) {
                           args.cancel = true;
                           return;
@@ -652,8 +691,7 @@ export class Overview extends SampleBase<{}, {}> {
                           case 'Add':
                           case 'AddRecurrence':
                             let selectedCells: Element[] = this.scheduleObj.getSelectedElements();
-                            let activeCellsData: CellClickEventArgs = this.scheduleObj.getCellDetails(this.targetElement) ||
-                            this.scheduleObj.getCellDetails(selectedCells.length > 0 ? selectedCells : this.selectedTarget);
+                            let activeCellsData: CellClickEventArgs = this.scheduleObj.getCellDetails(selectedCells.length > 0 ? selectedCells : this.selectedTarget);
                             if (selectedMenuItem === 'Add') {
                               this.scheduleObj.openEditor(activeCellsData, 'Add');
                             } else {

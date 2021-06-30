@@ -1,21 +1,8 @@
-
-html,
-body,    
-#container {
-    height: 100%;
-    overflow: hidden;
-    width: 100%;
-}
-
 #defaultDialog table,
 #defaultDialog th,
 #defaultDialog td {
     border: 1px solid #D8D8D8;
     border-collapse: collapse;
-}
-
-#container {
-    height: 365px;
 }
 
 #defaultDialog.e-dialog .e-footer-content {

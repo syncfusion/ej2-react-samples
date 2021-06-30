@@ -117,6 +117,14 @@
     content: '\e94a';
 }
 
+.tailwind .template_wrapper .close-icon-container.delete-icon::before {
+    content: '\e78d';
+}
+
+.tailwind .template_wrapper .close-icon-container.delete-icon::before {
+    top: 10px;
+}
+
 .template_wrapper .close-icon-container:hover {
     background-color: rgba(0, 0, 0, 0.12);
     border-color: transparent;

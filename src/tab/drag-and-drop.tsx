@@ -58,7 +58,7 @@ export class Dragdrop extends SampleBase<{}, {}> {
         if (dropElement != null) {
             let tabElement = document.querySelector("#draggableTab");
             let itemPosition = (((args.event.type.indexOf('touch') > -1) ? args.event.changedTouches[0].clientX
-                : args.event.clientX) < dropElement.getBoundingClientRect().left + dropElement.offsetWidth / 2) ? 0 : 1
+                : args.event.clientX) < dropElement.getBoundingClientRect().left + dropElement.offsetWidth / 2) ? 0 : 1;
             let dropItemIndex = [].slice.call(tabElement.querySelectorAll(".e-toolbar-item")).indexOf(dropElement) + itemPosition;
             let tabContent;
             switch (args.draggedNodeData.text) {

@@ -100,15 +100,16 @@ export class CallHistory extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="action-description">
-                    <p>This sample demonstrates the call history application using listview. Click on the checklist to filter the data in contacts
-        list.</p>
+                    <p>This sample demonstrates the call history application using ListView. Click the checklist to filter the data in contacts list.
+                    </p>
                 </div>
 
                 <div id="description" className="descriptionLayout">
-                    <p>This sample filters out the data from listview based on the data selected from the checklist. Here, listview utilizes the
-            <code>template</code>
-                        <code>showIcon</code> properties to repesent the call history application. The Tab component is used in this sample for navigation purposes.
-        </p>
+                <p>This sample filters out the data from ListView based on the data selected from the checklist. Here, ListView utilizes the
+                   <code><a target='_blank' className='code' href='https://ej2.syncfusion.com/react/documentation/api/list-view#template'>template</a></code> and 
+                   <code><a target='_blank' className='code' href='https://ej2.syncfusion.com/react/documentation/api/list-view#showicon'>showIcon</a></code> properties 
+                   to repesent the call history application. The Tab component is used in this sample for navigation purposes. 
+                </p>
                 </div>
             </div>
         )

@@ -51,7 +51,7 @@ export class DocumentProtection extends SampleBase<{}, {}> {
                     <p>In this demo, the Document editor opens a protected document that includes permitted ranges for two users identified by email: each user is authorized to edit a separate text area.</p>
                     <p>You can switch between the current user to edit different parts by selecting dropdown list in User permissions pane.</p>
                     <p>User can add the user in dropdown who have editing permission in document by using addItem method.</p>
-                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/document-management/">documentation section.</a>
                     </p>
                 </div>
             </div>

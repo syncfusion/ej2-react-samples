@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, VirtualScroll } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, VirtualScroll, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { datasource, virtualData } from './data';
@@ -45,6 +45,9 @@ export class Virtualization extends SampleBase<{}, {}> {
     public date2: number;
     public flag: boolean = true;
     public data: Object[] =[];
+    public toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    public editSettings: any = { allowEditing: true, allowDeleting: true, newRowPosition: 'Top' };
+    public validationRule: Object = { required: true };
 
     public onclick() {
         if (!this.data.length) {
@@ -52,6 +55,7 @@ export class Virtualization extends SampleBase<{}, {}> {
             datasource();
             this.date1 = new Date().getTime();
             this.grid.dataSource = this.data = virtualData;
+            this.grid.editSettings.allowAdding= true;
         } else {
             this.flag = true; 
             this.show();
@@ -84,13 +88,14 @@ export class Virtualization extends SampleBase<{}, {}> {
                         </span>
                         <span id="performanceTime">Time Taken: 0 ms</span>
                     </div>
-                    <GridComponent dataSource={[]} enableVirtualization={true} enableColumnVirtualization={true} height={600}
-                        ref={g => this.grid = g} dataBound={this.hide.bind(this)}>
+                    <GridComponent dataSource={[]} enableVirtualization={true} enableColumnVirtualization={true} height={400}
+                        ref={g => this.grid = g} dataBound={this.hide.bind(this)} toolbar={this.toolbarOptions} editSettings={this.editSettings}>
                         <ColumnsDirective>
+                            <ColumnDirective field='SNo' headerText='S.No' width='140' validationRules={this.validationRule} isPrimaryKey={true}></ColumnDirective>
                             <ColumnDirective field='FIELD1' headerText='Player Name' width='130' ></ColumnDirective>
                             <ColumnDirective field='FIELD2' headerText='Year' width='100' ></ColumnDirective>
-                            <ColumnDirective field='FIELD3' headerText='Stint' width='120' ></ColumnDirective>
-                            <ColumnDirective field='FIELD4' headerText='TMID' width='120' ></ColumnDirective>
+                            <ColumnDirective field='FIELD3' headerText='Sports' width='160' validationRules={this.validationRule} editType='dropdownedit'></ColumnDirective>
+                            <ColumnDirective field='FIELD4' headerText='Country' width='160' editType='dropdownedit'></ColumnDirective>
                             <ColumnDirective field='FIELD5' headerText='LGID' width='120' ></ColumnDirective>
                             <ColumnDirective field='FIELD6' headerText='GP' width='120' ></ColumnDirective>
                             <ColumnDirective field='FIELD7' headerText='GS' width='120' ></ColumnDirective>
@@ -116,9 +121,9 @@ export class Virtualization extends SampleBase<{}, {}> {
                             <ColumnDirective field='FIELD27' headerText='Post Points' width='140' ></ColumnDirective>
                             <ColumnDirective field='FIELD28' headerText='Post OREB' width='160' ></ColumnDirective>
                             <ColumnDirective field='FIELD29' headerText='Post DREB' width='160' ></ColumnDirective>
-                            <ColumnDirective field='FIELD30' headerText='Post REB' width='160' ></ColumnDirective>
+                            <ColumnDirective field='FIELD30' headerText='Post REB' width='160' editType='numericedit' validationRules={this.validationRule}></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[VirtualScroll]} />
+                        <Inject services={[VirtualScroll, Toolbar, Edit]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">
@@ -145,7 +150,7 @@ export class Virtualization extends SampleBase<{}, {}> {
                                 enableVirtualization </a></code>.
                     </p>
                     <p>
-                        In this demo, Grid enabled row and column virtualization. Click the Load 100K Data button to bind 100000 rows and 30 columns.
+                        In this demo, Grid enabled row and column virtualization. Click the Load 100K Data button to bind 100000 rows and 30 columns. You can also perform the Edit action in this sample.
                     </p>
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
                     <p>Grid component features are segregated into individual feature-wise modules. To use Virtualscrolling feature, we need to inject <code>VirtualScroll</code> modeule into the <code>services</code>.</p>

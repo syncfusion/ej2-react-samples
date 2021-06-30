@@ -82,7 +82,7 @@ export class DocumentEditorAutoSave extends SampleBase<{}, {}> {
                 <div>
                     <p>In this example, you can automically save the edited content in regular interval of time.</p>
                     <p>It helps reduce the risk of data loss by saving an open document automatically at customized intervals.</p>
-                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/export/">documentation section.</a>
                     </p>
                 </div>
             </div>

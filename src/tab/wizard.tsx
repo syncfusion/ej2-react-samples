@@ -40,6 +40,7 @@ export class Wizard extends SampleBase<{}, {}> {
   public dateValue = new Date();
   public result: Object[] = [];
   public reserved: Object[] = [];
+  public amountDetails: any;
 
   public headerText: any = [
     { "text": "New Booking" },
@@ -223,13 +224,12 @@ export class Wizard extends SampleBase<{}, {}> {
         if (this.endPoint.value == this.cities[i].name)
           calcFare = calcFare + this.cities[i].fare;
       }
-      let displayAmt: any = document.getElementById("amount");
-      if (this.ticketType.value === 'Economy Class' && displayAmt) {
-        displayAmt.innerText = "Total payable amount: $" + passCount * (300 + calcFare)
-      } else if (this.ticketType.value === 'Business Class' && displayAmt) {
-        displayAmt.innerText = "Total payable amount: $" + passCount * (500 + calcFare)
-      } else if (this.ticketType.value === 'Common Class' && displayAmt) {
-        displayAmt.innerText = "Total payable amount: $" + passCount * (150 + calcFare)
+      if (this.ticketType.value === 'Economy Class') {
+        this.amountDetails = "Total payable amount: $" + passCount * (300 + calcFare)
+      } else if (this.ticketType.value === 'Business Class') {
+        this.amountDetails = "Total payable amount: $" + passCount * (500 + calcFare)
+      } else if (this.ticketType.value === 'Common Class') {
+        this.amountDetails = "Total payable amount: $" + passCount * (150 + calcFare)
       }
     }
   }
@@ -386,7 +386,7 @@ export class Wizard extends SampleBase<{}, {}> {
       </ColumnsDirective>
     </GridComponent>
     <br />
-    <div id="amount"/>
+    <div id="amount">{this.amountDetails}</div>
     <br />
     <div className="btn-container">
       <button id="goBackDetails" className="e-btn" onClick={this.btnClicked.bind(this)}>

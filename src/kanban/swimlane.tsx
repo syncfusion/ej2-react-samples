@@ -31,6 +31,9 @@ export class Swimlane extends SampleBase<{}, {}> {
     private changeCount(args: ChangeEventArgs): void {
         this.kanbanObj.swimlaneSettings.showItemCount = args.checked;
     }
+    private changeFrozen(args: ChangeEventArgs): void {
+        this.kanbanObj.swimlaneSettings.enableFrozenRows = args.checked;
+    }
 
     public render(): JSX.Element {
         return (
@@ -38,7 +41,7 @@ export class Swimlane extends SampleBase<{}, {}> {
                 <div className='col-lg-8 control-section'>
                     <div className='control-wrapper'>
                         <KanbanComponent id="kanban" cssClass="kanban-swimlane" ref={(kanban) => { this.kanbanObj = kanban }} keyField="Status" dataSource={this.data}
-                            cardSettings={{ contentField: "Summary", headerField: "Id" }} swimlaneSettings={{ keyField: "Assignee" }} >
+                            cardSettings={{ contentField: "Summary", headerField: "Id" }} swimlaneSettings={{ keyField: "Assignee" }} height="500px">
                             <ColumnsDirective>
                                 <ColumnDirective headerText="To Do" keyField="Open" />
                                 <ColumnDirective headerText="In Progress" keyField="InProgress" />
@@ -84,6 +87,14 @@ export class Swimlane extends SampleBase<{}, {}> {
                                 <CheckBoxComponent checked={true} change={this.changeCount.bind(this)}></CheckBoxComponent>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <div>Enable Frozen Rows</div>
+                            </td>
+                            <td>
+                                <CheckBoxComponent change={this.changeFrozen.bind(this)}></CheckBoxComponent>
+                            </td>
+                        </tr>
                         </table>
                     </PropertyPane>
                 </div>
@@ -91,7 +102,7 @@ export class Swimlane extends SampleBase<{}, {}> {
                     <p>
                         This example demonstrates the swimlane functionalities of Kanban component. Provided options in the property panel
                         to sort
-                        the cards, enable drag-and-drop across swimlanes, show or hide the empty row and the items count. Also, you can
+                        the cards, enable drag-and-drop across swimlanes, show or hide the empty row, items count and swimlane frozen rows. Also, you can
                         expand/collapse the swimlane row in the Kanban board.
                     </p>
                 </div>
@@ -107,6 +118,7 @@ export class Swimlane extends SampleBase<{}, {}> {
                         <li>Show or hide the empty swimlane row using the <code>swimlaneSettings.showEmptyRow</code> property.</li>
                         <li>Show or hide the items count in the swimlane header using the <code>swimlaneSettings.showItemCount</code>
                             property.</li>
+                        <li>Enable or disable the frozen swimlane rows using the <code>swimlaneSettings.enableFrozenRows</code> property.</li>
                     </ul>
                 </div>
             </div>

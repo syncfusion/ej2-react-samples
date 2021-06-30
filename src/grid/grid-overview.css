@@ -23,6 +23,10 @@ _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-FeMale::before{
     background-color:#0078d6; 
 }
 
+.tailwind .empimg{
+    background-color:#4f46e5;  
+}
+
 #Emptext{
 top: -12px;
 left: 41px;

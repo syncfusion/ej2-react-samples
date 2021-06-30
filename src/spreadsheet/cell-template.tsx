@@ -102,7 +102,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
                                     </RowDirective>
                                     <RowDirective height= {45}>
                                         <CellsDirective>
-                                            <CellDirective index={1} value='Name:'></CellDirective>
+                                            <CellDirective index={1} value='Name'></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective height= {45}>
@@ -173,7 +173,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
     </p>
                     <p>
                     More information about cell template feature can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/getting-started">
+        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/spreadsheet/template">
                             documentation</a> section.
     </p>
                 </div>

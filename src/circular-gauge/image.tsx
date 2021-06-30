@@ -42,7 +42,7 @@ export class Image extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-lg-12'>
-                        <CircularGaugeComponent load={this.load.bind(this)} title='Short Put Distance' loaded={this.onChartLoad.bind(this)} id='image-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
+                        <CircularGaugeComponent load={this.load.bind(this)} title='Shot Put Distance' loaded={this.onChartLoad.bind(this)} id='image-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
                             titleStyle={{ size: '18px' }} centerY="57%'">
                             <Inject services={[Annotations]} />
                             <AxesDirective>

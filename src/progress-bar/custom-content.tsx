@@ -59,8 +59,9 @@ export class ProgressBarCustomContents extends SampleBase<{}, {}> {
         fabric: string,
         bootstrap: string,
         bootstrap4: string,
-        highcontrast: string
-    } = { material: '#e91e63', fabric: '#0078D6', bootstrap: '#317ab9', bootstrap4: '#007bff', highcontrast: '#FFD939' };
+        highcontrast: string,
+        tailwind: string
+    } = { material: '#e91e63', fabric: '#0078D6', bootstrap: '#317ab9', bootstrap4: '#007bff', highcontrast: '#FFD939', tailwind: '#4F46E5' };
     private progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';

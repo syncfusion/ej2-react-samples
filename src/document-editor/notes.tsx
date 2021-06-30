@@ -37,7 +37,7 @@ export class Notes extends SampleBase<{}, {}> {
                     <ul>
                         <li>You can insert footnote and end note using toolbar options</li>
                     </ul>
-                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                    <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/notes/">documentation section.</a>
                     </p>
                 </div>
             </div>

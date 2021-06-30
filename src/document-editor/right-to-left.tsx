@@ -540,7 +540,7 @@ export class RightToLeftView extends SampleBase<{}, {}> {
             <div id="description">
                 <p>In this example, you can see document-editor right-to-left and the locale set in arabic[locale value is ar-AE] </p>
                 <p>By default, locale value is en-US. If you want to change the en-US culture to a different culture, you have to change the locale accordingly.</p>
-                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/right-to-left/">documentation section.</a>
                 </p>
             </div>
             <script>{

@@ -32,10 +32,10 @@ for (let i: number = 0; i <= 250; i++) {
         (stockData[i] as Points).open = null;
     }
 }
-export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast'];
-export let borderColor: string[] = ['#00bdae', '#4472c4', '#a16ee5', '#79ECE4'];
+export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Tailwind'];
+export let borderColor: string[] = ['#00bdae', '#4472c4', '#a16ee5', '#79ECE4', '#4F46E5'];
 export let regionColor: string[] = ['rgba(0, 189, 174, 0.3)', 'rgba(68, 114, 196, 0.3)',
-    'rgba(161, 110, 229, 0.3)', 'rgba(121, 236, 228, 0.3)'];
+    'rgba(161, 110, 229, 0.3)', 'rgba(121, 236, 228, 0.3)', 'rgba(79, 70, 229, 0.3)'];
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px;
@@ -71,6 +71,10 @@ const SAMPLE_CSS = `
 
     #highcontrast-gradient-chart stop {
         stop-color: #79ECE4;
+    }
+	
+	#tailwind-gradient-chart stop {
+        stop-color: #4f46e5;
     }
 
     .chart-gradient stop[offset="0"] {
@@ -173,6 +177,10 @@ export class EmptyData extends SampleBase<{}, {}> {
                     <linearGradient id="highcontrast-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                         <stop offset="0"></stop>
                         <stop offset="1"></stop>
+                    </linearGradient>
+					<linearGradient id="tailwind-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+						<stop offset="0"></stop>
+						<stop offset="1"></stop>
                     </linearGradient>
                 </defs>
             </svg>

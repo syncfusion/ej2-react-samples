@@ -22,6 +22,14 @@
     content: '\e787';
 }
 
+.tailwind #rtePreview .e-icon-btn .e-md-preview::before {
+    content: '\e7d0';
+}
+
+.tailwind #rtePreview .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e748';
+}
+
 #rtePreview .e-rte-content #markdownPreviewhtml-preview.e-content {
     float: right;
     width: 50%;

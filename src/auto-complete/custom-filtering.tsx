@@ -32,9 +32,13 @@ export class CustomFiltering extends SampleBase<{}, {}> {
     }
     // pass the filter data source to updateData method.
     e.updateData(data, null);
-    let lists: any = document.getElementById('books_popup').querySelectorAll('.e-list-item');
-    // For highlight the typed characters, pass the result data and list items to highlightSearch method.
-    this.highlightSearch(lists, result as any);
+    let popupElement: any = document.getElementById('books_popup');
+    if (popupElement)
+    {
+        let lists: any = popupElement.querySelectorAll('.e-list-item');
+        // For highlight the typed characters, pass the result data and list items to highlightSearch method.
+        this.highlightSearch(lists, result as any);
+    }
   }
   private highlightSearch(listItems: Element[], result: any): void {
     if (result.length > 0) {

@@ -133,7 +133,7 @@ export class OlapSample extends SampleBase<{}, {}> {
                     <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'500'} showFieldList={true} showGroupingBar={true} gridSettings={{ columnWidth: 140 }}
                         allowExcelExport={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                         newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
-                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis',load: this.chartOnLoad.bind(this) }}>
+                        saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis', load: this.chartOnLoad.bind(this) }}>
                         <Inject services={[FieldList, GroupingBar, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting]} />
                     </PivotViewComponent>
                 </div>
@@ -141,7 +141,7 @@ export class OlapSample extends SampleBase<{}, {}> {
                 <div id="action-description">
                     <p>This sample demonstrates the rendering of a pivot table bound to an online SSAS OLAP cube as its data source.
                         OLAP cube elements like dimension, hierarchy, measure, and others can be arranged in row, column, value, and
-                    slicer axes to create desired views at runtime.</p>
+                        slicer axes to create desired views at runtime.</p>
                 </div>
                 <div id="description">
                     <p>
@@ -191,7 +191,10 @@ export class OlapSample extends SampleBase<{}, {}> {
                             <td style={{ verticalAlign: 'top', padding: '4px 0' }}>
                                 <code>Pivot Chart and its types:</code>
                             </td>
-                            <td>Allows user to view data in graphical format. The chart types include column, bar, line, area, etc.</td>
+                            <td>Allows user to view data in graphical format. The chart types include column, bar, line, area, etc. It
+                                also has options for showing and hiding legends and displaying chart series of different measures on
+                                single and multiple axes.
+                            </td>
                         </tr>
                         <tr>
                             <td style={{ verticalAlign: 'top', padding: '4px 0' }}>

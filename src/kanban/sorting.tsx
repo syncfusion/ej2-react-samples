@@ -31,21 +31,21 @@ export class Sorting extends SampleBase<{}, {}> {
             this.setFieldValue(data);
         }
         if (args.value === 'Custom') {
-            this.fieldObj.setProperties({ dataSource: ['Priority', 'RankId', 'Summary'] });
+            this.fieldObj.dataSource = ['Priority', 'RankId', 'Summary'];
             this.fieldObj.value = 'Priority';
-            this.fieldObj.setProperties({ enabled: true });
+            this.fieldObj.enabled = true;
         }
     }
     private setFieldValue(data: string): void {
-        this.fieldObj.setProperties({ dataSource: [data] });
+        this.fieldObj.dataSource = [data];
         this.fieldObj.value = data;
-        this.fieldObj.setProperties({ enabled: false });
+        this.fieldObj.enabled = false;
     }
     private sortClick(): void {
         this.setKanbanProperties();
     };
     private clearClick(): void {
-        this.sortByObj.value = 'DataSourceOrder';
+        this.sortByObj.value = 'Index';
         this.directionObj.value = 'Ascending';
         this.setFieldValue('None');
         this.setKanbanProperties();
@@ -96,7 +96,7 @@ export class Sorting extends SampleBase<{}, {}> {
                                     <div>Sort By</div>
                                 </td>
                                 <td>
-                                    <DropDownListComponent id='sortBy' ref={(sortDrop) => { this.sortByObj = sortDrop }} dataSource={this.sortByData} change={this.change.bind(this)} fields={this.fields} index={0}></DropDownListComponent>
+                                    <DropDownListComponent id='sortBy' ref={(sortDrop) => { this.sortByObj = sortDrop }} dataSource={this.sortByData} change={this.change.bind(this)} fields={this.fields} index={1}></DropDownListComponent>
                                 </td>
                             </tr>
                             <tr>

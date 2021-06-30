@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     ScheduleComponent, TimelineViews, TimelineMonth, EventRenderedArgs, Inject,
-    ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective
+    ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective, DragAndDrop, Resize
 } from '@syncfusion/ej2-react-schedule';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -21,7 +21,7 @@ export class InlineEditing extends SampleBase<{}, {}> {
         { text: 'Steven', id: 2, groupId: 1, color: '#7fa900' },
         { text: 'Robert', id: 3, groupId: 2, color: '#ea7a57' },
         { text: 'Smith', id: 4, groupId: 2, color: '#5978ee' },
-        { text: 'Micheal', id: 5, groupId: 3, color: '#df5286' }
+        { text: 'Michael', id: 5, groupId: 3, color: '#df5286' }
     ];
 
     private onEventRendered(args: EventRenderedArgs): void {
@@ -52,7 +52,7 @@ export class InlineEditing extends SampleBase<{}, {}> {
                                 <ViewDirective option='TimelineWeek' />
                                 <ViewDirective option='TimelineMonth' />
                             </ViewsDirective>
-                            <Inject services={[TimelineViews, TimelineMonth]} />
+                            <Inject services={[TimelineViews, TimelineMonth, DragAndDrop, Resize]} />
                         </ScheduleComponent>
                     </div>
                 </div>

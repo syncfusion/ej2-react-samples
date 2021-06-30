@@ -17,6 +17,11 @@
     padding: 1px;
 }
 
+.tailwind .e-custom-card .e-avatar {
+    height: 3em;
+    width: 3em;
+}
+
 .e-custom-card.e-card:hover {
     border-width: 1px;
     padding: 1px;

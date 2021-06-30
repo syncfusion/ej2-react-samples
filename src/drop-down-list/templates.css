@@ -81,6 +81,16 @@
     padding: 11px 42px;
 }
 
+.tailwind.e-bigger #template .value {
+    margin-top: 5px;
+}
+
+.tailwind #template .name {
+    padding: 8px 42px;
+}
+
+
+
 #employees_popup.e-popup .e-list-item * {
     display: block;
     text-indent: 0;

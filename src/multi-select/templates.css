@@ -111,6 +111,16 @@
     line-height: 1.2em;
 }
 
+.tailwind.e-bigger #multitemplate .nameTemp {
+    padding: 2px 0 0 35px;
+    line-height: 1.2em;
+}
+
+.tailwind #multitemplate .nameTemp {
+    padding: 7px 0px 0px 35px;
+    line-height: 1.2em;
+}
+
 .bootstrap #multitemplate .nameTemp {
     padding: 2px 0px 0px 35px;
     line-height: 1.2em;
@@ -136,6 +146,16 @@
     width: 26px;
 }
 
+.tailwind #multitemplate .valueTemp {
+    margin-top: 3px;
+    height: 22px;
+    width: 22px;
+}
+.tailwind.e-bigger #multitemplate .valueTemp {
+    margin-top: -6px;
+    height: 26px;
+    width: 26px;
+}
 .fabric #multitemplate .valueTemp,
 .highcontrast #multitemplate .valueTemp {
     margin-top: 1px;
@@ -256,6 +276,16 @@
 
 .e-bigger.bootstrap4 #multiTemplate_popup .ms-job {
     margin-top: -15px;
+}
+
+.tailwind #multiTemplate_popup .ms-job {
+    margin-top: -7px;
+    margin-bottom: 5px;
+}
+
+.e-bigger.tailwind #multiTemplate_popup .ms-job {
+    margin-top: -15px;
+    margin-bottom: 5px;
 }
 
 .bootstrap4 #multiTemplate_popup .empImage {

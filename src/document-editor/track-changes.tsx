@@ -41,7 +41,7 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     <li>Accept all</li>
                     <li>Reject all</li>
                 </ul>
-                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/getting-started/">documentation section.</a>
                 </p>
             </div>
             <script>{

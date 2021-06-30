@@ -52,6 +52,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range area series.'
     },
     {
+        'path': 'chart/spline-range-area', 'component': 'SplineRangeArea', 'name': 'Spline Range Area', 'order': '02', 'category': 'Area Charts', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range area series.'
+    },
+    {
         'path': 'chart/stacked-area', 'component': 'StackedArea', 'name': 'Stacked Area', 'order': '02', 'category': 'Area Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the stacking area series.'
     },
@@ -376,7 +380,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
     },
     {
-        'path': 'chart/range-color-mapping', 'component': 'RangeColorMapping', 'name': 'Range Color Mapping', 'order': '13', 'category': 'Chart Customization', 'type': 'new',
+        'path': 'chart/range-color-mapping', 'component': 'RangeColorMapping', 'name': 'Range Color Mapping', 'order': '13', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range color mapping.'
     },
     {

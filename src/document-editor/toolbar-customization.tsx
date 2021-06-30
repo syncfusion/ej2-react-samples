@@ -72,7 +72,7 @@ export class ToolbarCustomization extends SampleBase<{}, {}> {
             </div>
             <div id="description">
                 <p>Existing toolbar items can be hidden, shown, enabled, and disabled. Also, new items can be added to the toolbar.</p>
-                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/how-to/customize-tool-bar/">documentation section.</a>
                 </p>
             </div>
             <script>{

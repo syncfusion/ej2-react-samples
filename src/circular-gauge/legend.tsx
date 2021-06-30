@@ -106,14 +106,13 @@ export class Circle extends SampleBase<{}, {}> {
                                     <RangeDirective start={102} end={120} color='#ff0000' radius='110%' legendText='Hurricane force'/>
                                 </RangesDirective>
                                 <PointersDirective>
-                                    <PointerDirective value={70} radius='60%' color='#757575' pointerWidth={8} border={{
+                                    <PointerDirective value={70} radius='60%' pointerWidth={8} border={{
                                         width: 0,
                                         color: 'transparent'
                                     }}
                                     animation={{ enable: true }}
                                     cap={{
-                                        radius: 7,
-                                        color: '#757575'
+                                        radius: 7
                                     }}
                                     needleTail={{ length: '18%'}} />
                                 </PointersDirective>

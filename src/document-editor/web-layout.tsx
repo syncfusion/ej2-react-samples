@@ -38,7 +38,7 @@ export class WebLayout extends SampleBase<{}, {}> {
                         <li>Pages.</li>
                         <li>Continuous.</li>
                     </ul>
-                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/how-to/change-document-view/">documentation section.</a>
                 </p>
             </div>
             <script>{

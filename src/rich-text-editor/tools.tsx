@@ -24,7 +24,7 @@ export class Overview extends SampleBase<{}, {}> {
   private items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
     'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
     'LowerCase', 'UpperCase', '|',
-    'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
+    'Formats', 'Alignments', 'NumberFormatList', 'BulletFormatList',
     'Outdent', 'Indent', 'SuperScript', 'SubScript', '|',
     'CreateTable', 'CreateLink', 'Image', 'FileManager', '|', 'ClearFormat', 'Print',
     'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
@@ -154,7 +154,7 @@ export class Overview extends SampleBase<{}, {}> {
           <p>This sample used <code>Code mirror</code> plugins helps to highlight the HTML content and when changes happens in code view, the same has been reflected in preview mode. </p>
           <p>The editor’s toolbar contains commands to format the content. The toolbar consists of:</p>
           <ul>
-            <li><code>Lists</code> - Ordered and unordered list types.</li>
+            <li><code>Lists</code> - NumberFormat list and BulletFormat list types.</li>
             <li><code>Links</code> - A hyperlink can be inserted into the editor for quick access to related information.</li>
             <li><code>Image</code> - Inserts and manages images.</li>
             <li><code>Table</code> - Inserts and manages Tables.</li>

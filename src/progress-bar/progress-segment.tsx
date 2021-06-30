@@ -74,6 +74,9 @@ export class ProgressBarProgressSegment extends SampleBase<{}, {}> {
             case 'bootstrap4':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#007bff"><span></span></div>';
                 break;
+            case 'tailwind':
+                args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#4F46E5"><span></span></div>';
+                break;
             default:
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#FFD939"><span></span></div>';
                 break;

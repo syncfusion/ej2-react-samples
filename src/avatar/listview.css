@@ -40,6 +40,12 @@
     border: 0;
 }
 
+.tailwind #letterAvatarList .e-list-item {
+    line-height: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 /* Badge Positioning */
 
 #letterAvatarList .e-badge {

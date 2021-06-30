@@ -423,6 +423,8 @@ export let flatList: { [key: string]: Object }[] = [
     { text: 'Jaguar XJ220', id: 'list-08' },
     { text: 'McLaren P1', id: 'list-09' },
     { text: 'Ferrari LaFerrari', id: 'list-10' },
+    { text: 'Zenvo ST1', id: 'list-11' },
+    { text: 'Lamborghini Veneno', id: 'list-12' }
 ];
 
 //Define an array of JSON data

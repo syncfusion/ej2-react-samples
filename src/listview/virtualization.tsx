@@ -141,15 +141,13 @@ export class UiVirtualization extends SampleBase<{}, {}> {
 
                 <div id="action-description">
                     <p>This sample demonstrates the default functionalities of UI virtualization. Scroll list item to experience UI virtualization.
-                </p>
+                    </p>
                 </div>
 
                 <div id="description">
                 <p>
-                    UI virtualization is an optimization technique to avoid unnecessarily constructing and rendering objects for list
-                    items by loading only visible list items in a view port. This helps improve list view performance when loading a large
-                    number of items. The list items are updated dynamically while users scroll the list. The virtualization can be enabled
-                    by using <a href="https://ej2.syncfusion.com/documentation/list-view/api-listView.html?lang=typescript#enablevirtualization">enablevirtualization</a> API in Listview.
+                    UI virtualization is an optimization technique to avoid unnecessarily constructing and rendering objects for list items by loading only visible list items in a view port. This helps improve ListView performance when loading a large number of items. The
+                    list items are updated dynamically while users scroll the list. The virtualization can be enabled by using the <code><a target='_blank' className='code' href='https://ej2.syncfusion.com/react/documentation/api/list-view#enablevirtualization'>enableVirtualization</a></code> API in Listview.
                 </p>
                 </div>
             </div>

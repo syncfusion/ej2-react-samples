@@ -80,6 +80,10 @@
     display: none;
 }
 
+.tailwind .schedule-group.e-schedule .e-left-indent .e-header-cells {
+    height: 67px;
+}
+
 .schedule-group.e-schedule.e-device .template-wrap .airline-model,
     .schedule-group.e-schedule.e-device .template-wrap .airline-seats {
         display: none;

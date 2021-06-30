@@ -39,11 +39,10 @@ export class Checklist extends SampleBase<{}, {}> {
         </div>
 
         <div id="description" className="descriptionLayout">
-            <p>ListView component support checkbox feature which used to select multiple items from the list. This feature can be
-		enabled by the property <code>showCheckBox</code>.</p>
-
-        <p>In this sample, the checkbox is enabled on default list and group list.</p>
-
+            <p>The ListView component has checkbox feature, which is used to select multiple items from the list. This feature can be enabled using the 
+               <code><a target='_blank' className='code' href='https://ej2.syncfusion.com/react/documentation/api/list-view/#showcheckbox'>showCheckBox</a></code>property.</p>
+                    
+            <p>In this sample, the checkbox is enabled on default list and group list.</p>
         </div>
       </div>
     )

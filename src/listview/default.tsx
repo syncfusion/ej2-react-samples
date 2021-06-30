@@ -32,15 +32,15 @@ export class Default extends SampleBase<{}, {}> {
         </div>
 
         <div id="action-description">
-            <p>This sample demonstrates the default functionalities of the ListView. Click any list item to select and highlight an item.</p>
+            <p>This sample demonstrates the default functionalities of the ListView. Click any item from the list to select and highlight it.</p>
         </div>
 
         <div id="description" className="descriptionLayout">
-            <p>ListView component represent data in interactive hierarchical structure interface across different layouts or views, that also has the features of data-binding, template rendering, and grouping.</p>
+            <p>The ListView component represents data in interactive hierarchical structure interface across different layouts or views, that also has the features such as data binding, template rendering, and grouping.</p>
 
-            <p>The group list allows to group the relevant items under a logical category by mapping the <code>groupBy</code> field.</p>
+            <p>The group list allows you to group the relevant items under a logical category by mapping the <code><a target='_blank' className='code' href='https://ej2.syncfusion.com/react/documentation/api/list-view/fieldSettings/#groupby'>groupBy</a></code> field.</p>
 
-            <p>In this sample, <b>Cars</b> are grouped based on their <b>category</b>.</p>
+            <p>In this sample, <b>Cars</b> are grouped based on their <b>Category</b>.</p>
         </div>
       </div>
     )

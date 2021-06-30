@@ -63,7 +63,7 @@ export class CustomContextMenuView extends SampleBase<{}, {}> {
                     <li>Customize visibility of the added custom menu item. It will be achieved using the customContextMenuBeforeOpen Event</li>
                     <li>Custom Option Functionality achieved by using the customContextMenuSelect Event</li>
                 </ul>
-                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/">documentation section.</a>
+                <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/getting-started/">documentation section.</a>
                 </p>
             </div>
             <script>{
