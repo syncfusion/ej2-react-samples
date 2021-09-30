@@ -6,8 +6,8 @@ import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import {
     AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,
-    Inject, AccumulationLegend, PieSeries, AccumulationTooltip,ColumnSeries, SeriesCollectionDirective, SeriesDirective,
-    AccumulationDataLabel, ChartComponent, Legend, Category, Tooltip,  DataLabel, SplineAreaSeries, DateTime,
+    Inject, AccumulationLegend, PieSeries, AccumulationTooltip,ColumnSeries, SeriesCollectionDirective, SeriesDirective, AccumulationTheme, IAccLoadedEventArgs,
+    AccumulationDataLabel, ChartComponent, Legend, Category, Tooltip,  DataLabel, SplineAreaSeries, DateTime, ILoadedEventArgs, ChartTheme
   } from "@syncfusion/ej2-react-charts";
 import "./dynamic.css";
 
@@ -107,6 +107,7 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                             majorTickLines: { width: 0 },
                             minorTickLines: { width: 0 }
                         }}
+                        load={this.load.bind(this)}
                         chartArea={{ border: { width: 0 } }}>
                         <Inject services={[SplineAreaSeries, DateTime, Legend]} />
                         <SeriesCollectionDirective>
@@ -128,7 +129,7 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
         let data3: any[] = [{ x: 'Jan', y: 38 }, { x: 'Feb', y: 17 }, { x: 'Mar', y: 26 }];
         return(
         <div className="template" >
-             <ChartComponent style={{"height":"100%", "width":"100%"}}
+                <ChartComponent style={{"height":"100%", "width":"100%"}} load={this.load.bind(this)}
                         primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 } }}
                         primaryYAxis={{
                             majorGridLines: { width: 0 },
@@ -167,7 +168,7 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
               enableSmartLabels={true}
               enableAnimation={true}
               center={{x: '50%', y: '50%'}}
-              
+              load={this.Pieload.bind(this)}
               tooltip={{enable: true, header: '<b>${point.x}</b>', format: 'Composition : <b>${point.y}%</b>' }}>
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
@@ -189,13 +190,13 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
             <div>
                 <div id='edit_target' className="control-section">
                 <div>
-                    <div style={{"width":"100%" , "height": "30px"}}>
+                    <div style={{"width":"100%" ,"margin-botton": "10px", "margin-top": "10px", "height": "30px"}}>
                         <ButtonComponent  cssClass='e-outline e-flat e-primary' ref={(scope) => { this.btnobj = scope; }} iconCss='edit' 
                             isToggle={true} onClick={ this.btnClick.bind(this) } style={{"float":"right", "width": "75px"}}>
                             Edit
                         </ButtonComponent>
                     </div>
-                    <div style={{"padding":"5px", "text-align": "end"}}>
+                    <div style={{"padding":"5px","margin-bottom":"5px", "text-align": "end"}}>
                         <div id="dialogBtn" className="add-widget-button e-control e-btn e-lib" onClick={ this.dlgClick.bind(this) }>
                             Add New Widget
                         </div>
@@ -204,9 +205,9 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                 <DashboardLayoutComponent id="edit_dashboard" columns={2} cellSpacing={this.cellSpacing} ref={(scope) => { this.dashboardObj = scope; }} 
                  resizeStop={ this.onPanelResize.bind(this) } allowResizing={false} allowDragging={false}>
                 <PanelsDirective>
-                    <PanelDirective sizeX={1} sizeY={1} row={0} col={0} content={this.lineTemplate as any} header="<div>Line Chart</div>"></PanelDirective>
-                    <PanelDirective sizeX={1} sizeY={1} row={0} col={1} content={this.pieTemplate as any} header="<div>Pie Chart</div>"></PanelDirective>
-                    <PanelDirective sizeX={2} sizeY={1} row={1} col={0} content={this.splineTemplate as any} header="<div>Spline Chart</div>"></PanelDirective>
+                    <PanelDirective sizeX={1} sizeY={1} row={0} col={0} content={this.lineTemplate.bind(this) as any} header="<div>Line Chart</div>"></PanelDirective>
+                    <PanelDirective sizeX={1} sizeY={1} row={0} col={1} content={this.pieTemplate.bind(this) as any} header="<div>Pie Chart</div>"></PanelDirective>
+                    <PanelDirective sizeX={2} sizeY={1} row={1} col={0} content={this.splineTemplate.bind(this) as any} header="<div>Spline Chart</div>"></PanelDirective>
                 </PanelsDirective>
                 </DashboardLayoutComponent>
                 </div>
@@ -225,45 +226,58 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
                 <div id="description">
                 The following sample demonstrates about using the dashboard layout as an editable layout.
                 </div>
-                <DialogComponent id="listdialog" width="500px" height="260px" visible={this.state.hideDialog} header={"Add a widget"} showCloseIcon={true}
+                <DialogComponent id="listdialog" width="500px" height="260px" visible={false} header={"Add a widget"} showCloseIcon={true}
                 animationSettings={{effect:'Zoom'}} isModal={true} target='#edit_target' ref={(scope) => { this.dialogObj = scope; }} content= {this.content as any}>
                 </DialogComponent>
             </div>
 );
     }
     dlgClick(): void {
-        this.setState({ hideDialog: true });
+       this.dialogObj.visible = true;
         document.getElementById('linetemplate').onclick = () => {
             let countValue: string = this.count.toString();
             let panel: PanelModel[] = [{
                 'id': '_layout' + countValue, 'sizeX': 1, 'sizeY': 1, 'row': 0, 'col': 0,
-                header: '<div>Line Chart</div>', content: this.lineTemplate as any
+                header: '<div>Line Chart</div>', content: this.lineTemplate.bind(this) as any
             }];
             this.count = this.count + 1;
             this.dashboardObj.addPanel(panel[0]);
-            this.setState({ hideDialog:false });
+            this.dialogObj.visible = false;
+            (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
         };
         document.getElementById('pietemplate').onclick = () => {
             let countValue: string = this.count.toString();
             let panel: PanelModel[] = [{
                 'id': '_layout' + countValue, 'sizeX': 1, 'sizeY': 1, 'row': 0, 'col': 0,
-                header: '<div>Pie Chart</div>', content: this.pieTemplate as any
+                header: '<div>Pie Chart</div>', content: this.pieTemplate.bind(this) as any
             }];
             this.count = this.count + 1;
             this.dashboardObj.addPanel(panel[0]);
-            this.setState({ hideDialog:false });
+           this.dialogObj.visible = false;
+           (document.getElementById("_layout" + countValue).querySelector(".e-control.e-accumulationchart") as any).ej2_instances[0].refresh();
         };
         document.getElementById('splinetemplate').onclick = () => {
             let countValue: string = this.count.toString();
             let panel: PanelModel[] = [{
                 'id': '_layout' + countValue, 'sizeX': 2, 'sizeY': 1, 'row': 0, 'col': 0,
-                header: '<div>Spline Chart</div>', content: this.splineTemplate as any
+                header: '<div>Spline Chart</div>', content: this.splineTemplate.bind(this) as any
             }];
             this.count = this.count + 1;
             this.dashboardObj.addPanel(panel[0]);
-            this.setState({ hideDialog: false });
+            this.dialogObj.visible = false;
+            (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
         };
     }
 
-    
+    public load(args: ILoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+    };
+
+    public Pieload(args: IAccLoadedEventArgs): void {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as AccumulationTheme;
+    }
 }

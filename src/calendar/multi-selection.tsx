@@ -11,7 +11,7 @@ export class MultipleSelection extends SampleBase<{}, {}> {
     new Date(new Date().getFullYear(), new Date().getMonth(), 25)];
 
     public onchange(): void {
-        var element: Element = document.getElementById('multiSelect');
+        var element: Element = document.getElementById('multiselect');
         element.innerHTML = '';
         for (var index: number = 0; index < this.calendarInstance.values.length; index++) {
             element.insertBefore(document.createTextNode(this.calendarInstance.values[index].toString()), element.childNodes[0]);
@@ -22,17 +22,18 @@ export class MultipleSelection extends SampleBase<{}, {}> {
     render() {
         return (
             <div className="col-lg-12 control-section">
-                <div id="control_wrapper" className="col-lg-6 col-sm-8 col-md-8 multiselectWrapper">
-                    <div className='calendar-control-section' style={{ overflow: 'auto' }}>
-                        <CalendarComponent id="calendar" isMultiSelection={true} values={this.selectedValues}
-                            ref={(scope) => { this.calendarInstance = scope; }} change={this.onchange.bind(this)} created={this.onchange.bind(this)}></CalendarComponent>
+                <div className="col-lg-7">
+                    <div id="control_wrapper" className="col-lg-6 col-sm-8 col-md-8 multiselectWrapper">
+                        <div className='calendar-control-section' style={{ overflow: 'auto' }}>
+                            <CalendarComponent id="calendar" isMultiSelection={true} values={this.selectedValues}
+                                ref={(scope) => { this.calendarInstance = scope; }} change={this.onchange.bind(this)} created={this.onchange.bind(this)}></CalendarComponent>
+                        </div>
                     </div>
                 </div>
-                <div className="valuesWrapper col-lg-6 col-sm-8 col-md-8">
-                    <h5>Selected values</h5>
-                    <div className="contentValue">
-                        <div id="multiSelect">
-                        </div>
+                <div className="col-lg-5">
+                    <label>Selected values</label>
+                    <div className="content-value">
+                        <div id="multiselect"></div>
                     </div>
                 </div>
                 <div id="action-description">

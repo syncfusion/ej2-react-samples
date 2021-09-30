@@ -45,7 +45,7 @@ export class Default extends SampleBase<{},{}> {
                     <tbody>
                         <tr>
                             <td style={{ width: '50%' }}>
-                                <div className="userselect">Toolbar</div>
+                                <div style={{ fontSize : '14px' }}>Toolbar</div>
                             </td>
                             <td style={{ width: '50%', paddingRight: '10px' }}>
                                 <div>

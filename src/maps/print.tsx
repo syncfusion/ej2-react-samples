@@ -15,6 +15,35 @@ import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import * as data from './map-data/print-datasource.json';
 let datasource: any = data as any;
+const SAMPLE_CSS = `
+.e-play-icon::before {
+    content: "\\e34b";
+}
+
+.e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before
+{
+    content: '\\e7df';
+}
+
+.e-view.bootstrap .e-play-icon::before {
+    content: '\\ebd2';
+}
+
+.e-view.bootstrap4 .e-play-icon::before {
+    content: '\\e743';
+}
+
+.e-view.tailwind .e-play-icon::before, .e-view.tailwind-dark .e-play-icon::before {
+    content: '\\e76c';
+}
+
+.e-view.highcontrast .e-play-icon::before {
+    content: '\\ebf9';
+}
+
+.e-view.bootstrap5 .e-play-icon::before, .e-view.bootstrap5-dark .e-play-icon::before {
+    content: '\\e75d';
+}`
 
 export class PrintMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
@@ -22,6 +51,9 @@ export class PrintMaps extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                <style>
+                    {SAMPLE_CSS}
+                </style>
                 <div className='control-section row'>
                     <div className='col-md-8'>
                     <MapsComponent id="maps" tooltipRender={this.tooltipRender.bind(this)} loaded={this.onMapsLoad.bind(this)} load={this.load} allowPrint={true} ref={m => this.mapInstance = m}
@@ -146,7 +178,8 @@ export class PrintMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
     public tooltipRender(args: ITooltipRenderEventArgs): void {

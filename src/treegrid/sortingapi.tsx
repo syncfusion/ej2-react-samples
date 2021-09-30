@@ -57,23 +57,23 @@ export class SortingAPI extends SampleBase<{}, {}> {
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                   <tr>
-                    <td style={{ width: '30%' }}>
+                    <td style={{ width: '20%' }}>
                       <div> Column </div>
                     </td>
-                    <td style={{ width: '60%', paddingRight: '10px' }}>
+                    <td style={{ width: '80%', paddingRight: '10px' }}>
                       <div>
-                         <DropDownListComponent id="columns" ref={columnname=> this.columnName = columnname}
+                         <DropDownListComponent width="120px" id="columns" ref={columnname=> this.columnName = columnname}
                             dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="taskID" />
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ width: '30%' }}>
+                    <td style={{ width: '20%' }}>
                       <div> Direction </div>
                     </td>
-                    <td style={{ width: '70%', paddingRight: '10px' }}>
+                    <td style={{ width: '80%', paddingRight: '10px' }}>
                       <div>
-                         <DropDownListComponent id="direction" ref={sortdirection=> this.sortDirection = sortdirection}
+                         <DropDownListComponent width="120px" id="direction" ref={sortdirection=> this.sortDirection = sortdirection}
                             dataSource={this.direction} fields={{ text: 'name', value: 'id' }} value="Ascending" />
                       </div>
                     </td>
@@ -84,7 +84,7 @@ export class SortingAPI extends SampleBase<{}, {}> {
                         <ButtonComponent onClick={ this.btnClick.bind(this) }> Sort </ButtonComponent>
                       </div>
                     </td>
-                    <td style={{ width: '70%',  padding: '10px 10px 10px 0px' }}>
+                    <td style={{ width: '70%',  padding: '10px 10px 0px 0px' }}>
                       <div>
                         <ButtonComponent onClick={ this.btnClick2.bind(this) }> Clear </ButtonComponent>
                       </div>

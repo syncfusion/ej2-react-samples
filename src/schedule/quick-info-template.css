@@ -37,9 +37,7 @@
   padding: 0 15px;
 }
 
-.quick-info-template .meeting-type-wrap,
-.quick-info-template .meeting-subject-wrap,
-.quick-info-template .notes-wrap {
+.quick-info-template .meeting-type-wrap, .quick-info-template .meeting-subject-wrap, .quick-info-template .notes-wrap {
   font-size: 11px;
   color: #666;
   letter-spacing: 0.33px;
@@ -81,4 +79,35 @@
 
 .quick-info-template .e-quick-popup-wrapper .e-popup-footer button:first-child {
   margin-right: 5px;
+}
+
+.material-dark .quick-info-template .quick-info-header {
+  background-color: #424242;
+}
+
+.bootstrap-dark .quick-info-template .quick-info-header,
+.bootstrap5-dark .quick-info-template .quick-info-header,
+.fabric-dark .quick-info-template .quick-info-header {
+  background-color: transparent;
+}
+
+.tailwind-dark .quick-info-template .quick-info-header {
+  background-color: #374151;
+}
+
+.highcontrast .quick-info-template .quick-info-header {
+  background-color: #000000;
+}
+
+.tailwind-dark .quick-info-template .quick-info-header-content, .bootstrap-dark .quick-info-template .quick-info-header-content, .fabric-dark .quick-info-template .quick-info-header-content, .material-dark .quick-info-template .quick-info-header-content, .highcontrast .quick-info-template .quick-info-header-content {
+  color: #fff !important;
+}
+
+.tailwind-dark .quick-info-template .event-content div label, .tailwind-dark .quick-info-template .event-content div span, .bootstrap-dark .quick-info-template .event-content div label, .bootstrap-dark .quick-info-template .event-content div span, .bootstrap5-dark .quick-info-template .event-content div label, .bootstrap5-dark .quick-info-template .event-content div span, .fabric-dark .quick-info-template .event-content div label, .fabric-dark .quick-info-template .event-content div span, .material-dark .quick-info-template .event-content div label, .material-dark .quick-info-template .event-content div span, .highcontrast .quick-info-template .event-content div label, .highcontrast .quick-info-template .event-content div span {
+  color: #fff;
+}
+
+.material .quick-info-template .e-quick-popup-wrapper .e-popup-footer {
+  display: block !important;
+  padding: 0px 18px 8px 22px !important;
 }

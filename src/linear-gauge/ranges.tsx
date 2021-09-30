@@ -23,7 +23,8 @@ export class Ranges extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
     }
     // custom code end
     // Code for Property Panel
@@ -118,74 +119,74 @@ export class Ranges extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: '-10px' }}>
                                 <tr>
                                     <td>
-                                        <div>Range Index</div>
+                                        <div style={{ width: '100px' }}>Range Index</div>
                                     </td>
                                     <td>
                                         <div>
-                                            <DropDownListComponent width={120} id="rangeIndex" style={{ "width": "auto" }} change={this.indexChange.bind(this)} ref={d => this.indexElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} text="Low" value="0" />
+                                            <DropDownListComponent width={130} id="rangeIndex" style={{ "width": "auto" }} change={this.indexChange.bind(this)} ref={d => this.indexElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} text="Low" value="0" />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Range Color</div>
+                                        <div style={{ width: '100px' }}>Range Color</div>
                                     </td>
                                     <td>
                                         <div className="e-float-input" style={{ 'margin-top': '0px' }}>
-                                            <input id="color" onChange={this.colorChange.bind(this)} ref={d => this.colorElement = d} type="text" defaultValue="#F03E3E" style={{ "width": "90%" }} />
+                                            <input id="color" onChange={this.colorChange.bind(this)} ref={d => this.colorElement = d} type="text" defaultValue="#F03E3E" style={{ "width": "130px" }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Range Font Color</div>
+                                        <div style={{ width: '100px' }}>Range Font Color</div>
                                     </td>
                                     <td>
                                         <div>
-                                            <DropDownListComponent width={120} id="rangeColor" style={{ "width": "auto" }} change={this.rangeColorChange.bind(this)} ref={d => this.rangeColorElement = d} dataSource={this.modelist} fields={{ text: 'text', value: 'value' }} text="Default Color" value="font" />
+                                            <DropDownListComponent width={130} id="rangeColor" style={{ "width": "auto" }} change={this.rangeColorChange.bind(this)} ref={d => this.rangeColorElement = d} dataSource={this.modelist} fields={{ text: 'text', value: 'value' }} text="Default Color" value="font" />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
-                                        <div id='startRangeValue'>Range Start <span>&nbsp;&nbsp;&nbsp;0</span> </div>
+                                        <div id='startRangeValue' style={{ width: '100px' }}>Range Start <span>&nbsp;&nbsp;&nbsp;0</span> </div>
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.startChange.bind(this)} ref={d => this.startElement = d} name="range-min" id="start" defaultValue="0" min="0" max="100" style={{ width: '100px' }} />
+                                            <input type="range" onChange={this.startChange.bind(this)} ref={d => this.startElement = d} name="range-min" id="start" defaultValue="0" min="0" max="100" style={{ width: '130px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
-                                        <div id='endRangeValue'>Range End <span>&nbsp;&nbsp;&nbsp;32</span> </div>
+                                        <div id='endRangeValue' style={{ width: '100px' }}>Range End <span>&nbsp;&nbsp;&nbsp;32</span> </div>
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.endChange.bind(this)} ref={d => this.endElement = d} id="end" defaultValue="732" min="0" max="100" style={{ width: '100px' }} />
+                                            <input type="range" onChange={this.endChange.bind(this)} ref={d => this.endElement = d} id="end" defaultValue="732" min="0" max="100" style={{ width: '130px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
-                                        <div id='startWidthValue'>Range Start Width <span>&nbsp;&nbsp;&nbsp;10</span> </div>
+                                        <div id='startWidthValue' style={{ width: '100px' }}>Range Start Width <span>&nbsp;&nbsp;&nbsp;10</span> </div>
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.startWidthChange.bind(this)} ref={d => this.startWidthElement = d} name="range-min" id="startWidth" defaultValue="15" min="0" max="30" style={{ width: '100px' }} />
+                                            <input type="range" onChange={this.startWidthChange.bind(this)} ref={d => this.startWidthElement = d} name="range-min" id="startWidth" defaultValue="15" min="0" max="30" style={{ width: '130px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
-                                        <div id='endWidthValue'>Range End Width <span>&nbsp;&nbsp;&nbsp;10</span> </div>
+                                        <div id='endWidthValue' style={{ width: '100px' }}>Range End Width <span>&nbsp;&nbsp;&nbsp;10</span> </div>
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.endWidthChange.bind(this)} ref={d => this.endWidthElement = d} id="endWidth" defaultValue="0" min="0" max="30" style={{ width: '100px' }} />
+                                            <input type="range" onChange={this.endWidthChange.bind(this)} ref={d => this.endWidthElement = d} id="endWidth" defaultValue="0" min="0" max="30" style={{ width: '130px' }} />
                                         </div>
                                     </td>
                                 </tr>

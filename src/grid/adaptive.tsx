@@ -28,6 +28,16 @@ const SAMPLE_CSS = `
   box-shadow: 0 0px 2px rgb(144 144 144), 0 0px 10px rgb(0 0 0 / 16%);
 }
 
+.tailwind-dark .e-mobile-layout,
+.material-dark .e-mobile-layout,
+.fabric-dark .e-mobile-layout,
+.bootstrap-dark .e-mobile-layout,
+.bootstrap5-dark .e-mobile-layout {
+  border: 16px rgb(255 255 255 / 10%) solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+}
+
 /* The horizontal line on the top of the device */
 .e-mobile-layout:before {
   content: '';
@@ -40,6 +50,19 @@ const SAMPLE_CSS = `
   transform: translate(-50%, -50%);
   background: #ebebeb;
   border-radius: 10px;
+}
+
+.tailwind-dark .e-mobile-layout::before,
+.tailwind-dark .e-mobile-layout::after,
+.material-dark .e-mobile-layout::before,
+.material-dark .e-mobile-layout::after,
+.fabric-dark .e-mobile-layout::before,
+.fabric-dark .e-mobile-layout::after,
+.bootstrap-dark .e-mobile-layout::before,
+.bootstrap-dark .e-mobile-layout::after,
+.bootstrap5-dark .e-mobile-layout::before,
+.bootstrap5-dark .e-mobile-layout::after {
+  background: rgb(255 255 255  / 20%);
 }
 
 /* The circle on the bottom of the device */
@@ -58,10 +81,10 @@ const SAMPLE_CSS = `
 
 /* The screen (or content) of the device */
 .e-mobile-layout .e-mobile-content {
-  overflow-x: hidden;
+  overflow: hidden;
   width: 328px;
-  height: 521px;
-  background: white;
+  height: 100%;
+  background: transparent;
   border: 0px solid #dddddd;
 }
 

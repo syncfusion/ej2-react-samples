@@ -145,14 +145,14 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                     </div>
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '80%' }}>
                                         <div>Zooming</div>
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="checkbox" onClick={this.zooming.bind(this)} defaultChecked={true} id="zoom" style={{ marginTop: '15px' }} />
+                                            <input type="checkbox" onClick={this.zooming.bind(this)} defaultChecked={true} id="zoom" style={{ marginTop: '15px', marginLeft:'30px' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -162,7 +162,7 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="checkbox" onClick={this.panning.bind(this)} defaultChecked={true} id="panning" style={{ marginTop: '15px' }} />
+                                            <input type="checkbox" onClick={this.panning.bind(this)} defaultChecked={true} id="panning" style={{ marginTop: '15px', marginLeft:'30px' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -172,7 +172,7 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="checkbox" onClick={this.mousewheel.bind(this)} defaultChecked={true} id="mousewheel" style={{ marginTop: '15px' }} />
+                                            <input type="checkbox" onClick={this.mousewheel.bind(this)} defaultChecked={true} id="mousewheel" style={{ marginTop: '15px', marginLeft:'30px' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -182,7 +182,7 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="checkbox" onClick={this.pinching.bind(this)} defaultChecked={true} id="pinch" style={{ marginTop: '15px' }} />
+                                            <input type="checkbox" onClick={this.pinching.bind(this)} defaultChecked={true} id="pinch" style={{ marginTop: '15px', marginLeft:'30px' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -192,7 +192,7 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="checkbox" onClick={this.singletap.bind(this)} id="singletap" style={{ marginTop: '15px' }} />
+                                            <input type="checkbox" onClick={this.singletap.bind(this)} id="singletap" style={{ marginTop: '15px', marginLeft:'30px' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -202,7 +202,7 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <input type="checkbox" onClick={this.doubletab.bind(this)} id="doubletap" style={{ marginTop: '15px' }} />
+                                            <input type="checkbox" onClick={this.doubletab.bind(this)} id="doubletap" style={{ marginTop: '15px', marginLeft:'30px' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -249,7 +249,8 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
     public mousewheel(): void {

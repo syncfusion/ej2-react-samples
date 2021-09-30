@@ -36,7 +36,7 @@ export class Workflow extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
                         <KanbanComponent cssClass="kanban-workflow" id="kanban" keyField="Category" dataSource={this.data} 
-                            cardSettings={{ headerField: "Id", template: this.cardTemplate.bind(this) }}>
+                            cardSettings={{ headerField: "Id", contentField: "Description", template: this.cardTemplate.bind(this) }}>
                             <ColumnsDirective>
                                 <ColumnDirective headerText='Order' keyField='Order' transitionColumns={['Ready to Serve', 'Ready to Deliver']} allowToggle={true} allowDrop={false} />
                                 <ColumnDirective headerText='Ready to Serve' keyField='Ready to Serve' allowToggle={true} transitionColumns={['Served']} />

@@ -202,7 +202,8 @@ export class ColorMapping extends SampleBase<{}, {}> {
 	public load(args: ILoadEventArgs): void {
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
-        args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as TreeMapTheme;
+        args.treemap.theme = ((theme.charAt(0).toUpperCase() +
+        theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
         let sliderMin: HTMLInputElement = document.getElementById('hideOne') as HTMLInputElement;
         let sliderMax: HTMLInputElement = document.getElementById('hideTwo') as HTMLInputElement;
         let opacityCheck: HTMLInputElement = document.getElementById('hideThree') as HTMLInputElement;

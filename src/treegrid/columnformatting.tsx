@@ -66,7 +66,7 @@ export class ColumnFormat extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <div className = 'col-md-9'>
+          <div className = 'col-lg-9'>
             <TreeGridComponent dataSource={formatData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
               ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageCount: 5 }}>
               <ColumnsDirective>
@@ -78,17 +78,17 @@ export class ColumnFormat extends SampleBase<{}, {}> {
             <Inject services={[Page]} />
           </TreeGridComponent>
         </div>
-        <div className='col-md-3 property-section'>
+        <div className='col-lg-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                   <tr style={{ height: '50px' }}>
                   <td style={{ width: '20%' }}>
-                      <div style={{ paddingTop: '10px' }}> Column </div>
+                      <div style={{ paddingTop: '7px' }}> Column </div>
                     </td>
-                    <td style={{ width: '80%', paddingRight: '10px' }}>
+                    <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                         <DropDownListComponent width="120px" id="columns" change={this.change.bind(this)}
-                            dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="price" popupWidth='100%'
+                         <DropDownListComponent width="100px" id="columns" change={this.change.bind(this)}
+                            dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="price"
                             ref={dropdown=> this.dropdownObj = dropdown} />
                       </div>
                     </td>
@@ -99,8 +99,8 @@ export class ColumnFormat extends SampleBase<{}, {}> {
                      </td>
                      <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                         <div>
-                        <DropDownListComponent width="120px" id="format" change={this.change2.bind(this)}
-                            dataSource={this.priceFormat} fields={{ text: 'format', value: 'id' }} value="c2" popupWidth='100%'
+                        <DropDownListComponent width="100px" id="format" change={this.change2.bind(this)}
+                            dataSource={this.priceFormat} fields={{ text: 'format', value: 'id' }} value="c2"
                             ref={dropdown=> this.dropdownObj2 = dropdown} />
                         </div>
                      </td>

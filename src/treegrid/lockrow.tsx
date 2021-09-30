@@ -9,25 +9,43 @@ import { PropertyPane } from '../common/property-pane';
 import { addClass, removeClass } from '@syncfusion/ej2-base';
 
 const SAMPLE_CSS = `
-  .disableRow .e-rowcell{
-    color: rgba(0, 0, 0, .38);
+.material .disableRow .e-rowcell{
+    color: rgba(0, 0, 0, .38) !important;
   }`;
 {/* custom code start */}
 const SAMPLE1_CSS = `
+.material-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}        
 .fabric .disableRow .e-rowcell{
-  color: #c8c8c8;
+  color: #c8c8c8 !important;
 }
+.fabric-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}    
 .bootstrap .disableRow .e-rowcell{
-  color: rgba(0, 0, 0, .35);
+  color: rgba(0, 0, 0, .35) !important;
 }
-.highcontrast .disableRow .e-rowcell{
-  color: #757575;
+.bootstrap-dark .disableRow .e-rowcell{
+  color: #757575 !important;
 }
 .bootstrap4 .disableRow .e-rowcell{
-  color: rgba(0, 0, 0, .35);
+  color: rgba(0, 0, 0, .35) !important;
 }
-.material .disableRow .e-rowcell{
-  color: rgba(0, 0, 0, .38);
+.bootstrap5 .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .35) !important;
+}
+.bootstrap5-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.highcontrast .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.tailwind .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.tailwind-dark .disableRow .e-rowcell{
+  color: #757575 !important;
 }`;
 {/* custom code end */}
 export class LockRow extends SampleBase<{}, {}> {
@@ -99,7 +117,7 @@ export class LockRow extends SampleBase<{}, {}> {
             <Inject services={[Page, Edit, Toolbar]}/>
           </TreeGridComponent>
         </div>
-        <div className='col-md-2 property-section'>
+        <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                   <tr style={{ height: '50px' }}>
@@ -108,7 +126,7 @@ export class LockRow extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '60%' }}>
                       <div>
-                         <MultiSelectComponent width="150px" id="lockrows" mode="CheckBox" value={this.rowValues}
+                         <MultiSelectComponent width="120px" id="lockrows" mode="CheckBox" value={this.rowValues}
                           dataSource={lockRowDropDownData} showDropDownIcon={true} popupHeight='350px'
                           select={this.select.bind(this)} removed={this.removed.bind(this)}
                           ref={multiselect=> this.multiselectObj = multiselect}>

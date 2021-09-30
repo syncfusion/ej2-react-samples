@@ -108,7 +108,8 @@ export class Integration extends SampleBase<{}, {}> {
                 load: (args: ILoadedEventArgs) => {
                     let selectedTheme: string = location.hash.split('/')[1];
                     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-                    args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as HeatMapTheme;
+                    args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                        replace(/-dark/i, "Dark") as HeatMapTheme;
                 },
             }, '#heatmap');
         } else {

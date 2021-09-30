@@ -22,7 +22,7 @@ export class Inline extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div id='inline' style= {{padding: '100px 100px 100px 250px'}}>
             <span id="contentText">React top expert of this week is
-            <DropDownListComponent id="inline" cssClass="inlinecss" dataSource={this.employeesData} fields={this.fields} placeholder="Select an employee" popupHeight="200px" width="60px" popupWidth="140px" value='Michael' />
+            <DropDownListComponent id="inline" cssClass="inlinecss" dataSource={this.employeesData} fields={this.fields} placeholder="Select an employee" popupHeight="200px" width="65px" popupWidth="140px" value='Michael' />
             </span>
           </div>
         </div>

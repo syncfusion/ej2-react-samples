@@ -19,6 +19,10 @@
     display: none;
 }
 
+body.tailwind-dark .e-dashboardlayout.e-control .e-panel {
+    border: 1px solid #d7d7d7;
+}
+
 #default_dashboard .e-clear-icon::before {
     content: '\e100';
     font-size: 12px;
@@ -47,7 +51,8 @@
     padding: 5px;
     text-align: right;
     height: 35px;
-    width: 100%
+    width: 100%;
+    margin-bottom: 5px;
 }
 
 #default_target #add{

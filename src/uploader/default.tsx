@@ -57,7 +57,7 @@ public render(): JSX.Element {
             ></UploaderComponent>
         </div>
         </div>
-        <div className='property-section col-lg-3'>
+        <div className='property-section col-lg-3' id="uploader">
             <PropertyPane title='Properties'>
                 <div className = 'panel-style'>
                     <CheckBoxComponent checked={true} label='Auto Upload' ref={(scope) => { this.checkboxObj = scope; }} change={ this.onChange.bind(this) } ></CheckBoxComponent>
@@ -69,7 +69,8 @@ public render(): JSX.Element {
         </div>
         </div>
         <div id="action-description">
-        <p>This example demonstrates the default functionalities of the file upload component with auto upload and sequential upload options.
+        <p>This <a href="https://www.syncfusion.com/react-ui-components/react-file-upload"
+            target="_blank">&nbsp;React File Upload</a> example demonstrates the default functionalities of the file upload component with auto upload and sequential upload options.
             Browse or drag-and-drop the files which you want to upload to the server and upload it.</p>
         </div>
         <div id="description">

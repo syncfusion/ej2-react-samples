@@ -11,15 +11,62 @@ import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
 const SAMPLE_CSS = `
-    #gradient-chart stop {
-		stop-color: #BDEDE9;
-	}
-	#gradient-chart stop[offset="0"] {
-		stop-opacity: 0.75;
-	}
-	#gradient-chart stop[offset="1"] {
-		stop-opacity: 0;
-	}`;
+        #material-gradient-chart stop {
+            stop-color: #00bdae;
+        }
+
+        #fabric-gradient-chart stop {
+            stop-color: #4472c4;
+        }
+
+        #bootstrap-gradient-chart stop {
+            stop-color: #a16ee5;
+        }
+
+        #bootstrap4-gradient-chart stop {
+            stop-color: #a16ee5;
+        }
+
+        #highcontrast-gradient-chart stop {
+            stop-color: #79ECE4;
+        }
+
+        #tailwind-gradient-chart stop {
+            stop-color: #5A61F6;
+        }
+
+        #bootstrap5-gradient-chart stop {
+            stop-color: #262E0B;
+        }
+
+        #material-dark-gradient-chart stop {
+            stop-color: #9ECB08;
+        }
+
+        #fabric-dark-gradient-chart stop {
+            stop-color: #4472c4;
+        }
+
+        #bootstrap-dark-gradient-chart stop {
+            stop-color: #a16ee5;
+        }
+
+        #tailwind-dark-gradient-chart stop {
+            stop-color: #8B5CF6;
+        }
+
+        #bootstrap5-dark-gradient-chart stop {
+            stop-color: #5ECB9B;
+        }
+
+        .chart-gradient stop[offset="0"] {
+            stop-opacity: 0.75;
+        }
+
+        .chart-gradient stop[offset="1"] {
+            stop-opacity: 0;
+        }
+        `;
 export function GetZoomingData(): any {
     let series1: Object[] = [];
     let point1: Object;
@@ -37,6 +84,8 @@ export function GetZoomingData(): any {
     return { 'series1': series1 };
 }
 export let data: any[] = GetZoomingData().series1;
+let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast'];
+let borderColor: string[] = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4'];
 
 export class Zooming extends SampleBase<{}, {}> {
 
@@ -72,17 +121,61 @@ export class Zooming extends SampleBase<{}, {}> {
                         title='Sales History of Product X' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[AreaSeries, DateTime, Legend, Zoom, ScrollBar]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} xName='x' yName='y' name='Product X' border={{ width: 0.5, color: '#00bdae' }}
-                                animation={{ enable: false }} fill='url(#gradient-chart)' type='Area'>
+                            <SeriesDirective dataSource={data} xName='x' yName='y' name='Product X' border={{ width: 0.5 }}
+                                animation={{ enable: false }} type='Area'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <svg style={{ height: '0' }}>
                     <defs>
-                        <linearGradient id="gradient-chart" x1="0" x2="0" y1="0" y2="1">
-                            <stop offset="0" />
-                            <stop offset="1" />
+                        <linearGradient id="material-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="fabric-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="bootstrap-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="bootstrap4-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="highcontrast-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="tailwind-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="bootstrap5-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="material-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="fabric-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="bootstrap-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="tailwind-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="bootstrap5-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
                         </linearGradient>
                     </defs>
                 </svg>
@@ -134,6 +227,8 @@ export class Zooming extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
+        args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];
     };
         
 }

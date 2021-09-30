@@ -253,7 +253,8 @@ public render(): JSX.Element {
 				</div>
 			</div>
 			<div id="action-description">
-				<p>This example demonstrates how to add an image preview of the uploaded files.
+				<p>This <a href="https://www.syncfusion.com/react-ui-components/react-file-upload"
+            target="_blank">&nbsp;React File Upload</a> example demonstrates how to add an image preview of the uploaded files.
                     Browse or drag-and-drop image files (PNG, JPG) to display preview for the selected files.</p>
 			</div>
 			<div id="description">

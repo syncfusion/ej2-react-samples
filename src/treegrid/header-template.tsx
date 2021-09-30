@@ -7,7 +7,48 @@ import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
     .e-header {
         margin-left: 12px;
-    }`;
+    }
+    .material-dark img.taskName, .fabric-dark img.taskName, .bootstrap-dark img.taskName,
+    .tailwind-dark img.taskName, .bootstrap5-dark img.taskName, .highcontrast img.taskName {
+      content: url('src/treegrid/images/darkTaskname.png')
+    }
+    .material img.taskName, .fabric img.taskName, .bootstrap img.taskName, 
+    .tailwind img.taskName, .bootstrap5 img.taskName, .bootstrap4 img.taskName {
+      content: url('src/treegrid/images/__Task name.png')
+    }
+    .material-dark img.startDate, .fabric-dark img.startDate, .bootstrap-dark img.startDate,
+    .tailwind-dark img.startDate, .bootstrap5-dark img.startDate, .highcontrast img.startDate {
+      content: url('src/treegrid/images/darkStartname.png')
+    }
+    .material img.startDate, .fabric img.startDate, .bootstrap img.startDate, 
+    .tailwind img.startDate, .bootstrap5 img.startDate, .bootstrap4 img.startDate {
+      content: url('src/treegrid/images/__Start name.png')
+    }
+    .material-dark img.resources, .fabric-dark img.resources, .bootstrap-dark img.resources,
+    .tailwind-dark img.resources, .bootstrap5-dark img.resources, .highcontrast img.resources {
+      content: url('src/treegrid/images/darkResources.png')
+    }
+    .material img.resources, .fabric img.resources, .bootstrap img.resources, 
+    .tailwind img.resources, .bootstrap5 img.resources, .bootstrap4 img.resources {
+      content: url('src/treegrid/images/__Resources.png')
+    }
+    .material-dark img.duration, .fabric-dark img.duration, .bootstrap-dark img.duration,
+    .tailwind-dark img.duration, .bootstrap5-dark img.duration, .highcontrast img.duration {
+      content: url('src/treegrid/images/darkduration.png')
+    }
+    .material img.duration, .fabric img.duration, .bootstrap img.duration, 
+    .tailwind img.duration, .bootstrap5 img.duration, .bootstrap4 img.duration {
+      content: url('src/treegrid/images/__Duration.png')
+    }
+    .material-dark img.progress-column, .fabric-dark img.progress-column, .bootstrap-dark img.progress-column,
+    .tailwind-dark img.progress-column, .bootstrap5-dark img.progress-column, .highcontrast img.progress-column {
+      content: url('src/treegrid/images/darkprogress.png')
+    }
+    .material img.progress-column, .fabric img.progress-column, .bootstrap img.progress-column, 
+    .tailwind img.progress-column, .bootstrap5 img.progress-column, .bootstrap4 img.progress-column {
+      content: url('src/treegrid/images/__progress.png')
+    }
+    `;
 {/* custom code end */}
 export class HeaderTemplate extends SampleBase<{}, {}> {
 
@@ -25,28 +66,28 @@ export class HeaderTemplate extends SampleBase<{}, {}> {
               <ColumnsDirective>
                 <ColumnDirective field='taskName' width='220'
                  headerTemplate={() => {
-                  return (<div><img src="src/treegrid/images/__Task name.png" width="20" height="20" className="e-image" />
+                  return (<div><img width="20" height="20" className="taskName" />
                     <b className='e-header'>Task Name</b></div>);
                 }}></ColumnDirective>
                 <ColumnDirective field='startDate' headerText='Start Date' format='yMd' type='date' textAlign='Right'
                  headerTemplate={() => {
-                  return (<div><img src="src/treegrid/images/__Start name.png" width="20" height="20" className="e-image" />
+                  return (<div><img width="20" height="20" className="startDate" />
                     <b className='e-header'>Start Date</b></div>);
                   }}
                  />
                 <ColumnDirective field='resourceId' textAlign='Right'
                  headerTemplate={() => {
-                  return (<div><img src="src/treegrid/images/__Resources.png" width="20" height="20" className="e-image" />
+                  return (<div><img width="20" height="20" className="resources" />
                   <b className='e-header'>Resources</b></div>);
                   }}/>
                 <ColumnDirective field='duration' textAlign='Right'
                  headerTemplate={() => {
-                  return (<div><img src="src/treegrid/images/__Duration.png" width="20" height="20" className="e-image" />
+                  return (<div><img width="20" height="20" className="duration" />
                   <b className='e-header'>Duration</b></div>);
                   }}/>
                 <ColumnDirective field='progress' headerText='progress' textAlign='Right'
                  headerTemplate={() => {
-                  return (<div><img src="src/treegrid/images/__progress.png" width="20" height="20" className="e-image" />
+                  return (<div><img width="20" height="20" className="progress-column" />
                   <b className='e-header'>Progress</b></div>);
                   }}/>
               </ColumnsDirective>

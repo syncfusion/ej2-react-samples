@@ -24,7 +24,8 @@ export class Axes extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
     }
     // custom code end
     // Code for Property Panel
@@ -125,70 +126,70 @@ export class Axes extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginBottom: '20px',  marginLeft: '-10px' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
-                                        <div id='minValue'>Axis Minimum <span>&nbsp;&nbsp;&nbsp;0</span> </div>
+                                        <div id='minValue'  style={{ width: '100%'}}>Axis Minimum <span>&nbsp;&nbsp;&nbsp;0</span> </div>
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.minChange.bind(this)} ref={d => this.rangeMinElement = d} name="range-min" step='5' id="min" defaultValue="0" min="0" max="115" style={{ width: '100px' }} />
+                                            <input type="range" onChange={this.minChange.bind(this)} ref={d => this.rangeMinElement = d} name="range-min" step='5' id="min" defaultValue="0" min="0" max="115" style={{ width: '120px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
-                                        <div id='maxValue'>Axis Maximum <span>&nbsp;&nbsp;&nbsp;115</span> </div>
+                                        <div id='maxValue'  style={{ width: '100%'}}>Axis Maximum <span>&nbsp;&nbsp;&nbsp;115</span> </div>
                                     </td>
                                     <td style={{ width: '70%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.maxChange.bind(this)} ref={d => this.rangeMaxElement = d} step='5' id="max" defaultValue="115" min="0" max="115" style={{ width: '100px' }} />
+                                            <input type="range" onChange={this.maxChange.bind(this)} ref={d => this.rangeMaxElement = d} step='5' id="max" defaultValue="115" min="0" max="115" style={{ width: '120px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Axis Inversed</div>
+                                        <div  style={{ width: '100%'}}>Axis Inversed</div>
                                     </td>
                                     <td>
-                                        <div>
+                                        <div style={{paddingLeft: "60px"}}>
                                             <input type="checkbox" onChange={this.inverseChange.bind(this)} ref={d => this.inversedElement = d} id='axisInversed' />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Axis Opposed</div>
+                                        <div  style={{ width: '100%'}}>Axis Opposed</div>
                                     </td>
                                     <td>
-                                        <div>
+                                        <div style={{paddingLeft: "60px"}}>
                                             <input type="checkbox" onChange={this.opposedChange.bind(this)} ref={d => this.opposedElement = d} id='opposed' />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Show Last Label</div>
+                                        <div style={{ width: '100%'}}>Show Last Label</div>
                                     </td>
                                     <td>
-                                        <div>
+                                        <div style={{paddingLeft: "60px"}}>
                                             <input type="checkbox" onChange={this.lastLabelChange.bind(this)} ref={d => this.lastLabelElement = d} id='lastlabel' />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Label Format</div>
+                                        <div style={{ width: '100%'}}>Label Format</div>
                                     </td>
                                     <td>
                                         <div className="e-float-input" style={{ 'margin-top': '0px' }}>
-                                            <input id="format" onChange={this.labelChange.bind(this)} ref={d => this.labelElement = d} type="text" defaultValue="{value}" style={{ "width": "100px" }} />
+                                            <input id="format" onChange={this.labelChange.bind(this)} ref={d => this.labelElement = d} type="text" defaultValue="{value}" style={{ "width": "120px" , "padding-top": "13px"}} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Pointer Type</div>
+                                        <div style={{ width: '100%'}}>Pointer Type</div>
                                     </td>
                                     <td>
                                         <div>
@@ -198,7 +199,7 @@ export class Axes extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>Marker Placement</div>
+                                        <div style={{ width: '100%'}}>Marker Placement</div>
                                     </td>
                                     <td>
                                     <div>

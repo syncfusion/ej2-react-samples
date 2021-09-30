@@ -376,9 +376,7 @@ function applyStyle( //it is in dedicated line here.
     node.constraints &= con;
   }
   diagramInstance.dataBind();
-  // custom code start
   target.classList.add("e-selected-style");
-  // custom code end
 }
 
 //Enable or disable the Constraints for Node.

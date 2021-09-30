@@ -16,7 +16,8 @@ import * as dataSource from './datasource.json';
 
 export class CellDimension extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -27,7 +28,7 @@ export class CellDimension extends SampleBase<{}, {}> {
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent cssClass='schedule-cell-dimension' width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: this.data }}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -42,13 +43,15 @@ export class CellDimension extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id='action-description'>
-          <p>This demo shows how to set the width and height of the cells by overriding the default CSS classes, so that the Scheduler
-        events are viewable in a zoomed in style.</p>
+          <p>
+            This demo shows how to set the width and height of the cells by overriding the default CSS classes, so that the Scheduler
+            events are viewable in a zoomed in style.
+          </p>
         </div>
         <div id='description'>
           <p>
             In this demo, the height and width of the Scheduler cells are set by overriding the default CSS class.
-        </p>
+          </p>
         </div>
       </div>
     );

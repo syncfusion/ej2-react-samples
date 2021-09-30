@@ -11,16 +11,15 @@ import * as dataSource from './datasource.json';
 /**
  *  Schedule adaptive grouping sample
  */
-
 export class AdaptiveGrouping extends SampleBase<{}, {}> {
-    private data: Object[] =
-        extend([], (dataSource as any).resourceData.concat((dataSource as any).timelineResourceData), null, true) as Object[];
-    private projectData: Object[] = [
+    private data: Record<string, any>[] =
+        extend([], (dataSource as Record<string, any>).resourceData.concat((dataSource as Record<string, any>).timelineResourceData), null, true) as Record<string, any>[]
+    private projectData: Record<string, any>[] = [
         { text: 'PROJECT 1', id: 1, color: '#cb6bb2' },
         { text: 'PROJECT 2', id: 2, color: '#56ca85' },
         { text: 'PROJECT 3', id: 3, color: '#df5286' }
     ];
-    private categoryData: Object[] = [
+    private categoryData: Record<string, any>[] = [
         { text: 'Nancy', id: 1, groupId: 1, color: '#df5286' },
         { text: 'Steven', id: 2, groupId: 1, color: '#7fa900' },
         { text: 'Robert', id: 3, groupId: 2, color: '#ea7a57' },
@@ -36,7 +35,7 @@ export class AdaptiveGrouping extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper schedule-wrapper'>
                         <ScheduleComponent width='100%' height='650px' id='schedule'
-                            selectedDate={new Date(2018, 3, 4)} group={this.group} enableAdaptiveUI={true} currentView='Month' eventSettings={{ dataSource: this.data }}>
+                            selectedDate={new Date(2021, 3, 4)} group={this.group} enableAdaptiveUI={true} currentView='Month' eventSettings={{ dataSource: this.data }}>
                             <ViewsDirective>
                                 <ViewDirective option='Day' />
                                 <ViewDirective option='Week' />

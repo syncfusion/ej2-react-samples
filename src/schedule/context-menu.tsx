@@ -18,59 +18,33 @@ import * as dataSource from './datasource.json';
 export class ContextMenu extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
   private menuObj: ContextMenuComponent;
-  private eventObj: { [key: string]: Object };
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private eventObj: Record<string, any>;
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
   private selectedTarget: Element;
   private menuItems: MenuItemModel[] = [
+    { text: 'New Event', iconCss: 'e-icons e-plus', id: 'Add' },
+    { text: 'New Recurring Event', iconCss: 'e-icons e-repeat', id: 'AddRecurrence' },
+    { text: 'Today', iconCss: 'e-icons e-timeline-today', id: 'Today' },
+    { text: 'Edit Event', iconCss: 'e-icons e-edit', id: 'Save' },
     {
-      text: 'New Event',
-      iconCss: 'e-icons new',
-      id: 'Add'
-    }, {
-      text: 'New Recurring Event',
-      iconCss: 'e-icons recurrence',
-      id: 'AddRecurrence'
-    }, {
-      text: 'Today',
-      iconCss: 'e-icons today',
-      id: 'Today'
-    }, {
-      text: 'Edit Event',
-      iconCss: 'e-icons edit',
-      id: 'Save'
-    }, {
-      text: 'Edit Event',
-      id: 'EditRecurrenceEvent',
-      iconCss: 'e-icons edit',
-      items: [{
-        text: 'Edit Occurrence',
-        id: 'EditOccurrence'
-      }, {
-        text: 'Edit Series',
-        id: 'EditSeries'
-      }]
-    }, {
-      text: 'Delete Event',
-      iconCss: 'e-icons delete',
-      id: 'Delete'
-    }, {
-      text: 'Delete Event',
-      id: 'DeleteRecurrenceEvent',
-      iconCss: 'e-icons delete',
-      items: [{
-        text: 'Delete Occurrence',
-        id: 'DeleteOccurrence'
-      }, {
-        text: 'Delete Series',
-        id: 'DeleteSeries'
-      }]
+      text: 'Edit Event', id: 'EditRecurrenceEvent', iconCss: 'e-icons e-edit', items: [
+        { text: 'Edit Occurrence', id: 'EditOccurrence' },
+        { text: 'Edit Series', id: 'EditSeries' }
+      ]
+    },
+    { text: 'Delete Event', iconCss: 'e-icons e-trash', id: 'Delete' },
+    {
+      text: 'Delete Event', id: 'DeleteRecurrenceEvent', iconCss: 'e-icons e-trash', items: [
+        { text: 'Delete Occurrence', id: 'DeleteOccurrence' },
+        { text: 'Delete Series', id: 'DeleteSeries' }
+      ]
     }
   ];
 
   private onMenuItemSelect(args: MenuEventArgs): void {
     let selectedMenuItem: string = args.item.id;
     if (this.selectedTarget.classList.contains('e-appointment')) {
-      this.eventObj = this.scheduleObj.getEventDetails(this.selectedTarget) as { [key: string]: Object };
+      this.eventObj = this.scheduleObj.getEventDetails(this.selectedTarget);
     }
     switch (selectedMenuItem) {
       case 'Today':
@@ -92,7 +66,7 @@ export class ContextMenu extends SampleBase<{}, {}> {
       case 'EditSeries':
         if (selectedMenuItem === 'EditSeries') {
           this.eventObj = new DataManager(this.scheduleObj.eventsData).executeLocal(new Query().where(this.scheduleObj.eventFields.id,
-            'equal', this.eventObj[this.scheduleObj.eventFields.recurrenceID] as string | number))[0] as { [key: string]: Object };
+            'equal', this.eventObj[this.scheduleObj.eventFields.recurrenceID] as string | number))[0] as Record<string, any>;
         }
         this.scheduleObj.openEditor(this.eventObj, selectedMenuItem);
         break;
@@ -123,7 +97,7 @@ export class ContextMenu extends SampleBase<{}, {}> {
       return;
     }
     if (this.selectedTarget.classList.contains('e-appointment')) {
-      this.eventObj = this.scheduleObj.getEventDetails(this.selectedTarget) as { [key: string]: Object };
+      this.eventObj = this.scheduleObj.getEventDetails(this.selectedTarget) as Record<string, any>;
       if (this.eventObj.RecurrenceRule) {
         this.menuObj.showItems(['EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
         this.menuObj.hideItems(['Add', 'AddRecurrence', 'Today', 'Save', 'Delete'], true);
@@ -142,7 +116,7 @@ export class ContextMenu extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent height='650px' ref={t => this.scheduleObj = t} selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}>
+            <ScheduleComponent height='650px' ref={t => this.scheduleObj = t} selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: this.data }}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
                 <ViewDirective option='Week' />
@@ -156,16 +130,15 @@ export class ContextMenu extends SampleBase<{}, {}> {
         </div>
         <ContextMenuComponent cssClass='schedule-context-menu' ref={menu => this.menuObj = menu} target='.e-schedule' items={this.menuItems} beforeOpen={this.onContextMenuBeforeOpen.bind(this)} select={this.onMenuItemSelect.bind(this)} />
         <div id="action-description">
-          <p>This example illustrates how to enable the context menu on Scheduler and perform its related actions based on
-                the selected menu options.</p>
+          <p>This example illustrates how to enable the context menu on Scheduler and perform its related actions based on the selected menu options.</p>
         </div>
         <div id="description">
           <p>
             In this example, we have integrated the ContextMenu control separately from application end and set its target
-                to Scheduler control. Also, we have used the public methods <code>openEditor</code> through which the default event editor
-                is set to open for saving or updating the appointments, <code>deleteEvent</code> to delete the selected appointment, and
-                <code>selectedDate</code> to navigate to today's date. In mobile devices, the context menu will open when you tap hold on
-                the cells or events.</p>
+            to Scheduler control. Also, we have used the public methods <code>openEditor</code> through which the default event editor
+            is set to open for saving or updating the appointments, <code>deleteEvent</code> to delete the selected appointment, and
+            <code>selectedDate</code> to navigate to today's date. In mobile devices, the context menu will open when you tap hold on
+            the cells or events.</p>
         </div>
       </div>
     );

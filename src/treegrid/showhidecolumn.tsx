@@ -69,7 +69,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div id='columnddl'>
-                         <DropDownListComponent width="120px" id="ddlelement"
+                         <DropDownListComponent width="96px" id="ddlelement"
                             dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="taskID"
                             ref={dropdown=> this.dropdownObj = dropdown} />
                       </div>
@@ -95,7 +95,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '70%', Padding: '10px 10px 10px 0px' }}>
                       <div>
-                        <textarea id='hiddencolumns' style={{ resize: 'none', height:'65px', backgroundColor:'#fff', padding: '6px' }}
+                        <textarea id='hiddencolumns' style={{ resize: 'none', height:'65px', width:'92px', backgroundColor:'#fff', padding: '6px' }}
                           className='form-control'></textarea>
                       </div>
                     </td>

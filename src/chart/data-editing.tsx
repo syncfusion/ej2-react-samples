@@ -68,10 +68,10 @@ export class DataEdit extends SampleBase<{}, {}> {
                         <Inject services={[LineSeries, ColumnSeries, Category, DataEditing, Legend, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} dragSettings={{ enable: true }} xName='x' yName='y' name='Product A'
-                                width={2} marker={{ visible: true, width: 10, height: 10 }} type='Column' fill='#00BDAE'>
+                                width={2} marker={{ visible: true, width: 10, height: 10 }} type='Column'>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} dragSettings={{ enable: true }} xName='x' yName='y' name='Product B'
-                                width={2} marker={{ visible: true, width: 10, height: 10 }} type='Line' fill='#357CD2'>
+                                width={2} marker={{ visible: true, width: 10, height: 10 }} type='Line'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -105,6 +105,7 @@ export class DataEdit extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+            replace(/-dark/i, "Dark") as ChartTheme;
     };
 }

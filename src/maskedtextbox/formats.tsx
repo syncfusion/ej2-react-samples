@@ -39,7 +39,7 @@ export class Formats extends SampleBase<{}, {}> {
               <MaskedTextBoxComponent mask='(999)-999-9999' floatLabelType='Never' created={this.onCreated.bind(this)} change={this.maskChange} ref={mask => this.maskInstance = mask}></MaskedTextBoxComponent>
             </div>
           </div>
-          <div className='col-lg-4 property-section'>
+          <div className='col-lg-4 property-section' id="input-mask">
             <PropertyPane title='Properties'>
               <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>

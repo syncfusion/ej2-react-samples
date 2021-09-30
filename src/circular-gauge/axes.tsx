@@ -26,7 +26,8 @@ export class Axes extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     // custom code end
     public onChartLoad(args: ILoadedEventArgs): void {
@@ -97,23 +98,23 @@ export class Axes extends SampleBase<{}, {}> {
                             loaded={this.onChartLoad.bind(this)}>
                             <AxesDirective>
                                 <AxisDirective
-                                    lineStyle={{ width: 1.5, color: ' #9E9E9E' }}
+                                    lineStyle={{ width: 1.5}}
                                     radius='95%'
                                     startAngle={220} endAngle={140}
                                     minimum={0} maximum={160}
                                     majorTicks={{
                                         position: 'Inside',
-                                        width: 2, height: 10, color: '#757575'
+                                        width: 2, height: 10
                                     }}
                                     minorTicks={{
                                         position: 'Inside', width: 2,
-                                        height: 5, color: '#757575'
+                                        height: 5
                                     }} labelStyle={{
                                         position: 'Inside', autoAngle: true,
-                                        hiddenLabel: 'None', font: { color: '#333333' }
+                                        hiddenLabel: 'None'
                                     }}>
                                     <PointersDirective>
-                                        <PointerDirective value={80} radius='100%' color='#333333'
+                                        <PointerDirective value={80} radius='100%'
                                             markerHeight={15} markerWidth={15} type='Marker'
                                             markerShape='Triangle' />
                                     </PointersDirective>
@@ -132,7 +133,7 @@ export class Axes extends SampleBase<{}, {}> {
                                         height: 5, color: '#E84011'
                                     }} labelStyle={{
                                         position: 'Outside', autoAngle: true,
-                                        hiddenLabel: 'None'
+                                        hiddenLabel: 'None', font: { color: '#E84011' }
                                     }}>
                                     <PointersDirective>
                                         <PointerDirective value={120} radius='100%' color='#C62E0A'
@@ -146,11 +147,11 @@ export class Axes extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: "-10px" }}>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <div> Axis </div>
+                                            <div style={{'width': '110%'}}> Axis </div>
                                         </td>
                                         <td>
                                             <div>
@@ -163,7 +164,7 @@ export class Axes extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div> Direction </div>
+                                            <div style={{'width': '110%'}}> Direction </div>
                                         </td>
                                         <td>
                                             <div>
@@ -176,21 +177,21 @@ export class Axes extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div id='start'>Start Angle <span> &nbsp;&nbsp;&nbsp;220</span> </div>
+                                            <div id='start' style={{'width': '110%'}}>Start Angle <span> &nbsp;&nbsp;&nbsp;220</span> </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" id="startAngle" onChange={this.startAngle.bind(this)} ref={d => this.start = d} defaultValue="220" min="0" max="360" style={{ width: "90%" }} />
+                                                <input type="range" id="startAngle" onChange={this.startAngle.bind(this)} ref={d => this.start = d} defaultValue="220" min="0" max="360" style={{ width: "140px" }} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div id='end'>End Angle <span> &nbsp;&nbsp;&nbsp;140</span> </div>
+                                            <div id='end' style={{'width': '110%'}}>End Angle <span> &nbsp;&nbsp;&nbsp;140</span> </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" id="endAngle" onChange={this.endAngle.bind(this)} ref={d => this.end = d} defaultValue="140" min="0" max="360" style={{ width: "90%" }} />
+                                                <input type="range" id="endAngle" onChange={this.endAngle.bind(this)} ref={d => this.end = d} defaultValue="140" min="0" max="360" style={{ width: "140px" }} />
                                             </div>
                                         </td>
                                     </tr>

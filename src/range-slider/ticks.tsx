@@ -120,8 +120,8 @@ export class Ticks extends SampleBase<{}, {}> {
                     <div id="description">
                         <p>The Ticks are the visual representation of the Slider values. The ticks are differentiated as small ticks and large ticks
                     based on its size. The ticks position can be defined by the
-                    <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-ticksData.html?lang=es6#smallstep-number"> smallStep</a> and
-                    <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-ticksData.html?lang=es6#smallstep-number"> largeStep </a>properties.</p>
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/ticksData/#smallstep"> smallStep</a> and
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/ticksData/#largestep">largeStep</a> properties.</p>
                         <p> In this demo, we have demonstrated Ticks position with Default and Range Slider.</p>
                         <ul>
                             <li>Default Slider – In this sample, the small ticks and large ticks are rendered with the frequency of 0.05 and 0.20.</li>
@@ -131,14 +131,14 @@ export class Ticks extends SampleBase<{}, {}> {
                         <p>We can use the below property to restrict the value range for the slider:</p>
                         <ul>
                             <li>
-                                <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-slider.html?lang=es6#step-string---number">step </a> - to define incremental/decremental step value for slider</li>
+                                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#step">step </a> - to define incremental/decremental step value for slider</li>
                             <li>
-                                <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-slider.html?lang=es6#min-string---number">min </a> – to specify minimum value of the slider</li>
+                                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#min">min </a> – to specify minimum value of the slider</li>
                             <li>
-                                <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-slider.html?lang=es6#max-string---number">max </a> – to specify maximum value of the slider</li>
+                                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#max">max </a> – to specify maximum value of the slider</li>
                         </ul>
                         <p>For more information, we can refer the
-                    <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/ticks.html?lang=es6">ticks</a> section from the documentation.</p>
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/ticks">ticks</a> section from the documentation.</p>
                     </div>
                 </div>
             </div>

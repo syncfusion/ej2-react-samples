@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda,
-  EventRenderedArgs, Inject, Resize, DragAndDrop
+  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
@@ -16,11 +15,13 @@ import * as dataSource from './datasource.json';
 
 export class KeyboardInteraction extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).zooEventsData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).zooEventsData, null, true) as Record<string, any>[];
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
-  public rendereComplete(): void {
+
+  public renderComplete(): void {
     document.body.addEventListener('keydown', (e: KeyboardEvent) => {
       let scheduleElement: HTMLElement = document.getElementById('schedule');
       if (e.altKey && e.keyCode === 74 && scheduleElement) {
@@ -34,7 +35,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent id='schedule' width='100%' height='650px' selectedDate={new Date(2018, 1, 15)}
+            <ScheduleComponent id='schedule' width='100%' height='650px' selectedDate={new Date(2021, 1, 15)}
               ref={t => this.scheduleObj = t} eventSettings={{ dataSource: this.data }} eventRendered={this.onEventRendered.bind(this)}>
               <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
             </ScheduleComponent>
@@ -45,10 +46,8 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
             how those applicable shortcuts interacts with Scheduler actions.</p>
         </div>
         <div id='description'>
-          <p>All the Scheduler actions can be controlled via keyboard keys and is availed by using
-        <code>allowKeyboardInteraction</code> property which is set to true by default. The applicable key combinations and its relative functionalities are listed
-                                                    below.
-          </p>
+          <p>All the Scheduler actions can be controlled via keyboard keys and is availed by using <code>allowKeyboardInteraction</code> property
+            which is set to true by default. The applicable key combinations and its relative functionalities are listed below.</p>
           <table style={{ width: '100%' }}>
             <tr>
               <th style={{ width: '200px' }}>
@@ -60,8 +59,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Alt</kbd> +
-                <kbd>j</kbd>
+                <kbd>Alt</kbd> + <kbd>j</kbd>
               </td>
               <td>Focuses the Scheduler [Provided from application end].</td>
             </tr>
@@ -74,8 +72,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Shift</kbd> +
-                <kbd>Tab</kbd>
+                <kbd>Shift</kbd> + <kbd>Tab</kbd>
               </td>
               <td>Reverse focusing of the Tab functionality. Inverse focusing of event elements from the last one and then move
                 onto the first or active item on Scheduler header bar and then moves out of the component.</td>
@@ -83,88 +80,80 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
             <tr>
               <td style={{ padding: '4px 0' }}>
                 <kbd>Enter</kbd> key
-            </td>
+              </td>
               <td>Opens the quick popup on the selected cells or events.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
                 <kbd>Escape</kbd> key
-            </td>
+              </td>
               <td>Closes any of the popup that are in open state.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
                 <kbd>Arrow</kbd> keys
-            </td>
+              </td>
               <td>To move onto the next available cells in either of the needed directions (left, right, top and right)</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Shift</kbd> +
-                <kbd> Arrow</kbd> keys
-            </td>
+                <kbd>Shift</kbd> + <kbd> Arrow</kbd> keys
+              </td>
               <td>For multiple cell selection on either direction.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
                 <kbd>Delete</kbd> key
-            </td>
+              </td>
               <td>Deletes one or more selected events.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Ctrl</kbd> +
-                <kbd>Click</kbd> on events
-            </td>
+                <kbd>Ctrl</kbd> + <kbd>Click</kbd> on events
+              </td>
               <td>To select multiple events.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Alt</kbd> +
-                <kbd>Number</kbd> keys (from 1 to 6)
-            </td>
+                <kbd>Alt</kbd> + <kbd>Number</kbd> keys (from 1 to 6)
+              </td>
               <td>To switch between the views on Scheduler.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Ctrl</kbd> +
-                <kbd>Left Arrow</kbd> keys
-            </td>
+                <kbd>Ctrl</kbd> + <kbd>Left Arrow</kbd> keys
+              </td>
               <td>To navigate to the previous date period.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Ctrl</kbd> +
-                <kbd>Right Arrow</kbd> keys
-            </td>
+                <kbd>Ctrl</kbd> + <kbd>Right Arrow</kbd> keys
+              </td>
               <td>To navigate to the next date period.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Left</kbd> or
-                <kbd>Right Arrow</kbd> keys
-            </td>
+                <kbd>Left</kbd> or <kbd>Right Arrow</kbd> keys
+              </td>
               <td>On pressing any of these keys when focus is currently on the Scheduler header bar, moves the focus to the previous
                 or next items in the header bar.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Space</kbd> or
-                <kbd>Enter</kbd> keys
-            </td>
+                <kbd>Space</kbd> or <kbd>Enter</kbd> keys
+              </td>
               <td>It activates any of the focused items.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
-                <kbd>Page Up</kbd> &
-                <kbd>Page Down</kbd> keys
-            </td>
+                <kbd>Page Up</kbd> & <kbd>Page Down</kbd> keys
+              </td>
               <td>To scroll through the work cells area.</td>
             </tr>
             <tr>
               <td style={{ padding: '4px 0' }}>
                 <kbd>Home</kbd> key
-            </td>
+              </td>
               <td>To move the selection to the first cell of Scheduler.</td>
             </tr>
           </table>

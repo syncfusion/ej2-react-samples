@@ -42,7 +42,6 @@ export class StripLines extends SampleBase<{}, {}> {
                         indicatorType={[]}
                         seriesType={[]}
                         title={'AAPL Historical'}
-                        titleStyle={{ fontWeight: '500', color: '#424242 ' }}
                         chartArea={{ border: { width: 0 } }}
                     >
                         <Inject services={[DateTime, StripLine, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,

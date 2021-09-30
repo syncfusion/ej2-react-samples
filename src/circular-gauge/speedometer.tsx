@@ -153,7 +153,8 @@ export class Speedometer extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     // custom code end
     render() {
@@ -236,7 +237,7 @@ export class Speedometer extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                             <tbody>
                                 <tr>
                                     <td>

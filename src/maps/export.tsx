@@ -18,13 +18,35 @@ const SAMPLE_CSS = `
 .control-fluid {
     padding: 0px !important;
 }
+
 #btn-control {
     width: 100%;
     text-align: center;
     text-transform:none !important;
 }
+
 .e-play-icon::before {
-      content: '\\e728';
+    content: '\\e728';
+}
+
+.e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before  {
+    content: '\\e710';
+}
+
+.e-view.bootstrap4 .e-play-icon::before {
+    content: '\\e780';
+}
+
+.e-view.tailwind-dark .e-play-icon::before, .e-view.tailwind .e-play-icon::before {
+    content: '\\e7bf';
+}
+
+.e-view.highcontrast .e-play-icon::before {
+    content: '\\e710';
+}
+
+.e-view.bootstrap5 .e-play-icon::before, .e-view.bootstrap5-dark .e-play-icon::before {
+    content: '\\e72e';
 }`;
 export class ExportMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
@@ -112,33 +134,37 @@ export class ExportMaps extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%' }}>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "20%" }}>
-                                        Map Type:
+                                        Map Type
                         </td>
                                     <td style={{ width: "30%" }}>
-                                        <DropDownListComponent width={80} id="maptype" value="Geometry" change={this.mapTypeChange.bind(this)} ref={d => this.mapType = d} dataSource={this.maptype} fields={{ text: 'value', value: 'value' }} placeholder="Geometry" />
+                                        <div style={{ marginLeft: "-25px" }}>
+                                        <DropDownListComponent width={115} id="maptype" value="Geometry" change={this.mapTypeChange.bind(this)} ref={d => this.mapType = d} dataSource={this.maptype} fields={{ text: 'value', value: 'value' }} placeholder="Geometry" />
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "20%" }}>
-                                        Export Type:
+                                        Export Type
                         </td>
                                     <td style={{ width: "30%" }}>
-                                        <DropDownListComponent width={80} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                    <div style={{ marginLeft: "-25px" }}>
+                                        <DropDownListComponent width={115} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                    </div>    
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "30%" }}>
-                                        FileName :
+                                        FileName
                         </td>
                                     <td style={{ width: "40%" }}>
-                                        <div className="e-float-input" style={{ width: 90, 'margin-top': '0px' }}>
-                                            <input type="text" defaultValue="Maps" id="fileName" style={{ "margin-left": "-10px" }} />
+                                        <div className="e-float-input" style={{ width: 120, 'margin-top': '0px' }}>
+                                            <input type="text" defaultValue="Maps" id="fileName" style={{ "margin-left": "-25px", "width": "115px" }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td>
-                                        <div id="btn-control" style={{ 'margin-left': '60px' }}>
+                                        <div id="btn-control" style={{ 'padding-left': '35px' }}>
                                         <ButtonComponent onClick={this.onClick.bind(this)} style={{ width: '100px' }} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
@@ -181,7 +207,8 @@ export class ExportMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
     public onClick(e: Event): void {

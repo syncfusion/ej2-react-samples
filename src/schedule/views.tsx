@@ -18,18 +18,20 @@ import * as dataSource from './datasource.json';
 
 export class Views extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).zooEventsData, null, true) as Object[];
-  private viewOptions: { [key: string]: Object }[] = [
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).zooEventsData, null, true) as Record<string, any>[];
+  private viewOptions: Record<string, any>[] = [
     { text: 'Day', value: 'Day' },
     { text: 'Week', value: 'Week' },
     { text: 'WorkWeek', value: 'WorkWeek' },
     { text: 'Month', value: 'Month' }
   ];
-  private fields: object = { text: 'text', value: 'value' };
+  private fields: Record<string, any> = { text: 'text', value: 'value' };
+
   private onViewChange(args: ChangeEventArgs): void {
     this.scheduleObj.currentView = args.value as View;
     this.scheduleObj.dataBind();
   }
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -40,7 +42,7 @@ export class Views extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: this.data }}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -57,14 +59,10 @@ export class Views extends SampleBase<{}, {}> {
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Current view</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
                       <DropDownListComponent style={{ padding: '6px' }} value={'Week'} fields={this.fields} dataSource={this.viewOptions}
-                        change={this.onViewChange.bind(this)}>
-                      </DropDownListComponent>
+                        change={this.onViewChange.bind(this)} placeholder='Current View' floatLabelType='Always'></DropDownListComponent>
                     </div>
                   </td>
                 </tr>
@@ -74,7 +72,7 @@ export class Views extends SampleBase<{}, {}> {
         </div>
         <div id='action-description'>
           <p>This demo showcases the usage of basic views available in Scheduler such as Day, Week, Work Week and Month. Here, the wildlife
-        events being held in zoos are displayed against its respective timings.</p>
+            events being held in zoos are displayed against its respective timings.</p>
         </div>
         <div id='description'>
           <p>In this demo, Scheduler is showcased with 4 basic views namely

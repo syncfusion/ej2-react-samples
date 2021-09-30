@@ -3,6 +3,10 @@
     .card-control-section.basic_card_layout #weather_card.e-card {
         background-image: url('./src/card/images/weather.png');
     }
+    
+    .material-dark .card-control-section.basic_card_layout .e-card .e-card-header {
+        padding: 10px;
+    }
 
     .card-control-section.basic_card_layout #weather_card.e-card .e-card-header-caption .e-card-header-title,
     .card-control-section.basic_card_layout #weather_card.e-card .e-card-header-caption .e-card-sub-title {
@@ -82,6 +86,11 @@
         min-height: 300px;
         height: 300px;
         justify-content: flex-end;
+    }
+    
+    .tailwind-dark .card-control-section.flip_card_layout #card_flip.e-card,
+    .tailwind-dark .card-control-section.flip_card_layout #card_flip_profile.e-card {
+        height: 314px;
     }
 
     .card-control-section.flip_card_layout #card_flip.e-card,
@@ -297,10 +306,19 @@
     .card-control-section.reveal_card_layout .e-card #card_reveal .e-card-header .e-card-header-caption {
         text-align: left
     }
+    
+    .material-dark .card-control-section.reveal_card_layout .e-card .e-card-header {
+        padding: 10px;
+    }
 
     .card-control-section.reveal_card_layout .e-card #card_revealed .e-card-content table td .e-card-actions .e-card-btn {
         background-color: #fff;
         border: none;
+    }
+    
+    .card-control-section.reveal_card_layout .e-card #card_revealed .e-card-content table td .e-card-actions .e-card-btn {
+        background-color: unset;
+        border: 1px solid #22d3ee;
     }
 
     .highcontrast .card-control-section.reveal_card_layout .e-card #card_revealed .e-card-content table td .e-card-actions .e-card-btn {
@@ -413,9 +431,16 @@
         content: "\e7fc";
         font-size: 12px;
     }
-
-    .tailwind .card-control-section.reveal_card_layout .e-card .e-collapse:before {
+    
+    .tailwind .card-control-section.reveal_card_layout .e-card .e-collapse:before,
+    .tailwind-dark .card-control-section.reveal_card_layout .e-card .e-collapse:before{
         content: "\e771";
+        font-size: 12px;
+    }
+
+    .bootstrap5 .card-control-section.reveal_card_layout .e-card .e-collapse:before,
+    .bootstrap5-dark .card-control-section.reveal_card_layout .e-card .e-collapse:before{
+        content: "\e7e7";
         font-size: 12px;
     }
 
@@ -429,9 +454,15 @@
     .card-control-section.reveal_card_layout .e-card .e-reveal-icon:before {
         content: "\e984";
     }
-
-    .tailwind .card-control-section.reveal_card_layout .e-card .e-reveal-icon:before {
+    
+    .tailwind .card-control-section.reveal_card_layout .e-card .e-reveal-icon:before,
+    .tailwind-dark .card-control-section.reveal_card_layout .e-card .e-reveal-icon:before{
         content: "\e76f";
+    }
+
+    .bootstrap5 .card-control-section.reveal_card_layout .e-card .e-reveal-icon:before,
+    .bootstrap5-dark .card-control-section.reveal_card_layout .e-card .e-reveal-icon:before {
+    	content: "\e71c";
     }
 
     .card-control-section.reveal_card_layout .col-xs-6.col-sm-6.col-lg-6.col-md-6 {

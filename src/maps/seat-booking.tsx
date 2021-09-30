@@ -94,7 +94,7 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
                     </div>
                     <div style={{border:'3px solid darkgray',width:200,display:'block',margin:'auto'}}>
                     <img src="src/maps/images/wheel.png" alt="Stering wheel icon" style={{width:30,height:30,marginLeft:'18%',marginTop:10}}></img>
-                        <MapsComponent id="maps" loaded={this.onMapsLoad.bind(this)} load={this.load} ref={m => this.mapInstance = m} 
+                        <MapsComponent id="maps" load={this.load} ref={m => this.mapInstance = m} 
                          zoomSettings={{
                                 enable: false
                             }}
@@ -171,15 +171,12 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
             </div >
         )
     }
-    public onMapsLoad(args: ILoadedEventArgs): void {
-        let maps: Element = document.getElementById('maps');
-        maps.setAttribute('title', '');
-    };
     // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
     private clearseats(): void {

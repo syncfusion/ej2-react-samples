@@ -4,11 +4,20 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Page } fr
 import { textWrapData } from './data';
 import { SampleBase } from '../common/sample-base';
 
+const SAMPLE_CSS = `
+    .e-bigger .e-treegrid .e-treegridexpand,
+    .e-bigger .e-treegrid .e-treegridcollapse {
+        width: 18px;
+    }`;
+
 export class AutoWrap extends SampleBase<{}, {}> {
 
   render() {
     return (
       <div className='control-pane'>
+        <style>
+          {SAMPLE_CSS}
+        </style>
         <div className='control-section'>
           <TreeGridComponent dataSource={textWrapData} treeColumnIndex={1} allowPaging='true' childMapping='subtasks' allowTextWrap='true' 
               pageSettings={{ pageSize: 11 }}>

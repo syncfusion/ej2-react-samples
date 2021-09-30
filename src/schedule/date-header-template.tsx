@@ -16,11 +16,13 @@ import * as dataSource from './datasource.json';
 
 export class DateHeaderTemplate extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
   private instance: Internationalization = new Internationalization();
+
   private getDateHeaderText(value: Date): string {
     return this.instance.formatDate(value, { skeleton: 'Ed' });
   }
+
   private getWeather(value: Date) {
     switch (value.getDay()) {
       case 0:
@@ -41,10 +43,12 @@ export class DateHeaderTemplate extends SampleBase<{}, {}> {
         return null;
     }
   }
+
   private dateHeaderTemplate(props): JSX.Element {
     return (<div><div>{this.getDateHeaderText(props.date)}</div><div className="date-text"
       dangerouslySetInnerHTML={{ __html: this.getWeather(props.date) }}></div></div>);
   }
+
   private onRenderCell(args: RenderCellEventArgs): void {
     if (args.elementType === 'monthCells' && this.scheduleObj.currentView === 'Month') {
       let ele: Element = document.createElement('div');
@@ -63,7 +67,7 @@ export class DateHeaderTemplate extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' cssClass='schedule-date-header-template' ref={t => this.scheduleObj = t}
-              renderCell={this.onRenderCell.bind(this)} eventRendered={this.onEventRendered.bind(this)} selectedDate={new Date(2019, 0, 10)}
+              renderCell={this.onRenderCell.bind(this)} eventRendered={this.onEventRendered.bind(this)} selectedDate={new Date(2021, 0, 10)}
               eventSettings={{ dataSource: this.data }} dateHeaderTemplate={this.dateHeaderTemplate.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -78,11 +82,11 @@ export class DateHeaderTemplate extends SampleBase<{}, {}> {
         </div>
         <div id='action-description'>
           <p>This demo depicts the way to add images and custom text to the date header bar by making use of the date header template
-          option.</p>
+            option.</p>
         </div>
         <div id='description'>
           <p>In this demo, the <code>dateHeaderTemplate</code> option is used to customize the date header cells of day,
-           week and workweek views. In month view, the date header is not applicable and therefore the same customizations can be
+            week and workweek views. In month view, the date header is not applicable and therefore the same customizations can be
             added beside the date text in the month cells by making use of the <code>renderCells</code> event.</p>
         </div>
       </div>

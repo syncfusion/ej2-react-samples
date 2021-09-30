@@ -113,6 +113,11 @@
 		"csvData",
 		"progressbar",
 		"workflow",
-		"resizable"
+		"resizable",
+		"osm",
+		"cyber",
+		"sublayers",
+		"realtime",
+		"binding"
 	]
 }

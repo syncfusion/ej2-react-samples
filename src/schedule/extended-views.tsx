@@ -15,7 +15,8 @@ import * as dataSource from './datasource.json';
 
 export class ExtendedViews extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).fifaEventsData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).fifaEventsData, null, true) as Record<string, any>[];
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -26,7 +27,7 @@ export class ExtendedViews extends SampleBase<{}, {}> {
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2018, 5, 21)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2021, 5, 16)} eventSettings={{ dataSource: this.data }}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' displayName='3 Days' interval={3} />
@@ -38,17 +39,12 @@ export class ExtendedViews extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id='action-description'>
-          <p>
-            This demo illustrates how to display n number of days, weeks and months on a single view.
-          </p>
+          <p>This demo illustrates how to display n number of days, weeks and months on a single view.</p>
         </div>
-
         <div id='description'>
           <p>
-            In this demo, the
-            <code>interval</code> property has been defined with different values on each view such as 3 on day view, 2 on week view and
-             4 on month view – so that 3 days, 2 weeks and 4 months displayed on the respective views. This property is not applicable on
-            agenda and month agenda views
+            In this demo, the <code>interval</code> property has been defined with different values on each view such as 3 on day view, 2 on week view and
+            4 on month view – so that 3 days, 2 weeks and 4 months displayed on the respective views. This property is not applicable on agenda and month agenda views.
           </p>
         </div>
       </div>

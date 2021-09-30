@@ -4,6 +4,7 @@ import { PropertyPane } from '../common/property-pane';
 import { PivotViewComponent, IDataOptions, ChartSeriesType, IDataSet, FieldList, Inject, PivotChart } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
 import * as pivotData from './pivot-data/Pivot_Data.json';
+import { ChartTheme } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import './pivot-chart.css';
 
@@ -58,10 +59,10 @@ export class ChartIntegration extends SampleBase<{}, {}> {
         this.pivotObj.chartSettings.chartSeries.type = args.value as ChartSeriesType;
     }
     chartOnLoad(args): void {
-        let selectedTheme = location.hash.split("/")[1];
-        selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme =
-            selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1);
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     }
 
     render() {

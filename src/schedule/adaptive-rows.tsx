@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    TimelineViews, ScheduleComponent, ViewsDirective,
-    ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
+    TimelineViews, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './adaptive-rows.css';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
@@ -16,14 +15,9 @@ import { extend } from '@syncfusion/ej2-base';
  */
 
 export class AdaptiveRows extends SampleBase<{}, {}> {
-    private data: Object[] = extend([], (dataSource as any).roomData, null, true) as Object[];
+    private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).roomData, null, true) as Record<string, any>[];
     private scheduleObj: ScheduleComponent;
-
-    private onChange(args: ChangeEventArgs): void {
-        this.scheduleObj.rowAutoHeight = args.checked;
-    }
-
-    private ownerData: Object[] = [
+    private ownerData: Record<string, any>[] = [
         { text: 'Room A', id: 1, color: '#98AFC7' },
         { text: 'Room B', id: 2, color: '#99c68e' },
         { text: 'Room C', id: 3, color: '#C2B280' },
@@ -35,13 +29,18 @@ export class AdaptiveRows extends SampleBase<{}, {}> {
         { text: 'Room I', id: 9, color: '#98AFC7' },
         { text: 'Room J', id: 10, color: '#778899' }
     ];
+
+    private onChange(args: ChangeEventArgs): void {
+        this.scheduleObj.rowAutoHeight = args.checked;
+    }
+
     render() {
         return (
             <div className='schedule-control-section'>
                 <div className='col-lg-9 control-section'>
                     <div className='control-wrapper'>
-                    <ScheduleComponent cssClass='adaptive-rows' ref={schedule => this.scheduleObj = schedule} width='100%'
-                            height='650px' selectedDate={new Date(2018, 7, 1)} rowAutoHeight={true}
+                        <ScheduleComponent cssClass='adaptive-rows' ref={schedule => this.scheduleObj = schedule} width='100%'
+                            height='650px' selectedDate={new Date(2021, 7, 2)} rowAutoHeight={true}
                             eventSettings={{
                                 dataSource: this.data,
                                 fields: {
@@ -87,17 +86,13 @@ export class AdaptiveRows extends SampleBase<{}, {}> {
                         appointments present in those time ranges.
                     </p>
                 </div>
-
                 <div id="description">
                     <p>
                         In this example, <code>rowAutoHeight</code> property is set as <code>true</code> to auto-adjust the height
-                        of work cells based
-                        on the number of appointments present in the same time ranges. Also, this functionality is applicable only on
-                        all the timeline views as well as on the calendar month view. When this option is disabled, the height of the
-                        work
-                    cells remains static and at the time of exceeding appointments count, the <code>+n more</code> text indicator
-                        will be
-                        shown at the bottom of the cells.
+                        of work cells based on the number of appointments present in the same time ranges. Also, this functionality
+                        is applicable only on all the timeline views as well as on the calendar month view. When this option is disabled,
+                        the height of the work cells remains static and at the time of exceeding appointments count, the <code>+n more</code>
+                        text indicator will be shown at the bottom of the cells.
                     </p>
                 </div>
             </div>

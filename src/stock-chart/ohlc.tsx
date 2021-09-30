@@ -55,9 +55,6 @@ export class OHLC extends SampleBase<{}, {}> {
                         tooltipRender={tooltipRender}
                         crosshair={{ enable: true }}
                         title= 'AAPL Stock Price'
-                        titleStyle={{
-                            fontWeight: '500', color: '#424242 '
-                        }}
                     >
                         <Inject services={[DateTime, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines, 
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,

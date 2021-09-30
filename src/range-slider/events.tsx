@@ -133,7 +133,7 @@ export class Events extends SampleBase<{}, {}> {
                         <li>changed - Triggers when the Slider action is completed with change in Slider value.</li>
                     </ul>
                     <p>For more information, we can refer the
-                     <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/api-slider.html?lang=es6#events">events</a> API from the documentation.</p>
+                     <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#events">events</a> API from the documentation.</p>
                 </div>
             </div>
         )

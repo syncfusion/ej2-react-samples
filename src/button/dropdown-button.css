@@ -47,64 +47,64 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.e-logout::before {
+.e-ddb-icons.e-logout::before {
     content: "\e702";
 }
 
-.e-dashboard::before {
+.e-ddb-icons.e-dashboard::before {
     content: "\e704";
 }
 
-.e-profile::before {
+.e-ddb-icons.e-profile::before {
     content: "\e703";
 }
 
-.e-notifications::before {
+.e-ddb-icons.e-notifications::before {
     content: "\e700";
 }
 
-.e-settings::before {
+.e-ddb-icons.e-settings::before {
     content: "\e701";
 }
 
-.material .e-logout::before,
-.bootstrap .e-logout::before {
+.material .e-ddb-icons.e-logout::before,
+.bootstrap .e-ddb-icons.e-logout::before {
     content: "\e706";
 }
 
-.material .e-dashboard::before,
-.bootstrap .e-dashboard::before {
+.material .e-ddb-icons.e-dashboard::before,
+.bootstrap .e-ddb-icons.e-dashboard::before {
     content: "\e708";
 }
 
-.material .e-profile::before,
-.bootstrap .e-profile::before,
-.bootstrap4 .e-profile::before {
+.material .e-ddb-icons.e-profile::before,
+.bootstrap .e-ddb-icons.e-profile::before,
+.bootstrap4 .e-ddb-icons.e-profile::before {
     content: "\e811";
 }
 
-.material .e-notifications::before,
-.bootstrap .e-notifications::before {
+.material .e-ddb-icons.e-notifications::before,
+.bootstrap .e-ddb-icons.e-notifications::before {
     content: "\e707";
 }
 
-.material .e-settings::before,
-.bootstrap .e-settings::before {
+.material .e-ddb-icons.e-settings::before,
+.bootstrap .e-ddb-icons.e-settings::before {
     content: "\e705";
 }
 
-.bootstrap4 .e-logout::before {
+.bootstrap4 .e-ddb-icons.e-logout::before {
     content: "\e816";
 }
 
-.bootstrap4 .e-dashboard::before {
+.bootstrap4 .e-ddb-icons.e-dashboard::before {
     content: "\e80f";
 }
 
-.bootstrap4 .e-notifications::before {
+.bootstrap4 .e-ddb-icons.e-notifications::before {
     content: "\e810";
 }
 
-.bootstrap4 .e-settings::before {
+.bootstrap4 .e-ddb-icons.e-settings::before {
     content: "\e815";
 }

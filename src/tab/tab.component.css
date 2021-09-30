@@ -1,4 +1,5 @@
-.tab-control-section  .e-content .e-item {
+.tab-control-section .orientation-tab .e-content .e-item,
+.tab-control-section .responsive-mode .e-content .e-item {
     font-size: 12px;
     padding: 10px;
     text-align: justify;
@@ -161,8 +162,23 @@
     min-width: 500px;
     width: 100%;
 }
-.tab-control-section .e-listview:not(.e-list-template) .e-list-item {
+.tab-control-section .orientation-tab .e-listview:not(.e-list-template) .e-list-item {
     height: 63px;
+    padding: 0 16px !important;
+}
+
+.orientation-tab .e-content .e-item.e-active,
+.orientation-tab .e-content .e-item.e-active ul.e-list-parent {
+    width: 100%;
+}
+
+#tab-wizard .e-content .e-item {
+    font-size: 12px;
+    margin: 10px;
+}
+
+#bookTickets, #confirmTickets, #makePayment {
+    margin-left: 4px;
 }
 
 #draggableTab .e-content .e-item {

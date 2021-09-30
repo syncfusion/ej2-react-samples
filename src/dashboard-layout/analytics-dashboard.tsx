@@ -95,12 +95,12 @@ export class SEODashboard extends SampleBase<{}, {}> {
     public load(args: IAccLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast')  as AccumulationTheme;
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast').replace(/-dark/i, "Dark")  as AccumulationTheme;
     }
     public Chartload(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast')  as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast').replace(/-dark/i, "Dark")  as ChartTheme;
          if (selectedTheme === 'highcontrast') {
             args.chart.series[0].marker.dataLabel.fill = '#000000';
             args.chart.series[1].marker.dataLabel.fill = '#000000';
@@ -109,7 +109,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
     public Mapload(args: any): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast')  as MapsTheme;
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/contrast/i, 'Contrast').replace(/-dark/i, "Dark")  as MapsTheme;
     };
 
 
@@ -162,7 +162,7 @@ export class SEODashboard extends SampleBase<{}, {}> {
         return(
             <div style={{height:"100%", width:"100%"}}>
         <MapsComponent id="maps"
-                        load={this.Mapload}
+                        load={this.Mapload.bind(this)}
                         zoomSettings={{
                             enable: false
                         }}

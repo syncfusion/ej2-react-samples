@@ -22,8 +22,8 @@ MultiSelectComponent.Inject(CheckBoxSelection);
 export class HideWeekend extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
   private btnObj: ButtonComponent;
-  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
-  private weekDays: { [key: string]: Object; }[] = [
+  private data: Record<string, any>[] = extend([], (dataSource as any).employeeEventData, null, true) as Record<string, any>[];
+  private weekDays: Record<string, any>[] = [
     { Name: 'Sunday', Value: '0' },
     { Name: 'Monday', Value: '1' },
     { Name: 'Tuesday', Value: '2' },
@@ -32,9 +32,9 @@ export class HideWeekend extends SampleBase<{}, {}> {
     { Name: 'Friday', Value: '5' },
     { Name: 'Saturday', Value: '6' }
   ];
-  // maps the appropriate column to fields property
-  private localFields: Object = { text: 'Name', value: 'Value' };
-  private value: any = ['1', '3', '4', '5'];
+  private localFields: Record<string, any> = { text: 'Name', value: 'Value' };
+  private value: string[] = ['1', '3', '4', '5'];
+
   private onChange(): void {
     if (this.btnObj.element.classList.contains('e-active')) {
       this.btnObj.content = 'Hide';
@@ -44,11 +44,13 @@ export class HideWeekend extends SampleBase<{}, {}> {
       this.scheduleObj.showWeekend = false;
     }
   }
+
   private onMultiSelectChange(args: MultiSelectChangeEventArgs): void {
     let value: number[] = (args.value as number[]).slice(0).map(Number).sort();
     this.scheduleObj.workDays = value.length === 0 ? [0] : value;
     this.scheduleObj.dataBind();
   }
+
   private OnEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -59,7 +61,7 @@ export class HideWeekend extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={t => this.scheduleObj = t} workDays={[1, 3, 4, 5]}
-              workHours={{ start: '08:00' }} selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }} showWeekend={false}
+              workHours={{ start: '08:00' }} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: this.data }} showWeekend={false}
               eventRendered={this.OnEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -76,26 +78,21 @@ export class HideWeekend extends SampleBase<{}, {}> {
           <PropertyPane title='Properties'>
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
-                <tr id='' style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Working days</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                <tr style={{ height: '50px' }}>
+                  <td style={{ width: '100%' }}>
                     <div className='multi-prop'>
                       <div className='workdayscheckbox' style={{ paddingBottom: '10px' }}>
                         <MultiSelectComponent id='workdayscheckbox' dataSource={this.weekDays} fields={this.localFields} mode='CheckBox'
-                          value={this.value}
-                          showDropDownIcon={true} showClearButton={false} popupWidth={180} change={this.onMultiSelectChange.bind(this)}>
+                          value={this.value} change={this.onMultiSelectChange.bind(this)} showDropDownIcon={true}
+                          showClearButton={false} placeholder='Working days' floatLabelType='Always'>
                         </MultiSelectComponent>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <tr id='' style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Non-Working days</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                <tr style={{ height: '50px' }}>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ fontWeight: 500 }}>Non-Working days</div>
                     <div className='evtbtn' style={{ paddingBottom: '10px' }}>
                       <ButtonComponent title='Show/hide weekend' ref={(scope) => { this.btnObj = scope; }} isToggle={true}
                         onClick={this.onChange.bind(this)}>Show</ButtonComponent>
@@ -108,18 +105,18 @@ export class HideWeekend extends SampleBase<{}, {}> {
         </div>
         <div id='action-description'>
           <p>This demo depicts the way to show or hide the weekend days of a week on Scheduler. The days whichever not specified in
-          working days collections will be taken into consideration as weekend days.</p>
+            working days collections will be taken into consideration as weekend days.</p>
         </div>
         <div id='description'>
           <p>
             In this demo, the <code>showWeekend</code> property is used either to show or hide the weekend days of a week
-           and it is not applicable on <code>workweek</code> view. By default, it is set to <code>true</code>.
-                              The days which are not a part of the working days collection of a Scheduler are usually considered as weekend days here.
+            and it is not applicable on <code>workweek</code> view. By default, it is set to <code>true</code>.
+            The days which are not a part of the working days collection of a Scheduler are usually considered as weekend days here.
           </p>
           <p>
             Here, the working days are defined as <code>[1, 3, 4, 5]</code> on Scheduler.
             Therefore, the remaining days (0, 2, 6 – Sunday, Tuesday and Saturday) are considered as weekend days
-          and will be hidden from the views as the <code>showWeekend</code> property is set to false.
+            and will be hidden from the views as the <code>showWeekend</code> property is set to false.
           </p>
         </div>
       </div>

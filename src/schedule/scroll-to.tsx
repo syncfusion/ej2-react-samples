@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews,
-  EventRenderedArgs, Inject, Resize, DragAndDrop
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
@@ -18,7 +17,8 @@ import * as dataSource from './datasource.json';
 
 export class ScrollTo extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
+
   /*Apply scroll to the schedule component*/
   private onChange(args: ChangeEventArgs): void {
     this.scheduleObj.scrollTo(args.text);
@@ -34,7 +34,7 @@ export class ScrollTo extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: this.data }}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -51,13 +51,11 @@ export class ScrollTo extends SampleBase<{}, {}> {
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Scroll To</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
-                      <TimePickerComponent width={100} value={new Date(2000, 0, 1, 9)} format='HH:mm'
-                        change={this.onChange.bind(this)}></TimePickerComponent>
+                      <TimePickerComponent value={new Date(2000, 0, 1, 9)} format='HH:mm'
+                        change={this.onChange.bind(this)} placeholder='Scroll To' floatLabelType='Always'>
+                      </TimePickerComponent>
                     </div>
                   </td>
                 </tr>
@@ -69,9 +67,7 @@ export class ScrollTo extends SampleBase<{}, {}> {
           <p>This demo illustrates the way of manually scrolling to specific time on Schedule.</p>
         </div>
         <div id='description'>
-          <p>In this demo, the way of manually scrolling to specific time on scheduler has been demonstrated by making
-             use of the <code>scrollTo</code> method of Schedule.
-          </p>
+          <p>In this demo, the way of manually scrolling to specific time on scheduler has been demonstrated by making use of the <code>scrollTo</code> method of Schedule.</p>
         </div>
       </div>
     );

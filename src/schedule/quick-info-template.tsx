@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { extend, Internationalization, isNullOrUndefined } from '@syncfusion/ej2-base';
+import { extend, Internationalization, isNullOrUndefined, closest } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
@@ -21,9 +21,9 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
     private eventTypeObj: DropDownListComponent;
     private titleObj: TextBoxComponent;
     private notesObj: TextBoxComponent;
-    private scheduleData: Object[] = extend([], (dataSource as any).quickInfoTemplateData, undefined, true) as Object[];
+    private scheduleData: Record<string, any>[] = extend([], (dataSource as Record<string, any>).quickInfoTemplateData, undefined, true) as Record<string, any>[];
     private intl: Internationalization = new Internationalization();
-    private roomData: { [key: string]: Object }[] = [
+    private roomData: Record<string, any>[] = [
         { Name: 'Jammy', Id: 1, Capacity: 20, Color: '#ea7a57', Type: 'Conference' },
         { Name: 'Tweety', Id: 2, Capacity: 7, Color: '#7fa900', Type: 'Cabin' },
         { Name: 'Nestle', Id: 3, Capacity: 5, Color: '#5978ee', Type: 'Cabin' },
@@ -36,24 +36,23 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
         { Name: 'Photogenic', Id: 10, Capacity: 25, Color: '#710193', Type: 'Conference' }
     ];
 
-    private getResourceData(data: { [key: string]: Object }): { [key: string]: Object } {
+    private getResourceData(data: Record<string, any>): Record<string, any> {
         const resources: ResourcesModel = this.scheduleObj.getResourceCollections().slice(-1)[0];
-        const resourceData: { [key: string]: Object } = (resources.dataSource as Object[]).filter((resource: { [key: string]: Object }) =>
-            resource.Id === data.RoomId)[0] as { [key: string]: Object };
+        const resourceData: Record<string, any> = (resources.dataSource as Record<string, any>[]).filter((resource: Record<string, any>) =>
+            resource.Id === data.RoomId)[0] as Record<string, any>;
         return resourceData;
     }
 
-
-    private getHeaderStyles(data: { [key: string]: Object }): Object {
+    private getHeaderStyles(data: Record<string, any>): Record<string, any> {
         if (data.elementType === 'cell') {
             return { alignItems: 'center', color: '#919191' };
         } else {
-            const resourceData: { [key: string]: Object } = this.getResourceData(data);
+            const resourceData: Record<string, any> = this.getResourceData(data);
             return { background: resourceData.Color, color: '#FFFFFF' };
         }
     }
 
-    public getHeaderTitle(data: { [key: string]: Object }): string {
+    public getHeaderTitle(data: Record<string, any>): string {
         return (data.elementType === 'cell') ? 'Add Appointment' : 'Appointment Details';
     }
 
@@ -61,22 +60,20 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
         return this.intl.formatDate(data.StartTime, { type: 'date', skeleton: 'full' }) + ' (' +
             this.intl.formatDate(data.StartTime, { skeleton: 'hm' }) + ' - ' +
             this.intl.formatDate(data.EndTime, { skeleton: 'hm' }) + ')';
-
     }
 
     public getEventType(data: { [key: string]: string }): string {
-        const resourceData: { [key: string]: Object } = this.getResourceData(data);
-        return resourceData.Name as string;
+        return this.getResourceData(data).Name as string;
     }
 
     public buttonClickActions(e: Event) {
-        const quickPopup: HTMLElement = this.scheduleObj.element.querySelector('.e-quick-popup-wrapper') as HTMLElement;
-        const getSlotData: Function = (): { [key: string]: Object } => {
+        const quickPopup: HTMLElement = closest(e.target as HTMLElement, '.e-quick-popup-wrapper') as HTMLElement;
+        const getSlotData: Function = (): Record<string, any> => {
             let cellDetails: CellClickEventArgs = this.scheduleObj.getCellDetails(this.scheduleObj.getSelectedElements());
             if (isNullOrUndefined(cellDetails)) {
                 cellDetails = this.scheduleObj.getCellDetails(this.scheduleObj.activeCellsData.element);
             }
-            const addObj: { [key: string]: Object } = {};
+            const addObj: Record<string, any> = {};
             addObj.Id = this.scheduleObj.getEventMaxID();
             addObj.Subject = isNullOrUndefined(this.titleObj.value) ? 'Add title' : this.titleObj.value;
             addObj.StartTime = new Date(+cellDetails.startTime);
@@ -87,10 +84,10 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
             return addObj;
         };
         if ((e.target as HTMLElement).id === 'add') {
-            const addObj: { [key: string]: Object } = getSlotData();
+            const addObj: Record<string, any> = getSlotData();
             this.scheduleObj.addEvent(addObj);
         } else if ((e.target as HTMLElement).id === 'delete') {
-            const eventDetails: { [key: string]: Object } = this.scheduleObj.activeEventData.event as { [key: string]: Object };
+            const eventDetails: Record<string, any> = this.scheduleObj.activeEventData.event as Record<string, any>;
             let currentAction: CurrentAction = 'Delete';
             if (eventDetails.RecurrenceRule) {
                 currentAction = 'DeleteOccurrence';
@@ -98,8 +95,8 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
             this.scheduleObj.deleteEvent(eventDetails, currentAction);
         } else {
             const isCellPopup: boolean = (quickPopup.firstElementChild as HTMLElement).classList.contains('e-cell-popup');
-            const eventDetails: { [key: string]: Object } = isCellPopup ? getSlotData() :
-                this.scheduleObj.activeEventData.event as { [key: string]: Object };
+            const eventDetails: Record<string, any> = isCellPopup ? getSlotData() :
+                this.scheduleObj.activeEventData.event as Record<string, any>;
             let currentAction: CurrentAction = isCellPopup ? 'Add' : 'Save';
             if (eventDetails.RecurrenceRule) {
                 currentAction = 'EditOccurrence';
@@ -156,7 +153,7 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
         );
     }
 
-    public footerTemplate(props: { [key: string]: Object }): JSX.Element {
+    public footerTemplate(props: Record<string, any>): JSX.Element {
         return (
             <div className="quick-info-footer">
                 {props.elementType == "cell" ?
@@ -180,7 +177,7 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
                         <ScheduleComponent id="schedule" cssClass='quick-info-template' ref={(schedule: ScheduleComponent) => this.scheduleObj = schedule} height="650px"
-                            selectedDate={new Date(2020, 0, 9)} eventSettings={{ dataSource: this.scheduleData }} quickInfoTemplates={{
+                            selectedDate={new Date(2021, 0, 9)} eventSettings={{ dataSource: this.scheduleData }} quickInfoTemplates={{
                                 header: this.headerTemplate.bind(this),
                                 content: this.contentTemplate.bind(this),
                                 footer: this.footerTemplate.bind(this)
@@ -199,7 +196,7 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>In this demo, the quick popup is customized based on the office required appointment-related fields which can be achieved by making use of the <code>quickInfoTemplate</code> option.</p>
                     <p>The <code>quickInfoTemplate</code> has three UI elements such as <code>header</code>, <code>content</code>, and <code>footer</code>. You can customize these UI elements of the quick popup.
-                    You can also customize whether the quick popup is applicable to the cells or events or for both using the <code>elementType</code> property.</p>
+                        You can also customize whether the quick popup is applicable to the cells or events or for both using the <code>elementType</code> property.</p>
                 </div>
             </div>
         );

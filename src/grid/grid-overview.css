@@ -19,7 +19,8 @@ _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-FeMale::before{
     background-color:#0078d6; 
 }
 
-.bootstrap4 .empimg{
+.bootstrap4 .empimg,
+.bootstrap5 .empimg {
     background-color:#0078d6; 
 }
 
@@ -88,7 +89,7 @@ border-radius: 14px;
     background-color: transparent;
 }
 
-.e-image {
+.e-grid .e-image {
     height: 13px;
     width: 14px;
 }
@@ -103,6 +104,26 @@ td.e-rowcell .statustxt.e-inactivecolor {
     color: #e60000;
     position: relative;
     top: 9px;
+}
+
+.bootstrap5 td.e-rowcell .statustxt.e-inactivecolor,
+.bootstrap5 td.e-rowcell .statustxt.e-activecolor {
+  top: 8px;
+}
+
+.bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-activecolor,
+.bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-inactivecolor {
+  position: relative;
+  top: 1.5px;
+}
+
+.e-bigger.bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-activecolor,
+.e-bigger.bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-inactivecolor {
+  top: -0.5px;
+}
+
+.bootstrap5 .e-checkboxfiltertext #Trusttext {
+  margin-left: -4px;
 }
 
 .statustemp.e-inactivecolor {

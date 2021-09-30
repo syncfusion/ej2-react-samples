@@ -29,9 +29,40 @@
     margin: 0;
 }
 
-.highcontrast #rteTools .cm-s-default .cm-tag {color: #00ff00;}
-.highcontrast #rteTools .cm-s-default .cm-string {color: #ffd939;}
-.highcontrast #rteTools .cm-s-default .cm-attribute {color: #f00;}
+.fabric-dark #rteTools .cm-s-default .cm-tag,
+.bootstrap5-dark #rteTools .cm-s-default .cm-tag,
+.material-dark #rteTools .cm-s-default .cm-tag,
+.tailwind-dark #rteTools .cm-s-default .cm-tag,
+.highcontrast #rteTools .cm-s-default .cm-tag {
+    color: #00ff00;
+}
+
+.fabric-dark #rteTools .cm-s-default .cm-string,
+.bootstrap5-dark #rteTools .cm-s-default .cm-string,
+.material-dark #rteTools .cm-s-default .cm-string,
+.tailwind-dark #rteTools .cm-s-default .cm-string {
+    color: blue;
+}
+
+.highcontrast #rteTools .cm-s-default .cm-string {
+    color: #ffd939;
+}
+
+.fabric-dark #rteTools .cm-s-default .cm-attribute,
+.bootstrap5-dark  #rteTools.cm-s-default .cm-attribute,
+.material-dark #rteTools .cm-s-default .cm-attribute,
+.tailwind-dark #rteTools .cm-s-default .cm-attribute,
+.highcontrast #rteTools .cm-s-default .cm-attribute {
+    color: #f00;
+}
+
+.fabric-dark #rteTools .CodeMirror,
+.bootstrap5-dark #rteTools .CodeMirror,
+.material-dark #rteTools .CodeMirror,
+.tailwind-dark #rteTools .CodeMirror {
+    background:  #303030;
+}
+
 .highcontrast #rteTools .CodeMirror {
     background: black;
 }
@@ -49,6 +80,10 @@
     background: #F4F5F7;
 }
 
+.fabric-dark .e-richtexteditor .e-rte-content .e-content pre,
+.bootstrap5-dark .e-richtexteditor .e-rte-content .e-content pre,
+.material-dark .e-richtexteditor .e-rte-content .e-content pre,
+.tailwind-dark .e-richtexteditor .e-rte-content .e-content pre,
 .highcontrast .e-richtexteditor .e-rte-content .e-content pre {
     padding: 10px;
     background: #303030;

@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewDirective, EJ2Instance,
-  Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop
+  ScheduleComponent, EJ2Instance, Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './search-events.css';
 import { Query, DataManager, ReturnOption, Predicate } from '@syncfusion/ej2-data';
@@ -20,7 +19,7 @@ import * as dataSource from './datasource.json';
 
 export class SearchEvents extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
 
   private globalSearch(args: KeyboardEvent) {
     let searchString: string = (args.target as HTMLInputElement).value;
@@ -84,7 +83,7 @@ export class SearchEvents extends SampleBase<{}, {}> {
       for (let i: number = 1; i < searchObj.length; i++) {
         predicate = predicate.and(searchObj[i].field, searchObj[i].operator, searchObj[i].value, searchObj[i].matchcase);
       }
-      let result: Object[] = new DataManager(this.scheduleObj.getEvents(startDate, endDate, true)).
+      let result: Record<string, any>[] = new DataManager(this.scheduleObj.getEvents(startDate, endDate, true)).
         executeLocal(new Query().where(predicate));
       this.showSearchEvents('show', result);
     } else {
@@ -98,7 +97,7 @@ export class SearchEvents extends SampleBase<{}, {}> {
     this.showSearchEvents('hide');
   }
 
-  private showSearchEvents(type: string, data?: Object): void {
+  private showSearchEvents(type: string, data?: Record<string, any>): void {
     if (type === 'show') {
       if (document.getElementById('grid').classList.contains('e-grid')) {
         let gridObj: GridComponent = (document.querySelector('#grid') as EJ2Instance).ej2_instances[0] as GridComponent;
@@ -120,7 +119,7 @@ export class SearchEvents extends SampleBase<{}, {}> {
         this.scheduleObj.element.style.display = 'none';
       }
     } else {
-      let gridObj: Object[] = (document.querySelector('#grid') as EJ2Instance).ej2_instances;
+      let gridObj: Record<string, any>[] = (document.querySelector('#grid') as EJ2Instance).ej2_instances;
       if (gridObj && gridObj.length > 0 && !(gridObj[0] as GridComponent).isDestroyed) {
         (gridObj[0] as GridComponent).destroy();
       }
@@ -134,11 +133,8 @@ export class SearchEvents extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <div className='col-md-12'>
-              <ScheduleComponent id='schedule' cssClass='resource' width='100%' height='650px' selectedDate={new Date(2019, 0, 10)}
-                ref={schedule => this.scheduleObj = schedule}
-                eventSettings={{
-                  dataSource: this.data,
-                }} >
+              <ScheduleComponent id='schedule' cssClass='resource' width='100%' height='650px' selectedDate={new Date(2021, 0, 10)}
+                ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.data }} >
                 <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
               </ScheduleComponent>
               <div id="grid"></div>
@@ -193,12 +189,12 @@ export class SearchEvents extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
           <p>This example showcases the search results of Scheduler appointments in a grid. When the user provides the
-        search string on appropriate fields, the resulting event collection based on the search criteria will be
-        displayed in a Grid.</p>
+            search string on appropriate fields, the resulting event collection based on the search criteria will be
+            displayed in a Grid.</p>
         </div>
         <div id="description">
           <p>In this example, the search text value is compared with the event field values of Scheduler DataSource and then
-        the filtered resultant event data collection is assigned to the DataSource of Grid.</p>
+            the filtered resultant event data collection is assigned to the DataSource of Grid.</p>
         </div>
       </div>
     );

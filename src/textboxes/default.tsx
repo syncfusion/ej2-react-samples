@@ -29,10 +29,10 @@ export class Default extends SampleBase<{}, {}> {
     return (
       <div className = 'control-pane'>
         <div className='control-section input-content-wrapper'>
-            <div className="row custom-margin material2">
+            <div className="row custom-margin material">
                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6"><b>Outlined and Filled</b></div>
             </div>
-            <div className="row custom-margin custom-padding-5 material2">
+            <div className="row custom-margin custom-padding-5 material">
                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <TextBoxComponent placeholder="Outlined" cssClass="e-outline" floatLabelType="Auto" />
                 </div>
@@ -124,7 +124,7 @@ export class Default extends SampleBase<{}, {}> {
                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6"><b>Sizing</b></div>
             </div>
             <div className="row custom-margin">
-                <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 small-textbox">
                     <div className="e-input-group e-small">
                         <input className="e-input" onFocus= {this.floatFocus} onBlur= {this.floatBlur} type="text" placeholder="Small" />
                     </div>
@@ -142,12 +142,12 @@ export class Default extends SampleBase<{}, {}> {
                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div className="e-input-group">
                         <input className="e-input" onFocus= {this.floatFocus} onBlur= {this.floatBlur} type="text" placeholder="Date of Birth" />
-                        <span className="e-input-group-icon e-input-calendar" onMouseDown={this.onIconClick} onMouseUp={this.onIconUnClick}></span>
+                        <span className="e-input-group-icon e-date-icon" onMouseDown={this.onIconClick} onMouseUp={this.onIconUnClick}></span>
                     </div>
                 </div>
                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div className="e-input-group e-float-icon-left">
-                        <span className="e-input-group-icon e-input-picture" onMouseDown={this.onIconClick} onMouseUp={this.onIconUnClick}></span>
+                        <span className="e-input-group-icon e-upload-picture" onMouseDown={this.onIconClick} onMouseUp={this.onIconUnClick}></span>
                         <div className="e-input-in-wrap">
                           <input className="e-input" onFocus= {this.floatFocus} onBlur= {this.floatBlur} type="text" placeholder="Upload Picture" />
                         </div>

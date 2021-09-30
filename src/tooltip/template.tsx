@@ -72,7 +72,7 @@ export class TemplateTooltip extends SampleBase<tooltipComponentProps, tooltipCo
         </div>
 
         <div id="action-description">
-          <p>This sample demonstrates the Template functionalities of the Tooltip which will open by Hover or Touch-hold action on Toolbar option.</p>
+          <p>This sample demonstrates the template functionalities of the Tooltip which will open by hover or touch-hold action on Toolbar option.</p>
         </div>
 
         <div id="description">
@@ -80,7 +80,7 @@ export class TemplateTooltip extends SampleBase<tooltipComponentProps, tooltipCo
         can format and structure the HTML content to be displayed on the tooltip as per their application needs.</p>
           <p>In this sample, the tooltip is integrated with toolbar component to display the respective icon’s information. Here,
         the HTML template design is compiled and then the resultant output display is directly assigned to the
-        <code> content</code>property of the tooltip. The template compilation process needs to be done on the
+        <code>content</code> property of the tooltip. The template compilation process needs to be done on the 
         <code>beforeRender</code> event of the tooltip.</p>
           <p>More information about setting template content on the Tooltip can be found in the
         <a href="https://ej2.syncfusion.com/react/documentation/tooltip/content/#template-content" target="_blank"> documentation section</a>.

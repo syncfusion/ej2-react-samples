@@ -75,39 +75,39 @@ export class SortingAPI extends SampleBase<{}, {}> {
             <PropertyPane title='Properties'>
               <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
                 <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ fontSize: '15px' }}>
                       Column
                     </div>
                   </td>
-                  <td style={{ width: '70%', paddingright: '10px' }}>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%', paddingright: '10px' }}>
                     <div>
-                      <DropDownListComponent ref={DropDownList => this.dropdownColumns = DropDownList} id='columns' tabIndex={1} dataSource={this.dropdownColumnsData} fields={{ text: 'type', value: 'id' }}
+                      <DropDownListComponent ref={DropDownList => this.dropdownColumns = DropDownList} id='columns' width="150px" tabIndex={1} dataSource={this.dropdownColumnsData} fields={{ text: 'type', value: 'id' }}
                         value='TaskID'></DropDownListComponent>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ fontSize: '15px' }}>
                       Direction
                     </div>
                   </td>
-                  <td style={{ width: '70%', paddingright: '10px' }}>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%', paddingright: '10px' }}>
                     <div>
-                      <DropDownListComponent ref={DropDownList => this.dropdownDirection = DropDownList} id='direction' tabIndex={1} dataSource={this.dropdownDirectionData} fields={{ text: 'type', value: 'id' }}
+                      <DropDownListComponent ref={DropDownList => this.dropdownDirection = DropDownList} id='direction' width="150px" tabIndex={1} dataSource={this.dropdownDirectionData} fields={{ text: 'type', value: 'id' }}
                         value='Ascending'></DropDownListComponent>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '30%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
-                      <ButtonComponent onClick={this.sortColumn.bind(this)}> Sort </ButtonComponent>
-                    </div>
-                  </td>
-                  <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
-                    <div>
+                      <ButtonComponent onClick={this.sortColumn.bind(this)} style={{ marginright: '10px' }}> Sort </ButtonComponent>
                       <ButtonComponent onClick={this.clearSort.bind(this)}> Clear </ButtonComponent>
                     </div>
                   </td>

@@ -65,7 +65,8 @@ public render(): JSX.Element {
 					</div>
 			</div>
 			<div id="action-description">
-				<p>This example demonstrates how to pre-load the files of the Uploader. The already uploaded files are configured in file list to view and remove them.</p>
+				<p>This <a href="https://www.syncfusion.com/react-ui-components/react-file-upload"
+            target="_blank">&nbsp;React File Upload</a> example demonstrates how to pre-load the files of the Uploader. The already uploaded files are configured in file list to view and remove them.</p>
 			</div>
 			<div id="description">
 				<p>The Uploader component allows to load initial list of files which are already uploaded in server. The preload files are useful to view and remove from server.

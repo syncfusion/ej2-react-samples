@@ -29,54 +29,54 @@
     font-weight: normal;
 }
 
-.e-paste::before {
+.e-btn-icons.e-paste::before {
     content: '\e700';
 }
 
-.e-paste-special::before {
+.e-btn-icons.e-paste-special::before {
     content: '\e701';
 }
 
-.e-paste-formula::before {
+.e-btn-icons.e-paste-formula::before {
     content: '\e705';
 }
 
-.e-paste-hyperlink::before {
+.e-btn-icons.e-paste-hyperlink::before {
     content: '\e707';
 }
 
-.material .e-paste::before,
-.bootstrap .e-paste::before {
+.material .e-btn-icons.e-paste::before,
+.bootstrap .e-btn-icons.e-paste::before {
     content: '\e706';
 }
 
-.material .e-paste-special::before,
-.bootstrap .e-paste-special::before {
+.material .e-btn-icons.e-paste-special::before,
+.bootstrap .e-btn-icons.e-paste-special::before {
     content: '\e704';
 }
 
-.material .e-paste-formula::before,
-.bootstrap .e-paste-formula::before {
+.material .e-btn-icons.e-paste-formula::before,
+.bootstrap .e-btn-icons.e-paste-formula::before {
     content: '\e702';
 }
 
-.material .e-paste-hyperlink::before,
-.bootstrap .e-paste-hyperlink::before {
+.material .e-btn-icons.e-paste-hyperlink::before,
+.bootstrap .e-btn-icons.e-paste-hyperlink::before {
     content: '\e703';
 }
 
-.bootstrap4 .e-paste::before {
+.bootstrap4 .e-btn-icons.e-paste::before {
     content: '\e739';
 }
 
-.bootstrap4 .e-paste-special::before {
+.bootstrap4 .e-btn-icons.e-paste-special::before {
     content: '\e813';
 }
 
-.bootstrap4 .e-paste-formula::before {
+.bootstrap4 .e-btn-icons.e-paste-formula::before {
     content: '\e812';
 }
 
-.bootstrap4 .e-paste-hyperlink::before {
+.bootstrap4 .e-btn-icons.e-paste-hyperlink::before {
     content: '\e814';
 }

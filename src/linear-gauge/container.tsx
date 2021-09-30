@@ -25,7 +25,8 @@ export class Container extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
     }
     // custom code end
     private droplist: { [key: string]: Object }[] = [
@@ -62,24 +63,24 @@ export class Container extends SampleBase<{}, {}> {
                     <div className='col-lg-4 property-section'>
                     {/* Property Panel */}
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td>
                                         <div>Orientation</div>
                                     </td>
                                     <td>
-                                    <div>
-                                    <DropDownListComponent width={120} id="orientationMode" style={{ "width": "90%" }} change={this.orienatationChange.bind(this)} className="form-control" ref={d => this.orientationElement = d} dataSource={this.droplist} fields={{text: 'value', value: 'value'}} value="Vertical"/>
+                                    <div style={{ width: "90%" }}>
+                                    <DropDownListComponent width={140} id="orientationMode" style={{ "width": "90%" }} change={this.orienatationChange.bind(this)} className="form-control" ref={d => this.orientationElement = d} dataSource={this.droplist} fields={{text: 'value', value: 'value'}} value="Vertical"/>
                                     </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td>
-                                        <div>Container Type</div>
+                                        <div style={{marginTop: "-20px"}}>Container Type</div>
                                     </td>
                                     <td>
                                     <div style={{ paddingBottom: '20px', width: '90%' }}>
-                                    <DropDownListComponent width={120} id="containerMode" style={{ "width": "90%" }} change={this.containerChange.bind(this)} className="form-control" ref={d => this.containerElement = d} dataSource={this.modelist} fields={{text: 'value', value: 'value'}} value="Thermometer"/>
+                                    <DropDownListComponent width={140} id="containerMode" style={{ "width": "90%" }} change={this.containerChange.bind(this)} className="form-control" ref={d => this.containerElement = d} dataSource={this.modelist} fields={{text: 'value', value: 'value'}} value="Thermometer"/>
                                     </div>
                                     </td>
                                 </tr>

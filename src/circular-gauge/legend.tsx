@@ -28,7 +28,8 @@ export class Circle extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     // custom code end
     // Code for Property Panel
@@ -90,10 +91,7 @@ export class Circle extends SampleBase<{}, {}> {
                                 minorTicks={{
                                     height: 8, interval: 10
                                 }} labelStyle={{
-                                    position: 'Inside', useRangeColor: false,
-                                    font: {
-                                        size: '12px', color: '#424242', fontFamily: 'Roboto', fontStyle: 'Regular'
-                                    }
+                                    position: 'Inside', useRangeColor: false
                                 }}>
                                 <RangesDirective>
                                     <RangeDirective start={0} end={5} color='#ccffff' radius='110%' legendText='Light air' />
@@ -123,14 +121,14 @@ export class Circle extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                             <tbody>
                                <tr style={{ height: '50px' }}>
                                     <td style={{ width: '20%' }}>
                                         <div id='enablePointer'>Show Legend</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div style={{paddingTop: '0px'}}>
+                                        <div style={{paddingTop: '0px', marginLeft:"60px"}}>
                                         <CheckBoxComponent id='enable' checked={true} change={this.enableLegend.bind(this)} />
                                         </div>
                                     </td>
@@ -140,7 +138,7 @@ export class Circle extends SampleBase<{}, {}> {
                                         <div id='enable'>Show range when the legend item is toggled</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div style={{paddingTop: '0px'}}>
+                                        <div style={{paddingTop: '0px', marginLeft:"60px"}}>
                                         <CheckBoxComponent id='enableToggle' checked={true} change={this.enableToggleLegend.bind(this)} />
                                         </div>
                                     </td>

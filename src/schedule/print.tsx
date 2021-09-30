@@ -3,8 +3,7 @@ import * as React from 'react';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Resize, Print,
-  DragAndDrop, Inject, ScheduleModel
+  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Resize, Print, DragAndDrop, Inject, ScheduleModel
 } from '@syncfusion/ej2-react-schedule';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -24,7 +23,7 @@ export class PrintSchedule extends SampleBase<{}, {}> {
   public heightObj: DropDownListComponent;
   public widthObj: DropDownListComponent;
   public selectedDateObj: DatePickerComponent;
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
   private printHeightAndWidthData: string[] = ['auto', '100%', '500px'];
 
   private onChange(args: ChangeEventArgs): void {
@@ -58,14 +57,14 @@ export class PrintSchedule extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent cssClass='print' width='100%' height='650px' id='schedule' ref={t => this.scheduleObj = t}
-              selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}>
+              selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: this.data }}>
               <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop, Print]} />
             </ScheduleComponent>
           </div>
         </div>
         <div className='col-lg-3 property-section'>
           <PropertyPane title='Properties'>
-            <table id='property' title='Properties' className='property-panel-table'>
+            <table id='property' title='Properties' className='property-panel-table schedule-print-property-panel'>
               <tbody>
                 <tr>
                   <td style={{ height: '50px' }}>
@@ -77,7 +76,7 @@ export class PrintSchedule extends SampleBase<{}, {}> {
                 <tr className="e-height-row e-hide-row">
                   <td>
                     <div>
-                      <DropDownListComponent id="heightElement" width="auto" placeholder="Height" floatLabelType="Always" ref={t => this.heightObj = t} value={'auto'} dataSource={this.printHeightAndWidthData}>
+                      <DropDownListComponent id="heightElement" placeholder="Height" floatLabelType="Always" ref={t => this.heightObj = t} value={'auto'} dataSource={this.printHeightAndWidthData}>
                       </DropDownListComponent>
                     </div>
                   </td>
@@ -85,7 +84,7 @@ export class PrintSchedule extends SampleBase<{}, {}> {
                 <tr className="e-width-row e-hide-row">
                   <td>
                     <div>
-                      <DropDownListComponent id="widthElement" width="auto" placeholder="Width" floatLabelType="Always" ref={t => this.widthObj = t} value={'auto'} dataSource={this.printHeightAndWidthData}>
+                      <DropDownListComponent id="widthElement" placeholder="Width" floatLabelType="Always" ref={t => this.widthObj = t} value={'auto'} dataSource={this.printHeightAndWidthData}>
                       </DropDownListComponent>
                     </div>
                   </td>
@@ -93,14 +92,14 @@ export class PrintSchedule extends SampleBase<{}, {}> {
                 <tr className="e-selected-date-row e-hide-row">
                   <td>
                     <div>
-                      <DatePickerComponent id="selectedDateElement" width="auto" placeholder="Selected date" floatLabelType="Always" ref={t => this.selectedDateObj = t} value={new Date(2019, 0, 10)} />
+                      <DatePickerComponent id="selectedDateElement" placeholder="Selected date" floatLabelType="Always" ref={t => this.selectedDateObj = t} value={new Date(2021, 0, 10)} />
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td style={{ padding: '15px', textAlign: 'center' }}>
                     <div>
-                      <ButtonComponent iconCss="e-icons e-icon-schedule-print" cssClass="e-print-btn" onClick={this.onPrintClick.bind(this)}>Print</ButtonComponent>
+                      <ButtonComponent iconCss="e-icons e-print" cssClass="e-print-btn" onClick={this.onPrintClick.bind(this)}>Print</ButtonComponent>
                     </div>
                   </td>
                 </tr>
@@ -112,24 +111,20 @@ export class PrintSchedule extends SampleBase<{}, {}> {
           <p>This example demonstrates how to print the Scheduler element at client-side.</p>
         </div>
         <div id='description'>
-          <p>In this example, the Scheduler element is Printed by making use of the public method
-            <code>print</code>.</p>
+          <p>In this example, the Scheduler element is Printed by making use of the public method <code>print</code>.</p>
           <p>
-          <p>
-            Also, we can print the schedule based on the custom rendering by passing the <code>ScheduleModel</code> in the
-            <code>print</code> method.
-            In the above demo, we have demonstrated the <code>print</code> method with the below properties of the
-            <code>ScheduleModel</code>.
+            <p>
+              Also, we can print the schedule based on the custom rendering by passing the <code>ScheduleModel</code> in the <code>print</code> method.
+              In the above demo, we have demonstrated the <code>print</code> method with the below properties of the <code>ScheduleModel</code>.
+            </p>
+            <ul>
+              <li>height</li>
+              <li>width</li>
+              <li>selectedDate</li>
+            </ul>
+            <strong>Module Injection</strong>
           </p>
-          <ul>
-            <li>height</li>
-            <li>width</li>
-            <li>selectedDate</li>
-          </ul>
-          <strong>Module Injection</strong>
-          </p>
-          <p>To start using Print functionality in Scheduler, we need to inject <code>Print</code> module into the services.
-          </p>
+          <p>To start using Print functionality in Scheduler, we need to inject <code>Print</code> module into the services.</p>
         </div>
       </div>
     );

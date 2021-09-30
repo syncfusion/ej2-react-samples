@@ -22,15 +22,13 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
   private isTreeItemDropped: boolean = false;
   private draggedItemId: string = '';
   private allowDragAndDrops: boolean = true;
-
-  private fields: Object = { dataSource: (dataSource as any).waitingList, id: 'Id', text: 'Name' };
-  private data: Object[] = extend([], (dataSource as any).hospitalData, null, true) as Object[];
-
-  private departmentData: Object[] = [
+  private fields: Record<string, any> = { dataSource: (dataSource as Record<string, any>).waitingList, id: 'Id', text: 'Name' };
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).hospitalData, null, true) as Record<string, any>[];
+  private departmentData: Record<string, any>[] = [
     { Text: 'GENERAL', Id: 1, Color: '#bbdc00' },
     { Text: 'DENTAL', Id: 2, Color: '#9e5fff' }
   ];
-  private consultantData: Object[] = [
+  private consultantData: Record<string, any>[] = [
     { Text: 'Alice', Id: 1, GroupId: 1, Color: '#bbdc00', Designation: 'Cardiologist' },
     { Text: 'Nancy', Id: 2, GroupId: 2, Color: '#9e5fff', Designation: 'Orthodontist' },
     { Text: 'Robert', Id: 3, GroupId: 1, Color: '#bbdc00', Designation: 'Optometrist' },
@@ -44,8 +42,7 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
   }
 
   private getConsultantImage(value: ResourceDetails): string {
-    let resourceName: string = this.getConsultantName(value);
-    return resourceName.toLowerCase();
+    return this.getConsultantName(value).toLowerCase();
   }
 
   private getConsultantDesignation(value: ResourceDetails): string {
@@ -86,9 +83,9 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
 
   private onActionBegin(event: ActionEventArgs): void {
     if (event.requestType === 'eventCreate' && this.isTreeItemDropped) {
-      let treeViewdata: { [key: string]: Object }[] = this.treeObj.fields.dataSource as { [key: string]: Object }[];
-      const filteredPeople: { [key: string]: Object }[] =
-        treeViewdata.filter((item: any) => item.Id !== parseInt(this.draggedItemId, 10));
+      let treeViewData: Record<string, any>[] = this.treeObj.fields.dataSource as Record<string, any>[];
+      const filteredPeople: Record<string, any>[] =
+        treeViewData.filter((item: any) => item.Id !== parseInt(this.draggedItemId, 10));
       this.treeObj.fields.dataSource = filteredPeople;
       let elements: NodeListOf<HTMLElement> = document.querySelectorAll('.e-drag-item.treeview-external-drag');
       for (let i: number = 0; i < elements.length; i++) {
@@ -107,14 +104,14 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
       event.cancel = true;
       let scheduleElement: Element = closest(event.target, '.e-content-wrap');
       if (scheduleElement) {
-        let treeviewData: { [key: string]: Object }[] =
-          this.treeObj.fields.dataSource as { [key: string]: Object }[];
+        let treeviewData: Record<string, any>[] =
+          this.treeObj.fields.dataSource as Record<string, any>[];
         if (event.target.classList.contains('e-work-cells')) {
-          const filteredData: { [key: string]: Object }[] =
+          const filteredData: Record<string, any>[] =
             treeviewData.filter((item: any) => item.Id === parseInt(event.draggedNodeData.id as string, 10));
           let cellData: CellClickEventArgs = this.scheduleObj.getCellDetails(event.target);
           let resourceDetails: ResourceDetails = this.scheduleObj.getResourcesByIndex(cellData.groupIndex);
-          let eventData: { [key: string]: Object } = {
+          let eventData: Record<string, any> = {
             Name: filteredData[0].Name,
             StartTime: cellData.startTime,
             EndTime: cellData.endTime,
@@ -140,7 +137,7 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
               <div className="title-container">
                 <h1 className="title-text">Doctor's Appointments</h1>
               </div>
-              <ScheduleComponent ref={schedule => this.scheduleObj = schedule} cssClass='schedule-drag-drop' width='100%' height='650px' selectedDate={new Date(2018, 7, 1)}
+              <ScheduleComponent ref={schedule => this.scheduleObj = schedule} cssClass='schedule-drag-drop' width='100%' height='650px' selectedDate={new Date(2021, 7, 2)}
                 currentView='TimelineDay' resourceHeaderTemplate={this.resourceHeaderTemplate.bind(this)}
                 eventSettings={{
                   dataSource: this.data,

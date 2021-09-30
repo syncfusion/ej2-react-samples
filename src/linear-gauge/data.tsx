@@ -16,7 +16,8 @@ export class Data extends SampleBase<{}, {}> {
     public load1(args1: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args1.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args1.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
             if (args1.gauge.theme.toLowerCase().indexOf('dark') > 1 || args1.gauge.theme.toLowerCase() === 'highcontrast') {
                 args1.gauge.annotations[1].content = '<div id="running" style="width:100px;"><img style="height:25px;width:25px;' +
                     'float:left" src="src/linear-gauge/images/Running1.svg" /></span><p style="float:left;' +
@@ -26,7 +27,8 @@ export class Data extends SampleBase<{}, {}> {
     public load2(args1: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args1.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args1.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
             if (args1.gauge.theme.toLowerCase().indexOf('dark') > 1 || args1.gauge.theme.toLowerCase() === 'highcontrast') {
                 args1.gauge.annotations[0].content = '<div id="running" style="width:100px;"><img style="height:25px;width:25px;' +
                     'float:left" src="src/linear-gauge/images/Cycling1.svg" /></span><p style="float:left;' +
@@ -36,7 +38,8 @@ export class Data extends SampleBase<{}, {}> {
     public load3(args1: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args1.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args1.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
             if (args1.gauge.theme.toLowerCase().indexOf('dark') > 1 || args1.gauge.theme.toLowerCase() === 'highcontrast') {
                 args1.gauge.annotations[0].content = '<div id="running" style="width:100px;"><img style="height:25px;width:25px;' +
                     'float:left" src="src/linear-gauge/images/Walking1.svg" /></span><p style="float:left;' +
@@ -95,7 +98,7 @@ export class Data extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div className="row">
-                        <LinearGaugeComponent load={this.load2.bind(this)} style={{ height: "250px" }} id='gauge2' orientation='Horizontal' container={{ width: 30, border: { width: 0 }, offset: -50 }}>
+                        <LinearGaugeComponent load={this.load2.bind(this)} style={{ height: "300px" }} id='gauge2' orientation='Horizontal' container={{ width: 30, border: { width: 0 }, offset: -50 }}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
                                 <AxisDirective line={{ offset: 30 }} labelStyle={{ offset: 50 }}>
@@ -124,13 +127,14 @@ export class Data extends SampleBase<{}, {}> {
                                 <AnnotationDirective content='<div id="pointerText" style="width:60px;"><p style="font-size:15px;">28 MPH</p></div>'
                                     axisIndex={0}
                                     axisValue={28}
+                                    zIndex= '1'
                                     y={-70}>
                                 </AnnotationDirective>
                             </AnnotationsDirective>
                         </LinearGaugeComponent>
                     </div>
                     <div className="row">
-                        <LinearGaugeComponent load={this.load3.bind(this)} style={{ height: "250px" }} id='gauge3' orientation='Horizontal' container={{ width: 30, border: { width: 0 }, offset: -90 }}>
+                        <LinearGaugeComponent load={this.load3.bind(this)} style={{ height: "300px" }} id='gauge3' orientation='Horizontal' container={{ width: 30, border: { width: 0 }, offset: -90 }}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
                                 <AxisDirective maximum={10} line={{ offset: 30 }} labelStyle={{ offset: 50, format: '{value}k' }}>

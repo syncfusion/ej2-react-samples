@@ -13,27 +13,33 @@ import { getReadOnlyEventsData } from './helper';
  */
 
 export class ReadonlyEvents extends SampleBase<{}, {}> {
-  private data: Object[] = getReadOnlyEventsData();
+  private data: Record<string, any>[] = getReadOnlyEventsData();
+
   private onPopupOpen(args: PopupOpenEventArgs): void {
     if ((args.target && !args.target.classList.contains('e-appointment') && (args.type === 'QuickInfo')) || (args.type === 'Editor')) {
       args.cancel = this.onEventCheck(args);
     }
   }
+
   private onActionBegin(args: ActionEventArgs): void {
     if ((args.requestType === 'eventCreate') || args.requestType === 'eventChange') {
       args.cancel = this.onEventCheck(args);
     }
   }
+
   private onDragStop(args: DragEventArgs): void {
     args.cancel = this.onEventCheck(args);
   }
+
   private onResizeStop(args: ResizeEventArgs): void {
     args.cancel = this.onEventCheck(args);
   }
-  private onEventCheck(args: any): boolean {
-    let eventObj: any = args.data instanceof Array ? args.data[0] : args.data;
+
+  private onEventCheck(args: Record<string, any>): boolean {
+    let eventObj: Record<string, any> = args.data instanceof Array ? args.data[0] : args.data;
     return (eventObj.StartTime < new Date());
   }
+
   render() {
     return (
       <div className='schedule-control-section'>
@@ -54,7 +60,7 @@ export class ReadonlyEvents extends SampleBase<{}, {}> {
         <div id='action-description'>
           <p>
             This demo showcases how to make specific events on the Scheduler to be displayed in a read-only mode. The read-only events
-          can be simply viewed and prevented from undergoing any edit actions.
+            can be simply viewed and prevented from undergoing any edit actions.
           </p>
         </div>
         <div id='description'>

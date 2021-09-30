@@ -16,7 +16,7 @@ import * as dataSource from './datasource.json';
 
 export class AddRemoveResources extends SampleBase<{}, {}> {
     private scheduleObj: ScheduleComponent;
-    private calendarCollections: Object[] = [
+    private calendarCollections: Record<string, any>[] = [
         { CalendarText: 'My Calendar', CalendarId: 1, CalendarColor: '#c43081' },
         { CalendarText: 'Company', CalendarId: 2, CalendarColor: '#ff7f50' },
         { CalendarText: 'Birthday', CalendarId: 3, CalendarColor: '#AF27CD' },
@@ -24,15 +24,15 @@ export class AddRemoveResources extends SampleBase<{}, {}> {
     ];
 
     // custom code start
-    private generateCalendarData(): Object[] {
-        return [...(dataSource as any).personalData, ...(dataSource as any).companyData,
-        ...(dataSource as any).birthdayData, ...(dataSource as any).holidayData];
+    private generateCalendarData(): Record<string, any>[] {
+        return [...(dataSource as Record<string, any>).personalData, ...(dataSource as Record<string, any>).companyData,
+        ...(dataSource as Record<string, any>).birthdayData, ...(dataSource as Record<string, any>).holidayData];
     }
     // custom code end
 
     private onChange(args: ChangeEventArgs): void {
         let value: number = parseInt((args.event.target as Element).getAttribute('value'), 10);
-        let resourceData: Object[] = this.calendarCollections.filter((calendar: { [key: string]: Object }) => calendar.CalendarId === value);
+        let resourceData: Record<string, any>[] = this.calendarCollections.filter((calendar: Record<string, any>) => calendar.CalendarId === value);
         if (args.checked) {
             this.scheduleObj.addResource(resourceData[0], 'Calendars', value - 1);
         } else {
@@ -45,7 +45,7 @@ export class AddRemoveResources extends SampleBase<{}, {}> {
             <div className='schedule-control-section'>
                 <div className='col-lg-9 control-section'>
                     <div className='control-wrapper'>
-                        <ScheduleComponent cssClass='dynamic-resource' ref={schedule => this.scheduleObj = schedule} width='100%' height='650px' selectedDate={new Date(2018, 3, 1)} group={{ resources: ['Calendars'] }}
+                        <ScheduleComponent cssClass='dynamic-resource' ref={schedule => this.scheduleObj = schedule} width='100%' height='650px' selectedDate={new Date(2021, 3, 1)} group={{ resources: ['Calendars'] }}
                             eventSettings={{ dataSource: this.generateCalendarData() }} >
                             <ResourcesDirective>
                                 <ResourceDirective field='CalendarId' title='Calendars' name='Calendars' allowMultiple={true}

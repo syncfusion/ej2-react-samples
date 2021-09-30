@@ -119,6 +119,24 @@
     top: 7px;
     content: '\e745';
 }
+.tailwind .template_wrapper .close-icon-container.e-icons::before,
+.tailwind-dark .template_wrapper .close-icon-container.e-icons::before {
+    content: '\e771';
+}
+
+.fabric .template_wrapper .close-icon-container.e-icons::before,
+.fabric-dark .template_wrapper .close-icon-container.e-icons::before,
+.bootstrap .template_wrapper .close-icon-container.e-icons::before,
+.bootstrap-dark .template_wrapper .close-icon-container.e-icons::before,
+.highcontrast .template_wrapper .close-icon-container.e-icons::before {
+    content: '\e7fc';
+}
+
+.bootstrap5 .template_wrapper .close-icon-container.e-icons::before,
+.bootstrap5-dark .template_wrapper .close-icon-container.e-icons::before {
+    content: '\e7e7';
+}
+
 .bootstrap4 .template_wrapper .file-lists {
     background: #fff;
 }
@@ -131,8 +149,24 @@
 .bootstrap4 .template_wrapper .close-icon-container.delete-icon::before {
     content: '\e773';
 }
-.tailwind .template_wrapper .close-icon-container.delete-icon::before {
+
+.tailwind .template_wrapper .close-icon-container.delete-icon::before,
+.tailwind-dark .template_wrapper .close-icon-container.delete-icon::before {
     content: '\e78d';
+}
+
+.bootstrap5 .template_wrapper .close-icon-container.delete-icon::before,
+.bootstrap5-dark .template_wrapper .close-icon-container.delete-icon::before {
+    content: '\e820';
+}
+
+.fabric .template_wrapper .close-icon-container.delete-icon::before,
+.fabric-dark .template_wrapper .close-icon-container.delete-icon::before {
+    content: '\e965';
+}
+
+.highcontrast .template_wrapper .close-icon-container.delete-icon::before {
+    content: '\e84e';
 }
 
 .tailwind .template_wrapper .close-icon-container.delete-icon {
@@ -245,7 +279,21 @@
 .highcontrast .template_wrapper span a:hover {
     color: #ffd939;
 }
-
+.material-dark .template_wrapper span a {
+    color:#56a4fd;
+}
+.fabric-dark .template_wrapper span a {
+    color:#0074cc;
+}
+.bootstrap-dark .template_wrapper span a {
+    color:#0070f0;
+}
+.bootstrap5-dark .template_wrapper span a {
+    color:#0d6efd;
+}
+.tailwind-dark .template_wrapper span a {
+    color:#22d3ee;
+}
 .custom-panel {
     padding-top: 25px;
 }

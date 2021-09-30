@@ -75,6 +75,13 @@
     position: relative;
 }
 
+body.material-dark .e-badge-showcase.e-card,
+body.tailwind-dark .e-badge-showcase.e-card,
+body.bootstrap-dark .e-badge-showcase.e-card,
+body.fabric-dark .e-badge-showcase.e-card {
+    background-color: inherit;
+}
+
 /* Card Customization */
 
 .e-badge-showcase.e-card {

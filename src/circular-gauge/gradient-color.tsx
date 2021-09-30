@@ -19,7 +19,8 @@ export class GradientColor extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     // custom code end
     public rangeLinearGradient : Object = {
@@ -60,7 +61,7 @@ export class GradientColor extends SampleBase<{}, {}> {
             this.loaded = true;
             this.gradientType = new DropDownList({
                 index: 0,
-                width: 120,
+                width: 150,
                 change: () => {
                     if (this.gradientType.value === 'radial' && this.element.value === 'range') {
                         this.circulargauge.axes[0].ranges[0].linearGradient = null;
@@ -88,7 +89,7 @@ export class GradientColor extends SampleBase<{}, {}> {
 
             this.element = new DropDownList({
                 index: 0,
-                width: 120,
+                width: 150,
                 change: () => {
                     if (this.gradientType.value === 'radial' && this.element.value === 'range') {
                         this.circulargauge.axes[0].ranges[0].linearGradient = null;
@@ -172,7 +173,7 @@ export class GradientColor extends SampleBase<{}, {}> {
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{"margin-top":"30px", "width": "120px"}}>Gradient Type</div>
+                                            <div id='' style={{"margin-top":"30px", "width": "60%", "margin-left": "-10px"}}>Gradient Type</div>
                                         </td>
                                         <td>
                                             <div style={{"margin-top":"20px", "margin-left":"-15px"}}>
@@ -185,7 +186,7 @@ export class GradientColor extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{"margin-top":"30px"}}>Elements</div>
+                                            <div id='' style={{"margin-top":"30px", "margin-left": "-10px"}}>Elements</div>
                                         </td>
                                         <td>
                                             <div style={{"margin-top":"30px", "margin-left":"-15px"}}>

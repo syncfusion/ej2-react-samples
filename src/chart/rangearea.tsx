@@ -113,15 +113,8 @@ export class RangeArea extends SampleBase<{}, {}> {
     };
         
     public seriesRender(args: ISeriesRenderEventArgs) {
-        let theme: ChartTheme = args.series.chart.theme;
-        let color: string;
-        if (theme === 'Material') {
-            color = '#004c46';
-        } else if (theme === 'Bootstrap') {
-            color = '#402c5c';
-        } else {
-            color = '#1b2e4e';
-        }
-        args.series.border.color = color;
+        var areathemes = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast'];
+        var borderColor = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4'];
+        args.series.border.color = borderColor[areathemes.indexOf(args.series.chart.theme.toLowerCase())];
     }
 }

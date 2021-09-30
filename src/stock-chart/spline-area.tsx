@@ -36,15 +36,12 @@ export class SplineArea extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         crosshair={{ enable: true }}
                         title= 'Google Stock Price'
-                        titleStyle={{
-                            fontWeight: '500', color: '#424242 '
-                        }}
                     >
                         <Inject services={[DateTime, SplineAreaSeries, Crosshair,LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,
                         AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator]} />
                         <StockChartSeriesCollectionDirective>
-                            <StockChartSeriesDirective dataSource={googl} xName='x' yName='high' type='SplineArea' fill='#BDEDE9'>
+                            <StockChartSeriesDirective dataSource={googl} xName='x' yName='high' type='SplineArea' opacity={0.5}>
                             </StockChartSeriesDirective>
                         </StockChartSeriesCollectionDirective>
                     </StockChartComponent>

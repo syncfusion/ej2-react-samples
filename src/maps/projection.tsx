@@ -95,13 +95,13 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>Projection Type:</div>
+                                        <div style={{ marginLeft: '1px' }}>Projection Type</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div>
+                                        <div style={{ marginRight: '30px' }}>
                                             <DropDownListComponent width="120px" index={0} change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} placeholder='Select projection type' />
                                         </div>
                                     </td>
@@ -139,7 +139,8 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
 }

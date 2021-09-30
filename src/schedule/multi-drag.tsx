@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    Month, TimelineMonth, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective,
-    ResourceDirective, Inject, Resize, DragAndDrop
+    Month, TimelineMonth, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
@@ -13,9 +12,9 @@ import * as dataSource from './datasource.json';
  */
 
 export class MultiDrag extends SampleBase<{}, {}> {
-    private data: Object[] =
-        extend([], (dataSource as any).resourceData.concat((dataSource as any).timelineResourceData), null, true) as Object[];
-    private ownerData: Object[] = [
+    private data: Record<string, any>[] =
+        extend([], (dataSource as Record<string, any>).resourceData.concat((dataSource as Record<string, any>).timelineResourceData), null, true) as Record<string, any>[];
+    private ownerData: Record<string, any>[] = [
         { text: 'Nancy', id: 1, color: '#df5286' },
         { text: 'Steven', id: 2, color: '#7fa900' },
         { text: 'Robert', id: 3, color: '#ea7a57' },
@@ -28,11 +27,8 @@ export class MultiDrag extends SampleBase<{}, {}> {
             <div className='schedule-control-section'>
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
-                        <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 3, 4)}
-                            currentView='Month' allowMultiDrag={true} allowResizing={false} showQuickInfo={false} eventSettings={{
-                                dataSource: this.data
-                            }}
-                            group={{ resources: ['Owners'] }} >
+                        <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 3, 4)} currentView='Month' allowMultiDrag={true}
+                            allowResizing={false} showQuickInfo={false} eventSettings={{ dataSource: this.data }} group={{ resources: ['Owners'] }} >
                             <ResourcesDirective>
                                 <ResourceDirective field='TaskId' title='Owners' name='Owners'
                                     dataSource={this.ownerData} textField='text' idField='id' colorField='color'>

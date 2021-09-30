@@ -10,36 +10,33 @@ import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
  */
 
 export class CalendarIntegration extends SampleBase<{}, {}> {
-    private scheduleObj: ScheduleComponent;
-
     private calendarId: string = '5105trob9dasha31vuqek6qgp0@group.calendar.google.com';
     private publicKey: string = 'AIzaSyD76zjMDsL_jkenM5AAnNsORypS1Icuqxg';
     private dataManger: DataManager = new DataManager({
         url: 'https://www.googleapis.com/calendar/v3/calendars/' + this.calendarId + '/events?key=' + this.publicKey,
-        adaptor: new WebApiAdaptor,
+        adaptor: new WebApiAdaptor(),
         crossDomain: true
     });
 
-    private onDataBinding(e: { [key: string]: Object }): void {
-        let items: { [key: string]: Object }[] = (e.result as { [key: string]: Object }).items as { [key: string]: Object }[];
-        let scheduleData: Object[] = [];
+    private onDataBinding(e: Record<string, any>): void {
+        let items: Record<string, any>[] = (e.result as Record<string, Record<string, any>[]>).items;
+        let scheduleData: Record<string, any>[] = [];
         if (items.length > 0) {
-            for (let i: number = 0; i < items.length; i++) {
-                let event: { [key: string]: Object } = items[i];
-                let when: string = (event.start as { [key: string]: Object }).dateTime as string;
-                let start: string = (event.start as { [key: string]: Object }).dateTime as string;
-                let end: string = (event.end as { [key: string]: Object }).dateTime as string;
+            for (let event of items) {
+                let when: string = event.start.dateTime as string;
+                let start: string = event.start.dateTime as string;
+                let end: string = event.end.dateTime as string;
                 if (!when) {
-                    when = (event.start as { [key: string]: Object }).date as string;
-                    start = (event.start as { [key: string]: Object }).date as string;
-                    end = (event.end as { [key: string]: Object }).date as string;
+                    when = event.start.date as string;
+                    start = event.start.date as string;
+                    end = event.end.date as string;
                 }
                 scheduleData.push({
                     Id: event.id,
                     Subject: event.summary,
                     StartTime: new Date(start),
                     EndTime: new Date(end),
-                    IsAllDay: !(event.start as { [key: string]: Object }).dateTime
+                    IsAllDay: !event.start.dateTime
                 });
             }
         }
@@ -52,8 +49,7 @@ export class CalendarIntegration extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper drag-sample-wrapper'>
                         <div className="schedule-container">
-                            <ScheduleComponent ref={schedule => this.scheduleObj = schedule} width='100%'
-                                height='650px' selectedDate={new Date(2018, 10, 14)} readonly={true}
+                            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 10, 14)} readonly={true}
                                 eventSettings={{ dataSource: this.dataManger }} dataBinding={this.onDataBinding.bind(this)}>
                                 <ViewsDirective>
                                     <ViewDirective option='Day' />
@@ -76,7 +72,7 @@ export class CalendarIntegration extends SampleBase<{}, {}> {
                         same to the Scheduler <code>dataSource</code> within the <code>eventSettings</code> API. Since the events data
                         retrieved from the Google Calendar will be in its own object format, therefore it needs to be resolved manually
                         within the Scheduler’s <code>dataBinding</code> event. Within this <code>dataBinding</code> event, the event fields
-                         needs to be mapped properly and then assigned to the result.
+                        needs to be mapped properly and then assigned to the result.
                     </p>
                 </div>
             </div>

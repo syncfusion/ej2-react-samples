@@ -17,7 +17,8 @@ import * as dataSource from './datasource.json';
 
 export class Default extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
+
   private change(args: ChangeEventArgs): void {
     this.scheduleObj.selectedDate = args.value;
     this.scheduleObj.dataBind();
@@ -33,7 +34,7 @@ export class Default extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: this.data }}
               dragStart={(this.onDragStart.bind(this))}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -51,13 +52,11 @@ export class Default extends SampleBase<{}, {}> {
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Current Date</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div className='datepicker-control-section'>
-                      <DatePickerComponent value={new Date(2019, 0, 10)} showClearButton={false}
-                        change={this.change.bind(this)}></DatePickerComponent>
+                      <DatePickerComponent value={new Date(2021, 0, 10)} showClearButton={false}
+                        change={this.change.bind(this)} placeholder='Current Date'
+                        floatLabelType='Always'></DatePickerComponent>
                     </div>
                   </td>
                 </tr>
@@ -67,8 +66,8 @@ export class Default extends SampleBase<{}, {}> {
         </div>
         <div id='action-description'>
           <p>This demo showcases how the flat Scheduler looks like with its default set of minimal configurations. Here, some of the
-          documentary shows are displayed as events parallel to its relevant telecast timings. The show names are given as
-          event's subject and simply notified of the start and end of it.</p>
+            documentary shows are displayed as events parallel to its relevant telecast timings. The show names are given as
+            event's subject and simply notified of the start and end of it.</p>
         </div>
         <div id="description">
           <p>
@@ -91,8 +90,8 @@ export class Default extends SampleBase<{}, {}> {
             <li>Timeline Month</li>
           </ul>
           <p>To navigate between views and dates, the navigation options are available at the Scheduler header bar and the
-              active view option is highlighted by default. The date range of the active view will also be displayed in the
-              header bar, clicking on which will open a calendar popup for ease of desired date selection.</p>
+            active view option is highlighted by default. The date range of the active view will also be displayed in the
+            header bar, clicking on which will open a calendar popup for ease of desired date selection.</p>
           <p>
             <strong>Touch actions on Mobile mode</strong>
           </p>
@@ -111,8 +110,8 @@ export class Default extends SampleBase<{}, {}> {
                 <ol style={{ paddingLeft: '12px' }}>
                   <li>Single tapping on events, opens the popup showing event information</li>
                   <li>Single tapping on cells, will display a “+” icon on the cell. Again tapping on it will open the
-                      new event editor.
-                    </li>
+                    new event editor.
+                  </li>
                 </ol>
               </td>
             </tr>
@@ -121,11 +120,10 @@ export class Default extends SampleBase<{}, {}> {
               <td>
                 <ol style={{ paddingLeft: '12px' }}>
                   <li>Tap holding on events, opens a small popup at the top holding the options to edit or delete and
-                      also displays the selected event's subject. As a continuation of this action, if user keeps on
-                      single tapping on other events, it will allow the multiple event selection. Also, the previous
-                      popup remains in opened state, showing the count of the number of events selected. </li>
-                  <li>Tap holding the events will also open the tooltip on Scheduler.
-                    </li>
+                    also displays the selected event's subject. As a continuation of this action, if user keeps on
+                    single tapping on other events, it will allow the multiple event selection. Also, the previous
+                    popup remains in opened state, showing the count of the number of events selected. </li>
+                  <li>Tap holding the events will also open the tooltip on Scheduler.</li>
                   <li>Tap hold the event and try moving it over the scheduler to enable drag and drop action.</li>
                 </ol>
               </td>
@@ -135,11 +133,8 @@ export class Default extends SampleBase<{}, {}> {
             <strong>Module Injection</strong>
           </p>
           <p>The key Schedule functionalities are maintained as individual feature-wise modules.
-            Therefore to avail with a particular feature,
-            appropriate module needs to be injected using <code>services</code> property under <code>Inject</code> tag.
-            For example,
-            to work with the day view on Schedule – it is necessary to inject the Day module
-             using <code>services</code> property under <code>Inject</code> tag.
+            Therefore to avail with a particular feature, appropriate module needs to be injected using <code>services</code> property under <code>Inject</code> tag.
+            For example, to work with the day view on Schedule – it is necessary to inject the Day module using <code>services</code> property under <code>Inject</code> tag.
           </p>
           <p>
             <strong> Note:</strong>In case, if the module of active view is not injected from the application end – then

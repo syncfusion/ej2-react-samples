@@ -35,7 +35,6 @@ let nodes: NodeModel[] = [
       style: { fontSize: 16, color: "#797979", bold: true }
     }]
   }];
-// custom code start
 interface IExpense {
   UniqueId: string;
   DateTime: Date;
@@ -46,7 +45,6 @@ interface IExpense {
   Amount: number;
 }
 let expenseDS: any;
-// custom code end
 let diagramInstance: DiagramComponent;
 let lineChart: ChartComponent;
 let columnChart: ChartComponent;
@@ -59,7 +57,6 @@ let predicateEnd: Predicate;
 let predicate: Predicate;
 let gtemplate: any = gridTemplate;
 let acclegendSettings: Object = { visible: false };
-// custom code start
 function gridTemplate(props) {
   return (
     <tr style={{ height: "30px" }}>
@@ -188,7 +185,6 @@ let category: string[] = [];
 let hiGridData: Object[];
 let initialRender: boolean = true;
 let piedata: any;
-// custom code end
 function onDateRangeChange(args: RangeEventArgs) {
   start = args.startDate;
   end = args.endDate;
@@ -224,7 +220,6 @@ function updateChartData() {
     });
 }
 
-// custom code start
 /** Sets the pie chart's font size based on its size */
 function getFontSize(width: number): string {
   if (width > 300) {
@@ -235,7 +230,6 @@ function getFontSize(width: number): string {
     return '6px';
   }
 }
-// custom code end
 function initialRenderr(): void {
   start = new Date("5/31/2017");
   end = new Date("11/30/2017");
@@ -256,7 +250,6 @@ function refreshPieChart(): void {
   createLegendData('pieUpdate');
   pie.series[0].dataSource = piedata;
 }
-// custom code start
 function objectAssign(e: any): object[] {
   let result: Object[] = [];
   let obj: any;
@@ -337,7 +330,6 @@ function acconChartLoaded(args: IAccLoadedEventArgs): void {
   createLegendData('pie');
   enableLegend = true;
 }
-// custom code end
 function createLegendData(initiate: string): void {
   if (pieRenderingData.length > 10) {
     pie.series[0].groupTo = groupValue.toString();
@@ -359,7 +351,6 @@ function createLegendData(initiate: string): void {
     lGrid.dataSource = pieLegendData;
   }
 }
-// custom code start
 function onTextRender(args: IAccTextRenderEventArgs): void {
   args.series.dataLabel.font.size = getFontSize(pie.initialClipRect.width);
   pie.animateSeries = true;
@@ -385,7 +376,6 @@ interface IExpense {
   Description: string;
   Amount: number;
 }
-// custom code end
 function getTotalExpense(): void {
   tempData = dataSource as IExpense[];
   let renderingData: { x: string; y: number; text: string; }[] = [];
@@ -419,7 +409,6 @@ function getTotalExpense(): void {
       .executeLocal((new Query().sortByDesc('y').range(0, 10)));
   }
 }
-// custom code start
 function onGridLoad(): void {
   createLegendData('pie');
   showWaitingPopup = true;
@@ -434,7 +423,6 @@ function onChartLoaded(args: ILoadedEventArgs): void {
 function onGridDataBound(args: Object): void {
   showWaitingPopup = false;
 }
-// custom code end
 function diagramTemplate(props) {
   if (props.id === "node") {
     return (<div className="diagram_border_cus diagram_border_cal">

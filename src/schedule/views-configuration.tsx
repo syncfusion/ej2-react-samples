@@ -16,11 +16,17 @@ import * as dataSource from './datasource.json';
 
 export class ViewConfigurations extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).fifaEventsData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).fifaEventsData, null, true) as Record<string, any>[];
   private instance: Internationalization = new Internationalization();
+  private resourceData: Record<string, any>[] = [
+    { GroupText: 'Group A', GroupId: 1, GroupColor: '#1aaa55' },
+    { GroupText: 'Group B', GroupId: 2, GroupColor: '#357cd2' }
+  ];
+
   private getTimeString(value: Date) {
     return this.instance.formatDate(value, { skeleton: 'Hm' });
   }
+
   private agendaTemplate(props): JSX.Element {
     return (<div><div className="subject ">{props.Subject}</div>
       {(props.Description !== null && props.Description !== undefined && props.Description !== "") ?
@@ -28,16 +34,14 @@ export class ViewConfigurations extends SampleBase<{}, {}> {
       <div className="location">{this.getTimeString(props.StartTime)}
         {(props.City !== null && props.City !== undefined && props.City !== "") ? ", " + props.City : ""}</div></div>);
   }
+
   private monthEventTemplate(props): JSX.Element {
-    return (<div className="subject">{props.Subject}</div>);
+    return (<div className="e-subject">{props.Subject}</div>);
   }
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
-  private resourceData: Object[] = [
-    { GroupText: 'Group A', GroupId: 1, GroupColor: '#1aaa55' },
-    { GroupText: 'Group B', GroupId: 2, GroupColor: '#357cd2' }
-  ];
 
   render() {
     return (
@@ -45,7 +49,7 @@ export class ViewConfigurations extends SampleBase<{}, {}> {
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent cssClass='schedule-views-config' width='100%' height='650px' ref={t => this.scheduleObj = t}
-              currentView='Month' selectedDate={new Date(2018, 5, 20)}
+              currentView='Month' selectedDate={new Date(2021, 5, 20)}
               eventSettings={{ dataSource: this.data, fields: { location: { name: 'City' } } }}
               eventRendered={this.onEventRendered.bind(this)}>
               <ResourcesDirective>
@@ -74,12 +78,10 @@ export class ViewConfigurations extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             In this demo, the  <code>views</code> property is defined to accept the array of view options and therefore for each view,
-             it is possible to set different configurations. In day view, the
-            the <code>startHour</code> is set to 7 and <code>endHour</code> set to 18
+            it is possible to set different configurations. In day view, the the <code>startHour</code> is set to 7 and <code>endHour</code> set to 18
             whereas in week view, the same is set as 9 and 19 respectively. Also, the <code>showWeekend</code> property is set to false
-             only on week view along with different timescale interval. The customized template is applied
-            to the events on Agenda view and on month view, the grouping functionality is enabled by setting
-            <code>group</code> property.
+            only on week view along with different timescale interval. The customized template is applied to the events on Agenda view and on month view,
+            the grouping functionality is enabled by setting <code>group</code> property.
           </p>
         </div>
       </div>

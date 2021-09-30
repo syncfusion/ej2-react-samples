@@ -26,8 +26,9 @@ export class CellTemplate extends SampleBase<{}, {}> {
       return '<img src="src/schedule/images/newyear.svg" /><div className="caption">New Year\'s Day</div>';
     } else if (date.getMonth() === 0 && date.getDate() === 14) {
       return '<img src="src/schedule/images/get-together.svg" /><div className="caption">Get together</div>';
+    } else {
+      return '';
     }
-    return '';
   }
   private cellTemplate(props): JSX.Element {
     if (props.type === "monthCells") {
@@ -40,7 +41,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent cssClass='cell-template' width='100%' height='650px' selectedDate={new Date(2017, 11, 15)}
+            <ScheduleComponent cssClass='cell-template' width='100%' height='650px' selectedDate={new Date(2021, 11, 15)}
               cellTemplate={this.cellTemplate.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Month' />
@@ -55,9 +56,8 @@ export class CellTemplate extends SampleBase<{}, {}> {
         </div>
         <div id='description'>
           <p>
-            In this demo, the <code>cellTemplate</code> option which accepts the template string is
-             used to customize the cell background with specific images and appropriate
-            text on the given date values.
+            In this demo, the <code>cellTemplate</code> option which accepts the template string is used to customize the cell
+            background with specific images and appropriate text on the given date values.
           </p>
         </div>
       </div>

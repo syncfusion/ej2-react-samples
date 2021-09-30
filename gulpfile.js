@@ -105,8 +105,6 @@ gulp.task('generate-router', gulp.series(function (done) {
         this.addField('name');
         this.setRef('uid');
     });
-    var apiData = JSON.parse(fs.readFileSync('./src/common/api-table', 'utf8'));
-    var apiReference = {};
     var uid = 0;
     for (var file of files) {
         var routeconfig = '';
@@ -131,30 +129,6 @@ gulp.task('generate-router', gulp.series(function (done) {
             var url = configs.path.split('/')[1];
             instance.addDoc(curSearchObject);
             uid++;
-            if(configs.api){
-                var apiList= JSON.parse(configs.api);
-                var apiconfig = apiList|| {};
-                            var data = [];
-                            var canUpdate = false;
-                            var ObjectKeys = Object.keys(apiconfig);
-                            for (var key of ObjectKeys) {
-                                var classProperties = apiData[key];
-                                if (!classProperties) {
-                                    continue;
-                                }
-                                var propertyCollection = apiconfig[key];
-                                for (var prop of propertyCollection) {
-                                    var propData = classProperties[prop];
-                                    if (propData) {
-                                        canUpdate = true;
-                                        data.push(propData);
-                                    }
-                                }
-                            }
-                            if (canUpdate) {
-                                apiReference[curSearchObject.component + '/' +url] = data;
-                            }
-                        }
         }
         category['defaultSample'] = configCollection[0].path;
         var routeContent = fs.readFileSync('./src/common/templates/route-template', 'utf8');
@@ -172,7 +146,6 @@ gulp.task('generate-router', gulp.series(function (done) {
     allroutes = allroutes.replace(/{{imports}}/,imports);
     allroutes = allroutes.replace(/{{routerCollection}}/,compRoutes);
     allroutes = allroutes.replace(/{{category}}/, categories);
-    allroutes = allroutes +'\n\n' + 'export let apiList:any=' + JSON.stringify(apiReference);
     fs.writeFileSync('./src/common/all-routes.tsx',allroutes);
     fs.writeFileSync('./src/common/search-index.json', JSON.stringify(instance.toJSON()));
     done();

@@ -89,7 +89,8 @@ export class SemiGauge extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     render() {
         return (
@@ -129,74 +130,74 @@ export class SemiGauge extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: "-9px" }}>
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeStart'>Start Angle <span> &nbsp;&nbsp;&nbsp;270°</span> </div>
+                                            <div id='rangeStart' style={{ width: '110px' }}>Start Angle <span> &nbsp;&nbsp;&nbsp;270°</span> </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" id="start" defaultValue="270" min="0" max="360" style={{ width: '90%' }} onChange={this.start.bind(this)} ref={d => this.startElement = d} />
+                                                <input type="range" id="start" defaultValue="270" min="0" max="360" style={{ width: '120px' }} onChange={this.start.bind(this)} ref={d => this.startElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeEnd'>End Angle <span> &nbsp;&nbsp;&nbsp;90°</span> </div>
+                                            <div id='rangeEnd' style={{ width: '110px' }}>End Angle <span> &nbsp;&nbsp;&nbsp;90°</span> </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" id="end" defaultValue="90" min="0" max="360" style={{ width: '90%' }} onChange={this.end.bind(this)} ref={d => this.endElement = d} />
+                                                <input type="range" id="end" defaultValue="90" min="0" max="360" style={{ width: '120px' }} onChange={this.end.bind(this)} ref={d => this.endElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='radius1'>Radius <span> &nbsp;&nbsp;&nbsp;80%</span> </div>
+                                            <div id='radius1' style={{ width: '110px' }}>Radius <span> &nbsp;&nbsp;&nbsp;80%</span> </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" id="radius" defaultValue="80" min="0" max="100" style={{ width: '90%' }} onChange={this.radius.bind(this)} ref={d => this.radiusElement = d} />
+                                                <input type="range" id="radius" defaultValue="80" min="0" max="100" style={{ width: '120px' }} onChange={this.radius.bind(this)} ref={d => this.radiusElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div>Radius based on angle</div>
+                                            <div style={{ width: '110px' }}>Radius based on angle</div>
                                         </td>
                                         <td>
-                                            <div style={{paddingTop: '0px'}}>
+                                            <div style={{paddingTop: '0px', paddingLeft: "60px"}}>
                                                 <CheckBoxComponent id='angle' change={this.angleChange.bind(this)} ref={d => this.angleElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='center1'>Center X <span> &nbsp;&nbsp;&nbsp;50%</span> </div>
+                                            <div id='center1' style={{ width: '110px' }}>Center X <span> &nbsp;&nbsp;&nbsp;50%</span> </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" id="centerX" defaultValue="50" min="0" max="100" style={{ width: '90%' }} onChange={this.centerX.bind(this)} ref={d => this.xElement = d} />
+                                                <input type="range" id="centerX" defaultValue="50" min="0" max="100" style={{ width: '120px' }} onChange={this.centerX.bind(this)} ref={d => this.xElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='center2'>Center Y <span> &nbsp;&nbsp;&nbsp;50%</span> </div>
+                                            <div id='center2' style={{ width: '110px' }}>Center Y <span> &nbsp;&nbsp;&nbsp;50%</span> </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" id="centerY" defaultValue="50" min="0" max="100" style={{ width: '90%' }} onChange={this.centerY.bind(this)} ref={d => this.yElement = d} />
+                                                <input type="range" id="centerY" defaultValue="50" min="0" max="100" style={{ width: '120px' }} onChange={this.centerY.bind(this)} ref={d => this.yElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div>Hide intersecting labels</div>
+                                            <div style={{ width: '110px' }}>Hide intersecting labels</div>
                                         </td>
                                         <td>
-                                            <div style={{paddingTop: '0px'}}>
+                                            <div style={{paddingTop: '0px', paddingLeft: "60px"}}>
                                                 <CheckBoxComponent id='hidelabel' checked={true} change={this.hideLabel.bind(this)} ref={d => this.angleElement = d} />
                                             </div>
                                         </td>

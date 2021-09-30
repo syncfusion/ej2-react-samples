@@ -4,7 +4,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView,
-ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, Inject } from '@syncfusion/ej2-react-pdfviewer';
+ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, Inject } from '@syncfusion/ej2-react-pdfviewer';
 import { SampleBase } from '../common/sample-base';
 import { RouteComponentProps } from 'react-router';
 
@@ -15,7 +15,7 @@ export class HandWrittenSignature extends SampleBase<{}, {}> {
         <div className='control-section'>
             {/* Render the PDF Viewer */}
             <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" documentPath="HandwrittenSignature.pdf" serviceUrl="https://ej2services.syncfusion.com/production/web-services/api/pdfviewer" documentLoad = {this.documentLoaded} style={{ 'height': '640px' }}>
-                <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields]} />
+                <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
             </PdfViewerComponent>
           </div>
         <div id="action-description">

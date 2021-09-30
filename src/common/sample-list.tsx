@@ -34,7 +34,7 @@ import { TimePickerSampleOrder } from '../timepicker/config';
 import { MaskedTextBoxOrder } from '../maskedtextbox/config';
 import { MultiSelectSampleOrder } from '../multi-select/config';
 import { TabSampleOrder } from '../tab/config';
-import { SliderSampleOrder } from '../slider/config';
+import { SliderSampleOrder } from '../range-slider/config';
 import { SidebarSampleOrder } from '../sidebar/config';
 import { BarcodeSampleOrder } from '../barcode/config';
 import { UploaderSampleOrder } from '../uploader/config';
@@ -61,6 +61,7 @@ import { FileManagerSampleOrder } from '../file-manager/config';
 import { GanttSampleOrder } from '../gantt/config';
 import { SpreadsheetSampleOrder } from '../spreadsheet/config';
 import { ListBoxSampleOrder } from '../list-box/config';
+import { BreadcrumbSampleOrder } from '../breadcrumb/config';
 
 export let samplesList: any = [
     {
@@ -70,19 +71,19 @@ export let samplesList: any = [
         'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder, 'type': 'update'
     },
     {
-        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
+        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type': 'update'
     },
     {
         'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder, 'type': 'update'
     },
     {
-        'name': 'Chart', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'ftName': 'chart', 'type': 'update'
+        'name': 'Chart', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'ftName': 'chart'
     },
     {
         'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'samples': DiagramSampleOrder
     },
     {
-        'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder, 'type': 'update'
+        'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
     },
     {
         'name': 'Maps', 'category': 'Data Visualization', 'order': '07', 'path': 'maps', 'samples': MapSampleOrder, 'ftName' :'maps'
@@ -115,7 +116,7 @@ export let samplesList: any = [
         'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder,
     },
     {
-        'name': 'Kanban', 'category': 'Data Visualization', 'type': 'update', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
+        'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
     },
     {
         'name': 'Chips', 'category': 'Editors', 'order': '04', 'path': 'chips', 'samples': ChipsSampleOrder
@@ -133,22 +134,22 @@ export let samplesList: any = [
         'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
     },
 	{
-        'name': 'Gantt', 'category': 'Calendars', 'order': '02', 'path': 'gantt', 'samples': GanttSampleOrder, 'type': 'update'
+        'name': 'Gantt', 'category': 'Calendars', 'order': '02', 'path': 'gantt', 'samples': GanttSampleOrder
     },
     {
         'name': 'Calendar', 'category': 'Calendars', 'order': '04', 'path': 'calendar', 'samples': CalendarSampleOrder
     },
     {
-        'name': 'DatePicker', 'category': 'Calendars', 'order': '04', 'path': 'datepicker', 'samples': DatePickerSampleOrder, 'type': 'update'
+        'name': 'DatePicker', 'category': 'Calendars', 'order': '04', 'path': 'datepicker', 'samples': DatePickerSampleOrder
     },
     {
         'name': 'DateRangePicker', 'category': 'Calendars', 'order': '04', 'path': 'daterangepicker', 'samples': DateRangePickerSampleOrder
     },
     {
-        'name': 'DateTimePicker', 'category': 'Calendars', 'order': '04', 'path': 'datetimepicker', 'samples': DateTimeOrder, 'type': 'update'
+        'name': 'DateTimePicker', 'category': 'Calendars', 'order': '04', 'path': 'datetimepicker', 'samples': DateTimeOrder
     },
     {
-        'name': 'TimePicker', 'category': 'Calendars', 'order': '04', 'path': 'timepicker', 'samples': TimePickerSampleOrder, 'type': 'update'
+        'name': 'TimePicker', 'category': 'Calendars', 'order': '04', 'path': 'timepicker', 'samples': TimePickerSampleOrder
     },
     {
         'name': 'ComboBox', 'category': 'Dropdowns', 'order': '04', 'path': 'combo-box', 'samples': ComboBoxSampleOrder
@@ -160,7 +161,7 @@ export let samplesList: any = [
         'name': 'Dropdown List', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
     },
     {
-        'name': 'Dropdown Tree', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder
+        'name': 'Dropdown Tree', 'category': 'Dropdowns', 'type': 'update', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder
     },
     {
         'name': 'MultiSelect Dropdown', 'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
@@ -187,6 +188,9 @@ export let samplesList: any = [
         'name': 'Accordion', 'category': 'Navigation', 'path': 'accordion', 'samples': AccordionSampleOrder
     },
     {
+        'name': 'Breadcrumb', 'category': 'Navigation', 'type': 'preview', 'path': 'breadcrumb', 'samples': BreadcrumbSampleOrder
+    },
+    {
         'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
     },
     {
@@ -205,7 +209,7 @@ export let samplesList: any = [
         'name': 'Numeric Textbox', 'category': 'Inputs', 'order': '04', 'path': 'numerictextbox', 'samples': NumericTextBoxOrder
     },
     {
-        'name': 'Range Slider', 'category': 'Inputs', 'order': '04', 'path': 'slider', 'samples': SliderSampleOrder
+        'name': 'Range Slider', 'category': 'Inputs', 'order': '04', 'path': 'range-slider', 'samples': SliderSampleOrder
     },
     {
         'name': 'TextBox', 'category': 'Inputs', 'order': '04', 'path': 'textboxes', 'samples': TextBoxSampleOrder, 'ftName' :'textbox'
@@ -220,7 +224,7 @@ export let samplesList: any = [
         'name': 'ListView', 'category': 'Layout', 'order': '05', 'path': 'listview', 'samples': ListViewSampleOrder
     },
     {
-        'name': 'Dialog', 'category': 'Layout', 'type': 'update', 'order': '05', 'path': 'dialog', 'samples': DialogSampleOrder, 'ftName' :'modal-dialog'
+        'name': 'Dialog', 'category': 'Layout', 'order': '05', 'path': 'dialog', 'samples': DialogSampleOrder, 'ftName' :'modal-dialog'
     },
     {
         'name': 'Tooltip', 'category': 'Layout', 'order': '05', 'path': 'tooltip', 'samples': TooltipSampleOrder
@@ -238,10 +242,10 @@ export let samplesList: any = [
         'name': 'In-place Editor', 'category': 'Editors', 'path': 'inplace-editor', 'samples': InPlaceEditorSampleOrder       
     },
 	{
-        'name': 'Query Builder', 'category': 'Forms', 'path': 'query-builder', 'samples': QueryBuilderSampleOrder       
+        'name': 'Query Builder', 'category': 'Forms', 'path': 'query-builder', 'samples': QueryBuilderSampleOrder, 'type': 'update'       
     },
 	{
-        'name': 'PDF Viewer', 'category': 'Viewer', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer', 'type': 'update'
+        'name': 'PDF Viewer', 'category': 'Viewer', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'
     },
     {
         'name': 'Dashboard Layout', 'category': 'Layout', 'path': 'dashboard-layout', 'samples': DashboardLayoutSampleOrder

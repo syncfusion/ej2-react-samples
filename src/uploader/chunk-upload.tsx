@@ -104,7 +104,8 @@ public render(): JSX.Element {
         </div>
         <div id="action-description">
 
-        <p>This example demonstrates the chunk upload functionalities of the Uploader component.
+        <p>This <a href="https://www.syncfusion.com/react-ui-components/react-file-upload"
+            target="_blank">&nbsp;React File Upload</a> example demonstrates the chunk upload functionalities of the Uploader component.
           Browse or drag-and-drop a large file to upload with pause, resume, and retry options. </p>
 
         <p>Also, configured property panel to change the chunk size dynamically.</p>

@@ -67,7 +67,7 @@ export class InfiniteScrolling extends SampleBase<{}, {}> {
                     </GridComponent>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the Grid component with the infinite scrolling feature.
+                    <p>This sample demonstrates the Grid component with the infinite scrolling feature. You can use the scrollbar or navigation keys or the mouse wheel to perform the infinite scroll action.
     </p>
                 </div>
                 <div id='description'>

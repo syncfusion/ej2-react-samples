@@ -55,9 +55,6 @@ export class Default extends SampleBase<{}, {}> {
                         crosshair={{ enable: true }}
                         load={this.load.bind(this)}
                         title= 'AAPL Stock Price'
-                        titleStyle={{
-                            fontWeight: '500', color: '#424242 '
-                        }}
                     >
                         <Inject services={[DateTime, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines, 
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,

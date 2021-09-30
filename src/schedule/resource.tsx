@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ResourcesDirective, ResourceDirective,
-    Inject, Resize, DragAndDrop
+    Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { extend } from '@syncfusion/ej2-base';
 import './resource.css';
@@ -18,8 +17,8 @@ export class Resource extends SampleBase<{}, {}> {
     private ownerOneObj: CheckBoxComponent;
     private ownerTwoObj: CheckBoxComponent;
     private ownerThreeObj: CheckBoxComponent;
-    private data: Object[] = extend([], (dataSource as any).resourceSampleData, null, true) as Object[];
-    private resourceData: Object[] = [
+    private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceSampleData, null, true) as Record<string, any>[];
+    private resourceData: Record<string, any>[] = [
         { Text: 'Margaret', Id: 1, Color: '#ea7a57' },
         { Text: 'Robert', Id: 2, Color: '#df5286' },
         { Text: 'Laura', Id: 3, Color: '#865fcf' }
@@ -46,11 +45,8 @@ export class Resource extends SampleBase<{}, {}> {
             <div className='schedule-control-section'>
                 <div className='col-lg-9 control-section'>
                     <div className='control-wrapper'>
-                        <ScheduleComponent cssClass='resource' width='100%' height='650px' selectedDate={new Date(2018, 5, 5)}
-                            ref={schedule => this.scheduleObj = schedule}
-                            eventSettings={{
-                                dataSource: this.data,
-                            }} >
+                        <ScheduleComponent cssClass='resource' width='100%' height='650px' selectedDate={new Date(2021, 5, 6)}
+                            ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.data }} >
                             <ResourcesDirective>
                                 <ResourceDirective field='OwnerId' title='Owners' name='Owners' allowMultiple={true}
                                     dataSource={this.resourceData} textField='Text' idField='Id' colorField='Color'>
@@ -91,11 +87,11 @@ export class Resource extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>This example demonstrates how to dynamically show or hide the appointments of resources on Scheduler based on
-                    the resource selection.</p>
+                        the resource selection.</p>
                 </div>
                 <div id="description">
                     <p>In this example, the resource appointments are dynamically shown or hidden on the Scheduler, by passing the
-                    filtered event data of selected resources to the <code>Query</code> option of the <code>Eventsettings</code>.</p>
+                        filtered event data of selected resources to the <code>Query</code> option of the <code>Eventsettings</code>.</p>
                 </div>
             </div>
         );

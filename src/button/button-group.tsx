@@ -35,7 +35,7 @@ export class ButtonGroup extends SampleBase<{}, {}> {
                 <div id="text" className="e-btn-group">
                     <input type="radio" id="left" name="align" value="left" />
                     <label className="e-btn" htmlFor="left">Left</label>
-                    <input type="radio" id="center" name="align" value="center" disabled />
+                    <input type="radio" id="center" name="align" value="center" />
                     <label className="e-btn" htmlFor="center">Center</label>
                     <input type="radio" id="right" name="align" value="right" />
                     <label className="e-btn" htmlFor="right">Right</label>
@@ -73,7 +73,7 @@ export class ButtonGroup extends SampleBase<{}, {}> {
     </p>
     <ul>
         <li><b>Default:</b> Triggers action on button click.</li>
-        <li><b>Single selection:</b> Radio type behavior selects a single button and submits its value to the server on form submission.This is showcased with the second button disabled, by default</li>
+        <li><b>Single selection:</b> Radio type behavior selects a single button and submits its value to the server on form submission.</li>
         <li><b>Multiple selection:</b> Checkbox type behavior selects multiple buttons and submits its selected values to the server on form submission. This is showcased with the first button selected, by default.</li>        
     </ul>
     <p>

@@ -37,18 +37,26 @@
 }
 
 #edit_dashboard.e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
-    padding: 10px;
     height: 35px;
-    margin: 0 15px 0 15px;
+    padding: 0 15px 0 15px;
     border-bottom: 2px solid #e6e9ed !important;
+    line-height:35px;
 }
 
-
 #edit_dashboard .e-panel-content {
-    height: calc(100% - 35px) !important;
+    height: calc(100% - 37px) !important;
     overflow: hidden;
     width:100%;
 }
+
+.bootstrap5-dark .dialog-text,
+.highcontrast .dialog-text,
+.tailwind-dark .dialog-text,
+.fabric-dark .dialog-text,
+.bootstrap-dark .dialog-text {
+    border: 1px solid #FFFFFF;
+}
+
 
 #edit_dashboard.e-dashboardlayout.e-control .e-panel,
 #edit_dashboard.e-dashboardlayout.e-control .e-panel:hover,

@@ -128,7 +128,7 @@ export class UiVirtualization extends SampleBase<{}, {}> {
                                             <div className="userselect">Time taken</div>
                                         </td>
                                         <td style={{ width: '50%', paddingRight: '10px' }}>
-                                            <div style={{ paddingLeft: '10px', paddingTop: '0px' }}>
+                                            <div style={{ paddingLeft: '10px' }}>
                                                 <span id="time">0 ms</span>
                                             </div>
                                         </td>

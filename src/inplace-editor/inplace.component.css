@@ -55,3 +55,8 @@
     display: block;
     visibility: hidden;
 }
+
+.inplace-overview .property-panel-content {
+    min-height: 0px;
+    overflow: hidden;
+}

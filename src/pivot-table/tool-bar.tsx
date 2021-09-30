@@ -8,6 +8,7 @@ import {
 } from '@syncfusion/ej2-react-pivotview';
 import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
+import { ChartTheme } from '@syncfusion/ej2-react-charts';
 import './tool-bar.css';
 
 /**
@@ -119,8 +120,8 @@ export class PivotToolbar extends SampleBase<{}, {}> {
     chartOnLoad(args): void {
         let selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme =
-            selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1);
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     }
     render() {
         return (

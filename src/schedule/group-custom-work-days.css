@@ -1,20 +1,20 @@
 .custom-work-days.e-schedule .e-month-view .e-work-days.willsmith,
 .custom-work-days.e-schedule .e-vertical-view .e-work-hours.willsmith {
-    background-color: #faebd7;
+    background-color: rgb(250 235 215 / 50%);
 }
 
 .custom-work-days.e-schedule .e-month-view .e-work-days.alice,
 .custom-work-days.e-schedule .e-vertical-view .e-work-hours.alice {
-    background-color: #deecfc;
+    background-color: rgb(222 236 252 / 50%);
 }
 
 .custom-work-days.e-schedule .e-month-view .e-work-days.robson,
 .custom-work-days.e-schedule .e-vertical-view .e-work-hours.robson {
-    background-color: #deeeac;
+    background-color: rgb(222 238 172 / 50%);
 }
 
 .custom-work-days.e-schedule .e-vertical-view .e-resource-cells {
-    height: 62px;
+    height: 66px;
 }
 
 .custom-work-days.e-schedule .template-wrap {

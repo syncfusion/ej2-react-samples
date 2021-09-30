@@ -15,19 +15,28 @@ import { PropertyPane } from '../common/property-pane';
  */
 
 export class Resources extends SampleBase<{}, {}> {
-    private dManager: Object[] = [];
-    private initalLoad: Boolean = true;
+    private dManager: Record<string, any>[] = [];
+    private initialLoad: Boolean = true;
     private scheduleObj: ScheduleComponent;
+    private instance: Internationalization = new Internationalization();
+    private resourceData: Record<string, any>[] = [
+        { text: 'Airways 1', id: 1 },
+        { text: 'Airways 2', id: 2 },
+        { text: 'Airways 3', id: 3 }
+    ];
+
     private getAirwaysName(value: number) {
         return (value === 1) ? 'Airways 1' : (value === 2) ? 'Airways 2' : 'Airways 3';
     }
+
     private getAirwaysImage(value: number) {
         return (value === 1) ? 'airways-1' : (value === 2) ? 'airways-2' : 'airways-3';
     }
-    private instance: Internationalization = new Internationalization();
+
     private getFormattedTime(date: Date) {
         return this.instance.formatDate(date, { skeleton: 'Hm' });
     }
+
     private onActionBegin(args: ActionEventArgs & ToolbarActionArgs): void {
         if (args.requestType === 'toolbarItemRendering') {
             args.items[2].align = 'Center';
@@ -37,17 +46,16 @@ export class Resources extends SampleBase<{}, {}> {
     }
 
     private onDataBinding(): void {
-        if (this.initalLoad) {
+        if (this.initialLoad) {
             this.scheduleObj.eventSettings.dataSource = this.generateEvents(this.scheduleObj);
-            this.initalLoad = false;
+            this.initialLoad = false;
         }
     }
 
     private onDataBound(): void {
-        let eventCollections: Object[] = this.scheduleObj.getCurrentViewEvents();
-        eventCollections.sort((a: { [key: string]: Object }, b: { [key: string]: Object }) =>
-            ((a.Fare as number) - (b.Fare as number)));
-        let indexDate: Date = new Date(((eventCollections[0] as { [key: string]: Object }).StartTime as Date).getTime());
+        let eventCollections: Record<string, any>[] = this.scheduleObj.getCurrentViewEvents();
+        eventCollections.sort((a: Record<string, number>, b: Record<string, number>) => a.Fare - b.Fare);
+        let indexDate: Date = new Date(((eventCollections[0] as Record<string, any>).StartTime as Date).getTime());
         indexDate.setHours(0, 0, 0, 0);
         let index: number = this.scheduleObj.getIndexOfDate(this.scheduleObj.activeView.renderDates, indexDate);
         let target: HTMLElement = this.scheduleObj.element.querySelectorAll('.e-work-cells')[index] as HTMLElement;
@@ -59,19 +67,13 @@ export class Resources extends SampleBase<{}, {}> {
         args.cancel = true;
     }
 
-    private resourceData: Object[] = [
-        { text: 'Airways 1', id: 1 },
-        { text: 'Airways 2', id: 2 },
-        { text: 'Airways 3', id: 3 }
-    ];
-
     private onChange(args: ChangeEventArgs): void {
         let tdElement: HTMLElement = this.scheduleObj.element.querySelector('.best-price:not(.e-work-cells)');
         if (tdElement) {
             removeClass([closest(tdElement, 'td')], 'best-price');
             remove(tdElement);
         }
-        let scheduleData: Object[] = extend([], this.dManager, null, true) as Object[];
+        let scheduleData: Record<string, any>[] = extend([], this.dManager, null, true) as Record<string, any>[];
         let selectedResource: number[] = [];
         let resourceCollection: HTMLElement[] = [].slice.call(document.querySelectorAll('.e-resource'));
         resourceCollection.forEach((element: HTMLElement, index: number) => {
@@ -79,11 +81,11 @@ export class Resources extends SampleBase<{}, {}> {
                 selectedResource.push(index);
             }
         });
-        let filteredData: Object[] = [];
-        let resources: { [key: string]: Object }[] =
-            this.scheduleObj.resourceBase.resourceCollection.slice(-1)[0].dataSource as { [key: string]: Object }[];
+        let filteredData: Record<string, any>[] = [];
+        let resources: Record<string, any>[] =
+            this.scheduleObj.resourceBase.resourceCollection.slice(-1)[0].dataSource as Record<string, any>[];
         for (let resource of selectedResource) {
-            let data: Object[] = scheduleData.filter((event: { [key: string]: Object }) => resources[resource].id === event.AirlineId);
+            let data: Record<string, any>[] = scheduleData.filter((event: Record<string, any>) => resources[resource].id === event.AirlineId);
             filteredData = filteredData.concat(data);
         }
         filteredData = this.filterByFare(filteredData, this.scheduleObj);
@@ -91,9 +93,9 @@ export class Resources extends SampleBase<{}, {}> {
         this.scheduleObj.dataBind();
     }
 
-    private filterByFare(appointments: Object[], scheduleObj: Schedule): Object[] {
+    private filterByFare(appointments: Record<string, any>[], scheduleObj: Schedule): Record<string, any>[] {
         let fieldMapping: EventFieldsMapping = scheduleObj.eventFields;
-        appointments.sort((object1: { [key: string]: Object }, object2: { [key: string]: Object }) => {
+        appointments.sort((object1: Record<string, any>, object2: Record<string, any>) => {
             let d1: number = +(object1[fieldMapping.startTime] as Date);
             let d2: number = +(object2[fieldMapping.startTime] as Date);
             let d3: number = +(object1[fieldMapping.endTime] as Date);
@@ -101,14 +103,14 @@ export class Resources extends SampleBase<{}, {}> {
             return ((d1 - d2) || ((d4 - d2) - (d3 - d1)));
         });
         let renderDate: Date[] = scheduleObj.activeView.getRenderDates();
-        let finalData: Object[] = [];
+        let finalData: Record<string, any>[] = [];
         for (let date of renderDate) {
             if (scheduleObj.selectedDate.getMonth() === date.getMonth()) {
                 let strTime: Date = new Date(+date);
                 let endTime: Date = new Date(new Date(strTime.getTime()).setHours(23, 59, 59, 59));
-                let perDayData: Object[] = scheduleObj.eventBase.filterEvents(strTime, endTime, appointments);
+                let perDayData: Record<string, any>[] = scheduleObj.eventBase.filterEvents(strTime, endTime, appointments);
                 if (perDayData.length > 0) {
-                    perDayData.sort((a: { [key: string]: Object }, b: { [key: string]: Object }) =>
+                    perDayData.sort((a: Record<string, any>, b: Record<string, any>) =>
                         ((a.Fare as number) - (b.Fare as number)));
                     finalData.push(perDayData[0]);
                 }
@@ -118,27 +120,27 @@ export class Resources extends SampleBase<{}, {}> {
     }
 
     //custom code start 
-    private generateEvents(scheduleObj: Schedule): Object[] {
-        let collections: Object[] = [];
-        let dataCollections: { [key: string]: Object }[] = [
+    private generateEvents(scheduleObj: Schedule): Record<string, any>[] {
+        let collections: Record<string, any>[] = [];
+        let dataCollections: Record<string, any>[] = [
             {
                 Id: 100,
-                StartTime: new Date(2018, 3, 1, 8, 30),
-                EndTime: new Date(2018, 3, 1, 10, 0),
+                StartTime: new Date(2021, 3, 1, 8, 30),
+                EndTime: new Date(2021, 3, 1, 10, 0),
                 AirlineId: 1
             }, {
                 Id: 102,
-                StartTime: new Date(2018, 3, 1, 11, 0),
-                EndTime: new Date(2018, 3, 1, 12, 0),
+                StartTime: new Date(2021, 3, 1, 11, 0),
+                EndTime: new Date(2021, 3, 1, 12, 0),
                 AirlineId: 2
             }, {
                 Id: 103,
-                StartTime: new Date(2018, 3, 1, 14, 0),
-                EndTime: new Date(2018, 3, 1, 15, 0),
+                StartTime: new Date(2021, 3, 1, 14, 0),
+                EndTime: new Date(2021, 3, 1, 15, 0),
                 AirlineId: 3
             }
         ];
-        let start: Date = new Date(2018, 3, 1);
+        let start: Date = new Date(2021, 3, 1);
         let dateCollections: Date[] = Array.apply(null, { length: 30 })
             .map((value: number, index: number) => { return new Date(start.getTime() + (1000 * 60 * 60 * 24 * index)); });
         let id: number = 1;
@@ -160,8 +162,8 @@ export class Resources extends SampleBase<{}, {}> {
             }
             day += 1;
         }
-        this.dManager = extend([], collections, null, true) as Object[];
-        let filteredCollection: Object[] = this.filterByFare(collections, scheduleObj);
+        this.dManager = extend([], collections, null, true) as Record<string, any>[];
+        let filteredCollection: Record<string, any>[] = this.filterByFare(collections, scheduleObj);
         return filteredCollection;
     }
     //custom code end 
@@ -202,9 +204,9 @@ export class Resources extends SampleBase<{}, {}> {
                     <div className='control-wrapper'>
                         <div className='schedule-demo-heading'>
                             Cheapest one way fares from Barcelona to Los Angeles
-                    </div>
+                        </div>
                         <ScheduleComponent ref={schedule => this.scheduleObj = schedule} cssClass='schedule-resources' width='100%'
-                            height='650px' readonly={true} selectedDate={new Date(2018, 3, 1)}
+                            height='650px' readonly={true} selectedDate={new Date(2021, 3, 1)}
                             eventSettings={{
                                 template: this.template.bind(this), enableTooltip: true,
                                 tooltipTemplate: this.toolTipTemplate.bind(this)
@@ -260,29 +262,29 @@ export class Resources extends SampleBase<{}, {}> {
                 <div id="action-description">
                     <p>
                         This demo illustrates how to customize the scheduler to showcase it as an
-                       <strong>Airfare calendar</strong> depicting the lowest available price on each day of a month for a specific route,
-                                   say between Barcelona and Los Angeles.
+                        <strong>Airfare calendar</strong> depicting the lowest available price on each day of a month for a specific route,
+                        say between Barcelona and Los Angeles.
                     </p>
                 </div>
 
                 <div id="description">
                     <p>
                         In this demo, Scheduler initially displays the fare of the airline service which offers lowest price on each day by
-                         comparing between the 3 available airlines. Here, the 3 airline services acts as the Scheduler resources.
+                        comparing between the 3 available airlines. Here, the 3 airline services acts as the Scheduler resources.
                         Appointment collection has been dynamically generated for a month (for all the 3 resources) within the
                         <code>generateEvents</code> method and then filtered externally based on the ascending Fare value within the
                         <code>filterByFare</code> method. Since each day of the Scheduler needs to display only a single appointment showing
-                         the fare value, therefore it’s been queried to take only the first 30 values from the sorted list and assigned it
-                          to the Schedule
+                        the fare value, therefore it’s been queried to take only the first 30 values from the sorted list and assigned it
+                        to the Schedule
                         <code>dataSource</code>. Here, the filtering process needs to be carried out during the
                         <code>databinding</code> event and therefore, the dataSource of Scheduler is assigned within this event.
                     </p>
                     <p>
                         Scheduler has been rendered in a readonly mode and therefore no editing actions are allowed here.
-                         To customize the look of the appointments that displays the fare value,
+                        To customize the look of the appointments that displays the fare value,
                         <code>template</code> option within the
                         <code>eventSettings</code> is being used. To highlight the day that holds the overall lowest price of a month,
-                         the background color of that day’s cell is customized within the
+                        the background color of that day’s cell is customized within the
                         <code>dataBound</code> event. Also, the tooltip has been enabled with
                         <code>template</code> option to display the flight details in a customized style.
                     </p>

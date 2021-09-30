@@ -16,16 +16,63 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }
+    
     #btn-control {
         width: 100%;
         text-align: center;
         text-transform:none !important;
     }
+
     .e-play-icon::before {
         content: '\\e728';
     }
+
 	.e-play-icon1::before {
         content: "\\e34b";
+    }
+
+    .e-view.fabric .e-play-icon1::before, .e-view.fabric-dark .e-play-icon1::before {
+        content: '\\e7df';
+    }
+
+    .e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before {
+        content: '\\e710';
+    }
+
+    .e-view.bootstrap .e-play-icon1::before {
+        content: '\\ebd2';
+    }
+
+    .e-view.bootstrap4 .e-play-icon::before {
+        content: '\\e780';
+    }
+
+    .e-view.bootstrap4 .e-play-icon1::before {
+        content: '\\e743';
+    }
+
+    .e-view.tailwind .e-play-icon1::before, .e-view.tailwind-dark .e-play-icon1::before {
+        content: '\\e76c';
+    }
+
+    .e-view.tailwind .e-play-icon::before, .e-view.tailwind-dark .e-play-icon::before {
+        content: '\\e7bf';
+    }
+
+    .e-view.highcontrast .e-play-icon1::before {
+        content: '\\ebf9';
+    }
+
+    .e-view.highcontrast .e-play-icon::before {
+        content: '\\e710';
+    }
+    
+    .e-view.bootstrap5 .e-play-icon1::before, .e-view.bootstrap5-dark .e-play-icon1::before {
+        content: '\\e75d';
+    }
+    
+    .e-view.bootstrap5 .e-play-icon::before, .e-view.bootstrap5-dark .e-play-icon::before {
+        content: '\\e72e';
     }`;
 
 export class Export extends SampleBase<{}, {}> {
@@ -41,7 +88,8 @@ export class Export extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     // custom code end
     public onClickPrint(e: Event): void {
@@ -58,7 +106,7 @@ export class Export extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section row'>
-                    <div className='col-md-9'>
+                    <div className='col-lg-8'>
                         <CircularGaugeComponent load={this.load.bind(this)} id='gauge' allowPrint={true} allowPdfExport={true} allowImageExport={true} ref={gauge => this.gauge = gauge}>
                         <Inject services={[Print, PdfExport, ImageExport]} />
                             <AxesDirective>
@@ -67,6 +115,7 @@ export class Export extends SampleBase<{}, {}> {
                                     lineStyle={{ width: 0 }}
                                     minorTicks={{ width: 1, height: 8, interval: 2, position:"Outside", useRangeColor: true }}
                                     labelStyle={{
+                                        hiddenLabel: 'Last',
                                         font : { size: '12px', fontFamily:'Roboto', color:'#424242', fontWeight:'Regular'},
                                         position: 'Outside',
                                      useRangeColor: true 
@@ -89,36 +138,38 @@ export class Export extends SampleBase<{}, {}> {
                         </CircularGaugeComponent>
                     </div>
                     {/* Property Panel */}
-                    <div className='col-md-3 property-section'>
+                    <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: '-10px'}}>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "20%" }}>
-                                        Export Type
+                                        <div>Export Type</div>
                                     </td>
                                     <td style={{ width: "30%" }}>
-                                        <DropDownListComponent width={80} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                        <div style={{marginLeft: "10px"}}>
+                                        <DropDownListComponent width={90} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "30%" }}>
-                                        FileName 
+                                        <div>File Name</div>
                                 </td>
                                     <td style={{ width: "40%" }}>
                                         <div className="e-float-input" style={{ width: 90, 'margin-top': '0px' }}>
-                                            <input type="text" defaultValue="Gauge" id="fileName" style={{ "margin-left": "-10px" }} />
+                                            <input type="text" defaultValue="Gauge" id="fileName" style={{ "margin-left": "10px", "width" : "90px" }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td  style={{ width: "50%" }}>
-                                        <div id="btn-control" style={{ 'margin-left': '-25px' }}>
-                                            <ButtonComponent onClick={this.onClickExport.bind(this)} style={{ width: '80px' }} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                        <div id="btn-control" style={{ 'margin-left': '10px', 'width': '100px' }}>
+                                            <ButtonComponent onClick={this.onClickExport.bind(this)} style={{ width: '90px' }} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
                                     <td  style={{ width: "50px" }}> 
-                                           <div id="btn-control" style={{ 'margin-left': '-15px' }}>
-                                            <ButtonComponent onClick={this.onClickPrint.bind(this)} style={{ width: '80px' }} iconCss='e-icons e-play-icon1' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+                                           <div id="btn-control" style={{ 'margin-left': '10px', 'width': '100px' }}>
+                                            <ButtonComponent onClick={this.onClickPrint.bind(this)} style={{ width: '90px' }} iconCss='e-icons e-play-icon1' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>

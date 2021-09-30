@@ -1,8 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective,
-  ResourceDirective, Inject, Resize, DragAndDrop
+  Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective,
+  ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
@@ -13,12 +13,12 @@ import * as dataSource from './datasource.json';
  */
 
 export class GroupByChild extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], (dataSource as any).resourceTeamData, null, true) as Object[];
-  private projectData: Object[] = [
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceTeamData, null, true) as Record<string, any>[];
+  private projectData: Record<string, any>[] = [
     { text: 'PROJECT 1', id: 1, color: '#cb6bb2' },
     { text: 'PROJECT 2', id: 2, color: '#56ca85' }
   ];
-  private categoryData: Object[] = [
+  private categoryData: Record<string, any>[] = [
     { text: 'Development', id: 1, color: '#1aaa55' },
     { text: 'Testing', id: 2, color: '#7fa900' }
   ];
@@ -28,7 +28,7 @@ export class GroupByChild extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent cssClass='group-bychild' width='100%' height='650px' selectedDate={new Date(2018, 5, 5)}
+            <ScheduleComponent cssClass='group-bychild' width='100%' height='650px' selectedDate={new Date(2021, 5, 5)}
               currentView='WorkWeek' startHour='09:00' endHour='19:00' eventSettings={{
                 dataSource: this.data, fields: {
                   subject: { title: 'Summary', name: 'Subject' },
@@ -63,25 +63,19 @@ export class GroupByChild extends SampleBase<{}, {}> {
         </div>
         <div id="description">
           <p>
-            In this demo, there are two resource levels defined under the
-            <code>resources</code> property – one with the name
-            <code>Projects</code> and other with the name
-            <code>Categories</code> respectively. Also, both the names are defined in the
+            In this demo, there are two resource levels defined under the <code>resources</code> property – one with the name
+            <code>Projects</code> and other with the name <code>Categories</code> respectively. Also, both the names are defined in the
             <code>group</code> property to allow two level hierarchical grouping. The order of grouping depends on the order of names
-             passed onto the
-            <code>resources</code> option within
-            <code>group</code>. The requirement here is to categorize the sub-options that are common to both the projects and therefore to
-              enable such grouping, it is necessary to set
-            <code>byGroupID</code> option within the
+            passed onto the <code>resources</code> option within <code>group</code>. The requirement here is to categorize the sub-options
+            that are common to both the projects and therefore to enable such grouping, it is necessary to set <code>byGroupID</code> option within the
             <code>groupID</code> – whereby allowing all the resources available in each child level to group under its parent resources.
-             With this option available, we can avoid the need to provide multiple definitions of the same data to be grouped under
-              different parent.
+            With this option available, we can avoid the need to provide multiple definitions of the same data to be grouped under
+            different parent.
           </p>
           <p>
             Also, the colors defined at the last level resources will get applied to the events of those resources by default. In case,
             if the colors of parent level needs to be applied to child events, then it is necessary to define the
-            <code>resourceColorField</code> option within the
-            <code>eventSettings</code> property with the parent level resource name value.
+            <code>resourceColorField</code> option within the <code>eventSettings</code> property with the parent level resource name value.
           </p>
         </div>
       </div>

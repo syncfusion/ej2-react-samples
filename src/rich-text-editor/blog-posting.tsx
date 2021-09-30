@@ -144,13 +144,13 @@ export class Forums extends SampleBase<{}, {}> {
                                                 <tr>
                                                     <td>
                                                         <span className='e-icon e-like questionSide'>
-                                                            <img className='e-icon' src='./src/rich-text-editor/images/like.svg' />
+                                                            <img className='e-icon' src='./src/rich-text-editor/images/like.svg' alt='like'/>
                                                             <span>Like</span>
                                                         </span>
                                                     </td>
                                                     <td>
                                                         <span className='e-icon e-dislike'>
-                                                            <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg' />
+                                                            <img className='e-icon' src='./src/rich-text-editor/images/dislike.svg' alt='dislike'/>
                                                             <span>Dislike</span>
                                                         </span>
                                                     </td>

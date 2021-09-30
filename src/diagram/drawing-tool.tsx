@@ -173,7 +173,6 @@ export class DrawingTools extends SampleBase<{}, {}> {
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
-      // custom code start
       if (
         selectedElement.length &&
         target.id !== "" &&
@@ -184,7 +183,6 @@ export class DrawingTools extends SampleBase<{}, {}> {
       if (!target.classList.contains("e-selected-style")) {
         target.classList.add("e-selected-style");
       }
-      // custom code end
       if (target.className === "image-pattern-style e-selected-style") {
         switch (target.id) {
           case "shape1":

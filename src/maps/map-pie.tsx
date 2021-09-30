@@ -141,8 +141,6 @@ export class PieMaps extends SampleBase<{}, {}> {
     }
     public chartCollection: AccumulationChart[] = [];
     public onMapsLoad(args: ILoadedEventArgs): void {
-        let maps: Element = document.getElementById('maps');
-        maps.setAttribute('title', '');
         let chart: AccumulationChart = new AccumulationChart({
             background: 'transparent',
         width: '70',
@@ -317,7 +315,8 @@ export class PieMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
     public resize(args: IResizeEventArgs): void {

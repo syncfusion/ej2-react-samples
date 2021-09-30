@@ -70,7 +70,7 @@ export class AjaxContentTooltip extends SampleBase<tooltipComponentProps, toolti
                 </div>
 
                 <div id="action-description">
-                    <p>This sample demonstrates the AJAX functionalities of the Tooltip which will open by Hover or Touch-hold action on list-item.</p>
+                    <p>This sample demonstrates the AJAX functionalities of the Tooltip which will open by <b>hover</b> or <b>touch-hold</b> action on list-item.</p>
                 </div>
 
                 <div id="description">

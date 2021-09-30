@@ -15,8 +15,8 @@ export class Rtl extends SampleBase<{}, {}> {
                         allowGrouping={true} enableRtl={true} filterSettings={{ type: 'Menu' }} allowSorting={true}
                         pageSettings={{ pageSize: 10, pageCount: 2 }}>
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' isPrimaryKey={true} width='120' textAlign='Left'></ColumnDirective>
-                            <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' isPrimaryKey={true} width='120' textAlign='Right'></ColumnDirective>
+                            <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' textAlign='Left'></ColumnDirective>
                             <ColumnDirective field='OrderDate' editType='datepickeredit' headerText='Order Date' width='130' format='yMd'
                                 textAlign='Right' />
                             <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />

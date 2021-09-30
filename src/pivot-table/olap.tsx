@@ -6,6 +6,7 @@ import {
     FetchReportArgs, LoadReportArgs, RemoveReportArgs, RenameReportArgs, ToolbarArgs
 } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
+import { ChartTheme } from '@syncfusion/ej2-react-charts';
 import './olap.css';
 
 /**
@@ -123,8 +124,8 @@ export class OlapSample extends SampleBase<{}, {}> {
     chartOnLoad(args): void {
         let selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme =
-            selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1);
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+        replace(/-dark/i, "Dark") as ChartTheme;
     }
     render() {
         return (

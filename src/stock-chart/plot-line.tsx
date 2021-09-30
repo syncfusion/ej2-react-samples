@@ -44,9 +44,6 @@ export class PlotLine extends SampleBase<{}, {}> {
                         seriesType={[]}
                         chartArea={{ border: { width: 0 } }}
                         title= 'Plot line on Y axis'
-                        titleStyle={{
-                            fontWeight: '500', color: '#424242 '
-                        }}
                     >
                         <Inject services={[DateTime, StripLine, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,

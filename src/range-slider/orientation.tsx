@@ -168,7 +168,7 @@ export class Orientation extends SampleBase<{}, {}> {
                             In this demo we can see the Default, MinRange and Range slider types.
                         </p>
                         <p>For more information, we can refer the
-                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/slider/getting-started.html?lang=es6#orientation">Orientation</a> section from the documentation.</p>
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/getting-started/#orientation">Orientation</a> section from the documentation.</p>
                     </ul>
                 </div>
             </div>

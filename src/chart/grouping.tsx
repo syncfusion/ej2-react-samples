@@ -36,6 +36,7 @@ export class Grouping extends SampleBase<{}, {}> {
     this.pie.series[0].groupTo = currentValue.toString();
     this.pie.series[0].animation.enable = false;
     document.getElementById('clubtext').innerHTML = currentValue.toString();
+    this.slider.value = currentValue.toString();
     this.pie.removeSvg();
     this.pie.refreshSeries();
     this.pie.refreshChart();

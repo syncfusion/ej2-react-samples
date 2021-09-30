@@ -101,7 +101,7 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                    The following sample demonstrates the default functionalities of the DashboardLayout component. Click the <code>Add Panel</code> button to add panels dynamically to the dashboard layout.
+                    This <a href="https://www.syncfusion.com/react-ui-components/react-dashboard-layout">React Dashboard Layout</a> example demonstrates the default functionalities of the DashboardLayout component. Click the Add Panel button to add panels dynamically to the dashboard layout.
                     </p>
                 </div>
                 <div id="description">

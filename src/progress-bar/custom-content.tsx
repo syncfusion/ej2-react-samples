@@ -60,8 +60,14 @@ export class ProgressBarCustomContents extends SampleBase<{}, {}> {
         bootstrap: string,
         bootstrap4: string,
         highcontrast: string,
-        tailwind: string
-    } = { material: '#e91e63', fabric: '#0078D6', bootstrap: '#317ab9', bootstrap4: '#007bff', highcontrast: '#FFD939', tailwind: '#4F46E5' };
+        tailwind: string,
+        bootstrap5dark: string,
+        bootstrapdark: string,
+        fabricdark: string,
+        materialdark: string,
+        tailwinddark: string
+        bootstrap5: string,
+    } = { material: '#e91e63', fabric: '#0078D6', bootstrap: '#317ab9', bootstrap4: '#007bff', highcontrast: '#FFD939', tailwind: '#4F46E5', bootstrap5: '#0D6EFD', bootstrap5dark: '#0D6EFD', bootstrapdark: '#9A9A9A', fabricdark: '#9A9A9A', materialdark: '#9A9A9A', tailwinddark: '#22D3EE' };
     private progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -69,11 +75,11 @@ export class ProgressBarCustomContents extends SampleBase<{}, {}> {
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
         if (args.progressBar.element.id === 'label-container') {
             // tslint:disable-next-line:max-line-length
-            args.progressBar.annotations[0].content = '<div id="point1" class="plabeltxt" style="color: ' + this.annotationColors[selectedTheme] + ' "><span>80%</span></div>';
+            args.progressBar.annotations[0].content = '<div id="point1" class="plabeltxt" style="color: ' + this.annotationColors[selectedTheme.replace(/-/i, '')] + ' "><span>80%</span></div>';
         } else if (args.progressBar.element.id === 'download-container') {
-            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme + '-Download.svg"></img>';
+            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-Download.svg"></img>';
         } else {
-            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme + '-pause.svg"></img>';
+            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-pause.svg"></img>';
         }
     }
     private reloadClick(): void {

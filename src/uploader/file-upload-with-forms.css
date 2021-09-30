@@ -16,8 +16,15 @@
     padding: 1% 4% 2%;
     background: #f9f9f9;
 }
-.highcontrast .control_wrapper.uploader-form {
-	background: #000;
+.highcontrast .control_wrapper.uploader-form,
+.material-dark .control_wrapper.uploader-form,
+.fabric-dark .control_wrapper.uploader-form,
+.bootstrap-dark .control_wrapper.uploader-form,
+.bootstrap5-dark .control_wrapper.uploader-form {
+    background: #393939;
+}
+.tailwind-dark .control_wrapper.uploader-form { 
+    background: #6c757d;
 }
 
 .e-float-input.upload-area {

@@ -75,9 +75,9 @@ export class Reorders extends SampleBase<{}, {}> {
                 <td style={{ width: '30%' }}>
                    <div style={{ paddingTop: '10px' }}> Column </div>
                 </td>
-                <td style={{ width: '50%', paddingRight: '10px' }}>
+                <td style={{ width: '70%', paddingRight: '10px' }}>
                    <div>
-                      <DropDownListComponent width="120px" id="columns" change={this.change.bind(this)}
+                      <DropDownListComponent width="100px" id="columns" change={this.change.bind(this)}
                           dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="taskID"
                           ref={dropdown=> this.dropdownObj = dropdown} />
                    </div>
@@ -87,9 +87,9 @@ export class Reorders extends SampleBase<{}, {}> {
                 <td style={{ width: '30%' }}>
                    <div> Column Index </div>
                 </td>
-                <td style={{ width: '50%', paddingRight: '10px' }}>
+                <td style={{ width: '70%', paddingRight: '10px' }}>
                    <div>
-                      <DropDownListComponent width="120px" id="columnindex" change={this.change2.bind(this)}
+                      <DropDownListComponent width="100px" id="columnindex" change={this.change2.bind(this)}
                           dataSource={this.columnsIndex} fields={{ text: 'name', value: 'id' }} value="0"
                           ref={dropdown=> this.dropdownObj2 = dropdown} />
                    </div>

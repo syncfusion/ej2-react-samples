@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewDirective,
-  Day, Week, TimelineViews, Inject, Resize, DragAndDrop
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './schedule-component.css';
 import { extend, Internationalization } from '@syncfusion/ej2-base';
@@ -17,17 +16,10 @@ import * as dataSource from './datasource.json';
 
 export class Timescale extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
   private instance = new Internationalization();
-  private majorSlotTemplate(props): JSX.Element {
-    return (<div>{this.instance.formatDate(props.date, { skeleton: 'hm' })}</div>);
-  }
-  private minorSlotTemplate(props): JSX.Element {
-    return (<div style={{ textAlign: 'right', marginRight: '15px' }}>
-      {this.instance.formatDate(props.date, { skeleton: 'ms' }).replace(':00', '')}
-    </div>);
-  }
-  private slotCountList: { [key: string]: Object }[] = [
+  private workDays: number[] = [0, 1, 2, 3, 4, 5];
+  private slotCountList: Record<string, any>[] = [
     { text: '1', value: 1 },
     { text: '2', value: 2 },
     { text: '3', value: 3 },
@@ -35,7 +27,7 @@ export class Timescale extends SampleBase<{}, {}> {
     { text: '5', value: 5 },
     { text: '6', value: 6 }
   ];
-  private intervalList: { [key: string]: Object }[] = [
+  private intervalList: Record<string, any>[] = [
     { text: '30', value: 30 },
     { text: '60', value: 60 },
     { text: '90', value: 90 },
@@ -46,31 +38,43 @@ export class Timescale extends SampleBase<{}, {}> {
     { text: '300', value: 300 },
     { text: '720', value: 720 }
   ];
-  private timeScaleOptions: { [key: string]: Object }[] = [
+  private timeScaleOptions: Record<string, any>[] = [
     { text: 'Show', value: 'enable' },
     { text: 'Hide', value: 'disable' }
   ];
-  private templateOptions: { [key: string]: Object }[] = [
+  private templateOptions: Record<string, any>[] = [
     { text: 'Yes', value: true },
     { text: 'No', value: false }
   ];
-  private fields: object = { text: 'text', value: 'value' };
+  private fields: Record<string, any> = { text: 'text', value: 'value' };
+
+  private majorSlotTemplate(props): JSX.Element {
+    return (<div>{this.instance.formatDate(props.date, { skeleton: 'hm' })}</div>);
+  }
+
+  private minorSlotTemplate(props): JSX.Element {
+    return (<div style={{ textAlign: 'right', marginRight: '15px' }}>
+      {this.instance.formatDate(props.date, { skeleton: 'ms' }).replace(':00', '')}
+    </div>);
+  }
+
   private onSlotCountChange(args: ChangeEventArgs): void {
     this.scheduleObj.timeScale.slotCount = args.value as number;
     this.scheduleObj.dataBind();
   }
+
   private onIntervalChange(args: ChangeEventArgs): void {
     this.scheduleObj.timeScale.interval = args.value as number;
   }
+
   private onTimeScaleChange(args: ChangeEventArgs): void {
     this.scheduleObj.timeScale.enable = (args.value === 'enable') ? true : false;
     this.scheduleObj.dataBind();
   }
+
   private onTemplateChange(args: ChangeEventArgs): void {
-    (this.scheduleObj.timeScale as any).majorSlotTemplate = args.value ?
-      this.majorSlotTemplate.bind(this) : null;
-    (this.scheduleObj.timeScale as any).minorSlotTemplate = args.value ?
-      this.minorSlotTemplate.bind(this) : null;
+    this.scheduleObj.timeScale.majorSlotTemplate = args.value ? this.majorSlotTemplate.bind(this) : null;
+    this.scheduleObj.timeScale.minorSlotTemplate = args.value ? this.minorSlotTemplate.bind(this) : null;
     this.scheduleObj.dataBind();
   }
 
@@ -80,7 +84,7 @@ export class Timescale extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent height='550px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2021, 0, 10)} workDays={this.workDays} eventSettings={{ dataSource: this.data }}
               currentView='TimelineWeek' timeScale={{ enable: true, interval: 60, slotCount: 6 }}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -98,50 +102,41 @@ export class Timescale extends SampleBase<{}, {}> {
               style={{ width: '100%' }}>
               <tbody>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Interval(in Minutes)
-                    </div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
                       <DropDownListComponent style={{ padding: '6px' }} value={60} fields={this.fields}
-                        dataSource={this.intervalList} change={this.onIntervalChange.bind(this)}>
+                        dataSource={this.intervalList} change={this.onIntervalChange.bind(this)}
+                        placeholder='Interval (in minutes)' floatLabelType='Always'>
                       </DropDownListComponent>
                     </div>
                   </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Slot Count</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
                       <DropDownListComponent style={{ padding: '6px' }} value={6} fields={this.fields}
-                        dataSource={this.slotCountList} change={this.onSlotCountChange.bind(this)}>
+                        dataSource={this.slotCountList} change={this.onSlotCountChange.bind(this)}
+                        placeholder='Slot Count' floatLabelType='Always'>
                       </DropDownListComponent>
                     </div>
                   </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Grid lines</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
                       <DropDownListComponent style={{ padding: '6px' }} value={'enable'} fields={this.fields}
-                        dataSource={this.timeScaleOptions} change={this.onTimeScaleChange.bind(this)}>
+                        dataSource={this.timeScaleOptions} change={this.onTimeScaleChange.bind(this)}
+                        placeholder='Gridlines' floatLabelType='Always'>
                       </DropDownListComponent>
                     </div>
                   </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Apply Template</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
                       <DropDownListComponent style={{ padding: '6px' }} value={false} fields={this.fields}
-                        dataSource={this.templateOptions} change={this.onTemplateChange.bind(this)}></DropDownListComponent>
+                        dataSource={this.templateOptions} change={this.onTemplateChange.bind(this)}
+                        placeholder='Apply Template' floatLabelType='Always'></DropDownListComponent>
                     </div>
                   </td>
                 </tr>
@@ -152,21 +147,15 @@ export class Timescale extends SampleBase<{}, {}> {
         <div id="action-description">
           <p>
             This demo depicts how to customize the grid lines of scheduler with different duration, count and also, how to
-            apply template
-            customizations on it.
+            apply template customizations on it.
           </p>
         </div>
         <div id="description">
           <p>
             In this demo, scheduler has been allowed to display different number of grid lines per hour assigned with
-            different duration
-            to each cell, by making use of the
-            <code>interval</code> and <code>slotCount</code> properties.
-            The grid lines can also be disabled on schedule, by setting `false` to the
-            <code>enable</code> property available within
-            <code>timeScale</code>. The time header text can be customized by making use of the
-            <code>majorSlotTemplate</code> and
-            <code>minorSlotTemplate</code> properties.
+            different duration to each cell, by making use of the <code>interval</code> and <code>slotCount</code> properties.
+            The grid lines can also be disabled on schedule, by setting `false` to the <code>enable</code> property available within
+            <code>timeScale</code>. The time header text can be customized by making use of the <code>majorSlotTemplate</code> and <code>minorSlotTemplate</code> properties.
           </p>
         </div>
       </div>

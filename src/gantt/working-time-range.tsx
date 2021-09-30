@@ -77,22 +77,26 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
                 <col style={{width:'45%'}} />
               </colgroup>
                 <tr>
-                  <td style={{ width: '55%' }}>
-                    <div>Work Start Time</div>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ fontSize: '15px' }}>Work Start Time</div>
                   </td>
-                  <td style={{ width: '45%' }}>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%' }}>
                     <div style={{ paddingTop: '0px'}}>
-                    <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime = NumericTextBox} value={8} min={0} max={24} showSpinButton={true} step={0.5} change={this.updateTime.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime = NumericTextBox} value={8} min={0} max={24} showSpinButton={true} width='150px' step={0.5} change={this.updateTime.bind(this)}></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '55%' }}>
-                    <div>Work End Time</div>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ fontSize: '15px' }}>Work End Time</div>
                   </td>
-                  <td style={{ width: '45%' }}>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%' }}>
                     <div style={{ paddingTop: '0px'}}>
-                    <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime = NumericTextBox} value={17} min={0} max={24} showSpinButton={true} step={0.5} change={this.updateTime.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime = NumericTextBox} value={17} min={0} max={24} showSpinButton={true} width='150px' step={0.5} change={this.updateTime.bind(this)}></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>

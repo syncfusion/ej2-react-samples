@@ -10,10 +10,22 @@
   }
 
   #analytic_dashboard.e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
-    padding: 10px;
     border-bottom: 2px solid #e6e9ed !important;
     height: 35px;
-    margin: 0 15px 0 15px;
+    padding: 0 15px 0 15px;
+    line-height: 35px;
+  }
+
+  .bootstrap5-dark #analytic_dashboard .card-content.text,
+  .tailwind-dark #analytic_dashboard .card-content.text,
+  .material-dark #analytic_dashboard .card-content.text,
+  .bootstrap-dark #analytic_dashboard .card-content.text,
+  .highcontrast #analytic_dashboard .card-content.text {
+    color: #ffffff;
+  }
+
+  .fabric-dark .card-content.text{
+    color: #dadada
   }
 
   #target_dash #pie,
@@ -346,4 +358,16 @@ body.highcontrast #analytic_dashboard.e-dashboardlayout.e-control .e-panel {
 
 body.highcontrast #analytic_dashboard.e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
   color: rgba(255, 255, 255, 0.54);
+}
+
+.tailwind #dockSideDash , .bootstrap5 #dockSideDash{
+  background: #fff;
+}
+
+body.bootstrap-dark #dockSideDash li.sidebar-item.filterHover,
+body.material-dark #dockSideDash li.sidebar-item.filterHover,
+body.fabric-dark #dockSideDash li.sidebar-item.filterHover,
+body.tailwind-dark #dockSideDash li.sidebar-item.filterHover,
+body.bootstrap5-dark #dockSideDash li.sidebar-item.filterHover{
+  background: inherit;
 }

@@ -70,27 +70,27 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ width: '5px !important' }}>
+                    <td style={{ width: '20%' }}>
                       <div style={{ paddingTop: '8px'}}>
                         Start
                       </div>
                     </td>
-                    <td style={{ width: '70%', paddingRight: '10px' }}>
-                      <div id='numericbox' style={{ minWidth: '130px' }}>
+                    <td style={{ width: '80%', paddingRight: '10px' }}>
+                      <div id='numericbox' style={{ minWidth: '95px' }}>
                         <NumericTextBoxComponent id='start' format='##' min={0} max={11} ref={numeric=> this.numericObj = numeric}
-                        width='110px'>
+                        width='95px'>
                         </NumericTextBoxComponent>
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ width: '30%' }}>
+                    <td style={{ width: '20%' }}>
                       <div style={{ paddingTop: '8px'}}> To </div>
                     </td>
-                    <td style={{ width: '70%', paddingRight: '10px' }}>
-                      <div id='numericbox' style={{ minWidth: '130px' }}>
+                    <td style={{ width: '80%', paddingRight: '10px' }}>
+                      <div id='numericbox' style={{ minWidth: '95px' }}>
                         <NumericTextBoxComponent id='to' format='##' min={0} max={11} ref={numeric=> this.numericObj2 = numeric}
-                        width='110px'>
+                        width='95px'>
                         </NumericTextBoxComponent>
                       </div>
                     </td>

@@ -90,7 +90,7 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                 <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft:'-10px' }}>
                             <tr style={{ height: "50px" }}>
                                 <td style={{ width: "70%" }}>
                                     <div className="property-text" style={{ padding: "0px;" }}>Zoom to fit all the makers in maps</div>
@@ -134,7 +134,8 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
 }

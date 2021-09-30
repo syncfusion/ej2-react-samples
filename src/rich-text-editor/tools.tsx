@@ -126,7 +126,7 @@ export class Overview extends SampleBase<{}, {}> {
       (this.rteObj.sourceCodeModule.getPanel() as HTMLTextAreaElement).style.display = 'none';
       this.mirrorConversion(e);
     } else {
-      setTimeout(() => { (this.rteObj as any).toolbarModule.refreshToolbarOverflow(); }, 400);
+      setTimeout(() => { (this.rteObj as any).toolbarModule.refreshToolbarOverflow(); }, 1000);
     }
   }
 

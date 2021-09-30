@@ -1,4 +1,5 @@
 /* custom code start*/
+
 #EventLog b {
   color: #388e3c;
 }
@@ -8,14 +9,10 @@ hr {
   border-top: 1px solid #eee;
 }
 
-.year-property-panel div {
-  width: 70%;
-  margin: auto;
-}
-
 .year-property-panel td {
   padding-bottom: 1rem;
 }
+
 /* custom code end*/
 
 .e-schedule .e-schedule-toolbar .e-icon-schedule-print::before {
@@ -35,7 +32,10 @@ hr {
   padding-top: 0;
 }
 
-.year-view.e-schedule .e-timeline-year-view .e-resource-column-table,
-.year-view.e-schedule .e-timeline-year-view .e-resource-left-td {
+.year-view.e-schedule .e-timeline-year-view .e-resource-column-table, .year-view.e-schedule .e-timeline-year-view .e-resource-left-td {
   width: 120px;
+}
+
+.inline-edit.e-schedule .e-timeline-view .e-resource-left-td, .inline-edit.e-schedule .e-timeline-month-view .e-resource-left-td {
+  width: 150px;
 }

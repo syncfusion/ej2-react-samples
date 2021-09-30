@@ -115,7 +115,8 @@ export class OSMMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
-        args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as MapsTheme;
+        args.maps.theme = ((theme.charAt(0).toUpperCase() +
+        theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
 }

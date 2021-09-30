@@ -11,15 +11,14 @@ import * as dataSource from './datasource.json';
  */
 
 export class MonthAgendaView extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], (dataSource as any).fifaEventsData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).fifaEventsData, null, true) as Record<string, any>[];
 
   render() {
     return (
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper schedule-wrapper'>
-            <ScheduleComponent width='100%' height='510px' selectedDate={new Date(2018, 5, 20)}
-              eventSettings={{ dataSource: this.data }}>
+            <ScheduleComponent width='100%' height='510px' selectedDate={new Date(2021, 5, 20)} eventSettings={{ dataSource: this.data }}>
               <ViewsDirective>
                 <ViewDirective option='MonthAgenda' />
               </ViewsDirective>
@@ -33,11 +32,9 @@ export class MonthAgendaView extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             In this demo, the active view of Scheduler is set to <code>MonthAgenda</code> and no other view options are provided
-             to <code>views</code> property.
- This view is designed by considering the combination of both the calendar and agenda layout together,
-so that whenever a particular date is selected – the events belonging to that date will be displayed on the event
-section at the bottom. Also, the dates which holds one or more events are marked with a round indicator below that
-date.
+            to <code>views</code> property. This view is designed by considering the combination of both the calendar and agenda layout together,
+            so that whenever a particular date is selected – the events belonging to that date will be displayed on the event
+            section at the bottom. Also, the dates which holds one or more events are marked with a round indicator below that date.
           </p>
           <p>
             On double clicking the date cells, the user can open the default event editor to create events. The events displayed on this
@@ -46,9 +43,7 @@ date.
           <p>
             <strong>Module Injection</strong>
           </p>
-          <p>To work with Month Agenda view on Scheduler – it is necessary to inject the MonthAgenda module
-          using <code>services</code> property under <code>Inject</code> tag.
-          </p>
+          <p>To work with Month Agenda view on Scheduler – it is necessary to inject the MonthAgenda module using <code>services</code> property under <code>Inject</code> tag.</p>
         </div>
       </div>
     );

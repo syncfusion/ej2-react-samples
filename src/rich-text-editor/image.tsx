@@ -94,8 +94,8 @@ export class ImageSample extends SampleBase<{}, {}> {
                             <tbody>
                                 <tr>
                                     <td style={{ padding: '8px', width: '50%' }}><div>EnableAutoUrl</div></td>
-                                    <td>
-                                        <div style={{ paddingLeft: '10px' }}>
+                                    <td style={{ paddingTop: '0px' }}>
+                                        <div style={{ paddingLeft: '0px', paddingTop: '0px' }}>
                                             <CheckBoxComponent checked={false}  ref={(scope) => { this.readonly = scope; }} change={ this.onCheckChange.bind(this) } ></CheckBoxComponent>
                                         </div>
                                     </td>
@@ -103,7 +103,7 @@ export class ImageSample extends SampleBase<{}, {}> {
                                 <tr>
                                 <td style={{ padding: '8px', width: '50%' }}><div>Save Format </div></td>
                                     <td>
-                                        <div style={{ paddingLeft: '10px' }}>
+                                        <div style={{ paddingLeft: '10px', paddingTop: '0px' }}>
                                         <DropDownListComponent id="formattingOption" dataSource={this.formatData} ref={(dropdownlist) => { this.formatdrop = dropdownlist }} fields={this.fields} change={this.ondropChange.bind(this)} value={this.value} popupHeight="200px" />
                                         </div>
                                     </td>

@@ -131,7 +131,8 @@ public render(): JSX.Element {
         </div>
         </div>
         <div id="action-description">
-        <p> This example demonstrates how to configure custom drop area of the Uploader. 
+        <p> This <a href="https://www.syncfusion.com/react-ui-components/react-file-upload"
+            target="_blank">&nbsp;React File Upload</a> example demonstrates how to configure custom drop area of the Uploader. 
             You can drop the files into specified custom drop area location to upload.  </p>
     </div>
     <div id="description">

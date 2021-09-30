@@ -78,6 +78,7 @@ export class Wizard extends SampleBase<{}, {}> {
     buttonModel: { content: "OK", isPrimary: true },
     click: (() => {
       this.alertDlg.hide();
+      this.reserved = [];
       this.tab.enableTab(0, true);
       this.tab.enableTab(1, false);
       this.tab.enableTab(2, false);
@@ -106,6 +107,15 @@ export class Wizard extends SampleBase<{}, {}> {
     this.selectedTrain = args.data;
   }
 
+  public removeItem(): void {
+    let tabItems: any = this.tab.element.querySelectorAll('.e-item');
+    tabItems.forEach((item: Element, index: number) => {
+      if (index > 0) {
+        item.remove();
+      }
+    });
+  }
+
   public btnClicked(e: RowSelectEventArgs): void {
     switch (e.target.id) {
       case "searchNext":
@@ -115,6 +125,7 @@ export class Wizard extends SampleBase<{}, {}> {
           if (this.startPoint.value && this.startPoint.value === this.endPoint.value) {
             document.getElementById("err1").innerText = "* Arrival point can't be same as Departure";
           } else {
+            this.removeItem();
             this.tab.enableTab(1, true);
             this.tab.enableTab(0, false);
             this.filterTrains(e);
@@ -145,6 +156,11 @@ export class Wizard extends SampleBase<{}, {}> {
         if (name.value === "" || age === "" || gender === "") {
           document.getElementById("err3").innerText = "* Please enter passenger details";
         } else {
+          this.reserved = []
+          let paymentTab: any = this.tab.element.querySelectorAll('.e-item')[3];
+          if(paymentTab) {
+            paymentTab.remove();
+          }
           this.tab.enableTab(3, true);
           this.tab.enableTab(2, false);
           document.getElementById("err3").innerText = "";
@@ -181,7 +197,7 @@ export class Wizard extends SampleBase<{}, {}> {
     let fromCity: string = this.startPoint.value as string;
     let toCity: string = this.endPoint.value as string;
     let count: number = Math.floor((Math.random() * 3) + 2);
-
+    this.result = [];
     for (let i: number = 0; i < count; i++) {
       let details: { [key: string]: Object } = {};
       details["TrainNo"] = Math.floor((Math.random() * 20) + 19000);
@@ -213,7 +229,7 @@ export class Wizard extends SampleBase<{}, {}> {
         details["TrainNo"] = this.selectedTrain.TrainNo.toString();
         details["PassName"] = (i === 1) ? name1.value : (i === 2) ? name2.value : name3.value;
         details["Gender"] = (gender === "") ? "Male" : gender;
-        details["Berth"] = berth;
+        details["Berth"] = (berth === null) ? 'Any' : berth;
         if (details["PassName"] !== "") { this.reserved.push(details); }
         passCount++;
       }
@@ -252,7 +268,7 @@ export class Wizard extends SampleBase<{}, {}> {
       </div>
       <div className="row">
         <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-          <DatePickerComponent ref={calendar => (this.journeyDate = calendar)} width="100%" placeholder="Journey Date" floatLabelType="Auto" min={this.dateMin} max={this.dateMax} focus={this.focusIn.bind(this)}/>
+          <DatePickerComponent ref={calendar => (this.journeyDate = calendar)} width="100%" placeholder="Journey Date" floatLabelType="Auto" value={this.today} min={this.dateMin} max={this.dateMax} focus={this.focusIn.bind(this)}/>
         </div>
         <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
           <DropDownListComponent ref={dropdownlist => (this.ticketType = dropdownlist)} dataSource={this.quotas} placeholder="Ticket type" floatLabelType="Auto" fields={this.fields}/>
@@ -404,7 +420,7 @@ export class Wizard extends SampleBase<{}, {}> {
       <div>
         <div className="col-lg-12 control-section e-tab-section">
           <div className="e-sample-resize-container">
-            <TabComponent id="tab-wizard" ref={tab => (this.tab = tab)} heightAdjustMode="None" height={390} selecting={this.tabSelecting.bind(this)}>
+            <TabComponent id="tab-wizard" ref={tab => (this.tab = tab)} heightAdjustMode="None" height={440} selecting={this.tabSelecting.bind(this)}>
               <TabItemsDirective>
                 <TabItemDirective header={this.headerText[0]} content={this.content0.bind(this)}/>
                 <TabItemDirective header={this.headerText[1]} content={this.content1.bind(this)} disabled={true}/>

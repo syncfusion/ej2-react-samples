@@ -55,7 +55,7 @@ export class OutlookLayout extends SampleBase<{}, {}> {
         return (
             <div className='splitter-content'>
                 <ListViewComponent id='groupedList-split' fields={this.listFields} className='splitter-list' dataSource={this.dataSource}
-                    cssClass={'e-list-template'} groupTemplate={this.grouptemplate} template={this.listTemplate} ref={(listview) => { this.listViewObj = listview }} />
+                    cssClass={'e-list-template'} template={this.listTemplate} ref={(listview) => { this.listViewObj = listview }} />
             </div>
         );
     };
@@ -108,11 +108,9 @@ export class OutlookLayout extends SampleBase<{}, {}> {
     private listTemplate: string = '<div class="settings e-list-wrapper e-list-multi-line e-list-avatar">' +
         '<span class="e-list-item-header">${Name}</span>' +
         '<span class="e-list-content">${content}</span>' +
-        '</div>'
-    //Set customized group-header template
-    private grouptemplate: string = '<div class="e-list-wrapper"><span class="e-list-item-content"></span></div>';
+        '</div>';
     //Map the appropriate columns to fields property
-    private listFields: FieldSettingsModel = { text: 'Name', groupBy: 'order' };
+    private listFields: FieldSettingsModel = { text: 'Name' };
     public mailBox: { [key: string]: Object }[] = [
         { id: 1, name: 'Favorites', hasChild: true },
         { id: 2, pid: 1, name: 'Sales Reports', count: '4' },

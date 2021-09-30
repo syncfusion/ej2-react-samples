@@ -64,12 +64,62 @@ let highcontrastWomen: string = '<div style="background-color:#E98272;border-rad
     '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y}M </span></div></div>';
-let tailwindMan: string = '<div style="background-color:#79ECE4;border-radius: 3px;">' +
+let tailwindMan: string = '<div style="background-color:#5A61F6;border-radius: 3px;">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
     '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y}M </span></div></div>';
-let tailwindWomen: string = '<div style="background-color:#E98272;border-radius: 3px;">' +
+let tailwindWomen: string = '<div style="background-color:#65A30D;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';    
+let bootstrap5Man: string = '<div style="background-color:#262E0B;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let bootstrap5Women: string = '<div style="background-color:#668E1F;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let materialDarkMan: string = '<div style="background-color:#9ECB08;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let materialDarkWomen: string = '<div style="background-color:#56AEFF;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let fabricDarkMan: string = '<div style="background-color:#4472c4;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let fabricDarkWomen: string = '<div style="background-color:#ed7d31;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let tailwindDarkMan: string = '<div style="background-color:#8B5CF6;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let tailwindDarkWomen: string = '<div style="background-color:#22D3EE;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let bootstrap5DarkMan: string = '<div style="background-color:#5ECB9B;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let bootstrap5DarkWomen: string = '<div style="background-color:#A860F1;border-radius: 3px;">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
     '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
@@ -192,6 +242,18 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
             args.template = args.series.name === 'Male' ? fabricMan : fabricWomen;
         } else if (theme === 'Tailwind') {
             args.template = args.series.name === 'Male' ? tailwindMan : tailwindWomen;
+        } else if (theme.toLowerCase() === 'highcontrast') {
+            args.template = args.series.name === 'Male' ? highcontrastMan : highcontrastWomen;
+        } else if (theme === 'MaterialDark') {
+            args.template = args.series.name === 'Male' ? materialDarkMan : materialDarkWomen;
+        } else if (theme === 'FabricDark') {
+            args.template = args.series.name === 'Male' ? fabricDarkMan : fabricDarkWomen;
+        } else if (theme === 'TailwindDark') {
+            args.template = args.series.name === 'Male' ? tailwindDarkMan : tailwindDarkWomen;
+        } else if (theme === 'Bootstrap5Dark') {
+            args.template = args.series.name === 'Male' ? bootstrap5DarkMan : bootstrap5DarkWomen;
+        } else if (theme === 'Bootstrap5') {
+            args.template = args.series.name === 'Male' ? bootstrap5Man : bootstrap5Women;
         } else {
             args.template = args.series.name === 'Male' ? bootstrapMan : bootstrapWomen;
         }
@@ -201,7 +263,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+            replace(/-dark/i, "Dark") as ChartTheme;
         theme = args.chart.theme;
     };
         

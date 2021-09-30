@@ -102,7 +102,6 @@ export class Crud extends SampleBase<{}, {}> {
   }];
   }
 
-  // custom code start
   private dlgButtonClick(): void {
     let dialogHeader: string | HTMLElement  = dialogInstance.header;
     let description: string = (document.getElementById('Description') as HTMLInputElement).value;
@@ -154,7 +153,6 @@ export class Crud extends SampleBase<{}, {}> {
     }
     dialogInstance.hide();
   }
-  // custom code end
 
   public render(): JSX.Element {
     return (
@@ -385,7 +383,6 @@ export class Crud extends SampleBase<{}, {}> {
     );
   }
 }
-// custom code start
 function enableToolbarItems(isEnableItem: boolean): void {
   toolbarObj.enableItems(document.getElementById(toolbarObj.items[0].id).parentElement,isEnableItem);
   toolbarObj.enableItems(document.getElementById(toolbarObj.items[2].id).parentElement,isEnableItem);
@@ -415,7 +412,6 @@ function hideClassElement(className: string, display: string): void {
     showDropdown[i].style.display = display;
   }
 }
-// custom code end
 function getDataSource() {
   let i: number;
   nodeData = [];

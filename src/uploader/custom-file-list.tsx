@@ -177,7 +177,8 @@ public render(): JSX.Element {
 				</div>
 			</div>
 			<div id="action-description">
-				<p>This example demonstrates how to customize the file list with template. Browse or select the files to view the file list template.</p>
+				<p>This <a href="https://www.syncfusion.com/react-ui-components/react-file-upload"
+            target="_blank">&nbsp;React File Upload</a> example demonstrates how to customize the file list with template. Browse or select the files to view the file list template.</p>
 			</div>
 			<div id="description">
 				<p>The Uploader component allows to customize its file list using template property. The template used for each file in file list.</p>

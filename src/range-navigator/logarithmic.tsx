@@ -22,10 +22,11 @@ for (let i: number = 0; i < 100; i++) {
         y: Math.floor(Math.random() * (80 - 30 + 1)) + 30
     });
 }
-export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Tailwind'];
-export let borderColor: string[] = ['#00bdae', '#4472c4', '#a16ee5', '#79ECE4', '#4F46E5'];
-export let regionColor: string[] = ['rgba(0, 189, 174, 0.3)', 'rgba(68, 114, 196, 0.3)',
-    'rgba(161, 110, 229, 0.3)', 'rgba(121, 236, 228, 0.3)', 'rgba(79, 70, 229, 0.3)'];
+export let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast'];
+export let borderColor: string[] = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4'];
+export let regionColor: string[] = ['rgba(38, 46, 11, 0.3)', 'rgba(94, 203, 155, 0.3)', 'rgba(90, 97, 246, 0.3)', 'rgba(139, 92, 246, 0.3)', 'rgba(0, 189, 174, 0.3)',
+    'rgba(158, 203, 8, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(68, 114, 196, 0.3)',
+    'rgba(68, 114, 196, 0.3)', 'rgba(121, 236, 228, 0.3)'];
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px;
@@ -62,9 +63,37 @@ const SAMPLE_CSS = `
     #highcontrast-gradient-chart stop {
         stop-color: #79ECE4;
     }
-	
-	#tailwind-gradient-chart stop {
-        stop-color: #4f46e5;
+
+    #tailwind-gradient-chart stop {
+        stop-color: #5A61F6;
+    }
+
+    #bootstrap5-gradient-chart stop {
+        stop-color: #262E0B;
+    }
+
+    #material-dark-gradient-chart stop {
+        stop-color: #9ECB08;
+    }
+
+    #fabric-dark-gradient-chart stop {
+        stop-color: #4472c4;
+    }
+
+    #bootstrap-dark-gradient-chart stop {
+        stop-color: #a16ee5;
+    }
+
+    #tailwind-dark-gradient-chart stop {
+        stop-color: #8B5CF6;
+    }
+
+    #bootstrap5-dark-gradient-chart stop {
+        stop-color: #5ECB9B;
+    }
+
+    .chart-gradient stop[offset="0"] {
+        stop-opacity: 0.9;
     }
 
     .chart-gradient stop[offset="0"] {
@@ -171,6 +200,30 @@ export class LogarithmicAxis extends SampleBase<{}, {}> {
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
+                        <linearGradient id="bootstrap5-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="material-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="fabric-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="bootstrap-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="tailwind-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="bootstrap5-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
                     </defs>
                 </svg>
                     <div id="action-description">
@@ -213,17 +266,17 @@ export class LogarithmicAxis extends SampleBase<{}, {}> {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
                  replace(/-dark/i, "Dark") as ChartTheme;
-        args.chart.series[0].fill= 'url(#' + args.chart.theme.toLowerCase() + '-gradient-chart)';
-        args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme)];
+        args.chart.series[0].fill= 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
+        args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];
     };
     public rangeLoad(args: IRangeLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
                  replace(/-dark/i, "Dark") as ChartTheme;
-        args.rangeNavigator.series[0].fill= 'url(#' + args.rangeNavigator.theme.toLowerCase() + '-gradient-chart)';
+        args.rangeNavigator.series[0].fill= 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
         args.rangeNavigator.series[0].border.width = 2;
-        args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(args.rangeNavigator.theme)];
+        args.rangeNavigator.series[0].border.color = borderColor[themes.indexOf(args.rangeNavigator.theme.toLowerCase())];
     };
      
     public renderLabel(args: ILabelRenderEventsArgs):void{

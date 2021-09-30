@@ -20,6 +20,7 @@ export class NumberFormatting extends SampleBase<{}, {}> {
         this.spreadsheet.cellFormat({ backgroundColor: '#B3E5FC' }, 'A15:E17');
         this.spreadsheet.numberFormat('$#,##0.00', 'D4:E14');
         this.spreadsheet.numberFormat('$#,##0.00', 'E15:E17');
+        this.spreadsheet.numberFormat('[Red][<=350]$#,##0.00;[Blue][>350]$#,##0.00', 'E4:E14');
     }
 
     render() {
@@ -89,6 +90,9 @@ export class NumberFormatting extends SampleBase<{}, {}> {
                     <p>
                         In this demo, number formatting is applied to specific cells by using the <code>format</code> property,
                         and a range of cells by using the <code>numberFormat</code> method.
+                    </p>
+                    <p>
+                        In the Amount column, we have used Custom number formatting to highlight the values less than 350 and greater than 350 with red and blue colors respectively.
                     </p>
                     <p>
                         More information about number formatting can be found in this

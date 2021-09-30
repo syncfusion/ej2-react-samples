@@ -52,7 +52,8 @@ export class Print extends SampleBase<{}, {}> {
     public load(args: ISmithchartLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
-        args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)) as SmithchartTheme;
+        args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).
+            replace(/-dark/i, "Dark") as SmithchartTheme;
     }
     render() {
         return (

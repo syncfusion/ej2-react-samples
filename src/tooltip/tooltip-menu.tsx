@@ -101,7 +101,7 @@ export class TooltipMenu extends SampleBase<{}, {}> {
                             content={this.tooltipTemplate.bind(this)}
                         >
                             <div className="toolbarContainer">
-                                <ToolbarComponent id="toolbar-menu" width={387}>
+                                <ToolbarComponent id="toolbar-menu">
                                     <ItemsDirective>
                                         <ItemDirective
                                             prefixIcon="e-copy-icon tb-icons"
@@ -134,17 +134,11 @@ export class TooltipMenu extends SampleBase<{}, {}> {
 
                 <div id="description">
                     <p>
-                        Tooltip has been integrated with Listview component to display the Tooltip menu. With
-                        the help of
-                        <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#beforerender">
-                            beforeRender
-                        </a>
-                        event, dataSource for ListView changed and its instance assigned to
-                        <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#content">
-                            content
-                        </a>
-                        of Tooltip to appear like menu. On clicking the Toolbar items, the corresponding
-                        Tooltip menu will be opened.
+                        Tooltip has been integrated with Listview component to display the Tooltip menu. With 
+                        the help of <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#beforerender">beforeRender</a> event, 
+                        dataSource for ListView changed and its instance assigned 
+                        to <a href="https://ej2.syncfusion.com/react/documentation/api/tooltip/#content">content</a> of Tooltip to appear like menu. 
+                        On clicking the Toolbar items, the corresponding Tooltip menu will be opened.
                     </p>
                 </div>
             </div>

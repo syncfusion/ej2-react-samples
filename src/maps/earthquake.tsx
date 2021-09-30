@@ -108,7 +108,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                                             animationDuration={0}
                                             template = {marketTemp}
                                             dataSource={[{
-                                                latitude: 1.625758360412755, longitude: 106.5693359375
+                                                latitude: 1.625758360412755, longitude: 98.5693359375
                                             }]}
                                         >
                                         </MarkerDirective>
@@ -148,7 +148,8 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
 }

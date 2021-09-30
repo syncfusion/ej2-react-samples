@@ -142,7 +142,7 @@ export class Default extends SampleBase<{}, {}> {
                         </table>
                     </div>
                 </div>
-                <div className='col-lg-4 property-section' id="defaultProperty">
+                <div className='col-lg-4 property-section inplace-overview' id="defaultProperty">
                     <PropertyPane title='Properties'>
                         <table id="property" title="Properties" className="property-panel-table">
                             <tbody>

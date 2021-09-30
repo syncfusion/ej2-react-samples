@@ -44,9 +44,6 @@ export class Spline extends SampleBase<{}, {}> {
                         tooltip={{ enable: true }}
                         crosshair={{ enable: true }}
                         title= 'AAPL Stock Price'
-                        titleStyle={{
-                            fontWeight: '500', color: '#424242 '
-                        }}
                     >
                         <Inject services={[DateTime, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,

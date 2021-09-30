@@ -46,6 +46,33 @@ body.highcontrast #date_label {
     left: -2px;
 }
 
+.highcontrast .sf-icon-cup:before,
+.material-dark .sf-icon-cup:before,
+.fabric-dark .sf-icon-cup:before,
+.bootstrap-dark .sf-icon-cup:before,
+.bootstrap5-dark .sf-icon-cup:before,
+.tailwind-dark .sf-icon-cup:before {
+    color: #ff7500;
+}
+
+.highcontrast .sf-icon-start:before,
+.material-dark .sf-icon-start:before,
+.fabric-dark .sf-icon-start:before,
+.bootstrap-dark .sf-icon-start:before,
+.bootstrap5-dark .sf-icon-start:before,
+.tailwind-dark .sf-icon-start:before {
+    color: #ff7500;
+}
+
+.highcontrast .sf-icon-bell:before,
+.material-dark .sf-icon-bell:before,
+.fabric-dark .sf-icon-bell:before,
+.bootstrap-dark .sf-icon-bell:before,
+.bootstrap5-dark .sf-icon-bell:before,
+.tailwind-dark .sf-icon-bell:before {
+    color: #ff7500;
+}
+
 /* custom generated icons styles */
 @font-face {
     font-family: 'e-react-islamic-calendar-sb-icons';

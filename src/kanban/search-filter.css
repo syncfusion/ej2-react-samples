@@ -18,3 +18,7 @@
 .property-panel-header {
     padding-bottom: 0px;
 }
+
+.kanban-control-section .filtering.property-panel-content {
+    min-height: 0px;
+}

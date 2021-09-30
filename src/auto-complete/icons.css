@@ -25,6 +25,20 @@
     color: #495057;
 }
 
+.material-dark #icons_popup .e-list-icon,
+.bootstrap5-dark #icons_popup .e-list-icon,
+.tailwind-dark #icons_popup .e-list-icon {
+    color: #fff;
+}
+
+.bootstrap-dark #icons_popup .e-list-icon {
+    color: #f0f0f0;
+}
+
+.fabric-dark #icons_popup .e-list-icon {
+    color: #dadada;
+}
+
 .twitter:before {
     content: "\a701";
 }

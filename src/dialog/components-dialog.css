@@ -51,6 +51,29 @@
     overflow-y: scroll;
 }
 
+.material-dark #defaultDialog #formId,
+.bootstrap5-dark #defaultDialog #formId {
+    background: #212529;
+}
+
+.bootstrap-dark #defaultDialog #formId {
+    background: #1a1a1a;
+}
+.fabric-dark #defaultDialog #formId {
+    background: #201f1f;
+}
+.tailwind-dark #defaultDialog #formId {
+    background: #1f2937;
+}
+
+.material-dark #defaultDialog .form-title,
+.bootstrap-dark #defaultDialog .form-title,
+.fabric-dark #defaultDialog .form-title,
+.tailwind-dark #defaultDialog .form-title,
+.bootstrap5-dark #defaultDialog .form-title {
+    color: rgb(249 249 249);
+}
+
 .highcontrast #defaultDialog form,
 .highcontrast #defaultDialog .header {
     color: #fff;

@@ -17,7 +17,8 @@ import * as dataSource from './datasource.json';
 
 export class EditorCustomField extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).eventsData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as any).eventsData, null, true) as Record<string, any>[];
+
   private onPopupOpen(args: PopupOpenEventArgs): void {
     if (args.type === 'Editor') {
       // Create required custom elements in initial time
@@ -31,7 +32,7 @@ export class EditorCustomField extends SampleBase<{}, {}> {
         }) as HTMLInputElement;
         container.appendChild(inputEle);
         row.appendChild(container);
-        let drowDownList: DropDownList = new DropDownList({
+        let dropDownList: DropDownList = new DropDownList({
           dataSource: [
             { text: 'Public Event', value: 'public-event' },
             { text: 'Maintenance', value: 'maintenance' },
@@ -39,14 +40,15 @@ export class EditorCustomField extends SampleBase<{}, {}> {
             { text: 'Family Event', value: 'family-event' }
           ],
           fields: { text: 'text', value: 'value' },
-          value: (args.data as { [key: string]: Object }).EventType as string,
+          value: args.data.EventType as string,
           floatLabelType: 'Always', placeholder: 'Event Type'
         });
-        drowDownList.appendTo(inputEle);
+        dropDownList.appendTo(inputEle);
         inputEle.setAttribute('name', 'EventType');
       }
     }
   }
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -56,7 +58,7 @@ export class EditorCustomField extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 1, 15)} ref={t => this.scheduleObj = t}
+            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data }} popupOpen={this.onPopupOpen.bind(this)}
               eventRendered={this.onEventRendered.bind(this)}>
               <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
@@ -66,17 +68,17 @@ export class EditorCustomField extends SampleBase<{}, {}> {
         <div id='action-description'>
           <p>This demo shows how to add additional fields to the default editor window.
             Here, an additional field <code>Event Type</code> has been added
-             to the default event editor and its value is processed accordingly.</p>
+            to the default event editor and its value is processed accordingly.</p>
         </div>
         <div id='description'>
           <p>
             In this demo, the additional field is added to the default event editor by making use of the
-        <code>popupOpen</code> event which gets triggered before the event editor getting opened on Scheduler.
-        <code>popupOpen</code> is a client-side event that triggers before any of the popups getting opened on Scheduler.
+            <code>popupOpen</code> event which gets triggered before the event editor getting opened on Scheduler.
+            <code>popupOpen</code> is a client-side event that triggers before any of the popups getting opened on Scheduler.
           </p>
           <p>
             Here, the additional field (any of the form elements) is needed to be provided with the common class
-        <code>e-field</code>, so as to handle and process those additional data into the default event object.
+            <code>e-field</code>, so as to handle and process those additional data into the default event object.
           </p>
         </div>
       </div>

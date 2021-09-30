@@ -8,6 +8,11 @@
 .bootstrap button#sendbtn {
     margin-right: 1%;
 }
+
+.tailwind .target-element .e-dialog .e-dlg-header-content,
+.tailwind-dark .target-element .e-dialog .e-dlg-header-content,
+.bootstrap5 .target-element .e-dialog .e-dlg-header-content,
+.bootstrap5-dark .target-element .e-dialog .e-dlg-header-content,
 .material .target-element .e-dialog .e-dlg-header-content {
     background-color: #3f51b5;
 }
@@ -19,6 +24,9 @@
 }
 .bootstrap4 .target-element .e-dialog .e-dlg-header-content {
     background-color: #007bff;
+}
+.bootstrap5 .target-element .e-dialog .e-dlg-header-content {
+    background-color: #0d6efd;
 }
 .highcontrast .target-element .e-dialog .e-dlg-header-content {
     background-color: #ffd939;
@@ -122,6 +130,14 @@
     background-color: #f5f5f5;
 }
 
+.material-dark .dialogContent .dialogText,
+.fabric-dark .dialogContent .dialogText,
+.bootstrap-dark .dialogContent .dialogText,
+.bootstrap5-dark .dialogContent .dialogText,
+.tailwind-dark .dialogContent .dialogText {
+    color: #424242;
+}
+
 .material .target-element .e-dialog .e-footer-content, .fabric .target-element .e-dialog .e-footer-content {
     border-top: 0.5px solid rgba(0, 0, 0, 0.42);
 }
@@ -176,6 +192,11 @@
 .material .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus .e-icon-dlg-close,
 .material .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover .e-icon-dlg-close {
     color: #fff;
+}
+
+.bootstrap5 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+.bootstrap5 .target-element .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus {
+    color: #faebd7;
 }
 
 .e-bigger .target-element .e-dialog.e-rtl .e-dlg-header-content .e-dlg-closeicon-btn.e-btn {

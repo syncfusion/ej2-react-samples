@@ -109,6 +109,7 @@ const slidercss = `
     top: 3px;
     border-radius: 15px;
     background-color: #f9920b;
+    border: 1px solid #f9920b;
 }
 .tailwind .e-control-wrapper.e-slider-container.e-horizontal #image_slider .e-handle {
     margin-left: -12px;

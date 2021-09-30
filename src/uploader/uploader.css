@@ -13,7 +13,7 @@
     margin: 0;
 }
 
-.property-panel-content {
+#uploader .property-panel-content {
     min-height: 200px;
 }
 

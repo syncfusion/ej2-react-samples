@@ -19,7 +19,7 @@ import * as dataSource from './datasource.json';
 
 export class WorkHours extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
 
   private onSubmit(): void {
     let start: HTMLInputElement = document.getElementById('startTime') as HTMLInputElement;
@@ -38,7 +38,7 @@ export class WorkHours extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: this.data }}
               workHours={{ highlight: true, start: '08:00', end: '20:00' }} eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -57,23 +57,18 @@ export class WorkHours extends SampleBase<{}, {}> {
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Work Start</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div className='timepicker-control-section range'>
-                      <TimePickerComponent id='startTime' width={100} value={new Date(2000, 0, 1, 8)}
-                        format='HH:mm'></TimePickerComponent>
+                      <TimePickerComponent id='startTime' value={new Date(2000, 0, 1, 8)} format='HH:mm'
+                        placeholder='Work Start' floatLabelType='Always'></TimePickerComponent>
                     </div>
                   </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Work End</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div className='timepicker-control-section range'>
-                      <TimePickerComponent id='endTime' width={100} value={new Date(2000, 0, 1, 20)} format='HH:mm'></TimePickerComponent>
+                      <TimePickerComponent id='endTime' value={new Date(2000, 0, 1, 20)} format='HH:mm'
+                        placeholder='Work End' floatLabelType='Always'></TimePickerComponent>
                     </div>
                   </td>
                 </tr>
@@ -89,8 +84,7 @@ export class WorkHours extends SampleBase<{}, {}> {
           </PropertyPane>
         </div>
         <div id='action-description'>
-          <p>This demo showcases how to set the required working hours on Schedule, thus visually highlighting the cells underlying the
-        given work hour range.</p>
+          <p>This demo showcases how to set the required working hours on Schedule, thus visually highlighting the cells underlying the given work hour range.</p>
         </div>
         <div id='description'>
           <p>
@@ -101,10 +95,8 @@ export class WorkHours extends SampleBase<{}, {}> {
             available within the <code>workHours</code> property.
           </p>
           <p>
-            To set discontinuous working hours on a day,
-            then the default <code>workHours</code> on Scheduler needs to be disabled
-             by setting false to <code>highlight</code> option within it.
-            Then, make use of the <code>setWorkHours</code> method
+            To set discontinuous working hours on a day, then the default <code>workHours</code> on Scheduler needs to be disabled
+            by setting false to <code>highlight</code> option within it. Then, make use of the <code>setWorkHours</code> method
             which accepts the days collection and the start & end hour values as parameters.
           </p>
         </div>

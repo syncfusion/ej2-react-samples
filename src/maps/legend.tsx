@@ -156,14 +156,14 @@ export class LegendMaps extends SampleBase<{}, {}> {
                 {/* Property Panel */}
 					<div className='col-lg-4 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft: '-10px' }}>
 								<tr>
 									<td>
 										<div>Legend mode</div>
 									</td>
 									<td>
-										<div>
-											<DropDownListComponent id="legendmode" width="120px" index={0} change={this.legendChange.bind(this)} ref={d => this.legendElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
+										<div style={{ marginLeft: '-10px' }}>
+											<DropDownListComponent id="legendmode" width="115px" index={0} change={this.legendChange.bind(this)} ref={d => this.legendElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
@@ -172,8 +172,8 @@ export class LegendMaps extends SampleBase<{}, {}> {
 										<div>Legend position </div>
 									</td>
 									<td>
-										<div>
-											<DropDownListComponent id="legendPosition" width="120px" index={0} change={this.legendPositionChange.bind(this)} ref={d => this.legendPositionElement = d} dataSource={this.positionList} fields={{ text: 'text', value: 'value' }} />
+										<div style={{ marginLeft: '-10px' }}>
+											<DropDownListComponent id="legendPosition" width="115px" index={0} change={this.legendPositionChange.bind(this)} ref={d => this.legendPositionElement = d} dataSource={this.positionList} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
@@ -182,7 +182,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                                         <div className="property-text" style= {{padding: "0px;"}}>Show legend for remaining data source items</div>
                                     </td>
                                     <td style= {{width: "20%" }} >
-                                        <div className="col">
+                                        <div className="col" style={{ marginLeft: '30px' }}>
 											<CheckBoxComponent id="datasource" change={this.dataChange.bind(this)} />
 										</div>
 									</td>
@@ -192,7 +192,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                                         <div className="property-text" style= {{ padding: "0px;"}}>Show population density when the legend item is toggled</div>
                                     </td>
                                     <td style= {{width: "20%" }}>
-                                        <div className="col">
+                                        <div className="col" style={{ marginLeft: '30px' }}>
 											<CheckBoxComponent id="toggleLegend" change={this.toggleLegendChange.bind(this)} />
 										</div>
 									</td>
@@ -229,7 +229,8 @@ export class LegendMaps extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     //tslint:disable
     // custom code end

@@ -59,9 +59,9 @@ export class Editing extends SampleBase<{}, {}> {
                   <td style={{ width: '30%' }}>
                     <div> Edit Mode </div>
                   </td>
-                  <td style={{ width: '50%', paddingRight: '10px' }}>
+                  <td style={{ width: '70%' }}>
                     <div id='columnddl'>
-                        <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)}
+                        <DropDownListComponent width="125px" id="selmode" change={this.change.bind(this)}
                           dataSource={this.editing} fields={{ text: 'name', value: 'id' }} value="CellEditing" />
                     </div>
                   </td>

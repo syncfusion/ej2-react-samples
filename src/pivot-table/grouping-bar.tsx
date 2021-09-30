@@ -44,7 +44,7 @@ export class GroupingBarSample extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='col-lg-9 control-section' id='pivot-table-section' style={{ overflow: 'initial' }}>
-                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'450'} showGroupingBar={true} groupingBarSettings={{showFieldsPanel: true}} gridSettings={{columnWidth: 140}}>
+                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'450'} showGroupingBar={true} groupingBarSettings={{showFieldsPanel: true}} gridSettings={{columnWidth: 140}} showValuesButton={true}>
                         <Inject services={[GroupingBar]} />
                     </PivotViewComponent>
                 </div>
@@ -98,10 +98,15 @@ export class GroupingBarSample extends SampleBase<{}, {}> {
                         allows the user to remove the field from the report.
                     </p>
                     <p>
+                        During runtime, the <b>Values</b> button in the grouping bar can be moved to a different position (i.e., different index) 
+                        among other fields in the column or row axis. To enable values button, 
+                        set the <code>showValuesButton</code> property to <b>true</b>.
+                    </p>
+                    <p>
                         The fields panel, which is located above the grouping bar, displays the fields that are available in the data
                         source but are not bound in the report. The fields can be dragged and dropped into the appropriate axis. In
                         addition, any field removed from any axes will be automatically added to the fields panel. The fields panel can
-                        be displayed by setting the <code>showFieldsPanel</code> property in the <code>groupingBarSettings</code> to **true**.
+                        be displayed by setting the <code>showFieldsPanel</code> property in the <code>groupingBarSettings</code> to <b>true</b>.
                     </p>
                     <p>
                         <strong>Injecting Module:</strong>

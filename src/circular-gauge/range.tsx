@@ -29,7 +29,8 @@ export class Range extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     // custom code end
     // Code for Property Panel
@@ -124,10 +125,10 @@ export class Range extends SampleBase<{}, {}> {
                                         <RangeDirective start={80} end={120} color='#F03E3E' />
                                     </RangesDirective>
                                     <AnnotationsDirective>
-                                        <AnnotationDirective content='<div><span style="font-size:14px; color:#9E9E9E; font-family:Regular">Speedometer</span></div>'
+                                        <AnnotationDirective content='<div><span style="font-size:14px; font-family:Regular">Speedometer</span></div>'
                                             angle={0} zIndex='1' radius='30%'>
                                         </AnnotationDirective>
-                                        <AnnotationDirective content='<div><span style="font-size:24px; color:#424242; font-family:Regular">65 MPH</span></div>'
+                                        <AnnotationDirective content='<div><span style="font-size:24px; font-family:Regular">65 MPH</span></div>'
                                         angle={180} zIndex='1' radius='40%'>
                                         </AnnotationDirective>
                                     </AnnotationsDirective>
@@ -138,14 +139,14 @@ export class Range extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
                                             <div> Select Range </div>
                                         </td>
                                         <td>
-                                            <div>
+                                            <div style={{marginLeft: "10px" }}>
                                                 <select id="rangeSelect" className="form-control" style={{ width: '90%' }}>
                                                     <option value="0"> Low</option>
                                                     <option value="1">Medium</option>
@@ -156,31 +157,31 @@ export class Range extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeStart'>Range Start <span> &nbsp;&nbsp;&nbsp;0</span> </div>
+                                            <div id='rangeStart' style={{ marginTop: "-10px"}}>Range Start <span> &nbsp;&nbsp;&nbsp;0</span> </div>
                                         </td>
                                         <td>
-                                            <div>
-                                                <input type="range" id="start" defaultValue="0" min="0" max="120" style={{ width: '90%' }} onChange={this.start.bind(this)} ref={d => this.startElement = d} />
+                                            <div style={{marginTop: "-10px", marginLeft: "10px"}}>
+                                                <input type="range" id="start" defaultValue="0" min="0" max="120" style={{ width: '130px' }} onChange={this.start.bind(this)} ref={d => this.startElement = d} />
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeEnd'>Range End <span> &nbsp;&nbsp;&nbsp;40</span> </div>
+                                            <div id='rangeEnd' style={{marginTop: "-10px"}}>Range End <span> &nbsp;&nbsp;&nbsp;40</span> </div>
                                         </td>
                                         <td>
-                                            <div>
-                                                <input type="range" id="end" defaultValue="40" min="0" max="120" style={{ width: '90%' }} onChange={this.end.bind(this)} ref={d => this.endElement = d} />
+                                            <div style={{marginLeft: "10px"}}>
+                                                <input type="range" id="end" defaultValue="40" min="0" max="120" style={{ width: '130PX' }} onChange={this.end.bind(this)} ref={d => this.endElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id=''>Range Color</div>
+                                            <div id='' style={{marginTop: "-10px"}}>Range Color</div>
                                         </td>
                                         <td>
-                                            <div>
+                                            <div style={{marginTop: "-10px", marginLeft: "10px"}}>
                                                 <select id="rangeColor" className="form-control">
                                                     <option value="#30B32D">#30B32D</option>
                                                     <option value="#FFDD00">#FFDD00</option>
@@ -191,41 +192,41 @@ export class Range extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td style={{ width: '20%' }}>
-                                            <div id='enablePointer'>Range Font Color</div>
+                                            <div id='enablePointer' style={{marginTop: "-10px"}}>Range Font Color</div>
                                         </td>
                                         <td style={{ width: '40%' }}>
-                                            <div>
+                                            <div style={{marginTop: "-10px", marginLeft: "67px"}}>
                                                 <input type="checkbox" id="enable" onChange={this.enable.bind(this)} ref={d => this.enableElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeStartWidth'>Start Width <span> &nbsp;&nbsp;&nbsp;10</span> </div>
+                                            <div id='rangeStartWidth' style={{marginTop: "-10px"}}>Start Width <span> &nbsp;&nbsp;&nbsp;10</span> </div>
                                         </td>
                                         <td>
-                                            <div>
-                                                <input type="range" id="startWidth" defaultValue="10" min="0" max="30" style={{ width: '90%' }} onChange={this.startWidth.bind(this)} ref={d => this.startWidthElement = d} />
+                                            <div style={{marginTop: "-10px", marginLeft: "10px"}}>
+                                                <input type="range" id="startWidth" defaultValue="10" min="0" max="30" style={{ width: '130px' }} onChange={this.startWidth.bind(this)} ref={d => this.startWidthElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeEndWidth'>End Width <span> &nbsp;&nbsp;&nbsp;10</span> </div>
+                                            <div id='rangeEndWidth' style={{marginTop: "-10px"}}>End Width <span> &nbsp;&nbsp;&nbsp;10</span> </div>
                                         </td>
                                         <td>
-                                            <div>
-                                                <input type="range" id="endWidth" defaultValue="10" min="0" max="30" style={{ width: '90%' }} onChange={this.endWidth.bind(this)} ref={d => this.endWidthElement = d} />
+                                            <div style={{marginTop: "-10px", marginLeft: "10px"}}>
+                                                <input type="range" id="endWidth" defaultValue="10" min="0" max="30" style={{ width: '130px' }} onChange={this.endWidth.bind(this)} ref={d => this.endWidthElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='roundedRadius'>Corner Radius <span> &nbsp;&nbsp;&nbsp;0</span> </div>
+                                            <div id='roundedRadius' style={{marginTop: "-10px"}}>Corner Radius <span> &nbsp;&nbsp;&nbsp;0</span> </div>
                                         </td>
                                         <td>
-                                            <div>
-                                                <input type="range" id="radius" defaultValue="0" min="0" max="30" step="5" style={{ width: '90%' }} onChange={this.radius.bind(this)} ref={d => this.radiusElement = d} />
+                                            <div style={{marginTop: "-10px", marginLeft: "10px"}}>
+                                                <input type="range" id="radius" defaultValue="0" min="0" max="30" step="5" style={{ width: '130px' }} onChange={this.radius.bind(this)} ref={d => this.radiusElement = d} />
                                             </div>
                                         </td>
                                     </tr>

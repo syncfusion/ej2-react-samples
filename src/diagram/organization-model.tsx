@@ -100,7 +100,6 @@ export class OrganizationModel extends SampleBase<{}, {}> {
     //Click Event for orientation of the PropertyPanel.
     document.getElementById("orientation").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
-      // custom code start
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-orientation-style"
       );
@@ -110,7 +109,6 @@ export class OrganizationModel extends SampleBase<{}, {}> {
       if (!target.classList.contains("e-selected-orientation-style")) {
         target.classList.add("e-selected-orientation-style");
       }
-      // custom code end
       if (
         target.className === "image-pattern-style e-selected-orientation-style"
       ) {
@@ -141,7 +139,6 @@ export class OrganizationModel extends SampleBase<{}, {}> {
     //Click Event for pattern of the PropertyPanel.
     document.getElementById("pattern").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
-      // custom code start
       let selectedpatternElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-pattern-style"
       );
@@ -151,7 +148,6 @@ export class OrganizationModel extends SampleBase<{}, {}> {
       if (!target.classList.contains("e-selected-pattern-style")) {
         target.classList.add("e-selected-pattern-style");
       }
-      // custom code end
       if (target.className === "image-pattern-style e-selected-pattern-style") {
         switch (target.id) {
           case "pattern1":

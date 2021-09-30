@@ -13,6 +13,7 @@
     height: 20px;
 }
 .dropdowntree-icon .e-treeview .e-list-icon.folder { background-position: -10px -552px }
+.e-bigger .dropdowntree-icon .e-treeview .e-list-icon.folder { background-position: -10px -550px; }
 .dropdowntree-icon .e-treeview .e-list-icon.docx { background-position: -10px -20px }
 .dropdowntree-icon .e-treeview .e-list-icon.ppt { background-position: -10px -48px }
 .dropdowntree-icon .e-treeview .e-list-icon.pdf { background-position: -10px -104px }

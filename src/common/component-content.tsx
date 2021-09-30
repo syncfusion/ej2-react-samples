@@ -12,6 +12,7 @@ import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay } from 
 import * as samplesJSON from './all-routes';
 import { MyWindow } from './leftpane';
 import * as hljs from './lib/highlightjs';
+import { setSelectList } from './leftpane';
 
 declare let window: MyWindow;
 let samLength: number;
@@ -306,6 +307,7 @@ function onNextButtonClick(): void {
         sampleOverlay();
         location.hash = '#/' + hash[1] + '/' + nextList;
     }
+    setSelectList();
 }
 function onPrevButtonClick(): void {
     selectDefaultTab();
@@ -316,6 +318,7 @@ function onPrevButtonClick(): void {
         sampleOverlay();
         location.hash = '#/' + hash[1] + '/' + prevList;
     }
+    setSelectList();
 }
 /**
  * Sample Navigation

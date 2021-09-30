@@ -14,35 +14,35 @@ export class Default extends SampleBase<{}, {}> {
           {/* Render the Toolbar Component */}
           <ToolbarComponent>
              <ItemsDirective>
-                <ItemDirective prefixIcon = 'e-cut-icon tb-icons'  tooltipText = 'Cut'/>
-                <ItemDirective prefixIcon = 'e-copy-icon tb-icons'  tooltipText = 'Copy'/>
-                <ItemDirective prefixIcon = 'e-paste-icon tb-icons'  tooltipText = 'Paste'/>
+                <ItemDirective prefixIcon = 'e-icons e-cut'  tooltipText = 'Cut'/>
+                <ItemDirective prefixIcon = 'e-icons e-copy'  tooltipText = 'Copy'/>
+                <ItemDirective prefixIcon = 'e-icons e-paste'  tooltipText = 'Paste'/>
                 <ItemDirective type = 'Separator'/>
-                <ItemDirective prefixIcon = 'e-bold-icon tb-icons'  tooltipText = 'Bold'/>
-                <ItemDirective prefixIcon = 'e-underline-icon tb-icons'  tooltipText = 'Underline'/>
-                <ItemDirective prefixIcon = 'e-italic-icon tb-icons'  tooltipText = 'Italic'/>
-                <ItemDirective prefixIcon = 'e-color-icon tb-icons'  tooltipText = 'Color-Picker'/>
+                <ItemDirective prefixIcon = 'e-icons e-bold'  tooltipText = 'Bold'/>
+                <ItemDirective prefixIcon = 'e-icons e-underline'  tooltipText = 'Underline'/>
+                <ItemDirective prefixIcon = 'e-icons e-italic'  tooltipText = 'Italic'/>
+                <ItemDirective prefixIcon = 'e-icons e-paint-bucket'  tooltipText = 'Color-Picker'/>
                 <ItemDirective type = 'Separator'/>
-                <ItemDirective prefixIcon = 'e-alignleft-icon tb-icons'  tooltipText = 'Align_Left'/>
-                <ItemDirective prefixIcon = 'e-alignright-icon tb-icons'  tooltipText = 'Align_Right'/>
-                <ItemDirective prefixIcon = 'e-aligncenter-icon tb-icons'  tooltipText = 'Align_Center'/>
-                <ItemDirective prefixIcon = 'e-alignjustify-icon tb-icons'  tooltipText = 'Align_Justify'/>
+                <ItemDirective prefixIcon = 'e-icons e-align-left'  tooltipText = 'Align_Left'/>
+                <ItemDirective prefixIcon = 'e-icons e-align-right'  tooltipText = 'Align_Right'/>
+                <ItemDirective prefixIcon = 'e-icons e-align-center'  tooltipText = 'Align_Center'/>
+                <ItemDirective prefixIcon = 'e-icons e-justify'  tooltipText = 'Align_Justify'/>
                 <ItemDirective type = 'Separator'/>
-                <ItemDirective prefixIcon = 'e-bullets-icon tb-icons'  tooltipText = 'Bullets'/>
-                <ItemDirective prefixIcon = 'e-numbering-icon tb-icons'  tooltipText = 'Numbering'/>
+                <ItemDirective prefixIcon = 'e-icons e-list-unordered'  tooltipText = 'Bullets'/>
+                <ItemDirective prefixIcon = 'e-icons e-list-ordered'  tooltipText = 'Numbering'/>
                 <ItemDirective type = 'Separator'/>
-                <ItemDirective prefixIcon = 'e-bullets-icon tb-icons'  tooltipText = 'Bullets'/>
-                <ItemDirective prefixIcon = 'e-numbering-icon tb-icons'  tooltipText = 'Numbering'/>
+                <ItemDirective prefixIcon = 'e-icons e-undo'  tooltipText = 'Undo'/>
+                <ItemDirective prefixIcon = 'e-icons e-redo'  tooltipText = 'Redo'/>
                 <ItemDirective type = 'Separator'/>
-                <ItemDirective prefixIcon = 'e-ascending-icon tb-icons'  tooltipText = 'Sort A - Z'/>
-                <ItemDirective prefixIcon = 'e-descending-icon tb-icons'  tooltipText = 'Sort Z - A'/>
+                <ItemDirective prefixIcon = 'e-icons e-upload-1'  tooltipText = 'Upload'/>
+                <ItemDirective prefixIcon = 'e-icons e-download'  tooltipText = 'Download'/>
                 <ItemDirective type = 'Separator'/>
-                <ItemDirective prefixIcon = 'e-indent-icon tb-icons'  tooltipText = 'Text Indent'/>
-                <ItemDirective prefixIcon = 'e-outdent-icon tb-icons'  tooltipText = 'Text Outdent'/>
+                <ItemDirective prefixIcon = 'e-icons e-increase-indent'  tooltipText = 'Text Indent'/>
+                <ItemDirective prefixIcon = 'e-icons e-decrease-indent'  tooltipText = 'Text Outdent'/>
                 <ItemDirective type = 'Separator'/>
-                <ItemDirective prefixIcon = 'e-clear-icon tb-icons'  tooltipText = 'Clear'/>
-                <ItemDirective prefixIcon = 'e-reload-icon tb-icons'  tooltipText = 'Reload'/>
-                <ItemDirective prefixIcon = 'e-export-icon tb-icons'  tooltipText = 'Export'/>
+                <ItemDirective prefixIcon = 'e-icons e-erase'  tooltipText = 'Clear'/>
+                <ItemDirective prefixIcon = 'e-icons e-refresh'  tooltipText = 'Reload'/>
+                <ItemDirective prefixIcon = 'e-icons e-export'  tooltipText = 'Export'/>
              </ItemsDirective>
           </ToolbarComponent>
         </div></div>

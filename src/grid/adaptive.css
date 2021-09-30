@@ -1,10 +1,6 @@
 .e-responsive-dialog {
     box-shadow: none;
-    border: 1px solid #dddddd;
-}
-
-#adaptivebrowser:not(.e-grid.e-row-responsive) > .e-gridcontent {
-    height: calc(100% - 224px) !important;
+    border-radius: 1px;
 }
 
 /* Render the mobile pager by default */
@@ -75,5 +71,8 @@
     .e-adaptive-demo .e-bigger .e-pager div.e-parentmsgbar,
     .e-adaptive-demo .e-pager.e-bigger div.e-parentmsgbar {
         padding: 0;
+    }
+    .e-adaptive-demo .e-pager .e-pager-default:hover {
+      background: transparent;
     }
 }

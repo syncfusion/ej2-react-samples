@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, Day, Week, WorkWeek, Month,
-  EventRenderedArgs, Inject, Resize, DragAndDrop
+  ScheduleComponent, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
@@ -16,10 +15,8 @@ import * as dataSource from './datasource.json';
 
 export class EditorFieldValidation extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
-  private onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, this.scheduleObj.currentView);
-  }
+  private data: Record<string, any>[] = extend([], (dataSource as any).scheduleData, null, true) as Record<string, any>[];
+
   private fields = {
     subject: { name: 'Subject', validation: { required: true } },
     location: {
@@ -37,12 +34,16 @@ export class EditorFieldValidation extends SampleBase<{}, {}> {
     endTime: { name: 'EndTime', validation: { required: true } }
   };
 
+  private onEventRendered(args: EventRenderedArgs): void {
+    applyCategoryColor(args, this.scheduleObj.currentView);
+  }
+
   render() {
     return (
-      <div className='schedule-control-scetion'>
+      <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2019, 0, 10)} ref={t => this.scheduleObj = t}
+            <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2021, 0, 10)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data, fields: this.fields }} eventRendered={this.onEventRendered.bind(this)}>
               <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
             </ScheduleComponent>
@@ -54,20 +55,20 @@ export class EditorFieldValidation extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             In this demo, the specific fields of Scheduler editor window such as
-        <code>subject</code>,
-        <code>location</code>,
-        <code>description</code>,
-        <code>startTime</code> and
-        <code>endTime</code> are made to undergo validation such that if it is left as blank, then the default required validation message
-                                                                                 will be displayed in a separate tooltip, on clicking a save button.
+            <code>subject</code>,
+            <code>location</code>,
+            <code>description</code>,
+            <code>startTime</code> and
+            <code>endTime</code> are made to undergo validation such that if it is left as blank, then the default required validation message
+            will be displayed in a separate tooltip, on clicking a save button.
           </p>
           <p>
             Additionally, the regex condition has been added to the <code>location</code> field,
             so that if any special characters are typed into it, then the custom validation message will be displayed.
             The <code>description</code> field
             has been validated to restrict the character count to be typed into it between 5 and 500 and not beyond that.
-             This validation can be given by making use of the <code>validation</code> API
-              available within each <code>fields</code> of <code>eventSettings</code> property.
+            This validation can be given by making use of the <code>validation</code> API
+            available within each <code>fields</code> of <code>eventSettings</code> property.
           </p>
           <p>
             Apart from this validation feature, the built-in validation has been provided to the start and end time fields - so that,

@@ -64,6 +64,7 @@ export function setSelectList(): void {
                 showHideControlTree();
             }
             list.selectItem(selectSample);
+            selectSample.scrollIntoView({block:"nearest"});
         }
     } else {
         if (select('#controlList').classList.contains('sb-hide')) {

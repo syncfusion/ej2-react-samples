@@ -18,3 +18,18 @@
 #uploadFileManager .e-file-drop, #uploadFileManager .e-css.e-btn {
     display: none;
 }
+
+.tailwind #openBtn,
+.tailwind-dark #openBtn {
+    top: 28px;
+}
+
+.bootstrap #openBtn,
+.bootstrap-dark #openBtn {
+    top: 30px;
+}
+
+.bootstrap5 #openBtn,
+.bootstrap5-dark #openBtn {
+    top: 26px;
+}

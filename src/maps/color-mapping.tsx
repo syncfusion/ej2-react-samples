@@ -216,7 +216,8 @@ export class ColorMap extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
         let sliderMin: HTMLInputElement = document.getElementById('hideOne') as HTMLInputElement;
         let sliderMax: HTMLInputElement = document.getElementById('hideTwo') as HTMLInputElement;
         let opacityCheck: HTMLInputElement = document.getElementById('hideThree') as HTMLInputElement;
@@ -245,7 +246,7 @@ export class ColorMap extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='col-lg-9 control-section'>
+                <div className='col-lg-8 control-section'>
                     <MapsComponent id="maps" load={this.load} ref={m => this.mapInstance = m}                            
                         titleSettings={{
                             text: 'Spring Precipitation Averages of US States',
@@ -320,16 +321,16 @@ export class ColorMap extends SampleBase<{}, {}> {
                 </div>
                 </div>
                 {/* Property Panel */}
-					<div className='col-lg-3 property-section'>
+					<div className='col-lg-4 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '110%', marginBottom: '20px' }}>
+							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft: '-10px' }}>
                                 <tr>
 									<td>
-										<div>Color MappingType</div>
+										<div>Color Mapping Type</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="Type" width="120px" index={0} change={this.typeChange.bind(this)} ref={d => this.typeElement = d} dataSource={this.dropList} fields={{ text: 'text', value: 'value' }} />
+											<DropDownListComponent id="Type" width="130px" index={0} change={this.typeChange.bind(this)} ref={d => this.typeElement = d} dataSource={this.dropList} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
@@ -338,7 +339,7 @@ export class ColorMap extends SampleBase<{}, {}> {
 										<div>Change Opacity</div>
 									</td>
 									<td>
-										<div>
+										<div style={{paddingLeft: '70px'}}>
 											<CheckBoxComponent id='opacity' checked={false} change={this.opacityChange.bind(this)} ref={d => this.opacityElement = d} disabled={true} />
 										</div>
 									</td>
@@ -349,7 +350,7 @@ export class ColorMap extends SampleBase<{}, {}> {
 									</td>
 									<td>
 										<div>
-											<input type="range" id='minOpacity' disabled onChange={this.minOpacityChange.bind(this)} ref={d => this.minOpacityElement = d} min="0" max="1" step="0.1" defaultValue="0.5" />
+											<input type="range" id='minOpacity' disabled onChange={this.minOpacityChange.bind(this)} ref={d => this.minOpacityElement = d} min="0" max="1" step="0.1" defaultValue="0.5" style={{width: '130px'}} />
 										</div>
 									</td>
 								</tr>
@@ -359,7 +360,7 @@ export class ColorMap extends SampleBase<{}, {}> {
 									</td>
 									<td>
 										<div>
-											<input type="range" id='maxOpacity' disabled onChange={this.maxOpacityChange.bind(this)} ref={d => this.maxOpacityElement = d} min="0" max="1" step="0.1" defaultValue="1" />
+											<input type="range" id='maxOpacity' disabled onChange={this.maxOpacityChange.bind(this)} ref={d => this.maxOpacityElement = d} min="0" max="1" step="0.1" defaultValue="1" style={{width: '130px'}} />
 										</div>
 									</td>
 								</tr>

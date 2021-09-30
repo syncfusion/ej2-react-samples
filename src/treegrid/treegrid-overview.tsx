@@ -48,7 +48,7 @@ export class Overview extends SampleBase<{}, {}> {
   public treelocationTemplate(props): any {
     var locationsrc = 'src/treegrid/images/Map.png';
 
-    return (<div>
+    return (<div id="coordinates">
       <img src={locationsrc} className='e-image' alt={props.coordinates} />
       <a target='_blank' href='https://www.google.com/maps/place/'>{props.coordinates}</a>
     </div>);
@@ -63,7 +63,7 @@ export class Overview extends SampleBase<{}, {}> {
     if (props.timezone.indexOf('-') !== -1) {
       classValue = 'negativeTimeZone';
   }
-    return (<div><img src='src/treegrid/images/__Normal.png' className={classValue}></img><span style={{ paddingLeft: '7px'}}>{props.timezone}</span>)</div>);
+    return (<div><img src='src/treegrid/images/__Normal.png' style={{ filter: "brightness(150%)"}} className={classValue}></img><span style={{ paddingLeft: '7px'}}>{props.timezone}</span>)</div>);
   }
 
 
@@ -138,7 +138,7 @@ export class Overview extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the overview of basic Tree Grid features such as sorting, filtering, conditional formatting, column template and scrolling.</p>
+          <p>This <a target='_blank' href="https://www.syncfusion.com/react-ui-components/react-tree-grid"> React Tree Grid</a> example demonstrates the overview of basic Tree Grid features such as sorting, filtering, conditional formatting, column template and scrolling.</p>
         </div>
         <div id='description'>
           <p>

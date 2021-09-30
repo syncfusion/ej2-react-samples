@@ -74,39 +74,45 @@ export class GanttSelection extends SampleBase<{}, {}> {
             <PropertyPane title='Properties'>
               <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
                 <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ fontSize: '15px' }}>
                       Selection Mode
                     </div>
                   </td>
-                  <td style={{ width: '70%', paddingright: '5px' }}>
-                    <div>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%', paddingright: '5px' }}>
+                    <div style={{ width: '150px' }}>
                       <DropDownListComponent ref={DropDownList => this.dropdownModeList = DropDownList} id='SelectionModeList' tabIndex={1} dataSource={this.dropdownModeListData} fields={{ text: 'type', value: 'id' }}
                         value='Row'></DropDownListComponent>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ fontSize: '15px' }}>
                       Selection Type
                     </div>
                   </td>
-                  <td style={{ width: '70%', paddingright: '5px' }}>
-                    <div>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%', paddingright: '5px' }}>
+                    <div style={{ width: '150px' }}>
                       <DropDownListComponent ref={DropDownList => this.dropdownTypeList = DropDownList} id='SelectionTypeList' tabIndex={1} dataSource={this.dropDownTypeListData} fields={{ text: 'type', value: 'id' }}
                         value='Single'></DropDownListComponent>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '30%' }}>
-                    <div>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ fontSize: '15px' }}>
                       Toggle Selection
                     </div>
                   </td>
-                  <td style={{ width: '70%', paddingright: '5px' }}>
-                    <div>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%', paddingright: '5px' }}>
+                    <div style={{ width: '150px' }}>
                       <DropDownListComponent ref={DropDownList => this.dropdownToggleList = DropDownList} id='SelectionTypeList' tabIndex={1} dataSource={this.dropdownToggleListData} fields={{ text: 'type', value: 'id' }}
                         value={this.toggleValue}></DropDownListComponent>
                     </div>

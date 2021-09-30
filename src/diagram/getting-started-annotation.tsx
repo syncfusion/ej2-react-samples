@@ -653,12 +653,9 @@ function setAnnotationPosition( //it is in dedicated line here.
   } else if (vAlignment === "Bottom" && hAlignment === "Right") {
     annotation.margin = { right: 3, bottom: 3 };
   }
-  // custom code start
   target.classList.add("e-selected-style");
-  // custom code end
 }
 //Enable or disable the property panel
-// custom code start
 function enableOptions(arg: ISelectionChangeEventArgs): void {
   let appearance: HTMLElement = document.getElementById("propertypanel");
   let selectedElement: HTMLCollection = document.getElementsByClassName(
@@ -676,4 +673,3 @@ function enableOptions(arg: ISelectionChangeEventArgs): void {
     }
   }
 }
-// custom code end

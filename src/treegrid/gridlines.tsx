@@ -27,7 +27,7 @@ export class GridLines extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <div className = 'col-md-8'>
+          <div className = 'col-md-9'>
             <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
               ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageSize: 10 }} gridLines='Vertical'>
               <ColumnsDirective>
@@ -40,7 +40,7 @@ export class GridLines extends SampleBase<{}, {}> {
             <Inject services={[Page]} />
           </TreeGridComponent>
         </div>
-        <div className='col-md-2 property-section'>
+        <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                   <tr style={{ height: '50px' }}>
@@ -51,7 +51,7 @@ export class GridLines extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '60%' }}>
                       <div>
-                         <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)}
+                         <DropDownListComponent width="115px" id="selmode" change={this.change.bind(this)}
                             dataSource={this.lines} fields={{ text: 'type', value: 'id' }} value="Vertical" />
                       </div>
                     </td>

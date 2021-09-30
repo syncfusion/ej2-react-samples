@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    ScheduleComponent, ViewsDirective, ViewDirective, Agenda,
-    TimelineViews, TimelineMonth, Inject, Resize, DragAndDrop
+    ScheduleComponent, ViewsDirective, ViewDirective, Agenda, TimelineViews, TimelineMonth, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -17,8 +16,10 @@ import * as dataSource from './datasource.json';
 
 export class TimelineView extends SampleBase<{}, {}> {
     private scheduleObj: ScheduleComponent;
-    private data: Object[] =
-        extend([], (dataSource as any).scheduleData.concat((dataSource as any).timelineData), null, true) as Object[];
+    private workDays: number[] = [0, 1, 2, 3, 4, 5];
+    private data: Record<string, any>[] =
+        extend([], (dataSource as Record<string, any>).scheduleData.concat((dataSource as Record<string, any>).timelineData), null, true) as Record<string, any>[];
+
     private change(args: ChangeEventArgs): void {
         this.scheduleObj.selectedDate = args.value;
         this.scheduleObj.dataBind();
@@ -30,7 +31,7 @@ export class TimelineView extends SampleBase<{}, {}> {
                 <div className='col-lg-9 control-section'>
                     <div className='control-wrapper'>
                         <ScheduleComponent height='650px' ref={schedule => this.scheduleObj = schedule}
-                            selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}>
+                            selectedDate={new Date(2021, 0, 10)} workDays={this.workDays} eventSettings={{ dataSource: this.data }}>
                             <ViewsDirective>
                                 <ViewDirective option='TimelineDay' />
                                 <ViewDirective option='TimelineWeek' />
@@ -47,13 +48,11 @@ export class TimelineView extends SampleBase<{}, {}> {
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                             <tbody>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '30%' }}>
-                                        <div className='col-md-4' style={{ paddingTop: '8px' }}>Current Date</div>
-                                    </td>
-                                    <td style={{ width: '70%' }}>
+                                    <td style={{ width: '100%' }}>
                                         <div className='datepicker-control-section'>
-                                            <DatePickerComponent value={new Date(2019, 0, 10)} showClearButton={false}
-                                                change={this.change.bind(this)}></DatePickerComponent>
+                                            <DatePickerComponent value={new Date(2021, 0, 10)} showClearButton={false}
+                                                change={this.change.bind(this)} placeholder='Current Date' floatLabelType='Always'>
+                                            </DatePickerComponent>
                                         </div>
                                     </td>
                                 </tr>

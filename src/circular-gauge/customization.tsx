@@ -33,7 +33,8 @@ export class Customization extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         this.usageGauge.appendTo('#customization-container1');
     }
     // custom code end
@@ -150,7 +151,7 @@ export class Customization extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: "-10px" }}>
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
@@ -164,17 +165,17 @@ export class Customization extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='currentPointerValue'>Current Value <span> &nbsp;&nbsp;&nbsp;1800</span> </div>
+                                            <div id='currentPointerValue' style={{ width: '100px' }}>Current Value <span> &nbsp;&nbsp;&nbsp;1800</span> </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" id="currentValue" defaultValue="1800" min="1000" max="2000" style={{ width: "90%" }} onChange={this.pointerValue.bind(this)} ref={d => this.pointerValueElement = d} />
+                                                <input type="range" id="currentValue" defaultValue="1800" min="1000" max="2000" style={{ width: "130px" }} onChange={this.pointerValue.bind(this)} ref={d => this.pointerValueElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangebarColor'>RangeBar Color</div>
+                                            <div id='rangebarColor' style={{ width: '100px' }}>RangeBar Color</div>
                                         </td>
                                         <td>
                                             <div>
@@ -188,7 +189,7 @@ export class Customization extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='range'>Range Color</div>
+                                            <div id='range' style={{ width: '100px' }}>Range Color</div>
                                         </td>
                                         <td>
                                             <div>
@@ -202,7 +203,7 @@ export class Customization extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='pointColor'>Pointer Color</div>
+                                            <div id='pointColor' style={{ width: '100px' }}>Pointer Color</div>
                                         </td>
                                         <td>
                                             <div>

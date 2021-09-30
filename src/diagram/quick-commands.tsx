@@ -213,14 +213,12 @@ export class UserHandle extends SampleBase<{}, {}> {
     diagramInstance.select([diagramInstance.nodes[0]]);
     document.getElementById("appearance").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
-      // custom code start
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
       if (selectedElement.length) {
         selectedElement[0].classList.remove("e-selected-style");
       }
-      // custom code end
       if (target.className === "image-pattern-style") {
         switch (target.id) {
           case "left":
@@ -238,14 +236,12 @@ export class UserHandle extends SampleBase<{}, {}> {
     };
     document.getElementById("pattern").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
-      // custom code start
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
       if (selectedElement.length) {
         selectedElement[0].classList.remove("e-selected-style");
       }
-      // custom code end
       if (target.className === "image-pattern-style") {
         switch (target.id) {
           case "pattern1":
@@ -424,15 +420,11 @@ function setuserhandleposition(
 ): void {
   diagramInstance.selectedItems.userHandles[0].offset = offset;
   diagramInstance.selectedItems.userHandles[0].side = side;
-  // custom code start
   target.classList.add("e-selected-style");
-  // custom code end
 }
 //set the style of the userhandle.
 function applyuserhandlestyle(bgcolor: string, target: HTMLElement): void {
   diagramInstance.selectedItems.userHandles[0].backgroundColor = bgcolor;
   diagramInstance.selectedItems.userHandles[0].pathColor = "White";
-  // custom code start
   target.classList.add("e-selected-style");
-  // custom code end
 }

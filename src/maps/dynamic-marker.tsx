@@ -17,11 +17,6 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }
-    .property-text {
-        font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
-        font-size: 13px;
-        font-weight: 400;
-    }
     .e-input[disabled] {
         border-bottom-color: inherit;
         background-image: none;
@@ -80,51 +75,53 @@ export class DynamicMarker extends SampleBase<{}, {}> {
                             <tbody>
                                 <tr style={{ height: '35px' }}>
                                     <td style={{ width: '70%' }}>
-                                        <div className="property-text" style={{ padding: '0px', display: 'inline-block' }}>Marker</div>
+                                        <div style={{ padding: '0px', display: 'inline-block' }}>Marker</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <div>
+                                        <div style={{marginLeft: '30px'}}>
                                             <CheckBoxComponent id='marker' change={this.markerChange.bind(this)} checked></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '35px' }}>
                                     <td style={{ width: '70%' }}>
-                                        <div className="property-text" style={{ padding: '0px' }}>Line</div>
+                                        <div style={{ padding: '0px' }}>Line</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <div>
+                                        <div style={{marginLeft: '30px'}}>
                                             <CheckBoxComponent id='line' change={this.lineChange.bind(this)}></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '35px' }}>
                                     <td style={{ width: '70%' }}>
-                                        <div className="property-text" style={{ padding: '0px' }}>Connecting line</div>
+                                        <div  style={{ padding: '0px', width: '60px' }}>Connecting line</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <div>
+                                        <div style={{marginLeft: '30px'}}>
                                             <CheckBoxComponent id='connect' change={this.connectLineChange.bind(this)} ref={d => this.connectLineInstance = d} disabled></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '10px' }}></tr>
                                 <tr style={{ height: '35px' }}>
-                                    <td style={{ width: '70%', padding: '0px' }} className="property-text">
+                                    <td style={{ width: '70%', padding: '0px' }}>
                                         Marker type
                                 </td>
                                     <td style={{ width: '10%', marginLeft: '20px' }}>
                                         <DropDownListComponent id='type' fields={{ text: 'value', value: 'value' }} ref={d => this.dropElement = d}
-                                            style={{ width: '50px', height: '20px' }} dataSource={this.droplist} index={0} placeholder='Select marker shape' width={80}></DropDownListComponent>
+                                            style={{ width: '60px', height: '23px', paddingTop: '3px' }} dataSource={this.droplist} index={0} placeholder='Select marker shape' width={90}></DropDownListComponent>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '10px' }}></tr>
                                 <tr style={{ height: '35px' }}>
                                     <td style={{ width: '70%' }}>
-                                        <div className="property-text" style={{ padding: '0px' }}>Width</div>
+                                        <div style={{ padding: '0px' }}>Width</div>
                                     </td>
                                     <td style={{ width: '10%' }}>
-                                        <TextBoxComponent className="e-input" value='1' style={{ width: '80px' }} id="width" ref={d => this.textElement = d} disabled></TextBoxComponent>
+                                        <div style= {{'width': '90px' }}>
+                                        <TextBoxComponent className="e-input" value='1' style={{ width: '90px' }} id="width" ref={d => this.textElement = d} disabled></TextBoxComponent>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -160,7 +157,8 @@ export class DynamicMarker extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
     };
     // custom code end
     public click(args: IMouseEventArgs): void {

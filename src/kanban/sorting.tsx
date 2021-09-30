@@ -7,6 +7,7 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import * as dataSource from './datasource.json';
+import './sorting.css';
 
 /**
  * Kanban Sorting sample

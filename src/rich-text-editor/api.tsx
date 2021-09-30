@@ -52,8 +52,6 @@ export class RTEApi extends SampleBase<{}, {}> {
         this.rteObj.selectAll();
     }
 
-
-
     render() {
         return (
             <div className='control-pane'>
@@ -159,7 +157,7 @@ export class RTEApi extends SampleBase<{}, {}> {
                     </PropertyPane>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrate the usage of API in Rich Text Editor, use the properties panel to change the maximum length, read
+                    <p>This sample demonstrate the usage of API in Rich Text Editor, use the properties panel to change maximum length, read
                 only mode, disable status, to get value, enable HTML encode, select all content and get selected HTML from the Rich Text Editor.</p>
                 </div>
 

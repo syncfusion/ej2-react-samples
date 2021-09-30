@@ -25,6 +25,14 @@
     content: '\e748';
 }
 
+.bootstrap5 #rteMarkdown .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e80e';
+}
+
+.bootstrap5 #rteMarkdown .e-icon-btn .e-md-preview::before {
+    content: '\e7de';
+}
+
 #rteMarkdown .content-wrapper {
     width: auto;
     margin: 0;

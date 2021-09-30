@@ -17,7 +17,8 @@ import * as dataSource from './datasource.json';
 
 export class EditorTemplate extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).doctorsEventData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).doctorsEventData, null, true) as Record<string, any>[];
+
   private onEventRendered(args: EventRenderedArgs): void {
     switch (args.data.EventType) {
       case 'Requested':
@@ -31,15 +32,15 @@ export class EditorTemplate extends SampleBase<{}, {}> {
         break;
     }
   }
-  private onActionBegin(args: { [key: string]: Object }): void {
+
+  private onActionBegin(args: Record<string, any>): void {
     if (args.requestType === 'eventCreate' || args.requestType === 'eventChange') {
-      let data: any = args.data instanceof Array ? args.data[0] : args.data;
-      if (!(this.scheduleObj as ScheduleComponent).isSlotAvailable(data.StartTime as Date, data.EndTime as Date)) {
-        args.cancel = true;
-      }
+      let data: Record<string, any> = args.data instanceof Array ? args.data[0] : args.data;
+      args.cancel = !this.scheduleObj.isSlotAvailable(data.StartTime as Date, data.EndTime as Date);
     }
   }
-  private editorTemplate(props: any): JSX.Element {
+
+  private editorTemplate(props: Record<string, any>): JSX.Element {
     return ((props !== undefined) ? <table className="custom-event-editor" style={{ width: '100%', cellpadding: '5' }}><tbody>
       <tr><td className="e-textlabel">Summary</td><td style={{ colspan: '4' }}>
         <input id="Summary" className="e-field e-input" type="text" name="Subject" style={{ width: '100%' }} />
@@ -62,12 +63,13 @@ export class EditorTemplate extends SampleBase<{}, {}> {
           style={{ width: '100%', height: '60px !important', resize: 'vertical' }}></textarea>
       </td></tr></tbody></table > : <div></div>);
   }
+
   render() {
     return (
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 1, 15)}
+            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)}
               ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.data }}
               editorTemplate={this.editorTemplate.bind(this)} actionBegin={this.onActionBegin.bind(this)}
               showQuickInfo={false} eventRendered={this.onEventRendered.bind(this)}>
@@ -83,40 +85,32 @@ export class EditorTemplate extends SampleBase<{}, {}> {
         </div>
         <div id='action-description'>
           <p>This demo illustrates the way of customizing the default editor window with custom template option and the customized
-          design is automatically replaced onto the usual event editor. Here, a doctor's daily appointment with his patients is listed
-          out and shaded with specific color based on its status.</p>
+            design is automatically replaced onto the usual event editor. Here, a doctor's daily appointment with his patients is listed
+            out and shaded with specific color based on its status.</p>
         </div>
         <div id='description'>
           <p>
             In this demo, the event window is customized based on the doctor's required appointment related fields which can be achieved
             by making use of the <code>editorTemplate</code> API.
-            Here, the custom design is built with the required fields through the script template
-             and its type should be <code>text/x-template</code>.
+            Here, the custom design is built with the required fields through the script template and its type should be <code>text/x-template</code>.
           </p>
           <p>
-            Each field defined through it should contain the <code>e-field</code> class,
-            so as to allow the processing of those fields in the default event object from internal source.
-            The ID of this customized script template section is assigned to the <code>editorTemplate</code> option,
-            so that this customized fields will be replaced onto the default editor window.
+            Each field defined through it should contain the <code>e-field</code> class, so as to allow the processing of those fields in the default event object from internal source.
+            The ID of this customized script template section is assigned to the <code>editorTemplate</code> option,so that this customized fields will be replaced onto the default editor window.
           </p>
           <p>
             As we are using our Syncfusion sub-components within this editor in this demo, therefore the custom defined form elements
             needs to be configured as required Syncfusion components such as DropDownList and DateTimePicker which needs to be
-            done within the <code>popupOpen</code> event. This particular step can be skipped,
-            if the user needs to simply use the normal form design with applicable
-            fields.
+            done within the <code>popupOpen</code> event. This particular step can be skipped, if the user needs to simply use the normal form design with applicable fields.
           </p>
           <p>
             Within the <code>eventRendered</code> event that triggers before every appointment getting rendered
-             on the Scheduler user interface,
-        the colors for the appointments are set based on its status which is retrieved from the appointment data.
+            on the Scheduler user interface, the colors for the appointments are set based on its status which is retrieved from the appointment data.
           </p>
           <p>
             The additional restriction has been added to the Scheduler cells such that if a cell already contains an appointment – then
-            it should be prevented to book with multiple appointments on the same time
-             for which the <code>isSlotAvailable</code> method is used.
-This method returns true, if the underlying cell is available for adding new events
-by checking whether it already has any events in it.
+            it should be prevented to book with multiple appointments on the same time for which the <code>isSlotAvailable</code> method is used.
+            This method returns true, if the underlying cell is available for adding new events by checking whether it already has any events in it.
           </p>
         </div>
       </div>

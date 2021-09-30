@@ -4,13 +4,16 @@
 }
 
 /* custom code start*/
+
 .schedule-demo-heading {
     font-size: 16px;
     padding-bottom: 15px;
     text-align: center;
     font-weight: 500
 }
+
 /* custom code end*/
+
 .schedule-group.e-schedule .e-agenda-view .template-wrap {
     display: table;
     width: inherit;
@@ -45,6 +48,10 @@
     height: 80px;
 }
 
+.tailwind .schedule-group.e-schedule .e-vertical-view .e-resource-cells, .tailwind-dark .schedule-group.e-schedule .e-vertical-view .e-resource-cells {
+    height: 83px;
+}
+
 .schedule-group.e-schedule .template-wrap .airline-details {
     padding-left: 15px;
 }
@@ -75,8 +82,7 @@
     background-image: url('./src/schedule/images/airways-3.svg');
 }
 
-.schedule-group.e-schedule .e-agenda-view .template-wrap .airline-model,
-.schedule-group.e-schedule .e-agenda-view .template-wrap .airline-seats {
+.schedule-group.e-schedule .e-agenda-view .template-wrap .airline-model, .schedule-group.e-schedule .e-agenda-view .template-wrap .airline-seats {
     display: none;
 }
 
@@ -84,14 +90,16 @@
     height: 67px;
 }
 
-.schedule-group.e-schedule.e-device .template-wrap .airline-model,
-    .schedule-group.e-schedule.e-device .template-wrap .airline-seats {
-        display: none;
-    }
+.schedule-group.e-schedule.e-device .template-wrap .airline-model, .schedule-group.e-schedule.e-device .template-wrap .airline-seats {
+    display: none;
+}
+
 /* custom code start*/
+
 @media (max-width: 550px) {
     .schedule-demo-heading {
         font-size: 14px;
     }
 }
+
 /* custom code end*/

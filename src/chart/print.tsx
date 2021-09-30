@@ -26,8 +26,34 @@ const SAMPLE_CSS = `
         width: 100%;
         text-align: center;
     }
-    .e-play-icon::before {
+
+    .e-print-icon::before {
         content: "\\e34b";
+    }
+    
+    .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before
+    {
+        content: '\\e7df';
+    }
+    
+    .e-view.bootstrap .e-print-icon::before {
+        content: '\\ebd2';
+    }
+    
+    .e-view.bootstrap4 .e-print-icon::before {
+        content: '\\e743';
+    }
+    
+    .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
+        content: '\\e76c';
+    }
+    
+    .e-view.highcontrast .e-print-icon::before {
+        content: '\\ebf9';
+    }
+    
+    .e-view.bootstrap5 .e-print-icon::before, .e-view.bootstrap5-dark .e-print-icon::before {
+        content: '\\e75d';
     }`;
 export class Print extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
@@ -73,7 +99,7 @@ export class Print extends SampleBase<{}, {}> {
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '100%' }}>
                                         <div id="btn-control">
-                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>

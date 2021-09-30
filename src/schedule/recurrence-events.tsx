@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewDirective,
-  Day, Week, Month, EventRenderedArgs, Inject, Resize, DragAndDrop
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
@@ -18,7 +17,8 @@ import { PropertyPane } from '../common/property-pane';
 
 export class RecurrenceEvents extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).recurrenceData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).recurrenceData, null, true) as Record<string, any>[];
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -26,12 +26,13 @@ export class RecurrenceEvents extends SampleBase<{}, {}> {
   private onChange(args: ChangeEventArgs): void {
     this.scheduleObj.eventSettings.editFollowingEvents = args.checked;
   }
+
   render() {
     return (
       <div className='schedule-control-section'>
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 1, 20)} ref={t => this.scheduleObj = t}
+            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 20)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data }} eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -63,9 +64,9 @@ export class RecurrenceEvents extends SampleBase<{}, {}> {
         <div id='description'>
           <p>In this demo, the recurrence events are defined with different repeat patterns.
             It can be defined through <code>recurrenceRule</code> field which should accept the valid rule string following
-             the <a target="_blank" href="https://tools.ietf.org/html/rfc5545#section-3.3.10">
-              iCalendar</a> specifications. The recurring events are differentiated from other events by a repeat marker added
-to the right-bottom of it. These events can repeat on daily, weekly, monthly or yearly basis.
+            the <a target="_blank" href="https://tools.ietf.org/html/rfc5545#section-3.3.10">iCalendar</a> specifications.
+            The recurring events are differentiated from other events by a repeat marker added
+            to the right-bottom of it. These events can repeat on daily, weekly, monthly or yearly basis.
           </p>
           <p>
             Here, the daily patterned events are depicted in blue color, weekly events are differentiated with green color, monthly events
@@ -74,7 +75,7 @@ to the right-bottom of it. These events can repeat on daily, weekly, monthly or 
           </p>
           <p>
             Scheduler requires only the <code>startTime</code> and <code>endTime</code> fields as mandatory to be mapped from the dataSource. The
-        Scheduler events can be categorized into 3 types based on its time range and all-day type.
+            Scheduler events can be categorized into 3 types based on its time range and all-day type.
           </p>
           <table style={{ width: '100%' }}>
             <tr>

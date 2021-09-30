@@ -72,7 +72,8 @@ public render(): JSX.Element {
 			</div>
 
 			<div id="action-description">
-				<p>This example demonstrates how to validate the files before uploading it to server. Only document files (DOC, DOCX, XLS, XLSX),
+				<p>This <a href="https://www.syncfusion.com/react-ui-components/react-file-upload"
+            target="_blank">&nbsp;React File Upload</a> example demonstrates how to validate the files before uploading it to server. Only document files (DOC, DOCX, XLS, XLSX),
 					and the files should contain minimum 10 KB and maximum 28 MB sizes to upload it into server.This sample limits maximum files count as 5 to upload.</p>
 			</div>
 			<div id="description">

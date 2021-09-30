@@ -154,3 +154,13 @@
     .material #template_toast .e-ddl-icon {
         color: white !important;
     }
+
+    .bootstrap5 #toast_custom.e-toast-container .e-toast .e-toast-message,
+    .bootstrap5-dark #toast_custom.e-toast-container .e-toast .e-toast-message {
+        margin-left: 95px;
+    }
+
+    .bootstrap5 #template_toast,
+    .bootstrap5-dark #template_toast {
+        padding: 10px;
+    }

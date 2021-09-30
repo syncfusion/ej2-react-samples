@@ -45,11 +45,11 @@ export class Clipboard extends SampleBase<{}, {}> {
     render() {
         return (<div className='control-pane'>
         <div className='control-section'>
-          <div className='col-md-9'>
+          <div className='col-lg-9'>
            <TreeGridComponent dataSource={sampleData} ref={treegrid => this.treegridInstance = treegrid} height='350' treeColumnIndex={1} childMapping='subtasks' allowPaging='true' allowSelection='true' 
            selectionSettings={{ type: 'Multiple' }} pageSettings={{ pageSize: 10 }} toolbar={this.toolbarOptions}  toolbarClick={this.toolbarClick.bind(this)}>
             <ColumnsDirective>
-              <ColumnDirective field='taskID' headerText='Task ID' width='90' textAlign='Right'></ColumnDirective>
+              <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='200'></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='90' format='yMd' textAlign='Right'/>
               <ColumnDirective field='duration' headerText='Duration' width='80' textAlign='Right'/>
@@ -58,22 +58,22 @@ export class Clipboard extends SampleBase<{}, {}> {
             <Inject services={[Toolbar, Selection, Page]}/>
           </TreeGridComponent>
         </div>
-        <div>
+        <div> 
         <DialogComponent id="alertDialog" header='Copy with Header' visible={this.visible} animationSettings={this.animationSettings} width='300px' content='Atleast one row should be selected to copy with header' ref={alertdialog => this.alertDialogInstance = alertdialog}
             target='.control-section' buttons={this.alertButtons} ></DialogComponent>
 
                     {/* Render confirmation Dialog */}
         </div>
-        <div className='col-md-3 property-section'>
+        <div className='col-lg-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                   <tr>
-                    <td style={{ width: '50%' }}>
-                      <div style={{ paddingTop: '10px' }}> Hierarchy Mode </div>
+                    <td style={{ width: '30%' }}>
+                      <div style={{ paddingTop: '7px' }}> Hierarchy Mode </div>
                     </td>
-                    <td style={{ width: '60%' }}>
+                    <td style={{ width: '70%', paddingTop: '10px' }}>
                       <div>
-                         <DropDownListComponent width="120px" id="selmode" change={this.onChange.bind(this)} dataSource={this.modes} value="Parent"/>
+                         <DropDownListComponent width="99px" id="selmode" change={this.onChange.bind(this)} dataSource={this.modes} value="Parent"/>
                       </div>
                     </td>
                   </tr>

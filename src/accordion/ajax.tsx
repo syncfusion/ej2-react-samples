@@ -4,6 +4,7 @@ import { Accordion } from '@syncfusion/ej2-navigations';
 import { Ajax } from '@syncfusion/ej2-base';
 import { AccordionComponent, AccordionItemDirective, AccordionItemsDirective, ExpandEventArgs } from '@syncfusion/ej2-react-navigations';
 import { SampleBase } from '../common/sample-base';
+import './accordion.component.css'
 
 export class AjaxContent extends SampleBase<{}, {}> {
     private acrdnObj: AccordionComponent;
@@ -119,10 +120,9 @@ export class AjaxContent extends SampleBase<{}, {}> {
                     </div>
                     <div id="Video_Rec_features" style={{ display: 'none' }}>
                         <table>
-                            <tbody><tr>
-                                <th rowSpan={9}>Video Recording</th>
-                            </tr>
+                            <tbody>
                                 <tr>
+                                    <th rowSpan={6}>Video Recording</th>
                                     <td>4K video recording</td>
                                 </tr>
                                 <tr>

@@ -50,9 +50,6 @@ export class MultipleSeries extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         title= 'Multiple Series'
                         legendSettings={{ visible: true }}
-                        titleStyle={{
-                            fontWeight: '500', color: '#424242 '
-                        }}
                     >
                         <Inject services={[DateTime, LineSeries, Crosshair, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines, 
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export, StockLegend,

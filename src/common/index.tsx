@@ -51,9 +51,9 @@ let resizeManualTrigger: boolean = false;
 /**
  * default theme on sample loaded
  */
-export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'material';
+export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'bootstrap5';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['material', 'fabric', 'bootstrap', 'bootstrap4','tailwind', 'highcontrast'];
+const themeCollection: string[] = ['bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'material', 'material-dark', 'fabric', 'fabric-dark', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'highcontrast'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**
@@ -150,14 +150,15 @@ if (isTablet || (Browser.isDevice && isPc)) {
 }
 changeMouseOrTouch(switchText);
 localStorage.removeItem('ej2-switch');
-enableRipple(selectedTheme === 'material' || !selectedTheme);
+enableRipple((selectedTheme && selectedTheme.indexOf('material') !== -1) || !selectedTheme);
 loadTheme(selectedTheme);
 
 /**
  * SB Switch Link Updation
  */
 export function setSbLink(): void {
-  let href: string = location.href;
+  let hrefLink: string[] = location.hash.split('/').slice(1);
+  let href: string = location.href = '#/' + selectedTheme + '/' + hrefLink.slice(1).join('/');
   let link: string[] = href.match(urlRegex);
   let sample: string[] = href.match(sampleRegex);
   for (let sb of sbArray) {

@@ -575,9 +575,7 @@ function applyConnectorStyle(
     };
     diagramInstance.dataBind();
   }
-  // custom code start
   target.classList.add("e-selected-style");
-  // custom code end
 }
 //ConnectorStyle customization
 function defaultConnectorStyle(type: Segments, target: HTMLElement): void {
@@ -596,7 +594,5 @@ function defaultConnectorStyle(type: Segments, target: HTMLElement): void {
     };
     diagramInstance.dataBind();
   }
-  // custom code start
   target.classList.add("e-selected-style");
-  // custom code end
 }

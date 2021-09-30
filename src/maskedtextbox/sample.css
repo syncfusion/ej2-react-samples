@@ -10,7 +10,7 @@
         font-size: 12px;
         opacity: 1;
     }
-    .property-panel-content{
+    #input-mask .property-panel-content{
         overflow: auto;
     }
     

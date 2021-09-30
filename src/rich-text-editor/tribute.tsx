@@ -28,12 +28,18 @@ export class TributeJs extends SampleBase<{}, {}> {
     }
   }
 
+  public actionBeginEvent(args: any): void {
+    if (args.requestType === 'EnterAction') {
+      args.cancel = true;
+    }
+  }
+
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section' id='rteImage'>
           <div className="content-wrapper">
-            <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}  placeholder="Type @ to get the employee list with their email IDs." created={this.onCreate.bind(this)}>
+            <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }}  placeholder="Type @ to get the employee list with their email IDs." created={this.onCreate.bind(this)} actionBegin={this.actionBeginEvent.bind(this)}>
               <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
             </RichTextEditorComponent>
           </div>

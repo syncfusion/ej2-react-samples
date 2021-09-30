@@ -32,88 +32,88 @@ export class CellDataBinding extends SampleBase<{}, {}> {
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Food' ></CellDirective>
-                                            <CellDirective value='$7000' ></CellDirective>
-                                            <CellDirective value='$8120' ></CellDirective>
+                                            <CellDirective value='7000' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='8120' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B2-C2' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Loan' ></CellDirective>
-                                            <CellDirective value='$1500' ></CellDirective>
-                                            <CellDirective value='$1500' ></CellDirective>
+                                            <CellDirective value='1500' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='1500' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B3-C3' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Medical' ></CellDirective>
-                                            <CellDirective value='$300' ></CellDirective>
-                                            <CellDirective value='$0' ></CellDirective>
+                                            <CellDirective value='300' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='0' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B4-C4' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Clothing' ></CellDirective>
-                                            <CellDirective value='$400' ></CellDirective>
-                                            <CellDirective value='$140' ></CellDirective>
+                                            <CellDirective value='400' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='140' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B5-C5' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Education' ></CellDirective>
-                                            <CellDirective value='$900' ></CellDirective>
-                                            <CellDirective value='$750' ></CellDirective>
+                                            <CellDirective value='900' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='750' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B6-C6' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Insurance' ></CellDirective>
-                                            <CellDirective value='$30' ></CellDirective>
-                                            <CellDirective value='$30' ></CellDirective>
+                                            <CellDirective value='30' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='30' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B7-C7' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Utilities' ></CellDirective>
-                                            <CellDirective value='$130' ></CellDirective>
-                                            <CellDirective value='$160' ></CellDirective>
+                                            <CellDirective value='130' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='160' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B8-C8' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Enterainment' ></CellDirective>
-                                            <CellDirective value='$500' ></CellDirective>
-                                            <CellDirective value='$730' ></CellDirective>
+                                            <CellDirective value='500' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='730' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B9-C9' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Maintainance' ></CellDirective>
-                                            <CellDirective value='$50' ></CellDirective>
-                                            <CellDirective value='$70' ></CellDirective>
+                                            <CellDirective value='50' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='70' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B10-C10' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Transportation' ></CellDirective>
-                                            <CellDirective value='$250' ></CellDirective>
-                                            <CellDirective value='$400' ></CellDirective>
+                                            <CellDirective value='250' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='400' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B11-C11' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>
                                     <RowDirective>
                                         <CellsDirective>
                                             <CellDirective value='Gifts/Donations' ></CellDirective>
-                                            <CellDirective value='$0' ></CellDirective>
-                                            <CellDirective value='$100' ></CellDirective>
+                                            <CellDirective value='0' format={this.currencyFormat} ></CellDirective>
+                                            <CellDirective value='100' format={this.currencyFormat} ></CellDirective>
                                             <CellDirective formula='=B12-C12' format={this.currencyFormat} ></CellDirective>
                                         </CellsDirective>
                                     </RowDirective>

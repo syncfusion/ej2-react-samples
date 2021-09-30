@@ -52,7 +52,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range area series.'
     },
     {
-        'path': 'chart/spline-range-area', 'component': 'SplineRangeArea', 'name': 'Spline Range Area', 'order': '02', 'category': 'Area Charts', 'type': 'new',
+        'path': 'chart/spline-range-area', 'component': 'SplineRangeArea', 'name': 'Spline Range Area', 'order': '02', 'category': 'Area Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range area series.'
     },
     {

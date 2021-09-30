@@ -10,12 +10,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class RuleGenerate extends SampleBase<{}, {}> {
   private recObject: RecurrenceEditorComponent;
-  // call the change event's function after initialized the component.
-  public rendereComplete(): void {
-    let outputElement: HTMLElement = document.querySelector('#rule-output') as HTMLElement;
-    this.recObject.setRecurrenceRule('FREQ=DAILY;INTERVAL=2;COUNT=8');
-    outputElement.innerText = this.recObject.value as string;
-  }
+  private recRule: string = 'FREQ=DAILY;INTERVAL=2;COUNT=8';
 
   private onChange(args: RecurrenceEditorChangeEventArgs): void {
     let outputElement: HTMLElement = document.querySelector('#rule-output') as HTMLElement;
@@ -26,16 +21,15 @@ export class RuleGenerate extends SampleBase<{}, {}> {
     return (
       <div className='schedule-control-section'>
         <div className='control-section'>
-          <div className='content-wrapper recurrence-editor-wrap'>
+          <div className='recurrence-editor-wrap'>
             <div className='generate-rule' style={{ paddingBottom: '15px' }}>
               <label>Rule Output</label>
               <div className='rule-output-container'>
-                <div id='rule-output'></div>
+                <div id='rule-output'>{this.recRule}</div>
               </div>
             </div>
             <div className='RecurrenceEditor'>
-              <RecurrenceEditorComponent id='RecurrenceEditor' ref={t => this.recObject = t}
-                change={this.onChange.bind(this)}></RecurrenceEditorComponent>
+              <RecurrenceEditorComponent id='RecurrenceEditor' value={this.recRule} ref={t => this.recObject = t} change={this.onChange.bind(this)}></RecurrenceEditorComponent>
             </div>
           </div>
         </div>
@@ -46,10 +40,9 @@ export class RuleGenerate extends SampleBase<{}, {}> {
         </div>
         <div id='description'>
           <p>
-            In this demo, a specific rule has been set to the recurrence editor manually
-           by making use of the <code>setRecurrenceRule</code> method which will be displayed on the label placed at the top of it.
-                      Also, when the user dynamically change the options in recurrence editor,
-           the modified rule value as per the selection will be displayed on it which is retrieved within the <code>change</code> event.
+            In this demo, a specific rule has been set to the recurrence editor manually by making use of the <code>setRecurrenceRule</code> method which will be
+            displayed on the label placed at the top of it. Also, when the user dynamically change the options in recurrence editor,
+            the modified rule value as per the selection will be displayed on it which is retrieved within the <code>change</code> event.
           </p>
         </div>
       </div>

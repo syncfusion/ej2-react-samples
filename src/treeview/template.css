@@ -17,12 +17,27 @@
         float: right;
         margin-right: 5px
     }
+    .bootstrap5.e-bigger .template-tree.e-treeview .countcontainer .treeCount.e-badge,
+    .bootstrap5-dark.e-bigger .template-tree.e-treeview .countcontainer .treeCount.e-badge {
+        line-height: 11px;
+    }
     .template-tree.e-treeview.e-rtl .countcontainer {
         float: left;
         margin-left: 5px
     }
     .material .treeCount.e-badge {
         vertical-align: middle;
+    }
+    .bootstrap4 .treeviewdiv .treeCount.e-badge,
+    .bootstrap5 .treeviewdiv .treeCount.e-badge,
+    .bootstrap5-dark .treeviewdiv .treeCount.e-badge,
+    .bootstrap .treeviewdiv .treeCount.e-badge,
+    .bootstrap-dark .treeviewdiv .treeCount.e-badge,
+    .highcontrast .treeviewdiv .treeCount.e-badge {
+        background-color: #008800;
+    }
+    .highcontrast .treeviewdiv .treeCount.e-badge {
+        color: white;
     }
     .template-tree.e-treeview.e-interaction.e-fullrow-wrap .e-text-content {
         pointer-events: none;

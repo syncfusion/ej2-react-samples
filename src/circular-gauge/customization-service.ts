@@ -12,7 +12,8 @@ export class DynamicDataSerive {
             load: (args1: ILoadedEventArgs) => {
                 let selectedTheme: string = location.hash.split('/')[1];
                 selectedTheme = selectedTheme ? selectedTheme : 'Material';
-                args1.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+                args1.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+                selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
             },
             axes: [{
                 annotations: [{
@@ -53,7 +54,8 @@ export class DynamicDataSerive {
             load: (args2: ILoadedEventArgs) => {
                 let selectedTheme: string = location.hash.split('/')[1];
                 selectedTheme = selectedTheme ? selectedTheme : 'Material';
-                args2.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+                args2.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+                selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
             },
             centerY: '70%',
             axes: [{

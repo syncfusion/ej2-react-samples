@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Month, Inject,
-  ActionEventArgs, ToolbarActionArgs, EventRenderedArgs, Resize, DragAndDrop
+  ScheduleComponent, ViewsDirective, ViewDirective, Month, Inject, ActionEventArgs, EventRenderedArgs, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './header-bar.css';
@@ -21,18 +20,16 @@ import * as dataSource from './datasource.json';
 
 export class HeaderBar extends SampleBase<{}, {}> {
   public scheduleObj: ScheduleComponent;
-  private checkboxObj: CheckBoxComponent;
   private profilePopup: Popup;
-  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
 
-  private onActionBegin(args: ActionEventArgs & ToolbarActionArgs): void {
+  private onActionBegin(args: ActionEventArgs): void {
     if (args.requestType === 'toolbarItemRendering') {
-      let userIconItem: ItemModel = {
-        align: 'Right', prefixIcon: 'user-icon', text: 'Nancy', cssClass: 'e-schedule-user-icon'
-      };
+      let userIconItem: ItemModel = { align: 'Right', prefixIcon: 'user-icon', text: 'Nancy', cssClass: 'e-schedule-user-icon' };
       args.items.push(userIconItem);
     }
   }
+
   private onActionComplete(args: ActionEventArgs): void {
     let scheduleElement: HTMLInputElement = document.getElementById('schedule') as HTMLInputElement;
     if (args.requestType === 'toolBarItemRendered') {
@@ -47,9 +44,7 @@ export class HeaderBar extends SampleBase<{}, {}> {
         }
       };
     }
-    let userContentEle: HTMLElement = createElement('div', {
-      className: 'e-profile-wrapper'
-    });
+    let userContentEle: HTMLElement = createElement('div', { className: 'e-profile-wrapper' });
     scheduleElement.parentElement.appendChild(userContentEle);
 
     let userIconEle: HTMLElement = scheduleElement.querySelector('.e-schedule-user-icon') as HTMLElement;
@@ -70,11 +65,11 @@ export class HeaderBar extends SampleBase<{}, {}> {
     });
     this.profilePopup.hide();
   }
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
 
-  // function to handle the CheckBox change event
   private onChange(args: ChangeEventArgs): void {
     this.profilePopup.hide();
     this.scheduleObj.showHeaderBar = args.checked;
@@ -87,7 +82,7 @@ export class HeaderBar extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent cssClass='schedule-header-bar' width='100%' height='650px' id='schedule' ref={t => this.scheduleObj = t}
-              selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }}
+              selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: this.data }}
               actionBegin={this.onActionBegin.bind(this)} actionComplete={this.onActionComplete.bind(this)}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
@@ -104,9 +99,7 @@ export class HeaderBar extends SampleBase<{}, {}> {
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '90%' }}>
                     <div className='headerbar'>
-                      <CheckBoxComponent id='headerbar' checked={true} label='Show/Hide Header bar' ref={(scope) => {
-                        this.checkboxObj = scope;
-                      }} change={this.onChange.bind(this)} ></CheckBoxComponent>
+                      <CheckBoxComponent id='headerbar' checked={true} label='Show/Hide Header bar' change={this.onChange.bind(this)} ></CheckBoxComponent>
                     </div>
                   </td>
                 </tr>
@@ -116,23 +109,21 @@ export class HeaderBar extends SampleBase<{}, {}> {
         </div>
         <div id='action-description'>
           <p>This demo shows the way of adding custom items into the Scheduler header bar. Here, an employee image is added to the
-          header bar, clicking on which will open the popup showing that person's short profile information.</p>
+            header bar, clicking on which will open the popup showing that person's short profile information.</p>
         </div>
         <div id='description'>
           <p>
             In this demo, a popup has been designed separately with a person’s profile info and kept in a hidden state initially. A custom
-          item has been added to the Scheduler header bar within the <code>actionBegin</code> event by checking for the request type as
-        <code>toolbarItemRendering</code> which triggers at the time of header bar items rendering on the Scheduler.
+            item has been added to the Scheduler header bar within the <code>actionBegin</code> event by checking for the request type as
+            <code>toolbarItemRendering</code> which triggers at the time of header bar items rendering on the Scheduler.
           </p>
           <p>
-            Once the items are added,
-            the click action is being bound to it in the <code>actionComplete</code> event by checking for
+            Once the items are added, the click action is being bound to it in the <code>actionComplete</code> event by checking for
             the request type as <code>toolbarItemRendered</code> which triggers after the items are rendered on the Scheduler.
             The appropriate action of showing or hiding the popup on clicking the custom item has been done within it.
           </p>
           <p>
-            In case, if the header bar of Scheduler needs to be hidden,
-            it can be done by setting false to <code>showHeaderBar</code> property.
+            In case, if the header bar of Scheduler needs to be hidden, it can be done by setting false to <code>showHeaderBar</code> property.
           </p>
         </div>
       </div>

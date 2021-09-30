@@ -53,7 +53,7 @@ export class PeriodSelector extends SampleBase<{}, {}> {
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export, RangeTooltip,
                         AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator]} />
                         <StockChartSeriesCollectionDirective>
-                            <StockChartSeriesDirective dataSource={aapl} type='Area' xName='x' yName='open' fill={'url(#gradient-chart)'}>
+                            <StockChartSeriesDirective dataSource={aapl} type='Area' xName='x' yName='open' opacity={0.5}>
                             </StockChartSeriesDirective>
                         </StockChartSeriesCollectionDirective>
                     </StockChartComponent>

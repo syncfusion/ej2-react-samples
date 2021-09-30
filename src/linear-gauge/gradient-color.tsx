@@ -19,7 +19,8 @@ export class GradientColor extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
     }
     public rangeLinearGradient: Object = {
         startValue: "0%",
@@ -52,7 +53,7 @@ export class GradientColor extends SampleBase<{}, {}> {
             this.loaded = true;
             this.gradientType = new DropDownList({
                 index: 0,
-                width: 120,
+                width: 150,
                 change: () => {
                     if (this.gradientType.value === 'radial' && this.element.value === 'range') {
                         this.gauge.axes[0].ranges[0].linearGradient = null;
@@ -80,7 +81,7 @@ export class GradientColor extends SampleBase<{}, {}> {
 
             this.element = new DropDownList({
                 index: 0,
-                width: 120,
+                width: 150,
                 change: () => {
                     if (this.gradientType.value === 'radial' && this.element.value === 'range') {
                         this.gauge.axes[0].ranges[0].linearGradient = null;
@@ -129,7 +130,7 @@ export class GradientColor extends SampleBase<{}, {}> {
                                 <AxisDirective minimum = {0} maximum = {100} line = {{ width: 0}}
                                  minorTicks={{ height:0 }} 
                                  majorTicks={{ height: 0, interval: 25 }} 
-                                 labelStyle={{ font: { color: '#424242'}, offset: 55 }}>
+                                 labelStyle={{ offset: 55 }}>
                                 
                                <RangesDirective>
                                        <RangeDirective start={0} end={80} startWidth={30} endWidth={30}
@@ -153,7 +154,7 @@ export class GradientColor extends SampleBase<{}, {}> {
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{"margin-top":"30px", "width": "120px"}}>Gradient Type</div>
+                                            <div id='' style={{"margin-top":"30px", "width": "60%", "margin-left": "-5px"}}>Gradient Type</div>
                                         </td>
                                         <td>
                                             <div style={{"margin-top":"20px", "margin-left":"-15px"}}>
@@ -166,7 +167,7 @@ export class GradientColor extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{"margin-top":"30px"}}>Elements</div>
+                                            <div id='' style={{"margin-top":"30px", "margin-left": "-5px"}}>Elements</div>
                                         </td>
                                         <td>
                                             <div style={{"margin-top":"30px", "margin-left":"-15px"}}>

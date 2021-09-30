@@ -13,8 +13,8 @@ import * as dataSource from './datasource.json';
  */
 
 export class GroupByDate extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], (dataSource as any).resourceData, null, true) as Object[];
-  private resourceData: Object[] = [
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceData, null, true) as Record<string, any>[];
+  private resourceData: Record<string, any>[] = [
     { text: 'Alice', id: 1, color: '#1aaa55' },
     { text: 'Smith', id: 2, color: '#7fa900' },
   ];
@@ -24,7 +24,7 @@ export class GroupByDate extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 3, 1)}
+            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 3, 6)}
               eventSettings={{
                 dataSource: this.data, fields: {
                   subject: { title: 'Task', name: 'Subject' },
@@ -49,20 +49,13 @@ export class GroupByDate extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>
-            This demo illustrates the daily tasks of two employees grouped by date-wise.
-          </p>
+          <p>This demo illustrates the daily tasks of two employees grouped by date-wise.</p>
         </div>
-
         <div id="description">
           <p>
-            In this demo, there are 2 resources defined namely
-            <strong>Alice</strong> and
-            <strong>Smith</strong> under the resource
-            <code>dataSource</code>. The Scheduler can be switched to group by date, by setting
-            <code>true</code> to the option
-            <code>byDate</code> within the
-            <code>group</code> property.
+            In this demo, there are 2 resources defined namely <strong>Alice</strong> and <strong>Smith</strong> under the resource
+            <code>dataSource</code>. The Scheduler can be switched to group by date, by setting <code>true</code> to the option
+            <code>byDate</code> within the <code>group</code> property.
           </p>
         </div>
       </div>

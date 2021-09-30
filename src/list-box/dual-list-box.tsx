@@ -13,6 +13,7 @@ export class DualListBox extends SampleBase<{}, {}> {
     public dataB: { [key: string]: Object }[] = data["groupb"];
     public fields: FieldSettingsModel = { text: 'Name'};
     public toolbarSettings: ToolbarSettingsModel = { items: ['moveUp', 'moveDown', 'moveTo', 'moveFrom', 'moveAllTo', 'moveAllFrom'] };
+    public noRecordsTemplate = '<div class= "e-list-nrt"><span>NO DATA AVAILABLE</span></div>'
     render() {
         return (
             <div className='control-pane'>
@@ -20,11 +21,11 @@ export class DualListBox extends SampleBase<{}, {}> {
                     <div className="dual-list-wrapper">
                         <div className="dual-list-groupa">
                             <h4>Group A</h4>
-                            <ListBoxComponent dataSource={this.dataA} fields={this.fields} height="330px" scope="#combined-listbox" toolbarSettings={this.toolbarSettings} />
+                            <ListBoxComponent dataSource={this.dataA} fields={this.fields} height="330px" scope="#combined-listbox" toolbarSettings={this.toolbarSettings} noRecordsTemplate={this.noRecordsTemplate}/>
                         </div>
                         <div className="dual-list-groupb">
                             <h4>Group B</h4>
-                            <ListBoxComponent id="combined-listbox" dataSource={this.dataB} height="330px" fields={this.fields} />
+                            <ListBoxComponent id="combined-listbox" dataSource={this.dataB} height="330px" fields={this.fields} noRecordsTemplate={this.noRecordsTemplate}/>
                         </div>
                     </div>
                 </div>

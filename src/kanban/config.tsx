@@ -6,7 +6,7 @@ export const KanbanSampleOrder: Object = [
         'description': 'The example demonstrates the default functionalities of JS Kanban with very minimal essential settings such as data source, columns, and card details.'
     },
     {
-        'path': 'kanban/swimlane', 'component': 'Swimlane', 'type': 'update', 'name': 'Swimlane', 'order': '01', 'category': 'Kanban', 'api':
+        'path': 'kanban/swimlane', 'component': 'Swimlane', 'name': 'Swimlane', 'order': '01', 'category': 'Kanban', 'api':
             '{"KanbanComponent": ["dataSource", "keyField", "columns", "cardSettings", "swimlaneSettings"] }',
         'description': 'The example explains how to configure swimlane and its related settings (sorting order, drag-and-drop, and more) in JavaScript Kanban board.'
     },

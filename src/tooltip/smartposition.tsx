@@ -71,7 +71,7 @@ export class DraggableTooltip extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="action-description">
-                    <p>This sample demonstrates the Smart Positioning functionalities of the Tooltip which will open by dragging the picture.</p>
+                    <p>This sample demonstrates the <b>smart positioning</b> functionalities of the Tooltip which will open by dragging the picture.</p>
                 </div>
 
                 <div id="description">

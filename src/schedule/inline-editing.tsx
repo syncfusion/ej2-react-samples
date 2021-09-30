@@ -15,8 +15,9 @@ import * as dataSource from './datasource.json';
 
 export class InlineEditing extends SampleBase<{}, {}> {
     private scheduleObj: ScheduleComponent;
-    private data: Object[] = extend([], (dataSource as any).resourceData.concat((dataSource as any).timelineResourceData), null, true) as Object[];
-    private categoriesData: Object[] = [
+    private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceData.concat((dataSource as Record<string, any>).timelineResourceData), null, true) as Record<string, any>[];
+    private workDays: number[] = [0, 1, 2, 3, 4, 5];
+    private categoriesData: Record<string, any>[] = [
         { text: 'Nancy', id: 1, groupId: 1, color: '#df5286' },
         { text: 'Steven', id: 2, groupId: 1, color: '#7fa900' },
         { text: 'Robert', id: 3, groupId: 2, color: '#ea7a57' },
@@ -41,7 +42,7 @@ export class InlineEditing extends SampleBase<{}, {}> {
             <div className='schedule-control-section'>
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
-                        <ScheduleComponent width='100%' height='650px' ref={t => this.scheduleObj = t} currentView='TimelineWeek' allowInline={true} selectedDate={new Date(2018, 3, 4)}
+                        <ScheduleComponent width='100%' height='650px' ref={t => this.scheduleObj = t} cssClass='inline-edit' workDays={this.workDays} currentView='TimelineWeek' allowInline={true} selectedDate={new Date(2021, 3, 4)}
                             eventSettings={{ dataSource: this.data }} group={{ resources: ['Categories'] }} eventRendered={this.onEventRendered.bind(this)}>
                             <ResourcesDirective>
                                 <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true}

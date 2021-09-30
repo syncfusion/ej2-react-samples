@@ -29,7 +29,8 @@ export class Drag extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     // custom code end
     public pointerDragChange(): void {
@@ -66,7 +67,7 @@ export class Drag extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section row'>
-                    <div className='col-lg-9'>
+                    <div className='col-lg-8'>
                         <CircularGaugeComponent load={this.load.bind(this)} loaded={this.onChartLoad.bind(this)} dragMove={this.dragMove.bind(this)} dragEnd={this.dragEnd.bind(this)} id='drag-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
@@ -104,37 +105,37 @@ export class Drag extends SampleBase<{}, {}> {
                         </CircularGaugeComponent>
                     </div>
                     {/* Property Panel */}
-                    <div className='col-lg-3 property-section'>
+                    <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
                                 <tbody>
                                     <tr style={{ height: "50px" }}>
                                         <td style={{ width: "30%" }}>
-                                            <div id='pointerValue'>Pointer Value <span> &nbsp;&nbsp;&nbsp;70</span> </div>
+                                            <div id='pointerValue' style={{ width: "110%" }}>Pointer Value <span> &nbsp;&nbsp;&nbsp;70</span> </div>
                                         </td>
                                         <td style={{ width: "40%" }}>
                                             <div>
-                                                <input type="range" id="value" onChange={this.dragChange.bind(this)} ref={d => this.drag = d} defaultValue="70" min="0" max="120" style={{ width: "90%" }} />
+                                                <input type="range" id="value" onChange={this.dragChange.bind(this)} ref={d => this.drag = d} defaultValue="70" min="0" max="120" style={{ width: "90px", marginLeft: "20px" }} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: "50px" }}>
                                         <td style={{ width: "20%" }}>
-                                            <div id='enablePointer'>Allow Pointer Drag</div>
+                                            <div id='enablePointer' style={{ width: "110%" }}>Allow Pointer Drag</div>
                                         </td>
                                         <td style={{ width: "40%" }}>
                                             <div>
-                                                <input type="checkbox" onChange={this.pointerDragChange.bind(this)} ref={d => this.pointerDrag = d} id="enable" defaultChecked={true} style={{ width: "90%" }} />
+                                                <input type="checkbox" onChange={this.pointerDragChange.bind(this)} ref={d => this.pointerDrag = d} id="enable" defaultChecked={true} style={{ width: "90px", marginLeft: "22px" }} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: "50px" }}>
                                         <td style={{ width: "20%" }}>
-                                            <div id='enablePointer'>Allow Ranges Drag</div>
+                                            <div id='enablePointer' style={{ width: "110%" }}>Allow Ranges Drag</div>
                                         </td>
                                         <td style={{ width: "40%" }}>
                                             <div>
-                                                <input type="checkbox" onChange={this.rangesDragChange.bind(this)} ref={d => this.rangesDrag = d} id="rangeDragEnable" style={{ width: "90%" }} />
+                                                <input type="checkbox" onChange={this.rangesDragChange.bind(this)} ref={d => this.rangesDrag = d} id="rangeDragEnable" style={{ width: "90px", marginLeft: "22px" }} />
                                             </div>
                                         </td>
                                     </tr>

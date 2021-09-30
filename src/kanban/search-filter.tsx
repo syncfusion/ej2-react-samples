@@ -86,7 +86,7 @@ export class SearchFilter extends SampleBase<{}, {}> {
                 <div className="col-lg-3 property-section">
                     <div className="property-panel-section">
                         <p className="property-panel-header">Filtering</p>
-                        <div className="property-panel-content">
+                        <div className="filtering property-panel-content">
                             <table className="e-filter-table">
                                 <tr>
                                     <td className="e-filter-label">
@@ -109,7 +109,7 @@ export class SearchFilter extends SampleBase<{}, {}> {
                             </table>
                         </div>
                         <p className="property-panel-header">Searching</p>
-                        <div className="property-panel-content">
+                        <div className="filtering property-panel-content">
                             <table className="e-filter-table">
                                 <tr>
                                     <td>

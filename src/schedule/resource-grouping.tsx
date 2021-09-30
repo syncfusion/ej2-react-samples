@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    Week, Month, Agenda, ScheduleComponent, TreeViewArgs, ResourcesDirective,
+    Week, Month, Agenda, ScheduleComponent, ResourcesDirective,
     ResourceDirective, ViewsDirective, ViewDirective, ResourceDetails, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './resource-grouping.css';
@@ -12,41 +12,40 @@ import { SampleBase } from '../common/sample-base';
  */
 
 export class Group extends SampleBase<{}, {}> {
-    private resourceData: Object[] = [
+    private resourceData: Record<string, any>[] = [
         { AirlineName: 'Airways 1', AirlineId: 1, AirlineColor: '#EA7A57' },
         { AirlineName: 'Airways 2', AirlineId: 2, AirlineColor: '#357cd2' },
         { AirlineName: 'Airways 3', AirlineId: 3, AirlineColor: '#7fa900' }
     ];
 
-    private getAirlineImage(value: ResourceDetails | TreeViewArgs): string {
+    private getAirlineImage(value: ResourceDetails): string {
         let airlineName: string = this.getAirlineName(value);
         return airlineName.replace(' ', '-').toLowerCase();
     }
 
-    private getAirlineName(value: ResourceDetails | TreeViewArgs): string {
+    private getAirlineName(value: ResourceDetails): string {
         return (((value as ResourceDetails).resourceData) ?
-            (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] :
-            (value as TreeViewArgs).resourceName) as string;
+            (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] : value.resourceName) as string;
     }
 
-    private getAirlineModel(value: ResourceDetails | TreeViewArgs): string {
+    private getAirlineModel(value: ResourceDetails): string {
         let airlineName: string = this.getAirlineName(value);
         return (airlineName === 'Airways 1') ? 'CRJ 700' : (airlineName === 'Airways 2') ? 'Airbus A330' : 'ATR 72-600';
     }
 
-    private getAirlineSeats(value: ResourceDetails | TreeViewArgs): number {
+    private getAirlineSeats(value: ResourceDetails): number {
         let airlineName: string = this.getAirlineName(value);
         return (airlineName === 'Airways 1') ? 50 : (airlineName === 'Airways 2') ? 75 : 100;
     }
 
     // custom code start
-    private generateEvents(): Object[] {
+    private generateEvents(): Record<string, any>[] {
         let subjectCollection: string[] = ['Barcelona to Los Angeles', 'Los Angeles to Barcelona'];
-        let collections: Object[] = [];
+        let collections: Record<string, any>[] = [];
         let dataCollections: number[] = [1, 2, 3];
         let id: number = 1;
         for (let data of dataCollections) {
-            let startDate: Date = new Date(2018, 3, 1);
+            let startDate: Date = new Date(2021, 3, 1);
             startDate.setMilliseconds(1000 * 60 * 60 * .5 * (data - 1));
             let lastDate: Date = new Date((+startDate) + (1000 * 60 * 60 * 24 * 30));
             for (let date: Date = startDate; date.getTime() < lastDate.getTime(); date = new Date(date.getTime() + (1000 * 60 * 60 * 5))) {
@@ -79,10 +78,8 @@ export class Group extends SampleBase<{}, {}> {
             <div className='schedule-control-section'>
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
-                        <div className='schedule-demo-heading'>
-                            Flight timings between Barcelona and Los Angeles
-                        </div>
-                        <ScheduleComponent cssClass='schedule-group' width='100%' height='650px' selectedDate={new Date(2018, 3, 1)}
+                        <div className='schedule-demo-heading'>Flight timings between Barcelona and Los Angeles</div>
+                        <ScheduleComponent cssClass='schedule-group' width='100%' height='650px' selectedDate={new Date(2021, 3, 6)}
                             eventSettings={{
                                 dataSource: this.generateEvents(), fields: {
                                     subject: { title: 'Travel Summary', name: 'Subject' },
@@ -109,34 +106,29 @@ export class Group extends SampleBase<{}, {}> {
                 <div id="action-description">
                     <p>
                         This demo illustrates the timings of different flight services on a specific route say between Barcelona and
-                         Los Angeles, on a daily basis. Here, the Scheduler is grouped based on the 3 Airline services.
+                        Los Angeles, on a daily basis. Here, the Scheduler is grouped based on the 3 Airline services.
                     </p>
                 </div>
                 <div id="description">
                     <p>
                         In this demo, the scheduler has been grouped with multiple resources by making use of the property
-                       <code>group</code>. The resources to be grouped depends on the values of
-                       <code>resources</code> option within the
-                       <code>group</code> property, which accepts the array of resource names. The resource header has been customized
+                        <code>group</code>. The resources to be grouped depends on the values of
+                        <code>resources</code> option within the
+                        <code>group</code> property, which accepts the array of resource names. The resource header has been customized
                         by making use of the <code>resourceHeaderTemplate</code> property.
                     </p>
                     <p>
                         In mobile mode, when the grouping is enabled, the resources will be listed out in a treeview as a side-panel which
                         opens or closes, on clicking the hamburger icon at the resource header. Only a single resource will be viewable at
                         a time, due to the space constraints on mobile. If in case, the users want to view the grouped layout on mobile
-                        with scrolling content, then it is necessary to set
-                        <code>false</code> to the
-                        <code>enableCompactView</code> option within the
-                        <code>group</code> property which is set to
-                        <code>true</code> by default. This option is not applicable on desktop mode. </p>
+                        with scrolling content, then it is necessary to set <code>false</code> to the <code>enableCompactView</code> option within the
+                        <code>group</code> property which is set to <code>true</code> by default. This option is not applicable on desktop mode. </p>
                     <p>
-                        Note: If the
-                        <code>group</code> property is not defined, then the default scheduler will be rendered with no grouping on layout,
-                         but the appointments of all the resources will be displayed on a single scheduler.
+                        Note: If the <code>group</code> property is not defined, then the default scheduler will be rendered with no grouping on layout,
+                        but the appointments of all the resources will be displayed on a single scheduler.
                     </p>
                 </div>
             </div>
         );
     }
 }
-

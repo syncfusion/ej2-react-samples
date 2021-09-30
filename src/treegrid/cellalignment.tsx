@@ -61,25 +61,25 @@ export class CellAlign extends SampleBase<{}, {}> {
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                   <tr style={{ height: '50px' }}>
-                  <td style={{ width: '50%' }}>
+                  <td style={{ width: '30%' }}>
                       <div style={{ paddingTop: '10px' }}> Column </div>
                     </td>
-                    <td style={{ width: '80%', paddingRight: '10px' }}>
+                    <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                         <DropDownListComponent width="120px" id="columns" change={this.change.bind(this)}
+                         <DropDownListComponent width="95px" id="columns" change={this.change.bind(this)}
                             dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="taskID"
                             ref={dropdown=> this.dropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr style={{ height: '50px' }}>
-                     <td style={{ width: '50%' }}>
+                     <td style={{ width: '30%' }}>
                         <div> Cell Alignment </div>
                      </td>
-                     <td style={{ width: '50%', padding: '10px 10px 10px 0px' }}>
+                     <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                         <div>
-                        <DropDownListComponent width="120px" id="alignment" change={this.change2.bind(this)}
-                            dataSource={this.alignment} fields={{ text: 'name', value: 'id' }} value="Right" popupWidth='100%'
+                        <DropDownListComponent width="95px" id="alignment" change={this.change2.bind(this)}
+                            dataSource={this.alignment} fields={{ text: 'name', value: 'id' }} value="Right"
                             ref={dropdown=> this.dropdownObj2 = dropdown} />
                         </div>
                      </td>

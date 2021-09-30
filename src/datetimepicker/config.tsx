@@ -40,7 +40,7 @@ export const DateTimeOrder: Object = [
         ]
     },
     {
-        'path': 'datetimepicker/input-mask', 'component': 'MaskSupport', 'name': 'Mask Support', 'description': 'This example demonstrates a simple, mobile-friendly and responsive React DateTimePicker to select a date with mask support.', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DateTimePickerComponent": ["enableMask"]}','type': 'new',
+        'path': 'datetimepicker/input-mask', 'component': 'MaskSupport', 'name': 'Mask Support', 'description': 'This example demonstrates a simple, mobile-friendly and responsive React DateTimePicker to select a date with mask support.', 'order': '01', 'category': 'DateTimePicker', 'api': '{"DateTimePickerComponent": ["enableMask"]}',
         'sourceFiles': [
             { 'displayName': 'input-mask.tsx', 'path': 'src/datetimepicker/input-mask.tsx' },
             { 'displayName': 'input-mask.jsx', 'path': 'src/datetimepicker/input-mask.jsx' },

@@ -8,6 +8,17 @@
         border: 1px solid lightgray;
     }
 
+    body.tailwind-dark .e-listview.e-list-template .e-list-wrapper:not(.e-list-multi-line) .e-list-content{
+        padding: 0.83em 0;
+    }
+
+    body.tailwind-dark .e-listview.e-list-template .e-list-wrapper.e-list-avatar .e-avatar {
+        height: 2.8571em;
+        left: 1.0667em;
+        top: 0.7142em;
+        width: 2.8571em;
+    }
+
     /* ListView header alignment */
 
     #ui-list.e-listview .e-list-header {
@@ -58,7 +69,7 @@
 
     /* ListView theme customization */
 
-    .highcontrast #ui-list.e-listview .e-list-item,
+    .highcontrast #ui-list.e-listview .e-list-item:not(.e-hover),
     .highcontrast #ui-list.e-listview .e-list-header {
         background: rgb(0, 0, 0);
     }

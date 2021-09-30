@@ -55,10 +55,10 @@ export class Horizontal extends SampleBase<{}, {}> {
                                                 Philips trimmers are designed to last longer than 4 ordinary trimmers and DuraPower Technology which optimizes power.
                                             </div>
                                             </div>
-                                            <img src='./src/card/images/Trimmer.png' />
+                                            <img src='./src/card/images/Trimmer.png' alt="Trimmer"/>
                                         </div>
                                         <div className="e-card e-card-horizontal" id="horizontal_product">
-                                            <img src='./src/card/images/Camera.png' style={{ height: '214px' }} />
+                                            <img src='./src/card/images/Camera.png' style={{ height: '214px' }} alt="Camera"/>
                                             <div className='e-card-stacked'>
                                                 <div className="e-card-header">
                                                     <div className="e-card-header-caption">

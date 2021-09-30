@@ -1,8 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    ScheduleComponent, ViewsDirective, ViewDirective, Resize, DragAndDrop, ResourcesDirective, ResourceDirective,
-    EventRenderedArgs, Inject, Year as YearView, TimelineYear
+    ScheduleComponent, ViewsDirective, ViewDirective, Resize, DragAndDrop, ResourcesDirective,
+    ResourceDirective, EventRenderedArgs, Inject, Year as YearView, TimelineYear
 } from '@syncfusion/ej2-react-schedule';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
@@ -24,7 +24,7 @@ export class Year extends SampleBase<{}, {}> {
         { text: 'Michael', id: 5, color: '#df5286' }
     ];
     private data: Object[] = this.generateEvents();
-    private months: { [key: string]: Object }[] = [
+    private months: Record<string, any>[] = [
         { text: 'January', value: 0 },
         { text: 'February', value: 1 },
         { text: 'March', value: 2 },
@@ -49,25 +49,24 @@ export class Year extends SampleBase<{}, {}> {
         }
     }
 
-    private firstMonthOfYear(args: { [key: string]: Object }) {
+    private firstMonthOfYear(args: Record<string, any>): void {
         this.scheduleObj.firstMonthOfYear = args.value as number;
     }
 
-    private numberOfMonths(args: { [key: string]: Object }) {
+    private numberOfMonths(args: Record<string, any>): void {
         this.scheduleObj.monthsCount = args.value as number;
     }
 
     private generateEvents(count: number = 250, date: Date = new Date()): Object[] {
         let names: string[] = [
             'Bering Sea Gold', 'Technology', 'Maintenance', 'Meeting', 'Travelling', 'Annual Conference', 'Birthday Celebration',
-            'Farewell Celebration', 'Wedding Aniversary', 'Alaska: The Last Frontier', 'Deadest Catch', 'Sports Day',
+            'Farewell Celebration', 'Wedding Anniversary', 'Alaska: The Last Frontier', 'Deadest Catch', 'Sports Day',
             'MoonShiners', 'Close Encounters', 'HighWay Thru Hell', 'Daily Planet', 'Cash Cab', 'Basketball Practice',
             'Rugby Match', 'Guitar Class', 'Music Lessons', 'Doctor checkup', 'Brazil - Mexico', 'Opening ceremony', 'Final presentation'
         ];
         let colors: string[] = [
-            '#ff8787', '#9775fa', '#748ffc', '#3bc9db', '#69db7c',
-            '#fdd835', '#748ffc', '#9775fa', '#df5286', '#7fa900',
-            '#fec200', '#5978ee', '#00bdae', '#ea80fc'
+            '#ff8787', '#9775fa', '#748ffc', '#3bc9db', '#69db7c', '#fdd835', '#748ffc',
+            '#9775fa', '#df5286', '#7fa900', '#fec200', '#5978ee', '#00bdae', '#ea80fc'
         ];
         let startDate: Date = new Date(date.getFullYear() - 2, 0, 1);
         let endDate: Date = new Date(date.getFullYear() + 2, 11, 31);
@@ -119,15 +118,16 @@ export class Year extends SampleBase<{}, {}> {
                                 <tr>
                                     <td>
                                         <div>
-                                            <DropDownListComponent id="firstMonthElement" placeholder="First month of year" floatLabelType="Always" fields={this.fields} value={0} dataSource={this.months} change={this.firstMonthOfYear.bind(this)}>
-                                            </DropDownListComponent>
+                                            <DropDownListComponent id="firstMonthElement" placeholder="First month of year" floatLabelType="Always" fields={this.fields}
+                                                value={0} dataSource={this.months} change={this.firstMonthOfYear.bind(this)}></DropDownListComponent>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div>
-                                            <NumericTextBoxComponent id="numberOfMonthsElement" placeholder="Number of months" floatLabelType="Always" format='###.##' min={1} max={24} value={12} change={this.numberOfMonths.bind(this)} />
+                                            <NumericTextBoxComponent id="numberOfMonthsElement" placeholder="Number of months" floatLabelType="Always" format='###.##'
+                                                min={1} max={24} value={12} change={this.numberOfMonths.bind(this)} />
                                         </div>
                                     </td>
                                 </tr>
@@ -137,9 +137,8 @@ export class Year extends SampleBase<{}, {}> {
                 </div>
                 <div id='action-description'>
                     <p>
-                        This example showcases the year and timeline year views of the Scheduler with the firstMonthOfYear and
-                        monthCount properties customizations. Once the property value has been changed in the properties, it will be
-                        reflected in the Scheduler.
+                        This example showcases the year and timeline year views of the Scheduler with the firstMonthOfYear and monthCount properties customizations.
+                        Once the property value has been changed in the properties, it will be reflected in the Scheduler.
                     </p>
                 </div>
                 <div id='description'>

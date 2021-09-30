@@ -19,10 +19,11 @@ import { dataCollection } from './export-data';
 export let zoomFactor : number;
 export let zoomPosition :number;
 export let dateTimeData: Object[] = dataCollection;
-export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast'];
-export let borderColor: string[] = ['#FF4081', '#007897', '#428BCA', '#FFD939'];
-export let regionColor: string[] = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)',
-    'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)'];
+export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Bootstrap5', 'Tailwind','MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Bootstrap4'];
+export let borderColor: string[] = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#4F46E5', '#4F46E5','#FF4081', '#007897', '#428BCA', '#22D3EE', '#ADB5BD', '#FFD939'];
+export let regionColor: string[] = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(79, 70, 229, 0.3)',
+    'rgba(79, 70, 229, 0.3)', 'rgba(255, 64, 129, 0.3)', 'rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(34, 211, 238, 0.3)', 'rgba(173,181,189,0.3)',
+    'rgba(255, 217, 57, 0.3)'];
 
 const SAMPLE_CSS = `
         .control-fluid {
@@ -41,13 +42,60 @@ const SAMPLE_CSS = `
             width: 100%;
             text-align: center;
         }
-        .e-export-icon::before {
-            content: '\\e720';
+        
+        .e-print-icon::before {
+            content: "\\e34b";
         }
-    
-         .e-print-icon::before {
-            content: '\\e34b';
-        }`;
+        
+        .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before
+        {
+            content: '\\e7df';
+        }
+        
+        .e-view.bootstrap .e-print-icon::before {
+            content: '\\ebd2';
+        }
+        
+        .e-view.bootstrap4 .e-print-icon::before {
+            content: '\\e743';
+        }
+        
+        .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
+            content: '\\e76c';
+        }
+        
+        .e-view.highcontrast .e-print-icon::before {
+            content: '\\ebf9';
+        }
+        
+        .e-view.bootstrap5 .e-print-icon::before, .e-view.bootstrap5-dark .e-print-icon::before {
+            content: '\\e75d';
+        }
+        
+        .e-export-icon::before {
+            content: '\\e728';
+        }
+        
+        .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before  {
+            content: '\\e710';
+        }
+        
+        .e-view.bootstrap4 .e-export-icon::before {
+            content: '\\e780';
+        }
+        
+        .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
+            content: '\\e7bf';
+        }
+        
+        .e-view.highcontrast .e-export-icon::before {
+            content: '\\e710';
+        }
+        
+        .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
+            content: '\\e72e';
+        }
+        `;
 export class RangeExport extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
     private rangeInstance: RangeNavigatorComponent;

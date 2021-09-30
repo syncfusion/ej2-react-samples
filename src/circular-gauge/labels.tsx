@@ -29,7 +29,8 @@ export class Labels extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
     }
     // custom code end
     public ticksOffset(): void {
@@ -111,7 +112,7 @@ export class Labels extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: '-10px' }}>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -119,7 +120,7 @@ export class Labels extends SampleBase<{}, {}> {
                                         </td>
                                         <td>
                                             <div>
-                                                <select id="Ticks" className="form-control" style={{ width: '90%' }}>
+                                                <select id="Ticks" className="form-control" style={{ width: '130px' }}>
                                                     <option value="major"> Major Ticks</option>
                                                     <option value="minor">Minor Ticks</option>
                                                 </select>
@@ -132,7 +133,7 @@ export class Labels extends SampleBase<{}, {}> {
                                         </td>
                                         <td>
                                             <div>
-                                                <select id="tickposition" className="form-control" style={{ width: '90%' }}>
+                                                <select id="tickposition" className="form-control" style={{ width: '130px' }}>
                                                     <option value="Inside"> Inside</option>
                                                     <option value="Cross">Cross</option>
                                                     <option value="Outside">Outside</option>
@@ -146,7 +147,7 @@ export class Labels extends SampleBase<{}, {}> {
                                         </td>
                                         <td>
                                             <div>
-                                                <select id="labelposition" className="form-control" style={{ width: '90%' }}>
+                                                <select id="labelposition" className="form-control" style={{ width: '130px' }}>
                                                     <option value="Outside"> Outside</option>
                                                     <option value="Cross">Cross</option>
                                                     <option value="Inside">Inside</option>
@@ -160,7 +161,7 @@ export class Labels extends SampleBase<{}, {}> {
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" onChange={this.ticksOffset.bind(this)} ref={d => this.tickOffset = d} id="tickOffset" defaultValue="0" min="0" max="50" style={{ width: '90%' }} />
+                                                <input type="range" onChange={this.ticksOffset.bind(this)} ref={d => this.tickOffset = d} id="tickOffset" defaultValue="0" min="0" max="50" style={{ width: '130px' }} />
                                             </div>
                                         </td>
                                     </tr>
@@ -170,7 +171,7 @@ export class Labels extends SampleBase<{}, {}> {
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" onChange={this.ticksHeight.bind(this)} ref={d => this.tickHeight = d} id="tickHeight" defaultValue="10" min="1" max="50" style={{ width: '90%' }} />
+                                                <input type="range" onChange={this.ticksHeight.bind(this)} ref={d => this.tickHeight = d} id="tickHeight" defaultValue="10" min="1" max="50" style={{ width: '130px' }} />
                                             </div>
                                         </td>
                                     </tr>
@@ -180,16 +181,16 @@ export class Labels extends SampleBase<{}, {}> {
                                         </td>
                                         <td>
                                             <div>
-                                                <input type="range" onChange={this.labelsOffset.bind(this)} ref={d => this.labelOffset = d} id="labelOffset" defaultValue="0" min="0" max="50" style={{ width: '90%' }} />
+                                                <input type="range" onChange={this.labelsOffset.bind(this)} ref={d => this.labelOffset = d} id="labelOffset" defaultValue="0" min="0" max="50" style={{ width: '130px' }} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "30px" }}>
                                     <td style={{ "width": "50%" }}>
-                                        <div> enablePointer </div>
+                                        <div> Show Last Label </div>
                                     </td>
                                     <td style={{ "width": "50%" }}>
-                                        <div>
+                                        <div style={{marginLeft: "76px"}}>
                                             <CheckBoxComponent change={this.showLastLabel.bind(this)} ref={d => this.lastLabel = d} id='enable' disabled={false} />
                                         </div>
                                     </td>

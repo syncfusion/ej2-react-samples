@@ -1,37 +1,33 @@
-.control-section.input-content-wrapper .e-input-picture:before {
+.control-section.input-content-wrapper .e-upload-picture:before {
     content: '\e335';
     font-family: e-icons;
+    font-size: 14px;
 }
 
-.bootstrap4 .control-section.input-content-wrapper .e-input-picture:before {
-    content: '\e776';
-}
-
-.tailwind .control-section.input-content-wrapper .e-input-picture:before {
+.tailwind .control-section.input-content-wrapper .e-upload-picture:before,
+.tailwind-dark .control-section.input-content-wrapper .e-upload-picture:before {
     content: '\e7da';
+    font-size: 17px;
 }
 
-.control-section.input-content-wrapper .e-input-calendar:before {
-    content: "\e901";
+.e-bigger .control-section.input-content-wrapper .e-upload-picture::before { 
+    font-size: 17px;
+}
+
+.tailwind.e-bigger .control-section.input-content-wrapper .e-upload-picture:before,
+.tailwind-dark.e-bigger .control-section.input-content-wrapper .e-upload-picture:before {
+    font-size: 20px;
+}
+
+.bootstrap4 .control-section.input-content-wrapper .e-upload-picture::before {
+    content: '\e769';
     font-family: e-icons;
-    font-size: 13px;
 }
 
-.fabric .control-section.input-content-wrapper .e-input-calendar:before {
-    content:'\e93a';
-}
-.bootstrap .control-section.input-content-wrapper .e-input-calendar:before {
-    content:'\e960';
-}
-.bootstrap4 .control-section.input-content-wrapper .e-input-calendar:before {
-    content:'\e7be';
-}
-.highcontrast .control-section.input-content-wrapper .e-input-calendar:before {
-    content:'\e93a';
-}
-
-.tailwind .control-section.input-content-wrapper .e-input-calendar:before {
-    content:'\e7b2';
+.bootstrap5 .control-section.input-content-wrapper .e-upload-picture::before
+.bootstrap5-dark .control-section.input-content-wrapper .e-upload-picture::before {
+    content: '\e712';
+    font-family: e-icons;
 }
 
 .control-section.input-content-wrapper .e-input-group.e-small { /* csslint allow: adjoining-classes */
@@ -105,11 +101,16 @@
 .e-outline.e-float-input.e-control-wrapper {
     margin-top: 0;
 }
-.fabric .row.material2,
-.bootstrap .row.material2,
-.bootstrap4 .row.material2,
-.highcontrast .row.material2,
-.tailwind .row.material2 {
+.fabric .row.material,
+.bootstrap .row.material,
+.bootstrap4 .row.material,
+.highcontrast .row.material,
+.tailwind .row.material,
+.bootstrap5 .row.material,
+.bootstrap5-dark .row.material,
+.tailwind-dark .row.material,
+.fabric-dark .row.material,
+.bootstrap-dark .row.material {
     display: none;
 }
 .control-section.input-content-wrapper .col-xs-12.col-sm-12.col-lg-12.col-md-12 {
@@ -122,4 +123,21 @@
     font-size: 14px;
     padding: 8px;
     width: 50%;
+}
+.small-textbox {
+    padding-top: 5px;
+}
+
+.tailwind .small-textbox,
+.tailwind-dark .small-textbox {
+    padding-top: 3px;
+}
+
+.e-bigger .small-textbox {
+    padding-top: 10px;
+}
+
+.tailwind.e-bigger .small-textbox,
+.tailwind-dark.e-bigger .small-textbox {
+    padding-top: 1px;
 }

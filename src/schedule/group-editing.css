@@ -17,7 +17,6 @@
     height: 45px;
     background-size: 45px;
     background-repeat: no-repeat;
-
 }
 
 .group-editing.e-schedule .template-wrap .resource-details {
@@ -28,6 +27,10 @@
     font-size: 16px;
     font-weight: 500;
     padding-right: 10px;
+}
+
+.group-editing.e-schedule .template-wrap .resource-details .resource-designation {
+    font-size: 12px;
 }
 
 .group-editing.e-schedule.e-device .template-wrap .resource-details .resource-name {

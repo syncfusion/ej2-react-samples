@@ -168,7 +168,8 @@ public render(): JSX.Element {
                     target={'.control-section'} ></DialogComponent>
             </div>
 			<div id="action-description">
-                <p> This sample demonstrates the Uploader component supported with HTML form upload.Fill the mandatory details in a form and click the submit button. </p>
+                <p> This <a href="https://www.syncfusion.com/react-ui-components/react-file-upload"
+            target="_blank">&nbsp;React File Upload</a> sample demonstrates the Uploader component supported with HTML form upload.Fill the mandatory details in a form and click the submit button. </p>
             </div>
             <div id="description">
                 <p>The Uploader component works in synchronous mode using HTML form.When the end-user submits the form, the selected files are submitted to server with the <code>name</code> attribute of input element.</p>

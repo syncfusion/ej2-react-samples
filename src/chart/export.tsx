@@ -29,8 +29,29 @@ const SAMPLE_CSS = `
         width: 100%;
         text-align: center;
     }
-    .e-play-icon::before {
-        content: "\\e720";
+
+    .e-export-icon::before {
+        content: '\\e728';
+    }
+    
+    .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before  {
+        content: '\\e710';
+    }
+    
+    .e-view.bootstrap4 .e-export-icon::before {
+        content: '\\e780';
+    }
+    
+    .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
+        content: '\\e7bf';
+    }
+    
+    .e-view.highcontrast .e-export-icon::before {
+        content: '\\e710';
+    }
+    
+    .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
+        content: '\\e72e';
     }`;
 export class ChartExport extends SampleBase<{}, {}> {
     private chartInstance: ChartComponent;
@@ -100,7 +121,7 @@ export class ChartExport extends SampleBase<{}, {}> {
                                 <tr style={{ height: '50px' }}>
                                     <td>
                                         <div id="btn-control"  style={{ 'margin-left': '60px' }}>
-                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-export-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>
@@ -133,7 +154,7 @@ export class ChartExport extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").
         replace(/light/i, "Light") as ChartTheme;
     };
         

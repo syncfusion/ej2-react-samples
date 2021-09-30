@@ -13,7 +13,6 @@ const SAMPLE_CSS = `
 #category:hover {
     cursor: pointer;
 }`;
-let content: string = '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" /><div>';
 export class Drilldown extends SampleBase<{}, {}> {
     public data: Object[] = [
         { x: 'SUV', y: 25 }, { x: 'Car', y: 37 }, { x: 'Pickup', y: 15 },
@@ -165,11 +164,13 @@ export class Drilldown extends SampleBase<{}, {}> {
     public load(args: IAccLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").
-        replace(/light/i, "Light")  as AccumulationTheme;
-        if (selectedTheme === 'highcontrast'){
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+            replace(/-dark/i, "Dark") as AccumulationTheme;
+        if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1){
             args.accumulation.series[0].dataLabel.font.color="white";
-            args.accumulation.annotations[0].content = content;
+            if (args.accumulation.annotations[0] && !this.isparent) {
+                args.accumulation.annotations[0].content = '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" /><div>';
+            }
          }
     };
         

@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, ViewsDirective, ViewDirective,
-  Day, Week, TimelineViews, Inject, Resize, DragAndDrop
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import './event-template.css';
 import { Browser, Internationalization, extend } from '@syncfusion/ej2-base';
@@ -14,8 +13,9 @@ import * as dataSource from './datasource.json';
  */
 
 export class EventTemplate extends SampleBase<{}, {}> {
-  private data: Object[] = extend([], (dataSource as any).webinarData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).webinarData, null, true) as Record<string, any>[];
   private instance: Internationalization = new Internationalization();
+
   private getTimeString(value: Date) {
     return this.instance.formatDate(value, { skeleton: 'hm' });
   }
@@ -30,6 +30,7 @@ export class EventTemplate extends SampleBase<{}, {}> {
       <div className="footer" style={{ background: props.PrimaryColor }}></div></div>
     );
   }
+
   private timelineEventTemplate(props): JSX.Element {
     return (<div className="template-wrap" style={{ background: props.PrimaryColor }}>
       <div className="subject" style={{ background: props.SecondaryColor, borderRightWidth: 15, borderLeftWidth: 15, borderLeftColor: props.PrimaryColor, borderRightColor: props.PrimaryColor, borderLeftStyle: 'solid', borderRightStyle: 'solid' }}>{props.Subject}</div>
@@ -42,7 +43,7 @@ export class EventTemplate extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent cssClass='event-template' width='100%' height='550px' selectedDate={new Date(2018, 1, 15)} readonly={true}
+            <ScheduleComponent cssClass='event-template' width='100%' height='550px' selectedDate={new Date(2021, 1, 15)} readonly={true}
               startHour='08:00' endHour='18:00' workHours={{ start: '08:00' }} eventSettings={{ dataSource: this.data }}>
               <ViewsDirective>
                 <ViewDirective option={Browser.isDevice ? 'Day' : 'Week'} eventTemplate={this.eventTemplate.bind(this)} />
@@ -54,15 +55,15 @@ export class EventTemplate extends SampleBase<{}, {}> {
         </div>
         <div id='action-description'>
           <p>This demo illustrates the way of customizing the default editor window with custom template option and the customized
-        design is automatically replaced onto the usual event editor. Here, a doctor’s daily appointment with his patients is listed
-        out and shaded with specific color based on its status.</p>
+            design is automatically replaced onto the usual event editor. Here, a doctor’s daily appointment with his patients is listed
+            out and shaded with specific color based on its status.</p>
         </div>
         {/* custom code start */}
         <div id='description'>
           <p>With the usage of template,
             the user can format and change the default appearance of the events by making use of the <code>template</code> option
             which is available within the <code>eventSettings</code> property.
-        Here, the HTML template design is compiled and then the resultant output will be displayed directly on the events.
+            Here, the HTML template design is compiled and then the resultant output will be displayed directly on the events.
           </p>
         </div>
         {/* custom code end*/}

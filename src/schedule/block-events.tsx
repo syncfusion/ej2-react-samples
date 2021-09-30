@@ -1,9 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    ScheduleComponent, TreeViewArgs, ResourcesDirective, ResourceDirective,
-    ViewsDirective, ViewDirective, ResourceDetails, Inject, TimelineViews,
-    Resize, DragAndDrop, TimelineMonth, Day
+    ScheduleComponent, ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective,
+    ResourceDetails, Inject, TimelineViews, Resize, DragAndDrop, TimelineMonth, Day
 } from '@syncfusion/ej2-react-schedule';
 import './block-events.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -14,10 +13,8 @@ import * as dataSource from './datasource.json';
  */
 
 export class BlockEvents extends SampleBase<{}, {}> {
-    private scheduleObj: ScheduleComponent;
-    private data: Object[] = extend([], (dataSource as any).blockData, null, true) as Object[];
-
-    private employeeData: Object[] = [
+    private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).blockData, null, true) as Record<string, any>[];
+    private employeeData: Record<string, any>[] = [
         { Text: 'Alice', Id: 1, GroupId: 1, Color: '#bbdc00', Designation: 'Content writer' },
         { Text: 'Nancy', Id: 2, GroupId: 2, Color: '#9e5fff', Designation: 'Designer' },
         { Text: 'Robert', Id: 3, GroupId: 1, Color: '#bbdc00', Designation: 'Software Engineer' },
@@ -26,13 +23,12 @@ export class BlockEvents extends SampleBase<{}, {}> {
         { Text: 'Margaret', Id: 6, GroupId: 2, Color: '#9e5fff', Designation: 'Content Analyst' }
     ];
 
-    private getEmployeeName(value: ResourceDetails | TreeViewArgs): string {
+    private getEmployeeName(value: ResourceDetails): string {
         return (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] as string;
     }
 
     private getEmployeeImage(value: ResourceDetails): string {
-        let resourceName: string = this.getEmployeeName(value);
-        return resourceName.toLowerCase();
+        return this.getEmployeeName(value).toLowerCase();
     }
 
     private getEmployeeDesignation(value: ResourceDetails): string {
@@ -50,12 +46,9 @@ export class BlockEvents extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper drag-sample-wrapper'>
                         <div className="schedule-container">
-                            <ScheduleComponent ref={schedule => this.scheduleObj = schedule} cssClass='block-events' width='100%' height='650px' selectedDate={new Date(2018, 7, 1)}
+                            <ScheduleComponent cssClass='block-events' width='100%' height='650px' selectedDate={new Date(2021, 7, 2)}
                                 currentView='TimelineDay' resourceHeaderTemplate={this.resourceHeaderTemplate.bind(this)}
-                                eventSettings={{
-                                    dataSource: this.data
-                                }}
-                                group={{ enableCompactView: false, resources: ['Employee'] }}>
+                                eventSettings={{ dataSource: this.data }} group={{ enableCompactView: false, resources: ['Employee'] }}>
                                 <ResourcesDirective>
                                     <ResourceDirective field='EmployeeId' title='Employees' name='Employee' allowMultiple={true}
                                         dataSource={this.employeeData} textField='Text' idField='Id' colorField='Color'>
@@ -87,4 +80,3 @@ export class BlockEvents extends SampleBase<{}, {}> {
         );
     }
 }
-

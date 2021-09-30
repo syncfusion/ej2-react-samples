@@ -93,11 +93,9 @@ export class ComplexHierarchicalModel extends SampleBase<{}, {}> {
     //Click Event for Appearance of the layout.
     document.getElementById("appearance").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
-      // custom code start
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
-      // custom code end
       if (selectedElement.length) {
         selectedElement[0].classList.remove("e-selected-style");
       }

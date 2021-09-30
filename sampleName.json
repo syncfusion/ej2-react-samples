@@ -904,7 +904,7 @@
             "sidebar-list": "Sidebar With ListView"
         }
     },
-    "slider": {
+    "range-slider": {
         "ControlName": "Range Slider",
         "Samples": {
             "default": "Default Functionalities",

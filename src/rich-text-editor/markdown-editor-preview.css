@@ -30,6 +30,14 @@
     content: '\e748';
 }
 
+.bootstrap5 #rtePreview .e-icon-btn.e-active .e-md-preview::before {
+    content: '\e80e';
+}
+
+.bootstrap5 #rtePreview .e-icon-btn .e-md-preview::before {
+    content: '\e7de';
+}
+
 #rtePreview .e-rte-content #markdownPreviewhtml-preview.e-content {
     float: right;
     width: 50%;

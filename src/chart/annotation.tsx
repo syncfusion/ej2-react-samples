@@ -134,7 +134,7 @@ export class Annotation extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+            replace(/-dark/i, "Dark") as ChartTheme;
     };
     
     
@@ -151,7 +151,8 @@ export class Annotation extends SampleBase<{}, {}> {
                 load: (args: IAccLoadedEventArgs) => {
                     let selectedTheme: string = location.hash.split('/')[1];
                     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-                    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as AccumulationTheme;
+                    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+                        replace(/-dark/i, "Dark") as AccumulationTheme;
                 },
                 legendSettings: { visible: false }
             });

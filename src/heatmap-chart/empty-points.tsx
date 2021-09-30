@@ -25,7 +25,7 @@ export class EmptyPoints extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <HeatMapComponent id='heatmap-container'
                         titleSettings={{
-                            text: 'Deffective Count per 1000 Products from a Manufacturing Unit',
+                            text: 'Defective Count per 1000 Products from a Manufacturing Unit',
                             textStyle: {
                                 size: '15px',
                                 fontWeight: '500',
@@ -66,7 +66,7 @@ export class EmptyPoints extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample visualizes the number of deffective product count per 1000 units coming out from a manufacturing unit
+                        This sample visualizes the number of defective product count per 1000 units coming out from a manufacturing unit
                         Data points are enhanced with labels and tooltip. Some data points were not marked with any values which indicates
                         there are no deffective products and these data points are termed as empty points.
                     </p>
@@ -98,6 +98,6 @@ export class EmptyPoints extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as HeatMapTheme;
+        args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
     };
 }

@@ -1,4 +1,4 @@
-.e-image {
+.e-treegrid .e-image {
     height: 13px;
     width: 14px;
     vertical-align: middle;
@@ -9,9 +9,14 @@
     height: 19px;
     border-radius: 15px;
     text-align: center;
-    background-color: #cff0dc;
+    background-color: #C3F1D0;
     color: #00752F;
     width: 47px;
+}
+
+.tailwind .e-grid .statustemp, .tailwind-dark .e-grid .statustemp,
+.bootstrap5 .e-grid .statustemp, .bootstrap5-dark .e-grid .statustemp{
+    padding-top: 2px;
 }
 
 .statustemp.e-lowgdp {
@@ -21,7 +26,7 @@
 }
 
 td.e-rowcell .statustxt {
-    color: #00cc00;
+    color: #398120;
     position: relative;
 }
 
@@ -36,7 +41,7 @@ td.e-rowcell .statustxt.e-lowgdp {
 }
 
 .rating .star.checked {
-    color: #ffa600;
+    color: #EE9E54;
 }
 
 .rating .star:before {
@@ -64,15 +69,19 @@ td.e-rowcell .statustxt.e-lowgdp {
     color: white;
 }
 .highcontrast .e-grid #myProgress {
-    background-color: black;
+    background-color: whitesmoke;
 }
 #myProgress {
     position: relative;
     height: 18px;
     width: 10em;
     text-align: left;
-    background-color: white;
+    background-color: whitesmoke;
 }
 #myBar.progressdisable {
     background-color: #df2222;
+}
+
+#coordinates .e-image {
+    filter: brightness(180%);
 }

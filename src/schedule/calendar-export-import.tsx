@@ -21,10 +21,12 @@ export class CalendarImportExport extends SampleBase<{}, {}> {
   private multiple: boolean = false;
   private showFileList: boolean = false;
   private allowedExtensions: string = '.ics';
-  private data: Object[] = extend([], (dataSource as any).scheduleData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
+
   constructor(props) {
     super(props);
   }
+
   private onClick(): void {
     this.scheduleObj.exportToICalendar();
   }
@@ -39,7 +41,7 @@ export class CalendarImportExport extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule}
-              selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: this.data }}>
+              selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: this.data }}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
                 <ViewDirective option='Week' />
@@ -82,7 +84,7 @@ export class CalendarImportExport extends SampleBase<{}, {}> {
         <div id="action-description">
           <p>
             This example showcases how to export the Scheduler events to a calendar (.ics) file, as well as how to import events from an .ics file (downloaded from any of the calendars like Google or Outlook) into our Scheduler.
-            </p>
+          </p>
         </div>
         <div id="description">
           <p>
@@ -90,13 +92,13 @@ export class CalendarImportExport extends SampleBase<{}, {}> {
             the calendar is exported with a file name <code>Calendar.ics</code>.
             To change this file name on export, pass the custom string value as <code>fileName</code> to get the file downloaded with this provided name.
             The events from external calendars can also be imported into Scheduler by making use of the <code>importICalendar</code> method. This method accepts the blob object of an .ics file to be imported as a mandatory argument.
-            </p>
+          </p>
           <p>
             <strong>Module Injection</strong>
           </p>
           <p>
             To start using the export and import ICS functionality in Scheduler, we need to inject <code>ICalendarExport</code> and <code>ICalendarImport</code> modules into the services.
-            </p>
+          </p>
         </div>
       </div>
     );

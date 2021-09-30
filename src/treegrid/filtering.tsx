@@ -44,12 +44,12 @@ export class Filtering extends SampleBase<{}, {}> {
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                   <tr>
-                    <td style={{ width: '50%' }}>
+                    <td style={{ width: '30%' }}>
                       <div style={{ paddingTop: '10px'}}> Hierarchy Mode </div>
                     </td>
-                    <td style={{ width: '60%' }}>
+                    <td style={{ width: '70%' }}>
                       <div>
-                         <DropDownListComponent width="120px" id="selmode" change={this.onChange.bind(this)}
+                         <DropDownListComponent width="100px" id="selmode" change={this.onChange.bind(this)}
                             dataSource={this.modes} value="Parent" />
                       </div>
                     </td>

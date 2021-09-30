@@ -16,7 +16,8 @@ export class Default extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
     }
     // custom code end
     render() {
@@ -29,7 +30,7 @@ export class Default extends SampleBase<{}, {}> {
                     <LinearGaugeComponent load={this.load.bind(this)} id='gauge' orientation='Horizontal'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
-                            <AxisDirective minorTicks={{  interval: 2 }} majorTicks={{ interval: 10 }} labelStyle={{ font: { color: '#424242' }, offset: 48 }}>
+                            <AxisDirective minorTicks={{  interval: 2 }} majorTicks={{ interval: 10 }} labelStyle={{ offset: 48 }}>
                                 <PointersDirective>
                                     <PointerDirective value={10} placement='Near' height={15} width={15} offset={-50} markerType='Triangle'>
                                     </PointerDirective>

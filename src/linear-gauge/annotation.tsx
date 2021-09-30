@@ -24,7 +24,8 @@ export class Annotation extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as LinearGaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
     }
     // custom code end
     render() {
@@ -41,7 +42,7 @@ export class Annotation extends SampleBase<{}, {}> {
                         <AxesDirective>
                             <AxisDirective maximum={90} majorTicks={{ interval: 10, height: 0 }} minorTicks={{ height: 0 }} line={{ width: 0 }} labelStyle={{ font: { size: '0px' } }}>
                                 <PointersDirective>
-                                    <PointerDirective value={35} color='#757575' placement='Near' height={15} width={15} offset={-50} markerType='Triangle'>
+                                    <PointerDirective value={35} placement='Near' height={15} width={15} offset={-50} markerType='Triangle'>
                                     </PointerDirective>
                                 </PointersDirective>
                                 <RangesDirective>

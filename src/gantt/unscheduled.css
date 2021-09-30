@@ -6,3 +6,9 @@
   content: '\e783';
   font-family: 'e-icons';
 }
+.tailwind #Unscheduled .e-add-icon:before,.tailwind-dark #Unscheduled .e-add-icon:before {
+   content: "\e7dd"
+}
+.bootstrap5 #Unscheduled .e-add-icon:before,.bootstrap5-dark #Unscheduled .e-add-icon:before {
+   content: "\e836"
+}

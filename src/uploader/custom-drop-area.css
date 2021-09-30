@@ -15,8 +15,13 @@
 .customdropArea a {
     color: blue;
 }
-.highcontrast .customdropArea a {
-    color:#ffd939;
+.highcontrast .customdropArea a,
+.material-dark .customdropArea a,
+.fabric-dark .customdropArea a,
+.bootstrap-dark .customdropArea a,
+.bootstrap5-dark .customdropArea a,
+.tailwind-dark .customdropArea a {
+    color: #fff;
 }
 #customdropArea {
   min-height: 50px;
@@ -87,7 +92,27 @@ span#dropText {
 }
 
 .highcontrast #customTarget {
-    background-color: #000;
+  background-color: #393939;
+}
+
+.material-dark #customTarget {
+  background-color: #616161;
+}
+
+.fabric-dark #customTarget {
+  background-color: #414040;
+}
+
+.bootstrap-dark #customTarget {
+  background-color: #393939;
+}
+
+.bootstrap5-dark #customTarget {
+  background-color: #6c757d;
+}
+
+.tailwind-dark #customTarget {
+  background-color: #6c757d;
 }
 
 .bootstrap4 #customTarget {
@@ -112,7 +137,7 @@ span#dropText {
     color: #d9534f;
 }
 .fileListwrapper .upload-success {
-    color: #107c10;
+    color: #5cb85c;
 }
 
 .fileListwrapper .upload-status {

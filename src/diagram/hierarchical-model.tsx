@@ -83,14 +83,12 @@ export class HierarchicalModel extends SampleBase<{}, {}> {
     //Click event for Appearance of the Property Panel.
     document.getElementById("appearance").onclick = (args: MouseEvent) => {
       let target: HTMLElement = args.target as HTMLElement;
-      // custom code start
       let selectedElement: HTMLCollection = document.getElementsByClassName(
         "e-selected-style"
       );
       if (selectedElement.length) {
         selectedElement[0].classList.remove("e-selected-style");
       }
-      // custom code end
       if (target.className === "image-pattern-style") {
         switch (target.id) {
           case "toptobottom":
@@ -360,7 +358,5 @@ function updatelayout(
   diagramInstance.layout.orientation = orientation;
   diagramInstance.dataBind();
   diagramInstance.doLayout();
-  // custom code start
   target.classList.add("e-selected-style");
-  // custom code end
 }

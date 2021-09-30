@@ -18,15 +18,15 @@ import * as dataSource from './datasource.json';
 
 export class WorkDays extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
-  private data: Object[] = extend([], (dataSource as any).employeeEventData, null, true) as Object[];
+  private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
   private workDays: number[] = [1, 3, 5];
-  private workDaysOptions: { [key: string]: Object }[] = [
+  private workDaysOptions: Record<string, any>[] = [
     { text: 'Mon, Wed, Fri', value: '1,3,5' },
     { text: 'Mon, Tue, Wed, Thu, Fri', value: '1,2,3,4,5' },
     { text: 'Tue, Wed, Thu, Fri', value: '2,3,4,5' },
     { text: 'Thu, Fri, Sat, Mon, Tue', value: '4,5,6,1,2' }
   ];
-  private dayOfWeekOptions: { [key: string]: Object }[] = [
+  private dayOfWeekOptions: Record<string, any>[] = [
     { text: 'Sunday', value: 0 },
     { text: 'Monday', value: 1 },
     { text: 'Tuesday', value: 2 },
@@ -35,15 +35,18 @@ export class WorkDays extends SampleBase<{}, {}> {
     { text: 'Friday', value: 5 },
     { text: 'Saturday', value: 6 }
   ];
-  private fields: object = { text: 'text', value: 'value' };
+  private fields: Record<string, any> = { text: 'text', value: 'value' };
+
   private onWorkDaysChange(args: ChangeEventArgs): void {
     this.scheduleObj.workDays = args.value.toString().split(',').map(Number);
     this.scheduleObj.dataBind();
   }
+
   private onDayOfWeekChange(args: ChangeEventArgs): void {
     this.scheduleObj.firstDayOfWeek = args.value as number;
     this.scheduleObj.dataBind();
   }
+
   private onEventRendered(args: EventRenderedArgs): void {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
@@ -54,7 +57,7 @@ export class WorkDays extends SampleBase<{}, {}> {
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' ref={schedule => this.scheduleObj = schedule} workHours={{ start: '08:00' }}
-              currentView='WorkWeek' selectedDate={new Date(2018, 1, 15)} eventSettings={{ dataSource: this.data }} workDays={this.workDays}
+              currentView='WorkWeek' selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: this.data }} workDays={this.workDays}
               eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Week' />
@@ -72,25 +75,20 @@ export class WorkDays extends SampleBase<{}, {}> {
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
               <tbody>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>Work days</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
                       <DropDownListComponent style={{ padding: '6px' }} value={'1,3,5'} dataSource={this.workDaysOptions}
-                        fields={this.fields} change={this.onWorkDaysChange.bind(this)} popupWidth='180px'>
+                        fields={this.fields} change={this.onWorkDaysChange.bind(this)} popupWidth='180px'
+                        placeholder='Work days' floatLabelType='Always'>
                       </DropDownListComponent>
                     </div>
                   </td>
                 </tr>
                 <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div className='col-md-4' style={{ paddingTop: '8px' }}>First day of week</div>
-                  </td>
-                  <td style={{ width: '70%' }}>
+                  <td style={{ width: '100%' }}>
                     <div>
                       <DropDownListComponent style={{ padding: '6px' }} value={0} dataSource={this.dayOfWeekOptions} fields={this.fields}
-                        change={this.onDayOfWeekChange.bind(this)}>
+                        change={this.onDayOfWeekChange.bind(this)} placeholder='First day of week' floatLabelType='Always'>
                       </DropDownListComponent>
                     </div>
                   </td>
