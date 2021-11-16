@@ -14,7 +14,7 @@ import {
   ExcelExport, ICalendarImport, ICalendarExport, CellClickEventArgs, Timezone, CurrentAction
 } from '@syncfusion/ej2-react-schedule';
 import { DropDownButtonComponent, ItemModel, MenuEventArgs } from '@syncfusion/ej2-react-splitbuttons';
-import { addClass, Browser, closest, extend, Internationalization, isNullOrUndefined, removeClass, remove, compile } from '@syncfusion/ej2-base';
+import { addClass, Browser, closest, extend, Internationalization, isNullOrUndefined, removeClass, remove } from '@syncfusion/ej2-base';
 import { DataManager, Predicate, Query } from '@syncfusion/ej2-data';
 import { tz } from 'moment-timezone';
 import { SampleBase } from '../common/sample-base';
@@ -137,11 +137,6 @@ export class Overview extends SampleBase<{}, {}> {
     { Name: 'First Full Week', Value: 'FirstFullWeek' },
     { Name: 'First Four-Day Week', Value: 'FirstFourDayWeek' }
   ];
-
-  private importTemplateFn(data: Record<string, any>): NodeList {
-    const template: string = '<div class="e-template-btn"><span class="e-btn-icon e-icons e-upload-1 e-icon-left"></span>${text}</div>';
-    return compile(template.trim())(data) as NodeList;
-  }
 
   private updateLiveTime(): void {
     let scheduleTimezone: string = this.scheduleObj ? this.scheduleObj.timezone : 'Etc/GMT';
@@ -578,9 +573,10 @@ export class Overview extends SampleBase<{}, {}> {
                     <div className='control-panel calendar-export'>
                       <ButtonComponent id='printBtn' cssClass='title-bar-btn' iconCss='e-icons e-print' onClick={(this.onPrint.bind(this))} content='Print' />
                     </div>
-                    <div className='control-panel'>
+                    <div className='control-panel' style={{ display: 'inline-flex', paddingLeft: '15px' }}>
+                      <div className='e-icons e-upload-1 e-btn-icon e-icon-left' style={{ lineHeight: '40px' }}></div>
                       <UploaderComponent id='fileUpload' type='file' allowedExtensions='.ics' cssClass='calendar-import'
-                        buttons={{ browse: this.importTemplateFn({ text: 'Import' })[0] as HTMLElement }} multiple={false} showFileList={false} selected={(this.onImportClick.bind(this))} />
+                        buttons={{ browse: 'Import' }} multiple={false} showFileList={false} selected={(this.onImportClick.bind(this))} />
                     </div>
                     <div className='control-panel calendar-export'>
                       <DropDownButtonComponent id='exporting' content='Export' items={this.exportItems} select={this.onExportClick.bind(this)} />
@@ -731,7 +727,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>First Day of Week</label>
                       </div>
                       <div className='col-right'>
-                        <DropDownListComponent id="weekFirstDay" dataSource={this.weekDays} fields={{ text: 'text', value: 'value' }} value={0}
+                        <DropDownListComponent id="weekFirstDay" width={170} dataSource={this.weekDays} fields={{ text: 'text', value: 'value' }} value={0}
                           popupHeight={150} change={(args: ChangeEventArgs) => { this.scheduleObj.firstDayOfWeek = args.value as number; }} />
                       </div>
                     </div>
@@ -740,7 +736,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Work week</label>
                       </div>
                       <div className='col-right'>
-                        <MultiSelectComponent id="workWeekDays" cssClass='schedule-workweek' ref={(workWeek: MultiSelectComponent) => this.workWeekObj = workWeek} dataSource={this.weekDays} mode='CheckBox'
+                        <MultiSelectComponent id="workWeekDays" cssClass='schedule-workweek' ref={(workWeek: MultiSelectComponent) => this.workWeekObj = workWeek} width={170} dataSource={this.weekDays} mode='CheckBox'
                           fields={{ text: 'text', value: 'value' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true}
                           popupHeight={150} value={[1, 2, 3, 4, 5]} change={(args: MultiSelectChangeEventArgs) => this.scheduleObj.workDays = args.value as number[]}>
                           <Inject services={[CheckBoxSelection]} />
@@ -752,7 +748,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Resources</label>
                       </div>
                       <div className='col-right'>
-                        <MultiSelectComponent id="resources" cssClass='schedule-resource' ref={(resources: MultiSelectComponent) => this.resourceObj = resources} dataSource={this.calendarCollections as Record<string, any>[]}
+                        <MultiSelectComponent id="resources" cssClass='schedule-resource' ref={(resources: MultiSelectComponent) => this.resourceObj = resources} width={170} dataSource={this.calendarCollections as Record<string, any>[]}
                           mode='CheckBox' fields={{ text: 'CalendarText', value: 'CalendarId' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true}
                           popupHeight={150} value={[1]} change={this.onResourceChange.bind(this)}>
                           <Inject services={[CheckBoxSelection]} />
@@ -764,7 +760,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Timezone</label>
                       </div>
                       <div className='col-right'>
-                        <DropDownListComponent id="timezone" dataSource={this.timezoneData} fields={{ text: 'text', value: 'value' }} value='Etc/GMT'
+                        <DropDownListComponent id="timezone" width={170} dataSource={this.timezoneData} fields={{ text: 'text', value: 'value' }} value='Etc/GMT'
                           popupHeight={150} change={(args: ChangeEventArgs) => {
                             this.scheduleObj.timezone = args.value as string;
                             this.updateLiveTime();
@@ -778,7 +774,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Day Start Hour</label>
                       </div>
                       <div className='col-right'>
-                        <TimePickerComponent id='dayStartHour' showClearButton={false} value={new Date(new Date().setHours(0, 0, 0))}
+                        <TimePickerComponent id='dayStartHour' width={170} showClearButton={false} value={new Date(new Date().setHours(0, 0, 0))}
                           change={(args: TimeEventArgs) => this.scheduleObj.startHour = this.intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
                       </div>
                     </div>
@@ -787,7 +783,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Day End Hour</label>
                       </div>
                       <div className='col-right'>
-                        <TimePickerComponent id='dayEndHour' showClearButton={false} value={new Date(new Date().setHours(23, 59, 59))}
+                        <TimePickerComponent id='dayEndHour' width={170} showClearButton={false} value={new Date(new Date().setHours(23, 59, 59))}
                           change={(args: TimeEventArgs) => this.scheduleObj.endHour = this.intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
                       </div>
                     </div>
@@ -796,7 +792,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Work Start Hour</label>
                       </div>
                       <div className='col-right'>
-                        <TimePickerComponent id='workHourStart' showClearButton={false} value={new Date(new Date().setHours(9, 0, 0))}
+                        <TimePickerComponent id='workHourStart' width={170} showClearButton={false} value={new Date(new Date().setHours(9, 0, 0))}
                           change={(args: TimeEventArgs) => this.scheduleObj.workHours.start = this.intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
                       </div>
                     </div>
@@ -805,7 +801,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Work End Hour</label>
                       </div>
                       <div className='col-right'>
-                        <TimePickerComponent id='workHourEnd' showClearButton={false} value={new Date(new Date().setHours(18, 0, 0))}
+                        <TimePickerComponent id='workHourEnd' width={170} showClearButton={false} value={new Date(new Date().setHours(18, 0, 0))}
                           change={(args: TimeEventArgs) => this.scheduleObj.workHours.end = this.intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
                       </div>
                     </div>
@@ -814,7 +810,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Slot Duration</label>
                       </div>
                       <div className='col-right'>
-                        <DropDownListComponent id="slotDuration" dataSource={this.majorSlotData} fields={{ text: 'Name', value: 'Value' }} value={60}
+                        <DropDownListComponent id="slotDuration" width={170} dataSource={this.majorSlotData} fields={{ text: 'Name', value: 'Value' }} value={60}
                           popupHeight={150} change={(args: ChangeEventArgs) => { this.scheduleObj.timeScale.interval = args.value as number; }} />
                       </div>
                     </div>
@@ -823,7 +819,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Slot Interval</label>
                       </div>
                       <div className='col-right'>
-                        <DropDownListComponent id="slotInterval" dataSource={this.minorSlotData} value={2} popupHeight={150}
+                        <DropDownListComponent id="slotInterval" width={170} dataSource={this.minorSlotData} value={2} popupHeight={150}
                           change={(args: ChangeEventArgs) => { this.scheduleObj.timeScale.slotCount = args.value as number; }} />
                       </div>
                     </div>
@@ -832,7 +828,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Time Format</label>
                       </div>
                       <div className='col-right'>
-                        <DropDownListComponent id="timeFormat" dataSource={this.timeFormatData} fields={{ text: 'Name', value: 'Value' }} value={"hh:mm a"} popupHeight={150}
+                        <DropDownListComponent id="timeFormat" width={170} dataSource={this.timeFormatData} fields={{ text: 'Name', value: 'Value' }} value={"hh:mm a"} popupHeight={150}
                           change={(args: ChangeEventArgs) => { this.scheduleObj.timeFormat = args.value as any; }} />
                       </div>
                     </div>
@@ -841,7 +837,7 @@ export class Overview extends SampleBase<{}, {}> {
                         <label style={{ lineHeight: '34px', margin: '0' }}>Week Numbers</label>
                       </div>
                       <div className='col-right'>
-                        <DropDownListComponent id="weekNumber" dataSource={this.weekNumberData} fields={{ text: 'Name', value: 'Value' }} value={"Off"} popupHeight={150}
+                        <DropDownListComponent id="weekNumber" width={170} dataSource={this.weekNumberData} fields={{ text: 'Name', value: 'Value' }} value={"Off"} popupHeight={150}
                           change={(args: ChangeEventArgs) => {
                             if (args.value == "Off") {
                               this.scheduleObj.showWeekNumber = false;
