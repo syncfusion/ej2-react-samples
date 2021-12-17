@@ -62,10 +62,11 @@ import { GanttSampleOrder } from '../gantt/config';
 import { SpreadsheetSampleOrder } from '../spreadsheet/config';
 import { ListBoxSampleOrder } from '../list-box/config';
 import { BreadcrumbSampleOrder } from '../breadcrumb/config';
+import { SignatureSampleOrder } from '../signature/config';
 
 export let samplesList: any = [
     {
-        'name': 'Data Grid', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder, 'type': 'update'
+        'name': 'Data Grid', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
     },
     {
         'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder, 'type': 'update'
@@ -74,10 +75,10 @@ export let samplesList: any = [
         'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type': 'update'
     },
     {
-        'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder, 'type': 'update'
+        'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder
     },
     {
-        'name': 'Chart', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'ftName': 'chart'
+        'name': 'Chart', 'category': 'Data Visualization', 'type': 'update', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'ftName': 'chart'
     },
     {
         'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'samples': DiagramSampleOrder
@@ -128,7 +129,7 @@ export let samplesList: any = [
         'name': 'DocumentEditor', 'type': 'update', 'category': 'Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
     },
     {
-        'name': 'RichTextEditor',  'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder, 'type': 'update'
+        'name': 'RichTextEditor',  'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
         'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
@@ -161,7 +162,7 @@ export let samplesList: any = [
         'name': 'Dropdown List', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
     },
     {
-        'name': 'Dropdown Tree', 'category': 'Dropdowns', 'type': 'update', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder
+        'name': 'Dropdown Tree', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder
     },
     {
         'name': 'MultiSelect Dropdown', 'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
@@ -188,7 +189,10 @@ export let samplesList: any = [
         'name': 'Accordion', 'category': 'Navigation', 'path': 'accordion', 'samples': AccordionSampleOrder
     },
     {
-        'name': 'Breadcrumb', 'category': 'Navigation', 'type': 'preview', 'path': 'breadcrumb', 'samples': BreadcrumbSampleOrder
+        'name': 'Breadcrumb', 'category': 'Navigation', 'type': 'update', 'path': 'breadcrumb', 'samples': BreadcrumbSampleOrder
+    },
+    {
+        'name': 'Signature', 'category': 'Inputs', 'type': 'preview', 'path': 'signature', 'samples': SignatureSampleOrder
     },
     {
         'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
@@ -242,7 +246,7 @@ export let samplesList: any = [
         'name': 'In-place Editor', 'category': 'Editors', 'path': 'inplace-editor', 'samples': InPlaceEditorSampleOrder       
     },
 	{
-        'name': 'Query Builder', 'category': 'Forms', 'path': 'query-builder', 'samples': QueryBuilderSampleOrder, 'type': 'update'       
+        'name': 'Query Builder', 'category': 'Forms', 'path': 'query-builder', 'samples': QueryBuilderSampleOrder      
     },
 	{
         'name': 'PDF Viewer', 'category': 'Viewer', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'

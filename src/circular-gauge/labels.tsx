@@ -14,6 +14,10 @@ import { DropDownList } from '@syncfusion/ej2-dropdowns';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
+    }
+    
+    .tailwind .labelCheckbox, .tailwind-dark .labelCheckbox{
+        margin-top: 2px;
     }`;
     
 export class Labels extends SampleBase<{}, {}> {
@@ -40,7 +44,7 @@ export class Labels extends SampleBase<{}, {}> {
         } else {
             this.gauge.axes[0].minorTicks.offset = value;
         }
-        document.getElementById('offset').innerHTML = 'Tick Offset <span>&nbsp;&nbsp;&nbsp;' + value;
+        document.getElementById('offset').innerHTML = String(value);
         this.gauge.refresh();
     }
     public ticksHeight(): void {
@@ -50,13 +54,13 @@ export class Labels extends SampleBase<{}, {}> {
         } else {
             this.gauge.axes[0].minorTicks.height = value;
         }
-        document.getElementById('height').innerHTML = 'Tick Height <span>&nbsp;&nbsp;&nbsp;' + value;
+        document.getElementById('height').innerHTML = String(value);
         this.gauge.refresh();
     }
     public labelsOffset(): void {
         let value: number = +this.labelOffset.value;
         this.gauge.axes[0].labelStyle.offset = value;
-        document.getElementById('labelOffsetValue').innerHTML = 'Label Offset <span>&nbsp;&nbsp;&nbsp;' + value;
+        document.getElementById('labelOffsetValue').innerHTML = String(value);
         this.gauge.refresh();
     }
     public showLastLabel(): void {
@@ -112,15 +116,15 @@ export class Labels extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: '-10px' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', overflow: 'hidden' }}>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <div> Ticks </div>
+                                            <div style={{ marginLeft: "-10px" }}> Ticks </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: "40%" }}>
                                             <div>
-                                                <select id="Ticks" className="form-control" style={{ width: '130px' }}>
+                                                <select id="Ticks" className="form-control">
                                                     <option value="major"> Major Ticks</option>
                                                     <option value="minor">Minor Ticks</option>
                                                 </select>
@@ -129,11 +133,11 @@ export class Labels extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div> Tick Position </div>
+                                            <div style={{ marginLeft: "-10px" }}> Tick Position </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: "40%" }}>
                                             <div>
-                                                <select id="tickposition" className="form-control" style={{ width: '130px' }}>
+                                                <select id="tickposition" className="form-control">
                                                     <option value="Inside"> Inside</option>
                                                     <option value="Cross">Cross</option>
                                                     <option value="Outside">Outside</option>
@@ -143,11 +147,11 @@ export class Labels extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div> Label Position </div>
+                                            <div style={{ marginLeft: "-10px" }}> Label Position </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: "40%" }}>
                                             <div>
-                                                <select id="labelposition" className="form-control" style={{ width: '130px' }}>
+                                                <select id="labelposition" className="form-control">
                                                     <option value="Outside"> Outside</option>
                                                     <option value="Cross">Cross</option>
                                                     <option value="Inside">Inside</option>
@@ -155,43 +159,58 @@ export class Labels extends SampleBase<{}, {}> {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style={{ "height": "50px" }}>
                                         <td>
-                                            <div id='offset'>Tick Offset <span>&nbsp;&nbsp;&nbsp;0</span> </div>
+                                            <div style={{ marginLeft: "-10px" }}>Tick Offset </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: "40%" }}>
                                             <div>
-                                                <input type="range" onChange={this.ticksOffset.bind(this)} ref={d => this.tickOffset = d} id="tickOffset" defaultValue="0" min="0" max="50" style={{ width: '130px' }} />
+                                                <input type="range" onChange={this.ticksOffset.bind(this)} ref={d => this.tickOffset = d} id="tickOffset" defaultValue="0" min="0" max="50" style={{ width: '90%' }} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='offset'>0</span>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style={{ "height": "50px" }}>
                                         <td>
-                                            <div id='height'>Tick Height <span>&nbsp;&nbsp;&nbsp;10</span> </div>
+                                            <div style={{ marginLeft: "-10px" }}>Tick Height </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: "40%" }}>
                                             <div>
-                                                <input type="range" onChange={this.ticksHeight.bind(this)} ref={d => this.tickHeight = d} id="tickHeight" defaultValue="10" min="1" max="50" style={{ width: '130px' }} />
+                                                <input type="range" onChange={this.ticksHeight.bind(this)} ref={d => this.tickHeight = d} id="tickHeight" defaultValue="10" min="1" max="50" style={{ width: '90%' }} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='height'>10</span>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style={{ "height": "50px" }}>
                                         <td>
-                                            <div id='labelOffsetValue'>Label Offset <span>&nbsp;&nbsp;&nbsp;0</span> </div>
+                                            <div style={{ marginLeft: "-10px" }}>Label Offset </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: "40%" }}>
                                             <div>
-                                                <input type="range" onChange={this.labelsOffset.bind(this)} ref={d => this.labelOffset = d} id="labelOffset" defaultValue="0" min="0" max="50" style={{ width: '130px' }} />
+                                                <input type="range" onChange={this.labelsOffset.bind(this)} ref={d => this.labelOffset = d} id="labelOffset" defaultValue="0" min="0" max="50" style={{ width: '90%' }} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='labelOffsetValue'>0</span>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr style={{ "height": "30px" }}>
+                                    <tr style={{ "height": "50px" }}>
                                     <td style={{ "width": "50%" }}>
-                                        <div> Show Last Label </div>
+                                        <div style={{ marginLeft: "-10px" }}> Show Last Label </div>
                                     </td>
-                                    <td style={{ "width": "50%" }}>
-                                        <div style={{marginLeft: "76px"}}>
-                                            <CheckBoxComponent change={this.showLastLabel.bind(this)} ref={d => this.lastLabel = d} id='enable' disabled={false} />
+                                    <td style={{ "width": "40%" }}>
+                                        <div className='labelCheckbox' style={{marginLeft: "-10px", paddingTop: "0px"}}>
+                                            <CheckBoxComponent change={this.showLastLabel.bind(this)} ref={d => this.lastLabel = d} id='enable' disabled={false} style={{paddingLeft: "0px"}}/>
                                         </div>
                                     </td>
                                 </tr>
@@ -228,7 +247,7 @@ export class Labels extends SampleBase<{}, {}> {
         if (!this.loaded) {
             this.loaded = true;
             this.ticks = new DropDownList({
-                index: 0, width: 130,
+                index: 0, width: '125%',
                 change: () => {
                     let value: string = this.ticks.value.toString();
                     let tickProp: TickModel; this.isMajorTicks = value === 'major';
@@ -240,14 +259,14 @@ export class Labels extends SampleBase<{}, {}> {
                     this.tickPosition.value = tickProp.position;
                     this.tickOffset.value = tickProp.offset.toString();
                     this.tickHeight.value = tickProp.height.toString();
-                    document.getElementById('offset').innerHTML = 'Tick Offset <span>&nbsp;&nbsp;&nbsp;' + tickProp.offset;
-                    document.getElementById('height').innerHTML = 'Tick Height <span>&nbsp;&nbsp;&nbsp;' + tickProp.height;
+                    document.getElementById('offset').innerHTML = String(tickProp.offset);
+                    document.getElementById('height').innerHTML = String(tickProp.height);
                 }
             });
             this.ticks.appendTo('#Ticks');
 
             this.tickPosition = new DropDownList({
-                index: 0, width: 130,
+                index: 0, width: '125%',
                 change: () => {
                     let value: string = this.tickPosition.value.toString();
                     if (this.isMajorTicks) {
@@ -261,7 +280,7 @@ export class Labels extends SampleBase<{}, {}> {
             this.tickPosition.appendTo('#tickposition');
 
             this.labelPosition = new DropDownList({
-                index: 0, width: 130,
+                index: 0, width: '125%',
                 change: () => {
                     let value: string = this.labelPosition.value.toString();
                     this.gauge.axes[0].labelStyle.position = value as Position;

@@ -25,8 +25,10 @@ export class PieRadius extends SampleBase<{}, {}> {
         <div className='control-section'>
           <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
             legendSettings={{
-              visible: true
+              visible: true,
+              reverse: true
             }}
+            useGroupingSeparator={true} 
             enableSmartLabels={true}
             enableAnimation={true}
             load={this.load.bind(this)}
@@ -46,16 +48,21 @@ export class PieRadius extends SampleBase<{}, {}> {
 
           <div id="action-description">
             <p>
-            This sample compares countries by population density and total area by using the various radius in pie series.
+            This sample compares countries by population density and total area by using various radius in pie series.
             </p>
           </div>
           <div id="description">
-          <p> In this example, you can see how to render doughnut chart with different radius. You can use <code>radius</code> mapping property to achieve this feature.<code>dataLabel</code>  is used to represent individual data and its value.</p>
+          <p> In this example, you can see how to render doughnut chart with different radius. You can use <code>radius</code> mapping property to achieve this feature. <code>dataLabel</code> is used to represent individual data and its value. In addition, the sample shows how to shift the order of the legend for the doughnut chart by using the <code>reverse</code> property.</p>
             <p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
             <p><b>Injecting Module</b></p>
             <p>
               Accumulation Chart component features are segregated into individual feature-wise modules.To use pie chart, you need to inject <code>AccumulationLegend</code> into <code>services</code>.
             </p>
+            <br />
+            <p>
+                        More information on the pie series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/">documentation section</a>.
+                  </p>
           </div>
         </div>
       </div>

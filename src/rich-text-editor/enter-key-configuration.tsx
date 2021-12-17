@@ -85,12 +85,14 @@ export class EnterKeyConfiguration extends SampleBase<{}, ITextValue> {
         codeView.appendChild(mirrorView);
     }
     mirrorView.style.display = 'block';
-    CodeMirror(mirrorView, {
-        value: this.rteObj.value,
-        mode: 'text/html',
-        lineWrapping: true,
-        readOnly: true
-    });
+    if (this.rteObj.value !== null) {
+        CodeMirror(mirrorView, {
+            value: this.rteObj.value,
+            mode: 'text/html',
+            lineWrapping: true,
+            readOnly: true
+        });
+    }
   }
 
   render() {

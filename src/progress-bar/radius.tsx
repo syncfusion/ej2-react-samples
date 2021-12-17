@@ -54,7 +54,6 @@ export class ProgressBarRadius extends SampleBase<{}, {}> {
         args.progressBar.progressColor = '#FFFFFF';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
-        if (args.progressBar.element.id === 'full-background') {
             switch (selectedTheme) {
                 case 'material':
                     args.progressBar.trackColor = '#e91e63';
@@ -89,7 +88,6 @@ export class ProgressBarRadius extends SampleBase<{}, {}> {
                 default:
                     args.progressBar.trackColor = '#007bff';
                     break;
-            }
         }
     }
 

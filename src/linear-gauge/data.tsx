@@ -9,6 +9,15 @@ import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
+    }
+    .exerciseText {
+        margin-top: 2px;
+    }
+    .tailwind .exerciseText , .tailwind-dark .exerciseText {
+        margin-top: 4px;
+    }
+    .material .exerciseText , .material-dark .exerciseText, .bootstrap .exerciseText , .bootstrap-dark .exerciseText, .bootstrap4 .exerciseText{
+        margin-top: 4px;
     }`;
 
 export class Data extends SampleBase<{}, {}> {
@@ -74,14 +83,14 @@ export class Data extends SampleBase<{}, {}> {
                                 </AxisDirective>
                             </AxesDirective>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div id="title" style="width:300px;"> <img style="float:left" src="src/linear-gauge/images/exercise-tracking.svg"/><p style="font-size:18px;color:#4285F4;float:left;margin-left:12px;margin-top:4px">Exercise Tracking </p></div>'
+                                <AnnotationDirective content='<div id="title" style="width:300px;"> <img style="float:left" src="src/linear-gauge/images/exercise-tracking.svg"/><p class="exerciseText" style="font-size:18px;color:#4285F4;float:left;margin-left:12px;">Exercise Tracking </p></div>'
                                     axisIndex={0}
                                     axisValue={0}
                                     x={150}
                                     zIndex= '1'
                                     y={-180}>
                                 </AnnotationDirective>
-                                <AnnotationDirective content='<div id="running" style="width:100px;"><img style="height:25px;width:25px;float:left" src="src/linear-gauge/images/Running.svg" /></span><p style="float:left;margin-left:10px;">Running</p></div>'
+                                <AnnotationDirective content='<div id="running" style="width:100px;"><img style="height:25px;width:25px;float:left" src="src/linear-gauge/images/Running.svg" /></span><p style="float:left;margin-left:10px;margin-top:5px">Running</p></div>'
                                     axisIndex={0}
                                     axisValue={0}
                                     zIndex= '1'
@@ -117,7 +126,7 @@ export class Data extends SampleBase<{}, {}> {
                                 </AxisDirective>
                             </AxesDirective>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div id="cycle" style="width:100px;"><img style="height:25px;width:25px;float:left" src="src/linear-gauge/images/Cycling.svg" /></span><p style="float:left;margin-left:10px;">Cycling</p></div>'
+                                <AnnotationDirective content='<div id="cycle" style="width:100px;"><img style="height:25px;width:25px;float:left" src="src/linear-gauge/images/Cycling.svg" /></span><p style="float:left;margin-left:10px;margin-top:5px;">Cycling</p></div>'
                                     axisIndex={0}
                                     axisValue={0}
                                     zIndex= '1'
@@ -153,7 +162,7 @@ export class Data extends SampleBase<{}, {}> {
                                 </AxisDirective>
                             </AxesDirective>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div id="walk" style="width:100px;"><img style="height:25px;width:25px;float:left" src="src/linear-gauge/images/Walking.svg" /></span><p style="float:left;margin-left:10px;">Walking</p></div>'
+                                <AnnotationDirective content='<div id="walk" style="width:100px;"><img style="height:25px;width:25px;float:left" src="src/linear-gauge/images/Walking.svg" /></span><p style="float:left;margin-left:10px;margin-top:5px;">Walking</p></div>'
                                     axisIndex={0}
                                     axisValue={0}
                                     zIndex= '1'

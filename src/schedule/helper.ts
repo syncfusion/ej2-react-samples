@@ -16,7 +16,7 @@ export function applyCategoryColor(args: EventRenderedArgs, currentView: View): 
     }
 }
 
-export function generateObject(start: number = new Date(2020, 6, 1).getTime(), end: number = new Date(2021, 11, 31).getTime()): Record<string, any>[] {
+export function generateObject(start: number = new Date(2020, 6, 1).getTime(), end: number = new Date(2021, 11, 31).getTime(), isWeekDaysOnly: boolean = false): Record<string, any>[] {
     let data: Record<string, any>[] = [];
     let names: string[] = [
         'Story Time for Kids', 'Camping with Turtles', 'Wildlife Warriors', 'Parrot Talk', 'Birds of Prey', 'Croco World',
@@ -25,14 +25,20 @@ export function generateObject(start: number = new Date(2020, 6, 1).getTime(), e
         'Meet a small Mammal', 'Amazon Fish Feeding', 'Elephant Ride'
     ];
     let dayCount: number = 1000 * 60 * 60;
-    for (let a: number = start, id: number = 1; a < end; a += (dayCount * 24) * 2) {
-        let count: number = Math.floor((Math.random() * 9) + 1);
+    const appCount: number = isWeekDaysOnly ? 1 : 9;
+    for (let a: number = start, id: number = 1; a < end; a += (dayCount * 24)) {
+        let count: number = Math.floor((Math.random() * appCount) + 1);
         for (let b: number = 0; b < count; b++) {
             let hour: number = Math.floor(Math.random() * 100) % 24;
             let minutes: number = Math.round((Math.floor(Math.random() * 100) % 60) / 5) * 5;
             let nCount: number = Math.floor(Math.random() * names.length);
             let startDate: Date = new Date(new Date(a).setHours(hour, minutes));
             let endDate: Date = new Date(startDate.getTime() + (dayCount * 2.5));
+
+            if (isWeekDaysOnly && [0, 6].indexOf(startDate.getDay()) > -1 || [0, 6].indexOf(endDate.getDay()) > -1) {
+                continue;
+            }
+
             data.push({
                 Id: id,
                 Subject: names[nCount],

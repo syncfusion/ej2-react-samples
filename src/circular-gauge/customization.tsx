@@ -52,7 +52,7 @@ export class Customization extends SampleBase<{}, {}> {
         this.pointerValueElement.min = '1000';
         this.pointerValueElement.max = '2000';
         this.pointerValueElement.value = this.randomGauge.axes[0].pointers[0].value.toString();
-        document.getElementById('currentPointerValue').innerHTML = 'Current Value <span> &nbsp;&nbsp;&nbsp;' + this.randomGauge.axes[0].pointers[0].value + '</span>';
+        document.getElementById('currentPointerValue').innerHTML = String(this.randomGauge.axes[0].pointers[0].value) ;
         this.barColor.value = this.randomGauge.axes[0].pointers[0].color;
         this.rangeColor.value = this.randomGauge.axes[0].ranges[0].color;
         this.pointerColor.value = this.randomGauge.axes[0].pointers[1].color;
@@ -76,7 +76,7 @@ export class Customization extends SampleBase<{}, {}> {
         this.pointerValueElement.min = '0.5';
         this.pointerValueElement.max = '100';
         this.pointerValueElement.value = this.usageGauge.axes[0].pointers[0].value.toString();
-        document.getElementById('currentPointerValue').innerHTML = 'Current Value <span> &nbsp;&nbsp;&nbsp;' + this.usageGauge.axes[0].pointers[0].value + '</span>';
+        document.getElementById('currentPointerValue').innerHTML = String(this.usageGauge.axes[0].pointers[0].value);
         this.barColor.value = this.usageGauge.axes[0].pointers[0].color;
         this.rangeColor.value = this.usageGauge.axes[0].ranges[0].color;
         this.pointerColor.enabled = false;
@@ -106,7 +106,7 @@ export class Customization extends SampleBase<{}, {}> {
             this.randomGauge.axes[0].pointers[1].value = value;
             this.randomGauge.axes[0].annotations[0].content = '<div style="color:#666666;font-size:35px;">' + value + '' + '</div>';
         }
-        document.getElementById('currentPointerValue').innerHTML = 'Current Value <span> &nbsp;&nbsp;&nbsp;' + value + '</span>';
+        document.getElementById('currentPointerValue').innerHTML = String(value);
     }
     render() {
         return (
@@ -151,33 +151,38 @@ export class Customization extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: "-10px" }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
                                 <tbody>
-                                    <tr style={{ height: '50px' }}>
-                                        <td>
-                                            <img id='random' src="src/circular-gauge/images/gauge-1.png" alt="Customized gauge 1" style={{ marginLeft: '25px', marginTop: '10px' }} onClick={this.random.bind(this)} ref={d => this.image1 = d} />
-                                            <div id="random_line" style={{ display: "block", left: "0px", background: "#ff4081", "padding-top": "0px", height: "2px", width: "85px", margin: "2px 2px 2px 17px" }}></div>
+                                    <tr style={{ height: '90px' }}>
+                                        <td style={{ textAlign : 'center' }}>
+                                            <img id='random' src="src/circular-gauge/images/gauge-1.png" alt="Customized gauge 1" style={{ marginTop: '10px' }} onClick={this.random.bind(this)} ref={d => this.image1 = d} />
+                                            <div id="random_line" style={{ display: "block", left: "0px", background: "#ff4081", "padding-top": "0px", height: "2px", width: "85px", margin: "auto" }}></div>
                                         </td>
-                                        <td>
-                                            <img id='usage' src="src/circular-gauge/images/gauge-2.png" alt="Customized gauge 2" style={{ marginLeft: '25px', marginTop: '10px' }} onClick={this.usage.bind(this)} ref={d => this.image2 = d} />
-                                            <div id="usage_line" style={{ display: "none", left: "0px", background: "#ff4081", "padding-top": "0px", height: "2px", width: "85px", margin: "2px 2px 2px 17px" }}></div>
+                                        <td style={{ textAlign : 'center', width: '40%', paddingLeft: '10%' }}>
+                                            <img id='usage' src="src/circular-gauge/images/gauge-2.png" alt="Customized gauge 2" style={{ marginTop: '10px' }} onClick={this.usage.bind(this)} ref={d => this.image2 = d} />
+                                            <div id="usage_line" style={{ display: "none", left: "0px", background: "#ff4081", "padding-top": "0px", height: "2px", width: "85px", margin: "auto" }}></div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='currentPointerValue' style={{ width: '100px' }}>Current Value <span> &nbsp;&nbsp;&nbsp;1800</span> </div>
+                                            <div>Current Value </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40%' }}>
                                             <div>
-                                                <input type="range" id="currentValue" defaultValue="1800" min="1000" max="2000" style={{ width: "130px" }} onChange={this.pointerValue.bind(this)} ref={d => this.pointerValueElement = d} />
+                                                <input type="range" id="currentValue" defaultValue="1800" min="1000" max="2000" style={{ width: "85%" }} onChange={this.pointerValue.bind(this)} ref={d => this.pointerValueElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: "0px", marginLeft: '-10px' }}>
+                                            <span id='currentPointerValue'>1800</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangebarColor' style={{ width: '100px' }}>RangeBar Color</div>
+                                            <div id='rangebarColor'>RangeBar Color</div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40%' }}>
                                             <div>
                                                 <select id="barColor" className="form-control">
                                                     <option value="#FFDD00">#FFDD00</option>
@@ -189,9 +194,9 @@ export class Customization extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='range' style={{ width: '100px' }}>Range Color</div>
+                                            <div id='range'>Range Color</div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40%' }}>
                                             <div>
                                                 <select id="rangeColor" className="form-control">
                                                     <option value="#E0E0E0">#E0E0E0</option>
@@ -203,9 +208,9 @@ export class Customization extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='pointColor' style={{ width: '100px' }}>Pointer Color</div>
+                                            <div id='pointColor'>Pointer Color</div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40%' }}>
                                             <div>
                                                 <select id="pointerColor" className="form-control">
                                                     <option value="#424242" >#424242</option>
@@ -246,7 +251,7 @@ export class Customization extends SampleBase<{}, {}> {
             this.loaded = true;
             this.barColor = new DropDownList({
                 index: 0,
-                width: 130,
+                width: '125%',
                 change: () => {
                     let barColor: string = this.barColor.value.toString();
                     if (!this.isClicked) {
@@ -267,7 +272,7 @@ export class Customization extends SampleBase<{}, {}> {
             this.barColor.appendTo('#barColor');
             this.rangeColor = new DropDownList({
                 index: 0,
-                width: 130,
+                width: '125%',
                 change: () => {
                     let barColor: string = this.rangeColor.value.toString();
                     if (!this.isClicked) {
@@ -288,7 +293,7 @@ export class Customization extends SampleBase<{}, {}> {
             this.rangeColor.appendTo('#rangeColor');
             this.pointerColor = new DropDownList({
                 index: 0,
-                width: 130,
+                width: '125%',
                 change: () => {
                     let barColor: string = this.pointerColor.value.toString();
                     if (!this.isClicked) {

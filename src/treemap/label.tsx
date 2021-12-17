@@ -93,11 +93,11 @@ export class Datalabel extends SampleBase<{}, {}> {
 							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 								<tr>
 									<td>
-										<div>Label Intersect Action</div>
+										<div style={{ paddingLeft: '0px' }}>Label Intersect Action</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="labels" width="120px" index={0} change={this.labelChange.bind(this)} ref={d => this.labelElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
+											<DropDownListComponent id="labels" width="100%" index={0} change={this.labelChange.bind(this)} ref={d => this.labelElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>

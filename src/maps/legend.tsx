@@ -156,44 +156,44 @@ export class LegendMaps extends SampleBase<{}, {}> {
                 {/* Property Panel */}
 					<div className='col-lg-4 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft: '-10px' }}>
+							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 								<tr>
 									<td>
-										<div>Legend mode</div>
+										<div style={{ paddingLeft: '0px' }}>Legend mode</div>
 									</td>
 									<td>
-										<div style={{ marginLeft: '-10px' }}>
-											<DropDownListComponent id="legendmode" width="115px" index={0} change={this.legendChange.bind(this)} ref={d => this.legendElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
+										<div style={{ marginLeft: '0px' }}>
+											<DropDownListComponent id="legendmode" width="100%" index={0} change={this.legendChange.bind(this)} ref={d => this.legendElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<div>Legend position </div>
+										<div style={{ paddingLeft: '0px' }}>Legend position </div>
 									</td>
 									<td>
-										<div style={{ marginLeft: '-10px' }}>
-											<DropDownListComponent id="legendPosition" width="115px" index={0} change={this.legendPositionChange.bind(this)} ref={d => this.legendPositionElement = d} dataSource={this.positionList} fields={{ text: 'text', value: 'value' }} />
+										<div style={{ marginLeft: '0px' }}>
+											<DropDownListComponent id="legendPosition" width="100%" index={0} change={this.legendPositionChange.bind(this)} ref={d => this.legendPositionElement = d} dataSource={this.positionList} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
 								<tr style= {{ height: "50px"}}>
-                                    <td style= {{width: "80%"}}>
-                                        <div className="property-text" style= {{padding: "0px;"}}>Show legend for remaining data source items</div>
+                                    <td>
+                                        <div className="property-text" style= {{padding: "0px"}}>Show legend for remaining data source items</div>
                                     </td>
-                                    <td style= {{width: "20%" }} >
-                                        <div className="col" style={{ marginLeft: '30px' }}>
-											<CheckBoxComponent id="datasource" change={this.dataChange.bind(this)} />
+                                    <td>
+                                        <div className="col" style={{ marginLeft: '0px', paddingLeft: '0px', marginTop: '-19px' }}>
+											<CheckBoxComponent id="datasource" change={this.dataChange.bind(this)} style={{ paddingLeft: '0px' }}/>
 										</div>
 									</td>
 								</tr>
                                 <tr style= {{height: "50px" }}>
-                                    <td style= {{width: "70%"}}>
-                                        <div className="property-text" style= {{ padding: "0px;"}}>Show population density when the legend item is toggled</div>
+                                    <td>
+                                        <div className="property-text" style= {{ padding: "0px"}}>Show population density when the legend item is toggled</div>
                                     </td>
-                                    <td style= {{width: "20%" }}>
-                                        <div className="col" style={{ marginLeft: '30px' }}>
-											<CheckBoxComponent id="toggleLegend" change={this.toggleLegendChange.bind(this)} />
+                                    <td>
+                                        <div className="col" style={{ marginLeft: '0px', paddingLeft: '0px', marginTop: '-19px' }}>
+											<CheckBoxComponent id="toggleLegend" change={this.toggleLegendChange.bind(this)} style={{ paddingLeft: '0px' }}/>
 										</div>
 									</td>
 								</tr>

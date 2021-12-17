@@ -131,40 +131,40 @@ export class ExportMaps extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "20%" }}>
-                                        Map Type
+                                        <div style={{marginLeft: '-10px'}}>Map Type</div>
                         </td>
                                     <td style={{ width: "30%" }}>
-                                        <div style={{ marginLeft: "-25px" }}>
-                                        <DropDownListComponent width={115} id="maptype" value="Geometry" change={this.mapTypeChange.bind(this)} ref={d => this.mapType = d} dataSource={this.maptype} fields={{ text: 'value', value: 'value' }} placeholder="Geometry" />
+                                        <div>
+                                        <DropDownListComponent width={'100%'} id="maptype" value="Geometry" change={this.mapTypeChange.bind(this)} ref={d => this.mapType = d} dataSource={this.maptype} fields={{ text: 'value', value: 'value' }} placeholder="Geometry" />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "20%" }}>
-                                        Export Type
+                                        <div style={{marginLeft: '-10px'}}>Export Type</div>
                         </td>
                                     <td style={{ width: "30%" }}>
-                                    <div style={{ marginLeft: "-25px" }}>
-                                        <DropDownListComponent width={115} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                    <div>
+                                        <DropDownListComponent width={'100%'} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
                                     </div>    
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>
-                                    <td style={{ width: "30%" }}>
-                                        FileName
+                                    <td>
+                                       <div style={{marginLeft: '-10px'}}>FileName</div>
                         </td>
-                                    <td style={{ width: "40%" }}>
-                                        <div className="e-float-input" style={{ width: 120, 'margin-top': '0px' }}>
-                                            <input type="text" defaultValue="Maps" id="fileName" style={{ "margin-left": "-25px", "width": "115px" }} />
+                                    <td>
+                                        <div className="e-float-input" style={{ 'margin-top': '0px' }}>
+                                            <input type="text" defaultValue="Maps" id="fileName" style={{ "width": "100%", padding: '0px', paddingLeft: '5px' }} />
                                         </div>
                                     </td>
                                 </tr>
-                                <tr style={{ height: '50px' }}>
+                                <tr style={{ height: '60px' }}>
                                     <td>
-                                        <div id="btn-control" style={{ 'padding-left': '35px' }}>
+                                        <div id="btn-control" style={{ marginLeft: '50%' }}>
                                         <ButtonComponent onClick={this.onClick.bind(this)} style={{ width: '100px' }} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>

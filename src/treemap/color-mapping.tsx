@@ -275,30 +275,30 @@ export class ColorMapping extends SampleBase<{}, {}> {
                     {/* Property Panel */}
 					<div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '110%', marginBottom: '20px' }}>
+							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
                                 <tr>
 									<td>
-										<div>Color Mapping Type</div>
+										<div style={{ paddingLeft: '0px' }}>Color Mapping Type</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="Type" width="120px" index={0} change={this.typeChange.bind(this)} ref={d => this.typeElement = d} dataSource={this.dropList} fields={{ text: 'text', value: 'value' }} />
+											<DropDownListComponent id="Type" width="100%" index={0} change={this.typeChange.bind(this)} ref={d => this.typeElement = d} dataSource={this.dropList} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
-								<tr id="hideOne">
+								<tr id="hideOne" style={{ height: '50px' }}>
 									<td>
-										<div>Change Opacity</div>
+										<div style={{ paddingLeft: '0px' }}>Change Opacity</div>
 									</td>
 									<td>
-										<div>
-											<CheckBoxComponent id='opacity' checked={false} change={this.opacityChange.bind(this)} ref={d => this.opacityElement = d} disabled={true} />
+										<div style={{ marginLeft: '-10px', marginTop: '-10px'}}>
+											<CheckBoxComponent id='opacity' checked={false} change={this.opacityChange.bind(this)} ref={d => this.opacityElement = d} disabled={true} style={{ paddingLeft: '0px' }}/>
 										</div>
 									</td>
 								</tr>
-								<tr id="hideTwo">
+								<tr id="hideTwo" style={{ height: '50px' }}>
 									<td>
-										<div>Min Opacity</div>
+										<div style={{ paddingLeft: '0px' }}>Min Opacity</div>
 									</td>
 									<td>
 										<div>
@@ -306,9 +306,9 @@ export class ColorMapping extends SampleBase<{}, {}> {
 										</div>
 									</td>
 								</tr>
-								<tr id="hideThree">
+								<tr id="hideThree" style={{ height: '50px' }}>
 									<td>
-										<div>Max Opacity</div>
+										<div style={{ paddingLeft: '0px' }}>Max Opacity</div>
 									</td>
 									<td>
 										<div>

@@ -153,7 +153,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                         <div className="cols-sample-area" style={{ "align": "center", "margin-top": "8%" }}>
                             <div style={{ "align": "center" }} className="col-lg-3 col-m-3 col-sm-6">
                                 <div style={{ "align": "center" }} className="spark" id="spark-container1">
-                                    <div className="index" style={{ "color": "#000000", "font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
+                                    <div className="index" style={{"font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
                                         <b>CPU</b>
                                     </div>
                                     <div id="cpu" className="index" style={{ "color": "#0877d6", "position": "absolute", "margin-top": "25px", "margin-left": "8%" }}>26% 1.2GHz</div>
@@ -203,7 +203,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                             </div>
                             <div style={{ "align": "center" }} className="col-lg-3 col-m-3 col-sm-6">
                                 <div style={{ "align": "center" }} className="spark" id="spark-container2">
-                                    <div className='index' style={{ "color": "#000000", "font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
+                                    <div className='index' style={{"font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
                                         <b>Disk</b>
                                     </div>
                                     <div id="disk" className="index" style={{ "color": "#b247c6", "position": "absolute", "margin-top": "25px", "margin-left": "8%" }}>50%</div>
@@ -253,7 +253,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                             </div>
                             <div style={{ "align": "center" }} className="col-lg-3 col-m-3 col-sm-6">
                                 <div style={{ "align": "center" }} className="spark" id="spark-container3">
-                                    <div className="index" style={{ "color": "#000000", "font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
+                                    <div className="index" style={{"font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
                                         <b>Memory</b>
                                     </div>
                                     <div id="memory" className="index" style={{ "color": "#5bcc8f", "position": "absolute", "margin-top": "25px", "margin-left": "8%" }}>6.5/15.8 GB (41%)</div>
@@ -303,7 +303,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                             </div>
                             <div style={{ "align": "center" }} className="col-lg-3 col-m-3 col-sm-6">
                                 <div style={{ "align": "center" }} className="spark" id="spark-container4">
-                                    <div className="index" style={{ "color": "#000000", "font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
+                                    <div className="index" style={{"font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
                                         <b>Ethernet</b>
                                     </div>
                                     <div id="net" className="index" style={{ "color": "#d1a990", "position": "absolute", "margin-top": "25px", "margin-left": "8%" }}>6.5/15.8 GB (41%)</div>

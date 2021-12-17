@@ -723,7 +723,7 @@ div#sample-header {
 }
 .sb-content {
     top: 48px;
-    background: #F8F8F8;
+    background: #fff;
 }
 
 .copycode::before {
@@ -811,7 +811,7 @@ div#sample-header {
 /*left-pane*/
 #left-sidebar {
     border: none;
-    background-color: #f8f8f8;
+    background-color: #fff;
 }
 
 
@@ -833,10 +833,17 @@ div#sample-header {
 }
 
 .e-samplestatus.update, .e-samplestatus.Update {
-    background-color: #fbaa33;
+   background-color: #fff;
+    /* height: 23px !important; */
+    border: 1px solid #29bc4f !important;
+    color: #29bc4f !important;
 }
 
 .e-samplestatus.preview, .e-samplestatus.Preview {
+    background-color: #0275d8;
+}
+
+.e-samplestatus.preview {
     background-color: #0275d8;
 }
 
@@ -1649,7 +1656,7 @@ propertye pane
     }
     .sb-left-pane {
         z-index: 10010;
-        background: #f8f8f8;
+        background: #fff;
     }
     .highcontrast .sb-left-pane {
         background: #000000;
@@ -1992,7 +1999,7 @@ background-color: #ffd939;
 color: #000;
 }
 .highcontrast #controlList li.e-list-item {
-    line-height: 45px;
+    line-height: 36px;
 }
 
 .sb-left-pane .e-treeview .e-list-text {
@@ -2625,7 +2632,7 @@ body.material-dark,
 .material-dark .sample-navigation,
 .material-dark .sb-icon-Popout,
 .material-dark .sb-switch-popup a {
-    color: #f8f8f8;
+    color: #fff;
 }
 .material-dark .sb-header,
 .material-dark .sb-search-result .e-list-item{
@@ -2802,7 +2809,7 @@ body.fabric-dark,
 .fabric-dark .sample-navigation,
 .fabric-dark .sb-icon-Popout,
 .fabric-dark .sb-switch-popup a {
-    color: #f8f8f8;
+    color: #fff;
 }
 .fabric-dark .sb-header,
 .fabric-dark .sb-search-result .e-list-item,
@@ -2964,7 +2971,7 @@ body.bootstrap-dark,
 .bootstrap-dark .sample-navigation,
 .bootstrap-dark .sb-icon-Popout,
 .bootstrap-dark .sb-switch-popup a {
-    color: #f8f8f8;
+    color: #fff;
 }
 .bootstrap-dark .sb-header,
 .bootstrap-dark .sb-search-result .e-list-item,
@@ -3137,7 +3144,7 @@ body.bootstrap5-dark,
 .bootstrap5-dark .sample-navigation,
 .bootstrap5-dark .sb-icon-Popout,
 .bootstrap5-dark .sb-switch-popup a {
-    color: #f8f8f8;
+    color: #fff;
 }
 .bootstrap5-dark .sb-header,
 .bootstrap5-dark .sb-search-result .e-list-item,
@@ -3302,7 +3309,7 @@ body.tailwind-dark,
 .tailwind-dark .sample-navigation,
 .tailwind-dark .sb-icon-Popout,
 .tailwind-dark .sb-switch-popup a {
-    color: #f8f8f8;
+    color: #fff;
 }
 .tailwind-dark .sb-header,
 .tailwind-dark .sb-search-result .e-list-item,

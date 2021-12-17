@@ -3,6 +3,8 @@ import * as React from 'react';
 import { BreadcrumbComponent, BreadcrumbItemDirective, BreadcrumbItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { ChipListComponent, ChipsDirective, ChipDirective } from '@syncfusion/ej2-react-buttons';
 import { BreadcrumbBeforeItemRenderEventArgs } from '@syncfusion/ej2-navigations';
+import { ButtonComponent} from '@syncfusion/ej2-react-buttons';
+import { getComponent} from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import './template-and-customization.css';
 
@@ -56,9 +58,18 @@ export class TemplateAndCustomization extends SampleBase<{}, {}> {
 
     beforeItemRenderHandler(args: BreadcrumbBeforeItemRenderEventArgs) {
         if(args.item.text !== 'Program Files') {
-            args.element.classList.add('e-disabled');
+            args.item.disabled = true;
         }
     }
+
+    btnClick(): void {
+        let breadcrumb, breadcrumbInst, breadcrumbs = document.querySelector('.content-wrapper').getElementsByClassName("e-breadcrumb");
+        for (let i = 0; i < breadcrumbs.length; i++) {
+            breadcrumb = breadcrumbs[i];
+            breadcrumbInst = (getComponent(breadcrumb as HTMLElement, 'breadcrumb') as ButtonComponent);
+            breadcrumbInst.activeItem = breadcrumbInst.items[breadcrumbInst.items.length - 1].text;
+        }
+      }
 
     render() {
         return (
@@ -67,7 +78,9 @@ export class TemplateAndCustomization extends SampleBase<{}, {}> {
                     <div className="content-wrapper breadcrumb-control-wrapper">
                         <div className="row material2">
                             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                                <h5>Custom Breadcrumb</h5>
+                                <h5 style={{ display: "inline-block" }}>Custom Breadcrumb</h5>
+                                <ButtonComponent cssClass='e-small reset-btn'
+                                    onClick={ this.btnClick.bind(this) }>Reset State</ButtonComponent>
                             </div>
                         </div>
                         <div className="row material2">
@@ -180,15 +193,15 @@ export class TemplateAndCustomization extends SampleBase<{}, {}> {
     </p>
     <p>The icons are used for the visual representation of the breadcrumb items. You can specify the
         <code>iconCss</code> property to display the icon within the corresponding breadcrumb item. By default, the icons are aligned in the left position.</p>
-    <p>You can enable or disable the entire Breadcrumb by adding/removing the <b>e-disabled</b> class by using <code>cssClass</code> property.
+    <p>You can enable or disable the entire Breadcrumb using <code>disabled</code> property.
     </p>
     <p>In this demo, we have used Shopping Cart details as Breadcrumb Items and customized the items using
         <code>itemTemplate</code> and <code>separatorTemplate</code>.</p>
     <p>And, showcased the file path of the config.json file with icons using the <code>iconCss</code> property and
-        disabled the specific Breadcrumb items by adding <b>e-disabled</b> class to the item element in <code>beforeItemRender</code> event.</p>
-    <p>More information about <code>Breadcrumb</code> component template feature can be found in this <a
+        disabled the specific Breadcrumb items in <code>beforeItemRender</code> event using item <code>disabled</code> property.</p>
+    <p>More information about Breadcrumb component template feature can be found in this <a
             target='_blank'
-            href="https://ej2.syncfusion.com/react/documentation/breadcrumb/getting-started/">documentation section</a>.
+            href="https://ej2.syncfusion.com/react/documentation/breadcrumb/templates/">documentation section</a>.
     </p>
 </div>
             </div>

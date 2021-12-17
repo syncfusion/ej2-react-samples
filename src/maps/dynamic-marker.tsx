@@ -71,64 +71,66 @@ export class DynamicMarker extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-lg-3 property-section">
                     <PropertyPane title='Properties'>
-                        <table id="property" title="Properties" style={{ width: '100%' }}>
+                        <table id="property" title="Properties" style={{ width: '100%', marginTop: '5px' }}>
                             <tbody>
-                                <tr style={{ height: '35px' }}>
-                                    <td style={{ width: '70%' }}>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '50%' }}>
                                         <div style={{ padding: '0px', display: 'inline-block' }}>Marker</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <div style={{marginLeft: '30px'}}>
+                                        <div style={{marginLeft: '0px', marginTop: '-2px'}}>
                                             <CheckBoxComponent id='marker' change={this.markerChange.bind(this)} checked></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr style={{ height: '35px' }}>
-                                    <td style={{ width: '70%' }}>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '50%' }}>
                                         <div style={{ padding: '0px' }}>Line</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <div style={{marginLeft: '30px'}}>
+                                        <div style={{marginLeft: '0px', marginTop: '-2px'}}>
                                             <CheckBoxComponent id='line' change={this.lineChange.bind(this)}></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr style={{ height: '35px' }}>
-                                    <td style={{ width: '70%' }}>
-                                        <div  style={{ padding: '0px', width: '60px' }}>Connecting line</div>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '50%' }}>
+                                        <div  style={{ padding: '0px' }}>Connecting line</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <div style={{marginLeft: '30px'}}>
+                                        <div style={{marginLeft: '0px', marginTop: '-2px'}}>
                                             <CheckBoxComponent id='connect' change={this.connectLineChange.bind(this)} ref={d => this.connectLineInstance = d} disabled></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr style={{ height: '10px' }}></tr>
+                                <tr style={{ height: '15px' }}></tr>
                                 <tr style={{ height: '35px' }}>
-                                    <td style={{ width: '70%', padding: '0px' }}>
+                                    <td style={{ width: '50%' }}>
                                         Marker type
                                 </td>
-                                    <td style={{ width: '10%', marginLeft: '20px' }}>
+                                    <td style={{ width: '50%', marginLeft: '20px' }}>
+                                        <div>
                                         <DropDownListComponent id='type' fields={{ text: 'value', value: 'value' }} ref={d => this.dropElement = d}
-                                            style={{ width: '60px', height: '23px', paddingTop: '3px' }} dataSource={this.droplist} index={0} placeholder='Select marker shape' width={90}></DropDownListComponent>
-                                    </td>
-                                </tr>
-                                <tr style={{ height: '10px' }}></tr>
-                                <tr style={{ height: '35px' }}>
-                                    <td style={{ width: '70%' }}>
-                                        <div style={{ padding: '0px' }}>Width</div>
-                                    </td>
-                                    <td style={{ width: '10%' }}>
-                                        <div style= {{'width': '90px' }}>
-                                        <TextBoxComponent className="e-input" value='1' style={{ width: '90px' }} id="width" ref={d => this.textElement = d} disabled></TextBoxComponent>
+                                            dataSource={this.droplist} index={0} placeholder='Select marker shape' width={'100%'}></DropDownListComponent>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style={{ height: '15px' }}></tr>
+                                <tr style={{ height: '35px' }}>
+                                    <td style={{ width: '50%' }}>
+                                        <div style={{ padding: '0px' }}>Width</div>
+                                    </td>
+                                    <td style={{ width: '50%' }}>
+                                        <div style= {{'width': '100%' }}>
+                                        <TextBoxComponent className="e-input" value='1' style={{ width: '100%' }} id="width" ref={d => this.textElement = d} disabled></TextBoxComponent>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style={{ height:'60px' }}>
                                     <td>
-                                        <div style={{ marginLeft: '70%' }}>
+                                        <div style={{ marginLeft: '50%', width: '100%', textAlign: 'center' }}>
                                             <ButtonComponent id='togglebtn' cssClass='e-info' isPrimary={true} onClick={this.buttonClick.bind(this)}
-                                                style={{ textTransform: 'none !important', width: '80px', marginLeft: '-65%', marginTop: '2px' }} ref={d => this.buttonInstance = d}>Clear</ButtonComponent>
+                                                style={{ textTransform: 'none !important', width: '80px', marginTop: '2px' }} ref={d => this.buttonInstance = d}>Clear</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>

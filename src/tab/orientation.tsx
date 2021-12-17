@@ -51,6 +51,7 @@ export class Orientation extends SampleBase<{}, {}> {
             this.tabObj.element.classList.add('e-background');
             this.tabObj.element.classList.add('e-accent');
         }
+        (this.tabObj as any).refreshActiveBorder();
     }
 
     private removeStyleClass(): void {

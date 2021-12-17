@@ -37,7 +37,7 @@ export class Direction extends SampleBase<{}, {}> {
             this.pointerColor = new DropDownList({
                 index: 0,
                 placeholder: 'Select Range Bar Color',
-                width: 100,
+                width: '100%',
                 change: () => {
                     let rangeColor: string = this.pointerColor.value.toString();
                     this.gauge.axes[0].pointers[0].color = rangeColor;
@@ -49,7 +49,7 @@ export class Direction extends SampleBase<{}, {}> {
             this.labelColor = new DropDownList({
                 index: 0,
                 placeholder: 'Select Range Bar Color',
-                width: 100,
+                width: '100%',
                 change: () => {
                     let rangeColor: string = this.labelColor.value.toString();
                     this.gauge.axes[0].labelStyle.font.color = rangeColor;

@@ -19,7 +19,7 @@ export class KeyBoard extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='900' 
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='900' allowSelection='true' selectionSettings={{ type: 'Multiple' }}
               editSettings={this.editSettings}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='90' textAlign='Right'></ColumnDirective>

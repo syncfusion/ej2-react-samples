@@ -4,10 +4,22 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, R
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 
+{/* custom code start */}
+const SAMPLE_CSS = `
+    .bootstrap5 tr.e-row, .bootstrap5-dark tr.e-row, .tailwind tr.e-row, .tailwind-dark tr.e-row{
+        height:39px;
+    }
+    `;
+{/* custom code end */}
 export class FrozenColumn extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
+                {/* custom code start */}
+                    <style>
+                        {SAMPLE_CSS}
+                  </style>
+                {/* custom code end */}
                 <div className='control-section'>
                 <TreeGridComponent dataSource={sampleData} frozenColumns={2} allowSelection={false} allowResizing={true} allowSorting={true} childMapping = 'subtasks' treeColumnIndex={1} height='410' >
                 <ColumnsDirective>

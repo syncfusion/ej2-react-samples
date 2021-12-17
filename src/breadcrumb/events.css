@@ -70,3 +70,8 @@ border-top: 1px solid #eee;
     .e-breadcrumb-icons .e-file:before {
         content: "\e703";
     }
+
+    .reset-btn {
+        float: right;
+        margin: 5px 2px 5px 0;
+    }

@@ -47,35 +47,35 @@ export class SemiGauge extends SampleBase<{}, {}> {
 
     private start(): void {
         let min: number = +this.startElement.value;
-        document.getElementById('rangeStart').innerHTML = 'Start Angle <span> &nbsp;&nbsp;&nbsp;' + min + '°';
+        document.getElementById('rangeStart').innerHTML = min + '°';
         this.gauge.axes[0].startAngle = min;
         this.gauge.refresh();
     }
 
     private end() {
         let max: number = +this.endElement.value;
-        document.getElementById('rangeEnd').innerHTML = 'End Angle <span> &nbsp;&nbsp;&nbsp;' + max + '°';
+        document.getElementById('rangeEnd').innerHTML = max + '°';
         this.gauge.axes[0].endAngle = max;
         this.gauge.refresh();        
     }
 
     private radius() {
         let radius: number = +this.radiusElement.value;
-        document.getElementById('radius1').innerHTML = 'Radius <span> &nbsp;&nbsp;&nbsp;' + radius + '%';
+        document.getElementById('radius1').innerHTML = radius + '%';
         this.gauge.axes[0].radius = '' + radius + '%';
         this.gauge.refresh();
     }
 
     private centerX() {
         let max: number = +this.xElement.value;
-        document.getElementById('center1').innerHTML = 'Center X <span> &nbsp;&nbsp;&nbsp;' + max + '%';
+        document.getElementById('center1').innerHTML = max + '%';
         this.gauge.centerX = '' + max + '%';
         this.gauge.refresh();
     }
 
     private centerY() {
         let max: number = +this.yElement.value;
-        document.getElementById('center2').innerHTML = 'Center Y <span> &nbsp;&nbsp;&nbsp;' + max + '%';
+        document.getElementById('center2').innerHTML = max + '%';
         this.gauge.centerY = '' + max + '%';
         this.gauge.refresh();
     }
@@ -130,75 +130,100 @@ export class SemiGauge extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: "-9px" }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', overflow: 'hidden' }}>
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeStart' style={{ width: '110px' }}>Start Angle <span> &nbsp;&nbsp;&nbsp;270°</span> </div>
+                                            <div style={{ width: '110px', marginLeft: "-10px" }}>Start Angle </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
-                                                <input type="range" id="start" defaultValue="270" min="0" max="360" style={{ width: '120px' }} onChange={this.start.bind(this)} ref={d => this.startElement = d} />
+                                                <input type="range" id="start" defaultValue="270" min="0" max="360" style={{ width: '85%' }} onChange={this.start.bind(this)} ref={d => this.startElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{ width: '10%' }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: "0px", marginLeft: '-10px' }}>
+                                            <span id='rangeStart'>270°</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeEnd' style={{ width: '110px' }}>End Angle <span> &nbsp;&nbsp;&nbsp;90°</span> </div>
+                                            <div style={{ width: '110px', marginLeft: "-10px" }}>End Angle </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
-                                                <input type="range" id="end" defaultValue="90" min="0" max="360" style={{ width: '120px' }} onChange={this.end.bind(this)} ref={d => this.endElement = d} />
+                                                <input type="range" id="end" defaultValue="90" min="0" max="360" style={{ width: '85%' }} onChange={this.end.bind(this)} ref={d => this.endElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{ width: '10%' }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: "0px", marginLeft: '-10px' }}>
+                                            <span id='rangeEnd'>90°</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='radius1' style={{ width: '110px' }}>Radius <span> &nbsp;&nbsp;&nbsp;80%</span> </div>
+                                            <div style={{ width: '110px', marginLeft: "-10px" }}>Radius </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
-                                                <input type="range" id="radius" defaultValue="80" min="0" max="100" style={{ width: '120px' }} onChange={this.radius.bind(this)} ref={d => this.radiusElement = d} />
+                                                <input type="range" id="radius" defaultValue="80" min="0" max="100" style={{ width: '85%' }} onChange={this.radius.bind(this)} ref={d => this.radiusElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{ width: '10%' }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: "0px", marginLeft: '-10px' }}>
+                                            <span id='radius1'>80%</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div style={{ width: '110px' }}>Radius based on angle</div>
+                                            <div style={{ marginLeft: "-10px"}}>Radius based on angle</div>
                                         </td>
-                                        <td>
-                                            <div style={{paddingTop: '0px', paddingLeft: "60px"}}>
-                                                <CheckBoxComponent id='angle' change={this.angleChange.bind(this)} ref={d => this.angleElement = d} />
+                                        <td style={{ width: '40% '}}>
+                                            <div style={{paddingTop: '0px', paddingLeft: "0px"}}>
+                                                <CheckBoxComponent id='angle' change={this.angleChange.bind(this)} ref={d => this.angleElement = d} style={{ paddingLeft: '0px' }}/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='center1' style={{ width: '110px' }}>Center X <span> &nbsp;&nbsp;&nbsp;50%</span> </div>
+                                            <div style={{ width: '110px', marginLeft: "-10px" }}>Center X </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
-                                                <input type="range" id="centerX" defaultValue="50" min="0" max="100" style={{ width: '120px' }} onChange={this.centerX.bind(this)} ref={d => this.xElement = d} />
+                                                <input type="range" id="centerX" defaultValue="50" min="0" max="100" style={{ width: '85%' }} onChange={this.centerX.bind(this)} ref={d => this.xElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{ width: '10%' }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: "0px", marginLeft: '-10px' }}>
+                                            <span id='center1'>50%</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='center2' style={{ width: '110px' }}>Center Y <span> &nbsp;&nbsp;&nbsp;50%</span> </div>
+                                            <div style={{ width: '110px', marginLeft: "-10px" }}>Center Y </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
-                                                <input type="range" id="centerY" defaultValue="50" min="0" max="100" style={{ width: '120px' }} onChange={this.centerY.bind(this)} ref={d => this.yElement = d} />
+                                                <input type="range" id="centerY" defaultValue="50" min="0" max="100" style={{ width: '85%' }} onChange={this.centerY.bind(this)} ref={d => this.yElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{ width: '10%' }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: "0px", marginLeft: '-10px' }}>
+                                            <span id='center2'>50%</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div style={{ width: '110px' }}>Hide intersecting labels</div>
+                                            <div style={{ marginLeft: "-10px"}}>Hide intersecting labels</div>
                                         </td>
-                                        <td>
-                                            <div style={{paddingTop: '0px', paddingLeft: "60px"}}>
-                                                <CheckBoxComponent id='hidelabel' checked={true} change={this.hideLabel.bind(this)} ref={d => this.angleElement = d} />
+                                        <td style={{ width: '40% '}}>
+                                            <div style={{paddingTop: '0px', paddingLeft: "0px"}}>
+                                                <CheckBoxComponent id='hidelabel' checked={true} change={this.hideLabel.bind(this)} ref={d => this.angleElement = d} style={{paddingLeft: '0px'}}/>
                                             </div>
                                         </td>
                                     </tr>
@@ -213,7 +238,7 @@ export class SemiGauge extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render the circular gauge with modified start and end angles to form semi or quarter circular gauges. By enabling the radius based on angle option, the radius of circular gauge will be calculated based on the start and end angles. You can also hide the intersect labels using `hideIntersectingLabel` property.
+                    In this example, you can see how to render the circular gauge with modified start and end angles to form semi or quarter circular gauges. By enabling the radius based on angle option, the radius of circular gauge will be calculated based on the start and end angles. You can also hide the intersect labels using <code>hideIntersectingLabel</code> property.
                     </p>
                     <p>
                         For more information on ranges, refer to this

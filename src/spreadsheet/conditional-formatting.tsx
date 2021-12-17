@@ -18,7 +18,7 @@ export class ConditionalFormatting extends SampleBase<{}, {}> {
         this.spreadsheet.merge('A1:H1');
         this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A2:H2');
         this.spreadsheet.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle', fontSize: '13pt' }, 'A1:H1');
-        this.spreadsheet.numberFormat('$#,##0.00', 'D3:F18');
+        this.spreadsheet.numberFormat('$#,##0.00', 'F3:F18');
         this.spreadsheet.conditionalFormat({ type: 'BlueDataBar', range: 'D3:D18' });
         this.spreadsheet.conditionalFormat({ type: 'GreenDataBar', range: 'E3:E18' });
         this.spreadsheet.conditionalFormat({ type: 'ThreeStars', range: 'H3:H18' });

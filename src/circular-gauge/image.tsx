@@ -97,7 +97,7 @@ export class Image extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample visualizes the short-put distance covered by the athletes by using the image pointer in gauge.
+                This sample visualizes the shot-put distance covered by the athletes by using the image pointer in gauge.
             </p>
                 </div>
                 <div id="description">
@@ -108,7 +108,7 @@ export class Image extends SampleBase<{}, {}> {
                     </p>
                     <br />
                     <p>
-                        In this sample, a pointer with image is used to show the short-put distance thrown by the player.
+                        In this sample, a pointer with image is used to show the shot-put distance thrown by the player.
                     </p>
                     <p>
                         More information on the pointers can be found in this

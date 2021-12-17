@@ -4,7 +4,7 @@ import { extend } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { ItemModel } from '@syncfusion/ej2-react-navigations';
 import {
-  ScheduleComponent, ViewDirective, Week, Resize, ExcelExport, ExportOptions, ActionEventArgs, DragAndDrop, Inject, ViewsDirective
+  ScheduleComponent, ViewDirective, Week, Resize, ExcelExport, ExportOptions, ActionEventArgs, DragAndDrop, Inject, ViewsDirective, ExportFieldInfo
 } from '@syncfusion/ej2-react-schedule';
 import './excel-export.css';
 import * as dataSource from './datasource.json';
@@ -28,9 +28,14 @@ export class ExportToExcel extends SampleBase<{}, {}> {
   }
 
   private onExportClick(): void {
-    let exportValues: ExportOptions = {
-      fields: ['Id', 'Subject', 'StartTime', 'EndTime', 'Location']
-    };
+    const exportFields: ExportFieldInfo[] = [
+      { name: 'Id', text: 'Id' },
+      { name: 'Subject', text: 'Summary' },
+      { name: 'StartTime', text: 'Start Date' },
+      { name: 'EndTime', text: 'End Date' },
+      { name: 'Location', text: 'Place' }
+    ];
+    const exportValues: ExportOptions = { fieldsInfo: exportFields };
     this.scheduleObj.exportToExcel(exportValues);
   }
 
@@ -60,7 +65,7 @@ export class ExportToExcel extends SampleBase<{}, {}> {
             <code>exportToExcel</code> method. This method accepts the export options as its arguments such as fileName, exportType,
             fields, customData, and includeOccurrences. The fileName denotes the name to be given for the exported file and
             the <code>exportType</code> allows you to set the format of the excel file to be exported either as .xlsx or .csv. The custom
-            or specific field collection of event dataSource to be exported can be provided through <code>fields</code> option and the
+            or specific field collection of event dataSource to be exported can be provided through <code>fieldsInfo</code> option and the
             custom data collection can be exported by passing them through the <code>customData</code> option. There also exists option
             to export individual instances of the recurring events to an excel file, by setting true or false to the
             <code>includeOccurrences</code> option, denoting either to include or exclude the occurrences as separate instances on an

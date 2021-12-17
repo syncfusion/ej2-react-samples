@@ -80,3 +80,8 @@
         font-weight: 800;
         font-size: 9px;
     }
+
+    .reset-btn {
+        float: right;
+        margin: 5px 2px 5px 0;
+    }

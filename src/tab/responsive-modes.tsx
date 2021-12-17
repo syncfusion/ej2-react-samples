@@ -50,20 +50,20 @@ export class Responsive extends SampleBase<{}, {}> {
     render() {
         let headertext: any;
         // Mapping Tab items Header property
-        headertext = [{ text: "HTML" }, { text: "C Sharp(C#)" }, { text: "Java" }, { text: "VB.Net" }, { text: "Xamarin" },
+        headertext = [{ text: "HTML" }, { text: "C-Sharp(C#)" }, { text: "Java" }, { text: "VB.NET" }, { text: "Xamarin" },
         { text: "ASP.NET" }, { text: "ASP.NET MVC" }, { text: "JavaScript" }];
         return (
             <div className='control-pane'>
                 <div className='control-section tab-control-section row'>
                     <div className='col-lg-8 control-section'>
                         {/* Render the Tab Component */}
-                        <TabComponent ref={(tab) => { this.tabObj = tab }} cssClass='responsive-mode' heightAdjustMode='None' height='250px'>
+                        <TabComponent ref={(tab) => { this.tabObj = tab }} cssClass='responsive-mode' heightAdjustMode='None' height='250px' width='auto'>
                             <TabItemsDirective>
                                 <TabItemDirective header={headertext[0]}
                                     content={'HyperText Markup Language, commonly referred to as HTML, is the standard markup ' +
                                         'language used to create web pages. Along with CSS, and JavaScript, HTML is a cornerstone ' +
                                         'technology, used by most websites to create visually engaging web pages, user interfaces ' +
-                                        'for web applications, and user interfaces for many mobile applications.[1] Web browsers ' +
+                                        'for web applications, and user interfaces for many mobile applications. Web browsers ' +
                                         'can read HTML files and render them into visible or audible web pages. HTML describes ' +
                                         'the structure of a website semantically along with cues for presentation, making it a ' +
                                         'markup language, rather than a programming language.'} />
@@ -88,11 +88,11 @@ export class Responsive extends SampleBase<{}, {}> {
 
                                 <TabItemDirective header={headertext[4]}
                                     content={'Xamarin is a San Francisco, California based software company created in May ' +
-                                        '2011[3] by the engineers that created Mono,[4] Mono for Android and MonoTouch that are ' +
+                                        '2011 by the engineers that created Mono, Mono for Android and MonoTouch that are ' +
                                         'cross-platform implementations of the Common Language Infrastructure (CLI) and Common ' +
                                         'Language Specifications (often called Microsoft .NET). With a C#-shared codebase,developers ' +
                                         'can use Xamarin tools to write native Android, iOS, and Windows apps with native user interfaces ' +
-                                        'and share code across multiple platforms.[5] Xamarin has over 1 million developers in more ' +
+                                        'and share code across multiple platforms. Xamarin has over 1 million developers in more ' +
                                         'than 120 countries around the World as of May 2015.'} />
 
                                 <TabItemDirective header={headertext[5]}
@@ -115,7 +115,7 @@ export class Responsive extends SampleBase<{}, {}> {
                                     content={'JavaScript (JS) is an interpreted computer programming language. It was originally ' +
                                         'implemented as part of web browsers so that client-side scripts could interact with the ' +
                                         'user, control the browser, communicate asynchronously, and alter the document content that ' +
-                                        'was displayed.[5] More recently, however, it has become common in both game development ' +
+                                        'was displayed. More recently, however, it has become common in both game development ' +
                                         'and the creation of desktop applications.'} />
                             </TabItemsDirective>
                         </TabComponent>

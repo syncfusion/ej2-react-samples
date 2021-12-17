@@ -70,6 +70,7 @@
 .bootstrap5 .e-addressbar-breadcrumb .e-menu-wrapper ul .e-menu-item.e-menu-caret-icon,
 .bootstrap5-dark .e-addressbar-breadcrumb .e-menu-wrapper ul .e-menu-item.e-menu-caret-icon {
   padding-right: 23px !important;
+  margin-top: -2px
 }
 
 .e-addressbar-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret {
@@ -101,10 +102,6 @@
 
 .e-addressbar-breadcrumb ol {
   background-color: transparent !important;
-}
-
-.e-addressbar-breadcrumb .e-breadcrumb-separator {
-  display: none;
 }
 
 .e-addressbar-breadcrumb .e-menu-wrapper ul .e-menu-item .e-menu-icon {
@@ -176,4 +173,9 @@
 
 .e-addressbar-breadcrumb .e-recyclebin::before {
   content: '\e71f';
+}
+
+.reset-btn {
+  float: right;
+  margin: 5px 2px 5px 0;
 }

@@ -10,7 +10,7 @@ import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
  */
 
 export class RemoteData extends SampleBase<{}, {}> {
-  private dataManger: DataManager = new DataManager({
+  private dataManager: DataManager = new DataManager({
     url: 'https://ej2services.syncfusion.com/production/web-services/api/Schedule',
     adaptor: new WebApiAdaptor,
     crossDomain: true
@@ -21,8 +21,8 @@ export class RemoteData extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent width='100%' height='650px'
-              eventSettings={{ dataSource: this.dataManger }} readonly={true}>
+            <ScheduleComponent width='100%' height='650px' currentView='Month'
+              eventSettings={{ dataSource: this.dataManager }} readonly={true}>
               <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
             </ScheduleComponent>
           </div>

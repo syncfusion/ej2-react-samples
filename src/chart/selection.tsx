@@ -2,6 +2,7 @@
  * Sample for Selection in chart
  */
 import * as React from "react";
+import * as ReactDOM from 'react-dom';
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs,
     Selection, SelectionMode, ColumnSeries, Legend, Category, ScatterSeries, ChartTheme, HighlightMode,
@@ -9,6 +10,10 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import {
+    ColorPickerComponent,
+    ColorPickerEventArgs,
+  } from '@syncfusion/ej2-react-inputs';
 import { SampleBase } from '../common/sample-base';
 
 export let data1: any[] = [
@@ -90,6 +95,12 @@ export class SelectionChart extends SampleBase<{}, {}> {
         }
     }
 
+    // function to handle the ColorPicker change event
+    private onChange(args: ColorPickerEventArgs): void {
+    this.chartInstance.highlightColor = args.currentValue.hex;
+    this.chartInstance.dataBind();
+  }
+
     render() {
         return (
             <div className='control-pane'>
@@ -129,6 +140,14 @@ export class SelectionChart extends SampleBase<{}, {}> {
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '80%' }}>
+                                        <div>Enable Multi-selection:</div>
+                                    </td>
+                                    <td style={{ width: '20%' }}>
+                                        <div><input type="checkbox" id="select" onChange={this.check.bind(this)} ref={d => this.checkElement = d} /></div>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Selection Mode:</div>
                                     </td>
@@ -136,14 +155,6 @@ export class SelectionChart extends SampleBase<{}, {}> {
                                         <div>
                                             <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Point" />
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
-                                        <div>Enable Multi-selection:</div>
-                                    </td>
-                                    <td style={{ width: '20%' }}>
-                                        <div><input type="checkbox" id="select" onChange={this.check.bind(this)} ref={d => this.checkElement = d} /></div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
@@ -166,6 +177,19 @@ export class SelectionChart extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
+                                        <div>Highlight Color:</div>
+                                    </td>
+                                    <td style={{ width: '40%' }}>
+                                        <ColorPickerComponent
+                                            id="inline-palette"
+                                            mode="Palette"
+                                            value="null"
+                                            change={this.onChange.bind(this)}
+                                        ></ColorPickerComponent>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '60%' }}>
                                         <div>Highlight Patterns:</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
@@ -180,15 +204,14 @@ export class SelectionChart extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates the selection feature in chart. To select a specific point, click  the point. The selection mode can be changed by changing Selection Mode in panel. <code>Multiple selection</code> also can be enabled by <code>Enable Multiple
-                        Selection.</code>
+                    This sample demonstrates the selection behavior and its mode along with the highlight and highlight patterns in the chart.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        This sample demonstrates the selection behavior in a chart. Any point or a series can be selected in a chart by clicking or touching the point.
-                        We can also select the point while loading chart through <code>selectedDataIndexes</code> properties. Click to select a point or series, click and drag to enable rectangular selection.
-                        Rectangular selection will return the collection point that are selected under the region.
+                    In this sample, any point or series can be selected in the chart by clicking on or touching the point. You can also change the selection mode by changing the <code>Selection Mode</code> option in the properties panel. You can enable multiple selections with the <code>Enable Multi Selection</code> option. You can also select a point while loading a chart using the <code>SelectedDataIndexes</code> option.
+
+While hovering the point, the point is highlighted using the <code>Enable Highlight</code> option, as well as you can set different highlight patterns and colors using the <code>Highlight Patterns</code> and <code>Highlight Color</code> option.
                     </p>
                     <p>
                         Tap to select a point or series, double tap and drag to enable rectangular selection in touch enabled devices.
@@ -210,6 +233,11 @@ export class SelectionChart extends SampleBase<{}, {}> {
                         Chart component features are segregated into individual feature-wise modules. To use selection feature, we need to inject
                         <code>Selection</code> module into <code>services</code>.
                     </p>
+                    <br />
+                    <p>
+                        More information about selection can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/selection/">documentation section</a>.
+                  </p>
                 </div>
             </div>
         )

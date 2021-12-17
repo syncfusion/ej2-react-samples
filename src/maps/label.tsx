@@ -77,33 +77,33 @@ export class LabelMaps extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '60%' }}>
-                                        <div>Show Labels</div>
+                                    <td>
+                                        <div style={{ paddingLeft: '0px' }}>Show Labels</div>
                                     </td>
-                                    <td style={{ width: '40%' }}>
-                                        <div>
-                                            <input type="checkbox" onClick={this.showlabel.bind(this)} defaultChecked={true} id="select" style={{ marginTop: '15px', marginLeft: '32px' }} />
+                                    <td>
+                                        <div style={{ marginTop: '3px' }}>
+                                            <input type="checkbox" onClick={this.showlabel.bind(this)} defaultChecked={true} id="select" style={{ marginTop: '0px', marginLeft: '0px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '60%' }}>
-                                        <div>Smart label mode</div>
+                                    <td>
+                                        <div style={{ paddingLeft: '0px' }}>Smart label mode</div>
                                     </td>
-                                    <td style={{ width: '40%' }}>
+                                    <td>
                                         <div>
-                                        <DropDownListComponent width="80px" index={0} change={this.smartlabel.bind(this)} ref={d => this.dropElement2 = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} placeholder='Select smartlabel mode' />
+                                        <DropDownListComponent width="100%" index={0} change={this.smartlabel.bind(this)} ref={d => this.dropElement2 = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} placeholder='Select smartlabel mode' />
                                         </div>
                                     </td>
                                 </tr><tr style={{ height: '50px' }}>
-                                    <td style={{ width: '60%' }}>
-                                        <div>Intersect action</div>
+                                    <td>
+                                        <div style={{ paddingLeft: '0px' }}>Intersect action</div>
                                     </td>
-                                    <td style={{ width: '40%' }}>
+                                    <td>
                                         <div>
-                                        <DropDownListComponent width="80px" index={1} change={this.intersectaction.bind(this)} ref={d => this.dropElement1 = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} placeholder='Select intersect action' />
+                                        <DropDownListComponent width="100%" index={1} change={this.intersectaction.bind(this)} ref={d => this.dropElement1 = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} placeholder='Select intersect action' />
                                         </div>
                                     </td>
                                 </tr>

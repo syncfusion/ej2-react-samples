@@ -8,18 +8,11 @@
     margin-top: 20px;
 }
 
-.tailwind .sample_container.badge-accordion  #accordion .e-toggle-icon,
-.tailwind-dark .sample_container.badge-accordion  #accordion .e-toggle-icon,
-.bootstrap5 .sample_container.badge-accordion  #accordion .e-toggle-icon,
-.bootstrap5-dark .sample_container.badge-accordion  #accordion .e-toggle-icon {
+.tailwind .sample_container.badge-accordion  #accordion .e-toggle-icon {
     top: 7px;
 }
 
-.e-bigger.tailwind .sample_container.badge-accordion  #accordion .e-toggle-icon,
-.e-bigger.tailwind-dark .sample_container.badge-accordion  #accordion .e-toggle-icon,
-.e-bigger.bootstrap5 .sample_container.badge-accordion  #accordion .e-toggle-icon,
-.e-bigger.bootstrap5-dark .sample_container.badge-accordion  #accordion .e-toggle-icon
-{
+.e-bigger.tailwind .sample_container.badge-accordion  #accordion .e-toggle-icon {
     top: 11px;
 }
 /* Font Icons */
@@ -36,17 +29,12 @@
     font-family: 'Contacts';
 }
 
-.badge-accordion .e-icons.e-people:before {
+.e-people:before {
     content: '\e700';
 }
 
-.badge-accordion .people:before {
+.people:before {
     content: '\e701';
-}
-
-.bootstrap5 .sample_container.badge-accordion #accordion,
-.bootstrap5-dark .sample_container.badge-accordion #accordion {
-    border-radius:0;
 }
 
 /* Accordion Customization */

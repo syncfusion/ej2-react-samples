@@ -130,54 +130,54 @@ export class Drilldown extends SampleBase<{}, {}> {
 				 {/* Property Panel */}
 				 <div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
-						<table id='property' title='Properties' className='property-panel-table' style={{ width: '110%', marginBottom: '20px' }}>
-                  <tr>
+						<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+                  <tr style={{ height: '50px' }}>
 									<td>
-										<div>Drill Down View</div>
+										<div style={{ paddingLeft: '0px' }}>Drill Down View</div>
 									</td>
 									<td>
-										<div>
+										<div style={{ paddingTop: '0px', paddingLeft: '0px' }}>
 											<CheckBoxComponent id='drillView' checked={false} change={this.drillViewChange.bind(this)} ref={d => this.drillviewElement = d}/>
 										</div>
 									</td>									
 								</tr>
-								<tr>
+								<tr style={{ height: '50px' }}>
 								<td>
-										<div>Enable Bread Crumb</div>
+										<div style={{ paddingLeft: '0px' }}>Enable Bread Crumb</div>
 									</td>
 									<td>
-										<div>
+										<div style={{ paddingTop: '0px', paddingLeft: '0px' }}>
 										<CheckBoxComponent id='breadCrumb' checked={false} change={this.breadCrumbChange.bind(this)} ref={d => this.breadCrumbElement = d}/>
 										</div>
 									</td>
 								</tr>
-								<tr>
+								<tr style={{ height: '50px' }}>
 								<td>
-										<div>Bread Crumb Text</div>
+										<div style={{ paddingLeft: '0px' }}>Bread Crumb Text</div>
 									</td>
 									<td>
 										<div style={{ marginleft: '10px'}} >
-                    <input id="breadCrumbText" ref={d => this.nameElement = d} type='text' defaultValue=' - ' style={{ width: '100px'}} onChange={this.breadCrumbTextChange.bind(this)}/>
+                    <input id="breadCrumbText" ref={d => this.nameElement = d} type='text' defaultValue=' - ' style={{ width: '100%'}} onChange={this.breadCrumbTextChange.bind(this)}/>
                     </div>
 									</td>
 								</tr>	
-								<tr>
+								<tr style={{ height: '50px' }}>
 								<td>
-										<div>Header Alignment</div>
+										<div style={{ paddingLeft: '0px' }}>Header Alignment</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="header" width="120px" index={0} dataSource={this.headerAlign} fields={{ text: 'text', value: 'value' }} change={this.headerChange.bind(this)} ref={d => this.headerElement = d}/>
+											<DropDownListComponent id="header" width="100%" index={0} dataSource={this.headerAlign} fields={{ text: 'text', value: 'value' }} change={this.headerChange.bind(this)} ref={d => this.headerElement = d}/>
 										</div>
 									</td>
 								</tr>
-								<tr>
+								<tr style={{ height: '50px' }}>
 								<td>
-										<div>Label Alignment</div>
+										<div style={{ paddingLeft: '0px' }}>Label Alignment</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="label" width="120px" index={0} dataSource={this.labelAlign} fields={{ text: 'text', value: 'value' }} change={this.labelChange.bind(this)} ref={d => this.labelElement = d}/>
+											<DropDownListComponent id="label" width="100%" index={0} dataSource={this.labelAlign} fields={{ text: 'text', value: 'value' }} change={this.labelChange.bind(this)} ref={d => this.labelElement = d}/>
 										</div>
 									</td>
 								</tr>							

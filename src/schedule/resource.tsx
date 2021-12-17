@@ -91,7 +91,7 @@ export class Resource extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>In this example, the resource appointments are dynamically shown or hidden on the Scheduler, by passing the
-                        filtered event data of selected resources to the <code>Query</code> option of the <code>Eventsettings</code>.</p>
+                        filtered event data of selected resources to the <code>query</code> option of the <code>eventSettings</code>.</p>
                 </div>
             </div>
         );

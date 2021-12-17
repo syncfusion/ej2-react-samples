@@ -63,24 +63,24 @@ export class Container extends SampleBase<{}, {}> {
                     <div className='col-lg-4 property-section'>
                     {/* Property Panel */}
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginTop: '5px' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td>
-                                        <div>Orientation</div>
+                                        <div style={{ paddingLeft: '0px' }}>Orientation</div>
                                     </td>
                                     <td>
                                     <div style={{ width: "90%" }}>
-                                    <DropDownListComponent width={140} id="orientationMode" style={{ "width": "90%" }} change={this.orienatationChange.bind(this)} className="form-control" ref={d => this.orientationElement = d} dataSource={this.droplist} fields={{text: 'value', value: 'value'}} value="Vertical"/>
+                                    <DropDownListComponent width={'110%'} id="orientationMode" style={{ "width": "100%" }} change={this.orienatationChange.bind(this)} className="form-control" ref={d => this.orientationElement = d} dataSource={this.droplist} fields={{text: 'value', value: 'value'}} value="Vertical"/>
                                     </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td>
-                                        <div style={{marginTop: "-20px"}}>Container Type</div>
+                                        <div style={{marginTop: "-20px", paddingLeft: '0px'}}>Container Type</div>
                                     </td>
                                     <td>
                                     <div style={{ paddingBottom: '20px', width: '90%' }}>
-                                    <DropDownListComponent width={140} id="containerMode" style={{ "width": "90%" }} change={this.containerChange.bind(this)} className="form-control" ref={d => this.containerElement = d} dataSource={this.modelist} fields={{text: 'value', value: 'value'}} value="Thermometer"/>
+                                    <DropDownListComponent width={'110%'} id="containerMode" style={{ "width": "90%" }} change={this.containerChange.bind(this)} className="form-control" ref={d => this.containerElement = d} dataSource={this.modelist} fields={{text: 'value', value: 'value'}} value="Thermometer"/>
                                     </div>
                                     </td>
                                 </tr>

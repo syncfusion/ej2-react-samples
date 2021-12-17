@@ -22,7 +22,7 @@ export class Drag extends SampleBase<{}, {}> {
     private content: string = '<div style="font-size: 14px;color:#E5C31C;font-weight: lighter;font-style: oblique;"><span>';
     public dragChange(): void {
         let pointerValue: number = +this.drag.value;
-        document.getElementById('pointerValue').innerHTML = 'Pointer Value <span> &nbsp;&nbsp;&nbsp;' + Math.round(pointerValue);
+        document.getElementById('pointerValue').innerHTML = String(Math.round(pointerValue));
         this.setPointersValue(this.gauge, pointerValue);
     }
     // custom code start
@@ -110,12 +110,17 @@ export class Drag extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
                                 <tbody>
                                     <tr style={{ height: "50px" }}>
-                                        <td style={{ width: "30%" }}>
-                                            <div id='pointerValue' style={{ width: "110%" }}>Pointer Value <span> &nbsp;&nbsp;&nbsp;70</span> </div>
+                                        <td style={{ width: "50%" }}>
+                                            <div style={{ width: "110%" }}>Pointer Value </div>
                                         </td>
                                         <td style={{ width: "40%" }}>
-                                            <div>
-                                                <input type="range" id="value" onChange={this.dragChange.bind(this)} ref={d => this.drag = d} defaultValue="70" min="0" max="120" style={{ width: "90px", marginLeft: "20px" }} />
+                                            <div style={{ marginLeft: '5px'}}>
+                                                <input type="range" id="value" onChange={this.dragChange.bind(this)} ref={d => this.drag = d} defaultValue="70" min="0" max="120" style={{ width: "100%", paddingLeft: '0px' }} />
+                                            </div>
+                                        </td>
+                                        <td style={{ width:'10%' }}>
+                                            <div style={{ textAlign: 'center' }}>
+                                            <span id='pointerValue'>70</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -125,7 +130,7 @@ export class Drag extends SampleBase<{}, {}> {
                                         </td>
                                         <td style={{ width: "40%" }}>
                                             <div>
-                                                <input type="checkbox" onChange={this.pointerDragChange.bind(this)} ref={d => this.pointerDrag = d} id="enable" defaultChecked={true} style={{ width: "90px", marginLeft: "22px" }} />
+                                                <input type="checkbox" onChange={this.pointerDragChange.bind(this)} ref={d => this.pointerDrag = d} id="enable" defaultChecked={true} style={{ marginLeft: "5px", marginTop: "8px" }} />
                                             </div>
                                         </td>
                                     </tr>
@@ -135,7 +140,7 @@ export class Drag extends SampleBase<{}, {}> {
                                         </td>
                                         <td style={{ width: "40%" }}>
                                             <div>
-                                                <input type="checkbox" onChange={this.rangesDragChange.bind(this)} ref={d => this.rangesDrag = d} id="rangeDragEnable" style={{ width: "90px", marginLeft: "22px" }} />
+                                                <input type="checkbox" onChange={this.rangesDragChange.bind(this)} ref={d => this.rangesDrag = d} id="rangeDragEnable" style={{ marginLeft: "5px", marginTop: "8px" }} />
                                             </div>
                                         </td>
                                     </tr>
@@ -171,7 +176,7 @@ export class Drag extends SampleBase<{}, {}> {
     };
 
     public dragMove(args: IPointerDragEventArgs): void {
-        document.getElementById('pointerValue').innerHTML = 'Pointer Value <span> &nbsp;&nbsp;&nbsp;' + Math.round(args.currentValue);
+        document.getElementById('pointerValue').innerHTML = String(Math.round(args.currentValue));
         this.drag.value = Math.round(args.currentValue).toString();
         this.gauge.setAnnotationValue(0, 0, this.content + Math.round(args.currentValue) + ' MPH</span></div > ');
     };

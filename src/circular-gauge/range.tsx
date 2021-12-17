@@ -11,6 +11,7 @@ import {
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -37,7 +38,7 @@ export class Range extends SampleBase<{}, {}> {
     public start(): void {
         let index: number = +this.listObj.value;
         let min: number = +this.startElement.value;
-        document.getElementById('rangeStart').innerHTML = 'Range Start <span> &nbsp;&nbsp;&nbsp;' + min;
+        document.getElementById('rangeStart').innerHTML = String(min);
         this.gauge.axes[0].ranges[index].start = min;
         this.gauge.axes[0].pointers[0].animation.enable = false;
         this.gauge.refresh();
@@ -46,7 +47,7 @@ export class Range extends SampleBase<{}, {}> {
     public end(): void {
         let index: number = +this.listObj.value;
         let max: number = +this.endElement.value;
-        document.getElementById('rangeEnd').innerHTML = 'Range End <span> &nbsp;&nbsp;&nbsp;' + max;
+        document.getElementById('rangeEnd').innerHTML = String(max);
         this.gauge.axes[0].ranges[index].end = max;
         this.gauge.axes[0].pointers[0].animation.enable = false;
         this.gauge.refresh();
@@ -55,7 +56,7 @@ export class Range extends SampleBase<{}, {}> {
     public startWidth(): void {
         let index: number = +this.listObj.value;
         let startWidth: number = +this.startWidthElement.value;
-        document.getElementById('rangeStartWidth').innerHTML = 'Start Width <span> &nbsp;&nbsp;&nbsp;' + startWidth;
+        document.getElementById('rangeStartWidth').innerHTML = String(startWidth);
         this.gauge.axes[0].ranges[index].startWidth = startWidth;
         this.gauge.axes[0].pointers[0].animation.enable = false;
         this.gauge.refresh();
@@ -64,7 +65,7 @@ export class Range extends SampleBase<{}, {}> {
     public endWidth(): void {
         let index: number = +this.listObj.value;
         let endWidth: number = +this.endWidthElement.value;
-        document.getElementById('rangeEndWidth').innerHTML = 'End Width <span> &nbsp;&nbsp;&nbsp;' + endWidth;
+        document.getElementById('rangeEndWidth').innerHTML = String(endWidth);
         this.gauge.axes[0].ranges[index].endWidth = endWidth;
         this.gauge.axes[0].pointers[0].animation.enable = false;
         this.gauge.refresh();
@@ -73,7 +74,7 @@ export class Range extends SampleBase<{}, {}> {
     public radius(): void {
         let index: number = +this.listObj.value;
         let radius: number = +this.radiusElement.value;
-        document.getElementById('roundedRadius').innerHTML = 'Corner Radius <span> &nbsp;&nbsp;&nbsp;' + radius;
+        document.getElementById('roundedRadius').innerHTML = String(radius);
         this.gauge.axes[0].ranges[index].roundedCornerRadius = radius;
         this.gauge.axes[0].pointers[0].animation.enable = false;
         this.gauge.refresh();
@@ -139,15 +140,15 @@ export class Range extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div> Select Range </div>
+                                            <div style={{ marginLeft: '-10px' }}> Select Range </div>
                                         </td>
-                                        <td>
-                                            <div style={{marginLeft: "10px" }}>
-                                                <select id="rangeSelect" className="form-control" style={{ width: '90%' }}>
+                                        <td style={{ width:'40%' }}>
+                                            <div style={{marginLeft: "10px"}}>
+                                                <select id="rangeSelect" className="form-control">
                                                     <option value="0"> Low</option>
                                                     <option value="1">Medium</option>
                                                     <option value="2">High</option>
@@ -157,30 +158,40 @@ export class Range extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeStart' style={{ marginTop: "-10px"}}>Range Start <span> &nbsp;&nbsp;&nbsp;0</span> </div>
+                                            <div style={{ marginTop: "-10px", marginLeft: "-10px"}}>Range Start </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width:'40%' }}>
                                             <div style={{marginTop: "-10px", marginLeft: "10px"}}>
-                                                <input type="range" id="start" defaultValue="0" min="0" max="120" style={{ width: '130px' }} onChange={this.start.bind(this)} ref={d => this.startElement = d} />
+                                                <input type="range" id="start" defaultValue="0" min="0" max="120" style={{ width: '90%' }} onChange={this.start.bind(this)} ref={d => this.startElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='rangeStart'>0</span>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeEnd' style={{marginTop: "-10px"}}>Range End <span> &nbsp;&nbsp;&nbsp;40</span> </div>
+                                            <div style={{marginTop: "-10px", marginLeft: "-10px"}}>Range End </div>
                                         </td>
-                                        <td>
-                                            <div style={{marginLeft: "10px"}}>
-                                                <input type="range" id="end" defaultValue="40" min="0" max="120" style={{ width: '130PX' }} onChange={this.end.bind(this)} ref={d => this.endElement = d} />
+                                        <td style={{ width:'40%' }}>
+                                            <div style={{marginLeft: "10px", marginTop: "-10px"}}>
+                                                <input type="range" id="end" defaultValue="40" min="0" max="120" style={{ width: '90%' }} onChange={this.end.bind(this)} ref={d => this.endElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='rangeEnd'>40</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{marginTop: "-10px"}}>Range Color</div>
+                                            <div id='' style={{marginTop: "-10px", marginLeft: "-10px"}}>Range Color</div>
                                         </td>
-                                        <td>
+                                        <td style={{ width:'40%' }}>
                                             <div style={{marginTop: "-10px", marginLeft: "10px"}}>
                                                 <select id="rangeColor" className="form-control">
                                                     <option value="#30B32D">#30B32D</option>
@@ -192,41 +203,56 @@ export class Range extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td style={{ width: '20%' }}>
-                                            <div id='enablePointer' style={{marginTop: "-10px"}}>Range Font Color</div>
+                                            <div id='enablePointer' style={{marginTop: "-10px", marginLeft: "-10px"}}>Range Font Color</div>
                                         </td>
                                         <td style={{ width: '40%' }}>
-                                            <div style={{marginTop: "-10px", marginLeft: "67px"}}>
+                                            <div style={{marginTop: "-8px", marginLeft: "10px"}}>
                                                 <input type="checkbox" id="enable" onChange={this.enable.bind(this)} ref={d => this.enableElement = d} />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeStartWidth' style={{marginTop: "-10px"}}>Start Width <span> &nbsp;&nbsp;&nbsp;10</span> </div>
+                                            <div style={{marginTop: "-10px", marginLeft: "-10px"}}>Start Width </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width:'40%' }}>
                                             <div style={{marginTop: "-10px", marginLeft: "10px"}}>
-                                                <input type="range" id="startWidth" defaultValue="10" min="0" max="30" style={{ width: '130px' }} onChange={this.startWidth.bind(this)} ref={d => this.startWidthElement = d} />
+                                                <input type="range" id="startWidth" defaultValue="10" min="0" max="30" style={{ width: '90%' }} onChange={this.startWidth.bind(this)} ref={d => this.startWidthElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='rangeStartWidth'>10</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='rangeEndWidth' style={{marginTop: "-10px"}}>End Width <span> &nbsp;&nbsp;&nbsp;10</span> </div>
+                                            <div style={{marginTop: "-10px", marginLeft: "-10px"}}>End Width </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width:'40%' }}>
                                             <div style={{marginTop: "-10px", marginLeft: "10px"}}>
-                                                <input type="range" id="endWidth" defaultValue="10" min="0" max="30" style={{ width: '130px' }} onChange={this.endWidth.bind(this)} ref={d => this.endWidthElement = d} />
+                                                <input type="range" id="endWidth" defaultValue="10" min="0" max="30" style={{ width: '90%' }} onChange={this.endWidth.bind(this)} ref={d => this.endWidthElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='rangeEndWidth'>10</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='roundedRadius' style={{marginTop: "-10px"}}>Corner Radius <span> &nbsp;&nbsp;&nbsp;0</span> </div>
+                                            <div style={{marginTop: "-10px", marginLeft: "-10px"}}>Corner Radius </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width:'40%' }}>
                                             <div style={{marginTop: "-10px", marginLeft: "10px"}}>
-                                                <input type="range" id="radius" defaultValue="0" min="0" max="30" step="5" style={{ width: '130px' }} onChange={this.radius.bind(this)} ref={d => this.radiusElement = d} />
+                                                <input type="range" id="radius" defaultValue="0" min="0" max="30" step="5" style={{ width: '90%' }} onChange={this.radius.bind(this)} ref={d => this.radiusElement = d} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px', marginLeft: '-10px'}}>
+                                            <span id='roundedRadius'>0</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -263,25 +289,25 @@ export class Range extends SampleBase<{}, {}> {
         if (!this.loaded) {
             this.loaded = true;
             this.listObj = new DropDownList({
-                index: 0, width: 130,
+                index: 0, width: '127%',
                 change: () => {
                     let index: number = +this.listObj.value;
                     this.colortObj.value = this.gauge.axes[0].ranges[index].color;
                     this.endWidthElement.value = this.gauge.axes[0].ranges[index].endWidth.toString();
-                    document.getElementById('rangeEndWidth').innerHTML = 'End Width <span> &nbsp;&nbsp;&nbsp;' + this.gauge.axes[0].ranges[index].endWidth;
+                    document.getElementById('rangeEndWidth').innerHTML = String(this.gauge.axes[0].ranges[index].endWidth);
                     this.startWidthElement.value = this.gauge.axes[0].ranges[index].startWidth.toString();
-                    document.getElementById('rangeStartWidth').innerHTML = 'Start Width <span> &nbsp;&nbsp;&nbsp;' + this.gauge.axes[0].ranges[index].startWidth;
+                    document.getElementById('rangeStartWidth').innerHTML = String(this.gauge.axes[0].ranges[index].startWidth);
                     this.endElement.value = this.gauge.axes[0].ranges[index].end.toString();
-                    document.getElementById('rangeEnd').innerHTML = 'Range End <span> &nbsp;&nbsp;&nbsp;' + this.gauge.axes[0].ranges[index].end;
+                    document.getElementById('rangeEnd').innerHTML = String(this.gauge.axes[0].ranges[index].end);
                     this.startElement.value = this.gauge.axes[0].ranges[index].start.toString();
-                    document.getElementById('rangeStart').innerHTML = 'Range Start <span> &nbsp;&nbsp;&nbsp;' + this.gauge.axes[0].ranges[index].start;
+                    document.getElementById('rangeStart').innerHTML = String(this.gauge.axes[0].ranges[index].start);
                     this.radiusElement.value = this.gauge.axes[0].ranges[index].roundedCornerRadius.toString();
-                    document.getElementById('roundedRadius').innerHTML = 'Corner Radius <span> &nbsp;&nbsp;&nbsp;' + this.gauge.axes[0].ranges[index].roundedCornerRadius;
+                    document.getElementById('roundedRadius').innerHTML = String(this.gauge.axes[0].ranges[index].roundedCornerRadius);
                 }
             });
             this.listObj.appendTo('#rangeSelect');
             this.colortObj = new DropDownList({
-                index: 0, width: 130,
+                index: 0, width: '127%',
                 change: () => {
                     this.gauge.axes[0].ranges[+this.listObj.value].color = this.colortObj.value.toString();
                     this.gauge.axes[0].pointers[0].animation.enable = false; this.gauge.refresh();

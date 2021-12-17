@@ -3,19 +3,27 @@ import * as React from 'react';
 import { BreadcrumbComponent, BreadcrumbItemDirective, BreadcrumbItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { MenuComponent, MenuItemModel } from '@syncfusion/ej2-react-navigations';
 import { BreadcrumbItemModel, MenuEventArgs } from '@syncfusion/ej2-navigations';
+import { ButtonComponent} from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import './address-bar.css';
 
 export class AddressBar extends SampleBase<{}, {}> {
 
+    public breadcrumbInst: BreadcrumbComponent;
+
+    public btnobj: ButtonComponent;
+    
+    btnClick(): void {
+        this.breadcrumbInst.items = this.initialBreadcrumbItems;
+    }
+
     itemTemplate(data: any): JSX.Element {
         let menuItems: MenuItemModel[] = [{ text: data.text, iconCss: data.iconCss }];
-        let subMenuItems: MenuItemModel[] = this.getItems(data.text);
         return (
             <div style={{ display: "flex" }}>
-                <MenuComponent items={menuItems} select={this.selectHandler.bind(this)}></MenuComponent>
-                {subMenuItems[0].items && (<MenuComponent items={subMenuItems} select={this.subMenuSelectHandler.bind(this)} showItemOnClick={true} beforeOpen={this.beforeOpen} onClose={this.onClose}></MenuComponent>)}
+            {data.text != 'LastItem' && <MenuComponent items={menuItems} select={this.selectHandler.bind(this)}></MenuComponent>}
             </div>
+            
         );
     }
 
@@ -24,10 +32,12 @@ export class AddressBar extends SampleBase<{}, {}> {
             if (this.breadcrumbItems[i].text === args.item.text) {
                 this.breadcrumbItems = this.breadcrumbItems.slice(0, i + 1);
                 this.breadcrumbItems[0].iconCss = 'e-bicons e-' + this.getItems(args.item.text, true)[0].items.type;
-                (this.refs.breadcrumb as BreadcrumbComponent).items = this.breadcrumbItems;
+                this.breadcrumbInst.items = this.breadcrumbItems;
                 break;
             }
         }
+        this.breadcrumbInst.items.push({ text: 'LastItem' });
+        this.breadcrumbInst.activeItem = 'LastItem';
     }
 
     subMenuSelectHandler(args: MenuEventArgs) {
@@ -38,6 +48,7 @@ export class AddressBar extends SampleBase<{}, {}> {
                 for (let j: number = 0; j < this.breadcrumbItems.length; j++) {
                     if (subItems[i].text === this.breadcrumbItems[j].text) {
                         idx = j;
+                        break;
                     }
                 }
             }
@@ -45,8 +56,12 @@ export class AddressBar extends SampleBase<{}, {}> {
                 this.breadcrumbItems = this.breadcrumbItems.slice(0, idx);
             }
             this.breadcrumbItems[0].iconCss = 'e-bicons e-' + (args.item as { type: string }).type;
+            if (this.breadcrumbItems[this.breadcrumbItems.length - 1].text === 'LastItem') {
+                this.breadcrumbItems.pop();
+            }
             this.breadcrumbItems.push({ text: args.item.text });
-            (this.refs.breadcrumb as BreadcrumbComponent).items = this.breadcrumbItems;
+            this.breadcrumbItems.push({ text: 'LastItem' });
+            this.breadcrumbInst.items = this.breadcrumbItems;
         }
     }
 
@@ -59,51 +74,13 @@ export class AddressBar extends SampleBase<{}, {}> {
     }
 
     separatorTemplate(data: any): JSX.Element {
-        let menuItems: MenuItemModel[] = [
-            {
-                items: []
-            }
-        ];
-        if (data.previousItem.text == 'Home') {
-            (menuItems as any)[0].items = [
-                { text: 'Control Panel' },
-                { text: 'Libraries' },
-                { text: 'Network' },
-                { text: 'Recycle Bin' }
-            ];
-        }
-        else if (data.previousItem.text == 'This PC') {
-            (menuItems as any)[0].items = [
-                { text: 'Desktop' },
-                { text: 'Documents' },
-                { text: 'Downloads' },
-                { text: 'Local Disk (C:)' },
-                { text: 'Local Disk (D:)' }
-            ];
-        }
-        else if (data.previousItem.text == 'Local Disk (C:)') {
-            (menuItems as any)[0].items = [
-                { text: 'Program Files' },
-                { text: 'Program Files (X86)' },
-                { text: 'Microsoft' },
-                { text: 'Users' },
-                { text: 'Windows' }
-            ];
-        }
-        else if (data.previousItem.text == 'Windows') {
-            (menuItems as any)[0].items = [
-                { text: 'Boot' },
-                { text: 'Branding' },
-                { text: 'Containers' },
-                { text: 'CSC' },
-                { text: 'Cursors' },
-                { text: 'System.config' }
-            ];
-        }
-
+        let subMenuItems: MenuItemModel[] = this.getItems(data.previousItem.text);
         return (
-            <MenuComponent items={menuItems}></MenuComponent>
+            <div style={{ display: "flex" }}>
+                {subMenuItems[0].items && data.previousItem.text !== "LastItem" && (<MenuComponent items={subMenuItems} select={this.subMenuSelectHandler.bind(this)} showItemOnClick={true} beforeOpen={this.beforeOpen} onClose={this.onClose}></MenuComponent>)}
+            </div>
         );
+       
     }
 
     public breadcrumbItems: BreadcrumbItemModel[] = [
@@ -126,6 +103,8 @@ export class AddressBar extends SampleBase<{}, {}> {
             text: 'Pictures'
         }
     ];
+
+    public initialBreadcrumbItems: BreadcrumbItemModel[] = [].slice.call(this.breadcrumbItems);
 
     public items: any = [
         {
@@ -279,12 +258,14 @@ export class AddressBar extends SampleBase<{}, {}> {
                     <div className="content-wrapper breadcrumb-control-wrapper">
                         <div className="row material2">
                             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                                <h5>File Manager like Breadcrumb</h5>
+                                <h5 style={{ display: "inline-block" }}>File Manager like Breadcrumb</h5>
+                                <ButtonComponent cssClass='e-small reset-btn' ref={(scope) => { this.btnobj = scope; }} 
+                                    onClick={ this.btnClick.bind(this) }>Reset State</ButtonComponent>
                             </div>
                         </div>
                         <div className="row material2">
                             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                                <BreadcrumbComponent ref="breadcrumb" cssClass="e-addressbar-breadcrumb" itemTemplate={this.itemTemplate.bind(this)}>
+                                <BreadcrumbComponent ref={(breadcrumbObj) => { this.breadcrumbInst = breadcrumbObj }} cssClass="e-addressbar-breadcrumb" itemTemplate={this.itemTemplate.bind(this)} separatorTemplate={this.separatorTemplate.bind(this)}>
                                     <BreadcrumbItemsDirective>
                                         <BreadcrumbItemDirective iconCss="e-bicons e-picture" />
                                         <BreadcrumbItemDirective text="This PC" />
@@ -300,15 +281,15 @@ export class AddressBar extends SampleBase<{}, {}> {
 
                 </div>
                 <div id="action-description">
-                    <p> This sample demonstrates the Address Bar functionalities using the <b>Breadcrumb</b> component. Click the
-                        right arrow icon to view and navigate to the next level items.</p>
+                <p> This sample demonstrates the address bar functionalities using the <b>Breadcrumb</b> component. Click the
+                    right arrow icon to view and navigate to the next level items.</p>
                 </div>
                 <div id='description'>
                     <p>In the <code>Breadcrumb</code> component, <code>itemTemplate</code> property is used to render <code>Menu</code>
-                        as <code>Breadcrumb</code> items.</p>
-                    <p>In this demo, we have rendered Address of <b>Pictures</b> folder in <code>Breadcrumb</code>. And click the
+                        as Breadcrumb items.</p>
+                    <p>In this demo, we have rendered address of pictures folder in Breadcrumb. And click the
                         right arrow icon to view and navigate to the next level items.</p>
-                    <p>More information about <code>Breadcrumb</code> component can be found in this <a target='_blank'
+                    <p>More information about Breadcrumb component can be found in this <a target='_blank'
                         href="https://ej2.syncfusion.com/react/documentation/breadcrumb/getting-started/">documentation section</a>.</p>
                 </div>
             </div>

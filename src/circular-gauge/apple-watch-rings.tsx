@@ -91,7 +91,112 @@ const SAMPLE_CSS = `
     .content {
         margin-top: 3% !important;
     }
-}`;
+}
+
+#gauge2_Axis_0_Annotation_0 .firstAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 2px;
+}
+
+.tailwind #gauge2_Axis_0_Annotation_0 .firstAnnotation, .tailwind-dark #gauge2_Axis_0_Annotation_0 .firstAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 2px;
+    margin-bottom: 4px;
+}
+
+.material #gauge2_Axis_0_Annotation_0 .firstAnnotation, .material-dark #gauge2_Axis_0_Annotation_0 .firstAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+.fabric #gauge2_Axis_0_Annotation_0 .firstAnnotation, .fabric-dark #gauge2_Axis_0_Annotation_0 .firstAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    margin-top: -3px;
+}
+
+.bootstrap #gauge2_Axis_0_Annotation_0 .firstAnnotation, .bootstrap-dark #gauge2_Axis_0_Annotation_0 .firstAnnotation, .bootstrap4 #gauge2_Axis_0_Annotation_0 .firstAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+
+#gauge3_Axis_0_Annotation_0 .secondAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 1px;
+}
+
+.tailwind #gauge3_Axis_0_Annotation_0 .secondAnnotation, .tailwind-dark #gauge3_Axis_0_Annotation_0 .secondAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 2px;
+    margin-bottom: 4px;
+}
+
+.material #gauge3_Axis_0_Annotation_0 .secondAnnotation, .material-dark #gauge3_Axis_0_Annotation_0 .secondAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+
+.fabric #gauge3_Axis_0_Annotation_0 .secondAnnotation, .fabric-dark #gauge3_Axis_0_Annotation_0 .secondAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 2px;
+    margin-bottom: 4px;
+}
+
+.bootstrap #gauge3_Axis_0_Annotation_0 .secondAnnotation, .bootstrap-dark #gauge3_Axis_0_Annotation_0 .secondAnnotation, .bootstrap4 #gauge3_Axis_0_Annotation_0 .secondAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 1px;
+    margin-top: 2px;
+}
+
+#gauge4_Axis_0_Annotation_0 .thirdAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-top: -2px;
+    margin-left: 0px;
+}
+
+.tailwind #gauge4_Axis_0_Annotation_0 .thirdAnnotation, .tailwind-dark #gauge4_Axis_0_Annotation_0 .thirdAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-top: -7px;
+    margin-left: 1px;
+}
+
+.fabric #gauge4_Axis_0_Annotation_0 .thirdAnnotation, .fabric-dark #gauge4_Axis_0_Annotation_0 .thirdAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 1px;
+    margin-top: -7px;
+}
+
+.bootstrap #gauge4_Axis_0_Annotation_0 .thirdAnnotation, .bootstrap-dark #gauge4_Axis_0_Annotation_0 .thirdAnnotation, .bootstrap4 #gauge4_Axis_0_Annotation_0 .thirdAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 0.5px;
+    margin-top: 0px;
+}
+
+.material #gauge4_Axis_0_Annotation_0 .thirdAnnotation, .material-dark #gauge4_Axis_0_Annotation_0 .thirdAnnotation {
+    height: 17px;
+    width: 17px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+`;
 
 export class AppleWatchGauge extends SampleBase<{}, {}> {
     private gauge: CircularGaugeComponent;
@@ -109,7 +214,7 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme === 'highcontrast') {
-            args.gauge.axes[0].annotations[0].content = '<div id="annotation5"><img style="width:17px;height:17px;" src="src/circular-gauge/images/image4.svg" /></div>';
+            args.gauge.axes[0].annotations[0].content = '<div id="annotation5"><img style="width:17px;height:17px;margin-left:1px" src="src/circular-gauge/images/image4.svg" /></div>';
         }
     }
     public load2(args: ILoadedEventArgs): void {
@@ -118,7 +223,7 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme === 'highcontrast') {
-            args.gauge.axes[0].annotations[0].content = '<div id="annotation5"><img style="width:15px;height:15px;" src="src/circular-gauge/images/image5.svg" /></div>';
+            args.gauge.axes[0].annotations[0].content = '<div id="annotation5"><img style="width:15px;height:15px;;margin-left:1px" src="src/circular-gauge/images/image5.svg" /></div>';
         }
     }
     public load3(args: ILoadedEventArgs): void {
@@ -127,7 +232,7 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme === 'highcontrast') {
-            args.gauge.axes[0].annotations[0].content = '<div id="annotation5"><img style="width:17px;height:17px;" src="src/circular-gauge/images/image6.svg" /></div>';
+            args.gauge.axes[0].annotations[0].content = '<div id="annotation5"><img style="width:17px;height:17px;;margin-top:-2px" src="src/circular-gauge/images/image6.svg" /></div>';
         }
     }
     render() {
@@ -169,23 +274,23 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                                 <RangesDirective>
                                     <RangeDirective
                                         start={0} end={100} radius='90%' startWidth={40}
-                                        endWidth={40} color='#E30219' opacity={0.2} >
+                                        endWidth={40} color='#fa114f' opacity={0.2} >
                                     </RangeDirective>
                                     <RangeDirective
                                         start={0} end={100} radius='68%' startWidth={40}
-                                        endWidth={40} color='#3EDE00' opacity={0.2} >
+                                        endWidth={40} color='#99ff01' opacity={0.2} >
                                     </RangeDirective>
                                     <RangeDirective
                                         start={0} end={100} radius='46%' startWidth={40}
-                                        endWidth={40} color='#18F8F6' opacity={0.2} >
+                                        endWidth={40} color='#00d8fe' opacity={0.2} >
                                     </RangeDirective>
                                 </RangesDirective>
                                 <PointersDirective>
-                                    <PointerDirective animation={{enable: true}} value={65} radius='90%' color='#E2011A' pointerWidth={40}
+                                    <PointerDirective animation={{enable: true}} value={65} radius='90%' color='#fa114f' pointerWidth={40}
                                         type='RangeBar' roundedCornerRadius={25} />
-                                    <PointerDirective animation={{enable: true}} value={43} radius='68%' color='#3FE000' pointerWidth={40}
+                                    <PointerDirective animation={{enable: true}} value={43} radius='68%' color='#99ff01' pointerWidth={40}
                                         type='RangeBar' roundedCornerRadius={25} />
-                                    <PointerDirective animation={{enable: true}} value={58} radius='46%' color='#00C9E6' pointerWidth={40}
+                                    <PointerDirective animation={{enable: true}} value={58} radius='46%' color='#00d8fe' pointerWidth={40}
                                         type='RangeBar' roundedCornerRadius={25} />
                                 </PointersDirective>
                             </AxisDirective>
@@ -214,17 +319,17 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                                 minorTicks={{ height: 0 }}>
                                 <AnnotationsDirective>
                                     <AnnotationDirective
-                                        content='<div id="annotation1"><img style="width:17px;height:17px;" src="src/circular-gauge/images/image1.svg" /></div>'
+                                        content='<div id="annotation1"><img class="firstAnnotation" src="src/circular-gauge/images/image1.svg" /></div>'
                                         angle={0} radius='0%' zIndex='1' />
                                 </AnnotationsDirective>
                                 <RangesDirective>
                                     <RangeDirective
                                         start={0} end={100} radius='100%' startWidth={8}
-                                        endWidth={8} color='#E30219' opacity={0.2}>
+                                        endWidth={8} color='#fa114f' opacity={0.2}>
                                     </RangeDirective>
                                 </RangesDirective>
                                 <PointersDirective>
-                                    <PointerDirective animation={{enable: true}} value={65} radius='100%' color='#E2011A' pointerWidth={8}
+                                    <PointerDirective animation={{enable: true}} value={65} radius='100%' color='#fa114f' pointerWidth={8}
                                         type='RangeBar' roundedCornerRadius={5} />
                                 </PointersDirective>
                             </AxisDirective>
@@ -258,17 +363,17 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                                 minorTicks={{ height: 0 }}>
                                 <AnnotationsDirective>
                                     <AnnotationDirective
-                                        content='<div id="annotation1"><img style="width:17px;height:17px;" src="src/circular-gauge/images/image2.svg" /></div>'
+                                        content='<div id="annotation1"><img class="secondAnnotation" src="src/circular-gauge/images/image2.svg" /></div>'
                                         angle={0} radius='0%' zIndex='1' />
                                 </AnnotationsDirective>
                                 <RangesDirective>
                                     <RangeDirective
                                         start={0} end={100} radius='100%' startWidth={8}
-                                        endWidth={8} color='#3EDE00' opacity={0.2} >
+                                        endWidth={8} color='#99ff01' opacity={0.2} >
                                     </RangeDirective>
                                 </RangesDirective>
                                 <PointersDirective>
-                                    <PointerDirective animation={{enable: true}} value={43} radius='100%' color='#3FE000' pointerWidth={8}
+                                    <PointerDirective animation={{enable: true}} value={43} radius='100%' color='#99ff01' pointerWidth={8}
                                         type='RangeBar' roundedCornerRadius={5} />
                                 </PointersDirective>
                             </AxisDirective>
@@ -302,17 +407,17 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                                 minorTicks={{ height: 0 }}>
                                 <AnnotationsDirective>
                                     <AnnotationDirective
-                                        content='<div id="annotation1"><img style="width:25px;height:25px;" src="src/circular-gauge/images/image3.svg" /></div>'
+                                        content='<div id="annotation1"><img class="thirdAnnotation" src="src/circular-gauge/images/image3.svg" /></div>'
                                         angle={0} radius='0%' zIndex='1' />
                                 </AnnotationsDirective>
                                 <RangesDirective>
                                     <RangeDirective
                                         start={0} end={100} radius='100%' startWidth={8}
-                                        endWidth={8} color='#18F8F6' opacity={0.2} >
+                                        endWidth={8} color='#00d8fe' opacity={0.2} >
                                     </RangeDirective>
                                 </RangesDirective>
                                 <PointersDirective>
-                                    <PointerDirective animation={{enable: true}} value={58} radius='100%' color='#00C9E6' pointerWidth={8}
+                                    <PointerDirective animation={{enable: true}} value={58} radius='100%' color='#00d8fe' pointerWidth={8}
                                         type='RangeBar' roundedCornerRadius={5} />
                                 </PointersDirective>
                             </AxisDirective>

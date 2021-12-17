@@ -110,7 +110,7 @@ export class HideWeekend extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             In this demo, the <code>showWeekend</code> property is used either to show or hide the weekend days of a week
-            and it is not applicable on <code>workweek</code> view. By default, it is set to <code>true</code>.
+            and it is not applicable on <code>WorkWeek</code> view. By default, it is set to <code>true</code>.
             The days which are not a part of the working days collection of a Scheduler are usually considered as weekend days here.
           </p>
           <p>

@@ -147,73 +147,78 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
+                                    <td>
                                         <div>Zooming</div>
                                     </td>
-                                    <td>
-                                        <div>
-                                            <input type="checkbox" onClick={this.zooming.bind(this)} defaultChecked={true} id="zoom" style={{ marginTop: '15px', marginLeft:'30px' }} />
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{ marginTop: "2px" }}>
+                                            <input type="checkbox" onClick={this.zooming.bind(this)} defaultChecked={true} id="zoom" style={{ marginLeft:'0px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
+                                    <td>
                                         <div>Panning</div>
                                     </td>
-                                    <td>
-                                        <div>
-                                            <input type="checkbox" onClick={this.panning.bind(this)} defaultChecked={true} id="panning" style={{ marginTop: '15px', marginLeft:'30px' }} />
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{ marginTop: "2px" }}>
+                                            <input type="checkbox" onClick={this.panning.bind(this)} defaultChecked={true} id="panning" style={{ marginLeft:'0px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
+                                    <td>
                                         <div>Mouse wheel zoom</div>
                                     </td>
-                                    <td>
-                                        <div>
-                                            <input type="checkbox" onClick={this.mousewheel.bind(this)} defaultChecked={true} id="mousewheel" style={{ marginTop: '15px', marginLeft:'30px' }} />
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{ marginTop: "2px" }}>
+                                            <input type="checkbox" onClick={this.mousewheel.bind(this)} defaultChecked={true} id="mousewheel" style={{ marginLeft:'0px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
+                                    <td>
                                         <div>Pinch zoom</div>
                                     </td>
-                                    <td>
-                                        <div>
-                                            <input type="checkbox" onClick={this.pinching.bind(this)} defaultChecked={true} id="pinch" style={{ marginTop: '15px', marginLeft:'30px' }} />
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{ marginTop: "2px" }}>
+                                            <input type="checkbox" onClick={this.pinching.bind(this)} defaultChecked={true} id="pinch" style={{ marginLeft:'0px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
+                                    <td>
                                         <div>Single click zoom</div>
                                     </td>
-                                    <td>
-                                        <div>
-                                            <input type="checkbox" onClick={this.singletap.bind(this)} id="singletap" style={{ marginTop: '15px', marginLeft:'30px' }} />
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{ marginTop: "2px" }}>
+                                            <input type="checkbox" onClick={this.singletap.bind(this)} id="singletap" style={{ marginLeft:'0px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
+                                    <td>
                                         <div>Double click zoom</div>
                                     </td>
-                                    <td>
-                                        <div>
-                                            <input type="checkbox" onClick={this.doubletab.bind(this)} id="doubletap" style={{ marginTop: '15px', marginLeft:'30px' }} />
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{ marginTop: "2px" }}>
+                                            <input type="checkbox" onClick={this.doubletab.bind(this)} id="doubletap" style={{ marginLeft:'0px' }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
-                                        <div id="range1">Animation Duration <span>&nbsp;&nbsp;&nbsp;500ms</span> </div>
-                                    </td>
                                     <td>
-                                        <div className="content-wrapper">
-                                            <style> {slidercss} </style>
-                                            <SliderComponent id="range" change={this.animationChange.bind(this)} ref={(slider) => this.animationElement = slider} name="animationRange" step={250} value={500} min={0} max={1000} />
+                                        <div style={{ marginTop: '-15px'}}>Animation Duration </div>
+                                    </td>
+                                    <td style={{ width: '40%' }}>
+                                        <div className="content-wrapper" style={{ paddingLeft: '0px', marginTop: '-20px' }}>
+                                            {/* <style> {slidercss} </style> */}
+                                            <SliderComponent id="range" change={this.animationChange.bind(this)} ref={(slider) => this.animationElement = slider} name="animationRange" step={250} value={500} min={0} max={1000} width={'70%'} />
+                                        </div>
+                                    </td>
+                                    <td style={{ width: '10%' }}>
+                                        <div style={{ textAlign: 'center', paddingLeft: '0px', marginTop: '-20px', marginLeft: '-20px' }}>
+                                            <span id='range1'>500ms</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -298,6 +303,6 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
     public animationChange() {
         this.mapInstance.layers[0].animationDuration = parseInt(this.animationElement.value.toString(), 10);
         this.mapInstance.refresh();
-        document.getElementById('range1').innerHTML = 'Animation Duration <span>&nbsp;&nbsp;&nbsp;' + (parseInt(this.animationElement.value.toString(), 10)) + 'ms';
+        document.getElementById('range1').innerHTML = (parseInt(this.animationElement.value.toString(), 10)) + 'ms';
     }
 }

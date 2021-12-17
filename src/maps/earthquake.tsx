@@ -108,7 +108,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                                             animationDuration={0}
                                             template = {marketTemp}
                                             dataSource={[{
-                                                latitude: 1.625758360412755, longitude: 98.5693359375
+                                                latitude: 1.625758360412755, longitude: 106.5693359375
                                             }]}
                                         >
                                         </MarkerDirective>

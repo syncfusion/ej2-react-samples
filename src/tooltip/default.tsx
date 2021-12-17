@@ -34,7 +34,7 @@ export class Default extends SampleBase<tooltipComponentProps, tooltipComponentS
           <div className='col-lg-8' style={{ minHeight: '350px' }}>
 
             {/* Tooltip element */}
-            <TooltipComponent content='Lets go green & Save Earth !!!' position={this.state.position} tabIndex={0} style={{ display: 'block', position: 'absolute', left: 'calc( 50% - 60px)', top: '45%' }}>
+            <TooltipComponent content="Let's go green to save the planet!!" position={this.state.position} tabIndex={0} style={{ display: 'block', position: 'absolute', left: 'calc( 50% - 60px)', top: '45%' }}>
 
               {/* Button element */}
               <ButtonComponent tabIndex={-1}>Show Tooltip</ButtonComponent>

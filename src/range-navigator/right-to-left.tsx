@@ -132,7 +132,7 @@ export class RTL extends SampleBase<{}, {}> {
                     </RangeNavigatorComponent>
                     </div>
                      <div className="row">
-                    <ChartComponent id='charts' 
+                    <ChartComponent id='charts' enableRtl={true}
                         ref={chart => this.chart1 = chart} 
                         style={{ textAlign: "center" }}
                         primaryXAxis={{
@@ -216,13 +216,13 @@ export class RTL extends SampleBase<{}, {}> {
             </svg>
                     <div id="action-description">
                         <p>
-                            This sample illustrates RTL in the range navigator.
+                        This sample visualizes the consumer price with Range Navigator and Chart in RTL direction. 
                         </p>
                     </div>
                     <div id="description">
                         <p>
-                            In this example, you can see how to inverse the axis in range navigator. Here both the X and Y axis are inversed using <code>isInversed</code> property.
-                            Tooltip is enabled in this example, to see the tooltip in action, while the selected range is changed.
+                            <p><code>Right-to-left(RTL)</code> is used to render the component from right to left direction and it can be enabled by setting <code>enableRtl</code> property as <b>true</b>. In this demo, you can see <code>Axis</code> and <code>Data Points</code> are aligned from right to left direction.</p>
+                            <p><code>Tooltip</code> is enabled in this example, to see the tooltip in action, while the selected range is changed.</p>
                         </p>
                         <br></br>
                         <p><b>Injecting Module</b></p>

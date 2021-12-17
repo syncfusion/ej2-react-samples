@@ -190,22 +190,22 @@ export class Legend extends SampleBase<{}, {}> {
 						<PropertyPane title='Properties'>
 							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 								<tr>
-									<td>
-										<div>Type</div>
+									<td style={{ paddingTop: '15px', width: '30%' }}>
+										<div style={{ paddingLeft: '0px' }}>Type</div>
 									</td>
-									<td>
+									<td style={{ paddingTop: '15px' }}>
 										<div>
-											<DropDownListComponent id="legendmode" width="120px" index={0} change={this.legendChange.bind(this)} ref={d => this.legendElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
+											<DropDownListComponent id="legendmode" width="100%" index={0} change={this.legendChange.bind(this)} ref={d => this.legendElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<td>
-										<div>Position</div>
+									<td style={{width:'30%'}}>
+										<div style={{ paddingLeft: '0px' }}>Position</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="legendPosition" width="120px" index={0} change={this.legendPositionChange.bind(this)} ref={d => this.legendPositionElement = d} dataSource={this.positionList} fields={{ text: 'text', value: 'value' }} />
+											<DropDownListComponent id="legendPosition" width="100%" index={0} change={this.legendPositionChange.bind(this)} ref={d => this.legendPositionElement = d} dataSource={this.positionList} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>

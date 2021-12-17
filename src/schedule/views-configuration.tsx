@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
   ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, Agenda, ResourcesDirective, ResourceDirective,
-  EventRenderedArgs, Inject, Resize, DragAndDrop
+  Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './views-configuration.css';
@@ -39,10 +39,6 @@ export class ViewConfigurations extends SampleBase<{}, {}> {
     return (<div className="e-subject">{props.Subject}</div>);
   }
 
-  private onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, this.scheduleObj.currentView);
-  }
-
   render() {
     return (
       <div className='schedule-control-section'>
@@ -50,8 +46,7 @@ export class ViewConfigurations extends SampleBase<{}, {}> {
           <div className='control-wrapper'>
             <ScheduleComponent cssClass='schedule-views-config' width='100%' height='650px' ref={t => this.scheduleObj = t}
               currentView='Month' selectedDate={new Date(2021, 5, 20)}
-              eventSettings={{ dataSource: this.data, fields: { location: { name: 'City' } } }}
-              eventRendered={this.onEventRendered.bind(this)}>
+              eventSettings={{ dataSource: this.data, fields: { location: { name: 'City' } } }}>
               <ResourcesDirective>
                 <ResourceDirective field='GroupId' title='Owner' name='Owners'
                   dataSource={this.resourceData} textField='GroupText' idField='GroupId' colorField='GroupColor'>

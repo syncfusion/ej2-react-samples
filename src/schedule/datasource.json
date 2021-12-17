@@ -487,7 +487,7 @@
             "Id": 14,
             "Subject": "Beach Clean-up",
             "StartTime": "2021-02-14T06:30:00.000Z",
-            "EndTime": "2021-02-13T20:30:00.000Z",
+            "EndTime": "2021-02-14T08:30:00.000Z",
             "EventType": "public-event",
             "City": "Mumbai",
             "CategoryColor": "#357cd2"
@@ -1138,7 +1138,7 @@
         },
         {
             "Id": 14,
-            "Subject": "Test report Validation",
+            "Subject": "Test report validation",
             "StartTime": "2021-04-07T03:30:00.000Z",
             "EndTime": "2021-04-07T05:30:00.000Z",
             "IsAllDay": false,
@@ -1201,7 +1201,7 @@
         },
         {
             "Id": 21,
-            "Subject": "workflow Analysis",
+            "Subject": "Workflow Analysis",
             "StartTime": "2021-04-11T04:00:00.000Z",
             "EndTime": "2021-04-11T06:00:00.000Z",
             "IsAllDay": false,
@@ -1318,7 +1318,7 @@
         },
         {
             "Id": 34,
-            "Subject": "Test report Validation",
+            "Subject": "Test report validation",
             "StartTime": "2021-04-17T03:30:00.000Z",
             "EndTime": "2021-04-17T05:30:00.000Z",
             "IsAllDay": false,
@@ -1381,7 +1381,7 @@
         },
         {
             "Id": 41,
-            "Subject": "workflow Analysis",
+            "Subject": "Workflow Analysis",
             "StartTime": "2021-04-21T04:00:00.000Z",
             "EndTime": "2021-04-21T06:00:00.000Z",
             "IsAllDay": false,
@@ -1498,7 +1498,7 @@
         },
         {
             "Id": 54,
-            "Subject": "Test report Validation",
+            "Subject": "Test report validation",
             "StartTime": "2021-04-27T03:30:00.000Z",
             "EndTime": "2021-04-27T05:30:00.000Z",
             "IsAllDay": false,
@@ -1599,7 +1599,7 @@
         },
         {
             "Id": 65,
-            "Subject": "Test report Validation",
+            "Subject": "Test report validation",
             "StartTime": "2021-04-04T09:30:00.000Z",
             "EndTime": "2021-04-04T12:30:00.000Z",
             "IsAllDay": false,
@@ -1655,7 +1655,7 @@
         },
         {
             "Id": 2,
-            "Subject": "Test report Validation",
+            "Subject": "Test report validation",
             "StartTime": "2021-06-02T05:00:00.000Z",
             "EndTime": "2021-06-02T07:30:00.000Z",
             "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR",
@@ -1761,7 +1761,7 @@
         },
         {
             "Id": 15,
-            "Subject": "Test report Validation",
+            "Subject": "Test report validation",
             "StartTime": "2021-06-08T10:00:00.000Z",
             "EndTime": "2021-06-08T12:15:00.000Z",
             "ProjectId": 1,
@@ -1769,7 +1769,7 @@
         },
         {
             "Id": 16,
-            "Subject": "Test report Validation",
+            "Subject": "Test report validation",
             "StartTime": "2021-06-08T09:30:00.000Z",
             "EndTime": "2021-06-08T11:30:00.000Z",
             "ProjectId": 2,

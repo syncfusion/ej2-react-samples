@@ -34,7 +34,7 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='col-lg-9 control-section'>
-                    <MapsComponent id="maps" load={this.load} loaded={this.onMapsLoad.bind(this)} ref={m => this.mapInstance = m}
+                    <MapsComponent id="maps" load={this.load} ref={m => this.mapInstance = m}
                         useGroupingSeparator={true}
                         format={"n"}
                         zoomSettings={{
@@ -93,10 +93,10 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft:'-10px' }}>
                             <tr style={{ height: "50px" }}>
                                 <td style={{ width: "70%" }}>
-                                    <div className="property-text" style={{ padding: "0px;" }}>Zoom to fit all the makers in maps</div>
+                                    <div className="property-text">Zoom to fit all the makers in maps</div>
                                 </td>
                                 <td style={{ width: "20%" }}>
-                                    <div className="col">
+                                    <div className="col" style={{ paddingTop: '5px', marginTop: '-3px' }}>
                                         <CheckBoxComponent id="zoomCheckBox" change={this.zoomChange.bind(this)} />
                                     </div>
                                 </td>
@@ -126,10 +126,6 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
             </div>
         )
     }
-    public onMapsLoad(args: ILoadedEventArgs): void {
-        let maps: Element = document.getElementById('maps');
-        maps.setAttribute('title', '');
-    };
     // custom code start
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];

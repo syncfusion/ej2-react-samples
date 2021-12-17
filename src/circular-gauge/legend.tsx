@@ -128,7 +128,7 @@ export class Circle extends SampleBase<{}, {}> {
                                         <div id='enablePointer'>Show Legend</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div style={{paddingTop: '0px', marginLeft:"60px"}}>
+                                        <div style={{paddingTop: '0px', marginLeft:"0px", marginTop:"3px"}}>
                                         <CheckBoxComponent id='enable' checked={true} change={this.enableLegend.bind(this)} />
                                         </div>
                                     </td>
@@ -138,7 +138,7 @@ export class Circle extends SampleBase<{}, {}> {
                                         <div id='enable'>Show range when the legend item is toggled</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div style={{paddingTop: '0px', marginLeft:"60px"}}>
+                                        <div style={{paddingTop: '0px', marginLeft:"0px", marginTop:"3px"}}>
                                         <CheckBoxComponent id='enableToggle' checked={true} change={this.enableToggleLegend.bind(this)} />
                                         </div>
                                     </td>
@@ -148,8 +148,8 @@ export class Circle extends SampleBase<{}, {}> {
                                             <div id='position'>Position</div>
                                         </td>
                                         <td>
-                                            <div>
-                                                <DropDownListComponent width="120px" index={0} change={this.position.bind(this)} ref={d => this.positionElement = d} dataSource={this.positionlist} fields={{ text: 'value', value: 'value' }} />
+                                            <div style={{ paddingLeft: '20px' }}>
+                                                <DropDownListComponent width="100%" index={0} change={this.position.bind(this)} ref={d => this.positionElement = d} dataSource={this.positionlist} fields={{ text: 'value', value: 'value' }} />
                                             </div>
                                         </td>
                                     </tr>
@@ -158,8 +158,8 @@ export class Circle extends SampleBase<{}, {}> {
                                             <div id='range'>Alignment</div>
                                         </td>
                                         <td>
-                                            <div>
-                                                <DropDownListComponent width="120px" index={0} change={this.alignment.bind(this)} ref={d => this.alignElement = d} dataSource={this.alignlist} fields={{ text: 'value', value: 'value' }} />
+                                            <div style={{ paddingLeft: '20px' }}>
+                                                <DropDownListComponent width="100%" index={0} change={this.alignment.bind(this)} ref={d => this.alignElement = d} dataSource={this.alignlist} fields={{ text: 'value', value: 'value' }} />
                                             </div>
                                         </td>
                                     </tr>
@@ -168,8 +168,8 @@ export class Circle extends SampleBase<{}, {}> {
                                             <div id='pointColor'>Shape</div>
                                         </td>
                                         <td>
-                                            <div>
-                                                <DropDownListComponent width="120px" index={0} change={this.shape.bind(this)} ref={d => this.dropElement = d} dataSource={this.shapelist} fields={{ text: 'value', value: 'value' }} />
+                                            <div style={{ paddingLeft: '20px' }}>
+                                                <DropDownListComponent width="100%" index={0} change={this.shape.bind(this)} ref={d => this.dropElement = d} dataSource={this.shapelist} fields={{ text: 'value', value: 'value' }} />
                                             </div>
                                         </td>
                                     </tr>

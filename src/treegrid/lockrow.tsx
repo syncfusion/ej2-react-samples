@@ -46,7 +46,11 @@ const SAMPLE1_CSS = `
 }
 .tailwind-dark .disableRow .e-rowcell{
   color: #757575 !important;
-}`;
+}
+.property-panel-section {
+  padding-left: 80px;
+}
+`;
 {/* custom code end */}
 export class LockRow extends SampleBase<{}, {}> {
 
@@ -122,11 +126,11 @@ export class LockRow extends SampleBase<{}, {}> {
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                   <tr style={{ height: '50px' }}>
                   <td style={{ width: '10%' }}>
-                      <div> Disable Rows </div>
+                      <div style={{paddingLeft:'0px'}}> Disable Rows </div>
                     </td>
                     <td style={{ width: '60%' }}>
                       <div>
-                         <MultiSelectComponent width="120px" id="lockrows" mode="CheckBox" value={this.rowValues}
+                         <MultiSelectComponent width="150px" id="lockrows" mode="CheckBox" value={this.rowValues}
                           dataSource={lockRowDropDownData} showDropDownIcon={true} popupHeight='350px'
                           select={this.select.bind(this)} removed={this.removed.bind(this)}
                           ref={multiselect=> this.multiselectObj = multiselect}>

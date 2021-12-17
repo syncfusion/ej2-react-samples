@@ -91,6 +91,7 @@ export class NumericAxis extends SampleBase<{}, {}> {
                             height='350'
                             theme={theme}
                             annotations={chartAnnotation}
+                            legendSettings={{ visible: false }}
                             load={this.chartLoad.bind(this)}
                             loaded={this.chartLoaded.bind(this)}
                             axisLabelRender={this.labelRender.bind(this)}
@@ -134,6 +135,14 @@ export class NumericAxis extends SampleBase<{}, {}> {
     public chartLoad(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
+        let series1: string = getSeriesColor(theme)[0];
+        let series2: string = getSeriesColor(theme)[1];
+        let html: string = '<table>';
+        html += '<tr><td><div style="width:10px; height: 10px; border: 2px solid ' + series1 + '; background: ' + series1 + ';"></div></td><td style="padding-left:10px;">' + ' Australia' + '</td>';
+        html += '<tr><td><div style="width:10px; height: 10px; border: 2px solid ' + series2 + '; background: ' + series2 + ';"></div></td><td style="padding-left:10px;">' + ' Sri Lanka' + '</td>';
+        html += '</table>';
+        args.chart.annotations[0].content = '<div id="exchangeRate" style="line-height: 18px; font-size: 13px;background: #fff; opacity:0.9; color: #464e56; ' +
+        ' box-shadow:0 0 8px 0 rgba(70,78,86,.25); padding: 7px 10px; border-radius: 3px">' + html + '</div>';
     };
     public labelRender(args: IAxisLabelRenderEventArgs): void {
         if (args.axis.orientation === 'Horizontal') {

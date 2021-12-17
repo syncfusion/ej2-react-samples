@@ -36,15 +36,15 @@ export class Axes extends SampleBase<{}, {}> {
         if (!this.loaded) {
             this.loaded = true;
             this.axis = new DropDownList({
-                index: 0, width: 140,
+                index: 0, width: '127%',
                 change: () => {
                     this.axisIndex = +this.axis.value;
                     let direction: string = this.gauge.axes[this.axisIndex].direction;
                     this.direction.value = direction;
                     let startAngle: number = this.gauge.axes[this.axisIndex].startAngle;
                     let endAngle: number = this.gauge.axes[this.axisIndex].endAngle;
-                    document.getElementById('start').innerHTML = 'Start Angle <span> &nbsp;&nbsp;&nbsp;' + startAngle;
-                    document.getElementById('end').innerHTML = 'End Angle <span> &nbsp;&nbsp;&nbsp;' + endAngle;
+                    document.getElementById('start').innerHTML = String(startAngle);
+                    document.getElementById('end').innerHTML = String(endAngle);
                     this.start.value = startAngle.toString();
                     this.end.value = endAngle.toString();
                 }
@@ -52,7 +52,7 @@ export class Axes extends SampleBase<{}, {}> {
             this.axis.appendTo('#axisIndex');
 
             this.direction = new DropDownList({
-                index: 0, width: 140,
+                index: 0, width: '127%',
                 change: () => {
                     this.gauge.axes[this.axisIndex].direction = this.direction.value == 'ClockWise' ? 'ClockWise' : 'AntiClockWise';
                     this.gauge.axes[0].pointers[0].animation.enable = false;
@@ -68,7 +68,7 @@ export class Axes extends SampleBase<{}, {}> {
         this.gauge.axes[0].pointers[0].animation.enable = false;
         this.gauge.axes[1].pointers[0].animation.enable = false;
         this.gauge.axes[this.axisIndex].startAngle = value;
-        document.getElementById('start').innerHTML = 'Start Angle <span> &nbsp;&nbsp;&nbsp;' + value;
+        document.getElementById('start').innerHTML = String(value);
         this.gauge.axes[this.axisIndex].labelStyle.hiddenLabel =
             isCompleteAngle(this.gauge.axes[this.axisIndex].startAngle, this.gauge.axes[this.axisIndex].endAngle) ?
                 'First' : 'None';
@@ -80,7 +80,7 @@ export class Axes extends SampleBase<{}, {}> {
         this.gauge.axes[0].pointers[0].animation.enable = false;
         this.gauge.axes[1].pointers[0].animation.enable = false;
         this.gauge.axes[this.axisIndex].endAngle = value;
-        document.getElementById('end').innerHTML = 'End Angle <span> &nbsp;&nbsp;&nbsp;' + value;
+        document.getElementById('end').innerHTML = String(value);
         this.gauge.axes[this.axisIndex].labelStyle.hiddenLabel =
             isCompleteAngle(this.gauge.axes[this.axisIndex].startAngle, this.gauge.axes[this.axisIndex].endAngle) ?
                 'First' : 'None';
@@ -147,13 +147,13 @@ export class Axes extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: "-10px" }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <div style={{'width': '110%'}}> Axis </div>
+                                            <div> Axis </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
                                                 <select id="axisIndex" className="form-control" style={{ width: "90%" }}>
                                                     <option value="0">Axis 1</option>
@@ -164,9 +164,9 @@ export class Axes extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div style={{'width': '110%'}}> Direction </div>
+                                            <div> Direction </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
                                                 <select id="axisDirection" className="form-control" style={{ width: "90%" }}>
                                                     <option value="ClockWise">ClockWise</option>
@@ -175,23 +175,33 @@ export class Axes extends SampleBase<{}, {}> {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='start' style={{'width': '110%'}}>Start Angle <span> &nbsp;&nbsp;&nbsp;220</span> </div>
+                                            <div>Start Angle </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
-                                                <input type="range" id="startAngle" onChange={this.startAngle.bind(this)} ref={d => this.start = d} defaultValue="220" min="0" max="360" style={{ width: "140px" }} />
+                                                <input type="range" id="startAngle" onChange={this.startAngle.bind(this)} ref={d => this.start = d} defaultValue="220" min="0" max="360" style={{ width: "90%" }} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='start'>220</span>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='end' style={{'width': '110%'}}>End Angle <span> &nbsp;&nbsp;&nbsp;140</span> </div>
+                                            <div>End Angle </div>
                                         </td>
-                                        <td>
+                                        <td style={{ width: '40% '}}>
                                             <div>
-                                                <input type="range" id="endAngle" onChange={this.endAngle.bind(this)} ref={d => this.end = d} defaultValue="140" min="0" max="360" style={{ width: "140px" }} />
+                                                <input type="range" id="endAngle" onChange={this.endAngle.bind(this)} ref={d => this.end = d} defaultValue="140" min="0" max="360" style={{ width: "90%" }} />
+                                            </div>
+                                        </td>
+                                        <td style={{  width: "10%" }}>
+                                            <div style={{ textAlign: 'center', paddingLeft: '0px', marginLeft: '-10px' }}>
+                                            <span id='end'>140</span>
                                             </div>
                                         </td>
                                     </tr>

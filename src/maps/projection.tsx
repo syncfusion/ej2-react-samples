@@ -101,8 +101,8 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                                         <div style={{ marginLeft: '1px' }}>Projection Type</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div style={{ marginRight: '30px' }}>
-                                            <DropDownListComponent width="120px" index={0} change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} placeholder='Select projection type' />
+                                        <div style={{ marginRight: '0px' }}>
+                                            <DropDownListComponent width="100%" index={0} change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} placeholder='Select projection type' />
                                         </div>
                                     </td>
                                 </tr>

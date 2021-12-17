@@ -118,6 +118,12 @@
 		"cyber",
 		"sublayers",
 		"realtime",
-		"binding"
+		"binding",
+		"iframe",
+		"emoticons",
+		"routes",
+		"online",
+		"editor",
+		"richtexteditor"
 	]
 }

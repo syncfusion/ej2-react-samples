@@ -41,3 +41,8 @@ margin-left: -8px;
 .highcontrast .e-breadcrumb {
 margin-left: -4px;
 }
+
+.reset-btn {
+  float: right;
+  margin: 5px 2px 5px 0;
+}

@@ -80,6 +80,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the column series.'
     },
     {
+        'path': 'chart/grouped-column', 'component': 'GroupedColumn', 'type': 'new', 'name': 'Grouped Column', 'order': '03', 'category': 'Bar Charts',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the grouping in column series.'
+    },
+    {
         'path': 'chart/rounded-column', 'component': 'RoundedColumn', 'name': 'Rounded Column', 'order': '03', 'category': 'Bar Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the rounded column series.'
     },
@@ -216,7 +220,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pie charts.'
     },
     {
-        'path': 'chart/pie-radius', 'component': 'PieRadius', 'name': 'Pie with Various Radius', 'order': '09', 'category': 'Accumulation Charts',
+        'path': 'chart/pie-radius', 'component': 'PieRadius', 'name': 'Pie with Various Radius', 'type':'update', 'order': '09', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the various radius pie chart.'
     },
     {
@@ -232,7 +236,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the funnel charts.'
     },
     {
-        'path': 'chart/default-doughnut', 'component': 'Doughnut', 'name': 'Pie With Legend', 'order': '09', 'category': 'Accumulation Charts',
+        'path': 'chart/default-doughnut', 'component': 'Doughnut', 'name': 'Pie with Legend', 'order': '09', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the doughnut charts.'
     },
     {
@@ -360,6 +364,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the marker symbols for data points.'
     },
     {
+        'path': 'chart/rtl', 'component': 'RTL', 'name': 'RTL', 'order': '13', 'category': 'Chart Customization', 'type': 'new',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the RTL feature in chart.'
+    },
+    {
         'path': 'chart/annotation', 'component': 'Annotation', 'name': 'Annotation', 'order': '13', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to add more information to the chart using annotation.'
     },
@@ -392,7 +400,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo for Essential JS2 Chart control shows how to export the charts to Excel, PDF, and image formats such as SVG, JPEG, and PNG at client-side.'
     },
     {
-        'path': 'chart/selection', 'component': 'SelectionChart', 'name': 'Selection', 'order': '15', 'category': 'User Interaction', 
+        'path': 'chart/selection', 'component': 'SelectionChart', 'type':'update', 'name': 'Selection', 'order': '15', 'category': 'User Interaction', 
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the selection behavior in chart.'
     },
     {

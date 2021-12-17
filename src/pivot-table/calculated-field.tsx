@@ -4,6 +4,7 @@ import { PropertyPane } from '../common/property-pane';
 import { PivotViewComponent, IDataOptions, FieldList, Inject, CalculatedField, IDataSet } from '@syncfusion/ej2-react-pivotview';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
+import { Browser } from '@syncfusion/ej2-base';
 import * as pivotData from './pivot-data/Pivot_Data.json';
 import './calculated-field.css';
 
@@ -35,7 +36,11 @@ export class CalculatedFieldClass extends SampleBase<{}, {}> {
     private pivotObj: PivotViewComponent;
 
     btnClick(): void {
-        this.pivotObj.calculatedFieldModule.createCalculatedFieldDialog();
+        if (Browser.isDevice) {
+            (this.pivotObj.pivotFieldListModule.dialogRenderer as any).onShowFieldList();
+        } else {
+            this.pivotObj.calculatedFieldModule.createCalculatedFieldDialog();
+        }
     }
 
     render() {

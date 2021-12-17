@@ -10,7 +10,8 @@ import './listview.css';
 import{ nestedListData } from './listData'
 
 const FolderCss = `
-.e-listview .e-list-icon {
+.e-listview .e-list-icon,
+.e-bigger .e-listview .e-list-icon {
     height: 24px;
     width: 30px;
 }

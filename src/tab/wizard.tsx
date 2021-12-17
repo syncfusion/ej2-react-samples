@@ -420,7 +420,7 @@ export class Wizard extends SampleBase<{}, {}> {
       <div>
         <div className="col-lg-12 control-section e-tab-section">
           <div className="e-sample-resize-container">
-            <TabComponent id="tab-wizard" ref={tab => (this.tab = tab)} heightAdjustMode="None" height={440} selecting={this.tabSelecting.bind(this)}>
+            <TabComponent id="tab-wizard" ref={tab => (this.tab = tab)} heightAdjustMode="None" height={'auto'} selecting={this.tabSelecting.bind(this)}>
               <TabItemsDirective>
                 <TabItemDirective header={this.headerText[0]} content={this.content0.bind(this)}/>
                 <TabItemDirective header={this.headerText[1]} content={this.content1.bind(this)} disabled={true}/>
@@ -428,7 +428,7 @@ export class Wizard extends SampleBase<{}, {}> {
                 <TabItemDirective header={this.headerText[3]} content={this.content3.bind(this)} disabled={true}/>
               </TabItemsDirective>
             </TabComponent>
-            <DialogComponent ref={dialog => (this.alertDlg = dialog)} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content="Your payment successfully processed" target={this.dlgTarget} buttons={this.dlgButtons} created={this.dlgCreated.bind(this)}/>
+            <DialogComponent ref={dialog => (this.alertDlg = dialog)} header="Success" width={250} isModal={true} visible={false} showCloseIcon={true} content="Your payment was successfully processed" target={this.dlgTarget} buttons={this.dlgButtons} created={this.dlgCreated.bind(this)}/>
           </div>
         </div>
         <div id="action-description">

@@ -135,7 +135,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '100%' }}>
-                                        <div id="btn-control">
+                                        <div id="btn-control" style={{ textAlign: 'center' }}>
                                             <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>

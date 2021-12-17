@@ -19,7 +19,14 @@ let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
+    }
+    tr {
+        height: 50px;
+    }
+    .tailwind tr, .tailwind-dark tr {
+        height: 70px;
     }`;
+
 export class MarkerMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     // Code for Property Panel
@@ -103,23 +110,23 @@ export class MarkerMaps extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                 <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "80%" }}>
-                                    <div className="property-text" style={{ padding: "0px;" }}>Bind markers shape from data source</div>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginTop: '10px' }}>
+                            <tr style={{ }}>
+                                <td style={{ width: "70%" }}>
+                                    <div className="property-text" style={{ padding: '0px' }}>Bind markers shape from data source</div>
                                 </td>
-                                <td style={{ width: "20%" }} >
-                                    <div className="col">
+                                <td style={{ width: "30%" }} >
+                                    <div className="col" style={{ paddingTop: '0px', marginTop: '-10px' }}>
                                         <CheckBoxComponent id="shapeCheckBox" change={this.shapeChange.bind(this)} />
                                     </div>
                                 </td>
                             </tr>
-                            <tr style={{ height: "50px" }}>
+                            <tr style={{ }}>
                                 <td style={{ width: "70%" }}>
-                                    <div className="property-text" style={{ padding: "0px;" }}>Bind markers color from data source</div>
+                                    <div className="property-text" style={{ padding: '0px' }}>Bind markers color from data source</div>
                                 </td>
-                                <td style={{ width: "20%" }}>
-                                    <div className="col">
+                                <td style={{ width: "30%" }}>
+                                    <div className="col" style={{ paddingTop: '0px', marginTop: '-10px' }}>
                                         <CheckBoxComponent id="colorCheckBox" change={this.colorChange.bind(this)} />
                                     </div>
                                 </td>

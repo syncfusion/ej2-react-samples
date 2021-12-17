@@ -106,21 +106,21 @@ export class Layout extends SampleBase<{}, {}> {
 							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 								<tr>
 									<td>
-										<div>Layout Type</div>
+										<div style={{ paddingLeft: '0px' }}>Layout Type</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="layoutMode" width="120px" index={0} change={this.layoutChange.bind(this)} ref={d => this.layoutElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
+											<DropDownListComponent id="layoutMode" width="100%" index={0} change={this.layoutChange.bind(this)} ref={d => this.layoutElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
 								<tr>
-								<td>
-										<div>Render Direction</div>
+									<td>
+										<div style={{ paddingLeft: '0px' }}>Render Direction</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="highlightMode" width="115px" index={0} dataSource={this.dropList} fields={{ text: 'text', value: 'value' }} change={this.renderDirectionChange.bind(this)} ref={d => this.renderDirectionElement = d}/>
+											<DropDownListComponent id="highlightMode" width="100%" index={0} dataSource={this.dropList} fields={{ text: 'text', value: 'value' }} change={this.renderDirectionChange.bind(this)} ref={d => this.renderDirectionElement = d}/>
 										</div>
 									</td>
 								</tr>

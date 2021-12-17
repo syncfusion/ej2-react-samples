@@ -38,7 +38,7 @@ export class Alignment extends SampleBase<{}, {}> {
                   <span className='e-mail-time'>11:27AM</span>
                   <div
                     className="e-mail-subject"> Sales Representative </div>
-                  <div className="e-mail-description"> Can we schedule Meeting Appointment for today? </div>
+                  <div className="e-mail-description"> Can we schedule a Meeting Appointment for today? </div>
                 </div>
               </div>
               <div className='e-mail-item'>
@@ -49,7 +49,7 @@ export class Alignment extends SampleBase<{}, {}> {
                   <span className="e-mail-header">Victoria Ashworth</span><span className="e-mail-time">Fri 7:50AM</span>
                   <div
                     className="e-mail-subject"> Sales Representative </div>
-                  <div className="e-mail-description"> Yes we are available for meeting tomorrow </div>
+                  <div className="e-mail-description"> Yes, we are available for the meeting tomorrow. </div>
                 </div>
               </div>
               <div className='e-mail-item'>
@@ -61,7 +61,7 @@ export class Alignment extends SampleBase<{}, {}> {
                   <div
                     className="e-mail-subject"> Sales Representative </div>
                   <div className="e-mail-description">
-                    Customer has accepted our proposal. Would it be possible for arrange meeting tomorrow? </div>
+                    The Customer has accepted our proposal. Would it be possible for arrange a meeting tomorrow? </div>
                 </div>
               </div>
             </div>

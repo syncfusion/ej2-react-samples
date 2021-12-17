@@ -1772,7 +1772,7 @@ export class ParagraphFormatView extends SampleBase<{}, {}> {
                     }
                 ]
             },
-            "compatibilityMode": 3
+            "compatibilityMode": "Word2013"
         };
         // tslint:enable   
         this.container.documentEditor.open(JSON.stringify(defaultDocument));

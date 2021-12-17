@@ -1,0 +1,96 @@
+.onlineEditor #defaultRTE {
+    overflow: hidden;
+    border: none;
+}
+
+.onlineEditor .e-splitter .CodeMirror {
+    min-height: 447px;
+}
+
+.onlineEditor .center {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.onlineEditor .heading {
+    margin-top: 10px;
+    float: left;
+    width: 50%;
+    border: 1px solid #e8e8e8;
+    border-bottom: none;
+    position: relative;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.onlineEditor .title {
+    color: #a0aabf;
+    letter-spacing: 1px;
+    padding-left: 10px;
+}
+
+.onlineEditor .title-head {
+    text-align: center
+}
+
+.onlineEditor .e-control.e-splitter .e-split-bar.e-split-bar-horizontal.e-last-bar {
+    margin: 0;
+}
+
+.onlineEditor .heading.right {
+    border-left-width: thin;
+}
+
+.rte-online-button-content {
+    display: none;
+}
+
+.sb-content-tab .rte-online-button-content {
+    display: block;
+}
+
+.sb-content-tab #rte-online-sample-view {
+    display: none;
+}
+
+#rte-online-sample-view {
+    display: block;
+    padding: 15px;
+}
+
+.onlineEditor table {
+    width: 100%
+}
+
+.onlineEditor table,
+.onlineEditor th,
+.onlineEditor td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.ej2-new body {
+    margin: 0;
+}
+
+.ej2-new .sb-bread-crumb,
+.ej2-new #action-description,
+.ej2-new #description-section,
+.ej2-new .sb-header,
+.ej2-new #description {
+    display: none !important;
+}
+
+.ej2-new .container-fluid {
+    padding: 0 !important;
+}
+
+.ej2-new .content {
+    top : 0px;
+}
+
+.ej2-new .control-section {
+    padding-left: 0px;
+}

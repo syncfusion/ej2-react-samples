@@ -129,9 +129,7 @@ export class Export extends SampleBase<{}, {}> {
                                     </RangeDirective>
                                 </RangesDirective>
                                     <PointersDirective>
-                                    <PointerDirective pointerWidth={0} cap={{
-                                            radius: 0,
-                                        }} />
+                                    <PointerDirective radius='0%' type='RangeBar' pointerWidth={0} />
                                     </PointersDirective>
                                 </AxisDirective>
                             </AxesDirective>
@@ -140,35 +138,35 @@ export class Export extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginLeft: '-10px'}}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: "50px" }}>
-                                    <td style={{ width: "20%" }}>
-                                        <div>Export Type</div>
+                                    <td>
+                                        <div style={{ paddingLeft: '0px' }}>Export Type</div>
                                     </td>
-                                    <td style={{ width: "30%" }}>
-                                        <div style={{marginLeft: "10px"}}>
-                                        <DropDownListComponent width={90} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                    <td>
+                                        <div>
+                                        <DropDownListComponent width={'100%'} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>
-                                    <td style={{ width: "30%" }}>
-                                        <div>File Name</div>
+                                    <td>
+                                        <div style={{ paddingLeft: '0px' }}>File Name</div>
                                 </td>
-                                    <td style={{ width: "40%" }}>
-                                        <div className="e-float-input" style={{ width: 90, 'margin-top': '0px' }}>
-                                            <input type="text" defaultValue="Gauge" id="fileName" style={{ "margin-left": "10px", "width" : "90px" }} />
+                                    <td>
+                                        <div className="e-float-input" style={{ 'margin-top': '0px' }}>
+                                            <input type="text" defaultValue="Gauge" id="fileName" style={{ "width" : "100%", padding: '0px', paddingLeft: '5px' }} />
                                         </div>
                                     </td>
                                 </tr>
-                                <tr style={{ height: '50px' }}>
+                                <tr style={{ height: '60px' }}>
                                     <td  style={{ width: "50%" }}>
-                                        <div id="btn-control" style={{ 'margin-left': '10px', 'width': '100px' }}>
+                                        <div id="btn-control">
                                             <ButtonComponent onClick={this.onClickExport.bind(this)} style={{ width: '90px' }} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
-                                    <td  style={{ width: "50px" }}> 
-                                           <div id="btn-control" style={{ 'margin-left': '10px', 'width': '100px' }}>
+                                    <td  style={{ width: "50%" }}> 
+                                           <div id="btn-control">
                                             <ButtonComponent onClick={this.onClickPrint.bind(this)} style={{ width: '90px' }} iconCss='e-icons e-play-icon1' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>

@@ -28,43 +28,43 @@ export class Events extends SampleBase<{}, {}> {
   }
 
   private onCreate(): void {
-    this.appendElement('Schedule <b>Load</b> event called<hr>');
+    this.appendElement('Schedule <b>Load</b> event is triggered<hr>');
   }
 
   private onActionBegin(): void {
-    this.appendElement('Schedule <b>Action Begin</b> event called<hr>');
+    this.appendElement('Schedule <b>Action Begin</b> event is triggered<hr>');
   }
 
   private onActionComplete(): void {
-    this.appendElement('Schedule <b>Action Complete</b> event called<hr>');
+    this.appendElement('Schedule <b>Action Complete</b> event is triggered<hr>');
   }
 
   private onActionFailure(): void {
-    this.appendElement('Schedule <b>Action Failure</b> event called<hr>');
+    this.appendElement('Schedule <b>Action Failure</b> event is triggered<hr>');
   }
 
   private onCellDoubleClick(): void {
-    this.appendElement('SChedule <b>Cell Double Click</b> event called<hr>');
+    this.appendElement('SChedule <b>Cell Double Click</b> event is triggered<hr>');
   }
 
   private onCellClick(): void {
-    this.appendElement('Schedule <b>Cell Click</b> event called<hr>');
+    this.appendElement('Schedule <b>Cell Click</b> event is triggered<hr>');
   }
 
   private onNavigating(): void {
-    this.appendElement('Schedule <b>Navigating</b> event called<hr>');
+    this.appendElement('Schedule <b>Navigating</b> event is triggered<hr>');
   }
 
   private onDestroyed(): void {
-    this.appendElement('Schedule <b>Destroyed</b> event called<hr>');
+    this.appendElement('Schedule <b>Destroyed</b> event is triggered<hr>');
   }
 
   private onEventClick(): void {
-    this.appendElement('Schedule <b>Event Click</b> event called<hr>');
+    this.appendElement('Schedule <b>Event Click</b> event is triggered<hr>');
   }
 
   private onPopupOpen(): void {
-    this.appendElement('Schedule <b>Popup Open</b> event called<hr>');
+    this.appendElement('Schedule <b>Popup Open</b> event is triggered<hr>');
   }
 
   private appendElement(html: string): void {

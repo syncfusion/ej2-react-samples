@@ -113,54 +113,54 @@ export class Selection extends SampleBase<{}, {}> {
 						<PropertyPane title='Properties'>
 							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 								<tr style={{"height": "50px"}}>
-									<td style={{"width": "60%"}}>
-										<div><b>Highlight</b></div>
+									<td>
+										<div style={{ paddingLeft: '0px' }}><b>Highlight</b></div>
 									</td>
 
 								</tr>
 								<tr >
-									<td style={{"width": "60%"}}>
-										<div> Enable</div>
+									<td>
+										<div style={{ paddingLeft: '0px' }}> Enable</div>
 									</td>
-									<td style={{"width": "40%"}}>
-										<div>
+									<td>
+										<div style={{paddingTop: "0px", paddingLeft: '0px'}}>
 											<CheckBoxComponent id='highlightEnable' checked={true} change={this.highlightChange.bind(this)}> </CheckBoxComponent>
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<td style={{"width": "60%"}}>
-										<div>Mode</div>
+									<td>
+										<div style={{ paddingLeft: '0px' }}>Mode</div>
 									</td>
-									<td style={{"width": "40%"}}>
+									<td>
 										<div>
-											<DropDownListComponent id="highlightmode" width="100px" index={0} change={this.highlightModeChange.bind(this)} ref={d => this.highlightModeElement = d} dataSource={this.droplist1} fields={{ text: 'value', value: 'value' }} />
+											<DropDownListComponent id="highlightmode" width="100%" index={0} change={this.highlightModeChange.bind(this)} ref={d => this.highlightModeElement = d} dataSource={this.droplist1} fields={{ text: 'value', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
 								<tr style={{"height": "50px"}}>
-									<td style={{"width": "80%"}}>
-										<div><b>Selection</b></div>
+									<td>
+										<div style={{ paddingLeft: '0px' }}><b>Selection</b></div>
 									</td>
 
 								</tr>
 								<tr >
-									<td style={{"width": "60%"}}>
-										<div>Enable</div>
+									<td>
+										<div style={{ paddingLeft: '0px' }}>Enable</div>
 									</td>
-									<td style={{"width": "40%"}}>
-										<div>
+									<td>
+										<div style={{paddingTop: "0px", paddingLeft: '0px'}}>
 											<CheckBoxComponent id='SelectionEnable' checked={true} change={this.selectionchange.bind(this)}> </CheckBoxComponent>
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<td style={{"width": "60%"}}>
-										<div>Mode</div>
+									<td>
+										<div style={{ paddingLeft: '0px' }}>Mode</div>
 									</td>
-									<td style={{"width": "40%"}}>
+									<td>
 										<div>
-											<DropDownListComponent id="selectionmode" width="100px" index={0} change={this.selectionModeChange.bind(this)} ref={d => this.selectionModeElement = d} dataSource={this.droplist2} fields={{ text: 'value', value: 'value' }} />
+											<DropDownListComponent id="selectionmode" width="100%" index={0} change={this.selectionModeChange.bind(this)} ref={d => this.selectionModeElement = d} dataSource={this.droplist2} fields={{ text: 'value', value: 'value' }} />
 										</div>
 									</td>
 								</tr>

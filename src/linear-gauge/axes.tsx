@@ -31,13 +31,13 @@ export class Axes extends SampleBase<{}, {}> {
     // Code for Property Panel
     private minChange() {
         this.gaugeInstance.axes[0].minimum = parseInt(this.rangeMinElement.value, 10);
-        document.getElementById('minValue').innerHTML = 'Axis Minimum <span>&nbsp;&nbsp;&nbsp;' + this.rangeMinElement.value;
+        document.getElementById('minValue').innerHTML = this.rangeMinElement.value;
         this.gaugeInstance.annotations[0].axisValue = (this.gaugeInstance.axes[0].pointers[0] as Pointer).currentValue;
         this.gaugeInstance.refresh();
     }
     private maxChange() {
         this.gaugeInstance.axes[0].maximum = parseInt(this.rangeMaxElement.value, 10);
-        document.getElementById('maxValue').innerHTML = 'Axis Maximum <span>&nbsp;&nbsp;&nbsp;' + this.rangeMaxElement.value;
+        document.getElementById('maxValue').innerHTML = this.rangeMaxElement.value;
         this.gaugeInstance.annotations[0].axisValue = (this.gaugeInstance.axes[0].pointers[0] as Pointer).currentValue;
         this.gaugeInstance.refresh();
     }
@@ -126,84 +126,94 @@ export class Axes extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%', marginBottom: '20px',  marginLeft: '-10px' }}>
+                            <table id='property' title='Properties' className='property-panel-table' style={{ marginBottom: '20px',  marginLeft: '-10px' }}>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '30%' }}>
-                                        <div id='minValue'  style={{ width: '100%'}}>Axis Minimum <span>&nbsp;&nbsp;&nbsp;0</span> </div>
+                                    <td style={{ width: '50%' }}>
+                                        <div style={{ width: '110%'}}>Axis Minimum </div>
                                     </td>
-                                    <td style={{ width: '70%' }}>
+                                    <td style={{ width: '40%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.minChange.bind(this)} ref={d => this.rangeMinElement = d} name="range-min" step='5' id="min" defaultValue="0" min="0" max="115" style={{ width: '120px' }} />
+                                            <input type="range" onChange={this.minChange.bind(this)} ref={d => this.rangeMinElement = d} name="range-min" step='5' id="min" defaultValue="0" min="0" max="115" style={{ width: '90%' }} />
+                                        </div>
+                                    </td>
+                                    <td style={{ width: '10%'}}>
+                                        <div style={{ textAlign: 'center', paddingLeft: "0px", marginLeft: '-10px' }}>
+                                            <span id='minValue'>0</span>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '30%' }}>
-                                        <div id='maxValue'  style={{ width: '100%'}}>Axis Maximum <span>&nbsp;&nbsp;&nbsp;115</span> </div>
+                                    <td style={{ width: '50%' }}>
+                                        <div style={{ width: '110%'}}>Axis Maximum </div>
                                     </td>
-                                    <td style={{ width: '70%' }}>
+                                    <td style={{ width: '40%' }}>
                                         <div data-role='rangeslider'>
-                                            <input type="range" onChange={this.maxChange.bind(this)} ref={d => this.rangeMaxElement = d} step='5' id="max" defaultValue="115" min="0" max="115" style={{ width: '120px' }} />
+                                            <input type="range" onChange={this.maxChange.bind(this)} ref={d => this.rangeMaxElement = d} step='5' id="max" defaultValue="115" min="0" max="115" style={{ width: '90%' }} />
+                                        </div>
+                                    </td>
+                                    <td style={{ width: '10%'}}>
+                                        <div style={{ textAlign: 'center', paddingLeft: "0px", marginLeft: '-10px' }}>
+                                            <span id='maxValue'>115</span>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style={{ height: '50px' }}>
                                     <td>
                                         <div  style={{ width: '100%'}}>Axis Inversed</div>
                                     </td>
-                                    <td>
-                                        <div style={{paddingLeft: "60px"}}>
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{paddingLeft: "10px", marginTop:"2px"}}>
                                             <input type="checkbox" onChange={this.inverseChange.bind(this)} ref={d => this.inversedElement = d} id='axisInversed' />
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style={{ height: '50px' }}>
                                     <td>
                                         <div  style={{ width: '100%'}}>Axis Opposed</div>
                                     </td>
-                                    <td>
-                                        <div style={{paddingLeft: "60px"}}>
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{paddingLeft: "10px", marginTop:"2px"}}>
                                             <input type="checkbox" onChange={this.opposedChange.bind(this)} ref={d => this.opposedElement = d} id='opposed' />
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style={{ height: '50px' }}>
                                     <td>
                                         <div style={{ width: '100%'}}>Show Last Label</div>
                                     </td>
-                                    <td>
-                                        <div style={{paddingLeft: "60px"}}>
+                                    <td style={{ width: '40%' }}>
+                                        <div style={{paddingLeft: "10px", marginTop:"2px"}}>
                                             <input type="checkbox" onChange={this.lastLabelChange.bind(this)} ref={d => this.lastLabelElement = d} id='lastlabel' />
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style={{ height: '50px' }}>
                                     <td>
                                         <div style={{ width: '100%'}}>Label Format</div>
                                     </td>
-                                    <td>
+                                    <td style={{ width: '40%' }}>
                                         <div className="e-float-input" style={{ 'margin-top': '0px' }}>
-                                            <input id="format" onChange={this.labelChange.bind(this)} ref={d => this.labelElement = d} type="text" defaultValue="{value}" style={{ "width": "120px" , "padding-top": "13px"}} />
+                                            <input id="format" onChange={this.labelChange.bind(this)} ref={d => this.labelElement = d} type="text" defaultValue="{value}" style={{ "width": "125%" , "padding-top": "13px"}} />
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style={{ height: '50px' }}>
                                     <td>
                                         <div style={{ width: '100%'}}>Pointer Type</div>
                                     </td>
-                                    <td>
+                                    <td style={{ width: '40%' }}>
                                         <div>
-                                            <DropDownListComponent width={120} id="pointerType" style={{ "width": "auto" }} change={this.typeChange.bind(this)} ref={d => this.typeElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Marker" />
+                                            <DropDownListComponent width={'125%'} id="pointerType" style={{ "width": "110%" }} change={this.typeChange.bind(this)} ref={d => this.typeElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Marker" />
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style={{ height: '50px' }}>
                                     <td>
                                         <div style={{ width: '100%'}}>Marker Placement</div>
                                     </td>
-                                    <td>
+                                    <td style={{ width: '40%' }}>
                                     <div>
-                                            <DropDownListComponent width={120} id="pointerPlace" style={{ "width": "auto" }} change={this.placeChange.bind(this)} ref={d => this.placeElement = d} dataSource={this.placelist} fields={{ text: 'value', value: 'value' }} value="Far" />
+                                            <DropDownListComponent width={'125%'} id="pointerPlace" style={{ "width": "110%" }} change={this.placeChange.bind(this)} ref={d => this.placeElement = d} dataSource={this.placelist} fields={{ text: 'value', value: 'value' }} value="Far" />
                                         </div>
                                     </td>
                                 </tr>

@@ -22,7 +22,7 @@ export class EditorFieldValidation extends SampleBase<{}, {}> {
     location: {
       name: 'Location', validation: {
         required: true,
-        regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
+        regex: ['^[a-zA-Z0-9- ]*$', 'Special characters are not allowed in this field']
       }
     },
     description: {

@@ -100,37 +100,37 @@ export class PrintExport extends SampleBase<{}, {}> {
 					{/* Property Panel */}
 					<div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', overflow: 'hidden' }}>
 								<tr>
 									<td>
-										<div>Export Type</div>
+										<div style={{ paddingLeft: '0px' }}>Export Type</div>
 									</td>
 									<td>
-										<div>
-											<DropDownListComponent id="mode" width="90px" index={0} placeholder="JPEG" ref={d => this.mode = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
+										<div style={{ paddingLeft: '0px' }}>
+											<DropDownListComponent id="mode" width="100%" index={0} placeholder="JPEG" ref={d => this.mode = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<div>File Name</div>
+										<div style={{ paddingLeft: '0px' }}>File Name</div>
 									</td>
 									<td>
-										<div className="e-float-input" style={{ 'margin-top': '0px' }}>
-											<input id="fileName" ref={d => this.nameElement = d} type="text" defaultValue="TreeMap" />
+										<div className="e-float-input" style={{ 'margin-top': '0px', paddingLeft: '0px' }}>
+											<input id="fileName" ref={d => this.nameElement = d} type="text" defaultValue="TreeMap" style={{ padding: '0px', paddingLeft: '5px' }}/>
 										</div>
 									</td>
 								</tr>
-								<tr>
+								<tr style={{ height:"60px" }}>
 									<td>
-										<div id="btn-control"  style={{ 'margin-left': '50%' }}>
+										<div id="btn-control">
 											<ButtonComponent onClick={this.onClick1.bind(this)}  style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
 										</div>
 									</td>
-								</tr>
-								<tr>
+								{/* </tr>
+								<tr> */}
 									<td>
-										<div id="btn-control" style={{ 'margin-left': '50%' }}>
+										<div id="btn-control">
 											<ButtonComponent onClick={this.onClick2.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Print</ButtonComponent>
 										</div>
 									</td>

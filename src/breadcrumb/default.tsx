@@ -1,10 +1,21 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { BreadcrumbComponent, BreadcrumbItemDirective, BreadcrumbItemsDirective } from '@syncfusion/ej2-react-navigations';
+import { ButtonComponent} from '@syncfusion/ej2-react-buttons';
+import { getComponent} from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import './default.css';
 
 export class Default extends SampleBase<{}, {}> {
+    
+    btnClick(): void {
+      let breadcrumb, breadcrumbInst, breadcrumbs = document.querySelector('.content-wrapper').getElementsByClassName("e-breadcrumb");
+      for (let i = 0; i < breadcrumbs.length; i++) {
+          breadcrumb = breadcrumbs[i];
+          breadcrumbInst = (getComponent(breadcrumb as HTMLElement, 'breadcrumb') as ButtonComponent);
+          breadcrumbInst.activeItem = breadcrumbInst.items[breadcrumbInst.items.length - 1].text;
+      }
+    }
 
   breadcrumbTemplate(): JSX.Element {
     return (
@@ -19,7 +30,9 @@ export class Default extends SampleBase<{}, {}> {
           <div className="content-wrapper breadcrumb-control-wrapper">
             <div className="row material2">
               <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                <h5>Simple Breadcrumb</h5>
+                <h5 style={{ display: "inline-block" }}>Simple Breadcrumb</h5>
+                <ButtonComponent cssClass='e-small reset-btn'
+                    onClick={ this.btnClick.bind(this) }>Reset State</ButtonComponent>
               </div>
             </div>
             <div className="row material2">
@@ -43,7 +56,7 @@ export class Default extends SampleBase<{}, {}> {
               <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12 e-bc-overflow">
                 <BreadcrumbComponent maxItems={3} enableNavigation={false} separatorTemplate={this.breadcrumbTemplate}>
                   <BreadcrumbItemsDirective>
-                    <BreadcrumbItemDirective text="Home" url="../"></BreadcrumbItemDirective>
+                    <BreadcrumbItemDirective text="Home" url="./"></BreadcrumbItemDirective>
                     <BreadcrumbItemDirective text="Breadcrumb" url="./breadcrumb"></BreadcrumbItemDirective>
                     <BreadcrumbItemDirective text="Default" url="./breadcrumb/default-functionalities"></BreadcrumbItemDirective>
                     <BreadcrumbItemDirective text="Icons" url="./breadcrumb/icons"></BreadcrumbItemDirective>
@@ -72,23 +85,16 @@ export class Default extends SampleBase<{}, {}> {
           </div>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the basic rendering, overflow feature and navigable active item of the <b>Breadcrumb</b> component with icon support.</p>
-        </div>
+        <p>This sample demonstrates the basic rendering, overflow feature and navigable active item of the <b>Breadcrumb</b> component with icon support. Click the <b>Reset State</b> button to refresh Breadcrumb component states.</p>        </div>
         <div id='description'>
           <p>The <code>Breadcrumb</code> component is used as a navigational aid to identify the current page location within the navigational hierarchy structure of websites. It has list of items that can be populated using the <code>BreadcrumbItemDirective</code> tag.</p>
           <p><b>Simple Breadcrumb</b></p>
-          <p>In this sample, the <code>Breadcrumb</code> is populated with Text, Icon, and Url.</p>
+          <p>In this sample, the Breadcrumb is populated with text, icon, and URL.</p>
           <p><b>Breadcrumb with Overflow</b></p>
-          <p>In the <code>Breadcrumb</code> component, <code>maxItems</code> and <code>overflowMode</code> properties were used to limit the number of breadcrumb items to be displayed.</p>
-          <p>The following overflow mode's were available in the <code>Breadcrumb</code> component.</p>
-          <ul>
-            <li><code>Default</code> - Specified maxItems count will be visible and the remaining items will be hidden. While clicking on the previous item, the hidden item will become visible.</li>
-            <li><code>Collapsed</code> - Only the first and last items will be visible, and the remaining items will be hidden in the collapsed icon. When the collapsed icon is clicked, all items become visible.</li>
-          </ul>
-          <p>In this sample, the maxItems is set as 3 with overflowMode as Default. To prevent breadcrumb item navigation we have set <code>false</code> in <code>enableNavigation</code> property of <code>Breadcrumb</code> component.</p>
-          <p><b>Active Last Breadcrumb</b></p>
+          <p>In the Breadcrumb component, <code>maxItems</code> and <code>overflowMode</code> properties were used to limit the number of breadcrumb items to be displayed.</p>      
+          <p>In this sample, the <code>maxItems</code> is set as <code>3</code> with <code>overflowMode</code> as <code>Menu</code>. To prevent breadcrumb item navigation we have set <code>false</code> in <code>enableNavigation</code> property of Breadcrumb component.</p>          <p><b>Active Last Breadcrumb</b></p>
           <p>In this sample, navigation for the last item is enabled by using <code>enableActiveItemNavigation</code> property.</p>
-          <p>More information about <code>Breadcrumb</code> component can be found in this <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/breadcrumb/getting-started/">documentation section</a>.</p>
+          <p>More information about Breadcrumb component can be found in this <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/breadcrumb/getting-started/">documentation section</a>.</p>
         </div>
       </div>
     );

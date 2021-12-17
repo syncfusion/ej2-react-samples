@@ -40,6 +40,9 @@ const SAMPLE_CSS = `
          font-size:13px;
          color:#ffffff;
          font-weight: 500;
+    }
+    .tailwind .opacityCheckbox, .tailwind-dark .opacityCheckbox, .fabric .opacityCheckbox, .fabric-dark .opacityCheckbox{
+        margin-top: -7px;
     }`;
     // custom code end
 export class ColorMap extends SampleBase<{}, {}> {
@@ -323,44 +326,44 @@ export class ColorMap extends SampleBase<{}, {}> {
                 {/* Property Panel */}
 					<div className='col-lg-4 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft: '-10px' }}>
+							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
                                 <tr>
 									<td>
-										<div>Color Mapping Type</div>
+										<div style={{ paddingLeft: '0px' }}>Color Mapping Type</div>
 									</td>
 									<td>
 										<div>
-											<DropDownListComponent id="Type" width="130px" index={0} change={this.typeChange.bind(this)} ref={d => this.typeElement = d} dataSource={this.dropList} fields={{ text: 'text', value: 'value' }} />
+											<DropDownListComponent id="Type" width="100%" index={0} change={this.typeChange.bind(this)} ref={d => this.typeElement = d} dataSource={this.dropList} fields={{ text: 'text', value: 'value' }} />
 										</div>
 									</td>
 								</tr>
 								<tr id="hideOne">
 									<td>
-										<div>Change Opacity</div>
+										<div style={{ paddingLeft: '0px' }}>Change Opacity</div>
 									</td>
 									<td>
-										<div style={{paddingLeft: '70px'}}>
-											<CheckBoxComponent id='opacity' checked={false} change={this.opacityChange.bind(this)} ref={d => this.opacityElement = d} disabled={true} />
+										<div className='opacityCheckbox' style={{ paddingLeft: '0px', marginTop: '-10px' }}>
+											<CheckBoxComponent id='opacity' checked={false} change={this.opacityChange.bind(this)} ref={d => this.opacityElement = d} disabled={true} style={{ paddingLeft: '0px' }}/>
 										</div>
 									</td>
 								</tr>
-								<tr id="hideTwo">
+								<tr id="hideTwo" style={{ height: '50px' }}>
 									<td>
-										<div>Min Opacity</div>
+										<div style={{ paddingLeft: '0px' }}>Min Opacity</div>
 									</td>
 									<td>
 										<div>
-											<input type="range" id='minOpacity' disabled onChange={this.minOpacityChange.bind(this)} ref={d => this.minOpacityElement = d} min="0" max="1" step="0.1" defaultValue="0.5" style={{width: '130px'}} />
+											<input type="range" id='minOpacity' disabled onChange={this.minOpacityChange.bind(this)} ref={d => this.minOpacityElement = d} min="0" max="1" step="0.1" defaultValue="0.5" style={{width: '100%'}} />
 										</div>
 									</td>
 								</tr>
-								<tr id="hideThree">
+								<tr id="hideThree" style={{ height: '50px' }}>
 									<td>
-										<div>Max Opacity</div>
+										<div style={{ paddingLeft: '0px' }}>Max Opacity</div>
 									</td>
 									<td>
 										<div>
-											<input type="range" id='maxOpacity' disabled onChange={this.maxOpacityChange.bind(this)} ref={d => this.maxOpacityElement = d} min="0" max="1" step="0.1" defaultValue="1" style={{width: '130px'}} />
+											<input type="range" id='maxOpacity' disabled onChange={this.maxOpacityChange.bind(this)} ref={d => this.maxOpacityElement = d} min="0" max="1" step="0.1" defaultValue="1" style={{width: '100%'}} />
 										</div>
 									</td>
 								</tr>

@@ -153,8 +153,13 @@
 
 .e-searchfor-text {
     display: flex;
+    align-items: center;
     font-size: 14px;
     font-weight: normal;
+}
+
+.e-searchfor-text .e-breadcrumb-text {
+    padding-left: 0;
 }
 
 .e-bigger .e-searchfor-text {
@@ -417,4 +422,9 @@
 
 .tailwind .e-custom-breadcrumb .e-custom-icon {
     line-height: 1;
+}
+
+.reset-btn {
+    float: right;
+    margin: 5px 2px 5px 0;
 }

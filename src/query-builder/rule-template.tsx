@@ -6,6 +6,7 @@ import { SampleBase } from '../common/sample-base';
 import './rule-template.css';
 import { DropDownList, DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { RadioButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { employeeData } from './data-source';
 
 export class RuleTemplate extends SampleBase<{}, {}> {
     elem: HTMLElement;
@@ -39,7 +40,7 @@ export class RuleTemplate extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <div className='col-lg-12 control-section'>
                         <QueryBuilderComponent id="querybuilder"
-                                rule={this.importRules}  ref={(scope) => { this.qryBldrObj = scope; }} >
+                                rule={this.importRules} dataSource={employeeData} ref={(scope) => { this.qryBldrObj = scope; }} >
                             <ColumnsDirective>
                                 <ColumnDirective field="EmployeeID" label="Employee ID" type="number"/>
                                 <ColumnDirective field="FirstName" label="First Name" type="string"/>

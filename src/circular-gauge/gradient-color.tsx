@@ -61,7 +61,7 @@ export class GradientColor extends SampleBase<{}, {}> {
             this.loaded = true;
             this.gradientType = new DropDownList({
                 index: 0,
-                width: 150,
+                width: '100%',
                 change: () => {
                     if (this.gradientType.value === 'radial' && this.element.value === 'range') {
                         this.circulargauge.axes[0].ranges[0].linearGradient = null;
@@ -89,7 +89,7 @@ export class GradientColor extends SampleBase<{}, {}> {
 
             this.element = new DropDownList({
                 index: 0,
-                width: 150,
+                width: '100%',
                 change: () => {
                     if (this.gradientType.value === 'radial' && this.element.value === 'range') {
                         this.circulargauge.axes[0].ranges[0].linearGradient = null;
@@ -173,10 +173,10 @@ export class GradientColor extends SampleBase<{}, {}> {
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{"margin-top":"30px", "width": "60%", "margin-left": "-10px"}}>Gradient Type</div>
+                                            <div id='' style={{ "margin-left": "-10px"}}>Gradient Type</div>
                                         </td>
                                         <td>
-                                            <div style={{"margin-top":"20px", "margin-left":"-15px"}}>
+                                            <div style={{ "margin-left":"-15px"}}>
                                                 <select id="gradient" className="form-control">
                                                     <option value="linear">Linear Gradient</option>
                                                     <option value="radial">Radial Gradient</option>
@@ -186,10 +186,10 @@ export class GradientColor extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{"margin-top":"30px", "margin-left": "-10px"}}>Elements</div>
+                                            <div id='' style={{ "margin-left": "-10px"}}>Elements</div>
                                         </td>
                                         <td>
-                                            <div style={{"margin-top":"30px", "margin-left":"-15px"}}>
+                                            <div style={{ "margin-left":"-15px"}}>
                                                 <select id="element" className="form-control">
                                                     <option value="range">Range</option>
                                                     <option value="pointer">Pointer</option>
