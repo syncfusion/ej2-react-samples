@@ -37,17 +37,17 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
             to define column type as <code>checkbox</code> using
             <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#type">
-                            columns->type
+                            columns-&gt;type
         </a></code> property.</p>
                     <p>Selection can be persisted on all the operations using
             <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-selectionSettings.html#persistselection">
-                            selectionSettings-> persistSelection
+                            selectionSettings-&gt; persistSelection
         </a></code> property. For persisting selection on the Grid, any one of the column should be defined as
             a primary key using
             <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#isprimarykey">
-                            columns->isPrimaryKey
+                            columns-&gt;isPrimaryKey
         </a></code> property.
         </p>
 

@@ -46,14 +46,14 @@ export class CodeEditor extends SampleBase<{}, {}> {
             <div className="splitter-editor-content">
                 <h3 className="h3">HTML</h3>
                 <div className="code-preview">
-                    &lt;<span>!DOCTYPE html></span>
-                    <div>&lt;<span>html></span></div>
-                    <div>&lt;<span>body></span></div>
-                    &lt;<span>div</span> id="custom-image">
-        <div style={paneImg}>&lt;<span>img</span> src="src/albert.png"></div>
+                    &lt;<span>!DOCTYPE html&gt;</span>
+                    <div>&lt;<span>html&gt;</span></div>
+                    <div>&lt;<span>body &gt;</span></div>
+                    &lt;<span>div</span> id="custom-image"&gt;
+        <div style={paneImg}>&lt;<span>img</span> src="src/albert.png"&gt;</div>
                     <div>&lt;<span>div</span>&gt;</div>
-                    <div>&lt;<span>/body></span></div>
-                    <div>&lt;<span>/html></span></div>
+                    <div>&lt;<span>/body&gt;</span></div>
+                    <div>&lt;<span>/html&gt;</span></div>
                 </div>
             </div>
         );

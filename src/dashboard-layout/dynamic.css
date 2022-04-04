@@ -32,6 +32,11 @@
     font-size: 15px;
 }
 
+body.fluent.e-bigger #edit_target .e-btn.e-primary,  body.fluent-dark.e-bigger #edit_target .e-btn.e-primary{
+    width : 100px !important;
+    margin: -8px;
+}
+
 #edit_dashboard.e-dashboardlayout.e-control .e-panel:hover span {
     display: block;
 }
@@ -48,6 +53,7 @@
     overflow: hidden;
     width:100%;
 }
+
 
 .bootstrap5-dark .dialog-text,
 .highcontrast .dialog-text,

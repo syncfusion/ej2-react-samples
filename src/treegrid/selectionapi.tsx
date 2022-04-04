@@ -48,8 +48,8 @@ export class SelectionAPI extends SampleBase<{}, {}> {
               {/* custom code end */}
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
-              allowSelection='true' ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageSize: 10 }}
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging={true} 
+              allowSelection={true} ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageSize: 10 }}
               selectionSettings={{ type:'Multiple'}}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right'></ColumnDirective>
@@ -128,14 +128,14 @@ export class SelectionAPI extends SampleBase<{}, {}> {
         </code> as true.
     </p>
     <p>Tree Grid supports two types of selection which can be set using
-        <code>selectionSettings->type
+        <code>selectionSettings-&gt;type
         </code> property. They are,</p>
     <ul>
         <li><code>single</code> - Enabled by default. Allows the user to select single row/cell at a time.</li>
         <li><code>multiple</code> - Allows the user to select more than one row/cell at a time.</li>
     </ul>
     <p>Also, supports three modes of selection which can be set using
-        <code>selectionSettings->mode
+        <code>selectionSettings-&gt;mode
         </code> property. They are,
     </p>
     <ul>
@@ -147,7 +147,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
     </ul>
     <p>The Tree Grid supports two types of cell selection mode that can be set by using the  
             <code>
-            selectionSettings->cellSelectionMode
+            selectionSettings-&gt;cellSelectionMode
             </code> property. They are,</p>
         <ul>
             <li><code>Flow</code> - The Flow value is set by default. The range of cells are selected between the start index

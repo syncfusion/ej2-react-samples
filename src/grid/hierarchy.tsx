@@ -62,7 +62,7 @@ export class Hierarchy extends SampleBase<{}, {}> {
                         detailDataBound</a></code> event triggers at initial expand of every child Grid.      
                     </p>
                     <p>
-                    In this demo, three level hierarchy is demonstrated with hierarchical structure Employee -> Orders -> Customers.
+                    In this demo, three level hierarchy is demonstrated with hierarchical structure Employee -&gt; Orders -&gt; Customers.
                     </p>    
                     <br/>
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>

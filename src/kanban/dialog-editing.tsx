@@ -34,7 +34,7 @@ export class DialogEditing extends SampleBase<{}, {}> {
                     <div className='control-wrapper'>
                         <div className='kanban-section'>
                             <KanbanComponent id="kanban" ref={(kanban) => { this.kanbanObj = kanban }} keyField="Status" dataSource={this.data}
-                                cardSettings={{ contentField: "Summary", headerField: "Id" }} dialogSettings={{ template: this.dialogTemplate }}>
+                                cardSettings={{ contentField: "Summary", headerField: "Id" }} dialogSettings={{ template: this.dialogTemplate.bind(this) }}>
                                 <ColumnsDirective>
                                     <ColumnDirective headerText="To Do" keyField="Open" />
                                     <ColumnDirective headerText="In Progress" keyField="InProgress" />

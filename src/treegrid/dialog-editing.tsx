@@ -17,7 +17,7 @@ export class Dialog extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
             editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right' validationRules={this.validationRule2}

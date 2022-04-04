@@ -55,12 +55,12 @@ export class TasklabelTemplate extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='TasklabelTemplate' dataSource={labelData} highlightWeekends={true}
-            rowHeight='46' treeColumnIndex={1} splitterSettings={this.splitterSettings}
+            rowHeight={46} treeColumnIndex={1} splitterSettings={this.splitterSettings}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='60'></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' ></ColumnDirective>

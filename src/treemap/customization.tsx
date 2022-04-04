@@ -57,7 +57,7 @@ export class Customization extends SampleBase<{}, {}> {
 					</TreeMapComponent>
 				</div>
 				{/* Source Link */}
-				<div style={{ float: 'right', marginright: '10px' }}>Source:
+				<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href=" https://en.wikipedia.org/wiki/United_States_at_the_2016_Summer_Olympics" target="_blank"> en.wikipedia.org</a>
 				</div>
 				<div id="action-description">

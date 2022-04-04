@@ -85,7 +85,7 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
     </p>
                     <br />
-                    <p style={{ "font-weight": 500 }}>Injecting Module</p>
+                    <p style={{ "fontWeight": 500 }}>Injecting Module</p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
         <code>ColumnSeries</code> module into <code>services</code>

@@ -95,7 +95,7 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px'}}>Source: 
+                <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/List_of_Cricket_World_Cup_finals" target="_blank">en.wikipedia.org</a>
     </div>
                 <div id="action-description">
@@ -108,7 +108,7 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                  In this example, you can see how to render the custom HTML element as tooltip. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices. Also, the interactive legend has been placed at the left of the map. 
                </p>
                <br/>
-             <p style={{fontweight: 500}}>Injecting Module</p>
+             <p style={{fontWeight: 500}}>Injecting Module</p>
              <p>
                Maps component features are segregated into individual feature-wise modules. To use a tooltip, inject the Tooltip module using the Maps.Inject(Tooltip) method.
             </p>

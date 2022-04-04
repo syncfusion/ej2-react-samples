@@ -32,7 +32,7 @@ export class ColumnResizing extends SampleBase<{}, {}> {
                     <p>The Grid columns can be resized by clicking and dragging at the right corner of columns header. To enable column, resize behavior, set <code><a target="_blank" className="code"
                         href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowresizing">allowResizing
                         </a></code> property as true. You can also prevent the resize of the particular column by setting
-                        <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-columnModel.html#allowresizing">columns->allowResizing
+                        <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-columnModel.html#allowresizing">columns-&gt;allowResizing
                         </a></code> as false in columns definition.
                 
                         And, by double clicking at the right corner of column header, the respective column width will get auto adjusted to its fit by <code><a target="_blank" className="code"

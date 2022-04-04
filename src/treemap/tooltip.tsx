@@ -105,7 +105,7 @@ export class Tooltip extends SampleBase<{}, {}> {
 					</div>
 				</div >
 				{/* Source Link */}
-				<div style={{ float: 'right', marginright: '10px' }}>Source:
+				<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://en.wikipedia.org/wiki/List_of_international_airports_by_country" target="_blank">en.wikipedia.org</a>
 				</div>
 				<div id="action-description">

@@ -103,7 +103,7 @@ export class MarkerMaps extends SampleBase<{}, {}> {
                         </LayersDirective>
                     </MapsComponent>
                     {/* Source Link */}
-                    <div style={{ float: 'right', marginright: '10px' }}>Source:
+                    <div style={{ float: 'right', marginRight: '10px' }}>Source:
                         <a href="http://www.citymayors.com/statistics/largest-cities-population-125.html" target="_blank">www.citymayors.com</a>
                     </div>
                 </div>
@@ -149,7 +149,7 @@ export class MarkerMaps extends SampleBase<{}, {}> {
                         Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.
                 </p>
                     <br />
-                    <p style={{ fontweight: 500 }}>Injecting Module</p>
+                    <p style={{ fontWeight: 500 }}>Injecting Module</p>
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a data label, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
                 </p>

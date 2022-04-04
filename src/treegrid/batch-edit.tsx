@@ -20,7 +20,7 @@ export class Batch extends SampleBase<{}, {}> {
     return (
         <div className='control-pane'>
         <div className='control-section'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
               editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}
               ref={treegrid=> this.treegridObj = treegrid} >
             <ColumnsDirective>

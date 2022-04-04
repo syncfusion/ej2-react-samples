@@ -173,10 +173,10 @@ export class GradientColor extends SampleBase<{}, {}> {
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{ "margin-left": "-10px"}}>Gradient Type</div>
+                                            <div id='' style={{ "marginLeft": "-10px"}}>Gradient Type</div>
                                         </td>
                                         <td>
-                                            <div style={{ "margin-left":"-15px"}}>
+                                            <div style={{ "marginLeft":"-15px"}}>
                                                 <select id="gradient" className="form-control">
                                                     <option value="linear">Linear Gradient</option>
                                                     <option value="radial">Radial Gradient</option>
@@ -186,10 +186,10 @@ export class GradientColor extends SampleBase<{}, {}> {
                                     </tr>
                                     <tr style={{ height: '50px' }}>
                                         <td>
-                                            <div id='' style={{ "margin-left": "-10px"}}>Elements</div>
+                                            <div id='' style={{ "marginLeft": "-10px"}}>Elements</div>
                                         </td>
                                         <td>
-                                            <div style={{ "margin-left":"-15px"}}>
+                                            <div style={{ "marginLeft":"-15px"}}>
                                                 <select id="element" className="form-control">
                                                     <option value="range">Range</option>
                                                     <option value="pointer">Pointer</option>

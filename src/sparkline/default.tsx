@@ -10,7 +10,6 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 const titleStyle = { "width": "400px", "text-align": "center", "font-size": "17px", "margin": "auto" };
-const centerAlign = { "text-align": "center" };
 const width100 = { width: "100%" };
 const sparklineStyle1 = { "width": "150px", "height": "50px", "text-align": "center" };
 
@@ -35,13 +34,13 @@ export class Default extends SampleBase<{}, {}> {
                         <div className="cols-sample-area" style={{ "margin": "10" }}>
                             <div style={titleStyle}>Population comparision between various countries
                             </div>
-                            <div style={{"text-align": "center"}}>(From 2005 to 2014)</div>
+                            <div style={{"textAlign": "center"}}>(From 2005 to 2014)</div>
                             <br />
                             <br />
                             <table style={width100}>
                                 <tbody>
                                     <tr>
-                                        <td style={centerAlign}></td>
+                                        <td style={{ "textAlign": "center" }}></td>
                                         <td>
                                             <div id="population" style={sparklineStyle1}>
                                                 <b>Population</b>
@@ -64,7 +63,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>Australia</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>Australia</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='a-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -166,7 +165,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>Canada</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>Canada</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='c-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -269,7 +268,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>China</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>China</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='ch-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -372,7 +371,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>France</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>France</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='f-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -475,7 +474,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>Germany</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>Germany</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='g-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -578,7 +577,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>India</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>India</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='i-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -681,7 +680,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>Russia</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>Russia</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='r-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -784,7 +783,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>Sweden</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>Sweden</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='sw-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -887,7 +886,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>United Kingdom</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>United Kingdom</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='uk-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -990,7 +989,7 @@ export class Default extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr style={{ "height": "80px" }}>
-                                        <td style={centerAlign}><b>United Sates</b></td>
+                                        <td style={{ "textAlign": "center" }}><b>United Sates</b></td>
                                         <td>
                                             <SparklineComponent load={this.load.bind(this)} id='us-spark1-container'
                                                 height='50px' width='150px' lineWidth={2} type='Line' valueType='Category'
@@ -1097,7 +1096,7 @@ export class Default extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{ "float": "right", "margin-right": "10px" }}>Source:
+                <div style={{ "float": "right", "marginRight": "10px" }}>Source:
                 <a href="https://www.indexmundi.com/g/g.aspx?v=21&amp;v=21000&amp;v=24&amp;v=25&amp;v=27&amp;c=as&amp;c=ch&amp;c=fr&amp;c=gm&amp;c=in&amp;c=rs&amp;c=sn&amp;c=sz&amp;c=uk&amp;c=us&amp;l=en/" target="_blank"> www.indexmundi.com</a>
                 </div>
                 <div id="action-description">

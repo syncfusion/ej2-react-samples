@@ -30,7 +30,7 @@ export class Search extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div className = 'col-md-9'>
           <TreeGridComponent dataSource={sampleData} ref={treegrid => this.treegridInstance = treegrid} treeColumnIndex={1}
-            childMapping= 'subtasks' height='350' allowPaging='true' toolbar={this.toolbarOptions}>
+            childMapping= 'subtasks' height='350' allowPaging={true} toolbar={this.toolbarOptions}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='200'></ColumnDirective>

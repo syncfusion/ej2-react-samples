@@ -92,7 +92,7 @@ export class Crud extends SampleBase<{}, {}> {
   }
 
   constructor(props) {
-    super();
+    super(props);
     this.buttons = [{
       click: this.dlgButtonClick,
       buttonModel: {

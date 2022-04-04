@@ -98,7 +98,7 @@ let nodes: NodeModel[] = [
       type: 'Bpmn', shape: 'Activity', activity: {
         activity: 'Task', task: {
           type: 'Service',
-          loop: 'parallelmultiinstance',
+          loop: 'ParallelMultiInstance',
         },
       },
     }, annotations: [{
@@ -146,7 +146,7 @@ let nodes: NodeModel[] = [
     shape: {
       type: 'Bpmn', shape: 'Activity', activity: {
         activity: 'Task', task: {
-          type: 'User', Compensation: true, offset: { x: 0.50, y: 1 }
+          type: 'User', compensation: true
         },
       },
     }, annotations: [{
@@ -183,7 +183,7 @@ let connectors: ConnectorModel[] = [
     id: 'connector8', sourceID: 'compensation', targetID: 'user', type: 'Orthogonal',
     shape: {
       type: 'Bpmn',
-      flow: 'association',
+      flow: 'Association',
       association: 'Directional'
     }, style: {
       strokeDashArray: '2,2'
@@ -380,7 +380,7 @@ export class BpmnEditor extends SampleBase<{}, {}> {
       <div className="control-pane">
         <div className="control-section">
           <div className="sb-mobile-palette-bar">
-            <div id="palette-icon" style={{ float: "right", role: "button" }} className="e-ddb-icons1 e-toggle-palette"></div>
+            <div id="palette-icon" style={{ float: "right" }} className="e-ddb-icons1 e-toggle-palette"></div>
           </div>
           <div
             id="palette-space"

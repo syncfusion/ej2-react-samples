@@ -1,9 +1,10 @@
 .schedule-header-bar.e-schedule .e-schedule-toolbar .user-icon {
-  background-image: url('./src/schedule/images/nancy.png');
+  background-image: url("./src/schedule/images/nancy.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 50%;
+  height: 24px;
   min-width: 24px !important;
   width: 24px !important;
 }
@@ -30,7 +31,7 @@
 }
 
 .e-profile-wrapper .profile-image {
-  background-image: url('./src/schedule/images/nancy.png');
+  background-image: url("./src/schedule/images/nancy.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -71,7 +72,7 @@
 }
 
 .highcontrast .e-profile-wrapper {
-  border: 1px solid #969696
+  border: 1px solid #969696;
 }
 
 .highcontrast .e-profile-wrapper .profile-container {
@@ -88,12 +89,17 @@
   border: 0.5px solid #4b5563;
 }
 
-.tailwind .e-profile-wrapper .destination, .tailwind-dark .e-profile-wrapper .destination {
+.tailwind .e-profile-wrapper .destination,
+.tailwind-dark .e-profile-wrapper .destination {
   font-size: 11px;
 }
 
 .bootstrap-dark .e-profile-wrapper {
   background-color: #1a1a1a;
+}
+
+.fluent-dark .e-profile-wrapper {
+  background-color: #201f1e;
 }
 
 .fabric-dark .e-profile-wrapper {

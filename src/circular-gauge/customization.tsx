@@ -156,11 +156,11 @@ export class Customization extends SampleBase<{}, {}> {
                                     <tr style={{ height: '90px' }}>
                                         <td style={{ textAlign : 'center' }}>
                                             <img id='random' src="src/circular-gauge/images/gauge-1.png" alt="Customized gauge 1" style={{ marginTop: '10px' }} onClick={this.random.bind(this)} ref={d => this.image1 = d} />
-                                            <div id="random_line" style={{ display: "block", left: "0px", background: "#ff4081", "padding-top": "0px", height: "2px", width: "85px", margin: "auto" }}></div>
+                                            <div id="random_line" style={{ display: "block", left: "0px", background: "#ff4081", "paddingTop": "0px", height: "2px", width: "85px", margin: "auto" }}></div>
                                         </td>
                                         <td style={{ textAlign : 'center', width: '40%', paddingLeft: '10%' }}>
                                             <img id='usage' src="src/circular-gauge/images/gauge-2.png" alt="Customized gauge 2" style={{ marginTop: '10px' }} onClick={this.usage.bind(this)} ref={d => this.image2 = d} />
-                                            <div id="usage_line" style={{ display: "none", left: "0px", background: "#ff4081", "padding-top": "0px", height: "2px", width: "85px", margin: "auto" }}></div>
+                                            <div id="usage_line" style={{ display: "none", left: "0px", background: "#ff4081", "paddingTop": "0px", height: "2px", width: "85px", margin: "auto" }}></div>
                                         </td>
                                     </tr>
                                     <tr style={{ height: '50px' }}>

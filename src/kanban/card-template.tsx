@@ -5,6 +5,9 @@ import { KanbanComponent, ColumnsDirective, ColumnDirective, DialogFieldsModel }
 import { SampleBase } from '../common/sample-base';
 import './card-template.css';
 import * as dataSource from './datasource.json';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
+import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 
 
 /**
@@ -12,13 +15,44 @@ import * as dataSource from './datasource.json';
  */
 export class CardTemplate extends SampleBase<{}, {}> {
     private data: Object[] = extend([], (dataSource as { [key: string]: Object }).kanbanPizzaData, null, true) as Object[];
-    private fields: DialogFieldsModel[] = [
-        { text: 'ID', key: 'Id', type: 'TextBox' },
-        { key: 'Category', type: 'DropDown' },
-        { key: 'Title', type: 'TextBox' },
-        { key: 'Size', type: 'TextBox' },
-        { key: 'Description', type: 'TextArea' }
-    ];
+    private dialogTemplate(props: KanbanDataModel): JSX.Element {
+      return (<KanbanDialogFormTemplate {...props} />);
+  }
+
+      public render(): JSX.Element {
+        return (
+          <div className="kanban-control-section">
+            <div className="control-section">
+              <div className="control-wrapper">
+                <KanbanComponent
+                  cssClass="kanban-card-template"
+                  id="kanban"
+                  keyField="Category"
+                  dataSource={this.data}
+                  cardSettings={{
+                    headerField: 'Id',
+                    template: this.cardTemplate.bind(this),
+                  }}
+                  dialogSettings={{ template: this.dialogTemplate.bind(this)}}
+                >
+                  <ColumnsDirective>
+                    <ColumnDirective headerText="Menu" keyField="Menu" />
+                    <ColumnDirective headerText="Order" keyField="Order" />
+                    <ColumnDirective
+                      headerText="Ready to Serve"
+                      keyField="Ready to Serve"
+                    />
+                    <ColumnDirective
+                      headerText="Delivered"
+                      keyField="Delivered,Served"
+                    />
+                  </ColumnsDirective>
+                </KanbanComponent>
+              </div>
+            </div>
+          </div>
+        );
+      }
     private cardTemplate(props): JSX.Element {
         var src = 'src/kanban/images/' + props.ImageURL;
         return (<div className="card-template">
@@ -49,8 +83,20 @@ export class CardTemplate extends SampleBase<{}, {}> {
                                                         {props.Category != 'Menu' && < div className="e-description e-tooltip-text">{props.OrderID}</div>}
                                                     </td>}
                                                     {(props.Category == 'Delivered' || props.Category == 'Served') && <td className="card-content">
-                                                        <div className="e-description e-tooltip-text">{props.OrderID}</div>
-                                                        <div className="e-icons e-done"></div>
+                                                    <table>
+                                                        <tr>
+                                                            <td className="e-description e-tooltip-text">
+                                                                {props.OrderID}
+                                                            </td>
+                                                            <td className="e-icons e-done"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label className="e-date">Deliver:</label>
+                                                                <span className="e-kanban-date">{props.Date}</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                     </td>}
                                                 </tr>
                                                 <tr>
@@ -84,39 +130,117 @@ export class CardTemplate extends SampleBase<{}, {}> {
         </div>
         );
     }
-
-    public render(): JSX.Element {
-        return (
-            <div className='kanban-control-section'>
-                <div className='control-section'>
-                    <div className='control-wrapper'>
-                        <KanbanComponent cssClass="kanban-card-template" id="kanban" keyField="Category" dataSource={this.data} 
-                            cardSettings={{ headerField: "Id", template: this.cardTemplate.bind(this) }} dialogSettings={{ fields: this.fields }}>
-                            <ColumnsDirective>
-                                <ColumnDirective headerText='Menu' keyField='Menu' />
-                                <ColumnDirective headerText='Order' keyField='Order' />
-                                <ColumnDirective headerText='Ready to Serve' keyField='Ready to Serve' />
-                                <ColumnDirective headerText='Delivered' keyField='Delivered,Served' />
-                            </ColumnsDirective>
-                        </KanbanComponent>
-                    </div>
-                </div>
-                <div id="action-description">
-                    <p>
-                        This sample demonstrates how to customize the Kanban cards using templates. In this demo, the cards are
-                        customized with
-                        icons, images, and tags.
-                    </p>
-                </div>
-                <div id="description">
-                    <p>
-                        You can customize the default design of the Kanban cards using templates. This can be achieved using the
-                        <code>cardSettings</code> -> <code>template</code> property, which accepts the string or HTML element`s ID
-                                value.
-                    </p>
-                    <p>In this demo, all the cards are customized with templating as text, images, and tags.</p>
-                </div>
-            </div>
-        );
-    }
 }
+export class KanbanDialogFormTemplate extends React.Component<{},{}> {
+  public categoryData: string[]=['Menu','Order','Ready to Serve','Delivered','Served']
+    constructor(props) {
+      super(props);
+      this.state = extend({}, {}, props, true);
+    }
+    onChange(args: any): void {
+      let key: string = args.target.name;
+      let value: string = args.target.value;
+      this.setState({ [key]: value });
+  }
+    render(): any {
+      let data: KanbanDataModel = this.state;
+        return (
+          <div>
+            <table>
+              <tbody>
+                <tr>
+                  <td className="e-label">ID</td>
+                  <td>
+                    <div className="e-float-input e-control-wrapper">
+                      <input
+                        id="Id"
+                        name="Id"
+                        type="text"
+                        className="e-field"
+                        value={data.Id}
+                        disabled
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="e-label">Status</td>
+                  <td>
+                    <DropDownListComponent
+                      id="Category"
+                      name="Category"
+                      dataSource={this.categoryData}
+                      className="e-field"
+                      placeholder="Category"
+                      value={data.Category}
+                    ></DropDownListComponent>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="e-label">Title</td>
+    
+                  <td>
+                    <TextBoxComponent
+                      id="Title"
+                      name="Title"
+                      className="e-field"
+                      placeholder="Title"
+                      value={data.Title}
+                    ></TextBoxComponent>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="e-label">Size</td>
+                  <td>
+                    <TextBoxComponent
+                      id="Size"
+                      name="Size"
+                      className="e-field"
+                      placeholder="Size"
+                      value={data.Size}
+                    ></TextBoxComponent>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="e-label">Description</td>
+                  <td>
+                    <div className="e-float-input e-control-wrapper">
+                      <textarea
+                        name="Description"
+                        className="e-field"
+                        value={data.Description}
+                        onChange={this.onChange.bind(this)}
+                      ></textarea>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="e-label">Deliver</td>
+                  <td>
+                    <DatePickerComponent
+                      id="Date"
+                      className="e-field"
+                      format="MM/dd/yyyy"
+                      value={data.Date}
+                    ></DatePickerComponent>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+    }
+    
+    export interface KanbanDataModel {
+      Id?: string;
+      OrderID?: string;
+      Title?: string;
+      Type?: string;
+      Size?: string;
+      Category?: string;
+      Description?: string;
+      Tags?: number;
+      Price?: string;
+      Date?: Date;
+  }

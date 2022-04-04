@@ -27,8 +27,8 @@ export class DetailsView extends SampleBase<{}, {}> {
     private dataSource: { [key: string]: { [key: string]: string | object }[] } = {};
     private liElement: HTMLElement;
 
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
         this.commonData = [
             { name: 'Margaret', imgUrl: 'https://ej2.syncfusion.com/demos/src/listview/images/margaret.png', id: '1' },
             { name: 'Laura', imgUrl: 'https://ej2.syncfusion.com/demos/src/listview/images/laura.png', id: '2' },

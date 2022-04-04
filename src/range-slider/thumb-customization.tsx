@@ -81,7 +81,7 @@ const slidercss = `
 }
 
 .material #image_slider.e-control.e-slider .e-handle {
-    background-image: url('./src/slider/images/thumb-mat.png');
+    background-image: url('./src/range-slider/images/thumb-mat.png');
     background-repeat: no-repeat;
     background-color: transparent;
     border: 0;

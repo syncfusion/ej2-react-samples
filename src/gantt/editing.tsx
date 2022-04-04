@@ -62,7 +62,7 @@ export class Editing extends SampleBase<{}, {}> {
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='60' ></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='Duration'></ColumnDirective>

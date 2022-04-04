@@ -124,7 +124,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
             Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.
                 </p>
             <br/>
-                <p style={{fontweight: 500}}>Injecting Module</p>
+                <p style={{fontWeight: 500}}>Injecting Module</p>
                 <p>
                    Maps component features are segregated into individual feature-wise modules. To use a marker, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method, and use a legend by injecting the <code>Legend</code> module.
                 </p>

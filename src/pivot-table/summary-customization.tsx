@@ -202,10 +202,10 @@ export class SummaryCustomization extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this sample, you can hide grand totals in row, column, or both using radio buttons available under the <b>Hide grand totals</b> category. To hide grand totals in both row and column, set the property <code>dataSourceSettings->showGrandTotals</code> as <b>false</b>. To hide the row and column grand totals separately, set the property <code>dataSourceSettings->showRowGrandTotals</code> and <code>dataSourceSettings->showColumnGrandTotals</code>as <b>false</b>.
+                        In this sample, you can hide grand totals in row, column, or both using radio buttons available under the <b>Hide grand totals</b> category. To hide grand totals in both row and column, set the property <code>dataSourceSettings-&gt;showGrandTotals</code> as <b>false</b>. To hide the row and column grand totals separately, set the property <code>dataSourceSettings-&gt;showRowGrandTotals</code> and <code>dataSourceSettings-&gt;showColumnGrandTotals</code>as <b>false</b>.
                     </p>
                     <p>
-                        You can also, display the grand totals either at the top or bottom of the row and column axes using radio buttons available under the <b>Grand totals position</b> category. To display the grand totals at top, set the property <code>dataSourceSettings->grandTotalsPosition</code> as <b>Top</b>. And, to display the grand totals at botton, set the property <code>dataSourceSettings->grandTotalsPosition</code> as <b>Bottom</b>.
+                        You can also, display the grand totals either at the top or bottom of the row and column axes using radio buttons available under the <b>Grand totals position</b> category. To display the grand totals at top, set the property <code>dataSourceSettings-&gt;grandTotalsPosition</code> as <b>Top</b>. And, to display the grand totals at botton, set the property <code>dataSourceSettings-&gt;grandTotalsPosition</code> as <b>Bottom</b>.
                     </p>
                     <p>
                         Also, in this sample, you can hide subtotals for specific fields too. It can be achieved by selecting appropriate fields from the drop-down available under the <b>Hide sub-totals</b> category. To hide subtotals for a specific field, set the <code>showSubTotals</code> property as <b>false</b> inside the field definition.

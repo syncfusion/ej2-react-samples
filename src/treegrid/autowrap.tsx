@@ -19,7 +19,7 @@ export class AutoWrap extends SampleBase<{}, {}> {
           {SAMPLE_CSS}
         </style>
         <div className='control-section'>
-          <TreeGridComponent dataSource={textWrapData} treeColumnIndex={1} allowPaging='true' childMapping='subtasks' allowTextWrap='true' 
+          <TreeGridComponent dataSource={textWrapData} treeColumnIndex={1} allowPaging={true} childMapping='subtasks' allowTextWrap={true} 
               pageSettings={{ pageSize: 11 }}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right'></ColumnDirective>

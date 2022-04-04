@@ -124,6 +124,26 @@ let bootstrap5DarkWomen: string = '<div style="background-color:#A860F1;border-r
     '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y}M </span></div></div>';
+let fluentMan: string = '<div style="background-color:#614570;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let fluentWomen: string = '<div style="background-color:#4C6FB1;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let fluentDarkMan: string = '<div style="background-color:#8AB113;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
+let fluentDarkWomen: string = '<div style="background-color:#2A72D5;border-radius: 3px;">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y}M </span></div></div>';
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -254,6 +274,10 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
             args.template = args.series.name === 'Male' ? bootstrap5DarkMan : bootstrap5DarkWomen;
         } else if (theme === 'Bootstrap5') {
             args.template = args.series.name === 'Male' ? bootstrap5Man : bootstrap5Women;
+        } else if (theme === 'Fluent') {
+            args.template = args.series.name === 'Male' ? fluentMan : fluentWomen;
+        } else if (theme === 'FluentDark') {
+            args.template = args.series.name === 'Male' ? fluentDarkMan : fluentDarkWomen;
         } else {
             args.template = args.series.name === 'Male' ? bootstrapMan : bootstrapWomen;
         }

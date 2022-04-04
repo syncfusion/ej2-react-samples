@@ -329,7 +329,7 @@ export class Default extends SampleBase<{}, {}> {
         <div className="control-section">
           <div style={{ width: "100%" }}>
             <div className="sb-mobile-palette-bar">
-              <div id="palette-icon" style={{ float: "right", role: "button" }} className="e-ddb-icons1 e-toggle-palette"></div>
+              <div id="palette-icon" style={{ float: "right" }} className="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div
               id="palette-space" className="sb-mobile-palette"

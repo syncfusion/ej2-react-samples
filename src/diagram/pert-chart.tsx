@@ -22,7 +22,7 @@ import {
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
-import { pertChartData, DataInfo } from './diagram-data';
+import { pertChartData } from './diagram-data';
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
 
 export interface DataInfo {

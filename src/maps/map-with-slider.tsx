@@ -124,9 +124,9 @@ export class MapSlider extends SampleBase<{}, {}> {
                         </LayersDirective>
                     </MapsComponent>
                 </div>
-                <SliderComponent id="mapannotation" style={{width: '300px', 'margin-left': '300px'}} type='Range' min={-1.5} max={3.75} step={0.75} value={sliderVal} 
+                <SliderComponent id="mapannotation" style={{width: '300px', marginLeft: '300px'}} type='Range' min={-1.5} max={3.75} step={0.75} value={sliderVal} 
                     ticks={{ placement: 'After', largeStep: 0.75 }} change={ this.sliderChange.bind(this)} ref={d => this.sliderElement = d} />
-                <div style={{float: 'right', marginright: '10px' }}>Source: 
+                <div style={{float: 'right', marginRight: '10px' }}>Source: 
                     <a href="https://en.wikipedia.org/wiki/List_of_North_American_countries_by_population" target="_blank">Population growth in North America</a>
                 </div>
                 <div id="action-description">
@@ -142,7 +142,7 @@ export class MapSlider extends SampleBase<{}, {}> {
                         Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.
                     </p>
                     <br/>
-                    <p style={{fontweight: 500}}>Injecting Module</p>
+                    <p style={{fontWeight: 500}}>Injecting Module</p>
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a marker, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method, and use a legend by injecting the <code>Legend</code> module.
                     </p>

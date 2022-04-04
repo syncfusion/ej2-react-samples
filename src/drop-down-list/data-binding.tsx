@@ -57,8 +57,8 @@ export class Data extends SampleBase<{}, {}> {
                         information to interact with the service endpoint properly.
                     </p>
                     <ul>
-                        <li><code>DataManager->url</code> - Defines the service endpoint to fetch data</li>
-                        <li><code>DataManager->adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used for
+                        <li><code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data</li>
+                        <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used for
                             remote binding.</li>
                     </ul>
                     <p>Adaptor is responsible for processing response and request from/to the service endpoint.

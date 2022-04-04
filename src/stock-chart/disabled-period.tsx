@@ -25,6 +25,12 @@ const SAMPLE_CSS = `
 #gradient-chart stop[offset="1"] {
     stop-opacity: 0.4;
 }
+#fluent-gradient-chart stop {
+    stop-color: #614570;
+}
+#fluent-dark-gradient-chart stop {
+    stop-color: #8AB113;
+}
 #control-container {
     padding: 0px !important;
 }`;
@@ -63,6 +69,14 @@ export class PeriodSelector extends SampleBase<{}, {}> {
                                 <linearGradient id="gradient-chart" x1="0" x2="0" y1="0" y2="1">
                                     <stop offset="0" />
                                     <stop offset="1" />
+                                </linearGradient>
+                                <linearGradient id="fluent-gradient-chart" x1="0" x2="0" y1="0" y2="1">
+                                   <stop offset="0"></stop>
+                                   <stop offset="1"></stop>
+                                </linearGradient>
+                                <linearGradient id="fluent-dark-gradient-chart" x1="0" x2="0" y1="0" y2="1">
+                                   <stop offset="0"></stop>
+                                   <stop offset="1"></stop>
                                 </linearGradient>
                             </defs>
                         </svg>

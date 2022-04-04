@@ -37,7 +37,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div className = 'col-md-9'>
            <TreeGridComponent dataSource={sampleData} ref={treegrid => this.treegridInstance = treegrid} treeColumnIndex={1}
-            childMapping= 'subtasks' height='350' allowPaging='true' allowFiltering='true'
+            childMapping= 'subtasks' height='350' allowPaging={true} allowFiltering={true}
             filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='90' textAlign='Right'></ColumnDirective>
@@ -92,7 +92,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
                 <li><code>Menu</code></li>
                 <li><code>Excel</code></li>
         </ul>
-        you can change the filter type by setting <code>filterSettings->type</code>
+        you can change the filter type by setting <code>filterSettings-&gt;type</code>
           <p>Tree Grid provides support for a set of filtering modes with hierarchyMode property.
             The below are the type of filter mode available in Tree Grid. </p>
           <ul>

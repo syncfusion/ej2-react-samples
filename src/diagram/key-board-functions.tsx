@@ -21,7 +21,7 @@ import {
 import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
-import { keyBoardData, DataInfo } from './diagram-data';
+import { keyBoardData } from './diagram-data';
 
 
 export interface DataInfo {
@@ -158,7 +158,7 @@ export class KeyBoardInteraction extends SampleBase<{}, {}> {
                   <tr>
                     <td style={{ width: "60%" }}>
                       <h5>Command
-                       </h5>
+                      </h5>
                     </td>
                     <td style={{ width: "40%" }}>
                       <h5>Gesture</h5>
@@ -179,7 +179,7 @@ export class KeyBoardInteraction extends SampleBase<{}, {}> {
           <div>
             <h4 className="property-panel-header">Modified Commands</h4>
             <div className="property-panel-content">
-              <table id="property3" style={{fontSize: "12px"}}>
+              <table id="property3" style={{ fontSize: "12px" }}>
                 <tbody>
                   <tr>
                     <td style={{ width: "70%" }}>
@@ -326,60 +326,66 @@ export class KeyBoardInteraction extends SampleBase<{}, {}> {
   //Navigation for Child Node
   public navigateToChild(): void {
     let parent: Node = diagramInstance.selectedItems.nodes[0] as Node;
-    let connectorId: string = parent.outEdges[0];
-    let child: NodeModel[] = this.getChildNode(connectorId);
-    if (child) {
-      diagramInstance.clearSelection();
-      diagramInstance.select(child);
+    if (parent.outEdges && parent.outEdges.length > 0) {
+      let connectorId: string = parent.outEdges[0];
+      let child: NodeModel[] = this.getChildNode(connectorId);
+      if (child) {
+        diagramInstance.clearSelection();
+        diagramInstance.select(child);
+      }
     }
   }
 
   //Navigation for parent Node
   public navigateToParent(): void {
     let child: Node = diagramInstance.selectedItems.nodes[0] as Node;
-    if(child.inEdges && child.inEdges.length > 0) {
-    let connectorId: string = child.inEdges[0];
-    let parent: NodeModel[] = this.getParentNode(connectorId);
-    if (parent) {
-      diagramInstance.clearSelection();
-      diagramInstance.select(parent);
+    if (child.inEdges && child.inEdges.length > 0) {
+      let connectorId: string = child.inEdges[0];
+      let parent: NodeModel[] = this.getParentNode(connectorId);
+      if (parent) {
+        diagramInstance.clearSelection();
+        diagramInstance.select(parent);
+      }
     }
-   }
   }
 
   //Navigation for RightSibling Node
   public navigateToRighttSibling(): void {
     let child: Node = diagramInstance.selectedItems.nodes[0] as Node;
-    let connectorId: string = child.inEdges[0];
-    let nextConnectorId: string;
-    let parent: NodeModel[] = this.getParentNode(connectorId);
-    for (let i: number = 0; i < (parent[0] as Node).outEdges.length; i++) {
-      if ((parent[0] as Node).outEdges[i] === connectorId) {
-        nextConnectorId = (parent[0] as Node).outEdges[i + 1];
+    if (child.inEdges && child.inEdges.length > 0) {
+      let connectorId: string = child.inEdges[0];
+      let nextConnectorId: string;
+      let parent: NodeModel[] = this.getParentNode(connectorId);
+      for (let i: number = 0; i < (parent[0] as Node).outEdges.length; i++) {
+        if ((parent[0] as Node).outEdges[i] === connectorId) {
+          nextConnectorId = (parent[0] as Node).outEdges[i + 1];
+        }
       }
-    }
-    let rightSibling: NodeModel[] = this.getChildNode(nextConnectorId);
-    if (rightSibling) {
-      diagramInstance.clearSelection();
-      diagramInstance.select(rightSibling);
+      let rightSibling: NodeModel[] = this.getChildNode(nextConnectorId);
+      if (rightSibling) {
+        diagramInstance.clearSelection();
+        diagramInstance.select(rightSibling);
+      }
     }
   }
 
   //Navigation for LeftSibling Node
   public navigateToLeftSibling(): void {
     let child: Node = diagramInstance.selectedItems.nodes[0] as Node;
-    let connectorId: string = child.inEdges[0];
-    let prevConnectorId: string;
-    let parent: NodeModel[] = this.getParentNode(connectorId);
-    for (let i: number = 0; i < (parent[0] as Node).outEdges.length; i++) {
-      if ((parent[0] as Node).outEdges[i] === connectorId) {
-        prevConnectorId = (parent[0] as Node).outEdges[i - 1];
+    if (child.inEdges && child.inEdges.length > 0) {
+      let connectorId: string = child.inEdges[0];
+      let prevConnectorId: string;
+      let parent: NodeModel[] = this.getParentNode(connectorId);
+      for (let i: number = 0; i < (parent[0] as Node).outEdges.length; i++) {
+        if ((parent[0] as Node).outEdges[i] === connectorId) {
+          prevConnectorId = (parent[0] as Node).outEdges[i - 1];
+        }
       }
-    }
-    let rightSibling: NodeModel[] = this.getChildNode(prevConnectorId);
-    if (rightSibling) {
-      diagramInstance.clearSelection();
-      diagramInstance.select(rightSibling);
+      let rightSibling: NodeModel[] = this.getChildNode(prevConnectorId);
+      if (rightSibling) {
+        diagramInstance.clearSelection();
+        diagramInstance.select(rightSibling);
+      }
     }
   }
 

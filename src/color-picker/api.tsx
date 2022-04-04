@@ -15,8 +15,8 @@ interface ApiSample {
   modeSwitcher: boolean;
 }
 export class Api extends SampleBase<{}, ApiSample> {
-  constructor() {
-    super();
+  constructor(props: any) {
+    super(props);
     this.state = {
       colorValue: '#0db1e7',
       mode: 'Picker',

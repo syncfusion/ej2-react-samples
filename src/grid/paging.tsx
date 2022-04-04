@@ -45,17 +45,17 @@ export class Paging extends SampleBase<{}, {}> {
                             allowPaging</a></code> property to true.
             <code><a target='_blank' className='code'
                             href='http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes'>
-                            pageSettings->pagesizes</a></code>property enables a dropdown in pager which allows you to change the number of records in the Grid dynamically.
+                            pageSettings-&gt;pagesizes</a></code>property enables a dropdown in pager which allows you to change the number of records in the Grid dynamically.
                     </p>
                     <p>
                         In this demo, the Grid is rendered with
         <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes">
-                            pageSettings->pageSizes
+                            pageSettings-&gt;pageSizes
         </a></code> set to true and
         <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagecount">
-                            pageSettings->pageCount
+                            pageSettings-&gt;pageCount
         </a></code> set to 4.
         </p>
         <p>Changed default pager details information using the <code>totalItemsInfo</code> locale property.</p>

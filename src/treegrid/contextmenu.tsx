@@ -8,7 +8,7 @@ import { SampleBase } from '../common/sample-base';
 
 export class TreeContextMenu extends SampleBase<{}, {}> {
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Row' };
-  public contextMenuItems: ContextMenuItem[] = ['AutoFit', 'AutoFitAll',
+  public contextMenuItems: any= ['AutoFit', 'AutoFitAll',
         'SortAscending', 'SortDescending', 'Edit', 'Delete', 'Save',
         'Cancel', 'PdfExport', 'ExcelExport', 'CsvExport', 'FirstPage', 'PrevPage',
         'LastPage', 'NextPage'];
@@ -22,9 +22,9 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
-            editSettings={this.editSettings} pageSettings={this.pageSettings} contextMenuItems={this.contextMenuItems} allowSorting='true'
-            allowExcelExport='true' allowPdfExport='true'>
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
+            editSettings={this.editSettings} pageSettings={this.pageSettings} contextMenuItems={this.contextMenuItems} allowSorting={true}
+            allowExcelExport={true} allowPdfExport={true}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right' validationRules={this.validationRule}
                 isPrimaryKey={true}></ColumnDirective>

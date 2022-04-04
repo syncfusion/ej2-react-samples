@@ -13,7 +13,7 @@ export class HeaderTemplate extends SampleBase<{}, {}> {
     public columnData: ColumnsModel[];
     public importRules: RuleModel;
     constructor(args){
-        super(...args)
+        super(args)
         this.columnData = [
             { field: 'EmployeeID', label: 'EmployeeID', type: 'number' },
             { field: 'FirstName', label: 'FirstName', type: 'string' },

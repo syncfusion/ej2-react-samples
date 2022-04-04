@@ -11,7 +11,7 @@ export class RowHover extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' enableHover='true'>
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' enableHover={true}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
                 <ColumnDirective field='taskName' headerText='Task Name' width='200'></ColumnDirective>

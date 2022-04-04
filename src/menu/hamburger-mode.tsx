@@ -16,8 +16,8 @@ interface HamburgerMenuSample {
 export class HamburgerMenu extends SampleBase<{}, HamburgerMenuSample> {
     public menuObj: MenuComponent;
     data = dataSource as any;
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
         this.state = {
             showItemOnClick: true,
             hamburgerMode: true

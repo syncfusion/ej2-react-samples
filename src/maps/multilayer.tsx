@@ -185,7 +185,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px'}}>Source: 
+                <div style={{float: 'right', marginRight: '10px'}}>Source: 
                     <a href="http://www.samsung.com/semiconductor/about-us/location/" target="_blank">www.samsung.com</a>
                 </div>
                 <div id="action-description">

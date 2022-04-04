@@ -102,13 +102,13 @@ export class FieldList extends SampleBase<{}, {}> {
                         <br />
                         <br /> To show the field list independently, create as separate widget namely
                         <code> PivotFieldList</code> and assign JSON data source to its
-                        <code> dataSourceSettings->dataSource</code> property. Simultaneously pivotgrid will be populated by passing its instance in the updateView method, inside the
+                        <code> dataSourceSettings-&gt;dataSource</code> property. Simultaneously pivotgrid will be populated by passing its instance in the updateView method, inside the
                         <code> enginePopulated</code> event of field list.
                         <br />
                         <br />
                         Additionally, user interface for calculated field, label filter, and value filter features have been enabled in this demo by setting the properties
                         <code> allowCalculatedField</code>,
-                        <code> dataSourceSettings->allowLabelFilter</code> and <code> dataSourceSettings->allowValueFilter</code> to true.
+                        <code> dataSourceSettings-&gt;allowLabelFilter</code> and <code> dataSourceSettings-&gt;allowValueFilter</code> to true.
                     </p>
                     <p>
                         <strong>NOTE:</strong> To enable calculated field, inject

@@ -100,7 +100,7 @@ export class ArcGauge extends SampleBase<{}, {}> {
                             </AxisDirective>
                         </AxesDirective>
                     </CircularGaugeComponent>
-                    <SliderComponent className='sliderwrap' id="slider" style={{width: '300px', 'margin-left': '300px'}} type='MinRange' min={0} max={100} value={sliderValue} 
+                    <SliderComponent className='sliderwrap' id="slider" style={{width: '300px', 'marginLeft': '300px'}} type='MinRange' min={0} max={100} value={sliderValue} 
                         limits={{ enabled: true, minStart: 0, minEnd: 100 }} change={ this.sliderChange.bind(this)} ref={d => this.sliderElement = d} />
                 </div>
                 <div id="action-description">

@@ -17,7 +17,7 @@
     height: 36px;
 }
 
-.timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     border-color: #0000001f;
     border-style: solid;
     border-width: 1px 1px 0 0;
@@ -28,7 +28,7 @@
     padding-left: 5px;
 }
 
-.timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div:last-child {
+.timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div:last-child {
     border-right: 0;
 }
 
@@ -43,36 +43,41 @@
     height: 37px;
 }
 
-.bootstrap4 .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.bootstrap4 .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     height: 37px;
     line-height: 37px;
 }
 
-.material-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap>div,
-.material-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.fluent-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div,
+.fluent-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
+    border-color: #292827;
+}
+
+.material-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div,
+.material-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     border-color: #616161;
 }
 
-.fabric-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap>div,
-.fabric-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.fabric-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div,
+.fabric-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     border-color: #414040;
 }
 
-.bootstrap-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap>div,
-.bootstrap-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.bootstrap-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div,
+.bootstrap-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     border-color: #505050;
 }
 
-.bootstrap5-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap>div,
-.bootstrap5-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
-  border-color: #444c54;
+.bootstrap5-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div,
+.bootstrap5-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
+    border-color: #444c54;
 }
 
-.tailwind-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap>div {
+.tailwind-dark .timeline-resource.e-schedule .e-resource-cells .template-wrap > div {
     border-color: #4b5563;
 }
 
-.highcontrast .timeline-resource.e-schedule .e-resource-cells .template-wrap>div {
+.highcontrast .timeline-resource.e-schedule .e-resource-cells .template-wrap > div {
     border-color: #969696;
 }
 
@@ -82,35 +87,39 @@
     height: 39px;
 }
 
-.bootstrap4.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.bootstrap4.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     height: 39px;
     line-height: 39px;
 }
 
-.tailwind .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text, .tailwind-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+.tailwind .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+.tailwind-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
     height: 39px;
 }
 
-.tailwind .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div, .tailwind-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.tailwind .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div,
+.tailwind-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     height: 39px;
     line-height: 39px;
 }
 
-.tailwind .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.tailwind .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     background-color: #f3f4f6;
     border-color: #e5e7eb;
 }
 
-.tailwind-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.tailwind-dark .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     background-color: #374151;
     border-color: #4b5563;
 }
 
-.tailwind.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text, .tailwind-dark.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+.tailwind.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text,
+.tailwind-dark.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
     height: 40px;
 }
 
-.tailwind.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div, .tailwind-dark.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.tailwind.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div,
+.tailwind-dark.e-bigger .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     height: 40px;
     line-height: 40px;
 }
@@ -119,7 +128,7 @@
     height: 36px;
 }
 
-.highcontrast .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div {
+.highcontrast .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
     border-color: #969696;
 }
 
@@ -129,7 +138,7 @@
     text-align: left;
 }
 
-.timeline-resource.e-schedule .template-wrap>div {
+.timeline-resource.e-schedule .template-wrap > div {
     border-right: 1px solid #0000001f;
     flex: 0 0 33.3%;
     font-weight: 500;
@@ -139,36 +148,40 @@
     text-overflow: ellipsis;
 }
 
-.timeline-resource.e-schedule .template-wrap>div:last-child {
+.timeline-resource.e-schedule .template-wrap > div:last-child {
     border-right: 0;
 }
 
-.timeline-resource.e-schedule .e-timeline-view .e-resource-cells, .timeline-resource.e-schedule .e-timeline-month-view .e-resource-cells {
+.timeline-resource.e-schedule .e-timeline-view .e-resource-cells,
+.timeline-resource.e-schedule .e-timeline-month-view .e-resource-cells {
     padding-left: 0;
 }
 
-.timeline-resource.e-schedule .e-timeline-view .e-date-header-wrap table col, .timeline-resource.e-schedule .e-timeline-view .e-content-wrap table col {
+.timeline-resource.e-schedule .e-timeline-view .e-date-header-wrap table col,
+.timeline-resource.e-schedule .e-timeline-view .e-content-wrap table col {
     width: 100px;
 }
 
 .timeline-resource.e-schedule .e-read-only {
-    opacity: .8;
+    opacity: 0.8;
 }
 
 @media (max-width: 550px) {
     .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td {
         width: 100px;
     }
-    .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div, .timeline-resource.e-schedule .e-resource-cells .template-wrap>div {
+    .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div,
+    .timeline-resource.e-schedule .e-resource-cells .template-wrap > div {
         flex: 0 0 100%;
     }
-    .timeline-resource.e-schedule .e-resource-cells .template-wrap>div:first-child {
+    .timeline-resource.e-schedule .e-resource-cells .template-wrap > div:first-child {
         border-right: 0;
     }
-    .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text>div:first-child {
+    .timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div:first-child {
         border-right: 0;
     }
-    .timeline-resource.e-schedule .room-type, .timeline-resource.e-schedule .room-capacity {
+    .timeline-resource.e-schedule .room-type,
+    .timeline-resource.e-schedule .room-capacity {
         display: none;
     }
 }

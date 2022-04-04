@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, Inject, Selection, DayMarkers } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective  } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { SampleBase } from '../common/sample-base';
 import './indicators.css'
@@ -26,9 +26,18 @@ export class Indicators extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='Indicators' dataSource={projectNewData} highlightWeekends={true}
+          <GanttComponent id='Indicators' dataSource={projectNewData} highlightWeekends={true} treeColumnIndex={1}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+            <ColumnsDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskName' width='250'></ColumnDirective>
+              <ColumnDirective field='StartDate'></ColumnDirective>
+              <ColumnDirective field='EndDate'></ColumnDirective>
+              <ColumnDirective field='Duration'></ColumnDirective>
+              <ColumnDirective field='Predecessor'></ColumnDirective>
+              <ColumnDirective field='Progress'></ColumnDirective>
+            </ColumnsDirective>
             <Inject services={[Selection, DayMarkers]} />
           </GanttComponent>
         </div>

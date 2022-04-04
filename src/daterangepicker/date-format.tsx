@@ -37,7 +37,7 @@ export class Format extends SampleBase<{}, {}> {
               <DateRangePickerComponent format='dd/MMM/yy hh:mm a' ref={calendar => this.daterangepickerInstance = calendar} startDate={startValue} endDate={endValue} ></DateRangePickerComponent>
             </div>
           </div>
-          <div id="format" className='col-lg-3 property-section'>
+          <div id="format" className='col-lg-4 property-section'>
             <div>
               <DropDownListComponent id="dateFormats" dataSource={this.dataTypes} fields={this.fields} floatLabelType={this.floatLabelType} index={this.index} ref={(dropdownlist) => { this.listObj = dropdownlist }} placeholder={this.waterMark} change={this.onChange.bind(this)}>
               </DropDownListComponent>

@@ -197,11 +197,11 @@ export class MailMerge extends SampleBase<{}, {}> {
         return (<div className='control-pane'>
             <div className='control-section'>
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
-                <div className="col-lg-2 control-section" style={{ 'padding-right': 'inherit', 'paddingTop': '0px', 'padding-left': '5px', 'height': '590px', 'border-left': '1px solid rgb(238, 238, 238)', 'border-bottom': '1px solid rgb(238, 238, 238)' }} >
-                <h5><label style={{'display':'block','margin':'1px','padding-top': '5px'}}>Select Field to Insert</label></h5>
+                <div className="col-lg-2 control-section" style={{ 'paddingRight': 'inherit', 'paddingTop': '0px', 'paddingLeft': '5px', 'height': '590px', 'borderLeft': '1px solid rgb(238, 238, 238)', 'borderBottom': '1px solid rgb(238, 238, 238)' }} >
+                <h5><label style={{'display':'block','margin':'1px','paddingTop': '5px'}}>Select Field to Insert</label></h5>
                     <div id='listview'></div>
                 </div>
-                <div className="col-lg-10 control-section" style={{ 'padding-left': '0px', 'paddingRight': '0px', 'padding-top': '0px' }}>
+                <div className="col-lg-10 control-section" style={{ 'paddingLeft': '0px', 'paddingRight': '0px', 'paddingTop': '0px' }}>
                     <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
                         height={'590px'} enableToolbar={true} locale='en-US' />
                 </div>

@@ -77,6 +77,16 @@
   right: 5px;
 }
 
+.fluent .e-addressbar-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret,
+.fluent-dark .e-addressbar-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret {
+  right: 2px;
+}
+
+.e-bigger .fluent .e-addressbar-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret,
+.e-bigger .fluent-dark .e-addressbar-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret {
+  right: 1px;
+}
+
 .e-addressbar-breadcrumb .e-breadcrumb-item,
 .e-addressbar-breadcrumb .e-breadcrumb-separator {
   padding: 0px !important;

@@ -43,8 +43,8 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
             interface between the service endpoint and the Grid, will require the below minimal information to interact with service endpoint properly.
         </p>
                     <ul>
-                        <li><code>DataManager->url</code> - Defines the service endpoint to fetch data</li>
-                        <li><code>DataManager->adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used for remote binding.</li>
+                        <li><code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data</li>
+                        <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used for remote binding.</li>
                     </ul>
                     <p>Adaptor is responsible for processing response and request from/to the service endpoint. <code>@syncfusion/ej2-data</code> package provides
         some predefined adaptors which are designed to interact with particular service endpoints. They are,</p>

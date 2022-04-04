@@ -36,7 +36,7 @@ export class Dateformat extends SampleBase<{}, {}> {
               <DatePickerComponent format='dd-MMM-yy' ref={calendar => this.datepickerInstance = calendar} value={dateValue} ></DatePickerComponent>
             </div>
           </div>
-          <div id="format" className='col-lg-3 property-section'>
+          <div id="format" className='col-lg-4 property-section'>
             <div>
               <DropDownListComponent id="dateFormats" dataSource={this.dataTypes} fields={this.fields} floatLabelType={this.floatLabelType} index={this.index} ref={(dropdownlist) => { this.listObj = dropdownlist }} placeholder={this.waterMark} change={this.onChange.bind(this)}>
               </DropDownListComponent>

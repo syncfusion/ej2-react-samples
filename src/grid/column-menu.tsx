@@ -56,7 +56,7 @@ export class ColumnMenuSample extends SampleBase<{}, {}> {
                             <code>columnChooser</code> - Choose the column visibility.</li>
                         <li>
                             <code>Filter</code> - Show the filter option as given in
-                    <code>filterSetting-> type</code>.</li>
+                    <code>filterSetting-&gt; type</code>.</li>
                     </ul>
 
                     <br />

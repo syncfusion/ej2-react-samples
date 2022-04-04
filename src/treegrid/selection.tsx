@@ -59,8 +59,8 @@ export class Selection extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
-              allowSelection='true' selectionSettings={{ type: 'Multiple' }} pageSettings={{ pageSize: 10 }}
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
+              allowSelection={true} selectionSettings={{ type: 'Multiple' }} pageSettings={{ pageSize: 10 }}
               ref={treegrid=> this.treegridObj = treegrid}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right'></ColumnDirective>
@@ -121,12 +121,12 @@ export class Selection extends SampleBase<{}, {}> {
         <div id='description'>
           <p>Selection provides an interactive support to highlight the row or cell that you select. Selection can be done
               through a simple Mouse down or Keyboard interaction.To enable selection, set <code>allowSelection</code> as true.</p>
-          <p>Tree Grid supports two types of selection which can be set using <code>selectionSettings->type</code> property. They are,</p>
+          <p>Tree Grid supports two types of selection which can be set using <code>selectionSettings-&gt;type</code> property. They are,</p>
           <ul>
             <li><code>Single</code> - Enabled by default. Allows the user to select single row/cell at a time.</li>
             <li><code>Multiple</code> - Allows the user to select more than one row/cell at a time.</li>
           </ul>
-          <p>Also, supports three modes of selection which can be set using <code>selectionSettings->mode property</code>. They are,</p>
+          <p>Also, supports three modes of selection which can be set using <code>selectionSettings-&gt;mode property</code>. They are,</p>
           <ul>
             <li><code>Row</code> - Enabled by default. Enables the row selection in Grid.</li>
             <li><code>Cell</code> - Enables the cell selection in Grid.</li>

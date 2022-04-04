@@ -28,7 +28,6 @@ export class PieRadius extends SampleBase<{}, {}> {
               visible: true,
               reverse: true
             }}
-            useGroupingSeparator={true} 
             enableSmartLabels={true}
             enableAnimation={true}
             load={this.load.bind(this)}
@@ -48,7 +47,7 @@ export class PieRadius extends SampleBase<{}, {}> {
 
           <div id="action-description">
             <p>
-            This sample compares countries by population density and total area by using various radius in pie series.
+            This sample compares countries by population density and total area by using the various radius in pie series.
             </p>
           </div>
           <div id="description">

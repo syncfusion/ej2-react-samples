@@ -108,7 +108,7 @@ let connectors: ConnectorModel[] = [
   {
     id: 'connector7', sourceID: 'node7', targetID: 'node3', sourcePortID: 'portcoding',
     targetPortID: 'codingPort', type: 'Orthogonal',
-    segments: [{ type: 'Orthogonal', length: 10, direction: 'left' }],
+    segments: [{ type: 'Orthogonal', length: 10, direction: 'Left' }],
     annotations: [{ content: 'No', style: { fill: 'white' } }]
   },
   {
@@ -237,7 +237,7 @@ export class HistoryManager extends SampleBase<{}, {}> {
                   <ButtonComponent  ref={startGroupAction => (startActionInstance = startGroupAction)} id="startGroupAction" title='startGroupAction' style={{ width: "100%", overflow: "hidden", textOverflow: "ellipsis" }} isToggle={true} >
                     Start Group Action
                     </ButtonComponent ></div>
-                <div className="col-xs-6" title='clearHistory' style={{ paddingLeft: "0px", paddingReft: "0px" }}   >
+                <div className="col-xs-6" title='clearHistory' style={{ paddingLeft: "0px", paddingRight: "0px" }}   >
                   <ButtonComponent id="clearHistory" style={{ width: "100%" }}>
                     Clear History
                     </ButtonComponent >

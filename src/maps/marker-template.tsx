@@ -120,7 +120,7 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
                      In this example, you can see how to place a template as a marker in the map. Any custom HTML elements can be used as a marker. You can use the autoFill property in the shapeSettings to apply the default palette colors to the shapes.
                     </p>
                       <br/>
-                        <p style={{fontweight: 500}}>Injecting Module</p>
+                        <p style={{fontWeight: 500}}>Injecting Module</p>
                             <p>
                                  Maps component features are segregated into individual feature-wise modules. To use a marker template, inject the Marker module using the Maps.Inject(Marker) method.
                             </p>

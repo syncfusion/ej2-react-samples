@@ -37,7 +37,9 @@
   padding: 0 15px;
 }
 
-.quick-info-template .meeting-type-wrap, .quick-info-template .meeting-subject-wrap, .quick-info-template .notes-wrap {
+.quick-info-template .meeting-type-wrap,
+.quick-info-template .meeting-subject-wrap,
+.quick-info-template .notes-wrap {
   font-size: 11px;
   color: #666;
   letter-spacing: 0.33px;
@@ -81,12 +83,85 @@
   margin-right: 5px;
 }
 
+.quick-info-header {
+  background-color: white;
+  padding: 8px 18px;
+}
+
+.quick-info-header-content {
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px 5px;
+}
+
+.quick-info-title {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.48px;
+  height: 22px;
+}
+
+.duration-text {
+  font-size: 11px;
+  letter-spacing: 0.33px;
+  height: 14px;
+}
+
+.content-area {
+  padding: 10px;
+  width: 100%;
+}
+
+.event-content {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.meeting-type-wrap,
+.meeting-subject-wrap,
+.notes-wrap {
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 0.33px;
+  height: 24px;
+  padding: 5px;
+}
+
+.event-content div label {
+  display: inline-block;
+  min-width: 45px;
+  color: #666;
+}
+
+.event-content div span {
+  font-size: 11px;
+  color: #151515;
+  letter-spacing: 0.33px;
+  line-height: 14px;
+  padding-left: 8px;
+}
+
+.cell-footer.e-btn {
+  background-color: #ffffff;
+  border-color: #878787;
+  color: #878787;
+}
+
+.cell-footer {
+  padding-top: 10px;
+}
+
 .material-dark .quick-info-template .quick-info-header {
   background-color: #424242;
 }
 
 .bootstrap-dark .quick-info-template .quick-info-header,
 .bootstrap5-dark .quick-info-template .quick-info-header,
+.fluent-dark .quick-info-template .quick-info-header,
 .fabric-dark .quick-info-template .quick-info-header {
   background-color: transparent;
 }
@@ -99,11 +174,28 @@
   background-color: #000000;
 }
 
-.tailwind-dark .quick-info-template .quick-info-header-content, .bootstrap-dark .quick-info-template .quick-info-header-content, .fabric-dark .quick-info-template .quick-info-header-content, .material-dark .quick-info-template .quick-info-header-content, .highcontrast .quick-info-template .quick-info-header-content {
+.tailwind-dark .quick-info-template .quick-info-header-content,
+.bootstrap-dark .quick-info-template .quick-info-header-content,
+.fabric-dark .quick-info-template .quick-info-header-content,
+.material-dark .quick-info-template .quick-info-header-content,
+.highcontrast .quick-info-template .quick-info-header-content {
   color: #fff !important;
 }
 
-.tailwind-dark .quick-info-template .event-content div label, .tailwind-dark .quick-info-template .event-content div span, .bootstrap-dark .quick-info-template .event-content div label, .bootstrap-dark .quick-info-template .event-content div span, .bootstrap5-dark .quick-info-template .event-content div label, .bootstrap5-dark .quick-info-template .event-content div span, .fabric-dark .quick-info-template .event-content div label, .fabric-dark .quick-info-template .event-content div span, .material-dark .quick-info-template .event-content div label, .material-dark .quick-info-template .event-content div span, .highcontrast .quick-info-template .event-content div label, .highcontrast .quick-info-template .event-content div span {
+.tailwind-dark .quick-info-template .event-content div label,
+.tailwind-dark .quick-info-template .event-content div span,
+.bootstrap-dark .quick-info-template .event-content div label,
+.bootstrap-dark .quick-info-template .event-content div span,
+.bootstrap5-dark .quick-info-template .event-content div label,
+.bootstrap5-dark .quick-info-template .event-content div span,
+.fluent-dark .quick-info-template .event-content div label,
+.fluent-dark .quick-info-template .event-content div span,
+.fabric-dark .quick-info-template .event-content div label,
+.fabric-dark .quick-info-template .event-content div span,
+.material-dark .quick-info-template .event-content div label,
+.material-dark .quick-info-template .event-content div span,
+.highcontrast .quick-info-template .event-content div label,
+.highcontrast .quick-info-template .event-content div span {
   color: #fff;
 }
 

@@ -123,7 +123,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                     <td style={{ width: '30%' }}>
                       <div style={{ paddingTop: '10px'}}> Hidden Columns</div>
                     </td>
-                    <td style={{ width: '70%', Padding: '10px 10px 10px 0px' }}>
+                    <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                       <div>
                         <textarea id='hiddencolumns' style={{ resize: 'none', height:'65px', backgroundColor:'#fff', padding: '6px' }}
                           className='form-control'></textarea>
@@ -142,11 +142,11 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
         <div id="description">
         <p>The Gantt column can be shown or hidden dynamically using the <code>showColumn</code> and <code>hideColumn</code> methods of the Gantt.</p>
         <p>In this demo, the columns can be shown and hidden by selecting the column name in dropdown. Click the Show or Hide button to toggle the visibility. 
-          The visibility of column is toggled based on the <code>columns -> headerText</code> value.
+          The visibility of column is toggled based on the <code>columns -&gt; headerText</code> value.
         </p>
         
-        <p>The <code>columns -> visible</code> property specifies the visibility of a column. 
-        To hide a column at the initial rendering, set the <code>columns -> visible</code> property to false.
+        <p>The <code>columns -&gt; visible</code> property specifies the visibility of a column. 
+        To hide a column at the initial rendering, set the <code>columns -&gt; visible</code> property to false.
         </p>
         </div>
     </div>

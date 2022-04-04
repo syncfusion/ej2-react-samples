@@ -33,7 +33,7 @@ export class ColChooser extends SampleBase<{}, {}> {
                         href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#showcolumnchooser">showColumnChooser
         </a></code> property as true. You can also prevent the show of a column by setting
             <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#showincolumnchooser">columns->showInColumnChooser
+                            href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#showincolumnchooser">columns-&gt;showInColumnChooser
         </a></code> as false in Grid columns definition.
 
         </p>

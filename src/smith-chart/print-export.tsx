@@ -21,6 +21,12 @@ const SAMPLE_CSS = `
         text-align: center;
         text-transform:none !important;
     }
+    .e-export-icon::before {
+        content: '\\e728';
+    }
+    .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+        content: '\\e75d';
+    }
     .e-play-icon::before {
         content: "\\e728";
     }
@@ -107,22 +113,22 @@ export class Print extends SampleBase<{}, {}> {
                                     <div>File Name</div>
                                 </td>
                                 <td>
-                                    <div className="e-float-input" style={{ 'margin-top': '0px' }}>
+                                    <div className="e-float-input" style={{ 'marginTop': '0px' }}>
                                         <input id="fileName" ref={d => this.nameElement = d} type="text" defaultValue="Smith chart" style={{ "width": "100px" }} />
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div id="btn-control" style={{ 'margin-left': '60px' }}>
-                                        <ButtonComponent onClick={this.onClick1.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Export</ButtonComponent>
+                                    <div id="btn-control" style={{ 'marginLeft': '60px' }}>
+                                        <ButtonComponent onClick={this.onClick1.bind(this)} style={{width: '90px'}} isPrimary={true} iconCss='e-icons e-export-icon'>Export</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div id="btn-control" style={{ 'margin-left': '60px' }}>
-                                        <ButtonComponent onClick={this.onClick2.bind(this)} style={{width: '80px'}} cssClass= 'e-info' isPrimary={true}>Print</ButtonComponent>
+                                    <div id="btn-control" style={{ 'marginLeft': '60px' }}>
+                                        <ButtonComponent onClick={this.onClick2.bind(this)} style={{width: '80px'}} isPrimary={true} iconCss='e-icons e-print-icon'>Print</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>

@@ -266,13 +266,14 @@
 .bootstrap4 .e-bc-separator .e-arrow:before {
     content: "\e7ce";
 }
+
 .bootstrap5 .e-bc-separator .e-arrow:before,
-.bootstrap5-dark .e-bc-separator .e-arrow:before {
-    content: "\e7f9";
-}
+.bootstrap5-dark .e-bc-separator .e-arrow:before,
+.fluent .e-bc-separator .e-arrow:before,
+.fluent-dark .e-bc-separator .e-arrow:before,
 .tailwind .e-bc-separator .e-arrow:before,
 .tailwind-dark .e-bc-separator .e-arrow:before {
-    content: "\e7a8";
+    content: "\e7f9";
 }
 
 .e-breadcrumb-item .e-folder:before {

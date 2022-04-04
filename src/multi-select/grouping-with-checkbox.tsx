@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { MultiSelectComponent, CheckBoxSelection, Inject } from '@syncfusion/ej2-react-dropdowns';
+import { MultiSelectComponent, CheckBoxSelection, Inject, visualMode } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import './grouping-with-checkbox.css';
 
@@ -27,7 +27,7 @@ public checkWaterMark: string = 'Select vegetables';
 // set enableGroupCheckBox value to the Multiselect input
 public enableGroupCheckBox: boolean = true;
 // set mode value to the multiselect input
-public mode: string = 'CheckBox';
+public mode: visualMode = 'CheckBox';
 // set the placeholder to the filter bar
 public filterBarPlaceholder: string = 'Search Vegetables'
 

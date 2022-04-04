@@ -10,8 +10,8 @@ export class TreeGridColumnChooser extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
-                pageSettings={{ pageSize: 10 }} showColumnChooser='true' toolbar={this.toolbarOptions}>
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
+                pageSettings={{ pageSize: 10 }} showColumnChooser={true} toolbar={this.toolbarOptions}>
               <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='100' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='150' showInColumnChooser={false}></ColumnDirective>
@@ -31,7 +31,7 @@ export class TreeGridColumnChooser extends SampleBase<{}, {}> {
         <div id='description'>
           <p>The Tree Grid columns can be shown/hidden dynamically by using column chooser. To enable
              column chooser behavior, set <code>showColumnChooser</code> property as true. You can also prevent
-             the display of a column by setting <code>columns->showInColumnChooser</code> as false in columns definition.</p>
+             the display of a column by setting <code>columns-&gt;showInColumnChooser</code> as false in columns definition.</p>
           <p>In this demo, when the user clicks column chooser icon from the toolbar then the column 
              chooser menu will open. User can show or hide the columns by changing the state of the checkbox. </p>
           <p>Injecting Module:</p>

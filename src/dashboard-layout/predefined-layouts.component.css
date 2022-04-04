@@ -11,13 +11,21 @@
   padding: 0 12px;
   border-bottom: 0.5px solid #e3e3e3;
 }
+.bootstrap5.e-bigger #predefine_dashboard .e-panel .e-panel-header,
+.bootstrap5-dark.e-bigger #predefine_dashboard .e-panel .e-panel-header	{
+        font-size: 18px;
+        font-weight: 600; 
+        height: 68px;
+        padding: 20px 0 20px 20px;
+}
 
 body.material-dark .e-panel .panel-content,
 body.fabric-dark .e-panel .panel-content,
 body.bootstrap-dark .e-panel .panel-content,
 body.tailwind-dark .e-panel .panel-content,
 body.bootstrap5-dark .e-panel .panel-content,
-body.highcontrast .e-panel .panel-content {
+body.highcontrast .e-panel .panel-content,
+body.fluent-dark .e-panel .panel-content {
     color: #ffffff;
 }
 

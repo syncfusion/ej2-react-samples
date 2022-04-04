@@ -85,7 +85,7 @@ export class BubbleMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                     {/* Source Link */}
-                    <div style={{float: 'right', marginright: '10px'}}>Source: 
+                    <div style={{float: 'right', marginRight: '10px'}}>Source: 
                         <a href="https://en.wikipedia.org/wiki/List_of_countries_by_number_of_Internet_users" target="_blank">en.wikipedia.org</a>
                     </div>
                     </div>
@@ -103,7 +103,7 @@ export class BubbleMaps extends SampleBase<{}, {}> {
                 Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a bubble or tap a bubble in touch enabled devices.
                 </p>
             <br/>
-                <p style={{fontweight: 500}}>Injecting Module</p>
+                <p style={{fontWeight: 500}}>Injecting Module</p>
                 <p>
                   Maps component features are segregated into individual feature-wise modules. To use the bubbles, inject the <code>Bubble</code> module using the <code>Maps.Inject(Bubble)</code> method.
                 </p>

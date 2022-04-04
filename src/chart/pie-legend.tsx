@@ -11,13 +11,13 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { Browser, getInstance } from '@syncfusion/ej2-base';
 export let data1: any[] = [
-  { 'x': 'Net-tution and Fees', y: 21, text: '21%' },
-  { 'x': 'Self-supporting Operations', y: 21, text: '21%' },
+  { 'x': 'Net-tution', y: 21, text: '21%' },
   { 'x': 'Private Gifts', y: 8, text: '8%' },
-  { 'x': 'All Other', y: 8, text: '8%' },
+  { 'x': 'All Other', y: 9, text: '9%' },
   { 'x': 'Local Revenue', y: 4, text: '4%' },
   { 'x': 'State Revenue', y: 21, text: '21%' },
-  { 'x': 'Federal Revenue', y: 16, text: '16%' }
+  { 'x': 'Federal Revenue', y: 16, text: '16%' },
+  { 'x': 'Self-supporting Operations', y: 21, text: '21%' },
 ];
 let count: number = 0;
 export class Doughnut extends SampleBase<{}, {}> {
@@ -30,7 +30,9 @@ export class Doughnut extends SampleBase<{}, {}> {
             title='Education Institutional Revenue'
             legendSettings={{
               visible: true, toggleVisibility: false,
-              position: 'Right', height: '28%', width: '44%'
+              position: 'Right', height: '28%', width: '44%',
+              textWrap:'Wrap',
+              maximumLabelWidth:100,
             }}
             enableSmartLabels={true}
             selectionMode={'Point'}
@@ -61,8 +63,7 @@ export class Doughnut extends SampleBase<{}, {}> {
     </p>
         </div>
         <div id="description">
-          <p> In this example, you can see how to render doughnut chart. You can use <code>radius</code> and <code>innerRadius</code> properties to render the doughnut and also use <code>border</code>, <code>fill</code> properties to customize the point. <code>dataLabel</code> is used to represent individual data and its value.</p>
-          <p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+          <p> In this example, you can see how to render doughnut chart. You can use <code>radius</code> and <code>innerRadius</code> properties to render the doughnut and also use <code>border</code>, <code>fill</code> properties to customize the point. <code>dataLabel</code> is used to represent individual data and its value. Here the legend text is wrapped using <code>textWrap</code> property.</p>
           <p><b>Injecting Module</b></p>
           <p>
             Accumulation Chart component features are segregated into individual feature-wise modules.To use pie chart, you need to inject <code>AccumulationLegend</code> into <code>services</code>.

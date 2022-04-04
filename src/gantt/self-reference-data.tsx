@@ -32,7 +32,7 @@ export class SelfReferenceData extends SampleBase<{}, {}> {
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
             <ColumnsDirective>
-              <ColumnDirective field='taskID' width='60'></ColumnDirective>
+              <ColumnDirective field='taskID' width='80'></ColumnDirective>
               <ColumnDirective field='taskName' width='250'></ColumnDirective>
               <ColumnDirective field='startDate'></ColumnDirective>
               <ColumnDirective field='endDate' ></ColumnDirective>

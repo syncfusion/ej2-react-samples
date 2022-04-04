@@ -32,7 +32,7 @@ export class Resizing extends SampleBase<{}, {}> {
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
-              <ColumnDirective field='TaskID' headerText='ID' width='60' ></ColumnDirective>
+              <ColumnDirective field='TaskID' headerText='ID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Job Name' width='250' minWidth='120' maxWidth='300'></ColumnDirective>
               <ColumnDirective field='StartDate' minWidth= '8' width='135'></ColumnDirective>
               <ColumnDirective field='EndDate' minWidth= '8' width='135'></ColumnDirective>
@@ -50,7 +50,7 @@ export class Resizing extends SampleBase<{}, {}> {
         <div id="description">
         <p>The Gantt columns can be resized by clicking and dragging at the right corner of columns header. Set the <code>allowResizing</code> property to true to enable column resizing behavior in Gantt. 
         You can also prevent the resize of a particular column 
-        by setting <code>columns -> allowResizing</code> to false in columns definition
+        by setting <code>columns -&gt; allowResizing</code> to false in columns definition
         </p>
         
         <p> In this demo, the allowResizing feature has been enabled by setting the <code>allowResizing</code> property to true. 

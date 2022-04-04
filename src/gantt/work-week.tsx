@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { extend } from '@syncfusion/ej2-base';
-import { GanttComponent, Inject, Selection, DayMarkers } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -54,9 +54,18 @@ export class WorkWeek extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className='col-lg-8'>
-            <GanttComponent id='WorkWeek' ref={gantt => this.ganttInstance = gantt} dataSource={projectNewData}
+            <GanttComponent id='WorkWeek' ref={gantt => this.ganttInstance = gantt} dataSource={projectNewData} treeColumnIndex={1}
               highlightWeekends={true} taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+              <ColumnsDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskName' width='250'></ColumnDirective>
+              <ColumnDirective field='StartDate'></ColumnDirective>
+              <ColumnDirective field='EndDate'></ColumnDirective>
+              <ColumnDirective field='Duration'></ColumnDirective>
+              <ColumnDirective field='Predecessor'></ColumnDirective>
+              <ColumnDirective field='Progress'></ColumnDirective>
+              </ColumnsDirective>
               <Inject services={[Selection, DayMarkers ]} />
             </GanttComponent>
           </div>

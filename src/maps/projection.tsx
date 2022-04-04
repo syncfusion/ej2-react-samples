@@ -111,7 +111,7 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px' }}>Source: 
+                <div style={{float: 'right', marginRight: '10px' }}>Source: 
                 <a href ="https://en.wikipedia.org/wiki/List_of_members_of_the_United_Nations_Security_Council" target="_blank">en.wikipedia.org</a>
                 </div>
                 <div id="action-description">
@@ -123,7 +123,7 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                   <p>
                      In this example, you can see how to render a map with various projections. You can use the ColorMapping property to customize the color of the shapes. Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.
                     </p>
-                       <p style={{fontweight: 500}}>Injecting Module</p>
+                       <p style={{fontWeight: 500}}>Injecting Module</p>
                     <p>
                       Maps component features are segregated into individual feature-wise modules. To use a legend, inject the Legend module using the Maps.Inject(Legend) method.
                     </p>

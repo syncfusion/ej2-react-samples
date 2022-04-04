@@ -15,8 +15,8 @@ interface ApiSample {
 }
 export class Api extends SampleBase<{}, ApiSample> {
     data = dataSource as any;
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
         this.state = {
             orientation: 'Horizontal',
             showItemOnClick: false

@@ -83,7 +83,7 @@ export class Exporting extends SampleBase<{}, {}> {
                                         <td></td>
                                         <td>
                                             <div id="btn-control" style={{ float: 'right' }}>
-                                                <ButtonComponent onClick={this.onClick.bind(this)} cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                                <ButtonComponent onClick={this.onClick.bind(this)} isPrimary={true}>Export</ButtonComponent>
                                             </div>
                                         </td>
                                     </tr>

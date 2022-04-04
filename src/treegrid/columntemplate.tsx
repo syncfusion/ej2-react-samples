@@ -83,13 +83,13 @@ export class ColumnTemplate extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             The Tree Grid provides a way to use a custom layout for each cell using column template feature.
-            The <code>columns->template</code> property accepts either string or HTML element`s ID value, 
+            The <code>columns-&gt;template</code> property accepts either string or HTML element`s ID value, 
             which will be used as the template for the cell.
          </p>
           <p>
             In this demo, using column template, we have presented sparkLine charts 
             for the "Tax per annum", "One day index" and "Year GR" columns. 
-            In <code>columns->template</code> we have assigned with the ID of a SCRIPT element whose content is used as the template.
+            In <code>columns-&gt;template</code> we have assigned with the ID of a SCRIPT element whose content is used as the template.
           </p>
            <p>
               More information about Column Template can be found in this documentation section.

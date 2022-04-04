@@ -58,7 +58,7 @@ export class Properties extends SampleBase<{}, {}> {
         return (
             <div>
                 <div className="col-lg-8 control-section" id="control_dash">
-                    <div className="content-wrapper" style ={{"max-width": "100%"}}>
+                    <div className="content-wrapper" style ={{"maxWidth": "100%"}}>
                     <DashboardLayoutComponent created={ this.onCreate.bind(this) } id="api_dashboard" columns={6} cellSpacing={this.cellSpacing} ref={(scope) => { this.dashboardObj = scope; }} allowResizing={true}>
                         <PanelsDirective>
                             <PanelDirective header="<div>Panel 1</div>" content="<div></div>" sizeX={2} sizeY={2} row={0} col={0}></PanelDirective>
@@ -95,7 +95,7 @@ export class Properties extends SampleBase<{}, {}> {
                             <div className="form-group row">
                                 <div className="col-sm-12">
                                     <ButtonComponent onClick={this.onAdd.bind(this)} cssClass="e-primary">Add Panel</ButtonComponent>
-                                    <ButtonComponent onClick={this.remove.bind(this)} cssClass="e-danger" style={{"margin-left":"3px"}}>Remove Panel</ButtonComponent>
+                                    <ButtonComponent onClick={this.remove.bind(this)} cssClass="e-danger" style={{"marginLeft":"3px"}}>Remove Panel</ButtonComponent>
                                 </div>
                             </div>
                         </div>

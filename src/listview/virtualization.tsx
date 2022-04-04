@@ -21,8 +21,8 @@ export class UiVirtualization extends SampleBase<{}, {}> {
     public endTime: Date;
     public liElement: HTMLElement;
 
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
         this.commonData = [
             { name: 'Nancy', icon: 'N', id: '0', },
             { name: 'Andrew', icon: 'A', id: '1' },

@@ -18,8 +18,8 @@ export class Api extends SampleBase<{}, chipSample> {
     data = data as any;
     colorCss = '';
     outlineCss = '';
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
         this.state = {
             cssClass: '',
             avatarIconCss: '',

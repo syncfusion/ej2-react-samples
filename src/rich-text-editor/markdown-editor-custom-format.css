@@ -18,19 +18,26 @@
     content: '\e787';
 }
 
-.tailwind #rteCustomFormat .e-icon-btn .e-md-preview::before {
-    content: '\e7d0';
-}
 
 .tailwind #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
     content: '\e748';
 }
 
-.bootstrap5 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
+.tailwind #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.tailwind-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.fluent #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.fluent-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.bootstrap5-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before {
     content: '\e80e';
 }
 
-.bootstrap5 #rteCustomFormat .e-icon-btn .e-md-preview::before {
+.tailwind #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.tailwind-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.bootstrap5 #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.bootstrap5-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.fluent #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.fluent-dark #rteCustomFormat .e-icon-btn .e-md-preview::before {
     content: '\e7de';
 }
 

@@ -163,7 +163,7 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
               In this example, you can see how to render the normal geometry type shapes on the map. Selection is enabled in this sample. You can use the <code>fill</code>, <code>width</code>, and <code>color</code> properties in the <code>selectionSettings</code> to customize the appearance of the shapes after selection.
             </p>
         <br/>
-            <p style={{fontweight: 500}}>Injecting Module</p>
+            <p style={{fontWeight: 500}}>Injecting Module</p>
             <p>
              Maps component features are segregated into individual feature-wise modules. To use the selection, inject the <code>Selection</code> module using the <code>Maps.Inject(Selection)</code> method.
             </p>
@@ -180,10 +180,12 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
     };
     // custom code end
     private clearseats(): void {
-        seatInfo.innerHTML = '';
-        let selected: HTMLCollection = document.getElementsByClassName('ShapeselectionMapStyle');
-        for (let i: number = 0, length: number = selected.length; i < length; i++) {
-            selected[0].setAttribute('class', '');
+        if (seatInfo != null) {
+            seatInfo.innerHTML = '';
+            let selected: HTMLCollection = document.getElementsByClassName('ShapeselectionMapStyle');
+            for (let i: number = 0, length: number = selected.length; i < length; i++) {
+                selected[0].setAttribute('class', '');
+            }
         }
     }
 }

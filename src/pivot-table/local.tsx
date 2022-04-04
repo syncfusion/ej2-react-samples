@@ -145,7 +145,7 @@ export class Local extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>The pivot table supports JSON and CSV data source. The
-                        <code>dataSourceSettings->dataSource</code> property can be assigned with the source data to populate the pivot table.</p>
+                        <code>dataSourceSettings-&gt;dataSource</code> property can be assigned with the source data to populate the pivot table.</p>
                     <p>In this demo, the JSON and CSV data is assigned from an external file.</p>
                 </div>
             </div>

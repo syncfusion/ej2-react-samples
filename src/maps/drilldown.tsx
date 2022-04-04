@@ -86,7 +86,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                 <div id="button" className="backLabel">
-                <a id="category" onClick={this.change.bind(this)} style={{visibility:'hidden', display:'inline-block', fontsize:16}}>  
+                <a id="category" onClick={this.change.bind(this)} style={{visibility:'hidden', display:'inline-block', fontSize:16}}>  
                     <h5>WorldMap</h5>
                     </a>
                     <p style={{visibility:'hidden', display:'inline-block'}} id="symbol">&nbsp;&gt;&gt;&nbsp;</p>

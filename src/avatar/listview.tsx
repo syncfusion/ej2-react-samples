@@ -23,7 +23,7 @@ export class Listview extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane' style ={{"margin-top": "10px"}}>
+            <div className='control-pane' style ={{marginTop: "10px"}}>
                 <div className="sample_container listview">
                     {/* ListView element */}
                     <ListViewComponent id='letterAvatarList' dataSource={listData} headerTitle='Contacts' showHeader={true}

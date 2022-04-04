@@ -72,7 +72,7 @@ export class Local extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>The pivotgrid widget supports JSON data source. The
-                        <code>dataSourceSettings->dataSource</code> property can be assigned with the JSON data to populate the widget.</p>
+                        <code>dataSourceSettings-&gt;dataSource</code> property can be assigned with the JSON data to populate the widget.</p>
                     <p>In this demo, the JSON data is assigned from an external file.</p>
 
                 </div>

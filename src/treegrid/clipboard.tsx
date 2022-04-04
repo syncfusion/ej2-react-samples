@@ -3,7 +3,7 @@ import * as React from 'react';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Selection, Inject } from '@syncfusion/ej2-react-treegrid';
 import { sampleData } from './data';
-import { DialogComponent } from '@syncfusion/ej2-react-popups';
+import { AnimationSettingsModel, DialogComponent } from '@syncfusion/ej2-react-popups';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 export class Clipboard extends SampleBase<{}, {}> {
@@ -21,7 +21,7 @@ export class Clipboard extends SampleBase<{}, {}> {
         let mode:any = sel.value.toString();
         this.treegridInstance.copyHierarchyMode  = mode;
     }
-    private animationSettings = { effect: 'None' };
+    private animationSettings: AnimationSettingsModel = { effect: 'None' };
     private alertDialogInstance: DialogComponent;
     private alertButtons = [{
         // Click the footer buttons to hide the Dialog
@@ -46,7 +46,7 @@ export class Clipboard extends SampleBase<{}, {}> {
         return (<div className='control-pane'>
         <div className='control-section'>
           <div className='col-lg-9'>
-           <TreeGridComponent dataSource={sampleData} ref={treegrid => this.treegridInstance = treegrid} height='350' treeColumnIndex={1} childMapping='subtasks' allowPaging='true' allowSelection='true' 
+           <TreeGridComponent dataSource={sampleData} ref={treegrid => this.treegridInstance = treegrid} height='350' treeColumnIndex={1} childMapping='subtasks' allowPaging={true} allowSelection={true}
            selectionSettings={{ type: 'Multiple' }} pageSettings={{ pageSize: 10 }} toolbar={this.toolbarOptions}  toolbarClick={this.toolbarClick.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>

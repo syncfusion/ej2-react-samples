@@ -292,7 +292,7 @@ export class LogicCircuit extends SampleBase<{}, {}> {
             <div className="sb-mobile-palette-bar">
               <div
                 id="palette-icon"
-                style={{ float: "right", role: "button" }}
+                style={{ float: "right" }}
                 className="e-ddb-icons1 e-toggle-palette"
               />
             </div>

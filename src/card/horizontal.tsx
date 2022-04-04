@@ -17,7 +17,7 @@ export class Horizontal extends SampleBase<{}, {}> {
                         <div className='row'>
                             <div className="row card-layout">
                                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                                    <div className="e-card e-card-horizontal e-product" style={{height: '420px' }} id="horizontal_phone_product">
+                                    <div className="e-card e-card-horizontal e-product" id="horizontal_phone_product">
                                         <div className="e-card-stacked">
                                             <div className="e-card-header">
                                                 <div className="e-card-header-caption">

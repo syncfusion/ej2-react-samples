@@ -64,7 +64,7 @@ export class Exporting extends SampleBase<{}, {}> {
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} toolbarClick={this.toolbarClick.bind(this)}
             height='410px' gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='60'></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' ></ColumnDirective>

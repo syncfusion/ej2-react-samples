@@ -125,7 +125,7 @@ export class Sorting extends SampleBase<{}, {}> {
                                         <td></td>
                                         <td>
                                             <div className='row' style={{ float: 'right', paddingRight: '15px' }}>
-                                                <ButtonComponent ref={(scope) => { this.applyBtn = scope; }} onClick={this.onClick.bind(this)} cssClass='e-flat' isPrimary={true}>Apply</ButtonComponent>
+                                                <ButtonComponent ref={(scope) => { this.applyBtn = scope; }} onClick={this.onClick.bind(this)} isPrimary={true}>Apply</ButtonComponent>
                                             </div>
                                         </td>
                                     </tr>

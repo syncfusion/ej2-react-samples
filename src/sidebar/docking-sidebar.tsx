@@ -1,90 +1,97 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
-import { RadioButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { ListViewComponent, SelectEventArgs } from '@syncfusion/ej2-react-lists';
+import { SidebarComponent, ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
 import { SampleBase } from '../common/sample-base';
 import './dock.css';
 export class Dock extends SampleBase<{}, {}> {
     public dockBar: SidebarComponent;
-    private enableDock: boolean = true;
-    private dockSize: string = '72px';
-    private width: string = '220px';
     render() {
-        return (
-            <div className="control-section">
-                <div className="col-lg-12 col-sm-12 col-md-12 center">
-                Click/Touch the button to view the sample
-               </div>
-                <div className="col-lg-12 col-sm-12 col-md-12 center">
-                    <a className="e-btn" id="newTab" target="_blank" onClick={this.newTabClick.bind(this)} >Open in new tab</a>
+        //Toolbar component template element specification
+        let folderEle: string = '<div class= "e-folder"><div class= "e-folder-name">React Documentation</div></div>';
+        let ListData: { [key: string]: Object }[] = [
+            { id: "1", text: "Grid", iconcss: "sb-icons icon-grid e-sb-icon control-icon", 
+                description: "The React DataGrid is a feature-rich component useful for" +
+                "displaying data in a tabular format. Its wide range of functionalities" + 
+                "includes data binding, editing, Excel-like filtering, custom sorting," +
+                "aggregating rows, selection, and support for Excel, CSV, and PDF formats." +
+                "It loads millions of records in just a second. It has flexible editing and intuitive record selection modes." + 
+                "Also, it has seamless data exporting options like PDF, CSV, and Excel." },
+            { id: "2", text: "Chart", iconcss: "sb-icons icon-chart e-sb-icon control-icon", 
+                description: "The React Charts is a well-crafted charting component to visualize data." + 
+                "It contains a rich UI gallery of 30+ charts and graphs, ranging from line to financial" + 
+                " that cater to all charting scenarios. Its high performance helps to render large amounts of data quickly." + 
+                "It also comes with features such as zooming, panning, tooltip, crosshair, trackball, highlight, and selection" },
+            { id: "3", text: "Datepicker", iconcss: "sb-icons icon-datepicker e-sb-icon control-icon", 
+                description: "The React DatePicker is a lightweight and mobile-friendly component that allows" +
+                "end-users to enter or select a date value. It has month, year, and decade view options to quickly" +
+                "navigate to the desired date. It supports minimum dates, maximum dates, and disabled dates to restrict the date selection." +
+                "It has built-in features such as validation, custom date formats, range restriction, and disable dates to enhance the progressive usage." },
+            { id: "4", text: "Dialog", iconcss: "sb-icons icon-dialog e-sb-icon control-icon",
+                description: "The React Dialog is a useful user interface (UI) component for informing users" +
+                "about critical information, errors, warnings, and questions, as well as confirming decisions and collecting" +
+                "input from users. The component has a rich set of built-in features such as action buttons, positioning, animations," + 
+                "dragging, resizing, templating, and more with mobile dialog support. The React dialog provides two different types:" +
+                "modal dialogs and non-modal dialogs (modeless) based on interactions." },
+            { id: "5", text: "Dropdown List", iconcss: "sb-icons icon-dropdownlist e-sb-icon control-icon", 
+                description: "The React Dropdown List is a quick replacement of the HTML select tags." +
+                "It has a rich appearance and allows users to select a single value that is non-editable" +
+                " from a list of predefined values. It has several out-of-the-box features, such as data binding," +
+                " filtering, grouping, UI customization, accessibility, and preselected values." }
+        ];
+        let listFields: { [key: string]: Object } = { id: "id", text: "text", iconCss: "iconcss" };
+        return(
+            <div className="control-section" id="wrapper">
+                {/* main content declaration */}
+                <div>
+                    <ToolbarComponent cssClass="dockToolbar" id="dockToolbar" clicked={this.toolbarCliked.bind(this)}>
+                        <ItemsDirective>
+                            <ItemDirective prefixIcon="e-tbar-menu-icon tb-icons" tooltipText="Menu"></ItemDirective>
+                            <ItemDirective template={folderEle}></ItemDirective>
+                        </ItemsDirective>
+                    </ToolbarComponent>
                 </div>
-                <div className="col-lg-12 col-sm-12 col-md-12" id="sidebar-section">
-                    <div id="wrapper">
-                        <SidebarComponent id="dockSidebar" ref={Sidebar => this.dockBar = Sidebar} enableDock={this.enableDock} dockSize={this.dockSize} width={this.width} >
-                            <div className="dock">
-                                <ul>
-                                    <li className="sidebar-item" id="toggle" onClick={this.toggleClick.bind(this)} >
-                                        <span className="e-icons expand"></span>
-                                        <span className="e-text" title="menu">Menu</span>
-                                    </li>
-                                    <li className="sidebar-item">
-                                        <span className="e-icons home"></span>
-                                        <span className="e-text" title="home">Home</span>
-                                    </li>
-                                    <li className="sidebar-item">
-                                        <span className="e-icons profile"></span>
-                                        <span className="e-text" title="profile">Profile</span>
-                                    </li>
-                                    <li className="sidebar-item">
-                                        <span className="e-icons info"></span>
-                                        <span className="e-text" title="info">Info</span>
-                                    </li>
-                                    <li className="sidebar-item">
-                                        <span className="e-icons settings"></span>
-                                        <span className="e-text" title="settings">Settings</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </SidebarComponent>
-                        <div id="main-content container-fluid col-md-12 ">
-                            <div className="title">Main content</div>
-                            <div className="sub-title">
-                                <div className="center-align">
-                                    <p>Click the radio button to switch the sidebar position</p>
-                                    <div className="column">
-                                        <RadioButtonComponent id="left" label="Left" name="state" checked={true} change={this.positionChange.bind(this)} ></RadioButtonComponent>
-                                    </div>
-                                    <div className="column">
-                                        <RadioButtonComponent id="right" label="Right" name="state" change={this.positionChange.bind(this)}></RadioButtonComponent>
-                                    </div>
-                                </div>
-                            </div>
+                <div id="main-content container-fluid col-md-12" className="dockmaincontent">
+                    <div>
+                        <div id="dockContent" className="dockContent">
+                            The React DataGrid is a feature-rich component useful for displaying data in a tabular format.
+                            Its wide range of functionalities includes data binding, editing, Excel-like
+                            filtering, custom sorting, aggregating rows, selection, and support for Excel, CSV, and
+                            PDF formats. It loads millions of records in just a second. It has flexible editing and
+                            intuitive record selection modes. Also, it has seamless data exporting options like PDF,
+                            CSV, and Excel.
                         </div>
                     </div>
                 </div>
+                {/* sidebar component */}
+                <SidebarComponent id="dockSidebar" ref={Sidebar => this.dockBar = Sidebar} className="dockSidebar" width="220px" dockSize="60px" target=".dockmaincontent" enableDock={true} type="Auto">
+                    <ListViewComponent id="dockList" dataSource={ListData} cssClass="e-template-list" showIcon={true} fields={listFields} select={this.onSelect.bind(this)}>
+                    </ListViewComponent>
+                </SidebarComponent>
                 <div id="action-description">
-                Click/Touch the button to view the Sidebar sample in new tab.
-             </div>
+                    <p>
+                        The <code>Sidebar</code> dock sample demonstrates the dock functionalities of the <code>Sidebar</code>. Click on the hamburger menu icon to expand/collapse the sidebar with dock state.
+                    </p>
+                </div>
                 <div id="description">
-                    This sample demonstrates the dock state. Here the list item has icon with text representation. On dock state only the icon
-                listed out to interact.
-            </div>
+                    <p>
+                        Dock state of the Sidebar reserves some space on the page that always remains in a visible state when the Sidebar is collapsed. It is used to show the short term of a content like icons alone instead of lengthy text.
+                    </p>
+                    <p>
+                        In this demo, the list item has an icon with text representation. On dock state, only the icon listed out to interact. It can be achieved by using the <code>EnableDock</code> property.
+                    </p>
+                </div>
             </div>
         );
+        
     }
-
-    // open new Tab
-    newTabClick(): void {
-        let URL = location.href.replace(location.search,'');
-        document.getElementById('newTab').setAttribute('href', URL.split('#')[0] + 'sidebar/docking-sidebar/index.html');
+    toolbarCliked(args: ClickEventArgs) {
+        if(args.item.tooltipText == "Menu") {
+            this.dockBar.toggle();
+        }
     }
-    positionChange(args: any) {
-        //RadioButton change event handler
-        this.dockBar.position = args.event.target.id == "left" ? "Left" : "Right";
-    }
-    // open / close the sidebar
-    toggleClick() {
-        this.dockBar.toggle();
+    onSelect(args: any) {
+        document.getElementById("dockContent").innerHTML = args.data.description;
     }
 }
 

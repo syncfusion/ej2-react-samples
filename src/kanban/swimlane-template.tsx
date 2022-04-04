@@ -47,7 +47,7 @@ export class SwimlaneTemplate extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        The Kanban provides an option to customize its column header using the <code>columns</code> ->
+                        The Kanban provides an option to customize its column header using the <code>columns</code> -&gt;
                         <code>template</code> property, which accepts the
                             string or HTML element`s ID value, which is used as the template for the header.
                     </p>

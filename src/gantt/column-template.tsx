@@ -47,11 +47,11 @@ public template: any = this.columnTemplate.bind(this);
     <div className='control-pane'>
        <div className='control-section'>
           <GanttComponent id='ColumnMenu' rowHeight={60} resourceFields={this.resourceFields} resources={editingResources}
-            dataSource={templateData} highlightWeekends={true} splitterSettings={this.splitterSettings}
+            dataSource={templateData} highlightWeekends={true} treeColumnIndex={1} splitterSettings={this.splitterSettings}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
-              <ColumnDirective field='TaskID' headerText='Task ID' textAlign="Left"></ColumnDirective>
+              <ColumnDirective field='TaskID' headerText='Task ID' width='80' textAlign="Left"></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Name' width='250'></ColumnDirective>
               <ColumnDirective field='resources' headerText='Resources' width='250' template={this.template}></ColumnDirective>
               <ColumnDirective field='StartDate' width='150'></ColumnDirective>
@@ -67,7 +67,7 @@ public template: any = this.columnTemplate.bind(this);
         </div>
 
         <div id="description">
-        <p>The Gantt provides a way to use a custom layout for each cell using the column template feature. The <code>columns -> template</code> property accepts the template for the cell.</p>
+        <p>The Gantt provides a way to use a custom layout for each cell using the column template feature. The <code>columns -&gt; template</code> property accepts the template for the cell.</p>
         <p>In this demo, using column template, resource column has been presented with employee photo</p>
       </div>
       </div> 

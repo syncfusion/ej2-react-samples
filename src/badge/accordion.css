@@ -12,7 +12,24 @@
     top: 7px;
 }
 
-.e-bigger.tailwind .sample_container.badge-accordion  #accordion .e-toggle-icon {
+body.tailwind-dark .sample_container.badge-accordion #accordion .e-toggle-icon,
+body.bootstrap5 .sample_container.badge-accordion #accordion .e-toggle-icon,
+body.bootstrap5-dark .sample_container.badge-accordion #accordion .e-toggle-icon {
+    top: 5px;
+}
+
+body.tailwind-dark .e-accordion .e-acrdn-item .e-acrdn-header .e-acrdn-header-icon .e-acrdn-icons.e-icons,
+body.tailwind .e-accordion .e-acrdn-item .e-acrdn-header .e-acrdn-header-icon .e-acrdn-icons.e-icons,
+body.bootstrap5 .e-accordion .e-acrdn-item .e-acrdn-header .e-acrdn-header-icon .e-acrdn-icons.e-icons,
+body.bootstrap5-dark .e-accordion .e-acrdn-item .e-acrdn-header .e-acrdn-header-icon .e-acrdn-icons.e-icons {
+    font-size: 12px;
+}
+
+.e-bigger.tailwind .sample_container.badge-accordion  #accordion .e-toggle-icon,
+.e-bigger.tailwind-dark .sample_container.badge-accordion  #accordion .e-toggle-icon,
+.e-bigger.bootstrap5 .sample_container.badge-accordion  #accordion .e-toggle-icon,
+.e-bigger.bootstrap5-dark .sample_container.badge-accordion  #accordion .e-toggle-icon
+{
     top: 11px;
 }
 /* Font Icons */
@@ -29,12 +46,17 @@
     font-family: 'Contacts';
 }
 
-.e-people:before {
+.badge-accordion .e-icons.e-people:before {
     content: '\e700';
 }
 
-.people:before {
+.badge-accordion .people:before {
     content: '\e701';
+}
+
+.bootstrap5 .sample_container.badge-accordion #accordion,
+.bootstrap5-dark .sample_container.badge-accordion #accordion {
+    border-radius:0;
 }
 
 /* Accordion Customization */

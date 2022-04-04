@@ -11,8 +11,8 @@ import * as data from './dataSource.json';
 import './api.css';
 
 export class Api extends SampleBase<{}, {sortOrder: SortOrder, selectionSettings: SelectionSettingsModel}> {
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
         this.state = {
             sortOrder: 'None',
             selectionSettings: { mode: 'Multiple' }

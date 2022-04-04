@@ -28,16 +28,17 @@ export class GroupingBarSample extends SampleBase<{}, {}> {
 
     public pivotObj: any;
 
-    onChange(args: any): void {
-        if ((args.event.target as HTMLElement).id === 'filter') {
-            this.pivotObj.groupingBarSettings.showFilterIcon = args.checked;
-        } else if (args.event.target.id === 'sort') {
-            this.pivotObj.groupingBarSettings.showSortIcon = args.checked;
-        } else if (args.event.target.id === 'remove') {
-            this.pivotObj.groupingBarSettings.showRemoveIcon = args.checked;
-        } else {
-            this.pivotObj.groupingBarSettings.showValueTypeIcon = args.checked;
-        }
+    onFilter(args: any): void {
+        this.pivotObj.groupingBarSettings.showFilterIcon = args.checked;
+    }
+    onSort(args: any): void {
+        this.pivotObj.groupingBarSettings.showSortIcon = args.checked;
+    }
+    onRemove(args: any): void {
+        this.pivotObj.groupingBarSettings.showRemoveIcon = args.checked;
+    }
+    onValueType(args: any): void {
+        this.pivotObj.groupingBarSettings.showValueTypeIcon = args.checked;
     }
 
     render() {
@@ -55,28 +56,28 @@ export class GroupingBarSample extends SampleBase<{}, {}> {
                                 <tr style={{height:'50px'}}>
                                     <td>
                                         <div>
-                                            <CheckBoxComponent id='sort' checked={true} label='Show Sort Icon' change={this.onChange.bind(this)} ></CheckBoxComponent>
+                                            <CheckBoxComponent id='sort' checked={true} label='Show Sort Icon' change={this.onSort.bind(this)} ></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{height:'50px'}}>
                                     <td>
                                         <div>
-                                            <CheckBoxComponent id='filter' checked={true} label='Show Filter Icon' change={this.onChange.bind(this)} ></CheckBoxComponent>
+                                            <CheckBoxComponent id='filter' checked={true} label='Show Filter Icon' change={this.onFilter.bind(this)} ></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{height:'50px'}}>
                                     <td>
                                         <div>
-                                            <CheckBoxComponent id='summary' checked={true} label='Show Value Type Icon' change={this.onChange.bind(this)} ></CheckBoxComponent>
+                                            <CheckBoxComponent id='summary' checked={true} label='Show Value Type Icon' change={this.onValueType.bind(this)} ></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{height:'50px'}}>
                                     <td>
                                         <div>
-                                            <CheckBoxComponent id='remove' checked={true} label='Show Remove Icon' change={this.onChange.bind(this)} ></CheckBoxComponent>
+                                            <CheckBoxComponent id='remove' checked={true} label='Show Remove Icon' change={this.onRemove.bind(this)} ></CheckBoxComponent>
                                         </div>
                                     </td>
                                 </tr>

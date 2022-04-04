@@ -54,9 +54,9 @@ export class Series extends SampleBase<{}, {}> {
                 </style>
                 <div className="control-section">
                     <div id="spark-container" className="row">
-                        <div className="cols-sample-area" style={{ "align": "center", "margin-top": "8%" }}>
-                            <div className="col-lg-2 col-md-3 col-sm-5 sparent" style={{ "align": "center" }}>
-                                <div className="spark" id='line' style={{ "align": "center" }}>
+                        <div className="cols-sample-area" style={{"marginTop": "8%" }}>
+                            <div className="col-lg-2 col-md-3 col-sm-5 sparent">
+                                <div className="spark" id='line'>
                                     <SparklineComponent load={this.load.bind(this)} id='spark1-container'
                                         height='80px' width='90%' lineWidth={1} type='Line' valueType='Numeric'
                                         fill='#3C78EF'
@@ -95,12 +95,12 @@ export class Series extends SampleBase<{}, {}> {
                                         ]}
                                         xName='x' yName='yval'>
                                         <Inject services={[SparklineTooltip]} />
-                                        <div className="sparktext" style={{ "align": "center", "position": "absolute", "margin-top": "90px", "margin-left": "2px", "width": "100%" }}>Power production for a day</div>
+                                        <div className="sparktext" style={{ "position": "absolute", "marginTop": "90px", "marginLeft": "2px", "width": "100%" }}>Power production for a day</div>
                                     </SparklineComponent>
                                 </div>
                             </div>
-                            <div className="col-lg-2 col-md-3 col-sm-5 sparent" style={{ "align": "center" }}>
-                                <div className="spark" id='area' style={{ "align": "center" }}>
+                            <div className="col-lg-2 col-md-3 col-sm-5 sparent">
+                                <div className="spark" id='area'>
                                     <SparklineComponent load={this.load.bind(this)} id='spark2-container'
                                         height='80px' width='90%' lineWidth={1} type='Area' valueType='Category'
                                         fill='#b2cfff' opacity={1} border={{ color: '#3C78EF', width: 2 }}
@@ -131,12 +131,12 @@ export class Series extends SampleBase<{}, {}> {
                                         ]}
                                         xName='xval' yName='yval'>
                                         <Inject services={[SparklineTooltip]} />
-                                        <div className="sparktext" style={{ "align": "center", "position": "absolute", "margin-top": "90px", "margin-left": "3px", "width": "100%" }}>Average weather comparision</div>
+                                        <div className="sparktext" style={{ "position": "absolute", "marginTop": "90px", "marginLeft": "3px", "width": "100%" }}>Average weather comparision</div>
                                     </SparklineComponent>
                                 </div>
                             </div>
-                            <div className="col-lg-2 col-md-3 col-sm-5 sparent" style={{ "align": "center" }}>
-                                <div className="spark" id='column' style={{ "align": "center" }}>
+                            <div className="col-lg-2 col-md-3 col-sm-5 sparent">
+                                <div className="spark" id='column'>
                                     <SparklineComponent load={this.load.bind(this)} id='spark3-container'
                                         height='80px' width='90%' lineWidth={1} type='Column' valueType='Category'
                                         fill='#3C78EF' highPointColor='#14aa21'
@@ -159,12 +159,12 @@ export class Series extends SampleBase<{}, {}> {
                                         ]}
                                         xName='xval' yName='yval'>
                                         <Inject services={[SparklineTooltip]} />
-                                        <div className="sparktext" style={{ "align": "center", "position": "absolute", "margin-top": "90px", "margin-left": "10px", "width": "100%" }}>Revenue status</div>
+                                        <div className="sparktext" style={{ "position": "absolute", "marginTop": "90px", "marginLeft": "10px", "width": "100%" }}>Revenue status</div>
                                     </SparklineComponent>
                                 </div>
                             </div>
-                            <div className="col-lg-2 col-md-5 col-sm-5 sparent" style={{ "align": "center" }}>
-                                <div className="spark" id='winloss' style={{ "align": "center" }}>
+                            <div className="col-lg-2 col-md-5 col-sm-5 sparent">
+                                <div className="spark" id='winloss'>
                                     <SparklineComponent load={this.load.bind(this)} id='spark4-container'
                                         height='80px' width='90%' lineWidth={1} type='WinLoss' valueType='Numeric'
                                         fill='#3C78EF' negativePointColor='#fc5070'
@@ -173,12 +173,12 @@ export class Series extends SampleBase<{}, {}> {
                                         }}
                                         dataSource={[12, 15, -10, 13, 15, 6, -12, 17, 13, 0, 8, -10]}>
                                         <Inject services={[SparklineTooltip]} />
-                                        <div className="sparktext" style={{ "align": "center", "position": "absolute", "margin-top": "90px", "margin-left": "5px", "width": "100%" }}>Customer satisfaction score</div>
+                                        <div className="sparktext" style={{ "position": "absolute", "marginTop": "90px", "marginLeft": "5px", "width": "100%" }}>Customer satisfaction score</div>
                                     </SparklineComponent>
                                 </div>
                             </div>
-                            <div className="col-lg-2 col-md-5 col-sm-10 sparent" style={{ "align": "center" }}>
-                                <div className="spark" style={{ "align": "center", "height": "87px" }}>
+                            <div className="col-lg-2 col-md-5 col-sm-10 sparent">
+                                <div className="spark" style={{ "height": "87px" }}>
                                     <SparklineComponent load={this.load.bind(this)} className="sparkpie" id="pie1" style={{ "height": "40px", "width": "29%" }}
                                         height='40px' width='100%' lineWidth={1} type='Pie' valueType='Category'
                                         tooltipSettings={{
@@ -188,7 +188,7 @@ export class Series extends SampleBase<{}, {}> {
                                         xName='x' yName='y'
                                         dataSource={[{ x: 'Gold', y: 46 }, { x: 'Silver', y: 37 }, { x: 'Bronze', y: 38 }]}>
                                         <Inject services={[SparklineTooltip]} />
-                                        <div className="pietext" style={{ "align": "center", "position": "absolute", "margin-top": "40px", "width": "50%" }}>USA</div>
+                                        <div className="pietext" style={{ "position": "absolute", "marginTop": "40px", "width": "50%" }}>USA</div>
                                     </SparklineComponent>
                                     <SparklineComponent load={this.load.bind(this)} className="sparkpie" id="pie2" style={{ "height": "40px", "width": "29%" }}
                                         height='40px' width='100%' lineWidth={1} type='Pie' valueType='Category'
@@ -199,7 +199,7 @@ export class Series extends SampleBase<{}, {}> {
                                         xName='x' yName='y'
                                         dataSource={[{ x: 'Gold', y: 27 }, { x: 'Silver', y: 23 }, { x: 'Bronze', y: 17 }]}>
                                         <Inject services={[SparklineTooltip]} />
-                                        <div className="pietext" style={{ "align": "center", "position": "absolute", "margin-top": "40px", "width": "50%" }}>GBR</div>
+                                        <div className="pietext" style={{ "position": "absolute", "marginTop": "40px", "width": "50%" }}>GBR</div>
                                     </SparklineComponent>
                                     <SparklineComponent load={this.load.bind(this)} className="sparkpie" id="pie3" style={{ "height": "40px", "width": "29%" }}
                                         height='40px' width='100%' lineWidth={1} type='Pie' valueType='Category'
@@ -210,9 +210,9 @@ export class Series extends SampleBase<{}, {}> {
                                         xName='x' yName='y'
                                         dataSource={[{ x: 'Gold', y: 26 }, { x: 'Silver', y: 18 }, { x: 'Bronze', y: 26 }]}>
                                         <Inject services={[SparklineTooltip]} />
-                                        <div className="pietext" style={{ "align": "center", "position": "absolute", "margin-top": "40px", "width": "50%" }}>CHN</div>
+                                        <div className="pietext" style={{ "position": "absolute", "marginTop": "40px", "width": "50%" }}>CHN</div>
                                     </SparklineComponent>
-                                    <div className="sparktext" style={{ "align": "center", "position": "absolute", "margin-top": "90px", "width": "90%" }}>Olympics medal details </div>
+                                    <div className="sparktext" style={{ "position": "absolute", "marginTop": "90px", "width": "90%" }}>Olympics medal details </div>
                                 </div>
                             </div >
                         </div >

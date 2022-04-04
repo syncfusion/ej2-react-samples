@@ -307,7 +307,7 @@ export class Customization extends SampleBase<{}, {}> {
                 <div className="col-lg-8 control-section">
                     <div id="spark-container" className="row">
                         <div className="cols-sample-area" style={{ "margin": "auto", "textAlign": "center" }}>
-                            <p style={{ "font-size": "18px" }}> Worldwide car sales by brand - 2017</p>
+                            <p style={{ "fontSize": "18px" }}> Worldwide car sales by brand - 2017</p>
                             <table style={{ "width": "100%", "margin": "auto" }}>
                                 <tbody>
                                     <tr>
@@ -417,7 +417,7 @@ export class Customization extends SampleBase<{}, {}> {
                         </div>
                     </div>
                     {/* Source Link */}
-                    <div style={{ "float": "right", "margin-right": "10px" }}>Source: <a href=" http://carsalesbase.com/global-car-sales-2017" target="_blank">carsalesbase.com</a>
+                    <div style={{ "float": "right", "marginRight": "10px" }}>Source: <a href=" http://carsalesbase.com/global-car-sales-2017" target="_blank">carsalesbase.com</a>
                     </div>
                 </div>
 

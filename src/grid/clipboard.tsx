@@ -12,7 +12,7 @@ export class Clipboard extends SampleBase<{}, {}> {
     public toolbarOptions: any = [{ text: 'Copy', tooltipText: 'Copy', prefixIcon: 'e-copy', id: 'copy' }, { text: 'Copy With Header', tooltipText: 'Copy With Header', prefixIcon: 'e-copy', id: 'copyHeader' }];
     private gridInstance: GridComponent;
     private visible = false;
-    private animationSettings = { effect: 'None' };
+    private animationSettings: Object = { effect: 'None' };
     private alertDialogInstance: DialogComponent;
     private alertButtons = [{
         // Click the footer buttons to hide the Dialog

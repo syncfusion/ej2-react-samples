@@ -35,7 +35,7 @@ export class DragAndDrop extends SampleBase<{}, {}> {
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             splitterSettings={this.splitterSettings} selectionSettings={this.selectionSettings}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' headerText='ID' width='60' ></ColumnDirective>
+              <ColumnDirective field='TaskID' headerText='ID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Name' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate'></ColumnDirective>

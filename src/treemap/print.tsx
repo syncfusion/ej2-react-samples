@@ -93,7 +93,7 @@ export class PrintExport extends SampleBase<{}, {}> {
 							}}>
 							<Inject services={[TreeMapTooltip, Print, ImageExport, PdfExport]} />
 						</TreeMapComponent>
-						<div style={{ float: 'right', marginright: '10px' }}>Source:
+						<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href=" http://zeenews.india.com/photos/business/worlds-10-best-selling-smartphone-brands-2033958/samsung-2033959" target="_blank">zeenews.india.com</a>
 						</div>
 					</div>
@@ -116,7 +116,7 @@ export class PrintExport extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>File Name</div>
 									</td>
 									<td>
-										<div className="e-float-input" style={{ 'margin-top': '0px', paddingLeft: '0px' }}>
+										<div className="e-float-input" style={{ marginTop: '0px', paddingLeft: '0px' }}>
 											<input id="fileName" ref={d => this.nameElement = d} type="text" defaultValue="TreeMap" style={{ padding: '0px', paddingLeft: '5px' }}/>
 										</div>
 									</td>

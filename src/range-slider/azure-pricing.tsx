@@ -550,8 +550,8 @@ export class Cloudpricing extends SampleBase<{}, {}> {
         this.memorySlider.value = memory;
         this.storageSlider.value = storage;
     }
-    constructor() {
-        super()
+    constructor(props: any) {
+        super(props)
         for (let i: number = 0; i < this.objElements.length; i++) {
             this.buttonObj.obj = this.buttonObj.prop;
             this.buttonObj.obj = this.objElements[i];

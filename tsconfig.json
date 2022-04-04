@@ -6,6 +6,7 @@
         "module": "commonjs",
         "target": "es5",
         "jsx": "react",
+        "skipLibCheck": true,
         "lib": ["es5", "es6","es2015.promise", "dom"]
     },
     "include": [

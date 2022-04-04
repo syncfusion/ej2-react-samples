@@ -35,7 +35,7 @@ export class Selectioning extends SampleBase<{}, {}> {
                     </p>
                     <p>Grid component supports two types of selection which can be set using <code><a target="_blank" className="code"
                         href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#type">
-                        selectionSettings->type
+                        selectionSettings-&gt;type
                     </a></code> property.
             They are</p>
                     <ul>
@@ -44,7 +44,7 @@ export class Selectioning extends SampleBase<{}, {}> {
                     </ul>
                     <p>Also, supports three modes of selection which can be set using <code><a target="_blank" className="code"
                         href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#mode">
-                        selectionSettings->mode
+                        selectionSettings-&gt;mode
                        </a></code> property. They are
                       </p>
                     <ul>
@@ -55,7 +55,7 @@ export class Selectioning extends SampleBase<{}, {}> {
                     </ul>
                     <p>To perform the column selection, enable the <code><a target="_blank" className="code"
                     href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#allowcolumnselection">
-                    selectionSettings->allowColumnSelection
+                    selectionSettings-&gt;allowColumnSelection
                     </a></code> property.</p>
                     <p>To perform the multi-selection, hold <strong>CTRL</strong> key and click the desired rows/cells/columns. To select range of rows/cells/columns,
                        hold <strong>SHIFT</strong> key and click the rows/cells/columns.</p>

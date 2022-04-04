@@ -33,6 +33,40 @@
     color: #6c757d;
 }
 
+.fluent-dark #employees_popup .header {
+    background: #252423;
+    color: #2899F5;
+}
+
+.bootstrap5-dark #employees_popup .header {
+    background: #343A40;
+    color: #7B848D;
+}
+
+.fluent #employees_popup .header{
+     color: #2899F5;
+}
+
+.tailwind-dark #employees_popup .header {
+    background: #374151;
+    color: rgb(255, 255, 255);
+}
+
+.material-dark #employees_popup .header {
+    background: rgb(66, 66, 66);
+    color: rgb(255, 255, 255);
+}
+
+.fabric-dark #employees_popup .header {
+    background: rgb(40, 39, 39);
+    color: rgb(255, 255, 255);
+}
+
+.bootstrap-dark #employees_popup .header {
+    background: rgb(49, 49, 49);
+    color: rgb(255, 255, 255);
+}
+
 #employees_popup .ename {
     display: block !important;
     opacity: .87;

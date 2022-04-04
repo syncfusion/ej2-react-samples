@@ -32,7 +32,7 @@ export class Axis extends SampleBase<{}, {}> {
                             <table style={tableWidth}>
                                 <tbody>
                                     <tr>
-                                        <td style={{ "text-align": "center", "font-size": "14px", "font-weight": "600", "font-family": "Roboto" }}>
+                                        <td style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>
                                             <div>Mean working hours for a month</div>
                                             <div><i>(DateTime axis)</i></div>
                                         </td>
@@ -74,7 +74,7 @@ export class Axis extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style={{ "text-align": "center", "font-size": "14px", "font-weight": "600", "font-family": "Roboto" }}>
+                                        <td style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>
                                             <div>Percentage of the students in a class</div>
                                             <div><i>(Category axis)</i></div>
                                         </td>
@@ -105,7 +105,7 @@ export class Axis extends SampleBase<{}, {}> {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style={{ "text-align": "center", "font-size": "14px", "font-weight": "600", "font-family": "Roboto" }}>
+                                        <td style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>
                                             <div>Expenditure details of various trips</div>
                                             <div><i>(Numeric axis)</i></div>
                                         </td>

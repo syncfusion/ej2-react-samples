@@ -73,7 +73,7 @@ export class GroupedColumn extends SampleBase<{}, {}> {
             chartArea={{ border: { width: 0 } }}
             tooltip={{ enable: true }}
             width={Browser.isDevice ? '100%' : '60%'}
-            title="Olympics Medal Tally"
+            title="Olympics Tally"
             loaded={this.onChartLoad.bind(this)}
           >
             <Inject
@@ -202,7 +202,8 @@ export class GroupedColumn extends SampleBase<{}, {}> {
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                       Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject <code>ColumnSeries</code> module using <code>services</code>.
+                       Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
+        <code>ColumnSeries</code> module using <code>services</code>.
                   </p>
                   <br />
                     <p>

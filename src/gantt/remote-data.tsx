@@ -13,8 +13,8 @@ export class RemoteData extends SampleBase<{}, {}> {
     dependency: 'Predecessor',
     child: 'SubTasks'
   };
-  public projectStartDate = new Date('02/24/2019');
-  public projectEndDate = new Date('06/10/2019');
+  public projectStartDate = new Date('02/24/2021');
+  public projectEndDate = new Date('06/10/2021');
   public gridLines: any = 'Both';
   public timelineSettings: any = {
     timelineUnitSize: 50,
@@ -52,7 +52,7 @@ export class RemoteData extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='RemoteData' dataSource={this.dataSource} allowSorting={true} dateFormat={'MMM dd, y'}
-            treeColumnIndex={0} allowSelection={true} highlightWeekends={false} includeWeekend={true}
+            treeColumnIndex={1} allowSelection={true} highlightWeekends={false} includeWeekend={true}
             allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} gridLines={this.gridLines} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings}
             height='410px'>
@@ -81,8 +81,8 @@ export class RemoteData extends SampleBase<{}, {}> {
         <code>DataManager</code> to bind remote data.
                         The DataManager, which will act as an interface between the service endpoint and the Gantt chart, will require
                         the below minimal information to interact with service endpoint properly.
-        <li><code>DataManager->url</code> - Defines the service endpoint to fetch data</li>
-            <li><code>DataManager->adaptor</code> - Defines the adaptor option. By default, ODataAdaptor is used for remote
+        <li><code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data</li>
+            <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, ODataAdaptor is used for remote
             binding.</li>
             Adaptor is responsible for processing response and request from/to the service endpoint.
         <code>@syncfusion/ej2-data</code>

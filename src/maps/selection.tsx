@@ -158,11 +158,11 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                         <table style={{ marginTop: '5px', width: 'auto' }}>
                             <tr>
                                 <td style={{padding: '0.3px', float: 'left' }}>
-                                    <label id="winner" style= {{ color:'#666666',fontsize:12,fontfamily:'Roboto',fontweight:700}}></label>
+                                    <label id="winner" style= {{ color:'#666666',fontSize:12,fontFamily:'Roboto',fontWeight:700}}></label>
                                 </td>
                             </tr>
                             
-                            <tr style= {{bordertop:'1px',solid:'black'}}>
+                            <tr style= {{borderTop:'1px'}}>
                                 <td style={{padding: '0.3px', float: 'left' }}>
                                     <label style={{color:'Black', fontSize:'12px', fontWeight: 'normal' }}>State</label>
                                 </td>
@@ -208,7 +208,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px'}}>Source: 
+                <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/United_States_presidential_election,_2016" target="_blank">en.wikipedia.org</a>
     </div>
                 <div id="action-description">
@@ -221,7 +221,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                 In this example, you can see how to apply various styles for a shape in the map, when it is clicked or mouse hovered.
                 </p>
             <br/>
-                <p style={{fontweight: 500}}>Injecting Module</p>
+                <p style={{fontWeight: 500}}>Injecting Module</p>
                 <p>
                    Maps component features are segregated into individual feature-wise modules. To use selection, inject the <code>Selection</code> module using the <code>Maps.Inject(Selection)</code> method, and use highlight by injecting the <code>Highlight</code> module.
                 </p>

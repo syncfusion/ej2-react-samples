@@ -181,7 +181,7 @@ export class Legend extends SampleBase<{}, {}> {
 							}}>
 							<Inject services={[TreeMapLegend, TreeMapTooltip]} />
 						</TreeMapComponent>
-						<div style={{ float: 'right', marginright: '10px' }}>Source:
+						<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href=" https://en.wikipedia.org/wiki/United_States_presidential_election,_2016" target="_blank">en.wikipedia.org</a>
 						</div>
 					</div>

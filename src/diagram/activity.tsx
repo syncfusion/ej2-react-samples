@@ -165,7 +165,7 @@ let connectors: ConnectorModel[] = [
     targetPortID: "portTop",
     shape: {
       type: "UmlActivity",
-      flow: "Object"
+      flow: "Association"
     },
     annotations: [
       {
@@ -184,7 +184,7 @@ let connectors: ConnectorModel[] = [
     targetPortID: "portTop",
     shape: {
       type: "UmlActivity",
-      flow: "Object"
+      flow: "Association"
     },
     annotations: [
       {
@@ -358,7 +358,7 @@ const SAMPLE_CSS = `
 export class UmlActivityDiagram extends SampleBase<{}, {}> {
   rendereComplete() {
     addEvents();
-    let rect: Rect = document.getElementById('diagram-space').getBoundingClientRect() as Rect;
+    let rect: DOMRect = document.getElementById('diagram-space').getBoundingClientRect();
     let panX: number = (rect.width - rect.x)/ 2;
     diagramInstance.pan(panX, 0);
   }
@@ -369,7 +369,7 @@ export class UmlActivityDiagram extends SampleBase<{}, {}> {
         <div className="control-section">
           <div id="umlActivityDiagram" style={{ width: "100%", height: "521px" }}>
             <div className="sb-mobile-palette-bar">
-              <div id="palette-icon" style={{ float: "right", role: "button" }} className="e-ddb-icons1 e-toggle-palette"></div>
+              <div id="palette-icon" style={{ float: "right" }} className="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div
               id="palette-space"

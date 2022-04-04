@@ -39,7 +39,7 @@ export class ValueSorting extends SampleBase<{}, {}> {
                     </PivotViewComponent>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates ordering of values in ascending or descending order. Here, the <b>FY 2015 -> In Stock</b> column header
+                    <p>This sample demonstrates ordering of values in ascending or descending order. Here, the <b>FY 2015 -&gt; In Stock</b> column header
                     text is ordered by defining sort-related settings in code behind.</p>
                 </div>
                 <div id="description">

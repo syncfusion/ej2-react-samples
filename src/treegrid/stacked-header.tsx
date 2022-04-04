@@ -10,7 +10,7 @@ export class Stacked extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={stackedData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+          <TreeGridComponent dataSource={stackedData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
             pageSettings={{ pageCount: 5 }}>
             <ColumnsDirective>
             <ColumnDirective columns={[{ field: 'orderID', headerText: 'Order ID', width: 90, textAlign: 'Right' },
@@ -34,7 +34,7 @@ export class Stacked extends SampleBase<{}, {}> {
         </div>
         <div id='description'>
           <p>The Tree Grid columns can be stacked/grouped in order to show multiple levels of column header.
-            It can be done by setting the <code>columns->columns property</code>.</p>
+            It can be done by setting the <code>columns-&gt;columns property</code>.</p>
           <p>In this demo, the columns <b>Order ID</b>, <b>Order Name</b>, <b>Order Date</b> are grouped under Order Details,
             the columns <b>Shipment Category</b>,<b>Shipped Date</b>, <b>Units</b> are grouped under Shipment Details and
             Price per Unit, Total Price are grouped under Price details.</p>

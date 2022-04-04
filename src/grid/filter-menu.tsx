@@ -62,7 +62,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
                     <p>
                         you can enale the filter type by setting <code><a target='_blank' className='code'
                         href='http://ej2.syncfusion.com/react/documentation/grid/api-filterSettings.html#type'>
-                        filterSettings->type</a>
+                        filterSettings-&gt;type</a>
                         </code>
                     </p>
                 </div>

@@ -36,7 +36,7 @@ export class CustomMask extends SampleBase<{}, {}> {
         through
         the <b><a href="https://ej2.syncfusion.com/react/documentation/api/maskedtextbox/#customcharacters" target="_blank">customCharacters</a></b> property.
         </p>
-        <p>In this demo, the “Time” mask '99 : 99 >PM' contains the literals P and M, where it is configured to allow the inputs
+        <p>In this demo, the “Time” mask '99 : 99 &gt;PM' contains the literals P and M, where it is configured to allow the inputs
         as 'P', 'A', 'p', 'a', and 'M', 'm'.</p>
         <p><b>Regular expression:</b></p>
         <p>Alternatively, you can use the regular expressions as mask element to validate the input of the particular input place.

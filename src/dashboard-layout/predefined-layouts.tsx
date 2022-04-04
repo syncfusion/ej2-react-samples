@@ -68,7 +68,7 @@ export class PredefinedLayouts extends SampleBase<{}, {}> {
     return (
       <div>
         <div className="col-lg-8 control-section" id="predefine_control">
-          <div className="content-wrapper" style= {{"max-width": "100%"}}>
+          <div className="content-wrapper" style= {{"maxWidth": "100%"}}>
             <DashboardLayoutComponent created={ this.onCreate.bind(this) } columns={6} ref={(scope) => { this.dashboardObj = scope; }} id="predefine_dashboard" cellSpacing={this.cellSpacing} >
               <PanelsDirective>
                 <PanelDirective row={0} col={0} sizeX={4} sizeY={3}
@@ -92,12 +92,12 @@ export class PredefinedLayouts extends SampleBase<{}, {}> {
           <div className="row property-panel-content">
             <div className="row row-header">Choose dashboard layout</div>
             <div id="templateContainer">
-              <div className="row" style= {{"padding-top": "3px"}}>
+              <div className="row" style= {{"paddingTop": "3px"}}>
                 <div className="image-pattern-style e-selected-style" id="template1" data-id="1" />
                 <div className="image-pattern-style" id="template2" data-id="2" />
                 <div className="image-pattern-style" id="template3" data-id="3" />
               </div>
-              <div className="row" style= {{"padding-top": "3px"}}>
+              <div className="row" style= {{"paddingTop": "3px"}}>
                 <div className="image-pattern-style" id="template4" data-id="4" />
                 <div className="image-pattern-style" id="template5" data-id="5" />
                 <div className="image-pattern-style" id="template6" data-id="6" />

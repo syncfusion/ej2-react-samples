@@ -93,15 +93,15 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
 </svg>
 <div id="maps-annotation" style={{ display: 'none'}}>
     <div id="annotation">
-        <div style={{marginLeft: '10px', fontsize:'13px' ,fontweight:500}}>
+        <div style={{marginLeft: '10px', fontSize:'13px', fontWeight:500}}>
             <h5 style={{ marginLeft: '40px' }}>Facts about Africa</h5>
         </div>
         <hr />
         <div>
             <ul style={{ listStyleType: 'disc' }}>
                 <li>Africa is the second largest and second most populated continent in the world.</li>
-                <li style={{paddingtop:'5px'}}>Africa has 54 sovereign states and 10 non-sovereign territories.</li>
-                <li style={{paddingtop:'5px'}}>Algeria is the largest country in Africa, where as Mayotte is the smallest.</li>
+                <li style={{paddingTop:'5px'}}>Africa has 54 sovereign states and 10 non-sovereign territories.</li>
+                <li style={{paddingTop:'5px'}}>Algeria is the largest country in Africa, where as Mayotte is the smallest.</li>
             </ul>
         </div>
     </div>
@@ -110,7 +110,7 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
     <img src="src/maps/images/compass.svg" alt="Direction compass" height="75px" width="75px"/>
 </div>
 {/* Source Link */}
-<div style={{float: 'right', marginright: '10px'}}>Source: 
+<div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/Africa" target="_blank">en.wikipedia.org</a>
     </div>
                 <div id="action-description">

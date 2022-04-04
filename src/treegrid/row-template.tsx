@@ -53,7 +53,7 @@ export class RowTemplate extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                <TreeGridComponent dataSource={textdata} childMapping = 'Children' rowTemplate={this.template.bind(this)} treeColumnIndex={0} rowHeight = '83' height='335' >
+                <TreeGridComponent dataSource={textdata} childMapping = 'Children' rowTemplate={this.template.bind(this)} treeColumnIndex={0} rowHeight = {83} height='335' >
                 <ColumnsDirective>
                 <ColumnDirective headerText = 'Employee ID' width = '180' field = 'EmpID'></ColumnDirective>
                 <ColumnDirective headerText = 'Employee Name' field = 'Name'></ColumnDirective>

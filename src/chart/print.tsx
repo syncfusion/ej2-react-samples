@@ -8,7 +8,7 @@ import {
     ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors } from './theme-color';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
@@ -46,6 +46,10 @@ const SAMPLE_CSS = `
     
     .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
         content: '\\e76c';
+    }
+
+    .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+        content: '\\e75d';
     }
     
     .e-view.highcontrast .e-print-icon::before {
@@ -145,6 +149,10 @@ export class Print extends SampleBase<{}, {}> {
             args.fill = materialColors[args.point.index % 10];
         } else if (selectedTheme === 'highcontrast') {
             args.fill = highContrastColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent') {
+            args.fill = fluentColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent-dark') {
+            args.fill = fluentDarkColors[args.point.index % 10];
         } else {
             args.fill = bootstrapColors[args.point.index % 10];
         }

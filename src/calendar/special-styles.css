@@ -37,7 +37,9 @@
 .bootstrap5-dark .e-customStyle span.e-icons.highlight,
 .bootstrap5-dark .e-customStyle span.e-icons.highlight:before,
 .tailwind-dark .e-customStyle span.e-icons.highlight,
-.tailwind-dark .e-customStyle span.e-icons.highlight:before {
+.tailwind-dark .e-customStyle span.e-icons.highlight:before,
+.fluent-dark .e-customStyle span.e-icons.highlight,
+.fluent-dark .e-customStyle span.e-icons.highlight:before {
     color: #ff7500;
 }
 .e-customStyle .e-other-month span.e-icons.highlight:before {
@@ -75,9 +77,15 @@
     font-weight: bold;
 }
 
+body.fluent-dark #date_label,
+body.bootstrap5-dark #date_label,
+body.tailwind-dark #date_label,
+body.material-dark #date_label,
+body.fabric-dark #date_label,
+body.bootstrap-dark #date_label,
 body.highcontrast #date_label {
     color: white;
-}
+} 
 
 /* custom generated icons styles */
 

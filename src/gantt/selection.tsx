@@ -81,7 +81,7 @@ export class GanttSelection extends SampleBase<{}, {}> {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '100%', paddingright: '5px' }}>
+                  <td style={{ width: '100%', paddingRight: '5px' }}>
                     <div style={{ width: '150px' }}>
                       <DropDownListComponent ref={DropDownList => this.dropdownModeList = DropDownList} id='SelectionModeList' tabIndex={1} dataSource={this.dropdownModeListData} fields={{ text: 'type', value: 'id' }}
                         value='Row'></DropDownListComponent>
@@ -96,7 +96,7 @@ export class GanttSelection extends SampleBase<{}, {}> {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '100%', paddingright: '5px' }}>
+                  <td style={{ width: '100%', paddingRight: '5px' }}>
                     <div style={{ width: '150px' }}>
                       <DropDownListComponent ref={DropDownList => this.dropdownTypeList = DropDownList} id='SelectionTypeList' tabIndex={1} dataSource={this.dropDownTypeListData} fields={{ text: 'type', value: 'id' }}
                         value='Single'></DropDownListComponent>
@@ -111,7 +111,7 @@ export class GanttSelection extends SampleBase<{}, {}> {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '100%', paddingright: '5px' }}>
+                  <td style={{ width: '100%', paddingRight: '5px' }}>
                     <div style={{ width: '150px' }}>
                       <DropDownListComponent ref={DropDownList => this.dropdownToggleList = DropDownList} id='SelectionTypeList' tabIndex={1} dataSource={this.dropdownToggleListData} fields={{ text: 'type', value: 'id' }}
                         value={this.toggleValue}></DropDownListComponent>

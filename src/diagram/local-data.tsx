@@ -15,7 +15,7 @@ import {
 import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
-import { species, DataInfo } from './diagram-data';
+import { species } from './diagram-data';
 
 
 export interface DataInfo {

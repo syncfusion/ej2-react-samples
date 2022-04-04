@@ -28,6 +28,10 @@ _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-FeMale::before{
     background-color:#4f46e5;  
 }
 
+.fluent .empimg{
+    background-color:#106EBE;
+}
+
 #Emptext{
 top: -12px;
 left: 41px;

@@ -69,7 +69,7 @@ export class PieAnnotation extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates annotation feature in chart. Accumulation chart is placed in cartesian chart by using annotation.
+                        This sample demonstrates annotation feature. Accumulation chart is placed in cartesian chart by using annotation.
     </p>
                 </div>
                 <div id="description"><p>
@@ -79,7 +79,7 @@ export class PieAnnotation extends SampleBase<{}, {}> {
                 the Pie chart as its content.
             </p>
                     <br />
-                    <p style={{ "font-weight": 500 }}>Injecting Module</p>
+                    <p style={{ "fontWeight": 500 }}>Injecting Module</p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To annotation feature in chart, we need to
                 inject

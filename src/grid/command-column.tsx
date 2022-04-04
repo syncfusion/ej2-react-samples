@@ -39,7 +39,7 @@ export class CommandColumnEdit extends SampleBase<{}, {}> {
           <p>
               The Grid provides an option to render CRUD action buttons in a column by using the CommandColumn feature. The
               <code><a target="_blank" className="code"
-                  href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#commands">columns->commands
+                  href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#commands">columns-&gt;commands
                   </a></code> property accepts array of <code><a target="_blank" className="code"
                       href="http://ej2.syncfusion.com/react/documentation/grid/api-commandModel.html">CommandModel
                   </a></code> object. The predefined command button can be defined by using <code><a target="_blank" className="code"

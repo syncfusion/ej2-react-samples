@@ -22,7 +22,7 @@ export class Format extends SampleBase<{}, {}> {
             <div className="control-label">Enter the tax
             </div>
             {/* Render the Percentage Textbox with custom format */}
-            <NumericTextBoxComponent format="### \'%\'" min={0} value={25} max={100} >
+            <NumericTextBoxComponent format="### '%'" min={0} value={25} max={100} >
             </NumericTextBoxComponent>
             <div className="control-label">Enter the amount
             </div>

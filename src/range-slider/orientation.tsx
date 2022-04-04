@@ -135,7 +135,7 @@ export class Orientation extends SampleBase<{}, {}> {
                                             <div className="userselect">Tooltip</div>
                                         </td>
                                         <td style={{ width: '50%', paddingRight: '10px' }}>
-                                            <div style={{ paddingleft: 0, paddingtop: 0 }}>
+                                            <div style={{ paddingLeft: 0, paddingTop: 0 }}>
                                                 {/* Initialize Range CheckBox component */}
                                                 <CheckBoxComponent checked={false} change={this.enableDisableTooltip.bind(this)} />
                                             </div>

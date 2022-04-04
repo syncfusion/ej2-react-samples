@@ -34,7 +34,7 @@ export class LazyLoadGrouping extends SampleBase<{}, {}> {
                         The child rows of each caption will render only when we expand the captions.
                         To enable lazy load grouping, set <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/documentation/grid/api-groupSettings.html#enablelazyloading">
-                            groupSettings->enableLazyLoading</a></code> property as true.
+                            groupSettings-&gt;enableLazyLoading</a></code> property as true.
                     </p>
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
                     <p>

@@ -214,7 +214,7 @@ private onUploadFailed(args : any): void {
 private readURL(li: HTMLElement, args: any): void {
     let preview: HTMLImageElement = li.querySelector('.upload-image');
     let file: File = args.rawFile; let reader: FileReader = new FileReader();
-    reader.addEventListener('load', () => { preview.src = reader.result; }, false);
+    reader.addEventListener('load', () => { preview.src = reader.result as string; }, false);
     if (file) { reader.readAsDataURL(file); }
 }
 private onRemoveFile(args: RemovingEventArgs): void {

@@ -9,3 +9,7 @@ export let bootstrapColors: string[] = ['#a16ee5', '#f7ce69', '#55a5c2', '#7ddf1
     '#7953ac', '#b99b4f', '#407c92', '#5ea716', '#b91c52'];
 export let highContrastColors: string[] = ['#79ECE4', '#E98272', '#DFE6B6', '#C6E773', '#BA98FF',
     '#FA83C3', '#00C27A', '#43ACEF', '#D681EF', '#D8BC6E'];
+export let fluentColors: string[] = ['#614570', '#4C6FB1', '#CC6952', '#3F579A', '#4EA09B', '#6E7A89', '#D4515C', '#E6AF5D', '#639751',
+    '#9D4D69'];
+export let fluentDarkColors: string[] = ['#8AB113', '#2A72D5', '#43B786', '#584EC6', '#E85F9C', '#6E7A89', '#EA6266', '#EBA844', '#26BC7A', 
+    '#BC4870'];     

@@ -5,6 +5,24 @@
     border-collapse: collapse;
 }
 
+#target .e-dialog {
+  width: 452px;
+}
+
+.fluent.e-bigger #target .e-dialog,
+.fluent-dark.e-bigger #target .e-dialog {
+  width: 502px;
+}
+
+#poschange {
+  width: 405px;
+}
+
+.fluent.e-bigger #poschange,
+.fluent-dark.e-bigger #poschange {
+  width: 455px;
+}
+
 #defaultDialog.e-dialog .e-footer-content {
     padding: 0px 1px 4px ! important;
 }
@@ -24,10 +42,6 @@
 
 #poschange td {
   padding: 6px;
-}
-
-#poschange {
-    width: 405px;
 }
 
 div#target.control-section.dialog-position {

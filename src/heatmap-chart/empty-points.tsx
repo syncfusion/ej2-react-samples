@@ -68,7 +68,7 @@ export class EmptyPoints extends SampleBase<{}, {}> {
                     <p>
                         This sample visualizes the number of defective product count per 1000 units coming out from a manufacturing unit
                         Data points are enhanced with labels and tooltip. Some data points were not marked with any values which indicates
-                        there are no deffective products and these data points are termed as empty points.
+                        there are no defective products and these data points are termed as empty points.
                     </p>
                 </div>
                 <div id="description">
@@ -93,7 +93,7 @@ export class EmptyPoints extends SampleBase<{}, {}> {
         );
     }
     private tooltipTemplate(args: ITooltipEventArgs): void {
-        args.content = [args.yLabel + ' | ' + args.xLabel + ' : ' + args.value + ' deffective units'];
+        args.content = [args.yLabel + ' | ' + args.xLabel + ' : ' + args.value + ' defective units'];
     };
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];

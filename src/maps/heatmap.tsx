@@ -98,7 +98,7 @@ export class HeatMaps extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px'}}>Source: 
+                <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/List_of_states_and_union_territories_of_India_by_population" target="_blank">en.wikipedia.org</a>
     </div>
                 <div id="action-description">

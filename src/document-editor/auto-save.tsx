@@ -62,13 +62,13 @@ export class DocumentEditorAutoSave extends SampleBase<{}, {}> {
                     <tr>
                         <td>
                             <div className="eventarea" style={{ 'height': '150px', 'overflow': 'auto' }}>
-                                <span className="AutosaveLog" id="AutosaveLog" style={{ 'word-break': 'normal' }}></span>
+                                <span className="AutosaveLog" id="AutosaveLog" style={{ 'wordBreak': 'normal' }}></span>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div className="evtbtn" style={{ 'padding-bottom': '10px', 'paddingLeft': '50px' }}>
+                            <div className="evtbtn" style={{ 'paddingBottom': '10px', 'paddingLeft': '50px' }}>
                                 <ButtonComponent id="clear" onClick={this.clearLog.bind(this)}>Clear</ButtonComponent>
                             </div>
                         </td>

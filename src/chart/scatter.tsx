@@ -30,7 +30,7 @@ export class Scatter extends SampleBase<{}, {}> {
                             maximum: 220,
                             majorGridLines: { width: 0 },
                             edgeLabelPlacement: 'Shift',
-                            title: 'Height in Inches'
+                            title: 'Height (cm)'
 
                         }}
                         primaryYAxis={{
@@ -42,14 +42,14 @@ export class Scatter extends SampleBase<{}, {}> {
                             lineStyle: {
                                 width: 0
                             },
-                            title: 'Weight in Pounds',
+                            title: 'Weight (kg)',
                             rangePadding: 'None'
                         }
                         }
                         load={this.load.bind(this)}
                         title='Height vs Weight'
                         loaded={this.onChartLoad.bind(this)}
-                        tooltip={{ enable: true, format: 'Weight: <b>${point.x} lbs</b> <br/> Height: <b>${point.y}"</b>' }}
+                        tooltip={{ enable: true, format: 'Weight: <b>${point.x} kg</b> <br/> Height: <b>${point.y}cm</b>' }}
                         width={Browser.isDevice ? '100%' : '80%'}
                         chartArea={{ border: { width: 0 } }}
                     >

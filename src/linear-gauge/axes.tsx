@@ -192,8 +192,8 @@ export class Axes extends SampleBase<{}, {}> {
                                         <div style={{ width: '100%'}}>Label Format</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div className="e-float-input" style={{ 'margin-top': '0px' }}>
-                                            <input id="format" onChange={this.labelChange.bind(this)} ref={d => this.labelElement = d} type="text" defaultValue="{value}" style={{ "width": "125%" , "padding-top": "13px"}} />
+                                        <div className="e-float-input" style={{ 'marginTop': '0px' }}>
+                                            <input id="format" onChange={this.labelChange.bind(this)} ref={d => this.labelElement = d} type="text" defaultValue="{value}" style={{ "width": "125%" , "paddingTop": "13px"}} />
                                         </div>
                                     </td>
                                 </tr>

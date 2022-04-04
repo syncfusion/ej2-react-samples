@@ -297,3 +297,7 @@
 .custom-panel {
     padding-top: 25px;
 }
+.fluent .close-icon-container.delete-icon::before,
+.fluent-dark .close-icon-container.delete-icon::before {
+    content: '\e7e7';
+}

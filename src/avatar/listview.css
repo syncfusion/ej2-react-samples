@@ -16,6 +16,11 @@ body.highcontrast #letterAvatarList{
     border: 1px solid #dddddd;
 }
 
+.fluent #letterAvatarList .e-list-item,
+.fluent-dark #letterAvatarList .e-list-item{
+		line-height: 30px;
+}
+
 #letterAvatarList .listWrapper {
     width: inherit;
     height: inherit;
@@ -42,6 +47,10 @@ body.highcontrast #letterAvatarList{
     line-height: 20px;
 }
 
+body.tailwind-dark #letterAvatarList .e-list-item{
+    line-height: 35px;
+}
+
 body.material #letterAvatarList .e-list-item,
 body.material-dark #letterAvatarList .e-list-item {
     line-height: 50px;
@@ -54,8 +63,7 @@ body.material-dark #letterAvatarList .e-list-item {
     border: 0;
 }
 
-.tailwind #letterAvatarList .e-list-item,
-.tailwind-dark #letterAvatarList .e-list-item {
+.tailwind #letterAvatarList .e-list-item {
     line-height: 50px;
     padding-top: 0;
     padding-bottom: 0;
@@ -123,24 +131,15 @@ body.material-dark #letterAvatarList .e-list-item {
 }
 
 body.bootstrap4 #letterAvatarList .e-list-item .e-avatar{
-    top: calc(100% - 28px);
-}
-
-.tailwind-dark #letterAvatarList .e-list-item .e-avatar {
-    top: calc(100% - 40px);
+    top: calc(100% - 45px);
 }
 
 .bootstrap5 #letterAvatarList .e-list-item .e-avatar,
-.bootstrap5-dark #letterAvatarList .e-list-item .e-avatar {
-    top: calc(100% - 30px);
-}
-
-.fabric #letterAvatarList .e-list-item .e-avatar,
-.fabric-dark #letterAvatarList .e-list-item .e-avatar,
-.bootstrap #letterAvatarList .e-list-item .e-avatar,
-.bootstrap-dark #letterAvatarList .e-list-item .e-avatar,
-.highcontrast #letterAvatarList .e-list-item .e-avatar {
-    top: calc(100% - 35px);
+.bootstrap5-dark #letterAvatarList .e-list-item .e-avatar,
+.tailwind-dark #letterAvatarList .e-list-item .e-avatar,
+.fluent #letterAvatarList .listWrapper .e-avatar,
+.fluent-dark #letterAvatarList .listWrapper .e-avatar {
+    top: calc(100% - 48px);
 }
 
 body.bootstrap #letterAvatarList .e-list-item,

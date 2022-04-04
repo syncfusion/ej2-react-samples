@@ -94,14 +94,14 @@ export class Filtering extends SampleBase<{}, {}> {
                             to initiate filter after use stops typing.
                            It can be overridden using the <code><a target='_blank' className='code'
                                 href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#filtersettings'>
-                                filterSettings->immediateModeDelay
+                                filterSettings-&gt;immediateModeDelay
                         </a></code> property.</li>
                     </ul>
                     <p>In this demo, you can either select the <strong>Category Name</strong> from the SELECT element or type the text in the
                      filter bar cells to filter the Grid. </p>
                      <p>Additionally, the grid records can also be filtered based on the selected filterbar operator. It can be enabled by setting
                     <br />
-                        <code>filterSettings->showFilterBarOperator</code> property as true.
+                        <code>filterSettings-&gt;showFilterBarOperator</code> property as true.
                      <p>In this demo, </p>
                         <ul>
                             <li>To enable or disable filterbar operator feature, check or uncheck the checkbox in the properties panel.</li>

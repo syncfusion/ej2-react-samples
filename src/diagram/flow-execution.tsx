@@ -275,7 +275,7 @@ function CreateConnector(
 }
 
 function CreateNodes(
-  name: string, offsetX: number, offsetY: number, shape: string, content: string,
+  name: string, offsetX: number, offsetY: number, shape: any, content: string,
   width: number, height: number, ports?: PointPortModel[]): NodeModel {
   let node: NodeModel = {};
   node.id = name;
@@ -297,8 +297,8 @@ function CreateNodes(
 let highLightedObjects: string[] = [];
 let selectedButton: string = 'LinksConnected';
 function buttonChange(args: ChangeArgs): void {
-  applyChanges(args.event.srcElement.id);
-  selectedButton = args.event.srcElement.id;
+  applyChanges((args.event.srcElement as any).id);
+  selectedButton = (args.event.srcElement as any).id;
 }
 
 function applyChanges(id: string): void {

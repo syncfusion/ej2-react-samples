@@ -48,6 +48,12 @@
         border-color: #ffd939;
     }
 
+    .fluent .e-rte-emoticon-tbar-section .char_block.e-active,
+    .fluent-dark .e-rte-emoticon-tbar-section .char_block.e-active {
+        outline: 1px solid #0078DE;
+        border-color: #0078DE;
+    }
+    
     .tailwind .e-rte-custom-tbar-section .char_block.e-active {
         outline: 1px solid #3730a3;
         border-color: #3730a3;

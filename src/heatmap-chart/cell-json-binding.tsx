@@ -154,10 +154,9 @@ export class JsonCell extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         In this example, you can see how to bind JSON data and configure the Heatmap using the data adaptor support.
-                        You can bind the JSON data with information for each individual cell to the Heatmap using <code>isJsonData
-                        </code> and by defining the <code>adaptorType </code> properties. In cell JSON data, the value for each
-                        cell is mapped using the <code>xDataMapping </code>, <code>yDataMapping </code> and <code>valueMapping
-                         </code>properties.
+                        You can bind the JSON data with information for each individual cell to the Heatmap using <code>isJsonData</code>
+                        and by defining the <code>adaptorType</code> properties. In cell JSON data, the value for each
+                        cell is mapped using the <code>xDataMapping</code>, <code>yDataMapping</code> and <code>valueMapping</code> properties.
                     </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a

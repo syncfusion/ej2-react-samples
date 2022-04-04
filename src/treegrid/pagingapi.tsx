@@ -75,7 +75,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging={true} 
               ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageCount: 2 }} >
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right'></ColumnDirective>
@@ -159,17 +159,17 @@ export class PagingAPI extends SampleBase<{}, {}> {
 
       <div id="description">
         <p>Paging allows you to display the contents of the Tree Grid in page segments. The number of items on a page is determined by
-            the <code>pageSettings->pageSize</code> property. If no value is specified for the <code>pageSettings->pageSize</code> property,
+            the <code>pageSettings-&gt;pageSize</code> property. If no value is specified for the <code>pageSettings-&gt;pageSize</code> property,
             the Tree Grid will display 12 items on a page. By default, paging is disabled. To enable paging,
             set <code>allowPaging</code> property to true.</p>
         <p>In this demo,</p>
         <ul>
           <li>Click the <strong>Allow Paging</strong> check box to enable/disable paging feature.</li>
-          <li>Change the value of <strong>Page Size Mode</strong> Dropdown to change <code>pageSettings->pageSizeMode.</code></li>
-          <li>Change the value of <strong>Page Size</strong> textbox to change <code>pageSettings->pageSize.</code></li>
-          <li>Change the value of <strong>Page Count</strong> textbox to change <code>pageSettings->pageCount.</code></li>
+          <li>Change the value of <strong>Page Size Mode</strong> Dropdown to change <code>pageSettings-&gt;pageSizeMode.</code></li>
+          <li>Change the value of <strong>Page Size</strong> textbox to change <code>pageSettings-&gt;pageSize.</code></li>
+          <li>Change the value of <strong>Page Count</strong> textbox to change <code>pageSettings-&gt;pageCount.</code></li>
           <li>Change the value of <strong>Current Page</strong> textbox to change
-          <code> pageSettings->currentPage.</code></li>
+          <code> pageSettings-&gt;currentPage.</code></li>
         </ul>
         <p>Injecting Module:</p>
         <p>

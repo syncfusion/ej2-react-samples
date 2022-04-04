@@ -31,7 +31,7 @@ export class StackedHeader extends SampleBase<{}, {}> {
                         href="http://ej2.syncfusion.com/react/documentation/api/grid#allowresizing">allowResizing
                         </a></code> property as true. You can also prevent the resize of the particular column by setting
                         <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/api/grid/column#allowresizing">columns->allowResizing
+                        href="http://ej2.syncfusion.com/react/documentation/api/grid/column#allowresizing">columns-&gt;allowResizing
                         </a></code> as false in columns definition.
                     </p>
 

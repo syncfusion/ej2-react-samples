@@ -2,6 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PivotViewComponent, IDataOptions, IDataSet, VirtualScroll, Inject } from '@syncfusion/ej2-react-pivotview';
 import { SampleBase } from '../common/sample-base';
+import { Browser } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 
 /**
@@ -120,6 +121,9 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
             isInit = false;
             applyBtn.disabled = true;
             document.getElementById('popup').style.display = 'none';
+        }
+        if (Browser.isDevice && pivotObj && pivotObj.enableRtl) {
+            document.querySelector('.control-section').classList.add('e-rtl');
         }
     }
 

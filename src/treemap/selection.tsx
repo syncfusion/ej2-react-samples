@@ -104,7 +104,7 @@ export class Selection extends SampleBase<{}, {}> {
 							</LevelsDirective>
 						</TreeMapComponent>
 						{/* Source Link */}
-						<div style={{ float: 'right', marginright: '10px' }}>Source:
+						<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://www.indexmundi.com/united_states/imports_commodities.html" target="_blank">www.indexmundi.com</a>
 						</div>
 					</div>

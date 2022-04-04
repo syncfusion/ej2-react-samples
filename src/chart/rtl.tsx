@@ -14,21 +14,21 @@ import { SampleBase } from '../common/sample-base';
 
 export let data1 = [
     { x: 2016, y: 1000 },
-    { x: 2017, y: 970 },
-    { x: 2018, y: 1060 },
+    { x: 2017, y: 1170 },
+    { x: 2018, y: 660 },
     { x: 2019, y: 1030 },
   ];
   export let data2 = [
     { x: 2016, y: 400 },
-    { x: 2017, y: 360 },
-    { x: 2018, y: 920 },
+    { x: 2017, y: 460 },
+    { x: 2018, y: 1120 },
     { x: 2019, y: 540 },
   ];
   export let data3 = [
-    { x: 2016, y: 600 },
-    { x: 2017, y: 610 },
-    { x: 2018, y: 140 },
-    { x: 2019, y: 490 },
+    { x: 2016, y: 200 },
+    { x: 2017, y: 250 },
+    { x: 2018, y: 300 },
+    { x: 2019, y: 350 },
   ];
 
 const SAMPLE_CSS = `
@@ -100,7 +100,7 @@ export class RTL extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample visualizes the company performance with default column chart in right-to-left(RTL) direction. The values of the data points are displayed in a tooltip, and the legend in the sample displays information about the series.
+                This sample visualizes the company performance with default column chart in RTL direction. The values of the data points are displayed in a tooltip, and the legend in the sample displays information about the series.
             </p>
                 </div>
                 <div id="description">

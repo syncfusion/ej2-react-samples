@@ -140,14 +140,6 @@ export class SelectionChart extends SampleBase<{}, {}> {
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
-                                        <div>Enable Multi-selection:</div>
-                                    </td>
-                                    <td style={{ width: '20%' }}>
-                                        <div><input type="checkbox" id="select" onChange={this.check.bind(this)} ref={d => this.checkElement = d} /></div>
-                                    </td>
-                                </tr>
-                                <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Selection Mode:</div>
                                     </td>
@@ -155,6 +147,14 @@ export class SelectionChart extends SampleBase<{}, {}> {
                                         <div>
                                             <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Point" />
                                         </div>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '80%' }}>
+                                        <div>Enable Multi-selection:</div>
+                                    </td>
+                                    <td style={{ width: '20%' }}>
+                                        <div><input type="checkbox" id="select" onChange={this.check.bind(this)} ref={d => this.checkElement = d} /></div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
@@ -168,14 +168,6 @@ export class SelectionChart extends SampleBase<{}, {}> {
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: '80%' }}>
-                                        <div>Enable Hightlight Pattern:</div>
-                                    </td>
-                                    <td style={{ width: '20%' }}>
-                                        <div><input type="checkbox" id="highlightCheckbox" onChange={this.highlightChange.bind(this)} /></div>
-                                    </td>
-                                </tr>
-                                <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Highlight Color:</div>
                                     </td>
@@ -186,6 +178,14 @@ export class SelectionChart extends SampleBase<{}, {}> {
                                             value="null"
                                             change={this.onChange.bind(this)}
                                         ></ColorPickerComponent>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: '50px' }}>
+                                    <td style={{ width: '80%' }}>
+                                        <div>Enable Hightlight Pattern:</div>
+                                    </td>
+                                    <td style={{ width: '20%' }}>
+                                        <div><input type="checkbox" id="highlightCheckbox" onChange={this.highlightChange.bind(this)} /></div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>

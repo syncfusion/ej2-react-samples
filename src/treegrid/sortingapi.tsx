@@ -43,7 +43,7 @@ export class SortingAPI extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div className = 'col-md-9'>
             <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='410' 
-              ref={treegrid=> this.treegridObj = treegrid} allowSorting='true'>
+              ref={treegrid=> this.treegridObj = treegrid} allowSorting={true}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right'></ColumnDirective>
                 <ColumnDirective field='taskName' headerText='Task Name' width='160'></ColumnDirective>

@@ -209,3 +209,8 @@
     border-color: transparent;
     box-shadow: none !important;
 }
+
+.key-class {
+    display: inline-block;
+    width: 130px;
+}

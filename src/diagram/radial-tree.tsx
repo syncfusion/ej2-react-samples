@@ -22,7 +22,7 @@ import {
   ToolbarComponent,
   ClickEventArgs
 } from "@syncfusion/ej2-react-navigations";
-import { radialTree, DataInfo } from './diagram-data';
+import { radialTree } from './diagram-data';
 
 import "./font-icons.css";
 

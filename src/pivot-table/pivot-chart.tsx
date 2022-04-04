@@ -98,13 +98,13 @@ export class ChartIntegration extends SampleBase<{}, {}> {
                         options are:
                     </p>
                     <p>
-                        <code>Table</code> -> Plots pivot table only which is default,
+                        <code>Table</code> -&gt; Plots pivot table only which is default,
                     </p>
                     <p>
-                        <code>Chart</code> -> Plots pivot chart only,
+                        <code>Chart</code> -&gt; Plots pivot chart only,
                     </p>
                     <p>
-                        <code>Both</code> -> Plots both pivot table and pivot chart,
+                        <code>Both</code> -&gt; Plots both pivot table and pivot chart,
                     </p>
                     <p>
                         You can change the chart types using the dropdown list separately.

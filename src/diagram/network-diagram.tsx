@@ -504,7 +504,7 @@ export class NetworkShapes extends SampleBase<{}, {}> {
         <div className="control-section">
           <div id="networkDiagram" style={{ width: "100%", height: "600px" }}>
             <div className="sb-mobile-palette-bar">
-              <div id="palette-icon" style={{ float: "right", role: "button" }} className="e-ddb-icons1 e-toggle-palette"></div>
+              <div id="palette-icon" style={{ float: "right" }} className="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" className="sb-mobile-palette">
               <SymbolPaletteComponent

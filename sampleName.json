@@ -99,6 +99,17 @@
             "islamic-calendar": "Islamic Calendar"
         }
     },
+    "carousel": {
+        "ControlName": "Carousel",
+        "Samples": {
+            "overview": "Overview",
+            "default": "Default Functionalities",
+            "templates": "Templates",
+            "datasource-binding": "Data Binding",
+            "keyboard-navigation": "Keyboard Navigation",
+            "api": "API"
+        }
+    },
     "card": {
         "ControlName": "Card",
         "Samples": {
@@ -170,7 +181,7 @@
             "doughnut": "Doughnut",
             "pyramid": "Pyramid",
             "funnel": "Funnel",
-            "default-doughnut": "Pie With Legend",
+            "pie-legend": "Pie With Legend",
             "semi-pie": "Semi Pie",
             "smartlabels": "Smart Labels",
             "drilldown": "Drilldown",

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, Inject, Selection } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Selection, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -24,9 +24,17 @@ export class Default extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='Default' dataSource={projectNewData}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
+          <GanttComponent id='Default' dataSource={projectNewData} 
+            taskFields={this.taskFields} treeColumnIndex={1} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+              <ColumnsDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
+              <ColumnDirective field='StartDate'></ColumnDirective>
+              <ColumnDirective field='Duration'></ColumnDirective>
+              <ColumnDirective field='Progress'></ColumnDirective>
+              <ColumnDirective field='Predecessor'></ColumnDirective>
+              </ColumnsDirective>
             <Inject services={[Selection]} />
           </GanttComponent>
         </div>

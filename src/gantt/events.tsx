@@ -18,7 +18,7 @@ export class Events extends SampleBase<{}, {}> {
     child: 'subtasks'
   };
   public columns: any = [
-    { field: 'TaskID', width: 60 },
+    { field: 'TaskID', width: 80 },
     { field: 'TaskName', width: 250 },
     { field: 'StartDate' },
     { field: 'EndDate' },
@@ -179,7 +179,7 @@ export class Events extends SampleBase<{}, {}> {
               recordDoubleClick={this.recordDoubleClick.bind(this)} onTaskbarClick={this.onTaskbarClick.bind(this)}
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='60'></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' ></ColumnDirective>

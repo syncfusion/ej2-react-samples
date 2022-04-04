@@ -204,7 +204,7 @@ export class HighlightMaps extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px'}}>Source: 
+                <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://www.google.co.in/maps/search/atm+in+oklahoma/@35.3864432,-98.2888719,8z/data=!3m1!4b1" target="_blank">www.google.co.in/maps</a>
     </div>
     <div id="action-description">
@@ -217,7 +217,7 @@ export class HighlightMaps extends SampleBase<{}, {}> {
       In this example, you can see how to highlight some specific region by rendering circles. Any custom HTML element can be used as a marker.
     </p>
 <br/>
-    <p style={{fontweight: 500}}>Injecting Module</p>
+    <p style={{fontWeight: 500}}>Injecting Module</p>
     <p>
       Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using <code>Maps.Inject(Marker)</code> method.
     </p>

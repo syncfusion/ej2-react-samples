@@ -10,7 +10,7 @@ export class Paging extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
                 pageSettings={{ pageSizes: true, pageSize: 10, pageCount: 2 }}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
@@ -30,9 +30,9 @@ export class Paging extends SampleBase<{}, {}> {
         </div>
         <div id='description'>
           <p>Paging allows you to display the contents of the Tree Grid in page segments. By default, paging is disabled. To enable paging,
-              set <code>allowPaging</code> property to true. <code>pageSettings->pageSizes</code> property enables a dropdown in pager
+              set <code>allowPaging</code> property to true. <code>pageSettings-&gt;pageSizes</code> property enables a dropdown in pager
               which allows you to change the number of records in the Tree Grid dynamically.</p>
-          <p>In this demo, the Tree Grid is rendered with <code>pageSettings->pageSizes</code> set to true and have an option 
+          <p>In this demo, the Tree Grid is rendered with <code>pageSettings-&gt;pageSizes</code> set to true and have an option 
               to change the pagesize of Tree Grid dynamically.</p>
           <p>Injecting Module:
               Tree Grid features are segregated into individual feature-wise modules. To use paging feature, we need to inject <code>Page</code> 

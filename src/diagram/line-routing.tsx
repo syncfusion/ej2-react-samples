@@ -8,7 +8,8 @@ import {
   Inject, LineRouting,
   PortVisibility,
   SnapConstraints,
-  DiagramConstraints
+  DiagramConstraints,
+  ConnectorBridging
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
 let SAMPLE_CSS = `.image-pattern-style {
@@ -44,7 +45,8 @@ let nodes: NodeModel[] = [
     style: { fill: '#D5535D' },
     ports: [{ id: 'port1', offset: { x: 0.5, y: 0 }, visibility: PortVisibility.Hidden }],
     annotations: [{
-      content: 'Start'
+      content: 'Start',
+      style: { color: 'white' }
     }]
   },
   {
@@ -52,7 +54,8 @@ let nodes: NodeModel[] = [
     shape: { type: 'Flow', shape: 'Process' },
     style: { fill: "#65B091" },
     annotations: [{
-      content: 'Process'
+      content: 'Process',
+      style: { color: 'white' }
     }]
   },
   {
@@ -61,7 +64,8 @@ let nodes: NodeModel[] = [
     style: { fill: "#5BA5F0" },
     ports: [{ id: 'port1', offset: { x: 0, y: 0.5 }, visibility: PortVisibility.Hidden }],
     annotations: [{
-      content: 'Document'
+      content: 'Document',
+      style: { color: 'white' }
     }]
   },
   {
@@ -69,8 +73,8 @@ let nodes: NodeModel[] = [
     shape: { type: 'Flow', shape: 'Decision' },
     style: { fill: "#9A8AF7" },
     annotations: [{
-      content: 'Decision'
-
+      content: 'Decision',
+      style: { color: 'white' }
     }]
   },
   {
@@ -78,8 +82,8 @@ let nodes: NodeModel[] = [
     shape: { type: 'Flow', shape: 'Document' },
     style: { fill: "#5BA5F0" },
     annotations: [{
-      content: 'Document'
-
+      content: 'Document',
+      style: { color: 'white' }
     }]
   },
   {
@@ -87,8 +91,8 @@ let nodes: NodeModel[] = [
     shape: { type: 'Flow', shape: 'Terminator' },
     style: { fill: "#9A8AF7" },
     annotations: [{
-      content: 'End'
-
+      content: 'End',
+      style: { color: 'white' }
     }]
   },
   {
@@ -96,7 +100,8 @@ let nodes: NodeModel[] = [
     shape: { type: 'Flow', shape: 'Process' },
     style: { fill: "#65B091" },
     annotations: [{
-      content: 'Process'
+      content: 'Process',
+      style: { color: 'white' }
     }]
   },
   {
@@ -105,6 +110,7 @@ let nodes: NodeModel[] = [
     style: { fill: "#9A8AF7" },
     annotations: [{
       content: 'Card',
+      style: { color: 'white' }
     }],
     ports: [
       { id: 'port1', offset: { x: 1, y: 0.5 }, visibility: PortVisibility.Hidden },
@@ -166,13 +172,13 @@ export class LineRoutingSample extends SampleBase<{}, {}> {
               width={"100%"}
               height={"499px"}
               snapSettings={{ constraints: SnapConstraints.None }}
-              constraints={DiagramConstraints.Default | DiagramConstraints.LineRouting}
+              constraints={DiagramConstraints.Default | DiagramConstraints.LineRouting | DiagramConstraints.Bridging }
               nodes={nodes}
               connectors={connectors}
               getConnectorDefaults={getConnectorDefaults}
               getNodeDefaults={getNodeDefaults}
             >
-              <Inject services={[LineRouting]} />
+              <Inject services={[LineRouting, ConnectorBridging]} />
             </DiagramComponent>
           </div>
         </div>

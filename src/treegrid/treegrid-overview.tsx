@@ -121,8 +121,8 @@ export class Overview extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={countries} childMapping='states' height='400' allowReordering='true'
-          allowFiltering='true' allowSorting='true' filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}
+          <TreeGridComponent dataSource={countries} childMapping='states' height='400' allowReordering={true}
+          allowFiltering={true} allowSorting={true} filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}
           queryCellInfo={this.queryCellinfo.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='name' headerText='Province' width='190' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>

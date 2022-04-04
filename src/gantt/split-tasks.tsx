@@ -42,7 +42,7 @@ export class SplitTasks extends SampleBase<{}, {}> {
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} splitterSettings={this.splitterSettings} height='450px'>
 			<ColumnsDirective>
-                    <ColumnDirective field='TaskID' width='60'/>
+                    <ColumnDirective field='TaskID' width='80'/>
                     <ColumnDirective field='TaskName' headerText='Task Name'/>
                     <ColumnDirective field='StartDate'/>
                     <ColumnDirective field='EndDate'/>

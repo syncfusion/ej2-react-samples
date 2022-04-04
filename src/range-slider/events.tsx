@@ -98,13 +98,13 @@ export class Events extends SampleBase<{}, {}> {
                                         <td>
                                             <div className="eventarea" style={{ height: '245px', overflow: 'auto' }}>
                                                 {/* Event log element  */}
-                                                <span className="EventLog" id="EventLog" style={{ wordbreak: 'normal' }}></span>
+                                                <span className="EventLog" id="EventLog" style={{ wordBreak: 'normal' }}></span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div className="evtbtn" style={{ paddingbottom: '10px' }}>
+                                            <div className="evtbtn" style={{ paddingBottom: '10px' }}>
                                                 {/* Event log element  */}
                                                 <input id="clear" type="button" className="btn btn-default" value="Clear" onClick={this.onclick} />
                                             </div>

@@ -13,7 +13,7 @@ export class RemoteData extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <TreeGridComponent dataSource={this.data} ref={treegrid => this.treegridInstance = treegrid} hasChildMapping='isParent' height='350'
-              pageSettings={{ pageCount: 3 }} treeColumnIndex={1} allowPaging='true' idMapping= 'TaskID' parentIdMapping='parentItem'>
+              pageSettings={{ pageCount: 3 }} treeColumnIndex={1} allowPaging={true} idMapping= 'TaskID' parentIdMapping='parentItem'>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='Task ID' width='120' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Task Name' width='140'></ColumnDirective>
@@ -36,8 +36,8 @@ export class RemoteData extends SampleBase<{}, {}> {
         <p>The DataManager, which will act as an interface between the service endpoint and the Tree Grid, will require the below minimal information to interact with service endpoint properly.
         </p>
         <ul>
-            <li><code>DataManager->url</code> - Defines the service endpoint to fetch data</li>
-            <li><code>DataManager->adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used
+            <li><code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data</li>
+            <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used
                 for remote binding.</li>
         </ul>
         <p>Adaptor is responsible for processing response and request from/to the service endpoint.

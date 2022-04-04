@@ -11,12 +11,11 @@ import './insert-emoticons.css';
 export class InsertEmoticons extends SampleBase<{}, {}> {
 
   private rteObj: RichTextEditorComponent;
-  private rteSectionEle: HTMLDivElement;
+  private rteSectionEle: HTMLDivElement = null;
   private rteSectionRef: React.Ref<HTMLDivElement>;
 
   constructor(props) {
     super(props);
-    this.rteSectionEle = null;
     this.rteSectionRef = element => {
       this.rteSectionEle = element;
     };

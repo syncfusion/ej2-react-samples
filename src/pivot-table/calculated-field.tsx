@@ -54,7 +54,7 @@ export class CalculatedFieldClass extends SampleBase<{}, {}> {
                     </div>
                     <div className='col-lg-3 property-section'>
                         <PropertyPane title='Properties'>
-                            <div style={{ float: 'Right', marginRight: '10px' }}>
+                            <div style={{ float: 'right', marginRight: '10px' }}>
                                 <ButtonComponent cssClass='e-primary' onClick={this.btnClick.bind(this)}>Calculated Field</ButtonComponent>
                             </div>
                         </PropertyPane>

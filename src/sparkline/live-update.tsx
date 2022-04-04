@@ -52,7 +52,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                 this.temp1 = (this.sparkInstance.dataSource as Object[]).length - 1;
             if (this.timer1 != null)
                 clearInterval(this.timer1)
-            this.timer1 = setInterval(this.update(), 500);
+            this.timer1 = setInterval(() =>this.update(), 500);
         }, 500);
     }
 
@@ -64,7 +64,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                 this.temp3 = (this.sparkInstance1.dataSource as Object[]).length - 1;
             if (this.timer2 != null)
                 clearInterval(this.timer2)
-            this.timer2 = setInterval(this.update2(), 500);
+            this.timer2 = setInterval(() =>this.update2(), 500);
         }, 500);
     }
 
@@ -76,7 +76,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                 this.temp2 = (this.sparkInstance2.dataSource as Object[]).length - 1;
             if (this.timer3 != null)
                 clearInterval(this.timer3)
-            this.timer3 = setInterval(this.update1(), 500);
+            this.timer3 = setInterval(() =>this.update1(), 500);
         }, 500);
     }
 
@@ -88,7 +88,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                 this.temp4 = (this.sparkInstance3.dataSource as Object[]).length - 1;
             if (this.timer4 != null)
                 clearInterval(this.timer4)
-            this.timer4 = setInterval(this.update4(), 500);
+            this.timer4 = setInterval(() =>this.update4(), 500);
         }, 500);
     }
 
@@ -148,15 +148,15 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ "align": "center" }}>
+                <div className='control-section'>
                     <div id='spark-container' className="row">
-                        <div className="cols-sample-area" style={{ "align": "center", "margin-top": "8%" }}>
-                            <div style={{ "align": "center" }} className="col-lg-3 col-m-3 col-sm-6">
-                                <div style={{ "align": "center" }} className="spark" id="spark-container1">
-                                    <div className="index" style={{"font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
+                        <div className="cols-sample-area" style={{"marginTop": "8%" }}>
+                            <div className="col-lg-3 col-m-3 col-sm-6">
+                                <div className="spark" id="spark-container1">
+                                    <div className="index" style={{"fontSize": "12px", "position": "absolute", "marginTop": "10px", "marginLeft": "8%" }}>
                                         <b>CPU</b>
                                     </div>
-                                    <div id="cpu" className="index" style={{ "color": "#0877d6", "position": "absolute", "margin-top": "25px", "margin-left": "8%" }}>26% 1.2GHz</div>
+                                    <div id="cpu" className="index" style={{ "color": "#0877d6", "position": "absolute", "marginTop": "25px", "marginLeft": "8%" }}>26% 1.2GHz</div>
                                     <SparklineComponent loaded={this.updateSparkline1.bind(this)} load={this.load.bind(this)} ref={m => this.sparkInstance = m} id='spark1-container'
                                         height='130px' width='90%' lineWidth={1} type='Area' valueType='Numeric'
                                         fill='#e8f2fc'
@@ -201,12 +201,12 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                                     </SparklineComponent>
                                 </div>
                             </div>
-                            <div style={{ "align": "center" }} className="col-lg-3 col-m-3 col-sm-6">
-                                <div style={{ "align": "center" }} className="spark" id="spark-container2">
-                                    <div className='index' style={{"font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
+                            <div className="col-lg-3 col-m-3 col-sm-6">
+                                <div className="spark" id="spark-container2">
+                                    <div className='index' style={{"fontSize": "12px", "position": "absolute", "marginTop": "10px", "marginLeft": "8%" }}>
                                         <b>Disk</b>
                                     </div>
-                                    <div id="disk" className="index" style={{ "color": "#b247c6", "position": "absolute", "margin-top": "25px", "margin-left": "8%" }}>50%</div>
+                                    <div id="disk" className="index" style={{ "color": "#b247c6", "position": "absolute", "marginTop": "25px", "marginLeft": "8%" }}>50%</div>
                                     <SparklineComponent loaded={this.updateSparkline2.bind(this)} load={this.load.bind(this)} ref={m => this.sparkInstance2 = m} id='spark2-container'
                                         height='130px' width='90%' lineWidth={1} type='Area' valueType='Numeric'
                                         fill='#f5e8fc'
@@ -251,12 +251,12 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                                     </SparklineComponent>
                                 </div>
                             </div>
-                            <div style={{ "align": "center" }} className="col-lg-3 col-m-3 col-sm-6">
-                                <div style={{ "align": "center" }} className="spark" id="spark-container3">
-                                    <div className="index" style={{"font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
+                            <div className="col-lg-3 col-m-3 col-sm-6">
+                                <div className="spark" id="spark-container3">
+                                    <div className="index" style={{"fontSize": "12px", "position": "absolute", "marginTop": "10px", "marginLeft": "8%" }}>
                                         <b>Memory</b>
                                     </div>
-                                    <div id="memory" className="index" style={{ "color": "#5bcc8f", "position": "absolute", "margin-top": "25px", "margin-left": "8%" }}>6.5/15.8 GB (41%)</div>
+                                    <div id="memory" className="index" style={{ "color": "#5bcc8f", "position": "absolute", "marginTop": "25px", "marginLeft": "8%" }}>6.5/15.8 GB (41%)</div>
                                     <SparklineComponent loaded={this.updateSparkline3.bind(this)} load={this.load.bind(this)} ref={m => this.sparkInstance1 = m} id='spark3-container'
                                         height='130px' width='90%' lineWidth={1} type='Area' valueType='Numeric'
                                         fill='#e0f9d1'
@@ -301,12 +301,12 @@ export class LiveUpdate extends SampleBase<{}, {}> {
                                     </SparklineComponent>
                                 </div>
                             </div>
-                            <div style={{ "align": "center" }} className="col-lg-3 col-m-3 col-sm-6">
-                                <div style={{ "align": "center" }} className="spark" id="spark-container4">
-                                    <div className="index" style={{"font-size": "12px", "position": "absolute", "margin-top": "10px", "margin-left": "8%" }}>
+                            <div className="col-lg-3 col-m-3 col-sm-6">
+                                <div className="spark" id="spark-container4">
+                                    <div className="index" style={{"fontSize": "12px", "position": "absolute", "marginTop": "10px", "marginLeft": "8%" }}>
                                         <b>Ethernet</b>
                                     </div>
-                                    <div id="net" className="index" style={{ "color": "#d1a990", "position": "absolute", "margin-top": "25px", "margin-left": "8%" }}>6.5/15.8 GB (41%)</div>
+                                    <div id="net" className="index" style={{ "color": "#d1a990", "position": "absolute", "marginTop": "25px", "marginLeft": "8%" }}>6.5/15.8 GB (41%)</div>
                                     <SparklineComponent loaded={this.updateSparkline4.bind(this)} load={this.load.bind(this)} ref={m => this.sparkInstance3 = m} id='spark4-container'
                                         height='130px' width='90%' lineWidth={1} type='Area' valueType='Numeric'
                                         fill='#F2D8C7'

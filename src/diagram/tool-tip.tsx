@@ -269,7 +269,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                         placeholder='select a mode value'
                                         popupWidth='150'
                                         width='100%'
-                                        index='0'
+                                        index={0}
                                         change={(args: any) => {
                                             if (args.value === 'Mouse') {
                                                 diagramInstance.tooltip.relativeMode = 'Mouse';
@@ -296,7 +296,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                         ref={dropdown => (positionDropdown = dropdown)}
                                         dataSource={PositionValue}
                                         fields={this.fields}
-                                        index='0'
+                                        index={0}
                                         placeholder='select a position'
                                         popupWidth='150'
                                         width='100%'
@@ -387,7 +387,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                         placeholder='select a effect'
                                         popupWidth='150'
                                         width='100%'
-                                        index='0'
+                                        index={0}
                                         change={(args: any) => {
                                             diagramInstance.tooltip.animation.open.effect = args.value;
                                             diagramInstance.tooltip.animation.close.effect = args.value;

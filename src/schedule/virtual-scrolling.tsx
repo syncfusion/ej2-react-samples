@@ -79,7 +79,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                                 </ResourceDirective>
                             </ResourcesDirective>
                             < ViewsDirective >
-                                <ViewDirective option='TimelineMonth' eventTemplate={this.timelineEventTemplate.bind(this)} allowVirtualScrolling={true} />
+                                <ViewDirective option='TimelineMonth' isSelected={true} eventTemplate={this.timelineEventTemplate.bind(this)} allowVirtualScrolling={true} />
                             </ViewsDirective>
                             < Inject services={[TimelineMonth, Resize, DragAndDrop]} />
                         </ScheduleComponent>

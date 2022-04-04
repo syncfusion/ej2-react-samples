@@ -20,9 +20,15 @@
 .fabric-dark .customdropArea a,
 .bootstrap-dark .customdropArea a,
 .bootstrap5-dark .customdropArea a,
-.tailwind-dark .customdropArea a {
+.tailwind-dark .customdropArea a,
+.fluent-dark .customdropArea a {
     color: #fff;
 }
+.fluent-dark .e-upload .e-upload-files .e-upload-file-list,
+.fluent .e-upload .e-upload-files .e-upload-file-list {
+    border-bottom: 1px solid rgb(68, 76, 84);
+}
+
 #customdropArea {
   min-height: 50px;
   padding-top: 15px;
@@ -191,6 +197,10 @@ span#dropText {
 
 .e-bigger .fileListwrapper .file-name {
   font-size: 14px;
+}
+
+.fluent-dark .dropArea_wrap {
+  background-color: #212529;
 }
 
 .material .fileListwrapper .upload-status, .material .fileListwrapper .file-name, .material .dropArea_wrap, .material #customdropArea {

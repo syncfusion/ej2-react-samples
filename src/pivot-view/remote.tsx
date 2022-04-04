@@ -50,20 +50,20 @@ export class Remote extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>The pivotgrid widget supports JSON data source. The
-                        <code>dataSourceSettings->dataSource</code> property can be assigned with the result of DataManager to bind remote data.</p>
+                        <code>dataSourceSettings-&gt;dataSource</code> property can be assigned with the result of DataManager to bind remote data.</p>
                                     The
                     <code>DataManager</code>, which will act as an interface between the service endpoint and the pivotgrid widget, will require the below minimal
                                     information to interact with service endpoint properly.
                     <ul>
                         <li>
-                            <code>DataManager->url</code> - Defines the service endpoint to fetch data.</li>
+                            <code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data.</li>
                         <li>
-                            <code>DataManager->adaptor</code> - Defines the adaptor option. Here,
+                            <code>DataManager-&gt;adaptor</code> - Defines the adaptor option. Here,
                             <code>WebApiAdaptor</code> is used for remote binding.</li>
                                     </ul>
                                     In this demo, remote data is bound by assigning service data as an instance of
                     <code>DataManager</code> to the
-                    <code>dataSourceSettings->dataSource</code> property.
+                    <code>dataSourceSettings-&gt;dataSource</code> property.
                 </div>
             </div>
         )

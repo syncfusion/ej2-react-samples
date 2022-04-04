@@ -60,7 +60,7 @@ export class ParetoChart extends SampleBase<{}, {}> {
                  Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
                     <br />
-                    <p style={{ "font-weight": 500 }}>Injecting Module</p>
+                    <p style={{ "fontWeight": 500 }}>Injecting Module</p>
                     <p>
                     In this example, we have used pareto series with the help of column and line series. To use pareto feature, we need to inject
             <code>ParetoSeries</code> <code>ColumnSeries</code> <code>LineSeries</code> modules using

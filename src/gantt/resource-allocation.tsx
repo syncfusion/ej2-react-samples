@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, DayMarkers, Inject, Selection,Toolbar,Edit, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, DayMarkers, Inject, Selection,Toolbar,Edit, ColumnsDirective, ColumnDirective, WorkUnit } from '@syncfusion/ej2-react-gantt';
 import { resourceData, resourceResources } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -39,7 +39,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
   public labelSettings: any = {
     rightLabel: 'resources'
   };
-  public workUnit: string = 'Hour';
+  public workUnit: WorkUnit = 'Hour';
   render() {
     return (
       <div className='control-pane'>

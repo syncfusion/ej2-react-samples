@@ -72,7 +72,7 @@ export class Default extends SampleBase<{}, {}> {
 						</LevelsDirective>
 					</TreeMapComponent>
 				</div>
-				<div style={{ float: 'right', marginright: '10px' }}>Source:
+				<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://www.factorywarrantylist.com/car-sales-by-country.html/" target="_blank">www.factorywarrantylist.com</a>
 				</div>
 				<div id="action-description">

@@ -368,6 +368,7 @@ body.bootstrap-dark #dockSideDash li.sidebar-item.filterHover,
 body.material-dark #dockSideDash li.sidebar-item.filterHover,
 body.fabric-dark #dockSideDash li.sidebar-item.filterHover,
 body.tailwind-dark #dockSideDash li.sidebar-item.filterHover,
-body.bootstrap5-dark #dockSideDash li.sidebar-item.filterHover{
+body.bootstrap5-dark #dockSideDash li.sidebar-item.filterHover,
+body.fluent-dark #dockSideDash li.sidebar-item.filterHover{
   background: inherit;
 }

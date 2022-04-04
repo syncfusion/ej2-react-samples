@@ -20,6 +20,10 @@ const SAMPLE_CSS = `
     content: "\\e34b";
 }
 
+.e-view.fluent .e-play-icon::before, .e-view.fluent-dark .e-play-icon::before {
+    content: '\\e75d';
+}
+
 .e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before
 {
     content: '\\e7df';
@@ -125,7 +129,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
                             </LayersDirective>
                         </MapsComponent>
                         {/* Source Link */}
-                        <div style={{ float: 'right', marginright: '10px', marginBottom: '0px' }}>Source:
+                        <div style={{ float: 'right', marginRight: '10px', marginBottom: '0px' }}>Source:
                 <a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population" target="_blank">en.wikipedia.org</a>
                         </div>
                     </div>
@@ -136,7 +140,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '100%' }}>
                                         <div id="btn-control" style={{ textAlign: 'center' }}>
-                                            <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClick.bind(this)} style={{width: '80px'}} isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>

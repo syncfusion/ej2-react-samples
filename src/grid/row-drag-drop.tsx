@@ -28,7 +28,7 @@ export class Source extends SampleBase<{}, {}> {
                                 <Inject services={[Page, RowDD]} />
                             </GridComponent>
                         </div>
-                        <div style={{ float: 'Right', width: '49%' }}>
+                        <div style={{ float: 'right', width: '49%' }}>
                             <GridComponent id="DestGrid" allowPaging={true} pageSettings={{ pageCount: 2 }} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings2} selectionSettings={this.destSelectionSettings}>
                                 <ColumnsDirective>
                                     <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
@@ -53,7 +53,7 @@ export class Source extends SampleBase<{}, {}> {
         </a></code> property. The target control on which the
             Grid rows has to be dropped can be set by using <code><a target="_blank" className="code"
                             href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#rowdropsettings">
-                            rowDropSettings->targetID</a></code> property.</p>
+                            rowDropSettings-&gt;targetID</a></code> property.</p>
                     <p>The Selection feature should be enabled to select the rows. Multiple rows can be selected by
             simply clicking and dragging inside the Grid.</p>
                     <p>In this demo, we have demonstrated how to drag and drop the rows between Grids. Row drag and drop feature

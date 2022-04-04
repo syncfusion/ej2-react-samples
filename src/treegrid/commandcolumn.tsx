@@ -51,7 +51,7 @@ export class Command extends SampleBase<{}, {}> {
         <div id="description">
         <p>
             The Tree Grid provides an option to render CRUD action buttons in a column by using the <b>CommandColumn</b> feature.
-              The <code>columns->commands</code> property accepts array of CommandModel object. The predefined command button
+              The <code>columns-&gt;commands</code> property accepts array of CommandModel object. The predefined command button
               can be defined by using type property.
         </p>
         <p>

@@ -10,7 +10,7 @@ export class DragAndDrop extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={dragData} treeColumnIndex={1} childMapping='subtasks' height='410' allowRowDragAndDrop='true'
+          <TreeGridComponent dataSource={dragData} treeColumnIndex={1} childMapping='subtasks' height='410' allowRowDragAndDrop={true}
           selectionSettings={{ type: 'Multiple' }}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right' isPrimaryKey={true}></ColumnDirective>

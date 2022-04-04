@@ -9,7 +9,16 @@
 
 #lists {
     margin: auto;
-    border: 1px solid rgba(0, 0, 0, 0.12)
+}
+
+body.material #lists,
+body.material-dark #lists,
+body.fabric #lists,
+body.fabric-dark #lists,
+body.bootstrap #lists,
+body.bootstrap-dark #lists,
+body.highcontrast #lists {
+    border: 1px solid #dddddd;
 }
 
 #lists .e-list-item {
@@ -32,6 +41,27 @@
 .e-rtl .list_svg {
     margin-left: 16px;
     margin-right: 0;
+}
+
+.bootstrap5 .list_svg,
+.bootstrap4 .list_svg,
+.bootstrap5-dark .list_svg,
+.tailwind-dark .list_svg {
+    margin-top: 5px !important;
+}
+
+.bootstrap5 #lists .e-list-item,
+.bootstrap4 #lists .e-list-item,
+.bootstrap5-dark #lists .e-list-item,
+.tailwind-dark #lists .e-list-item {
+    line-height: 36px !important;
+}
+
+.bootstrap5 .listWrapper .e-badge,
+.bootstrap4 .listWrapper .e-badge,
+.bootstrap5-dark .listWrapper .e-badge,
+.tailwind-dark .listWrapper .e-badge {
+    margin-top: 8px !important;
 }
 
 .listWrapper .e-badge {
@@ -90,3 +120,13 @@
 .starred {
     background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%239E9E9E' d='M16 1.6l4.45 9.48 9.95 1.52-7.2 7.38 1.7 10.42-8.9-4.92-8.9 4.92 1.7-10.42-7.2-7.38 9.951-1.52z'/%3E%3C/svg%3E") no-repeat 100% 100%;
 }
+
+.bootstrap5-dark #lists.e-control.e-listview,
+.tailwind-dark #lists.e-control.e-listview,
+.fabric-dark #lists.e-control.e-listview, 
+.material-dark #lists.e-control.e-listview,
+.highcontrast #lists.e-control.e-listview,
+.bootstrap-dark #lists.e-control.e-listview {
+    border: 1px solid #dddddd;
+}
+

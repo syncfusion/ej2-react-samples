@@ -146,7 +146,7 @@ export class SummaryCustomization extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this sample, you can hide grand totals in row, column, or both using radio buttons available under the <b>Hide grand totals</b> category. To hide grand totals in both row and column, set the property <code>dataSourceSettings->showGrandTotals</code> as false. To hide the row and column grand totals separately, set the property <code>dataSourceSettings->showRowGrandTotals</code> and <code>dataSourceSettings->showColumnGrandTotals</code>as false.
+                        In this sample, you can hide grand totals in row, column, or both using radio buttons available under the <b>Hide grand totals</b> category. To hide grand totals in both row and column, set the property <code>dataSourceSettings-&gt;showGrandTotals</code> as false. To hide the row and column grand totals separately, set the property <code>dataSourceSettings-&gt;showRowGrandTotals</code> and <code>dataSourceSettings-&gt;showColumnGrandTotals</code>as false.
                     </p>
                     <p>
                         Also, in this sample, you can hide subtotals for specific fields too. It can be achieved by selecting appropriate fields from the drop-down available under the <b>Hide sub-totals</b> category. To hide subtotals for a specific field, set the <code>showSubTotals</code> property as false inside the field definition.

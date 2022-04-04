@@ -133,7 +133,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                 </div>
                 <br/>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px' }}>Source: 
+                <div style={{float: 'right', marginRight: '10px' }}>Source: 
                     <a href="https://www.google.co.in/maps/dir/Los+Angeles,+CA,+USA/Mexico+City,+Mexico/@26.3645122,-117.6940069,5z/data=!4m14!4m13!1m5!1m1!1s0x80c2c75ddc27da13:0xe22fdf6f254608f4!2m2!1d-118.2436849!2d34.0522342!1m5!1m1!1s0x85ce0036b1352927:0xdefd9e4ee8d18a5b!2m2!1d-99.1013498!2d19.2464696!3e4?hl=en" target="_blank">www.google.co.in/maps</a>
                 </div>
                 <div id="action-description">
@@ -146,7 +146,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                         In this example, you can see how to render the navigation lines on the OpenStreetMap. Also denoted the source and destination locations using marker template.
                     </p>
                     <br/>
-                    <p style={{fontweight: 500}}>Injecting Module</p>
+                    <p style={{fontWeight: 500}}>Injecting Module</p>
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a marker, inject the Marker module using the <code>Maps.Inject(Marker)</code> method.
                     </p>

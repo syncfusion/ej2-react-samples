@@ -71,7 +71,7 @@ export class MarkerCluster extends SampleBase<{}, {}> {
                     </MapsComponent>
                 </div>
                 {/* Source Link */}
-                <div style={{ float: 'right', marginright: '10px' }}>Source:
+                <div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="http://www.citymayors.com/statistics/largest-cities-population-125.html" target="_blank">www.citymayors.com</a>
                 </div>
                 <div id="action-description">

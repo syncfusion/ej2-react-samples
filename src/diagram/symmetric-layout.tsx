@@ -162,6 +162,7 @@ export class SymmetricLayout extends SampleBase<{}, {}> {
                   id="springfactor"
                   ref={lenref => (springfactor = lenref)}
                   format={"###.##"}
+                  max={3.5}
                   value={0.8}
                   step={0.1}
                 />

@@ -83,7 +83,7 @@ export class Datalabel extends SampleBase<{}, {}> {
 							<Inject services={[TreeMapLegend, TreeMapTooltip]} />
 						</TreeMapComponent>
 						{/* Source Link */}
-						<div style={{ float: 'right', marginright: '10px' }}>Source:
+						<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://www.populationpyramid.net/population-size-per-country/2017" target="_blank">www.populationpyramid.net</a>
 						</div>
 					</div>

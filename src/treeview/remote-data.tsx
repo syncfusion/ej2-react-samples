@@ -49,8 +49,8 @@ public hide(): void {
             <p>The <code>TreeView</code> component loads the data through the <code>dataSource</code> property, where the data can be either local data or remote data. In case of remote data, the data can be loaded from any remote services though the <code>DataManager</code>.</p>
             <p>The DataManager will act as an interface between the service endpoint and the TreeView, that requires the below minimal information to interact with the service endpoint.</p>
             <ul>
-                <li><code>DataManager->url</code> - Defines the service endpoint to fetch data.</li>
-                <li><code>DataManager->adaptor</code> - Defines the adaptor option. By default, ODataAdaptor is used for remote binding.</li>
+                <li><code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data.</li>
+                <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, ODataAdaptor is used for remote binding.</li>
             </ul>
             <p>In this demo, the TreeView is bound with the dataSource from the Northwind remote service by using the DataManager instance.</p>
             <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/react/documentation/treeview/data-binding/#remote-data" target="_blank">Data Binding</a> section from the documentation.</p>

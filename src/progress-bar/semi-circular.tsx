@@ -125,6 +125,8 @@ export class ProgressBarSemiCircular extends SampleBase<{}, {}> {
                 break;
             case 'bootstrap5':
             case 'bootstrap5-dark':
+            case 'fluent':
+            case 'fluent-dark':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[8], args.progressBar.element.id);
                 break;
             case 'tailwind-dark':

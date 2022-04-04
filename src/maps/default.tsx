@@ -96,7 +96,7 @@ export class DefaultMaps extends SampleBase<{}, {}> {
                     </MapsComponent>
                 </div>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px'}}>Source: 
+                <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://craft.co/youtube/locations" target="_blank">craft.co/youtube/locations</a>
        </div>
                 <div id="action-description">

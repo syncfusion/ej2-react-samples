@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, Inject, Selection, DayMarkers, HolidaysDirective, HolidayDirective } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Selection, DayMarkers, HolidaysDirective, HolidayDirective, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -24,9 +24,18 @@ export class Holidays extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='Holidays' dataSource={projectNewData} highlightWeekends={true}
+          <GanttComponent id='Holidays' dataSource={projectNewData} highlightWeekends={true} treeColumnIndex={1}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+            <ColumnsDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskName' width='250'></ColumnDirective>
+              <ColumnDirective field='StartDate'></ColumnDirective>
+              <ColumnDirective field='EndDate'></ColumnDirective>
+              <ColumnDirective field='Duration'></ColumnDirective>
+              <ColumnDirective field='Predecessor'></ColumnDirective>
+              <ColumnDirective field='Progress'></ColumnDirective>
+            </ColumnsDirective>
             <HolidaysDirective>
                 <HolidayDirective from='04/04/2019' to='04/04/2019' label='Local Holiday'></HolidayDirective>
                 <HolidayDirective from='04/19/2019' to='04/19/2019' label='Good Friday'></HolidayDirective>

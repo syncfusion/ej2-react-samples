@@ -26,13 +26,13 @@ const SAMPLE1_CSS = `
 .bootstrap .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
-.bootstrap-dark .disableRow .e-rowcell{
+.bootstrap-dark .disableRow .e-rowcell, .fluent-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
 .bootstrap4 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
-.bootstrap5 .disableRow .e-rowcell{
+.bootstrap5 .disableRow .e-rowcell, .fluent .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
 .bootstrap5-dark .disableRow .e-rowcell{
@@ -105,9 +105,9 @@ export class LockRow extends SampleBase<{}, {}> {
         {/* custom code end */}
         <div className='control-section'>
           <div className = 'col-md-8'> 
-           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging='true'
+           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
             editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}
-            enableHover='false' rowDataBound={this.rowDataBound.bind(this)} ref={treegrid=> this.treegridObj = treegrid}
+            enableHover={false} rowDataBound={this.rowDataBound.bind(this)} ref={treegrid=> this.treegridObj = treegrid}
             beginEdit={this.beginEdit.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='100' textAlign='Right' validationRules={this.validationRule}

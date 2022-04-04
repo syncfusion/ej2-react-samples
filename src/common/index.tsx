@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, createElement, closest, enableRipple, select, selectAll } from '@syncfusion/ej2-base';
+import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, createElement, closest, enableRipple, select, selectAll, registerLicense } from '@syncfusion/ej2-base';
 import { Button } from '@syncfusion/ej2-react-buttons';
 import { ListBase } from '@syncfusion/ej2-react-lists';
 import { DataManager, DataUtil, Query } from '@syncfusion/ej2-data';
@@ -32,6 +32,7 @@ const matchedCurrency: { [key: string]: string } = {
 loadCldr(numberingSystems, chinaCultureData, enCultureData, swissCultureDate, currencyData, deCultureData, arCultureData);
 L10n.load(Locale);
 setCulture('en');
+registerLicense('{SyncfusionJSLicensekey}');
 
 /**
  * Mobile View.
@@ -53,7 +54,7 @@ let resizeManualTrigger: boolean = false;
  */
 export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'bootstrap5';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'material', 'material-dark', 'fabric', 'fabric-dark', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'highcontrast'];
+const themeCollection: string[] = ['fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'material', 'material-dark', 'fabric', 'fabric-dark', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'highcontrast'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**

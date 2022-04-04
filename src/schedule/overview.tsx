@@ -11,7 +11,7 @@ import {
 import {
   ResourcesModel, ScheduleComponent, Day, Week, WorkWeek, Month, Year, TimelineViews, TimelineMonth, TimelineYear,
   ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop, Agenda, Print,
-  ExcelExport, ICalendarImport, ICalendarExport, CellClickEventArgs, Timezone, CurrentAction
+  ExcelExport, ICalendarImport, ICalendarExport, CellClickEventArgs, Timezone, CurrentAction, PopupOpenEventArgs
 } from '@syncfusion/ej2-react-schedule';
 import { DropDownButtonComponent, ItemModel, MenuEventArgs } from '@syncfusion/ej2-react-splitbuttons';
 import { addClass, Browser, closest, extend, Internationalization, isNullOrUndefined, removeClass, remove, compile } from '@syncfusion/ej2-base';
@@ -394,6 +394,12 @@ export class Overview extends SampleBase<{}, {}> {
     this.scheduleObj.closeQuickInfoPopup();
   }
 
+  public onPopupOpen(args: PopupOpenEventArgs) : void {
+    if (args.type == "QuickInfo" && !args.target.classList.contains('e-appointment')){
+      this.eventTypeObj.index = args.data.CalendarId - 1;
+    }
+  }
+
   public headerTemplate(props: { [key: string]: Date }): JSX.Element {
     return (
       <div className="quick-info-header">
@@ -633,7 +639,7 @@ export class Overview extends SampleBase<{}, {}> {
                         header: this.headerTemplate.bind(this),
                         content: this.contentTemplate.bind(this),
                         footer: this.footerTemplate.bind(this)
-                      }} >
+                      }} popupOpen={this.onPopupOpen.bind(this)}>
                       <ResourcesDirective>
                         <ResourceDirective field='CalendarId' title='Calendars' name='Calendars' dataSource={this.calendarCollections}
                           query={new Query().where('CalendarId', 'equal', 1)} textField='CalendarText' idField='CalendarId' colorField='CalendarColor'>

@@ -238,7 +238,7 @@ export class ZoomingMaps extends SampleBase<{}, {}> {
                         the Panning option. When it is disabled, the map will switch to zooming mode.
                 </p>
                     <br />
-                    <p style={{ fontweight: 500 }}>Injecting Module</p>
+                    <p style={{ fontWeight: 500 }}>Injecting Module</p>
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use the zooming feature, inject the <code>zoom</code> module using the Maps.Inject(zoom) method.
                      </p>

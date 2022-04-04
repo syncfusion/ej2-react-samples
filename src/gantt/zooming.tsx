@@ -33,7 +33,7 @@ export class Zooming extends SampleBase<{}, {}> {
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='60'></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' ></ColumnDirective>

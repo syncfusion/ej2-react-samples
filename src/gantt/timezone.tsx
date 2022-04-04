@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, Inject, Selection } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Selection, ColumnDirective, ColumnsDirective } from '@syncfusion/ej2-react-gantt';
 import { SampleBase } from '../common/sample-base';
 
 export class Timezone extends SampleBase<{}, {}> {
@@ -43,8 +43,16 @@ export class Timezone extends SampleBase<{}, {}> {
       <div className="control-pane">
         <div className="control-section">
             <GanttComponent id='Timezone' dataSource={this.timezoneData}  timelineSettings={this.timelineSettings} height='450px' timezone='UTC'
-            durationUnit='Hour' includeWeekend={true} dateFormat='hh:mm a' dayWorkingTime={this.dayWorkingTime} taskFields={this.taskFields}> 
-                <Inject services={[Selection]}/>
+            durationUnit='Hour' includeWeekend={true} treeColumnIndex={1} dateFormat='hh:mm a' dayWorkingTime={this.dayWorkingTime} taskFields={this.taskFields}> 
+              <ColumnsDirective>
+                <ColumnDirective field='taskID' width='80'></ColumnDirective>
+                <ColumnDirective field='taskName' width='250'></ColumnDirective>
+                <ColumnDirective field='startDate'></ColumnDirective>
+                <ColumnDirective field='duration' ></ColumnDirective>
+                <ColumnDirective field='predecessor' ></ColumnDirective>
+                <ColumnDirective field='progress' ></ColumnDirective>
+              </ColumnsDirective>
+              <Inject services={[Selection]}/>
             </GanttComponent>
         </div>
         <div id="action-description">

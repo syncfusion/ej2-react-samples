@@ -151,7 +151,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                         <li><code>Lasso</code> - Select free form of selection area points.</li>
                     </ul>
                     <br />
-                    <p style={{ "font-weight": 500 }}>Injecting Module</p>
+                    <p style={{ "fontWeight": 500 }}>Injecting Module</p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use selection feature, we need to inject
                   <code>Selection</code> module into <code>services</code>.

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, Inject, Selection, DayMarkers } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Selection, DayMarkers, DurationUnit, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { workTimeRange } from './data';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
@@ -51,7 +51,7 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
       unit: 'Hour',
     }
   };
-  public durationUnit: string = 'hour';
+  public durationUnit: DurationUnit = 'Hour';
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
@@ -66,6 +66,15 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
               highlightWeekends={true} taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
               timelineSettings={this.timelineSettings} durationUnit={this.durationUnit}
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+              <ColumnsDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskName' width='250'></ColumnDirective>
+              <ColumnDirective field='StartDate'></ColumnDirective>
+              <ColumnDirective field='EndDate'></ColumnDirective>
+              <ColumnDirective field='Duration'></ColumnDirective>
+              <ColumnDirective field='Predecessor'></ColumnDirective>
+              <ColumnDirective field='Progress'></ColumnDirective>
+              </ColumnsDirective>
               <Inject services={[Selection, DayMarkers ]} />
             </GanttComponent>
           </div>

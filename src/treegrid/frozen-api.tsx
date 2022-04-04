@@ -118,7 +118,7 @@ export class FrozenAPI extends SampleBase<{}, {}> {
                 href="https://ej2.syncfusion.com/react/documentation/treegrid/scrolling/#frozen-rows-and-columns">freeze</a></code> property in column settings.
             </p>
             <p> In this demo sample, <b>Task ID</b> column is freezed at left side and <b>Approved</b> column is freezed at
-              right side using <code>Column->freeze</code>property.</p>
+              right side using <code>Column-&gt;freeze</code>property.</p>
             <p style={{ fontWeight: 500 }}>Injecting Module:</p>
             <p> Tree Grid features are segregated into individual feature-wise modules. To use frozen rows and columns feature, we
               need to inject <code><a target="_blank" className="code"

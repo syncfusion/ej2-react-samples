@@ -61,7 +61,7 @@ export class SortingAPI extends SampleBase<{}, {}> {
               taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
-              <ColumnDirective field='TaskID' headerText='ID' width='70' ></ColumnDirective>
+              <ColumnDirective field='TaskID' headerText='ID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate' headerText='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' headerText='EndDate'></ColumnDirective>
@@ -82,7 +82,7 @@ export class SortingAPI extends SampleBase<{}, {}> {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '100%', paddingright: '10px' }}>
+                  <td style={{ width: '100%', paddingRight: '10px' }}>
                     <div>
                       <DropDownListComponent ref={DropDownList => this.dropdownColumns = DropDownList} id='columns' width="150px" tabIndex={1} dataSource={this.dropdownColumnsData} fields={{ text: 'type', value: 'id' }}
                         value='TaskID'></DropDownListComponent>
@@ -97,7 +97,7 @@ export class SortingAPI extends SampleBase<{}, {}> {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ width: '100%', paddingright: '10px' }}>
+                  <td style={{ width: '100%', paddingRight: '10px' }}>
                     <div>
                       <DropDownListComponent ref={DropDownList => this.dropdownDirection = DropDownList} id='direction' width="150px" tabIndex={1} dataSource={this.dropdownDirectionData} fields={{ text: 'type', value: 'id' }}
                         value='Ascending'></DropDownListComponent>
@@ -107,8 +107,8 @@ export class SortingAPI extends SampleBase<{}, {}> {
                 <tr>
                   <td style={{ width: '100%' }}>
                     <div>
-                      <ButtonComponent onClick={this.sortColumn.bind(this)} style={{ marginright: '10px' }}> Sort </ButtonComponent>
-                      <ButtonComponent onClick={this.clearSort.bind(this)}> Clear </ButtonComponent>
+                      <ButtonComponent onClick={this.sortColumn.bind(this)} style={{ marginRight: '5px',  width: '80px' }}> Sort </ButtonComponent>
+                      <ButtonComponent onClick={this.clearSort.bind(this)} style={{ width: '80px' }}> Clear </ButtonComponent>
                     </div>
                   </td>
                 </tr>

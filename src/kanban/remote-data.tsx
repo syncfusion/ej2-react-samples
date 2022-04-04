@@ -50,8 +50,8 @@ export class RemoteData extends SampleBase<{}, {}> {
                         minimal information to interact with service endpoint properly.
                     </p>
                     <ul>
-                        <li><code>DataManager</code> -> <code>url</code>: Defines the service endpoint to fetch the data.</li>
-                        <li><code>DataManager</code> -> <code>adaptor</code>: Defines the adaptor option. By default, ODataAdaptor is
+                        <li><code>DataManager</code> -&gt; <code>url</code>: Defines the service endpoint to fetch the data.</li>
+                        <li><code>DataManager</code> -&gt; <code>adaptor</code>: Defines the adaptor option. By default, ODataAdaptor is
                     used for remote binding.</li>
                     </ul>
                     <p>The adaptor is responsible for processing response and request from/to the service endpoint. @syncfusion/ej2-data

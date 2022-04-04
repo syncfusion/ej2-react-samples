@@ -115,7 +115,7 @@ export class PieMaps extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px'}}>Source: 
+                <div style={{float: 'right', marginRight: '10px'}}>Source: 
                 <a href="http://www.nationmaster.com/country-info/stats/People/Age-structure/55--64-years" target="_blank">www.nationmaster.com</a>
                
                </div>
@@ -130,7 +130,7 @@ export class PieMaps extends SampleBase<{}, {}> {
     
         </p>
     <br/>
-        <p style={{fontweight: 500}}>Injecting Module</p>
+        <p style={{fontWeight: 500}}>Injecting Module</p>
         <p>
          Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using <code>Maps.Inject(Marker)</code> method.
         </p>

@@ -70,7 +70,7 @@ export class Performance extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: '50%' }}>
-                                        <ButtonComponent cssClass='e-info' onClick={this.change.bind(this)} isPrimary={true} style={{ textTransform: 'None', width: 140, textAlign: 'center' }}>Load 100K Points</ButtonComponent>
+                                        <ButtonComponent cssClass='e-info' onClick={this.change.bind(this)} isPrimary={true} style={{ textTransform: 'none', width: 140, textAlign: 'center' }}>Load 100K Points</ButtonComponent>
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>

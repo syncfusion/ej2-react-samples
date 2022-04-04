@@ -117,7 +117,7 @@ export class FrozenAPI extends SampleBase<{}, {}> {
               href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#freeze">Freeze</a></code> property in column settings.
         </p>
           <p> In this demo sample, the <b>ShipCountry</b> column freezed at left side and <b>CustomerID</b> column freezed at
-        right side using <code>Column->Freeze</code>property.</p>
+        right side using <code>Column-&gt;Freeze</code>property.</p>
          <p style={{ fontWeight: 500 }}>Injecting Module:</p>
           <p> Grid features are segregated into individual feature-wise modules. To use frozen rows and columns feature, we
         need to inject <code><a target="_blank" className="code"

@@ -270,7 +270,7 @@ export class CyberAttackMaps extends SampleBase<{}, {}> {
                         </LayersDirective>
                     </MapsComponent>
                 </div>
-                <div style={{float: 'right', marginright: '10px'}}>Source: 
+                <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://craft.co/youtube/locations" target="_blank">craft.co/youtube/locations</a>
        </div>
                 <div id="action-description">

@@ -271,7 +271,7 @@ export class CurvedMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                     {/* Source Link */}
-                    <div style={{float: 'right' ,marginright: '10px'}}>Source: 
+                    <div style={{float: 'right' ,marginRight: '10px'}}>Source: 
                         <a href="https://www.tibettravel.org/nepal-map/nepal-india-map.html" target="_blank">www.tibettravel.org</a>
                     </div>
                 </div>
@@ -288,7 +288,7 @@ export class CurvedMaps extends SampleBase<{}, {}> {
                     	Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a maker in touch enabled devices.	
 	                </p>
                     <br/>
-                         <p style={{fontweight: 500}}>Injecting Module</p>
+                         <p style={{fontWeight: 500}}>Injecting Module</p>
                             <p>
                                Maps component features are segregated into individual feature-wise modules. To use the navigation lines, inject the NavigationLines module using the Maps.Inject(NavigationLines)method.
                             </p>

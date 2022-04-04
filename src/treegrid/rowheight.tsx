@@ -32,7 +32,7 @@ export class RowHeight extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' rowHeight='20'
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' rowHeight={20}
               toolbar={this.toolbarOptions} ref={treegrid=> this.treegridObj = treegrid} toolbarClick={this.toolbarClick.bind(this)}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>

@@ -31,11 +31,11 @@ export class Sorting extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <GanttComponent id='Sorting' dataSource={editingData} highlightWeekends={true} allowSelection={true}
-            taskFields={this.taskFields} splitterSettings={this.splitterSettings}
+            taskFields={this.taskFields} splitterSettings={this.splitterSettings} treeColumnIndex={1}
             labelSettings={this.labelSettings} height='410px' selectedRowIndex={0} sortSettings={this.sortSettings} allowSorting={true}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID'></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80'></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate' ></ColumnDirective>

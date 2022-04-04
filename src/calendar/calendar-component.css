@@ -33,4 +33,12 @@ body.highcontrast .contentValue {
     border: 1px solid #969696
 }
 
+body.fluent-dark #date_label,
+body.bootstrap5-dark #date_label,
+body.tailwind-dark #date_label,
+body.material-dark #date_label,
+body.fabric-dark #date_label,
+body.bootstrap-dark #date_label {
+    color: white;
+} 
 /* end of custom generated icons styles */

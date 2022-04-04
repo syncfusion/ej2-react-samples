@@ -60,13 +60,13 @@ export class StackedLine extends SampleBase<{}, {}> {
                         tooltip={{ enable: true }}>
                         <Inject services={[StackingLineSeries, Category, Legend, Tooltip]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={chartData} xName='x' yName='y' name='John' width='2' type='StackingLine' marker= {{visible: true}} dashArray='5,1'>
+                            <SeriesDirective dataSource={chartData} xName='x' yName='y' name='John' width={2} type='StackingLine' marker= {{visible: true}} dashArray='5,1'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={chartData} xName='x' yName='y1' name='Peter' width='2' type='StackingLine' marker= {{visible: true}} dashArray='5,1'>
+                            <SeriesDirective dataSource={chartData} xName='x' yName='y1' name='Peter' width={2} type='StackingLine' marker= {{visible: true}} dashArray='5,1'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={chartData} xName='x' yName='y2' name='Steve' width='2' type='StackingLine' marker= {{visible: true}} dashArray='5,1'>
+                            <SeriesDirective dataSource={chartData} xName='x' yName='y2' name='Steve' width={2} type='StackingLine' marker= {{visible: true}} dashArray='5,1'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={chartData} xName='x' yName='y3' name='Charle' width='2' type='StackingLine' marker= {{visible: true}} dashArray='5,1'>
+                            <SeriesDirective dataSource={chartData} xName='x' yName='y3' name='Charle' width={2} type='StackingLine' marker= {{visible: true}} dashArray='5,1'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>

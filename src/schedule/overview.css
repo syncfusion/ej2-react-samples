@@ -16,7 +16,8 @@ body {
     border-style: solid;
 }
 
-.material .schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import .e-upload-browse-btn, .material-dark .schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import .e-upload-browse-btn {
+.material .schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import .e-upload-browse-btn,
+.material-dark .schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import .e-upload-browse-btn {
     text-transform: capitalize;
     box-shadow: none;
 }
@@ -26,11 +27,13 @@ body {
     color: black;
 }
 
-.highcontrast .schedule-overview .overview-header, .highcontrast .schedule-overview .overview-content {
+.highcontrast .schedule-overview .overview-header,
+.highcontrast .schedule-overview .overview-content {
     border: 1px solid #969696;
 }
 
-.tailwind-dark .schedule-overview .overview-header, .tailwind-dark .schedule-overview .overview-content {
+.tailwind-dark .schedule-overview .overview-header,
+.tailwind-dark .schedule-overview .overview-content {
     border: 1px solid #4b5563;
     border-top: 0;
 }
@@ -47,6 +50,10 @@ body {
     border-color: #414040;
 }
 
+.fluent-dark .schedule-overview .overview-toolbar .overview-toolbar-settings {
+    border-color: #c1c1c1;
+}
+
 .tailwind .schedule-overview .overview-toolbar .e-toolbar {
     border: 1px solid #e5e7eb;
 }
@@ -55,44 +62,68 @@ body {
     border: 1px solid #4b5563;
 }
 
-.tailwind .schedule-overview .overview-toolbar .overview-toolbar-settings, .tailwind .schedule-overview .overview-content .right-panel .control-panel {
+.tailwind .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.tailwind .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #f3f4f6;
     border-color: #e5e7eb;
     box-shadow: none;
 }
 
-.tailwind-dark .schedule-overview .overview-toolbar .overview-toolbar-settings, .tailwind-dark .schedule-overview .overview-content .right-panel .control-panel {
+.tailwind-dark .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.tailwind-dark .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #374151;
     border-color: #4b5563;
     box-shadow: none;
     color: #fff;
 }
 
-.highcontrast .schedule-overview .overview-toolbar .e-toolbar, .highcontrast .schedule-overview .overview-toolbar .e-toolbar .e-toolbar-items .e-toolbar-item.e-separator, .highcontrast .schedule-overview .overview-toolbar .e-toolbar .e-hscroll .e-scroll-nav.e-scroll-left-nav, .highcontrast .schedule-overview .overview-toolbar .e-toolbar .e-hscroll .e-scroll-nav.e-scroll-right-nav {
+.highcontrast .schedule-overview .overview-toolbar .e-toolbar,
+.highcontrast .schedule-overview .overview-toolbar .e-toolbar .e-toolbar-items .e-toolbar-item.e-separator,
+.highcontrast .schedule-overview .overview-toolbar .e-toolbar .e-hscroll .e-scroll-nav.e-scroll-left-nav,
+.highcontrast .schedule-overview .overview-toolbar .e-toolbar .e-hscroll .e-scroll-nav.e-scroll-right-nav {
     border-color: #969696;
 }
 
-.material .schedule-overview .overview-toolbar .overview-toolbar-settings, .material .schedule-overview .overview-content .right-panel .control-panel {
+.material .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.material .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #fafafa;
     text-transform: capitalize;
     box-shadow: none;
 }
 
-.material-dark .schedule-overview .overview-toolbar .overview-toolbar-settings, .material-dark .schedule-overview .overview-content .right-panel .control-panel {
+.material-dark .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.material-dark .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #2a2a2a;
     color: #ffff;
 }
 
-.fabric .schedule-overview .overview-toolbar .overview-toolbar-settings, .fabric .schedule-overview .overview-content .right-panel .control-panel {
+.fabric .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.fabric .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #ffffff;
 }
 
-.fabric-dark .schedule-overview .overview-toolbar .overview-toolbar-settings, .fabric-dark .schedule-overview .overview-content .right-panel .control-panel {
+.fluent-dark .schedule-overview .overview-content {
+    border: 1px solid #c1c1c1;
+}
+
+.fluent-dark .schedule-overview .overview-toolbar .e-toolbar {
+    border: 1px solid #c1c1c1;
+    border-top-color: transparent;
+}
+
+.fabric-dark .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.fabric-dark .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #333232;
     color: #fff;
 }
 
-.bootstrap .schedule-overview .overview-toolbar .overview-toolbar-settings, .bootstrap .schedule-overview .overview-content .right-panel .control-panel {
+.fluent .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.fluent .schedule-overview .overview-content .right-panel .control-panel {
+    background-color: #f3f2f1;
+}
+
+.bootstrap .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.bootstrap .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #f8f8f8;
 }
 
@@ -110,12 +141,21 @@ body {
     font-weight: 400;
 }
 
-.bootstrap-dark .schedule-overview .overview-toolbar .overview-toolbar-settings, .bootstrap-dark .schedule-overview .overview-content .right-panel .control-panel {
+.fluent-dark .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.fluent-dark .schedule-overview .overview-content .right-panel .control-panel {
+    background-color: #252423;
+    border-color: #c1c1c1;
+    color: #fff;
+}
+
+.bootstrap-dark .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.bootstrap-dark .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #2a2a2a;
     color: #fff;
 }
 
-.highcontrast .schedule-overview .overview-toolbar .overview-toolbar-settings, .highcontrast .schedule-overview .overview-content .right-panel .control-panel {
+.highcontrast .schedule-overview .overview-toolbar .overview-toolbar-settings,
+.highcontrast .schedule-overview .overview-content .right-panel .control-panel {
     background-color: #000000;
     border-color: #969696;
     color: #ffffff;
@@ -166,7 +206,9 @@ body {
     line-height: 1.5em;
 }
 
-.schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import button, .schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import button:focus, .schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import button:hover {
+.schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import button,
+.schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import button:focus,
+.schedule-overview .overview-header .overview-titlebar .e-upload.calendar-import button:hover {
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
@@ -176,7 +218,11 @@ body {
     text-transform: capitalize;
 }
 
-.schedule-overview .overview-header .overview-titlebar .title-bar-btn, .schedule-overview .overview-header .overview-titlebar .title-bar-btn:hover, .schedule-overview .overview-header .overview-titlebar .title-bar-btn:focus, .schedule-overview .overview-header .overview-titlebar .e-dropdown-btn, .schedule-overview .overview-header .overview-titlebar .e-dropdown-btn.e-btn {
+.schedule-overview .overview-header .overview-titlebar .title-bar-btn,
+.schedule-overview .overview-header .overview-titlebar .title-bar-btn:hover,
+.schedule-overview .overview-header .overview-titlebar .title-bar-btn:focus,
+.schedule-overview .overview-header .overview-titlebar .e-dropdown-btn,
+.schedule-overview .overview-header .overview-titlebar .e-dropdown-btn.e-btn {
     background: transparent;
     box-shadow: none;
     font-family: inherit;
@@ -294,14 +340,14 @@ body {
     display: block;
     height: 600px;
     transform: translateX(0%);
-    transition: transform .5s ease, width 500ms;
+    transition: transform 0.5s ease, width 500ms;
     width: 500px;
 }
 
 .schedule-overview .overview-content .right-panel.hide {
     display: none;
     transform: translateX(100%);
-    transition: transform .5s ease, width 500ms;
+    transition: transform 0.5s ease, width 500ms;
     width: 0;
 }
 
@@ -370,17 +416,21 @@ body {
     font-size: 11px;
 }
 
-.schedule-overview .e-schedule-toolbar .e-views, .schedule-overview .e-schedule-toolbar .e-schedule-seperator, .schedule-workweek.e-multi-select-list-wrapper.e-checkbox .e-filter-parent, .schedule-resource.e-multi-select-list-wrapper.e-checkbox .e-filter-parent {
+.schedule-overview .e-schedule-toolbar .e-views,
+.schedule-overview .e-schedule-toolbar .e-schedule-seperator,
+.schedule-workweek.e-multi-select-list-wrapper.e-checkbox .e-filter-parent,
+.schedule-resource.e-multi-select-list-wrapper.e-checkbox .e-filter-parent {
     display: none;
 }
 
-.schedule-overview .e-timeline-view .e-resource-left-td, .schedule-overview .e-timeline-month-view .e-resource-left-td {
+.schedule-overview .e-timeline-view .e-resource-left-td,
+.schedule-overview .e-timeline-month-view .e-resource-left-td {
     width: 120px;
 }
 
 .schedule-resource.e-multi-select-list-wrapper.e-checkbox .e-list-parent:first-child li:first-child {
     background-image: none;
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
     user-select: none;
 }
@@ -406,6 +456,10 @@ body {
     background-color: #201f1f;
 }
 
+.fluent-dark .schedule-overview .quick-info-header {
+    background-color: #252423;
+}
+
 .material-dark .schedule-overview .quick-info-header {
     background-color: #424242;
 }
@@ -421,7 +475,12 @@ body {
     padding: 5px 10px 5px;
 }
 
-.tailwind-dark .schedule-overview .quick-info-header-content, .bootstrap-dark .schedule-overview .quick-info-header-content, .bootstrap5-dark .schedule-overview .quick-info-header-content, .fabric-dark .schedule-overview .quick-info-header-content, .material-dark .schedule-overview .quick-info-header-content, .highcontrast .schedule-overview .quick-info-header-content {
+.tailwind-dark .schedule-overview .quick-info-header-content,
+.bootstrap-dark .schedule-overview .quick-info-header-content,
+.bootstrap5-dark .schedule-overview .quick-info-header-content,
+.fabric-dark .schedule-overview .quick-info-header-content,
+.material-dark .schedule-overview .quick-info-header-content,
+.highcontrast .schedule-overview .quick-info-header-content {
     color: #fff !important;
 }
 
@@ -452,12 +511,15 @@ body {
     padding: 0 15px;
 }
 
-.schedule-overview .meeting-type-wrap, .schedule-overview .meeting-subject-wrap, .schedule-overview .notes-wrap {
+.schedule-overview .meeting-type-wrap,
+.schedule-overview .meeting-subject-wrap,
+.schedule-overview .notes-wrap {
     font-size: 11px;
     color: #666;
     letter-spacing: 0.33px;
     height: 24px;
     padding: 5px;
+    display: flex;
 }
 
 .schedule-overview .event-content div label {
@@ -472,9 +534,25 @@ body {
     letter-spacing: 0.33px;
     line-height: 14px;
     padding-left: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.tailwind-dark .schedule-overview .event-content div label, .bootstrap-dark .schedule-overview .event-content div label, .bootstrap5-dark .schedule-overview .event-content div label, .fabric-dark .schedule-overview .event-content div label, .material-dark .schedule-overview .event-content div label, .highcontrast .schedule-overview .event-content div label, .tailwind-dark .schedule-overview .event-content div span, .bootstrap-dark .schedule-overview .event-content div span, .bootstrap5-dark .schedule-overview .event-content div span, .fabric-dark .schedule-overview .event-content div span, .material-dark .schedule-overview .event-content div span, .highcontrast .schedule-overview .event-content div span {
+.tailwind-dark .schedule-overview .event-content div label,
+.bootstrap-dark .schedule-overview .event-content div label,
+.bootstrap5-dark .schedule-overview .event-content div label,
+.fluent-dark .schedule-overview .event-content div label,
+.fabric-dark .schedule-overview .event-content div label,
+.material-dark .schedule-overview .event-content div label,
+.highcontrast .schedule-overview .event-content div label,
+.tailwind-dark .schedule-overview .event-content div span,
+.bootstrap-dark .schedule-overview .event-content div span,
+.bootstrap5-dark .schedule-overview .event-content div span,
+.fluent-dark .schedule-overview .event-content div span,
+.fabric-dark .schedule-overview .event-content div span,
+.material-dark .schedule-overview .event-content div span,
+.highcontrast .schedule-overview .event-content div span {
     color: #fff;
 }
 
@@ -506,10 +584,11 @@ body {
 }
 
 .schedule-overview .calendar-import.e-upload .e-file-select-wrap {
-    padding: 0
+    padding: 0;
 }
 
-.schedule-overview .calendar-import.e-upload .e-file-select-wrap .e-file-drop, .calendar-import .e-upload-files {
+.schedule-overview .calendar-import.e-upload .e-file-select-wrap .e-file-drop,
+.calendar-import .e-upload-files {
     display: none;
 }
 
@@ -518,69 +597,9 @@ body {
     padding: 8px 18px;
 }
 
-.schedule-overview .quick-info-header-content {
-    justify-content: flex-end;
-    display: flex;
-    flex-direction: column;
-    padding: 5px 10px 5px;
-}
-
-.schedule-overview .quick-info-title {
-    font-weight: 500;
-    font-size: 16px;
-    letter-spacing: 0.48px;
-    height: 22px;
-}
-
-.duration-text {
-    font-size: 11px;
-    letter-spacing: 0.33px;
-    height: 14px;
-}
-
 .schedule-overview .content-area {
     padding: 10px;
     width: 100%;
-}
-
-.schedule-overview .event-content {
-    height: 90px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 15px;
-}
-
-.schedule-overview .meeting-type-wrap, .schedule-overview .meeting-subject-wrap, .schedule-overview .notes-wrap {
-    font-size: 11px;
-    color: #666;
-    letter-spacing: 0.33px;
-    height: 24px;
-    padding: 5px;
-}
-
-.schedule-overview .event-content div label {
-    display: inline-block;
-    min-width: 45px;
-    color: #666;
-}
-
-.schedule-overview .event-content div span {
-    font-size: 11px;
-    color: #151515;
-    letter-spacing: 0.33px;
-    line-height: 14px;
-    padding-left: 8px;
-}
-
-.schedule-overview .cell-footer.e-btn {
-    background-color: #ffffff;
-    border-color: #878787;
-    color: #878787;
-}
-
-.schedule-overview .cell-footer {
-    padding-top: 10px;
 }
 
 .e-bigger .schedule-context-menu ul .e-menu-item .e-menu-icon {
@@ -591,7 +610,8 @@ body {
     font-size: 12px;
 }
 
-.schedule-overview.e-schedule .e-vertical-view .e-header-cells, .schedule-overview.e-schedule .e-timeline-month-view .e-header-cells {
+.schedule-overview.e-schedule .e-vertical-view .e-header-cells,
+.schedule-overview.e-schedule .e-timeline-month-view .e-header-cells {
     padding: 0;
     text-align: center !important;
 }
@@ -665,11 +685,13 @@ body {
     line-height: 23px !important;
 }
 
-.tailwind .schedule-overview.e-schedule .e-left-indent .e-header-cells, .tailwind-dark .schedule-overview.e-schedule .e-left-indent .e-header-cells {
+.tailwind .schedule-overview.e-schedule .e-left-indent .e-header-cells,
+.tailwind-dark .schedule-overview.e-schedule .e-left-indent .e-header-cells {
     height: 66px;
 }
 
-.tailwind .schedule-overview .e-more-popup-wrapper .e-more-event-close .e-btn-icon, .tailwind-dark .schedule-overview .e-more-popup-wrapper .e-more-event-close .e-btn-icon {
+.tailwind .schedule-overview .e-more-popup-wrapper .e-more-event-close .e-btn-icon,
+.tailwind-dark .schedule-overview .e-more-popup-wrapper .e-more-event-close .e-btn-icon {
     margin-top: 0px;
 }
 
@@ -701,6 +723,8 @@ body {
     border-color: #616161;
 }
 
-.bootstrap-dark .schedule-overview .overview-header .overview-titlebar .title-bar-btn, .material-dark .schedule-overview .overview-header .overview-titlebar .title-bar-btn, .material .schedule-overview .overview-header .overview-titlebar .title-bar-btn {
+.bootstrap-dark .schedule-overview .overview-header .overview-titlebar .title-bar-btn,
+.material-dark .schedule-overview .overview-header .overview-titlebar .title-bar-btn,
+.material .schedule-overview .overview-header .overview-titlebar .title-bar-btn {
     box-shadow: none;
 }

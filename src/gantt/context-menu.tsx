@@ -76,7 +76,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
         this.ganttInstance.expandByID(Number(record.ganttProperties.taskId));
     }
   }
-  public contextMenuItems: (string | ContextMenuItemModel)[] = ['AutoFitAll', 'AutoFit', 'TaskInformation', 'DeleteTask', 'Save', 'Cancel',
+  public contextMenuItems: any = ['AutoFitAll', 'AutoFit', 'TaskInformation', 'DeleteTask', 'Save', 'Cancel',
   'SortAscending', 'SortDescending', 'Add', 'DeleteDependency', 'Convert', 'Indent', 'Outdent',
   {text: 'Collapse the Row', target: '.e-content', id: 'collapserow'} as ContextMenuItemModel,
   {text: 'Expand the Row', target: '.e-content', id: 'expandrow'} as ContextMenuItemModel];
@@ -95,7 +95,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='50' ></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='Duration'></ColumnDirective>

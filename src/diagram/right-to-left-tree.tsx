@@ -17,7 +17,7 @@ import {
 import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
-import { artificialIntelligence, DataInfo } from './diagram-data';
+import { artificialIntelligence } from './diagram-data';
 
 export interface DataInfo {
   [key: string]: string;

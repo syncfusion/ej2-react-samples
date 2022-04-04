@@ -67,7 +67,7 @@ export class Taskbar extends SampleBase<{}, {}> {
             <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" /> :
             <div>
               <img className="moments" src="src/gantt/images/moments.svg" height="32" width="32" />
-              <span className="e-task-label" style={{ position: "absolute", top: "15px", fontSize: "12px", textOoverflow: "ellipsis", height: "90%", overflow: "hidden" }}>{props.Performance}</span>
+              <span className="e-task-label" style={{ position: "absolute", top: "15px", fontSize: "12px", textOverflow: "ellipsis", height: "90%", overflow: "hidden" }}>{props.Performance}</span>
             </div>
         }
 
@@ -98,7 +98,7 @@ export class Taskbar extends SampleBase<{}, {}> {
               </div> : props.Movie ?
                 <div>
                   <img className="oscar" src="src/gantt/images/oscar.svg" height="32" width="32" />
-                  <span className="e-task-label e-oscar-movie" style={{ position: "absolute", top: "24px", fonSize: "12px", textOverflow: "ellipsis" }}>{props.Movie} </span>
+                  <span className="e-task-label e-oscar-movie" style={{ position: "absolute", top: "24px", fontSize: "12px", textOverflow: "ellipsis" }}>{props.Movie} </span>
                 </div> :
                 <span className="e-task-label"></span>
           }

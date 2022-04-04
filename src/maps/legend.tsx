@@ -149,7 +149,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                         </LayersDirective>
                     </MapsComponent>
                     {/* Source Link */}
-                    <div style={{float: 'right', marginright: '10px' }}>Source: 
+                    <div style={{float: 'right', marginRight: '10px' }}>Source: 
                         <a href="https://simple.wikipedia.org/wiki/List_of_countries_by_population_density" target="_blank">simple.wikipedia.org</a>
                     </div>
                 </div>
@@ -213,7 +213,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                         Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.
                     </p>
                     <br/>
-                    <p style={{fontweight: 500}}>Injecting Module</p>
+                    <p style={{fontWeight: 500}}>Injecting Module</p>
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a legend, inject the Legend module using the Maps.Inject(Legend) method.
                     </p>

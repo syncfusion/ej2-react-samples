@@ -12,7 +12,7 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={sampleData} treeColumnIndex={2} childMapping='subtasks' height='350' allowPaging='true'
+          <TreeGridComponent dataSource={sampleData} treeColumnIndex={2} childMapping='subtasks' height='350' allowPaging={true}
             selectionSettings={this.selectionsettings}>
             <ColumnsDirective>
               <ColumnDirective type='checkbox' width='50'></ColumnDirective>
@@ -33,11 +33,11 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             Tree Grid mutliple selection can be achieved with help of checkbox in each row. To render checkbox in each Tree Grid row, you need
-            to define column type as <code>checkbox</code> using <code>columns->type</code> property.
+            to define column type as <code>checkbox</code> using <code>columns-&gt;type</code> property.
           </p>
           <p>
-              Selection can be persisted on all the operations using <code>selectionSettings-> persistSelection</code> property.
-              For persisting selection on the Tree Grid, any one of the column should be defined as a primary key using <code> columns->isPrimaryKey</code> property.
+              Selection can be persisted on all the operations using <code>selectionSettings-&gt; persistSelection</code> property.
+              For persisting selection on the Tree Grid, any one of the column should be defined as a primary key using <code> columns-&gt;isPrimaryKey</code> property.
           </p>
           <p>
             In this demo, Tree Grid mutliple selection has been enabled with selection persistance.

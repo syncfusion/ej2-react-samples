@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, Inject, EventMarkersDirective, EventMarkerDirective, Selection, DayMarkers } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, EventMarkersDirective, EventMarkerDirective, Selection, DayMarkers, ColumnDirective, ColumnsDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -32,6 +32,14 @@ export class EventMarkers extends SampleBase<{}, {}> {
           <GanttComponent id='EventMarkers' dataSource={projectNewData} highlightWeekends={true}
             taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+            <ColumnsDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
+              <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
+              <ColumnDirective field='StartDate'></ColumnDirective>
+              <ColumnDirective field='Duration'></ColumnDirective>
+              <ColumnDirective field='Progress'></ColumnDirective>
+              <ColumnDirective field='Predecessor'></ColumnDirective>
+            </ColumnsDirective>
             <EventMarkersDirective>
               <EventMarkerDirective day={this.eventMarkerDay1}></EventMarkerDirective>
               <EventMarkerDirective day={this.eventMarkerDay2} label='Design phase' ></EventMarkerDirective>

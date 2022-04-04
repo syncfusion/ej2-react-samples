@@ -256,7 +256,7 @@ export class LabelFilter extends SampleBase<{}, {}> {
                     <br />
                     <p>
                         To achieve label filtering through UI, navigate to
-                    <b> "User Interaction > Field List"</b> sample and open the filter dialog to experience the same.
+                    <b> "User Interaction &gt; Field List"</b> sample and open the filter dialog to experience the same.
                                 For API details, refer to the
                     <b> "Field List"</b> sample description.
                     </p>

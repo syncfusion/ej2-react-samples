@@ -11,6 +11,13 @@
     overflow: auto;
 }
 
+.tailwind .menu-section .property-panel-content,
+.tailwind-dark .menu-section .property-panel-content,
+.fabric .menu-section .property-panel-content,
+.fabric-dark .menu-section .property-panel-content {
+    overflow: hidden;
+}
+
 .menu-section .property-panel-content .e-multiselect {
     padding: 0;
 }

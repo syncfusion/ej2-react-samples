@@ -10,10 +10,10 @@ import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
 interface tooltipComponentProps {
-  position : string;
+  position : Position;
 }
 interface tooltipComponentState {
-  position : string;
+  position : Position;
 }
 export class Default extends SampleBase<tooltipComponentProps, tooltipComponentState> {
   

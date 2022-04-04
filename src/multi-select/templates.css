@@ -45,6 +45,40 @@
     padding: 0 0 0 24px;
 }
 
+.fluent-dark #multiTemplate_popup .header {
+    background: #252423;
+    color: #2899F5;
+}
+
+.bootstrap5-dark #multiTemplate_popup .header {
+    background: #343A40;
+    color: #7B848D;
+}
+
+.fluent #multiTemplate_popup .header{
+     color: #2899F5;
+}
+
+.tailwind-dark #multiTemplate_popup .header {
+    background: #374151;
+    color: rgb(255, 255, 255);
+}
+
+.material-dark #multiTemplate_popup .header {
+    background: rgb(66, 66, 66);
+    color: rgb(255, 255, 255);
+}
+
+.fabric-dark #multiTemplate_popup .header {
+    background: rgb(40, 39, 39);
+    color: rgb(255, 255, 255);
+}
+
+.bootstrap-dark #multiTemplate_popup .header {
+    background: rgb(49, 49, 49);
+    color: rgb(255, 255, 255);
+}
+
 .e-bigger.bootstrap #multiTemplate_popup .header {
     line-height: 44px;
     height: 44px;

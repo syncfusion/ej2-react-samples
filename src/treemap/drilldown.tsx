@@ -156,7 +156,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>Bread Crumb Text</div>
 									</td>
 									<td>
-										<div style={{ marginleft: '10px'}} >
+										<div style={{ marginLeft: '10px'}} >
                     <input id="breadCrumbText" ref={d => this.nameElement = d} type='text' defaultValue=' - ' style={{ width: '100%'}} onChange={this.breadCrumbTextChange.bind(this)}/>
                     </div>
 									</td>
@@ -185,7 +185,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 						</PropertyPane>
 					</div>
 					</div>
-				<div style={{ float: 'right', marginright: '10px' }}>Source:
+				<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://en.wikipedia.org/wiki/List_of_continents_by_population" target="_blank">en.wikipedia.org</a>
 				</div>
 				<div id="action-description">

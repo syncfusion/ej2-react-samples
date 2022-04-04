@@ -100,7 +100,7 @@ export class NavigationLineMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                     {/* Source Link */}
-                    <div style={{float: 'right', marginright: '10px'}}>Source: 
+                    <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="http://www.lineaships.com/en/linea-peninsular/" target="_blank">www.lineaships.com</a>
     </div>
                       </div>
@@ -114,7 +114,7 @@ export class NavigationLineMaps extends SampleBase<{}, {}> {
                      In this example, you can see how to render lines between two points in map. You can use <code>dashArray</code>, <code>width</code> and <code>color</code> properties to customize the appearance of the navigation lines. 
                 </p>
                  <br/>
-                      <p style={{fontweight: 500}}>Injecting Module</p>
+                      <p style={{fontWeight: 500}}>Injecting Module</p>
                           <p>
                                 Maps component features are segregated into individual feature-wise modules. To use navigation lines, you need to inject <code>NavigationLine</code> module using <code>Maps.Inject(NavigationLine)</code> method
                          </p>

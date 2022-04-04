@@ -135,7 +135,7 @@ export class RangeBand extends SampleBase<{}, {}> {
                 </style>
 
                 <div className='col-md-8 control-section'>
-                    <div style={{ "font-size": "16px", "textAlign": "center" }}>
+                    <div style={{ "fontSize": "16px", "textAlign": "center" }}>
                         Sales Growth Comparison with various Products
                     </div>
                     <GridComponent dataSource={products} resizing={this.renderSparkline.bind(this)} load={this.renderSparkline.bind(this)}

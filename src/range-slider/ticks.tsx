@@ -100,7 +100,7 @@ export class Ticks extends SampleBase<{}, {}> {
                                             <div className="userselect">Disabled</div>
                                         </td>
                                         <td style={{ width: '50%', paddingRight: '10px' }}>
-                                            <div style={{ paddingleft: 0, paddingtop: 0 }}>
+                                            <div style={{ paddingLeft: 0, paddingTop: 0 }}>
                                                 {/* Initialize checkbox Component */}
                                                 <CheckBoxComponent checked={false} change={this.onChange.bind(this)}></CheckBoxComponent>
                                             </div>

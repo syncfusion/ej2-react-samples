@@ -241,9 +241,9 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section' style={{ align: "center" }}>
+                <div className='control-section'>
                 <div id="gauge" className="row">
-                <div className="cols-sample-area" style={{ align: "center" }}>
+                <div className="cols-sample-area">
                 <div  className="col-lg-9 col-md-9" style={{ marginLeft: '5%'}}>
                     <CircularGaugeComponent  load={this.load.bind(this)} id='gauge1' height= {"400px"} width={"400px"}>
                         <Inject services={[Annotations]} />
@@ -298,7 +298,7 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                     </CircularGaugeComponent>
                     </div>
                     <div className="col-lg-3 col-md-3" style={{marginLeft: "-15%"}}>
-                <div className="panel" style={{ "align": "center" }}>
+                <div className="panel">
                     <div className="subgauge" style={{float: "left",marginTop: "3%"}}>
                     <CircularGaugeComponent  load={this.load1.bind(this)} id='gauge2' height= {"65px"} width={"65px"} >
                         <Inject services={[Annotations]} />
@@ -342,7 +342,7 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                         <span className="secondcontent" style={{color: "#f4104d",fontSize: "19px"}}>338/520 CAL</span>
                     </div>
                 </div>
-                <div className="panel" style={{ "align": "center" }}>
+                <div className="panel">
                     <div className="subgauge" style={{float: "left",marginTop:"3%"}}>
                     <CircularGaugeComponent  load={this.load2.bind(this)} id='gauge3' height= {"65px"} width={"65px"} >
                         <Inject services={[Annotations]} />
@@ -386,7 +386,7 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                         <span className="secondcontent" style={{color: "#a6ff00",fontSize: "19px"}}>9/30 MIN</span>
                     </div>
                     </div>
-                    <div className="panel" style={{ "align": "center" }}>
+                    <div className="panel">
                     <div className="subgauge" style={{float: "left",marginTop: "3%"}}>
                     <CircularGaugeComponent  load={this.load3.bind(this)} id='gauge4' height= {"65px"} width={"65px"} >
                         <Inject services={[Annotations]} />

@@ -320,16 +320,16 @@ var style1 = {
 }
 
 var style2 = {
-    'stop-color': '#82b944',
-    'stop-opacity': 1
+    'stopColor': '#82b944',
+    'stopOpacity': 1
 }
 
 var style3 = {
-    'stop-color': 'rgb(255,255,0)',
-    'stop-opacity': 1
+    'stopColor': 'rgb(255,255,0)',
+    'stopOpacity': 1
 }
  
 var style4 = {
-    'stop-color':'red',
-    'stop-opacity': 1
+    'stopColor':'red',
+    'stopOpacity': 1
 }

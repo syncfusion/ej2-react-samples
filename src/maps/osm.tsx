@@ -90,7 +90,7 @@ export class OSMMaps extends SampleBase<{}, {}> {
                 </div>
                 <br/>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px' }}>Source: 
+                <div style={{float: 'right', marginRight: '10px' }}>Source: 
                     <a href="https://en.wikipedia.org/wiki/Headquarters_of_the_United_Nations" target="_blank">en.wikipedia.org</a>
                 </div>
                 <div id="action-description">
@@ -103,7 +103,7 @@ export class OSMMaps extends SampleBase<{}, {}> {
                         In this example, you can see how to render the OpenStreetMap. Denoted the location of United Nations Headquarters using marker. EJ2 Dialog is displayed on the top of the marker. Also enabled zooming feature to zoom and pan the map for detailed analysis.
                     </p>
                     <br/>
-                    <p style={{fontweight: 500}}>Injecting Module</p>
+                    <p style={{fontWeight: 500}}>Injecting Module</p>
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a marker, inject the Marker module using the <code>Maps.Inject(Marker)</code> method and zoom module using <code>maps.Inject(Zoom)</code> method.
                     </p>

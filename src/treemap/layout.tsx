@@ -96,7 +96,7 @@ export class Layout extends SampleBase<{}, {}> {
 							<Inject services={[TreeMapTooltip]} />
 						</TreeMapComponent>
 						{/* Source Link */}
-						<div style={{ float: 'right', marginright: '10px' }}>Source:
+						<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://www.reinisfischer.com/top-10-largest-economies-world-gdp-nominal-2015" target="_blank">www.reinisfischer.com</a>
 						</div>
 					</div>

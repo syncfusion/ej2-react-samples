@@ -13,7 +13,7 @@ import './olap.css';
  * PivotView ToolBar Sample Olap.
  */
 
-let dataSourceSettings = {
+let dataSourceSettings: any = {
     catalog: 'Adventure Works DW 2008 SE',
     cube: 'Adventure Works',
     providerType: 'SSAS',

@@ -50,7 +50,7 @@ export class GridLines extends SampleBase<{}, {}> {
               treeColumnIndex={1} gridLines={this.gridLines} splitterSettings={this.splitterSettings}
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='60' ></ColumnDirective>
+              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate'></ColumnDirective>

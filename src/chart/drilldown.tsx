@@ -60,7 +60,6 @@ export class Drilldown extends SampleBase<{}, {}> {
                         title='Automobile Sales by Category' enableSmartLabels={false} legendSettings={{ visible: false }}
                         tooltip={{ enable: false, format: '${point.x} <br> ${point.y} %' }}
                         chartMouseClick={this.onChartMouseClick.bind(this)}
-                        chartMouseMove={this.onChartMouseMove.bind(this)}
                         textRender={this.onTextRender.bind(this)}
                         load={this.load.bind(this)}
                         loaded={this.onChartLoad.bind(this)}
@@ -90,11 +89,6 @@ export class Drilldown extends SampleBase<{}, {}> {
     }
     public onTextRender(args: IAccTextRenderEventArgs): void {
         args.text = args.point.x + ' ' + args.point.y + ' %';
-    }
-    public onChartMouseMove(args: IMouseEventArgs): void {
-        if (this.isparent && args.target.indexOf('pie-chart_Series_0_Point_') > -1) {
-          document.getElementById(args.target).style.cursor = 'pointer';
-        }
     }
     public onChartMouseClick(args: IMouseEventArgs): void {
         let index: Index = indexFinder(args.target);

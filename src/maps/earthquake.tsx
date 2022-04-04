@@ -118,7 +118,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                     {/* Source Link */}
-                    <div style={{float: 'right', marginright: '10px'}}>Source: 
+                    <div style={{float: 'right', marginRight: '10px'}}>Source: 
                         <a href="https://en.wikipedia.org/wiki/2009_Sumatra_earthquakes" target="_blank">en.wikipedia.org</a>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                    In this example, you can see how to render a custom HTML element as marker and place it on a specific location.
                 </p>
             <br/>
-                <p style={{fontweight: 500}}>Injecting Module</p>
+                <p style={{fontWeight: 500}}>Injecting Module</p>
                 <p>
                    Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using <code>Maps.Inject(Marker)</code> method.
                 </p>

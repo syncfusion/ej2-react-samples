@@ -4,8 +4,6 @@ import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2
 import { SampleBase } from '../common/sample-base';
 import './toolbar.component.css'
 
-const sample_CSS: string = `{ width: 100% }`;
-
 export class Alignment extends SampleBase<{}, {}> {
 
   render() {
@@ -80,7 +78,7 @@ export class Alignment extends SampleBase<{}, {}> {
       values are as follows.
     </p>
           <br></br>
-          <table style={{ sample_CSS }}>
+          <table style={{width: '100%'}}>
             <tr>
               <th><strong>Alignment Option</strong></th>
               <th><strong>Description</strong></th>

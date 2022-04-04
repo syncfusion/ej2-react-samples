@@ -63,7 +63,7 @@ export class OSMSubLayer extends SampleBase<{}, {}> {
                 </div>
                 <br/>
                 {/* Source Link */}
-                <div style={{float: 'right', marginright: '10px' }}>Source: 
+                <div style={{float: 'right', marginRight: '10px' }}>Source: 
                 <a href="https://www.whatarethe7continents.com/biggest-largest-smallest-continents/" target="_blank">Seven Continents</a>
                 </div>
                 <div id="action-description">
@@ -76,7 +76,7 @@ export class OSMSubLayer extends SampleBase<{}, {}> {
                         In this example, you can see how to render geometric layers as sublayer on the OpenStreetMap. Rendered the outline of Africa continent using GeoJSON data on the top of the OSM map.
                     </p>
                     <br/>
-                    <p style={{fontweight: 500}}>Injecting Module</p>
+                    <p style={{fontWeight: 500}}>Injecting Module</p>
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use zooming feature, inject the Zoom module using the <code>Maps.Inject(Zoom)</code> method.
                     </p>

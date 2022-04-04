@@ -68,7 +68,7 @@ export class FrozenRows extends SampleBase<{}, {}> {
                 <tr>
                   <td></td>
                   <td>
-                    <div style={{ float: 'Right', marginRight: '10px' }}>
+                    <div style={{ float: 'right', marginRight: '10px' }}>
                       {/* Render Button component in properties panel */}
                       <ButtonComponent onClick={ this.btnClick.bind(this) }>Set</ButtonComponent>
                     </div>

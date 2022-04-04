@@ -68,7 +68,7 @@ export class RTL extends SampleBase<{}, {}> {
 						</LevelsDirective>
 					</TreeMapComponent>
 				</div>
-				<div style={{ float: 'right', marginright: '10px' }}>Source:
+				<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://www.indexmundi.com/facts/visualizations/treemap#SL.UEM.TOTL.ZS:SL.UEM.TOTL.ZS" target="_blank">www.indexmundi.com</a>
 				</div>
 				<div id="action-description">

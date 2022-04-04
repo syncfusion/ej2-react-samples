@@ -19,8 +19,8 @@ import { dataCollection } from './export-data';
 export let zoomFactor : number;
 export let zoomPosition :number;
 export let dateTimeData: Object[] = dataCollection;
-export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Bootstrap5', 'Tailwind','MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Bootstrap4'];
-export let borderColor: string[] = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#4F46E5', '#4F46E5','#FF4081', '#007897', '#428BCA', '#22D3EE', '#ADB5BD', '#FFD939'];
+export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Bootstrap5', 'Tailwind','MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Bootstrap4', 'fluent', 'fluentDark'];
+export let borderColor: string[] = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#4F46E5', '#4F46E5','#FF4081', '#007897', '#428BCA', '#22D3EE', '#ADB5BD', '#FFD939', '#614570', '#8AB113'];
 export let regionColor: string[] = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(79, 70, 229, 0.3)',
     'rgba(79, 70, 229, 0.3)', 'rgba(255, 64, 129, 0.3)', 'rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(34, 211, 238, 0.3)', 'rgba(173,181,189,0.3)',
     'rgba(255, 217, 57, 0.3)'];
@@ -64,6 +64,10 @@ const SAMPLE_CSS = `
             content: '\\e76c';
         }
         
+        .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+            content: '\\e75d';
+        }
+
         .e-view.highcontrast .e-print-icon::before {
             content: '\\ebf9';
         }
@@ -187,21 +191,21 @@ export class RangeExport extends SampleBase<{}, {}> {
                                         File Name:
                             </td>
                                     <td style={{ width: "40%" }}>
-                                        <div className="e-float-input" style={{ width: 70, 'margin-top': '0px' }}>
-                                            <input type="text" defaultValue="Chart" id="fileName" style={{ "margin-left": "-10px" }} />
+                                        <div className="e-float-input" style={{ width: 70, 'marginTop': '0px' }}>
+                                            <input type="text" defaultValue="Chart" id="fileName" style={{ "marginLeft": "-10px" }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '40px' }}>
                                     <td>
-                                        <div id="btn-control"  style={{ 'margin-left': '20px' }}>
+                                        <div id="btn-control"  style={{ 'marginLeft': '20px' }}>
                                             <ButtonComponent id="exporticon" onClick={this.exportClick.bind(this)} iconCss='e-icons e-export-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td>
-                                        <div id="btn-control" style={{ 'margin-left': '20px' }}>
+                                        <div id="btn-control" style={{ 'marginLeft': '20px' }}>
                                             <ButtonComponent id="printicon" onClick={this.printClick.bind(this)} iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>

@@ -478,14 +478,14 @@ function onUploadSuccess(args: { [key: string]: Object }): void {
 
 //Load the diagraming object.
 function loadDiagram(event: ProgressEvent): void {
-  diagramInstance.loadDiagram((event.target as FileReader).result);
+  diagramInstance.loadDiagram(((event.target as FileReader).result as string));
 }
 
 //save the diagram object in json data.
 function download(data: string): void {
-  if (window.navigator.msSaveBlob) {
+  if ((window.navigator as any).msSaveBlob) {
     var blob = new Blob([data], { type: "data:text/json;charset=utf-8," });
-    window.navigator.msSaveOrOpenBlob(blob, "Diagram.json");
+    (window.navigator as any).msSaveOrOpenBlob(blob, "Diagram.json");
   } else {
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(data);
     var a = document.createElement("a");

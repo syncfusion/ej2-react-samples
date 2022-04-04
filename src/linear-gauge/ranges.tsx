@@ -135,7 +135,7 @@ export class Ranges extends SampleBase<{}, {}> {
                                         <div>Range Color</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div className="e-float-input" style={{ 'margin-top': '0px' }}>
+                                        <div className="e-float-input" style={{ 'marginTop': '0px' }}>
                                             <input id="color" onChange={this.colorChange.bind(this)} ref={d => this.colorElement = d} type="text" defaultValue="#30B32D" style={{ "width": "125%", padding: '0px', paddingLeft: '5px' }} />
                                         </div>
                                     </td>

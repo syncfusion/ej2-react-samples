@@ -190,13 +190,13 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
             <div>
                 <div id='edit_target' className="control-section">
                 <div>
-                    <div style={{"width":"100%" ,"margin-botton": "10px", "margin-top": "10px", "height": "30px"}}>
+                    <div style={{"width":"100%" ,"marginBottom": "10px", "marginTop": "10px", "height": "30px"}}>
                         <ButtonComponent  cssClass='e-outline e-flat e-primary' ref={(scope) => { this.btnobj = scope; }} iconCss='edit' 
                             isToggle={true} onClick={ this.btnClick.bind(this) } style={{"float":"right", "width": "75px"}}>
                             Edit
                         </ButtonComponent>
                     </div>
-                    <div style={{"padding":"5px","margin-bottom":"5px", "text-align": "end"}}>
+                    <div style={{"padding":"5px","marginBottom":"5px", "textAlign": "end"}}>
                         <div id="dialogBtn" className="add-widget-button e-control e-btn e-lib" onClick={ this.dlgClick.bind(this) }>
                             Add New Widget
                         </div>

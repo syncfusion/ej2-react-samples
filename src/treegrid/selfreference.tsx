@@ -10,7 +10,7 @@ export class SelfReference extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <TreeGridComponent dataSource={projectData} treeColumnIndex={1} allowPaging='true' height='350' idMapping= 'TaskID' parentIdMapping='parentID'>
+          <TreeGridComponent dataSource={projectData} treeColumnIndex={1} allowPaging={true} height='350' idMapping= 'TaskID' parentIdMapping='parentID'>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Task Name' width='100'></ColumnDirective>

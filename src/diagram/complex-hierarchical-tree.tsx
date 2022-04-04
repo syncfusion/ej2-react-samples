@@ -23,7 +23,7 @@ import {
   ChangeEventArgs as CheckBoxChangeEventArgs
 } from "@syncfusion/ej2-react-buttons";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
-import { multiParentData, DataInfo } from './diagram-data';
+import { multiParentData } from './diagram-data';
 
 const SAMPLE_CSS = `.image-pattern-style {
     background-color: white;

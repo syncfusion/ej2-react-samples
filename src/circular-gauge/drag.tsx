@@ -176,9 +176,11 @@ export class Drag extends SampleBase<{}, {}> {
     };
 
     public dragMove(args: IPointerDragEventArgs): void {
-        document.getElementById('pointerValue').innerHTML = String(Math.round(args.currentValue));
-        this.drag.value = Math.round(args.currentValue).toString();
-        this.gauge.setAnnotationValue(0, 0, this.content + Math.round(args.currentValue) + ' MPH</span></div > ');
+        if (args.type.indexOf('pointer') > -1) {
+            document.getElementById('pointerValue').innerHTML = String(Math.round(args.currentValue));
+            this.drag.value = Math.round(args.currentValue).toString();
+            this.gauge.setAnnotationValue(0, 0, this.content + Math.round(args.currentValue) + ' MPH</span></div > ');
+        }
     };
     public dragEnd(args: IPointerDragEventArgs): void {
         // this.setPointersValue(this.gauge, Math.round(args.currentValue));

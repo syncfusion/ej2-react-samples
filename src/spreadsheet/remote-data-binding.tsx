@@ -73,8 +73,8 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
                         DataManager, which will act as an interface between the service endpoint and the Spreadsheet, requires the
                         following minimum configuration to interact with the service endpoint properly:
                         <ul>
-                            <li><code>DataManager > url</code> : Defines the service endpoint to fetch data.</li>
-                            <li><code>DataManager > adaptor</code> : Defines the adaptor option. By default, <code>ODataAdaptor</code>
+                            <li><code>DataManager &gt; url</code> : Defines the service endpoint to fetch data.</li>
+                            <li><code>DataManager &gt; adaptor</code> : Defines the adaptor option. By default, <code>ODataAdaptor</code>
                                 is used for remote binding.</li>
                         </ul>
                     </p>

@@ -56,7 +56,7 @@ export const KanbanSampleOrder: Object = [
         'description': 'The example demonstrates how to customize the swimlane headers of the JS Kanban board using HTML templates, which is applicable to all swimlane headers.'
     },
     {
-        'path': 'kanban/card-template', 'component': 'CardTemplate', 'name': 'Card Template', 'order': '03', 'category': 'Templates', 'api':
+        'path': 'kanban/card-template', 'component': 'CardTemplate', 'name': 'Card Template', 'type':'update','order': '03', 'category': 'Templates', 'api':
             '{"KanbanComponent": [ "dataSource", "keyField", "columns", "cardSettings", "dialogSettings" ] }',
         'description': 'The example demonstrates how to customize the JavaScript Kanban cards using templates, which is used to design beautiful cards with text, images, and more.'
     },

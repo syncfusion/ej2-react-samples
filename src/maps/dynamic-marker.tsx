@@ -130,7 +130,7 @@ export class DynamicMarker extends SampleBase<{}, {}> {
                                     <td>
                                         <div style={{ marginLeft: '50%', width: '100%', textAlign: 'center' }}>
                                             <ButtonComponent id='togglebtn' cssClass='e-info' isPrimary={true} onClick={this.buttonClick.bind(this)}
-                                                style={{ textTransform: 'none !important', width: '80px', marginTop: '2px' }} ref={d => this.buttonInstance = d}>Clear</ButtonComponent>
+                                                style={{ textTransform: 'none', width: '80px', marginTop: '2px' }} ref={d => this.buttonInstance = d}>Clear</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>

@@ -92,13 +92,13 @@ export class ChartIntegration extends SampleBase<{}, {}> {
                         options are:
                     </p>
                     <p>
-                        <code>Table</code> -> Plots grid widget only which is default,
+                        <code>Table</code> -&gt; Plots grid widget only which is default,
                     </p>
                     <p>
-                        <code>Chart</code> -> Plots chart widget only,
+                        <code>Chart</code> -&gt; Plots chart widget only,
                     </p>
                     <p>
-                        <code>Both</code> -> Plots both grid and chart widget,
+                        <code>Both</code> -&gt; Plots both grid and chart widget,
                     </p>
                     <p>
                         You can change the chart types using the dropdown list separately.

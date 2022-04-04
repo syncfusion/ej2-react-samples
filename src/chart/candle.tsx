@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, AxesDirective, AxisDirective, 
     CandleSeries, Category, Tooltip, ILoadedEventArgs, DateTime, Zoom, Logarithmic, ColumnSeries, IPointRenderEventArgs,
-    Crosshair, StripLine, IAxisLabelRenderEventArgs, ITooltipRenderEventArgs, ChartTheme,  
+    Crosshair, StripLine, IAxisLabelRenderEventArgs,  ISharedTooltipRenderEventArgs, ChartTheme,  
      RowDirective, RowsDirective, SeriesDirective, Inject
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
@@ -77,7 +77,7 @@ export class Candle extends SampleBase<{}, {}> {
                         crosshair={{ enable: true, lineType: 'Vertical' }}
                         pointRender={this.renderPoint.bind(this)}
                         axisLabelRender={this.axisLabelRender.bind(this)}
-                        tooltipRender={this.tooltipLabelRender.bind(this)}
+                        sharedTooltipRender={this.sharedTooltipRender.bind(this)}
                         chartArea={{ border: { width: 0 } }}>
                         <Inject services={[CandleSeries, StripLine, Category, Tooltip, DateTime, Zoom, ColumnSeries, Logarithmic, Crosshair]} />
                         <RowsDirective>
@@ -155,10 +155,10 @@ export class Candle extends SampleBase<{}, {}> {
         }
 
     }
-    public tooltipLabelRender(args: ITooltipRenderEventArgs): void {
-        if (!args.series.index) {
-            args.text = 'Volume : <b>' +
-                this.getLabelText(args.text.split('<b>')[1].split('</b>')[0]) + '</b>';
+    public sharedTooltipRender(args: ISharedTooltipRenderEventArgs): void {
+        if (!args.series[0].index) {
+            args.text[0] = 'Volume : <b>' +
+                this.getLabelText(args.text[0].split('<b>')[1].split('</b>')[0]) + '</b>';
         }
     }
     public getLabelText: Function = (value: number): string => {

@@ -210,7 +210,7 @@ export class Pie extends SampleBase<{}, {}> {
 						</TreeMapComponent>
 					</div>
 					{/* Source Link */}
-					<div style={{ float: 'right', marginright: '10px' }}>Source:
+					<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="http://en.worldstat.info/Asia/" target="_blank">en.worldstat.info</a>
 					</div>
 				</div>

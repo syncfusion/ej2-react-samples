@@ -31,7 +31,7 @@ export class AddRemoveResources extends SampleBase<{}, {}> {
     // custom code end
 
     private onChange(args: ChangeEventArgs): void {
-        let value: number = parseInt((args.event.target as Element).getAttribute('value'), 10);
+        let value: number = parseInt((args.event.currentTarget as Element).querySelector('input').getAttribute('value'), 10);
         let resourceData: Record<string, any>[] = this.calendarCollections.filter((calendar: Record<string, any>) => calendar.CalendarId === value);
         if (args.checked) {
             this.scheduleObj.addResource(resourceData[0], 'Calendars', value - 1);

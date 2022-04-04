@@ -253,7 +253,7 @@ export class ValueFilter extends SampleBase<{}, {}> {
                     <br />
                     <p>
                         To achieve value filtering through UI, navigate to
-                    <b> "User Interaction > Field List"</b> sample and open the filter dialog.
+                    <b> "User Interaction &gt; Field List"</b> sample and open the filter dialog.
                             For API details, refer to the
                     <b> "Field List"</b> sample description.
                     </p>

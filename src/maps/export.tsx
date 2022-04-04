@@ -29,6 +29,10 @@ const SAMPLE_CSS = `
     content: '\\e728';
 }
 
+.e-view.fluent .e-play-icon::before, .e-view.fluent-dark .e-play-icon::before {
+    content: '\\e72e';
+}
+
 .e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before  {
     content: '\\e710';
 }
@@ -124,7 +128,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                             </LayersDirective>
                         </MapsComponent>
                         {/* Source Link */}
-                        <div style={{ float: 'right', marginright: '10px' }}>Source:
+                        <div style={{ float: 'right', marginRight: '10px' }}>Source:
                 <a href="http://www.emapsworld.com/world-seven-wonder-map.html" target="_blank">en.wikipedia.org</a>
                         </div>
                     </div>
@@ -157,7 +161,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                                        <div style={{marginLeft: '-10px'}}>FileName</div>
                         </td>
                                     <td>
-                                        <div className="e-float-input" style={{ 'margin-top': '0px' }}>
+                                        <div className="e-float-input" style={{ marginTop: '0px' }}>
                                             <input type="text" defaultValue="Maps" id="fileName" style={{ "width": "100%", padding: '0px', paddingLeft: '5px' }} />
                                         </div>
                                     </td>
@@ -165,7 +169,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                                 <tr style={{ height: '60px' }}>
                                     <td>
                                         <div id="btn-control" style={{ marginLeft: '50%' }}>
-                                        <ButtonComponent onClick={this.onClick.bind(this)} style={{ width: '100px' }} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                        <ButtonComponent onClick={this.onClick.bind(this)} style={{ width: '100px' }} isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>

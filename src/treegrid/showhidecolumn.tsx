@@ -48,7 +48,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging='true' 
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging={true} 
               ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageSize: 10 }}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right'></ColumnDirective>
@@ -93,7 +93,7 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
                     <td style={{ width: '30%' }}>
                       <div style={{ paddingTop: '10px'}}> Hidden Columns</div>
                     </td>
-                    <td style={{ width: '70%', Padding: '10px 10px 10px 0px' }}>
+                    <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                       <div>
                         <textarea id='hiddencolumns' style={{ resize: 'none', height:'65px', width:'92px', backgroundColor:'#fff', padding: '6px' }}
                           className='form-control'></textarea>
@@ -112,10 +112,10 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
               </code> and <code>hideColumns</code> method of the Grid.</p>
           <p>In this demo, the columns can be showed and hidden by selecting the column name in the dropdown
               and click the Show or Hide buttons to toggle visibility. And the column`s visibility is toggled based on the 
-              <code>columns->headerText</code> value.</p>
+              <code>columns-&gt;headerText</code> value.</p>
           <br/>
-          <p>The <code>columns->visible</code> property specifies the visibility of a column. 
-            To hide a column at the initial rendering, set the <code>columns->visible</code> property to false.</p>
+          <p>The <code>columns-&gt;visible</code> property specifies the visibility of a column. 
+            To hide a column at the initial rendering, set the <code>columns-&gt;visible</code> property to false.</p>
         </div>
       </div>
     )

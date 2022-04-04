@@ -12,7 +12,7 @@ export class InsertSpecialCharacters extends SampleBase<{}, {}> {
   private rteObj: RichTextEditorComponent;
   private rteSpecialCharEle: HTMLDivElement;
   private rteSpecialCharRef: React.Ref<HTMLDivElement>;
-  private rteSectionEle: HTMLDivElement;
+  private rteSectionEle: HTMLDivElement = null;
   private rteSectionRef: React.Ref<HTMLDivElement>;
 
   constructor(props) {
@@ -21,7 +21,6 @@ export class InsertSpecialCharacters extends SampleBase<{}, {}> {
     this.rteSpecialCharRef = element => {
       this.rteSpecialCharEle = element;
     };
-    this.rteSectionEle = null;
     this.rteSectionRef = element => {
       this.rteSectionEle = element;
     };

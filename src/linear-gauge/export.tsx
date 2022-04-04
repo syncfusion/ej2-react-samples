@@ -31,6 +31,14 @@ const SAMPLE_CSS = `
 	.e-play-icon1::before {
         content: "\\e34b";
     }
+
+    .e-view.fluent .e-play-icon::before, .e-view.fluent-dark .e-play-icon::before {
+        content: '\\e72e';
+    }
+
+    .e-view.fluent .e-play-icon1::before, .e-view.fluent-dark .e-play-icon1::before {
+        content: '\\e75d';
+    }
    
     .e-view.fabric .e-play-icon1::before, .e-view.fabric-dark .e-play-icon1::before
     {
@@ -161,7 +169,7 @@ export class Export extends SampleBase<{}, {}> {
                                         <div style={{ width: '80%', marginLeft: '-10px'}}>File Name</div>
                                 </td>
                                     <td>
-                                        <div className="e-float-input" style={{ 'margin-top': '0px' }}>
+                                        <div className="e-float-input" style={{ 'marginTop': '0px' }}>
                                             <input type="text" defaultValue="Gauge" id="fileName" style={{ "width": "100%", padding: "0px", paddingLeft: '5px' }} />
                                         </div>
                                     </td>
@@ -169,12 +177,12 @@ export class Export extends SampleBase<{}, {}> {
                                 <tr style={{ height: '60px' }}>
                                     <td style={{width: '50%'}}>
                                         <div id="btn-control">
-                                            <ButtonComponent onClick={this.onClickExport.bind(this)} style={{ width: '90px' }} iconCss='e-icons e-play-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClickExport.bind(this)} style={{ width: '90px' }} isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
                                     <td style={{width: '50px'}}>
                                         <div id="btn-control">
-                                            <ButtonComponent onClick={this.onClickPrint.bind(this)} style={{ width: '90px' }} iconCss='e-icons e-play-icon1' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+                                            <ButtonComponent onClick={this.onClickPrint.bind(this)} style={{ width: '90px' }} isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>
                                 </tr>

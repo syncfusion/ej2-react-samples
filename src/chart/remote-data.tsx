@@ -9,7 +9,7 @@ import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, IPointRenderEventArgs, ChartTheme,
     Legend, Category, ColumnSeries, Tooltip, IAxisLabelRenderEventArgs, ILoadedEventArgs, DataLabel
 } from '@syncfusion/ej2-react-charts';
-import { bootstrapColors, fabricColors, materialColors, highContrastColors } from './theme-color'
+import { bootstrapColors, fabricColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color'
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
@@ -109,8 +109,8 @@ export class RemoteData extends SampleBase<{}, {}> {
                         information to interact with service endpoint properly.
                     </p>
                     <ul>
-                        <li><code>DataManager->url</code> - Defines the service endpoint to fetch data</li>
-                        <li><code>DataManager->adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used for
+                        <li><code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data</li>
+                        <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used for
                            remote binding.</li>
                     </ul>
                     <p>Adaptor is responsible for processing response and request from/to the service endpoint. <code>@syncfusion/ej2-data</code>        package provides some predefined adaptors which are designed to interact with particular service endpoints. They
@@ -141,6 +141,10 @@ export class RemoteData extends SampleBase<{}, {}> {
             args.fill = materialColors[args.point.index % 10];
         } else if (selectedTheme === 'highcontrast') {
             args.fill = highContrastColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent') {
+            args.fill = fluentColors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent-dark') {
+            args.fill = fluentDarkColors[args.point.index % 10];
         } else {
             args.fill = bootstrapColors[args.point.index % 10];
         }

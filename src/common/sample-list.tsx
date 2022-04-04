@@ -62,6 +62,7 @@ import { GanttSampleOrder } from '../gantt/config';
 import { SpreadsheetSampleOrder } from '../spreadsheet/config';
 import { ListBoxSampleOrder } from '../list-box/config';
 import { BreadcrumbSampleOrder } from '../breadcrumb/config';
+import { CarouselSampleOrder } from '../carousel/config';
 import { SignatureSampleOrder } from '../signature/config';
 
 export let samplesList: any = [
@@ -72,7 +73,7 @@ export let samplesList: any = [
         'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder, 'type': 'update'
     },
     {
-        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type': 'update'
+        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
     },
     {
         'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder
@@ -117,7 +118,7 @@ export let samplesList: any = [
         'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder,
     },
     {
-        'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
+        'name': 'Kanban', 'category': 'Data Visualization','type': 'update', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
     },
     {
         'name': 'Chips', 'category': 'Editors', 'order': '04', 'path': 'chips', 'samples': ChipsSampleOrder
@@ -129,10 +130,10 @@ export let samplesList: any = [
         'name': 'DocumentEditor', 'type': 'update', 'category': 'Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
     },
     {
-        'name': 'RichTextEditor',  'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
+        'name': 'RichTextEditor',  'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder, 'type': 'update'
     },
     {
-        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
+        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
     },
 	{
         'name': 'Gantt', 'category': 'Calendars', 'order': '02', 'path': 'gantt', 'samples': GanttSampleOrder
@@ -189,10 +190,13 @@ export let samplesList: any = [
         'name': 'Accordion', 'category': 'Navigation', 'path': 'accordion', 'samples': AccordionSampleOrder
     },
     {
-        'name': 'Breadcrumb', 'category': 'Navigation', 'type': 'update', 'path': 'breadcrumb', 'samples': BreadcrumbSampleOrder
+        'name': 'Breadcrumb', 'category': 'Navigation', 'path': 'breadcrumb', 'samples': BreadcrumbSampleOrder
     },
     {
-        'name': 'Signature', 'category': 'Inputs', 'type': 'preview', 'path': 'signature', 'samples': SignatureSampleOrder
+        'name': 'Carousel', 'category': 'Navigation', 'type': 'preview', 'path': 'carousel', 'samples': CarouselSampleOrder
+    },
+    {
+        'name': 'Signature', 'category': 'Inputs', 'path': 'signature', 'samples': SignatureSampleOrder
     },
     {
         'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'

@@ -65,12 +65,15 @@
 .tailwind-dark #defaultDialog #formId {
     background: #1f2937;
 }
-
+.fluent-dark #defaultDialog #formId {
+    background: #111111;
+}
 .material-dark #defaultDialog .form-title,
 .bootstrap-dark #defaultDialog .form-title,
 .fabric-dark #defaultDialog .form-title,
 .tailwind-dark #defaultDialog .form-title,
-.bootstrap5-dark #defaultDialog .form-title {
+.bootstrap5-dark #defaultDialog .form-title,
+.fluent-dark #defaultDialog .form-title {
     color: rgb(249 249 249);
 }
 
