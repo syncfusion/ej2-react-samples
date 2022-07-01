@@ -12,6 +12,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
     public container: DocumentEditorContainerComponent;
     public titleBar: TitleBar;
     public rendereComplete(): void {
+        window.onbeforeunload = function () {
+            return 'Want to save your changes?';
+        }
         this.container.serviceUrl = this.hostUrl + 'api/documenteditor/';
         this.container.documentEditor.pageOutline = '#E0E0E0';
         this.container.documentEditor.acceptTab = true;
@@ -30,7 +33,7 @@ export class TrackChanges extends SampleBase<{}, {}> {
                 </div>
             </div>
             <div id="action-description">
-                <p>This example demonstrates the track changes in DocumentEditor to view, make and accept or reject the changes.</p>
+                <p>This example demonstrates the track changes in DocumentEditor to view, make and accept or reject the changes. To unprotect the document, use password '123'.</p>
             </div>
             <div id="description">
                 <p>In this example, you can find track changes feature in the document editor.
@@ -44,17 +47,11 @@ export class TrackChanges extends SampleBase<{}, {}> {
                 <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/getting-started/">documentation section.</a>
                 </p>
             </div>
-            <script>{
-                window.onbeforeunload = function () {
-                    return 'Want to save your changes?';
-                }
-            }
-            </script>
         </div>);
     }
     onLoadDefault = (): void => {
         // tslint:disable
-        let defaultDocument: object = {
+        let defaultDocument: object ={
             "sections": [
                 {
                     "blocks": [
@@ -69,9 +66,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": []
                         },
                         {
@@ -96,10 +90,7 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                     "bookmarkType": 0
                                 },
                                 {
-                                    "text": "C"
-                                },
-                                {
-                                    "text": "hapter 1 Introduction to ASP.NET Core"
+                                    "text": "Chapter 1 Introduction to ASP.NET Core"
                                 },
                                 {
                                     "name": "_Toc523387945",
@@ -120,9 +111,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
                                     "text": "A"
@@ -130,13 +118,13 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                 {
                                     "text": "SP",
                                     "revisionIds": [
-                                        "b756b968-3c64-4455-80aa-61b916ed6f80"
+                                        "c8a048a0-f08e-47c6-b2c6-6e0a465270e9"
                                     ]
                                 },
                                 {
                                     "text": "sp",
                                     "revisionIds": [
-                                        "e8b50102-c9bb-4e08-b827-04728a72980f"
+                                        "6e8b3a04-c641-4a4f-ab05-5fe0af7a9ced"
                                     ]
                                 },
                                 {
@@ -145,13 +133,13 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                 {
                                     "text": "NET",
                                     "revisionIds": [
-                                        "80a06038-0f6b-4a87-9dae-5518fea6c609"
+                                        "6e173bd5-f421-41a3-b0ee-f67e9357fb83"
                                     ]
                                 },
                                 {
                                     "text": "net",
                                     "revisionIds": [
-                                        "2aae587d-9776-4c64-933a-4e2293edec4b"
+                                        "dba73704-ccd6-40bd-97ad-daa240d2b73c"
                                     ]
                                 },
                                 {
@@ -160,46 +148,37 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                 {
                                     "text": "c",
                                     "revisionIds": [
-                                        "798ad0fd-21dc-4bdb-922f-fd9aaae7f938"
+                                        "ee4dccc8-8824-45c9-accd-f8a1bc2e3335"
                                     ]
                                 },
                                 {
                                     "text": "C",
                                     "revisionIds": [
-                                        "6fc9c1f4-5fbd-4857-9955-523011a8c8a7"
+                                        "ef33a8b5-2e8d-4dc3-8624-998a015b00b0"
                                     ]
                                 },
                                 {
-                                    "text": "ore is the web develop"
-                                },
-                                {
-                                    "text": " framework that comes together with the ne"
-                                },
-                                {
-                                    "text": "w .NET Core and, besides all the new features,"
+                                    "text": "ore is the web develop framework that comes together with the new .NET Core and, besides all the new features,"
                                 },
                                 {
                                     "text": " ",
                                     "revisionIds": [
-                                        "6ef86691-b42e-4fdc-9c36-126b0d047f29"
+                                        "98eb2dec-fa89-4849-9d14-0b9243edf11e"
                                     ]
                                 },
                                 {
-                                    "text": "also adopts a significantly new approach to web development. The first chapter starts by going through the history of Microsoft's web stack to show the motivations that led to this framework. Later, it moves t"
-                                },
-                                {
-                                    "text": "o more practical matters, like showing you how to get started with ."
+                                    "text": "also adopts a significantly new approach to web development. The first chapter starts by going through the history of Microsoft's web stack to show the motivations that led to this framework. Later, it moves to more practical matters, like showing you how to get started with ."
                                 },
                                 {
                                     "text": "Net",
                                     "revisionIds": [
-                                        "1a353a7a-aabf-477d-9511-142fb35343e2"
+                                        "16410e27-c5dd-406c-aff0-bbba788c2842"
                                     ]
                                 },
                                 {
                                     "text": "net",
                                     "revisionIds": [
-                                        "1c78faa0-3e72-48bc-b973-6f52795d10a4"
+                                        "bb2049b4-5492-44d7-aee1-761dfeeb5ace"
                                     ]
                                 },
                                 {
@@ -208,13 +187,13 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                 {
                                     "text": "c",
                                     "revisionIds": [
-                                        "b7e55980-4794-4edb-b3d3-15d109d9645d"
+                                        "cd5beda1-0830-48fc-943d-2a2eb0760a0c"
                                     ]
                                 },
                                 {
                                     "text": "C",
                                     "revisionIds": [
-                                        "e9e9819b-f471-41f9-b146-eb8134aeaf64"
+                                        "cc2b1726-9e7b-49c2-834c-5f8028130232"
                                     ]
                                 },
                                 {
@@ -265,151 +244,844 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
+                            "characterFormat": {
+                                "revisionIds": [
+                                    "9587f2be-4f9c-49d1-b660-5e111e9b337a"
+                                ]
                             },
                             "inlines": [
                                 {
-                                    "text": "Before trying to understand the reason for its existence, let's first try to define"
+                                    "text": "Before trying to understand the reason for its existence, "
                                 },
                                 {
-                                    "text": " what .NET Core and ASP.NET Core are."
+                                    "text": "let's"
+                                },
+                                {
+                                    "text": " first try to define what .NET Core and ASP.NET Core are."
                                 }
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Heading 2"
-                            },
-                            "inlines": [
+                            "rows": [
                                 {
-                                    "name": "_Toc523387947",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "name": "_Toc523388457",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "name": "_Toc42015553",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "name": "_Toc42015588",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "text": ".NET Core"
-                                },
-                                {
-                                    "name": "_Toc523387947",
-                                    "bookmarkType": 1
-                                },
-                                {
-                                    "name": "_Toc523388457",
-                                    "bookmarkType": 1
-                                },
-                                {
-                                    "name": "_Toc42015553",
-                                    "bookmarkType": 1
-                                },
-                                {
-                                    "name": "_Toc42015588",
-                                    "bookmarkType": 1
-                                }
-                            ]
-                        },
-                        {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
-                            "inlines": [
-                                {
-                                    "text": "The framework .NET Core 1.1 a is modular, cross-platform, cloud-optimized version of the .NET Framework, consisting of the "
-                                },
-                                {
-                                    "text": "CoreCLR"
-                                },
-                                {
-                                    "text": " and the implementation of the .NET Standard Library 1.6. One of the main feat"
-                                },
-                                {
-                                    "text": "ures of this library is the ability to install only the features that are needed for the application you are building, reducing its footprint and the possibility of installing the library itself within the application. This makes it possible for applicatio"
-                                },
-                                {
-                                    "text": "ns built with different versions to co-exist on the same machine without the compatibility problems typical of the full .NET Framework."
-                                }
-                            ]
-                        },
-                        {
-                            "paragraphFormat": {
-                                "styleName": "Heading 2"
-                            },
-                            "inlines": [
-                                {
-                                    "name": "_Toc523387948",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "name": "_Toc523388458",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "name": "_Toc42015554",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "name": "_Toc42015589",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "text": "ASP.NET Core"
-                                },
-                                {
-                                    "name": "_Toc523387948",
-                                    "bookmarkType": 1
-                                },
-                                {
-                                    "name": "_Toc523388458",
-                                    "bookmarkType": 1
-                                },
-                                {
-                                    "name": "_Toc42015554",
-                                    "bookmarkType": 1
-                                },
-                                {
-                                    "name": "_Toc42015589",
-                                    "bookmarkType": 1
-                                }
-                            ]
-                        },
-                        {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
-                            "inlines": [
-                                {
-                                    "text": "ASP.NET Core is a complete rewrite of ASP.NET, built with the goal of being cross-platform, complete"
-                                },
-                                {
-                                    "text": "ly",
-                                    "revisionIds": [
-                                        "0a876474-7164-4c1e-8b97-a18a855e421f"
+                                    "rowFormat": {
+                                        "allowBreakAcrossPages": true,
+                                        "isHeader": false,
+                                        "height": 0.0,
+                                        "heightType": "AtLeast",
+                                        "borders": {
+                                            "left": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "right": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "top": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "bottom": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "vertical": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "horizontal": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "diagonalDown": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "diagonalUp": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            }
+                                        },
+                                        "revisionIds": [
+                                            "c47394e9-7244-4e9a-8c79-e6271f55910e"
+                                        ]
+                                    },
+                                    "cells": [
+                                        {
+                                            "blocks": [
+                                                {
+                                                    "characterFormat": {
+                                                        "revisionIds": [
+                                                            "c47394e9-7244-4e9a-8c79-e6271f55910e"
+                                                        ]
+                                                    },
+                                                    "paragraphFormat": {
+                                                        "outlineLevel": "Level2",
+                                                        "styleName": "Heading 2"
+                                                    },
+                                                    "inlines": [
+                                                        {
+                                                            "text": ".NET Core",
+                                                            "revisionIds": [
+                                                                "c47394e9-7244-4e9a-8c79-e6271f55910e"
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "cellFormat": {
+                                                "columnSpan": 1,
+                                                "rowSpan": 1,
+                                                "preferredWidth": 233.75,
+                                                "preferredWidthType": "Point",
+                                                "verticalAlignment": "Top",
+                                                "borders": {
+                                                    "left": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "right": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "top": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "bottom": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "vertical": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "horizontal": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalDown": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalUp": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    }
+                                                },
+                                                "cellWidth": 233.75
+                                            }
+                                        },
+                                        {
+                                            "blocks": [
+                                                {
+                                                    "characterFormat": {
+                                                        "revisionIds": [
+                                                            "c47394e9-7244-4e9a-8c79-e6271f55910e"
+                                                        ]
+                                                    },
+                                                    "paragraphFormat": {
+                                                        "outlineLevel": "Level2",
+                                                        "styleName": "Heading 2"
+                                                    },
+                                                    "inlines": [
+                                                        {
+                                                            "text": "ASP.NET Core",
+                                                            "revisionIds": [
+                                                                "c47394e9-7244-4e9a-8c79-e6271f55910e"
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "cellFormat": {
+                                                "columnSpan": 1,
+                                                "rowSpan": 1,
+                                                "preferredWidth": 233.75,
+                                                "preferredWidthType": "Point",
+                                                "verticalAlignment": "Top",
+                                                "borders": {
+                                                    "left": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "right": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "top": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "bottom": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "vertical": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "horizontal": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalDown": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalUp": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    }
+                                                },
+                                                "cellWidth": 233.75
+                                            }
+                                        }
                                     ]
                                 },
                                 {
-                                    "text": " open"
+                                    "rowFormat": {
+                                        "allowBreakAcrossPages": true,
+                                        "isHeader": false,
+                                        "height": 0.0,
+                                        "heightType": "AtLeast",
+                                        "borders": {
+                                            "left": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "right": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "top": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "bottom": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "vertical": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "horizontal": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "diagonalDown": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "diagonalUp": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            }
+                                        },
+                                        "revisionIds": [
+                                            "67cf4063-129c-49a1-9938-849adaecd38a"
+                                        ]
+                                    },
+                                    "cells": [
+                                        {
+                                            "blocks": [
+                                                {
+                                                    "characterFormat": {
+                                                        "revisionIds": [
+                                                            "67cf4063-129c-49a1-9938-849adaecd38a"
+                                                        ]
+                                                    },
+                                                    "inlines": [
+                                                        {
+                                                            "text": "The framework .NET Core 1.1 a is modular, cross-platform, cloud-optimized version of the .NET Framework, consisting of the ",
+                                                            "revisionIds": [
+                                                                "67cf4063-129c-49a1-9938-849adaecd38a"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "text": "CoreCLR",
+                                                            "revisionIds": [
+                                                                "67cf4063-129c-49a1-9938-849adaecd38a"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "text": " and the implementation of the .NET Standard Library 1.6. One of the main features of this library is the ability to install only the features that are needed for the application you are building, reducing its footprint and the possibility of installing the library itself within the application.",
+                                                            "revisionIds": [
+                                                                "67cf4063-129c-49a1-9938-849adaecd38a"
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "cellFormat": {
+                                                "columnSpan": 1,
+                                                "rowSpan": 1,
+                                                "preferredWidth": 233.75,
+                                                "preferredWidthType": "Point",
+                                                "verticalAlignment": "Top",
+                                                "borders": {
+                                                    "left": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "right": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "top": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "bottom": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "vertical": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "horizontal": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalDown": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalUp": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    }
+                                                },
+                                                "cellWidth": 233.75
+                                            }
+                                        },
+                                        {
+                                            "blocks": [
+                                                {
+                                                    "characterFormat": {
+                                                        "revisionIds": [
+                                                            "67cf4063-129c-49a1-9938-849adaecd38a"
+                                                        ]
+                                                    },
+                                                    "inlines": [
+                                                        {
+                                                            "text": "ASP.NET Core is a complete rewrite of ASP.NET, built with the goal of being cross-platform, completely open-source, and without the limitations of backward compatibility. Like .NET Core, ASP.NET Core is also built with a modular approach. This means the application you build can include only the needed features without taking on additional burdens.",
+                                                            "revisionIds": [
+                                                                "67cf4063-129c-49a1-9938-849adaecd38a"
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "cellFormat": {
+                                                "columnSpan": 1,
+                                                "rowSpan": 1,
+                                                "preferredWidth": 233.75,
+                                                "preferredWidthType": "Point",
+                                                "verticalAlignment": "Top",
+                                                "borders": {
+                                                    "left": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "right": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "top": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "bottom": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "vertical": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "horizontal": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalDown": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalUp": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    }
+                                                },
+                                                "cellWidth": 233.75
+                                            }
+                                        }
+                                    ]
                                 },
                                 {
-                                    "text": "-source, and without the limitations of backward compatibility. Like .NET Core, ASP.NET Core is also built with a modular approach. This means the application you build can include only the needed features without taking on additional burdens. This is made"
-                                },
-                                {
-                                    "text": " possible by the new startup and execution environment, based on the Open Web Interface for .NET (OWIN) standard. In addition, ASP.NET Core comes with many interesting features that we are going to see throughout the book, like an integrated dependency inj"
-                                },
-                                {
-                                    "text": "ection system and a new application framework that unifies the programming models of ASP.NET MVC and Web API."
+                                    "rowFormat": {
+                                        "allowBreakAcrossPages": true,
+                                        "isHeader": false,
+                                        "height": 0.0,
+                                        "heightType": "AtLeast",
+                                        "borders": {
+                                            "left": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "right": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "top": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "bottom": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "vertical": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "horizontal": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "diagonalDown": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            },
+                                            "diagonalUp": {
+                                                "lineStyle": "None",
+                                                "lineWidth": 0.0,
+                                                "shadow": false,
+                                                "space": 0.0,
+                                                "hasNoneStyle": false
+                                            }
+                                        },
+                                        "revisionIds": [
+                                            "1f42c8b7-753a-4bfa-952b-88116a8e466b"
+                                        ]
+                                    },
+                                    "cells": [
+                                        {
+                                            "blocks": [
+                                                {
+                                                    "characterFormat": {
+                                                        "revisionIds": [
+                                                            "1f42c8b7-753a-4bfa-952b-88116a8e466b"
+                                                        ]
+                                                    },
+                                                    "inlines": [
+                                                        {
+                                                            "text": "This makes it possible for applications built with different versions to co-exist on the same machine without the compatibility problems typical of the full .NET Framework.",
+                                                            "revisionIds": [
+                                                                "1f42c8b7-753a-4bfa-952b-88116a8e466b"
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "cellFormat": {
+                                                "columnSpan": 1,
+                                                "rowSpan": 1,
+                                                "preferredWidth": 233.75,
+                                                "preferredWidthType": "Point",
+                                                "verticalAlignment": "Top",
+                                                "borders": {
+                                                    "left": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "right": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "top": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "bottom": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "vertical": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "horizontal": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalDown": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalUp": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    }
+                                                },
+                                                "cellWidth": 233.75
+                                            }
+                                        },
+                                        {
+                                            "blocks": [
+                                                {
+                                                    "characterFormat": {
+                                                        "revisionIds": [
+                                                            "1f42c8b7-753a-4bfa-952b-88116a8e466b"
+                                                        ]
+                                                    },
+                                                    "inlines": [
+                                                        {
+                                                            "text": "This is made possible by the new startup and execution environment, based on the Open Web Interface for .NET (OWIN) standard. In addition, ASP.NET Core comes with many interesting features that we are going to see throughout the book, like an integrated dependency injection system and a new application framework that unifies the programming models of ASP.NET MVC and Web API.",
+                                                            "revisionIds": [
+                                                                "1f42c8b7-753a-4bfa-952b-88116a8e466b"
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "cellFormat": {
+                                                "columnSpan": 1,
+                                                "rowSpan": 1,
+                                                "preferredWidth": 233.75,
+                                                "preferredWidthType": "Point",
+                                                "verticalAlignment": "Top",
+                                                "borders": {
+                                                    "left": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "right": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "top": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "bottom": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "vertical": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "horizontal": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalDown": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    },
+                                                    "diagonalUp": {
+                                                        "lineStyle": "None",
+                                                        "lineWidth": 0.0,
+                                                        "shadow": false,
+                                                        "space": 0.0,
+                                                        "hasNoneStyle": false
+                                                    }
+                                                },
+                                                "cellWidth": 233.75
+                                            }
+                                        }
+                                    ]
                                 }
-                            ]
+                            ],
+                            "title": null,
+                            "description": null,
+                            "tableFormat": {
+                                "allowAutoFit": true,
+                                "leftIndent": 0.0,
+                                "tableAlignment": "Left",
+                                "preferredWidthType": "Auto",
+                                "borders": {
+                                    "left": {
+                                        "lineStyle": "Single",
+                                        "lineWidth": 0.5,
+                                        "shadow": false,
+                                        "space": 0.0,
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
+                                    },
+                                    "right": {
+                                        "lineStyle": "Single",
+                                        "lineWidth": 0.5,
+                                        "shadow": false,
+                                        "space": 0.0,
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
+                                    },
+                                    "top": {
+                                        "lineStyle": "Single",
+                                        "lineWidth": 0.5,
+                                        "shadow": false,
+                                        "space": 0.0,
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
+                                    },
+                                    "bottom": {
+                                        "lineStyle": "Single",
+                                        "lineWidth": 0.5,
+                                        "shadow": false,
+                                        "space": 0.0,
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
+                                    },
+                                    "vertical": {
+                                        "lineStyle": "Single",
+                                        "lineWidth": 0.5,
+                                        "shadow": false,
+                                        "space": 0.0,
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
+                                    },
+                                    "horizontal": {
+                                        "lineStyle": "Single",
+                                        "lineWidth": 0.5,
+                                        "shadow": false,
+                                        "space": 0.0,
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
+                                    },
+                                    "diagonalDown": {
+                                        "lineStyle": "None",
+                                        "lineWidth": 0.0,
+                                        "shadow": false,
+                                        "space": 0.0,
+                                        "hasNoneStyle": false
+                                    },
+                                    "diagonalUp": {
+                                        "lineStyle": "None",
+                                        "lineWidth": 0.0,
+                                        "shadow": false,
+                                        "space": 0.0,
+                                        "hasNoneStyle": false
+                                    }
+                                },
+                                "bidi": false,
+                                "horizontalPositionAbs": "Left",
+                                "horizontalPosition": 0.0
+                            }
                         },
                         {
                             "paragraphFormat": {
@@ -454,12 +1126,15 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
-                                    "text": "Now that it is clear what ASP.NET Core and .NET Core are, and why they were created, it's time to look at how to install them and how to build a simple application with them."
+                                    "text": "Now that it is clear what ASP.NET Core and .NET Core are, and why they were created, "
+                                },
+                                {
+                                    "text": "it's"
+                                },
+                                {
+                                    "text": " time to look at how to install them and how to build a simple application with them."
                                 }
                             ]
                         },
@@ -490,7 +1165,7 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                 {
                                     "text": "ing",
                                     "revisionIds": [
-                                        "9f6e263c-7289-4dad-9292-0455f375da73"
+                                        "59d0ced2-f763-494c-9d02-bbcf2d3c53e1"
                                     ]
                                 },
                                 {
@@ -515,9 +1190,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
                                     "text": "Installing on Windows is "
@@ -525,20 +1197,17 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                 {
                                     "text": "pretty easy",
                                     "revisionIds": [
-                                        "d6d85993-c119-4223-8299-bbfb7072bab4"
+                                        "6826474c-e3f2-4099-a4a7-0b342802c112"
                                     ]
                                 },
                                 {
                                     "text": "easy",
                                     "revisionIds": [
-                                        "55973d80-9fa5-4d4f-9bad-dd72e1475b6f"
+                                        "d708f14b-4342-4ca2-8ed9-fefd1a21c51d"
                                     ]
                                 },
                                 {
-                                    "text": ". With Visual"
-                                },
-                                {
-                                    "text": " Studio 2017, chances are you already installed it. If not, go back to the Visual Studio Installer and make sure you have the .NET Core workload selected."
+                                    "text": ". With Visual Studio 2017, chances are you already installed it. If not, go back to the Visual Studio Installer and make sure you have the .NET Core workload selected."
                                 }
                             ]
                         },
@@ -569,7 +1238,7 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                 {
                                     "text": "ing",
                                     "revisionIds": [
-                                        "a3330ddc-0b35-4102-8fed-74bddc293e57"
+                                        "b63c68ba-698b-411f-82d1-4dbf314bd202"
                                     ]
                                 },
                                 {
@@ -594,22 +1263,13 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
-                                    "text": "The beauty of .NET Core is that it can also be installed on "
-                                },
-                                {
-                                    "text": "a Mac (or Linux, for that matter) without relying on third-party frameworks, as was needed before with Mono."
+                                    "text": "The beauty of .NET Core is that it can also be installed on a Mac (or Linux, for that matter) without relying on third-party frameworks, as was needed before with Mono."
                                 }
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
                                     "text": "Each distribution of Linux has its own individual way of installing, but in the end, the process boils down to the same principles:"
@@ -645,31 +1305,32 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
-                                    "text": "You can read instructions specific to your distribution on the official .NET Core website. As an examp"
+                                    "text": "You can read instructions specific to your distribution on the official .NET Core website. As an example, "
                                 },
                                 {
-                                    "text": "le, we’ll show you how to install on a Mac."
+                                    "text": "we’ll"
+                                },
+                                {
+                                    "text": " show you how to install on a Mac."
                                 }
                             ]
                         },
                         {
                             "characterFormat": {
-                                "italic": true
+                                "italic": true,
+                                "italicBidi": true
                             },
                             "paragraphFormat": {
-                                "textAlignment": "Center",
-                                "styleName": "Normal"
+                                "textAlignment": "Center"
                             },
                             "inlines": [
                                 {
                                     "text": "Code Listing 3-1",
                                     "characterFormat": {
-                                        "italic": true
+                                        "italic": true,
+                                        "italicBidi": true
                                     }
                                 }
                             ]
@@ -688,42 +1349,48 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                                 "lineWidth": 0.5,
                                                 "shadow": false,
                                                 "space": 0.0,
-                                                "hasNoneStyle": false
+                                                "hasNoneStyle": false,
+                                                "color": "#000000FF"
                                             },
                                             "right": {
                                                 "lineStyle": "Single",
                                                 "lineWidth": 0.5,
                                                 "shadow": false,
                                                 "space": 0.0,
-                                                "hasNoneStyle": false
+                                                "hasNoneStyle": false,
+                                                "color": "#000000FF"
                                             },
                                             "top": {
                                                 "lineStyle": "Single",
                                                 "lineWidth": 0.5,
                                                 "shadow": false,
                                                 "space": 0.0,
-                                                "hasNoneStyle": false
+                                                "hasNoneStyle": false,
+                                                "color": "#000000FF"
                                             },
                                             "bottom": {
                                                 "lineStyle": "Single",
                                                 "lineWidth": 0.5,
                                                 "shadow": false,
                                                 "space": 0.0,
-                                                "hasNoneStyle": false
+                                                "hasNoneStyle": false,
+                                                "color": "#000000FF"
                                             },
                                             "vertical": {
                                                 "lineStyle": "Single",
                                                 "lineWidth": 0.5,
                                                 "shadow": false,
                                                 "space": 0.0,
-                                                "hasNoneStyle": false
+                                                "hasNoneStyle": false,
+                                                "color": "#000000FF"
                                             },
                                             "horizontal": {
                                                 "lineStyle": "Single",
                                                 "lineWidth": 0.5,
                                                 "shadow": false,
                                                 "space": 0.0,
-                                                "hasNoneStyle": false
+                                                "hasNoneStyle": false,
+                                                "color": "#000000FF"
                                             },
                                             "diagonalDown": {
                                                 "lineStyle": "None",
@@ -745,9 +1412,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                         {
                                             "blocks": [
                                                 {
-                                                    "paragraphFormat": {
-                                                        "styleName": "Normal"
-                                                    },
                                                     "inlines": [
                                                         {
                                                             "text": ">brew update"
@@ -755,9 +1419,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                                     ]
                                                 },
                                                 {
-                                                    "paragraphFormat": {
-                                                        "styleName": "Normal"
-                                                    },
                                                     "inlines": [
                                                         {
                                                             "text": ">brew install "
@@ -768,9 +1429,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                                     ]
                                                 },
                                                 {
-                                                    "paragraphFormat": {
-                                                        "styleName": "Normal"
-                                                    },
                                                     "inlines": [
                                                         {
                                                             "text": ">ln -s /"
@@ -796,9 +1454,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                                     ]
                                                 },
                                                 {
-                                                    "paragraphFormat": {
-                                                        "styleName": "Normal"
-                                                    },
                                                     "inlines": [
                                                         {
                                                             "text": ">ln -s /"
@@ -830,7 +1485,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                                 "preferredWidth": 467.5,
                                                 "preferredWidthType": "Point",
                                                 "verticalAlignment": "Top",
-                                                "isSamePaddingAsTable": true,
                                                 "borders": {
                                                     "left": {
                                                         "lineStyle": "None",
@@ -911,42 +1565,48 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                         "lineWidth": 0.5,
                                         "shadow": false,
                                         "space": 0.0,
-                                        "hasNoneStyle": false
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
                                     },
                                     "right": {
                                         "lineStyle": "Single",
                                         "lineWidth": 0.5,
                                         "shadow": false,
                                         "space": 0.0,
-                                        "hasNoneStyle": false
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
                                     },
                                     "top": {
                                         "lineStyle": "Single",
                                         "lineWidth": 0.5,
                                         "shadow": false,
                                         "space": 0.0,
-                                        "hasNoneStyle": false
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
                                     },
                                     "bottom": {
                                         "lineStyle": "Single",
                                         "lineWidth": 0.5,
                                         "shadow": false,
                                         "space": 0.0,
-                                        "hasNoneStyle": false
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
                                     },
                                     "vertical": {
                                         "lineStyle": "Single",
                                         "lineWidth": 0.5,
                                         "shadow": false,
                                         "space": 0.0,
-                                        "hasNoneStyle": false
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
                                     },
                                     "horizontal": {
                                         "lineStyle": "Single",
                                         "lineWidth": 0.5,
                                         "shadow": false,
                                         "space": 0.0,
-                                        "hasNoneStyle": false
+                                        "hasNoneStyle": false,
+                                        "color": "#000000FF"
                                     },
                                     "diagonalDown": {
                                         "lineStyle": "None",
@@ -963,25 +1623,18 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                         "hasNoneStyle": false
                                     }
                                 },
-                                "bidi": false
+                                "bidi": false,
+                                "horizontalPositionAbs": "Left",
+                                "horizontalPosition": 0.0
                             }
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": []
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
-                                    "text": "Once all these pr"
-                                },
-                                {
-                                    "text": "erequisites have been installed, you can download and install the official SDK for macOS by downloading it from the "
+                                    "text": "Once all these prerequisites have been installed, you can download and install the official SDK for macOS by downloading it from the "
                                 },
                                 {
                                     "hasFieldEnd": true,
@@ -1008,18 +1661,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
-                                    "text": "On Linux and Mac, you do not have Visual Studio to develop app"
-                                },
-                                {
-                                    "text": "s, but you can use the .NET Core SDK or Visual Studio Code, which is a lightweight, extensible, cross-platform text editor built by Microsoft and the community. The last chapter of this book covers in detail each of the tools with which you can build .NET "
-                                },
-                                {
-                                    "text": "Core apps."
+                                    "text": "On Linux and Mac, you do not have Visual Studio to develop apps, but you can use the .NET Core SDK or Visual Studio Code, which is a lightweight, extensible, cross-platform text editor built by Microsoft and the community. The last chapter of this book covers in detail each of the tools with which you can build .NET Core apps."
                                 }
                             ]
                         },
@@ -1066,9 +1710,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
                                     "text": "The release of .NET Core has been a very difficult one, with many delays and changes in direction. While the framework is stable, with .NET Core 1.1 released in November 2016, the tooling is still in development."
@@ -1076,29 +1717,12 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
-                                    "text": "When we wro"
+                                    "text": "When we wrote this book, we relied on previews that were made available at the "
                                 },
                                 {
-                                    "text": "te this book, we relied on previews that were made available at the "
-                                },
-                                {
-                                    "text": "Con"
-                                },
-                                {
-                                    "name": "_GoBack",
-                                    "bookmarkType": 0
-                                },
-                                {
-                                    "name": "_GoBack",
-                                    "bookmarkType": 1
-                                },
-                                {
-                                    "text": "nect("
+                                    "text": "Connect("
                                 },
                                 {
                                     "text": "); event of November 2016, so some of the screenshots or procedures in the examples might be different from what is currently available."
@@ -1106,22 +1730,13 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
-                                    "text": "What can we expect for the future of .NET C"
-                                },
-                                {
-                                    "text": "ore?"
+                                    "text": "What can we expect for the future of .NET Core?"
                                 }
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
                                     "text": "First, unlike previous frameworks, we "
@@ -1129,27 +1744,21 @@ export class TrackChanges extends SampleBase<{}, {}> {
                                 {
                                     "text": "have to",
                                     "revisionIds": [
-                                        "3742a158-cadf-4848-b105-ca2cbcde35c7"
+                                        "c8366f2d-254f-436f-bd43-dbb82507fcf2"
                                     ]
                                 },
                                 {
                                     "text": "must",
                                     "revisionIds": [
-                                        "666ca6c2-ac2b-49b5-bfdb-dff924672b91"
+                                        "1dd2f9c1-88ce-4d21-b835-6e59f94c5982"
                                     ]
                                 },
                                 {
-                                    "text": " expect a continuous release of enhanced tools, both for the CLI and for the tooling inside Visual Studio. Second, on the framework side, there will be the second big release of .NET Core 2.0, implementing "
-                                },
-                                {
-                                    "text": ".NET Standard 2.0."
+                                    "text": " expect a continuous release of enhanced tools, both for the CLI and for the tooling inside Visual Studio. Second, on the framework side, there will be the second big release of .NET Core 2.0, implementing .NET Standard 2.0."
                                 }
                             ]
                         },
                         {
-                            "paragraphFormat": {
-                                "styleName": "Normal"
-                            },
                             "inlines": [
                                 {
                                     "text": "But rest assured that Microsoft sees .NET Core as the future of .NET for the next 10 years, so this is the right time to jump in and start learning this new technology."
@@ -1171,7 +1780,22 @@ export class TrackChanges extends SampleBase<{}, {}> {
                         "differentOddAndEvenPages": false,
                         "bidi": false,
                         "restartPageNumbering": false,
-                        "pageStartingNumber": 0
+                        "pageStartingNumber": 0,
+                        "endnoteNumberFormat": "LowerCaseRoman",
+                        "footNoteNumberFormat": "Arabic",
+                        "restartIndexForFootnotes": "DoNotRestart",
+                        "restartIndexForEndnotes": "DoNotRestart",
+                        "pageNumberStyle": "Arabic",
+                        "columns": {
+                            "column": [
+                                {
+                                    "width": 468.0,
+                                    "space": 0.0
+                                }
+                            ],
+                            "numberOfColumns": 1,
+                            "equalWidth": true
+                        }
                     }
                 }
             ],
@@ -1184,7 +1808,7 @@ export class TrackChanges extends SampleBase<{}, {}> {
             },
             "paragraphFormat": {
                 "afterSpacing": 8.0,
-                "lineSpacing": 1.0791666507720948,
+                "lineSpacing": 1.0791666507720947,
                 "lineSpacingType": "Multiple"
             },
             "lists": [
@@ -1202,7 +1826,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "",
                             "characterFormat": {
-                                "fontFamily": "Symbol"
+                                "fontFamily": "Symbol",
+                                "fontFamilyBidi": "Symbol"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 36.0,
@@ -1214,7 +1839,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "o",
                             "characterFormat": {
-                                "fontFamily": "Courier New"
+                                "fontFamily": "Courier New",
+                                "fontFamilyBidi": "Courier New"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 72.0,
@@ -1226,7 +1852,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "",
                             "characterFormat": {
-                                "fontFamily": "Wingdings"
+                                "fontFamily": "Wingdings",
+                                "fontFamilyBidi": "Wingdings"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 108.0,
@@ -1238,7 +1865,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "",
                             "characterFormat": {
-                                "fontFamily": "Symbol"
+                                "fontFamily": "Symbol",
+                                "fontFamilyBidi": "Symbol"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 144.0,
@@ -1250,7 +1878,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "o",
                             "characterFormat": {
-                                "fontFamily": "Courier New"
+                                "fontFamily": "Courier New",
+                                "fontFamilyBidi": "Courier New"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 180.0,
@@ -1262,7 +1891,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "",
                             "characterFormat": {
-                                "fontFamily": "Wingdings"
+                                "fontFamily": "Wingdings",
+                                "fontFamilyBidi": "Wingdings"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 216.0,
@@ -1274,7 +1904,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "",
                             "characterFormat": {
-                                "fontFamily": "Symbol"
+                                "fontFamily": "Symbol",
+                                "fontFamilyBidi": "Symbol"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 252.0,
@@ -1286,7 +1917,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "o",
                             "characterFormat": {
-                                "fontFamily": "Courier New"
+                                "fontFamily": "Courier New",
+                                "fontFamilyBidi": "Courier New"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 288.0,
@@ -1298,7 +1930,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                             "followCharacter": "Tab",
                             "numberFormat": "",
                             "characterFormat": {
-                                "fontFamily": "Wingdings"
+                                "fontFamily": "Wingdings",
+                                "fontFamilyBidi": "Wingdings"
                             },
                             "paragraphFormat": {
                                 "leftIndent": 324.0,
@@ -1326,7 +1959,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "characterFormat": {
                         "fontSize": 16.0,
                         "fontFamily": "Calibri Light",
-                        "fontColor": "#2F5496FF"
+                        "fontColor": "#2F5496FF",
+                        "fontSizeBidi": 16.0,
+                        "fontFamilyBidi": "Calibri Light"
                     },
                     "paragraphFormat": {
                         "beforeSpacing": 12.0,
@@ -1343,7 +1978,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "characterFormat": {
                         "fontSize": 13.0,
                         "fontFamily": "Calibri Light",
-                        "fontColor": "#2F5496FF"
+                        "fontColor": "#2F5496FF",
+                        "fontSizeBidi": 13.0,
+                        "fontFamilyBidi": "Calibri Light"
                     },
                     "paragraphFormat": {
                         "beforeSpacing": 2.0,
@@ -1360,7 +1997,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "characterFormat": {
                         "fontSize": 12.0,
                         "fontFamily": "Calibri Light",
-                        "fontColor": "#1F3763FF"
+                        "fontColor": "#1F3763FF",
+                        "fontSizeBidi": 12.0,
+                        "fontFamilyBidi": "Calibri Light"
                     },
                     "paragraphFormat": {
                         "beforeSpacing": 2.0,
@@ -1377,7 +2016,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "characterFormat": {
                         "italic": true,
                         "fontFamily": "Calibri Light",
-                        "fontColor": "#2F5496FF"
+                        "fontColor": "#2F5496FF",
+                        "italicBidi": true,
+                        "fontFamilyBidi": "Calibri Light"
                     },
                     "paragraphFormat": {
                         "beforeSpacing": 2.0,
@@ -1393,7 +2034,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "link": "Heading 5 Char",
                     "characterFormat": {
                         "fontFamily": "Calibri Light",
-                        "fontColor": "#2F5496FF"
+                        "fontColor": "#2F5496FF",
+                        "fontFamilyBidi": "Calibri Light"
                     },
                     "paragraphFormat": {
                         "beforeSpacing": 2.0,
@@ -1409,7 +2051,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "link": "Heading 6 Char",
                     "characterFormat": {
                         "fontFamily": "Calibri Light",
-                        "fontColor": "#1F3763FF"
+                        "fontColor": "#1F3763FF",
+                        "fontFamilyBidi": "Calibri Light"
                     },
                     "paragraphFormat": {
                         "beforeSpacing": 2.0,
@@ -1428,7 +2071,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "characterFormat": {
                         "fontSize": 16.0,
                         "fontFamily": "Calibri Light",
-                        "fontColor": "#2F5496FF"
+                        "fontColor": "#2F5496FF",
+                        "fontSizeBidi": 16.0,
+                        "fontFamilyBidi": "Calibri Light"
                     }
                 },
                 {
@@ -1438,7 +2083,53 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "characterFormat": {
                         "fontSize": 13.0,
                         "fontFamily": "Calibri Light",
-                        "fontColor": "#2F5496FF"
+                        "fontColor": "#2F5496FF",
+                        "fontSizeBidi": 13.0,
+                        "fontFamilyBidi": "Calibri Light"
+                    }
+                },
+                {
+                    "type": "Character",
+                    "name": "Heading 3 Char",
+                    "basedOn": "Default Paragraph Font",
+                    "characterFormat": {
+                        "fontSize": 12.0,
+                        "fontFamily": "Calibri Light",
+                        "fontColor": "#1F3763FF",
+                        "fontSizeBidi": 12.0,
+                        "fontFamilyBidi": "Calibri Light"
+                    }
+                },
+                {
+                    "type": "Character",
+                    "name": "Heading 4 Char",
+                    "basedOn": "Default Paragraph Font",
+                    "characterFormat": {
+                        "italic": true,
+                        "fontFamily": "Calibri Light",
+                        "fontColor": "#2F5496FF",
+                        "italicBidi": true,
+                        "fontFamilyBidi": "Calibri Light"
+                    }
+                },
+                {
+                    "type": "Character",
+                    "name": "Heading 5 Char",
+                    "basedOn": "Default Paragraph Font",
+                    "characterFormat": {
+                        "fontFamily": "Calibri Light",
+                        "fontColor": "#2F5496FF",
+                        "fontFamilyBidi": "Calibri Light"
+                    }
+                },
+                {
+                    "type": "Character",
+                    "name": "Heading 6 Char",
+                    "basedOn": "Default Paragraph Font",
+                    "characterFormat": {
+                        "fontFamily": "Calibri Light",
+                        "fontColor": "#1F3763FF",
+                        "fontFamilyBidi": "Calibri Light"
                     }
                 },
                 {
@@ -1447,7 +2138,8 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "basedOn": "Normal",
                     "next": "Normal",
                     "characterFormat": {
-                        "bold": true
+                        "bold": true,
+                        "boldBidi": true
                     },
                     "paragraphFormat": {
                         "afterSpacing": 6.0,
@@ -1489,7 +2181,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "link": "Title Char",
                     "characterFormat": {
                         "fontSize": 28.0,
-                        "fontFamily": "Calibri Light"
+                        "fontFamily": "Calibri Light",
+                        "fontSizeBidi": 28.0,
+                        "fontFamilyBidi": "Calibri Light"
                     },
                     "paragraphFormat": {
                         "afterSpacing": 0.0,
@@ -1503,7 +2197,9 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "basedOn": "Default Paragraph Font",
                     "characterFormat": {
                         "fontSize": 28.0,
-                        "fontFamily": "Calibri Light"
+                        "fontFamily": "Calibri Light",
+                        "fontSizeBidi": 28.0,
+                        "fontFamilyBidi": "Calibri Light"
                     }
                 },
                 {
@@ -1535,44 +2231,6 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     }
                 },
                 {
-                    "type": "Character",
-                    "name": "Heading 3 Char",
-                    "basedOn": "Default Paragraph Font",
-                    "characterFormat": {
-                        "fontSize": 12.0,
-                        "fontFamily": "Calibri Light",
-                        "fontColor": "#1F3763FF"
-                    }
-                },
-                {
-                    "type": "Character",
-                    "name": "Heading 4 Char",
-                    "basedOn": "Default Paragraph Font",
-                    "characterFormat": {
-                        "italic": true,
-                        "fontFamily": "Calibri Light",
-                        "fontColor": "#2F5496FF"
-                    }
-                },
-                {
-                    "type": "Character",
-                    "name": "Heading 5 Char",
-                    "basedOn": "Default Paragraph Font",
-                    "characterFormat": {
-                        "fontFamily": "Calibri Light",
-                        "fontColor": "#2F5496FF"
-                    }
-                },
-                {
-                    "type": "Character",
-                    "name": "Heading 6 Char",
-                    "basedOn": "Default Paragraph Font",
-                    "characterFormat": {
-                        "fontFamily": "Calibri Light",
-                        "fontColor": "#1F3763FF"
-                    }
-                },
-                {
                     "type": "Paragraph",
                     "name": "Balloon Text",
                     "basedOn": "Normal",
@@ -1600,6 +2258,16 @@ export class TrackChanges extends SampleBase<{}, {}> {
                         "fontSizeBidi": 9.0,
                         "fontFamilyBidi": "Segoe UI"
                     }
+                },
+                {
+                    "type": "Paragraph",
+                    "name": "Revision",
+                    "next": "Revision",
+                    "paragraphFormat": {
+                        "afterSpacing": 0.0,
+                        "lineSpacing": 1.0,
+                        "lineSpacingType": "Multiple"
+                    }
                 }
             ],
             "revisions": [
@@ -1607,117 +2275,189 @@ export class TrackChanges extends SampleBase<{}, {}> {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "b756b968-3c64-4455-80aa-61b916ed6f80"
+                    "revisionId": "c8a048a0-f08e-47c6-b2c6-6e0a465270e9"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Deletion",
-                    "revisionId": "e8b50102-c9bb-4e08-b827-04728a72980f"
+                    "revisionId": "6e8b3a04-c641-4a4f-ab05-5fe0af7a9ced"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "80a06038-0f6b-4a87-9dae-5518fea6c609"
+                    "revisionId": "6e173bd5-f421-41a3-b0ee-f67e9357fb83"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Deletion",
-                    "revisionId": "2aae587d-9776-4c64-933a-4e2293edec4b"
+                    "revisionId": "dba73704-ccd6-40bd-97ad-daa240d2b73c"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Deletion",
-                    "revisionId": "798ad0fd-21dc-4bdb-922f-fd9aaae7f938"
+                    "revisionId": "ee4dccc8-8824-45c9-accd-f8a1bc2e3335"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "6fc9c1f4-5fbd-4857-9955-523011a8c8a7"
+                    "revisionId": "ef33a8b5-2e8d-4dc3-8624-998a015b00b0"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:35:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "6ef86691-b42e-4fdc-9c36-126b0d047f29"
+                    "revisionId": "98eb2dec-fa89-4849-9d14-0b9243edf11e"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "1a353a7a-aabf-477d-9511-142fb35343e2"
+                    "revisionId": "16410e27-c5dd-406c-aff0-bbba788c2842"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Deletion",
-                    "revisionId": "1c78faa0-3e72-48bc-b973-6f52795d10a4"
+                    "revisionId": "bb2049b4-5492-44d7-aee1-761dfeeb5ace"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Deletion",
-                    "revisionId": "b7e55980-4794-4edb-b3d3-15d109d9645d"
+                    "revisionId": "cd5beda1-0830-48fc-943d-2a2eb0760a0c"
                 },
                 {
                     "author": "Andrew Fuller",
                     "date": "2020-06-02T18:41:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "e9e9819b-f471-41f9-b146-eb8134aeaf64"
+                    "revisionId": "cc2b1726-9e7b-49c2-834c-5f8028130232"
                 },
                 {
                     "author": "Nancy Davolio",
                     "date": "2020-06-02T18:35:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "0a876474-7164-4c1e-8b97-a18a855e421f"
-                },
-                {
-                    "author": "Nancy Davolio",
-                    "date": "2020-06-02T18:35:00Z",
-                    "revisionType": "Insertion",
-                    "revisionId": "9f6e263c-7289-4dad-9292-0455f375da73"
+                    "revisionId": "59d0ced2-f763-494c-9d02-bbcf2d3c53e1"
                 },
                 {
                     "author": "Nancy Davolio",
                     "date": "2020-06-02T18:35:00Z",
                     "revisionType": "Deletion",
-                    "revisionId": "d6d85993-c119-4223-8299-bbfb7072bab4"
+                    "revisionId": "6826474c-e3f2-4099-a4a7-0b342802c112"
                 },
                 {
                     "author": "Nancy Davolio",
                     "date": "2020-06-02T18:35:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "55973d80-9fa5-4d4f-9bad-dd72e1475b6f"
+                    "revisionId": "d708f14b-4342-4ca2-8ed9-fefd1a21c51d"
                 },
                 {
                     "author": "Nancy Davolio",
                     "date": "2020-06-02T18:35:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "a3330ddc-0b35-4102-8fed-74bddc293e57"
+                    "revisionId": "b63c68ba-698b-411f-82d1-4dbf314bd202"
                 },
                 {
                     "author": "Nancy Davolio",
                     "date": "2020-06-02T18:42:00Z",
                     "revisionType": "Deletion",
-                    "revisionId": "3742a158-cadf-4848-b105-ca2cbcde35c7"
+                    "revisionId": "c8366f2d-254f-436f-bd43-dbb82507fcf2"
                 },
                 {
                     "author": "Nancy Davolio",
                     "date": "2020-06-02T18:42:00Z",
                     "revisionType": "Insertion",
-                    "revisionId": "666ca6c2-ac2b-49b5-bfdb-dff924672b91"
+                    "revisionId": "1dd2f9c1-88ce-4d21-b835-6e59f94c5982"
+                },
+                {
+                    "author": "Andrew Fuller",
+                    "date": "2022-06-03T13:26:00Z",
+                    "revisionType": "Insertion",
+                    "revisionId": "c47394e9-7244-4e9a-8c79-e6271f55910e"
+                },
+                {
+                    "author": "Andrew Fuller",
+                    "date": "2022-06-03T13:26:00Z",
+                    "revisionType": "Insertion",
+                    "revisionId": "67cf4063-129c-49a1-9938-849adaecd38a"
+                },
+                {
+                    "author": "Andrew Fuller",
+                    "date": "2022-06-03T13:26:00Z",
+                    "revisionType": "Insertion",
+                    "revisionId": "1f42c8b7-753a-4bfa-952b-88116a8e466b"
                 }
             ],
             "defaultTabWidth": 36.0,
             "formatting": false,
             "trackChanges": true,
-            "protectionType": "NoProtection",
-            "enforcement": false,
-            "dontUseHTMLParagraphAutoSpacing": false
+            "protectionType": "RevisionsOnly",
+            "enforcement": true,
+            "hashValue": "qsJNK7sBSNTNNOWtooTdYccSjsrjY46Sb3hjTApSGsgusNsre1M2WK4vo9JCbCo1Iict/7S82fqVCdAxBhU+Dg==",
+            "saltValue": "weL9KagXkQLvlCzyaFMPcQ==",
+            "cryptProviderType": "rsaAES",
+            "cryptAlgorithmClass": "hash",
+            "cryptAlgorithmType": "typeAny",
+            "cryptAlgorithmSid": "14",
+            "cryptSpinCount": "100000",
+            "dontUseHTMLParagraphAutoSpacing": false,
+            "alignTablesRowByRow": false,
+            "formFieldShading": true,
+            "footnotes": {
+                "separator": [
+                    {
+                        "inlines": [
+                            {
+                                "text": "\u0003"
+                            }
+                        ]
+                    }
+                ],
+                "continuationSeparator": [
+                    {
+                        "inlines": [
+                            {
+                                "text": "\u0004"
+                            }
+                        ]
+                    }
+                ],
+                "continuationNotice": [
+                    {
+                        "inlines": []
+                    }
+                ]
+            },
+            "endnotes": {
+                "separator": [
+                    {
+                        "inlines": [
+                            {
+                                "text": "\u0003"
+                            }
+                        ]
+                    }
+                ],
+                "continuationSeparator": [
+                    {
+                        "inlines": [
+                            {
+                                "text": "\u0004"
+                            }
+                        ]
+                    }
+                ],
+                "continuationNotice": [
+                    {
+                        "inlines": []
+                    }
+                ]
+            },
+            "compatibilityMode": "Word2013"
         };
         // tslint:enable        
         this.container.documentEditor.open(JSON.stringify(defaultDocument));

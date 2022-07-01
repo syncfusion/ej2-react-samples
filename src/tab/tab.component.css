@@ -214,3 +214,25 @@
     display: inline-block;
     width: 130px;
 }
+@media only screen and (min-width: 1824px) {
+    .e-sample-resize-container {
+        width: 560px;
+    }
+
+    .e-bigger .e-sample-resize-container {
+        width: 75%;
+    }
+}
+@media screen and (max-width: 425px) {
+    .responsive-mode {
+        overflow: hidden;
+    }
+
+    .responsive-mode .e-content {
+        height: inherit !important;
+    }
+
+    .responsive-mode .e-item.e-active {
+        overflow: scroll;
+    }
+}

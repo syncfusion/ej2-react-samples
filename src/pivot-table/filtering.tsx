@@ -201,7 +201,7 @@ export class Filtering extends SampleBase<{}, {}> {
                                         </td>
                                         <td>
                                             <div>
-                                                <MultiSelectComponent id="checkbox" ref={(scope) => { valuesddl = scope; }} dataSource={values}
+                                                <MultiSelectComponent id="checkbox" placeholder="Select members" ref={(scope) => { valuesddl = scope; }} dataSource={values}
                                                     fields={field} mode="CheckBox" showClearButton={true} enableSelectionOrder={false} showDropDownIcon={true}
                                                     select={this.select.bind(this)} removed={this.removed.bind(this)} open={this.open.bind(this)}>
                                                     <Inject services={[CheckBoxSelection]} />

@@ -15,6 +15,7 @@ export class AddressBar extends SampleBase<{}, {}> {
     
     btnClick(): void {
         this.breadcrumbInst.items = this.initialBreadcrumbItems;
+        this.breadcrumbItems = this.initialBreadcrumbItems;
     }
 
     itemTemplate(data: any): JSX.Element {

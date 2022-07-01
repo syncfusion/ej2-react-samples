@@ -98,7 +98,7 @@ export class EnterKeyConfiguration extends SampleBase<{}, ITextValue> {
   render() {
     return (
       <div className='control-pane'>
-        <div className='control-section' id="rte">
+        <div className='control-section enter-key' id="rte">
           <div className='rte-control-section'>
            <table className='api'>
                 <tbody>

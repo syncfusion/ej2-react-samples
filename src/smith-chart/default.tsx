@@ -49,7 +49,7 @@ export class Default extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='col-md-9 control-section'>
-                    <SmithchartComponent load={this.load.bind(this)} id='smith-chart' ref={gauge => this.smithchartInstance = gauge}
+                    <SmithchartComponent load={this.load.bind(this)} id='container' ref={gauge => this.smithchartInstance = gauge}
                         legendSettings={{ visible: true, shape: 'Circle' }}>
                         <Inject services={[SmithchartLegend, TooltipRender]} />
                         <SmithchartSeriesCollectionDirective>

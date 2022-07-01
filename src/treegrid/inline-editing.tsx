@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Edit, Toolbar } from '@syncfusion/ej2-react-treegrid';
+import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Edit, Toolbar,RowDD } from '@syncfusion/ej2-react-treegrid';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
@@ -10,7 +10,7 @@ export class Editing extends SampleBase<{}, {}> {
 
   public treegridObj: TreeGridComponent;
 
-  public toolbarOptions: any = ['Add', 'Delete', 'Update', 'Cancel'];
+  public toolbarOptions: any = ['Add', 'Delete', 'Update', 'Cancel','Indent', 'Outdent'];
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Cell', newRowPosition: 'Below' };
   public validationRule: Object = { required: true};
   public validationRule1: Object = { date: true};
@@ -25,10 +25,10 @@ export class Editing extends SampleBase<{}, {}> {
   private change(args: ChangeEventArgs): void {
     if (args.value === 'CellEditing') {
       this.treegridObj.editSettings.mode = 'Cell';
-      this.treegridObj.toolbar = ['Add', 'Delete', 'Update', 'Cancel'];
+      this.treegridObj.toolbar = ['Add', 'Delete', 'Update', 'Cancel','Indent', 'Outdent'];
     } else {
       this.treegridObj.editSettings.mode = 'Row';
-      this.treegridObj.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+      this.treegridObj.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel','Indent', 'Outdent'];
     }
   }
 
@@ -37,7 +37,7 @@ export class Editing extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
          <div className = 'col-md-9'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true} selectedRowIndex={2}
               editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}
               ref={treegrid=> this.treegridObj = treegrid}>
             <ColumnsDirective>
@@ -49,7 +49,7 @@ export class Editing extends SampleBase<{}, {}> {
               <ColumnDirective field='duration' headerText='Duration' width='100' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
             </ColumnsDirective>
-            <Inject services={[Page, Edit, Toolbar]}/>
+            <Inject services={[Page, Edit, Toolbar, RowDD]}/>
           </TreeGridComponent>
         </div>
         <div className='col-md-3 property-section'>
@@ -78,6 +78,8 @@ export class Editing extends SampleBase<{}, {}> {
             <li><code>Delete</code> - To delete record, click toolbar Delete button after selected a row </li>
             <li><code>Update</code>,<code>Cancel</code> - You can save or discard changes by click toolbar Update 
               and cancel button respectively</li>
+            <li><code>Indent</code> - Indents the record to one level of hierarchy.</li>
+            <li><code>Outdent</code> - Outdent the record to one level of hierarchy.</li>
           </ul>
         </div>
         <div id='description'>
@@ -97,6 +99,8 @@ export class Editing extends SampleBase<{}, {}> {
           <p>Injecting Module:</p>
           <p>Tree Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
              <code>Edit</code> module into the <code>services</code>.</p>
+          <p>To use indent and outdent feature, we need to inject
+            <code>RowDD</code> module into the <code>services</code>.</p>
           <p>
             More information on the selection configuration can be found in this documentation section.
           </p>

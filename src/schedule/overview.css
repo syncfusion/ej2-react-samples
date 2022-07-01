@@ -728,3 +728,14 @@ body {
 .material .schedule-overview .overview-header .overview-titlebar .title-bar-btn {
     box-shadow: none;
 }
+
+@media (max-width: 481px) {
+    .schedule-overview .overview-content .right-panel {
+        position: absolute;
+        width: 90%;
+    }
+
+    .schedule-overview .overview-header .overview-titlebar {
+        overflow: auto;
+    }
+}

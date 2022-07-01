@@ -26,13 +26,13 @@ const SAMPLE1_CSS = `
 .bootstrap .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
-.bootstrap-dark .disableRow .e-rowcell, .fluent-dark .disableRow .e-rowcell{
+.bootstrap-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
 .bootstrap4 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
-.bootstrap5 .disableRow .e-rowcell, .fluent .disableRow .e-rowcell{
+.bootstrap5 .disableRow .e-rowcell{
   color: rgba(0, 0, 0, .35) !important;
 }
 .bootstrap5-dark .disableRow .e-rowcell{

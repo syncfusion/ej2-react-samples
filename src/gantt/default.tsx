@@ -24,8 +24,8 @@ export class Default extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='Default' dataSource={projectNewData} 
-            taskFields={this.taskFields} treeColumnIndex={1} labelSettings={this.labelSettings} height='410px'
+          <GanttComponent id='Default' dataSource={projectNewData} treeColumnIndex={1}
+            taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>

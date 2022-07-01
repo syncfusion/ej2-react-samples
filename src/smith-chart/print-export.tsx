@@ -68,7 +68,7 @@ export class Print extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='col-md-8 control-section'>
-                    <SmithchartComponent load={this.load.bind(this)} id='smith-chart' ref={gauge => this.smithchartInstance = gauge}
+                    <SmithchartComponent load={this.load.bind(this)} id='container' ref={gauge => this.smithchartInstance = gauge}
                         horizontalAxis={{ minorGridLines: { visible: true } }}
                         legendSettings={{ visible: true, shape: 'Circle' }}             //To config the legend for smithchart                        
                         radialAxis={{ minorGridLines: { visible: true } }}>

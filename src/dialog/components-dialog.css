@@ -9,7 +9,7 @@
 
 #targetElement {
     height: 100%;
-    min-height: 500px;
+    min-height: 500px !important;
 }
 
 @media screen and (min-width: 150px) and (max-width: 480px) {
@@ -112,4 +112,8 @@
 
 #defaultDialog #charts {
     text-align: center;
+}
+
+#defaultDialog {  
+    max-height: 500px;
 }

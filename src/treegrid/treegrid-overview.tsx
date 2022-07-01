@@ -18,7 +18,7 @@ export class Overview extends SampleBase<{}, {}> {
 
   public treegridTemplate(props): any {
     return (<div className='statustemp'>
-        <span className='statustxt'>{props.gdp}</span>
+        <span className='statustxt'>{props.gdp} %</span>
     </div>);
   }
 
@@ -66,12 +66,6 @@ export class Overview extends SampleBase<{}, {}> {
     return (<div><img src='src/treegrid/images/__Normal.png' style={{ filter: "brightness(150%)"}} className={classValue}></img><span style={{ paddingLeft: '7px'}}>{props.timezone}</span>)</div>);
   }
 
-
-  public Filter : IFilter = {
-    type: 'Excel', 
-    itemTemplate: '#flagtemplate'
-  }
-
   public populationValue(field: string, data: Object) {
     return data[field] / 1000000;
   }
@@ -117,6 +111,11 @@ export class Overview extends SampleBase<{}, {}> {
   public areatemplate: any = this.treeareaTemplate;
   public timezonetemplate: any = this.treezoneTemplate;
 
+  public Filter : IFilter = {
+    type: 'Excel', 
+    itemTemplate: this.flagtemplate
+  }
+
   render() {
     return (
       <div className='control-pane'>
@@ -126,7 +125,7 @@ export class Overview extends SampleBase<{}, {}> {
           queryCellInfo={this.queryCellinfo.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='name' headerText='Province' width='190' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
-              <ColumnDirective field='population' headerText='Populationf (Million)' allowFiltering={false} valueAccessor={this.populationValue} textAlign='Right' width='200'></ColumnDirective>
+              <ColumnDirective field='population' headerText='Population (Million)' allowFiltering={false} valueAccessor={this.populationValue} textAlign='Right' width='200'></ColumnDirective>
               <ColumnDirective field='gdp' headerText='GDP Rate %' width='145' template={this.gdptemplate} />
               <ColumnDirective field='rating' headerText='Credit Rating' width='190' template={this.ratingtemplate}  />
               <ColumnDirective field='unemployment' headerText='Unemployment Rate' width='200' allowFiltering={false} template={this.unemploymentTemplate} />

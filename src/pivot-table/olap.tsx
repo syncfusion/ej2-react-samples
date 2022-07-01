@@ -132,7 +132,7 @@ export class OlapSample extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section' id='pivot-table-section' style={{ overflow: 'initial' }}>
                     <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'500'} showFieldList={true} showGroupingBar={true} gridSettings={{ columnWidth: 140 }}
-                        allowExcelExport={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
+                        allowExcelExport={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} enableFieldSearching={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                         newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
                         saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis', load: this.chartOnLoad.bind(this) }}>
                         <Inject services={[FieldList, GroupingBar, CalculatedField, Toolbar, PDFExport, ExcelExport, ConditionalFormatting]} />

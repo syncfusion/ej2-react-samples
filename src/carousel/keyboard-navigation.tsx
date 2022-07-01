@@ -111,7 +111,7 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
           </div></div>
         <div id="action-description">
           <p>
-            This sample demonstrates the keyboard navigation functionalities of the <strong>React Carousel</strong> component.
+            This sample demonstrates the keyboard navigation functionalities of the <a href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component.
           </p>
         </div>
         <div id="description">

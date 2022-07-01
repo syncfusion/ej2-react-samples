@@ -376,7 +376,7 @@ export class Crud extends SampleBase<{}, {}> {
     </p>
     <p style={{ fontWeight: 500 }}>Injecting Module</p>
     <p>
-        The diagram component’s features are segregated into individual feature-wise modules. To generate diagrams from an external data source, inject <code>DataBinding</code> module using <code>provide: { [DataBinding] }</code> method. To automatically arrange the objects in an Hierarchical chart, inject <code>HierarchicalTree</code> module using <code>provide: { [HierarchicalTree] }</code> method.
+        The diagram component’s features are segregated into individual feature-wise modules. To generate diagrams from an external data source, inject <code>DataBinding</code> module using <code>provide</code> method. To automatically arrange the objects in an Hierarchical chart, inject <code>HierarchicalTree</code> module using <code>provide</code> method.
     </p>
  </div>
       </div>

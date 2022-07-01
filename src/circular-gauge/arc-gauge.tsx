@@ -39,6 +39,10 @@ const SAMPLE_CSS = `
         height: 8px;
         top: calc(50% - 4px);
         border-radius: 5px;
+    }
+    #circular_gauge_sample .e-slider-container {
+        display: flex;
+        flex-direction: column;
     }`;
 
 export class ArcGauge extends SampleBase<{}, {}> {
@@ -58,7 +62,7 @@ export class ArcGauge extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section'>
+                <div id='circular_gauge_sample' className='control-section'>
                     <CircularGaugeComponent title='Progress Tracker' titleStyle={{ size: '18px' }} load={this.load.bind(this)} ref={gauge => this.gauge = gauge} id='gauge'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
@@ -100,7 +104,7 @@ export class ArcGauge extends SampleBase<{}, {}> {
                             </AxisDirective>
                         </AxesDirective>
                     </CircularGaugeComponent>
-                    <SliderComponent className='sliderwrap' id="slider" style={{width: '300px', 'marginLeft': '300px'}} type='MinRange' min={0} max={100} value={sliderValue} 
+                    <SliderComponent className='sliderwrap' id="slider" style={{width: '300px'}} type='MinRange' min={0} max={100} value={sliderValue} 
                         limits={{ enabled: true, minStart: 0, minEnd: 100 }} change={ this.sliderChange.bind(this)} ref={d => this.sliderElement = d} />
                 </div>
                 <div id="action-description">

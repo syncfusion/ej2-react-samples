@@ -77,8 +77,9 @@ export class Resources extends SampleBase<{}, {}> {
         let selectedResource: number[] = [];
         let resourceCollection: HTMLElement[] = [].slice.call(document.querySelectorAll('.e-resource'));
         resourceCollection.forEach((element: HTMLElement, index: number) => {
-            if (element.getAttribute('aria-checked') === 'true') {
-                selectedResource.push(index);
+            let resourceElement: Element = element.querySelector('.e-icons');
+            if (resourceElement && resourceElement.classList.contains('e-check')) {
+               selectedResource.push(index);
             }
         });
         let filteredData: Record<string, any>[] = [];

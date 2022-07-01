@@ -153,9 +153,9 @@ export class RemoteData extends SampleBase<{}, {}> {
         let div: HTMLElement = document.getElementById('waitingpopup') as HTMLElement;
         div.style.display = 'none';
         if (this.loaded) {
+            this.loaded = 0;
             args.chart.refresh();
-        }
-        this.loaded = 0;
+        }        
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };

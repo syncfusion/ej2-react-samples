@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-export class PropertyPane extends React.Component<{ title: string }, {}>{
+export class PropertyPane extends React.Component<{ title: string; children?: React.ReactNode }, {}>{
 
     render() {
         return (

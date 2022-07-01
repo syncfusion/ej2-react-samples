@@ -12,6 +12,9 @@ export class WebLayout extends SampleBase<{}, {}> {
     public container: DocumentEditorContainerComponent;
     public titleBar: TitleBar;
     public rendereComplete(): void {
+        window.onbeforeunload = function () {
+            return 'Want to save your changes?';
+        }
         this.container.serviceUrl = this.hostUrl + 'api/documenteditor/';
         this.container.documentEditor.pageOutline = '#E0E0E0';
         this.container.documentEditor.acceptTab = true;
@@ -41,12 +44,6 @@ export class WebLayout extends SampleBase<{}, {}> {
                 <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/how-to/change-document-view/">documentation section.</a>
                 </p>
             </div>
-            <script>{
-                window.onbeforeunload = function () {
-                    return 'Want to save your changes?';
-                }
-            }
-            </script>
         </div>);
     }
     onLoadDefault = (): void => {

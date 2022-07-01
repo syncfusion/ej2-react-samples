@@ -67,13 +67,13 @@ import { SignatureSampleOrder } from '../signature/config';
 
 export let samplesList: any = [
     {
-        'name': 'Data Grid', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
+        'name': 'Data Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
     },
     {
         'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder, 'type': 'update'
     },
     {
-        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
+        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type': 'update'
     },
     {
         'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder
@@ -88,7 +88,7 @@ export let samplesList: any = [
         'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
     },
     {
-        'name': 'Maps', 'category': 'Data Visualization', 'order': '07', 'path': 'maps', 'samples': MapSampleOrder, 'ftName' :'maps'
+        'name': 'Maps', 'category': 'Data Visualization', 'order': '07', 'path': 'maps', 'samples': MapSampleOrder, 'ftName' :'maps', 'type': 'update'
     },
     {
         'name': 'TreeMap', 'category': 'Data Visualization', 'order': '11', 'path': 'treemap', 'samples': TreemapOrder, 'ftName' :'treemap'
@@ -118,7 +118,7 @@ export let samplesList: any = [
         'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder,
     },
     {
-        'name': 'Kanban', 'category': 'Data Visualization','type': 'update', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
+        'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
     },
     {
         'name': 'Chips', 'category': 'Editors', 'order': '04', 'path': 'chips', 'samples': ChipsSampleOrder
@@ -130,7 +130,7 @@ export let samplesList: any = [
         'name': 'DocumentEditor', 'type': 'update', 'category': 'Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
     },
     {
-        'name': 'RichTextEditor',  'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder, 'type': 'update'
+        'name': 'RichTextEditor',  'category': 'Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
         'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
@@ -193,7 +193,7 @@ export let samplesList: any = [
         'name': 'Breadcrumb', 'category': 'Navigation', 'path': 'breadcrumb', 'samples': BreadcrumbSampleOrder
     },
     {
-        'name': 'Carousel', 'category': 'Navigation', 'type': 'preview', 'path': 'carousel', 'samples': CarouselSampleOrder
+        'name': 'Carousel', 'category': 'Navigation', 'path': 'carousel', 'samples': CarouselSampleOrder
     },
     {
         'name': 'Signature', 'category': 'Inputs', 'path': 'signature', 'samples': SignatureSampleOrder

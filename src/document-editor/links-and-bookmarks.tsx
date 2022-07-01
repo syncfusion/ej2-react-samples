@@ -11,6 +11,9 @@ export class HyperlinksAndBookmarksView extends SampleBase<{}, {}> {
     public container: DocumentEditorContainerComponent;
     public titleBar: TitleBar;
     public rendereComplete(): void {
+        window.onbeforeunload = function () {
+            return 'Want to save your changes?';
+        }
         this.container.serviceUrl = this.hostUrl + 'api/documenteditor/';
         this.container.documentEditor.pageOutline = '#E0E0E0';
         this.container.documentEditor.acceptTab = true;
@@ -42,12 +45,6 @@ export class HyperlinksAndBookmarksView extends SampleBase<{}, {}> {
                     </p>
                 </div>
             </div>
-            <script>{
-                window.onbeforeunload = function () {
-                    return 'Want to save your changes?';
-                }
-            }
-            </script>
         </div>);
     }
     onLoadDefault = (): void => {

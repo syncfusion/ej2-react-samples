@@ -3,6 +3,10 @@
     border-radius: 1px;
 }
 
+.e-input-group-icon.e-icons.e-sicon.e-clear-icon.e-clear-icon-hide {
+    display: none;
+}
+
 /* Render the mobile pager by default */
 @media (max-width: 3840px) {
     .e-adaptive-demo .e-pager {

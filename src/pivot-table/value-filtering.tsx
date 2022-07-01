@@ -130,7 +130,7 @@ export class ValueFilter extends SampleBase<{}, {}> {
                                         <td>
                                             Fields:
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div>
                                                 <DropDownListComponent ref={(scope) => { fieldsddl = scope; }} index={0} width={'100%'} id="fields" change={this.onFieldChange.bind(this)} dataSource={fields} />
                                             </div>
@@ -140,7 +140,7 @@ export class ValueFilter extends SampleBase<{}, {}> {
                                         <td>
                                             Measures:
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div>
                                                 <DropDownListComponent ref={(scope) => { measuresddl = scope; }} index={0} width={'100%'} id="measures" change={this.onMeasureChange.bind(this)}
                                                     dataSource={measures} fields={measureFields}></DropDownListComponent>
@@ -151,7 +151,7 @@ export class ValueFilter extends SampleBase<{}, {}> {
                                         <td>
                                             Condition:
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div className='conditionscls'>
                                                 <DropDownListComponent ref={(scope) => { operatorddl = scope; }} value={'DoesNotEquals'} width={'100%'} id="conditions" change={this.onOperatorChange.bind(this)} dataSource={operators} />
                                             </div>
@@ -161,7 +161,7 @@ export class ValueFilter extends SampleBase<{}, {}> {
                                         <td>
                                             Value 1:
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div className="value1cls">
                                                 <NumericTextBoxComponent id="value1" ref={(scope) => { valueInput1 = scope; }} value={0}
                                                     width={'100%'} change={this.onValue1Change.bind(this)} placeholder='Example: 9590'>
@@ -173,7 +173,7 @@ export class ValueFilter extends SampleBase<{}, {}> {
                                         <td>
                                             Value 2:
                                         </td>
-                                        <td style={{ paddingBottom: '16px' }}>
+                                        <td>
                                             <div className="value2cls">
                                                 <NumericTextBoxComponent id="value2" ref={(scope) => { valueInput2 = scope; }} value={0}
                                                     width={'100%'} change={this.onValue2Change.bind(this)} placeholder='Example: 17500'>

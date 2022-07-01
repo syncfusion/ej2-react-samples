@@ -87,7 +87,7 @@ export class FieldList extends SampleBase<{}, {}> {
                     <PivotViewComponent id='PivotView' ref={d => this.pivotObj = d} enginePopulated={this.afterPivotPopulate.bind(this)} width={'99%'} height={'580'} gridSettings={{ columnWidth: 140 }}>
                     <Inject services={[CalculatedField, PivotFieldList]} />
                     </PivotViewComponent>
-                    <PivotFieldListComponent id='PivotFieldList' ref={d => this.fieldlistObj = d} enginePopulated={this.afterPopulate.bind(this)} dataSourceSettings={dataSourceSettings} renderMode={"Fixed"} allowCalculatedField={true} load={this.onLoad} dataBound={this.ondataBound.bind(this)}>
+                    <PivotFieldListComponent id='PivotFieldList' ref={(d: any) => this.fieldlistObj = d} enginePopulated={this.afterPopulate.bind(this)} dataSourceSettings={dataSourceSettings} renderMode={"Fixed"} allowCalculatedField={true} enableFieldSearching={true} load={this.onLoad} dataBound={this.ondataBound.bind(this)}>
                         <Inject services={[CalculatedField]} />
                     </PivotFieldListComponent>
                 </div>

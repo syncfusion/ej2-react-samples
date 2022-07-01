@@ -49,7 +49,7 @@ export class Scatter extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         title='Height vs Weight'
                         loaded={this.onChartLoad.bind(this)}
-                        tooltip={{ enable: true, format: 'Weight: <b>${point.x} kg</b> <br/> Height: <b>${point.y}cm</b>' }}
+                        tooltip={{ enable: true, format: 'Weight: <b>${point.y} kg</b> <br/> Height: <b>${point.x}cm</b>' }}
                         width={Browser.isDevice ? '100%' : '80%'}
                         chartArea={{ border: { width: 0 } }}
                     >

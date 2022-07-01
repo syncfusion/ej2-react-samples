@@ -1,23 +1,27 @@
-
 .kanban-card-template .e-card table {
     table-layout: fixed;
+}
+
+#kanbanEditForm .e-float-input {
+    margin-top: 0px;
 }
 
 .kanban-card-template .e-card .e-time {
     display: inline-flex;
 }
 .kanban-card-template .e-card .e-kanban-date {
-    padding-left: 3px;
+    padding-right: 3px;
 }
-.kanban-card-template .e-card .e-date {
+  .kanban-card-template .e-card .e-date {
     display: contents;
 }
 .kanban-card-template .e-card .e-size {
     color: #b8860b
 }
-.e-kanban-dialog .e-float-input .e-control-wrapper{
+.kanban-card-template .e-float-input .e-control-wrapper{
     margin-top: 0px;
 }
+
 .kanban-card-template .e-card .e-mins {
     padding-left: 3px;
 }

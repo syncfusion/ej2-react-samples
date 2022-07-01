@@ -35,6 +35,8 @@
     clear: both;
 }
 
+.bootstrap-dark #rteUseCase .control-wrapper .header, .bootstrap5-dark #rteUseCase .control-wrapper .header, .fluent-dark #rteUseCase .control-wrapper .header, 
+.fabric-dark #rteUseCase .control-wrapper .header, .material-dark #rteUseCase .control-wrapper .header, .tailwind-dark #rteUseCase .control-wrapper .header, 
 .highcontrast #rteUseCase .control-wrapper .header {
     color: #fff;    
 }
@@ -85,6 +87,8 @@
     color: #000000;
 }
 
+.bootstrap-dark #rteUseCase .control-wrapper .explain, .bootstrap5-dark #rteUseCase .control-wrapper .explain, .fluent-dark #rteUseCase .control-wrapper .explain, 
+.fabric-dark #rteUseCase .control-wrapper .explain, .material-dark #rteUseCase .control-wrapper .explain, .tailwind-dark #rteUseCase .control-wrapper .explain, 
 .highcontrast #rteUseCase .control-wrapper .explain {
     color: #fff;
 }
@@ -229,6 +233,8 @@
     overflow-wrap: break-word;
 }
 
+.bootstrap-dark #rteUseCase .control-wrapper .posting, .bootstrap5-dark #rteUseCase .control-wrapper .posting, .fluent-dark #rteUseCase .control-wrapper .posting, 
+.fabric-dark #rteUseCase .control-wrapper .posting, .material-dark #rteUseCase .control-wrapper .posting, .tailwind-dark #rteUseCase .control-wrapper .posting, 
 .highcontrast #rteUseCase .control-wrapper .posting {
     color: #fff;
 }
@@ -239,6 +245,8 @@
     font-size: 13px;
 }
 
+.bootstrap-dark #rteUseCase .control-wrapper .authorname, .bootstrap5-dark #rteUseCase .control-wrapper .authorname, .fluent-dark #rteUseCase .control-wrapper .authorname, 
+.fabric-dark #rteUseCase .control-wrapper .authorname, .material-dark #rteUseCase .control-wrapper .authorname, .tailwind-dark #rteUseCase .control-wrapper .authorname, 
 .highcontrast #rteUseCase .control-wrapper .authorname {
     color: #fff;
 }
@@ -303,3 +311,13 @@
     width: auto;
     margin: 0;
 }
+.bootstrap-dark #rteUseCase .control-wrapper .tag,
+.bootstrap5-dark #rteUseCase .control-wrapper .tag, 
+.fluent-dark #rteUseCase .control-wrapper .tag,
+.fabric-dark #rteUseCase .control-wrapper .tag, 
+.material-dark #rteUseCase .control-wrapper .tag, 
+.tailwind-dark #rteUseCase .control-wrapper .tag, 
+.highcontrast #rteUseCase .control-wrapper .tag{
+    color: #fff;
+    background: #484644;
+}   

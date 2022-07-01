@@ -5,13 +5,9 @@
     border-collapse: collapse;
 }
 
-#target .e-dialog {
-  width: 452px;
-}
-
-.fluent.e-bigger #target .e-dialog,
-.fluent-dark.e-bigger #target .e-dialog {
-  width: 502px;
+.fluent.e-bigger .control-section .e-dialog,
+.fluent-dark.e-bigger .control-section .e-dialog {
+  width: 502px !important;
 }
 
 #poschange {

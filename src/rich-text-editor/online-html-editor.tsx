@@ -54,7 +54,7 @@ export class OnlineHtmlEditor extends SampleBase<{}, {}> {
   }
 
   private updateHtmlValue(): void {
-    this.rteObj.value = this.myCodeMirror.getValue();
+    this.textArea.innerHTML = this.myCodeMirror.getValue();
   }
 
   private onChange(): void {

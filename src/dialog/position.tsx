@@ -48,7 +48,7 @@ export class Positioning extends SampleBase<{}, { hideDialog: boolean; }> {
       <div className='control-pane'>
         <div id='target' className='col-lg-12 control-section dialog-position'>
           <button className='e-control e-btn dlgbtn' ref={this.buttonRef} onClick={this.buttonClick.bind(this)} id='dialogBtn'>Open Dialog</button>
-          <DialogComponent id='positionDialog' header='Choose a Dialog Position' visible={this.state.hideDialog} showCloseIcon={true} position={this.position} footerTemplate={this.footerTemplate} ref={positionDialog => this.defaultDialogInstance = positionDialog}
+          <DialogComponent id='positionDialog' header='Choose a Dialog Position' width='452px' visible={this.state.hideDialog} showCloseIcon={true} position={this.position} footerTemplate={this.footerTemplate} ref={positionDialog => this.defaultDialogInstance = positionDialog}
             target='#target' open={this.dialogOpen.bind(this)} close={this.dialogClose.bind(this)} closeOnEscape={false}>
             <table id='poschange'>
               <tbody>

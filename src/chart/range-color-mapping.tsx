@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    ColumnSeries, Category, Tooltip, ILoadedEventArgs, Legend, ChartTheme, RangeColorSettingsDirective, RangeColorSettingDirective
+    ColumnSeries, Category, Highlight, DataLabel, Tooltip, ILoadedEventArgs, Legend, ChartTheme, RangeColorSettingsDirective, RangeColorSettingDirective
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
@@ -25,9 +25,9 @@ export let data: any[] = [
     { x: "Dec", y: 9.9 }
 ];
 
-export const color1 = ['#FFFF99'];
-export const color2 = ['#FFA500'];
-export const color3 = ['#FF4040'];
+export const color1 = ['#F9D422'];
+export const color2 = ['#F28F3F'];
+export const color3 = ['#E94F53'];
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -43,29 +43,29 @@ export class RangeColorMapping extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section'>
                     <ChartComponent id='charts' style={{ textAlign: "center" }}
-                        primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, title: 'Months' }}
+                        highlightMode='Point'
+                        highlightPattern='DiagonalForward'
+                        primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 } }}
 
                         primaryYAxis={{ lineStyle: { width: 0 },
                         majorTickLines: { width: 0 },
                         minorTickLines: { width: 0 },
-                        labelFormat: '{value}°C',
-                        title: 'Temperature'}}
+                        labelFormat: '{value}°C'}}
 
                         title= "USA CLIMATE - WEATHER BY MONTH" loaded={this.onChartLoad.bind(this)}
                         load={this.load.bind(this)}
                         chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '80%'}
                         legendSettings= {{
-                            mode: 'Range'
-                        }}
-                        tooltip={{
-                            enable: true
+                            mode: 'Range',
+							visible: true,
+							toggleVisibility: false
                         }}>
-                        <Inject services={[ColumnSeries, Tooltip, Category, Legend]} />
+                        <Inject services={[ColumnSeries, Highlight, DataLabel, Tooltip, Category, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} name='USA' xName='x' yName='y' type= 'Column' 
                                 animation= {{ enable: false }} cornerRadius={ {
-                                    topLeft: 10, topRight: 10}}>
+                                    topLeft: 10, topRight: 10}} marker={{ dataLabel: { visible: true, position: "Outer" }}}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                         <RangeColorSettingsDirective>
@@ -76,34 +76,32 @@ export class RangeColorMapping extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample illustrates the USA climate with the month-wise data. Columns are differentiated using color codes
-                        based on
-                        the temperature ranges for better visualization. By toggling the legend items you can control the visibility of
-                        the
+                    <p>This sample illustrates the USA climate with the month-wise data. Columns are differentiated using color codes based on
+                        the temperature ranges for better visualization. By toggling the legend items you can control the visibility of the
                         columns within the ranges.
-
-            </p>
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the column type charts. Column type charts are used for
-                        comparing
-                        the frequency, count, total or average of data in different categories. Column segment color is applied based on
-        their <code>y</code>
-        value ranges by using <code>RangeColorSettingsDirective</code>.
-    <p><code>RangeColorSettingsDirective</code> properties are,</p>
-                        <p><code>label</code> - Specify the name for the range mapping which will be displayed in the legend item.</p>
-                        <p><code>start</code> - Specify the start value of the color mapping range.</p>
-                        <p><code>end</code> - Specify the end value of the color mapping range.</p>
-                        <p><code>colors</code> - Specify the fill colors of point those lies on the given range, if multiple colors
-        mentioned, then gradient will be applied.</p>
+                        In this example, column segment color is applied based on their <code>y</code> value ranges by using the <code>RangeColorSettingsDirective</code>. 
+                        You can use below properties in the <code>RangeColorSettingsDirective</code>to customize the data under range.
                     </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch
-                        enabled devices.
-    </p>
 
+                    <ul>
+                      <li>
+                        <p><code>label</code> - Specify the name for the range mapping which will be displayed in the legend item.</p>
+                      </li>
+                      <li>
+                        <p><code>start</code> - Specify the start value of the color mapping range.</p>
+                      </li>
+                      <li>
+                        <p><code>end</code> - Specify the end value of the color mapping range.</p>
+                      </li>
+                      <li>
+                        <p><code>colors</code> - Specify the fill colors of point those lies on the given range. If multiple colors are
+                        mentioned, then gradient will be applied.</p>
+                      </li>
+                    </ul>                   
                 </div>
             </div>
         )

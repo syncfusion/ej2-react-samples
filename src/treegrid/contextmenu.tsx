@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Edit,
-  Toolbar, ContextMenu, Sort, Resize, ExcelExport, PdfExport } from '@syncfusion/ej2-react-treegrid';
+  Toolbar, ContextMenu, Sort, Resize, ExcelExport, PdfExport, RowDD } from '@syncfusion/ej2-react-treegrid';
 import { ContextMenuItem } from '@syncfusion/ej2-react-grids';
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
@@ -11,7 +11,7 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
   public contextMenuItems: any= ['AutoFit', 'AutoFitAll',
         'SortAscending', 'SortDescending', 'Edit', 'Delete', 'Save',
         'Cancel', 'PdfExport', 'ExcelExport', 'CsvExport', 'FirstPage', 'PrevPage',
-        'LastPage', 'NextPage'];
+        'LastPage', 'NextPage','Indent', 'Outdent'];
   public validationRule: Object = { required: true};
   public validationRule1: Object = { date: true};
   public validationRule2: Object = { required: true, number: true};
@@ -39,7 +39,7 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
                 edit={this.editparams} />
               <ColumnDirective field='priority' headerText='Priority' width='90' />
             </ColumnsDirective>
-            <Inject services={[Page, Edit, Toolbar, ContextMenu, Sort, Resize, ExcelExport, PdfExport]}/>
+            <Inject services={[Page, Edit, Toolbar, ContextMenu, Sort, Resize, ExcelExport, PdfExport, RowDD]}/>
           </TreeGridComponent>
         </div>
         <div id="action-description">
@@ -73,6 +73,8 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
                     <li><code>Below</code> - Add a new row below the selected row</li>
                 </ul>
             </li>
+            <li><code>Indent</code> - Indents the record to one level of hierarchy.</li>
+            <li><code>Outdent</code> - Outdent the record to one level of hierarchy.</li>
     </ul>
 
     <p>

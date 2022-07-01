@@ -55,7 +55,7 @@ export class Default extends SampleBase<{}, {}> {
           </div></div>
         <div id="action-description">
           <p>
-            This sample demonstrates the basic rendering of the <strong>React Carousel</strong> component with items.
+            This sample demonstrates the basic rendering of the <a href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component with items.
           </p>
         </div>
         <div id="description">

@@ -4,8 +4,8 @@
     margin-left: auto;
 }
 .e-kanban.kanban-workflow .e-card-kanban-image img {
-    height: 100%;
-    width: 100%;
+    height: inherit;
+    width: inherit;
     border-radius: 50%;
 }
 .e-kanban.kanban-workflow .e-card .e-card-tag-field {

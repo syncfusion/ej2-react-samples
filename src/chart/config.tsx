@@ -236,7 +236,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the funnel charts.'
     },
     {
-        'path': 'chart/pie-legend', 'component': 'Doughnut', 'name': 'Pie with Legend', 'order': '09', 'type':'update','category': 'Accumulation Charts',
+        'path': 'chart/pie-legend', 'component': 'Doughnut', 'name': 'Pie with Legend', 'order': '09','category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the doughnut charts.'
     },
     {
@@ -388,7 +388,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
     },
     {
-        'path': 'chart/range-color-mapping', 'component': 'RangeColorMapping', 'name': 'Range Color Mapping', 'order': '13', 'category': 'Chart Customization',
+        'path': 'chart/range-color-mapping', 'type': 'update', 'component': 'RangeColorMapping', 'name': 'Range Color Mapping', 'order': '13', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range color mapping.'
     },
     {
@@ -406,6 +406,10 @@ export const ChartSampleOrder: Object = [
     {
         'path': 'chart/range-selection', 'component': 'RangeSelection', 'name': 'Range Selection', 'order': '15', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the range selection behavior in chart.'
+    },    
+    {
+        'path': 'chart/keyboard', 'component': 'KeyboardNavigation', 'type': 'new', 'name': 'Keyboard Navigation', 'order': '15', 'category': 'User Interaction',
+        'description': 'This demo for Essential JS2 Chart control shows how to use the keyboard for the charts functions.'
     },
     {
         'path': 'chart/crosshair', 'component': 'CrosshairChart', 'name': 'Crosshair', 'order': '15', 'category': 'User Interaction',

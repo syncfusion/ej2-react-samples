@@ -53,13 +53,13 @@ export class DataBinding extends SampleBase<{}, {}> {
         <div className='control-section db-carousel-section'>
           <div className='control carousel-sample'>
             {/* Render the Carousel Component */}
-            <CarouselComponent cssClass="db-carousel" animation={{ effect: 'Fade' }} dataSource={this.productDetails} buttonsVisibility={this.showButtons}
+            <CarouselComponent cssClass="db-carousel" animationEffect="Fade" dataSource={this.productDetails} buttonsVisibility={this.showButtons}
               itemTemplate={this.productTemplate.bind(this)}>
             </CarouselComponent>
           </div></div>
         <div id="action-description">
           <p>
-            This sample demonstrates the basic rendering of the <strong>React Carousel</strong> component.
+            This sample demonstrates the basic rendering of the <a href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component.
           </p>
         </div>
         <div id="description">
@@ -67,9 +67,6 @@ export class DataBinding extends SampleBase<{}, {}> {
             In this demo, products and its details available in our Syncfusion has been shown as slide show. The data to the
             React Carousel component is bound using <code>dataSource</code> property. Also,
             <code>itemTemplate</code> is used to customize the slides of the carousel.
-          </p>
-          <p>
-            More information about dataSource binding to the React Carousel component can be found in this <a target='_blank' href="https://ej2.syncfusion.com/javascript/documentation/carousel/getting-started/">documentation section</a>.
           </p>
         </div>
       </div>

@@ -77,12 +77,12 @@ export class CodeEditor extends SampleBase<{}, {}> {
         return(
             <div className="splitter-editor-content">
             <h3 className="h3">JavaScript</h3>
-            <div className="code-preview">
-                <span>var</span> image = document.getElementById("custom-image");
-                <div>image.addEventListener("click", function() &#123; </div>
-                    <div style={lastPaneStyle}>// Code block for click action</div>
-                <span> &#125; </span>
-            </div>
+                <div className="code-preview">
+                    <span>var</span> image = document.getElementById("custom-image");
+                    <div>image.addEventListener("click", function() &#123; </div>
+                    <div style={lastPaneStyle}> Code block for click action </div>
+                    <span> &#125; </span>
+                </div>
             </div>
         );
     };

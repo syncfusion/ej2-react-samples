@@ -37,7 +37,7 @@ export class Basic extends SampleBase<{}, {}> {
         );
     };
 
-    // vertical Splitter content
+    // vertical Splitter content.
     private vPaneContent1(): JSX.Element {
         return (
             <div className="splitter-content">

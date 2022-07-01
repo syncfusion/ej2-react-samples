@@ -84,7 +84,7 @@ export class Templates extends SampleBase<{}, {}> {
         <div className='control-section template-carousel-section'>
           <div className='control carousel-sample'>
             {/* Render the Carousel Component */}
-            <CarouselComponent cssClass="templateCarousel" animation={{ effect: 'Fade' }} buttonsVisibility="Visible" indicatorsTemplate={this.indicatorTemplate.bind(this)}
+            <CarouselComponent cssClass="templateCarousel" animationEffect="Fade" buttonsVisibility="Visible" indicatorsTemplate={this.indicatorTemplate.bind(this)}
               previousButtonTemplate={this.previousButtonTemplate.bind(this)} nextButtonTemplate={this.nextButtonTemplate.bind(this)}>
               <CarouselItemsDirective>
                 <CarouselItemDirective template={this.itemTemplate1.bind(this)} />
@@ -97,7 +97,7 @@ export class Templates extends SampleBase<{}, {}> {
           </div></div>
         <div id="action-description">
           <p>
-            This sample demonstrates the customization of the <strong>React Carousel</strong> component using various templates.
+            This sample demonstrates the customization of the <a href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component using various templates.
           </p>
         </div>
         <div id="description">
