@@ -14,13 +14,10 @@ import { PropertyPane } from '../common/property-pane';
 import { Alignment } from "@syncfusion/ej2-charts";
 import * as data from './treemap-data/drilldown-sample.json';
 let datasource: any = data as any;
-
-// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
 		}`;
-		// custom code end
 
 export class Drilldown extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
@@ -66,14 +63,14 @@ export class Drilldown extends SampleBase<{}, {}> {
 		{ text: 'Far', value: 'Far' },
 		{ text: 'Center', value: 'Center' }		
 	];
-	//custom code start
 	public load(args: ILoadedEventArgs): void {
+		//custom code start
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = ((theme.charAt(0).toUpperCase() +
 		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
+		// custom code end
 	}
-	// custom code end
 	/* tslint:disable:no-string-literal */
 	public drillStart(args: IDrillStartEventArgs): void {
 		if (args.item[Object.keys(args.item)[0]].length === 1) {

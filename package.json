@@ -1,6 +1,6 @@
 {
   "name": "@syncfusion/ej2-react-samples",
-  "version": "20.2.36",
+  "version": "20.2.43",
   "description": "Examples of React UI Components",
   "author": "Syncfusion Inc.",
   "license": "SEE LICENSE IN license",
@@ -74,7 +74,7 @@
     "graceful-fs": "^4.2.4",
     "gulp": "^4.0.2",
     "gulp-sass": "^3.1.0",
-    "gulp-typescript": "^3.1.6",
+    "gulp-typescript": "3.1.6",
     "gulp-webpack": "^1.5.0",
     "gulp4-run-sequence": "^1.0.1",
     "postcss-loader": "2.0.8",

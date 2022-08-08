@@ -1,5 +1,5 @@
 /**
- * Projection sample
+ * Annotation sample
  */
 
 import * as React from "react";
@@ -11,7 +11,6 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -35,7 +34,6 @@ const SAMPLE_CSS = `
         color: white;
         font-size: 25px;
     }`;
-    // custom code end
 export class AnnotationMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     render() {
@@ -135,12 +133,14 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
-    // custom code start
+    
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        // custom code end
     };
-    // custom code end
+    
 }

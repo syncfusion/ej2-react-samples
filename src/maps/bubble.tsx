@@ -1,5 +1,5 @@
 /**
- * Projection sample
+ * Bubble sample
  */
 
 import * as React from "react";
@@ -17,12 +17,10 @@ let datasource: any = data as any;
 interface Data {
     value?: number;
 }
-// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-    // custom code end
 export class BubbleMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     private bubbleRendering(args: IBubbleRenderingEventArgs): void {
@@ -115,12 +113,14 @@ export class BubbleMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
-    // custom code start
+    
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        // custom code end
     };
-    // custom code end
+    
 }

@@ -1,5 +1,5 @@
 /**
- * Projection sample
+ * ColorMapping sample
  */
 
 import * as React from "react";
@@ -15,7 +15,6 @@ import {
 import * as data from './map-data/color-mapping.json';
 let datasource: any = data as any;
 import { SampleBase } from '../common/sample-base';
-// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -44,7 +43,6 @@ const SAMPLE_CSS = `
     .tailwind .opacityCheckbox, .tailwind-dark .opacityCheckbox, .fabric .opacityCheckbox, .fabric-dark .opacityCheckbox{
         margin-top: -7px;
     }`;
-    // custom code end
 export class ColorMap extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     private typeElement: DropDownListComponent;
@@ -215,8 +213,9 @@ export class ColorMap extends SampleBase<{}, {}> {
             this.opacityElement.disabled = false;
         }
     }
-    // custom code start
+    
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
@@ -240,8 +239,9 @@ export class ColorMap extends SampleBase<{}, {}> {
             sliderMax.style.visibility = "hidden";
             opacityCheck.style.visibility = "hidden";        
         }      
+        //custom code end
     };
-    //custom code end
+    
     
     render() {
         return (

@@ -1,6 +1,6 @@
 
 /**
- * Projection sample
+ * Marker sample
  */
 
 import * as React from "react";
@@ -161,12 +161,14 @@ export class MarkerMaps extends SampleBase<{}, {}> {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
-    // custom code start
+    
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        // custom code end
     };
-    // custom code end
+    
 }

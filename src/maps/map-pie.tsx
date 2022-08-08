@@ -1,5 +1,5 @@
 /**
- * Projection sample
+ * Map Pie sample
  */
 
 import * as React from "react";
@@ -311,14 +311,16 @@ export class PieMaps extends SampleBase<{}, {}> {
         chart5.appendTo('#marker6');
         this.chartCollection.push(chart5);
     };
-    // custom code start
+    
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        // custom code end
     };
-    // custom code end
+    
     public resize(args: IResizeEventArgs): void {
 		for (let i: number = 0; i < this.chartCollection.length; i++) {			
 			this.chartCollection[i].destroy();

@@ -15,14 +15,14 @@ export class GradientColor extends SampleBase<{}, {}> {
     private circulargauge: CircularGaugeComponent;
     public gradientType: DropDownList; public element: DropDownList;
     private loaded: boolean = false;
-    // custom code start
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        // custom code end
     }
-    // custom code end
     public rangeLinearGradient : Object = {
         startValue: '0%',
         endValue: '100%',

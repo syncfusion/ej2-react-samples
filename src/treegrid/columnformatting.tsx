@@ -99,7 +99,7 @@ export class ColumnFormat extends SampleBase<{}, {}> {
                      </td>
                      <td style={{ width: '70%', paddingRight: '10px' }}>
                         <div>
-                        <DropDownListComponent width="100px" id="formatter" change={this.change2.bind(this)}
+                        <DropDownListComponent width="100px" id="format" change={this.change2.bind(this)}
                             dataSource={this.priceFormat} fields={{ text: 'format', value: 'id' }} value="c2"
                             ref={dropdown=> this.dropdownObj2 = dropdown} />
                         </div>

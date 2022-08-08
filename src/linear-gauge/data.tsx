@@ -21,8 +21,8 @@ const SAMPLE_CSS = `
     }`;
 
 export class Data extends SampleBase<{}, {}> {
-    // custom code start
     public load1(args1: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args1.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
@@ -32,8 +32,10 @@ export class Data extends SampleBase<{}, {}> {
                     'float:left" src="src/linear-gauge/images/Running1.svg" /></span><p style="float:left;' +
                     'margin-left:10px;">Running</p></div>';
             }
+        // custom code end
     }
     public load2(args1: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args1.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
@@ -43,8 +45,10 @@ export class Data extends SampleBase<{}, {}> {
                     'float:left" src="src/linear-gauge/images/Cycling1.svg" /></span><p style="float:left;' +
                     'margin-left:10px;">Cycling</p></div>';
             }
+        // custom code end
     }
     public load3(args1: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args1.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
@@ -54,8 +58,9 @@ export class Data extends SampleBase<{}, {}> {
                     'float:left" src="src/linear-gauge/images/Walking1.svg" /></span><p style="float:left;' +
                     'margin-left:10px;">Walking</p></div>';
             }
+        // custom code end
     }
-    // custom code end
+    
     render() {
         return (
             <div className='control-pane'>

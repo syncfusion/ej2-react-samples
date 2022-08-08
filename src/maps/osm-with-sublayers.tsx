@@ -1,5 +1,5 @@
 /**
- * OSM sample
+ * OSM With SubLayer sample
  */
 
 import * as React from "react";
@@ -84,12 +84,14 @@ export class OSMSubLayer extends SampleBase<{}, {}> {
             </div>
         )
     }
-    // custom code start
+    
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.maps.theme = ((theme.charAt(0).toUpperCase() +
         theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        // custom code end
     };
-    // custom code end
+    
 }

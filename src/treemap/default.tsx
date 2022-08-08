@@ -10,26 +10,24 @@ import {
 import { SampleBase } from '../common/sample-base';
 import * as data from './treemap-data/car-sales.json';
 let datasource: any = data as any;
-// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
 		}`;
-		// custom code end
-
 
 export class Default extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
 	private prevTime: Date;
 	private curTime: Date;
-	// custom code start
 	public load(args: ILoadedEventArgs): void {
+		// custom code start
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = ((theme.charAt(0).toUpperCase() +
 		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
+		// custom code end
 	}
-	// custom code end
+	
 
 	/* tslint:disable:no-string-literal */
 	public itemMove(args: IItemMoveEventArgs): void {

@@ -15,23 +15,21 @@ import { SampleBase } from '../common/sample-base';
 import * as data from './treemap-data/continent_data.json';
 AccumulationChart.Inject(AccumulationTooltip, PieSeries, DataLabel, AccumulationChart);
 let datasource: any = data as any;
-// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-// custom code end
 export class Pie extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
-	// custom code start
 	public load(args: ILoadedEventArgs): void {
+		// custom code start
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = ((theme.charAt(0).toUpperCase() +
 		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
+		// custom code end
 	}
-	// custom code end
-
+	
 	public loaded(args: ILoadedEventArgs): void {
 		let template: Element = document.getElementById(args.treemap.element.id + '_Label_Template_Group');
 		if (template) {			

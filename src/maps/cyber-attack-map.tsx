@@ -1,5 +1,5 @@
 /**
- * Default map sample
+ * Cyber Attack sample
  */
  //tslint:disable
 import * as React from "react";
@@ -295,14 +295,17 @@ export class CyberAttackMaps extends SampleBase<{}, {}> {
         </div>
         )
     }
-    // custom code start
+    
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        // custom code end
     };
     public loaded(args: ILoadedEventArgs): void {
+        // custom code start
         let lines: NavigationLineSettingsModel[] = args.maps.layers[0].navigationLineSettings;
         for (let i: number = 0; i < lines.length; i++) {
             let line: HTMLElement = document.getElementById('container_LayerIndex_0_NavigationIndex_' + i + '_Line0');
@@ -337,6 +340,7 @@ export class CyberAttackMaps extends SampleBase<{}, {}> {
             }
         }
         }
+        // custom code end
     }
-    // custom code end
+    
 }

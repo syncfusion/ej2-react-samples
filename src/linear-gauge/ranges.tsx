@@ -19,14 +19,15 @@ export class Ranges extends SampleBase<{}, {}> {
     private startWidthElement: HTMLInputElement;
     private endWidthElement: HTMLInputElement;
     private colorElement: HTMLInputElement;
-    // custom code start
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
+        // custom code end
     }
-    // custom code end
+    
     // Code for Property Panel
     private indexChange() {
         this.startElement.value = this.gaugeInstance.axes[0].ranges[parseInt(this.indexElement.value as string, 10)].start.toString();

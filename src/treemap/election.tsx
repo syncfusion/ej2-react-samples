@@ -13,12 +13,10 @@ import { SampleBase } from '../common/sample-base';
 import * as data from './treemap-data/election-data.json';
 import { IResizeEventArgs } from "@syncfusion/ej2-charts";
 let datasource: any = data as any;
-// custom code start
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-// custom code end
 export class Legend extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
 	private legendElement: DropDownListComponent;
@@ -95,14 +93,16 @@ export class Legend extends SampleBase<{}, {}> {
 		}
 		this.treemapInstance.refresh();
 	}
-// custom code start
+
 	public load(args: ILoadedEventArgs): void {
+		// custom code start
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = ((theme.charAt(0).toUpperCase() +
 		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
+		// custom code end
 	}
-	// custom code end
+	
 	public resize(args: IResizeEventArgs): void {
 		if (args.currentSize.width > args.currentSize.height && this.treemapInstance.legendSettings.position === 'Auto') {
 				this.treemapInstance.legendSettings.orientation = 'Vertical';

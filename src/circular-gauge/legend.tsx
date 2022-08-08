@@ -24,14 +24,15 @@ export class Circle extends SampleBase<{}, {}> {
     private positionElement: DropDownListComponent;
     public legendPosition: DropDownList; public rangeColor: DropDownList; public pointerColor: DropDownList;
     private loaded: boolean = false;
-    // custom code start
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        // custom code end
     }
-    // custom code end
+    
     // Code for Property Panel
 
     private positionlist: { [key: string]: Object }[] = [

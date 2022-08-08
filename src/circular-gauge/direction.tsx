@@ -22,14 +22,15 @@ export class Direction extends SampleBase<{}, {}> {
     public onLabelRender(args: IAxisLabelRenderEventArgs): void {
         args.text = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', ''][args.value];
     };
-    // custom code start
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        // custom code end
     }
-    // custom code end
+    
     // Code for Property Panel
     public onChartLoad(args: {}): void {
         if (!this.loaded) {

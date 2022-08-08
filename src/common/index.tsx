@@ -745,9 +745,6 @@ function processResize(e: any): void {
   if (isVisible('.sb-mobile-overlay')) {
     removeMobileOverlay();
   }
-  if (switcherPopup) {
-    switcherPopup.refresh();
-  }
 }
 
 /**

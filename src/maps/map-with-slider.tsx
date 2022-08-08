@@ -43,14 +43,16 @@ const SAMPLE_CSS = `
 export class MapSlider extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     private sliderElement: SliderComponent;
-    // custom code start
+    
     public load(args: ILoadEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        // custom code end
     };
-    // custom code end
+    
     
     public loaded(args: ILoadedEventArgs): void {
         if (!isNullOrUndefined(document.getElementById('mapslider_Annotation_0'))) {

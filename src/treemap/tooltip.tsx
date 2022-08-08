@@ -17,14 +17,16 @@ const SAMPLE_CSS = `
 
 export class Tooltip extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
-	// custom code start
+	
 	public load(args: ILoadedEventArgs): void {
+		// custom code start
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
 		args.treemap.theme = ((theme.charAt(0).toUpperCase() +
 		theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as TreeMapTheme;
+		// custom code end
 	}
-	// custom code end
+	
 	render() {
 		return (
 			<div className='control-pane'>

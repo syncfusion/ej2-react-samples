@@ -34,7 +34,7 @@ export class Default extends SampleBase<{}, {}> {
 }
 
 ```
-Refer the  [sample](https://gitlab.syncfusion.com/essential-studio/development/src/grid/default.tsx ) for example sample component.
+Refer the  [sample](https://github.com/syncfusion/ej2-react-samples/blob/master/src/grid/default.tsx) for example sample component.
 
 Note: Do not use whitespace at any cause in file’s name. Use “-” instead of space.
 
@@ -66,7 +66,7 @@ To add  the "propertypane”  in the sample use tag `PropertyPane` from "common/
             </PropertyPane>
 
 ```
-Refer the  [PropertyPanesample](https://gitlab.syncfusion.com/essential-studio/development/src/grid/gridlines.tsx ) for propertyPane example.
+Refer the [PropertyPanesample](https://github.com/syncfusion/ej2-react-samples/blob/master/src/grid/adaptive.tsx) for propertyPane example.
 
 ## Add Routing for your sample
 
@@ -82,11 +82,15 @@ export const GridSampleOrder:Object = [
 
 **Fields Description:**
 
- path : Specifies the sample router path. Path must be same as "sampleFolderName/sampleFileName".
- component: Specifies the name of the sample component.
- name: Specifies the sample name to be displayed.
- order: Specifies the order in which sample to be displayed.
- category: Specifies the sample category.
+ * _path :_ Specifies the sample router path. Path must be same as "sampleFolderName/sampleFileName".
+  
+ * _component :_ Specifies the name of the sample component.
+  
+ * _name :_ Specifies the sample name to be displayed.
+  
+ * _order :_ Specifies the order in which sample to be displayed.
+  
+ * _category :_ Specifies the sample category.
 
 *Note: set **hideOnDevice** as true if you want to hide a sample in devices.*
 

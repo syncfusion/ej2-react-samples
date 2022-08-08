@@ -1,5 +1,5 @@
 /**
- * Projection sample
+ * Drilldown sample
  */
 
 import * as React from "react";
@@ -233,20 +233,24 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
     }
     //public onMapsLoad(args: ILoadedEventArgs): void {
     //};
-    // custom code start
+    
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        // custom code end
     };
-    public loaded(args: ILoadEventArgs): void {        
+    public loaded(args: ILoadEventArgs): void { 
+        // custom code start       
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
         let mapsSVG: HTMLElement = document.getElementById('mapdrilldown_svg') as HTMLElement;
         if (mapsSVG) {
             mapsSVG.addEventListener('touchmove', (e: MouseEvent) => { touchmove = true; }, false);
         }
+        // custom code end
     };
-// custom code end
+
 }

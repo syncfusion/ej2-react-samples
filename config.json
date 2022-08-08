@@ -124,6 +124,7 @@
 		"routes",
 		"online",
 		"editor",
-		"richtexteditor"
+		"richtexteditor",
+		null
 	]
 }

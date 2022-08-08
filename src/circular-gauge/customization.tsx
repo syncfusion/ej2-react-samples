@@ -29,15 +29,15 @@ export class Customization extends SampleBase<{}, {}> {
     private loaded: boolean = false;
     private pointerValueElement: HTMLInputElement;
     public barColor: DropDownList; public rangeColor: DropDownList; public pointerColor: DropDownList;
-    // custom code start
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         this.usageGauge.appendTo('#customization-container1');
+        // custom code end
     }
-    // custom code end
     public random(): void {
         if (this.isClicked) {
             this.gauge1.destroy();

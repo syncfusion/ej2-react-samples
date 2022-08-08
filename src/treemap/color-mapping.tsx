@@ -198,8 +198,8 @@ export class ColorMapping extends SampleBase<{}, {}> {
             this.treemapInstance.refresh();            
         }
     }
-    // custom code start
 	public load(args: ILoadEventArgs): void {
+        // custom code start
 		let theme: string = location.hash.split('/')[1];
 		theme = theme ? theme : 'Material';
         args.treemap.theme = ((theme.charAt(0).toUpperCase() +
@@ -223,8 +223,9 @@ export class ColorMapping extends SampleBase<{}, {}> {
             sliderMax.style.visibility = "hidden";
             opacityCheck.style.visibility = "hidden";        
         }  
+        // custom code end
     }
-    // custom code end
+    
 	render() {
 		return (
 			<div className='control-pane'>

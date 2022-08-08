@@ -11,8 +11,9 @@ import './treegrid-overview.css';
 export class Overview extends SampleBase<{}, {}> {
   
   public gridTemplate(props): any { 
+    var flagIconLocation = (props.parentItem)? props.parentItem.name : props.name;
     return (<div style={{display: 'inline'}}><div style={{display: 'inline-block'}}>
-    <img className='e-image'></img>     
+    <img className='e-image' src={"src/treegrid/images/"+flagIconLocation+".png"}></img>     
     </div><div style={{ display: 'inline-block', paddingLeft: '6px'}}>{props.name}</div></div>);
   }
 
