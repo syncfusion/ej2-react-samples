@@ -65,7 +65,7 @@ export class RTL extends SampleBase<{}, {}> {
             }}
             chartArea={{ border: { width: 0 } }}
             tooltip={{ enable: true }}
-            width={Browser.isDevice ? '100%' : '60%'}
+            width={Browser.isDevice ? '100%' : '75%'}
             title="Company Performance"
             loaded={this.onChartLoad.bind(this)}
             axisLabelRender={this.labelRender.bind(this)}

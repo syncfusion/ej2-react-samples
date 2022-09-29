@@ -237,6 +237,9 @@ export class LazyLoading extends SampleBase<{}, {}> {
                         Chart component features are segregated into individual feature-wise modules. To use lazy laoding need to
                     inject <code>ScrollBar</code> and <code>Zoom</code> module into <code>services</code>.
                 </p>
+                <p>
+                More information about the lazy Loading can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#lazy-loading">documentation section</a>.
+                </p>
                 </div>
             </div>
         )

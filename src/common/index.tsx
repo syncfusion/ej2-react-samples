@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, createElement, closest, enableRipple, select, selectAll, registerLicense } from '@syncfusion/ej2-base';
+import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, createElement, closest, enableRipple, select, selectAll, registerLicense, getComponent } from '@syncfusion/ej2-base';
 import { Button } from '@syncfusion/ej2-react-buttons';
 import { ListBase } from '@syncfusion/ej2-react-lists';
 import { DataManager, DataUtil, Query } from '@syncfusion/ej2-data';
 import { Popup, Tooltip } from '@syncfusion/ej2-react-popups';
 import { DropDownList } from '@syncfusion/ej2-react-dropdowns'
+import { ImageEditorComponent } from '@syncfusion/ej2-react-image-editor';
 import * as elasticlunr from './lib/elasticlunr';
 import * as searchJson from './search-index.json';
 import { LeftPane, setSelectList } from './leftpane';
@@ -288,6 +289,11 @@ function changeTheme(e: MouseEvent): void {
   target = closest(target, 'li');
   let themeName: string = target.id;
   switchTheme(themeName);
+  let imageEditorElem = document.querySelector(".e-image-editor") as HTMLElement;
+  if (imageEditorElem != null) {
+    let imageEditor: ImageEditorComponent = getComponent(document.getElementById(imageEditorElem.id), 'image-editor') as ImageEditorComponent;
+    imageEditor.theme = themeName;
+  }
   // loadTheme(themeName);
 }
 
@@ -296,6 +302,9 @@ function switchTheme(str: string): void {
   if (hash[1] !== str) {
     hash[1] = str;
     location.hash = hash.join('/');
+    localStorage.setItem('ej2-switch', select('.active', setResponsiveElement).id);
+    location.reload();
+    setSbLink();
   }
 }
 searchOverlay.addEventListener('click', searchOverlayClick);

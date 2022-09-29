@@ -63,8 +63,8 @@ export class Format extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging={true} 
-              pageSettings={{ pageSize: 8 }} queryCellInfo={this.queryCellinfo.bind(this)}>
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging={true}
+              pageSettings={{ pageSize: 11 }} queryCellInfo={this.queryCellinfo.bind(this)}>
               <ColumnsDirective>
                 <ColumnDirective field='taskID' headerText='Task ID' width='110' textAlign='Right'></ColumnDirective>
                 <ColumnDirective field='taskName' headerText='Task Name' width='200'></ColumnDirective>

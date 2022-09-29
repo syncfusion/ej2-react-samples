@@ -189,11 +189,10 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                             }
                         }}
                         titleStyle={{
-                            fontFamily: 'Roboto',
                             fontStyle: 'medium', size: '14px'
                         }}
                         chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         title= 'Population of India Statistics'
                         subTitle= '(2010 - 2016)'
                         subTitleStyle= {{

@@ -79,7 +79,7 @@ export class RemoteData extends SampleBase<{}, {}> {
                                 color: 'transparent'
                             }
                         }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         axisLabelRender={labelRender}
                         pointRender={this.pointRender.bind(this)}
@@ -127,7 +127,9 @@ export class RemoteData extends SampleBase<{}, {}> {
                         href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">
                         DataManager</a></code> to the <code> dataSource
                           </code> property.</p>
-
+                    <p>
+                        More information about the remote data binding can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#remote-data">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

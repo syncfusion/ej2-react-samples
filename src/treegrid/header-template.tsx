@@ -9,43 +9,43 @@ const SAMPLE_CSS = `
         margin-left: 12px;
     }
     .material-dark img.taskName, .fabric-dark img.taskName, .bootstrap-dark img.taskName,
-    .tailwind-dark img.taskName, .bootstrap5-dark img.taskName, .highcontrast img.taskName {
+    .tailwind-dark img.taskName, .bootstrap5-dark img.taskName, .highcontrast img.taskName, .fluent-dark img.taskName {
       content: url('src/treegrid/images/darkTaskname.png')
     }
     .material img.taskName, .fabric img.taskName, .bootstrap img.taskName, 
-    .tailwind img.taskName, .bootstrap5 img.taskName, .bootstrap4 img.taskName {
+    .tailwind img.taskName, .bootstrap5 img.taskName, .bootstrap4 img.taskName, .fluent img.taskName {
       content: url('src/treegrid/images/__Task name.png')
     }
     .material-dark img.startDate, .fabric-dark img.startDate, .bootstrap-dark img.startDate,
-    .tailwind-dark img.startDate, .bootstrap5-dark img.startDate, .highcontrast img.startDate {
+    .tailwind-dark img.startDate, .bootstrap5-dark img.startDate, .highcontrast img.startDate, .fluent-dark img.startDate {
       content: url('src/treegrid/images/darkStartname.png')
     }
     .material img.startDate, .fabric img.startDate, .bootstrap img.startDate, 
-    .tailwind img.startDate, .bootstrap5 img.startDate, .bootstrap4 img.startDate {
+    .tailwind img.startDate, .bootstrap5 img.startDate, .bootstrap4 img.startDate, .fluent img.startDate {
       content: url('src/treegrid/images/__Start name.png')
     }
     .material-dark img.resources, .fabric-dark img.resources, .bootstrap-dark img.resources,
-    .tailwind-dark img.resources, .bootstrap5-dark img.resources, .highcontrast img.resources {
+    .tailwind-dark img.resources, .bootstrap5-dark img.resources, .highcontrast img.resources, .fluent-dark img.resources {
       content: url('src/treegrid/images/darkResources.png')
     }
     .material img.resources, .fabric img.resources, .bootstrap img.resources, 
-    .tailwind img.resources, .bootstrap5 img.resources, .bootstrap4 img.resources {
+    .tailwind img.resources, .bootstrap5 img.resources, .bootstrap4 img.resources, .fluent img.resources {
       content: url('src/treegrid/images/__Resources.png')
     }
     .material-dark img.duration, .fabric-dark img.duration, .bootstrap-dark img.duration,
-    .tailwind-dark img.duration, .bootstrap5-dark img.duration, .highcontrast img.duration {
+    .tailwind-dark img.duration, .bootstrap5-dark img.duration, .highcontrast img.duration, .fluent-dark img.duration {
       content: url('src/treegrid/images/darkduration.png')
     }
     .material img.duration, .fabric img.duration, .bootstrap img.duration, 
-    .tailwind img.duration, .bootstrap5 img.duration, .bootstrap4 img.duration {
+    .tailwind img.duration, .bootstrap5 img.duration, .bootstrap4 img.duration, .fluent img.duration {
       content: url('src/treegrid/images/__Duration.png')
     }
     .material-dark img.progress-column, .fabric-dark img.progress-column, .bootstrap-dark img.progress-column,
-    .tailwind-dark img.progress-column, .bootstrap5-dark img.progress-column, .highcontrast img.progress-column {
+    .tailwind-dark img.progress-column, .bootstrap5-dark img.progress-column, .highcontrast img.progress-column, .fluent-dark img.progress-column {
       content: url('src/treegrid/images/darkprogress.png')
     }
     .material img.progress-column, .fabric img.progress-column, .bootstrap img.progress-column, 
-    .tailwind img.progress-column, .bootstrap5 img.progress-column, .bootstrap4 img.progress-column {
+    .tailwind img.progress-column, .bootstrap5 img.progress-column, .bootstrap4 img.progress-column, .fluent img.progress-column {
       content: url('src/treegrid/images/__progress.png')
     }
     .bootstrap5-dark img.progress-column,.bootstrap5-dark img.duration,.tailwind-dark img.resources {

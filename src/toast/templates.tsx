@@ -142,7 +142,7 @@ export class Templates extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='col-lg-12 control-section toast-template-section'>
-                    <div className="e-sample-resize-container">
+                    <div className="col-lg-12 col-sm-12 col-md-12 center">
                         <div className="row">
                             <div id="reminder">
                                 <ButtonComponent className="e-btn" ref={(btn) => { this.toastMailRemainder = btn }} id='toast_mail_remainder' onClick={this.remainderClick.bind(this)}> Mail Reminder</ButtonComponent>

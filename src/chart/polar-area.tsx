@@ -111,7 +111,7 @@ export class PolarArea extends SampleBase<{}, {}> {
               </p>
                     <p>
                         More information on the area series can be found in this &nbsp;
-                  <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                  <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/#polar-chart">documentation section</a>.
               </p>
                 </div>
             </div>

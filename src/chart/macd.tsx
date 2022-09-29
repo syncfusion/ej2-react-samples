@@ -41,7 +41,7 @@ export class Macd extends SampleBase<{}, {}> {
                             interval: 30, rowIndex: 1, opposedPosition: true, lineStyle: { width: 0 }
                         }}
                         tooltip={{ enable: true, shared: true }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
                         chartArea={{ border: { width: 0 } }}
                         zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}

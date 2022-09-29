@@ -17,6 +17,7 @@ export class UnscheduledTask extends SampleBase<{}, {}> {
   public editSettings: any = {
     allowAdding: true,
     allowEditing: true,
+    allowDeleting: true
   };
   public toolbar: any = [{ text: 'Insert task', tooltipText: 'Insert task at top', id: 'toolbarAdd', prefixIcon: 'e-add-icon tb-icons' }];
   public labelSettings: any = {

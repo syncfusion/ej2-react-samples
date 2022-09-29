@@ -87,7 +87,7 @@ export class SidebarWithMenu extends SampleBase<{}, {}> {
     render() {
         let folderEle: string = '<div class= "e-folder"><div class= "e-folder-name">Navigation Pane</div></div>';
         return (
-            <div id="wrapper" className="control-section">
+            <div id="menu-wrapper" className="control-section">
                 <div id="sidebarmenu">
                     {/* header-section  declaration */}
                     <div>

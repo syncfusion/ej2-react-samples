@@ -118,7 +118,7 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
                         zoomSettings= {{ enableSelectionZooming: true }}
                         title= "Quarterly Sales Chart"
                         chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         tooltip={{
                             enable: true
                         }}>

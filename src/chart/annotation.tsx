@@ -61,7 +61,7 @@ export class Annotation extends SampleBase<{}, {}> {
                         }}
                         load={this.load.bind(this)}
                         loaded={this.loaded.bind(this)}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         animationComplete={this.onChartLoad.bind(this)}
                         chartMouseUp={this.chartMouseUp.bind(this)}
                         selectionMode='Cluster'

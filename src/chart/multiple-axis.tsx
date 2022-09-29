@@ -48,7 +48,7 @@ export class MultipleAxis extends SampleBase<{}, {}> {
                             lineStyle: { width: 0 },
                             labelFormat: '{value}°F'
                         }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
                         legendSettings={{ visible: false }}

@@ -1,10 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, VirtualScroll } from '@syncfusion/ej2-react-treegrid';
+import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, VirtualScroll, Edit, Toolbar,RowDD } from '@syncfusion/ej2-react-treegrid';
 import { virtualData, dataSource } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class VirtualScrolling extends SampleBase<{}, {}> {
+
+    public toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel','Indent', 'Outdent'];
+    public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Row', newRowPosition: 'Child' };
+    public validationRule: Object = { required: true};
+    public validationRule1: Object = { required: true, number: true};
     
     render() {
         if (virtualData.length === 0) {
@@ -13,15 +18,15 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                <TreeGridComponent dataSource={virtualData} childMapping = 'Crew' enableVirtualization={true} treeColumnIndex={1} height='400' >
+                <TreeGridComponent dataSource={virtualData} childMapping = 'Crew' enableVirtualization={true} treeColumnIndex={1} editSettings={this.editSettings} toolbar={this.toolbarOptions} height='400' >
                 <ColumnsDirective>
-                <ColumnDirective field='TaskID' headerText='Player Jersey' width='120' textAlign='Right'></ColumnDirective>
-                <ColumnDirective field='FIELD1' headerText='Player Name' width='120'></ColumnDirective>
+                <ColumnDirective field='TaskID' headerText='Player Jersey' validationRules={this.validationRule1} width='120' textAlign='Right' isPrimaryKey={true}></ColumnDirective>
+                <ColumnDirective field='FIELD1' headerText='Player Name' validationRules={this.validationRule} width='120'></ColumnDirective>
                 <ColumnDirective field='FIELD2' headerText='Year' width='100' textAlign='Right'></ColumnDirective>
                 <ColumnDirective field='FIELD3' headerText='Stint' width='120' textAlign='Right'></ColumnDirective>
                 <ColumnDirective field='FIELD4' headerText='TMID' width='120' textAlign='Right'></ColumnDirective>
                 </ColumnsDirective>
-                <Inject services={[VirtualScroll]} />
+                <Inject services={[VirtualScroll, Edit, Toolbar, RowDD]} />
                 </TreeGridComponent>
                 </div>
         <div id="action-description">
@@ -43,6 +48,9 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#enablevirtualization">enableVirtualization
         </a></code>
     </p>
+    <p>
+        In this demo, Tree Grid is enabled with row virtualization and also perform the CRUD (Add, Edit, Delete, Update) actions.
+    </p> 
     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
     <p>
         Tree Grid features are segregated into individual feature-wise modules. 

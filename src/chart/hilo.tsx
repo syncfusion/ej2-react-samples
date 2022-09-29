@@ -52,7 +52,7 @@ export class Hilo extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true, shared: true }}
                         crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                       
                         title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[HiloSeries, Tooltip, DateTime, Logarithmic, Crosshair, Zoom]} />

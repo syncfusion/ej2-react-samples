@@ -67,7 +67,7 @@ export class Waterfall extends SampleBase<{}, {}> {
                         tooltip={{ enable: true, shared: false }}
                         textRender={this.textRender.bind(this)}
                         axisLabelRender={this.axisLabelRender.bind(this)}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         legendSettings={{ visible: false }}
                         title='Company Revenue and Profit' loaded={this.onChartLoad.bind(this)}>
@@ -101,7 +101,7 @@ export class Waterfall extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the Waterfall series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#waterfall-chart">documentation section</a>.
                   </p>
                 </div>
             </div >

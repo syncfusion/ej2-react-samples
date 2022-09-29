@@ -11,6 +11,7 @@ import { PropertyPane } from '../common/property-pane';
 import { ChangeArgs } from '@syncfusion/ej2-buttons';
 import { DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
+import { isNullOrUndefined } from '@syncfusion/ej2-base';
 export class ImageSample extends SampleBase<{}, {}> {
 
     private rteObj: RichTextEditorComponent;
@@ -43,18 +44,20 @@ export class ImageSample extends SampleBase<{}, {}> {
         let nodeObj: NodeSelection = new NodeSelection();
         let range: Range = nodeObj.getRange(this.rteObj.contentModule.getDocument());
         let imgEle: HTMLElement = nodeObj.getNodeCollection(range)[0] as HTMLElement;
-        if (e.item.tooltipText === 'Rotate Right') {
-            let transform: number = (imgEle.style.transform === '') ? 0 :
-                parseInt(imgEle.style.transform.split('(')[1].split(')')[0], 10);
-            imgEle.style.transform = 'rotate(' + (transform + 90) + 'deg)';
-            this.rteObj.formatter.saveData();
-            this.rteObj.formatter.enableUndo(this.rteObj);
-        } else if (e.item.tooltipText === 'Rotate Left') {
-            let transform: number = (imgEle.style.transform === '') ? 0 :
-                Math.abs(parseInt(imgEle.style.transform.split('(')[1].split(')')[0], 10));
-            imgEle.style.transform = 'rotate(-' + (transform + 90) + 'deg)';
-            this.rteObj.formatter.saveData();
-            this.rteObj.formatter.enableUndo(this.rteObj);
+        if (!isNullOrUndefined(e.item)) {
+            if (e.item.tooltipText === 'Rotate Right') {
+                let transform: number = (imgEle.style.transform === '') ? 0 :
+                    parseInt(imgEle.style.transform.split('(')[1].split(')')[0], 10);
+                imgEle.style.transform = 'rotate(' + (transform + 90) + 'deg)';
+                this.rteObj.formatter.saveData();
+                this.rteObj.formatter.enableUndo(this.rteObj);
+            } else if (e.item.tooltipText === 'Rotate Left') {
+                let transform: number = (imgEle.style.transform === '') ? 0 :
+                    Math.abs(parseInt(imgEle.style.transform.split('(')[1].split(')')[0], 10));
+                imgEle.style.transform = 'rotate(-' + (transform + 90) + 'deg)';
+                this.rteObj.formatter.saveData();
+                this.rteObj.formatter.enableUndo(this.rteObj);
+            }
         }
     }
 

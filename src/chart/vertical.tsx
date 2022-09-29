@@ -37,7 +37,7 @@ export class VerticalChart extends SampleBase<{}, {}> {
                         }}
                         chartArea={{ border: { width: 0 } }}
                         isTransposed={true}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         title='Indonesia - Seismograph Analysis'>
                         <Inject services={[LineSeries]} />
                         <SeriesCollectionDirective>

@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    Legend, DateTime, StepLineSeries, Tooltip, ILoadedEventArgs, ChartTheme
+    Legend, DateTime, StepLineSeries, Tooltip, ILoadedEventArgs, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
@@ -13,24 +13,11 @@ import { Browser } from '@syncfusion/ej2-base';
 /**
  * StepLine Series
  */
-export let data1: any[] = [
-    { x: new Date(1975, 0, 1), y: 16 },
-    { x: new Date(1980, 0, 1), y: 12.5 },
-    { x: new Date(1985, 0, 1), y: 19 },
-    { x: new Date(1990, 0, 1), y: 14.4 },
-    { x: new Date(1995, 0, 1), y: 11.5 },
-    { x: new Date(2000, 0, 1), y: 14 },
-    { x: new Date(2005, 0, 1), y: 10 },
-    { x: new Date(2010, 0, 1), y: 16 }];
-export let data2: any[] = [
-    { x: new Date(1975, 0, 1), y: 10 },
-    { x: new Date(1980, 0, 1), y: 7.5 },
-    { x: new Date(1985, 0, 1), y: 11 },
-    { x: new Date(1990, 0, 1), y: 7 },
-    { x: new Date(1995, 0, 1), y: 8 },
-    { x: new Date(2000, 0, 1), y: 6 },
-    { x: new Date(2005, 0, 1), y: 3.5 },
-    { x: new Date(2010, 0, 1), y: 7 }];
+ export let data1 = [{ x: new Date(1975, 0, 1), y: 35 },{ x: new Date(1978, 0, 1), y: 45 },{ x: new Date(1981, 0, 1), y: 55 },
+    { x: new Date(1984, 0, 1), y: 20 },{ x: new Date(1987, 0, 1), y: 10 },{ x: new Date(1990, 0, 1), y: 42 },
+    { x: new Date(1993, 0, 1), y: 35 },{ x: new Date(1996, 0, 1), y: 22 },{ x: new Date(2000, 0, 1), y: 65 },
+    { x: new Date(2005, 0, 1), y: 65 },{ x: new Date(2010, 0, 1), y: 58 },
+];
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -47,47 +34,37 @@ export class StepLine extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <ChartComponent id='charts' style={{ textAlign: "center" }}
                         primaryXAxis={{
-                            labelFormat: 'y',
-                            intervalType: 'Years',
-                            majorGridLines: { width: 0 },
-                            valueType: 'DateTime',
-                            edgeLabelPlacement: 'Shift'
+                            minimum: new Date(1971, 0, 1), maximum: new Date(2015, 0, 1), labelFormat: 'yyyy', intervalType: 'Months', valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }
                         }}
                         load={this.load.bind(this)}
                         primaryYAxis={{
-                            lineStyle: { width: 0 },
-                            interval: 5,
-                            majorTickLines: { width: 0 },
-                            labelFormat: '{value}%'
+                            interval: 10, title: 'Production (In Percentage)', labelFormat: '{value}%', lineStyle: { width: 0 }, majorTickLines: { width: 0 },
                         }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true }} loaded={this.onChartLoad.bind(this)}
-                        title='Unemployment Rates 1975-2010'>
-                        <Inject services={[StepLineSeries, Legend, Tooltip, DateTime]} />
+                        legendSettings={{visible : false , enableHighlight: true}}
+                        tooltip={{ enable: true , shared:true , header:"<b>Fruit Production</b>" , format:"${point.x} : <b>${point.y}"}} loaded={this.onChartLoad.bind(this)}
+                        title='Fruit Production Statistics'> 
+                        <Inject services={[StepLineSeries, Tooltip, DateTime, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='China' width={2}
-                                type='StepLine' marker={{ visible: true, width: 10, height: 10 }}>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='Australia' width={2}
-                                type='StepLine' marker={{ visible: true, width: 10, height: 10 }}>
+                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='China' width={5}
+                                type='StepLine' marker={{ isFilled: false, visible: true, width: 7, height: 7 }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
                 <p>
-                This sample visualizes the unemployment rate from 1975 to 2010 with default stepline series in the chart. 
-                Data points are enhanced with marker and tooltip.
+                This React StepLine Chart example visualizes the fruit production statistics with default stepline series in the chart. 
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the stepline type charts. This series forms the step line progress, by connecting points through vertical and horizontal lines.
-                        You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the line. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+                    In this example, you can see how to render and configure the step line type chart. This Chart forms the step line progress, by connecting, points using vertical and horizontal lines.
+                  <code>Markers</code> are used to represent individual data and its values.
                     </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -97,7 +74,7 @@ export class StepLine extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information on the StepLine series can be found in this &nbsp;
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
                     </p>
                 </div>
             </div>

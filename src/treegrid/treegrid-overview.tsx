@@ -41,7 +41,7 @@ export class Overview extends SampleBase<{}, {}> {
   public treeunemployTemplate(props): any {
     return (<div id='myProgress' className='pbar'>
       <div id='myBar' className='bar'>
-        <div id='label' className='barlabel'></div>
+        <div id='treegridlabel' className='barlabel'></div>
       </div>
     </div>);
   }
@@ -125,7 +125,7 @@ export class Overview extends SampleBase<{}, {}> {
           allowFiltering={true} allowSorting={true} filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}
           queryCellInfo={this.queryCellinfo.bind(this)}>
             <ColumnsDirective>
-              <ColumnDirective field='name' headerText='Province' width='190' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
+              <ColumnDirective field='name' headerText='Province' width='195' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
               <ColumnDirective field='population' headerText='Population (Million)' allowFiltering={false} valueAccessor={this.populationValue} textAlign='Right' width='200'></ColumnDirective>
               <ColumnDirective field='gdp' headerText='GDP Rate %' width='145' template={this.gdptemplate} />
               <ColumnDirective field='rating' headerText='Credit Rating' width='190' template={this.ratingtemplate}  />
@@ -149,7 +149,8 @@ export class Overview extends SampleBase<{}, {}> {
             In this demo, Tree Grid features such as <code>sorting, filtering, conditional formatting, column template and scrolling</code> are used.
           </p>
           <p>
-            More information on the Tree Grid instantiation can be found in this <a target='_blank' href='#'> documentation section.</a>
+            More information on the Tree Grid instantiation can be found in this 
+            <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/treegrid/getting-started/'> documentation section.</a>
           </p>
         </div>
       </div>

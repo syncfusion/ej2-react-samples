@@ -1,78 +1,78 @@
  /* Specifies sample level styles for Sidebar */
- #wrapper .listcontent {
+ #sblist-wrapper .listcontent {
     font-size: 14px;
     padding: 15px;
 }
 
-#wrapper.control-section {
-    padding: 15px 0px;
+#sblist-wrapper.control-section {
+    padding: 0;
 }
 
-#wrapper .listmaincontent {
+#sblist-wrapper .listmaincontent {
     height: 380px;
 }
 
-#wrapper #left {
+#sblist-wrapper #left {
     float: left;
     width: 30px;
     height: 47px;
 }
 
-#wrapper .sidebar-list {
+#sblist-wrapper .sidebar-list {
     z-index: 20 !important;
 }
 
 /*Specifies sample level style for Toolbar*/
-#wrapper .e-toolbar .e-icons {
+#sblist-wrapper .e-toolbar .e-icons {
     font-size: 20px;
 }
 
-#wrapper .e-tbar-menu-icon:before {
+#sblist-wrapper .e-tbar-menu-icon:before {
     content: "\e914";
     font-family: 'sbicons';
 }
 
 /* Specifies the border bottom styles for toolbar in light theme*/
-.material #wrapper .e-toolbar,
-.tailwind #wrapper .e-toolbar,
-.bootstrap5 #wrapper .e-toolbar {
+.material #sblist-wrapper .e-toolbar,
+.tailwind #sblist-wrapper .e-toolbar,
+.bootstrap5 #sblist-wrapper .e-toolbar {
     border-bottom: 1px solid #eaeaeae0;
 }
 
 /* Specifies the border bottom styles for toolbar in dark theme*/
-.bootstrap5-dark #wrapper .e-toolbar,
-.tailwind-dark #wrapper .e-toolbar,
-.material-dark #wrapper .e-toolbar {
+.bootstrap5-dark #sblist-wrapper .e-toolbar,
+.tailwind-dark #sblist-wrapper .e-toolbar,
+.material-dark #sblist-wrapper .e-toolbar {
     border-bottom: 1px solid #eaeaea63;
 }
 
-.material #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.material-dark #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap4.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.tailwind.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.tailwind-dark.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.material #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.material-dark #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap4.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.tailwind.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.tailwind-dark.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 12px;
 }
 
-.e-bigger.material #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.e-bigger.material #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 16px;
 }
 
-.bootstrap4 #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap-dark #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap5.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap5-dark.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap4 #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap-dark #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap5.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap5-dark.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 8px;
 }
 
-.bootstrap5 #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap5-dark #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap5 #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap5-dark #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 5px;
 }
 
-.bootstrap.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap-dark.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap-dark.e-bigger #sblist-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 10px;
 }
 
@@ -149,8 +149,8 @@
 }
 
 /* Specifies the background color of listview in dark theme*/
- .material-dark #wrapper .e-list-item,
-.bootstrap-dark #wrapper .e-list-item {
+ .material-dark #sblist-wrapper .e-list-item,
+.bootstrap-dark #sblist-wrapper .e-list-item {
     background-color: transparent;
 }
 
@@ -228,7 +228,7 @@
     background-image: url('src/sidebar/images/react.svg');
 }
 
-.material-dark #wrapper .listcontent {
+.material-dark #sblist-wrapper .listcontent {
     color: white;
 }
 

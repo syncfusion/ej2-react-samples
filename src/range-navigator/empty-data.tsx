@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, ILoadedEventArgs, AreaSeries, Points,
     RangenavigatorSeriesCollectionDirective, RangenavigatorSeriesDirective, RangeNavigatorComponent,
-    IChangedEventArgs, IRangeLoadedEventArgs, ChartTheme, RangeTooltip, Inject, DateTime, Tooltip
+    IChangedEventArgs, IRangeLoadedEventArgs, ChartTheme, RangeTooltip, Inject, DateTime, Tooltip, Legend
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
@@ -145,10 +145,12 @@ export class EmptyData extends SampleBase<{}, {}> {
                             width: 0
                         }}
                         tooltip={{enable: true, displayMode: 'Always' }}
+                        
                         value={[new Date('2013-12-27'), new Date('2015-03-23')]}
                         width={Browser.isDevice ? '100%' : '80%'}
                         load={this.rangeLoad.bind(this)}
-                        changed={this.changed.bind(this)}>
+                        changed={this.changed.bind(this)}
+                        >
                         <Inject services={[AreaSeries, RangeTooltip, DateTime]} />
                         <RangenavigatorSeriesCollectionDirective>
                             <RangenavigatorSeriesDirective dataSource={stockData} xName='x' 
@@ -179,8 +181,9 @@ export class EmptyData extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{
                             enable: true, shared: true
-                        }}>
-                        <Inject services={[AreaSeries, DateTime, Tooltip]} />
+                        }}
+                        legendSettings={{visible:false}}>
+                        <Inject services={[AreaSeries, DateTime, Tooltip, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={stockData} xName='x' yName='open' animation={{ enable: false }}
                              border={{ width: 2}} type='Area' width={2} name='AAPL'>

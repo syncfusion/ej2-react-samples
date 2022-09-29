@@ -872,6 +872,21 @@ div#sample-header {
     color: #29bc4f !important;
 }
 
+.fluent .e-samplestatus.new,
+.fluent .e-samplestatus.preview {
+    margin-top: 1px;
+}
+
+.fluent .e-samplestatus.update {
+    margin-top: 0px;
+}
+
+.fluent.e-bigger .e-samplestatus.new,
+.fluent.e-bigger .e-samplestatus.update,
+.fluent.e-bigger .e-samplestatus.preview {
+    margin-top: 4px;
+}
+
 .e-samplestatus.preview, .e-samplestatus.Preview {
     background-color: #0275d8;
 }
@@ -1460,7 +1475,6 @@ propertye pane
         top: 0px;
     }
     #controlSamples.control-samples-animate {
-        position: absolute;
         top: 116px;
     }
     #controlList {
@@ -1789,7 +1803,7 @@ propertye pane
     pointer-events: none;
 }
 
-.sb-content-overlay {
+.sb-content-overlay, .sb-tab-overlay {
     z-index: 10000022;
     display: block;
     position: absolute;
@@ -2050,6 +2064,12 @@ color: #000;
     float: left;
 }
 
+.sb-control-navigation .e-treeview .tree-text {
+    width: calc(100% - 65px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .highcontrast .sb-setting-popup {
     background: #000000;
 }
@@ -2165,7 +2185,7 @@ RTE toolbar not visible in fullscreen
 }
 
 .free-trial {
-    width: 176px;
+    width: 178px;
     height: 43px;
     background-color: #FF4800;
     border-radius: 21.5px;
@@ -2235,7 +2255,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2266,7 +2286,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2296,7 +2316,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2326,7 +2346,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2357,7 +2377,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2383,7 +2403,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 11px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2413,7 +2433,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2443,7 +2463,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2468,7 +2488,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2494,7 +2514,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2520,7 +2540,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2546,7 +2566,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2573,7 +2593,7 @@ RTE toolbar not visible in fullscreen
     display: block;
     margin: 17px auto 0px;
     float: none;
-    width: 238px;
+    width: 242px;
     padding: 11px 61px;
     }
     .content-area {
@@ -2642,6 +2662,12 @@ RTE toolbar not visible in fullscreen
 }
 .bootstrap5 .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
     background-color: #d2ebff;
+}
+.bootstrap5 .e-tab .sb-content-tab-header.e-tab-header::before,
+.bootstrap4 .e-tab .sb-content-tab-header.e-tab-header::before,
+.bootstrap .e-tab .sb-content-tab-header.e-tab-header::before
+{
+    border-width: 0;
 }
 
 /* material dark */
@@ -3983,4 +4009,39 @@ color:white;
 
 .highcontrast  .e-samplestatus.update.tree {
     margin-top: 4px !important;
+}
+
+.sb-source-code-section .e-toolbar .e-tab-header {
+    overflow: hidden;
+}
+
+.sb-source-code-section .e-toolbar .e-toolbar-items {
+    vertical-align: bottom;
+}
+
+.fluent .sb-source-code-section .e-toolbar .e-toolbar-items,
+.fluent-dark .sb-source-code-section .e-toolbar .e-toolbar-items,
+.tailwind .sb-source-code-section .e-toolbar .e-toolbar-items,
+.tailwind-dark .sb-source-code-section .e-toolbar .e-toolbar-items {
+    vertical-align: middle;
+}
+
+#fn-btn {
+    margin: 5px 0 5px 12px;
+    padding: 0 12px;
+    border-left: 1px solid #C4C4C4;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#fn-btn.sb-mobile {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 8px 12px;
+    border-left: 0;
+}
+
+#fn-btn.sb-mobile .e-btn {
+    width: 50%;
 }

@@ -25,7 +25,7 @@ export class API extends SampleBase<{}, {}> {
     render() {
         return (
             <div className="sidebar-api wrapper-container">
-                <div id="wrapper" className="control-section apimaincontent">
+                <div id="api-wrapper" className="control-section apimaincontent">
                     <div>
                         <div className="list-group">
                             <div className="list-group-item">

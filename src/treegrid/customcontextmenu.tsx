@@ -87,12 +87,6 @@ export class CustomContextMenu extends SampleBase<{}, {}> {
     </p>
 </div>
 
-<div id="action-description">
-    <p>This sample demonstrates the usage of custom context menu in Tree Grid component. Right click anywhere on a parent row in the
-        Tree Grid to view custom context menu.
-    </p>
-</div>
-
 <div id="description">
     <p>
         Tree Grid has an option to show the custom context menu when right click on it. To configure the custom items in context menu,

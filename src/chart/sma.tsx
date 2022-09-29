@@ -28,7 +28,7 @@ export class SMA extends SampleBase<{}, {}> {
                     <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{ valueType: 'DateTime', majorGridLines: { width: 0 }, zoomFactor: 0.2, zoomPosition: 0.6, crosshairTooltip: { enable: true } }}
                         primaryYAxis={{ title: 'Price', labelFormat: '${value}M', minimum: 50, maximum: 170, interval: 30, majorGridLines: { width: 1 }, lineStyle: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         tooltip={{ enable: true, shared: true }}
                         chartArea={{ border: { width: 0 } }}
                         crosshair={{ enable: true, lineType: 'Vertical' }}

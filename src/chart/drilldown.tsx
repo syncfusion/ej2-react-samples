@@ -33,7 +33,7 @@ export class Drilldown extends SampleBase<{}, {}> {
     { x: 'Fiat', y: 8 }, { x: 'Honda', y: 15 }, { x: 'Hyundai', y: 4 }, { x: 'Scion', y: 11 }, { x: 'Toyota', y: 17 }];
 
     public dataLabel: Object = {
-        visible: true, position: 'Inside', connectorStyle: { type: 'Curve', length: '5%' }, font: { size: '14px', color: 'white' }
+        visible: true, position: 'Inside', connectorStyle: { type: 'Curve', length: '5%' }, font: { fontWeight:'600', color: 'white' }
     };
 
     public startAngle: number = 0;
@@ -58,6 +58,7 @@ export class Drilldown extends SampleBase<{}, {}> {
                     </div>
                     <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
                         title='Automobile Sales by Category' enableSmartLabels={false} legendSettings={{ visible: false }}
+                        enableBorderOnMouseMove={false}
                         tooltip={{ enable: false, format: '${point.x} <br> ${point.y} %' }}
                         chartMouseClick={this.onChartMouseClick.bind(this)}
                         textRender={this.onTextRender.bind(this)}
@@ -74,21 +75,23 @@ export class Drilldown extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample demonstrates drill down sample with pie chart for a automobiles sales by category. By clicking one category, you can navigate to other sub-category by which companies are differentiated.
+                This sample demonstrates a drill down chart with a pie for automobiles sales by category. By clicking one category, you can navigate to other sub-categories where companies are differentiated.
             </p>
                 </div>
                 <div id="description">
-                    <p> In this example, you can see how to achieve <code>drilldown</code> concept using pie control. An automobile sales has been shown by different category, on clicking each category, you can navigate to next level, which shows the sales of those category
-                    in terms of company.</p>
-                    <p> Legend and datalabel is used in this sample.</p>
+                    <p> In this example, you can see how to achieve the drilldown concept using a pie chart. Automobile sales are shown in different categories. By clicking each category, you can navigate to the next level, which shows the sales by categories made by each company. <code>Datalabels</code> are used in this sample to show information about the data points.</p>
                     <p style={{ fontWeight: 500 }}>Injecting Module</p>
                     <p> Accumulation chart component features are segregated into individual feature-wise modules. To use datalabel, we need to inject DataLabel module <code>AccumulationDataLabel</code> into services </p>
+                    <p>
+                        More information on the pie series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#pie-chart">documentation section</a>.
+                  </p>
                 </div>
             </div>
         )
     }
     public onTextRender(args: IAccTextRenderEventArgs): void {
-        args.text = args.point.x + ' ' + args.point.y + ' %';
+        args.text = args.point.x + ' ' + args.point.y + '%';
     }
     public onChartMouseClick(args: IMouseEventArgs): void {
         let index: Index = indexFinder(args.target);

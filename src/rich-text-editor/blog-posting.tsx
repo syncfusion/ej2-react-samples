@@ -53,10 +53,12 @@ export class Forums extends SampleBase<{}, {}> {
             logo.classList.remove('logos');
             if (empCount < 3) {
                 logo.classList.add(empList[empCount]);
+                logo.classList.add('blog-avatar');
                 authorName.innerHTML = nameListList[empCount];
                 empCount++;
             } else {
                 logo.classList.add('logo');
+                logo.classList.add('blog-avatar');
                 authorName.innerHTML = 'User';
             }
             let timeZone: HTMLElement = cloneAnswer.querySelector('.detailsAnswer');
@@ -110,7 +112,7 @@ export class Forums extends SampleBase<{}, {}> {
                                     <table>
                                         <tr>
                                             <td>
-                                                <div className='questionar'> </div>
+                                                <div className='questionar blog-avatar'> </div>
                                             </td>
                                             <td>
                                                 <div className='Questionarname'>Kimberly</div>
@@ -166,7 +168,7 @@ export class Forums extends SampleBase<{}, {}> {
                                     <table>
                                         <tr>
                                             <td rowSpan={2}>
-                                                <div className='logos'> </div>
+                                                <div className='logos blog-avatar'> </div>
                                             </td>
                                             <td>
                                                 <div className='authorname'>Mabel Weber</div>

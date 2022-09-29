@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     StepLineSeries, SplineAreaSeries, ChartComponent, SeriesCollectionDirective,
     RangeNavigatorComponent, DateTime, ExportType, SeriesDirective, ILoadedEventArgs,
-    IChangedEventArgs, IRangeLoadedEventArgs, ChartTheme, Inject, Tooltip, Export
+    IChangedEventArgs, IRangeLoadedEventArgs, ChartTheme, Inject, Tooltip, Export, Legend
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
@@ -163,8 +163,9 @@ export class RangeExport extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{
                             enable: true, shared: true
-                        }}>
-                        <Inject services={[SplineAreaSeries, DateTime, Tooltip, Export]} />
+                        }}
+                        legendSettings={{visible:false}}>
+                        <Inject services={[SplineAreaSeries, DateTime, Tooltip, Export, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={dateTimeData}
                             xName='xDate' yName='Close' border={{ width: 2}}

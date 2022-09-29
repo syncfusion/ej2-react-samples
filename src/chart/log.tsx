@@ -56,7 +56,7 @@ export class LogAxis extends SampleBase<{}, {}> {
                             labelFormat: '${value}'
                         }}
                         legendSettings={{ visible: false }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         title='Product X Growth [1995-2005]' loaded={this.onChartLoad.bind(this)}
                         tooltip={{ enable: true, header: 'Profit' }}>
                         <Inject services={[LineSeries, DateTime, Logarithmic, Legend, Tooltip]} />

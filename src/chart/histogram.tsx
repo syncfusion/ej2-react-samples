@@ -51,7 +51,7 @@ export class Histogram extends SampleBase<{}, {}> {
                         }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         legendSettings={{ visible: false }}
                         title='Examination Result' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[HistogramSeries, Legend, Tooltip, Category, DataLabel]} />
@@ -88,7 +88,7 @@ export class Histogram extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the histogram series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#histogram-series">documentation section</a>.
                   </p>
                 </div>
             </div>

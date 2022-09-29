@@ -98,6 +98,8 @@ export class Adaptive extends SampleBase<{}, {}> {
   public renderingMode: any = 'Vertical';
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   public filterOptions: any = { type: 'Excel' };
+  public validationRule: Object = { required: true};
+  public validationRule1: Object = { required: true, number: true};
   public load(): void {
     (this as any).grid.adaptiveDlgTarget = document.getElementsByClassName('e-mobile-content')[0] as HTMLElement;
   }
@@ -114,9 +116,9 @@ export class Adaptive extends SampleBase<{}, {}> {
                 <div className="e-mobile-content">
                     <TreeGridComponent id="adaptivebrowser" dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='100%' ref={treegrid => this.treegridobj = treegrid} enableAdaptiveUI={true} allowFiltering={true} allowSorting={true} allowPaging={true} filterSettings={this.filterOptions} toolbar={this.toolbarOptions} editSettings={this.editSettings} load={this.load}>
                       <ColumnsDirective>
-                        <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='135' textAlign='Right'></ColumnDirective>
-                        <ColumnDirective field='taskName' headerText='Task Name' width='280'></ColumnDirective>
-                        <ColumnDirective field='duration' headerText='Duration' width='140' textAlign='Right' />
+                      <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='135' textAlign='Right' validationRules={this.validationRule1}></ColumnDirective>
+                        <ColumnDirective field='taskName' headerText='Task Name' width='280' validationRules={this.validationRule}></ColumnDirective>
+                        <ColumnDirective field='duration' headerText='Duration' width='140' textAlign='Right' validationRules={this.validationRule}/>
                         <ColumnDirective field='progress' headerText='Progress' width='145' textAlign='Right' />
                       </ColumnsDirective>
                       <Inject services={[Filter, Sort, Edit, Toolbar, Page]} />
@@ -126,9 +128,9 @@ export class Adaptive extends SampleBase<{}, {}> {
             ) : (
                 <TreeGridComponent id="adaptivedevice" dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='100%' ref={treegrid => this.treegridobj = treegrid} enableAdaptiveUI={true} allowFiltering={true} allowSorting={true} allowPaging={true} filterSettings={this.filterOptions} toolbar={this.toolbarOptions} editSettings={this.editSettings} load={this.load}>
                 <ColumnsDirective>
-                  <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='135' textAlign='Right'></ColumnDirective>
-                  <ColumnDirective field='taskName' headerText='Task Name' width='280'></ColumnDirective>
-                  <ColumnDirective field='duration' headerText='Duration' width='140' textAlign='Right' />
+                <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='135' textAlign='Right' validationRules={this.validationRule1}></ColumnDirective>
+                  <ColumnDirective field='taskName' headerText='Task Name' width='280' validationRules={this.validationRule}></ColumnDirective>
+                  <ColumnDirective field='duration' headerText='Duration' width='140' textAlign='Right' validationRules={this.validationRule} />
                   <ColumnDirective field='progress' headerText='Progress' width='145' textAlign='Right' />
                 </ColumnsDirective>
                 <Inject services={[Filter, Sort, Edit, Toolbar, Page]} />

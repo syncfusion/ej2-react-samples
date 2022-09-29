@@ -3,16 +3,16 @@
     height: 355px;
 }
 
-#wrapper .dockContent {
+#dock-wrapper .dockContent {
     font-size: 14px;
     padding: 15px;
 }
 
-#wrapper.control-section {
-    padding: 15px 0px;
+#dock-wrapper.control-section {
+    padding: 0;
 }
 
-#wrapper .dockSidebar {
+#dock-wrapper .dockSidebar {
     z-index: 20 !important;
 }
 
@@ -209,8 +209,8 @@
     font-style: normal;
 }
 
-.e-bigger .e-tbar-btn .tb-icons,
-.e-toolbar .e-icons {
+.e-bigger #dock-wrapper .e-tbar-btn .tb-icons,
+#dock-wrapper .e-toolbar .e-icons {
     font-size: 20px;
 }
 

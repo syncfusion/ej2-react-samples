@@ -118,10 +118,10 @@ export class PolarColumn extends SampleBase<{}, {}> {
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
                      <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                </p>
-                    <p>
-                        More information on the column series can be found in this &nbsp;
-                   <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-               </p>
+               <p>
+                        More information on the area series can be found in this &nbsp;
+                  <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+              </p>
                 </div>
             </div>
         )

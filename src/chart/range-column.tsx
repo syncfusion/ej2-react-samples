@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, Legend, ChartTheme
+    RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, Legend, ChartTheme, DataLabel, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
@@ -13,7 +13,7 @@ import { Browser, EmitType } from '@syncfusion/ej2-base';
 export let data: any[] = [
     { x: 'Sun', low: 3.1, high: 10.8 },
     { x: 'Mon', low: 5.7, high: 14.4 }, { x: 'Tue', low: 8.4, high: 16.9 },
-    { x: 'Wed', low: 10.6, high: 19.2 },
+    { x: 'Wed', low: 9.6, high: 18.2 },
     { x: 'Thu', low: 8.5, high: 16.1 }, { x: 'Fri', low: 6.0, high: 12.5 },
     { x: 'Sat', low: 1.5, high: 6.9 }
 ];
@@ -38,38 +38,48 @@ export class RangeColumn extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
+                    <ChartComponent id='charts' style={{ textAlign: "center" }}    legendSettings={{ enableHighlight :true }}
                         primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 } }}
-                        primaryYAxis={{ labelFormat: '{value}˚C', maximum: 20, edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }}
+                        primaryYAxis={{ labelFormat: '{value}˚C', maximum: 20, title:'Temperature (In Celsius)', edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }}
                         title='Temperature Variation' loaded={this.onChartLoad.bind(this)}
                         load={this.load.bind(this)}
                         chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '60%'}
-                        tooltip={{
-                            enable: true
-                        }}>
-                        <Inject services={[RangeColumnSeries, Tooltip, Category, Legend]} />
+                        width={Browser.isDevice ? '100%' : '75%'}
+                            tooltip={{
+                                enable: true,
+                                header:"<b>${point.x}</b>",
+                                format:"Temperature : <b>${point.low} - ${point.high}</b>"
+                            }}>
+                        <Inject services={[RangeColumnSeries, Tooltip, Category, Legend, DataLabel, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} name='India' xName='x' low='low' high='high' type='RangeColumn'>
+                            <SeriesDirective dataSource={data} name='India' high="high" low="low" xName='x' columnSpacing={0.1} type='RangeColumn' marker={{
+                                     dataLabel: {
+                                        visible: true,
+                                        position: 'Outer',
+                                    }
+                                }}>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data1} name='Germany' xName='x' low='low' high='high' type='RangeColumn'>
+                            <SeriesDirective dataSource={data1} name='Germany' xName='x'high="high" low="low" columnSpacing={0.1} type='RangeColumn' marker={{
+                                     dataLabel: {
+                                        visible: true,
+                                        position: 'Outer',
+                                    }
+                                }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
                 <p>
-                This sample visualizes the maximum and minimum temperatures for a week of different countries with default range column series in the chart. Tooltip shows the information about the data points.
+                This React range column chart example visualizes the maximum and minimum temperatures for a week in different countries with the default range column series
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the range column type chart. You can use <code>border</code>,
-                        <code>fill</code> properties to customize the Columns. <code>dataLabel</code> are used to represent individual data
-                        and its value.
+                    In this example, you can see how to render and configure the range column chart. The range column chart is used to display a range of data by plotting two y-values per data point. The two y-values are used as the upper and lower bounds of a column.
                     </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                     </p>
 
                     <p><b>Injecting Module</b></p>
@@ -79,7 +89,7 @@ export class RangeColumn extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information on the range column series can be found in this &nbsp;
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -93,7 +103,7 @@ export class RangeColumn extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast')  as ChartTheme;
     };
      
 }

@@ -46,7 +46,7 @@ export class Symbols extends SampleBase<{}, {}> {
                             lineStyle: { width: 0 },
                             maximum: 75, interval: 15
                         }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         title='FB Penetration of Internet Audience' loaded={this.onChartLoad.bind(this)}
                         legendSettings={{ visible: false }}

@@ -6,7 +6,7 @@ import * as React from 'react';
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor } from '@syncfusion/ej2-react-richtexteditor';
 import { QuickToolbar, Table, ToolbarSettingsModel, ToolbarType, Count } from '@syncfusion/ej2-react-richtexteditor';
-import { createElement } from '@syncfusion/ej2-base';
+import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as CodeMirror from 'codemirror';
 import 'codemirror/mode/javascript/javascript';
@@ -49,7 +49,9 @@ export class OnlineHtmlEditor extends SampleBase<{}, {}> {
     this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
     this.srcArea = document.querySelector('.source-code');
     if (this.srcArea) {
-        this.srcArea.addEventListener('keyup', this.updateHtmlValue);
+        this.srcArea.addEventListener('keyup', (e: KeyboardEventArgs) => {
+            this.updateHtmlValue();
+        });
     }
   }
 

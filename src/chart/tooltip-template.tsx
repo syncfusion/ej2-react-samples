@@ -68,7 +68,7 @@ export class ChartTooltipTemplate extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true,
                         template: this.tooltipTemplate.bind(this) }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         title='USA Wheat Production' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[LineSeries, Tooltip, Category ]} />
                         <SeriesCollectionDirective>

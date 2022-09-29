@@ -14,7 +14,7 @@ import { EmitType } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 
 export let data1: any[] = [
-    { x: 'Rice', y: 80 }, { x: 'Wheat', y: null }, { x: 'Oil', y: 70 },
+    { x: 'Rice', y: 80,}, { x: 'Wheat', y: null }, { x: 'Oil', y: 70 },
     { x: 'Corn', y: 60 }, { x: 'Gram', y: null },
     { x: 'Milk', y: 70 }, { x: 'Peas', y: 80 },
     { x: 'Fruit', y: 60 }, { x: 'Butter', y: null }
@@ -43,30 +43,21 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section row'>
-                    <div className='col-md-8'>
-                        <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
-                            title='Annual Product-Wise Profit Analysis'
-                            load={this.load.bind(this)}
-                            legendSettings={{ visible: false }}
-                            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}</b>' }}
-                            loaded={this.onChartLoad.bind(this)}
-                        >
-                            <Inject services={[PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
+                <div className='col-md-8'>
+                <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie} title='Annual Product-Wise Profit Analysis' load={this.load.bind(this)} textRender={this.textRender.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true,header:"", format: '<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>' }}   enableBorderOnMouseMove={false} loaded={this.onChartLoad.bind(this)}>
+                            <Inject services={[PieSeries, AccumulationDataLabel, AccumulationTooltip]}/>
                             <AccumulationSeriesCollectionDirective>
-                                <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' name='Profit'
-                                    dataLabel={{
-                                        visible: true, position: 'Inside', font: {
-                                            fontWeight: '600',
-                                            color: '#ffffff'
-                                        }
-                                    }}
-                                    emptyPointSettings={{ fill: '#e6e6e6' }}
-                                >
+                                <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' name='Profit' dataLabel={{
+                                    visible: true, position: 'Inside', font: {
+                                        fontWeight: '600',
+                                        
+                                    }
+                                }} emptyPointSettings={{ fill: '#e6e6e6' }}> 
                                 </AccumulationSeriesDirective>
                             </AccumulationSeriesCollectionDirective>
                         </AccumulationChartComponent>
-                    </div>
-                    <div className='col-md-4 property-section'>
+                </div>
+                <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: '50px' }}>
@@ -84,20 +75,19 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample illustrates an organization’s annual product-wise profit analysis with the empty point functionality in pie series.  The Mode of empty point can be changed by using <code>Empty Point Mode</code> in property panel.
+                This sample illustrates the annual product-wise profit analysis of an organization with empty point functionality in the pie series.  The Mode of empty point can be changed by using <code>Empty Point Mode</code> in property panel.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the empty points. You can use <code>border</code>,
-                    <code>fill</code>, <code>mode</code> properties to customize the empty points.
+                    In this example, you can see how to render and configure the pie series with empty points. The empty point in the chart can be handled using the <code>EmptyPointSettings</code> property.
                 </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
                     <p>
                         More information on the empty points can be found in this &nbsp;
-                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/empty-points/">documentation section</a>.
                 </p>
                 </div>
             </div >
@@ -113,7 +103,12 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as AccumulationTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
     };
+    
+    textRender(args: { text: string; point: { x: string; y: string; }; })
+    {
+        args.text = args.point.x + ": $" + args.point.y + "K";
+    }
         
 }

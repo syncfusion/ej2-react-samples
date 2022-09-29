@@ -119,7 +119,7 @@ export class Zooming extends SampleBase<{}, {}> {
                             lineStyle: { width: 0 },
                             majorTickLines: { width: 0 }
                         }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         legendSettings={{ visible: false }}
                         zoomSettings={{

@@ -15,3 +15,4 @@ export class SampleBase<P, S> extends React.PureComponent<RouteComponentProps<an
         );
     }
 }
+export function updateSampleSection(): void {}

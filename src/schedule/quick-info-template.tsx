@@ -122,14 +122,14 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
             <div className="quick-info-content">
                 {props.elementType === 'cell' ?
                     <div className="e-cell-content">
-                        <div className="content-area">
+                        <div className="quick-content-area">
                             <TextBoxComponent id="title" ref={(textbox: TextBoxComponent) => this.titleObj = textbox} placeholder="Title" />
                         </div>
-                        <div className="content-area">
+                        <div className="quick-content-area">
                             <DropDownListComponent id="eventType" ref={(ddl: DropDownListComponent) => this.eventTypeObj = ddl} dataSource={this.roomData}
                                 fields={{ text: "Name", value: "Id" }} placeholder="Choose Type" index={0} popupHeight="200px" />
                         </div>
-                        <div className="content-area">
+                        <div className="quick-content-area">
                             <TextBoxComponent id="notes" ref={(textbox: TextBoxComponent) => this.notesObj = textbox} placeholder="Notes" />
                         </div>
                     </div>

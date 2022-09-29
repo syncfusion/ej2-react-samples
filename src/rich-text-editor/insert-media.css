@@ -1,0 +1,9 @@
+#insertMediaRTE .e-richtexteditor .e-rte-content .e-content {
+    float: left;
+    width: 100%;
+}
+
+#insertMediaRTE .content-wrapper {
+    width: auto;
+    margin: 0;
+}

@@ -1,0 +1,7 @@
+export const MessageSampleOrder: Object = [
+    { 'path': 'message/default', 'component': 'Default', 'name': 'Default Functionalities', 'description':'This sample demonstrates the basic layout of Message with different severity types. The severity types such as Normal, Success, Info, Warning and Error.', 'order': '01', 'category': 'Message' },
+    { 'path': 'message/variants', 'component': 'Variants', 'name': 'Variants', 'description':'This sample demonstrates the Message with outlined variant type. The available variants are Text, Outlined and Filled.', 'order': '01', 'category': 'Message' },
+    { 'path': 'message/icons', 'component': 'Icons', 'name': 'Icons', 'description':'This sample demonstrates the Message with severity and close icon. The close icon will be displayed at right edge of the Message content.', 'order': '01', 'category': 'Message' },
+    { 'path': 'message/customization', 'component': 'Customization', 'name': 'Customization', 'description':'This sample demonstrates the Message with customizing the content alignments and customizing the severity icons for Message.', 'order': '01', 'category': 'Message' },
+    { 'path': 'message/template', 'component': 'Template', 'name': 'Template', 'description':'This sample demonstrates the template rendering in Message. Information Message is demonstrated to notify for the user which is rendered using HTML elements.', 'order': '01', 'category': 'Message' }
+]

@@ -77,8 +77,8 @@ export class Resources extends SampleBase<{}, {}> {
         let selectedResource: number[] = [];
         let resourceCollection: HTMLElement[] = [].slice.call(document.querySelectorAll('.e-resource'));
         resourceCollection.forEach((element: HTMLElement, index: number) => {
-            let resourceElement: Element = element.querySelector('.e-icons');
-            if (resourceElement && resourceElement.classList.contains('e-check')) {
+            let resEle: Element = element.querySelector('.e-icons');
+            if (resEle && resEle.classList.contains('e-check')) {
                selectedResource.push(index);
             }
         });

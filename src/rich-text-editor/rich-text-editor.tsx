@@ -17,8 +17,7 @@ export class Default extends SampleBase<{}, {}> {
         <div className='control-section' id="rte">
           <div className='rte-control-section'>
             <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }} >
-              <p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content.
-  Users can format their content using standard toolbar commands.</p>
+              <p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p>
               <p><b>Key features:</b></p>
               <ul>
                 <li>

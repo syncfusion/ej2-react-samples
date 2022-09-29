@@ -37,7 +37,7 @@ export class CrosshairChart extends SampleBase<{}, {}> {
                                 enable: true
                             }
                         }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         title='Conns,Inc Stock Details' loaded={this.onChartLoad.bind(this)}
                         crosshair={{ enable: true }}
                         legendSettings={{ visible: false }}>

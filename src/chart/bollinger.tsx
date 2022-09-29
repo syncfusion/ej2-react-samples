@@ -47,7 +47,7 @@ export class Bollinger extends SampleBase<{}, {}> {
                             enable: true, shared: true
                         }}
                         legendSettings={{ visible: false }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
                         zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>

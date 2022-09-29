@@ -1,0 +1,47 @@
+#templateMention {
+    min-height: 100px;
+    border: 1px solid #D7D7D7;
+    width: 600px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+#mention_template {
+    margin: 0 auto;
+    width: 600px;
+}
+.template_listItems {
+    padding-left: 12px;
+    vertical-align: middle;
+    width: 80%;
+}
+#templateMention_popup .e-dropdownbase .e-list-item {
+    line-height: 25px;
+    text-indent: 8px;
+}
+#templateMention_popup .mentionEmpImage {
+    width: 44px;
+    float: left;
+}
+#templateMention_popup .person {
+    font-size: 16px;
+    margin-top: 8px;
+}
+#templateMention_popup .e-dropdownbase .e-list-item * {
+    display: block;
+}
+div#templateMention[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555;
+}
+#mention_template .template-size {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 1010px) {
+    #templateMention,
+    #mention_template, #mention_template table{
+        width: 100%;
+    }
+}

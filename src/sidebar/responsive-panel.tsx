@@ -64,7 +64,7 @@ export class ResponsivePanel extends SampleBase<{}, {}> {
     render() {
         let folderEle: string = '<div class= "e-folder"><div class= "e-folder-name">Navigation Pane</div></div>';
         return (
-            <div className="control-section" id="wrapper">                
+            <div className="control-section" id="responsive-wrapper">                
                 <div id="reswrapper">
                     {/* header-section  declaration */}
                     <div>

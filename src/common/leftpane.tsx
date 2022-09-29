@@ -6,7 +6,7 @@ import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import { DataManager, Query, DataUtil } from '@syncfusion/ej2-data';
 import { samplesList } from './sample-list';
 import { toggleLeftPane, isLeftPaneOpen, sampleOverlay } from './index';
-import { selectDefaultTab } from './component-content';
+import { selectDefaultTab, initialize } from './component-content';
 
 let isMobile: boolean;
 let isTablet: boolean;
@@ -209,7 +209,10 @@ export class LeftPane extends React.Component<{}, {}> {
                     ((isTablet || (Browser.isDevice && isPc)) && isLeftPaneOpen()))) {
                     toggleLeftPane();
                 }
-                setTimeout(() => { location.hash = '#/' + theme + path; }, 600);
+                setTimeout(() => {
+                    location.hash = '#/' + theme + path;
+                    initialize();
+                 }, 600);
             }
         }
     }

@@ -1,0 +1,13 @@
+.skeleton-row .col-sm-6.container{
+    padding: 20px;
+    min-height: 150px;
+    position: relative;
+}
+
+#skeletonRectangleMediumRight {
+    float: right;
+}
+
+.skeleton {
+    margin-left: 3px;
+}

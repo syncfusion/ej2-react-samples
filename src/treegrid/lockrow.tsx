@@ -50,6 +50,10 @@ const SAMPLE1_CSS = `
 .property-panel-section {
   padding-left: 80px;
 }
+.e-multiselect {
+  padding-left : 0px !important;
+  padding-top: 0px !important;
+}
 `;
 {/* custom code end */}
 export class LockRow extends SampleBase<{}, {}> {

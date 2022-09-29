@@ -23,7 +23,7 @@
   height: 14px;
 }
 
-.quick-info-template .content-area {
+.quick-info-template .quick-content-area {
   margin: 0;
   padding: 10px;
   width: auto;
@@ -106,11 +106,6 @@
   font-size: 11px;
   letter-spacing: 0.33px;
   height: 14px;
-}
-
-.content-area {
-  padding: 10px;
-  width: 100%;
 }
 
 .event-content {

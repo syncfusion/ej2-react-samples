@@ -13,10 +13,10 @@ import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
 export let data1: any[] = [{ x: 'Jamesh', y: 10, text: 'Total 10' },
-{ x: 'Michael', y: 9, text: 'Total 9' }, { x: 'John', y: 11, text: 'Total 11' }];
-export let data2: any[] = [{ x: 'Jamesh', y: 5 }, { x: 'Michael', y: 4 }, { x: 'John', y: 5 }];
-export let data3: any[] = [{ x: 'Jamesh', y: 4 }, { x: 'Michael', y: 3 }, { x: 'John', y: 4 }];
-export let data4: any[] = [{ x: 'Jamesh', y: 1 }, { x: 'Michael', y: 2 }, { x: 'John', y: 2 }];
+{ x: 'Michael', y: 9, text: 'Total 9' }, { x: 'John', y: 11, text: 'Total 11' }, { x: 'Jack', y: 8, text: 'Total 8' }, { x: 'Lucas', y: 10, text: 'Total 10' }];
+export let data2: any[] = [{ x: 'Jamesh', y: 5 }, { x: 'Michael', y: 4 }, { x: 'John', y: 5 }, { x: 'Jack', y: 5}, { x: 'Lucas', y: 6}];
+export let data3: any[] = [{ x: 'Jamesh', y: 4 }, { x: 'Michael', y: 3 }, { x: 'John', y: 4 }, { x: 'Jack', y: 2 }, { x: 'Lucas', y: 3}];
+export let data4: any[] = [{ x: 'Jamesh', y: 1 }, { x: 'Michael', y: 2 }, { x: 'John', y: 2 }, { x: 'Jack', y: 1}, { x: 'Lucas', y: 1}];
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -37,14 +37,14 @@ export class ColumnPlacement extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 } }}
                         primaryYAxis={{
-                            majorGridLines: { width: 0 },
-                            majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' }
+                            title: 'Fruits Count',
+                            majorTickLines: { width: 0 }, lineStyle: { width: 0 }
                         }}
                         chartArea={{ border: { width: 0 } }}
                         enableSideBySidePlacement={false}
                         title='Fruit Consumption'
                         tooltip={{ enable: true, shared: true }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[ColumnSeries, DataLabel, Category, Tooltip, Legend]} />
                         <SeriesCollectionDirective>
@@ -69,16 +69,15 @@ export class ColumnPlacement extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample illustrates four column series. Each column is rendered with different column width and it is placed  behind to another one.
+                This sample shows four series of columns in which each column is rendered with a different width and placed behind the previous column.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing the frequency, count, total or average of data in different categories.
-                       You can use <code>border</code>, <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual data and its value.
+                    In this example, you can see how to render and configure the column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories. The <code>EnableSideBySidePlacement</code> property is used to enable and disable side-by-side positioning. DataLabel is used to present details about individual data points.
                    </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                    </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -88,7 +87,7 @@ export class ColumnPlacement extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the column series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
                   </p>
                 </div>
             </div>

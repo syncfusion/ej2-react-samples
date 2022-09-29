@@ -153,7 +153,7 @@ export class BoxWhisker extends SampleBase<{}, {}> {
                 </p>
                     <p>
                         More information on the BoxAndWhisker series can be found in this &nbsp;
-                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#boxplotmode">documentation section</a>.
                 </p>
                 </div>
             </div>

@@ -68,7 +68,7 @@ export class AjaxContent extends SampleBase<{}, { hideDialog: boolean; }> {
             <div className='control-pane'>
                 <div id='target' className='control-section ajaxcontent col-lg-12'>
                     <button className="e-control e-btn dlgbtn" ref={this.buttonRef} onClick={this.buttonClick.bind(this)} id="dialogBtn">Open</button>
-                    <DialogComponent id="dialog" visible={this.state.hideDialog} header={'<img class="img1" src="src/dialog/images/2.png">' + 'What’s Coming from Microsoft this Fall'} showCloseIcon={true} animationSettings={this.animationSettings} ref={dialog => this.dialogInstance = dialog}
+                    <DialogComponent id="dialog" visible={this.state.hideDialog} header={'<img class="img1" src="src/dialog/images/2.png" alt="Microsoft roadmap">' + 'What’s Coming from Microsoft this Fall'} showCloseIcon={true} animationSettings={this.animationSettings} ref={dialog => this.dialogInstance = dialog}
                         width={'500px'}
                         target={'#target'}
                         close={this.dialogClose}

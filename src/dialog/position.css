@@ -1,12 +1,12 @@
-#defaultDialog table,
-#defaultDialog th,
-#defaultDialog td {
+#positionDialog table,
+#positionDialog th,
+#positionDialog td {
     border: 1px solid #D8D8D8;
     border-collapse: collapse;
 }
 
-.fluent.e-bigger .control-section .e-dialog,
-.fluent-dark.e-bigger .control-section .e-dialog {
+.fluent.e-bigger .control-section #positionDialog .e-dialog,
+.fluent-dark.e-bigger .control-section #positionDialog .e-dialog {
   width: 502px !important;
 }
 
@@ -19,7 +19,7 @@
   width: 455px;
 }
 
-#defaultDialog.e-dialog .e-footer-content {
+#positionDialog.e-dialog .e-footer-content {
     padding: 0px 1px 4px ! important;
 }
 

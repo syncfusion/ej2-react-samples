@@ -36,7 +36,7 @@ export class ParetoChart extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         title='Defect vs Frequency' loaded={this.onChartLoad.bind(this)}
                         legendSettings={{ visible: false }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         tooltip={{ enable: true, shared: true }}
                     >
                         <Inject services={[Category, ColumnSeries, Legend, LineSeries, Tooltip,ParetoSeries]} />
@@ -68,7 +68,7 @@ export class ParetoChart extends SampleBase<{}, {}> {
             </p>
                     <p>
                         More information on the series can be found in this
-                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/chartSeriesType/"> documentation section</a>.
+                         <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#pareto-chart"> documentation section</a>.
                      </p>
                 </div>
             </div>

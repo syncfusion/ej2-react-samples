@@ -7,100 +7,80 @@ import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import {
   AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,
-  AccumulationDataLabel, AccumulationTooltip, PieSeries, Inject, IAccLoadedEventArgs, AccumulationTheme,
+  AccumulationDataLabel, AccumulationTooltip, PieSeries, Inject, IAccLoadedEventArgs, AccumulationTheme, AnnotationsDirective, AnnotationDirective, AccumulationAnnotationsDirective, AccumulationAnnotationDirective, ChartAnnotation, AccumulationAnnotation,
 } from '@syncfusion/ej2-react-charts';
 export let data1: any[] = [
-  { x: 'Australia', y: 53, text: 'AUS: 14%' },
-  { x: 'China', y: 56, text: 'CHN: 15%' },
-  { x: 'India', y: 61, text: 'IND: 16%' },
-  { x: 'Japan', y: 13, text: 'JPN: 3%' },
-  { x: 'South Africa', y: 79, text: 'ZAF: 21%' },
-  { x: 'United Kingdom', y: 68, text: 'UK: 19%' },
-  { x: 'United States', y: 48, text: 'USA: 12%' }
+  { x: 'Chrome', y: 60, text: 'Chrome: 60%' },
+  { x: 'UC Browser', y: 10, text: 'UC Browser: 10%' },
+  { x: 'Opera', y: 8, text: 'Opera: 8%' },
+  { x: 'Safari', y: 15, text: 'Safari: 15%' },
+  { x: 'InternetExplorer', y: 7, text: 'Internet Explorer: 7%' },
+  { x: 'QQ', y: 10, text: 'QQ: 10%' },
 ];
+let content = "<div style='font-Weight:600; font-size:14px;'>Browser<br>Market<br>Shares</div>";
+const SAMPLE_CSS = `
+    .control-fluid {
+        padding: 0px !important;
+    }
+        .pie-chart {
+            align :center
+        }`;
 export class SemiPie extends SampleBase<{}, {}> {
   public pie: AccumulationChartComponent;
   private slider: HTMLInputElement;
   render() {
     return (
       <div className='control-pane'>
+            <style>
+                    {SAMPLE_CSS}
+                </style>
         <div className='control-section row'>
-          <div className='col-lg-9'>
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
-              title='Agricultural Land Percentage'
-              tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
+              tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>' }}
               legendSettings={{ visible: false }}
+              enableBorderOnMouseMove={false}
               load={this.load.bind(this)}
               loaded={this.onChartLoad.bind(this)}
             >
-              <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
+              <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries,ChartAnnotation,AccumulationAnnotation]} />
               <AccumulationSeriesCollectionDirective>
-                <AccumulationSeriesDirective name='Agricultural' dataSource={data1} xName='x' yName='y' startAngle={270} endAngle={90}
+                <AccumulationSeriesDirective  dataSource={data1} xName='x' yName='y' startAngle={270} endAngle={90}
                   radius='90%' 
                   explode= { true }
                   innerRadius='40%'
                   dataLabel={{
                     visible: true, position: 'Outside',
                     connectorStyle: { length: '10%' }, name: 'text',
-                    font: { size: '14px' }
+                    font: {
+                      fontWeight: '600'
+                    }
                   }}
                 >
                 </AccumulationSeriesDirective>
               </AccumulationSeriesCollectionDirective>
+              <AccumulationAnnotationsDirective>
+                <AccumulationAnnotationDirective   content={content}
+                region="Series"
+                x="50%"
+                y="85%">
+                </AccumulationAnnotationDirective>
+              </AccumulationAnnotationsDirective>
             </AccumulationChartComponent>
-          </div>
-          <div className='col-lg-3 property-section'>
-            <PropertyPane title='Properties'>
-              <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                <tr style={{ height: '50px' }}>
-                  <td style={{ width: '60%' }}>
-                    <div>Start Angle:
-                          <p id="startangle" style={{ fontWeight: 'normal' }}>270</p>
-                    </div>
-                  </td>
-                  <td style={{ width: '40%' }}>
-                    <div data-role="rangeslider">
-                      <input type="range" name="range-min" ref={slider => this.slider = slider} id="range-min" defaultValue="270" min="0" max="360" onChange={this.startangle.bind(this)} style={{ marginLeft: '-5px' }} />
-                    </div>
-                  </td>
-                </tr>
-                <tr style={{ height: '50px' }}>
-                  <td style={{ width: '60%' }}>
-                    <div>End Angle:
-                          <p id="endangle" style={{ fontWeight: 'normal' }}>90</p>
-                    </div>
-                  </td>
-                  <td style={{ width: '40%' }}>
-                    <div data-role="rangeslider">
-                      <input type="range" name="range-min" ref={slider => this.slider = slider} id="range-max" defaultValue="90" min="0" max="360" onChange={this.endangle.bind(this)} style={{ marginLeft: '-5px' }} />
-                    </div>
-                  </td>
-                </tr>
-                <tr style={{ height: '50px' }}>
-                  <td style={{ width: '60%' }}>
-                    <div>Inner Radius:
-                          <p id="innerradius" style={{ fontWeight: 'normal' }}>0.40</p>
-                    </div>
-                  </td>
-                  <td style={{ width: '40%' }}>
-                    <div data-role="rangeslider">
-                      <input type="range" name="innerRadius" ref={slider => this.slider = slider} id="inner-radius" defaultValue="40" min="0" max="50" onChange={this.onChange.bind(this)} style={{ marginLeft: '-5px' }} />
-                    </div>
-                  </td>
-                </tr>
-              </table>
-            </PropertyPane>
-          </div>
         </div>
         <div id="action-description">
         <p>
-        This sample illustrates the agriculture land percentages of various countries by using a pie series. It has options to change the angle and radius of the series.
+        This example demonstrates a semi-pie chart for mobile browsers usage statistics. <code>Datalabels</code> show information about the points.
     </p>
         </div>
         <div id="description">
-          <p> In this example, you can see how to render semi pie and doughnut chart. Using <code>startAngle</code>, <code>endAngle</code> properties, we can achieve this semi pie chart. Property panel to change the angle is provided with this sample.</p>
-          <p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+          <p> In this example, you can see how to render a semi pie chart using <code>StartAngle</code> and <code>EndAngle</code> properties.</p>
+          <p> <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+          <p>
+                        More information on the pie series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#pie-chart">documentation section</a>.
+                  </p>
         </div>
+       
       </div>
     )
   }
@@ -139,7 +119,7 @@ export class SemiPie extends SampleBase<{}, {}> {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
     args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-    replace(/-dark/i, "Dark") as AccumulationTheme;
+    replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast')  as AccumulationTheme;
   };
       
 }

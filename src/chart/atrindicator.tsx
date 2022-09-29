@@ -48,7 +48,7 @@ export class ATR extends SampleBase<{}, {}> {
                         }}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
                         chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, StripLine, DateTime, Zoom, Logarithmic, Crosshair, LineSeries,

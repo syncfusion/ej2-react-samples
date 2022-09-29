@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    Legend, Category, StackingBarSeries, Tooltip, ILoadedEventArgs, ChartTheme
+    Legend, Category, StackingBarSeries, Tooltip, ILoadedEventArgs, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
@@ -30,14 +30,16 @@ export class StackedBar extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
+                    <ChartComponent id='charts' style={{ textAlign: "center" }}  legendSettings={{ enableHighlight :true }}
                         primaryXAxis={{
                             valueType: 'Category',
-                            majorGridLines: { width: 0 }
+                            majorGridLines: { width: 0 },
+                            majorTickLines: { width: 0 },
                         }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         primaryYAxis={{
+                            title:'Sales (In Percentage)',
                             lineStyle: { width: 0 },
                             majorTickLines: { width: 0 },
                             labelFormat: '{value}%',
@@ -46,29 +48,28 @@ export class StackedBar extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         title='Sales Comparison' loaded={this.onChartLoad.bind(this)}
                         tooltip={{ enable: true }}>
-                        <Inject services={[StackingBarSeries, Category, Legend, Tooltip]} />
+                        <Inject services={[StackingBarSeries, Category, Legend, Tooltip, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} width={2} xName='x' yName='y' name='Apple' type='StackingBar'>
+                            <SeriesDirective dataSource={data} width={2} xName='x' yName='y' border={{ width: 1, color: "white" }} columnWidth={0.6} name='Apple' type='StackingBar'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data2} width={2} xName='x' yName='y' name='orange' type='StackingBar'>
+                            <SeriesDirective dataSource={data2} width={2} xName='x' yName='y' border={{ width: 1, color: "white" }} columnWidth={0.6} name='Orange' type='StackingBar'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data3} width={2} xName='x' yName='y' name='Wastage' type='StackingBar'>
+                            <SeriesDirective dataSource={data3} width={2} xName='x' yName='y' border={{ width: 1, color: "white" }} columnWidth={0.6} name='Wastage' type='StackingBar'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
                 <p>
-                This sample visualizes sales comparison of different fruits with default stacked bar series in chart. Legend in the sample shows the information about the series.
+                This React stacked bar chart example visualizes a comparison of several months’ sales with the default stacked bar series. The legend in the sample shows more information about the series.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the stacking bar type charts. Stacks the points in the series horizontally and also you can use <code>stackingGroup</code> property to group the stacking collection based on categories.
-                        You can use <code>border</code>, <code>fill</code> properties to customize the horizontal bar. <code>dataLabel</code> is used to represent individual data and its value.
+                    In this example, you can see how to render and configure the stacked bar chart. The stacked bar chart stacks points in the series horizontally. You can also use the <code>StackingGroup</code> property to group stacked collections based on category.
                     </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -77,8 +78,8 @@ export class StackedBar extends SampleBase<{}, {}> {
                         <code>StackingBarSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the stacking bar series can be found in this &nbsp;
-                       <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the  bar series can be found in this &nbsp;
+                       <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bar-chart">documentation section</a>.
                     </p>
                 </div>
             </div>

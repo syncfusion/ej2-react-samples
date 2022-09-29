@@ -24,6 +24,7 @@ let propRegex: RegExp = /-3/;
 let controlName: string;
 let sampleName: string;
 let sourceTabItems: object[] = [];
+let fnSourceTabItems: object[] = [];
 let categoryName: string;
 let apiGrid: any;
 let propBorder: HTMLElement = createElement('div', { className: 'sb-property-border' });
@@ -37,6 +38,13 @@ export let srcTab: Tab;
 let mobilePropPane: Element = select('.sb-mobile-prop-pane');
 
 let isMobile: boolean;
+let isFunctional: boolean = false;
+let hasFunctional: boolean = false;
+let isHookCode: boolean = true;
+export let isRendered: boolean = false;
+export function initialize(): void {
+    isRendered = false
+}
 /**
  * Prevent Tab Swipe Function
  */
@@ -77,11 +85,49 @@ function renderDescription(): void {
 function changeTab(args: any): void {
     if (args.selectedIndex === 1) {
         srcTab.selectedItem = 0;
-        srcTab.items = sourceTabItems;
+        srcTab.items = isFunctional ? fnSourceTabItems : sourceTabItems;
+        renderHooks('.sb-source-section', true);
         srcTab.refresh();
+        renderHooks('#sb-source-tab > .e-tab-header');
         rendercopycode()
         dynamicTabCreation(srcTab);
     }
+}
+
+export function showHooks(val: boolean): void {
+    hasFunctional = val;
+    isFunctional = val ? isHookCode : false;
+    isRendered = true;
+    (document.querySelector(isHookCode ? '#hook' : '#class') as HTMLInputElement).checked = true;
+    select('#fn-btn').style.display = val ? "" : "none";
+}
+
+function renderHooks(selector: string, insert?: boolean): void {
+    let target: HTMLElement = select(selector) as HTMLElement;
+    let ele: HTMLElement = select('#fn-btn') as HTMLElement;
+    if (insert) {
+        target.insertBefore(ele, target.children[0]);
+    } else {
+        if (!isMobile) {
+            target.appendChild(ele);
+            ele.classList.remove("sb-mobile");
+        } else {            
+            ele.classList.add("sb-mobile");
+        }
+    }
+}
+
+function onHooksChange(): void {
+    let val: string = (document.querySelector('input[name="hooks"]:checked') as HTMLInputElement).value;
+    isFunctional = val == "hooks" ? true : false;
+    isHookCode = isFunctional;
+    let sbTabOverlay: any = select('.sb-tab-overlay');
+    sbTabOverlay.classList.remove('sb-hide');
+    srcTab.items = isFunctional ? fnSourceTabItems : sourceTabItems;
+    renderHooks('.sb-source-section', true);
+    srcTab.dataBind()
+    renderHooks('#sb-source-tab > .e-tab-header');
+    updatePlunker();
 }
 
 function rendercopycode(): void {
@@ -99,6 +145,10 @@ function dynamicTab(e: any): void {
     codeEle.innerHTML = (srcTab.items[e.selectedIndex] as any).data;
     codeEle.innerHTML = codeEle.innerHTML.replace(reg,'');
     highlightCode(codeEle);
+    setTimeout(() => {
+        let sbTabOverlay: any = select('.sb-tab-overlay');
+        sbTabOverlay.classList.add('sb-hide');
+    }, 300);
 }
 
 function dynamicTabCreation(obj: any): void {
@@ -152,6 +202,27 @@ function getStringWithOutDescription(code: string, descRegex: RegExp) {
     }
     return lines.join('\n');
 }
+function trimUseEffect(code: string, regEx: RegExp) {
+    let lines = code.split('\n');
+    let startLine = null;
+    let endLine = null;
+    for (var i = 0; i < lines.length; i++) {
+        var curLine = lines[i];
+        if (regEx.test(curLine)) {
+            startLine = i;
+        }
+        if (startLine) {
+            if (!endLine && /}, \[/g.test(curLine)) {
+                endLine = i + 1;
+                break;
+            }
+        }
+    }
+    if (endLine && startLine) {
+        lines.splice(startLine, endLine - startLine);
+    }
+    return lines.join('\n');
+}
 function sourceFileList(node: any): void {
     for (let samples of node.curViewDS) {
         if (samples.path == location.hash.split('/').slice(2).join('/')) {
@@ -166,19 +237,34 @@ function generatepath(path:any): void{
     return tsx;
 }
 
+function updatePlunker(): void {
+    let path: string = hash.slice(2).join('/');
+    let fileName: string = isFunctional ? 'src/' + path + '-functional-stack.json' : 'src/' + path + '-stack.json';
+    let plunk: Ajax = new Ajax(fileName, 'GET', false);
+    let promise: Promise<Ajax> = plunk.send();
+    promise.then((result: Object) => {
+        if (select('#open-plnkr') as any) {
+            (select('#open-plnkr') as any).disabled = false;
+        }
+        plunker(result as string);
+    });
+}
+
 function renderSourceTabContent(): void {
     let path: string = hash.slice(2).join('/');
+    let fnSourcePromise: Array<Promise<Ajax>> = [];
     let sourcePromise: Array<Promise<Ajax>> = [];
+    let fnObj: any = [];
     let sObj: any = [];
     let sampleListFile: ListView = (select('#controlList') as any).ej2_instances[0];
     let sourceFiles: any = sourceFileList(sampleListFile) as any || generatepath(path);
-        for (let sourceFile of sourceFiles) {
-            sourcePromise.push((new Ajax(sourceFile.path, 'GET', false)).send());
-            sObj.push({
-                header: { text: sourceFile.displayName },
-                data: '',
-                content: sourceFile.displayName
-            });
+    for (let sourceFile of sourceFiles) {
+        sourcePromise.push((new Ajax(sourceFile.path, 'GET', false)).send());
+        sObj.push({
+            header: { text: sourceFile.displayName },
+            data: '',
+            content: sourceFile.displayName
+        });
     }
 
     Promise.all(sourcePromise).then((results: Object[]): void => {
@@ -192,14 +278,32 @@ function renderSourceTabContent(): void {
         })
         sourceTabItems = sObj;
     })
-    let plunk: Ajax = new Ajax('src/' + path + '-stack.json', 'GET', false);
-    let p3: Promise<Ajax> = plunk.send();
-    p3.then((result: Object) => {
-        if(select('#open-plnkr') as any){
-            (select('#open-plnkr') as any).disabled = false;
+    if (hasFunctional) {
+        for (let sourceFile of sourceFiles) {
+            var sPath = sourceFile.path;
+            let pathName = sPath.replace(".tsx", "-functional.tsx").replace(".jsx", "-functional.jsx");
+            fnSourcePromise.push((new Ajax(pathName, 'GET', false)).send());
+            fnObj.push({
+                header: { text: sourceFile.displayName },
+                data: '',
+                content: sourceFile.displayName
+            });
         }
-        plunker(result as string);
-    });
+        Promise.all(fnSourcePromise).then((results: Object[]): void => {
+            results.forEach((value, index) => {
+                let sampleContent: any = value.toString();
+                sampleContent = getStringWithOutDescription(sampleContent, /(\'|\")action-description/g)
+                sampleContent = getStringWithOutDescription(sampleContent, /(\'|\")description/g);
+                sampleContent = trimUseEffect(sampleContent, /React.useEffect/g);
+                sampleContent = sampleContent.replace(/&/g, '&amp;')
+                    .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    fnObj[index].data = sampleContent;
+            })
+            fnSourceTabItems = fnObj;
+        })
+    }
+    updatePlunker();
+    
     let openNew: HTMLFormElement = (select('#openNew') as HTMLFormElement);
     if (openNew) {
         openNew.href = location.href.split('#')[0]  + path + '/';
@@ -306,6 +410,7 @@ function onNextButtonClick(): void {
     if (currentIndex !== -1) {
         sampleOverlay();
         location.hash = '#/' + hash[1] + '/' + nextList;
+        isRendered = false;
     }
     setSelectList();
 }
@@ -317,6 +422,7 @@ function onPrevButtonClick(): void {
     if (currentIndex !== -1) {
         sampleOverlay();
         location.hash = '#/' + hash[1] + '/' + prevList;
+        isRendered = false;
     }
     setSelectList();
 }
@@ -454,7 +560,8 @@ export class Content extends React.Component<{}, {}>{
             }
             location.hash = path ? path : '#/material/grid/overview';
         }
-
+        let radios: NodeListOf<Element> = document.querySelectorAll('input[name="hooks"]');
+        radios.forEach(radio => radio.addEventListener('change', onHooksChange));
         select('#mobile-next-sample').addEventListener('click', onNextButtonClick);
         select('#mobile-prev-sample').addEventListener('click', onPrevButtonClick);
         /**
@@ -559,7 +666,20 @@ export class Content extends React.Component<{}, {}>{
                         </div>
                         <div>
                             <div className='sb-source-section'>
-                                <TabComponent id='sb-source-tab' className="sb-source-code-section" selected={dynamicTab} ref={t => srcTab = t} headerPlacement="Bottom" selecting={preventTabSwipe}>
+                                <div className="sb-tab-overlay sb-hide">
+                                    <div className="sb-loading">
+                                        <svg className="circular" height="40" width="40">
+                                            <circle className="path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div id="fn-btn" className="e-btn-group">
+                                    <input type="radio" id="hook" name="hooks" value="hooks" />
+                                    <label className="e-btn e-outline e-primary" htmlFor="hook">Hooks</label>
+                                    <input type="radio" id="class" name="hooks" value="classes" />
+                                    <label className="e-btn e-outline e-primary" htmlFor="class">Classes</label>
+                                </div>
+                                <TabComponent id='sb-source-tab' className="sb-source-code-section" selected={dynamicTab} ref={t => srcTab = t} selecting={preventTabSwipe}>
                                 </TabComponent>
                             </div>
                         </div>

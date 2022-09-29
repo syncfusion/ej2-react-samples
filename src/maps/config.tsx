@@ -100,7 +100,7 @@ export const MapSampleOrder: Object = [
         ], 'description': 'This demo for Essential JS2 Maps control illustrates the Africa continent location in the World map.', 'order': '03', 'category': 'Map Providers'
     },
     {
-        'path': 'maps/osm-with-legend', 'component': 'OSMLegend', 'name': 'OSM with Legend', 'type' : 'new', 'sourceFiles': [
+        'path': 'maps/osm-with-legend', 'component': 'OSMLegend', 'name': 'OSM with Legend', 'sourceFiles': [
             { 'displayName': 'osm-with-legend.tsx', 'path': './src/maps/osm-with-legend.tsx' }
         ], 'description': 'This demo for Essential JS2 Maps control depicts the displaying the OpenStreetMap with legend for markers.', 'order': '03', 'category': 'Map Providers'
     },

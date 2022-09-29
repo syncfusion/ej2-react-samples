@@ -68,11 +68,10 @@ export class DatetimeCategoryAxis extends SampleBase<{}, {}> {
                                 minorTickLines: { width: 0 },
                             }}
                             load={this.load.bind(this)}
-                            pointRender={pointRender}
                             title="Sales Comparison of a Product"
                             loaded={this.onChartLoad.bind(this)}
                             legendSettings={{ visible: false }}
-                            width={Browser.isDevice ? '100%' : '60%'}
+                            width={Browser.isDevice ? '100%' : '75%'}
                             tooltip={{ enable: true }}>
                             <Inject services={[DateTimeCategory, ColumnSeries, Tooltip, ChartAnnotation, StripLine]} />
                             <AnnotationsDirective>

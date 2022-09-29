@@ -41,7 +41,7 @@ export class Stochastic extends SampleBase<{}, {}> {
                         }}
                         tooltip={{ enable: true, shared: true }}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         legendSettings={{ visible: false }}
                         zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}

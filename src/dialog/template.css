@@ -140,7 +140,8 @@
 .bootstrap5-dark .dialogContent .dialogText,
 .tailwind-dark .dialogContent .dialogText,
 .fluent-dark .dialogContent .dialogText {
-    color: #424242;
+    color: #ffffff;
+    background-color: rgba(255,255,255,0.20);
 }
 
 .material .target-element .e-dialog .e-footer-content, .fabric .target-element .e-dialog .e-footer-content {

@@ -79,7 +79,7 @@ export class LocalData extends SampleBase<{}, {}> {
                         }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true, shared: true }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         title='Stock Price Analysis' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[LineSeries, DateTime, Legend, Crosshair, Tooltip]} />
                         <SeriesCollectionDirective>
@@ -103,6 +103,9 @@ export class LocalData extends SampleBase<{}, {}> {
                          The <code> <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#datasource-object---datamanager">dataSource</a></code> property can be assigned either with the array of JavaScript objects or instance of <code><a target="_blank"
                             href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a></code>.</p>
                     <p>In this demo, the array of JavaScript objects is assigned as the data source to the Chart.</p>
+                    <p>
+                    More information about the local data binding can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#local-data">documentation section</a>.
+                   </p>
                 </div>
             </div>
         )

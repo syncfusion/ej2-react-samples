@@ -18,6 +18,7 @@ export class ParagraphFormatView extends SampleBase<{}, {}> {
         this.container.serviceUrl = this.hostUrl + 'api/documenteditor/';
         this.container.documentEditor.pageOutline = '#E0E0E0';
         this.container.documentEditor.acceptTab = true;
+        this.container.documentEditorSettings.showHiddenMarks = true;
         this.container.documentEditor.resize();
         this.titleBar = new TitleBar(document.getElementById('documenteditor_titlebar'), this.container.documentEditor, true);
         this.onLoadDefault();

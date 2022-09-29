@@ -27,7 +27,7 @@ export class TrackballChart extends SampleBase<{}, {}> {
                             majorGridLines: { width: 0 },
                             edgeLabelPlacement: 'Shift'
                         }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
                         primaryYAxis={{

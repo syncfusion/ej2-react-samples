@@ -7,12 +7,13 @@ import {
     RangeNavigatorComponent, ChartTheme, IChangedEventArgs, AreaSeries, DateTime, Crosshair, Inject,
     SeriesCollectionDirective, SeriesDirective, ILoadedEventArgs, IRangeLoadedEventArgs, RangeTooltip,
     RangenavigatorSeriesCollectionDirective, RangenavigatorSeriesDirective, ChartComponent, 
-    ChartAnnotation, IAxisLabelRenderEventArgs,SplineSeries, Tooltip 
+    ChartAnnotation, IAxisLabelRenderEventArgs,SplineSeries, Tooltip, Legend
 } from '@syncfusion/ej2-react-charts';
 import { Browser, remove } from '@syncfusion/ej2-base';
 import { stockData } from './stock-data';
 import { SampleBase } from '../common/sample-base';
 import { getElement } from '@syncfusion/ej2-svg-base/src/tooltip/helper';
+
 
 export let zoomFactor : number;
 export let zoomPosition :number;
@@ -127,11 +128,12 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
                         majorTickLines={{
                             width: 0
                         }}
+                       
                         tooltip={{ enable: true, format: 'yyyy/MM/dd', displayMode: 'Always'}}
                         value={[new Date('2011-01-01'), new Date('2013-12-31')]}
                         width={Browser.isDevice ? '100%' : '80%'}
                         load={this.rangeLoad.bind(this)}
-                        changed={this.changed.bind(this)}>
+                        changed={this.changed.bind(this)} >
                         <Inject services={[AreaSeries, DateTime, RangeTooltip]} />
                         <RangenavigatorSeriesCollectionDirective>
                             <RangenavigatorSeriesDirective dataSource={stockData} xName='x' yName='y' 
@@ -159,6 +161,7 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
                         }}
                         width={Browser.isDevice ? '100%' : '80%'}
                         axisLabelRender={this.labelRender.bind(this)}
+                        legendSettings={{visible: false}}
                         load={this.chartLoad.bind(this)}
                         height='350'
                         chartArea={{ border: { width: 0 } }}
@@ -169,7 +172,7 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
                             enable: false,
                             lineType: 'None'
                         }}>
-                        <Inject services={[Crosshair, DateTime, SplineSeries, Tooltip, ChartAnnotation]} />
+                        <Inject services={[Crosshair, DateTime, SplineSeries, Tooltip, ChartAnnotation, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective name='Rate' type='Spline' dataSource={stockData} xName='x' yName='y' width={2}>
                             </SeriesDirective>

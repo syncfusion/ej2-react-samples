@@ -127,7 +127,7 @@ export class ComponentsDialog extends SampleBase<{}, { hideDialog: boolean; }> {
   }
   public content2() {
     return (
-           <ChartComponent id='charts'
+           <ChartComponent id='DialogChart'
                         primaryXAxis={{
                             valueType: 'DateTime',
                             labelFormat: 'y',
@@ -273,7 +273,7 @@ public load(args: ILoadedEventArgs): void {
 };
 
 public onChartLoad(args: ILoadedEventArgs): void {
-    let  chart:  Element  =  document.getElementById('charts');
+    let  chart:  Element  =  document.getElementById('DialogChart');
     chart.setAttribute('title',  '');
 };
     private buttonClick(): void {

@@ -61,7 +61,7 @@ export class Types extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='col-lg-12 control-section toast-type-section'>
-                    <div className="e-sample-resize-container">
+                    <div className="col-lg-12 col-sm-12 col-md-12 center">
                         <ToastComponent ref={(toast) => { this.toastObj = toast }} id='toast_type' position={this.position} created={this.create.bind(this)} close={this.onclose.bind(this)} beforeOpen={this.onbeforeOpen.bind(this)} ></ToastComponent>
                         <div id='toast_types'>
                             <div>

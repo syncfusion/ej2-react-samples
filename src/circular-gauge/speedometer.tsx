@@ -1,30 +1,75 @@
 /**
- * Dynamic gauge
+ * Sample to design speedometer using the Circular Gauge
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     CircularGaugeComponent, GaugeTheme, AxesDirective, AxisDirective, Inject, IAxisLabelRenderEventArgs, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective
+    PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective, Annotations
 } from '@syncfusion/ej2-react-circulargauge';
-import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
+import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
-import { EmitType, isNullOrUndefined } from '@syncfusion/ej2-base';
-import { ILoadedEventArgs, CircularGauge } from '@syncfusion/ej2-circulargauge';
+import { ILoadedEventArgs } from '@syncfusion/ej2-circulargauge';
 import { SampleBase } from '../common/sample-base';
+
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
 
+var style1 = {
+    'height': '0px',
+    'width': '0px'
+}
+
+var style2 = {
+    'stopColor': '#82b944',
+    'stopOpacity': 1
+}
+
+var style3 = {
+    'stopColor': 'rgb(255,255,0)',
+    'stopOpacity': 1
+}
+
+var style4 = {
+    'stopColor': 'red',
+    'stopOpacity': 1
+}
+
 export class Speedometer extends SampleBase<{}, {}> {
+
     private gauge: CircularGaugeComponent;
-    private gauge1: CircularGauge;
-    private textElement: CheckBoxComponent;
+    public pointerInterval: Object;
     private rangeElement: CheckBoxComponent;
     private gapElement: CheckBoxComponent;
-    // Code for Property Panel
-    private rangeChange() {        
+    public pointerValue: number = 40;
+
+    public load(args: ILoadedEventArgs): void {
+        // custom code start
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        // custom code end
+    }
+
+    public loaded(args: ILoadedEventArgs): void {
+        this.pointerInterval = setInterval(
+            (): void => {
+                if (document.getElementById('container')) {
+                    this.pointerValue = Math.abs(this.pointerValue + ((Math.random() * 20) - 10));
+                    if (this.gauge) {
+                        this.gauge.setPointerValue(0, 0, this.pointerValue);
+                        this.gauge.setAnnotationValue(0, 0, '<div style="width:90px;text-align:center;font-size:20px;font-family:inherit">' + Math.round(this.pointerValue).toString() + 'km/h' + '</div>');
+                    }
+                } else {
+                    clearInterval(+this.pointerInterval);
+                }
+            }, 2000)
+    }
+
+    private rangeChange() {
         if (this.rangeElement.checked === true) {
             this.gapElement.disabled = true;
             this.gauge.axes[0].ranges[0].start = 0;
@@ -57,7 +102,6 @@ export class Speedometer extends SampleBase<{}, {}> {
             this.gauge.axes[0].ranges[5].startWidth = '';
             this.gauge.axes[0].ranges[5].endWidth = '';
             this.gauge.axes[0].ranges[5].color = '';
-            this.gauge.axes[0].pointers[0].animation.enable = false;
             this.gauge.refresh();
         } else {
             this.gapElement.disabled = false;
@@ -91,119 +135,65 @@ export class Speedometer extends SampleBase<{}, {}> {
             this.gauge.axes[0].ranges[5].startWidth = 30;
             this.gauge.axes[0].ranges[5].endWidth = 35;
             this.gauge.axes[0].ranges[5].color = 'red';
-            this.gauge.axes[0].pointers[0].animation.enable = false;
             this.gauge.refresh();
         }
     }
 
-    private textChange() {
-        if (this.textElement.checked === true) {
-            this.gauge.axes[0].majorTicks.interval = 10;
-            this.gauge.axisLabelRender = (args: IAxisLabelRenderEventArgs ) => {
-                let text: string;
-                switch (parseInt(args.text)) {
-                    case 10:
-                        text = 'Ideal';
-                        break;
-                    case 30:
-                        text = 'Safe';
-                        break;
-                    case 50:
-                        text = 'Good';
-                        break;
-                    case 70:
-                        text = 'Ok';
-                        break;
-                    case 90:
-                        text = 'Risk';
-                        break;
-                    case 110:
-                        text = 'Danger';
-                        break;
-
-                    default:
-                        text = '';
-                        break;
-                }
-                args.text = text;
-            };
-            this.gauge.axes[0].pointers[0].animation.enable = false;
-            this.gauge.refresh();
-        } else {
-            this.gauge.axes[0].majorTicks.interval = 20;
-            this.gauge.axes[0].minimum = 0;
-            this.gauge.axes[0].maximum = 120;
-            this.gauge.axisLabelRender = (args: IAxisLabelRenderEventArgs ) => {};
-            this.gauge.axes[0].pointers[0].animation.enable = false;
-            this.gauge.refresh();
-        }
-    }
-
-    private gapChange() {        
+    private gapChange() {
         if (this.gapElement.checked) {
             this.gauge.axes[0].rangeGap = 5;
         } else {
             this.gauge.axes[0].rangeGap = null;
         }
-        this.gauge.axes[0].pointers[0].animation.enable = false;
         this.gauge.refresh();
     }
 
-    public load(args: ILoadedEventArgs): void {
-        // custom code start
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
-        // custom code end
-    }
-    
     render() {
         return (
             <div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='col-lg-8 control-section'>    
+                <div className='col-lg-8 control-section'>
                     <svg style={style1}>
                         <defs>
-                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style={style2} />
-                            <stop offset="50%" style={style3} />
-                            <stop offset="100%" style={style4} />
-                        </linearGradient>
-                        </defs>   
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style={style2} />
+                                <stop offset="50%" style={style3} />
+                                <stop offset="100%" style={style4} />
+                            </linearGradient>
+                        </defs>
                     </svg>
-                    <CircularGaugeComponent title='Speedometer' titleStyle={{ size: '18px' }} centerY='75%' load={this.load.bind(this)} ref={gauge => this.gauge = gauge} id='container'>
+                    <CircularGaugeComponent title='Speedometer' titleStyle={{ size: '18px', fontFamily: 'inherit' }} background='transparent' centerY='75%' load={this.load.bind(this)} loaded={this.loaded.bind(this)} ref={gauge => this.gauge = gauge} id='container'>
+                        <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective radius='120%' startAngle={270} endAngle={90} minimum={0} maximum={120}
                                 lineStyle={{ width: 0 }}
                                 labelStyle={{
                                     font: {
                                         size: '13px',
-                                        fontFamily: 'Roboto'
+                                        fontFamily: 'inherit'
                                     },
                                     position: 'Outside',
                                     autoAngle: true,
-                                    useRangeColor: false
                                 }}
-                                majorTicks={{ height: 0 }}
-                                minorTicks={{ height: 0 }}>
+                                majorTicks={{ width: 0 }}
+                                minorTicks={{ width: 0 }}>
                                 <PointersDirective>
-                                    <PointerDirective animation={{enable: true, duration: 900 }}  value={40} radius='80%' color='#757575' pointerWidth={7}
+                                    <PointerDirective animation={{ enable: false }} value={40} radius='80%' color='#757575' pointerWidth={7}
                                         cap={{
                                             radius: 8,
                                             color: '#757575',
                                             border: { width: 0 }
-                                        }} needleTail ={{
+                                        }} needleTail={{
                                             color: '#757575',
                                             length: '15%'
                                         }} />
                                 </PointersDirective>
                                 <AnnotationsDirective>
                                     <AnnotationDirective
-                                        content='<div style="width:90px;text-align:center;font-size:20px;font-family:Roboto">${pointers[0].value} km/h</div>'
-                                        angle={0} zIndex='1' radius='30%'/>
+                                        content='<div style="width:90px;text-align:center;font-size:20px;font-family:inherit">40 km/h</div>'
+                                        angle={0} zIndex='1' radius='30%' />
                                 </AnnotationsDirective>
                                 <RangesDirective>
                                     <RangeDirective
@@ -238,21 +228,11 @@ export class Speedometer extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
+                        <table id='property' title='Properties' style={{ width: '100%' }}>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div>Show text labels</div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <CheckBoxComponent id='showText' change={this.textChange.bind(this)} ref={d => this.textElement = d} />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>Combine ranges</div>
+                                <tr style={{ height: '50px'}}>
+                                    <td style={{ width: '60%', fontSize: '14px'}}>
+                                        <div>Combine Ranges</div>
                                     </td>
                                     <td>
                                         <div>
@@ -260,9 +240,9 @@ export class Speedometer extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div>Gap between ranges</div>
+                                <tr style={{ height: '35px'}}>
+                                    <td style={{ width: '60%', fontSize: '14px'}}>
+                                        <div>Gap Between Ranges</div>
                                     </td>
                                     <td>
                                         <div>
@@ -276,61 +256,18 @@ export class Speedometer extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample depicts the appearance of speedometer rendered using the circular gauge. The pointer is changed with random values dynamically.
+                        This sample depicts the appearance of a speedometer rendered using the circular gauge. The pointer value is dynamically updated with random values in this case.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to make the look of circular gauge like a speedometer. The labels can be changed to text values, gap can be added between the ranges, or the ranges can be combined to form single range using the options in the properties panel.
+                        In this example, you can see how to make a circular gauge look like a speedometer. Using the options in the properties panel, a gap can be added between ranges or ranges can be combined to form a single range.
                     </p>
                     <p>
-                        For more information on ranges, refer to this
-                        <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation</a> section.
+                        More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section </a>.
                     </p>
                 </div>
             </div>
         )
     }
-
-    gauge5Interval1 = setInterval(
-        (): void => {
-            if(this.gauge) {
-                let newVal: number = this.gauge.axes[0].pointers[0].value + (Math.floor(Math.random() * (10 - (-10))) - 10);
-                if (newVal <= 0) {
-                    newVal = 5;
-                }
-                if (document.getElementById('container')) {
-                    this.gauge.axes[0].pointers[0].animation.enable = true;
-                    this.gauge.setPointerValue(0, 0, newVal);
-                    if (!isNullOrUndefined(document.getElementById('pointerannotation'))) {
-                        document.getElementById('pointerannotation').innerHTML = newVal.toString() + ' km/h';
-                    }
-                } else {
-                    clearInterval(this.gauge5Interval1);
-                }
-            }
-        },
-        1000
-    );
-}
- 
-
-var style1 = {
-    'height': '0px',
-    'width': '0px'
-}
-
-var style2 = {
-    'stopColor': '#82b944',
-    'stopOpacity': 1
-}
-
-var style3 = {
-    'stopColor': 'rgb(255,255,0)',
-    'stopOpacity': 1
-}
- 
-var style4 = {
-    'stopColor':'red',
-    'stopOpacity': 1
 }

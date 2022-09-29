@@ -208,7 +208,7 @@ export class ErrorBarChart extends SampleBase<{}, {}> {
     </p>
                         <p>
                             More information on the smart axis labels can be found in this &nbsp;
-                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#error-bar-chart">documentation section</a>.
                       </p>
                 </div>
                 </div >

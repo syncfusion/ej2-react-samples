@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, AnnotationsDirective, AnnotationDirective, ChartAnnotation,
-    Legend, Category, SplineSeries, Tooltip, ILoadedEventArgs, ChartTheme, IAnimationCompleteEventArgs
+    Legend, Category, SplineSeries, Tooltip, ILoadedEventArgs, ChartTheme, IAnimationCompleteEventArgs, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
@@ -67,23 +67,19 @@ export class Spline extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <ChartComponent id='charts' style={{ textAlign: "center" }} ref={charts => this.chartInstance = charts}
                         primaryXAxis={{
-                            valueType: 'Category',
-                            interval: 1, majorGridLines: { width: 0 },
-                            labelIntersectAction: 'Rotate90'
+                            valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate90'
                         }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
+                        legendSettings={{enableHighlight: true}}
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
                         primaryYAxis={{
-                            labelFormat: '{value}°C',
-                            lineStyle: { width: 0 },
-                            majorTickLines: { width: 0 },
-                            minorTickLines: { width: 0 }
+                            labelFormat: '{value}°C', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }
                         }}
                         tooltip={{ enable: true }}
                         title='NC Weather Report - 2016' loaded={this.onChartLoad.bind(this)}
                         animationComplete={this.animationComplete.bind(this)}>
-                        <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation]} />
+                        <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation, Highlight]} />
                         <AnnotationsDirective>
                             <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" style={{width: "41px"; height: "41px"}} /></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top'>
                             </AnnotationDirective>
@@ -93,35 +89,34 @@ export class Spline extends SampleBase<{}, {}> {
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 10, height: 10 }}>
+                                marker={{ visible: true, width: 7, height: 7 }}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='Avg Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 10, height: 10 }}>
+                                marker={{ visible: true, width: 7, height: 7 }}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data3} xName='x' yName='y' width={2} name='Min Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 10, height: 10 }}>
+                                marker={{ visible: true, width: 7, height: 7 }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                     <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                         <a href="https://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank">www.worldweatheronline.com</a>
+                         <a href="http://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank">www.worldweatheronline.com</a>
                     </div>
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample visualizes the NC weather report for the year 2016 with default spline series in the chart.
-                Low and high temperature of the year are indicated by using annotation.
+                    This React Spline Chart example represents the North Carolina  weather report for the year 2016 with default spline series in the chart.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the spline type charts. Spline chart connects each point in series through a curved line.
-                       You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the spline. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+                    In this example, you can see how to render and configure a spline chart.The Spline chart uses a curved line to connect points in a data series.
+                       <code>Markers</code> are used to represent individual data and its value.
                     </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -130,8 +125,8 @@ export class Spline extends SampleBase<{}, {}> {
                         <code>SplineSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the spline series can be found in this &nbsp;
-                         <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the line series can be found in this &nbsp;
+                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
                     </p>
                 </div>
             </div>

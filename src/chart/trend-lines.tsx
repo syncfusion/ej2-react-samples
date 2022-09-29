@@ -245,7 +245,7 @@ export class Trend extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the TrendLines series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/trend-lines/">documentation section</a>.
                   </p>
                 </div>
             </div >

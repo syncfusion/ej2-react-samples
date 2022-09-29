@@ -26,6 +26,7 @@ export let data1: any[] = [
   { 'x': 'Spain', y: 7, text: 'Spain: 7' },
   { 'x': 'Kenya', y: 6, text: 'Kenya: 6' },
 ];
+
 export class Grouping extends SampleBase<{}, {}> {
   public pie: AccumulationChartComponent;
   private slider: HTMLInputElement;
@@ -49,20 +50,21 @@ export class Grouping extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section row'>
-          <div className='col-lg-9'>
+        <div className='col-lg-9'>
             <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie}
-              title='RIO Olympics Gold'
+              title='Rio Olympic Gold Medals'
               load={this.load.bind(this)}
-              tooltip={{ enable: false }}
+              tooltip={{ enable: true ,format:"<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>"}}
               legendSettings={{ visible: false }}
               textRender={this.onTextRender.bind(this)}
               pointRender={this.onPointRender.bind(this)}
               enableSmartLabels={true}
               loaded={this.onChartLoad.bind(this)}
+              enableBorderOnMouseMove={false}
             >
               <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
               <AccumulationSeriesCollectionDirective>
-                <AccumulationSeriesDirective name='RIO' dataSource={data1} xName='x' yName='y' animation={{ enable: true } } explode={true}
+                <AccumulationSeriesDirective  dataSource={data1} xName='x' yName='y' animation={{ enable: true } } explode={true}
                   radius='70%'
                   groupTo='9' groupMode='Point' startAngle={0}
                   endAngle={360}
@@ -72,15 +74,15 @@ export class Grouping extends SampleBase<{}, {}> {
                     position: 'Outside',
                     connectorStyle: { type: 'Line', length: '5%' },
                     font: {
-                      size: '14px'
+                      fontWeight: '600'
                     }
                   }}
                 >
                 </AccumulationSeriesDirective>
               </AccumulationSeriesCollectionDirective>
             </AccumulationChartComponent>
-          </div>
-          <div className='col-lg-3 property-section'>
+        </div>
+        <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tr style={{ height: '50px' }}>
@@ -105,18 +107,23 @@ export class Grouping extends SampleBase<{}, {}> {
                 </tr>
               </table>
             </PropertyPane>
-          </div>
-        </div>
+      </div>
+      </div>
         <div id="action-description">
           <p>
-            This sample illustrates the grouping functionality in pie series.  The grouping value can be changed by using <code>Group To</code> property.
+          This sample shows the gold medal count scored by each country at the Rio Olympic Games, along with the pie series grouping functionality.
     </p>
         </div>
         <div id="description">
-          <p> In this example, you can see how to <code>group</code> points in pie chart.</p>
-          <p> Points having value below the <code>'groupTo'</code> value are grouped and showed as separate point. You can customise the apearance of the point using <code>'poinRender'</code> event.</p>
-          <p> DataLabel is used to represent individual data and its value.</p>
+          <p>In this example, you can see how to group points based on count and values. The slice can be grouped based on the number of points by specifying the <code>GroupMode</code> to Point. For example, if the <code>GroupTo</code> property is set to 10, the chart will display the first 10 points and the remaining entries from the collection will be grouped as a single point. The slice can also be grouped based on values by specifying the <code>GroupMode</code> to Value. For example, if the <code>GroupTo</code> is set to 10, the first 10 points with a lower value will be grouped together and shown as a single point while the others as a slice.</p>
+          
+          <p> A tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.</p>
+        <p>
+                        More information on the pie series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#pie-chart">documentation section</a>.
+                  </p>
         </div>
+      
       </div>
     )
   }
@@ -144,7 +151,7 @@ export class Grouping extends SampleBase<{}, {}> {
   public load(args: IAccLoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as AccumulationTheme;
+    args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast')  as AccumulationTheme;
   };
       
 }

@@ -4,11 +4,9 @@ import { classList, Animation, createElement, closest, isNullOrUndefined } from 
 import { GridComponent, ColumnsDirective, ColumnDirective,Filter, IFilter,Inject,Grid, VirtualScroll, Sort,SelectionType, Selection  } from '@syncfusion/ej2-react-grids';
 import {DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBox  } from '@syncfusion/ej2-react-buttons';
-import { orderDetails } from './data';
 import { SampleBase } from '../common/sample-base';
 import { Slider } from '@syncfusion/ej2-react-inputs';
-import { Query, DataManager, Predicate } from '@syncfusion/ej2-data';
-import { getData } from './data';
+import { Query, DataManager, Predicate, UrlAdaptor } from '@syncfusion/ej2-data';
 import './grid-overview.css';
 
 
@@ -30,7 +28,7 @@ function ratingTemplate(props):any {
 function progessTemplate(props):any {
   return(  <div id="myProgress" className="pbar">
   <div id="myBar" className="bar">
-    <div id="label" className="barlabel"></div>
+    <div id="pbarlabel" className="barlabel"></div>
   </div>
 </div>)
 }
@@ -165,11 +163,12 @@ export class OverView extends SampleBase<{}, {}> {
             }
         }
     }
-  } 
-  public getTradeData: Object = getData(1000); 
+  }
+  public hostUrl: string = 'https://ej2services.syncfusion.com/production/web-services/';
+  public data: DataManager = new DataManager({ url: this.hostUrl + 'api/UrlDataSource', adaptor: new UrlAdaptor  });
+  public query: Query = new Query().addParams('dataCount', '1000');
   public onChange(): void {
 	this.ddObj.hidePopup();
-    this.gridInstance.showSpinner();
     this.dropSlectedIndex = null;
     let index: number = this.ddObj.value as number;
     clearTimeout(this.clrIntervalFun2);
@@ -181,8 +180,18 @@ export class OverView extends SampleBase<{}, {}> {
         contentElement.scrollTop = 0;
         this.gridInstance.pageSettings.currentPage = 1;
         this.stTime = performance.now();
-        this.gridInstance.dataSource = getData(index);
-        this.gridInstance.hideSpinner();
+        if (this.gridInstance.query.params.length > 1) {
+          for (let i: number = 0; i < this.gridInstance.query.params.length; i++) {
+              if (this.gridInstance.query.params[i].key === 'dataCount') {
+                this.gridInstance.query.params[i].value = index.toString();
+                break;
+              }
+          }
+        }
+        else {
+          this.gridInstance.query.params[0].value = index.toString();
+        }
+        this.gridInstance.setProperties({dataSource: this.data});
     }, 100);
   }
   public check : IFilter = {
@@ -230,25 +239,25 @@ export class OverView extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-        <div>
+        <div style={{paddingBottom: '18px'}}>
         <DropDownListComponent id="games" width='220' dataSource={this.ddlData} index={0} ref={(dropdownlist) => { this.ddObj = dropdownlist }} fields={this.fields} change={this.onChange.bind(this)} placeholder="Select a Data Range" popupHeight="240px" />
         <span id='msg'></span>
         <br/>
         </div>
-          <GridComponent id="overviewgrid" dataSource={this.getTradeData} enableHover={false} enableVirtualization={true} rowHeight={38} height='600' ref={(g) => { this.gridInstance = g }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} queryCellInfo={this.onQueryCellInfo.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select} enableHeaderFocus={true}>
+          <GridComponent id="overviewgrid" dataSource={this.data} query={this.query} enableHover={false} enableVirtualization={true} loadingIndicator= {{ indicatorType: 'Shimmer' }} rowHeight={38} height='600' ref={(g) => { this.gridInstance = g }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} queryCellInfo={this.onQueryCellInfo.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select} enableHeaderFocus={true}>
             <ColumnsDirective>
             <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false}  width='60'></ColumnDirective>
               <ColumnDirective field='EmployeeID' visible={false} headerText='Employee ID' isPrimaryKey={true} width='130'></ColumnDirective>
-              <ColumnDirective field='Employees' headerText='Employee Name' width='230'clipMode='EllipsisWithTooltip' template={empTemplate} filter={this.check} />
-              <ColumnDirective field='Designation'  headerText='Designation' width='170' filter={this.check} clipMode='EllipsisWithTooltip' />
-              <ColumnDirective field='Mail' headerText='Mail' filter={this.Filter} width='230'></ColumnDirective>
-              <ColumnDirective field='Location' headerText='Location' width='140' filter={this.check} template={coltemplate}></ColumnDirective>
-              <ColumnDirective field='Status' headerText='Status' filter={this.status}  template={statusTemplate} width='130'></ColumnDirective>
-              <ColumnDirective field='Trustworthiness' filter={this.trust} headerText='Trustworthiness' template={trustTemplate} width='160'></ColumnDirective>
-              <ColumnDirective field='Rating' headerText='Rating' filter={this.rating}  template={ratingTemplate} width='160' />
+              <ColumnDirective field='Employees' headerText='Employee Name' width='230'clipMode='EllipsisWithTooltip' template={empTemplate} />
+              <ColumnDirective field='Designation'  headerText='Designation' width='170' clipMode='EllipsisWithTooltip' />
+              <ColumnDirective field='Mail' headerText='Mail' width='230'></ColumnDirective>
+              <ColumnDirective field='Location' headerText='Location' width='140' template={coltemplate}></ColumnDirective>
+              <ColumnDirective field='Status' headerText='Status' template={statusTemplate} width='130'></ColumnDirective>
+              <ColumnDirective field='Trustworthiness' headerText='Trustworthiness' template={trustTemplate} width='160'></ColumnDirective>
+              <ColumnDirective field='Rating' headerText='Rating' template={ratingTemplate} width='160' />
               <ColumnDirective field='Software' allowFiltering={false} allowSorting={false} headerText='Software Proficiency' width='180' template={progessTemplate} format='C2' />
-              <ColumnDirective field='CurrentSalary' headerText='Current Salary' filter={this.Filter} width='160' format='C2'></ColumnDirective>
-              <ColumnDirective field='Address' headerText='Address' width='240' filter={this.Filter} clipMode="EllipsisWithTooltip" ></ColumnDirective>
+              <ColumnDirective field='CurrentSalary' headerText='Current Salary' width='160' format='C2'></ColumnDirective>
+              <ColumnDirective field='Address' headerText='Address' width='240' clipMode="EllipsisWithTooltip" ></ColumnDirective>
             </ColumnsDirective>
             <Inject services={[Filter,VirtualScroll,Sort]} />
           </GridComponent>

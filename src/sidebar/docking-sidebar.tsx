@@ -41,7 +41,7 @@ export class Dock extends SampleBase<{}, {}> {
         ];
         let listFields: { [key: string]: Object } = { id: "id", text: "text", iconCss: "iconcss" };
         return(
-            <div className="control-section" id="wrapper">
+            <div className="control-section" id="dock-wrapper">
                 {/* main content declaration */}
                 <div>
                     <ToolbarComponent cssClass="dockToolbar" id="dockToolbar" clicked={this.toolbarCliked.bind(this)}>

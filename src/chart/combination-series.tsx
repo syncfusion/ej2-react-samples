@@ -57,7 +57,7 @@ export class CombinationSeries extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         title='Annual Growth GDP in France' loaded={this.onChartLoad.bind(this)}
                         tooltip={{ enable: true }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         legendSettings={{ visible: true}}>
                         <Inject services={[StackingColumnSeries, LineSeries, Category, ColumnSeries, Tooltip, Legend]} />
                         <SeriesCollectionDirective>
@@ -100,7 +100,7 @@ export class CombinationSeries extends SampleBase<{}, {}> {
                         </p>
                     <p>
                         More information on the series can be found in this &nbsp;
-                            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-series/#combination-series">documentation section</a>.
                         </p>
                 </div>
             </div>

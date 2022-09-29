@@ -1,23 +1,23 @@
 /* Specifies the sample level styles for the sidebar*/
-#wrapper .icon-menu {
+#menu-wrapper .icon-menu {
     font-size: 24px;
 }
 
-#wrapper.control-section {
-    padding: 15px 0px;
+#menu-wrapper.control-section {
+    padding: 0;
 }
 
 @media(max-width:500px) {
-    #wrapper #maintext.main-menu-content {
+    #menu-wrapper #maintext.main-menu-content {
         height: 800px;
     }
 }
 
-#wrapper .sidebar-menu {
+#menu-wrapper .sidebar-menu {
     z-index: 20 !important;
 }
 
-#wrapper .dock-menu.e-menu-wrapper {
+#menu-wrapper .dock-menu.e-menu-wrapper {
     border: 0px;
 }
 
@@ -25,7 +25,7 @@
     height: 500px;
 }
 
-#wrapper .sidebar-menu .e-menu-wrapper {
+#menu-wrapper .sidebar-menu .e-menu-wrapper {
     border: 0px;
     height: 500px;
 }
@@ -146,131 +146,131 @@
     content: '\e811';
 }
 
-#wrapper .icon-menu:before {
+#menu-wrapper .icon-menu:before {
     content: '\e914';
     font-family: 'sbicons'
 }
 
 /*Specifies the sample level styles for sidebar for dock & closed state */
-.bootstrap5 #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.bootstrap5-dark #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.tailwind #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.tailwind-dark #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.bootstrap5 #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.bootstrap5-dark #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.tailwind #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.tailwind-dark #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 9px;
 }
 
-.bootstrap5.e-bigger #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.bootstrap5-dark.e-bigger #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.tailwind.e-bigger #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.tailwind-dark.e-bigger #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.bootstrap5.e-bigger #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.bootstrap5-dark.e-bigger #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.tailwind.e-bigger #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.tailwind-dark.e-bigger #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 15px;
 }
 
-.material #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.material #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 12px;
 }
 
-.material.e-bigger #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.material.e-bigger #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 16px;
 }
 
-.bootstrap #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.bootstrap-dark #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.bootstrap #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.bootstrap-dark #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 13px;
 }
 
-.bootstrap4 #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.bootstrap4 #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 9px;
 }
 
-.bootstrap4.e-bigger #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.bootstrap4.e-bigger #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 13px;
 }
 
-.fabric #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.fabric-dark #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.fabric #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.fabric-dark #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 7px;
 }
 
-.fabric.e-bigger #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
-.fabric-dark.e-bigger #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.fabric.e-bigger #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item,
+.fabric-dark.e-bigger #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 5px;
 }
 
-.highcontrast #wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
+.highcontrast #menu-wrapper .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item {
     padding: 0 4px;
 }
 
 /*Specifies the sample level styles for sidebar for dock & opened state */
-.bootstrap5 #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.bootstrap5-dark #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.tailwind #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.tailwind-dark #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.bootstrap5 #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.bootstrap5-dark #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.tailwind #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.tailwind-dark #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 15px 0 7px;
 }
 
-.material #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.material #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 8px 0 2px;
 }
 
-.bootstrap4 #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.bootstrap4 #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 16px 0 5px;
 }
 
-.bootstrap4.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.bootstrap4.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 16px 0 2px;
 }
 
-.highcontrast #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.highcontrast #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 16px 0 10px;
 }
 
-.bootstrap #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.bootstrap-dark #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.bootstrap #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.bootstrap-dark #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 14px 0 4px;
 }
 
-.fabric #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.fabric-dark #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.fabric #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.fabric-dark #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 16px 0 9px;
 }
 
-.bootstrap5.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.bootstrap5-dark.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.tailwind.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.tailwind-dark.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.bootstrap5.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.bootstrap5-dark.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.tailwind.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.tailwind-dark.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 20px 0 -2px;
 }
 
-.material.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.material.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 20px 0 -2px;
 }
 
-.bootstrap.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.bootstrap-dark.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.bootstrap.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.bootstrap-dark.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 24px 0 3px;
 }
 
-.fabric.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
-.fabric-dark.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.fabric.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon,
+.fabric-dark.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 22px 0 9px;
 }
 
-.highcontrast.e-bigger #wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
+.highcontrast.e-bigger #menu-wrapper .sidebar-menu .e-menu-wrapper ul .e-menu-item .e-menu-icon {
     margin: 0 20px 0 8px;
 }
 
 /* Specifies the border bottom styles for toolbar in light theme*/
-.material #wrapper .e-toolbar,
-.tailwind #wrapper .e-toolbar,
-.bootstrap5 #wrapper .e-toolbar {
+.material #menu-wrapper .e-toolbar,
+.tailwind #menu-wrapper .e-toolbar,
+.bootstrap5 #menu-wrapper .e-toolbar {
     border-bottom: 1px solid #eaeaeae0;
 }
 
 /* Specifies the border bottom styles for toolbar in dark theme*/
-.bootstrap5-dark #wrapper .e-toolbar,
-.tailwind-dark #wrapper .e-toolbar,
-.material-dark #wrapper .e-toolbar {
+.bootstrap5-dark #menu-wrapper .e-toolbar,
+.tailwind-dark #menu-wrapper .e-toolbar,
+.material-dark #menu-wrapper .e-toolbar {
     border-bottom: 1px solid #eaeaea63;
 }
 
@@ -292,43 +292,43 @@
 }
 
 /* Specifies the sample level styles for toolbar*/
-.material #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.material #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 10px;
 }
 
-.bootstrap4 #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap4 #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 4px;
 }
 
-.bootstrap5.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap5-dark.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.highcontrast.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap5.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap5-dark.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.highcontrast.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: -2px;
 }
 
-.material.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.material-dark.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.material.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.material-dark.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 5px;
 }
 
-.bootstrap4.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap4.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 3px;
 }
 
-.bootstrap #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap-dark #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap-dark #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 6px;
 }
 
-.bootstrap.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.bootstrap-dark.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.fabric.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.fabric-dark.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.bootstrap.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.bootstrap-dark.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.fabric.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.fabric-dark.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 0px;
 }
 
-.tailwind.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
-.tailwind-dark.e-bigger #wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+.tailwind.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
+.tailwind-dark.e-bigger #menu-wrapper .e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: -2px;
 }
 

@@ -44,7 +44,7 @@ export class EMA extends SampleBase<{}, {}> {
                             enable: true, shared: true
                         }}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         legendSettings={{ visible: false }}
                         zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true }}
                         title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>

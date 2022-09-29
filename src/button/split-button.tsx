@@ -54,15 +54,15 @@ export class SplitButton extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                <p>This sample demonstrates the default functionalities of the SplitButton.
-                    By clicking primary button default action will be triggered and clicking secondary button will display popup with list of action items.
-                </p>
+                    <p>This sample demonstrates the default functionalities of the SplitButton.
+                        By clicking primary button default action will be triggered and clicking secondary button will display popup with list of action items.
+                    </p>
                 </div>
                 <div id="description">
-                <p>
-                    The SplitButton component has primary and secondary buttons. Primary button is used to select default action and secondary button is
-                    used to toggle contextual overlays for displaying list of action items. It can contain both text and images.
-                </p>
+                    <p>
+                        The SplitButton component has primary and secondary buttons. Primary button is used to select default action and secondary button is
+                        used to toggle contextual overlays for displaying list of action items. It can contain both text and images.
+                    </p>
                     <p>
                         In this sample, SplitButton contains icon, content and list of action items, and can be added using
                         <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/split-button/#iconcss">iconCss,

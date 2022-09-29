@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    ScheduleComponent, ViewsDirective, ViewDirective, Inject, ResourcesDirective, ResourceDirective, Resize, DragAndDrop, TimelineMonth
+    ScheduleComponent, ViewsDirective, ViewDirective, Inject, ResourcesDirective, ResourceDirective, Resize, DragAndDrop, TimelineMonth, Month
 } from '@syncfusion/ej2-react-schedule';
 import './virtual-scrolling.css';
 import { SampleBase } from '../common/sample-base';
@@ -80,8 +80,9 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                             </ResourcesDirective>
                             < ViewsDirective >
                                 <ViewDirective option='TimelineMonth' isSelected={true} eventTemplate={this.timelineEventTemplate.bind(this)} allowVirtualScrolling={true} />
+                                <ViewDirective option='Month' eventTemplate={this.timelineEventTemplate.bind(this)} allowVirtualScrolling={true} />
                             </ViewsDirective>
-                            < Inject services={[TimelineMonth, Resize, DragAndDrop]} />
+                            < Inject services={[TimelineMonth, Month, Resize, DragAndDrop]} />
                         </ScheduleComponent>
                     </div>
                 </div>
@@ -92,8 +93,8 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                         events count of 3600 (300 resources * 12 events).</p>
                 </div>
                 <div id="description">
-                    <p>In this example, the virtual scrolling option is enabled on timeline month view to load the large number of
-                        resources and its associated events. To enable the dynamic loading of events and resources in timeline view of
+                    <p>In this example, the virtual scrolling option is enabled on timeline month and month views to load the large number of
+                        resources and its associated events. To enable the dynamic loading of events and resources in the
                         Scheduler, set the <code>allowVirtualScrolling</code> property to <code>true</code> within the
                         view-specific settings.</p>
                 </div>

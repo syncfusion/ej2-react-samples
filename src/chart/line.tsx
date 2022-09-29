@@ -1,89 +1,107 @@
 /**
  * Sample for Line Series
  */
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    LineSeries, DateTime, Legend, Tooltip, ILoadedEventArgs, ChartTheme
-} from '@syncfusion/ej2-react-charts';
+import * as React from 'react';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, ChartTheme, LineSeries, Legend, Category, Tooltip,Highlight } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-
-export let data1: any[] = [
-    { x: new Date(2005, 0, 1), y: 21 }, { x: new Date(2006, 0, 1), y: 24 },
-    { x: new Date(2007, 0, 1), y: 36 }, { x: new Date(2008, 0, 1), y: 38 },
-    { x: new Date(2009, 0, 1), y: 54 }, { x: new Date(2010, 0, 1), y: 57 },
-    { x: new Date(2011, 0, 1), y: 70 }
+export let data1 = [
+    { x: 2020, y: 11.0 }, { x: 2019, y: 12.9 }, { x: 2018, y: 13.4 },
+    { x: 2017, y: 13.7 }, { x: 2016, y: 12.7 }, { x: 2015, y: 12.5 },
+    { x: 2014, y: 12.7 }, { x: 2013, y: 12.4 }, { x: 2012, y: 13.5 },
 ];
-export let data2: any[] = [
-    { x: new Date(2005, 0, 1), y: 28 }, { x: new Date(2006, 0, 1), y: 44 },
-    { x: new Date(2007, 0, 1), y: 48 }, { x: new Date(2008, 0, 1), y: 50 },
-    { x: new Date(2009, 0, 1), y: 66 }, { x: new Date(2010, 0, 1), y: 78 }, { x: new Date(2011, 0, 1), y: 84 }
+export let data2 = [
+    { x: 2020, y: 19.5 }, { x: 2019, y: 17.5 }, { x: 2018, y: 15.5 },
+    { x: 2017, y: 10.3 }, { x: 2016, y: 7.8 }, { x: 2015, y: 5.7 },
+    { x: 2014, y: 5.9 }, { x: 2013, y: 5.6 }, { x: 2012, y: 5.3 },
+];
+export let data3 = [
+    { x: 2020, y: 7.1 }, { x: 2019, y: 6.8 }, { x: 2018, y: 4.1 },
+    { x: 2017, y: 2.8 }, { x: 2016, y: 2.8 }, { x: 2015, y: 3.8 },
+    { x: 2014, y: 4.3 }, { x: 2013, y: 4.7 }, { x: 2012, y: 5.6 },
+];
+export let data4 = [
+    { x: 2020, y: 8.2 }, { x: 2019, y: 7.3 }, { x: 2018, y: 7.8 },
+    { x: 2017, y: 6.8 }, { x: 2016, y: 5.0 }, { x: 2015, y: 5.5 },
+    { x: 2014, y: 6.5 }, { x: 2013, y: 6.8 }, { x: 2012, y: 6.6 },
+];
+export let data5 = [
+    { x: 2020, y: 9.3 }, { x: 2019, y: 7.8 }, { x: 2018, y: 6.2 },
+    { x: 2017, y: 5.3 }, { x: 2016, y: 4.8 }, { x: 2015, y: 4.9 },
+    { x: 2014, y: 4.4 }, { x: 2013, y: 2.6 }, { x: 2012, y: 2.3 },
 ];
 const SAMPLE_CSS = `
-    .control-fluid {
-        padding: 0px !important;
-    }
-        .charts {
-            align :center
-        }`;
-export class Line extends SampleBase<{}, {}> {
-
+     .control-fluid {
+         padding: 0px !important;
+     }
+         .charts {
+             align :center
+         }`;
+export class Line extends SampleBase<{}, {}>{
     render() {
         return (
-            <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
-                <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
+            <div className="control-pane">
+                <style>{SAMPLE_CSS}</style>
+                <div className="control-section">
+                    <ChartComponent
+                        id="charts"
+                        style={{ textAlign: 'center' }}
                         primaryXAxis={{
-                            valueType: 'DateTime',
-                            labelFormat: 'y',
-                            intervalType: 'Years',
-                            edgeLabelPlacement: 'Shift',
-                            majorGridLines: { width: 0 }
+                            valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 },
                         }}
                         load={this.load.bind(this)}
                         primaryYAxis={{
-                            labelFormat: '{value}%',
-                            rangePadding: 'None',
-                            minimum: 0,
-                            maximum: 100,
-                            interval: 20,
-                            lineStyle: { width: 0 },
-                            majorTickLines: { width: 0 },
-                            minorTickLines: { width: 0 }
+                            title: 'Million Metric Tons', rangePadding: 'None', minimum: 0, maximum: 20, interval: 4, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 },
                         }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true }}
-                        width={Browser.isDevice ? '100%' : '60%'}
-                        title='Inflation - Consumer Price' loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
+                        legendSettings={{enableHighlight: true}}
+                        width={Browser.isDevice ? '100%' : '75%'}
+                        title="Crude Steel Production Annual Growth"
+                        loaded={this.onChartLoad.bind(this)}>
+                        <Inject services={[LineSeries, Category, Legend, Tooltip,Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='Germany'
-                                width={2} marker={{ visible: true, width: 10, height: 10 }} type='Line'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='England'
-                                width={2} marker={{ visible: true, width: 10, height: 10 }} type='Line'>
-                            </SeriesDirective>
+                            <SeriesDirective
+                                dataSource={data2} xName="x" yName="y" name="Vietnam" width={2}
+                                marker={{ visible: true, width: 7, height: 7, shape: 'Circle', isFilled: true }}
+                                type="Line"
+                            ></SeriesDirective>
+                            <SeriesDirective
+                                dataSource={data1} xName="x" yName="y" name="Canada" width={2}
+                                marker={{ visible: true, width: 6, height: 6, shape: 'Triangle', isFilled: true }}
+                                type="Line"
+                            ></SeriesDirective>
+                            <SeriesDirective
+                                dataSource={data3} xName="x" yName="y" name="Malaysia" width={2}
+                                marker={{ visible: true, width: 7, height: 7, shape: 'Diamond', isFilled: true }}
+                                type="Line"
+                            ></SeriesDirective>
+                            <SeriesDirective
+                                dataSource={data4} xName="x" yName="y" name="Egypt" width={2}
+                                marker={{ visible: true, width: 5, height: 5, shape: 'Rectangle', isFilled: true }}
+                                type="Line"
+                            ></SeriesDirective>
+                            <SeriesDirective
+                                dataSource={data5} xName="x" yName="y" name="Indonesia" width={2}
+                                marker={{ visible: true, width: 7, height: 7, shape: 'Pentagon', isFilled: true }}
+                                type="Line"
+                            ></SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
                 <p>
-                This sample visualizes the consumer price data with default line series in the chart. 
+                This React Line Chart example represents the crude steel production annual growth data with default line series in the chart. 
                 Data points are enhanced with marker and tooltip.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the line type charts. Line type charts are used to represent time-dependent data, showing trends in data at equal intervals.
+                    In this example, you can see how to render and configure the line type charts. Line type charts are used to represent time-dependent data, showing trends in data at equal intervals.
                      You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the line. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
                   </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                   </p> <br>
                     </br>
                     <p><b>Injecting Module</b></p>
@@ -93,7 +111,7 @@ export class Line extends SampleBase<{}, {}> {
                    </p>
                     <p>
                         More information on the line series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/series/#type">documentation section</a>.
+                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
                    </p>
                 </div>
             </div>
@@ -103,12 +121,10 @@ export class Line extends SampleBase<{}, {}> {
         let  chart:  Element  =  document.getElementById('charts');
         chart.setAttribute('title',  '');
     };
-        
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark") as ChartTheme;
-    };
-        
+    };    
 }

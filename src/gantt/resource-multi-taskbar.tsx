@@ -48,7 +48,7 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
                         allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={this.toolbar} editSettings={this.editSettings}
                         projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
                         taskFields={this.taskFields} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
-                        height='410px' resources={resources} collapseAllParentTasks= {true} showOverAllocation= {true}>
+                        height='410px' resources={resources} showOverAllocation= {true}>
                         <ColumnsDirective>
                             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>
                             <ColumnDirective field='TaskName' headerText='Name' width='250'></ColumnDirective>

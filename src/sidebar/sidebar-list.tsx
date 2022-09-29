@@ -45,7 +45,7 @@ export class SidebarWithList extends SampleBase<{}, {}> {
         ];
         let listFields: { [key: string]: Object } = { id: "id", text: "text" };
         return (
-            <div className="control-section" id="wrapper">
+            <div className="control-section" id="sblist-wrapper">
                 <div id="sidelistwrapper">
                     {/* main content declaration */}
                     <div>

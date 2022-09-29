@@ -1,0 +1,14 @@
+#predefinedDialogDefault {
+    padding: 25px 0 0 25px;
+}
+#predefinedDialogDefault #statusText{
+    font-size:16px;
+    margin-top: 20px;
+}
+#predefinedDialogDefault .e-btn{
+    margin-right: 10px;
+}
+.e-alert-dialog.e-dialog.e-popup, .e-confirm-dialog.e-dialog.e-popup{
+    margin: 30px auto;
+    width: auto;
+}

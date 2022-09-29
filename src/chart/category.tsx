@@ -76,7 +76,7 @@ export class CategoryAxis extends SampleBase<{}, {}> {
                             }
                         }}
                         load={this.load.bind(this)}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         legendSettings={{ visible: false }}
                         title={Browser.isDevice ? 'Internet Users in Million – 2016' : 'Internet Users – 2016'}

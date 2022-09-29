@@ -40,18 +40,20 @@ export class SmartLabels extends SampleBase<{}, {}> {
         <div className='control-section'>
           <AccumulationChartComponent id='pie-chart'
             title='Rio Olympics Gold'
-            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
+            tooltip={{ enable: true, format:'<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>' }}
             load={this.load.bind(this)}
+            enableBorderOnMouseMove={false}
             legendSettings={{
               visible: false
             }}
             loaded={this.onChartLoad.bind(this)}>
             <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
             <AccumulationSeriesCollectionDirective>
-              <AccumulationSeriesDirective name='RIO' dataSource={data1} xName='x' yName='y' startAngle={60}
+              <AccumulationSeriesDirective  dataSource={data1} xName='x' yName='y' startAngle={60}
                 dataLabel={{
                   visible: true, position: 'Outside',
                   connectorStyle: { length: '20px', type: 'Curve' }, name: 'text',
+                  font:  {fontWeight: '600' }
                 }}
               >
               </AccumulationSeriesDirective>
@@ -60,14 +62,19 @@ export class SmartLabels extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
         <p>
-        This sample illustrates the Rio Olympic’s gold medal count by using smart labels in the chart. The smart label placement for a series can be shown, when it contains more of points.
+        This sample shows the gold medal count scored by each country at the Rio Olympic Games using smart labels on the chart.
     </p>
         </div>
         <div id="description">
-          <p> In this example, you can see how to arrange the labels smartly without overlapping with each other. You can use <code>enableSmartLabels</code> property to enable or disable the action. Legend with paging is enabled in this sample.</p>
+          <p> In this example, you can see how the labels can be arranged smartly without overlapping. You can use the <code>EnableSmartLabels</code> property to enable or disable the support.</p>
           <p style={{ fontWeight: 500 }}> Injecting Module </p>
           <p> Accumulation chart component features are segregated into individual feature-wise modules. To use DataLabel, we need to inject <code>AccumulationDataLabel</code> into <code>services</code>.</p>
+          <p>
+                        More information on the pie series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/#smart-labels">documentation section</a>.
+                  </p>
         </div>
+       
       </div>
     )
   }
@@ -79,7 +86,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
     args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-    replace(/-dark/i, "Dark") as AccumulationTheme;
+    replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
   };
       
 }

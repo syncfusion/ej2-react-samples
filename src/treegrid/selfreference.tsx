@@ -34,8 +34,9 @@ export class SelfReference extends SampleBase<{}, {}> {
           In this demo, the array of self-referential flat data with parent ID is assigned as the data source to the Tree Grid.
       </p>
           <p>
-          More information on the self-referential data binding can be found in this documentation section.
-         </p>
+            More information on the self-referential data binding can be found in this 
+            <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/treegrid/data-binding/local-data/#self-referential-data-binding-flat-data'> documentation section.</a>
+          </p>
         </div>
       </div>
     )

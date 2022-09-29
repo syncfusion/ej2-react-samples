@@ -109,10 +109,10 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
                         Chart component features are segregated into individual feature-wise modules. To use stacking area series, we need to inject
                     <code>StackingAreaSeries</code>, <code>PolarSeries</code> and <code>SRadarSeries</code> module into <code>services</code>.
                 </p>
-                    <p>
-                        More information on the stacking area series can be found in this &nbsp;
-                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-                </p>
+                <p>
+                        More information on the area series can be found in this &nbsp;
+                  <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+              </p>
                 </div>
             </div>
         )

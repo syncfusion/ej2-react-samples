@@ -125,6 +125,10 @@
 		"online",
 		"editor",
 		"richtexteditor",
+		"appbar",
+		"checkbox",
+		"dropdown",
+		"dropdown-button",
 		null
 	]
 }

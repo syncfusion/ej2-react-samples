@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, ILoadedEventArgs, RangeTooltip, Tooltip,
     IChangedEventArgs, AreaSeries, DateTime, ChartTheme, Inject, IRangeLoadedEventArgs,
-	RangeNavigatorComponent, RangenavigatorSeriesCollectionDirective, RangenavigatorSeriesDirective
+	RangeNavigatorComponent, RangenavigatorSeriesCollectionDirective, RangenavigatorSeriesDirective, Legend
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { axesData } from './stock-data';
@@ -162,8 +162,9 @@ export class RTL extends SampleBase<{}, {}> {
                         tooltip={{
                             enable: true, shared: true,
                             header: '<b>England<b>' , format: '${point.x} : <b>${point.y}<b>'
-                        }}>
-                        <Inject services={[AreaSeries, DateTime, Tooltip]} />
+                        }}
+                        legendSettings={{visible:false}}>
+                        <Inject services={[AreaSeries, DateTime, Tooltip, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} name='England' xName='xDate' yName='High' type='Area' width={2}>
                             </SeriesDirective>

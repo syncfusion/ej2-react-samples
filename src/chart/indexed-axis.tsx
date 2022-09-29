@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    Legend, Category, ILoadedEventArgs, LineSeries, ColumnSeries, Tooltip, Crosshair, ChartTheme
+    Legend, Category, ILoadedEventArgs, LineSeries, ColumnSeries,  Crosshair, ChartTheme, DataLabel
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { PropertyPane } from '../common/property-pane';
@@ -37,6 +37,7 @@ export class IndexedAxis extends SampleBase<{}, {}> {
     private onChange(): void {
         this.chartInstance.primaryXAxis.isIndexed = this.dropElement.checked;
         if (this.chartInstance.primaryXAxis.isIndexed) {
+            this.chartInstance.tooltip.shared = false;
             this.chartInstance.series[0].type = 'Column';
             this.chartInstance.series[1].type = 'Column';
             this.chartInstance.series[0].marker.visible = false;
@@ -50,6 +51,8 @@ export class IndexedAxis extends SampleBase<{}, {}> {
             this.chartInstance.series[1].marker.visible = true;
             this.chartInstance.primaryXAxis.labelRotation = 90;
             this.chartInstance.crosshair.line.width = 0;
+            this.chartInstance.tooltip.enable = true;
+            this.chartInstance.tooltip.shared = false;
         }
         this.chartInstance.refresh();
     };
@@ -67,7 +70,7 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                                 valueType: 'Category',
                                 interval: 1,
                                 edgeLabelPlacement: 'Shift',
-                                crosshairTooltip: { enable: true },
+                                crosshairTooltip: { enable: false },
                                 isIndexed: true
                             }}
                             primaryYAxis={{
@@ -77,15 +80,27 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                             chartArea={{ border: { width: 0 } }}
                             load={this.load.bind(this)}
                             title="Real GDP Growth" loaded={this.onChartLoad.bind(this)}
-                            tooltip={{ enable: true, shared: true }}
-                            crosshair={{ enable: true, lineType: 'Vertical' }}>
-                            <Inject services={[Legend, Category, LineSeries, ColumnSeries, Tooltip, Crosshair]} />
+                            tooltip={{ enable: false, shared: true }}
+                            crosshair={{ enable: false, lineType: 'Vertical' }}>
+                            <Inject services={[Legend, Category, LineSeries, ColumnSeries, Crosshair,DataLabel]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='2015' width={2}
-                                    type='Column' marker={{ visible: false, height: 10, width: 10 }}>
+                                    type='Column'    marker={{
+                                        dataLabel: {
+                                          visible: true,
+                                          position: 'Top',
+                                          font: { fontWeight: '600' },
+                                        }
+                                    }}>
                                 </SeriesDirective>
                                 <SeriesDirective dataSource={data2} xName='x' yName='y' name='2016' width={2}
-                                    type='Column' marker={{ visible: false, height: 10, width: 10 }}>
+                                    type='Column'  marker={{
+                                        dataLabel: {
+                                          visible: true,
+                                          position: 'Top',
+                                          font: { fontWeight: '600' },
+                                        }
+                                    }} >
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>
@@ -135,7 +150,7 @@ export class IndexedAxis extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

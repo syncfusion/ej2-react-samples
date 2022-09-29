@@ -1,62 +1,51 @@
 /**
  * Sample for Inversed Spline series
  */
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from 'react';
 import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    Legend, Category, SplineSeries, Tooltip, ILoadedEventArgs, ChartTheme
+    ChartComponent,
+    SeriesCollectionDirective,
+    SeriesDirective, ILoadedEventArgs, ChartTheme,
+    Inject,
+    Category,
+    SplineSeries,
+    Tooltip,
+    Highlight
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
-import { Browser, EmitType } from '@syncfusion/ej2-base';
-
-export let data1: any[] = [
-    { x: 'Jan', y: -1 }, { x: 'Mar', y: 12 },
-    { x: 'Apr', y: 25 },
-    { x: 'Jun', y: 31 },
-    { x: 'Aug', y: 26 }, { x: 'Oct', y: 14 },
-    { x: 'Dec', y: 8 },
-];
-export let data2: any[] = [
-    { x: 'Jan', y: 7 }, { x: 'Mar', y: 2 },
-    { x: 'Apr', y: 13 },
-    { x: 'Jun', y: 21 },
-    { x: 'Aug', y: 26 }, { x: 'Oct', y: 10 },
-    { x: 'Dec', y: 0 },
+import { Browser } from '@syncfusion/ej2-base';
+export let data1 = [
+    { Month: 2000, LDN_Temperature: -1, FR_Temperature: 10 },{ Month: 2002, LDN_Temperature: -1, FR_Temperature: 7 },{ Month: 2004, LDN_Temperature: 25, FR_Temperature: 13 },
+    { Month: 2005, LDN_Temperature: 31, FR_Temperature: 16 },{ Month: 2007, LDN_Temperature: 14, FR_Temperature: 11 },{ Month: 2010, LDN_Temperature: 8, FR_Temperature: 10 },
+    { Month: 2011, LDN_Temperature: 8, FR_Temperature: 15 },{ Month: 2013, LDN_Temperature: 8, FR_Temperature: 20 },{ Month: 2014, LDN_Temperature: 8, FR_Temperature: 17 },
+    { Month: 2015, LDN_Temperature: 8, FR_Temperature: 5 }
 ];
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
-    }`;
-
-export class SplineInversed extends SampleBase<{}, {}> {
-
+     .control-fluid {
+         padding: 0px !important;
+     }`;
+export class SplineInversed extends SampleBase<{}, {}>{
     render() {
         return (
-            <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
-                <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
+            <div className="control-pane">
+                <style>{SAMPLE_CSS}</style>
+                <div className="control-section">
+                    <ChartComponent
+                        id="charts"
+                        style={{ textAlign: 'center' }}
                         isTransposed={true}
-                        primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: 'Rotate90', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }}
+                        primaryXAxis={{ interval: 4, title: 'Years', minimum: 2000, maximum: 2016, labelIntersectAction: 'Rotate90', minorTickLines: { width: 0 } }}
                         load={this.load.bind(this)}
-                        width={Browser.isDevice ? '100%' : '60%'}
-                        chartArea={{ border: { width: 0 } }}
-                        primaryYAxis={{ labelFormat: '{value}°C', majorGridLines: { width: 0 } }}
-                        tooltip={{ enable: true }}
-                        title='Climate Graph - 2012' loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[SplineSeries, Category, Legend, Tooltip]} />
+                        width={Browser.isDevice ? '100%' : '75%'}
+                        legendSettings={{visible : false}}
+                        chartArea={{ border: { width: 1 } }}
+                        primaryYAxis={{ labelFormat: '{value}M', minimum: 0, title: 'Sales (In Millions)', maximum: 25, interval: 5, }}
+                        tooltip={{ enable: true , shared:true, header:'<b>Album Sale</b>', format:'${point.x}: <b>${point.y}</b>'}}
+                        title="Music Album Sales"
+                        loaded={this.onChartLoad.bind(this)}>
+                        <Inject services={[SplineSeries, Category, Tooltip, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='London'
-                                type='Spline'
-                                marker={{ visible: true, width: 10, height: 10 }}>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='France'
-                                type='Spline'
-                                marker={{ visible: true, width: 10, height: 10 }}>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={data1} xName="Month" yName="FR_Temperature" width={2} name="London" type="Spline" marker={{ visible: true, width: 7, height: 7, isFilled: true }}></SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                     <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
@@ -65,17 +54,16 @@ export class SplineInversed extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample illustrates a spline series by inversing X and Y Axis. 
-                Data points are enhanced with marker and tooltip.
+                This sample shows the music album sales with the spline series by inversing X and Y Axis. Data points are enhanced by a marker and tooltip.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the spline type charts. Spline chart connects each point in series through a curved line.
-                       You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the spline. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+                    In this example, you can see how to render and configure the spline type charts. A Spline chart uses a curved line to connect points in a data series.
+                      <code>Marker</code> are used to represent individual data and its values.
                     </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -85,7 +73,7 @@ export class SplineInversed extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information on the spline series can be found in this &nbsp;
-                         <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                         <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
                     </p>
                 </div>
             </div>

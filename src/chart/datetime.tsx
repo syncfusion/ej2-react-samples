@@ -56,7 +56,7 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
                             minorTickLines: { width: 0 }
                         }}
                         chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         title='Alaska Weather Statistics - 2016' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[LineSeries, DateTime, Legend, DataLabel]} />
                         <SeriesCollectionDirective>
@@ -111,7 +111,7 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast')  as ChartTheme;  
     };
         
 }

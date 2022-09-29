@@ -1,14 +1,15 @@
 /**
- * Sample for tooltip
+ * Sample for showing tooltip in the Circular Gauge
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import {
-    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, ITooltipRenderEventArgs, Inject, AnnotationsDirective, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTooltip, TickModel, getRangeColor, IPointerDragEventArgs,
+    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, Inject,
+    PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTooltip, IPointerDragEventArgs,
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
+
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -29,18 +30,37 @@ const SAMPLE_CSS = `
         padding-left: 10px;
         line-height: 30px;
     }`;
-    
+
 export class Tooltip extends SampleBase<{}, {}> {
+
     private gauge: CircularGaugeComponent;
+
+    public onChartLoad(args: ILoadedEventArgs): void {
+        document.getElementById('tooltip-container').setAttribute('title', '');
+    };
+
     public load(args: ILoadedEventArgs): void {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-        selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
-    
+
+    public dragEnd(args: IPointerDragEventArgs): void {
+        if (args.currentValue >= 0 && args.currentValue <= 50) {
+            args.pointer.color = "#3A5DC8";
+            args.pointer.cap.border.color = "#3A5DC8";
+        } else {
+            args.pointer.color = "#33BCBD";
+            args.pointer.cap.border.color = "#33BCBD";
+        }
+        args.pointer.value = args.currentValue;
+        args.pointer.animation.enable = false;
+        this.gauge.refresh();
+    };
+
     render() {
         return (
             <div className='control-pane'>
@@ -49,12 +69,24 @@ export class Tooltip extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-lg-12'>
-                        <CircularGaugeComponent title='Tooltip Customization' loaded={this.onChartLoad.bind(this)} tooltipRender={this.tooltipRender.bind(this)} dragEnd={this.dragEnd.bind(this)} id='tooltip-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
+                        <CircularGaugeComponent background='transparent' loaded={this.onChartLoad.bind(this)} dragEnd={this.dragEnd.bind(this)} id='tooltip-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
                             load={this.load.bind(this)}
-                            titleStyle={{ size: '15px', color: 'grey' }} tooltip={{
+                            tooltip={{
                                 enable: true,
-                                type: ['Range', 'Pointer'],                             
-								enableAnimation: false
+                                type: ['Range', 'Pointer'],
+                                showAtMousePosition: true,
+                                format: 'Current Value:  {value}',
+                                enableAnimation: false,
+                                textStyle: {
+                                    size: '13px',
+                                    fontFamily: 'inherit'
+                                },
+                                rangeSettings: {
+                                    showAtMousePosition: true, format: "Start Value: {start} <br/> End Value: {end}", textStyle: {
+                                        size: '13px',
+                                        fontFamily: 'inherit'
+                                    }
+                                }
                             }}>
                             <Inject services={[GaugeTooltip]} />
                             <AxesDirective>
@@ -66,7 +98,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                     minorTicks={{
                                         width: 0
                                     }} labelStyle={{
-                                        useRangeColor: true, font: { color: '#424242', size: '13px', fontFamily: 'Roboto' }
+                                        useRangeColor: true, font: { fontFamily: 'inherit' }
                                     }}>
                                     <PointersDirective>
                                         <PointerDirective value={70} radius='60%'
@@ -87,77 +119,19 @@ export class Tooltip extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample visualizes the tooltip of pointer value and ranges in gauge. To see the tooltip in action, hover pointer or tap the pointer
-            </p>
+                    <p>
+                        This sample helps in visualizing the tooltip of the pointer and the range in a circular gauge.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    This sample visualizes the tooltip of pointer value and ranges in gauge. To see the tooltip in action, hover pointer or tap the pointer
-                    </p>
-                    <br />
-                    <p className='description-header'>Injecting Module</p>
-                    <p>Circular gauge component features are segregated into individual feature-wise modules. To use tooltip, we need to inject
-                        <code>GaugeTooltip</code> module into services.
+                        In this example, you can see how to display the tooltip for the pointer and the range in a circular gauge. The <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/tooltipSettingsModel/'>tooltip</a> settings is used to enable and customize the tooltip. To see the tooltip in action, hover your mouse over the pointer or the range, or tap them on touch-enabled devices.
                     </p>
                     <p>
-                        More information on the tooltip can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/documentation"> documentation section</a>.
+                        More information on the tooltip can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-user-interaction/">documentation section</a>.
                     </p>
                 </div>
             </div>
         )
     }
-    public onChartLoad(args: ILoadedEventArgs): void {
-        document.getElementById('tooltip-container').setAttribute('title', '');
-    };
-
-    public tooltipRender(args: ITooltipRenderEventArgs): void {
-        let imageName: string; let borderColor: string;
-		let textColor: string;
-        if(args.pointer) {
-            imageName = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? 'min' : 'max');
-            borderColor = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? '#3A5DC8' : '#33BCBD');
-            textColor = this.gauge.theme.toLowerCase() === 'highcontrast' ? 'White' : borderColor;
-            if (this.gauge.theme.toLowerCase() === 'highcontrast') {
-                args.tooltip.template = '<div id="templateWrap" style="border:2px solid ' + borderColor +
-               ';background-color:black"><img src="src/circular-gauge/images/' + imageName + '.png"/><div class="des" style="color: ' +
-               textColor + '"><span>${value} MPH</span></div></div>';
-            } else {
-                args.tooltip.template = '<div id="templateWrap" style="border:2px solid ' + borderColor +
-               '"><img src="src/circular-gauge/images/' + imageName + '.png"/><div class="des" style="color: ' +
-               borderColor + '"><span>${value} MPH</span></div></div>';
-            }
-            
-        } else if (args.range){
-            imageName = ((args.range.start >= 0 && args.range.end <= 50)) ? 'min' : 'max';
-            borderColor = ((args.range.start >= 0 && args.range.end <= 50)) ? '#3A5DC8' : '#33BCBD';
-			textColor = this.gauge.theme.toLowerCase() === 'highcontrast' ? 'White' : borderColor;
-            let start : number = args.range.start;
-            let end : number = args.range.end;
-            if (this.gauge.theme.toLowerCase() === 'highcontrast') {
-                args.tooltip.rangeSettings.template = '<div id=templateWrap style="padding:5px;border:2px solid' + borderColor + ';color: ' +
-                textColor + ';background-color:black"><img src="src/circular-gauge/images/' + imageName +
-                '.png"/> <span>' + start + ' - ' + end + ' MPH  </span> </div>';
-            } else {
-                args.tooltip.rangeSettings.template = '<div id=templateWrap style="padding:5px;border:2px solid' + borderColor + ';color: ' +
-                borderColor + '"><img src="src/circular-gauge/images/' + imageName +
-                '.png"/> <span>' + start + ' - ' + end + ' MPH  </span> </div>';
-            }
-
-            
-        }
-    };
-    public dragEnd(args: IPointerDragEventArgs): void {
-        if(args.currentValue >= 0 && args.currentValue <= 50) {
-            args.pointer.color = "#3A5DC8";
-            args.pointer.cap.border.color = "#3A5DC8";
-        } else {
-            args.pointer.color = "#33BCBD";
-            args.pointer.cap.border.color = "#33BCBD";
-        }
-		args.pointer.value = args.currentValue;
-        args.pointer.animation.enable = false;
-        this.gauge.refresh();
-    };
 }

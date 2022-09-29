@@ -51,7 +51,7 @@ export class KeyBoard extends SampleBase<{}, {}> {
                   <b>F2</b>
                 </td>
                 <td style={{ width: '30%' }}>
-                    Cell edit
+                    Row edit
                 </td>
               </tr>
               <tr style={{ height:'50px' }}>
@@ -176,7 +176,7 @@ export class KeyBoard extends SampleBase<{}, {}> {
         </tr>
         <tr style={{ height:'50px' }}>
             <td style={{ width: '30%' }}>
-                <b>Ctrl + j</b>
+                <b>Alt + j</b>
             </td>
             <td style={{ width: '30%' }}>
                 Focus Tree Grid element
@@ -218,7 +218,7 @@ export class KeyBoard extends SampleBase<{}, {}> {
                 <tr><td style={{ width:'70%' }}><code>Shift + Right/Left/Down/Up</code></td><td>Multiple Cell Selection</td></tr>
                 <tr><td><code>Ctrl + Shift + Up Arrow</code></td><td>Collapse selected parent row</td></tr>
                 <tr><td><code>Ctrl + Shift + Down Arrow</code></td><td>Expand selected parent row</td></tr>
-                <tr><td><code>Ctrl + j</code></td><td>Focus Tree Grid element</td></tr>
+                <tr><td><code>Alt + j</code></td><td>Focus Tree Grid element</td></tr>
                 <tr><td><code>Tab</code></td><td>Go to next cell for editing</td></tr>
                 <tr><td><code>Shift + Tab</code></td><td>Go to previous cell for editing</td></tr>
                 <tr><td><code>PageDown</code></td><td>Go to Next page</td></tr>

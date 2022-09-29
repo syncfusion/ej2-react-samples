@@ -1,13 +1,13 @@
 /* Specifies sample level styles for sidebar*/
-#wrapper.control-section {
-    padding: 15px 0px;
+#responsive-wrapper.control-section {
+    padding: 0;
 }
 
-#wrapper .sidebar-treeview {
+#responsive-wrapper .sidebar-treeview {
     z-index: 20 !important;
 }
 
-#wrapper .main-sidebar-content {
+#responsive-wrapper .main-sidebar-content {
     height: 380px;
 }
 
@@ -125,11 +125,11 @@
     margin: -4px 0;
 }
 
-#wrapper .e-toolbar .e-icons {
+#responsive-wrapper .e-toolbar .e-icons {
     font-size: 20px;
 }
 
-#wrapper .e-tbar-menu-icon:before {
+#responsive-wrapper .e-tbar-menu-icon:before {
     content: '\e914';
     font-family: 'sbicons';
 }
@@ -278,16 +278,16 @@
 
 /* end of icon styles */
 /* Specifies the border bottom styles for toolbar in light theme*/
-.material #wrapper .e-toolbar,
-.tailwind #wrapper .e-toolbar,
-.bootstrap5 #wrapper .e-toolbar {
+.material #responsive-wrapper .e-toolbar,
+.tailwind #responsive-wrapper .e-toolbar,
+.bootstrap5 #responsive-wrapper .e-toolbar {
     border-bottom: 1px solid #eaeaeae0;
 }
 
 /* Specifies the border bottom styles for toolbar in dark theme*/
-.bootstrap5-dark #wrapper .e-toolbar,
-.tailwind-dark #wrapper .e-toolbar,
-.material-dark #wrapper .e-toolbar {
+.bootstrap5-dark #responsive-wrapper .e-toolbar,
+.tailwind-dark #responsive-wrapper .e-toolbar,
+.material-dark #responsive-wrapper .e-toolbar {
     border-bottom: 1px solid #eaeaea63;
 }
 

@@ -91,9 +91,10 @@ export class ColumnTemplate extends SampleBase<{}, {}> {
             for the "Tax per annum", "One day index" and "Year GR" columns. 
             In <code>columns-&gt;template</code> we have assigned with the ID of a SCRIPT element whose content is used as the template.
           </p>
-           <p>
-              More information about Column Template can be found in this documentation section.
-           </p>
+          <p>
+            More information on the column template can be found in this 
+            <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/treegrid/columns/column-template/'> documentation section.</a>
+          </p>
         </div>
       </div>
     )

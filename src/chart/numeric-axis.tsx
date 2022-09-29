@@ -57,7 +57,7 @@ export class Numeric extends SampleBase<{}, {}> {
                             }
                         }}
                         axisLabelRender={labelRender}
-                        width={Browser.isDevice ? '100%' : '60%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         title='England vs West Indies' loaded={this.onChartLoad.bind(this)}
                         tooltip={{ enable: true, format: '${point.x}th Over : <b>${point.y} Runs</b>' }}>

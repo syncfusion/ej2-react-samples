@@ -7,7 +7,9 @@ import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { MultiSelectComponent, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
 
-
+const emptyCss=`
+.property-panel-table div {
+  padding-top: 0px}`;
 export class WorkWeek extends SampleBase<{}, {}> {
   private ganttInstance: GanttComponent;
   public multiselectObj: MultiSelectComponent;
@@ -96,6 +98,9 @@ export class WorkWeek extends SampleBase<{}, {}> {
             </PropertyPane>
           </div>
         </div>
+        <style>
+          {emptyCss}
+        </style>
         <div id="action-description">
         <p>This sample visualizes the support for changing different set of working days in a week. The selected working days in drop down list will be applied to Gantt chart.</p>
         </div>

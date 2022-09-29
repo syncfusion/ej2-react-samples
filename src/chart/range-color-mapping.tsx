@@ -55,7 +55,7 @@ export class RangeColorMapping extends SampleBase<{}, {}> {
                         title= "USA CLIMATE - WEATHER BY MONTH" loaded={this.onChartLoad.bind(this)}
                         load={this.load.bind(this)}
                         chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         legendSettings= {{
                             mode: 'Range',
 							visible: true,

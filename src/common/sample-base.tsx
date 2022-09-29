@@ -2,8 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { setResponsiveElement, selectedTheme, setSbLink, removeOverlay } from './index';
 import { setSelectList } from './leftpane';
-import { sampleNameElement, onComponentLoad, setNavButtonState, intialLoadScrollTop, renderDescriptions,checkApiTableDataSource } from './component-content';
-import { select } from '@syncfusion/ej2-base';
+import { sampleNameElement, onComponentLoad, setNavButtonState, intialLoadScrollTop, renderDescriptions, checkApiTableDataSource, showHooks, isRendered } from './component-content';
 
 export class SampleBase<P, S> extends React.PureComponent<RouteComponentProps<any> & P, S>{
 
@@ -14,30 +13,41 @@ export class SampleBase<P, S> extends React.PureComponent<RouteComponentProps<an
     }
 
     componentWillReceiveProps() {
-        /**
-         * Theme Change 
-         */
-        let hash: string[] = location.hash.split('/');
-        if (hash[1] !== selectedTheme) {
-            localStorage.setItem('ej2-switch', select('.active', setResponsiveElement).id);
-            location.reload();
-        }
-        setSbLink();
     }
 
     componentDidMount(): void {
-        renderDescriptions();
-        setSbLink();
-        onComponentLoad();
-        setNavButtonState();
-        intialLoadScrollTop();
-        setTimeout(()=>{
-         setSelectList();
-         removeOverlay();
-         checkApiTableDataSource();
-         this.rendereComplete();
+        showHooks(false); 
+        finalizeContent();
+        setTimeout(() => {
+            finalizeTab();
+            this.rendereComplete();
         });
-        
+
     }
 
-}    
+}
+
+function finalizeContent(): void {
+    renderDescriptions();
+    setSbLink();
+    onComponentLoad();
+    setNavButtonState();
+    intialLoadScrollTop();
+}
+
+function finalizeTab(): void {
+    setSelectList();
+    removeOverlay();
+    checkApiTableDataSource();
+}
+
+export function updateSampleSection(): void {
+    if (isRendered) {
+        return;
+    }
+    showHooks(true);
+    finalizeContent();
+    setTimeout(() => {
+        finalizeTab();
+    });
+}

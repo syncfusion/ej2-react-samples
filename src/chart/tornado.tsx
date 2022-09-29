@@ -5,15 +5,15 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme,
-    Legend, Category, StackingBarSeries, Tooltip, ILoadedEventArgs, DataLabel, ITooltipRenderEventArgs
+    Legend, Category, StackingBarSeries, Tooltip, ILoadedEventArgs, DataLabel, ITooltipRenderEventArgs, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
 
 export let data: any[] = [
-    { x: '4.5', y: 31 }, { x: '4.8', y: 37 },
-    { x: '5.1', y: 49 }, { x: '5.4', y: 57 },
-    { x: '5.7', y: 63 }, { x: '6', y: 69 }
+    { x: '4.5', y: 31, text: '31 KG'}, { x: '4.8', y: 37, text: '37 KG' },
+    { x: '5.1', y: 49, text: '49 KG' }, { x: '5.4', y: 57, text: '57 KG' },
+    { x: '5.7', y: 63, text: '63 KG' }, { x: '6', y: 69, text: '69 KG' }
 ];
 export let data2: any[] = [
     { x: '4.5', y: -31, text: '31 KG' }, { x: '4.8', y: -39, text: '39 KG' },
@@ -26,6 +26,7 @@ const SAMPLE_CSS = `
     }`;
 export let textRender: EmitType<ITooltipRenderEventArgs> = (args: ITooltipRenderEventArgs) => {
     args.text = args.text.indexOf('-') > 0 ? args.text.replace('-', '') : args.text;
+    args.text = args.text + " " + "<b>kg</b>";
 };
 export class NegativeStack extends SampleBase<{}, {}> {
 
@@ -40,51 +41,42 @@ export class NegativeStack extends SampleBase<{}, {}> {
                         primaryXAxis={{
                             valueType: 'Category',
                             title: 'Height in Inches',
-                            minorGridLines: { width: 0 },
-                            minorTickLines: { width: 0 },
                             interval: 1,
-                            majorGridLines: { width: 0 }
+                            majorGridLines: { width: 0 },
+                            majorTickLines: { width: 0 }
                         }}
-                        width={Browser.isDevice ? '100%' : '80%'}
+                        width={Browser.isDevice ? '100%' : '75%'}
                         chartArea={{ border: { width: 0 } }}
                         primaryYAxis={{
-                            labelFormat: '{value} KG',
-                            edgeLabelPlacement: 'Shift',
-                            majorGridLines: { width: 0 },
-                            majorTickLines: { width: 0 },
+                            labelFormat: '{value}',
+                            title: 'Weight (kg)',
                             lineStyle: { width: 0 },
-                            labelStyle: {
-                                color: 'transparent'
-                            }
                         }}
                         tooltipRender={textRender}
-                        legendSettings={{ position: Browser.isDevice ? 'Auto' : 'Right' }}
+                        legendSettings={{ position: Browser.isDevice ? 'Auto' : 'Right' , enableHighlight :true}}
                         load={this.load.bind(this)}
                         title='Height vs Weight' loaded={this.onChartLoad.bind(this)}
                         tooltip={{ enable: true }}>
-                        <Inject services={[StackingBarSeries, DataLabel, Category, Legend, Tooltip]} />
+                        <Inject services={[StackingBarSeries, DataLabel, Category, Legend, Tooltip, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} width={2} xName='x' yName='y' name='Female' type='StackingBar'
-                                marker={{ dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600' } } }}>
+                        <SeriesDirective dataSource={data} width={2} xName='x' yName='y' name='Female' columnWidth={0.5} type='StackingBar' marker={{ dataLabel: { name: 'text',visible: true, position: 'Top', font: { fontWeight: '600' } } }}>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data2} width={2} xName='x' yName='y' name='Male' type='StackingBar'
-                                marker={{ dataLabel: { name: 'text', visible: true, position: 'Top', font: { fontWeight: '600' } } }}>
+                            <SeriesDirective dataSource={data2} width={2} xName='x' yName='y' name='Male' columnWidth={0.5} type='StackingBar' marker={{ dataLabel: { name: 'text', visible: true, position: 'Top', font: { fontWeight: '600' } } }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
                 <p>
-                This sample illustrates stacked bar with negative data points. Data points values are showed by using data label.
+                This sample illustrates a stacked bar chart with negative data points. Data point values are shown in data labels.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the bar type charts. Similar to column charts, but the orientation of y axis is horizontal instead of vertical.
-                  You can use <code>border</code>, <code>fill</code> properties to customize the data appearance. <code>dataLabel</code> is used to represent individual data and its value.
+                    In this example, you can see how to render and configure negative values in a stacked bar chart. The stacked bar chart stacks points in the series horizontally. You can also use the <code>StackingGroup</code> property to group stacked collections based on category.
               </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
              </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -94,7 +86,7 @@ export class NegativeStack extends SampleBase<{}, {}> {
              </p>
                     <p>
                         More information on the stackingbar series can be found in this &nbsp;
-                <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/#bar-chart">documentation section</a>.
              </p>
                 </div>
             </div>
@@ -111,5 +103,6 @@ export class NegativeStack extends SampleBase<{}, {}> {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
     };
+    
         
 }
