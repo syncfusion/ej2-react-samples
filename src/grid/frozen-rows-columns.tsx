@@ -50,7 +50,7 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
                   <td style={{ width: '70%', paddingRight: '10px' }}>
                     <div style={{ minWidth: '148px' }}>
                       {/* Render NumericTextbox component with specific range for frozen rows */}
-                      <NumericTextBoxComponent min={0} max={5} value={2} ref={numeric => this.rowInstance = numeric}></NumericTextBoxComponent>
+                      <NumericTextBoxComponent min={0} max={5} validateDecimalOnType={true} decimals={0} format='n' value={2} ref={numeric => this.rowInstance = numeric}></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>
@@ -61,7 +61,7 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
                   <td style={{ width: '70%', paddingRight: '10px' }}>
                     <div style={{ minWidth: '148px' }}>
                       {/* Render NumericTextbox component with specific range for frozen columns */}
-                      <NumericTextBoxComponent min={0} max={Browser.isDevice ? 1 : 2} value={1} ref={numeric => this.columnInstance = numeric}></NumericTextBoxComponent>
+                      <NumericTextBoxComponent min={0} max={Browser.isDevice ? 1 : 2} validateDecimalOnType={true} decimals={0} format='n' value={1} ref={numeric => this.columnInstance = numeric}></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>

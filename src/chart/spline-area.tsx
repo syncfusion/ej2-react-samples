@@ -35,7 +35,7 @@ export class SplineArea extends SampleBase<{}, {}> {
                         id="charts"
                         style={{ textAlign: 'center' }}
                         primaryXAxis={{
-                            valueType: 'DateTimeCategory', labelFormat: 'y', majorGridLines: { width: 0 }, intervalType: 'Years', edgeLabelPlacement: 'Shift'
+                            valueType: 'DateTime', labelFormat: 'y', majorGridLines: { width: 0 }, intervalType: 'Years', edgeLabelPlacement: 'Shift', minimum: new Date(2001, 0, 1), maximum: new Date(2012, 0, 1)
                         }}
                         primaryYAxis={{
                             labelFormat: '{value}%', lineStyle: { width: 0 }, maximum: 4, interval: 1, majorTickLines: { width: 0 }, minorTickLines: { width: 0 },

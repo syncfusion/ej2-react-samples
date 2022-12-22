@@ -21,17 +21,17 @@ export class MultipleSelection extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className="col-lg-12 control-section">
-                <div className="col-lg-7">
+            <div className="col-lg-12">
+                <div className="col-lg-7 control-section">
                     <div id="control_wrapper" className="col-lg-6 col-sm-8 col-md-8 multiselectWrapper">
-                        <div className='calendar-control-section' style={{ overflow: 'auto' }}>
+                        <div className='calendar-control-section'>
                             <CalendarComponent id="calendar" isMultiSelection={true} values={this.selectedValues}
                                 ref={(scope) => { this.calendarInstance = scope; }} change={this.onchange.bind(this)} created={this.onchange.bind(this)}></CalendarComponent>
                         </div>
                     </div>
                 </div>
                 <div className="col-lg-5">
-                    <label>Selected values</label>
+                    <label style={{paddingTop: "22px"}}>Selected values</label>
                     <div className="content-value">
                         <div id="multiselect"></div>
                     </div>

@@ -76,7 +76,7 @@ export class AccumulationDistribution extends SampleBase<{}, {}> {
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={chartData} width={2}
                                 xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open'
-                                name='Apple Inc' bearFillColor='#2ecd71' bullFillColor='#e74c3d'
+                                bearFillColor='#2ecd71' bullFillColor='#e74c3d'
                                 type='Candle' animation={{ enable: true }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>

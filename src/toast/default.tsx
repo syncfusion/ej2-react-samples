@@ -50,7 +50,7 @@ export class Default extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section col-lg-12 toast-default-section'>
-                    <div className="col-lg-12 col-sm-12 col-md-12 center">
+                    <div className="e-sample-resize-container">
                         <ToastComponent ref={(toast) => { this.toastObj = toast }} id='toast_default' position={this.position} created={this.create.bind(this)} close={this.onclose.bind(this)} beforeOpen={this.onbeforeOpen.bind(this)}></ToastComponent>
                         <div id="toastBtnDefault" style={{ margin: 'auto', textAlign: 'center' }}>
                             <ButtonComponent id='toastBtnShow' ref={(btn) => { this.toastBtnShow = btn }} className='e-btn' onClick={this.showBtnClick.bind(this)}>Show Toasts</ButtonComponent>

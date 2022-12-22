@@ -33,9 +33,9 @@ export class Filtering extends SampleBase<{}, {}> {
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='90' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='200'></ColumnDirective>
-              <ColumnDirective field='startDate' headerText='Start Date' width='90' format='yMd' textAlign='Right' />
-              <ColumnDirective field='duration' headerText='Duration' width='80' textAlign='Right' />
-              <ColumnDirective field='progress' headerText='Progress' width='80' textAlign='Right' />
+              <ColumnDirective field='startDate' headerText='Start Date' width='110' format='yMd' textAlign='Right' />
+              <ColumnDirective field='duration' headerText='Duration' width='110' textAlign='Right' />
+              <ColumnDirective field='progress' headerText='Progress' width='110' textAlign='Right' />
             </ColumnsDirective>
             <Inject services={[Filter, Page]} />
           </TreeGridComponent>

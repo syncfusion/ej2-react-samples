@@ -84,7 +84,7 @@ export class CustomAggregate extends SampleBase<{}, {}> {
               <ColumnsDirective>
                 <ColumnDirective field='ID' headerText='S.No' width='90' textAlign='Right'></ColumnDirective>
                 <ColumnDirective field='Name' headerText='Shipment Name' width='220'></ColumnDirective>
-                <ColumnDirective field='category' headerText='Category' width='230' />
+                <ColumnDirective field='category' headerText='Category' width='270' />
                 <ColumnDirective field='units' headerText='Total Units' width='130' textAlign='Right' type='number' />
                 <ColumnDirective field='unitPrice' headerText='Unit Price($)' width='130' textAlign='Right' type='number' format='C2' />
                 <ColumnDirective field='price' headerText='Price($)' width='90' textAlign='Right' type='number' format='C0' />

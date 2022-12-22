@@ -112,6 +112,9 @@ export class API extends SampleBase<{}, {}> {
     }
     toggleBtnClick() {
         this.sidebarInstance.toggle();
+        if (this.positionBtn.content == "True") {
+            this.sidebarInstance.showBackdrop = true;
+        }
     }
     positionBtnClick() {
         if (this.positionBtn.content == "Right") {
@@ -146,5 +149,8 @@ export class API extends SampleBase<{}, {}> {
     }
     sidebarClose() {
         this.sidebarInstance.hide();
+        if (this.sidebarInstance.showBackdrop == true){
+            this.sidebarInstance.showBackdrop = false;
+        }
     }
 }

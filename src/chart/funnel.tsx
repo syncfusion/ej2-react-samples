@@ -24,7 +24,7 @@ export class Funnel extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section row'>
-            <AccumulationChartComponent   legendSettings={{ visible: false }} id='funnel-chart' ref={funnel => this.funnel = funnel} title='Recruitment Process' load={this.load.bind(this)} tooltip={{ enable: false, format: '${point.x} : <b>${point.y}</b>' }} resized={this.onChartResized.bind(this)} loaded={this.onChartLoad.bind(this)}>
+            <AccumulationChartComponent   legendSettings={{ visible: false }} id='funnel-chart' ref={funnel => this.funnel = funnel} title='Recruitment Process' load={this.load.bind(this)} tooltip={{ enable: false, format: '${point.x} : <b>${point.y}</b>' }}  loaded={this.onChartLoad.bind(this)}>
               <Inject services={[FunnelSeries, AccumulationTooltip, AccumulationDataLabel,AccumulationLegend]} />
               <AccumulationSeriesCollectionDirective>
                 <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' type='Funnel' width='45%' height='80%' neckWidth='15%' gapRatio={0.03} neckHeight='18%' explode={false} dataLabel={{
@@ -55,23 +55,8 @@ export class Funnel extends SampleBase<{}, {}> {
       </div>
     )
   }
-  public pyramidneckWidth(e: Event): void {
-    let neckWidth: string = (document.getElementById('pyramidNeckWidth') as HTMLSelectElement).value;
-    this.funnel.series[0].neckWidth = neckWidth + '%';
-    document.getElementById('neckWidth').innerHTML = neckWidth + '%';
-    this.funnel.removeSvg();
-    this.funnel.refreshSeries();
-    this.funnel.refreshChart();
-  };
-  public pyramidneckHeight(e: Event): void {
-    let neckHeight: string = (document.getElementById('pyramidNeckHeight') as HTMLSelectElement).value;
-    this.funnel.series[0].neckHeight = neckHeight + '%';
-    document.getElementById('neckHeight').innerHTML = neckHeight + '%';
-    this.funnel.series[0].animation.enable = false;
-    this.funnel.removeSvg();
-    this.funnel.refreshSeries();
-    this.funnel.refreshChart();
-  };
+ 
+
 
   public onChartLoad(args: IAccLoadedEventArgs): void {
     document.getElementById('funnel-chart').setAttribute('title', '');
@@ -82,20 +67,8 @@ export class Funnel extends SampleBase<{}, {}> {
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
     args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark") as AccumulationTheme;
-    if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
-      args.accumulation.series[0].width = '80%';
-      args.accumulation.series[0].height = '70%';
-    }
+   
   };
 
-  public onChartResized(args: IAccResizeEventArgs): void {
-    let bounds: ClientRect = document.getElementById('funnel-chart').getBoundingClientRect();
-    if (bounds.width < bounds.height) {
-      args.accumulation.series[0].width = '80%';
-      args.accumulation.series[0].height = '70%';
-    } else {
-      args.accumulation.series[0].width = '60%';
-      args.accumulation.series[0].height = '80%';
-    }
-  }
+ 
 }

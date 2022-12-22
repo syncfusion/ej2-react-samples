@@ -92,8 +92,7 @@ export class StackedColumn100 extends SampleBase<{}, {}> {
                           <code>StackingColumnSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the 100% stacking column series can be found in this &nbsp;
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
+                        More information on the 100% stacking column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
                     </p>
                 </div>
             </div>

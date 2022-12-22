@@ -4,7 +4,6 @@ import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import { SampleBase } from '../common/sample-base';
 import './template.css';
 
-
 export class Template extends SampleBase<{}, {hideDialog: boolean}> {
     private dialogInstance: DialogComponent;
     private proxy: any;

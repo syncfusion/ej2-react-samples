@@ -61,6 +61,7 @@ public rendereComplete(): void {
         this.filesList = [];
         this.filesDetails = [];
         this.filesName = [];
+        this.uploadObj.element.value = '';
         if (this.dropArea.classList.contains('e-spinner-pane')) {
             hideSpinner(this.dropArea);
             detach(this.dropElement.querySelector('.e-spinner-pane'));

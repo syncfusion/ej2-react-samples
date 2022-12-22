@@ -27,7 +27,7 @@ export class MultiDrag extends SampleBase<{}, {}> {
             <div className='schedule-control-section'>
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
-                        <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 3, 4)} currentView='Month' allowMultiDrag={true}
+                        <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2023, 0, 4)} currentView='Month' allowMultiDrag={true}
                             allowResizing={false} showQuickInfo={false} eventSettings={{ dataSource: this.data }} group={{ resources: ['Owners'] }} >
                             <ResourcesDirective>
                                 <ResourceDirective field='TaskId' title='Owners' name='Owners'

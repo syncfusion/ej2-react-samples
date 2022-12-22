@@ -60,22 +60,22 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
 export let data: any[] = [
     { x: 92.2, y: 7.8, size: 1.347, text: 'China',r:'China' },
     { x: 74, y: 6.5, size: 1.241, text: 'India',r:'India' },
-    { x: 90.4, y: 6.0, size: 0.238, text: 'Indonesia',r:'Indonesia' },
+    { x: 90.4, y: 6.0, size: 0.238, text: 'Indonesia',r: Browser.isDevice ? 'ID' : 'Indonesia' },
     { x: 99.4, y: 2.2, size: 0.312, text: 'United States' ,r:'US'},
-    { x: 88.6, y: 1.3, size: 0.197, text: 'Brazil' ,r:'Brazil'},
-    { x: 99, y: 0.7, size: 0.0818, text: 'Germany' ,r:'Germany'},
-    { x: 72, y: 2.0, size: 0.0826, text: 'Egypt' ,r:'Egypt'},
-    { x: 99.6, y: 3.4, size: 0.143, text: 'Russia' ,r:'Russia' },
-    { x: 96.5, y: 0.2, size: 0.128, text: 'Japan' ,r:'Japan'},
+    { x: 88.6, y: 1.3, size: 0.197, text: 'Brazil' ,r: Browser.isDevice ? 'BR' : 'Brazil'},
+    { x: 99, y: 0.7, size: 0.0818, text: 'Germany' ,r: Browser.isDevice ? 'DE' : 'Germany'},
+    { x: 72, y: 2.0, size: 0.0826, text: 'Egypt' ,r: Browser.isDevice ? 'EG' : 'Egypt'},
+    { x: 99.6, y: 3.4, size: 0.143, text: 'Russia' ,r: Browser.isDevice ? 'RUS' : 'Russia' },
+    { x: 96.5, y: 0.2, size: 0.128, text: 'Japan' ,r: Browser.isDevice ? 'JP' : 'Japan'},
     { x: 86.1, y: 4.0, size: 0.115, text: 'MeLiteracy Ion' ,r:'MLI'},
     { x: 92.6, y: 5.2, size: 0.096, text: 'Philippines' ,r:'PH'},
     { x: 61.3, y: 1.45, size: 0.162, text: 'Nigeria' ,r:'Nigeria'},
-    { x: 82.2, y: 3.97, size: 0.7, text: 'Hong Kong' ,r:'Hong Kong'},
+    { x: 82.2, y: 3.97, size: 0.7, text: 'Hong Kong' ,r: Browser.isDevice ? 'HK' : 'Hong Kong'},
     { x: 79.2, y: 4.9, size: 0.162, text: 'Netherland' ,r:'NL'},
     { x: 72.5, y: 4.5, size: 0.7, text: 'Jordan' ,r:'Jordan'},
-    { x: 81, y: 2.5, size: 0.21, text: 'Australia' ,r:'Australia'},
+    { x: 81, y: 2.5, size: 0.21, text: 'Australia' ,r: Browser.isDevice ? 'AU' : 'Australia'},
     { x: 66.8, y: 3.9, size: 0.028, text: 'Mongolia' ,r:'MN'},
-    { x: 78.4, y: 2.9, size: 0.231, text: 'Taiwan' ,r:'Taiwan'}
+    { x: 78.4, y: 2.9, size: 0.231, text: 'Taiwan' ,r: Browser.isDevice ? 'TW' : 'Taiwan'}
 ];
 
 const SAMPLE_CSS = `

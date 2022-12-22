@@ -35,16 +35,34 @@
   width: 72%;
   display: block;
 }
-
+.e-float-input.upload-area button#browse{
+    float: right;
+	margin-right: -105px;
+	margin-top: -32px;
+}
+.material-dark .e-float-input.upload-area button#browse,
 .material .e-float-input.upload-area button#browse {
     float: right;
 	margin-right: -106px;
 	margin-top: -26px;
 }
+.e-bigger.fluent-dark .e-float-input.upload-area button#browse,
+.e-bigger.fluent .e-float-input.upload-area button#browse,
+.e-bigger.bootstrap5-dark .e-float-input.upload-area button#browse,
+.e-bigger.bootstrap5 .e-float-input.upload-area button#browse,
+.e-bigger.tailwind-dark .e-float-input.upload-area button#browse,
+.e-bigger.tailwind .e-float-input.upload-area button#browse{
+    margin-right: -120px;
+	margin-top: -40px;
+}
 
-.e-bigger.material .e-float-input.upload-area button#browse {
+.e-bigger.material .e-float-input.upload-area button#browse,
+.e-bigger.material-dark .e-float-input.upload-area button#browse {
     margin-top: -36px;
     margin-right: -106px;
+}
+.e-bigger.bootstrap4 .e-float-input.upload-area button#browse{
+    margin-top: -38px;
 }
 
 .fabric .e-float-input.upload-area button#browse,
@@ -54,15 +72,19 @@
 	margin-right: -106px;
 	margin-top: -32px;
 }
-.e-bigger.fabric .e-float-input.upload-area button#browse, .e-bigger.highcontrast .e-float-input.upload-area button#browse {
+.e-bigger.fabric-dark .e-float-input.upload-area button#browse,
+.e-bigger.fabric .e-float-input.upload-area button#browse,
+.e-bigger.highcontrast .e-float-input.upload-area button#browse {
 	margin-right: -120px;
     margin-top: -40px;
 }
+.bootstrap-dark .e-float-input.upload-area button#browse,
 .bootstrap .e-float-input.upload-area button#browse {
     float: right;
 	margin-right: -106px;
 	margin-top: -35px;
 }
+.e-bigger.bootstrap-dark .e-float-input.upload-area button#browse,
 .e-bigger.bootstrap .e-float-input.upload-area button#browse {
 	margin-top: -40px;
 }

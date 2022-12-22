@@ -11,7 +11,8 @@ export class DirectoryUpload extends SampleBase<{},{}> {
     public fmObj: FileManagerComponent;
     private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
     private items: ItemModel[] = [{ text: 'Folder' }, { text: 'Files' }];
-    onCreated(args) {
+    onSuccess(args) {
+      if (!document.getElementById("file_tb_upload").classList.contains("e-dropdown-btn")) {
         (document.getElementById('file_tb_upload') as HTMLElement).onclick = (e) => {
           e.stopPropagation();
         };
@@ -31,6 +32,7 @@ export class DirectoryUpload extends SampleBase<{},{}> {
           },
           '#file_tb_upload'
         );
+      }
     }
     public render(): JSX.Element {
         return(
@@ -42,7 +44,7 @@ export class DirectoryUpload extends SampleBase<{},{}> {
                         uploadUrl: this.hostUrl + 'api/FileManager/Upload',
                         downloadUrl: this.hostUrl + 'api/FileManager/Download'
                     }}
-                    created={this.onCreated.bind(this)}>
+                    success={this.onSuccess.bind(this)}>
                 <Inject services={[ NavigationPane, DetailsView, Toolbar]} />
                     </FileManagerComponent>
 

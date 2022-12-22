@@ -59,24 +59,18 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
       <div id="waitcategory">{props.DepartmentName} - {props.Description}</div></div></div>);
   }
 
-  private onItemDrag(event: any): void {
+  private onItemSelecting(args:any): void {
+    args.cancel = true;
+  }
+
+  private onTreeDrag(event: any): void {
     if (this.scheduleObj.isAdaptive) {
       let classElement: HTMLElement = this.scheduleObj.element.querySelector('.e-device-hover');
       if (classElement) {
         classElement.classList.remove('e-device-hover');
       }
-      if (event.event.target.classList.contains('e-work-cells')) {
-        addClass([event.event.target], 'e-device-hover');
-      }
-    }
-    if (document.body.style.cursor === 'not-allowed') {
-      document.body.style.cursor = '';
-    }
-    if (event.name === 'nodeDragging') {
-      let dragElementIcon: NodeListOf<HTMLElement> =
-        document.querySelectorAll('.e-drag-item.treeview-external-drag .e-icon-expandable');
-      for (let i: number = 0; i < dragElementIcon.length; i++) {
-        dragElementIcon[i].style.display = 'none';
+      if (event.target.classList.contains('e-work-cells')) {
+        addClass([event.target], 'e-device-hover');
       }
     }
   }
@@ -126,6 +120,11 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
         }
       }
     }
+    document.body.classList.remove('e-disble-not-allowed');
+  }
+
+  onTreeDragStart() {
+    document.body.classList.add('e-disble-not-allowed');
   }
 
   render() {
@@ -149,7 +148,7 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
                   }
                 }}
                 group={{ enableCompactView: false, resources: ['Departments', 'Consultants'] }}
-                actionBegin={this.onActionBegin.bind(this)} drag={this.onItemDrag.bind(this)} >
+                actionBegin={this.onActionBegin.bind(this)} >
                 <ResourcesDirective>
                   <ResourceDirective field='DepartmentID' title='Department' name='Departments' allowMultiple={false}
                     dataSource={this.departmentData} textField='Text' idField='Id' colorField='Color'>
@@ -169,7 +168,7 @@ export class ExternalDragDrop extends SampleBase<{}, {}> {
               <div className="title-container">
                 <h1 className="title-text">Waiting List</h1>
               </div>
-              <TreeViewComponent ref={tree => this.treeObj = tree} cssClass='treeview-external-drag' dragArea=".drag-sample-wrapper" nodeTemplate={this.treeTemplate.bind(this)} fields={this.fields} nodeDragStop={this.onTreeDragStop.bind(this)} nodeDragging={this.onItemDrag.bind(this)} allowDragAndDrop={this.allowDragAndDrops} />
+              <TreeViewComponent ref={tree => this.treeObj = tree} cssClass='treeview-external-drag' dragArea=".drag-sample-wrapper" nodeTemplate={this.treeTemplate.bind(this)} fields={this.fields} nodeDragStop={this.onTreeDragStop.bind(this)} nodeDragging={this.onTreeDrag.bind(this)} nodeDragStart={this.onTreeDragStart} nodeSelecting={this.onItemSelecting.bind(this)} allowDragAndDrop={this.allowDragAndDrops} />
             </div>
           </div>
         </div>

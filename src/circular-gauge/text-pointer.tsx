@@ -18,8 +18,6 @@ const SAMPLE_CSS = `
 
 export class TextPointer extends SampleBase<{}, {}> {
 
-    public gauge: CircularGauge;
-
     public load(args: ILoadedEventArgs): void {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
@@ -36,7 +34,7 @@ export class TextPointer extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent load={this.load.bind(this)} centerY='75%' id='text-pointer' ref={gauge => this.gauge = gauge} background='transparent'>
+                    <CircularGaugeComponent load={this.load.bind(this)} centerY='75%' id='text-pointer' background='transparent'>
                         <AxesDirective>
                             <AxisDirective startAngle={270} endAngle={90} radius='120%' minimum={0} maximum={120} rangeGap={3}
                                 majorTicks={{

@@ -91,11 +91,12 @@ export class Formsupport extends SampleBase<{}, {}> {
         };
         this.formObject = new FormValidator('#formTemp', this.formValidator);
     };
-        private onSubmitClick(): void {
-        if(this.formObject.validate()) {
-          this.formObject.element.reset();
-          this.dialogInstance.show();
+        private onSubmitClick(args): void {
+            if(this.formObject.validate()) {
+                this.formObject.element.reset();
+                this.dialogInstance.show();
             }
+            args.preventDefault();
         }
 
     private onFileSelected(args : SelectedEventArgs): void {

@@ -41,7 +41,7 @@ export class Editing extends SampleBase<{}, {}> {
               editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}
               ref={treegrid=> this.treegridObj = treegrid}>
             <ColumnsDirective>
-              <ColumnDirective field='taskID' headerText='Task ID' width='90' textAlign='Right' validationRules={this.validationRule}
+              <ColumnDirective field='taskID' headerText='Task ID' width='90' textAlign='Right' validationRules={this.validationRule2}
                 isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='220' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='160' textAlign='Right'

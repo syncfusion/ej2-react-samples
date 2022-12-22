@@ -394,9 +394,10 @@ export class Overview extends SampleBase<{}, {}> {
     this.scheduleObj.closeQuickInfoPopup();
   }
 
-  public onPopupOpen(args: PopupOpenEventArgs) : void {
-    if (args.type == "QuickInfo" && !args.target.classList.contains('e-appointment')){
+  public onPopupOpen(args: PopupOpenEventArgs): void {
+    if (args.type == "QuickInfo" && !args.target.classList.contains('e-appointment') && !isNullOrUndefined(this.eventTypeObj) && !isNullOrUndefined(this.titleObj)) {
       this.eventTypeObj.index = args.data.CalendarId - 1;
+      this.titleObj.focusIn();
     }
   }
 
@@ -667,6 +668,7 @@ export class Overview extends SampleBase<{}, {}> {
                           remove(newEventElement);
                           removeClass([document.querySelector('.e-selected-cell') as Element], 'e-selected-cell');
                         }
+                        this.scheduleObj.closeQuickInfoPopup();
                         let targetElement: HTMLElement = args.event.target as HTMLElement;
                         if (closest(targetElement, '.e-contextmenu')) {
                           return;

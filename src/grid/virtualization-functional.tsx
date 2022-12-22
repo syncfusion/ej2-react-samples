@@ -50,6 +50,7 @@ function Virtualization() {
     let data: Object[] = [];
     const toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
     const editSettings: any = { allowEditing: true, allowDeleting: true, newRowPosition: 'Top' };
+    const validationSno: Object = { required: true, digits: true };
     const validationRule: Object = { required: true };
 
     function onclick() {
@@ -94,7 +95,7 @@ function Virtualization() {
                 <GridComponent dataSource={[]} enableVirtualization={true} enableColumnVirtualization={true} height={400}
                     ref={g => grid = g} dataBound={hide.bind(this)} toolbar={toolbarOptions} editSettings={editSettings}>
                     <ColumnsDirective>
-                        <ColumnDirective field='SNo' headerText='S.No' width='140' validationRules={validationRule} isPrimaryKey={true}></ColumnDirective>
+                        <ColumnDirective field='SNo' headerText='S.No' width='140' validationRules={validationSno} isPrimaryKey={true}></ColumnDirective>
                         <ColumnDirective field='FIELD1' headerText='Player Name' width='130' ></ColumnDirective>
                         <ColumnDirective field='FIELD2' headerText='Year' width='100' ></ColumnDirective>
                         <ColumnDirective field='FIELD3' headerText='Sports' width='160' validationRules={validationRule} editType='dropdownedit'></ColumnDirective>

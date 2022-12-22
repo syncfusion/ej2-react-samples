@@ -216,7 +216,7 @@ export class Api extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className="col-lg-12 control-section toast-api-section">
-                    <div className="col-lg-12 col-sm-12 col-md-12">
+                    <div className="e-sample-resize-container">
                         <ToastComponent ref={(toast) => { this.toastObj = toast }} id='toastApi' position={this.position} close={this.onclose.bind(this)} beforeOpen={this.onbeforeOpen.bind(this)} newestOnTop={true}></ToastComponent>
                         <div className="row">
                             <div className="col-lg-6 padding">

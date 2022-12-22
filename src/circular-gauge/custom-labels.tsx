@@ -19,7 +19,6 @@ const SAMPLE_CSS = `
 
 export class CustomLabels extends SampleBase<{}, {}> {
 
-    public gauge: CircularGauge;
     public textValues: string[] = ['0', '2', '5', '10', '20', '50', '100', '150', '200'];
 
     public rangeLinearGradient: Object = {
@@ -59,7 +58,7 @@ export class CustomLabels extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent load={this.load.bind(this)} axisLabelRender={this.axisLabelRender.bind(this)} id='custom-labels' ref={gauge => this.gauge = gauge} background='transparent'>
+                    <CircularGaugeComponent load={this.load.bind(this)} axisLabelRender={this.axisLabelRender.bind(this)} id='custom-labels' background='transparent'>
                         <Inject services={[Gradient]} />
                         <AxesDirective>
                             <AxisDirective startAngle={210} endAngle={150} radius='80%' minimum={0} maximum={8}

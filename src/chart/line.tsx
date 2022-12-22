@@ -2,33 +2,33 @@
  * Sample for Line Series
  */
 import * as React from 'react';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, ChartTheme, LineSeries, Legend, Category, Tooltip,Highlight } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ILoadedEventArgs, ChartTheme, LineSeries, Legend, DateTime, Tooltip,Highlight } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 export let data1 = [
-    { x: 2020, y: 11.0 }, { x: 2019, y: 12.9 }, { x: 2018, y: 13.4 },
-    { x: 2017, y: 13.7 }, { x: 2016, y: 12.7 }, { x: 2015, y: 12.5 },
-    { x: 2014, y: 12.7 }, { x: 2013, y: 12.4 }, { x: 2012, y: 13.5 },
+    { x: new Date(2020, 6, 11), y: 11.0 }, { x: new Date(2019, 6, 11), y: 12.9 }, { x: new Date(2018, 6, 11), y: 13.4 },
+    { x: new Date(2017, 6, 11), y: 13.7 }, { x: new Date(2016, 6, 11), y: 12.7 }, { x: new Date(2015, 6, 11), y: 12.5 },
+    { x: new Date(2014, 6, 11), y: 12.7 }, { x: new Date(2013, 6, 11), y: 12.4 }, { x: new Date(2012, 6, 11), y: 13.5 },
 ];
 export let data2 = [
-    { x: 2020, y: 19.5 }, { x: 2019, y: 17.5 }, { x: 2018, y: 15.5 },
-    { x: 2017, y: 10.3 }, { x: 2016, y: 7.8 }, { x: 2015, y: 5.7 },
-    { x: 2014, y: 5.9 }, { x: 2013, y: 5.6 }, { x: 2012, y: 5.3 },
+    { x: new Date(2020, 6, 11), y: 19.5 }, { x: new Date(2019, 6, 11), y: 17.5 }, { x: new Date(2018, 6, 11), y: 15.5 },
+    { x: new Date(2017, 6, 11), y: 10.3 }, { x: new Date(2016, 6, 11), y: 7.8 }, { x: new Date(2015, 6, 11), y: 5.7 },
+    { x: new Date(2014, 6, 11), y: 5.9 }, { x: new Date(2013, 6, 11), y: 5.6 }, { x: new Date(2012, 6, 11), y: 5.3 },
 ];
 export let data3 = [
-    { x: 2020, y: 7.1 }, { x: 2019, y: 6.8 }, { x: 2018, y: 4.1 },
-    { x: 2017, y: 2.8 }, { x: 2016, y: 2.8 }, { x: 2015, y: 3.8 },
-    { x: 2014, y: 4.3 }, { x: 2013, y: 4.7 }, { x: 2012, y: 5.6 },
+    { x: new Date(2020, 6, 11), y: 7.1 }, { x: new Date(2019, 6, 11), y: 6.8 }, { x: new Date(2018, 6, 11), y: 4.1 },
+    { x: new Date(2017, 6, 11), y: 2.8 }, { x: new Date(2016, 6, 11), y: 2.8 }, { x: new Date(2015, 6, 11), y: 3.8 },
+    { x: new Date(2014, 6, 11), y: 4.3 }, { x: new Date(2013, 6, 11), y: 4.7 }, { x: new Date(2012, 6, 11), y: 5.6 },
 ];
 export let data4 = [
-    { x: 2020, y: 8.2 }, { x: 2019, y: 7.3 }, { x: 2018, y: 7.8 },
-    { x: 2017, y: 6.8 }, { x: 2016, y: 5.0 }, { x: 2015, y: 5.5 },
-    { x: 2014, y: 6.5 }, { x: 2013, y: 6.8 }, { x: 2012, y: 6.6 },
+    { x: new Date(2020, 6, 11), y: 8.2 }, { x: new Date(2019, 6, 11), y: 7.3 }, { x: new Date(2018, 6, 11), y: 7.8 },
+    { x: new Date(2017, 6, 11), y: 6.8 }, { x: new Date(2016, 6, 11), y: 5.0 }, { x: new Date(2015, 6, 11), y: 5.5 },
+    { x: new Date(2014, 6, 11), y: 6.5 }, { x: new Date(2013, 6, 11), y: 6.8 }, { x: new Date(2012, 6, 11), y: 6.6 },
 ];
 export let data5 = [
-    { x: 2020, y: 9.3 }, { x: 2019, y: 7.8 }, { x: 2018, y: 6.2 },
-    { x: 2017, y: 5.3 }, { x: 2016, y: 4.8 }, { x: 2015, y: 4.9 },
-    { x: 2014, y: 4.4 }, { x: 2013, y: 2.6 }, { x: 2012, y: 2.3 },
+    { x: new Date(2020, 6, 11), y: 9.3 }, { x: new Date(2019, 6, 11), y: 7.8 }, { x: new Date(2018, 6, 11), y: 6.2 },
+    { x: new Date(2017, 6, 11), y: 5.3 }, { x: new Date(2016, 6, 11), y: 4.8 }, { x: new Date(2015, 6, 11), y: 4.9 },
+    { x: new Date(2014, 6, 11), y: 4.4 }, { x: new Date(2013, 6, 11), y: 2.6 }, { x: new Date(2012, 6, 11), y: 2.3 },
 ];
 const SAMPLE_CSS = `
      .control-fluid {
@@ -47,7 +47,7 @@ export class Line extends SampleBase<{}, {}>{
                         id="charts"
                         style={{ textAlign: 'center' }}
                         primaryXAxis={{
-                            valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 },
+                            valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 },
                         }}
                         load={this.load.bind(this)}
                         primaryYAxis={{
@@ -59,7 +59,7 @@ export class Line extends SampleBase<{}, {}>{
                         width={Browser.isDevice ? '100%' : '75%'}
                         title="Crude Steel Production Annual Growth"
                         loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[LineSeries, Category, Legend, Tooltip,Highlight]} />
+                        <Inject services={[LineSeries, DateTime, Legend, Tooltip,Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective
                                 dataSource={data2} xName="x" yName="y" name="Vietnam" width={2}

@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, Legend, ChartTheme, DataLabel, Highlight
+    RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, ChartTheme, DataLabel, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
@@ -50,7 +50,7 @@ export class RangeColumn extends SampleBase<{}, {}> {
                                 header:"<b>${point.x}</b>",
                                 format:"Temperature : <b>${point.low} - ${point.high}</b>"
                             }}>
-                        <Inject services={[RangeColumnSeries, Tooltip, Category, Legend, DataLabel, Highlight]} />
+                        <Inject services={[RangeColumnSeries, Tooltip, Category,  DataLabel, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} name='India' high="high" low="low" xName='x' columnSpacing={0.1} type='RangeColumn' marker={{
                                      dataLabel: {

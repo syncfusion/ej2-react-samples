@@ -19,8 +19,6 @@ const SAMPLE_CSS = `
 
 export class MultipleRanges extends SampleBase<{}, {}> {
 
-    public gauge: CircularGauge;
-
     public load(args: ILoadedEventArgs): void {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
@@ -37,7 +35,7 @@ export class MultipleRanges extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent load={this.load.bind(this)} id='multiple-ranges' background='transparent' ref={gauge => this.gauge = gauge}>
+                    <CircularGaugeComponent load={this.load.bind(this)} id='multiple-ranges' background='transparent'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective startAngle={230} endAngle={130} radius='90%' minimum={-30} maximum={120} hideIntersectingLabel={true}

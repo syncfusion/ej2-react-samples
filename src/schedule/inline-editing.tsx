@@ -42,7 +42,7 @@ export class InlineEditing extends SampleBase<{}, {}> {
             <div className='schedule-control-section'>
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper'>
-                        <ScheduleComponent width='100%' height='650px' ref={t => this.scheduleObj = t} cssClass='inline-edit' workDays={this.workDays} currentView='TimelineWeek' allowInline={true} selectedDate={new Date(2021, 3, 4)}
+                        <ScheduleComponent width='100%' height='650px' ref={t => this.scheduleObj = t} cssClass='inline-edit' workDays={this.workDays} currentView='TimelineWeek' allowInline={true} selectedDate={new Date(2023, 0, 4)}
                             eventSettings={{ dataSource: this.data }} group={{ resources: ['Categories'] }} eventRendered={this.onEventRendered.bind(this)}>
                             <ResourcesDirective>
                                 <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true}

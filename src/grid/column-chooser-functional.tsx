@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Toolbar, ColumnChooser, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, ColumnChooser, Inject } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -22,7 +22,7 @@ function ColChooser() {
                         <ColumnDirective field='ShipCountry' headerText='Ship Country' visible={false} width='150'></ColumnDirective>
                         <ColumnDirective field='ShipCity' headerText='Ship City' visible={false} width='150'></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Toolbar, ColumnChooser]} />
+                    <Inject services={[Toolbar, Page, ColumnChooser]} />
                 </GridComponent>
             </div>
             <div id="action-description">

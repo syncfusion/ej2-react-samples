@@ -53,7 +53,7 @@ export class Timescale extends SampleBase<{}, {}> {
   }
 
   private minorSlotTemplate(props): JSX.Element {
-    return (<div style={{ textAlign: 'right', marginRight: '15px' }}>
+    return (<div style={{ textAlign: 'center' }}>
       {this.instance.formatDate(props.date, { skeleton: 'ms' }).replace(':00', '')}
     </div>);
   }
@@ -83,7 +83,7 @@ export class Timescale extends SampleBase<{}, {}> {
       <div className='schedule-control-section'>
         <div className='col-lg-9 control-section'>
           <div className='control-wrapper'>
-            <ScheduleComponent height='550px' ref={schedule => this.scheduleObj = schedule}
+            <ScheduleComponent height='550px' cssClass='time-scale' ref={schedule => this.scheduleObj = schedule}
               selectedDate={new Date(2021, 0, 10)} workDays={this.workDays} eventSettings={{ dataSource: this.data }}
               currentView='TimelineWeek' timeScale={{ enable: true, interval: 60, slotCount: 6 }}>
               <ViewsDirective>

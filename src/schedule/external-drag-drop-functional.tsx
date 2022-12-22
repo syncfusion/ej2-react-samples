@@ -62,24 +62,18 @@ function ExternalDragDrop() {
       <div id="waitcategory">{props.DepartmentName} - {props.Description}</div></div></div>);
   }
 
-  function onItemDrag(event: any): void {
+  function onItemSelecting(args: any): void {
+    args.cancel = true;
+  }
+
+  function onTreeDrag(event: any): void {
     if (scheduleObj.isAdaptive) {
       let classElement: HTMLElement = scheduleObj.element.querySelector('.e-device-hover');
       if (classElement) {
         classElement.classList.remove('e-device-hover');
       }
-      if (event.event.target.classList.contains('e-work-cells')) {
-        addClass([event.event.target], 'e-device-hover');
-      }
-    }
-    if (document.body.style.cursor === 'not-allowed') {
-      document.body.style.cursor = '';
-    }
-    if (event.name === 'nodeDragging') {
-      let dragElementIcon: NodeListOf<HTMLElement> =
-        document.querySelectorAll('.e-drag-item.treeview-external-drag .e-icon-expandable');
-      for (let i: number = 0; i < dragElementIcon.length; i++) {
-        dragElementIcon[i].style.display = 'none';
+      if (event.target.classList.contains('e-work-cells')) {
+        addClass([event.target], 'e-device-hover');
       }
     }
   }
@@ -129,6 +123,11 @@ function ExternalDragDrop() {
         }
       }
     }
+    document.body.classList.remove('e-disble-not-allowed');
+  }
+
+  function onTreeDragStart() {
+    document.body.classList.add('e-disble-not-allowed');
   }
 
   return (
@@ -151,7 +150,7 @@ function ExternalDragDrop() {
                 }
               }}
               group={{ enableCompactView: false, resources: ['Departments', 'Consultants'] }}
-              actionBegin={onActionBegin.bind(this)} drag={onItemDrag.bind(this)} >
+              actionBegin={onActionBegin.bind(this)} >
               <ResourcesDirective>
                 <ResourceDirective field='DepartmentID' title='Department' name='Departments' allowMultiple={false}
                   dataSource={departmentData} textField='Text' idField='Id' colorField='Color'>
@@ -171,7 +170,7 @@ function ExternalDragDrop() {
             <div className="title-container">
               <h1 className="title-text">Waiting List</h1>
             </div>
-            <TreeViewComponent ref={tree => treeObj = tree} cssClass='treeview-external-drag' dragArea=".drag-sample-wrapper" nodeTemplate={treeTemplate.bind(this)} fields={fields} nodeDragStop={onTreeDragStop.bind(this)} nodeDragging={onItemDrag.bind(this)} allowDragAndDrop={allowDragAndDrops} />
+            <TreeViewComponent ref={tree => treeObj = tree} cssClass='treeview-external-drag' dragArea=".drag-sample-wrapper" nodeTemplate={treeTemplate.bind(this)} fields={fields} nodeDragStop={onTreeDragStop.bind(this)} nodeSelecting={onItemSelecting.bind(this)} nodeDragging={onTreeDrag.bind(this)} nodeDragStart={onTreeDragStart.bind(this)} allowDragAndDrop={allowDragAndDrops} />
           </div>
         </div>
       </div>

@@ -38,7 +38,7 @@ function AdaptiveGrouping() {
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper schedule-wrapper'>
                     <ScheduleComponent width='100%' height='650px' id='schedule'
-                        selectedDate={new Date(2021, 3, 4)} group={group} enableAdaptiveUI={true} currentView='Month' eventSettings={{ dataSource: data }}>
+                        selectedDate={new Date(2023, 0, 4)} group={group} enableAdaptiveUI={true} currentView='Month' eventSettings={{ dataSource: data }}>
                         <ViewsDirective>
                             <ViewDirective option='Day' />
                             <ViewDirective option='Week' />

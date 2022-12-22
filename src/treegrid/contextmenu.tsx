@@ -33,9 +33,9 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
                 editType='datepickeredit' type='date' format='yMd' validationRules={this.validationRule1} />
               <ColumnDirective field='endDate' headerText='End Date' width='130' textAlign='Right'
                 editType='datepickeredit' type='date' format='yMd' validationRules={this.validationRule1} />
-              <ColumnDirective field='duration' headerText='Duration' width='90' editType='numericedit' textAlign='Right'
+              <ColumnDirective field='duration' headerText='Duration' width='120' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
-              <ColumnDirective field='progress' headerText='Progress' width='90' textAlign='Right' editType='dropdownedit' 
+              <ColumnDirective field='progress' headerText='Progress' width='120' textAlign='Right' editType='dropdownedit' 
                 edit={this.editparams} />
               <ColumnDirective field='priority' headerText='Priority' width='90' />
             </ColumnsDirective>

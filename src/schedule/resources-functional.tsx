@@ -122,7 +122,6 @@ function Resources() {
         return finalData;
     }
 
-    //custom code start 
     function generateEvents(scheduleObj: Schedule): Record<string, any>[] {
         let collections: Record<string, any>[] = [];
         let dataCollections: Record<string, any>[] = [
@@ -169,7 +168,6 @@ function Resources() {
         let filteredCollection: Record<string, any>[] = filterByFare(collections, scheduleObj);
         return filteredCollection;
     }
-    //custom code end 
 
     function template(props): JSX.Element {
         return (<div className="template-wrap">

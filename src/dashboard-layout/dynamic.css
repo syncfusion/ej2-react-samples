@@ -20,7 +20,7 @@
 
 @media (max-width: 650px) {
     #togglebtn{
-        display: none;
+        width: 90px !important;
     }
 }
 

@@ -19,8 +19,6 @@ const SAMPLE_CSS = `
 
 export class RangeColorAxis extends SampleBase<{}, {}> {
 
-    public gauge: CircularGauge;
-
     public load(args: ILoadedEventArgs): void {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
@@ -37,7 +35,7 @@ export class RangeColorAxis extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent load={this.load.bind(this)} id='range-color' background='transparent' ref={gauge => this.gauge = gauge}>
+                    <CircularGaugeComponent load={this.load.bind(this)} id='range-color' background='transparent'>
                         <AxesDirective>
                             <AxisDirective startAngle={0} endAngle={0} radius='100%' direction='AntiClockWise'
                                 majorTicks={{

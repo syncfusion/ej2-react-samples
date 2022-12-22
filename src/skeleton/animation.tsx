@@ -83,17 +83,20 @@ export class Animation extends SampleBase<{}, { [key: string]: any }> {
                     </div>
                 </div>);
             pulse = (
-                <ul id="skeleton-list" className="e-card">
+                <div className="skeleton-listcard e-card">
+                <ul id="skeleton-list">
                     {Array.from({ length: 8 }, function (_, index) {
                         return (<li key={index}>
-                            <SkeletonComponent shape='Circle' width='60px' shimmerEffect='Pulse'></SkeletonComponent>
+                            <div className="skeleton-listProfileView">
+                                <SkeletonComponent shape='Circle' width='40px' shimmerEffect='Pulse'></SkeletonComponent>
+                            </div>
                             <div>
                                 <SkeletonComponent width='80%' height='10px' shimmerEffect='Pulse'></SkeletonComponent><br />
                                 <SkeletonComponent width='60%' height='15px' shimmerEffect='Pulse'></SkeletonComponent>
                             </div>
                         </li>);
                     })}
-                </ul>);
+                </ul></div>);
         }
         else {
             fade = (
@@ -119,7 +122,9 @@ export class Animation extends SampleBase<{}, { [key: string]: any }> {
                 </div >
             );
             pulse = (
-                <ListViewComponent id='skeleton-listview' dataSource={this.state.listData} sortOrder="Ascending" height='420px' template={this.listTemplate} fields={this.fields} cssClass='e-list-template e-card'></ListViewComponent>
+                <div className="skeleton-listcard e-card">
+                    <ListViewComponent id='skeleton-listview' dataSource={this.state.listData} sortOrder="Ascending" height='420px' template={this.listTemplate} fields={this.fields} cssClass='e-list-template'></ListViewComponent>
+                </div>
             );
         }
         return (

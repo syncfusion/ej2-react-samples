@@ -44,7 +44,7 @@ function InlineEditing() {
         <div className='schedule-control-section'>
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent width='100%' height='650px' ref={t => scheduleObj = t} cssClass='inline-edit' workDays={workDays} currentView='TimelineWeek' allowInline={true} selectedDate={new Date(2021, 3, 4)}
+                    <ScheduleComponent width='100%' height='650px' ref={t => scheduleObj = t} cssClass='inline-edit' workDays={workDays} currentView='TimelineWeek' allowInline={true} selectedDate={new Date(2023, 0, 4)}
                         eventSettings={{ dataSource: data }} group={{ resources: ['Categories'] }} eventRendered={onEventRendered.bind(this)}>
                         <ResourcesDirective>
                             <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true}

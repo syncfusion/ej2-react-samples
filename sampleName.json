@@ -855,6 +855,17 @@
             "right-to-left": "RTL"
         }
     },
+    "rating": {
+        "ControlName": "Rating",
+        "Samples": {
+            "default":"Default Functionalities",
+            "precision": "Precision",
+            "tooltip": "Tooltip",
+            "label": "Label",
+            "template": "Template",
+            "keyboard-navigation": "Keyboard Navigations"
+        }
+    },
     "rich-text-editor": {
         "ControlName": "Rich Text Editor",
         "Samples": {

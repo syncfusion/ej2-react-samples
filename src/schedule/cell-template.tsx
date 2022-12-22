@@ -3,12 +3,14 @@ import * as React from 'react';
 import { ScheduleComponent, ViewsDirective, ViewDirective, Month, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './cell-template.css';
 import { SampleBase } from '../common/sample-base';
+import { extend } from '@syncfusion/ej2-base';
 
 /**
  * Schedule cell template sample
  */
 
 export class CellTemplate extends SampleBase<{}, {}> {
+  private data: Record<string, any>[] = extend([], null, true) as Record<string, any>[];
   private getCellContent(date: Date) {
     if (date.getMonth() === 10 && date.getDate() === 23) {
       return '<img src= "src/schedule/images/thanksgiving-day.svg" /><div className="caption">Thanksgiving day</div>';
@@ -42,7 +44,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent cssClass='cell-template' width='100%' height='650px' selectedDate={new Date(2021, 11, 15)}
-              cellTemplate={this.cellTemplate.bind(this)}>
+              cellTemplate={this.cellTemplate.bind(this)} eventSettings={{ dataSource: this.data }}>
               <ViewsDirective>
                 <ViewDirective option='Month' />
               </ViewsDirective>

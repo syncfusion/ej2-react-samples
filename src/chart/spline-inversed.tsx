@@ -34,7 +34,7 @@ export class SplineInversed extends SampleBase<{}, {}>{
                         id="charts"
                         style={{ textAlign: 'center' }}
                         isTransposed={true}
-                        primaryXAxis={{ interval: 4, title: 'Years', minimum: 2000, maximum: 2016, labelIntersectAction: 'Rotate90', minorTickLines: { width: 0 } }}
+                        primaryXAxis={{ interval: 4, title: 'Years', edgeLabelPlacement: 'Shift', minimum: 2000, maximum: 2016, labelIntersectAction: 'Rotate90', minorTickLines: { width: 0 } }}
                         load={this.load.bind(this)}
                         width={Browser.isDevice ? '100%' : '75%'}
                         legendSettings={{visible : false}}

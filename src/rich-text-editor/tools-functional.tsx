@@ -13,7 +13,6 @@ import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css.js';
 import 'codemirror/mode/htmlmixed/htmlmixed.js';
 import './tools.css';
-
 function Overview() {
     React.useEffect(() => {
         updateSampleSection();
@@ -30,7 +29,6 @@ function Overview() {
         'CreateTable', 'CreateLink', 'Image', 'FileManager', '|', 'ClearFormat', 'Print',
         'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
     ];
-
     const fileManagerSettings: FileManagerSettingsModel = {
         enable: true,
         path: '/Pictures/Food',
@@ -41,19 +39,15 @@ function Overview() {
             downloadUrl: hostUrl + 'api/FileManager/Download'
         }
     }
-
     const quickToolbarSettings: QuickToolbarSettingsModel = {
         table: ['TableHeader', 'TableRows', 'TableColumns', 'TableCell', '-', 'BackgroundColor', 'TableRemove', 'TableCellVerticalAlign', 'Styles']
     }
-
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {
         items: items
     };
-
     let textArea: HTMLTextAreaElement;
     let myCodeMirror;
-
     function mirrorConversion(e?: any): void {
         const textArea = rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
         let id: string = (rteObj as any).getID() + 'mirror-view';
@@ -78,7 +72,6 @@ function Overview() {
             charCount.style.display = 'none';
         }
     }
-
     function renderCodeMirror(mirrorView: HTMLElement, content: string): void {
         const myCodeMirror = CodeMirror(mirrorView, {
             value: content,
@@ -88,7 +81,6 @@ function Overview() {
 
         });
     }
-
     function handleFullScreen(e: any): void {
         let sbCntEle: HTMLElement = document.querySelector('.sb-content.e-view');
         let sbHdrEle: HTMLElement = document.querySelector('.sb-header.e-view');
@@ -121,7 +113,6 @@ function Overview() {
             transformElement.style.transform = 'translateX(0px)';
         }
     }
-
     function actionCompleteHandler(e: any): void {
         if (e.targetItem && (e.targetItem === 'SourceCode' || e.targetItem === 'Preview')) {
             (rteObj.sourceCodeModule.getPanel() as HTMLTextAreaElement).style.display = 'none';
@@ -130,7 +121,6 @@ function Overview() {
             setTimeout(() => { (rteObj as any).toolbarModule.refreshToolbarOverflow(); }, 1000);
         }
     }
-
     return (
         <div className='control-pane'>
             <div className='control-section' id="rteTools">

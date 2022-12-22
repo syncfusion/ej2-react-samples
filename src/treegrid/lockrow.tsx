@@ -47,9 +47,6 @@ const SAMPLE1_CSS = `
 .tailwind-dark .disableRow .e-rowcell{
   color: #757575 !important;
 }
-.property-panel-section {
-  padding-left: 80px;
-}
 .e-multiselect {
   padding-left : 0px !important;
   padding-top: 0px !important;
@@ -108,7 +105,7 @@ export class LockRow extends SampleBase<{}, {}> {
         </style>
         {/* custom code end */}
         <div className='control-section'>
-          <div className = 'col-md-8'> 
+          <div className = 'col-md-9'> 
            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
             editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}
             enableHover={false} rowDataBound={this.rowDataBound.bind(this)} ref={treegrid=> this.treegridObj = treegrid}

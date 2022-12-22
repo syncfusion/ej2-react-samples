@@ -7,9 +7,7 @@ import { RichTextEditorComponent, HtmlEditor, Inject, Image, Link, Toolbar, Quic
 import { SampleBase } from '../common/sample-base';
 import { Ajax } from '@syncfusion/ej2-base';
 import './ajax-load.css';
-
 export class AjaxContent extends SampleBase<{}, {}> {
-
   private rteObj: RichTextEditorComponent;
   public rendereComplete(): void {
     let ajax: Ajax = new Ajax('./src/rich-text-editor/ajax-content.html', 'GET', false);

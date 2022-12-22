@@ -38,7 +38,7 @@ function TimelineGrouping() {
         <div className='schedule-control-section'>
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent cssClass='timeline-resource-grouping' width='100%' height='650px' selectedDate={new Date(2021, 3, 4)}
+                    <ScheduleComponent cssClass='timeline-resource-grouping' width='100%' height='650px' selectedDate={new Date(2023, 0, 4)}
                         currentView='TimelineWeek' workDays={workDays} eventSettings={{ dataSource: data }} group={{ resources: ['Projects', 'Categories'] }} >
                         <ResourcesDirective>
                             <ResourceDirective field='ProjectId' title='Choose Project' name='Projects' allowMultiple={false}

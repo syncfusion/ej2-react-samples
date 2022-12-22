@@ -1,4 +1,4 @@
-.control-section.input-content-wrapper .e-upload-picture:before {
+.e-upload-picture:before {
     content: '\e335';
     font-family: e-icons;
     font-size: 14px;
@@ -24,8 +24,8 @@
     font-family: e-icons;
 }
 
-.bootstrap5 .control-section.input-content-wrapper .e-upload-picture::before
-.bootstrap5-dark .control-section.input-content-wrapper .e-upload-picture::before {
+.bootstrap5 .e-upload-picture::before
+.bootstrap5-dark .e-upload-picture::before {
     content: '\e712';
     font-family: e-icons;
 }

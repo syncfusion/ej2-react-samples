@@ -120,7 +120,6 @@ export class Resources extends SampleBase<{}, {}> {
         return finalData;
     }
 
-    //custom code start 
     private generateEvents(scheduleObj: Schedule): Record<string, any>[] {
         let collections: Record<string, any>[] = [];
         let dataCollections: Record<string, any>[] = [
@@ -167,7 +166,6 @@ export class Resources extends SampleBase<{}, {}> {
         let filteredCollection: Record<string, any>[] = this.filterByFare(collections, scheduleObj);
         return filteredCollection;
     }
-    //custom code end 
 
     private template(props): JSX.Element {
         return (<div className="template-wrap">

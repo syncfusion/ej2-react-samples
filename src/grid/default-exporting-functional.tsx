@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar, ExcelExport, PdfExport, Group, ExcelQueryCellInfoEventArgs, PdfQueryCellInfoEventArgs } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar, ExcelExport, PdfExport, Group, ExcelQueryCellInfoEventArgs, PdfQueryCellInfoEventArgs, Sort } from '@syncfusion/ej2-react-grids';
 import { employeeDetails } from './data';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { updateSampleSection } from '../common/sample-base';
@@ -84,7 +84,7 @@ function Exporting() {
     <div className='control-pane'>
       <div className='col-lg-9 control-section'>
         <GridComponent dataSource={employeeDetails} ref={grid => gridInstance = grid} toolbar={toolbarOptions}
-          allowExcelExport={true} allowPdfExport={true} allowGrouping={true} toolbarClick={toolbarClick.bind(this)}
+          allowExcelExport={true} allowPdfExport={true} allowSorting={true} allowGrouping={true} toolbarClick={toolbarClick.bind(this)}
           dataBound={dataBound.bind(this)} excelQueryCellInfo={exportQueryCellInfo.bind(this)} pdfQueryCellInfo={exportQueryCellInfo.bind(this)} height='350'>
           <ColumnsDirective>
             <ColumnDirective headerText='Employee Image' width='150' template={template1} textAlign='Center'></ColumnDirective>

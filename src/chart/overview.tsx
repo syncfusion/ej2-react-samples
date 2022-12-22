@@ -131,7 +131,7 @@ export  class OverView extends SampleBase<{}, {}> {
                 { Product: "Laptop : 16%", Percentage: 16 , r:'Laptop : 40 (16%)' },
                 { Product: "Mobile : 36%", Percentage: 36 , r:'Mobile : 90 (36%)'},
                 { Product: "Camera : 11%", Percentage: 11 , r:'Camera : 27 (11%)'},]}
-              xName="Product" yName="Percentage" radius="80%" innerRadius="40%" border={{width:3,color:'transparent'}}></AccumulationSeriesDirective>
+              xName="Product" yName="Percentage" innerRadius="40%" border={{width:3,color:'transparent'}}></AccumulationSeriesDirective>
           </AccumulationSeriesCollectionDirective>
         </AccumulationChartComponent>
       </div>

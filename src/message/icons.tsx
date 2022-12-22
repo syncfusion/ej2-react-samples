@@ -106,7 +106,7 @@ export class Icons extends SampleBase<{}, {}> {
                         <ButtonComponent id="btn4" ref={(scope) => { this.warningBtn = scope; }} content="Show Warning Message" cssClass="e-outline e-primary e-warning msg-hidden" onClick={this.warningClick.bind(this)}></ButtonComponent>
                         <MessageComponent id="msg_warning_icon" severity="Warning" ref={(scope) => { this.msgWarning = scope; }} showCloseIcon={true} closed={this.warningClosed.bind(this)}>There was a problem with your network connection</MessageComponent>
                         <ButtonComponent id="btn5" ref={(scope) => { this.errorBtn = scope; }} content="Show Error Message" cssClass="e-outline e-primary e-error msg-hidden" onClick={this.errorClick.bind(this)}></ButtonComponent>
-                        <MessageComponent id="msg_error_icon" severity="Error" ref={(scope) => { this.msgError = scope; }} showCloseIcon={true} closed={this.errorClosed.bind(this)}>A problem has been occurred while submitting your data</MessageComponent>
+                        <MessageComponent id="msg_error_icon" severity="Error" ref={(scope) => { this.msgError = scope; }} showCloseIcon={true} closed={this.errorClosed.bind(this)}>A problem occurred while submitting your data</MessageComponent>
                     </div>
                 </div>
 

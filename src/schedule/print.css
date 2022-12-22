@@ -1,8 +1,6 @@
-/* custom code start*/
 .property-panel-table.schedule-print-property-panel  .e-checkbox-wrapper {
     padding: 0;
 }
-/* custom code end*/
 
 .print.e-schedule .e-schedule-toolbar .e-toolbar-item.e-today,
 .schedule-print-property-panel .e-hide-row {

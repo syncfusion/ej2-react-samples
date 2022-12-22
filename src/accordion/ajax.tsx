@@ -9,8 +9,8 @@ import './accordion.component.css'
 export class AjaxContent extends SampleBase<{}, {}> {
     private acrdnObj: AccordionComponent;
     private nestAcrdn = AccordionComponent;
-    public ajaxData: string
-    public rendereComplete(): void {
+
+    public created(): void {
         let ajax: Ajax = new Ajax('./src/accordion/ajax-content.html', 'GET', true);
         ajax.send().then();
         ajax.onSuccess = (data: string): void => {
@@ -92,7 +92,7 @@ export class AjaxContent extends SampleBase<{}, {}> {
                 <div className='control-section accordion-control-section'>
                     <div className='product_title' > iPhone X Product Specification </div>
                     {/* Render the Accoridon Component */}
-                    <AccordionComponent expandMode='Single' expanding={this.expand.bind(this)} ref={accordion => this.acrdnObj = accordion}>
+                    <AccordionComponent expandMode='Single' created={this.created.bind(this)} expanding={this.expand.bind(this)} ref={accordion => this.acrdnObj = accordion}>
                         <AccordionItemsDirective>
                             <AccordionItemDirective header={networkHeader} expanded={true} />
                             <AccordionItemDirective header={featureheader} content='<div id="nested_Acc"></div>' />

@@ -170,7 +170,9 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                                 size: '14px'
                             },
                             majorGridLines: { width: 0 },
-                            lineStyle: { color: '#eaeaea', width: 1 }
+                            lineStyle: { color: '#eaeaea', width: 1 },
+                            minorTickLines: {width: 0},
+                            majorTickLines: {width: 0}
                         }}
                         primaryYAxis={{
                             minimum: 900, maximum: 1300,
@@ -232,13 +234,12 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates datalabel template support in the chart. In this sample, images are placed as datalabel by means of templates.
+                    This sample illustrates data label template support in charts. Each data label for each point is rendered using the template.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        Label content can be formatted by using the template option in dataLabel. Inside the template, you can add the placeholder
-                       text to display corresponding data points value.
+                      The React Charts data label template feature allows you to change the appearance and behavior of the data label for each data point using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-labels/#data-label-template"></a> Template property in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-labels/"></a>ChartDataLabel.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -247,8 +248,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
                         <code>DataLabel</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the Crosshair can be found in this &nbsp;
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-dataLabelSettingsModel.html">documentation section</a>.
+                        More information on the Crosshair can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-dataLabelSettingsModel.html">documentation section</a>.
                     </p>
                 </div>
             </div>

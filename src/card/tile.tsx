@@ -29,8 +29,14 @@ interface cardInterface {
 }
 
 
-let card: NodeList; let cardEle: HTMLElement; let cardObj: JSON[] = cardBook as JSON[]; let data: Object[] = []; let multiSelectData: Object[] = []; let searchData: Object[] = [];
-let searchValCount: number = 0; let filterCategory: { [key: string]: Object; }[] = [{ Name: 'Client-Side', Code: 'client' }, { Name: 'Server-Side', Code: 'server' }, { Name: 'Front-End', Code: 'ui' }];
+let card: NodeList; 
+let cardEle: HTMLElement; 
+let cardObj: JSON[] = cardBook as JSON[]; 
+let data: Object[] = []; 
+let multiSelectData: Object[] = []; 
+let searchData: Object[] = [];
+let searchValCount: number = 0; 
+let filterCategory: { [key: string]: Object; }[] = [{ Name: 'Client-Side', Code: 'client' }, { Name: 'Server-Side', Code: 'server' }, { Name: 'Front-End', Code: 'ui' }];
 let emptyData: boolean = true;
 
 /*  Initialize MultiSelect component */
@@ -229,10 +235,13 @@ export class Tile extends SampleBase<{}, {}> {
 
 class CardRender extends React.Component {
     props: cardInterface;
-    headerTitleSubCheck = this.props.data.header_title.length >0 || this.props.data.header_subtitle.length >0;
-    headerCheck = this.props.data.header_title.length >0 || this.props.data.header_subtitle.length >0 || this.props.data.header_img.length >0;
-    bgimageUrl  = "url(" + this.props.data.cardImage.url + ")";
+    headerTitleSubCheck: boolean;
+    headerCheck: boolean;
+    bgimageUrl: string;
    render() {
+    this.headerTitleSubCheck = this.props.data.header_title.length >0 || this.props.data.header_subtitle.length >0;
+    this.headerCheck = this.props.data.header_title.length >0 || this.props.data.header_subtitle.length >0 || this.props.data.header_img.length >0;
+    this.bgimageUrl  = "url(" + this.props.data.cardImage.url + ")";
        return( 
        <div className= { this.props.data.isHorizontal ? 'e-card e-card-horizontal' : 'e-card' }>
        { this.props.data.cardImage && <div  className='e-card-image' style={{ backgroundImage: this.bgimageUrl }} > { this.props.data.cardImage.title && <div  className='e-card-title'>{this.props.data.cardImage.title}</div> } </div> }

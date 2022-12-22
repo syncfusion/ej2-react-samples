@@ -82,7 +82,7 @@ export class FrozenAPI extends SampleBase<{}, {}> {
                   </span>
                 </div>
                 <div style={{ display: 'inline-block', paddingRight: '10px' }}>
-                  <DropDownListComponent id="freezedirection" dataSource={this.directions} value="Left" change={this.directionChange.bind(this)} fields={this.fields} ref={(freezeDropDown) => { this.freezeDropDown = freezeDropDown }} />
+                  <DropDownListComponent id="freezedirection" dataSource={this.directions} value="Left" change={this.directionChange.bind(this)} fields={this.fields} ref={(frzDropDown) => { this.freezeDropDown = frzDropDown }} />
                 </div>
               </div>
             </div>

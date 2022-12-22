@@ -128,7 +128,6 @@
 		"appbar",
 		"checkbox",
 		"dropdown",
-		"dropdown-button",
-		null
+		"dropdown-button"
 	]
 }

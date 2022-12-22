@@ -76,7 +76,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the area series chart with empty points.'
     },
     {
-        'path': 'chart/area-negative-points', 'component': 'AreaNegative', 'type': 'new', 'name': 'Area - Negative Points', 'order': '03', 'category': 'Area Charts',
+        'path': 'chart/area-negative-points', 'component': 'AreaNegative',  'name': 'Area - Negative Points', 'order': '03', 'category': 'Area Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the area series chart with negative points.'
     },
     {
@@ -248,7 +248,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the doughnut charts.'
     },
     {
-        'path': 'chart/semi-pie', 'component': 'SemiPie', 'name': 'Semi Pie', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/semi-pie', 'component': 'SemiPie', 'name': 'Semi Pie', 'type':'update', 'order': '10', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render semi-pie and doughnut charts.'
     },
     {

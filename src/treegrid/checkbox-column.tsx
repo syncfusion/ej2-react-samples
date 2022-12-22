@@ -4,12 +4,27 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective } from '@syncfusio
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 
+// custom code start
+const SAMPLE_CSS = `
+.e-bigger.bootstrap5 .e-treegrid .e-hierarchycheckbox .e-frame, 
+.e-bigger.bootstrap5-dark .e-treegrid .e-hierarchycheckbox .e-frame {
+  height: 17px;
+  width: 17px;
+}
+.e-bigger.bootstrap4 .e-treegrid .e-hierarchycheckbox .e-frame {
+  height: 18px;
+  width: 18px;
+}`;
+// custom code end
 export class CheckboxColumn extends SampleBase<{}, {}> {
 
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
+          <style>
+            {SAMPLE_CSS}
+          </style>
           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='410'
             autoCheckHierarchy={true}>
             <ColumnsDirective>

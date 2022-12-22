@@ -13,7 +13,9 @@ export class Default extends SampleBase<{}, {}> {
         } else {
             this.imgObj.open('src/image-editor/images/bridge.png');
         }
-        this.imgObj.theme = window.location.href.split('#')[1].split('/')[1];
+        if (this.imgObj.theme && window.location.href.split('#')[1]) {
+            this.imgObj.theme = window.location.href.split('#')[1].split('/')[1];
+        }
     }
     render() {
         return (
@@ -49,9 +51,8 @@ export class Default extends SampleBase<{}, {}> {
                     </ul>
                     <p>
                         More information about Image Editor can be found in this 
-                <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/image-editor/getting-started/'>
-                     documentation section</a>.
-            </p>
+                        <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/image-editor/getting-started/'> documentation section</a>.
+                    </p>
                 </div>
             </div>
         );

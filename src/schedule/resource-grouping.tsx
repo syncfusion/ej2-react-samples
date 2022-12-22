@@ -38,7 +38,6 @@ export class Group extends SampleBase<{}, {}> {
         return (airlineName === 'Airways 1') ? 50 : (airlineName === 'Airways 2') ? 75 : 100;
     }
 
-    // custom code start
     private generateEvents(): Record<string, any>[] {
         let subjectCollection: string[] = ['Barcelona to Los Angeles', 'Los Angeles to Barcelona'];
         let collections: Record<string, any>[] = [];
@@ -63,7 +62,6 @@ export class Group extends SampleBase<{}, {}> {
         }
         return collections;
     }
-    // custom code end
 
     private resourceHeaderTemplate(props): JSX.Element {
         return (<div className="template-wrap"><div className={"airline-image " + this.getAirlineImage(props)}></div>

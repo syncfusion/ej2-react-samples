@@ -50,10 +50,6 @@
     top: -1px;
 }
 
-.e-customStyle .e-selected span.e-icons.highlight:before {
-    color: #fff;
-}
-
 .e-customStyle span.e-icons.highlight,
 .e-customStyle .e-calendar .e-content span.special,
 .e-customStyle .e-calendar .e-content span.daycell {

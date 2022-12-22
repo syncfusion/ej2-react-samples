@@ -16,6 +16,19 @@
     line-height: inherit;
     height: 420px;
   }
+  .skeleton-listProfileView {
+    float: left;
+    margin-right: 15px;
+  }
+  .skeleton-listcard,
+  .e-bigger .skeleton-listcard{
+    line-height: 20px;
+  }
+  .fluent-dark #skeletondatacard,
+  .fluent-dark #skeletonCard,
+  .fluent-dark #skeleton-list{
+    background-color: #313131;
+  }
   .skeleton-animation .cardProfile {
     float: left;
     margin-right: 15px;

@@ -6,7 +6,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import {
     ScheduleComponent, ResourcesDirective, ResourceDirective, Day, Week, WorkWeek, Month,
-    Agenda, MonthAgenda, Inject, ResourcesModel, CellClickEventArgs, CurrentAction
+    Agenda, MonthAgenda, Inject, ResourcesModel, CellClickEventArgs, CurrentAction, PopupOpenEventArgs
 } from "@syncfusion/ej2-react-schedule";
 import './quick-info-template.css';
 import { updateSampleSection } from '../common/sample-base';
@@ -72,16 +72,12 @@ function QuickInfoTemplate() {
     function buttonClickActions(e: Event) {
         const quickPopup: HTMLElement = closest(e.target as HTMLElement, '.e-quick-popup-wrapper') as HTMLElement;
         const getSlotData: Function = (): Record<string, any> => {
-            let cellDetails: CellClickEventArgs = scheduleObj.getCellDetails(scheduleObj.getSelectedElements());
-            if (isNullOrUndefined(cellDetails)) {
-                cellDetails = scheduleObj.getCellDetails(scheduleObj.activeCellsData.element);
-            }
             const addObj: Record<string, any> = {};
             addObj.Id = scheduleObj.getEventMaxID();
             addObj.Subject = isNullOrUndefined(titleObj.value) ? 'Add title' : titleObj.value;
-            addObj.StartTime = new Date(+cellDetails.startTime);
-            addObj.EndTime = new Date(+cellDetails.endTime);
-            addObj.IsAllDay = cellDetails.isAllDay;
+            addObj.StartTime = new Date(scheduleObj.activeCellsData.startTime);
+            addObj.EndTime = new Date(scheduleObj.activeCellsData.endTime);
+            addObj.IsAllDay = scheduleObj.activeCellsData.isAllDay;
             addObj.Description = isNullOrUndefined(notesObj.value) ? 'Add notes' : notesObj.value;
             addObj.RoomId = eventTypeObj.value;
             return addObj;
@@ -107,6 +103,12 @@ function QuickInfoTemplate() {
             scheduleObj.openEditor(eventDetails, currentAction, true);
         }
         scheduleObj.closeQuickInfoPopup();
+    }
+
+    function onPopupOpen(args: PopupOpenEventArgs): void {
+        if (args.target && !args.target.classList.contains('e-appointment') && !isNullOrUndefined(titleObj)) {
+            titleObj.focusIn();
+        }
     }
 
     function headerTemplate(props: { [key: string]: Date }): JSX.Element {
@@ -183,7 +185,7 @@ function QuickInfoTemplate() {
                             header: headerTemplate.bind(this),
                             content: contentTemplate.bind(this),
                             footer: footerTemplate.bind(this)
-                        }}>
+                        }} popupOpen={onPopupOpen.bind(this)}>
                         <ResourcesDirective>
                             <ResourceDirective field='RoomId' title='Room Type' name='MeetingRoom' textField='Name' idField='Id'
                                 colorField='Color' dataSource={roomData}></ResourceDirective>

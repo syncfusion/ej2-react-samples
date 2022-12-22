@@ -56,7 +56,7 @@ function Timescale() {
   }
 
   function minorSlotTemplate(props): JSX.Element {
-    return (<div style={{ textAlign: 'right', marginRight: '15px' }}>
+    return (<div style={{ textAlign: 'center' }}>
       {instance.formatDate(props.date, { skeleton: 'ms' }).replace(':00', '')}
     </div>);
   }
@@ -85,7 +85,7 @@ function Timescale() {
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent height='550px' ref={schedule => scheduleObj = schedule}
+          <ScheduleComponent height='550px' cssClass='time-scale' ref={schedule => scheduleObj = schedule}
             selectedDate={new Date(2021, 0, 10)} workDays={workDays} eventSettings={{ dataSource: data }}
             currentView='TimelineWeek' timeScale={{ enable: true, interval: 60, slotCount: 6 }}>
             <ViewsDirective>

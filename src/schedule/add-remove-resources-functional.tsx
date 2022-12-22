@@ -26,12 +26,10 @@ function AddRemoveResources() {
         { CalendarText: 'Holiday', CalendarId: 4, CalendarColor: '#808000' }
     ];
 
-    // custom code start
     function generateCalendarData(): Record<string, any>[] {
         return [...(dataSource as Record<string, any>).personalData, ...(dataSource as Record<string, any>).companyData,
         ...(dataSource as Record<string, any>).birthdayData, ...(dataSource as Record<string, any>).holidayData];
     }
-    // custom code end
 
     function onChange(args: ChangeEventArgs): void {
         let value: number = parseInt((args.event.currentTarget as Element).querySelector('input').getAttribute('value'), 10);

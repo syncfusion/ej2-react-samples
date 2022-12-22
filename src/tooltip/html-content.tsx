@@ -64,7 +64,7 @@ export class HtmlContentTooltip extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div id="htmlTemplate" className="col-lg-12 control-section">
-                        <TooltipComponent id='content' created={this.created.bind(this)} content={tooltipTemplate} opensOn='Click' cssClass='e-tooltip-template-css' target="#content" ref={t => this.tooltipObj = t}>
+                        <TooltipComponent created={this.created.bind(this)} content={tooltipTemplate} opensOn='Click' cssClass='e-tooltip-template-css' target="#content" ref={t => this.tooltipObj = t}>
                             <div id="customization">
                                 <ButtonComponent cssClass='e-outline' isPrimary={true} className="text" id="content">HTML Template</ButtonComponent>
                             </div>

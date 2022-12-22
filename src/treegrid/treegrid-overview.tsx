@@ -127,7 +127,7 @@ export class Overview extends SampleBase<{}, {}> {
             <ColumnsDirective>
               <ColumnDirective field='name' headerText='Province' width='195' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
               <ColumnDirective field='population' headerText='Population (Million)' allowFiltering={false} valueAccessor={this.populationValue} textAlign='Right' width='200'></ColumnDirective>
-              <ColumnDirective field='gdp' headerText='GDP Rate %' width='145' template={this.gdptemplate} />
+              <ColumnDirective field='gdp' headerText='GDP Rate %' width='155' template={this.gdptemplate} />
               <ColumnDirective field='rating' headerText='Credit Rating' width='190' template={this.ratingtemplate}  />
               <ColumnDirective field='unemployment' headerText='Unemployment Rate' width='200' allowFiltering={false} template={this.unemploymentTemplate} />
               <ColumnDirective field='coordinates' headerText='Coordinates' allowSorting={false} width='220' template={this.locationtemplate} />

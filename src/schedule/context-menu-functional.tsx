@@ -88,6 +88,7 @@ function ContextMenu() {
       remove(newEventElement);
       removeClass([document.querySelector('.e-selected-cell')], 'e-selected-cell');
     }
+    scheduleObj.closeQuickInfoPopup();
     let targetElement: HTMLElement = args.event.target as HTMLElement;
     if (closest(targetElement, '.e-contextmenu')) {
       return;

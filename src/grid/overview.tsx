@@ -12,25 +12,40 @@ import './grid-overview.css';
 
 function statusTemplate(props):any { 
      
-  return(<div id="status" className="statustemp">
-  <span className="statustxt">{props.Status}</span>
-</div>)
+  return(<div>{props.Status === "Active" ? 
+      <div id="status" className="statustemp e-activecolor">
+        <span className="statustxt e-activecolor">{props.Status}</span>
+      </div> : 
+      <div id="status" className="statustemp e-inactivecolor">
+        <span className="statustxt e-inactivecolor">{props.Status}</span>
+      </div>}</div>);
 }
-function ratingTemplate(props):any {
-  return(<div className="rating">
-            <span className="star"></span>
-            <span className="star"></span>
-            <span className="star"></span>
-            <span className="star"></span>
-            <span className="star"></span>
-        </div>)
+function ratingTemplate(props): any {
+  let ele = [];
+  for (let i = 0; i < 5; i++) {
+    if (i < props.Rating) {
+      ele.push((<span className="star checked"/> as never));
+    }          
+    else {
+      ele.push((<span className="star"/> as never));
+    }
+  }
+  return (<div className="rating">{ele}</div>);
 }
-function progessTemplate(props):any {
+function progessTemplate(props): any {
+  let percentage: number = props[props.column.field];
+  if (percentage <= 20) {
+    percentage = percentage + 30;
+  }
   return(  <div id="myProgress" className="pbar">
-  <div id="myBar" className="bar">
-    <div id="pbarlabel" className="barlabel"></div>
-  </div>
-</div>)
+    { props.Status === "Inactive" ? 
+    <div id="myBar" className="bar progressdisable" style={{ width: percentage+"%" }}>
+      <div id="pbarlabel" className="barlabel">{ percentage + "%" }</div>
+    </div> : 
+    <div id="myBar" className="bar" style={{ width: percentage+"%" }}>
+      <div id="pbarlabel" className="barlabel">{ percentage + "%" }</div>
+    </div> }
+</div>);
 }
 let loc = { width: '31px' , height: '24px'};
 function trustTemplate(props):any {
@@ -39,14 +54,18 @@ function trustTemplate(props):any {
   <span id="Trusttext">{props.Trustworthiness}</span></div>)
 }
 
-function empTemplate(props):any {
- return(<div>
-      <div className="empimg">
-        <span className="e-userimg">
-        </span>
-      </div> 
-      <span id="Emptext">{props.Employees}</span>
-    </div>)
+function empTemplate(props): any {
+  return (<div>
+    { props.EmployeeImg === 'usermale' ?
+        <div className="empimg">
+          <span className="e-userimg sf-icon-Male"/>
+        </div> : 
+        <div className="empimg">
+          <span className="e-userimg sf-icon-FeMale"/>
+        </div>
+      }
+    <span id="Emptext">{props.Employees}</span>
+  </div>);
 }
 function coltemplate(props):any {
   return(<div className="Mapimage">
@@ -113,42 +132,6 @@ export class OverView extends SampleBase<{}, {}> {
  
   private fields: object = { text: 'text', value: 'value' };
  
-  public onQueryCellInfo(args:any): void {
-       if (args.column.field === 'Employees') {
-            if (args.data.EmployeeImg === 'usermale') {
-                args.cell.querySelector('.e-userimg').classList.add("sf-icon-Male");
-            } else {
-                args.cell.querySelector('.e-userimg').classList.add("sf-icon-FeMale");
-            }
-        }
-        if (args.column.field === 'Status') {
-            if (args.cell.textContent === "Active") {
-                args.cell.querySelector(".statustxt").classList.add("e-activecolor");
-                args.cell.querySelector(".statustemp").classList.add("e-activecolor");
-            }
-            if (args.cell.textContent === "Inactive") {
-                args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
-                args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
-            }
-        }
-        if (args.column.field === 'Rating') {
-            if (args.column.field === 'Rating') {
-                for (var i = 0; i < args.data.Rating; i++) {
-                    args.cell.querySelectorAll("span")[i].classList.add("checked");
-                }
-            }
-        }
-        if (args.column.field === "Software") {
-            if (args.data.Software <= 20) {
-                args.data.Software = args.data.Software + 30;
-            }
-            args.cell.querySelector(".bar").style.width = args.data.Software + "%";
-            args.cell.querySelector(".barlabel").textContent = args.data.Software + "%";           
-            if (args.data.Status === "Inactive") {
-                args.cell.querySelector(".bar").classList.add("progressdisable");
-            }
-        }    
-  }
   public onDataBound(): void {
     clearTimeout(this.clrIntervalFun);
     clearInterval(this.intervalFun);
@@ -244,7 +227,7 @@ export class OverView extends SampleBase<{}, {}> {
         <span id='msg'></span>
         <br/>
         </div>
-          <GridComponent id="overviewgrid" dataSource={this.data} query={this.query} enableHover={false} enableVirtualization={true} loadingIndicator= {{ indicatorType: 'Shimmer' }} rowHeight={38} height='600' ref={(g) => { this.gridInstance = g }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} queryCellInfo={this.onQueryCellInfo.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select} enableHeaderFocus={true}>
+          <GridComponent id="overviewgrid" dataSource={this.data} query={this.query} enableHover={false} enableVirtualization={true} loadingIndicator= {{ indicatorType: 'Shimmer' }} rowHeight={38} height='600' ref={(g) => { this.gridInstance = g }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select} enableHeaderFocus={true}>
             <ColumnsDirective>
             <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false}  width='60'></ColumnDirective>
               <ColumnDirective field='EmployeeID' visible={false} headerText='Employee ID' isPrimaryKey={true} width='130'></ColumnDirective>
@@ -283,9 +266,12 @@ export class OverView extends SampleBase<{}, {}> {
         In this demo, Grid features such as <code>Virtual Scrolling, Filtering, Sorting, Column Template </code> etc... are used along with large data source.
     </p>
     <p>
+        You can follow the guidelines in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/virtual-scroll/#browser-height-limitation-in-virtual-scrolling-and-solution">
+	documentation</a> to get around the browser height restriction when loading and viewing millions of records.
+    </p>
+    <p>
         More information on the Grid instantiation can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/grid/getting-started.html">
-            documentation section</a>.
+        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/grid/getting-started.html"> documentation section</a>.
     </p>
 </div>
 </div>

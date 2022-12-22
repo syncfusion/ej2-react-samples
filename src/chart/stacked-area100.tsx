@@ -43,7 +43,7 @@ export class StackedArea100 extends SampleBase<{}, {}> {
             chartArea={{ border: { width: 0 } }}
             load={this.load.bind(this)}
             primaryYAxis={{ title: 'Amount of sales in €', majorGridLines: { width: 0 }, rangePadding: 'None', interval: 20 }}
-            title="Amount of Sales by Payment Method "
+            title="Sales by Payment Mode"
             loaded={this.onChartLoad.bind(this)}
             tooltip={{ enable: true }}
           >

@@ -34,10 +34,10 @@ export class Properties extends SampleBase<{}, {}> {
 
     public onChange(args: any): void {
         let proxy: any = this;
-        if (args.event.currentTarget.id === 'floating') {
+        if (args.event.target.previousElementSibling.id === 'floating') {
             proxy.dashboardObj.allowFloating = args.checked;
         }
-        if (args.event.currentTarget.id === 'resizing') {
+        if (args.event.target.previousElementSibling.id === 'resizing') {
             proxy.dashboardObj.allowResizing = args.checked;
         }
 

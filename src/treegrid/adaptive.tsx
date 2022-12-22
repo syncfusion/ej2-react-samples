@@ -118,7 +118,7 @@ export class Adaptive extends SampleBase<{}, {}> {
                       <ColumnsDirective>
                       <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='135' textAlign='Right' validationRules={this.validationRule1}></ColumnDirective>
                         <ColumnDirective field='taskName' headerText='Task Name' width='280' validationRules={this.validationRule}></ColumnDirective>
-                        <ColumnDirective field='duration' headerText='Duration' width='140' textAlign='Right' validationRules={this.validationRule}/>
+                        <ColumnDirective field='duration' headerText='Duration' width='150' textAlign='Right' validationRules={this.validationRule}/>
                         <ColumnDirective field='progress' headerText='Progress' width='145' textAlign='Right' />
                       </ColumnsDirective>
                       <Inject services={[Filter, Sort, Edit, Toolbar, Page]} />

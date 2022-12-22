@@ -18,7 +18,6 @@ const SAMPLE_CSS = `
 
 export class AxisBackGround extends SampleBase<{}, {}> {
 
-    public gauge: CircularGauge;
     public annotationGauge: CircularGauge;
 
     public load(args: ILoadedEventArgs): void {
@@ -65,7 +64,7 @@ export class AxisBackGround extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent loaded={this.onChartLoad.bind(this)} resized={this.onResized.bind(this)} load={this.load.bind(this)} id='axis-background' background='transparent' centerY='65%' ref={gauge => this.gauge = gauge}>
+                    <CircularGaugeComponent loaded={this.onChartLoad.bind(this)} resized={this.onResized.bind(this)} load={this.load.bind(this)} id='axis-background' background='transparent' centerY='65%'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective startAngle={0} endAngle={0} radius='80%'

@@ -98,7 +98,9 @@ export class ProfilePicture extends SampleBase<{}, {}> {
     }
 
     created() {
-        this.imageEditorInstance.theme = window.location.href.split('#')[1].split('/')[1];
+        if (this.imageEditorInstance.theme && window.location.href.split('#')[1]) {
+            this.imageEditorInstance.theme = window.location.href.split('#')[1].split('/')[1];
+        }
     }
 
     private editClicked(): void {
@@ -140,9 +142,8 @@ export class ProfilePicture extends SampleBase<{}, {}> {
                     </ul>
                     <p>
                         More information about Image Editor can be found in this 
-                <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/image-editor/getting-started/'>
-                             documentation section</a>.
-            </p>
+                        <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/image-editor/getting-started/'> documentation section</a>.
+                    </p>
                 </div>
             </div>
         );

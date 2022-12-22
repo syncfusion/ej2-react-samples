@@ -29,6 +29,7 @@ export class Radial extends SampleBase<{}, {}> {
     ];
 
     public radialSetting = { offset: '70px' };
+    public radialSetting1 = { offset: '110px' };
 
     render() {
         return (
@@ -36,15 +37,15 @@ export class Radial extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <div id="speed-dial-wrapper">
                         <div id="speeddialtarget" className="speeddial-radial-target  custom-index">
-                            <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-success" target='#speeddialtarget' title='Top Left' position='TopLeft' mode='Radial' items={this.items}></SpeedDialComponent>
+                            <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-success" target='#speeddialtarget' title='Top Left' position='TopLeft' radialSettings={this.radialSetting1} mode='Radial' items={this.items}></SpeedDialComponent>
                             <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-warning" target='#speeddialtarget' title='Top Center' position='TopCenter' radialSettings={this.radialSetting} mode='Radial' items={this.items}></SpeedDialComponent>
-                            <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-success" target='#speeddialtarget' title='Top Right' position='TopRight' mode='Radial' items={this.items}></SpeedDialComponent>
+                            <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-success" target='#speeddialtarget' title='Top Right' position='TopRight' radialSettings={this.radialSetting1} mode='Radial' items={this.items}></SpeedDialComponent>
                             <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-warning" target='#speeddialtarget' title='Middle Left' position='MiddleLeft' radialSettings={this.radialSetting} mode='Radial' items={this.items}></SpeedDialComponent>
                             <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' target='#speeddialtarget' title='Middle Center' position='MiddleCenter' radialSettings={this.radialSetting} mode='Radial' items={this.items}></SpeedDialComponent>
                             <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-warning" target='#speeddialtarget' title='Middle Right' position='MiddleRight' radialSettings={this.radialSetting} mode='Radial' items={this.items}></SpeedDialComponent>
-                            <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-success" target='#speeddialtarget' title='Bottom Left' position='BottomLeft' mode='Radial' items={this.items}></SpeedDialComponent>
+                            <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-success" target='#speeddialtarget' title='Bottom Left' position='BottomLeft' radialSettings={this.radialSetting1} mode='Radial' items={this.items}></SpeedDialComponent>
                             <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-warning" target='#speeddialtarget' title='Bottom Center' position='BottomCenter' radialSettings={this.radialSetting} mode='Radial' items={this.items}></SpeedDialComponent>
-                            <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-success" target='#speeddialtarget' title='Bottom Right' position='BottomRight' mode='Radial' items={this.items}></SpeedDialComponent>
+                            <SpeedDialComponent openIconCss='speeddial-icons speeddial-icon-edit' cssClass="e-success" target='#speeddialtarget' title='Bottom Right' position='BottomRight' radialSettings={this.radialSetting1} mode='Radial' items={this.items}></SpeedDialComponent>
                         </div>
                     </div>
                 </div>

@@ -575,7 +575,7 @@ export class Content extends React.Component<{}, {}>{
     }
     public tabRendered(): void {
         let hsplitter: string = '<div class="sb-toolbar-splitter sb-custom-item"></div>';
-        let openNewTemplate: string = '<div class="sb-custom-item sb-open-new-wrapper"><a id="openNew" target="_blank">' +
+        let openNewTemplate: string = '<div class="sb-custom-item sb-open-new-wrapper"><a id="openNew" target="_blank" aria-label="Open new window">' +
             '<div class="sb-icons sb-icon-Popout"></div></a></div>';
         let sampleNavigation: string = '<div class="sb-custom-item sample-navigation"><button id="prev-sample" class="sb-navigation-prev">' +
             '<span class="sb-icons sb-icon-Previous"></span></button><button  id="next-sample" class="sb-navigation-next">' +

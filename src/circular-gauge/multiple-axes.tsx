@@ -45,8 +45,7 @@ export class Axes extends SampleBase<{}, {}> {
                 index: 0, width: '127%',
                 change: () => {
                     this.axisIndex = +this.axis.value;
-                    let direction: string = this.gauge.axes[this.axisIndex].direction;
-                    this.direction.value = direction;
+                    this.direction.value = this.gauge.axes[this.axisIndex].direction;
                     let startAngle: number = this.gauge.axes[this.axisIndex].startAngle;
                     let endAngle: number = this.gauge.axes[this.axisIndex].endAngle;
                     document.getElementById('start').innerHTML = String(startAngle);

@@ -9,11 +9,21 @@ export class ColumnTemplate extends SampleBase<{}, {}> {
   public columnTemplate(props): any {
     var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
     if((props.ganttProperties.resourceNames)){
-    return ( 
-    <div className='columnTemplate'>
-        <img src={src} height='40px' width='40px'/>
-        <div style={{ display:"inline-block", width:'100%', position:"relative", left:"30px"}}>{props.ganttProperties.resourceNames}</div>
-    </div>);
+    let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
+    if (gantt.enableRtl) {
+        return (
+          <div className='columnTemplate'>
+            <img src={src} height='40px' width='40px' />
+            <div style={{ display: "inline-block", width: '100%', position: "relative", right: "30px" }}>{props.ganttProperties.resourceNames}</div>
+          </div>);
+      }
+      else {
+        return (
+          <div className='columnTemplate'>
+            <img src={src} height='40px' width='40px' />
+            <div style={{ display: "inline-block", width: '100%', position: "relative", left: "30px" }}>{props.ganttProperties.resourceNames}</div>
+          </div>);
+      }
     } else {
      return <div></div>
     }

@@ -86,7 +86,6 @@ body.material-dark #letterAvatarList .e-list-item {
 
 #letterAvatarList .listWrapper .e-avatar {
     position: absolute;
-    top: calc(100% - 40px);
     font-size: 10px;
     left: 5px;
 }
@@ -132,14 +131,6 @@ body.material-dark #letterAvatarList .e-list-item {
 
 body.bootstrap4 #letterAvatarList .e-list-item .e-avatar{
     top: calc(100% - 45px);
-}
-
-.bootstrap5 #letterAvatarList .e-list-item .e-avatar,
-.bootstrap5-dark #letterAvatarList .e-list-item .e-avatar,
-.tailwind-dark #letterAvatarList .e-list-item .e-avatar,
-.fluent #letterAvatarList .listWrapper .e-avatar,
-.fluent-dark #letterAvatarList .listWrapper .e-avatar {
-    top: calc(100% - 48px);
 }
 
 body.bootstrap #letterAvatarList .e-list-item,

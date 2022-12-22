@@ -60,6 +60,7 @@ export class MindMap extends SampleBase<{}, {}> {
               tool={DiagramTools.SingleSelect}
               layout={{
                 type: "MindMap",
+                orientation:'LeftToRight',
                 getBranch: (node: NodeModel, nodes: NodeModel[]) => {
                   return ((node as Node).data as EmployeeInfo).branch;
                 },

@@ -158,7 +158,7 @@ export class Positions extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='col-lg-12 control-section toast-pos-section'>
-                    <div className="col-lg-12 col-sm-12 col-md-12" id="toast_pos_target">
+                    <div className="e-sample-resize-container" id="toast_pos_target">
                         <ToastComponent ref={(toast) => { this.toastObj = toast }} id='toast_pos' title='Matt sent you a friend request' content='You have a friend request yet to accept.' icon='e-laura' position={this.position} target={this.target} created={this.created.bind(this)} close={this.onclose.bind(this)} beforeOpen={this.onbeforeOpen.bind(this)}></ToastComponent>
                         <div id="toast_pos_property">
                             <table style={{ 'width': '100%' }}>

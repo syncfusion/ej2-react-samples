@@ -31,10 +31,11 @@ export class Special extends SampleBase<{}, {}> {
     }
 
     public onchange(args: ChangedEventArgs): void {
-        let title: string = '';
+        let title: string | null = '';
         if (args.event) {
             /*Displays selected date in the label*/
-            title = (event.currentTarget as HTMLElement).getAttribute('data-val');
+            title = (args.event.currentTarget as HTMLElement).classList.contains('e-selected') ? (args.event.currentTarget as HTMLElement).getAttribute('data-val') : (args.event.currentTarget as HTMLElement).getElementsByClassName('e-selected').length > 0 
+                    ? (args.event.currentTarget as HTMLElement).getElementsByClassName('e-selected')[0].getAttribute('data-val') : null;
             title = title == null ? '' : ' ( ' + title + ' )';
         }
         (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args.value.toLocaleDateString() + title;

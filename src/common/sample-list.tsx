@@ -29,6 +29,7 @@ import { DatePickerSampleOrder } from '../datepicker/config';
 import { DateTimeOrder } from '../datetimepicker/config';
 import { DateRangePickerSampleOrder } from '../daterangepicker/config';
 import { CircularGaugeSampleOrder } from '../circular-gauge/config';
+import { ArcGaugeSampleOrder } from '../arc-gauge/config';
 import { ContextMenuSampleOrder } from '../context-menu/config';
 import { MenuSampleOrder } from '../menu/config';
 import { LinearGaugeSampleOrder } from '../linear-gauge/config';
@@ -71,7 +72,8 @@ import { ImageEditorSampleOrder } from '../image-editor/config';
 import { FloatingActionButtonSampleOrder } from "../floating-action-button/config";
 import { SpeedDialSampleOrder } from "../speed-dial/config";
 import { MentionSampleOrder } from '../mention/config';
-import { SkeletonSampleOrder} from '../skeleton/config'
+import { SkeletonSampleOrder} from '../skeleton/config';
+import { RatingSampleOrder } from '../rating/config';
 
 export let samplesList: any = [
     {
@@ -93,7 +95,10 @@ export let samplesList: any = [
         'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
     },
     {
-        'name': 'Circular Gauge', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge', 'type': 'update'
+        'name': 'Arc Gauge', 'category': 'Data Visualization', 'type': 'new', 'order': '04', 'path': 'arc-gauge', 'samples': ArcGaugeSampleOrder, 
+    },
+    {
+        'name': 'Circular Gauge', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
     },
     {
         'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'samples': DiagramSampleOrder
@@ -102,7 +107,7 @@ export let samplesList: any = [
         'name': 'HeatMap Chart', 'category': 'Data Visualization', 'order': '06', 'path': 'heatmap-chart', 'samples': HeatmapSampleOrder, 'ftName' :'heatmap-chart'
     },
     {
-        'name': 'Linear Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'linear-gauge', 'samples': LinearGaugeSampleOrder, 'ftName' :'lineargauge', 'type': 'update'
+        'name': 'Linear Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'linear-gauge', 'samples': LinearGaugeSampleOrder, 'ftName' :'lineargauge'
     },
     {
         'name': 'Maps', 'category': 'Data Visualization', 'order': '07', 'path': 'maps', 'samples': MapSampleOrder, 'ftName' :'maps'
@@ -135,7 +140,7 @@ export let samplesList: any = [
         'name': 'PDF Viewer', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'
     },
     {
-        'name': 'RichTextEditor', 'type':'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
+        'name': 'RichTextEditor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
         'name': 'DocumentEditor', 'type': 'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
@@ -171,10 +176,10 @@ export let samplesList: any = [
         'name': 'Chips', 'category': 'Buttons', 'order': '04', 'path': 'chips', 'samples': ChipsSampleOrder
     },
     {
-        'name': 'Floating Action Button', 'category': 'Buttons', 'order': '04', 'path': 'floating-action-button', "type": "preview", 'samples': FloatingActionButtonSampleOrder
+        'name': 'Floating Action Button', 'category': 'Buttons', 'order': '04', 'path': 'floating-action-button', 'samples': FloatingActionButtonSampleOrder
     },
     {
-        'name': 'SpeedDial', 'category': 'Buttons', 'order': '04', 'path': 'speed-dial', "type": "preview", 'samples': SpeedDialSampleOrder
+        'name': 'SpeedDial', 'category': 'Buttons', 'order': '04', 'path': 'speed-dial', 'samples': SpeedDialSampleOrder
     },
     {
         'name': 'AutoComplete', 'category': 'Dropdowns', 'order': '04', 'path': 'auto-complete', 'samples': AutoCompleteSampleOrder
@@ -195,19 +200,19 @@ export let samplesList: any = [
         'name': 'List Box', 'category': 'Dropdowns', 'ftName': 'list-box', 'order': '04', 'path': 'list-box', 'samples': ListBoxSampleOrder
     },
     {
-        'name': 'Mention', 'category': 'Dropdowns', 'path': 'mention', 'order': '03', 'samples': MentionSampleOrder, 'type': 'preview'
+        'name': 'Mention', 'category': 'Dropdowns', 'path': 'mention', 'order': '03', 'samples': MentionSampleOrder
     },
     {
         'name': 'Accordion', 'category': 'Navigation', 'path': 'accordion', 'samples': AccordionSampleOrder
     },
     {
-        'name': 'AppBar', 'category': 'Navigation', 'type': 'preview', 'path': 'appbar', 'samples': AppBarSampleOrder, 'ftName': 'appbar'
+        'name': 'AppBar', 'category': 'Navigation', 'path': 'appbar', 'samples': AppBarSampleOrder, 'ftName': 'appbar'
     },
     {
         'name': 'Breadcrumb', 'category': 'Navigation', 'path': 'breadcrumb', 'samples': BreadcrumbSampleOrder
     },
     {
-        'name': 'Carousel', 'category': 'Navigation', 'type':'update', 'path': 'carousel', 'samples': CarouselSampleOrder
+        'name': 'Carousel', 'category': 'Navigation', 'path': 'carousel', 'samples': CarouselSampleOrder
     },
     {
         'name': 'Context Menu', 'category': 'Navigation', 'path': 'context-menu', 'samples': ContextMenuSampleOrder, 'ftName': 'context-menu'
@@ -222,19 +227,19 @@ export let samplesList: any = [
         'name': 'Tabs', 'category': 'Navigation', 'path': 'tab', 'samples': TabSampleOrder
     },
     {
-		'name': 'Toolbar', 'category': 'Navigation', 'path': 'toolbar', 'samples': ToolbarSampleOrder
+        'name': 'Toolbar', 'category': 'Navigation', 'type':'update', 'path': 'toolbar', 'samples': ToolbarSampleOrder
     },
     {
         'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
     },
     {
-        'name': 'File Manager', 'category': 'Navigation', 'type': 'update', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
+        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
     },
     {
         'name': 'Badge', 'category': 'Notifications', 'order': '02', 'path': 'badge', 'samples': BadgeSampleOrder
     },
     {
-        'name': 'Message', 'category': 'Notifications', 'order': '01', 'path': 'message', 'samples': MessageSampleOrder, "type": "preview"
+        'name': 'Message', 'category': 'Notifications', 'order': '01', 'path': 'message', 'samples': MessageSampleOrder
     },
     {
         'name': 'Toast', 'category': 'Notifications', 'order': '03', 'path': 'toast', 'samples': ToastSampleOrder
@@ -270,6 +275,9 @@ export let samplesList: any = [
         'name': 'In-place Editor', 'category': 'Inputs', 'path': 'inplace-editor', 'samples': InPlaceEditorSampleOrder       
     },
     {
+        'name': 'Rating', 'category': 'Inputs', 'order': '04', 'path': 'rating', 'samples': RatingSampleOrder, 'ftName' :'rating', 'type': 'preview' 
+    },
+    {
         'name': 'Avatar', 'category': 'Layout', 'path': 'avatar', 'samples': AvatarSampleOrder
     },
     {
@@ -279,7 +287,7 @@ export let samplesList: any = [
         'name': 'Dialog', 'category': 'Layout', 'order': '05', 'path': 'dialog', 'samples': DialogSampleOrder, 'ftName' :'modal-dialog'
     },
     {
-        'name': 'Predefined Dialogs', 'category': 'Layout', 'order': '05', 'path': 'predefined-dialogs', 'samples': PredefinedDialogSampleOrder, 'type':'new'
+        'name': 'Predefined Dialogs', 'category': 'Layout', 'order': '05', 'path': 'predefined-dialogs', 'samples': PredefinedDialogSampleOrder
     },
     {
         'name': 'ListView', 'category': 'Layout', 'order': '05', 'path': 'listview', 'samples': ListViewSampleOrder

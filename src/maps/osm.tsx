@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Dialog } from '@syncfusion/ej2-popups';
 import { enableRipple } from '@syncfusion/ej2-base';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
@@ -15,35 +14,16 @@ enableRipple(true);
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
-    }
-    #popuposm_dialog-content {
-      display: none !important
-    }
-    #popuposm_title {
-      font-size: 14px !important
-    }
-    .osmpopup {
-      position:relative;
-      background-color:white;
-    }        
-    .osmpopup:after {
-        content:'';
-        position: absolute;
-        top: 170%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        margin-left: -35px;
-        border-top: solid 20px white;
-        border-left: solid 20px transparent;
-        border-right: solid 20px transparent;
-    }
-    #osmdialog .e-popup{
-        min-width: 100px !important
     }`;
 
 export class OSMMaps extends SampleBase<{}, {}> {
-    private mapInstance: MapsComponent;
+    private data1: any = [
+        {
+            name: 'Manhattan, New York, USA',
+            latitude: 40.7488758,
+            longitude: -73.9730091
+        },
+    ];
     render() {
         return (
             <div className='control-pane'>
@@ -52,7 +32,7 @@ export class OSMMaps extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-md-12'>
-                        <MapsComponent id="maps" load={this.load} ref={m => this.mapInstance = m}
+                        <MapsComponent id="maps" load={this.load}
                             titleSettings={{
                                 text: 'Headquarters of the United Nations',
                                 textStyle: {
@@ -73,7 +53,7 @@ export class OSMMaps extends SampleBase<{}, {}> {
                                     <MarkersDirective>
                                     <MarkerDirective visible={true}
                                         template='<div><img src="src/maps/images/ballon.png" style="height:30px;width:20px;"></img></div>'
-                                        dataSource={data1}
+                                        dataSource={this.data1}
                                         tooltipSettings={{
                                             visible: true,
                                             valuePath: 'name'
@@ -122,25 +102,3 @@ export class OSMMaps extends SampleBase<{}, {}> {
     };
     
 }
-
-setTimeout(
-    function () {
-        let dialogObj: Dialog = new Dialog({
-            header: 'Manhattan,<br> New York, USA',
-            animationSettings: { effect: 'FadeZoom' },
-            showCloseIcon: true,
-            height: '55px',
-            width: '186px',
-            target: document.getElementById('osmdialog')
-        });
-        dialogObj.appendTo('#popuposm');        
-    },
-500);
-
-export let data1: any = [
-    {
-        name: 'Manhattan, New York, USA',
-        latitude: 40.7488758,
-        longitude: -73.9730091
-    },
-]

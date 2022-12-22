@@ -43,7 +43,7 @@
     font-weight: 100;
 }
 .tab-control-section .info-div {
-    padding: 7px 0 0 15px;
+    padding: 7px 15px 0 15px;
 }
 .tab-control-section .content-title {
     height: 50px;
@@ -130,7 +130,7 @@
 
 @media (max-width: 450px) {
     .e-sample-resize-container {
-        height: 450px;
+        height: 500px;
     }
     .responsive-align {
         width: 75%;

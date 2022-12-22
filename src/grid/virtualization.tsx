@@ -47,6 +47,7 @@ export class Virtualization extends SampleBase<{}, {}> {
     public data: Object[] =[];
     public toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
     public editSettings: any = { allowEditing: true, allowDeleting: true, newRowPosition: 'Top' };
+    public validationSno: Object = { required: true, digits: true };
     public validationRule: Object = { required: true };
 
     public onclick() {
@@ -91,7 +92,7 @@ export class Virtualization extends SampleBase<{}, {}> {
                     <GridComponent dataSource={[]} enableVirtualization={true} enableColumnVirtualization={true} height={400}
                         ref={g => this.grid = g} dataBound={this.hide.bind(this)} toolbar={this.toolbarOptions} editSettings={this.editSettings}>
                         <ColumnsDirective>
-                            <ColumnDirective field='SNo' headerText='S.No' width='140' validationRules={this.validationRule} isPrimaryKey={true}></ColumnDirective>
+                            <ColumnDirective field='SNo' headerText='S.No' width='140' validationRules={this.validationSno} isPrimaryKey={true}></ColumnDirective>
                             <ColumnDirective field='FIELD1' headerText='Player Name' width='130' ></ColumnDirective>
                             <ColumnDirective field='FIELD2' headerText='Year' width='100' ></ColumnDirective>
                             <ColumnDirective field='FIELD3' headerText='Sports' width='160' validationRules={this.validationRule} editType='dropdownedit'></ColumnDirective>

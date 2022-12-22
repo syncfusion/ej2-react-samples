@@ -59,9 +59,9 @@ export class Export extends SampleBase<{}, {}> {
             childMapping= 'subtasks' toolbar={this.toolbarOptions} toolbarClick={this.toolbarClick.bind(this)} height='410'
             allowExcelExport={true} allowPdfExport={true}>
             <ColumnsDirective>
-              <ColumnDirective field='taskID' headerText='Task ID' width='70' textAlign='Right'></ColumnDirective>
+              <ColumnDirective field='taskID' headerText='Task ID' width='100' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='taskName' headerText='Task Name' width='180'></ColumnDirective>
-              <ColumnDirective field='startDate' headerText='Start Date' width='90' format='yMd' textAlign='Right' />
+              <ColumnDirective field='startDate' headerText='Start Date' width='120' format='yMd' textAlign='Right' />
               <ColumnDirective field='endDate' headerText='End Date' width='90' format='yMd' textAlign='Right' />
               <ColumnDirective field='duration' headerText='Duration' width='90' textAlign='Right' />
               <ColumnDirective field='progress' headerText='Progress' width='90' textAlign='Right' />

@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-    mode : (/hotfix\/|release\/|master/).test(process.env.BRANCH_NAME) ? 'production' : 'development',
+    mode : 'development',
     entry: { 'src/common/index.js': './src/common/index.js' },
     optimization: {
         splitChunks: {

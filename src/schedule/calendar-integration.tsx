@@ -10,8 +10,8 @@ import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
  */
 
 export class CalendarIntegration extends SampleBase<{}, {}> {
-    private calendarId: string = '5105trob9dasha31vuqek6qgp0@group.calendar.google.com';
-    private publicKey: string = 'AIzaSyD76zjMDsL_jkenM5AAnNsORypS1Icuqxg';
+    private calendarId: string = 'en.usa%23holiday@group.v.calendar.google.com';
+    private publicKey: string = 'AIzaSyBgbX_tgmVanBP4yafDPPXxWr70sjbKAXM';
     private dataManger: DataManager = new DataManager({
         url: 'https://www.googleapis.com/calendar/v3/calendars/' + this.calendarId + '/events?key=' + this.publicKey,
         adaptor: new WebApiAdaptor(),
@@ -49,8 +49,8 @@ export class CalendarIntegration extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section'>
                     <div className='control-wrapper drag-sample-wrapper'>
                         <div className="schedule-container">
-                            <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2018, 10, 14)} readonly={true}
-                                eventSettings={{ dataSource: this.dataManger }} dataBinding={this.onDataBinding.bind(this)}>
+                            <ScheduleComponent width='100%' height='650px'  readonly={true}
+                                eventSettings={{ dataSource: this.dataManger }} dataBinding={this.onDataBinding.bind(this)} currentView='Month' timezone='UTC'>
                                 <ViewsDirective>
                                     <ViewDirective option='Day' />
                                     <ViewDirective option='Week' />

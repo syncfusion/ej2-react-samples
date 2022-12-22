@@ -138,8 +138,7 @@ export class ReorderColumn extends SampleBase<{}, {}> {
          <p>Gantt features are segregated into individual feature-wise modules. To use reordering feature, we need to
               inject <code>Reorder</code> module into the <code>services</code>.</p>
           <p>
-            More information about column reorder can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/gantt/column-reordering/">
-            documentation section</a>.
+            More information about Column Reorder can be found in this documentation section.
          </p>
          </div>
       </div>

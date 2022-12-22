@@ -86,6 +86,7 @@ export class ContextMenu extends SampleBase<{}, {}> {
       remove(newEventElement);
       removeClass([document.querySelector('.e-selected-cell')], 'e-selected-cell');
     }
+    this.scheduleObj.closeQuickInfoPopup();
     let targetElement: HTMLElement = args.event.target as HTMLElement;
     if (closest(targetElement, '.e-contextmenu')) {
       return;

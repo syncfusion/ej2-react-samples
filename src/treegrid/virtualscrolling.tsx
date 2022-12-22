@@ -18,7 +18,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                <TreeGridComponent dataSource={virtualData} childMapping = 'Crew' enableVirtualization={true} treeColumnIndex={1} editSettings={this.editSettings} toolbar={this.toolbarOptions} height='400' >
+                <TreeGridComponent dataSource={virtualData} childMapping = 'Crew' enableVirtualization={true} enableVirtualMaskRow={true} treeColumnIndex={1} editSettings={this.editSettings} toolbar={this.toolbarOptions} height='400' >
                 <ColumnsDirective>
                 <ColumnDirective field='TaskID' headerText='Player Jersey' validationRules={this.validationRule1} width='120' textAlign='Right' isPrimaryKey={true}></ColumnDirective>
                 <ColumnDirective field='FIELD1' headerText='Player Name' validationRules={this.validationRule} width='120'></ColumnDirective>
@@ -36,16 +36,19 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
 <div id="description">
     <p>
     The Tree Grid UI virtualization allows you to render only rows visible within the view-port without buffering the entire datasource.
-        To enable the virtualization, set
-        <code><a target="_blank" className="code"
+        To enable the virtualization, set <code><a target="_blank"
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#enablevirtualization">enableVirtualization
         </a></code> property as true.
     </p>
     <p>
-        Note: The <code><a target="_blank" className="code"
+        By default, <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#enablevirtualmaskrow">
+        enableVirtualMaskRow </a></code> is set to true. we can change by setting <code>enableVirtualMaskRow</code> property to false.
+    </p>
+    <p>
+        Note: The <code><a target="_blank"
         href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#height">height
-        </a></code> property must be defined when enabling <code><a target="_blank" className="code"
-        href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#enablevirtualization">enableVirtualization
+        </a></code> property must be defined when enabling <code><a target="_blank"
+        href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#enablevirtualization"> enableVirtualization
         </a></code>
     </p>
     <p>
@@ -54,8 +57,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
     <p>
         Tree Grid features are segregated into individual feature-wise modules. 
-        To use virtual scrolling feature, we need to inject
-        <code> VirtualScroll </code> module into the <code>services</code>.
+        To use virtual scrolling feature, we need to inject <code>VirtualScroll</code> module into the <code>services</code>.
     </p>
 </div>
 </div>

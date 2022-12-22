@@ -53,6 +53,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
             </GanttComponent>
           </div>
           <div className='col-lg-3 property-section' style={{height: '450px', overflow: 'auto'}}>
+            <PropertyPane title='Event Trace'>
               <table id="property" title="Properties">
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '30%' }}>
@@ -191,6 +192,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
             </td>
                 </tr>
               </table>
+            </PropertyPane>
           </div>
         </div>
         <div id="action-description">
@@ -210,10 +212,6 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
               <tr>
                 <td><b>Keys</b></td>
                 <td><b>Description</b></td>
-              </tr>
-               <tr>
-                <td><code>Alt +j</code></td>
-                <td>Focus Gantt element</td>
               </tr>
               <tr>
                 <td><code>Home</code></td>

@@ -1,0 +1,8 @@
+export const RatingSampleOrder: Object = [
+    { 'path': 'rating/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'Rating', 'api': '', 'description': 'This example demonstrates the default functionalities of the Syncfusion React Rating component which explains some properties.' },
+    { 'path': 'rating/precision', 'component': 'Precision', 'name': 'Precision', 'order': '01', 'category': 'Rating', 'api': '', 'description': 'This example demonstrates the functionalities of the precision(Full, Half and Exact) in Syncfusion React Rating control.' },
+    { 'path': 'rating/tooltip', 'component': 'Tooltip', 'name': 'Tooltip', 'order': '01', 'category': 'Rating', 'api': '', 'description': 'This example demonstrates the functionalities of tooltip and its template in Syncfusion React Rating control.' },
+    { 'path': 'rating/label', 'component': 'Label', 'name': 'Label', 'order': '01', 'category': 'Rating', 'api': '', 'description': 'This example demonstrates the functionalities of label positions and its template in Syncfusion React Rating control.' },
+    { 'path': 'rating/template', 'component': 'Template', 'name': 'Template', 'order': '01', 'category': 'Rating', 'api': '', 'description': 'This example demonstrates the functionalities of different types of template in Syncfusion React Rating control.' },
+    { 'path': 'rating/keyboard-navigation', 'component': 'KeyboardNavigation', 'name': 'Keyboard Navigations', 'order': '01', 'category': 'Rating', 'api': '', 'description': 'This example demonstrates the available keyboard navigations used in Syncfusion React Rating control.' }
+]

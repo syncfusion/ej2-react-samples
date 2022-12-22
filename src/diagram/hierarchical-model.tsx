@@ -19,7 +19,7 @@ import { SampleBase } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
 import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
-import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
+import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { hierarchicalTree } from './diagram-data';
 
 
@@ -264,6 +264,13 @@ export class HierarchicalModel extends SampleBase<{}, {}> {
                 />
               </div>
             </div>
+            <div className="row" style={{ paddingTop: '8px' }}>
+              <CheckBoxComponent
+                checked={false}
+                label="Expandable"
+                change={onChange.bind(this)}
+              ></CheckBoxComponent>
+            </div>
           </div>
         </div>
         <div id="action-description">
@@ -360,3 +367,16 @@ function updatelayout(
   diagramInstance.doLayout();
   target.classList.add("e-selected-style");
 }
+function onChange (args : ChangeEventArgs): void {
+  for (let node of diagramInstance.nodes) {
+      if (args.checked) {
+          node.expandIcon.shape = 'Minus';
+          node.collapseIcon.shape = 'Plus';
+      } else {
+          node.expandIcon.shape = 'None';
+          node.collapseIcon.shape = 'None';
+      }
+  }
+  diagramInstance.dataBind();
+  diagramInstance.doLayout();
+}; 

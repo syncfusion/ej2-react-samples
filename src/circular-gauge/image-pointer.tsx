@@ -4,7 +4,6 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { PropertyPane } from '../common/property-pane';
 import {
     CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations,
@@ -37,8 +36,6 @@ const SAMPLE_CSS = `
 
 export class Image extends SampleBase<{}, {}> {
 
-    private gauge: CircularGaugeComponent;
-
     public annotationTextStyle: Object = {
         fontFamily: 'inherit',
         size: '14px',
@@ -66,7 +63,7 @@ export class Image extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-lg-12'>
-                        <CircularGaugeComponent load={this.load.bind(this)} title='Shot Put Distance' background='transparent' loaded={this.onChartLoad.bind(this)} id='image-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
+                        <CircularGaugeComponent load={this.load.bind(this)} title='Shot Put Distance' background='transparent' loaded={this.onChartLoad.bind(this)} id='image-container' enablePointerDrag={true}
                             titleStyle={{ fontFamily: 'inherit' }} centerY="57%'">
                             <Inject services={[Annotations]} />
                             <AxesDirective>
