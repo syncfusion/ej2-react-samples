@@ -8,7 +8,7 @@ import {
     StripLine, DateTime, Logarithmic, Tooltip, CandleSeries, Crosshair, Zoom, ILoadedEventArgs, StripLinesDirective, StripLineDirective,
     LineSeries, StochasticIndicator, IndicatorsDirective, IndicatorDirective, Category, ChartTheme
 } from '@syncfusion/ej2-react-charts';
-import { chartData } from './datasource';
+import { chartValues } from './financial-data';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 const SAMPLE_CSS = `
@@ -33,7 +33,7 @@ function Stochastic() {
                         crosshairTooltip: { enable: true },
                     }}
                     primaryYAxis={{
-                        title: 'Price',
+                        title: 'Price (in Million)',
                         labelFormat: '${value}',
                         minimum: 50, maximum: 170,
                         plotOffset: 25,
@@ -45,7 +45,7 @@ function Stochastic() {
                     chartArea={{ border: { width: 0 } }}
                     legendSettings={{ visible: false }}
                     zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan: true }}
-                    title='AAPL 2012-2017' loaded={onChartLoad.bind(this)}>
+                    title='AAPL Stock Price 2012-2017' loaded={onChartLoad.bind(this)}>
                     <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries,
                         StochasticIndicator, StripLine]} />
                     <RowsDirective>
@@ -64,24 +64,25 @@ function Stochastic() {
                         </AxisDirective>
                     </AxesDirective>
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={chartData} width={2} xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open' name='Apple Inc' bearFillColor='#2ecd71' bullFillColor='#e74c3d' type='Candle' animation={{ enable: true }}>
+                        <SeriesDirective dataSource={chartValues} width={2} xName='period' yName='y' low='low' high='high' close='close' volume='volume' open='open' name='Apple Inc' bearFillColor='#2ecd71' bullFillColor='#e74c3d' type='Candle' animation={{ enable: true }}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                     <IndicatorsDirective>
-                        <IndicatorDirective type='Stochastic' field='Close' seriesName='Apple Inc' yAxisName='secondary' fill='#6063ff' kPeriod={2} dPeriod={3} showZones={true} periodLine={{ color: '#f2ec2f' }} period={3} animation={{ enable: false }} upperLine={{ color: '#e74c3d' }}
-                            lowerLine={{ color: '#2ecd71' }}>
+                        <IndicatorDirective type='Stochastic' field='Close' seriesName='Apple Inc' yAxisName='secondary' fill='#6063ff'  overBought= {70}
+            overSold= {30} showZones={true} periodLine={{ color: '#f2ec2f' }} period={3} animation={{ enable: false }} upperLine={{ color: '#ffb735' }}
+                            lowerLine={{ color: '#f2ec2f' }}>
                         </IndicatorDirective>
                     </IndicatorsDirective>
                 </ChartComponent>
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates a stock chart with candle series and an Stochastic indicator. Trackball shows the information about the stock and indicator value of a day.
+                This sample illustrates a chart with candle series and a stochastic oscillator. The trackball shows information about each day’s stock and indicator values.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the Stochastic Indicator.
+                In this example, you can see how to render and configure a stochastic oscillator that is a momentum indicator. It shows the location of the close relative to the high-low range over a set number of periods.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -93,7 +94,7 @@ function Stochastic() {
                     <code>StochasticIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the Stochastic Indicator can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the Stochastic Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#stochastic">documentation section</a>.
                 </p>
             </div>
         </div >

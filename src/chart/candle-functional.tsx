@@ -10,7 +10,7 @@ import {
     RowDirective, RowsDirective, SeriesDirective, Inject
 } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
-import { chartData } from './stock-chart-data';
+import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
 import { getElement } from "@syncfusion/ej2-svg-base/src/tooltip/helper";
 
@@ -61,25 +61,17 @@ function Candle() {
                         }}
                         primaryYAxis={{
                             title: 'Volume',
-                            rangePadding: 'None',
-                            valueType: 'Logarithmic',
-                            opposedPosition: true,
-                            majorGridLines: { width: 1 },
-                            lineStyle: { width: 0 },
-                            stripLines: [
-                                {
-                                    end: 1300000000, startFromAxis: true, text: '', color: 'black', visible: true,
-                                    opacity: 0.03, zIndex: 'Behind'
-                                }]
+                            labelFormat: '{value}M',
+                             opposedPosition: true,
+                             majorGridLines: { width: 1 },
+                             lineStyle: { width: 0 },
                         }}
                         tooltip={{
-                            enable: true, shared: true
+                            enable: true,  header: "",format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b> <br> Open : <b>${point.open}</b> <br> Close : <b>${point.close}</b> <br> Volume : <b>${point.volume}</b>"
                         }}
                         width={Browser.isDevice ? '100%' : '80%'}
-                        crosshair={{ enable: true, lineType: 'Vertical' }}
-                        pointRender={renderPoint.bind(this)}
+                       
                         axisLabelRender={axisLabelRender.bind(this)}
-                        sharedTooltipRender={sharedTooltipRender.bind(this)}
                         chartArea={{ border: { width: 0 } }}>
                         <Inject services={[CandleSeries, StripLine, Category, Tooltip, DateTime, Zoom, ColumnSeries, Logarithmic, Crosshair]} />
                         <RowsDirective>
@@ -89,19 +81,15 @@ function Candle() {
                             </RowDirective>
                         </RowsDirective>
                         <AxesDirective>
-                            <AxisDirective name='secondary' opposedPosition={true} rowIndex={1} majorGridLines={{ width: 1 }}
-                                labelFormat='n0' title='Price' plotOffset={30} lineStyle={{ width: 0 }}>
+                        <AxisDirective name='secondary' rangePadding={"None"}  maximum= {150} minimum= {55}  opposedPosition={true} rowIndex={1} majorGridLines={{ width: 1 }} labelFormat='n0' title='Price' plotOffset={30} lineStyle={{ width: 0 }}>
                             </AxisDirective>
                         </AxesDirective>
                         <SeriesCollectionDirective>
                             <SeriesDirective type='Column'
-                                dataSource={chartData} animation={{ enable: true }} xName='x' yName='volume'
+                                dataSource={chartValues} animation={{ enable: true }} xName='period' yName='volume' enableTooltip={false}
                                 name='Volume'>
                             </SeriesDirective>
-                            <SeriesDirective type='Candle' yAxisName='secondary' bearFillColor='#2ecd71' bullFillColor='#e74c3d'
-                                dataSource={chartData} animation={{ enable: true }}
-                                xName='x' low='low' high='high' open='open' close='close' name='Apple Inc'
-                                volume='volume'>
+                            <SeriesDirective type='Candle' yAxisName='secondary' bearFillColor='#2ecd71' bullFillColor='#e74c3d' dataSource={chartValues} animation={{ enable: true }} xName='period' low='low' high='high' open='open' close='close' name='Apple Inc' volume='volume'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -109,13 +97,12 @@ function Candle() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample visualizes the AAPL historical data with default candle series in the chart. Tooltip and crosshair shows the information about the data and period.
+                This sample visualizes the AAPL stock price with a default candlestick series. The tooltip and crosshair show information about the stock price.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the Candle type charts. Candle type chart is used to represent the price movements in stock.
-                    You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect.
+                In this example, you can see how to render and configure the candlestick series. This chart shows financial data and trends at equal intervals. It can often be combined with line and column charts to show the closing value of the stock and volume of the data.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -127,7 +114,7 @@ function Candle() {
                     <code>CandleSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the Candle series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the Candle series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/financial-types/#candle">documentation section</a>.
                 </p>
             </div>
         </div >
@@ -145,26 +132,7 @@ function Candle() {
             replace(/-dark/i, "Dark") as ChartTheme;
     };
     function axisLabelRender(args: IAxisLabelRenderEventArgs): void {
-        if (args.axis.name === 'primaryYAxis') {
-            args.text = getLabelText(+args.text);
-        }
-        if (args.axis.name === 'secondary') {
-            args.text = '$' + args.text;
-        }
-    }
-    function sharedTooltipRender(args: ISharedTooltipRenderEventArgs):void {
-        if (!args.series[0].index) {
-           args.text[0] = 'Volume : <b>' + (args.text[0].split('<b>')[1].split('</b>')[0]) + '</b>';
-        }
-    }
-    function getLabelText(value: number): string {
-        return (((value) / 1000000000)).toFixed(1) + 'bn';
+        args.text = args.text.replace("0000000M", "M");
     };
-    function renderPoint(args: IPointRenderEventArgs): void {
-        if (args.series.type === 'Candle') {
-            pointColors.push(args.fill);
-        } else {
-            args.fill = pointColors[args.point.index];
-        }
-    };
+   
 }export default Candle;

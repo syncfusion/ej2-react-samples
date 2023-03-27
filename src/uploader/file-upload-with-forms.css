@@ -119,4 +119,13 @@
 .fluent-dark #control_wrapper { 
     background: #212529;
 }
-
+.fluent .e-bigger .e-dialog .e-dlg-header-content,
+.fluent-dark .e-bigger .e-dialog .e-dlg-header-content,
+.tailwind .e-bigger .e-dialog .e-dlg-header-content,
+.tailwind-dark .e-bigger .e-dialog .e-dlg-header-content{
+    padding-bottom: 2%;
+}
+.material-dark .e-bigger .e-dialog .e-dlg-header-content,
+.material .e-bigger .e-dialog .e-dlg-header-content{
+    padding-bottom: 3%;
+}   

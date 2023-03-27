@@ -57,7 +57,7 @@ export class Hilo extends SampleBase<{}, {}> {
                         title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[HiloSeries, Tooltip, DateTime, Logarithmic, Crosshair, Zoom]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={returnValue} xName='x' yName='low' name='Apple Inc' type='Hilo' low='low'
+                            <SeriesDirective dataSource={returnValue} xName='period' yName='low' name='Apple Inc' type='Hilo' low='low'
                                 high='high'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>

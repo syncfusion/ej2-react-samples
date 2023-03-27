@@ -11,10 +11,10 @@ import {
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data: object[] = [
-    { x: 'Income', y: 4711 }, { x: 'Sales', y: -1015 },
-    { x: 'Development', y: -688 },
-    { x: 'Revenue', y: 1030 }, { x: 'Balance' },
-    { x: 'Expense', y: -361 }, { x: 'Tax', y: -695 },
+    { x: 'Income', y: 971  }, { x: 'Sales', y: -101 },
+    { x: 'Development', y: -268 },
+    { x: 'Revenue', y: 403  }, { x: 'Balance' },
+    { x: 'Expense', y: -136 }, { x: 'Tax', y:  -365 },
     { x: 'Net Profit' }
 ];
 const SAMPLE_CSS = `
@@ -61,14 +61,13 @@ function Waterfall() {
                     }}
                     primaryYAxis={{
                         lineStyle: {width: 0},
-                        minimum: 0, maximum: 5000, interval: 1000,
+                        minimum: 0, maximum: 1250, interval: 250,
                         majorGridLines: { width: 1 },
                         minorTickLines: {width: 0},
-                        title: 'Expenditure'
+                        title: 'USD',
+                        labelFormat: "{value}K"
                     }}
-                    tooltip={{ enable: true, shared: false }}
-                    textRender={textRender.bind(this)}
-                    axisLabelRender={axisLabelRender.bind(this)}
+                    tooltip={{ enable: true, format: '<b>${point.x}</b> <br> Product Revenue : <b>${point.y}</b>', header: " " }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     chartArea={{ border: { width: 0 } }}
                     legendSettings={{ visible: false }}
@@ -76,7 +75,7 @@ function Waterfall() {
                     <Inject services={[WaterfallSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, Legend, DataLabel]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data} border={{color:'black' , width: 1}} xName='x' yName='y' type='Waterfall' intermediateSumIndexes={[4]}
-                            sumIndexes={[7]} marker={{ dataLabel: { visible: true }, }} connector={{ color: '#5F6A6A', width: 2 }} columnWidth={0.9}
+                            sumIndexes={[7]} marker={{ dataLabel: { visible: true,font:{color:'#ffffff'} }, }} connector={{ color: '#5F6A6A', width: 2 }} columnWidth={0.9}
                             negativeFillColor='#e56590'>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
@@ -84,13 +83,12 @@ function Waterfall() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample visualizes the revenue and profits of a company by using default waterfall series in the chart. Tooltip shows the information about the profits earned by each department on the company.
+                This sample visualizes the revenue and profits of a company using the default waterfall series chart. The tooltip provides details on the profits made by each department.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the Waterfall type charts. Waterfall type charts are used to represent the financial datas.
-                    You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual data and its value.
+                In this example, you can see how to render and configure the waterfall chart. The waterfall chart explains the gradual change in the quantitative value of an entity that is subject to changes by increments or decrements.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -111,20 +109,10 @@ function Waterfall() {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
-    function textRender(args: ITextRenderEventArgs): void {
-        let value: number = Number(args.text) / 1000;
-        value = (Math.round((value * 100)) / 100);
-        args.text = value.toString() +'B';
-    };
     function load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
-    function axisLabelRender(args: IAxisLabelRenderEventArgs): void {
-        if (args.axis.name === 'primaryYAxis') {
-            args.text = '$' + Number(args.text) / 1000 + 'B';
-        }
     };
 }
 export default Waterfall;

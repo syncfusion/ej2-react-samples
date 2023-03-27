@@ -9,13 +9,13 @@ import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, IPointRenderEventArgs, ChartTheme,
     Legend, Category, ColumnSeries, Tooltip, IAxisLabelRenderEventArgs, ILoadedEventArgs, DataLabel
 } from '@syncfusion/ej2-react-charts';
-import { bootstrapColors, fabricColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color'
+import {  fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors } from './theme-color'
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let dataManager = new DataManager({
-    url: 'https://ej2services.syncfusion.com/production/web-services/api/Orders'
+    url: 'https://services.syncfusion.com/react/production/api/orders'
 });
-export let query: Query = new Query().take(5).where('Estimate', 'lessThan', 3, false);
+export let query: Query = new Query().take(5);
 export let labelRender: EmitType<IAxisLabelRenderEventArgs> = (args: IAxisLabelRenderEventArgs): void => {
     if (args.axis.orientation === 'Horizontal') {
         args.text = args.text.split(' ')[0];
@@ -68,38 +68,38 @@ function RemoteData() {
                     primaryXAxis={{
                         rangePadding: 'Additional',
                         valueType: 'Category',
-                        title: 'Assignee',
                         majorGridLines: { width: 0 },
                         majorTickLines: { width: 0 },
-                        minorTickLines: {width: 0}
+                        minorTickLines: {width: 0},
+                     
                     }}
                     primaryYAxis={{
-                        majorGridLines: { width: 0 },
+                        majorGridLines: { width: 1 },
                         majorTickLines: { width: 0 },
                         lineStyle: { width: 0 },
-                        labelStyle: {
-                            color: 'transparent'
-                        }
+                        title: 'Freight rate in U.S. dollars',
                     }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     chartArea={{ border: { width: 0 } }}
-                    axisLabelRender={labelRender}
+                    axisLabelRender={axisLabelRender.bind(this)}
                     pointRender={pointRender.bind(this)}
-                    title="Sprint Task Analysis"
+                    tooltipRender={tooltipRender.bind(this)}
+                    title="Container freight rate"
                     loaded={onChartLoad.bind(this)}
                     legendSettings={{ visible: false }}
-                    tooltip={{ enable: true }}>
+                    tooltip={{ enable: true,
+                        header: 'Freight rate'}}>
                     <Inject services={[ColumnSeries, Legend, Category, Tooltip, DataLabel]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={dataManager} xName='CustomerID' type='Column' yName='Freight' name='Story Point' query={query}
-                            animation={{ enable: false }} marker={{ dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }}>
+                            animation={{ enable: false }} marker={{ dataLabel: { visible: true, position: 'Top',format: "{value}K", font: { fontWeight: '600', color: '#ffffff' },} }}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates how to retrieve remote the data for chart.
+                This sample shows the way in which the Charts component can be bound to a remote service. The data source of the chart is bound to remote data using the DataManager component.
                 </p>
             </div>
             <div id="description">
@@ -136,21 +136,36 @@ function RemoteData() {
         </div>
     )
     function pointRender(args: IPointRenderEventArgs) {
+        
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'material';
-        if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-            args.fill = fabricColors[args.point.index % 10];
-        } else if (selectedTheme === 'material') {
-            args.fill = materialColors[args.point.index % 10];
-        } else if (selectedTheme === 'highcontrast') {
-            args.fill = highContrastColors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent') {
-            args.fill = fluentColors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent-dark') {
-            args.fill = fluentDarkColors[args.point.index % 10];
-        } else {
-            args.fill = bootstrapColors[args.point.index % 10];
-        }
+    selectedTheme = selectedTheme ? selectedTheme : 'Material';
+    if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
+        args.fill = pointFabricColors[args.point.index % 10];;
+    } else if (selectedTheme === 'material-dark') {
+        args.fill = pointMaterialDarkColors[args.point.index % 10];;
+    } else if (selectedTheme === 'material') {
+        args.fill = pointMaterialColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5-dark') {
+        args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5') {
+        args.fill = pointBootstrap5Colors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap4') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap-dark') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'highcontrast') {
+        args.fill = pointHighContrastColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent-dark') {
+        args.fill = pointFluentDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent') {
+        args.fill = pointFluentColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind-dark') {
+        args.fill = pointTailwindDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind') {
+        args.fill = pointTailwindColors[args.point.index % 10];
+    }
     }
     function onChartLoad(args: ILoadedEventArgs): void {
         let div: HTMLElement = document.getElementById('waitingpopup') as HTMLElement;
@@ -161,6 +176,14 @@ function RemoteData() {
         }
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
+    };
+    function tooltipRender(args): void {
+        args.text = '<b>' + args.data.pointX + ': ' + '$' + args.data.pointY * 1000;
+    };
+    function axisLabelRender(args: IAxisLabelRenderEventArgs): void {
+        if (args.axis.name === 'primaryYAxis') {
+            args.text =  ''+args.value * 1000;
+            }
     };
     function load(args: ILoadedEventArgs): void {
         let div: HTMLElement = document.getElementById('waitingpopup');

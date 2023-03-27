@@ -60,7 +60,7 @@ export class CheckBox extends SampleBase<{}, {}> {
         <div className='control-section col-lg-8'>
           <div id="multigroup" className="control-styles">
             <h4>CheckBox</h4>
-            <MultiSelectComponent id="checkbox" ref={(scope) => { this.mulObj = scope; }} dataSource={this.countries}
+            <MultiSelectComponent id="checkbox" cssClass="e-specific" ref={(scope) => { this.mulObj = scope; }} dataSource={this.countries}
               fields={this.checkFields} placeholder="Select countries" mode="CheckBox" showSelectAll={true}
               showDropDownIcon={true} filterBarPlaceholder="Search countries" popupHeight="350px">
               <Inject services={[CheckBoxSelection]} />

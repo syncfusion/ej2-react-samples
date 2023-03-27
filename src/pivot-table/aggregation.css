@@ -9,6 +9,6 @@
 .control-section {
     min-height: 255px !important;
 }
-.e-bigger .e-float-input.e-control-wrapper {
+.e-bigger .pivot-property-panel-table .e-float-input.e-control-wrapper {
         width: 100% !important;
 }

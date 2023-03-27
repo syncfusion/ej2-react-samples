@@ -9,7 +9,7 @@ function RemoteData() {
     updateSampleSection();
   }, [])
   const data = new DataManager({
-    url: 'https://ej2services.syncfusion.com/production/web-services/api/SelfReferenceData',
+    url: 'https://services.syncfusion.com/react/production/api/SelfReferenceData',
     adaptor: new WebApiAdaptor
   });
   let treegridInstance: TreeGridComponent;

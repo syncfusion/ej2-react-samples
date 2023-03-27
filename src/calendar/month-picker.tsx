@@ -19,7 +19,7 @@ export class MonthPicker extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <div className='calendar-control-section' style={{ overflow: 'auto' }}>
+                    <div className='calendar-control-section'>
                         <CalendarComponent change={this.onchange} start={this.start} depth={this.depth}></CalendarComponent>
                         <label id='date_label'>Selected Value:</label>
                     </div>

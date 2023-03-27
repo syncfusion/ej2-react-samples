@@ -123,6 +123,7 @@ function Drilldown() {
             pie.series[0].innerRadius = '30%';
             pie.series[0].radius = Browser.isDevice ? '90%' : '80%';
             pie.series[0].explode = false;
+            pie.series[0].animation.enable = false;
             pie.series[0].dataLabel.connectorStyle.length = '20px'
             pie.series[0].dataLabel.position = Browser.isDevice ? 'Inside' : 'Outside';
             pie.series[0].dataLabel.position = Browser.isDevice ? 'Inside' : 'Outside';
@@ -146,6 +147,7 @@ function Drilldown() {
     function hide(target: Element): void {
         pie.series[0].dataSource = data;
         pie.series[0].innerRadius = '0%';
+        pie.series[0].animation.enable = false;
         isparent = true;
         pie.series[0].explode = false;
         pie.annotations = [];

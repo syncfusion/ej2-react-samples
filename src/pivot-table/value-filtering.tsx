@@ -5,7 +5,7 @@ import { PivotViewComponent, IDataOptions, Operators, IDataSet } from '@syncfusi
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { NumericTextBoxComponent, ChangeEventArgs as NumericEventArgs } from '@syncfusion/ej2-react-inputs';
-import { FilterModel } from '@syncfusion/ej2-pivotview/src/pivotview/model/datasourcesettings-model';
+import { FilterModel } from '@syncfusion/ej2-pivotview/src/model/datasourcesettings-model';
 import { SampleBase } from '../common/sample-base';
 import * as pivotData from './pivot-data/Pivot_Data.json';
 import './filtering.css';

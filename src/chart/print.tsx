@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, ChartTheme,
-    ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend
+    ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, DataLabel
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
@@ -14,8 +14,8 @@ import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 
 export let data1: any[] = [
-    { x: 'John', y: 10000 }, { x: 'Jake', y: 12000 }, { x: 'Peter', y: 18000 },
-    { x: 'James', y: 11000 }, { x: 'Mary', y: 9700 }
+    { x: 'John', y: 10, dataLabelMappingName: "$10k"  }, { x: 'Jake', y: 12, dataLabelMappingName: "$12k" }, { x: 'Peter', y: 18, dataLabelMappingName: "$18k"},
+    { x: 'James', y: 11, dataLabelMappingName: "$11k" }, { x: 'Mary', y: 9.7, dataLabelMappingName: "$9.7k"}
 ];
 
 const SAMPLE_CSS = `
@@ -76,7 +76,8 @@ export class Print extends SampleBase<{}, {}> {
                             primaryXAxis={{
                                 title: 'Manager',
                                 valueType: 'Category',
-                                majorGridLines: { width: 0 }
+                                majorGridLines: { width: 0 },
+                                labelFormat: '${value}',
                             }}
                             chartArea={{ border: { width: 0 } }}
                             primaryYAxis={{
@@ -89,10 +90,10 @@ export class Print extends SampleBase<{}, {}> {
                             load={this.load.bind(this)}
                             title="Sales Comparision" loaded={this.onChartLoad.bind(this)}
                             tooltip={{ enable: true }}>
-                            <Inject services={[ColumnSeries, Category, Legend]} />
+                            <Inject services={[ColumnSeries, Category,DataLabel, Legend]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' width={2}
-                                    type='Column'>
+                                    type='Column'   marker={{ dataLabel: { visible: true, name: 'dataLabelMappingName', position: 'Top', font: { fontWeight: '600'} } }}>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>

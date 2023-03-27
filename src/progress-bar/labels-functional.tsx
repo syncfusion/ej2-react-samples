@@ -17,8 +17,8 @@ const SAMPLE_CSS = `
      margin-top: 2%;
  }
  .linear-button {
-     text-align: center;
- }
+    text-align: center;
+}
  .linear-progress {
      width: 80%;
      margin: auto;
@@ -28,6 +28,9 @@ const SAMPLE_CSS = `
      border-radius: 4px;
      text-transform: capitalize;
  }
+ .reload-btn {
+    text-align: center;
+}
      `;
 /**
  * Area sample
@@ -165,7 +168,9 @@ function ProgressBarLabels() {
                         </ProgressBarComponent>
                     </div>
                 </div>
-                <div id="replay-progressbar" style={{ marginTop: '2%', marginLeft: '45.5%' }}><button onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">Reload</button></div>
+                <div className="row linear-button">
+                <div id="replay-progressbar"><button onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">Reload</button></div>
+                </div>
             </div>
             <div id="action-description">
                 <p>

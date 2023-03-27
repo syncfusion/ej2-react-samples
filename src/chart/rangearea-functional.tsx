@@ -72,7 +72,7 @@ function RangeArea() {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use RangeArea series, we need to inject
+                    Chart component features are segregated into individual feature-wise modules. To use range area series, we need to inject
                     <code>RangeAreaSeries</code> module into <code>services</code>.
                 </p>
                 <p>

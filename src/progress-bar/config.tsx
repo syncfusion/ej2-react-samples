@@ -4,6 +4,7 @@ export const ProgressBarSampleOrder: Object = [
         'component': 'ProgressBarLinear',
         'name': 'Linear',
         'order': '01',
+        'type': 'update',
         'category': 'Progress Bar',
         'description': 'The sample shows the determinate and indeterminate states, buffer and segments of linear progress bar.'
     },
@@ -46,6 +47,15 @@ export const ProgressBarSampleOrder: Object = [
         'order': '01',
         'category': 'Progress Bar',
         'description': 'This demo for Essential JS2 Progress Bar control shows the customizing options for radius, inner-radius, pie progress, track and progress thickness.'
+    },
+    {
+        'path': 'progress-bar/tooltip',
+        'component': 'ProgressBarTooltip',
+        'name': 'Tooltip',
+        'order': '01',
+        'type': 'new',
+        'category': 'Progress Bar',
+        'description': 'This demo for Essential JS2 Progress Bar control shows the linear progress bar with tooltip.'
     },
     {
         'path': 'progress-bar/stripes',

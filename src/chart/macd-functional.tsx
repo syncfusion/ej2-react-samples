@@ -8,7 +8,7 @@ import {
     CandleSeries, Category, Tooltip, ILoadedEventArgs, DateTime, Zoom, Logarithmic, StripLinesDirective, StripLineDirective,
     Crosshair, LineSeries, StripLine, MacdIndicator, ColumnSeries, ChartTheme, IndicatorsDirective, IndicatorDirective, Legend
 } from '@syncfusion/ej2-react-charts';
-import { chartData } from './financial-data';
+import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -45,7 +45,7 @@ function Macd() {
                         crosshair={{ enable: true, lineType: 'Vertical' }}
                         chartArea={{ border: { width: 0 } }}
                         zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan: true }}
-                        title='AAPL 2012-2017' legendSettings={{visible: false}} loaded={onChartLoad.bind(this)}>
+                        title='AAPL Stock Price 2012-2017' legendSettings={{visible: false}} loaded={onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, DateTime,Legend, Zoom, Logarithmic, Crosshair, LineSeries,
                             MacdIndicator, StripLine, ColumnSeries]} />
                         <RowsDirective>
@@ -66,8 +66,8 @@ function Macd() {
                             </AxisDirective>
                         </AxesDirective>
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={chartData} width={2}
-                                xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open'
+                            <SeriesDirective dataSource={chartValues} width={2}
+                                xName='period' yName='y' low='low' high='high' close='close' volume='volume' open='open'
                                 name='Apple Inc'  bearFillColor='#2ecd71' bullFillColor='#e74c3d'
                                 type='Candle' animation={{ enable: true }}>
                             </SeriesDirective>
@@ -90,12 +90,12 @@ function Macd() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates a stock chart with candle series and a Moving Average Convergence Divergence indicator. Trackball shows the information about the stock, signalline, Macdline, and Histogram value of a day.
+                    This sample illustrates a chart with candle series and a moving average convergence divergence indicator. The trackball shows information about each day’s stock, MACD line, signal line, and MACD histogram values.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the MACD Indicator.
+                    In this example, you can see how to render and configure a moving average convergence divergence indicator. The moving average is based on the difference between two EMA's. This indicator often provides valuable signals for trend analysis.
                     </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -107,7 +107,7 @@ function Macd() {
                         <code>MacdIndicator</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the MACD Indicator can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the MACD Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#moving-average-convergence-divergence-macd">documentation section</a>.
                     </p>
                 </div>
             </div >

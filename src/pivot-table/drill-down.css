@@ -6,8 +6,6 @@
     width: 20%;
 }
 
-.e-bigger .pivot-property-section .e-input-group.e-control-wrapper .e-input-group-icon {
+.pivot-property-section .e-multiselect {
     padding: 0px !important;
-    min-height: 36px;
-    min-width: 36px;
 }

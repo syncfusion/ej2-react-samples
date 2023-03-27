@@ -3,6 +3,7 @@ import * as React from 'react';
 import { classList, Animation, createElement, closest, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { GridComponent, ColumnsDirective, ColumnDirective,Filter, IFilter,Inject,Grid, VirtualScroll, Sort,SelectionType, Selection  } from '@syncfusion/ej2-react-grids';
 import {DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 import { CheckBox  } from '@syncfusion/ej2-react-buttons';
 import { SampleBase } from '../common/sample-base';
 import { Slider } from '@syncfusion/ej2-react-inputs';
@@ -21,16 +22,7 @@ function statusTemplate(props):any {
       </div>}</div>);
 }
 function ratingTemplate(props): any {
-  let ele = [];
-  for (let i = 0; i < 5; i++) {
-    if (i < props.Rating) {
-      ele.push((<span className="star checked"/> as never));
-    }          
-    else {
-      ele.push((<span className="star"/> as never));
-    }
-  }
-  return (<div className="rating">{ele}</div>);
+  return (<RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true} />);
 }
 function progessTemplate(props): any {
   let percentage: number = props[props.column.field];
@@ -82,16 +74,7 @@ function trustdetails(props):any{
     return (<div><img style={loc} src={Trustworthiness} /> <span id="Trusttext">{props.Trustworthiness}</span></div>);
 }
 function ratingDetails(props): any{   
-    let ele = [];
-    for (var i = 0; i < 5; i++) {
-        if (i < props.Rating) {
-        ele.push(<span className="star checked"></span>);
-        }           
-         else {
-           ele.push(<span className="star"></span>)
-        }
-    }
-        return <div className="rating">{ele}</div>;    
+    return (<RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true} />);
 }
 function statusdetails(props):any {
     if (props.Status === "Select All") {
@@ -147,7 +130,7 @@ export class OverView extends SampleBase<{}, {}> {
         }
     }
   }
-  public hostUrl: string = 'https://ej2services.syncfusion.com/production/web-services/';
+  public hostUrl: string = 'https://services.syncfusion.com/react/production/';
   public data: DataManager = new DataManager({ url: this.hostUrl + 'api/UrlDataSource', adaptor: new UrlAdaptor  });
   public query: Query = new Query().addParams('dataCount', '1000');
   public onChange(): void {
@@ -227,7 +210,7 @@ export class OverView extends SampleBase<{}, {}> {
         <span id='msg'></span>
         <br/>
         </div>
-          <GridComponent id="overviewgrid" dataSource={this.data} query={this.query} enableHover={false} enableVirtualization={true} loadingIndicator= {{ indicatorType: 'Shimmer' }} rowHeight={38} height='600' ref={(g) => { this.gridInstance = g }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select} enableHeaderFocus={true}>
+          <GridComponent id="overviewgrid" dataSource={this.data} query={this.query} enableHover={false} enableVirtualization={true} loadingIndicator= {{ indicatorType: 'Shimmer' }} rowHeight={38} height='400' ref={(g) => { this.gridInstance = g }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select} enableHeaderFocus={true}>
             <ColumnsDirective>
             <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false}  width='60'></ColumnDirective>
               <ColumnDirective field='EmployeeID' visible={false} headerText='Employee ID' isPrimaryKey={true} width='130'></ColumnDirective>

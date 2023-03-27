@@ -8,13 +8,13 @@ function RemoteDataBinding() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
-    const hostUrl = 'https://ej2services.syncfusion.com/production/web-services/';
+    const hostUrl = 'https://services.syncfusion.com/react/production/';
     const data = new DataManager({ url: hostUrl + 'api/Orders', adaptor: new WebApiAdaptor });
     let gridInstance: GridComponent;
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent id="Grid" dataSource={data} ref={grid => gridInstance = grid} allowPaging={true} pageSettings={{ pageCount: 3 }} >
+                <GridComponent id="Grid" dataSource={data} ref={grid => gridInstance = grid} allowPaging={true} >
                     <ColumnsDirective>
                         <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='CustomerID' headerText='Customer ID' width='160'></ColumnDirective>

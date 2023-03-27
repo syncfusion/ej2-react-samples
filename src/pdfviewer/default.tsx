@@ -14,7 +14,7 @@ export class Default extends SampleBase<{}, {}> {
     return ( <div>
         <div className='control-section'>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent id="container" documentPath="PDF_Succinctly.pdf" serviceUrl="https://ej2services.syncfusion.com/production/web-services/api/pdfviewer" style={{ 'height': '640px' }}>
+            <PdfViewerComponent id="container" documentPath="PDF_Succinctly.pdf" serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer" style={{ 'height': '640px' }}>
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
             </PdfViewerComponent>
           </div>

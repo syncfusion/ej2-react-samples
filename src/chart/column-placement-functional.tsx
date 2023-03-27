@@ -50,7 +50,7 @@ function ColumnPlacemen() {
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' width={2} yName='y' name='Total' type='Column'
                                 columnWidth={0.5}
-                                marker={{ dataLabel: { visible: true, name: 'text', position: Browser.isDevice ? 'Outer' : 'Top', font: { fontWeight: '600', color: Browser.isDevice? '' : '#ffffff' } } }}>
+                                marker={{ dataLabel: { visible: true, name: 'text', enableRotation: Browser.isDevice ? true : false, angle: -90, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' width={2} yName='y' name='Apple' type='Column'
                             

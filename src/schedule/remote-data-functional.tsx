@@ -14,7 +14,7 @@ function RemoteData() {
     updateSampleSection();
   }, [])
   const dataManager: DataManager = new DataManager({
-    url: 'https://ej2services.syncfusion.com/production/web-services/api/Schedule',
+    url: 'https://services.syncfusion.com/react/production/api/schedule',
     adaptor: new WebApiAdaptor,
     crossDomain: true
   });

@@ -18,7 +18,11 @@ export class DragAndDrop extends SampleBase<{},{}> {
                         getImageUrl: this.hostUrl + "api/FileManager/GetImage",
                         uploadUrl: this.hostUrl + 'api/FileManager/Upload',
                         downloadUrl: this.hostUrl + 'api/FileManager/Download'
-                    }} allowDragAndDrop={true}>
+                    }} 
+                    toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}}
+                contextMenuSettings={{
+                    layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}}
+                    allowDragAndDrop={true}>
                 <Inject services={[ NavigationPane, DetailsView, Toolbar]} />
                     </FileManagerComponent>
                 </div>

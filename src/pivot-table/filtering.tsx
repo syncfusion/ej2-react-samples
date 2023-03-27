@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
 import { PivotViewComponent, IDataOptions, FieldList, FilterType, IDataSet } from '@syncfusion/ej2-react-pivotview';
-import { FilterModel } from '@syncfusion/ej2-pivotview/src/pivotview/model/datasourcesettings-model';
+import { FilterModel } from '@syncfusion/ej2-pivotview/src/model/datasourcesettings-model';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import {
     DropDownListComponent, ChangeEventArgs, Inject, CheckBoxSelection, MultiSelectComponent, SelectEventArgs,

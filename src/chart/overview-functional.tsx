@@ -129,11 +129,11 @@ function OverView() {
             }}  type="Pie" palettes={["#61EFCD", "#CDDE1F", "#FEC200", "#CA765A", "#2485FA", "#F57D7D", "#C152D2",
               "#8854D9", "#3D4EB8", "#00BCD7", "#4472c4", "#ed7d31", "#ffc000", "#70ad47", "#5b9bd5", "#c1c1c1", "#6f6fe2", "#e269ae", "#9e480e", "#997300"]} dataSource={
                 [
-                { Product: "TV : 12%", Percentage: 12 , r: "TV, 30 <br>12%"},
-                { Product: "PC : 8%", Percentage: 8 , r: "PC, 20 <br>8%"},
-                { Product: "Laptop : 16%", Percentage: 16 , r: "Laptop, 40 <br>16%"},
-                { Product: "Mobile : 36%", Percentage: 36 , r: "Mobile, 90 <br>36%"},
-                { Product: "Camera : 11%", Percentage: 11 , r: "Camera, 27 <br>11%"},]}
+                { Product: "TV : 30 (12%)", Percentage: 12 , r: "TV, 30 <br>12%"},
+                { Product: "PC : 20 (8%)", Percentage: 8 , r: "PC, 20 <br>8%"},
+                { Product: "Laptop : 40 (16%)", Percentage: 16 , r: "Laptop, 40 <br>16%"},
+                { Product: "Mobile : 90 (36%)", Percentage: 36 , r: "Mobile, 90 <br>36%"},
+                { Product: "Camera : 27 (11%)", Percentage: 11 , r: "Camera, 27 <br>11%"},]}
               xName="Product" yName="Percentage" innerRadius="40%" border={{width:3,color:'transparent'}}></AccumulationSeriesDirective>
           </AccumulationSeriesCollectionDirective>
         </AccumulationChartComponent>
@@ -209,8 +209,8 @@ function onPointRender(args: IAccPointRenderEventArgs): void {
 
       else if (selectedTheme.indexOf('bootstrap5') > -1) {
 
-        args.border.color = '#343a40';
-        layoutColor= '#343a40' ;
+        args.border.color = '#212529';
+        layoutColor= '#212529' ;
       }
 
       else if (selectedTheme.indexOf('bootstrap') > -1) {
@@ -274,10 +274,16 @@ function onPointRender(args: IAccPointRenderEventArgs): void {
     }
     let element =  document.querySelector('#layout_0template') as HTMLElement 
     element.style.background=layoutColor;
+    let elementBody =  document.querySelector('#layout_0_body') as HTMLElement 
+    elementBody.style.background=layoutColor;
     let element1 =  document.querySelector('#layout_1template') as HTMLElement 
     element1.style.background=layoutColor;
+    let elementBody1 =  document.querySelector('#layout_1_body') as HTMLElement 
+    elementBody1.style.background=layoutColor;
     let element2 =  document.querySelector('#layout_2template') as HTMLElement 
     element2.style.background=layoutColor;
+    let elementBody2 =  document.querySelector('#layout_2_body') as HTMLElement 
+    elementBody2.style.background=layoutColor;
 };
 }
 export default OverView;

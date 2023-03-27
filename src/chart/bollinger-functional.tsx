@@ -8,7 +8,7 @@ import {
     CandleSeries, Category, Tooltip, ILoadedEventArgs, DateTime, Zoom, Logarithmic,
     Crosshair, LineSeries, BollingerBands, ChartTheme, IndicatorsDirective, IndicatorDirective, RangeAreaSeries, Legend
 } from '@syncfusion/ej2-react-charts';
-import { chartData } from './financial-data';
+import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -36,7 +36,8 @@ function Bollinger() {
                             crosshairTooltip: { enable: true }
                         }}
                         primaryYAxis={{
-                            title: 'Price',
+                            title: 'Price (in Million)',
+                            intervalType: 'Months',
                             labelFormat: '${value}M',
                             minimum: 50, maximum: 170, interval: 30,
                             majorGridLines: { width: 1 },
@@ -49,13 +50,14 @@ function Bollinger() {
                         legendSettings={{ visible: false }}
                         width={Browser.isDevice ? '100%' : '75%'}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
-                        zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan: true }}
-                        title='AAPL 2012-2017' loaded={onChartLoad.bind(this)}>
+                        zoomSettings={{  enablePinchZooming: true,
+                            enableDeferredZooming:true,enableSelectionZooming: true, mode: 'X', enablePan: true }}
+                        title='AAPL Stock Price 2012-2017' loaded={onChartLoad.bind(this)}>
                         <Inject services={[CandleSeries, Category, Tooltip, DateTime, Legend, Zoom, Logarithmic, Crosshair, LineSeries, RangeAreaSeries,
                             BollingerBands]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={chartData} width={2}
-                                xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open'
+                            <SeriesDirective dataSource={chartValues} width={2}
+                                xName='period' yName='y' low='low' high='high' close='close' volume='volume' open='open'
                                 name='Apple Inc' bearFillColor='#2ecd71' bullFillColor='#e74c3d'
                                 type='Candle' animation={{ enable: false }}>
                             </SeriesDirective>
@@ -69,13 +71,12 @@ function Bollinger() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates a stock chart with candle series and a Bollinger band indicator.
-                        Trackball shows the information about the stock, signalline, upperline, and lowerline value of a day.
+                    This sample illustrates a chart with candle series and a Bollinger band indicator. The trackball shows information about the stock, signal line, upper line, and lower line values each day.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the Bollingear Bands Indicator.
+                    In this example, you can see how to render and configure a Bollinger band indicator. This indicator shows the upper and lower limits of normal price movements based on the standard deviation of prices. The bands offer insights into price and volatility.
                     </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -87,7 +88,7 @@ function Bollinger() {
                         <code>BollingerBands</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the Bollingear Bands Indicator can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the Bollingear Bands Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#bollinger-band">documentation section</a>.
                     </p>
                 </div>
             </div >

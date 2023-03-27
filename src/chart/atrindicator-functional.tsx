@@ -9,7 +9,7 @@ import {
     Crosshair, LineSeries, AtrIndicator, StripLine, ChartTheme, IndicatorsDirective, IndicatorDirective, Legend
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { chartData } from './financial-data';
+import { chartValues } from './financial-data';
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
      .control-fluid {
@@ -50,7 +50,7 @@ function ATR() {
                     chartArea={{ border: { width: 0 } }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan: true }}
-                    title='AAPL 2012-2017' legendSettings= {{ visible : false }}loaded={onChartLoad.bind(this)}>
+                    title='AAPL Stock Price 2012-2017' legendSettings= {{ visible : false }}loaded={onChartLoad.bind(this)}>
                     <Inject services={[CandleSeries, Category, Tooltip, StripLine,Legend, DateTime, Zoom, Logarithmic, Crosshair, LineSeries,
                         AtrIndicator]} />
                     <RowsDirective>
@@ -63,7 +63,7 @@ function ATR() {
                         <AxisDirective name='secondary'
                             opposedPosition={true} rowIndex={0}
                             majorGridLines={{ width: 0 }} lineStyle={{ width: 0 }} majorTickLines={{ width: 0 }}
-                            maximum={14} minimum={0} interval={7} title={'ATR'}>
+                           title={'ATR'}>
                             <StripLinesDirective>
                                 <StripLineDirective start={0} end={14} text='' color='#6063ff' visible={true}
                                     opacity={0.1} zIndex='Behind'>
@@ -72,8 +72,8 @@ function ATR() {
                         </AxisDirective>
                     </AxesDirective>
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={chartData} width={2}
-                            xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open'
+                        <SeriesDirective dataSource={chartValues} width={2}
+                            xName='period' yName='y' low='low' high='high' close='close' volume='volume' open='open'
                             name='Apple Inc'  bearFillColor='#2ecd71' bullFillColor='#e74c3d'
                             type='Candle' animation={{ enable: true }}>
                         </SeriesDirective>
@@ -87,13 +87,12 @@ function ATR() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates a stock chart with candle series and an average true range indicator.
-                    Trackball shows the information about the stock and signal value of a day.
+                This sample illustrates a chart with candle series and an average true range indicator. The trackball shows information about the stock rates and signal values of a day.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the Average True Range Indicator.
+                In this example, you can see how to render and configure an average true range indicator. This indicator measures the volatility of the stock by comparing the current value with the previous value.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -105,7 +104,7 @@ function ATR() {
                     <code>AtrIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the Average True Range Indicator can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the Average True Range Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#average-true-range-atr">documentation section</a>.
                 </p>
             </div>
         </div >

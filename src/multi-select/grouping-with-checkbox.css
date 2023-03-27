@@ -3,3 +3,11 @@
     width: 300px !important;
     padding-top: 15px;
 }
+
+.e-specific.e-multiselect.e-input-group .e-ddl-icon::before {
+    transform: translateY(1px);
+}
+
+.e-bigger .e-specific.e-multiselect.e-input-group .e-ddl-icon::before {
+    transform: translateY(2px);
+}

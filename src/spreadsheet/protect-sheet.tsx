@@ -28,8 +28,8 @@ export class ProtectSheet extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section spreadsheet-control'>
                     <SpreadsheetComponent
-                        password= 'spreadsheet' openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open'
-                        saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save' ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)}
+                        password= 'spreadsheet' openUrl='https://services.syncfusion.com/react/production/api/spreadsheet/open'
+                        saveUrl='https://services.syncfusion.com/react/production/api/spreadsheet/save' ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)}
                         beforeCellRender={this.beforeCellRender.bind(this)} >
                         <SheetsDirective>
                             <SheetDirective name='EMI Calculator' isProtected={true}>

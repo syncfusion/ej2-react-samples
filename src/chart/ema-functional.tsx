@@ -8,7 +8,7 @@ import {
     CandleSeries, Category, Tooltip, ILoadedEventArgs, DateTime, Zoom, Logarithmic, ChartTheme,
     Crosshair, LineSeries, EmaIndicator, IndicatorsDirective, IndicatorDirective
 } from '@syncfusion/ej2-react-charts';
-import { chartData } from './financial-data';
+import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -33,7 +33,7 @@ function EMA() {
                         crosshairTooltip: { enable: true },
                     }}
                     primaryYAxis={{
-                        title: 'Price',
+                        title: 'Price (in Million) ',
                         labelFormat: '${value}M',
                         minimum: 50, maximum: 170, interval: 30,
                         majorGridLines: { width: 1 },
@@ -47,12 +47,12 @@ function EMA() {
                     width={Browser.isDevice ? '100%' : '75%'}
                     legendSettings={{ visible: false }}
                     zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan: true }}
-                    title='AAPL 2012-2017' loaded={onChartLoad.bind(this)}>
+                    title='AAPL Stock Price 2012-2017' loaded={onChartLoad.bind(this)}>
                     <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries,
                         EmaIndicator]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={chartData} width={2}
-                            xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open'
+                        <SeriesDirective dataSource={chartValues} width={2}
+                            xName='period' yName='y' low='low' high='high' close='close' volume='volume' open='open'
                             name='Apple Inc' bearFillColor='#2ecd71' bullFillColor='#e74c3d'
                             type='Candle' animation={{ enable: false }}>
                         </SeriesDirective>
@@ -66,13 +66,12 @@ function EMA() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates a stock chart with candle series and an Exponential Moving Average indicator.
-                    Trackball shows the information about the stock and signal value of a day.
+                This sample illustrates a chart with candle series and an exponential moving average indicator. The trackball shows information about each day’s stock rates and signal values.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the EMA Indicator.
+                In this example, you can see how to render and configure an exponential moving average indicator. This indicator tracks the price of an investment over time and is used to define the direction of the trend.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -84,7 +83,7 @@ function EMA() {
                     <code>EmaIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the EMA Indicator can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the EMA Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#exponential-moving-average-ema">documentation section</a>.
                 </p>
             </div>
         </div >

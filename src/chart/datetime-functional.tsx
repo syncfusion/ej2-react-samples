@@ -5,21 +5,21 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    LineSeries, DateTime, Legend, DataLabel, ILoadedEventArgs, ChartTheme
+    LineSeries, DateTime, Legend, DataLabel, ILoadedEventArgs, ChartTheme,
 } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data1: any[] = [
-    { x: new Date(2016, 3, 1), y: 6.3 },
-    { x: new Date(2016, 4, 1), y: 13.3 }, { x: new Date(2016, 5, 1), y: 18.0 },
-    { x: new Date(2016, 6, 1), y: 19.8 }, { x: new Date(2016, 7, 1), y: 18.1 },
-    { x: new Date(2016, 8, 1), y: 13.1 }, { x: new Date(2016, 9, 1), y: 4.1 }
+    { x: new Date(2016, 2, 7), y: 6.3 },
+    { x: new Date(2016, 3, 15), y: 13.3 }, { x: new Date(2016, 4, 10), y: 18.0 },
+    { x: new Date(2016, 5, 17), y: 19.8 }, { x: new Date(2016, 6, 13), y: 18.1 },
+    { x: new Date(2016, 7, 11), y: 13.1 }, { x: new Date(2016, 8, 16), y: 4.1 }
 ];
 export let data2: any[] = [
-    { x: new Date(2016, 3, 1), y: -5.3 },
-    { x: new Date(2016, 4, 1), y: 1.0 }, { x: new Date(2016, 5, 1), y: 6.9 },
-    { x: new Date(2016, 6, 1), y: 9.4 }, { x: new Date(2016, 7, 1), y: 7.6 },
-    { x: new Date(2016, 8, 1), y: 2.6 }, { x: new Date(2016, 9, 1), y: -4.9 }
+    { x: new Date(2016, 2, 7), y: -5.3 },
+    { x: new Date(2016, 3, 15), y: 1.0 }, { x: new Date(2016, 4, 10), y: 6.9 },
+    { x: new Date(2016, 5, 17), y: 9.4 }, { x: new Date(2016, 6, 13), y: 7.6 },
+    { x: new Date(2016, 7, 11), y: 2.6 }, { x: new Date(2016, 8, 16), y: -4.9 }
 ];
 const SAMPLE_CSS = `
      .control-fluid {
@@ -38,7 +38,8 @@ function DateTimeAxis() {
                     <ChartComponent id='charts' style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            labelFormat: 'MMM',
+                            intervalType: 'Days',
+                            labelFormat: 'MMM d',
                             edgeLabelPlacement: 'Shift',
                             majorGridLines: { width: 0 }
                         }}
@@ -55,18 +56,19 @@ function DateTimeAxis() {
                         }}
                         chartArea={{ border: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '75%'}
+                        tooltip={{enable: false, shared: true}}
                         title='Alaska Weather Statistics - 2016' loaded={onChartLoad.bind(this)}>
                         <Inject services={[LineSeries, DateTime, Legend, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='Warmest' type='Line'
                                 marker={{
-                                    visible: true, height: 10, width: 10, shape: 'Pentagon',
+                                    visible: true, height: 8, width: 8, shape: 'Pentagon', isFilled : true,
                                     dataLabel: { visible: true, position: 'Top' }
                                 }} width={2}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' name='Coldest' type='Line'
                                 marker={{
-                                    visible: true, height: 10, width: 10, shape: 'Pentagon',
+                                    visible: true, height: 8, width: 8, shape: 'Pentagon', isFilled : true,
                                     dataLabel: { visible: true, position: 'Top' }
                                 }} width={2}>
                             </SeriesDirective>
@@ -78,13 +80,12 @@ function DateTimeAxis() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates the rendering of date time axis in the chart with weather statistics analysis of Alaska for a year.
+                    This sample shows the date-time axis in a chart with a weather report for the year 2016.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        DateTime data is used in this sample and data values are represented using dataLabel. Date time axis uses date time scale and displays the date time values as axis labels. To render dateTime axis, set <code>valueType</code> in axis to <code>DateTime</code>.
-                        Format for the axis label will be calculated based on intervalType of axis or we can set the format through labelFormat property in axis.
+                    The date-time axis uses a date-time scale and displays date-time values as the axis labels. To use a date-time axis, set the <code>ValueType</code> in axis to <b>DateTime</b>.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -93,7 +94,7 @@ function DateTimeAxis() {
                         <code>DateTime</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the DateTime axis can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+                        More information on the DateTime axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/date-time-axis/#datetime-axis">documentation section</a>.
                     </p>
                 </div>
             </div>

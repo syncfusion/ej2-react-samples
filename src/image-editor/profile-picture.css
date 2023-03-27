@@ -3,7 +3,7 @@
     position: relative;
 }
 
-.e-profile {
+.e-img-editor-profile .e-profile {
     width: 200px;
     height: 200px;
     position: absolute;
@@ -27,12 +27,13 @@
     left: calc(100% - 47px);
 }
 
-.e-custom-icon::before {
+#custom-edit .e-custom-icon::before {
     content: '\e911';
     font-size: 28px;
     color: white;
     left: 5px;
-    top: 7px;
+    top: 4px;
+    line-height: initial;
     position: absolute;
 }
 

@@ -1,8 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, Resize, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, Resize, ColumnsDirective, ColumnDirective, RowDD } from '@syncfusion/ej2-react-gantt';
 import { multiTaskbarData, resources } from './data';
 import { SampleBase } from '../common/sample-base';
+import { PropertyPane } from '../common/property-pane';
+import { CheckBoxComponent, SwitchComponent } from '@syncfusion/ej2-react-buttons';
+import { Thickness } from '@syncfusion/ej2/drawings';
 
 export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
     public taskFields: any = {
@@ -18,6 +21,7 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
         expandState: 'isExpand',
         child: 'subtasks'
     };
+    private ganttInstance: GanttComponent;
     public resourceFields: any = {
         id: 'resourceId',
         name: 'resourceName',
@@ -35,6 +39,20 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
     public splitterSettings: any = {
         columnIndex: 2
     };
+    public dragDropChange(args): any {
+      if (args.checked) {
+        this.ganttInstance.allowTaskbarDragAndDrop = true;
+      } else {
+        this.ganttInstance.allowTaskbarDragAndDrop = false;
+      }
+  }
+  public overlapChange(args): any {
+      if (args.checked) {
+        this.ganttInstance.allowTaskbarOverlap = true;
+      } else {
+        this.ganttInstance.allowTaskbarOverlap = false;
+      }
+  }
     public projectStartDate: Date = new Date('03/28/2019');
     public projectEndDate: Date = new Date('05/18/2019');
     public labelSettings: any = {
@@ -44,7 +62,23 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GanttComponent id='ResourceMultiTaskbar' dataSource={multiTaskbarData} treeColumnIndex={1} viewType='ResourceView' enableMultiTaskbar= {true}
+                <div className='col-lg-12'>
+                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex' }}>
+                <label htmlFor="checked" style={{ fontSize: '15px', margin: '0px 5px 0px 0px' }}> Allow Taskbar Drag And Drop </label>
+                <div>
+                <SwitchComponent id="checked" change={this.dragDropChange.bind(Thickness)}></SwitchComponent>
+              </div>
+              </div>
+              <div style={{ display: 'flex' }}>
+                <label htmlFor="unchecked" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> Allow Taskbar Overlap </label>
+                <div>
+                <SwitchComponent id="unchecked" checked={true} change={this.overlapChange.bind(this)}></SwitchComponent>
+              </div>
+              </div>
+            </div>
+            <div>
+                    <GanttComponent id='ResourceMultiTaskbar' ref={gantt => this.ganttInstance = gantt} dataSource={multiTaskbarData} treeColumnIndex={1} viewType='ResourceView' enableMultiTaskbar= {true}
                         allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={this.toolbar} editSettings={this.editSettings}
                         projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
                         taskFields={this.taskFields} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
@@ -58,9 +92,11 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
                             <ColumnDirective field='StartDate'></ColumnDirective>
                             <ColumnDirective field='Duration'></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Selection, DayMarkers, Toolbar, Edit, Resize]} />
+                        <Inject services={[Selection, DayMarkers, Toolbar, Edit, Resize, RowDD]} />
                     </GanttComponent>
                 </div>
+            </div>
+        </div>
                 <div id="action-description">
                     <p>This sample explains you about, how to visualize the list of tasks assigned for a resource in a parent row of collapsed state.  It is also possible to change the tasks scheduling in the collapsed state.
         This feature can be enabled by setting the <code>enableMultiTaskbar</code> property as "true".
@@ -68,6 +104,9 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
                 </div>
 
                 <div id="description">
+                    <p>
+                        In this example, you can enable taskbar drag and drop from one resource to another resource vertically by enabling <code>allowTaskbarDragAndDrop</code> property. Also, you can prevent the taskbar overlap  in resource task by disabling the <code>allowTaskbarOverlap</code> property.
+                    </p>
                     <p>
                         In this example, you can see that, the resource breaks down from a bulk of tasks can be done by mapping the pre-defined resource ID-s to each task and the resource information can be shown by using the labelSetting property.
                         Using the toolbar action, you can perform the CRUD operation for the resource allocation based on their availability and task complexity.

@@ -10,6 +10,7 @@ import * as dataSource from './pivot-data/universitydata.json';
 import { SampleBase } from '../common/sample-base';
 import { ChartTheme } from '@syncfusion/ej2-react-charts';
 import { select, createElement } from '@syncfusion/ej2-base';
+import { ExcelQueryCellInfoEventArgs } from '@syncfusion/ej2-grids';
 import './overview.css';
 
 /**
@@ -138,6 +139,10 @@ export class PivotOverview extends SampleBase<{}, {}> {
             reports = JSON.parse(localStorage.pivotviewReports);
         }
         if (args.report && args.reportName && args.reportName !== '') {
+            let report = JSON.parse(args.report);
+            report.dataSourceSettings.dataSource = [];
+            report.pivotValues = [];
+            args.report = JSON.stringify(report);
             reports.map(function (item: any): any {
                 if (args.reportName === item.reportName) {
                     item.report = args.report; isSaved = true;
@@ -169,7 +174,9 @@ export class PivotOverview extends SampleBase<{}, {}> {
             }
         });
         if (args.report) {
-            this.pivotObj.dataSourceSettings = JSON.parse(args.report).dataSourceSettings;
+            let report = JSON.parse(args.report);
+            report.dataSourceSettings.dataSource = this.pivotObj.dataSourceSettings.dataSource;
+            this.pivotObj.dataSourceSettings = report.dataSourceSettings;
         }
     }
     removeReport(args: RemoveReportArgs): void {
@@ -223,6 +230,11 @@ export class PivotOverview extends SampleBase<{}, {}> {
     chartSeriesCreated(args): void {
         this.pivotObj.chartSettings.chartSeries.legendShape = this.pivotObj.chartSettings.chartSeries.type === 'Polar' ? 'Rectangle' : 'SeriesType';
     }
+    excelQueryCellInfo(args: ExcelQueryCellInfoEventArgs): void {
+        if ((args?.cell as IAxisSet).axis === 'value' && (args?.cell as IAxisSet).value === undefined) {
+            args.style.numberFormat = undefined;
+        }
+    }
     render() {
         return (
             <div className='control-pane'>
@@ -231,7 +243,8 @@ export class PivotOverview extends SampleBase<{}, {}> {
                         <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'600'} showFieldList={true} exportAllPages={false} maxNodeLimitInMemberEditor={50} cellTemplate={this.cellTemplate.bind(this)}
                             showGroupingBar={true} allowGrouping={true} enableVirtualization={true} enableValueSorting={true} allowDeferLayoutUpdate={true} allowDrillThrough={true} gridSettings={{
                                 columnWidth: 120, allowSelection: true, rowHeight: 36,
-                                selectionSettings: { mode: 'Cell', type: 'Multiple', cellSelectionMode: 'Box' }
+                                selectionSettings: { mode: 'Cell', type: 'Multiple', cellSelectionMode: 'Box' },
+                                excelQueryCellInfo: this.excelQueryCellInfo.bind(this)
                             }} allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                             newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
                             saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Top Universities Analysis', load: this.chartOnLoad.bind(this) }} chartSeriesCreated={this.chartSeriesCreated.bind(this)}>

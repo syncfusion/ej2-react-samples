@@ -183,19 +183,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.e-reset::before {
-  content: "\e715";
-  font-size: 18px;
-  }
-
-  .material .e-reset::before {
-      content: "\e70a";
-  }
-
-  .bootstrap .e-reset::before {
-      content: "\e722";
-  }
-
 .e-toggle-palette::before {
   content: "\e700";
 }

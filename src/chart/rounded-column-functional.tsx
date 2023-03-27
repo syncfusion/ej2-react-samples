@@ -104,7 +104,7 @@ function RoundedColumn() {
                     <SeriesCollectionDirective>
                         <SeriesDirective xName='x' yName='Rate' enableTooltip={false} columnWidth={0.8} opacity={0.5} dataSource={data1} type='Column' name='Tiger' cornerRadius={{ bottomLeft:  Browser.isDevice ? 12 : 35, bottomRight:  Browser.isDevice ? 12 : 35, topLeft:  Browser.isDevice ? 12 : 35, topRight:  Browser.isDevice ? 12 : 35 }}>
                         </SeriesDirective>
-                        <SeriesDirective xName='x' yName='y' columnWidth={0.8} dataSource={data1} type='Column' marker={{ dataLabel: { visible: true, name: 'text', position: 'Top', font: { fontWeight: '600', color: '#ffffff', size: Browser.isDevice ? '9px' : '11px' } } }} name='Tiger' cornerRadius={{ bottomLeft:  Browser.isDevice ? 12 : 35, bottomRight:  Browser.isDevice ? 12 : 35, topLeft:  Browser.isDevice ? 12 : 35, topRight:  Browser.isDevice ? 12 : 35 }} >
+                        <SeriesDirective xName='x' yName='y' columnWidth={0.8} dataSource={data1} type='Column' marker={{ dataLabel: { visible: true, name: 'text', enableRotation: Browser.isDevice ? true : false, angle: -90, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }} name='Tiger' cornerRadius={{ bottomLeft:  Browser.isDevice ? 12 : 35, bottomRight:  Browser.isDevice ? 12 : 35, topLeft:  Browser.isDevice ? 12 : 35, topRight:  Browser.isDevice ? 12 : 35 }} >
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>

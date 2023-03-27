@@ -14,7 +14,7 @@ export class Data extends SampleBase<{}, {}> {
     private localFields: Object = { text: 'Name', value: 'Code' };
     // bind the DataManager instance to dataSource property
     private data: DataManager = new DataManager({
-        url: 'https://ej2services.syncfusion.com/production/web-services/api/Employees',
+        url: 'https://ej2services.syncfusion.com/react/development/api/Employees',
         adaptor: new WebApiAdaptor,
         crossDomain: true
     });

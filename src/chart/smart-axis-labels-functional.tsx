@@ -12,23 +12,37 @@ import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
+import {  fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors  } from './theme-color';
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'material';
+    selectedTheme = selectedTheme ? selectedTheme : 'Material';
     if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-        args.fill = fabricColors[args.point.index % 10];
+        args.fill = pointFabricColors[args.point.index % 10];;
+    } else if (selectedTheme === 'material-dark') {
+        args.fill = pointMaterialDarkColors[args.point.index % 10];;
     } else if (selectedTheme === 'material') {
-        args.fill = materialColors[args.point.index % 10];
+        args.fill = pointMaterialColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5-dark') {
+        args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5') {
+        args.fill = pointBootstrap5Colors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap4') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap-dark') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
     } else if (selectedTheme === 'highcontrast') {
-        args.fill = highContrastColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent') {
-        args.fill = fluentColors[args.point.index % 10];
+        args.fill = pointHighContrastColors[args.point.index % 10];
     } else if (selectedTheme === 'fluent-dark') {
-        args.fill = fluentDarkColors[args.point.index % 10];
-    } else {
-        args.fill = bootstrapColors[args.point.index % 10];
+        args.fill = pointFluentDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent') {
+        args.fill = pointFluentColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind-dark') {
+        args.fill = pointTailwindDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind') {
+        args.fill = pointTailwindColors[args.point.index % 10];
     }
 };
 export let data1: any[] = [{ x: 'South Korea', y: 39 }, { x: 'India', y: 61 },
@@ -121,10 +135,10 @@ function SmartAxisLabels() {
                         title="Internet Users in Millions"
                         loaded={onChartLoad.bind(this)}
                         legendSettings={{ visible: false }}
-                        tooltip={{ enable: true }}>
+                        tooltip={{ enable: true , format: "<b>${point.x}</b> <br> Internet Users : <b>${point.y}M</b>", header: '' }}>
                         <Inject services={[Category, Category, ColumnSeries, Tooltip, DataLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' name="Users" type='Column' marker={{ dataLabel: { visible: true, position: Browser.isDevice ? 'Outer' : 'Top', font: { fontWeight: '600', color: Browser.isDevice ? '#404041' : '#ffffff' } } }}>
+                            <SeriesDirective dataSource={data1} xName='x' yName='y' name="Users" type='Column' marker={{ dataLabel: { visible: true, enableRotation: Browser.isDevice ? true : false, angle: -90, position: 'Top', format:"{value}M", font: { fontWeight: '600', color: '#ffffff' } } }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -183,14 +197,12 @@ function SmartAxisLabels() {
             </div>
             <div id="action-description">
                 <p>
-                    Labels in an axis can be placed smartly when it intersects with each other. Intersect action and edge label placement can be changed by using property panel.
+                This example shows the smart label placement for the chart axis labels.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to arrange the axis labels smartly. When the Axis labels overlap with each other based on
-                    the chart dimensions and label size, you can use the <code>labelIntersectAction</code> property of the axis
-                    to avoid overlapping.
+                In this example, you can see how the axis labels are smartly arranged when they overlap with each other using the <code>LabelIntersectAction</code> property in the axis.
                 </p>
                 <p>Chart supports the following by which can be set using <code>labelIntersectAction</code> property.
                 </p>

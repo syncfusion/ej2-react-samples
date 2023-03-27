@@ -22,23 +22,6 @@ function ChartTooltipTemplate() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
-    function tooltipTemplate(props): any {
-        return (
-            <div id="wrap">
-                <table style={{ width: '100%', border: '1px solid black' }} className="table-borderless">
-                    <tr>
-                        <th rowSpan={2} style={{ backgroundColor: '#C1272D' }}>
-                            <img src='src/chart/images/grain.png' />
-                        </th>
-                        <td style={{ height: '25px', width: '50px', backgroundColor: '#C1272D', fontSize: '14px', color: '#E7C554', fontWeight: 'bold', paddingLeft: '5px' }}>{props.y}</td>
-                    </tr>
-                    <tr >
-                        <td style={{ height: '25px', width: '50px', backgroundColor: '#C1272D', fontSize: '18px', color: '#E7C554', fontWeight: 'bold', paddingLeft: '5px' }}>{props.x}</td>
-                    </tr>
-                </table>
-            </div>
-        );
-    }
     return (
         <div className='control-pane'>
             <style>
@@ -67,7 +50,12 @@ function ChartTooltipTemplate() {
                     chartArea={{ border: { width: 0 } }}
                     tooltip={{
                         enable: true,
-                        template: tooltipTemplate.bind(this)
+                        template:  
+                            '<div id="Tooltip"><table style="width:100%;  border: 1px solid black;" class="table-borderless">' +
+                            '<tr><th rowspan="2" style="background-color: #C1272D"><img src="https://ej2.syncfusion.com/react/demos/src/chart/images/grain.png" />' +
+                            '</th><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 14px; color: #E7C554; font-weight: bold; padding-left: 5px">' +
+                            '${y}</td></tr><tr ><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 18px; color: #FFFFFF; font-weight: bold; padding-left: 5px">${x}</td>' +
+                            '</tr></table></div>'
                     }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     title='USA Wheat Production' loaded={onChartLoad.bind(this)}>
@@ -77,8 +65,8 @@ function ChartTooltipTemplate() {
                             width={2}
                             marker={{
                                 visible: true,
-                                width: 10,
-                                height: 10,
+                                width: 7,
+                                height: 7,
                                 fill: '#C1272D',
                                 border: { color: '#333333', width: 2 }
                             }} type='Line'>
@@ -107,7 +95,7 @@ function ChartTooltipTemplate() {
                     <code>Tooltip</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the line series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/series/#type">documentation section</a>.
+                More information about the tooltip can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/tool-tip/">documentation section</a>.
                 </p>
             </div>
         </div>

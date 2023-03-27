@@ -8,3 +8,7 @@
 .pivot-property-section table tr td:first-child {
     width: 20%;
 }
+
+.pivot-property-section .e-multiselect {
+    padding: 0px !important;
+}

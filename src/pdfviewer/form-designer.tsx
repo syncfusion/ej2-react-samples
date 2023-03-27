@@ -14,7 +14,7 @@
      return ( <div>
          <div className='control-section'>
              {/* Render the PDF Viewer */}
-             <PdfViewerComponent id="container"  ref={(scope) => { this.viewer = scope; }} documentPath="FormDesigner.pdf" serviceUrl="https://ej2services.syncfusion.com/production/web-services/api/pdfviewer" documentLoad={this.documentLoaded} validateFormFields={this.validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>
+             <PdfViewerComponent id="container"  ref={(scope) => { this.viewer = scope; }} documentPath="FormDesigner.pdf" serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer" documentLoad={this.documentLoaded} validateFormFields={this.validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>
                  <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
              </PdfViewerComponent>
            </div>

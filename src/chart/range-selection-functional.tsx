@@ -33,7 +33,10 @@ export let data1: any[] = [{ x: 1971, y: 23 }, { x: 1972, y: 67 }, { x: 1973, y:
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
-     }`;
+     }
+     #select:hover {
+        cursor: pointer;
+    }`;
 function RangeSelection() {
     React.useEffect(() => {
         updateSampleSection();
@@ -75,6 +78,7 @@ function RangeSelection() {
                                 minorTickLines: {width: 0}
                             }}
                             primaryYAxis={{
+                                title: 'Sales',
                                 labelFormat: '{value}%',
                                 interval: 25,
                                 minimum: 0,
@@ -92,12 +96,12 @@ function RangeSelection() {
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data} name='Product A' xName='x' yName='y' type='Scatter' marker={{
                                     shape: 'Triangle',
-                                    width: 10, height: 10
+                                    width: 7, height: 7
                                 }}>
                                 </SeriesDirective>
                                 <SeriesDirective dataSource={data1} name='Product B' xName='x' yName='y' type='Scatter' marker={{
                                     shape: 'Pentagon',
-                                    width: 10, height: 10
+                                    width: 7, height: 7
                                 }}>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
@@ -130,19 +134,17 @@ function RangeSelection() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates the range selection feature in chart. Data can be selected under region by drag and drop.
+                    This sample demonstrates the range selection behavior and its mode in the charts.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        This sample demonstrates the selection behavior in a chart. Any point or a series can be selected in a chart by clicking or touching the point.
-                        We can also select the point while loading chart through <code>selectedDataIndexes</code> properties. Click to select a point or series, click and drag to enable rectangular selection.
-                        Rectangular selection will return the collection point that are selected under the region.
+                    In this example, you can see how to select points in a specific region. You can change the <b>Selection Mode</b> in the properties panel. You can also enable multiple selection.
                     </p>
                     <p>
-                        Tap to select a point or series, double tap and drag to enable rectangular selection in touch enabled devices.
+                    Click and drag to enable a rectangular selection and it will display the collection of points that are selected under the region.
                     </p>
-                    <p>Chart supports seven mode of selection which can be set using <code>SelectionMode</code> property.
+                    <p>Rectangular selection can be set using the <code>SelectionMode</code> property, and it supports the following modes.
                     </p>
                     <ul>
                         <li><code>Series</code> - Select the series in chart.</li>

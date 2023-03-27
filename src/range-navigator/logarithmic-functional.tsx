@@ -161,7 +161,7 @@ function LogarithmicAxis() {
                             interval: 1,
                             edgeLabelPlacement: 'Shift',
                             majorGridLines: { width: 0 },
-                            title: 'Numers of Goods Consumers'
+                            title: 'Numbers of Goods Consumers'
                         }}
                         primaryYAxis={{
                             minimum: 0, maximum: 100,

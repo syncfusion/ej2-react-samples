@@ -53,7 +53,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
                         documentLoad={this.documentLoaded}
                         pageChange={this.onPageChange}
                         documentPath="Hive_Succinctly.pdf"
-                        serviceUrl="https://ej2services.syncfusion.com/production/web-services/api/pdfviewer"
+                        serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer"
                         style={{ 'display': 'block', 'height': '640px' }}>
                         <Inject services={[Magnification, Navigation, LinkAnnotation, BookmarkView,
                             ThumbnailView, Print, TextSelection, TextSearch]} />
@@ -145,6 +145,13 @@ export class CustomToolbar extends SampleBase<{}, {}> {
         var pageCount = document.getElementById('totalPage');
         pageCount.textContent = 'of ' + this.viewer.pageCount;
         this.updatePageNavigation();
+        let inputElement: HTMLInputElement = document.getElementById('currentPage') as HTMLInputElement;
+        inputElement.addEventListener('click', this.currentPageClicked.bind(this));
+        inputElement.addEventListener(
+            'keypress',
+            this.onCurrentPageBoxKeypress.bind(this)
+        );
+        inputElement.value = this.currentPageNumber;
     }
 
     updatePageNavigation() {
@@ -192,10 +199,10 @@ export class CustomToolbar extends SampleBase<{}, {}> {
         reader.readAsDataURL(uploadedFile);
         let viewer: PdfViewerComponent = this.viewer;
 		let uploadedFileName: string = this.fileName;
-        reader.onload = function () {            
-            let uploadedFileUrl: string = this.result as string;
+        reader.onload = function (e) {            
+            let uploadedFileUrl: string = (e.currentTarget as any).result;
             viewer.load(uploadedFileUrl, null);
-            viewer.fileName = uploadedFileName;
+            viewer.downloadFileName = viewer.fileName = uploadedFileName;
             var pageCount = document.getElementById('totalPage');
             pageCount.textContent = 'of ' + viewer.pageCount;
         }

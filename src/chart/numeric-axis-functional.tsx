@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
     ColumnSeries, IAxisLabelRenderEventArgs, DataLabel,
-    ILoadedEventArgs, Tooltip, Legend, ChartTheme
+    ILoadedEventArgs, Tooltip, Legend, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -20,11 +20,7 @@ export let data2: any[] = [
     { x: 18, y: 11 }, { x: 19, y: 8 },
     { x: 20, y: 24 }
 ];
-export let labelRender: EmitType<IAxisLabelRenderEventArgs> = (args: IAxisLabelRenderEventArgs): void => {
-    if (args.axis.orientation === 'Horizontal') {
-        args.cancel = args.value === 15 || args.value === 21;
-    }
-};
+
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
@@ -41,7 +37,6 @@ function Numeric() {
             <div className='control-section'>
                 <ChartComponent id='charts' style={{ textAlign: "center" }}
                     primaryXAxis={{
-                        title: 'Death Overs',
                         minimum: 15,
                         maximum: 21,
                         interval: 1,
@@ -56,12 +51,12 @@ function Numeric() {
                             color: 'transparent'
                         }
                     }}
-                    axisLabelRender={labelRender}
+                    legendSettings={{ visible: true, enableHighlight: true }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     chartArea={{ border: { width: 0 } }}
                     title='England vs West Indies' loaded={onChartLoad.bind(this)}
                     tooltip={{ enable: true, format: '${point.x}th Over : <b>${point.y} Runs</b>' }}>
-                    <Inject services={[ColumnSeries, Legend, Tooltip, DataLabel]} />
+                    <Inject services={[ColumnSeries, Legend, Tooltip, DataLabel, Highlight ]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' fill='#1e90ff' marker={{
                             dataLabel: {
@@ -71,7 +66,7 @@ function Numeric() {
                                     fontWeight: '600'
                                 }
                             }
-                        }} name='England' type='Column' width={2}>
+                        }} name='England' type='Column' width={2} columnSpacing= {0.1}>
                         </SeriesDirective>
                         <SeriesDirective dataSource={data2} xName='x' yName='y' fill='#b22222' marker={{
                             dataLabel: {
@@ -81,7 +76,7 @@ function Numeric() {
                                     fontWeight: '600'
                                 }
                             }
-                        }} name='West Indies' type='Column' width={2}>
+                        }} name='West Indies' type='Column' width={2} columnSpacing= {0.1}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
@@ -91,18 +86,18 @@ function Numeric() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates the rendering of numeric axis in the chart with England and West indies cricket match data.
+                This sample shows the numeric axis in a chart with England and West Indies cricket match data.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    Numeric axis is used to plot numeric data in chart. To render numeric axis, set <code>valueType</code> in axis to <code>Double</code>.
+                You can use a numeric axis to represent numeric value data in a chart. To render a numeric axis, set the <code>ValueType</code> in axis to <b>Double</b>.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
                 <p>
-                    More information on the Numeric axis can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+                    More information on the Numeric axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/numeric-axis/">documentation section</a>.
                 </p>
             </div>
         </div>

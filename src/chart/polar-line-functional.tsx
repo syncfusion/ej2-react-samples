@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType, Tooltip,
-    Legend, DataLabel, LineSeries, Category, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme
+    Legend, DataLabel, LineSeries, Category, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
@@ -105,18 +105,22 @@ function PolarLine() {
                             edgeLabelPlacement: 'Shift',
                             labelFormat: '{value}°C'
                         }}
+                        legendSettings= {{
+                            visible: true,
+                            enableHighlight: true
+                        }}
                         title='Alaska Weather Statistics - 2016' loaded={onChartLoad.bind(this)}
                         tooltip={{ enable: true }}>
-                        <Inject services={[LineSeries, Legend, DataLabel, Category, PolarSeries, RadarSeries, Tooltip]} />
+                        <Inject services={[LineSeries, Legend, DataLabel, Highlight, Category, PolarSeries, RadarSeries, Tooltip]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='Warmest' type='Polar'
+                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='Germany' type='Polar'
                                 marker={{
-                                    visible: true, height: 10, width: 10, shape: 'Pentagon'
+                                    visible: true, height: 7, width: 7, shape: 'Pentagon', isFilled: true
                                 }} width={2}>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='Coldest' type='Polar'
+                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='Italy' type='Polar'
                                 marker={{
-                                    visible: true, height: 10, width: 10, shape: 'Pentagon'
+                                    visible: true, height: 7, width: 7, shape: 'Pentagon', isFilled: true
                                 }} width={2}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
@@ -174,13 +178,12 @@ function PolarLine() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates polar series with line type for Alaska weather statistics data of the year 2016. The angle can be changed and the series can be inversed by using the properties in the panel.
+                This React Polar Radar Line Chart example visualizes data about Alaska Weather Statistics - 2016 with a default polar line series.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the line type charts. Line type charts are used to represent time-dependent data, showing trends in data at equal intervals.
-                    You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the line. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+                In this example, you can see how to render and configure polar and radar charts with a line series. The type of series can be changed using the <b>Series Type</b> dropdown list in the properties panel. Also, the angle can be changed and the series can be inversed using <code>Start Angle</code> and <code>Inversed</code> properties.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -192,7 +195,7 @@ function PolarLine() {
                     <code>LineSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                    More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
                 </p>
             </div>
         </div>

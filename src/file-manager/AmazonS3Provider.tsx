@@ -18,7 +18,10 @@ export class AmazonS3Provider extends SampleBase<{},{}> {
                              getImageUrl: this.hostUrl + 'AmazonS3GetImage',
                              uploadUrl: this.hostUrl + 'AmazonS3Upload',
                              downloadUrl: this.hostUrl + 'AmazonS3Download'
-                    }} searchSettings={{allowSearchOnTyping: false}}>
+                    }} searchSettings={{allowSearchOnTyping: false}}
+                    toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}}
+                    contextMenuSettings={{
+                    layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}}>
                     <Inject services={[ NavigationPane, DetailsView, Toolbar, ContextMenu]} />
                     </FileManagerComponent>
                 </div>

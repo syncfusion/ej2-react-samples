@@ -99,9 +99,6 @@
        margin-right: 10px;
        border: none;
     }
-    .onlineEditor .e-splitter.e-splitter-horizontal .e-pane.e-pane-horizontal, .onlineEditor .e-splitter.e-splitter-vertical .e-pane.e-pane-horizontal {
-      min-width: 400px !important;
-    }
     .fabric-dark .CodeMirror-gutters, .fabric-dark .CodeMirror {
       background-color: #201F1F;
       color: #fff;

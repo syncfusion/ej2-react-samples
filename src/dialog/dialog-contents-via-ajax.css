@@ -12,9 +12,7 @@
     .tailwind-dark .ajaxcontent .e-dialog .e-dlg-header >img.img1,
     .bootstrap5 .ajaxcontent .e-dialog .e-dlg-header >img.img1,
     .bootstrap5-dark .ajaxcontent .e-dialog .e-dlg-header >img.img1,
-    .bootstrap4 .ajaxcontent .e-dialog .e-dlg-header >img.img1,
-    .fluent .ajaxcontent .e-dialog .e-dlg-header >img.img1,
-    .fluent-dark .ajaxcontent .e-dialog .e-dlg-header >img.img1 {
+    .bootstrap4 .ajaxcontent .e-dialog .e-dlg-header >img.img1 {
         margin-top: 0px;
     }
     

@@ -14,7 +14,7 @@ import { updateSampleSection } from '../common/sample-base';
 export let data1: any[] = [
     { x: 'India', y: 7.3 },
     { x: 'Myanmar', y: 7.9 },
-    { x: 'Bangladesh', y: 6.8 },
+    { x: 'Bangladesh', y: 6.0 },
     { x: 'Cambodia', y: 7.0 },
     { x: 'China', y: 6.9 },];
 export let data2: any[] = [
@@ -27,6 +27,9 @@ export let data2: any[] = [
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
+     }
+     #isIndexed:hover {
+         cursor: pointer;
      }`;
 function IndexedAxis() {
     React.useEffect(() => {
@@ -52,7 +55,7 @@ function IndexedAxis() {
             chartInstance.series[1].marker.visible = true;
             chartInstance.primaryXAxis.labelRotation = 90;
             chartInstance.crosshair.line.width = 0;
-            chartInstance.tooltip.enable = true;
+            chartInstance.tooltip.enable = false;
             chartInstance.tooltip.shared = false;
         }
         chartInstance.refresh();
@@ -76,30 +79,39 @@ function IndexedAxis() {
                             minorTickLines: {width: 0}
                         }}
                         primaryYAxis={{
-                            labelFormat: '{value}%'
+                            labelFormat: '{value}%',
+                            title: 'GDP Growth Rate'
                         }}
                         chartArea={{ border: { width: 0 } }}
                         load={load.bind(this)}
-                        title="Real GDP Growth" loaded={onChartLoad.bind(this)}
-                        tooltip={{ enable: false, shared: true }}
+                        title="GDP by Countries" loaded={onChartLoad.bind(this)}
+                        tooltip={{ enable: false}}
                         crosshair={{ enable: false, lineType: 'Vertical' }}>
                         <Inject services={[Legend, Category, LineSeries, ColumnSeries,  Crosshair, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='2015' width={2}
                                 type='Column'    marker={{
+                                    height: 10,
+                                    width: 10,
                                     dataLabel: {
                                       visible: true,
                                       position: 'Top',
-                                      font: { fontWeight: '600' , size : Browser.isDevice ? '8px' : '11px'},
+                                      enableRotation : Browser.isDevice ? true : false,
+                                      angle: -90,
+                                      font: { fontWeight: '600' },
                                     }
                                 }}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' name='2016' width={2}
                                  type='Column'  marker={{
+                                    height: 10,
+                                    width: 10,
                                     dataLabel: {
                                       visible: true,
                                       position: 'Top',
-                                      font: { fontWeight: '600' , size : Browser.isDevice ? '8px' : '11px'},
+                                      enableRotation : Browser.isDevice ? true : false,
+                                      angle: -90,
+                                      font: { fontWeight: '600' },
                                     }
                                 }} >
                             </SeriesDirective>
@@ -125,18 +137,15 @@ function IndexedAxis() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates the rendering of indexed category axis in the chart by using two series.
+                This sample shows an indexed category axis in a chart with details about GDP growth across different countries.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to indexed axis in chart. For indexed category axis you can use <code>isIndexed</code> property.
+                The category axis is also rendered on the basis of the index values in the data source. To render the indexed category axis, set <code>ValueType</code> to Category and <code>IsIndexed</code> property to <b>true</b>.
                 </p>
                 <p>
-                    Hover the chart area to view trackball and its tooltip. Touch and hold to enable trackball in touch enabled devices.
-                </p>
-                <p>
-                    More information on the indexed axis can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the indexed axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/category-axis/#indexed-category-axis">documentation section</a>.
                 </p>
             </div>
         </div>

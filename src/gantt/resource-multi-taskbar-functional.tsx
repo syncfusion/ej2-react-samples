@@ -1,8 +1,9 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, Resize, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, Resize, ColumnsDirective, ColumnDirective, RowDD } from '@syncfusion/ej2-react-gantt';
 import { multiTaskbarData, resources } from './data';
 import { updateSampleSection } from '../common/sample-base';
+import { CheckBoxComponent, CheckBox, SwitchComponent } from '@syncfusion/ej2-react-buttons';
 
 function ResourceMultiTaskbar() {
     React.useEffect(() => {
@@ -21,6 +22,21 @@ function ResourceMultiTaskbar() {
         expandState: 'isExpand',
         child: 'subtasks'
     };
+    let ganttInstance: GanttComponent;
+    function dragDropChange(args): any {
+        if (args.checked) {
+          ganttInstance.allowTaskbarDragAndDrop = true;
+        } else {
+          ganttInstance.allowTaskbarDragAndDrop = false;
+        }
+    }
+    function overlapChange(args): any {
+        if (args.checked) {
+          ganttInstance.allowTaskbarOverlap = true;
+        } else {
+          ganttInstance.allowTaskbarOverlap = false;
+        }
+    }
     const resourceFields: any = {
         id: 'resourceId',
         name: 'resourceName',
@@ -46,7 +62,23 @@ function ResourceMultiTaskbar() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GanttComponent id='ResourceMultiTaskbar' dataSource={multiTaskbarData} treeColumnIndex={1} viewType='ResourceView' enableMultiTaskbar={true}
+            <div className='col-lg-12'>
+            <div style={{ display: 'flex' }}>
+              <div style={{ display: 'flex' }}>
+                <label htmlFor="checked" style={{ fontSize: '15px', margin: '0px 5px 0px 0px' }}> Allow Taskbar Drag And Drop </label>
+                <div>
+                <SwitchComponent id="checked" change={dragDropChange.bind(this)}></SwitchComponent>
+              </div>
+              </div>
+              <div style={{ display: 'flex' }}>
+                <label htmlFor="unchecked" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> Allow Taskbar Overlap </label>
+                <div>
+                <SwitchComponent id="unchecked" checked={true} change={overlapChange.bind(this)}></SwitchComponent>
+              </div>
+              </div>
+            </div>
+            <div>
+                <GanttComponent id='ResourceMultiTaskbar' ref={gantt => ganttInstance = gantt} dataSource={multiTaskbarData} treeColumnIndex={1} viewType='ResourceView' enableMultiTaskbar={true}
                     allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={toolbar} editSettings={editSettings}
                     projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
                     taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings}
@@ -60,9 +92,11 @@ function ResourceMultiTaskbar() {
                         <ColumnDirective field='StartDate'></ColumnDirective>
                         <ColumnDirective field='Duration'></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Selection, DayMarkers, Toolbar, Edit, Resize]} />
+                    <Inject services={[Selection, DayMarkers, Toolbar, Edit, Resize, RowDD]} />
                 </GanttComponent>
             </div>
+            </div>
+        </div>
             <div id="action-description">
                 <p>This sample explains you about, how to visualize the list of tasks assigned for a resource in a parent row of collapsed state.  It is also possible to change the tasks scheduling in the collapsed state.
                     This feature can be enabled by setting the <code>enableMultiTaskbar</code> property as "true".
@@ -70,6 +104,9 @@ function ResourceMultiTaskbar() {
             </div>
 
             <div id="description">
+                <p>
+                    In this example, you can enable taskbar drag and drop from one resource to another resource vertically by enabling <code>allowTaskbarDragAndDrop</code> property. Also, you can prevent the taskbar overlap  in resource task by disabling the <code>allowTaskbarOverlap</code> property.
+                </p>
                 <p>
                     In this example, you can see that, the resource breaks down from a bulk of tasks can be done by mapping the pre-defined resource ID-s to each task and the resource information can be shown by using the labelSetting property.
                     Using the toolbar action, you can perform the CRUD operation for the resource allocation based on their availability and task complexity.

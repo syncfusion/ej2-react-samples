@@ -7,7 +7,7 @@ import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
 export class LoadingAnimation extends SampleBase<{}, {}> {
-    public data = new DataManager({ url: 'https://ej2services.syncfusion.com/production/web-services/api/SelfReferenceData',
+    public data = new DataManager({ url: 'https://services.syncfusion.com/react/production/api/SelfReferenceData',
     adaptor: new WebApiAdaptor  });
     public treegridInstance: TreeGridComponent;
     public indicatortypes: { [key: string]: Object }[] = [

@@ -43,12 +43,13 @@ function PolarRangeColumn() {
                 <div className='control-section row'>
                     <div className='col-md-8'>
                         <ChartComponent id='charts' ref={chart => chartInstance = chart}
-                            primaryXAxis={{ valueType: 'Category', title: 'month', startAngle: 90, labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }}
+                            primaryXAxis={{ valueType: 'Category', title: 'month', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }}
                             primaryYAxis={{ labelFormat: '{value}˚C', minimum: 0, maximum: 15, interval: 5 }}
-                            title='Maximum and Minimum Temperature' loaded={onChartLoad.bind(this)}
+                            title='Temperatures of Germany' loaded={onChartLoad.bind(this)}
                             load={load.bind(this)}
-                            textRender={(args: ITextRenderEventArgs) => {
-                                args.text = args.text.replace('˚C', '');
+                            tooltip = {{
+                                enable: true,
+                                header: " "
                             }}
                             legendSettings={{ visible: false }}
                         >
@@ -79,14 +80,12 @@ function PolarRangeColumn() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates polar series with range column type for temperature variation. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+                    This sample shows minimum and maximum temperature variations in polar and radar charts using a range column series.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the range column type chart You can use <code>border</code>,
-                        <code>fill</code> properties to customize the area. <code>dataLabel</code> are used to represent individual data
-                        and its value.
+                    In this example, you can see how to render and configure polar and radar charts with a range column series. Switching between polar and radar series can be done using <b>Series Type</b> in the property panel.
                     </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -98,7 +97,7 @@ function PolarRangeColumn() {
                         <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                        More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
                     </p>
                 </div>
             </div>

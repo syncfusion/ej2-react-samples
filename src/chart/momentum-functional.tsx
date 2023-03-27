@@ -8,7 +8,7 @@ import {
     CandleSeries, Category, Tooltip, ILoadedEventArgs, DateTime, Zoom, Logarithmic, StripLinesDirective, StripLineDirective,
     Crosshair, LineSeries, MomentumIndicator, StripLine, ChartTheme, IndicatorsDirective, IndicatorDirective, Legend
 } from '@syncfusion/ej2-react-charts';
-import { chartData } from './financial-data';
+import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -45,8 +45,8 @@ function Momentum() {
                     crosshair={{ enable: true, lineType: 'Vertical' }}
                     chartArea={{ border: { width: 0 } }}
                     width={Browser.isDevice ? '100%' : '75%'}
-                    zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan: true }}
-                    title='AAPL 2012-2017' legendSettings={{ visible:false }} loaded={onChartLoad.bind(this)}>
+                    zoomSettings={{ enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}
+                    title='AAPL Stock Price 2012-2017' legendSettings={{ visible:false }} loaded={onChartLoad.bind(this)}>
                     <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom,Legend, Logarithmic, Crosshair, LineSeries,
                         MomentumIndicator, StripLine]} />
                     <RowsDirective>
@@ -57,7 +57,7 @@ function Momentum() {
                     </RowsDirective>
                     <AxesDirective>
                         <AxisDirective rowIndex={0} name='secondary' opposedPosition={true} majorGridLines={{ width: 0 }} majorTickLines={{ width: 0 }}
-                            minimum={80} maximum={120} interval={20} title='Momentum' plotOffset={30} lineStyle={{ width: 0 }}>
+                            minimum={80} maximum={120} interval={20} title='Momentum' lineStyle={{ width: 0 }}>
                             <StripLinesDirective>
                                 <StripLineDirective start={80} end={120} text='' color='black' visible={true}
                                     opacity={0.03} zIndex='Behind'>
@@ -66,27 +66,27 @@ function Momentum() {
                         </AxisDirective>
                     </AxesDirective>
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={chartData} width={2}
-                            xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open'
+                        <SeriesDirective dataSource={chartValues} width={2}
+                            xName='period' yName='y' low='low' high='high' close='close' volume='volume' open='open'
                             name='Apple Inc'  bearFillColor='#2ecd71' bullFillColor='#e74c3d'
                             type='Candle' animation={{ enable: true }}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                     <IndicatorsDirective>
                         <IndicatorDirective type='Momentum' field='Close' seriesName='Apple Inc' yAxisName='secondary' fill='#6063ff'
-                            period={3} animation={{ enable: true }} upperLine={{ color: '#e74c3d' }}>
+                            period={3} animation={{ enable: true }} upperLine={{ color: '#ffb735' }}>
                         </IndicatorDirective>
                     </IndicatorsDirective>
                 </ChartComponent>
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates a stock chart with candle series and a momentum indicator. Trackball shows the information about the stock, signalline, and upperline value of a day.
+                This sample illustrates a chart with candle series and a momentum indicator. The trackball shows information about each day’s stock, signal line, and upper line values.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the Momentum Indicator.
+                In this example, you can see how to render and configure a momentum indicator. This indicator shows the speed at which the price of the stock is changing. It also identifies when the price is moving upwards or downwards.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -98,7 +98,7 @@ function Momentum() {
                     <code>MomentumIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the Momentum Indicator can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the Momentum Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#momentum">documentation section</a>.
                 </p>
             </div>
         </div >

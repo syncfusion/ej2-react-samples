@@ -98,9 +98,9 @@ function LineZone() {
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
             replace(/-dark/i, "Dark") as ChartTheme;
         if (selectedTheme === 'highcontrast') {
-            args.chart.series[0].segments[0].color = '#FF4741';
-            args.chart.series[0].segments[1].color = '#00B400';
-            args.chart.series[0].segments[2].color = '#3F9BFF';
+            args.chart.series[0].segments[0].color = 'red';
+            args.chart.series[0].segments[1].color = 'green';
+            args.chart.series[0].segments[2].color = 'blue';
         }
     };
 }

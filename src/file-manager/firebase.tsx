@@ -18,7 +18,10 @@ export class Firebase extends SampleBase<{}, {}> {
                         getImageUrl: this.hostUrl + 'api/FirebaseProvider/FirebaseRealtimeGetImage',
                         uploadUrl: this.hostUrl + 'api/FirebaseProvider/FirebaseRealtimeUpload',
                         downloadUrl: this.hostUrl + 'api/FirebaseProvider/FirebaseRealtimeDownload'
-                    }}>
+                    }}
+                    toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}}
+                contextMenuSettings={{
+                    layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}}>
                         <Inject services={[NavigationPane, DetailsView, Toolbar]} />
                     </FileManagerComponent>
                 </div>

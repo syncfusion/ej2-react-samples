@@ -20,7 +20,10 @@ function SqlServer() {
                     getImageUrl:hostUrl + 'api/FileManager/GetImage',
                     uploadUrl:hostUrl + 'api/FileManager/Upload',
                     downloadUrl:hostUrl + 'api/FileManager/Download'
-                }}>
+                }}
+                toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}}
+                contextMenuSettings={{
+                    layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}}>
                 <Inject services={[ NavigationPane, DetailsView, Toolbar, ContextMenu]} />
                 </FileManagerComponent>
             </div>

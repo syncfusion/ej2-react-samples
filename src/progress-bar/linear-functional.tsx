@@ -8,6 +8,7 @@ import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 
+
 const SAMPLE_CSS = `
       #control-container {
          padding: 0px !important;
@@ -29,6 +30,10 @@ const SAMPLE_CSS = `
          top: 10px;
      }
  
+     .reload-btn {
+        text-align: center;
+    }
+    
      #reLoad {
          border-radius: 4px;
          text-transform: capitalize;
@@ -41,7 +46,7 @@ function ProgressBarLinear() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
-
+    let progressInstance: ProgressBarComponent;
     let linearOne: ProgressBarComponent;
     let linearTwo: ProgressBarComponent;
     let linearThree: ProgressBarComponent;
@@ -58,6 +63,35 @@ function ProgressBarLinear() {
             for (let i = 0; i < div.length; i++) {
                 div[i].setAttribute('style', 'color:white');
             }
+        }
+        if (selectedTheme === 'fabric') {
+            args.progressBar.secondaryProgressColor = '#b0d0e9'
+        } else if (selectedTheme === 'material-dark') {
+            args.progressBar.secondaryProgressColor = '#b8b8b8'
+        } else if (selectedTheme === 'material') {
+            args.progressBar.secondaryProgressColor = '#f087ab'
+        } else if (selectedTheme === 'bootstrap5-dark') {
+            args.progressBar.secondaryProgressColor = '#2b5288'
+        } else if (selectedTheme === 'bootstrap5') {
+            args.progressBar.secondaryProgressColor = '#98c5f5'
+        } else if (selectedTheme === 'bootstrap') {
+            args.progressBar.secondaryProgressColor = '#acc6dc'
+        }
+        else if (selectedTheme === 'bootstrap4') {
+            args.progressBar.secondaryProgressColor = '#98c5f5'
+        }
+        else if (selectedTheme === 'bootstrap-dark') {
+            args.progressBar.secondaryProgressColor = '#b8b8b8'
+        } else if (selectedTheme === 'highcontrast') {
+            args.progressBar.secondaryProgressColor = '#aca379'
+        } else if (selectedTheme === 'fluent-dark') {
+            args.progressBar.secondaryProgressColor = '#2b5288'
+        } else if (selectedTheme === 'fluent') {
+            args.progressBar.secondaryProgressColor = '#98c5f5'
+        } else if (selectedTheme === 'tailwind-dark') {
+            args.progressBar.secondaryProgressColor = '#386e7f'
+        } else if (selectedTheme === 'tailwind') {
+            args.progressBar.secondaryProgressColor = '#b1afe9'
         }
     }
     function replayClick(): void {
@@ -140,11 +174,13 @@ function ProgressBarLinear() {
                                 height='60'
                                 value={40}
                                 secondaryProgress={60}
+                                secondaryProgressColor=""
                                 animation={{
                                     enable: true,
                                     duration: 2000,
                                     delay: 0,
                                 }}
+                                
                                 load={progressLoad.bind(this)}
                             >
                             </ProgressBarComponent>
@@ -170,18 +206,19 @@ function ProgressBarLinear() {
                         </div>
                     </div>
                 </div>
-                <div id="replay-progressbar" style={{ marginTop: '2%', marginLeft: '45.5%' }}><button onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">Reload</button></div>
+                <div className="linear-parent">
+                <div id="replay-progressbar"><button onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">Reload</button></div>
+                </div>
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates a linear progress bar with determinate and indeterminate states, segments and buffer value.
+                This sample illustrates a linear progress bar with determinate and indeterminate states, segments, and buffer values.
                 </p>
             </div>
             <div id="description">
-                <p>The sample shows the determinate and indeterminate states, buffer and segments of linear progress bar.</p>
+                <p>In this example, you can see how to render and configure a linear progress bar. A progress bar is used to visualize the progression of an extended operation. The sample shows the determinate and indeterminate states, buffer values, and segments of a linear progress bar.</p>
             </div>
         </div>
     )
-
 }
 export default ProgressBarLinear;

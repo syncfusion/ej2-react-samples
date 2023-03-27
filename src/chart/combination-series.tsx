@@ -74,7 +74,7 @@ export class CombinationSeries extends SampleBase<{}, {}> {
                                 type='StackingColumn'>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data} xName='x' yName='y4' name='GDP' type='Line' width={2} opacity={0.6}
-                                marker={{ visible: true, width: 10, height: 10 }}>
+                                marker={{ visible: true, width: 7, height: 7 }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>

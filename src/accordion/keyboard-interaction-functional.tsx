@@ -4,9 +4,20 @@ import { AccordionComponent, AccordionItemDirective, AccordionItemsDirective } f
 import { updateSampleSection } from '../common/sample-base';
 
 function KeyboardInteraction() {
+    let accObj = React.useRef(null);
+
     React.useEffect(() => {
         updateSampleSection();
-    }, [])
+        const handleKeyDown = (e) => {
+            if (e.altKey && e.keyCode === 74 && accObj.current) {
+                accObj.current.select(0);
+            }
+        };
+        document.body.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.body.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
     
         function acrdnheader1() {
             return (
@@ -50,12 +61,13 @@ function KeyboardInteraction() {
                 </div>
             );
         }
+
         return (
             <div className='control-pane'>
                 <div className='control-section accordion-control-section'>
                     <div className='control Accordion-sample' style={{ margin: '25px 0' }}>
                         {/* Render the Accoridon Component */}
-                        <AccordionComponent>
+                        <AccordionComponent ref={accObj}>
                             <AccordionItemsDirective>
                                 <AccordionItemDirective header={acrdnheader1} expanded={true} content={acrdnContent1} />
                                 <AccordionItemDirective header={acrdnheader2} content={acrdnContent2} />

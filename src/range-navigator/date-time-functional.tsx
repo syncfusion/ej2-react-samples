@@ -163,7 +163,6 @@ function DateTimeAxis() {
                             lineStyle: { width: 0 }
                         }}
                         width={Browser.isDevice ? '100%' : '80%'}
-                        axisLabelRender={labelRender.bind(this)}
                         legendSettings={{ visible: false }}
                         load={chartLoad.bind(this)}
                         height='350'
@@ -279,11 +278,6 @@ function DateTimeAxis() {
             zoomPosition = args.zoomPosition;
         }
     };
-    function labelRender(args: IAxisLabelRenderEventArgs): void {
-        if (args.axis.name === 'primaryYAxis') {
-            args.text = '€' + args.text;
-        }
-    }
     function chartLoad(args: ILoadedEventArgs): void {
         args.chart.primaryXAxis.zoomFactor = zoomFactor;
         args.chart.primaryXAxis.zoomPosition = zoomPosition;

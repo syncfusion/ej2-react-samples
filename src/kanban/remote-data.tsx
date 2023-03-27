@@ -10,7 +10,7 @@ import { DataManager } from '@syncfusion/ej2-data';
  */
 export class RemoteData extends SampleBase<{}, {}> {
     private dataManger: DataManager = new DataManager({
-        url: 'https://js.syncfusion.com/ejServices/wcf/Northwind.svc/Tasks',
+        url: 'https://services.syncfusion.com/react/production/api/Kanban',
         crossDomain: true
     });
     private dialogOpen(args: DialogEventArgs): void {

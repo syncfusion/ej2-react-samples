@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme
+    Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -54,9 +54,8 @@ function PolarStackedColumn() {
             <style>
                 {SAMPLE_CSS}
             </style>
-            <div className='control-section row'>
-                <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chart => chartInstance = chart}
+            <div className='control-section'>
+                    <ChartComponent id='charts'style={{ textAlign: "center" }}  ref={chart => chartInstance = chart}
                         primaryXAxis={{
                             valueType: 'Category',
                             labelPlacement: 'OnTicks',
@@ -66,9 +65,13 @@ function PolarStackedColumn() {
                         primaryYAxis={{
                         }}
                         load={load.bind(this)}
+                        legendSettings= {{
+                            visible: true,
+                            enableHighlight: true
+                        }}
                         title="Wind Rose Chart" loaded={onChartLoad.bind(this)}
                         tooltip={{ enable: true }}>
-                        <Inject services={[Tooltip, Legend, Category, PolarSeries, RadarSeries]} />
+                        <Inject services={[Tooltip, Legend,Highlight, Category, PolarSeries, RadarSeries]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='6-9'
                                 type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }}>
@@ -90,33 +93,16 @@ function PolarStackedColumn() {
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
-                </div>
-                <div className='col-md-4 property-section'>
-                    <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
-                                <td style={{ width: '60%' }}>
-                                    <div>Series Type:</div>
-                                </td>
-                                <td style={{ width: '40%' }}>
-                                    <div>
-                                        <DropDownListComponent width={120} id="selmode" change={change.bind(this)} ref={d => dropElement = d} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value="Polar" />
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </PropertyPane>
-                </div>
+                
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates polar series with stacking column type. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+                This sample shows a wind rose chart designed using polar and radar charts with a stacking column series. A wind rose chart helps visualize wind patterns, i.e., wind speed and wind direction.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the stacking column type charts. Stacks the points in the series vertically and also you can use <code>stackingGroup</code> property to group the stacking collection based on categories.
-                    You can use <code>border</code>, <code>fill</code> properties to customize the vertical bar. <code>dataLabel</code> is used to represent individual data and its value.
+                In this example, you can see how to render and configure the polar and radar charts with a stacking column series. Switching between polar and radar series can be done using Series Type in the property panel.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -128,7 +114,7 @@ function PolarStackedColumn() {
                     <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the area series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                    More information on the polar-radar series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
                 </p>
             </div>
         </div>

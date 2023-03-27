@@ -308,7 +308,7 @@ function KeyboardNavigation() {
         else if (args.chart.theme === 'Material') {
             FillColors = materialColors;
         }
-        else if (args.chart.theme.indexOf("fabric") > -1) {
+        else if (args.chart.theme.indexOf("Fabric") > -1) {
             FillColors = fabricColors;
         }
         else if (args.chart.theme === 'Bootstrap5Dark') {
@@ -317,7 +317,7 @@ function KeyboardNavigation() {
         else if (args.chart.theme === 'Bootstrap5') {
             FillColors = bootstrap5Colors;
         }
-        else if (args.chart.theme.indexOf("bootstrap") > -1) {
+        else if (args.chart.theme.indexOf("Bootstrap") > -1) {
             FillColors = bootstrapColors;
         }
         else if (args.chart.theme === 'TailwindDark') {
@@ -326,11 +326,17 @@ function KeyboardNavigation() {
         else if (args.chart.theme === 'Tailwind') {
             FillColors = tailwindColors;
         }
-        else if (args.chart.theme.indexOf("highcontrast") > -1) {
+        else if (args.chart.theme.indexOf("Highcontrast") > -1) {
             FillColors = highContrastColors;
         }
         else if (args.chart.theme === 'FluentDark') {
             FillColors = fluentDarkColors;
+        }
+        else if (args.chart.theme === 'FabricDark') {
+            FillColors = fabricColors;
+        }
+        else if (args.chart.theme === 'Bootstrap4') {
+            FillColors = bootstrapColors;
         }
         else {
             FillColors = fluentColors;

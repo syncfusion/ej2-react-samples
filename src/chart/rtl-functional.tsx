@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme,
-    Legend, Category, Tooltip, ColumnSeries, ILoadedEventArgs, DataLabel, IAxisLabelRenderEventArgs
+    Legend, Category, Tooltip, ColumnSeries, ILoadedEventArgs, DataLabel, IAxisLabelRenderEventArgs, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType } from '@syncfusion/ej2-base';
@@ -69,15 +69,17 @@ function RTL() {
                     tooltip={{ enable: true }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     title="Company Performance"
+                    legendSettings={{ visible:true , enableHighlight: true}}
                     loaded={onChartLoad.bind(this)}
                     axisLabelRender={labelRender.bind(this)}
                 >
                     <Inject
-                        services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]}
+                        services={[ColumnSeries, Legend, Tooltip, Category, Highlight, DataLabel]}
                     />
                     <SeriesCollectionDirective>
                         <SeriesDirective
                             dataSource={data1}
+                            columnSpacing= {0.1}
                             xName="x"
                             yName="y"
                             name="Sales"
@@ -85,6 +87,7 @@ function RTL() {
                         ></SeriesDirective>
                         <SeriesDirective
                             dataSource={data2}
+                            columnSpacing= {0.1}
                             xName="x"
                             yName="y"
                             name="Expense"
@@ -92,6 +95,7 @@ function RTL() {
                         ></SeriesDirective>
                         <SeriesDirective
                             dataSource={data3}
+                            columnSpacing= {0.1}
                             xName="x"
                             yName="y"
                             name="Profit"

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject, Filter,Sort,Group } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject, Filter,Sort, Selection, Group } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 import './keyboard-nav.css';
@@ -18,7 +18,7 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} allowFiltering={true} editSettings={this.editSettings} pageSettings={this.pageSettings} filterSettings={{ type: 'Menu' }} 
-          allowSorting = {true} allowGrouping ={true}>
+          allowSorting = {true} allowGrouping ={true} selectionSettings={{ type: 'Multiple' }}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRules}></ColumnDirective>
@@ -26,7 +26,7 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
               <ColumnDirective field='OrderDate' headerText='Order Date' textAlign='Right' editType='datepickeredit' format='yMd' width='170' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Page, Toolbar, Edit, Filter, Sort, Group]} />
+            <Inject services={[Page, Toolbar, Edit, Filter, Sort, Group, Selection]} />
           </GridComponent>
         <div id="action-description">
             <p>Keyboard shortcuts can be used to interact with DataGrid functionality. In the example below, various key combinations can be used to interact with the grid.</p>

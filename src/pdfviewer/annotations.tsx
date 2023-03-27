@@ -14,7 +14,7 @@ export class Annotations extends SampleBase<{}, {}> {
     return ( <div>
         <div className='control-section'>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" documentPath="Annotations.pdf" serviceUrl="https://ej2services.syncfusion.com/production/web-services/api/pdfviewer" documentLoad = {this.documentLoaded} style={{ 'height': '640px' }}>
+            <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" documentPath="Annotations.pdf" serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer" documentLoad = {this.documentLoaded} style={{ 'height': '640px' }}>
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
             </PdfViewerComponent>
           </div>

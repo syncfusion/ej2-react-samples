@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective,
-    ILoadedEventArgs, LineSeries, ScatterSeries, SplineSeries, Tooltip, Legend, Inject, ChartTheme
+    ILoadedEventArgs, LineSeries, ScatterSeries, SplineSeries, Tooltip, Legend, Inject, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
@@ -92,11 +92,15 @@ function AxisCrossing() {
                             crossesAt: 0,
                             minorTicksPerInterval: 3,
                         }}
+                        legendSettings = {{
+                            visible: true,
+                            enableHighlight: true
+                        }}
                         load={load.bind(this)}
                         title="Spline Interpolation"
                         tooltip={{ enable: true }}
                         loaded={onChartLoad.bind(this)}>
-                        <Inject services={[LineSeries, ScatterSeries, SplineSeries, Tooltip, Legend]} />
+                        <Inject services={[LineSeries, ScatterSeries, Highlight, SplineSeries, Tooltip, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name="Linear Interpolation" type='Line' width={2}
                                 enableTooltip={false} fill='Blue'>
@@ -105,7 +109,7 @@ function AxisCrossing() {
                                 enableTooltip={false} fill='Green'>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name="Data Points" type='Scatter' width={2}
-                                marker={{ visible: false, width: 12, height: 12 }} fill='red'>
+                                marker={{ visible: false, width: 7, height: 7 }} fill='red'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -164,7 +168,7 @@ function AxisCrossing() {
                     If the axis name is not valid, primaryXAxis or primaryYAxis will be used for crossing, by default.
                 </p>
                 <p>
-                    More information on the smart axis labels can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the smart axis labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-customization/#axis-crossing">documentation section</a>.
                 </p>
             </div>
         </div >

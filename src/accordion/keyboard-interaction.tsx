@@ -5,6 +5,20 @@ import { SampleBase } from '../common/sample-base';
 
 export class KeyboardInteraction extends SampleBase<{}, {}> {
 
+    private acrdnObj: AccordionComponent;
+
+    public handleKeydown(e): void {
+        if (e.altKey && e.keyCode === 74 && this.acrdnObj) {
+            this.acrdnObj.select(0);
+        }
+    }
+    componentDidMount() {
+        document.body.addEventListener('keydown', this.handleKeydown.bind(this));
+    }
+
+    componentWillUnmount() {
+        document.body.removeEventListener('keydown', this.handleKeydown.bind(this));
+    }
     render() {
         function acrdnheader1() {
             return (
@@ -48,12 +62,13 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
                 </div>
             );
         }
+
         return (
             <div className='control-pane'>
                 <div className='control-section accordion-control-section'>
                     <div className='control Accordion-sample' style={{ margin: '25px 0' }}>
                         {/* Render the Accoridon Component */}
-                        <AccordionComponent>
+                        <AccordionComponent ref={accordion => this.acrdnObj = accordion}>
                             <AccordionItemsDirective>
                                 <AccordionItemDirective header={acrdnheader1} expanded={true} content={acrdnContent1} />
                                 <AccordionItemDirective header={acrdnheader2} content={acrdnContent2} />

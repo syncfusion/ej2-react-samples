@@ -20,7 +20,7 @@ function Data(){
     const countries: { [key: string]: Object; }[] = data[temp];
      // bind the DataManager instance to dataSource property
     const productData: DataManager = new DataManager({
-         url: 'https://ej2services.syncfusion.com/production/web-services/api/Employees',
+         url: 'https://ej2services.syncfusion.com/react/development/api/Employees',
          adaptor: new WebApiAdaptor,
          crossDomain: true
      });

@@ -1,12 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ButtonComponent, SwitchComponent, ChangeEventArgs as SwitchEventArgs } from '@syncfusion/ej2-react-buttons';
+import { ButtonComponent, SwitchComponent, CheckBoxComponent, ChangeEventArgs as SwitchEventArgs } from '@syncfusion/ej2-react-buttons';
 import { TimePickerComponent, ChangeEventArgs as TimeEventArgs } from '@syncfusion/ej2-react-calendars';
 import { DropDownListComponent, ChangeEventArgs, MultiSelectComponent, MultiSelectChangeEventArgs, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
 import { UploaderComponent, SelectedEventArgs, TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import {
   ToolbarComponent, ItemsDirective, ItemDirective, BeforeOpenCloseMenuEventArgs,
-  MenuEventArgs as ContextMenuEventArgs, MenuItemModel, ContextMenuComponent, ClickEventArgs
+  MenuEventArgs as ContextMenuEventArgs, MenuItemModel, ContextMenuComponent, ClickEventArgs, AppBarComponent
 } from '@syncfusion/ej2-react-navigations';
 import {
   ResourcesModel, ScheduleComponent, Day, Week, WorkWeek, Month, Year, TimelineViews, TimelineMonth, TimelineYear,
@@ -23,6 +23,11 @@ import './overview.css';
 function Overview() {
   React.useEffect(() => {
     updateSampleSection();
+    return () => {
+      if (liveTimeInterval) {
+          clearInterval(liveTimeInterval as number);
+      }
+    }
   }, [])
   let scheduleObj: ScheduleComponent;
   let eventTypeObj: DropDownListComponent;
@@ -34,6 +39,7 @@ function Overview() {
   let intl: Internationalization = new Internationalization();
   let workWeekObj: MultiSelectComponent;
   let resourceObj: MultiSelectComponent;
+  let liveTimeInterval: NodeJS.Timeout | number;
   const weekDays: Record<string, any>[] = [
     { text: 'Sunday', value: 0 },
     { text: 'Monday', value: 1 },
@@ -140,6 +146,10 @@ function Overview() {
     { Name: 'First Full Week', Value: 'FirstFullWeek' },
     { Name: 'First Four-Day Week', Value: 'FirstFourDayWeek' }
   ];
+  const tooltipData: Record<string, any>[] = [
+    { Name: 'Off', Value: 'Off' },
+    { Name: 'On', Value: 'On' }
+  ];
 
   function importTemplateFn(data: Record<string, any>): NodeList {
     const template: string = '<div class="e-template-btn"><span class="e-btn-icon e-icons e-upload-1 e-icon-left"></span>${text}</div>';
@@ -150,8 +160,14 @@ function Overview() {
     let scheduleTimezone: string = scheduleObj ? scheduleObj.timezone : 'Etc/GMT';
     let timeBtn: HTMLElement = document.querySelector('.schedule-overview #timeBtn') as HTMLElement;
     if (timeBtn) {
-      timeBtn.innerHTML = '<span class="e-btn-icon e-icons e-clock e-icon-left"></span>' +
-        new Date().toLocaleTimeString('en-US', { timeZone: scheduleTimezone });
+      let liveTime;
+    if (scheduleObj.isAdaptive) {
+         liveTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: scheduleTimezone });
+    }
+    else {
+         liveTime = new Date().toLocaleTimeString('en-US', { timeZone: scheduleTimezone });
+    }
+      timeBtn.innerHTML = liveTime;
     }
   };
 
@@ -226,9 +242,9 @@ function Overview() {
 
   function timelineTemplate(): JSX.Element {
     return (
-      <div style={{ height: '46px', lineHeight: '23px' }}>
-        <div className='icon-child' style={{ textAlign: 'center' }}>
-          <SwitchComponent id='timeline_views' checked={false} created={() => { document.getElementById('timeline_views').setAttribute('tabindex', '-1'); }}
+      <div className = 'template'>
+        <div className='icon-child'>
+          <CheckBoxComponent id='timeline_views' checked={false} 
             change={(args: SwitchEventArgs) => {
               isTimelineView = args.checked as boolean;
               switch (scheduleObj.currentView) {
@@ -258,243 +274,73 @@ function Overview() {
               }
             }} />
         </div>
-        <div className='text-child' style={{ fontSize: '14px' }}>Timeline Views</div>
+        <div className='text-child'>Timeline Views</div>
       </div >
-    );
-  }
-
-  function multiDragTemplate(): JSX.Element {
-    return (
-      <div style={{ height: '46px', lineHeight: '23px' }}>
-        <div className='icon-child' style={{ textAlign: 'center' }}>
-          <SwitchComponent id='multi_drag' checked={false} created={() => { document.getElementById('multi_drag').setAttribute('tabindex', '-1'); }} change={(args: SwitchEventArgs) => { scheduleObj.allowMultiDrag = args.checked as boolean; }} />
-        </div>
-        <div className='text-child' style={{ fontSize: '14px' }}>Allow Multi Drag</div>
-      </div>
     );
   }
 
   function groupTemplate(): JSX.Element {
     return (
-      <div style={{ height: '46px', lineHeight: '23px' }}>
-        <div className='icon-child' style={{ textAlign: 'center' }}>
-          <SwitchComponent id='grouping' checked={true} created={() => { document.getElementById('grouping').setAttribute('tabindex', '-1'); }} change={(args: SwitchEventArgs) => { scheduleObj.group.resources = args.checked ? ['Calendars'] : []; }} />
+      <div className = 'template'>
+        <div className='icon-child'>
+          <CheckBoxComponent id='grouping' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.group.resources = args.checked ? ['Calendars'] : []; }} />
         </div>
-        <div className='text-child' style={{ fontSize: '14px' }}>Grouping</div>
+        <div className='text-child'>Grouping</div>
       </div>
     );
   }
 
   function gridlineTemplate(): JSX.Element {
     return (
-      <div style={{ height: '46px', lineHeight: '23px' }}>
-        <div className='icon-child' style={{ textAlign: 'center' }}>
-          <SwitchComponent id='gridlines' checked={true} created={() => { document.getElementById('gridlines').setAttribute('tabindex', '-1'); }} change={(args: SwitchEventArgs) => { scheduleObj.timeScale.enable = args.checked as boolean; }} />
+      <div className = 'template'>
+        <div className='icon-child'>
+          <CheckBoxComponent id='timeSlots' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.timeScale.enable = args.checked as boolean; }} />
         </div>
-        <div className='text-child' style={{ fontSize: '14px' }}>Gridlines</div>
+        <div className='text-child'>Gridlines</div>
       </div>
     );
   }
 
   function autoHeightTemplate(): JSX.Element {
     return (
-      <div style={{ height: '46px', lineHeight: '23px' }}>
-        <div className='icon-child' style={{ textAlign: 'center' }}>
-          <SwitchComponent id='row_auto_height' checked={false} created={() => { document.getElementById('row_auto_height').setAttribute('tabindex', '-1'); }} change={(args: SwitchEventArgs) => { scheduleObj.rowAutoHeight = args.checked as boolean; }} />
+      <div className = 'template'>
+        <div className='icon-child'>
+          <CheckBoxComponent id='row_auto_height' checked={false} change={(args: SwitchEventArgs) => { scheduleObj.rowAutoHeight = args.checked as boolean; }} />
         </div>
-        <div className='text-child' style={{ fontSize: '14px' }}>Row Auto Height</div>
+        <div className='text-child'>Row Auto Height</div>
       </div>
     );
   }
 
-  function tooltipTemplate(): JSX.Element {
-    return (
-      <div style={{ height: '46px', lineHeight: '23px' }}>
-        <div className='icon-child' style={{ textAlign: 'center' }}>
-          <SwitchComponent id='tooltip' checked={false} created={() => { document.getElementById('tooltip').setAttribute('tabindex', '-1'); }} change={(args: SwitchEventArgs) => { scheduleObj.eventSettings.enableTooltip = args.checked as boolean; }} />
-        </div>
-        <div className='text-child' style={{ fontSize: '14px' }}>Tooltip</div>
-      </div>
-    );
+  function getDateHeaderDay(value: Date): string {
+    return intl.formatDate(value, { skeleton: 'E' });
   }
-
-  function getResourceData(data: Record<string, any>): Record<string, any> {
-    let resources: ResourcesModel = scheduleObj.getResourceCollections().slice(-1)[0];
-    let resourceData: Record<string, any> = (resources.dataSource as Record<string, any>[]).filter((resource: Record<string, any>) =>
-      resource.CalendarId === data.CalendarId)[0] as Record<string, any>;
-    return resourceData;
-  }
-
-  function getHeaderStyles(data: Record<string, any>): Record<string, any> {
-    if (data.elementType === 'event') {
-      let resourceData: Record<string, any> = getResourceData(data);
-      let calendarColor: string = '#3f51b5';
-      if (resourceData) {
-        calendarColor = (resourceData.CalendarColor).toString();
-      }
-      return { background: calendarColor, color: '#FFFFFF' };
-    } else {
-      return { alignItems: 'center', color: '#919191' };
-    }
-  }
-
-  function getHeaderTitle(data: Record<string, any>): string {
-    return (data.elementType === 'cell') ? 'Add Appointment' : 'Appointment Details';
-  }
-
-  function getHeaderDetails(data: { [key: string]: Date }): string {
-    return intl.formatDate(data.StartTime, { type: 'date', skeleton: 'full' }) + ' (' +
-      intl.formatDate(data.StartTime, { skeleton: 'hm' }) + ' - ' +
-      intl.formatDate(data.EndTime, { skeleton: 'hm' }) + ')';
-  }
-
-  function getEventType(data: { [key: string]: string }): string {
-    const resourceData: Record<string, any> = getResourceData(data);
-    let calendarText: string = '';
-    if (resourceData) {
-      calendarText = resourceData.CalendarText.toString();
-    }
-    return calendarText;
-  }
-
-  function buttonClickActions(e: Event) {
-    const quickPopup: HTMLElement = closest(e.target as HTMLElement, '.e-quick-popup-wrapper') as HTMLElement;
-    const getSlotData: Function = (): Record<string, any> => {
-      let cellDetails: CellClickEventArgs = scheduleObj.getCellDetails(scheduleObj.getSelectedElements());
-      if (isNullOrUndefined(cellDetails)) {
-        cellDetails = scheduleObj.getCellDetails(scheduleObj.activeCellsData.element);
-      }
-      const addObj: Record<string, any> = {};
-      addObj.Id = scheduleObj.getEventMaxID();
-      addObj.Subject = isNullOrUndefined(titleObj.value) ? 'Add title' : titleObj.value;
-      addObj.StartTime = new Date(+cellDetails.startTime);
-      addObj.EndTime = new Date(+cellDetails.endTime);
-      addObj.IsAllDay = cellDetails.isAllDay;
-      addObj.Description = isNullOrUndefined(notesObj.value) ? 'Add notes' : notesObj.value;
-      addObj.CalendarId = eventTypeObj.value;
-      return addObj;
-    };
-    if ((e.target as HTMLElement).id === 'add') {
-      const addObj: Record<string, any> = getSlotData();
-      scheduleObj.addEvent(addObj);
-    } else if ((e.target as HTMLElement).id === 'delete') {
-      const eventDetails: Record<string, any> = scheduleObj.activeEventData.event as Record<string, any>;
-      let currentAction: CurrentAction = 'Delete';
-      if (eventDetails.RecurrenceRule) {
-        currentAction = 'DeleteOccurrence';
-      }
-      scheduleObj.deleteEvent(eventDetails, currentAction);
-    } else {
-      const isCellPopup: boolean = (quickPopup.firstElementChild as HTMLElement).classList.contains('e-cell-popup');
-      const eventDetails: Record<string, any> = isCellPopup ? getSlotData() :
-        scheduleObj.activeEventData.event as Record<string, any>;
-      let currentAction: CurrentAction = isCellPopup ? 'Add' : 'Save';
-      if (eventDetails.RecurrenceRule) {
-        currentAction = 'EditOccurrence';
-      }
-      scheduleObj.openEditor(eventDetails, currentAction, true);
-    }
-    scheduleObj.closeQuickInfoPopup();
-  }
-
-  function onPopupOpen(args: PopupOpenEventArgs): void {
-    if (args.type == "QuickInfo" && !args.target.classList.contains('e-appointment') && !isNullOrUndefined(eventTypeObj) && !isNullOrUndefined(titleObj)) {
-      eventTypeObj.index = args.data.CalendarId - 1;
-      titleObj.focusIn();
-    }
-  }
-
-  function headerTemplate(props: { [key: string]: Date }): JSX.Element {
-    return (
-      <div className="quick-info-header">
-        <div className="quick-info-header-content" style={getHeaderStyles(props)}>
-          <div className="quick-info-title">{getHeaderTitle(props)}</div>
-          <div className="duration-text">{getHeaderDetails(props)}</div>
-        </div>
-      </div>
-    );
-  }
-
-  function contentTemplate(props: { [key: string]: string }): JSX.Element {
-    return (
-      <div className="quick-info-content">
-        {props.elementType === 'cell' ?
-          <div className="e-cell-content">
-            <div className="content-area">
-              <TextBoxComponent id="title" ref={(textbox: TextBoxComponent) => titleObj = textbox} placeholder="Title" />
-            </div>
-            <div className="content-area">
-              <DropDownListComponent id="eventType" ref={(ddl: DropDownListComponent) => eventTypeObj = ddl} dataSource={calendarCollections as Record<string, any>[]}
-                fields={{ text: "CalendarText", value: "CalendarId" }} placeholder="Choose Type" index={0} popupHeight="200px" />
-            </div>
-            <div className="content-area">
-              <TextBoxComponent id="notes" ref={(textbox: TextBoxComponent) => notesObj = textbox} placeholder="Notes" />
-            </div>
-          </div>
-          :
-          <div className="event-content">
-            <div className="meeting-type-wrap">
-              <label>Subject</label>:
-              <span>{props.Subject}</span>
-            </div>
-            <div className="meeting-subject-wrap">
-              <label>Type</label>:
-              <span>{getEventType(props)}</span>
-            </div>
-            <div className="notes-wrap">
-              <label>Notes</label>:
-              <span>{props.Description}</span>
-            </div>
-          </div>
-        }
-      </div>
-    );
-  }
-
-  function footerTemplate(props: Record<string, any>): JSX.Element {
-    return (
-      <div className="quick-info-footer">
-        {props.elementType == "cell" ?
-          <div className="cell-footer">
-            <ButtonComponent id="more-details" cssClass='e-flat' content="More Details" onClick={buttonClickActions.bind(this)} />
-            <ButtonComponent id="add" cssClass='e-flat' content="Add" isPrimary={true} onClick={buttonClickActions.bind(this)} />
-          </div>
-          :
-          <div className="event-footer">
-            <ButtonComponent id="delete" cssClass='e-flat' content="Delete" onClick={buttonClickActions.bind(this)} />
-            <ButtonComponent id="more-details" cssClass='e-flat' content="More Details" isPrimary={true} onClick={buttonClickActions.bind(this)} />
-          </div>
-        }
-      </div>
-    );
-  }
-
-  function getDateHeaderText(value: Date): string {
-    return intl.formatDate(value, { skeleton: 'Ed' });
+  function getDateHeaderDate(value: Date): string {
+    return intl.formatDate(value, { skeleton: 'd' });
   }
   function getWeather(value: Date) {
     switch (value.getDay()) {
       case 0:
-        return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" /><div class="weather-text">25°C</div>';
+        return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" />';
       case 1:
-        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">18°C</div>';
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/>';
       case 2:
-        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/><div class="weather-text">10°C</div>';
+        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/>';
       case 3:
-        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">16°C</div>';
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/>';
       case 4:
-        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/><div class="weather-text">8°C</div>';
+        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/>';
       case 5:
-        return '<img class="weather-image" src="src/schedule/images/weather-clear.svg"/><div class="weather-text">27°C</div>';
+        return '<img class="weather-image" src="src/schedule/images/weather-clear.svg"/>';
       case 6:
-        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/><div class="weather-text">17°C</div>';
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/>';
       default:
         return null;
     }
   }
 
-  function dateHeaderTemplate(props): JSX.Element {
-    return (<div><div>{getDateHeaderText(props.date)}</div><div className="date-text"
+  function dateHeaderTemplate(props: { date: Date; }): JSX.Element {
+    return (<div><div>{getDateHeaderDay(props.date)}</div><div>{getDateHeaderDate(props.date)}</div><div className="date-text"
       dangerouslySetInnerHTML={{ __html: getWeather(props.date) }}></div></div>);
   }
 
@@ -512,7 +358,7 @@ function Overview() {
   let generateEvents: Function = (): Record<string, any>[] => {
     let eventData: Record<string, any>[] = [];
     let eventSubjects: string[] = [
-      'Bering Sea Gold', 'Technology', 'Maintenance', 'Meeting', 'Travelling', 'Annual Conference', 'Birthday Celebration',
+      'Bering Sea Gold', 'Technology', 'Maintenance', 'Meeting', 'Traveling', 'Annual Conference', 'Birthday Celebration',
       'Farewell Celebration', 'Wedding Anniversary', 'Alaska: The Last Frontier', 'Deadliest Catch', 'Sports Day', 'MoonShiners',
       'Close Encounters', 'HighWay Thru Hell', 'Daily Planet', 'Cash Cab', 'Basketball Practice', 'Rugby Match', 'Guitar Class',
       'Music Lessons', 'Doctor checkup', 'Brazil - Mexico', 'Opening ceremony', 'Final presentation'
@@ -573,54 +419,26 @@ function Overview() {
       <div className='col-lg-12 control-section'>
         <div className='content-wrapper'>
           <div className='schedule-overview'>
-            <div className='overview-header'>
-              <div className='overview-titlebar'>
-                <div className='left-panel'>
-                  <div className='schedule-overview-title' style={{ border: '1px solid transparent' }}>Scheduler Overview Functionalities</div>
-                </div>
-                <div className='center-panel'>
-                  <ButtonComponent id='timezoneBtn' cssClass='title-bar-btn' iconCss='e-icons e-time-zone' disabled={true} content='UTC' />
-                  <ButtonComponent id='timeBtn' cssClass='title-bar-btn' iconCss='e-icons e-clock' disabled={true} content='Time' />
-                </div>
-                <div className='right-panel'>
-                  <div className='control-panel calendar-export'>
-                    <ButtonComponent id='printBtn' cssClass='title-bar-btn' iconCss='e-icons e-print' onClick={(onPrint.bind(this))} content='Print' />
-                  </div>
-                  <div className='control-panel'>
-                    <UploaderComponent id='fileUpload' type='file' allowedExtensions='.ics' cssClass='calendar-import'
-                      buttons={{ browse: importTemplateFn({ text: 'Import' })[0] as HTMLElement }} multiple={false} showFileList={false} selected={(onImportClick.bind(this))} />
-                  </div>
-                  <div className='control-panel calendar-export'>
-                    <DropDownButtonComponent id='exporting' content='Export' items={exportItems} select={onExportClick.bind(this)} />
-                  </div>
-                </div>
+            <AppBarComponent colorMode="Primary">
+                <span className="time e-icons e-time-zone"></span>
+                <span id="timezoneBtn" className="time ">UTC</span>
+                <span className="time e-icons e-clock"></span>
+                <span id="timeBtn" className="time current-time">Time</span>
+                <div className="e-appbar-spacer"></div>
+              <div className='control-panel calendar-export'>
+                    <ButtonComponent id='printBtn' cssClass='title-bar-btn e-inherit' iconCss='e-icons e-print' onClick={(onPrint.bind(this))} content='Print' />
               </div>
-            </div>
-            <div className='overview-toolbar'>
-              <div style={{ height: '70px', width: 'calc(100% - 90px)' }}>
-                <ToolbarComponent id='toolbar_options' width='100%' height={70} overflowMode='Scrollable' scrollStep={100} created={() => setInterval(() => { updateLiveTime(); }, 1000)} clicked={onToolbarItemClicked.bind(this)}>
-                  <ItemsDirective>
-                    <ItemDirective prefixIcon='e-icons e-plus' tooltipText='New Event' text='New Event' />
-                    <ItemDirective prefixIcon='e-icons e-repeat' tooltipText='New Recurring Event' text='New Recurring Event' />
-                    <ItemDirective type='Separator' />
-                    <ItemDirective prefixIcon='e-icons e-day' tooltipText='Day' text='Day' />
-                    <ItemDirective prefixIcon='e-icons e-week' tooltipText='Week' text='Week' />
-                    <ItemDirective prefixIcon='e-icons e-week' tooltipText='WorkWeek' text='WorkWeek' />
-                    <ItemDirective prefixIcon='e-icons e-month' tooltipText='Month' text='Month' />
-                    <ItemDirective prefixIcon='e-icons e-month' tooltipText='Year' text='Year' />
-                    <ItemDirective prefixIcon='e-icons e-agenda-date-range' tooltipText='Agenda' text='Agenda' />
-                    <ItemDirective tooltipText='Timeline Views' text='Timeline Views' template={timelineTemplate.bind(this)} />
-                    <ItemDirective type='Separator' />
-                    <ItemDirective tooltipText='Grouping' text='Grouping' template={groupTemplate.bind(this)} />
-                    <ItemDirective tooltipText='Gridlines' text='Gridlines' template={gridlineTemplate.bind(this)} />
-                    <ItemDirective tooltipText='Row Auto Height' text='Row Auto Height' template={autoHeightTemplate.bind(this)} />
-                    <ItemDirective tooltipText='Tooltip' text='Tooltip' template={tooltipTemplate.bind(this)} />
-                    <ItemDirective tooltipText='Allow Multi Drag' text='Allow Multi Drag' template={multiDragTemplate.bind(this)} />
-                  </ItemsDirective>
-                </ToolbarComponent>
+              <div className='control-panel import-button'>
+                <UploaderComponent id='fileUpload' type='file' allowedExtensions='.ics' cssClass='calendar-import'
+                    buttons={{ browse: importTemplateFn({ text: 'Import' })[0] as HTMLElement }} multiple={false} showFileList={false} selected={(onImportClick.bind(this))} created={() => {
+                      const element = document.querySelector('.calendar-import .e-css.e-btn');
+                      element.classList.add('e-inherit');
+                    }}/>
               </div>
-              <div style={{ height: '70px', width: '90px' }}>
-                <ButtonComponent id='settingsBtn' cssClass='overview-toolbar-settings' iconCss='e-icons e-settings' iconPosition='Top' content='Settings' onClick={() => {
+              <div className='control-panel calendar-export'>
+                <DropDownButtonComponent id='exportBtn' content='Export' cssClass = 'e-inherit' items={exportItems} select={onExportClick.bind(this)} />
+              </div>
+                <ButtonComponent id='settingsBtn' cssClass='overview-toolbar-settings e-inherit' iconCss='e-icons e-settings' iconPosition='Top' content='' onClick={() => {
                   let settingsPanel: Element = document.querySelector('.overview-content .right-panel') as Element;
                   if (settingsPanel.classList.contains('hide')) {
                     removeClass([settingsPanel], 'hide');
@@ -631,17 +449,30 @@ function Overview() {
                   }
                   scheduleObj.refreshEvents();
                 }} />
-              </div>
-            </div>
+            </AppBarComponent>
+                <ToolbarComponent id='toolbarOptions' cssClass= 'overview-toolbar' width='100%' height={70} overflowMode='Scrollable' scrollStep={100} created={() => liveTimeInterval = setInterval(() => { updateLiveTime(); }, 1000)} clicked={onToolbarItemClicked.bind(this)}>
+                  <ItemsDirective>
+                    <ItemDirective prefixIcon='e-icons e-plus' tooltipText='New Event' text='New Event' tabIndex={0}/>
+                    <ItemDirective prefixIcon='e-icons e-repeat' tooltipText='New Recurring Event' text='New Recurring Event' tabIndex={0} />
+                    <ItemDirective type='Separator' />
+                    <ItemDirective prefixIcon='e-icons e-day' tooltipText='Day' text='Day'tabIndex={0}/>
+                    <ItemDirective prefixIcon='e-icons e-week' tooltipText='Week' text='Week' tabIndex={0}/>
+                    <ItemDirective prefixIcon='e-icons e-week' tooltipText='WorkWeek' text='WorkWeek' tabIndex={0} />
+                    <ItemDirective prefixIcon='e-icons e-month' tooltipText='Month' text='Month' tabIndex={0} />
+                    <ItemDirective prefixIcon='e-icons e-month' tooltipText='Year' text='Year' tabIndex={0} />
+                    <ItemDirective prefixIcon='e-icons e-agenda-date-range' tooltipText='Agenda' text='Agenda' tabIndex={0} />
+                    <ItemDirective tooltipText='Timeline Views' text='Timeline Views' template={timelineTemplate.bind(this)} />
+                    <ItemDirective type='Separator' />
+                    <ItemDirective tooltipText='Grouping' text='Grouping' template={groupTemplate.bind(this)} />
+                    <ItemDirective tooltipText='Timme Slots' text='Timme Slots' template={gridlineTemplate.bind(this)} />
+                    <ItemDirective tooltipText='Auto Fit Rows' text='Auto Fit Rows' template={autoHeightTemplate.bind(this)} />
+                  </ItemsDirective>
+                </ToolbarComponent>
             <div className='overview-content'>
               <div className='left-panel'>
                 <div className='overview-scheduler'>
                   <ScheduleComponent id='scheduler' cssClass='schedule-overview' ref={(schedule: ScheduleComponent) => scheduleObj = schedule} width='100%' height='100%'
-                    group={{ resources: ['Calendars'] }} timezone='UTC' eventSettings={{ dataSource: generateEvents() }} dateHeaderTemplate={dateHeaderTemplate.bind(this)} quickInfoTemplates={{
-                      header: headerTemplate.bind(this),
-                      content: contentTemplate.bind(this),
-                      footer: footerTemplate.bind(this)
-                    }} popupOpen={onPopupOpen.bind(this)}>
+                    group={{ resources: ['Calendars'] }} timezone='UTC' eventSettings={{ dataSource: generateEvents() }} dateHeaderTemplate={dateHeaderTemplate.bind(this)}>
                     <ResourcesDirective>
                       <ResourceDirective field='CalendarId' title='Calendars' name='Calendars' dataSource={calendarCollections}
                         query={new Query().where('CalendarId', 'equal', 1)} textField='CalendarText' idField='CalendarId' colorField='CalendarColor'>
@@ -662,7 +493,7 @@ function Overview() {
                     </ViewsDirective>
                     <Inject services={[Day, Week, WorkWeek, Month, Year, Agenda, TimelineViews, TimelineMonth, TimelineYear, DragAndDrop, Resize, Print, ExcelExport, ICalendarImport, ICalendarExport]} />
                   </ScheduleComponent>
-                  <ContextMenuComponent id='ContextMenu' cssClass='schedule-context-menu' ref={(menu: ContextMenuComponent) => contextMenuObj = menu} target='.e-schedule' items={contextMenuItems}
+                  <ContextMenuComponent id='overviewContextMenu' cssClass='schedule-context-menu' ref={(menu: ContextMenuComponent) => contextMenuObj = menu} target='.e-schedule' items={contextMenuItems}
                     beforeOpen={(args: BeforeOpenCloseMenuEventArgs) => {
                       let newEventElement: HTMLElement = document.querySelector('.e-new-event') as HTMLElement;
                       if (newEventElement) {
@@ -689,6 +520,11 @@ function Overview() {
                           contextMenuObj.hideItems(['Add', 'AddRecurrence', 'Today', 'EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
                         }
                         return;
+                      } else if ((selectedTarget.classList.contains('e-work-cells') || selectedTarget.classList.contains('e-all-day-cells')) &&
+                        !selectedTarget.classList.contains('e-selected-cell')) {
+                        removeClass([].slice.call(scheduleObj.element.querySelectorAll('.e-selected-cell')), 'e-selected-cell');
+                        selectedTarget.setAttribute('aria-selected', 'true');
+                        selectedTarget.classList.add('e-selected-cell');
                       }
                       contextMenuObj.hideItems(['Save', 'Delete', 'EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
                       contextMenuObj.showItems(['Add', 'AddRecurrence', 'Today'], true);
@@ -735,13 +571,25 @@ function Overview() {
               </div>
               <div className='right-panel hide'>
                 <div className='control-panel e-css'>
+                <div className='col-row'>
+                    <div className='col-left'>
+                      <label style={{ lineHeight: '34px', margin: '0' }}>Calendar</label>
+                    </div>
+                    <div className='col-right'>
+                      <MultiSelectComponent id="resources" cssClass='schedule-resource' ref={(resources: MultiSelectComponent) => resourceObj = resources} dataSource={calendarCollections as Record<string, any>[]}
+                        mode='CheckBox' fields={{ text: 'CalendarText', value: 'CalendarId' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true}
+                        popupHeight={300} value={[1]} change={onResourceChange.bind(this)}>
+                        <Inject services={[CheckBoxSelection]} />
+                      </MultiSelectComponent>
+                    </div>
+                  </div>
                   <div className='col-row'>
                     <div className='col-left'>
                       <label style={{ lineHeight: '34px', margin: '0' }}>First Day of Week</label>
                     </div>
                     <div className='col-right'>
                       <DropDownListComponent id="weekFirstDay" dataSource={weekDays} fields={{ text: 'text', value: 'value' }} value={0}
-                        popupHeight={150} change={(args: ChangeEventArgs) => { scheduleObj.firstDayOfWeek = args.value as number; }} />
+                         popupHeight={400} change={(args: ChangeEventArgs) => { scheduleObj.firstDayOfWeek = args.value as number; }} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -751,19 +599,7 @@ function Overview() {
                     <div className='col-right'>
                       <MultiSelectComponent id="workWeekDays" cssClass='schedule-workweek' ref={(workWeek: MultiSelectComponent) => workWeekObj = workWeek} dataSource={weekDays} mode='CheckBox'
                         fields={{ text: 'text', value: 'value' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true}
-                        popupHeight={150} value={[1, 2, 3, 4, 5]} change={(args: MultiSelectChangeEventArgs) => scheduleObj.workDays = args.value as number[]}>
-                        <Inject services={[CheckBoxSelection]} />
-                      </MultiSelectComponent>
-                    </div>
-                  </div>
-                  <div className='col-row'>
-                    <div className='col-left'>
-                      <label style={{ lineHeight: '34px', margin: '0' }}>Resources</label>
-                    </div>
-                    <div className='col-right'>
-                      <MultiSelectComponent id="resources" cssClass='schedule-resource' ref={(resources: MultiSelectComponent) => resourceObj = resources} dataSource={calendarCollections as Record<string, any>[]}
-                        mode='CheckBox' fields={{ text: 'CalendarText', value: 'CalendarId' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true}
-                        popupHeight={150} value={[1]} change={onResourceChange.bind(this)}>
+                         value={[1, 2, 3, 4, 5]} change={(args: MultiSelectChangeEventArgs) => scheduleObj.workDays = args.value as number[]}>
                         <Inject services={[CheckBoxSelection]} />
                       </MultiSelectComponent>
                     </div>
@@ -857,6 +693,21 @@ function Overview() {
                           } else {
                             scheduleObj.showWeekNumber = true;
                             scheduleObj.weekRule = args.value as any;
+                          }
+                        }} />
+                    </div>
+                  </div>
+                  <div className='col-row'>
+                    <div className='col-left'>
+                      <label style={{ lineHeight: '34px', margin: '0' }}>Tooltip</label>
+                    </div>
+                    <div className='col-right'>
+                      <DropDownListComponent id="tooltip" dataSource={tooltipData} fields={{ text: 'Name', value: 'Value' }} value={"Off"} popupHeight={150}
+                        change={(args: ChangeEventArgs) => {
+                          if (args.value === "Off") {
+                            scheduleObj.eventSettings.enableTooltip = false;
+                          } else {
+                            scheduleObj.eventSettings.enableTooltip = true;
                           }
                         }} />
                     </div>

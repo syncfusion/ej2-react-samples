@@ -20,3 +20,7 @@
 .control-section {
     min-height: 255px !important;
 }
+
+.pivot-property-section .e-multiselect {
+    padding: 0px !important;
+}

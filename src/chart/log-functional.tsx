@@ -47,6 +47,7 @@ function LogAxis() {
                     primaryYAxis={{
                         valueType: 'Logarithmic',
                         edgeLabelPlacement: 'Shift',
+                        title: 'Profit',
                         minorTicksPerInterval: 5,
                         majorGridLines: { width: 1.5 },
                         minorTickLines: { width: 0, height: 4 },
@@ -58,17 +59,17 @@ function LogAxis() {
                     legendSettings={{ visible: false }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     title='Product X Growth [1995-2005]' loaded={onChartLoad.bind(this)}
-                    tooltip={{ enable: true, header: 'Profit' }}>
+                    tooltip={{ enable: true, header: '' }}>
                     <Inject services={[LineSeries, DateTime, Logarithmic, Legend, Tooltip]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data} xName='x' name='Product X' yName='y' type='Line' width={2} marker={{ visible: true, height: 10, width: 10 }}>
+                        <SeriesDirective dataSource={data} xName='x' name='Product X' yName='y' type='Line' width={2} marker={{ visible: true, height: 7, width: 7, isFilled: true }}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates the rendering of logarithmic axis in the chart.
+                This sample shows a logarithmic axis in a chart with data about the sales of a product between 1995 and 2005.
                 </p>
             </div>
             <div id="description">
@@ -86,7 +87,7 @@ function LogAxis() {
                     <code>Logarithmic</code> module using <code>servives</code>.
                 </p>
                 <p>
-                    More information on the Logarithmic axis can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+                    More information on the Logarithmic axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/logarithmic-axis/">documentation section</a>.
                 </p>
             </div>
         </div>

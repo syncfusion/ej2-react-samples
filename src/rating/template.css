@@ -65,7 +65,7 @@ line-height: 1;
 }
 
 .rating-icon-heart:before { content: "\e702"; }
-    
+
 @font-face {
 font-family: 'sb_rating';
 src:

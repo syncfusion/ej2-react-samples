@@ -129,8 +129,8 @@ export class OnlineHtmlEditor extends SampleBase<{}, {}> {
           <div id="rte-online-sample-view">
             <SplitterComponent height='450px' width='100%' resizing={this.onResizing.bind(this)}>
               <PanesDirective>
-                <PaneDirective resizable={true} size='50%' min="60px" cssClass='pane1' content={this.content1.bind(this)} ></PaneDirective>
-                <PaneDirective cssClass='pane2' content={this.content2.bind(this)}></PaneDirective>
+                <PaneDirective resizable={true} size='50%' min="400px" cssClass='pane1' content={this.content1.bind(this)} ></PaneDirective>
+                <PaneDirective min="60px" cssClass='pane2' content={this.content2.bind(this)}></PaneDirective>
               </PanesDirective>
             </SplitterComponent>
           </div>

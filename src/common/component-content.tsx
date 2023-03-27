@@ -223,6 +223,27 @@ function trimUseEffect(code: string, regEx: RegExp) {
     }
     return lines.join('\n');
 }
+/**
+ * It trims the imported modules from the user view but they are remains on the source.
+ * @param source - Specifies the source code that need to be trimmed.
+ * @param curModules - Specifies the module name to be remove.
+ * @returns - The remaining line after triming the module.
+ */
+function trimImportModules(source: string, curModule: string): string {
+    let allLines = source.split('\n');
+    let reqLine = null;
+    for (let i = 0; i < allLines.length; i++) {
+        let line = allLines[i];
+        if (line.includes(curModule)) {
+            reqLine = i;
+            break;
+        }
+    }
+    if (reqLine) {
+        allLines.splice(reqLine, 1);
+    }
+    return allLines.join('\n');
+}
 function sourceFileList(node: any): void {
     for (let samples of node.curViewDS) {
         if (samples.path == location.hash.split('/').slice(2).join('/')) {
@@ -295,6 +316,7 @@ function renderSourceTabContent(): void {
                 sampleContent = getStringWithOutDescription(sampleContent, /(\'|\")action-description/g)
                 sampleContent = getStringWithOutDescription(sampleContent, /(\'|\")description/g);
                 sampleContent = trimUseEffect(sampleContent, /React.useEffect/g);
+                sampleContent = trimImportModules(sampleContent, 'updateSampleSection');
                 sampleContent = sampleContent.replace(/&/g, '&amp;')
                     .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
                     fnObj[index].data = sampleContent;

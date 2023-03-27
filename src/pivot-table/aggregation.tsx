@@ -123,7 +123,7 @@ export class Aggregation extends SampleBase<{}, {}> {
                     </div>
                     <div className='col-lg-3 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' title='Properties' className='pivot-property-panel-table property-panel-table' style={{ width: '100%' }}>
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td>

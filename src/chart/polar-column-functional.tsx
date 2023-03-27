@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme
+    Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -66,17 +66,21 @@ function PolarColumn() {
                                 labelFormat: '{value}M'
                             }}
                             load={load.bind(this)}
+                            legendSettings= {{
+                                visible: true,
+                                enableHighlight: true
+                            }}
                             title="Top 10 Mobile Markets by Number of Subscriptions" loaded={onChartLoad.bind(this)}
-                            tooltip={{ enable: true, format: '${point.text} : <b>${point.y}%</b>' }}>
-                            <Inject services={[Legend, Category, PolarSeries, RadarSeries, Tooltip]} />
+                            tooltip={{ enable: true, header: "", format: '<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>' }}>
+                            <Inject services={[Legend, Category, PolarSeries, RadarSeries,Highlight, Tooltip]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y' name='Mobile Subscriptions'
+                                <SeriesDirective dataSource={data1} xName='text' yName='y' name='Population'
                                     type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }}>
                                 </SeriesDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y1' name='Population in Millions'
+                                <SeriesDirective dataSource={data1} xName='text' yName='y1' name='Mobile Subscriptions'
                                     type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }}>
                                 </SeriesDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y2' name='3G/4G Subscriptions'
+                                <SeriesDirective dataSource={data1} xName='text' yName='y2' name='3G/4G Subscriptions'
                                     type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }}>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
@@ -101,13 +105,12 @@ function PolarColumn() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates polar series with column type for mobile market subscriptions in different countries. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+                    This sample shows the top 10 mobile markets by the number of subscriptions in polar and radar charts using column series.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing the frequency, count, total or average of data in different categories.
-                        You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual data and its value.
+                    In this example, you can see how to render and configure polar and radar charts with a column series. Switching between polar and radar series can be done using <b>Series Type</b> in the property panel.
                     </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -119,7 +122,7 @@ function PolarColumn() {
                         <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                        More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
                     </p>
                 </div>
             </div>

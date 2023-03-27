@@ -5,14 +5,14 @@ import { DataManager, WebApiAdaptor, Query, DataOptions } from '@syncfusion/ej2-
 import { SampleBase } from '../common/sample-base';
 
 export class RemoteDataBinding extends SampleBase<{}, {}> {
-    public hostUrl = 'https://ej2services.syncfusion.com/production/web-services/';
+    public hostUrl = 'https://services.syncfusion.com/react/production/';
     public data = new DataManager({ url: this.hostUrl + 'api/Orders', adaptor: new WebApiAdaptor  });
     public gridInstance: GridComponent;
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent id="Grid" dataSource={this.data} ref={grid => this.gridInstance = grid} allowPaging={true} pageSettings={{ pageCount: 3 }} >
+                    <GridComponent id="Grid" dataSource={this.data} ref={grid => this.gridInstance = grid} allowPaging={true} >
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='CustomerID' headerText='Customer ID' width='160'></ColumnDirective>

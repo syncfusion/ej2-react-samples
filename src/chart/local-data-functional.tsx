@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    LineSeries, DateTime, Legend, ILoadedEventArgs, ChartTheme, Tooltip, Crosshair
+    LineSeries, DateTime, Legend, ILoadedEventArgs, ChartTheme, Tooltip, Crosshair, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -54,7 +54,6 @@ function LocalData() {
             <div className='control-section'>
                 <ChartComponent id='charts' style={{ textAlign: "center" }}
                     primaryXAxis={{
-                        title: 'Years',
                         skeleton: 'y',
                         majorGridLines: { width: 0 },
                         valueType: 'DateTime',
@@ -77,11 +76,12 @@ function LocalData() {
                         },
                         lineType: 'Vertical'
                     }}
+                    legendSettings={{ visible: true, enableHighlight: true }}
                     chartArea={{ border: { width: 0 } }}
                     tooltip={{ enable: true, shared: true }}
                     width={Browser.isDevice ? '100%' : '75%'}
                     title='Stock Price Analysis' loaded={onChartLoad.bind(this)}>
-                    <Inject services={[LineSeries, DateTime, Legend, Crosshair, Tooltip]} />
+                    <Inject services={[LineSeries, DateTime, Legend, Crosshair, Highlight, Tooltip]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Product X'
                             animation={{ enable: true }} type='Line'>
@@ -94,15 +94,13 @@ function LocalData() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates  plotting of local data about stock price analysis of two products for a certain period.
+                This sample shows the plotting of local data in a stock price analysis of two products over a period of time.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    The Chart supports data binding.
-                    The <code> <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#datasource-object---datamanager">dataSource</a></code> property can be assigned either with the array of JavaScript objects or instance of <code><a target="_blank"
-                        href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a></code>.</p>
-                <p>In this demo, the array of JavaScript objects is assigned as the data source to the Chart.</p>
+                The Charts control supports data binding. The <code>DataSource</code> property can be assigned either as list of objects or with instance of DataManager.</p>
+                <p>In this demo, the list of objects is assigned as the data source to the Charts control. The chart can be bound to IEnumerable, IQueryable, and ObservableCollection data sources.</p>
                 <p>
                     More information about the local data binding can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#local-data">documentation section</a>.
                 </p>

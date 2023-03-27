@@ -80,7 +80,7 @@ function StackedArea100() {
                         <code>StackingAreaSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information about area type series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                    More information on the area type series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
                     </p>
                 </div>
             </div>

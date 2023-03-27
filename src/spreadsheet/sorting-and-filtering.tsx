@@ -23,8 +23,8 @@ export class SortingAndFiltering extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section spreadsheet-control'>
-                    <SpreadsheetComponent ref={(ssObj) => { this.spreadsheet = ssObj }} openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open'
-                        saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save' created={this.onCreated.bind(this)}>
+                    <SpreadsheetComponent ref={(ssObj) => { this.spreadsheet = ssObj }} openUrl='https://services.syncfusion.com/react/production/api/spreadsheet/open'
+                        saveUrl='https://services.syncfusion.com/react/production/api/spreadsheet/save' created={this.onCreated.bind(this)}>
                         <SheetsDirective>
                             <SheetDirective name='Employee Details'>
                                 <RangesDirective>

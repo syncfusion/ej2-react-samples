@@ -10,16 +10,16 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 export let data1: any[] = [
-    { x: 2005, y: 21 }, { x: 2006, y: 60 },
-    { x: 2007, y: 45 }, { x: 2008, y: 50 },
-    { x: 2009, y: 74 }, { x: 2010, y: 65 },
-    { x: 2011, y: 85 }
+    { x: 2005, y: 21 }, { x: 2006, y: 24 },
+    { x: 2007, y: 36 }, { x: 2008, y: 38 },
+    { x: 2009, y: 54 }, { x: 2010, y: 57 },
+    { x: 2011, y: 70 }
 ];
 export let data2: any[] = [
-    { x: 2005, y: 21 }, { x: 2006, y: 22 },
-    { x: 2007, y: 36 }, { x: 2008, y: 34 },
-    { x: 2009, y: 54 }, { x: 2010, y: 55 },
-    { x: 2011, y: 60 }
+    { x: 2005, y: 28 }, { x: 2006, y: 44 },
+    { x: 2007, y: 48 }, { x: 2008, y: 50 },
+    { x: 2009, y: 66 }, { x: 2010, y: 78 },
+    { x: 2011, y: 84 }
 ];
 const SAMPLE_CSS = `
      .control-fluid {
@@ -55,36 +55,38 @@ function DataEdit() {
                             minimum: 0,
                             maximum: 100,
                             interval: 20,
-                            title: 'Sales',
-                            labelFormat: '{value}%',
+                            title: 'Production(Billion in kWh)',
+                            labelFormat: '{value}B',
                             lineStyle: { width: 0 },
                             majorTickLines: { width: 0 },
-                            minorTickLines: { width: 0 }
-
+                            minorTickLines: { width: 0 },
                         }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{ enable: true }}
                         width={Browser.isDevice ? '100%' : '75%'}
-                        title='Sales prediction of products' loaded={onChartLoad.bind(this)}>
+                        title='Electricity - Production' loaded={onChartLoad.bind(this)}>
                         <Inject services={[LineSeries, ColumnSeries, Category, DataEditing, Legend, Tooltip]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} dragSettings={{ enable: true }} xName='x' yName='y' name='Product A'
-                                width={2} marker={{ visible: true, width: 10, height: 10 }} type='Column'>
+                            <SeriesDirective dataSource={data1} dragSettings={{ enable: true }} xName='x' yName='y' name='Renewable'
+                                width={2} marker={{ visible: true, width: 7, height: 7 }} type='Column'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data2} dragSettings={{ enable: true }} xName='x' yName='y' name='Product B'
-                                width={2} marker={{ visible: true, width: 10, height: 10 }} type='Line'>
+                            <SeriesDirective dataSource={data2} dragSettings={{ enable: true }} xName='x' yName='y' name='Non-Renewable'
+                                width={2} marker={{ visible: true, width: 7, height: 7, isFilled: true }} type='Line'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates data editing feature in chart. Drag and drop the points to change the data values dynamically.
+                    This sample shows the behavior of the data editing in the chart. Drag and drop the points to change the data values dynamically.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        The draggable-points allows data to be moved around the chart. In addition to this, the module fires events such as dragStart, drag and dragComplete.
+                    In this example, you can see how to drag and drop the data points in the chart by setting Enable property in <code>ChartDataEditSettings</code> to <b>true</b>. Also, you can set data editing’s minimum and maximum range using the <code>MinY</code> and <code>MaxY</code> properties.
+                    </p>
+                    <p>
+                    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                     </p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use data editing, we need to inject
@@ -92,7 +94,7 @@ function DataEdit() {
                     </p> <br>
                     </br>
                     <p>
-                        More information on the Data Editing can be found in this <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-dataEditing.html#properties">documentation section</a>.
+                        More information on the Data Editing can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-editing/">documentation section</a>.
                     </p>
                 </div>
             </div>

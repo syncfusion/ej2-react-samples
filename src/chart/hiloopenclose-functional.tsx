@@ -9,7 +9,7 @@ import {
     Crosshair, ILoadedEventArgs, IAxisLabelRenderEventArgs
 } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
-import { chartData } from './stock-chart-data';
+import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
 import { getElement } from "@syncfusion/ej2-svg-base/src/tooltip/helper";
 export let zoomFactor : number;
@@ -59,18 +59,18 @@ function HiloOpenClose() {
                         }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{
-                            enable: true, shared: true
+                            enable: true, shared: true, header:""
                         }}
-                        axisLabelRender={axisLabelRender.bind(this)}
+                        
                         width={Browser.isDevice ? '100%' : '75%'}
                         legendSettings={{ visible: false }}
-                        crosshair={{ enable: true, lineType: 'Vertical',  line: { width: 0 }}}>
+                        crosshair={{ enable: true, lineType: 'Vertical'}}>
                         <Inject services={[HiloOpenCloseSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective type='HiloOpenClose'
-                                dataSource={chartData} animation={{ enable: true }}
+                                dataSource={chartValues} animation={{ enable: true }}
                                 bearFillColor='#2ecd71' bullFillColor='#e74c3d'
-                                xName='x' low='low' high='high' open='open' close='close' name='Apple Inc'>
+                                xName='period' low='low' high='high' open='open' close='close' name='Apple Inc'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -78,13 +78,12 @@ function HiloOpenClose() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample visualizes the AAPL historical data with default HILO Open Close series in the chart.
-                Tooltip and crosshair shows the information about the data and period.
+                    This sample visualizes the AAPL stock price with default HILO Open Close series in the chart. The tooltip and the crosshairs display the data and period information.
            </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the Hilo Open Close type charts. Hilo Open Close chart are used to represent the price movements in stock. You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect.
+                    In this example, you can see how to render and configure the HILO Open Close series. The horizontal lines on the left and the right are used to show the opening and closing values of the stock, and the vertical line represents both high and low values.
                    </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -96,7 +95,7 @@ function HiloOpenClose() {
                        <code>HiloOpenCloseSeries</code> module into <code>services</code>.
                   </p>
                     <p>
-                        More information on the column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the column series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/financial-types/#high-low-open-close">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -109,10 +108,6 @@ function HiloOpenClose() {
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
         replace(/-dark/i, "Dark") as ChartTheme;
     };   
-    function axisLabelRender(args: IAxisLabelRenderEventArgs): void {
-        if (args.axis.title === 'Price') {
-            args.text = '$' + args.text;
-        }
-    }
+    
 }
 export default HiloOpenClose;

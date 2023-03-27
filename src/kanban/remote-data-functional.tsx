@@ -13,7 +13,7 @@ function RemoteData() {
         updateSampleSection();
     }, [])
     let dataManger: DataManager = new DataManager({
-        url: 'https://js.syncfusion.com/ejServices/wcf/Northwind.svc/Tasks',
+        url: 'https://services.syncfusion.com/react/production/api/Kanban',
         crossDomain: true
     });
     function dialogOpen(args: DialogEventArgs): void {

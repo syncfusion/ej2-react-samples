@@ -68,7 +68,7 @@ function StackedStepArea() {
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the Stacked StepArea chart. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+                    In this example, you can see how to render and configure the stacked step area chart. Both <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/marker/">marker</a> and <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/chart/dataLabel/">dataLabel</a> are used to represent individual data and its value.
                 </p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
@@ -77,7 +77,7 @@ function StackedStepArea() {
                     <code>StackingStepArea</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the StackingStepArea series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                    More information on the area type series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
                 </p>
             </div>
         </div>

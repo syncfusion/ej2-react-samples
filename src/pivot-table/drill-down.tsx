@@ -6,7 +6,7 @@ import { DropDownListComponent, ChangeEventArgs, MultiSelectComponent, SelectEve
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent, ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs as Args } from '@syncfusion/ej2-buttons';
-import { SortModel } from '@syncfusion/ej2-pivotview/src/pivotview/model/datasourcesettings-model';
+import { SortModel } from '@syncfusion/ej2-pivotview/src/model/datasourcesettings-model';
 import * as pivotData from './pivot-data/Pivot_Data.json';
 import './sorting.css';
 

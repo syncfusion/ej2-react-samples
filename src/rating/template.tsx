@@ -11,7 +11,7 @@ export class Template extends SampleBase<{}, {}> {
                 <div id="template-rating-control">
                     <div className="rating-content" >
                         <label>Font Icon</label><br/>
-                        <RatingComponent id='rating1' emptyTemplate= {this.emptyFont} fullTemplate= {this.fullFont} value= {3.0}></RatingComponent>
+                        <RatingComponent id='rating1' emptyTemplate= {this.emptyFont} value= {3.0}></RatingComponent>
                     </div>
                     <div className="rating-content custom-svg">
                         <label>SVG Icon</label><br/>
@@ -40,11 +40,6 @@ export class Template extends SampleBase<{}, {}> {
         )
     }
     private emptyFont(): JSX.Element {
-        return (
-            <span className='custom-font rating-icon-heart'></span>
-        );
-    }
-    private fullFont(): JSX.Element {
         return (
             <span className='custom-font rating-icon-heart'></span>
         );

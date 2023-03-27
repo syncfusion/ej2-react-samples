@@ -6,7 +6,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 
 export class LoadingAnimation extends SampleBase<{}, {}> {
-    public data = new DataManager({ url: 'https://ej2services.syncfusion.com/production/web-services/api/UrlDataSource', adaptor: new UrlAdaptor  });
+    public data = new DataManager({ url: 'https://services.syncfusion.com/react/production/api/UrlDataSource', adaptor: new UrlAdaptor  });
     public gridInstance: GridComponent;
     public indicatortypes: { [key: string]: Object }[] = [
         { id: 'Shimmer', name: 'Shimmer' },

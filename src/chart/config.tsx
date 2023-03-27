@@ -52,6 +52,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the step area series.'
     },
     {
+        'path': 'chart/rangesteparea', 'component': 'RangeSteparea', 'name': 'Range Step Area', 'order': '03', 'type':'new', 'category': 'Area Charts',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the step area series.'
+    },
+    {
         'path': 'chart/rangearea', 'component': 'RangeArea', 'name': 'Range Area', 'order': '03', 'category': 'Area Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range area series.'
     },
@@ -152,120 +156,120 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the bubble series.'
     },
     {
-        'path': 'chart/waterfall', 'component': 'Waterfall', 'name': 'Waterfall', 'order': '07', 'category': 'Other Types',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the waterfall series.'
-    },
-    {
-        'path': 'chart/histogram', 'component': 'Histogram', 'name': 'Histogram', 'order': '07', 'category': 'Other Types',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the histogram series.'
-    },
-    {
-        'path': 'chart/box-whisker', 'component': 'BoxWhisker', 'name': 'Box and Whisker', 'order': '07', 'category': 'Other Types',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the box-whisker series.'
-    },
-    {
-        'path': 'chart/error-bar', 'component': 'ErrorBarChart', 'name': 'Error Bar', 'order': '07', 'category': 'Other Types',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the error-bar series.'
-    },
-    {
-        'path': 'chart/trend-lines', 'component': 'Trend', 'name': 'Trendlines', 'order': '07', 'category': 'Other Types',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the trend-lines chart.'
-    },
-    {
-        'path': 'chart/combination-series', 'component': 'CombinationSeries', 'name': 'Combination Series', 'order': '07', 'category': 'Other Types',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the combination series.'
-    },
-    {
-        'path': 'chart/pareto', 'component': 'ParetoChart', 'name': 'Pareto Chart', 'order': '07', 'category': 'Other Types',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure pareto charts.'
-    },
-    {
-        'path': 'chart/adindicator', 'component': 'AccumulationDistribution', 'name': 'Accumulation Distribution', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the adindicator series.'
-    },
-    {
-        'path': 'chart/atrindicator', 'component': 'ATR', 'name': 'ATR', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the atrindicator series.'
-    },
-    {
-        'path': 'chart/bollinger', 'component': 'Bollinger', 'name': 'Bollinger', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the bollinger series.'
-    },
-    {
-        'path': 'chart/ema', 'component': 'EMA', 'name': 'EMA', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the ema series.'
-    },
-    {
-        'path': 'chart/macd', 'component': 'Macd', 'name': 'MACD', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the macd series.'
-    },
-    {
-        'path': 'chart/momentum', 'component': 'Momentum', 'name': 'Momentum', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the momentum series.'
-    },
-    {
-        'path': 'chart/rsi', 'component': 'RSI', 'name': 'RSI', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the rsi series.'
-    },
-    {
-        'path': 'chart/sma', 'component': 'SMA', 'name': 'SMA', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the sma series.'
-    },
-    {
-        'path': 'chart/stochastic', 'component': 'Stochastic', 'name': 'Stochastic', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the stochastic series.'
-    },
-    {
-        'path': 'chart/tma', 'component': 'TMA', 'name': 'TMA', 'order': '08', 'category': 'Technical Indicators',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the tma series.'
-    },
-    {
-        'path': 'chart/performance', 'component': 'Performance', 'name': 'Benchmark', 'order': '09', 'category': 'Performance',
-        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the performance chart.'
-    },
-    {
-        'path': 'chart/default-pie', 'component': 'Pie', 'name': 'Pie', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/default-pie', 'component': 'Pie', 'name': 'Pie', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pie charts.'
     },
     {
-        'path': 'chart/pie-radius', 'component': 'PieRadius', 'name': 'Pie with Various Radius', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/pie-radius', 'component': 'PieRadius', 'name': 'Pie with Various Radius', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the various radius pie chart.'
     },
     {
-        'path': 'chart/doughnut', 'component': 'AccumulationDoughnut', 'name': 'Doughnut', 'order': '10', 'category': 'Accumulation Charts', 
+        'path': 'chart/doughnut', 'component': 'AccumulationDoughnut', 'name': 'Doughnut', 'order': '07', 'type':'update', 'category': 'Accumulation Charts', 
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the various radius pie chart.'
     },
     {
-        'path': 'chart/pyramid', 'component': 'Pyramid', 'name': 'Pyramid', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/pyramid', 'component': 'Pyramid', 'name': 'Pyramid', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the pyramid charts.'
     },
     {
-        'path': 'chart/funnel', 'component': 'Funnel', 'name': 'Funnel', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/funnel', 'component': 'Funnel', 'name': 'Funnel', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the funnel charts.'
     },
     {
-        'path': 'chart/pie-legend', 'component': 'Doughnut', 'name': 'Pie with Legend', 'order': '10','category': 'Accumulation Charts',
+        'path': 'chart/pie-legend', 'component': 'Doughnut', 'name': 'Pie with Legend', 'order': '07','category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the doughnut charts.'
     },
     {
-        'path': 'chart/semi-pie', 'component': 'SemiPie', 'name': 'Semi Pie', 'type':'update', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/semi-pie', 'component': 'SemiPie', 'name': 'Semi Pie','order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render semi-pie and doughnut charts.'
     },
     {
-        'path': 'chart/smartlabels', 'component': 'SmartLabels', 'name': 'Smart Labels', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/smartlabels', 'component': 'SmartLabels', 'name': 'Smart Labels', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to arrange the labels smartly without overlapping with each other.'
     },
     {
-        'path': 'chart/drilldown', 'component': 'Drilldown', 'name': 'Drilldown', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/drilldown', 'component': 'Drilldown', 'name': 'Drilldown', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to achieve the drill-down concept using pie charts.'
     },
     {
-        'path': 'chart/grouping', 'component': 'Grouping', 'name': 'Grouping', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/grouping', 'component': 'Grouping', 'name': 'Grouping', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to group points in pie charts.'
     },
     {
-        'path': 'chart/pie-empty-point', 'component': 'PieEmptyPoint', 'name': 'Empty Points', 'order': '10', 'category': 'Accumulation Charts',
+        'path': 'chart/pie-empty-point', 'component': 'PieEmptyPoint', 'name': 'Empty Points', 'order': '07', 'category': 'Accumulation Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
+    },
+    {
+        'path': 'chart/waterfall', 'component': 'Waterfall', 'name': 'Waterfall', 'order': '08', 'category': 'Other Types',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the waterfall series.'
+    },
+    {
+        'path': 'chart/histogram', 'component': 'Histogram', 'name': 'Histogram', 'order': '08', 'category': 'Other Types',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the histogram series.'
+    },
+    {
+        'path': 'chart/box-whisker', 'component': 'BoxWhisker', 'name': 'Box and Whisker', 'order': '08', 'category': 'Other Types',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the box-whisker series.'
+    },
+    {
+        'path': 'chart/error-bar', 'component': 'ErrorBarChart', 'name': 'Error Bar', 'type':'update', 'order': '08', 'category': 'Other Types',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the error-bar series.'
+    },
+    {
+        'path': 'chart/trend-lines', 'component': 'Trend', 'name': 'Trendlines', 'order': '08', 'category': 'Other Types',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the trend-lines chart.'
+    },
+    {
+        'path': 'chart/combination-series', 'component': 'CombinationSeries', 'name': 'Combination Series', 'order': '08', 'category': 'Other Types',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the combination series.'
+    },
+    {
+        'path': 'chart/pareto', 'component': 'ParetoChart', 'name': 'Pareto Chart', 'order': '08', 'category': 'Other Types',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure pareto charts.'
+    },
+    {
+        'path': 'chart/adindicator', 'component': 'AccumulationDistribution', 'name': 'Accumulation Distribution', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the adindicator series.'
+    },
+    {
+        'path': 'chart/atrindicator', 'component': 'ATR', 'name': 'ATR', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the atrindicator series.'
+    },
+    {
+        'path': 'chart/bollinger', 'component': 'Bollinger', 'name': 'Bollinger', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the bollinger series.'
+    },
+    {
+        'path': 'chart/ema', 'component': 'EMA', 'name': 'EMA', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the ema series.'
+    },
+    {
+        'path': 'chart/macd', 'component': 'Macd', 'name': 'MACD', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the macd series.'
+    },
+    {
+        'path': 'chart/momentum', 'component': 'Momentum', 'name': 'Momentum', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the momentum series.'
+    },
+    {
+        'path': 'chart/rsi', 'component': 'RSI', 'name': 'RSI', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the rsi series.'
+    },
+    {
+        'path': 'chart/sma', 'component': 'SMA', 'name': 'SMA', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the sma series.'
+    },
+    {
+        'path': 'chart/stochastic', 'component': 'Stochastic', 'name': 'Stochastic', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the stochastic series.'
+    },
+    {
+        'path': 'chart/tma', 'component': 'TMA', 'name': 'TMA', 'order': '09', 'category': 'Technical Indicators',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the tma series.'
+    },
+    {
+        'path': 'chart/performance', 'component': 'Performance', 'name': 'Benchmark', 'order': '10', 'category': 'Performance',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the performance chart.'
     },
     {
         'path': 'chart/polar-line', 'component': 'PolarLine', 'name': 'Line', 'order': '11', 'category': 'Polar Radar',

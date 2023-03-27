@@ -10,28 +10,42 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
-import { fabricColors, materialColors, bootstrapColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
+import {fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors  } from './theme-color';
 export let labelRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'material';
+    selectedTheme = selectedTheme ? selectedTheme : 'Material';
     if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-        args.fill = fabricColors[args.point.index % 10];
+        args.fill = pointFabricColors[args.point.index % 10];;
+    } else if (selectedTheme === 'material-dark') {
+        args.fill = pointMaterialDarkColors[args.point.index % 10];;
     } else if (selectedTheme === 'material') {
-        args.fill = materialColors[args.point.index % 10];
+        args.fill = pointMaterialColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5-dark') {
+        args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5') {
+        args.fill = pointBootstrap5Colors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap4') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap-dark') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
     } else if (selectedTheme === 'highcontrast') {
-        args.fill = highContrastColors[args.point.index % 10];
-    } else if (selectedTheme === 'fluent') {
-        args.fill = fluentColors[args.point.index % 10];
+        args.fill = pointHighContrastColors[args.point.index % 10];
     } else if (selectedTheme === 'fluent-dark') {
-        args.fill = fluentDarkColors[args.point.index % 10];
-    } else {
-        args.fill = bootstrapColors[args.point.index % 10];
+        args.fill = pointFluentDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent') {
+        args.fill = pointFluentColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind-dark') {
+        args.fill = pointTailwindDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind') {
+        args.fill = pointTailwindColors[args.point.index % 10];
     }
 };
 export let data: any[] = [
-    { x: '2008', y: 15.1 }, { x: '2009', y: 16 }, { x: '2010', y: 21.4 },
-    { x: '2011', y: 18 }, { x: '2012', y: 16.2 }, { x: '2013', y: 11 },
-    { x: '2014', y: 7.6 }, { x: '2015', y: 1.5 }
+    { x: '2008', y: 1.5 }, { x: '2009', y: 7.6 }, { x: '2010', y: 11 },
+    { x: '2011', y: 16.2 }, { x: '2012', y: 18 }, { x: '2013', y: 21.4 },
+    { x: '2014', y: 16 }, { x: '2015', y: 17.1 }
 ]
 const SAMPLE_CSS = `
      .control-fluid {
@@ -87,7 +101,7 @@ function InversedAxis() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates inversed axis in chart to plot exchange rate over a period.
+                This sample uses an inverse axis in a chart to plot an exchange rate over a period of time.
                 </p>
             </div>
             <div id="description">

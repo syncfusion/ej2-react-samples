@@ -83,6 +83,11 @@ function Pie() {
                 </div>
                 <div id="description">
                     <p> In this example, you can see how to render and configure a pie chart. The pie chart is a circular graphic, which is ideal for displaying categories as a proportion or a percentage of the whole . The radius of the pie chart can be customized using the <code>Radius</code> property.</p>
+                    <br></br>
+                    <p><b>Injecting Module</b></p>
+                    <p>
+                        Accumulation Chart component features are segregated into individual feature-wise modules. To use pie chart, we need to inject <code>PieSeries</code> module into <code>services</code>.
+                    </p>
                     <p>
                         More information on the pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#pie-chart">documentation section</a>.
                     </p>

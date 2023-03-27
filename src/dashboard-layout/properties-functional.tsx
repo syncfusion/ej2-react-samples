@@ -35,13 +35,15 @@ function Properties() {
     }
 
     function onChange(args: any): void {
-        if (args.event.target.previousElementSibling.id === 'floating') {
+        let targetElement = args.event.target;
+        let previousElement = targetElement.previousElementSibling;
+        let nextElement = targetElement.nextElementSibling;
+        if ((previousElement !== null && previousElement.id === 'floating') || nextElement !== null && nextElement.previousElementSibling.id === 'floating') {
             dashboardObj.allowFloating = args.checked;
-        }
-        if (args.event.target.previousElementSibling.id === 'resizing') {
+         }
+         if ((previousElement !== null && previousElement.id === 'resizing') || nextElement !== null && nextElement.previousElementSibling.id === 'resizing') {
             dashboardObj.allowResizing = args.checked;
-        }
-
+         }
     }
     let dashboardObj: DashboardLayoutComponent;
     let txtObj: NumericTextBoxComponent;

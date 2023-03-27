@@ -141,7 +141,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                         </span>
                         <span id="performanceTime">Time Taken: 0 sec</span>
                     </div>
-                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} enableVirtualization={true} width={860} height={300}
+                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} enableVirtualization={true} width={Browser.isDevice ? '100%' : 860} height={300}
                         gridSettings={{ columnWidth: 140 }} dataBound={this.onDataBound}>
                         <Inject services={[VirtualScroll]} />
                     </PivotViewComponent>

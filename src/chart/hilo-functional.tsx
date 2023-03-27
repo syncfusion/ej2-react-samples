@@ -9,19 +9,12 @@ import {
     Crosshair, ChartTheme
 } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
-import { chartData } from './financial-data';
+import { chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
      }`;
-let date1: Date = new Date('2017, 1, 1');
-let returnValue: any = chartData.filter(filterValue);
-function filterValue(value: { x: Date, high: number, low: number }): any {
-    if (value.x >= date1) {
-        return value.x, value.high, value.low;
-    }
-}
 function Hilo() {
     React.useEffect(() => {
         updateSampleSection();
@@ -35,15 +28,13 @@ function Hilo() {
                     <ChartComponent id='charts' load={load.bind(this)} style={{ textAlign: "center" }}
                         primaryXAxis={{
                             valueType: 'DateTime',
-                            minimum: new Date('2016, 12, 31'),
-                            maximum: new Date('2017, 9, 30'),
                             crosshairTooltip: { enable: true },
                             edgeLabelPlacement: 'Shift',
                             majorGridLines: { width: 0 }
                         }}
                         primaryYAxis={{
                             title: 'Price',
-                            minimum: 100,
+                            minimum: 10,
                             maximum: 180,
                             interval: 20,
                             labelFormat: '${value}',
@@ -52,14 +43,14 @@ function Hilo() {
                         }}
                         legendSettings={{ visible: false }}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true, shared: true }}
-                        crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
+                        tooltip={{ enable: true, shared: true, enableMarker: false, header: "" }}
+                        crosshair={{ enable: false, lineType: 'Vertical', line: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '75%'}
 
                         title='AAPL Historical' loaded={onChartLoad.bind(this)}>
                         <Inject services={[HiloSeries, Tooltip, DateTime, Logarithmic, Crosshair, Zoom]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={returnValue} xName='x' yName='low' name='Apple Inc' type='Hilo' low='low'
+                            <SeriesDirective dataSource={chartValues} xName='period' yName='low' name='Apple Inc' type='Hilo' low='low'
                                 high='high'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
@@ -67,13 +58,12 @@ function Hilo() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample visualizes the AAPL historical data with default HILO series in the chart.
-                        Tooltip and crosshair shows the information about the data and period.
+                    This React Hilo Chart example visualizes the AAPL stock price with a default Hilo series in the chart. The tooltip and crosshair show information about the stock price.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the Hilo type charts. Hilo type chart is used to represent the price movements in stock. You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect.
+                    In this example, you can see how to render and configure the HILO series. This series shows the high and low stock values over a given period of time.
                     </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -85,7 +75,7 @@ function Hilo() {
                         <code>HiloSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the Hilo series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the Hilo series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/financial-types/#hilo">documentation section</a>.
                     </p>
                 </div>
             </div >

@@ -95,13 +95,12 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                 <p>
-                This sample demonstrates polar series with stacking area type for GDP of different countries in recent years. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+                This sample shows GDP growth of various countries for a few years in the polar and radar charts using the stacked area series.
             </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the stacking area type charts. Stacks the series on top of another series to avoid the overlapping of series with one another, when rendering more than one area series in same chart.
-                    You can use <code>fill</code> properties to customize the stacked area. <code>dataLabel</code> is used to represent individual data and its value.
+                    In this example, you can see how to render and configure polar and radar charts with stacking area series. Switching between polar and radar series can be done using <code>Series Type</code> in the property panel.
                 </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -110,7 +109,7 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
                     <code>StackingAreaSeries</code>, <code>PolarSeries</code> and <code>SRadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                        More information on the area series can be found in this &nbsp;
+                        More information on the polar series can be found in this &nbsp;
                   <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
               </p>
                 </div>

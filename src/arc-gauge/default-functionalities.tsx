@@ -54,7 +54,7 @@
          <style>
            {SAMPLE_CSS}
          </style>
-         <div className='control-section' style={{ display: 'flex', justifyContent: 'center' }}>
+         <div className='control-section'>
            <CircularGaugeComponent load={this.load.bind(this)} id="gauge" background="transparent" height="500px" title="Female (% usage) on popular social network" titleStyle={{ size: '18px', fontFamily: 'inherit' }} >
              <Inject services={[Annotations]} />
              <AxesDirective>
@@ -76,15 +76,15 @@
                  </PointersDirective>
                  <RangesDirective>
                    <RangeDirective start={0} end={68} radius="94%" color="#c8eab7" startWidth={22} endWidth={22} />
-                   <RangeDirective start={74} end={100} radius="90%" color="#7a7f82" startWidth={1} endWidth={1} />
+                   <RangeDirective start={74} end={100} radius="89%" color="#7a7f82" startWidth={1} endWidth={1} />
                    <RangeDirective start={0} end={43} radius="80%" color="#82cdbc" startWidth={22} endWidth={22} />
-                   <RangeDirective start={49} end={100} radius="76%" color="#7a7f82" startWidth={1} endWidth={1} />
+                   <RangeDirective start={49} end={100} radius="75%" color="#7a7f82" startWidth={1} endWidth={1} />
                    <RangeDirective start={0} end={21} radius="66%" color="#43b6c4" startWidth={22} endWidth={22} />
-                   <RangeDirective start={28} end={100} radius="63%" color="#7a7f82" startWidth={1} endWidth={1} />
+                   <RangeDirective start={28} end={100} radius="61%" color="#7a7f82" startWidth={1} endWidth={1} />
                    <RangeDirective start={0} end={75} radius="52%" color="#1d91bf" startWidth={22} endWidth={22} />
-                   <RangeDirective start={85} end={100} radius="49%" color="#7a7f82" startWidth={1} endWidth={1} />
+                   <RangeDirective start={85} end={100} radius="47%" color="#7a7f82" startWidth={1} endWidth={1} />
                    <RangeDirective start={0} end={44} radius="38%" color="#205ea8" startWidth={22} endWidth={22} />
-                   <RangeDirective start={55} end={100} radius="35%" color="#7a7f82" startWidth={1} endWidth={1} />
+                   <RangeDirective start={55} end={100} radius="34%" color="#7a7f82" startWidth={1} endWidth={1} />
                  </RangesDirective>
                </AxisDirective>
              </AxesDirective>

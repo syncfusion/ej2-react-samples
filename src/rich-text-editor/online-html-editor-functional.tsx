@@ -112,8 +112,8 @@ function OnlineHtmlEditor() {
                 <div id="rte-online-sample-view">
                     <SplitterComponent height='450px' width='100%' resizing={onResizing.bind(this)}>
                         <PanesDirective>
-                            <PaneDirective resizable={true} size='50%' min="60px" cssClass='pane1' content={content1.bind(this)} ></PaneDirective>
-                            <PaneDirective cssClass='pane2' content={content2.bind(this)}></PaneDirective>
+                            <PaneDirective resizable={true} size='50%' min="400px" cssClass='pane1' content={content1.bind(this)} ></PaneDirective>
+                            <PaneDirective min="60px" cssClass='pane2' content={content2.bind(this)}></PaneDirective>
                         </PanesDirective>
                     </SplitterComponent>
                 </div>

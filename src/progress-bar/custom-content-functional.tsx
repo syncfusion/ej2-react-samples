@@ -93,6 +93,7 @@ function ProgressBarCustomContents() {
         annotate.refresh();
     }
     let progressCompleted = (args: IProgressValueEventArgs) => {
+        if (pausePlay) {
         clearTimeout(clearTimeout1);
         clearTimeout1 = +setTimeout(
             () => {
@@ -101,9 +102,11 @@ function ProgressBarCustomContents() {
                 pausePlay.dataBind();
             },
             2000);
+        }
     }
 
     let progressCompleted2 = (args: IProgressValueEventArgs) => {
+        if (downloadProgress) {
         clearTimeout(clearTimeout2);
         clearTimeout2 = +setTimeout(
             () => {
@@ -112,6 +115,7 @@ function ProgressBarCustomContents() {
                 downloadProgress.dataBind();
             },
             2000);
+        }
     }
 
 

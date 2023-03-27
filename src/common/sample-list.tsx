@@ -74,16 +74,17 @@ import { SpeedDialSampleOrder } from "../speed-dial/config";
 import { MentionSampleOrder } from '../mention/config';
 import { SkeletonSampleOrder} from '../skeleton/config';
 import { RatingSampleOrder } from '../rating/config';
+import { RibbonSampleOrder } from '../ribbon/config';
 
 export let samplesList: any = [
     {
         'name': 'Data Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
     },
     {
-        'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder, 'type': 'update'
+        'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
     },
     {
-        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid', 'type': 'update'
+        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
     },
     {
         'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder
@@ -95,7 +96,7 @@ export let samplesList: any = [
         'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
     },
     {
-        'name': 'Arc Gauge', 'category': 'Data Visualization', 'type': 'new', 'order': '04', 'path': 'arc-gauge', 'samples': ArcGaugeSampleOrder, 
+        'name': 'Arc Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'arc-gauge', 'samples': ArcGaugeSampleOrder, 
     },
     {
         'name': 'Circular Gauge', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
@@ -140,7 +141,7 @@ export let samplesList: any = [
         'name': 'PDF Viewer', 'category': 'File Viewers & Editors', 'order': '01', 'path': 'pdfviewer', 'samples': PdfViewerSampleOrder, 'ftName': 'pdfviewer'
     },
     {
-        'name': 'RichTextEditor', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
+        'name': 'RichTextEditor', 'type': 'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'rich-text-editor', 'samples': RichTextEditorSampleOrder
     },
     {
         'name': 'DocumentEditor', 'type': 'update', 'category': 'File Viewers & Editors', 'order': '04', 'path': 'document-editor', 'samples': DocumentEditorSampleOrder
@@ -149,7 +150,7 @@ export let samplesList: any = [
         'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'type': 'preview', 'samples': ImageEditorSampleOrder
     },
     {
-        'name': 'Scheduler', 'category': 'Calendars', 'type':'update', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
+        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
     },
     {
         'name': 'Calendar', 'category': 'Calendars', 'order': '04', 'path': 'calendar', 'samples': CalendarSampleOrder
@@ -227,13 +228,16 @@ export let samplesList: any = [
         'name': 'Tabs', 'category': 'Navigation', 'path': 'tab', 'samples': TabSampleOrder
     },
     {
-        'name': 'Toolbar', 'category': 'Navigation', 'type':'update', 'path': 'toolbar', 'samples': ToolbarSampleOrder
+        'name': 'Toolbar', 'category': 'Navigation', 'path': 'toolbar', 'samples': ToolbarSampleOrder
     },
     {
         'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
     },
     {
         'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
+    },
+    {
+        'name': 'Ribbon', 'category': 'Navigation', 'path':'ribbon', 'samples': RibbonSampleOrder, 'ftName': 'ribbon', 'type': 'preview'
     },
     {
         'name': 'Badge', 'category': 'Notifications', 'order': '02', 'path': 'badge', 'samples': BadgeSampleOrder
@@ -245,7 +249,7 @@ export let samplesList: any = [
         'name': 'Toast', 'category': 'Notifications', 'order': '03', 'path': 'toast', 'samples': ToastSampleOrder
     },
     {
-        'name': 'Progress Bar', 'category': 'Notifications', 'order': '04', 'path': 'progress-bar', 'samples': ProgressBarSampleOrder
+        'name': 'Progress Bar', 'category': 'Notifications', 'order': '04', 'path': 'progress-bar', "type": "update", 'samples': ProgressBarSampleOrder
     },    
     {
         'name': "Skeleton", 'category': 'Notifications' , 'order': '04', 'path': "skeleton", "type": "preview", 'samples': SkeletonSampleOrder
@@ -275,7 +279,7 @@ export let samplesList: any = [
         'name': 'In-place Editor', 'category': 'Inputs', 'path': 'inplace-editor', 'samples': InPlaceEditorSampleOrder       
     },
     {
-        'name': 'Rating', 'category': 'Inputs', 'order': '04', 'path': 'rating', 'samples': RatingSampleOrder, 'ftName' :'rating', 'type': 'preview' 
+        'name': 'Rating', 'category': 'Inputs', 'order': '04', 'path': 'rating', 'samples': RatingSampleOrder, 'ftName' :'rating'
     },
     {
         'name': 'Avatar', 'category': 'Layout', 'path': 'avatar', 'samples': AvatarSampleOrder

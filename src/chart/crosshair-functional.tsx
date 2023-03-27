@@ -75,7 +75,7 @@ function CrosshairChart() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates crosshair feature in chart. To see crosshair, hover or long press the chart.
+                    This sample depicts the crosshair behavior in the charts. To view the crosshair and its tooltip, hover over the chart or tap on it in touch-enabled devices.
                     </p>
                 </div>
                 <div id="description">
@@ -93,7 +93,7 @@ function CrosshairChart() {
                         <code>Crosshair</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the Crosshair can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-crosshairSettings.html">documentation section</a>.
+                        More information on the Crosshair can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/cross-hair-and-track-ball/#trackball">documentation section</a>.
                     </p>
                 </div>
             </div>

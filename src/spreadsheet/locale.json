@@ -269,8 +269,16 @@
             "NotEqual": "Nicht gleich",
             "Equal": "Gleich",
             "Contains": "Enthält",
+            "NotContains": "Enthält nicht",
             "EndsWith": "Endet mit",
+            "NotEndsWith": "Endet nicht mit",
             "StartsWith": "Beginnt mit",
+            "NotStartsWith": "Beginnt nicht mit",
+            "Like": "Wie",
+            "IsNull": "Null",
+            "NotNull": "Nicht null",
+            "IsEmpty": "Leer",
+            "IsNotEmpty": "Nicht leer",
             "ClearButton": "Klar",
             "FilterButton": "Filter",
             "CancelButton": "Absagen",
@@ -531,7 +539,8 @@
             "FillWithoutFormatting": "Ohne Formatierung ausfüllen",
             "CustomFormat": "Benutzerdefinierte Zahlenformate",
             "CustomFormatPlaceholder": "Geben Sie ein benutzerdefiniertes Format ein oder wählen Sie es aus",
-            "CustomFormatTypeList": "Typ"
+            "CustomFormatTypeList": "Typ",
+            "CellReferenceTypoError": "Wir haben einen Tippfehler in Ihrem Zellbezug gefunden. Möchten Sie diesen Verweis wie folgt korrigieren?"
         }
     },
     "ar": {
@@ -804,8 +813,16 @@
             "NotEqual": "غير متساوي",
             "Equal": "متساوي",
             "Contains": "يحتوعلى",
+            "NotContains": "لا يحتوي على",
             "EndsWith": "ينتهي بـ",
+            "NotEndsWith": "لا تنتهي بـ",
             "StartsWith": "ابدا ب",
+            "NotStartsWith": "لا تبدأ بـ",
+            "Like": "يحب",
+            "IsNull": "باطل",
+            "NotNull": "غير فارغة",
+            "IsEmpty": "فارغ",
+            "IsNotEmpty": "ليس فارغًا",
             "ClearButton": "صافي",
             "FilterButton": "منقي",
             "CancelButton": "يلغي",
@@ -1066,7 +1083,8 @@
             "FillWithoutFormatting": "املأ بدون تنسيق",
             "CustomFormat": "تنسيقات الأرقام المخصصة",
             "CustomFormatPlaceholder": "اكتب أو حدد تنسيقًا مخصصًا",
-            "CustomFormatTypeList": "يكتب"
+            "CustomFormatTypeList": "يكتب",
+            "CellReferenceTypoError": "وجدنا خطأ مطبعي في مرجع الخلية الخاصة بك. هل تريد تصحيح هذا المرجع على النحو التالي؟"
         }
     },
     "en": {
@@ -1339,8 +1357,16 @@
             "NotEqual": "Not Equal",
             "Equal": "Equal",
             "Contains": "Contains",
+            "NotContains": "Does Not Contains",
             "EndsWith": "Ends With",
+            "NotEndsWith": "Does Not End With",
             "StartsWith": "Starts With",
+            "NotStartsWith": "Does Not Start With",
+            "Like": "Like",
+            "IsNull": "Null",
+            "NotNull": "Not Null",
+            "IsEmpty": "Empty",
+            "IsNotEmpty": "Not Empty",
             "ClearButton": "Clear",
             "FilterButton": "Filter",
             "CancelButton": "Cancel",
@@ -1601,7 +1627,8 @@
             "FillWithoutFormatting": "Fill Without Formatting",
             "CustomFormat": "Custom Number Formats",
             "CustomFormatPlaceholder": "Type or Select a custom format",
-            "CustomFormatTypeList": "Type"
+            "CustomFormatTypeList": "Type",
+            "CellReferenceTypoError": "We found a typo in your cell reference. Do you want to correct this reference as follows?"
         }
     },
     "zh": {
@@ -1874,8 +1901,16 @@
             "NotEqual": "不相等",
             "Equal": "平等的",
             "Contains": "包含",
+            "NotContains": "不包含",
             "EndsWith": "以。。結束",
+            "NotEndsWith": "不結束於",
             "StartsWith": "以。。開始",
+            "NotStartsWith": "不以開頭",
+            "Like": "喜歡",
+            "IsNull": "無效的",
+            "NotNull": "不為空",
+            "IsEmpty": "空的",
+            "IsNotEmpty": "不是空的",
             "ClearButton": "清除",
             "FilterButton": "篩選",
             "CancelButton": "取消",
@@ -2136,7 +2171,8 @@
             "FillWithoutFormatting": "無格式填充",
             "CustomFormat": "自定義數字格式",
             "CustomFormatPlaceholder": "鍵入或選擇自定義格式",
-            "CustomFormatTypeList": "類型"
+            "CustomFormatTypeList": "類型",
+            "CellReferenceTypoError": "我們在您的單元格引用中發現了拼寫錯誤。是否要按如下方式更正此引用？"
         }
     },
     "fr-CH": {
@@ -2409,8 +2445,16 @@
             "NotEqual": "Inégal",
             "Equal": "Égal",
             "Contains": "Contient",
+            "NotContains": "Ne contient pas",
             "EndsWith": "Se termine par",
+            "NotEndsWith": "Ne se termine pas par",
             "StartsWith": "Commence avec",
+            "NotStartsWith": "Ne commence pas par",
+            "Like": "Comme",
+            "IsNull": "Nul",
+            "NotNull": "Non nul",
+            "IsEmpty": "Vide",
+            "IsNotEmpty": "Pas vide",
             "ClearButton": "Dégager",
             "FilterButton": "Filtre",
             "CancelButton": "Annuler",
@@ -2671,7 +2715,8 @@
             "FillWithoutFormatting": "Remplir sans formater",
             "CustomFormat": "Formats de nombre personnalisés",
             "CustomFormatPlaceholder": "Tapez ou sélectionnez un format personnalisé",
-            "CustomFormatTypeList": "Taper"
+            "CustomFormatTypeList": "Taper",
+            "CellReferenceTypoError": "Nous avons trouvé une faute de frappe dans votre référence de cellule. Voulez-vous corriger cette référence comme suit ?"
         }
     }
 }

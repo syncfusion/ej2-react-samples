@@ -9,7 +9,6 @@ import {
     ChartTheme, Category, ITextRenderEventArgs
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { updateSampleSection } from '../common/sample-base';
 let data1: Object[] = [
     { sports: "Tennis", boys: 50, girls: 38 },
     { sports: "Badminton", boys: 30, girls: 40 },
@@ -129,7 +128,7 @@ let fluentMan: string = '<div style="background-color:#614570;border-radius: 3px
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
-    '${point.y}M </span></div></div>';
+    '${point.y} </span></div></div>';
 let fluentWomen: string = '<div style="background-color:#4C6FB1;border-radius: 3px;">' +
     '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
     '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
@@ -150,9 +149,6 @@ const SAMPLE_CSS = `
          padding: 0px !important;
      }`;
 function DataLabelTemplate() {
-    React.useEffect(() => {
-        updateSampleSection();
-    }, [])
     return (
         <div className='control-pane'>
             <style>
@@ -211,25 +207,6 @@ function DataLabelTemplate() {
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
-            </div>
-            <div id="action-description">
-                <p>
-                    This sample illustrates data label template support in charts. Each data label for each point is rendered using the template.
-                </p>
-            </div>
-            <div id="description">
-                <p>
-                The React Charts data label template feature allows you to change the appearance and behavior of the data label for each data point using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-labels/#data-label-template"></a><code>Template</code> property in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-labels/"></a> <code>ChartDataLabel</code>.
-                </p>
-                <br></br>
-                <p><b>Injecting Module</b></p>
-                <p>
-                    Chart component features are segregated into individual feature-wise modules. To use DataLabel, we need to inject 
-                    <code>DataLabel</code> module into <code>services</code>.
-                </p>
-                <p>
-                    More information on the Crosshair can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-dataLabelSettingsModel.html">documentation section</a>.
-                </p>
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { closest, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Filter, IFilter, VirtualScroll, Sort } from '@syncfusion/ej2-react-grids';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import { DataManager, Query, UrlAdaptor } from '@syncfusion/ej2-data';
 import './grid-overview.css';
@@ -23,16 +24,7 @@ function statusTemplate(props): any {
   </div>}</div>);
 }
 function ratingTemplate(props): any {
-  let ele = [];
-  for (let i = 0; i < 5; i++) {
-    if (i < props.Rating) {
-      ele.push((<span className="star checked"/> as never));
-    }          
-    else {
-      ele.push((<span className="star"/> as never));
-    }
-  }
-  return (<div className="rating">{ele}</div>);
+  return (<RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true} />);
 }
 function progessTemplate(props): any {
   let percentage: number = props[props.column.field];
@@ -84,16 +76,7 @@ function trustdetails(props): any {
   return (<div><img style={loc} src={Trustworthiness} /> <span id="Trusttext">{props.Trustworthiness}</span></div>);
 }
 function ratingDetails(props): any {
-  let ele = [];
-  for (var i = 0; i < 5; i++) {
-    if (i < props.Rating) {
-      ele.push(<span className="star checked"></span>);
-    }
-    else {
-      ele.push(<span className="star"></span>)
-    }
-  }
-  return <div className="rating">{ele}</div>;
+  return (<RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true} />);
 }
 function statusdetails(props): any {
   if (props.Status === "Select All") {
@@ -149,7 +132,7 @@ function OverView() {
       }
     }
   }
-  const hostUrl: string = 'https://ej2services.syncfusion.com/production/web-services/';
+  const hostUrl: string = 'https://services.syncfusion.com/react/production/';
   const data: DataManager = new DataManager({ url: hostUrl + 'api/UrlDataSource', adaptor: new UrlAdaptor  });
   const query = new Query().addParams('dataCount', '1000');
   function onChange(): void {
@@ -229,7 +212,7 @@ function OverView() {
           <span id='msg'></span>
           <br />
         </div>
-        <GridComponent id="overviewgrid" dataSource={data} loadingIndicator= {{ indicatorType: 'Shimmer' }} query={query} enableHover={false} enableVirtualization={true} rowHeight={38} height='600' ref={(g) => { gridInstance = g }} actionComplete={onComplete.bind(this)} load={onLoad.bind(this)} dataBound={onDataBound.bind(this)} filterSettings={gridFilter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={select} enableHeaderFocus={true}>
+        <GridComponent id="overviewgrid" dataSource={data} loadingIndicator= {{ indicatorType: 'Shimmer' }} query={query} enableHover={false} enableVirtualization={true} rowHeight={38} height='400' ref={(g) => { gridInstance = g }} actionComplete={onComplete.bind(this)} load={onLoad.bind(this)} dataBound={onDataBound.bind(this)} filterSettings={gridFilter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={select} enableHeaderFocus={true}>
           <ColumnsDirective>
             <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false} width='60'></ColumnDirective>
             <ColumnDirective field='EmployeeID' visible={false} headerText='Employee ID' isPrimaryKey={true} width='130'></ColumnDirective>

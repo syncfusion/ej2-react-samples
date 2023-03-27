@@ -5,49 +5,52 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, StripLineSettingsModel,
-    Legend, Category, LineSeries, Tooltip, ILoadedEventArgs, StripLine, ChartTheme
+    Legend, Category, LineSeries, Tooltip, ILoadedEventArgs, StripLine, ChartTheme, SplineAreaSeries, SplineSeries, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-let xAxisStripLine: StripLineSettingsModel[] = [
-    {
-        start: -1, end: 1.5, text: 'Winter', color: 'url(#winter)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        start: 1.5, end: 3.5, text: 'Summer', color: 'url(#summer)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        start: 3.5, end: 4.5, text: 'Spring', color: 'url(#spring)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        start: 4.5, end: 5.5, text: 'Autumn', color: 'url(#autumn)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        start: 5.5, end: 7, text: 'Winter', color: 'url(#winter)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        startFromAxis: true, size: 2, isSegmented: true, segmentStart: 22.5, text: 'Average Temperature',
-        segmentEnd: 27.5, visible: false, color: '#fc902a',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 }, rotation: 0
-    }, {
-        start: 3.5, size: 3, isSegmented: true, segmentStart: 22.5, text: 'Average Temperature',
-        segmentEnd: 27.5, visible: false, color: '#fc902a',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 }, rotation: 0
-    }, {
-        start: 1.5, size: 2, isSegmented: true, segmentStart: 32.5, text: 'High Temperature',
-        segmentEnd: 37.5, visible: false, color: '#ff512f',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 }, rotation: 0
-    }]
+import { Browser } from '@syncfusion/ej2-base';
 export let data: any[] = [
-    { x: 'Sun', y: 25 }, { x: 'Mon', y: 27 }, { x: 'Tue', y: 33 }, { x: 'Wed', y: 36 },
-    { x: 'Thu', y: 26 }, { x: 'Fri', y: 27.5 }, { x: 'Sat', y: 23 }];
+    { Day: 'Jan', Temperature: 90 },
+    { Day: 'Feb', Temperature: 92 },
+    { Day: 'Mar', Temperature: 94 },
+    { Day: 'Apr', Temperature: 95 },
+    { Day: 'May', Temperature: 94 },
+    { Day: 'Jun', Temperature: 96 },
+    { Day: 'Jul', Temperature: 97 },
+    { Day: 'Aug', Temperature: 98 },
+    { Day: 'Sep', Temperature: 97 },
+    { Day: 'Oct', Temperature: 95 },
+    { Day: 'Nov', Temperature: 90 },
+    { Day: 'Dec', Temperature: 95 },];
+export let data1: any[] = [
+    { Day: "Jan", Temperature: 85 },
+    { Day: "Feb", Temperature: 86 },
+    { Day: "Mar", Temperature: 87 },
+    { Day: "Apr", Temperature: 88 },
+    { Day: "May", Temperature: 87 },
+    { Day: "Jun", Temperature: 90 },
+    { Day: "Jul", Temperature: 91 },
+    { Day: "Aug", Temperature: 90 },
+    { Day: "Sep", Temperature: 93 },
+    { Day: "Oct", Temperature: 90 },
+    { Day: "Nov", Temperature: 85 },
+    { Day: "Dec", Temperature: 90 },];
+export let data2: any[] = [
+    { Day: "Jan", Temperature: 80 },
+    { Day: "Feb", Temperature: 81 },
+    { Day: "Mar", Temperature: 82 },
+    { Day: "Apr", Temperature: 83 },
+    { Day: "May", Temperature: 84 },
+    { Day: "Jun", Temperature: 83 },
+    { Day: "Jul", Temperature: 82 },
+    { Day: "Aug", Temperature: 81 },
+    { Day: "Sep", Temperature: 85 },
+    { Day: "Oct", Temperature: 84 },
+    { Day: "Nov", Temperature: 83 },
+    { Day: "Dec", Temperature: 82 },];
 const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
@@ -95,6 +98,24 @@ const SAMPLE_CSS = `
      #autumn stop[offset="0"] {
          stop-color: #b29f94;
      }
+      .productA {
+        width: 10px;
+        height: 10px;
+        color: black;
+        font-weight: bold;
+    }
+    .productB {
+        width: 10px;
+        height: 10px;
+        color: black;
+        font-weight: bold;
+    }
+    .productC {
+        width: 10px;
+        height: 10px;
+        color: black;
+        font-weight: bold;
+    }
  
      #autumn stop[offset="1"] {
          stop-color: #603813;
@@ -112,36 +133,8 @@ function Stripline() {
         { value: 'Segment' }
     ];
     let loaded: EmitType<ILoadedEventArgs>;
-    function change(): void {
-        chartInstance.series[0].fill = 'white';
-        chartInstance.series[0].marker.fill = 'black';
-        chartInstance.series[0].marker.border.color = 'white';
-        for (let i: number = 0; i < 3; i++) {
-            chartInstance.primaryYAxis.stripLines[i].visible = false;
-        }
-        if (dropElement.value === 'Vertical') {
-            for (let i: number = 0; i <= 7; i++) {
-                chartInstance.primaryXAxis.stripLines[i].visible = !chartInstance.primaryXAxis.stripLines[i].isSegmented;
-            }
-        } else if (dropElement.value === 'Horizontal') {
-            for (let i: number = 0; i < 3; i++) {
-                chartInstance.primaryYAxis.stripLines[i].visible = true;
-            }
-            for (let i: number = 0; i <= 7; i++) {
-                chartInstance.primaryXAxis.stripLines[i].visible = false;
-            }
-        } else {
-            for (let i: number = 0; i <= 7; i++) {
-                chartInstance.primaryXAxis.stripLines[i].visible = chartInstance.primaryXAxis.stripLines[i].isSegmented;
-            }
-            chartInstance.series[0].fill = 'black';
-            chartInstance.series[0].marker.fill = 'white';
-            chartInstance.series[0].marker.border.color = 'black';
-        }
-        chartInstance.refresh();
-    };
     return (
-        <div className='control-pane'>
+        <div className='control-pane' >
             <style>
                 {SAMPLE_CSS}
             </style>
@@ -167,72 +160,131 @@ function Stripline() {
                 </defs>
             </svg>
             <div className='control-section row'>
-                <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chart => chartInstance = chart}
+                
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} ref={chart => chartInstance = chart}
                         primaryXAxis={{
-                            valueType: 'Category', majorGridLines: { width: 0 },
-                            stripLines: xAxisStripLine,  majorTickLines: {width : 0},
-                            minorTickLines: {width: 0}
+                            valueType: 'Category',
+                            majorGridLines: { width: 0 },
+                            majorTickLines: { width: 0 },
+                            minorTickLines: { width: 0 },
                         }}
                         load={load.bind(this)}
                         primaryYAxis={{
-                            minimum: 10, maximum: 40, interval: 5,
-                            lineStyle: { color: '#808080' }, labelFormat: '{value} °C', rangePadding: 'None',
+                            minimum: 80,
+                            maximum: 100,
+                            interval: 5,
+                            lineStyle: { color: '#808080' },
+                            labelFormat: '{value}%',
+                            rangePadding: 'None',
+                            majorTickLines: {width: 0},
                             stripLines: [
-                                {
-                                    start: 30, end: 40, text: 'High Temperature', color: '#ff512f', visible: false,
-                                    textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 },
-                                }, {
-                                    start: 20, end: 30, text: 'Average Temperature', color: '#fc902a', visible: false,
-                                    textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 },
-                                }, {
-                                    start: 10, end: 20, text: 'Low Temperature', visible: false,
-                                    textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 }, color: '#f9d423'
-                                }
-                            ]
+                              {
+                                start: 95,
+                                end: 100,
+                                text: 'Good',
+                                color: '#ff512f',
+                                visible: true,
+                                horizontalAlignment: 'Middle',
+                                textStyle: {
+                                  size: '16px',
+                                  color: '#ffffff',
+                                  fontWeight: '500',
+                                },
+                                border: { width: 0 },
+                              },
+                              {
+                                start: 85,
+                                end: 95,
+                                text: 'Ok',
+                                color: '#fc902a',
+                                horizontalAlignment: 'Middle',
+                                visible: true,
+                                textStyle: {
+                                  size: '16px',
+                                  color: '#ffffff',
+                                  fontWeight: '500',
+                                },
+                                border: { width: 0 },
+                              },
+                              {
+                                start: 80,
+                                end: 85,
+                                text: 'Average',
+                                horizontalAlignment: 'Middle',
+                                visible: true,
+                                textStyle: {
+                                  size: '16px',
+                                  color: '#ffffff',
+                                  fontWeight: '500',
+                                },
+                                border: { width: 0 },
+                                color: '#f9d423',
+                              },
+                            ],
                         }}
                         tooltip={{
-                            enable: true
+                            enable: true,
+                            header: " ",
+                            format: "<b>${point.x}</b> <br> Ratings : <b>${point.y}</b>"
                         }}
-                        legendSettings={{ visible: false }}
+                        legendSettings={{ visible: true, enableHighlight: true }}
+                        width={Browser.isDevice ? "100%" : "75%"}
                         loaded={onChartLoad.bind(this)}
-                        title='Weather Report'>
-                        <Inject services={[LineSeries, Category, Legend, Tooltip, StripLine]} />
+                        title='Customer Satisfaction Rating'>
+                        <Inject services={[SplineSeries, Category, Legend, Tooltip, StripLine, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} xName='x' yName='y' width={2} fill='white'
-                                type='Line' name='Weather' marker={{ visible: true, width: 10, height: 10, border: { width: 2, color: 'white' }, fill: '#666666' }}>
+                            <SeriesDirective dataSource={data}
+                                xName="Day"
+                                yName="Temperature"
+                                width={2}
+                              
+                                type="Spline"
+                                name="Product A"
+                                marker={{
+                                    visible: true,
+                                    width: 7,
+                                    height: 7,
+                                }}>
+                            </SeriesDirective>
+                            <SeriesDirective dataSource={data1}
+                                xName="Day"
+                                yName="Temperature"
+                                width={2}
+                              
+                                type="Spline"
+                                name="Product B"
+                                marker={{
+                                    visible: true,
+                                    width: 7,
+                                    height: 7,
+                                }}>
+                            </SeriesDirective>
+                            <SeriesDirective dataSource={data2}
+                                xName="Day"
+                                yName="Temperature"
+                                width={2}
+                               
+                                type="Spline"
+                                name="Product C"
+                                marker={{
+                                    visible: true,
+                                    width: 7,
+                                    height: 7,
+                                }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
-                </div>
-                <div className='col-md-4 property-section'>
-                    <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
-                                <td style={{ width: '60%' }}>
-                                    <div>StripLine Types:</div>
-                                </td>
-                                <td style={{ width: '40%' }}>
-                                    <div>
-                                        <DropDownListComponent width={120} id="selmode" style={{ "width": "auto" }} change={change.bind(this)} ref={d => dropElement = d} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value="Vertical" />
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </PropertyPane>
-                </div>
+            
+             
             </div>
             <div id="action-description">
                 <p>
-                    This sample highlights certain range in an axis by using stripline feature.
+                This sample highlights a certain temperature range recorded over a year using the strip line feature.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the stripline charts. You can use stripline by enable the
-                    <code>visible</code> property. Striplines are rendered in the specified
-                    <code>start</code> and
-                    <code>end</code> range and you can add more than one stripline for an axis.
+                In this example, you can see how to render and configure a strip line for the chart. Use the <code>Start</code> and <code>End</code> properties in the <code>ChartStripline</code> option to add a strip line to an axis. You can add more than one strip line to the axis.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -246,7 +298,7 @@ function Stripline() {
 
                 </p>
                 <p>
-                    More information on the strip line can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the strip line can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/strip-line/">documentation section</a>.
                 </p>
             </div>
         </div>

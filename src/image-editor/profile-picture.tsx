@@ -117,7 +117,7 @@ export class ProfilePicture extends SampleBase<{}, {}> {
                         <div className='e-custom-wrapper'>  
                             <canvas id='img-canvas'></canvas>
                             <img alt='img' className='e-custom-img' id='custom-img' onLoad={this.handleImageLoaded.bind(this)} src='src/image-editor/images/profile.png'/>
-                            <input type='file' id='img-upload' className='e-custom-file' onChange={this.fileChanged.bind(this)}/>
+                            <input type='file' id='img-upload' className='e-custom-file' onChange={this.fileChanged.bind(this)} accept="image/*"/>
                             <span id='custom-edit' className='e-custom-edit' onClick={this.editClicked.bind(this)}>
                                 <span className='e-custom-icon sb-icons'></span>
                             </span>
@@ -126,7 +126,7 @@ export class ProfilePicture extends SampleBase<{}, {}> {
                 </div>
                 <div id='profile-dialog'>
                 <DialogComponent id='profile-dialog' showCloseIcon={true} animationSettings={this.animationSettings} closeOnEscape={true} visible={false} width={'340px'} height={'420px'} ref={dialog => this.dialogInstance = dialog}
-                    target='.sb-desktop-wrapper' header='Edit Profile Image' buttons={this.buttons} content={this.contentTemplate.bind(this)} position= {{X:'center', Y: 100}}>
+                    target='.e-img-editor-profile' header='Edit Profile Image' buttons={this.buttons} content={this.contentTemplate.bind(this)} position= {{X:'center', Y: 100}}>
                 </DialogComponent>
                 </div>
                 <div id='action-description'>

@@ -31,7 +31,7 @@
          <style>
            {SAMPLE_CSS}
          </style>
-         <div className='control-section' style={{ display: 'flex', justifyContent: 'center' }}>
+         <div className='control-section'>
            <CircularGaugeComponent load={this.load.bind(this)} id="gauge" background="transparent" height="400px" allowMargin={false} title="Customer Satisfaction Score" titleStyle={{ size: '18px', fontFamily: 'inherit' }}
              tooltip={{ enable: true, template: '<div style="font-size:18px;background:white;width:150px;color:#595959;border:1px solid #e8e8e8">Current Score: 7.5 </div>' }}
              legendSettings={{ visible: true, position: 'Bottom', width: "70%", textStyle: { fontFamily: 'inherit', size: '12px' }, }} >

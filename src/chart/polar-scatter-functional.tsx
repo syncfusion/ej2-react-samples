@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, ScatterSeries, Tooltip, ChartTheme
+    Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, ScatterSeries, Tooltip, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
@@ -69,19 +69,23 @@ function PolarScatter() {
                             primaryYAxis={{
                                 minimum: 0, maximum: 8, interval: 2
                             }}
+                            legendSettings= {{
+                                visible: true,
+                                enableHighlight: true
+                            }}
                             load={load.bind(this)}
-                            title="Real GDP Growth" loaded={onChartLoad.bind(this)}
-                            tooltip={{ enable: true, format: '${point.text} : <b>${point.y}%</b>' }}>
-                            <Inject services={[Legend, Category, PolarSeries, RadarSeries, ScatterSeries, Tooltip]} />
+                            title="GDP by Countries" loaded={onChartLoad.bind(this)}
+                            tooltip={{ enable: true, format: "<b>${point.text}</b> <br>GDP: <b>${point.y}%</b>", header: " " }}>
+                            <Inject services={[Legend, Category, PolarSeries, RadarSeries, Highlight, ScatterSeries, Tooltip]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y' name='2015'
-                                    type='Polar' drawType='Scatter' marker={{ height: 10, width: 10, dataLabel: { name: 'text' } }}>
+                                <SeriesDirective dataSource={data1} xName='text' yName='y' name='2015'
+                                    type='Polar' drawType='Scatter' marker={{ height: 7, width: 7, dataLabel: { name: 'text' } }}>
                                 </SeriesDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y1' name='2016'
-                                    type='Polar' drawType='Scatter' marker={{ height: 10, width: 10, shape: 'Diamond', dataLabel: { name: 'text' } }}>
+                                <SeriesDirective dataSource={data1} xName='text' yName='y1' name='2016'
+                                    type='Polar' drawType='Scatter' marker={{ height: 7, width: 7, shape: 'Diamond', dataLabel: { name: 'text' } }}>
                                 </SeriesDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y2' name='2017'
-                                    type='Polar' drawType='Scatter' marker={{ height: 10, width: 10, shape: 'Triangle', dataLabel: { name: 'text' } }}>
+                                <SeriesDirective dataSource={data1} xName='text' yName='y2' name='2017'
+                                    type='Polar' drawType='Scatter' marker={{ height: 7, width: 7, shape: 'Triangle', dataLabel: { name: 'text' } }}>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>
@@ -105,13 +109,12 @@ function PolarScatter() {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates polar series with scatter type for GDP for different countries in recent years. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+                    This sample shows GDP growth of different countries for a few years in the polar and radar charts using the scatter series.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the scatter type charts. Scatter charts are used to plot financial or scientific data.
-                        You can use <code>shape</code> property in the marker to change the scatter shape. <code>dataLabel</code> is used to represent individual data value.
+                    In this example, you can see how to render and configure polar and radar charts with a scatter series. Switching between polar and radar series can be done using the <b>Series Type</b> in the property panel.
                     </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -123,7 +126,7 @@ function PolarScatter() {
                         <code>ScatterSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                        More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
                     </p>
                 </div>
             </div>

@@ -69,11 +69,6 @@ function Template() {
     setDisplay('inline-block');
   }
 
-  function dialogOpen(): void {
-    setStatus({ hideDialog: true });
-    setDisplay('none');
-  }
-
   function updateTextValue(): void {
     let enteredVal: HTMLInputElement = document.getElementById(
       'inVal'
@@ -126,11 +121,10 @@ function Template() {
             ref={(dialog) => (dialogInstance = dialog)}
             target="#target"
             width={'437px'}
-            open={dialogOpen}
             close={dialogClose}
             height={'255px'}
             visible={status.hideDialog}
-            created = {rendereComplete}
+            open = {rendereComplete}
           ></DialogComponent>
         </div>
       </div>

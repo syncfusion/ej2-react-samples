@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ImageEditorComponent } from '@syncfusion/ej2-react-image-editor';
-import { Browser } from '@syncfusion/ej2-base';
+import { Browser, isNullOrUndefined, getComponent } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
@@ -20,6 +20,16 @@ function Default() {
             imgObj.theme = window.location.href.split('#')[1].split('/')[1];
         }
     }
+    if (!isNullOrUndefined(document.getElementById('right-pane'))) {
+        document.getElementById('right-pane').addEventListener('scroll', onScroll.bind(this));
+    }
+    // Handler used to reposition the tooltip on page scroll
+    function onScroll(): void {
+        if (document.getElementById('image-editor_sliderWrapper')) {
+            let slider: any = getComponent(document.getElementById('image-editor_sliderWrapper'), 'slider');
+            slider.refreshTooltip(slider.tooltipTarget);
+        }
+    }
 
     return (
         <div className='control-pane'>
@@ -27,7 +37,7 @@ function Default() {
                 <div className='row'>
                     <div className='col-lg-12 control-section'>
                         <div className='e-img-editor-sample'>
-                            <ImageEditorComponent ref={(img) => { imgObj = img }} created={imageEditorCreated}>
+                            <ImageEditorComponent id='image-editor' ref={(img) => { imgObj = img }} created={imageEditorCreated}>
                             </ImageEditorComponent>
                         </div>
                     </div>

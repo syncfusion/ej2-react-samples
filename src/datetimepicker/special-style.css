@@ -12,6 +12,28 @@
     margin-left: 4px;
 }
 
+.e-customStyle .e-input-group-icon.e-date-icon::before, 
+*.e-control-wrapper.e-customStyle .e-input-group-icon.e-date-icon::before, 
+.e-customStyle.e-datetime-wrapper .e-time-icon.e-icons::before {
+    transform: translate(0,1px);
+}
+
+.e-bigger .e-customStyle .e-input-group-icon.e-date-icon::before, 
+.e-bigger *.e-control-wrapper.e-customStyle .e-input-group-icon.e-date-icon::before,
+.e-bigger .e-customStyle.e-datetime-wrapper .e-time-icon.e-icons::before {
+    transform: translate(0,2px);
+}
+
+.e-customStyle.e-input-group .e-clear-icon, 
+.e-customStyle.e-input-group.e-control-wrapper .e-clear-icon {
+    padding-top: 4px;
+}
+
+.e-bigger .e-customStyle.e-input-group .e-clear-icon, 
+.e-bigger .e-customStyle.e-input-group.e-control-wrapper .e-clear-icon {
+    padding-top: 5px;
+}
+
 .e-customStyle span.e-icons.highlight,
 .e-customStyle span.e-icons.highlight:before {
     color: rgb(0, 0, 255);

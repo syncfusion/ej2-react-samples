@@ -20,7 +20,10 @@ function Azure() {
                     getImageUrl: hostUrl + 'api/AzureFileManager/AzureGetImage',
                     uploadUrl: hostUrl + 'api/AzureFileManager/AzureUpload',
                     downloadUrl: hostUrl + 'api/AzureFileManager/AzureDownload'
-                }}>
+                }}
+                toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}}
+                contextMenuSettings={{
+                    layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}}>
                 <Inject services={[ NavigationPane, DetailsView, Toolbar]} />
                 </FileManagerComponent>
             </div>

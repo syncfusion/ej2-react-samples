@@ -34,13 +34,15 @@ export class Properties extends SampleBase<{}, {}> {
 
     public onChange(args: any): void {
         let proxy: any = this;
-        if (args.event.target.previousElementSibling.id === 'floating') {
+        let targetElement = args.event.target;
+        let previousElement = targetElement.previousElementSibling;
+        let nextElement = targetElement.nextElementSibling;
+        if ((previousElement !== null && previousElement.id === 'floating') || nextElement !== null && nextElement.previousElementSibling.id === 'floating') {
             proxy.dashboardObj.allowFloating = args.checked;
-        }
-        if (args.event.target.previousElementSibling.id === 'resizing') {
+         }
+         if ((previousElement !== null && previousElement.id === 'resizing') || nextElement !== null && nextElement.previousElementSibling.id === 'resizing') {
             proxy.dashboardObj.allowResizing = args.checked;
-        }
-
+         }
     }
     public dashboardObj: DashboardLayoutComponent;
     public txtObj: NumericTextBoxComponent;

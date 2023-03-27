@@ -148,9 +148,6 @@ function Sorting() {
                     <code>StackingColumnSeries</code> module using
                     <code>Chart.Inject(StackingColumnSeries)</code> method.
                 </p>
-                <p>
-                    More information on the smart axis labels can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-                </p>
             </div>
         </div >
     )

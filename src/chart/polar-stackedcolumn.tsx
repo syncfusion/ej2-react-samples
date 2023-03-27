@@ -110,13 +110,12 @@ export class PolarStackedColumn extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                    This sample demonstrates polar series with stacking column type. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel. 
+                    This sample shows a wind rose chart designed using polar and radar charts with a stacking column series. A wind rose chart helps visualize wind patterns, i.e., wind speed and wind direction.
                 </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the stacking column type charts. Stacks the points in the series vertically and also you can use <code>stackingGroup</code> property to group the stacking collection based on categories.
-                    You can use <code>border</code>, <code>fill</code> properties to customize the vertical bar. <code>dataLabel</code> is used to represent individual data and its value.
+                    In this example, you can see how to render and configure the polar and radar charts with a stacking column series. Switching between polar and radar series can be done using Series Type in the property panel.
                 </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.

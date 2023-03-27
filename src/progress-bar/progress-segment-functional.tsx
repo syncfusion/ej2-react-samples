@@ -9,6 +9,7 @@ import {
 } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { Browser } from '@syncfusion/ej2-base';
 
 
 const SAMPLE_CSS = `
@@ -101,13 +102,15 @@ function ProgressBarProgressSegment() {
     }
 
     let timing = (): void => {
+        if (circularSeg) {
         if (circularSeg.value >= circularSeg.maximum) {
             clearInterval(timer)
         } else {
             circularSeg.value += 20;
             linearSeg.value += 20;
-        }
     }
+    }
+}
     let timer: any = setInterval(timing, 2500);
 
     return (
@@ -126,7 +129,7 @@ function ProgressBarProgressSegment() {
                                 height='30'
                                 width='70%'
                                 value={40}
-                                segmentCount={50}
+                                segmentCount={Browser.isDevice ? 25 : 50 }
                                 gapWidth={5}
                                 trackThickness={15}
                                 progressThickness={15}

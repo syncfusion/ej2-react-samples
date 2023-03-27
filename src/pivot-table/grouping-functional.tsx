@@ -7,7 +7,7 @@ import { extend } from '@syncfusion/ej2-base';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { MultiSelectComponent, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
-import { GroupSettingsModel } from '@syncfusion/ej2-pivotview/src/pivotview/model/datasourcesettings-model';
+import { GroupSettingsModel } from '@syncfusion/ej2-pivotview/src/model/datasourcesettings-model';
 import { PropertyPane } from '../common/property-pane';
 import * as gData from './pivot-data/gData.json';
 import './grouping.css';

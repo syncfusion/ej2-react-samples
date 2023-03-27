@@ -16,9 +16,10 @@ const SAMPLE_CSS = `
          padding: 0px !important;
      }
      .tableStyle{
-         transform:translateX(75%);
-         margin-top:20px;
-         text-align:center;font-family: Segoe UI;font-weight: 500; font-style:normal; font-size:15px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 20px !important;
+        font-family: Segoe UI;font-weight: 500; font-style:normal; font-size:15px;
      }
      #rangenavigator {
          transform: translate(0, 25%);

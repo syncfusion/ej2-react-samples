@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    Legend, Category, ColumnSeries, DateTime, Tooltip, ILoadedEventArgs, StripLine, ChartTheme, Border
+    Legend, Category, ColumnSeries, DateTime, Tooltip, ILoadedEventArgs, StripLine, ChartTheme, Border, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -21,7 +21,13 @@ export let data2: any[] = [{ x: new Date(1970, 1, 1), y: 8000 }, { x: new Date(1
 const SAMPLE_CSS = `
      .control-container {
          padding: 0px !important;
-     }`;
+     }
+     #xIndex:hover {
+        cursor: pointer;
+    }
+    #yIndex:hover {
+        cursor: pointer;
+    }`;
 function Striplinerecurrence() {
     React.useEffect(() => {
         updateSampleSection();
@@ -66,14 +72,15 @@ function Striplinerecurrence() {
                                 }
                             ]
                         }}
+                        legendSettings={{ visible: true, enableHighlight: true }}
                         tooltip={{
                             enable: true, format: ' Year: ${point.x}<br> Tons Per Day: ${point.y}'
                         }}
                         loaded={onChartLoad.bind(this)}
                         title='World Pollution Report'>
-                        <Inject services={[ColumnSeries, DateTime, Category, Legend, Tooltip, StripLine]} />
+                        <Inject services={[ColumnSeries, DateTime, Category, Legend, Tooltip, StripLine, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' width={2}
+                            <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} columnSpacing={0.1}
                                 type='Column' name='AllSources' >
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' width={2}
@@ -111,16 +118,12 @@ function Striplinerecurrence() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample visualizes the Olympic medal count in Rio with default column series in the chart.
-                    Data points values are showed by using data label.
+                This sample shows how to repeat a strip line in a chart.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing
-                    the frequency, count, total or average of data in different categories. You can use <code>border</code>,
-                    <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual
-                    data and its value.
+                In this example, you can see how to render and configure a strip line for the chart. To repeat the strip line, you need to set the <code>StartFromAxis</code>, <code>Size</code>, <code>IsRepeat</code>, and <code>RepeatEvery</code> properties accordingly in ChartStripline.
                 </p>
                 <p>
                     Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
@@ -132,7 +135,7 @@ function Striplinerecurrence() {
                     <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.
                 </p>
                 <p>
-                    More information on the column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the strip line can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/strip-line/">documentation section</a>.
                 </p>
             </div>
         </div>

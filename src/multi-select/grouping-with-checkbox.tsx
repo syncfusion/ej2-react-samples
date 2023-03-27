@@ -37,7 +37,7 @@ public filterBarPlaceholder: string = 'Search Vegetables'
         <div className='control-section col-lg-12'>
           <div id="multigroup" className="control-styles">
             <h4>Grouping with CheckBox</h4>
-            <MultiSelectComponent id="checkbox" dataSource={this.vegetables}  filterBarPlaceholder={this.filterBarPlaceholder}
+            <MultiSelectComponent id="checkbox" cssClass="e-specific" dataSource={this.vegetables}  filterBarPlaceholder={this.filterBarPlaceholder}
               fields={this.checkFields} placeholder={this.checkWaterMark} mode={this.mode} showSelectAll={true}
               enableGroupCheckBox ={this.enableGroupCheckBox} showDropDownIcon={true} enableSelectionOrder={false}>
               <Inject services={[CheckBoxSelection]} />

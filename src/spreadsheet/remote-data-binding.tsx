@@ -15,7 +15,7 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
     //Initialize DataManager.
     public data: DataManager = new DataManager({
         // Remote service url
-        url: 'https://ej2services.syncfusion.com/production/web-services/api/Orders',
+        url: 'https://services.syncfusion.com/react/production/api/Orders',
         adaptor: new CustomAdaptor,
         crossDomain: true
     });
@@ -28,8 +28,8 @@ export class RemoteDataBinding extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section spreadsheet-control'>
-                    <SpreadsheetComponent openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open'
-                        saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'
+                    <SpreadsheetComponent openUrl='https://services.syncfusion.com/react/production/api/spreadsheet/open'
+                        saveUrl='https://services.syncfusion.com/react/production/api/spreadsheet/save'
                         ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)}>
                             <SheetsDirective>
                             <SheetDirective name='Shipment Details'>

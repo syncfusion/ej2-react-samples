@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, StackingAreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme
+    Legend, Category, StackingAreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -15,7 +15,7 @@ export let data1: any[] = [
     { x: 'JPN', text: 'Japan', y: 5156, y1: 4849, y2: 4382, y3: 4939 },
     { x: 'DEU', text: 'Germany', y: 3754, y1: 3885, y2: 3365, y3: 3467 },
     { x: 'FRA', text: 'France', y: 2809, y1: 2844, y2: 2420, y3: 2463 },
-    { x: 'GBR', text: 'UK', y: 2721, y1: 3002, y2: 2863, y3: 2629 },
+    { x: 'GBR', text: Browser.isDevice ? 'UK' : 'United Kingdom', y: 2721, y1: 3002, y2: 2863, y3: 2629 },
     { x: 'BRA', text: 'Brazil', y: 2472, y1: 2456, y2: 1801, y3: 1799 },
     { x: 'RUS', text: 'Russia', y: 2231, y1: 2064, y2: 1366, y3: 1281 },
     { x: 'ITA', text: 'Italy', y: 2131, y1: 2155, y2: 1826, y3: 1851 },
@@ -58,19 +58,23 @@ function PolarStackedArea() {
                             coefficient: Browser.isDevice ? 80 : 100
                         }}
                         load={load.bind(this)}
-                        title="GDP, Current Prices (in Billions)" loaded={onChartLoad.bind(this)}>
-                        <Inject services={[StackingAreaSeries, Legend, Category, PolarSeries, RadarSeries, Tooltip]} />
+                        legendSettings= {{
+                            visible: true,
+                            enableHighlight: true
+                        }}
+                        title="GDP in Current Prices (USD Billion)" loaded={onChartLoad.bind(this)}>
+                        <Inject services={[StackingAreaSeries, Legend, Category, Highlight, PolarSeries, RadarSeries, Tooltip]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='2013'
+                            <SeriesDirective dataSource={data1} xName='text' yName='y' name='2013'
                                 type='Polar' drawType='StackingArea'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y1' name='2014'
+                            <SeriesDirective dataSource={data1} xName='text' yName='y1' name='2014'
                                 type='Polar' drawType='StackingArea'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y2' name='2015'
+                            <SeriesDirective dataSource={data1} xName='text' yName='y2' name='2015'
                                 type='Polar' drawType='StackingArea'>
                             </SeriesDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y3' name='2016'
+                            <SeriesDirective dataSource={data1} xName='text' yName='y3' name='2016'
                                 type='Polar' drawType='StackingArea'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
@@ -95,13 +99,12 @@ function PolarStackedArea() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates polar series with stacking area type for GDP of different countries in recent years. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+                This sample shows GDP growth of various countries for a few years in the polar and radar charts using the stacked area series.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the stacking area type charts. Stacks the series on top of another series to avoid the overlapping of series with one another, when rendering more than one area series in same chart.
-                    You can use <code>fill</code> properties to customize the stacked area. <code>dataLabel</code> is used to represent individual data and its value.
+                In this example, you can see how to render and configure polar and radar charts with stacking area series. Switching between polar and radar series can be done using Series Type in the property panel.
                 </p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
@@ -110,7 +113,7 @@ function PolarStackedArea() {
                     <code>StackingAreaSeries</code>, <code>PolarSeries</code> and <code>SRadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                    More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
                 </p>
             </div>
         </div>

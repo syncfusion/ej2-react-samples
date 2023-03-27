@@ -30,8 +30,8 @@ export class FreezePane extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section spreadsheet-control'>
-                    <SpreadsheetComponent openUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open'
-                        saveUrl='https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save'
+                    <SpreadsheetComponent openUrl='https://services.syncfusion.com/react/production/api/spreadsheet/open'
+                        saveUrl='https://services.syncfusion.com/react/production/api/spreadsheet/save'
                         ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)} >
                         <SheetsDirective>
                             <SheetDirective name='Gross Salary' frozenRows= {2} frozenColumns= {2} selectedRange='C1'>

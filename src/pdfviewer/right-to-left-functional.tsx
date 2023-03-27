@@ -247,7 +247,7 @@ function RightToLeft() {
     return (<div>
         <div className='control-section'>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent id="container" documentPath="RTLText.pdf" serviceUrl="https://ej2services.syncfusion.com/production/web-services/api/pdfviewer" enableRtl={true} locale='ar-AE' annotationSettings={{ author: 'مقبول' }} style={{ 'height': '640px' }}  >
+            <PdfViewerComponent id="container" documentPath="RTLText.pdf" serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer" enableRtl={true} locale='ar-AE' annotationSettings={{ author: 'مقبول' }} style={{ 'height': '640px' }}  >
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
             </PdfViewerComponent>
         </div>

@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    LineSeries, DateTime, Tooltip, Crosshair, Legend, ILoadedEventArgs, ChartTheme
+    LineSeries, DateTime, Tooltip, Crosshair, Legend, ILoadedEventArgs, ChartTheme, Highlight
 }
     from '@syncfusion/ej2-react-charts';
 import { john, andrew, thomas, mark, william } from './trackball-data';
@@ -31,38 +31,38 @@ function TrackballChart() {
                     chartArea={{ border: { width: 0 } }}
                     load={load.bind(this)}
                     primaryYAxis={{
-                        title: 'Revenue',
+                        title: 'Revenue (in Million)',
                         labelFormat: '{value}M',
                         majorTickLines: { width: 0 },
                         minimum: 10, maximum: 80,
                         lineStyle: { width: 0 },
                     }}
+                    legendSettings={{ visible: true , enableHighlight: true}}
                     title='Average Sales per Person' loaded={onChartLoad.bind(this)}
                     tooltip={{ enable: true, shared: true }}
                     crosshair={{ enable: true, lineType: 'Vertical' }}>
-                    <Inject services={[LineSeries, DateTime, Tooltip, Crosshair, Legend]} />
+                    <Inject services={[LineSeries, DateTime, Tooltip, Crosshair, Legend, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={john} xName='x' yName='y' width={2} name='John'
-                            type='Line' marker={{ visible: true }}>
+                            type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }}>
                         </SeriesDirective>
                         <SeriesDirective dataSource={andrew} xName='x' yName='y' width={2} name='Andrew'
-                            type='Line' marker={{ visible: true }}>
+                            type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }}>
                         </SeriesDirective>
                         <SeriesDirective dataSource={thomas} xName='x' yName='y' width={2} name='Thomas'
-                            type='Line' marker={{ visible: true }}>
+                            type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates trackball feature in chart. To show trackball, hover or long press the chart and you can see the point value near to the mouse point.
+                This sample depicts the trackball behavior in the chart. To view the trackball and its tooltip, hover over the chart or tap on it in touch-enabled devices.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    This sample demonstrates the trackball behavior in chart. Trackball is used to track a data point closer to the current mouse position or touch contact point.
-                    You can show tooltip for individual point or group of points closer to mouse position using <code>shared</code> properties in tooltip.
+                The trackball is used to track a data point close to the mouse or touch position. The trackball can be enabled by setting the Enable property of the crosshair to <b>true</b> and the <code>Shared</code> property of the tooltip to <b>true</b> in the chart.
                 </p>
                 <p>
                     Hover the chart area to view trackball and its tooltip. Touch and hold to enable trackball in touch enabled devices.
@@ -74,7 +74,7 @@ function TrackballChart() {
                     <code>Tooltip</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the Tooltip and Trackball can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-tooltipSettingsModel.html">documentation section</a>.
+                    More information on the Tooltip and Trackball can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/cross-hair-and-track-ball/#trackball">documentation section</a>.
                 </p>
             </div>
         </div>

@@ -76,44 +76,51 @@ export class Filtering extends SampleBase<{}, {}> {
 
                 <div id="action-description">
                     <p>
-                        This sample demonstrates the Grid Default Filtering feature. In this sample, type the value in the
-                        filterbar and press enter to filter particular column.
+                    This sample demonstrates the Grid's default filtering feature. Type a value in the filterbar and press enter to filter a particular column.
                     </p>
                 </div>
 
                 <div id='description'>
-                    <p>The filtering feature enables the user to view the reduced amount of records based on filter criteria.
-                    It can be enabled by setting <code><a target='_blank' className='code'
+                    <p>The filtering feature enables the user to view a reduced amount of records based on filter criteria. It can be enabled
+                        by setting the <code><a target='_blank' className='code'
                             href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowfiltering'>allowFiltering
-                   </a></code> property as true.
-                    A filter bar row will be rendered next to header which allows the end-users to filter data by entering text within its cells.</p>
-                    <p>Filterbar uses two modes which specifies how to start filtering. They are,</p>
+                   </a></code> property to true. A filter bar row will be rendered next to header which allows users to filter
+                        data by entering text within its cells.</p>
+                    <p>The Filterbar uses two modes which specifies how to start filtering. They are,</p>
                     <ul>
-                        <li><code>OnEnter</code> - Enabled by default, filter will be initiated after pressing <code>Enter</code> key.</li>
-                        <li><code>Immediate</code> - Filter will start after user ends typing. This uses a time delay of <i>1500ms</i>
-                            to initiate filter after use stops typing.
-                           It can be overridden using the <code><a target='_blank' className='code'
+                        <li><code>OnEnter</code> - Enabled by default, filter will be initiated when the <code>Enter</code> key is pressed.</li>
+                        <li><code>Immediate</code> - Filter will start after user finishes typing. There will be a time delay of <i>1500ms</i> to initiate
+                            filter after the user stops typing. It can be overridden using the <code><a target='_blank' className='code'
                                 href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#filtersettings'>
                                 filterSettings-&gt;immediateModeDelay
                         </a></code> property.</li>
                     </ul>
-                    <p>In this demo, you can either select the <strong>Category Name</strong> from the SELECT element or type the text in the
-                     filter bar cells to filter the Grid. </p>
-                     <p>Additionally, the grid records can also be filtered based on the selected filterbar operator. It can be enabled by setting
+                    <p>In this demo, you can either select the <strong>Category Name</strong> from the SELECT element or type the text in the filter bar cells to filter.</p>
+                     <p>Additionally, the records can also be filtered based on the selected filterbar operator. It can be enabled by setting
                     <br />
-                        <code>filterSettings-&gt;showFilterBarOperator</code> property as true.
-                     <p>In this demo, </p>
-                        <ul>
-                            <li>To enable or disable filterbar operator feature, check or uncheck the checkbox in the properties panel.</li>
-                            <li>Now select the required filtering operator in the dropdown list on the filter bar cell and
-                                type the text in the filter bar cell to filter the Grid</li>
-                        </ul>
+                        <code>filterSettings-&gt;showFilterBarOperator</code> property to true.
+                     <p>In this demo,</p>
+                     <ul>
+                        <li>To enable or disable filterbar operator feature, check or uncheck the checkbox in the properties panel.</li>
+                        <li>Select the required filtering operator in the dropdown list on the filter bar cell and type the text to start filtering.</li>
+                        <li>Now, the addition of new filter operators such as "Does Not Contain", "Does Not End With", "Does Not Start With", "Empty", "Not Empty", "Null", "Not Null", "Like", and "Wildcard search" greatly enhance the filtering feature of the Grid.</li>
+                    </ul>
+                    <p>For example, when the <b>Like</b> search operator is used:</p>
+                    <ul>
+                        <li>%a% - Filters words containing the character 'a'</li>
+                        <li>a%  - Filters words ending with 'a'</li>
+                        <li>%a  - Filters words starting with 'a'</li>
+                    </ul>
+                    <p>For example when the <b>Wildcard</b> search operator is used:</p>
+                    <ul>
+                        <li>a*b - Filters words that start with 'a' and end with 'b'</li>
+                    </ul>
                     </p>
                     <br />
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
                     <p>
-                        Grid component features are segregated into individual feature-wise modules. To use filtering feature, we need to inject
-                          <code>Filter</code> module into the <code>services</code>.
+                        GGrid features are segregated into individual feature-wise modules. To use filtering feature, inject the
+                          <code>Filter</code> module using the <code>services</code>.
                    </p>
                     <p>
                         More information on the filter configuration can be found in this

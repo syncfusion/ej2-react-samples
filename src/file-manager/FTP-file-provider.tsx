@@ -18,7 +18,10 @@ export class FTPFileProvider extends SampleBase<{}, {}> {
                         getImageUrl: this.hostUrl + 'api/FTPProvider/FTPGetImage',
                         uploadUrl: this.hostUrl + 'api/FTPProvider/FTPUpload',
                         downloadUrl: this.hostUrl + 'api/FTPProvider/FTPDownload'
-                    }}>
+                    }}
+                    toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'Selection', 'View', 'Details']}}
+                contextMenuSettings={{
+                    layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}}>
                         <Inject services={[NavigationPane, DetailsView, Toolbar]} />
                     </FileManagerComponent>
                 </div>

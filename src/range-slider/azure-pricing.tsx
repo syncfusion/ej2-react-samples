@@ -222,6 +222,9 @@ span.e-label .offer {
 .fabric-dark .pricing-slider,
 .fabric-dark #pricing-slider .label-text,
 .fabric-dark #pricing-slider .sub-heading,
+.fluent-dark .pricing-slider,
+.fluent-dark #pricing-slider .label-text,
+.fluent-dark #pricing-slider .sub-heading,
 .tailwind-dark .pricing-slider,
 .tailwind-dark #pricing-slider .label-text,
 .tailwind-dark #pricing-slider .sub-heading,
@@ -257,6 +260,12 @@ span.e-label .offer {
 .fabric-dark #StorgeDialog,
 .fabric-dark #CloudDialog,
 .fabric-dark #processorDialog,
+.fluent-dark #dollar,
+.fluent-dark #value,
+.fluent-dark #dialog-header,
+.fluent-dark #StorgeDialog,
+.fluent-dark #CloudDialog,
+.fluent-dark #processorDialog,
 .bootstrap-dark #dollar,
 .bootstrap-dark #value,
 .bootstrap-dark #dialog-header,
@@ -283,6 +292,7 @@ span.e-label .offer {
 .bootstrap-dark #pricing-slider .row,
 .bootstrap5-dark #pricing-slider .row,
 .fabric-dark #pricing-slider .row,
+.fluent-dark #pricing-slider .row,
 .material-dark #pricing-slider .row {
     border: 1px solid #969696;
 }
@@ -292,6 +302,7 @@ span.e-label .offer {
 .bootstrap-dark #cloud-right-pane,
 .bootstrap5-dark #cloud-right-pane,
 .fabric-dark #cloud-right-pane,
+.fluent-dark #cloud-right-pane,
 .material-dark #cloud-right-pane {
     border-left: 1px solid #969696;
 }
@@ -302,6 +313,8 @@ span.e-label .offer {
 .material-dark #pricing-slider #cloud-right-pane .btn-size,
 .fabric-dark #cloud-slider-text,
 .fabric-dark #pricing-slider #cloud-right-pane .btn-size,
+.fluent-dark #cloud-slider-text,
+.fluent-dark #pricing-slider #cloud-right-pane .btn-size,
 .bootstrap-dark #cloud-slider-text,
 .bootstrap-dark #pricing-slider #cloud-right-pane .btn-size,
 .bootstrap5-dark #cloud-slider-text,
@@ -316,6 +329,7 @@ span.e-label .offer {
 .bootstrap5-dark #processor,
 .bootstrap-dark #processor,
 .fabric-dark #processor,
+.fluent-dark #processor,
 .material-dark #processor {
     background-color: #AE80FF;
 }
@@ -325,6 +339,7 @@ span.e-label .offer {
 .bootstrap-dark #memory,
 .bootstrap5-dark #memory,
 .fabric-dark #memory,
+.fluent-dark #memory,
 .material-dark #memory {
     background-color: #7ED321;
 }
@@ -334,6 +349,7 @@ span.e-label .offer {
 .bootstrap5-dark #storage,
 .bootstrap-dark #storage,
 .fabric-dark #storage,
+.fluent-dark #storage,
 .material-dark #storage {
     background-color: #61A4EF;
 }
@@ -343,6 +359,7 @@ span.e-label .offer {
 .bootstrap-dark #cloud-left-pane,
 .bootstrap5-dark #cloud-left-pane,
 .fabric-dark #cloud-left-pane,
+.fluent-dark #cloud-left-pane,
 .material-dark #cloud-left-pane {
     background-color: #1a1a1a;
 }
@@ -352,6 +369,7 @@ span.e-label .offer {
 .bootstrap-dark #cloud-right-pane,
 .bootstrap5-dark #cloud-right-pane,
 .fabric-dark #cloud-right-pane,
+.fluent-dark #cloud-right-pane,
 .material-dark #cloud-right-pane {
     background-color: #000;
 }
@@ -372,6 +390,10 @@ span.e-label .offer {
 .fabric-dark #memoryPriceName,
 .fabric-dark #storgePriceName,
 .fabric-dark #cloudPriceName,
+.fluent-dark #processorPriceName,
+.fluent-dark #memoryPriceName,
+.fluent-dark #storgePriceName,
+.fluent-dark #cloudPriceName,
 .bootstrap5-dark #processorPriceName,
 .bootstrap5-dark #memoryPriceName,
 .bootstrap5-dark #storgePriceName,

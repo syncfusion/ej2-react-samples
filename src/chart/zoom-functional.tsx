@@ -85,7 +85,7 @@ export function GetZoomingData(): any {
         } else {
             value -= Math.random();
         }
-        point1 = { x: new Date(1950, i + 2, i), y: value.toFixed(1) };
+        point1 = { x: new Date(1960, i + 1, i), y: Math.round(value) };  
         series1.push(point1);
     }
     return { 'series1': series1 };
@@ -106,7 +106,6 @@ function Zooming() {
                 <ChartComponent id='charts' style={{ textAlign: "center" }}
                     primaryXAxis={{
                         valueType: 'DateTime',
-                        skeleton: 'yMMM',
                         edgeLabelPlacement: 'Shift',
                         majorGridLines: { width: 0 }
                     }}
@@ -115,6 +114,7 @@ function Zooming() {
                         title: 'Profit ($)',
                         rangePadding: 'None',
                         lineStyle: { width: 0 },
+                        labelFormat: "${value}k",
                         majorTickLines: { width: 0 }
                     }}
                     width={Browser.isDevice ? '100%' : '75%'}
@@ -122,7 +122,7 @@ function Zooming() {
                     legendSettings={{ visible: false }}
                     zoomSettings={{
                         enableMouseWheelZooming: true, enablePinchZooming: true,
-                        enableSelectionZooming: true, mode: 'X', enableScrollbar: true
+                        enableSelectionZooming: true, mode: 'X'
                     }}
                     title='Sales History of Product X' loaded={onChartLoad.bind(this)}>
                     <Inject services={[AreaSeries, DateTime, Legend, Zoom, ScrollBar]} />
@@ -195,7 +195,7 @@ function Zooming() {
             </svg>
             <div id="action-description">
                 <p>
-                    This sample illustrates zooming feature in chart. The change can be zoomed by pinching or by mouse wheel.
+                This sample demonstrates the zooming and panning features of the charts.
                 </p>
             </div>
             <div id="description">
@@ -224,7 +224,7 @@ function Zooming() {
                     <code>Zoom</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the Zooming can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-zoomSettings.html#properties">documentation section</a>.
+                    More information on the Zooming can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/zooming/">documentation section</a>.
                 </p>
             </div>
         </div>

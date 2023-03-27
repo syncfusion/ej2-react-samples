@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme,
-    Legend, Category, SplineSeries, Tooltip, ILoadedEventArgs, PolarSeries, RadarSeries, ChartSeriesType
+    Legend, Category, SplineSeries, Tooltip, ILoadedEventArgs, PolarSeries, RadarSeries, ChartSeriesType, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
@@ -76,10 +76,11 @@ function PolarSpline() {
                                 labelFormat: '{value}°',
                                 coefficient: Browser.isDevice ? 80 : 100
                             }}
+                            legendSettings={{ enableHighlight :true }}
                             load={load.bind(this)}
                             title='Microphone Types Polar Patterns' loaded={onChartLoad.bind(this)}
                             tooltip={{ enable: true }}>
-                            <Inject services={[SplineSeries, Legend, Tooltip, Category, PolarSeries, RadarSeries]} />
+                            <Inject services={[SplineSeries, Legend, Tooltip, Category, PolarSeries, RadarSeries, Highlight]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='Cardioid (unidirectional)' type='Polar'
                                     drawType='Spline' dashArray='5 5 2' width={2} isClosed={false}>
@@ -130,7 +131,7 @@ function PolarSpline() {
                         <code>SplineSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                        More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
                     </p>
                 </div>
             </div>

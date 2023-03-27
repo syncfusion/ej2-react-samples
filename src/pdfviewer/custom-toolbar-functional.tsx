@@ -55,7 +55,7 @@ function CustomToolbar() {
                     documentLoad={documentLoaded}
                     pageChange={onPageChange}
                     documentPath="Hive_Succinctly.pdf"
-                    serviceUrl="https://ej2services.syncfusion.com/production/web-services/api/pdfviewer"
+                    serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer"
                     style={{ 'display': 'block', 'height': '640px' }}>
                     <Inject services={[Magnification, Navigation, LinkAnnotation, BookmarkView,
                         ThumbnailView, Print, TextSelection, TextSearch]} />
@@ -146,6 +146,13 @@ function CustomToolbar() {
         var pageCount = document.getElementById('totalPage');
         pageCount.textContent = 'of ' + viewer.pageCount;
         updatePageNavigation();
+        let inputElement: HTMLInputElement = document.getElementById('currentPage') as HTMLInputElement;
+        inputElement.addEventListener('click', currentPageClicked.bind(this));
+        inputElement.addEventListener(
+            'keypress',
+            onCurrentPageBoxKeypress.bind(this)
+        );
+        inputElement.value = "1";
     }
     function updatePageNavigation() {
         if (viewer.currentPageNumber === 1) {
@@ -188,12 +195,11 @@ function CustomToolbar() {
         fileName = uploadedFile.name;
         let reader = new FileReader();
         reader.readAsDataURL(uploadedFile);
-        let viewer: PdfViewerComponent = null;
         let uploadedFileName: string = fileName;
-        reader.onload = function () {
-            let uploadedFileUrl: string = null;
+        reader.onload = function (e) {
+            let uploadedFileUrl: string = (e.currentTarget as any).result;
             viewer.load(uploadedFileUrl, null);
-            viewer.fileName = uploadedFileName;
+            viewer.downloadFileName = viewer.fileName = uploadedFileName;
             var pageCount = document.getElementById('totalPage');
             pageCount.textContent = 'of ' + viewer.pageCount;
         }

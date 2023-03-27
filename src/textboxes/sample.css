@@ -19,14 +19,14 @@
     font-size: 20px;
 }
 
-.bootstrap4 .control-section.input-content-wrapper .e-upload-picture::before {
-    content: '\e769';
+.bootstrap5 .e-upload-picture::before,
+.bootstrap5-dark .e-upload-picture::before {
+    content: '\e712';
     font-family: e-icons;
 }
 
-.bootstrap5 .e-upload-picture::before
-.bootstrap5-dark .e-upload-picture::before {
-    content: '\e712';
+.bootstrap4 .control-section.input-content-wrapper .e-upload-picture::before {
+    content: '\e769';
     font-family: e-icons;
 }
 

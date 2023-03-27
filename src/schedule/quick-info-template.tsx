@@ -6,7 +6,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import {
     ScheduleComponent, ResourcesDirective, ResourceDirective, Day, Week, WorkWeek, Month,
-    Agenda, MonthAgenda, Inject, ResourcesModel, CellClickEventArgs, CurrentAction, PopupOpenEventArgs
+    Agenda, MonthAgenda, Inject, Resize, DragAndDrop, ResourcesModel, CellClickEventArgs, CurrentAction, PopupOpenEventArgs
 } from "@syncfusion/ej2-react-schedule";
 import './quick-info-template.css';
 import { SampleBase } from '../common/sample-base';
@@ -188,7 +188,7 @@ export class QuickInfoTemplate extends SampleBase<{}, {}> {
                                 <ResourceDirective field='RoomId' title='Room Type' name='MeetingRoom' textField='Name' idField='Id'
                                     colorField='Color' dataSource={this.roomData}></ResourceDirective>
                             </ResourcesDirective>
-                            <Inject services={[Day, Week, WorkWeek, Month, Agenda, MonthAgenda]} />
+                            <Inject services={[Day, Week, WorkWeek, Month, Agenda, MonthAgenda, Resize, DragAndDrop]} />
                         </ScheduleComponent>
                     </div>
                 </div>

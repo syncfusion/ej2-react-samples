@@ -10,6 +10,7 @@ import * as dataSource from './pivot-data/universitydata.json';
 import { updateSampleSection } from '../common/sample-base';
 import { ChartTheme } from '@syncfusion/ej2-react-charts';
 import { select, createElement } from '@syncfusion/ej2-base';
+import { ExcelQueryCellInfoEventArgs } from '@syncfusion/ej2-grids';
 import './overview.css';
 
 /**
@@ -228,6 +229,11 @@ function PivotToolbar() {
     function chartSeriesCreated(args): void {
         pivotObj.chartSettings.chartSeries.legendShape = pivotObj.chartSettings.chartSeries.type === 'Polar' ? 'Rectangle' : 'SeriesType';
     }
+    function excelQueryCellInfo(args: ExcelQueryCellInfoEventArgs): void {
+        if ((args?.cell as IAxisSet).axis === 'value' && (args?.cell as IAxisSet).value === undefined) {
+            args.style.numberFormat = undefined;
+        }
+    }
     return (
         <div className='control-pane'>
             <meta name="referrer" content="never"></meta>
@@ -236,7 +242,8 @@ function PivotToolbar() {
                     <PivotViewComponent id='PivotView' ref={(scope) => { pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'600'} showFieldList={true} exportAllPages={false} maxNodeLimitInMemberEditor={50} cellTemplate={cellTemplate.bind(this)}
                         showGroupingBar={true} allowGrouping={true} enableVirtualization={true} enableValueSorting={true} allowDeferLayoutUpdate={true} allowDrillThrough={true} gridSettings={{
                             columnWidth: 120, allowSelection: true, rowHeight: 36,
-                            selectionSettings: { mode: 'Cell', type: 'Multiple', cellSelectionMode: 'Box' }
+                            selectionSettings: { mode: 'Cell', type: 'Multiple', cellSelectionMode: 'Box' },
+                            excelQueryCellInfo: excelQueryCellInfo.bind(this)
                         }} allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={toolbarOptions}
                         newReport={newReport.bind(this)} renameReport={renameReport.bind(this)} removeReport={removeReport.bind(this)} loadReport={loadReport.bind(this)} fetchReport={fetchReport.bind(this)}
                         saveReport={saveReport.bind(this)} toolbarRender={beforeToolbarRender.bind(this)} chartSettings={{ title: 'Top Universities Analysis', load: chartOnLoad.bind(this) }} chartSeriesCreated={chartSeriesCreated.bind(this)}>

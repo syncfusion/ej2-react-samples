@@ -11,18 +11,36 @@ import {
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-import { fabricColors, materialColors, bootstrapColors, highContrastColors } from './theme-color';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors  } from './theme-color';
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
-    selectedTheme = selectedTheme ? selectedTheme : 'material';
+    selectedTheme = selectedTheme ? selectedTheme : 'Material';
     if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-        args.fill = fabricColors[args.point.index % 10];
+        args.fill = pointFabricColors[args.point.index % 10];;
+    } else if (selectedTheme === 'material-dark') {
+        args.fill = pointMaterialDarkColors[args.point.index % 10];;
     } else if (selectedTheme === 'material') {
-        args.fill = materialColors[args.point.index % 10];
+        args.fill = pointMaterialColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5-dark') {
+        args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5') {
+        args.fill = pointBootstrap5Colors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap4') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap-dark') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
     } else if (selectedTheme === 'highcontrast') {
-        args.fill = highContrastColors[args.point.index % 10];
-    } else {
-        args.fill = bootstrapColors[args.point.index % 10];
+        args.fill = pointHighContrastColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent-dark') {
+        args.fill = pointFluentDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent') {
+        args.fill = pointFluentColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind-dark') {
+        args.fill = pointTailwindDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind') {
+        args.fill = pointTailwindColors[args.point.index % 10];
     }
 };
 export let data1: any[] = [{ x: 'Grapes', y: 28 }, { x: 'Apples', y: 87 },
@@ -107,7 +125,7 @@ function Multilevellabels() {
                             title="Fruits and Vegetables - Season"
                             loaded={onChartLoad.bind(this)}
                             legendSettings={{ visible: false }}
-                            tooltip={{ enable: true }}>
+                            tooltip={{ enable: false }}>
                             <Inject services={[Category, Category, ColumnSeries, Tooltip, DataLabel, MultiLevelLabel]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' type='Column' marker={{ dataLabel: { visible: true, position: 'Outer' } }}>
@@ -118,7 +136,7 @@ function Multilevellabels() {
                 </div>
                 <div id="action-description">
                     <p>
-                        Axis labels are placed based on the start and end range values and we can add any number of labels to an axis.
+                    This example shows multilevel labels in the chart axis. We can add layers of labels to the axis using start and end range values.
                     </p>
                 </div>
                 <div id="description">
@@ -144,7 +162,7 @@ function Multilevellabels() {
                         <li><code>withoutBorder</code>.</li>
                     </ul>
                     <p>
-                        More information on the multi level labels can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the multi level labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-labels/">documentation section</a>.
                     </p>
                 </div>
             </div >

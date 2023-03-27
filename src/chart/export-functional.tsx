@@ -5,19 +5,19 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, ChartTheme,
-    ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, ExportType, Export
+    ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, ExportType, Export, DataLabel
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
+import {fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors} from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 export let data1: any[] = [
-    { x: 'DEU', y: 35.5 }, { x: 'CHN', y: 18.3 }, { x: 'ITA', y: 17.6 }, { x: 'JPN', y: 13.6 },
-    { x: 'US', y: 12 }, { x: 'ESP', y: 5.6 }, { x: 'FRA', y: 4.6 }, { x: 'AUS', y: 3.3 },
-    { x: 'BEL', y: 3 }, { x: 'UK', y: 2.9 }
+    { x: 'India', y: 35.5, DataLabelMappingName:  Browser.isDevice ? "35.5" : "35.5GW" }, { x: 'China', y: 18.3, DataLabelMappingName:  Browser.isDevice ?"18.3" :  "18.3GW"  }, { x: 'Italy', y: 17.6, DataLabelMappingName:  Browser.isDevice ? "17.6"  : "17.6GW"  }, { x: 'Japan', y: 13.6, DataLabelMappingName: Browser.isDevice ? "13.6"  :"13.6GW"  },
+    { x: 'United state', y: 12, DataLabelMappingName: Browser.isDevice ? "12" : "12GW"  }, { x: 'Spain', y: 5.6, DataLabelMappingName: Browser.isDevice ? "5.6" : "5.6GW"  }, { x: 'France', y: 4.6, DataLabelMappingName: Browser.isDevice ? "4.6" : "4.6GW"  }, { x: 'Australia', y: 3.3, DataLabelMappingName: Browser.isDevice ? "3.3" :"3.3GW"  },
+    { x: 'Belgium', y: 3, DataLabelMappingName:  Browser.isDevice ? "3" : "3GW"  }, { x: 'United Kingdom', y: 2.9, DataLabelMappingName: Browser.isDevice ? "2.9" : "2.9GW"  }
 ];
 const SAMPLE_CSS = `
      .control-fluid {
@@ -75,26 +75,32 @@ function ChartExport() {
                             valueType: 'Category',
                             majorGridLines: { width: 0 },
                             majorTickLines: {width : 0},
-                            minorTickLines: {width: 0}
+                            minorTickLines: {width: 0},
+                            labelIntersectAction: "None",
+                            labelRotation: -45,
+                            interval: 1
                         }}
                         chartArea={{ border: { width: 0 } }}
                         primaryYAxis={{
-                            title: 'Measurements',
+                            title: 'Measurements (in Gigawatt)',
                             labelFormat: '{value}GW',
                             minimum: 0,
                             maximum: 40,
                             interval: 10,
                             lineStyle: {width : 0},
+                            majorGridLines: { width: 2 },
                             minorTickLines: {width: 0},
                             majorTickLines: {width : 0},
+                           
                         }}
                         pointRender={labelRender.bind(this)}
                         load={load.bind(this)}
                         title="Top 10 Countries Using Solar Power" loaded={onChartLoad.bind(this)}
                         tooltip={{ enable: true }}>
-                        <Inject services={[ColumnSeries, Category, Legend, Export]} />
+                        <Inject services={[ColumnSeries, Category, Legend, Export, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2}
+                            marker={{ dataLabel: { visible: true, name: 'DataLabelMappingName', enableRotation: Browser.isDevice ? true : false, angle: -90, position: 'Top', font: {  fontWeight: '600', color: '#ffffff', size: '9px' } } }}
                                 type='Column'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
@@ -134,12 +140,12 @@ function ChartExport() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample illustrates the export feature in chart. By clicking <code>Export</code>, you can export the chart in PNG or JPEG format.
+                This example demonstrates how to save the chart as a PDF file and in image formats including JPEG, PNG, and SVG.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the export. The rendered chart can be exported as either JPEG or PNG format. It can be achieved using Blob and it's supported only in modern browsers.
+                By clicking on Export button, you can <b>export</b> the chart to the specific type using ExportAsync method. To be more precise, define parameters such as the export type and the file name while exporting.
                 </p>
                 <p>
                     More information on the export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#export">documentation section</a>.
@@ -159,20 +165,34 @@ function ChartExport() {
     };
     function labelRender(args: IPointRenderEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'material';
-        if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-            args.fill = fabricColors[args.point.index % 10];
-        } else if (selectedTheme === 'material') {
-            args.fill = materialColors[args.point.index % 10];
-        } else if (selectedTheme === 'highcontrast') {
-            args.fill = highContrastColors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent') {
-            args.fill = fluentColors[args.point.index % 10];
-        } else if (selectedTheme === 'fluent-dark') {
-            args.fill = fluentDarkColors[args.point.index % 10];
-        } else {
-            args.fill = bootstrapColors[args.point.index % 10];
-        }
+    selectedTheme = selectedTheme ? selectedTheme : 'Material';
+    if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
+        args.fill = pointFabricColors[args.point.index % 10];;
+    } else if (selectedTheme === 'material-dark') {
+        args.fill = pointMaterialDarkColors[args.point.index % 10];;
+    } else if (selectedTheme === 'material') {
+        args.fill = pointMaterialColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5-dark') {
+        args.fill = pointBootstrap5DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap5') {
+        args.fill = pointBootstrap5Colors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap4') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'bootstrap-dark') {
+        args.fill = pointBootstrapColors[args.point.index % 10];
+    } else if (selectedTheme === 'highcontrast') {
+        args.fill = pointHighContrastColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent-dark') {
+        args.fill = pointFluentDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent') {
+        args.fill = pointFluentColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind-dark') {
+        args.fill = pointTailwindDarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'tailwind') {
+        args.fill = pointTailwindColors[args.point.index % 10];
+    }
     }
     function onClick(e: Event): void {
         let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;

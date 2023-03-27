@@ -130,10 +130,10 @@ function AreaMultiColored() {
             <div id="description">
                 <p>
                     In this example, you can see how to render and configure the points in a particular range by using <code>MultiColoredArea</code> series.
-                    Points within the range can be configured with <code>color</code> property in ChartSegment.
+                    Points within the range can be configured with <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/chart/chartSegment/#color">color</a> property in chart segment.
                 </p>
                 <p>
-                    Tooltips are enabled in this example, to see the tooltip in action, hover a point or tap a point in touch enabled devices.
+                The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/">tooltip</a> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
                 <br></br>
                 <p><b>Injecting Module</b></p>

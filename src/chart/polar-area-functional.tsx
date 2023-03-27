@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, AreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme
+    Legend, Category, AreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -59,9 +59,13 @@ function PolarArea() {
                             title: 'Revenue in Millions',
                             labelFormat: '{value}M'
                         }}
+                        legendSettings= {{
+                            visible: true,
+                            enableHighlight: true
+                        }}
                         load={load.bind(this)}
                         title="Average Sales Comparison" loaded={onChartLoad.bind(this)}>
-                        <Inject services={[AreaSeries, Legend, Category, PolarSeries, RadarSeries]} />
+                        <Inject services={[AreaSeries, Legend, Category, PolarSeries, RadarSeries, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='Product A' width={2}
                                 opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }}>
@@ -94,14 +98,12 @@ function PolarArea() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample demonstrates polar series with area type for average sales comparison of products in recent year.  The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+                This sample shows the average product sales comparison for 6 years in polar and radar charts.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the area type charts. Similar to line type series, but the area get closed and filled with series color.
-                    You can use <code>border</code>, <code>fill</code> properties to customize the area. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
-                    Legend is enabled in this example with series type shape.
+                In this example, you can see how to render and configure polar and radar charts with an area series. Switching between polar and radar series can be done using <code>Series Type</code> in the property panel
                 </p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
@@ -110,7 +112,7 @@ function PolarArea() {
                     <code>AreaSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/#polar-chart">documentation section</a>.
+                    More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/#polar-chart">documentation section</a>.
                 </p>
             </div>
         </div>

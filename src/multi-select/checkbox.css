@@ -16,3 +16,11 @@
 #multichecbox .property-section{
     left:0px;
 }
+
+.e-specific.e-multiselect.e-input-group .e-ddl-icon::before {
+    transform: translateY(1px);
+}
+
+.e-bigger .e-specific.e-multiselect.e-input-group .e-ddl-icon::before {
+    transform: translateY(2px);
+}

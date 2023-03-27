@@ -10,52 +10,63 @@ function Styles() {
     }, [])
     const items: SpeedDialItemModel[] = [
         {
-            text:'Home',
-            iconCss:'speeddial-icons speeddial-icon-house'
+            text:'Cut',
+            iconCss:'speeddial-icons speeddial-icon-cut'
         },
         {
-            text:'Contacts',
-            iconCss:'speeddial-icons speeddial-icon-people'
+            text:'Copy',
+            iconCss:'speeddial-icons speeddial-icon-copy'
         },
         {
-            text:'Search',
-            iconCss:'speeddial-icons speeddial-icon-search'
+            text:'Paste',
+            iconCss:'speeddial-icons speeddial-icon-paste'
         },
         {
-            text:'Message',
-            iconCss:'speeddial-icons speeddial-icon-message'
+            text:'Delete',
+            iconCss:'speeddial-icons speeddial-icon-delete'
+        },
+        {
+            text:'Save',
+            iconCss:'speeddial-icons speeddial-icon-save'
         }
     ];
     const itemLabel: SpeedDialItemModel[] = [
         {
-            text: 'Home'
+            text: 'Cut'
         },
         {
-            text: 'Contacts'
+            text: 'Copy'
         },
         {
-            text: 'Search'
+            text: 'Paste'
         },
         {
-            text: 'Message'
+            text: 'Delete'
+        },
+        {
+            text: 'Save'
         }
     ];
     const tooltItem: SpeedDialItemModel[] = [
         {
-            title: 'Home',
-            iconCss: 'speeddial-icons speeddial-icon-house'
+            title: 'Cut',
+            iconCss: 'speeddial-icons speeddial-icon-cut'
         },
         {
-            title: 'Contacts',
-            iconCss: 'speeddial-icons speeddial-icon-people'
+            title: 'Copy',
+            iconCss: 'speeddial-icons speeddial-icon-copy'
         },
         {
-            title: 'Search',
-            iconCss: 'speeddial-icons speeddial-icon-search'
+            title: 'Paste',
+            iconCss: 'speeddial-icons speeddial-icon-paste'
         },
         {
-            title: 'Message',
-            iconCss: 'speeddial-icons speeddial-icon-message'
+            title: 'Delete',
+            iconCss: 'speeddial-icons speeddial-icon-delete'
+        },
+        {
+            title: 'Save',
+            iconCss: 'speeddial-icons speeddial-icon-save'
         }
     ];
 

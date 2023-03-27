@@ -49,7 +49,7 @@ function SemiPie() {
                     <Inject services={[AccumulationDataLabel, PieSeries, AccumulationTooltip, ChartAnnotation, AccumulationAnnotation]} />
                     <AccumulationSeriesCollectionDirective>
                         <AccumulationSeriesDirective dataSource={data1} tooltipMappingName='tooltipMappingName' xName='x' yName='y' startAngle={270} endAngle={90}
-                            explode={true}
+                            explode={false}
                             radius = {Browser.isDevice ? '85%' : '100%'}
                             innerRadius='40%'
                             dataLabel={{

@@ -17,8 +17,8 @@ const SAMPLE_CSS = `
      margin-top: 2%;
  }
  .linear-button {
-     text-align: center;
- }
+    text-align: center;
+}
  .linear-progress {
      width: 80%;
      margin: auto;
@@ -181,7 +181,9 @@ function ProgressBarStripes() {
                         </ProgressBarComponent>
                     </div>
                 </div>
-                <div style={{ marginTop: '2%', marginLeft: '45.5%' }}><button ref={btn => animationBtn = btn} onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">Stop Animation</button></div>
+                <div className="row linear-button">
+                <div><button ref={btn => animationBtn = btn} onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">Stop Animation</button></div>
+                </div>
             </div>
             <div id="action-description">
                 <p>
