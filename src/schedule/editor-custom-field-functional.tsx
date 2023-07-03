@@ -1,10 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { createElement, extend } from '@syncfusion/ej2-base';
-import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda,
-  PopupOpenEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, PopupOpenEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
@@ -15,14 +13,14 @@ import * as dataSource from './datasource.json';
  *  Schedule editor custom fields sample
  */
 
-function EditorCustomField() {
-  React.useEffect(() => {
+const EditorCustomField = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as any).eventsData, null, true) as Record<string, any>[];
 
-  function onPopupOpen(args: PopupOpenEventArgs): void {
+  const onPopupOpen = (args: PopupOpenEventArgs): void => {
     if (args.type === 'Editor') {
       // Create required custom elements in initial time
       if (!args.element.querySelector('.custom-field-row')) {
@@ -52,24 +50,24 @@ function EditorCustomField() {
     }
   }
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, scheduleObj.current.currentView);
   }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={t => scheduleObj = t}
-            eventSettings={{ dataSource: data }} popupOpen={onPopupOpen.bind(this)}
-            eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={scheduleObj} eventSettings={{ dataSource: data }} popupOpen={onPopupOpen} eventRendered={onEventRendered}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>
       </div>
       <div id='action-description'>
-        <p>This demo shows how to add additional fields to the default editor window.
+        <p>
+          This demo shows how to add additional fields to the default editor window.
           Here, an additional field <code>Event Type</code> has been added
-          to the default event editor and its value is processed accordingly.</p>
+          to the default event editor and its value is processed accordingly.
+        </p>
       </div>
       <div id='description'>
         <p>

@@ -2,11 +2,9 @@
  * Sample for Tornado chart
  */
 import * as React from "react";
+import { useEffect } from 'react';
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme,
-    Legend, Category, StackingBarSeries, Tooltip, ILoadedEventArgs, DataLabel, ITooltipRenderEventArgs, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme, Legend, Category, StackingBarSeries, Tooltip, ILoadedEventArgs, DataLabel, ITooltipRenderEventArgs, Highlight } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
 export let data: any[] = [
@@ -20,57 +18,41 @@ export let data2: any[] = [
     { x: '5.7', y: -70, text: '70 KG' }, { x: '6', y: -74, text: '74 KG' }
 ];
 const SAMPLE_CSS = `
-     .control-fluid {
-         padding: 0px !important;
-     }`;
+    .control-fluid {
+        padding: 0px !important;
+    }`;
 export let textRender: EmitType<ITooltipRenderEventArgs> = (args: ITooltipRenderEventArgs) => {
     args.text = args.text.indexOf('-') > 0 ? args.text.replace('-', '') : args.text;
     args.text = args.text + " " + "<b>kg</b>";
 };
-function NegativeStack() {
-    React.useEffect(() => {
+const NegativeStack = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }}
-                    primaryXAxis={{
-                        valueType: 'Category',
-                        title: 'Height in Inches',
-                        interval: 1,
-                        majorGridLines: { width: 0 },
-                        majorTickLines: { width: 0 }
-                    }}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    chartArea={{ border: { width: 0 } }}
-                    primaryYAxis={{
-                        labelFormat: '{value}',
-                        title: 'Weight (kg)',
-                        lineStyle: { width: 0 },
-                        edgeLabelPlacement: 'Shift'
-                    }}
-                    tooltipRender={textRender}
-                    legendSettings={{ position: Browser.isDevice ? 'Bottom' : 'Right', enableHighlight: true }}
-                    load={load.bind(this)}
-                    title='Height vs Weight' loaded={onChartLoad.bind(this)}
-                    tooltip={{ enable: true }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', title: 'Height in Inches', interval: 1, majorGridLines: { width: 0 }, majorTickLines: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}', title: 'Weight (kg)', lineStyle: { width: 0 }, edgeLabelPlacement: 'Shift' }} tooltipRender={textRender} legendSettings={{ position: Browser.isDevice ? 'Bottom' : 'Right', enableHighlight: true }} load={load.bind(this)} title='Height vs Weight' loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
                     <Inject services={[StackingBarSeries, DataLabel, Category, Legend, Tooltip, Highlight]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data} width={2} xName='x' yName='y' name='Female' columnWidth={0.5} type='StackingBar' marker={{ dataLabel: { name: 'text', visible: true, position: 'Top', font: { fontWeight: '600' } } }}>
-                        </SeriesDirective>
-                        <SeriesDirective dataSource={data2} width={2} xName='x' yName='y' name='Male' columnWidth={0.5} type='StackingBar' marker={{ dataLabel: { name: 'text', visible: true, position: 'Top', font: { fontWeight: '600' } } }}>
-                        </SeriesDirective>
+                        <SeriesDirective dataSource={data} width={2} xName='x' yName='y' name='Female' columnWidth={0.5} type='StackingBar' marker={{ dataLabel: { name: 'text', visible: true, position: 'Top', font: { fontWeight: '600' } } }} />
+                        <SeriesDirective dataSource={data2} width={2} xName='x' yName='y' name='Male' columnWidth={0.5} type='StackingBar' marker={{ dataLabel: { name: 'text', visible: true, position: 'Top', font: { fontWeight: '600' } } }} />
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample illustrates a stacked bar chart with negative data points. Data point values are shown in data labels.
-                </p>
+                <p>This sample illustrates a stacked bar chart with negative data points. Data point values are shown in data labels.</p>
             </div>
             <div id="description">
                 <p>
@@ -91,15 +73,5 @@ function NegativeStack() {
             </div>
         </div>
     )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
-        chart.setAttribute('title', '');
-
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
 }
 export default NegativeStack;

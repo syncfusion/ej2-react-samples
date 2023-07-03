@@ -1,20 +1,25 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SidebarComponent, ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { updateSampleSection } from '../common/sample-base';
 import './sidebar-list.css';
-function SidebarWithList() {
-    React.useEffect(() => {
+const SidebarWithList = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let sidebarobj: SidebarComponent;
-    function listTemplate(data: any): JSX.Element {
+    const [description, setDescription] = useState<string>(
+      "Before getting into any programming language, one should have basic knowledge about HTML, CSS, and JavaScript. These are the basic building blocks of web designing. HTML describes the structure of a web page whereas CSS describes the presentation of the web page."
+    );
+    let sidebarobj = useRef<SidebarComponent>(null);
+    const listTemplate = (data: any) => {
         return (
-            <div className="list-wrapper">
+            <div id="sidebarList">
                 <span className={`${data.pic} e-avatar e-avatar-xsmall e-avatar-circle`}></span>
                 <span className="text e-text-content">{data.text}</span>
-            </div>);
+            </div>
+        );
     }
     //Toolbar component template element specification
     let folderEle: string = '<div class= "e-folder"><div class= "e-folder-name">Language</div></div>';
@@ -46,6 +51,16 @@ function SidebarWithList() {
             " sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries." }
     ];
     let listFields: { [key: string]: Object } = { id: "id", text: "text" };
+    
+    const toolbarCliked = (args: ClickEventArgs) => {
+        if(args.item.tooltipText == "Menu") {
+            sidebarobj.current.toggle();
+        }
+    }
+    const OnSelect = (args: any) => {
+        document.getElementById("listContent").innerHTML = args.data.description;
+    }
+
     return (
         <div className="control-section" id="sblist-wrapper">
             <div id="sidelistwrapper">
@@ -60,17 +75,14 @@ function SidebarWithList() {
                 </div>
                 <div className="listmaincontent">
                     <div>
-                        <div id="listContent" className="listcontent">
-                            Before getting into any programming language, one should have basic knowledge about HTML, CSS, and JavaScript. These are the basic building blocks of web designing. HTML describes the structure of a web page whereas CSS describes the presentation of the web page.
-                        </div>
+                        <div id="listContent" className="listcontent">{description}</div>
                     </div>
                 </div>
                 {/* end of main content declaration */}
             </div>
             {/* sidebar element declaration */}
-            <SidebarComponent id="listSidebar" ref={Sidebar => (sidebarobj as any) = Sidebar} className="sidebar-list" width="250px" target=".listmaincontent" type="Auto" isOpen={true}>
-                <ListViewComponent id="listSidebarList" dataSource={ListData} cssClass="e-template-list" template={listTemplate} fields={listFields} select={OnSelect.bind(this)}>
-                </ListViewComponent>
+            <SidebarComponent id="listSidebar" ref={sidebarobj} className="sidebar-list" width="250px" target=".listmaincontent" type="Auto" isOpen={true}>
+                <ListViewComponent id="listSidebarList" dataSource={ListData} cssClass="e-template-list" template={listTemplate} fields={listFields} select={OnSelect.bind(this)}></ListViewComponent>
             </SidebarComponent>
             <div id="action-description">
                 <p>
@@ -87,13 +99,5 @@ function SidebarWithList() {
             </div>
         </div>
     );
-    function toolbarCliked(args: ClickEventArgs) {
-        if(args.item.tooltipText == "Menu") {
-            sidebarobj.toggle();
-        }
-    }
-    function OnSelect(args: any) {
-        document.getElementById("listContent").innerHTML = args.data.description;
-    }
 }
 export default SidebarWithList;

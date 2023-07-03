@@ -16,11 +16,11 @@ function AdvancedExporting() {
   const toolbarOptions: any = ['ExcelExport', 'PdfExport'];
   let gridInstance: GridComponent;
   function toolbarClick(args: ClickEventArgs): void {
-    switch (args.item.text) {
-      case 'PDF Export':
+    switch (args.item.id) {
+      case 'Grid_pdfexport':
         gridInstance.pdfExport(getPdfExportProperties());
         break;
-      case 'Excel Export':
+      case 'Grid_excelexport':
         gridInstance.excelExport(getExcelExportProperties());
         break;
     }

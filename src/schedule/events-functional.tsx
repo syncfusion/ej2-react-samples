@@ -1,11 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef, useState } from 'react';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
-import { extend } from '@syncfusion/ej2-base';
+import { createElement, extend } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -15,79 +14,73 @@ import * as dataSource from './datasource.json';
  * Schedule events sample
  */
 
-function Events() {
-  React.useEffect(() => {
+const Events = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+
+  const [eventLog, setEventLog] = useState("");
+  let scheduleObj = useRef<ScheduleComponent>(null);
+  let eventObj = useRef(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, scheduleObj.current.currentView);
   }
 
-  function onClear(): void {
-    document.getElementById('EventLog').innerHTML = '';
+  const onClear = (): void => {
+    setEventLog('');
   }
 
-  function onCreate(): void {
-    appendElement('Schedule <b>Load</b> event is triggered<hr>');
+  const onCreate = (): void => {
+    appendElement('Load');
   }
 
-  function onActionBegin(): void {
-    appendElement('Schedule <b>Action Begin</b> event is triggered<hr>');
+  const onActionBegin = (): void => {
+    appendElement('Action Begin');
   }
 
-  function onActionComplete(): void {
-    appendElement('Schedule <b>Action Complete</b> event is triggered<hr>');
+  const onActionComplete = (): void => {
+    appendElement('Action Complete');
   }
 
-  function onActionFailure(): void {
-    appendElement('Schedule <b>Action Failure</b> event is triggered<hr>');
+  const onActionFailure = (): void => {
+    appendElement('Action Failure');
   }
 
-  function onCellDoubleClick(): void {
-    appendElement('SChedule <b>Cell Double Click</b> event is triggered<hr>');
+  const onCellDoubleClick = (): void => {
+    appendElement('Cell Double Click');
   }
 
-  function onCellClick(): void {
-    appendElement('Schedule <b>Cell Click</b> event is triggered<hr>');
+  const onCellClick = (): void => {
+    appendElement('Cell Click');
   }
 
-  function onNavigating(): void {
-    appendElement('Schedule <b>Navigating</b> event is triggered<hr>');
+  const onNavigating = (): void => {
+    appendElement('Navigating');
   }
 
-  function onDestroyed(): void {
-    appendElement('Schedule <b>Destroyed</b> event is triggered<hr>');
+  const onDestroyed = (): void => {
+    appendElement('Destroyed');
   }
 
-  function onEventClick(): void {
-    appendElement('Schedule <b>Event Click</b> event is triggered<hr>');
+  const onEventClick = (): void => {
+    appendElement('Event Click');
   }
 
-  function onPopupOpen(): void {
-    appendElement('Schedule <b>Popup Open</b> event is triggered<hr>');
+  const onPopupOpen = (): void => {
+    appendElement('Popup Open');
   }
 
-  function appendElement(html: string): void {
-    let span: HTMLElement = document.createElement('span');
-    span.innerHTML = html;
-    let log: HTMLElement = document.getElementById('EventLog');
-    log.insertBefore(span, log.firstChild);
+  const appendElement = (html: string): void => {
+    setEventLog(prevLog => `Schedule <b>${html}</b> event is triggered<hr>${prevLog}`);
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent ref={schedule => scheduleObj = schedule} width='100%' height='650px'
-            selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }} created={onCreate.bind(this)}
-            eventRendered={onEventRendered.bind(this)} actionBegin={onActionBegin.bind(this)}
-            actionComplete={onActionComplete.bind(this)} actionFailure={onActionFailure.bind(this)}
-            cellClick={onCellClick.bind(this)} cellDoubleClick={onCellDoubleClick.bind(this)}
-            destroyed={onDestroyed.bind(this)} navigating={onNavigating.bind(this)}
-            eventClick={onEventClick.bind(this)} popupOpen={onPopupOpen.bind(this)}>
+          <ScheduleComponent ref={scheduleObj} width='100%' height='650px' selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }} created={onCreate} eventRendered={onEventRendered} actionBegin={onActionBegin} actionComplete={onActionComplete} actionFailure={onActionFailure} cellClick={onCellClick} cellDoubleClick={onCellDoubleClick} destroyed={onDestroyed} navigating={onNavigating} eventClick={onEventClick} popupOpen={onPopupOpen}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>
@@ -99,14 +92,14 @@ function Events() {
               <tr style={{ height: '250px' }}>
                 <td>
                   <div className='eventarea' style={{ height: '245px', overflow: 'auto' }}>
-                    <span className='EventLog' id='EventLog' style={{ wordBreak: 'normal' }}></span>
+                    <span className='EventLog' id='EventLog' style={{ wordBreak: 'normal' }} ref={eventObj} dangerouslySetInnerHTML={{ __html: eventLog }}></span>
                   </div>
                 </td>
               </tr>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '30%' }}>
                   <div className='evtbtn' style={{ paddingBottom: '10px' }}>
-                    <ButtonComponent title='Clear' onClick={onClear.bind(this)}>Clear</ButtonComponent>
+                    <ButtonComponent title='Clear' onClick={onClear}>Clear</ButtonComponent>
                   </div>
                 </td>
               </tr>
@@ -115,8 +108,7 @@ function Events() {
         </PropertyPane>
       </div>
       <div id='action-description'>
-        <p>This demo illustrates the client-side events that triggers on respective Scheduler actions and the same is being displayed
-          on the event trace panel.</p>
+        <p>This demo illustrates the client-side events that triggers on respective Scheduler actions and the same is being displayed on the event trace panel.</p>
       </div>
       <div id='description'>
         <p>

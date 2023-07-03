@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective,
-  ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect } from 'react';
+import { Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as dataSource from './datasource.json';
@@ -12,8 +10,8 @@ import * as dataSource from './datasource.json';
  * schedule resources group-bychild sample
  */
 
-function GroupByChild() {
-  React.useEffect(() => {
+const GroupByChild = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceTeamData, null, true) as Record<string, any>[];
@@ -30,21 +28,10 @@ function GroupByChild() {
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent cssClass='group-bychild' width='100%' height='650px' selectedDate={new Date(2021, 5, 5)}
-            currentView='WorkWeek' startHour='09:00' endHour='19:00' eventSettings={{
-              dataSource: data, fields: {
-                subject: { title: 'Summary', name: 'Subject' },
-                description: { title: 'Comments', name: 'Description' }
-              }
-            }}
-            group={{ byGroupID: false, resources: ['Projects', 'Categories'] }} >
+          <ScheduleComponent cssClass='group-bychild' width='100%' height='650px' selectedDate={new Date(2021, 5, 5)} currentView='WorkWeek' startHour='09:00' endHour='19:00' eventSettings={{ dataSource: data, fields: { subject: { title: 'Summary', name: 'Subject' }, description: { title: 'Comments', name: 'Description' } } }} group={{ byGroupID: false, resources: ['Projects', 'Categories'] }} >
             <ResourcesDirective>
-              <ResourceDirective field='ProjectId' title='Choose Project' name='Projects' allowMultiple={false}
-                dataSource={projectData} textField='text' idField='id' colorField='color'>
-              </ResourceDirective>
-              <ResourceDirective field='CategoryId' title='Category' name='Categories' allowMultiple={true}
-                dataSource={categoryData} textField='text' idField='id' colorField='color'>
-              </ResourceDirective>
+              <ResourceDirective field='ProjectId' title='Choose Project' name='Projects' allowMultiple={false} dataSource={projectData} textField='text' idField='id' colorField='color' />
+              <ResourceDirective field='CategoryId' title='Category' name='Categories' allowMultiple={true} dataSource={categoryData} textField='text' idField='id' colorField='color' />
             </ResourcesDirective>
             <ViewsDirective>
               <ViewDirective option='Day' />

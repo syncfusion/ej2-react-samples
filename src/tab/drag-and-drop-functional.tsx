@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { TabComponent, TreeViewComponent, TabItemDirective, TabItemsDirective, DragEventArgs, DragAndDropEventArgs } from '@syncfusion/ej2-react-navigations';
 import { ColumnDirective, ColumnsDirective, GridComponent } from '@syncfusion/ej2-react-grids';
 import { Category, ChartComponent, DataLabel, LineSeries, Legend, Tooltip, SeriesCollectionDirective, SeriesDirective } from '@syncfusion/ej2-react-charts';
@@ -13,13 +14,13 @@ import { isNullOrUndefined } from "@syncfusion/ej2-base";
 import { updateSampleSection } from '../common/sample-base';
 import './tab.component.css';
 
-function Dragdrop() {
-    React.useEffect(() => {
+const Dragdrop = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let tabObj: TabComponent;
-    let treeObj: TreeViewComponent;
+    let tabObj = useRef<TabComponent>(null);
+    let treeObj = useRef<TreeViewComponent>(null);
     let data: { [key: string]: Object }[] = [
         { text: "DropDown List", id: "list-01" },
         { text: "DatePicker", id: "list-02" },
@@ -32,35 +33,35 @@ function Dragdrop() {
     let draggedItemHeader: string | HTMLElement;
     let i: number = 0;
 
-    function onTabCreate(): void {
-        let tabElement = document.getElementById("draggableTab");
+    const onTabCreate = (): void => {
+        let tabElement = tabObj.current.element;
         if (!isNullOrUndefined(tabElement)) {
             tabElement.querySelector(".e-tab-header").classList.add("e-droppable");
             tabElement.querySelector(".e-content").classList.add("tab-content");
         }
     }
 
-    function onTabDragStart(args: DragEventArgs): void {
-        draggedItemHeader = tabObj.items[args.index].header.text;
+    const onTabDragStart = (args: DragEventArgs): void => {
+        draggedItemHeader = tabObj.current.items[args.index].header.text;
     }
 
-    function onDraggedTab(args: DragEventArgs) {
-        let dragTabIndex = Array.prototype.indexOf.call(tabObj.element.querySelectorAll('.e-toolbar-item'), args.draggedItem);
+    const onDraggedTab = (args: DragEventArgs) => {
+        let dragTabIndex = Array.prototype.indexOf.call(tabObj.current.element.querySelectorAll('.e-toolbar-item'), args.draggedItem);
         let dropNode = args.target.closest("#ListView .e-list-item");
-        if (dropNode != null && !args.target.closest("#draggableTab .e-toolbar-item") && tabObj.items.length > 1) {
+        if (dropNode != null && !args.target.closest("#draggableTab .e-toolbar-item") && tabObj.current.items.length > 1) {
             args.cancel = true;
             let dropContainer = (document.querySelector('.treeview-external-drag-tab')).querySelectorAll('.e-list-item');
             let dropIndex = Array.prototype.indexOf.call(dropContainer, dropNode);
             let newNode = [{ id: "list" + i, text: draggedItemHeader }];
-            tabObj.removeTab(dragTabIndex);
-            treeObj.addNodes(newNode, "Treeview", dropIndex);
+            tabObj.current.removeTab(dragTabIndex);
+            treeObj.current.addNodes(newNode, "Treeview", dropIndex);
         }
     }
 
-    function onNodeDragStop(args: DragAndDropEventArgs) {
+    const onNodeDragStop = (args: DragAndDropEventArgs) => {
         let dropElement: any = args.target.closest("#draggableTab .e-toolbar-item");
         if (dropElement != null) {
-            let tabElement = document.querySelector("#draggableTab");
+            let tabElement = tabObj.current.element;
             let itemPosition = (((args.event.type.indexOf('touch') > -1) ? args.event.changedTouches[0].clientX
                 : args.event.clientX) < dropElement.getBoundingClientRect().left + dropElement.offsetWidth / 2) ? 0 : 1;
             let dropItemIndex = [].slice.call(tabElement.querySelectorAll(".e-toolbar-item")).indexOf(dropElement) + itemPosition;
@@ -94,13 +95,13 @@ function Dragdrop() {
                     break;
             }
             let newTabItem = [{ header: { text: args.draggedNodeData.text.toString() }, content: tabContent }];
-            tabObj.addTab(newTabItem, dropItemIndex);
-            treeObj.removeNodes([args.draggedNode]);
+            tabObj.current.addTab(newTabItem, dropItemIndex);
+            treeObj.current.removeNodes([args.draggedNode]);
         }
         args.cancel = true;
     }
 
-    function onNodeDrag(args: DragAndDropEventArgs) {
+    const onNodeDrag = (args: DragAndDropEventArgs) => {
         if (!isNullOrUndefined(args.target.closest(".tab-content"))) {
             args.dropIndicator = "e-no-drop";
         } else if (!isNullOrUndefined(args.target.closest("#draggableTab .e-tab-header"))) {
@@ -108,7 +109,7 @@ function Dragdrop() {
         }
     }
 
-    function Grid() {
+    const Grid = () => {
         let gridData = [
             {
                 OrderID: 10248, CustomerID: 'VINET', EmployeeID: 5, OrderDate: new Date(8364186e5),
@@ -144,10 +145,11 @@ function Dragdrop() {
                     <ColumnDirective field="Freight" headerText="Freight" width="120" textAlign="Right" format="C" />
                     <ColumnDirective field="OrderDate" headerText="Order Date" width="140" format="yMd" />
                 </ColumnsDirective>
-            </GridComponent>);
+            </GridComponent>
+        );
     }
 
-    function Chart() {
+    const Chart = () => {
         let chartData = [
             { month: 'Jan', sales: 35 }, { month: 'Feb', sales: 28 },
             { month: 'Mar', sales: 34 }, { month: 'Apr', sales: 32 },
@@ -162,77 +164,80 @@ function Dragdrop() {
                     <SeriesDirective dataSource={chartData} xName='month' yName='sales' type='Line'> </SeriesDirective>
                 </SeriesCollectionDirective>
                 <Inject services={[LineSeries, Legend, Tooltip, DataLabel, Category]} />
-            </ChartComponent>);
+            </ChartComponent>
+        );
     }
 
-    function Schedule() {
+    const Schedule = () => {
         let dataManger = new DataManager({
-            url: 'https://ej2services.syncfusion.com/production/web-services/api/Schedule',
+            url: 'https://services.syncfusion.com/react/production/api/schedule',
             adaptor: new ODataV4Adaptor,
             crossDomain: true
         });
-        return (<ScheduleComponent height='500px' selectedDate={new Date(2020, 9, 20)}
-            eventSettings={{ dataSource: dataManger }} readonly={true}>
-            <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
-        </ScheduleComponent>);
+        return (
+            <ScheduleComponent height='500px' selectedDate={new Date(2020, 9, 20)} eventSettings={{ dataSource: dataManger }} readonly={true}>
+                <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+            </ScheduleComponent>
+        );
     }
 
-    function DropDownList() {
+    const DropDownList = () => {
         let sportsData = ['Badminton', 'Cricket', 'Football', 'Golf', 'Tennis'];
         return (<DropDownListComponent width='200px' dataSource={sportsData} placeholder='Select a game' />);
     }
 
-    function DatePicker() {
+    const DatePicker = () => {
         return (<DatePickerComponent width='200px' placeholder='Enter date' />);
     }
 
-    function Calendar() {
+    const Calendar = () => {
         return (<CalendarComponent />);
     }
 
-    function Uploader() {
+    const Uploader = () => {
         return (<UploaderComponent autoUpload={false} />);
     }
 
-    function RichTextEditor() {
-        return (<RichTextEditorComponent height='340px'>
-            <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p>
-
-            <p><b>Key features:</b></p>
-            <ul>
-                <li>
-                    <p>Provides &lt;IFRAME&gt; and &lt;DIV&gt; modes</p>
-                </li>
-                <li>
-                    <p>Capable of handling markdown editing.</p>
-                </li>
-                <li>
-                    <p>Contains a modular library to load the necessary functionality on demand.</p>
-                </li>
-                <li>
-                    <p>Provides a fully customizable toolbar.</p>
-                </li>
-                <li>
-                    <p>Provides HTML view to edit the source directly for developers.</p>
-                </li>
-                <li>
-                    <p>Supports third-party library integration.</p>
-                </li>
-                <li>
-                    <p>Allows preview of modified content before saving it.</p>
-                </li>
-                <li>
-                    <p>Handles images, hyperlinks, video, hyperlinks, uploads, etc.</p>
-                </li>
-                <li>
-                    <p>Contains undo/redo manager.</p>
-                </li>
-                <li>
-                    <p>Creates bulleted and numbered lists.</p>
-                </li>
-            </ul>
-            <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
-        </RichTextEditorComponent>);
+    const RichTextEditor = () => {
+        return (
+            <RichTextEditorComponent height='340px'>
+                <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p>
+                <p><b>Key features:</b></p>
+                <ul>
+                    <li>
+                        <p>Provides &lt;IFRAME&gt; and &lt;DIV&gt; modes</p>
+                    </li>
+                    <li>
+                        <p>Capable of handling markdown editing.</p>
+                    </li>
+                    <li>
+                        <p>Contains a modular library to load the necessary functionality on demand.</p>
+                    </li>
+                    <li>
+                        <p>Provides a fully customizable toolbar.</p>
+                    </li>
+                    <li>
+                        <p>Provides HTML view to edit the source directly for developers.</p>
+                    </li>
+                    <li>
+                        <p>Supports third-party library integration.</p>
+                    </li>
+                    <li>
+                        <p>Allows preview of modified content before saving it.</p>
+                    </li>
+                    <li>
+                        <p>Handles images, hyperlinks, video, hyperlinks, uploads, etc.</p>
+                    </li>
+                    <li>
+                        <p>Contains undo/redo manager.</p>
+                    </li>
+                    <li>
+                        <p>Creates bulleted and numbered lists.</p>
+                    </li>
+                </ul>
+                <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
+            </RichTextEditorComponent>
+        );
     }
 
     let headerText = [{ text: "Grid" }, { text: "Chart" }, { text: "Schedule" }];
@@ -243,10 +248,10 @@ function Dragdrop() {
                 <div id="TabContainer">
                     <div className="col-lg-4" style={{ marginTop: '10px' }}>
                         <div className='property-panel-header'>List of Components</div>
-                        <TreeViewComponent id="ListView" ref={(treeview) => { treeObj = treeview }} dragArea="#TabContainer" cssClass="treeview-external-drag-tab" fields={field} nodeDragStop={onNodeDragStop.bind(this)} nodeDragging={onNodeDrag.bind(this)} allowDragAndDrop={allowDragAndDrop} />
+                        <TreeViewComponent id="ListView" ref={treeObj} dragArea="#TabContainer" cssClass="treeview-external-drag-tab" fields={field} nodeDragStop={onNodeDragStop} nodeDragging={onNodeDrag} allowDragAndDrop={allowDragAndDrop} />
                     </div>
                     <div className="col-lg-8 content-wrapper control-section">
-                        <TabComponent id="draggableTab" ref={(tab) => { tabObj = tab }} created={onTabCreate.bind(this)} dragArea="#TabContainer" onDragStart={onTabDragStart.bind(this)} dragged={onDraggedTab.bind(this)} allowDragAndDrop={allowDragAndDrop} >
+                        <TabComponent id="draggableTab" ref={tabObj} created={onTabCreate} dragArea="#TabContainer" onDragStart={onTabDragStart} dragged={onDraggedTab} allowDragAndDrop={allowDragAndDrop} >
                             <TabItemsDirective>
                                 <TabItemDirective header={headerText[0]} content={Grid} />
                                 <TabItemDirective header={headerText[1]} content={Chart} />
@@ -257,9 +262,7 @@ function Dragdrop() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This example illustrates how to reorder tabs and add tabs from an external source(list of components) by drag and drop. Here, you can drag and drop the items from TreeView into Tab.
-                </p>
+                <p>This example illustrates how to reorder tabs and add tabs from an external source(list of components) by drag and drop. Here, you can drag and drop the items from TreeView into Tab.</p>
             </div>
             <div id="description">
                 <p>

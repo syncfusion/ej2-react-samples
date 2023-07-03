@@ -3,20 +3,21 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { ListBoxComponent, FieldSettingsModel, ToolbarSettingsModel } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './dataSource.json';
 import './dual-list-box.css';
 
-function DualListBox() {
-    React.useEffect(() => {
+const DualListBox = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let dataA: { [key: string]: Object }[] = data["groupa"];
-    let dataB: { [key: string]: Object }[] = data["groupb"];
-    let fields: FieldSettingsModel = { text: 'Name' };
-    let toolbarSettings: ToolbarSettingsModel = { items: ['moveUp', 'moveDown', 'moveTo', 'moveFrom', 'moveAllTo', 'moveAllFrom'] };
-    let noRecordsTemplate = '<div class= "e-list-nrt"><span>NO DATA AVAILABLE</span></div>'
+    const dataA: { [key: string]: Object }[] = data["groupa"];
+    const dataB: { [key: string]: Object }[] = data["groupb"];
+    const fields: FieldSettingsModel = { text: 'Name' };
+    const toolbarSettings: ToolbarSettingsModel = { items: ['moveUp', 'moveDown', 'moveTo', 'moveFrom', 'moveAllTo', 'moveAllFrom'] };
+    const noRecordsTemplate = '<div class= "e-list-nrt"><span>NO DATA AVAILABLE</span></div>'
 
     return (
         <div className='control-pane'>

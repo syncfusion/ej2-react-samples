@@ -88,6 +88,12 @@ const slidercss = `
     user-select: none;
     /* Standard syntax */
 }
+
+.e-bigger .e-sidebar .sb-mobile-right-pane .property-section .e-numerictextbox {
+    display: flex;
+    padding-left: 0;
+    text-align: center;
+} 
 `
 export class APIs extends SampleBase<{}, {}> {
     /**
@@ -167,7 +173,7 @@ export class APIs extends SampleBase<{}, {}> {
                                         <td style={{ width: '50%' }}>
                                             <div className="userselect">Value</div>
                                         </td>
-                                        <td style={{ width: '50%', paddingRight: '10px' }}>
+                                        <td style={{ width: '50%' }}>
                                             <div>
                                                 <NumericTextBoxComponent value={30} format='n0' change={this.onValueChange.bind(this)}
                                                     ref={(value) => { this.numbericValue = value }} />
@@ -178,7 +184,7 @@ export class APIs extends SampleBase<{}, {}> {
                                         <td style={{ width: '50%' }}>
                                             <div className="userselect">Min</div>
                                         </td>
-                                        <td style={{ width: '50%', paddingRight: '10px' }}>
+                                        <td style={{ width: '50%' }}>
                                             <div>
                                                 <NumericTextBoxComponent value={0} format='n0' change={this.onMinChange.bind(this)} />
                                             </div>
@@ -188,7 +194,7 @@ export class APIs extends SampleBase<{}, {}> {
                                         <td style={{ width: '50%' }}>
                                             <div className="userselect">Max</div>
                                         </td>
-                                        <td style={{ width: '50%', paddingRight: '10px' }}>
+                                        <td style={{ width: '50%' }}>
                                             <div>
                                                 <NumericTextBoxComponent value={100} format='n0' change={this.onMaxChange.bind(this)} />
                                             </div>
@@ -198,7 +204,7 @@ export class APIs extends SampleBase<{}, {}> {
                                         <td style={{ width: '50%' }}>
                                             <div className="userselect">Step</div>
                                         </td>
-                                        <td style={{ width: '50%', paddingRight: '10px' }}>
+                                        <td style={{ width: '50%' }}>
                                             <div>
                                                 <NumericTextBoxComponent value={1} change={this.onStepChange.bind(this)} />
                                             </div>

@@ -3,16 +3,17 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { ListBoxComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './dataSource.json';
 import './template.css';
 
-function Template() {
-    React.useEffect(() => {
+const Template = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let dataA: { [key: string]: Object }[] = data["template_data"];
+    const dataA: { [key: string]: Object }[] = data["template_data"];
 
     return (
         <div className='control-pane'>

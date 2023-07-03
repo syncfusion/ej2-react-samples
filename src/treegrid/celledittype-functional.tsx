@@ -31,11 +31,11 @@ function EditType() {
             <ColumnDirective field='taskName' headerText='Task Name' width='150' validationRules={validationRule}></ColumnDirective>
             <ColumnDirective field='startDate' headerText='Start Date' width='170' textAlign='Right'
               editType='datetimepickeredit' format={format} validationRules={validationRule1} />
-            <ColumnDirective field='duration' headerText='Duration' width='90' editType='numericedit' textAlign='Right'
+            <ColumnDirective field='duration' headerText='Duration' width='150' editType='numericedit' textAlign='Right'
               validationRules={validationRule2} edit={editparams2} />
-            <ColumnDirective field='progress' headerText='Progress' width='90' textAlign='Right' editType='dropdownedit'
+            <ColumnDirective field='progress' headerText='Progress' width='150' textAlign='Right' editType='dropdownedit'
               edit={editparams} />
-            <ColumnDirective field='priority' headerText='Priority' width='90' textAlign='Right' editType='dropdownedit'
+            <ColumnDirective field='priority' headerText='Priority' width='150' textAlign='Right' editType='dropdownedit'
               edit={editparams} />
           </ColumnsDirective>
           <Inject services={[Page, Edit, Toolbar]} />

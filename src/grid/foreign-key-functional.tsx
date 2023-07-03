@@ -25,7 +25,7 @@ function ForeignKeyColumn() {
                             validationRules={validationRules} isPrimaryKey={true}></ColumnDirective>
                         <ColumnDirective field='CustomerID' headerText='Customer Name' width='150' validationRules={validationRules}
                             foreignKeyValue='ContactName' foreignKeyField='CustomerID' dataSource={customerData}></ColumnDirective>
-                        <ColumnDirective field='Freight' headerText='Freight' width='100' format='C2' textAlign='Right' editType='numericedit' />
+                        <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='Right' editType='numericedit' />
                         <ColumnDirective field='ShipName' headerText='Ship Name' width='170'></ColumnDirective>
                         <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' ></ColumnDirective>
                     </ColumnsDirective>

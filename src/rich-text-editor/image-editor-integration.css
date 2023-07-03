@@ -1,0 +1,22 @@
+.e-rte-quick-popup .e-rte-quick-toolbar .e-rte-image-editor::before {
+    content: '\e730';
+}
+
+.material .e-rte-quick-popup .e-rte-quick-toolbar .e-rte-image-editor::before,
+.material-dark .e-rte-quick-popup .e-rte-quick-toolbar .e-rte-image-editor::before {
+    content: '\e891';
+}
+
+.bootstrap4 .e-rte-quick-popup .e-rte-quick-toolbar .e-rte-image-editor::before {
+    content: '\e78f';
+}
+
+.bootstrap .e-rte-quick-popup .e-rte-quick-toolbar .e-rte-image-editor::before,
+.bootstrap-dark .e-rte-quick-popup .e-rte-quick-toolbar .e-rte-image-editor::before {
+    content: '\e944';
+}
+
+.fabric .e-rte-quick-popup .e-rte-quick-toolbar .e-rte-image-editor::before,
+.fabric-dark .e-rte-quick-popup .e-rte-quick-toolbar .e-rte-image-editor::before {
+    content: '\e97c';
+}

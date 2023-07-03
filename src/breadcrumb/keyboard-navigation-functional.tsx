@@ -1,18 +1,19 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { BreadcrumbComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './keyboard-navigation.css';
 
-function KeyboardNavigation() {
-  React.useEffect(() => {
+const KeyboardNavigation = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let breadcrumb: BreadcrumbComponent;
+  let breadcrumb = useRef<BreadcrumbComponent>(null);
 
-  function btnClick(): void {
-    breadcrumb.activeItem = breadcrumb.items[breadcrumb.items.length - 1].text;
+  const btnClick = (): void => {
+    breadcrumb.current.activeItem = breadcrumb.current.items[breadcrumb.current.items.length - 1].text;
   }
 
   return (
@@ -22,19 +23,19 @@ function KeyboardNavigation() {
           <div className="row material2">
             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
               <h5 style={{ display: "inline-block" }}>Simple Breadcrumb</h5>
-              <ButtonComponent cssClass='e-small reset-btn'
-                onClick={btnClick}>Reset State</ButtonComponent>
+              <ButtonComponent cssClass='e-small reset-btn'onClick={btnClick}>Reset State</ButtonComponent>
             </div>
           </div>
           <div className="row material2">
             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-              <BreadcrumbComponent ref={(breadcrumbObj) => { breadcrumb = breadcrumbObj }} enableNavigation={false}></BreadcrumbComponent>
+              <BreadcrumbComponent ref={breadcrumb} enableNavigation={false}></BreadcrumbComponent>
             </div>
           </div>
         </div>
       </div>
       <div id="action-description">
-        <p> This sample demonstrates the keyboard navigation functionalities of the <b>Breadcrumb</b> component.</p>        </div>
+        <p> This sample demonstrates the keyboard navigation functionalities of the <b>Breadcrumb</b> component.</p>
+      </div>
       <div id='description'>
         <p>The <code>Breadcrumb</code> component can be interacted with keyboard navigation. Below key combinations can be used in Breadcrumb to initiate various actions.</p>
         <ul>

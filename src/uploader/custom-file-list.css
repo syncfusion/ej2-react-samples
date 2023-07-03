@@ -110,7 +110,7 @@
     left: 7px;
     position: inherit;
     top: 7px;
-    content: '\e932';
+    content: '\e7e7';
 }
 
 .bootstrap4 .template_wrapper .close-icon-container.e-icons::before {
@@ -121,14 +121,22 @@
 }
 .tailwind .template_wrapper .close-icon-container.e-icons::before,
 .tailwind-dark .template_wrapper .close-icon-container.e-icons::before {
-    content: '\e771';
+    content: '\e7e7';
 }
 
 .fabric .template_wrapper .close-icon-container.e-icons::before,
 .fabric-dark .template_wrapper .close-icon-container.e-icons::before,
-.bootstrap .template_wrapper .close-icon-container.e-icons::before,
-.bootstrap-dark .template_wrapper .close-icon-container.e-icons::before,
 .highcontrast .template_wrapper .close-icon-container.e-icons::before {
+    content: '\e953';
+}
+
+.material .template_wrapper .close-icon-container.e-icons::before,
+.material-dark .template_wrapper .close-icon-container.e-icons::before {
+    content: '\e932';
+}
+
+.bootstrap .close-icon-container.e-icons::before,
+.bootstrap-dark .close-icon-container.e-icons::before {
     content: '\e7fc';
 }
 
@@ -152,7 +160,7 @@
 
 .tailwind .template_wrapper .close-icon-container.delete-icon::before,
 .tailwind-dark .template_wrapper .close-icon-container.delete-icon::before {
-    content: '\e78d';
+    content: '\e820';
 }
 
 .bootstrap5 .template_wrapper .close-icon-container.delete-icon::before,
@@ -166,7 +174,7 @@
 }
 
 .highcontrast .template_wrapper .close-icon-container.delete-icon::before {
-    content: '\e84e';
+    content: '\e965';
 }
 
 .tailwind .template_wrapper .close-icon-container.delete-icon {
@@ -279,6 +287,7 @@
 .highcontrast .template_wrapper span a:hover {
     color: #ffd939;
 }
+.material3-dark .template_wrapper span a,
 .material-dark .template_wrapper span a {
     color:#56a4fd;
 }
@@ -297,7 +306,7 @@
 .custom-panel {
     padding-top: 25px;
 }
-.fluent .close-icon-container.delete-icon::before,
-.fluent-dark .close-icon-container.delete-icon::before {
-    content: '\e7e7';
+.fluent .template_wrapper .close-icon-container.delete-icon::before,
+.fluent-dark .template_wrapper .close-icon-container.delete-icon::before {
+    content: '\e820';
 }

@@ -1,15 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MessageComponent } from '@syncfusion/ej2-react-notifications';
 import './default.css';
 
 function Default() {
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (
-        <div className='control-pane'>
+        <div className="control-pane">
             <div className="col-lg-12 control-section msg-default-section">
                 <div className="content-section">
                     <MessageComponent id="msg_default" content="Editing is restricted"></MessageComponent>
@@ -35,6 +36,6 @@ function Default() {
                 <p>In this sample, messages are displayed with a distinct icon and a color based on the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/message/#content"> content</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/message/#severity">severity</a> properties.</p>
             </div>
         </div>
-    )
-}
+    );
+};
 export default Default;

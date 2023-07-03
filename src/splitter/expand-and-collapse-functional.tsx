@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { SampleBase, updateSampleSection } from '../common/sample-base';
+import { useEffect, useRef } from 'react';
+import { updateSampleSection } from '../common/sample-base';
 import { SplitterComponent, PanesDirective, PaneDirective } from '@syncfusion/ej2-react-layouts';
 import './expand-and-collapse.component.css';
 
@@ -8,11 +9,11 @@ import './expand-and-collapse.component.css';
  *  Sample for expand/collapse
  */
 
-function ExpandCollapse (){
-    React.useEffect(() => {
+const ExpandCollapse = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    function rightPaneContent1(): JSX.Element {
+    const rightPaneContent1 = () => {
         return (
             <div className="splitter-content-expand">
                 <a href="https://www.syncfusion.com/ebooks/data_capture_and_extraction_with_c_sharp_succinctly" target="_blank" > Data Capture and Extraction with C# Succinctly </a>
@@ -25,7 +26,7 @@ function ExpandCollapse (){
             </div >
         );
     };
-    function rightPaneContent2(): JSX.Element {
+    const rightPaneContent2 = () => {
         return (
             <div className="splitter-content-expand">
                 <a href="https://www.syncfusion.com/ebooks/spark" target="_blank">Spark Succinctly</a>
@@ -38,71 +39,66 @@ function ExpandCollapse (){
             </div>
         );
     };
-    let innerSplitterInstance: SplitterComponent;
-    let splitterInstance: SplitterComponent;
-
-    function leftPaneContent(): JSX.Element {
+    let innerSplitterInstance = useRef<SplitterComponent>(null);
+    let splitterInstance = useRef<SplitterComponent>(null);
+    const leftPaneContent = () => {
         return (
             <div className="splitter-content-expand">
                 <a href="https://www.syncfusion.com/ebooks/neuralnetworks" target="_blank">Neural Networks Using C# Succinctly</a>
                 <p>Neural networks are an exciting field of software development used to calculate outputs from input data.
-                While the idea seems simple enough, the implications of such networks are staggering—think optical character recognition,
-                speech recognition, and regression analysis. With Neural Networks Using C# Succinctly by James McCaffrey, you’ll learn
-                how to create your own neural network to solve classification problems, or problems where the outcomes can only be one of
-                several values. <br /><br />Learn about encoding and normalizing data, activation functions and how to choose the right one, and ultimately
+                    While the idea seems simple enough, the implications of such networks are staggering—think optical character recognition,
+                    speech recognition, and regression analysis. With Neural Networks Using C# Succinctly by James McCaffrey, you’ll learn
+                    how to create your own neural network to solve classification problems, or problems where the outcomes can only be one of
+                    several values. <br /><br />Learn about encoding and normalizing data, activation functions and how to choose the right one, and ultimately
                     how to train a neural network to find weights and bias values that provide accurate predictions.
                     An artificial neural network (sometimes abbreviated ANN, or shortened to just "neural network" when the context is clear) is
                     a software system that loosely models biological neurons and synapses. Before explaining exactly how neural networks work, it is
                     useful to understand what types of problems they can solve.
-            </p>
+                </p>
             </div>
         );
     }
 
-    
-    function onCreate(e) {
+    const onCreate = (e) => {
         //Initialize Splitter component
-        let cont = innerSplitterInstance.element.querySelectorAll(".e-pane")[1];
-        cont.appendChild(splitterInstance.element);
+        let cont = innerSplitterInstance.current.element.querySelectorAll(".e-pane")[1];
+        cont.appendChild(splitterInstance.current.element);
     }
 
- 
-        return (
-            <div id="target" className="control-section splitter-expand" >
-                <SplitterComponent id="Expand" separatorSize={3} height="350px" width="100%" ref={(splitter) => { innerSplitterInstance = splitter; }}>
-                    <PanesDirective>
-                        <PaneDirective size='48%' collapsible={true} content={leftPaneContent} />
-                        <PaneDirective collapsible={true} />
-                    </PanesDirective>
-                </SplitterComponent>
-                <SplitterComponent id="Collapse" separatorSize={3} orientation="Vertical" ref={(splitter) => { splitterInstance = splitter; }} created={onCreate.bind(this)}>
-                    <PanesDirective>
-                        <PaneDirective collapsible={true} size='50%' content={rightPaneContent1}>
-                        </PaneDirective>
-                        <PaneDirective collapsible={true} content={rightPaneContent2}>
-                        </PaneDirective>
-                    </PanesDirective>
-                </SplitterComponent>
-                <div id="action-description">
-                    <p>
-                        This example demonstrates the expand and collapse functionalities of the Splitter control. To expand or collapse the panes,
-                        hover the mouse over the separator (divider) bar and click the corresponding icon to expand or collapse pane.
+    return (
+        <div id="target" className="control-section splitter-expand">
+            <SplitterComponent id="Expand" separatorSize={3} height="350px" width="100%" ref={innerSplitterInstance}>
+                <PanesDirective>
+                    <PaneDirective size='48%' collapsible={true} content={leftPaneContent} />
+                    <PaneDirective collapsible={true} />
+                </PanesDirective>
+            </SplitterComponent>
+            <SplitterComponent id="Collapse" separatorSize={3} orientation="Vertical" ref={splitterInstance} created={onCreate.bind(this)}>
+                <PanesDirective>
+                    <PaneDirective collapsible={true} size='50%' content={rightPaneContent1} />
+                    <PaneDirective collapsible={true} content={rightPaneContent2} />
+                </PanesDirective>
+            </SplitterComponent>
+            <div id="action-description">
+                <p>
+                    This example demonstrates the expand and collapse functionalities of the Splitter control. To expand or collapse the panes,
+                    hover the mouse over the separator (divider) bar and click the corresponding icon to expand or collapse pane.
                 </p>
-                </div>
-                <div id="description">
-                    <p>
-                        The splitter (split container) allows expanding and collapsing its split panes.
-                        You can control this behavior using the paneSettings Collapsible property.
-                        The collapsible behavior can be enabled for specific pane alone.
-        </p>
-                    <p>
-                        When you hover the mouse over the pane's separator (divider), the expand and collapse icons will be visible.
-                        While clicking the icon, the corresponding pane is expanded or collapsed.
-                        The remaining panes automatically adjust its dimension based on the expanded or collapsed panes.
-                        These icons are visible by default in mobile devices.
-        </p>
-                </div>
             </div>
-        );   
+            <div id="description">
+                <p>
+                    The splitter (split container) allows expanding and collapsing its split panes.
+                    You can control this behavior using the paneSettings Collapsible property.
+                    The collapsible behavior can be enabled for specific pane alone.
+                </p>
+                <p>
+                    When you hover the mouse over the pane's separator (divider), the expand and collapse icons will be visible.
+                    While clicking the icon, the corresponding pane is expanded or collapsed.
+                    The remaining panes automatically adjust its dimension based on the expanded or collapsed panes.
+                    These icons are visible by default in mobile devices.
+                </p>
+            </div>
+        </div>
+    );   
 }
 export default ExpandCollapse;

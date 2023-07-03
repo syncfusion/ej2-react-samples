@@ -46,7 +46,7 @@ export class StockEvents extends SampleBase<{}, {}> {
                         trendlineType={[]}
                         title={'AAPL Stock Price'}
                         tooltip={{ enable: true }}
-                        crosshair={{ enable: true }}
+                        crosshair={{ enable: true, lineType: 'Both' }}
                         chartArea={{ border: { width: 0 } }}
                         stockEvents= {[
                             { date: new Date(2012, 3, 1), text: 'Q2', description: '2012 Quarter2 starts', type: 'Flag' },
@@ -100,17 +100,25 @@ export class StockEvents extends SampleBase<{}, {}> {
                     </StockChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                    This sample visualizes stock events in stock chart.
-                    </p>
+                    <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart">React Stock Chart</a> example visualizes the AAPL stock price with spline chart. Crosshair show the information about the data and period.</p>
                 </div>
                 <div id="description">
-                <p>
-                   In this example, you can see how to render and configure the Stock events.
-                  <code>SplineSeries</code> is used to represent selected data value.
-                </p>
+                    <p>
+                        In this example, you can see how to render and configure a stock chart with <a target="_blank" href="https://ej2.syncfusion.com/vue/documentation/api/stock-chart/stockEventsSettings/">StockEvents</a> to mark specific events such as market open and close, highest or lowest price reached, year/quarter start and end on a chart for a specific date.
+                    </p>
+                    <p>
+                        <code>Crosshair</code> is enabled in this example. To see the crosshair in action, hover the chart or tap on touch enabled devices.
+                    </p>
                     <br></br>
                     <p>Injecting Module</p>
+                    <p>
+                        The Stock chart component features are segregated into individual feature-wise modules. To use date-time axis,
+                        inject the
+                        <code>DateTime</code> module using the
+                        <code>StockChart.Inject(DateTime)</code> method. To use the SplineSeries, inject the
+                        <code>SplineSeries</code> module using the
+                        <code>StockChart.Inject(SplineSeries)</code> method.
+                    </p>
                 </div>
             </div>
         )
@@ -120,7 +128,7 @@ export class StockEvents extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-         replace(/-dark/i, "Dark") as  ChartTheme;
+         replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as  ChartTheme;
     };
         
 }

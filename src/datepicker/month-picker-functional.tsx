@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DatePickerComponent, CalendarView } from '@syncfusion/ej2-react-calendars';
 import './monthpicker-style.css';
 
-function MonthPicker() {
-    React.useEffect(() => {
+const MonthPicker = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const start: CalendarView = 'Year';

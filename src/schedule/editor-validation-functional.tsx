@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState } from 'react';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -13,13 +12,12 @@ import * as dataSource from './datasource.json';
  *  Schedule editor validation sample
  */
 
-function EditorFieldValidation() {
-  React.useEffect(() => {
+const EditorFieldValidation = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
   const data: Record<string, any>[] = extend([], (dataSource as any).scheduleData, null, true) as Record<string, any>[];
-
+  const [currentView, setCurrentView] = useState<View>('Week');
   const fields = {
     subject: { name: 'Subject', validation: { required: true } },
     location: {
@@ -37,16 +35,17 @@ function EditorFieldValidation() {
     endTime: { name: 'EndTime', validation: { required: true } }
   };
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, currentView);
   }
-
+  const onNavigating = (args: NavigatingEventArgs): void => {
+    setCurrentView(args.currentView as View);
+  }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2021, 0, 10)} ref={t => scheduleObj = t}
-            eventSettings={{ dataSource: data, fields: fields }} eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data, fields: fields }} eventRendered={onEventRendered} navigating={onNavigating}>
             <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>

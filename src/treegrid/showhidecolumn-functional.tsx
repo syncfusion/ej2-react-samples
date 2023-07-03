@@ -11,11 +11,13 @@ import { PropertyPane } from '../common/property-pane';
 function ShowHideColumn() {
   React.useEffect(() => {
     updateSampleSection();
+    document.getElementById('hide').addEventListener('click', btnClick);
+    document.getElementById('show').addEventListener('click', showClick);
   }, [])
   let treegridObj: TreeGridComponent;
   let dropdownObj: DropDownListComponent;
-  let buttonObj: ButtonComponent;
-  let buttonObj2: ButtonComponent;
+  let button1: ButtonComponent;
+  let button2: ButtonComponent;
 
   const columnsName: { [key: string]: Object }[] = [
     { id: 'taskID', name: 'Task ID' },
@@ -33,6 +35,8 @@ function ShowHideColumn() {
     } else {
       treegridObj.grid.hideColumns(column.headerText, 'headerText');
       let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
+      button1.disabled = true;
+      button2.disabled = false;
       hiddenColumns.value = hiddenColumns.value + column.headerText + '\n';
     }
   }
@@ -42,7 +46,20 @@ function ShowHideColumn() {
     let column: Column = treegridObj.getColumnByField(columnName);
     treegridObj.grid.showColumns(column.headerText, 'headerText');
     let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
+    button2.disabled = true;
+    button1.disabled = false;
     hiddenColumns.value = hiddenColumns.value.replace(column.headerText + '\n', '');
+  }
+  function change (e: ChangeEventArgs) : void {
+    let columnName: any = e.value;
+    let column: Column  = treegridObj.getColumnByField(columnName);
+    if (column.visible === undefined || column.visible) {
+        button2.disabled = true;
+        button1.disabled = false;
+    } else {
+        button1.disabled = true;
+        button2.disabled = false;
+    }
   }
   return (
     <div className='control-pane'>
@@ -70,7 +87,7 @@ function ShowHideColumn() {
                 <td style={{ width: '70%', paddingRight: '10px' }}>
                   <div id='columnddl'>
                     <DropDownListComponent width="96px" id="ddlelement"
-                      dataSource={columnsName} fields={{ text: 'name', value: 'id' }} value="taskID"
+                      dataSource={columnsName} fields={{ text: 'name', value: 'id' }} change={change.bind(this)} value="taskID"
                       ref={dropdown => dropdownObj = dropdown} />
                   </div>
                 </td>
@@ -79,13 +96,13 @@ function ShowHideColumn() {
                 <td style={{ width: '30%' }}>
                   <div>
                     <ButtonComponent id='hide'
-                      ref={button => buttonObj = button} onClick={btnClick.bind(this)}> Hide </ButtonComponent>
+                      ref={button => button1 = button}> Hide </ButtonComponent>
                   </div>
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
                     <ButtonComponent id='show'
-                      ref={button => buttonObj2 = button} onClick={showClick.bind(this)}> Show </ButtonComponent>
+                      ref={button => button2 = button}> Show </ButtonComponent>
                   </div>
                 </td>
               </tr>

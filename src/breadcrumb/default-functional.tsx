@@ -1,16 +1,17 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { BreadcrumbComponent, BreadcrumbItemDirective, BreadcrumbItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { getComponent } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-function Default() {
-  React.useEffect(() => {
+const Default = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  function btnClick(): void {
+  const btnClick = (): void => {
     let breadcrumb, breadcrumbInst, breadcrumbs = document.querySelector('.content-wrapper').getElementsByClassName("e-breadcrumb");
     for (let i = 0; i < breadcrumbs.length; i++) {
       breadcrumb = breadcrumbs[i];
@@ -19,7 +20,7 @@ function Default() {
     }
   }
 
-  function breadcrumbTemplate(): JSX.Element {
+  const breadcrumbTemplate = () => {
     return (
       <span className="e-bicons e-arrow"></span>
     );
@@ -32,8 +33,7 @@ function Default() {
           <div className="row material2">
             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
               <h5 style={{ display: "inline-block" }}>Simple Breadcrumb</h5>
-              <ButtonComponent cssClass='e-small reset-btn'
-                onClick={btnClick}>Reset State</ButtonComponent>
+              <ButtonComponent cssClass='e-small reset-btn' onClick={btnClick}>Reset State</ButtonComponent>
             </div>
           </div>
           <div className="row material2">
@@ -86,7 +86,8 @@ function Default() {
         </div>
       </div>
       <div id="action-description">
-        <p>This sample demonstrates the basic rendering, overflow feature and navigable active item of the <b>Breadcrumb</b> component with icon support. Click the <b>Reset State</b> button to refresh Breadcrumb component states.</p>        </div>
+        <p>This sample demonstrates the basic rendering, overflow feature and navigable active item of the <b>Breadcrumb</b> component with icon support. Click the <b>Reset State</b> button to refresh Breadcrumb component states.</p>
+      </div>
       <div id='description'>
         <p>The <code>Breadcrumb</code> component is used as a navigational aid to identify the current page location within the navigational hierarchy structure of websites. It has list of items that can be populated using the <code>BreadcrumbItemDirective</code> tag.</p>
         <p><b>Simple Breadcrumb</b></p>

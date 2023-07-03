@@ -114,13 +114,7 @@ function MindMap() {
             ) {
               (node.data as EmployeeInfo).branch = "subRight";
             }
-            let connector: ConnectorModel = addConnector(selectedObject[0], node);
-            diagramInstance.clearSelection();
-            let nd: Node = diagramInstance.add(node) as Node;
-            diagramInstance.add(connector);
-            diagramInstance.doLayout();
-            diagramInstance.bringIntoView(nd.wrapper.bounds);
-            diagramInstance.startTextEdit(nd);
+            getTextEditValue(selectedObject[0], node);
           }
         }
       }
@@ -148,13 +142,7 @@ function MindMap() {
             ) {
               (node.data as EmployeeInfo).branch = "subLeft";
             }
-            let connector: ConnectorModel = addConnector(selectedObject[0], node);
-            diagramInstance.clearSelection();
-            let nd: Node = diagramInstance.add(node) as Node;
-            diagramInstance.add(connector);
-            diagramInstance.doLayout();
-            diagramInstance.bringIntoView(nd.wrapper.bounds);
-            diagramInstance.startTextEdit(nd);
+            getTextEditValue(selectedObject[0], node);
           }
         }
       }
@@ -272,6 +260,17 @@ function MindMap() {
     };
     return userhandle;
   }
+
+  function getTextEditValue(selectObject:any, node:any){
+    let connector:any = addConnector(selectObject, node);
+    diagramInstance.clearSelection();
+   var nd = diagramInstance.add(node);
+   diagramInstance.add(connector);
+   diagramInstance.doLayout();
+   diagramInstance.bringIntoView(nd.wrapper.bounds);
+   diagramInstance.select([diagramInstance.nameTable[nd.id]]);
+   diagramInstance.startTextEdit(diagramInstance.selectedItems.nodes[0]);
+  }
   //Change the Position of the UserHandle.
   function changeUserHandlePosition(change: string): void {
     for (let handle of diagramInstance.selectedItems.userHandles) {
@@ -325,6 +324,7 @@ function MindMap() {
             tool={DiagramTools.SingleSelect}
             layout={{
               type: "MindMap",
+              orientation:'Horizontal',
               getBranch: (node: NodeModel, nodes: NodeModel[]) => {
                 return ((node as Node).data as EmployeeInfo).branch;
               },

@@ -90,7 +90,6 @@
              style={{ textAlign: 'center' }}
              primaryXAxis={{
                valueType: 'Category',
-               edgeLabelPlacement: 'Shift',
                majorGridLines: { width: 0 },
              }}
              load={this.load.bind(this)}
@@ -108,7 +107,7 @@
              tooltip={{
                enable: true,
                shared: true,
-               format: '${point.x} : <b>${point.y}',
+               format: '${point.x} : <b>${point.y}</b>',
                header: '<b>Fruits Production</b>'
              }}
              legendSettings={{enableHighlight: true}}
@@ -194,16 +193,16 @@
                          <code>LineSeries</code> module into <code>services</code>.
                    </p>
                     <p>
-                        More information on the line series can be found in this &nbsp;
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
+                        More information on the dashed line series can be found in this &nbsp;
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line#series-customization">documentation section</a>.
                    </p>
                 </div>
             </div>
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
       
@@ -213,7 +212,7 @@
         let selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
         if (selectedTheme && selectedTheme.indexOf('fabric-dark') > -1) {
           annotationColor = 'dark'
         } else if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
@@ -240,6 +239,10 @@
           annotationColor = 'dark'
         } else if (selectedTheme === 'tailwind') {
           annotationColor = 'light'
+        } else if (selectedTheme === 'material3-dark') {
+          annotationColor = 'dark';
+        } else if (selectedTheme === 'material3') {
+          annotationColor = 'light';
         } else {
           annotationColor = 'light'
         }

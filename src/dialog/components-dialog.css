@@ -52,6 +52,7 @@
 }
 
 .material-dark #defaultDialog #formId,
+.material3-dark #defaultDialog #formId,
 .bootstrap5-dark #defaultDialog #formId {
     background: #212529;
 }
@@ -69,6 +70,7 @@
     background: #111111;
 }
 .material-dark #defaultDialog .form-title,
+.material3-dark #defaultDialog .form-title,
 .bootstrap-dark #defaultDialog .form-title,
 .fabric-dark #defaultDialog .form-title,
 .tailwind-dark #defaultDialog .form-title,

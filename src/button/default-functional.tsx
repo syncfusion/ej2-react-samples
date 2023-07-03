@@ -1,24 +1,18 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './button.css';
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let btnobj: ButtonComponent;
-
+    const [play, setPlay] = useState<boolean>(true);
     //Toggle button click event handler
-    function btnClick(): void {
-        if (btnobj.element.classList.contains('e-active')) {
-            btnobj.content = 'Pause';
-            btnobj.iconCss = 'e-btn-sb-icons e-pause-icon';
-        } else {
-            btnobj.content = 'Play';
-            btnobj.iconCss = 'e-btn-sb-icons e-play-icon';
-        }
+    const togglePlay = () => {
+        setPlay((prevState) => !prevState)
     }
 
     return (
@@ -73,8 +67,8 @@ function Default() {
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                                    <ButtonComponent cssClass='e-flat e-primary' ref={(scope) => { btnobj = scope; }} iconCss='e-btn-sb-icons e-play-icon'
-                                        isToggle onClick={btnClick}>Play</ButtonComponent>
+                                    <ButtonComponent cssClass='e-flat e-primary' iconCss={play ? 'e-btn-sb-icons e-play-icon' : 'e-btn-sb-icons e-pause-icon'}
+                                        onClick={togglePlay}>{play ? 'Play' : 'Pause'}</ButtonComponent>
                                 </div>
                             </div>
 

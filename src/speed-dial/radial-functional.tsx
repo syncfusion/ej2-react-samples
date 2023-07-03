@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { RadialSettingsModel, SpeedDialComponent, SpeedDialItemModel } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './radial.css';
 
-function Radial() {
-    React.useEffect(() => {
+const Radial = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 

@@ -56,7 +56,7 @@ export class Responsive extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section tab-control-section row'>
                     <div className='col-lg-8 control-section'>
-                        <div className='e-sample-resize-container'>
+                        <div className='tab-control-resize-container'>
                         {/* Render the Tab Component */}
                         <TabComponent ref={(tab) => { this.tabObj = tab }} cssClass='responsive-mode' heightAdjustMode='None' height='250px' width='auto'>
                             <TabItemsDirective>

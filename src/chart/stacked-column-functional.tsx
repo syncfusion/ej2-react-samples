@@ -2,11 +2,9 @@
  * Sample for Stacking Column series
  */
 import * as React from "react";
+import { useEffect } from 'react';
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    Legend, Category, StackingColumnSeries, Tooltip, ILoadedEventArgs, ChartTheme, IAxisLabelRenderEventArgs, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, StackingColumnSeries, Tooltip, ILoadedEventArgs, ChartTheme, IAxisLabelRenderEventArgs, Highlight } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data1: any[] = [
@@ -34,99 +32,64 @@ export let data4: any[] = [
     { x: '2016', y: 2359756 },
     { x: '2017', y: 2505741 }];
 const SAMPLE_CSS = `
-     .control-fluid {
-         padding: 0px !important;
-     }`;
-function StackedColumn() {
-    React.useEffect(() => {
+    .control-fluid {
+        padding: 0px !important;
+    }`;
+const StackedColumn = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-        return (
-            <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
-                <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} legendSettings={{ enableHighlight: true }}
-                        primaryXAxis={{
-                            majorGridLines: { width: 0 },
-                            minorGridLines: { width: 0 },
-                            majorTickLines: { width: 0 },
-                            minorTickLines: { width: 0 },
-                            interval: 1,
-                            lineStyle: { width: 0 },
-                            labelIntersectAction: 'Rotate45',
-                            valueType: 'Category'
-                        }}
-                        primaryYAxis={{
-                            title: 'Vehicles Production (In Millions)',
-                            lineStyle: { width: 0 },
-                            majorTickLines: { width: 0 },
-                            majorGridLines: { width: 1 },
-                            minorGridLines: { width: 1 },
-                            minorTickLines: { width: 0 },
-                            labelFormat: '{value}',
-                        }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        chartArea={{ border: { width: 0 } }}
-                        load={load.bind(this)}
-                        title='Motor Vehicle Production by Manufacturer' loaded={onChartLoad.bind(this)}
-                        tooltip={{ enable: true }}
-                        axisLabelRender={axisLabelRender.bind(this)}>
-                        <Inject services={[StackingColumnSeries, Category, Legend, Tooltip, Highlight]} />
-                        <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='General Motors' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='Honda' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data3} xName='x' yName='y' name='Suzuki' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data4} xName='x' yName='y' name='BMW' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn'>
-                            </SeriesDirective>
-                        </SeriesCollectionDirective>
-                    </ChartComponent>
-                    <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                        <a href="https://www.cyberagent.co.jp/en/newsinfo/press/detail/id=12026" target="_blank">www.cyberagent.co.jp</a>
-                    </div>
-                </div>
-                <div id="action-description">
-                    <p>
-                        This React stacked column chart example visualizes motor vehicle production by manufacturer with a default stacked column series. The legend in the sample shows more information about those series.
-                    </p>
-                </div>
-                <div id="description">
-                    <p>
-                        In this example, you can see how to render and configure the stacked column chart. The stacked column chart stacks points in the series vertically. You can also use the <code>StackingGroup</code> property to group stacked collections based on category.
-                    </p>
-                    <p>
-                        <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
-                    </p>
-                    <br></br>
-                    <p><b>Injecting Module</b></p>
-                    <p>
-                        Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject
-                        <code>StackingColumnSeries</code> module into <code>services</code>.
-                    </p>
-                    <p>
-                        More information on the column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
-                    </p>
-                </div>
-            </div>
-        )
-    function onChartLoad(args: ILoadedEventArgs): void {
+
+    const onChartLoad = (args: ILoadedEventArgs): void => {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
-
     };
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
-    function axisLabelRender(args: IAxisLabelRenderEventArgs): void {
-        {
-            args.text = args.text.replace("0000000", "0M").replace("000000", "M");
-        };
+    const axisLabelRender = (args: IAxisLabelRenderEventArgs): void => {
+        args.text = args.text.replace("0000000", "0M").replace("000000", "M");
     }
+    return (
+        <div className='control-pane'>
+            <style>{SAMPLE_CSS}</style>
+            <div className='control-section'>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} legendSettings={{ enableHighlight: true }} primaryXAxis={{ majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, interval: 1, lineStyle: { width: 0 }, labelIntersectAction: 'Rotate45', valueType: 'Category' }} primaryYAxis={{ title: 'Vehicles Production (In Millions)', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}' }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} load={load.bind(this)} title='Motor Vehicle Production by Manufacturer' loaded={onChartLoad.bind(this)} tooltip={{ enable: true }} axisLabelRender={axisLabelRender.bind(this)}>
+                    <Inject services={[StackingColumnSeries, Category, Legend, Tooltip, Highlight]} />
+                    <SeriesCollectionDirective>
+                        <SeriesDirective dataSource={data1} xName='x' yName='y' name='General Motors' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn' />
+                        <SeriesDirective dataSource={data2} xName='x' yName='y' name='Honda' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn' />
+                        <SeriesDirective dataSource={data3} xName='x' yName='y' name='Suzuki' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn' />
+                        <SeriesDirective dataSource={data4} xName='x' yName='y' name='BMW' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn' />
+                    </SeriesCollectionDirective>
+                </ChartComponent>
+                <div style={{ float: 'right', marginRight: '10px' }}>
+                    Source: &nbsp; <a href="https://www.cyberagent.co.jp/en/newsinfo/press/detail/id=12026" target="_blank">www.cyberagent.co.jp</a>
+                </div>
+            </div>
+            <div id="action-description">
+                <p>This React stacked column chart example visualizes motor vehicle production by manufacturer with a default stacked column series. The legend in the sample shows more information about those series.</p>
+            </div>
+            <div id="description">
+                <p>
+                    In this example, you can see how to render and configure the stacked column chart. The stacked column chart stacks points in the series vertically. You can also use the <code>StackingGroup</code> property to group stacked collections based on category.
+                </p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+                </p>
+                <br></br>
+                <p><b>Injecting Module</b></p>
+                <p>
+                    Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject
+                    <code>StackingColumnSeries</code> module into <code>services</code>.
+                </p>
+                <p>
+                    More information on the column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
+                </p>
+            </div>
+        </div>
+    )    
 }
 export default StackedColumn;

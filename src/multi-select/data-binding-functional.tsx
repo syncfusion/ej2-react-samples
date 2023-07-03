@@ -1,21 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { DataManager, Query, WebApiAdaptor } from '@syncfusion/ej2-data';
 import './style.css';
 import * as data from './dataSource.json';
 
-function Data() {
-    React.useEffect(() => {
+const Data = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let temp:string = 'countries';
+    const temp: string = 'countries';
     // maps the appropriate column to fields property
     const localFields: Object = { text: 'Name', value: 'Code' };
     // bind the DataManager instance to dataSource property
     const dataRemote: DataManager = new DataManager({
-        url: 'https://ej2services.syncfusion.com/react/development/api/Employees',
+        url: 'https://services.syncfusion.com/react/production//api/Employees',
         adaptor: new WebApiAdaptor,
         crossDomain: true
     });
@@ -46,7 +47,7 @@ function Data() {
                     the loader icon will be shown until the remote request get the data from server and display it.
                 </p>
             </div>
-            
+
             <div id="description">
                 <p>The MultiSelect loads the data either from local data sources or remote data services through the <code>dataSource</code> property. It supports the data type of <code>array</code> or <code>DataManager</code>.
                 </p>

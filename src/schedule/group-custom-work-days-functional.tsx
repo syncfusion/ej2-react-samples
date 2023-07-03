@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  WorkWeek, Month, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective,
-  ResourceDirective, PopupOpenEventArgs, ActionEventArgs, RenderCellEventArgs, EventFieldsMapping, ResourceDetails, Inject
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect } from 'react';
+import { WorkWeek, Month, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, PopupOpenEventArgs, ActionEventArgs, RenderCellEventArgs, EventFieldsMapping, ResourceDetails, Inject } from '@syncfusion/ej2-react-schedule';
 import { addClass } from '@syncfusion/ej2-base';
 import './group-custom-work-days.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -14,8 +12,8 @@ import * as dataSource from './datasource.json';
  * schedule resources group-custom-work-days sample
  */
 
-function GroupCustomWorkDays() {
-  React.useEffect(() => {
+const GroupCustomWorkDays = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   let scheduleObj: ScheduleComponent;
@@ -26,22 +24,20 @@ function GroupCustomWorkDays() {
     { text: 'Robson', id: 3, color: '#7fa900', startHour: '08:00', endHour: '16:00' }
   ];
 
-  function getDoctorImage(value: ResourceDetails): string {
+  const getDoctorImage = (value: ResourceDetails): string => {
     return getDoctorName(value).replace(' ', '-').toLowerCase();
   }
 
-  function getDoctorName(value: ResourceDetails): string {
-    return (((value as ResourceDetails).resourceData) ?
-      (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] :
-      value.resourceName) as string;
+  const getDoctorName = (value: ResourceDetails): string => {
+    return (((value as ResourceDetails).resourceData) ? (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] : value.resourceName) as string;
   }
 
-  function getDoctorLevel(value: ResourceDetails): string {
+  const getDoctorLevel = (value: ResourceDetails): string => {
     let resourceName: string = getDoctorName(value);
     return (resourceName === 'Will Smith') ? 'Cardiologist' : (resourceName === 'Alice') ? 'Neurologist' : 'Orthopedic Surgeon';
   }
 
-  function onActionBegin(args: ActionEventArgs): void {
+  const onActionBegin = (args: ActionEventArgs): void => {
     let isEventChange: boolean = (args.requestType === 'eventChange');
     if ((args.requestType === 'eventCreate' && (args.data as Record<string, any>[]).length > 0) || isEventChange) {
       let eventData: Record<string, any> = (isEventChange) ? args.data as Record<string, any> : args.data[0] as Record<string, any>;
@@ -56,54 +52,44 @@ function GroupCustomWorkDays() {
     }
   }
 
-  function isValidTime(startDate: Date, endDate: Date, resIndex: number): boolean {
+  const isValidTime = (startDate: Date, endDate: Date, resIndex: number): boolean => {
     let resource: ResourceDetails = scheduleObj.getResourcesByIndex(resIndex);
     let startHour: number = parseInt(resource.resourceData.startHour.toString().slice(0, 2), 10);
     let endHour: number = parseInt(resource.resourceData.endHour.toString().slice(0, 2), 10);
     return (startHour <= startDate.getHours() && endHour >= endDate.getHours());
   }
 
-  function onPopupOpen(args: PopupOpenEventArgs): void {
+  const onPopupOpen = (args: PopupOpenEventArgs): void => {
     if (args.target && args.target.classList.contains('e-work-cells')) {
       args.cancel = !args.target.classList.contains('e-work-hours');
     }
   }
 
-  function onRenderCell(args: RenderCellEventArgs): void {
+  const onRenderCell = (args: RenderCellEventArgs): void => {
     if (args.element.classList.contains('e-work-hours') || args.element.classList.contains('e-work-cells')) {
       addClass([args.element], ['willsmith', 'alice', 'robson'][parseInt(args.element.getAttribute('data-group-index'), 10)]);
     }
   }
 
-  function resourceHeaderTemplate(props): JSX.Element {
-    return (<div className="template-wrap"><div className={"resource-image " + getDoctorImage(props)}></div>
-      <div className="resource-detail"><div className="resource-name">{getDoctorName(props)}</div>
-        <div className="resource-designation">{getDoctorLevel(props)}</div></div></div>);
+  const resourceHeaderTemplate = (props) => {
+    return (
+      <div className="template-wrap">
+        <div className={"resource-image " + getDoctorImage(props)}></div>
+        <div className="resource-detail">
+          <div className="resource-name">{getDoctorName(props)}</div>
+          <div className="resource-designation">{getDoctorLevel(props)}</div>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent ref={schedule => scheduleObj = schedule} cssClass='custom-work-days' width='100%' height='650px'
-            selectedDate={new Date(2021, 3, 6)} currentView='WorkWeek' resourceHeaderTemplate={resourceHeaderTemplate.bind(this)}
-            eventSettings={{
-              dataSource: data,
-              fields: {
-                subject: { title: 'Service Type', name: 'Subject' },
-                location: { title: 'Patient Name', name: 'Location' },
-                description: { title: 'Summary', name: 'Description' },
-                startTime: { title: 'From', name: 'StartTime' },
-                endTime: { title: 'To', name: 'EndTime' }
-              }
-            }}
-            actionBegin={onActionBegin.bind(this)} popupOpen={onPopupOpen.bind(this)} renderCell={onRenderCell.bind(this)}
-            group={{ resources: ['Doctors'] }}>
+          <ScheduleComponent ref={schedule => scheduleObj = schedule} cssClass='custom-work-days' width='100%' height='650px' selectedDate={new Date(2021, 3, 6)} currentView='WorkWeek' resourceHeaderTemplate={resourceHeaderTemplate} eventSettings={{ dataSource: data, fields: { subject: { title: 'Service Type', name: 'Subject' }, location: { title: 'Patient Name', name: 'Location' }, description: { title: 'Summary', name: 'Description' }, startTime: { title: 'From', name: 'StartTime' }, endTime: { title: 'To', name: 'EndTime' } } }} actionBegin={onActionBegin} popupOpen={onPopupOpen} renderCell={onRenderCell} group={{ resources: ['Doctors'] }}>
             <ResourcesDirective>
-              <ResourceDirective field='DoctorId' title='Doctor Name' name='Doctors'
-                dataSource={resourceData} textField='text' idField='id' groupIDField='groupId' colorField='color'
-                workDaysField='workDays' startHourField='startHour' endHourField='endHour' >
-              </ResourceDirective>
+              <ResourceDirective field='DoctorId' title='Doctor Name' name='Doctors' dataSource={resourceData} textField='text' idField='id' groupIDField='groupId' colorField='color' workDaysField='workDays' startHourField='startHour' endHourField='endHour' />
             </ResourcesDirective>
             <ViewsDirective>
               <ViewDirective option='WorkWeek' />

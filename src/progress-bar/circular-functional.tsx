@@ -3,13 +3,10 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from "react";
-import {
-    ProgressBarComponent, ProgressBarAnnotationsDirective, ProgressBarAnnotationDirective, Inject,
-    ProgressAnnotation, ILoadedEventArgs, ProgressTheme
-} from '@syncfusion/ej2-react-progressbar';
+import { useEffect, useRef, useState, CSSProperties } from 'react';
+import { ProgressBarComponent, ILoadedEventArgs, ProgressTheme, AnimationModel } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-
 
 const SAMPLE_CSS = `
      .annotaion-pro {
@@ -58,38 +55,37 @@ const SAMPLE_CSS = `
          }
      `;
 
-function ProgressBarDefault() {
-    React.useEffect(() => {
+const ProgressBarDefault = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let circluar: ProgressBarComponent;
-    let rtl: ProgressBarComponent;
-    let track: ProgressBarComponent;
-    let rounded: ProgressBarComponent;
-    let content: string = '<div id="point1" style="font-size:20px;font-weight:bold;color:#b52123;fill:#b52123"><span>80%</span></div>';
-    let annotationColors: string[] = ['#e91e63', '#0078D6', '#317ab9', '#007bff', '#FFD939'];
-    function replayClick(): void {
-        circluar.refresh();
-        rtl.refresh();
-        track.refresh();
-        rounded.refresh();
+    const circluar = useRef<ProgressBarComponent>(null);
+    const rtl = useRef<ProgressBarComponent>(null);
+    const track = useRef<ProgressBarComponent>(null);
+    const rounded = useRef<ProgressBarComponent>(null);
+    const [style, setStyle] = useState<CSSProperties>({ color: "" });
+    const animation: AnimationModel = {
+        enable: true,
+        duration: 2000,
+        delay: 0,
+    };
+    const replayClick = (): void => {
+        circluar.current.refresh();
+        rtl.current.refresh();
+        track.current.refresh();
+        rounded.current.refresh();
     }
-    let progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
-        let div: HTMLCollection = document.getElementsByClassName('progress-text-align');
+    const progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
         if (args.progressBar.theme === 'HighContrast' || args.progressBar.theme === 'Bootstrap5Dark' || args.progressBar.theme === 'BootstrapDark' || args.progressBar.theme === 'FabricDark'
-            || args.progressBar.theme === 'TailwindDark' || args.progressBar.theme === 'MaterialDark' || args.progressBar.theme === 'FluentDark') {
-            for (let i = 0; i < div.length; i++) {
-                div[i].setAttribute('style', 'color:white');
-            }
+            || args.progressBar.theme === 'TailwindDark' || args.progressBar.theme === 'MaterialDark' || args.progressBar.theme === 'FluentDark' || args.progressBar.theme === 'Material3Dark') {
+            setStyle({ color: "White" });
         }
     }
-
-
 
     return (
         <div className='control-pane'>
@@ -101,105 +97,61 @@ function ProgressBarDefault() {
                     <div className="col-lg-3 col-md-3 col-3 progress-container">
                         <div className="row progress-container-align">
                             <div className="col-lg-12 col-md-12 col-12">
-                                <ProgressBarComponent id="circular-container" ref={progressbar1 => circluar = progressbar1}
-                                    type='Circular'
-                                    width='160px'
-                                    height='160px'
-                                    enableRtl={false}
-                                    startAngle={180}
-                                    endAngle={180}
-                                    value={100}
-                                    animation={{
-                                        enable: true,
-                                        duration: 2000,
-                                        delay: 0,
-                                    }}
-                                    load={progressLoad.bind(this)}
-                                >
+                                <ProgressBarComponent id="circular-container" ref={circluar}
+                                    type='Circular' width='160px' height='160px' enableRtl={false} startAngle={180} endAngle={180}
+                                    value={100} animation={animation} load={progressLoad.bind(this)}>
                                 </ProgressBarComponent>
                             </div>
                             <div className="col-lg-12 col-md-12 col-12 progress-text">
-                                <div className="progress-text-align">Determinate</div>
+                                <div className="progress-text-align" style={style}>Determinate</div>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-3 col-3 progress-container">
                         <div className="row progress-container-align">
                             <div className="col-lg-12 col-md-12 col-12">
-                                <ProgressBarComponent id="rtl-container" ref={progressbar2 => rtl = progressbar2}
-                                    type='Circular'
-                                    width='160px'
-                                    height='160px'
-                                    secondaryProgress={90}
-                                    value={70}
-                                    animation={{
-                                        enable: true,
-                                        duration: 2000,
-                                        delay: 0,
-                                    }}
-                                    load={progressLoad.bind(this)}
-                                >
+                                <ProgressBarComponent id="rtl-container" ref={rtl} type='Circular' width='160px' height='160px'
+                                    secondaryProgress={90} value={70} animation={animation} load={progressLoad.bind(this)} >
                                 </ProgressBarComponent>
                             </div>
                             <div className="col-lg-12 col-md-12 col-12 progress-text">
-                                <div className="progress-text-align">Buffer </div>
+                                <div className="progress-text-align" style={style}>Buffer </div>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-3 col-3 progress-container">
                         <div className="row progress-container-align">
                             <div className="col-lg-12 col-md-12 col-12">
-                                <ProgressBarComponent id="track-container" ref={progressbar3 => track = progressbar3}
-                                    type='Circular'
-                                    width='160px'
-                                    height='160px'
-                                    minimum={0}
-                                    maximum={100}
-                                    segmentCount={4}
-                                    value={100}
-                                    animation={{
-                                        enable: true,
-                                        duration: 2000,
-                                        delay: 0,
-                                    }}
-                                    load={progressLoad.bind(this)}
-                                >
+                                <ProgressBarComponent id="track-container" ref={track} type='Circular' width='160px' height='160px'
+                                    minimum={0} maximum={100} segmentCount={4} value={100} animation={animation}
+                                    load={progressLoad.bind(this)} >
                                 </ProgressBarComponent>
                             </div>
                             <div className="col-lg-12 col-md-12 col-12 progress-text">
-                                <div className="progress-text-align">Segment</div>
+                                <div className="progress-text-align" style={style}>Segment</div>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-3 col-3 progress-container">
                         <div className="row progress-container-align">
                             <div className="col-lg-12 col-md-12 col-12">
-                                <ProgressBarComponent id="rounded-container" ref={progressbar4 => rounded = progressbar4}
-                                    type='Circular'
-                                    width='160px'
-                                    height='160px'
-                                    cornerRadius='Round'
-                                    isIndeterminate={true}
-                                    value={20}
-                                    animation={{
-                                        enable: true,
-                                        duration: 2000,
-                                        delay: 0,
-                                    }}
-                                    load={progressLoad.bind(this)}
-                                >
+                                <ProgressBarComponent id="rounded-container" ref={rounded} type='Circular' width='160px' height='160px'
+                                    cornerRadius='Round' isIndeterminate={true} value={20} animation={animation}
+                                    load={progressLoad.bind(this)}>
                                 </ProgressBarComponent>
 
                             </div>
                             <div className="col-lg-12 col-md-12 col-12 progress-text">
-                                <div className="progress-text-align">Indeterminate</div>
+                                <div className="progress-text-align" style={style}>Indeterminate</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-lg-12 col-md-12 col-12 reload-btn">
-                        <button onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">Reload</button>
+                        <button onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">
+                            Reload
+                        </button>
                     </div>
                 </div>
             </div>

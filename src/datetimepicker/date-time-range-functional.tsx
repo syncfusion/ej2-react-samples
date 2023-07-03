@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './range-style.css';
 
-function Range() {
-    React.useEffect(() => {
+const Range = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const minDate: Date = new Date(new Date().getFullYear(), new Date().getMonth(), 7, 10);
@@ -21,7 +22,7 @@ function Range() {
             <div id="action-description">
                 <p>
                     In the following sample, a specific datetime ranges from 7th 10:00 AM to 27th 10:30 PM of the current month has been set to select from the Calendar. All the other dates are out of range and <code>restricted</code> to set or select.
-                </p>    
+                </p>
             </div>
             <div id='description'>
                 <p>

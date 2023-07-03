@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    ScheduleComponent, ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective,
-    ResourceDetails, Inject, TimelineViews, Resize, DragAndDrop, TimelineMonth, Day
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect } from 'react';
+import { ScheduleComponent, ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective, ResourceDetails, Inject, TimelineViews, Resize, DragAndDrop, TimelineMonth, Day } from '@syncfusion/ej2-react-schedule';
 import './block-events.css';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -12,8 +10,8 @@ import * as dataSource from './datasource.json';
  * schedule block events sample
  */
 
-function BlockEvents() {
-    React.useEffect(() => {
+const BlockEvents = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).blockData, null, true) as Record<string, any>[];
@@ -26,21 +24,28 @@ function BlockEvents() {
         { Text: 'Margaret', Id: 6, GroupId: 2, Color: '#9e5fff', Designation: 'Content Analyst' }
     ];
 
-    function getEmployeeName(value: ResourceDetails): string {
+    const getEmployeeName = (value: ResourceDetails): string => {
         return (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] as string;
     }
 
-    function getEmployeeImage(value: ResourceDetails): string {
+    const getEmployeeImage = (value: ResourceDetails): string => {
         return getEmployeeName(value).toLowerCase();
     }
 
-    function getEmployeeDesignation(value: ResourceDetails): string {
+    const getEmployeeDesignation = (value: ResourceDetails): string => {
         return (value as ResourceDetails).resourceData.Designation as string;
     }
 
-    function resourceHeaderTemplate(props: any): JSX.Element {
-        return (<div className="template-wrap"><div className="employee-category"><div className={"employee-image " + getEmployeeImage(props)}></div><div className="employee-name">
-            {getEmployeeName(props)}</div><div className="employee-designation">{getEmployeeDesignation(props)}</div></div></div>);
+    const resourceHeaderTemplate = (props: any) => {
+        return (
+            <div className="template-wrap">
+                <div className="employee-category">
+                    <div className={"employee-image " + getEmployeeImage(props)} />
+                    <div className="employee-name"> {getEmployeeName(props)}</div>
+                    <div className="employee-designation">{getEmployeeDesignation(props)}</div>
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -48,13 +53,9 @@ function BlockEvents() {
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper drag-sample-wrapper'>
                     <div className="schedule-container">
-                        <ScheduleComponent cssClass='block-events' width='100%' height='650px' selectedDate={new Date(2021, 7, 2)}
-                            currentView='TimelineDay' resourceHeaderTemplate={resourceHeaderTemplate.bind(this)}
-                            eventSettings={{ dataSource: data }} group={{ enableCompactView: false, resources: ['Employee'] }}>
+                        <ScheduleComponent cssClass='block-events' width='100%' height='650px' selectedDate={new Date(2021, 7, 2)} currentView='TimelineDay' resourceHeaderTemplate={resourceHeaderTemplate} eventSettings={{ dataSource: data }} group={{ enableCompactView: false, resources: ['Employee'] }}>
                             <ResourcesDirective>
-                                <ResourceDirective field='EmployeeId' title='Employees' name='Employee' allowMultiple={true}
-                                    dataSource={employeeData} textField='Text' idField='Id' colorField='Color'>
-                                </ResourceDirective>
+                                <ResourceDirective field='EmployeeId' title='Employees' name='Employee' allowMultiple={true} dataSource={employeeData} textField='Text' idField='Id' colorField='Color' />
                             </ResourcesDirective>
                             <ViewsDirective>
                                 <ViewDirective option='Day' />
@@ -67,8 +68,7 @@ function BlockEvents() {
                 </div>
             </div>
             <div id="action-description">
-                <p>This example shows how to block specific time intervals or days on the Scheduler.
-                </p>
+                <p>This example shows how to block specific time intervals or days on the Scheduler.</p>
             </div>
             <div id="description">
                 <p>

@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ListBoxComponent, DropDownListComponent, FieldSettingsModel, ChangeEventArgs, SelectionSettingsModel } from '@syncfusion/ej2-react-dropdowns';
 import { SortOrder } from '@syncfusion/ej2-lists';
 import { updateSampleSection } from '../common/sample-base';
@@ -11,8 +11,8 @@ import { PropertyPane } from '../common/property-pane';
 import * as data from './dataSource.json';
 import './api.css';
 
-function Api() {
-    React.useEffect(() => {
+const Api = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const [state, setState] = useState({
@@ -20,16 +20,16 @@ function Api() {
         selectionSettings: { mode: 'Multiple' } as SelectionSettingsModel
     });
     // Set the vegetableData to the data source.
-    let dataA = data["vegetableData"];
-    let ddlData1 = data["sort"]; let ddlData2 = data["selectionMode"];
+    const dataA = data["vegetableData"];
+    const ddlData1 = data["sort"]; let ddlData2 = data["selectionMode"];
     // Map the appropriate columns to fields property along with groupBy option.
-    let fields: FieldSettingsModel = { groupBy: 'Category', text: 'Vegetable', value: 'Id' };
-    let ddlFields: FieldSettingsModel = { text: 'type', value: 'type' };
-    function sortChange(args: ChangeEventArgs) {
+    const fields: FieldSettingsModel = { groupBy: 'Category', text: 'Vegetable', value: 'Id' };
+    const ddlFields: FieldSettingsModel = { text: 'type', value: 'type' };
+    const sortChange = (args: ChangeEventArgs) => {
         setState({ ...state, sortOrder: args.value as SortOrder });
     }
-    function selectionChange(args: ChangeEventArgs) {
-        setState({ ...state, selectionSettings: { mode : args.value } as SelectionSettingsModel });
+    const selectionChange = (args: ChangeEventArgs) => {
+        setState({ ...state, selectionSettings: { mode: args.value } as SelectionSettingsModel });
     }
 
     return (

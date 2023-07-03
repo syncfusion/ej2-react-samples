@@ -129,7 +129,7 @@
 }
 
 @media (max-width: 450px) {
-    .e-sample-resize-container {
+    .tab-control-resize-container {
         height: 500px;
     }
     .responsive-align {
@@ -222,11 +222,11 @@
     width: 130px;
 }
 @media only screen and (min-width: 1824px) {
-    .e-sample-resize-container {
+    .tab-control-resize-container {
         width: 560px;
     }
 
-    .e-bigger .e-sample-resize-container {
+    .e-bigger .tab-control-resize-container {
         width: 75%;
     }
 }

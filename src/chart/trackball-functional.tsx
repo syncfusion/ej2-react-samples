@@ -2,71 +2,46 @@
  * Sample for Trackball in chart
  */
 import * as React from "react";
+import { useEffect } from "react";
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    LineSeries, DateTime, Tooltip, Crosshair, Legend, ILoadedEventArgs, ChartTheme, Highlight
-}
-    from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DateTime, Tooltip, Crosshair, Legend, ILoadedEventArgs, ChartTheme, Highlight } from '@syncfusion/ej2-react-charts';
 import { john, andrew, thomas, mark, william } from './trackball-data';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
-function TrackballChart() {
-    React.useEffect(() => {
+
+const TrackballChart = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }}
-                    primaryXAxis={{
-                        minimum: new Date(2000, 1, 1), maximum: new Date(2006, 2, 11),
-                        valueType: 'DateTime',
-                        skeleton: 'y',
-                        lineStyle: { width: 0 },
-                        majorGridLines: { width: 0 },
-                        edgeLabelPlacement: 'Shift'
-                    }}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    chartArea={{ border: { width: 0 } }}
-                    load={load.bind(this)}
-                    primaryYAxis={{
-                        title: 'Revenue (in Million)',
-                        labelFormat: '{value}M',
-                        majorTickLines: { width: 0 },
-                        minimum: 10, maximum: 80,
-                        lineStyle: { width: 0 },
-                    }}
-                    legendSettings={{ visible: true , enableHighlight: true}}
-                    title='Average Sales per Person' loaded={onChartLoad.bind(this)}
-                    tooltip={{ enable: true, shared: true }}
-                    crosshair={{ enable: true, lineType: 'Vertical' }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ minimum: new Date(2000, 1, 1), maximum: new Date(2006, 2, 11), valueType: 'DateTime', skeleton: 'y', lineStyle: { width: 0 }, majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift' }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ title: 'Revenue (in Million)', labelFormat: '{value}M', majorTickLines: { width: 0 }, minimum: 10, maximum: 80, lineStyle: { width: 0 } }} legendSettings={{ visible: true , enableHighlight: true}} title='Average Sales per Person' loaded={onChartLoad.bind(this)} tooltip={{ enable: true, shared: true }} crosshair={{ enable: true, lineType: 'Vertical' }}>
                     <Inject services={[LineSeries, DateTime, Tooltip, Crosshair, Legend, Highlight]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={john} xName='x' yName='y' width={2} name='John'
-                            type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }}>
-                        </SeriesDirective>
-                        <SeriesDirective dataSource={andrew} xName='x' yName='y' width={2} name='Andrew'
-                            type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }}>
-                        </SeriesDirective>
-                        <SeriesDirective dataSource={thomas} xName='x' yName='y' width={2} name='Thomas'
-                            type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }}>
-                        </SeriesDirective>
+                        <SeriesDirective dataSource={john} xName='x' yName='y' width={2} name='John' type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }} />
+                        <SeriesDirective dataSource={andrew} xName='x' yName='y' width={2} name='Andrew' type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }} />
+                        <SeriesDirective dataSource={thomas} xName='x' yName='y' width={2} name='Thomas' type='Line' marker={{ visible: true, isFilled: true, width: 7, height: 7 }} />
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
             <div id="action-description">
-                <p>
-                This sample depicts the trackball behavior in the chart. To view the trackball and its tooltip, hover over the chart or tap on it in touch-enabled devices.
-                </p>
+                <p>This sample depicts the trackball behavior in the chart. To view the trackball and its tooltip, hover over the chart or tap on it in touch-enabled devices.</p>
             </div>
             <div id="description">
                 <p>
-                The trackball is used to track a data point close to the mouse or touch position. The trackball can be enabled by setting the Enable property of the crosshair to <b>true</b> and the <code>Shared</code> property of the tooltip to <b>true</b> in the chart.
+                    The trackball is used to track a data point close to the mouse or touch position. The trackball can be enabled by setting the Enable property of the crosshair to <b>true</b> and the <code>Shared</code> property of the tooltip to <b>true</b> in the chart.
                 </p>
-                <p>
-                    Hover the chart area to view trackball and its tooltip. Touch and hold to enable trackball in touch enabled devices.
-                </p>
+                <p>Hover the chart area to view trackball and its tooltip. Touch and hold to enable trackball in touch enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -79,14 +54,5 @@ function TrackballChart() {
             </div>
         </div>
     )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
-        chart.setAttribute('title', '');
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
 }
 export default TrackballChart;

@@ -16,20 +16,25 @@ function ProfilePicture () {
    let buttonEle: HTMLButtonElement;
    let buttonRef: React.Ref<HTMLButtonElement>;
    let image: HTMLImageElement;
-
-    function fileChanged(args: any): void {
+   let imgSrc: string = '';
+    
+   function fileChanged(args: any): void {
         const URL = window.URL; const url = URL.createObjectURL((args.target as any).files[0]);
         imageEditorInstance.open(url.toString());
         (document.getElementById('img-upload') as HTMLInputElement).value = null;
+        imgSrc = url.toString();
     }
 
     function handleImageLoaded(): void {
-        let canvas: HTMLCanvasElement = document.querySelector('#img-canvas');
-        let image: HTMLImageElement = document.querySelector('#custom-img');
-        let ctx: CanvasRenderingContext2D = canvas.getContext('2d');
-        canvas.width = image.width < image.height ? image.width : image.height; 
-        canvas.height = canvas.width;
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        if (imgSrc === '') {
+            let canvas: HTMLCanvasElement = document.querySelector('#img-canvas');
+            let image: HTMLImageElement = document.querySelector('#custom-img');
+            let ctx: CanvasRenderingContext2D = canvas.getContext('2d');
+            canvas.width = image.width < image.height ? image.width : image.height; 
+            canvas.height = canvas.width;
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+            document.querySelector('.e-profile').classList.remove('e-hide');
+        }
     }
 
     let buttons: ButtonPropsModel[] = [
@@ -90,6 +95,10 @@ function ProfilePicture () {
         tempCanvas.remove();
         parentDiv.style.borderRadius = '100%'; canvas.style.backgroundColor = '#fff';
         dialogInstance.hide();
+        if (imgSrc !== '') {
+		   const img: HTMLImageElement = document.querySelector('#custom-img');
+           img.src = imgSrc;
+		}
     }
 
     function contentTemplate() {
@@ -108,14 +117,14 @@ function ProfilePicture () {
 
     function editClicked(): void {
         dialogInstance.show();
-        let canvas: HTMLCanvasElement = document.querySelector('#img-canvas');
-        imageEditorInstance.open(canvas.toDataURL());
+        let image: HTMLImageElement = document.querySelector('#custom-img');
+        imageEditorInstance.open(image.src);
     };
     
         return (
             <div className='control-pane'>
                 <div className='col-lg-12 control-section e-img-editor-profile'>
-                    <div className='e-profile'>
+                    <div className='e-profile e-hide'>
                         <div className='e-custom-wrapper'>  
                             <canvas id='img-canvas'></canvas>
                             <img alt='img' className='e-custom-img' id='custom-img' onLoad={handleImageLoaded} src='src/image-editor/images/profile.png'/>
@@ -128,7 +137,7 @@ function ProfilePicture () {
                 </div>
                 <div id='profile-dialog'>
                 <DialogComponent id='profile-dialog' showCloseIcon={true} animationSettings={animationSettings} closeOnEscape={true} visible={false} width={'340px'} height={'420px'} ref={dialog => dialogInstance = dialog}
-                    target='.sb-desktop-wrapper' header='Edit Profile Image' buttons={buttons} content={contentTemplate} position= {{X:'center', Y: 100}}>
+                    target='.e-img-editor-profile' header='Edit Profile Image' buttons={buttons} content={contentTemplate} position= {{X:'center', Y: 100}}>
                 </DialogComponent>
                 </div>
                 <div id='action-description'>

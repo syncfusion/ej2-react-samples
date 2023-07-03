@@ -3,33 +3,28 @@
  */
  import * as ReactDOM from 'react-dom';
  import * as React from 'react';
+ import { useEffect } from "react";
  import { updateSampleSection } from '../common/sample-base';
  import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
  import './sample.css';
  
-function Restrict() {
-    React.useEffect(() => {
+const Restrict = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (
         <div className='control-pane'>
             <div className='control-section'>
                 <div className="content-wrapper format-wrapper sample-numeric">
-                    <div className="control-label">Numeric TextBox
-                    </div>
+                    <div className="control-label">Numeric TextBox</div>
                     {/* Render the Numeric Textbox with decimal places as 3 */}
-                    <NumericTextBoxComponent format='n3' decimals={3} validateDecimalOnType={true} value={10} >
-                    </NumericTextBoxComponent>
-                    <div className="control-label">Percentage TextBox
-                    </div>
+                    <NumericTextBoxComponent format='n3' decimals={3} validateDecimalOnType={true} value={10} ></NumericTextBoxComponent>
+                    <div className="control-label">Percentage TextBox</div>
                     {/* Render the Percentage Textbox with decimal places as 3 */}
-                    <NumericTextBoxComponent format='p3' decimals={3} validateDecimalOnType={true} value={0.5} min={0} max={1} step={0.01} >
-                    </NumericTextBoxComponent>
-                    <div className="control-label">Currency TextBox
-                    </div>
+                    <NumericTextBoxComponent format='p3' decimals={3} validateDecimalOnType={true} value={0.5} min={0} max={1} step={0.01} ></NumericTextBoxComponent>
+                    <div className="control-label">Currency TextBox</div>
                     {/* Render the Currency Textbox with decimal places as 3 */}
-                    <NumericTextBoxComponent format='c3' decimals={3} validateDecimalOnType={true} value={100} >
-                    </NumericTextBoxComponent>
+                    <NumericTextBoxComponent format='c3' decimals={3} validateDecimalOnType={true} value={100} ></NumericTextBoxComponent>
                 </div>
             </div>
             <div id="action-description">
@@ -44,6 +39,6 @@ function Restrict() {
                 </p>
             </div>
        </div>
-     )
+    )
  }
  export default Restrict;

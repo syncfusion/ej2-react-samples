@@ -46,7 +46,7 @@ export class Editing extends SampleBase<{}, {}> {
               <ColumnDirective field='taskName' headerText='Task Name' width='220' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='160' textAlign='Right'
                 editType='datepickeredit' format='yMd' validationRules={this.validationRule1} />
-              <ColumnDirective field='duration' headerText='Duration' width='100' editType='numericedit' textAlign='Right'
+              <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
             </ColumnsDirective>
             <Inject services={[Page, Edit, Toolbar, RowDD]}/>

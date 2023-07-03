@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, TimelineMonth,
-  RenderCellEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, TimelineMonth, RenderCellEventArgs, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './date-header-template.css';
 import { Internationalization, extend } from '@syncfusion/ej2-base';
@@ -14,19 +12,19 @@ import * as dataSource from './datasource.json';
  * Schedule date header template sample
  */
 
-function DateHeaderTemplate() {
-  React.useEffect(() => {
+const DateHeaderTemplate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  let scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
   let instance: Internationalization = new Internationalization();
 
-  function getDateHeaderText(value: Date): string {
+  const getDateHeaderText = (value: Date): string => {
     return instance.formatDate(value, { skeleton: 'Ed' });
   }
 
-  function getWeather(value: Date) {
+  const getWeather = (value: Date) => {
     switch (value.getDay()) {
       case 0:
         return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" /><div class="weather-text">25°C</div>';
@@ -47,29 +45,31 @@ function DateHeaderTemplate() {
     }
   }
 
-  function dateHeaderTemplate(props): JSX.Element {
-    return (<div><div>{getDateHeaderText(props.date)}</div><div className="date-text"
-      dangerouslySetInnerHTML={{ __html: getWeather(props.date) }}></div></div>);
+  const dateHeaderTemplate = (props) => {
+    return (
+      <div>
+        <div>{getDateHeaderText(props.date)}</div>
+          <div className="date-text" dangerouslySetInnerHTML={{ __html: getWeather(props.date) }}></div>
+      </div>
+    );
   }
 
-  function onRenderCell(args: RenderCellEventArgs): void {
-    if (args.elementType === 'monthCells' && scheduleObj.currentView === 'Month') {
+  const onRenderCell = (args: RenderCellEventArgs): void => {
+    if (args.elementType === 'monthCells' && scheduleObj.current.currentView === 'Month') {
       let ele: Element = document.createElement('div');
       ele.innerHTML = getWeather(args.date);
       (args.element).appendChild(ele.firstChild);
     }
   }
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, scheduleObj.current.currentView);
   }
   return (
     <div className='schedule-control-section'>
       <div className='control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' cssClass='schedule-date-header-template' ref={t => scheduleObj = t}
-            renderCell={onRenderCell.bind(this)} eventRendered={onEventRendered.bind(this)} selectedDate={new Date(2021, 0, 10)}
-            eventSettings={{ dataSource: data }} dateHeaderTemplate={dateHeaderTemplate.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' cssClass='schedule-date-header-template' ref={scheduleObj} renderCell={onRenderCell} eventRendered={onEventRendered} selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }} dateHeaderTemplate={dateHeaderTemplate}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -82,13 +82,14 @@ function DateHeaderTemplate() {
         </div>
       </div>
       <div id='action-description'>
-        <p>This demo depicts the way to add images and custom text to the date header bar by making use of the date header template
-          option.</p>
+        <p>This demo depicts the way to add images and custom text to the date header bar by making use of the date header template option.</p>
       </div>
       <div id='description'>
-        <p>In this demo, the <code>dateHeaderTemplate</code> option is used to customize the date header cells of day,
+        <p>
+          In this demo, the <code>dateHeaderTemplate</code> option is used to customize the date header cells of day,
           week and workweek views. In month view, the date header is not applicable and therefore the same customizations can be
-          added beside the date text in the month cells by making use of the <code>renderCells</code> event.</p>
+          added beside the date text in the month cells by making use of the <code>renderCells</code> event.
+        </p>
       </div>
     </div>
   );

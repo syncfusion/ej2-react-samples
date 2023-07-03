@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './toolbar.component.css'
 
-function Popup() {
-    React.useEffect(() => {
+const Popup = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -18,14 +19,12 @@ function Popup() {
                     {/* Render the Toolbar Component with Popup mode */}
                     <ToolbarComponent overflowMode='Popup'>
                         <ItemsDirective>
-                            <ItemDirective prefixIcon='e-cut-icon tb-icons' tooltipText='Cut' text='Cut'
-                                showTextOn='Overflow' overflow='Show' />
+                            <ItemDirective prefixIcon='e-cut-icon tb-icons' tooltipText='Cut' text='Cut' showTextOn='Overflow' overflow='Show' />
                             <ItemDirective prefixIcon='e-copy-icon tb-icons' tooltipText='Copy' showTextOn='Overflow' overflow='Show' />
                             <ItemDirective prefixIcon='e-paste-icon tb-icons' tooltipText='Paste' showTextOn='Overflow' overflow='Show' />
                             <ItemDirective type='Separator' />
                             <ItemDirective prefixIcon='e-bold-icon tb-icons' tooltipText='Bold' text='Bold' showTextOn='Overflow' overflow='Show' />
-                            <ItemDirective prefixIcon='e-underline-icon tb-icons' tooltipText='Underline' text='Underline'
-                                showTextOn='Overflow' overflow='Show' />
+                            <ItemDirective prefixIcon='e-underline-icon tb-icons' tooltipText='Underline' text='Underline' showTextOn='Overflow' overflow='Show' />
                             <ItemDirective prefixIcon='e-italic-icon tb-icons' tooltipText='Italic' text='Italic' showTextOn='Overflow' overflow='Show' />
                             <ItemDirective type='Separator' />
                             <ItemDirective prefixIcon='e-bullets-icon tb-icons' tooltipText='Bullets' overflow='Show' text='Bullets' />
@@ -34,24 +33,17 @@ function Popup() {
                             <ItemDirective prefixIcon='e-tbar-undo-icon tb-icons' tooltipText='Undo' text='Undo' />
                             <ItemDirective prefixIcon='e-tbar-redo-icon tb-icons' tooltipText='Redo' text='Redo' />
                             <ItemDirective type='Separator' />
-                            <ItemDirective prefixIcon='e-alignleft-icon tb-icons' tooltipText='Align_Left' text='Left'
-                                showTextOn='Overflow' overflow='Show' />
-                            <ItemDirective prefixIcon='e-alignright-icon tb-icons' tooltipText='Align_Right' text='Right'
-                                showTextOn='Overflow' overflow='Show' />
-                            <ItemDirective prefixIcon='e-aligncenter-icon tb-icons' tooltipText='Align_Center' text='Center'
-                                showTextOn='Overflow' overflow='Show' />
-                            <ItemDirective prefixIcon='e-alignjustify-icon tb-icons' tooltipText='Align_Justify' text='justify'
-                                showTextOn='Overflow' overflow='Show' />
+                            <ItemDirective prefixIcon='e-alignleft-icon tb-icons' tooltipText='Align_Left' text='Left' showTextOn='Overflow' overflow='Show' />
+                            <ItemDirective prefixIcon='e-alignright-icon tb-icons' tooltipText='Align_Right' text='Right' showTextOn='Overflow' overflow='Show' />
+                            <ItemDirective prefixIcon='e-aligncenter-icon tb-icons' tooltipText='Align_Center' text='Center' showTextOn='Overflow' overflow='Show' />
+                            <ItemDirective prefixIcon='e-alignjustify-icon tb-icons' tooltipText='Align_Justify' text='justify' showTextOn='Overflow' overflow='Show' />
                             <ItemDirective type='Separator' />
-                            <ItemDirective prefixIcon='e-radar-icon tb-icons' text='Radar' tooltipText='Radar Chart'
-                                showTextOn='Overflow' />
+                            <ItemDirective prefixIcon='e-radar-icon tb-icons' text='Radar' tooltipText='Radar Chart' showTextOn='Overflow' />
                             <ItemDirective prefixIcon='e-line-icon tb-icons' text='Line' tooltipText='Line Chart' showTextOn='Overflow' />
-                            <ItemDirective prefixIcon='e-doughnut-icon tb-icons' text='Doughnut' tooltipText='Doughnut Chart'
-                                showTextOn='Overflow' />
+                            <ItemDirective prefixIcon='e-doughnut-icon tb-icons' text='Doughnut' tooltipText='Doughnut Chart' showTextOn='Overflow' />
                             <ItemDirective prefixIcon='e-bubble-icon tb-icons' text='Bubble' tooltipText='Bubble Chart' showTextOn='Overflow' />
                             <ItemDirective prefixIcon='e-table-icon tb-icons' text='Table' tooltipText='Table Chart' showTextOn='Overflow' />
-                            <ItemDirective prefixIcon='e-picture-icon tb-icons' text='Picture' tooltipText='Picture Chart'
-                                showTextOn='Overflow' />
+                            <ItemDirective prefixIcon='e-picture-icon tb-icons' text='Picture' tooltipText='Picture Chart' showTextOn='Overflow' />
                             <ItemDirective prefixIcon='e-design-icon tb-icons' text='Design' tooltipText='Design Chart' showTextOn='Overflow' />
                         </ItemsDirective>
                     </ToolbarComponent>
@@ -81,19 +73,15 @@ function Popup() {
                     Popup mode display can be enabled to view primary priority items in toolbar and secondary priority items in the popup.
                 </p>
                 <ul>
+                    <li>In first Toolbar, the popup will be shown when the content exceeds the available viewing area.</li>
                     <li>
-                        In first Toolbar, the popup will be shown when the content exceeds the available viewing area.
-                    </li>
-                    <li>
-                        The second Toolbar is set with priority for specific toolbar items using <strong><code> <a target="_blank" className="code"
-                            href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#showalwaysinpopup">showAlwaysInPopup</a></code> </strong>, which is always displayed in the popup.
+                        The second Toolbar is set with priority for specific toolbar items using <strong><code> <a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#showalwaysinpopup">showAlwaysInPopup</a></code> </strong>, which is always displayed in the popup.
                     </li>
                 </ul>
                 <br>
                 </br>
                 <p>
-                    You can set priority to toolbar item using <strong><code> <a target="_blank" className="code"
-                        href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#overflow"> overflow</a></code> </strong>        property. Possible values are as follows,
+                    You can set priority to toolbar item using <strong><code> <a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#overflow"> overflow</a></code></strong>property. Possible values are as follows,
                 </p>
                 <table style={{ width: "100%" }}>
                     <tr>
@@ -114,7 +102,6 @@ function Popup() {
                     </tr>
                 </table>
             </div>
-
         </div>
     );
 }

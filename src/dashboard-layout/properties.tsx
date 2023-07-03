@@ -39,10 +39,10 @@ export class Properties extends SampleBase<{}, {}> {
         let nextElement = targetElement.nextElementSibling;
         if ((previousElement !== null && previousElement.id === 'floating') || nextElement !== null && nextElement.previousElementSibling.id === 'floating') {
             proxy.dashboardObj.allowFloating = args.checked;
-         }
-         if ((previousElement !== null && previousElement.id === 'resizing') || nextElement !== null && nextElement.previousElementSibling.id === 'resizing') {
+        }
+        if ((previousElement !== null && previousElement.id === 'resizing') || nextElement !== null && nextElement.previousElementSibling.id === 'resizing') {
             proxy.dashboardObj.allowResizing = args.checked;
-         }
+        }
     }
     public dashboardObj: DashboardLayoutComponent;
     public txtObj: NumericTextBoxComponent;

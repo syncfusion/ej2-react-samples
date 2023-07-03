@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, EventRenderedArgs, Inject, Resize, DragAndDrop, EventSettingsModel } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -15,27 +14,26 @@ import { PropertyPane } from '../common/property-pane';
  * Schedule Recurrence events sample
  */
 
-function RecurrenceEvents() {
-  React.useEffect(() => {
+const RecurrenceEvents = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).recurrenceData, null, true) as Record<string, any>[];
-
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const [eventSettings, setEventSettings] = useState<EventSettingsModel>({ dataSource: data, editFollowingEvents: false });
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, scheduleObj.current.currentView);
   }
 
-  function onChange(args: ChangeEventArgs): void {
-    scheduleObj.eventSettings.editFollowingEvents = args.checked;
+  const onChange = (args: ChangeEventArgs): void => {
+    setEventSettings({ ...eventSettings, editFollowingEvents: args.checked })
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 20)} ref={t => scheduleObj = t}
-            eventSettings={{ dataSource: data }} eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 20)} ref={scheduleObj} eventSettings={eventSettings} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -51,8 +49,7 @@ function RecurrenceEvents() {
             <tbody>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
-                  <CheckBoxComponent id='editFollowingEvents' checked={false} label='Enable Following Events'
-                    change={onChange.bind(this)} ></CheckBoxComponent>
+                  <CheckBoxComponent id='editFollowingEvents' checked={eventSettings.editFollowingEvents} label='Enable Following Events' change={onChange} />
                 </td>
               </tr>
             </tbody>
@@ -63,7 +60,8 @@ function RecurrenceEvents() {
         <p>This demo showcases the scheduler with recurring meetings handled by a top-level manager on a regular pattern.</p>
       </div>
       <div id='description'>
-        <p>In this demo, the recurrence events are defined with different repeat patterns.
+        <p>
+          In this demo, the recurrence events are defined with different repeat patterns.
           It can be defined through <code>recurrenceRule</code> field which should accept the valid rule string following
           the <a target="_blank" href="https://tools.ietf.org/html/rfc5545#section-3.3.10">iCalendar</a> specifications.
           The recurring events are differentiated from other events by a repeat marker added
@@ -93,9 +91,7 @@ function RecurrenceEvents() {
           </tr>
           <tr>
             <td style={{ padding: '4px 0' }}>Spanned events</td>
-            <td>
-              The events on which its start and end time spans over multiple days and usually displays together with all-day events.
-            </td>
+            <td>The events on which its start and end time spans over multiple days and usually displays together with all-day events.</td>
           </tr>
           <tr>
             <td style={{ padding: '4px 0' }}>All-day events</td>

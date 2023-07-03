@@ -1,45 +1,46 @@
 import { CheckBoxComponent, ChipListComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
 import './api.css';
 import * as data from './data.json';
 import { PropertyPane } from '../common/property-pane';
 
-function Api() {
-    React.useEffect(() => {
+const Api = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let datas = data as any;
+    const datas = data as any;
     let colorCss = '';
     let outlineCss = '';
-    const[cssClass,SetCssClass]=React.useState('');
-    const[avatarIconCss,SetAvatarIconCss]=React.useState('');
-    const[avatarText,SetAvatarText]=React.useState('');
-    const[trailingIconCss,SetTrailingIconCss]=React.useState('');
-    const[leadingIconCss,SetLeadingIconCss]=React.useState('');
+    const [cssClass, SetCssClass] = useState<string>('');
+    const [avatarIconCss, SetAvatarIconCss] = useState<string>('');
+    const [avatarText, SetAvatarText] = useState<string>('');
+    const [trailingIconCss, SetTrailingIconCss] = useState<string>('');
+    const [leadingIconCss, SetLeadingIconCss] = useState<string>('');
     // checkbox change handler for chip leading icon
-    function iconHandler(e): void {
-        SetLeadingIconCss( e.checked ? 'janet' : '');
+    const iconHandler = (e): void => {
+        SetLeadingIconCss(e.checked ? 'janet' : '');
     }
     // drop-down list change handler for chip color
-    function colorChange(e) {
+    const colorChange = (e) => {
         SetCssClass(`e-${e.value.toLowerCase()} ${outlineCss.trim()}`);
         colorCss = `e-${e.value.toLowerCase()}`;
     }
     // checkbox change handler for chip outline
-    function variantHandler(e): void {
+    const variantHandler = (e): void => {
         outlineCss = e.checked ? 'e-outline' : '';
         SetCssClass(`${colorCss} ${outlineCss}`.trim());
     }
     // drop-down list change handler for chip avatar
-    function avatarHandler(e): void {
-        SetAvatarIconCss( (e.value.toLowerCase() === 'icon') ? 'e-icon' : (e.value.toLowerCase() === 'image') ? 'janet' : ''),SetAvatarText (e.value.toLowerCase() === 'letter' ? 'JL' : '');
+    const avatarHandler = (e): void => {
+        SetAvatarIconCss((e.value.toLowerCase() === 'icon') ? 'e-icon' : (e.value.toLowerCase() === 'image') ? 'janet' : ''), SetAvatarText(e.value.toLowerCase() === 'letter' ? 'JL' : '');
     }
     // checkbox change handler for chip trailing icon
-    function deleteIconHandler(e): void {
-        SetTrailingIconCss( e.checked ? 'e-dlt-btn' : '' );
+    const deleteIconHandler = (e): void => {
+        SetTrailingIconCss(e.checked ? 'e-dlt-btn' : '');
     }
     return (
         <div>
@@ -119,7 +120,7 @@ function Api() {
             </div>
             <div id="action-description">
                 <p>This sample demonstrates most commonly used API functionalities of chip control from the property pane. Select
-                 any combination of properties from the property pane to customize the appearance of chip.</p>
+                    any combination of properties from the property pane to customize the appearance of chip.</p>
             </div>
             <div id="description">
                 <p>
@@ -132,7 +133,7 @@ function Api() {
                 <ul>
                     <li>Color variant can be changed by selecting the color dropdownlist from property pane.</li>
                     <li>Leading and Trailing icons can be enabled by selecting Leading or Trailing Icon checkbox from property
-                    pane.</li>
+                        pane.</li>
                     <li>Leading icon can be customized with avatar initials, icons and images from property pane</li>
                     <li>Outline chip type can be enabled by checking outline checkbox from property pane.</li>
                 </ul>

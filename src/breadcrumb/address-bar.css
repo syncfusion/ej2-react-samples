@@ -87,6 +87,14 @@
   right: 1px;
 }
 
+.material3 .e-custom-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret,
+.material3-dark .e-custom-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret,
+.e-bigger .material3 .e-custom-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret,
+.e-bigger .material3-dark .e-custom-breadcrumb .e-menu-wrapper ul .e-menu-item .e-caret
+{
+  right: 2px;
+}
+
 .e-addressbar-breadcrumb .e-breadcrumb-item,
 .e-addressbar-breadcrumb .e-breadcrumb-separator {
   padding: 0px !important;

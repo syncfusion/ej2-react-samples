@@ -2,9 +2,8 @@
  * Sample for Stacked Area series
  */
 import * as React from 'react';
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Highlight, ILoadedEventArgs, ChartTheme, Inject, Tooltip, DateTime, StackingAreaSeries, Legend,
-} from '@syncfusion/ej2-react-charts';
+import { useEffect } from 'react';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Highlight, ILoadedEventArgs, ChartTheme, Inject, Tooltip, DateTime, StackingAreaSeries, Legend } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data1 = [
@@ -36,33 +35,30 @@ export let data4 = [
     { x: new Date(2012, 0, 1), y: 2.16 }, { x: new Date(2013, 0, 1), y: 2.51 }, { x: new Date(2014, 0, 1), y: 2.61 },
 ];
 const SAMPLE_CSS = `
-      .control-fluid {
-          padding: 0px !important;
-      }`;
-function StackedArea() {
-    React.useEffect(() => {
+    .control-fluid {
+        padding: 0px !important;
+    }`;
+const StackedArea = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent
-                    id="charts"
-                    style={{ textAlign: 'center' }}
-                    primaryXAxis={{ valueType: 'DateTime', intervalType: 'Years', majorGridLines: { width: 0 }, labelFormat: 'y', edgeLabelPlacement: 'Shift' }}
-                    load={load.bind(this)}
-                    primaryYAxis={{ title: 'Amount of sales in €', minimum: 0, maximum: 7, interval: 1, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, labelFormat: '{value}k' }}
-                    chartArea={{ border: { width: 0 } }}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    legendSettings={{ enableHighlight: true }}
-                    title="Amount of Sales by Payment Mode"
-                    loaded={onChartLoad.bind(this)}
-                    tooltip={{ enable: true }}
-                >
-                    <Inject
-                        services={[StackingAreaSeries, Legend, DateTime, Tooltip, Highlight]}
-                    />
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', intervalType: 'Years', majorGridLines: { width: 0 }, labelFormat: 'y', edgeLabelPlacement: 'Shift' }} load={load.bind(this)} primaryYAxis={{ title: 'Amount of sales in €', minimum: 0, maximum: 7, interval: 1, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, labelFormat: '{value}k' }} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} title="Amount of Sales by Payment Mode" loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                    <Inject services={[StackingAreaSeries, Legend, DateTime, Tooltip, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName="x" yName="y" opacity={1} name="Bank-Transfer" type="StackingArea" border={{ width: 2, color: '#666666' }}></SeriesDirective>
                         <SeriesDirective dataSource={data2} xName="x" yName="y" opacity={1} name="Credit Card" type="StackingArea" border={{ width: 2, color: '#666666' }}></SeriesDirective>
@@ -72,14 +68,10 @@ function StackedArea() {
                 </ChartComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This React Stacked Area example visualizes the amount of sales by payment mode with default stacked area series. A legend in the sample shows information about the series.
-                </p>
+                <p>This React Stacked Area example visualizes the amount of sales by payment mode with default stacked area series. A legend in the sample shows information about the series.</p>
             </div>
             <div id="description">
-                <p>
-                    In this example, you can see how to render and configure the stacked area chart. This chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.
-                </p>
+                <p>In this example, you can see how to render and configure the stacked area chart. This chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -91,16 +83,6 @@ function StackedArea() {
                 </p>
             </div>
         </div>
-    )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
-        chart.setAttribute('title', '');
-
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
+    )    
 }
 export default StackedArea;

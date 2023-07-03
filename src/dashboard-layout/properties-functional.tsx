@@ -1,67 +1,70 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DashboardLayoutComponent, PanelModel, PanelsDirective, PanelDirective } from '@syncfusion/ej2-react-layouts';
 import { ButtonComponent, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { NumericTextBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-inputs';
 import './properties.component.css';
 
-function Properties() {
-    React.useEffect(() => {
+const Properties = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let count: number = 5;
+    const [isResize, setIsResize] = useState<boolean>(true);
+    const [isFloat, setIsFloat] = useState<boolean>(true);
+    const [cellSpace,setCellSpace] = useState<number[]>([5, 5]);
 
-    function onAdd(): void {
+    let count: number = 5;
+    let dashboardObj = useRef<DashboardLayoutComponent>(null);
+
+    const onAdd = (): void => {
         count = count + 1;
         let panel: PanelModel[] = [{
             'id': count.toString() + '_layout', 'sizeX': 2, 'sizeY': 2, 'row': 0, 'col': 0,
             header: '<div>Panel ' + count.toString() + '</div>', content: '<div></div>'
         }];
-       ( dashboardObj as any).addPanel(panel[0]);
+       ( dashboardObj as any).current.addPanel(panel[0]);
     }
 
-    function remove(): void {
-        if (dashboardObj.panels.length > 0) {
-            for (let i: number = dashboardObj.panels.length - 1; i < dashboardObj.panels.length; i++) {
-                dashboardObj.removePanel(dashboardObj.panels[dashboardObj.panels.length - 1 - i].id);
+    const remove = (): void => {
+        if (dashboardObj.current.panels.length > 0) {
+            for (let i: number = dashboardObj.current.panels.length - 1; i < dashboardObj.current.panels.length; i++) {
+                dashboardObj.current.removePanel(dashboardObj.current.panels[dashboardObj.current.panels.length - 1 - i].id);
             }
         }
     }
 
-    function onCellChange(args: ChangeEventArgs): void {
-        dashboardObj.cellSpacing = [parseInt((args as any).value, 10), parseInt((args as any).value, 10)];
+    const onCellChange = (args: ChangeEventArgs): void => {
+        setCellSpace([parseInt((args as any).value, 10), parseInt((args as any).value, 10)]);
     }
 
-    function onChange(args: any): void {
+    const onChange = (args: any): void => {
         let targetElement = args.event.target;
         let previousElement = targetElement.previousElementSibling;
         let nextElement = targetElement.nextElementSibling;
         if ((previousElement !== null && previousElement.id === 'floating') || nextElement !== null && nextElement.previousElementSibling.id === 'floating') {
-            dashboardObj.allowFloating = args.checked;
-         }
-         if ((previousElement !== null && previousElement.id === 'resizing') || nextElement !== null && nextElement.previousElementSibling.id === 'resizing') {
-            dashboardObj.allowResizing = args.checked;
-         }
-    }
-    let dashboardObj: DashboardLayoutComponent;
-    let txtObj: NumericTextBoxComponent;
-    const cellSpacing: number[] = [5, 5];
+            setIsFloat(args.checked);
+        }
+        if ((previousElement !== null && previousElement.id === 'resizing') || nextElement !== null && nextElement.previousElementSibling.id === 'resizing') {
+            setIsResize(args.checked);
+        }
+    }    
 
     // custom code start
-  function onCreate(): void {
-    if (document.querySelector('.container-fluid.custom')) {
-      document.querySelector('.container-fluid').classList.remove('custom')
+    const onCreate = (): void => {
+        if (document.querySelector('.container-fluid.custom')) {
+            document.querySelector('.container-fluid').classList.remove('custom')
+        }
     }
-  }
-  // custom code end
+    // custom code end
 
     return (
         <div>
             <div className="col-lg-8 control-section" id="control_dash">
                 <div className="content-wrapper" style ={{"maxWidth": "100%"}}>
-                <DashboardLayoutComponent created={ onCreate.bind(this) } id="api_dashboard" columns={6} cellSpacing={cellSpacing} ref={(scope) => { (dashboardObj as any) = scope; }} allowResizing={true}>
+                <DashboardLayoutComponent created={ onCreate.bind(this) } id="api_dashboard" columns={6} cellSpacing={cellSpace} ref={dashboardObj} allowResizing={isResize} allowFloating={isFloat}>
                     <PanelsDirective>
                         <PanelDirective header="<div>Panel 1</div>" content="<div></div>" sizeX={2} sizeY={2} row={0} col={0}></PanelDirective>
                         <PanelDirective header="<div>Panel 2</div>" content="<div></div>" sizeX={2} sizeY={2} row={0} col={2}></PanelDirective>
@@ -107,9 +110,9 @@ function Properties() {
                 <p>This sample demonstrates the properties of DashboardLayout component from the property pane. Select any combination of properties from the property pane to customize the DashboardLayout.</p>
             </div>
             <div id="description">
-            This sample allows to configure the <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#cellspacing" target="_blank">cellSpacing</a></code>, 
-            <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowfloating" target="_blank">allowFloating</a></code> and
-            <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowresizing" target="_blank">allowResizing</a></code> properties of the dashboard layout component.
+                This sample allows to configure the <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#cellspacing" target="_blank">cellSpacing</a></code>, 
+                <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowfloating" target="_blank">allowFloating</a></code> and
+                <code><a href="https://ej2.syncfusion.com/react/documentation/api/dashboard-layout#allowresizing" target="_blank">allowResizing</a></code> properties of the dashboard layout component.
             </div>
         </div>
     );

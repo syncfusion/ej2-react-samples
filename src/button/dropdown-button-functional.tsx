@@ -1,14 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { DropDownButtonComponent, ItemModel } from '@syncfusion/ej2-react-splitbuttons';
 import { updateSampleSection } from '../common/sample-base';
 import './dropdown-button.css';
 
-function DropDownButton() {
-    React.useEffect(() => {
+const DropDownButton = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let items: ItemModel[] = [
+    const items: ItemModel[] = [
         {
             text: 'Dashboard',
             iconCss: 'e-ddb-icons e-dashboard'

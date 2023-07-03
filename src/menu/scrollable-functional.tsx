@@ -1,22 +1,23 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { MenuComponent, MenuItemModel, BeforeOpenCloseMenuEventArgs } from '@syncfusion/ej2-react-navigations';
 import { closest } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import './scrollable.css';
 import * as dataSource from './menu-data.json';
 
-/**
- * Scrollable Menu sample
+/*
+ Scrollable Menu sample
  */
-function Scrollable() {
+const Scrollable = () => {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
     let data = dataSource as any;
     // Increased duration for smooth animation
     let animation = { duration: 800 };
-    function onBeforeOpen(args: BeforeOpenCloseMenuEventArgs): void {
+    const onBeforeOpen = (args: BeforeOpenCloseMenuEventArgs): void => {
         // Restricting sub menu wrapper height
         if (args.parentItem.text === 'Appliances') {
             // Using closest method we are getting the sub menu wrapper element
@@ -47,8 +48,7 @@ function Scrollable() {
                 </p>
                 <p>
                     More information about menu can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/">
-                        documentation</a> section.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/">documentation</a> section.
                 </p>
             </div>
         </div>

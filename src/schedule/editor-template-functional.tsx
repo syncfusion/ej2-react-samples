@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
-  EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './editor-template.css';
 import { extend } from '@syncfusion/ej2-base';
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
@@ -15,14 +13,14 @@ import * as dataSource from './datasource.json';
  * Schedule editor template sample
  */
 
-function EditorTemplate() {
-  React.useEffect(() => {
+const EditorTemplate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  let scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).doctorsEventData, null, true) as Record<string, any>[];
 
-  function onEventRendered(args: EventRenderedArgs): void {
+  const onEventRendered = (args: EventRenderedArgs): void => {
     switch (args.data.EventType) {
       case 'Requested':
         (args.element as HTMLElement).style.backgroundColor = '#F57F17';
@@ -36,45 +34,58 @@ function EditorTemplate() {
     }
   }
 
-  function onActionBegin(args: Record<string, any>): void {
+  const onActionBegin = (args: Record<string, any>): void => {
     if (args.requestType === 'eventCreate' || args.requestType === 'eventChange') {
       let data: Record<string, any> = args.data instanceof Array ? args.data[0] : args.data;
-      args.cancel = !scheduleObj.isSlotAvailable(data.StartTime as Date, data.EndTime as Date);
+      args.cancel = !scheduleObj.current.isSlotAvailable(data.StartTime as Date, data.EndTime as Date);
     }
   }
 
-  function editorTemplate(props: Record<string, any>): JSX.Element {
-    return ((props !== undefined) ? <table className="custom-event-editor" style={{ width: '100%' }} cellPadding={5}><tbody>
-      <tr><td className="e-textlabel">Summary</td><td colSpan={4}>
-        <input id="Summary" className="e-field e-input" type="text" name="Subject" style={{ width: '100%' }} />
-      </td></tr>
-      <tr><td className="e-textlabel">Status</td><td colSpan={4}>
-        <DropDownListComponent id="EventType" placeholder='Choose status' data-name='EventType' className="e-field" style={{ width: '100%' }}
-          dataSource={['New', 'Requested', 'Confirmed']}>
-        </DropDownListComponent>
-      </td></tr>
-      <tr><td className="e-textlabel">From</td><td colSpan={4}>
-        <DateTimePickerComponent id="StartTime" format='dd/MM/yy hh:mm a' data-name="StartTime" value={new Date(props.startTime || props.StartTime)}
-          className="e-field"></DateTimePickerComponent>
-      </td></tr>
-      <tr><td className="e-textlabel">To</td><td colSpan={4}>
-        <DateTimePickerComponent id="EndTime" format='dd/MM/yy hh:mm a' data-name="EndTime" value={new Date(props.endTime || props.EndTime)}
-          className="e-field"></DateTimePickerComponent>
-      </td></tr>
-      <tr><td className="e-textlabel">Reason</td><td colSpan={4}>
-        <textarea id="Description" className="e-field e-input" name="Description" rows={3} cols={50}
-          style={{ width: '100%', height: '60px !important', resize: 'vertical' }}></textarea>
-      </td></tr></tbody></table > : <div></div>);
+  const editorTemplate = (props: Record<string, any>) => {
+    return ((props !== undefined) ? 
+      <table className="custom-event-editor" style={{ width: '100%' }} cellPadding={5}>
+        <tbody>
+          <tr>
+            <td className="e-textlabel">Summary</td>
+            <td colSpan={4}>
+              <input id="Summary" className="e-field e-input" type="text" name="Subject" style={{ width: '100%' }} />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Status</td>
+            <td colSpan={4}>
+              <DropDownListComponent id="EventType" placeholder='Choose status' data-name='EventType' className="e-field" style={{ width: '100%' }} dataSource={['New', 'Requested', 'Confirmed']} />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">From</td>
+            <td colSpan={4}>
+              <DateTimePickerComponent id="StartTime" format='dd/MM/yy hh:mm a' data-name="StartTime" value={new Date(props.startTime || props.StartTime)} className="e-field" />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">To</td><td colSpan={4}>
+              <DateTimePickerComponent id="EndTime" format='dd/MM/yy hh:mm a' data-name="EndTime" value={new Date(props.endTime || props.EndTime)} className="e-field" />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Reason</td>
+            <td colSpan={4}>
+              <textarea id="Description" className="e-field e-input" name="Description" rows={3} cols={50} style={{ width: '100%', height: '60px !important', resize: 'vertical' }} />
+            </td>
+          </tr>
+        </tbody>
+      </table >
+      : 
+      <div></div>
+    );
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)}
-            ref={schedule => scheduleObj = schedule} eventSettings={{ dataSource: data }}
-            editorTemplate={editorTemplate.bind(this)} actionBegin={onActionBegin.bind(this)}
-            showQuickInfo={false} eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={scheduleObj} eventSettings={{ dataSource: data }} editorTemplate={editorTemplate} actionBegin={onActionBegin} showQuickInfo={false} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -86,24 +97,20 @@ function EditorTemplate() {
         </div>
       </div>
       <div id='action-description'>
-        <p>This demo illustrates the way of customizing the default editor window with custom template option and the customized
+        <p>
+          This demo illustrates the way of customizing the default editor window with custom template option and the customized
           design is automatically replaced onto the usual event editor. Here, a doctor's daily appointment with his patients is listed
-          out and shaded with specific color based on its status.</p>
+          out and shaded with specific color based on its status.
+        </p>
       </div>
       <div id='description'>
         <p>
-          In this demo, the event window is customized based on the doctor's required appointment related fields which can be achieved
-          by making use of the <code>editorTemplate</code> API.
-          Here, the custom design is built with the required fields through the script template and its type should be <code>text/x-template</code>.
+          In this demo, the event window is customized based on the specific appointment-related fields required for doctors which can 
+          be achieved by making use of the <code>editorTemplate</code> API and it is achieved using <code>functional component</code>.
         </p>
         <p>
-          Each field defined through it should contain the <code>e-field</code> class, so as to allow the processing of those fields in the default event object from internal source.
-          The ID of this customized script template section is assigned to the <code>editorTemplate</code> option,so that this customized fields will be replaced onto the default editor window.
-        </p>
-        <p>
-          As we are using our Syncfusion sub-components within this editor in this demo, therefore the custom defined form elements
-          needs to be configured as required Syncfusion components such as DropDownList and DateTimePicker which needs to be
-          done within the <code>popupOpen</code> event. This particular step can be skipped, if the user needs to simply use the normal form design with applicable fields.
+          Each field defined through it should contain the <code>e-field</code> class,and <code>data-name</code> attribute,
+          so as to allow the processing of those fields in the default event object from internal source.
         </p>
         <p>
           Within the <code>eventRendered</code> event that triggers before every appointment getting rendered

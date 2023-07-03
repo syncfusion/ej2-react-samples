@@ -55,8 +55,8 @@ export class SplineRangeArea extends SampleBase {
                          <code>SplineRangeAreaSeries</code> module into <code>services</code>.
                      </p>
                      <p>
-                         More information on the range area series can be found in this &nbsp;
-                         <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                         More information on the spline range area series can be found in this
+                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline-range-area">documentation section</a>.
                      </p>
                  </div>
              </div>);
@@ -69,7 +69,7 @@ export class SplineRangeArea extends SampleBase {
     load(args) {
         let selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
     }
     ;
 }

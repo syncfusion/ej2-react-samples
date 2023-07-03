@@ -1,6 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ScheduleComponent, ViewsDirective, ViewDirective, Agenda, Inject } from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState } from 'react';
+import { ScheduleComponent, Agenda, Inject, View, ViewsModel } from '@syncfusion/ej2-react-schedule';
 import { generateObject } from './helper';
 import { NumericTextBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-inputs';
 import './schedule-component.css';
@@ -12,11 +13,10 @@ import { PropertyPane } from '../common/property-pane';
  * Schedule agenda sample
  */
 
-function AgendaView() {
-  React.useEffect(() => {
+const AgendaView = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
   const virtualScrollOptions: Record<string, any>[] = [
     { text: 'True', value: true },
     { text: 'False', value: false }
@@ -26,25 +26,24 @@ function AgendaView() {
     { text: 'False', value: false }
   ];
   const fields: Record<string, any> = { text: 'text', value: 'value' };
-  function onVirtualChange(args: DropDownChangeArgs): void {
-    scheduleObj.views = [{ option: 'Agenda', allowVirtualScrolling: args.value as boolean }];
+  const [views, setViews] = useState<View[] | ViewsModel[]>([{ option: 'Agenda', allowVirtualScrolling: false }]);
+  const [hideEmptyAgendaDays, setHideEmptyAgendaDays] = useState<boolean>(true);
+  const [agendaDaysCount, setAgendaDaysCount] = useState<number>(7)
+  const onVirtualChange = (args: DropDownChangeArgs): void => {
+    setViews([{ option: 'Agenda', allowVirtualScrolling: args.value as boolean }])
   }
-  function onEmptyAgendaDaysChange(args: DropDownChangeArgs): void {
-    scheduleObj.hideEmptyAgendaDays = args.value as boolean;
+  const onEmptyAgendaDaysChange = (args: DropDownChangeArgs): void => {
+    setHideEmptyAgendaDays(args.value as boolean)
   }
-  function onCountChange(args: ChangeEventArgs): void {
-    scheduleObj.agendaDaysCount = args.value !== null ? args.value : 7;
+  const onCountChange = (args: ChangeEventArgs): void => {
+    setAgendaDaysCount(args.value !== null ? args.value : 7)
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={schedule => scheduleObj = schedule}
-            currentView='Agenda' selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: generateObject() }}>
-            <ViewsDirective>
-              <ViewDirective option='Agenda' allowVirtualScrolling={false} />
-            </ViewsDirective>
+          <ScheduleComponent width='100%' height='650px' views={views} currentView='Agenda' selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: generateObject() }} hideEmptyAgendaDays={hideEmptyAgendaDays} agendaDaysCount={agendaDaysCount}>
             <Inject services={[Agenda]} />
           </ScheduleComponent>
         </div>
@@ -56,27 +55,21 @@ function AgendaView() {
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div>
-                    <DropDownListComponent style={{ padding: '6px' }} value={false} dataSource={virtualScrollOptions}
-                      fields={fields} change={onVirtualChange.bind(this)} floatLabelType='Always'
-                      placeholder='Allow Virtual Scrolling'></DropDownListComponent>
+                    <DropDownListComponent style={{ padding: '6px' }} value={false} dataSource={virtualScrollOptions} fields={fields} change={onVirtualChange} floatLabelType='Always' placeholder='Allow Virtual Scrolling'></DropDownListComponent>
                   </div>
                 </td>
               </tr>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div>
-                    <DropDownListComponent style={{ padding: '6px' }} value={true} dataSource={hideEmptyAgendaDaysOptions}
-                      fields={fields} change={onEmptyAgendaDaysChange.bind(this)} floatLabelType='Always'
-                      placeholder='Hide Empty Days'></DropDownListComponent>
+                    <DropDownListComponent style={{ padding: '6px' }} value={hideEmptyAgendaDays} dataSource={hideEmptyAgendaDaysOptions} fields={fields} change={onEmptyAgendaDaysChange} floatLabelType='Always' placeholder='Hide Empty Days'></DropDownListComponent>
                   </div>
                 </td>
               </tr>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div>
-                    <NumericTextBoxComponent format='n0' value={7} min={1} max={15}
-                      change={onCountChange.bind(this)} floatLabelType='Always' placeholder='Days Count'>
-                    </NumericTextBoxComponent>
+                    <NumericTextBoxComponent format='n0' value={agendaDaysCount} min={1} max={15} change={onCountChange} floatLabelType='Always' placeholder='Days Count' />
                   </div>
                 </td>
               </tr>

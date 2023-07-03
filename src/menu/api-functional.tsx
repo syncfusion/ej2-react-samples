@@ -1,11 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MenuComponent, FieldSettingsModel, Orientation } from '@syncfusion/ej2-react-navigations';
 import { DropDownListComponent, ChangeEventArgs as ddlChange, Inject } from '@syncfusion/ej2-react-dropdowns';
 import { MultiSelectComponent, MultiSelectChangeEventArgs, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent, ChangeEventArgs as cbChange } from '@syncfusion/ej2-react-buttons';
-import { getComponent } from '@syncfusion/ej2-base';
 import { PropertyPane } from '../common/property-pane';
 import { updateSampleSection } from '../common/sample-base';
 import './api.css';
@@ -14,22 +13,23 @@ interface ApiSample {
     orientation: Orientation;
     showItemOnClick: boolean;
 }
-function Api() {
-    React.useEffect(() => {
+const Api = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     let data = dataSource as any;
-    const [state, setState] = useState({
+    const [state, setState] = useState<ApiSample>({
         orientation: 'Horizontal',
         showItemOnClick: false
     });
     let menuRef = useRef<MenuComponent>(null);
     // Menu fields definition
     let menuFields: FieldSettingsModel = { text: ['header', 'text', 'value'], children: ['subItems', 'options'] };
-    function modeChange(args: ddlChange): void {
+
+    const modeChange = (args: ddlChange): void => {
         setState({ ...state, orientation: args.itemData.value as Orientation });
     }
-    function enabledisableChange(args: MultiSelectChangeEventArgs): void {
+    const enabledisableChange = (args: MultiSelectChangeEventArgs): void => {
         if (args.value) {
             const menuObj: MenuComponent = menuRef.current;
             menuObj.enableItems(['Events', 'Movies', 'Directory', 'Queries', 'Services'], true);
@@ -37,7 +37,7 @@ function Api() {
         }
     }
     // CheckBox change event
-    function showOnClickChange(args: cbChange) {
+    const showOnClickChange = (args: cbChange) => {
         setState({ ...state, showItemOnClick: args.checked });
     }
 
@@ -95,12 +95,18 @@ function Api() {
                 <p>In this demo, default menu is rendered with minimal configuration.</p>
                 <p>This sample can be customized further with the combination of <code>menu</code> properties from the property pane. For example,</p>
                 <ul>
-                    <li>You can switch to <b>Vertical</b> and <b>Horizontal</b> modes by clicking and selecting the
-                        <code>orientation</code> mode from <i>Orientation</i> dropdownlist.</li>
-                    <li>You can enable or disable menu items by clicking and selecting the item
-                        from <i>Enable item</i> or <i>Disable item</i> dropdownlists.</li>
-                    <li>You can also enable the show menu item on mouse click <code>showItemOnClick</code> property by checking the
-                        <i>Show item on Click</i> checkbox.</li>
+                    <li>
+                        You can switch to <b>Vertical</b> and <b>Horizontal</b> modes by clicking and selecting the
+                        <code>orientation</code> mode from <i>Orientation</i> dropdownlist.
+                    </li>
+                    <li>
+                        You can enable or disable menu items by clicking and selecting the item
+                        from <i>Enable item</i> or <i>Disable item</i> dropdownlists.
+                    </li>
+                    <li>
+                        You can also enable the show menu item on mouse click <code>showItemOnClick</code> property by checking the
+                        <i>Show item on Click</i> checkbox.
+                    </li>
                 </ul>
                 <p>
                     More information about menu can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/menu">documentation</a> section.

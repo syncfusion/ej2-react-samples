@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek,
-  Month, Agenda, ICalendarExport, ICalendarImport, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, Agenda, ICalendarExport, ICalendarImport, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './calendar-export-import.css';
 import { extend } from '@syncfusion/ej2-base';
 import { UploaderComponent } from '@syncfusion/ej2-react-inputs';
@@ -16,29 +14,28 @@ import * as dataSource from './datasource.json';
  * Schedule ICS Export and Import sample
  */
 
-function CalendarImportExport() {
-  React.useEffect(() => {
+const CalendarImportExport = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  let scheduleObj = useRef<ScheduleComponent>(null);
   let multiple: boolean = false;
   let showFileList: boolean = false;
   let allowedExtensions: string = '.ics';
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
 
-  function onClick(): void {
-    scheduleObj.exportToICalendar();
+  const onClick = (): void => {
+    scheduleObj.current.exportToICalendar();
   }
 
-  function onSelect(args): void {
-    scheduleObj.importICalendar(args.event.target.files[0]);
+  const onSelect = (args): void => {
+    scheduleObj.current.importICalendar(args.event.target.files[0]);
   }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={schedule => scheduleObj = schedule}
-            selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -60,7 +57,7 @@ function CalendarImportExport() {
                 </td>
                 <td style={{ width: '50%' }}>
                   <div className='evtbtn' style={{ paddingBottom: '10px' }}>
-                    <ButtonComponent id='ics-export' title='Export' onClick={onClick.bind(this)}>Export</ButtonComponent>
+                    <ButtonComponent id='ics-export' title='Export' onClick={onClick}>Export</ButtonComponent>
                   </div>
                 </td>
               </tr>
@@ -69,9 +66,7 @@ function CalendarImportExport() {
                   <div className='col-md-12' style={{ paddingTop: '8px' }}>Import iCalendar file</div>
                 </td>
                 <td style={{ width: '50%' }}>
-                  <UploaderComponent id='fileUpload' type='file' allowedExtensions={allowedExtensions} cssClass='calendar-import'
-                    buttons={{ browse: 'Choose file' }} multiple={multiple} showFileList={showFileList}
-                    selected={onSelect.bind(this)}></UploaderComponent>
+                  <UploaderComponent id='fileUpload' type='file' allowedExtensions={allowedExtensions} cssClass='calendar-import' buttons={{ browse: 'Choose file' }} multiple={multiple} showFileList={showFileList} selected={onSelect} />
                 </td>
               </tr>
             </tbody>
@@ -79,9 +74,7 @@ function CalendarImportExport() {
         </PropertyPane>
       </div>
       <div id="action-description">
-        <p>
-          This example showcases how to export the Scheduler events to a calendar (.ics) file, as well as how to import events from an .ics file (downloaded from any of the calendars like Google or Outlook) into our Scheduler.
-        </p>
+        <p>This example showcases how to export the Scheduler events to a calendar (.ics) file, as well as how to import events from an .ics file (downloaded from any of the calendars like Google or Outlook) into our Scheduler.</p>
       </div>
       <div id="description">
         <p>

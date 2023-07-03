@@ -1,52 +1,41 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
-import { TextBoxComponent, NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
+import { TextBoxComponent, NumericTextBoxComponent, FloatLabelType } from '@syncfusion/ej2-react-inputs';
 import {CheckBoxComponent, ChangeEventArgs} from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import './sample.css';
 
-function Multiline() {
+const Multiline = () => {
     // Multiline TextBox
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let textareaObj: TextBoxComponent;
-    let enabledObj: CheckBoxComponent;
-    let readonlyObj: CheckBoxComponent;
-    let floatLabelObj: DropDownListComponent;
-    let rowObj: NumericTextBoxComponent;
+    const [isTextareaEnable, setIsTextareaEnable] = useState<boolean>(true);
+    const [isTextareaReadonly, setIsTextareaReadonly] = useState<boolean>(false);
+    const [floatLabelType, setFloatLabelType] = useState<FloatLabelType>('Auto');
+    const textareaObj = useRef<TextBoxComponent>(null);
     let floatData: { [key: string]: Object }[];
     let fields: object;
-    const value: string = 'Auto';
     floatData = [
         { Id: 'Auto', Label: 'Auto' },
         { Id: 'Never', Label: 'Never' },
         { Id: 'Always', Label: 'Always' }
     ];
     fields = { text: 'Label', value: 'Id' };
-    function enabledHandler(args: ChangeEventArgs): void {
-        textareaObj.enabled = !args.checked;
+    const enabledHandler = (args: ChangeEventArgs): void => {
+      setIsTextareaEnable(!args.checked);
     }
-    function readonlyHandler(args: ChangeEventArgs): void {
-        textareaObj.readonly = args.checked;
+    const readonlyHandler = (args: ChangeEventArgs): void => {
+      setIsTextareaReadonly(args.checked);
     }
-    function floatHandler(args: any): void {
-        switch (args.value) {
-            case 'Auto':
-                textareaObj.floatLabelType = 'Auto';
-                break;
-            case 'Always':
-                textareaObj.floatLabelType = 'Always';
-                break;
-            case 'Never':
-                textareaObj.floatLabelType = 'Never';
-                break;
-        }
+    const floatHandler = (args: any): void => {
+      setFloatLabelType(args.value);
     }
-    function rowHandler(args: any): void {
-        textareaObj.addAttributes({rows: args.value});
+    const rowHandler = (args: any): void => {
+        textareaObj.current.addAttributes({rows: args.value});
     }
     return (
         <div className='control-pane multiline'>
@@ -54,7 +43,7 @@ function Multiline() {
                 <div className='col-lg-8'>
                     <div className='multiline-wrapper'>
                         {/* Render Multiline TextBox */}
-                        <TextBoxComponent id='default' multiline={true} floatLabelType="Auto" placeholder="Enter your address" ref = {(scope) => {textareaObj = scope}}></TextBoxComponent>
+                        <TextBoxComponent id='default' multiline={true} floatLabelType={floatLabelType} enabled={isTextareaEnable} readonly={isTextareaReadonly} placeholder="Enter your address" ref={textareaObj}></TextBoxComponent>
                     </div>
                 </div>
                 <div className='col-lg-4 property-section' id="multiline">
@@ -64,25 +53,25 @@ function Multiline() {
                                 <tr>
                                     <td className='left-side'>FLoat label type</td>
                                     <td>
-                                        <DropDownListComponent id="float" value = {value}  dataSource={floatData} ref={(dropdownlist) => {floatLabelObj = dropdownlist }} fields={fields} change={floatHandler.bind(this)} placeholder="Select float type" />
+                                        <DropDownListComponent id="float" value={floatLabelType} dataSource={floatData} fields={fields} change={floatHandler.bind(this)} placeholder="Select float type"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td className='left-side'>Disabled</td>
                                     <td>
-                                        <CheckBoxComponent checked={false} ref={(scope) => { enabledObj = scope; }} change={ enabledHandler.bind(this) } ></CheckBoxComponent>
+                                        <CheckBoxComponent checked={false} change={enabledHandler.bind(this)}></CheckBoxComponent>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td className='left-side'>Read only</td>
                                     <td>
-                                        <CheckBoxComponent checked={false} ref={(scope) => {readonlyObj = scope; }} change={ readonlyHandler.bind(this) } ></CheckBoxComponent>
+                                        <CheckBoxComponent checked={false} change={readonlyHandler.bind(this)}></CheckBoxComponent>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td className='left-side'>Rows</td>
                                     <td>
-                                        <NumericTextBoxComponent format='##' value={2} min={1} max={20} step={1} change={ rowHandler.bind(this) }></NumericTextBoxComponent>
+                                        <NumericTextBoxComponent format='##' value={2} min={1} max={20} step={1} change={rowHandler.bind(this)}></NumericTextBoxComponent>
                                     </td>
                                 </tr>
                             </tbody>
@@ -98,8 +87,10 @@ function Multiline() {
                 </p>  
             </div>
             <div id="description">   
-                <p>The Multiline Textbox is used to edit or display multiple lines of text that helps you to accept address, description, comments, feedbacks, and more in a form. 
-                        In this sample, rendered multiline textbox from <b>textarea</b> tag and the following options are available to customize it:</p>
+                <p>
+                    The Multiline Textbox is used to edit or display multiple lines of text that helps you to accept address, description, comments, feedbacks, and more in a form. 
+                    In this sample, rendered multiline textbox from <b>textarea</b> tag and the following options are available to customize it:
+                </p>
                 <ul>
                     <li>Choose float label types either 'Never', 'Always', or 'Auto' to float the placeholder text.</li>
                     <li>To make a read-only multiline textbox, check the "read-only" option.</li>

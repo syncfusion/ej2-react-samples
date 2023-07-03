@@ -3,18 +3,13 @@ import * as React from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import './types.css';
 
-// tslint:disable:max-line-length
-
-// *  Sample for CSS avatar component
-
-function Types()  {
+const Types = ()  => {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
 
     return (
         <div className='control-pane'>
-
             <div className="sample_container avatar-types">
                 <div className="avatar-block">
                     {/* <!-- Card Component --> */}
@@ -30,7 +25,6 @@ function Types()  {
                         </div>
                     </div>
                 </div>
-
                 <div className="avatar-block">
                     {/* <!-- Card Component --> */}
                     <div className="e-card e-avatar-showcase">
@@ -45,7 +39,6 @@ function Types()  {
                         </div>
                     </div>
                 </div>
-
                 <div className="avatar-block">
                     {/* <!-- Card Component --> */}
                     <div className="e-card e-avatar-showcase">
@@ -58,7 +51,6 @@ function Types()  {
                         </div>
                     </div>
                 </div>
-
                 <div className="avatar-block">
                     {/* <!-- Card Component --> */}
                     <div className="e-card e-avatar-showcase">
@@ -73,7 +65,6 @@ function Types()  {
                         </div>
                     </div>
                 </div>
-
                 <div className="avatar-block">
                     {/* <!-- Card Component --> */}
                     <div className="e-card e-avatar-showcase">
@@ -86,7 +77,6 @@ function Types()  {
                         </div>
                     </div>
                 </div>
-
                 <div className="avatar-block">
                     {/* <!-- Card Component --> */}
                     <div className="e-card e-avatar-showcase">
@@ -102,15 +92,14 @@ function Types()  {
                     </div>
                 </div>
             </div>
-
             <div id="action-description">
-                <p>This sample demonstrates the different types of content that are used with avatar component like SVG icons, Font icons,
-                words, letters, and images.</p>
+                <p>This sample demonstrates the different types of content that are used with avatar component like SVG icons, Font icons, words, letters, and images.</p>
             </div>
-
             <div id="description">
-                <p>The avatar component is flexible to support various types of icons and images. In this sample, the content like SVG,
-                    font icons, and letters will be wrapped by the avatar element.
+                <p>
+                    The avatar component is flexible to support various types of icons and
+                    images. In this sample, the content like SVG, font icons, and letters will
+                    be wrapped by the avatar element.
                 </p>
             </div>
         </div>

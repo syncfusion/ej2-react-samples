@@ -52,7 +52,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the step area series.'
     },
     {
-        'path': 'chart/rangesteparea', 'component': 'RangeSteparea', 'name': 'Range Step Area', 'order': '03', 'type':'new', 'category': 'Area Charts',
+        'path': 'chart/rangesteparea', 'component': 'RangeStepArea', 'name': 'Range Step Area', 'order': '03', 'category': 'Area Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the step area series.'
     },
     {
@@ -164,7 +164,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the various radius pie chart.'
     },
     {
-        'path': 'chart/doughnut', 'component': 'AccumulationDoughnut', 'name': 'Doughnut', 'order': '07', 'type':'update', 'category': 'Accumulation Charts', 
+        'path': 'chart/doughnut', 'component': 'AccumulationDoughnut', 'name': 'Doughnut', 'order': '07', 'category': 'Accumulation Charts', 
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the various radius pie chart.'
     },
     {
@@ -212,7 +212,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the box-whisker series.'
     },
     {
-        'path': 'chart/error-bar', 'component': 'ErrorBarChart', 'name': 'Error Bar', 'type':'update', 'order': '08', 'category': 'Other Types',
+        'path': 'chart/error-bar', 'component': 'ErrorBarChart', 'name': 'Error Bar', 'order': '08', 'category': 'Other Types',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the error-bar series.'
     },
     {
@@ -224,7 +224,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the combination series.'
     },
     {
-        'path': 'chart/pareto', 'component': 'ParetoChart', 'name': 'Pareto Chart', 'order': '08', 'category': 'Other Types',
+        'path': 'chart/pareto', 'component': 'ParetoChart', 'name': 'Pareto Chart', 'type': 'update', 'order': '08', 'category': 'Other Types',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure pareto charts.'
     },
     {
@@ -312,7 +312,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the remote-data chart.'
     },
     {
-        'path': 'chart/lazy-loading', 'component': 'LazyLoading', 'name': 'Lazy Loading', 'order': '12', 'category': 'Data Binding',
+        'path': 'chart/lazy-loading', 'component': 'LazyLoading', 'name': 'Lazy Loading', 'type': 'update', 'order': '12', 'category': 'Data Binding',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the lazy-loading chart.'
     },
     {
@@ -348,7 +348,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to invert the axis in charts.'
     },
     {
-        'path': 'chart/stripline', 'component': 'Stripline', 'name': 'Strip Line', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/stripline', 'component': 'Stripline', 'name': 'Stripline', 'type': 'update', 'order': '13', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to invert the axis in charts.'
     },
     {
@@ -432,7 +432,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the trackball behavior in chart.'
     },
     {
-        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'order': '16', 'category': 'User Interaction',
+        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'type': 'update', 'order': '16', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the zooming behavior in chart.'
     },
     {

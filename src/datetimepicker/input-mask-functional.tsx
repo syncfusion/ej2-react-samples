@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DateTimePickerComponent, Inject, MaskedDateTime } from '@syncfusion/ej2-react-calendars';
 import './default-style.css';
 
-function MaskSupport() {
-    React.useEffect(() => {
+const MaskSupport = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (
@@ -13,7 +14,7 @@ function MaskSupport() {
             <div className='control-section'>
                 <div className='datetimepicker-control-section'>
                     <DateTimePickerComponent format='M/d/yyyy hh:mm a' enableMask={true}>
-                <Inject services={[MaskedDateTime]} /></DateTimePickerComponent>
+                        <Inject services={[MaskedDateTime]} /></DateTimePickerComponent>
                 </div>
             </div>
             <div id="action-description">

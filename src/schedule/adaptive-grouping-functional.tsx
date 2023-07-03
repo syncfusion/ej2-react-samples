@@ -1,10 +1,9 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-import {
-    ScheduleComponent, Day, Week, Month, Year, Resize, DragAndDrop, Inject, ResourcesDirective, ResourceDirective, GroupModel, ViewsDirective, ViewDirective
-} from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, Day, Week, Month, Year, Resize, DragAndDrop, Inject, ResourcesDirective, ResourceDirective, GroupModel, ViewsDirective, ViewDirective } from '@syncfusion/ej2-react-schedule';
 import './custom-view.css';
 import * as dataSource from './datasource.json';
 
@@ -12,12 +11,11 @@ import * as dataSource from './datasource.json';
  *  Schedule adaptive grouping sample
  */
 
-function AdaptiveGrouping() {
-    React.useEffect(() => {
+const AdaptiveGrouping = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    const data: Record<string, any>[] =
-        extend([], (dataSource as Record<string, any>).resourceData.concat((dataSource as Record<string, any>).timelineResourceData), null, true) as Record<string, any>[]
+    const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceData.concat((dataSource as Record<string, any>).timelineResourceData), null, true) as Record<string, any>[]
     const projectData: Record<string, any>[] = [
         { text: 'PROJECT 1', id: 1, color: '#cb6bb2' },
         { text: 'PROJECT 2', id: 2, color: '#56ca85' },
@@ -37,20 +35,15 @@ function AdaptiveGrouping() {
         <div className='schedule-control-section'>
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper schedule-wrapper'>
-                    <ScheduleComponent width='100%' height='650px' id='schedule'
-                        selectedDate={new Date(2023, 0, 4)} group={group} enableAdaptiveUI={true} currentView='Month' eventSettings={{ dataSource: data }}>
+                    <ScheduleComponent width='100%' height='650px' id='schedule' selectedDate={new Date(2023, 0, 4)} group={group} enableAdaptiveUI={true} currentView='Month' eventSettings={{ dataSource: data }}>
                         <ViewsDirective>
                             <ViewDirective option='Day' />
                             <ViewDirective option='Week' />
                             <ViewDirective option='Month' />
                         </ViewsDirective>
                         <ResourcesDirective>
-                            <ResourceDirective field='ProjectId' title='Choose Project' name='Projects' allowMultiple={false}
-                                dataSource={projectData} textField='text' idField='id' colorField='color'>
-                            </ResourceDirective>
-                            <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true}
-                                dataSource={categoryData} textField='text' idField='id' groupIDField='groupId' colorField='color'>
-                            </ResourceDirective>
+                            <ResourceDirective field='ProjectId' title='Choose Project' name='Projects' allowMultiple={false} dataSource={projectData} textField='text' idField='id' colorField='color' />
+                            <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true} dataSource={categoryData} textField='text' idField='id' groupIDField='groupId' colorField='color' />
                         </ResourcesDirective>
                         <Inject services={[Day, Week, Month, Year, Resize, DragAndDrop]} />
                     </ScheduleComponent>

@@ -127,7 +127,7 @@ export class Drilldown extends SampleBase<{}, {}> {
             this.pie.series[0].explode = false;
             this.pie.series[0].dataLabel.position = 'Outside';
             this.pie.series[0].dataLabel.font.color = 'black';
-            this.pie.legendSettings.visible = true;
+            this.pie.legendSettings.visible = false;
             this.pie.visibleSeries[0].explodeIndex = null;
             this.pie.enableSmartLabels = true;
             this.pie.refresh();
@@ -168,7 +168,7 @@ export class Drilldown extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as AccumulationTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
         if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1){
             args.accumulation.series[0].dataLabel.font.color="white";
             if (args.accumulation.annotations[0] && !this.isparent) {

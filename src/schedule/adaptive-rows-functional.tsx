@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    TimelineViews, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState, useRef } from 'react';
+import { TimelineViews, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './adaptive-rows.css';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
@@ -14,12 +13,14 @@ import { extend } from '@syncfusion/ej2-base';
  * schedule adaptive rows sample
  */
 
-function AdaptiveRows() {
-    React.useEffect(() => {
+const AdaptiveRows = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).roomData, null, true) as Record<string, any>[];
-    let scheduleObj: ScheduleComponent;
+    const schObj = useRef<ScheduleComponent>(null);
+    const data: Record<string, any>[] = (dataSource as any).roomData as Record<string, any>[];
+    const [rowAutoHeight, setRowAutoHeight] = useState<boolean>(true);
+    const [scheduleData, setScheduleData] = useState<Record<string, any>[]>(data);
     const ownerData: Record<string, any>[] = [
         { text: 'Room A', id: 1, color: '#98AFC7' },
         { text: 'Room B', id: 2, color: '#99c68e' },
@@ -33,32 +34,23 @@ function AdaptiveRows() {
         { text: 'Room J', id: 10, color: '#778899' }
     ];
 
-    function onChange(args: ChangeEventArgs): void {
-        scheduleObj.rowAutoHeight = args.checked;
+    const onChange = (args: ChangeEventArgs): void => {
+        setRowAutoHeight(args.checked);
     }
-
+    useEffect(() => {
+        if (schObj.current) {
+            schObj.current.dataBind();
+            const updatedData = rowAutoHeight ? extend([], data, null, true) : data;
+            setScheduleData(updatedData as Record<string, any>[]);
+        }
+    }, [rowAutoHeight]);
     return (
         <div className='schedule-control-section'>
             <div className='col-lg-9 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent cssClass='adaptive-rows' ref={schedule => scheduleObj = schedule} width='100%'
-                        height='650px' selectedDate={new Date(2021, 7, 2)} rowAutoHeight={true}
-                        eventSettings={{
-                            dataSource: data,
-                            fields: {
-                                id: 'Id',
-                                subject: { title: 'Summary', name: 'Subject' },
-                                location: { title: 'Location', name: 'Location' },
-                                description: { title: 'Comments', name: 'Description' },
-                                startTime: { title: 'From', name: 'StartTime' },
-                                endTime: { title: 'To', name: 'EndTime' }
-                            }
-                        }}
-                        group={{ enableCompactView: false, resources: ['MeetingRoom'] }} >
+                    <ScheduleComponent ref={schObj} cssClass='adaptive-rows' width='100%' height='650px' selectedDate={new Date(2021, 7, 2)} rowAutoHeight={rowAutoHeight} eventSettings={{ dataSource: scheduleData, fields: { id: 'Id', subject: { title: 'Summary', name: 'Subject' }, location: { title: 'Location', name: 'Location' }, description: { title: 'Comments', name: 'Description' }, startTime: { title: 'From', name: 'StartTime' }, endTime: { title: 'To', name: 'EndTime' } } }} group={{ enableCompactView: false, resources: ['MeetingRoom'] }} >
                         <ResourcesDirective>
-                            <ResourceDirective field='RoomId' title='Room Type' name='MeetingRoom' allowMultiple={true}
-                                dataSource={ownerData} textField='text' idField='id' colorField='color'>
-                            </ResourceDirective>
+                            <ResourceDirective field='RoomId' title='Room Type' name='MeetingRoom' allowMultiple={true} dataSource={ownerData} textField='text' idField='id' colorField='color' />
                         </ResourcesDirective>
                         < ViewsDirective >
                             <ViewDirective option='TimelineDay' />
@@ -74,8 +66,7 @@ function AdaptiveRows() {
                         <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
-                                    <CheckBoxComponent id='adaptive-rows' checked={true} label='Row Auto Height'
-                                        change={onChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent id='adaptive-rows' checked={rowAutoHeight} label='Row Auto Height' change={onChange} ></CheckBoxComponent>
                                 </td>
                             </tr>
                         </tbody>

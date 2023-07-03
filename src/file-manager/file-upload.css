@@ -33,3 +33,7 @@
 .bootstrap5-dark #openBtn {
     top: 26px;
 }
+
+#uploadFileManager .e-upload .e-file-select-wrap{
+    display: block;
+}

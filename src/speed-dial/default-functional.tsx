@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { SpeedDialComponent, SpeedDialItemModel } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const items: SpeedDialItemModel[] = [

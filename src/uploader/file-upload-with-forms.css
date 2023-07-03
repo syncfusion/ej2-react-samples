@@ -18,6 +18,7 @@
 }
 .highcontrast .control_wrapper.uploader-form,
 .material-dark .control_wrapper.uploader-form,
+.material3-dark .control_wrapper.uploader-form,
 .fabric-dark .control_wrapper.uploader-form,
 .bootstrap-dark .control_wrapper.uploader-form,
 .bootstrap5-dark .control_wrapper.uploader-form {

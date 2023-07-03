@@ -27,9 +27,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"></link>
     <link rel="shortcut icon" href="favicon.ico" />
     <style id="themelink"></style>
+    <link rel="stylesheet" href="./src/common/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="./src/common/codemirror/theme/mbo.css">
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
-    <link rel="stylesheet" type="text/css" href="./src/common/lib/highlightjs/styles/default.css" />
-    <link href="src/common/lib/content/codemirror.css" rel="stylesheet"></link>
+    <script src="./src/common/codemirror/lib/codemirror.js"></script>
+    <script src="./src/common/codemirror/mode/javascript/javascript.js"></script>
+    <script src="./src/common/codemirror/mode/jsx/jsx.js"></script>
+    <script src="./src/common/codemirror/mode/xml/xml.js"></script>
+    <script src="./src/common/codemirror/mode/css/css.js"></script>
     <script>
         var orgin = location.origin;
         var baseref = location.href.split('#')[0].replace(orgin, '');
@@ -199,13 +204,21 @@
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Tailwind CSS Dark</span>
                     </li>
-                    <li class='active' id="material">
+                    <li class='e-list' id="material">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Material</span>
                     </li>
                     <li class="e-list" id="material-dark">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Material Dark</span>
+                    </li>
+                    <li class='active' id="material3">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Material 3</span>
+                    </li>
+                    <li class="e-list" id="material3-dark">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Material 3 Dark</span>
                     </li>
                     <li id="fabric">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
@@ -255,6 +268,8 @@
                                 <option value="tailwind-dark">Tailwind CSS Dark</option>
                                 <option value="material">Material</option>
                                 <option value="material-dark">Material Dark</option>
+                                <option value="material3">Material 3</option>
+                                <option value="material3-dark">Material 3 Dark</option>
                                 <option value="fabric">Fabric</option>
                                 <option value="fabric-dark">Fabric Dark</option>
                                 <option value="bootstrap4">Bootstrap v4</option>

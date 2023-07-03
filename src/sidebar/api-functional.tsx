@@ -1,19 +1,23 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
+import { SidebarComponent, SidebarPosition, SidebarType } from '@syncfusion/ej2-react-navigations';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import './api.css';
-function API(){
-    React.useEffect(() => {
+const API = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let sidebarInstance: SidebarComponent;
-    let positionBtn: ButtonComponent;
-    let documentBtn: ButtonComponent;
-    let backdropBtn: ButtonComponent;
-    let dropDownObj: DropDownListComponent;
+    const [type, setType] = useState<SidebarType>("Auto");
+    const [isShowBackdrop, setShowBackdrop] = useState<boolean>(false);
+    const [positionContent, setPositionContent] = useState<string>("Left");
+    const [position, setPosition] = useState<SidebarPosition>("Left");
+    const [documentContent, setDocumentContent] = useState<string>("False");
+    const [isCloseOnDocumentClick, setCloseOnDocumentClick] = useState<boolean>(false);
+    const [backDropContent, setBackDropContent] = useState<string>("False");
+    let sidebarInstance = useRef<SidebarComponent>(null);
     const dataTypes: { [key: string]: Object }[] = [
         {  Type: 'Over', value: 'Over' },
         {  Type: 'Push', value: 'Push' },
@@ -21,10 +25,51 @@ function API(){
         {  Type: 'Auto', value: 'Auto' }
     ];
     const fields: object = { text: 'Type', value: 'value' };
-    let showBackdrop: boolean = false;
-    let closeOnDocumentClick: boolean = false;
     let height: string = '220px';
     let index: number = 3;
+    const onChange = (args: any) => {
+        setType(args.value);
+    }
+    const toggleBtnClick = () => {
+        sidebarInstance.current.toggle();
+        if ( backDropContent == "True") {
+          setShowBackdrop(true);
+        }
+    }
+    const positionBtnClick = () =>{
+        if (positionContent == "Right") {
+          setPositionContent("Left");
+          setPosition("Left");
+        } else {;
+          setPositionContent("Right");
+          setPosition("Right");
+        }
+    }
+    const docBtnClick = () => {
+        if (documentContent == "False") {
+          setDocumentContent("True");
+          setCloseOnDocumentClick(true);
+        } else {
+          setDocumentContent("False");
+          setCloseOnDocumentClick(false);
+        }
+    }
+    const backBtnClick = () => {
+        if (backDropContent == "True") {
+          setBackDropContent("False");
+          setShowBackdrop(false);
+        } else {
+          setBackDropContent("True");
+          setShowBackdrop(true);
+        }
+    }
+    const sidebarClose = () => {
+        sidebarInstance.current.hide();
+        if (isShowBackdrop == true) {
+           setShowBackdrop(false);
+        }
+    }
+
     return (
         <div className="sidebar-api wrapper-container">
             <div id="api-wrapper" className="control-section apimaincontent">
@@ -50,25 +95,24 @@ function API(){
                                 <p className=" inline-element" style={{ width: "70%" }}>
                                     <b>Position</b> - Allows to place the sidebar in right or left side of the page.
                                 </p>
-                                <ButtonComponent ref={Button => (positionBtn as any) = Button} id="positionBtn" cssClass="e-primary inline-element right" isToggle={true} content="Left" onClick={positionBtnClick.bind(this)}></ButtonComponent>
+                                <ButtonComponent id="positionBtn" cssClass="e-primary inline-element right" isToggle={true} content={positionContent} onClick={positionBtnClick.bind(this)}></ButtonComponent>
                                 <br />
                                 <br />
                                 {/* Sidebar types */}
                                 <p className="inline-element" style={{ width: "70%" }}><b>Types </b> - Specifies the act of expanding or collapsing the sidebar with main content.</p>
                                 <div className="inline-element right" style={{ width: "80px" }}>
-                                    <DropDownListComponent ref={DropDownList => (dropDownObj as any) = DropDownList} popupHeight={height} cssClass="e-textbox right" index={index} dataSource={dataTypes} fields={fields} change={onChange.bind(this)}>
-                                    </DropDownListComponent>
+                                    <DropDownListComponent popupHeight={height} cssClass="e-textbox right" index={index} dataSource={dataTypes} fields={fields} change={onChange.bind(this)}></DropDownListComponent>
                                 </div>
                                 <br />
                                 <br />
                                 {/* on document click */}
                                 <p className=" inline-element" style={{ width: "70%" }}><b>Closing on document click</b> - Allows to collapse / close the sidebar on document click.</p>
-                                <ButtonComponent ref={Button => (documentBtn as any) = Button} id="documentElement" cssClass="e-primary inline-element right" content="False" isToggle={true} onClick={docBtnClick.bind(this)}></ButtonComponent>
+                                <ButtonComponent id="documentElement" cssClass="e-primary inline-element right" content={documentContent} isToggle={true} onClick={docBtnClick.bind(this)}></ButtonComponent>
                                 <br />
                                 <br />
                                 {/* showbackdrop option */}
                                 <p className=" inline-element" style={{ width: "70%" }}><b>Backdrop</b> - Sets the backdrop over the main content area on open / expanded state. </p>
-                                <ButtonComponent ref={Button => (backdropBtn as any) = Button} id="backDropElement" cssClass="e-primary inline-element right" isToggle={true} content="False" onClick={backBtnClick.bind(this)}></ButtonComponent>
+                                <ButtonComponent id="backDropElement" cssClass="e-primary inline-element right" isToggle={true} content={backDropContent} onClick={backBtnClick.bind(this)}></ButtonComponent>
                                 <br />
                                 <br />
                             </div>
@@ -76,7 +120,7 @@ function API(){
                     </div>
                 </div>
                 {/* sidebar element declaration */}
-                <SidebarComponent ref={Sidebar => (sidebarInstance as any) = Sidebar} closeOnDocumentClick={closeOnDocumentClick} showBackdrop={showBackdrop} width="220px" target=".apimaincontent" id="apiSidebar" className="default-sidebar">
+                <SidebarComponent ref={sidebarInstance} closeOnDocumentClick={isCloseOnDocumentClick} showBackdrop={isShowBackdrop} width="220px" target=".apimaincontent" id="apiSidebar" className="default-sidebar" type={type} position={position}>
                     <div className="title-header">
                         <div style={{ display: "inline-block" }}> Sidebar </div>
                         <span id="apiclose" className="e-icons" onClick={sidebarClose.bind(this)}></span>
@@ -104,55 +148,6 @@ function API(){
                 </div>
             </div>
         </div>
-
-    );
-    function onChange() {
-        let types: any = dropDownObj.value;
-        sidebarInstance.type = types;
-        sidebarInstance.dataBind();
-    }
-    function toggleBtnClick() {
-        sidebarInstance.toggle();
-        if (backdropBtn.content == "True") {
-            sidebarInstance.showBackdrop = true;
-        }
-    }
-    function positionBtnClick() {
-        if (positionBtn.content == "Right") {
-            positionBtn.content = "Left";
-            sidebarInstance.position = "Left";
-        } else {
-            positionBtn.content = "Right";
-            sidebarInstance.position = "Right";
-        }
-        positionBtn.dataBind();
-        sidebarInstance.dataBind();
-    }
-    function docBtnClick() {
-        if (documentBtn.content == "False") {
-            documentBtn.content = "True";
-            sidebarInstance.closeOnDocumentClick = true;
-        } else {
-            documentBtn.content = "False";
-            sidebarInstance.closeOnDocumentClick = false;
-        }
-        sidebarInstance.dataBind();
-        documentBtn.dataBind();
-    }
-    function backBtnClick() {
-        if (backdropBtn.content == "True") {
-            backdropBtn.content = "False";
-            sidebarInstance.showBackdrop = false;
-        } else {
-            backdropBtn.content = "True";
-            sidebarInstance.showBackdrop = true;
-        }
-    }
-    function sidebarClose() {
-        sidebarInstance.hide();
-        if (sidebarInstance.showBackdrop == true){
-            sidebarInstance.showBackdrop = false;
-        }
-    }
+    );     
 }
 export default API;

@@ -129,6 +129,6 @@
 		"checkbox",
 		"dropdown",
 		"dropdown-button",
-		null
+		"virtualize"
 	]
 }

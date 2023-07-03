@@ -9,7 +9,7 @@ import {
     BubbleSeries, Tooltip, IPointRenderEventArgs, ILoadedEventArgs, ChartTheme, DataLabel
 } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors } from './theme-color';
+import { bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -55,7 +55,13 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'tailwind') {
         args.fill = bubbleTailwindColors[args.point.index % 10];
         args.border.color = pointTailwindColors[args.point.index % 10];
-    } 
+    } else if (selectedTheme === 'material3') {
+        args.fill = bubbleMaterial3Colors[args.point.index % 10];
+        args.border.color = pointMaterial3Colors[args.point.index % 10];
+    } else if (selectedTheme === 'material3-dark') {
+        args.fill = bubbleMaterial3DarkColors[args.point.index % 10];
+        args.border.color = pointMaterial3DarkColors[args.point.index % 10];
+    }
 };
 export let data: any[] = [
     { x: 92.2, y: 7.8, size: 1.347, text: 'China',r:'China' },
@@ -153,15 +159,15 @@ export class Bubble extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the bubble series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bubble-chart">documentation section</a>.
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/bubble">documentation section</a>.
                   </p>
                 </div>
             </div>
         )
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let  chart:  Element  =  document.getElementById('charts');
-        chart.setAttribute('title',  '');
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
         
     public load(args: ILoadedEventArgs): void {

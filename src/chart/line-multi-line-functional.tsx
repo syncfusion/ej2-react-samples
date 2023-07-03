@@ -2,9 +2,8 @@
  * Sample for Area series with empty points
  */
 import * as React from 'react';
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, ILoadedEventArgs, ChartTheme, Inject, Tooltip, DateTime, MultiColoredLineSeries, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { useEffect } from 'react';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, ILoadedEventArgs, ChartTheme, Inject, Tooltip, DateTime, MultiColoredLineSeries, Highlight } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { rainFallData } from './financial-data';
@@ -18,32 +17,32 @@ rainFallData.map((value, index) => {
     });
 });
 const SAMPLE_CSS = `
-      .control-fluid {
-          padding: 0px !important;
-      }`;
+    .control-fluid {
+        padding: 0px !important;
+    }`;
 /**
  * Area empty sample
  */
-function LineMultiLine() {
-    React.useEffect(() => {
+const LineMultiLine = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
+
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent
-                    id="charts"
-                    style={{ textAlign: 'center' }}
-                    primaryXAxis={{ valueType: 'DateTime', labelFormat: 'y', intervalType: 'Years', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }}
-                    primaryYAxis={{ rangePadding: 'None', minimum: 4, maximum: 10, title: 'Particulate Matter(PM)', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }}
-                    tooltip={{ enable: true, shared: true, enableAnimation: false, header: '<b>Rainfall</b>', format: '${point.x} : <b>${point.y}' }}
-                    legendSettings={{ visible: false }}
-                    chartArea={{ border: { width: 0 } }}
-                    load={load.bind(this)}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    title="Particulate Levels in Rainfall"
-                    loaded={onChartLoad.bind(this)}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', labelFormat: 'y', intervalType: 'Years', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} primaryYAxis={{ rangePadding: 'None', minimum: 4, maximum: 10, title: 'Particulate Matter(PM)', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} tooltip={{ enable: true, shared: true, enableAnimation: false, header: '<b>Rainfall</b>', format: '${point.x} : <b>${point.y}</b>' }} legendSettings={{ visible: false }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title="Particulate Levels in Rainfall" loaded={onChartLoad.bind(this)}>
                     <Inject services={[MultiColoredLineSeries, DateTime, Tooltip, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={dataValues} width={1.5} xName="XValue" yName="YValue" name="Rainfall" type="MultiColoredLine" pointColorMapping="color"></SeriesDirective>
@@ -51,9 +50,7 @@ function LineMultiLine() {
                 </ChartComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample shows the particulate levels in rainfall with multi-colored line series in the chart. Data points are enhanced with individual color and tooltips.
-                </p>
+                <p>This sample shows the particulate levels in rainfall with multi-colored line series in the chart. Data points are enhanced with individual color and tooltips.</p>
             </div>
             <div id="description">
                 <p>
@@ -72,17 +69,6 @@ function LineMultiLine() {
                 </p>
             </div>
         </div>
-    )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
-        chart.setAttribute('title', '');
-    };
-
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
-    };
+    )    
 }
 export default LineMultiLine;

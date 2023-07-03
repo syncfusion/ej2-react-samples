@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { SliderComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -32,8 +33,8 @@ const slidercss = `
   /* Standard syntax */
 }
 `
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (
@@ -58,22 +59,19 @@ function Default() {
             </div>
           </div>
         </div>
-
         <div id="action-description">
-          <p>This sample demonstrates the default rendering of Slider component. Drag the thumb over the bar for selecting the values
-            between min and max.</p>
+          <p>
+            This sample demonstrates the default rendering of Slider component. Drag the thumb over the bar for selecting the values
+            between min and max.
+          </p>
         </div>
-
         <div id="description">
           <p>The Slider component allows the user to select a value or range of values in-between a min and max range, by dragging the thumb over the slider bar. There are three types of sliders available:</p>
           <ul>
             <li>Default - allows us to select a single value</li>
-            <li>MinRange – allows us to select a single value, but highlights with a range selection from the min value to the current
-                handle value</li>
+            <li>MinRange – allows us to select a single value, but highlights with a range selection from the min value to the current handle value</li>
             <li>Range – allows us to select a range of values with two handles, where the handles was connected with a range selection</li>
-            <p>
-              In this demo we can see the Default, MinRange and Range slider types.
-            </p>
+            <p>In this demo we can see the Default, MinRange and Range slider types.</p>
             <p>
               More information on the Slider instantiation can be found in this
                 <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/range-slider/getting-started.html">

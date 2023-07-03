@@ -13,7 +13,7 @@ function CustomBinding() {
   }, [])
   let grid: Grid;
   let data;
-  const BASE_URL: string = 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders';
+  const BASE_URL: string = 'https://services.odata.org/V4/Northwind/Northwind.svc/Orders';
 
   function rendereComplete() {
     let state = { skip: 0, take: 10 };
@@ -43,11 +43,11 @@ function CustomBinding() {
       }).reverse().join(',');
     }
 
-    ajax.url = `${BASE_URL}?${pageQuery}${sortQuery}&$inlinecount=allpages&$format=json`;
+    ajax.url = `${BASE_URL}?${pageQuery}${sortQuery}&$count=true`;
 
     return ajax.send().then((response: any) => {
       let data: any = JSON.parse(response);
-      return { result: data['d']['results'], count: parseInt(data['d']['__count'], 10) };
+      return { result: data['value'], count: parseInt(data['@odata.count'], 10) };
     });
   }
   return (

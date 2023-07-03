@@ -57,9 +57,9 @@ function RowTemplate() {
                 <TreeGridComponent dataSource={textdata} childMapping='Children' rowTemplate={template.bind(this)} treeColumnIndex={0} rowHeight={83} height='335' >
                     <ColumnsDirective>
                         <ColumnDirective headerText='Employee ID' width='180' field='EmpID'></ColumnDirective>
-                        <ColumnDirective headerText='Employee Name' field='Name'></ColumnDirective>
-                        <ColumnDirective headerText='Employee Details' width='350' field='Address'></ColumnDirective>
-                        <ColumnDirective headerText='DOB' editType='datepicker' field='DOB'></ColumnDirective>
+                        <ColumnDirective headerText = 'Employee Name' width= '140' field = 'Name'></ColumnDirective>
+                        <ColumnDirective headerText = 'Employee Details' width = '390' field = 'Address'></ColumnDirective>
+                        <ColumnDirective headerText='DOB' editType='datepicker' field='DOB' width = '100'></ColumnDirective>
                     </ColumnsDirective>
                 </TreeGridComponent>
             </div>

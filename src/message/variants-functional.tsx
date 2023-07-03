@@ -1,15 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MessageComponent } from '@syncfusion/ej2-react-notifications';
 import './variants.css';
 
 function Variants() {
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (
-        <div className='control-pane'>
+        <div className="control-pane">
             <div className="col-lg-12 control-section msg-variant-section">
                 <div className="content-wrapper">
                     <div className="col-lg-4 col-md-6 content-section">
@@ -51,6 +52,6 @@ function Variants() {
                 <p>In this sample, messages are displayed with different appearances based on the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/message/#variant">variant</a> property.</p>
             </div>
         </div>
-    )
-}
+    );
+};
 export default Variants;

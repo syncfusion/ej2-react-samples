@@ -1,77 +1,49 @@
 import * as React from 'react';
-import { useState } from 'react';
-import {
-  DialogComponent,
-  ButtonPropsModel,
-  AnimationSettingsModel,
-} from '@syncfusion/ej2-react-popups';
-
+import { useState, useEffect } from 'react';
+import { DialogComponent,ButtonPropsModel,AnimationSettingsModel } from '@syncfusion/ej2-react-popups';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-function DefaultFunctionalities() {
-    React.useEffect(() => {
-      updateSampleSection();
-    }, []);
-  
-    let buttons: ButtonPropsModel[];
-    const [display, setDisplay] = useState('none');
-    const [status, setStatus] = useState({
-      hideDialog: true,
-    });
-    const animationSettings: AnimationSettingsModel = { effect: 'None' };
+const DefaultFunctionalities = () => {
+  useEffect(() => {
+    updateSampleSection();
+  }, []);
 
-    buttons = [
+  let buttons: ButtonPropsModel[];
+  const [display, setDisplay] = useState<string>('none');
+  const [status, setStatus] = useState<boolean>(true);
+  const animationSettings: AnimationSettingsModel = { effect: 'None' };
+  const dlgButtonClick = (): void => {
+    window.open("https://www.syncfusion.com/company/about-us");
+  };
+  buttons = [
     {
       click: dlgButtonClick,
       buttonModel: {
         content: 'Learn More',
         isPrimary: true,
-      },
-    },
-    ];
+      }
+    }
+  ];
 
-  function buttonClick(): void {
-    setStatus({ hideDialog: true });
+  const buttonClick = (): void => {
+    setStatus(true);
   }
-  function dlgButtonClick(): void {
-    window.open('https://www.syncfusion.com/company/about-us');
-  }
-  function dialogClose(): void {
-    setStatus({ hideDialog: false });
+  
+  const dialogClose = (): void => {
+    setStatus(false);
     setDisplay('inline-block');
   }
-  function dialogOpen(): void {
-    setStatus({ hideDialog: true });
+  const dialogOpen = (): void => {
+    setStatus(true);
     setDisplay('none');
   }
 
   return (
     <div className="control-pane">
-      <div
-        id="targetElement"
-        className="control-section col-lg-12 defaultDialog dialog-target"
-      >
-        <button
-          className="e-control e-btn dlgbtn"
-          style={{ display: display }}
-          onClick={buttonClick}
-          id="dialogBtn"
-        >
-          Open
-        </button>
-        <DialogComponent
-          id="defaultdialog"
-          showCloseIcon={true}
-          animationSettings={animationSettings}
-          width="500px"
-          target={'#targetElement'}
-          header="About SYNCFUSION Succinctly Series"
-          visible={status.hideDialog}
-          buttons={buttons}
-          open={dialogOpen}
-          close={dialogClose}
-        >
+      <div id="targetElement" className="control-section col-lg-12 defaultDialog dialog-target">
+        <button className="e-control e-btn dlgbtn" style={{ display: display }} onClick={buttonClick} id="dialogBtn">Open</button>
+        <DialogComponent id="defaultdialog" showCloseIcon={true} animationSettings={animationSettings} width="500px" target={'#targetElement'} header="About SYNCFUSION Succinctly Series" visible={status} buttons={buttons} open={dialogOpen} close={dialogClose}>
           <div>
             <div>
               In the Succinctly series, Syncfusion created a robust free library

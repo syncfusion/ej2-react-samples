@@ -20,17 +20,17 @@ export class Default extends SampleBase<{},{}> {
     public fmObj: FileManagerComponent;
     public items = ['NewFolder', 'Cut', 'Copy', 'Paste', 'Download', 'Delete', 'Refresh', 'Selection', 'View', 'Details'];
 
-    public toolCheck(args: ChangeEventArgs): void {
-        if ((args.event.target as HTMLInputElement).previousElementSibling.id == "toolbar") {
+    public toolCheck(args: ChangeEventArgs, id: string): void {
+        if (id == "toolbar") {
             this.fmObj.toolbarSettings.visible = args.checked;
         }
-        if ((args.event.target as HTMLInputElement).previousElementSibling.id == "multiSelect") {
+        if (id == "multiSelect") {
             this.fmObj.allowMultiSelection = args.checked;
         }
-        if ((args.event.target as HTMLInputElement).previousElementSibling.id == "fileExtension") {
+        if (id == "fileExtension") {
             this.fmObj.showFileExtension = args.checked;
         }
-        if ((args.event.target as HTMLInputElement).previousElementSibling.id == "thumbnail") {
+        if (id == "thumbnail") {
             this.fmObj.showThumbnail = args.checked;
         }
     }
@@ -74,7 +74,7 @@ export class Default extends SampleBase<{},{}> {
                         </td>
                         <td style={{ width: '50%', paddingRight: '10px' }}>
                             <div>
-                                <CheckBoxComponent id="toolbar" checked={true} change={this.toolCheck.bind(this)}></CheckBoxComponent>
+                                <CheckBoxComponent id="toolbar" checked={true} change={(args) => this.toolCheck(args, "toolbar")}></CheckBoxComponent>
                             </div>
                         </td>
                     </tr>
@@ -84,7 +84,7 @@ export class Default extends SampleBase<{},{}> {
                         </td>
                         <td style={{ width: '50%', paddingRight: '10px' }}>
                             <div>
-                                <CheckBoxComponent id="multiSelect" checked={true} change={this.toolCheck.bind(this)}></CheckBoxComponent>
+                                <CheckBoxComponent id="multiSelect" checked={true} change={(args) => this.toolCheck(args, "multiSelect")}></CheckBoxComponent>
                             </div>
                         </td>
                    </tr>
@@ -94,7 +94,7 @@ export class Default extends SampleBase<{},{}> {
                         </td>
                         <td style={{ width: '50%', paddingRight: '10px' }}>
                             <div>
-                                <CheckBoxComponent id="fileExtension" checked={true} change={this.toolCheck.bind(this)}></CheckBoxComponent>
+                                <CheckBoxComponent id="fileExtension" checked={true} change={(args) => this.toolCheck(args, "fileExtension")}></CheckBoxComponent>
                             </div>
                         </td>
                    </tr>
@@ -104,7 +104,7 @@ export class Default extends SampleBase<{},{}> {
                         </td>
                         <td style={{ width: '50%', paddingRight: '10px' }}>
                             <div>
-                                <CheckBoxComponent id="thumbnail" checked={true} change={this.toolCheck.bind(this)}></CheckBoxComponent>
+                                <CheckBoxComponent id="thumbnail" checked={true} change={(args) => this.toolCheck(args, "thumbnail")}></CheckBoxComponent>
                             </div>
                         </td>
                     </tr>

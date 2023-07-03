@@ -2,9 +2,8 @@
  * Sample for Step Area series
  */
 import * as React from 'react';
-import {
-    ChartComponent, ILoadedEventArgs, ChartTheme, SeriesCollectionDirective, SeriesDirective, Tooltip, Inject, Legend, StepAreaSeries, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { useEffect } from 'react';
+import { ChartComponent, ILoadedEventArgs, ChartTheme, SeriesCollectionDirective, SeriesDirective, Tooltip, Inject, Legend, StepAreaSeries, Highlight } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data = [
@@ -20,32 +19,28 @@ export let data1 = [
     { x: 2009, y: 173 }, { x: 2010, y: 220 }, { x: 2011, y: 220 },
 ];
 const SAMPLE_CSS = `
-      .control-fluid {
-          padding: 0px !important;
-      }`;
-function StepArea() {
-    React.useEffect(() => {
+    .control-fluid {
+        padding: 0px !important;
+    }`;
+const StepArea = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }}
-                    primaryXAxis={{
-                        valueType: 'Double', majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift'
-                    }}
-                    load={load.bind(this)}
-                    primaryYAxis={{
-                        title: 'Production (Billion as kWh)', valueType: 'Double', labelFormat: '{value}B', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 },
-                    }}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    chartArea={{ border: { width: 0 } }}
-                    legendSettings={{ enableHighlight: true }}
-                    tooltip={{ enable: true }}
-                    loaded={onChartLoad.bind(this)}
-                    title="Electricity- Production"
-                >
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'Double', majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift' }} load={load.bind(this)} primaryYAxis={{ title: 'Production (Billion as kWh)', valueType: 'Double', labelFormat: '{value}B', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} legendSettings={{ enableHighlight: true }} tooltip={{ enable: true }} loaded={onChartLoad.bind(this)} title="Electricity- Production">
                     <Inject services={[StepAreaSeries, Tooltip, Legend, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data} xName="x" yName="y" name="Renewable" width={2} type="StepArea" opacity={0.6} border={{ width: 2 }}></SeriesDirective>
@@ -54,14 +49,10 @@ function StepArea() {
                 </ChartComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This React Step Area Chart example visualizes electricity generation data using renewable and non-renewable resources  in a step area chart.
-                </p>
+                <p>This React Step Area Chart example visualizes electricity generation data using renewable and non-renewable resources  in a step area chart.</p>
             </div>
             <div id="description">
-                <p>
-                    In this example, you can see how to render and configure a step area chart. This series forms a step progress by connecting points through vertical and horizontal lines with the area being filled.
-                </p>
+                <p>In this example, you can see how to render and configure a step area chart. This series forms a step progress by connecting points through vertical and horizontal lines with the area being filled.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -74,14 +65,5 @@ function StepArea() {
             </div>
         </div>
     )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
-        chart.setAttribute('title', '');
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
 }
 export default StepArea;

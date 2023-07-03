@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from "react";
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
@@ -7,12 +8,14 @@ import { closest } from '@syncfusion/ej2-base';
 import './drag-and-drop.css';
 import * as dataSource from './dataSource/drag-data.json';
 
-function Dragdrop() {
-    React.useEffect(() => {
+const Dragdrop = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+
+    const [display,setDisplay] = useState<string>('');
     const data = dataSource as any;
-    let listObj: ListViewComponent;
+    let listObj = useRef<ListViewComponent>(null);
     let id: number = 1;
     // Render the first TreeView by mapping its fields property with data source properties
     const field: Object = { dataSource: data.dragData1, id: 'id', text: 'name', child: 'child' };
@@ -22,7 +25,7 @@ function Dragdrop() {
     const fields: Object = { dataSource: data.dragData2, id: 'id', text: 'name', child: 'child', selected: 'isSelected' };
     const allowDragAndDrops: boolean = true;
 
-    function onDragStop(args: any): void {
+    const onDragStop = (args: any): void => {
         let targetEle: any = closest(args.target, '.e-droppable');
         targetEle = targetEle ? targetEle : args.target;
         // Check the target as ListView or not
@@ -47,23 +50,17 @@ function Dragdrop() {
                 newData.push(newNode);
             }
             // Add collection of node to ListView
-            listObj.addItem(newData, undefined);
+            listObj.current.addItem(newData, undefined);
         }
     }
-    // Add the custom action for delete icon in ListView
-    function onCreate() {
-        document.getElementById('list').addEventListener('mousedown', (event: any) => {
-            if (event.target.classList.contains('custom-delete')) {
-                let node: Element = closest(event.target, 'li');
-                listObj.removeItem(node);
-            }
-        });
-        document.getElementById('overlay').addEventListener('mousedown', (event: any) => {
-            document.getElementById('overlay').style.display = 'none';
-        });
+    const removeElement = () => {
+        setDisplay("none");
     }
-    function actionBegin(): void {
-        let listObj = this;
+    const removeNode = (event: any) => {
+        if (event.target.classList.contains("custom-delete")) {
+          let node: Element = closest(event.target, "li");
+          listObj.current.removeItem(node);
+        }
     }
 
     return (
@@ -73,7 +70,7 @@ function Dragdrop() {
                     <div className="col-lg-4 tree1-data">
                         <h4>TreeView-1</h4>
                         <div className="content">
-                            <TreeViewComponent id='tree1' fields={field} nodeDragStop={onDragStop.bind(this)} created={onCreate.bind(this)} allowDragAndDrop={allowDragAndDrop} />
+                            <TreeViewComponent id='tree1' fields={field} nodeDragStop={onDragStop.bind(this)}  allowDragAndDrop={allowDragAndDrop} />
                         </div>
                     </div>
                     <div className="col-lg-4 tree2-data">
@@ -85,13 +82,12 @@ function Dragdrop() {
                     <div className="col-lg-4 tree3-data">
                         <h4>ListView</h4>
                         <div className="content">
-                            <div id="list">
-                                <ListViewComponent id="list" className="e-droppable" dataSource={[]} ref={(list) => { listObj = list }} actionComplete={actionBegin.bind(this)} cssClass={'custom-list'} template="<div><span>${text}</span><span id=${iconId} class=${class}></span></div>" />
+                            <div id="list" onMouseDown={removeNode}>
+                                <ListViewComponent id="list" className="e-droppable" dataSource={[]} ref={listObj} cssClass={'custom-list'} template="<div><span>${text}</span><span id=${iconId} class=${class}></span></div>" />
                             </div>
                         </div>
                     </div>
-                    <div id="overlay">
-                    </div>
+                    <div id="overlay" style={{display: display}} onMouseDown={removeElement}></div>
                 </div>
             </div>
             <div id="action-description">

@@ -50,7 +50,7 @@ export class Hilo extends SampleBase<{}, {}> {
                         }}
                         legendSettings={{ visible: false }}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true, shared: true }}
+                        tooltip={{ enable: true, shared: true, enableMarker: false, format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b>" }}
                         crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
                         width={Browser.isDevice ? '100%' : '75%'}
                       
@@ -83,8 +83,8 @@ export class Hilo extends SampleBase<{}, {}> {
                        <code>HiloSeries</code> module into <code>services</code>.
                   </p>
                     <p>
-                        More information on the Hilo series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the HILO series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/high-low">documentation section</a>.
                   </p>
                 </div>
             </div >
@@ -99,7 +99,7 @@ export class Hilo extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

@@ -29,9 +29,9 @@ function Command() {
             <ColumnDirective field='taskName' headerText='Task Name' width='200' validationRules={taskNameRule}></ColumnDirective>
             <ColumnDirective field='startDate' headerText='Start Date' width='140' textAlign='Right'
               editType='datepickeredit' format='yMd' validationRules={dateRule} type='date' />
-            <ColumnDirective field='duration' headerText='Duration' width='90' editType='numericedit' textAlign='Right'
+            <ColumnDirective field='duration' headerText='Duration' width='130' editType='numericedit' textAlign='Right'
               validationRules={durationRule} edit={editparams2} />
-            <ColumnDirective field='progress' headerText='Progress' width='90' textAlign='Right' editType='numericedit'
+            <ColumnDirective field='progress' headerText='Progress' width='150' textAlign='Right' editType='numericedit'
               validationRules={durationRule} edit={editparams2} />
             <ColumnDirective headerText='Manage Records' width='160' commands={commands}></ColumnDirective>
           </ColumnsDirective>

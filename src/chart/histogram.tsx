@@ -88,7 +88,7 @@ export class Histogram extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the histogram series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#histogram-series">documentation section</a>.
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/histogram">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -103,7 +103,7 @@ export class Histogram extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
          if (selectedTheme === 'highcontrast') {
             args.chart.series[0].marker.dataLabel.font.color = '#000000';
           }

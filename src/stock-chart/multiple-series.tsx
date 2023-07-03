@@ -46,7 +46,8 @@ export class MultipleSeries extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         indicatorType={[]}
                         trendlineType ={[]}
-                        crosshair={{ enable: true }}
+                        seriesType={['Line', 'Hilo', 'HiloOpenClose', 'Spline', 'Candle']}
+                        crosshair={{ enable: true, lineType: 'Both' }}
                         chartArea={{ border: { width: 0 } }}
                         title= 'Multiple Series'
                         legendSettings={{ visible: true }}
@@ -64,20 +65,25 @@ export class MultipleSeries extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample visualizes stock chart with multiple series and legend.
+                        This sample visualizes the close value of multiple stock. Crosshair show the information about the data and period.
                     </p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the Stock Chart.
-                        <code>SplineSeries</code> is used to represent selected data value.
-                  </p>
+                        In this example, you can see how to render and configure stock chart to visualize the data for multiple stock. Stock Chart supports 6 major types of series namely <code>Line</code>, <code>Spline</code>, <code>Hilo</code>, <code>HiloOpenClose</code>, <code>Hollow Candle</code> and <code>Candle</code>. By using the series dropdown button in period selector you can navigate between the above listed series types.
+                    </p>
+                    <p>
+                        The legend is enabled, and you can use it to toggle the visibility of series in the stock chart. To customize the legend in the stock chart, use the <code>stockChartLegendSettings</code> property.
+                    </p>
                     <br></br>
                     <p><b>Injecting Module:</b></p>
                     <p>
                         The Stock Chart component features are segregated into individual feature-wise modules. To use date-time axis, inject the <code>DateTime</code> module using the 
                         <code>StockChart.Inject(DateTime)</code> method. To use the LineSeries, inject the <code>SplineSeries</code> module using the <code>StockChart.Inject(SplineSeries)</code> method. 
                         To use the Legend, inject the <code>StockLegend</code> module using the <code>StockChart.Inject(StockLegend)</code> method.
+                    </p>
+                    <p>
+                        More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">documentation section</a>.
                     </p>
                 </div>
             </div >
@@ -88,7 +94,7 @@ export class MultipleSeries extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-         replace(/-dark/i, "Dark") as  ChartTheme;
+         replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as  ChartTheme;
     };
     
 }

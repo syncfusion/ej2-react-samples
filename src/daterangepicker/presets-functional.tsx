@@ -1,14 +1,14 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DateRangePickerComponent, PresetsDirective, PresetDirective } from '@syncfusion/ej2-react-calendars';
 import './preset-style.css';
 
-function Presets() {
-    React.useEffect(() => {
+const Presets = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    const today: Date = new Date(new Date().toDateString());
     const weekStart: Date = new Date(new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() + 7) % 7)).toDateString());
     const weekEnd: Date = new Date(new Date(new Date().setDate(new Date(new Date().setDate((new Date().getDate()
         - (new Date().getDay() + 7) % 7))).getDate() + 6)).toDateString());

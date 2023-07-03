@@ -1,10 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MultiSelectComponent, TaggingEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import './chip-customization.css';
-function ChipCustomization() {
-    React.useEffect(() => {
+
+const ChipCustomization = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     // define the JSON of data
@@ -33,19 +35,19 @@ function ChipCustomization() {
         <div className='col-lg-12 control-pane'>
             <div className='control-section ms-chip-customize'>
                 <div id='multi-customize' className="control-styles">
-                <h4>Chip Customization</h4>
+                    <h4>Chip Customization</h4>
                     <MultiSelectComponent id="chip-customization" value={colorValues} dataSource={colorsData} fields={fields} mode="Box" placeholder="Favorite Colors" tagging={onTagging.bind(this)} />
                 </div>
             </div>
             <div id="action-description">
                 <p>This sample demonstrates the customization of selected chip element in the MultiSelect. Type a character in the MultiSelect
-                element or click on the element to choose one or more items from the list.</p>
+                    element or click on the element to choose one or more items from the list.</p>
             </div>
             <div id="description">
                 <p>The MultiSelect allows the user to customize the selected chip element through the <code>tagging</code> event. In that
-                event, you can set the custom classes to chip element via the event argument of the <code>setClass</code> method.</p>
+                    event, you can set the custom classes to chip element via the event argument of the <code>setClass</code> method.</p>
                 <p>This sample illustrates how to use the favorite colors of data and set the favorite color text as custom class through
-                <code>tagging</code> event argument of the <code>setClass</code> method.</p>
+                    <code>tagging</code> event argument of the <code>setClass</code> method.</p>
             </div>
         </div>
     );

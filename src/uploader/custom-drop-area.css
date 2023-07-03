@@ -17,6 +17,7 @@
 }
 .highcontrast .customdropArea a,
 .material-dark .customdropArea a,
+.material3-dark .customdropArea a,
 .fabric-dark .customdropArea a,
 .bootstrap-dark .customdropArea a,
 .bootstrap5-dark .customdropArea a,
@@ -101,6 +102,7 @@ span#dropText {
   background-color: #393939;
 }
 
+.material3-dark #customTarget,
 .material-dark #customTarget {
   background-color: #616161;
 }

@@ -1,10 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, TreeViewArgs, ResourcesDirective, ResourceDirective,
-  ViewsDirective, ViewDirective, ResourceDetails, Inject, TimelineViews,
-  Resize, DragAndDrop, TimelineMonth, ActionEventArgs, CellClickEventArgs
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, TreeViewArgs, ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective, ResourceDetails, Inject, TimelineViews, Resize, DragAndDrop, TimelineMonth, ActionEventArgs, CellClickEventArgs } from '@syncfusion/ej2-react-schedule';
 import './external-drag-drop.css';
 import { extend, closest, remove, addClass } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -16,12 +13,12 @@ import * as dataSource from './datasource.json';
  * schedule resources group-editing sample
  */
 
-function ExternalDragDrop() {
-  React.useEffect(() => {
+const ExternalDragDrop = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
-  let treeObj: TreeViewComponent;
+  let scheduleObj = useRef<ScheduleComponent>(null);
+  let treeObj = useRef<TreeViewComponent>(null);
   let isTreeItemDropped: boolean = false;
   let draggedItemId: string = '';
   const allowDragAndDrops: boolean = true;
@@ -40,35 +37,48 @@ function ExternalDragDrop() {
     { Text: 'Margaret', Id: 6, GroupId: 2, Color: '#9e5fff', Designation: 'Endodontist' }
   ];
 
-  function getConsultantName(value: ResourceDetails | TreeViewArgs): string {
+  const getConsultantName = (value: ResourceDetails | TreeViewArgs): string => {
     return (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] as string;
   }
 
-  function getConsultantImage(value: ResourceDetails): string {
+  const getConsultantImage = (value: ResourceDetails): string => {
     return getConsultantName(value).toLowerCase();
   }
 
-  function getConsultantDesignation(value: ResourceDetails): string {
+  const getConsultantDesignation = (value: ResourceDetails): string => {
     return (value as ResourceDetails).resourceData.Designation as string;
   }
 
-  function resourceHeaderTemplate(props: any): JSX.Element {
-    return (<div className="template-wrap"><div className="specialist-category"><div className={"specialist-image " + getConsultantImage(props)}></div><div className="specialist-name">
-      {getConsultantName(props)}</div><div className="specialist-designation">{getConsultantDesignation(props)}</div></div></div>);
+  const resourceHeaderTemplate = (props: any)  => {
+    return (
+      <div className="template-wrap">
+        <div className="specialist-category">
+          <div className={"specialist-image " + getConsultantImage(props)}></div>
+          <div className="specialist-name"> {getConsultantName(props)}</div>
+          <div className="specialist-designation">{getConsultantDesignation(props)}</div>
+        </div>
+      </div>
+    );
   }
 
-  function treeTemplate(props: any): JSX.Element {
-    return (<div id="waiting"><div id="waitdetails"><div id="waitlist">{props.Name}</div>
-      <div id="waitcategory">{props.DepartmentName} - {props.Description}</div></div></div>);
+  const treeTemplate = (props: any) => {
+    return (
+      <div id="waiting">
+        <div id="waitdetails">
+          <div id="waitlist">{props.Name}</div>
+          <div id="waitcategory">{props.DepartmentName} - {props.Description}</div>
+        </div>
+      </div>
+    );
   }
 
-  function onItemSelecting(args: any): void {
+  const onItemSelecting = (args: any): void => {
     args.cancel = true;
   }
 
-  function onTreeDrag(event: any): void {
-    if (scheduleObj.isAdaptive) {
-      let classElement: HTMLElement = scheduleObj.element.querySelector('.e-device-hover');
+  const onTreeDrag = (event: any): void => {
+    if (scheduleObj.current.isAdaptive) {
+      let classElement: HTMLElement = scheduleObj.current.element.querySelector('.e-device-hover');
       if (classElement) {
         classElement.classList.remove('e-device-hover');
       }
@@ -78,12 +88,11 @@ function ExternalDragDrop() {
     }
   }
 
-  function onActionBegin(event: ActionEventArgs): void {
+  const onActionBegin = (event: ActionEventArgs): void => {
     if (event.requestType === 'eventCreate' && isTreeItemDropped) {
-      let treeViewData: Record<string, any>[] = treeObj.fields.dataSource as Record<string, any>[];
-      const filteredPeople: Record<string, any>[] =
-        treeViewData.filter((item: any) => item.Id !== parseInt(draggedItemId, 10));
-      treeObj.fields.dataSource = filteredPeople;
+      let treeViewData: Record<string, any>[] = treeObj.current.fields.dataSource as Record<string, any>[];
+      const filteredPeople: Record<string, any>[] = treeViewData.filter((item: any) => item.Id !== parseInt(draggedItemId, 10));
+      treeObj.current.fields.dataSource = filteredPeople;
       let elements: NodeListOf<HTMLElement> = document.querySelectorAll('.e-drag-item.treeview-external-drag');
       for (let i: number = 0; i < elements.length; i++) {
         remove(elements[i]);
@@ -91,9 +100,9 @@ function ExternalDragDrop() {
     }
   }
 
-  function onTreeDragStop(event: DragAndDropEventArgs): void {
+  const onTreeDragStop = (event: DragAndDropEventArgs): void => {
     let treeElement: Element = closest(event.target, '.e-treeview');
-    let classElement: HTMLElement = scheduleObj.element.querySelector('.e-device-hover');
+    let classElement: HTMLElement = scheduleObj.current.element.querySelector('.e-device-hover');
     if (classElement) {
       classElement.classList.remove('e-device-hover');
     }
@@ -101,13 +110,11 @@ function ExternalDragDrop() {
       event.cancel = true;
       let scheduleElement: Element = closest(event.target, '.e-content-wrap');
       if (scheduleElement) {
-        let treeviewData: Record<string, any>[] =
-          treeObj.fields.dataSource as Record<string, any>[];
+        let treeviewData: Record<string, any>[] = treeObj.current.fields.dataSource as Record<string, any>[];
         if (event.target.classList.contains('e-work-cells')) {
-          const filteredData: Record<string, any>[] =
-            treeviewData.filter((item: any) => item.Id === parseInt(event.draggedNodeData.id as string, 10));
-          let cellData: CellClickEventArgs = scheduleObj.getCellDetails(event.target);
-          let resourceDetails: ResourceDetails = scheduleObj.getResourcesByIndex(cellData.groupIndex);
+          const filteredData: Record<string, any>[] = treeviewData.filter((item: any) => item.Id === parseInt(event.draggedNodeData.id as string, 10));
+          let cellData: CellClickEventArgs = scheduleObj.current.getCellDetails(event.target);
+          let resourceDetails: ResourceDetails = scheduleObj.current.getResourcesByIndex(cellData.groupIndex);
           let eventData: Record<string, any> = {
             Name: filteredData[0].Name,
             StartTime: cellData.startTime,
@@ -117,7 +124,7 @@ function ExternalDragDrop() {
             DepartmentID: resourceDetails.resourceData.GroupId,
             ConsultantID: resourceDetails.resourceData.Id
           };
-          scheduleObj.openEditor(eventData, 'Add', true);
+          scheduleObj.current.openEditor(eventData, 'Add', true);
           isTreeItemDropped = true;
           draggedItemId = event.draggedNodeData.id as string;
         }
@@ -126,7 +133,7 @@ function ExternalDragDrop() {
     document.body.classList.remove('e-disble-not-allowed');
   }
 
-  function onTreeDragStart() {
+  const onTreeDragStart = () => {
     document.body.classList.add('e-disble-not-allowed');
   }
 
@@ -138,26 +145,10 @@ function ExternalDragDrop() {
             <div className="title-container">
               <h1 className="title-text">Doctor's Appointments</h1>
             </div>
-            <ScheduleComponent ref={schedule => scheduleObj = schedule} cssClass='schedule-drag-drop' width='100%' height='650px' selectedDate={new Date(2021, 7, 2)}
-              currentView='TimelineDay' resourceHeaderTemplate={resourceHeaderTemplate.bind(this)}
-              eventSettings={{
-                dataSource: data,
-                fields: {
-                  subject: { title: 'Patient Name', name: 'Name' },
-                  startTime: { title: "From", name: "StartTime" },
-                  endTime: { title: "To", name: "EndTime" },
-                  description: { title: 'Reason', name: 'Description' }
-                }
-              }}
-              group={{ enableCompactView: false, resources: ['Departments', 'Consultants'] }}
-              actionBegin={onActionBegin.bind(this)} >
+            <ScheduleComponent ref={scheduleObj} cssClass='schedule-drag-drop' width='100%' height='650px' selectedDate={new Date(2021, 7, 2)} currentView='TimelineDay' resourceHeaderTemplate={resourceHeaderTemplate} eventSettings={{ dataSource: data, fields: { subject: { title: 'Patient Name', name: 'Name' }, startTime: { title: "From", name: "StartTime" }, endTime: { title: "To", name: "EndTime" }, description: { title: 'Reason', name: 'Description' } } }} group={{ enableCompactView: false, resources: ['Departments', 'Consultants'] }} actionBegin={onActionBegin} >
               <ResourcesDirective>
-                <ResourceDirective field='DepartmentID' title='Department' name='Departments' allowMultiple={false}
-                  dataSource={departmentData} textField='Text' idField='Id' colorField='Color'>
-                </ResourceDirective>
-                <ResourceDirective field='ConsultantID' title='Consultant' name='Consultants' allowMultiple={false}
-                  dataSource={consultantData} textField='Text' idField='Id' groupIDField="GroupId" colorField='Color'>
-                </ResourceDirective>
+                <ResourceDirective field='DepartmentID' title='Department' name='Departments' allowMultiple={false} dataSource={departmentData} textField='Text' idField='Id' colorField='Color' />
+                <ResourceDirective field='ConsultantID' title='Consultant' name='Consultants' allowMultiple={false} dataSource={consultantData} textField='Text' idField='Id' groupIDField="GroupId" colorField='Color' />
               </ResourcesDirective>
               <ViewsDirective>
                 <ViewDirective option='TimelineDay' />
@@ -170,14 +161,12 @@ function ExternalDragDrop() {
             <div className="title-container">
               <h1 className="title-text">Waiting List</h1>
             </div>
-            <TreeViewComponent ref={tree => treeObj = tree} cssClass='treeview-external-drag' dragArea=".drag-sample-wrapper" nodeTemplate={treeTemplate.bind(this)} fields={fields} nodeDragStop={onTreeDragStop.bind(this)} nodeSelecting={onItemSelecting.bind(this)} nodeDragging={onTreeDrag.bind(this)} nodeDragStart={onTreeDragStart.bind(this)} allowDragAndDrop={allowDragAndDrops} />
+            <TreeViewComponent ref={treeObj} cssClass='treeview-external-drag' dragArea=".drag-sample-wrapper" nodeTemplate={treeTemplate} fields={fields} nodeDragStop={onTreeDragStop} nodeSelecting={onItemSelecting} nodeDragging={onTreeDrag} nodeDragStart={onTreeDragStart} allowDragAndDrop={allowDragAndDrops} />
           </div>
         </div>
       </div>
       <div id="action-description">
-        <p>
-          This example illustrates how to drag and drop the events from an external source into scheduler. Here, you can drag and drop the items from TreeView control into scheduler.
-        </p>
+        <p>This example illustrates how to drag and drop the events from an external source into scheduler. Here, you can drag and drop the items from TreeView control into scheduler.</p>
       </div>
       <div id="description">
         <p>

@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { RecurrenceEditorComponent, RecurrenceEditorChangeEventArgs } from '@syncfusion/ej2-react-schedule';
 import './recurrence-editor-rule.css';
 import { updateSampleSection } from '../common/sample-base';
@@ -8,16 +9,15 @@ import { updateSampleSection } from '../common/sample-base';
  * Recurrence editor generate rule
  */
 
-function RuleGenerate() {
-  React.useEffect(() => {
+const RuleGenerate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let recObject: RecurrenceEditorComponent;
-  const recRule: string = 'FREQ=DAILY;INTERVAL=2;COUNT=8';
 
-  function onChange(args: RecurrenceEditorChangeEventArgs): void {
-    let outputElement: HTMLElement = document.querySelector('#rule-output') as HTMLElement;
-    outputElement.innerText = args.value;
+  const [ruleOutput, setRuleOutput] = useState<string>('FREQ=DAILY;INTERVAL=2;COUNT=8');
+
+  const onChange = (args: RecurrenceEditorChangeEventArgs): void => {
+    setRuleOutput(args.value);
   }
   return (
     <div className='schedule-control-section'>
@@ -26,18 +26,20 @@ function RuleGenerate() {
           <div className='generate-rule' style={{ paddingBottom: '15px' }}>
             <label>Rule Output</label>
             <div className='rule-output-container'>
-              <div id='rule-output'>{recRule}</div>
+              <div id='rule-output'>{ruleOutput}</div>
             </div>
           </div>
           <div className='RecurrenceEditor'>
-            <RecurrenceEditorComponent id='RecurrenceEditor' value={recRule} ref={t => recObject = t} change={onChange.bind(this)}></RecurrenceEditorComponent>
+            <RecurrenceEditorComponent id='RecurrenceEditor' value={ruleOutput} change={onChange}></RecurrenceEditorComponent>
           </div>
         </div>
       </div>
       <div id='action-description'>
-        <p>This demo showcases the recurrence rule generation based on the options selected from the Recurrence editor and it usually
+        <p>
+          This demo showcases the recurrence rule generation based on the options selected from the Recurrence editor and it usually
           follows the <a href='https://tools.ietf.org/html/rfc5545#section-3.3.10' target='_blank'>iCalendar</a> specifications. This
-          generated recurrence rule string is a valid one to be used with the Scheduler event’s recurrence rule field.</p>
+          generated recurrence rule string is a valid one to be used with the Scheduler event’s recurrence rule field.
+        </p>
       </div>
       <div id='description'>
         <p>

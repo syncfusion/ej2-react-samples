@@ -31,7 +31,7 @@ export class AreaEmpty extends SampleBase<{}, {}> {
             style={{ textAlign: 'center' }}
             primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift' }}
             primaryYAxis={{ labelFormat: '{value}MB', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, minimum: 0, maximum: 5, interval: 1 }}
-            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}' }}
+            tooltip={{ enable: true, format: '${point.x} : <b>${point.y}</b>' }}
             legendSettings={{ enableHighlight :true }}
             chartArea={{ border: { width: 0 } }}
             load={this.load.bind(this)}
@@ -62,8 +62,8 @@ export class AreaEmpty extends SampleBase<{}, {}> {
                        <code>AreaSeries</code> module into <code>services</code>.
                   </p>
                     <p>
-                        More information on the area series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                        More information on the area empty points can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data#empty-points">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -78,7 +78,7 @@ export class AreaEmpty extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
     
 }

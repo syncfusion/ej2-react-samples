@@ -27,11 +27,11 @@ export class EditType extends SampleBase<{}, {}> {
               <ColumnDirective field='taskName' headerText='Task Name' width='150' validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='170' textAlign='Right'
                 editType='datetimepickeredit' format={this.format} validationRules={this.validationRule1} />
-              <ColumnDirective field='duration' headerText='Duration' width='90' editType='numericedit' textAlign='Right'
+              <ColumnDirective field='duration' headerText='Duration' width='150' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
-              <ColumnDirective field='progress' headerText='Progress' width='90' textAlign='Right' editType='dropdownedit' 
+              <ColumnDirective field='progress' headerText='Progress' width='150' textAlign='Right' editType='dropdownedit' 
                 edit={this.editparams} />
-              <ColumnDirective field='priority' headerText='Priority' width='90' textAlign='Right' editType='dropdownedit' 
+              <ColumnDirective field='priority' headerText='Priority' width='150' textAlign='Right' editType='dropdownedit' 
                 edit={this.editparams} />
             </ColumnsDirective>
             <Inject services={[Page, Edit, Toolbar]}/>

@@ -1,15 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { CarouselComponent, CarouselItemsDirective, CarouselItemDirective } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './keyboard-navigation.css';
 
-function KeyboardNavigation() {
-    React.useEffect(() => {
+const KeyboardNavigation = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function renderComplete(): void {
+    const renderComplete = (): void => {
         document.body.addEventListener('keydown', function (e) {
             var carouselElement: HTMLElement = document.querySelector('.e-carousel');
             if (e.altKey && e.keyCode === 74 && carouselElement) {
@@ -19,82 +20,69 @@ function KeyboardNavigation() {
         });
     }
 
-    function itemTemplate1(): JSX.Element {
-        return (<div className="product-container">
-            <div className="col-sm-5 component-container">
-                <div className="heading">San Francisco</div>
-                <div className="description">
-                    San Francisco, officially the City and County of San Francisco, is a cultural, commercial, and financial center in the U.S. state of California.
+    const itemTemplate1 = () => {
+        return (
+            <div className="product-container">
+                <div className="col-sm-5 component-container">
+                    <div className="heading">San Francisco</div>
+                    <div className="description">San Francisco, officially the City and County of San Francisco, is a cultural, commercial, and financial center in the U.S. state of California.</div>
+                    <a className="demo" href="https://en.wikipedia.org/wiki/San_Francisco" target="_blank">READ MORE</a>
                 </div>
-                <a className="demo" href="https://en.wikipedia.org/wiki/San_Francisco"
-                    target="_blank">READ MORE</a>
+                <div className="col-sm-5 image-container">
+                    <picture>
+                        <img width="100%" height="100%" src="src/carousel/images/san-francisco.jpg" alt="San Francisco" />
+                    </picture>
+                </div>
             </div>
-            <div className="col-sm-5 image-container">
-                <picture>
-                    <img width="100%" height="100%"
-                        src="src/carousel/images/san-francisco.jpg"
-                        alt="San Francisco" />
-                </picture>
-            </div>
-        </div>);
+        );
     }
-    function itemTemplate2(): JSX.Element {
-        return (<div className="product-container">
-            <div className="col-sm-5 component-container">
-                <div className="heading">London</div>
-                <div className="description">
-                    London, the capital of England and the United Kingdom, is a 21st-century city with history stretching back to Roman times. At its centre stand the imposing Houses of Parliament, the iconic ‘Big Ben’ clock tower and Westminster Abbey, site of British monarch coronations.
+    const itemTemplate2 = () => {
+        return (
+            <div className="product-container">
+                <div className="col-sm-5 component-container">
+                    <div className="heading">London</div>
+                    <div className="description">London, the capital of England and the United Kingdom, is a 21st-century city with history stretching back to Roman times. At its centre stand the imposing Houses of Parliament, the iconic ‘Big Ben’ clock tower and Westminster Abbey, site of British monarch coronations.</div>
+                    <a className="demo" href="https://en.wikipedia.org/wiki/London" target="_blank">READ MORE</a>
                 </div>
-                <a className="demo"
-                    href="https://en.wikipedia.org/wiki/London"
-                    target="_blank">READ MORE</a>
+                <div className="col-sm-5 image-container">
+                    <picture>
+                        <img width="100%" height="100%" src="src/carousel/images/london.jpg" alt="London" />
+                    </picture>
+                </div>
             </div>
-            <div className="col-sm-5 image-container">
-                <picture>
-                    <img width="100%" height="100%"
-                        src="src/carousel/images/london.jpg"
-                        alt="London" />
-                </picture>
-            </div>
-        </div>);
+        );
     }
-    function itemTemplate3(): JSX.Element {
-        return (<div className="product-container">
-            <div className="col-sm-5 component-container">
-                <div className="heading">Tokyo</div>
-                <div className="description">
-                    Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens.
+    const itemTemplate3 = () => {
+        return (
+            <div className="product-container">
+                <div className="col-sm-5 component-container">
+                    <div className="heading">Tokyo</div>
+                    <div className="description">Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens.</div>
+                    <a className="demo" href="https://en.wikipedia.org/wiki/Tokyo" target="_blank">READ MORE</a>
                 </div>
-                <a className="demo" href="https://en.wikipedia.org/wiki/Tokyo"
-                    target="_blank">READ MORE</a>
+                <div className="col-sm-5 image-container">
+                    <picture>
+                        <img width="100%" height="100%" src="src/carousel/images/tokyo.jpg" alt="Tokyo" />
+                    </picture>
+                </div>
             </div>
-            <div className="col-sm-5 image-container">
-                <picture>
-                    <img width="100%" height="100%"
-                        src="src/carousel/images/tokyo.jpg"
-                        alt="Tokyo" />
-                </picture>
-            </div>
-        </div>);
+        );
     }
-    function itemTemplate4(): JSX.Element {
-        return (<div className="product-container">
-            <div className="col-sm-5 component-container">
-                <div className="heading">Moscow</div>
-                <div className="description">
-                    Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia's symbolic center.
+    const itemTemplate4 = () => {
+        return (
+            <div className="product-container">
+                <div className="col-sm-5 component-container">
+                    <div className="heading">Moscow</div>
+                    <div className="description">Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia's symbolic center.</div>
+                    <a className="demo" href="https://en.wikipedia.org/wiki/Moscow" target="_blank">READ MORE</a>
                 </div>
-                <a className="demo" href="https://en.wikipedia.org/wiki/Moscow"
-                    target="_blank">READ MORE</a>
+                <div className="col-sm-5 image-container">
+                    <picture>
+                        <img width="100%" height="100%" src="src/carousel/images/moscow.jpg" alt="Moscow" />
+                    </picture>
+                </div>
             </div>
-            <div className="col-sm-5 image-container">
-                <picture>
-                    <img width="100%" height="100%"
-                        src="src/carousel/images/moscow.jpg"
-                        alt="Moscow" />
-                </picture>
-            </div>
-        </div>);
+        );
     }
 
     return (
@@ -104,13 +92,14 @@ function KeyboardNavigation() {
                     {/* Render the Carousel Component */}
                     <CarouselComponent id='carousel' showPlayButton={true} autoPlay={false} cssClass="kb-carousel">
                         <CarouselItemsDirective>
-                            <CarouselItemDirective template={itemTemplate1.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate2.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate3.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate4.bind(this)} />
+                            <CarouselItemDirective template={itemTemplate1} />
+                            <CarouselItemDirective template={itemTemplate2} />
+                            <CarouselItemDirective template={itemTemplate3} />
+                            <CarouselItemDirective template={itemTemplate4} />
                         </CarouselItemsDirective>
                     </CarouselComponent>
-                </div></div>
+                </div>
+            </div>
             <div id="action-description">
                 <p>
                     This sample demonstrates the keyboard navigation functionalities of the <a href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component.

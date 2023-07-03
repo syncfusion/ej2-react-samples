@@ -19,6 +19,8 @@
         padding: 20px 0 20px 20px;
 }
 
+body.material3-dark .e-panel .panel-content,
+body.fluent-dark .e-panel .panel-content,
 body.material-dark .e-panel .panel-content,
 body.fabric-dark .e-panel .panel-content,
 body.bootstrap-dark .e-panel .panel-content,

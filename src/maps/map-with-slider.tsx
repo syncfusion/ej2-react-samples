@@ -18,6 +18,13 @@ let datasource: any = data as any;
 let sliderVal: number | number[] = [-2 , 4];
 let colorCodes: string[] = ['#7E9CDC', '#DCD57E', '#7EDCA2', '#6EB5D0', '#A6DC7E', '#DCA87E', '#d075c6'];
 const SAMPLE_CSS = `
+    .map-slider {
+        width: 300px !important;
+    }
+    #mapslider {
+        display: grid;
+        justify-content: center;
+    }
     .control-fluid {
 		padding: 0px !important;
     }
@@ -126,8 +133,10 @@ export class MapSlider extends SampleBase<{}, {}> {
                         </LayersDirective>
                     </MapsComponent>
                 </div>
-                <SliderComponent id="mapannotation" style={{width: '300px', marginLeft: '300px'}} type='Range' min={-1.5} max={3.75} step={0.75} value={sliderVal} 
-                    ticks={{ placement: 'After', largeStep: 0.75 }} change={ this.sliderChange.bind(this)} ref={d => this.sliderElement = d} />
+                <div id="mapslider">
+                    <SliderComponent id="mapannotation" className="map-slider" type='Range' min={-1.5} max={3.75} step={0.75} value={sliderVal} 
+                        ticks={{ placement: 'After', largeStep: 0.75 }} change={ this.sliderChange.bind(this)} ref={d => this.sliderElement = d} />
+                </div>
                 <div style={{float: 'right', marginRight: '10px' }}>Source: 
                     <a href="https://en.wikipedia.org/wiki/List_of_North_American_countries_by_population" target="_blank">Population growth in North America</a>
                 </div>
