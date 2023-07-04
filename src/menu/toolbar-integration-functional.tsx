@@ -1,38 +1,39 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { MenuComponent, MenuItemModel, ToolbarComponent, ItemsDirective, ItemDirective, MenuAnimationSettingsModel } from '@syncfusion/ej2-react-navigations';
+import { useEffect, useRef } from 'react';
+import { MenuComponent, ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
 import { DropDownButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
 import { removeClass } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import './toolbar-integration.css';
 import * as dataSource from './menu-data.json';
 
-function ToolbarIntegration() {
-    React.useEffect(() => {
+const ToolbarIntegration = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     let data = dataSource as any;
     let searchTemplate: string = '<div class="e-input-group"><input class="e-input" type="text" placeholder="Search" /><span class="e-input-group-icon em-icons e-search"></span></div>';
-    let tbObj: ToolbarComponent;
+    let tbObj = useRef<ToolbarComponent>(null);
 
-    function menuTemplate(): JSX.Element {
+    const menuTemplate = () => {
         return (<MenuComponent id="menuele" items={data.toolbarIntegrationData} />);
     }
 
-    function ddbTemplate(): any {
+    const ddbTemplate = (): any => {
         return (<DropDownButtonComponent id="userDBtn" content='Andrew' created={onCreated} items={data.userData}></DropDownButtonComponent>);
     }
 
-    function onCreated(): void {
-        tbObj.refreshOverflow();
-        removeClass([tbObj.element.querySelector('.e-shopping-cart')], 'e-icons');
+    const onCreated = (): void => {
+        tbObj.current.refreshOverflow();
+        removeClass([tbObj.current.element.querySelector('.e-shopping-cart')], 'e-icons');
     }
 
     return (
         <div className='control-pane'>
             <div id="menu-control" className='control-section'>
                 <div className='toolbar-menu-control'>
-                    <ToolbarComponent id="toolbar" ref={(scope) => { tbObj = scope; }} >
+                    <ToolbarComponent id="toolbar" ref={tbObj} >
                         <ItemsDirective>
                             <ItemDirective template={menuTemplate} />
                             <ItemDirective template={searchTemplate} align='Right' />
@@ -52,8 +53,7 @@ function ToolbarIntegration() {
                 </p>
                 <p>
                     More information about menu can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/use-case-scenarios/#menu-in-toolbar">
-                        documentation</a> section.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/use-case-scenarios/#menu-in-toolbar">documentation</a> section.
                 </p>
             </div>
         </div>

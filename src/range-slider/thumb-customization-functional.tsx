@@ -1,9 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { SliderComponent } from '@syncfusion/ej2-react-inputs';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
-import { PropertyPane } from '../common/property-pane';
 
 const slidercss = `
 .slider-content-wrapper {
@@ -117,8 +116,8 @@ const slidercss = `
     box-shadow: none;
 }
 `
-function Thumb() {
-    React.useEffect(() => {
+const Thumb = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     let ticks: object = {
@@ -151,21 +150,16 @@ function Thumb() {
                     </div>
                 </div>
             </div>
-
-
             <div id="action-description">
-                <p>This sample demonstrates the customization of Slider's Thumb. Drag the thumb over the bar for selecting the values between
-                min and max.
-            </p>
+                <p>This sample demonstrates the customization of Slider's Thumb. Drag the thumb over the bar for selecting the values between min and max.</p>
             </div>
-
             <div id="description">
                 <p>In this demo, we have demonstrated the following customization of Thumb by changing CSS.</p>
                 <ul>
                     <li>Square - In this sample, Thumb has been customized to Square shape.</li>
-                    <li>Circle - In this sample, Thumb has been customized to Circle shape. </li>
-                    <li>Oval - In this sample, Thumb has been customized to Oval shape. </li>
-                    <li>Custom image - In this sample, Thumb has been replaced with custom image. </li>
+                    <li>Circle - In this sample, Thumb has been customized to Circle shape.</li>
+                    <li>Oval - In this sample, Thumb has been customized to Oval shape.</li>
+                    <li>Custom image - In this sample, Thumb has been replaced with custom image.</li>
                 </ul>
             </div>
         </div>

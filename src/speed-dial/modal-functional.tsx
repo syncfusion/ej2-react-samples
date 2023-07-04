@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { SpeedDialComponent, SpeedDialItemModel } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './modal.css';
 
-function Modal() {
-    React.useEffect(() => {
+const Modal = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 

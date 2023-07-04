@@ -50,7 +50,7 @@ export class MultiPane extends SampleBase<{}, {}> {
                              valueType: 'DateTime',
                         }}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true }}
+                        tooltip={{ enable: true, format: 'High : <b>${point.high}</b><br/>Low :<b>${point.low}</b><br/>Open : <b>${point.open}</b><br/>Close : <b>${point.close}</b><br/>Volume : <b>${point.volume}</b>' }}
                         tooltipRender={tooltipRender}
                         axisLabelRender={this.axisLabelRender.bind(this)}
                         crosshair={{enable: true }}
@@ -72,24 +72,23 @@ export class MultiPane extends SampleBase<{}, {}> {
                             </StockChartAxisDirective>
                         </StockChartAxesDirective>
                         <StockChartSeriesCollectionDirective>
-                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='close' type='Candle' yAxisName='yAxis1' >
+                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='close' type='Candle' yAxisName='yAxis1' name="Apple Inc" >
                             </StockChartSeriesDirective>
-                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='volume' type='Column' enableTooltip={false}>
+                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='volume' type='Column' enableTooltip={false} name="Volume" >
                             </StockChartSeriesDirective>
                         </StockChartSeriesCollectionDirective>
                     </StockChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                    This sample visualizes stock chart with multiple pane.
-                    </p>
+                    <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart">React Stock Chart</a> example visualizes the AAPL stock price with Candle chart. Tooltip and crosshair show the information about the data and period.</p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure the Stock chart with volume.
-                 <code>CandleSeries</code> is used to represent selected data value and <code>ColumnSeries</code> is used to represent the volume.
-
-                  </p>
+                        In this example, you can see how to render and configure a stock chart for AAPL data, as well as how to use column charts to display data volume. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/period-selector">Period Selector</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/range-selector">Range Selector</a> can be used to select a range with specified periods.
+                    </p>
+                    <p>
+                        The legend is enabled, and you can use it to toggle the visibility of series in the stock chart. To customize the legend in the stock chart, use the <code>stockChartLegendSettings</code> property.
+                    </p>
                     <br></br>
                     <p>Injecting Module</p>
                     <p>
@@ -110,6 +109,6 @@ export class MultiPane extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-         replace(/-dark/i, "Dark") as ChartTheme;
+         replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as ChartTheme;
     }
 }

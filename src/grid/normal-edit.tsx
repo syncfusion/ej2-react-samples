@@ -56,16 +56,18 @@ export class NormalEdit extends SampleBase<{}, {}> {
             <div className='col-md-3 property-section'>
               <PropertyPane title='Properties'>
                 <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
-                  <tr>
-                    <td>
-                      <div>Add New Row Position</div>
-                    </td>
-                    <td>
-                      <div>
-                        <DropDownListComponent id="newRowPosition" width="120px" index={0} change={this.ddChange.bind(this)} ref={d => this.dropDownInstance = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
-                      </div>
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div>Add New Row Position</div>
+                      </td>
+                      <td>
+                        <div>
+                          <DropDownListComponent id="newRowPosition" width="120px" index={0} change={this.ddChange.bind(this)} ref={d => this.dropDownInstance = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </PropertyPane>
             </div>

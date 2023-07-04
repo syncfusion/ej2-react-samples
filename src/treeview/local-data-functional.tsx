@@ -1,18 +1,19 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import './local-data.css';
 import * as dataSource from './dataSource/local-data.json';
 
-function LocalData() {
-  React.useEffect(() => {
+const LocalData = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const SAMPLE_CSS = `
-.control-section {
-    overflow: auto;
-}`;
+    .control-section {
+        overflow: auto;
+    }`;
   const data = dataSource as any;
   // Hierarchical data source for TreeView component
   const fields: object = { dataSource: data.hierarchicalData, id: 'code', text: 'name', child: 'countries' };
@@ -22,9 +23,7 @@ function LocalData() {
 
   return (
     <div className='control-pane'>
-      <style>
-        {SAMPLE_CSS}
-      </style>
+      <style>{SAMPLE_CSS}</style>
       <div className='control-section'>
         <div className='col-lg-6 nested-data'>
           <div className='content'>

@@ -78,8 +78,8 @@ export class StackedBar extends SampleBase<{}, {}> {
                         <code>StackingBarSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the  bar series can be found in this &nbsp;
-                       <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bar-chart">documentation section</a>.
+                        More information on the stacked bar series can be found in this &nbsp;
+                       <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-bar">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -94,7 +94,7 @@ export class StackedBar extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    ScheduleComponent, ViewsDirective, ViewDirective, TimelineViews, Inject, EventRenderedArgs, ResourcesDirective,
-    ResourceDirective, ResourceDetails, ActionEventArgs, RenderCellEventArgs, PopupOpenEventArgs, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, TimelineViews, Inject, EventRenderedArgs, ResourcesDirective, ResourceDirective, ResourceDetails, ActionEventArgs, RenderCellEventArgs, PopupOpenEventArgs, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './timeline-resources.css';
 import { extend, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -13,12 +11,12 @@ import * as dataSource from './datasource.json';
  * schedule room scheduler sample
  */
 
-function TimelineResource() {
-    React.useEffect(() => {
+const TimelineResource = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).roomData, null, true) as Record<string, any>[];
-    let scheduleObj: ScheduleComponent;
+    let scheduleObj = useRef<ScheduleComponent>(null);
     const ownerData: Record<string, any>[] = [
         { text: 'Jammy', id: 1, color: '#ea7a57', capacity: 20, type: 'Conference' },
         { text: 'Tweety', id: 2, color: '#7fa900', capacity: 7, type: 'Cabin' },
@@ -32,39 +30,40 @@ function TimelineResource() {
         { text: 'Photogenic', id: 10, color: '#710193', capacity: 25, type: 'Conference' }
     ];
 
-    function getRoomName(value: ResourceDetails) {
+    const getRoomName = (value: ResourceDetails) => {
         return (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField];
     }
 
-    function getRoomType(value: ResourceDetails) {
+    const getRoomType = (value: ResourceDetails) => {
         return (value as ResourceDetails).resourceData.type;
     }
 
-    function getRoomCapacity(value: ResourceDetails) {
+    const getRoomCapacity = (value: ResourceDetails) => {
         return (value as ResourceDetails).resourceData.capacity;
     }
 
-    function isReadOnly(endDate: Date): boolean {
+    const isReadOnly = (endDate: Date): boolean => {
         return (endDate < new Date(2021, 6, 31, 0, 0));
     }
 
-    function resourceHeaderTemplate(props): JSX.Element {
-        return (<div className="template-wrap">
-            <div className="room-name">{getRoomName(props)}</div>
-            <div className="room-type">{getRoomType(props)}</div>
-            <div className="room-capacity">{getRoomCapacity(props)}</div>
-        </div>
+    const resourceHeaderTemplate = (props) => {
+        return (
+            <div className="template-wrap">
+                <div className="room-name">{getRoomName(props)}</div>
+                <div className="room-type">{getRoomType(props)}</div>
+                <div className="room-capacity">{getRoomCapacity(props)}</div>
+            </div>
         );
     }
 
-    function onActionBegin(args: ActionEventArgs): void {
+    const onActionBegin = (args: ActionEventArgs): void => {
         if (args.requestType === 'eventCreate' || args.requestType === 'eventChange') {
             let data: Record<string, any> = args.data instanceof Array ? args.data[0] : args.data;
-            args.cancel = !scheduleObj.isSlotAvailable(data);
+            args.cancel = !scheduleObj.current.isSlotAvailable(data);
         }
     }
 
-    function onEventRendered(args: EventRenderedArgs): void {
+    const onEventRendered = (args: EventRenderedArgs): void => {
         let data: Record<string, any> = args.data;
         if (isReadOnly(data.EndTime as Date)) {
             args.element.setAttribute('aria-readonly', 'true');
@@ -72,7 +71,7 @@ function TimelineResource() {
         }
     }
 
-    function onRenderCell(args: RenderCellEventArgs): void {
+    const onRenderCell = (args: RenderCellEventArgs): void => {
         if (args.element.classList.contains('e-work-cells')) {
             if (args.date < new Date(2021, 6, 31, 0, 0)) {
                 args.element.setAttribute('aria-readonly', 'true');
@@ -85,14 +84,14 @@ function TimelineResource() {
         }
     }
 
-    function onPopupOpen(args: PopupOpenEventArgs): void {
+    const onPopupOpen = (args: PopupOpenEventArgs): void => {
         let data: Record<string, any> = args.data as Record<string, any>;
         if (args.type === 'QuickInfo' || args.type === 'Editor' || args.type === 'RecurrenceAlert' || args.type === 'DeleteAlert') {
             let target: HTMLElement = (args.type === 'RecurrenceAlert' ||
                 args.type === 'DeleteAlert') ? args.element[0] : args.target;
             if (!isNullOrUndefined(target) && target.classList.contains('e-work-cells')) {
                 if ((target.classList.contains('e-read-only-cells')) ||
-                    (!scheduleObj.isSlotAvailable(data))) {
+                    (!scheduleObj.current.isSlotAvailable(data))) {
                     args.cancel = true;
                 }
             } else if (!isNullOrUndefined(target) && target.classList.contains('e-appointment') &&
@@ -106,27 +105,9 @@ function TimelineResource() {
         <div className='schedule-control-section'>
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent cssClass='timeline-resource' ref={schedule => scheduleObj = schedule} width='100%'
-                        height='650px' selectedDate={new Date(2021, 7, 2)} workHours={{ start: '08:00', end: '18:00' }}
-                        timeScale={{ interval: 60, slotCount: 1 }} resourceHeaderTemplate={resourceHeaderTemplate.bind(this)}
-                        eventSettings={{
-                            dataSource: data,
-                            fields: {
-                                id: 'Id',
-                                subject: { title: 'Summary', name: 'Subject' },
-                                location: { title: 'Location', name: 'Location' },
-                                description: { title: 'Comments', name: 'Description' },
-                                startTime: { title: 'From', name: 'StartTime' },
-                                endTime: { title: 'To', name: 'EndTime' }
-                            }
-                        }}
-                        eventRendered={onEventRendered.bind(this)} popupOpen={onPopupOpen.bind(this)}
-                        actionBegin={onActionBegin.bind(this)} renderCell={onRenderCell.bind(this)}
-                        group={{ enableCompactView: false, resources: ['MeetingRoom'] }} >
+                    <ScheduleComponent cssClass='timeline-resource' ref={scheduleObj} width='100%' height='650px' selectedDate={new Date(2021, 7, 2)} workHours={{ start: '08:00', end: '18:00' }} timeScale={{ interval: 60, slotCount: 1 }} resourceHeaderTemplate={resourceHeaderTemplate} eventSettings={{ dataSource: data, fields: { id: 'Id', subject: { title: 'Summary', name: 'Subject' }, location: { title: 'Location', name: 'Location' }, description: { title: 'Comments', name: 'Description' }, startTime: { title: 'From', name: 'StartTime' }, endTime: { title: 'To', name: 'EndTime' } } }} eventRendered={onEventRendered} popupOpen={onPopupOpen} actionBegin={onActionBegin} renderCell={onRenderCell} group={{ enableCompactView: false, resources: ['MeetingRoom'] }} >
                         <ResourcesDirective>
-                            <ResourceDirective field='RoomId' title='Room Type' name='MeetingRoom' allowMultiple={true}
-                                dataSource={ownerData} textField='text' idField='id' colorField='color'>
-                            </ResourceDirective>
+                            <ResourceDirective field='RoomId' title='Room Type' name='MeetingRoom' allowMultiple={true} dataSource={ownerData} textField='text' idField='id' colorField='color' />
                         </ResourcesDirective>
                         < ViewsDirective >
                             <ViewDirective option='TimelineDay' />

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useState } from "react";
+import { useEffect, useState, useRef } from 'react';
 import { MenuComponent } from '@syncfusion/ej2-react-navigations';
 import { DropDownListComponent, ChangeEventArgs as ddlChange } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
@@ -14,19 +14,20 @@ interface HamburgerMenuSample {
     showItemOnClick: boolean;
     hamburgerMode: boolean;
 }
-function HamburgerMenu() {
-    React.useEffect(() => {
+const HamburgerMenu = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let menuObj: MenuComponent;
+    let menuObj = useRef<MenuComponent>(null);
     let data = dataSource as any;
-    const [state, setState] = useState({
+    const [state, setState] = useState<HamburgerMenuSample>({
         showItemOnClick: true,
         hamburgerMode: true
     });
+    const [layout, setLayout] = useState<string>('deviceLayout');
 
     // custom code start
-    function menuCreated(): void {
+    const menuCreated = (): void => {
         if (Browser.isDevice) {
             select('.property-section').remove();
             select('#layoutcontainer').removeAttribute('class');
@@ -35,19 +36,18 @@ function HamburgerMenu() {
         }
     }
     // custom code end
-    function modeChange(args: ddlChange): void {
+    const modeChange = (args: ddlChange): void => {
         let container: HTMLElement = document.querySelector('#layoutcontainer');
         switch (args.value) {
             case 'Mobile':
             case 'Tablet':
-                menuObj.close();
-                container.classList.add('deviceLayout');
-                container.classList[args.value === 'Mobile' ? 'remove' : 'add']('tabletview');
-                menuObj.element.parentElement.classList[args.value === 'Mobile' ? 'remove' : 'add']('e-menu-icon-right');
+                menuObj.current.close();
+                args.value === 'Mobile' ? setLayout('deviceLayout') : setLayout('deviceLayout tabletview');
+                menuObj.current.element.parentElement.classList[args.value === 'Mobile' ? 'remove' : 'add']('e-menu-icon-right');
                 setState({ showItemOnClick: true, hamburgerMode: true });
                 break;
             case 'Desktop':
-                container.classList.remove('deviceLayout', 'tabletview');
+                setLayout('');
                 setState({ showItemOnClick: false, hamburgerMode: false });
                 break;
         }
@@ -58,17 +58,16 @@ function HamburgerMenu() {
             <div className="menu-section control-section">
                 <div className="col-lg-8 control-section">
                     <div id="hamburgerMenu">
-                        <div id='layoutcontainer' className="deviceLayout">
+                        <div id='layoutcontainer' className={layout}>
                             <div className="speaker">
                                 <div className="camera"></div>
                             </div>
                             <div className="layout">
                                 <div id="container">
-                                    <MenuComponent id="menu" items={data.hamburgerData} showItemOnClick={state.showItemOnClick}
-                                        hamburgerMode={state.hamburgerMode} ref={(scope) => { menuObj = scope; }} created={menuCreated}></MenuComponent>
+                                    <MenuComponent id="menu" items={data.hamburgerData} showItemOnClick={state.showItemOnClick} hamburgerMode={state.hamburgerMode} ref={menuObj} created={menuCreated}></MenuComponent>
                                 </div>
                             </div>
-                            <div className="outerButton"> </div>
+                            <div className="outerButton"></div>
                         </div>
                     </div>
                 </div>
@@ -95,14 +94,14 @@ function HamburgerMenu() {
                 <p>This sample demonstrates the hamburger mode in the <code>menu</code> component.</p>
             </div>
             <div id="description">
-                <p>Enabling the <code>hamburgerMode</code> property makes the <code>menu</code> component in adaptive view. By default, its shows header with
+                <p>
+                    Enabling the <code>hamburgerMode</code> property makes the <code>menu</code> component in adaptive view. By default, its shows header with
                     hamburger icon in <code>Horizontal</code> orientation.
                 </p>
                 <p>The menu shows on clicking hamburger icon. You can use the <code>open</code> and <code>close</code> methods to show / hide the menu programmatically.</p>
                 <p>
                     More information about Menu can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/getting-started">
-                        documentation</a> section.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/getting-started">documentation</a> section.
                 </p>
             </div>
         </div>

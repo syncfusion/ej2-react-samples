@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { TooltipComponent, TooltipEventArgs } from '@syncfusion/ej2-react-popups';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
-import { Ajax } from '@syncfusion/ej2-base';
+import { Fetch } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import './tooltip-sample.css';
 
@@ -37,10 +37,9 @@ export class AjaxContentTooltip extends SampleBase<tooltipComponentProps, toolti
     }
     //Process tooltip ajax content.
     public onBeforeRender(args: TooltipEventArgs): void {
-        let ajax: Ajax = new Ajax('./src/tooltip/tooltipdata.json', 'GET', true);
-        ajax.send().then(
+        let fetchApi: Fetch = new Fetch('./src/tooltip/tooltipdata.json', 'GET');
+        fetchApi.send().then(
             (result: any) => {
-                result = JSON.parse(result);
                 for (let i: number = 0; i < result.length; i++) {
                     if (result[i].Id === args.target.getAttribute('data-content')) {
                         this.setState({

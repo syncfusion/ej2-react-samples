@@ -2,24 +2,22 @@
  * Sample for Bubble Series
  */
 import * as React from "react";
+import { useEffect } from "react";
 import * as ReactDOM from "react-dom";
 import { EmitType } from '@syncfusion/ej2-base';
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    BubbleSeries, Tooltip, IPointRenderEventArgs, ILoadedEventArgs, ChartTheme, DataLabel
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, BubbleSeries, Tooltip, IPointRenderEventArgs, ILoadedEventArgs, ChartTheme, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors } from './theme-color';
+import { bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'material';
     if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
         args.fill = bubbleFabricColors[args.point.index % 10];
-        args.border.color = pointFabricColors[args.point.index % 10];;
+        args.border.color = pointFabricColors[args.point.index % 10];
     } else if (selectedTheme === 'material-dark') {
         args.fill = bubbleMaterialDarkColors[args.point.index % 10];
-        args.border.color = pointMaterialDarkColors[args.point.index % 10];;
+        args.border.color = pointMaterialDarkColors[args.point.index % 10];
     } else if (selectedTheme === 'material') {
         args.fill = bubbleMaterialColors[args.point.index % 10];
         args.border.color = pointMaterialColors[args.point.index % 10];
@@ -32,12 +30,10 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'bootstrap') {
         args.fill = bubbleBootstrapColors[args.point.index % 10];
         args.border.color = pointBootstrapColors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'bootstrap4') {
+    } else if (selectedTheme === 'bootstrap4') {
         args.fill = bubbleBootstrapColors[args.point.index % 10];
         args.border.color = pointBootstrapColors[args.point.index % 10];
-    }
-    else if (selectedTheme === 'bootstrap-dark') {
+    } else if (selectedTheme === 'bootstrap-dark') {
         args.fill = bubbleBootstrapColors[args.point.index % 10];
         args.border.color = pointBootstrapColors[args.point.index % 10];
     } else if (selectedTheme === 'highcontrast') {
@@ -55,6 +51,12 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'tailwind') {
         args.fill = bubbleTailwindColors[args.point.index % 10];
         args.border.color = pointTailwindColors[args.point.index % 10];
+    } else if (selectedTheme === 'material3') {
+        args.fill = bubbleMaterial3Colors[args.point.index % 10];
+        args.border.color = pointMaterial3Colors[args.point.index % 10];
+    } else if (selectedTheme === 'material3-dark') {
+        args.fill = bubbleMaterial3DarkColors[args.point.index % 10];
+        args.border.color = pointMaterial3DarkColors[args.point.index % 10];
     }
 };
 export let data: any[] = [
@@ -78,94 +80,63 @@ export let data: any[] = [
     { x: 78.4, y: 2.9, size: 0.231, toolTipMappingName: 'Taiwan' , text: Browser.isDevice ? 'TW' : 'Taiwan'}
 ];
 const SAMPLE_CSS = `
-     .control-fluid {
-         padding: 0px !important;
-     }
-     ellipse[id*=_Trackball_0] {
- 
-         stroke-width: 1 !important;
-     } 
- `;
+    .control-fluid {
+        padding: 0px !important;
+    }
+    ellipse[id*=_Trackball_0] {
+
+        stroke-width: 1 !important;
+    }`;
 
 /**
  * Bubble sample
  */
-function Bubble() {
-    React.useEffect(() => {
+const Bubble = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-        return (
-            <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
-                <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
-                        primaryXAxis={{
-                            minimum: 65,
-                            maximum: 102,
-                            interval: 5,
-                            crossesAt: 5
-                        }}
-                        load={load.bind(this)}
-                        primaryYAxis={{
-                            minimum: 0,
-                            maximum: 10,
-                            crossesAt: 85,
-                            interval: 2.5
-                        }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        title='World Countries Details' pointRender={pointRender}
-                        legendSettings={{ visible: false }} loaded={onChartLoad.bind(this)}
-                        tooltip={{
-                            enableMarker: false,
-                            enable: true,
-                            header: "<b>${point.tooltip}</b>",
-                            format: "Literacy Rate : <b>${point.x}%</b> <br/>GDP Annual Growth Rate : <b>${point.y}</b><br/>Population : <b>${point.size} Billion</b>"
-                        }}>
-                        <Inject services={[BubbleSeries, Tooltip, DataLabel]} />
-                        <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} type='Bubble' minRadius={3}
-                                maxRadius={8} tooltipMappingName='toolTipMappingName'
-                                border={{ width: 2 }} xName='x' yName='y' size='size'
-                                marker={{ dataLabel: { visible: true, name: 'text', position: 'Middle', font: { fontWeight: '500', color: '#ffffff' } } }} >
-                            </SeriesDirective>
-                        </SeriesCollectionDirective>
-                    </ChartComponent>
-                </div>
-                <div id="action-description">
-                    <p>
-                        This React bubble chart example visualizes the literacy rates and GDP growth rates of countries. A tooltip shows more information about the countries.
-                    </p>
-                </div>
-                <div id="description">
-                    <p>
-                        In this example, you can see how to render and configure the bubble chart. The bubble chart is a type of chart that shows three dimensions of the data. Each point is drawn as a bubble, where the bubble's size depends on the <code>Size</code> property. You can also use the <code>Fill</code> property to customize the data appearance.
-                    </p>
-                    <p>
-                        <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                    </p>
-                    <br></br>
-                    <p><b>Injecting Module</b></p>
-                    <p>
-                        Chart component features are segregated into individual feature-wise modules. To use bubble series, we need to inject
-                        <code>BubbleSeries</code> module into <code>services</code>.
-                    </p>
-                    <p>
-                        More information on the bubble series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bubble-chart">documentation section</a>.
-                    </p>
-                </div>
-            </div>
-        )
-    function onChartLoad(args: ILoadedEventArgs): void {
+
+    const onChartLoad = (args: ILoadedEventArgs): void => {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
     };
+    return (
+        <div className='control-pane'>
+            <style>{SAMPLE_CSS}</style>
+            <div className='control-section'>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ minimum: 65, maximum: 102, interval: 5, crossesAt: 5 }} load={load.bind(this)} primaryYAxis={{ minimum: 0, maximum: 10, crossesAt: 85, interval: 2.5 }} width={Browser.isDevice ? '100%' : '75%'} title='World Countries Details' pointRender={pointRender} legendSettings={{ visible: false }} loaded={onChartLoad.bind(this)} tooltip={{ enableMarker: false, enable: true, header: "<b>${point.tooltip}</b>", format: "Literacy Rate : <b>${point.x}%</b> <br/>GDP Annual Growth Rate : <b>${point.y}</b><br/>Population : <b>${point.size} Billion</b>" }}>
+                    <Inject services={[BubbleSeries, Tooltip, DataLabel]} />
+                    <SeriesCollectionDirective>
+                        <SeriesDirective dataSource={data} type='Bubble' minRadius={3} maxRadius={8} tooltipMappingName='toolTipMappingName' border={{ width: 2 }} xName='x' yName='y' size='size' marker={{ dataLabel: { visible: true, name: 'text', position: 'Middle', font: { fontWeight: '500', color: '#ffffff' } } }} />
+                    </SeriesCollectionDirective>
+                </ChartComponent>
+            </div>
+            <div id="action-description">
+                <p>This React bubble chart example visualizes the literacy rates and GDP growth rates of countries. A tooltip shows more information about the countries.</p>
+            </div>
+            <div id="description">
+                <p>
+                    In this example, you can see how to render and configure the bubble chart. The bubble chart is a type of chart that shows three dimensions of the data. Each point is drawn as a bubble, where the bubble's size depends on the <code>Size</code> property. You can also use the <code>Fill</code> property to customize the data appearance.
+                </p>
+                <p>
+                    <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                </p>
+                <br></br>
+                <p><b>Injecting Module</b></p>
+                <p>
+                    Chart component features are segregated into individual feature-wise modules. To use bubble series, we need to inject
+                    <code>BubbleSeries</code> module into <code>services</code>.
+                </p>
+                <p>
+                    More information on the bubble series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bubble-chart">documentation section</a>.
+                </p>
+            </div>
+        </div>
+    )
 }
 export default Bubble;

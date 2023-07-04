@@ -58,6 +58,7 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
                                 coefficient: Browser.isDevice ? 80 : 100
                             }}
                             load={this.load.bind(this)}
+                            tooltip={{enable: true, header: "", format: "<b>${point.x}</b><br>GDP: <b>${point.y}USD</b>"}}
                             title="GDP, Current Prices (in Billions)" loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[StackingAreaSeries, Legend, Category, PolarSeries, RadarSeries, Tooltip]} />
                             <SeriesCollectionDirective>
@@ -109,8 +110,8 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
                     <code>StackingAreaSeries</code>, <code>PolarSeries</code> and <code>SRadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                        More information on the polar series can be found in this &nbsp;
-                  <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                        More information on the polar and radar series with a stacked area type chart can be found in this &nbsp;
+                  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/polar#stacked-area">documentation section</a>.
               </p>
                 </div>
             </div>
@@ -123,7 +124,7 @@ export class PolarStackedArea extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

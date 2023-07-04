@@ -68,14 +68,14 @@ function Exporting() {
   const template2: any = gridUrlTemplate;
 
   function toolbarClick(args: ClickEventArgs): void {
-    switch (args.item.text) {
-      case 'PDF Export':
+    switch (args.item.id) {
+      case 'DefaultExport_pdfexport':
         gridInstance.pdfExport();
         break;
-      case 'Excel Export':
+      case 'DefaultExport_excelexport':
         gridInstance.excelExport();
         break;
-      case 'CSV Export':
+      case 'DefaultExport_csvexport':
         gridInstance.csvExport();
         break;
     }
@@ -83,7 +83,7 @@ function Exporting() {
   return (
     <div className='control-pane'>
       <div className='col-lg-9 control-section'>
-        <GridComponent dataSource={employeeDetails} ref={grid => gridInstance = grid} toolbar={toolbarOptions}
+        <GridComponent id="DefaultExport" dataSource={employeeDetails} ref={grid => gridInstance = grid} toolbar={toolbarOptions}
           allowExcelExport={true} allowPdfExport={true} allowSorting={true} allowGrouping={true} toolbarClick={toolbarClick.bind(this)}
           dataBound={dataBound.bind(this)} excelQueryCellInfo={exportQueryCellInfo.bind(this)} pdfQueryCellInfo={exportQueryCellInfo.bind(this)} height='350'>
           <ColumnsDirective>

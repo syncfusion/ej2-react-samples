@@ -47,49 +47,67 @@ export class ProgressBarRadius extends SampleBase<{}, {}> {
         this.onRadius.refresh();
         this.pie.refresh();
     }
-    private content1: string = '<div id="point1" style="font-size:20px;font-weight:bold;color:#ffffff;fill:#ffffff"><span>60%</span></div>';
+    private content: string = '<div id="point1" style="font-size:20px;font-weight:bold;color:#ffffff;fill:#ffffff"><span>60%</span></div>';
     private progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.progressBar.progressColor = '#FFFFFF';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
         if (args.progressBar.element.id === 'full-background') {
             switch (selectedTheme) {
                 case 'material':
-                    args.progressBar.trackColor = '#e91e63';
+                    args.progressBar.trackColor = '#f8c2d4';
+                    args.progressBar.progressColor = '#e91e63';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#e91e63"><span></span></div>';
                     break;
                 case 'fabric':
-                    args.progressBar.trackColor = '#0078D6';
+                    args.progressBar.progressColor = '#0078D6';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6"><span></span></div>';
                     break;
                 case 'bootstrap':
-                    args.progressBar.trackColor = '#317ab9';
+                    args.progressBar.progressColor = '#317ab9';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#317ab9"><span></span></div>';
                     break;
                 case 'tailwind':
                     args.progressBar.progressColor = '#4F46E5';
                     args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#4F46E5"><span></span></div>';
                     break;        
                 case 'highcontrast':
-                    args.progressBar.trackColor = '#FFD939';
-                    args.progressBar.progressColor = '#000000';
-                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:20px;font-weight:bold;color:#000000;fill:#ffffff"><span>60%</span></div>';
+                    args.progressBar.progressColor = '#FFD939';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:20px;font-weight:bold;color:#FFD939;"><span>60%</span></div>';
                     break;
                 case 'bootstrap-dark':
                 case 'fabric-dark':
                 case 'material-dark':
                     args.progressBar.progressColor = '#9A9A9A';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#9A9A9A"><span></span></div>';
                     break;
                 case 'tailwind-dark':
                     args.progressBar.progressColor = '#22D3EE';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#22D3EE"><span></span></div>';
+                    break;
+                case 'bootstrap4':
+                    args.progressBar.progressColor = '#007bff';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#007bff"><span></span></div>';
                     break;
                 case 'bootstrap5':
                 case 'bootstrap5-dark':
                 case 'fluent':
                 case 'fluent-dark':
                     args.progressBar.progressColor = '#0D6EFD';
-                    break;    
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0D6EFD"><span></span></div>';
+                    break;
+                case 'material3':
+                    args.progressBar.progressColor = '#6750A4';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#6750A4"><span></span></div>';
+                    break;
+                case 'material3-dark':
+                    args.progressBar.progressColor = '#D0BCFF';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#D0BCFF"><span></span></div>';
+                    break; 
                 default:
-                    args.progressBar.trackColor = '#007bff';
+                    args.progressBar.progressColor = '#D0BCFF';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#D0BCFF"><span></span></div>';
                     break;
             }
         }
@@ -124,7 +142,7 @@ export class ProgressBarRadius extends SampleBase<{}, {}> {
                             >
                                 <Inject services={[ProgressAnnotation]} />
                                 <ProgressBarAnnotationsDirective>
-                                    <ProgressBarAnnotationDirective content={this.content1}>
+                                    <ProgressBarAnnotationDirective content={this.content}>
                                     </ProgressBarAnnotationDirective>
                                 </ProgressBarAnnotationsDirective>
 

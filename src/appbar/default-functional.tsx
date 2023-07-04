@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { AppBarComponent } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -63,7 +64,8 @@ function Default() {
                         </div>
                         <br />
                     </div>
-                </div></div>
+                </div>
+            </div>
             <div id="action-description">
                 <p>
                     This sample demonstrates the default functionalities of the <strong>React AppBar</strong>.

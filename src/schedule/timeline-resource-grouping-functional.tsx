@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    TimelineViews, TimelineMonth, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective,
-    ResourceDirective, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect } from 'react';
+import { TimelineViews, TimelineMonth, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './timeline-resource-grouping.css';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -13,8 +11,8 @@ import * as dataSource from './datasource.json';
  * schedule timeline resource grouping sample
  */
 
-function TimelineGrouping() {
-    React.useEffect(() => {
+const TimelineGrouping = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const data: Record<string, any>[] =
@@ -38,15 +36,10 @@ function TimelineGrouping() {
         <div className='schedule-control-section'>
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent cssClass='timeline-resource-grouping' width='100%' height='650px' selectedDate={new Date(2023, 0, 4)}
-                        currentView='TimelineWeek' workDays={workDays} eventSettings={{ dataSource: data }} group={{ resources: ['Projects', 'Categories'] }} >
+                    <ScheduleComponent cssClass='timeline-resource-grouping' width='100%' height='650px' selectedDate={new Date(2023, 0, 4)} currentView='TimelineWeek' workDays={workDays} eventSettings={{ dataSource: data }} group={{ resources: ['Projects', 'Categories'] }} >
                         <ResourcesDirective>
-                            <ResourceDirective field='ProjectId' title='Choose Project' name='Projects' allowMultiple={false}
-                                dataSource={projectData} textField='text' idField='id' colorField='color'>
-                            </ResourceDirective>
-                            <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true}
-                                dataSource={categoryData} textField='text' idField='id' groupIDField='groupId' colorField='color'>
-                            </ResourceDirective>
+                            <ResourceDirective field='ProjectId' title='Choose Project' name='Projects' allowMultiple={false} dataSource={projectData} textField='text' idField='id' colorField='color' />
+                            <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true} dataSource={categoryData} textField='text' idField='id' groupIDField='groupId' colorField='color' />
                         </ResourcesDirective>
                         <ViewsDirective>
                             <ViewDirective option='TimelineDay' />
@@ -60,9 +53,7 @@ function TimelineGrouping() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This demo showcases how the multiple resources are grouped as well as how the events are portrayed in timeline view layouts.
-                </p>
+                <p>This demo showcases how the multiple resources are grouped as well as how the events are portrayed in timeline view layouts.</p>
             </div>
             <div id="description">
                 <p>

@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './range-style.css';
 
-function DateRange() {
-    React.useEffect(() => {
+const DateRange = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const minDate: Date = new Date('1/15/2017');
@@ -20,7 +21,7 @@ function DateRange() {
             <div id="action-description">
                 <p>
                     In this sample, the date ranges from <code>Jan 15, 2017 - Dec 20, 2017</code> have been set. All the other dates are out of range and <code>restricted</code> to set or select.
-                </p>    
+                </p>
             </div>
             <div id='description'>
                 <p>

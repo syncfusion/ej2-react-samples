@@ -3,17 +3,18 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { ListBoxComponent, SelectionSettingsModel, Inject, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './dataSource.json';
 import './checkbox.css';
 
-function CheckBox() {
-    React.useEffect(() => {
+const CheckBox = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let dataA = data["info"];
-    let selectionSettings: SelectionSettingsModel = { showCheckbox: true };
+    const dataA = data["info"];
+    const selectionSettings: SelectionSettingsModel = { showCheckbox: true };
 
     return (
         <div className='control-pane'>

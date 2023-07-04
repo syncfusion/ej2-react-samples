@@ -14,7 +14,7 @@ function Default() {
         if (Browser.isDevice) {
             imgObj.open('src/image-editor/images/flower.png');
         } else {
-            imgObj.open('src/image-editor/images/bridge.png');
+            imgObj.open('src/image-editor/images/default.png');
         }
         if (imgObj.theme && window.location.href.split('#')[1]) {
             imgObj.theme = window.location.href.split('#')[1].split('/')[1];
@@ -44,7 +44,7 @@ function Default() {
                 </div>
             </div>
             <div id='action-description'>
-                <p>This sample demonstrates Image Editor features such as crop, rotate, flip, insert shape and text.</p>
+                <p>This sample demonstrates Image Editor features such as crop, rotate, flip, insert annotations such as rectangle, ellipse, line, arrow, path, and text.</p>
             </div>
             <div id='description'>
                 <p>
@@ -60,7 +60,9 @@ function Default() {
                     <li><b>Freehand drawing</b> : Draw freehand on the image and adjust the pen's stroke width and stroke color.</li>
                     <li><b>Reset</b> : Revert all the edited states and load the original image.</li>
                     <li><b>Save</b> : Save the edited image in JPEG, PNG, and SVG formats.</li>
-                    <li><b>Annotation</b> : Text, rectangle, ellipse, and line annotation shapes are supported.</li>
+                    <li><b>Annotation</b> : Text, rectangle, ellipse, arrow, path, and line annotation shapes are supported.</li>
+                    <li><b>Finetunes</b> : The effects such as brightness, contrast, hue, sauration, and blur can be applied to the image.</li>
+                    <li><b>Filters</b> : The predefined filters such as chrome, cold, warm, grayscale, sepia, and invert can be applied to the image.</li>
                 </ul>
                 <p>
                     More information about Image Editor can be found in this

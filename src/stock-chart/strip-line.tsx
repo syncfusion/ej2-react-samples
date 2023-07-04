@@ -41,6 +41,7 @@ export class StripLines extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         indicatorType={[]}
                         seriesType={[]}
+                        trendlineType={['Linear', 'Exponential', 'Polynomial', 'Logarithmic', 'MovingAverage']}
                         title={'AAPL Historical'}
                         chartArea={{ border: { width: 0 } }}
                     >
@@ -54,15 +55,16 @@ export class StripLines extends SampleBase<{}, {}> {
                     </StockChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample visualizes stock chart with strip line.
-                    </p>
+                    <p>This sample visualizes stock chart with plot line on y axis.</p>
                 </div>
                 <div id="description">
                     <p>
                     In this example, you can see how to highlight a particular range in stock chart. Period and range selector help us to navigate different of data.
                         <code>LineSeries</code> is used to represent selected data value.
                   </p>
+                    <p>
+                        Stock Chart provides support to 6 types of <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/trend-lines">trendlines</a> namely <code>Linear</code>, <code>Exponential</code>, <code>Logarithmic</code>, <code>Polynomial</code>, <code>Power</code>, <code>Moving Average</code>. By using trendline dropdown button, the required trendline type can be added or removed.
+                    </p>
                     <br></br>
                     <p>Injecting Module</p>
                     <p>
@@ -78,7 +80,7 @@ export class StripLines extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-         replace(/-dark/i, "Dark") as  ChartTheme;
+         replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as  ChartTheme;
     };
         
 }

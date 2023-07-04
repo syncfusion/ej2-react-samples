@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import {
     Month, EventFieldsMapping, Inject, PopupOpenEventArgs, ActionEventArgs, ToolbarActionArgs, ScheduleComponent, Schedule,
     ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective
@@ -14,12 +15,12 @@ import { PropertyPane } from '../common/property-pane';
  * schedule resources fare-calendar sample
  */
 
-function Resources() {
-    React.useEffect(() => {
+const Resources = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     let dManager: Record<string, any>[] = []; let initialLoad: Boolean = true;
-    let scheduleObj: ScheduleComponent;
+    let scheduleObj = useRef<ScheduleComponent>(null);
     const instance: Internationalization = new Internationalization();
     const resourceData: Record<string, any>[] = [
         { text: 'Airways 1', id: 1 },
@@ -27,19 +28,19 @@ function Resources() {
         { text: 'Airways 3', id: 3 }
     ];
 
-    function getAirwaysName(value: number) {
+    const getAirwaysName = (value: number) => {
         return (value === 1) ? 'Airways 1' : (value === 2) ? 'Airways 2' : 'Airways 3';
     }
 
-    function getAirwaysImage(value: number) {
+    const getAirwaysImage = (value: number) => {
         return (value === 1) ? 'airways-1' : (value === 2) ? 'airways-2' : 'airways-3';
     }
 
-    function getFormattedTime(date: Date) {
+    const getFormattedTime = (date: Date) => {
         return instance.formatDate(date, { skeleton: 'Hm' });
     }
 
-    function onActionBegin(args: ActionEventArgs & ToolbarActionArgs): void {
+    const onActionBegin = (args: ActionEventArgs & ToolbarActionArgs): void => {
         if (args.requestType === 'toolbarItemRendering') {
             args.items[2].align = 'Center';
             args.items[2].suffixIcon = '';
@@ -47,30 +48,30 @@ function Resources() {
         }
     }
 
-    function onDataBinding(): void {
+    const onDataBinding = (): void => {
         if (initialLoad) {
-            scheduleObj.eventSettings.dataSource = generateEvents(scheduleObj);
+            scheduleObj.current.eventSettings.dataSource = generateEvents(scheduleObj.current);
             initialLoad = false;
         }
     }
 
-    function onDataBound(): void {
-        let eventCollections: Record<string, any>[] = scheduleObj.getCurrentViewEvents();
+    const onDataBound = (): void => {
+        let eventCollections: Record<string, any>[] = scheduleObj.current.getCurrentViewEvents();
         eventCollections.sort((a: Record<string, number>, b: Record<string, number>) => a.Fare - b.Fare);
         let indexDate: Date = new Date(((eventCollections[0] as Record<string, any>).StartTime as Date).getTime());
         indexDate.setHours(0, 0, 0, 0);
-        let index: number = scheduleObj.getIndexOfDate(scheduleObj.activeView.renderDates, indexDate);
-        let target: HTMLElement = scheduleObj.element.querySelectorAll('.e-work-cells')[index] as HTMLElement;
+        let index: number = scheduleObj.current.getIndexOfDate(scheduleObj.current.activeView.renderDates, indexDate);
+        let target: HTMLElement = scheduleObj.current.element.querySelectorAll('.e-work-cells')[index] as HTMLElement;
         addClass([target], 'best-price');
         target.appendChild(createElement('div', { className: 'best-price', innerHTML: 'Best Price' }));
     }
 
-    function onPopupOpen(args: PopupOpenEventArgs): void {
+    const onPopupOpen = (args: PopupOpenEventArgs): void => {
         args.cancel = true;
     }
 
-    function onChange(args: ChangeEventArgs): void {
-        let tdElement: HTMLElement = scheduleObj.element.querySelector('.best-price:not(.e-work-cells)');
+    const onChange = (args: ChangeEventArgs): void => {
+        let tdElement: HTMLElement = scheduleObj.current.element.querySelector('.best-price:not(.e-work-cells)');
         if (tdElement) {
             removeClass([closest(tdElement, 'td')], 'best-price');
             remove(tdElement);
@@ -86,17 +87,17 @@ function Resources() {
         });
         let filteredData: Record<string, any>[] = [];
         let resources: Record<string, any>[] =
-            scheduleObj.resourceBase.resourceCollection.slice(-1)[0].dataSource as Record<string, any>[];
+            scheduleObj.current.resourceBase.resourceCollection.slice(-1)[0].dataSource as Record<string, any>[];
         for (let resource of selectedResource) {
             let data: Record<string, any>[] = scheduleData.filter((event: Record<string, any>) => resources[resource].id === event.AirlineId);
             filteredData = filteredData.concat(data);
         }
-        filteredData = filterByFare(filteredData, scheduleObj);
-        scheduleObj.eventSettings.dataSource = filteredData;
-        scheduleObj.dataBind();
+        filteredData = filterByFare(filteredData, scheduleObj.current);
+        scheduleObj.current.eventSettings.dataSource = filteredData;
+        scheduleObj.current.dataBind();
     }
 
-    function filterByFare(appointments: Record<string, any>[], scheduleObj: Schedule): Record<string, any>[] {
+    const filterByFare = (appointments: Record<string, any>[], scheduleObj: Schedule): Record<string, any>[] => {
         let fieldMapping: EventFieldsMapping = scheduleObj.eventFields;
         appointments.sort((object1: Record<string, any>, object2: Record<string, any>) => {
             let d1: number = +(object1[fieldMapping.startTime] as Date);
@@ -122,7 +123,7 @@ function Resources() {
         return finalData;
     }
 
-    function generateEvents(scheduleObj: Schedule): Record<string, any>[] {
+    const generateEvents = (scheduleObj: Schedule): Record<string, any>[] => {
         let collections: Record<string, any>[] = [];
         let dataCollections: Record<string, any>[] = [
             {
@@ -169,54 +170,48 @@ function Resources() {
         return filteredCollection;
     }
 
-    function template(props): JSX.Element {
-        return (<div className="template-wrap">
-            <div className="fare-detail">${props.Fare}</div>
-            <div className="airline-name" style={{ display: 'flex', paddingLeft: '5px' }}>
-                <div className={"airline-logo " + getAirwaysImage(props.AirlineId)}></div>
-                <div className="airway-name">{getAirwaysName(props.AirlineId)}</div>
-            </div></div>);
+    const template = (props) => {
+        return (
+            <div className="template-wrap">
+                <div className="fare-detail">${props.Fare}</div>
+                <div className="airline-name" style={{ display: 'flex', paddingLeft: '5px' }}>
+                    <div className={"airline-logo " + getAirwaysImage(props.AirlineId)}></div>
+                    <div className="airway-name">{getAirwaysName(props.AirlineId)}</div>
+                </div>
+            </div>
+        );
     }
 
-    function toolTipTemplate(props): JSX.Element {
-        return (<div className="event-tooltip">
-            <div className="airline-header">
-                <div className={"airline-logo " + getAirwaysImage(props.AirlineId)}></div>
-                <div className="airline-name">{getAirwaysName(props.AirlineId)}</div>
+    const toolTipTemplate = (props) => {
+        return (
+            <div className="event-tooltip">
+                <div className="airline-header">
+                    <div className={"airline-logo " + getAirwaysImage(props.AirlineId)}></div>
+                    <div className="airline-name">{getAirwaysName(props.AirlineId)}</div>
+                </div>
+                <div className="airline-details text-size">
+                    <div className="airline-title">Fare Details:</div>
+                    <div className="airline-fare">${props.Fare} per person</div>
+                </div>
+                <div className="airline-flex-row text-size">
+                    <div className="airline-flex-col airline-title border-right">Arrival</div>
+                    <div className="airline-flex-col airline-title text-right">Depature</div>
+                </div>
+                <div className="airline-flex-row text-size">
+                    <div className="airline-flex-col border-right">{getFormattedTime(props.StartTime)}</div>
+                    <div className="airline-flex-col margin-right text-right">{getFormattedTime(props.EndTime)}</div>
+                </div>
             </div>
-            <div className="airline-details text-size">
-                <div className="airline-title">Fare Details:</div>
-                <div className="airline-fare">${props.Fare} per person</div>
-            </div>
-            <div className="airline-flex-row text-size">
-                <div className="airline-flex-col airline-title border-right">Arrival</div>
-                <div className="airline-flex-col airline-title text-right">Depature</div>
-            </div>
-            <div className="airline-flex-row text-size">
-                <div className="airline-flex-col border-right">{getFormattedTime(props.StartTime)}</div>
-                <div className="airline-flex-col margin-right text-right">{getFormattedTime(props.EndTime)}</div>
-            </div></div>
         );
     }
     return (
         <div className='schedule-control-section'>
             <div className='col-lg-9 control-section'>
                 <div className='control-wrapper'>
-                    <div className='schedule-demo-heading'>
-                        Cheapest one way fares from Barcelona to Los Angeles
-                    </div>
-                    <ScheduleComponent ref={schedule => scheduleObj = schedule} cssClass='schedule-resources' width='100%'
-                        height='650px' readonly={true} selectedDate={new Date(2021, 3, 1)}
-                        eventSettings={{
-                            template: template.bind(this), enableTooltip: true,
-                            tooltipTemplate: toolTipTemplate.bind(this)
-                        }}
-                        actionBegin={onActionBegin.bind(this)} dataBinding={onDataBinding.bind(this)}
-                        popupOpen={onPopupOpen.bind(this)} dataBound={onDataBound.bind(this)} >
+                    <div className='schedule-demo-heading'>Cheapest one way fares from Barcelona to Los Angeles</div>
+                    <ScheduleComponent ref={scheduleObj} cssClass='schedule-resources' width='100%' height='650px' readonly={true} selectedDate={new Date(2021, 3, 1)} eventSettings={{ template: template.bind(this), enableTooltip: true, tooltipTemplate: toolTipTemplate.bind(this) }} actionBegin={onActionBegin} dataBinding={onDataBinding} popupOpen={onPopupOpen} dataBound={onDataBound} >
                         <ResourcesDirective>
-                            <ResourceDirective field='AirlineId' title='Airline' name='Airlines' allowMultiple={true}
-                                dataSource={resourceData} textField='text' idField='id' >
-                            </ResourceDirective>
+                            <ResourceDirective field='AirlineId' title='Airline' name='Airlines' allowMultiple={true} dataSource={resourceData} textField='text' idField='id' />
                         </ResourcesDirective>
                         < ViewsDirective >
                             <ViewDirective option='Month' />
@@ -232,26 +227,21 @@ function Resources() {
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
                                     <div className='airways-1'>
-                                        <CheckBoxComponent id='airways-1' cssClass='e-resource e-airways-1' checked={true}
-                                            label='Airways 1' change={onChange.bind(this)} >
-                                        </CheckBoxComponent>
+                                        <CheckBoxComponent id='airways-1' cssClass='e-resource e-airways-1' checked={true} label='Airways 1' change={onChange} />
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
                                     <div className='airways-2'>
-                                        <CheckBoxComponent id='airways-2' cssClass='e-resource e-airways-2' checked={true}
-                                            label='Airways 2' change={onChange.bind(this)} ></CheckBoxComponent>
+                                        <CheckBoxComponent id='airways-2' cssClass='e-resource e-airways-2' checked={true} label='Airways 2' change={onChange} ></CheckBoxComponent>
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
                                     <div className='airways-3'>
-                                        <CheckBoxComponent id='airways-3' cssClass='e-resource e-airways-3' checked={true}
-                                            label='Airways 3' change={onChange.bind(this)} >
-                                        </CheckBoxComponent>
+                                        <CheckBoxComponent id='airways-3' cssClass='e-resource e-airways-3' checked={true} label='Airways 3' change={onChange} />
                                     </div>
                                 </td>
                             </tr>

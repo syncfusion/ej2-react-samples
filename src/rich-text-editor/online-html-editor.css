@@ -10,7 +10,7 @@
       width: 100%;
       position: relative;
       box-sizing: border-box;
-      padding: 5px;
+      padding: 0px;
       padding-left:0px;
       padding-right:0px;
     }
@@ -21,6 +21,7 @@
       padding-left: 10px;
       text-align: center;
       font-size: 12px !important;
+      margin: 10px 0;
     }
 
     .onlineEditor .e-control.e-splitter .e-split-bar.e-split-bar-horizontal.e-last-bar {
@@ -91,10 +92,6 @@
     {
       padding:0px;
     }
-    
-    .onlineEditor .e-splitter.e-splitter-horizontal .e-pane.e-pane-horizontal, .onlineEditor .e-splitter.e-splitter-vertical .e-pane.e-pane-horizontal {
-      overflow: unset;
-    }
     .onlineEditor .CodeMirror-sizer{
        margin-right: 10px;
        border: none;
@@ -105,6 +102,10 @@
     }
     .fluent-dark .CodeMirror-gutters, .fluent-dark .CodeMirror {
       background-color: #1B1A19;
+      color: #fff;
+    }
+    .material3-dark .CodeMirror-gutters, .material3-dark .CodeMirror {
+      background-color: #1C1B1F;
       color: #fff;
     }
     .bootstrap-dark .CodeMirror-gutters, .bootstrap-dark .CodeMirror {
@@ -128,6 +129,6 @@
       color: #fff;
     }
     .fabric-dark .title, .bootstrap5-dark .title, .bootstrap-dark .title, .fluent-dark .title, 
-    .material-dark .title, .tailwind-dark .title, .highcontrast .title {
+    .material-dark .title, .tailwind-dark .title, .highcontrast .title,.material3-dark .title {
       color: #fff;
     }

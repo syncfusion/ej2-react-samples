@@ -56,7 +56,7 @@ export class ProgressButton extends SampleBase<{}, {}> {
                                 <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                                     <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                                         <ProgressButtonComponent id="roundbtn" spinSettings={this.spinCenter} animationSettings={this.zoomOut} cssClass="e-round e-small e-success"
-                                            iconCss="e-btn-sb-icons e-play-icon"></ProgressButtonComponent>
+                                            iconCss="e-btn-sb-icons e-progress-play-icon"></ProgressButtonComponent>
                                     </div>
 
                                     <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">

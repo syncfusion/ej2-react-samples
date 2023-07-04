@@ -83,10 +83,11 @@ export class RemoteData extends SampleBase<{}, {}> {
                         chartArea={{ border: { width: 0 } }}
                         axisLabelRender={labelRender}
                         pointRender={this.pointRender.bind(this)}
+                        tooltipRender={this.tooltipRender.bind(this)}
                         title="Sprint Task Analysis"
                         loaded={this.onChartLoad.bind(this)}
                         legendSettings={{ visible: false }}
-                        tooltip={{ enable: true }}>
+                        tooltip={{ enable: true, header: "Freight rate" }}>
                         <Inject services={[ColumnSeries, Legend, Category, Tooltip, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={dataManager} xName='CustomerID' type='Column' yName='Freight' name='Story Point' query={query}
@@ -161,6 +162,10 @@ export class RemoteData extends SampleBase<{}, {}> {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
     };
+
+    public tooltipRender (args: any) {
+        args.text = '<b>' + args.data.pointX + ': ' + '$' + args.data.pointY * 1000;
+    };
         
     public load(args: ILoadedEventArgs): void {
         let div: HTMLElement = document.getElementById('waitingpopup');
@@ -172,7 +177,7 @@ export class RemoteData extends SampleBase<{}, {}> {
         div.style.display = '';
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

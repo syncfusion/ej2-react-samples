@@ -71,7 +71,7 @@ export class OrderService {
       onFailure: (e: Error) => { return false; }
   });
 
-  private BASE_URL: string = 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders';
+  private BASE_URL: string = 'https://services.odata.org/V4/Northwind/Northwind.svc/Orders';
 
   public execute(state: DataStateChangeEventArgs): Promise<DataResult> {
       return this.getData(state);
@@ -87,11 +87,11 @@ export class OrderService {
           }).reverse().join(',');
       }
 
-      this.ajax.url = `${this.BASE_URL}?${pageQuery}${sortQuery}&$inlinecount=allpages&$format=json`;
+      this.ajax.url = `${this.BASE_URL}?${pageQuery}${sortQuery}&$count=true`;
 
       return this.ajax.send().then((response: any) => {
           let data: any = JSON.parse(response);
-          return { result: data['d']['results'], count: parseInt(data['d']['__count'], 10) };
+          return { result: data['value'], count: parseInt(data['@odata.count'], 10) };
       });
   }
 }

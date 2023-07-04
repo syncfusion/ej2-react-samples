@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './default-style.css';
 
-function Default() {
-     React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (
@@ -17,7 +18,7 @@ function Default() {
             </div>
             <div id="action-description">
                 <p>
-                    The following sample demonstrates the default functionalities of the DateTimePicker. Enter the value in input text box or Click/Touch the date and time popup icon to select the desired value. 
+                    The following sample demonstrates the default functionalities of the DateTimePicker. Enter the value in input text box or Click/Touch the date and time popup icon to select the desired value.
                 </p>
             </div>
             <div id='description'>

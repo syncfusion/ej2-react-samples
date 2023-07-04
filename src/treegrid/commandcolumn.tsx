@@ -28,9 +28,9 @@ export class Command extends SampleBase<{}, {}> {
               <ColumnDirective field='taskName' headerText='Task Name' width='200' validationRules={this.taskNameRule}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='140' textAlign='Right'
                 editType='datepickeredit' format='yMd' validationRules={this.dateRule} type='date' />
-              <ColumnDirective field='duration' headerText='Duration' width='90' editType='numericedit' textAlign='Right'
+              <ColumnDirective field='duration' headerText='Duration' width='130' editType='numericedit' textAlign='Right'
                 validationRules={this.durationRule} edit={this.editparams2} />
-              <ColumnDirective field='progress' headerText='Progress' width='90' textAlign='Right' editType='numericedit' 
+              <ColumnDirective field='progress' headerText='Progress' width='150' textAlign='Right' editType='numericedit' 
                 validationRules={this.durationRule} edit={this.editparams2} />
               <ColumnDirective headerText='Manage Records' width='160' commands={this.commands}></ColumnDirective>
             </ColumnsDirective>

@@ -341,7 +341,7 @@ function MailMerge() {
                     mergeDocument();
                     break;
                 case 'InsertField':
-                    showInsertFielddialog(this.container);
+                    showInsertFielddialog(container);
                     break;
             }
         };

@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -13,43 +12,34 @@ import * as dataSource from './datasource.json';
  *  Schedule keyboard interaction sample
  */
 
-function KeyboardInteraction() {
-  React.useEffect(() => {
+const KeyboardInteraction = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  let scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).zooEventsData, null, true) as Record<string, any>[];
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
-  }
-
-  function renderComplete(): void {
-    document.body.addEventListener('keydown', (e: KeyboardEvent) => {
-      let scheduleElement: HTMLElement = document.getElementById('schedule');
-      if (e.altKey && e.keyCode === 74 && scheduleElement) {
-        scheduleElement.focus();
-      }
-    });
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, scheduleObj.current.currentView);
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent id='schedule' width='100%' height='650px' selectedDate={new Date(2021, 1, 15)}
-            ref={t => scheduleObj = t} eventSettings={{ dataSource: data }} eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent id='schedule' width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={scheduleObj} eventSettings={{ dataSource: data }} eventRendered={onEventRendered}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>
       </div>
       <div id='action-description'>
-        <p>This demo showcases the keyboard shortcuts applicable on Scheduler and also lists out in below description,
-          how those applicable shortcuts interacts with Scheduler actions.</p>
+        <p>This demo showcases the keyboard shortcuts applicable on Scheduler and also lists out in below description, how those applicable shortcuts interacts with Scheduler actions.</p>
       </div>
       <div id='description'>
-        <p>All the Scheduler actions can be controlled via keyboard keys and is availed by using <code>allowKeyboardInteraction</code> property
-          which is set to true by default. The applicable key combinations and its relative functionalities are listed below.</p>
+        <p>
+          All the Scheduler actions can be controlled via keyboard keys and is availed by using <code>allowKeyboardInteraction</code> property
+          which is set to true by default. The applicable key combinations and its relative functionalities are listed below.
+        </p>
         <table style={{ width: '100%' }}>
           <tr>
             <th style={{ width: '200px' }}>
@@ -69,15 +59,13 @@ function KeyboardInteraction() {
             <td style={{ padding: '4px 0' }}>
               <kbd>Tab</kbd>
             </td>
-            <td>Focuses the first or active item on the scheduler header bar and then move the focus to the next available event
-              elements. If no events present, then focus moves out of the component.</td>
+            <td>Focuses the first or active item on the scheduler header bar and then move the focus to the next available event elements. If no events present, then focus moves out of the component.</td>
           </tr>
           <tr>
             <td style={{ padding: '4px 0' }}>
               <kbd>Shift</kbd> + <kbd>Tab</kbd>
             </td>
-            <td>Reverse focusing of the Tab functionality. Inverse focusing of event elements from the last one and then move
-              onto the first or active item on Scheduler header bar and then moves out of the component.</td>
+            <td>Reverse focusing of the Tab functionality. Inverse focusing of event elements from the last one and then move onto the first or active item on Scheduler header bar and then moves out of the component.</td>
           </tr>
           <tr>
             <td style={{ padding: '4px 0' }}>
@@ -137,8 +125,7 @@ function KeyboardInteraction() {
             <td style={{ padding: '4px 0' }}>
               <kbd>Left</kbd> or <kbd>Right Arrow</kbd> keys
             </td>
-            <td>On pressing any of these keys when focus is currently on the Scheduler header bar, moves the focus to the previous
-              or next items in the header bar.</td>
+            <td>On pressing any of these keys when focus is currently on the Scheduler header bar, moves the focus to the previous or next items in the header bar.</td>
           </tr>
           <tr>
             <td style={{ padding: '4px 0' }}>

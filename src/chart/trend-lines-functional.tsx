@@ -2,11 +2,9 @@
  * Samples for Trendlines
  */
 import * as React from "react";
+import { useEffect } from 'react';
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, TrendlineDirective, TrendlinesDirective, Inject, Tooltip,
-     LineSeries, ScatterSeries, ILoadedEventArgs, SplineSeries, Trendlines, Category, ChartTheme, Legend, 
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, TrendlineDirective, TrendlinesDirective, Inject, Tooltip, LineSeries, ScatterSeries, ILoadedEventArgs, SplineSeries, Trendlines, Category, ChartTheme, Legend } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { Browser } from '@syncfusion/ej2-base';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
@@ -16,17 +14,17 @@ import { EmitType } from '@syncfusion/ej2-base';
 import { createBrowserHistory } from "history";
 
 let series1: Object[] = [
-      { Period : 1947, Rupees : 4.76 },
-          { Period : 1967, Rupees : 7.50 },
-         { Period : 1974, Rupees : 8.10 },
-         { Period : 1989, Rupees : 16.64 },
-       { Period : 1990, Rupees : 17.32},
-        { Period : 2000, Rupees : 43.56 },
-          { Period : 2007, Rupees : 39.27 },
-         { Period : 2013, Rupees : 56.57 },
-         { Period : 2019, Rupees : 71.74 },
-       { Period : 2020, Rupees : 76.67 },
-         { Period : 2021, Rupees : 72.75},
+    { Period : 1947, Rupees : 4.76 },
+    { Period : 1967, Rupees : 7.50 },
+    { Period : 1974, Rupees : 8.10 },
+    { Period : 1989, Rupees : 16.64 },
+    { Period : 1990, Rupees : 17.32},
+    { Period : 2000, Rupees : 43.56 },
+    { Period : 2007, Rupees : 39.27 },
+    { Period : 2013, Rupees : 56.57 },
+    { Period : 2019, Rupees : 71.74 },
+    { Period : 2020, Rupees : 76.67 },
+    { Period : 2021, Rupees : 72.75},
 ];
 
 let powerData: object[] = [
@@ -35,180 +33,68 @@ let powerData: object[] = [
 ];
 
 const SAMPLE_CSS = `
-     .control-fluid {
-         padding: 0px !important;
-     }
-     #charts_Series_0_TrendLine_0 {
-         stroke-dasharray: 10px 10px;
-         stroke-linejoin: round; stroke-linecap: round;
-         -webkit-animation: dash 1s linear infinite;
-         animation: dash 1s linear infinite;
-     }
-     @-webkit-keyframes dash {
-         100% {
-             stroke-dashoffset: -20px;
-         }
-     }
- 
-     @keyframes dash {
-         100% {
-             stroke-dashoffset: -20px;
-         }
-     }`;
-function Trend() {
-    React.useEffect(() => {
+    .control-fluid {
+        padding: 0px !important;
+    }
+    #charts_Series_0_TrendLine_0 {
+        stroke-dasharray: 10px 10px;
+        stroke-linejoin: round; stroke-linecap: round;
+        -webkit-animation: dash 1s linear infinite;
+        animation: dash 1s linear infinite;
+    }
+    @-webkit-keyframes dash {
+        100% {
+            stroke-dashoffset: -20px;
+        }
+    }
+    @keyframes dash {
+        100% {
+            stroke-dashoffset: -20px;
+        }
+    }`;
+const Trend = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let chartInstance: ChartComponent;
-    let dropElement: DropDownListComponent;
-    let checkElement: HTMLInputElement;
-    let forwardElement: NumericTextBoxComponent;
-    let backwardElement: NumericTextBoxComponent;
-    let polynomialElement: NumericTextBoxComponent;
-    let periodElement: NumericTextBoxComponent;
-    let loaded: EmitType<ILoadedEventArgs>;
-    let forwardForecast: boolean = false;
-    let backwardForecast: boolean = false;
-    let polynomialOrder: boolean = true;
-    let period: boolean = true;
-    function change(e: Event): void {
-        let type: any = document.getElementById('trendLineType');
-        chartInstance.series[0].dataSource = [];
-        chartInstance.series[0].animation.enable = false;
-        chartInstance.series[0].trendlines[0].type = type.value;
-        chartInstance.series[0].trendlines[0].name = type.value;
-        if (type.value !== 'Power') {
-            chartInstance.series[0].dataSource = series1;
-            chartInstance.series[0].name = 'Rupees';
-            chartInstance.primaryXAxis.title = '';
-            chartInstance.primaryYAxis.interval = 10;
-            chartInstance.primaryYAxis.title = 'Rupees against Dollars';
-            chartInstance.title = 'Historical Indian Rupee Rate (INR USD)';
-            if (type.value === 'MovingAverage') {
-                chartInstance.series[0].trendlines[0].marker.visible = false;
-            }
-        } else {
-            chartInstance.series[0].dataSource = powerData;
-            chartInstance.series[0].name = 'Meters';
-            chartInstance.primaryXAxis.title = 'Seconds';
-            chartInstance.primaryYAxis.title = 'Meters';
-            chartInstance.primaryYAxis.interval = 100;
-            chartInstance.title = 'Distance Measurement';
-        }
-        if (type.value !== 'Polynomial' && type.value !== 'MovingAverage') {
-            period = polynomialOrder = true;
-            forwardForecast = backwardForecast = false;
-        } else if (type.value === 'MovingAverage') {
-            period = false;
-            forwardForecast = backwardForecast = polynomialOrder = true;
-        } else {
-            forwardForecast = backwardForecast = polynomialOrder = false;
-            period = true;
-        }
-        forwardElement.enabled = !forwardForecast;
-        backwardElement.enabled = !backwardForecast;
-        polynomialElement.enabled = !polynomialOrder;
-        periodElement.enabled = !period;
-        chartInstance.refresh();
-    }
-    function checkForwardForecast(e: Event): void {
-        let value: number = Number((document.getElementById('forwardForecast') as HTMLInputElement).value);
-        chartInstance.series[0].trendlines[0].forwardForecast = value;
-        chartInstance.series[0].animation.enable = false;
-        chartInstance.refresh();
-    }
-    function checkBackwardForecast(e: Event): void {
-        let value: number = Number((document.getElementById('backwardForecast') as HTMLInputElement).value);
-        chartInstance.series[0].trendlines[0].backwardForecast = value;
-        chartInstance.series[0].animation.enable = false;
-        chartInstance.refresh();
-    }
-    function checkPolynomialOrder(e: Event): void {
-        let value: number = Number((document.getElementById('polynomial') as HTMLInputElement).value);
-        chartInstance.series[0].trendlines[0].polynomialOrder = value;
-        chartInstance.series[0].animation.enable = false;
-        chartInstance.refresh();
-    }
-    function checkPeriod(e: Event): void {
-        let value: number = Number((document.getElementById('period') as HTMLInputElement).value);
-        chartInstance.series[0].trendlines[0].period = value;
-        chartInstance.series[0].animation.enable = false;
-        chartInstance.refresh();
-    }
-    let droplist: { [key: string]: Object }[] = [
-        { value: 'Linear' },
-        { value: 'Exponential' },
-        { value: 'Power' },
-        { value: 'Logarithmic' },
-        { value: 'Polynomial' },
-        { value: 'MovingAverage' }
-    ];
+    
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        document.getElementById('charts').setAttribute('title', '');
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
-            <div className='control-section '>
-               
-                    <ChartComponent id='charts' style={{ textAlign: "center" }} ref={chart => chartInstance = chart} load={load.bind(this)}
-                        primaryXAxis={{
-                            valueType: 'Category',
-                            edgeLabelPlacement: 'Shift',
-                            majorGridLines: { width: 0 },
-                            majorTickLines: {width: 0},
-                            lineStyle:{ width: 1}
-                        }}
-                        primaryYAxis={{
-                            minimum: 0 ,
-                            maximum: 80,
-                            interval: 10,
-                            labelFormat: "₹{value}",
-                            title: 'Rupees against Dollars',
-                            minorTickLines: {width: 0},
-                            lineStyle: { width: 0 }, majorTickLines: { width: 0 }
-                        }}
-                        chartArea={{ border: { width: 0 } }}
-                        tooltip= {
-                            {
-                                enable: true,
-                            }
-                        }
-                        width= {Browser.isDevice ? '100%' : '75%'}
-                        title='USD to INR Rates' loaded={onChartLoad.bind(this)}>
-                        <Inject services={[Category,  ScatterSeries, SplineSeries, LineSeries, Tooltip, Trendlines, Category, Legend]} />
-                        <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={series1} xName='Period' yName='Rupees' name='Rupees' type='Spline' marker={{ visible: true , isFilled: true, height: 7, width: 7}}>
-                                <TrendlinesDirective>
-                                    <TrendlineDirective type='Linear' width={3}  name='Trends' fill='#C64A75'>
-                                    </TrendlineDirective>
-                                </TrendlinesDirective>
-                            </SeriesDirective>
-                        </SeriesCollectionDirective>
-                    </ChartComponent>
-                
-               
+            <style>{SAMPLE_CSS}</style>
+            <div className='control-section '>               
+                <ChartComponent id='charts' style={{ textAlign: "center" }} load={load.bind(this)} primaryXAxis={{ valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: {width: 0}, lineStyle:{ width: 1} }} primaryYAxis={{ minimum: 0 , maximum: 80, interval: 10, labelFormat: "₹{value}", title: 'Rupees against Dollars', minorTickLines: {width: 0}, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip= {{ enable: true }} width= {Browser.isDevice ? '100%' : '75%'} title='USD to INR Rates' loaded={onChartLoad.bind(this)}>
+                    <Inject services={[Category,  ScatterSeries, SplineSeries, LineSeries, Tooltip, Trendlines, Category, Legend]} />
+                    <SeriesCollectionDirective>
+                        <SeriesDirective dataSource={series1} xName='Period' yName='Rupees' name='Rupees' type='Spline' marker={{ visible: true , isFilled: true, height: 7, width: 7}}>
+                            <TrendlinesDirective>
+                                <TrendlineDirective type='Linear' width={3}  name='Trends' fill='#C64A75' />
+                            </TrendlinesDirective>
+                        </SeriesDirective>
+                    </SeriesCollectionDirective>
+                </ChartComponent>
             </div>
             <div id="action-description">
-                <p>
-                This sample shows the trend of Indian rupees and US dollar variations in the chart.
-                </p>
+                <p>This sample shows the trend of Indian rupees and US dollar variations in the chart.</p>
             </div>
             <div id="description">
-                <p>
-                In this example, you can see how to render and configure the trendlines. The trendline is a line drawn over the chart to display the overall direction of the results.
-                </p>
-                <p>
-                This chart supports the following types.
-                </p>
+                <p>In this example, you can see how to render and configure the trendlines. The trendline is a line drawn over the chart to display the overall direction of the results.</p>
+                <p>This chart supports the following types.</p>
                 <ul>
-                        <li>Linear</li>
-                        <li>Exponential</li>
-                        <li>Logarithmic</li>
-                        <li>Polynomial</li>
-                        <li>Power</li>
-                        <li>Moving Average</li>
-                        <li>Forecasting</li>
-                    </ul>
+                    <li>Linear</li>
+                    <li>Exponential</li>
+                    <li>Logarithmic</li>
+                    <li>Polynomial</li>
+                    <li>Power</li>
+                    <li>Moving Average</li>
+                    <li>Forecasting</li>
+                </ul>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -221,13 +107,5 @@ function Trend() {
             </div>
         </div >
     )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        document.getElementById('charts').setAttribute('title', '');
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
 }
 export default Trend;

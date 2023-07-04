@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { ButtonComponent, SpeedDial, SpeedDialComponent, SpeedDialItemModel } from '@syncfusion/ej2-react-buttons';
+import { useEffect, useRef } from 'react';
+import { ButtonComponent, SpeedDialComponent, SpeedDialItemModel } from '@syncfusion/ej2-react-buttons';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import './template.css';
 
-function Template() {
-    React.useEffect(() => {
+const Template = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let speeddialObj: SpeedDial ;
+    const speeddialObj = useRef<SpeedDialComponent>(null) ;
     const items: SpeedDialItemModel[] = [
         { 
             text: 'Cut',
@@ -31,15 +32,15 @@ function Template() {
             iconCss: 'speeddial-icons speeddial-icon-save'
         }
     ];
-    function closeClick() {
-        this.speeddialObj.hide();
+    const closeClick = () => {
+        speeddialObj.current.hide();
     }
 
-    function submitClick() {
-        this.speeddialObj.hide();
+    const submitClick = () => {
+        speeddialObj.current.hide();
     }
 
-    function itemTemplate(props: any): JSX.Element {
+    const itemTemplate = (props: any) => {
         let classname: string = "icon " + props.properties.iconCss;
         return (
             <div className="itemlist">
@@ -48,7 +49,7 @@ function Template() {
             </div>
         );
     }
-    function popupTemplate(): JSX.Element {
+    const popupTemplate = () => {
         return (
             <div className="popuptempContent">
                 <div className="speeddial-form">
@@ -77,7 +78,7 @@ function Template() {
             <div className='control-section'>
                 <div id="speed-dial-wrapper">
                     <div className="speeddial-template-target  custom-index" id="speeddialtarget">
-                        <SpeedDialComponent target="#speeddialtarget" cssClass="popupSpeedDial" popupTemplate={popupTemplate} content="Feedback" position="BottomLeft" openIconCss="speeddial-icons speeddial-icon-feedback" ref={scope => { speeddialObj = scope }}></SpeedDialComponent>
+                        <SpeedDialComponent target="#speeddialtarget" cssClass="popupSpeedDial" popupTemplate={popupTemplate} content="Feedback" position="BottomLeft" openIconCss="speeddial-icons speeddial-icon-feedback" ref={speeddialObj}></SpeedDialComponent>
                         <SpeedDialComponent target="#speeddialtarget" itemTemplate={itemTemplate} position="BottomRight" content="Edit" openIconCss="speeddial-icons speeddial-icon-edit" items={items}></SpeedDialComponent>
                     </div>
                 </div>

@@ -1,11 +1,12 @@
 import { ChipDirective, ChipListComponent, ChipsDirective } from '@syncfusion/ej2-react-buttons';
 import * as React from 'react';
+import { useEffect } from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -80,7 +81,7 @@ function Default() {
             </div >
             <div id="action-description">
                 <p>This sample demonstrates the default functionalities of Chips with different types and predefined styles. Click
-                and interact the chip, to select single or multiple options from chips collection.</p>
+                    and interact the chip, to select single or multiple options from chips collection.</p>
             </div>
             <div id="description">
                 <p>

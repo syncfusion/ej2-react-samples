@@ -1,21 +1,20 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PropertyPane } from '../common/property-pane';
-import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
+import { HeaderPosition, TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { updateSampleSection } from '../common/sample-base';
 import './tab.component.css';
 
-function Orientation() {
-    React.useEffect(() => {
+const Orientation = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let tabObj: TabComponent;
-    let list1: ListViewComponent;
-    let list2: ListViewComponent;
-    let list3: ListViewComponent;
+    const [orientation, setOrientation] = useState<HeaderPosition>("Top");
+    let tabObj = useRef<TabComponent>(null);
 
     // Mapping ListView component dataSource property
     let romeEmployees: { [key: string]: Object }[] = [
@@ -39,29 +38,27 @@ function Orientation() {
     ];
 
     // Change event funtion for DropDownList component   
-    function changeOrientationMode(e: ChangeEventArgs): void {
-        let placement: string = (document.getElementById('orientation') as HTMLSelectElement).value;
-        tabObj.headerPlacement = placement as any;
-        tabObj.dataBind();
+    const changeOrientationMode = (e: ChangeEventArgs): void => {
+        setOrientation(e.itemData.text as HeaderPosition);
     }
 
     // Change event funtion for DropDownList component   
-    function changeHeaderStyles(e: ChangeEventArgs): void {
+    const changeHeaderStyles = (e: ChangeEventArgs): void => {
         removeStyleClass();
         let name: string = (document.getElementById('headerStyles') as HTMLSelectElement).value;
         if (name === 'Fill') {
-            tabObj.element.classList.add('e-fill');
+            tabObj.current.element.classList.add('e-fill');
         } else if (name === 'Accent') {
-            tabObj.element.classList.add('e-background');
-            tabObj.element.classList.add('e-accent');
+            tabObj.current.element.classList.add("e-background");
+            tabObj.current.element.classList.add("e-accent");
         }
-        (tabObj as any).refreshActiveBorder();
+        (tabObj as any).current.refreshActiveBorder();
     }
 
-    function removeStyleClass(): void {
-        tabObj.element.classList.remove('e-fill');
-        tabObj.element.classList.remove('e-background');
-        tabObj.element.classList.remove('e-accent');
+    const removeStyleClass = (): void => {
+        tabObj.current.element.classList.remove("e-fill");
+        tabObj.current.element.classList.remove("e-background");
+        tabObj.current.element.classList.remove("e-accent");
     }
 
     // Mapping DropDownList dataSource property
@@ -73,21 +70,20 @@ function Orientation() {
     // Mapping DropDownList fields property
     let fields: object = { text: 'text', value: 'value' };
 
-    //Map the appropriate columns to fields property
-    let listfields: Object = { text: 'name', id: 'id' };
-
     // Mapping DropDownList value property
     let orientVal: string = 'top';
 
     // Mapping DropDownList dataSource property
     let hData: { [key: string]: Object }[] = [
-        { 'value': 'default', 'text': 'Default' }, { 'value': 'fill', 'text': 'Fill' }, { 'value': 'accent', 'text': 'Accent' }
+        { 'value': 'default', 'text': 'Default' },
+        { 'value': 'fill', 'text': 'Fill' },
+        { 'value': 'accent', 'text': 'Accent' }
     ];
 
     // Mapping DropDownList value property
     let hdrVal: string = 'default';
 
-    function templateString(data: any): JSX.Element {
+    const templateString = (data: any) => {
         return (
             <div className="template-container">
                 <div className="left"><img className='empImg' src={`src/tab/Employees/${data.id}.png`} alt='${data.id}' />
@@ -100,7 +96,7 @@ function Orientation() {
         );
     }
 
-    function template1() {
+    const template1 = () => {
         return (
             <div>
                 <div className="content-title">
@@ -111,7 +107,7 @@ function Orientation() {
             </div>
         );
     }
-    function template2() {
+    const template2 = () => {
         return (
             <div>
                 <div className="content-title">
@@ -122,7 +118,7 @@ function Orientation() {
             </div>
         );
     }
-    function template3() {
+    const template3 = () => {
         return (
             <div>
                 <div className="content-title">
@@ -141,7 +137,7 @@ function Orientation() {
             <div className='control-section tab-control-section row'>
                 <div className='col-lg-8'>
                     {/* Render the Tab Component */}
-                    <TabComponent ref={(tab) => { tabObj = tab }} cssClass='orientation-tab' showCloseButton={true} heightAdjustMode='None' height={320}>
+                    <TabComponent ref={tabObj} cssClass='orientation-tab' headerPlacement={orientation} showCloseButton={true} heightAdjustMode='None' height={320} >
                         <TabItemsDirective>
                             <TabItemDirective header={headertext[0]} content={template1.bind(this)} />
                             <TabItemDirective header={headertext[1]} content={template2.bind(this)} />
@@ -160,8 +156,7 @@ function Orientation() {
                                     <td style={{ width: '50%' }}>
                                         <div>
                                             {/* Render the DropDownList Component */}
-                                            <DropDownListComponent id='orientation' dataSource={oData} fields={fields}
-                                                value={orientVal} width={'90%'} change={changeOrientationMode.bind(this)} />
+                                            <DropDownListComponent id='orientation' dataSource={oData} fields={fields} value={orientVal} width={'90%'} change={changeOrientationMode.bind(this)} />
                                         </div>
                                     </td>
                                 </tr>
@@ -172,8 +167,7 @@ function Orientation() {
                                     <td style={{ width: '50%' }}>
                                         <div>
                                             {/* Render the DropDownList Component */}
-                                            <DropDownListComponent id='headerStyles' dataSource={hData} fields={fields}
-                                                value={hdrVal} width={'90%'} change={changeHeaderStyles.bind(this)} />
+                                            <DropDownListComponent id='headerStyles' dataSource={hData} fields={fields} value={hdrVal} width={'90%'} change={changeHeaderStyles.bind(this)} />
                                         </div>
                                     </td>
                                 </tr>
@@ -207,8 +201,7 @@ function Orientation() {
                     If above classes not included in root element default style will applied in Tab component.
                 </p>
                 <p>
-                    More information about Tab can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">
-                        documentation</a> section.
+                    More information about Tab can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">documentation</a> section.
                 </p>
             </div>
         </div>

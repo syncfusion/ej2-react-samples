@@ -1,28 +1,31 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import { rippleMouseHandler } from '@syncfusion/ej2-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './switch.css';
+import { AsyncSettings } from '@syncfusion/ej2-react-inputs';
 
-function Switch() {
-    React.useEffect(() => {
+const Switch = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    function rendereComplete(): void {
-        let elemArray: NodeListOf<Element> = document.querySelectorAll(".switch-control label");
-        for (let i: number = 0, len: number = elemArray.length; i < len; i++) {
-            elemArray[i].addEventListener("mouseup", rippleHandler);
-            elemArray[i].addEventListener("mousedown", rippleHandler);
-        }
-        function rippleHandler(e: MouseEvent): void {
+    const rendereComplete = (): void => {
+
+        const rippleHandler = (e: MouseEvent): void => {
             let rippleSpan: Element = document.querySelector(".e-ripple-container");
             if (rippleSpan) {
                 rippleMouseHandler(e, rippleSpan);
             }
         }
+        
+        let elemArray: NodeListOf<Element> = document.querySelectorAll(".switch-control label");
+        for (let i: number = 0, len: number = elemArray.length; i < len; i++) {
+            elemArray[i].addEventListener("mouseup", rippleHandler);
+            elemArray[i].addEventListener("mousedown", rippleHandler);
+        }
     }
-
     return (
         <div className="control-pane">
             <div className="col-lg-12 control-section">

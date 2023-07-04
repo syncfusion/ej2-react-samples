@@ -13,20 +13,24 @@ export class ProfilePicture extends SampleBase<{}, {}> {
     public buttonEle: HTMLButtonElement;
     public buttonRef: React.Ref<HTMLButtonElement>;
     public image: HTMLImageElement;
-
+    public imgSrc: string = '';
     private fileChanged(args: any): void {
         const URL = window.URL; const url = URL.createObjectURL((args.target as any).files[0]);
         this.imageEditorInstance.open(url.toString());
         (document.getElementById('img-upload') as HTMLInputElement).value = null;
+        this.imgSrc = url.toString();
     }
 
     private handleImageLoaded(): void {
-        let canvas: HTMLCanvasElement = document.querySelector('#img-canvas');
-        let image: HTMLImageElement = document.querySelector('#custom-img');
-        let ctx: CanvasRenderingContext2D = canvas.getContext('2d');
-        canvas.width = image.width < image.height ? image.width : image.height; 
-        canvas.height = canvas.width;
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        if (this.imgSrc === '') {
+            let canvas: HTMLCanvasElement = document.querySelector('#img-canvas');
+            let image: HTMLImageElement = document.querySelector('#custom-img');
+            let ctx: CanvasRenderingContext2D = canvas.getContext('2d');
+            canvas.width = image.width < image.height ? image.width : image.height; 
+            canvas.height = canvas.width;
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+            document.querySelector('.e-profile').classList.remove('e-hide');
+        }
     }
 
     buttons: ButtonPropsModel[] = [
@@ -87,6 +91,10 @@ export class ProfilePicture extends SampleBase<{}, {}> {
         tempCanvas.remove();
         parentDiv.style.borderRadius = '100%'; canvas.style.backgroundColor = '#fff';
         this.dialogInstance.hide();
+        if (this.imgSrc !== '') {
+	    const img: HTMLImageElement = document.querySelector('#custom-img');
+            img.src = this.imgSrc;
+	}
     }
 
     contentTemplate() {
@@ -105,15 +113,15 @@ export class ProfilePicture extends SampleBase<{}, {}> {
 
     private editClicked(): void {
         this.dialogInstance.show();
-        let canvas: HTMLCanvasElement = document.querySelector('#img-canvas');
-        this.imageEditorInstance.open(canvas.toDataURL());
+        let image: HTMLImageElement = document.querySelector('#custom-img');
+        this.imageEditorInstance.open(image.src);
     };
     
     render() {
         return (
             <div className='control-pane'>
                 <div className='col-lg-12 control-section e-img-editor-profile'>
-                    <div className='e-profile'>
+                    <div className='e-profile e-hide'>
                         <div className='e-custom-wrapper'>  
                             <canvas id='img-canvas'></canvas>
                             <img alt='img' className='e-custom-img' id='custom-img' onLoad={this.handleImageLoaded.bind(this)} src='src/image-editor/images/profile.png'/>

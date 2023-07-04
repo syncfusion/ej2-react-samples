@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { CarouselComponent, CarouselItemsDirective, CarouselButtonVisibility, CarouselItemDirective } from '@syncfusion/ej2-react-navigations';
 import { DropDownListComponent, ChangeEventArgs as DropdownChangeArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SwitchComponent, ChangeEventArgs as ButtonChangeArgs } from '@syncfusion/ej2-react-buttons';
@@ -7,42 +8,59 @@ import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './api.css';
 
-function API() {
-    React.useEffect(() => {
+const API = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
+    const [showArrow, setShowArrow] = useState<CarouselButtonVisibility>('Visible');
+    const [interval, setInterval] = useState<number>(3000);
+    const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
+    const [isInfinityLoop, setIsInfinityLoop] = useState<boolean>(true);
+    const [isShowIndicator, setIsShowIndicator] = useState<boolean>(true);
+    const [isShowPlay, setIsShowPlay] = useState<boolean>(true);
+
     let carouselObj: CarouselComponent;
 
-    function itemTemplate1(): JSX.Element {
-        return (<figure className="img-container">
-            <img src="src/carousel/images/bridge.jpg" alt="bridge" style={{ height: "100%", width: "100% " }} />
-            <figcaption className="img-caption">Showing 1 of 5</figcaption>
-        </figure>);
+    const itemTemplate1 = () => {
+        return (
+            <figure className="img-container">
+                <img src="src/carousel/images/bridge.jpg" alt="bridge" style={{ height: "100%", width: "100% " }} />
+                <figcaption className="img-caption">Showing 1 of 5</figcaption>
+            </figure>
+        );
     }
-    function itemTemplate2(): JSX.Element {
-        return (<figure className="img-container">
-            <img src="src/carousel/images/trees.jpg" alt="spring_trees" style={{ height: "100%", width: "100% " }} />
-            <figcaption className="img-caption">Showing 2 of 5</figcaption>
-        </figure>);
+    const itemTemplate2 = () => {
+        return (
+            <figure className="img-container">
+                <img src="src/carousel/images/trees.jpg" alt="spring_trees" style={{ height: "100%", width: "100% " }} />
+                <figcaption className="img-caption">Showing 2 of 5</figcaption>
+            </figure>
+        );
     }
-    function itemTemplate3(): JSX.Element {
-        return (<figure className="img-container">
-            <img src="src/carousel/images/waterfall.jpg" alt="waterfall" style={{ height: "100%", width: "100% " }} />
-            <figcaption className="img-caption">Showing 3 of 5</figcaption>
-        </figure>);
+    const itemTemplate3 = () => {
+        return (
+            <figure className="img-container">
+                <img src="src/carousel/images/waterfall.jpg" alt="waterfall" style={{ height: "100%", width: "100% " }} />
+                <figcaption className="img-caption">Showing 3 of 5</figcaption>
+            </figure>
+        );
     }
-    function itemTemplate4(): JSX.Element {
-        return (<figure className="img-container">
-            <img src="src/carousel/images/sea.jpg" alt="sea" style={{ height: "100%", width: "100% " }} />
-            <figcaption className="img-caption">Showing 4 of 5</figcaption>
-        </figure>);
+    const itemTemplate4 = () => {
+        return (
+            <figure className="img-container">
+                <img src="src/carousel/images/sea.jpg" alt="sea" style={{ height: "100%", width: "100% " }} />
+                <figcaption className="img-caption">Showing 4 of 5</figcaption>
+            </figure>
+        );
     }
-    function itemTemplate5(): JSX.Element {
-        return (<figure className="img-container">
-            <img src="src/carousel/images/rocks.jpeg" alt="rocks" style={{ height: "100%", width: "100% " }} />
-            <figcaption className="img-caption">Showing 5 of 5</figcaption>
-        </figure>);
+    const itemTemplate5 = () => {
+        return (
+            <figure className="img-container">
+                <img src="src/carousel/images/rocks.jpeg" alt="rocks" style={{ height: "100%", width: "100% " }} />
+                <figcaption className="img-caption">Showing 5 of 5</figcaption>
+            </figure>
+        );
     }
     const showArrowsData: Record<string, any>[] = [
         { text: 'Hidden', value: 'Hidden' },
@@ -50,9 +68,8 @@ function API() {
         { text: 'On Hover', value: 'VisibleOnHover' }
     ];
     const showArrowsField: Record<string, any> = { text: 'text', value: 'value' };
-    function showArrowsStateChange(args: DropdownChangeArgs): void {
-        carouselObj.buttonsVisibility = args.value as CarouselButtonVisibility;
-        carouselObj.dataBind();
+    const showArrowsStateChange = (args: DropdownChangeArgs): void => {
+        setShowArrow(args.value as CarouselButtonVisibility);
     }
 
     const intervalData: Record<string, any>[] = [
@@ -61,29 +78,24 @@ function API() {
         { text: '7 Seconds', value: 7000 }
     ];
     const intervalField: Record<string, any> = { text: 'text', value: 'value' };
-    function intervalStateChange(args: DropdownChangeArgs): void {
-        carouselObj.interval = args.value as number;
-        carouselObj.dataBind();
+    const intervalStateChange = (args: DropdownChangeArgs): void => {
+        setInterval(args.value as number);
     }
 
-    function autoPlayStateChange(args: ButtonChangeArgs): void {
-        carouselObj.autoPlay = args.checked as boolean;
-        carouselObj.dataBind();
+    const autoPlayStateChange = (args: ButtonChangeArgs): void => {
+        setIsAutoPlay(args.checked as boolean);
     }
 
-    function infiniteLoopStateChange(args: ButtonChangeArgs): void {
-        carouselObj.loop = args.checked as boolean;
-        carouselObj.dataBind();
+    const infiniteLoopStateChange = (args: ButtonChangeArgs): void => {
+        setIsInfinityLoop(args.checked as boolean);
     }
 
-    function showIndicatorStateChange(args: ButtonChangeArgs): void {
-        carouselObj.showIndicators = args.checked as boolean;
-        carouselObj.dataBind();
+    const showIndicatorStateChange = (args: ButtonChangeArgs): void => {
+        setIsShowIndicator(args.checked as boolean);
     }
 
-    function showPlayStateChange(args: ButtonChangeArgs): void {
-        carouselObj.showPlayButton = args.checked as boolean;
-        carouselObj.dataBind();
+    const showPlayStateChange = (args: ButtonChangeArgs): void => {
+        setIsShowPlay(args.checked as boolean);
     }
 
     return (
@@ -91,13 +103,13 @@ function API() {
             <div className='col-lg-8 control-section api-carousel-section'>
                 <div className='control-wrapper carousel-sample'>
                     {/* Render the Carousel Component */}
-                    <CarouselComponent ref={(carousel) => { carouselObj = carousel }} cssClass="api-carousel" interval={3000}>
+                    <CarouselComponent ref={(carousel) => { carouselObj = carousel }} cssClass="api-carousel" interval={interval} buttonsVisibility={showArrow} autoPlay={isAutoPlay} loop={isInfinityLoop} showIndicators={isShowIndicator} showPlayButton={isShowPlay}>
                         <CarouselItemsDirective>
-                            <CarouselItemDirective template={itemTemplate1.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate2.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate3.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate4.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate5.bind(this)} />
+                            <CarouselItemDirective template={itemTemplate1} />
+                            <CarouselItemDirective template={itemTemplate2} />
+                            <CarouselItemDirective template={itemTemplate3} />
+                            <CarouselItemDirective template={itemTemplate4} />
+                            <CarouselItemDirective template={itemTemplate5} />
                         </CarouselItemsDirective>
                     </CarouselComponent>
                 </div>
@@ -110,7 +122,7 @@ function API() {
                                 <td>Enable Autoplay</td>
                                 <td>
                                     <div>
-                                        <SwitchComponent id="autoPlay" checked={true} change={autoPlayStateChange.bind(this)} />
+                                        <SwitchComponent id="autoPlay" checked={isAutoPlay} change={autoPlayStateChange} />
                                     </div>
                                 </td>
                             </tr>
@@ -118,7 +130,7 @@ function API() {
                                 <td>Infinite Looping</td>
                                 <td>
                                     <div>
-                                        <SwitchComponent id="infiniteLoop" checked={true} change={infiniteLoopStateChange.bind(this)} />
+                                        <SwitchComponent id="infiniteLoop" checked={isInfinityLoop} change={infiniteLoopStateChange} />
                                     </div>
                                 </td>
                             </tr>
@@ -126,7 +138,7 @@ function API() {
                                 <td >Show Indicators</td>
                                 <td>
                                     <div>
-                                        <SwitchComponent id="showIndicator" checked={true} change={showIndicatorStateChange.bind(this)} />
+                                        <SwitchComponent id="showIndicator" checked={isShowIndicator} change={showIndicatorStateChange} />
                                     </div>
                                 </td>
                             </tr>
@@ -134,7 +146,7 @@ function API() {
                                 <td>Show Play Button</td>
                                 <td>
                                     <div>
-                                        <SwitchComponent id="showPlay" checked={false} change={showPlayStateChange.bind(this)} />
+                                        <SwitchComponent id="showPlay" checked={isShowPlay} change={showPlayStateChange} />
                                     </div>
                                 </td>
                             </tr>
@@ -142,8 +154,7 @@ function API() {
                                 <td>Show Arrows</td>
                                 <td>
                                     <div>
-                                        <DropDownListComponent id='showArrows' dataSource={showArrowsData} fields={showArrowsField}
-                                            value={'Visible'} change={showArrowsStateChange.bind(this)} />
+                                        <DropDownListComponent id='showArrows' dataSource={showArrowsData} fields={showArrowsField} value={showArrow} change={showArrowsStateChange} />
                                     </div>
                                 </td>
                             </tr>
@@ -151,8 +162,7 @@ function API() {
                                 <td>Slide Interval</td>
                                 <td>
                                     <div>
-                                        <DropDownListComponent id='interval' dataSource={intervalData} fields={intervalField}
-                                            value={3000} change={intervalStateChange.bind(this)} />
+                                        <DropDownListComponent id='interval' dataSource={intervalData} fields={intervalField} value={interval} change={intervalStateChange} />
                                     </div>
                                 </td>
                             </tr>
@@ -171,8 +181,7 @@ function API() {
                     <code>interval</code>, <code>showPlayButton</code>, <code>loop</code> using the property panel.
                 </p>
                 <p>
-                    More information about the properties available in the Carousel component can be found in this <a target='_blank'
-                        href="https://ej2.syncfusion.com/documentation/api/carousel/">documentation section</a>.
+                    More information about the properties available in the Carousel component can be found in this <a target='_blank' href="https://ej2.syncfusion.com/documentation/api/carousel/">documentation section</a>.
                 </p>
             </div>
         </div >

@@ -1,39 +1,39 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import './default.css';
 import * as data from './dataSource.json';
 
-function Default(){
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let temp:string = 'sportsData';
+    const temp: string = 'sportsData';
     // define the JSON of data
     const sportsData: { [key: string]: Object }[] = data[temp];
     // maps the appropriate column to fields property
     const fields: object = { text: 'Game', value: 'Id' };
     // set the value to select an item based on mapped value at initial rendering
-    const value: string = 'Game3';
     return (
-        <div className = 'control-pane'>
+        <div className='control-pane'>
             <div id="multisection" className='control-section'>
                 <div id="multidefault">
                     <div className="control-styles">
-                    <h4>Default Mode</h4>
+                        <h4>Default Mode</h4>
                         <div>
                             <MultiSelectComponent id="defaultelement" dataSource={sportsData} mode="Default" fields={fields} placeholder="Favorite Sports" />
                         </div>
                     </div>
                     <div className="control-styles">
-                    <h4>Box Mode</h4>
+                        <h4>Box Mode</h4>
                         <div>
                             <MultiSelectComponent id="boxelement" dataSource={sportsData} mode="Box" fields={fields} placeholder="Favorite Sports" />
                         </div>
                     </div>
                     <div className="control-styles">
-                    <h4> Delimiter Mode</h4>
+                        <h4> Delimiter Mode</h4>
                         <div>
                             <MultiSelectComponent id="delimiterelement" dataSource={sportsData} mode="Delimiter" fields={fields} placeholder="Favorite Sports" />
                         </div>
@@ -48,7 +48,7 @@ function Default(){
                     values. </p>
                 <p>In this sample, the selected items are shown with three different UI modes in three different MultiSelect elements. That three UI modes are listed here below,</p>
                 <ul>
-                    <li><b>Default</b> - on focus-in, the component will act in <code>box mode</code> and on blur, the component will act in <code>delimiter mode</code>.</li> 
+                    <li><b>Default</b> - on focus-in, the component will act in <code>box mode</code> and on blur, the component will act in <code>delimiter mode</code>.</li>
                     <li><b>Box</b> - selected items will be visualized in chip.</li>
                     <li><b>Delimiter</b> - selected items will be visualized in text content.</li>
                 </ul>

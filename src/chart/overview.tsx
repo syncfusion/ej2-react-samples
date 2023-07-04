@@ -167,7 +167,7 @@ export  class OverView extends SampleBase<{}, {}> {
                     </p>
                     <p>
                     More information on the React Chart types can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line">documentation section</a>.
                     </p>
                 </div>
 <svg style={{ height: '0' }}>
@@ -189,7 +189,7 @@ export  class OverView extends SampleBase<{}, {}> {
   public load(args: ILoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+    args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     args.chart.series[0].fill = 'url(#' + 'gradient-chart)';
     args.chart.series[1].fill = 'url(#' + 'gradient-chart1)'; 
    

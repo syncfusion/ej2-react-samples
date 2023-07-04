@@ -60,18 +60,18 @@ export class ColumnTemplate extends SampleBase<{}, {}> {
         <div className='control-section'>
           <TreeGridComponent dataSource={textdata} treeColumnIndex={0} childMapping='Children' height='410' rowDataBound={this.rowDataBound.bind(this)}>
             <ColumnsDirective>
-              <ColumnDirective field='EmpID' headerText='Employee ID' width='95'></ColumnDirective>
-              <ColumnDirective field='Name' headerText='Name' width='90'></ColumnDirective>
-              <ColumnDirective field='DOB' headerText='DOB' width='90' format='yMd' textAlign='Right' />
-              <ColumnDirective headerText='Tax per annum' width='90' template={(props: GridData) => {
+              <ColumnDirective field='EmpID' headerText='Employee ID' width='180'></ColumnDirective>
+              <ColumnDirective field='Name' headerText='Name' width='170'></ColumnDirective>
+              <ColumnDirective field='DOB' headerText='DOB' width='110' format='yMd' textAlign='Right' />
+              <ColumnDirective headerText='Tax per annum' width='170' template={(props: GridData) => {
                   return (<div id={"spkline" + props.EmployeeID}></div>);
                 }} textAlign='Center' />
               <ColumnDirective headerText='One Day Index' template={(props: GridData) => {
                   return (<div id={"spkarea" + props.EmployeeID}></div>);
-                }} textAlign='Center' width='100' />
+                }} textAlign='Center' width='170' />
               <ColumnDirective headerText='Year GR' template={(props: GridData) => {
                   return (<div id={"spkwl" + props.EmployeeID}></div>);
-                }} textAlign='Center' width='100' />
+                }} textAlign='Center' width='180' />
             </ColumnsDirective>
             <Inject services={[Page]} />
           </TreeGridComponent>

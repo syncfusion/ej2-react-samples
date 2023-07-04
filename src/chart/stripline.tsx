@@ -5,50 +5,46 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, StripLineSettingsModel,
-    Legend, Category, LineSeries, Tooltip, ILoadedEventArgs, StripLine, ChartTheme
+    Legend, DateTimeCategory, SplineSeries, Tooltip, ILoadedEventArgs, StripLine, ChartTheme
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import { Browser } from '@syncfusion/ej2-base';
 
-let xAxisStripLine: StripLineSettingsModel[] = [
-    {
-        start: -1, end: 1.5, text: 'Winter', color: 'url(#winter)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        start: 1.5, end: 3.5, text: 'Summer', color: 'url(#summer)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        start: 3.5, end: 4.5, text: 'Spring', color: 'url(#spring)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        start: 4.5, end: 5.5, text: 'Autumn', color: 'url(#autumn)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        start: 5.5, end: 7, text: 'Winter', color: 'url(#winter)',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' },
-        border: { width: 0 }, rotation: -90, visible: true
-    }, {
-        startFromAxis: true, size: 2, isSegmented: true, segmentStart: 22.5, text: 'Average Temperature',
-        segmentEnd: 27.5, visible: false, color: '#fc902a',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 }, rotation: 0
-    }, {
-        start: 3.5, size: 3, isSegmented: true, segmentStart: 22.5, text: 'Average Temperature',
-        segmentEnd: 27.5, visible: false, color: '#fc902a',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 }, rotation: 0
-    }, {
-        start: 1.5, size: 2, isSegmented: true, segmentStart: 32.5, text: 'High Temperature',
-        segmentEnd: 37.5, visible: false, color: '#ff512f',
-        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 }, rotation: 0
-    }]
 export let data: any[] = [
-    { x: 'Sun', y: 25 }, { x: 'Mon', y: 27 }, { x: 'Tue', y: 33 }, { x: 'Wed', y: 36 },
-    { x: 'Thu', y: 26 }, { x: 'Fri', y: 27.5 }, { x: 'Sat', y: 23 }];
+    { x: new Date(2023, 4, 1), wind : 19 },
+    { x: new Date(2023, 4, 2), wind : 17 },
+    { x: new Date(2023, 4, 3), wind : 14 },
+    { x: new Date(2023, 4, 4), wind : 9 },
+    { x: new Date(2023, 4, 5), wind : 10 },
+    { x: new Date(2023, 4, 6), wind : 8 },
+    { x: new Date(2023, 4, 7), wind : 8 },
+    { x: new Date(2023, 4, 8), wind : 16 },
+    { x: new Date(2023, 4, 9), wind : 9 },
+    { x: new Date(2023, 4, 10), wind : 13 },
+    { x: new Date(2023, 4, 11), wind : 7 },
+    { x: new Date(2023, 4, 12), wind : 12 },
+    { x: new Date(2023, 4, 13), wind : 10 },
+    { x: new Date(2023, 4, 14), wind : 5 },
+    { x: new Date(2023, 4, 15), wind : 8 }];
+export let data1: any[] = [
+    { x: new Date(2023, 4, 1), gust : 30 },
+    { x: new Date(2023, 4, 2), gust : 28 },
+    { x: new Date(2023, 4, 3), gust : 26 },
+    { x: new Date(2023, 4, 4), gust : 19 },
+    { x: new Date(2023, 4, 5), gust : 21 },
+    { x: new Date(2023, 4, 6), gust : 14 },
+    { x: new Date(2023, 4, 7), gust : 13 },
+    { x: new Date(2023, 4, 8), gust : 29 },
+    { x: new Date(2023, 4, 9), gust : 19 },
+    { x: new Date(2023, 4, 10), gust : 20 },
+    { x: new Date(2023, 4, 11), gust : 15 },
+    { x: new Date(2023, 4, 12), gust : 25 },
+    { x: new Date(2023, 4, 13), gust : 20 },
+    { x: new Date(2023, 4, 14), gust : 10 },
+    { x: new Date(2023, 4, 15), gust : 15 }];
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -170,36 +166,60 @@ export class Stripline extends SampleBase<{}, {}> {
                     <div className='col-md-8'>
                         <ChartComponent id='charts' ref={chart => this.chartInstance = chart}
                             primaryXAxis={{
-                                valueType: 'Category', majorGridLines: { width: 0 },
-                                stripLines: xAxisStripLine
+                                valueType: 'DateTimeCategory', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, labelFormat: 'E dd/MM', labelRotation: -90, labelIntersectAction: Browser.isDevice ? 'Rotate90' : 'None',
                             }}
                             load={this.load.bind(this)}
                             primaryYAxis={{
-                                minimum: 10, maximum: 40, interval: 5,
-                                lineStyle: { color: '#808080' }, labelFormat: '{value} °C', rangePadding: 'None',
+                                minimum: 0, maximum: 30, interval: 10, title: 'Wind Speed and Gust (km/h)',
+                                lineStyle: { width: 0 }, rangePadding: 'None', majorGridLines: { width: 0 }, majorTickLines: { width: 0 },
                                 stripLines: [
                                     {
-                                        start: 30, end: 40, text: 'High Temperature', color: '#ff512f', visible: false,
-                                        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 },
-                                    }, {
-                                        start: 20, end: 30, text: 'Average Temperature', color: '#fc902a', visible: false,
-                                        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 },
-                                    }, {
-                                        start: 10, end: 20, text: 'Low Temperature', visible: false,
-                                        textStyle: { size: '18px', color: '#ffffff', fontWeight: '600' }, border: { width: 0 }, color: '#f9d423'
+                                        start: 0, end: 5, text: 'Calm', color: 'rgba(68, 170, 213, 0.1)', visible: true, horizontalAlignment: 'Start',
+                                        textStyle: { size: '13px' }, border: { width: 0 },
+                                    }, 
+                                    {
+                                        start: 5, end: 8, text: 'Light Air', color: 'rgba(0, 0, 0, 0)', visible: true, horizontalAlignment: 'Start',
+                                        textStyle: { size: '13px' }, border: { width: 0 },
+                                    },
+                                    {
+                                        start: 8, end: 11, text: 'Light Breeze', visible: true, horizontalAlignment: 'Start',
+                                        textStyle: { size: '13px' }, border: { width: 0 }, color: 'rgba(68, 170, 213, 0.1)'
+                                    },
+                                    {
+                                        start: 11, end: 18, text: 'Gentle Breeze', color: 'rgba(0, 0, 0, 0)', visible: true, horizontalAlignment: 'Start',
+                                        textStyle: { size: '13px' }, border: { width: 0 },
+                                    }, 
+                                    {
+                                        start: 18, end: 28, text: 'Moderate Breeze', visible: true, horizontalAlignment: 'Start',
+                                        textStyle: { size: '13px' }, border: { width: 0 }, color: 'rgba(68, 170, 213, 0.1)'
+                                    },
+                                    {
+                                        start: 28, end: 30, text: 'Fresh Breeze', visible: true, horizontalAlignment: 'Start',
+                                        textStyle: { size: '13px' }, border: { width: 0 }, color: 'rgba(0, 0, 0, 0)'
                                     }
                                 ]
                             }}
                             tooltip={{
-                                enable: true
+                                enable: true,
+                                header: '',
+                                format: '<b>${point.x}</b> <br> ${series.name} : <b>${point.y}</b',
+                                enableMarker: false
                             }}
-                            legendSettings={{ visible: false }}
+                            chartArea= {{
+                                border: { width: 0 }
+                            }}
+                            legendSettings={{ visible: true, enableHighlight: true, shapeHeight: 6, shapeWidth: 15 }}
                             loaded={this.onChartLoad.bind(this)}
-                            title='Weather Report'>
-                            <Inject services={[LineSeries, Category, Legend, Tooltip, StripLine]} />
+                            title='Wind Speed and Gust (km/h)'
+                            titleStyle={{position : 'Bottom', textAlignment:'Far'}}
+                            subTitle='WorldWeatherOnline.com'>
+                            <Inject services={[DateTimeCategory, SplineSeries, Legend, Tooltip, StripLine]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data} xName='x' yName='y' width={2} fill='white'
-                                    type='Line' name='Weather' marker={{ visible: true, width: 10, height: 10, border: { width: 2, color: 'white' }, fill: '#666666' }}>
+                                <SeriesDirective dataSource={data} xName='x' yName='wind' width={4} legendShape="HorizontalLine"
+                                    type='Spline' name='Wind Speed (km/h)'>
+                                </SeriesDirective>
+                                <SeriesDirective dataSource={data1} xName='x' yName='gust' width={4} legendShape="HorizontalLine"
+                                    type='Spline' name='Wind Gust (km/h)'>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>
@@ -222,30 +242,24 @@ export class Stripline extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample highlights certain range in an axis by using stripline feature.
-            </p>
+                    <p>
+                        This sample displays the changes in wind speed and gust with stripline feature.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure the stripline charts. You can use stripline by enable the
-                    <code>visible</code> property. Striplines are rendered in the specified
-                    <code>start</code> and
-                    <code>end</code> range and you can add more than one stripline for an axis.
-            </p>
+                        In this example, you can see how to render and configure a strip line for the chart. Use the <code>start</code> and <code>end</code> properties in the <code>chartStripline</code> option to add a strip line to an axis. Additionally, the title for the chart can be positioned anywhere in the chart by using the <code>position</code> property in <code>titleStyle</code>.
+                    </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-            </p>
+                        <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use strip line feature, we need to inject
-                        <code>StripLine</code> module using
-                        <code>Chart.Inject(StripLine)</code> method.
-
+                        Chart component features are segregated into individual feature-wise modules. To use strip line, we need to inject <code>StripLine</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the strip line can be found in this &nbsp;
+                        More information on the strip line can be found in this
                         <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
                     </p>
                 </div>
@@ -259,7 +273,7 @@ export class Stripline extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

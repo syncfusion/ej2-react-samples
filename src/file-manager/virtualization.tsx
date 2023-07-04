@@ -9,35 +9,22 @@ import { FileManagerComponent, Inject, NavigationPane, DetailsView, Toolbar, Vir
 export class VirtualizationSample extends SampleBase<{},{}> {
 
     private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
-    onBeforeSend(args) {
-        args.ajaxSettings.beforeSend = function (args) {
-            args.httpRequest.setRequestHeader('Authorization', 'FileBrowser');
-        };
-    }
-    beforeImageLoad(args) {
-        args.imageUrl = args.imageUrl + '&rootName=' + 'FileBrowser';
-    }
-    beforeDownload(args) {
-        args.data.rootFolderName = 'FileBrowser';
-    }
+
     public render(): JSX.Element {
         return(
             <div>
                 <div className="control-section">
                     <FileManagerComponent id="filemanager" ajaxSettings = {{
-                        url: this.hostUrl + "api/FileManager/FileOperations",
-                        getImageUrl: this.hostUrl + "api/FileManager/GetImage",
-                        uploadUrl: this.hostUrl + 'api/FileManager/Upload',
-                        downloadUrl: this.hostUrl + 'api/FileManager/Download'
+                        url: this.hostUrl + "api/Virtualization/FileOperations",
+                        getImageUrl: this.hostUrl + "api/Virtualization/GetImage",
+                        uploadUrl: this.hostUrl + 'api/Virtualization/Upload',
+                        downloadUrl: this.hostUrl + 'api/Virtualization/Download'
                     }}
                     toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'View', 'Details']}}
                     contextMenuSettings={{
                     layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}}
                     view = {"Details"}
-                    enableVirtualization = {true}
-                    beforeSend={this.onBeforeSend.bind(this)}
-                    beforeImageLoad={this.beforeImageLoad.bind(this)}
-                    beforeDownload={this.beforeDownload.bind(this)}>
+                    enableVirtualization = {true}>
                 <Inject services={[ NavigationPane, DetailsView, Toolbar, Virtualization]} />
                     </FileManagerComponent>
                 </div>

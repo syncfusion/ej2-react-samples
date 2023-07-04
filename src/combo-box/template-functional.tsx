@@ -1,34 +1,34 @@
 /**
  * ComboBox Template Sample
  */
- import * as ReactDOM from 'react-dom';
- import * as React from 'react';
- import { updateSampleSection } from '../common/sample-base';
- import { ComboBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
- import './templates.css';
- import * as data from './dataSource.json';
- 
-function Templates() {
-    React.useEffect(() => {
-    updateSampleSection();
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { useEffect } from 'react';
+import { updateSampleSection } from '../common/sample-base';
+import { ComboBoxComponent } from '@syncfusion/ej2-react-dropdowns';
+import './templates.css';
+import * as data from './dataSource.json';
+
+const Templates = () => {
+    useEffect(() => {
+        updateSampleSection();
     }, [])
-    let listObj: ComboBoxComponent;
-    const temp:string = 'empList';
+    const temp: string = 'empList';
     // define the JSON of employees data
     const employeesData: { [key: string]: Object }[] = data[temp];
     // maps the appropriate column to fields property
     const fields: object = { text: 'Name', value: 'Eimg' };
     //set the value to header template
-    function headerTemplate(data: any): JSX.Element {
+    const headerTemplate = () => {
         return (
             <div className="header"> <span>Photo</span> <span className="columnHeader">Employee Info</span></div>
         );
     }
-     //set the value to item template
-    function itemTemplate(data: any): JSX.Element {
+    //set the value to item template
+    const itemTemplate = (data: any) => {
         return (
-            <div><img className="empImage" src={"src/combo-box/Employees/" + data.Eimg +".png"} alt="employee"/>
-            <div className="ename"> {data.Name} </div><div className="job"> {data.Designation} </div></div>
+            <div><img className="empImage" src={"src/combo-box/Employees/" + data.Eimg + ".png"} alt="employee" />
+                <div className="ename"> {data.Name} </div><div className="job"> {data.Designation} </div></div>
         );
     }
     return (
@@ -38,7 +38,7 @@ function Templates() {
                     <ComboBoxComponent id="employees" dataSource={employeesData} fields={fields} placeholder="Select an employee" itemTemplate={itemTemplate} headerTemplate={headerTemplate} popupHeight="270px" />
                 </div>
             </div>
-            <div id="action-description">    
+            <div id="action-description">
                 <p>This sample demonstrates the template functionalities of the ComboBox. Type a character in the ComboBox element or click on the drodown icon to choose an item from the customized list.</p>
             </div>
             <div id="description">

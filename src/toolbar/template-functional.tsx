@@ -1,30 +1,36 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import { ComboBoxComponent } from '@syncfusion/ej2-react-dropdowns';
 import './toolbar.component.css'
 import { NumericTextBoxComponent, TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 
-function Template() {
-    React.useEffect(() => {
+const Template = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const data: string[] = ["25%", "50%", "75%", "100%"];
-    let textboxObj;
+    let textboxObj = useRef<TextBoxComponent>(null);
 
-    function numeric() {
-        return (<div style={{display:'flex'}}><div><NumericTextBoxComponent width={45} value={0} min={0} max={100} showSpinButton={false} format='###.##'></NumericTextBoxComponent></div><span className='total-page'>of 100</span></div>);        
+    const numeric = () => {
+        return (
+            <div style={{display:'flex'}}><div><NumericTextBoxComponent width={45} value={0} min={0} max={100} showSpinButton={false} format='###.##'></NumericTextBoxComponent></div><span className='total-page'>of 100</span></div>
+        );        
     }
-    function dropDown() {
-        return(<div><ComboBoxComponent width={80} popupWidth={50} value='100%' dataSource={data} showClearButton={false} ></ComboBoxComponent></div>);
+    const dropDown = () => {
+        return(
+            <div><ComboBoxComponent width={80} popupWidth={50} value='100%' dataSource={data} showClearButton={false} ></ComboBoxComponent></div>
+        );
     }
-    function textBox() {
-        return(<div><TextBoxComponent ref={scope => { textboxObj = scope; }} placeholder='Find Text' created={onCreate.bind(this)}></TextBoxComponent></div>);
+    const textBox = () => {
+        return(
+            <div><TextBoxComponent ref={textboxObj} placeholder='Find Text' created={onCreate}></TextBoxComponent></div>
+        );
     }
-
-    function onCreate() {
-        textboxObj.addIcon('prepend', 'e-icons e-search');
+    const onCreate = () => {
+        textboxObj.current.addIcon('prepend', 'e-icons e-search');
     }
     return (
         <div className='control-pane'>
@@ -63,8 +69,7 @@ function Template() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample demonstrates customization of the React Toolbar.</p>
+                <p>This sample demonstrates customization of the React Toolbar.</p>
             </div>
             <div id="description">
                 <p>

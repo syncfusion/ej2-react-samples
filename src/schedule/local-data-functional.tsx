@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -10,19 +11,19 @@ import * as dataSource from './datasource.json';
  * Schedule local data sample
  */
 
-function LocalData() {
-  React.useEffect(() => {
+const LocalData = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).zooEventsData, null, true) as Record<string, any>[];
 
-  function onEventRendered(args: EventRenderedArgs): void {
+  const onEventRendered = (args: EventRenderedArgs): void => {
     let categoryColor: string = args.data.CategoryColor as string;
     if (!args.element || !categoryColor) {
       return;
     }
-    if (scheduleObj.currentView === 'Agenda') {
+    if (scheduleObj.current.currentView === 'Agenda') {
       (args.element.firstChild as HTMLElement).style.borderLeftColor = categoryColor;
     } else {
       args.element.style.backgroundColor = categoryColor;
@@ -33,8 +34,7 @@ function LocalData() {
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={t => scheduleObj = t}
-            eventSettings={{ dataSource: data }} eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={scheduleObj} eventSettings={{ dataSource: data }} eventRendered={onEventRendered}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>

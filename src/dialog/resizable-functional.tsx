@@ -1,70 +1,42 @@
 import * as React from 'react';
-import { useState } from 'react';
-import {
-    DialogComponent,
-    AnimationSettingsModel,
-} from '@syncfusion/ej2-react-popups';
+import { useState, useEffect } from 'react';
+import { DialogComponent, AnimationSettingsModel } from '@syncfusion/ej2-react-popups';
 import { updateSampleSection } from '../common/sample-base';
 import './resizable.css';
 
-function Resizable() {
-    React.useEffect(() => {
+const Resizable = () => {
+    useEffect(() => {
       updateSampleSection();
     }, []);
-    let resizableDialogInstance: DialogComponent;
     let animationSettings: AnimationSettingsModel;
     let buttonEle: HTMLButtonElement;
-    const [display, setDisplay] = useState('none');
-    const [status, setStatus] = useState({ hideDialog: true });
+    const [display, setDisplay] = useState<string>('none');
+    const [status, setStatus] = useState<boolean>(true);
     let buttonRef: React.Ref<HTMLButtonElement> = (element) => {
       buttonEle = element;
     };
     animationSettings = { effect: 'None' };
   
-    function buttonClick(args: any): void {
-      setStatus({ hideDialog: true });
+    const buttonClick = (): void => {
+      setStatus(true);
     }
   
-    function dialogClose(): void {
-      setStatus({ hideDialog: false });
+    const dialogClose = (): void => {
+      setStatus(false);
       setDisplay('inline-block');
     }
   
-    function dialogOpen(): void {
-      setStatus({ hideDialog: true });
+    const dialogOpen = (): void => {
+      setStatus(true);
       setDisplay('none');
     }
   
     return (
       <div className="control-pane">
         <div id="target" className="col-lg-12 control-section dialog-resizable">
-          <button
-            className="e-control e-btn dlgbtn"
-            ref={buttonRef}
-            style={{ display: display }}
-            onClick={buttonClick}
-            id="dialogBtn"
-          >
-            Open Dialog
-          </button>
+          <button className="e-control e-btn dlgbtn" ref={buttonRef} style={{ display: display }} onClick={buttonClick} id="dialogBtn">Open Dialog</button>
           {/* Render resizable Dialog */}
-          <DialogComponent
-            id="resizableDialog"
-            header="Resize Me!!!"
-            allowDragging={true}
-            showCloseIcon={true}
-            animationSettings={animationSettings}
-            width="300px"
-            ref={(resizableDialog) => (resizableDialogInstance = resizableDialog)}
-            target="#target"
-            visible={status.hideDialog}
-            enableResize={true}
-            resizeHandles={['All']}
-            open={dialogOpen}
-            close={dialogClose}
-          >
-            This is a dialog with resizable support.
-          </DialogComponent>
+          <DialogComponent id="resizableDialog" header="Resize Me!!!" allowDragging={true} showCloseIcon={true} animationSettings={animationSettings} width="300px" target="#target" visible={status} enableResize={true} resizeHandles={['All']} open={dialogOpen} close={dialogClose}>This is a dialog with resizable support.</DialogComponent>
           <div id="action-description">
             <p>
               This sample demonstrates the resize operation of the dialog control

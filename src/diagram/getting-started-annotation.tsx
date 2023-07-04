@@ -563,8 +563,7 @@ function changed(value: string): void {
       if (value === "fontsize") {
         (node.annotations[j].style as TextStyleModel).fontSize = fontSize.value;
       } else if (value === "underline") {
-        (node.annotations[j].style as TextStyleModel).textDecoration =
-          "Underline";
+        (node.annotations[j].style as TextStyleModel).textDecoration === 'Underline' ? 'None' : 'Underline';
       } else if (value === "fontfamily") {
         (node.annotations[j]
           .style as TextStyleModel).fontFamily = fontFamily.value.toString();

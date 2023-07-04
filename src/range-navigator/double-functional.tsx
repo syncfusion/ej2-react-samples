@@ -20,7 +20,7 @@ chartAnnotation.push({ content: '<div id="exchangeRate"></div>', coordinateUnits
 
 export let selectedTheme: string = location.hash.split('/')[1];
 selectedTheme = selectedTheme ? selectedTheme : 'Material';
-export let theme: ChartTheme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+export let theme: ChartTheme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
 export let backgroundColor: string = 'white';
 getAnnotation(aus, getSeriesColor(theme)[0]);
 getAnnotation(sl, getSeriesColor(theme)[1]);
@@ -172,7 +172,7 @@ function NumericAxis() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
 
     function renderTooltip(args: IRangeTooltipRenderEventArgs): void {

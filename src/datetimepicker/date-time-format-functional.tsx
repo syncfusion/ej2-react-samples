@@ -1,19 +1,17 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import './format-style.css';
-import { DateTimePickerComponent, RenderDayCellEventArgs } from '@syncfusion/ej2-react-calendars';
-import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
+import { DateTimePickerComponent, FormatObject, RenderDayCellEventArgs } from '@syncfusion/ej2-react-calendars';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { FloatLabelType } from '@syncfusion/ej2-react-inputs';
-import { PropertyPane } from '../common/property-pane';
 
-let dateValue: Date = new Date();
-function Dateformat() {
-    React.useEffect(() => {
+const dateValue: Date = new Date();
+const Dateformat = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let datetimepickerInstance: DateTimePickerComponent;
-    let listObj: DropDownListComponent;
     const dataTypes: { [key: string]: Object }[] = [
         { value: 'dd-MMM-yy hh:mm a' },
         { value: 'yyyy-MM-dd HH:mm' },
@@ -23,32 +21,31 @@ function Dateformat() {
     const waterMark: string = 'Format';
     const floatLabelType: FloatLabelType = 'Auto';
     const index: number = 0;
+    const [format, setFormat] = useState<string | FormatObject>('dd-MMM-yy hh:mm a');
     /*Apply selected format to the component*/
-    function onChange(): void {
-        let format: any = listObj.value;
-        datetimepickerInstance.format = format;
-    }
+    const onChange = (args: any): void => {
+        setFormat(args.value);
+    };
     return (
         <div className='control-pane'>
             <div className='control-section row'>
                 <div className='col-lg-8'>
                     <div className='datetimepicker-control-section'>
-                        <DateTimePickerComponent format='dd-MMM-yy hh:mm a'
-                        ref={calendar => datetimepickerInstance = calendar} value={dateValue} ></DateTimePickerComponent>
+                        <DateTimePickerComponent format={format} value={dateValue} />
                     </div>
                 </div>
                 <div id="format" className='col-lg-4 property-section'>
                     <div>
-                        <DropDownListComponent id="dateFormats" dataSource={dataTypes} fields={fields} floatLabelType={floatLabelType} index={index} ref={(dropdownlist) => {listObj = dropdownlist }} placeholder={waterMark} change={onChange.bind(this)}>
+                        <DropDownListComponent id="dateFormats" dataSource={dataTypes} fields={fields} floatLabelType={floatLabelType} index={index} placeholder={waterMark} change={onChange.bind(this)}>
                         </DropDownListComponent>
                     </div>
                 </div>
             </div>
             <div id="action-description">
                 <p>In this sample, the DateTimePicker has been configured with the
-                 <code>dd-MMM-yy hh:mm a</code> date time format.
-                To change this current date time format, go to the properties panel at the right side and select a date format from the dropdown options.
-                For mobile mode touch the icon at the right side and select a date time format from the dropdown options.</p>
+                    <code>dd-MMM-yy hh:mm a</code> date time format.
+                    To change this current date time format, go to the properties panel at the right side and select a date format from the dropdown options.
+                    For mobile mode touch the icon at the right side and select a date time format from the dropdown options.</p>
             </div>
             <div id='description'>
                 <p>

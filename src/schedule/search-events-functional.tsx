@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, EJ2Instance, Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef, useState } from 'react';
+import { ScheduleComponent, EJ2Instance, Day, Week, WorkWeek, Month, Agenda, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './search-events.css';
 import { Query, DataManager, ReturnOption, Predicate } from '@syncfusion/ej2-data';
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
@@ -17,18 +16,20 @@ import * as dataSource from './datasource.json';
  * Sample for searching appointments
  */
 
-function SearchEvents() {
-  React.useEffect(() => {
+const SearchEvents = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  const [display, setDisplay] = useState<string>('block');
+  let scheduleObj = useRef<ScheduleComponent>(null);
+  let gridElement = useRef<HTMLDivElement>(null);
+  let formObj = useRef<HTMLFormElement>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
 
-  function globalSearch(args: KeyboardEvent) {
+  const globalSearch = (args: KeyboardEvent) => {
     let searchString: string = (args.target as HTMLInputElement).value;
     if (searchString !== '') {
-      new DataManager(scheduleObj.getEvents(null, null, true)).executeQuery(new Query().
-        search(searchString, ['Subject', 'Location', 'Description'], null, true, true)).then((e: ReturnOption) => {
+      new DataManager(scheduleObj.current.getEvents(null, null, true)).executeQuery(new Query().search(searchString, ['Subject', 'Location', 'Description'], null, true, true)).then((e: ReturnOption) => {
           if ((e.result as any).length > 0) {
             showSearchEvents('show', e.result);
           } else {
@@ -40,7 +41,7 @@ function SearchEvents() {
     }
   }
 
-  function searchOnclick(): void {
+  const searchOnclick = (): void => {
     let searchObj: { [key: string]: any }[] = [];
     let startDate: Date;
     let endDate: Date;
@@ -86,24 +87,23 @@ function SearchEvents() {
       for (let i: number = 1; i < searchObj.length; i++) {
         predicate = predicate.and(searchObj[i].field, searchObj[i].operator, searchObj[i].value, searchObj[i].matchcase);
       }
-      let result: Record<string, any>[] = new DataManager(scheduleObj.getEvents(startDate, endDate, true)).
-        executeLocal(new Query().where(predicate));
+      let result: Record<string, any>[] = new DataManager(scheduleObj.current.getEvents(startDate, endDate, true)).executeLocal(new Query().where(predicate));
       showSearchEvents('show', result);
     } else {
       showSearchEvents('hide');
     }
   }
 
-  function clearOnClick(): void {
+  const clearOnClick = (): void => {
     document.getElementById('schedule').style.display = 'block';
     (document.getElementById('form-search') as HTMLFormElement).reset();
     showSearchEvents('hide');
   }
 
-  function showSearchEvents(type: string, data?: Record<string, any>): void {
+  const showSearchEvents = (type: string, data?: Record<string, any>): void => {
     if (type === 'show') {
-      if (document.getElementById('grid').classList.contains('e-grid')) {
-        let gridObj: GridComponent = (document.querySelector('#grid') as EJ2Instance).ej2_instances[0] as GridComponent;
+      if (gridElement.current.classList.contains('e-grid')) {
+        let gridObj: GridComponent = ((gridElement.current as unknown) as EJ2Instance).ej2_instances[0] as GridComponent;
         gridObj.dataSource = data;
         gridObj.dataBind();
       } else {
@@ -118,15 +118,15 @@ function SearchEvents() {
             { field: 'EndTime', headerText: 'EndTime', width: 120, format: { type: 'dateTime', format: 'M/d/y hh:mm a' } },
           ]
         });
-        gridObj.appendTo(document.querySelector('#grid') as HTMLElement);
-        scheduleObj.element.style.display = 'none';
+        gridObj.appendTo(gridElement.current);
+        setDisplay('none');
       }
     } else {
-      let gridObj: Record<string, any>[] = (document.querySelector('#grid') as EJ2Instance).ej2_instances;
+      let gridObj: Record<string, any>[] = ((gridElement.current as unknown) as EJ2Instance).ej2_instances;
       if (gridObj && gridObj.length > 0 && !(gridObj[0] as GridComponent).isDestroyed) {
         (gridObj[0] as GridComponent).destroy();
       }
-      scheduleObj.element.style.display = 'block';
+      setDisplay('block');
     }
   }
 
@@ -135,11 +135,10 @@ function SearchEvents() {
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
           <div className='col-md-12'>
-            <ScheduleComponent id='schedule' cssClass='resource' width='100%' height='650px' selectedDate={new Date(2021, 0, 10)}
-              ref={schedule => scheduleObj = schedule} eventSettings={{ dataSource: data }} >
+            <ScheduleComponent id='schedule' style={{display: display}} cssClass='resource' width='100%' height='650px' selectedDate={new Date(2021, 0, 10)} ref={scheduleObj} eventSettings={{ dataSource: data }} >
               <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
             </ScheduleComponent>
-            <div id="grid"></div>
+            <div id="grid" ref={gridElement}></div>
           </div>
         </div>
       </div>
@@ -149,7 +148,7 @@ function SearchEvents() {
           <div className="property-panel-content">
             <input className="e-input" type="text" placeholder="Enter the Search text" onKeyUp={globalSearch.bind(this)} />
           </div>
-          <form className="event-search" id="form-search">
+          <form className="event-search" id="form-search" ref={formObj}>
             <p className="property-panel-header header-customization" style={{ width: '100%' }}>Search by specific event fields</p>
             <table id="property-specific" style={{ width: '100%' }}>
               <tbody>
@@ -160,20 +159,17 @@ function SearchEvents() {
                 </tr>
                 <tr className="row" style={{ height: '45px' }}>
                   <td className="property-panel-content" colSpan={2}>
-                    <input type="text" className="e-input search-field" id="searchEventLocation" data-name="Location"
-                      placeholder="Location" />
+                    <input type="text" className="e-input search-field" id="searchEventLocation" data-name="Location" placeholder="Location" />
                   </td>
                 </tr>
                 <tr className="row" style={{ height: '45px' }}>
                   <td className="property-panel-content" colSpan={2}>
-                    <DatePickerComponent className="search-field e-start-time" value={null} data-name="StartTime" showClearButton={false}
-                      placeholder="Start Time"></DatePickerComponent>
+                    <DatePickerComponent className="search-field e-start-time" value={null} data-name="StartTime" showClearButton={false} placeholder="Start Time"></DatePickerComponent>
                   </td>
                 </tr>
                 <tr className="row" style={{ height: '45px' }}>
                   <td className="property-panel-content" colSpan={2}>
-                    <DatePickerComponent className="search-field e-end-time" value={null} data-name="EndTime" showClearButton={false}
-                      placeholder="End Time"></DatePickerComponent>
+                    <DatePickerComponent className="search-field e-end-time" value={null} data-name="EndTime" showClearButton={false} placeholder="End Time"></DatePickerComponent>
                   </td>
                 </tr>
                 <tr className="row" style={{ height: '45px' }}>
@@ -190,13 +186,17 @@ function SearchEvents() {
         </div>
       </div>
       <div id="action-description">
-        <p>This example showcases the search results of Scheduler appointments in a grid. When the user provides the
+        <p>
+          This example showcases the search results of Scheduler appointments in a grid. When the user provides the
           search string on appropriate fields, the resulting event collection based on the search criteria will be
-          displayed in a Grid.</p>
+          displayed in a Grid.
+        </p>
       </div>
       <div id="description">
-        <p>In this example, the search text value is compared with the event field values of Scheduler DataSource and then
-          the filtered resultant event data collection is assigned to the DataSource of Grid.</p>
+        <p>
+          In this example, the search text value is compared with the event field values of Scheduler DataSource and then 
+          the filtered resultant event data collection is assigned to the DataSource of Grid.
+        </p>
       </div>
     </div>
   );

@@ -1,20 +1,26 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { CalendarComponent, RenderDayCellEventArgs, ChangedEventArgs, Islamic , Inject  } from '@syncfusion/ej2-react-calendars';
+import { CalendarComponent, RenderDayCellEventArgs, ChangedEventArgs, Islamic, Inject } from '@syncfusion/ej2-react-calendars';
 import { addClass, Internationalization } from '@syncfusion/ej2-base';
 import './islamic-calendar.css';
 
-function IslamicCalendar() {
-    React.useEffect(() => {
+const IslamicCalendar = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const globalize: Internationalization = new Internationalization('en');
     const calendarMode: any = 'Islamic';
-    function valueChange(args: ChangedEventArgs): void {
-        (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + globalize.formatDate(args.value, { type: 'date', format: 'ddMMMyyyy', calendar: 'islamic' });
-    }
-    function disableDate(args: RenderDayCellEventArgs) {
+    const [selectedValue, setSelectedValue] = useState<string>(null);
+    const valueChange = (args: ChangedEventArgs) => {
+        setSelectedValue(
+            globalize.formatDate(args.value, {
+                type: 'date', format: 'ddMMMyyyy', calendar: 'islamic',
+            })
+        );
+    };
+    const disableDate = (args: RenderDayCellEventArgs) => {
         /*Date need to be disabled*/
         if (args.date.getDate() === 2 || args.date.getDate() === 10 || args.date.getDate() === 28) {
             args.isDisabled = true;
@@ -43,22 +49,22 @@ function IslamicCalendar() {
             <div className='control-section'>
                 <div className='calendar-control-section' style={{ overflow: 'auto' }}>
                     <CalendarComponent calendarMode={calendarMode} renderDayCell={disableDate.bind(this)} change={valueChange}>
-                    <Inject services={[Islamic]} />
+                        <Inject services={[Islamic]} />
                     </CalendarComponent>
-                    <label id='date_label'>Selected Value:</label>
+                    <label id="date_label">Selected Value:{selectedValue}</label>
                 </div>
             </div>
             <div id="action-description">
                 <p>
-                The following sample demonstrates the hijri(islamic) calendar with disabled dates and special dates. In desktop
-                mode, hover over the special day to know the special information about the day.</p>
+                    The following sample demonstrates the hijri(islamic) calendar with disabled dates and special dates. In desktop
+                    mode, hover over the special day to know the special information about the day.</p>
             </div>
             <div id='description'>
                 <p>The <code>Islamic calendar</code> is a extended feature which renders the calendar components based on the
-                hijri calendar year. Also, we can globalize the hijri calendar to arabic culture.</p>
+                    hijri calendar year. Also, we can globalize the hijri calendar to arabic culture.</p>
                 <p>
                     More information on the customization can be found in this <a target='_blank'
-                    href='https://ej2.syncfusion.com/react/documentation/calendar/customization/#day-cell-format'> documentation</a> section.
+                        href='https://ej2.syncfusion.com/react/documentation/calendar/customization/#day-cell-format'> documentation</a> section.
                 </p>
             </div>
         </div>

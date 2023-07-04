@@ -1,24 +1,24 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import './treeview.css';
 import * as dataSource from './dataSource/nodeEdit-data.json';
 
-function Editing() {
-  React.useEffect(() => {
+const Editing = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const data = dataSource as any;
   const fields: Object = { dataSource: data.nodeData, id: 'id', text: 'name', child: 'child' };
-  const allowEditing: boolean = true;
 
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <div className='tree-control_wrapper'>
           {/* Render the TreeView with editing option */}
-          <TreeViewComponent fields={fields} allowEditing={allowEditing} />
+          <TreeViewComponent fields={fields} allowEditing={true} />
         </div>
       </div>
       <div id="action-description">

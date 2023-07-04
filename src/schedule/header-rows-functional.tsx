@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    ScheduleComponent, ViewsDirective, ViewDirective, TimelineMonth, getWeekNumber, Inject, CellTemplateArgs,
-    EventRenderedArgs, HeaderRowDirective, HeaderRowsDirective, Resize, DragAndDrop, getWeekLastDate
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, TimelineMonth, getWeekNumber, Inject, CellTemplateArgs, EventRenderedArgs, HeaderRowDirective, HeaderRowsDirective, Resize, DragAndDrop, getWeekLastDate } from '@syncfusion/ej2-react-schedule';
 import './resources.css';
 import { extend, Internationalization } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -14,49 +12,48 @@ import * as dataSource from './datasource.json';
  * schedule header rows sample
  */
 
-function HeaderRows() {
-    React.useEffect(() => {
+const HeaderRows = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).headerRowData, null, true) as Record<string, any>[];
-    let scheduleObj: ScheduleComponent;
-    let instance: Internationalization = new Internationalization();
+    const scheduleObj = useRef<ScheduleComponent>(null);
+    const instance: Internationalization = new Internationalization();
 
-    function getMonthDetails(value: CellTemplateArgs) {
+    const getMonthDetails = (value: CellTemplateArgs) => {
         return instance.formatDate((value as CellTemplateArgs).date, { skeleton: 'yMMMM' });
     }
 
-    function getWeekDetails(value: CellTemplateArgs) {
+    const getWeekDetails = (value: CellTemplateArgs) => {
         return 'Week ' + getWeekNumber(getWeekLastDate(value.date, 0));
     }
 
-    function monthTemplate(props): JSX.Element {
+    const monthTemplate = (props) => {
         return (<span className="month">{getMonthDetails(props)}</span>);
     }
 
-    function weekTemplate(props): JSX.Element {
+    const weekTemplate = (props) => {
         return (<span className="week">{getWeekDetails(props)}</span>);
     }
 
-    function onEventRendered(args: EventRenderedArgs): void {
-        applyCategoryColor(args, scheduleObj.currentView);
+    const onEventRendered = (args: EventRenderedArgs): void => {
+        applyCategoryColor(args, scheduleObj.current.currentView);
     }
 
     return (
         <div className='schedule-control-section'>
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent ref={schedule => scheduleObj = schedule} width='100%' height='650px' selectedDate={new Date(2021, 0, 1)}
-                        eventSettings={{ dataSource: data }} eventRendered={onEventRendered.bind(this)}>
+                    <ScheduleComponent ref={scheduleObj} width='100%' height='650px' selectedDate={new Date(2021, 0, 1)} eventSettings={{ dataSource: data }} eventRendered={onEventRendered}>
                         <HeaderRowsDirective>
-                            <HeaderRowDirective option='Month' template={monthTemplate.bind(this)} />
-                            <HeaderRowDirective option='Week' template={weekTemplate.bind(this)} />
+                            <HeaderRowDirective option='Month' template={monthTemplate} />
+                            <HeaderRowDirective option='Week' template={weekTemplate} />
                             <HeaderRowDirective option='Date' />
                         </HeaderRowsDirective>
                         < ViewsDirective >
                             <ViewDirective option='TimelineMonth' interval={12} />
                         </ViewsDirective>
-                        < Inject services={[TimelineMonth, Resize, DragAndDrop]} />
+                        <Inject services={[TimelineMonth, Resize, DragAndDrop]} />
                     </ScheduleComponent>
                 </div>
             </div>

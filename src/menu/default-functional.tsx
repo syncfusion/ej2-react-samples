@@ -1,14 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { MenuComponent, MenuItemModel } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-/**
- * Menu default sample
+/*
+  Menu default sample
  */
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     // Menu items definition
@@ -92,8 +93,7 @@ function Default() {
                 </p>
                 <p>
                     More information about menu can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/getting-started">
-                        documentation</a> section.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/getting-started">documentation</a> section.
                 </p>
             </div>
         </div>

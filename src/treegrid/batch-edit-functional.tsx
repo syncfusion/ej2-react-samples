@@ -29,7 +29,7 @@ function Batch() {
             <ColumnDirective field='taskName' headerText='Task Name' width='220' validationRules={validationRule}></ColumnDirective>
             <ColumnDirective field='startDate' headerText='Start Date' width='160' textAlign='Right'
               editType='datepickeredit' format='yMd' validationRules={validationRule1} />
-            <ColumnDirective field='duration' headerText='Duration' width='100' editType='numericedit' textAlign='Right'
+            <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
               validationRules={validationRule2} edit={editparams2} />
           </ColumnsDirective>
           <Inject services={[Page, Edit, Toolbar]} />

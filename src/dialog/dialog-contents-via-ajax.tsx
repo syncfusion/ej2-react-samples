@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Ajax } from '@syncfusion/ej2-base';
+import { Fetch } from '@syncfusion/ej2-base';
 import { DialogComponent, ButtonPropsModel, AnimationSettingsModel } from '@syncfusion/ej2-react-popups';
 import { SampleBase } from '../common/sample-base';
 import './dialog-contents-via-ajax.css';
@@ -38,9 +38,9 @@ export class AjaxContent extends SampleBase<{}, { hideDialog: boolean; }> {
 
     private dlgButtonClick(): void {
         if (document.querySelector('.e-footer-content .e-btn').textContent === 'More Details') {
-            let ajax: Ajax = new Ajax('./src/dialog/blog.html', 'GET', true);
-            ajax.send().then();
-            ajax.onSuccess = (data: string | HTMLElement): void => {
+            let fetchApi: Fetch = new Fetch('./src/dialog/blog.html', 'GET');
+            fetchApi.send().then();
+            fetchApi.onSuccess = (data: string | HTMLElement): void => {
                 this.dialogInstance.target = document.getElementById('target');
                 this.dialogInstance.content = data;
             };
@@ -84,7 +84,7 @@ export class AjaxContent extends SampleBase<{}, { hideDialog: boolean; }> {
                 </div>
                 <div id="description">
                     <p>
-                        The user can load dialog's content dynamically from external source like external file using AJAX library. The AJAX library can make the request and load dialog's content using its success event.
+                        The user can load dialog's content dynamically from external source like external file using Fetch library. The Fetch library can make the request and load dialog's content using its success event.
                     </p>
                 </div>
             </div>

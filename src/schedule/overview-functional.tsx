@@ -1,18 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { ButtonComponent, SwitchComponent, CheckBoxComponent, ChangeEventArgs as SwitchEventArgs } from '@syncfusion/ej2-react-buttons';
 import { TimePickerComponent, ChangeEventArgs as TimeEventArgs } from '@syncfusion/ej2-react-calendars';
 import { DropDownListComponent, ChangeEventArgs, MultiSelectComponent, MultiSelectChangeEventArgs, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
 import { UploaderComponent, SelectedEventArgs, TextBoxComponent } from '@syncfusion/ej2-react-inputs';
-import {
-  ToolbarComponent, ItemsDirective, ItemDirective, BeforeOpenCloseMenuEventArgs,
-  MenuEventArgs as ContextMenuEventArgs, MenuItemModel, ContextMenuComponent, ClickEventArgs, AppBarComponent
-} from '@syncfusion/ej2-react-navigations';
-import {
-  ResourcesModel, ScheduleComponent, Day, Week, WorkWeek, Month, Year, TimelineViews, TimelineMonth, TimelineYear,
-  ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop, Agenda, Print,
-  ExcelExport, ICalendarImport, ICalendarExport, CellClickEventArgs, Timezone, CurrentAction, PopupOpenEventArgs
-} from '@syncfusion/ej2-react-schedule';
+import { ToolbarComponent, ItemsDirective, ItemDirective, BeforeOpenCloseMenuEventArgs, MenuEventArgs as ContextMenuEventArgs, MenuItemModel, ContextMenuComponent, ClickEventArgs, AppBarComponent } from '@syncfusion/ej2-react-navigations';
+import { ResourcesModel, ScheduleComponent, Day, Week, WorkWeek, Month, Year, TimelineViews, TimelineMonth, TimelineYear, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop, Agenda, Print, ExcelExport, ICalendarImport, ICalendarExport, CellClickEventArgs, Timezone, CurrentAction, PopupOpenEventArgs, View } from '@syncfusion/ej2-react-schedule';
 import { DropDownButtonComponent, ItemModel, MenuEventArgs } from '@syncfusion/ej2-react-splitbuttons';
 import { addClass, Browser, closest, extend, Internationalization, isNullOrUndefined, removeClass, remove, compile } from '@syncfusion/ej2-base';
 import { DataManager, Predicate, Query } from '@syncfusion/ej2-data';
@@ -20,8 +14,8 @@ import { tz } from 'moment-timezone';
 import { updateSampleSection } from '../common/sample-base';
 import './overview.css';
 
-function Overview() {
-  React.useEffect(() => {
+const Overview = () => {
+  useEffect(() => {
     updateSampleSection();
     return () => {
       if (liveTimeInterval) {
@@ -29,16 +23,15 @@ function Overview() {
       }
     }
   }, [])
-  let scheduleObj: ScheduleComponent;
-  let eventTypeObj: DropDownListComponent;
-  let titleObj: TextBoxComponent;
-  let notesObj: TextBoxComponent;
-  let contextMenuObj: ContextMenuComponent;
-  let isTimelineView: boolean = false;
+  const [currentView, setCurrentView] = useState<View>('Week');
+  const [isTimelineView, setIsTimelineView] = useState<boolean>(false);
+  let scheduleObj = useRef<ScheduleComponent>(null);
+  let contextMenuObj = useRef<ContextMenuComponent>(null);
+  let timeBtn = useRef<HTMLElement>(null);
   let selectedTarget: Element;
   let intl: Internationalization = new Internationalization();
-  let workWeekObj: MultiSelectComponent;
-  let resourceObj: MultiSelectComponent;
+  let workWeekObj = useRef<MultiSelectComponent>(null);
+  let resourceObj = useRef<MultiSelectComponent>(null);
   let liveTimeInterval: NodeJS.Timeout | number;
   const weekDays: Record<string, any>[] = [
     { text: 'Sunday', value: 0 },
@@ -151,54 +144,51 @@ function Overview() {
     { Name: 'On', Value: 'On' }
   ];
 
-  function importTemplateFn(data: Record<string, any>): NodeList {
+  const importTemplateFn = (data: Record<string, any>): NodeList => {
     const template: string = '<div class="e-template-btn"><span class="e-btn-icon e-icons e-upload-1 e-icon-left"></span>${text}</div>';
     return compile(template.trim())(data) as NodeList;
   }
 
-  function updateLiveTime(): void {
-    let scheduleTimezone: string = scheduleObj ? scheduleObj.timezone : 'Etc/GMT';
-    let timeBtn: HTMLElement = document.querySelector('.schedule-overview #timeBtn') as HTMLElement;
-    if (timeBtn) {
-      let liveTime;
-    if (scheduleObj.isAdaptive) {
-         liveTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: scheduleTimezone });
+  const updateLiveTime = (): void => {
+    let scheduleTimezone: string = scheduleObj ? scheduleObj.current.timezone : 'Etc/GMT';
+    let liveTime;
+    if (scheduleObj.current.isAdaptive) {
+      liveTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: scheduleTimezone });
     }
     else {
-         liveTime = new Date().toLocaleTimeString('en-US', { timeZone: scheduleTimezone });
+      liveTime = new Date().toLocaleTimeString('en-US', { timeZone: scheduleTimezone });
     }
-      timeBtn.innerHTML = liveTime;
-    }
+    timeBtn.current.innerHTML = liveTime;
   };
 
-  function onImportClick(args: SelectedEventArgs): void {
-    scheduleObj.importICalendar(((args.event.target as HTMLInputElement).files as any)[0]);
+  const onImportClick = (args: SelectedEventArgs): void => {
+    scheduleObj.current.importICalendar(((args.event.target as HTMLInputElement).files as any)[0]);
   }
 
-  function onPrint(): void {
-    scheduleObj.print();
+  const onPrint = (): void => {
+    scheduleObj.current.print();
   }
 
-  function onExportClick(args: MenuEventArgs): void {
+  const onExportClick = (args: MenuEventArgs): void => {
     if (args.item.text === 'Excel') {
       let exportDatas: Record<string, any>[] = [];
-      let eventCollection: Record<string, any>[] = scheduleObj.getEvents();
-      let resourceCollection: ResourcesModel[] = scheduleObj.getResourceCollections();
+      let eventCollection: Record<string, any>[] = scheduleObj.current.getEvents();
+      let resourceCollection: ResourcesModel[] = scheduleObj.current.getResourceCollections();
       let resourceData: Record<string, any>[] = resourceCollection[0].dataSource as Record<string, any>[];
       for (let resource of resourceData) {
         let data: Record<string, any>[] = eventCollection.filter((e: Record<string, any>) => e.CalendarId === resource.CalendarId);
         exportDatas = exportDatas.concat(data as Record<string, any>[]);
       }
-      scheduleObj.exportToExcel({ exportType: 'xlsx', customData: exportDatas, fields: ['Id', 'Subject', 'StartTime', 'EndTime', 'CalendarId'] });
+      scheduleObj.current.exportToExcel({ exportType: 'xlsx', customData: exportDatas, fields: ['Id', 'Subject', 'StartTime', 'EndTime', 'CalendarId'] });
     } else {
-      scheduleObj.exportToICalendar();
+      scheduleObj.current.exportToICalendar();
     }
   }
 
-  function getEventData(): Record<string, any> {
-    const date: Date = scheduleObj.selectedDate;
+  const getEventData = (): Record<string, any> => {
+    const date: Date = scheduleObj.current.selectedDate;
     return {
-      Id: scheduleObj.getEventMaxID(),
+      Id: scheduleObj.current.getEventMaxID(),
       Subject: '',
       StartTime: new Date(date.getFullYear(), date.getMonth(), date.getDate(), new Date().getHours(), 0, 0),
       EndTime: new Date(date.getFullYear(), date.getMonth(), date.getDate(), new Date().getHours() + 1, 0, 0),
@@ -209,116 +199,122 @@ function Overview() {
     };
   }
 
-  function onToolbarItemClicked(args: ClickEventArgs): void {
+  const onToolbarItemClicked = (args: ClickEventArgs): void => {
     switch (args.item.text) {
       case 'Day':
-        scheduleObj.currentView = isTimelineView ? 'TimelineDay' : 'Day';
+        setCurrentView(isTimelineView ? 'TimelineDay' : 'Day');
         break;
       case 'Week':
-        scheduleObj.currentView = isTimelineView ? 'TimelineWeek' : 'Week';
+        setCurrentView(isTimelineView ? 'TimelineWeek' : 'Week');
         break;
       case 'WorkWeek':
-        scheduleObj.currentView = isTimelineView ? 'TimelineWorkWeek' : 'WorkWeek';
+        setCurrentView(isTimelineView ? 'TimelineWorkWeek' : 'WorkWeek');
         break;
       case 'Month':
-        scheduleObj.currentView = isTimelineView ? 'TimelineMonth' : 'Month';
+        setCurrentView(isTimelineView ? 'TimelineMonth' : 'Month');
         break;
       case 'Year':
-        scheduleObj.currentView = isTimelineView ? 'TimelineYear' : 'Year';
+        setCurrentView(isTimelineView ? 'TimelineYear' : 'Year');
         break;
       case 'Agenda':
-        scheduleObj.currentView = 'Agenda';
+        setCurrentView('Agenda');
         break;
       case 'New Event':
         const eventData: Record<string, any> = getEventData();
-        scheduleObj.openEditor(eventData, 'Add', true);
+        scheduleObj.current.openEditor(eventData, 'Add', true);
         break;
       case 'New Recurring Event':
         const recEventData: Record<string, any> = getEventData();
-        scheduleObj.openEditor(recEventData, 'Add', true, 1);
+        scheduleObj.current.openEditor(recEventData, 'Add', true, 1);
         break;
     }
   }
 
-  function timelineTemplate(): JSX.Element {
+  useEffect(() => {
+    let updatedView: View = currentView;
+    switch (currentView) {
+      case 'Day':
+      case 'TimelineDay':
+        updatedView = isTimelineView ? 'TimelineDay' : 'Day';
+        break;
+      case 'Week':
+      case 'TimelineWeek':
+        updatedView = isTimelineView ? 'TimelineWeek' : 'Week';
+        break;
+      case 'WorkWeek':
+      case 'TimelineWorkWeek':
+        updatedView = isTimelineView ? 'TimelineWorkWeek' : 'WorkWeek';
+        break;
+      case 'Month':
+      case 'TimelineMonth':
+        updatedView = isTimelineView ? 'TimelineMonth' : 'Month';
+        break;
+      case 'Year':
+      case 'TimelineYear':
+        updatedView = isTimelineView ? 'TimelineYear' : 'Year';
+        break;
+      case 'Agenda':
+        updatedView = 'Agenda';
+        break;
+    }
+    scheduleObj.current.currentView = updatedView;
+  }, [isTimelineView]);
+
+  const onChange = (args: SwitchEventArgs) => {
+    setIsTimelineView(args.checked);
+  }
+
+  const timelineTemplate = () => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
-          <CheckBoxComponent id='timeline_views' checked={false} 
-            change={(args: SwitchEventArgs) => {
-              isTimelineView = args.checked as boolean;
-              switch (scheduleObj.currentView) {
-                case 'Day':
-                case 'TimelineDay':
-                  scheduleObj.currentView = isTimelineView ? 'TimelineDay' : 'Day';
-                  break;
-                case 'Week':
-                case 'TimelineWeek':
-                  scheduleObj.currentView = isTimelineView ? 'TimelineWeek' : 'Week';
-                  break;
-                case 'WorkWeek':
-                case 'TimelineWorkWeek':
-                  scheduleObj.currentView = isTimelineView ? 'TimelineWorkWeek' : 'WorkWeek';
-                  break;
-                case 'Month':
-                case 'TimelineMonth':
-                  scheduleObj.currentView = isTimelineView ? 'TimelineMonth' : 'Month';
-                  break;
-                case 'Year':
-                case 'TimelineYear':
-                  scheduleObj.currentView = isTimelineView ? 'TimelineYear' : 'Year';
-                  break;
-                case 'Agenda':
-                  scheduleObj.currentView = 'Agenda';
-                  break;
-              }
-            }} />
+          <CheckBoxComponent id='timeline_views' checked={false} change={onChange}/>
         </div>
         <div className='text-child'>Timeline Views</div>
       </div >
     );
   }
 
-  function groupTemplate(): JSX.Element {
+  const groupTemplate = () => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
-          <CheckBoxComponent id='grouping' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.group.resources = args.checked ? ['Calendars'] : []; }} />
+          <CheckBoxComponent id='grouping' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.current.group.resources = args.checked ? ['Calendars'] : []; }} />
         </div>
         <div className='text-child'>Grouping</div>
       </div>
     );
   }
 
-  function gridlineTemplate(): JSX.Element {
+  const gridlineTemplate = () => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
-          <CheckBoxComponent id='timeSlots' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.timeScale.enable = args.checked as boolean; }} />
+          <CheckBoxComponent id='timeSlots' checked={true} change={(args: SwitchEventArgs) => { scheduleObj.current.timeScale.enable = args.checked as boolean; }} />
         </div>
         <div className='text-child'>Gridlines</div>
       </div>
     );
   }
 
-  function autoHeightTemplate(): JSX.Element {
+  const autoHeightTemplate = () => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
-          <CheckBoxComponent id='row_auto_height' checked={false} change={(args: SwitchEventArgs) => { scheduleObj.rowAutoHeight = args.checked as boolean; }} />
+          <CheckBoxComponent id='row_auto_height' checked={false} change={(args: SwitchEventArgs) => { scheduleObj.current.rowAutoHeight = args.checked as boolean; }} />
         </div>
         <div className='text-child'>Row Auto Height</div>
       </div>
     );
   }
 
-  function getDateHeaderDay(value: Date): string {
+  const getDateHeaderDay = (value: Date): string => {
     return intl.formatDate(value, { skeleton: 'E' });
   }
-  function getDateHeaderDate(value: Date): string {
+  const getDateHeaderDate = (value: Date): string => {
     return intl.formatDate(value, { skeleton: 'd' });
   }
-  function getWeather(value: Date) {
+  const getWeather = (value: Date) => {
     switch (value.getDay()) {
       case 0:
         return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" />';
@@ -339,12 +335,17 @@ function Overview() {
     }
   }
 
-  function dateHeaderTemplate(props: { date: Date; }): JSX.Element {
-    return (<div><div>{getDateHeaderDay(props.date)}</div><div>{getDateHeaderDate(props.date)}</div><div className="date-text"
-      dangerouslySetInnerHTML={{ __html: getWeather(props.date) }}></div></div>);
+  const dateHeaderTemplate = (props: { date: Date; }) => {
+    return (
+      <Fragment>
+        <div>{getDateHeaderDay(props.date)}</div>
+        <div>{getDateHeaderDate(props.date)}</div>
+        <div className="date-text" dangerouslySetInnerHTML={{ __html: getWeather(props.date) }}></div>
+      </Fragment>
+    );
   }
 
-  function onResourceChange(args: MultiSelectChangeEventArgs): void {
+  const onResourceChange = (args: MultiSelectChangeEventArgs): void => {
     let resourcePredicate: Predicate & any;
     for (let value of args.value) {
       if (resourcePredicate) {
@@ -353,9 +354,9 @@ function Overview() {
         resourcePredicate = new Predicate('CalendarId', 'equal', value);
       }
     }
-    scheduleObj.resources[0].query = resourcePredicate ? new Query().where(resourcePredicate) : new Query().where('CalendarId', 'equal', 1);
+    scheduleObj.current.resources[0].query = resourcePredicate ? new Query().where(resourcePredicate) : new Query().where('CalendarId', 'equal', 1);
   }
-  let generateEvents: Function = (): Record<string, any>[] => {
+  let generateEvents = (): Record<string, any>[] => {
     let eventData: Record<string, any>[] = [];
     let eventSubjects: string[] = [
       'Bering Sea Gold', 'Technology', 'Maintenance', 'Meeting', 'Traveling', 'Annual Conference', 'Birthday Celebration',
@@ -414,71 +415,169 @@ function Overview() {
     return overviewEvents;
   };
 
+  const createUpload = () => {
+    const element = document.querySelector('.calendar-import .e-css.e-btn');
+    element.classList.add('e-inherit');
+  }
+
+  const btnClick = () => {
+    let settingsPanel: Element = document.querySelector('.overview-content .right-panel') as Element;
+    if (settingsPanel.classList.contains('hide')) {
+      removeClass([settingsPanel], 'hide');
+      workWeekObj.current.refresh();
+      resourceObj.current.refresh();
+    } else {
+      addClass([settingsPanel], 'hide');
+    }
+    scheduleObj.current.refreshEvents();
+  }
+
+  const contextMenuOpen = (args: BeforeOpenCloseMenuEventArgs) => {
+    let newEventElement: HTMLElement = document.querySelector('.e-new-event') as HTMLElement;
+    if (newEventElement) {
+      remove(newEventElement);
+      removeClass([document.querySelector('.e-selected-cell') as Element], 'e-selected-cell');
+    }
+    scheduleObj.current.closeQuickInfoPopup();
+    let targetElement: HTMLElement = args.event.target as HTMLElement;
+    if (closest(targetElement, '.e-contextmenu')) {
+      return;
+    }
+    selectedTarget = closest(targetElement, '.e-appointment,.e-work-cells,.e-vertical-view .e-date-header-wrap .e-all-day-cells,.e-vertical-view .e-date-header-wrap .e-header-cells');
+    if (isNullOrUndefined(selectedTarget)) {
+      args.cancel = true;
+      return;
+    }
+    if (selectedTarget.classList.contains('e-appointment')) {
+      let eventObj: Record<string, any> = scheduleObj.current.getEventDetails(selectedTarget) as Record<string, any>;
+      if (eventObj.RecurrenceRule) {
+        contextMenuObj.current.showItems(['EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
+        contextMenuObj.current.hideItems(['Add', 'AddRecurrence', 'Today', 'Save', 'Delete'], true);
+      } else {
+        contextMenuObj.current.showItems(['Save', 'Delete'], true);
+        contextMenuObj.current.hideItems(['Add', 'AddRecurrence', 'Today', 'EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
+      }
+      return;
+    } else if ((selectedTarget.classList.contains('e-work-cells') || selectedTarget.classList.contains('e-all-day-cells')) &&
+      !selectedTarget.classList.contains('e-selected-cell')) {
+      removeClass([].slice.call(scheduleObj.current.element.querySelectorAll('.e-selected-cell')), 'e-selected-cell');
+      selectedTarget.setAttribute('aria-selected', 'true');
+      selectedTarget.classList.add('e-selected-cell');
+    }
+    contextMenuObj.current.hideItems(['Save', 'Delete', 'EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
+    contextMenuObj.current.showItems(['Add', 'AddRecurrence', 'Today'], true);
+  }
+
+  const contextMenuSelect = (args: ContextMenuEventArgs) => {
+    let selectedMenuItem: string = args.item.id as string;
+    let eventObj: Record<string, any> = {};
+    if (selectedTarget && selectedTarget.classList.contains('e-appointment')) {
+      eventObj = scheduleObj.current.getEventDetails(selectedTarget) as Record<string, any>;
+    }
+    switch (selectedMenuItem) {
+      case 'Today':
+        scheduleObj.current.selectedDate = new Date();
+        break;
+      case 'Add':
+      case 'AddRecurrence':
+        let selectedCells: Element[] = scheduleObj.current.getSelectedElements();
+        let activeCellsData: CellClickEventArgs = scheduleObj.current.getCellDetails(selectedCells.length > 0 ? selectedCells : selectedTarget);
+        if (selectedMenuItem === 'Add') {
+          scheduleObj.current.openEditor(activeCellsData, 'Add');
+        } else {
+          scheduleObj.current.openEditor(activeCellsData, 'Add', false, 1);
+        }
+        break;
+      case 'Save':
+      case 'EditOccurrence':
+      case 'EditSeries':
+        if (selectedMenuItem === 'EditSeries') {
+          let query: Query = new Query().where(scheduleObj.current.eventFields.id as string, 'equal', eventObj.RecurrenceID as string | number);
+          eventObj = new DataManager(scheduleObj.current.eventsData).executeLocal(query)[0] as Record<string, any>;
+        }
+        scheduleObj.current.openEditor(eventObj, selectedMenuItem);
+        break;
+      case 'Delete':
+        scheduleObj.current.deleteEvent(eventObj);
+        break;
+      case 'DeleteOccurrence':
+      case 'DeleteSeries':
+        scheduleObj.current.deleteEvent(eventObj, selectedMenuItem);
+        break;
+    }
+  }
+
+  const timezoneChange = (args: ChangeEventArgs) => {
+    scheduleObj.current.timezone = args.value as string;
+    updateLiveTime();
+    (document.querySelector('.schedule-overview #timezoneBtn') as HTMLElement).innerHTML = '<span class="e-btn-icon e-icons e-time-zone e-icon-left"></span>' + args.itemData.text;
+  }
+
+  const weekNumberChange = (args: ChangeEventArgs) => {
+    if (args.value == "Off") {
+      scheduleObj.current.showWeekNumber = false;
+    } else {
+      scheduleObj.current.showWeekNumber = true;
+      scheduleObj.current.weekRule = args.value as any;
+    }
+  }
+
+  const tooltipChange = (args: ChangeEventArgs) => {
+    if (args.value === "Off") {
+      scheduleObj.current.eventSettings.enableTooltip = false;
+    } else {
+      scheduleObj.current.eventSettings.enableTooltip = true;
+    }
+  }
+
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='content-wrapper'>
           <div className='schedule-overview'>
             <AppBarComponent colorMode="Primary">
-                <span className="time e-icons e-time-zone"></span>
-                <span id="timezoneBtn" className="time ">UTC</span>
-                <span className="time e-icons e-clock"></span>
-                <span id="timeBtn" className="time current-time">Time</span>
-                <div className="e-appbar-spacer"></div>
+              <span className="time e-icons e-time-zone"></span>
+              <span id="timezoneBtn" className="time ">UTC</span>
+              <span className="time e-icons e-clock"></span>
+              <span id="timeBtn" className="time current-time" ref={timeBtn}></span>
+              <div className="e-appbar-spacer"></div>
               <div className='control-panel calendar-export'>
-                    <ButtonComponent id='printBtn' cssClass='title-bar-btn e-inherit' iconCss='e-icons e-print' onClick={(onPrint.bind(this))} content='Print' />
+                <ButtonComponent id='printBtn' cssClass='title-bar-btn e-inherit' iconCss='e-icons e-print' onClick={(onPrint)} content='Print' />
               </div>
               <div className='control-panel import-button'>
-                <UploaderComponent id='fileUpload' type='file' allowedExtensions='.ics' cssClass='calendar-import'
-                    buttons={{ browse: importTemplateFn({ text: 'Import' })[0] as HTMLElement }} multiple={false} showFileList={false} selected={(onImportClick.bind(this))} created={() => {
-                      const element = document.querySelector('.calendar-import .e-css.e-btn');
-                      element.classList.add('e-inherit');
-                    }}/>
+                <UploaderComponent id='fileUpload' type='file' allowedExtensions='.ics' cssClass='calendar-import' buttons={{ browse: importTemplateFn({ text: 'Import' })[0] as HTMLElement }} multiple={false} showFileList={false} selected={(onImportClick)} created={createUpload} />
               </div>
               <div className='control-panel calendar-export'>
-                <DropDownButtonComponent id='exportBtn' content='Export' cssClass = 'e-inherit' items={exportItems} select={onExportClick.bind(this)} />
+                <DropDownButtonComponent id='exportBtn' content='Export' cssClass = 'e-inherit' items={exportItems} select={onExportClick} />
               </div>
-                <ButtonComponent id='settingsBtn' cssClass='overview-toolbar-settings e-inherit' iconCss='e-icons e-settings' iconPosition='Top' content='' onClick={() => {
-                  let settingsPanel: Element = document.querySelector('.overview-content .right-panel') as Element;
-                  if (settingsPanel.classList.contains('hide')) {
-                    removeClass([settingsPanel], 'hide');
-                    workWeekObj.refresh();
-                    resourceObj.refresh();
-                  } else {
-                    addClass([settingsPanel], 'hide');
-                  }
-                  scheduleObj.refreshEvents();
-                }} />
+              <ButtonComponent id='settingsBtn' cssClass='overview-toolbar-settings e-inherit' iconCss='e-icons e-settings' iconPosition='Top' content='' onClick={btnClick} />
             </AppBarComponent>
-                <ToolbarComponent id='toolbarOptions' cssClass= 'overview-toolbar' width='100%' height={70} overflowMode='Scrollable' scrollStep={100} created={() => liveTimeInterval = setInterval(() => { updateLiveTime(); }, 1000)} clicked={onToolbarItemClicked.bind(this)}>
-                  <ItemsDirective>
-                    <ItemDirective prefixIcon='e-icons e-plus' tooltipText='New Event' text='New Event' tabIndex={0}/>
-                    <ItemDirective prefixIcon='e-icons e-repeat' tooltipText='New Recurring Event' text='New Recurring Event' tabIndex={0} />
-                    <ItemDirective type='Separator' />
-                    <ItemDirective prefixIcon='e-icons e-day' tooltipText='Day' text='Day'tabIndex={0}/>
-                    <ItemDirective prefixIcon='e-icons e-week' tooltipText='Week' text='Week' tabIndex={0}/>
-                    <ItemDirective prefixIcon='e-icons e-week' tooltipText='WorkWeek' text='WorkWeek' tabIndex={0} />
-                    <ItemDirective prefixIcon='e-icons e-month' tooltipText='Month' text='Month' tabIndex={0} />
-                    <ItemDirective prefixIcon='e-icons e-month' tooltipText='Year' text='Year' tabIndex={0} />
-                    <ItemDirective prefixIcon='e-icons e-agenda-date-range' tooltipText='Agenda' text='Agenda' tabIndex={0} />
-                    <ItemDirective tooltipText='Timeline Views' text='Timeline Views' template={timelineTemplate.bind(this)} />
-                    <ItemDirective type='Separator' />
-                    <ItemDirective tooltipText='Grouping' text='Grouping' template={groupTemplate.bind(this)} />
-                    <ItemDirective tooltipText='Timme Slots' text='Timme Slots' template={gridlineTemplate.bind(this)} />
-                    <ItemDirective tooltipText='Auto Fit Rows' text='Auto Fit Rows' template={autoHeightTemplate.bind(this)} />
-                  </ItemsDirective>
-                </ToolbarComponent>
+            <ToolbarComponent id='toolbarOptions' cssClass='overview-toolbar' width='100%' height={70} overflowMode='Scrollable' scrollStep={100} created={() => liveTimeInterval = setInterval(() => { updateLiveTime(); }, 1000)} clicked={onToolbarItemClicked}>
+              <ItemsDirective>
+                <ItemDirective prefixIcon='e-icons e-plus' tooltipText='New Event' text='New Event' tabIndex={0}/>
+                <ItemDirective prefixIcon='e-icons e-repeat' tooltipText='New Recurring Event' text='New Recurring Event' tabIndex={0} />
+                <ItemDirective type='Separator' />
+                <ItemDirective prefixIcon='e-icons e-day' tooltipText='Day' text='Day'tabIndex={0}/>
+                <ItemDirective prefixIcon='e-icons e-week' tooltipText='Week' text='Week' tabIndex={0}/>
+                <ItemDirective prefixIcon='e-icons e-week' tooltipText='WorkWeek' text='WorkWeek' tabIndex={0} />
+                <ItemDirective prefixIcon='e-icons e-month' tooltipText='Month' text='Month' tabIndex={0} />
+                <ItemDirective prefixIcon='e-icons e-month' tooltipText='Year' text='Year' tabIndex={0} />
+                <ItemDirective prefixIcon='e-icons e-agenda-date-range' tooltipText='Agenda' text='Agenda' tabIndex={0} />
+                <ItemDirective tooltipText='Timeline Views' text='Timeline Views' template={timelineTemplate} />
+                <ItemDirective type='Separator' />
+                <ItemDirective tooltipText='Grouping' text='Grouping' template={groupTemplate} />
+                <ItemDirective tooltipText='Timme Slots' text='Timme Slots' template={gridlineTemplate} />
+                <ItemDirective tooltipText='Auto Fit Rows' text='Auto Fit Rows' template={autoHeightTemplate} />
+              </ItemsDirective>
+            </ToolbarComponent>
             <div className='overview-content'>
               <div className='left-panel'>
                 <div className='overview-scheduler'>
-                  <ScheduleComponent id='scheduler' cssClass='schedule-overview' ref={(schedule: ScheduleComponent) => scheduleObj = schedule} width='100%' height='100%'
-                    group={{ resources: ['Calendars'] }} timezone='UTC' eventSettings={{ dataSource: generateEvents() }} dateHeaderTemplate={dateHeaderTemplate.bind(this)}>
+                  <ScheduleComponent id='scheduler' cssClass='schedule-overview' ref={scheduleObj} width='100%' height='100%' currentView={currentView} group={{ resources: ['Calendars'] }} timezone='UTC' eventSettings={{ dataSource: generateEvents() }} dateHeaderTemplate={dateHeaderTemplate}>
                     <ResourcesDirective>
-                      <ResourceDirective field='CalendarId' title='Calendars' name='Calendars' dataSource={calendarCollections}
-                        query={new Query().where('CalendarId', 'equal', 1)} textField='CalendarText' idField='CalendarId' colorField='CalendarColor'>
-                      </ResourceDirective>
+                      <ResourceDirective field='CalendarId' title='Calendars' name='Calendars' dataSource={calendarCollections} query={new Query().where('CalendarId', 'equal', 1)} textField='CalendarText' idField='CalendarId' colorField='CalendarColor' />
                     </ResourcesDirective>
-                    < ViewsDirective >
+                    <ViewsDirective>
                       <ViewDirective option='Day' />
                       <ViewDirective option='Week' />
                       <ViewDirective option='WorkWeek' />
@@ -493,92 +592,17 @@ function Overview() {
                     </ViewsDirective>
                     <Inject services={[Day, Week, WorkWeek, Month, Year, Agenda, TimelineViews, TimelineMonth, TimelineYear, DragAndDrop, Resize, Print, ExcelExport, ICalendarImport, ICalendarExport]} />
                   </ScheduleComponent>
-                  <ContextMenuComponent id='overviewContextMenu' cssClass='schedule-context-menu' ref={(menu: ContextMenuComponent) => contextMenuObj = menu} target='.e-schedule' items={contextMenuItems}
-                    beforeOpen={(args: BeforeOpenCloseMenuEventArgs) => {
-                      let newEventElement: HTMLElement = document.querySelector('.e-new-event') as HTMLElement;
-                      if (newEventElement) {
-                        remove(newEventElement);
-                        removeClass([document.querySelector('.e-selected-cell') as Element], 'e-selected-cell');
-                      }
-                      scheduleObj.closeQuickInfoPopup();
-                      let targetElement: HTMLElement = args.event.target as HTMLElement;
-                      if (closest(targetElement, '.e-contextmenu')) {
-                        return;
-                      }
-                      selectedTarget = closest(targetElement, '.e-appointment,.e-work-cells,.e-vertical-view .e-date-header-wrap .e-all-day-cells,.e-vertical-view .e-date-header-wrap .e-header-cells');
-                      if (isNullOrUndefined(selectedTarget)) {
-                        args.cancel = true;
-                        return;
-                      }
-                      if (selectedTarget.classList.contains('e-appointment')) {
-                        let eventObj: Record<string, any> = scheduleObj.getEventDetails(selectedTarget) as Record<string, any>;
-                        if (eventObj.RecurrenceRule) {
-                          contextMenuObj.showItems(['EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
-                          contextMenuObj.hideItems(['Add', 'AddRecurrence', 'Today', 'Save', 'Delete'], true);
-                        } else {
-                          contextMenuObj.showItems(['Save', 'Delete'], true);
-                          contextMenuObj.hideItems(['Add', 'AddRecurrence', 'Today', 'EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
-                        }
-                        return;
-                      } else if ((selectedTarget.classList.contains('e-work-cells') || selectedTarget.classList.contains('e-all-day-cells')) &&
-                        !selectedTarget.classList.contains('e-selected-cell')) {
-                        removeClass([].slice.call(scheduleObj.element.querySelectorAll('.e-selected-cell')), 'e-selected-cell');
-                        selectedTarget.setAttribute('aria-selected', 'true');
-                        selectedTarget.classList.add('e-selected-cell');
-                      }
-                      contextMenuObj.hideItems(['Save', 'Delete', 'EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
-                      contextMenuObj.showItems(['Add', 'AddRecurrence', 'Today'], true);
-                    }} select={(args: ContextMenuEventArgs) => {
-                      let selectedMenuItem: string = args.item.id as string;
-                      let eventObj: Record<string, any> = {};
-                      if (selectedTarget && selectedTarget.classList.contains('e-appointment')) {
-                        eventObj = scheduleObj.getEventDetails(selectedTarget) as Record<string, any>;
-                      }
-                      switch (selectedMenuItem) {
-                        case 'Today':
-                          scheduleObj.selectedDate = new Date();
-                          break;
-                        case 'Add':
-                        case 'AddRecurrence':
-                          let selectedCells: Element[] = scheduleObj.getSelectedElements();
-                          let activeCellsData: CellClickEventArgs = scheduleObj.getCellDetails(selectedCells.length > 0 ? selectedCells : selectedTarget);
-                          if (selectedMenuItem === 'Add') {
-                            scheduleObj.openEditor(activeCellsData, 'Add');
-                          } else {
-                            scheduleObj.openEditor(activeCellsData, 'Add', false, 1);
-                          }
-                          break;
-                        case 'Save':
-                        case 'EditOccurrence':
-                        case 'EditSeries':
-                          if (selectedMenuItem === 'EditSeries') {
-                            let query: Query = new Query().where(scheduleObj.eventFields.id as string, 'equal', eventObj.RecurrenceID as string | number);
-                            eventObj = new DataManager(scheduleObj.eventsData).executeLocal(query)[0] as Record<string, any>;
-                          }
-                          scheduleObj.openEditor(eventObj, selectedMenuItem);
-                          break;
-                        case 'Delete':
-                          scheduleObj.deleteEvent(eventObj);
-                          break;
-                        case 'DeleteOccurrence':
-                        case 'DeleteSeries':
-                          scheduleObj.deleteEvent(eventObj, selectedMenuItem);
-                          break;
-                      }
-                    }}>
-                  </ContextMenuComponent>
+                  <ContextMenuComponent id='overviewContextMenu' cssClass='schedule-context-menu' ref={contextMenuObj} target='.e-schedule' items={contextMenuItems} beforeOpen={contextMenuOpen} select={contextMenuSelect} />
                 </div>
               </div>
               <div className='right-panel hide'>
                 <div className='control-panel e-css'>
-                <div className='col-row'>
+                  <div className='col-row'>
                     <div className='col-left'>
                       <label style={{ lineHeight: '34px', margin: '0' }}>Calendar</label>
                     </div>
                     <div className='col-right'>
-                      <MultiSelectComponent id="resources" cssClass='schedule-resource' ref={(resources: MultiSelectComponent) => resourceObj = resources} dataSource={calendarCollections as Record<string, any>[]}
-                        mode='CheckBox' fields={{ text: 'CalendarText', value: 'CalendarId' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true}
-                        popupHeight={300} value={[1]} change={onResourceChange.bind(this)}>
+                      <MultiSelectComponent id="resources" cssClass='schedule-resource' ref={resourceObj} dataSource={calendarCollections as Record<string, any>[]} mode='CheckBox' fields={{ text: 'CalendarText', value: 'CalendarId' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true} popupHeight={300} value={[1]} change={onResourceChange}>
                         <Inject services={[CheckBoxSelection]} />
                       </MultiSelectComponent>
                     </div>
@@ -588,8 +612,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>First Day of Week</label>
                     </div>
                     <div className='col-right'>
-                      <DropDownListComponent id="weekFirstDay" dataSource={weekDays} fields={{ text: 'text', value: 'value' }} value={0}
-                         popupHeight={400} change={(args: ChangeEventArgs) => { scheduleObj.firstDayOfWeek = args.value as number; }} />
+                      <DropDownListComponent id="weekFirstDay" dataSource={weekDays} fields={{ text: 'text', value: 'value' }} value={0} popupHeight={400} change={(args: ChangeEventArgs) => { scheduleObj.current.firstDayOfWeek = args.value as number; }} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -597,9 +620,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Work week</label>
                     </div>
                     <div className='col-right'>
-                      <MultiSelectComponent id="workWeekDays" cssClass='schedule-workweek' ref={(workWeek: MultiSelectComponent) => workWeekObj = workWeek} dataSource={weekDays} mode='CheckBox'
-                        fields={{ text: 'text', value: 'value' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true}
-                         value={[1, 2, 3, 4, 5]} change={(args: MultiSelectChangeEventArgs) => scheduleObj.workDays = args.value as number[]}>
+                      <MultiSelectComponent id="workWeekDays" cssClass='schedule-workweek' ref={workWeekObj} dataSource={weekDays} mode='CheckBox' fields={{ text: 'text', value: 'value' }} enableSelectionOrder={false} showClearButton={false} showDropDownIcon={true} value={[1, 2, 3, 4, 5]} change={(args: MultiSelectChangeEventArgs) => scheduleObj.current.workDays = args.value as number[]}>
                         <Inject services={[CheckBoxSelection]} />
                       </MultiSelectComponent>
                     </div>
@@ -609,13 +630,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Timezone</label>
                     </div>
                     <div className='col-right'>
-                      <DropDownListComponent id="timezone" dataSource={timezoneData} fields={{ text: 'text', value: 'value' }} value='Etc/GMT'
-                        popupHeight={150} change={(args: ChangeEventArgs) => {
-                          scheduleObj.timezone = args.value as string;
-                          updateLiveTime();
-                          (document.querySelector('.schedule-overview #timezoneBtn') as HTMLElement).innerHTML =
-                            '<span class="e-btn-icon e-icons e-time-zone e-icon-left"></span>' + args.itemData.text;
-                        }} />
+                      <DropDownListComponent id="timezone" dataSource={timezoneData} fields={{ text: 'text', value: 'value' }} value='Etc/GMT' popupHeight={150} change={timezoneChange} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -623,8 +638,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Day Start Hour</label>
                     </div>
                     <div className='col-right'>
-                      <TimePickerComponent id='dayStartHour' showClearButton={false} value={new Date(new Date().setHours(0, 0, 0))}
-                        change={(args: TimeEventArgs) => scheduleObj.startHour = intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
+                      <TimePickerComponent id='dayStartHour' showClearButton={false} value={new Date(new Date().setHours(0, 0, 0))} change={(args: TimeEventArgs) => scheduleObj.current.startHour = intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -632,8 +646,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Day End Hour</label>
                     </div>
                     <div className='col-right'>
-                      <TimePickerComponent id='dayEndHour' showClearButton={false} value={new Date(new Date().setHours(23, 59, 59))}
-                        change={(args: TimeEventArgs) => scheduleObj.endHour = intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
+                      <TimePickerComponent id='dayEndHour' showClearButton={false} value={new Date(new Date().setHours(23, 59, 59))} change={(args: TimeEventArgs) => scheduleObj.current.endHour = intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -641,8 +654,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Work Start Hour</label>
                     </div>
                     <div className='col-right'>
-                      <TimePickerComponent id='workHourStart' showClearButton={false} value={new Date(new Date().setHours(9, 0, 0))}
-                        change={(args: TimeEventArgs) => scheduleObj.workHours.start = intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
+                      <TimePickerComponent id='workHourStart' showClearButton={false} value={new Date(new Date().setHours(9, 0, 0))} change={(args: TimeEventArgs) => scheduleObj.current.workHours.start = intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -650,8 +662,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Work End Hour</label>
                     </div>
                     <div className='col-right'>
-                      <TimePickerComponent id='workHourEnd' showClearButton={false} value={new Date(new Date().setHours(18, 0, 0))}
-                        change={(args: TimeEventArgs) => scheduleObj.workHours.end = intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
+                      <TimePickerComponent id='workHourEnd' showClearButton={false} value={new Date(new Date().setHours(18, 0, 0))} change={(args: TimeEventArgs) => scheduleObj.current.workHours.end = intl.formatDate(args.value as Date, { skeleton: 'Hm' })} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -659,8 +670,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Slot Duration</label>
                     </div>
                     <div className='col-right'>
-                      <DropDownListComponent id="slotDuration" dataSource={majorSlotData} fields={{ text: 'Name', value: 'Value' }} value={60}
-                        popupHeight={150} change={(args: ChangeEventArgs) => { scheduleObj.timeScale.interval = args.value as number; }} />
+                      <DropDownListComponent id="slotDuration" dataSource={majorSlotData} fields={{ text: 'Name', value: 'Value' }} value={60} popupHeight={150} change={(args: ChangeEventArgs) => { scheduleObj.current.timeScale.interval = args.value as number; }} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -668,8 +678,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Slot Interval</label>
                     </div>
                     <div className='col-right'>
-                      <DropDownListComponent id="slotInterval" dataSource={minorSlotData} value={2} popupHeight={150}
-                        change={(args: ChangeEventArgs) => { scheduleObj.timeScale.slotCount = args.value as number; }} />
+                      <DropDownListComponent id="slotInterval" dataSource={minorSlotData} value={2} popupHeight={150} change={(args: ChangeEventArgs) => { scheduleObj.current.timeScale.slotCount = args.value as number; }} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -677,8 +686,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Time Format</label>
                     </div>
                     <div className='col-right'>
-                      <DropDownListComponent id="timeFormat" dataSource={timeFormatData} fields={{ text: 'Name', value: 'Value' }} value={"hh:mm a"} popupHeight={150}
-                        change={(args: ChangeEventArgs) => { scheduleObj.timeFormat = args.value as any; }} />
+                      <DropDownListComponent id="timeFormat" dataSource={timeFormatData} fields={{ text: 'Name', value: 'Value' }} value={"hh:mm a"} popupHeight={150} change={(args: ChangeEventArgs) => { scheduleObj.current.timeFormat = args.value as any; }} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -686,15 +694,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Week Numbers</label>
                     </div>
                     <div className='col-right'>
-                      <DropDownListComponent id="weekNumber" dataSource={weekNumberData} fields={{ text: 'Name', value: 'Value' }} value={"Off"} popupHeight={150}
-                        change={(args: ChangeEventArgs) => {
-                          if (args.value == "Off") {
-                            scheduleObj.showWeekNumber = false;
-                          } else {
-                            scheduleObj.showWeekNumber = true;
-                            scheduleObj.weekRule = args.value as any;
-                          }
-                        }} />
+                      <DropDownListComponent id="weekNumber" dataSource={weekNumberData} fields={{ text: 'Name', value: 'Value' }} value={"Off"} popupHeight={150} change={weekNumberChange} />
                     </div>
                   </div>
                   <div className='col-row'>
@@ -702,14 +702,7 @@ function Overview() {
                       <label style={{ lineHeight: '34px', margin: '0' }}>Tooltip</label>
                     </div>
                     <div className='col-right'>
-                      <DropDownListComponent id="tooltip" dataSource={tooltipData} fields={{ text: 'Name', value: 'Value' }} value={"Off"} popupHeight={150}
-                        change={(args: ChangeEventArgs) => {
-                          if (args.value === "Off") {
-                            scheduleObj.eventSettings.enableTooltip = false;
-                          } else {
-                            scheduleObj.eventSettings.enableTooltip = true;
-                          }
-                        }} />
+                      <DropDownListComponent id="tooltip" dataSource={tooltipData} fields={{ text: 'Name', value: 'Value' }} value={"Off"} popupHeight={150} change={tooltipChange} />
                     </div>
                   </div>
                 </div>
@@ -719,16 +712,18 @@ function Overview() {
         </div>
       </div >
       <div id="action-description">
-        <p>This <a href="https://www.syncfusion.com/react-ui-components/react-scheduler" target="_blank">React Scheduler example</a> demonstrates the overview of React Scheduler with its overall features. Use the toolbar buttons
-          to play with Scheduler functionalities.</p>
+        <p>
+          This <a href="https://www.syncfusion.com/react-ui-components/react-scheduler" target="_blank">React Scheduler example</a> demonstrates the overview of React Scheduler with its overall features. Use the toolbar buttons
+          to play with Scheduler functionalities.
+        </p>
       </div>
       <div id="description">
-        <p>The React Scheduler is a fully-features calendar component that is used to manage appointments with multiple
+        <p>
+          The React Scheduler is a fully-features calendar component that is used to manage appointments with multiple
           resources. The data can be pulled from the <code>dataManager</code> component or valid local JSON data or
           Restful web services and bind the data fields using <code>eventSettings.fields</code>.
         </p>
-        <p>In this demo, React Scheduler features such as Multiple views, Templates (Date Header, Quick Info),
-          Resources, Grouping, Timezone, Timescale, etc... are used along with multiple resources.</p>
+        <p>In this demo, React Scheduler features such as Multiple views, Templates (Date Header, Quick Info), Resources, Grouping, Timezone, Timescale, etc... are used along with multiple resources.</p>
       </div>
     </div>
   );

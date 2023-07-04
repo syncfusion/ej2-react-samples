@@ -1,14 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { MenuComponent } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './data-binding.css';
 import * as dataSource from './menu-data.json';
 
-/**
- * Menu data binding sample
+/*
+  Menu data binding sample
  */
-function DataBinding() {
+const DataBinding = () => {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
@@ -35,8 +36,7 @@ function DataBinding() {
                 </p>
                 <p>
                     More information about menu can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/data-source-binding-and-custom-menu-items/#data-binding">
-                        data binding</a> section.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/menu/data-source-binding-and-custom-menu-items/#data-binding">data binding</a> section.
                 </p>
             </div>
         </div>

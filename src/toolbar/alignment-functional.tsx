@@ -1,20 +1,22 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import{ useEffect } from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './toolbar.component.css'
 
-function Alignment() {
-    React.useEffect(() => {
+const Alignment = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function template() {
+    const template = () => {
         return (
             <div className="e-folder">
                 <div className="e-folder-name">Inbox(33)</div>
                 <div className="e-mail-id">user@example.com</div>
-            </div>);
+            </div>
+        );
     }
     return (
         <div className='control-pane'>
@@ -36,8 +38,7 @@ function Alignment() {
                             </div>
                             <div className='e-mail-content'><span className="e-mail-header">Maria Anders</span>
                                 <span className='e-mail-time'>11:27AM</span>
-                                <div
-                                    className="e-mail-subject"> Sales Representative </div>
+                                <div className="e-mail-subject"> Sales Representative </div>
                                 <div className="e-mail-description"> Can we schedule a Meeting Appointment for today? </div>
                             </div>
                         </div>
@@ -47,9 +48,8 @@ function Alignment() {
                             </div>
                             <div className='e-mail-content'>
                                 <span className="e-mail-header">Victoria Ashworth</span><span className="e-mail-time">Fri 7:50AM</span>
-                                <div
-                                    className="e-mail-subject"> Sales Representative </div>
-                                <div className="e-mail-description"> Yes, we are available for the meeting tomorrow. </div>
+                                <div className="e-mail-subject"> Sales Representative </div>
+                                <div className="e-mail-description"> Yes, we are available for the meeting tomorrow.</div>
                             </div>
                         </div>
                         <div className='e-mail-item'>
@@ -58,10 +58,8 @@ function Alignment() {
                             </div>
                             <div className='e-mail-content'>
                                 <span className="e-mail-header">Thomas Hardey</span><span className="e-mail-time">Fri 7:50AM</span>
-                                <div
-                                    className="e-mail-subject"> Sales Representative </div>
-                                <div className="e-mail-description">
-                                    The Customer has accepted our proposal. Would it be possible for arrange a meeting tomorrow? </div>
+                                <div className="e-mail-subject">Sales Representative </div>
+                                <div className="e-mail-description">The Customer has accepted our proposal. Would it be possible for arrange a meeting tomorrow? </div>
                             </div>
                         </div>
                     </div>
@@ -100,7 +98,6 @@ function Alignment() {
                 </table>
             </div>
         </div>
-
     );
 }
 export default Alignment;

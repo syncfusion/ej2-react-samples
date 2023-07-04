@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, View, Day, Week, WorkWeek, Month,
-  EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef, useState } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, View, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -16,11 +14,11 @@ import * as dataSource from './datasource.json';
  * Schedule views sample
  */
 
-function Views() {
-  React.useEffect(() => {
+const Views = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).zooEventsData, null, true) as Record<string, any>[];
   const viewOptions: Record<string, any>[] = [
     { text: 'Day', value: 'Day' },
@@ -29,23 +27,21 @@ function Views() {
     { text: 'Month', value: 'Month' }
   ];
   const fields: Record<string, any> = { text: 'text', value: 'value' };
-
-  function onViewChange(args: ChangeEventArgs): void {
-    scheduleObj.currentView = args.value as View;
-    scheduleObj.dataBind();
+  const [currentView, setCurrentView] = useState<any>("Week");
+  const onViewChange = (args: ChangeEventArgs): void => {
+    setCurrentView(args.value as View);
+    scheduleObj.current.dataBind();
   }
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, currentView);
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={schedule => scheduleObj = schedule}
-            selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }}
-            eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} eventRendered={onEventRendered} currentView={currentView}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -63,8 +59,7 @@ function Views() {
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div>
-                    <DropDownListComponent style={{ padding: '6px' }} value={'Week'} fields={fields} dataSource={viewOptions}
-                      change={onViewChange.bind(this)} placeholder='Current View' floatLabelType='Always'></DropDownListComponent>
+                    <DropDownListComponent style={{ padding: '6px' }} value={currentView} fields={fields} dataSource={viewOptions} change={onViewChange} placeholder='Current View' floatLabelType='Always' />
                   </div>
                 </td>
               </tr>
@@ -73,12 +68,13 @@ function Views() {
         </PropertyPane>
       </div>
       <div id='action-description'>
-        <p>This demo showcases the usage of basic views available in Scheduler such as Day, Week, Work Week and Month. Here, the wildlife
-          events being held in zoos are displayed against its respective timings.</p>
+        <p>
+          This demo showcases the usage of basic views available in Scheduler such as Day, Week, Work Week and Month. Here, the wildlife
+          events being held in zoos are displayed against its respective timings.
+        </p>
       </div>
       <div id='description'>
-        <p>In this demo, Scheduler is showcased with 4 basic views namely
-        </p>
+        <p>In this demo, Scheduler is showcased with 4 basic views namely</p>
         <ul>
           <li>Day</li>
           <li>Week</li>

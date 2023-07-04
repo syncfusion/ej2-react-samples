@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, AreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme
+    Legend, Category, AreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme, Tooltip
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -60,8 +60,9 @@ export class PolarArea extends SampleBase<{}, {}> {
                                 labelFormat: '{value}M'
                             }}
                             load={this.load.bind(this)}
+                            tooltip={{enable: true}}
                             title="Average Sales Comparison" loaded={this.onChartLoad.bind(this)}>
-                            <Inject services={[AreaSeries, Legend, Category, PolarSeries, RadarSeries]} />
+                            <Inject services={[AreaSeries, Legend, Category, PolarSeries, RadarSeries, Tooltip]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' name='Product A' width={2}
                                     opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }}>
@@ -110,8 +111,8 @@ export class PolarArea extends SampleBase<{}, {}> {
                    <code>AreaSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
               </p>
                     <p>
-                        More information on the area series can be found in this &nbsp;
-                  <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/#polar-chart">documentation section</a>.
+                        More information on the polar and radar chart with an area series can be found in this &nbsp;
+                  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/polar#area">documentation section</a>.
               </p>
                 </div>
             </div>
@@ -124,7 +125,7 @@ export class PolarArea extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

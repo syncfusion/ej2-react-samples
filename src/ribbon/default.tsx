@@ -106,13 +106,13 @@ public launchClick(args: LauncherClickEventArgs) {
                                                         <RibbonItemsDirective>
                                                         <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontStyle, index: 3, width: '150px', allowFiltering: true, change: function (args) { this.updateContent("Font Style -> " + args.itemData.text); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontSize, index: 3, width: '80px', allowFiltering: true, change: function (args) { this.updateContent("Font Size -> " + args.itemData.text); } }}>
+                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontSize, index: 3, width: '65px', popupWidth: '85px', allowFiltering: true, change: function (args) { this.updateContent("Font Size -> " + args.itemData.text); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="ColorPicker" allowedSizes={RibbonItemSize.Small} displayOptions={DisplayMode.Simplified} colorPickerSettings={{value: '#123456', change: function (args) { this.updateContent(args.currentValue.hex + " color"); }}}>
+                                                        <RibbonItemDirective type="ColorPicker" allowedSizes={RibbonItemSize.Small} displayOptions={DisplayMode.Simplified | DisplayMode.Classic} colorPickerSettings={{value: '#123456', change: function (args) { this.updateContent(args.currentValue.hex + " color"); }}}>
                                                         </RibbonItemDirective>
                                                         <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-bold", content: "Bold", isToggle: true, clicked: function () { this.updateContent("Bold"); } }}>
                                                         </RibbonItemDirective>

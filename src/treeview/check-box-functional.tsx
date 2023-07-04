@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import './treeview.css';
@@ -7,23 +8,22 @@ import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-button
 import { PropertyPane } from '../common/property-pane';
 import * as dataSource from './dataSource/checkbox-data.json';
 
-function Checkbox() {
-    React.useEffect(() => {
+const Checkbox = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let treeObj: TreeViewComponent;
+    const [isAutoCheck, setIsAutoCheck] = useState<boolean>(true);
     const data = dataSource as any;
     const fields: Object = { dataSource: data.checkboxData, id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild' };
-    const showCheckBox: boolean = true;
-    function onChange(args: ChangeEventArgs): void {
-        treeObj.autoCheck = args.checked;
+    const onChange = (args: ChangeEventArgs): void => {
+        setIsAutoCheck(args.checked);
     }
     return (
         <div className='control-pane'>
             <div className='col-lg-8 control-section'>
                 <div className='tree-control_wrapper'>
                     {/* Render the TreeView with checkboxes */}
-                    <TreeViewComponent fields={fields} ref={(scope) => { treeObj = scope }} showCheckBox={showCheckBox} />
+                    <TreeViewComponent fields={fields} showCheckBox={true} autoCheck={isAutoCheck} />
                 </div>
             </div>
             <div className='col-lg-4 property-section'>

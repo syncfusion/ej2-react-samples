@@ -277,7 +277,7 @@ export class PeriodSelectorCandle extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-                 replace(/-dark/i, "Dark") as ChartTheme;
+                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
         args.chart.tooltip.format = args.chart.series[0].type === 'Candle' ?
                 '${point.x}<br/>High : <b>${point.high}</b><br/>Low : <b>${point.low}</b><br/>' +
                 'Open : <b>${point.open}</b><br/>Close : <b>${point.close}</b>' :
@@ -288,7 +288,7 @@ export class PeriodSelectorCandle extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-                 replace(/-dark/i, "Dark") as ChartTheme;
+                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
         args.rangeNavigator.periodSelectorSettings.height = document.body.className.indexOf('e-bigger') > -1 ? 56 : 42;
         this.range1Rendered = true;
     };
@@ -296,7 +296,7 @@ export class PeriodSelectorCandle extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-                 replace(/-dark/i, "Dark") as ChartTheme;
+                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
         args.rangeNavigator.dateTimeModule = new DateTime(args.rangeNavigator as any);
         this.range2Rendered = true;
     };

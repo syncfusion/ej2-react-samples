@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { RadioButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './radio-button.css';
 
-function RadioButton() {
-    React.useEffect(() => {
+const RadioButton = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (

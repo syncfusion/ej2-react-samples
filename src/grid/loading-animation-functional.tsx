@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Sort, Inject, Filter } from '@syncfusion/ej2-react-grids';
-import { DataManager, ODataAdaptor, Query, DataOptions } from '@syncfusion/ej2-data';
+import { DataManager, ODataV4Adaptor, Query, DataOptions } from '@syncfusion/ej2-data';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -9,7 +9,7 @@ function LoadingAnimation() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
-    const data = new DataManager({ url: 'https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders/', adaptor: new ODataAdaptor });
+    const data = new DataManager({ url: 'https://services.odata.org/V4/Northwind/Northwind.svc/Orders', adaptor: new ODataV4Adaptor });
     let gridInstance: GridComponent;
     const indicatortypes: { [key: string]: Object }[] = [
         { id: 'Shimmer', name: 'Shimmer' },

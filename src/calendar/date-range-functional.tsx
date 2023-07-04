@@ -1,19 +1,20 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { CalendarComponent, ChangedEventArgs } from '@syncfusion/ej2-react-calendars';
 import './daterange-style.css';
 
-function Range() {
-    React.useEffect(() => {
+const Range = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const minDate: Date = new Date(new Date().getFullYear(), new Date().getMonth(), 7);
     const maxDate: Date = new Date(new Date().getFullYear(), new Date().getMonth(), 27);
-
-    function onchange(args: ChangedEventArgs): void {
+    const [selectedValue, setSelectedValue] = useState<string>(null);
+    const onchange = (args: ChangedEventArgs): void => {
         /*Displays selected date in the label*/
-        (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args.value.toLocaleDateString();
+        setSelectedValue(args.value.toLocaleDateString())
     }
 
     return (
@@ -21,7 +22,7 @@ function Range() {
             <div className='control-section'>
                 <div className='calendar-control-section' style={{ overflow: 'auto' }}>
                     <CalendarComponent id="calendar" min={minDate} max={maxDate} change={onchange}></CalendarComponent>
-                    <label id='date_label'>Selected Value:</label>
+                    <label id='date_label'>Selected Value:{selectedValue}</label>
                 </div>
             </div>
             <div id="action-description">
@@ -34,7 +35,7 @@ function Range() {
                 Here, the date selection range was resricted within  a range from 7th to 27th days in a month.
                 <p>
                     More information on the calendar instantiation can be found in this <a target='_blank'
-                            href='https://ej2.syncfusion.com/react/documentation/calendar/date-range/'>documentation</a> section.
+                        href='https://ej2.syncfusion.com/react/documentation/calendar/date-range/'>documentation</a> section.
                 </p>
             </div>
         </div>

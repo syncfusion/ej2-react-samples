@@ -72,7 +72,7 @@ function BulletChartTooltip() {
                         <td style={{ paddingLeft: '5px', color: 'black', paddingRight: '5px', paddingBottom: '2px' }}>Target   : ${props.target}K </td>
                     </tr>
                     <tr>
-                        <td style={{ paddingLeft: '5px', color: 'black', paddingRight: '5px' }}>Current : ${props.value} </td>
+                        <td style={{ paddingLeft: '5px', color: 'black', paddingRight: '5px' }}>Current : {props.value} </td>
                     </tr>
 
                 </table>

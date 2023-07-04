@@ -4,7 +4,7 @@ import { L10n } from '@syncfusion/ej2-base';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
-
+import './paging.css';
 L10n.load({
     'en-US': {
         'pager': {
@@ -19,7 +19,7 @@ export class Paging extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section'>
+                <div className='control-section paging-api'>
                     <GridComponent dataSource={data}  locale='en-US' allowPaging={true} height={365} pageSettings={{ pageCount: 4, pageSizes: true }}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
@@ -58,6 +58,10 @@ export class Paging extends SampleBase<{}, {}> {
                             pageSettings-&gt;pageCount
         </a></code> set to 4.
         </p>
+        <p>
+            The Pager component has been enhanced to be more responsive. 
+            It now includes the ability to automatically resize itself and dynamically show or hide pager items based on the width of the Grid.
+        </p>    
         <p>Changed default pager details information using the <code>totalItemsInfo</code> locale property.</p>
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
                     <p>

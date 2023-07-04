@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import './icons.css';
 import * as dataSource from './dataSource/icons-data.json';
 
-function Icons() {
-  React.useEffect(() => {
+const Icons = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const data = dataSource as any;

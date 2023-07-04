@@ -153,7 +153,7 @@ export class InsertSpecialCharacters extends SampleBase<{}, {}> {
                 <div className="char_block" title="&#170;">&#170;</div>
                 <div className="char_block" title="&#171;">&#171;</div>
                 <div className="char_block" title="&#172;">&#172;</div>
-                <div className="char_block" title="&#173;">&#173;</div>
+                <div className="char_block" title="&#173;">&#45;­</div>
                 <div className="char_block" title="&#174;">&#174;</div>
                 <div className="char_block" title="&#175;">&#175;</div>
                 <div className="char_block" title="&#176;">&#176;</div>

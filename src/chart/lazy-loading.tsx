@@ -129,7 +129,6 @@ export class LazyLoading extends SampleBase<{}, {}> {
                         <ChartComponent id='charts' 
                            ref={chart => this.chart = chart}
                             primaryXAxis={{
-                                title: 'Day',
                                 valueType: 'DateTime',
                                 edgeLabelPlacement: 'Shift',
                                 skeleton: 'yMMM',
@@ -140,7 +139,9 @@ export class LazyLoading extends SampleBase<{}, {}> {
                                         maximum: new Date(2014, 0, 1)
                                     },
                                     enable: true,
-                                    pointsLength: 1000
+                                    pointsLength: 1000,
+                                    enableZoom: false,
+                                    height: 14
                                 }
                             }}
                             primaryYAxis={{
@@ -219,26 +220,20 @@ export class LazyLoading extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                    This sample illustrates lazy laoding feature in chart. Loads data for chart on demand.
-                        </p>
+                        This sample illustrates lazy loading feature in chart which loads data on demand.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to load data for chart on demand. Chart will fire the
-                    <code>scrollEnd</code> event, in that can udpate the chart with required data based on point length 
-                    and axis range.
-                </p>
-                    <p>
-                    ScrollBar is enabled in the sample and ScrollBar module injected to the chart. 
-                </p>
+                        In this example, you can see how to load data for the chart on demand. The chart will fire the <code>scrollEnd</code> event, and in that event, we can update the chart with the required data based on the point length and axis range. The scrollbar in the chart can be customized using the <code>height</code>, <code>trackColor</code>, <code>trackRadius</code>, <code>scrollbarRadius</code>, <code>scrollbarColor</code>, <code>enableZoom</code>, and <code>gripColor</code> properties in <code>scrollbarSettings</code>.
+                    </p>
                     <br></br>
-                    <p>Injecting Module</p>
+                    <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use lazy laoding need to
-                    inject <code>ScrollBar</code> and <code>Zoom</code> module into <code>services</code>.
+                        Chart component features are segregated into individual feature-wise modules. To use lazy loading need to inject <code>ScrollBar</code> and <code>Zoom</code> modules into <code>services</code>.
                 </p>
                 <p>
-                More information about the lazy Loading can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#lazy-loading">documentation section</a>.
+                More information about the lazy loading can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#lazy-loading">documentation section</a>.
                 </p>
                 </div>
             </div>
@@ -258,7 +253,7 @@ export class LazyLoading extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

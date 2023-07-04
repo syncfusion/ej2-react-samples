@@ -1,24 +1,24 @@
 /**
  * ComboBox Grouping and Icons Samples
  */
- import * as ReactDOM from 'react-dom';
- import * as React from 'react';
- import { updateSampleSection } from '../common/sample-base';
- import { ComboBoxComponent } from '@syncfusion/ej2-react-dropdowns';
- import './icons.css';
- import * as data from './dataSource.json';
- 
-function Grouping() {
-    React.useEffect(() => {
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { useEffect } from 'react';
+import { updateSampleSection } from '../common/sample-base';
+import { ComboBoxComponent } from '@syncfusion/ej2-react-dropdowns';
+import './icons.css';
+import * as data from './dataSource.json';
+
+const Grouping = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let listObj: ComboBoxComponent;
-    const temp:string = 'vegetableData';
+    const temp: string = 'vegetableData';
     //define the data with category
     const vegetableData: { [key: string]: Object }[] = data[temp];
     // map the groupBy field with Category column
     const groupFields: Object = { groupBy: 'Category', text: 'Vegetable', value: 'Id' };
-    const tempData:string = 'socialMedia';
+    const tempData: string = 'socialMedia';
     //define the data with icon class
     const socialMediaData: { [key: string]: Object }[] = data[tempData];
     // map the iconCss field with Class column
@@ -28,19 +28,19 @@ function Grouping() {
             <div className='control-section' id='comboIcon'>
                 <div className='col-lg-6'>
                     <div id="group">
-                    <h4>Grouping</h4>
+                        <h4>Grouping</h4>
                         <ComboBoxComponent id="grouping" dataSource={vegetableData} fields={groupFields} placeholder="Select a vegetable" popupHeight="220px" />
                     </div>
                 </div>
                 <div className='col-lg-6'>
                     <div id="icon">
-                    <h4>Icons</h4>
+                        <h4>Icons</h4>
                         <ComboBoxComponent id="icons" dataSource={socialMediaData} fields={iconFields} placeholder="Select a social media" popupHeight="220px" />
                     </div>
                 </div>
             </div>
-            <div id="action-description">    
-                <p>This sample demonstrates the grouping and icons supports of the ComboBox. Type a character in the ComboBox element or click on the drodown icon to choose an item from the categorized list/icons list.</p>     
+            <div id="action-description">
+                <p>This sample demonstrates the grouping and icons supports of the ComboBox. Type a character in the ComboBox element or click on the drodown icon to choose an item from the categorized list/icons list.</p>
             </div>
             <div id="description">
                 <p>The ComboBox allows to group the relevant items under a corresponding category by mapping the <code>groupBy</code> field, and allows to load the list items with icons.</p>

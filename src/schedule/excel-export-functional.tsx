@@ -1,11 +1,10 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { ItemModel } from '@syncfusion/ej2-react-navigations';
-import {
-  ScheduleComponent, ViewDirective, Week, Resize, ExcelExport, ExportOptions, ActionEventArgs, DragAndDrop, Inject, ViewsDirective, ExportFieldInfo
-} from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, ViewDirective, Week, Resize, ExcelExport, ExportOptions, ActionEventArgs, DragAndDrop, Inject, ViewsDirective, ExportFieldInfo } from '@syncfusion/ej2-react-schedule';
 import './excel-export.css';
 import * as dataSource from './datasource.json';
 
@@ -13,14 +12,14 @@ import * as dataSource from './datasource.json';
  *  Schedule header customization sample
  */
 
-function ExportToExcel() {
-  React.useEffect(() => {
+const ExportToExcel = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  let scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
 
-  function onActionBegin(args: ActionEventArgs): void {
+  const onActionBegin = (args: ActionEventArgs): void => {
     if (args.requestType === 'toolbarItemRendering') {
       let exportItem: ItemModel = {
         align: 'Right', showTextOn: 'Both', prefixIcon: 'e-icons e-export-excel',
@@ -30,7 +29,7 @@ function ExportToExcel() {
     }
   }
 
-  function onExportClick(): void {
+  const onExportClick = (): void => {
     const exportFields: ExportFieldInfo[] = [
       { name: 'Id', text: 'Id' },
       { name: 'Subject', text: 'Summary' },
@@ -39,16 +38,14 @@ function ExportToExcel() {
       { name: 'Location', text: 'Place' }
     ];
     const exportValues: ExportOptions = { fieldsInfo: exportFields };
-    scheduleObj.exportToExcel(exportValues);
+    scheduleObj.current.exportToExcel(exportValues);
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent cssClass='excel-export' width='100%' height='650px' id='schedule' ref={t => scheduleObj = t}
-            selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }}
-            actionBegin={onActionBegin.bind(this)}>
+          <ScheduleComponent cssClass='excel-export' width='100%' height='650px' id='schedule' ref={scheduleObj} selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }} actionBegin={onActionBegin}>
             <ViewsDirective>
               <ViewDirective option='Week' />
             </ViewsDirective>
@@ -76,8 +73,7 @@ function ExportToExcel() {
         <p>
           <strong>Module Injection</strong>
         </p>
-        <p>To start using Excel exporting functionality in Scheduler, we need to inject <code>ExcelExport</code> module into the services.
-        </p>
+        <p>To start using Excel exporting functionality in Scheduler, we need to inject <code>ExcelExport</code> module into the services.</p>
       </div>
     </div>
   );

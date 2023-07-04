@@ -1,14 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { SplitButtonComponent, ItemModel, MenuEventArgs } from '@syncfusion/ej2-react-splitbuttons';
 import { updateSampleSection } from '../common/sample-base';
 import './split-button.css';
 
-function SplitButton() {
-    React.useEffect(() => {
+const SplitButton = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let items: ItemModel[] = [
+    const items: ItemModel[] = [
         {
             text: 'Paste',
             iconCss: 'e-btn-icons e-paste'
@@ -26,7 +27,7 @@ function SplitButton() {
             iconCss: 'e-btn-icons e-paste-hyperlink'
         }];
 
-    let addDisabled: any = (args: MenuEventArgs) => {
+    const addDisabled: any = (args: MenuEventArgs) => {
         if (args.item.text !== 'Paste') {
             args.element.classList.add('e-disabled');
         }

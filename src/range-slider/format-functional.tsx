@@ -1,8 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useRef, useEffect } from "react";
 import { SliderComponent, SliderTooltipEventArgs, SliderTickEventArgs } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
 
@@ -28,13 +28,13 @@ const slidercss = `
     width: 100%;
 }
 `
-function Format() {
-    React.useEffect(() => {
+const Format = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let currencyObj: SliderComponent;
-    let kilometerObj: SliderComponent;
-    let timeObj: SliderComponent;
+    let currencyObj = useRef<SliderComponent>(null);
+    let kilometerObj = useRef<SliderComponent>(null);
+    let timeObj = useRef<SliderComponent>(null);
     let currencyTicks: object = {
         placement: 'After', largeStep: 25, smallStep: 5, showSmallTicks: true,
         // Formatting ticks value in currency with 3-decimal specifier.
@@ -80,7 +80,7 @@ function Format() {
         largeStep: 3 * 3600000,
         smallStep: 3600000, showSmallTicks: true
     };
-    function tooltipChangeHandler(args: SliderTooltipEventArgs): void {
+    const tooltipChangeHandler = (args: SliderTooltipEventArgs): void => {
         // Splitting the range values from the tooltip using space into an array.
         let totalMiliSeconds: string[] = args.text.split(' ');
         // First part is the first handle value
@@ -97,7 +97,7 @@ function Format() {
         // Assigning our custom text to the tooltip value.
         args.text = firstPart + ' - ' + secondPart;
     }
-    function renderingTicksHandler(args: SliderTickEventArgs): void {
+    const renderingTicksHandler = (args: SliderTickEventArgs): void => {
         let totalMiliSeconds: number = Number(args.value);
         /**
          * toLocaleTimeString is predefined javascript date function, which is used to
@@ -109,10 +109,10 @@ function Format() {
     }
 
     // Handler used to reposition the tooltip on page scroll
-    function onScroll(): void {
-        if (currencyObj && kilometerObj && timeObj) {
+    const onScroll = (): void => {
+        if ((currencyObj as any).current && (kilometerObj as any).current && (timeObj as any).current) {
             for (let slider of [currencyObj, kilometerObj, timeObj]) {
-                (slider as any).refreshTooltip((slider as any).tooltipTarget);
+                (slider as any).current.refreshTooltip((slider as any).tooltipTarget);
             }
         }
     }
@@ -128,42 +128,42 @@ function Format() {
                     <div className='sliderwrap'>
                         <label>Currency Slider</label>
                         {/* Initialize Slider Component with type Range */}
-                        <SliderComponent id="slider01" value={[20, 80]} min={0} max={100} ticks={currencyTicks} tooltip={currencyTooltip} type='Range' ref={(slider) => { currencyObj = slider }} />
+                        <SliderComponent id="slider01" value={[20, 80]} min={0} max={100} ticks={currencyTicks} tooltip={currencyTooltip} type='Range' ref={currencyObj} />
                     </div>
                     <div className='sliderwrap'>
                         <label>Kilometer Slider</label>
                         {/* Initialize Slider Component with type Range */}
-                        <SliderComponent id="slider02" value={[1100, 1850]} min={900} max={2100} ticks={kilometerTicks} type='Range' tooltip={kilometerTooltip} ref={(slider) => { kilometerObj = slider }} />
+                        <SliderComponent id="slider02" value={[1100, 1850]} min={900} max={2100} ticks={kilometerTicks} type='Range' tooltip={kilometerTooltip} ref={kilometerObj} />
                     </div>
                     <div className='sliderwrap'>
                         <label>Time Slider</label>
                         {/* Initialize Slider Component with type Range */}
-                        <SliderComponent id="slider03" value={value} min={minValue} max={maxValue} ticks={timeTicks} type='Range' step={stepValue} tooltip={timeTooltip} tooltipChange={tooltipChangeHandler.bind(this)} renderingTicks={renderingTicksHandler.bind(this)} ref={(slider) => { timeObj = slider }} />
+                        <SliderComponent id="slider03" value={value} min={minValue} max={maxValue} ticks={timeTicks} type='Range' step={stepValue} tooltip={timeTooltip} tooltipChange={tooltipChangeHandler.bind(this)} renderingTicks={renderingTicksHandler.bind(this)} ref={timeObj} />
                     </div>
                 </div>
             </div>
-
             <div id="action-description">
-                <p>This sample demonstrates the formatting of Ticks and Tooltip of Slider. Drag the thumb over the bar for selecting the
-                formatted values between min and max.</p>
+                <p>
+                    This sample demonstrates the formatting of Ticks and Tooltip of Slider. Drag the thumb over the bar for selecting the
+                    formatted values between min and max.
+                </p>
             </div>
-
             <div id="description">
-                <p>The format feature used to customize the units of Slider values to desired format. The formatted values will also be
-                applied to the ARIA attributes of the slider</p>
+                <p>
+                    The format feature used to customize the units of Slider values to desired format. The formatted values will also be
+                    applied to the ARIA attributes of the slider
+                </p>
                 <p>In this demo, we have demonstrated Slider with Currency, Kilometer and Time formatting.</p>
                 <ul>
-                    <li>Currency Slider – In this sample, Ticks and Tooltip are formatted to currency using format API in both tooltip and
-                    ticks. </li>
-                    <li>Kilometer Slider – In this sample, Ticks and Tooltip are formatted to Kilometer using format API in both tooltip
-                    and ticks. </li>
-                    <li>Time Slider – In this sample, Ticks and Tooltip are formatted to Time using change event in Tooltip and renderingTicks
-                    event in Ticks</li>
+                    <li>Currency Slider – In this sample, Ticks and Tooltip are formatted to currency using format API in both tooltip and ticks.</li>
+                    <li>Kilometer Slider – In this sample, Ticks and Tooltip are formatted to Kilometer using format API in both tooltip and ticks.</li>
+                    <li>Time Slider – In this sample, Ticks and Tooltip are formatted to Time using change event in Tooltip and renderingTicksnevent in Ticks</li>
                 </ul>
-                <p>For more information, we can refer the
-                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/format/">Format</a> section from the documentation.</p>
+                <p>
+                    For more information, we can refer the
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/format/">Format</a> section from the documentation.
+                </p>
             </div>
-
         </div>
     )
 }

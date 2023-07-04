@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './default-style.css';
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const dateValue: Date = new Date();
@@ -19,7 +20,7 @@ function Default() {
             <div id="action-description">
                 <p>
                     The following sample demonstrates the default functionalities of the DatePicker. Today's date is always <code>highlighted</code> in the popup calendar and it get focused if there's no selected date. Click/Touch the desired date from the popup calendar and the selected date will be displayed in the element.
-                </p>						 
+                </p>
             </div>
             <div id='description'>
                 <p>

@@ -13,11 +13,11 @@ export class AdvancedExporting extends SampleBase<{}, {}> {
   public toolbarOptions: any = ['ExcelExport', 'PdfExport'];
   private gridInstance: GridComponent;
   public toolbarClick(args: ClickEventArgs): void {
-    switch (args.item.text) {
-      case 'PDF Export':
+    switch (args.item.id) {
+      case 'Grid_pdfexport':
         this.gridInstance.pdfExport(this.getPdfExportProperties());
         break;
-      case 'Excel Export':
+      case 'Grid_excelexport':
         this.gridInstance.excelExport(this.getExcelExportProperties());
         break;
     }

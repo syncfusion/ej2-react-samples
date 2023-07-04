@@ -22,7 +22,8 @@ import {
   PortVisibility,
   PointModel,
   BasicShape,
-  Inject
+  Inject,
+  ConnectorEditing
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
@@ -212,6 +213,9 @@ function DrawingTools() {
             break;
           case "cubic":
             setdrawobject(null, { type: "Bezier" });
+            break;
+          case "freehand":
+            setdrawobject(null, { type: "Freehand" });
             break;
           case "path":
             getPathShape();
@@ -452,7 +456,7 @@ function DrawingTools() {
               }
             }}
           />
-          <Inject services={[UndoRedo, Snapping]} />
+          <Inject services={[UndoRedo, Snapping,ConnectorEditing]} />
         </div>
       </div>
 
@@ -586,6 +590,16 @@ function DrawingTools() {
                   "url('src/diagram/Images/drawingTool/connector/Connectors_3.png')"
               }}
             />
+          </div>
+          <div className="row" style={{ paddingTop: "8px" }}>
+            <div
+                className="image-pattern-style"
+                id="freehand"
+                style={{
+                  backgroundImage:
+                    "url('src/diagram/Images/connector/freehand.png')"
+                }}
+              />
           </div>
           <div className="row property-panel-content" style={{ paddingTop: "10px" }}>
             <CheckBoxComponent

@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Week, WorkWeek, Month, TimelineViews, TimelineMonth,
-  EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef, useState } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Week, WorkWeek, Month, TimelineViews, TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -16,13 +14,15 @@ import * as dataSource from './datasource.json';
  * Schedule Work days sample
  */
 
-function WorkDays() {
-  React.useEffect(() => {
+const WorkDays = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
-  const workDays: number[] = [1, 3, 5];
+  const [workDays, setWorkDays] = useState<number[]>([1, 3, 5]);
+  const [firstDayOfWeek, setFirstDayOfWeek] = useState<number>(0);
+  const [currentView, setCurrentView] = useState<View>('WorkWeek');
   const workDaysOptions: Record<string, any>[] = [
     { text: 'Mon, Wed, Fri', value: '1,3,5' },
     { text: 'Mon, Tue, Wed, Thu, Fri', value: '1,2,3,4,5' },
@@ -40,27 +40,29 @@ function WorkDays() {
   ];
   const fields: Record<string, any> = { text: 'text', value: 'value' };
 
-  function onWorkDaysChange(args: ChangeEventArgs): void {
-    scheduleObj.workDays = args.value.toString().split(',').map(Number);
-    scheduleObj.dataBind();
+  const onWorkDaysChange = (args: ChangeEventArgs): void => {
+    setWorkDays(args.value.toString().split(',').map(Number));
+    scheduleObj.current.dataBind();
   }
 
-  function onDayOfWeekChange(args: ChangeEventArgs): void {
-    scheduleObj.firstDayOfWeek = args.value as number;
-    scheduleObj.dataBind();
+  const onDayOfWeekChange = (args: ChangeEventArgs): void => {
+    setFirstDayOfWeek(args.value as number);
+    scheduleObj.current.dataBind();
   }
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, currentView);
+  }
+
+  const onNavigating = (args: NavigatingEventArgs) => {
+    setCurrentView(args.currentView as View);
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={schedule => scheduleObj = schedule} workHours={{ start: '08:00' }}
-            currentView='WorkWeek' selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} workDays={workDays}
-            eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} workHours={{ start: '08:00' }} currentView={currentView} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} workDays={workDays} firstDayOfWeek={firstDayOfWeek} eventRendered={onEventRendered} navigating={onNavigating}>
             <ViewsDirective>
               <ViewDirective option='Week' />
               <ViewDirective option='WorkWeek' />
@@ -79,19 +81,14 @@ function WorkDays() {
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div>
-                    <DropDownListComponent style={{ padding: '6px' }} value={'1,3,5'} dataSource={workDaysOptions}
-                      fields={fields} change={onWorkDaysChange.bind(this)} popupWidth='180px'
-                      placeholder='Work days' floatLabelType='Always'>
-                    </DropDownListComponent>
+                    <DropDownListComponent style={{ padding: '6px' }} value={'1,3,5'} dataSource={workDaysOptions} fields={fields} change={onWorkDaysChange} popupWidth='180px' placeholder='Work days' floatLabelType='Always' />
                   </div>
                 </td>
               </tr>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div>
-                    <DropDownListComponent style={{ padding: '6px' }} value={0} dataSource={dayOfWeekOptions} fields={fields}
-                      change={onDayOfWeekChange.bind(this)} placeholder='First day of week' floatLabelType='Always'>
-                    </DropDownListComponent>
+                    <DropDownListComponent style={{ padding: '6px' }} value={firstDayOfWeek} dataSource={dayOfWeekOptions} fields={fields} change={onDayOfWeekChange} placeholder='First day of week' floatLabelType='Always' />
                   </div>
                 </td>
               </tr>

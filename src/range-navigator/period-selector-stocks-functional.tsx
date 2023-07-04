@@ -269,7 +269,7 @@ function StockChart() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
     function chartLoaded(args: ILoadedEventArgs): void {
         let labels: VisibleLabels[] = (args.chart.axisCollections[0]).visibleLabels;
@@ -320,7 +320,7 @@ function StockChart() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
         args.rangeNavigator.periodSelectorSettings.height = document.body.className.indexOf('e-bigger') > -1 ? 56 : 42;
     };
 }

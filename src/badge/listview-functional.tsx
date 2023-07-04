@@ -1,18 +1,19 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import './listview.css';
 import { dataSource } from './listData';
-function ListView() {
-    React.useEffect(() => {
+const ListView = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
     // Map fields
-    let fields: object = { groupBy: 'type' };
+    const fields: object = { groupBy: 'type' };
 
-    function listTemplate(data: any): JSX.Element {
+    const listTemplate = (data: any) => {
         return (
             <div className='listWrapper' style={{ width: 'inherit', height: 'inherit' }}>
                 <span className={`${data.icons} list_svg`}>&nbsp;</span>
@@ -22,7 +23,7 @@ function ListView() {
             </div>
         );
     }
-    function onActionComplete() {
+    const onActionComplete = () => {
         let list: HTMLElement = document.getElementById('lists').getElementsByClassName('e-list-group-item')[0] as HTMLElement;
         list.style.display = 'none';
     }

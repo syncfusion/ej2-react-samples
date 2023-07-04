@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Month, Inject, ActionEventArgs, EventRenderedArgs, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Month, Inject, ActionEventArgs, EventRenderedArgs, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './header-bar.css';
 import { createElement, compile, extend } from '@syncfusion/ej2-base';
@@ -18,22 +17,22 @@ import * as dataSource from './datasource.json';
  *  Schedule header customization sample
  */
 
-function HeaderBar() {
-  React.useEffect(() => {
+const HeaderBar = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  let scheduleObj = useRef<ScheduleComponent>(null);
   let profilePopup: Popup;
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
 
-  function onActionBegin(args: ActionEventArgs): void {
+  const onActionBegin = (args: ActionEventArgs): void => {
     if (args.requestType === 'toolbarItemRendering') {
       let userIconItem: ItemModel = { align: 'Right', prefixIcon: 'user-icon', text: 'Nancy', cssClass: 'e-schedule-user-icon' };
       args.items.push(userIconItem);
     }
   }
 
-  function onActionComplete(args: ActionEventArgs): void {
+  const onActionComplete = (args: ActionEventArgs): void => {
     let scheduleElement: HTMLInputElement = document.getElementById('schedule') as HTMLInputElement;
     if (args.requestType === 'toolBarItemRendered') {
       let userIconEle: HTMLElement = scheduleElement.querySelector('.e-schedule-user-icon') as HTMLElement;
@@ -69,24 +68,21 @@ function HeaderBar() {
     profilePopup.hide();
   }
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, scheduleObj.current.currentView);
   }
 
-  function onChange(args: ChangeEventArgs): void {
+  const onChange = (args: ChangeEventArgs): void => {
     profilePopup.hide();
-    scheduleObj.showHeaderBar = args.checked;
-    scheduleObj.dataBind();
+    scheduleObj.current.showHeaderBar = args.checked;
+    scheduleObj.current.dataBind();
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent cssClass='schedule-header-bar' width='100%' height='650px' id='schedule' ref={t => scheduleObj = t}
-            selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }}
-            actionBegin={onActionBegin.bind(this)} actionComplete={onActionComplete.bind(this)}
-            eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent cssClass='schedule-header-bar' width='100%' height='650px' id='schedule' ref={scheduleObj} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} actionBegin={onActionBegin} actionComplete={onActionComplete} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Month' />
             </ViewsDirective>
@@ -101,7 +97,7 @@ function HeaderBar() {
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '90%' }}>
                   <div className='headerbar'>
-                    <CheckBoxComponent id='headerbar' checked={true} label='Show/Hide Header bar' change={onChange.bind(this)} ></CheckBoxComponent>
+                    <CheckBoxComponent id='headerbar' checked={true} label='Show/Hide Header bar' change={onChange} ></CheckBoxComponent>
                   </div>
                 </td>
               </tr>
@@ -110,8 +106,10 @@ function HeaderBar() {
         </PropertyPane>
       </div>
       <div id='action-description'>
-        <p>This demo shows the way of adding custom items into the Scheduler header bar. Here, an employee image is added to the
-          header bar, clicking on which will open the popup showing that person's short profile information.</p>
+        <p>
+          This demo shows the way of adding custom items into the Scheduler header bar. Here, an employee image is added to the
+          header bar, clicking on which will open the popup showing that person's short profile information.
+        </p>
       </div>
       <div id='description'>
         <p>

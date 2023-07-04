@@ -27,7 +27,8 @@ export class Animation extends SampleBase<{}, { }> {
     title: ' Delete Multiple Items',
     content: "Are you sure you want to permanently delete these items?",
     animationSettings: { effect: 'Zoom',delay:0,duration: 400},
-    position: { X: 'center', Y: 'center' }
+    position: { X: 'center', Y: 'center' },
+    closeOnEscape: true
   }
   buttonClick(args) {
     if (args.target.innerHTML.toLowerCase() == 'confirm') {

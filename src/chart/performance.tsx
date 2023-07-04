@@ -67,6 +67,14 @@ const SAMPLE_CSS = `
          #fluent-dark-gradient-chart stop {
              stop-color: #8AB113;
          }
+
+        #material3-gradient-chart stop {
+            stop-color: #6355C7;
+        }
+    
+        #material3-dark-gradient-chart stop {
+            stop-color: #4EAAFF;
+        }
  
          .chart-gradient stop[offset="0"] {
              stop-opacity: 0.75;
@@ -76,8 +84,8 @@ const SAMPLE_CSS = `
              stop-opacity: 0;
          }
          `;
-         let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentDark'];
-         let borderColor: string[] = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#614570', '#8AB113'];
+         let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark'];
+         let borderColor: string[] = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#614570', '#8AB113', '#6355C7', '#4EAAFF'];
 export class Performance extends SampleBase<{}, {}> {
     private chart: ChartComponent;
     private loaded: EmitType<ILoadedEventArgs>;
@@ -112,7 +120,7 @@ export class Performance extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
     render() {
         return (
@@ -195,6 +203,14 @@ export class Performance extends SampleBase<{}, {}> {
                         <stop offset="1"></stop>
                     </linearGradient>
                     <linearGradient id="fluent-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0"></stop>
+                        <stop offset="1"></stop>
+                    </linearGradient>
+                    <linearGradient id="material3-gradient-chart" style={{ opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0"></stop>
+                        <stop offset="1"></stop>
+                    </linearGradient>
+                    <linearGradient id="material3-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                         <stop offset="0"></stop>
                         <stop offset="1"></stop>
                     </linearGradient>

@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, TimelineViews,
-  TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef, useState } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, TimelineViews, TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -19,12 +17,11 @@ import * as dataSource from './datasource.json';
 
 MultiSelectComponent.Inject(CheckBoxSelection);
 
-function HideWeekend() {
-  React.useEffect(() => {
+const HideWeekend = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
-  let btnObj: ButtonComponent;
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as any).employeeEventData, null, true) as Record<string, any>[];
   const weekDays: Record<string, any>[] = [
     { Name: 'Sunday', Value: '0' },
@@ -37,34 +34,33 @@ function HideWeekend() {
   ];
   const localFields: Record<string, any> = { text: 'Name', value: 'Value' };
   const value: string[] = ['1', '3', '4', '5'];
-
-  function onChange(): void {
-    if (btnObj.element.classList.contains('e-active')) {
-      btnObj.content = 'Hide';
-      scheduleObj.showWeekend = true;
-    } else {
-      btnObj.content = 'Show';
-      scheduleObj.showWeekend = false;
-    }
+  const [content, setContent] = useState<string>('Show');
+  const [showWeekend, setShowWeekend] = useState<boolean>(false);
+  const [currentView, setCurrentView] = useState<View>('Week');
+  const onChange = (args: any): void => {
+    setContent(args.target.classList.contains('e-active') ? 'Hide' : 'Show');
+    setShowWeekend(args.target.classList.contains('e-active') ? true : false);
   }
 
-  function onMultiSelectChange(args: MultiSelectChangeEventArgs): void {
+  const onMultiSelectChange = (args: MultiSelectChangeEventArgs): void => {
     let value: number[] = (args.value as number[]).slice(0).map(Number).sort();
-    scheduleObj.workDays = value.length === 0 ? [0] : value;
-    scheduleObj.dataBind();
+    scheduleObj.current.workDays = value.length === 0 ? [0] : value;
+    scheduleObj.current.dataBind();
   }
 
-  function OnEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const OnEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, currentView);
+  }
+
+  const onNavigating = (args: NavigatingEventArgs): void => {
+    setCurrentView(args.currentView as View);
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={t => scheduleObj = t} workDays={[1, 3, 4, 5]}
-            workHours={{ start: '08:00' }} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} showWeekend={false}
-            eventRendered={OnEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} workDays={[1, 3, 4, 5]} workHours={{ start: '08:00' }} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} showWeekend={showWeekend} eventRendered={OnEventRendered} navigating={onNavigating} currentView={currentView}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -84,10 +80,7 @@ function HideWeekend() {
                 <td style={{ width: '100%' }}>
                   <div className='multi-prop'>
                     <div className='workdayscheckbox' style={{ paddingBottom: '10px' }}>
-                      <MultiSelectComponent id='workdayscheckbox' dataSource={weekDays} fields={localFields} mode='CheckBox'
-                        value={value} change={onMultiSelectChange.bind(this)} showDropDownIcon={true}
-                        showClearButton={false} placeholder='Working days' floatLabelType='Always'>
-                      </MultiSelectComponent>
+                      <MultiSelectComponent id='workdayscheckbox' dataSource={weekDays} fields={localFields} mode='CheckBox' value={value} change={onMultiSelectChange} showDropDownIcon={true} showClearButton={false} placeholder='Working days' floatLabelType='Always' />
                     </div>
                   </div>
                 </td>
@@ -96,8 +89,7 @@ function HideWeekend() {
                 <td style={{ width: '100%' }}>
                   <div style={{ fontWeight: 500 }}>Non-Working days</div>
                   <div className='evtbtn' style={{ paddingBottom: '10px' }}>
-                    <ButtonComponent title='Show/hide weekend' ref={(scope) => { btnObj = scope; }} isToggle={true}
-                      onClick={onChange.bind(this)}>Show</ButtonComponent>
+                    <ButtonComponent title='Show/hide weekend' isToggle={true} onClick={onChange}>{content}</ButtonComponent>
                   </div>
                 </td>
               </tr>
@@ -106,8 +98,7 @@ function HideWeekend() {
         </PropertyPane>
       </div>
       <div id='action-description'>
-        <p>This demo depicts the way to show or hide the weekend days of a week on Scheduler. The days whichever not specified in
-          working days collections will be taken into consideration as weekend days.</p>
+        <p>This demo depicts the way to show or hide the weekend days of a week on Scheduler. The days whichever not specified in working days collections will be taken into consideration as weekend days.</p>
       </div>
       <div id='description'>
         <p>

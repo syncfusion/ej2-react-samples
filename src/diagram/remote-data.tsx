@@ -67,17 +67,13 @@ export class RemoteData extends SampleBase<{}, {}> {
             }}
             //Configures data source
             dataSourceSettings={{
-              id: "EmployeeID",
-              parentId: "ReportsTo",
+              id: "Id",
+              parentId: "ParentId",
               dataSource: new DataManager(
                 {
-                  url: "https://mvc.syncfusion.com/Services/Northwnd.svc/",
+                  url: "https://ej2services.syncfusion.com/react/development/api/RemoteData",
                   crossDomain: true
-                },
-                new Query()
-                  .from("Employees")
-                  .select("EmployeeID,ReportsTo,FirstName")
-                  .take(9)
+                }
               ),
               //binds the external data with node
               doBinding: (
@@ -88,7 +84,7 @@ export class RemoteData extends SampleBase<{}, {}> {
                 nodeModel.annotations = [
                   {
                     /* tslint:disable:no-string-literal */
-                    content: data["FirstName"],
+                    content: data["Label"],
                     style: { color: "white" }
                   }
                 ];

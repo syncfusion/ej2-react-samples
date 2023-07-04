@@ -1,29 +1,50 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { Ajax } from '@syncfusion/ej2-base';
-import {
-    DialogComponent,
-    ButtonPropsModel,
-    AnimationSettingsModel,
-} from '@syncfusion/ej2-react-popups';
-
+import { useState, useRef, useEffect } from 'react';
+import { Fetch } from '@syncfusion/ej2-base';
+import { DialogComponent, ButtonPropsModel, AnimationSettingsModel } from '@syncfusion/ej2-react-popups';
 import { updateSampleSection } from '../common/sample-base';
 import './dialog-contents-via-ajax.css';
 
-function AjaxContent() {
-    React.useEffect(() => {
+const AjaxContent = () => {
+    useEffect(() => {
       updateSampleSection();
     }, []);
-    let dialogInstance: DialogComponent;
+    let dialogInstance = useRef<DialogComponent>(null);
     let buttons: ButtonPropsModel[];
     let animationSettings: AnimationSettingsModel;
     let buttonEle: HTMLButtonElement;
-    const [display, setDisplay] = useState('none');
-    const [status, setStatus] = useState({ hideDialog: true });
+    const [display, setDisplay] = useState<string>('none');
+    const [status, setStatus] = useState<boolean>(true);
     let buttonRef: React.Ref<HTMLButtonElement> = (element) => {
       buttonEle = element;
     };
     animationSettings = { effect: 'None' };
+
+    const dlgButtonClick = (): void => {
+      if (document.querySelector('.e-footer-content .e-btn').textContent === 'More Details') {
+        let fetchApi: Fetch = new Fetch('./src/dialog/blog.html', 'GET');
+        fetchApi.send().then();
+        fetchApi.onSuccess = (data: string | HTMLElement): void => {
+          dialogInstance.current.target = document.getElementById('target');
+          dialogInstance.current.content = data;
+        };
+        dialogInstance.current.buttons = [
+          {
+            click: dlgButtonClick,
+            buttonModel: { content: "Less Details", isPrimary: true }
+          }
+        ];
+      } else {
+        dialogInstance.current.content = innerContent;
+        dialogInstance.current.buttons = [
+          {
+            click: dlgButtonClick,
+            buttonModel: { content: "More Details", isPrimary: true }
+          }
+        ];
+      }
+    }
+
     buttons = [
       {
         click: dlgButtonClick,
@@ -34,45 +55,17 @@ function AjaxContent() {
       },
     ];
   
-    function buttonClick(): void {
-      setStatus({ hideDialog: true });
+    const buttonClick = (): void => {
+      setStatus(true);
     }
-  
-    function dlgButtonClick(): void {
-      if (
-        document.querySelector('.e-footer-content .e-btn').textContent ===
-        'More Details'
-      ) {
-        let ajax: Ajax = new Ajax('./src/dialog/blog.html', 'GET', true);
-        ajax.send().then();
-        ajax.onSuccess = (data: string | HTMLElement): void => {
-          dialogInstance.target = document.getElementById('target');
-          dialogInstance.content = data;
-        };
-        dialogInstance.buttons = [
-          {
-            click: dlgButtonClick,
-            buttonModel: { content: 'Less Details', isPrimary: true },
-          },
-        ];
-      } else {
-        dialogInstance.content = innerContent;
-        dialogInstance.buttons = [
-          {
-            click: dlgButtonClick,
-            buttonModel: { content: 'More Details', isPrimary: true },
-          },
-        ];
-      }
-    }
-  
-    function dialogClose(): void {
-      setStatus({ hideDialog: false });
+
+    const dialogClose = (): void => {
+      setStatus(false);
       setDisplay('inline-block');
     }
   
-    function dialogOpen(): void {
-      setStatus({ hideDialog: true });
+    const dialogOpen = (): void => {
+      setStatus(true);
       setDisplay('none');
     }
   
@@ -85,32 +78,8 @@ function AjaxContent() {
     return (
       <div className="control-pane">
         <div id="target" className="control-section ajaxcontent col-lg-12">
-          <button
-            className="e-control e-btn dlgbtn"
-            ref={buttonRef}
-            style={{ display: display }}
-            onClick={buttonClick}
-            id="dialogBtn"
-          >
-            Open
-          </button>
-          <DialogComponent
-            id="dialog"
-            ref={(dialog: any) => (dialogInstance = dialog)}
-            visible={status.hideDialog}
-            header={
-              '<img class="img1" src="src/dialog/images/2.png" alt="Microsoft roadmap">' +
-              'What’s Coming from Microsoft this Fall'
-            }
-            showCloseIcon={true}
-            animationSettings={animationSettings}
-            width={'500px'}
-            target={'#target'}
-            close={dialogClose}
-            open={dialogOpen}
-            content={innerContent}
-            buttons={buttons}
-          ></DialogComponent>
+          <button className="e-control e-btn dlgbtn" ref={buttonRef} style={{ display: display }} onClick={buttonClick} id="dialogBtn">Open</button>
+          <DialogComponent id="dialog" ref={dialogInstance} visible={status} header={'<img class="img1" src="src/dialog/images/2.png" alt="Microsoft roadmap">' + 'What’s Coming from Microsoft this Fall'} showCloseIcon={true} animationSettings={animationSettings} width={'500px'} target={'#target'} close={dialogClose} open={dialogOpen} content={innerContent} buttons={buttons}></DialogComponent>
         </div>
         <div id="action-description">
           <p>
@@ -123,7 +92,7 @@ function AjaxContent() {
         <div id="description">
           <p>
             The user can load dialog's content dynamically from external source
-            like external file using AJAX library. The AJAX library can make the
+            like external file using Fetch library. The Fetch library can make the
             request and load dialog's content using its success event.
           </p>
         </div>

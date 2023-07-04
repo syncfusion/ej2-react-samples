@@ -17,6 +17,7 @@ body.fluent-dark #date_label,
 body.bootstrap5-dark #date_label,
 body.tailwind-dark #date_label,
 body.material-dark #date_label,
+body.material3-dark #date_label,
 body.fabric-dark #date_label,
 body.bootstrap-dark #date_label,
 body.highcontrast #date_label {
@@ -55,6 +56,7 @@ body.highcontrast #date_label {
 
 .highcontrast .sf-icon-cup:before,
 .material-dark .sf-icon-cup:before,
+.material3-dark .sf-icon-cup:before,
 .fabric-dark .sf-icon-cup:before,
 .bootstrap-dark .sf-icon-cup:before,
 .bootstrap5-dark .sf-icon-cup:before,
@@ -65,6 +67,7 @@ body.highcontrast #date_label {
 
 .highcontrast .sf-icon-start:before,
 .material-dark .sf-icon-start:before,
+.material3-dark .sf-icon-start:before,
 .fabric-dark .sf-icon-start:before,
 .bootstrap-dark .sf-icon-start:before,
 .bootstrap5-dark .sf-icon-start:before,
@@ -75,6 +78,7 @@ body.highcontrast #date_label {
 
 .highcontrast .sf-icon-bell:before,
 .material-dark .sf-icon-bell:before,
+.material3-dark .sf-icon-bell:before,
 .fabric-dark .sf-icon-bell:before,
 .bootstrap-dark .sf-icon-bell:before,
 .bootstrap5-dark .sf-icon-bell:before,

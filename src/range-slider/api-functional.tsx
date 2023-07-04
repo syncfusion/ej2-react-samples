@@ -1,11 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SliderComponent, NumericTextBoxComponent, SliderChangeEventArgs } from '@syncfusion/ej2-react-inputs';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { useState, useRef, useEffect } from 'react';
+import { SliderComponent, NumericTextBoxComponent, SliderChangeEventArgs, SliderOrientation } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
-import { CheckBox, ChangeEventArgs } from '@syncfusion/ej2-buttons';
+import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
 
@@ -88,63 +88,72 @@ const slidercss = `
     user-select: none;
     /* Standard syntax */
 }
+
+.e-bigger .e-sidebar .sb-mobile-right-pane .property-section .e-numerictextbox {
+    display: flex;
+    padding-left: 0;
+    text-align: center;
+} 
 `
-function APIs() {
-    React.useEffect(() => {
+
+const APIs = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+    const [min, setMin] = useState<number>(0);
+    const [max, setMax] = useState<number>(100);
+    const [value, setValue] = useState<number>(30);
+    const [step, setStep] = useState<number>(1);
+    const [orientation, setOrientation] = useState<SliderOrientation>("Horizontal");
+    const [readonly, setReadonly] = useState<boolean>(false);
+    const [enabled, setEnabled] = useState<boolean>(true);
+    const [button, setButton] = useState<boolean>(false);
     /**
  * slider property customization
  */
-    let defaultObj: SliderComponent;
+    let defaultObj = useRef<SliderComponent>(null);
     let tooltip: object = { placement: 'Before', isVisible: true, showOn: 'Focus' };
     let ticks: object = { placement: 'Before', largeStep: 20 };
-    let tooltipplacement: { [key: string]: Object }[] = [{ text: 'Before', value: 'Before' }, { text: 'After', value: 'After' }];
-    let ticksplacement: { [key: string]: Object }[] = [{ text: 'Before', value: 'Before' }, { text: 'After', value: 'After' }, { text: 'Both', value: 'Both' }, { text: 'None', value: 'None' }];
-    let fields: object = { value: 'value', text: 'text' };
-    let numbericValue: NumericTextBoxComponent;
-    function onValueChange(args: any): void {
-        defaultObj.value = args.value;
-    }
-    function onMinChange(args: any): void {
-        defaultObj.min = args.value;
+    const onValueChange = (args: any): void => {
+        setValue(args.value);
     }
 
-    function onMaxChange(args: any): void {
-        defaultObj.max = args.value;
+    const onMinChange = (args: any): void => {
+        setMin(args.value);
     }
 
-    function onStepChange(args: any): void {
-        defaultObj.step = args.value;
+    const onMaxChange = (args: any): void => {
+        setMax(args.value);
     }
-    function onChange(args: ChangeEventArgs): void {
-        defaultObj.tooltip.isVisible = args.checked;
+
+    const onStepChange = (args: any): void => {
+        setStep(args.value);
     }
-    function onOrientationChange(args: ChangeEventArgs): void {
-        args.checked ? defaultObj.orientation = 'Vertical' : defaultObj.orientation = 'Horizontal';
+
+    const onOrientationChange = (args: ChangeEventArgs): void => {
+        setOrientation(args.checked ? "Vertical" : "Horizontal");
     }
-    function onReadonlyChange(args: ChangeEventArgs): void {
-        defaultObj.readonly = args.checked;
+
+    const onReadonlyChange = (args: ChangeEventArgs): void => {
+        setReadonly(args.checked);
     }
-    function onDisableChange(args: ChangeEventArgs): void {
-        defaultObj.enabled = !args.checked;
+
+    const onDisableChange = (args: ChangeEventArgs): void => {
+        setEnabled(!args.checked);
     }
-    function onTicksChange(args: any): void {
-        defaultObj.ticks = { placement: args.value };
+
+    const onButtonChange = (args: any): void => {
+        setButton(args.checked);
     }
-    function onTooltipChange(args: any): void {
-        defaultObj.tooltip = { placement: args.value };
-    }
-    function onButtonChange(args: any): void {
-        args.checked ? defaultObj.showButtons = true : defaultObj.showButtons = false;
-    }
-    function refreshTooltip(e: any): void {
-        if (defaultObj) {
-            (defaultObj as any).refreshTooltip((defaultObj as any).tooltipTarget);
+
+    const refreshTooltip = (e: any): void => {
+        if ((defaultObj as any).current) {
+            (defaultObj as any).current.refreshTooltip((defaultObj as any).tooltipTarget);
         }
     }
-    function sliderChange(args: SliderChangeEventArgs): void {
-        (numbericValue as any).value = args.value;
+
+    const sliderChange = (args: SliderChangeEventArgs): void => {
+        setValue(args.value as number);
     }
 
     if (!isNullOrUndefined(document.getElementById('right-pane'))) {
@@ -157,7 +166,7 @@ function APIs() {
                 <div className='col-lg-8'>
                     <div className="content-wrapper" id="all-option-sample">
                         <div className='sliderwrap'>
-                            <SliderComponent id='slider' value={30} min={0} max={100} change={sliderChange.bind(this)} ticks={ticks} tooltip={tooltip} type='MinRange' ref={(slider) => { defaultObj = slider }} />
+                            <SliderComponent id='slider' value={value} min={min} max={max} orientation={orientation} enabled={enabled} step={step} readonly={readonly} showButtons={button} change={sliderChange.bind(this)} ticks={ticks} tooltip={tooltip} type='MinRange' ref={defaultObj} />
                         </div>
                     </div>
                 </div>
@@ -169,10 +178,9 @@ function APIs() {
                                     <td style={{ width: '50%' }}>
                                         <div className="userselect">Value</div>
                                     </td>
-                                    <td style={{ width: '50%', paddingRight: '10px' }}>
+                                    <td style={{ width: '50%' }}>
                                         <div>
-                                            <NumericTextBoxComponent value={30} format='n0' change={onValueChange.bind(this)}
-                                                ref={(value) => { numbericValue = value }} />
+                                            <NumericTextBoxComponent value={value} format='n0' change={onValueChange.bind(this)} />
                                         </div>
                                     </td>
                                 </tr>
@@ -180,7 +188,7 @@ function APIs() {
                                     <td style={{ width: '50%' }}>
                                         <div className="userselect">Min</div>
                                     </td>
-                                    <td style={{ width: '50%', paddingRight: '10px' }}>
+                                    <td style={{ width: '50%' }}>
                                         <div>
                                             <NumericTextBoxComponent value={0} format='n0' change={onMinChange.bind(this)} />
                                         </div>
@@ -190,7 +198,7 @@ function APIs() {
                                     <td style={{ width: '50%' }}>
                                         <div className="userselect">Max</div>
                                     </td>
-                                    <td style={{ width: '50%', paddingRight: '10px' }}>
+                                    <td style={{ width: '50%' }}>
                                         <div>
                                             <NumericTextBoxComponent value={100} format='n0' change={onMaxChange.bind(this)} />
                                         </div>
@@ -200,7 +208,7 @@ function APIs() {
                                     <td style={{ width: '50%' }}>
                                         <div className="userselect">Step</div>
                                     </td>
-                                    <td style={{ width: '50%', paddingRight: '10px' }}>
+                                    <td style={{ width: '50%' }}>
                                         <div>
                                             <NumericTextBoxComponent value={1} change={onStepChange.bind(this)} />
                                         </div>
@@ -218,7 +226,6 @@ function APIs() {
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr id="desktop-checkbox-row-2">
                                     <td style={{ width: "50%", paddingRight: '10px' }}>
                                         <div style={{ paddingLeft: "0", paddingTop: "0" }}>
@@ -231,11 +238,9 @@ function APIs() {
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr id="mobile-checkbox-row-1">
                                     <td style={{ width: "50%" }}>
-                                        <div className="userselect" style={{ paddingLeft: "0" }}>Show Buttons
-                                        </div>
+                                        <div className="userselect" style={{ paddingLeft: "0" }}>Show Buttons</div>
                                     </td>
                                     <td style={{ width: "50%", paddingRight: '10px' }}>
                                         <div style={{ paddingLeft: "0", paddingTop: "0" }}>
@@ -243,11 +248,9 @@ function APIs() {
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr id="mobile-checkbox-row-2">
                                     <td style={{ width: "50%" }}>
-                                        <div className="userselect" style={{ paddingLeft: "0" }}>Disabled
-                                        </div>
+                                        <div className="userselect" style={{ paddingLeft: "0" }}>Disabled</div>
                                     </td>
                                     <td style={{ width: "50%", paddingRight: '10px' }}>
                                         <div style={{ paddingLeft: "0", paddingTop: "0" }}>
@@ -255,11 +258,9 @@ function APIs() {
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr id="mobile-checkbox-row-3">
                                     <td style={{ width: "50%" }}>
-                                        <div className="userselect" style={{ paddingLeft: "0" }}>Vertical Orientation
-                                        </div>
+                                        <div className="userselect" style={{ paddingLeft: "0" }}>Vertical Orientation</div>
                                     </td>
                                     <td style={{ width: "50%", paddingRight: '10px' }}>
                                         <div style={{ paddingLeft: "0", paddingTop: "0" }}>
@@ -267,11 +268,9 @@ function APIs() {
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr id="mobile-checkbox-row-4">
                                     <td style={{ width: "50%" }}>
-                                        <div className="userselect" style={{ paddingLeft: "0" }}>Readonly
-                                        </div>
+                                        <div className="userselect" style={{ paddingLeft: "0" }}>Readonly</div>
                                     </td>
                                     <td style={{ width: "50%", paddingRight: '10px' }}>
                                         <div style={{ paddingLeft: "0", paddingTop: "0" }}>
@@ -285,10 +284,11 @@ function APIs() {
                 </div>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates the customization of Slider component by using its properties from property pane. Select any
-                    combination of properties from property pane to customize Slider component.</p>
+                <p>
+                    This sample demonstrates the customization of Slider component by using its properties from property pane. Select any
+                    combination of properties from property pane to customize Slider component.
+                </p>
             </div>
-
             <div id="description">
                 <p>In this demo, we have rendered default slider with minimal configuration.</p>
                 <p>we can further customize this sample with the combination of Slider properties from the property pane. For example,</p>

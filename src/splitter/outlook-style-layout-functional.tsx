@@ -1,6 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SampleBase, updateSampleSection } from '../common/sample-base';
+import { useEffect, useRef } from 'react';
+import { updateSampleSection } from '../common/sample-base';
 import { SplitterComponent, PanesDirective, PaneDirective } from '@syncfusion/ej2-react-layouts';
 import { TreeViewComponent, FieldsSettingsModel } from '@syncfusion/ej2-react-navigations';
 import { ListViewComponent, FieldSettingsModel } from '@syncfusion/ej2-react-lists';
@@ -12,14 +13,11 @@ import './outlook-style-layout.component.css';
  *  Sample for outlook style using splitter
  */
 
-function OutlookLayout (){
-    React.useEffect(() => {
+const OutlookLayout = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let splitterInstance: SplitterComponent;
-    let listViewObj: ListViewComponent;
-    let rteObj: RichTextEditorComponent;
-
+    let rteObj = useRef<RichTextEditorComponent>(null);
     let dataSource: { [key: string]: Object }[] = [
         { Name: 'Selma Tally', content: 'Apology marketing email', content2: 'Hello Ananya Singleton', id: '1', order: 0 },
         { Name: 'Illa Russo', content: 'Annual conference', content2: 'Hi jeani Moresa', id: '4', order: 0 },
@@ -28,40 +26,39 @@ function OutlookLayout (){
         { Name: 'Ursula Patterson', content: 'Programmaer Position Applicant', content2: 'Hello Kerry best', id: '2', order: 0 }
     ];
 
-    let data: { [key: string]: Object }[] = dataSource;
-
-    function nodeTemplate(data: any): JSX.Element {
-        return (<div>
-            <div className="treeviewdiv">
-                <div className="textcontent">
-                    <span className="treeName">{data.name}</span>
-                </div>
-                {data.count &&
-                    <div className="countcontainer">
-                        <span className="treeCount e-badge e-badge-primary" >{data.count}</span>
+    const nodeTemplate = (data: any) => {
+        return (
+            <div>
+                <div className="treeviewdiv">
+                    <div className="textcontent">
+                        <span className="treeName">{data.name}</span>
                     </div>
-                }
+                    {data.count &&
+                        <div className="countcontainer">
+                            <span className="treeCount e-badge e-badge-primary" >{data.count}</span>
+                        </div>
+                    }
+                </div>
             </div>
-        </div>);
+        );
     };
     let paneSize1 = "28%";
     let minimumSize1 = "27%";
-    function content1(): JSX.Element {
+    const content1 = () => {
         return (
             <div className='splitter-content'>
                 <TreeViewComponent id='splitter-tree' fields={treeFields} nodeTemplate={nodeTemplate} />
             </div>
         );
     };
-    function content2(): JSX.Element {
+    const content2 = () => {
         return (
             <div className='splitter-content'>
-                <ListViewComponent id='groupedList-split' fields={listFields} className='splitter-list' dataSource={dataSource}
-                    cssClass={'e-list-template'} template={listTemplate} ref={(listview) => { listViewObj = listview }} />
+                <ListViewComponent id='groupedList-split' fields={listFields} className='splitter-list' dataSource={dataSource} cssClass={'e-list-template'} template={listTemplate} />
             </div>
         );
     };
-    function content3(): JSX.Element {
+    const content3 = () => {
         return (
             <div>
                 <div className='splitter-content'>
@@ -89,7 +86,7 @@ function OutlookLayout (){
                     </div>
                     <div className='forum'>
                         <div id='createpostholder'>
-                            <RichTextEditorComponent id="outlookRTE" ref={(richtexteditor) => { rteObj = richtexteditor }} height="262px">
+                            <RichTextEditorComponent id="outlookRTE" ref={(richtexteditor) => { rteObj.current = richtexteditor }} height="262px">
                                 <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
                             </RichTextEditorComponent>
                             <div id='buttonSection'>
@@ -132,37 +129,34 @@ function OutlookLayout (){
         { id: 15, pid: 5, name: 'Trash' }
     ];
     let treeFields: FieldsSettingsModel = { dataSource: mailBox, id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild' };
-    function onSplitterResize(): void {
-        rteObj.refreshUI();
+    const onSplitterResize = (): void => {
+        rteObj.current.refreshUI();
     }
 
-        return (
-            <div id="target" className="control-section outlook-style" >
-                <SplitterComponent id="splitter1" height="493px" width="100%" ref={(splitter) => { splitterInstance = splitter }} resizing={onSplitterResize.bind(this)}>
-                    <PanesDirective>
-                        <PaneDirective size={paneSize1} min={minimumSize1} content={content1.bind(this)}>
-                        </PaneDirective>
-                        <PaneDirective size={paneSize2} min={minimumSize2} content={content2.bind(this)}>
-                        </PaneDirective>
-                        <PaneDirective size={paneSize3} min={minimumSize3} content={content3.bind(this)}>
-                        </PaneDirective>
-                    </PanesDirective>
-                </SplitterComponent>
-                <div id="action-description">
-                    <p>
-                        This example demonstrates the splitter control that is used to design outlook-like application using multiple horizontal panes.
-                        You can resize its panes horizontally to increase dimension.
-                    </p>
-                </div>
-                <div id="description">
-                    <p>
-                        The splitter control is used to create outlook-like user interface application using multiple panes with horizontal orientation.
-                        To create outlook-style user interface, use TreeView, ListView, and RichTextEditor controls within split panes.
-                        The TreeView control is used to display mail folders at left pane and ListView to display details of mail items, and
-                        RichTextEditor to create new mail.
-                    </p>
-                </div>
+    return (
+        <div id="target" className="control-section outlook-style" >
+            <SplitterComponent id="splitter1" height="493px" width="100%" resizing={onSplitterResize.bind(this)}>
+                <PanesDirective>
+                    <PaneDirective size={paneSize1} min={minimumSize1} content={content1.bind(this)} />
+                    <PaneDirective size={paneSize2} min={minimumSize2} content={content2.bind(this)} />
+                    <PaneDirective size={paneSize3} min={minimumSize3} content={content3.bind(this)} />
+                </PanesDirective>
+            </SplitterComponent>
+            <div id="action-description">
+                <p>
+                    This example demonstrates the splitter control that is used to design outlook-like application using multiple horizontal panes.
+                    You can resize its panes horizontally to increase dimension.
+                </p>
             </div>
-        );
+            <div id="description">
+                <p>
+                    The splitter control is used to create outlook-like user interface application using multiple panes with horizontal orientation.
+                    To create outlook-style user interface, use TreeView, ListView, and RichTextEditor controls within split panes.
+                    The TreeView control is used to display mail folders at left pane and ListView to display details of mail items, and
+                    RichTextEditor to create new mail.
+                </p>
+            </div>
+        </div>
+    );
 }
 export default OutlookLayout;

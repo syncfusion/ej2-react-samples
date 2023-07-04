@@ -15,7 +15,7 @@ export class MultipleList extends SampleBase<{}, {}> {
   private useCostTemp:string = 'useCosts';
   private statusTemp:string = 'status';
   private data: DataManager = new DataManager({
-        url: 'https://ej2services.syncfusion.com/react/development/api/Employees',
+        url: 'https://services.syncfusion.com/react/production/api/Employees',
         adaptor: new WebApiAdaptor,
         crossDomain: true
   });

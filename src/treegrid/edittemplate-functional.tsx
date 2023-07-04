@@ -57,11 +57,11 @@ function EditTemplate() {
             <ColumnDirective field='taskName' headerText='Task Name' width='200' edit={editTemplate}></ColumnDirective>
             <ColumnDirective field='startDate' headerText='Start Date' width='140' textAlign='Right'
               editType='datepickeredit' format='yMd' validationRules={dateRule} type='date' />
-            <ColumnDirective field='duration' headerText='Duration' width='90' editType='numericedit' textAlign='Right'
+            <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
               validationRules={durationRule} edit={editparams2} />
-            <ColumnDirective field='progress' headerText='Progress' width='90' textAlign='Right' editType='numericedit'
+            <ColumnDirective field='progress' headerText='Progress' width='150' textAlign='Right' editType='numericedit'
               validationRules={durationRule} edit={editparams2} />
-            <ColumnDirective field='priority' headerText='Priority' width='90' textAlign='Right' editType='stringedit'
+            <ColumnDirective field='priority' headerText='Priority' width='130' textAlign='Right' editType='stringedit'
               validationRules={priorityRule} />
           </ColumnsDirective>
           <Inject services={[Edit, Toolbar]} />

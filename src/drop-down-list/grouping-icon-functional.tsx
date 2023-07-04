@@ -1,26 +1,26 @@
 /**
  * DropDownList Grouping and Icons Samples
  */
- import * as ReactDOM from 'react-dom';
- import * as React from 'react';
- import { updateSampleSection } from '../common/sample-base';
- import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
- import './icons.css';
- import * as data from './dataSource.json';
- 
-function Grouping() {
-    React.useEffect(() => {
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { useEffect } from 'react';
+import { updateSampleSection } from '../common/sample-base';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import './icons.css';
+import * as data from './dataSource.json';
+
+const Grouping = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let listObj: DropDownListComponent;
-    const temp:string = 'vegetableData';
+    const temp: string = 'vegetableData';
     //define the data with category
-    const vegetableData: { [key: string]: Object }[]= data[temp];
+    const vegetableData: { [key: string]: Object }[] = data[temp];
     // map the groupBy field with Category column
     const groupFields: Object = { groupBy: 'Category', text: 'Vegetable', value: 'Id' };
-    const tempData:string = 'socialMedia';
+    const tempData: string = 'socialMedia';
     //define the data with icon class
-    const socialMediaData: { [key: string]: Object }[]= data[tempData];
+    const socialMediaData: { [key: string]: Object }[] = data[tempData];
     // map the iconCss field with Class column
     const iconFields: Object = { text: 'SocialMedia', value: 'Id', iconCss: 'Class' };
     return (
@@ -28,13 +28,13 @@ function Grouping() {
             <div className='control-section' id='dropIcon'>
                 <div className='col-lg-6'>
                     <div id="group">
-                    <h4>Grouping</h4>
+                        <h4>Grouping</h4>
                         <DropDownListComponent id="vegetables" dataSource={vegetableData} fields={groupFields} placeholder="Select a vegetable" popupHeight="220px" />
                     </div>
                 </div>
                 <div className='col-lg-6'>
                     <div id="icon">
-                    <h4> Icons</h4>
+                        <h4> Icons</h4>
                         <DropDownListComponent id="icons" dataSource={socialMediaData} fields={iconFields} placeholder="Select a social media" popupHeight="220px" />
                     </div>
                 </div>
@@ -47,7 +47,7 @@ function Grouping() {
                 <p>The grouping sample illustrates how the vegetables are grouped based on its category.</p>
                 <p>The second DropDownList is populated with icons that is rendered by mapping the <code>iconCss</code> field.</p>
                 <p>More information on the grouping feature configuration can be found in the
-                   <a href="http://ej2.syncfusion.com/react/documentation/drop-down-list/grouping.html" target="_blank"> documentation section</a>.
+                    <a href="http://ej2.syncfusion.com/react/documentation/drop-down-list/grouping.html" target="_blank"> documentation section</a>.
                 </p>
             </div>
         </div>

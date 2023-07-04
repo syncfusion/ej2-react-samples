@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BreadcrumbComponent, BreadcrumbItemDirective, BreadcrumbItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { MenuComponent, MenuItemModel } from '@syncfusion/ej2-react-navigations';
 import { BreadcrumbItemModel, MenuEventArgs } from '@syncfusion/ej2-navigations';
@@ -7,20 +8,19 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './address-bar.css';
 
-function AddressBar() {
-    React.useEffect(() => {
+const AddressBar = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let breadcrumbInst: BreadcrumbComponent;
+    const [classList, setClassList] = useState('');
+    let breadcrumbInst = useRef<BreadcrumbComponent>(null);
 
-    let btnobj: ButtonComponent;
-
-    function btnClick(): void {
-        breadcrumbInst.items = initialBreadcrumbItems;
+    const btnClick = (): void => {
+        breadcrumbInst.current.items = initialBreadcrumbItems;
         breadcrumbItems = initialBreadcrumbItems;
     }
 
-    function itemTemplate(data: any): JSX.Element {
+    const itemTemplate = (data: any) => {
         let menuItems: MenuItemModel[] = [{ text: data.text, iconCss: data.iconCss }];
         return (
             <div style={{ display: "flex" }}>
@@ -30,20 +30,20 @@ function AddressBar() {
         );
     }
 
-    function selectHandler(args: MenuEventArgs) {
+    const selectHandler = (args: MenuEventArgs) => {
         for (let i: number = 0; i < breadcrumbItems.length; i++) {
             if (breadcrumbItems[i].text === args.item.text) {
                 breadcrumbItems = breadcrumbItems.slice(0, i + 1);
                 breadcrumbItems[0].iconCss = 'e-bicons e-' + getItems(args.item.text, true)[0].items.type;
-                breadcrumbInst.items = breadcrumbItems;
+                breadcrumbInst.current.items = breadcrumbItems;
                 break;
             }
         }
-        breadcrumbInst.items.push({ text: 'LastItem' });
-        breadcrumbInst.activeItem = 'LastItem';
+        breadcrumbInst.current.items.push({ text: 'LastItem' });
+        breadcrumbInst.current.activeItem = 'LastItem';
     }
 
-    function subMenuSelectHandler(args: MenuEventArgs) {
+    const subMenuSelectHandler = (args: MenuEventArgs) => {
         if (!args.element.parentElement.classList.contains('e-menu') && (args.item as any).parentObj.items) {
             let idx: number;
             let subItems: any = (args.item as any).parentObj.items;
@@ -64,23 +64,23 @@ function AddressBar() {
             }
             breadcrumbItems.push({ text: args.item.text });
             breadcrumbItems.push({ text: 'LastItem' });
-            breadcrumbInst.items = breadcrumbItems;
+            breadcrumbInst.current.items = breadcrumbItems;
         }
     }
 
-    function beforeOpen() {
-        (this as any).element.classList.add('e-open');
+    const beforeOpen = () => {
+        setClassList('e-open');
     }
 
-    function onClose() {
-        (this as any).element.classList.remove('e-open');
+    const onClose = () => {
+        setClassList('');
     }
 
-    function separatorTemplate(data: any): JSX.Element {
+    const separatorTemplate = (data: any) => {
         let subMenuItems: MenuItemModel[] = getItems(data.previousItem.text);
         return (
             <div style={{ display: "flex" }}>
-                {subMenuItems[0].items && data.previousItem.text !== "LastItem" && (<MenuComponent items={subMenuItems} select={subMenuSelectHandler} showItemOnClick={true} beforeOpen={beforeOpen} onClose={onClose}></MenuComponent>)}
+                {subMenuItems[0].items && data.previousItem.text !== "LastItem" && (<MenuComponent className={classList} items={subMenuItems} select={subMenuSelectHandler} showItemOnClick={true} beforeOpen={beforeOpen} onClose={onClose}></MenuComponent>)}
             </div>
         );
 
@@ -211,7 +211,7 @@ function AddressBar() {
         { text: 'Recycle Bin', type: 'recyclebin' }
     ];
 
-    function getItems(text: string, needParent?: boolean) {
+    const getItems = (text: string, needParent?: boolean) => {
         let mItems: any = [].slice.call(items);
         let isBreaked: boolean;
         if (!text) {
@@ -243,7 +243,7 @@ function AddressBar() {
         return [{ items: mItems }];
     }
 
-    function getSubMenuItems(mItems: MenuItemModel[]) {
+    const getSubMenuItems = (mItems: MenuItemModel[]) => {
         let subItems: any;
         if (mItems) {
             subItems = [];
@@ -261,13 +261,12 @@ function AddressBar() {
                     <div className="row material2">
                         <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
                             <h5 style={{ display: "inline-block" }}>File Manager like Breadcrumb</h5>
-                            <ButtonComponent cssClass='e-small reset-btn' ref={(scope) => { btnobj = scope; }}
-                                onClick={btnClick}>Reset State</ButtonComponent>
+                            <ButtonComponent cssClass='e-small reset-btn' onClick={btnClick}>Reset State</ButtonComponent>
                         </div>
                     </div>
                     <div className="row material2">
                         <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                            <BreadcrumbComponent ref={(breadcrumbObj) => { breadcrumbInst = breadcrumbObj }} cssClass="e-addressbar-breadcrumb" itemTemplate={itemTemplate} separatorTemplate={separatorTemplate}>
+                            <BreadcrumbComponent ref={breadcrumbInst} cssClass="e-addressbar-breadcrumb" itemTemplate={itemTemplate} separatorTemplate={separatorTemplate}>
                                 <BreadcrumbItemsDirective>
                                     <BreadcrumbItemDirective iconCss="e-bicons e-picture" />
                                     <BreadcrumbItemDirective text="This PC" />
@@ -280,19 +279,26 @@ function AddressBar() {
                         </div>
                     </div>
                 </div>
-
             </div>
             <div id="action-description">
-                <p> This sample demonstrates the address bar functionalities using the <b>Breadcrumb</b> component. Click the
-                    right arrow icon to view and navigate to the next level items.</p>
+                <p> 
+                    This sample demonstrates the address bar functionalities using the <b>Breadcrumb</b> component. Click the
+                    right arrow icon to view and navigate to the next level items.
+                </p>
             </div>
             <div id='description'>
-                <p>In the <code>Breadcrumb</code> component, <code>itemTemplate</code> property is used to render <code>Menu</code>
-                    as Breadcrumb items.</p>
-                <p>In this demo, we have rendered address of pictures folder in Breadcrumb. And click the
-                    right arrow icon to view and navigate to the next level items.</p>
-                <p>More information about Breadcrumb component can be found in this <a target='_blank'
-                    href="https://ej2.syncfusion.com/react/documentation/breadcrumb/getting-started/">documentation section</a>.</p>
+                <p>
+                    In the <code>Breadcrumb</code> component, <code>itemTemplate</code> property is used to render <code>Menu</code>
+                    as Breadcrumb items.
+                </p>
+                <p>
+                    In this demo, we have rendered address of pictures folder in Breadcrumb. And click the
+                    right arrow icon to view and navigate to the next level items.
+                </p>
+                <p>
+                    More information about Breadcrumb component can be found in this <a target='_blank'
+                    href="https://ej2.syncfusion.com/react/documentation/breadcrumb/getting-started/">documentation section</a>.
+                </p>
             </div>
         </div>
     );

@@ -225,35 +225,33 @@ function GettingStartedNodes() {
     diagramInstance.dataBind();
     target.classList.add("e-selected-style");
   }
-
-  //Enable or disable the Constraints for Node.
-  function changed(args: CheckBoxChangeEventArgs): void {
-    let element: HTMLInputElement = document.getElementById(
-      "aspectRatio"
-    ) as HTMLInputElement;
+  
+  //Enable or disable the Aspect Ratio Constraints for Node.
+  function setNodeAspectConstraints(args: CheckBoxChangeEventArgs): void {
     for (let i: number = 0; i < diagramInstance.nodes.length; i++) {
-      node = diagramInstance.nodes[i];
-      if ((args.event.target as HTMLElement).id === "lock") {
-        if (args.checked) {
-          node.constraints &= ~(
-            NodeConstraints.Resize |
-            NodeConstraints.Rotate |
-            NodeConstraints.Drag
-          );
-          node.constraints |= NodeConstraints.ReadOnly;
-        } else {
-          node.constraints |= NodeConstraints.Default & ~NodeConstraints.ReadOnly;
-        }
+      let node: NodeModel = diagramInstance.nodes[i];
+      if ( args.checked) {
+        node.constraints |= NodeConstraints.AspectRatio;
       } else {
-        if (element.checked) {
-          node.constraints |= NodeConstraints.AspectRatio;
-        } else {
-          node.constraints &= ~NodeConstraints.AspectRatio;
-        }
+        node.constraints &= ~NodeConstraints.AspectRatio;
       }
       diagramInstance.dataBind();
     }
   }
+  //Enable or disable the Lock Constraints for Node.
+  function setNodeLockConstraints(args: CheckBoxChangeEventArgs): void {
+    for (let i: number = 0; i < diagramInstance.nodes.length; i++) {
+      let node: NodeModel = diagramInstance.nodes[i];
+      if (args.checked) {
+        node.constraints &= ~(NodeConstraints.Resize | NodeConstraints.Rotate | NodeConstraints.Drag);
+        node.constraints |= NodeConstraints.ReadOnly;
+      } else {
+        node.constraints |= NodeConstraints.Default & ~(NodeConstraints.ReadOnly);
+      }
+    }
+    diagramInstance.dataBind();
+  }
+
   return (
     <div className="control-pane">
       <style>{SAMPLE_CSS}</style>
@@ -361,7 +359,7 @@ function GettingStartedNodes() {
               checked={false}
               label="Aspect ratio"
               id="aspectRatio"
-              change={changed}
+              change={setNodeAspectConstraints}
             />
           </div>
           <div className="row" style={{ paddingTop: "8px" }}>
@@ -370,7 +368,7 @@ function GettingStartedNodes() {
               checked={false}
               label="Lock"
               id="lock"
-              change={changed}
+              change={setNodeLockConstraints}
             />
           </div>
         </div>

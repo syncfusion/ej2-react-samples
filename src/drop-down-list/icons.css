@@ -26,6 +26,7 @@
 }
 
 .material-dark #icons_popup .e-list-icon,
+.material3-dark #icons_popup .e-list-icon,
 .bootstrap5-dark #icons_popup .e-list-icon,
 .tailwind-dark #icons_popup .e-list-icon {
     color: #fff;

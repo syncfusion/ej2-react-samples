@@ -1,129 +1,120 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { MessageComponent, Message } from '@syncfusion/ej2-react-notifications';
-import { ButtonComponent, CheckBoxComponent, Button, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
-import { getComponent } from '@syncfusion/ej2-base';
+import { MessageComponent } from '@syncfusion/ej2-react-notifications';
+import { ButtonComponent, CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import './icons.css';
 import { PropertyPane } from '../common/property-pane';
 
 function Icons() {
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let msgDefault: MessageComponent;
-    let msgSuccess: MessageComponent;
-    let msgInfo: MessageComponent;
-    let msgWarning: MessageComponent;
-    let msgError: MessageComponent;
-    let defaultBtn: ButtonComponent;
-    let warningBtn: ButtonComponent;
-    let successBtn: ButtonComponent;
-    let infoBtn: ButtonComponent;
-    let errorBtn: ButtonComponent;
-
-    function defaultClick(): void {
-        show(msgDefault, defaultBtn);
-    }
-
-    function defaultClosed(): void {
-        defaultBtn.element.classList.remove('msg-hidden');
-    }
-
-    function infoClick(): void {
-        show(msgInfo, infoBtn);
-    }
-
-    function infoClosed(): void {
-        infoBtn.element.classList.remove('msg-hidden');
-    }
-
-    function successClick(): void {
-        show(msgSuccess, successBtn);
-    }
-
-    function successClosed(): void {
-        successBtn.element.classList.remove('msg-hidden');
-    }
-
-    function warningClick(): void {
-        show(msgWarning, warningBtn);
-    }
-
-    function warningClosed(): void {
-        warningBtn.element.classList.remove('msg-hidden');
-    }
-
-    function errorClick(): void {
-        show(msgError, errorBtn);
-    }
-
-    function errorClosed(): void {
-        errorBtn.element.classList.remove('msg-hidden');
-    }
-
-    function severityIconChange(args: ChangeEventArgs): void {
-        let msgTypes: string[] = ["default", "info", "success", "warning", "error"];
-        for (let i: number = 0; i <= 4; i++) {
-            let msgObj: Message = getComponent(document.getElementById("msg_" + msgTypes[i] + "_icon"), "message") as Message;
-            if (msgObj) {
-                if (args.checked) {
-                    msgObj.showIcon = true;
-                } else {
-                    msgObj.showIcon = false;
-                }
-            }
-        }
-    }
-
-    function closeIconChange(args: ChangeEventArgs): void {
-        let msgTypes: string[] = ["default", "info", "success", "warning", "error"];
-        for (let i: number = 0; i <= 4; i++) {
-            let msgObj: Message = getComponent(document.getElementById("msg_" + msgTypes[i] + "_icon"), "message") as Message;
-            if (msgObj) {
-                if (args.checked) {
-                    msgObj.showCloseIcon = true;
-                } else {
-                    msgObj.showCloseIcon = false;
-                }
-            }
-        }
-    }
-
-    function show(message: Message, btn: Button): void {
-        message.visible = true;
-        btn.element.classList.add('msg-hidden');
-    }
+    const [defaultVisible, setDefaultVisible] = useState<boolean>(true);
+    const [defaultCssClass, setDefaultCssClass] = useState<string>('e-outline e-primary msg-hidden');
+    const [infoVisible, setInfoVisible] = useState<boolean>(true);
+    const [infoCssClass, setinfoCssClass] = useState<string>('e-outline e-primary e-info msg-hidden');
+    const [successVisible, setSuccessVisible] = useState<boolean>(true);
+    const [successCssClass, setSuccessCssClass] = useState<string>('e-outline e-primary e-success msg-hidden');
+    const [warningVisible, setWarningVisible] = useState<boolean>(true);
+    const [warningCssClass, setWarningCssClass] = useState<string>('e-outline e-primary e-warning msg-hidden');
+    const [errorVisible, setErrorVisible] = useState<boolean>(true);
+    const [errorCssClass, setErrorCssClass] = useState<string>('e-outline e-primary e-error msg-hidden');
+    const [showIcon, setShowIcon] = useState<boolean>(true);
+    const [showCloseIcon, setShowCloseIcon] = useState<boolean>(true);
+    const defaultClick = () => {
+        setDefaultVisible(true);
+        setDefaultCssClass('e-outline e-primary msg-hidden');
+    };
+    const defaultClosed = () => {
+        setDefaultVisible(false);
+        setDefaultCssClass('e-outline e-primary');
+    };
+    const infoClick = () => {
+        setInfoVisible(true);
+        setinfoCssClass('e-outline e-primary e-info msg-hidden');
+    };
+    const infoClosed = () => {
+        setInfoVisible(false);
+        setinfoCssClass('e-outline e-primary e-info');
+    };
+    const successClick = () => {
+        setSuccessVisible(true);
+        setSuccessCssClass('e-outline e-primary e-success msg-hidden');
+    };
+    const successClosed = () => {
+        setSuccessVisible(false);
+        setSuccessCssClass('e-outline e-primary e-success');
+    };
+    const warningClick = () => {
+        setWarningVisible(true);
+        setWarningCssClass('e-outline e-primary e-warning msg-hidden');
+    };
+    const warningClosed = () => {
+        setWarningVisible(false);
+        setWarningCssClass('e-outline e-primary e-warning');
+    };
+    const errorClick = () => {
+        setErrorVisible(true);
+        setErrorCssClass('e-outline e-primary e-error msg-hidden');
+    };
+    const errorClosed = () => {
+        setErrorVisible(false);
+        setErrorCssClass('e-outline e-primary e-warning');
+    };
+    const severityIconChange = (args: ChangeEventArgs) => {
+        setShowIcon(args.checked ? true : false);
+    };
+    const closeIconChange = (args: ChangeEventArgs) => {
+        setShowCloseIcon(args.checked ? true : false)
+    };
 
     return (
-        <div className='control-pane'>
+        <div className="control-pane">
             <div className="col-lg-8 control-section msg-icon-section">
                 <div className="content-section">
-                    <ButtonComponent id="btn1" ref={(scope) => { defaultBtn = scope; }} content="Show Default Message" cssClass="e-outline e-primary msg-hidden" onClick={defaultClick.bind(this)}></ButtonComponent>
-                    <MessageComponent id="msg_default_icon" ref={(scope) => { msgDefault = scope; }} showCloseIcon={true} closed={defaultClosed.bind(this)}>Editing is restricted</MessageComponent>
-                    <ButtonComponent id="btn2" ref={(scope) => { infoBtn = scope; }} content="Show Info Message" cssClass="e-outline e-primary e-info msg-hidden" onClick={infoClick.bind(this)}></ButtonComponent>
-                    <MessageComponent id="msg_info_icon" severity="Info" ref={(scope) => { msgInfo = scope; }} showCloseIcon={true} closed={infoClosed.bind(this)}>Please read the comments carefully</MessageComponent>
-                    <ButtonComponent id="btn3" ref={(scope) => { successBtn = scope; }} content="Show Success Message" cssClass="e-outline e-primary e-success msg-hidden" onClick={successClick.bind(this)}></ButtonComponent>
-                    <MessageComponent id="msg_success_icon" severity="Success" ref={(scope) => { msgSuccess = scope; }} showCloseIcon={true} closed={successClosed.bind(this)}> Your message has been sent successfully</MessageComponent>
-                    <ButtonComponent id="btn4" ref={(scope) => { warningBtn = scope; }} content="Show Warning Message" cssClass="e-outline e-primary e-warning msg-hidden" onClick={warningClick.bind(this)}></ButtonComponent>
-                    <MessageComponent id="msg_warning_icon" severity="Warning" ref={(scope) => { msgWarning = scope; }} showCloseIcon={true} closed={warningClosed.bind(this)}>There was a problem with your network connection</MessageComponent>
-                    <ButtonComponent id="btn5" ref={(scope) => { errorBtn = scope; }} content="Show Error Message" cssClass="e-outline e-primary e-error msg-hidden" onClick={errorClick.bind(this)}></ButtonComponent>
-                    <MessageComponent id="msg_error_icon" severity="Error" ref={(scope) => { msgError = scope; }} showCloseIcon={true} closed={errorClosed.bind(this)}>A problem occurred while submitting your data</MessageComponent>
+                    <ButtonComponent id="btn1" content="Show Default Message" cssClass={defaultCssClass}
+                        onClick={defaultClick.bind(this)} />
+                    <MessageComponent id="msg_default_icon" visible={defaultVisible} showCloseIcon={showCloseIcon}
+                        closed={defaultClosed.bind(this)} showIcon={showIcon}>
+                        Editing is restricted
+                    </MessageComponent>
+                    <ButtonComponent id="btn2" content="Show Info Message" cssClass={infoCssClass} onClick={infoClick.bind(this)} />
+                    <MessageComponent id="msg_info_icon" severity="Info" showCloseIcon={showCloseIcon}
+                        visible={infoVisible} closed={infoClosed.bind(this)} showIcon={showIcon}>
+                        Please read the comments carefully
+                    </MessageComponent>
+                    <ButtonComponent id="btn3" content="Show Success Message" cssClass={successCssClass} onClick={successClick.bind(this)} />
+                    <MessageComponent id="msg_success_icon" severity="Success" showCloseIcon={showCloseIcon}
+                        closed={successClosed.bind(this)} visible={successVisible} showIcon={showIcon}>
+                        {' '} Your message has been sent successfully
+                    </MessageComponent>
+                    <ButtonComponent id="btn4" content="Show Warning Message" cssClass={warningCssClass} onClick={warningClick.bind(this)} />
+                    <MessageComponent id="msg_warning_icon" severity="Warning" showCloseIcon={showCloseIcon}
+                        closed={warningClosed.bind(this)} visible={warningVisible} showIcon={showIcon}>
+                        There was a problem with your network connection
+                    </MessageComponent>
+                    <ButtonComponent id="btn5" content="Show Error Message" cssClass={errorCssClass} onClick={errorClick.bind(this)} />
+                    <MessageComponent id="msg_error_icon" severity="Error" showCloseIcon={showCloseIcon}
+                        closed={errorClosed.bind(this)} visible={errorVisible} showIcon={showIcon}>
+                        A problem occurred while submitting your data
+                    </MessageComponent>
                 </div>
             </div>
 
             <div className="col-lg-4 property-section">
-                <PropertyPane title='Properties'>
+                <PropertyPane title="Properties">
                     <table id="property" title="Properties">
                         <tbody>
                             <tr>
                                 <td style={{ padding: '10px' }}>
-                                    <CheckBoxComponent label='Severity Icon' checked={true} change={severityIconChange}></CheckBoxComponent>
+                                    <CheckBoxComponent label="Severity Icon" checked={true} change={severityIconChange} />
                                 </td>
                             </tr>
                             <tr>
                                 <td style={{ padding: '10px' }}>
-                                    <CheckBoxComponent label='Close Icon' checked={true} change={closeIconChange}></CheckBoxComponent>
+                                    <CheckBoxComponent label="Close Icon" checked={true} change={closeIconChange} />
                                 </td>
                             </tr>
                         </tbody>
@@ -138,6 +129,6 @@ function Icons() {
                 <p>In this sample, the Message component is rendered with a severity icon and a close icon. The visibility of the severity icon is handled by the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/message/#showicon">showIcon</a> property. The visibility of the close icon is handled by the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/message/#showcloseicon">showCloseIcon</a> property.</p>
             </div>
         </div>
-    )
-}
+    );
+};
 export default Icons;

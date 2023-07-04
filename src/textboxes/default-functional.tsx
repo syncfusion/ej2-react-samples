@@ -1,34 +1,32 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { updateSampleSection } from '../common/sample-base';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import './sample.css';
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    function floatFocus(args: any): void {
-        args.target.parentElement.classList.add('e-input-focus');
-    }
-    function floatBlur(args: any): void {
+    const floatFocus = (args: any): void => {
+      args.target.parentElement.classList.add("e-input-focus");
+    };
+    const floatBlur = (args: any): void => {
         args.target.parentElement.classList.remove('e-input-focus');
     }
-
-    function onIconClick(args: any): void {
-        args.persist();
-        setTimeout(
-            () => {
-                args.target.classList.add('e-input-btn-ripple');
-            },
-            500);
-    }
-    function onIconUnClick(args: any): void {
+    const onIconClick = (args: any): void => {
+      args.persist();
+      setTimeout(() => {
+        args.target.classList.add('e-input-btn-ripple');
+      }, 500);
+    };
+    const onIconUnClick = (args: any): void => {
         args.target.classList.remove('e-input-btn-ripple');
     }
 
     return (
-      <div className = 'control-pane'>
+        <div className = 'control-pane'>
             <div className='control-section input-content-wrapper'>
                 <div className="row custom-margin material">
                     <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6"><b>Outlined and Filled</b></div>
@@ -162,11 +160,9 @@ function Default() {
                 </p>
             </div>
             <div id="description">
-                <p>
-                    A TextBoxes are an input element that allows to get input from the user. It allows the user either to edit or display the input values.
-                </p>
+                <p>A TextBoxes are an input element that allows to get input from the user. It allows the user either to edit or display the input values.</p>
                 <br />
-                <table className ="custom-width">
+                <table className="custom-width">
                     <tbody>
                         <tr>
                             <th>Types</th>
@@ -174,88 +170,93 @@ function Default() {
                         </tr>
                         <tr>
                             <td>Outlined & Filled textbox</td>
-                            <td>You can render the following two types of text fields in the material theme by adding <b>e-outline</b> and <b>e-filled</b> class to cssClass API.
-                            <ul>
-                                <li>Filled text fields</li>
-                                <li>Outlined text fields</li>
-                            </ul> 
+                            <td>
+                                You can render the following two types of text fields in the material theme by adding <b>e-outline</b> and <b>e-filled</b> class to cssClass API.
+                                <ul>
+                                    <li>Filled text fields</li>
+                                    <li>Outlined text fields</li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>Floating Label</td>
-                            <td>You can render floating textbox with <b>e-float-input</b> class added and need to maintain the following structure
-                                of elements.
-                            <ul>
-                                <li>Create group element with <b>e-float-input</b> class added.</li>
-                                <li>Input element with <b>required</b> attribute.</li>
-                                <li>Span element with <b>e-float-line</b> class.</li>
-                                <li>Label element with <b>e-float-text</b> class.</li>
-                            </ul> 
+                            <td>
+                                You can render floating textbox with <b>e-float-input</b> class added and need to maintain the following structure of elements.
+                                <ul>
+                                    <li>Create group element with <b>e-float-input</b> class added.</li>
+                                    <li>Input element with <b>required</b> attribute.</li>
+                                    <li>Span element with <b>e-float-line</b> class.</li>
+                                    <li>Label element with <b>e-float-text</b> class.</li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>Floating Label & Elements</td>
-                            <td>You can render floating textbox with icons added with in group element <b>e-input-group</b> and need to maintain
-                                the following structure of elements.
-                            <ul>
-                                <li>Create group element with <b>e-float-input</b> class added.</li>
-                                <li>Input element with <b>required</b> attribute.</li>
-                                <li>Span element with <b>e-float-line</b> class.</li>
-                                <li>Label element with <b>e-float-text</b> class.</li>
-                                <li>Append or prepend the span element with class <b>e-input-group-icon</b> added.</li>
-                            </ul>
+                            <td>
+                                You can render floating textbox with icons added with in group element <b>e-input-group</b> and need to maintain the following structure of elements.
+                                <ul>
+                                    <li>Create group element with <b>e-float-input</b> class added.</li>
+                                    <li>Input element with <b>required</b> attribute.</li>
+                                    <li>Span element with <b>e-float-line</b> class.</li>
+                                    <li>Label element with <b>e-float-text</b> class.</li>
+                                    <li>Append or prepend the span element with class <b>e-input-group-icon</b> added.</li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>Default TextBox</td>
                             <td>
-                                <div className = "custom-padding-bottom-10" > You can render textbox by adding class as <b>e-input</b>.You can also render textbox as group by adding
-                                    parent element with <b>e-input-group</b> class added.
+                                <div className="custom-padding-bottom-10">
+                                    You can render textbox by adding class as <b>e-input</b>.You can also render textbox as group by adding parent element with <b>e-input-group</b> class added.
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>RTL TextBox</td>
                             <td>
-                                <div className = "custom-padding-bottom-10" >Set <b>e-input</b> and <b>e-rtl</b> classes to render textbox in right to left direction. For rendering
-                                    group in RTL mode , class list will be like <b>e-input-group e-rtl</b>.</div>
+                                <div className="custom-padding-bottom-10">
+                                    Set <b>e-input</b> and <b>e-rtl</b> classes to render textbox in right to left direction. For rendering group in RTL mode , class list will be like <b>e-input-group e-rtl</b>.
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td>Disabled TextBox</td>
                             <td>
-                                <div className = "custom-padding-bottom-10" >You set html disabled attribute to textbox. For parent group element , you can disable it by adding <b>e-disabled</b>                    class.</div>
+                                <div className="custom-padding-bottom-10">
+                                    You set html disabled attribute to textbox. For parent group element , you can disable it by adding <b>e-disabled</b> class.
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td>Readonly TextBox</td>
                             <td>
-                                <div className = "custom-padding-bottom-10" >You set html readonly attribute to textbox.</div>
+                                <div className="custom-padding-bottom-10">You set html readonly attribute to textbox.</div>
                             </td>
                         </tr>
                         <tr>
                             <td>Validation states</td>
                             <td>
-                                <div className = "custom-padding-bottom-10" >You can apply validation states success, warning, error to the textbox with the corresponding classes added
-                                    to the input element such as <b>e-success</b>, <b>e-warning</b>, <b>e-error</b>.</div>
+                                <div className="custom-padding-bottom-10">
+                                    You can apply validation states success, warning, error to the textbox with the corresponding classes added to the input element such as <b>e-success</b>, <b>e-warning</b>, <b>e-error</b>.
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td>Sizing</td>
                             <td>
-                                <div className = "custom-padding-bottom-10" >You can render small sizing textbox by adding <b>e-small</b> class to the input element. By default normal
-                                    size considered.</div>
+                                <div className="custom-padding-bottom-10">
+                                    You can render small sizing textbox by adding <b>e-small</b> class to the input element. By default normal size considered.
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td>Input & elements</td>
-                            <td>You can render textbox with icons in the below format,
+                            <td>
+                                You can render textbox with icons in the below format,
                                 <ul>
                                     <li>Create group element with <b>e-input-group</b> class added.</li>
-                                    <li>Add input element with <b>e-input</b> and span element with <b>e-input-group-icon</b> inside the input
-                                        group element.</li>
-                                    <li>You can add the icon either before or after the textbox by placing <b>e-input-group-icon</b> class named
-                                        element in specific place.</li>
+                                    <li>Add input element with <b>e-input</b> and span element with <b>e-input-group-icon</b> inside the input group element.</li>
+                                    <li>You can add the icon either before or after the textbox by placing <b>e-input-group-icon</b> class named element in specific place.</li>
                                 </ul>
                             </td>
                         </tr>

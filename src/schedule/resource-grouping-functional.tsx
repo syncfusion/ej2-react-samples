@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    Week, Month, Agenda, ScheduleComponent, ResourcesDirective,
-    ResourceDirective, ViewsDirective, ViewDirective, ResourceDetails, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect } from 'react';
+import { Week, Month, Agenda, ScheduleComponent, ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective, ResourceDetails, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './resource-grouping.css';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -11,8 +9,8 @@ import { updateSampleSection } from '../common/sample-base';
  * schedule resources group sample
  */
 
-function Group() {
-    React.useEffect(() => {
+const Group = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const resourceData: Record<string, any>[] = [
@@ -21,27 +19,26 @@ function Group() {
         { AirlineName: 'Airways 3', AirlineId: 3, AirlineColor: '#7fa900' }
     ];
 
-    function getAirlineImage(value: ResourceDetails): string {
+    const getAirlineImage = (value: ResourceDetails): string => {
         let airlineName: string = getAirlineName(value);
         return airlineName.replace(' ', '-').toLowerCase();
     }
 
-    function getAirlineName(value: ResourceDetails): string {
-        return (((value as ResourceDetails).resourceData) ?
-            (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] : value.resourceName) as string;
+    const getAirlineName = (value: ResourceDetails): string => {
+        return (((value as ResourceDetails).resourceData) ? (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] : value.resourceName) as string;
     }
 
-    function getAirlineModel(value: ResourceDetails): string {
+    const getAirlineModel = (value: ResourceDetails): string => {
         let airlineName: string = getAirlineName(value);
         return (airlineName === 'Airways 1') ? 'CRJ 700' : (airlineName === 'Airways 2') ? 'Airbus A330' : 'ATR 72-600';
     }
 
-    function getAirlineSeats(value: ResourceDetails): number {
+    const getAirlineSeats = (value: ResourceDetails): number => {
         let airlineName: string = getAirlineName(value);
         return (airlineName === 'Airways 1') ? 50 : (airlineName === 'Airways 2') ? 75 : 100;
     }
 
-    function generateEvents(): Record<string, any>[] {
+    const generateEvents = (): Record<string, any>[] => {
         let subjectCollection: string[] = ['Barcelona to Los Angeles', 'Los Angeles to Barcelona'];
         let collections: Record<string, any>[] = [];
         let dataCollections: number[] = [1, 2, 3];
@@ -66,11 +63,16 @@ function Group() {
         return collections;
     }
 
-    function resourceHeaderTemplate(props): JSX.Element {
-        return (<div className="template-wrap"><div className={"airline-image " + getAirlineImage(props)}></div>
-            <div className="airline-details"><div className="airline-name">{getAirlineName(props)}</div>
-                <div className="airline-model"> Model no: {getAirlineModel(props)}</div>
-                <div className="airline-seats"> No.of seats: {getAirlineSeats(props)}</div></div></div>
+    const resourceHeaderTemplate = (props) => {
+        return (
+            <div className="template-wrap">
+                <div className={"airline-image " + getAirlineImage(props)}></div>
+                <div className="airline-details">
+                    <div className="airline-name">{getAirlineName(props)}</div>
+                    <div className="airline-model"> Model no: {getAirlineModel(props)}</div>
+                    <div className="airline-seats"> No.of seats: {getAirlineSeats(props)}</div>
+                </div>
+            </div>
         );
     }
 
@@ -79,20 +81,9 @@ function Group() {
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper'>
                     <div className='schedule-demo-heading'>Flight timings between Barcelona and Los Angeles</div>
-                    <ScheduleComponent cssClass='schedule-group' width='100%' height='650px' selectedDate={new Date(2021, 3, 6)}
-                        eventSettings={{
-                            dataSource: generateEvents(), fields: {
-                                subject: { title: 'Travel Summary', name: 'Subject' },
-                                location: { title: 'Source', name: 'Location' },
-                                description: { title: 'Comments', name: 'Description' },
-                                startTime: { title: 'Departure Time', name: 'StartTime' },
-                                endTime: { title: 'Arrival Time', name: 'EndTime' }
-                            }
-                        }} group={{ resources: ['Airlines'] }} resourceHeaderTemplate={resourceHeaderTemplate.bind(this)}>
+                    <ScheduleComponent cssClass='schedule-group' width='100%' height='650px' selectedDate={new Date(2021, 3, 6)} eventSettings={{ dataSource: generateEvents(), fields: { subject: { title: 'Travel Summary', name: 'Subject' }, location: { title: 'Source', name: 'Location' }, description: { title: 'Comments', name: 'Description' }, startTime: { title: 'Departure Time', name: 'StartTime' }, endTime: { title: 'Arrival Time', name: 'EndTime' } } }} group={{ resources: ['Airlines'] }} resourceHeaderTemplate={resourceHeaderTemplate}>
                         <ResourcesDirective>
-                            <ResourceDirective field='AirlineId' title='Airline Name' name='Airlines' allowMultiple={true}
-                                dataSource={resourceData} textField='AirlineName' idField='AirlineId' colorField='AirlineColor'>
-                            </ResourceDirective>
+                            <ResourceDirective field='AirlineId' title='Airline Name' name='Airlines' allowMultiple={true} dataSource={resourceData} textField='AirlineName' idField='AirlineId' colorField='AirlineColor' />
                         </ResourcesDirective>
                         < ViewsDirective >
                             <ViewDirective option='Week' />

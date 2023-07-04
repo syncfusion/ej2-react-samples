@@ -1,16 +1,17 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { BreadcrumbComponent, BreadcrumbItemDirective, BreadcrumbItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { getComponent } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import './overflow-modes.css';
 
-function OverflowModes() {
-  React.useEffect(() => {
+const OverflowModes = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  function btnClick(): void {
+  const btnClick = (): void => {
     let breadcrumb, breadcrumbInst, breadcrumbs = document.querySelector('.content-wrapper').getElementsByClassName("e-breadcrumb");
     for (let i = 0; i < breadcrumbs.length; i++) {
       breadcrumb = breadcrumbs[i];
@@ -26,8 +27,7 @@ function OverflowModes() {
           <div className="row material2">
             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
               <h5 style={{ display: "inline-block" }}>Overflow Mode - Hidden</h5>
-              <ButtonComponent cssClass='e-small reset-btn'
-                onClick={btnClick}>Reset State</ButtonComponent>
+              <ButtonComponent cssClass='e-small reset-btn' onClick={btnClick}>Reset State</ButtonComponent>
             </div>
           </div>
           <div className="row material2">

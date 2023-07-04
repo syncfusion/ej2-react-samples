@@ -4,18 +4,19 @@
 
  import * as ReactDOM from 'react-dom';
  import * as React from 'react';
+ import { useEffect, useState } from "react";
  import { TooltipComponent, Position } from '@syncfusion/ej2-react-popups';
  import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
  import { updateSampleSection } from '../common/sample-base';
  import { PropertyPane } from '../common/property-pane';
  
- function Default() {
-   React.useEffect(() => {
-     updateSampleSection();
+ const Default = () => {
+    useEffect(() => {
+      updateSampleSection();
    }, [])
-   const [position,SetPosition] = React.useState('TopCenter');
+   const [position,SetPosition] = useState<string>('TopCenter');
    //Handle tooltip position based on drop-down value change
-   function change(args): void {
+   const change = (args): void => {
      SetPosition( args.currentTarget.value as Position);
    }
    return (
@@ -59,36 +60,37 @@
              </table>
            </PropertyPane>
          </div>
-       </div>
- 
+       </div> 
        <div id="action-description">
          <p>This sample demonstrates the default functionalities of the Tooltip which will open by <b>hover</b> or <b>touch-hold</b> action on button and displayed in 12 different positions.</p>
-       </div>
- 
+       </div> 
        <div id="description">
          <p>
-          This sample illustrates a tooltip, that gets opened on hovering the target labelled <b>Show Tooltip</b>. The tooltip can be shown
-          on 12 possible positions, by selecting the appropriate position values provided in the dropdown. The applicable tooltip
-          positions are as follows:
+            This sample illustrates a tooltip, that gets opened on hovering the target labelled <b>Show Tooltip</b>. The tooltip can be shown
+            on 12 possible positions, by selecting the appropriate position values provided in the dropdown. The applicable tooltip
+            positions are as follows:
          </p>
          <ul>
-           <li><code>TopLeft</code></li>
-           <li><code>TopCenter</code></li>
-           <li><code>TopRight</code></li>
-           <li><code>BottomLeft</code></li>
-           <li><code>BottomCenter</code></li>
-           <li><code>BottomRight</code></li>
-           <li><code>LeftTop</code></li>
-           <li><code>LeftCenter</code></li>
-           <li><code>LeftBottom</code></li>
-           <li><code>RightTop</code></li>
-           <li><code>RightCenter</code></li>
-           <li><code>RightBottom</code></li>
+            <li><code>TopLeft</code></li>
+            <li><code>TopCenter</code></li>
+            <li><code>TopRight</code></li>
+            <li><code>BottomLeft</code></li>
+            <li><code>BottomCenter</code></li>
+            <li><code>BottomRight</code></li>
+            <li><code>LeftTop</code></li>
+            <li><code>LeftCenter</code></li>
+            <li><code>LeftBottom</code></li>
+            <li><code>RightTop</code></li>
+            <li><code>RightCenter</code></li>
+            <li><code>RightBottom</code></li>
          </ul>
-         <p>In case, if the tooltip needs to be opened on mobile devices, tap hold on the target labelled <b>Show Tooltip</b> instead of hovering
-          and by default, it closes after 1.5 seconds on lift.</p>
-         <p>More information on the Tooltip instantiation can be found in the
-          <a href="https://ej2.syncfusion.com/react/documentation/tooltip/getting-started/" target="_blank"> documentation section</a>.
+         <p>
+            In case, if the tooltip needs to be opened on mobile devices, tap hold on the target labelled <b>Show Tooltip</b> instead of hovering
+            and by default, it closes after 1.5 seconds on lift.
+         </p>
+         <p>
+            More information on the Tooltip instantiation can be found in the
+            <a href="https://ej2.syncfusion.com/react/documentation/tooltip/getting-started/" target="_blank"> documentation section</a>.
          </p>
        </div>
      </div>

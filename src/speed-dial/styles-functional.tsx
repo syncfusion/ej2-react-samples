@@ -1,33 +1,34 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { SpeedDialComponent, SpeedDialItemModel } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './styles.css';
 
-function Styles() {
-    React.useEffect(() => {
+const Styles = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const items: SpeedDialItemModel[] = [
         {
-            text:'Cut',
-            iconCss:'speeddial-icons speeddial-icon-cut'
+            text: 'Cut',
+            iconCss: 'speeddial-icons speeddial-icon-cut'
         },
         {
-            text:'Copy',
-            iconCss:'speeddial-icons speeddial-icon-copy'
+            text: 'Copy',
+            iconCss: 'speeddial-icons speeddial-icon-copy'
         },
         {
-            text:'Paste',
-            iconCss:'speeddial-icons speeddial-icon-paste'
+            text: 'Paste',
+            iconCss: 'speeddial-icons speeddial-icon-paste'
         },
         {
-            text:'Delete',
-            iconCss:'speeddial-icons speeddial-icon-delete'
+            text: 'Delete',
+            iconCss: 'speeddial-icons speeddial-icon-delete'
         },
         {
-            text:'Save',
-            iconCss:'speeddial-icons speeddial-icon-save'
+            text: 'Save',
+            iconCss: 'speeddial-icons speeddial-icon-save'
         }
     ];
     const itemLabel: SpeedDialItemModel[] = [

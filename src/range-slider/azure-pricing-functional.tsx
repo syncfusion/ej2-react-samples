@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SliderComponent } from '@syncfusion/ej2-react-inputs';
 import { CheckBoxComponent, ButtonComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { SliderChangeEventArgs } from '@syncfusion/ej2-inputs';
@@ -219,6 +220,9 @@ span.e-label .offer {
 .material-dark .pricing-slider,
 .material-dark #pricing-slider .label-text,
 .material-dark #pricing-slider .sub-heading,
+.material3-dark .pricing-slider,
+.material3-dark #pricing-slider .label-text,
+.material3-dark #pricing-slider .sub-heading,
 .fabric-dark .pricing-slider,
 .fabric-dark #pricing-slider .label-text,
 .fabric-dark #pricing-slider .sub-heading,
@@ -254,6 +258,12 @@ span.e-label .offer {
 .material-dark #StorgeDialog,
 .material-dark #CloudDialog,
 .material-dark #processorDialog,
+.material3-dark #dollar,
+.material3-dark #value,
+.material3-dark #dialog-header,
+.material3-dark #StorgeDialog,
+.material3-dark #CloudDialog,
+.material3-dark #processorDialog,
 .fabric-dark #dollar,
 .fabric-dark #value,
 .fabric-dark #dialog-header,
@@ -293,7 +303,8 @@ span.e-label .offer {
 .bootstrap5-dark #pricing-slider .row,
 .fabric-dark #pricing-slider .row,
 .fluent-dark #pricing-slider .row,
-.material-dark #pricing-slider .row {
+.material-dark #pricing-slider .row,
+.material3-dark #pricing-slider .row {
     border: 1px solid #969696;
 }
 
@@ -303,7 +314,8 @@ span.e-label .offer {
 .bootstrap5-dark #cloud-right-pane,
 .fabric-dark #cloud-right-pane,
 .fluent-dark #cloud-right-pane,
-.material-dark #cloud-right-pane {
+.material-dark #cloud-right-pane,
+.material3-dark #cloud-right-pane {
     border-left: 1px solid #969696;
 }
 
@@ -311,6 +323,8 @@ span.e-label .offer {
 .highcontrast #pricing-slider #cloud-right-pane .btn-size,
 .material-dark #cloud-slider-text,
 .material-dark #pricing-slider #cloud-right-pane .btn-size,
+.material3-dark #cloud-slider-text,
+.material3-dark #pricing-slider #cloud-right-pane .btn-size,
 .fabric-dark #cloud-slider-text,
 .fabric-dark #pricing-slider #cloud-right-pane .btn-size,
 .fluent-dark #cloud-slider-text,
@@ -330,7 +344,8 @@ span.e-label .offer {
 .bootstrap-dark #processor,
 .fabric-dark #processor,
 .fluent-dark #processor,
-.material-dark #processor {
+.material-dark #processor,
+.material3-dark #processor {
     background-color: #AE80FF;
 }
 
@@ -340,7 +355,8 @@ span.e-label .offer {
 .bootstrap5-dark #memory,
 .fabric-dark #memory,
 .fluent-dark #memory,
-.material-dark #memory {
+.material-dark #memory,
+.material3-dark #memory {
     background-color: #7ED321;
 }
 
@@ -350,7 +366,8 @@ span.e-label .offer {
 .bootstrap-dark #storage,
 .fabric-dark #storage,
 .fluent-dark #storage,
-.material-dark #storage {
+.material-dark #storage,
+.material3-dark #storage {
     background-color: #61A4EF;
 }
 
@@ -360,7 +377,8 @@ span.e-label .offer {
 .bootstrap5-dark #cloud-left-pane,
 .fabric-dark #cloud-left-pane,
 .fluent-dark #cloud-left-pane,
-.material-dark #cloud-left-pane {
+.material-dark #cloud-left-pane,
+.material3-dark #cloud-left-pane {
     background-color: #1a1a1a;
 }
 
@@ -370,7 +388,8 @@ span.e-label .offer {
 .bootstrap5-dark #cloud-right-pane,
 .fabric-dark #cloud-right-pane,
 .fluent-dark #cloud-right-pane,
-.material-dark #cloud-right-pane {
+.material-dark #cloud-right-pane,
+.material3-dark #cloud-right-pane {
     background-color: #000;
 }
 
@@ -401,7 +420,11 @@ span.e-label .offer {
 .material-dark #processorPriceName,
 .material-dark #memoryPriceName,
 .material-dark #storgePriceName,
-.material-dark #cloudPriceName {
+.material-dark #cloudPriceName,
+.material3-dark #processorPriceName,
+.material3-dark #memoryPriceName,
+.material3-dark #storgePriceName,
+.material3-dark #cloudPriceName {
     color: white;
     opacity: 1;
 }
@@ -467,81 +490,82 @@ span.e-label .offer {
 }
 
 `
-function Cloudpricing() {
-    React.useEffect(() => {
+const Cloudpricing = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let processorSlider: SliderComponent;
-    let memorySlider: SliderComponent;
-    let storageSlider: SliderComponent;
-    let panelCheckBox: CheckBoxComponent;
-    let discountCheckBox: CheckBoxComponent;
-    let button: ButtonComponent;
-    let alertDialogObj: DialogComponent;
-    let checkboxObj: CheckBoxComponent;
-    let proceessorElem: HTMLElement;
-    let memoryElem: HTMLElement;
-    let storageElem: HTMLElement;
-    let nullValue: string = '';
+    const [processor, setProcessor] = useState<string>('');
+    const [storage, setStorage] = useState<string>('');
+    const [memory, setMemory] = useState<string>('');
+    const [value, setValue] = useState<string>('');
+    let processorSlider = useRef<SliderComponent>(null);
+    let memorySlider = useRef<SliderComponent>(null);
+    let storageSlider = useRef<SliderComponent>(null);
+    let alertObj = useRef<DialogComponent>(null);
+    let processorObj = useRef(null);
+    let storageObj = useRef(null);
+    let memoryObj = useRef(null);
+    let valueObj = useRef(null);
     let elemValue: HTMLElement;
     let finalValue: number;
-    let discountValue: number;
 
     let objElements: string[] = ['#xSmallBtn', '#smallBtn', '#mediumBtn', '#largeBtn', '#xLargeBtn'];
     let buttonObj: any = { obj: ButtonComponent, functionprop: { cssClass: 'e-info', isPrimary: true } };
-
-    let cssClass = 'e-success';
-
     let content: string = '<div id = "dialog-content"><div id = "dialog-header">Cloud Price Details</div>' +
         '<div id="processorDialog"><span id="processorPriceName">Processor Price</span><span id="processorPrice"></span></div>' +
         '<div id="MemoryDialog"><span id="memoryPriceName">Memory Price</span><span id="memoryPrice"></span></div>' +
         '<div id="StorgeDialog"><span id="storgePriceName">Storge Price</span><span id="storgePrice"></span></div>' +
         '<div id="CloudDialog"><span id="cloudPriceName">Estimated Prices</span><span id="cloudPrice"></span></div></div>';
 
-    let showCloseIcon: any = false;
+    const alertDlgBtnClick = (): void => {
+        if (!isNullOrUndefined(alertObj.current)) {
+            alertObj.current.hide();
+        }
+    }
     let buttons: any = [{
         click: alertDlgBtnClick, buttonModel: { content: 'Close', isPrimary: true }
     }];
-    let closeOnEscape: any = false;
-    let width: any = '360px';
     let target: any = '#pricing-slider';
     let animationSettings: Object = { effect: 'None' };
 
     //   //Sets processor value
-    function onCreateProcessor(args: any): void {
-        if (!isNullOrUndefined(document.getElementById('processor'))) {
-            document.getElementById('processor').innerHTML = (document.getElementById('processor-slider') as any).ej2_instances[0].value + '  ' + 'CORE';
+    const onCreateProcessor = (args: any): void => {
+        if (!isNullOrUndefined(processorSlider)) {
+            setProcessor(processorSlider.current.value + '  ' + 'CORE');
         }
     }
-    function onCreateStorage(args: any): void {
-        if (!isNullOrUndefined(document.getElementById('storage'))) {
-            document.getElementById('storage').innerHTML = (document.getElementById('storage-slider') as any).ej2_instances[0].value + '  ' + 'GB';
+    const onCreateStorage = (args: any): void => {
+        if (!isNullOrUndefined(storageSlider)) {
+            setStorage(storageSlider.current.value + '  ' + 'GB');
             sliderValueChange();
         }
     }
     //Sets memory value
-    function onCreateMemory(args: any): void {
-        if (!isNullOrUndefined(document.getElementById('memory'))) {
-            document.getElementById('memory').innerHTML = (document.getElementById('memory-slider') as any).ej2_instances[0].value + '  ' + 'GB';
+    const onCreateMemory = (args: any): void => {
+        if (!isNullOrUndefined(memorySlider)) {
+            setMemory(memorySlider.current.value + '  ' + 'GB');
         }
     }
 
     //Processor Slider value change method
-    function onChangeProcessor(args: SliderChangeEventArgs): void {
-        onChange(document.getElementById('processor'), (args.value as number), 'CORE');
+    const onChangeProcessor = (args: SliderChangeEventArgs): void => {
+        setProcessor((args.value as number) + '  CORE');
+        sliderValueChange();
     }
     //Memory Slider value change method
-    function onChangeMemory(args: SliderChangeEventArgs): void {
-        onChange(document.getElementById('memory'), (args.value as number), 'GB');
+    const onChangeMemory = (args: SliderChangeEventArgs): void => {
+        setMemory((args.value as number) + '  GB');
+        sliderValueChange();
     }
 
     //Storage Slider value change method
-    function onChangeStorage(args: SliderChangeEventArgs): void {
-        onChange(document.getElementById('storage'), (args.value as number), 'GB');
+    const onChangeStorage = (args: SliderChangeEventArgs): void => {
+        setStorage((args.value as number) + '  GB');
+        sliderValueChange();
     }
     //common method for Slider value change
-    function onChange(elem: HTMLElement, value: number, notation: string): void {
+    const onChange = (elem: HTMLElement, value: number, notation: string): void => {
         if (!isNullOrUndefined(elem)) {
             elem.innerText = value + '  ' + notation;
             sliderValueChange();
@@ -549,56 +573,45 @@ function Cloudpricing() {
     }
 
     //method to calculate monthly cloud price based on slider value
-    function sliderValueChange(): void {
-        if (!isNullOrUndefined(document.getElementById('value')) && !isNullOrUndefined(document.getElementById('processor-slider'))
-            && !isNullOrUndefined(document.getElementById('memory-slider')) && !isNullOrUndefined(document.getElementById('storage-slider'))) {
-            (elemValue as any) = document.getElementById('value');
-            let porcessorValue: any = (document.getElementById('processor-slider') as any).ej2_instances[0].value
-            let memoryValue: any = (document.getElementById('memory-slider') as any).ej2_instances[0].value;
-            let storageValue: any = (document.getElementById('storage-slider') as any).ej2_instances[0].value
+    const sliderValueChange = (): void => {
+        if (!isNullOrUndefined(valueObj.current) && !isNullOrUndefined(processorSlider.current)
+            && !isNullOrUndefined(memorySlider.current) && !isNullOrUndefined(storageSlider.current)) {
+            let porcessorValue: any = processorSlider.current.value;
+            let memoryValue: any = memorySlider.current.value;
+            let storageValue: any = storageSlider.current.value;
             //formula to calculate cloud price based on slider value
-            finalValue = Number(((((porcessorValue * memoryValue) * 1000) + ((porcessorValue * memoryValue) * storageValue)
-                + ((porcessorValue * memoryValue) * 100)) / 12).toFixed(2));
+            finalValue = Number(((((porcessorValue * memoryValue) * 1000) + ((porcessorValue * memoryValue) * storageValue) + ((porcessorValue * memoryValue) * 100)) / 12).toFixed(2));
             if ((document.getElementById('cPanel') as any).ej2_instances && (document.getElementById('cPanel') as any).ej2_instances[0].checked) {
                 finalValue = Number((finalValue - 10).toFixed(2));
             }
             if ((document.getElementById('discount') as any).ej2_instances && (document.getElementById('discount') as any).ej2_instances[0].checked) {
                 finalValue = Number((finalValue - ((finalValue * 25) / 100)).toFixed(2));
             }
-
-            elemValue.innerText = finalValue.toString();
+            setValue(finalValue.toString());
         }
     }
 
-    function sliderPriceValue(processor: number, memory: number, storage: number): void {
-        processorSlider.value = processor;
-        memorySlider.value = memory;
-        storageSlider.value = storage;
+    const sliderPriceValue = (processor: number, memory: number, storage: number): void => {
+        processorSlider.current.value = processor;
+        memorySlider.current.value = memory;
+        storageSlider.current.value = storage;
     }
     for (let i: number = 0; i < objElements.length; i++) {
         buttonObj.obj = buttonObj.prop;
         buttonObj.obj = objElements[i];
     }
-    function btnClick(e: Event) {
-        let processorPrice: HTMLElement = document.getElementById('processorPrice') ;
-        onChange(processorPrice, (processorSlider.value as number), 'CORE');
+    const btnClick = (e: Event) => {
+        let processorPrice: HTMLElement = document.getElementById('processorPrice');
+        onChange(processorPrice, (processorSlider.current.value as number), 'CORE');
         let memoryPrice: HTMLElement = document.getElementById('memoryPrice');
-        onChange(memoryPrice, (memorySlider.value as number), 'GB');
+        onChange(memoryPrice, (memorySlider.current.value as number), 'GB');
         let storgePrice: HTMLElement = document.getElementById('storgePrice');
-        onChange(storgePrice, (storageSlider.value as number), 'GB');
+        onChange(storgePrice, (storageSlider.current.value as number), 'GB');
         let cloudPrice: HTMLElement = document.getElementById('cloudPrice');
         cloudPrice.innerText = '$' + finalValue;
         sliderValueChange();
-        (document.getElementById('alertDialog') as any).ej2_instances[0].show();
+        alertObj.current.show();
     };
-
-
-    function alertDlgBtnClick(): void {
-        if (!isNullOrUndefined(document.getElementById('alertDialog')) &&
-            !isNullOrUndefined((document.getElementById('alertDialog') as any).ej2_instances[0])) {
-            (document.getElementById('alertDialog') as any).ej2_instances[0].hide();
-        }
-    }
 
     return (
         <div className='control-pane'>
@@ -609,24 +622,24 @@ function Cloudpricing() {
                         <div className="row">
                             <div id="cloud-left-pane" className="col-lg-8 col-md-8 col-sm-8">
                                 <div className="cloud-slider">
-                                    <div id="processor"></div>
+                                    <div id="processor" ref={processorObj}>{processor}</div>
                                     <span className="label-text"> Processor </span>
                                     {/* processor Slider element  */}
-                                    <SliderComponent id="processor-slider" value={4} min={1} max={16} ref={(slider) => { processorSlider = slider }} change={onChangeProcessor.bind(this)} created={onCreateProcessor.bind(this)} />
+                                    <SliderComponent id="processor-slider" value={4} min={1} max={16} ref={processorSlider} change={onChangeProcessor.bind(this)} created={onCreateProcessor.bind(this)} />
                                     <div className="sub-heading"> Each core included minimum 2.26 GHz power </div>
                                 </div>
                                 <div className="cloud-slider cloud-left-slider">
-                                    <div id="memory"></div>
+                                    <div id="memory" ref={memoryObj}>{memory}</div>
                                     <span className="label-text"> Memory </span>
                                     {/* memory Slider element  */}
-                                    <SliderComponent id="memory-slider" value={4} min={1} max={12} ref={(slider) => { memorySlider = slider }} change={onChangeMemory.bind(this)} created={onCreateMemory.bind(this)} />
+                                    <SliderComponent id="memory-slider" value={4} min={1} max={12} ref={memorySlider} change={onChangeMemory.bind(this)} created={onCreateMemory.bind(this)} />
                                     <div className="sub-heading"> Equal to burstable memory included </div>
                                 </div>
                                 <div className="cloud-slider cloud-left-slider">
-                                    <div id="storage"></div>
+                                    <div id="storage" ref={storageObj}>{storage}</div>
                                     <span className="label-text"> Storage </span>
                                     {/* storage Slider element  */}
-                                    <SliderComponent id="storage-slider" value={300} min={10} max={500} step={10} ref={(slider) => { storageSlider = slider }} change={onChangeStorage.bind(this)} created={onCreateStorage.bind(this)} />
+                                    <SliderComponent id="storage-slider" value={300} min={10} max={500} step={10} ref={storageSlider} change={onChangeStorage.bind(this)} created={onCreateStorage.bind(this)} />
                                     <div className="sub-heading"> 1000 GB bandwidth per month, at 100 Mbit/s uplink port </div>
                                 </div>
                             </div>
@@ -648,17 +661,17 @@ function Cloudpricing() {
                                     <div className="label-text right-text"> ESTIMATED PRICE </div>
                                     <div id="cloud-slider-text">
                                         <span id="dollar">$ </span>
-                                        <span id="value"></span>
+                                        <span id="value" ref={valueObj}>{value}</span>
                                         <span className="suffix">/month</span>
                                     </div>
                                     <div className="discount">
                                         <div className="cloud-slider-right">
                                             {/* cPanel Check Box element  */}
-                                            <CheckBoxComponent id="cPanel" label='Not required cPanel included' checked={false} change={sliderValueChange.bind(this)} ></CheckBoxComponent>
+                                            <CheckBoxComponent id="cPanel" label='Not required cPanel included' checked={false} change={sliderValueChange.bind(this)} />
                                         </div>
                                         <div className="cloud-slider-right discount-pay">
                                             {/* discount Check Box element  */}
-                                            <CheckBoxComponent id="discount" label='12 Months <span class = "offer" > Save 25%.</span> Pay Monthly' checked={false} ref={(scope) => { checkboxObj = scope; }} change={sliderValueChange.bind(this)} ></CheckBoxComponent>
+                                            <CheckBoxComponent id="discount" label='12 Months <span class = "offer" > Save 25%.</span> Pay Monthly' checked={false} change={sliderValueChange.bind(this)} />
                                         </div>
                                     </div>
                                     {/* Button element  */}
@@ -667,8 +680,7 @@ function Cloudpricing() {
                                     </div>
                                     <div id="dialogWrapper" className="cloud-content-wrapper">
                                         {/* Initialize alert Dialog  */}
-                                        <DialogComponent id="alertDialog" animationSettings={animationSettings} width='360px' content={content} ref={(alertdialog) => { alertDialogObj = alertdialog }} showCloseIcon={false}
-                                            target={target} visible={false} buttons={buttons} closeOnEscape={false}></DialogComponent>
+                                        <DialogComponent id="alertDialog" ref={alertObj} animationSettings={animationSettings} width='360px' content={content} showCloseIcon={false} target={target} visible={false} buttons={buttons} closeOnEscape={false} />
                                     </div>
                                 </div>
                             </div>
@@ -676,31 +688,21 @@ function Cloudpricing() {
                     </div>
                 </div>
             </div>
-
             <div id="action-description">
-                <p>This sample demonstrate the cloud pricing slider which is used to calculate the cloud costs by considering Web Hosting,
+                <p>
+                    This sample demonstrate the cloud pricing slider which is used to calculate the cloud costs by considering Web Hosting,
                     VPS Hosting, Cloud Server providers. Drag the thumb over the bar for selecting Processor, Memory and Storage.
                 </p>
-
             </div>
-
             <div id="description">
-                <p>This sample calculates the cloud cost based on number of workloads, complexity of workloads, system and monitoring requirements
-                    which is used under cloud operation.
-                </p>
-                <p>In this demo, we have used default rendering of slider for selecting Processor, Memory and Storage. The estimated price
-                    for the selection will appear on the left pane.</p>
+                <p>This sample calculates the cloud cost based on number of workloads, complexity of workloads, system and monitoring requirements which is used under cloud operation.</p>
+                <p>In this demo, we have used default rendering of slider for selecting Processor, Memory and Storage. The estimated price for the selection will appear on the left pane.</p>
                 <p>We can avail 25% offer for annual pack. This can be applied by checking the checkbox from the left pane.</p>
-                <p>By default, cPanel will be included in the monthly pack. If you don't want, check the checkbox from the left pane which
-                    will reduce $10 from the estimated price..</p>
-                <p>We can also select different range of pack from the left pane toolbar which will have default configuration based on
-                    the range size.</p>
-                <p>After choosing your pack, confirm it by clicking sign up button which will show your selected package detail in a dialog
-                    box.</p>
-
+                <p>By default, cPanel will be included in the monthly pack. If you don't want, check the checkbox from the left pane which will reduce $10 from the estimated price..</p>
+                <p>We can also select different range of pack from the left pane toolbar which will have default configuration based on the range size.</p>
+                <p>After choosing your pack, confirm it by clicking sign up button which will show your selected package detail in a dialog box.</p>
             </div>
         </div>
-
     )
 }
 export default Cloudpricing;

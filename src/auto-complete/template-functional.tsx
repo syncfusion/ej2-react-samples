@@ -1,33 +1,33 @@
 /**
  * AutoComplete Template Sample
  */
- import * as ReactDOM from 'react-dom';
- import * as React from 'react';
- import { updateSampleSection } from '../common/sample-base';
- import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
- import './templates.css';
- import * as data from './dataSource.json';
- 
-function Templates(){
-    React.useEffect(() => {
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { useEffect } from 'react';
+import { updateSampleSection } from '../common/sample-base';
+import { AutoCompleteComponent } from '@syncfusion/ej2-react-dropdowns';
+import './templates.css';
+import * as data from './dataSource.json';
+
+const Templates = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let listObj: AutoCompleteComponent;
-    const temp:string = 'empList';
+    const temp: string = 'empList';
     // define the JSON of data
-    const employeesData: { [key: string]: Object }[] =data[temp];
+    const employeesData: { [key: string]: Object }[] = data[temp];
     // maps the appropriate column to fields property
     const fields: object = { value: 'Name' };
     //set the value to header template
-    function headerTemplate(data: any): JSX.Element {
+    const headerTemplate = () => {
         return (
             <div className="header"> <span>Photo</span> <span className="columnHeader">Employee Info</span></div>
         );
     }
     //set the value to item template
-    function itemTemplate(data: any): JSX.Element {
+    const itemTemplate = (data: any) => {
         return (
-            <div><img className="empImage" src= {"src/auto-complete/Employees/" + data.Eimg +".png"} alt="employee"/>
+            <div><img className="empImage" src={"src/auto-complete/Employees/" + data.Eimg + ".png"} alt="employee" />
                 <div className="ename"> {data.Name} </div><div className="job"> {data.Designation} </div>
             </div>
         );
@@ -40,11 +40,11 @@ function Templates(){
                 </div>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates the template functionalities of the AutoComplete. Type a character in the autocomplete element and choose an item from the customized list</p>     
+                <p>This sample demonstrates the template functionalities of the AutoComplete. Type a character in the autocomplete element and choose an item from the customized list</p>
             </div>
             <div id="description">
                 <p>The AutoComplete has been provided with several options to customize each list items, group title, header and footer
-                 elements.</p>
+                    elements.</p>
                 <p>This sample uses the following list of templates in AutoComplete</p>
                 <ul>
                     <li><code>ItemTemplate</code> - To customize the list item's content.</li>

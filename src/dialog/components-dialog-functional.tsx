@@ -1,87 +1,34 @@
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { Browser } from '@syncfusion/ej2-base';
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { FormValidator } from '@syncfusion/ej2-inputs';
-import {
-  DialogComponent,
-  ButtonPropsModel,
-  AnimationSettingsModel,
-} from '@syncfusion/ej2-react-popups';
-import {
-  TabComponent,
-  TabItemDirective,
-  TabItemsDirective,
-  SelectEventArgs,
-} from '@syncfusion/ej2-react-navigations';
-import {
-  GridComponent,
-  RowSelectEventArgs,
-  ColumnsDirective,
-  ColumnDirective,
-  Page,
-  Inject,
-} from '@syncfusion/ej2-react-grids';
-import {
-  ScheduleComponent,
-  ViewsDirective,
-  ViewDirective,
-  Day,
-  Week,
-  WorkWeek,
-  Month,
-  Agenda,
-  Resize,
-  DragAndDrop,
-  DragEventArgs,
-} from '@syncfusion/ej2-react-schedule';
-import {
-  ChartComponent,
-  SeriesCollectionDirective,
-  SeriesDirective,
-  LineSeries,
-  DateTime,
-  Legend,
-  Tooltip,
-  ILoadedEventArgs,
-  ChartTheme,
-} from '@syncfusion/ej2-react-charts';
-import {
-  RichTextEditorComponent,
-  HtmlEditor,
-  Toolbar,
-  Image,
-  Link,
-  QuickToolbar,
-} from '@syncfusion/ej2-react-richtexteditor';
-
+import { DialogComponent, ButtonPropsModel, AnimationSettingsModel } from '@syncfusion/ej2-react-popups';
+import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject } from '@syncfusion/ej2-react-grids';
+import { ScheduleComponent, ViewsDirective, ViewDirective,Day,Week, WorkWeek, Month, Agenda, Resize, DragAndDrop,DragEventArgs } from '@syncfusion/ej2-react-schedule';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, LineSeries, DateTime, Legend, Tooltip, ILoadedEventArgs, ChartTheme } from '@syncfusion/ej2-react-charts';
+import { RichTextEditorComponent, HtmlEditor, Toolbar, Image, Link, QuickToolbar } from '@syncfusion/ej2-react-richtexteditor';
 import './components-dialog.css';
 import { scheduleData, gridData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function ComponentsDialog() {
-  React.useEffect(() => {
+const ComponentsDialog = () => {
+  useEffect(() => {
     updateSampleSection();
   }, []);
   let buttons: ButtonPropsModel[];
   let animationSettings: AnimationSettingsModel;
-  let dialogInstance: DialogComponent;
-  let alertDialogObj: DialogComponent;
-  let tabObj: TabComponent;
-  let formObject: FormValidator;
-  let rteObj: RichTextEditorComponent;
+  let dialogInstance = useRef<DialogComponent>(null);
+  let formObject = useRef<FormValidator>(null);
   let buttonEle: HTMLButtonElement;
-
-  let scheduleObj: ScheduleComponent;
-  let state = {
-    hideDialog: true,
-  };
   let buttonRef: React.Ref<HTMLButtonElement> = (element) => {
     buttonEle = element;
   };
   buttons = [
     {
       click: () => {
-        dialogInstance.hide();
+        dialogInstance.current.hide();
       },
       buttonModel: {
         content: 'OK',
@@ -90,7 +37,7 @@ function ComponentsDialog() {
     },
     {
       click: () => {
-        dialogInstance.hide();
+        dialogInstance.current.hide();
       },
       buttonModel: {
         content: 'CANCEL',
@@ -99,9 +46,9 @@ function ComponentsDialog() {
   ];
   animationSettings = { effect: 'None' };
 
-  function onSubmitClick(): void {
-    if (formObject.validate()) {
-      formObject.element.reset();
+  const onSubmitClick = (): void => {
+    if (formObject.current.validate()) {
+      formObject.current.element.reset();
     }
   }
   const data1: any[] = [
@@ -122,7 +69,7 @@ function ComponentsDialog() {
     { x: new Date(2010, 0, 1), y: 78 },
     { x: new Date(2011, 0, 1), y: 84 },
   ];
-  function onDragStart(args: DragEventArgs): void {
+  const onDragStart = (args: DragEventArgs): void => {
     args.navigation.enable = true;
   }
   const headerText: any = [
@@ -133,65 +80,24 @@ function ComponentsDialog() {
     { text: 'Form' },
   ];
 
-  function content0() {
+  const content0 = () => {
     return (
-      <GridComponent
-        dataSource={gridData}
-        allowPaging={true}
-        pageSettings={{ pageSize: 5, pageSizes: true }}
-      >
+      <GridComponent dataSource={gridData} allowPaging={true} pageSettings={{ pageSize: 5, pageSizes: true }}>
         <ColumnsDirective>
-          <ColumnDirective
-            field="OrderID"
-            headerText="Order ID"
-            width="120"
-            textAlign="Right"
-          ></ColumnDirective>
-          <ColumnDirective
-            field="CustomerName"
-            headerText="Customer Name"
-            width="150"
-          ></ColumnDirective>
-          <ColumnDirective
-            field="OrderDate"
-            headerText="Order Date"
-            width="130"
-            format="yMd"
-            textAlign="Right"
-          />
-          <ColumnDirective
-            field="Freight"
-            headerText="Freight"
-            width="120"
-            format="C2"
-            textAlign="Right"
-          />
-          <ColumnDirective
-            field="ShippedDate"
-            headerText="Shipped Date"
-            width="130"
-            format="yMd"
-            textAlign="Right"
-          ></ColumnDirective>
-          <ColumnDirective
-            field="ShipCountry"
-            headerText="Ship Country"
-            width="150"
-          ></ColumnDirective>
+          <ColumnDirective field="OrderID" headerText="Order ID" width="120" textAlign="Right" />
+          <ColumnDirective field="CustomerName" headerText="Customer Name" width="150" />
+          <ColumnDirective field="OrderDate" headerText="Order Date"width="130" format="yMd" textAlign="Right" />
+          <ColumnDirective field="Freight" headerText="Freight" width="120" format="C2" textAlign="Right" />
+          <ColumnDirective field="ShippedDate" headerText="Shipped Date" width="130" format="yMd" textAlign="Right" />
+          <ColumnDirective field="ShipCountry" headerText="Ship Country" width="150" />
         </ColumnsDirective>
         <Inject services={[Page]} />
       </GridComponent>
     );
   }
-  function content1() {
+  const content1 = () => {
     return (
-      <ScheduleComponent
-        height="300px"
-        ref={(schedule) => (scheduleObj = schedule)}
-        selectedDate={new Date(2019, 0, 10)}
-        eventSettings={{ dataSource: scheduleData }}
-        dragStart={onDragStart}
-      >
+      <ScheduleComponent height="300px" selectedDate={new Date(2019, 0, 10)} eventSettings={{ dataSource: scheduleData }} dragStart={onDragStart}>
         <ViewsDirective>
           <ViewDirective option="Day" />
           <ViewDirective option="Week" />
@@ -199,72 +105,24 @@ function ComponentsDialog() {
           <ViewDirective option="Month" />
           <ViewDirective option="Agenda" />
         </ViewsDirective>
-        <Inject
-          services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]}
-        />
+        <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]}/>
       </ScheduleComponent>
     );
   }
-  function content2() {
+  const content2 = () => {
     return (
-      <ChartComponent
-        id="DialogChart"
-        primaryXAxis={{
-          valueType: 'DateTime',
-          labelFormat: 'y',
-          intervalType: 'Years',
-          edgeLabelPlacement: 'Shift',
-          majorGridLines: { width: 0 },
-        }}
-        load={load}
-        primaryYAxis={{
-          labelFormat: '{value}%',
-          rangePadding: 'None',
-          minimum: 0,
-          maximum: 100,
-          interval: 20,
-          lineStyle: { width: 0 },
-          majorTickLines: { width: 0 },
-          minorTickLines: { width: 0 },
-        }}
-        chartArea={{ border: { width: 0 } }}
-        tooltip={{ enable: true }}
-        width={Browser.isDevice ? '100%' : '60%'}
-        title="Inflation - Consumer Price"
-        loaded={onChartLoad}
-      >
+      <ChartComponent id="DialogChart" primaryXAxis={{valueType: 'DateTime',labelFormat: 'y',intervalType: 'Years',edgeLabelPlacement: 'Shift',majorGridLines: { width: 0 },}} load={load} primaryYAxis={{labelFormat: '{value}%',rangePadding: 'None',minimum: 0,maximum: 100,interval: 20,lineStyle: { width: 0 },majorTickLines: { width: 0 },minorTickLines: { width: 0 },}} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true }} width={Browser.isDevice ? '100%' : '60%'} title="Inflation - Consumer Price" loaded={onChartLoad}>
         <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
         <SeriesCollectionDirective>
-          <SeriesDirective
-            dataSource={data1}
-            xName="x"
-            yName="y"
-            name="Germany"
-            width={2}
-            marker={{ visible: true, width: 10, height: 10 }}
-            type="Line"
-          ></SeriesDirective>
-          <SeriesDirective
-            dataSource={data2}
-            xName="x"
-            yName="y"
-            name="England"
-            width={2}
-            marker={{ visible: true, width: 10, height: 10 }}
-            type="Line"
-          ></SeriesDirective>
+          <SeriesDirective dataSource={data1} xName="x" yName="y" name="Germany" width={2} marker={{ visible: true, width: 10, height: 10 }} type="Line"></SeriesDirective>
+          <SeriesDirective dataSource={data2} xName="x" yName="y" name="England" width={2} marker={{ visible: true, width: 10, height: 10 }} type="Line"></SeriesDirective>
         </SeriesCollectionDirective>
       </ChartComponent>
     );
   }
-  function content3() {
+  const content3 = () => {
     return (
-      <RichTextEditorComponent
-        id="defaultRTE"
-        ref={(richtexteditor) => {
-          rteObj = richtexteditor;
-        }}
-      >
+      <RichTextEditorComponent id="defaultRTE">
         <p>
           The rich text editor component is WYSIWYG ("what you see is what you
           get") editor that provides the best user experience to create and
@@ -282,18 +140,13 @@ function ComponentsDialog() {
             <p>Capable of handling markdown editing.</p>
           </li>
           <li>
-            <p>
-              Contains a modular library to load the necessary functionality on
-              demand.
-            </p>
+            <p>Contains a modular library to load the necessary functionality ondemand.</p>
           </li>
           <li>
             <p>Provides a fully customizable toolbar.</p>
           </li>
           <li>
-            <p>
-              Provides HTML view to edit the source directly for developers.
-            </p>
+            <p>Provides HTML view to edit the source directly for developers.</p>
           </li>
           <li>
             <p>Supports third-party library integration.</p>
@@ -315,7 +168,7 @@ function ComponentsDialog() {
       </RichTextEditorComponent>
     );
   }
-  function content4() {
+  const content4 = () => {
     return (
       <div id="formComponents">
         <h4 className="form-title">Add Customer details</h4>
@@ -323,27 +176,15 @@ function ComponentsDialog() {
           <form id="formId" className="form-horizontal">
             <div className="form-group">
               <div className="e-float-input">
-                <input
-                  type="text"
-                  id="user"
-                  name="user"
-                  data-msg-containerid="userError"
-                />
+                <input type="text" id="user" name="user" data-msg-containerid="userError"/>
                 <span className="e-float-line" />
-                <label className="e-float-text e-label-top" htmlFor="name">
-                  User Name
-                </label>
+                <label className="e-float-text e-label-top" htmlFor="name">User Name</label>
               </div>
               <div id="userError" />
             </div>
             <div className="form-group">
               <div className="e-float-input">
-                <DatePickerComponent
-                  placeholder="Date of Birth"
-                  id="dob"
-                  name="dob"
-                  data-msg-containerid="dobError"
-                />
+                <DatePickerComponent placeholder="Date of Birth" id="dob" name="dob" data-msg-containerid="dobError"/>
                 <span className="e-float-line" />
               </div>
               <div id="dobError" />
@@ -352,64 +193,33 @@ function ComponentsDialog() {
               <div className="e-float-input">
                 <textarea id="Address" name="Address"></textarea>
                 <span className="e-float-line" />
-                <label className="e-float-text e-label-top" htmlFor="mobile">
-                  Address
-                </label>
+                <label className="e-float-text e-label-top" htmlFor="mobile">Address</label>
               </div>
               <div id="noError" />
             </div>
             <div className="form-group">
               <div className="e-float-input">
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  data-msg-containerid="cityError"
-                />
+                <input type="text" id="city" name="city" data-msg-containerid="cityError"/>
                 <span className="e-float-line" />
-                <label className="e-float-text e-label-top" htmlFor="city">
-                  City
-                </label>
+                <label className="e-float-text e-label-top" htmlFor="city">City</label>
               </div>
               <div id="cityError" />
             </div>
             <div className="form-group">
               <div className="e-float-input">
-                <input
-                  type="text"
-                  id="state"
-                  name="state"
-                  data-msg-containerid="stateError"
-                />
+                <input type="text" id="state" name="state" data-msg-containerid="stateError"/>
                 <span className="e-float-line" />
-                <label className="e-float-text e-label-top" htmlFor="state">
-                  State
-                </label>
+                <label className="e-float-text e-label-top" htmlFor="state">State</label>
               </div>
               <div id="stateError" />
             </div>
             <div className="row">
               <div className="submitRow">
                 <div style={{ display: 'inline-block' }}>
-                  <button
-                    id="submit-btn"
-                    className="samplebtn e-control e-btn e-primary e-submit-btn"
-                    onClick={onSubmitClick}
-                    type="submit"
-                    data-ripple="true"
-                  >
-                    Add Customer
-                  </button>
+                  <button id="submit-btn" className="samplebtn e-control e-btn e-primary e-submit-btn" onClick={onSubmitClick} type="submit" data-ripple="true">Add Customer</button>
                 </div>
                 <div style={{ float: 'right' }}>
-                  <button
-                    id="resetbtn"
-                    className="samplebtn e-control e-btn e-reset-btn"
-                    type="reset"
-                    data-ripple="true"
-                  >
-                    Clear
-                  </button>
+                  <button id="resetbtn" className="samplebtn e-control e-btn e-reset-btn" type="reset" data-ripple="true">Clear</button>
                 </div>
               </div>
             </div>
@@ -420,61 +230,32 @@ function ComponentsDialog() {
       </div>
     );
   }
-  function load(args: ILoadedEventArgs): void {
+  const load = (args: ILoadedEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.chart.theme = (selectedTheme.charAt(0).toUpperCase() +
-      selectedTheme.slice(1)) as ChartTheme;
+    args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)) as ChartTheme;
   }
 
-  function onChartLoad(args: ILoadedEventArgs): void {
+  const onChartLoad = (): void => {
     let chart: Element = document.getElementById('DialogChart');
     chart.setAttribute('title', '');
   }
-  function buttonClick(): void {
-    dialogInstance.show();
+  const buttonClick = (): void => {
+    dialogInstance.current.show();
   }
-  function dialogClose(): void {
+  const dialogClose = (): void => {
     buttonEle.style.display = 'block';
   }
-  function dialogOpen(): void {
+  const dialogOpen = (): void => {
     buttonEle.style.display = 'none';
   }
 
   return (
     <div className="control-pane">
-      <div
-        id="targetElement"
-        className="control-section col-lg-12 defaultDialogComponent dialog-target"
-      >
-        <button
-          className="e-control e-btn dlgbtn"
-          ref={buttonRef}
-          onClick={buttonClick}
-          id="dialogBtn"
-        >
-          {' '}
-          Open
-        </button>
-        <DialogComponent
-          id="defaultDialog"
-          showCloseIcon={true}
-          animationSettings={animationSettings}
-          visible={true}
-          width={'700px'}
-          ref={(dialog) => (dialogInstance = dialog)}
-          target={'#targetElement'}
-          header="Syncfusion Components inside Dialog"
-          buttons={buttons}
-          open={dialogOpen}
-          close={dialogClose}
-        >
-          <TabComponent
-            id="tab-wizard"
-            ref={(tab) => {
-              tabObj = tab;
-            }}
-          >
+      <div id="targetElement" className="control-section col-lg-12 defaultDialogComponent dialog-target">
+        <button className="e-control e-btn dlgbtn" ref={buttonRef} onClick={buttonClick} id="dialogBtn">Open</button>
+        <DialogComponent id="defaultDialog" showCloseIcon={true} animationSettings={animationSettings} visible={true} width={'700px'} target={'#targetElement'} header="Syncfusion Components inside Dialog" buttons={buttons} open={dialogOpen} close={dialogClose}>
+          <TabComponent id="tab-wizard">
             <TabItemsDirective>
               <TabItemDirective header={headerText[0]} content={content0} />
               <TabItemDirective header={headerText[1]} content={content1} />

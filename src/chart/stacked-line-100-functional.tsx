@@ -2,17 +2,8 @@
  * Sample for 100 percent Stacking Line series
  */
 import * as React from 'react';
-import {
-    ChartComponent,
-    SeriesCollectionDirective,
-    SeriesDirective, ILoadedEventArgs, ChartTheme,
-    Inject,
-    Legend,
-    Category,
-    StackingLineSeries,
-    Tooltip,
-    Highlight
-} from '@syncfusion/ej2-react-charts';
+import { useEffect } from 'react';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, ILoadedEventArgs, ChartTheme, Inject, Legend, Category, StackingLineSeries, Tooltip, Highlight } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let chartData = [
@@ -30,34 +21,23 @@ export let chartData = [
     { x: 'Dec', y: 75, y1: 45, y2: 65, y3: 115 }
 ];
 const SAMPLE_CSS = `
-      .control-fluid {
-          padding: 0px !important;
-      }`;
-function StackedLine100() {
-    React.useEffect(() => {
+    .control-fluid {
+        padding: 0px !important;
+    }`;
+const StackedLine100 = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
     return (
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent
-                    id="charts"
-                    style={{ textAlign: 'center' }}
-                    primaryXAxis={{
-                        majorTickLines: { width: 0 }, minorTickLines : { width: 0 }, majorGridLines: { width: 0 }, lineStyle: { width: 0 }, valueType: 'Category', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim', interval: 1
-                    }}
-                    primaryYAxis={{
-                       lineStyle: { width: 0 }, interval: 20, minorTickLines: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 },
-                    }}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    legendSettings={{ enableHighlight: true }}
-                    chartArea={{ border: { width: 0 } }}
-                    load={load.bind(this)}
-                    title="Family Expenses for Year"
-                    tooltip={{
-                        enable: true, format: '${point.x} : <b>${point.y} (${point.percentage}%)</b>',
-                    }}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ majorTickLines: { width: 0 }, minorTickLines : { width: 0 }, majorGridLines: { width: 0 }, lineStyle: { width: 0 }, valueType: 'Category', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim', interval: 1}} primaryYAxis={{ lineStyle: { width: 0 }, interval: 20, minorTickLines: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }}} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} title="Family Expenses for Year" tooltip={{ enable: true, format: '${point.x} : <b>${point.y} (${point.percentage}%)</b>' }}>
                     <Inject services={[StackingLineSeries, Category, Legend, Tooltip, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={chartData} xName="x" yName="y" name="John" width={2} type="StackingLine100" marker={{ visible: true, shape: 'Circle', width: 7, isFilled: true, height: 7 }}></SeriesDirective>
@@ -71,9 +51,7 @@ function StackedLine100() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This React 100% Stacked Line Chart example visualizes the family expenses with 100% stacked line series to identify who spent more money in each category. Data points are enhanced with markers and tooltips.
-                </p>
+                <p>This React 100% Stacked Line Chart example visualizes the family expenses with 100% stacked line series to identify who spent more money in each category. Data points are enhanced with markers and tooltips.</p>
             </div>
             <div id="description">
                 <p>
@@ -94,10 +72,5 @@ function StackedLine100() {
             </div>
         </div>
     )
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
 }
 export default StackedLine100;

@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './range-style.css';
 
-function Range() {
-    React.useEffect(() => {
+const Range = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const minDate: Date = new Date(new Date().getFullYear(), new Date().getMonth(), 7);
@@ -23,7 +24,7 @@ function Range() {
                 <p>
                     Date Range sample illustrates the date selection within the specific range in a calendar by using min and max properties.
                     Here, the date selection range was <code>restricted</code> within a range from 7th to 27th days in a month.
-                </p>    
+                </p>
             </div>
             <div id='description'>
                 <p>

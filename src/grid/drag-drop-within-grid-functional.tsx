@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Selection, RowDD, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Selection, RowDD, Group, Inject, Sort } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -11,7 +11,7 @@ function DragWithinGrid() {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GridComponent dataSource={orderDetails} allowRowDragAndDrop={true} height='400' selectionSettings={{ type: 'Multiple' }}>
+        <GridComponent dataSource={orderDetails} allowRowDragAndDrop={true} allowSorting={true} allowGrouping={true} height='400' selectionSettings={{ type: 'Multiple' }}>
           <ColumnsDirective>
             <ColumnDirective field='OrderID' isPrimaryKey={true} headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
@@ -20,7 +20,7 @@ function DragWithinGrid() {
             <ColumnDirective field='ShipCity' headerText='Ship City' width='150'></ColumnDirective>
             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
           </ColumnsDirective>
-          <Inject services={[RowDD, Selection]} />
+          <Inject services={[RowDD, Selection, Group, Sort]} />
         </GridComponent>
       </div>
       <div id="action-description">
@@ -28,19 +28,23 @@ function DragWithinGrid() {
         </p>
       </div>
       <div id="description">
-        <p>Row drag and drop enabled by settting
-          <code><a target="_blank" className="code"
-            href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#allowrowdraganddrop">
-            allowRowDragAndDrop
-          </a></code> property as true.
+        <p>Row drag and drop enabled by setting
+          <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/#allowrowdraganddrop">allowRowDragAndDrop</a></code> property as true.
         </p>
-
-        <p style={{ fontWeight: 500 }}>Injecting Module:</p>
+        <p>Grouping can be enabled by setting  
+          <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/#allowgrouping">allowGrouping</a></code> property as true.
+        </p>
+          <p>
+            Grid features are segregated into individual feature-wise modules.
+            To use row drag and drop and grouping features, 
+            we need to inject 
+            <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/#rowdraganddropmodule">RowDD</a></code>, 
+            <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/group/#group">Group</a></code> modules into the <code>services</code>.
+          </p>
         <p>
-          Grid features are segregated into individual feature-wise modules.
-          To use row, drag and drop feature we need to inject
-          <code>RowDD</code> module using the <code>Grid.Inject(RowDD)</code> section.
-        </p>
+          The row drag and drop functionality is enabled with grouped records in the grid.
+          Now, you can drag and drop the records from one group to another group of your choice.
+        </p> 
       </div>
     </div>
   )

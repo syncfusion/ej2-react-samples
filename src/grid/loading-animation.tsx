@@ -1,12 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Sort, Inject, Filter } from '@syncfusion/ej2-react-grids';
-import { DataManager, UrlAdaptor, Query, DataOptions } from '@syncfusion/ej2-data';
+import { DataManager, ODataV4Adaptor, Query, DataOptions } from '@syncfusion/ej2-data';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 
 export class LoadingAnimation extends SampleBase<{}, {}> {
-    public data = new DataManager({ url: 'https://services.syncfusion.com/react/production/api/UrlDataSource', adaptor: new UrlAdaptor  });
+    public data = new DataManager({ url: 'https://services.odata.org/V4/Northwind/Northwind.svc/Orders', adaptor: new ODataV4Adaptor  });
     public gridInstance: GridComponent;
     public indicatortypes: { [key: string]: Object }[] = [
         { id: 'Shimmer', name: 'Shimmer' },
@@ -41,10 +41,11 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
               </div>
                     <GridComponent id="Grid" dataSource={this.data} ref={grid => this.gridInstance = grid} allowPaging={true} pageSettings={{ pageCount: 3 }} loadingIndicator= {{ indicatorType: 'Shimmer' }} allowFiltering={true} allowSorting={true}>
                         <ColumnsDirective>
-                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='130' textAlign='Right'></ColumnDirective>
-                            <ColumnDirective field='Employees' headerText='Employee Name' width='150'></ColumnDirective>
-                            <ColumnDirective field='Designation' headerText='Designation' width='120'/>
-                            <ColumnDirective field='CurrentSalary' headerText='CurrentSalary' textAlign='Right' format='C2' width='140'></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='130' textAlign='Right'></ColumnDirective>
+                            <ColumnDirective field='CustomerID' headerText='Customer ID' width='150'></ColumnDirective>
+                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='100' textAlign='Right' />
+                            <ColumnDirective field='Freight' headerText='Freight' width='100' format='C2' textAlign='Right' />
+                            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Page, Sort, Filter]} />
                     </GridComponent>

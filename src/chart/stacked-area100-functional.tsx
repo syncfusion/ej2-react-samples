@@ -2,9 +2,8 @@
  * Sample for 100 percent Stacked Area series
  */
 import * as React from 'react';
-import {
-    ChartComponent, SeriesCollectionDirective, ILoadedEventArgs, ChartTheme, SeriesDirective, Inject, Tooltip, DateTime, Highlight, StackingAreaSeries, Legend,
-} from '@syncfusion/ej2-react-charts';
+import { useEffect } from 'react';
+import { ChartComponent, SeriesCollectionDirective, ILoadedEventArgs, ChartTheme, SeriesDirective, Inject, Tooltip, DateTime, Highlight, StackingAreaSeries, Legend } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data = [
@@ -25,75 +24,53 @@ export let data = [
     { x: new Date(2014, 0, 1), y: 1.67, y1: 1.65, y2: 0.67, y3: 2.61 },
 ];
 const SAMPLE_CSS = `
-      .control-fluid {
-          padding: 0px !important;
-      }`;
-function StackedArea100() {
-    React.useEffect(() => {
+    .control-fluid {
+        padding: 0px !important;
+    }`;
+const StackedArea100 = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-        return (
-            <div className="control-pane">
-                <style>{SAMPLE_CSS}</style>
-                <div className="control-section">
-                    <ChartComponent
-                        id="charts"
-                        style={{ textAlign: 'center' }}
-                        primaryXAxis={{  valueType: 'DateTime',
-                        intervalType: 'Years',
-                        majorGridLines: { width: 0 },
-                        labelFormat: 'y',
-                        edgeLabelPlacement: 'Shift',
-                        lineStyle: { width: 0 },
-                        minimum: new Date(1999, 0, 1), maximum: new Date(2015, 0, 1) }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        legendSettings={{ enableHighlight: true }}
-                        chartArea={{ border: { width: 0 } }}
-                        load={load.bind(this)}
-                        primaryYAxis={{ majorTickLines: { width: 0 }, rangePadding: 'None', interval: 20, lineStyle: {width : 0}}}
-                        title="Sales by Payment Mode"
-                        loaded={onChartLoad.bind(this)}
-                        tooltip={{ enable: true }}
-                    >
-                        <Inject services={[StackingAreaSeries, DateTime, Tooltip, Legend, Highlight]} />
-                        <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} xName="x" yName="y" name="Bank-Transfer" opacity={1} type="StackingArea100" border={{ width: 0.5, color: '#ffffff' }}></SeriesDirective>
-                            <SeriesDirective dataSource={data} xName="x" yName="y1" name="Credit Card" opacity={1} type="StackingArea100" border={{ width: 0.5, color: '#ffffff' }}></SeriesDirective>
-                            <SeriesDirective dataSource={data} xName="x" yName="y2" name="Debit Card" opacity={1} type="StackingArea100" border={{ width: 0.5, color: '#ffffff' }}></SeriesDirective>
-                            <SeriesDirective dataSource={data} xName="x" yName="y3" name="Cash" type="StackingArea100" opacity={1} border={{ width: 0.5, color: '#ffffff' }}></SeriesDirective>
-                        </SeriesCollectionDirective>
-                    </ChartComponent>
-                </div>
-                <div id="action-description">
-                    <p>
-                        This React 100% Stacked Area Chart example visualizes the amount of sales by payment mode  with default 100% stacked area series. A legend in the sample shows information about the series.
-                    </p>
-                </div>
-                <div id="description">
-                    <p>
-                        In this example, you can see how to render and configure the 100% stacked area chart. This chart visualizes data with y-values stacked, ensuring that the cumulative proportion of each stacked element always totals 100%.
-                    </p>
-                    <br></br>
-                    <p><b>Injecting Module</b></p>
-                    <p>
-                        Chart component features are segregated into individual feature-wise modules. To use 100% stacking area series, we need to inject
-                        <code>StackingAreaSeries</code> module into <code>services</code>.
-                    </p>
-                    <p>
-                    More information on the area type series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
-                    </p>
-                </div>
-            </div>
-        )
-    function onChartLoad(args: ILoadedEventArgs): void {
+    
+    const onChartLoad = (args: ILoadedEventArgs): void => {
         let chart: Element = document.getElementById('charts');
         chart.setAttribute('title', '');
-
     };
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
+    return (
+        <div className="control-pane">
+            <style>{SAMPLE_CSS}</style>
+            <div className="control-section">
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{  valueType: 'DateTime', intervalType: 'Years', majorGridLines: { width: 0 }, labelFormat: 'y', edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, minimum: new Date(1999, 0, 1), maximum: new Date(2015, 0, 1) }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ majorTickLines: { width: 0 }, rangePadding: 'None', interval: 20, lineStyle: {width : 0}}} title="Sales by Payment Mode" loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                    <Inject services={[StackingAreaSeries, DateTime, Tooltip, Legend, Highlight]} />
+                    <SeriesCollectionDirective>
+                        <SeriesDirective dataSource={data} xName="x" yName="y" name="Bank-Transfer" opacity={1} type="StackingArea100" border={{ width: 0.5, color: '#ffffff' }}></SeriesDirective>
+                        <SeriesDirective dataSource={data} xName="x" yName="y1" name="Credit Card" opacity={1} type="StackingArea100" border={{ width: 0.5, color: '#ffffff' }}></SeriesDirective>
+                        <SeriesDirective dataSource={data} xName="x" yName="y2" name="Debit Card" opacity={1} type="StackingArea100" border={{ width: 0.5, color: '#ffffff' }}></SeriesDirective>
+                        <SeriesDirective dataSource={data} xName="x" yName="y3" name="Cash" type="StackingArea100" opacity={1} border={{ width: 0.5, color: '#ffffff' }}></SeriesDirective>
+                    </SeriesCollectionDirective>
+                </ChartComponent>
+            </div>
+            <div id="action-description">
+                <p>This React 100% Stacked Area Chart example visualizes the amount of sales by payment mode  with default 100% stacked area series. A legend in the sample shows information about the series.</p>
+            </div>
+            <div id="description">
+                <p>In this example, you can see how to render and configure the 100% stacked area chart. This chart visualizes data with y-values stacked, ensuring that the cumulative proportion of each stacked element always totals 100%.</p>
+                <br></br>
+                <p><b>Injecting Module</b></p>
+                <p>
+                    Chart component features are segregated into individual feature-wise modules. To use 100% stacking area series, we need to inject
+                    <code>StackingAreaSeries</code> module into <code>services</code>.
+                </p>
+                <p>
+                    More information on the area type series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                </p>
+            </div>
+        </div>
+    )
 }
 export default StackedArea100;

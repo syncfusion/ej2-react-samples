@@ -2,10 +2,8 @@
  * Sample for Area series with empty points
  */
 import * as React from 'react';
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Tooltip, ILoadedEventArgs, ChartTheme,
-    AnnotationsDirective, AnnotationDirective, DateTime, MultiColoredLineSeries, ChartAnnotation, SegmentsDirective, SegmentDirective, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { useEffect} from 'react';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Tooltip, ILoadedEventArgs, ChartTheme, AnnotationsDirective, AnnotationDirective, DateTime, MultiColoredLineSeries, ChartAnnotation, SegmentsDirective, SegmentDirective, Highlight } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 export let dataValues = [];
@@ -21,34 +19,35 @@ export let dataValues = [];
 ].map((value, index) => {
     dataValues.push({ XValue: new Date(1900 + index, 1, 1), YValue: value });
 });
-let content =
-    "<div style='color:green; font-weight:bold; font-size:14px'>Medium</div>";
-let content1 =
-    "<div style='color:blue; font-weight:bold;font-size:14px'>High</div>";
-let content2 =
-    "<div style='color:red; font-weight:bold; font-size:14px'>Low</div>";
+let content = "<div style='color:green; font-weight:bold; font-size:14px'>Medium</div>";
+let content1 = "<div style='color:blue; font-weight:bold;font-size:14px'>High</div>";
+let content2 = "<div style='color:red; font-weight:bold; font-size:14px'>Low</div>";
 /**
  * Area empty sample
  */
-function LineZone() {
-    React.useEffect(() => {
+const LineZone = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        if (selectedTheme === 'highcontrast') {
+            args.chart.series[0].segments[0].color = 'red';
+            args.chart.series[0].segments[1].color = 'green';
+            args.chart.series[0].segments[2].color = 'blue';
+        }
+    };
     return (
         <div className="control-pane">
             <div className="control-section">
-                <ChartComponent
-                    id="charts"
-                    style={{ textAlign: 'center' }}
-                    primaryXAxis={{ valueType: 'DateTime', minimum : new Date(1910, 0, 1), maximum : new Date(2010, 0, 1), edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }}
-                    primaryYAxis={{ labelFormat: '{value}mm', rangePadding: 'None', minimum: 200, maximum: 800, interval: 100, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }}
-                    tooltip={{ enable: true, shared: true, enableAnimation: false, header: '<b>Rainfall</b>', format: '${point.x} : <b>${point.y}', }}
-                    legendSettings={{ visible: false }}
-                    chartArea={{ border: { width: 0 } }}
-                    load={load.bind(this)}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    title="Annual Mean Rainfall in Australia"
-                    loaded={onChartLoad.bind(this)}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime', minimum : new Date(1910, 0, 1), maximum : new Date(2010, 0, 1), edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}mm', rangePadding: 'None', minimum: 200, maximum: 800, interval: 100, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} tooltip={{ enable: true, shared: true, enableAnimation: false, header: '<b>Rainfall</b>', format: '${point.x} : <b>${point.y}</b>', }} legendSettings={{ visible: false }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title="Annual Mean Rainfall in Australia" loaded={onChartLoad.bind(this)}>
                     <Inject services={[MultiColoredLineSeries, ChartAnnotation, DateTime, Tooltip, Highlight]} />
                     <AnnotationsDirective>
                         <AnnotationDirective content={content} region="Series" x="19%" y= {Browser.isDevice? "42.5%" : "47%"}></AnnotationDirective>
@@ -67,15 +66,14 @@ function LineZone() {
                 </ChartComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample visualizes the annual mean rainfall in Australia with multi-colored line series in the chart. Data points are enhanced with segments and tooltips.
-                </p>
+                <p>This sample visualizes the annual mean rainfall in Australia with multi-colored line series in the chart. Data points are enhanced with segments and tooltips.</p>
             </div>
             <div id="description">
                 <p>
                     In this example, you can see how to render and configure the points in a particular range by using <code>MultiColoredLine</code> series.
                     Points under the range can be configured with <code>color</code> and <code>dashArray</code> properties in the ChartSegment.
-                </p><br></br>
+                </p>
+                <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use line series, we need to inject
@@ -88,20 +86,5 @@ function LineZone() {
             </div>
         </div>
     )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
-        chart.setAttribute('title', '');
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
-        if (selectedTheme === 'highcontrast') {
-            args.chart.series[0].segments[0].color = 'red';
-            args.chart.series[0].segments[1].color = 'green';
-            args.chart.series[0].segments[2].color = 'blue';
-        }
-    };
 }
 export default LineZone;

@@ -1,14 +1,17 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import { DataManager, Query, ODataV4Adaptor } from '@syncfusion/ej2-data';
 import './remote-data.css';
 
-function RemoteData() {
-  React.useEffect(() => {
+const RemoteData = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
+
+  const [loading,setLoading] = useState<string>('');
   // Use data manager to get tree data from remote source
   const data: DataManager = new DataManager({
     url: 'https://services.odata.org/V4/Northwind/Northwind.svc',
@@ -25,22 +28,24 @@ function RemoteData() {
   };
 
   // Show loading message, while loading tree data
-  function show(): void {
-    let popup: HTMLElement = document.getElementById('loading');
-    popup.style.display = '';
+  const show = (): void => {
+    // let popup: HTMLElement = document.getElementById('loading');
+    // popup.style.display = '';
+    setLoading('Loading...');
   }
 
   // Hide loading message, after tree data has been loaded
-  function hide(): void {
-    let popup: HTMLElement = document.getElementById('loading') as HTMLElement;
-    popup.style.display = 'none';
+  const hide = (): void => {
+    // let popup: HTMLElement = document.getElementById('loading') as HTMLElement;
+    // popup.style.display = 'none';
+    setLoading('');
   }
 
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <div className='tree-control_wrapper'>
-          <span id="loading">Loading...</span>
+          <span id="loading">{loading}</span>
           <TreeViewComponent fields={fields} dataBound={hide.bind(this)} created={show.bind(this)} />
         </div>
       </div>

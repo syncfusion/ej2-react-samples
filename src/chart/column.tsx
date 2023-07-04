@@ -64,7 +64,7 @@ export class Column extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the column series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column">documentation section</a>.
                   </p>
                 </div>
             </div>

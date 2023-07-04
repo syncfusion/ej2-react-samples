@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import './treeview.css';
 import * as dataSource from './dataSource/default-data.json';
 
-function Default() {
-  React.useEffect(() => {
+const Default = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const data = dataSource as any;
