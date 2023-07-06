@@ -1,16 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
 import { TreeViewComponent, ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
-import { enableRipple } from '@syncfusion/ej2-base';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import './responsive-panel.css';
-function ResponsivePanel() {
-    React.useEffect(() => {
+const ResponsivePanel = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let sidebarobj: SidebarComponent;
+    let sidebarobj = useRef<SidebarComponent>(null);
     let data: { [key: string]: Object }[] = [
         {
             nodeId: '01', nodeText: 'Installation', iconCss: 'icon-microchip icon',
@@ -65,6 +65,11 @@ function ResponsivePanel() {
 	const mediaQuery: string = '(min-width: 600px)';
     const fields: object = { dataSource: data, id: 'nodeId', text: 'nodeText', child: 'nodeChild', iconCss: "iconCss" };
     let folderEle: string = '<div class= "e-folder"><div class= "e-folder-name">Navigation Pane</div></div>';
+    //toggle the sidebar
+    const toolbarCliked = (): void => {
+        sidebarobj.current.toggle();
+    }
+
     return (
         <div className="control-section" id="responsive-wrapper">                
             <div id="reswrapper">
@@ -78,7 +83,7 @@ function ResponsivePanel() {
                     </ToolbarComponent>
                 </div>
                 {/* end of header-section */}
-                <SidebarComponent id="sideTree" className="sidebar-treeview" ref={Sidebar => (sidebarobj as any) = Sidebar} width={width} target={target} mediaQuery={mediaQuery} isOpen={true}>
+                <SidebarComponent id="sideTree" className="sidebar-treeview" ref={sidebarobj} width={width} target={target} mediaQuery={mediaQuery} isOpen={true}>
                     <div className='res-main-menu'>
                         <div className="table-content">
                             <TextBoxComponent id="resSearch" placeholder="Search..."></TextBoxComponent>
@@ -93,7 +98,7 @@ function ResponsivePanel() {
                 {/* .main-sidebar-content declaration */}
                 <div className="main-sidebar-content" id="main-text">
                     <div className="sidebar-content">
-                        <div className="sidebar-heading"> Responsive Sidebar with Treeview</div>
+                        <div className="sidebar-heading">Responsive Sidebar with Treeview</div>
                         <p className="paragraph-content">
                             This is a graphical aid for visualising and categorising the site, in the style of an expandable and collapsable treeview component.
                             It auto-expands to display the node(s), if any, corresponding to the currently viewed title, highlighting that node(s)
@@ -119,10 +124,6 @@ function ResponsivePanel() {
                 </p>
             </div>
         </div>
-    );
-    //toggle the sidebar
-    function toolbarCliked(): void {
-        sidebarobj.toggle();
-    }
+    );    
 }
 export default ResponsivePanel;

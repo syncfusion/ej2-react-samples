@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    ScheduleComponent, ViewsDirective, ViewDirective, Resize, DragAndDrop, ResourcesDirective,
-    ResourceDirective, EventRenderedArgs, Inject, Year as YearView, TimelineYear
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Resize, DragAndDrop, ResourcesDirective, ResourceDirective, EventRenderedArgs, Inject, Year as YearView, TimelineYear } from '@syncfusion/ej2-react-schedule';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import './schedule-component.css';
@@ -13,12 +11,10 @@ import { updateSampleSection } from '../common/sample-base';
 /**
  * Schedule Year view sample
  */
-
-function Year() {
-    React.useEffect(() => {
+const Year = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let scheduleObj: ScheduleComponent;
     const categoriesData: Object[] = [
         { text: 'Nancy', id: 1, color: '#df5286' },
         { text: 'Steven', id: 2, color: '#7fa900' },
@@ -26,7 +22,6 @@ function Year() {
         { text: 'Smith', id: 4, color: '#5978ee' },
         { text: 'Michael', id: 5, color: '#df5286' }
     ];
-    const data: Object[] = generateEvents();
     const months: Record<string, any>[] = [
         { text: 'January', value: 0 },
         { text: 'February', value: 1 },
@@ -42,8 +37,9 @@ function Year() {
         { text: 'December', value: 11 }
     ];
     const fields: Object = { text: 'text', value: 'value' };
-
-    function onEventRendered(args: EventRenderedArgs): void {
+    const [firstMonth, setFirstMonth] = useState<number>(0);
+    const [monthsCount, setMonthsCount] = useState<number>(12);
+    const onEventRendered = (args: EventRenderedArgs): void => {
         let eventColor: string = args.data.EventColor as string;
         if (!args.element || !eventColor) {
             return;
@@ -52,15 +48,15 @@ function Year() {
         }
     }
 
-    function firstMonthOfYear(args: Record<string, any>): void {
-        scheduleObj.firstMonthOfYear = args.value as number;
+    const firstMonthOfYear = (args: Record<string, any>): void => {
+        setFirstMonth(args.value as number)
     }
 
-    function numberOfMonths(args: Record<string, any>): void {
-        scheduleObj.monthsCount = args.value as number;
+    const numberOfMonths = (args: Record<string, any>): void => {
+        setMonthsCount(args.value as number)
     }
 
-    function generateEvents(count: number = 250, date: Date = new Date()): Object[] {
+    const generateEvents = (count: number = 250, date: Date = new Date()): Object[] => {
         let names: string[] = [
             'Bering Sea Gold', 'Technology', 'Maintenance', 'Meeting', 'Travelling', 'Annual Conference', 'Birthday Celebration',
             'Farewell Celebration', 'Wedding Anniversary', 'Alaska: The Last Frontier', 'Deadliest Catch', 'Sports Day',
@@ -92,17 +88,14 @@ function Year() {
         }
         return dateCollections;
     }
-
+    const data: Object[] = generateEvents();
     return (
         <div className='schedule-control-section'>
             <div className='col-lg-9 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent width='100%' height='555px' cssClass="year-view" ref={schedule => scheduleObj = schedule}
-                        eventSettings={{ dataSource: data }} firstMonthOfYear={0} monthsCount={12} eventRendered={onEventRendered.bind(this)}>
+                    <ScheduleComponent width='100%' height='555px' cssClass="year-view" eventSettings={{ dataSource: data }} firstMonthOfYear={firstMonth} monthsCount={monthsCount} eventRendered={onEventRendered}>
                         <ResourcesDirective>
-                            <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true}
-                                dataSource={categoriesData} textField='text' idField='id' colorField='color'>
-                            </ResourceDirective>
+                            <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true} dataSource={categoriesData} textField='text' idField='id' colorField='color' />
                         </ResourcesDirective>
                         <ViewsDirective>
                             <ViewDirective option='Year' isSelected={true} />
@@ -120,16 +113,14 @@ function Year() {
                             <tr>
                                 <td>
                                     <div>
-                                        <DropDownListComponent id="firstMonthElement" placeholder="First month of year" floatLabelType="Always" fields={fields}
-                                            value={0} dataSource={months} change={firstMonthOfYear.bind(this)}></DropDownListComponent>
+                                        <DropDownListComponent id="firstMonthElement" placeholder="First month of year" floatLabelType="Always" fields={fields} value={firstMonth} dataSource={months} change={firstMonthOfYear} />
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div>
-                                        <NumericTextBoxComponent id="numberOfMonthsElement" placeholder="Number of months" floatLabelType="Always" format='###.##'
-                                            min={1} max={24} value={12} change={numberOfMonths.bind(this)} />
+                                        <NumericTextBoxComponent id="numberOfMonthsElement" placeholder="Number of months" floatLabelType="Always" format='###.##' min={1} max={24} value={monthsCount} change={numberOfMonths} />
                                     </div>
                                 </td>
                             </tr>

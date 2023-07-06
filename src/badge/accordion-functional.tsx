@@ -1,18 +1,19 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { createElement } from '@syncfusion/ej2-base';
 import { AccordionComponent, AccordionItemDirective, AccordionItemsDirective } from '@syncfusion/ej2-react-navigations';
 import './accordion.css';
 
-function Accordion() {
-    React.useEffect(() => {
+const Accordion = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     // Assigning badge data
-    let badgeContent: string[] = ['7 New', '27 New', '2 New', '14 New'];
+    const badgeContent: string[] = ['7 New', '27 New', '2 New', '14 New'];
 
-    function accordionTemplate(): JSX.Element {
+    const accordionTemplate = () => {
         return (
             <div>
                 <li className='msg'>
@@ -27,7 +28,7 @@ function Accordion() {
         );
     }
 
-    function onCreated() {
+    const onCreated = () => {
         // Appending Badge component after the accordion rendered in created event
         let element: HTMLElement = document.getElementById('accordion');
         let iconElement: HTMLElement[] = Array.prototype.slice.call((element as HTMLElement).querySelectorAll('.e-toggle-icon'));

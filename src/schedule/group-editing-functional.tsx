@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  Day, WorkWeek, Month, ScheduleComponent, ResourcesDirective, ResourceDirective,
-  ViewsDirective, ViewDirective, ResourceDetails, Inject, TimelineViews, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect } from 'react';
+import { Day, WorkWeek, Month, ScheduleComponent, ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective, ResourceDetails, Inject, TimelineViews, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './group-editing.css';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -13,8 +11,8 @@ import * as dataSource from './datasource.json';
  * schedule resources group-editing sample
  */
 
-function GroupEditing() {
-  React.useEffect(() => {
+const GroupEditing = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceConferenceData, null, true) as Record<string, any>[];
@@ -24,56 +22,47 @@ function GroupEditing() {
     { Text: 'Laura', Id: 3, Color: '#7fa900' }
   ];
 
-  function getEmployeeName(value: ResourceDetails): string {
-    return (((value as ResourceDetails).resourceData) ?
-      (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] : value.resourceName) as string;
+  const getEmployeeName = (value: ResourceDetails): string => {
+    return (((value as ResourceDetails).resourceData) ? (value as ResourceDetails).resourceData[(value as ResourceDetails).resource.textField] : value.resourceName) as string;
   }
 
-  function getEmployeeImage(value: ResourceDetails): string {
+  const getEmployeeImage = (value: ResourceDetails): string => {
     return getEmployeeName(value).replace(' ', '-').toLowerCase();
   }
 
-  function getEmployeeDesignation(value: ResourceDetails): string {
+  const getEmployeeDesignation = (value: ResourceDetails): string => {
     let resourceName: string = getEmployeeName(value);
-    return (resourceName === 'Margaret') ? 'Sales Representative' : (resourceName === 'Robert') ?
-      'Vice President, Sales' : 'Inside Sales Coordinator';
+    return (resourceName === 'Margaret') ? 'Sales Representative' : (resourceName === 'Robert') ? 'Vice President, Sales' : 'Inside Sales Coordinator';
   }
 
-  function monthEventTemplate(props): JSX.Element {
+  const monthEventTemplate = (props) => {
     return (<div className="subject">{props.Subject}</div>);
   }
 
-  function resourceHeaderTemplate(props): JSX.Element {
-    return (<div className="template-wrap"><div className={"resource-image " + getEmployeeImage(props)}></div>
-      <div className="resource-details"><div className="resource-name">{getEmployeeName(props)}</div>
-        <div className="resource-designation">{getEmployeeDesignation(props)}</div></div></div>);
+  const resourceHeaderTemplate = (props) => {
+    return (
+      <div className="template-wrap">
+        <div className={"resource-image " + getEmployeeImage(props)}></div>
+        <div className="resource-details">
+          <div className="resource-name">{getEmployeeName(props)}</div>
+          <div className="resource-designation">{getEmployeeDesignation(props)}</div>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent cssClass='group-editing' width='100%' height='650px' selectedDate={new Date(2021, 5, 5)}
-            currentView='WorkWeek' resourceHeaderTemplate={resourceHeaderTemplate.bind(this)}
-            eventSettings={{
-              dataSource: data,
-              fields: {
-                subject: { title: 'Conference Name', name: 'Subject' },
-                description: { title: 'Summary', name: 'Description' },
-                startTime: { title: 'From', name: 'StartTime' },
-                endTime: { title: 'To', name: 'EndTime' }
-              }
-            }}
-            group={{ allowGroupEdit: true, resources: ['Conferences'] }} >
+          <ScheduleComponent cssClass='group-editing' width='100%' height='650px' selectedDate={new Date(2021, 5, 5)} currentView='WorkWeek' resourceHeaderTemplate={resourceHeaderTemplate} eventSettings={{ dataSource: data, fields: { subject: { title: 'Conference Name', name: 'Subject' }, description: { title: 'Summary', name: 'Description' }, startTime: { title: 'From', name: 'StartTime' }, endTime: { title: 'To', name: 'EndTime' } } }} group={{ allowGroupEdit: true, resources: ['Conferences'] }} >
             <ResourcesDirective>
-              <ResourceDirective field='ConferenceId' title='Attendees' name='Conferences' allowMultiple={true}
-                dataSource={resourceData} textField='Text' idField='Id' colorField='Color'>
-              </ResourceDirective>
+              <ResourceDirective field='ConferenceId' title='Attendees' name='Conferences' allowMultiple={true} dataSource={resourceData} textField='Text' idField='Id' colorField='Color' />
             </ResourcesDirective>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='WorkWeek' />
-              <ViewDirective option='Month' eventTemplate={monthEventTemplate.bind(this)} />
+              <ViewDirective option='Month' eventTemplate={monthEventTemplate} />
               <ViewDirective option='TimelineWeek' />
             </ViewsDirective>
             <Inject services={[Day, WorkWeek, Month, TimelineViews, Resize, DragAndDrop]} />

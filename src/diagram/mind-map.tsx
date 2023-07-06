@@ -60,7 +60,7 @@ export class MindMap extends SampleBase<{}, {}> {
               tool={DiagramTools.SingleSelect}
               layout={{
                 type: "MindMap",
-                orientation:'LeftToRight',
+                orientation:'Horizontal',
                 getBranch: (node: NodeModel, nodes: NodeModel[]) => {
                   return ((node as Node).data as EmployeeInfo).branch;
                 },
@@ -280,7 +280,16 @@ function addNode(): NodeModel {
   (obj.data as EmployeeInfo).Label = "Node";
   return obj;
 }
-
+function getTextEditValue(selectObject:any, node:any){
+  let connector:any = addConnector(selectObject, node);
+  diagramInstance.clearSelection();
+ var nd = diagramInstance.add(node);
+ diagramInstance.add(connector);
+ diagramInstance.doLayout();
+ diagramInstance.bringIntoView(nd.wrapper.bounds);
+ diagramInstance.select([diagramInstance.nameTable[nd.id]]);
+ diagramInstance.startTextEdit(diagramInstance.selectedItems.nodes[0]);
+}
 function addConnector(source: NodeModel, target: NodeModel): ConnectorModel {
   let connector: ConnectorModel = {};
   connector.id = randomId();
@@ -320,13 +329,7 @@ class LeftExtendTool extends ToolBase {
           ) {
             (node.data as EmployeeInfo).branch = "subRight";
           }
-          let connector: ConnectorModel = addConnector(selectedObject[0], node);
-          diagramInstance.clearSelection();
-          let nd: Node = diagramInstance.add(node) as Node;
-          diagramInstance.add(connector);
-          diagramInstance.doLayout();
-          diagramInstance.bringIntoView(nd.wrapper.bounds);
-          diagramInstance.startTextEdit(nd);
+          getTextEditValue(selectedObject[0], node);
         }
       }
     }
@@ -354,13 +357,7 @@ class RightExtendTool extends ToolBase {
           ) {
             (node.data as EmployeeInfo).branch = "subLeft";
           }
-          let connector: ConnectorModel = addConnector(selectedObject[0], node);
-          diagramInstance.clearSelection();
-          let nd: Node = diagramInstance.add(node) as Node;
-          diagramInstance.add(connector);
-          diagramInstance.doLayout();
-          diagramInstance.bringIntoView(nd.wrapper.bounds);
-          diagramInstance.startTextEdit(nd);
+          getTextEditValue(selectedObject[0], node);
         }
       }
     }

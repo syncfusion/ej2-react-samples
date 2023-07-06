@@ -1,29 +1,35 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import { DropDownTreeComponent } from '@syncfusion/ej2-react-dropdowns';
+import { DropDownTreeComponent, TreeSettingsModel } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
 import './checkbox.css';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import * as dataSource from './checkbox-data.json';
 
-function Checkbox() {
-    React.useEffect(() => {
+const Checkbox = () => {
+    useEffect(() => {
         updateSampleSection();
-        }, [])
-    let ddtreeObj: DropDownTreeComponent;
-    let data = dataSource as any;
-    let fields: Object = { dataSource: data.checkboxData, value: 'id', parentValue: 'pid', text: 'name', hasChildren: 'hasChild' };
-    let showCheckBox: boolean = true;
-    function onChange(args: ChangeEventArgs): void {
-        ddtreeObj.treeSettings.autoCheck = args.checked;
+    }, [])
+    const data = dataSource as any;
+    const fields: Object = { dataSource: data.checkboxData, value: 'id', parentValue: 'pid', text: 'name', hasChildren: 'hasChild' };
+    const showCheckBox: boolean = true;
+    const [treeSettings, setTreeSettings] = useState<TreeSettingsModel>({
+        autoCheck: false
+    })
+    const onChange = (args: ChangeEventArgs) => {
+        setTreeSettings({
+            autoCheck: args.checked
+        });
     }
     return (
         <div className='control-pane'>
             <div className='col-lg-8 control-section dropdowntree-check'>
                 <div className='control_wapper'>
                     {/* Render the Dropdown Tree with checkboxes */}
-                    <DropDownTreeComponent fields={fields} ref={(scope) => { ddtreeObj = scope }} showCheckBox={showCheckBox} mode="Delimiter" placeholder="Select items" popupHeight="200px" />
+                    <DropDownTreeComponent fields={fields} showCheckBox={showCheckBox} mode="Delimiter" placeholder="Select items" popupHeight="200px"
+                        treeSettings={treeSettings} />
                 </div>
             </div>
             <div className='col-lg-4 property-section'>

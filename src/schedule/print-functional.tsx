@@ -1,10 +1,9 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Resize, Print, DragAndDrop, Inject, ScheduleModel
-} from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Resize, Print, DragAndDrop, Inject, ScheduleModel } from '@syncfusion/ej2-react-schedule';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
@@ -17,40 +16,44 @@ import * as dataSource from './datasource.json';
  *  Schedule print sample
  */
 
-function PrintSchedule() {
-  React.useEffect(() => {
+const PrintSchedule = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
-  let printWithOptionsObj: CheckBoxComponent;
-  let heightObj: DropDownListComponent;
-  let widthObj: DropDownListComponent;
-  let selectedDateObj: DatePickerComponent;
+
+  const [heightRow, setHeightRow] = useState<string>('e-height-row e-hide-row');
+  const [widthRow, setWidthRow] = useState<string>('e-width-row e-hide-row');
+  const [dateRow, setDateRow] = useState<string>('e-selected-date-row e-hide-row');
+  let scheduleObj = useRef<ScheduleComponent>(null);
+  let printWithOptionsObj = useRef<CheckBoxComponent>(null);
+  let heightObj = useRef<DropDownListComponent>(null);
+  let widthObj = useRef<DropDownListComponent>(null);
+  let selectedDateObj = useRef<DatePickerComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
   const printHeightAndWidthData: string[] = ['auto', '100%', '500px'];
 
-  function onChange(args: ChangeEventArgs): void {
-    let classList: string[] = ['.e-height-row', '.e-width-row', '.e-selected-date-row'];
-    for (let i: number = 0; i < classList.length; i++) {
-      let element: HTMLElement = document.querySelector(classList[i]);
-      if (args.checked) {
-        element.classList.remove('e-hide-row');
-      } else {
-        element.classList.add('e-hide-row');
-      }
+  const onChange = (args: ChangeEventArgs): void => {
+    if (args.checked) {
+      setHeightRow('e-height-row');
+      setWidthRow('e-width-row');
+      setDateRow('e-selected-date-row');
+    } else {
+      setHeightRow('e-height-row e-hide-row');
+      setWidthRow('e-width-row e-hide-row');
+      setDateRow('e-selected-date-row e-hide-row');
     }
   }
 
-  function onPrintClick(): void {
-    if (printWithOptionsObj.checked) {
+  const onPrintClick = (): void => {
+    if (printWithOptionsObj.current.checked) {
       let printOptions: ScheduleModel = {
-        height: heightObj.value as string,
-        width: widthObj.value as string,
-        selectedDate: selectedDateObj.value as Date
+        height: heightObj.current.value as string,
+        width: widthObj.current.value as string,
+        selectedDate: selectedDateObj.current.value as Date
       };
-      scheduleObj.print(printOptions);
+      scheduleObj.current.print(printOptions);
     } else {
-      scheduleObj.print();
+      scheduleObj.current.print();
     }
   }
 
@@ -58,8 +61,7 @@ function PrintSchedule() {
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent cssClass='print' width='100%' height='650px' id='schedule' ref={t => scheduleObj = t}
-            selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }}>
+          <ScheduleComponent cssClass='print' width='100%' height='650px' id='schedule' ref={scheduleObj} selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop, Print]} />
           </ScheduleComponent>
         </div>
@@ -71,37 +73,35 @@ function PrintSchedule() {
               <tr>
                 <td style={{ height: '50px' }}>
                   <div>
-                    <CheckBoxComponent labelPosition="Before" label="Print with options" ref={t => printWithOptionsObj = t} change={onChange.bind(this)} />
+                    <CheckBoxComponent labelPosition="Before" label="Print with options" ref={printWithOptionsObj} change={onChange} />
                   </div>
                 </td>
               </tr>
-              <tr className="e-height-row e-hide-row">
+              <tr className={heightRow}>
                 <td>
                   <div>
-                    <DropDownListComponent id="heightElement" placeholder="Height" floatLabelType="Always" ref={t => heightObj = t} value={'auto'} dataSource={printHeightAndWidthData}>
-                    </DropDownListComponent>
+                    <DropDownListComponent id="heightElement" placeholder="Height" floatLabelType="Always" ref={heightObj} value={'auto'} dataSource={printHeightAndWidthData} />
                   </div>
                 </td>
               </tr>
-              <tr className="e-width-row e-hide-row">
+              <tr className={widthRow}>
                 <td>
                   <div>
-                    <DropDownListComponent id="widthElement" placeholder="Width" floatLabelType="Always" ref={t => widthObj = t} value={'auto'} dataSource={printHeightAndWidthData}>
-                    </DropDownListComponent>
+                    <DropDownListComponent id="widthElement" placeholder="Width" floatLabelType="Always" ref={widthObj} value={'auto'} dataSource={printHeightAndWidthData} />
                   </div>
                 </td>
               </tr>
-              <tr className="e-selected-date-row e-hide-row">
+              <tr className={dateRow}>
                 <td>
                   <div>
-                    <DatePickerComponent id="selectedDateElement" placeholder="Selected date" floatLabelType="Always" ref={t => selectedDateObj = t} value={new Date(2021, 0, 10)} />
+                    <DatePickerComponent id="selectedDateElement" placeholder="Selected date" floatLabelType="Always" ref={selectedDateObj} value={new Date(2021, 0, 10)} />
                   </div>
                 </td>
               </tr>
               <tr>
                 <td style={{ padding: '15px', textAlign: 'center' }}>
                   <div>
-                    <ButtonComponent iconCss="e-icons e-print" cssClass="e-print-btn" onClick={onPrintClick.bind(this)}>Print</ButtonComponent>
+                    <ButtonComponent iconCss="e-icons e-print" cssClass="e-print-btn" onClick={onPrintClick}>Print</ButtonComponent>
                   </div>
                 </td>
               </tr>

@@ -2,11 +2,9 @@
  * Sample for Polar Series with drawType StackingArea
  */
 import * as React from "react";
+import { useEffect, useRef, useState } from 'react';
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, StackingAreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType, Legend, Category, StackingAreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
@@ -23,21 +21,29 @@ export let data1: any[] = [
     { x: 'CAN', text: 'Canada', y: 1843, y1: 1793, y2: 1553, y3: 1529 }
 ];
 const SAMPLE_CSS = `
-     .control-fluid {
-         padding: 0px !important;
-     }`;
-function PolarStackedArea() {
-    React.useEffect(() => {
+    .control-fluid {
+        padding: 0px !important;
+    }`;
+const PolarStackedArea = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let chartInstance: ChartComponent;
-    let dropElement: DropDownListComponent;
+    const [type, setType] = useState<ChartSeriesType>('Polar');
+    let chartInstance = useRef<ChartComponent>(null);
+    let dropElement = useRef<DropDownListComponent>(null);
     let loaded: EmitType<ILoadedEventArgs>;
-    function change(): void {
-        chartInstance.series[0].type = dropElement.value as ChartSeriesType;
-        chartInstance.series[1].type = dropElement.value as ChartSeriesType;
-        chartInstance.series[2].type = dropElement.value as ChartSeriesType;
-        chartInstance.refresh();
+    
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        document.getElementById('charts').setAttribute('title', '');
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
+    const change = (): void => {
+        setType(dropElement.current.value as ChartSeriesType);
+        chartInstance.current.refresh();
     };
     let droplist: { [key: string]: Object }[] = [
         { value: 'Polar' },
@@ -45,38 +51,16 @@ function PolarStackedArea() {
     ];
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chart => chartInstance = chart}
-                        primaryXAxis={{
-                            valueType: 'Category',
-                            labelPlacement: 'OnTicks',
-                            interval: 1,
-                            coefficient: Browser.isDevice ? 80 : 100
-                        }}
-                        load={load.bind(this)}
-                        legendSettings= {{
-                            visible: true,
-                            enableHighlight: true
-                        }}
-                        title="GDP in Current Prices (USD Billion)" loaded={onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} load={load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="GDP in Current Prices (USD Billion)" tooltip={{ enable: true, header: "", format: "<b>${point.x}</b><br>GDP: <b>${point.y}USD</b>" }} loaded={onChartLoad.bind(this)}>
                         <Inject services={[StackingAreaSeries, Legend, Category, Highlight, PolarSeries, RadarSeries, Tooltip]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='text' yName='y' name='2013'
-                                type='Polar' drawType='StackingArea'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data1} xName='text' yName='y1' name='2014'
-                                type='Polar' drawType='StackingArea'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data1} xName='text' yName='y2' name='2015'
-                                type='Polar' drawType='StackingArea'>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data1} xName='text' yName='y3' name='2016'
-                                type='Polar' drawType='StackingArea'>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={data1} xName='text' yName='y' name='2013' type={type} drawType='StackingArea' />
+                            <SeriesDirective dataSource={data1} xName='text' yName='y1' name='2014' type={type} drawType='StackingArea' />
+                            <SeriesDirective dataSource={data1} xName='text' yName='y2' name='2015' type={type} drawType='StackingArea' />
+                            <SeriesDirective dataSource={data1} xName='text' yName='y3' name='2016' type={type} drawType='StackingArea' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
@@ -89,7 +73,7 @@ function PolarStackedArea() {
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <DropDownListComponent width={120} id="selmode" change={change.bind(this)} ref={d => dropElement = d} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value="Polar" />
+                                        <DropDownListComponent width={120} id="selmode" change={change.bind(this)} ref={dropElement} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value={type} />
                                     </div>
                                 </td>
                             </tr>
@@ -98,14 +82,10 @@ function PolarStackedArea() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                This sample shows GDP growth of various countries for a few years in the polar and radar charts using the stacked area series.
-                </p>
+                <p>This sample shows GDP growth of various countries for a few years in the polar and radar charts using the stacked area series.</p>
             </div>
             <div id="description">
-                <p>
-                In this example, you can see how to render and configure polar and radar charts with stacking area series. Switching between polar and radar series can be done using Series Type in the property panel.
-                </p>
+                <p>In this example, you can see how to render and configure polar and radar charts with stacking area series. Switching between polar and radar series can be done using Series Type in the property panel.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -118,13 +98,5 @@ function PolarStackedArea() {
             </div>
         </div>
     )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        document.getElementById('charts').setAttribute('title', '');
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
 }
 export default PolarStackedArea;

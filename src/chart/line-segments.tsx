@@ -40,7 +40,7 @@ export class LineZone extends SampleBase<{}, {}> {
                         style={{ textAlign: 'center' }}
                         primaryXAxis={{ valueType: 'DateTime', labelFormat: 'y', intervalType: 'Years', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }}
                         primaryYAxis={{ labelFormat: '{value}mm', rangePadding: 'None', minimum: 200, maximum: 800, interval: 100, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }}
-                        tooltip={{ enable: true, shared: true, enableAnimation: false,header:'<b>Rainfall</b>', format: '${point.x} : <b>${point.y}', }}
+                        tooltip={{ enable: true, shared: true, enableAnimation: false,header:'<b>Rainfall</b>', format: '${point.x} : <b>${point.y}</b>', }}
                         legendSettings={{ visible: false }}
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
@@ -82,7 +82,7 @@ export class LineZone extends SampleBase<{}, {}> {
             </p>
                     <p>
                         More information on the line series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -97,7 +97,7 @@ export class LineZone extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
          if (selectedTheme === 'highcontrast') {
                args.chart.series[0].segments[0].color = '#FF4741';
                args.chart.series[0].segments[1].color = '#00B400';

@@ -33,10 +33,10 @@ export class HierarchyExport extends SampleBase<{}, {}> {
   };
 
   toolbarClick(args: ClickEventArgs): void {
-        if (args.item.text === 'Excel Export') {
+        if (args.item.id === 'MasterDetailsExport_excelexport') {
             this.grid.excelExport({hierarchyExportMode: 'All'} as any);
         }
-        if (args.item.text === 'PDF Export') {
+        if (args.item.id === 'MasterDetailsExport_pdfexport') {
             this.grid.pdfExport({hierarchyExportMode: 'All'});
         }
   }
@@ -45,7 +45,7 @@ export class HierarchyExport extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent ref={r => this.grid = r} dataSource={employeeData} childGrid={this.childGrid} toolbar={['PdfExport', 'ExcelExport']}
+          <GridComponent id="MasterDetailsExport" ref={r => this.grid = r} dataSource={employeeData} childGrid={this.childGrid} toolbar={['PdfExport', 'ExcelExport']}
           allowPdfExport={true} allowExcelExport={true} toolbarClick={this.toolbarClick.bind(this)}>
               <ColumnsDirective>
                   <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' />

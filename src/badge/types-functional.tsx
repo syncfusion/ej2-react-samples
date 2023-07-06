@@ -1,10 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import './types.css';
 
-function Types() {
-    React.useEffect(() => {
+const Types = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -135,7 +136,7 @@ function Types() {
             <div id="description">
                 <p>The badge supports the following 8 different essential colors for various situations. All the classes should be added
                     with
-                <code>.e-badge</code> class.
+                    <code>.e-badge</code> class.
                 </p>
                 <ul>
                     <li>Primary: The

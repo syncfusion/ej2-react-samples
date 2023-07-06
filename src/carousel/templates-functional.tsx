@@ -1,18 +1,18 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { CarouselComponent, CarouselItemsDirective, CarouselItemDirective } from '@syncfusion/ej2-react-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './templates.css';
 
-function Templates() {
-    React.useEffect(() => {
+const Templates = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let carouselObj: CarouselComponent;
 
-    function itemTemplate1(): JSX.Element {
+    const itemTemplate1 = () => {
         return (
             <figure className="img-container">
                 <img src="src/carousel/images/cardinal.png" alt="cardinal" style={{ height: "100%", width: "100%" }} />
@@ -20,7 +20,7 @@ function Templates() {
         );
     }
 
-    function itemTemplate2(): JSX.Element {
+    const itemTemplate2 = () => {
         return (
             <figure className="img-container">
                 <img src="src/carousel/images/hunei.png" alt="hunei" style={{ height: "100%", width: "100%" }} />
@@ -28,7 +28,7 @@ function Templates() {
         );
     }
 
-    function itemTemplate3(): JSX.Element {
+    const itemTemplate3 = () => {
         return (
             <figure className="img-container">
                 <img src="src/carousel/images/costa-rica.png" alt="costa-rica" style={{ height: "100%", width: "100%" }} />
@@ -36,7 +36,7 @@ function Templates() {
         );
     }
 
-    function itemTemplate4(): JSX.Element {
+    const itemTemplate4 = () => {
         return (
             <figure className="img-container">
                 <img src="src/carousel/images/kaohsiung.png" alt="kaohsiung" style={{ height: "100%", width: "100%" }} />
@@ -44,7 +44,7 @@ function Templates() {
         );
     }
 
-    function itemTemplate5(): JSX.Element {
+    const itemTemplate5 = () => {
         return (
             <figure className="img-container">
                 <img src="src/carousel/images/bee-eater.png" alt="bee-eater" style={{ height: "100%", width: "100%" }} />
@@ -52,7 +52,7 @@ function Templates() {
         );
     }
 
-    function previousButtonTemplate(props: any): JSX.Element {
+    const previousButtonTemplate = (props: any) => {
         return (
             <ButtonComponent className="e-btn" cssClass="e-flat e-round nav-btn" title={props.type}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
@@ -62,7 +62,7 @@ function Templates() {
         );
     }
 
-    function nextButtonTemplate(props: any): JSX.Element {
+    const nextButtonTemplate = (props: any) => {
         return (
             <ButtonComponent className="e-btn" cssClass="e-flat e-round nav-btn" title={props.type}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
@@ -72,7 +72,7 @@ function Templates() {
         );
     }
 
-    function indicatorTemplate(props: any): JSX.Element {
+    const indicatorTemplate = (props: any) => {
         const birds = ['cardinal', 'hunei', 'costa-rica', 'kaohsiung', 'bee-eater'];
         return (
             <div className="indicator">
@@ -86,17 +86,17 @@ function Templates() {
             <div className='control-section template-carousel-section'>
                 <div className='control carousel-sample'>
                     {/* Render the Carousel Component */}
-                    <CarouselComponent cssClass="templateCarousel" animationEffect="Fade" buttonsVisibility="Visible" indicatorsTemplate={indicatorTemplate.bind(this)}
-                        previousButtonTemplate={previousButtonTemplate.bind(this)} nextButtonTemplate={nextButtonTemplate.bind(this)}>
+                    <CarouselComponent cssClass="templateCarousel" animationEffect="Fade" buttonsVisibility="Visible" indicatorsTemplate={indicatorTemplate} previousButtonTemplate={previousButtonTemplate} nextButtonTemplate={nextButtonTemplate}>
                         <CarouselItemsDirective>
-                            <CarouselItemDirective template={itemTemplate1.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate2.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate3.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate4.bind(this)} />
-                            <CarouselItemDirective template={itemTemplate5.bind(this)} />
+                            <CarouselItemDirective template={itemTemplate1} />
+                            <CarouselItemDirective template={itemTemplate2} />
+                            <CarouselItemDirective template={itemTemplate3} />
+                            <CarouselItemDirective template={itemTemplate4} />
+                            <CarouselItemDirective template={itemTemplate5} />
                         </CarouselItemsDirective>
                     </CarouselComponent>
-                </div></div>
+                </div>
+            </div>
             <div id="action-description">
                 <p>
                     This sample demonstrates the customization of the <a href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component using various templates.

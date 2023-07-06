@@ -35,7 +35,7 @@ export class LineMultiLine extends SampleBase<{}, {}>{
                         style={{ textAlign: 'center' }}
                         primaryXAxis={{valueType: 'DateTime',labelFormat: 'y',intervalType: 'Years',edgeLabelPlacement: 'Shift',majorGridLines: { width: 0 }}}
                         primaryYAxis={{rangePadding: 'None',minimum: 4,maximum: 10,title: 'Particulate Matter(PM)',lineStyle: { width: 0 },majorTickLines: { width: 0 },minorTickLines: { width: 0 }}}
-                        tooltip={{enable: true,shared: true,enableAnimation: false,header:'<b>Rainfall</b>', format: '${point.x} : <b>${point.y}'}}
+                        tooltip={{enable: true,shared: true,enableAnimation: false,header:'<b>Rainfall</b>', format: '${point.x} : <b>${point.y}</b>'}}
                         legendSettings={{ visible: false }}
                         chartArea={{ border: { width: 0 } }}
                         load={this.load.bind(this)}
@@ -66,8 +66,8 @@ export class LineMultiLine extends SampleBase<{}, {}>{
                 <code>Chart.Inject(MultiColoredLineSeries)</code> method.
             </p>
             <p>
-                        More information on the line series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
+                        More information on the multi-colored line series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line#multicolored-line">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -82,7 +82,7 @@ export class LineMultiLine extends SampleBase<{}, {}>{
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

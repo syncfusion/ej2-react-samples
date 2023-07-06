@@ -42,6 +42,7 @@ export class PlotLine extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         indicatorType={[]}
                         seriesType={[]}
+                        trendlineType={['Linear', 'Exponential', 'Polynomial', 'Logarithmic', 'MovingAverage']}
                         chartArea={{ border: { width: 0 } }}
                         title= 'Plot line on Y axis'
                     >
@@ -63,8 +64,10 @@ export class PlotLine extends SampleBase<{}, {}> {
                     <p>
                         In this example, you can see how to add threshold lines in the stock chart. Period and range selector help us to navigate different of data.
                         <code>LineSeries</code> is used to represent selected data value.
-
-                  </p>
+                    </p>
+                    <p>
+                        Stock Chart provides support to 6 types of <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/trend-lines">trendlines</a> namely <code>Linear</code>, <code>Exponential</code>, <code>Logarithmic</code>, <code>Polynomial</code>, <code>Power</code>, <code>Moving Average</code>. By using trendline dropdown button, the required trendline type can be added or removed.
+                    </p>
                     <br></br>
                     <p>Injecting Module</p>
                     <p>
@@ -80,7 +83,7 @@ export class PlotLine extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-         replace(/-dark/i, "Dark") as ChartTheme;
+         replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as ChartTheme;
     };
         
 }

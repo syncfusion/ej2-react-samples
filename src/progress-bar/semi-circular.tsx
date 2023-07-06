@@ -63,7 +63,7 @@ const SAMPLE_CSS = `
     `;
 
 export class ProgressBarSemiCircular extends SampleBase<{}, {}> {
-    private annotationColors: string[] = ['#e91e63', '#0078D6', '#317ab9', '#007bff', '#4F46E5', '#FFD939', '#9A9A9A', '#22D3EE', '#0D6EFD'];
+    private annotationColors: string[] = ['#e91e63', '#0078D6', '#317ab9', '#007bff', '#4F46E5', '#FFD939', '#9A9A9A', '#22D3EE', '#0D6EFD', '#6750A4', '#D0BCFF'];
     private content1: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6;fill:#0078D6"><span>100%</span></div>';
     private content2: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6;fill:#0078D6"><span>100%</span></div>';
     private content3: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6;fill:#0078D6"><span>100%</span></div>';
@@ -131,6 +131,12 @@ export class ProgressBarSemiCircular extends SampleBase<{}, {}> {
                 break;
             case 'tailwind-dark':
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[7], args.progressBar.element.id);
+                break;
+            case 'material3':
+                args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[9], args.progressBar.element.id);
+                break;
+            case 'material3-dark':
+                args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[10], args.progressBar.element.id);
                 break;
             default:
                 args.progressBar.annotations[0].content = this.annotationElementContent(this.annotationColors[4], args.progressBar.element.id);

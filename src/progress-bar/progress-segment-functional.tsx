@@ -3,13 +3,13 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from "react";
+import { useEffect, useRef, useState } from 'react';
 import {
     ProgressBarComponent, ProgressBarAnnotationsDirective, ProgressBarAnnotationDirective, Inject,
-    ProgressAnnotation, ILoadedEventArgs, ProgressTheme
+    ProgressAnnotation, ILoadedEventArgs, ProgressTheme, AnimationModel
 } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-import { Browser } from '@syncfusion/ej2-base';
 
 
 const SAMPLE_CSS = `
@@ -45,22 +45,26 @@ const SAMPLE_CSS = `
  }
      `;
 
-function ProgressBarProgressSegment() {
-    React.useEffect(() => {
+const ProgressBarProgressSegment = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let linearSeg: ProgressBarComponent;
-    let circularSeg: ProgressBarComponent;
-    let content: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6"><span></span></div>';
-    let load: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
+    const circularSeg = useRef<ProgressBarComponent>(null);
+    let [value, setValue] = useState<number>(40);
+    const content: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6"><span></span></div>';
+    const animation: AnimationModel = {
+        enable: true,
+        duration: 2000,
+    };
+    const load: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
     }
 
-    let progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
+    const progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
@@ -95,23 +99,26 @@ function ProgressBarProgressSegment() {
             case 'tailwind-dark':
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#22D3EE"><span></span></div>';
                 break;
+            case 'material3':
+                args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#6750A4"><span></span></div>';
+                break;
+            case 'material3-dark':
+                args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#D0BCFF"><span></span></div>';
+                break;
             default:
                 args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#FFD939"><span></span></div>';
                 break;
         }
     }
 
-    let timing = (): void => {
-        if (circularSeg) {
-        if (circularSeg.value >= circularSeg.maximum) {
-            clearInterval(timer)
+    const timing = (): void => {
+        if (value >= circularSeg.current.maximum) {
+            clearInterval(timer);
         } else {
-            circularSeg.value += 20;
-            linearSeg.value += 20;
+            setValue(value += 20);
+        }
     }
-    }
-}
-    let timer: any = setInterval(timing, 2500);
+    const timer: any = setInterval(timing, 2500);
 
     return (
         <div className='control-pane'>
@@ -123,53 +130,21 @@ function ProgressBarProgressSegment() {
                     <div>
                         <div className="col-lg-12 col-sm-12 progressbar-mode"></div>
                         <div id="linearSegment">
-                            <ProgressBarComponent id="linearSegment"
-                                ref={segment1 => linearSeg = segment1}
-                                type='Linear'
-                                height='30'
-                                width='70%'
-                                value={40}
-                                segmentCount={Browser.isDevice ? 25 : 50 }
-                                gapWidth={5}
-                                trackThickness={15}
-                                progressThickness={15}
-                                cornerRadius='Square'
-                                animation={{
-                                    enable: true,
-                                    duration: 2000
-                                }}
-                                load={load.bind(this)}
-                            >
+                            <ProgressBarComponent id="linearSegment" type='Linear' height='30' width='70%' value={value}
+                                segmentCount={50} gapWidth={5} trackThickness={15} progressThickness={15} cornerRadius='Square'
+                                animation={animation} load={load.bind(this)} >
                             </ProgressBarComponent>
                         </div>
                     </div>
                     <div>
                         <div className="col-lg-12 col-sm-12 progressbar-mode"></div>
                         <div id="circularSegment">
-                            <ProgressBarComponent id="circularSegment"
-                                ref={segment2 => circularSeg = segment2}
-                                type='Circular'
-                                height='200px'
-                                width='200px'
-                                value={40}
-                                segmentCount={50}
-                                gapWidth={5}
-                                trackThickness={15}
-                                progressThickness={15}
-                                startAngle={220}
-                                endAngle={140}
-                                cornerRadius='Square'
-                                animation={{
-                                    enable: true,
-                                    duration: 2000
-                                }}
-                                load={progressLoad.bind(this)}
-                            >
+                            <ProgressBarComponent id="circularSegment" ref={circularSeg} type='Circular' height='200px' width='200px'
+                                value={value} segmentCount={50} gapWidth={5} trackThickness={15} progressThickness={15} startAngle={220}
+                                endAngle={140} cornerRadius='Square' animation={animation} load={progressLoad.bind(this)}>
                                 <Inject services={[ProgressAnnotation]} />
                                 <ProgressBarAnnotationsDirective>
-                                    <ProgressBarAnnotationDirective content={content}>
-
-                                    </ProgressBarAnnotationDirective>
+                                    <ProgressBarAnnotationDirective content={content} />
                                 </ProgressBarAnnotationsDirective>
                             </ProgressBarComponent>
                         </div>

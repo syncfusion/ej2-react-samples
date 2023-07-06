@@ -1,10 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import './notification.css';
 
-function Notification()  {
-    React.useEffect(() => {
+const Notification = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -115,7 +116,7 @@ function Notification()  {
                         <code>.e-badge-dot</code> applies the dot badge to the target element.</li>
                 </ul>
                 <p>The position can be changed to the bottom by adding the
-                <code>.e-badge-bottom</code> class.</p>
+                    <code>.e-badge-bottom</code> class.</p>
             </div>
         </div>
     )

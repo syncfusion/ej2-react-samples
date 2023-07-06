@@ -242,9 +242,6 @@ let items: ItemModel[] = [
     text: "PNG"
   },
   {
-    text: "BMP"
-  },
-  {
     text: "SVG"
   }
 ];
@@ -312,9 +309,6 @@ function PrintExport() {
         exportOptions.format = args.item.text as FileFormats;
         break;
       case "PNG":
-        exportOptions.format = args.item.text as FileFormats;
-        break;
-      case "BMP":
         exportOptions.format = args.item.text as FileFormats;
         break;
       case "SVG":

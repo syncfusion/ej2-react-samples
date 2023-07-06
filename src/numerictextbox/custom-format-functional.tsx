@@ -3,33 +3,28 @@
  */
  import * as ReactDOM from 'react-dom';
  import * as React from 'react';
+ import { useEffect } from "react";
  import { updateSampleSection } from '../common/sample-base';
  import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
  import './sample.css';
  
-function Format() {
-    React.useEffect(() => {
+const Format = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (
         <div className='control-pane'>
             <div className='control-section'>
                 <div className="content-wrapper format-wrapper sample-numeric">
-                    <div className="control-label">Enter the distance
-                    </div>
+                    <div className="control-label">Enter the distance</div>
                     {/* Render the Numeric Textbox with custom format */}
-                    <NumericTextBoxComponent format='###.### km' value={250} min={0} >
-                    </NumericTextBoxComponent>
-                    <div className="control-label">Enter the tax
-                    </div>
+                    <NumericTextBoxComponent format='###.### km' value={250} min={0} ></NumericTextBoxComponent>
+                    <div className="control-label">Enter the tax</div>
                     {/* Render the Percentage Textbox with custom format */}
-                    <NumericTextBoxComponent format="### '%'" min={0} value={25} max={100} >
-                    </NumericTextBoxComponent>
-                    <div className="control-label">Enter the amount
-                    </div>
+                    <NumericTextBoxComponent format="### '%'" min={0} value={25} max={100} ></NumericTextBoxComponent>
+                    <div className="control-label">Enter the amount</div>
                     {/* Render the Currency Textbox with custom format */}
-                    <NumericTextBoxComponent format='$ ###.##' min={0} value={1025} >
-                    </NumericTextBoxComponent>
+                    <NumericTextBoxComponent format='$ ###.##' min={0} value={1025} ></NumericTextBoxComponent>
                 </div>
             </div>
             <div id="action-description">
@@ -46,6 +41,6 @@ function Format() {
                 </p>
             </div>
         </div >
-     )
+    )
 }
 export default Format;

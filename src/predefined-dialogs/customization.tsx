@@ -18,7 +18,8 @@ export class Customization extends SampleBase<{}, { }> {
           content:'<div class="new" style="display: flex;flex-direction: column;align-items: center;"><p><span class="circle-border"><span class="e-icons e-check" style="font-size: 30px; color: green; padding:5px 0 0 0; font-weight: 700;"></span></span></p><p><b style="font-size:25px; font-weight: 500 !important;">Good job!</b></p><p>You clicked the button!</p></div>',
           okButton: {  text: 'OK',click:this.alertOkAction.bind(this)},
           position: { X: 'center', Y: 'center' },
-          width:'240px'
+          width:'240px',
+          closeOnEscape: true
         });
       } else if (args.target.innerHTML.toLowerCase() == 'confirm') {
         document.getElementById("statusText").style.display="none";
@@ -28,7 +29,8 @@ export class Customization extends SampleBase<{}, { }> {
           okButton: {  text: 'YES',click:this.confirmOkAction.bind(this)},
           cancelButton: {  text: 'No',click:this.confirmCancelAction.bind(this)},
           position: { X: 'center', Y: 'center' },
-          width:'420px'
+          width:'420px',
+          closeOnEscape: true
         });
       } else if (args.target.innerHTML.toLowerCase() == 'prompt') {
         document.getElementById("statusText").style.display="none";
@@ -38,7 +40,8 @@ export class Customization extends SampleBase<{}, { }> {
           okButton: { text: 'OK',click:this.promptOkAction.bind(this)},
           cancelButton: { click:this.promptCancelAction.bind(this)},
           position: { X: 'center', Y: 'center' },
-          width: '240px'
+          width: '240px',
+          closeOnEscape: true
         });
       }
     }
@@ -58,9 +61,18 @@ export class Customization extends SampleBase<{}, { }> {
     document.getElementById("statusText").style.display="block";
   }
   promptOkAction(){
-    dialogObj.hide();
-    document.getElementById("statusText").innerHTML=" The user confirmed the dialog box";
-    document.getElementById("statusText").style.display="block";
+    let value:string ;
+    value = (document.getElementById("password")as any).value;
+    if (value==""){
+        dialogObj.hide();
+        document.getElementById("statusText").innerHTML = "The user's input is returned as\" \" ";
+        document.getElementById("statusText").style.display="block";
+    }
+    else{
+        dialogObj.hide();
+        document.getElementById("statusText").innerHTML="The user's input is returned as" +" "+ value;
+        document.getElementById("statusText").style.display="block";
+    }
   }
   promptCancelAction(){
     dialogObj.hide();

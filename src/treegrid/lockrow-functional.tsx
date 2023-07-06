@@ -16,7 +16,13 @@ const SAMPLE_CSS = `
 const SAMPLE1_CSS = `
 .material-dark .disableRow .e-rowcell{
   color: #757575 !important;
-}        
+}
+.material3 .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .38) !important;
+}
+.material3-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
 .fabric .disableRow .e-rowcell{
   color: #c8c8c8 !important;
 }
@@ -115,7 +121,7 @@ function LockRow() {
               <ColumnDirective field='taskName' headerText='Task Name' width='220' validationRules={validationRule1}></ColumnDirective>
               <ColumnDirective field='startDate' headerText='Start Date' width='130' textAlign='Right'
                 editType='datepickeredit' format='yMd' validationRules={validationRule2} />
-              <ColumnDirective field='duration' headerText='Duration' width='100' editType='numericedit' textAlign='Right'
+              <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
                 validationRules={validationRule3} edit={editparams2} />
             </ColumnsDirective>
             <Inject services={[Page, Edit, Toolbar]} />

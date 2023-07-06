@@ -1,18 +1,19 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import './template.css';
 import * as dataSource from './dataSource/template-data.json';
 
-function Template() {
-  React.useEffect(() => {
+const Template = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const data = dataSource as any;
   const fields: Object = { dataSource: data.templateData, id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild' };
   const cssClass: string = "template-tree";
-  function nodeTemplate(data: any): JSX.Element {
+  const nodeTemplate = (data: any) => {
     return (
       <div>
         <div className="treeviewdiv">

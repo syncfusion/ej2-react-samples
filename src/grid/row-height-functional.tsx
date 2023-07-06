@@ -14,9 +14,9 @@ function RowHeight() {
      * Row height sample
      */
     const toolbarOptions: any = [
-        { prefixIcon: 'e-small-icon', id: 'big', align: 'Right' },
-        { prefixIcon: 'e-medium-icon', id: 'medium', align: 'Right' },
-        { prefixIcon: 'e-big-icon', id: 'small', align: 'Right' }];
+        { prefixIcon: 'e-small-icon', id: 'big', align: 'Right', tooltipText: 'Row-height-big' },
+        { prefixIcon: 'e-medium-icon', id: 'medium', align: 'Right', tooltipText: 'Row-height-medium' },
+        { prefixIcon: 'e-big-icon', id: 'small', align: 'Right', tooltipText: 'Row-height-small' }];
     let gridInstance: GridComponent;
 
     function clickHandler(args: ClickEventArgs) {

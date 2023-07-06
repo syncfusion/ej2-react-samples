@@ -1,54 +1,39 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  Day, Week, Month, Agenda, ScheduleComponent, ViewsDirective,
-  ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState } from 'react';
+import { Day, Week, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop, GroupModel } from '@syncfusion/ej2-react-schedule';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as dataSource from './datasource.json';
-import { ChangeEventArgs, CheckBoxComponent, RadioButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { ChangeEventArgs, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 
 /**
  * schedule resources group-bydate sample
  */
 
-function GroupByDate() {
-  React.useEffect(() => {
+const GroupByDate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceData, null, true) as Record<string, any>[];
+  const [group, setGroup] = useState<GroupModel>({ byDate: true, hideNonWorkingDays: true, resources: ['Owners'] });
   const resourceData: Record<string, any>[] = [
     { text: 'Alice', id: 1, color: '#1aaa55', workDays: [1, 2, 3, 4] },
     { text: 'Smith', id: 2, color: '#7fa900', workDays: [2, 3, 5] },
   ];
-  function onChange(args: ChangeEventArgs): void {
-    if (args.checked) {
-      scheduleObj.group.hideNonWorkingDays = true;
-    }
-    else {
-      scheduleObj.group.hideNonWorkingDays = false;
-    }
+  const onChange = (args: ChangeEventArgs): void => {
+    setGroup({...group, hideNonWorkingDays: args.checked ? true : false});
   }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <CheckBoxComponent checked={true} label='Hide non working days' change={onChange.bind(this)}></CheckBoxComponent><br /><br />
-          <ScheduleComponent ref={schedule => scheduleObj = schedule} width='100%' height='650px' selectedDate={new Date(2023, 0, 6)}
-            eventSettings={{
-              dataSource: data, fields: {
-                subject: { title: 'Task', name: 'Subject' },
-                location: { title: 'Project Name', name: 'Location' },
-                description: { title: 'Comments', name: 'Description' }
-              }
-            }}
-            group={{ byDate: true, hideNonWorkingDays: true, resources: ['Owners'] }} >
+          <CheckBoxComponent checked={true} label='Hide non working days' change={onChange}></CheckBoxComponent>
+          <br />
+          <br />
+          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2023, 0, 6)} eventSettings={{ dataSource: data, fields: { subject: { title: 'Task', name: 'Subject' }, location: { title: 'Project Name', name: 'Location' }, description: { title: 'Comments', name: 'Description' } } }} group={group} >
             <ResourcesDirective>
-              <ResourceDirective field='TaskId' title='Assignee' name='Owners' allowMultiple={true}
-                dataSource={resourceData} textField='text' idField='id' colorField='color' workDaysField='workDays'>
-              </ResourceDirective>
+              <ResourceDirective field='TaskId' title='Assignee' name='Owners' allowMultiple={true} dataSource={resourceData} textField='text' idField='id' colorField='color' workDaysField='workDays' />
             </ResourcesDirective>
             <ViewsDirective>
               <ViewDirective option='Day' />

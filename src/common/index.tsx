@@ -11,16 +11,16 @@ import { ImageEditorComponent } from '@syncfusion/ej2-react-image-editor';
 import * as elasticlunr from './lib/elasticlunr';
 import * as searchJson from './search-index.json';
 import { LeftPane, setSelectList } from './leftpane';
-import { Sidebar } from '@syncfusion/ej2-navigations';
+import { Sidebar, EventArgs } from '@syncfusion/ej2-navigations';
 import { Locale } from './locale-string';
-import { Content } from './component-content';
+import { Content, initialize } from './component-content';
 import '../../node_modules/es6-promise/dist/es6-promise';
 import * as numberingSystems from '../common/cldr-data/supplemental/numberingSystems.json';
 import * as currencyData from '../common/cldr-data/supplemental/currencyData.json';
 import * as deCultureData from '../common/cldr-data/main/de/all.json';
 import * as arCultureData from '../common/cldr-data/main/ar/all.json';
 import * as swissCultureDate from '../common/cldr-data/main/fr-CH/all.json';
-import * as enCultureData from '../common/cldr-data/main/fr-CH/all.json';
+import * as enCultureData from '../common/cldr-data/main/en/all.json';
 import * as chinaCultureData from '../common/cldr-data/main/zh/all.json';
 let cBlock: string[] = ['ts-src-tab', 'html-src-tab'];
 const matchedCurrency: { [key: string]: string } = {
@@ -53,9 +53,9 @@ let resizeManualTrigger: boolean = false;
 /**
  * default theme on sample loaded
  */
-export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'bootstrap5';
+export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'material3';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'material', 'material-dark', 'fabric', 'fabric-dark', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'highcontrast'];
+const themeCollection: string[] = ['fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'material', 'material-dark', 'material3', 'material3-dark', 'fabric', 'fabric-dark', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'highcontrast'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**
@@ -206,6 +206,7 @@ function renderSbPopups(): void {
   });
   themeSwitherPopup = new Popup(document.getElementById('theme-switcher-popup'), {
     offsetY: 2,
+    zIndex: 10012,
     relateTo: select('.theme-wrapper') as HTMLElement, position: { X: 'left', Y: 'bottom' },
     collision: { X: 'flip', Y: 'flip' }
   });
@@ -216,14 +217,14 @@ function renderSbPopups(): void {
   });
   settingsPopup = new Popup(document.getElementById('settings-popup'), {
     offsetY: 5,
-    zIndex: 1001,
+    zIndex: 10012,
     relateTo: settingElement as HTMLElement,
     position: { X: 'right', Y: 'bottom' }
     , collision: { X: 'flip', Y: 'flip' }
   });
   settingsidebar = new Sidebar({
     position: 'Right', width: '282', zIndex: '1003', showBackdrop: true, type: 'Over',
-    closeOnDocumentClick: true
+    closeOnDocumentClick: true, close: closeRightSidebar
   });
   settingsidebar.appendTo('#right-sidebar');
   if (!isMobile) {
@@ -270,7 +271,10 @@ function renderSbPopups(): void {
       cssClass: 'e-flat', iconPosition: 'Right'
     }, '#mobile-next-sample');
 }
-
+function closeRightSidebar(args: EventArgs): void {
+  let targetEle: HTMLElement | null = args.event ? args.event.target as HTMLElement : null;
+  if (targetEle && targetEle.closest('.e-popup')) args.cancel = true;
+}
 function processDeviceDependables(): void {
   if (Browser.isDevice) {
     select('.sb-desktop-setting').classList.add('sb-hide');
@@ -469,6 +473,7 @@ function bindEvents(): void {
       if (location.hash !== hashval) {
         overlay();
         location.hash = hashval;
+        initialize();
         // setSelectList();
       }
     }

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { SliderComponent } from '@syncfusion/ej2-react-inputs';
+import { SliderComponent, TicksDataModel, TooltipDataModel } from '@syncfusion/ej2-react-inputs';
 import { SampleBase } from '../common/sample-base';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
@@ -53,30 +53,31 @@ export class Orientation extends SampleBase<{}, {}> {
     private defaultObj: SliderComponent;
     private rangeObj: SliderComponent;
     private minRangeObj: SliderComponent;
-    public ticks: any; tooltip: any;
+    private reverseObj: SliderComponent;
+    public ticks: TicksDataModel  = { placement: 'Before', largeStep: 20, smallStep: 5, showSmallTicks: true };
+    public tooltip: TooltipDataModel = { isVisible: true, placement: 'Before' };
     // Checkbox Instance
     public checkbox: CheckBoxComponent;
     // Checkbox change handlers
     public enableDisableTicks(args: ChangeEventArgs): void {
-        this.ticks = { placement: args.checked ? 'Before' : 'None', largeStep: 20, smallStep: 5, showSmallTicks: true };
-        for (let slider of [this.defaultObj, this.minRangeObj, this.rangeObj]) {
+        for (let slider of [this.defaultObj, this.minRangeObj, this.rangeObj, this.reverseObj]) {
             // Assigning ticks values to each slider
-            slider.ticks = this.ticks;
+            slider.ticks.placement = args.checked ? 'Before' : 'None';
         }
     }
     public enableDisableTooltip(args: ChangeEventArgs): void {
-        this.tooltip = { isVisible: args.checked, placement: 'Before' };
-        for (let slider of [this.defaultObj, this.minRangeObj, this.rangeObj]) {
+        for (let slider of [this.defaultObj, this.minRangeObj, this.rangeObj, this.reverseObj]) {
             // Assigning tooltip values to each slider
-            slider.tooltip = this.tooltip;
+            slider.tooltip.isVisible = args.checked;
         }
     }
 
     public refreshTooltip(e: any): void {
-        if (this.defaultObj && this.rangeObj && this.minRangeObj) {
+        if (this.defaultObj && this.rangeObj && this.minRangeObj && this.reverseObj) {
             (this.defaultObj as any).refreshTooltip((this.defaultObj as any).tooltipTarget);
             (this.minRangeObj as any).refreshTooltip((this.minRangeObj as any).tooltipTarget);
             (this.rangeObj as any).refreshTooltip((this.rangeObj as any).tooltipTarget);
+            (this.reverseObj as any).refreshTooltip((this.reverseObj as any).tooltipTarget);
         }
     }
 
@@ -95,19 +96,25 @@ export class Orientation extends SampleBase<{}, {}> {
                                     <td>
                                         <div className="sliderwrap">
                                             {/* Initialize Slider component with Vertical orientation */}
-                                            <SliderComponent id={"slider01"} value={30} orientation='Vertical' ref={(slider) => { this.defaultObj = slider }} />
+                                            <SliderComponent id={"slider01"} value={30} orientation='Vertical' ticks={this.ticks} tooltip={this.tooltip} ref={(slider) => { this.defaultObj = slider }} />
                                         </div>
                                     </td>
                                     <td>
                                         <div className="sliderwrap">
                                             {/* Initialize  Slider component with type MinRange and Vertical orientation */}
-                                            <SliderComponent id={"slider02"} value={30} type='MinRange' orientation='Vertical' ref={(slider) => { this.minRangeObj = slider }} />
+                                            <SliderComponent id={"slider02"} value={30} type='MinRange' orientation='Vertical' ticks={this.ticks} tooltip={this.tooltip} ref={(slider) => { this.minRangeObj = slider }} />
                                         </div>
                                     </td>
                                     <td>
                                         <div className="sliderwrap">
                                             {/* Initialize Range Slider component with type Range and Vertical orientation */}
-                                            <SliderComponent id={"slider03"} value={[30, 70]} type='Range' orientation='Vertical' ref={(slider) => { this.rangeObj = slider }} />
+                                            <SliderComponent id={"slider03"} value={[30, 70]} type='Range' orientation='Vertical' ticks={this.ticks} tooltip={this.tooltip} ref={(slider) => { this.rangeObj = slider }} />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="sliderwrap">
+                                            {/* Initialize Range Slider component with type Range and Vertical orientation */}
+                                            <SliderComponent id={"slider04"} value={[30, 70]} min={100} max={0} type='Range' orientation='Vertical' ticks={this.ticks} tooltip={this.tooltip} ref={(slider) => { this.reverseObj = slider }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -126,7 +133,7 @@ export class Orientation extends SampleBase<{}, {}> {
                                         <td style={{ width: '50%', paddingRight: '10px' }}>
                                             <div>
                                                 {/* Initialize Range CheckBox component */}
-                                                <CheckBoxComponent checked={false} change={this.enableDisableTicks.bind(this)} />
+                                                <CheckBoxComponent checked={true} change={this.enableDisableTicks.bind(this)} />
                                             </div>
                                         </td>
                                     </tr>
@@ -137,7 +144,7 @@ export class Orientation extends SampleBase<{}, {}> {
                                         <td style={{ width: '50%', paddingRight: '10px' }}>
                                             <div style={{ paddingLeft: 0, paddingTop: 0 }}>
                                                 {/* Initialize Range CheckBox component */}
-                                                <CheckBoxComponent checked={false} change={this.enableDisableTooltip.bind(this)} />
+                                                <CheckBoxComponent checked={true} change={this.enableDisableTooltip.bind(this)} />
                                             </div>
                                         </td>
                                     </tr>
@@ -163,6 +170,8 @@ export class Orientation extends SampleBase<{}, {}> {
                         handle value in Vertical Orientation</li>
                         <li>Range – allows us to select a range of values with two handles, where the handles was connected with a range selection
                         in Vertical Orientation</li>
+                        <li>Reverse – allows to render the component in reverse order. To utilise this, set the maximum value to the Min
+            property and set the minimum value to the Max property</li>
                         <p>The dragInterval is used to drag both handles using the range bar which is also applicable only to the range slider.</p>
                         <p>
                             In this demo we can see the Default, MinRange and Range slider types.

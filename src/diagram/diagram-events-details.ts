@@ -12,9 +12,7 @@ export function getEventDetails(args: any): void {
         if (elementName) {
             eventInformation(args);
         }
-    } else {
-        eventInformation(args);
-    }
+    } 
 }
 
 function getName(selectedItems: any, args: any): boolean {

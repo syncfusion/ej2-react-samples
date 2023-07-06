@@ -2,104 +2,71 @@
  * Sample for Spline series
  */
 import * as React from "react";
+import { useEffect, useRef, useState } from 'react';
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, AnnotationsDirective, AnnotationDirective, ChartAnnotation,
-    Legend, Category, SplineSeries, Tooltip, ILoadedEventArgs, ChartTheme, IAnimationCompleteEventArgs, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, AnnotationsDirective, AnnotationDirective, ChartAnnotation, Legend, Category, SplineSeries, Tooltip, ILoadedEventArgs, ChartTheme, Highlight } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
-export let data1: any[] = [
-    { x: 'Sun', y: 15 }, { x: 'Mon', y: 22 },
-    { x: 'Tue', y: 32 },
-    { x: 'Wed', y: 31 },
-    { x: 'Thu', y: 29 }, { x: 'Fri', y: 24 },
-    { x: 'Sat', y: 18 },
-];
-export let data2: any[] = [
-    { x: 'Sun', y: 10 }, { x: 'Mon', y: 18 },
-    { x: 'Tue', y: 28 },
-    { x: 'Wed', y: 28 },
-    { x: 'Thu', y: 26 }, { x: 'Fri', y: 20 },
-    { x: 'Sat', y: 15 }
-];
-export let data3: any[] = [
-    { x: 'Sun', y: 2 }, { x: 'Mon', y: 12 },
-    { x: 'Tue', y: 22 },
-    { x: 'Wed', y: 23 },
-    { x: 'Thu', y: 19 }, { x: 'Fri', y: 13 },
-    { x: 'Sat', y: 8 },
-];
+export let data1: any[] = [{ x: 'Sun', y: 15 }, { x: 'Mon', y: 22 }, { x: 'Tue', y: 32 }, { x: 'Wed', y: 31 }, { x: 'Thu', y: 29 }, { x: 'Fri', y: 24 }, { x: 'Sat', y: 18 }];
+export let data2: any[] = [{ x: 'Sun', y: 10 }, { x: 'Mon', y: 18 }, { x: 'Tue', y: 28 }, { x: 'Wed', y: 28 }, { x: 'Thu', y: 26 }, { x: 'Fri', y: 20 }, { x: 'Sat', y: 15 }];
+export let data3: any[] = [{ x: 'Sun', y: 2 }, { x: 'Mon', y: 12 }, { x: 'Tue', y: 22 }, { x: 'Wed', y: 23 }, { x: 'Thu', y: 19 }, { x: 'Fri', y: 13 }, { x: 'Sat', y: 8 }];
 const SAMPLE_CSS = `
-     .control-fluid {
-         padding: 0px !important;
-     }
-     #charts_Series_0_Point_2_Symbol {
-         -webkit-animation: opac 1s ease-out infinite;
-         animation: opac 1s ease-out infinite;
-     }
- 
-     #charts_Series_2_Point_0_Symbol {
-         -webkit-animation: opac 1s ease-out infinite;
-         animation: opac 1s ease-in-out infinite;
-     }
- 
-     @keyframes opac {
-         0% {
-             stroke-opacity: 1;
-             stroke-width: 0px;
-         }
-         100% {
-             stroke-opacity: 0;
-             stroke-width: 10px;
-         }
-     }`;
+    .control-fluid {
+        padding: 0px !important;
+    }
+    #charts_Series_0_Point_2_Symbol {
+        -webkit-animation: opac 1s ease-out infinite;
+        animation: opac 1s ease-out infinite;
+    }
 
-function Spline() {
-    React.useEffect(() => {
+    #charts_Series_2_Point_0_Symbol {
+        -webkit-animation: opac 1s ease-out infinite;
+        animation: opac 1s ease-in-out infinite;
+    }
+
+    @keyframes opac {
+        0% {
+            stroke-opacity: 1;
+            stroke-width: 0px;
+        }
+        100% {
+            stroke-opacity: 0;
+            stroke-width: 10px;
+        }
+    }`;
+
+const Spline = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let chartInstance: ChartComponent;
+
+    let chartInstance = useRef<ChartComponent>(null);
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
+
     return (
         <div className='control-pane'>
             <style>
                 {SAMPLE_CSS}
             </style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} ref={charts => chartInstance = charts}
-                    primaryXAxis={{
-                        valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate90', majorTickLines: {width: 0}, minorTickLines: {width : 0}
-                    }}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    legendSettings={{ enableHighlight: true }}
-                    chartArea={{ border: { width: 0 } }}
-                    load={load.bind(this)}
-                    primaryYAxis={{
-                        labelFormat: '{value}°C', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }
-                    }}
-                    tooltip={{ enable: true }}
-                    title='NC Weather Report - 2016' loaded={onChartLoad.bind(this)}
-                    animationComplete={animationComplete.bind(this)}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} ref={chartInstance} primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate90', majorTickLines: {width: 0}, minorTickLines: {width : 0} }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} primaryYAxis={{labelFormat: '{value}°C', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }}} tooltip={{ enable: true }} title='NC Weather Report - 2016' loaded={onChartLoad.bind(this)}>
                     <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation, Highlight]} />
                     <AnnotationsDirective>
-                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" style={{width: "41px"; height: "41px"}} /></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top'>
-                        </AnnotationDirective>
-                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png"   style={{width: "41px"; height: "41px"}}/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top'>
-                        </AnnotationDirective>
+                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" style={{width: "41px"; height: "41px"}} /></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top' />             
+                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png"   style={{width: "41px"; height: "41px"}}/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top' />
                     </AnnotationsDirective>
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp'
-                            type='Spline'
-                            marker={{ visible: true, width: 7, height: 7 }}>
-                        </SeriesDirective>
-                        <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='Avg Temp'
-                            type='Spline'
-                            marker={{ visible: true, width: 7, height: 7 }}>
-                        </SeriesDirective>
-                        <SeriesDirective dataSource={data3} xName='x' yName='y' width={2} name='Min Temp'
-                            type='Spline'
-                            marker={{ visible: true, width: 7, height: 7 }}>
-                        </SeriesDirective>
+                        <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp' type='Spline' marker={{ visible: true, width: 7, height: 7 }} />
+                        <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='Avg Temp' type='Spline' marker={{ visible: true, width: 7, height: 7 }} />
+                        <SeriesDirective dataSource={data3} xName='x' yName='y' width={2} name='Min Temp' type='Spline' marker={{ visible: true, width: 7, height: 7 }} />
                     </SeriesCollectionDirective>
                 </ChartComponent>
                 <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
@@ -107,9 +74,7 @@ function Spline() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This React Spline Chart example represents the North Carolina  weather report for the year 2016 with default spline series in the chart.
-                </p>
+                <p>This React Spline Chart example represents the North Carolina  weather report for the year 2016 with default spline series in the chart.</p>
             </div>
             <div id="description">
                 <p>
@@ -130,20 +95,6 @@ function Spline() {
                 </p>
             </div>
         </div>
-    )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
-        chart.setAttribute('title', '');
-    };
-    function animationComplete(args: IAnimationCompleteEventArgs): void {
-        chartInstance.removeSvg();
-        chartInstance.animateSeries = false;
-        chartInstance['renderElements']();
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
+    )    
 }
 export default Spline;

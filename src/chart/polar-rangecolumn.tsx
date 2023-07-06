@@ -46,6 +46,7 @@ export class PolarRangeColumn extends SampleBase<{}, {}> {
                             primaryXAxis={{ valueType: 'Category', title: 'month', startAngle: 90, labelPlacement: 'OnTicks', interval: 1,  coefficient: Browser.isDevice ? 80 : 100}}
                             primaryYAxis={{ labelFormat: '{value}˚C', minimum: 0, maximum: 15, interval: 5 }}
                             title='Maximum and Minimum Temperature' loaded={this.onChartLoad.bind(this)}
+                            tooltip= {{enable: true, header: "", format: "<b>${point.x}</b> <br> Low : <b>${point.low}°C</b> <br> High : <b>${point.high}°C"}}
                             load={this.load.bind(this)}
                             textRender={(args: ITextRenderEventArgs) => {
                                 args.text = args.text.replace('˚C', '');
@@ -98,8 +99,8 @@ export class PolarRangeColumn extends SampleBase<{}, {}> {
                        <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                        More information on the area series can be found in this &nbsp;
-                  <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                        More information on the polar and radar chart with range column series can be found in this &nbsp;
+                  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/polar#range-column">documentation section</a>.
               </p>
                 </div>
             </div>
@@ -112,7 +113,7 @@ export class PolarRangeColumn extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

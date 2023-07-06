@@ -67,15 +67,18 @@ export class Default extends SampleBase<{}, {}> {
                     </StockChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                    This sample visualizes stock chart.
-                    </p>
+                    <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart">React Stock Chart</a> example visualizes the AAPL stock price with candle chart. Tooltip and crosshair show the information about the data and period.</p>
                 </div>
                 <div id="description">
                     <p>
-                            In this example, you can see how to render and configure the Stock chart.
-                        <code>CandleSeries</code> is used to represent selected data value.
-                  </p>
+                        In this example, you can see how to render and configure the stock chart. The candle type series chart shows financial data and trends at equal intervals. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/period-selector">Period Selector</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/range-selector">Range Selector</a> can be used to select a range with specified periods.
+                    </p>
+                    <p>
+                        Stock Chart provides support to 10 types of <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/technical-indicators">Technical Indicators</a> namely <code>Accumulation Distribution</code>, <code>ATR</code>, <code>EMA</code>, <code>SMA</code>, <code>TMA</code>, <code>Momentum</code>, <code>MACD</code>, <code>RSI</code>, <code>Stochastic</code>, <code>Bollinger Band</code>. By using indicator dropdown box, add and remove the required indicator types.
+                    </p>
+                    <p>
+                        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.
+                    </p>
                     <br></br>
                     <p>Injecting Module</p>
                     <p>
@@ -86,6 +89,9 @@ export class Default extends SampleBase<{}, {}> {
                         <code>CandleSeries</code> module using the
                         <code>StockChart.Inject(CandleSeries)</code> method.
                     </p>
+                    <p>
+                        More information about the stock charts can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/getting-started">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )
@@ -94,6 +100,6 @@ export class Default extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-         replace(/-dark/i, "Dark") as ChartTheme;
+         replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as ChartTheme;
     }
 }

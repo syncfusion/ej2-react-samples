@@ -22,6 +22,12 @@
     margin: 0;
 }
 
+.material3 .dockSidebar .e-listview .e-list-icon.sb-icons,
+.material3-dark .dockSidebar .e-listview .e-list-icon.sb-icons {
+    width: 24px;
+    margin-right: 12px;
+}
+
 .material .dockSidebar .e-listview .e-list-icon.sb-icons,
 .material-dark .dockSidebar .e-listview .e-list-icon.sb-icons,
 .bootstrap .dockSidebar .e-listview .e-list-icon.sb-icons,
@@ -296,4 +302,8 @@
 .tailwind.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child,
 .tailwind-dark.e-bigger .dockToolbar.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
     margin-left: 8px;
+}
+
+#dockSidebar .e-list-container .e-text-content .e-list-text {
+        padding-left: 14px;
 }

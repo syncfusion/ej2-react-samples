@@ -1,15 +1,17 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { CalendarComponent, RenderDayCellEventArgs, ChangedEventArgs } from '@syncfusion/ej2-react-calendars';
 import { addClass } from '@syncfusion/ej2-base';
 import './special-styles.css';
 
-function Special() {
-    React.useEffect(() => {
+const Special = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    function specialDate(args: RenderDayCellEventArgs, name: String) {
+    const [selectedValue, setSelectedValue] = useState<string>(null);
+    const specialDate = (args: RenderDayCellEventArgs, name: String) => {
         let span = document.createElement('span');
         span.setAttribute('class', 'e-icons highlight');
         args.element.firstElementChild.setAttribute('title', name + '!');
@@ -19,7 +21,7 @@ function Special() {
         args.element.appendChild(span);
     }
 
-    function customDates(args: RenderDayCellEventArgs): void {
+    const customDates = (args: RenderDayCellEventArgs): void => {
         /*Dates need to be customized*/
         if (args.date.getDate() === 10) {
             specialDate(args, "Birthday");
@@ -32,15 +34,15 @@ function Special() {
         }
     }
 
-    function onchange(args: ChangedEventArgs): void {
+    const onchange = (args: ChangedEventArgs): void => {
         let title: string | null = '';
         if (args.event) {
             /*Displays selected date in the label*/
-            title = (args.event.currentTarget as HTMLElement).classList.contains('e-selected') ? (args.event.currentTarget as HTMLElement).getAttribute('data-val') : (args.event.currentTarget as HTMLElement).getElementsByClassName('e-selected').length > 0 
-                    ? (args.event.currentTarget as HTMLElement).getElementsByClassName('e-selected')[0].getAttribute('data-val') : null;
+            title = (args.event.currentTarget as HTMLElement).classList.contains('e-selected') ? (args.event.currentTarget as HTMLElement).getAttribute('data-val') : (args.event.currentTarget as HTMLElement).getElementsByClassName('e-selected').length > 0
+                ? (args.event.currentTarget as HTMLElement).getElementsByClassName('e-selected')[0].getAttribute('data-val') : null;
             title = title == null ? '' : ' ( ' + title + ' )';
         }
-        (document.getElementById('date_label') as HTMLElement).textContent = 'Selected Value: ' + args.value.toLocaleDateString() + title;
+        setSelectedValue(args.value.toLocaleDateString() + title);
     }
 
     return (
@@ -48,7 +50,7 @@ function Special() {
             <div className='control-section'>
                 <div className='calendar-control-section' style={{ overflow: 'auto' }}>
                     <CalendarComponent renderDayCell={customDates.bind(this)} change={onchange} className='e-customStyle' ></CalendarComponent>
-                    <label id='date_label'>Selected Value:</label>
+                    <label id='date_label'>Selected Value:{selectedValue}</label>
                 </div>
             </div>
             <div id="action-description">

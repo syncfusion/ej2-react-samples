@@ -1,15 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Timezone, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState, useRef } from 'react';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Timezone, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { Browser, extend } from '@syncfusion/ej2-base';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { tz } from 'moment-timezone';
 import { updateSampleSection } from '../common/sample-base';
-import { PropertyPane } from '../common/property-pane';
 import * as dataSource from './datasource.json';
 
 /**
@@ -22,11 +20,11 @@ if (Browser.isIE) {
   };
 }
 
-function TimeZone() {
-  React.useEffect(() => {
+const TimeZone = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const fifaEvents: Record<string, any>[] = extend([], ((dataSource as Record<string, any>).fifaEventsData), null, true) as Record<string, any>[];
   const timezone: Timezone = new Timezone();
   const timeZoneOptions: Record<string, any>[] = [
@@ -37,9 +35,10 @@ function TimeZone() {
     { text: '(UTC+08:00) Western Time - Perth', value: 'Australia/Perth' }
   ];
   const fields: Record<string, any> = { text: 'text', value: 'value' };
-
+  const [schedulerTimezone, setSchedulerTimezone] = useState<string>('UTC');
+  const [currentView, setCurrentView] = useState<View>("Week");
   // Here remove the local offset from events
-  function onCreate(): void {
+  const onCreate = (): void => {
     for (let fifaEvent of fifaEvents) {
       let event: Record<string, any> = fifaEvent as Record<string, any>;
       event.StartTime = timezone.removeLocalOffset(new Date(event.StartTime as string));
@@ -47,15 +46,18 @@ function TimeZone() {
     }
   }
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, currentView as View);
   }
 
-  function onTimeZoneChange(args: ChangeEventArgs): void {
-    scheduleObj.timezone = args.value as string;
-    scheduleObj.dataBind();
+  const onTimeZoneChange = (args: ChangeEventArgs): void => {
+    setSchedulerTimezone(args.value as string)
+    scheduleObj.current.dataBind();
   }
 
+  const onNavigating = (args: NavigatingEventArgs): void => {
+    setCurrentView(args.currentView as View)
+  }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
@@ -69,26 +71,23 @@ function TimeZone() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <DropDownListComponent style={{ padding: '6px' }} value={'UTC'} popupWidth='auto' fields={fields}
-                      dataSource={timeZoneOptions} change={onTimeZoneChange.bind(this)}
-                      floatLabelType='Always' width='250'>
-                    </DropDownListComponent>
+                    <DropDownListComponent style={{ padding: '6px' }} value={'UTC'} popupWidth='auto' fields={fields} dataSource={timeZoneOptions} change={onTimeZoneChange} floatLabelType='Always' width='250' />
                   </div>
                 </td>
               </tr>
             </tbody>
           </table>
-          <ScheduleComponent width='100%' height='650px' ref={schedule => scheduleObj = schedule} selectedDate={new Date(2021, 5, 20)}
-            timezone='UTC' workHours={{ start: '11:00' }} eventSettings={{ dataSource: fifaEvents }}
-            created={onCreate.bind(this)} eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 5, 20)} timezone={schedulerTimezone} workHours={{ start: '11:00' }} eventSettings={{ dataSource: fifaEvents }} created={onCreate} eventRendered={onEventRendered} navigating={onNavigating} currentView={currentView}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>
       </div>
       <div id='action-description'>
-        <p>This demo visualizes the 2021 FIFA football match scheduler which is depicted as events here. The timings of each event are
+        <p>
+          This demo visualizes the 2021 FIFA football match scheduler which is depicted as events here. The timings of each event are
           associated with the timezone of the match location where it will be held. When the Scheduler time zone changes, the
-          events in it displays according to the selected timezone's offset time difference.</p>
+          events in it displays according to the selected timezone's offset time difference.
+        </p>
       </div>
       <div id='description'>
         <p>

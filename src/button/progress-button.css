@@ -23,14 +23,26 @@
 #contract.e-progress-active .e-btn-content {
     display: none;
 }
+
+.material3 #roundbtn .e-progress-play-icon,
+.material3-dark #roundbtn .e-progress-play-icon {
+    margin-top: -4px;
+    margin-left: 2px;
+ }
+
+ .e-bigger .material3 #roundbtn .e-progress-play-icon,
+ .e-bigger .material3-dark #roundbtn .e-progress-play-icon {
+    margin-top: -4px;
+    margin-left: 2px;
+ }
 /* custom code end */
 #contract {
     transition: all .3s cubic-bezier(.175, .885, .32, 1) 100ms;
 }
 
-.fabric #roundbtn .e-play-icon,
-.bootstrap #roundbtn .e-play-icon,
-.highcontrast #roundbtn .e-play-icon {
+.fabric #roundbtn .e-progress-play-icon,
+.bootstrap #roundbtn .e-progress-play-icon,
+.highcontrast #roundbtn .e-progress-play-icon {
     margin-top: -2px;
 }
 
@@ -53,12 +65,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.e-btn-sb-icons.e-play-icon::before {
+.e-btn-sb-icons.e-progress-play-icon::before {
     content: '\e701';
     font-size: 12px;
 }
 
-.e-bigger .e-btn-sb-icons.e-play-icon::before {
+.e-bigger .e-btn-sb-icons.e-progress-play-icon::before {
     font-size: 14px;
 }
 

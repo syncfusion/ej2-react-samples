@@ -144,6 +144,26 @@ let fluentDarkWomen: string = '<div style="background-color:#2A72D5;border-radiu
     '<div style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; float: right;'
     + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
     '${point.y}M </span></div></div>';
+let material3Man: string = '<div style="background-color:#6355C7;border-radius: 3px; width: 68px">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center; padding-right: 6px;"><span>' +
+    '${point.y} </span></div></div>';
+let material3Women: string = '<div style="background-color:#00AEE0;border-radius: 3px; width: 68px">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y} </span></div></div>';
+let material3DarkMan: string = '<div style="background-color:#4EAAFF;border-radius: 3px; width: 68px">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center; padding-right: 6px;"><span>' +
+    '${point.y} </span></div></div>';
+let material3DarkWomen: string = '<div style="background-color:#FA4EAB;border-radius: 3px; width: 68px">' +
+    '<img src="src/chart/images/male.png" style="width: 24px; height: 24px; padding: 2px" />' +
+    '<div style="color:white; font-family:Roboto; font-style: medium; font-size:14px; float: right;'
+    + 'padding: 2px;line-height: 20px;text-align: center;padding-right: 6px;"><span>' +
+    '${point.y} </span></div></div>';
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -277,6 +297,10 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
             args.template = args.series.name === 'Male' ? fluentMan : fluentWomen;
         } else if (theme === 'FluentDark') {
             args.template = args.series.name === 'Male' ? fluentDarkMan : fluentDarkWomen;
+        } else if (theme === 'Material3') {
+            args.template = args.series.name === 'Male' ? material3Man : material3Women;
+        } else if (theme === 'Material3Dark') {
+            args.template = args.series.name === 'Male' ? material3DarkMan : material3DarkWomen;
         } else {
             args.template = args.series.name === 'Male' ? bootstrapMan : bootstrapWomen;
         }
@@ -286,7 +310,7 @@ export class DataLabelTemplate extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
         theme = args.chart.theme;
     };
         

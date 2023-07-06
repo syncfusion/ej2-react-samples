@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useRef, useEffect, useState } from "react";
 import { SliderComponent, SliderChangeEventArgs } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -37,43 +38,38 @@ hr {
     margin-top: 6px;
     margin-bottom: 6px;
 }
-
 `
-function Events() {
-    React.useEffect(() => {
+const Events = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let defaultObj: SliderComponent;
+    const [eventLog, setEventLog] = useState('');
+    let defaultObj = useRef<SliderComponent>(null);
     let defaultTooltip: object = { isVisible: true, placement: 'Before', showOn: 'Focus' };
     let defaultTicks: object = { placement: 'Both', largeStep: 20, smallStep: 5, showSmallTicks: true };
     //Handler for create event trace
-    function onCreated(): void {
+    const onCreated = (): void => {
         appendElement('Slider control has been <b>created</b><hr>');
     }
     //Handler for change event trace
-    function onChange(args: SliderChangeEventArgs): void {
+    const onChange = (args: SliderChangeEventArgs): void => {
         appendElement('Slider value is <b>changing</b> from ' + args.previousValue + '  to  ' + args.value + '<hr>');
     }
     //Handler for changed event trace
-    function onChanged(args: SliderChangeEventArgs): void {
+    const onChanged = (args: SliderChangeEventArgs): void => {
         appendElement('Slider value has been <b>changed</b> from ' + args.previousValue + '  to  ' + args.value + '<hr>');
     }
-
     //Display event log
-    function appendElement(html: string): void {
-        let span: HTMLElement = document.createElement('span');
-        span.innerHTML = html;
-        let log: HTMLElement = document.getElementById('EventLog');
-        log.insertBefore(span, log.firstChild);
+    const appendElement = (html: string): void => {
+        setEventLog(prevLog => `${html}${prevLog}`);
     }
     // Clears the event log details
-    function onclick(): void {
-        document.getElementById('EventLog').innerHTML = '';
+    const onclick = (): void => {
+        setEventLog('');
     }
-
-    function refreshTooltip(e: any): void {
-        if (defaultObj) {
-            (defaultObj as any).refreshTooltip((defaultObj as any).tooltipTarget);
+    const refreshTooltip = (e: any): void => {
+        if ((defaultObj as any).current) {
+            (defaultObj as any).current.refreshTooltip((defaultObj as any).tooltipTarget);
         }
     }
     if (!isNullOrUndefined(document.getElementById('right-pane'))) {
@@ -87,7 +83,7 @@ function Events() {
                     <div className="content-wrapper" >
                         <div className='sliderwrap'>
                             {/* Initialize Slider Component with type MinRange */}
-                            <SliderComponent id='minrange' value={30} type='MinRange' tooltip={defaultTooltip} ticks={defaultTicks} ref={(slider) => { defaultObj = slider }} changed={onChanged.bind(this)} created={onCreated.bind(this)} change={onChange.bind(this)} />
+                            <SliderComponent id='minrange' value={30} type='MinRange' tooltip={defaultTooltip} ticks={defaultTicks} ref={defaultObj} changed={onChanged.bind(this)} created={onCreated.bind(this)} change={onChange.bind(this)} />
                         </div>
                     </div>
                 </div>
@@ -99,7 +95,7 @@ function Events() {
                                     <td>
                                         <div className="eventarea" style={{ height: '245px', overflow: 'auto' }}>
                                             {/* Event log element  */}
-                                            <span className="EventLog" id="EventLog" style={{ wordBreak: 'normal' }}></span>
+                                            <span className="EventLog" id="EventLog" style={{ wordBreak: "normal" }} dangerouslySetInnerHTML={{ __html: eventLog }}></span>
                                         </div>
                                     </td>
                                 </tr>
@@ -116,25 +112,24 @@ function Events() {
                     </PropertyPane>
                 </div>
             </div>
-
             <div id="action-description">
-                <p>This sample demonstrates the events that have been triggered on the Slider operations with the help of Event Trace panel.
-                Drag the thumb over the bar between min and max to know the event details.
+                <p>
+                    This sample demonstrates the events that have been triggered on the Slider operations with the help of Event Trace panel.
+                    Drag the thumb over the bar between min and max to know the event details.
                 </p>
             </div>
-
             <div id="description">
-                <p>Slider component triggers event based on its actions. The events can be used as an extension point to perform custom
-                    operations.
-                    </p>
+                <p>Slider component triggers event based on its actions. The events can be used as an extension point to perform custom operations.</p>
                 <p>In this demo, Slider performs following action like created, change, changed Which can be traced by event trace panel.</p>
                 <ul>
                     <li>created - Triggers when Slider is created.</li>
-                    <li>changee - Triggers when the Slider value is changed.</li>
+                    <li>change - Triggers when the Slider value is changed.</li>
                     <li>changed - Triggers when the Slider action is completed with change in Slider value.</li>
                 </ul>
-                <p>For more information, we can refer the
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#events">events</a> API from the documentation.</p>
+                <p>
+                    For more information, we can refer the
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/slider/#events">events</a> API from the documentation.
+                </p>
             </div>
         </div>
     )

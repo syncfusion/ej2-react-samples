@@ -2,12 +2,9 @@
  * Sample for Chart symbols
  */
 import * as React from "react";
+import { useEffect } from "react";
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    Legend, Category, Tooltip, DataLabel, LineSeries, ILoadedEventArgs, ChartTheme, Highlight
-}
-    from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, Tooltip, DataLabel, LineSeries, ILoadedEventArgs, ChartTheme, Highlight } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data: any[] = [
@@ -19,48 +16,34 @@ export let data: any[] = [
     { x: 'North America', y: 25.3, y1: 35.9, y2: 64, y3: 81.4, text: 'North America' }
 ];
 const SAMPLE_CSS = `
-     .control-fluid {
-         padding: 0px !important;
-     }`;
-function Symbols() {
-    React.useEffect(() => {
+    .control-fluid {
+        padding: 0px !important;
+    }`;
+const Symbols = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+    const onChartLoad = (args: ILoadedEventArgs): void => {
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
+    };
+    const load = (args: ILoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    };
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }}
-                    primaryXAxis={{
-                        valueType: 'Category',
-                        interval: 1, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim',
-                        majorGridLines: { width: 0 },  majorTickLines: {width : 0},
-                        minorTickLines: {width: 0}, labelRotation: Browser.isDevice ? -45 : 0
-                    }}
-                    load={load.bind(this)}
-                    primaryYAxis={{
-                        title: 'Penetration', rangePadding: 'None',
-                        labelFormat: '{value}%', minimum: 0,
-                        lineStyle: { width: 0 },
-                        maximum: 75, interval: 15
-                    }}
-                    width={Browser.isDevice ? '100%' : '75%'}
-                    chartArea={{ border: { width: 0 } }}
-                    title='FB Penetration of Internet Audience' loaded={onChartLoad.bind(this)}
-                    legendSettings={{ visible: true, enableHighlight: true }}
-                    tooltip={{ enable: true, header:"" ,format:"<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>" }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: Browser.isDevice ? 'None' : 'Trim', majorGridLines: { width: 0 },  majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelRotation: Browser.isDevice ? -45 : 0 }} load={load.bind(this)} primaryYAxis={{ title: 'Penetration', rangePadding: 'None', labelFormat: '{value}%', minimum: 0, lineStyle: { width: 0 }, maximum: 75, interval: 15 }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} title='FB Penetration of Internet Audience' loaded={onChartLoad.bind(this)} legendSettings={{ visible: true, enableHighlight: true }} tooltip={{ enable: true, header:"" ,format:"<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>" }}>
                     <Inject services={[LineSeries, Legend, Tooltip, DataLabel, Category, Highlight]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data} xName='x' yName='y' width={2} name='2007'
-                            type='Line' marker={{ visible: true, dataLabel: { name: 'text' }, width: 8, height: 8, shape: 'Diamond', isFilled: true }}>
+                        <SeriesDirective dataSource={data} xName='x' yName='y' width={2} name='2007' type='Line' marker={{ visible: true, dataLabel: { name: 'text' }, width: 8, height: 8, shape: 'Diamond', isFilled: true }}>
                         </SeriesDirective>
-                        <SeriesDirective dataSource={data} xName='x' yName='y1' width={2} name='2008'
-                            type='Line' marker={{ visible: true, dataLabel: { name: 'text' }, width: 8, height: 8, shape: 'Pentagon', isFilled: true }}>
+                        <SeriesDirective dataSource={data} xName='x' yName='y1' width={2} name='2008' type='Line' marker={{ visible: true, dataLabel: { name: 'text' }, width: 8, height: 8, shape: 'Pentagon', isFilled: true }}>
                         </SeriesDirective>
-                        <SeriesDirective dataSource={data} xName='x' yName='y2' width={2} name='2009'
-                            type='Line' marker={{ visible: true, dataLabel: { name: 'text' }, width: 8, height: 8, shape: 'Triangle', isFilled: true }}>
+                        <SeriesDirective dataSource={data} xName='x' yName='y2' width={2} name='2009' type='Line' marker={{ visible: true, dataLabel: { name: 'text' }, width: 8, height: 8, shape: 'Triangle', isFilled: true }}>
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
@@ -69,17 +52,13 @@ function Symbols() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                This sample illustrates Facebook users in a chart for different countries over several years. In a line-based series, data points can be annotated using symbols.
-                </p>
+                <p>This sample illustrates Facebook users in a chart for different countries over several years. In a line-based series, data points can be annotated using symbols.</p>
             </div>
             <div id="description">
                 <p>
                     Each points in a series can be represented as a symbol through marker. We can also customize the shape, size and color of a symbol through <code>marker</code> properties.
                 </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                </p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p>
                     More information on the marker can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-markers/">documentation section</a>.
@@ -87,14 +66,5 @@ function Symbols() {
             </div>
         </div>
     )
-    function onChartLoad(args: ILoadedEventArgs): void {
-        let chart: Element = document.getElementById('charts');
-        chart.setAttribute('title', '');
-    };
-    function load(args: ILoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
-    };
 }
 export default Symbols;

@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    Month, TimelineViews, TimelineMonth, ScheduleComponent, ViewsDirective,
-    ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { Month, TimelineViews, TimelineMonth, ScheduleComponent, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './add-remove-resources.css';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
@@ -14,11 +12,11 @@ import * as dataSource from './datasource.json';
  * schedule add and remove resources dynamically
  */
 
-function AddRemoveResources() {
-    React.useEffect(() => {
+const AddRemoveResources = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let scheduleObj: ScheduleComponent;
+    let scheduleObj = useRef<ScheduleComponent>(null);
     const calendarCollections: Record<string, any>[] = [
         { CalendarText: 'My Calendar', CalendarId: 1, CalendarColor: '#c43081' },
         { CalendarText: 'Company', CalendarId: 2, CalendarColor: '#ff7f50' },
@@ -26,18 +24,17 @@ function AddRemoveResources() {
         { CalendarText: 'Holiday', CalendarId: 4, CalendarColor: '#808000' }
     ];
 
-    function generateCalendarData(): Record<string, any>[] {
-        return [...(dataSource as Record<string, any>).personalData, ...(dataSource as Record<string, any>).companyData,
-        ...(dataSource as Record<string, any>).birthdayData, ...(dataSource as Record<string, any>).holidayData];
+    const generateCalendarData = (): Record<string, any>[] => {
+        return [...(dataSource as Record<string, any>).personalData, ...(dataSource as Record<string, any>).companyData, ...(dataSource as Record<string, any>).birthdayData, ...(dataSource as Record<string, any>).holidayData];
     }
 
-    function onChange(args: ChangeEventArgs): void {
+    const onChange = (args: ChangeEventArgs): void => {
         let value: number = parseInt((args.event.currentTarget as Element).querySelector('input').getAttribute('value'), 10);
         let resourceData: Record<string, any>[] = calendarCollections.filter((calendar: Record<string, any>) => calendar.CalendarId === value);
         if (args.checked) {
-            scheduleObj.addResource(resourceData[0], 'Calendars', value - 1);
+            scheduleObj.current.addResource(resourceData[0], 'Calendars', value - 1);
         } else {
-            scheduleObj.removeResource(value, 'Calendars');
+            scheduleObj.current.removeResource(value, 'Calendars');
         }
     }
 
@@ -45,14 +42,11 @@ function AddRemoveResources() {
         <div className='schedule-control-section'>
             <div className='col-lg-9 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent cssClass='dynamic-resource' ref={schedule => scheduleObj = schedule} width='100%' height='650px' selectedDate={new Date(2021, 3, 1)} group={{ resources: ['Calendars'] }}
-                        eventSettings={{ dataSource: generateCalendarData() }} >
+                    <ScheduleComponent cssClass='dynamic-resource' ref={scheduleObj} width='100%' height='650px' selectedDate={new Date(2021, 3, 1)} group={{ resources: ['Calendars'] }} eventSettings={{ dataSource: generateCalendarData() }} >
                         <ResourcesDirective>
-                            <ResourceDirective field='CalendarId' title='Calendars' name='Calendars' allowMultiple={true}
-                                dataSource={[calendarCollections[0]]} textField='CalendarText' idField='CalendarId' colorField='CalendarColor'>
-                            </ResourceDirective>
+                            <ResourceDirective field='CalendarId' title='Calendars' name='Calendars' allowMultiple={true} dataSource={[calendarCollections[0]]} textField='CalendarText' idField='CalendarId' colorField='CalendarColor' />
                         </ResourcesDirective>
-                        < ViewsDirective >
+                        <ViewsDirective>
                             <ViewDirective option='Month' />
                             <ViewDirective option='TimelineWeek' />
                             <ViewDirective option='TimelineMonth' />
@@ -67,26 +61,22 @@ function AddRemoveResources() {
                         <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
-                                    <CheckBoxComponent value='1' id='personal' cssClass='personal' checked={true} label='My Calendar' disabled={true}
-                                        change={onChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent value='1' id='personal' cssClass='personal' checked={true} label='My Calendar' disabled={true} change={onChange} ></CheckBoxComponent>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
-                                    <CheckBoxComponent value='2' id='company' cssClass='company' checked={false} label='Company'
-                                        change={onChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent value='2' id='company' cssClass='company' checked={false} label='Company' change={onChange} ></CheckBoxComponent>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
-                                    <CheckBoxComponent value='3' id='birthdays' cssClass='birthday' checked={false} label='Birthday'
-                                        change={onChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent value='3' id='birthdays' cssClass='birthday' checked={false} label='Birthday' change={onChange} ></CheckBoxComponent>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
-                                    <CheckBoxComponent value='4' id='holidays' cssClass='holiday' checked={false} label='Holiday'
-                                        change={onChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent value='4' id='holidays' cssClass='holiday' checked={false} label='Holiday' change={onChange} ></CheckBoxComponent>
                                 </td>
                             </tr>
                         </tbody>
@@ -94,9 +84,7 @@ function AddRemoveResources() {
                 </PropertyPane>
             </div>
             <div id="action-description">
-                <p>
-                    This demo illustrates how to dynamically add or remove resources to and from the Scheduler layout.
-                </p>
+                <p>This demo illustrates how to dynamically add or remove resources to and from the Scheduler layout.</p>
             </div>
 
             <div id="description">

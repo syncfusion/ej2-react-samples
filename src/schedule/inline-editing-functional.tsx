@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    ScheduleComponent, TimelineViews, TimelineMonth, EventRenderedArgs, Inject,
-    ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective, DragAndDrop, Resize
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState } from 'react';
+import { ScheduleComponent, TimelineViews, TimelineMonth, EventRenderedArgs, Inject, ResourcesDirective, ResourceDirective, ViewsDirective, ViewDirective, DragAndDrop, Resize, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -13,11 +11,11 @@ import * as dataSource from './datasource.json';
  * Schedule inline editing sample
  */
 
-function InlineEditing() {
-    React.useEffect(() => {
+const InlineEditing = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let scheduleObj: ScheduleComponent;
+    const [currentView, setCurrentView] = useState<View>("TimelineWeek");
     const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceData.concat((dataSource as Record<string, any>).timelineResourceData), null, true) as Record<string, any>[];
     const workDays: number[] = [0, 1, 2, 3, 4, 5];
     const categoriesData: Record<string, any>[] = [
@@ -28,28 +26,27 @@ function InlineEditing() {
         { text: 'Michael', id: 5, groupId: 3, color: '#df5286' }
     ];
 
-    function onEventRendered(args: EventRenderedArgs): void {
-        let categoryColor: string = args.data.CategoryColor as string;
+    const onEventRendered = (args: EventRenderedArgs): void => {
+        const categoryColor: string = args.data.CategoryColor as string;
         if (!args.element || !categoryColor) {
             return;
         }
-        if (scheduleObj.currentView === 'Agenda') {
+        if (currentView === 'Agenda') {
             (args.element.firstChild as HTMLElement).style.borderLeftColor = categoryColor;
         } else {
             args.element.style.backgroundColor = categoryColor;
         }
     }
-
+    const onNavigating = (args: NavigatingEventArgs): void => {
+        setCurrentView(args.currentView as View)
+    }
     return (
         <div className='schedule-control-section'>
             <div className='col-lg-12 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent width='100%' height='650px' ref={t => scheduleObj = t} cssClass='inline-edit' workDays={workDays} currentView='TimelineWeek' allowInline={true} selectedDate={new Date(2023, 0, 4)}
-                        eventSettings={{ dataSource: data }} group={{ resources: ['Categories'] }} eventRendered={onEventRendered.bind(this)}>
+                    <ScheduleComponent width='100%' height='650px' cssClass='inline-edit' workDays={workDays} currentView={currentView} allowInline={true} selectedDate={new Date(2023, 0, 4)} eventSettings={{ dataSource: data }} group={{ resources: ['Categories'] }} eventRendered={onEventRendered} navigating={onNavigating}>
                         <ResourcesDirective>
-                            <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true}
-                                dataSource={categoriesData} textField='text' idField='id' colorField='color'>
-                            </ResourceDirective>
+                            <ResourceDirective field='TaskId' title='Category' name='Categories' allowMultiple={true} dataSource={categoriesData} textField='text' idField='id' colorField='color' />
                         </ResourcesDirective>
                         <ViewsDirective>
                             <ViewDirective option='TimelineWeek' />

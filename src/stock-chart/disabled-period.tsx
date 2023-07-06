@@ -31,6 +31,12 @@ const SAMPLE_CSS = `
 #fluent-dark-gradient-chart stop {
     stop-color: #8AB113;
 }
+#material3-gradient-chart stop {
+    stop-color: #6355C7;
+}
+#material3-dark-gradient-chart stop {
+    stop-color: #4EAAFF;
+}
 #control-container {
     padding: 0px !important;
 }`;
@@ -78,25 +84,36 @@ export class PeriodSelector extends SampleBase<{}, {}> {
                                    <stop offset="0"></stop>
                                    <stop offset="1"></stop>
                                 </linearGradient>
+                                <linearGradient id="material3-gradient-chart" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0"></stop>
+                                    <stop offset="1"></stop>
+                                </linearGradient>
+                                <linearGradient id="material3-dark-gradient-chart" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0"></stop>
+                                    <stop offset="1"></stop>
+                                </linearGradient>
                             </defs>
                         </svg>
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                    This sample renders the stock chart without period selector, data's can be navigated through range selector.
-                    </p>
+                    <p>By hiding the period selector in the stock chart, this sample visualizes the AAPL stock price. The tooltip and crosshair display data and period information.</p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the Stock chart.
-                        <code>AreaSeries</code> is used to represent selected data value.
-                  </p>
+                        In this example, you can see how to render and configure stock chart to visualize the stock data. The <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/stock-chart/stockChartModel/#enableperiodselector">enablePeriodSelector</a> property allows to toggle the visibility of period selector.
+                    </p>
+                    <p>
+                        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.
+                    </p>
                     <br></br>
                     <p>Injecting Module</p>
                     <p>
                         The Stock chart component features are segregated into individual feature-wise modules. To use date-time axis, inject
                         the <code>DateTime</code> module using the <code>StockChart.Inject(DateTime)</code> method.  To use the AreaSeries, inject the <code>AreaSeries</code> module using the <code>StockChart.Inject(AreaSeries)</code> method.
+                    </p>
+                    <p>
+                        More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -107,7 +124,7 @@ export class PeriodSelector extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-         replace(/-dark/i, "Dark") as  ChartTheme;
+         replace(/-dark/i, "Dark").replace(/contrast/i,  'Contrast') as  ChartTheme;
     };
       
 }

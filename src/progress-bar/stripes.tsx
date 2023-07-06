@@ -45,6 +45,12 @@ export class ProgressBarStripes extends SampleBase<{}, {}> {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
+        if (args.progressBar.theme === 'Material') {
+            args.progressBar.trackColor = '#eee';
+        }
+        if (selectedTheme === 'highcontrast') {
+            args.progressBar.trackColor = '#969696';
+        }
     }
     private replayClick(): void {
         if (!this.linearOne.animation.enable) {
@@ -102,7 +108,6 @@ export class ProgressBarStripes extends SampleBase<{}, {}> {
                                 progressThickness={this.progressThickness}
                                 trackThickness={this.trackThickness}
                                 role="Success"
-                                trackColor='#F5F5F5'
                                 isStriped={true}
                                 animation={{
                                     enable: true,
@@ -122,7 +127,6 @@ export class ProgressBarStripes extends SampleBase<{}, {}> {
                                 value={40}
                                 progressThickness={this.progressThickness}
                                 trackThickness={this.trackThickness}
-                                trackColor='#F5F5F5'
                                 isStriped={true}
                                 role='Info'
                                 animation={{
@@ -143,7 +147,6 @@ export class ProgressBarStripes extends SampleBase<{}, {}> {
                                 value={70}
                                 progressThickness={this.progressThickness}
                                 trackThickness={this.trackThickness}
-                                trackColor='#F5F5F5'
                                 isStriped={true}
                                 role='Warning'
                                 animation={{
@@ -164,7 +167,6 @@ export class ProgressBarStripes extends SampleBase<{}, {}> {
                                 value={100}
                                 progressThickness={this.progressThickness}
                                 trackThickness={this.trackThickness}
-                                trackColor='#F5F5F5'
                                 isStriped={true}
                                 role='Danger'
                                 animation={{

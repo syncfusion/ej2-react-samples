@@ -111,6 +111,8 @@
 .bootstrap5-dark .e-template-list,
 .tailwind .e-template-list,
 .tailwind-dark .e-template-list,
+.material3 .e-template-list,
+.material3-dark .e-template-list,
 .bootstrap4 .e-template-list {
     border: 0;
     border-radius: 0;
@@ -121,29 +123,29 @@
     padding: 0 16px;
 }
 
-.list-wrapper {
+#sidebarList {
     display: inline-flex;
     width: 100%;
 }
 
-.e-bigger .list-wrapper {
+.e-bigger #sidebarList {
     padding-left: 8px;
 }
 
-.list-wrapper .text {
+#sidebarList .text {
     padding-left: 14px;
 }
 
-.e-bigger .list-wrapper .text {
+.e-bigger #sidebarList .text {
     padding-left: 20px;
 }
 
-.e-listbox-wrapper .list-wrapper .text {
+.e-listbox-wrapper #sidebarList .text {
     font-weight: bold;
     font-size: 13px;
 }
 
-.list-wrapper .e-avatar {
+#sidebarList .e-avatar {
     background-color: transparent;
     float: left;
 }
@@ -154,47 +156,47 @@
     background-color: transparent;
 }
 
-.material .list-wrapper .e-avatar,
-.material-dark .list-wrapper .e-avatar,
-.highcontrast .list-wrapper .e-avatar {
+.material #sidebarList .e-avatar,
+.material-dark #sidebarList .e-avatar,
+.highcontrast #sidebarList .e-avatar {
     margin-top: 3px;
 }
 
-.fabric .list-wrapper .e-avatar,
-.fabric-dark .list-wrapper .e-avatar {
+.fabric #sidebarList .e-avatar,
+.fabric-dark #sidebarList .e-avatar {
     margin-top: 6px;
 }
 
-.material.e-bigger .list-wrapper .e-avatar,
-.material-dark.e-bigger .list-wrapper .e-avatar,
-.highcontrast.e-bigger .list-wrapper .e-avatar {
+.material.e-bigger #sidebarList .e-avatar,
+.material-dark.e-bigger #sidebarList .e-avatar,
+.highcontrast.e-bigger #sidebarList .e-avatar {
     margin-top: 7px;
 }
 
-.fabric-dark.e-bigger .list-wrapper .e-avatar,
-.fabric.e-bigger .list-wrapper .e-avatar,
-.bootstrap-dark.e-bigger .list-wrapper .e-avatar,
-.bootstrap.e-bigger .list-wrapper .e-avatar {
+.fabric-dark.e-bigger #sidebarList .e-avatar,
+.fabric.e-bigger #sidebarList .e-avatar,
+.bootstrap-dark.e-bigger #sidebarList .e-avatar,
+.bootstrap.e-bigger #sidebarList .e-avatar {
     margin-top: 10px;
 }
 
-.bootstrap .list-wrapper .e-avatar,
-.bootstrap-dark .list-wrapper .e-avatar {
+.bootstrap #sidebarList .e-avatar,
+.bootstrap-dark #sidebarList .e-avatar {
     margin-top: 5px;
 }
 
-.bootstrap5 .list-wrapper .e-avatar,
-.bootstrap5-dark .list-wrapper .e-avatar {
+.bootstrap5 #sidebarList .e-avatar,
+.bootstrap5-dark #sidebarList .e-avatar {
     margin-top: -3px;
 }
 
-.tailwind .list-wrapper .e-avatar,
-.tailwind-dark .list-wrapper .e-avatar {
+.tailwind #sidebarList .e-avatar,
+.tailwind-dark #sidebarList .e-avatar {
     margin-top: -1px;
 }
 
-.bootstrap5.e-bigger .list-wrapper .e-avatar,
-.bootstrap5-dark.e-bigger .list-wrapper .e-avatar {
+.bootstrap5.e-bigger #sidebarList .e-avatar,
+.bootstrap5-dark.e-bigger #sidebarList .e-avatar {
     margin-top: 0px;
 }
 

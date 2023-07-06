@@ -110,6 +110,11 @@
     outline: 1px solid #0078DE;
     border-color: #0078DE;
 }
+.material3 .e-rte-custom-tbar-section .char_block.e-active,
+.material3-dark .e-rte-custom-tbar-section .char_block.e-active {
+    outline: 1px solid #D0BCFF;
+    border-color: #D0BCFF;
+}
 
 .tailwind #emojiDialog .char_block.e-active {
     outline: 1px solid #3730a3;
@@ -169,6 +174,18 @@
     margin: 0;
 }
 
+.e-bigger #emojiDialog .e-footer-content {
+    padding: 5px;
+}
+
+.e-bigger #rteEmoticons-smiley {
+    padding: 15px 0 15px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    height: 246px;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
     .fabric.e-bigger #emojiDialog {
         min-width: 281px;
@@ -184,6 +201,10 @@
     }
     #rteEmoticons-smiley {
         padding: 15px 0 15px 8px;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: auto;
+        height: 246px;
     }
     .highcontrast.e-bigger #emojiDialog {
         min-width: 283px;

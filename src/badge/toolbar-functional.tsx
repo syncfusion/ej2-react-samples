@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { ToolbarComponent } from '@syncfusion/ej2-react-navigations';
 import './toolbar.css';
 
-function Toolbar() {
-    React.useEffect(() => {
+const Toolbar = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 

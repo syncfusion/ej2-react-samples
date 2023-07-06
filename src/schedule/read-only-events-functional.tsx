@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month,
-  Inject, Resize, DragAndDrop, PopupOpenEventArgs, ActionEventArgs, DragEventArgs, ResizeEventArgs
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, Inject, Resize, DragAndDrop, PopupOpenEventArgs, ActionEventArgs, DragEventArgs, ResizeEventArgs } from '@syncfusion/ej2-react-schedule';
 import './read-only-events.css';
 import { updateSampleSection } from '../common/sample-base';
 import { getReadOnlyEventsData } from './helper';
@@ -12,33 +10,33 @@ import { getReadOnlyEventsData } from './helper';
  * Schedule readonly events sample
  */
 
-function ReadonlyEvents() {
-  React.useEffect(() => {
+const ReadonlyEvents = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const data: Record<string, any>[] = getReadOnlyEventsData();
 
-  function onPopupOpen(args: PopupOpenEventArgs): void {
+  const onPopupOpen = (args: PopupOpenEventArgs): void => {
     if ((args.target && !args.target.classList.contains('e-appointment') && (args.type === 'QuickInfo')) || (args.type === 'Editor')) {
       args.cancel = onEventCheck(args);
     }
   }
 
-  function onActionBegin(args: ActionEventArgs): void {
+  const onActionBegin = (args: ActionEventArgs): void => {
     if ((args.requestType === 'eventCreate') || args.requestType === 'eventChange') {
       args.cancel = onEventCheck(args);
     }
   }
 
-  function onDragStop(args: DragEventArgs): void {
+  const onDragStop = (args: DragEventArgs): void => {
     args.cancel = onEventCheck(args);
   }
 
-  function onResizeStop(args: ResizeEventArgs): void {
+  const onResizeStop = (args: ResizeEventArgs): void => {
     args.cancel = onEventCheck(args);
   }
 
-  function onEventCheck(args: Record<string, any>): boolean {
+  const onEventCheck = (args: Record<string, any>): boolean => {
     let eventObj: Record<string, any> = args.data instanceof Array ? args.data[0] : args.data;
     return (eventObj.StartTime < new Date());
   }
@@ -47,8 +45,7 @@ function ReadonlyEvents() {
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' eventSettings={{ dataSource: data }} popupOpen={onPopupOpen.bind(this)}
-            actionBegin={onActionBegin.bind(this)} dragStop={onDragStop.bind(this)} resizeStop={onResizeStop.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' eventSettings={{ dataSource: data }} popupOpen={onPopupOpen} actionBegin={onActionBegin} dragStop={onDragStop} resizeStop={onResizeStop}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />

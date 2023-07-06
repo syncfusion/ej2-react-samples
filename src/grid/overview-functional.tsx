@@ -222,7 +222,7 @@ function OverView() {
             <ColumnDirective field='Location' headerText='Location' width='140' template={coltemplate}></ColumnDirective>
             <ColumnDirective field='Status' headerText='Status' template={statusTemplate} width='130'></ColumnDirective>
             <ColumnDirective field='Trustworthiness' headerText='Trustworthiness' template={trustTemplate} width='160'></ColumnDirective>
-            <ColumnDirective field='Rating' headerText='Rating' template={ratingTemplate} width='160' />
+            <ColumnDirective field='Rating' headerText='Rating' template={ratingTemplate} width='220' />
             <ColumnDirective field='Software' allowFiltering={false} allowSorting={false} headerText='Software Proficiency' width='180' template={progessTemplate} format='C2' />
             <ColumnDirective field='CurrentSalary' headerText='Current Salary' width='160' format='C2'></ColumnDirective>
             <ColumnDirective field='Address' headerText='Address' width='240' clipMode="EllipsisWithTooltip" ></ColumnDirective>

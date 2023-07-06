@@ -1,15 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MessageComponent } from '@syncfusion/ej2-react-notifications';
 import './customization.css';
 
 function Customization() {
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (
-        <div className='control-pane'>
+        <div className="control-pane">
             <div className="col-lg-12 control-section msg-custom-section">
                 <div className="content-section">
                     <h4>Content Alignment</h4>
@@ -31,6 +32,6 @@ function Customization() {
                 <p>In this sample, the Message component predefined content is aligned based on the <code>cssClass</code> property. Also, this component is rendered with a custom severity icon and custom appearance.</p>
             </div>
         </div>
-    )
-}
+    );
+};
 export default Customization;

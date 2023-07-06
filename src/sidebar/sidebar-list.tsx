@@ -8,7 +8,7 @@ export class SidebarWithList extends SampleBase<{}, {}> {
     public sidebarobj: SidebarComponent;
     public listTemplate(data: any): JSX.Element {
         return (
-            <div className="list-wrapper">
+            <div id="sidebarList">
                 <span className={`${data.pic} e-avatar e-avatar-xsmall e-avatar-circle`}></span>
                 <span className="text e-text-content">{data.text}</span>
             </div>);

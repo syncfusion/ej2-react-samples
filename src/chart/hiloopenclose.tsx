@@ -19,15 +19,6 @@ export let zoomPosition :number;
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
-    }
-    #title{
-        font-size: 15px;
-        font-style: normal;
-        font-family: "Segoe UI";
-        font-weight: 500;
-        text-anchor: middle;
-        transform: none;
-        opacity: 1;
     }`;
 
 export class HiloOpenClose extends SampleBase<{}, {}> {
@@ -39,9 +30,6 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                <div className="row" style={{ textAlign: "center" }}>
-                        <div id="title"> AAPL Historical</div>
-                </div>
                 <div className="row">
                     <ChartComponent id='charts' load={this.load.bind(this)} 
                         style={{ textAlign: "center" }}
@@ -60,8 +48,10 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                         }}
                         chartArea={{ border: { width: 0 } }}
                         tooltip={{
-                            enable: true, shared: true
+                            enable: true, shared: true,
+                            format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b> <br> Open : <b>${point.open}</b> <br> Close : <b>${point.close}</b>"
                         }}
+                        title="AAPL Historical"
                         axisLabelRender={this.axisLabelRender.bind(this)}
                         width={Browser.isDevice ? '100%' : '80%'}
                         legendSettings={{ visible: false }}
@@ -97,8 +87,8 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                        <code>HiloOpenCloseSeries</code> module into <code>services</code>.
                   </p>
                     <p>
-                        More information on the column series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the HILO Open Close series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/high-low-open-close">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -111,7 +101,7 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
     public axisLabelRender(args: IAxisLabelRenderEventArgs): void {

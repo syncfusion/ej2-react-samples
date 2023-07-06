@@ -1,16 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import './style.css';
 import * as data from './dataSource.json';
 
-function Grouping() {
-    React.useEffect(() => {
+const Grouping = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let listObj: MultiSelectComponent;
-    const temp:string = 'vegetableData';
+    const temp: string = 'vegetableData';
     //define the data with category
     const vegetableData: { [key: string]: Object }[] = data[temp];
     // map the groupBy field with category column
@@ -19,7 +19,7 @@ function Grouping() {
         <div id='multigroup' className='control-pane'>
             <div className='control-section'>
                 <div id="ms-multigroup" className="control-styles">
-                <h4>Grouping</h4>
+                    <h4>Grouping</h4>
                     <MultiSelectComponent id="grouping" dataSource={vegetableData} fields={groupFields} placeholder="Select vegetables" />
                 </div>
             </div>

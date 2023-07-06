@@ -127,8 +127,8 @@ export class PolarStackedColumn extends SampleBase<{}, {}> {
                        <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                        More information on the area series can be found in this &nbsp;
-                  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                        More information on the polar and radar series with a stacking column type chart can be found in this &nbsp;
+                  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/polar#stacked-column">documentation section</a>.
               </p>
                 </div>
             </div>
@@ -141,7 +141,7 @@ export class PolarStackedColumn extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

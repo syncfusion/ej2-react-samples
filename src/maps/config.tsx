@@ -122,8 +122,8 @@ export const MapSampleOrder: Object = [
     },
     {
         'path': 'maps/tooltip', 'component': 'TooltipMaps', 'name': 'Tooltip', 'sourceFiles': [
-            { 'displayName': 'tooltip.tsx.tsx', 'path': './src/maps/tooltip.tsx' },
-            { 'displayName': 'tooltip.tsx.jsx', 'path': './src/maps/tooltip.jsx' },
+            { 'displayName': 'tooltip.tsx', 'path': './src/maps/tooltip.tsx' },
+            { 'displayName': 'tooltip.jsx', 'path': './src/maps/tooltip.jsx' },
             { 'displayName': 'tooltip-datasource.json', 'path': './src/maps/map-data/tooltip-datasource.json' },
             { 'displayName': 'world-map.json', 'path': './src/maps/map-data/world-map.json' }
         ], 'description': 'This demo for Essential JS2 Maps control depicts the countries that were appeared in the finals of Cricket World Cup and their counts.', 'order': '04', 'category': 'User Interaction'

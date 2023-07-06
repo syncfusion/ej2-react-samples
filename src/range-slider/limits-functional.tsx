@@ -1,12 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useState, useRef, useEffect } from "react";
 import { SliderComponent, NumericTextBoxComponent, ChangeEventArgs as textboxChange } from '@syncfusion/ej2-react-inputs';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs as buttonChangeEvent } from '@syncfusion/ej2-buttons';
 import { PropertyPane } from '../common/property-pane';
-import { TooltipDataModel, TicksDataModel, LimitDataModel } from '@syncfusion/ej2-inputs';
+import { TooltipDataModel, TicksDataModel, LimitDataModel, SliderOrientation } from '@syncfusion/ej2-inputs';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
 const slidercss = `
@@ -44,64 +44,83 @@ const slidercss = `
 .property-custom .property-panel-content {
     height: 320px;
 }
-
 `
-function Limits() {
-    React.useEffect(() => {
+interface Slider {
+    enabled: boolean;
+    minStart: number;
+    minEnd: number;
+    startHandleFixed: boolean;
+}
+
+interface RangeSlider {
+    enabled: boolean;
+    minStart: number;
+    minEnd: number;
+    maxStart: number;
+    maxEnd: number;
+    startHandleFixed: boolean;
+    endHandleFixed: boolean;
+}
+
+const Limits = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+    const [slider, SetSlider] = useState<Slider>({
+      enabled: true,
+      minStart: 10,
+      minEnd: 40,
+      startHandleFixed: false,
+    });
+    const [rangeSlider, SetRangeSlider] = useState<RangeSlider>({
+      enabled: true,
+      minStart: 10,
+      minEnd: 40,
+      maxStart: 60,
+      maxEnd: 90,
+      startHandleFixed: false,
+      endHandleFixed: false,
+    });
     // Instance of the control
-    let minRangeObj: SliderComponent;
-    let rangeObj: SliderComponent;
-    let minStartObj: NumericTextBoxComponent;
-    let minEndObj: NumericTextBoxComponent;
-    let maxStartObj: NumericTextBoxComponent;
-    let maxEndObj: NumericTextBoxComponent;
-
-    let fixOneObj: CheckBoxComponent;
-    let fixTwoObj: CheckBoxComponent;
-
+    let minRangeObj = useRef<SliderComponent>(null);
+    let rangeObj = useRef<SliderComponent>(null);
+    let minEndObj = useRef<NumericTextBoxComponent>(null);
 
     // Initialize ticks with placement, largestep, smallstep
     let ticks: TicksDataModel = { placement: 'After', largeStep: 20, smallStep: 5, showSmallTicks: true };
     let tooltip: TooltipDataModel = { isVisible: true, placement: 'Before' };
-    let minRangeLimits: LimitDataModel = { enabled: true, minStart: 10, minEnd: 40 };
-    let rangeLimits: LimitDataModel = { enabled: true, minStart: 10, minEnd: 40, maxStart: 60, maxEnd: 90 };
 
-    function minStart(args: textboxChange) {
-        minRangeObj.limits.minStart = args.value;
-        rangeObj.limits.minStart = args.value;
+    const minStart = (args: textboxChange) => {
+        SetSlider({ ...slider, minStart: args.value });
+        SetRangeSlider({ ...rangeSlider, minStart: args.value });
     }
 
-    function minEnd(args: textboxChange) {
-        minRangeObj.limits.minEnd = args.value;
-        rangeObj.limits.minEnd = args.value;
+    const minEnd = (args: textboxChange) => {
+        SetSlider({ ...slider, minEnd: args.value });
+        SetRangeSlider({ ...rangeSlider, minEnd: args.value });
     }
 
-    function maxStart(args: textboxChange) {
-        minRangeObj.limits.maxStart = args.value;
-        rangeObj.limits.maxStart = args.value;
+    const maxStart = (args: textboxChange) => {
+        SetRangeSlider({ ...rangeSlider, maxStart: args.value });
     }
 
-    function maxEnd(args: textboxChange) {
-        minRangeObj.limits.maxEnd = args.value;
-        rangeObj.limits.maxEnd = args.value;
+    const maxEnd = (args: textboxChange) => {
+        SetRangeSlider({ ...rangeSlider, maxEnd: args.value });
     }
 
-    function fixOneChange(args: buttonChangeEvent) {
-        minRangeObj.limits.startHandleFixed = args.checked;
-        rangeObj.limits.startHandleFixed = args.checked;
+    const fixOneChange = (args: buttonChangeEvent) => {
+        SetSlider({ ...slider, startHandleFixed: args.checked });
+        SetRangeSlider({ ...rangeSlider, startHandleFixed: args.checked });
     }
 
-    function fixTwoChange(args: buttonChangeEvent) {
-        minRangeObj.limits.endHandleFixed = args.checked;
-        rangeObj.limits.endHandleFixed = args.checked;
+    const fixTwoChange = (args: buttonChangeEvent) => {
+        SetRangeSlider({ ...rangeSlider, endHandleFixed: args.checked });
     }
 
-    function refreshTooltip(e: any): void {
-        if (minEndObj && rangeObj) {
-            (minRangeObj as any).refreshTooltip((minRangeObj as any).tooltipTarget);
-            (rangeObj as any).refreshTooltip((rangeObj as any).tooltipTarget);
+    const refreshTooltip = (e: any): void => {
+        if ((minRangeObj as any).current && (rangeObj as any).current) {
+            (minRangeObj as any).current.refreshTooltip((minRangeObj as any).tooltipTarget);
+            (rangeObj as any).current.refreshTooltip((rangeObj as any).tooltipTarget);
         }
     }
 
@@ -117,12 +136,12 @@ function Limits() {
                         <div className='sliderwrap'>
                             <label>MinRange Slider With Limits</label>
                             {/* Initialize Slider Component with ticks with placement, largestep, smallstep */}
-                            <SliderComponent id='minrange' type="MinRange" value={25} min={0} max={100} ticks={ticks} limits={minRangeLimits} ref={(slider) => { minRangeObj = slider }} tooltip={tooltip} />
+                            <SliderComponent id='minrange' type="MinRange" value={25} min={0} max={100} ticks={ticks} limits={slider} tooltip={tooltip} ref={minRangeObj} />
                         </div>
                         <div className='sliderwrap'>
                             <label>Range Slider With Limits</label>
                             {/* Initialize Range Slider Component with ticks with placement, largestep, smallstep */}
-                            <SliderComponent id='range' value={[25, 75]} min={0} max={100} type='Range' limits={rangeLimits} ticks={ticks} tooltip={tooltip} ref={(slider) => { rangeObj = slider }} />
+                            <SliderComponent id='range' value={[25, 75]} min={0} max={100} type='Range' limits={rangeSlider} ticks={ticks} tooltip={tooltip} ref={rangeObj} />
                         </div>
                     </div>
                 </div>
@@ -135,9 +154,7 @@ function Limits() {
                                         <div className="userselect">MinStart</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <NumericTextBoxComponent value={10} min={0} max={100} change={minStart.bind(this)} ref={(obj) => {
-                                            minStartObj = obj;
-                                        }} />
+                                        <NumericTextBoxComponent value={10} min={0} max={100} change={minStart.bind(this)} />
                                     </td>
                                 </tr>
                                 <tr>
@@ -145,9 +162,7 @@ function Limits() {
                                         <div className="userselect">MinEnd</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <NumericTextBoxComponent value={40} min={0} max={100} change={minEnd.bind(this)} ref={(obj) => {
-                                            minEndObj = obj;
-                                        }} />
+                                        <NumericTextBoxComponent value={40} min={0} max={100} change={minEnd.bind(this)} ref={minEndObj}/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -155,9 +170,7 @@ function Limits() {
                                         <div className="userselect">MaxStart</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <NumericTextBoxComponent value={60} min={0} max={100} change={maxStart.bind(this)} ref={(obj) => {
-                                            maxStartObj = obj;
-                                        }} />
+                                        <NumericTextBoxComponent value={60} min={0} max={100} change={maxStart.bind(this)} />
                                     </td>
                                 </tr>
                                 <tr>
@@ -165,9 +178,7 @@ function Limits() {
                                         <div className="userselect">MaxEnd</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <NumericTextBoxComponent value={90} min={0} max={100} change={maxEnd.bind(this)} ref={(obj) => {
-                                            maxEndObj = obj;
-                                        }} />
+                                        <NumericTextBoxComponent value={90} min={0} max={100} change={maxEnd.bind(this)} />
                                     </td>
                                 </tr>
                                 <tr>
@@ -175,7 +186,7 @@ function Limits() {
                                         <div className="userselect">Lock First Handle</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <CheckBoxComponent ref={(scope) => { fixOneObj = scope; }} change={fixOneChange.bind(this)} />
+                                        <CheckBoxComponent checked={false} change={fixOneChange.bind(this)} />
                                     </td>
                                 </tr>
                                 <tr>
@@ -183,23 +194,20 @@ function Limits() {
                                         <div className="userselect">Lock Second Handle</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
-                                        <CheckBoxComponent ref={(scope) => { fixTwoObj = scope; }} change={fixTwoChange.bind(this)} />
+                                        <CheckBoxComponent checked={false} change={fixTwoChange.bind(this)} />
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </PropertyPane>
                 </div>
-
                 <div id="action-description">
                     <p>This sample demonstrates the rendering of Slider component with limits. Drag the thumb over the bar for selecting the
-                values between assigned limit values. Change the values in the property pane to set different limit values.</p>
-
+                       values between assigned limit values. Change the values in the property pane to set different limit values.
+                    </p>
                 </div>
-
                 <div id="description">
-                    <p>
-                        The limits are used to limit between certain range. When the limits are assigned, draggable limited area will be
+                    <p>The limits are used to limit between certain range. When the limits are assigned, draggable limited area will be
                         in the dark shadow color of the current theme. The limits APIs are explained below.
                     </p>
                     <p>
@@ -210,7 +218,7 @@ function Limits() {
                                 </td>
                                 <td>
                                     - &nbsp;&nbsp;Used to set minimum limit value for first handle.
-                        </td>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -218,7 +226,7 @@ function Limits() {
                                 </td>
                                 <td>
                                     - &nbsp;&nbsp;Used to set maximum limit value for first handle.
-                        </td>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -226,7 +234,7 @@ function Limits() {
                                 </td>
                                 <td>
                                     - &nbsp;&nbsp;Used to set minimum limit value for second handle.
-                        </td>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -234,7 +242,7 @@ function Limits() {
                                 </td>
                                 <td>
                                     - &nbsp;&nbsp;Used to set maximum limit value for first handle.
-                        </td>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -242,7 +250,7 @@ function Limits() {
                                 </td>
                                 <td>
                                     - &nbsp;&nbsp;Used to lock the first handle in the current position.
-                        </td>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -250,7 +258,7 @@ function Limits() {
                                 </td>
                                 <td>
                                     - &nbsp;&nbsp;Used to lock the second handle in the current position.
-                        </td>
+                                </td>
                             </tr>
                         </table>
                     </p>
@@ -258,8 +266,8 @@ function Limits() {
                     <ul>
                         <li>MinRange Slider – In this sample, the minimum and maximum limit of the slider is set to 10 and 40 respectively.</li>
                         <li>Range Slider – In this sample, the minimum and maximum limit of the first handle is set to 10 and 40 respectively
-                    and the minimum and maximum limit of the second handle is set to 60 and 90 respectively.
-                </li>
+                            and the minimum and maximum limit of the second handle is set to 60 and 90 respectively.
+                        </li>
                     </ul>
                     <p>For more information, refer to the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/limits/">limits</a> section from the documentation.</p>
                 </div>

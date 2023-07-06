@@ -1,28 +1,28 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DatePickerComponent, Inject, MaskedDateTime } from '@syncfusion/ej2-react-calendars';
 import './default-style.css';
 
-function MaskSupport() {
-    React.useEffect(() => {
+const MaskSupport = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    const dateValue: Date = new Date();
 
     return (
         <div className='control-pane'>
             <div className='control-section'>
                 <div className='datepicker-control-section'>
                     <DatePickerComponent format='M/d/yyyy' enableMask={true}>
-                    <Inject services={[MaskedDateTime]} />
+                        <Inject services={[MaskedDateTime]} />
                     </DatePickerComponent>
                 </div>
             </div>
             <div id="action-description">
                 <p>
                     The following sample demonstrates the date masking functionality in the DatePicker. It allows you to enter a valid value for each mask pattern of the date masking.
-                </p>						 
+                </p>
             </div>
             <div id='description'>
                 <p>

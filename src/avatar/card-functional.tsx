@@ -1,14 +1,11 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
+import { useEffect } from 'react';
 import { updateSampleSection } from "../common/sample-base";
 import "./card.css";
 
-// tslint:disable:max-line-length
-
-// *  Sample for CSS avatar component
-
-function Card() {
-  React.useEffect(() => {
+const Card = () => {
+  useEffect(() => {
     updateSampleSection();
   }, []);
 
@@ -31,22 +28,13 @@ function Card() {
             </div>
           </div>
           <div className="e-card-content">
-            <p className="avatar-content">
-              Laura received a BA in psychology from the University of
-              Washington. She has also completed a course in business French.
-              She reads and writes French.
-            </p>
+            <p className="avatar-content">Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.</p>
           </div>
         </div>
       </div>
-
       <div id="action-description">
-        <p>
-          This sample demonstrates the integration of avatar component with card
-          component to create business cards.
-        </p>
+        <p>This sample demonstrates the integration of avatar component with card component to create business cards.</p>
       </div>
-
       <div id="description">
         <p>
           The circle avatar is integrated into card component to design business

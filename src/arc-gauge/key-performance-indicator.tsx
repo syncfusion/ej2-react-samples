@@ -11,7 +11,7 @@
  import { SampleBase } from '../common/sample-base';
  
  const SAMPLE_CSS = `
-     .control-fluid { padding: 0px !important;}
+     .control-fluid { padding: 0px !important;} #gauge_Annotations_0 { line-height: 0.5;}
      .triangle-up { width: 20; height: 20; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 20px solid #84cbb5; margin-top: 10px; }
      .text { font-family:inherit; font-size:30px; text-align:center; }
      .percentage { font-family:inherit; font-size:44px; text-align:center; margin-left:-8px; }

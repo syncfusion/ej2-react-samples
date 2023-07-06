@@ -1,15 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import { rippleEffect } from '@syncfusion/ej2-base';
 import './button-group.css';
 
-function ButtonGroup() {
-    React.useEffect(() => {
+const ButtonGroup = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    function rendereComplete() {
+    const rendereComplete = () => {
         // To enable ripple in checkbox/radio type ButtonGroup.
         let buttons: NodeListOf<Element> = document.querySelectorAll('label.e-btn');
         let button: HTMLElement;

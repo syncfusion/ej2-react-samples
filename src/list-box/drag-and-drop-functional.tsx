@@ -3,42 +3,44 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { ListBoxComponent, FieldSettingsModel, DragEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { DataManager } from '@syncfusion/ej2-data';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './dataSource.json';
 import './drag-and-drop.css';
 
-function DragAndDrop() {
-    React.useEffect(() => {
+const DragAndDrop = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let listObj1: ListBoxComponent; let listObj2: ListBoxComponent;
-    let dataA: DataManager = new DataManager({
+    const listObj1 = useRef<ListBoxComponent>(null);
+    const listObj2 = useRef<ListBoxComponent>(null)
+    const dataA: DataManager = new DataManager({
         json: data["dragAndDropA"]
     });
-    let dataB: DataManager = new DataManager({
+    const dataB: DataManager = new DataManager({
         json: data["dragAndDropB"]
     });
-    let fields: FieldSettingsModel = { text: 'Name' };
-    let modifiedDataA: ModifiedRecords = { addedRecords: [], deletedRecords: [], changedRecords: [] };
-    let modifiedDataB: ModifiedRecords = { addedRecords: [], deletedRecords: [], changedRecords: [] };
-    function saveChanges(): void {
+    const fields: FieldSettingsModel = { text: 'Name' };
+    const modifiedDataA: ModifiedRecords = { addedRecords: [], deletedRecords: [], changedRecords: [] };
+    const modifiedDataB: ModifiedRecords = { addedRecords: [], deletedRecords: [], changedRecords: [] };
+    const saveChanges = (): void => {
         dataA.saveChanges(modifiedDataA, fields.text);
         dataB.saveChanges(modifiedDataB, fields.text);
         modifiedDataA.addedRecords = []; modifiedDataB.addedRecords = [];
     }
-    function onDropGroupA(args: DragEventArgs): void {
+    const onDropGroupA = (args: DragEventArgs): void => {
         args.items.forEach((item: { [key: string]: Object; }): void => {
-            if (!listObj1.getDataByValue(item[fields.text] as string)) {/*Preventing item manipulation on drag and drop within same list box.*/
+            if (!listObj1.current.getDataByValue(item[fields.text] as string)) {/*Preventing item manipulation on drag and drop within same list box.*/
                 modifiedDataB.addedRecords.push(item);
                 modifiedDataA.deletedRecords.push(item);
             }
         });
     }
-    function onDropGroupB(args: DragEventArgs): void {
+    const onDropGroupB = (args: DragEventArgs): void => {
         args.items.forEach((item: { [key: string]: Object; }): void => {
-            if (!listObj2.getDataByValue(item[fields.text] as string)) {
+            if (!listObj2.current.getDataByValue(item[fields.text] as string)) {
                 modifiedDataA.addedRecords.push(item);
                 modifiedDataB.deletedRecords.push(item);
             }
@@ -51,12 +53,12 @@ function DragAndDrop() {
                 <div id="drag-drop-wrapper">
                     <div className="listbox-control">
                         <h4>Group A</h4>
-                        <ListBoxComponent ref={(scope) => { listObj1 = scope; }} dataSource={dataA} scope="combined-list" height="330px" allowDragAndDrop={true} fields={fields} drop={onDropGroupA} />
+                        <ListBoxComponent ref={listObj1} dataSource={dataA} scope="combined-list" height="330px" allowDragAndDrop={true} fields={fields} drop={onDropGroupA} />
                     </div>
                     <span className="e-swap-icon"></span>
                     <div className="listbox-control">
                         <h4>Group B</h4>
-                        <ListBoxComponent ref={(scope) => { listObj2 = scope; }} dataSource={dataB} scope="combined-list" height="330px" allowDragAndDrop={true} fields={fields} drop={onDropGroupB} />
+                        <ListBoxComponent ref={listObj2} dataSource={dataB} scope="combined-list" height="330px" allowDragAndDrop={true} fields={fields} drop={onDropGroupB} />
                         <button className="e-btn" onClick={saveChanges}>Update</button>
                     </div>
                 </div>

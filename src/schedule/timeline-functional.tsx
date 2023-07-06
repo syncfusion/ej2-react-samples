@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    ScheduleComponent, ViewsDirective, ViewDirective, Agenda, TimelineViews, TimelineMonth, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef, useState } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Agenda, TimelineViews, TimelineMonth, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
 import { DatePickerComponent, ChangeEventArgs } from '@syncfusion/ej2-react-calendars';
@@ -14,26 +13,24 @@ import * as dataSource from './datasource.json';
  * Schedule timeline sample
  */
 
-function TimelineView() {
-    React.useEffect(() => {
+const TimelineView = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let scheduleObj: ScheduleComponent;
+    const scheduleObj = useRef<ScheduleComponent>(null);
     const workDays: number[] = [0, 1, 2, 3, 4, 5];
-    const data: Record<string, any>[] =
-        extend([], (dataSource as Record<string, any>).scheduleData.concat((dataSource as Record<string, any>).timelineData), null, true) as Record<string, any>[];
-
-    function change(args: ChangeEventArgs): void {
-        scheduleObj.selectedDate = args.value;
-        scheduleObj.dataBind();
+    const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData.concat((dataSource as Record<string, any>).timelineData), null, true) as Record<string, any>[];
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date(2021, 0, 10));
+    const change = (args: ChangeEventArgs): void => {
+        setSelectedDate(args.value);
+        scheduleObj.current.dataBind();
     }
 
     return (
         <div className='schedule-control-section'>
             <div className='col-lg-9 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent height='650px' ref={schedule => scheduleObj = schedule}
-                        selectedDate={new Date(2021, 0, 10)} workDays={workDays} eventSettings={{ dataSource: data }}>
+                    <ScheduleComponent height='650px' ref={scheduleObj} selectedDate={selectedDate} workDays={workDays} eventSettings={{ dataSource: data }}>
                         <ViewsDirective>
                             <ViewDirective option='TimelineDay' />
                             <ViewDirective option='TimelineWeek' />
@@ -52,9 +49,7 @@ function TimelineView() {
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
                                     <div className='datepicker-control-section'>
-                                        <DatePickerComponent value={new Date(2021, 0, 10)} showClearButton={false}
-                                            change={change.bind(this)} placeholder='Current Date' floatLabelType='Always'>
-                                        </DatePickerComponent>
+                                        <DatePickerComponent value={selectedDate} showClearButton={false} change={change} placeholder='Current Date' floatLabelType='Always' />
                                     </div>
                                 </td>
                             </tr>
@@ -66,8 +61,7 @@ function TimelineView() {
                 <p>This demo showcases how the timeline scheduler looks like with its default set of configurations.</p>
             </div>
             <div id='description'>
-                <p>
-                    Like the vertical scheduler, timeline view has the similar view types such as    </p>
+                <p>Like the vertical scheduler, timeline view has the similar view types such as</p>
                 <ul>
                     <li>Timeline Day</li>
                     <li>Timeline Week</li>
@@ -75,7 +69,8 @@ function TimelineView() {
                     <li>Timeline Month</li>
                 </ul>
                 <p>The Agenda and MonthAgenda views shares the same layout for both the vertical and timeline views.</p>
-                <p>To use any of the timeline views such as day, week and work week in your application, the common
+                <p>
+                    To use any of the timeline views such as day, week and work week in your application, the common
                     <code>TimelineViews</code> module needs to be injected using
                     <code>services</code> property under <code>Inject</code> tag. If in case, the timeline month view needs to be utilized, then
                     <code>TimelineMonth</code> module needs to be injected.

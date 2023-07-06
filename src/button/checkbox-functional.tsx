@@ -1,26 +1,26 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './checkbox.css';
 
-function CheckBox() {
-    React.useEffect(() => {
+const CheckBox = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let checkboxObj: CheckBoxComponent;
-
+    const [label, setLabel] = useState<string>('CheckBox: true')
     // function to handle the CheckBox change event
-    function onChange(args: ChangeEventArgs): void {
-        checkboxObj.label = 'CheckBox: ' + args.checked;
+    const onChange = (args: ChangeEventArgs) => {
+        setLabel('CheckBox: ' + args.checked)
     }
     return (
         <div className='control-pane'>
             <div className='control-section'>
                 <div className='checkbox-control'>
                     <div className='row'>
-                        <CheckBoxComponent checked={true} label='CheckBox: true' ref={(scope) => { checkboxObj = scope; }} change={onChange} ></CheckBoxComponent>
+                        <CheckBoxComponent checked={true} label={label} change={onChange.bind(this)} ></CheckBoxComponent>
                     </div>
                     <div className='row'>
                         <CheckBoxComponent label='Checked, Disabled' disabled={true} checked={true} ></CheckBoxComponent>

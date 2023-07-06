@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-    Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { Day, Week, WorkWeek, Month, Agenda, ScheduleComponent, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { extend } from '@syncfusion/ej2-base';
 import './resource.css';
 import { updateSampleSection } from '../common/sample-base';
@@ -12,14 +11,14 @@ import { CheckBox } from '@syncfusion/ej2-buttons';
 import { PropertyPane } from '../common/property-pane';
 import * as dataSource from './datasource.json';
 
-function Resource() {
-    React.useEffect(() => {
+const Resource = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let scheduleObj: ScheduleComponent;
-    let ownerOneObj: CheckBoxComponent;
-    let ownerTwoObj: CheckBoxComponent;
-    let ownerThreeObj: CheckBoxComponent;
+    let scheduleObj = useRef<ScheduleComponent>(null);
+    let ownerOneObj = useRef<CheckBoxComponent>(null);
+    let ownerTwoObj = useRef<CheckBoxComponent>(null);
+    let ownerThreeObj = useRef<CheckBoxComponent>(null);
     const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).resourceSampleData, null, true) as Record<string, any>[];
     const resourceData: Record<string, any>[] = [
         { Text: 'Margaret', Id: 1, Color: '#ea7a57' },
@@ -27,9 +26,9 @@ function Resource() {
         { Text: 'Laura', Id: 3, Color: '#865fcf' }
     ];
 
-    function onChange(): void {
+    const onChange = (): void => {
         let predicate: Predicate;
-        let checkBoxes: CheckBox[] = [ownerOneObj, ownerTwoObj, ownerThreeObj];
+        let checkBoxes: CheckBox[] = [ownerOneObj.current, ownerTwoObj.current, ownerThreeObj.current];
         checkBoxes.forEach((checkBoxObj: CheckBox) => {
             if (checkBoxObj.checked) {
                 if (predicate) {
@@ -39,19 +38,16 @@ function Resource() {
                 }
             }
         });
-        scheduleObj.eventSettings.query = new Query().where(predicate);
+        scheduleObj.current.eventSettings.query = new Query().where(predicate);
     }
 
     return (
         <div className='schedule-control-section'>
             <div className='col-lg-9 control-section'>
                 <div className='control-wrapper'>
-                    <ScheduleComponent cssClass='resource' width='100%' height='650px' selectedDate={new Date(2021, 5, 6)}
-                        ref={schedule => scheduleObj = schedule} eventSettings={{ dataSource: data }} >
+                    <ScheduleComponent cssClass='resource' width='100%' height='650px' selectedDate={new Date(2021, 5, 6)} ref={scheduleObj} eventSettings={{ dataSource: data }} >
                         <ResourcesDirective>
-                            <ResourceDirective field='OwnerId' title='Owners' name='Owners' allowMultiple={true}
-                                dataSource={resourceData} textField='Text' idField='Id' colorField='Color'>
-                            </ResourceDirective>
+                            <ResourceDirective field='OwnerId' title='Owners' name='Owners' allowMultiple={true} dataSource={resourceData} textField='Text' idField='Id' colorField='Color' />
                         </ResourcesDirective>
                         <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
                     </ScheduleComponent>
@@ -63,23 +59,17 @@ function Resource() {
                         <tbody>
                             <tr>
                                 <td>
-                                    <CheckBoxComponent ref={checkboxObj => ownerOneObj = checkboxObj} value='1'
-                                        id='margaret' cssClass='margaret' checked={true} label='Margaret'
-                                        change={onChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent ref={ownerOneObj} value='1' id='margaret' cssClass='margaret' checked={true} label='Margaret' change={onChange} />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <CheckBoxComponent ref={checkboxObj => ownerTwoObj = checkboxObj} value='2'
-                                        id='robert' cssClass='robert' checked={true} label='Robert'
-                                        change={onChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent ref={ownerTwoObj} value='2' id='robert' cssClass='robert' checked={true} label='Robert' change={onChange} />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <CheckBoxComponent ref={checkboxObj => ownerThreeObj = checkboxObj} value='3'
-                                        id='laura' cssClass='laura' checked={true} label='Laura'
-                                        change={onChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent ref={ownerThreeObj} value='3' id='laura' cssClass='laura' checked={true} label='Laura' change={onChange} />
                                 </td>
                             </tr>
                         </tbody>
@@ -87,12 +77,13 @@ function Resource() {
                 </PropertyPane>
             </div>
             <div id="action-description">
-                <p>This example demonstrates how to dynamically show or hide the appointments of resources on Scheduler based on
-                    the resource selection.</p>
+                <p>This example demonstrates how to dynamically show or hide the appointments of resources on Scheduler based on the resource selection.</p>
             </div>
             <div id="description">
-                <p>In this example, the resource appointments are dynamically shown or hidden on the Scheduler, by passing the
-                    filtered event data of selected resources to the <code>query</code> option of the <code>eventSettings</code>.</p>
+                <p>
+                    In this example, the resource appointments are dynamically shown or hidden on the Scheduler, by passing the
+                    filtered event data of selected resources to the <code>query</code> option of the <code>eventSettings</code>.
+                </p>
             </div>
         </div>
     );

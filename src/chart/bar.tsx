@@ -89,7 +89,7 @@ export class Bar extends SampleBase<{}, {}> {
                  </p>
                     <p>
                         More information on the bar series can be found in this &nbsp;
-                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bar-chart">documentation section</a>.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/bar">documentation section</a>.
                  </p>
                 </div>
             </div>

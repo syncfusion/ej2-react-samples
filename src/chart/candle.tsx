@@ -21,17 +21,7 @@ export let pointColors: string[] = [];
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
-    }
-    #title{
-        font-size: 15px;
-        font-style: normal;
-        font-family: "Segoe UI";
-        font-weight: 500;
-        text-anchor: middle;
-        transform: none;
-        opacity: 1;
-    }
-    `;
+    }`;
     /**
      * Candle sample
      */
@@ -45,9 +35,6 @@ export class Candle extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                <div className="row" style={{ textAlign: "center" }}>
-                        <div id="title"> AAPL Historical</div>
-                </div>
                 <div className="row">
                     <ChartComponent id='charts' style={{textAlign:"center"}}
                         ref={chart => this.chart1 = chart}
@@ -73,6 +60,7 @@ export class Candle extends SampleBase<{}, {}> {
                         tooltip={{
                             enable: true, shared: true
                         }}
+                        title="AAPL Historical"
                         width= { Browser.isDevice ? '100%' : '80%'}
                         crosshair={{ enable: true, lineType: 'Vertical' }}
                         pointRender={this.renderPoint.bind(this)}
@@ -125,8 +113,8 @@ export class Candle extends SampleBase<{}, {}> {
                        <code>CandleSeries</code> module into <code>services</code>.
                   </p>
                     <p>
-                        More information on the Candle series can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the candle series can be found in this &nbsp;
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/candle">documentation section</a>.
                   </p>
                 </div>
             </div >
@@ -143,7 +131,7 @@ export class Candle extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
     public axisLabelRender(args: IAxisLabelRenderEventArgs): void {

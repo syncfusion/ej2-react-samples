@@ -1,10 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -30,13 +31,13 @@ function Default() {
             </div>
             <div id="action-description">
                 <p>This sample demonstrates the default functionalities of the badge. To apply the badge, add
-                <code>.e-badge</code> class to the target element.</p>
+                    <code>.e-badge</code> class to the target element.</p>
             </div>
 
             <div id="description">
                 <p>
-                The Badge is a component which is developed in pure CSS and designed in
-                <code>em</code> relative units, so that badge will always be in relevant to the parent and makes the badge super easy to customize.
+                    The Badge is a component which is developed in pure CSS and designed in
+                    <code>em</code> relative units, so that badge will always be in relevant to the parent and makes the badge super easy to customize.
                 </p>
                 <p>For example, to increase the size of the badge, increase the font-size, width, and height.</p>
                 <p>There are 6 different types of badges as follows: </p>
@@ -73,6 +74,6 @@ function Default() {
             </div>
         </div>
     )
-    
+
 }
 export default Default;

@@ -1,30 +1,30 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { ProgressButtonComponent, SpinSettingsModel, AnimationSettingsModel } from '@syncfusion/ej2-react-splitbuttons';
 import { updateSampleSection } from '../common/sample-base';
 import './progress-button.css';
 
-function ProgressButton() {
-    React.useEffect(() => {
+const ProgressButton = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let contractBtn: ProgressButtonComponent;
-    let spinRight: SpinSettingsModel = { position: 'Right' };
-    let spinTop: SpinSettingsModel = { position: 'Top' };
-    let spinBottom: SpinSettingsModel = { position: 'Bottom' };
-    let spinCenter: SpinSettingsModel = { position: 'Center' };
-    let zoomOut: AnimationSettingsModel = { effect: 'ZoomOut' };
-    let slideLeft: AnimationSettingsModel = { effect: 'SlideLeft' };
-    let slideRight: AnimationSettingsModel = { effect: 'SlideRight' };
-    let zoomIn: AnimationSettingsModel = { effect: 'ZoomIn' };
-    let duration: number = 4000;
+    const spinRight: SpinSettingsModel = { position: 'Right' };
+    const spinTop: SpinSettingsModel = { position: 'Top' };
+    const spinBottom: SpinSettingsModel = { position: 'Bottom' };
+    const spinCenter: SpinSettingsModel = { position: 'Center' };
+    const zoomOut: AnimationSettingsModel = { effect: 'ZoomOut' };
+    const slideLeft: AnimationSettingsModel = { effect: 'SlideLeft' };
+    const slideRight: AnimationSettingsModel = { effect: 'SlideRight' };
+    const zoomIn: AnimationSettingsModel = { effect: 'ZoomIn' };
+    const duration: number = 4000;
 
-    function contractBegin() {
-        contractBtn.element.classList.add('e-round');
+    const [contractCssClass, setContractCssClass] = useState<string>("e-success e-small");
+    const contractBegin = () => {
+        setContractCssClass('e-success e-small e-round');
     }
-
-    function contractEnd() {
-        contractBtn.element.classList.remove('e-round');
+    const contractEnd = () => {
+        setContractCssClass('e-success e-small');
     }
 
     return (
@@ -57,11 +57,11 @@ function ProgressButton() {
                             <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                                 <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                                     <ProgressButtonComponent id="roundbtn" spinSettings={spinCenter} animationSettings={zoomOut} cssClass="e-round e-small e-success"
-                                        iconCss="e-btn-sb-icons e-play-icon"></ProgressButtonComponent>
+                                        iconCss="e-btn-sb-icons e-progress-play-icon"></ProgressButtonComponent>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                                    <ProgressButtonComponent id="contract" content="Contract" ref={(scope) => { contractBtn = scope; }} enableProgress cssClass="e-success e-small" begin={contractBegin}
+                                    <ProgressButtonComponent id="contract" content="Contract" enableProgress cssClass={contractCssClass} begin={contractBegin}
                                         end={contractEnd}></ProgressButtonComponent>
                                 </div>
                             </div>

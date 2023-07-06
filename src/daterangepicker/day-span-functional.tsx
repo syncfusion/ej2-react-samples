@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DateRangePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './dayspan-style.css';
 
-function DaySpan() {
-    React.useEffect(() => {
+const DaySpan = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const minDays: number = 5;
@@ -20,7 +21,7 @@ function DaySpan() {
             <div id="action-description">
                 <p>
                     In this sample, your date range selection is restricted to select <code>minimum</code> five days and <code>maximum</code> ten days.
-                </p>    
+                </p>
             </div>
             <div id="description">
                 <p>
@@ -31,7 +32,7 @@ function DaySpan() {
                 </p>
                 <p>More information on the DateRangePicker minDays/maxDays support can be found in the
                     <a href="https://ej2.syncfusion.com/react/documentation/daterangepicker/range-selection/#range-span"
-                    target="_blank"> documentation section</a>.
+                        target="_blank"> documentation section</a>.
                 </p>
             </div>
         </div>

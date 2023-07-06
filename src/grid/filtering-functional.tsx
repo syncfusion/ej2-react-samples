@@ -44,7 +44,7 @@ function Filtering() {
     }
     return (
         <div className='control-pane'>
-            <div className='col-lg-9 control-section row'>
+            <div className='col-lg-9 control-section'>
                 <div style={{ padding: '14px 0' }}>
                     <div className="select-wrap">
                         <DropDownListComponent id="ddlelement" dataSource={filData} fields={fields} change={onChange.bind(this)} placeholder="Select category to filter" width="200px" />
@@ -64,14 +64,16 @@ function Filtering() {
             <div className='col-lg-3 property-section'>
                 <PropertyPane title='Properties'>
                     <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                        <tr>
-                            <td style={{ width: '70%' }}>
-                                <div>Enable Filterbar operator </div>
-                            </td>
-                            <td style={{ width: '30%', padding: '10px 10px 10px 0px' }}>
-                                <CheckBoxComponent ref={(scope) => { checkboxObj = scope; }} change={onChanged.bind(this)}></CheckBoxComponent>
-                            </td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td style={{ width: '70%' }}>
+                                    <div>Enable Filterbar operator </div>
+                                </td>
+                                <td style={{ width: '30%', padding: '10px 10px 10px 0px' }}>
+                                    <CheckBoxComponent ref={(scope) => { checkboxObj = scope; }} change={onChanged.bind(this)}></CheckBoxComponent>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </PropertyPane>
             </div>

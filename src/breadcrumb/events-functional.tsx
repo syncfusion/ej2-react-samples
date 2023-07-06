@@ -1,48 +1,51 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { BreadcrumbComponent, BreadcrumbItemsDirective, BreadcrumbItemDirective } from '@syncfusion/ej2-react-navigations';
 import { BreadcrumbClickEventArgs, BreadcrumbBeforeItemRenderEventArgs } from '@syncfusion/ej2-navigations';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { getComponent } from '@syncfusion/ej2-base';
+import { getComponent, createElement } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import './events.css';
 
-function Events() {
-  React.useEffect(() => {
+const Events = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  function clearLog() {
-    document.getElementById('EventLog').innerHTML = '';
+
+  const [eventLog, setEventLog] = useState('');
+  let breadObj = useRef<BreadcrumbComponent>(null);
+  const eventObj = useRef(null);
+  const clearLog = () => {
+    setEventLog('');
   };
 
-  function createdHandler(): void {
+  const createdHandler = (): void => {
     logEvent('created');
   }
 
-  function clickHandler(args: BreadcrumbClickEventArgs): void {
+  const clickHandler = (args: BreadcrumbClickEventArgs): void => {
     logEvent(args.name);
   }
 
-  function beforeItemRenderHandler(args: BreadcrumbBeforeItemRenderEventArgs): void {
+  const beforeItemRenderHandler = (args: BreadcrumbBeforeItemRenderEventArgs): void => {
     logEvent(args.name);
   }
 
-  function logEvent(eventName: string): void {
-    let span: HTMLElement = document.createElement('span');
-    span.innerHTML = 'Breadcrumb <b>' + eventName + '</b> event is triggered<hr>';
-    let log: HTMLElement = document.getElementById('EventLog');
-    log.insertBefore(span, log.firstChild);
+  const logEvent = (eventName: string) => {
+    setEventLog(prevLog => `Breadcrumb <b>${eventName}</b> event is triggered<hr>${prevLog}`);
   }
 
-  function btnClick(): void {
-    let breadcrumb, breadcrumbInst, breadcrumbs = document.querySelector('.content-wrapper').getElementsByClassName("e-breadcrumb");
-    for (let i = 0; i < breadcrumbs.length; i++) {
-      breadcrumb = breadcrumbs[i];
-      breadcrumbInst = (getComponent(breadcrumb as HTMLElement, 'breadcrumb') as BreadcrumbComponent);
-      breadcrumbInst.activeItem = breadcrumbInst.items[breadcrumbInst.items.length - 1].text;
-    }
+  const btnClick = (): void => {
+    let breadcrumbInst, breadcrumb = breadObj.current.element;
+    breadcrumbInst = (getComponent(breadcrumb as HTMLElement, 'breadcrumb') as BreadcrumbComponent);
+    breadcrumbInst.activeItem = breadcrumbInst.items[breadcrumbInst.items.length - 1].text;
   }
+  useEffect(() => {
+    const eventEle = eventObj.current;
+    eventEle.innerHTML = eventLog;
+  }, [eventLog])
 
   return (
     <div className='control-pane'>
@@ -51,13 +54,12 @@ function Events() {
           <div className="row material2">
             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
               <h5 style={{ display: "inline-block" }}>Breadcrumb with Events</h5>
-              <ButtonComponent cssClass='e-small reset-btn'
-                onClick={btnClick}>Reset State</ButtonComponent>
+              <ButtonComponent cssClass='e-small reset-btn' onClick={btnClick}>Reset State</ButtonComponent>
             </div>
           </div>
           <div className="row material2">
             <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12 e-breadcrumb-icons">
-              <BreadcrumbComponent created={createdHandler} itemClick={clickHandler} beforeItemRender={beforeItemRenderHandler}>
+              <BreadcrumbComponent created={createdHandler} itemClick={clickHandler} ref={breadObj} beforeItemRender={beforeItemRenderHandler}>
                 <BreadcrumbItemsDirective>
                   <BreadcrumbItemDirective text="Program Files" iconCss="e-bicons e-folder"></BreadcrumbItemDirective>
                   <BreadcrumbItemDirective text="Commom Files" iconCss="e-bicons e-folder"></BreadcrumbItemDirective>
@@ -74,8 +76,8 @@ function Events() {
           <table id="property" title="Event Trace">
             <tr>
               <td>
-                <div className="eventarea" style={{ height: "245px", overflow: "auto" }}>
-                  <span className="EventLog" id="EventLog" style={{ wordBreak: "normal" }}></span>
+                <div className="eventarea" ref={eventObj} style={{ height: "245px", overflow: "auto" }}>
+                  <span className="EventLog" id="EventLog" style={{ wordBreak: "normal" }} dangerouslySetInnerHTML={{ __html: eventLog }}></span>
                 </div>
               </td>
             </tr>

@@ -65,14 +65,14 @@ public template1: any = this.gridImageTemplate;
 public template2: any = this.gridUrlTemplate;
 
   public toolbarClick(args: ClickEventArgs): void {
-    switch (args.item.text) {
-      case 'PDF Export':
+    switch (args.item.id) {
+      case 'DefaultExport_pdfexport':
         this.gridInstance.pdfExport();
         break;
-      case 'Excel Export':
+      case 'DefaultExport_excelexport':
         this.gridInstance.excelExport();
         break;
-      case 'CSV Export':
+      case 'DefaultExport_csvexport':
         this.gridInstance.csvExport();
         break;
     }
@@ -81,7 +81,7 @@ public template2: any = this.gridUrlTemplate;
     return (
       <div className='control-pane'>
         <div className='col-lg-9 control-section'>
-          <GridComponent dataSource={employeeDetails} ref={ grid => this.gridInstance = grid} toolbar={this.toolbarOptions}
+          <GridComponent id="DefaultExport" dataSource={employeeDetails} ref={ grid => this.gridInstance = grid} toolbar={this.toolbarOptions}
           allowExcelExport={true} allowSorting={true} allowPdfExport={true} allowGrouping={true} toolbarClick={this.toolbarClick.bind(this)}
            dataBound={this.dataBound.bind(this)} excelQueryCellInfo={this.exportQueryCellInfo.bind(this)} pdfQueryCellInfo={this.exportQueryCellInfo.bind(this)} height='350'>
             <ColumnsDirective>

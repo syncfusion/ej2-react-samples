@@ -1,9 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews,
-  EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -17,31 +15,37 @@ import * as dataSource from './datasource.json';
  * Schedule start and end hour sample
  */
 
-function DayHourLimit() {
-  React.useEffect(() => {
+const DayHourLimit = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
-
-  function onSubmit(): void {
-    let start: HTMLInputElement = document.getElementById('startTime') as HTMLInputElement;
-    let end: HTMLInputElement = document.getElementById('endTime') as HTMLInputElement;
-    scheduleObj.startHour = start.value;
-    scheduleObj.endHour = end.value;
+  const [startTime, setStartTime] = useState<string>('08:00');
+  const [endTime, setEndTime] = useState<string>('20:00');
+  const [startHour, setStartHour] = useState<string>(startTime);
+  const [endHour, setEndHour] = useState<string>(endTime);
+  const [currentView, setCurrentView] = useState<View>('Week');
+  const onSubmit = (): void => {
+    setStartHour(startTime)
+    setEndHour(endTime)
   }
-
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onStartTimeChange = (args: any) => {
+    setStartTime(args.target.element.value)
   }
-
+  const onEndTimeChange = (args: any) => {
+    setEndTime(args.target.element.value)
+  }
+  const onNavigating = (args: NavigatingEventArgs): void => {
+    setCurrentView(args.currentView as View);
+  }
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, currentView);
+  }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={schedule => scheduleObj = schedule}
-            startHour='08:00' endHour='20:00' selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }}
-            workHours={{ highlight: false }} eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' startHour={startHour} endHour={endHour} currentView={currentView} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} workHours={{ highlight: false }} eventRendered={onEventRendered} navigating={onNavigating}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -59,16 +63,14 @@ function DayHourLimit() {
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div className='timepicker-control-section range'>
-                    <TimePickerComponent id='startTime' value={new Date(2000, 0, 1, 8)} format='HH:mm'
-                      placeholder='Start Hour' floatLabelType='Always'></TimePickerComponent>
+                    <TimePickerComponent id='startTime' value={new Date(2000, 0, 1, 8)} format='HH:mm' placeholder='Start Hour' floatLabelType='Always' onChange={onStartTimeChange.bind(this)} />
                   </div>
                 </td>
               </tr>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div className='timepicker-control-section range'>
-                    <TimePickerComponent id='endTime' value={new Date(2000, 0, 1, 20)} format='HH:mm'
-                      placeholder='End Hour' floatLabelType='Always'></TimePickerComponent>
+                    <TimePickerComponent id='endTime' value={new Date(2000, 0, 1, 20)} format='HH:mm' placeholder='End Hour' floatLabelType='Always'onChange={onEndTimeChange.bind(this)} />
                   </div>
                 </td>
               </tr>

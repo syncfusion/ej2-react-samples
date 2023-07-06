@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, AxesDirective, AxisDirective, Inject,
-    LineSeries, HiloOpenCloseSeries, Crosshair, DateTime, ILoadedEventArgs, ChartTheme
+    LineSeries, HiloOpenCloseSeries, Crosshair, DateTime, ILoadedEventArgs, ChartTheme, Zoom
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { axesData } from './financial-data';
@@ -40,8 +40,12 @@ export class CrosshairChart extends SampleBase<{}, {}> {
                         width={Browser.isDevice ? '100%' : '75%'}
                         title='Conns,Inc Stock Details' loaded={this.onChartLoad.bind(this)}
                         crosshair={{ enable: true }}
+                        zoomSettings={{
+                            enablePinchZooming: true,
+                            enableSelectionZooming: true, mode: 'X'
+                        }}
                         legendSettings={{ visible: false }}>
-                        <Inject services={[LineSeries, HiloOpenCloseSeries, Crosshair, DateTime]} />
+                        <Inject services={[LineSeries, HiloOpenCloseSeries, Crosshair, DateTime, Zoom]} />
                         <AxesDirective>
                             <AxisDirective majorGridLines={{ width: 0 }}
                                 rowIndex={0}
@@ -109,7 +113,7 @@ export class CrosshairChart extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
         
 }

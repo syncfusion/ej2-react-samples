@@ -13,16 +13,16 @@ export class Remote extends SampleBase<{}, {}> {
 
     //Initialize dataSource with the DataManager instance.
     public dataSource: DataManager = new DataManager({
-      url: '//js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/',
+      url: 'https://services.syncfusion.com/react/production/api/',
       crossDomain: true
   });
 
     //Initialize query with the Query instance to get specified set of data
-    public query:Query= new Query().from('Products').select('ProductID,ProductName').take(10);
+    public query:Query= new Query().from('ListView').select('EmployeeID,FirstName').take(10);
 
     //Map the appropriate columns to fields property
     private fields: {[key:string]: string} ={
-      id: 'ProductID', text: 'ProductName'
+      id: 'EmployeeID', text: 'FirstName'
     };
 
   render() {
@@ -31,7 +31,7 @@ export class Remote extends SampleBase<{}, {}> {
         <div className='control-section'>
 
         {/* ListView element */}
-        <ListViewComponent id='sample-list' dataSource={this.dataSource} fields={this.fields} query={this.query} headerTitle='Products' showHeader={true}></ListViewComponent>
+        <ListViewComponent id='sample-list' dataSource={this.dataSource} fields={this.fields} query={this.query} headerTitle='Employees' showHeader={true}></ListViewComponent>
         </div>
 
         <div id="action-description">

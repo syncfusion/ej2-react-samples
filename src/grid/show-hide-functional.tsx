@@ -26,12 +26,21 @@ function ShowHide() {
         flag = false;
         let hidden: boolean = element.classList.contains('e-ghidden');
         let classFn: Function = hidden ? removeClass : addClass;
-        classFn([element], 'e-ghidden');
-
+        const visibleColumns: HTMLElement[] = Array.from(ToolbarInstance.element.getElementsByClassName('e-tbar-btn-text'))
+        .filter((item) => !((item as HTMLElement).classList.contains('e-ghidden'))) as HTMLElement[];
+        const isLastVisibleColumn = visibleColumns.length === 1 && visibleColumns[0].parentElement === element.parentElement;
+      
         if (hidden) {
-            gridInstance.showColumns(element.innerHTML);
+          classFn([element], 'e-ghidden');
+          gridInstance.showColumns(element.innerHTML);
         } else {
-            gridInstance.hideColumns(element.innerHTML);
+          if (isLastVisibleColumn) {
+            alert("At least one column should be visible.");
+            flag = true;
+            return;
+          }
+          classFn([element], 'e-ghidden');
+          gridInstance.hideColumns(element.innerHTML);
         }
         flag = true;
     }

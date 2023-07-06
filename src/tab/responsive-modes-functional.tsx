@@ -1,34 +1,28 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PropertyPane } from '../common/property-pane';
-import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
+import { HeaderPosition, OverflowMode, TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import './tab.component.css';
 
-function Responsive() {
-    React.useEffect(() => {
+const Responsive = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let tabObj: TabComponent;
+    const [overflow, setOverflow] = useState<OverflowMode>("Scrollable");
+    const [headerPlacement, setHeaderPlacement] = useState<HeaderPosition>("Top");
 
     // Change event funtion for DropDownList component   
-    function changeOrientationMode(e: ChangeEventArgs): void {
-        let placement: string = (document.getElementById('orientation') as HTMLSelectElement).value;
-        tabObj.headerPlacement = placement as any;
-        tabObj.dataBind();
+    const changeOrientationMode = (e: ChangeEventArgs): void => {
+        setHeaderPlacement(e.itemData.text as HeaderPosition);
     }
 
     // Change event funtion for DropDownList component   
-    function changeOverflowMode(e: ChangeEventArgs): void {
-        let placement: string = (document.getElementById('mode') as HTMLSelectElement).value;
-        if (placement === 'Popup') {
-            tabObj.overflowMode = 'Popup';
-        } else {
-            tabObj.overflowMode = 'Scrollable';
-        }
-        tabObj.dataBind();
+    const changeOverflowMode = (e: ChangeEventArgs): void => {
+        setOverflow(e.itemData.text as OverflowMode);
     }
 
     // Mapping DropDownList dataSource property
@@ -61,7 +55,7 @@ function Responsive() {
                 <div className='col-lg-8 control-section'>
                     <div className='e-sample-resize-container'>
                         {/* Render the Tab Component */}
-                        <TabComponent ref={(tab) => { tabObj = tab }} cssClass='responsive-mode' heightAdjustMode='None' height='250px' width='auto'>
+                        <TabComponent cssClass='responsive-mode' heightAdjustMode='None' height='250px' width='auto' overflowMode={overflow} headerPlacement={headerPlacement}>
                             <TabItemsDirective>
                                 <TabItemDirective header={headertext[0]}
                                     content={'HyperText Markup Language, commonly referred to as HTML, is the standard markup ' +
@@ -135,8 +129,7 @@ function Responsive() {
                                 <td style={{ width: '50%' }}>
                                     <div>
                                         {/* Render the DropDownList Component */}
-                                        <DropDownListComponent id='mode' width={'90%'} dataSource={mData} fields={fields} value={mVal}
-                                            change={changeOverflowMode.bind(this)} />
+                                        <DropDownListComponent id='mode' width={'90%'} dataSource={mData} fields={fields} value={mVal} change={changeOverflowMode} />
                                     </div>
                                 </td>
                             </tr>
@@ -147,8 +140,7 @@ function Responsive() {
                                 <td style={{ width: '50%' }}>
                                     <div>
                                         {/* Render the DropDownList Component */}
-                                        <DropDownListComponent id='orientation' dataSource={oData} fields={fields}
-                                            value={orientVal} width={'90%'} change={changeOrientationMode.bind(this)} />
+                                        <DropDownListComponent id='orientation' dataSource={oData} fields={fields} value={orientVal} width={'90%'} change={changeOrientationMode} />
                                     </div>
                                 </td>
                             </tr>
@@ -176,8 +168,7 @@ function Responsive() {
                 </p>
                 <p>
                     More information about Tab can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">  documentation
-                    </a> section.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">  documentation</a> section.
                 </p>
             </div>
         </div>

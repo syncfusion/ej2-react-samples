@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    AreaSeries, DateTime, Legend, Zoom, ILoadedEventArgs, ChartTheme, ScrollBar
+    SplineAreaSeries, DateTime, Legend, Zoom, ILoadedEventArgs, ChartTheme, ScrollBar
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
@@ -67,6 +67,14 @@ const SAMPLE_CSS = `
             stop-color: #8AB113;
         }
 
+        #material3-gradient-chart stop {
+            stop-color: #6355C7;
+        }
+    
+        #material3-dark-gradient-chart stop {
+            stop-color: #4EAAFF;
+        }
+
         .chart-gradient stop[offset="0"] {
             stop-opacity: 0.75;
         }
@@ -92,8 +100,8 @@ export function GetZoomingData(): any {
     return { 'series1': series1 };
 }
 export let data: any[] = GetZoomingData().series1;
-let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentDark'];
-let borderColor: string[] = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#614570', '#8AB113'];
+let themes: string[] = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark'];
+let borderColor: string[] = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#614570', '#8AB113', '#6355C7', '#4EAAFF'];
 
 export class Zooming extends SampleBase<{}, {}> {
 
@@ -124,13 +132,14 @@ export class Zooming extends SampleBase<{}, {}> {
                         legendSettings={{ visible: false }}
                         zoomSettings={{
                             enableMouseWheelZooming: true, enablePinchZooming: true,
-                            enableSelectionZooming: true, mode: 'X', enableScrollbar: true
+                            enableSelectionZooming: true, mode: 'X', enableScrollbar: true, 
+                            showToolbar: true
                         }}
                         title='Sales History of Product X' loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[AreaSeries, DateTime, Legend, Zoom, ScrollBar]} />
+                        <Inject services={[SplineAreaSeries, DateTime, Legend, Zoom, ScrollBar]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} xName='x' yName='y' name='Product X' border={{ width: 0.5 }}
-                                animation={{ enable: false }} type='Area'>
+                            <SeriesDirective dataSource={data} xName='x' yName='y' name='Product X' border={{ width: 2 }}
+                                animation={{ enable: false }} type='SplineArea'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>
@@ -193,15 +202,23 @@ export class Zooming extends SampleBase<{}, {}> {
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
+                        <linearGradient id="material3-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="material3-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
                     </defs>
                 </svg>
                 <div id="action-description">
-                <p>
-                This sample illustrates zooming feature in chart. The change can be zoomed by pinching or by mouse wheel. 
-            </p>
+                    <p>
+                        This sample demonstrates the zooming and panning features of the charts.
+                    </p>
                 </div>
                 <div id="description">
-                    <p>This sample demonstrates the zooming and panning behavior in chart.</p>
+                    <p>This sample shows the following zooming and panning behaviors.</p>
                     <ul>
                         <li>Click and drag the mouse on a chart area to enable selection zooming.</li>
                         <li>Hover the mouse on the toolbar at the top right corner of chart area to switch between zooming and panning.</li>
@@ -242,7 +259,7 @@ export class Zooming extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
         args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
         args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];
     };

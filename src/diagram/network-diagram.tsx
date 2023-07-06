@@ -464,9 +464,6 @@ const SAMPLE_CSS = `
   display: block;
   right: 15px;
 }
-.e-file-select-wrap {
-  display: none;
-}
 .material #networkDiagram #palette-space .e-accordion {
   border: none;
 }

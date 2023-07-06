@@ -11,9 +11,9 @@ import { samplesList } from './sample-list';
 import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay } from './index';
 import * as samplesJSON from './all-routes';
 import { MyWindow } from './leftpane';
-import * as hljs from './lib/highlightjs';
 import { setSelectList } from './leftpane';
 
+declare let CodeMirror: any;
 declare let window: MyWindow;
 let samLength: number;
 // Regex for hidden code removal
@@ -142,9 +142,10 @@ function rendercopycode(): void {
 function dynamicTab(e: any): void {
     let blockEle: HTMLElement = select('#sb-source-tab > .e-content > #e-content'+this.tabId+'_' + e.selectedIndex) as HTMLElement;
     let codeEle: any = blockEle.children[0];
-    codeEle.innerHTML = (srcTab.items[e.selectedIndex] as any).data;
+    let sourceFile: any = srcTab.items[e.selectedIndex];
+    codeEle.innerHTML = sourceFile.data;
     codeEle.innerHTML = codeEle.innerHTML.replace(reg,'');
-    highlightCode(codeEle);
+    highlightCode(codeEle, sourceFile.properties.content.split('.')[1]);
     setTimeout(() => {
         let sbTabOverlay: any = select('.sb-tab-overlay');
         sbTabOverlay.classList.add('sb-hide');
@@ -153,14 +154,32 @@ function dynamicTab(e: any): void {
 
 function dynamicTabCreation(obj: any): void {
     let blockEle: Element = obj.element.querySelector('#e-content'+obj.tabId+'_' + obj.selectedItem).children[0];
-    blockEle.innerHTML = obj.items[obj.selectedItem].data;
+    let sourceFile: any = obj.items[obj.selectedItem];
+    blockEle.innerHTML = sourceFile.data;
     blockEle.innerHTML = blockEle.innerHTML.replace(reg,'');
-    highlightCode(blockEle);
+    highlightCode(blockEle, sourceFile.properties.content.split('.')[1]);
 }
 
-function highlightCode(codeEle: Element): void {
-    codeEle.classList.add("sb-src-code");
-    hljs.highlightBlock(codeEle);
+function highlightCode(codeEle: Element, fileType: string): void {
+    const types: Object = {
+        'tsx': 'text/typescript-jsx',
+        'jsx': 'text/jsx',
+        'css': 'text/css',
+        'js': 'javascript',
+        'json': 'application/json'
+    }
+    const parentEle: ParentNode = codeEle.parentNode;
+    if (!parentEle.querySelector('.sb-src-code')) {
+        const textELe: HTMLTextAreaElement = document.createElement('textarea');
+        textELe.classList.add("sb-src-code");
+        textELe.innerHTML = codeEle.innerHTML;
+        parentEle.replaceChild(textELe, codeEle);
+        CodeMirror.fromTextArea(document.querySelector(`#${(parentEle as HTMLElement).id} .sb-src-code`), {
+            mode: `${types[fileType]}`,
+            readOnly: 'nocursor',
+            theme: `${selectedTheme.includes('-dark') || selectedTheme === 'highcontrast' ? 'mbo' : 'default'}`
+        });
+    }
   }
 
 function renderActionDescription(): void {
@@ -316,6 +335,7 @@ function renderSourceTabContent(): void {
                 sampleContent = getStringWithOutDescription(sampleContent, /(\'|\")action-description/g)
                 sampleContent = getStringWithOutDescription(sampleContent, /(\'|\")description/g);
                 sampleContent = trimUseEffect(sampleContent, /React.useEffect/g);
+                sampleContent = trimUseEffect(sampleContent, /useEffect/g);
                 sampleContent = trimImportModules(sampleContent, 'updateSampleSection');
                 sampleContent = sampleContent.replace(/&/g, '&amp;')
                     .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -486,7 +506,7 @@ export function setNavButtonState(): void {
  * copy clipboard function
  */
 function copyCode(): void {
-    let copyElem: HTMLElement = select('#sb-source-tab .e-item.e-active') as HTMLElement;
+    let copyElem: HTMLElement = select('#sb-source-tab .e-item.e-active .sb-src-code') as HTMLElement;
     let textArea: HTMLTextAreaElement = createElement('textArea') as HTMLTextAreaElement;
     textArea.textContent = copyElem.textContent.trim();
     document.body.appendChild(textArea);

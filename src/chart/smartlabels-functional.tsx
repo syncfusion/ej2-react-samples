@@ -3,13 +3,10 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-import {
-    AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,
-    Inject, AccumulationLegend, AccumulationDataLabel, PieSeries, IAccLoadedEventArgs, AccumulationTheme,
-    AccumulationTooltip
-} from '@syncfusion/ej2-react-charts';
-import { Browser, EmitType } from '@syncfusion/ej2-base';
+import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, Inject, AccumulationDataLabel, PieSeries, IAccLoadedEventArgs, AccumulationTheme, AccumulationTooltip } from '@syncfusion/ej2-react-charts';
+import { Browser } from '@syncfusion/ej2-base';
 export let data1: any[] = [
     { 'x': 'USA', y: 46, text: Browser.isDevice ? 'USA: 46' : 'United States of America: 46' },
     { 'x': 'China', y: 26, text: 'China: 26' },
@@ -31,60 +28,42 @@ export let data1: any[] = [
     { 'x': 'South Africa', y: 2, text: Browser.isDevice ?  'SA: 2' :  'South Africa: 2' },
     { 'x': 'North Korea', y: 2, text: Browser.isDevice ?  'KP: 2' : 'North Korea: 2' }
 ];
-function SmartLabels() {
-    React.useEffect(() => {
+const SmartLabels = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
+    const onChartLoad = (args: IAccLoadedEventArgs): void => {
+        document.getElementById('pie-chart').setAttribute('title', '');
+    };
+    const load = (args: IAccLoadedEventArgs): void => {
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as AccumulationTheme;
+    };
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <AccumulationChartComponent id='pie-chart'
-                    title='Rio Olympics Gold'
-                    tooltip={{ enable: true, format: '<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>' }}
-                    load={load.bind(this)}
-                    enableBorderOnMouseMove={false}
-                    legendSettings={{
-                        visible: false
-                    }}
-                    loaded={onChartLoad.bind(this)}>
+                <AccumulationChartComponent id='pie-chart' title='Rio Olympics Gold' tooltip={{ enable: true, format: '<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>' }} load={load.bind(this)} enableBorderOnMouseMove={false} legendSettings={{ visible: false }} loaded={onChartLoad.bind(this)}>
                     <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
                     <AccumulationSeriesCollectionDirective>
-                        <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' startAngle={60} 
-                            dataLabel={{
-                                visible: true, position: 'Outside',
-                                connectorStyle: { length: '20px', type: 'Curve' }, name: 'text',
-                                font: { fontWeight: '600' }
-                            }}
-                            radius= {Browser.isDevice ? '40%' : '70%'}
-                        >
-                        </AccumulationSeriesDirective>
+                        <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' startAngle={60} dataLabel={{ visible: true, position: 'Outside', connectorStyle: { length: '20px', type: 'Curve' }, name: 'text', font: { fontWeight: '600' } }} radius= {Browser.isDevice ? '40%' : '70%'} />
                     </AccumulationSeriesCollectionDirective>
                 </AccumulationChartComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample shows the gold medal count scored by each country at the Rio Olympic Games using smart labels on the chart.
-                </p>
+                <p>This sample shows the gold medal count scored by each country at the Rio Olympic Games using smart labels on the chart.</p>
             </div>
             <div id="description">
-                <p> In this example, you can see how the labels can be arranged smartly without overlapping. You can use the <code>EnableSmartLabels</code> property to enable or disable the support.</p>
+                <p> 
+                    In this example, you can see how the labels can be arranged smartly without overlapping. You can use the <code>EnableSmartLabels</code> property to enable or disable the support.
+                </p>
                 <p style={{ fontWeight: 500 }}> Injecting Module </p>
                 <p> Accumulation chart component features are segregated into individual feature-wise modules. To use DataLabel, we need to inject <code>AccumulationDataLabel</code> into <code>services</code>.</p>
                 <p>
                     More information on the pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/#smart-labels">documentation section</a>.
                 </p>
             </div>
-
         </div>
-    )
-    function onChartLoad(args: IAccLoadedEventArgs): void {
-        document.getElementById('pie-chart').setAttribute('title', '');
-    };
-    function load(args: IAccLoadedEventArgs): void {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as AccumulationTheme;
-    };
+    )    
 }
 export default SmartLabels;

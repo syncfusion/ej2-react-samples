@@ -36,7 +36,9 @@
 .bootstrap5 #rtePreview .e-icon-btn .e-md-preview::before,
 .bootstrap5-dark #rtePreview .e-icon-btn .e-md-preview::before,
 .fluent #rtePreview .e-icon-btn .e-md-preview::before,
-.fluent-dark #rtePreview .e-icon-btn .e-md-preview::before {
+.fluent-dark #rtePreview .e-icon-btn .e-md-preview::before,
+.material3 #rtePreview .e-icon-btn .e-md-preview::before,
+.material3-dark #rtePreview .e-icon-btn .e-md-preview::before {
     content: '\e7de';
 }
 

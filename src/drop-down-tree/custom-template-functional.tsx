@@ -1,20 +1,20 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownTreeComponent } from '@syncfusion/ej2-react-dropdowns';
 import './custom-template.css';
 import * as dataSource from './customTemplate-data.json';
 
-function CustomTemplate() {
-    React.useEffect(() => {
+const CustomTemplate = () => {
+    useEffect(() => {
         updateSampleSection();
-        }, [])
-    let ddtreeObj: DropDownTreeComponent;
-    let data = dataSource as any;
-    let fields: Object = { dataSource: data.customTemplateData, value: 'id', parentValue: 'pid', text: 'name', hasChildren: 'hasChild' };
-    let showCheckBox: boolean = true;
-    let treeSettings: Object = { autoCheck: true };
-    let customTemplate: string = "${value.length} item(s) selected";
+    }, [])
+    const data = dataSource as any;
+    const fields: Object = { dataSource: data.customTemplateData, value: 'id', parentValue: 'pid', text: 'name', hasChildren: 'hasChild' };
+    const showCheckBox: boolean = true;
+    const treeSettings: Object = { autoCheck: true };
+    const customTemplate: string = "${value.length} item(s) selected";
     return (
         <div className='control-pane'>
             <div className='col-lg-12 control-section dropdowntree-custom'>

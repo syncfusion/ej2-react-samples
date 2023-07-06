@@ -1,14 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ListViewComponent, SelectEventArgs } from '@syncfusion/ej2-react-lists';
+import { useEffect, useRef, useState } from 'react';
+import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { SidebarComponent, ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './dock.css';
 function Dock() {
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let dockBar: SidebarComponent;
+    let dockBar = useRef<SidebarComponent>(null);
     //Toolbar component template element specification
     let folderEle: string = '<div class= "e-folder"><div class= "e-folder-name">React Documentation</div></div>';
     let ListData: { [key: string]: Object }[] = [
@@ -41,7 +42,18 @@ function Dock() {
             " from a list of predefined values. It has several out-of-the-box features, such as data binding," +
             " filtering, grouping, UI customization, accessibility, and preselected values." }
     ];
+
+    const [description, setDescription] = useState(ListData[0].description.toString());
     let listFields: { [key: string]: Object } = { id: "id", text: "text", iconCss: "iconcss" };
+
+    const toolbarCliked = (args: ClickEventArgs) => {
+        if(args.item.tooltipText == "Menu") {
+            dockBar.current.toggle();
+        }
+    }
+    const onSelect = (args: any) => {
+        setDescription(args.data.description);
+    }
     return(
         <div className="control-section" id="dock-wrapper">
             {/* main content declaration */}
@@ -55,20 +67,12 @@ function Dock() {
             </div>
             <div id="main-content container-fluid col-md-12" className="dockmaincontent">
                 <div>
-                    <div id="dockContent" className="dockContent">
-                        The React DataGrid is a feature-rich component useful for displaying data in a tabular format.
-                        Its wide range of functionalities includes data binding, editing, Excel-like
-                        filtering, custom sorting, aggregating rows, selection, and support for Excel, CSV, and
-                        PDF formats. It loads millions of records in just a second. It has flexible editing and
-                        intuitive record selection modes. Also, it has seamless data exporting options like PDF,
-                        CSV, and Excel.
-                    </div>
+                    <div id="dockContent" className="dockContent">{description}</div>
                 </div>
             </div>
             {/* sidebar component */}
-            <SidebarComponent id="dockSidebar" ref={Sidebar => (dockBar as any) = Sidebar} className="dockSidebar" width="220px" dockSize="60px" target=".dockmaincontent" enableDock={true} type="Auto">
-                <ListViewComponent id="dockList" dataSource={ListData} cssClass="e-template-list" showIcon={true} fields={listFields} select={onSelect.bind(this)}>
-                </ListViewComponent>
+            <SidebarComponent id="dockSidebar" ref={dockBar} className="dockSidebar" width="220px" dockSize="60px" target=".dockmaincontent" enableDock={true} type="Auto">
+                <ListViewComponent id="dockList" dataSource={ListData} cssClass="e-template-list" showIcon={true} fields={listFields} select={onSelect.bind(this)}></ListViewComponent>
             </SidebarComponent>
             <div id="action-description">
                 <p>
@@ -86,15 +90,6 @@ function Dock() {
         </div>
     );
         
-    function toolbarCliked(args: ClickEventArgs) {
-        if(args.item.tooltipText == "Menu") {
-            dockBar.toggle();
-        }
-    }
-    function onSelect(args: any) {
-        document.getElementById("dockContent").innerHTML = args.data.description;
-    }
+    
 }
 export default Dock;
-
-

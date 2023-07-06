@@ -1,24 +1,24 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { updateSampleSection } from '../common/sample-base';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import './treeview.css';
 import * as dataSource from './dataSource/multiSelect-data.json';
 
-function MultiSelect() {
-  React.useEffect(() => {
+const MultiSelect = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const data = dataSource as any;
   const fields: Object = { dataSource: data.multiSelectData, id: 'id', parentID: 'pid', text: 'name', hasChildren: 'hasChild', selected: 'isSelected' };
-  const allowMultiSelection: boolean = true;
 
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <div className='tree-control_wrapper'>
           {/* Render the TreeView with node multi select option */}
-          <TreeViewComponent fields={fields} allowMultiSelection={allowMultiSelection} />
+          <TreeViewComponent fields={fields} allowMultiSelection={true} />
         </div>
       </div>
       <div id="action-description">

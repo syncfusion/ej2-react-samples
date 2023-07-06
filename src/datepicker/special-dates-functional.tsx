@@ -1,17 +1,18 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { DatePickerComponent, RenderDayCellEventArgs } from '@syncfusion/ej2-react-calendars';
 import { addClass } from '@syncfusion/ej2-base';
 import './special-style.css';
 
-function Special() {
-    React.useEffect(() => {
+const Special = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const dateValue: Date = new Date('1/7/2017');
 
-    function specialDate(args, name) {
+    const specialDate = (args, name) => {
         let span = document.createElement('span');
         span.setAttribute('class', 'e-icons highlight');
         args.element.firstElementChild.setAttribute('title', name + '!');
@@ -21,7 +22,7 @@ function Special() {
         args.element.appendChild(span);
     }
 
-    function customDates(args: RenderDayCellEventArgs): void {
+    const customDates = (args: RenderDayCellEventArgs): void => {
         /*Date need to be customized*/
         if (args.date.getDate() === 10) {
             specialDate(args, "Birthday");

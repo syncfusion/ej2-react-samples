@@ -3,26 +3,55 @@
  */
  import * as ReactDOM from 'react-dom';
  import * as React from 'react';
+ import { useState, useEffect } from 'react';
  import { updateSampleSection } from '../common/sample-base';
  import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
  import { PropertyPane } from '../common/property-pane';
  import './sample.css';
+
+ interface NumericBox {
+   min: number;
+   max: number;
+   step: number;
+ }
  
-function Range() {
-    React.useEffect(() => {
+const Range = () => {
+    useEffect(() => {
         updateSampleSection();
-        renderComplete();
     }, [])
+    const [minValue, setMinValue] = useState<number>(10);
+    const [maxValue, setMaxValue] = useState<number>(100);
+    const [stepValue, setStepValue] = useState<number>(1);
+    const [numericBoxValues, setNumericBoxvalues] = useState<NumericBox>({
+      min: 10,
+      max: 100,
+      step: 1,
+    });
+
+    const minvalue = (args: any): void => {
+      setMinValue(parseInt(args.currentTarget.value));
+    }
+    const maxvalue = (args: any): void => {
+      setMaxValue(parseInt(args.currentTarget.value));
+    }
+    const stepvalue = (args: any): void => {
+      setStepValue(parseInt(args.currentTarget.value));
+    }
+    const applyRange = () => {
+      setNumericBoxvalues({
+        min: minValue,
+        max: maxValue,
+        step: stepValue
+      });
+    }
     return (
         <div className='control-pane'>
             <div className='control-section'>
                 <div className=' col-lg-8'>
                     <div className="content-wrapper format-wrapper sample-numeric">
-                        <div className="control-label">Numeric TextBox
-                        </div>
+                        <div className="control-label">Numeric TextBox</div>
                         {/* Render numeric textbox with restriction in entering values */}
-                        <NumericTextBoxComponent min={10} max={100} value={15} ref={numeric => numericInstance = numeric} >
-                        </NumericTextBoxComponent>
+                        <NumericTextBoxComponent min={numericBoxValues.min} max={numericBoxValues.max} step={numericBoxValues.step} value={15} />
                     </div>
                 </div>
                 <div className='col-lg-4 property-section'>
@@ -34,7 +63,7 @@ function Range() {
                                 </td>
                                 <td style={{ width: '70%', paddingRight: '10px' }}>
                                     <div>
-                                        <input id="min" type="number" inputMode="numeric" className="form-control" />
+                                        <input id="min" value={minValue} type="number" inputMode="numeric" className="form-control" onChange={minvalue.bind(this)}/>
                                     </div>
                                 </td>
                             </tr>
@@ -44,7 +73,7 @@ function Range() {
                                 </td>
                                 <td style={{ width: '70%', paddingRight: '10px' }}>
                                     <div>
-                                        <input id="max" type="number" inputMode="numeric" className="form-control" />
+                                        <input id="max" value={maxValue} type="number" inputMode="numeric" className="form-control" onChange={maxvalue.bind(this)}/>
                                     </div>
                                 </td>
                             </tr>
@@ -54,7 +83,7 @@ function Range() {
                                 </td>
                                 <td style={{ width: '70%', paddingRight: '10px' }}>
                                     <div>
-                                        <input id="step" type="number" inputMode="numeric" max={100} min={0} className="form-control" />
+                                        <input id="step" value={stepValue} type="number" inputMode="numeric" max={100} min={0} className="form-control" onChange={stepvalue.bind(this)}/>
                                     </div>
                                 </td>
                             </tr>
@@ -62,7 +91,7 @@ function Range() {
                                 <td></td>
                                 <td>
                                     <div>
-                                        <button id="buttonApply" className="e-btn-small btn btn-primary" style={{ marginBottom: '10px' }} onClick={applyRange.bind(this)}>Apply</button>
+                                        <button id="buttonApply" className="e-btn-small btn btn-primary" style={{ marginBottom: '10px' }} onClick={applyRange}>Apply</button>
                                     </div>
                                 </td>
                             </tr>
@@ -79,40 +108,23 @@ function Range() {
                 </p>
                 <ul>
                     <li>
-                      When you enable the <b>strictMode</b> property, the value will automatically change within a range on passing
-                      the out-of-range values.
+                        When you enable the <b>strictMode</b> property, the value will automatically change within a range on passing
+                        the out-of-range values.
                     </li>
                     <li>
-                      When you disable the <b>strictMode</b> property, the NumericTextBox component allows the out-of-range value with the highlighted
-                      textbox to indicate the given value is wrong.
+                        When you disable the <b>strictMode</b> property, the NumericTextBox component allows the out-of-range value with the highlighted
+                        textbox to indicate the given value is wrong.
                     </li>
                 </ul>
                 <p>
-                  In this demo, numeric textbox is restricted between 10 to 100 through the min and max properties. So you can enter only the value between
-                  this range.
+                    In this demo, numeric textbox is restricted between 10 to 100 through the min and max properties. So you can enter only the value between
+                    this range.
                 </p>
                 <p>
-                  More information on the range validation configuration can be found in the <a href="https://ej2.syncfusion.com/react/documentation/numerictextbox/getting-started/#range-validation" target="_blank">documentation section</a>.
+                    More information on the range validation configuration can be found in the <a href="https://ej2.syncfusion.com/react/documentation/numerictextbox/getting-started/#range-validation" target="_blank">documentation section</a>.
                 </p>
             </div>
        </div >
     )
-}
-let numericInstance: NumericTextBoxComponent;
-
-function renderComplete(): void {
-    /**custom render complete function */
-    (document.getElementById('min') as HTMLInputElement).value = '10';
-    (document.getElementById('max') as HTMLInputElement).value = '100';
-    (document.getElementById('step') as HTMLInputElement).value = '1';
-}
-
-function applyRange(): void {
-    let min: number = parseFloat((document.getElementById('min') as HTMLInputElement).value);
-    let max: number = parseFloat((document.getElementById('max') as HTMLInputElement).value);
-    let step: number = parseFloat((document.getElementById('step') as HTMLInputElement).value);
-    numericInstance.min = min;
-    numericInstance.max = max;
-    numericInstance.step = isNaN(step) ? 1 : step;
 }
 export default Range;

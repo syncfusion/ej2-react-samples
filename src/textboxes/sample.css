@@ -1,12 +1,12 @@
 .e-upload-picture:before {
-    content: '\e335';
+    content: '\e60f';
     font-family: e-icons;
     font-size: 14px;
 }
 
 .tailwind .control-section.input-content-wrapper .e-upload-picture:before,
 .tailwind-dark .control-section.input-content-wrapper .e-upload-picture:before {
-    content: '\e7da';
+    content: '\e712';
     font-size: 17px;
 }
 
@@ -20,7 +20,9 @@
 }
 
 .bootstrap5 .e-upload-picture::before,
-.bootstrap5-dark .e-upload-picture::before {
+.bootstrap5-dark .e-upload-picture::before,
+.material3 .e-upload-picture:before,
+.material3-dark .e-upload-picture:before {
     content: '\e712';
     font-family: e-icons;
 }
@@ -119,7 +121,9 @@
     padding: 0px 15px;
 }
 .multiline-wrapper {
-    margin: 40px 200px;
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 40px 0px 0px;
 }
 .multiline-property .left-side{
     font-size: 14px;

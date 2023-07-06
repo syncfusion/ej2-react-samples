@@ -21,23 +21,23 @@ function HeaderTemplate() {
                   return (<div><img src="src/treegrid/images/__Task name.png" width="20" height="20" className="taskName" />
                     <b className='e-header'>Task Name</b></div>);
                 }}></ColumnDirective>
-              <ColumnDirective field='startDate' headerText='Start Date' format='yMd' type='date' textAlign='Right'
+              <ColumnDirective field='startDate' headerText='Start Date' format='yMd' type='date' textAlign='Right' width='120'
                 headerTemplate={() => {
                   return (<div><img src="src/treegrid/images/__Start name.png" width="20" height="20" className="startDate" />
                     <b className='e-header'>Start Date</b></div>);
                 }}
               />
-              <ColumnDirective field='resourceId' textAlign='Right'
+              <ColumnDirective field='resourceId' textAlign='Right' width='120'
                 headerTemplate={() => {
                   return (<div><img src="src/treegrid/images/__Resources.png" width="20" height="20" className="resources" />
                     <b className='e-header'>Resources</b></div>);
                 }} />
-              <ColumnDirective field='duration' textAlign='Right'
+              <ColumnDirective field='duration' textAlign='Right' width='110'
                 headerTemplate={() => {
                   return (<div><img src="src/treegrid/images/__Duration.png" width="20" height="20" className="duration" />
                     <b className='e-header'>Duration</b></div>);
                 }} />
-              <ColumnDirective field='progress' headerText='progress' textAlign='Right'
+              <ColumnDirective field='progress' headerText='progress' textAlign='Right' width='150'
                 headerTemplate={() => {
                   return (<div><img src="src/treegrid/images/__progress.png" width="20" height="20" className="progress-column" />
                     <b className='e-header'>Progress</b></div>);

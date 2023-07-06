@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { ScheduleComponent, ViewsDirective, ViewDirective, Month, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { generateObject } from './helper';
 import { updateSampleSection } from '../common/sample-base';
@@ -8,8 +9,8 @@ import { updateSampleSection } from '../common/sample-base';
  * Schedule custom month view sample
  */
 
-function CustomMonthView() {
-    React.useEffect(() => {
+const CustomMonthView = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (

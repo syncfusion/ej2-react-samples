@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 import { MultiSelectComponent, CheckBoxSelection, Inject } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
@@ -8,30 +9,31 @@ import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import './checkbox.css';
 import * as data from './dataSource.json';
 
-function SelectionLimit() {
-    React.useEffect(() => {
+const SelectionLimit = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    const temp:string = 'countries';
+    const temp: string = 'countries';
     //define the data with category
     const countries: { [key: string]: Object; }[] = data[temp];
     // maps the appropriate column to fields property
     const checkFields: Object = { text: 'Name', value: 'Code' };
-    let mulObj: MultiSelectComponent;
-    function applyRange(): void {
-        let value: number = parseFloat((document.getElementById('length') as HTMLInputElement).value);
-        mulObj.value = null;
-        mulObj.maximumSelectionLength = value;
+    const [maximumSelectionLength, setMaximumSelectionLength] = useState<number>(3);
+    const [value, setValue] = useState<string[] | number[] | boolean[]>(null);
+    const applyRange = (): void => {
+        let textBoxValue: number = parseFloat((document.getElementById('length') as HTMLInputElement).value);
+        setValue(value === null ? [''] : null);
+        setMaximumSelectionLength(textBoxValue);
     }
     return (
         <div id="multichecbox" className='control-pane'>
             <div className='control-section col-lg-8'>
                 <div id="multigroup" className="control-styles">
-                <h4>Selection Limit</h4>
-                    <MultiSelectComponent id="checkbox" ref={(scope) => { mulObj = scope; }} dataSource={countries}
-                     fields={checkFields} placeholder="Select countries" mode="CheckBox"
-                     showDropDownIcon={true} maximumSelectionLength={3} filterBarPlaceholder="Search countries" popupHeight="350px">
-                     <Inject services={[CheckBoxSelection]} />
+                    <h4>Selection Limit</h4>
+                    <MultiSelectComponent id="checkbox" dataSource={countries}
+                        fields={checkFields} placeholder="Select countries" mode="CheckBox" value={value}
+                        showDropDownIcon={true} maximumSelectionLength={maximumSelectionLength} filterBarPlaceholder="Search countries" popupHeight="350px">
+                        <Inject services={[CheckBoxSelection]} />
                     </MultiSelectComponent>
                 </div>
             </div>
@@ -44,7 +46,7 @@ function SelectionLimit() {
                             </td>
                             <td>
                                 <div>
-                                    <NumericTextBoxComponent id='length' format="n0" max={countries.length} value={3} min={1}></NumericTextBoxComponent>
+                                    <NumericTextBoxComponent id='length' format="n0" max={countries.length} value={maximumSelectionLength} min={1} />
                                 </div>
                             </td>
                         </tr>
@@ -61,7 +63,7 @@ function SelectionLimit() {
             </div>
             <div id="action-description">
                 <p>This sample demonstrates the maximum selection limit functionalities with checkbox of the MultiSelect. MultiSelect value
-                  can set restrictions based on the maximum selection length that can be selected.</p>
+                    can set restrictions based on the maximum selection length that can be selected.</p>
             </div>
             <div id="description">
                 <p>The MultiSelect has built-in support to limit the value selected in Multiselect component, when the <code>maximumSelectionLength</code>property is set as <code>3</code>, maximum of only 3 value will be selected in the MultiSelect.</p>

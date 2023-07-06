@@ -1,8 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import {
-  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews, EventRenderedArgs, Inject, Resize, DragAndDrop
-} from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews, EventRenderedArgs, Inject, Resize, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -15,29 +14,27 @@ import * as dataSource from './datasource.json';
  *  Schedule scroll to particular hour sample
  */
 
-function ScrollTo() {
-  React.useEffect(() => {
+const ScrollTo = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let scheduleObj: ScheduleComponent;
+  let scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).scheduleData, null, true) as Record<string, any>[];
 
   /*Apply scroll to the schedule component*/
-  function onChange(args: ChangeEventArgs): void {
-    scheduleObj.scrollTo(args.text);
+  const onChange = (args: ChangeEventArgs): void => {
+    scheduleObj.current.scrollTo(args.text);
   }
 
-  function onEventRendered(args: EventRenderedArgs): void {
-    applyCategoryColor(args, scheduleObj.currentView);
+  const onEventRendered = (args: EventRenderedArgs): void => {
+    applyCategoryColor(args, scheduleObj.current.currentView);
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={schedule => scheduleObj = schedule}
-            selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }}
-            eventRendered={onEventRendered.bind(this)}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 0, 10)} eventSettings={{ dataSource: data }} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -55,9 +52,7 @@ function ScrollTo() {
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div>
-                    <TimePickerComponent value={new Date(2000, 0, 1, 9)} format='HH:mm'
-                      change={onChange.bind(this)} placeholder='Scroll To' floatLabelType='Always'>
-                    </TimePickerComponent>
+                    <TimePickerComponent value={new Date(2000, 0, 1, 9)} format='HH:mm' change={onChange} placeholder='Scroll To' floatLabelType='Always' />
                   </div>
                 </td>
               </tr>

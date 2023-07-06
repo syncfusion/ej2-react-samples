@@ -1,15 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SidebarComponent, TreeViewComponent, ToolbarComponent, NodeSelectEventArgs, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
 import { ListViewComponent, SelectEventArgs } from '@syncfusion/ej2-react-lists';
 import { updateSampleSection } from '../common/sample-base';
 import './sidebar-component.css';
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let sidebarobj: SidebarComponent;
-    let listObj: ListViewComponent;
+    let sidebarobj = useRef<SidebarComponent>(null);
+    let listObj = useRef<ListViewComponent>(null);
     //ListView data source initialization
     let inboxData: { [key: string]: Object }[] = [
         { id: "1", text: "Albert Lives", subject: "Business dinner invitation", message: "Hello Uta Morgan," },
@@ -57,15 +58,18 @@ function Default() {
         { id: "9", name: "Sent Items", pid: "5" },
         { id: "12", name: "Outbox", pid: "5" },
     ];
+    const [data, setData] = useState<{[key: string]: Object}[]>(inboxData);
+
     let treeFields: { [key: string]: Object } = { dataSource: treeData, id: "id", text: "name", selected: "selected", parentID: "pid", hasChildren: "hasChild", expanded: "expanded" };
-    function listTemplate(data: any): JSX.Element {
+    const listTemplate = (data: any) => {
         return (
             <div className="e-list-wrapper e-list-avatar e-list-multi-line">
                 <span className="e-avatar e-avatar-circle e-icon sf-icon-profile"></span>
                 <span className="e-list-item-header">{data.text}</span>
                 <span className="e-list-content">{data.subject}</span>
                 <span className="e-list-text">{data.message}</span>
-            </div>);
+            </div>
+        );
     }
     //Toolbar component template element specification
     let folderEle: string = '<div class= "e-folder"><div class= "e-folder-name">Webmail</div></div>';
@@ -73,6 +77,43 @@ function Default() {
     let imageEle: string = '<div class= "image-container"><img height="20px" src="src/sidebar/images/user.svg" alt="John"></img></div>';
     //ListView Fields Mapping
     let fields: { [ key: string]: Object } = { id: "id", text: "text" }
+    //open / close the sidebar
+    const toolbarCliked = (args: ClickEventArgs) => {
+        if(args.item.tooltipText == "Menu") {
+            sidebarobj.current.toggle();
+        }
+    }
+    const beforeSelect = (args: NodeSelectEventArgs) => {
+        if (args.nodeData.text == "Favorites" || args.nodeData.text == "John") {
+            args.cancel = true;
+        }
+    }
+    const onSelect = (args: NodeSelectEventArgs) => {
+        if (args.nodeData.text == "Inbox")
+        {
+            setData(inboxData);
+        }
+        else if (args.nodeData.text == "Sent Items")
+        {
+            setData(sentItemData);
+        }
+        else if (args.nodeData.text == "Drafts")
+        {
+            setData(draftsData);
+        }
+        else if (args.nodeData.text == "Deleted Items")
+        {
+            setData(deleteData);
+        }
+        else if (args.nodeData.text == "Outbox")
+        {
+            setData(outBoxData);
+        }
+    }
+    const onListSelect = (args: SelectEventArgs) => {
+        args.item.classList.remove("e-active");
+    }
+
     return (
         <div className="control-section" id="sidebar-wrapper">
             {/* main content declaration */}
@@ -87,14 +128,12 @@ function Default() {
                 </ToolbarComponent>
             </div>
             <div className="maincontent">
-                <ListViewComponent id="listView" ref={ListView => (listObj as any) = ListView} template={listTemplate as any} cssClass="e-list-template" dataSource={inboxData} fields={fields} select={onListSelect.bind(this)}>
-                </ListViewComponent>
+                <ListViewComponent id="listView" ref={listObj} template={listTemplate as any} cssClass="e-list-template" dataSource={data} fields={fields} select={onListSelect.bind(this)}></ListViewComponent>
             </div>
             {/* end of main content declaration */}
             {/* sidebar element declaration */}
-            <SidebarComponent id="defaultSidebar" ref={Sidebar => (sidebarobj as any) = Sidebar} className="default-sidebar" width="260px" target=".maincontent" position="Left">
-                <TreeViewComponent id="defaultTree" fields={treeFields} nodeSelecting={beforeSelect.bind(this)} nodeSelected={onSelect.bind(this)}>
-                </TreeViewComponent>
+            <SidebarComponent id="defaultSidebar" ref={sidebarobj} className="default-sidebar" width="260px" target=".maincontent" position="Left">
+                <TreeViewComponent id="defaultTree" fields={treeFields} nodeSelecting={beforeSelect.bind(this)} nodeSelected={onSelect.bind(this)}></TreeViewComponent>
             </SidebarComponent>
             <div id="action-description">
                 <p>
@@ -112,42 +151,7 @@ function Default() {
             </div>
         </div>
     );
-    //open / close the sidebar
-    function toolbarCliked(args: ClickEventArgs) {
-        if(args.item.tooltipText == "Menu") {
-            sidebarobj.toggle();
-        }
-    }
-    function beforeSelect(args: NodeSelectEventArgs) {
-        if (args.nodeData.text == "Favorites" || args.nodeData.text == "John") {
-            args.cancel = true;
-        }
-    }
-    function onSelect(args: NodeSelectEventArgs) {
-        if (args.nodeData.text == "Inbox")
-        {
-            listObj.dataSource = inboxData;
-        }
-        else if (args.nodeData.text == "Sent Items")
-        {
-            listObj.dataSource = sentItemData;
-        }
-        else if (args.nodeData.text == "Drafts")
-        {
-            listObj.dataSource = draftsData;
-        }
-        else if (args.nodeData.text == "Deleted Items")
-        {
-            listObj.dataSource = deleteData;
-        }
-        else if (args.nodeData.text == "Outbox")
-        {
-            listObj.dataSource = outBoxData;
-        }
-        listObj.dataBind();
-    }
-    function onListSelect(args: SelectEventArgs) {
-        args.item.classList.remove("e-active");
-    }
+    
+    
 }
 export default Default;
