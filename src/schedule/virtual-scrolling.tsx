@@ -5,6 +5,7 @@ import {
 } from '@syncfusion/ej2-react-schedule';
 import './virtual-scrolling.css';
 import { SampleBase } from '../common/sample-base';
+import { generateResourceData } from './helper';
 
 /**
  * schedule virtual scrolling sample
@@ -52,19 +53,6 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
         return data;
     }
 
-    private generateResourceData(startId: number, endId: number, text: string): Record<string, any>[] {
-        let data: Record<string, any>[] = [];
-        let colors: string[] = [
-            '#ff8787', '#9775fa', '#748ffc', '#3bc9db', '#69db7c', '#fdd835', '#748ffc',
-            '#9775fa', '#df5286', '#7fa900', '#fec200', '#5978ee', '#00bdae', '#ea80fc'
-        ];
-        for (let a: number = startId; a <= endId; a++) {
-            let n: number = Math.floor(Math.random() * colors.length);
-            data.push({ Id: a, Text: text + ' ' + a, Color: colors[n] });
-        }
-        return data;
-    }
-
     render() {
         return (
             <div className='schedule-control-section'>
@@ -75,7 +63,7 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                             eventSettings={{ dataSource: this.generateStaticEvents(new Date(2021, 4, 1), 300, 12) }}>
                             <ResourcesDirective>
                                 <ResourceDirective field='ResourceId' title='Resource' name='Resources' allowMultiple={true}
-                                    dataSource={this.generateResourceData(1, 300, 'Resource')} textField='Text' idField='Id' colorField='Color'>
+                                    dataSource={generateResourceData(1, 300, 'Resource')} textField='Text' idField='Id' colorField='Color'>
                                 </ResourceDirective>
                             </ResourcesDirective>
                             < ViewsDirective >

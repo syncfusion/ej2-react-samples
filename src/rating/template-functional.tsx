@@ -1,25 +1,26 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { Fragment, useEffect } from "react";
 import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import './template.css';
 
-function Template() {
-    React.useEffect(() => {
+const Template = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function emptyFont(){
+    const emptyFont = () => {
       return (
-          <React.Fragment><span className='custom-font rating-icon-heart'></span></React.Fragment>
+          <Fragment><span className='custom-font rating-icon-heart'></span></Fragment>
       );
     }
-    function fullFont() {
+    const fullFont = () => {
         return (
-            <React.Fragment><span className='custom-font rating-icon-heart'></span></React.Fragment>
+            <Fragment><span className='custom-font rating-icon-heart'></span></Fragment>
         );
     }
-    function emptyTemplate() {
+    const emptyTemplate = () => {
         return (
             <>
             <svg width="35" height="25" className="e-rating-svg-icon">
@@ -28,7 +29,7 @@ function Template() {
             </>
         );
     }
-    function fullTemplate(props: any) {
+    const fullTemplate = (props: any) => {
         return (
             <svg width="35" height="25" className="e-rating-svg-icon">
                 <defs>
@@ -41,7 +42,7 @@ function Template() {
             </svg>
         );
     }
-    function template(props: any) {
+    const template = (props: any) => {
         if(props.index===0){
             return (<><span className='angry emoji'>&#128545;</span></>);}
         else if(props.index===1){

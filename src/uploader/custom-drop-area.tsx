@@ -20,8 +20,8 @@ private target: HTMLElement;
 constructor(props: {}) {
     super(props);
     this.asyncSettings = {
-        saveUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Save',
-        removeUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Remove'
+        saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
+        removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove'
     };
     this.allowedExtensions= '.pdf, .png, .txt'
     this.animationSettings = { effect: 'Zoom' };

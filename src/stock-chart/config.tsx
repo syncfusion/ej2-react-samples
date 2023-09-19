@@ -1,7 +1,7 @@
 export const StockChartSampleOrder: Object = [
     { 'path': 'stock-chart/default', 'component': 'Default', 'name': 'Default', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock chart with candle series.' },
-    { 'path': 'stock-chart/ohlc', 'component': 'OHLC', 'name': 'OHLC', 'order': '01', 'category': 'Stock Chart', 'type': 'update',
+    { 'path': 'stock-chart/ohlc', 'component': 'OHLC', 'name': 'OHLC', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with Hilo Open Close series.' },
     { 'path': 'stock-chart/multi-pane', 'component': 'MultiPane', 'name': 'Candlestick and volume', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with candle series.' },
@@ -25,6 +25,8 @@ export const StockChartSampleOrder: Object = [
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with range customization.' },
     { 'path': 'stock-chart/disabled-period', 'component': 'PeriodSelector', 'name': 'Hide Period Selector', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with period customization.' },
+    { 'path': 'stock-chart/datetime-category', 'component': 'DatetimeCategoryAxis', 'name': 'DateTime Category Axis', 'order': '01', 'category': 'Stock Chart', 'type': 'new',
+    'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with DateTime Category Axis.' },
     { 'path': 'stock-chart/stock-events', 'component': 'StockEvents', 'name': 'Stock Events', 'order': '01', 'category': 'Stock Chart',
     'description': 'This demo for Essential JS2 Stock Chart control shows the default rendering of Stock with stock events.' }
 ]

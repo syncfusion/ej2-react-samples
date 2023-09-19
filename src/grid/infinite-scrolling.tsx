@@ -75,14 +75,14 @@ export class InfiniteScrolling extends SampleBase<{}, {}> {
                     The Grid Infinite scrolling, allows to load data in lazy loading concept,
                     which means the buffer data is loaded only when the scrollbar reaches the end of the scroller.
                     To enable Infinite scrolling, set <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#enableinfinitescrolling">
+                            href="https://ej2.syncfusion.com/react/documentation/api/grid/#enableinfinitescrolling">
                             enableInfiniteScrolling </a></code> property as true.
                     </p>
                     <p>
                         Note: The <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#height">
+                            href="https://ej2.syncfusion.com/react/documentation/api/grid/#height">
                             height</a></code> property must be defined when enabling <code><a target="_blank" className="code"
-                                href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#enableinfinitescrolling">
+                                href="https://ej2.syncfusion.com/react/documentation/api/grid/#enableinfinitescrolling">
                                 enableInfiniteScrolling </a></code>.
                     </p>
                     <p>

@@ -43,20 +43,20 @@ function Paging() {
                 <p>
                     Paging allows you to display the contents of the Grid component in page segments.
                     By default, paging is disabled. To enable paging, set <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowpaging'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowpaging'>
                         allowPaging</a></code> property to true.
                     <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/pageSettings/#pagesizes'>
                         pageSettings-&gt;pagesizes</a></code>property enables a dropdown in pager which allows you to change the number of records in the Grid dynamically.
                 </p>
                 <p>
                     In this demo, the Grid is rendered with
                     <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagesizes">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/pageSettings/#pagesizes">
                         pageSettings-&gt;pageSizes
                     </a></code> set to true and
                     <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-pageSettings.html#pagecount">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/pageSettings/#pagecount">
                         pageSettings-&gt;pageCount
                     </a></code> set to 4.
                 </p>
@@ -70,7 +70,7 @@ function Paging() {
                     Grid component features are segregated into individual feature-wise modules. To use paging feature, we need to inject <code>Page</code> module into the <code>services</code>.</p>
                 <p>
                     More information on the paging feature configuration can be found in this
-                    <a target='_blank' href='http://ej2.syncfusion.com/react/documentation/grid/paging.html'> documentation section</a>.
+                    <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/grid/paging.html'> documentation section</a>.
                 </p>
             </div>
         </div>

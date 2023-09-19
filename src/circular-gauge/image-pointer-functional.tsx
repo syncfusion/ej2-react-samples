@@ -4,10 +4,8 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {
-    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations,
-} from '@syncfusion/ej2-react-circulargauge';
+import { useEffect } from 'react';
+import { CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, Inject, AnnotationsDirective, AnnotationDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations } from '@syncfusion/ej2-react-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -34,9 +32,8 @@ const SAMPLE_CSS = `
         margin-top: -30px;
     }`;
 
-function Image() {
-
-    React.useEffect(() => {
+const Image = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -46,59 +43,35 @@ function Image() {
         color: '#9E9E9E'
     };
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function onChartLoad(args: ILoadedEventArgs): void {
+    const onChartLoad = (args: ILoadedEventArgs): void => {
         document.getElementById('image-container').setAttribute('title', '');
     };
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-12'>
-                    <CircularGaugeComponent load={load.bind(this)} title='Shot Put Distance' background='transparent' loaded={onChartLoad.bind(this)} id='image-container' enablePointerDrag={true}
-                        titleStyle={{ fontFamily: 'inherit' }} centerY="57%'">
+                    <CircularGaugeComponent load={load.bind(this)} title='Shot Put Distance' background='transparent' loaded={onChartLoad.bind(this)} id='image-container' enablePointerDrag={true} titleStyle={{ fontFamily: 'inherit' }} centerY="57%'">
                         <Inject services={[Annotations]} />
                         <AxesDirective>
-                            <AxisDirective startAngle={200} endAngle={130} radius='80%' minimum={0} maximum={14}
-                                lineStyle={{
-                                    width: 0,
-                                }}
-                                majorTicks={{
-                                    width: 0,
-                                }}
-                                minorTicks={{
-                                    width: 0,
-                                }} labelStyle={{
-                                    font: {
-                                        size: '0px'
-                                    }
-                                }}>
+                            <AxisDirective startAngle={200} endAngle={130} radius='80%' minimum={0} maximum={14} lineStyle={{ width: 0 }} majorTicks={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ font: { size: '0px' } }}>
                                 <PointersDirective>
-                                    <PointerDirective type="Marker" value={12} markerShape="Image" imageUrl="src/circular-gauge/images/foot-ball.png" radius='108%' markerWidth={28} markerHeight={28}
-                                        animation={{ duration: 1500 }} />
-                                    <PointerDirective type="Marker" value={11} markerShape="Image" imageUrl="src/circular-gauge/images/basket-ball.png" radius='78%' markerWidth={28} markerHeight={28}
-                                        animation={{ duration: 1200 }} />
-                                    <PointerDirective type="Marker" value={10} markerShape="Image" imageUrl="src/circular-gauge/images/golf-ball.png" radius='48%' markerWidth={28} markerHeight={28}
-                                        animation={{ duration: 900 }} />
-                                    <PointerDirective type="Marker" value={12} markerShape="Image" imageUrl="src/circular-gauge/images/Athletics.png" radius='0%' markerWidth={90} markerHeight={90}
-                                        animation={{ duration: 0 }} />
-                                    <PointerDirective type="Marker" value={0} markerShape="Image" imageUrl="src/circular-gauge/images/girl.png" radius='108%' markerWidth={28} markerHeight={28}
-                                        animation={{ duration: 1500 }} />
-                                    <PointerDirective type="Marker" value={0} markerShape="Image" imageUrl="src/circular-gauge/images/man-one.png" radius='78%' markerWidth={28} markerHeight={28}
-                                        animation={{ duration: 1500 }} />
-                                    <PointerDirective type="Marker" value={0} markerShape="Image" imageUrl="src/circular-gauge/images/man-two.png" radius='48%' markerWidth={28} markerHeight={28}
-                                        animation={{ duration: 1500 }} />
+                                    <PointerDirective type="Marker" value={12} markerShape="Image" imageUrl="src/circular-gauge/images/foot-ball.png" radius='108%' markerWidth={28} markerHeight={28} animation={{ duration: 1500 }} />
+                                    <PointerDirective type="Marker" value={11} markerShape="Image" imageUrl="src/circular-gauge/images/basket-ball.png" radius='78%' markerWidth={28} markerHeight={28} animation={{ duration: 1200 }} />
+                                    <PointerDirective type="Marker" value={10} markerShape="Image" imageUrl="src/circular-gauge/images/golf-ball.png" radius='48%' markerWidth={28} markerHeight={28} animation={{ duration: 900 }} />
+                                    <PointerDirective type="Marker" value={12} markerShape="Image" imageUrl="src/circular-gauge/images/Athletics.png" radius='0%' markerWidth={90} markerHeight={90} animation={{ duration: 0 }} />
+                                    <PointerDirective type="Marker" value={0} markerShape="Image" imageUrl="src/circular-gauge/images/girl.png" radius='108%' markerWidth={28} markerHeight={28} animation={{ duration: 1500 }} />
+                                    <PointerDirective type="Marker" value={0} markerShape="Image" imageUrl="src/circular-gauge/images/man-one.png" radius='78%' markerWidth={28} markerHeight={28} animation={{ duration: 1500 }} />
+                                    <PointerDirective type="Marker" value={0} markerShape="Image" imageUrl="src/circular-gauge/images/man-two.png" radius='48%' markerWidth={28} markerHeight={28} animation={{ duration: 1500 }} />
                                 </PointersDirective>
                                 <RangesDirective>
                                     <RangeDirective start={0} end={12} radius='115%' color='#01aebe' startWidth={25} endWidth={25} />
@@ -109,9 +82,9 @@ function Image() {
                                     <AnnotationDirective content='12 M' radius='108%' angle={98} zIndex='1' textStyle={annotationTextStyle} />
                                     <AnnotationDirective content='11 M' radius='80%' angle={81} zIndex='1' textStyle={annotationTextStyle} />
                                     <AnnotationDirective content='10 M' radius='50%' angle={69} zIndex='1' textStyle={annotationTextStyle} />
-                                    <AnnotationDirective content='<div class="annotationText" style="margin-top: -26px;"><span class="templateAlign" style="margin-left: -22px;">Doe</span></div>' radius='114%' angle={185} zIndex='1' />
-                                    <AnnotationDirective content='<div class="annotationText"><span class="templateAlign" style="margin-left: -3px;">Almaida</span></div>' radius='87%' angle={180} zIndex='1' />
-                                    <AnnotationDirective content='<div class="annotationText" style="margin-top: -25px;"><span class="templateAlign">John</span></div>' radius='58%' angle={174} zIndex='1' />
+                                    <AnnotationDirective content='Doe' radius='106%' angle={189} zIndex='1' textStyle={annotationTextStyle} />
+                                    <AnnotationDirective content='Almaida' radius='78%' angle={180} zIndex='1' textStyle={annotationTextStyle} />
+                                    <AnnotationDirective content='John' radius='48%' angle={175} zIndex='1' textStyle={annotationTextStyle} />
                                 </AnnotationsDirective>
                             </AxisDirective>
                         </AxesDirective>
@@ -119,9 +92,7 @@ function Image() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample visualizes the shot put distance covered by the athletes using the image pointer in the circular gauge.
-                </p>
+                <p>This sample visualizes the shot put distance covered by the athletes using the image pointer in the circular gauge.</p>
             </div>
             <div id="description">
                 <p>
@@ -134,5 +105,4 @@ function Image() {
         </div>
     )
 }
-
 export default Image;

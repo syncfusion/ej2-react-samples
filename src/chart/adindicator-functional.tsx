@@ -73,7 +73,7 @@ const AccumulationDistribution = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Accumulation Distribution Indicator, we need to inject
+                    Chart component features are segregated into individual feature-wise modules. To use Accumulation Distribution Indicator, we need to inject 
                     <code>AccumulationDistributionIndicator</code> module into <code>services</code>.
                 </p>
                 <p>

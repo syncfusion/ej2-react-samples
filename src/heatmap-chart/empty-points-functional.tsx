@@ -1,29 +1,64 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
+import { useEffect } from "react";
+import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs, TitleModel, AxisModel, PaletteSettingsModel, CellSettingsModel, LegendSettingsModel } from '@syncfusion/ej2-react-heatmap';
 import * as data from './empty-point-data-source.json';
 import { updateSampleSection } from '../common/sample-base';
 
 // custom code start
 const SAMPLE_CSS: any = `
-#control-container {
-    padding: 0px !important;
-}`;
+    #control-container {
+        padding: 0px !important;
+    }`;
 // custom code end
 /**
  * Schedule Default sample
  */
-function EmptyPoints() {
+const EmptyPoints = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function tooltipTemplate(args: ITooltipEventArgs): void {
+    let title: TitleModel = {
+        text: 'Defective Count per 1000 Products from a Manufacturing Unit',
+        textStyle: {
+            size: '15px',
+            fontWeight: '500',
+            fontStyle: 'Normal',
+            fontFamily: 'Segoe UI'
+        }
+    }
+    let xAxis: AxisModel = {
+        labels: ['2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
+    }
+    let yAxis: AxisModel = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    }
+    let paletteSettings: PaletteSettingsModel = {
+        palette: [
+            { color: 'rgb(172, 213, 242)' },
+            { color: 'rgb(127, 168, 201)' },
+            { color: 'rgb(82, 123, 160)' },
+            { color: 'rgb(37, 78, 119)' }
+        ],
+        type: 'Gradient'
+    }
+    let cellSettings: CellSettingsModel = {
+        showLabel: true,
+        border: { width: 0, color: 'white' }
+    }
+    let legendSettings: LegendSettingsModel = {
+        position: 'Bottom',
+        width: '250px',
+        showLabel: true,
+    }
+
+    const tooltipTemplate = (args: ITooltipEventArgs): void => {
         args.content = [args.yLabel + ' | ' + args.xLabel + ' : ' + args.value + ' defective units'];
     };
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
@@ -37,44 +72,7 @@ function EmptyPoints() {
             </style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container'
-                    titleSettings={{
-                        text: 'Defective Count per 1000 Products from a Manufacturing Unit',
-                        textStyle: {
-                            size: '15px',
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI'
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['2007', '2008', '2009', '2010', '2011',
-                            '2012', '2013', '2014', '2015', '2016', '2017'],
-                    }}
-                    yAxis={{
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May',
-                            'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-                    }}
-                    dataSource={(data as any).emptyPointDataSource}
-                    cellSettings={{
-                        showLabel: true,
-                        border: { width: 0, color: 'white' },
-                    }}
-                    tooltipRender={tooltipTemplate}
-                    paletteSettings={{
-                        palette: [{ color: 'rgb(172, 213, 242)' },
-                        { color: 'rgb(127, 168, 201)' },
-                        { color: 'rgb(82, 123, 160)' },
-                        { color: 'rgb(37, 78, 119)' },
-                        ],
-                        type: 'Gradient'
-                    }}
-                    load={load.bind(this)}
-                    legendSettings={{
-                        position: 'Bottom',
-                        width: '250px',
-                        showLabel: true,
-                    }}>
+                <HeatMapComponent id='heatmap-container' titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSource={(data as any).emptyPointDataSource} cellSettings={cellSettings} tooltipRender={tooltipTemplate} paletteSettings={paletteSettings} load={load.bind(this)} legendSettings={legendSettings}>
                     <Inject services={[Legend, Tooltip]} />
                 </HeatMapComponent>
             </div>
@@ -91,10 +89,7 @@ function EmptyPoints() {
                     can be marked using <code>null</code> in the data source. You can also customize the background color of the
                     empty points by using the <code>emptyPointColor</code> property in <code>paletteSettings</code>
                 </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point
-                    in touch enabled devices.
-                </p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>

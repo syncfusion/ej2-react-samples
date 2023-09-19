@@ -1,10 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, ColumnDirective, ColumnsDirective } from '@syncfusion/ej2-react-gantt';
 import { updateSampleSection } from '../common/sample-base';
 
-function Timezone() {
-  React.useEffect(() => {
+const Timezone = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const timezoneData: any = [

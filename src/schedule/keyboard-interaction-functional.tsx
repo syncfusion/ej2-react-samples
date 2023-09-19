@@ -15,7 +15,13 @@ import * as dataSource from './datasource.json';
 const KeyboardInteraction = () => {
   useEffect(() => {
     updateSampleSection();
-  }, [])
+    document.body.addEventListener("keydown", (e: KeyboardEvent) => {
+      var scheduleElement = document.getElementById('Schedule');
+      if (e.altKey && e.keyCode === 74 && scheduleElement) {
+        scheduleElement.focus();
+      }
+    });
+  }, []);
   let scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).zooEventsData, null, true) as Record<string, any>[];
 

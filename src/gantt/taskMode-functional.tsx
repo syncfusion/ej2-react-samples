@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { taskModeData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function TaskMode() {
-  React.useEffect(() => {
+const TaskMode = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {

@@ -5,6 +5,15 @@ import { SampleBase } from '../common/sample-base';
 import './toolbar.component.css'
 
 export class KeyboardInteraction extends SampleBase<{}, {}> {
+    private toolbarObj: ToolbarComponent;
+    public componentDidMount(): void {
+      document.body.addEventListener("keydown", (e: KeyboardEvent) => {
+        let toolbarElement: HTMLElement = document.querySelector('.e-toolbar-items .e-toolbar-item .e-tbar-btn') as HTMLElement;
+            if (e.altKey && e.keyCode === 74 && toolbarElement) {
+                toolbarElement.focus();
+        }
+      });
+    }
 
     render() {
         return (
@@ -12,7 +21,7 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
                 <div className='control-section tbar-control-section'>
                     <div className='control toolbar-sample tbar-sample' style={{ margin: '25px 0' }}>
                         {/* Render the Toolbar Component with Popup mode */}
-                        <ToolbarComponent overflowMode='Popup'>
+                        <ToolbarComponent overflowMode='Popup' ref={(t) => (this.toolbarObj = t)}>
                             <ItemsDirective>
                                 <ItemDirective prefixIcon='e-cut-icon tb-icons' tooltipText='Cut' text='Cut'
                                     showTextOn='Overflow' overflow='Show' />

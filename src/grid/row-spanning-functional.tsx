@@ -145,7 +145,7 @@ function RowSpanning() {
             </div>
             <div id="description">
                 <p>
-                    Grid allows to span the row cells. In <a href='http://ej2.syncfusion.com/documentation/grid/api-queryCellInfoEventArgs.html'><code>QueryCellInfo</code></a>
+                    Grid allows to span the row cells. In <a href='https://ej2.syncfusion.com/react/documentation/api/grid/queryCellInfoEventArgs/'><code>QueryCellInfo</code></a>
                     event, you can define the <code>rowSpan</code> attributes to span the cells.
                 </p>
                 <p>
@@ -157,7 +157,7 @@ function RowSpanning() {
                 <p>
                     More information on the row drag and drop can be found in this
                     <a target="_blank"
-                        href="http://ej2.syncfusion.com/documentation/grid/row#row-spanning">
+                        href="https://ej2.syncfusion.com/react/documentation/grid/row/row-drag-and-drop">
                         documentation section</a>.
                 </p>
             </div>

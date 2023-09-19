@@ -1,15 +1,19 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useState, useRef, useEffect } from "react";
 import { ColorPickerComponent, ColorPickerEventArgs, PaletteTileEventArgs } from '@syncfusion/ej2-react-inputs';
 import { createElement, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import './custom.css';
 
-function CustomPalette() {
-  React.useEffect(() => {
+const CustomPalette = () => {
+  useEffect(() => {
     updateSampleSection();
+    renderComplete();
   }, [])
-  let defaultObj: ColorPickerComponent;
+  const [color, setColor] = useState<string>("rgb(244, 67, 54)");
+  const [mobile, setMobile] = useState<string>("");
+  let defaultObj = useRef<ColorPickerComponent>(null);
 
   let circlePaletteColors: { [key: string]: string[] } = {
     'custom': ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#2196f3', '#03a9f4', '#00bcd4',
@@ -44,55 +48,54 @@ function CustomPalette() {
       '#FF8A65', '#FF7043', '#FF5722']
   };
 
-  function beforeCircleTileRender(args: PaletteTileEventArgs): void {
+  const beforeCircleTileRender = (args: PaletteTileEventArgs): void => {
     args.element.classList.add('e-circle-palette');
     args.element.appendChild(createElement('span', { className: 'e-circle-selection' }));
   }
 
-  function beforeSquareTileRender(args: PaletteTileEventArgs): void {
+  const beforeSquareTileRender = (args: PaletteTileEventArgs): void => {
     args.element.classList.add('e-square-palette');
   }
 
-  function beforeRoundedTileRender(args: PaletteTileEventArgs): void {
+  const beforeRoundedTileRender = (args: PaletteTileEventArgs): void => {
     args.element.classList.add('e-rounded-palette');
   }
 
-  function beforeScrollTileRender(args: PaletteTileEventArgs): void {
+  const beforeScrollTileRender = (args: PaletteTileEventArgs): void => {
     args.element.classList.add('e-icons');
     args.element.classList.add('e-scroll-palette');
   }
 
   // function to handle the ColorPicker change event
-  function change(args: ColorPickerEventArgs): void {
-    document.getElementById('e-shirt-preview').style.backgroundColor = args.currentValue.hex;
+  const change = (args: ColorPickerEventArgs): void => {
+    setColor(args.currentValue.hex);
   }
 
-  function roundedPaletteChange(args: ColorPickerEventArgs): void {
-    (defaultObj.element.nextElementSibling.querySelector('.e-selected') as HTMLElement).style.boxShadow
+  const roundedPaletteChange = (args: ColorPickerEventArgs): void => {
+    (defaultObj.current.element.nextElementSibling.querySelector('.e-selected') as HTMLElement).style.boxShadow
       = args.currentValue.hex + ' 0 0 7px';
-    document.getElementById('e-shirt-preview').style.backgroundColor = args.currentValue.hex;
+    setColor(args.currentValue.hex);
   }
 
-
-  function rendereComplete(): void {
+  const renderComplete = (): void => {
     if (Browser.isDevice) {
-      document.getElementById('custom-control').classList.add('e-mobile-control');
+      setMobile('e-mobile-control');
     }
   }
 
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <div id='custom-control'>
+        <div id='custom-control' className={mobile}>
           <div className='row'>
-            <div id="e-shirt-preview"></div>
+            <div id="e-shirt-preview" style={{ backgroundColor: color }}></div>
           </div>
           <div id='custom-content' className='row'>
             <div className='col-xs-12 col-sm-12 col-lg-6 col-md-6 e-circle-wrap'>
               <ColorPickerComponent id='circle-palette' mode='Palette' modeSwitcher={false} inline={true} showButtons={false} columns={4} presetColors={circlePaletteColors} beforeTileRender={beforeCircleTileRender} change={change}></ColorPickerComponent>
             </div>
             <div className='col-xs-12 col-sm-12 col-lg-6 col-md-6 e-rounded-wrap'>
-              <ColorPickerComponent id='rounded-palette' mode='Palette' ref={(scope) => { defaultObj = scope; }} modeSwitcher={false} inline={true} showButtons={false} columns={5} presetColors={roundedPaletteColors} beforeTileRender={beforeRoundedTileRender} change={roundedPaletteChange}></ColorPickerComponent>
+              <ColorPickerComponent id='rounded-palette' mode='Palette' ref={defaultObj} modeSwitcher={false} inline={true} showButtons={false} columns={5} presetColors={roundedPaletteColors} beforeTileRender={beforeRoundedTileRender} change={roundedPaletteChange}></ColorPickerComponent>
             </div>
             <div className='col-xs-12 col-sm-12 col-lg-6 col-md-6 e-square-wrap'>
               <ColorPickerComponent id='square-palette' mode='Palette' modeSwitcher={false} inline={true} showButtons={false} columns={8} presetColors={squarePaletteColors} beforeTileRender={beforeSquareTileRender} change={change}></ColorPickerComponent>
@@ -103,30 +106,28 @@ function CustomPalette() {
           </div>
         </div>
       </div>
-
       <div id='action-description'>
         <p>This sample demonstrates how to customize the color palettes with different types and styles.</p>
       </div>
       <div id="description">
-        <p>
-          The ColorPicker component is a user interface to select and adjust color values. This supports various color specifications
-          like RGB (Red Green Blue), HSV (Hue Saturation Value), and Hex codes.</p>
-        <p>
-          In this sample,</p>
+        <p>The ColorPicker component is a user interface to select and adjust color values. This supports various color specifications like RGB (Red Green Blue), HSV (Hue Saturation Value), and Hex codes.</p>
+        <p>In this sample,</p>
         <ul>
+          <li>Select the shirt color from different customized palettes. It contains circle, square, rounded edge, and multiple scroll palettes.</li>
           <li>
-            Select the shirt color from different customized palettes. It contains circle, square, rounded edge, and multiple scroll
-            palettes.</li>
-          <li>Using the
+            Using the
             <code>
-              <a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/color-picker/#presetcolors">presetColors
+              <a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/color-picker/#presetcolors">
+                presetColors
               </a>
-            </code> property, you can specify the custom colors to be loaded.</li>
+            </code> 
+            property, you can specify the custom colors to be loaded.
+          </li>
         </ul>
         <p>
           More information about ColorPicker can be found in this
-          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/color-picker/how-to/customize-colorpicker/">
-            documentation section</a>.</p>
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/color-picker/how-to/customize-colorpicker/">documentation section</a>.
+        </p>
       </div>
     </div >
   )

@@ -122,7 +122,7 @@ function ColumnSpanning() {
             </div>
             <div id="description">
                 <p>
-                    Grid allows to span the multiple adjacent cells. In <a href='http://ej2.syncfusion.com/react/documentation/grid/api-queryCellInfoEventArgs.html'><code>QueryCellInfo</code></a> event, you can define the <code>colSpan</code> attribute to span the cells.
+                    Grid allows to span the multiple adjacent cells. In <a href='https://ej2.syncfusion.com/react/documentation/api/grid/queryCellInfoEventArgs/'><code>QueryCellInfo</code></a> event, you can define the <code>colSpan</code> attribute to span the cells.
                 </p>
                 <p>
                     In this demo, Employee <b>Davolio</b> doing analysis from 9.00 AM to 10.00 AM, so that the cells have been spanned and

@@ -60,13 +60,13 @@ const Spline = () => {
                 <ChartComponent id='charts' style={{ textAlign: "center" }} ref={chartInstance} primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate90', majorTickLines: {width: 0}, minorTickLines: {width : 0} }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} primaryYAxis={{labelFormat: '{value}°C', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }}} tooltip={{ enable: true }} title='NC Weather Report - 2016' loaded={onChartLoad.bind(this)}>
                     <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation, Highlight]} />
                     <AnnotationsDirective>
-                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" style={{width: "41px"; height: "41px"}} /></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top' />             
-                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png"   style={{width: "41px"; height: "41px"}}/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top' />
+                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" style="width: 41px; height: 41px"/></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top' />             
+                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png"   style="width: 41px; height: 41px"/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top' />
                     </AnnotationsDirective>
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp' type='Spline' marker={{ visible: true, width: 7, height: 7 }} />
-                        <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='Avg Temp' type='Spline' marker={{ visible: true, width: 7, height: 7 }} />
-                        <SeriesDirective dataSource={data3} xName='x' yName='y' width={2} name='Min Temp' type='Spline' marker={{ visible: true, width: 7, height: 7 }} />
+                        <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp' type='Spline' marker={{ visible: true, width: 10, height: 10 }} />
+                        <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='Avg Temp' type='Spline' marker={{ visible: true, width: 10, height: 10 }} />
+                        <SeriesDirective dataSource={data3} xName='x' yName='y' width={2} name='Min Temp' type='Spline' marker={{ visible: true, width: 10, height: 10 }} />
                     </SeriesCollectionDirective>
                 </ChartComponent>
                 <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;

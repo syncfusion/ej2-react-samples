@@ -3,64 +3,35 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTheme,
-    ILoadedEventArgs
-} from '@syncfusion/ej2-react-circulargauge';
+import { useEffect } from 'react';
+import { CircularGaugeComponent, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTheme, ILoadedEventArgs } from '@syncfusion/ej2-react-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
-import { CircularGauge } from '@syncfusion/ej2-circulargauge';
 
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
 
-function RangeColorAxis() {
-
-    React.useEffect(() => {
+const RangeColorAxis = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} id='range-color' background='transparent'>
                     <AxesDirective>
-                        <AxisDirective startAngle={0} endAngle={0} radius='100%' direction='AntiClockWise'
-                            majorTicks={{
-                                position: 'Outside',
-                                width: 1,
-                                height: 25,
-                                interval: 10,
-                                useRangeColor: true
-                            }} lineStyle={{ width: 0 }}
-                            minorTicks={{
-                                position: 'Outside',
-                                width: 1,
-                                height: 8,
-                                interval: 2,
-                                useRangeColor: true
-                            }} labelStyle={{
-                                offset: 2,
-                                position: 'Outside',
-                                useRangeColor: true,
-                                hiddenLabel: 'First',
-                                font: { fontFamily: 'inherit' }
-                            }}>
+                        <AxisDirective startAngle={0} endAngle={0} radius='100%' direction='AntiClockWise' majorTicks={{ position: 'Outside', width: 1, height: 25, interval: 10, useRangeColor: true }} lineStyle={{ width: 0 }} minorTicks={{ position: 'Outside', width: 1, height: 8, interval: 2, useRangeColor: true }} labelStyle={{ offset: 2, position: 'Outside', useRangeColor: true, hiddenLabel: 'First', font: { fontFamily: 'inherit' } }}>
                             <PointersDirective>
                                 <PointerDirective radius='0%' cap={{ radius: 0 }} />
                             </PointersDirective>
@@ -74,9 +45,7 @@ function RangeColorAxis() {
                 </CircularGaugeComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample shows the basic rendering of the circular gauge, which includes an axis and a range. Here, the appropriate range color is applied to its respective axis labels, minor ticks, and major ticks.
-                </p>
+                <p>This sample shows the basic rendering of the circular gauge, which includes an axis and a range. Here, the appropriate range color is applied to its respective axis labels, minor ticks, and major ticks.</p>
             </div>
             <div id="description">
                 <p>

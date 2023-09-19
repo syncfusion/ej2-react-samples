@@ -3,10 +3,8 @@
  */
 
 import * as React from "react";
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject, ILoadedEventArgs,
-    PointersDirective, PointerDirective, Annotations, AnnotationDirective, AnnotationsDirective, GaugeTheme, Gradient, RangesDirective,
-    RangeDirective } from '@syncfusion/ej2-react-circulargauge';
+import { useEffect } from "react";
+import { CircularGaugeComponent, AxesDirective, AxisDirective, Inject, ILoadedEventArgs, PointersDirective, PointerDirective, Annotations, AnnotationDirective, AnnotationsDirective, GaugeTheme, Gradient, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -25,20 +23,18 @@ const SAMPLE_CSS = `
      .titleText { margin-top: 0px; margin-left: 0px; }
      .e-view.tailwind div.titleText, .e-view.tailwind-dark div.titleText { margin-top: 7px; margin-left: -3px; }
    }
-   .gaugeAlign { width: 50%; }
-     `;
+   .gaugeAlign { width: 50%; }`;
 
-function Patterns() {
-    React.useEffect(() => {
+const Patterns = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function loadOne(args: ILoadedEventArgs): void {
+    const loadOne = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
             args.gauge.axes[0].annotations[0].angle = 188;
             args.gauge.axes[0].annotations[0].radius = "15%";
@@ -46,12 +42,11 @@ function Patterns() {
         // custom code end
     }
 
-    function loadTwo(args: ILoadedEventArgs): void {
+    const loadTwo = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
             args.gauge.axes[0].annotations[0].angle = 12;
             args.gauge.axes[0].annotations[0].radius = "18%";
@@ -63,12 +58,11 @@ function Patterns() {
         // custom code end
     }
 
-    function loadThree(args: ILoadedEventArgs): void {
+    const loadThree = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
             args.gauge.axes[0].annotations[0].angle = 194;
             args.gauge.axes[0].annotations[0].radius = "8%";
@@ -76,12 +70,11 @@ function Patterns() {
         // custom code end
     }
 
-    function loadFour(args: ILoadedEventArgs): void {
+    const loadFour = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
             args.gauge.axes[0].annotations[0].angle = 100;
             args.gauge.axes[0].annotations[0].radius = "10%";
@@ -89,12 +82,11 @@ function Patterns() {
         // custom code end
     }
 
-    function loadFive(args: ILoadedEventArgs): void {
+    const loadFive = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
             args.gauge.axes[0].annotations[0].angle = 174;
             args.gauge.axes[0].annotations[0].radius = "12%";
@@ -102,12 +94,11 @@ function Patterns() {
         // custom code end
     }
 
-    function loadSix(args: ILoadedEventArgs): void {
+    const loadSix = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
             args.gauge.axes[0].annotations[0].angle = 180;
             args.gauge.axes[0].annotations[0].radius = "6%";
@@ -125,18 +116,15 @@ function Patterns() {
     };
 
     return (
-        <div className='control-section'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+        <div className='control-section' style={{overflow: 'auto'}}>
+            <style>{SAMPLE_CSS}</style>
             <table>
                 <tr>
                     <td className='gaugeAlign'>
                         <CircularGaugeComponent load={loadOne.bind(this)} background="transparent" id="container1" width="280px" height="300px">
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective startAngle={230} endAngle={130} radius="100%" minimum={0} maximum={100} lineStyle={{ width: 30, color: '#f6f7f9', }}
-                                    majorTicks={{ height: 0, interval: 10, }} minorTicks={{ height: 0, }} labelStyle={{ font: { fontFamily: 'inherit', size: '12px' }, position: 'Outside', offset: 20, }}   >
+                                <AxisDirective startAngle={230} endAngle={130} radius="100%" minimum={0} maximum={100} lineStyle={{ width: 30, color: '#f6f7f9', }} majorTicks={{ height: 0, interval: 10, }} minorTicks={{ height: 0, }} labelStyle={{ font: { fontFamily: 'inherit', size: '12px' }, position: 'Outside', offset: 20, }}>
                                     <PointersDirective>
                                         <PointerDirective type="RangeBar" color="#7edfb4" value={38} radius="120%" pointerWidth={28} />
                                         <PointerDirective type="Marker" markerShape="Rectangle" markerWidth={28} markerHeight={3} radius="98%" color="black" value={38} />
@@ -158,8 +146,7 @@ function Patterns() {
                         <CircularGaugeComponent load={loadTwo.bind(this)} centerY="60%" background="transparent" id="container2" width="280px" height="300px" >
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective startAngle={270} endAngle={90} radius="80%" minimum={0} maximum={100} lineStyle={{ width: 30, color: '#f6f7f9', }}
-                                    majorTicks={{ height: 0, }} minorTicks={{ height: 0, width: 0, }} labelStyle={{ position: 'Outside', font: { size: '0px' }, }}   >
+                                <AxisDirective startAngle={270} endAngle={90} radius="80%" minimum={0} maximum={100} lineStyle={{ width: 30, color: '#f6f7f9', }} majorTicks={{ height: 0, }} minorTicks={{ height: 0, width: 0, }} labelStyle={{ position: 'Outside', font: { size: '0px' }, }}>
                                     <PointersDirective>
                                         <PointerDirective type="RangeBar" pointerWidth={40} color="#d6f5e8" value={80} radius="128%" />
                                         <PointerDirective type="RangeBar" pointerWidth={30} color="#7edfb4" value={80} radius="115%" />
@@ -177,8 +164,7 @@ function Patterns() {
                         <CircularGaugeComponent load={loadThree.bind(this)} centerY="55%" background="transparent" id="container3" width="280px" height="300px" >
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective startAngle={220} endAngle={140} radius="80%" minimum={0} maximum={600} lineStyle={{ width: 0 }} majorTicks={{ height: 0, }} minorTicks={{ height: 0, }}
-                                    labelStyle={{ position: 'Outside', font: { size: '0px', color: '#1E7145' }, }} >
+                                <AxisDirective startAngle={220} endAngle={140} radius="80%" minimum={0} maximum={600} lineStyle={{ width: 0 }} majorTicks={{ height: 0, }} minorTicks={{ height: 0, }} labelStyle={{ position: 'Outside', font: { size: '0px', color: '#1E7145' }, }}>
                                     <PointersDirective>
                                         <PointerDirective color="white" type="Marker" value={450} markerShape="Circle" radius="94%" markerWidth={17} markerHeight={17} animation={{ enable: false }} border={{ color: '#77e6b4', width: 7, }} />
                                     </PointersDirective>
@@ -204,8 +190,7 @@ function Patterns() {
                         <CircularGaugeComponent load={loadFour.bind(this)} background="transparent" id="container4" width="280px" height="300px" >
                             <Inject services={[Annotations, Gradient]} />
                             <AxesDirective>
-                                <AxisDirective startAngle={220} endAngle={140} radius="80%" minimum={0} maximum={100} lineStyle={{ width: 0 }} majorTicks={{ height: 0, }} minorTicks={{ height: 0, }}
-                                    labelStyle={{ position: 'Outside', font: { size: '0px' }, }} >
+                                <AxisDirective startAngle={220} endAngle={140} radius="80%" minimum={0} maximum={100} lineStyle={{ width: 0 }} majorTicks={{ height: 0, }} minorTicks={{ height: 0, }} labelStyle={{ position: 'Outside', font: { size: '0px' }, }}>
                                     <PointersDirective>
                                         <PointerDirective type="RangeBar" radius="90%" value={21} animation={{ enable: false, }} roundedCornerRadius={10} color="#a8f789" pointerWidth={25} />
                                         <PointerDirective type="Marker" markerShape="Circle" markerWidth={30} markerHeight={30} animation={{ enable: false, }} color="white" radius="80%" value={22} />
@@ -344,9 +329,7 @@ function Patterns() {
                     </td>
                 </tr>
                 <div id="action-description">
-                    <p>
-                        This sample includes a wide range of arc gauges with varying appearances based on the built-in features and customization options.
-                    </p>
+                    <p>This sample includes a wide range of arc gauges with varying appearances based on the built-in features and customization options.</p>
                 </div>
                 <div id="description">
                     <p>

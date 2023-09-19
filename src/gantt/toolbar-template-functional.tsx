@@ -1,16 +1,17 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, Filter, Toolbar, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import './toolbar-template.css'
 
-function ToolbarTemplate() {
-  React.useEffect(() => {
+const ToolbarTemplate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
   const taskFields: any = {
     id: 'TaskID',
     name: 'TaskName',
@@ -31,18 +32,18 @@ function ToolbarTemplate() {
   const projectStartDate: Date = new Date('03/24/2019');
   const projectEndDate: Date = new Date('07/06/2019');
 
-  function toolbarClick(args: ClickEventArgs): void {
+  const toolbarClick = (args: ClickEventArgs): void => {
     if (args.item.text === 'Quick Filter') {
-      ganttInstance.filterByColumn('TaskName', 'startswith', 'Identify');
+      ganttInstance.current.filterByColumn('TaskName', 'startswith', 'Identify');
     }
     if (args.item.text === 'Clear Filter') {
-      ganttInstance.clearFiltering();
+      ganttInstance.current.clearFiltering();
     }
   }
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GanttComponent id='ToolbarTemplate' ref={gantt => ganttInstance = gantt} dataSource={projectNewData} highlightWeekends={true}
+          <GanttComponent id='ToolbarTemplate' ref={ganttInstance} dataSource={projectNewData} highlightWeekends={true}
             allowFiltering={true} treeColumnIndex={1} splitterSettings={splitterSettings}
             toolbar={toolbar} toolbarClick={toolbarClick.bind(this)}
             taskFields={taskFields} labelSettings={labelSettings} height='410px'
@@ -62,7 +63,6 @@ function ToolbarTemplate() {
         <div id="action-description">
           <p>This sample explains the way of rendering built-in and custom toolbar items at the same time.</p>
         </div>
-
         <div id="description">
           <p>Custom toolbar items can be added by defining the toolbar as a collection of ItemModels.
         Actions for this customized toolbar items are defined in the <code>toolbarClick</code> event.</p>

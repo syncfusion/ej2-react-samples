@@ -158,7 +158,7 @@ function SymbolPalette() {
         return { description: { text: "" } };
       };
     }
-    palette.dataBind();
+    palette.refresh();
   }
   function onHeaderIconChange(args: ChangeEventArgs): void {
     for (let i: number = 0; i < palette.palettes.length; i++) {
@@ -266,6 +266,7 @@ function SymbolPalette() {
                 change={() => {
                   palette.symbolHeight = size.value;
                   palette.symbolWidth = size.value;
+                  palette.refresh();
                 }}
                 ref={sizeRef => (size = sizeRef)}
               />

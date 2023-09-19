@@ -1,0 +1,9 @@
+.fabric .sb-reset-icon:before {
+    content: '\e7fc';
+}
+
+.fabric .e-samplestatus.new,
+.fabric .e-samplestatus.update {
+
+    margin-top: 6px;
+}

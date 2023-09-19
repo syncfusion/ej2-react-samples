@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRef } from 'react';
 import { Ribbon, RibbonComponent, RibbonTabsDirective, RibbonTabDirective, RibbonCollectionsDirective, RibbonCollectionDirective, RibbonGroupsDirective, RibbonGroupDirective, RibbonItemsDirective, RibbonItemDirective, DisplayMode } from '@syncfusion/ej2-react-ribbon';
-import { RibbonFileMenu, RibbonItemSize, Inject, FileMenuEventArgs, LauncherClickEventArgs, RibbonColorPicker } from '@syncfusion/ej2-react-ribbon';
+import { RibbonFileMenu, RibbonItemSize, Inject, FileMenuEventArgs, LauncherClickEventArgs, RibbonColorPicker, RibbonGroupButtonSelection } from '@syncfusion/ej2-react-ribbon';
 import { ItemModel } from '@syncfusion/ej2-react-splitbuttons';
 import { FilteringEventArgs } from "@syncfusion/ej2-dropdowns";
 import { Query } from "@syncfusion/ej2-data";
@@ -16,7 +16,7 @@ export class Resize extends SampleBase<{}, {}> {
 
     private resizeRibbonObj: Ribbon;
 
-    public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge format" }, { text: "Keep text only" }];
+    public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
     public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
     public selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
     public dictateOptions: ItemModel[] = [{ text: "Chinese" }, { text: "English" }, { text: "German" }, { text: "French" }];
@@ -114,8 +114,8 @@ export class Resize extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='col-lg-12 control-section default-ribbon-section'>
                     <div className='control ribbon-sample'>
-                        <div id="ribbonContainer">
-                            <RibbonComponent id='ribbon' ref={resizeRibbon => { this.resizeRibbonObj = resizeRibbon }} fileMenu={{ visible: true, menuItems: this.fileOptions, select: this.fileSelect }} launcherIconClick={this.launchClick}>
+                        <div id="ribbonContainer" className='resize-ribbon-container'>
+                            <RibbonComponent id='ribbon' ref={resizeRibbon => { this.resizeRibbonObj = resizeRibbon }} enablePersistence={true} fileMenu={{ visible: true, menuItems: this.fileOptions, select: this.fileSelect }} launcherIconClick={this.launchClick}>
                                 <RibbonTabsDirective>
                                     <RibbonTabDirective header='Home'>
                                         <RibbonGroupsDirective>
@@ -152,25 +152,37 @@ export class Resize extends SampleBase<{}, {}> {
                                                 <RibbonCollectionsDirective>
                                                     <RibbonCollectionDirective>
                                                         <RibbonItemsDirective>
-                                                            <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontStyle, index: 3, width: '150px', allowFiltering: true, filtering: this.filtering, select: function (args) { this.updateContent("Font Style -> " + args.itemData.text); } }}>
+                                                            <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontStyle, index: 3, width: '150px', allowFiltering: true, filtering: this.filtering, select: function (args) { if (args.itemData) { this.updateContent("Font Style -> " + args.itemData.text); } } }}>
                                                             </RibbonItemDirective>
-                                                            <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontSize, index: 3, width: '65px', popupWidth: '85px', select: function (args) { this.updateContent("Font Size -> " + args.itemData.text); } }}>
+                                                            <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontSize, index: 3, width: '65px', popupWidth: '85px', select: function (args) { if (args.itemData) { this.updateContent("Font Size -> " + args.itemData.text); } } }}>
                                                             </RibbonItemDirective>
                                                         </RibbonItemsDirective>
                                                     </RibbonCollectionDirective>
                                                     <RibbonCollectionDirective>
                                                         <RibbonItemsDirective>
+                                                            <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Multiple, items: [{iconCss: 'e-icons e-bold', content: 'Bold', selected: true, click: () => { this.updateContent("Bold") }}, {iconCss: 'e-icons e-italic', content: 'Italic', click: () => { this.updateContent("Italic") }}, {iconCss: 'e-icons e-underline', content: 'Underline', click: () => { this.updateContent("Underline") }}, {iconCss: 'e-icons e-strikethrough', content: 'Strikethrough', click: () => { this.updateContent("Strikethrough") }}, {iconCss: 'e-icons e-change-case', content: 'Change Case', click: () => { this.updateContent("Change Case") }}]}}>
+                                                            </RibbonItemDirective>
                                                             <RibbonItemDirective type="ColorPicker" allowedSizes={RibbonItemSize.Small} displayOptions={DisplayMode.Simplified | DisplayMode.Classic} colorPickerSettings={{value: '#123456', change: function (args) { this.updateContent(args.currentValue.hex + " color"); }}}>
                                                             </RibbonItemDirective>
-                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-bold", content: "Bold", isToggle: true, clicked: function () { this.updateContent("Bold"); } }}>
+                                                        </RibbonItemsDirective>
+                                                    </RibbonCollectionDirective>
+                                                </RibbonCollectionsDirective>
+                                            </RibbonGroupDirective>
+                                            <RibbonGroupDirective header="Paragraph" groupIconCss="e-icons e-align-center" orientation="Row">
+                                                <RibbonCollectionsDirective>
+                                                    <RibbonCollectionDirective>
+                                                        <RibbonItemsDirective>
+                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-decrease-indent", clicked: () => { this.updateContent("Decrease Indent"); } }}>
                                                             </RibbonItemDirective>
-                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-italic", content: "Italic", isToggle: true, clicked: function () { this.updateContent("Italic"); } }}>
+                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-increase-indent", clicked: () => { this.updateContent("Increase Indent"); } }}>
                                                             </RibbonItemDirective>
-                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-underline", content: "Underline", isToggle: true, clicked: function () { this.updateContent("Underline"); } }}>
+                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-paragraph", clicked: () => { this.updateContent("Paragraph Mark"); } }}>
                                                             </RibbonItemDirective>
-                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-strikethrough", content: "Strikethrough", isToggle: true, clicked: function () { this.updateContent("Strikethrough"); } }}>
-                                                            </RibbonItemDirective>
-                                                            <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-change-case", content: "Change Case", isToggle: true, clicked: function () { this.updateContent("Change case"); } }}>
+                                                        </RibbonItemsDirective>
+                                                    </RibbonCollectionDirective>
+                                                    <RibbonCollectionDirective>
+                                                        <RibbonItemsDirective>
+                                                            <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Single, items: [{iconCss: 'e-icons e-align-left', selected: true, click: () => { this.updateContent("Align Left") }}, {iconCss: 'e-icons e-align-center', click: () => { this.updateContent("Align Center") }}, {iconCss: 'e-icons e-align-right', click: () => { this.updateContent("Align Right") }}, {iconCss: 'e-icons e-justify', click: () => { this.updateContent("Justify") }}]}}>
                                                             </RibbonItemDirective>
                                                         </RibbonItemsDirective>
                                                     </RibbonCollectionDirective>

@@ -1,15 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, Resize, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { resourcesData, resourceCollection } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function ResourceView() {
-  React.useEffect(() => {
+const ResourceView = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
   const taskFields: any = {
     id: 'TaskID',
     name: 'TaskName',
@@ -46,9 +47,9 @@ function ResourceView() {
     rightLabel: 'resources',
     taskLabel: 'Progress'
   };
-  function toolbarClick(args: ClickEventArgs): void {
+  const toolbarClick = (args: ClickEventArgs): void => {
     if (args.item.id === 'showhidebar') {
-      ganttInstance.showOverAllocation = ganttInstance.showOverAllocation ? false : true;
+      ganttInstance.current.showOverAllocation = ganttInstance.current.showOverAllocation ? false : true;
     }
   };
   return (
@@ -58,7 +59,7 @@ function ResourceView() {
           allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={toolbar} toolbarClick={toolbarClick.bind(this)} editSettings={editSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
           taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings}
-          height='410px' resources={resourceCollection} showOverAllocation={true} ref={gantt => ganttInstance = gantt}>
+          height='410px' resources={resourceCollection} showOverAllocation={true} ref={ganttInstance}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>
             <ColumnDirective field='TaskName' headerText='Name' width='250'></ColumnDirective>

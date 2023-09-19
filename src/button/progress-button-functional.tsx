@@ -57,7 +57,7 @@ const ProgressButton = () => {
                             <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                                 <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                                     <ProgressButtonComponent id="roundbtn" spinSettings={spinCenter} animationSettings={zoomOut} cssClass="e-round e-small e-success"
-                                        iconCss="e-btn-sb-icons e-progress-play-icon"></ProgressButtonComponent>
+                                        iconCss="e-btn-sb-icons e-play-icon"></ProgressButtonComponent>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">

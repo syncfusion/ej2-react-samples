@@ -1,0 +1,8 @@
+.material .sb-reset-icon:before {
+    content: '\e7a7';
+}
+
+.material .e-samplestatus.new,
+.material .e-samplestatus.update {
+    margin-top: 6px;
+}

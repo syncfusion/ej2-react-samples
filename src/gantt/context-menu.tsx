@@ -31,7 +31,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     showDeleteConfirmDialog: true
   };
   public splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   private ganttInstance: GanttComponent;
   public projectStartDate: Date = new Date('03/25/2019');

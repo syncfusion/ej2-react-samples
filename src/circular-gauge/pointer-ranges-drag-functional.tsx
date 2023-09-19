@@ -3,11 +3,9 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect, useRef, useState } from 'react';
 import { PropertyPane } from '../common/property-pane';
-import {
-    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, IPointerDragEventArgs, Inject, AnnotationsDirective, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel, getRangeColor,
-} from '@syncfusion/ej2-react-circulargauge';
+import { CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, IPointerDragEventArgs, Inject, AnnotationsDirective, AnnotationDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, TickModel, getRangeColor } from '@syncfusion/ej2-react-circulargauge';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { updateSampleSection } from '../common/sample-base';
 
@@ -15,63 +13,62 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
+const Drag = () => {
 
-function Drag() {
-
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let gauge: CircularGaugeComponent;
-    let drag: HTMLInputElement;
-    let pointerDrag: CheckBoxComponent;
-    let rangesDrag: CheckBoxComponent;
+    const [pointerValue, setPointerValue] = useState<String>('70');
+    let gauge = useRef<CircularGaugeComponent>(null);
+    let drag = useRef<HTMLInputElement>(null);
+    let pointerDrag = useRef<CheckBoxComponent>(null);
+    let rangesDrag = useRef<CheckBoxComponent>(null);
     let content: string = '<div style="font-size: 14px;color:#E5C31C;font-weight: lighter;font-style: oblique;"><span>';
 
-    function onChartLoad(args: ILoadedEventArgs): void {
+    const onChartLoad = (): void => {
         document.getElementById('drag-container').setAttribute('title', '');
     };
 
-    function dragMove(args: IPointerDragEventArgs): void {
+    const dragMove = (args: IPointerDragEventArgs): void => {
         if (args.type.indexOf('pointer') > -1) {
             document.getElementById('pointerValue').innerHTML = String(Math.round(args.currentValue));
-            drag.value = Math.round(args.currentValue).toString();
-            gauge.setAnnotationValue(0, 0, content + Math.round(args.currentValue) + ' MPH</span></div > ');
+            drag.current.value = Math.round(args.currentValue).toString();
+            gauge.current.setAnnotationValue(0, 0, content + Math.round(args.currentValue) + ' MPH</span></div > ');
         }
     };
 
-    function dragEnd(args: IPointerDragEventArgs): void {
+    const dragEnd = (args: IPointerDragEventArgs): void => {
         if (isNaN(args.rangeIndex)) {
-            setPointersValue(gauge, Math.round(args.currentValue));
+            setPointersValue(gauge.current, Math.round(args.currentValue));
         }
     };
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function dragChange(): void {
-        let pointerValue: number = +drag.value;
-        document.getElementById('pointerValue').innerHTML = String(Math.round(pointerValue));
-        setPointersValue(gauge, pointerValue);
+    const dragChange = (): void => {
+        let pointerValue: number = +drag.current.value;
+        setPointerValue(String(Math.round(pointerValue)));
+        setPointersValue(gauge.current, pointerValue);
     }
 
-    function pointerDragChange(): void {
-        let value: boolean = pointerDrag.checked;
-        gauge.enablePointerDrag = value;
+    const pointerDragChange = (): void => {
+        let value: boolean = pointerDrag.current.checked;
+        gauge.current.enablePointerDrag = value;
     }
 
-    function rangesDragChange(): void {
-        let value: boolean = rangesDrag.checked;
-        gauge.enableRangeDrag = value;
+    const rangesDragChange = (): void => {
+        let value: boolean = rangesDrag.current.checked;
+        gauge.current.enableRangeDrag = value;
     }
 
-    function setPointersValue(circulargauge: CircularGaugeComponent, pointerValue: number): void {
+    const setPointersValue = (circulargauge: CircularGaugeComponent, pointerValue: number): void => {
         let color: string;
         if (pointerValue >= 0 && pointerValue <= 40) {
             color = '#30B32D';
@@ -98,34 +95,16 @@ function Drag() {
         <div className='control-pane'>
             <div className='control-section row'>
                 <div className='col-lg-8'>
-                    <CircularGaugeComponent load={load.bind(this)} loaded={onChartLoad.bind(this)} background='transparent' dragMove={dragMove.bind(this)} dragEnd={dragEnd.bind(this)} id='drag-container' ref={g => gauge = g} enablePointerDrag={true} enableRangeDrag={false}>
+                    <CircularGaugeComponent load={load.bind(this)} loaded={onChartLoad.bind(this)} background='transparent' dragMove={dragMove.bind(this)} dragEnd={dragEnd.bind(this)} id='drag-container' ref={gauge} enablePointerDrag={true} enableRangeDrag={false}>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
-                            <AxisDirective startAngle={220} endAngle={140} radius='80%' minimum={0} maximum={120}
-                                majorTicks={{
-                                    useRangeColor: true
-                                }} lineStyle={{ width: 0 }}
-                                minorTicks={{
-                                    useRangeColor: true
-                                }} labelStyle={{
-                                    useRangeColor: true,
-                                    font: {
-                                        fontFamily: 'inherit'
-                                    }
-                                }}>
+                            <AxisDirective startAngle={220} endAngle={140} radius='80%' minimum={0} maximum={120} majorTicks={{ useRangeColor: true }} lineStyle={{ width: 0 }} minorTicks={{ useRangeColor: true }} labelStyle={{ useRangeColor: true, font: { fontFamily: 'inherit' } }}>
                                 <AnnotationsDirective>
-                                    <AnnotationDirective content='<div style="font-size: 14px;color:#E5C31C;font-weight: lighter;font-style: oblique;margin-left:-20px;"><span>70 MPH</span></div>'
-                                        angle={180} radius='45%' zIndex='1'>
+                                    <AnnotationDirective content='<div style="font-size: 14px;color:#E5C31C;font-weight: lighter;font-style: oblique;margin-left:-20px;"><span>70 MPH</span></div>' angle={180} radius='45%' zIndex='1'>
                                     </AnnotationDirective>
                                 </AnnotationsDirective>
                                 <PointersDirective>
-                                    <PointerDirective value={70} radius='60%' markerWidth={5}
-                                        cap={{
-                                            radius: 10, border: { width: 5, color: '#E5C31C' }
-                                        }}
-                                        needleTail={{
-                                            length: '0%', color: '#E5C31C'
-                                        }} color='#E5C31C' />
+                                    <PointerDirective value={70} radius='60%' markerWidth={5} cap={{ radius: 10, border: { width: 5, color: '#E5C31C' } }} needleTail={{ length: '0%', color: '#E5C31C' }} color='#E5C31C' />
                                     <PointerDirective value={70} radius='110%' color='#E5C31C' markerWidth={20} markerHeight={20} type='Marker' markerShape='InvertedTriangle' ></PointerDirective>
                                 </PointersDirective>
                                 <PointerDirective value={70} type="Marker" markerShape='InvertedTriangle' radius='110%' markerHeight={20} color='#E5C31C' markerWidth={20} />
@@ -149,12 +128,12 @@ function Drag() {
                                     </td>
                                     <td style={{ width: "40%" }}>
                                         <div style={{ marginLeft: '5px' }}>
-                                            <input type="range" id="value" onChange={dragChange.bind(this)} ref={d => drag = d} defaultValue="70" min="0" max="120" style={{ width: "100%", paddingLeft: '0px' }} />
+                                            <input type="range" id="value" onChange={dragChange.bind(this)} ref={drag} defaultValue="70" min="0" max="120" style={{ width: "100%", paddingLeft: '0px' }} />
                                         </div>
                                     </td>
                                     <td style={{ width: '10%' }}>
                                         <div style={{ textAlign: 'center' }}>
-                                            <span id='pointerValue' style={{ fontSize: "14px" }}>70</span>
+                                            <span id='pointerValue' style={{ fontSize: "14px" }}>{pointerValue}</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -164,7 +143,7 @@ function Drag() {
                                     </td>
                                     <td style={{ width: "49%" }}>
                                         <div style={{ paddingTop: "0px", marginLeft: "-4px" }}>
-                                            <CheckBoxComponent id='enable' checked={true} change={pointerDragChange.bind(this)} ref={d => pointerDrag = d} />
+                                            <CheckBoxComponent id='enable' checked={true} change={pointerDragChange.bind(this)} ref={pointerDrag} />
                                         </div>
                                     </td>
                                 </tr>
@@ -174,7 +153,7 @@ function Drag() {
                                     </td>
                                     <td style={{ width: "40%" }}>
                                         <div style={{ paddingTop: "0px", marginLeft: "-4px" }}>
-                                            <CheckBoxComponent id='rangeDragEnable' checked={false} change={rangesDragChange.bind(this)} ref={d => rangesDrag = d} />
+                                            <CheckBoxComponent id='rangeDragEnable' checked={false} change={rangesDragChange.bind(this)} ref={rangesDrag} />
                                         </div>
                                     </td>
                                 </tr>
@@ -184,9 +163,7 @@ function Drag() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample illustrates dragging a pointer and a range in a circular gauge. End-user can drag the pointer and the range by enabling the pointer drag and range drag options.
-                </p>
+                <p>This sample illustrates dragging a pointer and a range in a circular gauge. End-user can drag the pointer and the range by enabling the pointer drag and range drag options.</p>
             </div>
             <div id="description">
                 <p>
@@ -199,5 +176,4 @@ function Drag() {
         </div>
     )
 }
-
 export default Drag;

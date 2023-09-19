@@ -30,9 +30,9 @@ function Localbinding() {
             <div id='description'>
                 <p>
                     The Grid supports data binding. The  <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#datasource'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid#datasource'>
                         dataSource</a></code> property can be assigned either with the array of JavaScript objects or instance of  <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/documentation/data/api-dataManager.html'>
+                            href='https://ej2.syncfusion.com/documentation/api/data/dataManager/'>
                             datamanager</a></code>.
                 </p>
                 <p>

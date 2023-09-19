@@ -40,6 +40,14 @@ export class EditorTemplate extends SampleBase<{}, {}> {
     }
   }
 
+  private editorHeaderTemplate(props: Record<string, any>): JSX.Element {
+    return (
+      <div id="event-header">
+        {(props !== undefined ) ? ((props.Subject) ? <div>{props.Subject}</div> : <div>Create New Event</div>) : <div></div>}
+      </div>
+    );
+  }
+
   private editorTemplate(props: Record<string, any>): JSX.Element {
     return ((props !== undefined) ? <table className="custom-event-editor" style={{ width: '100%' }} cellPadding= {5}><tbody>
       <tr><td className="e-textlabel">Summary</td><td colSpan={4}>
@@ -72,6 +80,7 @@ export class EditorTemplate extends SampleBase<{}, {}> {
             <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)}
               ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.data }}
               editorTemplate={this.editorTemplate.bind(this)} actionBegin={this.onActionBegin.bind(this)}
+              editorHeaderTemplate={this.editorHeaderTemplate.bind(this)}
               showQuickInfo={false} eventRendered={this.onEventRendered.bind(this)}>
               <ViewsDirective>
                 <ViewDirective option='Day' />
@@ -92,6 +101,9 @@ export class EditorTemplate extends SampleBase<{}, {}> {
           <p>
             In this demo, the event window is customized based on the specific appointment-related fields required for doctors which can 
             be achieved by making use of the <code>editorTemplate</code> API and it is achieved using <code>class component</code>.
+          </p>
+          <p> 
+            In this demo, the editor window header is customized based on the appointment subject field which can be achieved by the <code>editorHeaderTemplate</code>. 
           </p>
           <p>
             Each field defined through it should contain the <code>e-field</code> class,and <code>data-name</code> attribute, 

@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { extend } from '@syncfusion/ej2-base';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
@@ -10,14 +11,13 @@ import { MultiSelectComponent, CheckBoxSelection } from '@syncfusion/ej2-react-d
 const emptyCss = `
 .property-panel-table div {
   padding-top: 0px}`;
-function WorkWeek() {
-
-  React.useEffect(() => {
+const WorkWeek = () => {
+  useEffect(() => {
     updateSampleSection();
   }, []);
 
-  let ganttInstance: GanttComponent;
-  let multiselectObj: MultiSelectComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
+  let multiselectObj = useRef<MultiSelectComponent>(null);
   let workDays: { [key: string]: Object }[] = [
     { id: 'Sunday', day: 'Sunday' },
     { id: 'Monday', day: 'Monday' },
@@ -28,15 +28,15 @@ function WorkWeek() {
     { id: 'Saturday', day: 'Saturday' },
   ];
   const defaultValue: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  function select(args: any): void {
-    let workingDays: any = extend([], multiselectObj.value, [], true);
+  const select = (args: any): void => {
+    let workingDays: any = extend([], multiselectObj.current.value, [], true);
     workingDays.push(args.itemData.day);
-    ganttInstance.workWeek = workingDays;
+    ganttInstance.current.workWeek = workingDays;
   };
-  function removed(args: any): void {
-    let index = ganttInstance.workWeek.indexOf(args.itemData.day);
+  const removed = (args: any): void => {
+    let index = ganttInstance.current.workWeek.indexOf(args.itemData.day);
     if (index !== -1) {
-      ganttInstance.workWeek = (multiselectObj.value as string[]);
+      ganttInstance.current.workWeek = (multiselectObj.current.value as string[]);
     }
   };
   const taskFields: any = {
@@ -59,7 +59,7 @@ function WorkWeek() {
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-lg-8'>
-          <GanttComponent id='WorkWeek' ref={gantt => ganttInstance = gantt} dataSource={projectNewData} treeColumnIndex={1}
+          <GanttComponent id='WorkWeek' ref={ganttInstance} dataSource={projectNewData} treeColumnIndex={1}
             highlightWeekends={true} taskFields={taskFields} labelSettings={labelSettings} height='410px'
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
             <ColumnsDirective>
@@ -89,7 +89,7 @@ function WorkWeek() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div style={{ paddingTop: '0px' }}>
-                    <MultiSelectComponent ref={multiselect => multiselectObj = multiselect} id="WorkWeek" style={{ padding: '2px;' }} mode="CheckBox" value={defaultValue}
+                    <MultiSelectComponent ref={multiselectObj} id="WorkWeek" style={{ padding: '2px;' }} mode="CheckBox" value={defaultValue}
                       dataSource={workDays} showDropDownIcon={true} popupHeight='350px' fields={{ text: 'day', value: 'id' }}
                       select={select.bind(this)} removed={removed.bind(this)}>
                       <Inject services={[CheckBoxSelection]}></Inject>

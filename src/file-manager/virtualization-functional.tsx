@@ -27,7 +27,7 @@ const VirtualizationSample = () => {
     return(
         <div>
             <div className="control-section">
-                <FileManagerComponent id="filemanager" ajaxSettings={{url: hostUrl + "api/FileManager/FileOperations", getImageUrl: hostUrl + "api/FileManager/GetImage", uploadUrl: hostUrl + 'api/FileManager/Upload', downloadUrl: hostUrl + 'api/FileManager/Download'}} toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'View', 'Details']}} contextMenuSettings={{layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}} view={"Details"} enableVirtualization={true} beforeSend={onBeforeSend.bind(this)} beforeImageLoad={beforeImageLoad.bind(this)} beforeDownload={beforeDownload.bind(this)}>
+                <FileManagerComponent id="filemanager" ajaxSettings={{url: hostUrl + "api/Virtualization/FileOperations", getImageUrl: hostUrl + "api/Virtualization/GetImage", uploadUrl: hostUrl + 'api/Virtualization/Upload', downloadUrl: hostUrl + 'api/Virtualization/Download'}} toolbarSettings={{items: ['NewFolder', 'SortBy', 'Cut', 'Copy', 'Paste', 'Delete', 'Refresh', 'Download', 'Rename', 'View', 'Details']}} contextMenuSettings={{layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'NewFolder', '|', 'Details', '|', 'SelectAll']}} view={"Details"} enableVirtualization={true} beforeSend={onBeforeSend.bind(this)} beforeImageLoad={beforeImageLoad.bind(this)} beforeDownload={beforeDownload.bind(this)}>
                     <Inject services={[ NavigationPane, DetailsView, Toolbar, Virtualization]} />
                 </FileManagerComponent>
             </div>

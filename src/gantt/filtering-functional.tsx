@@ -1,17 +1,17 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { GanttComponent, Inject, Filter, ColumnsDirective, ColumnDirective, Selection } from '@syncfusion/ej2-react-gantt';
 import { filteredData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
-
-function Filtering() {
-  React.useEffect(() => {
+const Filtering = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
   let filterType: { [key: string]: Object }[] = [
     { text: 'Menu', value: 'Menu' },
     { text: 'Excel', value: 'Excel' }
@@ -22,15 +22,15 @@ function Filtering() {
     { text: 'Both', value: 'Both' },
     { text: 'None', value: 'None' },
   ];
-  function onChange(sel: ChangeEventArgs): void {
+  const onChange = (sel: ChangeEventArgs): void => {
     let type: any = sel.value.toString();
-    ganttInstance.filterSettings.type = type;
-    ganttInstance.clearFiltering();
+    ganttInstance.current.filterSettings.type = type;
+    ganttInstance.current.clearFiltering();
   }
-  function onChange2(sel: ChangeEventArgs): void {
+  const onChange2 = (sel: ChangeEventArgs): void => {
     let mode: any = sel.value.toString();
-    ganttInstance.filterSettings.hierarchyMode = mode;
-    ganttInstance.clearFiltering();
+    ganttInstance.current.filterSettings.hierarchyMode = mode;
+    ganttInstance.current.clearFiltering();
   }
   const taskFields: any = {
     id: 'TaskID',
@@ -61,9 +61,9 @@ function Filtering() {
   const labelSettings: any = {
     rightLabel: 'TaskName'
   };
-  function actionCompleteEvent(args): any {
+  const actionCompleteEvent = (args): any => {
     if (args.requestType == "filterafteropen" && (args.columnName === "StartDate" || args.columnName === "EndDate")
-      && ganttInstance.filterSettings.type === "Menu") {
+      && ganttInstance.current.filterSettings.type === "Menu") {
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(1969, 5, 1);
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(1969, 8, 30);
       args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].showTodayButton = false;
@@ -73,7 +73,7 @@ function Filtering() {
   return (
     <div className='control-pane'>
       <div className='col-md-9'>
-        <GanttComponent id='Filtering' ref={gantt => ganttInstance = gantt} dataSource={filteredData} durationUnit='Hour' treeColumnIndex={0}
+        <GanttComponent id='Filtering' ref={ganttInstance} dataSource={filteredData} durationUnit='Hour' treeColumnIndex={0}
           allowFiltering={true} includeWeekend={true} allowSorting={true} dateFormat='MM/dd/yyyy hh:mm:ss'
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} taskFields={taskFields}
           timelineSettings={timelineSettings} splitterSettings={splitterSettings}

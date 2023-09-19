@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection, ColumnsDirective, ColumnDirective, Toolbar, CriticalPath, Edit } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function Critical() {
-    React.useEffect(() => {
+const Critical = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const taskFields: any = {
@@ -52,7 +53,6 @@ function Critical() {
             <div id="action-description">
                 <p>This sample demonstrates the rendering of critical path to the Gantt control.</p>
             </div>
-
             <div id="description">
                 <p>
                     In this example, you can see how to render a Gantt chart with critical path. The default timeline

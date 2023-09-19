@@ -78,7 +78,10 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                                     dataLabelSettings={{
                                         visible: true,
                                         labelPath:'iso_3166_2',
-                                        smartLabelMode:'Hide'
+                                        smartLabelMode:'Hide',
+                                        textStyle: {
+                                            color: 'black'
+                                        }
                                         
                                     }}
                                 >

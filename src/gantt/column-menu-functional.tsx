@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, Filter, Sort, Resize, ColumnMenu, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function GanttColumnMenu() {
-  React.useEffect(() => {
+const GanttColumnMenu = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -48,7 +49,6 @@ function GanttColumnMenu() {
         <div id="action-description">
         <p>This sample demonstrates the default functionalities of the  column menu. Click on multiple icon of each column to open the column menu.</p>
         </div>
-
         <div id="description">
         <p>
         Gantt has an option to show column menu while clicking multiple icon of each column. The column menu has an integrated option to interact with the features such as sorting, filtering, column chooser, and autoFit.  

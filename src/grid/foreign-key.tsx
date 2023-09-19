@@ -41,10 +41,10 @@ export class ForeignKeyColumn extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>
                         Grid has option to show foreign key columns. It can be enabled by setting
-                        <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#datasource">column.dataSource </a></code>
+                        <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#datasource">column.dataSource </a></code>
                         property with either local or remote data and column field and text can be defined by using
-                        <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#foreignkeyfield">column.foreignKeyField</a></code> and
-                        <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#foreignkeyvalue">column.foreignKeyValue</a></code> properties.
+                        <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#foreignkeyfield">column.foreignKeyField</a></code> and
+                        <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#foreignkeyvalue">column.foreignKeyValue</a></code> properties.
                     </p>
 
                     <p style={{ fontWeight: 500 }}><b>Injecting Module:</b></p>

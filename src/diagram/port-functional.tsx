@@ -31,7 +31,7 @@ import {
 
 let diagramInstance: DiagramComponent;
 let portDrop: DropDownListComponent;
-let portVisibilityDrop: MultiSelectComponent;
+let portVisibilityDrop: DropDownListComponent;
 let portFillDrop: ColorPickerComponent;
 let portBorderDrop: ColorPickerComponent;
 let portShapeDrop: DropDownListComponent;
@@ -462,23 +462,7 @@ function selectChange(args: any): void {
       if (args.newValue[0] instanceof Node && selectedElement.length) {
         selectedElement[0].classList.remove("e-remove-selection");
         let port: PointPortModel[] = getPort();
-       let portVisibilityCollection: number[] =[];
-        if (PortVisibility.Visible & port[0].visibility) {
-          portVisibilityCollection.push(PortVisibility.Visible);
-        }
-        if (PortVisibility.Hidden & port[0].visibility) {
-          portVisibilityCollection.push(PortVisibility.Hidden);
-        }
-        if (PortVisibility.Hover & port[0].visibility) {
-          portVisibilityCollection.push(PortVisibility.Hover);
-        }
-        if (PortVisibility.Connect & port[0].visibility) {
-          portVisibilityCollection.push(PortVisibility.Connect);
-        }
-        if (portVisibilityDrop.value !== null && portVisibilityDrop.value.length === 0) {
-          portVisibilityDrop.placeholder = 'Select Visibility';
-        }
-        portVisibilityDrop.value = portVisibilityCollection;
+        portVisibilityDrop.value = port[0].visibility;
         portVisibilityDrop.dataBind();
         portFillDrop.value = port[0].style.fill;
         portFillDrop.dataBind();
@@ -505,14 +489,11 @@ function getPort(): PointPortModel[] {
 }
 
 //change the Visibility of the Port.
-function portVisibilityDropOnChange(args: MultiSelectChangeEventArgs): void {
+function portVisibilityDropOnChange(args): void {
   let port: PointPortModel[] = getPort();
   if (port) {
     for (let j: number = 0; j < port.length; j++) {
-      port[j].visibility = 0;
-      for (let i: number = 0; i < args.value.length; i++) {
-        port[j].visibility += args.value[i] as PortVisibility;
-      }
+      port[j].visibility = portVisibilityDrop.value as PortVisibility;
       diagramInstance.dataBind();
     }
   }
@@ -642,23 +623,19 @@ function Port() {
                     <div style={{ paddingBottom: "8px" }}>Visibility</div>
                     <div>
                       {/* Enable or disable the visibility of the Port */}
-                      <MultiSelectComponent
+                      <DropDownListComponent
                         id="portsVisiblity"
                         enabled={true}
                         dataSource={visibility}
                         fields={{ value: "PortVisibility", text: "text" }}
-                        mode="CheckBox"
-                        showSelectAll={true}
-                        showDropDownIcon={true}
-                        popupHeight={"280px"}
-                        popupWidth={"180px"}
+                       
                         change={portVisibilityDropOnChange}
                         ref={(portVisibilityref) =>
                           {portVisibilityDrop = portVisibilityref}
                         }
                       >
                         <Inject services={[CheckBoxSelection]} />
-                      </MultiSelectComponent>
+                      </DropDownListComponent>
                     </div>
                   </div>
                   <div className="col-lg-6">

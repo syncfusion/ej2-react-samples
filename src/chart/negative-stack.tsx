@@ -1,11 +1,11 @@
 /**
- * Sample for Tornado chart
+ * Sample for Negative Stack chart
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartTheme,
-    Legend, Category, StackingBarSeries, Tooltip, ILoadedEventArgs, DataLabel, ITooltipRenderEventArgs, Highlight
+    Legend, Category, StackingBarSeries, Tooltip, ILoadedEventArgs, DataLabel, ITooltipRenderEventArgs, Highlight, IAxisLabelRenderEventArgs
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
@@ -28,6 +28,11 @@ export let textRender: EmitType<ITooltipRenderEventArgs> = (args: ITooltipRender
     args.text = args.text.indexOf('-') > 0 ? args.text.replace('-', '') : args.text;
     args.text = args.text + " " + "<b>kg</b>";
 };
+function labelRender(args: IAxisLabelRenderEventArgs): void {
+    if (args.value < 0) {
+        args.text = (-args.value).toString();
+    }
+}
 export class NegativeStack extends SampleBase<{}, {}> {
 
     render() {
@@ -50,9 +55,11 @@ export class NegativeStack extends SampleBase<{}, {}> {
                         primaryYAxis={{
                             labelFormat: '{value}',
                             title: 'Weight (kg)',
+                            rangePadding: 'Round',
                             lineStyle: { width: 0 },
                         }}
                         tooltipRender={textRender}
+                        axisLabelRender={labelRender.bind(this)}
                         legendSettings={{ position: Browser.isDevice ? 'Auto' : 'Right' , enableHighlight :true}}
                         load={this.load.bind(this)}
                         title='Height vs Weight' loaded={this.onChartLoad.bind(this)}

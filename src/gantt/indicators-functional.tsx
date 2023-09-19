@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import './indicators.css'
 
-function Indicators() {
-  React.useEffect(() => {
+const Indicators = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -46,7 +47,6 @@ function Indicators() {
       <div id="action-description">
         <p>This sample visualizes how to mention special moment in any mentioned day for a particular task with different icon and label.</p>
       </div>
-
       <div id="description">
         <p>
           In this example, <code>indicators</code> are displayed with some custom text in specified day of task, which are defined in dataSource. You can define the indicators with the following properties for tasks:

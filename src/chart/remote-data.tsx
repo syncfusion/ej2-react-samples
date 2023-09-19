@@ -9,7 +9,7 @@ import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, IPointRenderEventArgs, ChartTheme,
     Legend, Category, ColumnSeries, Tooltip, IAxisLabelRenderEventArgs, ILoadedEventArgs, DataLabel
 } from '@syncfusion/ej2-react-charts';
-import { bootstrapColors, fabricColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color'
+import { bootstrapColors, fabricColors, materialColors, highContrastColors, fluentColors, fluentDarkColors } from './theme-color';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 

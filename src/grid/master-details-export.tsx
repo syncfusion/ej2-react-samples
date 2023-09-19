@@ -45,7 +45,7 @@ export class HierarchyExport extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent id="MasterDetailsExport" ref={r => this.grid = r} dataSource={employeeData} childGrid={this.childGrid} toolbar={['PdfExport', 'ExcelExport']}
+          <GridComponent id='MasterDetailsExport' ref={r => this.grid = r} dataSource={employeeData} childGrid={this.childGrid} toolbar={['PdfExport', 'ExcelExport']}
           allowPdfExport={true} allowExcelExport={true} toolbarClick={this.toolbarClick.bind(this)}>
               <ColumnsDirective>
                   <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' />
@@ -66,9 +66,9 @@ export class HierarchyExport extends SampleBase<{}, {}> {
             <p>In this demo, ExcelExport and PdfExport items are defined in the toolbar. For these toolbar items, we have defined actions
                 in toolbarClick event to export hierarchy Grid using the
                 <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/api/grid#excelexport">excelExport</a></code>, 
+                href="https://ej2.syncfusion.com/react/documentation/api/grid#excelexport">excelExport</a></code>, 
                 <code><a target="_blank" className="code"
-                    href="http://ej2.syncfusion.com/react/documentation/api/grid#pdfexport">pdfExport</a></code>
+                    href="https://ej2.syncfusion.com/react/documentation/api/grid#pdfexport">pdfExport</a></code>
             methods and the grid will export using <code>All</code> mode.</p>
             The hierarchy grid allows us to export the grid with following options,
             <ul>
@@ -87,7 +87,7 @@ export class HierarchyExport extends SampleBase<{}, {}> {
             <p>
                 More information on the exporting configuration can be found in this
                  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/pdf-export">
-                pdf-export</a> and  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/excel-exporting">
+                pdf-export</a> and  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/excel-export/excel-exporting">
                 excel-export</a> documentation sections.
             </p>
         </div>

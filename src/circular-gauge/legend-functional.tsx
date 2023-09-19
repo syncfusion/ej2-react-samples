@@ -3,14 +3,10 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect, useRef } from 'react';
 import { PropertyPane } from '../common/property-pane';
 import { updateSampleSection } from '../common/sample-base';
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective,
-    Annotations, ILoadedEventArgs, GaugeTheme, LegendPosition, Alignment, GaugeShape, Legend
-} from '@syncfusion/ej2-react-circulargauge';
-
+import { CircularGaugeComponent, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, ILoadedEventArgs, GaugeTheme, LegendPosition, Alignment, GaugeShape, Legend } from '@syncfusion/ej2-react-circulargauge';
 import { DropDownListComponent, DropDownList } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 
@@ -19,19 +15,17 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 
-function Circle() {
+const Circle = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let gauge: CircularGaugeComponent;
-    let dropElement: DropDownListComponent;
-    let alignElement: DropDownListComponent;
-    let positionElement: DropDownListComponent;
+    let gauge = useRef<CircularGaugeComponent>(null);
+    let dropElement = useRef<DropDownListComponent>(null);
+    let alignElement = useRef<DropDownListComponent>(null);
+    let positionElement = useRef<DropDownListComponent>(null);
     let legendPosition: DropDownList;
-    let rangeColor: DropDownList;
-    let pointerColor: DropDownList;
     let loaded: boolean = false;
 
     let positionlist: { [key: string]: Object }[] = [
@@ -56,28 +50,27 @@ function Circle() {
         { value: 'InvertedTriangle', text: 'Inverted Triangle' }
     ];
 
-    function position(): void {
-        gauge.legendSettings.position = positionElement.value as LegendPosition;
+    const position = (): void => {
+        gauge.current.legendSettings.position = positionElement.current.value as LegendPosition;
     }
 
-    function alignment(): void {
-        gauge.legendSettings.alignment = alignElement.value as Alignment;
+    const alignment = (): void => {
+        gauge.current.legendSettings.alignment = alignElement.current.value as Alignment;
     }
 
-    function shape(): void {
-        gauge.legendSettings.shape = dropElement.value as GaugeShape;
+    const shape = (): void => {
+        gauge.current.legendSettings.shape = dropElement.current.value as GaugeShape;
     }
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function onChartLoad(args: {}): void {
+    const onChartLoad = (args: {}): void => {
         if (!loaded) {
             loaded = true;
             legendPosition = new DropDownList({
@@ -91,44 +84,24 @@ function Circle() {
         }
     }
 
-    function enableToggleLegend(args: ChangeEventArgs): void {
-        gauge.legendSettings.toggleVisibility = args.checked;
+    const enableToggleLegend = (args: ChangeEventArgs): void => {
+        gauge.current.legendSettings.toggleVisibility = args.checked;
 
     }
 
-    function enableLegend(args: ChangeEventArgs): void {
-        gauge.legendSettings.visible = args.checked;
-        gauge.refresh();
+    const enableLegend = (args: ChangeEventArgs): void => {
+        gauge.current.legendSettings.visible = args.checked;
+        gauge.current.refresh();
     }
 
     return (
         <div className='control-pane'>
             <div className='control-section row'>
                 <div className='col-lg-8'>
-                    <CircularGaugeComponent load={load.bind(this)} background='transparent' id='range-container' loaded={onChartLoad.bind(this)}
-                        title='Measure of wind speed in km/h' titleStyle={{ fontFamily: 'inherit' }}
-                        legendSettings={{
-                            visible: true, position: "Bottom",
-                            textStyle: {
-                                fontFamily: 'inherit',
-                                size: '12px'
-                            }
-                        }}
-                        ref={g => gauge = g}>
+                    <CircularGaugeComponent load={load.bind(this)} background='transparent' id='range-container' loaded={onChartLoad.bind(this)} title='Measure of wind speed in km/h' titleStyle={{ fontFamily: 'inherit' }} legendSettings={{ visible: true, position: "Bottom", textStyle: { fontFamily: 'inherit', size: '12px' } }} ref={gauge}>
                         <Inject services={[Annotations, Legend]} />
                         <AxesDirective>
-                            <AxisDirective startAngle={210} endAngle={150} radius='80%' minimum={0} maximum={120}
-                                majorTicks={{
-                                    color: '#9E9E9E', height: 16, interval: 20
-                                }} lineStyle={{ width: 2 }}
-                                minorTicks={{
-                                    height: 8, interval: 10
-                                }} labelStyle={{
-                                    position: 'Inside', useRangeColor: false,
-                                    font: {
-                                        fontFamily: 'inherit'
-                                    }
-                                }}>
+                            <AxisDirective startAngle={210} endAngle={150} radius='80%' minimum={0} maximum={120} majorTicks={{ color: '#9E9E9E', height: 16, interval: 20 }} lineStyle={{ width: 2 }} minorTicks={{ height: 8, interval: 10 }} labelStyle={{ position: 'Inside', useRangeColor: false, font: { fontFamily: 'inherit' } }}>
                                 <RangesDirective>
                                     <RangeDirective start={0} end={5} color='#ccffff' radius='110%' legendText='Light Air' />
                                     <RangeDirective start={5} end={11} color='#99ffff' radius='110%' legendText='Light Breeze' />
@@ -140,12 +113,7 @@ function Circle() {
                                     <RangeDirective start={102} end={120} color='#ff0000' radius='110%' legendText='Hurricane Force' />
                                 </RangesDirective>
                                 <PointersDirective>
-                                    <PointerDirective value={70} radius='60%' pointerWidth={8}
-                                        animation={{ enable: true }}
-                                        cap={{
-                                            radius: 7
-                                        }}
-                                        needleTail={{ length: '18%' }} />
+                                    <PointerDirective value={70} radius='60%' pointerWidth={8} animation={{ enable: true }} cap={{ radius: 7 }} needleTail={{ length: '18%' }} />
                                 </PointersDirective>
                             </AxisDirective>
                         </AxesDirective>
@@ -182,7 +150,7 @@ function Circle() {
                                     </td>
                                     <td>
                                         <div style={{ paddingLeft: '20px' }}>
-                                            <DropDownListComponent width="100%" index={0} change={position.bind(this)} ref={d => positionElement = d} dataSource={positionlist} fields={{ text: 'value', value: 'value' }} />
+                                            <DropDownListComponent width="100%" index={0} change={position.bind(this)} ref={positionElement} dataSource={positionlist} fields={{ text: 'value', value: 'value' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -192,7 +160,7 @@ function Circle() {
                                     </td>
                                     <td>
                                         <div style={{ paddingLeft: '20px' }}>
-                                            <DropDownListComponent width="100%" index={0} change={alignment.bind(this)} ref={d => alignElement = d} dataSource={alignlist} fields={{ text: 'value', value: 'value' }} />
+                                            <DropDownListComponent width="100%" index={0} change={alignment.bind(this)} ref={alignElement} dataSource={alignlist} fields={{ text: 'value', value: 'value' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -202,7 +170,7 @@ function Circle() {
                                     </td>
                                     <td>
                                         <div style={{ paddingLeft: '20px' }}>
-                                            <DropDownListComponent width="100%" index={0} change={shape.bind(this)} ref={d => dropElement = d} dataSource={shapelist} fields={{ text: 'text', value: 'value' }} />
+                                            <DropDownListComponent width="100%" index={0} change={shape.bind(this)} ref={dropElement} dataSource={shapelist} fields={{ text: 'text', value: 'value' }} />
                                         </div>
                                     </td>
                                 </tr>
@@ -212,14 +180,10 @@ function Circle() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample directs the visualization of moving wind types based on their speed via the legend of the circular gauge component. The visibility, shape, alignment, and position of the legend can all be customized.
-                </p>
+                <p>This sample directs the visualization of moving wind types based on their speed via the legend of the circular gauge component. The visibility, shape, alignment, and position of the legend can all be customized.</p>
             </div>
             <div id="description">
-                <p>
-                    The legend provides useful information for interpreting what the circular gauge's axis range displays, and it can be represented in a variety of colors, shapes, and other identifiers depending on the data. To do so, use the <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/legendSettingsModel/'>legendSettings</a> and its properties.
-                </p>
+                <p>The legend provides useful information for interpreting what the circular gauge's axis range displays, and it can be represented in a variety of colors, shapes, and other identifiers depending on the data. To do so, use the <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/legendSettingsModel/'>legendSettings</a> and its properties.</p>
                 <p>
                     More information on the legend can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-legend/">documentation section</a>.
                 </p>
@@ -227,5 +191,4 @@ function Circle() {
         </div>
     )
 }
-
 export default Circle;

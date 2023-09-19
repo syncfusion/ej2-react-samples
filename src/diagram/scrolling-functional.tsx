@@ -518,7 +518,7 @@ function ScrollingSample() {
                   >
                     <TextBoxComponent
                       id="height"
-                      value="10"
+                      value="1500"
                       change={(args:any) => {
                         diagramInstance.scrollSettings.scrollableArea.height =
                           Number(args.value);

@@ -25,7 +25,7 @@ export class SplitTasks extends SampleBase<{}, {}> {
   };
   public toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll'];
   public splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   public labelSettings: any = {
     leftLabel: 'TaskName',

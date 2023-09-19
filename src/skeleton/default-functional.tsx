@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect } from 'react';
 import { SkeletonComponent } from '@syncfusion/ej2-react-notifications';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (

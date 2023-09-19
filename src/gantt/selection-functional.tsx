@@ -1,19 +1,20 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent, DropDownList } from '@syncfusion/ej2-react-dropdowns';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-function GanttSelection() {
-  React.useEffect(() => {
+const GanttSelection = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
-  let dropdownModeList: DropDownListComponent;
-  let dropdownTypeList: DropDownListComponent;
-  let dropdownToggleList: DropDownListComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
+  let dropdownModeList = useRef<DropDownListComponent>(null);
+  let dropdownTypeList = useRef<DropDownListComponent>(null);
+  let dropdownToggleList = useRef<DropDownListComponent>(null);
   const dropdownModeListData: { [key: string]: Object }[] = [
     { id: 'Row', type: 'Row' },
     { id: 'Cell', type: 'Cell' }
@@ -27,15 +28,11 @@ function GanttSelection() {
     { id: false, type: 'Disable' }
   ];
   const toggleValue: boolean = false;
-  function perform(): void {
-    let mode: any = dropdownModeList.value;
-    let type: any = dropdownTypeList.value;
-    let toggle: boolean = dropdownToggleList.value as boolean;
-    ganttInstance.selectionSettings.mode = mode;
-    ganttInstance.selectionSettings.type = type;
-    ganttInstance.selectionSettings.enableToggle = toggle;
+  const perform = (): void => {
+    ganttInstance.current.selectionSettings.mode = dropdownModeList.current.value as any;
+    ganttInstance.current.selectionSettings.type = dropdownTypeList.current.value as any;
+    ganttInstance.current.selectionSettings.enableToggle = dropdownToggleList.current.value as boolean;
   }
-
   const taskFields: any = {
     id: 'TaskID',
     name: 'TaskName',
@@ -63,7 +60,7 @@ function GanttSelection() {
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-lg-9'>
-          <GanttComponent id='GanttSelection' ref={gantt => ganttInstance = gantt} dataSource={projectNewData} highlightWeekends={true}
+          <GanttComponent id='GanttSelection' ref={ganttInstance} dataSource={projectNewData} highlightWeekends={true}
             treeColumnIndex={1} allowSelection={true} splitterSettings={splitterSettings} selectionSettings={selectionSettings}
             taskFields={taskFields} labelSettings={labelSettings} height='410px'
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
@@ -83,7 +80,7 @@ function GanttSelection() {
               <tr>
                 <td style={{ width: '100%', paddingRight: '5px' }}>
                   <div style={{ width: '150px' }}>
-                    <DropDownListComponent ref={DropDownList => dropdownModeList = DropDownList} id='SelectionModeList' tabIndex={1} dataSource={dropdownModeListData} fields={{ text: 'type', value: 'id' }}
+                    <DropDownListComponent ref={dropdownModeList} id='SelectionModeList' tabIndex={1} dataSource={dropdownModeListData} fields={{ text: 'type', value: 'id' }}
                       value='Row'></DropDownListComponent>
                   </div>
                 </td>
@@ -98,7 +95,7 @@ function GanttSelection() {
               <tr>
                 <td style={{ width: '100%', paddingRight: '5px' }}>
                   <div style={{ width: '150px' }}>
-                    <DropDownListComponent ref={DropDownList => dropdownTypeList = DropDownList} id='SelectionTypeList' tabIndex={1} dataSource={dropDownTypeListData} fields={{ text: 'type', value: 'id' }}
+                    <DropDownListComponent ref={dropdownTypeList} id='SelectionTypeList' tabIndex={1} dataSource={dropDownTypeListData} fields={{ text: 'type', value: 'id' }}
                       value='Single'></DropDownListComponent>
                   </div>
                 </td>
@@ -113,7 +110,7 @@ function GanttSelection() {
               <tr>
                 <td style={{ width: '100%', paddingRight: '5px' }}>
                   <div style={{ width: '150px' }}>
-                    <DropDownListComponent ref={DropDownList => dropdownToggleList = DropDownList} id='SelectionTypeList' tabIndex={1} dataSource={dropdownToggleListData} fields={{ text: 'type', value: 'id' }}
+                    <DropDownListComponent ref={dropdownToggleList} id='SelectionTypeList' tabIndex={1} dataSource={dropdownToggleListData} fields={{ text: 'type', value: 'id' }}
                       value={toggleValue}></DropDownListComponent>
                   </div>
                 </td>

@@ -1,0 +1,40 @@
+.bootstrap5 .sb-reset-icon:before {
+    content: '\e7e7';
+}
+
+.bootstrap5 .copycode::before {
+    content: '\e77c';
+    font-size: 25px;
+}
+
+.bootstrap5 .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow {
+    background-color: #d2ebff;
+}
+
+.bootstrap5 .e-tab .sb-content-tab-header.e-tab-header::before {
+    border-width: 0;
+}
+
+.bootstrap5 .sb-plnr-section {
+    line-height: 25px;
+    height: 30px;
+}
+
+.bootstrap5 .sample-navigation,
+.bootstrap5 .sb-open-new-wrapper {
+    line-height: 33px;
+}
+
+.bootstrap5 .e-samplestatus.new,
+.bootstrap5 .e-samplestatus.update,
+.bootstrap5 .e-samplestatus.preview {
+    margin: 4px 0;
+    height: 22px;
+    margin-top: 0.5px;
+}
+
+.bootstrap5 .e-samplestatus.new.tree,
+.bootstrap5 .e-samplestatus.update.tree,
+.bootstrap5 .e-samplestatus.preview.tree {
+    margin-top: 6px;
+}

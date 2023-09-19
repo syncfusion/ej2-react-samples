@@ -3,11 +3,8 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject, ILoadedEventArgs,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective,
-    Annotations, AnnotationDirective, AnnotationsDirective, GaugeTheme,
-} from '@syncfusion/ej2-react-circulargauge';
+import { useEffect, useRef } from "react";
+import { CircularGaugeComponent, AxesDirective, AxisDirective, Inject, ILoadedEventArgs, PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, AnnotationDirective, AnnotationsDirective, GaugeTheme } from '@syncfusion/ej2-react-circulargauge';
 import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -32,19 +29,17 @@ const SAMPLE_CSS = `
         color:#9E9E9E;
         font-size:16px;
         font-family: inherit";
-    }
-    `;
+    }`;
 
-function SampleData() {
-
-    React.useEffect(() => {
+const SampleData = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let dataGrid: GridComponent;
-    let sampleGaugeOne: CircularGaugeComponent;
-    let sampleGaugeTwo: CircularGaugeComponent;
-    let sampleGaugeThree: CircularGaugeComponent;
+    let dataGrid = useRef<GridComponent>(null);
+    let sampleGaugeOne = useRef<CircularGaugeComponent>(null);
+    let sampleGaugeTwo = useRef<CircularGaugeComponent>(null);
+    let sampleGaugeThree = useRef<CircularGaugeComponent>(null);
     let dataIntervalOne: Object;
     let dataIntervalTwo: Object;
 
@@ -67,16 +62,15 @@ function SampleData() {
         }
     ];
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function onChartLoad(args: ILoadedEventArgs): void {
+    const onChartLoad = (args: ILoadedEventArgs): void => {
         dataIntervalOne = setInterval(
             (): void => {
                 let randomValue: number = Math.random();
@@ -88,15 +82,15 @@ function SampleData() {
                 let gridData3: number = -7 * value3;
                 let newVal: number = Math.random() * (90 - 20) + 20;
                 if (document.getElementById('sample1-container') && sampleGaugeOne != null) {
-                    sampleGaugeOne.axes[0].pointers[0].animation.enable = true;
-                    sampleGaugeTwo.axes[0].pointers[0].animation.enable = true;
-                    sampleGaugeThree.axes[0].pointers[0].animation.enable = true;
-                    sampleGaugeOne.setPointerValue(0, 0, value1);
-                    sampleGaugeTwo.setPointerValue(0, 0, value2);
-                    sampleGaugeThree.setPointerValue(0, 0, -value3);
-                    sampleGaugeOne.setAnnotationValue(0, 0, sampleGaugeOne.axes[0].annotations[0].content);
-                    sampleGaugeTwo.setAnnotationValue(0, 0, sampleGaugeTwo.axes[0].annotations[0].content);
-                    sampleGaugeThree.setAnnotationValue(0, 0, sampleGaugeThree.axes[0].annotations[0].content);
+                    sampleGaugeOne.current.axes[0].pointers[0].animation.enable = true;
+                    sampleGaugeTwo.current.axes[0].pointers[0].animation.enable = true;
+                    sampleGaugeThree.current.axes[0].pointers[0].animation.enable = true;
+                    sampleGaugeOne.current.setPointerValue(0, 0, value1);
+                    sampleGaugeTwo.current.setPointerValue(0, 0, value2);
+                    sampleGaugeThree.current.setPointerValue(0, 0, -value3);
+                    sampleGaugeOne.current.setAnnotationValue(0, 0, sampleGaugeOne.current.axes[0].annotations[0].content);
+                    sampleGaugeTwo.current.setAnnotationValue(0, 0, sampleGaugeTwo.current.axes[0].annotations[0].content);
+                    sampleGaugeThree.current.setAnnotationValue(0, 0, sampleGaugeThree.current.axes[0].annotations[0].content);
                     orderData = [
                         {
                             'Country': 'Germany',
@@ -122,12 +116,12 @@ function SampleData() {
         );
     };
 
-    function onGridLoad(args: {}): void {
+    const onGridLoad = (args: {}): void => {
         dataIntervalTwo = setInterval(
             (): void => {
                 if (document.getElementById('sample1-container') && dataGrid != null) {
-                    dataGrid.dataSource = orderData;
-                    dataGrid.refresh()
+                    dataGrid.current.dataSource = orderData;
+                    dataGrid.current.refresh()
                 } else {
                     clearInterval(+dataIntervalTwo);
                 }
@@ -136,161 +130,66 @@ function SampleData() {
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <div className="row">
                     <div className="col-sm-12">
                         <div className="row">
                             <div className="col-sm-4">
-                                <CircularGaugeComponent load={load.bind(this)} style={{ height: "250px" }} background='transparent' ref={gauge => sampleGaugeOne = gauge} id='sample1-container'>
+                                <CircularGaugeComponent load={load.bind(this)} style={{ height: "250px" }} background='transparent' ref={sampleGaugeOne} id='sample1-container'>
                                     <Inject services={[Annotations]} />
                                     <AxesDirective>
-                                        <AxisDirective startAngle={230} endAngle={130} minimum={-100} maximum={100}
-                                            lineStyle={{
-                                                width: 0,
-                                                color: 'transparent'
-                                            }}
-                                            majorTicks={{
-                                                width: 0,
-                                                height: 0
-                                            }}
-                                            minorTicks={{
-                                                width: 0,
-                                                height: 0
-                                            }} labelStyle={{
-                                                position: 'Outside',
-                                                font: { size: '0', color: 'transparent' }
-                                            }}>
+                                        <AxisDirective startAngle={230} endAngle={130} minimum={-100} maximum={100} lineStyle={{ width: 0, color: 'transparent' }} majorTicks={{ width: 0, height: 0 }} minorTicks={{ width: 0, height: 0 }} labelStyle={{ position: 'Outside', font: { size: '0', color: 'transparent' } }}>
                                             <AnnotationsDirective>
-                                                <AnnotationDirective
-                                                    content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for Germany"/><div class="fontDes">${pointers[0].value}%</div></div></div>'
-                                                    angle={180} zIndex='1'
-                                                    radius='30%' />
-                                                <AnnotationDirective
-                                                    content='<div class="fontDes1">Germany</div>'
-                                                    angle={180} zIndex='1'
-                                                    radius='65%' />
+                                                <AnnotationDirective content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for Germany"/><div class="fontDes">${pointers[0].value}%</div></div></div>' angle={180} zIndex='1' radius='30%' />
+                                                <AnnotationDirective content='<div class="fontDes1">Germany</div>' angle={180} zIndex='1' radius='65%' />
                                             </AnnotationsDirective>
                                             <RangesDirective>
                                                 <RangeDirective start={-100} end={0} startWidth={15} endWidth={15} color='#EC121C' />
                                                 <RangeDirective start={0} end={100} startWidth={15} endWidth={15} color='#45EA0C' />
                                             </RangesDirective>
                                             <PointersDirective>
-                                                <PointerDirective value={75} radius='60%' color='#777777'
-                                                    animation={{ enable: false, duration: 900 }}
-                                                    pointerWidth={5}
-                                                    cap={{
-                                                        radius: 6, color: '#777777',
-                                                        border: { width: 0 }
-                                                    }}
-                                                    needleTail={{
-                                                        length: '25%', color: '#777777'
-                                                    }}>
-                                                </PointerDirective>
+                                                <PointerDirective value={75} radius='60%' color='#777777' animation={{ enable: false, duration: 900 }} pointerWidth={5} cap={{ radius: 6, color: '#777777', border: { width: 0 } }} needleTail={{ length: '25%', color: '#777777' }} />
                                             </PointersDirective>
                                         </AxisDirective>
                                     </AxesDirective>
                                 </CircularGaugeComponent>
                             </div>
                             <div className="col-sm-4">
-                                <CircularGaugeComponent load={load.bind(this)} style={{ height: "250px" }} background='transparent' ref={gauge => sampleGaugeTwo = gauge} id='sample2-container'>
+                                <CircularGaugeComponent load={load.bind(this)} style={{ height: "250px" }} background='transparent' ref={sampleGaugeTwo} id='sample2-container'>
                                     <Inject services={[Annotations]} />
                                     <AxesDirective>
-                                        <AxisDirective startAngle={230} endAngle={130} minimum={-100} maximum={100}
-                                            lineStyle={{
-                                                width: 0,
-                                                color: 'transparent'
-                                            }}
-                                            majorTicks={{
-                                                width: 0,
-                                                height: 0
-                                            }}
-                                            minorTicks={{
-                                                width: 0,
-                                                height: 0
-                                            }} labelStyle={{
-                                                position: 'Outside',
-                                                font: { size: '0', color: 'transprent' }
-                                            }}>
+                                        <AxisDirective startAngle={230} endAngle={130} minimum={-100} maximum={100} lineStyle={{ width: 0, color: 'transparent' }} majorTicks={{ width: 0, height: 0 }} minorTicks={{ width: 0, height: 0 }} labelStyle={{ position: 'Outside', font: { size: '0', color: 'transprent' } }}>
                                             <AnnotationsDirective>
-                                                <AnnotationDirective
-                                                    content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for USA" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
-                                                    angle={180} zIndex='1'
-                                                    radius='30%' />
-                                                <AnnotationDirective
-                                                    content='<div class="fontDes1">USA</div>'
-                                                    angle={180} zIndex='1'
-                                                    radius='65%' />
+                                                <AnnotationDirective content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for USA" /><div class="fontDes">${pointers[0].value}%</div></div></div>' angle={180} zIndex='1' radius='30%' />
+                                                <AnnotationDirective content='<div class="fontDes1">USA</div>' angle={180} zIndex='1' radius='65%' />
                                             </AnnotationsDirective>
                                             <RangesDirective>
                                                 <RangeDirective start={-100} end={0} startWidth={15} endWidth={15} color='#EC121C' />
                                                 <RangeDirective start={0} end={100} startWidth={15} endWidth={15} color='#45EA0C' />
                                             </RangesDirective>
                                             <PointersDirective>
-                                                <PointerDirective value={60} radius='60%' color='#777777'
-                                                    animation={{ enable: false, duration: 900 }}
-                                                    pointerWidth={5}
-                                                    cap={{
-                                                        radius: 6, color: '#777777',
-                                                        border: { width: 0 }
-                                                    }}
-                                                    needleTail={{
-                                                        length: '25%', color: '#777777'
-                                                    }}>
-                                                </PointerDirective>
+                                                <PointerDirective value={60} radius='60%' color='#777777' animation={{ enable: false, duration: 900 }} pointerWidth={5} cap={{ radius: 6, color: '#777777', border: { width: 0 } }} needleTail={{ length: '25%', color: '#777777' }} />
                                             </PointersDirective>
                                         </AxisDirective>
                                     </AxesDirective>
                                 </CircularGaugeComponent>
                             </div>
                             <div className="col-sm-4">
-                                <CircularGaugeComponent load={load.bind(this)} style={{ height: "250px" }} background='transparent' ref={gauge => sampleGaugeThree = gauge} loaded={onChartLoad.bind(this)} id='sample3-container'>
+                                <CircularGaugeComponent load={load.bind(this)} style={{ height: "250px" }} background='transparent' ref={sampleGaugeThree} loaded={onChartLoad.bind(this)} id='sample3-container'>
                                     <Inject services={[Annotations]} />
                                     <AxesDirective>
-                                        <AxisDirective startAngle={230} endAngle={130} minimum={-100} maximum={100}
-                                            lineStyle={{
-                                                width: 0,
-                                                color: 'transparent'
-                                            }}
-                                            majorTicks={{
-                                                width: 0,
-                                                height: 0
-                                            }}
-                                            minorTicks={{
-                                                width: 0,
-                                                height: 0
-                                            }} labelStyle={{
-                                                position: 'Outside',
-                                                font: { size: '0', color: 'transparent' }
-                                            }}>
+                                        <AxisDirective startAngle={230} endAngle={130} minimum={-100} maximum={100} lineStyle={{ width: 0, color: 'transparent' }} majorTicks={{ width: 0, height: 0 }} minorTicks={{ width: 0, height: 0 }} labelStyle={{ position: 'Outside', font: { size: '0', color: 'transparent' } }}>
                                             <AnnotationsDirective>
-                                                <AnnotationDirective
-                                                    content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/negative.png" alt="Negative value for UK" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
-                                                    angle={180} zIndex='1'
-                                                    radius='30%' />
-                                                <AnnotationDirective
-                                                    content='<div class="fontDes1">UK</div>'
-                                                    angle={180} zIndex='1'
-                                                    radius='65%' />
+                                                <AnnotationDirective content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/negative.png" alt="Negative value for UK" /><div class="fontDes">${pointers[0].value}%</div></div></div>' angle={180} zIndex='1' radius='30%' />
+                                                <AnnotationDirective content='<div class="fontDes1">UK</div>' angle={180} zIndex='1' radius='65%' />
                                             </AnnotationsDirective>
                                             <RangesDirective>
                                                 <RangeDirective start={-100} end={0} startWidth={15} endWidth={15} color='#EC121C' />
                                                 <RangeDirective start={0} end={100} startWidth={15} endWidth={15} color='#45EA0C' />
                                             </RangesDirective>
                                             <PointersDirective>
-                                                <PointerDirective value={25} radius='60%' color='#777777'
-                                                    animation={{ enable: false, duration: 900 }}
-                                                    pointerWidth={5}
-                                                    cap={{
-                                                        radius: 6, color: '#777777',
-                                                        border: { width: 0 }
-                                                    }}
-                                                    needleTail={{
-                                                        length: '25%', color: '#777777'
-                                                    }}>
-                                                </PointerDirective>
+                                                <PointerDirective value={25} radius='60%' color='#777777' animation={{ enable: false, duration: 900 }} pointerWidth={5} cap={{ radius: 6, color: '#777777', border: { width: 0 } }} needleTail={{ length: '25%', color: '#777777' }} />
                                             </PointersDirective>
                                         </AxisDirective>
                                     </AxesDirective>
@@ -302,7 +201,7 @@ function SampleData() {
                 <div className="row">
                     <div className="col-sm-12">
                         <div className="row">
-                            <GridComponent dataBound={onGridLoad.bind(this)} ref={grid => dataGrid = grid} dataSource={orderData.slice(0, 30)}>
+                            <GridComponent dataBound={onGridLoad.bind(this)} ref={dataGrid} dataSource={orderData.slice(0, 30)}>
                                 <ColumnsDirective>
                                     <ColumnDirective field='Country' headerText='Country' width='80'></ColumnDirective>
                                     <ColumnDirective field='Sales' headerText='Sales $' width='80'></ColumnDirective>
@@ -314,9 +213,7 @@ function SampleData() {
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample shows live stock price data displayed in multiple circular gauges.
-                    </p>
+                    <p>This sample shows live stock price data displayed in multiple circular gauges.</p>
                 </div>
                 <div id="description">
                     <p>
@@ -328,8 +225,6 @@ function SampleData() {
                 </div>
             </div>
         </div>
-
     )
 }
-
 export default SampleData;

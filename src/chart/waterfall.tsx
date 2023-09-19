@@ -74,7 +74,7 @@ export class Waterfall extends SampleBase<{}, {}> {
                         <Inject services={[WaterfallSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, Legend, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data} xName='x' yName='y'  type='Waterfall' intermediateSumIndexes={[4]}
-                                sumIndexes={[7]} marker={{ dataLabel: { visible: true, font: { color: '#ffffff' } } }} connector={{ color: '#5F6A6A', width: 2 }} columnWidth={0.9}
+                                sumIndexes={[7]} marker={{ dataLabel: { visible: true, font: { color: '#ffffff' } } }} connector={{ color: '#5F6A6A', width: 2 }} 
                                 negativeFillColor='#e56590'>
                             </SeriesDirective>
                         </SeriesCollectionDirective>

@@ -55,11 +55,11 @@ function Hierarchy() {
                 <p>
                     The Hierarchy Grid is used to display table data in hierarchical structure which can show or hide by clicking on expand or collapse button.
                     This feature can be enabled by defining <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#childgrid">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/#childgrid">
                         childGrid</a></code> and <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#querystring">
+                            href="https://ej2.syncfusion.com/react/documentation/api/grid/#querystring">
                             childGrid.queryString</a></code>. And the <code><a target="_blank" className="code"
-                                href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#detaildatabound">
+                                href="https://ej2.syncfusion.com/react/documentation/api/grid/#detaildatabound">
                                 detailDataBound</a></code> event triggers at initial expand of every child Grid.
                 </p>
                 <p>

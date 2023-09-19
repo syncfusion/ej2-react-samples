@@ -43,7 +43,7 @@ const Default = () => {
         <div className='control-pane'>
             <div className='control-section tab-control-section'>
                 {/* Render the Tab Component */}
-                <TabComponent heightAdjustMode='Auto' id='defaultTab'>
+                <TabComponent id='defaultTab'>
                     <TabItemsDirective>
                         <TabItemDirective header={headertext[0]} content={tabContent1} />
                         <TabItemDirective header={headertext[1]} content={tabContent2} />

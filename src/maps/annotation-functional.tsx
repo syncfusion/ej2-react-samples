@@ -4,11 +4,9 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { useEffect } from "react";
 import { MapAjax } from '@syncfusion/ej2-maps';
-import {
-    MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
-    ProjectionType, Annotations, Marker, MarkersDirective, MarkerDirective
-} from '@syncfusion/ej2-react-maps';
+import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Annotations, Marker, MarkersDirective, MarkerDirective } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -34,68 +32,31 @@ const SAMPLE_CSS = `
         color: white;
         font-size: 25px;
     }`;
-
-function AnnotationMaps() {
-
-    React.useEffect(() => {
+const AnnotationMaps = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-
-    let mapInstance: MapsComponent;
-
-    function onMapsLoad(args: ILoadedEventArgs): void {
+    const onMapsLoad = (): void => {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
-
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
         // custom code end
     };
-
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
-                <MapsComponent id="maps" loaded={onMapsLoad.bind(this)} load={load} ref={m => mapInstance = m}
-                    zoomSettings={{
-                        enable: false
-                    }}
-                    annotations={[
-                        {
-                            content: '#maps-annotation',
-                            x: '0%', y: '70%'
-                        }, {
-                            content: '#compass-maps',
-                            x: '85%', y: '5%'
-                        }
-                    ]}
-                >
+                <MapsComponent id="maps" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} annotations={[ { content: '#maps-annotation', x: '0%', y: '70%' }, { content: '#compass-maps', x: '85%', y: '5%' } ]}>
                     <Inject services={[Annotations, Marker]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/africa-continent.json')}
-                            shapePropertyPath='name'
-                            shapeDataPath='name'
-                            shapeSettings={{
-                                fill: 'url(#grad1)'
-                            }}
-                        >
+                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/africa-continent.json')} shapePropertyPath='name' shapeDataPath='name' shapeSettings={{ fill: 'url(#grad1)' }}>
                             <MarkersDirective>
-                                <MarkerDirective
-                                    visible={true} animationDuration={1}
-                                    template='<h3 style="color:white">{{:name}}</h3>'
-                                    dataSource={[{
-                                        name: 'Africa', latitude: 13.97274101999902, longitude: 20.390625
-                                    }]}
-                                >
-
-                                </MarkerDirective>
+                                <MarkerDirective visible={true} animationDuration={1} template='<h3 style="color:white">{{:name}}</h3>' dataSource={[{ name: 'Africa', latitude: 13.97274101999902, longitude: 20.390625 }]} />
                             </MarkersDirective>
                         </LayerDirective>
                     </LayersDirective>
@@ -128,26 +89,19 @@ function AnnotationMaps() {
                 <img src="src/maps/images/compass.svg" alt="Direction compass" height="75px" width="75px" />
             </div>
             {/* Source Link */}
-            <div style={{ float: 'right', marginRight: '10px' }}>Source:
-                <a href="https://en.wikipedia.org/wiki/Africa" target="_blank">en.wikipedia.org</a>
+            <div style={{ float: 'right', marginRight: '10px' }}>
+                Source: <a href="https://en.wikipedia.org/wiki/Africa" target="_blank">en.wikipedia.org</a>
             </div>
             <div id="action-description">
-                <p>
-                    This sample depicts the facts about Africa in an annotation. The shape of Africa is filled with gradient color.
-                </p>
+                <p>This sample depicts the facts about Africa in an annotation. The shape of Africa is filled with gradient color.</p>
             </div>
             <div id="description">
-                <p>
-                    In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker template is used to display the names for shapes. Legend is enabled in this example to represent each continent.
-                </p>
+                <p>In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker template is used to display the names for shapes. Legend is enabled in this example to represent each continent.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
-                <p>
-                    Maps component features are segregated into individual feature-wise modules. To use an annotation, inject the Annotations module using the Maps.Inject(Annotations) method.
-                </p>
+                <p>Maps component features are segregated into individual feature-wise modules. To use an annotation, inject the Annotations module using the Maps.Inject(Annotations) method.</p>
             </div>
         </div>
     )
 }
-
 export default AnnotationMaps;

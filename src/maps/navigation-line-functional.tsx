@@ -4,18 +4,15 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { useEffect } from "react";
 import { MapAjax } from '@syncfusion/ej2-maps';
-import {
-    MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
-    ProjectionType, Marker, MapsTooltip, MarkersDirective, MarkerDirective, NavigationLine, Zoom
-} from '@syncfusion/ej2-react-maps';
+import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, MapsTooltip, MarkersDirective, MarkerDirective, NavigationLine, Zoom } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as data1 from './map-data/penisular-marker.json';
 import * as data2 from './map-data/penisular-location.json';
 let datasource1: any = data1 as any;
 let datasource2: any = data2 as any;
-
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -37,95 +34,49 @@ const SAMPLE_CSS = `
             stroke-dashoffset: -20px;
         }
     }`;
-function NavigationLineMaps() {
-
-    React.useEffect(() => {
+const NavigationLineMaps = () => {
+    useEffect(() => {
         updateSampleSection();
-    }, [])
-
-    let mapInstance: MapsComponent;
-
-    function onMapsLoad(args: ILoadedEventArgs): void {
+    }, []);
+    const onMapsLoad = (): void => {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
-
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as MapsTheme;
         // custom code end
     };
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
-                    <MapsComponent id="maps" loaded={onMapsLoad.bind(this)} load={load} ref={m => mapInstance = m}
-                        zoomSettings={{
-                            enable: false,
-                            zoomFactor: 10
-                        }}
-                        projectionType='Equirectangular'
-                        titleSettings={{
-                            text: 'Shipping sea route between various cities',
-                            textStyle: {
-                                size: '18px'
-                            }
-                        }}
-                        mapsArea={{
-                            background: '#4863A0'
-                        }}
-                        centerPosition={{
-                            latitude: 25.54244147012483,
-                            longitude: -89.62646484375
-                        }}
-                    >
+                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false, zoomFactor: 10 }} projectionType='Equirectangular' titleSettings={{ text: 'Shipping sea route between various cities', textStyle: { size: '18px' } }} mapsArea={{ background: '#4863A0' }} centerPosition={{ latitude: 25.54244147012483, longitude: -89.62646484375 }}>
                         <Inject services={[Zoom, Marker, MapsTooltip, NavigationLine]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
-                                shapeSettings={{
-                                    fill: '#789071'
-                                }}
-                                navigationLineSettings={datasource2.location}
-                            >
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapeSettings={{ fill: '#789071' }} navigationLineSettings={datasource2.location}>
                                 <MarkersDirective>
-                                    <MarkerDirective visible={true} shape='Circle' fill='white' width={10} height={10} animationDuration={0}
-                                        tooltipSettings={{
-                                            visible: true,
-                                            valuePath: 'title'
-                                        }}
-                                        dataSource={datasource1.marker}
-                                    >
-                                    </MarkerDirective>
-                                    <MarkerDirective visible={true} template='<div id="marker1" style="font-size: 12px;color:white">ALTAMIRA</div>' dataSource={[{ latitude: 22.403410892712124, longitude: -100.0 }]} animationDuration={0}>
-                                    </MarkerDirective>
-                                    <MarkerDirective visible={true} template='<div id="marker2" style="font-size: 12px;color:white">HOUSTON</div>' dataSource={[{ latitude: 30.332197482973, longitude: -95.36270141601562 }]} animationDuration={0}>
-                                    </MarkerDirective>
-                                    <MarkerDirective visible={true} template='<div id="marker3" style="font-size: 12px;color:white">PANAMA CITY</div>' dataSource={[{ latitude: 30.380747605060766, longitude: -85.81283569335938 }]} animationDuration={0} offset={{ x: 0, y: -15 }}>
-                                    </MarkerDirective>
-                                    <MarkerDirective visible={true} template='<div id="marker4" style="font-size: 12px;color:white">TAMPA</div>' dataSource={[{ latitude: 27.9337540167772, longitude: -81.15908447265625 }]} animationDuration={0}>
-                                    </MarkerDirective>
-                                    <MarkerDirective visible={true} template='<div id="marker5" style="font-size: 12px;color:white">PROGRESO</div>' dataSource={[{ latitude: 20.62336521195344, longitude: -89.6649169921875 }]} animationDuration={0}>
-                                    </MarkerDirective>
+                                    <MarkerDirective visible={true} shape='Circle' fill='white' width={10} height={10} animationDuration={0} tooltipSettings={{ visible: true, valuePath: 'title' }} dataSource={datasource1.marker} />
+                                    <MarkerDirective visible={true} template='<div id="marker1" style="font-size: 12px;color:white">ALTAMIRA</div>' dataSource={[{ latitude: 22.403410892712124, longitude: -100.0 }]} animationDuration={0} />
+                                    <MarkerDirective visible={true} template='<div id="marker2" style="font-size: 12px;color:white">HOUSTON</div>' dataSource={[{ latitude: 30.332197482973, longitude: -95.36270141601562 }]} animationDuration={0} />
+                                    <MarkerDirective visible={true} template='<div id="marker3" style="font-size: 12px;color:white">PANAMA CITY</div>' dataSource={[{ latitude: 30.380747605060766, longitude: -85.81283569335938 }]} animationDuration={0} offset={{ x: 0, y: -15 }} />
+                                    <MarkerDirective visible={true} template='<div id="marker4" style="font-size: 12px;color:white">TAMPA</div>' dataSource={[{ latitude: 27.9337540167772, longitude: -81.15908447265625 }]} animationDuration={0} />
+                                    <MarkerDirective visible={true} template='<div id="marker5" style="font-size: 12px;color:white">PROGRESO</div>' dataSource={[{ latitude: 20.62336521195344, longitude: -89.6649169921875 }]} animationDuration={0} />
                                 </MarkersDirective>
                             </LayerDirective>
                         </LayersDirective>
                     </MapsComponent>
                 </div>
                 {/* Source Link */}
-                <div style={{ float: 'right', marginRight: '10px' }}>Source:
-                    <a href="http://www.lineaships.com/en/linea-peninsular/" target="_blank">www.lineaships.com</a>
+                <div style={{ float: 'right', marginRight: '10px' }}>
+                    Source:<a href="http://www.lineaships.com/en/linea-peninsular/" target="_blank">www.lineaships.com</a>
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample illustrates the sea routes between various cities for shipping.
-                </p>
+                <p>This sample illustrates the sea routes between various cities for shipping.</p>
             </div>
             <div id="description">
                 <p>

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Ribbon, RibbonComponent, RibbonTabsDirective, RibbonTabDirective, RibbonCollectionsDirective, RibbonCollectionDirective, RibbonGroupsDirective, RibbonGroupDirective, RibbonItemsDirective, RibbonItemDirective, RibbonColorPicker, DisplayMode } from '@syncfusion/ej2-react-ribbon';
+import { useEffect, useRef } from 'react';
+import { Ribbon, RibbonComponent, RibbonTabsDirective, RibbonTabDirective, RibbonCollectionsDirective, RibbonCollectionDirective, RibbonGroupsDirective, RibbonGroupDirective, RibbonItemsDirective, RibbonItemDirective, RibbonColorPicker, DisplayMode, RibbonGroupButtonSelection } from '@syncfusion/ej2-react-ribbon';
 import { RibbonFileMenu, RibbonItemSize, Inject, FileMenuEventArgs, LauncherClickEventArgs } from '@syncfusion/ej2-react-ribbon';
 import { ItemModel } from '@syncfusion/ej2-react-splitbuttons';
 import { FilteringEventArgs } from "@syncfusion/ej2-dropdowns";
@@ -10,14 +11,14 @@ import { MenuItemModel } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './simplified.css';
 
-function Simplified() {
-    React.useEffect(() => {
+const Simplified = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let simplifiedRibbonObj: Ribbon;
+    let simplifiedRibbonObj = useRef<RibbonComponent>(null);
 
-    const pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge format" }, { text: "Keep text only" }];
+    const pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
     const findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
     const selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
     const dictateOptions: ItemModel[] = [{ text: "Chinese" }, { text: "English" }, { text: "German" }, { text: "French" }];
@@ -47,20 +48,20 @@ function Simplified() {
             { text: "Download as PDF", iconCss: "e-icons e-export-pdf", id: "pdf" }]
     }]
 
-    let toastInstance: ToastComponent;
+    let toastInstance = useRef<ToastComponent>(null);
 
     let isPasteDisabled: boolean = true;
-    function enablePaste() { 
+    const enablePaste = () => { 
         if (!isPasteDisabled) { return; }
-        simplifiedRibbonObj.enableItem('simplified-pastebtn');
+        simplifiedRibbonObj.current.enableItem('simplified-pastebtn');
         isPasteDisabled = false;
     }
 
-    function updateContent(args) {
-        toastInstance.show({ content: "Last clicked item is " + args });
+    const updateContent = (args) => {
+        toastInstance.current.show({ content: "Last clicked item is " + args });
     }
 
-    function fileSelect(args: FileMenuEventArgs){
+    const fileSelect = (args: FileMenuEventArgs) => {
         if(args.item.id === "newword" || args.item.id === "oldword" || args.item.id === "pdf"){
             updateContent("File -> Save as -> " + args.item.text);
         }
@@ -69,7 +70,7 @@ function Simplified() {
         }
       }
     
-    function launchClick(args: LauncherClickEventArgs) {
+    const launchClick = (args: LauncherClickEventArgs) => {
         if (args.groupId == "clipboard") {
             updateContent("Clipboard Launcher Icon");
         }
@@ -85,8 +86,8 @@ function Simplified() {
         <div className='control-pane'>
             <div className='col-lg-12 control-section simplified-ribbon-section'>
                 <div className='control ribbon-sample'>
-                    <div id="simplified-ribbonContainer">
-                        <RibbonComponent id='simplified-ribbon' ref={simplifiedRibbon => { simplifiedRibbonObj = simplifiedRibbon }} activeLayout='Simplified' fileMenu={{ visible: true, menuItems: fileOptions, select: fileSelect }} launcherIconClick={launchClick}>
+                    <div id="simplified-ribbonContainer" className='simplified-ribbon-container'>
+                        <RibbonComponent id='simplified-ribbon' ref={ simplifiedRibbonObj } activeLayout='Simplified' fileMenu={{ visible: true, menuItems: fileOptions, select: fileSelect }} launcherIconClick={launchClick}>
                             <RibbonTabsDirective>
                                 <RibbonTabDirective header='Home'>
                                     <RibbonGroupsDirective>
@@ -95,17 +96,17 @@ function Simplified() {
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
                                                         <RibbonItemDirective type="SplitButton" disabled={true} id="simplified-pastebtn" allowedSizes={RibbonItemSize.Large}
-                                                            splitButtonSettings={{ iconCss: "e-icons e-paste", items: pasteOptions, content: "Paste", select: function (args) { updateContent("Paste -> " + args.item.text); }, click: function () { this.updateContent("Paste"); } }}>
+                                                            splitButtonSettings={{ iconCss: "e-icons e-paste", items: pasteOptions, content: "Paste", select: (args) => { updateContent("Paste -> " + args.item.text); }, click: () => { updateContent("Paste"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-cut", content: "Cut", clicked: function () { updateContent("Cut"); enablePaste();} }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-cut", content: "Cut", clicked: () => { updateContent("Cut"); enablePaste();} }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-copy", content: "Copy", clicked: function () { updateContent("Copy"); enablePaste();} }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-copy", content: "Copy", clicked: () => { updateContent("Copy"); enablePaste();} }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-format-painter", content: "Format Painter", clicked: function () { updateContent("Format Painter") } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-format-painter", content: "Format Painter", clicked: () => { updateContent("Format Painter") } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -115,25 +116,37 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: fontStyle, index: 3, width: '150px', allowFiltering: true, filtering: filtering, select: function (args) { updateContent("Font Style -> " + args.itemData.text); } }}>
+                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: fontStyle, index: 3, width: '150px', allowFiltering: true, filtering: filtering, select: (args) => { if (args.itemData) { updateContent("Font Style -> " + args.itemData.text); } } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: fontSize, index: 3, width: '65px', popupWidth: '85px', select: function (args) { updateContent("Font Size -> " + args.itemData.text); } }}>
+                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: fontSize, index: 3, width: '65px', popupWidth: '85px', select: (args) => { if (args.itemData) { updateContent("Font Size -> " + args.itemData.text); } } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="ColorPicker" allowedSizes={RibbonItemSize.Small} displayOptions={DisplayMode.Simplified | DisplayMode.Classic} colorPickerSettings={{value: '#123456', change: function (args) { updateContent(args.currentValue.hex + " color"); }}}>
+                                                        <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Multiple, items: [{iconCss: 'e-icons e-bold', content: 'Bold', selected: true, click: () => { updateContent("Bold") }}, {iconCss: 'e-icons e-italic', content: 'Italic', click: () => { updateContent("Italic") }}, {iconCss: 'e-icons e-underline', content: 'Underline', click: () => { updateContent("Underline") }}, {iconCss: 'e-icons e-strikethrough', content: 'Strikethrough', click: () => { updateContent("Strikethrough") }},{iconCss: 'e-icons e-change-case', content: 'Change Case', click: () => { updateContent("Change Case") }}]}}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-bold", content: "Bold", isToggle: true, clicked: function () { updateContent("Bold"); } }}>
+                                                        <RibbonItemDirective type="ColorPicker" allowedSizes={RibbonItemSize.Small} displayOptions={DisplayMode.Simplified | DisplayMode.Classic} colorPickerSettings={{value: '#123456', change: (args) => { updateContent(args.currentValue.hex + " color"); }}}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-italic", content: "Italic", isToggle: true, clicked: function () { updateContent("Italic"); } }}>
+                                                    </RibbonItemsDirective>
+                                                </RibbonCollectionDirective>
+                                            </RibbonCollectionsDirective>
+                                        </RibbonGroupDirective>
+                                        <RibbonGroupDirective header="Paragraph" groupIconCss="e-icons e-align-center" orientation="Row">
+                                            <RibbonCollectionsDirective>
+                                                <RibbonCollectionDirective>
+                                                    <RibbonItemsDirective>
+                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-decrease-indent", clicked: () => { updateContent("Decrease Indent"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-underline", content: "Underline", isToggle: true, clicked: function () { updateContent("Underline"); } }}>
+                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-increase-indent", clicked: () => { updateContent("Increase Indent"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-strikethrough", content: "Strikethrough", isToggle: true, clicked: function () { updateContent("Strikethrough"); } }}>
+                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-paragraph", clicked: () => { updateContent("Paragraph Mark"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-change-case", content: "Change Case", isToggle: true, clicked: function () { updateContent("Change case"); } }}>
+                                                    </RibbonItemsDirective>
+                                                </RibbonCollectionDirective>
+                                                <RibbonCollectionDirective>
+                                                    <RibbonItemsDirective>
+                                                        <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Single, items: [{iconCss: 'e-icons e-align-left', selected: true, click: () => { updateContent("Align Left") }}, {iconCss: 'e-icons e-align-center', click: () => { updateContent("Align Center") }}, {iconCss: 'e-icons e-align-right', click: () => { updateContent("Align Right") }}, {iconCss: 'e-icons e-justify', click: () => { updateContent("Justify") }}]}}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -143,11 +156,11 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="SplitButton" splitButtonSettings={{ iconCss: "e-icons e-search", items: findOptions, content: "Find", select: function (args) { updateContent("Find -> " + args.item.text); }, click: function () { this.updateContent("Find"); } }}>
+                                                        <RibbonItemDirective type="SplitButton" splitButtonSettings={{ iconCss: "e-icons e-search", items: findOptions, content: "Find", select: (args) => { updateContent("Find -> " + args.item.text); }, click: () => { updateContent("Find"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-replace", content: 'Replace', clicked: function () { updateContent("Replace"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-replace", content: 'Replace', clicked: () => { updateContent("Replace"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="SplitButton" splitButtonSettings={{ iconCss: "e-icons e-mouse-pointer", items: selectOptions, content: "Select", select: function (args) { updateContent("Select -> " + args.item.text); }, click: function () { this.updateContent("Select"); } }}>
+                                                        <RibbonItemDirective type="SplitButton" splitButtonSettings={{ iconCss: "e-icons e-mouse-pointer", items: selectOptions, content: "Select", select: (args) => { updateContent("Select -> " + args.item.text); }, click: () => { updateContent("Select"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -157,7 +170,7 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="SplitButton" allowedSizes={RibbonItemSize.Large} splitButtonSettings={{ iconCss: "sf-icon-dictate", items: dictateOptions, content: "Dictate", select: function (args) { updateContent("Dictate -> " + args.item.text); }, click: function () { this.updateContent("Dictate"); } }}>
+                                                        <RibbonItemDirective type="SplitButton" allowedSizes={RibbonItemSize.Large} splitButtonSettings={{ iconCss: "sf-icon-dictate", items: dictateOptions, content: "Dictate", select: (args) => { updateContent("Dictate -> " + args.item.text); }, click: () => { updateContent("Dictate"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -167,7 +180,7 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "sf-icon-editor", items: dictateOptions, content: "Editor", select: function (args) { updateContent("Editor -> " + args.item.text); } }}>
+                                                        <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "sf-icon-editor", items: dictateOptions, content: "Editor", select: (args) => { updateContent("Editor -> " + args.item.text); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -177,7 +190,7 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective  type="Button" disabled={true} allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "sf-icon-reuse", content: "Reuse Files", clicked: function () { updateContent("Reuse Files"); } }}>
+                                                        <RibbonItemDirective  type="Button" disabled={true} allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "sf-icon-reuse", content: "Reuse Files", clicked: () => { updateContent("Reuse Files"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -191,7 +204,7 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-table", items: tableOptions, content: "Table", select: function (args) { updateContent("Table -> " + args.item.text); } }}>
+                                                        <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-table", items: tableOptions, content: "Table", select: (args) => { updateContent("Table -> " + args.item.text); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -203,15 +216,15 @@ function Simplified() {
                                                     <RibbonItemsDirective>
                                                     <RibbonItemDirective id='pictureddl' type="DropDown" dropDownSettings={{ iconCss: "e-icons e-image", content: "Pictures", target: '#simplified-pictureList' }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "sf-icon-shapes", items: shapeOptions, content: "Shapes", select: function (args) { updateContent("Shapes -> " + args.item.text); } }}>
+                                                        <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "sf-icon-shapes", items: shapeOptions, content: "Shapes", select: (args) => { updateContent("Shapes -> " + args.item.text); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-3d-model", content: "3D Models", clicked: function () { updateContent("3D Models"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-3d-model", content: "3D Models", clicked: () => { updateContent("3D Models"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-smart-art", content: "Smart Art", clicked: function () { updateContent("Smart Art"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-smart-art", content: "Smart Art", clicked: () => { updateContent("Smart Art"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-chart", content: "Charts", clicked: function () { updateContent("Chart"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-chart", content: "Charts", clicked: () => { updateContent("Chart"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-screenshot", content: "Screenshot", clicked: function () { updateContent("Screenshot"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-screenshot", content: "Screenshot", clicked: () => { updateContent("Screenshot"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -221,11 +234,11 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "e-icons e-header", items: headerOptions, content: "Header", select: function (args) { updateContent("Header -> " + args.item.text); } }}>
+                                                        <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "e-icons e-header", items: headerOptions, content: "Header", select: (args) => { updateContent("Header -> " + args.item.text); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "e-icons e-footer", items: footerOptions, content: "Footer", select: function (args) { updateContent("Footer -> " + args.item.text); } }}>
+                                                        <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "e-icons e-footer", items: footerOptions, content: "Footer", select: (args) => { updateContent("Footer -> " + args.item.text); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "e-icons e-page-numbering", items: pageOptions, content: "Page Numbering", select: function (args) { updateContent("Page Numbering -> " + args.item.text); } }}>
+                                                        <RibbonItemDirective type="DropDown" dropDownSettings={{ iconCss: "e-icons e-page-numbering", items: pageOptions, content: "Page Numbering", select: (args) => { updateContent("Page Numbering -> " + args.item.text); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -235,7 +248,7 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "e-icons e-comment-add", content: "New Comment", clicked: function () { updateContent("New Comment"); } }}>
+                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "e-icons e-comment-add", content: "New Comment", clicked: () => { updateContent("New Comment"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -245,7 +258,7 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-link", items: linkOptions, content: "Link", select: function (args) { updateContent("Link -> " + args.item.text); } }}>
+                                                        <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-link", items: linkOptions, content: "Link", select: (args) => { updateContent("Link -> " + args.item.text); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -259,11 +272,11 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-read", content: "Read Mode", clicked: function () { updateContent("Read Mode"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-read", content: "Read Mode", clicked: () => { updateContent("Read Mode"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-print", content: "Print Layout", clicked: function () { updateContent("Print Layout"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-print", content: "Print Layout", clicked: () => { updateContent("Print Layout"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-web-layout", content: "Web Layout", clicked: function () { updateContent("Web Layout"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-web-layout", content: "Web Layout", clicked: () => { updateContent("Web Layout"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -273,9 +286,9 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-zoom-in", content: "Zoom in", clicked: function () { updateContent("Zoom in"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-zoom-in", content: "Zoom in", clicked: () => { updateContent("Zoom in"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-zoom-out", content: "Zoom out", clicked: function () { updateContent("Zoom out"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "e-icons e-zoom-out", content: "Zoom out", clicked: () => { updateContent("Zoom out"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -285,11 +298,11 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="CheckBox" checkBoxSettings={{ label: "Ruler", checked: false, change: function () { updateContent("Ruler"); } }}>
+                                                        <RibbonItemDirective type="CheckBox" checkBoxSettings={{ label: "Ruler", checked: false, change: () => { updateContent("Ruler"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="CheckBox" checkBoxSettings={{ label: "Gridlines", checked: false, change: function () { updateContent("Gridlines"); } }}>
+                                                        <RibbonItemDirective type="CheckBox" checkBoxSettings={{ label: "Gridlines", checked: false, change: () => { updateContent("Gridlines"); } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="CheckBox" checkBoxSettings={{ label: "Navigation Pane", checked: true, change: function () { updateContent("Navigation Pane"); } }}>
+                                                        <RibbonItemDirective type="CheckBox" checkBoxSettings={{ label: "Navigation Pane", checked: true, change: () => { updateContent("Navigation Pane"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -299,7 +312,7 @@ function Simplified() {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-mode", content: "Dark Mode", clicked: function () { updateContent("Dark Mode"); } }}>
+                                                        <RibbonItemDirective type="Button" buttonSettings={{ iconCss: "sf-icon-mode", content: "Dark Mode", clicked: () => { updateContent("Dark Mode"); } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -315,9 +328,9 @@ function Simplified() {
                             <div className="content2"></div>
                             <div className="content3"></div>
                             <div className="content4"></div>
-                            <ToastComponent id='toast' ref={toast => toastInstance = toast} position={{ X: 'Right' }} height={25} width='auto' timeOut={2000} cssClass='e-toast-info' showCloseButton={true} target="#simplified-ribbonPlaceHolder" newestOnTop={true} animation={{ show: { effect: 'FadeIn' }, hide: { effect: 'FadeOut' } }} />
+                            <ToastComponent id='toast' ref={ toastInstance } position={{ X: 'Right' }} height={25} width='auto' timeOut={2000} cssClass='e-toast-info' showCloseButton={true} target="#simplified-ribbonPlaceHolder" newestOnTop={true} animation={{ show: { effect: 'FadeIn' }, hide: { effect: 'FadeOut' } }} />
                         </div>
-                        <ListViewComponent id='simplified-pictureList' dataSource={['This device', 'Stock Images', 'Online Images']} showHeader={true} headerTitle="Insert Picture From" select={function (args) { updateContent("Picture -> " + args.text); }}></ListViewComponent>
+                        <ListViewComponent id='simplified-pictureList' dataSource={['This device', 'Stock Images', 'Online Images']} showHeader={true} headerTitle="Insert Picture From" select={ (args) => { updateContent("Picture -> " + args.text); }}></ListViewComponent>
                     </div>
                 </div>
             </div>

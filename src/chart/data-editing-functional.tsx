@@ -44,8 +44,8 @@ const DataEdit = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelFormat: 'y', labelPlacement: 'BetweenTicks', majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift', majorTickLines: { width : 0}, minorTickLines: { width : 0} }} load={load.bind(this)} primaryYAxis={{ rangePadding: 'None', minimum: 0, maximum: 100, interval: 20, title: 'Production(Billion in kWh)', labelFormat: '{value}B', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true }} width={Browser.isDevice ? '100%' : '75%'} title='Electricity - Production' loaded={onChartLoad.bind(this)}>
-                    <Inject services={[LineSeries, ColumnSeries, Category, DataEditing, Legend, Tooltip]} />
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelFormat: 'y', labelPlacement: 'BetweenTicks', majorGridLines: { width: 0 }, edgeLabelPlacement: 'Shift', majorTickLines: { width : 0}, minorTickLines: { width : 0} }} load={load.bind(this)} primaryYAxis={{ rangePadding: 'None', minimum: 0, maximum: 100, interval: 20, title: 'Production(Billion in kWh)', labelFormat: '{value}B', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} title='Electricity - Production' loaded={onChartLoad.bind(this)}>
+                    <Inject services={[LineSeries, ColumnSeries, Category, DataEditing, Legend]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} dragSettings={{ enable: true }} xName='x' yName='y' name='Renewable' width={2} marker={{ visible: true, width: 7, height: 7 }} type='Column' />
                         <SeriesDirective dataSource={data2} dragSettings={{ enable: true }} xName='x' yName='y' name='Non-Renewable' width={2} marker={{ visible: true, width: 7, height: 7, isFilled: true }} type='Line' />
@@ -59,7 +59,6 @@ const DataEdit = () => {
                 <p>
                     In this example, you can see how to drag and drop the data points in the chart by setting Enable property in <code>ChartDataEditSettings</code> to <b>true</b>. Also, you can set data editing’s minimum and maximum range using the <code>MinY</code> and <code>MaxY</code> properties.
                 </p>
-                <p>Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <p>
                     Chart component features are segregated into individual feature-wise modules. To use data editing, we need to inject
                     <code>DataEditing</code> module using <code>Chart.Inject(DataEditing)</code> method.

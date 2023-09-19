@@ -11,6 +11,7 @@ const SAMPLE_CSS = `
     #category:hover {
         cursor: pointer;
     }`;
+let isparent: boolean = true;
 const Drilldown = () => {
     useEffect(() => {
         updateSampleSection();
@@ -46,7 +47,6 @@ const Drilldown = () => {
     };
     let title: string = 'Automobile Sales by Category';
     let pie = useRef<AccumulationChartComponent>(null);
-    let isparent: boolean = true;
 
     const onTextRender = (args: IAccTextRenderEventArgs): void => {
         args.text = args.point.x + ' ' + args.point.y + '%';
@@ -77,9 +77,16 @@ const Drilldown = () => {
                     setTextContent('Minivan');
                     break;
             }
-            pie.current.annotations = [{
-                content: '<div id="back" style="cursor:pointer; padding: 3px; width: 30px; height: 30px;">' + '<img src="./src/chart/images/back.png" id="imgback" />', region: 'Series', x: '50%', y: '50%'
-            }];
+            if (pie.current.theme === 'HighContrast' || pie.current.theme.indexOf('Dark') > -1) {
+                pie.current.annotations = [{
+                    content: '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" /><div>', region: 'Series', x: '50%', y: '50%'
+                }];
+            }
+            else {
+                pie.current.annotations = [{
+                    content: '<div id="back" style="cursor:pointer; padding: 3px; width: 30px; height: 30px;">' + '<img src="./src/chart/images/back.png" id="imgback" />', region: 'Series', x: '50%', y: '50%'
+                }];
+            }
             pie.current.series[0].innerRadius = '30%';
             pie.current.series[0].radius = Browser.isDevice ? '90%' : '80%';
             pie.current.series[0].explode = false;

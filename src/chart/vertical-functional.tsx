@@ -28,8 +28,8 @@ const VerticalChart = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts-vertical' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ title: 'Sales in Billion', majorGridLines: { width: 0 }, minimum: 11000, maximum: 15000, interval: 500, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} isTransposed={true} tooltip={{ enable: true }} width={Browser.isDevice ? '100%' : '75%'} title='Sales Vs Profit Margins' loaded={onChartLoad.bind(this)}>
-                    <Inject services={[LineSeries, Tooltip, Category, ColumnSeries]} />
+                <ChartComponent id='charts-vertical' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} load={load.bind(this)} primaryYAxis={{ title: 'Sales in Billion', majorGridLines: { width: 0 }, minimum: 11000, maximum: 15000, interval: 500, lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} isTransposed={true} legendSettings={{ visible: false }} tooltip={{ enable: true }} width={Browser.isDevice ? '100%' : '75%'} title='Sales Vs Profit Margins' loaded={onChartLoad.bind(this)}>
+                    <Inject services={[LineSeries, Tooltip, Category, Legend, ColumnSeries]} />
                     <AxesDirective>
                         <AxisDirective majorGridLines={{ width: 0 }} opposedPosition={true} title='Profit(In Percentage)' lineStyle={{ width: 0 }} minimum={0} maximum={4} interval={0.5} majorTickLines={{ width: 0 }} name='yAxis2' labelFormat='{value}%' />
                     </AxesDirective>

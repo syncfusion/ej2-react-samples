@@ -27,7 +27,7 @@ const ChartTooltipTemplate = () => {
         '<div id="Tooltip"><table style="width:100%;  border: 1px solid black;" class="table-borderless">' +
         '<tr><th rowspan="2" style="background-color: #C1272D"><img src="https://ej2.syncfusion.com/react/demos/src/chart/images/grain.png" />' +
         '</th><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 14px; color: #E7C554; font-weight: bold; padding-left: 5px">' +
-        '${y}</td></tr><tr ><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 18px; color: #FFFFFF; font-weight: bold; padding-left: 5px">${x}</td>' +
+        '${x}</td></tr><tr ><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 18px; color: #FFFFFF; font-weight: bold; padding-left: 5px">${y}B</td>' +
         '</tr></table></div>';
 
     const onChartLoad = (args: ILoadedEventArgs): void => {

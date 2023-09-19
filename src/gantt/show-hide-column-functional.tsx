@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection } from '@syncfusion/ej2-react-gantt';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
@@ -8,16 +9,15 @@ import { updateSampleSection } from '../common/sample-base';
 import { Column } from '@syncfusion/ej2-grids';
 import { PropertyPane } from '../common/property-pane';
 
-function ShowHideColumn() {
-
-  React.useEffect(() => {
+const ShowHideColumn = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
 
-  let ganttObj: GanttComponent;
-  let dropdownObj: DropDownListComponent;
-  let hideButtonObj: ButtonComponent;
-  let showButtonObj: ButtonComponent;
+  let ganttObj = useRef<GanttComponent>(null);
+  let dropdownObj = useRef<DropDownListComponent>(null);
+  let hideButtonObj = useRef<ButtonComponent>(null);
+  let showButtonObj = useRef<ButtonComponent>(null);
 
   let columnsName: { [key: string]: Object }[] = [
     { id: 'TaskID', name: 'ID' },
@@ -28,37 +28,37 @@ function ShowHideColumn() {
     { id: 'Progress', name: 'Progress' }
   ];
 
-  function change(args: ChangeEventArgs): void {
+  const change = (args: ChangeEventArgs): void => {
     let columnName: string = args.value.toString();
-    let column: Column = ganttObj.treeGrid.grid.getColumnByField(columnName);
+    let column: Column = ganttObj.current.treeGrid.grid.getColumnByField(columnName);
     if (column.visible === undefined || column.visible) {
-      showButtonObj.disabled = true;
-      hideButtonObj.disabled = false;
+      showButtonObj.current.disabled = true;
+      hideButtonObj.current.disabled = false;
     } else {
-      hideButtonObj.disabled = true;
-      showButtonObj.disabled = false;
+      hideButtonObj.current.disabled = true;
+      showButtonObj.current.disabled = false;
     }
   }
 
-  function hideButtonClick() {
-    if (dropdownObj.value) {
-      let dropValue: string = dropdownObj.value.toString();
-      let columnName: string = ganttObj.treeGrid.getColumnByField(dropValue).headerText;
-      ganttObj.hideColumn(columnName);
-      hideButtonObj.disabled = true;
-      showButtonObj.disabled = false;
+  const hideButtonClick = () => {
+    if (dropdownObj.current.value) {
+      let dropValue: string = dropdownObj.current.value.toString();
+      let columnName: string = ganttObj.current.treeGrid.getColumnByField(dropValue).headerText;
+      ganttObj.current.hideColumn(columnName);
+      hideButtonObj.current.disabled = true;
+      showButtonObj.current.disabled = false;
       let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
       hiddenColumns.value = hiddenColumns.value + columnName + '\n';
     }
   }
 
-  function showButtonClick() {
-    if (dropdownObj.value) {
-      let dropValue: string = dropdownObj.value.toString();
-      let columnName: string = ganttObj.treeGrid.getColumnByField(dropValue).headerText;
-      ganttObj.showColumn(columnName);
-      showButtonObj.disabled = true;
-      hideButtonObj.disabled = false;
+  const showButtonClick = () => {
+    if (dropdownObj.current.value) {
+      let dropValue: string = dropdownObj.current.value.toString();
+      let columnName: string = ganttObj.current.treeGrid.getColumnByField(dropValue).headerText;
+      ganttObj.current.showColumn(columnName);
+      showButtonObj.current.disabled = true;
+      hideButtonObj.current.disabled = false;
       let hiddenColumns: HTMLTextAreaElement = document.getElementById('hiddencolumns') as HTMLTextAreaElement;
       hiddenColumns.value = hiddenColumns.value.replace(columnName + '\n', '');
     }
@@ -87,13 +87,12 @@ function ShowHideColumn() {
       <div className='col-md-9 control-section'>
 
         <GanttComponent id='ColumnMenu' treeColumnIndex={1} allowFiltering={true} allowSorting={true}
-          ref={gantt => ganttObj = gantt} allowResizing={true} dataSource={projectNewData} highlightWeekends={true} splitterSettings={splitterSettings}
+          ref={ganttObj} allowResizing={true} dataSource={projectNewData} highlightWeekends={true} splitterSettings={splitterSettings}
           taskFields={taskFields} labelSettings={labelSettings} height='410px'
           projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
           <Inject services={[Selection]} />
         </GanttComponent>
       </div>
-
       <div className='col-md-3 property-section'>
         <PropertyPane title='Properties'>
           <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
@@ -105,7 +104,7 @@ function ShowHideColumn() {
                 <div id='columnddl'>
                   <DropDownListComponent width="120px" id="dropDown" change={change.bind(this)}
                     dataSource={columnsName} fields={{ text: 'name', value: 'id' }}
-                    ref={dropdown => dropdownObj = dropdown} />
+                    ref={dropdownObj} />
                 </div>
               </td>
             </tr>
@@ -113,13 +112,13 @@ function ShowHideColumn() {
               <td style={{ width: '30%' }}>
                 <div>
                   <ButtonComponent id='hide'
-                    ref={button => hideButtonObj = button} onClick={hideButtonClick.bind(this)}> Hide </ButtonComponent>
+                    ref={hideButtonObj} onClick={hideButtonClick.bind(this)}> Hide </ButtonComponent>
                 </div>
               </td>
               <td style={{ width: '70%' }}>
                 <div>
                   <ButtonComponent id='show'
-                    ref={button => showButtonObj = button} onClick={showButtonClick.bind(this)}> Show </ButtonComponent>
+                    ref={showButtonObj} onClick={showButtonClick.bind(this)}> Show </ButtonComponent>
                 </div>
               </td>
             </tr>

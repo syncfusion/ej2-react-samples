@@ -62,10 +62,9 @@ export class DataEdit extends SampleBase<{}, {}> {
 
                         }}
                         chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true }}
                         width={Browser.isDevice ? '100%' : '75%'}
                         title='Sales prediction of products' loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[LineSeries, ColumnSeries, Category, DataEditing, Legend, Tooltip]} />
+                        <Inject services={[LineSeries, ColumnSeries, Category, DataEditing, Legend]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} dragSettings={{ enable: true }} xName='x' yName='y' name='Product A'
                                 width={2} marker={{ visible: true, width: 10, height: 10 }} type='Column'>

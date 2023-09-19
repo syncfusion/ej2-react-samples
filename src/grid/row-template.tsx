@@ -88,7 +88,7 @@ export class RowTemplate extends SampleBase<{}, {}> {
                     <p>
                         The Grid provides a way to use a custom layout for its rows using template feature. The
             <code><a target="_blank" className="code"
-                            href="https://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#rowtemplate">rowTemplate
+                            href="https://ej2.syncfusion.com/react/documentation/api/grid#rowtemplate">rowTemplate
         </a></code> property accepts the template for the row.
         </p>
                     <p>

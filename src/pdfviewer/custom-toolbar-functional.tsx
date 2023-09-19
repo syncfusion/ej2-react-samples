@@ -10,6 +10,7 @@ import {
 import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import { RouteComponentProps } from 'react-router';
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import './pdf.component.css';
 
 function CustomToolbar() {
@@ -36,6 +37,15 @@ function CustomToolbar() {
     }
     return (<div>
         <div className='control-section'>
+            <div className="flex-container">
+                <label htmlFor="checked" className="switchLabel" > Standalone PDF Viewer </label>
+                <div className="e-message render-mode-info">
+                    <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
+                </div>
+                <div>
+                    <SwitchComponent cssClass="buttonSwitch" id="checked" change={change} checked={true}></SwitchComponent>
+                </div>
+            </div>
             <div>
                 <div className='e-pdf-toolbar'>
                     <ToolbarComponent ref={(scope) => { toolbar = scope; }} clicked={clickHandler.bind(this)}>
@@ -54,8 +64,7 @@ function CustomToolbar() {
                 <PdfViewerComponent id="container" ref={(scope) => { viewer = scope; }} enableToolbar={false} enableNavigationToolbar={false}
                     documentLoad={documentLoaded}
                     pageChange={onPageChange}
-                    documentPath="Hive_Succinctly.pdf"
-                    serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer"
+                    documentPath="https://cdn.syncfusion.com/content/pdf/hive-succinctly.pdf"
                     style={{ 'display': 'block', 'height': '640px' }}>
                     <Inject services={[Magnification, Navigation, LinkAnnotation, BookmarkView,
                         ThumbnailView, Print, TextSelection, TextSearch]} />
@@ -204,7 +213,15 @@ function CustomToolbar() {
             pageCount.textContent = 'of ' + viewer.pageCount;
         }
     }
+    function change(args){
+        if (args.checked) {
+            viewer.serviceUrl = '';
+        }
+        else {
+            viewer.serviceUrl = 'https://ej2services.syncfusion.com/react/development/api/pdfviewer';
+        }
+        viewer.dataBind();
+        viewer.load(viewer.documentPath, null);
+    }
 }
 export default CustomToolbar;
-
-

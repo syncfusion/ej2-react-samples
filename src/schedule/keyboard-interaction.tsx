@@ -21,9 +21,9 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
     applyCategoryColor(args, this.scheduleObj.currentView);
   }
 
-  public renderComplete(): void {
-    document.body.addEventListener('keydown', (e: KeyboardEvent) => {
-      let scheduleElement: HTMLElement = document.getElementById('schedule');
+  public componentDidMount(): void {
+    document.body.addEventListener("keydown", (e: KeyboardEvent) => {
+      var scheduleElement = document.getElementById('Schedule');
       if (e.altKey && e.keyCode === 74 && scheduleElement) {
         scheduleElement.focus();
       }

@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { templateData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
@@ -59,8 +60,8 @@ img.resource, img.taskName, img.startDate, img.duration, img.progressTemplate{
     margin-right: 8px;
 }`;
 
-function HeaderTemplate() {
-  React.useEffect(() => {
+const HeaderTemplate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {

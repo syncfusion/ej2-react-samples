@@ -10,6 +10,7 @@ import {
 } from '@syncfusion/ej2-react-progressbar';
 import { EmitType } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { Browser } from '@syncfusion/ej2-base';
 
 
 const SAMPLE_CSS = `
@@ -52,6 +53,7 @@ const ProgressBarProgressSegment = () => {
 
     const circularSeg = useRef<ProgressBarComponent>(null);
     let [value, setValue] = useState<number>(40);
+    let segmentCount = Browser.isDevice ? 25 : 50
     const content: string = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6"><span></span></div>';
     const animation: AnimationModel = {
         enable: true,
@@ -131,7 +133,7 @@ const ProgressBarProgressSegment = () => {
                         <div className="col-lg-12 col-sm-12 progressbar-mode"></div>
                         <div id="linearSegment">
                             <ProgressBarComponent id="linearSegment" type='Linear' height='30' width='70%' value={value}
-                                segmentCount={50} gapWidth={5} trackThickness={15} progressThickness={15} cornerRadius='Square'
+                                segmentCount={segmentCount} gapWidth={5} trackThickness={15} progressThickness={15} cornerRadius='Square'
                                 animation={animation} load={load.bind(this)} >
                             </ProgressBarComponent>
                         </div>

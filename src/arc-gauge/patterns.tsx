@@ -124,7 +124,7 @@
  
    render() {
      return (
-       <div className='control-section'>
+       <div className='control-section' style={{overflow: 'auto'}}>
          <style>
            {SAMPLE_CSS}
          </style>

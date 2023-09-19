@@ -1,37 +1,38 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, DurationUnit, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { workTimeRange } from './data';
 import { PropertyPane } from '../common/property-pane';
 import { updateSampleSection } from '../common/sample-base';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 
-function WorkingTimeRange() {
-  React.useEffect(() => {
+const WorkingTimeRange = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
-  let workStartTime: NumericTextBoxComponent;
-  let workEndTime: NumericTextBoxComponent; let isTimeUpdated: boolean = false;
+  let ganttInstance = useRef<GanttComponent>(null);
+  let workStartTime = useRef<NumericTextBoxComponent>(null);
+  let workEndTime = useRef<NumericTextBoxComponent>(null); let isTimeUpdated: boolean = false;
   const updateTime = () => {
     let defaultDate: string = "08/08/2016", startDate: Date = new Date(defaultDate), endDate: Date = new Date(defaultDate);
-    let decPlace: number = workStartTime.value - Math.floor(workStartTime.value);
-    startDate.setHours(workStartTime.value);
+    let decPlace: number = workStartTime.current.value - Math.floor(workStartTime.current.value);
+    startDate.setHours(workStartTime.current.value);
     startDate.setMinutes(decPlace * 60);
-    decPlace = workEndTime.value - Math.floor(workEndTime.value);
-    endDate.setHours(workEndTime.value);
+    decPlace = workEndTime.current.value - Math.floor(workEndTime.current.value);
+    endDate.setHours(workEndTime.current.value);
     endDate.setMinutes(decPlace * 60);
 
     /*Validate time value and update the time range*/
     if (startDate.getTime() < endDate.getTime() && isTimeUpdated == false) {
-      let workingTime: object[] = [{ from: workStartTime.value, to: workEndTime.value }];
-      ganttInstance.dayWorkingTime = workingTime;
+      let workingTime: object[] = [{ from: workStartTime.current.value, to: workEndTime.current.value }];
+      ganttInstance.current.dayWorkingTime = workingTime;
       isTimeUpdated = false;
     }
     else {
       isTimeUpdated = true;
-      workStartTime.value = ganttInstance.dayWorkingTime[0].from;
-      workEndTime.value = ganttInstance.dayWorkingTime[ganttInstance.dayWorkingTime.length - 1].to;
+      workStartTime.current.value = ganttInstance.current.dayWorkingTime[0].from;
+      workEndTime.current.value = ganttInstance.current.dayWorkingTime[ganttInstance.current.dayWorkingTime.length - 1].to;
     }
     isTimeUpdated = false;
   };
@@ -63,7 +64,7 @@ function WorkingTimeRange() {
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-lg-8'>
-          <GanttComponent id='WorkingTimeRange' ref={gantt => ganttInstance = gantt} dataSource={workTimeRange}
+          <GanttComponent id='WorkingTimeRange' ref={ganttInstance} dataSource={workTimeRange}
             highlightWeekends={true} taskFields={taskFields} labelSettings={labelSettings} height='410px'
             timelineSettings={timelineSettings} durationUnit={durationUnit}
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
@@ -94,7 +95,7 @@ function WorkingTimeRange() {
               <tr>
                 <td style={{ width: '100%' }}>
                   <div style={{ paddingTop: '0px' }}>
-                    <NumericTextBoxComponent ref={NumericTextBox => workStartTime = NumericTextBox} value={8} min={0} max={24} showSpinButton={true} width='150px' step={0.5} change={updateTime}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={workStartTime} value={8} min={0} max={24} showSpinButton={true} width='150px' step={0.5} change={updateTime}></NumericTextBoxComponent>
                   </div>
                 </td>
               </tr>
@@ -106,7 +107,7 @@ function WorkingTimeRange() {
               <tr>
                 <td style={{ width: '100%' }}>
                   <div style={{ paddingTop: '0px' }}>
-                    <NumericTextBoxComponent ref={NumericTextBox => workEndTime = NumericTextBox} value={17} min={0} max={24} showSpinButton={true} width='150px' step={0.5} change={updateTime}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={workEndTime} value={17} min={0} max={24} showSpinButton={true} width='150px' step={0.5} change={updateTime}></NumericTextBoxComponent>
                   </div>
                 </td>
               </tr>

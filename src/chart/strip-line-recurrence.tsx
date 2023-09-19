@@ -78,7 +78,7 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                                     type='Column' name='AllSources' >
                                 </SeriesDirective>
                                 <SeriesDirective dataSource={data2} xName='x' yName='y' width={2}
-                                    type='Column' name='Autos && Light Trucks'>
+                                    type='Column' name='Autos & Light Trucks'>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>

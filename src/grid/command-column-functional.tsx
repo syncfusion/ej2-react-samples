@@ -41,11 +41,11 @@ function CommandColumnEdit() {
           <p>
             The Grid provides an option to render CRUD action buttons in a column by using the CommandColumn feature. The
             <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#commands">columns-&gt;commands
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#commands">columns-&gt;commands
             </a></code> property accepts array of <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-commandModel.html">CommandModel
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/commandModel/">CommandModel
             </a></code> object. The predefined command button can be defined by using <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-commandModel.html#type">type
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/commandModel/#type">type
             </a></code> property.
           </p>
           <p>The built-in command button are,</p>
@@ -58,15 +58,12 @@ function CommandColumnEdit() {
           <p style={{ fontWeight: 500 }}>Injecting Module</p>
           <p>
             Grid features are segregated into individual feature-wise modules.
-            To use commandColumn feature, we need to inject <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-page.html">
-              CommandColumn
-            </a></code> module into the <code>services</code>.
+            To use commandColumn feature, we need to inject <code>CommandColumn</code> module into the <code>services</code>.
           </p>
           <p>
             More information on the commandcolumn configuration can be found in this
             <a target="_blank"
-              href="http://ej2.syncfusion.com/react/documentation/grid/edit/#command-column">
+              href="https://ej2.syncfusion.com/react/documentation/grid/editing/command-column-editing">
               documentation section</a>.
           </p>
         </div>

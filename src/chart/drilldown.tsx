@@ -171,7 +171,7 @@ export class Drilldown extends SampleBase<{}, {}> {
             replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
         if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1){
             args.accumulation.series[0].dataLabel.font.color="white";
-            if (args.accumulation.annotations[0] && !this.isparent) {
+            if (args.accumulation.annotations[0]) {
                 args.accumulation.annotations[0].content = '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" /><div>';
             }
          }

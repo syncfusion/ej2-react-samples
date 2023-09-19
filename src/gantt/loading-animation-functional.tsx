@@ -1,31 +1,31 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { GanttComponent, Inject, Filter, ColumnsDirective, ColumnDirective, Selection, VirtualScroll } from '@syncfusion/ej2-react-gantt';
 import { virtualData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
-
-function LoadingAnimation() {
-  React.useEffect(() => {
+const LoadingAnimation = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
   let filterType: { [key: string]: Object }[] = [
     { text: 'Shimmer', value: 'Shimmer' },
     { text: 'Spinner', value: 'Spinner' }
   ];
-  function onChange(sel: ChangeEventArgs): void {
+  const onChange = (sel: ChangeEventArgs): void => {
     let type: any = sel.value.toString();
     if (type === "Shimmer") {
-      ganttInstance.loadingIndicator.indicatorType = "Shimmer";
-      ganttInstance.enableVirtualMaskRow = true;
-      ganttInstance.refresh();
+      ganttInstance.current.loadingIndicator.indicatorType = "Shimmer";
+      ganttInstance.current.enableVirtualMaskRow = true;
+      ganttInstance.current.refresh();
     } else {
-      ganttInstance.loadingIndicator.indicatorType = "Spinner";
-      ganttInstance.enableVirtualMaskRow = false;
-      ganttInstance.refresh();
+      ganttInstance.current.loadingIndicator.indicatorType = "Spinner";
+      ganttInstance.current.enableVirtualMaskRow = false;
+      ganttInstance.current.refresh();
     }
   }
   const taskFields: any = {
@@ -49,7 +49,7 @@ function LoadingAnimation() {
   return (
     <div className='control-pane'>
       <div className='col-md-9'>
-        <GanttComponent id='Filtering' ref={gantt => ganttInstance = gantt} dataSource={virtualData} treeColumnIndex={1} labelSettings={labelSettings}
+        <GanttComponent id='Filtering' ref={ganttInstance} dataSource={virtualData} treeColumnIndex={1} labelSettings={labelSettings}
           allowSelection={true} allowFiltering={true} allowSorting={true} highlightWeekends={true} enableVirtualization={true}
           taskFields={taskFields} splitterSettings={splitterSettings} height='450px' loadingIndicator = {loadingIndicator}>
           <ColumnsDirective>

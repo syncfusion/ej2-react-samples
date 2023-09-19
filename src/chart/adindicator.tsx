@@ -102,13 +102,13 @@ export class AccumulationDistribution extends SampleBase<{}, {}> {
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use Accumulation Distribution Indicator, we need to inject
+                        Chart component features are segregated into individual feature-wise modules. To use Accumulation Distribution Indicator, we need to inject 
                        <code>AccumulationDistributionIndicator</code> module into <code>services</code>.
                   </p>
                     <p>
                         More information on the Accumulation Distribution Indicator can be found in this &nbsp;
                       <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-                  </p>
+                    </p>
                 </div>
             </div >
         )
@@ -122,7 +122,7 @@ export class AccumulationDistribution extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme; 
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
     
 

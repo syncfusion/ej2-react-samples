@@ -26,11 +26,11 @@ const DetailsView = () => {
     let dataSource: { [key: string]: { [key: string]: string | object }[] } = {};
     let liElement: HTMLElement;
     commonData = [
-        { name: 'Margaret', imgUrl: 'https://ej2.syncfusion.com/demos/src/listview/images/margaret.png', id: '1' },
-        { name: 'Laura', imgUrl: 'https://ej2.syncfusion.com/demos/src/listview/images/laura.png', id: '2' },
-        { name: 'Robert', icon: 'R', id: '3' },
-        { name: 'Albert', imgUrl: 'https://ej2.syncfusion.com/demos/src/listview/images/albert.png', id: '5' },
-        { name: 'Michale', icon: 'M', id: '4' }
+        { name: 'Margaret', imgUrl: './src/splitter/images/margaret.png', id: '1' },
+        { name: 'Laura', imgUrl: './src/splitter/images/laura.png', id: '2' },
+        { name: 'Robert', imgUrl: './src/splitter/images/robert.png', id: '3' },
+        { name: 'Albert', imgUrl: './src/splitter/images/albert.png', id: '5' },
+        { name: 'Michale', imgUrl: './src/splitter/images/michale.png', id: '4' }
     ];
 
     [[1010, 'data1'], [5010, 'data5'], [10010, 'data10'], [25010, 'data25']].forEach((ds: string[] | number[]) => {
@@ -42,7 +42,7 @@ const DetailsView = () => {
     let template: string = '<div class="e-list-wrapper e-list-avatar">' +
         '<span class="e-avatar e-avatar-circle ${icon} ${$imgUrl ? \'hideUI\' : \'showUI\' }">' +
         '${icon}</span> <img class="e-avatar e-avatar-circle ${$imgUrl ? \'showUI\' : \'hideUI\' }" ' +
-        'src="${$imgUrl ?  $imgUrl : \' \' }" />' +
+        'src="${imgUrl}" />' +
         '<span class="e-list-content">${name}</span></div>';
 
     const onSelect = (e: SelectEventArgs): void => {

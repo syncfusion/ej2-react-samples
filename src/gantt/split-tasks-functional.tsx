@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, Toolbar, Edit, ColumnDirective, ColumnsDirective, ContextMenu } from '@syncfusion/ej2-react-gantt';
 import { splitTasksData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function SplitTasks() {
-  React.useEffect(() => {
+const SplitTasks = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -28,7 +29,7 @@ function SplitTasks() {
   };
   const toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll'];
   const splitterSettings: any = {
-    columnIndex: 2
+   position: "35%"
   };
   const labelSettings: any = {
     leftLabel: 'TaskName',

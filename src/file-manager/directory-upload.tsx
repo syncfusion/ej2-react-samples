@@ -1,8 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-import { FileManagerComponent, Inject, NavigationPane, DetailsView, Toolbar } from '@syncfusion/ej2-react-filemanager';
-import { DropDownButton, ItemModel } from '@syncfusion/ej2-splitbuttons';
+import { FileManagerComponent, Inject, NavigationPane, DetailsView, Toolbar, ToolbarItemsDirective, ToolbarItemDirective } from '@syncfusion/ej2-react-filemanager';
+import { DropDownButtonComponent, ItemModel } from '@syncfusion/ej2-react-splitbuttons';
 
 /**
  * File Manager folder upload sample
@@ -11,41 +11,53 @@ export class DirectoryUpload extends SampleBase<{},{}> {
     public fmObj: FileManagerComponent;
     private hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
     private items: ItemModel[] = [{ text: 'Folder' }, { text: 'Files' }];
-    onSuccess(args) {
-      if (!document.getElementById("file_tb_upload").classList.contains("e-dropdown-btn")) {
-        (document.getElementById('file_tb_upload') as HTMLElement).onclick = (e) => {
-          e.stopPropagation();
-        };
-        let drpDownBtn: DropDownButton = new DropDownButton({
-            items: this.items,
-            select: (args) => {
-              if (args.item.text === 'Folder') {
-                this.fmObj.uploadSettings.directoryUpload = true;
-              } else {
-                this.fmObj.uploadSettings.directoryUpload = false;
-              }
-              setTimeout(function () {
-                let uploadBtn: HTMLElement = document.querySelector('.e-file-select-wrap button');
-                uploadBtn.click();
-              }, 100);
-            },
-          },
-          '#file_tb_upload'
+    private uploadTemplate(){
+        return(
+            <DropDownButtonComponent id="dropButton" items={this.items} iconCss='e-icons e-fe-upload' cssClass= "e-tbar-btn e-tbtn-txt" select={this.onSelect.bind(this)} onClick={this.uploadClick.bind(this)}>
+                <span className="e-tbar-btn-text">Upload</span>
+            </DropDownButtonComponent>
         );
-      }
     }
+    private uploadClick(e) {
+        e.stopPropagation();
+    }
+    private onSelect(args){
+        if (args.item.text === 'Folder') {
+            this.fmObj.uploadSettings.directoryUpload = true;
+          } else {
+            this.fmObj.uploadSettings.directoryUpload = false;
+          }
+          setTimeout(function () {
+            let uploadBtn: HTMLElement = document.querySelector('.e-file-select-wrap button');
+            uploadBtn.click();
+          }, 100);
+    }       
+    
     public render(): JSX.Element {
         return(
             <div>
                 <div className="control-section">
-                    <FileManagerComponent id="file" ref={(scope) => { this.fmObj = scope; }} ajaxSettings = {{
+                    <FileManagerComponent id="file" ref={(scope) => { this.fmObj = scope; }} ajaxSettings={{
                         url: this.hostUrl + "api/FileManager/FileOperations",
                         getImageUrl: this.hostUrl + "api/FileManager/GetImage",
                         uploadUrl: this.hostUrl + 'api/FileManager/Upload',
-                        downloadUrl: this.hostUrl + 'api/FileManager/Download'
-                    }}
-                    success={this.onSuccess.bind(this)}>
-                <Inject services={[ NavigationPane, DetailsView, Toolbar]} />
+                        downloadUrl: this.hostUrl + 'api/FileManager/Download'}}>
+                        <ToolbarItemsDirective>
+                            <ToolbarItemDirective name='NewFolder'/>
+                            <ToolbarItemDirective template={this.uploadTemplate.bind(this)} name="Upload" />
+                            <ToolbarItemDirective name="SortBy" />
+                            <ToolbarItemDirective name="Refresh" />
+                            <ToolbarItemDirective name="Cut" />
+                            <ToolbarItemDirective name="Copy" />
+                            <ToolbarItemDirective name="Paste" />
+                            <ToolbarItemDirective name="Delete" />
+                            <ToolbarItemDirective name="Download" />
+                            <ToolbarItemDirective name="Rename" />
+                            <ToolbarItemDirective name="Selection" />
+                            <ToolbarItemDirective name="View" />
+                            <ToolbarItemDirective name="Details" />
+                        </ToolbarItemsDirective>
+                            <Inject services={[NavigationPane, DetailsView, Toolbar]} />
                     </FileManagerComponent>
 
                 </div>

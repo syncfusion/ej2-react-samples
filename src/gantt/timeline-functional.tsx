@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, TimelineViewMode, Inject, Selection, Sort, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectData } from './data';
 import { updateSampleSection } from '../common/sample-base';
@@ -8,8 +9,8 @@ import { CheckBoxComponent, CheckBox } from '@syncfusion/ej2-react-buttons';
 import { NumericTextBoxComponent, NumericTextBox } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent, DropDownList } from '@syncfusion/ej2-react-dropdowns';
 
-function Timeline() {
-  React.useEffect(() => {
+const Timeline = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -22,16 +23,16 @@ function Timeline() {
     dependency: 'predecessor',
     child: 'subtasks'
   };
-  let ganttInstance: GanttComponent;
-  let topTierformat: DropDownListComponent;
-  let bottomTierformat: DropDownListComponent;
-  let topTierCheckbox: CheckBoxComponent;
-  let bottomTierCheckbox: CheckBoxComponent;
-  let topTierUnit: DropDownListComponent;
-  let bottomTierUnit: DropDownListComponent;
-  let topTierCount: NumericTextBoxComponent;
-  let bottomTierCount: NumericTextBoxComponent;
-  let timelineUnitSize: NumericTextBoxComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
+  let topTierformat = useRef<DropDownListComponent>(null);
+  let bottomTierformat = useRef<DropDownListComponent>(null);
+  let topTierCheckbox = useRef<CheckBoxComponent>(null);
+  let bottomTierCheckbox = useRef<CheckBoxComponent>(null);
+  let topTierUnit = useRef<DropDownListComponent>(null);
+  let bottomTierUnit = useRef<DropDownListComponent>(null);
+  let topTierCount = useRef<NumericTextBoxComponent>(null);
+  let bottomTierCount = useRef<NumericTextBoxComponent>(null);
+  let timelineUnitSize = useRef<NumericTextBoxComponent>(null);
   const projectStartDate = new Date('02/03/2019');
   const projectEndDate = new Date('03/23/2019');
   const timelineSettings: any = {
@@ -81,93 +82,93 @@ function Timeline() {
     { id: 'Day', unit: 'Day' },
     { id: 'Hour', unit: 'Hour' }
   ];
-  function topTierCick(props): any {
-    if (topTierCheckbox.checked) {
-      ganttInstance.timelineSettings.topTier.unit = 'Week';
-      topTierCount.enabled = true;
-      topTierformat.enabled = true;
-      topTierUnit.enabled = true;
+  const topTierCick = (props): any => {
+    if (topTierCheckbox.current.checked) {
+      ganttInstance.current.timelineSettings.topTier.unit = 'Week';
+      topTierCount.current.enabled = true;
+      topTierformat.current.enabled = true;
+      topTierUnit.current.enabled = true;
     } else {
-      ganttInstance.timelineSettings.topTier.unit = 'None';
-      topTierCount.enabled = false;
-      topTierformat.enabled = false;
-      topTierUnit.enabled = false;
+      ganttInstance.current.timelineSettings.topTier.unit = 'None';
+      topTierCount.current.enabled = false;
+      topTierformat.current.enabled = false;
+      topTierUnit.current.enabled = false;
     }
   }
-  function bottomTierCick(props): any {
-    if (bottomTierCheckbox.checked) {
-      ganttInstance.timelineSettings.bottomTier.unit = 'Day';
-      bottomTierCount.enabled = true;
-      bottomTierformat.enabled = true;
-      bottomTierUnit.enabled = true;
+  const bottomTierCick = (props): any => {
+    if (bottomTierCheckbox.current.checked) {
+      ganttInstance.current.timelineSettings.bottomTier.unit = 'Day';
+      bottomTierCount.current.enabled = true;
+      bottomTierformat.current.enabled = true;
+      bottomTierUnit.current.enabled = true;
     } else {
-      ganttInstance.timelineSettings.bottomTier.unit = 'None';
-      bottomTierCount.enabled = false;
-      bottomTierformat.enabled = false;
-      bottomTierUnit.enabled = false;
+      ganttInstance.current.timelineSettings.bottomTier.unit = 'None';
+      bottomTierCount.current.enabled = false;
+      bottomTierformat.current.enabled = false;
+      bottomTierUnit.current.enabled = false;
     }
   }
-  function topTierCountchange(e): any {
+  const topTierCountchange = (e): any => {
     let count: number = e.value;
-    ganttInstance.timelineSettings.topTier.count = count;
+    ganttInstance.current.timelineSettings.topTier.count = count;
   }
-  function bottomTierCountchange(e): any {
+  const bottomTierCountchange = (e): any => {
     let count: number = e.value;
-    ganttInstance.timelineSettings.bottomTier.count = count;
+    ganttInstance.current.timelineSettings.bottomTier.count = count;
   }
-  function topUnitChange(e): any {
+  const topUnitChange = (e): any => {
     let unit: string = e.value;
-    ganttInstance.timelineSettings.topTier.unit = unit as TimelineViewMode;
+    ganttInstance.current.timelineSettings.topTier.unit = unit as TimelineViewMode;
     if (unit === 'Year') {
-      topTierformat.dataSource = yearformat;
+      topTierformat.current.dataSource = yearformat;
     } else if (unit === 'Month') {
-      topTierformat.dataSource = monthformat;
+      topTierformat.current.dataSource = monthformat;
     } else if (unit === 'Week') {
-      topTierformat.dataSource = weekformat;
+      topTierformat.current.dataSource = weekformat;
     } else if (unit === 'Day') {
-      topTierformat.dataSource = dayformat;
+      topTierformat.current.dataSource = dayformat;
     } else {
-      topTierformat.dataSource = hourformat;
+      topTierformat.current.dataSource = hourformat;
     }
-    topTierformat.refresh();
+    topTierformat.current.refresh();
     updateUnitWidth(unit, 'top');
-    ganttInstance.timelineSettings.topTier.unit = unit as TimelineViewMode;
+    ganttInstance.current.timelineSettings.topTier.unit = unit as TimelineViewMode;
   }
-  function bottomUnitChange(e): any {
+  const bottomUnitChange = (e): any => {
     let unit: string = e.value;
-    ganttInstance.timelineSettings.bottomTier.unit = unit as TimelineViewMode;
+    ganttInstance.current.timelineSettings.bottomTier.unit = unit as TimelineViewMode;
     if (unit === 'Year') {
-      bottomTierformat.dataSource = yearformat;
+      bottomTierformat.current.dataSource = yearformat;
     } else if (unit === 'Month') {
-      bottomTierformat.dataSource = monthformat;
+      bottomTierformat.current.dataSource = monthformat;
     } else if (unit === 'Week') {
-      bottomTierformat.dataSource = weekformat;
+      bottomTierformat.current.dataSource = weekformat;
     } else if (unit === 'Day') {
-      bottomTierformat.dataSource = dayformat;
+      bottomTierformat.current.dataSource = dayformat;
     } else {
-      bottomTierformat.dataSource = hourformat;
+      bottomTierformat.current.dataSource = hourformat;
     }
-    bottomTierformat.refresh();
+    bottomTierformat.current.refresh();
     updateUnitWidth(unit, 'bottom');
-    ganttInstance.timelineSettings.bottomTier.unit = unit as TimelineViewMode;
+    ganttInstance.current.timelineSettings.bottomTier.unit = unit as TimelineViewMode;
   }
-  function bottomFormatChange(e): any {
+  const bottomFormatChange = (e): any => {
     let format: string = e.value;
-    ganttInstance.timelineSettings.bottomTier.format = format.toString();
+    ganttInstance.current.timelineSettings.bottomTier.format = format.toString();
   }
-  function topFormatChange(e): any {
+  const topFormatChange = (e): any => {
     let format: string = e.value;
-    ganttInstance.timelineSettings.topTier.format = format.toString();
+    ganttInstance.current.timelineSettings.topTier.format = format.toString();
   }
-  function unitWidth(e): any {
+  const unitWidth = (e): any => {
     let width: number = e.value;
-    ganttInstance.timelineSettings.timelineUnitSize = width;
+    ganttInstance.current.timelineSettings.timelineUnitSize = width;
   }
   let unitField: any = { text: 'unit', value: 'id' }
   let formatField: any = { text: 'format', value: 'id' };
-  function updateUnitWidth(unit: string, tier: string): void {
-    let topUnit: string = tier === 'top' ? unit : ganttInstance.timelineSettings.topTier.unit;
-    let bottomUnit: string = tier === 'bottom' ? unit : ganttInstance.timelineSettings.bottomTier.unit;
+  const updateUnitWidth = (unit: string, tier: string): void => {
+    let topUnit: string = tier === 'top' ? unit : ganttInstance.current.timelineSettings.topTier.unit;
+    let bottomUnit: string = tier === 'bottom' ? unit : ganttInstance.current.timelineSettings.bottomTier.unit;
     let units: string[] = ['None', 'Hour', 'Day', 'Week', 'Month', 'Year'];
     let bootomCellUnit: string;
     let unitWidth: number;
@@ -193,13 +194,13 @@ function Timeline() {
     } else if (bootomCellUnit === 'Hour') {
       unitWidth = 25;
     }
-    timelineUnitSize.value = unitWidth;
+    timelineUnitSize.current.value = unitWidth;
   }
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-lg-8'>
-          <GanttComponent id='Timeline' ref={gantt => ganttInstance = gantt} dataSource={projectData} renderBaseline={true} allowSorting={true}
+          <GanttComponent id='Timeline' ref={ganttInstance} dataSource={projectData} renderBaseline={true} allowSorting={true}
             treeColumnIndex={1} allowSelection={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate}
             taskFields={taskFields} timelineSettings={timelineSettings} highlightWeekends={true}
             height='410px' labelSettings={labelSettings} splitterSettings={splitterSettings}>
@@ -215,7 +216,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <NumericTextBoxComponent ref={NumericTextBox => timelineUnitSize = NumericTextBox} format='n' value={33} min={10} change={unitWidth.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={timelineUnitSize} format='n' value={33} min={10} change={unitWidth.bind(this)}></NumericTextBoxComponent>
                   </div>
                 </td>
               </tr>
@@ -226,7 +227,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <CheckBoxComponent ref={CheckBox => topTierCheckbox = CheckBox} id="topTierCheck" onClick={topTierCick.bind(this)} className="checkbox" checked={true} ></CheckBoxComponent>
+                    <CheckBoxComponent ref={topTierCheckbox} id="topTierCheck" onClick={topTierCick.bind(this)} className="checkbox" checked={true} ></CheckBoxComponent>
                   </div>
                 </td>
               </tr>
@@ -236,7 +237,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <NumericTextBoxComponent ref={NumericTextBox => topTierCount = NumericTextBox} id="count" format='n' min={1} max={50} value={1} className="form-control" change={topTierCountchange.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={topTierCount} id="count" format='n' min={1} max={50} value={1} className="form-control" change={topTierCountchange.bind(this)}></NumericTextBoxComponent>
                   </div>
                 </td>
               </tr>
@@ -249,7 +250,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <DropDownListComponent ref={DropDownList => topTierUnit = DropDownList} id='unit' tabIndex={1} dataSource={unit} fields={unitField}
+                    <DropDownListComponent ref={topTierUnit} id='unit' tabIndex={1} dataSource={unit} fields={unitField}
                       value='Week' change={topUnitChange.bind(this)}></DropDownListComponent>
                   </div>
                 </td>
@@ -263,7 +264,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <DropDownListComponent ref={DropDownList => topTierformat = DropDownList} id='topformat' tabIndex={1} dataSource={weekformat}
+                    <DropDownListComponent ref={topTierformat} id='topformat' tabIndex={1} dataSource={weekformat}
                       fields={formatField} value='MMM dd, yyyy' change={topFormatChange.bind(this)}></DropDownListComponent>
                   </div>
                 </td>
@@ -275,7 +276,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <CheckBoxComponent ref={CheckBox => bottomTierCheckbox = CheckBox} id="bottomTierCheck" onClick={bottomTierCick.bind(this)} className="checkbox" checked={true} ></CheckBoxComponent>
+                    <CheckBoxComponent ref={bottomTierCheckbox} id="bottomTierCheck" onClick={bottomTierCick.bind(this)} className="checkbox" checked={true} ></CheckBoxComponent>
                   </div>
                 </td>
               </tr>
@@ -285,7 +286,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <NumericTextBoxComponent ref={NumericTextBox => bottomTierCount = NumericTextBox} id="count" format='n' min={1} max={50} value={1} className="form-control" change={bottomTierCountchange.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={bottomTierCount} id="count" format='n' min={1} max={50} value={1} className="form-control" change={bottomTierCountchange.bind(this)}></NumericTextBoxComponent>
                   </div>
                 </td>
               </tr>
@@ -297,7 +298,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <DropDownListComponent ref={DropDownList => bottomTierUnit = DropDownList} id='unit' tabIndex={1} dataSource={unit} fields={unitField}
+                    <DropDownListComponent ref={bottomTierUnit} id='unit' tabIndex={1} dataSource={unit} fields={unitField}
                       value='Day' change={bottomUnitChange.bind(this)}></DropDownListComponent>
                   </div>
                 </td>
@@ -310,7 +311,7 @@ function Timeline() {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
-                    <DropDownListComponent ref={DropDownList => bottomTierformat = DropDownList} id='btFormat' tabIndex={1} dataSource={dayformat}
+                    <DropDownListComponent ref={bottomTierformat} id='btFormat' tabIndex={1} dataSource={dayformat}
                       fields={formatField} value='' change={bottomFormatChange.bind(this)}></DropDownListComponent>
                   </div>
                 </td>

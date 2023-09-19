@@ -10,6 +10,7 @@ import {
 } from '@syncfusion/ej2-react-circulargauge';
 import { SampleBase } from '../common/sample-base';
 import { CircularGauge } from '@syncfusion/ej2-circulargauge';
+import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -20,6 +21,7 @@ export class Clock extends SampleBase<{}, {}> {
 
     public gauge: CircularGauge;
     public pointerInterval: Object;
+    public refreshTimeout: any;
     public annotationGaugeOne: CircularGauge;
     public annotationGaugeTwo: CircularGauge;
     public NeedlePointer: number = 0.2;
@@ -34,9 +36,39 @@ export class Clock extends SampleBase<{}, {}> {
     }
 
     public onChartLoad(args: ILoadedEventArgs): void {
+        this.renderGauges();
+        if (isNullOrUndefined(this.pointerInterval)) {
+            this.pointerInterval = setInterval(
+                (): void => {
+                    if (document.getElementById('axis-background')) {
+                        if (this.NeedlePointer <= 12) {
+                            this.NeedlePointer += 0.2;
+                            this.gauge.setPointerValue(0, 2, this.NeedlePointer);
+                        } else {
+                            this.NeedlePointer = 0.2;
+                        }
+                    } else {
+                        clearInterval(+this.pointerInterval);
+                    }
+                }, 1000);
+        }
+    };
+
+    public onResized(args: Object) {
+        window.clearTimeout(this.refreshTimeout);
+        this.refreshTimeout = setTimeout((): void => {
+            if (document.getElementById('axis-background')) {
+                this.renderGauges();
+            } else {
+                window.clearTimeout(+this.refreshTimeout);
+            }
+        }, 1000);
+    }
+
+    public renderGauges() {
         this.annotationGaugeOne = new CircularGauge({
-            width: args.gauge.availableSize.width < 400 ? '75px': '150px',
-            height: args.gauge.availableSize.width < 400 ? '75px': '150px',
+            width: '150px',
+            height: '150px',
             background: 'transparent',
             axes: [{
                 labelStyle: { hiddenLabel: 'First', font: { fontFamily: 'inherit', size: '7px' }, offset: -5 },
@@ -60,8 +92,8 @@ export class Clock extends SampleBase<{}, {}> {
         this.annotationGaugeOne.appendTo('#subGaugeOne');
 
         this.annotationGaugeTwo = new CircularGauge({
-            width: args.gauge.availableSize.width < 400 ? '75px': '150px',
-            height: args.gauge.availableSize.width < 400 ? '75px': '150px',
+            width: '150px',
+            height: '150px',
             background: 'transparent',
             axes: [{
                 labelStyle: { hiddenLabel: 'First', font: { fontFamily: 'inherit', size: '7px' }, offset: -5 },
@@ -83,24 +115,6 @@ export class Clock extends SampleBase<{}, {}> {
             }
         });
         this.annotationGaugeTwo.appendTo('#subGaugeTwo');
-
-        this.pointerInterval = setInterval(
-            (): void => {
-                if (document.getElementById('axis-background')) {
-                    if (this.NeedlePointer <= 12) {
-                        this.NeedlePointer += 0.2;
-                        this.gauge.setPointerValue(0, 2, this.NeedlePointer);
-                    } else {
-                        this.NeedlePointer = 0.2;
-                    }
-                } else {
-                    clearInterval(+this.pointerInterval);
-                }
-            }, 2000)
-    };
-
-    public onResized(args: Object) {
-        location.reload();
     }
 
     render() {

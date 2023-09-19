@@ -1,15 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Edit, Toolbar, Selection } from '@syncfusion/ej2-react-gantt';
 import { unscheduledData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import './unscheduled.css'
 
-function UnscheduledTask() {
-  React.useEffect(() => {
+const UnscheduledTask = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
   const taskFields: any = {
     id: 'TaskId',
     name: 'TaskName',
@@ -38,19 +39,19 @@ function UnscheduledTask() {
   ];
   const projectStartDate: any = new Date('01/01/2019');
   const projectEndDate: any = new Date('01/20/2019');
-  function toolbarClickEvent(): void {
+  const toolbarClickEvent = (): void => {
     var data = {
       Duration: null,
       StartDate: null,
       EndDate: null,
       TaskType: ''
     };
-    ganttInstance.addRecord(data)
+    ganttInstance.current.addRecord(data)
   }
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GanttComponent id='Unscheduled' ref={gantt => ganttInstance = gantt} dataSource={unscheduledData}
+        <GanttComponent id='Unscheduled' ref={ganttInstance} dataSource={unscheduledData}
           taskFields={taskFields} height='410px' editSettings={editSettings} allowSelection={true}
           toolbar={toolbar} labelSettings={labelSettings} allowUnscheduledTasks={true}
           toolbarClick={toolbarClickEvent.bind(this)} splitterSettings={splitterSettings} columns={columns}

@@ -92,7 +92,7 @@ export class SelectionAPI extends SampleBase<{}, {}> {
                     <p>
                         Selection provides an interactive support to highlight the row or cell or column that you select. Selection can be done through simple
             Mouse down or Keyboard interaction. To enable selection, set <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowselection-boolean">
+                            href="https://ej2.syncfusion.com/react/documentation/api/grid#allowselection">
                             allowSelection
         </a></code> as true.
         </p>

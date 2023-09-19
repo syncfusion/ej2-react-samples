@@ -123,7 +123,6 @@ function StockChart() {
                             majorGridLines: { width: 0 },
                             crosshairTooltip: { enable: true }
                         }}
-                        margin={{ top: 0 }}
                         primaryYAxis={{
                             title: 'Price',
                             crosshairTooltip: { enable: true },

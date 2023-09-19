@@ -6,19 +6,15 @@ import { updateSampleSection } from '../common/sample-base';
 import './keyboard-navigation.css';
 
 const KeyboardNavigation = () => {
-    useEffect(() => {
-        updateSampleSection();
-    }, [])
-
-    const renderComplete = (): void => {
-        document.body.addEventListener('keydown', function (e) {
-            var carouselElement: HTMLElement = document.querySelector('.e-carousel');
-            if (e.altKey && e.keyCode === 74 && carouselElement) {
-                console.log('rer');
-                carouselElement.focus();
-            }
-        });
-    }
+  useEffect(() => {
+    updateSampleSection();
+    document.body.addEventListener("keydown", function (e) {
+      var carouselElement: HTMLElement = document.querySelector(".e-carousel");
+      if (e.altKey && e.keyCode === 74 && carouselElement) {
+        carouselElement.focus();
+      }
+    });
+  }, []);
 
     const itemTemplate1 = () => {
         return (

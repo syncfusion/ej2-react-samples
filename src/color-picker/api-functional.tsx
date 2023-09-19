@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ColorPickerComponent, ColorPickerMode, ColorPickerEventArgs } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -8,6 +8,7 @@ import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent, ChangeEventArgs as DdlChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import './api.css';
+
 interface ApiSample {
   colorValue: string
   mode: ColorPickerMode;
@@ -15,14 +16,15 @@ interface ApiSample {
   showButtons: boolean;
   modeSwitcher: boolean;
 }
-function Api() {
-  React.useEffect(() => {
+
+const Api = () => {
+  useEffect(() => {
     hexInput.current.value = state.colorValue;
     updateSampleSection();
   }, [])
-  const [state, setState] = useState({
-    colorValue: '#0db1e7',
-    mode: 'Picker',
+  const [state, setState] = useState<ApiSample>({
+    colorValue: "#0db1e7",
+    mode: "Picker",
     disabled: false,
     showButtons: true,
     modeSwitcher: true,
@@ -30,24 +32,24 @@ function Api() {
   let hexInput = useRef<HTMLInputElement>(null);
   let type: { [key: string]: Object }[] = [{ mode: 'Picker' }, { mode: 'Palette' }];
   let ddlFields: object = { text: 'mode', value: 'mode' };
-  function onDdlChange(args: DdlChangeEventArgs): void {
+  const onDdlChange = (args: DdlChangeEventArgs): void => {
     setState({ ...state, mode: args.value as ColorPickerMode });
   }
-  function onDisableChange(args: ChangeEventArgs): void {
+  const onDisableChange = (args: ChangeEventArgs): void => {
     setState({ ...state, disabled: args.checked });
   }
-  function onButtonChange(args: ChangeEventArgs): void {
+  const onButtonChange = (args: ChangeEventArgs): void => {
     setState({ ...state, showButtons: args.checked });
   }
-  function onModeChange(args: ChangeEventArgs): void {
+  const onModeChange = (args: ChangeEventArgs): void => {
     setState({ ...state, modeSwitcher: args.checked });
   }
-  function changeValue(e: Event): void {
+  const changeValue = (e: Event): void => {
     const val: string = (e.target as HTMLInputElement).value;
     // Sets to color picker default color value if user types the invalid hex code.
     setState({ ...state, colorValue: val && val.length > 2 ? (val[0] !== '#' ? `#${val}` : val) : '#008000' });
   }
-  function onChange(args: ColorPickerEventArgs): void {
+  const onChange = (args: ColorPickerEventArgs): void => {
     hexInput.current.value = args.currentValue.hex;
   }
 
@@ -111,12 +113,10 @@ function Api() {
           </PropertyPane>
         </div>
       </div>
-
       <div id='action-description'>
         <p>This sample demonstrates customization of the ColorPicker component by using its properties from the property pane. Select
           any combination of properties from the property pane to customize the ColorPicker component.</p>
       </div>
-
       <div id='description'>
         <p>
           The ColorPicker is a user interface to select and adjust color values. This supports various color specifications like RGB
@@ -137,8 +137,7 @@ function Api() {
         </ul>
         <p>
           More information about ColorPicker can be found in this
-          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/color-picker/">
-            documentation section</a>.</p>
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/color-picker/">documentation section</a>.</p>
       </div>
     </div >
   )

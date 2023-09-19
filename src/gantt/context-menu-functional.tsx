@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import {
   GanttComponent, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar,
   ContextMenuClickEventArgs, IGanttData, ContextMenuOpenEventArgs, Resize, Sort, ContextMenu, ColumnsDirective, ColumnDirective, EventMarkersDirective, EventMarkerDirective
@@ -8,9 +9,8 @@ import { editingData, editingResources } from './data';
 import { ContextMenuItemModel } from '@syncfusion/ej2-react-grids';
 import { updateSampleSection } from '../common/sample-base';
 
-
-function ContextMenuItem() {
-  React.useEffect(() => {
+const ContextMenuItem = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -37,9 +37,9 @@ function ContextMenuItem() {
     showDeleteConfirmDialog: true
   };
   const splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
-  let ganttInstance: GanttComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
   const projectStartDate: Date = new Date('03/25/2019');
   const projectEndDate: Date = new Date('07/28/2019');
   const gridLines: any = 'Both';
@@ -57,7 +57,7 @@ function ContextMenuItem() {
     leftLabel: 'TaskName',
     rightLabel: 'resources'
   };
-  function contextMenuOpen(args: ContextMenuOpenEventArgs): void {
+  const contextMenuOpen = (args: ContextMenuOpenEventArgs): void => {
     let record: IGanttData = args.rowData;
     if (args.type !== 'Header') {
       if (!record.hasChildRecords) {
@@ -72,14 +72,13 @@ function ContextMenuItem() {
       }
     }
   }
-
-  function contextMenuClick(args: ContextMenuClickEventArgs): void {
+  const contextMenuClick = (args: ContextMenuClickEventArgs): void => {
     let record: IGanttData = args.rowData;
     if (args.item.id === 'collapserow') {
-      ganttInstance.collapseByID(Number(record.ganttProperties.taskId));
+      ganttInstance.current.collapseByID(Number(record.ganttProperties.taskId));
     }
     if (args.item.id === 'expandrow') {
-      ganttInstance.expandByID(Number(record.ganttProperties.taskId));
+      ganttInstance.current.expandByID(Number(record.ganttProperties.taskId));
     }
   }
   const contextMenuItems: any = ['AutoFitAll', 'AutoFit', 'TaskInformation', 'DeleteTask', 'Save', 'Cancel',
@@ -93,7 +92,7 @@ function ContextMenuItem() {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GanttComponent id='ContextMenu' ref={gantt => ganttInstance = gantt} dataSource={editingData} dateFormat={'MMM dd, y'} enableContextMenu={true}
+        <GanttComponent id='ContextMenu' ref={ganttInstance} dataSource={editingData} dateFormat={'MMM dd, y'} enableContextMenu={true}
           treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true} allowSorting={true} allowResizing={true}
           contextMenuItems={contextMenuItems} contextMenuOpen={contextMenuOpen.bind(this)} contextMenuClick={contextMenuClick.bind(this)}
           allowUnscheduledTasks={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate}
@@ -130,7 +129,6 @@ function ContextMenuItem() {
           the soil to handing over the fully constructed property to the owner. This also demonstrates the usage of default and custom context menu in Gantt component.
         </p>
       </div>
-
       <div id="description">
         <p>
           Gantt has an option to show the context menu while performing right click on it. You can configure the default and custom menu items in the context menu using the <code>contextMenuItems</code> property.
@@ -159,13 +157,11 @@ function ContextMenuItem() {
             </ul>
           </li>
         </ul>
-
         <p>Custom items:</p>
         <p>
           In this demo, custom menu items have been enabled in the context menu to perform expanding and collapsing the parent rows,
           <li><code>Expand the Row</code> - Used to expand the parent row and it will render where the row is in a collapsed state.</li>
           <li><code>Collapse the Row</code> - Used to collapse the parent row and it will render  where the row is in a expanded state.</li>
-
           To use context menu feature, we need to inject <code>ContextMenu</code> module into the <code>services</code>.
         </p>
       </div>

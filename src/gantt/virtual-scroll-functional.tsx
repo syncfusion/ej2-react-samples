@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, ColumnDirective, ColumnsDirective, VirtualScroll } from '@syncfusion/ej2-react-gantt';
 import { virtualData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function Virtualscroll() {
-  React.useEffect(() => {
+const Virtualscroll = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {

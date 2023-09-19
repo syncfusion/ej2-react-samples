@@ -1,0 +1,31 @@
+.bootstrap4 .sb-reset-icon:before {
+    content: '\e745';
+}
+
+.bootstrap4 .copycode::before {
+    content: '\e77b';
+    font-size: 25px;
+}
+
+.bootstrap4 .e-tab .sb-content-tab-header.e-tab-header::before {
+    border-width: 0;
+}
+
+.bootstrap4 .e-samplestatus.new,
+.bootstrap4 .e-samplestatus.update,
+.bootstrap4 .e-samplestatus.preview {
+    margin: 4px 0;
+    height: 22px;
+    margin-top: 0.5px;
+}
+
+.bootstrap4 .e-samplestatus.new.tree,
+.bootstrap4 .e-samplestatus.update.tree,
+.bootstrap4 .e-samplestatus.preview.tree {
+    margin-top: 4px;
+}
+
+.bootstrap4 .e-samplestatus.update.tree,
+.bootstrap4 .e-samplestatus.preview.tree {
+    margin-top: 4px;
+}

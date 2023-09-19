@@ -151,12 +151,11 @@
       let node2: Node = formatRTE.formatter.editorManager.nodeCutter.GetSpliceNode(range2, node as HTMLElement);
       let previouNode: Node = node2.previousSibling;
       node2.parentNode.removeChild(node2);
-      if(blockNewLine && isBlockFormat){
-          let defaultTag: HTMLElement = document.createElement('p');
-          defaultTag.innerHTML = '</br>';
-          blockNode.parentNode.insertBefore(defaultTag, blockNode.nextSibling);
-          selection.setCursorPoint(document, blockNode.nextSibling as Element, 0);
-      } else if(previouNode) {
+      const brTag: HTMLElement = document.createElement('br');
+      if (node2.parentElement && node2.parentElement.innerHTML.length === 1) {
+          node2.parentElement.appendChild(brTag);
+      }
+      if(previouNode) {
           selection.setCursorPoint(document, previouNode as Element, previouNode.textContent.length);
       }
   }

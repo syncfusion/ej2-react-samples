@@ -1,24 +1,24 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
+import { useEffect } from "react";
+import { HeatMapComponent, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, TitleModel, AxisModel, PaletteSettingsModel, CellSettingsModel } from '@syncfusion/ej2-react-heatmap';
 import { Adaptor, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
 import { updateSampleSection } from '../common/sample-base';
 
 // custom code start
 const SAMPLE_CSS: any = `
-#control-container {
-    padding: 0px !important;
-}
-#source{
-    float: right; margin-right: 10p
-}`;
+    #control-container {
+        padding: 0px !important;
+    }
+    #source{
+        float: right; margin-right: 10p
+    }`;
 // custom code end
 /**
  * Heatmap Array data binding sample
  */
-function ArrayCell() {
-
-    React.useEffect(() => {
+const ArrayCell = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -35,84 +35,63 @@ function ArrayCell() {
         [9, 0, 14.31], [9, 1, 42.87], [9, 2, 77.28], [9, 3, 77.82], [9, 4, 81.44], [9, 5, 81.92], [9, 6, 83.75],
         [10, 0, 25.5], [10, 1, 35.5], [10, 2, 40.5], [10, 3, 45.05], [10, 4, 50.5], [10, 5, 75.5], [10, 6, 90.58]
     ];
+    let title: TitleModel = {
+        text: 'Percentage of Individuals Using Internet by Country',
+        textStyle: {
+            size: '15px',
+            fontWeight: '500',
+            fontStyle: 'Normal',
+            fontFamily: 'Segoe UI'
+        }
+    }
+    let xAxis: AxisModel = {
+        labels: ['China', 'Australia', 'Mexico', 'Canada', 'Brazil', 'USA', 'UK', 'Germany', 'Russia', 'France', 'Japan']
+    }
+    let yAxis: AxisModel = {
+        labels: ['2000', '2005', '2010', '2011', '2012', '2013', '2014']
+    }
+    let paletteSettings: PaletteSettingsModel = {
+        palette: [
+            { color: '#3498DB' },
+            { color: '#2C3E50' }
+        ]
+    }
+    let cellSettings: CellSettingsModel = {
+        border: {
+            width: 0,
+        },
+        textStyle: {
+            color: 'white'
+        },
+        format: '{value} %'
+    }
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
     };
 
-    function tooltipTemplate(args: ITooltipEventArgs): void {
+    const tooltipTemplate = (args: ITooltipEventArgs): void => {
         args.content = [args.yLabel + ' | ' + args.xLabel + ' : ' + args.value + ' %'];
     };
 
     return (
         <div className='control-pane'>
             {/* custom code start */}
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container'
-                    titleSettings={{
-                        text: 'Percentage of Individuals Using Internet by Country',
-                        textStyle: {
-                            size: '15px',
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI'
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['China', 'Australia', 'Mexico', 'Canada', 'Brazil', 'USA',
-                            'UK', 'Germany', 'Russia', 'France', 'Japan'],
-                    }}
-                    yAxis={{
-                        labels: ['2000', '2005', '2010', '2011', '2012', '2013', '2014'],
-                    }}
-                    dataSource={arrayCellData}
-                    dataSourceSettings={{
-                        isJsonData: false,
-                        adaptorType: 'Cell'
-                    }}
-                    cellSettings={{
-                        border: {
-                            width: 0,
-                        },
-                        textStyle: {
-                            color: 'white'
-                        },
-                        format: '{value} %'
-                    }}
-                    paletteSettings={{
-                        palette: [{ color: '#3498DB' },
-                        { color: '#2C3E50' }
-                        ]
-                    }}
-                    legendSettings={{
-                        visible: false,
-                    }}
-                    load={load.bind(this)}
-                    tooltipRender={tooltipTemplate}>
+                <HeatMapComponent id='heatmap-container' titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSource={arrayCellData} dataSourceSettings={{ isJsonData: false, adaptorType: 'Cell' }} cellSettings={cellSettings} paletteSettings={paletteSettings} legendSettings={{ visible: false }} load={load.bind(this)} tooltipRender={tooltipTemplate}>
                     <Inject services={[Adaptor, Tooltip]} />
                 </HeatMapComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample visualizes the percentage growth rate of individuals using the internet in a country
-                    compared to the overall population to the country.
-                </p>
+                <p>This sample visualizes the percentage growth rate of individuals using the internet in a country compared to the overall population to the country.</p>
             </div>
             <div id="description">
-                <p>
-                    In this example, you can see how to bind two-dimensional array object as datasource for
-                    heatmap and configure the Heatmap using the data adaptor support.
-                </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on
-                    a point in touch enabled devices.
-                </p>
+                <p>In this example, you can see how to bind two-dimensional array object as datasource for heatmap and configure the Heatmap using the data adaptor support.</p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -124,5 +103,4 @@ function ArrayCell() {
         </div >
     );
 }
-
 export default ArrayCell;

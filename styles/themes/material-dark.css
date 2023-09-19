@@ -1,0 +1,232 @@
+.material-dark .sb-reset-icon:before {
+    content: '\e7a7';
+}
+
+.material-dark .e-samplestatus.new,
+.material-dark .e-samplestatus.update {
+
+    margin-top: 6px;
+}
+
+/* material dark */
+.material-dark .sb-content,
+.material-dark textarea#ruleContent {
+    background: #383838;
+}
+
+.material-dark .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active {
+    border: none;
+}
+
+.material-dark .sb-home,
+.material-dark .sb-reset-icon {
+    color: #ffffff
+}
+
+.material-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
+    color: #ffffff;
+}
+
+body.material-dark,
+.material-dark #sb-header-text,
+.material-dark .control-name,
+.material-dark .sample-navigation,
+.material-dark .sb-icon-Popout,
+.material-dark .sb-switch-popup a {
+    color: #fff;
+}
+
+.material-dark .sb-header,
+.material-dark .sb-search-result .e-list-item {
+    background: #383838 !important;
+}
+
+.material-dark .sb-search-result .e-list-item {
+    background: #383838 !important;
+    color: #ffffff !important;
+}
+
+.material-dark .sb-search-result .e-list-group-item {
+    background: #383838 !important;
+}
+
+.material-dark #left-sidebar {
+    color: #c2c0c0;
+    background: #383838;
+}
+
+.material-dark #left-sidebar {
+    border: none;
+}
+
+.material-dark .e-icons.back-icon,
+.material-dark .sb-plnr-section,
+.material-dark .sb-bread-crumb,
+.material-dark .sb-component-name,
+.material-dark .sb-icon-Home,
+.material-dark .description-header,
+.material-dark .sb-switch-popup li:first-child,
+.material-dark .sb-left-pane .e-listview .e-list-group-item,
+.material-dark .sb-footer-links a,
+.material-dark .description-section a,
+.material-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator,
+.material-dark .sb-theme-popup li.active .sb-theme-select {
+
+    color: #56a4fd !important;
+}
+
+.material-dark .sb-icon-Hamburger:active,
+.material-dark .sb-footer-logo-icon,
+.material-dark .sb-source-section .e-tab .e-tab-header .e-toolbar-item .e-tab-text {
+
+    color: white;
+}
+
+.material-dark .sb-content-section,
+.material-dark .sb-switch-popup .material-dark .sb-content-tab-header,
+.material-dark .sb-content-section .sb-content-tab-header {
+    background: #383838;
+    border-color: #969696;
+}
+
+.material-dark .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text {
+    color: #1783ff
+}
+
+.material-dark .sample-navigation>button:hover,
+.material-dark .sb-plnr-section,
+.material-dark .sb-icon-Popout:hover,
+.material-dark .sb-icon-Hamburger,
+.material-dark .sb-setting-translate,
+.material-dark .property-panel-header {
+    color: #56a4fd;
+}
+
+.material-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.material-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text {
+    color: #ffffff !important;
+}
+
+.material-dark code,
+.material-dark .sb-switch-popup,
+.material-dark .sb-setting-popup,
+.material-dark .sb-search-result,
+.material-dark .sb-src-code,
+.material-dark .CodeMirror,
+.material-dark .sb-api-section,
+.material-dark .sb-theme-popup,
+.material-dark .copy-tooltip,
+.material-dark .e-icons.copycode,
+.material-dark #search-input-wrapper input,
+.material-dark #search-input-wrapper input::placeholder,
+.material-dark .property-section {
+    color: #ffffff;
+    background: #383838;
+}
+
+.material-dark .sb-search-btn:hover,
+.material-dark .sb-search-btn.active,
+.material-dark .sb-setting-btn:hover,
+.material-dark .sb-setting-btn.active,
+.material-dark .sb-switch-popup li:hover,
+.material-dark .theme-wrapper:hover,
+.material-dark .theme-wrapper.active,
+.material-dark .sb-theme-popup li:hover,
+.material-dark .sb-search-result .e-list-item:hover,
+.material-dark .sb-left-pane .e-listview .e-list-item:hover {
+    background-color: #636363 !important;
+}
+
+.material-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow {
+    background-color: #636363 !important;
+    border: none;
+}
+
+.material-dark .setting-responsive .sb-responsive-items {
+    width: 104px;
+    background-color: #636262;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid transparent;
+    display: table-cell;
+    cursor: pointer;
+}
+
+.material-dark .setting-responsive .sb-responsive-items.active {
+    background-color: #56a4fd;
+    color: white;
+}
+
+.material-dark .sb-left-pane .e-listview .e-list-item.e-active {
+    background-color: #56a4fd;
+}
+
+.material-dark .sb-left-pane {
+    background: #383838;
+}
+
+.material-dark .sb-body-overlay {
+    background: #383838;
+}
+
+.material-dark .sb-mobile-right-pane {
+    background: #383838;
+}
+
+.material-dark .sb-mobile-left-pane {
+    background: #383838;
+}
+
+.material-dark .sb-mobilefooter>.e-btn.e-flat {
+    background: #383838;
+    color: #fff;
+}
+
+.material-dark .sb-mobilefooter>.e-btn.e-flat:hover {
+    color: #56a4fd;
+}
+
+.material-dark .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow,
+.material-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background-color: #56a4fd;
+}
+
+.material-dark .sb-header-text-left,
+.material-dark .sb-header-text-right,
+.material-dark .sb-left-pane .e-listview .e-list-item:hover {
+
+    color: #ffffff
+}
+
+.material-dark .e-tab .e-tab-header .e-indicator {
+    display: none;
+}
+
+.material-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.material-dark .e-tab .e-content .e-item {
+    color: #ffffff !important;
+}
+
+.material-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.material-dark.sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text:hover,
+.material-dark .sb-search-result .e-list-group-item {
+    color: #56a4fd !important;
+}
+
+.material-dark .sb-theme-select {
+    color: rgb(56, 56, 56) !important;
+}
+
+.material-dark .sb-theme-popup li:hover .sb-theme-select {
+    color: transparent !important;
+}
+
+.material-dark .sb-theme-popup li:hover.active .sb-theme-select,
+.material-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-text-content .e-list-text {
+    color: white !important;
+}
+
+.material-dark .e-samplestatus.update.tree {
+    margin-top: 4px !important;
+}

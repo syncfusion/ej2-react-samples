@@ -165,6 +165,7 @@ function RTL() {
                         primaryYAxis={{
                             majorTickLines: { width: 0 },
                             lineStyle: { width: 0 },
+                            labelFormat: '{value}%',
                             minimum: 82, maximum: 87, interval: 1
                         }}
                         width={Browser.isDevice ? '100%' : '80%'}

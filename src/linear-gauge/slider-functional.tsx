@@ -2,65 +2,58 @@
  * Sample to design slider using the Linear Gauge
  */
 import * as React from "react";
+import { useEffect, useRef } from "react";
 import { LinearGaugeComponent, Inject, GaugeTooltip, ILoadedEventArgs, LinearGaugeTheme, IPointerDragEventArgs, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
-     .control-fluid {
-         padding: 0px !important;
-     }`;
+    .control-fluid {
+        padding: 0px !important;
+    }`;
 
-function Slider() {
-    React.useEffect(() => {
+const Slider = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let enableSliderGauge: LinearGaugeComponent;
+    let enableSliderGauge = useRef<LinearGaugeComponent>(null);
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
         // custom code end
     }
-    function dragMove(args: IPointerDragEventArgs): void {
+    const dragMove = (args: IPointerDragEventArgs): void => {
         if (args.pointerIndex == 1) {
-            enableSliderGauge.setPointerValue(0, 0, args.currentValue);
+            enableSliderGauge.current.setPointerValue(0, 0, args.currentValue);
         }
     }
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent title='Enabled' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} dragMove={dragMove.bind(this)} load={load.bind(this)} background='transparent' id='enableSliderGauge' height='150px' width='450px' format='N0' orientation='Horizontal' ref={enableSliderGaugeInstance => enableSliderGauge = enableSliderGaugeInstance}
-                        tooltip={{ enable: true, showAtMousePosition: true, textStyle: { fontFamily: 'inherit' } }}>
+                    <LinearGaugeComponent title='Enabled' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} dragMove={dragMove} load={load} background='transparent' id='enableSliderGauge' height='150px' width='450px' format='N0' orientation='Horizontal' ref={enableSliderGauge} tooltip={{ enable: true, showAtMousePosition: true, textStyle: { fontFamily: 'inherit' } }}>
                         <Inject services={[GaugeTooltip]} />
                         <AxesDirective>
                             <AxisDirective minimum={0} maximum={100} opposedPosition={true} line={{ width: 5, color: '#C2DEF8' }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ offset: 10, font: { fontFamily: 'inherit' } }}>
                                 <PointersDirective>
-                                    <PointerDirective value={50} height={5} width={5} color='#0074E3' position='Cross' enableDrag={true} type='Bar'>
-                                    </PointerDirective>
-                                    <PointerDirective value={50} height={15} width={15} color='#0074E3' placement='Center' enableDrag={true} offset={-10} markerType='Circle'>
-                                    </PointerDirective>
+                                    <PointerDirective value={50} height={5} width={5} color='#0074E3' position='Cross' type='Bar' />
+                                    <PointerDirective value={50} height={15} width={15} color='#0074E3' placement='Center' enableDrag={true} offset={-10} markerType='Circle' />
                                 </PointersDirective>
                             </AxisDirective>
                         </AxesDirective>
                     </LinearGaugeComponent>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent title='Disabled' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} load={load.bind(this)} background='transparent' id='disableSliderGauge' height='150px' width='450px' orientation='Horizontal'>
+                    <LinearGaugeComponent title='Disabled' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} load={load} background='transparent' id='disableSliderGauge' height='150px' width='450px' orientation='Horizontal'>
                         <AxesDirective>
                             <AxisDirective minimum={0} maximum={100} opposedPosition={true} line={{ width: 5, color: '#E0E0E0' }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ offset: 10, font: { fontFamily: 'inherit' } }}>
                                 <PointersDirective>
-                                    <PointerDirective value={50} height={5} width={5} color='#ADADAD' position='Cross' enableDrag={false} type='Bar'>
-                                    </PointerDirective>
-                                    <PointerDirective value={50} height={15} width={15} color='#ADADAD' placement='Center' enableDrag={false} offset={-10} markerType='Circle'>
-                                    </PointerDirective>
+                                    <PointerDirective value={50} height={5} width={5} color='#ADADAD' position='Cross' enableDrag={false} type='Bar' />
+                                    <PointerDirective value={50} height={15} width={15} color='#ADADAD' placement='Center' enableDrag={false} offset={-10} markerType='Circle' />
                                 </PointersDirective>
                             </AxisDirective>
                         </AxesDirective>
@@ -68,9 +61,7 @@ function Slider() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample demonstrates how to create a slider by utilizing the functionalities available in the linear gauge.
-                </p>
+                <p>This sample demonstrates how to create a slider by utilizing the functionalities available in the linear gauge.</p>
             </div>
             <div id="description">
                 <p>

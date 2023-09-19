@@ -22537,7 +22537,7 @@ export let employeeData: Object[] = [{
     'Notes': 'Education includes a BA in psychology from Colorado State University in 1970.  She also completed\
     \'The Art of the Cold Call.\'  Nancy is a member of Toastmasters International.',
     'ReportsTo': 2,
-    'PhotoPath': 'http://accweb/emmployees/davolio.bmp'
+    'PhotoPath': 'https://accweb/emmployees/davolio.bmp'
 }, {
     'EmployeeID': 2,
     'LastName': 'Fuller',
@@ -22559,7 +22559,7 @@ export let employeeData: Object[] = [{
     was promoted to sales manager in January 1992 and to vice president of sales in March 1993.  Andrew is a member of the \
     Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.',
     'ReportsTo': 7,
-    'PhotoPath': 'http://accweb/emmployees/fuller.bmp'
+    'PhotoPath': 'https://accweb/emmployees/fuller.bmp'
 }, {
     'EmployeeID': 3,
     'LastName': 'Leverling',
@@ -22580,7 +22580,7 @@ export let employeeData: Object[] = [{
      She has also completed a certificate program in food retailing management.\
      Janet was hired as a sales associate in 1991 and promoted to sales representative in February 1992.',
     'ReportsTo': 2,
-    'PhotoPath': 'http://accweb/emmployees/leverling.bmp'
+    'PhotoPath': 'https://accweb/emmployees/leverling.bmp'
 }, {
     'EmployeeID': 4,
     'LastName': 'Peacock',
@@ -22600,7 +22600,7 @@ export let employeeData: Object[] = [{
     'Notes': 'Margaret holds a BA in English literature from Concordia College (1958) and an MA from the American \
     Institute of Culinary Arts (1966).  She was assigned to the London office temporarily from July through November 1992.',
     'ReportsTo': 2,
-    'PhotoPath': 'http://accweb/emmployees/peacock.bmp'
+    'PhotoPath': 'https://accweb/emmployees/peacock.bmp'
 }, {
     'EmployeeID': 5,
     'LastName': 'Buchanan',
@@ -22622,7 +22622,7 @@ export let employeeData: Object[] = [{
     post in London.  He was promoted to sales manager in March 1993.  Mr. Buchanan has completed the courses \'Successful \
     Telemarketing\' and \'International Sales Management.\'  He is fluent in French.',
     'ReportsTo': 2,
-    'PhotoPath': 'http://accweb/emmployees/buchanan.bmp'
+    'PhotoPath': 'https://accweb/emmployees/buchanan.bmp'
 
 }, {
     'EmployeeID': 6,
@@ -22644,7 +22644,7 @@ export let employeeData: Object[] = [{
     (MBA, marketing, 1986).  He has also taken the courses \'Multi-Cultural Selling\' and \'Time Management for the Sales Professional.\'  \
     He is fluent in Japanese and can read and write French, Portuguese, and Spanish.',
     'ReportsTo': 5,
-    'PhotoPath': 'http://accweb/emmployees/davolio.bmp'
+    'PhotoPath': 'https://accweb/emmployees/davolio.bmp'
 }, {
     'EmployeeID': 7,
     'LastName': 'King',
@@ -22665,7 +22665,7 @@ export let employeeData: Object[] = [{
     University of Michigan in 1992, the year he joined the company.  After completing a course entitled \'Selling in Europe,\' \
     he was transferred to the London office in March 1993.',
     'ReportsTo': 5,
-    'PhotoPath': 'http://accweb/emmployees/davolio.bmp'
+    'PhotoPath': 'https://accweb/emmployees/davolio.bmp'
 }, {
     'EmployeeID': 8,
     'LastName': 'Callahan',
@@ -22685,7 +22685,7 @@ export let employeeData: Object[] = [{
     'Notes': 'Laura received a BA in psychology from the University of Washington.  She has also completed a course in business \
     French.  She reads and writes French.',
     'ReportsTo': 2,
-    'PhotoPath': 'http://accweb/emmployees/davolio.bmp'
+    'PhotoPath': 'https://accweb/emmployees/davolio.bmp'
 }, {
     'EmployeeID': 9,
     'LastName': 'Dodsworth',
@@ -22704,7 +22704,7 @@ export let employeeData: Object[] = [{
     'Photo': { 'Length': 21626 },
     'Notes': 'Anne has a BA degree in English from St. Lawrence College.  She is fluent in French and German.',
     'ReportsTo': 5,
-    'PhotoPath': 'http://accweb/emmployees/davolio.bmp'
+    'PhotoPath': 'https://accweb/emmployees/davolio.bmp'
 }];
 
 export interface ColumnSpanDataType {

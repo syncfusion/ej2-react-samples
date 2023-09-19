@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import './tooltip.css';
 
-function Tooltip() {
-    React.useEffect(() => {
+const Tooltip = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 

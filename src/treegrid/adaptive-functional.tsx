@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Filter, Sort, Edit, Toolbar, Page } from '@syncfusion/ej2-react-treegrid';
 import { Browser } from "@syncfusion/ej2-base";
 import { sampleData } from './data';
@@ -86,72 +87,164 @@ const SAMPLE_CSS = `
 }
 
 .highcontrast .e-mobile-layout {
-    border: 16px #000000 solid;
-    border-top-width: 60px;
-    border-bottom-width: 60px;
-    box-shadow: -1px 2px white, -2px -2px white, 2px -2px white, 2px 1px white;
+  border: 16px #000000 solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  box-shadow: -1px 2px white, -2px -2px white, 2px -2px white, 2px 1px white;
 }`;
 // custom code end
-function Adaptive() {
-  React.useEffect(() => {
+const Adaptive = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let treegridobj: TreeGridComponent;
-  const toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'Search'];
-  const renderingMode: any = 'Vertical';
-  const editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
-  const filterOptions: any = { type: 'Excel' };
+  let treegridobj = useRef<TreeGridComponent>(null);
+  const toolbarOptions: any = [
+    "Add",
+    "Edit",
+    "Delete",
+    "Update",
+    "Cancel",
+    "Search",
+  ];
+  const renderingMode: any = "Vertical";
+  const editSettings: any = {
+    allowEditing: true,
+    allowAdding: true,
+    allowDeleting: true,
+    mode: "Dialog",
+  };
+  const filterOptions: any = { type: "Excel" };
   const validationRule: Object = { required: true };
   const validationRule1: Object = { required: true, number: true };
-  function load(): void {
-    (this as any).grid.adaptiveDlgTarget = document.getElementsByClassName('e-mobile-content')[0] as HTMLElement;
-  }
+  const load = function (): void {
+    (this as any).grid.adaptiveDlgTarget = document.getElementsByClassName(
+      "e-mobile-content"
+    )[0] as HTMLElement;
+  };
   return (
-    <div className='control-pane'>
-      <div className='control-section'>
-        <style>
-          {SAMPLE_CSS}
-        </style>
+    <div className="control-pane">
+      <div className="control-section">
+        <style>{SAMPLE_CSS}</style>
         <div className="col-md-9 e-bigger e-adaptive-demo">
           {!Browser.isDevice ? (
             <div className="e-mobile-layout">
               <div className="e-mobile-content">
-                <TreeGridComponent id="adaptivebrowser" dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='100%' ref={treegrid => treegridobj = treegrid} enableAdaptiveUI={true} allowFiltering={true} allowSorting={true} allowPaging={true} filterSettings={filterOptions} toolbar={toolbarOptions} editSettings={editSettings} load={load}>
+                <TreeGridComponent
+                  id="adaptivebrowser"
+                  dataSource={sampleData}
+                  treeColumnIndex={1}
+                  childMapping="subtasks"
+                  height="100%"
+                  ref={treegridobj}
+                  enableAdaptiveUI={true}
+                  allowFiltering={true}
+                  allowSorting={true}
+                  allowPaging={true}
+                  filterSettings={filterOptions}
+                  toolbar={toolbarOptions}
+                  editSettings={editSettings}
+                  load={load}
+                >
                   <ColumnsDirective>
-                    <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='135' textAlign='Right' validationRules={validationRule1}></ColumnDirective>
-                    <ColumnDirective field='taskName' headerText='Task Name' width='280' validationRules={validationRule}></ColumnDirective>
-                    <ColumnDirective field='duration' headerText='Duration' width='150' textAlign='Right' validationRules={validationRule} />
-                    <ColumnDirective field='progress' headerText='Progress' width='145' textAlign='Right' />
+                    <ColumnDirective
+                      field="taskID"
+                      headerText="Task ID"
+                      isPrimaryKey={true}
+                      width="135"
+                      textAlign="Right"
+                      validationRules={validationRule1}
+                    ></ColumnDirective>
+                    <ColumnDirective
+                      field="taskName"
+                      headerText="Task Name"
+                      width="280"
+                      validationRules={validationRule}
+                    ></ColumnDirective>
+                    <ColumnDirective
+                      field="duration"
+                      headerText="Duration"
+                      width="150"
+                      textAlign="Right"
+                      validationRules={validationRule}
+                    />
+                    <ColumnDirective
+                      field="progress"
+                      headerText="Progress"
+                      width="145"
+                      textAlign="Right"
+                    />
                   </ColumnsDirective>
                   <Inject services={[Filter, Sort, Edit, Toolbar, Page]} />
                 </TreeGridComponent>
               </div>
             </div>
           ) : (
-            <TreeGridComponent id="adaptivedevice" dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='100%' ref={treegrid => treegridobj = treegrid} enableAdaptiveUI={true} allowFiltering={true} allowSorting={true} allowPaging={true} filterSettings={filterOptions} toolbar={toolbarOptions} editSettings={editSettings} load={load}>
+            <TreeGridComponent
+              id="adaptivedevice"
+              dataSource={sampleData}
+              treeColumnIndex={1}
+              childMapping="subtasks"
+              height="100%"
+              ref={treegridobj}
+              enableAdaptiveUI={true}
+              allowFiltering={true}
+              allowSorting={true}
+              allowPaging={true}
+              filterSettings={filterOptions}
+              toolbar={toolbarOptions}
+              editSettings={editSettings}
+              load={load}
+            >
               <ColumnsDirective>
-                <ColumnDirective field='taskID' headerText='Task ID' isPrimaryKey={true} width='135' textAlign='Right' validationRules={validationRule1}></ColumnDirective>
-                <ColumnDirective field='taskName' headerText='Task Name' width='280' validationRules={validationRule}></ColumnDirective>
-                <ColumnDirective field='duration' headerText='Duration' width='140' textAlign='Right' validationRules={validationRule} />
-                <ColumnDirective field='progress' headerText='Progress' width='145' textAlign='Right' />
+                <ColumnDirective
+                  field="taskID"
+                  headerText="Task ID"
+                  isPrimaryKey={true}
+                  width="135"
+                  textAlign="Right"
+                  validationRules={validationRule1}
+                ></ColumnDirective>
+                <ColumnDirective
+                  field="taskName"
+                  headerText="Task Name"
+                  width="280"
+                  validationRules={validationRule}
+                ></ColumnDirective>
+                <ColumnDirective
+                  field="duration"
+                  headerText="Duration"
+                  width="140"
+                  textAlign="Right"
+                  validationRules={validationRule}
+                />
+                <ColumnDirective
+                  field="progress"
+                  headerText="Progress"
+                  width="145"
+                  textAlign="Right"
+                />
               </ColumnsDirective>
               <Inject services={[Filter, Sort, Edit, Toolbar, Page]} />
             </TreeGridComponent>
           )}
         </div>
         <div id="action-description">
-          <p>This sample demonstrates the adaptive rendering behavior of Tree Grid features
-            such as Filtering, Paging, Searching and etc.,</p>
-        </div>
-        <div id='description'>
           <p>
-            The <code>enableAdaptiveUI</code> property is set to true.
-            The filtering, CRUD actions, paging and other various user interactions in tree grid will be adaptive to the smaller screens.
-            For example, Filtering opens the UI for user in a pop-up occupying the entire screen.
+            This sample demonstrates the adaptive rendering behavior of Tree
+            Grid features such as Filtering, Paging, Searching and etc.,
+          </p>
+        </div>
+        <div id="description">
+          <p>
+            The <code>enableAdaptiveUI</code> property is set to true. The
+            filtering, CRUD actions, paging and other various user interactions
+            in tree grid will be adaptive to the smaller screens. For example,
+            Filtering opens the UI for user in a pop-up occupying the entire
+            screen.
           </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
 export default Adaptive;

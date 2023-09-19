@@ -137,7 +137,7 @@ const Orientation = () => {
             <div className='control-section tab-control-section row'>
                 <div className='col-lg-8'>
                     {/* Render the Tab Component */}
-                    <TabComponent ref={tabObj} cssClass='orientation-tab' headerPlacement={orientation} showCloseButton={true} heightAdjustMode='None' height={320} >
+                    <TabComponent ref={tabObj} cssClass='orientation-tab' headerPlacement={orientation} showCloseButton={true} height={320} >
                         <TabItemsDirective>
                             <TabItemDirective header={headertext[0]} content={template1.bind(this)} />
                             <TabItemDirective header={headertext[1]} content={template2.bind(this)} />

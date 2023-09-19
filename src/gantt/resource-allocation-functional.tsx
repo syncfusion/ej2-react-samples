@@ -1,14 +1,14 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, ColumnsDirective, ColumnDirective, WorkUnit } from '@syncfusion/ej2-react-gantt';
 import { resourceData, resourceResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function ResourceAllocation() {
-  React.useEffect(() => {
+const ResourceAllocation = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-
   const taskFields: any = {
     id: 'TaskID',
     name: 'TaskName',
@@ -70,18 +70,14 @@ function ResourceAllocation() {
           Work can be measured in hours, days and minutes. It is measured in ‘hours’ scale by default and this can be changed by using the <code>workUnit</code> property.
         </p>
       </div>
-
       <div id="description">
         <p>
           In this example, you can see how to allocate single or multiple resources for the task. Based on the task complexity and the resource availability, you can plan and allocate the resources to task in the project. In this demo, there is a set of predefined resources and those IDs are assigned to the task. Resource information can be shown in Gantt chart by using the <code>labelSettings</code> property.</p>
-
         <p>Resources can be mapped using <code>resourceFields:</code>. </p>
         <p><code>id</code>: To map resource ID</p>
         <p><code>name</code>: To map resource name</p>
         <p><code>unit</code>: To map resource unit</p>
-
         <p>The work, duration and resource unit fields of a task depends upon each other values and will change automatically on editing any one of these fields. But we can also set these field’s values as constant using the <code>taskType</code> property. The following values can be set to the type property:</p>
-
         <p><code>FixedDuration</code>: Duration task field will remain constant while updating resource unit or work field.</p>
         <p><code>FixedWork</code>: Work field will remain constant while updating resource unit or duration fields.</p>
         <p><code>FixedUnit</code>: Resource units will remain constant while updating duration or work field.</p>

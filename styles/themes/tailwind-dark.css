@@ -1,0 +1,242 @@
+.tailwind-dark .sb-reset-icon:before {
+    content: '\e7e7';
+}
+
+.tailwind-dark .copycode::before {
+    content: '\e7ce';
+    font-size: 25px;
+}
+
+/*Hide property pane */
+@media (max-width: 480px) {
+    .tailwind-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap {
+        height: 70px;
+    }
+}
+
+.tailwind-dark .sb-reset-icon {
+    color: #ffffff
+}
+
+/* tailwind-dark */
+.tailwind-dark .sb-content,
+.tailwind-dark textarea#ruleContent {
+    background: #1f2937;
+}
+
+.tailwind-dark .sb-home {
+    color: #ffffff
+}
+
+.tailwind-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
+    color: #ffffff;
+}
+
+body.tailwind-dark,
+.tailwind-dark #sb-header-text,
+.tailwind-dark .control-name,
+.tailwind-dark .sample-navigation,
+.tailwind-dark .sb-icon-Popout,
+.tailwind-dark .sb-switch-popup a {
+    color: #fff;
+}
+
+.tailwind-dark .sb-header,
+.tailwind-dark .sb-search-result .e-list-item,
+.tailwind-dark .sb-search-result .e-list-group-item {
+    background: #1f2937 !important;
+}
+
+.tailwind-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background: rgb(34, 211, 238);
+}
+
+.tailwind-dark #left-sidebar {
+    color: #c2c0c0;
+    background: #1f2937;
+}
+
+.tailwind-dark #left-sidebar {
+    border: none;
+}
+
+.tailwind-dark .sb-mobile-right-pane {
+    background: #1f2937;
+}
+
+.tailwind-dark .e-icons.back-icon,
+.tailwind-dark .sb-plnr-section,
+.tailwind-dark .sb-bread-crumb,
+.tailwind-dark .sb-component-name,
+.tailwind-dark .sb-icon-Home,
+.tailwind-dark .description-header,
+.tailwind-dark .sb-setting-translate,
+.tailwind-dark .sample-navigation>button:hover,
+.tailwind-dark .sb-switch-popup li:first-child,
+.tailwind-dark .sb-left-pane .e-listview .e-list-group-item,
+.tailwind-dark .sb-theme-popup li.active .sb-theme-select {
+    color: rgb(34, 211, 238) !important;
+}
+
+.tailwind-dark .sb-icon-Hamburger,
+.tailwind-dark .sb-footer-links a,
+.tailwind-dark .description-section a {
+    color: rgb(34, 211, 238);
+}
+
+.tailwind-dark .sb-icon-Hamburger:active {
+    color: white;
+}
+
+.tailwind-dark .sb-content-section,
+.tailwind-dark .sb-switch-popup .tailwind-dark .sb-content-tab-header,
+.tailwind-dark .sb-content-section .sb-content-tab-header {
+    background: #1f2937;
+    border-color: #c1c1c1;
+}
+
+.tailwind-dark .sample-navigation>button:hover,
+.tailwind-dark .sb-plnr-section,
+.tailwind-dark .sb-icon-Popout:hover {
+    color: rgb(34, 211, 238);
+}
+
+.tailwind-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.tailwind-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text {
+    color: #ffffff !important;
+}
+
+.tailwind-dark code,
+.tailwind-dark .sb-switch-popup,
+.tailwind-dark .sb-setting-popup,
+.tailwind-dark .sb-search-result,
+.tailwind-dark .sb-src-code,
+.tailwind-dark .CodeMirror,
+.tailwind-dark .sb-api-section,
+.tailwind-dark .sb-theme-popup,
+.tailwind-dark .copy-tooltip,
+.tailwind-dark .e-icons.copycode,
+.tailwind-dark #search-input-wrapper input,
+.tailwind-dark #search-input-wrapper input::placeholder {
+    color: #ffffff;
+    background: #1f2937;
+}
+
+.tailwind-dark .sb-search-btn:hover,
+.tailwind-dark .sb-search-btn.active,
+.tailwind-dark .sb-setting-btn:hover,
+.tailwind-dark .sb-setting-btn.active,
+.tailwind-dark .sb-switch-popup li:hover,
+.tailwind-dark .theme-wrapper:hover,
+.tailwind-dark .theme-wrapper.active,
+.tailwind-dark .sb-theme-popup li:hover,
+.tailwind-dark .sb-search-result .e-list-item:hover,
+.tailwind-dark .sb-left-pane .e-listview .e-list-item:hover {
+    background-color: rgb(107, 114, 128) !important;
+}
+
+.tailwind-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow {
+    background-color: rgb(107, 114, 128) !important;
+    border: none;
+}
+
+.tailwind-dark .setting-responsive .sb-responsive-items {
+    width: 104px;
+    background-color: rgb(107, 114, 128);
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid transparent;
+    display: table-cell;
+    cursor: pointer;
+}
+
+.tailwind-dark .setting-responsive .sb-responsive-items.active {
+    background-color: rgb(34, 211, 238);
+    color: white;
+}
+
+.tailwind-dark .sb-left-pane .e-listview .e-list-item.e-active,
+.tailwind-dark .cont {
+    background-color: rgb(34, 211, 238);
+}
+
+.tailwind-dark .sb-left-pane .e-listview .e-list-item:hover {
+    color: aliceblue;
+}
+
+.tailwind-dark .sb-left-pane {
+    background: #1f2937;
+}
+
+.tailwind-dark .sb-body-overlay {
+    background: #1f2937;
+}
+
+.tailwind-dark .sb-mobile-left-pane {
+    background: #1f2937;
+}
+
+.tailwind-dark .sb-mobilefooter>.e-btn.e-flat {
+    background: #1f2937;
+    color: #fff;
+}
+
+.tailwind-dark .sb-mobilefooter>.e-btn.e-flat:hover {
+    color: rgb(34, 211, 238);
+}
+
+.tailwind-dark .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow,
+.tailwind-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background-color: rgb(34, 211, 238);
+}
+
+.tailwind-dark .sb-header-text-left,
+.tailwind-dark .sb-header-text-right {
+    color: #ffffff
+}
+
+.tailwind-dark .e-samplestatus.new.tree,
+.tailwind-dark .e-samplestatus.update.tree,
+.tailwind-dark .e-samplestatus.preview.tree {
+    margin-top: 7px;
+    margin-bottom: 4.5px;
+    margin-right: -15px;
+    height: 22px;
+}
+
+.tailwind-dark .e-samplestatus.new,
+.tailwind-dark .e-samplestatus.update,
+.tailwind-dark .e-samplestatus.preview {
+    margin: 2px 0;
+    height: 22px;
+    margin-top: 0.5px;
+}
+
+.tailwind-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.tailwind-dark .sb-search-input .e-ddl .e-clear-icon {
+    color: #ffffff !important;
+}
+
+.tailwind-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.tailwind-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text:hover,
+.tailwind-dark .sb-search-result .e-list-group-item {
+    color: rgb(34, 211, 238) !important;
+}
+
+.tailwind-dark .sb-theme-select {
+    color: rgb(31, 41, 55) !important;
+}
+
+.tailwind-dark .sb-theme-popup li:hover .sb-theme-select {
+    color: transparent !important;
+}
+
+.tailwind-dark .sb-theme-popup li:hover.active .sb-theme-select,
+.tailwind-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-text-content .e-list-text {
+    color: white !important;
+}
+
+.tailwind-dark .sb-source-code-section .e-toolbar .e-toolbar-items {
+    vertical-align: middle;
+}

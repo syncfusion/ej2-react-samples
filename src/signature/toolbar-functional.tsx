@@ -1,7 +1,8 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { ColorPicker, ColorPickerComponent, ColorPickerEventArgs, PaletteTileEventArgs } from '@syncfusion/ej2-react-inputs';
-import { SignatureFileType, Signature, SignatureComponent } from '@syncfusion/ej2-react-inputs';
+import { useRef, useEffect, useState } from "react";
+import { ColorPickerComponent, ColorPickerEventArgs, PaletteTileEventArgs } from '@syncfusion/ej2-react-inputs';
+import { SignatureFileType, SignatureComponent } from '@syncfusion/ej2-react-inputs';
 import { Button } from '@syncfusion/ej2-react-buttons';
 import { getComponent, createElement, addClass } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -11,28 +12,30 @@ import { ChangeEventArgs, CheckBox } from '@syncfusion/ej2-buttons';
 import { MenuEventArgs, SplitButton, SplitButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
-function Toolbar() {
-    React.useEffect(() => {
+const Toolbar = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let signature: SignatureComponent;
-
-    let disabledTemplate: CheckBox = new CheckBox({ label: 'Disabled', checked: false, change: change });
-
-
-    function change(args: ChangeEventArgs): void {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-        signature.disabled = args.checked;
+    const [strokeWidth, setStrokeWidth] = useState<number>(2);
+    const [bgColor, setBgColor] = useState<string>('');
+    const [strokeColor, setStrokeColor] = useState<string>('rgb(0, 0, 0)');
+    const [isSignDisabled, setIsSignDisabled] = useState<boolean>(false);
+    let singnatureObj = useRef<SignatureComponent>(null);
+    let strokeColorObj = useRef<ColorPickerComponent>(null);
+    let bgColorObj = useRef<ColorPickerComponent>(null);
+    let saveBtnObj = useRef<SplitButtonComponent>(null);
+    let toolbarObj = useRef<ToolbarComponent>(null);
+    
+    const change = (args: ChangeEventArgs): void => {
+        setIsSignDisabled(args.checked);
     }
 
-    function onCreated(): void {
-        let strokeColor: ColorPicker = getComponent(document.getElementById('stroke-color'), 'colorpicker');
-        let bgColor: ColorPicker = getComponent(document.getElementById('bg-color'), 'colorpicker');
-        addClass([strokeColor.element.nextElementSibling.querySelector('.e-selected-color')], 'e-sign-icons');
-        addClass([bgColor.element.nextElementSibling.querySelector('.e-selected-color')], 'e-sign-icons');
-        document.getElementById('save-option').addEventListener('click', saveBtnClick);
+    let disabledTemplate: CheckBox = new CheckBox({ label: 'Disabled', checked: isSignDisabled, change: change });  
+    const onCreated = (): void => {
+        addClass([strokeColorObj.current.element.nextElementSibling.querySelector('.e-selected-color')], 'e-sign-icons');
+        addClass([bgColorObj.current.element.nextElementSibling.querySelector('.e-selected-color')], 'e-sign-icons');
         clearButton();
-        let toolbarlItems: NodeListOf<Element> = document.querySelectorAll('.e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-tbtn-txt');
+        let toolbarlItems: NodeListOf<Element> = toolbarObj.current.element.querySelectorAll('.e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-tbtn-txt');
         for (var i = 0; i < toolbarlItems.length; i++) {
             if (toolbarlItems[i].children[0].classList.contains('e-undo')) {
                 let undoButton: Button = getComponent(toolbarlItems[i] as HTMLElement, 'btn');
@@ -45,59 +48,53 @@ function Toolbar() {
         }
     }
 
-    function onClicked(args: ClickEventArgs): void {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-        let saveBtn: SplitButton = getComponent(document.getElementById("save-option"), 'split-btn');
-        if (signature.disabled && args.item.tooltipText != 'Disabled') {
+    const onClicked = (args: ClickEventArgs): void => {
+        if (singnatureObj.current.disabled && args.item.tooltipText != 'Disabled') {
             return;
         }
         switch (args.item.tooltipText) {
-            case 'Undo (Ctrl + Z)':
-                if (signature.canUndo()) {
-                    signature.undo();
-                    updateUndoRedo();
-                    updateSaveBtn();
-                }
-                break;
-            case 'Redo (Ctrl + Y)':
-                if (signature.canRedo()) {
-                    signature.redo();
-                    updateUndoRedo();
-                    updateSaveBtn();
-                }
-                break;
-            case 'Clear':
-                signature.clear();
-                if (signature.isEmpty()) {
-                    clearButton();
-                    saveBtn.disabled = true;
-                }
-                break;
+          case "Undo (Ctrl + Z)":
+            if (singnatureObj.current.canUndo()) {
+              singnatureObj.current.undo();
+              updateUndoRedo();
+              updateSaveBtn();
+            }
+            break;
+          case "Redo (Ctrl + Y)":
+            if (singnatureObj.current.canRedo()) {
+              singnatureObj.current.redo();
+              updateUndoRedo();
+              updateSaveBtn();
+            }
+            break;
+          case "Clear":
+            singnatureObj.current.clear();
+            if (singnatureObj.current.isEmpty()) {
+              clearButton();
+              saveBtnObj.current.disabled = true;
+            }
+            break;
         }
     }
 
-    function onChange() {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-        let saveBtn: SplitButton = getComponent(document.getElementById("save-option"), 'split-btn');
-        if (!signature.isEmpty()) {
+    const onChange = () => {
+        if (!singnatureObj.current.isEmpty()) {
             clearButton();
-            saveBtn.disabled = false;
+            saveBtnObj.current.disabled = false;
         }
         updateUndoRedo();
     }
 
-    function saveBtnClick(): void {
-        let signature: Signature = getComponent(document.getElementById("signature"), 'signature');
-        signature.save();
+    const saveBtnClick = (): void => {
+        singnatureObj.current.save();
     }
 
-    function clearButton() {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
+    const clearButton = () => {
         let tlItems: NodeListOf<Element> = document.querySelectorAll('.e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-tbtn-txt');
         for (var i = 0; i < tlItems.length; i++) {
             if (tlItems[i].children[0].classList.contains('e-clear')) {
                 let clrBtn: Button = getComponent(tlItems[i] as HTMLElement, 'btn');
-                if (signature.isEmpty()) {
+                if (singnatureObj.current.isEmpty()) {
                     clrBtn.disabled = true;
                 } else {
                     clrBtn.disabled = false;
@@ -106,19 +103,17 @@ function Toolbar() {
         }
     }
 
-    function updateSaveBtn() {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-        let saveBtn: SplitButton = getComponent(document.getElementById("save-option"), 'split-btn');
-        if (signature.isEmpty()) {
-            saveBtn.disabled = true;
+    const updateSaveBtn = () => {
+        if (singnatureObj.current.isEmpty()) {
+            saveBtnObj.current.disabled = true;
         } else {
-            saveBtn.disabled = false;
+            saveBtnObj.current.disabled = false;
         }
     }
 
-    function updateUndoRedo() {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-        let undoButton: Button; let redoButton: Button
+    const updateUndoRedo = () => {
+        let undoButton: Button;
+        let redoButton: Button;
         let tlItems: NodeListOf<Element> = document.querySelectorAll('.e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-tbtn-txt');
         for (var i = 0; i < tlItems.length; i++) {
             if (tlItems[i].children[0].classList.contains('e-undo')) {
@@ -128,19 +123,19 @@ function Toolbar() {
                 redoButton = getComponent(tlItems[i] as HTMLElement, 'btn');
             }
         }
-        if (signature.canUndo()) {
+        if (singnatureObj.current.canUndo()) {
             undoButton.disabled = false;
         } else {
             undoButton.disabled = true;
         }
-        if (signature.canRedo()) {
+        if (singnatureObj.current.canRedo()) {
             redoButton.disabled = false;
         } else {
             redoButton.disabled = true;
         }
     }
 
-    function saveTemplate() {
+    const saveTemplate = () => {
         let items: { text: string; }[];
         items = [
             {
@@ -154,94 +149,93 @@ function Toolbar() {
             }
         ];
 
-        function onSelect(args: MenuEventArgs): void {
-            let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-            signature.save(args.item.text as SignatureFileType, 'Signature');
+        const onSelect = (args: MenuEventArgs): void => {
+            singnatureObj.current.save(args.item.text as SignatureFileType, 'Signature');
         }
 
-        return (<div >
-            <SplitButtonComponent content="Save" id="save-option" items={items} iconCss='e-sign-icons e-save' select={onSelect} disabled={true} />
-        </div>);
+        return (
+            <div >
+                <SplitButtonComponent content="Save" id="save-option" ref={saveBtnObj} items={items} iconCss='e-sign-icons e-save' onClick={saveBtnClick} select={onSelect} disabled={true} />
+            </div>
+        );
     }
 
-    function strokeColorTemplate() {
+    const strokeColorTemplate = () => {
         let presets: any;
         presets = {
             'custom': ['#000000', '#e91e63', '#9c27b0', '#673ab7', '#2196f3', '#03a9f4', '#00bcd4',
                 '#009688', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107']
         };
 
-        function tileRender(args: PaletteTileEventArgs): void {
+        const tileRender = (args: PaletteTileEventArgs): void => {
             args.element.classList.add('e-circle-palette');
             args.element.appendChild(createElement('span', { className: 'e-circle-selection' }));
         }
 
-        function strokeColorChanged(args: ColorPickerEventArgs): void {
-            let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-            let strokeColor: ColorPicker = getComponent(document.getElementById('stroke-color'), 'colorpicker');
-            if (signature.disabled) {
+        const strokeColorChanged = (args: ColorPickerEventArgs): void => {
+            if (singnatureObj.current.disabled) {
                 return;
             }
-            let selElem: HTMLElement = strokeColor.element.nextElementSibling.querySelector('.e-selected-color') as HTMLElement;
+            let selElem: HTMLElement = strokeColorObj.current.element.nextElementSibling.querySelector('.e-selected-color') as HTMLElement;
             selElem.style.borderBottomColor = args.currentValue.rgba;
-            signature.strokeColor = args.currentValue.rgba;
+            setStrokeColor(args.currentValue.rgba);
         }
 
-        return (<div >
-            <ColorPickerComponent id="stroke-color" mode='Palette' cssClass='e-stroke-color' modeSwitcher={false} showButtons={false} columns={4} presetColors={presets} beforeTileRender={tileRender} change={strokeColorChanged}></ColorPickerComponent>
-        </div>);
+        return (
+            <div >
+                <ColorPickerComponent id="stroke-color" ref={strokeColorObj} mode='Palette' cssClass='e-stroke-color' modeSwitcher={false} showButtons={false} columns={4} presetColors={presets} beforeTileRender={tileRender} change={strokeColorChanged}></ColorPickerComponent>
+            </div>
+        );
     }
     
-    function bgColorTemplate() {
+    const bgColorTemplate = () => {
         let presets: any;
         presets = {
-            'custom': ['#ffffff', '#f44336', '#e91e63', '#9c27b0', '#673ab7', '#2196f3', '#03a9f4', '#00bcd4',
-                '#009688', '#8bc34a', '#cddc39', '#ffeb3b']
+            'custom': ['#ffffff', '#f44336', '#e91e63', '#9c27b0', '#673ab7', '#2196f3', '#03a9f4', '#00bcd4','#009688', '#8bc34a', '#cddc39', '#ffeb3b']
         };
 
-
-        function beforeTileRender(args: PaletteTileEventArgs): void {
+        const beforeTileRender = (args: PaletteTileEventArgs): void => {
             args.element.classList.add('e-circle-palette');
             args.element.appendChild(createElement('span', { className: 'e-circle-selection' }));
 
         }
 
-        function bgColorChanged(args: ColorPickerEventArgs): void {
-            let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-            let bgColor: ColorPicker = getComponent(document.getElementById('bg-color'), 'colorpicker');
-            if (signature.disabled) {
+        const bgColorChanged = (args: ColorPickerEventArgs): void => {
+            if (singnatureObj.current.disabled) {
                 return;
             }
-            let selElem: HTMLElement = bgColor.element.nextElementSibling.querySelector('.e-selected-color') as HTMLElement;
-            signature.backgroundColor = args.currentValue.rgba;
+            let selElem: HTMLElement = bgColorObj.current.element.nextElementSibling.querySelector('.e-selected-color') as HTMLElement;
+            setBgColor(args.currentValue.rgba);
             selElem.style.borderBottomColor = args.currentValue.rgba;
         }
 
-        return (<div >
-            <ColorPickerComponent id="bg-color" noColor={true} mode='Palette' cssClass='e-bg-color' modeSwitcher={false} showButtons={false} columns={4} presetColors={presets} beforeTileRender={beforeTileRender} change={bgColorChanged}></ColorPickerComponent>
-        </div>);
+        return (
+            <div >
+                <ColorPickerComponent id="bg-color" ref={bgColorObj} noColor={true} mode='Palette' cssClass='e-bg-color' modeSwitcher={false} showButtons={false} columns={4} presetColors={presets} beforeTileRender={beforeTileRender} change={bgColorChanged}></ColorPickerComponent>
+            </div>
+        );
     }
 
-    function strokeWidthTemplate() {
+    const strokeWidthTemplate = () => {
         let data: any = [1, 2, 3, 4, 5];
         let value: any = 2;
 
-
-        function strokeWidthChanged(args: any): void {
-            let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-            signature.maxStrokeWidth = args.value;
+        const strokeWidthChanged = (args: any): void => {
+            setStrokeWidth(args.value);
         }
 
-        return (<div >
-            <DropDownListComponent id="ddlelement" dataSource={data} value={value} width="60" change={strokeWidthChanged} />
-        </div>);
+        return (
+            <div >
+                <DropDownListComponent id="ddlelement" dataSource={data} value={strokeWidth} width="60" change={strokeWidthChanged} />
+            </div>
+        );
     }
 
     return (
         <div className='control-pane'>
             <div className="col-lg-12 control-section">
                 <div id="signature-toolbar-control">
-                    <ToolbarComponent id='toolbar' created={onCreated} clicked={onClicked}>
+                    <ToolbarComponent id='toolbar' ref={toolbarObj} created={onCreated} clicked={onClicked}>
                         <ItemsDirective>
                             <ItemDirective text='Undo' prefixIcon='e-icons e-undo' tooltipText='Undo (Ctrl + Z)' />
                             <ItemDirective text='Redo' prefixIcon='e-icons e-redo' tooltipText='Redo (Ctrl + Y)' />
@@ -259,7 +253,7 @@ function Toolbar() {
                         </ItemsDirective>
                     </ToolbarComponent>
                     <div id="signature-control">
-                        <SignatureComponent maxStrokeWidth={2} id="signature" change={onChange}></SignatureComponent>
+                        <SignatureComponent maxStrokeWidth={strokeWidth} backgroundColor={bgColor} strokeColor={strokeColor} id="signature" change={onChange} ref={singnatureObj} disabled={isSignDisabled}></SignatureComponent>
                     </div>
                 </div>
             </div>

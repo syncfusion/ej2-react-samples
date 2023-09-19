@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, Edit, Filter, Toolbar, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
-function KeyboardInteraction() {
-  React.useEffect(() => {
+const KeyboardInteraction = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -200,10 +201,8 @@ function KeyboardInteraction() {
       <div id="action-description">
         <p>This demo showcases the keyboard shortcuts applicable on Gantt and also lists out in below descriptions, and this demo also explains how those applicable shortcuts interacts with Gantt actions.</p>
       </div>
-
       <div id="description">
         <p>All the Gantt actions can be controlled via keyboard keys and are availed using the <code>allowKeyboard</code> property, which is set to true by default. The applicable key combinations and their relative functionalities are listed below.</p>
-
         <p>Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use a toolbar, inject
           the <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method.To use a edit, inject the

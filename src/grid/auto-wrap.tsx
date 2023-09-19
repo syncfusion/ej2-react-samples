@@ -31,13 +31,13 @@ export class AutoWrap extends SampleBase<{}, {}> {
                 </div>
                 <div id='description'>
                     <p>Auto wrap cell content can be enabled using  <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#allowtextwrap'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowtextwrap'>
                         allowTextWrap</a></code> property of the Grid. Setting this property will wrap cell text on multiple lines. This feature is useful to view the cell content when it exceeds the cell width.</p>
 
                     <p>Setting this property will wrap the text in both content cell and header cell.</p>
 
                     <p>In this demo, the <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#allowtextwrap'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowtextwrap'>
                         allowTextWrap</a></code> property is enabled and you can also see that the <b>main fields of invention</b> column whose content exceeded the cell width is wrapped into multiple lines.
                    </p>
                 </div>

@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Toolbar, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { zoomingData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function Zooming() {
-  React.useEffect(() => {
+const Zooming = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -22,7 +23,7 @@ function Zooming() {
     leftLabel: 'TaskName'
   };
   const splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   const toolbar: any = ['ZoomIn', 'ZoomOut', 'ZoomToFit'];
   const projectStartDate: Date = new Date('03/24/2019');

@@ -1,0 +1,11 @@
+#combodefault .col-lg-9 {
+    min-height: 250px;
+}
+#default {
+    margin: 0 auto;
+    width: 250px !important;
+    padding-top: 15px;
+}
+#filter-property .property-panel-content{
+    padding: 10px;
+}

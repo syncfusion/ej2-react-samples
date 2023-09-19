@@ -8,12 +8,26 @@ import {
     PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective
 } from '@syncfusion/ej2-react-circulargauge';
 import { SliderComponent } from "@syncfusion/ej2-react-inputs";
-import { ILoadedEventArgs } from '@syncfusion/ej2-circulargauge';
+import { ILoadedEventArgs, IResizeEventArgs } from '@syncfusion/ej2-circulargauge';
 import { SampleBase } from '../common/sample-base';
 
 let sliderValue: number = 60;
 
 const SAMPLE_CSS = `
+    .e-view.fluent div.e-handle-first, .e-view.fluent-dark div.e-handle-first,
+    .e-view.fabric div.e-handle-first, .e-view.fabric-dark div.e-handle-first {
+       margin-top: -0.5px; 
+    }
+    .e-view.material3 div.e-handle-first, .e-view.material3-dark div.e-handle-first {
+        margin-top: 5px;
+    }
+    .e-view.bootstrap div.e-handle-first, .e-view.bootstrap-dark div.e-handle-first,
+    .e-view.highcontrast div.e-handle-first {
+        margin-top: 1px;
+    }
+    .e-view.bootstrap5 div.e-handle-first, .e-view.bootstrap5-dark div.e-handle-first, .e-view.material div.e-handle-first, .e-view.material-dark div.e-handle-first {
+        margin-top: -1px;
+    }
     .control-fluid {
 		padding: 0px !important;
     }
@@ -53,7 +67,10 @@ export class ArcGauge extends SampleBase<{}, {}> {
 
     private gauge: CircularGaugeComponent;
     private sliderElement: SliderComponent;
-
+    public resized(args: IResizeEventArgs): void {
+        args.gauge.axes[0].annotations[0].content = '<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">' +
+        this.gauge.axes[0].pointers[0].value.toString() + '/100</div>';
+    }
     public load(args: ILoadedEventArgs): void {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
@@ -92,7 +109,7 @@ export class ArcGauge extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div id='circular_gauge_sample' className='control-section'>
-                    <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} load={this.load.bind(this)} ref={gauge => this.gauge = gauge} id='gauge'>
+                    <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} resized={this.resized.bind(this)} load={this.load.bind(this)} ref={gauge => this.gauge = gauge} id='gauge'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective radius='80%' startAngle={200} endAngle={160} minimum={1} maximum={100}

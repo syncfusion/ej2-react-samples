@@ -81,10 +81,10 @@ export let samplesList: any = [
         'name': 'Data Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
     },
     {
-        'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
+        'name': 'Pivot Table', 'type': 'update', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
     },
     {
-        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
+        'name': 'Tree Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
     },
     {
         'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder
@@ -102,7 +102,7 @@ export let samplesList: any = [
         'name': 'Circular Gauge', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
     },
     {
-        'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'samples': DiagramSampleOrder
+        'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'type': 'update', 'samples': DiagramSampleOrder
     },
     {
         'name': 'HeatMap Chart', 'category': 'Data Visualization', 'order': '06', 'path': 'heatmap-chart', 'samples': HeatmapSampleOrder, 'ftName' :'heatmap-chart'
@@ -150,7 +150,7 @@ export let samplesList: any = [
         'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'type': 'update', 'samples': ImageEditorSampleOrder
     },
     {
-        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
+        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
     },
     {
         'name': 'Calendar', 'category': 'Calendars', 'order': '04', 'path': 'calendar', 'samples': CalendarSampleOrder
@@ -183,13 +183,13 @@ export let samplesList: any = [
         'name': 'SpeedDial', 'category': 'Buttons', 'order': '04', 'path': 'speed-dial', 'samples': SpeedDialSampleOrder
     },
     {
-        'name': 'AutoComplete', 'category': 'Dropdowns', 'order': '04', 'path': 'auto-complete', 'samples': AutoCompleteSampleOrder
+        'name': 'AutoComplete', 'category': 'Dropdowns', 'order': '04', 'type':'update', 'path': 'auto-complete', 'samples': AutoCompleteSampleOrder
     },
     {
-        'name': 'ComboBox', 'category': 'Dropdowns', 'order': '04', 'path': 'combo-box', 'samples': ComboBoxSampleOrder
+        'name': 'ComboBox', 'category': 'Dropdowns', 'order': '04', 'type':'update', 'path': 'combo-box', 'samples': ComboBoxSampleOrder
     },
     {
-        'name': 'Dropdown List', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
+        'name': 'Dropdown List', 'category': 'Dropdowns', 'order': '04', 'type':'update', 'path': 'drop-down-list', 'samples': DropDownListSampleOrder
     },
     {
         'name': 'Dropdown Tree', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder
@@ -213,7 +213,7 @@ export let samplesList: any = [
         'name': 'Breadcrumb', 'category': 'Navigation', 'path': 'breadcrumb', 'samples': BreadcrumbSampleOrder
     },
     {
-        'name': 'Carousel', 'category': 'Navigation', 'type': 'update', 'path': 'carousel', 'samples': CarouselSampleOrder
+        'name': 'Carousel', 'category': 'Navigation', 'path': 'carousel', 'samples': CarouselSampleOrder
     },
     {
         'name': 'Context Menu', 'category': 'Navigation', 'path': 'context-menu', 'samples': ContextMenuSampleOrder, 'ftName': 'context-menu'
@@ -234,7 +234,7 @@ export let samplesList: any = [
         'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
     },
     {
-        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
+        'name': 'File Manager', 'category': 'Navigation', 'type': 'update', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
     },
     {
         'name': 'Ribbon', 'category': 'Navigation', 'path':'ribbon', 'samples': RibbonSampleOrder, 'ftName': 'ribbon', 'type': 'preview'
@@ -270,7 +270,7 @@ export let samplesList: any = [
         'name': 'File Upload', 'category': 'Inputs', 'order': '04', 'path': 'uploader', 'samples': UploaderSampleOrder, 'ftName' :'file-upload'
     },
     {
-        'name': 'Range Slider', 'type': 'update', 'category': 'Inputs', 'order': '04', 'path': 'range-slider', 'samples': SliderSampleOrder
+        'name': 'Range Slider', 'category': 'Inputs', 'order': '04', 'path': 'range-slider', 'samples': SliderSampleOrder
     },
     {
         'name': 'Signature', 'category': 'Inputs', 'path': 'signature', 'samples': SignatureSampleOrder

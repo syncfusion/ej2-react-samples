@@ -6,9 +6,8 @@ import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import './hamburger-mode.css';
 import * as dataSource from './menu-data.json';
-// custom code start
 import { Browser, select } from '@syncfusion/ej2-base';
-// custom code end
+
 interface HamburgerMenuSample {
     showItemOnClick: boolean;
     hamburgerMode: boolean;
@@ -23,7 +22,7 @@ export class HamburgerMenu extends SampleBase<{}, HamburgerMenuSample> {
             hamburgerMode: true
         };
     }
-    // custom code start
+
     menuCreated(): void {
         if (Browser.isDevice) {
             select('.property-section').remove();
@@ -32,7 +31,7 @@ export class HamburgerMenu extends SampleBase<{}, HamburgerMenuSample> {
             (select('#menu') as HTMLElement).style.height = '363px';
         }
     }
-    // custom code end
+   
     modeChange(args: ddlChange): void {
         let container: HTMLElement = document.querySelector('#layoutcontainer');
         switch (args.value) {

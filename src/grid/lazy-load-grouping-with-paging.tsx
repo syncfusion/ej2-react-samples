@@ -33,7 +33,7 @@ export class LazyLoadGrouping extends SampleBase<{}, {}> {
                         The Lazy load grouping, allows the Grid to render only the initial level caption rows in the collapsed state while grouping.
                         The child rows of each caption will render only when we expand the captions.
                         To enable lazy load grouping, set <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/documentation/grid/api-groupSettings.html#enablelazyloading">
+                            href="https://ej2.syncfusion.com/react/documentation/api/grid/groupSettings/#enablelazyloading">
                             groupSettings-&gt;enableLazyLoading</a></code> property as true.
                     </p>
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>

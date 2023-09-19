@@ -6,7 +6,7 @@ import * as React from 'react';
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor } from '@syncfusion/ej2-react-richtexteditor';
 import { QuickToolbar, Table, ToolbarSettingsModel, ToolbarType, Count } from '@syncfusion/ej2-react-richtexteditor';
-import { createElement } from '@syncfusion/ej2-base';
+import { createElement, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as CodeMirror from 'codemirror';
 import 'codemirror/mode/javascript/javascript';
@@ -18,6 +18,7 @@ function OnlineHtmlEditor() {
         updateSampleSection();
     }, [])
     let rteObj: RichTextEditorComponent;
+    let splitterInstance;
     // Rich Text Editor items list
     const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
         'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
@@ -83,6 +84,12 @@ function OnlineHtmlEditor() {
             lineWrapping: true,
         });
     }
+    function updateOrientation() { 
+        if (Browser.isDevice) {
+            splitterInstance.orientation = 'Vertical';
+            (document.body.querySelector('.heading') as any).style.width = 'auto';
+        }
+    }
     function content1(): JSX.Element {
         return (
             <div className="content">
@@ -110,10 +117,10 @@ function OnlineHtmlEditor() {
         <div className="control-pane">
             <div className='control-section onlineEditor'>
                 <div id="rte-online-sample-view">
-                    <SplitterComponent height='450px' width='100%' resizing={onResizing.bind(this)}>
+                    <SplitterComponent ref={splitter => (splitterInstance = splitter)} height='450px' width='100%' resizing={onResizing.bind(this)} created={updateOrientation.bind(this)}>
                         <PanesDirective>
-                            <PaneDirective resizable={true} size='50%' min="400px" cssClass='pane1' content={content1.bind(this)} ></PaneDirective>
-                            <PaneDirective min="60px" cssClass='pane2' content={content2.bind(this)}></PaneDirective>
+                            <PaneDirective resizable={true} size='50%' min="40%" cssClass='pane1' content={content1.bind(this)} ></PaneDirective>
+                            <PaneDirective min="40%" cssClass='pane2' content={content2.bind(this)}></PaneDirective>
                         </PanesDirective>
                     </SplitterComponent>
                 </div>

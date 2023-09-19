@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, Resize, ColumnsDirective, ColumnDirective, RowDD } from '@syncfusion/ej2-react-gantt';
 import { multiTaskbarData, resources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { CheckBoxComponent, CheckBox, SwitchComponent } from '@syncfusion/ej2-react-buttons';
 
-function ResourceMultiTaskbar() {
-    React.useEffect(() => {
+const ResourceMultiTaskbar = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     const taskFields: any = {
@@ -22,19 +23,19 @@ function ResourceMultiTaskbar() {
         expandState: 'isExpand',
         child: 'subtasks'
     };
-    let ganttInstance: GanttComponent;
-    function dragDropChange(args): any {
+    let ganttInstance = useRef<GanttComponent>(null);
+    const dragDropChange = (args): any => {
         if (args.checked) {
-          ganttInstance.allowTaskbarDragAndDrop = true;
+          ganttInstance.current.allowTaskbarDragAndDrop = true;
         } else {
-          ganttInstance.allowTaskbarDragAndDrop = false;
+          ganttInstance.current.allowTaskbarDragAndDrop = false;
         }
     }
-    function overlapChange(args): any {
+    const overlapChange = (args): any => {
         if (args.checked) {
-          ganttInstance.allowTaskbarOverlap = true;
+          ganttInstance.current.allowTaskbarOverlap = true;
         } else {
-          ganttInstance.allowTaskbarOverlap = false;
+          ganttInstance.current.allowTaskbarOverlap = false;
         }
     }
     const resourceFields: any = {
@@ -78,7 +79,7 @@ function ResourceMultiTaskbar() {
               </div>
             </div>
             <div>
-                <GanttComponent id='ResourceMultiTaskbar' ref={gantt => ganttInstance = gantt} dataSource={multiTaskbarData} treeColumnIndex={1} viewType='ResourceView' enableMultiTaskbar={true}
+                <GanttComponent id='ResourceMultiTaskbar' ref={ganttInstance} dataSource={multiTaskbarData} treeColumnIndex={1} viewType='ResourceView' enableMultiTaskbar={true}
                     allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={toolbar} editSettings={editSettings}
                     projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
                     taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings}
@@ -102,7 +103,6 @@ function ResourceMultiTaskbar() {
                     This feature can be enabled by setting the <code>enableMultiTaskbar</code> property as "true".
                 </p>
             </div>
-
             <div id="description">
                 <p>
                     In this example, you can enable taskbar drag and drop from one resource to another resource vertically by enabling <code>allowTaskbarDragAndDrop</code> property. Also, you can prevent the taskbar overlap  in resource task by disabling the <code>allowTaskbarOverlap</code> property.

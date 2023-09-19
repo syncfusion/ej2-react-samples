@@ -1,23 +1,24 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor } from '@syncfusion/ej2-react-heatmap';
+import { useEffect } from "react";
+import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor, TitleModel, AxisModel, PaletteSettingsModel, CellSettingsModel, DataModel } from '@syncfusion/ej2-react-heatmap';
 import { updateSampleSection } from '../common/sample-base';
 
 // custom code start
 const SAMPLE_CSS: any = `
-#control-container {
-    padding: 0px !important;
-}
-#source{
-    float: right; margin-right: 10p
-}`;
+    #control-container {
+        padding: 0px !important;
+    }
+    #source{
+        float: right; margin-right: 10p
+    }`;
 // custom code end
 /**
  * Heatmap JSON data binding sample
  */
-function JsonCell() {
+const JsonCell = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -93,8 +94,47 @@ function JsonCell() {
         { 'rowid': 'Austria', 'columnid': '2015', 'value': '26.7' },
         { 'rowid': 'Austria', 'columnid': '2016', 'value': '28.1' },
     ];
+    let title: TitleModel = {
+        text: 'Most Visited Destinations by International Tourist Arrivals',
+        textStyle: {
+            size: '15px',
+            fontWeight: '500',
+            fontStyle: 'Normal',
+            fontFamily: 'Segoe UI'
+        }
+    }
+    let xAxis: AxisModel = {
+        labels: ['Austria', 'China', 'France', 'Germany', 'Italy', 'Mexico', 'Spain', 'Thailand', 'UK', 'USA']
+    }
+    let yAxis: AxisModel = {
+        labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016']
+    }
+    let paletteSettings: PaletteSettingsModel = {
+        palette: [
+            { color: '#DCD57E' },
+            { color: '#A6DC7E' },
+            { color: '#7EDCA2' },
+            { color: '#6EB5D0' }
+        ]
+    }
+    let cellSettings: CellSettingsModel = {
+        border: {
+            radius: 4,
+            width: 1,
+            color: 'white'
+        },
+        showLabel: true,
+        format: '{value} M'
+    }
+    let dataSourceSettings: DataModel = {
+        isJsonData: true,
+        adaptorType: 'Cell',
+        xDataMapping: 'rowid',
+        yDataMapping: 'columnid',
+        valueMapping: 'value'
+    }
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
@@ -103,52 +143,10 @@ function JsonCell() {
     return (
         <div className='control-pane'>
             {/* custom code start */}
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container'
-                    titleSettings={{
-                        text: 'Most Visited Destinations by International Tourist Arrivals',
-                        textStyle: {
-                            size: '15px',
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI'
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['Austria', 'China', 'France', 'Germany', 'Italy', 'Mexico', 'Spain', 'Thailand', 'UK', 'USA'],
-                    }}
-                    yAxis={{
-                        labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016'],
-                    }}
-                    dataSourceSettings={{
-                        isJsonData: true,
-                        adaptorType: 'Cell',
-                        xDataMapping: 'rowid',
-                        yDataMapping: 'columnid',
-                        valueMapping: 'value'
-                    }}
-                    dataSource={jsonCellData}
-                    cellSettings={{
-                        border: {
-                            radius: 4,
-                            width: 1,
-                            color: 'white'
-                        },
-                        showLabel: true,
-                        format: '{value} M',
-                    }}
-                    load={load.bind(this)}
-                    paletteSettings={{
-                        palette: [{ color: '#DCD57E' },
-                        { color: '#A6DC7E' },
-                        { color: '#7EDCA2' },
-                        { color: '#6EB5D0' }
-                        ],
-                    }}>
+                <HeatMapComponent id='heatmap-container' titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSourceSettings={dataSourceSettings} dataSource={jsonCellData} cellSettings={cellSettings} load={load.bind(this)} paletteSettings={paletteSettings}>
                     <Inject services={[Legend, Tooltip, Adaptor]} />
                 </HeatMapComponent>
             </div>
@@ -156,10 +154,7 @@ function JsonCell() {
                 <a href="https://en.wikipedia.org/wiki/World_Tourism_rankings" target="_blank">https://en.wikipedia.org/</a>
             </div>
             <div id="action-description">
-                <p>
-                    This sample visualizes the number of international tourist arrivals in millions of the most visited
-                    destinations in the world.
-                </p>
+                <p>This sample visualizes the number of international tourist arrivals in millions of the most visited destinations in the world.</p>
             </div>
             <div id="description">
                 <p>
@@ -168,10 +163,7 @@ function JsonCell() {
                     and by defining the <code>adaptorType</code> properties. In cell JSON data, the value for each
                     cell is mapped using the <code>xDataMapping</code>, <code>yDataMapping</code> and <code>valueMapping</code> properties.
                 </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a
-                    point in touch enabled devices.
-                </p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p> <b>Injecting Module</b></p>
                 <p>

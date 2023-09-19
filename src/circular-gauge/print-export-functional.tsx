@@ -3,11 +3,8 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective,
-    GaugeTheme, ILoadedEventArgs, ExportType, Print, PdfExport, ImageExport
-} from '@syncfusion/ej2-react-circulargauge';
+import { useEffect, useRef } from "react";
+import { CircularGaugeComponent, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTheme, ILoadedEventArgs, ExportType, Print, PdfExport, ImageExport } from '@syncfusion/ej2-react-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -18,15 +15,14 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 
-function Export() {
-
-    React.useEffect(() => {
+const Export = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let mode: DropDownListComponent;
-    let gauge: CircularGaugeComponent;
-
+    let mode = useRef<DropDownListComponent>(null);
+    let gauge = useRef<CircularGaugeComponent>(null);
+    let fileNameObj = useRef<HTMLInputElement>(null);
     let type: { [key: string]: Object }[] = [
         { value: 'JPEG' },
         { value: 'PNG' },
@@ -34,56 +30,38 @@ function Export() {
         { value: 'PDF' }
     ];
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function onClickPrint(e: Event): void {
-        gauge.print();
+    const onClickPrint = (e: Event): void => {
+        gauge.current.print();
     }
 
-    function onClickExport(e: Event): void {
-        let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
-        gauge.export((mode.value as ExportType), fileName);
+    const onClickExport = (e: Event): void => {
+        gauge.current.export((mode.current.value as ExportType), fileNameObj.current.value);
     }
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-8'>
-                    <CircularGaugeComponent load={load.bind(this)} id='gauge' background='transparent' allowPrint={true} allowPdfExport={true} allowImageExport={true} ref={g => gauge = g}>
+                    <CircularGaugeComponent load={load.bind(this)} id='gauge' background='transparent' allowPrint={true} allowPdfExport={true} allowImageExport={true} ref={gauge}>
                         <Inject services={[Print, PdfExport, ImageExport]} />
                         <AxesDirective>
-                            <AxisDirective radius='80%' startAngle={0} endAngle={0} direction={'AntiClockWise'}
-                                majorTicks={{ width: 1, height: 25, interval: 10, position: "Outside", useRangeColor: true }}
-                                lineStyle={{ width: 0 }}
-                                minorTicks={{ width: 1, height: 8, interval: 2, position: "Outside", useRangeColor: true }}
-                                labelStyle={{
-                                    hiddenLabel: 'Last', offset: 2,
-                                    font: { fontFamily: 'inherit' },
-                                    position: 'Outside',
-                                    useRangeColor: true
-                                }}>
+                            <AxisDirective radius='80%' startAngle={0} endAngle={0} direction={'AntiClockWise'} majorTicks={{ width: 1, height: 25, interval: 10, position: "Outside", useRangeColor: true }} lineStyle={{ width: 0 }} minorTicks={{ width: 1, height: 8, interval: 2, position: "Outside", useRangeColor: true }} labelStyle={{ hiddenLabel: 'Last', offset: 2, font: { fontFamily: 'inherit' }, position: 'Outside', useRangeColor: true }}>
                                 <RangesDirective>
-                                    <RangeDirective start={0} end={32} radius='90%' startWidth={10} endWidth={35} color='#F8A197'>
-                                    </RangeDirective>
-                                    <RangeDirective start={32} end={70} radius='90%' startWidth={10} endWidth={35} color='#C45072'>
-                                    </RangeDirective>
-                                    <RangeDirective start={70} end={100} radius='90%' startWidth={10} endWidth={35} color='#1B679F'>
-                                    </RangeDirective>
+                                    <RangeDirective start={0} end={32} radius='90%' startWidth={10} endWidth={35} color='#F8A197' />
+                                    <RangeDirective start={32} end={70} radius='90%' startWidth={10} endWidth={35} color='#C45072' />
+                                    <RangeDirective start={70} end={100} radius='90%' startWidth={10} endWidth={35} color='#1B679F' />
                                 </RangesDirective>
                                 <PointersDirective>
-                                    <PointerDirective radius='0%' cap={{
-                                        radius: 0
-                                    }} />
+                                    <PointerDirective radius='0%' cap={{ radius: 0 }} />
                                 </PointersDirective>
                             </AxisDirective>
                         </AxesDirective>
@@ -99,7 +77,7 @@ function Export() {
                                 </td>
                                 <td>
                                     <div>
-                                        <DropDownListComponent width={'100%'} id="etype" value="JPEG" ref={d => mode = d} dataSource={type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                        <DropDownListComponent width={'100%'} id="etype" value="JPEG" ref={mode} dataSource={type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
                                     </div>
                                 </td>
                             </tr>
@@ -109,7 +87,7 @@ function Export() {
                                 </td>
                                 <td>
                                     <div className="e-float-input" style={{ 'marginTop': '0px' }}>
-                                        <input type="text" defaultValue="Circular Gauge" id="fileName" style={{ "width": "100%", padding: '0px', paddingLeft: '5px' }} />
+                                        <input type="text" defaultValue="Circular Gauge" id="fileName" style={{ "width": "100%", padding: '0px', paddingLeft: '5px' }} ref={fileNameObj} />
                                     </div>
                                 </td>
                             </tr>
@@ -126,9 +104,7 @@ function Export() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample demonstrates the print and export functionalities of the circular gauge.
-                </p>
+                <p>This sample demonstrates the print and export functionalities of the circular gauge.</p>
             </div>
             <div id="description">
                 <p>
@@ -141,5 +117,4 @@ function Export() {
         </div>
     )
 }
-
 export default Export;

@@ -14,7 +14,7 @@ const Customization = () => {
   const [display,setDisplay] = useState<string>('');
   let dialogObj: any;
   const buttonClick = (args) => {
-      if (args.target.innerHTML.toLowerCase() == 'alert') {
+      if (args.target.textContent.toLowerCase() == 'alert') {
         setDisplay('none');
         dialogObj = DialogUtility.alert({
           title: '',
@@ -24,7 +24,7 @@ const Customization = () => {
           width:'240px',
           closeOnEscape: true
         });
-      } else if (args.target.innerHTML.toLowerCase() == 'confirm') {
+      } else if (args.target.textContent.toLowerCase() == 'confirm') {
         setDisplay('none');
         dialogObj = DialogUtility.confirm({
           title: ' Delete file',
@@ -35,7 +35,7 @@ const Customization = () => {
           width:'420px',
           closeOnEscape: true
         });
-      } else if (args.target.innerHTML.toLowerCase() == 'prompt') {
+      } else if (args.target.textContent.toLowerCase() == 'prompt') {
         setDisplay('none');
         dialogObj = DialogUtility.confirm({
           title: 'Join Wi-Fi network',

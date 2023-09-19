@@ -145,7 +145,6 @@ function PeriodSelectorCandle() {
                         }}
                         height='250'
                         width={Browser.isDevice ? '100%' : '80%'}
-                        margin={{ top: 0 }}
                         load={chartLoad.bind(this)}
                         axisLabelRender={labelRender.bind(this)}
                         tooltipRender={renderTooltip.bind(this)}

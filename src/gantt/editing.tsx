@@ -29,7 +29,7 @@ export class Editing extends SampleBase<{}, {}> {
     showDeleteConfirmDialog: true
   };
   public splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   public projectStartDate: Date = new Date('03/25/2019');
   public projectEndDate: Date = new Date('07/28/2019');

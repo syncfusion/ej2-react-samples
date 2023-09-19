@@ -83,7 +83,7 @@ export class NormalEdit extends SampleBase<{}, {}> {
            </div>
         <div id="description">
           <p> The Grid supports CRUD operations. This CRUD operations can be configured in Grid using
-            <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html">
+            <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/editSettings/">
             editSettings</a></code>. Also, it has different modes to manipulate the datasource.
           </p>
           <p>The available modes are,</p>
@@ -101,7 +101,7 @@ export class NormalEdit extends SampleBase<{}, {}> {
           <p>
             Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
             <code><a target="_blank" className="code"
-            href="http://ej2.syncfusion.com/react/documentation/grid/api-edit.html">
+            href="https://ej2.syncfusion.com/react/documentation/api/grid/edit/">
             Edit
             </a></code> module into the <code>services</code>.
           </p>

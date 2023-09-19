@@ -41,7 +41,7 @@ export class EventMarkers extends SampleBase<{}, {}> {
               <ColumnDirective field='Predecessor'></ColumnDirective>
             </ColumnsDirective>
             <EventMarkersDirective>
-              <EventMarkerDirective day={this.eventMarkerDay1}></EventMarkerDirective>
+              <EventMarkerDirective day={this.eventMarkerDay1} label= 'Project starts'></EventMarkerDirective>
               <EventMarkerDirective day={this.eventMarkerDay2} label='Design phase' ></EventMarkerDirective>
               <EventMarkerDirective day={this.eventMarkerDay3} label='Research phase' ></EventMarkerDirective>
               <EventMarkerDirective day={this.eventMarkerDay4} label='Production phase' ></EventMarkerDirective>

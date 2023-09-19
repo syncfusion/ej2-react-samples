@@ -8,6 +8,9 @@ import {
     ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, Inject, FormDesigner, TextFieldSettings, RadioButtonFieldSettings, InitialFieldSettings, CheckBoxFieldSettings, SignatureFieldSettings
 } from '@syncfusion/ej2-react-pdfviewer';
 import { updateSampleSection } from '../common/sample-base';
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+import './pdf.component.css';
+
 function FormDesignerComponent() {
     React.useEffect(() => {
         updateSampleSection();
@@ -15,8 +18,17 @@ function FormDesignerComponent() {
     let viewer: PdfViewerComponent;
     return (<div>
         <div className='control-section'>
+            <div className="flex-container">
+                <label htmlFor="checked" className="switchLabel" > Standalone PDF Viewer </label>
+                <div className="e-message render-mode-info">
+                    <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
+                </div>
+                <div>
+                    <SwitchComponent cssClass="buttonSwitch" id="checked" change={change} checked={true}></SwitchComponent>
+                </div>
+            </div>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent id="container" ref={(scope) => { viewer = scope; }} documentPath="FormDesigner.pdf" serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer" documentLoad={documentLoaded} validateFormFields={validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>
+            <PdfViewerComponent id="container" ref={(scope) => { viewer = scope; }} documentPath="https://cdn.syncfusion.com/content/pdf/form-designer.pdf"  documentLoad={documentLoaded} validateFormFields={validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
             </PdfViewerComponent>
         </div>
@@ -34,7 +46,7 @@ function FormDesignerComponent() {
     </div>
     );
     function documentLoaded (args) {
-        if (args.documentName === 'FormDesigner.pdf') {
+        if (args.documentName === 'form-designer.pdf') {
             viewer.formDesignerModule.addFormField("Textbox", { name: "First Name", bounds: { X: 146, Y: 229, Width: 150, Height: 24 } } as TextFieldSettings);
             viewer.formDesignerModule.addFormField("Textbox", { name: "Middle Name", bounds: { X: 338, Y: 229, Width: 150, Height: 24 } } as TextFieldSettings);
             viewer.formDesignerModule.addFormField("Textbox", { name: "Last Name", bounds: { X: 530, Y: 229, Width: 150, Height: 24 } } as TextFieldSettings);
@@ -96,6 +108,16 @@ function FormDesignerComponent() {
         if (errorMessage != "Required Field(s): ") {
             viewer.showNotificationPopup(errorMessage);
         }
+    }
+    function change(args){
+        if (args.checked) {
+            viewer.serviceUrl = '';
+        }
+        else {
+            viewer.serviceUrl = 'https://ej2services.syncfusion.com/react/development/api/pdfviewer';
+        }
+        viewer.dataBind();
+        viewer.load(viewer.documentPath, null);
     }
 }
 export default FormDesignerComponent;

@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
+import { useEffect, useRef, useState } from "react";
+import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, TitleModel, AxisModel, PaletteSettingsModel, CellSettingsModel, PaletteType } from '@syncfusion/ej2-react-heatmap';
 import * as data from './color-range-sample-data.json';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
@@ -8,82 +9,84 @@ import { RadioButtonComponent, ChangeEventArgs, CheckBoxComponent } from "@syncf
 
 // custom code start
 const SAMPLE_CSS: any = `
-#control-container {
-    padding: 0px !important;
-}
-#source{
-    float: right; margin-right: 10p
-}`;
+    #control-container {
+        padding: 0px !important;
+    }
+    #source{
+        float: right; margin-right: 10p
+    }`;
 // custom code end
 /**
  * Heatmap Palette mode sample
  */
-function ColorRange() {
+const ColorRange = () => {
 
     React.useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let heatmap: HeatMapComponent;
-
-    function fixed(args: ChangeEventArgs): void {
-        heatmap.paletteSettings.type = 'Fixed';
-        heatmap.dataBind();
+    const [paletteType, setPaletteType] = useState<PaletteType>('Gradient');
+    let heatmap = useRef<HeatMapComponent>(null);
+    let title: TitleModel = {
+        text: 'U.S. Government Energy Consumption by Agency (Trillion Btu)',
+        textStyle: {
+            fontWeight: '500',
+            fontStyle: 'Normal',
+            fontFamily: 'Segoe UI',
+            size: '15px',
+        }
+    }
+    let xAxis: AxisModel = {
+        labels: ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'],
+        labelIntersectAction: 'None',
+        labelRotation: 45
+    }
+    let yAxis: AxisModel = {
+        labels: ['Agriculture', 'Energy', 'Administration', 'Health', 'Interior', 'Justice', 'NASA', 'Transportation']
+    }
+    let paletteSettings: PaletteSettingsModel = {
+        palette: [
+            { startValue: 5, endValue: 15, minColor: '#FFFFDA', maxColor: '#EDF8B6' },
+            { startValue: 15, endValue: 20, minColor: '#CAE8B4', maxColor: '#78D1BD' },
+            { startValue: 20, endValue: 31.7, minColor: '#36BCC6', maxColor: '#208FC6' },
+        ],
+        type: paletteType
+    }
+    let cellSettings: CellSettingsModel = {
+        border: { width: 0 },
+        showLabel: false,
     }
 
-    function gradient(args: ChangeEventArgs): void {
-        heatmap.paletteSettings.type = 'Gradient';
-        heatmap.dataBind();
+    const fixed = (): void => {
+        setPaletteType('Fixed');
+        heatmap.current.dataBind();
     }
 
-    function load(args: ILoadedEventArgs): void {
+    const gradient = (): void => {
+        setPaletteType('Gradient');
+        heatmap.current.dataBind();
+    }
+
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        if (args.heatmap.element.offsetWidth < 500) {
+            args.heatmap.xAxis.labelRotation = 0;
+            args.heatmap.xAxis.labelIntersectAction = 'Trim';
+        } else {
+            args.heatmap.xAxis.labelRotation = 45;
+            args.heatmap.xAxis.labelIntersectAction = 'None';
+        }
     };
 
     return (
         <div>
             <div className='col-md-9 control-section'>
                 {/* custom code start */}
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 {/* custom code end */}
-                <HeatMapComponent id='heatmap-container' ref={t => heatmap = t}
-                    titleSettings={{
-                        text: 'U.S. Government Energy Consumption by Agency (Trillion Btu)',
-                        textStyle: {
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI',
-                            size: '15px',
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['2005', '2006', '2007', '2008', '2009', '2010',
-                            '2011', '2012', '2013', '2014', '2015'],
-                        labelIntersectAction: 'None',
-                        labelRotation: 45,
-                    }}
-                    yAxis={{
-                        labels: ['Agriculture', 'Energy', 'Administration', 'Health', 'Interior',
-                            'Justice', 'NASA', 'Transportation']
-                    }}
-                    dataSource={(data as any).colorRangeSample}
-                    paletteSettings={{
-                        palette: [
-                            { startValue: 5, endValue: 15, minColor: '#FFFFDA', maxColor: '#EDF8B6' },
-                            { startValue: 15, endValue: 20, minColor: '#CAE8B4', maxColor: '#78D1BD' },
-                            { startValue: 20, endValue: 31.7, minColor: '#36BCC6', maxColor: '#208FC6' },
-                        ],
-                        type: 'Gradient'
-                    }}
-                    cellSettings={{
-                        border: { width: 0 },
-                        showLabel: false,
-                    }}
-                    load={load.bind(this)}>
+                <HeatMapComponent id='heatmap-container' ref={heatmap} titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSource={(data as any).colorRangeSample} paletteSettings={paletteSettings} cellSettings={cellSettings} load={load.bind(this)}>
                     <Inject services={[Legend, Tooltip]} />
                 </HeatMapComponent>
             </div>
@@ -97,12 +100,10 @@ function ColorRange() {
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div className='row'>
-                                        <RadioButtonComponent id='fixed' label='Fixed' name='paletteType' value="Fixed"
-                                            change={fixed.bind(this)}></RadioButtonComponent>
+                                        <RadioButtonComponent id='fixed' label='Fixed' name='paletteType' value="Fixed" change={fixed} />
                                     </div>
                                     <div className='row'>
-                                        <RadioButtonComponent id='gradient' checked={true} label='Gradient' name='paletteType' value="Gradient"
-                                            change={gradient.bind(this)}></RadioButtonComponent>
+                                        <RadioButtonComponent id='gradient' checked={true} label='Gradient' name='paletteType' value="Gradient" change={gradient} />
                                     </div>
                                 </td>
                             </tr>
@@ -124,10 +125,7 @@ function ColorRange() {
                     The <code> startValue </code> and <code> endValue </code> properties are used to define the range start and end values.
                     The <code> minColor </code> and <code> maxColor </code> properties represent the colors of given range.
                 </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point
-                    in touch enabled devices.
-                </p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -139,5 +137,4 @@ function ColorRange() {
         </div >
     );
 }
-
 export default ColorRange;

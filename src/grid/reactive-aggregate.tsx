@@ -55,7 +55,7 @@ export class ReactiveAggregate extends SampleBase<{}, {}> {
           <div id="description">
             <p>The Grid supports aggregates which will be displayed at the footer, group footer and group caption of the Grid.
     The aggregate configurations can be provided by the <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/documentation/grid/api-grid.html">
+                href="https://ej2.syncfusion.com/react/documentation/api/grid/#aggregates">
                 aggregates
         </a></code> property.</p>
             <p>
@@ -63,7 +63,7 @@ export class ReactiveAggregate extends SampleBase<{}, {}> {
     </p>
             <p>
               By default, reactive aggregate update is not supported by inline and dialog edit modes. But, we can refresh aggregates manually. Please refer to the <a target="_blank"
-                href="http://ej2.syncfusion.com/react/documentation/grid/aggregate/#refresh-aggregates-in-inline-edit-mode">
+                href="https://ej2.syncfusion.com/react/documentation/grid/aggregates/reactive-aggregate#refresh-aggregate-values-in-inline-editing">
                 documentation.</a>
             </p>
           </div>

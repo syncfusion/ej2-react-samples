@@ -112,6 +112,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the inversed range column series.'
     },
     {
+        'path': 'chart/cylindrical-column', 'component': 'CylindricalColumn', 'name': 'Cylindrical Column', 'type': 'new', 'order': '04', 'category': 'Bar Charts',
+        'description': 'This demo sample for Essential JavaScript2 Chart control shows how to render the cylindrical column series.'
+    },
+    {
         'path': 'chart/bar', 'component': 'Bar', 'name': 'Bar', 'order': '04', 'category': 'Bar Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the bar series.'
     },
@@ -132,7 +136,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the 100 percent stacking bar series.'
     },
     {
-        'path': 'chart/tornado', 'component': 'NegativeStack', 'name': 'Negative Stack', 'order': '04', 'category': 'Bar Charts',
+        'path': 'chart/negative-stack', 'component': 'NegativeStack', 'name': 'Negative Stack', 'order': '04', 'category': 'Bar Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the bar charts.'
     },
     {
@@ -224,7 +228,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the combination series.'
     },
     {
-        'path': 'chart/pareto', 'component': 'ParetoChart', 'name': 'Pareto Chart', 'type': 'update', 'order': '08', 'category': 'Other Types',
+        'path': 'chart/pareto', 'component': 'ParetoChart', 'name': 'Pareto Chart', 'order': '08', 'category': 'Other Types',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure pareto charts.'
     },
     {
@@ -312,7 +316,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the remote-data chart.'
     },
     {
-        'path': 'chart/lazy-loading', 'component': 'LazyLoading', 'name': 'Lazy Loading', 'type': 'update', 'order': '12', 'category': 'Data Binding',
+        'path': 'chart/lazy-loading', 'component': 'LazyLoading', 'name': 'Lazy Loading', 'order': '12', 'category': 'Data Binding',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the lazy-loading chart.'
     },
     {
@@ -348,7 +352,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to invert the axis in charts.'
     },
     {
-        'path': 'chart/stripline', 'component': 'Stripline', 'name': 'Stripline', 'type': 'update', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/stripline', 'component': 'Stripline', 'name': 'Stripline', 'order': '13', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to invert the axis in charts.'
     },
     {
@@ -384,6 +388,10 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to add more information to the chart using annotation.'
     },
     {
+        'path': 'chart/synchronized-chart', 'component': 'SynchronizedChart', 'name': 'Synchronized Charts', 'order': '14', 'type': 'new', 'category': 'Chart Customization',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the synchronized chart.'
+    },
+    {
         'path': 'chart/datalabel-template', 'component': 'DataLabelTemplate', 'name': 'DataLabel Template', 'order': '14', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the data label template.'
     },
@@ -408,7 +416,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to print the entire chart.'
     },
     {
-        'path': 'chart/export', 'component': 'ChartExport', 'name': 'Export', 'order': '15', 'category': 'Print and Export',
+        'path': 'chart/export', 'component': 'ChartExport', 'name': 'Export', 'order': '15', 'category': 'Print and Export', 'type': 'update',
         'description': 'This demo for Essential JS2 Chart control shows how to export the charts to Excel, PDF, and image formats such as SVG, JPEG, and PNG at client-side.'
     },
     {
@@ -421,7 +429,7 @@ export const ChartSampleOrder: Object = [
     },    
     {
         'path': 'chart/keyboard', 'component': 'KeyboardNavigation', 'name': 'Keyboard Navigation', 'order': '16', 'category': 'User Interaction',
-        'description': 'This demo for Essential JS2 Chart control shows how to use the keyboard for the charts functions.'
+        'description': 'This demo sample for Essential JS2 Chart control shows how to use the keyboard for the charts functions.'
     },
     {
         'path': 'chart/crosshair', 'component': 'CrosshairChart', 'name': 'Crosshair', 'order': '16', 'category': 'User Interaction',
@@ -432,7 +440,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the trackball behavior in chart.'
     },
     {
-        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'type': 'update', 'order': '16', 'category': 'User Interaction',
+        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'order': '16', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the zooming behavior in chart.'
     },
     {

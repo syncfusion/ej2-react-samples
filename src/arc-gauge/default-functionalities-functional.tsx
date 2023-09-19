@@ -3,10 +3,8 @@
  */
 
 import * as React from "react";
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, PointersDirective, PointerDirective,
-    GaugeTheme, ILoadedEventArgs, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective, Annotations, Inject
-} from '@syncfusion/ej2-react-circulargauge';
+import { useEffect } from "react";
+import { CircularGaugeComponent, AxesDirective, AxisDirective, PointersDirective, PointerDirective, GaugeTheme, ILoadedEventArgs, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective, Annotations, Inject } from '@syncfusion/ej2-react-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -18,15 +16,14 @@ const SAMPLE_CSS = `
         .titleText {font-size: 15px; }
         .annotation { font-size: 13px; }
         .e-view.tailwind div.titleText, .e-view.tailwind-dark div.titleText { font-size: 15px;	margin-top: 0px; }
-    }
-     `;
+    }`;
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -53,9 +50,7 @@ function Default() {
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} id="gauge" background="transparent" height="500px" title="Female (% usage) on popular social network" titleStyle={{ size: '18px', fontFamily: 'inherit' }} >
                     <Inject services={[Annotations]} />
@@ -93,9 +88,7 @@ function Default() {
                 </CircularGaugeComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample shows the arc gauge's default rendering. It also shows the most popular social media platforms and the percentage of female users.
-                </p>
+                <p>This sample shows the arc gauge's default rendering. It also shows the most popular social media platforms and the percentage of female users.</p>
             </div>
             <div id="description">
                 <p>

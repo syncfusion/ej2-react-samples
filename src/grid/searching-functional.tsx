@@ -33,7 +33,7 @@ function Searching() {
             <div id='description'>
                 <p>
                     The searching feature enables the user to view the reduced amount of records based on search criteria. It can be enabled by setting  <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowsearching'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowsearching'>
                         allowSearching</a></code> property as true.
                 </p>
                 <p>
@@ -41,7 +41,7 @@ function Searching() {
 
                 <p>
                     More information on the searching feature configuration can be found in this
-                    <a target='_blank' href='http://ej2.syncfusion.com/react/documentation/grid/searching.html'> documentation section</a>.
+                    <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/grid/searching.html'> documentation section</a>.
                 </p>
             </div>
         </div>

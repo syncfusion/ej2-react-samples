@@ -89,15 +89,15 @@ export class Spline extends SampleBase<{}, {}> {
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 7, height: 7 }}>
+                                marker={{ visible: true, width: 10, height: 10 }}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} name='Avg Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 7, height: 7 }}>
+                                marker={{ visible: true, width: 10, height: 10 }}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data3} xName='x' yName='y' width={2} name='Min Temp'
                                 type='Spline'
-                                marker={{ visible: true, width: 7, height: 7 }}>
+                                marker={{ visible: true, width: 10, height: 10 }}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
                     </ChartComponent>

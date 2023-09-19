@@ -31,7 +31,7 @@ export class Animation extends SampleBase<{}, { }> {
     closeOnEscape: true
   }
   buttonClick(args) {
-    if (args.target.innerHTML.toLowerCase() == 'confirm') {
+    if (args.target.textContent.toLowerCase() == 'confirm') {
       DialogUtility.confirm(this.dialogArgs);
     }
   }

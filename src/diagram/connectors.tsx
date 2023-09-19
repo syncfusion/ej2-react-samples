@@ -9,7 +9,10 @@ import {
   SelectorConstraints,
   DiagramComponent,
   randomId,
-  Inject
+  Inject,
+  ConnectorEditing,
+  DecoratorShapes,
+  SegmentThumbShapes
 } from "@syncfusion/ej2-react-diagrams";
 import {
   StackPanel,
@@ -24,9 +27,14 @@ import {
   PortVisibility
 } from "@syncfusion/ej2-react-diagrams";
 import {
-  CheckBox,
-  ChangeEventArgs as CheckBoxChangeEventArgs
-} from "@syncfusion/ej2-react-buttons";
+  ChangeEventArgs,
+  DropDownListComponent,
+  DropDownList,
+} from "@syncfusion/ej2-react-dropdowns";
+import {
+  ColorPickerComponent,
+  ColorPickerEventArgs
+} from "@syncfusion/ej2-react-inputs";
 import { SampleBase } from "../common/sample-base";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 
@@ -128,8 +136,37 @@ const SAMPLE_CSS = `.image-pattern-style {
     .e-selected-style {
         border-color: #006CE6;
         border-width: 2px;
+    }
+
+    .e-colorpicker-wrapper .e-split-btn-wrapper .e-split-colorpicker.e-split-btn .e-selected-color .e-split-preview{
+        width: 100px!important;
+        margin-left: -40px!important;
+    }
+    .e-colorpicker-wrapper .e-split-btn-wrapper .e-split-colorpicker.e-split-btn{
+        width: 110px!important;
+    }
+
+    label{
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 400;
+      width: 100%;
+      margin-top: auto;
     }`;
 
+let decoratorshape = [
+      { shape: 'None', text: 'None' },
+      { shape: 'Square', text: 'Square' },
+      { shape: 'Circle', text: 'Circle' },
+      { shape: 'Diamond', text: 'Diamond' },
+      { shape: 'Arrow', text: 'Arrow' },
+      { shape: 'OpenArrow', text: 'Open Arrow' },
+      { shape: 'Fletch', text: 'Fletch' },
+      { shape: 'OpenFetch', text: 'OpenFetch' },
+      { shape: 'IndentedArrow', text: 'Indented Arrow' },
+      { shape: 'OutdentedArrow', text: 'Outdented Arrow' },
+      { shape: 'DoubleArrow', text: 'Double Arrow' }
+  ];
 export class Connectors extends SampleBase<{}, {}> {
   private node: NodeModel;
   private connector: ConnectorModel;
@@ -149,7 +186,7 @@ export class Connectors extends SampleBase<{}, {}> {
         this.connector.constraints |= ConnectorConstraints.ReadOnly;
       } else {
         this.connector.constraints |=
-          ConnectorConstraints.Default & ~ConnectorConstraints.ReadOnly;
+          (ConnectorConstraints.Default|ConnectorConstraints.DragSegmentThumb) & ~ConnectorConstraints.ReadOnly;
       }
       diagramInstance.dataBind();
     }
@@ -257,6 +294,12 @@ export class Connectors extends SampleBase<{}, {}> {
                     fill: "#6f409f"
                   }
                 };
+                obj.segments = [
+                  {
+                      type: 'Bezier',
+                  }
+              ],
+              obj.constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb 
               }}
               //Customize the content of the node
               setNodeTemplate={(obj: NodeModel): StackPanel => {
@@ -273,7 +316,7 @@ export class Connectors extends SampleBase<{}, {}> {
         <div className="col-lg-3 property-section">
           <div className="property-panel-header">Properties</div>
           <div className="row property-panel-content" id="appearance">
-            <div className="row row-header">Appearance</div>
+            <div className="row row-header"><b>Connector types</b></div>
             <div className="row" style={{ paddingTop: "8px" }}>
               <div
                 className="image-pattern-style"
@@ -391,17 +434,51 @@ export class Connectors extends SampleBase<{}, {}> {
               />
             </div>
           </div>
-          <div className="row property-panel-content" style={{ paddingTop: "10px" }}>
-            <div className="row" style={{ paddingTop: "8px" }}>
-              <CheckBoxComponent
-                checked={false}
-                label="Lock"
-                id="lock"
-                change={this.lock.bind(this)}
-              />
+          <div className="row property-panel-content" id="decorators" style={{paddingTop: "10px"}}>
+            <div className="row row-header" style={{paddingTop: "8px"}}>
+              <b>Decorators</b>
+            </div>
+            <div className="row" style={{paddingTop: "8px", display:'flex'}}>
+              <label>Source Decorators</label>
+              <div>
+                <DropDownListComponent id="sourceDecorator2" value="None" dataSource={decoratorshape} change={srcDecShapeChange}/>
+              </div>
+            </div>
+            <div className="row" style={{paddingTop: "8px", display:'flex'}}>
+              <label>Target Decorators</label>
+              <div>
+                <DropDownListComponent id="targetDecorator" value="None" dataSource={decoratorshape} change={tarDecShapeChange}/>
+              </div>
+            </div>
+            <div className="row" style={{paddingTop: "8px", display:'flex'}}>
+              <label>Segment Decorators</label>
+              <div>
+                <DropDownListComponent id="segmentDecorator" value="None" dataSource={decoratorshape} change={segDecShapeChange}/>
+              </div>
+            </div>
+          </div>
+          <div className="row property-panel-content" style={{ paddingTop: "8px"}}>
+            <div className="row row-header">
+              <b>Appearance</b>
+            </div>
+            <div className="row" style={{ paddingTop: "10px", display:'flex' }}>
+            <label>Line color</label>
+            <ColorPickerComponent id="color" mode="Palette" showButtons={false} modeSwitcher={true} value="#6F409F"
+                change={(args) => {
+                  for (let i = 0; i < diagramInstance.connectors.length; i++) {
+                    diagramInstance.connectors[i].style.strokeColor = args.currentValue.hex;
+                    diagramInstance.connectors[i].targetDecorator.style.strokeColor = args.currentValue.hex;
+                    diagramInstance.connectors[i].targetDecorator.style.fill = args.currentValue.hex;
+                    diagramInstance.connectors[i].sourceDecorator.style.strokeColor = args.currentValue.hex;
+                    diagramInstance.connectors[i].sourceDecorator.style.fill = args.currentValue.hex;
+                  }
+                  diagramInstance.dataBind();
+                }
+                } />
             </div>
           </div>
         </div>
+
         <div id="action-description">
           <p>
             This sample visualizes the data flow in a marketing process using
@@ -426,10 +503,7 @@ export class Connectors extends SampleBase<{}, {}> {
           </p>
 
           <p>
-            Additionally, you can see how to lock the connectors to disable
-            editing. The
-            <code>constraints</code> property of connector enables/disables
-            editing. In this example, the shapes are automatically arranged
+            In this example, the shapes are automatically arranged
             using hierarchical tree layout.
           </p>
 
@@ -551,14 +625,16 @@ function applyConnectorStyle(
     if (sourceDec) {
       diagramInstance.connectors[i].sourceDecorator = {
         style: {
-          strokeColor: "#6f409f",
-          fill: "#6f409f",
+          strokeColor: diagramInstance.connectors[i].style.strokeColor,
+          fill: diagramInstance.connectors[i].style.strokeColor,
           strokeWidth: 2
         },
         shape: "Circle"
       };
+      (document.getElementById('sourceDecorator2') as any).value='Circle';
     } else {
       diagramInstance.connectors[i].sourceDecorator = { shape: "None" };
+      (document.getElementById('sourceDecorator2') as any).value='None';
     }
     if (dashedLine) {
       diagramInstance.connectors[i].style.strokeDashArray = "5,5";
@@ -567,12 +643,13 @@ function applyConnectorStyle(
     }
     diagramInstance.connectors[i].targetDecorator = {
       style: {
-        strokeColor: "#6f409f",
-        fill: "#6f409f",
+        strokeColor: diagramInstance.connectors[i].style.strokeColor,
+        fill: diagramInstance.connectors[i].style.strokeColor,
         strokeWidth: 2
       },
       shape: "Arrow"
     };
+    (document.getElementById('targetDecorator') as any).value='Arrow';
     diagramInstance.dataBind();
   }
   target.classList.add("e-selected-style");
@@ -586,13 +663,49 @@ function defaultConnectorStyle(type: Segments, target: HTMLElement): void {
     diagramInstance.connectors[i].style.strokeDashArray = "";
     diagramInstance.connectors[i].targetDecorator = {
       style: {
-        strokeColor: "#6f409f",
-        fill: "#6f409f",
+        strokeColor: diagramInstance.connectors[i].style.strokeColor,
+        fill: diagramInstance.connectors[i].style.strokeColor,
         strokeWidth: 1
       },
       shape: "Arrow"
     };
     diagramInstance.dataBind();
+    (document.getElementById('targetDecorator') as any).value='Arrow';
   }
   target.classList.add("e-selected-style");
+}
+
+function srcDecShapeChange(args:any)
+{
+    for (let i = 0; i < diagramInstance.connectors.length; i++) {
+      diagramInstance.connectors[i].sourceDecorator = {
+         shape: args.itemData.shape,
+         style:{
+                strokeColor:  diagramInstance.connectors[i].style.strokeColor,
+                fill:  diagramInstance.connectors[i].style.strokeColor,
+         }
+        };
+    }
+    diagramInstance.dataBind();
+   
+}
+function tarDecShapeChange(args:any)
+{
+    for (let i = 0; i < diagramInstance.connectors.length; i++) {
+      diagramInstance.connectors[i].targetDecorator = {
+            shape: args.itemData.shape,
+            style: {
+                strokeColor: diagramInstance.connectors[i].style.strokeColor,
+                fill:  diagramInstance.connectors[i].style.strokeColor,
+            }
+        };
+        diagramInstance.dataBind();
+    }   
+}
+function segDecShapeChange(args:any)
+{
+    for (let i = 0; i < diagramInstance.connectors.length; i++) {
+      diagramInstance.segmentThumbShape = args.itemData.shape;  
+    } 
+    diagramInstance.dataBind();  
 }

@@ -1,14 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { templateData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function ColumnTemplate() {
-  React.useEffect(() => {
+const ColumnTemplate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  function columnTemplate(props): any {
+  const columnTemplate = (props): any => {
     var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
     if ((props.ganttProperties.resourceNames)) {
       let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];

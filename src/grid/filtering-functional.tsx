@@ -85,7 +85,7 @@ function Filtering() {
             <div id='description'>
                 <p>The filtering feature enables the user to view a reduced amount of records based on filter criteria. It can be enabled
                     by setting the <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowfiltering'>allowFiltering
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowfiltering'>allowFiltering
                     </a></code> property to true. A filter bar row will be rendered next to header which allows users to filter
                     data by entering text within its cells.</p>
                 <p>The Filterbar uses two modes which specifies how to start filtering. They are,</p>
@@ -93,7 +93,7 @@ function Filtering() {
                     <li><code>OnEnter</code> - Enabled by default, filter will be initiated when the <code>Enter</code> key is pressed.</li>
                     <li><code>Immediate</code> - Filter will start after user finishes typing. There will be a time delay of <i>1500ms</i> to initiate
             filter after the user stops typing. It can be overridden using the <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#filtersettings'>
+                            href='https://ej2.syncfusion.com/react/documentation/api/grid/#filtersettings'>
                             filterSettings-&gt;immediateModeDelay
                         </a></code> property.</li>
                 </ul>

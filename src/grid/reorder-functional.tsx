@@ -29,7 +29,7 @@ function Reordering() {
             <div id='description'>
                 <p>
                     Reordering can be enabled by setting  <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#allowreordering'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowreordering'>
                         allowReordering</a></code> property as true. Reordering can be done by drag and drop the column header from one index to another index within the Grid.</p>
 
                 <p>The location in which the column to be placed, will be indicated by two arrows symbols.</p>
@@ -42,7 +42,7 @@ function Reordering() {
 
                 <p>
                     More information on the Reordering feature configuration can be found in this
-                    <a target='_blank' href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#allowreordering'> documentation section</a>.
+                    <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowreordering'> documentation section</a>.
                 </p>
             </div>
         </div>

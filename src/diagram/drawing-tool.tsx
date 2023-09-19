@@ -199,7 +199,7 @@ export class DrawingTools extends SampleBase<{}, {}> {
             SetShape("Pentagon");
             break;
           case "shape5":
-            SetShape("Polygon");
+            SetShape("Triangle");
             break;
           case "straight":
             setdrawobject(null, { type: "Straight" });
@@ -322,7 +322,7 @@ export class DrawingTools extends SampleBase<{}, {}> {
                 }}
               />
               <div
-                title="Polygon"
+                title="Triangle"
                 className="image-pattern-style"
                 id="shape5"
                 style={{

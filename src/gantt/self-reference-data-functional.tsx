@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { selfData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function SelfReferenceData() {
-  React.useEffect(() => {
+const SelfReferenceData = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
 

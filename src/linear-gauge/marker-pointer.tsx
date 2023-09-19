@@ -172,7 +172,7 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
-                                        <PointerDirective value={40} enableDrag={true} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
+                                        <PointerDirective value={40} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
                                         </PointerDirective>
                                         <PointerDirective value={40} enableDrag={true} height={15} width={15} placement='Near' markerType='Triangle' animationDuration={1500}>
                                         </PointerDirective>
@@ -186,7 +186,7 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
-                                        <PointerDirective value={20} enableDrag={true} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
+                                        <PointerDirective value={20} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
                                         </PointerDirective>
                                         <PointerDirective value={20} enableDrag={true} height={15} width={15} placement='Near' markerType='Circle' animationDuration={1500}>
                                         </PointerDirective>
@@ -200,7 +200,7 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
-                                        <PointerDirective value={50} enableDrag={true} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
+                                        <PointerDirective value={50} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
                                         </PointerDirective>
                                         <PointerDirective value={50} enableDrag={true} height={15} width={15} placement='Near' markerType='Diamond' animationDuration={1500}>
                                         </PointerDirective>
@@ -214,7 +214,7 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
-                                        <PointerDirective value={30} enableDrag={true} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
+                                        <PointerDirective value={30} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
                                         </PointerDirective>
                                         <PointerDirective value={30} enableDrag={true} height={5} width={15} placement='Near' markerType='Rectangle' animationDuration={1500}>
                                         </PointerDirective>
@@ -228,7 +228,7 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
-                                        <PointerDirective value={10} enableDrag={true} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
+                                        <PointerDirective value={10} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
                                         </PointerDirective>
                                         <PointerDirective value={10} enableDrag={true} height={15} width={15} placement='Near' markerType='Triangle' animationDuration={1500}>
                                         </PointerDirective>

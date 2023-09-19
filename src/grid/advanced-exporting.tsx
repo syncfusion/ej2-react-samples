@@ -202,9 +202,9 @@ export class AdvancedExporting extends SampleBase<{}, {}> {
             <p>In this demo, excelexport and pdfexport items are defined in the toolbar. For these toolbar items, we have defined actions
             in toolbarClick event to export Grid with header and footer using the
         <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#excelexport">excelExport</a></code>,
+                href="https://ej2.syncfusion.com/react/documentation/api/grid/#excelexport">excelExport</a></code>,
                     <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#pdfexport">pdfExport</a></code>
+                href="https://ej2.syncfusion.com/react/documentation/api/grid/#pdfexport">pdfExport</a></code>
               methods.
               </p>
 

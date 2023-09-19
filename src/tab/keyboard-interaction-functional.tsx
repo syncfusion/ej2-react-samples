@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './tab.component.css';
@@ -8,7 +8,14 @@ import './tab.component.css';
 const KeyboardInteraction = () => {
     useEffect(() => {
         updateSampleSection();
-    }, [])
+        document.body.addEventListener("keydown", (e: KeyboardEvent) => {
+            let tabElement: HTMLElement = document.querySelector('#tab_keyboard_interaction .e-tab-header .e-toolbar-item .e-tab-wrap') as HTMLElement;
+            if (e.altKey && e.keyCode === 74 && tabElement) {
+                tabElement.focus();
+          }
+        });
+      }, []);
+      let tabObj = useRef<TabComponent>(null);
 
     let headertext: any;
     // Mapping Tab items Header property
@@ -16,9 +23,9 @@ const KeyboardInteraction = () => {
     return (
         <div className='control-pane'>
             <div className='control-section tab-control-section row'>
-                <div className='col-lg-8 control-section'>
+                <div className='col-lg-8 control-section' id='tab_keyboard_interaction'>
                     {/* Render the Tab Component */}
-                    <TabComponent overflowMode='Popup'>
+                    <TabComponent overflowMode='Popup' ref={tabObj}>
                         <TabItemsDirective>
                             <TabItemDirective header={headertext[0]} content={'HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages. Along with CSS, and JavaScript, HTML is a cornerstone technology, used by most websites to create visually engaging web pages, user interfaces for web applications, and user interfaces for many mobile applications. Web browsers can read HTML files and render them into visible or audible web pages. HTML describes ' + 'the structure of a website semantically along with cues for presentation, making it a markup language, rather than a programming language.'} />
                             <TabItemDirective header={headertext[1]} content={'C# is intended to be a simple, modern, general-purpose, object-oriented programming language. Its development team is led by Anders Hejlsberg. The most recent version is C# 5.0, which was released on August 15, 2012.'} />

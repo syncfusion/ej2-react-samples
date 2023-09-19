@@ -5,6 +5,15 @@ import { SampleBase } from '../common/sample-base';
 import './tab.component.css';
 
 export class KeyboardInteraction extends SampleBase<{}, {}> {
+    private tabObj: TabComponent;
+    public componentDidMount(): void {
+        document.body.addEventListener("keydown", (e: KeyboardEvent) => {
+            let tabElement: HTMLElement = document.querySelector('#tab_keyboard_interaction .e-tab-header .e-toolbar-item .e-tab-wrap') as HTMLElement;
+            if (e.altKey && e.keyCode === 74 && tabElement) {
+                tabElement.focus();
+        }
+        });
+    }
 
     render() {
         let headertext: any;
@@ -14,9 +23,9 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section tab-control-section row'>
-                    <div className='col-lg-8 control-section'>
+                    <div className='col-lg-8 control-section' id='tab_keyboard_interaction'>
                         {/* Render the Tab Component */}
-                        <TabComponent overflowMode='Popup'>
+                        <TabComponent overflowMode='Popup' ref={(t) => (this.tabObj = t)}>
                             <TabItemsDirective>
                                 <TabItemDirective header={headertext[0]}
                                     content={'HyperText Markup Language, commonly referred to as HTML, is the standard markup ' +

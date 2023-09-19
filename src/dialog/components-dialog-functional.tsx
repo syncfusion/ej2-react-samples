@@ -254,7 +254,7 @@ const ComponentsDialog = () => {
     <div className="control-pane">
       <div id="targetElement" className="control-section col-lg-12 defaultDialogComponent dialog-target">
         <button className="e-control e-btn dlgbtn" ref={buttonRef} onClick={buttonClick} id="dialogBtn">Open</button>
-        <DialogComponent id="defaultDialog" showCloseIcon={true} animationSettings={animationSettings} visible={true} width={'700px'} target={'#targetElement'} header="Syncfusion Components inside Dialog" buttons={buttons} open={dialogOpen} close={dialogClose}>
+        <DialogComponent id="defaultDialog" showCloseIcon={true} ref={dialogInstance} animationSettings={animationSettings} visible={true} width={'700px'} target={'#targetElement'} header="Syncfusion Components inside Dialog" buttons={buttons} open={dialogOpen} close={dialogClose}>
           <TabComponent id="tab-wizard">
             <TabItemsDirective>
               <TabItemDirective header={headerText[0]} content={content0} />

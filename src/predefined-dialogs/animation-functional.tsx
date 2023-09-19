@@ -29,7 +29,7 @@ const Animation = () => {
     closeOnEscape: true
   };
   const buttonClick = (args) => {
-    if (args.target.innerHTML.toLowerCase() == "confirm") {
+    if (args.target.textContent.toLowerCase() == "confirm") {
       DialogUtility.confirm(dialogArgs);
     }
   }

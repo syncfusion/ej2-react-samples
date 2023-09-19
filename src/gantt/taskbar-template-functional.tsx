@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, DayMarkers, ColumnsDirective, ColumnDirective, EventMarkersDirective, EventMarkerDirective, Selection } from '@syncfusion/ej2-react-gantt';
 import { customizedData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import './taskbar-template.css'
 
-function Taskbar() {
-  React.useEffect(() => {
+const Taskbar = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -43,7 +44,7 @@ function Taskbar() {
   const labelSettings: any = {
     leftLabel: 'TaskName',
   };
-  function tooltipTemplate(props): any {
+  const tooltipTemplate = (props): any => {
     if (props.Winner && props.Movie) {
       return (<div>
         {props.Winner} wins oscar award for {props.Movie}
@@ -62,7 +63,7 @@ function Taskbar() {
   const tooltipSettings: any = {
     taskbar: template.bind(this),
   };
-  function taskbarTemplate(props): any {
+  const taskbarTemplate = (props): any => {
     if (props.TaskName == 'Oscar moments') {
       return (<div className="e-gantt-child-taskbar e-custom-moments" style={{ height: "100%", borderRadius: "5px" }}>
         {
@@ -111,7 +112,7 @@ function Taskbar() {
 
   };
   const childTaskbarTemplate: any = taskbarTemplate.bind(this);
-  function milstoneTemplate(props): any {
+  const milstoneTemplate = (props): any => {
     return (<div style={{ marginTop: "-7px" }}>
       <div className="e-gantt-milestone" style={{ position: "absolute" }}>
         <img className="moments" src="src/gantt/images/moments.svg" height="24" width="48" />

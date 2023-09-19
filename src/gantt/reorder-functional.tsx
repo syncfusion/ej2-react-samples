@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection, Reorder, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { ActionEventArgs } from '@syncfusion/ej2-react-grids';
@@ -8,8 +9,8 @@ import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
-function ReorderColumn() {
-  React.useEffect(() => {
+const ReorderColumn = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -22,10 +23,9 @@ function ReorderColumn() {
     dependency: 'Predecessor',
     child: 'subtasks'
   };
-  let ganttObj: GanttComponent;
-  let columnsDropdownObj: DropDownListComponent;
-  let columnIndexDropdownObj: DropDownListComponent;
-
+  let ganttObj = useRef<GanttComponent>(null);
+  let columnsDropdownObj = useRef<DropDownListComponent>(null);
+  let columnIndexDropdownObj = useRef<DropDownListComponent>(null);
   let columnNames: { [key: string]: Object }[] = [
     { id: 'TaskID', name: 'ID' },
     { id: 'TaskName', name: 'Name' },
@@ -35,7 +35,6 @@ function ReorderColumn() {
     { id: 'Progress', name: 'Progress' },
     { id: 'Predecessor', name: 'Dependency' }
   ];
-
   let columnsIndex: { [key: string]: Object }[] = [
     { id: '0', name: '1' },
     { id: '1', name: '2' },
@@ -45,23 +44,22 @@ function ReorderColumn() {
     { id: '5', name: '6' },
     { id: '6', name: '7' }
   ];
-  function columnNameChange(args: ChangeEventArgs): void {
+  const columnNameChange = (args: ChangeEventArgs): void => {
     let columnName: string = args.value.toString();
-    let index: number = ganttObj.treeGrid.getColumnIndexByField(columnName);
-    columnIndexDropdownObj.value = index.toString();
+    let index: number = ganttObj.current.treeGrid.getColumnIndexByField(columnName);
+    columnIndexDropdownObj.current.value = index.toString();
   }
-
-  function columnIndexChange(args: ChangeEventArgs): void {
-    let columnName: string = columnsDropdownObj.value.toString();
+  const columnIndexChange = (args: ChangeEventArgs): void => {
+    let columnName: string = columnsDropdownObj.current.value.toString();
     let toColumnIndex: number = args.value as number;
-    let column: Column = ganttObj.treeGrid.columns[toColumnIndex] as Column;
-    ganttObj.reorderColumns(columnName, column.field);
+    let column: Column = ganttObj.current.treeGrid.columns[toColumnIndex] as Column;
+    ganttObj.current.reorderColumns(columnName, column.field);
   }
-  function actionComplete(args: ActionEventArgs): void {
+  const actionComplete = (args: ActionEventArgs): void => {
     if (args.requestType === 'reorder') {
-      let columnName: string = columnsDropdownObj.value as string;
-      let index: number = ganttObj.treeGrid.getColumnIndexByField(columnName);
-      columnIndexDropdownObj.value = index.toString();
+      let columnName: string = columnsDropdownObj.current.value as string;
+      let index: number = ganttObj.current.treeGrid.getColumnIndexByField(columnName);
+      columnIndexDropdownObj.current.value = index.toString();
     }
   }
   const labelSettings: any = {
@@ -77,7 +75,7 @@ function ReorderColumn() {
       <div className='control-section'>
         <div className='col-md-9'>
           <GanttComponent id='ReorderColumn' treeColumnIndex={1} allowReordering={true}
-            ref={gantt => ganttObj = gantt} splitterSettings={splitterSettings} actionComplete={actionComplete.bind(this)} dataSource={projectNewData} highlightWeekends={true}
+            ref={ganttObj} splitterSettings={splitterSettings} actionComplete={actionComplete.bind(this)} dataSource={projectNewData} highlightWeekends={true}
             taskFields={taskFields} labelSettings={labelSettings} height='410px'
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
             <ColumnsDirective>
@@ -103,7 +101,7 @@ function ReorderColumn() {
                   <div>
                     <DropDownListComponent width="120px" id="columns" change={columnNameChange.bind(this)}
                       dataSource={columnNames} fields={{ text: 'name', value: 'id' }} value="TaskID"
-                      ref={dropdown => columnsDropdownObj = dropdown} />
+                      ref={columnsDropdownObj} />
                   </div>
                 </td>
               </tr>
@@ -115,21 +113,19 @@ function ReorderColumn() {
                   <div>
                     <DropDownListComponent width="120px" id="columnindex" change={columnIndexChange.bind(this)}
                       dataSource={columnsIndex} fields={{ text: 'name', value: 'id' }} value="0"
-                      ref={dropdown => columnIndexDropdownObj = dropdown} />
+                      ref={columnIndexDropdownObj} />
                   </div>
                 </td>
               </tr>
             </table>
           </PropertyPane>
         </div>
-
       </div>
       <div id="action-description">
         <p>This sample demonstrates the reordering feature of the Gantt columns. Select column name and index from properties panel to reorder the columns.
           You can also reorder columns by simply dragging and dropping them to the desired position.
         </p>
       </div>
-
       <div id="description">
         <p>Reordering can be enabled by setting the <code>allowReordering</code> property to true.
           Reordering can be done by dragging and dropping the column header from one index to another index within the TreeGrid part.</p>

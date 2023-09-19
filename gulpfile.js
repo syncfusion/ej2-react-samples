@@ -159,7 +159,7 @@ gulp.task('build', gulp.series(function (done) {
 }));
 
 gulp.task('react-build', gulp.series(function (done) {
-    runSequence('create-locale','generate-router','styles','scripts','bundle','cssfile', done);
+    runSequence('create-locale','generate-router','styles','scripts','bundle','plnkr-json','cssfile', done);
 }));
 
 gulp.task('bundle', gulp.series(function () {

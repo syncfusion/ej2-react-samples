@@ -11,7 +11,7 @@ export class Customization extends SampleBase<{}, { }> {
       this.state = { };
   }
   buttonClick(args) {
-      if (args.target.innerHTML.toLowerCase() == 'alert') {
+      if (args.target.textContent.toLowerCase() == 'alert') {
         document.getElementById("statusText").style.display="none";
         dialogObj = DialogUtility.alert({
           title: '',
@@ -21,7 +21,7 @@ export class Customization extends SampleBase<{}, { }> {
           width:'240px',
           closeOnEscape: true
         });
-      } else if (args.target.innerHTML.toLowerCase() == 'confirm') {
+      } else if (args.target.textContent.toLowerCase() == 'confirm') {
         document.getElementById("statusText").style.display="none";
         dialogObj = DialogUtility.confirm({
           title: ' Delete file',
@@ -32,7 +32,7 @@ export class Customization extends SampleBase<{}, { }> {
           width:'420px',
           closeOnEscape: true
         });
-      } else if (args.target.innerHTML.toLowerCase() == 'prompt') {
+      } else if (args.target.textContent.toLowerCase() == 'prompt') {
         document.getElementById("statusText").style.display="none";
         dialogObj = DialogUtility.confirm({
           title: 'Join Wi-Fi network',

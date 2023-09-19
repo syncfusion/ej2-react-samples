@@ -48,7 +48,7 @@ export class RadialSlider extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent load={this.load.bind(this)} dragMove={this.dragMove.bind(this)} enableRangeDrag={true} enablePointerDrag={true} id='custom-labels' ref={gauge => this.gauge = gauge} background='transparent'>
+                    <CircularGaugeComponent load={this.load.bind(this)} dragMove={this.dragMove.bind(this)} enablePointerDrag={true} id='custom-labels' ref={gauge => this.gauge = gauge} background='transparent'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective startAngle={0} endAngle={0} radius='80%'

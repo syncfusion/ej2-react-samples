@@ -40,6 +40,9 @@ export class Type extends SampleBase<{}, {}> {
       case '2':
         this.rteObj.toolbarSettings.type = ToolbarType.MultiRow;
         break;
+      case '3':
+        this.rteObj.toolbarSettings.type = ToolbarType.Scrollable;
+        break;
     }
   }
   onFloatChange(args: checked): void {
@@ -47,7 +50,8 @@ export class Type extends SampleBase<{}, {}> {
   }
   private ddlValue: { [key: string]: Object }[] = [
     { Id: '1', Text: 'Expand' },
-    { Id: '2', Text: 'MultiRow' }
+    { Id: '2', Text: 'MultiRow' },
+    { Id: '3', Text: 'Scrollable' }
   ];
 
   // maps the appropriate column to fields property
@@ -185,6 +189,7 @@ export class Type extends SampleBase<{}, {}> {
           <ul>
             <li><code>Expand</code>: The toolbar hides the overflowing items in the next row. Click the expand arrow to view overflowing toolbar items</li>
             <li><code>Multi Row</code>: The toolbar hides the overflowing items in the next row.</li>
+            <li><code>Scrollable</code>: All the elements are displayed in a single line with horizontal scrolling enabled.</li>
           </ul>
           <p><b>Injecting Module</b></p>
           <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>

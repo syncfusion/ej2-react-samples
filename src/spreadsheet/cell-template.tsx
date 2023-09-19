@@ -89,7 +89,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section spreadsheet-control'>
-                    <SpreadsheetComponent showRibbon={false} showFormulaBar= {false} allowOpen= {false} allowSave= {false}
+                    <SpreadsheetComponent showRibbon={false} showFormulaBar= {false} cssClass= {'e-custom-spreadsheet'} allowOpen= {false} allowSave= {false}
                         ref={(ssObj) => { this.spreadsheet = ssObj }} created={this.onCreated.bind(this)} name= {'Candidates List'}
                         scrollSettings={this.scrollSettings} allowEditing={false} selectionSettings = {this.selectionSettings}>
                         <SheetsDirective>

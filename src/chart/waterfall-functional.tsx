@@ -58,7 +58,7 @@ const Waterfall = () => {
                 <ChartComponent id='charts' load={load.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction : Browser.isDevice ? 'None' : 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width: 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ lineStyle: {width: 0}, minimum: 0, maximum: 1250, interval: 250, majorGridLines: { width: 1 }, minorTickLines: {width: 0}, title: 'USD', labelFormat: "{value}K" }} tooltip={{ enable: true, format: '<b>${point.x}</b> <br> Product Revenue : <b>${point.y}</b>', header: " " }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: false }} title='Company Revenue and Profit' loaded={onChartLoad.bind(this)}>
                     <Inject services={[WaterfallSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, Legend, DataLabel]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data} border={{color:'black' , width: 1}} xName='x' yName='y' type='Waterfall' intermediateSumIndexes={[4]} sumIndexes={[7]} marker={{ dataLabel: { visible: true,font:{color:'#ffffff'} }, }} connector={{ color: '#5F6A6A', width: 2 }} columnWidth={0.9} negativeFillColor='#e56590' />
+                        <SeriesDirective dataSource={data} border={{color:'black' , width: 1}} xName='x' yName='y' type='Waterfall' intermediateSumIndexes={[4]} sumIndexes={[7]} marker={{ dataLabel: { visible: true,font:{color:'#ffffff'} }, }} connector={{ color: '#5F6A6A', width: 2 }} negativeFillColor='#e56590' />
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs } from '@syncfusion/ej2-react-heatmap';
+import { useEffect, useRef } from "react";
+import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs, TitleModel, AxisModel, CellSettingsModel, PaletteSettingsModel } from '@syncfusion/ej2-react-heatmap';
 import * as data from './table-bubble-data.json';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
@@ -8,43 +9,73 @@ import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 
 // custom code start
 const SAMPLE_CSS: any = `
-#control-container {
-    padding: 0px !important;
-}
-#source{
-    float: right; margin-right: 10p
-}`;
+    #control-container {
+        padding: 0px !important;
+    }
+    #source{
+        float: right; margin-right: 10p
+    }`;
 // custom code end
 /**
  * HeatMap Bubble Type sample
  */
-function BubbleTypes() {
+const BubbleTypes = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let heatmap: HeatMapComponent;
-    let dropElement: DropDownListComponent;
+    let heatmap = useRef<HeatMapComponent>(null);
     let droplist: { [key: string]: Object }[] = [
         { value: 'Size' },
         { value: 'Color' },
         { value: 'Sector' }
     ];
-
-    function change(e: Event): void {
-        let type: any = document.getElementById('LegendPosition');
-        heatmap.cellSettings.bubbleType = type.value;
-        heatmap.refresh();
+    let title: TitleModel = {
+        text: 'Female Participation Rate in Labor Force for the Countries',
+        textStyle: {
+            size: '15px',
+            fontWeight: '500',
+            fontStyle: 'Normal',
+            fontFamily: 'Segoe UI'
+        }
+    }
+    let xAxis: AxisModel = {
+        labels: ['Singapore', 'Spain', 'Australia', 'Germany', 'Belgium', 'USA', 'France', 'UK'],
+        labelRotation: 45,
+        labelIntersectAction: 'None'
+    }
+    let cellSettings: CellSettingsModel = {
+        border: {
+            width: 1
+        },
+        showLabel: false,
+        tileType: 'Bubble',
+        bubbleType: 'Size'
+    }
+    let paletteSettings: PaletteSettingsModel ={
+        palette: [
+            { value: 35, color: '#50A3B1' },
+            { value: 45, color: '#78D1BD' },
+            { value: 55, color: '#CAE8B4' },
+            { value: 65, color: '#EDF8B6' },
+            { value: 78, color: '#FFFFDA' }
+        ]
     }
 
-    function load(args: ILoadedEventArgs): void {
+    const change = (e: Event): void => {
+        let type: any = document.getElementById('LegendPosition');
+        heatmap.current.cellSettings.bubbleType = type.value;
+        heatmap.current.refresh();
+    }
+
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
     };
 
-    function legendTooltip(args: ITooltipEventArgs): void {
+    const legendTooltip = (args: ITooltipEventArgs): void => {
         args.content = [args.xLabel + ' | ' + args.yLabel + ' : ' + args.value + ' %'];
     };
 
@@ -52,50 +83,9 @@ function BubbleTypes() {
         <div>
             <div className='col-md-9 control-section'>
                 {/* custom code start */}
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 {/* custom code end */}
-                <HeatMapComponent id='heatmap-container' ref={t => heatmap = t}
-                    titleSettings={{
-                        text: 'Female Participation Rate in Labor Force for the Countries',
-                        textStyle: {
-                            size: '15px',
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI'
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['Singapore', 'Spain', 'Australia', 'Germany', 'Belgium', 'USA', 'France', 'UK'],
-                        labelRotation: 45,
-                        labelIntersectAction: 'None'
-                    }}
-                    yAxis={{
-                        labels: ['1995', '2000', '2005', '2010', '2015']
-                    }}
-                    dataSource={(data as any).tableBubbleData}
-                    cellSettings={{
-                        border: {
-                            width: 1
-                        },
-                        showLabel: false,
-                        tileType: 'Bubble',
-                        bubbleType: 'Size'
-                    }}
-                    tooltipRender={legendTooltip}
-                    paletteSettings={{
-                        palette: [{ value: 35, color: '#50A3B1' },
-                        { value: 45, color: '#78D1BD' },
-                        { value: 55, color: '#CAE8B4' },
-                        { value: 65, color: '#EDF8B6' },
-                        { value: 78, color: '#FFFFDA' }
-                        ],
-                    }}
-                    load={load.bind(this)}
-                    legendSettings={{
-                        visible: true,
-                    }}>
+                <HeatMapComponent id='heatmap-container' ref={heatmap} titleSettings={title} xAxis={xAxis} yAxis={{ labels: ['1995', '2000', '2005', '2010', '2015'] }} dataSource={(data as any).tableBubbleData} cellSettings={cellSettings} tooltipRender={legendTooltip} paletteSettings={paletteSettings} load={load.bind(this)} legendSettings={{ visible: true }}>
                     <Inject services={[Legend, Tooltip]} />
                 </HeatMapComponent>
                 <div id="source">Source:
@@ -112,9 +102,7 @@ function BubbleTypes() {
                                 </td>
                                 <td style={{ width: '60%' }}>
                                     <div>
-                                        <DropDownListComponent width="120px" id="LegendPosition" change={change.bind(this)}
-                                            ref={d => dropElement = d} dataSource={droplist}
-                                            fields={{ text: 'value', value: 'value' }} text="Size" value="Size" />
+                                        <DropDownListComponent width="120px" id="LegendPosition" change={change.bind(this)} dataSource={droplist} fields={{ text: 'value', value: 'value' }} text="Size" value="Size" />
                                     </div>
                                 </td>
                             </tr>
@@ -123,17 +111,11 @@ function BubbleTypes() {
                 </PropertyPane>
             </div>
             <div id="action-description">
-                <p>
-                    This sample visualizes the female participation rate of the total female population in the country’s work force. In Bubble Heatmap, the data points can be visualized using bubble size, bubble shade and sector view types. In property panel, the options are available to change the view of the data points in the bubble Heatmap by means of dropdown.
-                </p>
+                <p>This sample visualizes the female participation rate of the total female population in the country’s work force. In Bubble Heatmap, the data points can be visualized using bubble size, bubble shade and sector view types. In property panel, the options are available to change the view of the data points in the bubble Heatmap by means of dropdown.</p>
             </div>
             <div id="description">
-                <p>
-                    In this example, you can see how to display the data points in bubble heatmap using multiple views such as bubble size, bubble shade and the sector. You can change the cell type to bubble by using the <code>tileType</code> property in <code>cellSettings</code>, and you can change the view of the bubble heatmap by using the bubbleType property in cellSettings.
-                </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                </p>
+                <p>In this example, you can see how to display the data points in bubble heatmap using multiple views such as bubble size, bubble shade and the sector. You can change the cell type to bubble by using the <code>tileType</code> property in <code>cellSettings</code>, and you can change the view of the bubble heatmap by using the bubbleType property in cellSettings.</p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -145,5 +127,4 @@ function BubbleTypes() {
         </div >
     );
 }
-
 export default BubbleTypes;

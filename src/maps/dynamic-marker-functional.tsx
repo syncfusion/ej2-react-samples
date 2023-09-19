@@ -3,13 +3,11 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { useEffect, useRef, useState } from "react";
 import { NavigationLine, Zoom, IMouseEventArgs, MarkerType } from '@syncfusion/ej2-maps';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { ButtonComponent, CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
-import {
-    MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, MarkerSettingsModel,
-    MarkerSettings
-} from '@syncfusion/ej2-react-maps';
+import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, MarkerSettingsModel, MarkerSettings } from '@syncfusion/ej2-react-maps';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
@@ -21,16 +19,16 @@ const SAMPLE_CSS = `
         border-bottom-color: inherit;
         background-image: none;
     }`;
-function DynamicMarker() {
-
-    React.useEffect(() => {
+const DynamicMarker = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-
-    let mapInstance: MapsComponent;
-    let dropElement: DropDownListComponent;
-    let connectLineInstance: CheckBoxComponent;
-    let buttonInstance: ButtonComponent;
+    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
+    const [isDropdownEnabled, setIsDropdownEnabled] = useState<boolean>(true);
+    let mapInstance = useRef<MapsComponent>(null);
+    let dropElement = useRef<DropDownListComponent>(null);
+    let connectLineInstance = useRef<CheckBoxComponent>(null);
+    let buttonInstance = useRef<ButtonComponent>(null);
     let markerCheck: boolean = true;
     let lineCheck: boolean;
     let connectLineCheck: boolean;
@@ -38,7 +36,6 @@ function DynamicMarker() {
     let latitude: number[] = [];
     let longitude: number[] = [];
     let textElement: TextBoxComponent;
-
     let droplist: { [key: string]: Object }[] = [
         { value: 'Image' },
         { value: 'Circle' },
@@ -46,22 +43,18 @@ function DynamicMarker() {
         { value: 'Star' },
         { value: 'Triangle' }
     ];
-
     let emptySavedLinePositions: any = () => {
         latitude = [];
         longitude = [];
     };
-
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as MapsTheme;
         // custom code end
     };
-
-    function click(args: IMouseEventArgs): void {
+    const click = (args: IMouseEventArgs): void => {
         if (markerCheck) {
             addMarker(args);
         }
@@ -72,57 +65,50 @@ function DynamicMarker() {
             addLine(args, textElement.value, true);
         }
         if (markerCheck || lineCheck || connectLineCheck) {
-            mapInstance.refresh();
-            if (buttonInstance.disabled && (mapInstance.layers[0].markerSettings.length ||
-                mapInstance.layers[0].navigationLineSettings.length)) {
-                buttonInstance.disabled = false;
+            mapInstance.current.refresh();
+            if (buttonInstance.current.disabled && (mapInstance.current.layers[0].markerSettings.length || mapInstance.current.layers[0].navigationLineSettings.length)) {
+                setIsButtonDisabled(false);
             }
         }
     };
-
-    function markerChange(args: ChangeEventArgs) {
+    const markerChange = (args: ChangeEventArgs) => {
         markerCheck = args.checked;
-        dropElement.enabled = args.checked;
+        setIsDropdownEnabled(args.checked);
     };
-
-    function lineChange(args: ChangeEventArgs) {
+    const lineChange = (args: ChangeEventArgs) => {
         lineCheck = args.checked;
         if (args.checked) {
-            connectLineInstance.disabled = false;
-            connectLineInstance.checked = false;
+            connectLineInstance.current.disabled = false;
+            connectLineInstance.current.checked = false;
             textElement.enabled = true;
         } else {
             connectLineCheck = args.checked;
             emptySavedLinePositions();
-            connectLineInstance.disabled = true;
-            connectLineInstance.checked = false;
+            connectLineInstance.current.disabled = true;
+            connectLineInstance.current.checked = false;
             textElement.enabled = false;
         }
     };
-
-    function connectLineChange(args: ChangeEventArgs) {
+    const connectLineChange = (args: ChangeEventArgs) => {
         connectLineCheck = args.checked;
         if (!args.checked) {
             emptySavedLinePositions();
         }
     };
-
-    function buttonClick(args: Event): void {
-        mapInstance.layers[0].markerSettings = [];
-        mapInstance.layers[0].navigationLineSettings = [];
+    const buttonClick = (args: Event): void => {
+        mapInstance.current.layers[0].markerSettings = [];
+        mapInstance.current.layers[0].navigationLineSettings = [];
         navigationLines = [];
         emptySavedLinePositions();
-        mapInstance.refresh();
-        buttonInstance.disabled = true;
+        mapInstance.current.refresh();
+        setIsButtonDisabled(true);
     };
-
-    function addMarker(args: any) {
+    const addMarker = (args: any) => {
         if (args['latitude'] !== null && args['longitude'] !== null) {
-            let layerIndex: number = (args.target.indexOf('_LayerIndex_') !== -1) ?
-                parseFloat(args.target.split('_LayerIndex_')[1].split('_')[0]) : 0;
+            let layerIndex: number = args.target.indexOf('_LayerIndex_') !== -1 ? parseFloat(args.target.split('_LayerIndex_')[1].split('_')[0]) : 0;
             let marker: MarkerSettingsModel[];
-            let dynamicMarker: MarkerSettingsModel[] = mapInstance.layersCollection[layerIndex].markerSettings;
-            dynamicMarker.push(new MarkerSettings(mapInstance, 'markerSettings', marker));
+            let dynamicMarker: MarkerSettingsModel[] = mapInstance.current.layersCollection[layerIndex].markerSettings;
+            dynamicMarker.push(new MarkerSettings(mapInstance.current, 'markerSettings', marker));
             let markerIndex: number = dynamicMarker.length - 1;
             dynamicMarker[markerIndex].visible = true;
             dynamicMarker[markerIndex].dataSource = [
@@ -130,14 +116,13 @@ function DynamicMarker() {
             ];
             dynamicMarker[markerIndex].animationDuration = 0;
             dynamicMarker[markerIndex].fill = '#DB4537';
-            dynamicMarker[markerIndex].shape = (dropElement.value !== 'Image') ? dropElement.value as MarkerType : 'Image';
-            dynamicMarker[markerIndex].height = (dropElement.value !== 'Image') ? 12 : 20;
-            dynamicMarker[markerIndex].width = (dropElement.value !== 'Image') ? 12 : 20;
-            dynamicMarker[markerIndex].imageUrl = (dropElement.value !== 'Image') ? '' : 'src/maps/images/ballon.png';
+            dynamicMarker[markerIndex].shape = dropElement.current.value !== 'Image' ? dropElement.current.value as MarkerType : 'Image';
+            dynamicMarker[markerIndex].height = dropElement.current.value !== 'Image' ? 12 : 20;
+            dynamicMarker[markerIndex].width = dropElement.current.value !== 'Image' ? 12 : 20;
+            dynamicMarker[markerIndex].imageUrl = dropElement.current.value !== 'Image' ? '' : 'src/maps/images/ballon.png';
         }
     };
-
-    function addLine(lineArgs: any, lineWidth: any, connectiveLine?: boolean) {
+    const addLine = (lineArgs: any, lineWidth: any, connectiveLine?: boolean) => {
         if (lineArgs.latitude != null && lineArgs.longitude != null) {
             latitude.push(lineArgs.latitude);
             longitude.push(lineArgs.longitude);
@@ -151,7 +136,7 @@ function DynamicMarker() {
                 'color': 'blue',
                 'width': (lineWidth > 5) ? 5 : (((5 >= lineWidth) && (lineWidth >= 1)) ? lineWidth : 1)
             });
-            mapInstance.layers[0].navigationLineSettings = navigationLines;
+            mapInstance.current.layers[0].navigationLineSettings = navigationLines;
             if (!connectiveLine) {
                 emptySavedLinePositions();
             }
@@ -159,18 +144,12 @@ function DynamicMarker() {
     };
     return (
         <div className='control-panel'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='col-lg-9 control-section'>
-                <MapsComponent id="container" load={load} click={click.bind(this)} ref={m => mapInstance = m}
-                    zoomSettings={{
-                        enable: true
-                    }}>
+                <MapsComponent id="container" load={load} click={click.bind(this)} ref={mapInstance} zoomSettings={{ enable: true }}>
                     <Inject services={[Marker, NavigationLine, Zoom]} />
                     <LayersDirective>
-                        <LayerDirective layerType='OSM'>
-                        </LayerDirective>
+                        <LayerDirective layerType='OSM' />
                     </LayersDirective>
                 </MapsComponent>
                 <div>
@@ -193,7 +172,7 @@ function DynamicMarker() {
                                 </td>
                                 <td style={{ width: '50%' }}>
                                     <div style={{ marginLeft: '0px', marginTop: '-2px' }}>
-                                        <CheckBoxComponent id='marker' change={markerChange.bind(this)} checked></CheckBoxComponent>
+                                        <CheckBoxComponent id='marker' change={markerChange.bind(this)} checked />
                                     </div>
                                 </td>
                             </tr>
@@ -203,7 +182,7 @@ function DynamicMarker() {
                                 </td>
                                 <td style={{ width: '50%' }}>
                                     <div style={{ marginLeft: '0px', marginTop: '-2px' }}>
-                                        <CheckBoxComponent id='line' change={lineChange.bind(this)}></CheckBoxComponent>
+                                        <CheckBoxComponent id='line' change={lineChange} />
                                     </div>
                                 </td>
                             </tr>
@@ -213,19 +192,16 @@ function DynamicMarker() {
                                 </td>
                                 <td style={{ width: '50%' }}>
                                     <div style={{ marginLeft: '0px', marginTop: '-2px' }}>
-                                        <CheckBoxComponent id='connect' change={connectLineChange.bind(this)} ref={d => connectLineInstance = d} disabled></CheckBoxComponent>
+                                        <CheckBoxComponent id='connect' change={connectLineChange.bind(this)} ref={connectLineInstance} disabled />
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '15px' }}></tr>
                             <tr style={{ height: '35px' }}>
-                                <td style={{ width: '50%' }}>
-                                    Marker type
-                                </td>
+                                <td style={{ width: '50%' }}>Marker type</td>
                                 <td style={{ width: '50%', marginLeft: '20px' }}>
                                     <div>
-                                        <DropDownListComponent id='type' fields={{ text: 'value', value: 'value' }} ref={d => dropElement = d}
-                                            dataSource={droplist} index={0} placeholder='Select marker shape' width={'100%'}></DropDownListComponent>
+                                        <DropDownListComponent id='type' fields={{ text: 'value', value: 'value' }} enabled={isDropdownEnabled} ref={dropElement} dataSource={droplist} index={0} placeholder='Select marker shape' width={'100%'}></DropDownListComponent>
                                     </div>
                                 </td>
                             </tr>
@@ -243,8 +219,7 @@ function DynamicMarker() {
                             <tr style={{ height: '60px' }}>
                                 <td>
                                     <div style={{ marginLeft: '50%', width: '100%', textAlign: 'center' }}>
-                                        <ButtonComponent id='togglebtn' cssClass='e-info' isPrimary={true} onClick={buttonClick.bind(this)}
-                                            style={{ textTransform: 'none', width: '80px', marginTop: '2px' }} ref={d => buttonInstance = d}>Clear</ButtonComponent>
+                                        <ButtonComponent id='togglebtn' cssClass='e-info' isPrimary={true} onClick={buttonClick.bind(this)} style={{ textTransform: 'none', width: '80px', marginTop: '2px' }} ref={buttonInstance} disabled={isButtonDisabled}>Clear</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>
@@ -253,22 +228,17 @@ function DynamicMarker() {
                 </PropertyPane>
             </div>
             <div id="action-description">
-                <p>
-                    This sample shows how custom markers and lines can be dynamically added to our maps with UI interaction. Marker or line can be chosen from the properties panel. </p>
+                <p>This sample shows how custom markers and lines can be dynamically added to our maps with UI interaction. Marker or line can be chosen from the properties panel.</p>
             </div>
             <div id="description">
-                <p>
-                    Using UI interaction, the markers or line can be added as follows: You can get the currently clicked geo location by passing "PointerEvent" or "MouseEvent" argument and layer index to the "getGeoLocation" method. Then, use that geo position to place the marker or line in the appropriate position.
-                </p>
+                <p>Using UI interaction, the markers or line can be added as follows: You can get the currently clicked geo location by passing "PointerEvent" or "MouseEvent" argument and layer index to the "getGeoLocation" method. Then, use that geo position to place the marker or line in the appropriate position.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p>
                     The features of maps component are segregated into individual feature-wise modules. To use navigation lines and marker, you need to inject the <code>NavigationLine </code> and <code>Marker </code> module using the <code>Maps.Inject(NavigationLine, Marker)</code> method.
                 </p>
             </div>
-        </div >
+        </div>
     )
 }
-
 export default DynamicMarker;
-

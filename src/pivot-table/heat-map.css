@@ -1,0 +1,128 @@
+.e-pivotview {
+    width: 100%;
+    height: 100%;
+}
+
+.sb-sample-content-area {
+    min-height: 255px !important;
+}
+
+.control-section {
+    min-height: 255px !important;
+}
+
+#PivotView-Heatmap .e-collapse {
+    display: none;
+}
+
+.range1 {
+    background-color: #fb6262 !important;
+    border-color: #f26666 !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range2 {
+    background-color: #ff6c6c !important;
+    border-color: #ff6c6c !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range3 {
+    background-color: #ff8474 !important;
+    border-color: #ff8474 !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range4 {
+    background-color: #ffa474 !important;
+    border-color: #ffa474 !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range5 {
+    background-color: #ffac7c !important;
+    border-color: #ffac7c !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range6 {
+    background-color: #ffcc7c !important;
+    border-color: #ffcc7c !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range7 {
+    background-color: #ffe484 !important;
+    border-color: #ffe484 !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range8 {
+    background-color: #f8e484 !important;
+    border-color: #f8e484 !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range9 {
+    background-color: #e0dc84 !important;
+    border-color: #e0dc84 !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range10 {
+    background-color: #b8d47c !important;
+    border-color: #b8d47c !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range11 {
+    background-color: #a8d47c !important;
+    border-color: #a8d47c !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range12 {
+    background-color: #8bc97d !important;
+    border-color: #8bc97d !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range13 {
+    background-color: #68bc7c !important;
+    border-color: #68bc7c !important;
+    font-weight: 500;
+    color: black !important;
+    text-shadow: 0px 0px black;
+}
+
+.range14 {
+    background-color: #66bb71 !important;
+    color: black !important;
+    font-weight: 500;
+    border-color: #66bb71 !important;
+    text-shadow: 0px 0px black;
+}

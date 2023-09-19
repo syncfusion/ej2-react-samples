@@ -52,6 +52,8 @@ const SAMPLE_CSS = `
 const ChartExport = () => {
     useEffect(() => {
         updateSampleSection();
+        const button = document.getElementById('chart-export');
+        button.addEventListener('click', onClick);
     }, [])
     let chartInstance = useRef<ChartComponent>(null);
     let mode = useRef<DropDownListComponent>(null);
@@ -60,7 +62,9 @@ const ChartExport = () => {
         { value: 'JPEG' },
         { value: 'PNG' },
         { value: 'SVG' },
-        { value: 'PDF' }
+        { value: 'PDF' },
+        { value: 'XLSX' },
+        { value: 'CSV' }
     ];
     const onChartLoad = (args: ILoadedEventArgs): void => {
         let chart: Element = document.getElementById('charts');
@@ -113,35 +117,37 @@ const ChartExport = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
-                <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelIntersectAction: "None", labelRotation: -45, interval: 1 }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Measurements (in Gigawatt)', labelFormat: '{value}GW', minimum: 0, maximum: 40, interval: 10, lineStyle: {width : 0}, majorGridLines: { width: 2 }, minorTickLines: {width: 0}, majorTickLines: {width : 0} }} pointRender={labelRender.bind(this)} load={load.bind(this)} title="Top 10 Countries Using Solar Power" loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
+                <div className='col-lg-9'>
+                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelIntersectAction: "None", labelRotation: -45, interval: 1 }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}GW', minimum: 0, maximum: 40, interval: 10, lineStyle: {width : 0}, majorGridLines: { width: 2 }, minorTickLines: {width: 0}, majorTickLines: {width : 0} }} pointRender={labelRender.bind(this)} load={load.bind(this)} legendSettings={{ visible: false }} title="Top 10 Countries Using Solar Power" loaded={onChartLoad.bind(this)}>
                         <Inject services={[ColumnSeries, Category, Legend, Export, DataLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} marker={{ dataLabel: { visible: true, name: 'DataLabelMappingName', enableRotation: Browser.isDevice ? true : false, angle: -90, position: 'Top', font: {  fontWeight: '600', color: '#ffffff', size: '9px' } } }} type='Column' />
+                            <SeriesDirective dataSource={data1} name='Measurements (in Gigawatt)' xName='x' yName='y' width={2} marker={{ dataLabel: { visible: true, name: 'DataLabelMappingName', enableRotation: Browser.isDevice ? true : false, angle: -90, position: 'Top', font: {  fontWeight: '600', color: '#ffffff', size: '9px' } } }} type='Column' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
-                <div className='col-md-4 property-section'>
+                <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                             <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>Export Type:</td>
-                                <td style={{ width: "30%" }}>
-                                    <DropDownListComponent width={120} id="etype" value="JPEG" ref={mode} dataSource={type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                <td style={{ width: "40%" }}>Export Type:</td>
+                                <td style={{ width: "60%" }}>
+                                    <div style={{ "marginLeft": "-10px" }}>
+                                        <DropDownListComponent id="etype" value="JPEG" width={90} ref={mode} dataSource={type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                    </div>
                                 </td>
                             </tr>
                             <tr style={{ height: "50px" }}>
                                 <td style={{ width: "40%" }}>File Name:</td>
                                 <td style={{ width: "40%" }}>
-                                    <div className="e-float-input" style={{ width: 120, 'marginTop': '0px' }}>
-                                        <input type="text" ref={inputObj} defaultValue="Chart" id="fileName" style={{ "marginLeft": "-10px" }} />
+                                    <div className="e-float-input" style={{ 'marginTop': '0px', "marginLeft": "-10px" }}>
+                                        <input type="text" ref={inputObj} defaultValue="Chart" id="fileName" style={{ "width": "90px" }} />
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td>
-                                    <div id="btn-control" style={{ 'marginLeft': '60px' }}>
-                                        <ButtonComponent onClick={onClick.bind(this)} iconCss='e-icons e-export-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                    <div id="btn-control" style={{ 'marginLeft': '50%' }}>
+                                        <ButtonComponent id="chart-export" iconCss='e-icons e-export icon' isPrimary={true}>Export</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>
@@ -150,10 +156,14 @@ const ChartExport = () => {
                 </div>
             </div>
             <div id="action-description">
-                <p>This example demonstrates how to save the chart as a PDF file and in image formats including JPEG, PNG, and SVG.</p>
+                <p>This sample demonstrates client-side exporting of the chart, enabling you to export its data to Excel, PDF, and CSV formats. Additionally, it allows you to save the chart in image formats such as JPEG, PNG, and SVG.</p>
             </div>
             <div id="description">
-                <p>By clicking on Export button, you can <b>export</b> the chart to the specific type using ExportAsync method. To be more precise, define parameters such as the export type and the file name while exporting.</p>
+            <p>In this example, you can see how the export functionality is configured. The rendered chart can be exported in JPEG, PNG, SVG, and PDF file types. Data from the chart can also be exported to Excel and CSV files.</p>
+                <p><b>Injecting Module</b></p>
+                <p>
+                    Chart component features are segregated into individual feature-wise modules. To use export, we need to inject <code>export</code> module into <code>services</code>.
+                </p>
                 <p>
                     More information on the export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#export">documentation section</a>.
                 </p>

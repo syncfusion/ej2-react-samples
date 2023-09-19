@@ -1,0 +1,230 @@
+.bootstrap5-dark .sb-reset-icon:before {
+    content: '\e7e7';
+}
+
+.bootstrap5-dark .copycode::before {
+    content: '\e77c';
+    font-size: 25px;
+}
+
+/*bootstrap5-dark */
+.bootstrap5-dark .sb-plnr-section {
+    line-height: 25px;
+    height: 30px;
+}
+
+.bootstrap5-dark .sample-navigation,
+.bootstrap5-dark .sb-open-new-wrapper {
+    line-height: 33px;
+}
+
+.bootstrap5-dark .sb-content,
+.bootstrap5-dark textarea#ruleContent,
+.bootstrap5-dark .sb-search-result .e-list-group-item {
+    background: #212529 !important;
+}
+
+.bootstrap5-dark .sb-home {
+    color: #ffffff
+}
+
+.bootstrap5-dark .sb-left-pane .e-listview .e-list-item.e-active:hover,
+.bootstrap5-dark .sb-home,
+.bootstrap5-dark .sb-reset-icon {
+    color: #ffffff
+}
+
+body.bootstrap5-dark,
+.bootstrap5-dark #sb-header-text,
+.bootstrap5-dark .control-name,
+.bootstrap5-dark .sample-navigation,
+.bootstrap5-dark .sb-icon-Popout,
+.bootstrap5-dark .sb-switch-popup a {
+    color: #fff;
+}
+
+.bootstrap5-dark .sb-header,
+.bootstrap5-dark .sb-search-result .e-list-item,
+.bootstrap5-dark .sb-search-result .e-list-group-item {
+    background: #212529;
+}
+
+.bootstrap5-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background: #0d6efd;
+}
+
+.bootstrap5-dark #left-sidebar {
+    color: #c2c0c0;
+    background: #212529;
+}
+
+.bootstrap5-dark #left-sidebar {
+    border: none;
+}
+
+.bootstrap5-dark .sb-mobile-right-pane {
+    background: #212529;
+}
+
+.bootstrap5-dark .e-icons.back-icon,
+.bootstrap5-dark .sb-plnr-section,
+.bootstrap5-dark .sb-bread-crumb,
+.bootstrap5-dark .sb-component-name,
+.bootstrap5-dark .sb-icon-Home,
+.bootstrap5-dark .description-header,
+.bootstrap5-dark .sample-navigation>button:hover,
+.bootstrap5-dark .sb-switch-popup li:first-child,
+.bootstrap5-dark .sb-left-pane .e-listview .e-list-group-item,
+.bootstrap5-dark .sb-icon-Hamburger:active,
+.bootstrap5-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.bootstrap5-dark .sb-theme-popup li.active .sb-theme-select {
+    color: #0d6efd !important;
+}
+
+.bootstrap5-dark .sb-content-section,
+.bootstrap5-dark .sb-switch-popup .bootstrap5-dark .sb-content-tab-header,
+.bootstrap5-dark .sb-content-section .sb-content-tab-header {
+    background: #212529;
+    border-color: #c1c1c1;
+}
+
+.bootstrap5-dark .sample-navigation>button:hover,
+.bootstrap5-dark .sb-plnr-section,
+.bootstrap5-dark .sb-icon-Popout:hover,
+.bootstrap5-dark .sb-icon-Hamburger,
+.bootstrap5-dark .sb-setting-translate,
+.bootstrap5-dark .sb-footer-links a,
+.bootstrap5-dark .description-section a {
+    color: #0d6efd;
+}
+
+.bootstrap5-dark code,
+.bootstrap5-dark .sb-switch-popup,
+.bootstrap5-dark .sb-setting-popup,
+.bootstrap5-dark .sb-search-result,
+.bootstrap5-dark .sb-src-code,
+.bootstrap5-dark .CodeMirror,
+.bootstrap5-dark .sb-api-section,
+.bootstrap5-dark .sb-theme-popup,
+.bootstrap5-dark .copy-tooltip,
+.bootstrap5-dark .e-icons.copycode,
+.bootstrap5-dark #search-input-wrapper input,
+.bootstrap5-dark #search-input-wrapper input::placeholder {
+    color: #ffffff;
+    background: #212529;
+}
+
+.bootstrap5-dark .sb-search-btn:hover,
+.bootstrap5-dark .sb-search-btn.active,
+.bootstrap5-dark .sb-setting-btn:hover,
+.bootstrap5-dark .sb-setting-btn.active,
+.bootstrap5-dark .sb-switch-popup li:hover,
+.bootstrap5-dark .theme-wrapper:hover,
+.bootstrap5-dark .theme-wrapper.active,
+.bootstrap5-dark .sb-theme-popup li:hover,
+.bootstrap5-dark .sb-search-result .e-list-item:hover,
+.bootstrap5-dark .sb-left-pane .e-listview .e-list-item:hover {
+    background-color: #363636;
+
+}
+
+.bootstrap5-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow {
+    background-color: #363636;
+    border: none;
+}
+
+.bootstrap5-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow,
+.bootstrap-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow {
+    background-color: #363636;
+    border: none;
+}
+
+.bootstrap5-dark .setting-responsive .sb-responsive-items {
+    width: 104px;
+    background-color: #363636;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid transparent;
+    display: table-cell;
+    cursor: pointer;
+}
+
+.bootstrap5-dark .setting-responsive .sb-responsive-items.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.bootstrap5-dark .sb-left-pane .e-listview .e-list-item.e-active,
+.bootstrap5-dark .cont,
+.bootstrap5-dark .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow,
+.bootstrap5-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background-color: #0d6efd;
+}
+
+.bootstrap5-dark .sb-left-pane .e-listview .e-list-item:hover {
+    color: aliceblue;
+}
+
+.bootstrap5-dark .control-name {
+    color: #ffffff;
+}
+
+.bootstrap5-dark .sb-left-pane,
+.bootstrap5-dark .sb-mobile-left-pane,
+.bootstrap5-dark .sb-body-overlay {
+    background: #212529;
+}
+
+.bootstrap5-dark .sb-mobilefooter>.e-btn.e-flat {
+    background: #212529;
+    color: #fff;
+}
+
+.bootstrap5-dark .sb-mobilefooter>.e-btn.e-flat:hover {
+    color: #0d6efd;
+}
+
+.bootstrap5-dark .sb-header-text-left,
+.bootstrap5-dark .sb-header-text-right {
+    color: #ffffff
+}
+
+.bootstrap5-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.bootstrap5-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text:hover,
+.bootstrap5-dark .sb-search-result .e-list-group-item {
+    color: #0d6efd !important;
+}
+
+.bootstrap5-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text {
+    color: #ffffff !important;
+}
+
+.bootstrap5-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.bootstrap5-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text:hover,
+.bootstrap5-dark .sb-search-result .e-list-group-item {
+    color: #0d6efd !important;
+}
+
+.bootstrap5-dark .e-samplestatus.new,
+.bootstrap5-dark .e-samplestatus.update,
+.bootstrap5-dark .e-samplestatus.preview {
+    margin: 4px 0;
+    height: 22px;
+    margin-top: 0.5px;
+}
+
+.bootstrap5-dark .e-samplestatus.new.tree,
+.bootstrap5-dark .e-samplestatus.update.tree,
+.bootstrap5-dark .e-samplestatus.preview.tree {
+    margin-top: 6px;
+}
+
+.bootstrap5-dark .sb-theme-popup li:hover .sb-theme-select {
+    color: transparent !important;
+}
+
+.bootstrap5-dark .sb-theme-popup li:hover.active .sb-theme-select,
+.bootstrap5-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-text-content .e-list-text {
+    color: white !important;
+}

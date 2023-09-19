@@ -46,7 +46,7 @@ export class TasklabelTemplate extends SampleBase<{}, {}> {
     taskLabel: '${Progress}%'
   };
   public splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   public projectStartDate: Date = new Date('03/24/2019');
   public projectEndDate: Date = new Date('05/04/2019');

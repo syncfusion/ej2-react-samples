@@ -63,7 +63,7 @@ const PolarScatter = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ minimum: 0, maximum: 8, interval: 2 }} legendSettings= {{ visible: true, enableHighlight: true }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: "<b>${point.text}</b> <br>GDP: <b>${point.y}%</b>", header: " " }}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ minimum: 0, maximum: 8, interval: 2 }} legendSettings= {{ visible: true, enableHighlight: true }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: '${point.text} : <b>${point.y}%</b>' }}>
                         <Inject services={[Legend, Category, PolarSeries, RadarSeries, Highlight, ScatterSeries, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='text' yName='y' name='2015' type={type} drawType='Scatter' marker={{ height: 7, width: 7, dataLabel: { name: 'text' } }} />

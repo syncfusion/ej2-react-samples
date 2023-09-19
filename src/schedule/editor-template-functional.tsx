@@ -41,6 +41,14 @@ const EditorTemplate = () => {
     }
   }
 
+  const editorHeaderTemplate = (props: Record<string, any>) => {
+    return (
+      <div id="event-header">
+        {(props !== undefined ) ? ((props.Subject) ? <div>{props.Subject}</div> : <div>Create New Event</div>) : <div></div>}
+      </div>
+    );
+  }
+
   const editorTemplate = (props: Record<string, any>) => {
     return ((props !== undefined) ? 
       <table className="custom-event-editor" style={{ width: '100%' }} cellPadding={5}>
@@ -85,7 +93,7 @@ const EditorTemplate = () => {
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={scheduleObj} eventSettings={{ dataSource: data }} editorTemplate={editorTemplate} actionBegin={onActionBegin} showQuickInfo={false} eventRendered={onEventRendered}>
+          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={scheduleObj} eventSettings={{ dataSource: data }} editorTemplate={editorTemplate} editorHeaderTemplate={editorHeaderTemplate} actionBegin={onActionBegin} showQuickInfo={false} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -107,6 +115,9 @@ const EditorTemplate = () => {
         <p>
           In this demo, the event window is customized based on the specific appointment-related fields required for doctors which can 
           be achieved by making use of the <code>editorTemplate</code> API and it is achieved using <code>functional component</code>.
+        </p>
+        <p> 
+          In this demo, the editor window header is customized based on the appointment subject field which can be achieved by the <code>editorHeaderTemplate</code>. 
         </p>
         <p>
           Each field defined through it should contain the <code>e-field</code> class,and <code>data-name</code> attribute,

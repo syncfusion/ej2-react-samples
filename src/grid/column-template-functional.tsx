@@ -42,7 +42,7 @@ function ColumnTemplate() {
                 <p>
                     The Grid provides a way to use a custom layout for each cell using column template feature. The
                     <code><a target="_blank" className="code"
-                        href="https://ej2.syncfusion.com/react/documentation/grid/api-column.html#template">columns-&gt;template
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#template">columns-&gt;template
                     </a></code> property accepts the template for the cell.
                 </p>
                 <p>

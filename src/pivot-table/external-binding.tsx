@@ -88,12 +88,13 @@ export class Integration extends SampleBase<{}, {}> {
                     text: 'Sales Analysis'
                 },
                 legendSettings: {
-                    position: 'Top'
+                    visible: false,
+                    position: 'Top',
                 },
                 xAxis: {
                     title: { text: this.pivotObj.dataSourceSettings.rows.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
                     labels: this.xLabels,
-                    labelRotation: 315
+                    labelIntersectAction: "Trim" 
                 },
                 yAxis: {
                     title: { text: this.pivotObj.dataSourceSettings.values.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
@@ -117,7 +118,7 @@ export class Integration extends SampleBase<{}, {}> {
             this.heatmap.xAxis = {
                 title: { text: this.pivotObj.dataSourceSettings.rows.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
                 labels: this.xLabels,
-                labelRotation: 315
+                labelIntersectAction: "Trim" 
             };
             this.heatmap.yAxis = {
                 title: { text: this.pivotObj.dataSourceSettings.values.map(function (args) { return args.caption || args.name; }).join(' ~ ') },

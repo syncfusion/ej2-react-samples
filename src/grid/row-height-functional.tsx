@@ -52,7 +52,7 @@ function RowHeight() {
             <div id='description'>
                 <p>
                     The Grid has support to provide <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#rowheight'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/#rowheight'>
                         rowHeight</a></code> property.</p>
             </div>
         </div>

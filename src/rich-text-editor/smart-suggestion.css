@@ -15,16 +15,8 @@
 .e-icons.h4-view:before{
     content: 'H4';
 }
-.e-icons.emoji:before{
-    content: '🙂';
-}
-
 .e-icons.e-text:before{
     content: 'T';
-}
-
-#emojiDialog{
-    max-height: 450px !important;
 }
 
 .format-table #icons{
@@ -34,10 +26,6 @@
     font-size: 20px;
     line-height: 0px; 
 
-}
-
-.format-table .e-icons.emoji {
-    padding: 15px 12px !important;
 }
 
 .format-table #icons.e-icons.e-image, .format-table #icons.e-icons.e-audio, .format-table #icons.e-icons.e-table, 
@@ -63,77 +51,9 @@
     cursor: pointer;
 }
 
-#emojiDialog #special_char,
-#emojiDialog .char_block {
-    display: inline-block;
-}
-
 
 #rteSpecial_char {
     padding: 15px 0 15px 0;
-}
-
-.material #emojiDialog .char_block.e-active {
-    outline: 1px solid #e3165b;
-    border-color: #e3165b;
-}
-
-.material-dark #emojiDialog .char_block.e-active {
-    outline: 1px solid #56a4fd;
-    border-color: #56a4fd;
-}
-
-.fabric #emojiDialog .char_block.e-active,
-.fabric-dark #emojiDialog .char_block.e-active {
-    outline: 1px solid #0078d6;
-    border-color: #0078d6;
-}
-
-.bootstrap4 #emojiDialog .char_block.e-active {
-    outline: 1px solid #007bff;
-    border-color: #007bff;
-}
-
-.bootstrap #emojiDialog .char_block.e-active,
-.bootstrap-dark #emojiDialog .char_block.e-active {
-    outline: 1px solid #317ab9;
-    border-color: #317ab9;
-}
-
-.highcontrast #emojiDialog .char_block.e-active {
-    outline: 1px solid #ffd939;
-    border-color: #ffd939;
-}
-
-.fluent .e-rte-emoticon-tbar-section .char_block.e-active,
-.fluent-dark .e-rte-emoticon-tbar-section .char_block.e-active {
-    outline: 1px solid #0078DE;
-    border-color: #0078DE;
-}
-.material3 .e-rte-custom-tbar-section .char_block.e-active,
-.material3-dark .e-rte-custom-tbar-section .char_block.e-active {
-    outline: 1px solid #D0BCFF;
-    border-color: #D0BCFF;
-}
-
-.tailwind #emojiDialog .char_block.e-active {
-    outline: 1px solid #3730a3;
-    border-color: #3730a3;
-}
-
-.tailwind-dark #emojiDialog .char_block.e-active {
-    outline: 1px solid #22d3ee;
-    border-color: #22d3ee;
-}
-
-.bootstrap5 #emojiDialog .char_block.e-active,
-.bootstrap5-dark #emojiDialog .char_block.e-active {
-    outline: 1px solid #0D6EFD;
-    border-color: #0D6EFD;
-}
-
-#rteEmoticons-smiley {
-    padding: 15px 0 15px 8px;
 }
 
 .fabric.e-bigger .e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-btn .e-tbar-btn-text,
@@ -151,19 +71,6 @@
     padding-right: 8px;
 }
 
-#emojiDialog .char_block {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    margin: 0 5px 5px 0;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid #DDDDDD;
-    font-size: 20px;
-    cursor: pointer;
-    user-select: none;
-}
-
 #mentionFormat .e-richtexteditor .e-rte-content .e-content {
     float: left;
     width: 100%;
@@ -172,50 +79,4 @@
 #mentionFormat .content-wrapper {
     width: auto;
     margin: 0;
-}
-
-.e-bigger #emojiDialog .e-footer-content {
-    padding: 5px;
-}
-
-.e-bigger #rteEmoticons-smiley {
-    padding: 15px 0 15px 8px;
-    display: flex;
-    flex-wrap: wrap;
-    overflow: auto;
-    height: 246px;
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-    .fabric.e-bigger #emojiDialog {
-        min-width: 281px;
-    }
-
-    .fabric #emojiDialog {
-        min-width: 241px;
-    }
-
-    .bootstrap.e-bigger #emojiDialog,
-    .bootstrap #emojiDialog {
-        min-width: 223px;
-    }
-    #rteEmoticons-smiley {
-        padding: 15px 0 15px 8px;
-        display: flex;
-        flex-wrap: wrap;
-        overflow: auto;
-        height: 246px;
-    }
-    .highcontrast.e-bigger #emojiDialog {
-        min-width: 283px;
-    }
-    .highcontrast #emojiDialog {
-        min-width: 243px;
-    }
-    .material #emojiDialog {
-        min-width: 224px;
-    }
-    .material.e-bigger #emojiDialog {
-        min-width: 236px;
-    }
 }

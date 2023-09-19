@@ -1,5 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, Sort, SortDirection, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { editingData } from './data';
 import { updateSampleSection } from '../common/sample-base';
@@ -7,13 +8,13 @@ import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent, DropDownList } from '@syncfusion/ej2-react-dropdowns';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 
-function SortingAPI() {
-  React.useEffect(() => {
+const SortingAPI = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
-  let dropdownColumns: DropDownListComponent;
-  let dropdownDirection: DropDownListComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
+  let dropdownColumns = useRef<DropDownListComponent>(null);
+  let dropdownDirection = useRef<DropDownListComponent>(null);
   const dropdownColumnsData: { [key: string]: Object }[] = [
     { id: 'TaskID', type: 'TaskID' },
     { id: 'TaskName', type: 'TaskName' },
@@ -26,14 +27,14 @@ function SortingAPI() {
     { id: 'Ascending', type: 'Ascending' },
     { id: 'Descending', type: 'Descending' },
   ];
-  function sortColumn(): void {
-    let columnName: string = dropdownColumns.value as string;
-    let sortType: string = dropdownDirection.value as string;
-    ganttInstance.sortModule.sortColumn(columnName, sortType as SortDirection, false);
+  const sortColumn = (): void => {
+    let columnName: string = dropdownColumns.current.value as string;
+    let sortType: string = dropdownDirection.current.value as string;
+    ganttInstance.current.sortModule.sortColumn(columnName, sortType as SortDirection, false);
   }
 
-  function clearSort(): void {
-    ganttInstance.clearSorting();
+  const clearSort = (): void => {
+    ganttInstance.current.clearSorting();
   }
   const taskFields: any = {
     id: 'TaskID',
@@ -57,7 +58,7 @@ function SortingAPI() {
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-lg-9'>
-          <GanttComponent id='SortingAPI' ref={gantt => ganttInstance = gantt} dataSource={editingData} highlightWeekends={true}
+          <GanttComponent id='SortingAPI' ref={ganttInstance} dataSource={editingData} highlightWeekends={true}
             allowSorting={true} treeColumnIndex={1} allowSelection={true} splitterSettings={splitterSettings}
             taskFields={taskFields} labelSettings={labelSettings} height='410px'
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
@@ -85,7 +86,7 @@ function SortingAPI() {
               <tr>
                 <td style={{ width: '100%', paddingRight: '10px' }}>
                   <div>
-                    <DropDownListComponent ref={DropDownList => dropdownColumns = DropDownList} id='columns' width="150px" tabIndex={1} dataSource={dropdownColumnsData} fields={{ text: 'type', value: 'id' }}
+                    <DropDownListComponent ref={dropdownColumns} id='columns' width="150px" tabIndex={1} dataSource={dropdownColumnsData} fields={{ text: 'type', value: 'id' }}
                       value='TaskID'></DropDownListComponent>
                   </div>
                 </td>
@@ -100,7 +101,7 @@ function SortingAPI() {
               <tr>
                 <td style={{ width: '100%', paddingRight: '10px' }}>
                   <div>
-                    <DropDownListComponent ref={DropDownList => dropdownDirection = DropDownList} id='direction' width="150px" tabIndex={1} dataSource={dropdownDirectionData} fields={{ text: 'type', value: 'id' }}
+                    <DropDownListComponent ref={dropdownDirection} id='direction' width="150px" tabIndex={1} dataSource={dropdownDirectionData} fields={{ text: 'type', value: 'id' }}
                       value='Ascending'></DropDownListComponent>
                   </div>
                 </td>

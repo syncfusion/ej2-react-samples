@@ -36,7 +36,7 @@ export const KanbanSampleOrder: Object = [
         'description': 'The example demonstrates how to sort the cards in the ascending or descending based on the data source order or indexing or custom field on the Kanban board.'
     },
     {
-        'path': 'kanban/virtual-scrolling', 'component': 'VirtualScrolling', 'name': 'Virtual Scrolling', 'order': '01', 'category': 'Kanban', 'type': 'New', 'api':
+        'path': 'kanban/virtual-scrolling', 'component': 'VirtualScrolling', 'name': 'Virtual Scrolling', 'order': '01', 'category': 'Kanban', 'api':
             '{"KanbanComponent": [ "dataSource", "keyField", "columns", "cardSettings", "dialogSettings", "enableTooltip"] }',
         'description': 'The example demonstrates how to load a large number of cards in the React Kanban board with optimal load time using the virtual scrolling feature.'
     },

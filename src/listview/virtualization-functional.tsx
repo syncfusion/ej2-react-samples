@@ -53,11 +53,15 @@ const UiVirtualization = () => {
        dataSource[ds[1]] = data;
    });
    // Set customized list template
-   let template: string = '<div class="e-list-wrapper e-list-avatar">' +
-       '<span class="e-avatar e-avatar-circle ${icon} ${$imgUrl ? \'hideUI\' : \'showUI\' }">' +
-       '${icon}</span> <img class="e-avatar e-avatar-circle ${$imgUrl ? \'showUI\' : \'hideUI\' }" ' +
-       'src="${$imgUrl ?  $imgUrl : \' \' }" />' +
-       '<span class="e-list-content">${name}</span></div>';
+    function template(data: any) {
+        return (
+            <div className="e-list-wrapper e-list-avatar">
+                <span className={`e-avatar e-avatar-circle ${data.icon} ${data.imgUrl ? 'hideUI' : 'showUI'}`}>{data.icon}</span>
+                <img className={`e-avatar e-avatar-circle ${data.imgUrl ? 'showUI' : 'hideUI'}`} src={data.imgUrl ? data.imgUrl : ' '} />
+                <span className="e-list-content">{data.name}</span>
+            </div>
+        );
+    }
    // Set dropdown list data
    let ddlDatasource = [
        { value: '1', text: '1k' },

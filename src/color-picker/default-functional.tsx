@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-function Default() {
-  React.useEffect(() => {
+const Default = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   return (
@@ -16,11 +17,9 @@ function Default() {
           <ColorPickerComponent id='color-picker'></ColorPickerComponent>
         </div>
       </div>
-
       <div id="action-description">
         <p>This sample demonstrates the default functionalities of the color picker/palette with default colors and predefined styles.</p>
       </div>
-
       <div id="description">
         <p>
           The ColorPicker component is a user interface to select and adjust color values. This supports various color specifications like RGB (Red Green Blue), HSV (Hue Saturation Value), and Hex codes.</p>
@@ -33,7 +32,8 @@ function Default() {
             <li>By clicking the mode switching icon at the left bottom of the popup, switch between palette and picker mode.</li>
             <li>Using the
               <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/color-picker/#value"><code>value
-              </code></a> property, set the color value to picker and palette initially.</li>
+              </code></a> property, set the color value to picker and palette initially.
+            </li>
           </ul>
           <p>In mobile mode, the popup opens at the center of the viewport.</p>
           <p>
@@ -41,7 +41,6 @@ function Default() {
             <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/color-picker/getting-started"> documentation section</a>.</p>
         </p>
       </div>
-
     </div>
   )
 }

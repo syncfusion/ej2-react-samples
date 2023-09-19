@@ -16,7 +16,7 @@ import { ILoadedEventArgs } from '@syncfusion/ej2-circulargauge';
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS = `
-.panel {
+#apple-watch-rings .panel {
     width: 190px !important;
     height: 70px !important;
     margin-left: 5% !important;
@@ -26,7 +26,7 @@ const SAMPLE_CSS = `
     background-color: transparent;
 }
 
-.content {
+#apple-watch-rings .content {
     float: left !important;
     margin-left: 62px !important;
     margin-top: 10px !important;
@@ -38,83 +38,85 @@ const SAMPLE_CSS = `
 }
 
 @media screen and (max-width: 1160px) {
-    .panel {
+    #apple-watch-rings .panel {
         width: 165px !important;
     }
 
-    .firstcontent {
+    #apple-watch-rings .firstcontent {
         font-size: 13px !important;
     }
 
-    .secondcontent {
+    #apple-watch-rings .secondcontent {
         font-size: 15px !important;
     }
 
-    .content {
+    #apple-watch-rings .content {
         margin-top: 15px !important;
     }
 
-    .divide {
+    #apple-watch-rings .divide {
         margin-left: 0%;
     }
 }
 
 @media screen and (max-width: 990px) {
-    .panel {
+    #apple-watch-rings .panel {
        width: 190px !important;
        height: 70px !important;
        margin-left: 100% !important;
        margin-top: 10px !important;
     }
 
-    .subgauge {
+    #apple-watch-rings .subgauge {
         margin-left: 0% !important;
         margin-top: 1% !important;
     }
 
-    .content {
+    #apple-watch-rings .content {
         margin-left: 63px !important;
         margin-top: 10px !important;
     }
 
-    .firstcontent {
+    #apple-watch-rings .firstcontent {
         font-size: 16px !important;
     }
 
-    .secondcontent {
+    #apple-watch-rings .secondcontent {
         font-size: 18px !important;
     }
 
-    .divide {
+    #apple-watch-rings .divide {
         margin-left: 0%;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .divide{
+    #apple-watch-rings .divide{
         margin-left: 10%;
     }
 }
 
+@media only screen and (max-width: 480px) {
+    #apple-watch-rings .col-xs-4 {
+        width: 31.3333%;
+    }
+}
+
 @media screen and (max-width: 410px) {
-    .divide{
+    #apple-watch-rings .divide{
         margin-left: 10%;
     }
 
-    #column1 {
+    #apple-watch-rings #column1 {
         margin-left: -9% !important;
     }
 
-    .subgauge {
+    #apple-watch-rings .subgauge {
         margin-left: 3% !important;
     }
 
-    .panel {
-        width: 165px !important;
-    }
-
-    .content {
-        margin-top: 3% !important;
+    #apple-watch-rings .content {
+        margin-top: 11% !important;
     }
 }
 
@@ -278,7 +280,7 @@ export class AppleWatchGauge extends SampleBase<{}, {}> {
                 <style>
                     {SAMPLE_CSS}
                 </style>
-                <div className='control-section'>
+                <div className='control-section' id="apple-watch-rings">
                     <div className="col-xs-10 col-sm-10 col-lg-8 col-md-8">
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <CircularGaugeComponent load={this.load.bind(this)} id='gaugeOne' background='transparent' height={"400px"} width={"400px"}>

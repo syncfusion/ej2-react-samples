@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function Default() {
-  React.useEffect(() => {
+const Default = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
 
@@ -46,7 +47,6 @@ function Default() {
         <p>This sample visualizes the various phases involved in a manufacturing process of a product which transforms from
           a conceptual model to a sellable product.</p>
       </div>
-
       <div id="description">
         <p>
           In this example, you can see how to render a Gantt chart with the provided data source. The default timeline

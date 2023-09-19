@@ -88,8 +88,7 @@ export class Print extends SampleBase<{}, {}> {
                             }}
                             pointRender={this.labelRender.bind(this)}
                             load={this.load.bind(this)}
-                            title="Sales Comparision" loaded={this.onChartLoad.bind(this)}
-                            tooltip={{ enable: true }}>
+                            title="Sales Comparision" loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[ColumnSeries, Category,DataLabel, Legend]} />
                             <SeriesCollectionDirective>
                                 <SeriesDirective dataSource={data1} xName='x' yName='y' width={2}

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
 import { updateSampleSection } from '../common/sample-base';
 import './toolbar.component.css'
@@ -8,14 +8,21 @@ import './toolbar.component.css'
 const KeyboardInteraction = () => {
     useEffect(() => {
         updateSampleSection();
-    }, [])
+        document.body.addEventListener("keydown", (e: KeyboardEvent) => {
+            let toolbarElement: HTMLElement = document.querySelector('.e-toolbar-items .e-toolbar-item .e-tbar-btn') as HTMLElement;
+            if (e.altKey && e.keyCode === 74 && toolbarElement) {
+                toolbarElement.focus();
+          }
+        });
+    }, []);
+      let toolbarObj = useRef<ToolbarComponent>(null);
 
     return (
         <div className='control-pane'>
             <div className='control-section tbar-control-section'>
                 <div className='control toolbar-sample tbar-sample' style={{ margin: '25px 0' }}>
                     {/* Render the Toolbar Component with Popup mode */}
-                    <ToolbarComponent overflowMode='Popup'>
+                    <ToolbarComponent overflowMode='Popup' ref={toolbarObj}>
                         <ItemsDirective>
                             <ItemDirective prefixIcon='e-cut-icon tb-icons' tooltipText='Cut' text='Cut' showTextOn='Overflow' overflow='Show' />
                             <ItemDirective prefixIcon='e-copy-icon tb-icons' tooltipText='Copy' showTextOn='Overflow' overflow='Show' />

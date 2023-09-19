@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, EventMarkersDirective, EventMarkerDirective, Selection, DayMarkers, ColumnDirective, ColumnsDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function EventMarkers() {
-  React.useEffect(() => {
+const EventMarkers = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -43,7 +44,7 @@ function EventMarkers() {
             <ColumnDirective field='Predecessor'></ColumnDirective>
           </ColumnsDirective>
           <EventMarkersDirective>
-            <EventMarkerDirective day={eventMarkerDay1}></EventMarkerDirective>
+            <EventMarkerDirective day={eventMarkerDay1} label= 'Project starts'></EventMarkerDirective>
             <EventMarkerDirective day={eventMarkerDay2} label='Design phase' ></EventMarkerDirective>
             <EventMarkerDirective day={eventMarkerDay3} label='Research phase' ></EventMarkerDirective>
             <EventMarkerDirective day={eventMarkerDay4} label='Production phase' ></EventMarkerDirective>
@@ -55,7 +56,6 @@ function EventMarkers() {
       <div id="action-description">
         <p>This sample visualizes how to notify the important dates in the project timeline.</p>
       </div>
-
       <div id="description">
         <p>
           In this example, the <code>eventMarkers</code> are used like a bookmark to show the different stages of the project life cycle. You can show the desired text on the date. The Event Markers model has the below properties to customize the marker:

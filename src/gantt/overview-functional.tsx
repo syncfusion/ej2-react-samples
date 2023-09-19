@@ -4,10 +4,11 @@ import { GanttComponent, DayMarkers, Inject, Edit, Selection, Toolbar, ColumnsDi
 import { overviewData, editingResources } from './data';
 import { DropDownList } from '@syncfusion/ej2-react-dropdowns';
 import './overview.css'
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
 
-function Overview() {
-    React.useEffect(() => {
+const Overview = () =>  {
+    useEffect(() => {
       updateSampleSection();
     }, [])
     let theme: any;
@@ -37,10 +38,7 @@ function Overview() {
         { ID: 'Default', Text: 'Default' },
         { ID: 'Grid', Text: 'Grid' },
         { ID: 'Chart', Text: 'Chart' }
-    ];
-    const template: any = columnTemplate.bind(this);
-    const statusTemplate: any = statustemplate.bind(this);
-    const priorityTemplate: any = prioritytemplate.bind(this);
+    ];  
 
     const taskFields: any = {
         id: 'TaskId',
@@ -63,9 +61,8 @@ function Overview() {
     const projectStartDate: Date = new Date('12/17/2021');
     const projectEndDate: Date = new Date('10/26/2022');
     const gridLines: any = 'Vertical';
-    const toolbarOptions: any = ['ExpandAll', 'CollapseAll', { type: "Input", align: "Right", tooltipText: "Change View", template: new DropDownList({ dataSource: dataList, width: "85px", placeholder: "View", change: change, fields: { text: 'Text', value: 'ID' } }) }]
 
-    function change(args): any{
+    const  change =(args: any ): any =>{
         let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
         if (args.value == 'Grid') {
             gantt.setSplitterPosition('100%', 'position');
@@ -97,7 +94,7 @@ function Overview() {
     const eventMarkerDay2: Date = new Date('06/30/2022');
     const eventMarkerDay3: Date = new Date('09/29/2022');
 
-    function statustemplate(props): any{
+    const statustemplate = (props): any => {
         let sts = Status(props.taskData.Status);
         let stsCon = StatusContent(props.taskData.Status);
         if (props.taskData.Status) {
@@ -116,7 +113,7 @@ function Overview() {
         }
     };
 
-    function prioritytemplate(props): any {
+    const prioritytemplate = (props): any => {
         let pri = Priority(props.taskData.Priority);
         let priCon = PriorityContent(props.taskData.Priority);
         if (props.taskData.Priority) {
@@ -135,7 +132,7 @@ function Overview() {
         }
     };
 
-    function columnTemplate(props: { ganttProperties: { resourceNames: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | null | undefined; }; }): any {
+    const columnTemplate = (props: { ganttProperties: { resourceNames: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | null | undefined; }; }): any => {
         var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
         if ((props.ganttProperties.resourceNames)) {
             let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
@@ -158,7 +155,7 @@ function Overview() {
         }
     }
 
-    function load(): void {
+    const load = (): void => {
         let themeCollection: any = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind'];
         let cls: any = document.body.className.split(' ');
         theme = cls.indexOf('bootstrap5') > 0 ? 'bootstrap5' : cls.indexOf('bootstrap') > 0 ? 'bootstrap' : cls.indexOf('tailwind') > 0 ? 'tailwind' :
@@ -174,7 +171,7 @@ function Overview() {
         }
     };
 
-    function Status(status): any {
+    const Status = (status): any => {
         switch (status) {
             case "In Progress":
                 statusStyleColor = (CurrentTheme) ? "#DFECFF" : "#2D3E57";
@@ -200,7 +197,7 @@ function Overview() {
         return { display: display, padding: padding, gap: gap, width: width, height: height, borderRadius: borderRadius, background: background, color: color };
     };
 
-    function StatusContent(status): any {
+    const StatusContent = (status): any =>{
         switch (status) {
             case "In Progress":
                 statusContentstyleColor = (CurrentTheme) ? "#006AA6" : "#34B6FF";
@@ -228,7 +225,7 @@ function Overview() {
         };
     };
 
-    function Priority(priority): any {
+    const  Priority = (priority): any => {
         switch (priority) {
             case "Low":
                 priorityStyle = (CurrentTheme) ? "#FFF6D1" : "#473F1E";
@@ -250,7 +247,7 @@ function Overview() {
         return { display: display, padding: padding, gap: gap, width: width, height: height, borderRadius: borderRadius, backgroundPri: backgroundPri };
     };
 
-    function PriorityContent(priority): any {
+    const PriorityContent = (priority): any => {
         switch (priority) {
             case "Low":
                 priorityContentStyle = (CurrentTheme) ? "#70722B" : "#FDFF88";
@@ -273,6 +270,10 @@ function Overview() {
             width: width, height: height, fontStyle: fontStyle, fontWeight: fontWeight, fontSize: fontSize, lineHeight: lineHeight, textAlign: textAlign, color: color
         };
     };
+    const template: any = columnTemplate.bind(this);
+    const statusTemplate: any = statustemplate.bind(this);
+    const priorityTemplate: any = prioritytemplate.bind(this);
+    const toolbarOptions: any = ['ExpandAll', 'CollapseAll', { type: "Input", align: "Right", tooltipText: "Change View", template: new DropDownList({ dataSource: dataList, width: "85px", placeholder: "View", change: change, fields: { text: 'Text', value: 'ID' } }) }]
 
     return (
             <div className='control-pane'>

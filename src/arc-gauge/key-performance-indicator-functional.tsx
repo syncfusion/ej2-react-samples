@@ -3,10 +3,8 @@
  */
 
 import * as React from "react";
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective,
-    PointersDirective, PointerDirective, GaugeTheme, ILoadedEventArgs, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective,
-    Annotations, Gradient, Inject } from '@syncfusion/ej2-react-circulargauge';
+import { useEffect } from "react";
+import { CircularGaugeComponent, AxesDirective, AxisDirective, PointersDirective, PointerDirective, GaugeTheme, ILoadedEventArgs, RangesDirective, RangeDirective, AnnotationsDirective, AnnotationDirective, Annotations, Gradient, Inject } from '@syncfusion/ej2-react-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -26,20 +24,18 @@ const SAMPLE_CSS = `
         .e-view.material div.triangle-up, .e-view.material-dark div.triangle-up, .e-view.bootstrap-dark div.triangle-up,
         .e-view.bootstrap div.triangle-up, .e-view.bootstrap4 div.triangle-up {
         width: 20; height: 20; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 20px solid #84cbb5; margin-top: 10px; }
-    }
-   `;
+    } `;
 
-function KeyPerformanceIndicator() {
-    React.useEffect(() => {
+const KeyPerformanceIndicator = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
@@ -54,9 +50,7 @@ function KeyPerformanceIndicator() {
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} id="gauge" background="transparent" >
                     <Inject services={[Annotations, Gradient]} />
@@ -83,9 +77,7 @@ function KeyPerformanceIndicator() {
                 </CircularGaugeComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample shows an arc gauge with a key performance indicator (KPI), which is a measurable value that shows how an organization meets key business objectives.
-                </p>
+                <p>This sample shows an arc gauge with a key performance indicator (KPI), which is a measurable value that shows how an organization meets key business objectives.</p>
             </div>
             <div id="description">
                 <p>

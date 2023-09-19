@@ -56,13 +56,11 @@ export class PredefinedLayouts extends SampleBase<{}, {}> {
     };
   }
 
-  // custom code start
   onCreate(): void {
     if (document.querySelector('.container-fluid.custom')) {
       document.querySelector('.container-fluid').classList.remove('custom')
     }
   }
-  //custom code end
 
   public render(): JSX.Element {
     return (

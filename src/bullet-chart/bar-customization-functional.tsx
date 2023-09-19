@@ -146,6 +146,7 @@ function BulletChartBarCustomization() {
             </div>
         </ div>
     )
+
     function bulletLoad(args: IBulletLoadedEventArgs): void {
         let chart: Element = document.getElementById('bar-customization');
         chart.setAttribute('title', '');

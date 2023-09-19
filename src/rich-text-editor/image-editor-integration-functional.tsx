@@ -176,4 +176,3 @@ function ImageEditorIntegration() {
     );
 }
 export default ImageEditorIntegration;
-

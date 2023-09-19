@@ -29,8 +29,8 @@ const ChunkUpload = () => {
     fields = { text: 'size', value: 'value' };
     isInteraction = false;
     asyncSettings = {
-        saveUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Save',
-        removeUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Remove',
+        saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
+        removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove',
         chunkSize: chunkSize
     };
     autoUpload = false;

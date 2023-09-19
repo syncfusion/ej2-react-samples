@@ -92,6 +92,20 @@ function changeTab(args: any): void {
         rendercopycode()
         dynamicTabCreation(srcTab);
     }
+    if (args.selectedItem && args.selectedItem.innerText === 'DEMO') {
+        let demoSection = document.getElementsByClassName('sb-demo-section')[0];
+        if (demoSection) {
+            let elementList = demoSection.getElementsByClassName('e-control e-lib');
+            for (let i = 0; i < elementList.length; i++) {
+                let instance = (elementList[i] as any).ej2_instances;
+                if (instance && instance[0] && typeof instance[0].refresh === 'function') {
+                    instance[0].refresh();
+                }
+                if (instance && instance[0] && instance[0].getModuleName() !== 'DashboardLayout')
+                    break;
+            }
+        }
+    }
 }
 
 export function showHooks(val: boolean): void {
@@ -377,6 +391,11 @@ function renderSampleHeader(): void {
     let controlElem: Element = select('[control-name="' + hash[2].toLowerCase() + '"]');
     controlName = controlElem ? controlElem.getAttribute('name') : toInitiaUpper(hash[2]);
     sampleNameElement.innerHTML = controlName;
+    if (controlName === 'PDF Viewer') {
+        (document.querySelector('.sb-desktop-setting') as any).style.display = 'none';
+    } else {
+        (document.querySelector('.sb-desktop-setting') as any).style.display = '';
+    }
 
     /**
      * Bread Crumb

@@ -192,10 +192,10 @@ function Adaptive() {
         <div id='description'>
           <p>
             The <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#enableadaptiveui">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/#enableadaptiveui">
               enableAdaptiveUI</a></code> property is used to render the grid filter, sort and edit dialogs adaptively and
             <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#rowrenderingmode"> rowRenderingMode</a></code>
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/#rowrenderingmode"> rowRenderingMode</a></code>
             property is used to render the grid row elements in the following directions,
           </p>
           <ul>
@@ -205,9 +205,9 @@ function Adaptive() {
           <p> In this sample, you can change the row direction by using the properties panel checkbox
           </p>
           <p>
-            More information on the rowRenderingMode configuration can be found in this
+            More information on the rowRenderingMode configuration can be found in this 
             <a target="_blank"
-              href="http://ej2.syncfusion.com/documentation/grid/api-grid.html#rowrenderingmode">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/#rowrenderingmode">
               documentation section</a>.
           </p>
         </div>

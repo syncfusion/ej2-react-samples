@@ -41,7 +41,7 @@ function BatchEdit() {
         </div>
         <div id="description">
           <p> The Grid supports CRUD operations. This CRUD operations can be configured in Grid using
-            <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html">
+            <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/editSettings/">
               editSettings</a></code>. Also, It has different modes to manipulate the datasource.
           </p>
           <p>The available modes are,</p>
@@ -52,13 +52,13 @@ function BatchEdit() {
           </ul>
           <p>
             In this demo, Batch mode is enabled for editing by defining <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html#mode">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/editSettings/#mode">
               editSettings.mode
             </a></code> as <code>batch</code>. You can start editing by double clicking a cell and can change the cell value.
             The edited cell will be highlighted while navigating to a new cell, so that you know which cells had been edited.
             You can bulk save the edited data to the datasource by clicking on the toolbar's <code>update</code> button or by externally
             invoking the <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-edit.html#batchsave">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/edit/#batchsave">
               batchSave
             </a></code> method.
           </p>
@@ -66,7 +66,7 @@ function BatchEdit() {
           <p>
             Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
             <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-edit.html">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/edit/">
               Edit
             </a></code> module into the <code>services</code>.
           </p>

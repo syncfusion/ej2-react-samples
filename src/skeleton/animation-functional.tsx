@@ -1,30 +1,29 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import { SkeletonComponent } from '@syncfusion/ej2-react-notifications';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 import { updateSampleSection } from '../common/sample-base';
 import './animation.css';
 
-function Animation() {
-
-    React.useEffect(() => {
+const Animation = () => {
+    useEffect(() => {
         updateSampleSection();
         loadData();
     }, [])
 
     const [userRequest, setUserRequest] = useState({
-        isDataLoading: true, 
-        profileimage: "image e-avatar", 
-        postimage: "image", 
-        cardname: "", 
-        cardtime: "", 
-        listData: [] 
-      });   
+        isDataLoading: true,
+        profileimage: "image e-avatar",
+        postimage: "image",
+        cardname: "",
+        cardtime: "",
+        listData: []
+    });   
 
     const fields: object = { text: 'text' };
 
-    function getData() {
+    const getData = () => {
         return new Promise(resolve => setTimeout(() => {
             let data: { [key: string]: Object } = {};
             data['listdata'] = [
@@ -45,33 +44,35 @@ function Animation() {
         }, 3000));
     }
 
-    function loadData() {
+    const loadData = () => {
         getData().then((data: any) => {
-        setUserRequest({ 
-            profileimage: data.profImage, 
-            postimage: data.postImage, 
-            cardname: data.cardName, 
-            cardtime: data.cardTime, 
-            isDataLoading: false, 
-            listData: data.listdata });
+            setUserRequest({ 
+                profileimage: data.profImage, 
+                postimage: data.postImage, 
+                cardname: data.cardName, 
+                cardtime: data.cardTime, 
+                isDataLoading: false, 
+                listData: data.listdata 
+            });
         });
     }
 
     // Reload button click event handler.
-    function reload() {
+    const reload = () => {
         // if (!this.state.isDataLoading) {
-            setUserRequest({ 
-                profileimage: "image  e-avatar", 
-                postimage: "image", 
-                cardname: "", 
-                cardtime: "", 
-                isDataLoading: true, 
-                listData: [] });  
-            loadData();
+        setUserRequest({ 
+            profileimage: "image  e-avatar", 
+            postimage: "image", 
+            cardname: "", 
+            cardtime: "", 
+            isDataLoading: true, 
+            listData: [] 
+        });  
+        loadData();
         // }
     };
 
-    function listTemplate(data) {
+    const listTemplate = (data) => {
         let letterAvatar = <span className='e-avatar e-avatar-circle'>{data.avatar}</span>;
         let imageAvatar = <span className={`${data.pic} e-avatar e-avatar-circle`}></span>;
         return (<div className='e-list-wrapper e-list-multi-line e-list-avatar'>
@@ -104,19 +105,20 @@ function Animation() {
             </div>);
         pulse = (
             <div className="skeleton-listcard e-card">
-            <ul id="skeleton-list">
-                {Array.from({ length: 8 }, function (_, index) {
-                    return (<li key={index}>
-                        <div className="skeleton-listProfileView">
-                            <SkeletonComponent shape='Circle' width='40px' shimmerEffect='Pulse'></SkeletonComponent>
-                        </div>
-                        <div>
-                            <SkeletonComponent width='80%' height='10px' shimmerEffect='Pulse'></SkeletonComponent><br />
-                            <SkeletonComponent width='60%' height='15px' shimmerEffect='Pulse'></SkeletonComponent>
-                        </div>
-                    </li>);
-                })}
-            </ul></div>);
+                <ul id="skeleton-list">
+                    {Array.from({ length: 8 }, function (_, index) {
+                        return (<li key={index}>
+                            <div className="skeleton-listProfileView">
+                                <SkeletonComponent shape='Circle' width='40px' shimmerEffect='Pulse'></SkeletonComponent>
+                            </div>
+                            <div>
+                                <SkeletonComponent width='80%' height='10px' shimmerEffect='Pulse'></SkeletonComponent><br />
+                                <SkeletonComponent width='60%' height='15px' shimmerEffect='Pulse'></SkeletonComponent>
+                            </div>
+                        </li>);
+                    })}
+                </ul>
+            </div>);
     }
     else {
         fade = (

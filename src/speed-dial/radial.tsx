@@ -21,10 +21,6 @@ export class Radial extends SampleBase<{}, {}> {
         {
             title: 'Delete',
             iconCss: 'speeddial-icons speeddial-icon-delete'
-        },
-        {
-            title: 'Save',
-            iconCss: 'speeddial-icons speeddial-icon-save'
         }
     ];
 

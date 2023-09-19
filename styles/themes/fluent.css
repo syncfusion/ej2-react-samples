@@ -1,0 +1,99 @@
+.fluent .sb-reset-icon:before {
+    content: '\e7a7';
+}
+
+.fluent .copycode::before {
+    content: '\e77c';
+    font-size: 25px;
+}
+
+.fluent .e-samplestatus.new,
+.fluent .e-samplestatus.preview {
+    margin-top: 1px;
+}
+
+.fluent .e-samplestatus.update {
+    margin-top: 0px;
+}
+
+.fluent.e-bigger .e-samplestatus.new,
+.fluent.e-bigger .e-samplestatus.update,
+.fluent.e-bigger .e-samplestatus.preview {
+    margin-top: 4px;
+}
+
+.fluent .sb-plnr-section {
+    line-height: 25px;
+    height: 30px;
+}
+
+.fluent .sample-navigation,
+.fluent .sb-open-new-wrapper {
+    line-height: 33px;
+}
+
+.fluent .e-samplestatus.new.tree,
+.fluent .e-samplestatus.update.tree,
+.fluent .e-samplestatus.preview.tree {
+    margin-top: 7.5px;
+}
+
+.fluent .sb-content-tab>.e-tab>.e-tab-header>.e-toolbar-items>.e-toolbar-item.e-active::before {
+    background-color: transparent;
+}
+
+.fluent .sb-content-tab>.e-tab>.e-tab-header>.e-items>.e-toolbar-item:not(.e-separator) {
+    height: 35px;
+    margin: 0px 8px 0 0;
+    min-height: 35px;
+}
+
+.fluent .sb-content-tab>.e-tab>.e-tab-header>.e-toolbar-items,
+.fluent .sb-content-tab>.e-tab>.e-tab-header {
+    min-height: 35px;
+    height: 35px;
+}
+
+.fluent.e-bigger .sb-content-tab.e-tab .e-tab-header .e-toolbar-item:not(.e-separator) {
+    height: 35px;
+    min-height: 35px;
+}
+
+.fluent.e-bigger .sb-content-tab.e-tab .e-tab-header .e-toolbar-items {
+    min-height: 35px;
+    height: 35px;
+}
+
+.fluent.e-bigger .sb-content-tab.e-tab .e-tab-header {
+    min-height: 36px;
+    height: 36px;
+}
+
+.fluent #search-input-wrapper .sb-reset-icon:before {
+    content: '\e7e7' !important;
+}
+
+.fluent.e-bigger .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    display: none;
+}
+
+.fluent .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    display: none;
+}
+
+.fluent.e-bigger .sb-open-new-wrapper {
+    line-height: 26px !important;
+}
+
+.fluent.e-bigger .sb-toolbar-splitter {
+    height: 26px;
+    margin-top: 0px !important;
+}
+
+.fluent.e-bigger .sample-navigation {
+    line-height: 24px;
+}
+
+.fluent .sb-source-code-section .e-toolbar .e-toolbar-items {
+    vertical-align: middle;
+}

@@ -139,7 +139,7 @@ export class Orientation extends SampleBase<{}, {}> {
                 <div className='control-section tab-control-section row'>
                     <div className='col-lg-8'>
                         {/* Render the Tab Component */}
-                        <TabComponent ref={(tab) => { this.tabObj = tab }} cssClass='orientation-tab' showCloseButton={true} heightAdjustMode='None' height={320}>
+                        <TabComponent ref={(tab) => { this.tabObj = tab }} cssClass='orientation-tab' showCloseButton={true} height={320}>
                             <TabItemsDirective>
                                 <TabItemDirective header={headertext[0]} content={template1.bind(this)} />
                                 <TabItemDirective header={headertext[1]} content={template2.bind(this)} />

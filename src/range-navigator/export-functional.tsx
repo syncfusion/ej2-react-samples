@@ -106,6 +106,10 @@ const SAMPLE_CSS = `
 function RangeExport() {
     React.useEffect(() => {
         updateSampleSection();
+        const exportbutton = document.getElementById('range-export');
+        exportbutton.addEventListener('click', exportClick);
+        const printbutton = document.getElementById('range-print');
+        printbutton.addEventListener('click', printClick);
     }, [])
 
     let chartInstance: ChartComponent;
@@ -125,7 +129,7 @@ function RangeExport() {
                 {SAMPLE_CSS}
             </style>
             <div className='control-section row'>
-                <div className='col-md-9'>
+                <div className='col-lg-9'>
                     <div className="row" style={{ textAlign: "center" }}>
                         <div id="title">Conns,Inc Stock Details</div>
                     </div>
@@ -183,38 +187,38 @@ function RangeExport() {
                         </ChartComponent>
                     </div>
                 </div>
-                <div className='col-md-3 property-section'>
+                <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '80%' }}>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                             <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
+                                <td style={{ width: "40%" }}>
                                     Export Type:
                                 </td>
-                                <td style={{ width: "30%" }}>
-                                    <DropDownListComponent width={60} id="etype" value="JPEG" ref={d => mode = d} dataSource={type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                <td style={{ width: "60%" }}>
+                                    <DropDownListComponent width={90} id="etype" value="JPEG" ref={d => mode = d} dataSource={type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
                                 </td>
                             </tr>
                             <tr style={{ height: "50px" }}>
                                 <td style={{ width: "40%" }}>
                                     File Name:
                                 </td>
-                                <td style={{ width: "40%" }}>
-                                    <div className="e-float-input" style={{ width: 70, 'marginTop': '0px' }}>
+                                <td style={{ width: "60%" }}>
+                                    <div className="e-float-input" style={{ 'width': '100px', 'marginTop': '0px' }}>
                                         <input type="text" defaultValue="Chart" id="fileName" style={{ "marginLeft": "-10px" }} />
                                     </div>
                                 </td>
                             </tr>
-                            <tr style={{ height: '40px' }}>
+                            <tr style={{ height: '50px' }}>
                                 <td>
-                                    <div id="btn-control" style={{ 'marginLeft': '20px' }}>
-                                        <ButtonComponent id="exporticon" onClick={exportClick.bind(this)} iconCss='e-icons e-export-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                    <div id="btn-control" style={{ 'marginLeft': '50%' }}>
+                                        <ButtonComponent id="range-export" iconCss='e-icons e-export-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td>
                                     <div id="btn-control" style={{ 'marginLeft': '20px' }}>
-                                        <ButtonComponent id="printicon" onClick={printClick.bind(this)} iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+                                        <ButtonComponent id="range-print" iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>

@@ -99,7 +99,9 @@ export class Template extends SampleBase<{}, {}> {
                         type: 'MinRange',
                         tooltip: { isVisible: true, placement: 'Before', showOn: 'Hover' },
                         change: (e: any) => {
-                            this.qryBldrObj.notifyChange(e.value, args.elements);
+                            if (e.isInteracted) {
+                                this.qryBldrObj.notifyChange(e.value, args.elements);
+                            }  
                         }
                     });
                     slider.appendTo('#' + args.elements.id);

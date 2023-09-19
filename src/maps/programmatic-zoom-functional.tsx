@@ -1,16 +1,13 @@
-
 /**
  * Programmatic Zoom sample
  */
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { useEffect, useRef } from "react";
 import { MapAjax } from '@syncfusion/ej2-maps';
-import {
-    MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
-    MapsTooltip, Marker, MarkersDirective, MarkerDirective, Zoom
-} from '@syncfusion/ej2-react-maps';
-import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
+import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MapsTooltip, Marker, MarkersDirective, MarkerDirective, Zoom } from '@syncfusion/ej2-react-maps';
+import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -20,84 +17,39 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
-function ProgrammaticZoomMaps() {
-
-    React.useEffect(() => {
+const ProgrammaticZoomMaps = () => {
+    useEffect(() => {
         updateSampleSection();
-    }, [])
-
-    let mapInstance: MapsComponent;
-
-    function zoomChange(args: ChangeEventArgs) {
-        mapInstance.zoomSettings.shouldZoomInitially = args.checked;
-        mapInstance.refresh();
-    }
-
-    function load(args: ILoadedEventArgs): void {
+    }, []);
+    let mapInstance = useRef<MapsComponent>(null);
+    const zoomChange = (args: ChangeEventArgs) => {
+        mapInstance.current.zoomSettings.shouldZoomInitially = args.checked;
+        mapInstance.current.refresh();
+    };
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as MapsTheme;
         // custom code end
     };
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='col-lg-9 control-section'>
-                <MapsComponent id="maps" load={load} ref={m => mapInstance = m}
-                    useGroupingSeparator={true}
-                    format={"n"}
-                    zoomSettings={{
-                        enable: true,
-                        mouseWheelZoom: false,
-                        pinchZooming: false
-                    }}
-                    titleSettings={{
-                        text: 'Capitals of South American countries',
-                        textStyle: {
-                            size: '16px'
-                        }
-                    }}
-                >
+                <MapsComponent id="maps" load={load} ref={mapInstance} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: true, mouseWheelZoom: false, pinchZooming: false }} titleSettings={{ text: 'Capitals of South American countries', textStyle: { size: '16px' } }}>
                     <Inject services={[Marker, MapsTooltip, Zoom]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
-                            shapePropertyPath='name'
-                            shapeDataPath='Country'
-                            dataSource={datasource.southAmericaCountryCapitals}
-                            shapeSettings={{
-                                fill: '#C3E6ED',
-                                border: {
-                                    color: 'black',
-                                    width: .3
-                                }
-
-                            }}
-                        ><MarkersDirective>
-                                <MarkerDirective visible={true}
-                                    animationDuration={0}
-                                    height={20}
-                                    width={20}
-                                    shape='Image'
-                                    imageUrl='src/maps/images/ballon.png'
-                                    dataSource={datasource.southAmericaCountryCapitals}
-                                    tooltipSettings={{
-                                        format: '<b>Capital</b> : ${name}<br><b>Country</b> : ${Country}',
-                                        visible: true,
-                                        valuePath: 'name'
-                                    }}
-                                >
-                                </MarkerDirective>
+                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.southAmericaCountryCapitals} shapeSettings={{ fill: '#C3E6ED', border: { color: 'black', width: 0.3 } }}>
+                            <MarkersDirective>
+                                <MarkerDirective visible={true} animationDuration={0} height={20} width={20} shape='Image' imageUrl='src/maps/images/ballon.png' dataSource={datasource.southAmericaCountryCapitals} tooltipSettings={{ format: '<b>Capital</b> : ${name}<br><b>Country</b> : ${Country}', valuePath: 'name' }}></MarkerDirective>
                             </MarkersDirective>
                         </LayerDirective>
                     </LayersDirective>
                 </MapsComponent>
                 {/* Source Link */}
-                <div style={{ float: 'right', marginRight: '10px' }}>Source:
-                    <a href="https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_South_America#Sovereign_states" target="_blank">www.wikipedia.com</a>
+                <div style={{ float: 'right', marginRight: '10px' }}>
+                    Source:<a href="https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_South_America#Sovereign_states" target="_blank">www.wikipedia.com</a>
                 </div>
             </div>
             {/* Property Panel */}
@@ -118,18 +70,13 @@ function ProgrammaticZoomMaps() {
                 </PropertyPane>
             </div>
             <div id="action-description">
-                <p>
-                    This sample visualizes the capitals of all the countries in the South America continent by displaying the markers in their locations.
-                </p>
+                <p>This sample visualizes the capitals of all the countries in the South America continent by displaying the markers in their locations.</p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to zoom the maps dynamically based on the location of the markers in the map. The map is scaled and the center position
-                    is changed based on the markers location. This is achieved by setting true to the <code>shouldZoomInitially</code> property in <code>zoomSettings</code>.
+                    In this example, you can see how to zoom the maps dynamically based on the location of the markers in the map. The map is scaled and the center position is changed based on the markers location. This is achieved by setting true to the <code>shouldZoomInitially</code> property in <code>zoomSettings</code>.
                 </p>
-                <p>
-                    Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.
-                </p>
+                <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p>

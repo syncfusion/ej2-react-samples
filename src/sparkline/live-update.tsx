@@ -41,7 +41,7 @@ export class LiveUpdate extends SampleBase<{}, {}> {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).
-            replace(/-dark/i, "Dark") as SparklineTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as SparklineTheme;
     }
 
     public updateSparkline1(args: ISparklineLoadedEventArgs): void {

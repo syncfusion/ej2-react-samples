@@ -106,9 +106,9 @@ export class Image extends SampleBase<{}, {}> {
                                         <AnnotationDirective content='12 M' radius='108%' angle={98} zIndex='1' textStyle={this.annotationTextStyle} />
                                         <AnnotationDirective content='11 M' radius='80%' angle={81} zIndex='1' textStyle={this.annotationTextStyle} />
                                         <AnnotationDirective content='10 M' radius='50%' angle={69} zIndex='1' textStyle={this.annotationTextStyle} />
-                                        <AnnotationDirective content='<div class="annotationText" style="margin-top: -26px;"><span class="templateAlign" style="margin-left: -22px;">Doe</span></div>' radius='114%' angle={185} zIndex='1' />
-                                        <AnnotationDirective content='<div class="annotationText"><span class="templateAlign" style="margin-left: -3px;">Almaida</span></div>' radius='87%' angle={180} zIndex='1' />
-                                        <AnnotationDirective content='<div class="annotationText" style="margin-top: -25px;"><span class="templateAlign">John</span></div>' radius='58%' angle={174} zIndex='1' />
+                                        <AnnotationDirective content='Doe' radius='106%' angle={189} zIndex='1' textStyle={this.annotationTextStyle} />
+                                        <AnnotationDirective content='Almaida' radius='78%' angle={180} zIndex='1' textStyle={this.annotationTextStyle} />
+                                        <AnnotationDirective content='John' radius='48%' angle={175} zIndex='1' textStyle={this.annotationTextStyle} />
                                     </AnnotationsDirective>
                                 </AxisDirective>
                             </AxesDirective>

@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, Sort, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { editingData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function Sorting() {
-  React.useEffect(() => {
+const Sorting = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {

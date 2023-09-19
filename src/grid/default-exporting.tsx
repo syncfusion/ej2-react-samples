@@ -81,7 +81,7 @@ public template2: any = this.gridUrlTemplate;
     return (
       <div className='control-pane'>
         <div className='col-lg-9 control-section'>
-          <GridComponent id="DefaultExport" dataSource={employeeDetails} ref={ grid => this.gridInstance = grid} toolbar={this.toolbarOptions}
+          <GridComponent id='DefaultExport' dataSource={employeeDetails} ref={ grid => this.gridInstance = grid} toolbar={this.toolbarOptions}
           allowExcelExport={true} allowSorting={true} allowPdfExport={true} allowGrouping={true} toolbarClick={this.toolbarClick.bind(this)}
            dataBound={this.dataBound.bind(this)} excelQueryCellInfo={this.exportQueryCellInfo.bind(this)} pdfQueryCellInfo={this.exportQueryCellInfo.bind(this)} height='350'>
             <ColumnsDirective>
@@ -124,10 +124,10 @@ public template2: any = this.gridUrlTemplate;
                The ExcelExport, PdfExport, and CsvExport items are defined in the toolbar, for which we have defined actions in toolbarClick event to export the Grid data using the
             <code><a target="_blank" className="code"
 
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#excelexport">excelExport</a></code>,
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/#excelexport">excelExport</a></code>,
             <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#pdfexport">pdfExport</a></code>            and <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#csvexport">csvExport</a></code> methods.</p>
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/#pdfexport">pdfExport</a></code>            and <code><a target="_blank" className="code"
+                href="https://ej2.syncfusion.com/react/documentation/api/grid/#csvexport">csvExport</a></code> methods.</p>
 
           <p>
             Note: Since CSV format is supported only plain text, images and hyperlinks will not be exported on this.</p>
@@ -137,8 +137,8 @@ public template2: any = this.gridUrlTemplate;
             and <code>PdfExport</code> module into the <code>services</code></p>
             <p>
             More information on the exporting can be found in these
-            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/excel-exporting/">Excel Export</a> &
-            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/pdf-export/">PDF Export</a> 
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/excel-export/excel-exporting">Excel Export</a> &
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/pdf-export/pdf-export">PDF Export</a> 
             documentation section.
         </p>
           </div>

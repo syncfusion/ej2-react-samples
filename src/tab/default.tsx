@@ -37,7 +37,7 @@ export class Default extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section tab-control-section'>
           {/* Render the Tab Component */}
-          <TabComponent heightAdjustMode='Auto' id='defaultTab'>
+          <TabComponent id='defaultTab'>
             <TabItemsDirective>
               <TabItemDirective header={headertext[0]}
                 content={tabContent1} />

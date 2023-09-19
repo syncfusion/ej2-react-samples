@@ -19,7 +19,7 @@ export class LocalData extends SampleBase<{}, {}> {
     leftLabel: 'TaskName'
   };
   public splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   public projectStartDate: Date = new Date('03/24/2019');
   public projectEndDate: Date = new Date('07/06/2019');

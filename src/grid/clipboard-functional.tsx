@@ -57,7 +57,7 @@ function Clipboard() {
             </div>
             <div id="description">
                 <p>Selected rows or cells data in the Grid can be copied into the clipboard using the Keyboard shortcuts and <code><a target="_blank" className="code"
-                    href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#copy">copy
+                    href="https://ej2.syncfusion.com/react/documentation/api/grid/#copy">copy
                 </a></code> method.
                 </p>
                 <p>In this demo, selected rows data can be copied into the clipboard using the below Keyboard shortcuts or toolbar interactions.</p>
@@ -66,7 +66,7 @@ function Clipboard() {
                     <li><code>Ctrl + Shift + H</code> - Selected rows or cells data with header.</li>
                 </ul>
                 <p>More information on the Clipboard feature can be found in this <a target="_blank"
-                    href="http://ej2.syncfusion.com/react/documentation/grid/clipboard.html">documentation section</a>.
+                    href="https://ej2.syncfusion.com/react/documentation/grid/clipboard.html">documentation section</a>.
                 </p>
             </div>
         </div>

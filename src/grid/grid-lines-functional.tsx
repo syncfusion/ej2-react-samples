@@ -57,7 +57,7 @@ function GridLines() {
             </div>
             <div id='description'>
                 <p>    The  <code><a target='_blank' className='code'
-                    href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#gridlines'>
+                    href='https://ej2.syncfusion.com/react/documentation/api/grid/#gridlines'>
                     gridLines</a></code> property is used to control the line visibility that separates the rows and columns. The Grid allow us to display the following grid lines,</p>
                 <ul><li><code>Default</code> - Shows the Horizontal line.</li>
                     <li><code>None</code> - Shows no line.</li>
@@ -67,7 +67,7 @@ function GridLines() {
 
                 <p>In this demo, you can modify the display of gridlines by selecting values in the toolbar.</p>
 
-                <p>More information on the gridLines configuration can be found in this <a target='_blank' href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#gridlines'> documentation section</a>.
+                <p>More information on the gridLines configuration can be found in this <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/grid/#gridlines'> documentation section</a>.
 
                 </p>
             </div>

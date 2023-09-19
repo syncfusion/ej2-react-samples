@@ -38,7 +38,7 @@ function DialogEdit() {
         </div>
         <div id="description">
           <p> The Grid supports CRUD operations. This CRUD operations can be configured in Grid using
-            <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html">
+            <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/editSettings/">
               editSettings</a></code>. Also, it has different modes to manipulate the datasource.
           </p>
           <p>The available modes are,</p>
@@ -49,7 +49,7 @@ function DialogEdit() {
           </ul>
           <p>
             In this demo, Dialog mode is enabled for editing by defining <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-editSettings.html#mode">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/editSettings/#mode">
               editSettings.mode
             </a></code> as <code>dialog</code>. You can start editing by double clicking a row or clicking on toolbar's <code>Edit</code>
             button, then the currently selected row will be shown on a dialog and you can change the row values and save
@@ -59,7 +59,7 @@ function DialogEdit() {
           <p>
             Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
             <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-edit.html">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/edit/">
               Edit
             </a></code> module into the <code>services</code>.
           </p>

@@ -43,7 +43,7 @@ export class Slider extends SampleBase<{}, {}> {
                             <AxesDirective>
                                 <AxisDirective minimum={0} maximum={100} opposedPosition={true} line={{ width: 5, color: '#C2DEF8' }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ offset: 10, font: { fontFamily: 'inherit' } }}>
                                     <PointersDirective>
-                                        <PointerDirective value={50} height={5} width={5} color='#0074E3' position='Cross' enableDrag={true} type='Bar'>
+                                        <PointerDirective value={50} height={5} width={5} color='#0074E3' position='Cross' type='Bar'>
                                         </PointerDirective>
                                         <PointerDirective value={50} height={15} width={15} color='#0074E3' placement='Center' enableDrag={true} offset={-10} markerType='Circle'>
                                         </PointerDirective>

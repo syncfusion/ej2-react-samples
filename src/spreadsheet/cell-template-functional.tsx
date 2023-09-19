@@ -92,7 +92,7 @@ function CellTemplate() {
     return (
         <div className='control-pane'>
             <div className='control-section spreadsheet-control'>
-                <SpreadsheetComponent showRibbon={false} showFormulaBar={false} allowOpen={false} allowSave={false}
+                <SpreadsheetComponent showRibbon={false} showFormulaBar={false} cssClass={'e-custom-spreadsheet'} allowOpen={false} allowSave={false}
                     ref={(ssObj) => { spreadsheet = ssObj }} created={onCreated.bind(this)} name={'Candidates List'}
                     scrollSettings={scrollSettings} allowEditing={false} selectionSettings={selectionSettings}>
                     <SheetsDirective>

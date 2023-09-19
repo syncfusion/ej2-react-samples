@@ -1,0 +1,35 @@
+.tailwind .sb-reset-icon:before {
+    content: '\e7e7';
+}
+
+.tailwind .copycode::before {
+    content: '\e7ce';
+    font-size: 25px;
+}
+
+/*Hide property pane */
+@media (max-width: 480px) {
+    .tailwind .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap {
+        height: 70px;
+    }
+}
+
+.tailwind .e-samplestatus.new.tree,
+.tailwind .e-samplestatus.update.tree,
+.tailwind .e-samplestatus.preview.tree {
+    margin: 12px 0;
+    height: 22px;
+    margin-top: 8px;
+}
+
+.tailwind .e-samplestatus.new,
+.tailwind .e-samplestatus.update,
+.tailwind .e-samplestatus.preview {
+    margin: 12px 0;
+    height: 22px;
+    margin-top: 0.5px;
+}
+
+.tailwind .sb-source-code-section .e-toolbar .e-toolbar-items {
+    vertical-align: middle;
+}

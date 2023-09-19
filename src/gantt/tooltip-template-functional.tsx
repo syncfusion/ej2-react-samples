@@ -1,14 +1,15 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { tooltipData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function TooltipTemplate() {
-  React.useEffect(() => {
+const TooltipTemplate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
-  let ganttInstance: GanttComponent;
+  let ganttInstance = useRef<GanttComponent>(null);
   const taskFields: any = {
     id: 'TaskID',
     name: 'TaskName',
@@ -26,8 +27,7 @@ function TooltipTemplate() {
     id: 'resourceId',
     name: 'resourceName'
   };
-  const templateTaskbar: any = taskbarTooltip;
-  function taskbarTooltip(props) {
+  const taskbarTooltip = (props) => {
     var src = 'https://ej2.syncfusion.com/react/demos/src/gantt/images/' + props.ganttProperties.resourceNames + '.png';
     return (<table>
       {props.ganttProperties.resourceNames &&
@@ -39,37 +39,38 @@ function TooltipTemplate() {
       }
       <tr>
         <td style={{ padding: '3px' }}>Starts On:</td>
-        <td style={{ padding: '3px' }}>{ganttInstance.getFormatedDate(props.StartDate)}</td>
+        <td style={{ padding: '3px' }}>{ganttInstance.current.getFormatedDate(props.StartDate)}</td>
       </tr>
       <tr>
         <td style={{ padding: '3px' }}>Ends On:</td>
-        <td style={{ padding: '3px' }}>{ganttInstance.getFormatedDate(props.EndDate)}</td>
+        <td style={{ padding: '3px' }}>{ganttInstance.current.getFormatedDate(props.EndDate)}</td>
       </tr>
     </table>);
   };
-  const templateBaseline: any = baselineTooltip;
-  function baselineTooltip(props) {
+  const templateTaskbar: any = taskbarTooltip;
+  const baselineTooltip = (props) => {
     return (<table>
       <tbody>
         <tr>
           <td >Planned Start Date: </td>
-          <td>{ganttInstance.getFormatedDate(props.BaselineStartDate)}</td>
+          <td>{ganttInstance.current.getFormatedDate(props.BaselineStartDate)}</td>
         </tr>
         <tr>
           <td>Planned End Date: </td>
-          <td>{ganttInstance.getFormatedDate(props.BaselineEndDate)}</td>
+          <td>{ganttInstance.current.getFormatedDate(props.BaselineEndDate)}</td>
         </tr>
         <tr>
           <td>Current Start Date: </td>
-          <td>{ganttInstance.getFormatedDate(props.StartDate)}</td>
+          <td>{ganttInstance.current.getFormatedDate(props.StartDate)}</td>
         </tr>
         <tr>
           <td>Current End Date: </td>
-          <td >{ganttInstance.getFormatedDate(props.EndDate)}</td>
+          <td >{ganttInstance.current.getFormatedDate(props.EndDate)}</td>
         </tr>
       </tbody>
     </table>);
   };
+  const templateBaseline: any = baselineTooltip;
   const tooltipSettings: any = {
     showTooltip: true,
     taskbar: templateTaskbar.bind(this),
@@ -84,11 +85,10 @@ function TooltipTemplate() {
   };
   const projectStartDate: Date = new Date('03/24/2019');
   const projectEndDate: Date = new Date('05/04/2019');
-
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GanttComponent id='TooltipTemplate' ref={gantt => ganttInstance = gantt} dataSource={tooltipData} highlightWeekends={true}
+        <GanttComponent id='TooltipTemplate' ref={ganttInstance} dataSource={tooltipData} highlightWeekends={true}
           renderBaseline={true} treeColumnIndex={1} tooltipSettings={tooltipSettings}
           splitterSettings={splitterSettings} taskFields={taskFields} labelSettings={labelSettings} height='410px'
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields} resources={editingResources}>

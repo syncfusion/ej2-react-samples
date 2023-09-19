@@ -5,11 +5,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { MapAjax } from '@syncfusion/ej2-maps';
-import { Slider  } from '@syncfusion/ej2-inputs';
-import { isNullOrUndefined } from '@syncfusion/ej2-base';
 import {
-    MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
-    Annotations, MapsTooltip, ILoadEventArgs, AnnotationsDirective, AnnotationDirective
+    MapsComponent, Inject, MapsTheme, LayersDirective, LayerDirective,
+    MapsTooltip, ILoadEventArgs
 } from '@syncfusion/ej2-react-maps';
 import { SampleBase } from '../common/sample-base';
 import { SliderComponent, SliderChangeEventArgs } from "@syncfusion/ej2-react-inputs";
@@ -28,9 +26,6 @@ const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }
-    #mapannotation.e-control.e-slider .e-handle {
-            background-color: #4B4B4B ;
-        }
     .e-control-wrapper.e-slider-container.e-horizontal .e-slider-track {
         background: -webkit-linear-gradient(left, #7E9CDC 0, #DCD57E 17%, #7EDCA2 34%, #6EB5D0 51%, #A6DC7E 68%, #DCA87E 85%, #d075c6 100%);
         background: linear-gradient(left, #7E9CDC 0, #DCD57E 17%, #7EDCA2 34%, #6EB5D0 51%, #A6DC7E 68%, #DCA87E 85%, #d075c6 100%);
@@ -41,11 +36,6 @@ const SAMPLE_CSS = `
     }
     .e-control-wrapper.e-slider-container.e-horizontal .e-range {
         height: 0px !important;
-    }
-    #mapannotation.e-control.e-slider .e-slider-track {
-        height: 8px;
-        top: calc(50% - 4px);
-        border-radius: 5px;
     }`;
 export class MapSlider extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
@@ -59,13 +49,6 @@ export class MapSlider extends SampleBase<{}, {}> {
         selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
         // custom code end
     };
-    
-    
-    public loaded(args: ILoadedEventArgs): void {
-        if (!isNullOrUndefined(document.getElementById('mapslider_Annotation_0'))) {
-            this.annotationRender(sliderVal);
-        }
-    }
 
     render() {
         return (
@@ -74,7 +57,7 @@ export class MapSlider extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <MapsComponent id="maps" load={this.load.bind(this)} loaded={this.loaded.bind(this)} ref={m => this.mapInstance = m}
+                    <MapsComponent id="maps" load={this.load.bind(this)} ref={m => this.mapInstance = m}
                         margin={{
                             bottom: 20
                         }}
@@ -87,13 +70,7 @@ export class MapSlider extends SampleBase<{}, {}> {
                         zoomSettings={{
                             enable: false
                         }}>
-                        <AnnotationsDirective>
-                            <AnnotationDirective
-                                content='<div id="mapslider-annotation" style="display:none;"/>'
-                                horizontalAlignment= 'Center' y= '93%'
-                 />
-                        </AnnotationsDirective>
-                        <Inject services={[Annotations, MapsTooltip]} />
+                        <Inject services={[ MapsTooltip ]} />
                         <LayersDirective>
                             <LayerDirective shapeData={new MapAjax('./src/maps/map-data/north-america.json')}
                                 shapePropertyPath='name'
@@ -137,7 +114,7 @@ export class MapSlider extends SampleBase<{}, {}> {
                     <SliderComponent id="mapannotation" className="map-slider" type='Range' min={-1.5} max={3.75} step={0.75} value={sliderVal} 
                         ticks={{ placement: 'After', largeStep: 0.75 }} change={ this.sliderChange.bind(this)} ref={d => this.sliderElement = d} />
                 </div>
-                <div style={{float: 'right', marginRight: '10px' }}>Source: 
+                <div style={{float: 'right', marginRight: '10px', marginTop: '20px' }}>Source: 
                     <a href="https://en.wikipedia.org/wiki/List_of_North_American_countries_by_population" target="_blank">Population growth in North America</a>
                 </div>
                 <div id="action-description">
@@ -175,18 +152,5 @@ export class MapSlider extends SampleBase<{}, {}> {
             sliderVal = this.sliderElement.value;
             this.mapInstance.refresh();
         }
-    }
-    
-    private annotationRender(val: number | number[]): void {
-        let slider: Slider = new Slider({
-            min: -2, max: 4,
-            value: val,
-            type: 'Range',
-            ticks: { placement: 'After', largeStep: 1, },
-            change: (args: SliderChangeEventArgs) => {
-                this.sliderChange();
-            }
-        });
-        slider.appendTo('#mapannotation');
     }
 }

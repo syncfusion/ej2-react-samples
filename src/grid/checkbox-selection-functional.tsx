@@ -37,17 +37,17 @@ function CheckboxSelection() {
                     Grid multiple selection can be achieved with help of checkbox in each row. To render checkbox in each grid row, you need
                     to define column type as <code>checkbox</code> using
                     <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#type">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#type">
                         columns-&gt;type
                     </a></code> property.</p>
                 <p>Selection can be persisted on all the operations using
                     <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-selectionSettings.html#persistselection">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/selectionSettings/#persistselection">
                         selectionSettings-&gt; persistSelection
                     </a></code> property. For persisting selection on the Grid, any one of the column should be defined as
                     a primary key using
                     <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-column.html#isprimarykey">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#isprimarykey">
                         columns-&gt;isPrimaryKey
                     </a></code> property.
                 </p>
@@ -58,7 +58,7 @@ function CheckboxSelection() {
                 </p>
                 <p>
                     More information on the checkbox selection configuration can be found in this <a target="_blank"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/selection.html#checkbox-selection">documentation section</a>.
+                        href="https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection">documentation section</a>.
                 </p>
             </div>
         </div>

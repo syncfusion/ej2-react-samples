@@ -24,7 +24,7 @@ function statusTemplate(props): any {
   </div>}</div>);
 }
 function ratingTemplate(props): any {
-  return (<RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true} />);
+  return (<div><RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true} /></div>);
 }
 function progessTemplate(props): any {
   let percentage: number = props[props.column.field];
@@ -242,7 +242,7 @@ function OverView() {
           the way the data is presented and manipulated.
           It will pull the data from a data source, such as an array of JSON objects, OData web services,
           or <code><a target="_blank" className="code"
-            href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">
+            href="https://ej2.syncfusion.com/documentation/api/data/dataManager/">
             DataManager</a></code> binding data fields to columns.
           Also, displaying a column header to identify the field with support for grouped records.
         </p>
@@ -255,7 +255,7 @@ function OverView() {
         </p>
         <p>
           More information on the Grid instantiation can be found in this
-          <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/grid/getting-started.html"> documentation section</a>.
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/getting-started"> documentation section</a>.
         </p>
       </div>
     </div>

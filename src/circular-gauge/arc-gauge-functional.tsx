@@ -3,17 +3,29 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    CircularGaugeComponent, GaugeTheme, AxesDirective, AxisDirective, Inject, Annotations, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective
-} from '@syncfusion/ej2-react-circulargauge';
+import { useEffect, useRef } from "react";
+import { CircularGaugeComponent, GaugeTheme, AxesDirective, AxisDirective, Inject, Annotations, AnnotationDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationsDirective } from '@syncfusion/ej2-react-circulargauge';
 import { SliderComponent } from "@syncfusion/ej2-react-inputs";
-import { ILoadedEventArgs } from '@syncfusion/ej2-circulargauge';
+import { ILoadedEventArgs, IResizeEventArgs } from '@syncfusion/ej2-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
 
 let sliderValue: number = 60;
 
 const SAMPLE_CSS = `
+    .e-view.fluent div.e-handle-first, .e-view.fluent-dark div.e-handle-first,
+    .e-view.fabric div.e-handle-first, .e-view.fabric-dark div.e-handle-first {
+        margin-top: -0.5px; 
+    }
+    .e-view.material3 div.e-handle-first, .e-view.material3-dark div.e-handle-first {
+        margin-top: 5px;
+    }
+    .e-view.bootstrap div.e-handle-first, .e-view.bootstrap-dark div.e-handle-first,
+    .e-view.highcontrast div.e-handle-first {
+        margin-top: 1px;
+    }
+    .e-view.bootstrap5 div.e-handle-first, .e-view.bootstrap5-dark div.e-handle-first, .e-view.material div.e-handle-first, .e-view.material-dark div.e-handle-first {
+        margin-top: -1px;
+    }
     .control-fluid {
 		padding: 0px !important;
     }
@@ -49,100 +61,76 @@ const SAMPLE_CSS = `
         flex-direction: column;
     }`;
 
-function ArcGauge() {
-
-    React.useEffect(() => {
+const ArcGauge = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let gauge: CircularGaugeComponent;
-    let sliderElement: SliderComponent;
+    let gauge = useRef<CircularGaugeComponent>(null);
+    let sliderElement = useRef<SliderComponent>(null);
 
-    function load(args: ILoadedEventArgs): void {
+    const resized = (args: IResizeEventArgs): void => {
+        args.gauge.axes[0].annotations[0].content = '<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">' +
+        gauge.current.axes[0].pointers[0].value.toString() + '/100</div>';
+    }
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function sliderChange() {
-        sliderValue = sliderElement.value as number;
+    const sliderChange = () => {
+        sliderValue = sliderElement.current.value as number;
         if (!isNaN(sliderValue)) {
             gauge['isProtectedOnChange'] = true;
             if (sliderValue >= 0 && sliderValue < 20) {
-                gauge.axes[0].pointers[0].color = '#ea501a';
+                gauge.current.axes[0].pointers[0].color = '#ea501a';
             } else if (sliderValue >= 20 && sliderValue < 40) {
-                gauge.axes[0].pointers[0].color = '#f79c02';
+                gauge.current.axes[0].pointers[0].color = '#f79c02';
             } else if (sliderValue >= 40 && sliderValue < 60) {
-                gauge.axes[0].pointers[0].color = '#e5ce20';
+                gauge.current.axes[0].pointers[0].color = '#e5ce20';
             } else if (sliderValue >= 60 && sliderValue < 80) {
-                gauge.axes[0].pointers[0].color = '#a1cb43';
+                gauge.current.axes[0].pointers[0].color = '#a1cb43';
             } else if (sliderValue >= 80 && sliderValue < 100) {
-                gauge.axes[0].pointers[0].color = '#82b944';
+                gauge.current.axes[0].pointers[0].color = '#82b944';
             }
-            gauge.setPointerValue(0, 0, sliderValue);
+            gauge.current.setPointerValue(0, 0, sliderValue);
             if (document.getElementById('pointervalue')) {
-                document.getElementById('pointervalue').innerHTML = gauge.axes[0].pointers[0].value.toString() + '/100';
+                document.getElementById('pointervalue').innerHTML = gauge.current.axes[0].pointers[0].value.toString() + '/100';
             }
         }
     }
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div id='circular_gauge_sample' className='control-section'>
-                <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} load={load.bind(this)} ref={g => gauge = g} id='gauge'>
+                <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} resized={resized.bind(this)} load={load.bind(this)} ref={gauge} id='gauge'>
                     <Inject services={[Annotations]} />
                     <AxesDirective>
-                        <AxisDirective radius='80%' startAngle={200} endAngle={160} minimum={1} maximum={100}
-                            lineStyle={{ width: 0 }}
-                            labelStyle={{
-                                font: {
-                                    fontFamily: 'inherit',
-                                    size: '0px',
-                                },
-                            }}
-                            majorTicks={{ height: 0 }}
-                            minorTicks={{ height: 0 }}>
+                        <AxisDirective radius='80%' startAngle={200} endAngle={160} minimum={1} maximum={100} lineStyle={{ width: 0 }} labelStyle={{ font: { fontFamily: 'inherit', size: '0px' } }} majorTicks={{ height: 0 }} minorTicks={{ height: 0 }}>
                             <AnnotationsDirective>
-                                <AnnotationDirective
-                                    content='<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">60/100</div>'
-                                    angle={0} radius='0%' zIndex='1' />
-                                <AnnotationDirective content='<div id="slider" style="height:70px;width:250px;"></div>'
-                                    angle={0} radius='-100%' zIndex='1' />
+                                <AnnotationDirective content='<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">60/100</div>' angle={0} radius='0%' zIndex='1' />
+                                <AnnotationDirective content='<div id="slider" style="height:70px;width:250px;"></div>' angle={0} radius='-100%' zIndex='1' />
                             </AnnotationsDirective>
                             <RangesDirective>
-                                <RangeDirective
-                                    start={1} end={100} radius='90%' startWidth={30}
-                                    endWidth={30} color='#E0E0E0' roundedCornerRadius={20}>
-                                </RangeDirective>
+                                <RangeDirective start={1} end={100} radius='90%' startWidth={30} endWidth={30} color='#E0E0E0' roundedCornerRadius={20} />
                             </RangesDirective>
                             <PointersDirective>
-                                <PointerDirective animation={{ enable: false }} value={60} radius='90%' color='#e5ce20' pointerWidth={30}
-                                    type='RangeBar' roundedCornerRadius={20}
-                                    border={{
-                                        width: 0
-                                    }} />
+                                <PointerDirective animation={{ enable: false }} value={60} radius='90%' color='#e5ce20' pointerWidth={30} type='RangeBar' roundedCornerRadius={20} border={{ width: 0 }} />
                             </PointersDirective>
                         </AxisDirective>
                     </AxesDirective>
                 </CircularGaugeComponent>
-                <SliderComponent className='sliderwrap' id="slider" style={{ width: '250px', marginTop: '-45px' }} type='MinRange' min={0} max={100} value={sliderValue}
-                    limits={{ enabled: true, minStart: 0, minEnd: 100 }} change={sliderChange.bind(this)} ref={d => sliderElement = d} />
+                <SliderComponent className='sliderwrap' id="slider" style={{ width: '250px', marginTop: '-45px' }} type='MinRange' min={0} max={100} value={sliderValue} limits={{ enabled: true, minStart: 0, minEnd: 100 }} change={sliderChange.bind(this)} ref={sliderElement} />
             </div>
             <div id="action-description">
-                <p>
-                    This sample shows the work progress using a circular gauge and a range bar pointer with rounded corners.
-                </p>
+                <p>This sample shows the work progress using a circular gauge and a range bar pointer with rounded corners.</p>
             </div>
             <div id="description">
-                <p>
-                    In this example, you can see how to render the range and range bar pointer with rounded corners. A slider is placed at the bottom of the circular gauge using annotation to change the range bar pointer value. Based on the value, the color of the pointer can also be changed.
-                </p>
+                <p>In this example, you can see how to render the range and range bar pointer with rounded corners. A slider is placed at the bottom of the circular gauge using annotation to change the range bar pointer value. Based on the value, the color of the pointer can also be changed.</p>
                 <p>
                     More information on the ranges can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-ranges/">documentation section</a>.
                 </p>

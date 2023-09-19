@@ -2,7 +2,8 @@
  * Rich Text Editor markdown preview sample
  */
 import { addClass, Browser, createElement, isNullOrUndefined, KeyboardEventArgs, removeClass } from '@syncfusion/ej2-base';
-import { Image, Inject, IToolbarItems, Link, MarkdownEditor, QuickToolbar, RichTextEditor, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, ActionCompleteEventArgs } from '@syncfusion/ej2-react-richtexteditor';
+import { Image, Inject, IToolbarItems, Link, MarkdownEditor, QuickToolbar, RichTextEditor, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, ActionCompleteEventArgs, Count, HtmlEditor, ToolbarType } from '@syncfusion/ej2-react-richtexteditor';
+import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import * as Marked from 'marked';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -12,7 +13,7 @@ import './markdown-editor-preview.css';
 export class Preview extends SampleBase<{}, {}> {
 
     private rteObj: RichTextEditorComponent;
-
+    private splitterInstance;
     // set the value to Rich Text Editor
     private value: string = `In Rich Text Editor , you click the toolbar buttons to format the words and the changes are visible immediately. 
 Markdown is not like that. When you format the word in Markdown format, you need to add Markdown syntax to the word to indicate which words 
@@ -25,162 +26,68 @@ We can add our own custom formation syntax for the Markdown formation, [sample l
 The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content`;
 
     // Rich Text Editor items list
-    private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', 'CreateTable', '|',
-        {
-            tooltipText: 'Preview', template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
-                '<span class="e-btn-icon e-md-preview e-icons"></span></button>'
-        },
-        {
-            tooltipText: 'Split Editor', template: '<button id="MD_Preview" class="e-tbar-btn e-control e-btn e-icon-btn">' +
-                '<span class="e-btn-icon e-view-side e-icons"></span></button>'
-        }, 'FullScreen', '|', 'Undo', 'Redo'];
-
-    private textArea: HTMLTextAreaElement;
-    private mdsource: HTMLElement;
-    private mdSplit: HTMLElement;
-    private htmlPreview: HTMLElement;
-
+    public items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'OrderedList',
+        'UnorderedList', '|', 'CreateLink', 'Image', 'CreateTable', '|', 'Undo', 'Redo'];
+    public textArea: HTMLElement;
+    public srcArea: HTMLElement;
     //Rich Text Editor ToolbarSettings
-    private toolbarSettings: ToolbarSettingsModel = {
-        items: this.items
+    public toolbarSettings: ToolbarSettingsModel = {
+        items: this.items,
+        type: ToolbarType.Expand,
+        enableFloating: false
     };
-
-    public markdownConversion(): void {
-        if (this.mdSplit.classList.contains('e-active')) {
-            let id: string = this.rteObj.getID() + 'html-view';
-            let htmlPreview: HTMLElement = this.rteObj.element.querySelector('#' + id);
-            this.htmlPreview.innerHTML = Marked((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
-        }
+    public onCreate() {
+        this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLElement;
+        this.srcArea = document.querySelector('.source-code') as HTMLElement;
+        this.updateValue();
     }
-    public fullPreview(e: { [key: string]: string | boolean }): void {
-        let id: string = this.rteObj.getID() + 'html-preview';
-        this.htmlPreview = this.rteObj.element.querySelector('#' + id);
-        if ((this.mdsource.classList.contains('e-active') || this.mdSplit.classList.contains('e-active')) && e.mode) {
-            this.mdsource.classList.remove('e-active');
-            this.mdSplit.classList.remove('e-active');
-            this.mdsource.parentElement.title = 'Preview';
-            this.textArea.style.display = 'block';
-            this.textArea.style.width = '100%';
-            this.htmlPreview.style.display = 'none';
-        } else {
-            this.mdsource.classList.add('e-active');
-            this.mdSplit.classList.add('e-active');
-            if (!this.htmlPreview) {
-                this.htmlPreview = createElement('div', { className: 'e-content' });
-                this.htmlPreview.id = id;
-                this.textArea.parentNode.appendChild(this.htmlPreview);
-            }
-            if (e.type === 'preview') {
-                this.textArea.style.display = 'none'; this.htmlPreview.classList.add('e-pre-source');
-            } else {
-                this.htmlPreview.classList.remove('e-pre-source');
-                this.textArea.style.width = '50%';
-            }
-            this.htmlPreview.style.display = 'block';
-            this.htmlPreview.innerHTML = Marked((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
-            this.mdsource.parentElement.title = 'Code View';
-        }
+    public onChange() {
+        this.updateValue();
     }
-    public rendereComplete(): void {
-        this.textArea = this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement;
-        this.textArea.addEventListener('keyup', (e: KeyboardEventArgs) => { this.markdownConversion(); });
-        let rteObj: RichTextEditor = this.rteObj;
-        this.mdsource = document.getElementById('preview-code');
-        this.mdsource.addEventListener('click', (e: MouseEvent) => {
-            this.fullPreview({ mode: true, type: 'preview' });
-            if ((e.currentTarget as HTMLElement).classList.contains('e-active')) {
-                rteObj.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
-                    'Formats', 'OrderedList', 'UnorderedList', '|',
-                    'CreateLink', 'Image', 'CreateTable', 'Undo', 'Redo']);
-                (e.currentTarget as HTMLElement).parentElement.nextElementSibling.classList.add('e-overlay');
-            } else {
-                rteObj.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
-                    'Formats', 'OrderedList', 'UnorderedList', '|',
-                    'CreateLink', 'Image', 'CreateTable', 'Undo', 'Redo']);
-                (e.currentTarget as HTMLElement).parentElement.nextElementSibling.classList.remove('e-overlay');
-            }
-        });
-        this.mdSplit = document.getElementById('MD_Preview');
-        this.mdSplit.addEventListener('click', (e: MouseEvent) => {
-            if (rteObj.element.classList.contains('e-rte-full-screen')) { this.fullPreview({ mode: true, type: '' }); }
-            this.mdsource.classList.remove('e-active');
-            if (!rteObj.element.classList.contains('e-rte-full-screen')) {
-                rteObj.showFullScreen();
-            }
-        });
+    public onResizing() {
+        this.rteObj.refreshUI();
     }
-    public actionComplete(e: any): void {
-        if (e.targetItem === 'Maximize' && isNullOrUndefined(e.args)) {
-            this.fullPreview({ mode: true, type: '' })
-        }
-        else if (!this.mdSplit.parentElement.classList.contains('e-overlay')) {
-            if (e.targetItem === 'Minimize') {
-                this.textArea.style.display = 'block';
-                this.textArea.style.width = '100%';
-                if (this.htmlPreview) {
-                    this.htmlPreview.style.display = 'none';
-                }
-                this.mdSplit.classList.remove('e-active');
-                this.mdsource.classList.remove('e-active');
-            }
-            this.markdownConversion();
-        }
-        this.rteObj.toolbarModule.refreshToolbarOverflow();
+    public updateValue() {
+        this.srcArea.innerHTML = (Marked as any).marked((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
     }
-    public handleFullScreen(e: any): void {
-        let sbCntEle: HTMLElement = document.querySelector('.sb-content.e-view');
-        let sbHdrEle: HTMLElement = document.querySelector('.sb-header.e-view');
-        let leftBar: HTMLElement;
-        let transformElement: HTMLElement;
+    public updateOrientation() { 
         if (Browser.isDevice) {
-            leftBar = document.querySelector('#right-sidebar');
-            transformElement = document.querySelector('.sample-browser.e-view.e-content-animation');
-        } else {
-            leftBar = document.querySelector('#left-sidebar');
-            transformElement = document.querySelector('#right-pane');
-        }
-        if (e.targetItem === 'Maximize') {
-            if (Browser.isDevice && Browser.isIos) {
-                addClass([sbCntEle, sbHdrEle], ['hide-header']);
-            }
-            addClass([leftBar], ['e-close']); removeClass([leftBar], ['e-open']);
-            if (!Browser.isDevice) { transformElement.style.marginLeft = '0px'; }
-            transformElement.style.transform = 'inherit';
-        } else if (e.targetItem === 'Minimize') {
-            if (Browser.isDevice && Browser.isIos) {
-                removeClass([sbCntEle, sbHdrEle], ['hide-header']);
-            }
-            removeClass([leftBar], ['e-close']);
-            if (!Browser.isDevice) {
-                addClass([leftBar], ['e-open']);
-                transformElement.style.marginLeft = leftBar.offsetWidth + 'px';
-            }
-            transformElement.style.transform = 'translateX(0px)';
+            this.splitterInstance.orientation = 'Vertical';
+            (document.body.querySelector('.heading') as any).style.width = 'auto';
         }
     }
+    public content1() {
+        return (<div className="content">
+            <RichTextEditorComponent id='defaultRTE' ref={(richtexteditor) => { this.rteObj = richtexteditor; }} editorMode='Markdown' toolbarSettings={this.toolbarSettings} height='447px' saveInterval={1} created={this.onCreate.bind(this)} change={this.onChange.bind(this)} actionComplete={this.updateValue.bind(this)} value={this.value}>
+
+                <Inject services={[MarkdownEditor, Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, Count]} />
+            </RichTextEditorComponent>
+        </div>);
+    };
+    public content2() {
+        return (<div className="heading right">
+            <h6 className="title"><b>Markdown Preview</b></h6>
+            <div className="splitter-default-content source-code pane2" style={{ padding: "20px" }}></div>
+        </div>);
+    };
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section' id="rtePreview">
+                <div className='control-section onlineEditor' id="rtePreview">
                     <div className="content-wrapper">
-                        <RichTextEditorComponent id="markdownPreview"
-                            actionBegin={this.handleFullScreen.bind(this)}
-                            actionComplete={this.actionComplete.bind(this)}
-                            editorMode='Markdown' height='300px'
-                            ref={(richtexteditor) => { this.rteObj = richtexteditor }}
-                            value={this.value} toolbarSettings={this.toolbarSettings} >
-                            <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar, Table]} />
-                        </RichTextEditorComponent>
+                    <SplitterComponent ref={splitter => (this.splitterInstance = splitter)} height='450px' width='100%' resizing={this.onResizing.bind(this)} created={this.updateOrientation.bind(this)}>
+                        <PanesDirective>
+                            <PaneDirective resizable={true} size='50%' min="40%" cssClass='pane1' content={this.content1.bind(this)}></PaneDirective>
+                            <PaneDirective min="40%" cssClass='pane2' content={this.content2.bind(this)}></PaneDirective>
+                        </PanesDirective>
+                    </SplitterComponent>
                     </div>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates how to preview markdown changes in Rich Text Editor.
-        Type or edit the display text, and apply format to view the preview of markdown.
-        You can preview the markdown changes immediately in the preview area.</p>
+                    <p>This example illustrates how to preview Markdown changes within the Rich Text Editor. You can input or modify the display text, apply formatting, and observe the Markdown preview alongside. This capability is enabled by utilizing the splitter component, which effectively separates the Rich Text Editor from the preview section.</p>
                 </div>
                 <div id="description">
-                    <p>The Rich Text Editor allows you to preview markdown changes immediately using <code>preview</code>.
-                The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
+                    <p>The Rich Text Editor provides the ability to instantly <code>preview</code> Markdown changes through the preview functionality. To achieve this, the sample utilizes the third-party library Marked.js to convert Markdown into HTML content.</p>
                 </div>
             </div>
         );

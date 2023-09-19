@@ -29,7 +29,7 @@ export class StickyHeader extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>The Grid headers can be fixed while scrolling its parent element.
                         It can be done by setting the <code><a target="_blank" className="code"
-                            href="http://ej2.syncfusion.com/react/documentation/api/grid/#enablestickyheader">
+                            href="https://ej2.syncfusion.com/react/documentation/api/grid/#enablestickyheader">
                             enableStickyHeader
                         </a></code> property.
                     </p>
@@ -39,7 +39,7 @@ export class StickyHeader extends SampleBase<{}, {}> {
                     <p>
                         More information on the stacked header configuration can be found in this
                         <a target="_blank"
-                            href="https://ej2.syncfusion.com/react/documentation/grid/scrolling/">
+                            href="https://ej2.syncfusion.com/react/documentation/grid/scrolling#sticky-header">
                             documentation section</a>.
                     </p>
 

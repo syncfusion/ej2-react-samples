@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { useEffect } from "react";
 import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor } from '@syncfusion/ej2-react-heatmap';
 import { updateSampleSection } from '../common/sample-base';
 // custom code start
@@ -12,19 +13,19 @@ const SAMPLE_CSS: any = `
  * Heatmap Default sample
  */
 
-function Default() {
+const Default = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
     };
 
-    function getDatasource(): any {
+    const getDatasource = (): any => {
         let temp: any = {};
         temp.dataSource = [];
         temp.xAis = [];
@@ -40,57 +41,28 @@ function Default() {
         return temp;
     }
 
-    function getRndInteger(min: number, max: number): number {
+    const getRndInteger = (min: number, max: number): number => {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
     return (
         <div className='control-pane'>
             {/* custom code start */}
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container'
-                    titleSettings={{
-                        text: 'Sales Revenue per Employee (in 1000 US$)',
-                        textStyle: {
-                            size: '15px',
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI'
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert',
-                            'Laura', 'Anne', 'Paul', 'Karin', 'Mario']
-                    }}
-                    yAxis={{
-                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                    }}
-                    load={load.bind(this)}
-                    dataSource={getDatasource().dataSource}>
+                <HeatMapComponent id='heatmap-container' titleSettings={{ text: 'Sales Revenue per Employee (in 1000 US$)', textStyle: { size: '15px', fontWeight: '500', fontStyle: 'Normal', fontFamily: 'Segoe UI' } }} xAxis={{ labels: ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert', 'Laura', 'Anne', 'Paul', 'Karin', 'Mario'] }} yAxis={{ labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] }} load={load} dataSource={getDatasource().dataSource}>
                     <Inject services={[Legend, Tooltip, Adaptor]} />
                 </HeatMapComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample visualizes the sales revenue of items sold by the employees in a week, where the revenue
-                    for the day is displayed in 1000 USD as cell data.
-                </p>
+                <p>This sample visualizes the sales revenue of items sold by the employees in a week, where the revenue for the day is displayed in 1000 USD as cell data.</p>
             </div>
             <div id="description">
-                <p>
-                    In this example, you can see how to render a heat map with the provided data source. The palette color is applied
-                    to the items in heat map. The default legend is enabled in this example to represent the items.
-                </p>
-                <p>
-                    Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item
-                    in touch enabled devices.
-                </p>
+                <p>In this example, you can see how to render a heat map with the provided data source. The palette color is applied to the items in heat map. The default legend is enabled in this example to represent the items.</p>
+                <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch enabled devices.</p>
                 <br></br>
-                <p> <b>Injecting Module</b></p>
+                <p><b>Injecting Module</b></p>
                 <p>
                     Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the
                     <code>Tooltip</code> module using the <code>Heatmap.Inject(Tooltip)</code> method, and use a legend by injecting the
@@ -100,5 +72,4 @@ function Default() {
         </div >
     );
 }
-
 export default Default;

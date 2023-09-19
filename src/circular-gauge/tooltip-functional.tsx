@@ -4,11 +4,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
-import {
-    CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, Inject,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTooltip, IPointerDragEventArgs,
-} from '@syncfusion/ej2-react-circulargauge';
+import { CircularGaugeComponent, AxesDirective, ILoadedEventArgs, GaugeTheme, AxisDirective, Inject, PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTooltip, IPointerDragEventArgs } from '@syncfusion/ej2-react-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
+import { useEffect, useRef } from 'react';
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -31,28 +29,26 @@ const SAMPLE_CSS = `
         line-height: 30px;
     }`;
 
-function Tooltip() {
-
-    React.useEffect(() => {
+const Tooltip = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let gauge: CircularGaugeComponent;
+    let gauge = useRef<CircularGaugeComponent>(null);
 
-    function onChartLoad(args: ILoadedEventArgs): void {
+    const onChartLoad = (args: ILoadedEventArgs): void => {
         document.getElementById('tooltip-container').setAttribute('title', '');
     };
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function dragEnd(args: IPointerDragEventArgs): void {
+    const dragEnd = (args: IPointerDragEventArgs): void => {
         if (args.currentValue >= 0 && args.currentValue <= 50) {
             args.pointer.color = "#3A5DC8";
             args.pointer.cap.border.color = "#3A5DC8";
@@ -62,55 +58,20 @@ function Tooltip() {
         }
         args.pointer.value = args.currentValue;
         args.pointer.animation.enable = false;
-        gauge.refresh();
+        gauge.current.refresh();
     };
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-12'>
-                    <CircularGaugeComponent background='transparent' loaded={onChartLoad.bind(this)} dragEnd={dragEnd.bind(this)} id='tooltip-container' ref={g => gauge = g} enablePointerDrag={true}
-                        load={load.bind(this)}
-                        tooltip={{
-                            enable: true,
-                            type: ['Range', 'Pointer'],
-                            showAtMousePosition: true,
-                            format: 'Current Value:  {value}',
-                            enableAnimation: false,
-                            textStyle: {
-                                size: '13px',
-                                fontFamily: 'inherit'
-                            },
-                            rangeSettings: {
-                                showAtMousePosition: true, format: "Start Value: {start} <br/> End Value: {end}", textStyle: {
-                                    size: '13px',
-                                    fontFamily: 'inherit'
-                                }
-                            }
-                        }}>
+                    <CircularGaugeComponent background='transparent' loaded={onChartLoad.bind(this)} dragEnd={dragEnd.bind(this)} id='tooltip-container' ref={gauge} enablePointerDrag={true} load={load.bind(this)} tooltip={{ enable: true, type: ['Range', 'Pointer'], showAtMousePosition: true, format: 'Current Value:  {value}', enableAnimation: false, textStyle: { size: '13px', fontFamily: 'inherit' }, rangeSettings: { showAtMousePosition: true, format: "Start Value: {start} <br/> End Value: {end}", textStyle: { size: '13px', fontFamily: 'inherit' } } }}>
                         <Inject services={[GaugeTooltip]} />
                         <AxesDirective>
-                            <AxisDirective startAngle={240} endAngle={120} radius='90%' minimum={0} maximum={120}
-                                majorTicks={{
-                                    color: 'white', offset: -5, height: 12
-                                }}
-                                lineStyle={{ width: 0 }}
-                                minorTicks={{
-                                    width: 0
-                                }} labelStyle={{
-                                    useRangeColor: true, font: { fontFamily: 'inherit' }
-                                }}>
+                            <AxisDirective startAngle={240} endAngle={120} radius='90%' minimum={0} maximum={120} majorTicks={{ color: 'white', offset: -5, height: 12 }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ useRangeColor: true, font: { fontFamily: 'inherit' } }}>
                                 <PointersDirective>
-                                    <PointerDirective value={70} radius='60%'
-                                        cap={{
-                                            radius: 10, border: { color: '#33BCBD', width: 5 }
-                                        }}
-                                        animation={{
-                                            enable: true, duration: 1500
-                                        }} color='#33BCBD' />
+                                    <PointerDirective value={70} radius='60%' cap={{ radius: 10, border: { color: '#33BCBD', width: 5 } }} animation={{ enable: true, duration: 1500 }} color='#33BCBD' />
                                 </PointersDirective>
                                 <RangesDirective>
                                     <RangeDirective start={0} end={50} radius='102%' color='#3A5DC8' startWidth={10} endWidth={10} />
@@ -122,9 +83,7 @@ function Tooltip() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample helps in visualizing the tooltip of the pointer and the range in a circular gauge.
-                </p>
+                <p>This sample helps in visualizing the tooltip of the pointer and the range in a circular gauge.</p>
             </div>
             <div id="description">
                 <p>
@@ -137,5 +96,4 @@ function Tooltip() {
         </div>
     )
 }
-
 export default Tooltip;

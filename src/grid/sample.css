@@ -121,6 +121,7 @@
     opacity: 0.35;
 }
 
+.e-mastertext,
 .e-statustext {
     font-size: 15px;
     padding: 1em;

@@ -19,6 +19,13 @@ const SAMPLE_CSS = `
     #control-container {
          padding: 0px !important;
      }
+    .progress-bar-parent {
+        margin-top: 8%;
+        text-align: center;
+    }
+    .progress-container-align {
+        text-align: center;
+    }
  
      #reLoad {
          border-radius: 4px;
@@ -126,9 +133,9 @@ const ProgressBarRadius = () => {
             <style>
                 {SAMPLE_CSS}
             </style>
-            <div className="control-section">
-                <div className="row" style={{ marginTop: '8%', marginLeft: '8%' }}>
-                    <div className="col-lg-3 col-md-3 col-sm-3" style={{ alignContent: 'center' }}>
+            <div className="control-section progress-bar-parent">
+                <div className="row">
+                    <div className="col-lg-3 col-md-3 col-3 progress-container" style={{ alignContent: 'center' }}>
                         <ProgressBarComponent id="full-background" ref={fullBackground} type='Circular' width='160px'
                             height='160px' cornerRadius='Round' enableRtl={false} radius='100%' innerRadius='190%'
                             progressThickness={10} trackThickness={80} value={60}
@@ -139,26 +146,26 @@ const ProgressBarRadius = () => {
                             </ProgressBarAnnotationsDirective>
                         </ProgressBarComponent>
                     </div>
-                    <div className="col-lg-3 col-md-3 col-sm-3" style={{ alignContent: 'center' }}>
+                    <div className="col-lg-3 col-md-3 col-3 progress-container" style={{ alignContent: 'center' }}>
                         <ProgressBarComponent id="outer-radius" ref={outerRadius} type='Circular' width='160px' height='160px'
                             value={90} innerRadius='72' progressThickness={8} cornerRadius='Round'
                             animation={animation} load={progressLoad.bind(this)}>
                         </ProgressBarComponent>
 
                     </div>
-                    <div className="col-lg-3 col-md-3 col-sm-3" style={{ alignContent: 'center' }}>
+                    <div className="col-lg-3 col-md-3 col-3 progress-container" style={{ alignContent: 'center' }}>
                         <ProgressBarComponent id="on-radius" ref={onRadius} type='Circular' width='160px' height='160px' value={90}
                             trackThickness={3} progressThickness={8}
                             animation={animation} load={progressLoad.bind(this)}>
                         </ProgressBarComponent>
                     </div>
-                    <div className="col-lg-3 col-md-3 col-sm-3" style={{ alignContent: 'center' }}>
+                    <div className="col-lg-3 col-md-3 col-3 progress-container" style={{ alignContent: 'center' }}>
                         <ProgressBarComponent id="pie" ref={pie} type='Circular' width='160px' height='160px' value={70}
                             enablePieProgress={true} animation={animation} load={progressLoad.bind(this)}>
                         </ProgressBarComponent>
                     </div>
                 </div>
-                <div id="replay-progressbar" style={{ marginTop: '2%', marginLeft: '45.5%' }}>
+                <div id="replay-progressbar" className="col-lg-12 col-md-12 col-12 reload-btn">
                     <button onClick={replayClick.bind(this)} id="reLoad" className="e-control e-btn e-lib e-outline e-primary">
                         Reload
                     </button>

@@ -9,33 +9,7 @@
     }
 }
 @media (max-width: 1200px) {
-    #KanbanVirtualScrolling .e-story-points {
-        display: none;
-    }
-}
-@media (max-width: 1100px) {
-    #KanbanVirtualScrolling .e-card-avatar {
-        display: none;
-    }
-}
-/* Touch devices styles */
-@media (max-width: 1670px) {
-    .e-bigger #KanbanVirtualScrolling .e-project {
-        display: none;
-    }
-}
-@media (max-width: 1500px) {
-    .e-bigger #KanbanVirtualScrolling .e-priority {
-        display: none;
-    }
-}
-@media (max-width: 1440px) {
-    .e-bigger #KanbanVirtualScrolling .e-story-points {
-        display: none;
-    }
-}
-@media (max-width: 1280px) {
-    .e-bigger #KanbanVirtualScrolling .e-card-avatar {
+    #KanbanVirtualScrolling .e-story-points  {
         display: none;
     }
 }

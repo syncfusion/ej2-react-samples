@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function LocalData() {
-  React.useEffect(() => {
+const LocalData = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -22,7 +23,7 @@ function LocalData() {
     leftLabel: 'TaskName'
   };
   const splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   const projectStartDate: Date = new Date('03/24/2019');
   const projectEndDate: Date = new Date('07/06/2019');

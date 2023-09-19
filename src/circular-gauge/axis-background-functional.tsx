@@ -3,11 +3,8 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject, Annotations,
-    PointersDirective, PointerDirective, AnnotationsDirective, AnnotationDirective, GaugeTheme,
-    ILoadedEventArgs
-} from '@syncfusion/ej2-react-circulargauge';
+import { useEffect, useRef } from 'react';
+import { CircularGaugeComponent, AxesDirective, AxisDirective, Inject, Annotations, PointersDirective, PointerDirective, AnnotationsDirective, AnnotationDirective, GaugeTheme, ILoadedEventArgs } from '@syncfusion/ej2-react-circulargauge';
 import { CircularGauge } from '@syncfusion/ej2-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -16,24 +13,21 @@ const SAMPLE_CSS = `
 		padding: 0px !important;
     }`;
 
-function AxisBackGround() {
-
-    let annotationGauge: CircularGauge;
-
-    React.useEffect(() => {
+const AxisBackGround = () => {    
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function load(args: ILoadedEventArgs): void {
+    let annotationGauge: CircularGauge;
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function updateGauge(): void {
+    const updateGauge = (): void => {
         annotationGauge = new CircularGauge({
             width: '600px',
             height: '450px',
@@ -53,52 +47,36 @@ function AxisBackGround() {
         annotationGauge.appendTo('#subGauge');
     }
 
-    function onChartLoad(args: ILoadedEventArgs): void {
+    const onChartLoad = (): void => {
         updateGauge();
     };
 
-    function onResized(args: Object) {
+    const onResized = () => {
         location.reload();
     }
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent loaded={onChartLoad.bind(this)} resized={onResized.bind(this)} load={load.bind(this)} id='axis-background' background='transparent' centerY='65%'>
                     <Inject services={[Annotations]} />
                     <AxesDirective>
-                        <AxisDirective startAngle={0} endAngle={0} radius='80%'
-                            majorTicks={{
-                                height: 0,
-                            }} lineStyle={{ width: 0 }}
-                            minorTicks={{
-                                height: 0,
-                            }} labelStyle={{
-                                font: { size: '0px' }
-                            }}>
+                        <AxisDirective startAngle={0} endAngle={0} radius='80%' majorTicks={{ height: 0 }} lineStyle={{ width: 0 }} minorTicks={{ height: 0 }} labelStyle={{ font: { size: '0px' } }}>
                             <PointersDirective>
                                 <PointerDirective radius='0%' />
                             </PointersDirective>
                             <AnnotationsDirective>
-                                <AnnotationDirective
-                                    content='<div style="margin-top: -37%;"><img src="src/circular-gauge/images/axis-background.png" height="400" width="400" /></div>'
-                                    angle={0} radius='0%' zIndex='1' />
-                                <AnnotationDirective content='<div id="subGauge" style="margin-left: -50%; margin-top: -50%;"></div>'
-                                    angle={0} radius='0%' zIndex='1' />
-                                <AnnotationDirective content='<div style="color:orange;margin-top: -86px;margin-left: -1px;font-size: 18px;"> 90</div>'
-                                    angle={10} radius='0%' zIndex='1' />
+                                <AnnotationDirective content='<div style="margin-top: -37%;"><img src="src/circular-gauge/images/axis-background.png" height="400" width="400" /></div>' angle={0} radius='0%' zIndex='1' />
+                                <AnnotationDirective content='<div id="subGauge" style="margin-left: -50%; margin-top: -50%;"></div>' angle={0} radius='0%' zIndex='1' />
+                                <AnnotationDirective content='<div style="color:orange;margin-top: -86px;margin-left: -1px;font-size: 18px;"> 90</div>' angle={10} radius='0%' zIndex='1' />
                             </AnnotationsDirective>
                         </AxisDirective>
                     </AxesDirective>
                 </CircularGaugeComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample demonstrates a circular gauge with an axis and a background image set for the axis.
-                </p>
+                <p>This sample demonstrates a circular gauge with an axis and a background image set for the axis.</p>
             </div>
             <div id="description">
                 <p>
@@ -111,5 +89,4 @@ function AxisBackGround() {
         </div>
     )
 }
-
 export default AxisBackGround;

@@ -71,9 +71,9 @@ export class TitleBar {
     }
     private setTooltipForPopup(): void {
         // tslint:disable-next-line:max-line-length
-        document.getElementById('documenteditor-share-popup').querySelectorAll('li')[0].setAttribute('title', 'Download a copy of this document to your computer as a DOCX file.');
+        // document.getElementById('documenteditor-share-popup').querySelectorAll('li')[0].setAttribute('title', 'Download a copy of this document to your computer as a DOCX file.');
         // tslint:disable-next-line:max-line-length
-        document.getElementById('documenteditor-share-popup').querySelectorAll('li')[1].setAttribute('title', 'Download a copy of this document to your computer as an SFDT file.');
+        // document.getElementById('documenteditor-share-popup').querySelectorAll('li')[1].setAttribute('title', 'Download a copy of this document to your computer as an SFDT file.');
     }
     private wireEvents = (): void => {
         this.print.element.addEventListener('click', this.onPrint);

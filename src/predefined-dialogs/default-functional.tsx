@@ -17,7 +17,7 @@ const DefaultFunctionalities = () => {
     const [display,setDisplay] = useState<string>('');
     let dialogObj: any;
     const buttonClick = (args) => {
-        if (args.target.innerHTML.toLowerCase() == 'alert') {
+        if (args.target.textContent.toLowerCase() == 'alert') {
             setDisplay('none');
             dialogObj = DialogUtility.alert({
                 title: 'Low Battery',
@@ -27,7 +27,7 @@ const DefaultFunctionalities = () => {
                 closeOnEscape: true
           });
         }       
-        else if (args.target.innerHTML.toLowerCase() == 'confirm') {
+        else if (args.target.textContent.toLowerCase() == 'confirm') {
             setDisplay('none');
             dialogObj = DialogUtility.confirm({
                 title: ' Delete Multiple Items',
@@ -38,7 +38,7 @@ const DefaultFunctionalities = () => {
                 closeOnEscape: true
             });
         }
-        else if(args.target.innerHTML.toLowerCase() == 'prompt') {
+        else if(args.target.textContent.toLowerCase() == 'prompt') {
             setDisplay('none');
             dialogObj = DialogUtility.confirm({
             title: 'Join Chat Group',

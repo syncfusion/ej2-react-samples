@@ -268,7 +268,7 @@ const Overview = () => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
-          <CheckBoxComponent id='timeline_views' checked={false} change={onChange}/>
+          <CheckBoxComponent id='timeline_views' checked={isTimelineView} change={onChange}/>
         </div>
         <div className='text-child'>Timeline Views</div>
       </div >

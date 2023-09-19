@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, EditDialogFieldsDirective, DayMarkers, EditDialogFieldDirective, Inject, Edit, Selection, Toolbar, ColumnsDirective, ColumnDirective, EventMarkersDirective, EventMarkerDirective } from '@syncfusion/ej2-react-gantt';
 import { editingData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function Editing() {
-  React.useEffect(() => {
+const Editing = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -32,7 +33,7 @@ function Editing() {
     showDeleteConfirmDialog: true
   };
   const splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   const projectStartDate: Date = new Date('03/25/2019');
   const projectEndDate: Date = new Date('07/28/2019');
@@ -104,7 +105,6 @@ function Editing() {
             respectively</li>
         </p>
       </div>
-
       <div id="description">
         <p>
           This CRUD operations can be configured in Gantt chart using <code>editSettings</code> and
@@ -127,5 +127,4 @@ function Editing() {
     </div>
   )
 }
-
 export default Editing;

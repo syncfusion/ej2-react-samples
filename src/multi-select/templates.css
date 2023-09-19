@@ -136,8 +136,12 @@
 }
 
 .e-bigger #multitemplate .nameTemp {
-    padding: 2px 0 0 35px;
+    padding: 0 0 0 35px;
     line-height: 1.2em;
+}
+
+.e-bigger.fabric-dark #multitemplate .nameTemp {
+    padding: 3px 0 0 35px;
 }
 
 #multitemplate .nameTemp {
@@ -145,17 +149,26 @@
     line-height: 1.2em;
 }
 
-.tailwind.e-bigger #multitemplate .nameTemp {
+.tailwind.e-bigger #multitemplate .nameTemp,
+.tailwind-dark.e-bigger #multitemplate .nameTemp {
+    padding: 0 0 0 35px;
+    line-height: 1.2em;
+}
+
+.material3.e-bigger #multitemplate .nameTemp,
+.material3-dark.e-bigger #multitemplate .nameTemp {
     padding: 2px 0 0 35px;
     line-height: 1.2em;
 }
 
-.tailwind #multitemplate .nameTemp {
+.tailwind #multitemplate .nameTemp,
+.tailwind-dark #multitemplate .nameTemp {
     padding: 7px 0px 0px 35px;
     line-height: 1.2em;
 }
 
-.bootstrap #multitemplate .nameTemp {
+.bootstrap #multitemplate .nameTemp,
+.bootstrap-dark #multitemplate .nameTemp {
     padding: 2px 0px 0px 35px;
     line-height: 1.2em;
 }
@@ -180,28 +193,44 @@
     width: 26px;
 }
 
-.tailwind #multitemplate .valueTemp {
+.tailwind #multitemplate .valueTemp,
+.tailwind-dark #multitemplate .valueTemp {
     margin-top: 3px;
     height: 22px;
     width: 22px;
 }
-.tailwind.e-bigger #multitemplate .valueTemp {
-    margin-top: -6px;
+.tailwind.e-bigger #multitemplate .valueTemp,
+.tailwind-dark.e-bigger #multitemplate .valueTemp {
+    margin-top: -5px;
     height: 26px;
     width: 26px;
 }
-.fabric #multitemplate .valueTemp,
-.highcontrast #multitemplate .valueTemp {
+.fabric #multitemplate .valueTemp {
     margin-top: 1px;
 }
 
+.highcontrast #multitemplate .valueTemp {
+    margin-top: -2px;
+}
+
 .e-bigger #multitemplate .valueTemp {
-    margin-top: -4px;
+    margin-top: -7px;
     height: 30px;
     width: 30px;
 }
 
-.e-bigger.material #multitemplate .valueTemp {
+.e-bigger.fabric #multitemplate .valueTemp,
+.e-bigger.fabric-dark #multitemplate .valueTemp {
+    margin-top: -3px;
+}
+
+.e-bigger.bootstrap5 #multitemplate .valueTemp,
+.e-bigger.bootstrap5-dark #multitemplate .valueTemp {
+    margin-top: -6px;
+}
+
+.e-bigger.material #multitemplate .valueTemp,
+.e-bigger.material-dark #multitemplate .valueTemp {
     height: 32px;
     width: 32px;
     margin-top: -8px;
@@ -218,12 +247,16 @@
     margin-right: -27px;
 }
 
-.e-bigger.fabric #multitemplate .nameTemp,
-.e-bigger.highcontrast #multitemplate .nameTemp {
+.e-bigger.fabric #multitemplate .nameTemp {
     bottom: 24px;
 }
 
-.material #multitemplate .nameTemp {
+.e-bigger.highcontrast #multitemplate .nameTemp {
+    bottom: 21px;
+}
+
+.material #multitemplate .nameTemp,
+.material-dark #multitemplate .nameTemp {
     width: 114px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -233,16 +266,18 @@
     margin-right: -25px;
 }
 
-.e-bigger.material #multitemplate .nameTemp {
-    bottom: 24px;
+.e-bigger.material #multitemplate .nameTemp,
+.e-bigger.material-dark #multitemplate .nameTemp {
+    bottom: 22px;
 }
 
-.bootstrap #multitemplate .nameTemp {
+.bootstrap #multitemplate .nameTemp,
+.bootstrap-dark #multitemplate .nameTemp {
     width: 120px;
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 0 0 29px;
-    bottom: 24px;
+    bottom: 20px;
     position: relative;
     margin-right: -24px;
 }
@@ -251,14 +286,23 @@
     height: 30px;
     width: 30px;
     left: -10px;
-    margin-top: 0px;
+    margin-top: 1px;
 }
 
-.bootstrap #multitemplate .valueTemp {
-    margin-top: -7px;
+.e-bigger.bootstrap-dark #multitemplate .valueTemp {
+    height: 30px;
+    width: 30px;
+    left: -7px;
+    margin-top: -6px;
 }
 
-.e-bigger.bootstrap #multitemplate .nameTemp {
+.bootstrap #multitemplate .valueTemp,
+.bootstrap-dark #multitemplate .valueTemp {
+    margin-top: -5px;
+}
+
+.e-bigger.bootstrap #multitemplate .nameTemp,
+.e-bigger.bootstrap-dark #multitemplate .nameTemp {
     bottom: 23px;
     padding: 0 0 0 36px;
 }
@@ -326,14 +370,35 @@
     margin: 1px 16px;
 }
 
-.e-bigger.bootstrap4 #multitemplate .valueTemp {
+.e-bigger.bootstrap4 #multitemplate .valueTemp,
+.e-bigger.highcontrast #multitemplate .valueTemp {
     margin-left: -6px;
     height: 26px;
     width: 26px;
     margin-top: -4px;
 }
 
+.e-bigger.highcontrast #multitemplate .valueTemp {
+    margin-left: 0px;
+    height: 26px;
+    width: 26px;
+    margin-top: -3px;
+}
+
 .e-bigger.bootstrap4 #multitemplate .nameTemp {
     padding: 0 0 0 26px;
     line-height: 1.6em;
+}
+
+.e-bigger.fluent .e-multi-select-wrapper .e-chips .e-chips-close::before,
+.e-bigger.fluent-dark .e-multi-select-wrapper .e-chips .e-chips-close::before {
+    top: 2px;
+}
+
+.e-bigger.highcontrast .e-multi-select-wrapper .e-chips .e-chips-close::before {
+    top: 10px;
+}
+
+.e-bigger.bootstrap4 .e-multi-select-wrapper .e-chips .e-chips-close::before {
+    top: 12px;
 }

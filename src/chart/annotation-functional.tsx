@@ -358,7 +358,7 @@ const Annotation = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use annotation feature in chart, we need to inject
+                    Chart component features are segregated into individual feature-wise modules. To use annotation feature in chart, we need to inject 
                     <code>ChartAnnotation</code> module into <code>services</code>.
                 </p>
                 <p>

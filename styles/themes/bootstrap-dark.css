@@ -1,0 +1,214 @@
+.bootstrap-dark .sb-reset-icon:before {
+    content: '\e7fc';
+}
+
+/* bootstrap-dark */
+.bootstrap-dark .sb-content,
+.bootstrap-dark textarea#ruleContent {
+    background: #1b1b1b;
+}
+
+.bootstrap-dark .sb-home {
+    color: #ffffff
+}
+
+.bootstrap-dark .sb-left-pane .e-listview .e-list-item.e-active:hover,
+.bootstrap-dark .sb-home,
+.bootstrap-dark .sb-reset-icon {
+    color: #ffffff
+}
+
+body.bootstrap-dark,
+.bootstrap-dark #sb-header-text,
+.bootstrap-dark .control-name,
+.bootstrap-dark .sample-navigation,
+.bootstrap-dark .sb-icon-Popout,
+.bootstrap-dark .sb-switch-popup a {
+    color: #fff;
+}
+
+.bootstrap-dark .sb-header,
+.bootstrap-dark .sb-search-result .e-list-item,
+.bootstrap-dark .sb-search-result .e-list-group-item {
+    background: #1b1b1b !important;
+}
+
+.bootstrap-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background: #0070f0;
+}
+
+.bootstrap-dark #left-sidebar {
+    color: #c2c0c0;
+    background: #1b1b1b;
+}
+
+.bootstrap-dark #left-sidebar {
+    border: none;
+}
+
+.bootstrap-dark .sb-mobile-right-pane {
+    background: #1b1b1b;
+}
+
+.bootstrap-dark .e-icons.back-icon,
+.bootstrap-dark .sb-plnr-section,
+.bootstrap-dark .sb-bread-crumb,
+.bootstrap-dark .sb-component-name,
+.bootstrap-dark .sb-icon-Home,
+.bootstrap-dark .description-header,
+.bootstrap-dark .sample-navigation>button:hover,
+.bootstrap-dark .sb-switch-popup li:first-child,
+.bootstrap-dark .sb-left-pane .e-listview .e-list-group-item,
+.bootstrap-dark .sb-icon-Hamburger:active,
+.bootstrap-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.bootstrap-dark .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.bootstrap-dark .sb-theme-popup li.active .sb-theme-select {
+    color: #0070f0 !important;
+}
+
+.bootstrap-dark .sb-content-section,
+.bootstrap-dark .sb-switch-popup .bootstrap-dark .sb-content-tab-header,
+.bootstrap-dark .sb-content-section .sb-content-tab-header {
+    background: #1b1b1b;
+    border-color: #c1c1c1;
+}
+
+.bootstrap-dark .sample-navigation>button:hover,
+.bootstrap-dark .sb-plnr-section,
+.bootstrap-dark .sb-icon-Popout:hover,
+.bootstrap-dark .sb-icon-Hamburger,
+.bootstrap-dark .sb-setting-translate,
+.bootstrap-dark .sb-footer-links a,
+.bootstrap-dark .description-section a {
+    color: #0070f0;
+}
+
+.bootstrap-dark code,
+.bootstrap-dark .sb-switch-popup,
+.bootstrap-dark .sb-setting-popup,
+.bootstrap-dark .sb-search-result,
+.bootstrap-dark .sb-src-code,
+.bootstrap-dark .CodeMirror,
+.bootstrap-dark .sb-api-section,
+.bootstrap-dark .sb-theme-popup,
+.bootstrap-dark .copy-tooltip,
+.bootstrap-dark .e-icons.copycode,
+.bootstrap-dark #search-input-wrapper input,
+.bootstrap-dark #search-input-wrapper input::placeholder {
+    color: #ffffff;
+    background: #1b1b1b;
+}
+
+.bootstrap-dark .sb-search-btn:hover,
+.bootstrap-dark .sb-search-btn.active,
+.bootstrap-dark .sb-setting-btn:hover,
+.bootstrap-dark .sb-setting-btn.active,
+.bootstrap-dark .sb-switch-popup li:hover,
+.bootstrap-dark .theme-wrapper:hover,
+.bootstrap-dark .theme-wrapper.active,
+.bootstrap-dark .sb-theme-popup li:hover,
+.bootstrap-dark .sb-search-result .e-list-item:hover,
+.bootstrap-dark .sb-left-pane .e-listview .e-list-item:hover {
+    background-color: #363636 !important;
+}
+
+.bootstrap-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow {
+    background-color: #363636 !important;
+    border: none;
+}
+
+.bootstrap-dark .setting-responsive .sb-responsive-items {
+    width: 104px;
+    background-color: #363636;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid transparent;
+    display: table-cell;
+    cursor: pointer;
+}
+
+.bootstrap-dark .setting-responsive .sb-responsive-items.active {
+    background-color: #0070f0;
+    color: white;
+}
+
+.bootstrap-dark .sb-left-pane .e-listview .e-list-item.e-active,
+.bootstrap-dark .cont {
+    background-color: #0070f0;
+}
+
+.bootstrap-dark .sb-left-pane .e-listview .e-list-item:hover {
+    color: aliceblue;
+}
+
+.bootstrap-dark .control-name {
+    color: #ffffff;
+}
+
+.bootstrap-dark .sb-left-pane {
+    background: #1b1b1b;
+}
+
+.bootstrap-dark .sb-body-overlay {
+    background: #1b1b1b;
+}
+
+.bootstrap-dark .sb-mobile-left-pane {
+    background: #1b1b1b;
+}
+
+.bootstrap-dark .sb-mobilefooter>.e-btn.e-flat {
+    background: #1b1b1b;
+    color: #fff;
+}
+
+.bootstrap-dark .sb-mobilefooter>.e-btn.e-flat:hover {
+    color: #0070f0;
+}
+
+.bootstrap-dark .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow,
+.bootstrap-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background-color: #0070f0;
+}
+
+.bootstrap-dark .sb-header-text-left,
+.bootstrap-dark .sb-header-text-right {
+    color: #ffffff
+}
+
+.bootstrap-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-fullrow {
+    background-color: #363636;
+    border: none;
+}
+
+.bootstrap-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text {
+    color: #ffffff !important;
+}
+
+.bootstrap-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.bootstrap-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text:hover,
+.bootstrap-dark .sb-search-result .e-list-group-item {
+    color: #0070f0 !important;
+}
+
+.bootstrap-dark .e-tab .e-tab-header .e-toolbar-items {
+    height: 41px;
+}
+
+.bootstrap-dark .sb-theme-select {
+    color: rgb(27, 27, 27) !important;
+}
+
+.bootstrap-dark .sb-theme-popup li:hover .sb-theme-select {
+    color: transparent !important;
+}
+
+.bootstrap-dark .sb-theme-popup li:hover.active .sb-theme-select,
+.bootstrap-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-text-content .e-list-text {
+    color: white !important;
+}
+
+.bootstrap-dark .e-samplestatus.update.tree {
+    margin-top: 4px !important;
+}

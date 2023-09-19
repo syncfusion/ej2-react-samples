@@ -35,7 +35,7 @@ function Sorting() {
             <div id='description'>
                 <p>
                     Sorting feature enables us to order the data in a particular direction. It can be enabled by setting the  <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#allowsorting'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowsorting'>
                         allowSorting</a></code> as true.</p>
 
                 <p>To sort a Grid column simply click the column header. The icons (ascending) and (descending) specifies the sort direction of a column.</p>
@@ -52,7 +52,7 @@ function Sorting() {
 
                 <p>
                     More information on the paging feature configuration can be found in this
-                    <a target='_blank' href='http://ej2.syncfusion.com/react/documentation/grid/sorting.html'> documentation section</a>.
+                    <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/grid/sorting.html'> documentation section</a>.
                 </p>
             </div>
         </div>

@@ -81,13 +81,13 @@ export class ShowHide extends SampleBase<{}, {}> {
                 <div id='description'>
                     <p>
                         The Grid column can be showed/hidden dynamically using <code><a target='_blank' className='code'
-                            href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#showcolumns'>
+                            href='https://ej2.syncfusion.com/react/documentation/api/grid/#showcolumns'>
                             ShowColumns</a></code> and <code><a target='_blank' className='code'
-                                href='http://ej2.syncfusion.com/react/documentation/grid/api-grid.html#hidecolumns'>
+                                href='https://ej2.syncfusion.com/react/documentation/api/grid/#hidecolumns'>
                                 hideColumns</a></code> method of the Grid.</p>
 
                     <p>In this demo, the columns can be showed and hidden by clicking the column name in the toolbar. And the column`s visibility is toggled based on the <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/grid/columns.html#header-text'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid/column/#headertext'>
                         columns-&gt;headerText</a></code>value.</p>
 
                     <p>The columns-&gt;visible property specifies the visibility of a column. To hide a column at the initial rendering, set the columns-&gt;visible property to false.</p>

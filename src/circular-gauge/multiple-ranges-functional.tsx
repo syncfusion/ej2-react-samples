@@ -3,76 +3,41 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect } from 'react';
 import { updateSampleSection } from '../common/sample-base';
-
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject, Annotations, AnnotationsDirective, AnnotationDirective,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTheme,
-    ILoadedEventArgs
-} from '@syncfusion/ej2-react-circulargauge';
-import { CircularGauge } from '@syncfusion/ej2-circulargauge';
+import { CircularGaugeComponent, AxesDirective, AxisDirective, Inject, Annotations, AnnotationsDirective, AnnotationDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, GaugeTheme, ILoadedEventArgs } from '@syncfusion/ej2-react-circulargauge';
 
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
     }`;
 
-function MultipleRanges() {
-
-    React.useEffect(() => {
+const MultipleRanges = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} id='multiple-ranges' background='transparent'>
                     <Inject services={[Annotations]} />
                     <AxesDirective>
-                        <AxisDirective startAngle={230} endAngle={130} radius='90%' minimum={-30} maximum={120} hideIntersectingLabel={true}
-                            majorTicks={{
-                                width: 0,
-                                interval: 10
-                            }} lineStyle={{ width: 0 }}
-                            minorTicks={{
-                                width: 0
-                            }} labelStyle={{
-                                offset: 50,
-                                position: 'Inside',
-                                autoAngle: true,
-                                font: { fontFamily: 'inherit' }
-                            }}>
+                        <AxisDirective startAngle={230} endAngle={130} radius='90%' minimum={-30} maximum={120} hideIntersectingLabel={true} majorTicks={{ width: 0, interval: 10 }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ offset: 50, position: 'Inside', autoAngle: true, font: { fontFamily: 'inherit' } }}>
                             <AnnotationsDirective>
-                                <AnnotationDirective
-                                    content='<div style="font-size:18px;margin-left: 5px;color:#9DD55A"> 22.5\u00b0C </div>'
-                                    angle={180} radius='20%' zIndex='1' />
+                                <AnnotationDirective content='<div style="font-size:18px;margin-left: 5px;color:#9DD55A"> 22.5\u00b0C </div>' angle={180} radius='20%' zIndex='1' />
                             </AnnotationsDirective>
                             <PointersDirective>
-                                <PointerDirective radius='45%' cap={{
-                                    radius: 10, color: 'white',
-                                    border: {
-                                        width: 4,
-                                        color: '#F7B194'
-                                    }
-                                }} value={22.5} pointerWidth={7} color='#F7B194'
-                                    animation={{ enable: false }}
-                                    needleTail={{
-                                        length: '25%',
-                                        color: '#F7B194'
-                                    }}
-                                />
+                                <PointerDirective radius='45%' cap={{ radius: 10, color: 'white', border: { width: 4, color: '#F7B194' } }} value={22.5} pointerWidth={7} color='#F7B194' animation={{ enable: false }} needleTail={{ length: '25%', color: '#F7B194' }} />
                             </PointersDirective>
                             <RangesDirective>
                                 <RangeDirective start={-30} end={-20} radius='90%' color='#58ABD5' startWidth={35} endWidth={35} />
@@ -96,9 +61,7 @@ function MultipleRanges() {
                 </CircularGaugeComponent>
             </div>
             <div id="action-description">
-                <p>
-                    This sample shows temperature variations in a circular gauge using multiple ranges. In addition, the needle pointer and annotation help in displaying the temperature that has been measured.
-                </p>
+                <p>This sample shows temperature variations in a circular gauge using multiple ranges. In addition, the needle pointer and annotation help in displaying the temperature that has been measured.</p>
             </div>
             <div id="description">
                 <p>
@@ -111,5 +74,4 @@ function MultipleRanges() {
         </div>
     )
 }
-
 export default MultipleRanges;

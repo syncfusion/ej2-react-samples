@@ -19,7 +19,7 @@ export class Zooming extends SampleBase<{}, {}> {
     leftLabel: 'TaskName'
   };
   public splitterSettings: any ={
-    columnIndex: 2
+   position: "35%"
   };
   public toolbar: any = ['ZoomIn','ZoomOut','ZoomToFit'];
   public projectStartDate: Date = new Date('03/24/2019');

@@ -24,14 +24,14 @@ export class StackedHeader extends SampleBase<{}, {}> {
                 </div>
                 <div id='description'>
                     <p>The Grid columns can be stacked/grouped in order to show multiple level of column headers. It can be done by setting the  <code><a target='_blank' className='code'
-                        href='http://ej2.syncfusion.com/react/documentation/api/grid#columns'>
+                        href='https://ej2.syncfusion.com/react/documentation/api/grid#columns'>
                         columns</a></code> property.
                     </p>
                     <p>The Grid columns can be resized by clicking and dragging at the right edge of columns header. To enable column, resize behavior, set <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/api/grid#allowresizing">allowResizing
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid#allowresizing">allowResizing
                         </a></code> property as true. You can also prevent the resize of the particular column by setting
                         <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/api/grid/column#allowresizing">columns-&gt;allowResizing
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/column#allowresizing">columns-&gt;allowResizing
                         </a></code> as false in columns definition.
                     </p>
 

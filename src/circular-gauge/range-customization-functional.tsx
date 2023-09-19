@@ -3,13 +3,10 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useEffect, useRef, useState } from 'react';
 import { PropertyPane } from '../common/property-pane';
-import {
-    CircularGaugeComponent, AxesDirective, AxisDirective, Inject,
-    PointersDirective, PointerDirective, RangesDirective, RangeDirective,
-    Annotations, AnnotationsDirective, AnnotationDirective, ILoadedEventArgs, GaugeTheme,
-} from '@syncfusion/ej2-react-circulargauge';
-import { DropDownList } from '@syncfusion/ej2-dropdowns';
+import { CircularGaugeComponent, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, RangesDirective, RangeDirective, Annotations, AnnotationsDirective, AnnotationDirective, ILoadedEventArgs, GaugeTheme } from '@syncfusion/ej2-react-circulargauge';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
@@ -18,150 +15,128 @@ const SAMPLE_CSS = `
     }
     `;
 
-function Range() {
+const Range = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let gauge: CircularGaugeComponent;
-    let startWidthElement: HTMLInputElement;
-    let endWidthElement: HTMLInputElement;
-    let enableElement: HTMLInputElement;
-    let radiusElement: HTMLInputElement;
-    let loaded: boolean = false;
-    let startElementOne: HTMLInputElement;
-    let endElementOne: HTMLInputElement;
-    let listObj: DropDownList;
+    const [startMin, setStartMin] = useState<string>("0");
+    const [startMax, setStartMax] = useState<string>("40");
+    const [endMin, setEndMin] = useState<string>("0");
+    const [endMax, setEndMax] = useState<string>("40");
+    const [rangeEndWidth, setRangeEndWidth] = useState<string>("10");
+    const [rangeStartWidth, setRangeStartWidth] = useState<string>("10");
+    const [startValue, setStartValue] = useState<string>("0");
+    const [endValue, setEndValue] = useState<string>("40");
+    const [radiusValue, setRadiusValue] = useState<string>("0");
+    let gauge = useRef<CircularGaugeComponent>(null);
+    let startWidthElement = useRef<HTMLInputElement>(null);
+    let endWidthElement = useRef<HTMLInputElement>(null);
+    let radiusElement = useRef<HTMLInputElement>(null);
+    let rangeSelectRef = useRef<DropDownListComponent>(null);
+    let startElementOne = useRef<HTMLInputElement>(null);
+    let endElementOne = useRef<HTMLInputElement>(null);
     let selectedRange: string;
-    let startRangeValue: string = "0";
-    let endRangeValue: string = "40";
-    let endMinimum: string = "0";
-    let endMaximum: string = "40";
 
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
     }
 
-    function onChartLoad(args: {}): void {
-        if (!loaded) {
-            loaded = true;
-            listObj = new DropDownList({
-                index: 0, width: '90%',
-                change: () => {
-                    let index: number = parseFloat(listObj.value.toString());
-                    selectedRange = listObj.text;
-                    if (selectedRange == "Low") {
-                        (document.getElementById('startone') as HTMLInputElement).min = "0";
-                        (document.getElementById('startone') as HTMLInputElement).max = "40";
-                        (document.getElementById('endone') as HTMLInputElement).min = "0";
-                        (document.getElementById('endone') as HTMLInputElement).max = "40";
-                    } else if (selectedRange == "Medium") {
-                        (document.getElementById('startone') as HTMLInputElement).min = "40";
-                        (document.getElementById('startone') as HTMLInputElement).max = "80";
-                        (document.getElementById('endone') as HTMLInputElement).min = "40";
-                        (document.getElementById('endone') as HTMLInputElement).max = "80";
-                    } else {
-                        (document.getElementById('startone') as HTMLInputElement).min = "80";
-                        (document.getElementById('startone') as HTMLInputElement).max = "120";
-                        (document.getElementById('endone') as HTMLInputElement).min = "80";
-                        (document.getElementById('endone') as HTMLInputElement).max = "120";
-                    }
-                    endWidthElement.value = gauge.axes[0].ranges[index].endWidth.toString();
-                    document.getElementById('rangeEndWidth').innerHTML = String(gauge.axes[0].ranges[index].endWidth);
-                    startWidthElement.value = gauge.axes[0].ranges[index].startWidth.toString();
-                    document.getElementById('rangeStartWidth').innerHTML = String(gauge.axes[0].ranges[index].startWidth);
-                    (document.getElementById('startone') as HTMLInputElement).value = gauge.axes[0].ranges[index].start.toString();
-                    (document.getElementById('endone') as HTMLInputElement).value = gauge.axes[0].ranges[index].end.toString();
-                    document.getElementById('rangeEnd').innerHTML = gauge.axes[0].ranges[index].end.toString();
-                    document.getElementById('rangeStart').innerHTML = gauge.axes[0].ranges[index].start.toString();
-                    radiusElement.value = gauge.axes[0].ranges[index].roundedCornerRadius.toString();
-                    document.getElementById('roundedRadius').innerHTML = String(gauge.axes[0].ranges[index].roundedCornerRadius);
-                }
-            });
-            listObj.appendTo('#rangeSelect');
+    let rangeSelectList : { [key: string]: Object }[] = [
+        { text: 'Low', value: 'Low' },
+        { text: 'Medium', value: 'Medium' },
+        { text: 'High', value: 'High' },
+    ];
+
+    const rangeSelectChange = () : void => {
+        let index : number = rangeSelectRef.current.index;
+        selectedRange = rangeSelectRef.current.value.toString();
+        if (selectedRange == 'Low') {
+            setStartMin('0');
+            setStartMax('40');
+            setEndMin('0');
+            setEndMax('40');
+        } else if (selectedRange == 'Medium') {
+            setStartMin('40');
+            setStartMax('80');
+            setEndMin('40');
+            setEndMax('80');
+        } else {
+            setStartMin('80');
+            setStartMax('120');
+            setEndMin('80');
+            setEndMax('120');
         }
+        setRangeEndWidth(String(gauge.current.axes[0].ranges[index].endWidth));
+        setRangeStartWidth(String(gauge.current.axes[0].ranges[index].startWidth));
+        setStartValue(gauge.current.axes[0].ranges[index].start.toString());
+        setEndValue(gauge.current.axes[0].ranges[index].end.toString());
+        setRadiusValue(
+            gauge.current.axes[0].ranges[index].roundedCornerRadius.toString()
+        );
     };
 
-    function start(): void {
-        let index: number = parseFloat(listObj.value.toString());
-        let min: number = parseInt(startElementOne.value);
-        startElementOne.value = min.toString();
-        document.getElementById('rangeStart').innerHTML = min.toString();
-        gauge.axes[0].ranges[index].start = min;
-        gauge.axes[0].pointers[0].animation.enable = false;
-        gauge.refresh();
+    const start = (): void => {
+        let index: number = rangeSelectRef.current.index;
+        let min: number = parseInt(startElementOne.current.value);
+        setStartValue(min.toString());
+        gauge.current.axes[0].ranges[index].start = min;
+        gauge.current.axes[0].pointers[0].animation.enable = false;
+        gauge.current.refresh();
     }
 
-    function end(): void {
-        let index: number = parseFloat(listObj.value.toString());
-        let max: number = parseInt(endElementOne.value);
-        document.getElementById('rangeEnd').innerHTML = String(max);
-        gauge.axes[0].ranges[index].end = max;
-        gauge.axes[0].pointers[0].animation.enable = false;
-        gauge.refresh();
+    const end = (): void => {
+        let index: number = rangeSelectRef.current.index;
+        let max: number = parseInt(endElementOne.current.value);
+        setEndValue(String(max));
+        gauge.current.axes[0].ranges[index].end = max;
+        gauge.current.axes[0].pointers[0].animation.enable = false;
+        gauge.current.refresh();
     }
 
-    function startWidth(): void {
-        let index: number = parseFloat(listObj.value.toString());
-        let startWidth: number = parseFloat(startWidthElement.value);
-        document.getElementById('rangeStartWidth').innerHTML = String(startWidth);
-        gauge.axes[0].ranges[index].startWidth = startWidth;
-        gauge.axes[0].pointers[0].animation.enable = false;
-        gauge.refresh();
+    const startWidth = (): void => {
+        let index: number = rangeSelectRef.current.index;
+        let startWidth: number = parseFloat(startWidthElement.current.value);
+        setRangeStartWidth(String(startWidth));
+        gauge.current.axes[0].ranges[index].startWidth = startWidth;
+        gauge.current.axes[0].pointers[0].animation.enable = false;
+        gauge.current.refresh();
     }
 
-    function endWidth(): void {
-        let index: number = parseFloat(listObj.value.toString());
-        let endWidth: number = parseFloat(endWidthElement.value.toString());
-        document.getElementById('rangeEndWidth').innerHTML = String(endWidth);
-        gauge.axes[0].ranges[index].endWidth = endWidth;
-        gauge.axes[0].pointers[0].animation.enable = false;
-        gauge.refresh();
+    const endWidth = (): void => {
+        let index: number = rangeSelectRef.current.index;
+        let endWidth: number = parseFloat(endWidthElement.current.value.toString());
+        setRangeEndWidth(String(endWidth));
+        gauge.current.axes[0].ranges[index].endWidth = endWidth;
+        gauge.current.axes[0].pointers[0].animation.enable = false;
+        gauge.current.refresh();
     }
 
-    function radius(): void {
-        let index: number = parseFloat(listObj.value.toString());
-        let radius: number = parseFloat(radiusElement.value.toString());
-        document.getElementById('roundedRadius').innerHTML = String(radius);
-        gauge.axes[0].ranges[index].roundedCornerRadius = radius;
-        gauge.axes[0].pointers[0].animation.enable = false;
-        gauge.refresh();
+    const radius = (): void => {
+        let index: number = rangeSelectRef.current.index;
+        let radius: number = parseFloat(radiusElement.current.value.toString());
+        setRadiusValue(String(radius));
+        gauge.current.axes[0].ranges[index].roundedCornerRadius = radius;
+        gauge.current.axes[0].pointers[0].animation.enable = false;
+        gauge.current.refresh();
     }
 
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-8'>
-                    <CircularGaugeComponent load={load.bind(this)} id='range-container' background='transparent' ref={g => gauge = g} loaded={onChartLoad.bind(this)}>
+                    <CircularGaugeComponent load={load.bind(this)} id='range-container' background='transparent' ref={gauge}>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
-                            <AxisDirective startAngle={210} radius='80%' endAngle={150} minimum={0} maximum={120}
-                                majorTicks={{
-                                    height: 10, offset: 5,
-                                }} lineStyle={{ width: 10, color: 'transparent' }}
-                                minorTicks={{
-                                    height: 0,
-                                    width: 0
-                                }} labelStyle={{
-                                    font: {
-                                        fontFamily: 'inherit',
-                                    }
-                                }}>
+                            <AxisDirective startAngle={210} radius='80%' endAngle={150} minimum={0} maximum={120} majorTicks={{ height: 10, offset: 5 }} lineStyle={{ width: 10, color: 'transparent' }} minorTicks={{ height: 0, width: 0 }} labelStyle={{ font: { fontFamily: 'inherit' } }}>
                                 <PointersDirective>
-                                    <PointerDirective value={65} radius='60%' pointerWidth={8} needleTail={{
-                                        length: '18%'
-                                    }} cap={{
-                                        radius: 7
-                                    }} animation={{ enable: true }} />
+                                    <PointerDirective value={65} radius='60%' pointerWidth={8} needleTail={{ length: '18%' }} cap={{ radius: 7 }} animation={{ enable: true }} />
                                 </PointersDirective>
                                 <RangesDirective>
                                     <RangeDirective start={0} end={40} color='#30B32D' startWidth={10} endWidth={10} roundedCornerRadius={0} />
@@ -169,12 +144,8 @@ function Range() {
                                     <RangeDirective start={80} end={120} color='#F03E3E' startWidth={10} endWidth={10} roundedCornerRadius={0} />
                                 </RangesDirective>
                                 <AnnotationsDirective>
-                                    <AnnotationDirective content='<div><span class="templateText" style="font-size:14px;">Speedometer</span></div>'
-                                        angle={0} zIndex='1' radius='30%'>
-                                    </AnnotationDirective>
-                                    <AnnotationDirective content='<div><span class="templateText" style="font-size:20px;">65 MPH</span></div>'
-                                        angle={180} zIndex='1' radius='40%'>
-                                    </AnnotationDirective>
+                                    <AnnotationDirective content='<div><span class="templateText" style="font-size:14px;">Speedometer</span></div>' angle={0} zIndex='1' radius='30%' />
+                                    <AnnotationDirective content='<div><span class="templateText" style="font-size:20px;">65 MPH</span></div>' angle={180} zIndex='1' radius='40%' />
                                 </AnnotationsDirective>
                             </AxisDirective>
                         </AxesDirective>
@@ -183,23 +154,27 @@ function Range() {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '90%' }}>
                             <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '30%' }}>
                                         <div style={{ marginLeft: '-10px', fontSize: "14px", marginTop: "-8px" }}> Select Range </div>
                                     </td>
-                                    <td style={{ width: '40%' }}>
-                                        <select id="rangeSelect" className="form-control">
-                                            <option value="0">Low</option>
-                                            <option value="1">Medium</option>
-                                            <option value="2">High</option>
-                                        </select>
+                                    <td style={{ width: '41%' }}>
+                                        <DropDownListComponent
+                                            id="rangeSelect"
+                                            width="100%"
+                                            index={0}
+                                            change={rangeSelectChange.bind(this)}
+                                            ref={rangeSelectRef}
+                                            dataSource={rangeSelectList}
+                                            fields={{ text: 'text', value: 'value' }}
+                                        />
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <table id='property1' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property1' title='Properties' className='property-panel-table' style={{ width: '90%' }}>
                             <tbody>
                                 <colgroup>
                                     <col span={1} style={{ width: "35%" }}></col>
@@ -207,33 +182,32 @@ function Range() {
                                     <col span={1} style={{ width: "20%" }}></col>
                                 </colgroup>
                                 <tr style={{ height: '50px' }}>
-                                    <td style={{ width: "35%" }}>
+                                    <td style={{ width: "38%" }}>
                                         <div style={{ marginTop: "-10px", marginLeft: "-10px", fontSize: "14px" }}>Range Start </div>
                                     </td>
-                                    <td style={{ width: '46%' }}>
+                                    <td style={{ width: '52%' }}>
                                         <div style={{ marginTop: "-10px", marginLeft: "10px" }}>
-                                            <input type="range" id="startone" min="0" max="40" defaultValue="0" style={{ width: '90%' }} onChange={start.bind(this)} ref={d => startElementOne = d} />
+                                            <input type="range" id="startone" min={startMin} max={startMax} value={startValue} style={{ width: '90%' }} onChange={start.bind(this)} ref={startElementOne} />
                                         </div>
                                     </td>
                                     <td>
                                         <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px' }}>
-                                            <span id='rangeStart' style={{ fontSize: "14px" }}>0</span>
+                                            <span id='rangeStart' style={{ fontSize: "14px" }}>{startValue}</span>
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr style={{ height: '50px' }}>
                                     <td>
                                         <div style={{ marginTop: "-10px", marginLeft: "-10px", fontSize: "14px" }}>Range End </div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div style={{ marginLeft: "10px", marginTop: "-10px" }}>
-                                            <input type="range" id="endone" min="0" max="40" defaultValue="40" style={{ width: '100%' }} onChange={end.bind(this)} ref={d => endElementOne = d} />
+                                            <input type="range" id="endone" min={endMin} max={endMax} value={endValue} style={{ width: '90%' }} onChange={end.bind(this)} ref={endElementOne} />
                                         </div>
                                     </td>
                                     <td>
                                         <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px' }}>
-                                            <span id='rangeEnd' style={{ fontSize: "14px" }}>40</span>
+                                            <span id='rangeEnd' style={{ fontSize: "14px" }}>{endValue}</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -243,12 +217,12 @@ function Range() {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div style={{ marginTop: "-10px", marginLeft: "10px" }}>
-                                            <input type="range" id="startWidth" defaultValue="10" min="0" max="30" style={{ width: '100%' }} onChange={startWidth.bind(this)} ref={d => startWidthElement = d} />
+                                            <input type="range" id="startWidth" value={rangeStartWidth} min="0" max="30" style={{ width: '90%' }} onChange={startWidth.bind(this)} ref={startWidthElement} />
                                         </div>
                                     </td>
                                     <td>
                                         <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px' }}>
-                                            <span id='rangeStartWidth' style={{ fontSize: "14px" }}>10</span>
+                                            <span id='rangeStartWidth' style={{ fontSize: "14px" }}>{rangeStartWidth}</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -258,12 +232,12 @@ function Range() {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div style={{ marginTop: "-10px", marginLeft: "10px" }}>
-                                            <input type="range" id="endWidth" defaultValue="10" min="0" max="30" style={{ width: '100%' }} onChange={endWidth.bind(this)} ref={d => endWidthElement = d} />
+                                            <input type="range" id="endWidth" value={rangeEndWidth} min="0" max="30" style={{ width: '90%' }} onChange={endWidth.bind(this)} ref={endWidthElement} />
                                         </div>
                                     </td>
                                     <td>
                                         <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px' }}>
-                                            <span id='rangeEndWidth' style={{ fontSize: "14px" }}>10</span>
+                                            <span id='rangeEndWidth' style={{ fontSize: "14px" }}>{rangeEndWidth}</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -273,12 +247,12 @@ function Range() {
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div style={{ marginTop: "-10px", marginLeft: "10px" }}>
-                                            <input type="range" id="radius" defaultValue="0" min="0" max="12" step="1" style={{ width: '100%' }} onChange={radius.bind(this)} ref={d => radiusElement = d} />
+                                            <input type="range" id="radius" value={radiusValue} min="0" max="12" step="1" style={{ width: '90%' }} onChange={radius.bind(this)} ref={radiusElement} />
                                         </div>
                                     </td>
                                     <td>
                                         <div style={{ textAlign: 'center', paddingTop: "0px", paddingLeft: '0px' }}>
-                                            <span id='roundedRadius' style={{ fontSize: "14px" }}>0</span>
+                                            <span id='roundedRadius' style={{ fontSize: "14px" }}>{radiusValue}</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -288,9 +262,7 @@ function Range() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample demonstrates how to highlight a region in an axis using ranges in the circular gauge. The width, corner radius, and start and end range of a range can all be customized.
-                </p>
+                <p>This sample demonstrates how to highlight a region in an axis using ranges in the circular gauge. The width, corner radius, and start and end range of a range can all be customized.</p>
             </div>
             <div id="description">
                 <p>
@@ -302,7 +274,5 @@ function Range() {
             </div>
         </div>
     )
-
 }
-
 export default Range;

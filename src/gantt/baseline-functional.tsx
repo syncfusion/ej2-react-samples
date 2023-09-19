@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, ColumnsDirective, ColumnDirective, Selection, Inject } from '@syncfusion/ej2-react-gantt';
 import { baselineData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function Baseline() {
-  React.useEffect(() => {
+const Baseline = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -31,7 +32,7 @@ function Baseline() {
     }
   };
   let dayWorkingTime: any = [{ from: 0, to: 24 }];
-  function tooltipTemplate(props): any {
+  const tooltipTemplate = (props): any => {
     return (<table>
       <tbody>
         <tr><td colSpan={3}>{props.TaskName}</td></tr>
@@ -58,7 +59,6 @@ function Baseline() {
   const tooltipSettings: any = {
     taskbar: template.bind(this),
   };
-
   return (
     <div className='control-pane'>
       <div className='control-section'>
@@ -84,7 +84,6 @@ function Baseline() {
         <p>This sample visualizes the complete service schedule for a car. Baselines are enabled in this sample to view the
           deviation between the planned dates and actual dates.</p>
       </div>
-
       <div id="description">
         <p>
           The baseline feature enables the user to view the deviation between the planned dates and the actual dates of

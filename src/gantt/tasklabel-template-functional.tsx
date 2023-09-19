@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Selection, DayMarkers, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
 import { labelData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function TasklabelTemplate() {
-  React.useEffect(() => {
+const TasklabelTemplate = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -23,12 +24,11 @@ function TasklabelTemplate() {
     id: 'resourceId',
     name: 'resourceName'
   };
-  const templateLeft: any = LeftLabelTemplate;
-  function LeftLabelTemplate(props) {
+  const LeftLabelTemplate = (props) => {
     return (<span>{props.TaskName} [ {props.Progress}% ]</span>);
   };
-  const templateRight: any = RightLabelTemplate;
-  function RightLabelTemplate(props) {
+  const templateLeft: any = LeftLabelTemplate;
+  const RightLabelTemplate = (props) => {
     if (props.ganttProperties.resourceInfo) {
       let resources = props.ganttProperties.resourceInfo;
       let out = [];
@@ -42,14 +42,15 @@ function TasklabelTemplate() {
     } else {
       return <div></div>
     }
-  };
+  };  
+  const templateRight: any = RightLabelTemplate;  
   const labelSettings: any = {
     leftLabel: templateLeft.bind(this),
     rightLabel: templateRight.bind(this),
     taskLabel: '${Progress}%'
   };
   const splitterSettings: any = {
-    columnIndex: 2
+    position: "35%"
   };
   const projectStartDate: Date = new Date('03/24/2019');
   const projectEndDate: Date = new Date('05/04/2019');
@@ -80,7 +81,6 @@ function TasklabelTemplate() {
 
       <div id="description">
         <p>In this demo, the label template is rendered using the <code>leftLabel</code>, <code>rightLabel</code> and <code>taskLabel</code> properties in <code>labelSettings</code>.</p>
-
         <p>Gantt component features are segregated into individual feature-wise modules.To use a selection, inject the
           <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.To use markers, inject the
           <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.</p>

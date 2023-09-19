@@ -37,6 +37,10 @@ const SAMPLE_CSS = `
 function Print() {
     React.useEffect(() => {
         updateSampleSection();
+        const exportbutton = document.getElementById('smith-export');
+        exportbutton.addEventListener('click', onClick1);
+        const printbutton = document.getElementById('smith-print');
+        printbutton.addEventListener('click', onClick2);
     }, [])
 
     // Code for Property Panel
@@ -71,7 +75,7 @@ function Print() {
             <style>
                 {SAMPLE_CSS}
             </style>
-            <div className='col-md-8 control-section'>
+            <div className='col-lg-9 control-section'>
                 <SmithchartComponent load={load.bind(this)} id='container' ref={gauge => smithchartInstance = gauge}
                     horizontalAxis={{ minorGridLines: { visible: true } }}
                     legendSettings={{ visible: true, shape: 'Circle' }}             //To config the legend for smithchart                        
@@ -99,40 +103,40 @@ function Print() {
                 </SmithchartComponent>
             </div>
             {/* Property Panel*/}
-            <div className='col-md-4 property-section'>
+            <div className='col-lg-3 property-section'>
                 <PropertyPane title='Properties'>
-                    <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
-                        <tr>
-                            <td>
+                    <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <tr style={{ 'height': '50px' }}>
+                            <td style={{ 'width': '40%' }}>
                                 <div>Export Type</div>
                             </td>
-                            <td>
-                                <div>
+                            <td style={{ 'width': '60%' }}>
+                                <div style={{ 'marginLeft': '-10px' }}>
                                     <DropDownListComponent id="mode" width="100px" index={0} placeholder="JPEG" ref={d => mode = d} dataSource={droplist} fields={{ text: 'text', value: 'value' }} />
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
+                        <tr style={{ 'height': '50px' }}>
+                            <td style={{ 'width': '40%' }}>
                                 <div>File Name</div>
                             </td>
-                            <td>
-                                <div className="e-float-input" style={{ 'marginTop': '0px' }}>
+                            <td style={{ 'width': '60%' }}>
+                                <div className="e-float-input" style={{ 'marginTop': '0px', 'marginLeft': '-10px' }}>
                                     <input id="fileName" ref={d => nameElement = d} type="text" defaultValue="Smith chart" style={{ "width": "100px" }} />
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <tr >
                             <td>
-                                <div id="btn-control" style={{ 'marginLeft': '60px' }}>
-                                    <ButtonComponent onClick={onClick1.bind(this)} style={{ width: '90px' }} isPrimary={true} iconCss='e-icons e-export-icon'>Export</ButtonComponent>
+                                <div id="btn-control" style={{ 'marginLeft': '50%' }}>
+                                    <ButtonComponent id="smith-export" isPrimary={true} iconCss='e-icons e-export-icon'>Export</ButtonComponent>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div id="btn-control" style={{ 'marginLeft': '60px' }}>
-                                    <ButtonComponent onClick={onClick2.bind(this)} style={{ width: '80px' }} isPrimary={true} iconCss='e-icons e-print-icon'>Print</ButtonComponent>
+                                <div id="btn-control" style={{ 'marginLeft': '50%' }}>
+                                    <ButtonComponent id="smith-print"  isPrimary={true} iconCss='e-icons e-print-icon'>Print</ButtonComponent>
                                 </div>
                             </td>
                         </tr>

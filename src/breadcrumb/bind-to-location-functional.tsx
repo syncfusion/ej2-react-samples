@@ -11,6 +11,7 @@ const BindToLocation = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
+
     const btnClick= (): void => {
         let breadcrumb, breadcrumbInst, breadcrumbs = document.querySelector('.content-wrapper').getElementsByClassName("e-breadcrumb");
         for (let i = 0; i < breadcrumbs.length; i++) {
@@ -19,6 +20,7 @@ const BindToLocation = () => {
             breadcrumbInst.activeItem = breadcrumbInst.items[breadcrumbInst.items.length - 1].text;
         }
     }
+
     const beforeItemRenderHandler = (args: BreadcrumbBeforeItemRenderEventArgs): void => {
         var url = 'https://ej2.syncfusion.com/react/demos/#/bootstrap5/breadcrumb/bind-to-location', themeName = url.split('/')[6];
         if (args.item.text == 'demos') {
@@ -31,6 +33,7 @@ const BindToLocation = () => {
             args.cancel = true;
         }
     }
+
     return (
         <div className='control-pane'>
             <div className="col-lg-12 control-section">

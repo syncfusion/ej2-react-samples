@@ -45,7 +45,7 @@ function AggregateDefault() {
         <div id="description">
           <p>The Grid supports aggregates which will be displayed at the footer, group footer and group caption of the Grid. The
             aggregate configurations can be provided by the <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-grid.html">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid#aggregates">
               aggregates
             </a></code> property.</p>
           <p>The built-in aggregates are,</p>
@@ -58,26 +58,26 @@ function AggregateDefault() {
             <li><code>TrueCount</code></li>
             <li><code>FalseCount</code></li>
             <li><code>Custom</code> - Requires the <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-aggregateColumn.html#customaggregate">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/aggregateColumn/#customaggregate">
               customAggregate
             </a></code> property to perform aggregation. The custom aggregate value can be accessed inside template using the
               key <code>custom</code></li>
           </ul>
           <p>
             In this demo, the <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-aggregateColumn.html#footertemplate">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/aggregateColumn/#footertemplate">
               footerTemplate</a></code> property is used to display four different aggregates in the Grid footer. In the first
             aggregate row, the <code>sum</code> aggregate type is used by setting the <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-aggregateColumn.html#type">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/aggregateColumn/#type">
               type</a></code> and <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/grid/api-aggregateColumn.html#field">
+                href="https://ej2.syncfusion.com/react/documentation/api/grid/aggregateColumn/#field">
                 field</a></code> property as <strong><i>Freight</i></strong> which will be used to perform the aggregation. The
             aggregate value is accessed inside the <code><a target="_blank" className="code"
-              href="http://ej2.syncfusion.com/react/documentation/grid/api-aggregateColumn.html#footertemplate">
+              href="https://ej2.syncfusion.com/react/documentation/api/grid/aggregateColumn/#footertemplate">
               footerTemplate</a></code> using its <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/grid/api-aggregateColumn.html#type">
+                href="https://ej2.syncfusion.com/react/documentation/api/grid/aggregateColumn/#type">
                 type</a></code> name (<code>sum</code>). The aggregate value will be formatted based on its <code><a target="_blank" className="code"
-                  href="http://ej2.syncfusion.com/react/documentation/grid/api-aggregateColumn.html#format">
+                  href="https://ej2.syncfusion.com/react/documentation/api/grid/aggregateColumn/#format">
                   format</a></code> value(<strong><i>C2</i></strong>) before being displayed.
           </p>
           <p>Injecting Module:</p>

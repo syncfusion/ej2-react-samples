@@ -1,48 +1,34 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { Signature, SignatureComponent } from '@syncfusion/ej2-react-inputs';
-import { ButtonComponent, Button } from '@syncfusion/ej2-react-buttons';
-import { getComponent, closest } from '@syncfusion/ej2-base';
+import { useEffect, useRef, useState } from "react";
+import { SignatureComponent } from '@syncfusion/ej2-react-inputs';
+import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import './default.css';
 
-function Default() {
-    React.useEffect(() => {
+const Default = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-    let signature: SignatureComponent;
+    const [disable, setDisable] = useState(true);
+    let signatureObj = useRef<SignatureComponent>(null);
 
-    function clrBtnCreated() {
-        document.getElementById('signclear').addEventListener('click', clrBtnClick);
+    const saveBtnClick = () => {
+        if (disable) return;
+        signatureObj.current.save();
+        setDisable(true);
     }
 
-    function saveBtnCreated() {
-        document.getElementById('signsave').addEventListener('click', saveBtnClick);
-    }
-
-    function saveBtnClick() {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-        signature.save();
-    }
-
-    function clrBtnClick() {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-        let saveBtn: Button = getComponent(document.getElementById("signsave"), 'btn');
-        let clrBtn: Button = getComponent(document.getElementById("signclear"), 'btn');
-        signature.clear();
-        if (signature.isEmpty()) {
-            saveBtn.disabled = true;
-            clrBtn.disabled = true;
+    const clrBtnClick = () => {
+        signatureObj.current.clear();
+        if (signatureObj.current.isEmpty()) {
+          setDisable(true);
         }
     }
 
-    function change() {
-        let signature: Signature = getComponent(document.getElementById('signature'), 'signature');
-        let saveBtn: Button = getComponent(document.getElementById("signsave"), 'btn');
-        let clrBtn: Button = getComponent(document.getElementById("signclear"), 'btn');
-        if (!signature.isEmpty()) {
-            saveBtn.disabled = false;
-            clrBtn.disabled = false;
+    const change = () => {
+        if (!signatureObj.current.isEmpty()) {
+          setDisable(false);
         }
     }
 
@@ -53,11 +39,11 @@ function Default() {
                     <div className='e-sign-heading'>
                         <span id="signdescription">Sign below</span>
                         <span className="e-btn-options">
-                            <ButtonComponent id="signsave" cssClass='e-primary e-sign-save' created={saveBtnCreated} disabled={true}>SAVE</ButtonComponent>
-                            <ButtonComponent id="signclear" cssClass='e-primary e-sign-clear' created={clrBtnCreated} disabled={true}>CLEAR</ButtonComponent>
+                            <ButtonComponent id="signsave" cssClass='e-primary e-sign-save' onClick={saveBtnClick} disabled={disable}>SAVE</ButtonComponent>
+                            <ButtonComponent id="signclear" cssClass='e-primary e-sign-clear' onClick={clrBtnClick} disabled={disable}>CLEAR</ButtonComponent>
                         </span>
                     </div>
-                    <SignatureComponent id="signature" change={change}></SignatureComponent>
+                    <SignatureComponent id="signature" ref={signatureObj} change={change}></SignatureComponent>
                 </div>
             </div>
             <div id="action-description">

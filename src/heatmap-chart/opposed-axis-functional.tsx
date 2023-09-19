@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
+import { useEffect, useRef, useState } from "react";
+import { HeatMapComponent, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, TitleModel, AxisModel, CellSettingsModel } from '@syncfusion/ej2-react-heatmap';
 import * as data from './opposed-axis-data.json';
 import { updateSampleSection } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
@@ -8,90 +9,75 @@ import { PropertyPane } from "../common/property-pane";
 
 // custom code start
 const SAMPLE_CSS: any = `
-#control-container {
-    padding: 0px !important;
-}
-#source{
-    float: right; margin-right: 10p
-}`;
+    #control-container {
+        padding: 0px !important;
+    }
+    #source{
+        float: right; margin-right: 10p
+    }`;
 // custom code end
 /**
  * Schedule Default sample
  */
-function OpposedAxis() {
+const OpposedAxis = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
-
-    let heatmap: HeatMapComponent;
-
-    function load(args: ILoadedEventArgs): void {
+    
+    const [isXOpposedPosition, setIsXOpposedPosition] = useState<boolean>(true);
+    const [isYOpposedPosition, setIsYOpposedPosition] = useState<boolean>(true);
+    let heatmap = useRef<HeatMapComponent>(null);
+    let title: TitleModel = {
+        text: 'Monthly Flight Traffic at JFK Airport',
+        textStyle: {
+            size: '15px',
+            fontWeight: '500',
+            fontStyle: 'Normal',
+            fontFamily: 'Segoe UI'
+        }
+    }
+    let xAxis: AxisModel = {
+        labels: ['2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017'],
+        opposedPosition: isXOpposedPosition,
+        labelRotation: 45,
+        labelIntersectAction: 'None'
+    }
+    let yAxis: AxisModel = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        opposedPosition: isYOpposedPosition
+    }
+    let cellSettings: CellSettingsModel = {
+        showLabel: false,
+        border: {
+            width: 0,
+        },
+        format: '{value} flights'
+    }
+    
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
     };
 
-    function valueXChange(args: ChangeEventArgs): void {
-        if (args.checked) {
-            heatmap.xAxis.opposedPosition = true;
-        } else {
-            heatmap.xAxis.opposedPosition = false;
-        }
-        heatmap.dataBind();
+    const valueXChange = (args: ChangeEventArgs): void => {
+        setIsXOpposedPosition(args.checked);
+        heatmap.current.dataBind();
     }
 
-    function valueYChange(args: ChangeEventArgs): void {
-        if (args.checked) {
-            heatmap.yAxis.opposedPosition = true;
-        } else {
-            heatmap.yAxis.opposedPosition = false;
-        }
-        heatmap.dataBind();
+    const valueYChange = (args: ChangeEventArgs): void => {
+        setIsYOpposedPosition(args.checked);
+        heatmap.current.dataBind();
     }
 
     return (
         <div>
             <div className='col-md-9 control-section'>
                 {/* custom code start */}
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 {/* custom code end */}
-                <HeatMapComponent id='heatmap-container' ref={t => heatmap = t}
-                    titleSettings={{
-                        text: 'Monthly Flight Traffic at JFK Airport',
-                        textStyle: {
-                            size: '15px',
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI'
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['2007', '2008', '2009', '2010', '2011',
-                            '2012', '2013', '2014', '2015', '2016', '2017'],
-                        opposedPosition: true,
-                        labelRotation: 45,
-                        labelIntersectAction: 'None',
-                    }}
-                    yAxis={{
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May',
-                            'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-                        opposedPosition: true
-                    }}
-                    dataSource={(data as any).opposedAxisData}
-                    legendSettings={{
-                        visible: false
-                    }}
-                    load={load.bind(this)}
-                    cellSettings={{
-                        showLabel: false,
-                        border: {
-                            width: 0,
-                        },
-                        format: '{value} flights'
-                    }}>
+                <HeatMapComponent id='heatmap-container' ref={heatmap} titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSource={(data as any).opposedAxisData} legendSettings={{ visible: false }} load={load.bind(this)} cellSettings={cellSettings}>
                     <Inject services={[Tooltip]} />
                 </HeatMapComponent>
             </div>
@@ -101,14 +87,12 @@ function OpposedAxis() {
                         <tbody>
                             <tr id='' style={{ height: '50px' }}>
                                 <td style={{ width: '40%' }}>
-                                    <CheckBoxComponent id='XOpposedPosition' checked={true} label='Change X-Axis Position'
-                                        change={valueXChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent id='XOpposedPosition' checked={isXOpposedPosition} label='Change X-Axis Position' change={valueXChange} />
                                 </td>
                             </tr>
                             <tr id='' style={{ height: '50px' }}>
                                 <td style={{ width: '40%' }}>
-                                    <CheckBoxComponent id='YOpposedPosition' checked={true} label='Change Y-Axis Position'
-                                        change={valueYChange.bind(this)} ></CheckBoxComponent>
+                                    <CheckBoxComponent id='YOpposedPosition' checked={isYOpposedPosition} label='Change Y-Axis Position' change={valueYChange} />
                                 </td>
                             </tr>
                         </tbody>
@@ -127,10 +111,7 @@ function OpposedAxis() {
                     In this example, you can see how to change the display position of the axis. You can change the display position of
                     axes by enabling the <code>opposedPosition </code> property for each axis.
                 </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a
-                    point in touch enabled devices.
-                </p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -141,5 +122,4 @@ function OpposedAxis() {
         </div >
     );
 }
-
 export default OpposedAxis;

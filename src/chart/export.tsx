@@ -60,7 +60,9 @@ export class ChartExport extends SampleBase<{}, {}> {
         { value: 'JPEG' },
         { value: 'PNG' },
         { value: 'SVG' },
-        { value: 'PDF' }
+        { value: 'PDF' },
+        { value: 'XLSX' },
+        { value: 'CSV' }
     ];
     render() {
         return (
@@ -69,7 +71,7 @@ export class ChartExport extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section row'>
-                    <div className='col-md-8'>
+                    <div className='col-md-9'>
                         <ChartComponent id='charts' ref={chart => this.chartInstance = chart} style={{ textAlign: "center" }}
                             primaryXAxis={{
                                 title: 'Countries',
@@ -77,8 +79,8 @@ export class ChartExport extends SampleBase<{}, {}> {
                                 majorGridLines: { width: 0 }
                             }}
                             chartArea={{ border: { width: 0 } }}
+                            legendSettings={{ visible: false }}
                             primaryYAxis={{
-                                title: 'Measurements',
                                 labelFormat: '{value}GW',
                                 minimum: 0,
                                 maximum: 40,
@@ -87,17 +89,16 @@ export class ChartExport extends SampleBase<{}, {}> {
                             }}
                             pointRender={this.labelRender.bind(this)}
                             load={this.load.bind(this)}
-                            title="Top 10 Countries Using Solar Power" loaded={this.onChartLoad.bind(this)}
-                            tooltip={{ enable: true }}>
+                            title="Top 10 Countries Using Solar Power" loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[ColumnSeries, Category, Legend, Export]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y' width={2}
+                                <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Measurements (in Gigawatt)'
                                     type='Column'>
                                 </SeriesDirective>
                             </SeriesCollectionDirective>
                         </ChartComponent>
                     </div>
-                    <div className='col-md-4 property-section'>
+                    <div className='col-md-3 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tr style={{ height: "50px" }}>
@@ -105,7 +106,9 @@ export class ChartExport extends SampleBase<{}, {}> {
                                         Export Type:
                             </td>
                                     <td style={{ width: "30%" }}>
-                                        <DropDownListComponent width={120} id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                    <div style={{ "marginLeft": "-10px", width: "100%"}}>
+                                        <DropDownListComponent id="etype" value="JPEG" ref={d => this.mode = d} dataSource={this.type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                    </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>
@@ -113,14 +116,14 @@ export class ChartExport extends SampleBase<{}, {}> {
                                         File Name:
                             </td>
                                     <td style={{ width: "40%" }}>
-                                        <div className="e-float-input" style={{ width: 120, 'marginTop': '0px' }}>
+                                        <div className="e-float-input" style={{ 'marginTop': '0px' }}>
                                             <input type="text" defaultValue="Chart" id="fileName" style={{ "marginLeft": "-10px" }} />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td>
-                                        <div id="btn-control"  style={{ 'marginLeft': '60px' }}>
+                                        <div id="btn-control"  style={{ 'marginLeft': '40%'}}>
                                             <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-export-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
@@ -130,18 +133,17 @@ export class ChartExport extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates the export feature in chart. By clicking <code>Export</code>, you can export the chart in PNG or JPEG format.
-            </p>
+                    <p>This sample demonstrates client-side exporting of the chart, enabling you to export its data to Excel, PDF, and CSV formats. Additionally, it allows you to save the chart in image formats such as JPEG, PNG, and SVG.</p>
                 </div>
                 <div id="description">
+                    <p>In this example, you can see how the export functionality is configured. The rendered chart can be exported in JPEG, PNG, SVG, and PDF file types. Data from the chart can also be exported to Excel and CSV files.</p>
+                    <p><b>Injecting Module</b></p>
                     <p>
-                        In this example, you can see how to render and configure the export. The rendered chart can be exported as either JPEG or PNG format. It can be achieved using Blob and it's supported only in modern browsers.
-            </p>
+                        Chart component features are segregated into individual feature-wise modules. To use export, we need to inject <code>export</code> module into <code>services</code>.
+                    </p>
                     <p>
-                        More information on the export can be found in this
-                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#export">documentation section</a>.
-            </p>
+                        More information on the export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#export">documentation section</a>.
+                    </p>
                 </div>
             </div >
         )
@@ -155,7 +157,7 @@ export class ChartExport extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").
-        replace(/light/i, "Light").replace(/contrast/i,'Contrast') as ChartTheme;
+            replace(/light/i, "Light").replace(/contrast/i, 'Contrast') as ChartTheme;
     };
         
     public labelRender(args: IPointRenderEventArgs): void {

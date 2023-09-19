@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, FilterType, Column, freezeDirection } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, FilterType, Column, freezeDirection } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
@@ -26,7 +26,9 @@ export class FrozenAPI extends SampleBase<{}, {}> {
   public directions: { [key: string]: Object }[] = [
     { id: 'Left', name: 'Left' },
     { id: 'Right', name: 'Right' },
-    { id: 'Center', name: 'Center' }
+    { id: 'Center', name: 'Center' },
+    { id: 'Fixed', name: 'Fixed' },
+
   ];
   private fields: Object = { text: 'name', value: 'id' };
   public directionChange(e): void {
@@ -67,7 +69,7 @@ export class FrozenAPI extends SampleBase<{}, {}> {
             <div style={{ display: 'inline-block', paddingRight: '10px' }}>
               <div style={{ display: 'inline-block', paddingRight: '10px' }}>
                 <span>
-                  Column
+                  Column Name
                     </span>
               </div>
               <div style={{ display: 'inline-block', paddingRight: '10px' }}>
@@ -88,43 +90,46 @@ export class FrozenAPI extends SampleBase<{}, {}> {
 
           <GridComponent ref={g => this.grid = g} dataSource={orderDetails} height='350' frozenRows={2} enableHover={false}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' freeze='Left'></ColumnDirective>
               <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' textAlign='Right' />
               <ColumnDirective field='CustomerID' headerText='Customer ID' width='130' freeze='Right'></ColumnDirective>
               <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right' />
               <ColumnDirective field='ShipName' headerText='Ship Name' width='300'></ColumnDirective>
-              <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270'></ColumnDirective>
+              <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270' freeze='Fixed'></ColumnDirective>
               <ColumnDirective field='ShipCity' headerText='Ship City' width='250'></ColumnDirective>
-              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250' freeze='Left'></ColumnDirective>
+              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250'></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Freeze]} />
           </GridComponent>
         </div>
                                                                                                                                                                     
         <DialogComponent id="alertDialog" header='Frozen' visible={false} animationSettings={{ effect: 'None' }} width='300px' content='Atleast one Column should be in movable' ref={(alertdialog) => { this.alertDialogInstance = alertdialog }}
         target='.control-section' buttons={this.confirmButton} showCloseIcon={false} ></DialogComponent>
 
-
         <div id="action-description">
           <p>This sample demonstrates the frozen rows and columns feature of the Grid. Scroll the movable content
-          vertically/horizontally to view the frozen rows/columns
-          with the content.
-        </p>
+            horizontally to view the frozen and fixed columns, vertically to view the frozen rows with the content.
+          </p>
         </div>
         <div id="description">
-          <p>The freezing feature enables the user to freeze certain rows/columns at both sides to scroll remaining movable
-        content. This can be achieved by setting <code><a target="_blank" className="code"
-              href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#freeze">Freeze</a></code> property in column settings.
-        </p>
-          <p> In this demo sample, the <b>ShipCountry</b> column freezed at left side and <b>CustomerID</b> column freezed at
-        right side using <code>Column-&gt;Freeze</code>property.</p>
-         <p style={{ fontWeight: 500 }}>Injecting Module:</p>
-          <p> Grid features are segregated into individual feature-wise modules. To use frozen rows and columns feature, we
-        need to inject <code><a target="_blank" className="code"
-              href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#freeze">Freeze
-        </a></code> module into the <code>services</code></p>
+          <p>
+            This feature enables users to freeze certain columns at specific positions. This can be achieved by
+            setting the <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#freeze">freeze</a></code> 
+            property of column settings. The various modes are:
+          </p>
+          <ul>
+            <li><code>Left</code> : Freezes the column at the left.</li>
+            <li><code>Right</code> : Freezes the column at the right.</li>
+            <li><code>Center</code> : Freezes the column at the center.</li>
+            <li><code>Fixed</code> : Freezes the column at a fixed position. This will ensure its visibility while scrolling horizontally.</li>
+          </ul>
+          <p> In this demo sample, the <b>Order ID</b> column is frozen at the left, the <b>Customer ID</b> column is
+            frozen at the right and the <b>Ship Address</b> column at a fixed position using <code>column-&gt;freeze</code> property.
+          </p>
+          <p>
+            More information on the frozen rows and columns can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/frozen"> documentation section</a>.
+          </p>
         </div>
-
       </div>
     )
   }

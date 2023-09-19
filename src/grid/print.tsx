@@ -79,10 +79,10 @@ export class Print extends SampleBase<{}, {}> {
 
         <div id="description">
             <p>The Grid can be printed using the <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/api/grid#print">print
+                href="https://ej2.syncfusion.com/react/documentation/api/grid#print">print
                 </a></code> method. While printing the pager and scrollbar will be removed if they are enabled in Grid.
                 By default, all pages will be printed. We can print current page alone by setting the <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/api/grid#printmode">printMode
+                href="https://ej2.syncfusion.com/react/documentation/api/grid#printmode">printMode
                 </a></code> property value as <code>currentpage</code>. The child grid allows us to print the grid with following options,
             </p>
             <ul>
@@ -92,7 +92,7 @@ export class Print extends SampleBase<{}, {}> {
             </ul>
             <p>
                 We can change the child grid's print option by using the <code><a target="_blank" className="code"
-                href="http://ej2.syncfusion.com/react/documentation/api/grid#hierarchyprintmode">hierarchyPrintMode
+                href="https://ej2.syncfusion.com/react/documentation/api/grid#hierarchyprintmode">hierarchyPrintMode
                 </a></code> property.
             </p>
             <p>
@@ -101,7 +101,7 @@ export class Print extends SampleBase<{}, {}> {
             <p style={{ fontWeight: 500 }}> Injecting Module: </p>
             <p>
                 Grid features are segregated into individual feature-wise modules,
-                To use Hierarchy Grid feature, we need to inject <code>DetailRow</code> module into the <code>services</code>.
+                To use Hierarchy Grid feature, we need to inject <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/detailRow/">DetailRow </a></code> module into the <code>services</code>.
             </p>
             <p>More information on the print feature can be found in this 
                 <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/print">

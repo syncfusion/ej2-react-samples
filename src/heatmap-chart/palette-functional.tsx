@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject } from '@syncfusion/ej2-react-heatmap';
+import { useEffect, useRef, useState } from "react";
+import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, TitleModel, AxisModel, PaletteSettingsModel, CellSettingsModel, LegendSettingsModel, PaletteType } from '@syncfusion/ej2-react-heatmap';
 import * as data from './palette-sample-data.json';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
@@ -8,43 +9,84 @@ import { RadioButtonComponent, ChangeEventArgs, CheckBoxComponent } from "@syncf
 
 // custom code start
 const SAMPLE_CSS: any = `
-#control-container {
-    padding: 0px !important;
-}
-#source{
-    float: right; margin-right: 10p
-}`;
+    #control-container {
+        padding: 0px !important;
+    }
+    #source{
+        float: right; margin-right: 10p
+    }`;
 // custom code end
 /**
  * Heatmap Palette mode sample
  */
-function Palette() {
+const Palette = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
-    let checkboxObj: CheckBoxComponent;
-    let heatmap: HeatMapComponent;
-
-    function fixed(args: ChangeEventArgs): void {
-        checkboxObj.disabled = false;
-        heatmap.paletteSettings.type = 'Fixed';
-        heatmap.dataBind();
+    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+    const [paletteType, setPaletteType] = useState<PaletteType>('Fixed');
+    const [isEnableSmartLegend, setIsEnableSmartLegend] = useState<boolean>(true);
+    let heatmap = useRef<HeatMapComponent>(null);
+    let title: TitleModel = {
+        text: 'U.S. Government Energy Consumption by Agency (Trillion Btu)',
+        textStyle: {
+            size: '15px',
+            fontWeight: '500',
+            fontStyle: 'Normal',
+            fontFamily: 'Segoe UI'
+        }
+    }
+    let xAxis: AxisModel = {
+        labels: ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'],
+        labelRotation: 45,
+        labelIntersectAction: 'None'
+    }
+    let yAxis: AxisModel = {
+        labels: ['Agriculture', 'Energy', 'Administration', 'Health', 'Interior', 'Justice', 'NASA', 'Transportation']
+    }
+    let paletteSettings: PaletteSettingsModel = {
+        palette: [
+            { value: 4.3, color: '#FFFFDA' },
+            { value: 7, color: '#EDF8B6' },
+            { value: 9, color: '#CAE8B4' },
+            { value: 15, color: '#78D1BD' },
+            { value: 18, color: '#36BCC6' },
+            { value: 25, color: '#208FC6' },
+            { value: 30, color: '#253494' },
+            { value: 32, color: '#081D58' }
+        ],
+        type: paletteType
+    }
+    let cellSettings: CellSettingsModel = {
+        border: { width: 0 },
+        showLabel: false,
+    }
+    let legendSettings: LegendSettingsModel = {
+        position: 'Bottom',
+        width: '400px',
+        enableSmartLegend: isEnableSmartLegend
     }
 
-    function gradient(args: ChangeEventArgs): void {
-        checkboxObj.disabled = true;
-        heatmap.paletteSettings.type = 'Gradient';
-        heatmap.dataBind();
+    const fixed = (): void => {
+        setIsDisabled(false);
+        setPaletteType('Fixed');
+        heatmap.current.dataBind();
     }
 
-    function valueChange(args: ChangeEventArgs): void {
-        heatmap.legendSettings.enableSmartLegend = checkboxObj.checked;
-        heatmap.dataBind();
+    const gradient = (): void => {
+        setIsDisabled(true);
+        setPaletteType('Gradient');
+        heatmap.current.dataBind();
     }
 
-    function load(args: ILoadedEventArgs): void {
+    const valueChange = (args: ChangeEventArgs): void => {
+        setIsEnableSmartLegend(args.checked);
+        heatmap.current.dataBind();
+    }
+
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
@@ -54,53 +96,9 @@ function Palette() {
         <div>
             <div className='col-md-9 control-section'>
                 {/* custom code start */}
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 {/* custom code end */}
-                <HeatMapComponent id='heatmap-container' ref={t => heatmap = t}
-                    titleSettings={{
-                        text: 'U.S. Government Energy Consumption by Agency (Trillion Btu)',
-                        textStyle: {
-                            size: '15px',
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI'
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['2005', '2006', '2007', '2008', '2009', '2010',
-                            '2011', '2012', '2013', '2014', '2015'],
-                        labelRotation: 45,
-                        labelIntersectAction: 'None',
-                    }}
-                    yAxis={{
-                        labels: ['Agriculture', 'Energy', 'Administration', 'Health', 'Interior',
-                            'Justice', 'NASA', 'Transportation']
-                    }}
-                    dataSource={(data as any).palatteSampleData}
-                    paletteSettings={{
-                        palette: [{ value: 4.3, color: '#FFFFDA' },
-                        { value: 7, color: '#EDF8B6' },
-                        { value: 9, color: '#CAE8B4' },
-                        { value: 15, color: '#78D1BD' },
-                        { value: 18, color: '#36BCC6' },
-                        { value: 25, color: '#208FC6' },
-                        { value: 30, color: '#253494' },
-                        { value: 32, color: '#081D58' }
-                        ],
-                        type: 'Fixed'
-                    }}
-                    cellSettings={{
-                        border: { width: 0 },
-                        showLabel: false,
-                    }}
-                    load={load.bind(this)}
-                    legendSettings={{
-                        position: 'Bottom',
-                        width: '400px',
-                        enableSmartLegend: true
-                    }}>
+                <HeatMapComponent id='heatmap-container' ref={heatmap} titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSource={(data as any).palatteSampleData} paletteSettings={paletteSettings} cellSettings={cellSettings} load={load.bind(this)} legendSettings={legendSettings}>
                     <Inject services={[Legend, Tooltip]} />
                 </HeatMapComponent>
             </div>
@@ -113,16 +111,12 @@ function Palette() {
                                     <div>Palette Type:</div>
                                 </td>
                                 <td style={{ width: '40%' }}>
-
                                     <div className='row'>
-                                        <RadioButtonComponent id='fixed' checked={true} label='Fixed' name='paletteType' value="Fixed"
-                                            change={fixed.bind(this)}></RadioButtonComponent>
+                                        <RadioButtonComponent id='fixed' checked={true} label='Fixed' name='paletteType' value="Fixed" change={fixed} />
                                     </div>
                                     <div className='row'>
-                                        <RadioButtonComponent id='gradient' label='Gradient' name='paletteType' value="Gradient"
-                                            change={gradient.bind(this)}></RadioButtonComponent>
+                                        <RadioButtonComponent id='gradient' label='Gradient' name='paletteType' value="Gradient" change={gradient} />
                                     </div>
-
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
@@ -131,9 +125,7 @@ function Palette() {
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div className='row'>
-                                        <CheckBoxComponent id='smartLegend' checked={true} disabled={false} name='enableSmartLegend'
-                                            ref={(scope) => { checkboxObj = scope; }}
-                                            change={valueChange.bind(this)}></CheckBoxComponent>
+                                        <CheckBoxComponent id='smartLegend' checked={true} disabled={isDisabled} name='enableSmartLegend' change={valueChange} />
                                     </div>
                                 </td>
                             </tr>
@@ -153,13 +145,10 @@ function Palette() {
                 <p>
                     In this example, you can see how to change the palette type between <code>Fixed </code> and <code>Gradient
                     </code> types in Heatmap. The palette type can be defined using the <code>type </code> property in <code>
-                        paletteSettings </code>. Legend is enabled in this example, changing the palette mode the legend type will be
+                    paletteSettings </code>. Legend is enabled in this example, changing the palette mode the legend type will be
                     automatically switched between gradient legend and list type legend.
                 </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point
-                    in touch enabled devices.
-                </p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -171,5 +160,4 @@ function Palette() {
         </div >
     );
 }
-
 export default Palette;

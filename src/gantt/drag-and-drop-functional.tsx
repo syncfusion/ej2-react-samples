@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { GanttComponent, Inject, Edit, Selection, ColumnsDirective, ColumnDirective, RowDD } from '@syncfusion/ej2-react-gantt';
 import { projectNewData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
-function DragAndDrop() {
-  React.useEffect(() => {
+const DragAndDrop = () => {
+  useEffect(() => {
     updateSampleSection();
   }, [])
   const taskFields: any = {
@@ -45,14 +46,12 @@ function DragAndDrop() {
             <ColumnDirective field='Progress'></ColumnDirective>
             <ColumnDirective field='Predecessor' headerText='Dependency'></ColumnDirective>
           </ColumnsDirective>
-
           <Inject services={[Edit, RowDD, Selection]} />
         </GanttComponent>
       </div>
       <div id="action-description">
         <p>This sample demonstrates the Gantt component with the row drag and drop feature. You can rearrange the gantt rows by using drag icon in left side of gantt column. Here you can perform drag and drop the gantt rows in to required position.</p>
       </div>
-
       <div id="description">
         <p>Row drag and drop feature can be enabled by settting <code>allowRowDragAndDrop</code> property as true.</p>
         <p>

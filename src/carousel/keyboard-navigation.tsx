@@ -6,11 +6,10 @@ import './keyboard-navigation.css';
 
 export class KeyboardNavigation extends SampleBase<{}, {}> {
 
-  public renderComplete(): void {
+  public componentDidMount(): void {
     document.body.addEventListener('keydown', function (e) {
       var carouselElement: HTMLElement = document.querySelector('.e-carousel');
       if (e.altKey && e.keyCode === 74 && carouselElement) {
-        console.log('rer');
         carouselElement.focus();
       }
     });

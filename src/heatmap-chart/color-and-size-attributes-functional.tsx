@@ -1,27 +1,24 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    HeatMapComponent, Legend, Adaptor, Tooltip, BubbleTooltipData,
-    ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs
-} from '@syncfusion/ej2-react-heatmap';
+import { useEffect } from "react";
+import { HeatMapComponent, Legend, Adaptor, Tooltip, BubbleTooltipData, ILoadedEventArgs, HeatMapTheme, Inject, ITooltipEventArgs, TitleModel, DataModel, CellSettingsModel, PaletteSettingsModel } from '@syncfusion/ej2-react-heatmap';
 import { updateSampleSection } from '../common/sample-base';
-import { PropertyPane } from "../common/property-pane";
 
 // custom code start
 const SAMPLE_CSS: any = `
-#control-container {
-    padding: 0px !important;
-}
-#source{
-    float: right; margin-right: 10p
-}`;
+    #control-container {
+        padding: 0px !important;
+    }
+    #source{
+        float: right; margin-right: 10p
+    }`;
 // custom code end
 /**
  * Schedule Default sample
  */
-function ColorAndSizeAttributes() {
+const ColorAndSizeAttributes = () => {
 
-    React.useEffect(() => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
 
@@ -63,14 +60,44 @@ function ColorAndSizeAttributes() {
         { Year: '2012', Months: 'Sep-Oct', Accidents: 3, Fatalities: 33 },
         { Year: '2012', Months: 'Nov-Dec', Accidents: 4, Fatalities: 42 }
     ];
-
-    function load(args: ILoadedEventArgs): void {
+    let title: TitleModel = {
+        text: 'Commercial Aviation Accidents and Fatalities by year 2012 - 2017',
+        textStyle: {
+            size: '15px',
+            fontWeight: '500',
+            fontStyle: 'Normal',
+            fontFamily: 'Segoe UI'
+        }
+    }
+    let dataSourceSettings: DataModel = {
+        isJsonData: true,
+        adaptorType: 'Cell',
+        xDataMapping: 'Year',
+        yDataMapping: 'Months',
+        bubbleDataMapping: { size: 'Accidents', color: 'Fatalities' }
+    }
+    let cellSettings: CellSettingsModel = {
+        border: {
+            width: 0
+        },
+        showLabel: false,
+        tileType: 'Bubble',
+        bubbleType: 'SizeAndColor'
+    }
+    let paletteSettings: PaletteSettingsModel = {
+        palette: [{ color: '#C06C84' },
+        { color: '#355C7D' }
+        ],
+        type: 'Gradient'
+    }
+    
+    const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
     };
 
-    function legendTooltip(args: ITooltipEventArgs): void {
+    const legendTooltip = (args: ITooltipEventArgs): void => {
         args.content = ['Year ' + ' : ' + args.xLabel + '<br/>' + 'Months ' + ' : ' + args.yLabel + '<br/>'
             + 'Accidents ' + ' : ' + (args.value as BubbleTooltipData[])[0].bubbleData + '<br/>' + 'Fatalities ' + ' : '
             + (args.value as BubbleTooltipData[])[1].bubbleData];
@@ -79,54 +106,10 @@ function ColorAndSizeAttributes() {
     return (
         <div className='control-pane'>
             {/* custom code start */}
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container'
-                    titleSettings={{
-                        text: 'Commercial Aviation Accidents and Fatalities by year 2012 - 2017',
-                        textStyle: {
-                            size: '15px',
-                            fontWeight: '500',
-                            fontStyle: 'Normal',
-                            fontFamily: 'Segoe UI'
-                        }
-                    }}
-                    xAxis={{
-                        labels: ['2017', '2016', '2015', '2014', '2013', '2012'],
-                    }}
-                    yAxis={{
-                        labels: ['Jan-Feb', 'Mar-Apr', 'May-Jun', 'Jul-Aug', 'Sep-Oct', 'Nov-Dec'],
-                    }}
-                    dataSource={jsonCellBubbleData}
-                    dataSourceSettings={{
-                        isJsonData: true,
-                        adaptorType: 'Cell',
-                        xDataMapping: 'Year',
-                        yDataMapping: 'Months',
-                        bubbleDataMapping: { size: 'Accidents', color: 'Fatalities' }
-                    }}
-                    cellSettings={{
-                        border: {
-                            width: 0
-                        },
-                        showLabel: false,
-                        tileType: 'Bubble',
-                        bubbleType: 'SizeAndColor'
-                    }}
-                    tooltipRender={legendTooltip}
-                    paletteSettings={{
-                        palette: [{ color: '#C06C84' },
-                        { color: '#355C7D' }
-                        ],
-                        type: 'Gradient'
-                    }}
-                    load={load.bind(this)}
-                    legendSettings={{
-                        visible: true,
-                    }}>
+                <HeatMapComponent id='heatmap-container' titleSettings={title} xAxis={{ labels: ['2017', '2016', '2015', '2014', '2013', '2012'] }} yAxis={{ labels: ['Jan-Feb', 'Mar-Apr', 'May-Jun', 'Jul-Aug', 'Sep-Oct', 'Nov-Dec'] }} dataSource={jsonCellBubbleData} dataSourceSettings={dataSourceSettings} cellSettings={cellSettings} tooltipRender={legendTooltip} paletteSettings={paletteSettings} load={load.bind(this)} legendSettings={{ visible: true }}>
                     <Inject services={[Adaptor, Tooltip, Legend]} />
                 </HeatMapComponent>
                 <div id="source">Source:
@@ -134,17 +117,13 @@ function ColorAndSizeAttributes() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample illustrates the number of commercial air craft accidents and the fatalities across the world between 2012 and 2017. Each data point interprets the accident count and the fatality associated with the accident, the size of the bubble depicts the accident count and the shade of the bubble depicts the fatality count.
-                </p>
+                <p>This sample illustrates the number of commercial air craft accidents and the fatalities across the world between 2012 and 2017. Each data point interprets the accident count and the fatality associated with the accident, the size of the bubble depicts the accident count and the shade of the bubble depicts the fatality count.</p>
             </div>
             <div id="description">
                 <p>
                     In this example, you can see how to map more than one data for each data point or cell of the bubble heatmap. The size and shade parameters of the bubble is used to depict the data source values. The legend will be displayed only for the shade parameter of the bubble. For JSON data, you can specify which data source value should be mapped to either size or shade of the bubble parameters using the dataMapping property. The data source field should mapped to the size and color properties of the dataMapping property.In this example, you can see how to map more than one data for each data point or cell of the bubble heatmap. The <code>size</code> and <code>shade</code> parameters of the bubble is used to depict the data source values. The legend will be displayed only for the shade parameter of the bubble. For JSON data, you can specify which data source value should be mapped to either size or shade of the bubble parameters using the <code>dataMapping</code> property. The data source field should mapped to the <code>size</code> and <code>color</code> properties of the <code>dataMapping</code> property.
                 </p>
-                <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                </p>
+                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -154,5 +133,4 @@ function ColorAndSizeAttributes() {
         </div >
     );
 }
-
 export default ColorAndSizeAttributes;

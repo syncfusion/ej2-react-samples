@@ -18,7 +18,8 @@ let dataSourceSettings: IDataOptions = {
     dataSource: Pivot_Data,
     expandAll: true,
     values: [{ name: 'Sold', caption: 'Units Sold' }],
-    filters: []
+    filters: [],
+    formatSettings: [{ name: 'Sold', format: 'N0' }],
 };
 
 function Integration () {
@@ -93,12 +94,13 @@ function Integration () {
                     text: 'Sales Analysis'
                 },
                 legendSettings: {
-                    position: 'Top'
+                    visible: false,
+                    position: 'Top',
                 },
                 xAxis: {
                     title: { text: pivotObj.dataSourceSettings.rows.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
                     labels: xLabels,
-                    labelRotation: 315
+                    labelIntersectAction: "Trim" 
                 },
                 yAxis: {
                     title: { text: pivotObj.dataSourceSettings.values.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
@@ -122,7 +124,7 @@ function Integration () {
             heatmap.xAxis = {
                 title: { text: pivotObj.dataSourceSettings.rows.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
                 labels: xLabels,
-                labelRotation: 315
+                labelIntersectAction: "Trim" 
             };
             heatmap.yAxis = {
                 title: { text: pivotObj.dataSourceSettings.values.map(function (args) { return args.caption || args.name; }).join(' ~ ') },
@@ -146,8 +148,8 @@ function Integration () {
                 <div id="heatmap" style={{ height: '450px' }}></div>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates rendering Heatmap control by providing desired data from a pivot table on selection. Not
-                    only Heatmap, but any other control (including third party) can be used for this purpose.
+                <p>This sample demonstrates rendering HeatMap control by providing desired data from a pivot table on selection. Not
+                    only HeatMap, but any other control (including third party) can be used for this purpose.
                 </p>
             </div>
             <div id="description">

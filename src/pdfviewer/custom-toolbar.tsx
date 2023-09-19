@@ -10,6 +10,7 @@ import {
 import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
 import { SampleBase } from '../common/sample-base';
 import { RouteComponentProps } from 'react-router';
+import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import './pdf.component.css';
 
 
@@ -34,6 +35,15 @@ export class CustomToolbar extends SampleBase<{}, {}> {
         }
         return (<div>
             <div className='control-section'>
+            <div className="flex-container">
+                <label htmlFor="checked" className="switchLabel" > Standalone PDF Viewer </label>
+                <div className="e-message render-mode-info">
+                    <span className="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
+                </div>
+                <div>
+                    <SwitchComponent cssClass="buttonSwitch" id="checked" change={this.change} checked={true}></SwitchComponent>
+                </div>
+            </div>
                 <div>
                     <div className='e-pdf-toolbar'>
                         <ToolbarComponent ref={(scope) => { this.toolbar = scope; }} clicked={this.clickHandler.bind(this)}>
@@ -52,8 +62,7 @@ export class CustomToolbar extends SampleBase<{}, {}> {
                     <PdfViewerComponent id="container" ref={(scope) => { this.viewer = scope; }} enableToolbar={false} enableNavigationToolbar={false}
                         documentLoad={this.documentLoaded}
                         pageChange={this.onPageChange}
-                        documentPath="Hive_Succinctly.pdf"
-                        serviceUrl="https://services.syncfusion.com/react/production/api/pdfviewer"
+                        documentPath="https://cdn.syncfusion.com/content/pdf/hive-succinctly.pdf"
                         style={{ 'display': 'block', 'height': '640px' }}>
                         <Inject services={[Magnification, Navigation, LinkAnnotation, BookmarkView,
                             ThumbnailView, Print, TextSelection, TextSearch]} />
@@ -207,5 +216,14 @@ export class CustomToolbar extends SampleBase<{}, {}> {
             pageCount.textContent = 'of ' + viewer.pageCount;
         }
     }
-
+    change = (args) => {
+        if (args.checked) {
+            this.viewer.serviceUrl = '';
+        }
+        else {
+            this.viewer.serviceUrl = 'https://ej2services.syncfusion.com/react/development/api/pdfviewer';
+        }
+        this.viewer.dataBind();
+        this.viewer.load(this.viewer.documentPath, null);
+    }
 }

@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
+import { useEffect } from "react";
 import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import './keyboard-navigation.css';
 
-function KeyboardNavigation() {
-    React.useEffect(() => {
+const KeyboardNavigation = () => {
+    useEffect(() => {
         updateSampleSection();
     }, [])
     return (

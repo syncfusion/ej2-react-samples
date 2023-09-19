@@ -70,7 +70,7 @@ export class Grouping extends SampleBase<{}, {}> {
                     <p>The Grid control has options to group the records based on the required column. When grouping is applied, grouped
             records are organized into a hierarchical structure to facilitate easier expansion and collapse of records. To enable
             grouping, set <code><a target='_blank' className='code'
-                            href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#allowgrouping">
+                            href="https://ej2.syncfusion.com/react/documentation/api/grid/#allowgrouping">
                             allowGrouping</a></code> property as true.</p>
                     <p>Columns can be grouped by simply dragging the column header and drop on the group drop area.</p>
                     <p>In this demo, to group a specify column, drag and drop the column in the group drop area.</p>
@@ -87,7 +87,7 @@ export class Grouping extends SampleBase<{}, {}> {
         </p>
                     <p>
                         More information on the grouping feature configuration can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#groupsettings"> documentation section</a>.
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/grid/#groupsettings"> documentation section</a>.
         </p>
                 </div>
             </div>

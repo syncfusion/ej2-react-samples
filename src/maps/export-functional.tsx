@@ -4,156 +4,115 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { useEffect, useRef } from "react";
 import { MapAjax } from '@syncfusion/ej2-maps';
-import {
-    ProjectionType, MapsComponent, MapsTooltip, ExportType, Marker, MarkersDirective, MarkerDirective, ShapeLayerType,
-    PdfExport, ImageExport, Inject, LayersDirective, LayerDirective, ILoadedEventArgs, MapsTheme
-} from '@syncfusion/ej2-react-maps';
+import { MapsComponent, MapsTooltip, ExportType, Marker, MarkersDirective, MarkerDirective, ShapeLayerType, PdfExport, ImageExport, Inject, LayersDirective, LayerDirective, ILoadedEventArgs, MapsTheme } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 const SAMPLE_CSS = `
-.control-fluid {
-    padding: 0px !important;
-}
-
-#btn-control {
-    width: 100%;
-    text-align: center;
-    text-transform:none !important;
-}
-
-.e-play-icon::before {
-    content: '\\e728';
-}
-
-.e-view.fluent .e-play-icon::before, .e-view.fluent-dark .e-play-icon::before {
-    content: '\\e72e';
-}
-
-.e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before  {
-    content: '\\e710';
-}
-
-.e-view.bootstrap4 .e-play-icon::before {
-    content: '\\e780';
-}
-
-.e-view.tailwind-dark .e-play-icon::before, .e-view.tailwind .e-play-icon::before {
-    content: '\\e7bf';
-}
-
-.e-view.highcontrast .e-play-icon::before {
-    content: '\\e710';
-}
-
-.e-view.bootstrap5 .e-play-icon::before, .e-view.bootstrap5-dark .e-play-icon::before {
-    content: '\\e72e';
-}`;
-function ExportMaps() {
-
-    React.useEffect(() => {
-        updateSampleSection();
-    }, [])
-
-    let mapInstance: MapsComponent;
-    let mode: DropDownListComponent;
-    let mapType: DropDownListComponent;
-    let type: { [key: string]: Object }[] = [
-        { value: 'JPEG' },
-        { value: 'PNG' },
-        { value: 'PDF' },
-        { value: 'SVG' }
-    ];
-    let maptype: { [key: string]: Object }[] = [
-        { value: 'Geometry' },
-        { value: 'OSM' }
-    ];
-    function mapTypeChange(): void {
-        if (mapType.value === 'OSM') {
-            if (mode.value === 'SVG') {
-                mode.value = 'JPEG';
-            }
-            mode.dataSource = type.slice(0, 3);
-        } else {
-            mode.dataSource = type;
-        }
-        mapInstance.layers[0].layerType = mapType.value as ShapeLayerType;
-        mapInstance.refresh();
+    .control-fluid {
+        padding: 0px !important;
     }
 
-    function onMapsLoad(args: ILoadedEventArgs): void {
+    #btn-control {
+        width: 100%;
+        text-align: center;
+        text-transform:none !important;
+    }
+
+    .e-play-icon::before {
+        content: '\\e728';
+    }
+
+    .e-view.fluent .e-play-icon::before, .e-view.fluent-dark .e-play-icon::before {
+        content: '\\e72e';
+    }
+
+    .e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before  {
+        content: '\\e710';
+    }
+
+    .e-view.bootstrap4 .e-play-icon::before {
+        content: '\\e780';
+    }
+
+    .e-view.tailwind-dark .e-play-icon::before, .e-view.tailwind .e-play-icon::before {
+        content: '\\e7bf';
+    }
+
+    .e-view.highcontrast .e-play-icon::before {
+        content: '\\e710';
+    }
+
+    .e-view.bootstrap5 .e-play-icon::before, .e-view.bootstrap5-dark .e-play-icon::before {
+        content: '\\e72e';
+    }`;
+const ExportMaps = () => {
+    useEffect(() => {
+        updateSampleSection();
+    }, [])
+    let mapInstance = useRef<MapsComponent>(null);
+    let mode = useRef<DropDownListComponent>(null);
+    let mapType = useRef<DropDownListComponent>(null);
+    let fileNameObj = useRef<HTMLInputElement>(null);
+    let type: { [key: string]: Object }[] = [{ value: 'JPEG' }, { value: 'PNG' }, { value: 'PDF' }, { value: 'SVG' }];
+    let maptype: { [key: string]: Object }[] = [{ value: 'Geometry' }, { value: 'OSM' }];
+    let markerData: object[] = [
+        { longitude: 116.5703749, latitude: 40.4319077, name: 'The Great Wall of China, China' },
+        { longitude: 35.4443622, latitude: 30.3284544, name: 'Petra, Jorden' },
+        { longitude: 78.0421552, latitude: 27.1750151, name: 'Taj Mahal, Agra, India' },
+        { longitude: 12.4922309, latitude: 41.8902102, name: 'The Roman Colosseum, Rome, Italy' },
+        { longitude: -88.5677826, latitude: 20.6842849, name: 'The Chichen Itza, Mexico' },
+        { longitude: -72.5449629, latitude: -13.1631412, name: 'Machu Picchu, Peru' },
+        { longitude: -43.2104872, latitude: -22.951916, name: 'Christ Redeemer, Rio de janeiro, Brazil' },
+    ];
+    const mapTypeChange = (): void => {
+        if (mapType.current.value === 'OSM') {
+            if (mode.current.value === 'SVG') {
+                mode.current.value = 'JPEG';
+            }
+            mode.current.dataSource = type.slice(0, 3);
+        } else {
+            mode.current.dataSource = type;
+        }
+        mapInstance.current.layers[0].layerType = mapType.current.value as ShapeLayerType;
+        mapInstance.current.refresh();
+    };
+    const onMapsLoad = (): void => {
         let maps: Element = document.getElementById('maps');
         maps.setAttribute('title', '');
     };
-
-    function load(args: ILoadedEventArgs): void {
+    const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as MapsTheme;
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as MapsTheme;
         // custom code end
     };
-
-    function onClick(e: Event): void {
-        let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
-        mapInstance.export((mode.value as ExportType), fileName);
-    }
-
+    const onClick = (e: Event): void => {
+        mapInstance.current.export(mode.current.value as ExportType, fileNameObj.current.value);
+    };
     return (
         <div className='control-pane'>
-            <style>
-                {SAMPLE_CSS}
-            </style>
+            <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <MapsComponent allowPdfExport={true} allowImageExport={true} id="maps" loaded={onMapsLoad.bind(this)} load={load} ref={m => mapInstance = m}
-                        titleSettings={{
-                            text: 'Location of the Wonders in the World',
-                            textStyle: {
-                                size: '16px'
-                            },
-                        }}
-                    >
+                    <MapsComponent ref={mapInstance} allowPdfExport={true} allowImageExport={true} id="maps" loaded={onMapsLoad} load={load} titleSettings={{ text: 'Location of the Wonders in the World', textStyle: { size: '16px' } }}>
                         <Inject services={[Marker, MapsTooltip, PdfExport, ImageExport]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
-                                shapeSettings=
-                                {{
-                                    fill: 'lightgrey',
-                                    border: { color: 'black', width: 0.1 }
-                                }}>
+                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapeSettings={{ fill: 'lightgrey', border: { color: 'black', width: 0.1 } }}>
                                 <MarkersDirective>
-                                    <MarkerDirective visible={true}
-                                        animationDuration={0}
-                                        shape="Balloon"
-                                        fill='#E13E40'
-                                        width={15}
-                                        height={20}
-                                        dataSource={[
-                                            { 'longitude': 116.5703749, 'latitude': 40.4319077, 'name': 'The Great Wall of China, China ' },
-                                            { 'longitude': 35.4443622, 'latitude': 30.3284544, 'name': 'Petra, Jorden' },
-                                            { 'longitude': 78.0421552, 'latitude': 27.1750151, 'name': 'Taj Mahal, Agra, India' },
-                                            { 'longitude': 12.4922309, 'latitude': 41.8902102, 'name': 'The Roman Colosseum, Rome, Italy' },
-                                            { 'longitude': -88.5677826, 'latitude': 20.6842849, 'name': 'The Chichen Itza, Mexico' },
-                                            { 'longitude': -72.5449629, 'latitude': -13.1631412, 'name': 'Machu Picchu, Peru' },
-                                            { 'longitude': -43.2104872, 'latitude': -22.951916, 'name': 'Christ Redeemer, Rio de janeiro, Brazil' },
-                                        ]}
-                                        tooltipSettings={{
-                                            visible: true,
-                                            valuePath: 'name'
-                                        }}>
-                                    </MarkerDirective >
+                                    <MarkerDirective visible={true} animationDuration={0} shape="Balloon" fill='#E13E40' width={15} height={20} dataSource={markerData} tooltipSettings={{ visible: true, valuePath: 'name' }} />
                                 </MarkersDirective>
                             </LayerDirective>
                         </LayersDirective>
                     </MapsComponent>
                     {/* Source Link */}
-                    <div style={{ float: 'right', marginRight: '10px' }}>Source:
-                        <a href="http://www.emapsworld.com/world-seven-wonder-map.html" target="_blank">en.wikipedia.org</a>
+                    <div style={{ float: 'right', marginRight: '10px' }}>
+                        Source:<a href="http://www.emapsworld.com/world-seven-wonder-map.html" target="_blank">en.wikipedia.org</a>
                     </div>
                 </div>
                 {/* Property Panel */}
@@ -166,7 +125,7 @@ function ExportMaps() {
                                 </td>
                                 <td style={{ width: "30%" }}>
                                     <div>
-                                        <DropDownListComponent width={'100%'} id="maptype" value="Geometry" change={mapTypeChange.bind(this)} ref={d => mapType = d} dataSource={maptype} fields={{ text: 'value', value: 'value' }} placeholder="Geometry" />
+                                        <DropDownListComponent width={'100%'} id="maptype" value="Geometry" change={mapTypeChange.bind(this)} ref={mapType} dataSource={maptype} fields={{ text: 'value', value: 'value' }} placeholder="Geometry" />
                                     </div>
                                 </td>
                             </tr>
@@ -176,7 +135,7 @@ function ExportMaps() {
                                 </td>
                                 <td style={{ width: "30%" }}>
                                     <div>
-                                        <DropDownListComponent width={'100%'} id="etype" value="JPEG" ref={d => mode = d} dataSource={type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
+                                        <DropDownListComponent width={'100%'} id="etype" value="JPEG" ref={mode} dataSource={type} fields={{ text: 'value', value: 'value' }} placeholder="JPEG" />
                                     </div>
                                 </td>
                             </tr>
@@ -186,7 +145,7 @@ function ExportMaps() {
                                 </td>
                                 <td>
                                     <div className="e-float-input" style={{ marginTop: '0px' }}>
-                                        <input type="text" defaultValue="Maps" id="fileName" style={{ "width": "100%", padding: '0px', paddingLeft: '5px' }} />
+                                        <input type="text" ref={fileNameObj} defaultValue="Maps" id="fileName" style={{ "width": "100%", padding: '0px', paddingLeft: '5px' }} />
                                     </div>
                                 </td>
                             </tr>
@@ -202,30 +161,24 @@ function ExportMaps() {
                 </div>
             </div>
             <div id="action-description">
-                <p>
-                    This sample illustrates the exporting feature in Maps. You can modify the map type to geometric or OSM using the Map type dropdown list in this sample. By clicking the Export button, you can export the map in PNG, JPEG, SVG or in PDF formats.
-                </p>
+                <p>This sample illustrates the exporting feature in Maps. You can modify the map type to geometric or OSM using the Map type dropdown list in this sample. By clicking the Export button, you can export the map in PNG, JPEG, SVG or in PDF formats.</p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the export functionality. The rendered map
-                    can be exported as either JPEG, PNG, SVG and PDF formats. Also this sample visualizes the locations of
-                    the wonders in the world using markers. Export functionality is done by <code>export</code> method
-                    when <code>allowImageExport</code> and <code>allowPdfExport</code> is set as true.
-                    <br /><br />
-                    <b>Injecting Module</b><br /><br />
-                    Maps component features are segregated into individual feature-wise modules. To use a marker, inject
-                    the Marker module using the <code> Marker </code> module into the <code> services </code>. To make use of the export support, we need
-                    to inject the <code>Maps</code> module using the <code> ImageExport
-                    </code> and <code> PdfExport </code> modules into the <code> services </code>.
+                    In this example, you can see how to render and configure the export functionality. The rendered map can be exported as either JPEG, PNG, SVG and PDF formats. Also this sample visualizes the locations of the wonders in the world using markers. Export functionality is done by <code>export</code> method when <code>allowImageExport</code> and <code>allowPdfExport</code> is set as true.
+                    <br />
+                    <br />
+                    <b>Injecting Module</b>
+                    <br />
+                    <br />
+                    Maps component features are segregated into individual feature-wise modules. To use a marker, inject the Marker module using the <code> Marker </code> module into the <code> services </code>. To make use of the export support, we need to inject the <code>Maps</code> module using the <code> ImageExport</code> and <code> PdfExport </code> modules into the <code> services </code>.
                 </p>
                 <p>
-                    More information on export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/maps/print/#export">documentation section</a>.
+                    More information on export can be found in this{" "}
+                    <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/maps/print/#export'>documentation section</a>.
                 </p>
-
             </div>
         </div>
     )
 }
-
 export default ExportMaps;

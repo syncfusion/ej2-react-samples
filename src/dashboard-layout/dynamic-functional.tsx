@@ -1,6 +1,6 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect,Fragment } from "react";
 import { updateSampleSection } from "../common/sample-base";
 import { DashboardLayoutComponent, PanelModel, PanelsDirective, PanelDirective, ResizeArgs } from "@syncfusion/ej2-react-layouts";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
@@ -188,7 +188,7 @@ const DynamicWidget = () => {
     }
 
     return (
-        <div>
+        <Fragment>
             <div id='edit_target' className="control-section">
                 <div>
                     <div style={{ "width": "100%", "marginBottom": "10px", "marginTop": "10px", "height": "30px" }}>
@@ -206,7 +206,6 @@ const DynamicWidget = () => {
                     </PanelsDirective>
                 </DashboardLayoutComponent>
             </div>
-            <DialogComponent id="listdialog" width="500px" height="260px" visible={isVisible} header={"Add a widget"} showCloseIcon={true} animationSettings={{ effect: 'Zoom' }} isModal={true} target='#edit_target' content={content as any} />
             <div id="action-description">
                 <p>
                     The following sample demonstrates a editable dashboard layout. Initially the DashboardLayout component
@@ -218,10 +217,9 @@ const DynamicWidget = () => {
                     in mobile resolution.
                 </p>
             </div>
-            <div id="description">
-                <p>The following sample demonstrates about using the dashboard layout as an editable layout.</p>
-            </div>
-        </div>
+            <div id="description">The following sample demonstrates about using the dashboard layout as an editable layout.</div>
+            <DialogComponent id="listdialog" width="500px" height="260px" visible={isVisible} header={"Add a widget"} showCloseIcon={true} animationSettings={{ effect: 'Zoom' }} isModal={true} target='#edit_target' content={content as any} />
+        </Fragment>
     );
 }
 export default DynamicWidget;

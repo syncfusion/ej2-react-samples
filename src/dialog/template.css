@@ -13,7 +13,8 @@
 .tailwind-dark .target-element .e-dialog .e-dlg-header-content,
 .bootstrap5 .target-element .e-dialog .e-dlg-header-content,
 .bootstrap5-dark .target-element .e-dialog .e-dlg-header-content,
-.material .target-element .e-dialog .e-dlg-header-content {
+.material .target-element .e-dialog .e-dlg-header-content,
+.material3 .target-element .e-dialog .e-dlg-header-content {
     background-color: #3f51b5;
 }
 .fabric .target-element .e-dialog .e-dlg-header-content {

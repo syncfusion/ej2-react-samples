@@ -7,9 +7,8 @@ import { PropertyPane } from '../common/property-pane';
 import { updateSampleSection } from '../common/sample-base';
 import './hamburger-mode.css';
 import * as dataSource from './menu-data.json';
-// custom code start
 import { Browser, select } from '@syncfusion/ej2-base';
-// custom code end
+
 interface HamburgerMenuSample {
     showItemOnClick: boolean;
     hamburgerMode: boolean;
@@ -26,7 +25,6 @@ const HamburgerMenu = () => {
     });
     const [layout, setLayout] = useState<string>('deviceLayout');
 
-    // custom code start
     const menuCreated = (): void => {
         if (Browser.isDevice) {
             select('.property-section').remove();
@@ -35,7 +33,7 @@ const HamburgerMenu = () => {
             (select('#menu') as HTMLElement).style.height = '363px';
         }
     }
-    // custom code end
+
     const modeChange = (args: ddlChange): void => {
         let container: HTMLElement = document.querySelector('#layoutcontainer');
         switch (args.value) {

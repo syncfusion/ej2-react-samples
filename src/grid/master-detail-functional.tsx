@@ -56,11 +56,11 @@ function MasterDetail() {
                 <p>The steps to achieve this scenario is as follows,</p>
                 <ul>
                     <li> Get the selected record of Master Grid in the <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#rowselected">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/#rowselected">
                         rowSelected
                     </a></code> event.</li>
                     <li> Filter the data based on the selected record and bind the result to the Detail Grid`s <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#datasource">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/#datasource">
                         dataSource
                     </a></code> property.</li>
                 </ul>
@@ -70,14 +70,14 @@ function MasterDetail() {
                     <li>The <code>DetailComponent</code> has an <code>Input</code> property <code>key</code>, based on which
                         the data will be filtered and set to the Detail Grid. Here the <strong>CustomerID</strong> value is used as key value.</li>
                     <li>Created an another React component named <code>MasterComponent</code> which has Master Grid component with <code><a target="_blank" className="code"
-                        href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#rowselected">
+                        href="https://ej2.syncfusion.com/react/documentation/api/grid/#rowselected">
                         rowSelected
                     </a></code> event bound to it.</li>
                     <li>The <code>MasterComponent</code> uses <code>DetailComponent</code> and it updates <code>key</code> property when a row is selected in the Master Grid.</li>
                     <li>Now based on the key value, the data is filtered and the Detail Grid is updated with the filtered data.</li>
                 </ul>
                 <p>Use <code><a target="_blank" className="code"
-                    href="http://ej2.syncfusion.com/react/documentation/grid/api-gridComponent.html#selectedrowindex">
+                    href="https://ej2.syncfusion.com/react/documentation/api/grid/#selectedrowindex">
                     selectedRowIndex
                 </a></code> to select a row at the initial rendering.</p>
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>

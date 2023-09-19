@@ -62,7 +62,7 @@ const Striplinerecurrence = () => {
                         <Inject services={[ColumnSeries, DateTime, Category, Legend, Tooltip, StripLine, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} columnSpacing={0.1} type='Column' name='AllSources' />
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} type='Column' name='Autos && Light Trucks' />
+                            <SeriesDirective dataSource={data2} xName='x' yName='y' width={2} type='Column' name='Autos & Light Trucks' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>

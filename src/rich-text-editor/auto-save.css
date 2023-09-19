@@ -43,7 +43,7 @@
 .fluent-dark .e-icons.e-icon-refresh::before,
 .material3 .e-icons.e-icon-refresh::before,
 .material3-dark .e-icons.e-icon-refresh::before {
-    content: "\e706";
+        content: "\e706";
 }
 
 .bootstrap5 .e-icons.e-icon-tick::before,
@@ -52,7 +52,7 @@
 .fluent-dark .e-icons.e-icon-tick::before,
 .material3 .e-icons.e-icon-tick::before,
 .material3-dark .e-icons.e-icon-tick::before {
-    content: "\e774";
+        content: "\e774";
 }
 
 .status-text {
