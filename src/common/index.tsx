@@ -275,8 +275,8 @@ function closeRightSidebar(args: EventArgs): void {
   let targetEle: HTMLElement | null = args.event ? args.event.target as HTMLElement : null;
   if (targetEle && targetEle.closest('.e-popup')) args.cancel = true;
 }
-function processDeviceDependables(): void {
-  if (Browser.isDevice) {
+export function processDeviceDependables(): void {
+  if (Browser.isDevice || location.hash.indexOf('pdfviewer') !== -1) {
     select('.sb-desktop-setting').classList.add('sb-hide');
   } else {
     select('.sb-desktop-setting').classList.remove('sb-hide');

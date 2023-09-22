@@ -12,7 +12,7 @@ import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from 
 import { SampleBase, updateSampleSection } from '../common/sample-base';
 import { RouteComponentProps } from 'react-router';
 import './pdf.component.css';
-export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
+export class InvisibleSignature extends SampleBase<{}, {}> {
     public viewer: PdfViewerComponent;
     public toolbar: ToolbarComponent;
     public fileName: string = '';

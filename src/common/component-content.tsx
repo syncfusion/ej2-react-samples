@@ -8,7 +8,7 @@ import { ListView } from '@syncfusion/ej2-react-lists';
 import { TabComponent } from '@syncfusion/ej2-react-navigations';
 import { ToastComponent } from '@syncfusion/ej2-react-notifications';
 import { samplesList } from './sample-list';
-import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay } from './index';
+import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay, processDeviceDependables } from './index';
 import * as samplesJSON from './all-routes';
 import { MyWindow } from './leftpane';
 import { setSelectList } from './leftpane';
@@ -391,11 +391,6 @@ function renderSampleHeader(): void {
     let controlElem: Element = select('[control-name="' + hash[2].toLowerCase() + '"]');
     controlName = controlElem ? controlElem.getAttribute('name') : toInitiaUpper(hash[2]);
     sampleNameElement.innerHTML = controlName;
-    if (controlName === 'PDF Viewer') {
-        (document.querySelector('.sb-desktop-setting') as any).style.display = 'none';
-    } else {
-        (document.querySelector('.sb-desktop-setting') as any).style.display = '';
-    }
 
     /**
      * Bread Crumb
@@ -535,14 +530,6 @@ function copyCode(): void {
     (select('.copy-tooltip') as any).ej2_instances[0].close();
 }
 
-function processDeviceDependables(): void {
-    if (Browser.isDevice) {
-        select('.sb-desktop-setting').classList.add('sb-hide');
-    } else {
-        select('.sb-desktop-setting').classList.remove('sb-hide');
-    }
-}
-
 export function intialLoadScrollTop(): void {
     isMobile = window.matchMedia('(max-width:550px)').matches;
     isMobile ? rightPane.scrollTop = 74 : rightPane.scrollTop = 0;
@@ -557,6 +544,8 @@ export function onComponentLoad(): void {
     renderSourceTabContent();
     renderSampleHeader();
     selectDefaultTab();
+    if (select('.sb-desktop-setting'))
+        processDeviceDependables();
     let propPanel: Element = select('#control-content .property-section');
     if (propPanel) {
         if (propRegex.test(propPanel.className)) {

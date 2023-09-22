@@ -9,7 +9,7 @@ import { PropertyPane } from '../common/property-pane';
 import './default.css';
 import * as data from './dataSource.json';
 
-export class Default extends SampleBase<{}, {}> {
+export class Virtualization extends SampleBase<{}, {}> {
 
   private listObj: DropDownListComponent;
   // define the array of string
