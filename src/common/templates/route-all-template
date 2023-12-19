@@ -1,18 +1,14 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { HashRouter, Route, Switch, Link,Redirect } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 {{imports}}
 
 export const routes = (
-       <HashRouter>
-    <div>
+    <HashRouter>
+        <Routes>
 {{routerCollection}}
-        {
-            (location.hash) === ""   ?
-            <Redirect from = '/' exact to="material/grid/overview" />:
-            null
-        }
-    </div>
+            <Route path= '/' element={<Navigate replace to="material3/grid/overview" />} />
+        </Routes>
     </HashRouter>
 )
 

@@ -87,8 +87,8 @@ export class Filtering extends SampleBase<{}, {}> {
                         by setting the <code><a target='_blank' className='code'
                             href='https://ej2.syncfusion.com/react/documentation/api/grid/#allowfiltering'>allowFiltering
                    </a></code> property to true. A filter bar row will be rendered next to header which allows users to filter
-                        data by entering text within its cells.</p>
-                    <p>The Filterbar uses two modes which specifies how to start filtering. They are,</p>
+                        data by entering text within its cells.<br /><br />
+                        The Filterbar uses two modes which specifies how to start filtering. They are,</p>
                     <ul>
                         <li><code>OnEnter</code> - Enabled by default, filter will be initiated when the <code>Enter</code> key is pressed.</li>
                         <li><code>Immediate</code> - Filter will start after user finishes typing. There will be a time delay of <i>1500ms</i> to initiate
@@ -97,12 +97,15 @@ export class Filtering extends SampleBase<{}, {}> {
                                 filterSettings-&gt;immediateModeDelay
                         </a></code> property.</li>
                     </ul>
-                    <p>In this demo, you can either select the <strong>Category Name</strong> from the SELECT element or type the text in the filter bar cells to filter.</p>
-                     <p>Additionally, the records can also be filtered based on the selected filterbar operator. It can be enabled by setting
-                    <br />
+                    <p>In this demo, you can either select the <strong>Category Name</strong> from the SELECT element or type the text in the filter bar cells to filter.
+                        <br /><br />
+                        Additionally, the records can also be filtered based on the selected filterbar operator. It can be enabled by setting
+                        <br />
                         <code>filterSettings-&gt;showFilterBarOperator</code> property to true.
-                     <p>In this demo,</p>
-                     <ul>
+                        <br />
+                        In this demo,
+                    </p>
+                    <ul>
                         <li>To enable or disable filterbar operator feature, check or uncheck the checkbox in the properties panel.</li>
                         <li>Select the required filtering operator in the dropdown list on the filter bar cell and type the text to start filtering.</li>
                         <li>Now, the addition of new filter operators such as "Does Not Contain", "Does Not End With", "Does Not Start With", "Empty", "Not Empty", "Null", "Not Null", "Like", and "Wildcard search" greatly enhance the filtering feature of the Grid.</li>
@@ -117,16 +120,15 @@ export class Filtering extends SampleBase<{}, {}> {
                     <ul>
                         <li>a*b - Filters words that start with 'a' and end with 'b'</li>
                     </ul>
-                    </p>
                     <br />
                     <p style={{ fontWeight: 500 }}>Injecting Module:</p>
                     <p>
-                        GGrid features are segregated into individual feature-wise modules. To use filtering feature, inject the
+                        Grid features are segregated into individual feature-wise modules. To use filtering feature, inject the
                           <code>Filter</code> module using the <code>services</code>.
-                   </p>
+                    </p>
                     <p>
                         More information on the filter configuration can be found in this
-                     <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/grid/filtering.html'>documentation section</a>.
+                     <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/grid/filtering.html'> documentation section</a>.
                    </p> </div>
             </div>
         )

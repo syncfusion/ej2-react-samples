@@ -41,7 +41,7 @@ export class Grouping extends SampleBase<{}, {}> {
     public pivotObj: any;
 
     beforeColumnsRender(args: ColumnRenderEventArgs): void {
-        if (args.dataSourceSettings.rows.length > 3 && args.columns[0].width <= 250) {
+        if (args.dataSourceSettings.rows.length > 3 && (args.columns[0].width as number) <= 250) {
             args.columns[0].width = 285;
         }
     }

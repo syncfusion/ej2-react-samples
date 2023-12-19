@@ -93,7 +93,7 @@ const RoundedColumn = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='charts2' style={{ textAlign: "center" }} enableSideBySidePlacement={false} primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelPosition: 'Outside', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction : Browser.isDevice ? 'None' : 'Rotate45' }} primaryYAxis={{ minimum: 0, maximum: 100, title: 'Literacy Rate In Percentage', labelFormat: '{value}%', interval: 25, majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} title='Literacy rate by Country in 2015' loaded={loaded.bind(this)} legendSettings={{ visible: false }} width={Browser.isDevice ? '100%' : '77%'} tooltip={{ enable: true, header: "<b>${point.x}</b>", format: "Rate : <b>${point.text}</b>" }} pointRender={pointRender}>
+                <ChartComponent id='charts2' style={{ textAlign: "center" }} enableSideBySidePlacement={false} primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelPosition: 'Outside', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction : Browser.isDevice ? 'None' : 'Rotate45' }} primaryYAxis={{ minimum: 0, maximum: 100, title: 'Literacy Rate In Percentage', labelFormat: '{value}%', interval: 25, majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 } }} highlightColor='transparent' load={load.bind(this)} title='Literacy rate by Country in 2015' loaded={loaded.bind(this)} legendSettings={{ visible: false }} width={Browser.isDevice ? '100%' : '77%'} tooltip={{ enable: true, header: "<b>${point.x}</b>", format: "Rate : <b>${point.text}</b>" }} pointRender={pointRender}>
                     <Inject services={[ColumnSeries, DataLabel, Category, Tooltip]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective xName='x' yName='Rate' enableTooltip={false} columnWidth={0.8} opacity={0.5} dataSource={data1} type='Column' name='Tiger' cornerRadius={{ bottomLeft:  Browser.isDevice ? 12 : 35, bottomRight:  Browser.isDevice ? 12 : 35, topLeft:  Browser.isDevice ? 12 : 35, topRight:  Browser.isDevice ? 12 : 35 }} />
@@ -109,10 +109,9 @@ const RoundedColumn = () => {
                     In this example, you can see how to render and configure the column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories. You can use the <code>ChartCornerRadius</code> option to customize the vertical rectangle, resulting in a rounded column.
                 </p>
                 <br />
-                <p style={{ "fontWeight": 500 }}>Injecting Module</p>
+                <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-                    <code>ColumnSeries</code> module into <code>services</code>
+                    Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject <code>ColumnSeries</code> module into <code>services</code>
                 </p>
                 <p>
                     More information on the column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.

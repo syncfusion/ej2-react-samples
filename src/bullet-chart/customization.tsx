@@ -55,7 +55,8 @@ export class BulletChartCustomization extends SampleBase<{}, {}> {
                 </div>
                 <div className='property-section col-md-4'>
                 <div className="property-panel-header">Properties</div>
-                    <table style={{width: '100%'}}>                        
+                    <table style={{width: '100%'}}>
+                    <tbody>                        
                         <tr style= {{ height: '50px'}}>
                             <td style={{ width: '50%' }}>
                                 <div className='prop-text'>Start Color:</div>
@@ -131,6 +132,7 @@ export class BulletChartCustomization extends SampleBase<{}, {}> {
                                     }}></CheckBoxComponent>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div id="action-description">

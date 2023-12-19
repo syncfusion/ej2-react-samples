@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createRoot, Root } from 'react-dom/client';
 import { routes, category } from './all-routes';
 import { Ajax, Browser, createElement, detach, select } from '@syncfusion/ej2-base';
 import { GridComponent, ColumnsDirective, ColumnDirective, Edit, Toolbar, Page, Inject } from '@syncfusion/ej2-react-grids';
@@ -7,11 +8,11 @@ import { Tooltip } from '@syncfusion/ej2-react-popups'
 import { ListView } from '@syncfusion/ej2-react-lists';
 import { TabComponent } from '@syncfusion/ej2-react-navigations';
 import { ToastComponent } from '@syncfusion/ej2-react-notifications';
-import { samplesList } from './sample-list';
 import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay, processDeviceDependables } from './index';
 import * as samplesJSON from './all-routes';
 import { MyWindow } from './leftpane';
 import { setSelectList } from './leftpane';
+import { PropertyPane, PropertyPaneProps } from './property-pane';
 
 declare let CodeMirror: any;
 declare let window: MyWindow;
@@ -36,6 +37,7 @@ export let sourceTab1: Tab;
 export let srcTab: Tab;
 
 let mobilePropPane: Element = select('.sb-mobile-prop-pane');
+let mobilePropPaneRoot: Root = createRoot(mobilePropPane);
 
 let isMobile: boolean;
 let isFunctional: boolean = false;
@@ -432,7 +434,7 @@ function plunker(results: string): void {
         detach(prevForm);
     }
     let form: HTMLFormElement = createElement('form') as HTMLFormElement;
-    let res: string = ((location.href as any).indexOf('ej2.syncfusion.com') !== -1 ? 'https:' : 'http:') + '//stackblitz.com/run';
+    let res: string = 'https://stackblitz.com/run';
     form.setAttribute('action', res);
     form.setAttribute('method', 'post');
     form.setAttribute('target', '_blank');
@@ -548,6 +550,7 @@ export function onComponentLoad(): void {
         processDeviceDependables();
     let propPanel: Element = select('#control-content .property-section');
     if (propPanel) {
+        propPanel.classList.remove('sb-hide');
         if (propRegex.test(propPanel.className)) {
             propBorder.classList.add('sb-prop-md-3');
             propBorder.classList.remove('sb-prop-md-4');
@@ -563,11 +566,9 @@ export function onComponentLoad(): void {
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile && mobileSetting) {
         if (propPanel) {
+            propPanel.classList.add('sb-hide');
             mobileSetting.classList.remove('sb-hide');
-            if (mobilePropPane.firstChild) {
-                detach(mobilePropPane.firstChild);
-            }
-            mobilePropPane.appendChild(propPanel);
+            mobilePropPaneRoot.render(<PropertyPane title={PropertyPaneProps.title} children={PropertyPaneProps.children}/>);
         } else {
             select('.sb-mobile-setting').classList.add('sb-hide');
         }
@@ -683,7 +684,7 @@ export class Content extends React.Component<{}, {}>{
         removeOverlay();
         checkApiTableDataSource();
     }
-    public componentWillReceiveProps(): void {
+    public componentDidUpdate(): void {
         /**
          * Sample Control Name change
          */
@@ -719,7 +720,7 @@ export class Content extends React.Component<{}, {}>{
                                 <div className="sb-tab-overlay sb-hide">
                                     <div className="sb-loading">
                                         <svg className="circular" height="40" width="40">
-                                            <circle className="path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
+                                            <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="6" strokeMiterlimit="10" />
                                         </svg>
                                     </div>
                                 </div>

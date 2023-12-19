@@ -49,9 +49,6 @@ const Bar = () => {
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
-                <div style={{ float: 'right', marginRight: '10px' }}>
-                    Source: &nbsp; <a href="https://www.gov.uk/" target='_blank'>www.gov.uk</a>
-                </div>
             </div>
             <div id="action-description">
                 <p>This React bar chart example visualizes GDP data by country for the year 2017 with a default bar series.</p>
@@ -64,8 +61,7 @@ const Bar = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use bar series, we need to inject
-                    <code>BarSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use bar series, we need to inject <code>BarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the bar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bar-chart">documentation section</a>.

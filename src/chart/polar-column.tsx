@@ -5,12 +5,13 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme
+    Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import { change } from "@syncfusion/ej2-react-grids";
 
 export let data1: any[] = [
     //{text: 'China', 	  x: 'CHN', 	  	y: 1246.3, y1: 1341, y2: 448.3},
@@ -50,78 +51,50 @@ export class PolarColumn extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section row'>
                     <div className='col-md-8'>
-                        <ChartComponent id='charts' ref={chart => this.chartInstance = chart}
-                            primaryXAxis={{
-                                valueType: 'Category',
-                                labelPlacement: 'OnTicks',
-                                coefficient: Browser.isDevice ? 80 : 100,
-                                interval :1
-                            }}
-                            primaryYAxis={{
-                                labelFormat: '{value}M'
-                            }}
-                            load={this.load.bind(this)}
-                            title="Top 10 Mobile Markets by Number of Subscriptions" loaded={this.onChartLoad.bind(this)}
-                            tooltip={{ enable: true, format: '${point.text} : <b>${point.y}%</b>' }}>
-                            <Inject services={[Legend, Category, PolarSeries, RadarSeries, Tooltip]} />
+                        <ChartComponent id='charts' ref={chart=>this.chartInstance=chart} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', coefficient: Browser.isDevice ? 80 : 100, interval: 1 }} primaryYAxis={{ labelFormat: '{value}M' }} load={this.load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Top 10 Mobile Markets by Number of Subscriptions" loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, header: "", format: '<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>' }}>
+                            <Inject services={[Legend, Category, PolarSeries, RadarSeries,Highlight, Tooltip]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y' name='Mobile Subscriptions'
-                                    type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }}>
-                                </SeriesDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y1' name='Population in Millions'
-                                    type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }}>
-                                </SeriesDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y2' name='3G/4G Subscriptions'
-                                    type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }}>
-                                </SeriesDirective>
+                                <SeriesDirective dataSource={data1} xName='text' yName='y' name='Population' type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }} />
+                                <SeriesDirective dataSource={data1} xName='text' yName='y1' name='Mobile Subscriptions' type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }} />
+                                <SeriesDirective dataSource={data1} xName='text' yName='y2' name='3G/4G Subscriptions' type='Polar' drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }} />
                             </SeriesCollectionDirective>
                         </ChartComponent>
                     </div>
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody><tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Series Type:</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <DropDownListComponent width={120} id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Polar" />
+                                            <DropDownListComponent width={120} id="selmode" change={this.change.bind(this)} ref={d=>this.dropElement=d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value='Polar' />
                                         </div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample demonstrates polar series with column type for mobile market subscriptions in different countries. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel. 
-            </p>
+                    <p>This sample shows the top 10 mobile markets by the number of subscriptions in polar and radar charts using column series.</p>
                 </div>
                 <div id="description">
-                    <p>
-                        In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing the frequency, count, total or average of data in different categories.
-                    You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual data and its value.
-                </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                </p>
+                    <p>In this example, you can see how to render and configure polar and radar charts with a column series. Switching between polar and radar series can be done using <b>Series Type</b> in the property panel.</p>
+                    <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-                     <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
-               </p>
-               <p>
-                        More information on the polar and radar chart with column series can be found in this &nbsp;
-                  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/polar#column">documentation section</a>.
-              </p>
+                        <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
+                    </p>
+                    <p>
+                        More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

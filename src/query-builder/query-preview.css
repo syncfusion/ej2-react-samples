@@ -1,0 +1,92 @@
+.e-query-builder {
+    margin: 0 auto;
+}
+
+.e-query-preview {
+    margin-top: 20px !important;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    height: 300px;
+}
+
+.e-query-preview .e-tab {
+    height: 200px;
+}
+
+.e-query-preview .e-tab .e-content {
+    margin: 10px;
+}
+
+.e-query-preview .e-preview-options {
+    padding: 10px;
+    height: 54px;
+}
+
+.e-query-preview .e-radio-option {
+    margin-left: 20px;
+}
+
+.e-query-preview .copycode::before {
+    content: '\e77c';
+    font-size: 25px;
+}
+
+.e-query-preview .copy-tooltip {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    cursor: pointer;
+    right: 12px;
+    top: 12px;
+    background: #f4f4f4;
+    border-radius: 2px;
+}
+
+.e-query-preview .copy-tooltip.e-control.e-tooltip:hover {
+    background: #D8D8D8;
+}
+
+.e-query-preview .e-icons.copycode {
+    padding-left: 3px;
+    padding-top: 4px;
+    color: rgba(0, 0, 0, .54);
+}
+
+.e-query-preview .CodeMirror {
+    height: 180px !important;
+}
+
+.e-query-builder .query-template-control .cndtnbtn.e-control.e-dropdownlist.e-lib.e-input {
+    padding-left: 10px;
+}
+
+.e-query-builder .query-template-control span.e-custom-group-btn {
+    max-width: 100px;
+    border-radius: 5px !important;
+    border-width: 1px !important; 
+}
+.e-query-preview .preview-content {
+    margin-top: 10px;
+}
+
+.e-query-preview .e-sql-content,
+.e-query-preview .e-mongo-content,
+.e-query-preview .e-json-content {
+    margin: 10px;
+    border: none;
+    height: 180px;
+    width: 98%;
+}
+
+.e-query-preview .e-mongo-content,
+.e-query-preview .e-json-content {
+    height: 220px;
+}
+
+.e-query-preview .e-text-area-content:focus-visible {
+    outline: none;
+}
+
+.e-query-preview .preview {
+    margin-top: 20px;
+}

@@ -12,10 +12,6 @@ const SAMPLE_CSS: any = `
     padding: 0px !important;
 }`;
 // custom code end
-/**
- * Heatmap Large data sample
- */
-
 export class LargeData extends SampleBase<{}, {}> {
     render() {
         return (
@@ -33,7 +29,7 @@ export class LargeData extends SampleBase<{}, {}> {
                                 size: '15px',
                                 fontWeight: '500',
                                 fontStyle: 'Normal',
-                                fontFamily: 'Segoe UI'
+                                fontFamily: 'inherit'
                             }
                         }}
                         xAxis={{
@@ -42,12 +38,18 @@ export class LargeData extends SampleBase<{}, {}> {
                             intervalType: 'Days',
                             valueType: 'DateTime',
                             labelFormat: 'MMM',
-                            showLabelOn: 'Months'
+                            showLabelOn: 'Months',
+                            textStyle: {
+                                fontFamily: 'inherit'
+                            }
                         }}
                         yAxis={{
                             labels: ['1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8::00', '9:00', '10:00', '11:00',
                             '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00',
-                            '22:00', '23:00', '24:00']
+                            '22:00', '23:00', '24:00'],
+                            textStyle: {
+                                fontFamily: 'inherit'
+                            }
                         }}
                         paletteSettings={{
                             palette: [  { value: 150, color: '#A6DC7E' },
@@ -58,6 +60,14 @@ export class LargeData extends SampleBase<{}, {}> {
                         }}
                         cellSettings={{
                                 border: { width: 0 },
+                                textStyle: {
+                                    fontFamily: 'inherit'
+                                }
+                        }}
+                        tooltipSettings={{
+                            textStyle: {
+                                fontFamily: 'inherit'
+                            }
                         }}
                         renderingMode={'Canvas'}
                         legendSettings={{
@@ -77,22 +87,15 @@ export class LargeData extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to switch the Heatmap to canvas rendering mode.The rendering performance will be
-                        better in <code>Canvas</code> rendering mode, while loading large datasets. You can switch the rendering mode for
-                        Heatmap between <code>SVG</code> and <code>Canvas</code> using the <code>renderingMode </code> property. When the
-                        <code>renderingMode</code> property is set to <code>Auto</code> the rendering mode will be switched automatically
-                        based of the size of data source to improve the rendering performance.
+                        In this example, you can see how to switch the Heatmap to canvas rendering mode.The rendering performance will be better in <code>Canvas</code> rendering mode, while loading large datasets. You can switch the rendering mode for Heatmap between <code>SVG</code> and <code>Canvas</code> using the <a href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/rendering-mode" target="_blank">renderingMode</a> property. When the <code>renderingMode</code> property is set to <code>Auto</code>, the rendering mode will be switched automatically based of the size of data source to improve the rendering performance.
                     </p>
-                    <p>
-                        Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item
-                        in touch enabled devices.
-                   </p>
+                    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
                     <br></br>
-                    <p> <b>Injecting Module</b></p>
+                    <p><b>Injecting Module</b></p>
                     <p>
-                        Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the
-                        <code>Tooltip</code> module using the <code>Heatmap.Inject(Tooltip)</code> method, and use a legend by injecting the
-                        <code>Legend</code> module using the <code>Heatmap.Inject(Legend)</code> method.
+                            Heatmap component features are separated into discrete feature-based modules. To use a tooltip and the legend, inject the <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
                 </div>
             </div >
@@ -100,9 +103,11 @@ export class LargeData extends SampleBase<{}, {}> {
     }
 
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
     private tooltipTemplate(args: ITooltipEventArgs): void {
         let intl = new Internationalization();

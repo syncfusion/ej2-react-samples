@@ -115,10 +115,7 @@ const TreeGridColumnMenu = () => {
           modules. To use column menu feature, we need to inject
           <code>ColumnMenu</code> module into the <code>services</code>.
         </p>
-        <p>
-          More information about Column Menu can be found in this documentation
-          section.
-        </p>
+        <p>More information about Column Menu can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/column-menu">documentation section</a>.</p>
       </div>
     </div>
   );

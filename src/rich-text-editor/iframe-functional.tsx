@@ -18,14 +18,13 @@ function IFrame() {
         enable: true
     };
     // Rich Text Editor items list
-    const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
-        'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
-        'LowerCase', 'UpperCase', 'SuperScript', 'SubScript', '|',
-        'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
-        'Outdent', 'Indent', '|',
-        'CreateTable', 'CreateLink', 'Image', 'FileManager', '|', 'ClearFormat', 'Print',
-        'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
-    ];
+    const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+        'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+        'LowerCase', 'UpperCase', '|',
+        'Formats', 'Alignments', '|', 'NumberFormatList', 'BulletFormatList', '|',
+        'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'FileManager', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
+        '|', 'EmojiPicker', 'Print', '|',
+        'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'];
     const fileManagerSettings: FileManagerSettingsModel = {
         enable: true,
         path: '/Pictures/Food',

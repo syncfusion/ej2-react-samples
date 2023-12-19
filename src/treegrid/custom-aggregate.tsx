@@ -50,24 +50,27 @@ export class CustomAggregate extends SampleBase<{}, {}> {
   }
 
   public dataBound(): void {
-    if (!isNullOrUndefined(this.listObj)) {
-      this.listObj.destroy();
-    }
-    this.listObj = new DropDownList({
-        dataSource: this.foods,
-        fields: { value: 'food' },
-        placeholder: 'Select a Category',
-        width: '130px',
-        value: this.item,
-        change: () => {
-            setTimeout(
-                () => {
-                  this.item = this.listObj.value.toString();
-                  this.treegridObj.refresh();
-                },300);
-          }
-      });
-      this.listObj.appendTo('#customers');
+    setTimeout(
+      () => {
+        if (!isNullOrUndefined(this.listObj)) {
+          this.listObj.destroy();
+        }
+        this.listObj = new DropDownList({
+            dataSource: this.foods,
+            fields: { value: 'food' },
+            placeholder: 'Select a Category',
+            width: '130px',
+            value: this.item,
+            change: () => {
+                setTimeout(
+                    () => {
+                      this.item = this.listObj.value.toString();
+                      this.treegridObj.refresh();
+                    },300);
+              }
+          });
+          this.listObj.appendTo('#customers');
+      })
   }
 
   render() {
@@ -131,7 +134,7 @@ export class CustomAggregate extends SampleBase<{}, {}> {
         To use aggregate feature, we need to inject <code>Aggregate</code> module in this services.
     </p>
     <p>
-        More information about aggregate can be found in this documentation section.
+      More information about aggregate can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/aggregates/custom-aggregate">documentation section</a>.
     </p>
      </div>
     </div>

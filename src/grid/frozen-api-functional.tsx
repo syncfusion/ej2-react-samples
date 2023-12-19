@@ -113,7 +113,7 @@ function FrozenAPI() {
         <div id="description">
           <p>
             This feature enables users to freeze certain columns at specific positions. This can be achieved by
-            setting the <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#freeze">freeze</a></code> 
+            setting the<code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/column/#freeze">freeze</a></code>
             property of column settings. The various modes are:
           </p>
           <ul>

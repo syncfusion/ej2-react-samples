@@ -25,10 +25,10 @@ const ChartTooltipTemplate = () => {
     }, [])
     let template: string =
         '<div id="Tooltip"><table style="width:100%;  border: 1px solid black;" class="table-borderless">' +
-        '<tr><th rowspan="2" style="background-color: #C1272D"><img src="https://ej2.syncfusion.com/react/demos/src/chart/images/grain.png" />' +
+        '<tbody><tr><th rowspan="2" style="background-color: #C1272D"><img src="https://ej2.syncfusion.com/react/demos/src/chart/images/grain.png" />' +
         '</th><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 14px; color: #E7C554; font-weight: bold; padding-left: 5px">' +
         '${x}</td></tr><tr ><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 18px; color: #FFFFFF; font-weight: bold; padding-left: 5px">${y}B</td>' +
-        '</tr></table></div>';
+        '</tr></tbody></table></div>';
 
     const onChartLoad = (args: ILoadedEventArgs): void => {
         let chart: Element = document.getElementById('chartTooltip');
@@ -38,10 +38,10 @@ const ChartTooltipTemplate = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <ChartComponent id='chartTooltip' style={{ textAlign: "center" }} backgroundImage='src/chart/images/wheat.png' primaryXAxis={{ labelStyle: { color: 'white' }, valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { color: '#EFEFEF' } }} primaryYAxis={{ rangePadding: 'None', labelStyle: { color: 'white' }, majorGridLines: { color: '#EFEFEF' }, majorTickLines: { width: 0 }, title: 'Billion Bushels', titleStyle: { color: 'white' }, lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, template: template }} width={Browser.isDevice ? '100%' : '75%'} title='USA Wheat Production' loaded={onChartLoad.bind(this)}>
+                <ChartComponent id='chartTooltip' style={{ textAlign: "center" }} backgroundImage='src/chart/images/wheat.png' primaryXAxis={{ labelStyle: { color: 'white' }, valueType: 'Category', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { color: '#EFEFEF', width: 3 } }} primaryYAxis={{ rangePadding: 'None', labelStyle: { color: 'white' }, majorGridLines: { color: '#EFEFEF' }, majorTickLines: { width: 0 }, title: 'Billion Bushels', titleStyle: { color: 'white' }, lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, template: template }} width={Browser.isDevice ? '100%' : '75%'} title='USA Wheat Production' loaded={onChartLoad.bind(this)}>
                     <Inject services={[LineSeries, Tooltip, Category]} />
                     <SeriesCollectionDirective>
-                        <SeriesDirective dataSource={data1} xName='x' yName='y' fill='#333333' width={2} marker={{ visible: true, width: 7, height: 7, fill: '#C1272D', border: { color: '#333333', width: 2 } }} type='Line' />
+                        <SeriesDirective dataSource={data1} xName='x' yName='y' fill='#333333' width={2} marker={{ visible: true, width: 10, height: 10, fill: '#C1272D', border: { color: '#333333', width: 2 } }} type='Line' />
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
@@ -57,8 +57,7 @@ const ChartTooltipTemplate = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Tooltip, we need to inject
-                    <code>Tooltip</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Tooltip, we need to inject <code>Tooltip</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information about the tooltip can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/tool-tip/">documentation section</a>.

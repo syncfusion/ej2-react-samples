@@ -38,14 +38,16 @@ export class Default extends SampleBase<{}, {}> {
           <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' style={{ width: '100%', margin: '10px' }}>
-                <tr>
-                  <td style={{ width: '25%' }}>Value</td>
-                  <td>:<span id='value' style={{ paddingLeft: '10px' }}></span></td>
-                </tr>
-                <tr>
-                  <td style={{ width: '25%' }}>Text</td>
-                  <td>:<span id='text' style={{ paddingLeft: '10px' }}></span></td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td style={{ width: '25%' }}>Value</td>
+                    <td>:<span id='value' style={{ paddingLeft: '10px' }}></span></td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '25%' }}>Text</td>
+                    <td>:<span id='text' style={{ paddingLeft: '10px' }}></span></td>
+                  </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>

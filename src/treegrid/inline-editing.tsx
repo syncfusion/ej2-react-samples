@@ -55,17 +55,19 @@ export class Editing extends SampleBase<{}, {}> {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                <tr style={{ height: '50px' }}>
-                  <td style={{ width: '30%' }}>
-                    <div> Edit Mode </div>
-                  </td>
-                  <td style={{ width: '70%' }}>
-                    <div id='columnddl'>
+                <tbody>
+                  <tr style={{ height: '50px' }}>
+                    <td style={{ width: '30%' }}>
+                      <div> Edit Mode </div>
+                    </td>
+                    <td style={{ width: '70%' }}>
+                      <div id='columnddl'>
                         <DropDownListComponent width="125px" id="selmode" change={this.change.bind(this)}
                           dataSource={this.editing} fields={{ text: 'name', value: 'id' }} value="CellEditing" />
-                    </div>
-                  </td>
-                </tr>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>
@@ -102,7 +104,7 @@ export class Editing extends SampleBase<{}, {}> {
           <p>To use indent and outdent feature, we need to inject
             <code>RowDD</code> module into the <code>services</code>.</p>
           <p>
-            More information on the selection configuration can be found in this documentation section.
+            More information on the selection configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/editing/row-editing">documentation section</a>.
           </p>
         </div>
       </div>

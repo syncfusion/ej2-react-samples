@@ -46,8 +46,7 @@ const Hilo = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Hilo series, we need to inject
-                    <code>HiloSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Hilo series, we need to inject <code>HiloSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the Hilo series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/financial-types/#hilo">documentation section</a>.

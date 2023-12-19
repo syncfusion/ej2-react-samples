@@ -20,7 +20,7 @@ import { getElement } from "@syncfusion/ej2-svg-base/src/tooltip/helper";
 export let zoomFactor: number;
 export let zoomPosition: number;
 export let data: any[] = [];
-for (let i: number = 2110; i < periodData.length; i++) {
+for (let i: number = 2110; i < periodData.length - 20; i++) {
     data.push({
         High: periodData[i].High,
         Low: periodData[i].Low,
@@ -119,8 +119,8 @@ function PeriodSelectorCandle() {
                             position: 'Top',
                             periods: [
                                 { text: '1M', interval: 1, intervalType: 'Months' }, { text: '3M', interval: 3, intervalType: 'Months' },
-                                { text: '6M', interval: 6, intervalType: 'Months' }, { text: '1Y', interval: 1, intervalType: 'Years' },
-                                { text: '2Y', interval: 2, intervalType: 'Years', selected: true }, { text: 'ALL' }
+                                { text: '6M', interval: 6, intervalType: 'Months' }, { text: '1Y', interval: 1, intervalType: 'Years', selected: true },
+                                { text: '2Y', interval: 2, intervalType: 'Years' }, { text: 'ALL' }
                             ]
                         }}
                         load={rangeLoad.bind(this)}
@@ -186,7 +186,7 @@ function PeriodSelectorCandle() {
                         valueType='DateTime'
                         labelPosition='Outside'
                         width={Browser.isDevice ? '100%' : '80%'}
-                        value={[new Date('2016-05-15'), new Date('2018-05-15')]}
+                        value={[new Date('2017-04-30'), new Date('2018-04-30')]}
                         load={rangeLoad2.bind(this)}
                         changed={changed2.bind(this)}>
                         <Inject services={[DateTime, PeriodSelector, LineSeries]} />
@@ -214,8 +214,7 @@ function PeriodSelectorCandle() {
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Range Navigator component features are segregated into individual feature-wise modules. To use period selector,
-                        <code>PeriodSelector</code> module using <code>RangeNavigator.Inject(PeriodSelector)</code> method.
+                        Range Navigator component features are segregated into individual feature-wise modules. To use period selector, <code>PeriodSelector</code> module using <code>RangeNavigator.Inject(PeriodSelector)</code> method.
                     </p>
                 </div>
             </div>

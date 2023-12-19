@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Edit, Toolbar } from '@syncfusion/ej2-react-treegrid';
+import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Edit, Toolbar } from '@syncfusion/ej2-react-treegrid';
 import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -15,13 +15,12 @@ export class Batch extends SampleBase<{}, {}> {
   public validationRule1: Object = { date: true};
   public validationRule2: Object = { required: true, number: true};
   public editparams2: any = { params: { format: 'n' } };
-  public pageSettings: Object = { pageCount: 5};
   render() {
     return (
         <div className='control-pane'>
         <div className='control-section'>
-            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
-              editSettings={this.editSettings} pageSettings={this.pageSettings} toolbar={this.toolbarOptions}
+            <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350'
+              editSettings={this.editSettings} toolbar={this.toolbarOptions}
               ref={treegrid=> this.treegridObj = treegrid} >
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='90' textAlign='Right' validationRules={this.validationRule}
@@ -32,7 +31,7 @@ export class Batch extends SampleBase<{}, {}> {
               <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
             </ColumnsDirective>
-            <Inject services={[Page, Edit, Toolbar]}/>
+            <Inject services={[ Edit, Toolbar]}/>
           </TreeGridComponent>
           </div>
         <div id="action-description">

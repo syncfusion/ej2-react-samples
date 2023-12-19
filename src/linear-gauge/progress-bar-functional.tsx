@@ -1,6 +1,3 @@
-/**
- * Sample to design progress bar using the Linear Gauge
- */
 import * as React from "react";
 import { useEffect } from "react";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, AnnotationDirective, Annotations, AnnotationsDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -27,7 +24,7 @@ const ProgressBar = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <LinearGaugeComponent load={load.bind(this)} background='transparent' id='gauge' orientation='Horizontal' container={{ width: 30, roundedCornerRadius: 20, backgroundColor: '#D6D6D6', type: 'RoundedRectangle', border: { width: 1 } }}>
+                <LinearGaugeComponent load={load.bind(this)} animationDuration={2000} background='transparent' id='gauge' orientation='Horizontal' container={{ width: 30, roundedCornerRadius: 20, backgroundColor: '#D6D6D6', type: 'RoundedRectangle', border: { width: 1 } }}>
                     <Inject services={[Annotations]} />
                     <AxesDirective>
                         <AxisDirective minimum={0} maximum={100} line={{ width: 0 }} minorTicks={{ interval: 1, height: 0 }} majorTicks={{ interval: 10, height: 0 }} labelStyle={{ font: { size: '0px' } }}>

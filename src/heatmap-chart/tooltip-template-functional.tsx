@@ -15,9 +15,6 @@ const SAMPLE_CSS: any = `
         float: right; margin-right: 10p
     }`;
 // custom code end
-/**
- * Heatmap Tooltip Template sample
- */
 const TooltipTemplate = () => {
 
     useEffect(() => {
@@ -30,16 +27,22 @@ const TooltipTemplate = () => {
             size: '15px',
             fontWeight: '500',
             fontStyle: 'Normal',
-            fontFamily: 'Segoe UI'
+            fontFamily: 'inherit'
         }
     }
     let xAxis: AxisModel = {
         labels: ['Canada', 'China', 'Egypt', 'Mexico', 'Norway', 'Russia', 'UK', 'USA'],
         labelRotation: 45,
         labelIntersectAction: 'None',
+        textStyle: {
+            fontFamily: 'inherit'
+        }
     }
     let yAxis: AxisModel = {
-        labels: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010']
+        labels: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010'],
+        textStyle: {
+            fontFamily: 'inherit'
+        }
     }
     let paletteSettings: PaletteSettingsModel = {
         palette: [
@@ -65,37 +68,39 @@ const TooltipTemplate = () => {
         border: {
             width: 0
         },
-        format: '{value} M'
+        format: '{value} M',
+        textStyle: {
+            fontFamily: 'inherit'
+        }
     }
     let tooltipSetting: any = {
         fill: '#265259',
         textStyle: {
             color: '#FFFFFF',
-            size: "12px"
+            size: "12px",
+            fontFamily: 'inherit'
         },
         border: {
             width: 1,
             color: "#98BABF"
-        }
+        },
+        template:'<div style=" border-radius: 5px;fontFamily: inherit; padding-left: 10px;padding-right: 10px;padding-bottom: 6px;padding-top: 6px;background:#000000; border: 1px #919191;" ><span style="color:white">In ${yLabel}, the ${xLabel} produced ${value} million barrels per day.<span></div>'
     }
 
     const load = (args: ILoadedEventArgs): void => {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
-
-    const tooltipTemplate = (args: ITooltipEventArgs): void => {
-        args.content = ['In ' + args.yLabel + ', the ' + args.xLabel + ' produced ' + args.value + ' million barrels per day'];
-    };
-
     return (
         <div className='control-pane'>
             {/* custom code start */}
             <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container' titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSource={(data as any).defaultTableDataSource} cellSettings={cellSettings} legendSettings={{ visible: false }} tooltipSettings={tooltipSetting} paletteSettings={paletteSettings} load={load.bind(this)} tooltipRender={tooltipTemplate}>
+                <HeatMapComponent id='heatmap-container' titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSource={(data as any).defaultTableDataSource} cellSettings={cellSettings} legendSettings={{ visible: false }} tooltipSettings={tooltipSetting} paletteSettings={paletteSettings} load={load.bind(this)}>
                     <Inject services={[Legend, Tooltip]} />
                 </HeatMapComponent>
             </div>
@@ -104,16 +109,17 @@ const TooltipTemplate = () => {
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to customize the tooltip content in Heatmap. You can customize the tooltip content
-                    by using the <code>tooltipRender </code> event.
+                    In this example, you can see how to customize the tooltip content in the HeatMap. You can customize the tooltip content by using the <a href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip#tooltip-template" target="_blank">template</a> property.
                 </p>
-                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+                <p>
+                    The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.
+                </p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the
-                    <code>Tooltip </code> module using the <code>Heatmap.Inject(Tooltip) </code> method, and use a legend by injecting
-                    the <code>Legend </code> module using the <code>Heatmap.Inject(Legend) </code> method.
+                        Heatmap component features are separated into discrete feature-based modules. To use a tooltip and the legend, inject the <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                 </p>
             </div>
         </div >

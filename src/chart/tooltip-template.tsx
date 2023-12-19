@@ -25,7 +25,7 @@ export class ChartTooltipTemplate extends SampleBase<{}, {}> {
         return (
             <div id="wrap">
                 <table style={{ width: '100%', border: '1px solid black' }} className="table-borderless">
-                    <tr>
+                <tbody> <tr>
                         <th rowSpan={2} style={{ backgroundColor: '#C1272D' }}>
                             <img src='src/chart/images/grain.png' />
                         </th>
@@ -33,7 +33,7 @@ export class ChartTooltipTemplate extends SampleBase<{}, {}> {
                     </tr>
                     <tr >
                         <td style={{ height: '25px', width: '50px', backgroundColor: '#C1272D', fontSize: '18px', color: '#E7C554', fontWeight: 'bold', paddingLeft: '5px' }}>{props.x}</td>
-                    </tr>
+                    </tr></tbody>
                 </table>
             </div>
         );

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import { setResponsiveElement, selectedTheme, setSbLink, removeOverlay } from './index';
 import { setSelectList } from './leftpane';
 import { sampleNameElement, onComponentLoad, setNavButtonState, intialLoadScrollTop, renderDescriptions, checkApiTableDataSource, showHooks, isRendered } from './component-content';
 
-export class SampleBase<P, S> extends React.PureComponent<RouteComponentProps<any> & P, S>{
+export class SampleBase<P, S> extends React.PureComponent<P, S>{
 
     /**
      * Custom Render Complete function

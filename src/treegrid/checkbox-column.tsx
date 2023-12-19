@@ -53,7 +53,7 @@ export class CheckboxColumn extends SampleBase<{}, {}> {
               While using Tree Grid in a touch device, you have an option to select the checkboxes by tapping on the checkbox.
          </p>
           <p>
-              More information on the checkbox selection configuration can be found in this documentation section.
+              More information on the checkbox selection configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/columns#checkbox-column">documentation section</a>.
           </p>
         </div>
       </div>

@@ -274,11 +274,8 @@ function DateTimeAxis() {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    The range navigator component features are segregated into individual feature-wise modules. To use area series, inject the
-                    <code>AreaSeries</code> module using
-                    <code>RangeNavigator.Inject(AreaSeries)</code> method. To use date time axis, inject the
-                    <code>DateTime</code> module using
-                    <code>RangeNavigator.Inject(DateTime)</code> method.
+                    The range navigator component features are segregated into individual feature-wise modules. To use area series, inject the <code>AreaSeries</code> module using <code>RangeNavigator.Inject(AreaSeries)</code> method.
+                    To use date time axis, inject the <code>DateTime</code> module using <code>RangeNavigator.Inject(DateTime)</code> method.
                 </p>
             </div>
         </div>

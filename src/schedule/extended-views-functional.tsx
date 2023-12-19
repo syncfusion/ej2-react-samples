@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
+import { useEffect, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject, Resize, DragAndDrop, View } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import { extend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -15,19 +15,16 @@ const ExtendedViews = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).fifaEventsData, null, true) as Record<string, any>[];
-  const [currentView, setCurrentView] = useState<View>('Week');
   const onEventRendered = (args: EventRenderedArgs): void => {
-    applyCategoryColor(args, currentView);
-  }
-  const onNavigating = (args: NavigatingEventArgs): void => {
-    setCurrentView(args.currentView as View)
+    applyCategoryColor(args, scheduleObj.current?.currentView as View);
   }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 5, 16)} eventSettings={{ dataSource: data }} currentView={currentView} eventRendered={onEventRendered} navigating={onNavigating}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 5, 16)} eventSettings={{ dataSource: data }} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' displayName='3 Days' interval={3} />
               <ViewDirective option='Week' displayName='2 Weeks' interval={2} />

@@ -11,7 +11,7 @@ const KeyboardNavigation = () => {
     updateSampleSection();
   }, [])
   let breadcrumb = useRef<BreadcrumbComponent>(null);
-
+  
   const btnClick = (): void => {
     breadcrumb.current.activeItem = breadcrumb.current.items[breadcrumb.current.items.length - 1].text;
   }

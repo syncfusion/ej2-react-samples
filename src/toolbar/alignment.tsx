@@ -78,23 +78,25 @@ export class Alignment extends SampleBase<{}, {}> {
       values are as follows.
     </p>
           <br></br>
-          <table style={{width: '100%'}}>
-            <tr>
-              <th><strong>Alignment Option</strong></th>
-              <th><strong>Description</strong></th>
-            </tr>
-            <tr>
-              <td><code>Left (default)</code> </td>
-              <td>To align commands to the left side of the toolbar.</td>
-            </tr>
-            <tr>
-              <td><code>Center</code> </td>
-              <td>To align commands to the center of the toolbar.</td>
-            </tr>
-            <tr>
-              <td><code>Right</code></td>
-              <td>To align commands to the right side of the toolbar.</td>
-            </tr>
+          <table style={{ width: '100%' }}>
+            <tbody>
+              <tr>
+                <th><strong>Alignment Option</strong></th>
+                <th><strong>Description</strong></th>
+              </tr>
+              <tr>
+                <td><code>Left (default)</code> </td>
+                <td>To align commands to the left side of the toolbar.</td>
+              </tr>
+              <tr>
+                <td><code>Center</code> </td>
+                <td>To align commands to the center of the toolbar.</td>
+              </tr>
+              <tr>
+                <td><code>Right</code></td>
+                <td>To align commands to the right side of the toolbar.</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

@@ -30,11 +30,11 @@ const Views = () => {
   const [currentView, setCurrentView] = useState<any>("Week");
   const onViewChange = (args: ChangeEventArgs): void => {
     setCurrentView(args.value as View);
-    scheduleObj.current.dataBind();
+    scheduleObj.current?.dataBind();
   }
 
   const onEventRendered = (args: EventRenderedArgs): void => {
-    applyCategoryColor(args, currentView);
+    applyCategoryColor(args, scheduleObj.current?.currentView as View);
   }
 
   return (

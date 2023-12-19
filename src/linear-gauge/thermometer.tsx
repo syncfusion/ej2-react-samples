@@ -1,6 +1,3 @@
-/**
- * Sample to design thermometer using the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, Position, AnnotationsDirective, GaugeTooltip, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, LinearGaugeTheme, IAxisLabelRenderEventArgs } from '@syncfusion/ej2-react-lineargauge';

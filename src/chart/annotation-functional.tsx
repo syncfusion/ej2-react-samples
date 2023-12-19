@@ -28,7 +28,7 @@ const SAMPLE_CSS = `
     }
     ellipse[id*=_Trackball_1] {
         fill: rgb(247, 206, 105) !important;
-        stroke-width: 1 !important;
+        strokeWidth: 1 !important;
         stroke: white !important;   
     }
     .e-view.highcontrast .box-bottom,.e-view.tailwind .box-bottom, .e-view.fluent .box-bottom,.e-view.material .box-bottom, .e-view.bootstrap .box-bottom,.e-view.bootstrap5 .box-bottom,.e-view.bootstrap4 .box-bottom, .e-view.fabric .box-bottom,.e-view.highcontrast .first-box-bottom,
@@ -300,7 +300,7 @@ const Annotation = () => {
     };
     const axisLabelRender = (args: IAxisLabelRenderEventArgs): void => {
         if (args.axis.name === 'primaryXAxis') {
-            args.text = args.text + 'KM';
+            args.text = args.text + ' KM';
         }
     };
     return (
@@ -358,8 +358,7 @@ const Annotation = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use annotation feature in chart, we need to inject 
-                    <code>ChartAnnotation</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use annotation feature in chart, we need to inject <code>ChartAnnotation</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the chart annotation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-annotations/">documentation section</a>.

@@ -56,23 +56,25 @@ const CustomAggregate = () => {
     );
   };
   const dataBound = (): void => {
-    if (!isNullOrUndefined(listObj)) {
-      listObj.destroy();
-    }
-    listObj = new DropDownList({
-      dataSource: foods,
-      fields: { value: "food" },
-      placeholder: "Select a Category",
-      width: "130px",
-      value: item,
-      change: () => {
-        setTimeout(() => {
-          item = listObj.value.toString();
-          treegridObj.current.refresh();
-        }, 300);
-      },
-    });
-    listObj.appendTo("#customers");
+    setTimeout(() => {
+      if (!isNullOrUndefined(listObj)) {
+        listObj.destroy();
+      }
+      listObj = new DropDownList({
+        dataSource: foods,
+        fields: { value: "food" },
+        placeholder: "Select a Category",
+        width: "130px",
+        value: item,
+        change: () => {
+          setTimeout(() => {
+            item = listObj.value.toString();
+            treegridObj.current.refresh();
+          }, 300);
+        },
+      });
+      listObj.appendTo("#customers");
+    })
   };
   return (
     <div className="control-pane">
@@ -205,8 +207,7 @@ const CustomAggregate = () => {
           <code>Aggregate</code> module in this services.
         </p>
         <p>
-          More information about aggregate can be found in this documentation
-          section.
+          More information about aggregate can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/aggregates/custom-aggregate">documentation section</a>.
         </p>
       </div>
     </div>

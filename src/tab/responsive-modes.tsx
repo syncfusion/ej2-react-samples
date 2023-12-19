@@ -125,30 +125,32 @@ export class Responsive extends SampleBase<{}, {}> {
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table'>
-                                <tr>
-                                    <td style={{ width: '50%' }}>
-                                        <div>Mode</div>
-                                    </td>
-                                    <td style={{ width: '50%' }}>
-                                        <div>
-                                            {/* Render the DropDownList Component */}
-                                            <DropDownListComponent id='mode' width={'90%'} dataSource={this.mData} fields={this.fields} value={this.mVal}
-                                                change={this.changeOverflowMode.bind(this)} />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{ width: '50%' }}>
-                                        <div>Header Placement</div>
-                                    </td>
-                                    <td style={{ width: '50%' }}>
-                                        <div>
-                                            {/* Render the DropDownList Component */}
-                                            <DropDownListComponent id='orientation' dataSource={this.oData} fields={this.fields}
-                                                value={this.orientVal} width={'90%'} change={this.changeOrientationMode.bind(this)} />
-                                        </div>
-                                    </td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td style={{ width: '50%' }}>
+                                            <div>Mode</div>
+                                        </td>
+                                        <td style={{ width: '50%' }}>
+                                            <div>
+                                                {/* Render the DropDownList Component */}
+                                                <DropDownListComponent id='mode' width={'90%'} dataSource={this.mData} fields={this.fields} value={this.mVal}
+                                                    change={this.changeOverflowMode.bind(this)} />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{ width: '50%' }}>
+                                            <div>Header Placement</div>
+                                        </td>
+                                        <td style={{ width: '50%' }}>
+                                            <div>
+                                                {/* Render the DropDownList Component */}
+                                                <DropDownListComponent id='orientation' dataSource={this.oData} fields={this.fields}
+                                                    value={this.orientVal} width={'90%'} change={this.changeOrientationMode.bind(this)} />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </PropertyPane>
                     </div>

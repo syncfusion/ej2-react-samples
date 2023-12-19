@@ -33,63 +33,35 @@ export class Doughnut extends SampleBase<{}, {}> {
   render() {
     return (
       <div className='control-pane'>
-          <style>
-                    {SAMPLE_CSS}
-                </style>
-        <div className='control-section'>
-          <AccumulationChartComponent id='pie-chart2'  style={{ textAlign: "center" }} ref={pie => this.pie = pie}
-            legendSettings={{
-              visible: true, toggleVisibility: false,
-              position: 'Right', height: '28%', width: '44%',
-              textWrap:'Wrap',
-              maximumLabelWidth:100,
-            }}
-            enableSmartLabels={true}
-            selectionMode={'Point'}
-            enableBorderOnMouseMove={false}
-            load={this.load.bind(this)}
-            tooltip={{ enable: false, header: '<b>${point.x}</b>', format: 'Composition: <b>${point.y}%</b>' }}
-            
-          >
-            <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection, Selection, ChartAnnotation,AccumulationAnnotation ]} />
-            <AccumulationSeriesCollectionDirective>
-              <AccumulationSeriesDirective  name='Revenue' dataSource={data1} xName='x' yName='y' innerRadius='40%' startAngle={0}
-                endAngle={360}
-                dataLabel={{
-                  visible: true, position: 'Inside',
-                  name: 'text',
-                  font: { color: 'white', fontWeight: '600', size: '14px' }
-                }}
-              >
-              </AccumulationSeriesDirective>
-            </AccumulationSeriesCollectionDirective>
-            <AccumulationAnnotationsDirective>
-                <AccumulationAnnotationDirective content={content}
-                region="Series"
-                x="52%"
-                y="50%">
-                </AccumulationAnnotationDirective>
-              </AccumulationAnnotationsDirective>
-          </AccumulationChartComponent>
-        </div>
-        <div id="action-description">
-        <p>
-        This sample shows statistics on expenditure made in a year using the donut chart with legends shown at the right side of the chart.
-    </p>
-        </div>
-        <div id="description">
-          <p>In this example, you can see how to render a doughnut chart with legends. You can use <code>Radius</code> and InnerRadius properties to render the doughnut. Here, the legend text is wrapped using the <code>TextWrap</code> property.</p>
-          <p><b>Injecting Module</b></p>
-          <p>
-            Accumulation Chart component features are segregated into individual feature-wise modules.To use pie chart, you need to inject <code>AccumulationLegend</code> into <code>services</code>.
-          </p>
-          <p>
-                        More information about the pie series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#various-radius-pie-chart">documentation section</a>.
-                  </p>
-        </div>
+          <style>{SAMPLE_CSS}</style>
+          <div className='control-section'>
+              <AccumulationChartComponent id='pie-chart2'  title = { Browser.isDevice ? "Browser Market Share" : '' } load={this.load.bind(this)} legendSettings={{ visible: true, toggleVisibility: false, position: Browser.isDevice ? 'Bottom' : 'Right', height: Browser.isDevice ? '20%' : '30%', width: Browser.isDevice ? '80%' :'20%', textWrap: 'Wrap', maximumLabelWidth: 66 }} enableSmartLabels={true} enableAnimation={false} selectionMode={'Point'} center={{ x: '50%', y: '50%' }} enableBorderOnMouseMove={false} tooltip={{ enable: true, format: '<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>',header:""  }}>
+                  <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection, Selection, ChartAnnotation, AccumulationAnnotation]} />
+                  <AccumulationSeriesCollectionDirective>
+                      <AccumulationSeriesDirective dataSource={data1}  xName='x' yName='y' explode={false} explodeOffset='10%' explodeIndex={0} startAngle={30} innerRadius='43%' dataLabel={{ visible: true, position: 'Inside', name: 'text', font: { fontWeight: '600', color: '#ffffff' }, connectorStyle:{ length : '20px' ,type: 'Curve'} }} radius= '80%' />
+                  </AccumulationSeriesCollectionDirective>
+                  <AccumulationAnnotationsDirective>
+                      <AccumulationAnnotationDirective content={content} region="Series" x="52%" y="50%" />
+                  </AccumulationAnnotationsDirective>
+              </AccumulationChartComponent>
+          </div>
+          <div id="action-description">
+              <p>This sample shows statistics on expenditure made in a year using the donut chart with legends shown at the right side of the chart.</p>
+          </div>
+          <div id="description">
+              <p>
+                  In this example, you can see how to render a doughnut chart with legends. You can use <code>Radius</code> and InnerRadius properties to render the doughnut. Here, the legend text is wrapped using the <code>TextWrap</code> property.
+              </p>
+              <p><b>Injecting Module</b></p>
+              <p>
+                  Accumulation Chart component features are segregated into individual feature-wise modules.To use pie chart, you need to inject <code>AccumulationLegend</code> into <code>services</code>.
+              </p>
+              <p>
+                  More information about the pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#various-radius-pie-chart">documentation section</a>.
+              </p>
+          </div>
       </div>
-    )
+  )
   }
  
   public getFontSize(width: number): string {

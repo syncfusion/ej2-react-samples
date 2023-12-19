@@ -4,12 +4,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DropDownListComponent, Inject, VirtualScroll } from '@syncfusion/ej2-react-dropdowns';
+import { Query, DataManager, WebApiAdaptor  } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
-import './default.css';
+import './virtual-scroll.css';
 import * as data from './dataSource.json';
 
-export class Virtualization extends SampleBase<{}, {}> {
+export class Default extends SampleBase<{}, {}> {
 
   private listObj: DropDownListComponent;
   // define the array of string
@@ -17,16 +18,43 @@ export class Virtualization extends SampleBase<{}, {}> {
     constructor(props: {}) {
         super(props);
 
-        for (let i: number = 1; i <= 150; i++) {
-            const item: { [key: string]: Object } = {
-                id: 'id' + i,
-                text: `Item ${i}`,
-            };
-            this.records.push(item);
+      for (let i = 1; i <= 150; i++) {
+        let item: { [key: string]: Object } = {};
+        item.id = 'id' + i;
+        item.text = `Item ${i}`;
+
+        // Generate a random number between 1 and 4 to determine the group
+        const randomGroup = Math.floor(Math.random() * 4) + 1;
+        switch (randomGroup) {
+          case 1:
+            item.group = 'Group A';
+            break;
+          case 2:
+            item.group = 'Group B';
+            break;
+          case 3:
+            item.group = 'Group C';
+            break;
+          case 4:
+            item.group = 'Group D';
+            break;
+          default:
+            break;
         }
+        this.records.push(item);
+      }
     }
-  // maps the appropriate column to fields property
-  private fields: object = { text: 'text', value: 'id' };
+  // bind the DataManager instance to dataSource property
+  public customerData: DataManager = new DataManager({
+    url: 'https://services.syncfusion.com/js/production/api/orders',
+    adaptor: new WebApiAdaptor ,
+    crossDomain: true
+});
+// maps the appropriate column to fields property
+public fields: { [key: string]: string } = { text: 'text', value: 'id' };
+public customerField: { [key: string]: string } = { text: 'OrderID', value: 'OrderID' };
+public groupField: { [key: string]: string } = {  groupBy: 'group', text: 'text', value: 'id' };
+  
   // call the change event's function after initialized the component.
   public rendereComplete(): void {
   }
@@ -35,13 +63,28 @@ export class Virtualization extends SampleBase<{}, {}> {
     return (
       <div id="dropdowndefault" className='control-pane'>
         <div className='control-section'>
-          <div className='col-lg-8'>
-            <div className="content-wrapper">
-              <div id='default'>
-                <DropDownListComponent id="datas" dataSource={this.records} ref={(combobox) => { this.listObj = combobox }} fields={this.fields} placeholder="e.g. Item 1" allowFiltering={true} enableVirtualization={true} popupHeight="200px" >
-                  <Inject services={[VirtualScroll]}/>
-                </DropDownListComponent>
-              </div>
+          <div className='col-lg-6'>
+            <div id="local">
+              <h4> Local Data</h4>
+              <DropDownListComponent id="localdata" dataSource={this.records} placeholder="e.g. Item 1" allowFiltering={false} enableVirtualization={true} fields={this.fields} popupHeight="200px" >
+                <Inject services={[VirtualScroll]} />
+              </DropDownListComponent>
+            </div>
+          </div>
+          <div className='col-lg-6'>
+            <div id="remote">
+              <h4>Remote Data</h4>
+              <DropDownListComponent id="remotedata" dataSource={this.customerData} placeholder="OrderId" allowFiltering={true} enableVirtualization={true} fields={this.customerField} popupHeight="200px" >
+                <Inject services={[VirtualScroll]} />
+              </DropDownListComponent>
+            </div>
+          </div>
+          <div className='col-lg-6'>
+            <div id="remote">
+              <h4>Grouping</h4>
+              <DropDownListComponent id="groupdata" dataSource={this.records} placeholder="e.g. Item 1" allowFiltering={true} enableVirtualization={true} fields={this.groupField} popupHeight="200px" >
+                <Inject services={[VirtualScroll]} />
+              </DropDownListComponent>
             </div>
           </div>
         </div>

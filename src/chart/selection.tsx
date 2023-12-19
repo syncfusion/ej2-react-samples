@@ -139,7 +139,7 @@ export class SelectionChart extends SampleBase<{}, {}> {
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody> <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Selection Mode:</div>
                                     </td>
@@ -197,7 +197,7 @@ export class SelectionChart extends SampleBase<{}, {}> {
                                             <DropDownListComponent width="120px" id="highpattern" change={this.hightlightPatternChange.bind(this)} ref={d => this.highlightDropDownList = d} dataSource={this.patternTypes2} fields={{ text: 'value', value: 'value' }} value="None" />
                                         </div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>

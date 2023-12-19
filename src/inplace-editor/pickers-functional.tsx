@@ -92,6 +92,12 @@ function Pickers() {
                 <div className="col-lg-8 control-section inplace-control-section pickers-layout">
                     <div className="control_wrapper form-horizontal">
                         <table>
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th></th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <tr>
                                     <td>

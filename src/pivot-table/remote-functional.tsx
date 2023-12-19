@@ -91,10 +91,8 @@ function Remote () {
                         </tbody>
                     </table>
                 </div>
-                <div className='content-wrapper'>
-                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={jsonReport} width={'100%'} height={'300'} gridSettings={{ columnWidth: 120 }}>
-                    </PivotViewComponent>
-                </div>
+                <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={jsonReport} width={'100%'} height={'300'} gridSettings={{ columnWidth: 120 }}>
+                </PivotViewComponent>
             </div>
             <div id="action-description">
                 <p>This sample demonstrates basic rendering of the pivot table bound to JSON or CSV data pulled from a remote server.</p>

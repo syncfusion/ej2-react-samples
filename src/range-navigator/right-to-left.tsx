@@ -155,7 +155,6 @@ export class RTL extends SampleBase<{}, {}> {
                             valueType: 'DateTime',
                             crosshairTooltip: { enable: true },
                             edgeLabelPlacement: 'Shift',
-                            isInversed: true,
                             majorGridLines: { width: 0 }
                         }}
                         primaryYAxis={{

@@ -84,6 +84,7 @@ export class Default extends SampleBase<{}, {}> {
                 <div className='col-md-3 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Render Type</div>
@@ -94,6 +95,7 @@ export class Default extends SampleBase<{}, {}> {
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

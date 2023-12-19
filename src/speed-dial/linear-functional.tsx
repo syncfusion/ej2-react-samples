@@ -46,13 +46,13 @@ const Linear = () => {
             <div id="description">
                 <p>
                     Speed dial displays action items based on <code>position</code>, by default. Using the <code>direction</code> property, specify one of the below directions.
-                    <ul>
-                        <li>Up</li>
-                        <li>Down</li>
-                        <li>Left</li>
-                        <li>Right</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Up</li>
+                    <li>Down</li>
+                    <li>Left</li>
+                    <li>Right</li>
+                </ul>
             </div>
         </div>
     )

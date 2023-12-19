@@ -137,14 +137,14 @@ const API = () => {
                 <div id="description">
                     <p>
                         In this demo, the default Sidebar is rendered with minimal configuration. This sample can be customized further with the combination of Sidebar properties. For example,
-                        <ul>
-                            <li>The Sidebar can be opened or closed by clicking on the toggle button.</li>
-                            <li>The Sidebar position can be changed by clicking on the position button.</li>
-                            <li>The Sidebar types can be changed from the Dropdown List.</li>
-                            <li>The Sidebar can be collapsed or closed on document click from the provided options.</li>
-                            <li>The Sidebar overlay can be enabled or disabled by clicking on the Backdrop button.</li>
-                        </ul>
                     </p>
+                    <ul>
+                        <li>The Sidebar can be opened or closed by clicking on the toggle button.</li>
+                        <li>The Sidebar position can be changed by clicking on the position button.</li>
+                        <li>The Sidebar types can be changed from the Dropdown List.</li>
+                        <li>The Sidebar can be collapsed or closed on document click from the provided options.</li>
+                        <li>The Sidebar overlay can be enabled or disabled by clicking on the Backdrop button.</li>
+                    </ul>
                 </div>
             </div>
         </div>

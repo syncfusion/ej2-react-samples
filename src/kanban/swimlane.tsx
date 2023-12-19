@@ -53,6 +53,7 @@ export class Swimlane extends SampleBase<{}, {}> {
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
                     <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <tbody>
                         <tr>
                             <td>
                                 <div>Sort Direction</div>
@@ -95,6 +96,7 @@ export class Swimlane extends SampleBase<{}, {}> {
                                 <CheckBoxComponent change={this.changeFrozen.bind(this)}></CheckBoxComponent>
                             </td>
                         </tr>
+                        </tbody>
                         </table>
                     </PropertyPane>
                 </div>

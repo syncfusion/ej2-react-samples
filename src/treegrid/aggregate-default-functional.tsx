@@ -3,18 +3,45 @@ import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import {
   TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Aggregate,
-  AggregatesDirective, AggregateDirective, AggregateColumnDirective, AggregateColumnsDirective
+  AggregatesDirective, AggregateDirective, AggregateColumnDirective, AggregateColumnsDirective,
+  Toolbar, PdfExport, ExcelExport
 } from '@syncfusion/ej2-react-treegrid';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { summaryRowData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import { ClickEventArgs } from '@syncfusion/ej2-navigations';
+import { DialogUtility } from '@syncfusion/ej2-popups';
 
 const AggregateRow = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
   let treegridObj = useRef<TreeGridComponent>(null);
+  let toolbarOptions = ["ExcelExport", "PdfExport", "CsvExport"];
+
+  const toolbarClick = (args: ClickEventArgs): void => {
+    switch (args.item.id) {
+      case treegridObj.current.grid.element.id + "_pdfexport":
+        if ( treegridObj.current.enableRtl === true && treegridObj.current.locale === "ar" ) {
+          let innercontent: any =
+            "You need custom fonts to export Arabic characters, refer this" +
+            '<a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/pdf-export/#add-custom-font-for-pdf-exporting">' +
+            "documentation section</a>";
+          DialogUtility.alert({ content: innercontent });
+        }
+        else {
+          treegridObj.current.pdfExport();
+        }
+        break;
+      case treegridObj.current.grid.element.id + "_excelexport":
+        treegridObj.current.excelExport();
+        break;
+      case treegridObj.current.grid.element.id + "_csvexport":
+        treegridObj.current.csvExport();
+        break;
+    }
+  };
 
   const footerSum = (props): any => {
     return <span>Minimum: {props.Min}</span>;
@@ -42,6 +69,10 @@ const AggregateRow = () => {
             treeColumnIndex={0}
             childMapping="children"
             height="410"
+            toolbar={toolbarOptions}
+            toolbarClick={toolbarClick.bind(this)}
+            allowExcelExport={true}
+            allowPdfExport={true}
             ref={treegridObj}
           >
             <ColumnsDirective>
@@ -90,7 +121,7 @@ const AggregateRow = () => {
                 </AggregateColumnsDirective>
               </AggregateDirective>
             </AggregatesDirective>
-            <Inject services={[Aggregate]} />
+            <Inject services={[Aggregate, Toolbar, ExcelExport, PdfExport]} />
           </TreeGridComponent>
         </div>
         <div className="col-md-3 property-section">
@@ -101,19 +132,21 @@ const AggregateRow = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "60%" }}>
-                  <div>Show Child Summary</div>
-                </td>
-                <td style={{ width: "60%" }}>
-                  <div>
-                    <CheckBoxComponent
-                      checked={true}
-                      change={onChange.bind(this)}
-                    ></CheckBoxComponent>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "60%" }}>
+                    <div>Show Child Summary</div>
+                  </td>
+                  <td style={{ width: "60%" }}>
+                    <div>
+                      <CheckBoxComponent
+                        checked={true}
+                        change={onChange.bind(this)}
+                      ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -164,21 +197,22 @@ const AggregateRow = () => {
         <p>
           In this demo, the <code>footerTemplate</code> property is used to
           display three different aggregates in the Tree Grid footer.
-          <ul>
-            <li>
-              Showing minimum aggregate for “Total Units” column and the
-              footerTemplate using its type name as <code>(${"Min"})</code>.
-            </li>
-            <li>
-              Showing average aggregate for “Unit weight column” column and the
-              footerTemplate using its type name as <code>(${"Max"})</code>.
-            </li>
-          </ul>
         </p>
+        <ul>
+          <li>
+            Showing minimum aggregate for “Total Units” column and the
+            footerTemplate using its type name as <code>(${"Min"})</code>.
+          </li>
+          <li>
+            Showing average aggregate for “Unit weight column” column and the
+            footerTemplate using its type name as <code>(${"Max"})</code>.
+          </li>
+        </ul>
         <p>
           The template expression should be provided inside{" "}
           <code>${"..."}</code> the interpolation syntax.
         </p>
+        <p>Additionally, the Tree Grid supports client-side exporting to Excel, PDF, and CSV formats. In this demo, for the toolbar items of exporting, actions are defined in the toolbarClick event to export the Tree Grid data using the excelExport, pdfExport, and csvExport methods.</p>
         <p>Injecting Module:</p>
         <p>
           Tree Grid features are segregated into individual feature-wise
@@ -186,9 +220,7 @@ const AggregateRow = () => {
           <code>Aggregate</code> module into the services.
         </p>
         <p>
-          {" "}
-          More information about aggregate can be found in this documentation
-          section.
+          More information about aggregate can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/aggregates/aggregates">documentation section</a>.
         </p>
       </div>
     </div>

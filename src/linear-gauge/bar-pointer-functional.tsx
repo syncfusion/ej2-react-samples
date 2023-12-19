@@ -1,6 +1,3 @@
-/**
- * Sample for bar pointer in the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useState } from "react";
@@ -99,7 +96,7 @@ const BarPointer = () => {
                 <pre style={{ border: 'hidden', backgroundColor: 'inherit' }}></pre>
                 <div id="containerBox" style={{ float: 'left', padding: padding, display: display }}></div>
                 <div id='containerOutside' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent load={load} id='outsideBar' title='Outside' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
+                    <LinearGaugeComponent load={load} animationDuration={2000} id='outsideBar' title='Outside' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>
@@ -110,7 +107,7 @@ const BarPointer = () => {
                     </LinearGaugeComponent>
                 </div>
                 <div id='containerCross' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent load={load} title='Cross' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='crossBar' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
+                    <LinearGaugeComponent load={load} title='Cross' animationDuration={2000} titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='crossBar' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>
@@ -121,7 +118,7 @@ const BarPointer = () => {
                     </LinearGaugeComponent>
                 </div>
                 <div id='containerInside' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent load={load} title='Inside' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='insideBar' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
+                    <LinearGaugeComponent load={load} title='Inside' animationDuration={2000} titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='insideBar' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>
@@ -132,7 +129,7 @@ const BarPointer = () => {
                     </LinearGaugeComponent>
                 </div>
                 <div id='containerGradient' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent load={load} title='Gradient shader' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gradientBar' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
+                    <LinearGaugeComponent load={load} title='Gradient shader' animationDuration={2000} titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gradientBar' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
                         <Inject services={[Gradient]} />
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
@@ -144,7 +141,7 @@ const BarPointer = () => {
                     </LinearGaugeComponent>
                 </div>
                 <div id='containerMultiple' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent load={load} title='Multiple bar pointers' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleBar' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
+                    <LinearGaugeComponent load={load} title='Multiple bar pointers' animationDuration={2000} titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleBar' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>

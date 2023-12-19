@@ -53,8 +53,7 @@ const MultipleSeries = () => {
                 <br></br>
                 <p><b>Injecting Module:</b></p>
                 <p>
-                    The Stock Chart component features are segregated into individual feature-wise modules. To use date-time axis, inject the <code>DateTime</code> module using the
-                    <code>StockChart.Inject(DateTime)</code> method. To use the LineSeries, inject the <code>SplineSeries</code> module using the <code>StockChart.Inject(SplineSeries)</code> method.
+                    The Stock Chart component features are segregated into individual feature-wise modules. To use date-time axis, inject the <code>DateTime</code> module using the <code>StockChart.Inject(DateTime)</code> method. To use the LineSeries, inject the <code>SplineSeries</code> module using the <code>StockChart.Inject(SplineSeries)</code> method.
                     To use the Legend, inject the <code>StockLegend</code> module using the <code>StockChart.Inject(StockLegend)</code> method.
                 </p>
                 <p>

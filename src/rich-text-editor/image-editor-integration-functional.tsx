@@ -61,6 +61,7 @@ function ImageEditorIntegration() {
     }
   
     function onCancel() {
+      imageEditorObj.reset();
       dialogObj.hide();
     }
     function onToolbarClick(args) {
@@ -68,6 +69,7 @@ function ImageEditorIntegration() {
         range = selection.getRange(document);
         saveSelection = selection.save(range, document);
         dialogObj.show();
+        rteObj.quickToolbarModule.imageQTBar.hidePopup();
       }
     }
     function OnBeforeOpen() {
@@ -123,7 +125,7 @@ function ImageEditorIntegration() {
                 <img
                     id="img1"
                     style={{ height: 335 }}
-                    src="https://ej2.syncfusion.com/demos/src/image-editor/images/bridge.png"
+                    src="./src/rich-text-editor/images/bridge.png"
                 ></img>
                 </p>
                 <p>

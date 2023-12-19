@@ -96,6 +96,7 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
+                               <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div style={{ marginLeft: '1px' }}>Projection Type</div>
@@ -106,6 +107,7 @@ export class ProjectionMaps extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                 </tr>
+                               </tbody>
                             </table>
                         </PropertyPane>
                     </div>

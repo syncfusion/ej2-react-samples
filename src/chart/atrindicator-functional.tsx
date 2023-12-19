@@ -63,8 +63,7 @@ const ATR = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Average True Range Indicator, we need to inject
-                    <code>AtrIndicator</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Average True Range Indicator, we need to inject <code>AtrIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the Average True Range Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#average-true-range-atr">documentation section</a>.

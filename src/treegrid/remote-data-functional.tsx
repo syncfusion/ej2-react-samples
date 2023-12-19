@@ -132,9 +132,9 @@ const RemoteData = () => {
           property.
         </p>
         <p>
-          More information on the data binding can be found in this
-          documentation section.
-        </p>
+            More information on the remote data binding can be found in this 
+            <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/treegrid/data-binding/remote-data/'> documentation section.</a>
+          </p>
       </div>
     </div>
   );

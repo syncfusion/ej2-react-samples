@@ -62,8 +62,7 @@ const RangeBar = () => {
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    chart component features are segregated into individual feature-wise modules. To use range column series, we need to Injecting
-                    <code>RangeColumnSeries</code> module into <code>services</code>.
+                    chart component features are segregated into individual feature-wise modules. To use range column series, we need to Injecting <code>RangeColumnSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the range column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.

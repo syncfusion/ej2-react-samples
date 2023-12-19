@@ -58,6 +58,7 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
     this.isLoaded = false;
   }
   public onCancel(): void {
+    this.imageEditorObj.reset();
     this.dialogObj.hide();
   }
   private quickToolbarSettings = {
@@ -82,6 +83,7 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
       this.range = this.selection.getRange(document);
       this.saveSelection = this.selection.save(this.range, document);
       this.dialogObj.show();
+      this.rteObj.quickToolbarModule.imageQTBar.hidePopup();
     }
   }
   public OnBeforeOpen(): void {
@@ -119,7 +121,7 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
                 <img
                     id="img1"
                     style={{ height: 335 }}
-                    src="https://ej2.syncfusion.com/demos/src/image-editor/images/bridge.png"
+                    src="./src/rich-text-editor/images/bridge.png"
                 ></img>
                 </p>
                 <p>

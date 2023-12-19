@@ -24,7 +24,7 @@
                  </div>
              </div>
              {/* Render the PDF Viewer */}
-             <PdfViewerComponent id="container"  ref={(scope) => { this.viewer = scope; }} documentPath="https://cdn.syncfusion.com/content/pdf/form-designer.pdf"  documentLoad={this.documentLoaded} validateFormFields={this.validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>
+             <PdfViewerComponent id="container"  ref={(scope) => { this.viewer = scope; }} documentPath="https://cdn.syncfusion.com/content/pdf/form-designer.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" documentLoad={this.documentLoaded} validateFormFields={this.validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>
                  <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
              </PdfViewerComponent>
            </div>
@@ -73,7 +73,7 @@
             this.viewer.serviceUrl = '';
         }
         else {
-            this.viewer.serviceUrl = 'https://ej2services.syncfusion.com/react/development/api/pdfviewer';
+            this.viewer.serviceUrl = 'https://services.syncfusion.com/react/production/api/pdfviewer';
         }
         this.viewer.dataBind();
         this.viewer.load(this.viewer.documentPath, null);

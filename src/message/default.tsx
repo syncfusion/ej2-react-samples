@@ -31,6 +31,7 @@ export class Default extends SampleBase<{}, {}> {
                         <li><b>Error</b> - The message is displayed with an icon and color to denote it as an error message.</li>
                     </ul>
                     <p>In this sample, messages are displayed with a distinct icon and a color based on the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/message/#content"> content</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/message/#severity">severity</a> properties.</p>
+                    <p>More information about Message can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/message/getting-started">documentation</a> section.</p>
                 </div>
             </div>
         )

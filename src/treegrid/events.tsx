@@ -121,20 +121,22 @@ export class Events extends SampleBase<{}, {}> {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr>
                     <td>
-                      <div className='eventarea' style={{ height: '245px', overflow: 'auto'}}>
-                          <span className="EventLog" id="EventLog" style={{ wordBreak: 'normal'}}></span>
+                      <div className='eventarea' style={{ height: '245px', overflow: 'auto' }}>
+                        <span className="EventLog" id="EventLog" style={{ wordBreak: 'normal' }}></span>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <div className='evtbtn' style={{ paddingBottom: '10px'}}>
-                          <ButtonComponent onClick={ this.btnClick.bind(this) }> Clear </ButtonComponent>
+                      <div className='evtbtn' style={{ paddingBottom: '10px' }}>
+                        <ButtonComponent onClick={this.btnClick.bind(this)}> Clear </ButtonComponent>
                       </div>
                     </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
         </div>
@@ -151,7 +153,7 @@ export class Events extends SampleBase<{}, {}> {
             <p>In this demo, perform Tree Grid actions like paging, sorting, reordering, filtering etc. and see
                 the <strong>Event Trace</strong> panel for the events emitted.
             </p>
-            <p>More information on the Grid events can be found in the documentation section.
+            <p>More information on the Grid events can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#events">documentation section</a>.
             </p>
         </div>
       </div>

@@ -19,7 +19,7 @@ const UiVirtualization = () => {
    }, [])
 
    const [time, setTime] = useState("0 ms");
-   const [mobile, setMobile] = useState("");
+   const mobile = Browser.isDevice ? "ui-mobile" : "";
    let listviewInstance = useRef<ListViewComponent>(null);
    let commonData: { [key: string]: string | object }[] = [];
    let dataSource: { [key: string]: { [key: string]: string | object }[] } = {};
@@ -43,7 +43,7 @@ const UiVirtualization = () => {
        let data: { [key: string]: string | object }[] = commonData.slice();
        let index: number;
        let spyIndex: number;
-       for (let i: number = 10; i <= ds[0]; i++) {
+       for (let i: number = 10; i <= (ds[0] as number); i++) {
            while (index === spyIndex) {
                index = parseInt((Math.random() * 10).toString(), 10);
            }
@@ -75,9 +75,6 @@ const UiVirtualization = () => {
    let fields: Object = { text: 'name' };
 
    const onActionComplete = () => {
-       if (Browser.isDevice) {
-           setMobile("ui-mobile");
-       }
        createSpinner({
            target: liElement
        });

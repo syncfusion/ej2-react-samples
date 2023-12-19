@@ -50,18 +50,10 @@ export const RangeNavigatorSampleOrder: Object = [
     {
         'path': 'range-navigator/period-selector',
         'component': 'PeriodSelectorCandle',
-        'name': 'Default',
+        'name': 'Period Selector',
         'description': 'This demo for Essential JS2 Range Navigator control shows how to display the period selector for a range with specified periods.',
-        'order': '03',
-        'category': 'Period Selector'
-    },
-    {
-        'path': 'range-navigator/period-selector-stocks',
-        'component': 'StockChart',
-        'name': 'Stock Chart',
-        'description': 'This demo for Essential JS2 Range Navigator control shows how to render the stock charts with specified periods using period selector.',
-        'order': '03',
-        'category': 'Period Selector'
+        'order': '04',
+        'category': 'Customization'
     },
     {
         'path': 'range-navigator/empty-data',

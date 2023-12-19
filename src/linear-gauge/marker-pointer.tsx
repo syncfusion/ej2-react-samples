@@ -1,6 +1,3 @@
-/**
- * Sample for marker pointer in the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, PointersDirective, PointerDirective, IPointerDragEventArgs } from '@syncfusion/ej2-react-lineargauge';
@@ -14,37 +11,37 @@ const SAMPLE_CSS = `
 export class MarkerPointer extends SampleBase<{}, {}> {
     private invertedPointer: LinearGaugeComponent;
     private circlePointer: LinearGaugeComponent;
-    private diamondPointer: LinearGaugeComponent;
+    private textPointer: LinearGaugeComponent;
     private rectanglePointer: LinearGaugeComponent;
     private multiplePointer: LinearGaugeComponent;
 
     public horizontalGauge(e: Event): void {
-        this.invertedPointer.width = this.circlePointer.width = this.diamondPointer.width = this.rectanglePointer.width = this.multiplePointer.width = '450px';
-        this.invertedPointer.height = this.circlePointer.height = this.diamondPointer.height = this.rectanglePointer.height = this.multiplePointer.height = '150px';
-        this.invertedPointer.orientation = this.circlePointer.orientation = this.diamondPointer.orientation = this.rectanglePointer.orientation = this.multiplePointer.orientation = "Horizontal";
+        this.invertedPointer.width = this.circlePointer.width = this.textPointer.width = this.rectanglePointer.width = this.multiplePointer.width = '450px';
+        this.invertedPointer.height = this.circlePointer.height = this.textPointer.height = this.rectanglePointer.height = this.multiplePointer.height = '150px';
+        this.invertedPointer.orientation = this.circlePointer.orientation = this.textPointer.orientation = this.rectanglePointer.orientation = this.multiplePointer.orientation = "Horizontal";
         if (e.currentTarget != null) {
             e.currentTarget['style']['color'] = "white";
             e.currentTarget['style']['backgroundColor'] = "#0074E3";
             document.getElementById('vertical').style.color = "black";
             document.getElementById('vertical').style.backgroundColor = "white";
             document.getElementById('containerInverted').className = document.getElementById('containerCircle').className =
-                document.getElementById('containerDiamond').className = document.getElementById('containerRectangle').className =
+                document.getElementById('containerText').className = document.getElementById('containerRectangle').className =
                 document.getElementById('containerMultiple').className = "col-xs-12 col-sm-12 col-lg-12 col-md-12";
             document.getElementById('containerBox').style.padding = "0%";
         }
     }
 
     public verticalGauge(e: Event): void {
-        this.invertedPointer.width = this.circlePointer.width = this.diamondPointer.width = this.rectanglePointer.width = this.multiplePointer.width = '150px';
-        this.invertedPointer.height = this.circlePointer.height = this.diamondPointer.height = this.rectanglePointer.height = this.multiplePointer.height = '350px';
-        this.invertedPointer.orientation = this.circlePointer.orientation = this.diamondPointer.orientation = this.rectanglePointer.orientation = this.multiplePointer.orientation = "Vertical";
+        this.invertedPointer.width = this.circlePointer.width = this.textPointer.width = this.rectanglePointer.width = this.multiplePointer.width = '150px';
+        this.invertedPointer.height = this.circlePointer.height = this.textPointer.height = this.rectanglePointer.height = this.multiplePointer.height = '350px';
+        this.invertedPointer.orientation = this.circlePointer.orientation = this.textPointer.orientation = this.rectanglePointer.orientation = this.multiplePointer.orientation = "Vertical";
         if (e.currentTarget != null) {
             e.currentTarget['style']['color'] = "white";
             e.currentTarget['style']['backgroundColor'] = "#0074E3";
             document.getElementById('horizontal')['style']['color'] = "black";
             document.getElementById('horizontal')['style']['backgroundColor'] = "white";
             document.getElementById('containerInverted').className = document.getElementById('containerCircle').className =
-                document.getElementById('containerDiamond').className = document.getElementById('containerRectangle').className =
+                document.getElementById('containerText').className = document.getElementById('containerRectangle').className =
                 document.getElementById('containerMultiple').className = "col-xs-4 col-sm-4 col-lg-2 col-md-2";
             document.getElementById('containerBox').style.display = "flex";
             document.getElementById('containerBox').style.padding = "6%";
@@ -90,19 +87,20 @@ export class MarkerPointer extends SampleBase<{}, {}> {
         }
     }
 
-    public dragEndDiamond(args: IPointerDragEventArgs): void {
-        this.diamondPointer.axes[0].pointers[0].animationDuration = 1500;
-        this.diamondPointer.axes[0].pointers[1].animationDuration = 1500;
+    public dragEndText(args: IPointerDragEventArgs): void {
+        this.textPointer.axes[0].pointers[0].animationDuration = 1500;
+        this.textPointer.axes[0].pointers[1].animationDuration = 1500;
     }
 
-    public dragStartDiamond(args: IPointerDragEventArgs): void {
-        this.diamondPointer.axes[0].pointers[0].animationDuration = 0;
-        this.diamondPointer.axes[0].pointers[1].animationDuration = 0;
+    public dragStartText(args: IPointerDragEventArgs): void {
+        this.textPointer.axes[0].pointers[0].animationDuration = 0;
+        this.textPointer.axes[0].pointers[1].animationDuration = 0;
     }
 
-    public dragMoveDiamond(args: IPointerDragEventArgs): void {
+    public dragMoveText(args: IPointerDragEventArgs): void {
         if (args.pointerIndex == 1) {
-            this.diamondPointer.setPointerValue(0, 0, args.currentValue);
+            this.textPointer.axes[0].pointers[1].text = Math.round(args.currentValue).toString() + " Points";
+            this.textPointer.setPointerValue(0, 0, args.currentValue);
         }
     }
 
@@ -168,7 +166,7 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                     <pre style= {{ border: 'hidden', backgroundColor: 'inherit' }}></pre>
                     <div id="containerBox" className="row" style={{ float: 'left', padding: '4%' }}></div>
                     <div id='containerInverted' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent dragEnd={this.dragEndTriangle.bind(this)} dragStart={this.dragStartTriangle.bind(this)} dragMove={this.dragMoveTriangle.bind(this)} load={this.load.bind(this)} id='invertedMarker' title='Inverted triangle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation='Vertical' width='150px' height='350px' background='transparent' ref={invertedPointer => this.invertedPointer = invertedPointer}>
+                        <LinearGaugeComponent animationDuration={2000} dragEnd={this.dragEndTriangle.bind(this)} dragStart={this.dragStartTriangle.bind(this)} dragMove={this.dragMoveTriangle.bind(this)} load={this.load.bind(this)} id='invertedMarker' title='Inverted triangle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation='Vertical' width='150px' height='350px' background='transparent' ref={invertedPointer => this.invertedPointer = invertedPointer}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
@@ -182,7 +180,7 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id='containerCircle' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent dragStart={this.dragStartCircle.bind(this)} dragEnd={this.dragEndCircle.bind(this)} dragMove={this.dragMoveCircle.bind(this)} load={this.load.bind(this)} title='Circle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='circleMarker' orientation='Vertical' width='150px' height='350px' background='transparent' ref={circlePointer => this.circlePointer = circlePointer}>
+                        <LinearGaugeComponent animationDuration={2000} dragStart={this.dragStartCircle.bind(this)} dragEnd={this.dragEndCircle.bind(this)} dragMove={this.dragMoveCircle.bind(this)} load={this.load.bind(this)} title='Circle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='circleMarker' orientation='Vertical' width='150px' height='350px' background='transparent' ref={circlePointer => this.circlePointer = circlePointer}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
@@ -195,22 +193,8 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                             </AxesDirective>
                         </LinearGaugeComponent>
                     </div>
-                    <div id='containerDiamond' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent dragStart={this.dragStartDiamond.bind(this)} dragEnd={this.dragEndDiamond.bind(this)} dragMove={this.dragMoveDiamond.bind(this)} load={this.load.bind(this)} title='Diamond' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='diamondMarker' orientation='Vertical' width='150px' height='350px' background='transparent' ref={diamondPointer => this.diamondPointer = diamondPointer}>
-                            <AxesDirective>
-                                <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
-                                    <PointersDirective>
-                                        <PointerDirective value={50} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
-                                        </PointerDirective>
-                                        <PointerDirective value={50} enableDrag={true} height={15} width={15} placement='Near' markerType='Diamond' animationDuration={1500}>
-                                        </PointerDirective>
-                                    </PointersDirective>
-                                </AxisDirective>
-                            </AxesDirective>
-                        </LinearGaugeComponent>
-                    </div>
                     <div id='containerRectangle' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent dragStart={this.dragStartRectangle.bind(this)} dragEnd={this.dragEndRectangle.bind(this)} dragMove={this.dragMoveRectangle.bind(this)} load={this.load.bind(this)} title='Rectangle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='rectangleMarker' orientation='Vertical' width='150px' height='350px' background='transparent' ref={rectanglePointer => this.rectanglePointer = rectanglePointer}>
+                        <LinearGaugeComponent animationDuration={2000} dragStart={this.dragStartRectangle.bind(this)} dragEnd={this.dragEndRectangle.bind(this)} dragMove={this.dragMoveRectangle.bind(this)} load={this.load.bind(this)} title='Rectangle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='rectangleMarker' orientation='Vertical' width='150px' height='350px' background='transparent' ref={rectanglePointer => this.rectanglePointer = rectanglePointer}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
@@ -223,8 +207,22 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                             </AxesDirective>
                         </LinearGaugeComponent>
                     </div>
+                    <div id='containerText' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <LinearGaugeComponent animationDuration={2000} dragStart={this.dragStartText.bind(this)} dragEnd={this.dragEndText.bind(this)} dragMove={this.dragMoveText.bind(this)} load={this.load.bind(this)} title='Text' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='TextMarker' orientation='Vertical' width='168px' height='350px' background='transparent' ref={textPointer => this.textPointer = textPointer}>
+                            <AxesDirective>
+                                <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
+                                    <PointersDirective>
+                                        <PointerDirective value={50} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3'>
+                                        </PointerDirective>
+                                        <PointerDirective value={50} enableDrag={true} height={15} width={15} placement='Near' markerType='Text' offset={-10} text='50 Points' animationDuration={1500}>
+                                        </PointerDirective>
+                                    </PointersDirective>
+                                </AxisDirective>
+                            </AxesDirective>
+                        </LinearGaugeComponent>
+                    </div>
                     <div id='containerMultiple' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent dragStart={this.dragStartMultiple.bind(this)} dragEnd={this.dragEndMultiple.bind(this)} dragMove={this.dragMoveMultiple.bind(this)} load={this.load.bind(this)} title='Multiple pointers' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleMarkers' orientation='Vertical' width='150px' height='350px' background='transparent' ref={multiplePointer => this.multiplePointer = multiplePointer}>
+                        <LinearGaugeComponent animationDuration={2000} dragStart={this.dragStartMultiple.bind(this)} dragEnd={this.dragEndMultiple.bind(this)} dragMove={this.dragMoveMultiple.bind(this)} load={this.load.bind(this)} title='Multiple pointers' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleMarkers' orientation='Vertical' width='150px' height='350px' background='transparent' ref={multiplePointer => this.multiplePointer = multiplePointer}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>

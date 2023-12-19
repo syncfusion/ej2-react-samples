@@ -45,6 +45,7 @@ function FrozenRows() {
         <div className='col-lg-4 property-section'>
           <PropertyPane title='Properties'>
             <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
+              <tbody>
               <tr>
                 <td style={{ width: '30%' }}>
                   <div>Frozen Rows </div>
@@ -76,6 +77,7 @@ function FrozenRows() {
                   </div>
                 </td>
               </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

@@ -61,7 +61,7 @@ const RangeSelection = () => {
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
     const change = (): void => {
-        setSelectionMode(dropElement.current.value as SelectionMode);
+        chartInstance.current.selectionMode = dropElement.current.value as SelectionMode;
         chartInstance.current.series[0].animation.enable = false;
         chartInstance.current.series[1].animation.enable = false;
         chartInstance.current.refresh();
@@ -81,15 +81,15 @@ const RangeSelection = () => {
                     <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ minimum: 1970, maximum: 2016, majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ title: 'Sales', labelFormat: '{value}%', interval: 25, minimum: 0, maximum: 100, lineStyle: {width : 0}, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: true, toggleVisibility: false }} title='Profit Comparision of A and B' loaded={onChartLoad.bind(this)} selectionMode={selectionMode} load={load.bind(this)}>
                         <Inject services={[Selection, Legend, ColumnSeries, Category, ScatterSeries]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} name='Product A' xName='x' yName='y' type='Scatter' marker={{ shape: 'Triangle', width: 7, height: 7 }} /> 
-                            <SeriesDirective dataSource={data1} name='Product B' xName='x' yName='y' type='Scatter' marker={{ shape: 'Pentagon', width: 7, height: 7 }} /> 
+                            <SeriesDirective dataSource={data} name='Product A' xName='x' yName='y' type='Scatter' marker={{ shape: 'Triangle', width: 10, height: 10 }} /> 
+                            <SeriesDirective dataSource={data1} name='Product B' xName='x' yName='y' type='Scatter' marker={{ shape: 'Pentagon', width: 10, height: 10 }} /> 
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Selection Mode:</div>
                                 </td>
@@ -106,7 +106,7 @@ const RangeSelection = () => {
                                 <td style={{ width: '20%' }}>
                                     <div><input type="checkbox" id="select" onChange={check.bind(this)} ref={checkElement} /></div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -128,10 +128,9 @@ const RangeSelection = () => {
                     <li><code>Lasso</code> - Select free form of selection area points.</li>
                 </ul>
                 <br />
-                <p style={{ "fontWeight": 500 }}>Injecting Module</p>
+                <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use selection feature, we need to inject
-                    <code>Selection</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use selection feature, we need to inject <code>Selection</code> module into <code>services</code>.
                 </p>
             </div>
         </div>

@@ -103,7 +103,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody><tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Selection Mode:</div>
                                     </td>
@@ -120,7 +120,7 @@ export class RangeSelection extends SampleBase<{}, {}> {
                                     <td style={{ width: '20%' }}>
                                         <div><input type="checkbox" id="select" onChange={this.check.bind(this)} ref={d => this.checkElement = d} /></div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>

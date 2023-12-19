@@ -234,6 +234,20 @@
             "data-editing": "Data Editing"
         }
     },
+    "three-dimension-chart": {
+        "ControlName": "3D Chart",
+        "Samples": {
+             "column": "Column",
+	     "column-placemnet": "Back to Back Column",
+	     "cylindrical-column": "Cylinder",
+	     "bar": "Bar",
+	     "stacked-column": "Stacking Column with grouping",
+	     "stacked-column100": "100% Stacked Column",
+	     "stacked-bar": "Stacked Bar",
+	     "staked-bar100": "100% Stacked Bar",
+	     "empty-point": "Column With null and 0 values"
+        }
+    },
     "chips": {
         "ControlName": "Chips",
         "Samples": {

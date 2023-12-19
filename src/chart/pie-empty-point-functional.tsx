@@ -64,7 +64,7 @@ const PieEmptyPoint = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Empty Point Mode: </div></td>
                                 <td style={{ width: '40%' }}>
@@ -72,7 +72,7 @@ const PieEmptyPoint = () => {
                                         <DropDownListComponent width="120px" id="selmode" change={mode.bind(this)} ref={modeElement} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value={emptyPointMode} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>

@@ -41,10 +41,10 @@
     background-color: black;
 }
 
- .material3-dark .e-menu-wrapper.e-hamburger.e-lib.e-keyboard {
+.material3-dark .e-menu-wrapper.e-hamburger.e-lib.e-keyboard {
     background: #1c1b1f;
     border-radius: 0;
-  }
+}
 
 #hamburgerMenu .deviceLayout.tabletview {
     width: 767px;

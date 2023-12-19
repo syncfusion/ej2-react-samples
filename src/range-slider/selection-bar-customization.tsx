@@ -17,19 +17,19 @@ export class Bar extends SampleBase<{}, {}> {
     public onChange(args: SliderChangeEventArgs): void {
         let sliderTrack: any = document.getElementById('dynamic_color_slider').querySelector('.e-range');
         let sliderHandle: any = document.getElementById('dynamic_color_slider').querySelector('.e-handle');
-        if (args.value > 0 && args.value <= 25) {
+        if ((args.value as number) > 0 && (args.value as number) <= 25) {
             // Change handle and range bar color to green when
             sliderTrack.style.backgroundColor = 'green';
             sliderHandle.style.backgroundColor = 'green';
-        } else if (args.value > 25 && args.value <= 50) {
+        } else if ((args.value as number) > 25 && (args.value as number) <= 50) {
             // Change handle and range bar color to royal blue
             sliderTrack.style.backgroundColor = 'royalblue';
             sliderHandle.style.backgroundColor = 'royalblue';
-        } else if (args.value > 50 && args.value <= 75) {
+        } else if ((args.value as number) > 50 && (args.value as number) <= 75) {
             // Change handle and range bar color to dark orange
             sliderTrack.style.backgroundColor = 'darkorange';
             sliderHandle.style.backgroundColor = 'darkorange';
-        } else if (args.value > 75 && args.value <= 100) {
+        } else if ((args.value as number) > 75 && (args.value as number) <= 100) {
             // Change handle and range bar color to red
             sliderTrack.style.backgroundColor = 'red';
             sliderHandle.style.backgroundColor = 'red';

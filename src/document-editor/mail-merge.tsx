@@ -212,7 +212,7 @@ export class MailMerge extends SampleBase<{}, {}> {
             <div className="overlay" id="popup-overlay"></div>
             <div id='waiting-popup' >
                 <svg className="circular" height="40" width="40">
-                    <circle className="circle-path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
+                    <circle className="circle-path" cx="25" cy="25" r="20" fill="none" strokeWidth="6" strokeMiterlimit="10" />
                 </svg>
             </div>
             <div id="action-description">

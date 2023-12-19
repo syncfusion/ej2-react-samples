@@ -89,6 +89,7 @@ function MultipleExport() {
             <div className='col-lg-3 property-section'>
         <PropertyPane title='Properties'>
           <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+            <tbody>
             <tr>
               <td style={{ width: '70%' }}>
                 <div>Export grids in same sheet</div>
@@ -97,6 +98,7 @@ function MultipleExport() {
                 <CheckBoxComponent ref={(scope) => { checkboxObj = scope; }} checked={true}></CheckBoxComponent>
               </td>
             </tr>
+            </tbody>
           </table>
         </PropertyPane>
       </div>
@@ -106,28 +108,29 @@ function MultipleExport() {
                         multiple grids in the same or different pages to Excel and PDF formats.
                     </p>
                 </div>
+
                 <div id='description'>
                     <p>Data Grids support client-side exporting which allows you to export data to Excel and PDF formats.</p>
-                    <p>Multiple grids can be exported by providing their <code>IDs</code> in the <code>exportGrids</code> property.</p>
-                    <p>In this demo, Excel and PDF exports are enabled in both grids by setting the <code>allowExcelExport</code> and <code>allowPdfExport</code> 
-                        properties to true. In the master grid, the grid IDs are listed in the 
+                    <p>Multiple grids can be exported by providing <code>IDs</code> in the <code>exportGrids</code> property.</p>
+                    <p>In this demo, Excel and PDF exports are enabled in both grids by setting the <code>allowExcelExport</code> and
+                        <code>allowPdfExport</code> properties to true. In the master grid, the grid IDs are listed in the
                         <code>exportGrids</code> property which can be exported to Excel and PDF formats by clicking the toolbar buttons.
                     </p>
                     <p>The ExcelExport and PdfExport items are defined in the toolbar of the Grid. Actions are defined in
                         the <code><a target="_blank" className="code" href="https://helpej2.syncfusion.com/react/documentation/api/grid/#toolbarclick">toolbarClick</a></code> event
-                        to export Grid data using <code><a target="_blank" className="code" href="https://helpej2.syncfusion.com/react/documentation/api/grid/#excelexport">excelExport</a></code> and 
-                        <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/api/grid#pdfexport">pdfExport</a></code> methods.
+                        to export Grid data using <code><a target="_blank" className="code" href="https://helpej2.syncfusion.com/react/documentation/api/grid/#excelexport">excelExport</a></code>
+                        and<code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/api/grid#pdfexport">pdfExport</a></code> methods.
                     </p>
                     <p>By default, in this demo grids are exported on the same page. They can be exported in separate pages by
-                        unchecking the checkbox. This can be achieved by setting the multipleExport <code>type</code> of 
-                        <code><a target="_blank" className="code" href="https://helpej2.syncfusion.com/react/documentation/api/grid/excelExportProperties/">ExcelExportProperties</a></code> 
+                        unchecking the checkbox. This can be achieved by setting the multipleExport <code>type</code> of
+                        <code><a target="_blank" className="code" href="https://helpej2.syncfusion.com/react/documentation/api/grid/excelExportProperties/">ExcelExportProperties</a></code>
                         and <code><a target="_blank" className="code" href="https://helpej2.syncfusion.com/react/documentation/api/grid/pdfExportProperties/">PdfExportProperties.</a></code>
                     </p>
 
                     <p style={{ fontWeight: 500 }}>Injecting Modules</p>
                     <p>
                         Grid features are segregated into individual feature-wise modules.
-                        To use selection and export features, inject <code>Selection</code>, <code>ExcelExport</code> 
+                        To use selection and export features, inject <code>Selection</code>, <code>ExcelExport</code>
                         and <code>PdfExport</code> modules into the <code>services</code>.
                     </p>
                     <p>

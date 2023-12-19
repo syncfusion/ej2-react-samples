@@ -55,7 +55,7 @@ export class ToolbarTemplate extends SampleBase<{}, {}> {
             <code>Task Name</code> column.
        </p>
        <p>
-           More information about Toolbar template can be found in this documentation section.
+           More information about Toolbar template can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/tool-bar/tool-bar">documentation section</a>.
        </p>
     </div>
 

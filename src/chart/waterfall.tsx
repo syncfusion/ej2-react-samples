@@ -12,10 +12,10 @@ import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
 export let data: object[] = [
-    { x: 'Income', y: 4711 }, { x: 'Sales', y: -1015 },
-    { x: 'Development', y: -688 },
-    { x: 'Revenue', y: 1030 }, { x: 'Balance' },
-    { x: 'Expense', y: -361 }, { x: 'Tax', y: -695 },
+    { x: 'Income', y: 971  }, { x: 'Sales', y: -101 },
+    { x: 'Development', y: -268 },
+    { x: 'Revenue', y: 403  }, { x: 'Balance' },
+    { x: 'Expense', y: -136 }, { x: 'Tax', y:  -365 },
     { x: 'Net Profit' }
 ];
 
@@ -49,60 +49,30 @@ export class Waterfall extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
-                        primaryXAxis={{
-                            valueType: 'Category',
-                            majorGridLines: { width: 0 },
-                            plotOffset: 20
-                        }}
-                        primaryYAxis={{
-                            minimum: 0, maximum: 5000, interval: 1000,
-                            majorGridLines: { width: 0 },
-                            title: 'Expenditure'
-                        }}
-                        tooltip={{ enable: true, shared: false }}
-                        textRender={this.textRender.bind(this)}
-                        axisLabelRender={this.axisLabelRender.bind(this)}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        chartArea={{ border: { width: 0 } }}
-                        legendSettings={{ visible: false }}
-                        title='Company Revenue and Profit' loaded={this.onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction : Browser.isDevice ? 'None' : 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width: 0}, majorGridLines: { width: 0 } }} primaryYAxis={{ lineStyle: {width: 0}, minimum: 0, maximum: 1250, interval: 250, majorGridLines: { width: 1 }, minorTickLines: {width: 0}, title: 'USD', labelFormat: "{value}K" }} tooltip={{ enable: true, format: '<b>${point.x}</b> <br> Product Revenue : <b>${point.y}</b>', header: " " }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: false }} title='Company Revenue and Profit' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[WaterfallSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, Legend, DataLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} xName='x' yName='y'  type='Waterfall' intermediateSumIndexes={[4]}
-                                sumIndexes={[7]} marker={{ dataLabel: { visible: true, font: { color: '#ffffff' } } }} connector={{ color: '#5F6A6A', width: 2 }} 
-                                negativeFillColor='#e56590'>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={data} border={{color:'black' , width: 1}} xName='x' yName='y' type='Waterfall' intermediateSumIndexes={[4]} sumIndexes={[7]} marker={{ dataLabel: { visible: true,font:{color:'#ffffff'} }, }} connector={{ color: '#5F6A6A', width: 2 }} negativeFillColor='#e56590' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample visualizes the revenue and profits of a company by using default waterfall series in the chart. Tooltip shows the information about the profits earned by each department on the company.
-            </p>
+                    <p>This sample visualizes the revenue and profits of a company using the default waterfall series chart. The tooltip provides details on the profits made by each department.</p>
                 </div>
                 <div id="description">
-                    <p>
-                        In this example, you can see how to render and configure the Waterfall type charts. Waterfall type charts are used to represent the financial datas.
-                       You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual data and its value.
-                   </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                   </p>
+                    <p>In this example, you can see how to render and configure the waterfall chart. The waterfall chart explains the gradual change in the quantitative value of an entity that is subject to changes by increments or decrements.</p>
+                    <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Waterfall series, we need to inject
-                       <code>WaterfallSeries</code> module into <code>services</code>.
-                  </p>
+                        <code>WaterfallSeries</code> module into <code>services</code>.
+                    </p>
                     <p>
-                        More information on the waterfall series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/waterfall">documentation section</a>.
-                  </p>
+                        More information on the Waterfall series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#waterfall-chart">documentation section</a>.
+                    </p>
                 </div>
             </div >
         )

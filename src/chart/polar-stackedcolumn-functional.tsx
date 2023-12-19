@@ -50,7 +50,7 @@ const PolarStackedColumn = () => {
                     <Inject services={[Tooltip, Legend,Highlight, Category, PolarSeries, RadarSeries]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' name='6-9' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />
-                        <SeriesDirective dataSource={data1} xName='x' yName='y1' name='9 -11' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />
+                        <SeriesDirective dataSource={data1} xName='x' yName='y1' name='9-11' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />
                         <SeriesDirective dataSource={data1} xName='x' yName='y2' name='11-14' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />
                         <SeriesDirective dataSource={data1} xName='x' yName='y3' name='14-17' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />
                         <SeriesDirective dataSource={data1} xName='x' yName='y4' name='17-20' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />
@@ -67,8 +67,7 @@ const PolarStackedColumn = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject
-                    <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the polar-radar series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.

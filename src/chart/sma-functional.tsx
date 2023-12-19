@@ -49,8 +49,7 @@ const SMA = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use SMA Indicator, we need to inject
-                    <code>SmaIndicator</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use SMA Indicator, we need to inject <code>SmaIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the SMA Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#simple-moving-average-sma">documentation section</a>.

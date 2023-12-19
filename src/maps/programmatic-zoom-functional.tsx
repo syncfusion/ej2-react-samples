@@ -56,6 +56,7 @@ const ProgrammaticZoomMaps = () => {
             <div className='col-lg-3 property-section'>
                 <PropertyPane title='Properties'>
                     <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft: '-10px' }}>
+                      <tbody>
                         <tr style={{ height: "50px" }}>
                             <td style={{ width: "70%" }}>
                                 <div className="property-text">Zoom to fit all the makers in maps</div>
@@ -66,6 +67,7 @@ const ProgrammaticZoomMaps = () => {
                                 </div>
                             </td>
                         </tr>
+                      </tbody>
                     </table>
                 </PropertyPane>
             </div>

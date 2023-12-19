@@ -9,8 +9,8 @@ export class KeyboardInteraction extends SampleBase<{}, {}> {
     public componentDidMount(): void {
       document.body.addEventListener("keydown", (e: KeyboardEvent) => {
         let toolbarElement: HTMLElement = document.querySelector('.e-toolbar-items .e-toolbar-item .e-tbar-btn') as HTMLElement;
-            if (e.altKey && e.keyCode === 74 && toolbarElement) {
-                toolbarElement.focus();
+        if (e.altKey && e.keyCode === 74 && toolbarElement) {
+            toolbarElement.focus();
         }
       });
     }

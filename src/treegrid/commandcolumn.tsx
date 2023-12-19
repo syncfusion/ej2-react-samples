@@ -67,7 +67,7 @@ export class Command extends SampleBase<{}, {}> {
           <p>Tree Grid features are segregated into individual feature-wise modules. To use editing feature,
              we need to inject <code>Edit</code> module into the <code>services</code>.</p>
           <p>
-            More information on the selection configuration can be found in this documentation section.
+            More information on the selection configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/editing/command-column-editing">documentation section</a>.
           </p>
 
         </div>

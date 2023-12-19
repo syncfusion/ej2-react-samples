@@ -103,8 +103,8 @@ body[class*="high"] #ribbonContainer {
   font-style: normal;
 }
 
-.ribbon-backstage-container [class^="sf-icon-"],
-.ribbon-backstage-container [class*=" sf-icon-"] {
+[class*="e-ribbon-"] [class^="sf-icon-"],
+[class*="e-ribbon-"] [class*=" sf-icon-"] {
   font-family: 'ribbon' !important;
   speak: none;
   font-style: normal;
@@ -116,59 +116,59 @@ body[class*="high"] #ribbonContainer {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ribbon-backstage-container .sf-icon-3d-model:before {
+[class*="e-ribbon-"] .sf-icon-3d-model:before {
   content: "\e700";
 }
 
-.ribbon-backstage-container .sf-icon-shapes:before {
+[class*="e-ribbon-"] .sf-icon-shapes:before {
   content: "\e701";
 }
 
-.ribbon-backstage-container .sf-icon-dictate:before {
+[class*="e-ribbon-"] .sf-icon-dictate:before {
   content: "\e702";
 }
 
-.ribbon-backstage-container .sf-icon-chart:before {
+[class*="e-ribbon-"] .sf-icon-chart:before {
   content: "\e703";
 }
 
-.ribbon-backstage-container .sf-icon-screenshot:before {
+[class*="e-ribbon-"] .sf-icon-screenshot:before {
   content: "\e704";
 }
 
-.ribbon-backstage-container .sf-icon-smart-art:before {
+[class*="e-ribbon-"] .sf-icon-smart-art:before {
   content: "\e706";
 }
 
-.ribbon-backstage-container .sf-icon-share:before {
+[class*="e-ribbon-"] .sf-icon-share:before {
   content: "\e707";
 }
 
-.ribbon-backstage-container .sf-icon-read:before {
+[class*="e-ribbon-"] .sf-icon-read:before {
   content: "\e708";
 }
 
-.ribbon-backstage-container .sf-icon-web-layout:before {
+[class*="e-ribbon-"] .sf-icon-web-layout:before {
   content: "\e709";
 }
 
-.ribbon-backstage-container .sf-icon-mode:before {
+[class*="e-ribbon-"] .sf-icon-mode:before {
   content: "\e70b";
 }
 
-.ribbon-backstage-container .sf-icon-draft:before {
+[class*="e-ribbon-"] .sf-icon-draft:before {
   content: "\e70c";
 }
 
-.ribbon-backstage-container .sf-icon-reuse:before {
+[class*="e-ribbon-"] .sf-icon-reuse:before {
   content: "\e70f";
 }
 
-.ribbon-backstage-container .sf-icon-editor:before {
+[class*="e-ribbon-"] .sf-icon-editor:before {
   content: "\e70a";
 }
 
-.ribbon-backstage-container .sf-icon-word:before {
+[class*="e-ribbon-"] .sf-icon-word:before {
   content: "\e70d";
 }
 
@@ -179,7 +179,7 @@ body[class*="high"] #ribbonContainer {
   height: 510px;
 }
 
-#home_content #new-section {
+#home_content .new-wrapper {
   margin-bottom: 15px;
 }
 

@@ -50,7 +50,7 @@ const AccumulationDistribution = () => {
                         <RowDirective height={'60%'} />
                     </RowsDirective>
                     <AxesDirective>
-                        <AxisDirective rowIndex={0} name='secondary' opposedPosition={true} majorGridLines={{ width: 0 }} majorTickLines={{ width: 0 }} minimum={-7000000000} maximum={5000000000} interval={6000000000} title='Accumulation Distribution' lineStyle={{ width: 0 }}>
+                        <AxisDirective rowIndex={0} name='secondary' opposedPosition={true} majorGridLines={{ width: 0 }} majorTickLines={{ width: 0 }} minimum={-7000000000} maximum={5000000000} interval={6000000000} title='Accumulation Distribution (in Billion)' lineStyle={{ width: 0 }}>
                             <StripLinesDirective>
                                 <StripLineDirective start={-7000000000} end={6000000000} text='' color='#6063ff' visible={true} opacity={0.1} zIndex={'Behind'} />
                             </StripLinesDirective>
@@ -73,8 +73,7 @@ const AccumulationDistribution = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Accumulation Distribution Indicator, we need to inject 
-                    <code>AccumulationDistributionIndicator</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Accumulation Distribution Indicator, we need to inject <code>AccumulationDistributionIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the Accumulation Distribution Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#accumulation-distribution">documentation section</a>.

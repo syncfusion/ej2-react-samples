@@ -138,10 +138,8 @@ function Local () {
                         </tbody>
                     </table>
                 </div>
-                <div className='content-wrapper'>
-                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} load={onLoad.bind(this)} dataSourceSettings={jsonReport} width={'100%'} height={'290'} gridSettings={{ columnWidth: 120 }}>
-                    </PivotViewComponent>
-                </div>
+                <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} load={onLoad.bind(this)} dataSourceSettings={jsonReport} width={'100%'} height={'290'} gridSettings={{ columnWidth: 120 }}>
+                </PivotViewComponent>
             </div>
             <div id="action-description">
                 <p>This sample demonstrates basic rendering of the pivot table bound to JSON or CSV data extracted from a local file.</p>

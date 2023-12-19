@@ -224,6 +224,26 @@ const DataLabelTemplate = () => {
                     </SeriesCollectionDirective>
                 </ChartComponent>
             </div>
+            <div id="action-description">
+                <p>
+                    This sample illustrates data label template support in charts. Each data label for each point is rendered using the template.
+                </p>
+            </div>
+            <div id="description">
+                <p>
+                    The React Charts data label template feature allows you to change the appearance and behavior of the data label for each data point using the <code>Template</code> property in <code>ChartDataLabel</code>.
+                </p>
+                <p><b>Injecting Module</b></p>
+                <p>
+                    Chart component features are segregated into individual feature-wise modules. To use dataLabel, we need to inject <code>DataLabel</code> module into <code>services</code>.
+                </p>
+                <p>
+                    More information on the data label template can be found in this
+                    <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/chart/data-labels/#data-label-template">documentation
+                        section</a>.
+                </p>
+            </div>
         </div>
     )
 }

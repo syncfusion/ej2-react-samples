@@ -1,6 +1,3 @@
-/**
- * Sample with default functionalities in the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, AnnotationDirective, Annotations, AnnotationsDirective } from '@syncfusion/ej2-react-lineargauge';

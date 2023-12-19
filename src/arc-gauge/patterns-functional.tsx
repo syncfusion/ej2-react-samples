@@ -119,6 +119,7 @@ const Patterns = () => {
         <div className='control-section' style={{overflow: 'auto'}}>
             <style>{SAMPLE_CSS}</style>
             <table>
+               <tbody>
                 <tr>
                     <td className='gaugeAlign'>
                         <CircularGaugeComponent load={loadOne.bind(this)} background="transparent" id="container1" width="280px" height="300px">
@@ -327,7 +328,9 @@ const Patterns = () => {
                             </AxesDirective>
                         </CircularGaugeComponent>
                     </td>
-                </tr>
+                 </tr>
+                </tbody>
+               </table>
                 <div id="action-description">
                     <p>This sample includes a wide range of arc gauges with varying appearances based on the built-in features and customization options.</p>
                 </div>
@@ -339,7 +342,6 @@ const Patterns = () => {
                         More information on the arc gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
                     </p>
                 </div>
-            </table>
         </div>
     )
 }

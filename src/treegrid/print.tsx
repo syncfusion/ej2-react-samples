@@ -36,7 +36,9 @@ export class Print extends SampleBase<{}, {}> {
           <p>By default, all pages will be printed.We can print current page alone by setting the <code>printMode</code>property
             value as <code>currentpage</code>.</p>
           <p>In this demo, click the print icon to print Tree Grid.</p>
-          <p>More information on the print feature can be found in this documentation section.</p>
+          <p>
+            More information on the print feature can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/print">documentation section</a>.
+          </p>
         </div>
       </div>
     )

@@ -1,6 +1,3 @@
-/**
- * Sample to design speedometer using the Circular Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {

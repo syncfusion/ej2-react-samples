@@ -1,6 +1,3 @@
-/**
- * Sample for print and export in the Circular Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -90,6 +87,7 @@ export class Export extends SampleBase<{}, {}> {
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                              <tbody>
                                 <tr style={{ height: "50px" }}>
                                     <td>
                                         <div style={{ paddingLeft: '0px', fontSize: '14px' }}>Export Type</div>
@@ -118,6 +116,7 @@ export class Export extends SampleBase<{}, {}> {
                                         <ButtonComponent onClick={this.onClickPrint.bind(this)} isPrimary={true}>Print</ButtonComponent>
                                     </td>
                                 </tr>
+                              </tbody>
                             </table>
                         </PropertyPane>
                     </div>

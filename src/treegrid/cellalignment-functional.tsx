@@ -99,42 +99,44 @@ const CellAlign = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "30%" }}>
-                  <div style={{ paddingTop: "10px" }}> Column </div>
-                </td>
-                <td style={{ width: "70%", paddingRight: "10px" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="95px"
-                      id="columns"
-                      change={change.bind(this)}
-                      dataSource={columnNames}
-                      fields={{ text: "name", value: "id" }}
-                      value="taskID"
-                      ref={dropdownObj}
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "30%" }}>
-                  <div> Cell Alignment </div>
-                </td>
-                <td style={{ width: "70%", padding: "10px 10px 10px 0px" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="95px"
-                      id="alignment"
-                      change={change2.bind(this)}
-                      dataSource={alignment}
-                      fields={{ text: "name", value: "id" }}
-                      value="Right"
-                      ref={dropdownObj2}
-                    />
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "30%" }}>
+                    <div style={{ paddingTop: "10px" }}> Column </div>
+                  </td>
+                  <td style={{ width: "70%", paddingRight: "10px" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="95px"
+                        id="columns"
+                        change={change.bind(this)}
+                        dataSource={columnNames}
+                        fields={{ text: "name", value: "id" }}
+                        value="taskID"
+                        ref={dropdownObj}
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "30%" }}>
+                    <div> Cell Alignment </div>
+                  </td>
+                  <td style={{ width: "70%", padding: "10px 10px 10px 0px" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="95px"
+                        id="alignment"
+                        change={change2.bind(this)}
+                        dataSource={alignment}
+                        fields={{ text: "name", value: "id" }}
+                        value="Right"
+                        ref={dropdownObj2}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

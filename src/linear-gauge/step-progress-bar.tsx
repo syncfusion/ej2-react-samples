@@ -1,6 +1,3 @@
-/**
- * Sample to design step progress bar using the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, LinearGaugeTheme, IAxisLabelRenderEventArgs } from '@syncfusion/ej2-react-lineargauge';
@@ -46,7 +43,7 @@ export class StepProgressBar extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <LinearGaugeComponent load={this.load.bind(this)} axisLabelRender={this.axisLabelRender.bind(this)} id='gauge' background='transparent' orientation='Horizontal'>
                         <AxesDirective>
-                            <AxisDirective minimum={5} maximum={20} opposedPosition={true} majorTicks={{ height: 0 }} minorTicks={{ height: 0 }} line={{ width: 5 }} labelStyle={{ offset: 20, font: { size: '16px', fontFamily: 'inherit' } }}>
+                            <AxisDirective minimum={5} maximum={20} opposedPosition={true} majorTicks={{ height: 0, interval: 5 }} minorTicks={{ height: 0 }} line={{ width: 5 }} labelStyle={{ offset: 20, font: { size: '16px', fontFamily: 'inherit' } }}>
                                 <PointersDirective>
                                     <PointerDirective value={5} height={25} width={25} placement='Near' markerType='Image' imageUrl='src/linear-gauge/images/tick-icon.png'> </PointerDirective>
                                     <PointerDirective value={10} height={25} width={25} placement='Near' markerType='Image' imageUrl='src/linear-gauge/images/tick-icon.png'> </PointerDirective>

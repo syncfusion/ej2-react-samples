@@ -9,6 +9,7 @@ import { DialogComponent, ButtonPropsModel } from '@syncfusion/ej2-react-popups'
 import { SampleBase } from '../common/sample-base';
 import * as dataSource from './datasource.json';
 import './wip-validation.css';
+import { PropertyPane } from '../common/property-pane';
 
 /**
  * Kanban WIP Validation sample
@@ -98,27 +99,27 @@ export class WIPValidation extends SampleBase<{}, {}> {
                     </div>
                 </div>
                 <div className="col-lg-3 property-section property-customization">
-                    <div className="property-panel-section">
-                        <p className="property-panel-header header-customization">Constraint</p>
-                        <div className="property-panel-content">
-                            <table className="e-constraint-table">
-                                <tr>
-                                    <td className="e-constraint-label">
-                                        <div>Type</div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <DropDownListComponent id='type' dataSource={this.columnType} change={this.changeContraintType.bind(this)} value={this.value}>
-                                            </DropDownListComponent>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <p className="property-panel-header">Validate Constraints</p>
+                    <PropertyPane title="Constraint">
+                        <table className="e-constraint-table">
+                            <tbody>
+                            <tr>
+                                <td className="e-constraint-label">
+                                    <div>Type</div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <DropDownListComponent id='type' dataSource={this.columnType} change={this.changeContraintType.bind(this)} value={this.value}>
+                                        </DropDownListComponent>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p className="property-panel-header" style={{ width: '100%', padding: '22px 0 0 0' }}>Validate Constraints</p>
                         <div className="property-panel-content">
                             <form id="column">
                                 <table className="e-constraint-table">
+                                    <tbody>
                                     <tr>
                                         <td className="e-constraint-label">
                                             <div>Columns</div>
@@ -138,13 +139,14 @@ export class WIPValidation extends SampleBase<{}, {}> {
                                         </td>
                                         <td><NumericTextBoxComponent ref={(kanban) => { this.maximum = kanban; }} id="maxIndex" format='###.##' min={0} placeholder="Maximum Count"></NumericTextBoxComponent></td>
                                     </tr>
+                                    </tbody>
                                 </table>
                                 <div className="e-validate">
                                     <ButtonComponent id='validate' className="e-btn" onClick={this.onFormValidate.bind(this)} >Validate</ButtonComponent>
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </PropertyPane>
                 </div>
                 <div id="action-description">
                     <p>This sample demonstrates how to limit the minimum and maximum number of cards to each column of the Kanban component.

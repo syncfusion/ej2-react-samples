@@ -60,13 +60,11 @@ export class DynamicMarker extends SampleBase<{}, {}> {
                         </LayersDirective>
                     </MapsComponent>
                     <div>
-                        <p>
-                            <i>
-                                <div>
-                                    <p id="content" style={{ fontSize: '16px', color: 'grey', textAlign: 'center' }}>Click on the maps to add marker/navigation line</p>
-                                </div>
-                            </i>
-                        </p>
+                        <i>
+                            <div>
+                                <p id="content" style={{ fontSize: '16px', color: 'grey', textAlign: 'center' }}>Click on the maps to add marker/navigation line</p>
+                            </div>
+                        </i>
                     </div>
                 </div>
                 <div className="col-lg-3 property-section">

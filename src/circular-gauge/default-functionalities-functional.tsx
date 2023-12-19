@@ -1,7 +1,3 @@
-/**
- * Sample for default functionalities in the Circular Gauge
- */
-
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
@@ -30,7 +26,7 @@ const Default = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <CircularGaugeComponent load={load.bind(this)} id='gauge' background="transparent">
+                <CircularGaugeComponent animationDuration={2000} load={load.bind(this)} id='gauge' background="transparent">
                     <AxesDirective>
                         <AxisDirective radius='80%' startAngle={230} endAngle={130} majorTicks={{ offset: 5 }} lineStyle={{ width: 8, color: '#E0E0E0' }} minorTicks={{ offset: 5 }} labelStyle={{ font: { fontFamily: 'inherit' }, offset: -1 }}>
                             <PointersDirective>

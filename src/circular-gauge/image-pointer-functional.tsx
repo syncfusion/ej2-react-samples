@@ -1,7 +1,3 @@
-/**
- * Sample for image pointer in the Circular Gauge
- */
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useEffect } from 'react';

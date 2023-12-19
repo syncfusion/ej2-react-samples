@@ -21,7 +21,7 @@ export class DetailTemplate extends SampleBase<{}, {}> {
         return (
             <div>
                 <div style={{ position: 'relative', display: 'inline-block', float: 'left', padding: '5px 4px 2px 27px' }} >
-                    <img src={imag} />
+                    <img src={imag} alt={props.FullName} />
                 </div>
                 <div style={{ paddingLeft: '10px', display: 'inline-block', width: '66%', fontSize: '13px', fontFamily: 'Segoe UI' }}>
                     <div className="e-description" style={{ marginTop: '5px' }}>

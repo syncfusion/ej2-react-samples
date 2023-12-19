@@ -18,12 +18,12 @@ function Type() {
     let listObj: DropDownListComponent;
     let checkboxObj: CheckBoxComponent;
     // Rich Text Editor items list
-    const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
-        'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
+    const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+        'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
         'LowerCase', 'UpperCase', '|',
-        'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
-        'Outdent', 'Indent', '|',
-        'CreateLink', 'Image', '|', 'ClearFormat', 'Print',
+        'Formats', 'Alignments', '|', 'NumberFormatList', 'BulletFormatList', '|',
+        'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
+        '|', 'EmojiPicker', 'Print', '|',
         'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'];
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {
@@ -144,7 +144,7 @@ function Type() {
                                 <p>Provides an option to customize the quick toolbar for an image </p>
                             </li>
                         </ol>
-                        <img alt="Logo" src="./src/rich-text-editor/images/RTEImage-Feather.png" />
+                        <img alt="Logo" style={{ width:'300px'}} src="./src/rich-text-editor/images/RTEImage-Feather.png" />
                         <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
                     </RichTextEditorComponent>
                 </div>

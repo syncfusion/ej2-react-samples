@@ -1,6 +1,3 @@
-/**
- * Sample to design step counter using the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, RangesDirective, RangeDirective, AnnotationDirective, Annotations, AnnotationsDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -29,7 +26,7 @@ export class StepsCounter extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <LinearGaugeComponent load={this.load.bind(this)} background='transparent' id='gauge' orientation='Horizontal'>
+                    <LinearGaugeComponent load={this.load.bind(this)} animationDuration={3000} background='transparent' id='gauge' orientation='Horizontal'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective minimum={0} maximum={12000} line={{ width: 30 }} opposedPosition={true} minorTicks={{ height: 0 }} majorTicks={{ interval: 12000, height: 10, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }}>

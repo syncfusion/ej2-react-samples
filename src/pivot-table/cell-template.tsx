@@ -33,10 +33,7 @@ let dataSourceSettings: IDataOptions = {
 export class CellTemplate extends SampleBase<{}, {}> {
 
     private pivotObj: PivotViewComponent;
-
-    private cellTemplate(props): JSX.Element {
-        return (<span className="tempwrap e-pivot-trend-neutral pv-icons"></span>);
-    }
+    private cellTemplate: string = '<span class="tempwrap e-pivot-trend-neutral pv-icons"></span>';
 
     /* jshint ignore:start */
     trend(): void {
@@ -158,7 +155,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section' id='pivot-table-section'>
                     <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }}
-                        load={this.onLoad} dataBound={this.trend.bind(this)} ref={(pivotview) => { this.pivotObj = pivotview }} cellTemplate={this.cellTemplate.bind(this)}>
+                        load={this.onLoad} dataBound={this.trend.bind(this)} ref={(pivotview) => { this.pivotObj = pivotview }} cellTemplate={this.cellTemplate}>
                     </PivotViewComponent>
                 </div>
                 <div id="action-description">

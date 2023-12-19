@@ -82,7 +82,7 @@ export class EditTemplate extends SampleBase<{}, {}> {
             In this demo, we have rendered the AutoComplete component for “Task Name” column of Tree Grid using <code>edit</code> property.
         </p>
         <p>
-        <br/> More information about Cell Edit template can be found in this documentation section.
+        <br/> More information about Cell Edit template can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/editing/template-editing">documentation section</a>.
         </p>
         </div>
       </div>

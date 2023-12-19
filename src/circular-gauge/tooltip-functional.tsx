@@ -1,6 +1,3 @@
-/**
- * Sample for showing tooltip in the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -66,7 +63,7 @@ const Tooltip = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-12'>
-                    <CircularGaugeComponent background='transparent' loaded={onChartLoad.bind(this)} dragEnd={dragEnd.bind(this)} id='tooltip-container' ref={gauge} enablePointerDrag={true} load={load.bind(this)} tooltip={{ enable: true, type: ['Range', 'Pointer'], showAtMousePosition: true, format: 'Current Value:  {value}', enableAnimation: false, textStyle: { size: '13px', fontFamily: 'inherit' }, rangeSettings: { showAtMousePosition: true, format: "Start Value: {start} <br/> End Value: {end}", textStyle: { size: '13px', fontFamily: 'inherit' } } }}>
+                    <CircularGaugeComponent background='transparent' animationDuration={2000} loaded={onChartLoad.bind(this)} dragEnd={dragEnd.bind(this)} id='tooltip-container' ref={gauge} enablePointerDrag={true} load={load.bind(this)} tooltip={{ enable: true, type: ['Range', 'Pointer'], showAtMousePosition: true, format: 'Current Value:  {value}', enableAnimation: false, textStyle: { size: '13px', fontFamily: 'inherit' }, rangeSettings: { showAtMousePosition: true, format: "Start Value: {start} <br/> End Value: {end}", textStyle: { size: '13px', fontFamily: 'inherit' } } }}>
                         <Inject services={[GaugeTooltip]} />
                         <AxesDirective>
                             <AxisDirective startAngle={240} endAngle={120} radius='90%' minimum={0} maximum={120} majorTicks={{ color: 'white', offset: -5, height: 12 }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ useRangeColor: true, font: { fontFamily: 'inherit' } }}>

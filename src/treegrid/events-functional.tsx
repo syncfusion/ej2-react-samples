@@ -174,30 +174,32 @@ const Events = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr>
-                <td>
-                  <div
-                    className="eventarea"
-                    style={{ height: "245px", overflow: "auto" }}
-                  >
-                    <span
-                      className="EventLog"
-                      id="EventLog"
-                      style={{ wordBreak: "normal" }}
-                    ></span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className="evtbtn" style={{ paddingBottom: "10px" }}>
-                    <ButtonComponent onClick={btnClick.bind(this)}>
-                      {" "}
-                      Clear{" "}
-                    </ButtonComponent>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <div
+                      className="eventarea"
+                      style={{ height: "245px", overflow: "auto" }}
+                    >
+                      <span
+                        className="EventLog"
+                        id="EventLog"
+                        style={{ wordBreak: "normal" }}
+                      ></span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className="evtbtn" style={{ paddingBottom: "10px" }}>
+                      <ButtonComponent onClick={btnClick.bind(this)}>
+                        {" "}
+                        Clear{" "}
+                      </ButtonComponent>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -218,9 +220,7 @@ const Events = () => {
           reordering, filtering etc. and see the <strong>Event Trace</strong>{" "}
           panel for the events emitted.
         </p>
-        <p>
-          More information on the Grid events can be found in the documentation
-          section.
+        <p>More information on the Grid events can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/treegrid/#events">documentation section</a>.
         </p>
       </div>
     </div>

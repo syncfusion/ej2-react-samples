@@ -49,7 +49,7 @@ export class AutoWrap extends SampleBase<{}, {}> {
             exceeded the cell width is wrapped into multiple lines.
           </p>
           <p>
-          More information about Auto wrap cells can be found in this documentation section.
+          More information about Auto wrap cells can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/cell/auto-wrap">documentation section</a>.
          </p>
         </div>
       </div>

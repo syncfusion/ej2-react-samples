@@ -87,6 +87,7 @@ function BulletChartDefault() {
                     interval={100}
                     title='Avg Order Size'
                     subtitle='U.S. $'
+                    labelFormat='${value}'
                     margin={{ left: Browser.isDevice ? 10 : 22 }}
                     titlePosition={Browser.isDevice ? 'Top' : 'Left'}
                     load={bulletLoad.bind(this)}

@@ -23,6 +23,16 @@ const SAMPLE_CSS = `
 
 .e-bigger #performanceTime{
     margin-top: 8px;
+}
+
+@media(max-width: 440px) {
+    .control-pane .control-section .performance-time-container {
+        margin-bottom: 30px !important;
+
+        #performanceTime {
+            float: left;
+        }
+    }
 }`;
 
 let pivotObj: PivotViewComponent;
@@ -123,7 +133,7 @@ function Performance() {
                 {SAMPLE_CSS}
             </style>
             <div className='control-section'>
-                <div style={{ marginBottom: '15px' }}>
+                <div className='performance-time-container' style={{ marginBottom: '15px' }}>
                     <DropDownListComponent id="performance" width='240' dataSource={ddlData} index={0} ref={(dropdownlist: any) => { ddObj = dropdownlist; }} fields={fields} change={onChange.bind(this)}
                         placeholder="Select a Data Range" popupHeight="240px">
                     </DropDownListComponent>

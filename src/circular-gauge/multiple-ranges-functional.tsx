@@ -1,6 +1,3 @@
-/**
- * Sample for multiple ranges in the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useEffect } from 'react';
@@ -29,7 +26,7 @@ const MultipleRanges = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <CircularGaugeComponent load={load.bind(this)} id='multiple-ranges' background='transparent'>
+                <CircularGaugeComponent load={load.bind(this)} animationDuration={2000} id='multiple-ranges' background='transparent'>
                     <Inject services={[Annotations]} />
                     <AxesDirective>
                         <AxisDirective startAngle={230} endAngle={130} radius='90%' minimum={-30} maximum={120} hideIntersectingLabel={true} majorTicks={{ width: 0, interval: 10 }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ offset: 50, position: 'Inside', autoAngle: true, font: { fontFamily: 'inherit' } }}>

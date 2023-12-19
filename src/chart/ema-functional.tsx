@@ -50,8 +50,7 @@ const EMA = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use EMA Indicator, we need to inject
-                    <code>EmaIndicator</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use EMA Indicator, we need to inject <code>EmaIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the EMA Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#exponential-moving-average-ema">documentation section</a>.

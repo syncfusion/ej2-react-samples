@@ -13,7 +13,7 @@ import {
     AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator, Export
 } from '@syncfusion/ej2-react-charts';
 import { updateSampleSection } from '../common/sample-base';
-import { datetimeCategoryData } from './stock-data';
+import { datetimeCategoryData  } from './stock-data';
 
 
 function DatetimeCategoryAxis() {

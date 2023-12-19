@@ -45,16 +45,20 @@ const EmptyPoint = () => {
     ];
     const change = (): void => {
         setchartType(dropElement.current.value as ChartSeriesType);
-        if (chartInstance.current.series[0].type == 'Spline') {
+        if (dropElement.current.value === 'Spline') {
             setIsVisible(true);
+            chartInstance.current.series[0].marker.visible = true;
         }
         else {
             setIsVisible(false);
+            chartInstance.current.series[0].marker.visible = false;
         }
+        chartInstance.current.series[0].type = dropElement.current.value as ChartSeriesType;
         chartInstance.current.refresh();
     };
     const mode = (): void => {
         setEmptyPointMode(modeElement.current.value as EmptyPointMode);
+        chartInstance.current.series[0].emptyPointSettings.mode = modeElement.current.value as EmptyPointMode
         chartInstance.current.refresh();
     };
     const onChartLoad = (args: ILoadedEventArgs): void => {
@@ -81,7 +85,7 @@ const EmptyPoint = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Series Type: </div>
                                 </td>
@@ -99,7 +103,7 @@ const EmptyPoint = () => {
                                         <DropDownListComponent width="120px" id="selmode" change={mode.bind(this)} ref={modeElement} dataSource={modelist} fields={{ text: 'value', value: 'value' }} value={emptyPointMode} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>

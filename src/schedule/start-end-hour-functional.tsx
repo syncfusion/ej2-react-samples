@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, TimelineViews, EventRenderedArgs, Inject, Resize, DragAndDrop, View } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -19,12 +19,12 @@ const DayHourLimit = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
   const [startTime, setStartTime] = useState<string>('08:00');
   const [endTime, setEndTime] = useState<string>('20:00');
   const [startHour, setStartHour] = useState<string>(startTime);
   const [endHour, setEndHour] = useState<string>(endTime);
-  const [currentView, setCurrentView] = useState<View>('Week');
   const onSubmit = (): void => {
     setStartHour(startTime)
     setEndHour(endTime)
@@ -35,17 +35,14 @@ const DayHourLimit = () => {
   const onEndTimeChange = (args: any) => {
     setEndTime(args.target.element.value)
   }
-  const onNavigating = (args: NavigatingEventArgs): void => {
-    setCurrentView(args.currentView as View);
-  }
   const onEventRendered = (args: EventRenderedArgs): void => {
-    applyCategoryColor(args, currentView);
+    applyCategoryColor(args, scheduleObj.current?.currentView as View);
   }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' startHour={startHour} endHour={endHour} currentView={currentView} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} workHours={{ highlight: false }} eventRendered={onEventRendered} navigating={onNavigating}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} startHour={startHour} endHour={endHour} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} workHours={{ highlight: false }} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -70,14 +67,14 @@ const DayHourLimit = () => {
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '100%' }}>
                   <div className='timepicker-control-section range'>
-                    <TimePickerComponent id='endTime' value={new Date(2000, 0, 1, 20)} format='HH:mm' placeholder='End Hour' floatLabelType='Always'onChange={onEndTimeChange.bind(this)} />
+                    <TimePickerComponent id='endTime' value={new Date(2000, 0, 1, 20)} format='HH:mm' placeholder='End Hour' floatLabelType='Always' onChange={onEndTimeChange.bind(this)} />
                   </div>
                 </td>
               </tr>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '30%' }}>
                   <div className='evtbtn' style={{ paddingBottom: '10px' }}>
-                    <ButtonComponent id='submit' title='Submit' onClick={onSubmit.bind(this)}>Submit</ButtonComponent>
+                    <ButtonComponent id='submit' title='Submit' onClick={onSubmit}>Submit</ButtonComponent>
                   </div>
                 </td>
               </tr>

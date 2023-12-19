@@ -43,19 +43,21 @@ export class GridLines extends SampleBase<{}, {}> {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr style={{ height: '50px' }}>
-                  <td style={{ width: '60%' }}>
+                    <td style={{ width: '60%' }}>
                       <div>
-                         Grid Lines
+                        Grid Lines
                       </div>
                     </td>
                     <td style={{ width: '60%' }}>
                       <div>
-                         <DropDownListComponent width="115px" id="selmode" change={this.change.bind(this)}
-                            dataSource={this.lines} fields={{ text: 'type', value: 'id' }} value="Vertical" />
+                        <DropDownListComponent width="115px" id="selmode" change={this.change.bind(this)}
+                          dataSource={this.lines} fields={{ text: 'type', value: 'id' }} value="Vertical" />
                       </div>
                     </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
         </div>
@@ -78,7 +80,7 @@ export class GridLines extends SampleBase<{}, {}> {
           <p> In this demo, you can modify the visibility of gridlines by selecting values in the dropdown.
           </p>
           <p>
-            More information on the gridLines configuration can be found in this documentation section.
+            More information on the gridLines configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/cell/cell#treegrid-lines">documentation section</a>.
           </p>
         </div>
       </div>

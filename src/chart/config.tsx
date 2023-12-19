@@ -112,7 +112,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the inversed range column series.'
     },
     {
-        'path': 'chart/cylindrical-column', 'component': 'CylindricalColumn', 'name': 'Cylindrical Column', 'type': 'new', 'order': '04', 'category': 'Bar Charts',
+        'path': 'chart/cylindrical-column', 'component': 'CylindricalColumn', 'name': 'Cylindrical Column', 'order': '04', 'category': 'Bar Charts',
         'description': 'This demo sample for Essential JavaScript2 Chart control shows how to render the cylindrical column series.'
     },
     {
@@ -388,7 +388,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to add more information to the chart using annotation.'
     },
     {
-        'path': 'chart/synchronized-chart', 'component': 'SynchronizedChart', 'name': 'Synchronized Charts', 'order': '14', 'type': 'new', 'category': 'Chart Customization',
+        'path': 'chart/synchronized-chart', 'component': 'SynchronizedChart', 'name': 'Synchronized Charts', 'order': '14', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the synchronized chart.'
     },
     {
@@ -416,7 +416,7 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to print the entire chart.'
     },
     {
-        'path': 'chart/export', 'component': 'ChartExport', 'name': 'Export', 'order': '15', 'category': 'Print and Export', 'type': 'update',
+        'path': 'chart/export', 'component': 'ChartExport', 'name': 'Export', 'order': '15', 'category': 'Print and Export',
         'description': 'This demo for Essential JS2 Chart control shows how to export the charts to Excel, PDF, and image formats such as SVG, JPEG, and PNG at client-side.'
     },
     {

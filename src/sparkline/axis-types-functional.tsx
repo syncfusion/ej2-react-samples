@@ -9,8 +9,8 @@ const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
      }`;
-const tableWidth = { width: '100%' };
-const padding10 = { padding: '10px' };
+const tableWidth = { 'width': '100%' };
+const padding10 = { 'padding': '10px' };
 function Axis() {
     React.useEffect(() => {
         updateSampleSection();
@@ -34,10 +34,11 @@ function Axis() {
                 <div id="spark-container" className="row">
                     <div className="cols-sample-area">
                         <table style={tableWidth}>
+                        <thead></thead>
                             <tbody>
                                 <tr>
-                                    <td style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>
-                                        <div>Mean working hours for a month</div>
+                                    <td style={{ "textAlign": "center"}}>
+                                        <div style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>Mean working hours for a month</div>
                                         <div><i>(DateTime axis)</i></div>
                                     </td>
                                     <td style={padding10}>
@@ -78,8 +79,8 @@ function Axis() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>
-                                        <div>Percentage of the students in a class</div>
+                                    <td style={{ "textAlign": "center"}}>
+                                        <div style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>Percentage of the students in a class</div>
                                         <div><i>(Category axis)</i></div>
                                     </td>
                                     <td style={padding10}>
@@ -109,8 +110,8 @@ function Axis() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>
-                                        <div>Expenditure details of various trips</div>
+                                    <td style={{ "textAlign": "center"}}>
+                                        <div style={{ "textAlign": "center", "fontSize": "14px", "fontWeight": "600", "fontFamily": "Roboto" }}>Expenditure details of various trips</div>
                                         <div><i>(Numeric axis)</i></div>
                                     </td>
                                     <td style={padding10}>

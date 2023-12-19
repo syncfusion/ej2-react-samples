@@ -9,9 +9,9 @@ const SAMPLE_CSS = `
      .control-fluid {
          padding: 0px !important;
      }`;
-const titleStyle = { "width": "400px", "text-align": "center", "font-size": "17px", "margin": "auto" };
+const titleStyle: React.CSSProperties = { width: "400px", textAlign: "center", fontSize: "17px", margin: "auto" };
 const width100 = { width: "100%" };
-const sparklineStyle1 = { "width": "150px", "height": "50px", "text-align": "center" };
+const sparklineStyle1: React.CSSProperties = { width: "150px", height: "50px", textAlign: "center" };
 
 function Default() {
     React.useEffect(() => {

@@ -18,6 +18,7 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
     private template(props): JSX.Element {
         return (<div className="e-kanbantooltiptemp">
             <table>
+                <tbody>
                 <tr>
                     <td className="e-kanban-card-details">
                         <table>
@@ -31,6 +32,7 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
                                 <tr><td className="CardHeader">Summary:</td><td>{props.Summary}</td></tr></tbody>
                         </table>
                     </td></tr>
+                </tbody>
             </table>
         </div>);
     }

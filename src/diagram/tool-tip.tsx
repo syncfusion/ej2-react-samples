@@ -15,7 +15,8 @@ import {
 import { SampleBase } from '../common/sample-base';
 import { NumericTextBoxComponent, TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-
+import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
+import { TooltipModel } from '@syncfusion/ej2-react-popups';
 /**
  * Tooltip sample
  */
@@ -52,9 +53,11 @@ const SAMPLE_CSS = `#tooltipDiagramSection .image-pattern-style {
     border-width: 2px;
 }
 
-#tooltipDiagramSection .e-checkbox-wrapper .e-label {
-    font-size: 12px;
+
+table{
+    border-collapse: separate;
 }
+
 .content-wrapper {
     border: 1px solid #D7D7D7;
 }
@@ -70,36 +73,36 @@ export let modevalue: { [key: string]: Object }[] = [
 
 // FontType Collection
 export let PositionValue: { [key: string]: Object }[] = [
-    { type: 'TopLeft', text: 'TopLeft' },
-    { type: 'TopCenter', text: 'TopCenter' },
-    { type: 'TopRight', text: 'TopRight' },
-    { type: 'BottomLeft', text: 'BottomLeft' },
-    { type: 'BottomCenter', text: 'BottomCenter' },
-    { type: 'BottomRight', text: 'BottomRight' },
-    { type: 'LeftTop', text: 'LeftTop' },
-    { type: 'LeftCenter', text: 'LeftCenter' },
-    { type: 'LeftBottom', text: 'LeftBottom' },
-    { type: 'RightTop', text: 'RightTop' },
-    { type: 'RightCenter', text: 'RightCenter' },
-    { type: 'RightBottom', text: 'RightBottom' },
+    { type: 'TopLeft', text: 'Top Left' },
+    { type: 'TopCenter', text: 'Top Center' },
+    { type: 'TopRight', text: 'Top Right' },
+    { type: 'BottomLeft', text: 'Bottom Left' },
+    { type: 'BottomCenter', text: 'Bottom Center' },
+    { type: 'BottomRight', text: 'Bottom Right' },
+    { type: 'LeftTop', text: 'Left Top' },
+    { type: 'LeftCenter', text: 'Left Center' },
+    { type: 'LeftBottom', text: 'Left Bottom' },
+    { type: 'RightTop', text: 'Right Top' },
+    { type: 'RightCenter', text: 'Right Center' },
+    { type: 'RightBottom', text: 'Right Bottom' },
 ];
 
 //FontType Collection
 export let EffectValue: { [key: string]: Object }[] = [
-    { type: 'FadeIn', text: 'FadeIn' },
-    { type: 'FadeOut', text: 'FadeOut' },
-    { type: 'FadeZoomIn', text: 'FadeZoomIn' },
-    { type: 'FadeZoomOut', text: 'FadeZoomOut' },
-    { type: 'FlipXDownIn', text: 'FlipXDownIn' },
-    { type: 'FlipXDownOut', text: 'FlipXDownOut' },
-    { type: 'FlipXUpIn', text: 'FlipXUpIn' },
-    { type: 'FlipXUpOut', text: 'FlipXUpOut' },
-    { type: 'FlipYLeftIn', text: 'FlipYLeftIn' },
-    { type: 'FlipYLeftOut', text: 'FlipYLeftOut' },
-    { type: 'FlipYRightIn', text: 'FlipYRightIn' },
-    { type: 'FlipYRightOut', text: 'FlipYRightOut' },
-    { type: 'ZoomIn', text: 'ZoomIn' },
-    { type: 'ZoomOut', text: 'ZoomOut' },
+    { type: 'FadeIn', text: 'Fade In' },
+    { type: 'FadeOut', text: 'Fade Out' },
+    { type: 'FadeZoomIn', text: 'Fade Zoom In' },
+    { type: 'FadeZoomOut', text: 'Fade Zoom Out' },
+    { type: 'FlipXDownIn', text: 'FlipX Down In' },
+    { type: 'FlipXDownOut', text: 'FlipX Down Out' },
+    { type: 'FlipXUpIn', text: 'FlipX Up In' },
+    { type: 'FlipXUpOut', text: 'FlipX Up Out' },
+    { type: 'FlipYLeftIn', text: 'FlipY Left In' },
+    { type: 'FlipYLeftOut', text: 'FlipY Left Out' },
+    { type: 'FlipYRightIn', text: 'FlipY Right In' },
+    { type: 'FlipYRightOut', text: 'FlipY Right Out' },
+    { type: 'ZoomIn', text: 'Zoom In' },
+    { type: 'ZoomOut', text: 'Zoom Out' },
     { type: 'None', text: 'None' },
 ];
 
@@ -252,15 +255,15 @@ export class Tooltip extends SampleBase<{}, {}> {
                 </div>
                 <div id='tooltipPropertySection' className='col-lg-4 property-section'>
                     <div className='property-panel-header' style={{ marginLeft: '0px' }}>Properties</div>
-                    <table id='property' title='Properties'>
-                        <tr>
+                    <table id='diagramTooltipPropertyPanel' title='Properties'>
+                        <tr style={{ paddingTop: "10px"}}>
                             <td>
                                 <div>
                                     Relative Mode
                                 </div>
                             </td>
                             <td>
-                                <div style={{ paddingLeft: "15px" }}>
+                                <div style={{ paddingLeft: "15px",width:'70%' }}>
                                     <DropDownListComponent
                                         id='mode'
                                         ref={dropdown => (modeDropdown = dropdown)}
@@ -268,7 +271,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                         fields={this.fields}
                                         placeholder='select a mode value'
                                         popupWidth='150'
-                                        width='100%'
+                                        width='85%'
                                         index={0}
                                         change={(args: any) => {
                                             if (args.value === 'Mouse') {
@@ -283,14 +286,14 @@ export class Tooltip extends SampleBase<{}, {}> {
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <tr style={{ paddingTop: "10px"}}>
                             <td>
                                 <div>
                                     Position
                                </div>
                             </td>
                             <td>
-                                <div style={{ paddingLeft: "15px" }}>
+                                <div style={{ paddingLeft: "15px",width:'70%' }}>
                                     <DropDownListComponent
                                         id='position'
                                         ref={dropdown => (positionDropdown = dropdown)}
@@ -299,7 +302,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                         index={0}
                                         placeholder='select a position'
                                         popupWidth='150'
-                                        width='100%'
+                                        width='85%'
                                         change={(args: any) => {
                                             let nodes: NodeModel[] = diagramInstance.nodes;
                                             for (let i: number = 0; i < nodes.length; i++) {
@@ -314,7 +317,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <tr style={{ paddingTop: "10px"}}>
                             <td></td>
                             <td>
                                 <div id='textContentDiv' className='row' style={{ display: 'none' }}>
@@ -350,7 +353,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <tr style={{ paddingTop: "10px"}}>
                             <td>
                                 <div>
                                     Animation
@@ -363,6 +366,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                     min={1000}
                                     max={6000}
                                     step={100}
+                                     width={'85%'}
                                     change={(args: any) => {
                                         diagramInstance.tooltip.animation.close.duration = args.value;
                                         diagramInstance.tooltip.animation.open.duration = args.value;
@@ -371,7 +375,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                 ></NumericTextBoxComponent>
                             </td>
                         </tr>
-                        <tr>
+                        <tr style={{ paddingTop: "10px"}}>
                             <td>
                                 <div>
                                     Effect
@@ -386,7 +390,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                                         fields={this.fields}
                                         placeholder='select a effect'
                                         popupWidth='150'
-                                        width='100%'
+                                        width='85%'
                                         index={0}
                                         change={(args: any) => {
                                             diagramInstance.tooltip.animation.open.effect = args.value;
@@ -397,8 +401,31 @@ export class Tooltip extends SampleBase<{}, {}> {
                                     </DropDownListComponent>
                                 </div>
                             </td>
+                        </tr >
+                        <tr style={{ paddingTop: "10px"}}>
+                            <td>Sticky Mode</td>
+                            <td >
+                                <CheckBoxComponent
+                                    checked={false}
+                                    change={(args) => {
+                                        for (var j = 0; j < diagramInstance.nodes.length; j++) {
+                                            if (args.checked) {
+                                                (diagramInstance.tooltipObject as TooltipModel).isSticky = true;
+                                                diagramInstance.nodes[j].tooltip.isSticky = true;
+                                            } else {
+                                                (diagramInstance.tooltipObject as TooltipModel).isSticky = false;
+                                                diagramInstance.nodes[j].tooltip.isSticky = false;
+                                            }
+                                            diagramInstance.dataBind();
+                                        }
+                                    }}
+                                ></CheckBoxComponent>
+                            </td>
                         </tr>
                     </table>
+                </div>
+                <div>
+                    
                 </div>
                 <div id='action-description'>
                     <p>

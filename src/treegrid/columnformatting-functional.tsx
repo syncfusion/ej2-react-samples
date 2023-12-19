@@ -120,42 +120,44 @@ const ColumnFormat = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "20%" }}>
-                  <div style={{ paddingTop: "7px" }}> Column </div>
-                </td>
-                <td style={{ width: "70%", paddingRight: "10px" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="100px"
-                      id="columns"
-                      change={change.bind(this)}
-                      dataSource={columnNames}
-                      fields={{ text: "name", value: "id" }}
-                      value="price"
-                      ref={dropdownObj}
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "30%" }}>
-                  <div> Format </div>
-                </td>
-                <td style={{ width: "70%", paddingRight: "10px" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="100px"
-                      id="colformat"
-                      change={change2.bind(this)}
-                      dataSource={priceFormat}
-                      fields={{ text: "format", value: "id" }}
-                      value="c2"
-                      ref={dropdownObj2}
-                    />
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "20%" }}>
+                    <div style={{ paddingTop: "7px" }}> Column </div>
+                  </td>
+                  <td style={{ width: "70%", paddingRight: "10px" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="100px"
+                        id="columns"
+                        change={change.bind(this)}
+                        dataSource={columnNames}
+                        fields={{ text: "name", value: "id" }}
+                        value="price"
+                        ref={dropdownObj}
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "30%" }}>
+                    <div> Format </div>
+                  </td>
+                  <td style={{ width: "70%", paddingRight: "10px" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="100px"
+                        id="colformat"
+                        change={change2.bind(this)}
+                        dataSource={priceFormat}
+                        fields={{ text: "format", value: "id" }}
+                        value="c2"
+                        ref={dropdownObj2}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

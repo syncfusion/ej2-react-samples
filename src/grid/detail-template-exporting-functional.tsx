@@ -145,7 +145,7 @@ function DetailTemplateExport() {
             </div>
             <div id="description">
                 <p>
-                    The detail row template provides additional information about a data row which can be shown or hidden by clicking the
+                    The detail row template provides additional information about a data row which can shown or hidden by clicking the
                     expand or collapse button. The <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid#detailtemplate">
                         detailTemplate</a></code> property accepts either the string or HTML element`s ID value, which will be used as the
                     template for the detail row.

@@ -61,11 +61,7 @@ const OHLC = () => {
                 <p><b>Injecting Module</b></p>
                 <p>
                     The stock chart component features are segregated into individual feature-wise modules. To use date-time axis,
-                    inject the
-                    <code>DateTime</code> module into
-                    <code>services</code>. To use the OHLC, inject the
-                    <code>HiloOpenCloseSeries</code> module into
-                    <code>services</code>.
+                    inject the <code>DateTime</code> module into <code>services</code>. To use the OHLC, inject the <code>HiloOpenCloseSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">documentation section</a>.

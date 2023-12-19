@@ -21,6 +21,13 @@ export class DragAndDrop extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 3
   };
+  public editSettings: any = {
+    allowAdding: true,
+    allowEditing: true,
+    allowDeleting: true,
+    allowTaskbarEditing: true,
+    showDeleteConfirmDialog: true
+  };
   public projectStartDate: Date = new Date('03/25/2019');
   public projectEndDate: Date = new Date('07/06/2019');
   public labelSettings: any = {
@@ -32,8 +39,8 @@ export class DragAndDrop extends SampleBase<{}, {}> {
         <div className='control-section'>
           <GanttComponent id='DragandDrop' dataSource={projectNewData} taskFields={this.taskFields} height='410px'
             treeColumnIndex={1} allowRowDragAndDrop={true} highlightWeekends={true} labelSettings={this.labelSettings}
-            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
-            splitterSettings={this.splitterSettings} selectionSettings={this.selectionSettings}>
+            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} allowTaskbarDragAndDrop={true}
+            splitterSettings={this.splitterSettings} editSettings={this.editSettings} selectionSettings={this.selectionSettings}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' headerText='ID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' headerText='Name' width='250'></ColumnDirective>
@@ -52,9 +59,11 @@ export class DragAndDrop extends SampleBase<{}, {}> {
         </div>
 
         <div id="description">
-        <p>Row drag and drop feature can be enabled by settting <code>allowRowDragAndDrop</code> property as true.</p>
+        <p>Row drag and drop feature can be enabled by settting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#allowrowdraganddrop">
+            allowRowDragAndDrop</a> property as true. In this demo, taskbar drag and drop between rows can be enabled by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#allowtaskbardraganddrop">
+            allowTaskbarDragAndDrop</a> as true.</p>
         <p>
-	          Gantt component features are segregated into individual feature-wise modules. To use row, drag and drop feature we need to inject <code>RowDD</code> and <code>Edit</code> modules.
+         Gantt component features are segregated into individual feature-wise modules. To use row, drag and drop feature we need to inject <code>RowDD</code> and <code>Edit</code> modules.
         </p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { RibbonComponent, RibbonTabsDirective, RibbonTabDirective, RibbonCollectionsDirective, RibbonCollectionDirective, RibbonGroupsDirective, RibbonGroupDirective, RibbonItemsDirective, RibbonItemDirective, RibbonColorPicker, DisplayMode } from '@syncfusion/ej2-react-ribbon';
-import { RibbonFileMenu, RibbonBackstage, RibbonItemSize, BackstageItemModel, Inject, LauncherClickEventArgs } from '@syncfusion/ej2-react-ribbon';
+import { RibbonFileMenu, RibbonBackstage, RibbonItemSize, RibbonGroupButtonSelection, BackstageItemModel, Inject, LauncherClickEventArgs } from '@syncfusion/ej2-react-ribbon';
 import { ItemModel } from '@syncfusion/ej2-react-splitbuttons';
 import { ToastComponent } from '@syncfusion/ej2-react-notifications';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
@@ -20,7 +20,7 @@ const Backstage = () => {
     const findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
     const selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
     const dictateOptions: ItemModel[] = [{ text: "Chinese" }, { text: "English" }, { text: "German" }, { text: "French" }];
-    const tableOptions: ItemModel[] = [{ text: "Insert Table" }, { text: "This Device" }, { text: "Convert Table" }, { text: "Excel Spreadsheet" }];
+    const tableOptions: ItemModel[] = [{ text: "Insert Table" }, { text: "Draw Table" }, { text: "Convert Table" }, { text: "Excel Spreadsheet" }];
     const shapeOptions: ItemModel[] = [{ text: "Lines" }, { text: "Rectangles" }, { text: "Basic Arrows" }, { text: "Basic Shapes" }, { text: "FlowChart" }];
     const headerOptions: ItemModel[] = [{ text: "Insert Header" }, { text: "Edit Header" }, { text: "Remove Header" }];
     const footerOptions: ItemModel[] = [{ text: "Insert Footer" }, { text: "Edit Footer" }, { text: "Remove Footer" }];
@@ -56,11 +56,11 @@ const Backstage = () => {
     }
 
     const getBackstageContent = (item: string): string => {
-        var homeContentTemplate = "<div id='home-wrapper'>{{newSection}}{{recentSection}}</div>";
-        var newSection = "<div id='new-section' class='new-wrapper'><div class='section-title'> New </div><div class='category_container'><div class='doc_category_image'></div> <span class='doc_category_text'> New document </span></div></div>";
-        var recentSection = "<div id='block-wrapper'><div class='section-title'> Recent </div>{{recentWrapper}}</div>";
+        var homeContentTemplate = "<div class='home-wrapper'>{{newSection}}{{recentSection}}</div>";
+        var newSection = "<div class='new-wrapper'><div class='section-title'> New </div><div class='category_container'><div class='doc_category_image'></div> <span class='doc_category_text'> New document </span></div></div>";
+        var recentSection = "<div class='block-wrapper'><div class='section-title'> Recent </div>{{recentWrapper}}</div>";
         var recentWrapper = "<div class='section-content'><table><tbody><tr><td> <span class='doc_icon e-icons {{icon}}'></span> </td><td><span style='display: block; font-size: 14px'> {{title}} </span><span style='font-size: 12px'> {{description}} </span></td></tr></tbody></table></div>";
-        var blockSection = "<div id='block-wrapper'> <div class='section-title'> {{blockTitle}} </div> {{blockSection}} </div>";
+        var blockSection = "<div class='block-wrapper'> <div class='section-title'> {{blockTitle}} </div> {{blockSection}} </div>";
         var content = "";
         var recentDocUpdatedString = "";
         switch (item) {
@@ -157,13 +157,13 @@ const Backstage = () => {
                                                 </RibbonCollectionDirective>
                                             </RibbonCollectionsDirective>
                                         </RibbonGroupDirective>
-                                        <RibbonGroupDirective header="Font" groupIconCss="e-icons e-bold" isCollapsible={false} enableGroupOverflow={true} orientation="Row" cssClass='font-group'>
+                                        <RibbonGroupDirective header="Font" overflowHeader="More Font Options" groupIconCss="e-icons e-bold" isCollapsible={false} enableGroupOverflow={true} orientation="Row" cssClass='font-group'>
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: fontStyle, index: 3, width: '150px', allowFiltering: true, change: (args) => { if (args.itemData) { updateContent("Font Style -> " + args.itemData.text); } } }}>
+                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: fontStyle, index: 3, label: 'Font Style', width: '115px', popupWidth: '150px', allowFiltering: true, change: (args) => { if (args.itemData) { updateContent("Font Style -> " + args.itemData.text); } } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: fontSize, index: 3, width: '65px', popupWidth: '85px', allowFiltering: true, change: (args) => { if (args.itemData) { updateContent("Font Size -> " + args.itemData.text); } } }}>
+                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: fontSize, index: 3, label: 'Font Size', width: '65px', popupWidth: '85px', allowFiltering: true, change: (args) => { if (args.itemData) { updateContent("Font Size -> " + args.itemData.text); } } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -180,6 +180,26 @@ const Backstage = () => {
                                                         <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-strikethrough", content: "Strikethrough", isToggle: true, clicked: () => { updateContent("Strikethrough"); } }}>
                                                         </RibbonItemDirective>
                                                         <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-change-case", content: "Change Case", isToggle: true, clicked: () => { updateContent("Change case"); } }}>
+                                                        </RibbonItemDirective>
+                                                    </RibbonItemsDirective>
+                                                </RibbonCollectionDirective>
+                                            </RibbonCollectionsDirective>
+                                        </RibbonGroupDirective>
+                                        <RibbonGroupDirective header="Paragraph" groupIconCss="e-icons e-align-center" orientation="Row">
+                                            <RibbonCollectionsDirective>
+                                                <RibbonCollectionDirective>
+                                                    <RibbonItemsDirective>
+                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-decrease-indent", content: 'Decrease Indent', clicked: () => { updateContent("Decrease Indent"); } }}>
+                                                        </RibbonItemDirective>
+                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-increase-indent", content: 'Increase Indent', clicked: () => { updateContent("Increase Indent"); } }}>
+                                                        </RibbonItemDirective>
+                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-paragraph", content: 'Paragraph', clicked: () => { updateContent("Paragraph Mark"); } }}>
+                                                        </RibbonItemDirective>
+                                                    </RibbonItemsDirective>
+                                                </RibbonCollectionDirective>
+                                                <RibbonCollectionDirective>
+                                                    <RibbonItemsDirective>
+                                                        <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Single, header: 'Alignment', items: [{iconCss: 'e-icons e-align-left', selected: true, click: () => { updateContent("Align Left") }}, {iconCss: 'e-icons e-align-center', click: () => { updateContent("Align Center") }}, {iconCss: 'e-icons e-align-right', click: () => { updateContent("Align Right") }}, {iconCss: 'e-icons e-justify', click: () => { updateContent("Justify") }}]}}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -243,7 +263,7 @@ const Backstage = () => {
                                                 </RibbonCollectionDirective>
                                             </RibbonCollectionsDirective>
                                         </RibbonGroupDirective>
-                                        <RibbonGroupDirective header="Illustration" id="illustration" groupIconCss="e-icons e-image" enableGroupOverflow={true} orientation="Row">
+                                        <RibbonGroupDirective header="Illustration" overflowHeader="Illustrations" id="illustration" groupIconCss="e-icons e-image" enableGroupOverflow={true} orientation="Row">
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
@@ -287,7 +307,7 @@ const Backstage = () => {
                                                 </RibbonCollectionDirective>
                                             </RibbonCollectionsDirective>
                                         </RibbonGroupDirective>
-                                        <RibbonGroupDirective header="Link" groupIconCss="e-icons e-link" isCollapsible={false}>
+                                        <RibbonGroupDirective header="Links" groupIconCss="e-icons e-link" isCollapsible={false}>
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
@@ -363,15 +383,15 @@ const Backstage = () => {
                             <div className="content4"></div>
                             <ToastComponent id='toast' ref={toastInstance} position={{ X: 'Right' }} width='auto' height={25} timeOut={2000} cssClass='e-toast-info' showCloseButton={true} target="#default-ribbonPlaceHolder" newestOnTop={true} animation={{ show: { effect: 'FadeIn' }, hide: { effect: 'FadeOut' } }} />
                         </div>
-                        <ListViewComponent id='default-pictureList' dataSource={['This device', 'Stock Images', 'Online Images']} showHeader={true} headerTitle="Insert Picture From" select={(args) => { updateContent("Picture -> " + args.text); }}></ListViewComponent>
+                        <ListViewComponent id='default-pictureList' dataSource={['This Device', 'Stock Images', 'Online Images']} showHeader={true} headerTitle="Insert Picture From" select={(args) => { updateContent("Picture -> " + args.text); }}></ListViewComponent>
                     </div>
                 </div>
             </div>
             <div id="action-description">
-                    <p>This sample showcases the basic ribbon backstage view.</p>
+                <p>This sample showcases the basic ribbon backstage view.</p>
             </div>
             <div id="description">
-                <p>The Ribbon Backstage is a place for handling files, settings, and document-related tasks. It simplifies user interactions with documents and app preferences, improving efficiency and organization.</p>
+                <p>The Ribbon backstage is a place for handling files, settings, and document-related tasks. It simplifies user interactions with documents and app preferences, improving efficiency and organization.</p>
             </div>
         </div>
     );

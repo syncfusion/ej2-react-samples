@@ -49,7 +49,7 @@ function MentionIntegration() {
     function displayTemplate(data: any): JSX.Element {
         return (
             <React.Fragment>
-                <a title={data.EmailId}>@{data.Name}</a>
+                <a href={`mailto:${data.EmailId}`} title={data.EmailId}>@{data.Name}</a>
             </React.Fragment>
         );
     }
@@ -63,7 +63,7 @@ function MentionIntegration() {
             <div className='control-section' id="rte">
                 <div className='rte-control-section'>
                     <RichTextEditorComponent id="mention_integration" placeholder="Type @ and tag the name" actionBegin={actionBegineHandler.bind(this)}  >
-                        <p>Hello <a title="maria@gmail.com">@Maria</a>, </p>
+                        <p>Hello <a href="mailto:maria@gmail.com" title="maria@gmail.com">@Maria</a>, </p>
                         <p>Welcome to Mention demo, it easily integrates any editable element like input, textarea or any contenteditable supported element.</p>
                         <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
                     </RichTextEditorComponent>

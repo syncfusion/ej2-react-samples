@@ -86,7 +86,7 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody><tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>X Axis:</div>
                                     </td>
@@ -105,7 +105,7 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                                             <input type="checkbox" id="yIndex" defaultChecked={true} onChange={this.yIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.ycheckElement = d} />
                                         </div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>
@@ -127,7 +127,7 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
                     <br></br>
-                    <p>Injecting Module</p>
+                    <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
         <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.

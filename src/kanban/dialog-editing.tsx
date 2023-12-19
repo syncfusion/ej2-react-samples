@@ -48,11 +48,13 @@ export class DialogEditing extends SampleBase<{}, {}> {
                 <div className="col-lg-3 property-section">
                     <PropertyPane title='Properties'>
                         <table id="property" title="Properties">
-                            <tr>
-                                <td>
-                                    <ButtonComponent id='addNew' className="e-btn e-dialog-add" onClick={this.addClick.bind(this)}>Add New Card</ButtonComponent>
-                                </td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <ButtonComponent id='addNew' className="e-btn e-dialog-add" onClick={this.addClick.bind(this)}>Add New Card</ButtonComponent>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

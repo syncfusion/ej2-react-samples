@@ -58,7 +58,7 @@ export class Editing extends SampleBase<{}, {}> {
         <div className='control-section'>
           <GanttComponent id='Editing' dataSource={editingData} dateFormat={'MMM dd, y'}
             treeColumnIndex={1} allowSelection={true} showColumnMenu={false} highlightWeekends={true}
-            allowUnscheduledTasks={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
+            projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
             taskFields={this.taskFields} timelineSettings={this.timelineSettings} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='410px' editSettings={this.editSettings} gridLines={this.gridLines} toolbar={this.toolbar} resourceFields={this.resourceFields} resources={editingResources}>
             <ColumnsDirective>

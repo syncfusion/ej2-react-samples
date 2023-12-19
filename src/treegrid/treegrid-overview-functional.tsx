@@ -4,10 +4,11 @@ import { useEffect } from 'react';
 import { TreeGridComponent, ColumnsDirective, ColumnDirective, Filter, Sort, Reorder, Inject, ITreeData } from '@syncfusion/ej2-react-treegrid';
 import { countries } from './data';
 import { IFilter } from '@syncfusion/ej2-react-grids';
-import { QueryCellInfoEventArgs, ActionEventArgs, getObject } from '@syncfusion/ej2-grids';
+import { ActionEventArgs, getObject } from '@syncfusion/ej2-grids';
 import { addClass, isNullOrUndefined } from '@syncfusion/ej2-base';
 import './treegrid-overview.css';
 import { updateSampleSection } from '../common/sample-base';
+import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 
 const Overview = () => {
   useEffect(() => {
@@ -23,6 +24,7 @@ const Overview = () => {
           <img
             className="e-image"
             src={"src/treegrid/images/" + flagIconLocation + ".png"}
+            alt = {flagIconLocation}
           ></img>
         </div>
         <div style={{ display: "inline-block", paddingLeft: "6px" }}>
@@ -32,38 +34,37 @@ const Overview = () => {
     );
   };
 
-  const treegridTemplate = (props): any => {
+  const treegridTemplate = (props: any): any => {
+    if (props.gdp < 2) {
     return (
-      <div className="statustemp">
-        <span className="statustxt">{props.gdp} %</span>
+      <div className="statustemp e-lowgdp">
+        <span className="statustxt e-lowgdp">{props.gdp} %</span>
       </div>
     );
-  };
-
-  const treeratingTemplate = (props): any => {
-    if (props.rating) {
+    }
+    else{
       return (
-        <div className="rating">
-          <span className="star"></span>
-          <span className="star"></span>
-          <span className="star"></span>
-          <span className="star"></span>
-          <span className="star"></span>
+        <div className="statustemp">
+          <span className="statustxt">{props.gdp} %</span>
         </div>
       );
-    } else {
-      return <span></span>;
     }
   };
 
-  const treeunemployTemplate = (props): any => {
-    return (
-      <div id="myProgress" className="pbar">
-        <div id="myBar" className="bar">
-          <div id="treegridlabel" className="barlabel"></div>
-        </div>
-      </div>
-    );
+  const treeratingTemplate = (props: any): any => {
+    return (<div><RatingComponent value={props.rating} cssClass={'custom-rating'} readOnly={true}/></div>);
+  };
+
+  const treeunemployTemplate = (props: any): any => {
+    return (<div id="myProgress" className="pbar">
+    {props.unemployment <=4 ?
+            <div id="myBar" className="bar progressdisable" style={{ width: props.unemployment * 10 + "%" }}>
+      <div id="pbarlabel" className="barlabel">{props.unemployment + "%"}</div>
+    </div> :
+            <div id="myBar" className="bar" style={{ width: props.unemployment * 10 + "%" }}>
+      <div id="pbarlabel" className="barlabel">{props.unemployment + "%"}</div>
+    </div>}
+    </div>);
   };
 
   const treelocationTemplate = (props): any => {
@@ -106,44 +107,6 @@ const Overview = () => {
   const populationValue = (field: string, data: Object) => {
     return data[field] / 1000000;
   };
-  const queryCellinfo = (args: QueryCellInfoEventArgs): void => {
-    if (args.column.field === "gdp") {
-      if (args.data[args.column.field] < 2) {
-        args.cell.querySelector(".statustxt").classList.add("e-lowgdp");
-        args.cell.querySelector(".statustemp").classList.add("e-lowgdp");
-      }
-    }
-    if (args.column.field === "rating") {
-      if (args.column.field === "rating") {
-        for (let i: number = 0; i < args.data[args.column.field]; i++) {
-          args.cell.querySelectorAll("span")[i].classList.add("checked");
-        }
-      }
-    }
-    if (args.column.field === "unemployment") {
-      if (args.data[args.column.field] <= 4) {
-        addClass([args.cell.querySelector(".bar")], ["progressdisable"]);
-      }
-      (args.cell.querySelector(".bar") as HTMLElement).style.width =
-        args.data[args.column.field] * 10 + "%";
-      args.cell.querySelector(".barlabel").textContent =
-        args.data[args.column.field] + "%";
-    }
-
-    if (args.column.field === "name") {
-      let parentItem: ITreeData = getObject("parentItem", args.data);
-      let imageElement = (args.cell as Element).querySelector(
-        ".e-image"
-      ) as HTMLImageElement;
-      if (isNullOrUndefined(parentItem)) {
-        let name: string = getObject("name", args.data);
-        imageElement.src = "src/treegrid/images/" + name + ".png";
-      } else {
-        let name: string = getObject("name", parentItem);
-        imageElement.src = "src/treegrid/images/" + name + ".png";
-      }
-    }
-  };
   let flagtemplate: any = gridTemplate;
   let gdptemplate: any = treegridTemplate;
   let ratingtemplate: any = treeratingTemplate;
@@ -168,7 +131,6 @@ const Overview = () => {
           allowFiltering={true}
           allowSorting={true}
           filterSettings={{ type: "Menu", hierarchyMode: "Parent" }}
-          queryCellInfo={queryCellinfo.bind(this)}
         >
           <ColumnsDirective>
             <ColumnDirective

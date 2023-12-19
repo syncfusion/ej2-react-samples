@@ -257,6 +257,7 @@ const ColorMap = () => {
             <div className='col-lg-4 property-section'>
                 <PropertyPane title='Properties'>
                     <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+                      <tbody>
                         <tr>
                             <td>
                                 <div style={{ paddingLeft: '0px' }}>Color Mapping Type</div>
@@ -297,6 +298,7 @@ const ColorMap = () => {
                                 </div>
                             </td>
                         </tr>
+                       </tbody>
                     </table>
                 </PropertyPane>
             </div>

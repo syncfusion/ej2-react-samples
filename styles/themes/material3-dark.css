@@ -1,3 +1,11 @@
+.material3-dark .sb-reset-icon:before {
+    content: '\e7e7';
+}
+
+.material3-dark .sb-reset-icon {
+    color: #ffffff;
+}
+
 .material3-dark .e-samplestatus.new,
 .material3-dark .e-samplestatus.new.tree,
 .material3-dark .e-samplestatus.New,
@@ -46,8 +54,7 @@
     color: #ffffff
 }
 
-.material3-dark .sb-left-pane .e-listview .e-list-item.e-active:hover,
-.material3-dark .sb-reset-icon {
+.material3-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
     color: #000;
 }
 

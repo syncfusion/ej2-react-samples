@@ -56,78 +56,49 @@ export class RemoteData extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
                     <div id="waitingpopup" className="waitingpopup" style={{ display: "none" }}>
                         <span id="gif" className="image"></span>
                     </div>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
-                        load={this.load.bind(this)}
-                        primaryXAxis={{
-                            rangePadding: 'Additional',
-                            valueType: 'Category',
-                            title: 'Assignee',
-                            majorGridLines: { width: 0 },
-                        }}
-                        primaryYAxis={{
-                            majorGridLines: { width: 0 },
-                            majorTickLines: { width: 0 },
-                            lineStyle: { width: 0 },
-                            labelStyle: {
-                                color: 'transparent'
-                            }
-                        }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        chartArea={{ border: { width: 0 } }}
-                        axisLabelRender={labelRender}
-                        pointRender={this.pointRender.bind(this)}
-                        tooltipRender={this.tooltipRender.bind(this)}
-                        title="Sprint Task Analysis"
-                        loaded={this.onChartLoad.bind(this)}
-                        legendSettings={{ visible: false }}
-                        tooltip={{ enable: true, header: "Freight rate" }}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} load={this.load.bind(this)} primaryXAxis={{ rangePadding: 'Additional', valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: {width: 0} }} primaryYAxis={{ majorGridLines: { width: 1 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, title: 'Freight rate in U.S. dollars' }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} axisLabelRender={this.axisLabelRender.bind(this)} pointRender={this.pointRender.bind(this)} tooltipRender={this.tooltipRender.bind(this)} title="Container freight rate" loaded={this.onChartLoad.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true, header: "<b>Freight rate</b>"}}>
                         <Inject services={[ColumnSeries, Legend, Category, Tooltip, DataLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={dataManager} xName='CustomerID' type='Column' yName='Freight' name='Story Point' query={query}
-                                animation={{ enable: false }} marker={{ dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }}>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={dataManager} xName='CustomerID' type='Column' yName='Freight' name='Story Point' query={query} animation={{ enable: false }} marker={{ dataLabel: { visible: true, position: 'Top',format: "{value}K", font: { fontWeight: '600', color: '#ffffff' },} }} />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample illustrates how to retrieve remote the data for chart.
-            </p>
+                    <p>This sample shows the way in which the Charts component can be bound to a remote service. The data source of the chart is bound to remote data using the DataManager component.</p>
                 </div>
                 <div id="description">
-                    <p>The Chart supports data binding. The <code> dataSource</code> property can be assigned with the instance of <code><a target="_blank"
+                    <p>
+                        The Chart supports data binding. The <code> dataSource</code> property can be assigned with the instance of <code><a target="_blank"
                         href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">
-                        DataManager</a></code> to bind remote data.</p>
-
-                    <p>The DataManager, which will act as an interface between the service endpoint and the chart, will require the below minimal
-                        information to interact with service endpoint properly.
+                        DataManager</a></code> to bind remote data.
                     </p>
+                    <p>The DataManager, which will act as an interface between the service endpoint and the chart, will require the below minimal information to interact with service endpoint properly.</p>
                     <ul>
                         <li><code>DataManager-&gt;url</code> - Defines the service endpoint to fetch data</li>
-                        <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used for
-                           remote binding.</li>
+                        <li><code>DataManager-&gt;adaptor</code> - Defines the adaptor option. By default, <code>ODataAdaptor</code> is used for remote binding.</li>
                     </ul>
-                    <p>Adaptor is responsible for processing response and request from/to the service endpoint. <code>@syncfusion/ej2-data</code>        package provides some predefined adaptors which are designed to interact with particular service endpoints. They
-                       are,</p>
+                    <p>
+                        Adaptor is responsible for processing response and request from/to the service endpoint. <code>@syncfusion/ej2-data</code> package provides some predefined adaptors which are designed to interact with particular service endpoints. They
+                        are,
+                    </p>
                     <ul>
-                        <li><code>UrlAdaptor</code> - Use this to interact any remote services. This is the base adaptor for all remote based
-                          adaptors.</li>
+                        <li><code>UrlAdaptor</code> - Use this to interact any remote services. This is the base adaptor for all remote based adaptors.</li>
                         <li><code>ODataAdaptor</code> - Use this to interact with OData endpoints.</li>
                         <li><code>ODataV4Adaptor</code> - Use this to interact with OData V4 endpoints.</li>
                         <li><code>WebApiAdaptor</code> - Use this to interact with Web API created under OData standards.</li>
                         <li><code>WebMethodAdaptor</code> - Use this to interact with web methods.</li>
                     </ul>
-                    <p>In this demo, remote data is bound by assigning service data as an instance of <code><a target="_blank"
+                    <p>
+                        In this demo, remote data is bound by assigning service data as an instance of <code><a target="_blank"
                         href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">
                         DataManager</a></code> to the <code> dataSource
-                          </code> property.</p>
+                        </code> property.
+                    </p>
                     <p>
                         More information about the remote data binding can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#remote-data">documentation section</a>.
                     </p>
@@ -135,6 +106,11 @@ export class RemoteData extends SampleBase<{}, {}> {
             </div>
         )
     }
+    public axisLabelRender = (args: IAxisLabelRenderEventArgs): void => {
+        if (args.axis.name === 'primaryYAxis') {
+            args.text = '' + args.value * 1000;
+        }
+    };
     public pointRender(args: IPointRenderEventArgs) {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'material';

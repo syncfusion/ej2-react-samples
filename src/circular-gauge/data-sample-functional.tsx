@@ -1,6 +1,3 @@
-/**
- * Sample to show communication between Grid and Circular Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef } from "react";

@@ -260,7 +260,7 @@ function RightToLeft() {
                 </div>
             </div>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent ref={(scope) => { viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/rtl-text.pdf"  enableRtl={true} locale='ar-AE' annotationSettings={{ author: 'مقبول' }} style={{ 'height': '640px' }}  >
+            <PdfViewerComponent ref={(scope) => { viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/rtl-text.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" enableRtl={true} locale='ar-AE' annotationSettings={{ author: 'مقبول' }} style={{ 'height': '640px' }}  >
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
             </PdfViewerComponent>
         </div>
@@ -288,7 +288,7 @@ function RightToLeft() {
             viewer.serviceUrl = '';
         }
         else {
-            viewer.serviceUrl = 'https://ej2services.syncfusion.com/react/development/api/pdfviewer';
+            viewer.serviceUrl = 'https://services.syncfusion.com/react/production/api/pdfviewer';
         }
         viewer.dataBind();
         viewer.load(viewer.documentPath, null);

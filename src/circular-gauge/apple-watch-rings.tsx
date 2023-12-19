@@ -1,7 +1,3 @@
-/**
- * Sample to design Apple watch ring using the Circular Gauge
- */
-
 // custom code start
 // tslint:disable
 // custom code end

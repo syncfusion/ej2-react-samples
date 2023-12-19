@@ -134,6 +134,7 @@ const PrintExport = () => {
                                 overflow: "hidden",
                             }}
                         >
+                         <tbody>
                             <tr>
                                 <td>
                                     <div style={{ paddingLeft: "0px" }}>Export Type</div>
@@ -199,6 +200,7 @@ const PrintExport = () => {
                                     </div>
                                 </td>
                             </tr>
+                          </tbody>
                         </table>
                     </PropertyPane>
                 </div>

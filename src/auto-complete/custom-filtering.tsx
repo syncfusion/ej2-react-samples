@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { AutoCompleteComponent, FilteringEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
-import * as Fuse from 'fuse.js';
+import Fuse from 'fuse.js';
 import './custom-filtering.css';
 import * as data from './dataSource.json';
 
@@ -23,7 +23,7 @@ export class CustomFiltering extends SampleBase<{}, {}> {
       findAllMatches: true
     };
     // create object from Fuse constructor
-    let fuse: Fuse = new Fuse(this.booksData, options);
+    let fuse: Fuse<any> = new Fuse(this.booksData, options);
     // store the search result data based on typed characters
     let result: any = fuse.search(e.text);
     let data: { [key: string]: Object; }[] = [];

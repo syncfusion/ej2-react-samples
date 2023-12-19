@@ -145,7 +145,6 @@ function RangeExport() {
                             dataSource={dateTimeData}
                             xName='xDate'
                             yName='Close'
-                            width={Browser.isDevice ? '100%' : '80%'}
                             load={rangeLoad.bind(this)}
                             changed={changed.bind(this)}>
                             <Inject services={[DateTime]} />
@@ -169,7 +168,6 @@ function RangeExport() {
                                 labelFormat: '${value}M'
                             }}
                             load={chartLoad.bind(this)}
-                            width={Browser.isDevice ? '100%' : '80%'}
                             height='350'
                             chartArea={{ border: { width: 0 } }}
                             tooltip={{
@@ -190,6 +188,7 @@ function RangeExport() {
                 <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <tbody>
                             <tr style={{ height: "50px" }}>
                                 <td style={{ width: "40%" }}>
                                     Export Type:
@@ -222,6 +221,7 @@ function RangeExport() {
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -238,8 +238,7 @@ function RangeExport() {
                     The rendered range navigator can be exported as either JPEG, PNG, or SVG format. It can be achieved using the Blob. It is supported only in modern browsers.
                 </p>
                 <p>
-                    More information on the export can be found in this
-                    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the export can be found in this <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
                 </p>
             </div>
         </div >

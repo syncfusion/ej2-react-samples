@@ -1,6 +1,3 @@
-/**
- * Sample to design Arc Gauge using the Circular Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef } from "react";
@@ -69,16 +66,18 @@ const ArcGauge = () => {
     let gauge = useRef<CircularGaugeComponent>(null);
     let sliderElement = useRef<SliderComponent>(null);
 
-    const resized = (args: IResizeEventArgs): void => {
-        args.gauge.axes[0].annotations[0].content = '<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">' +
-        gauge.current.axes[0].pointers[0].value.toString() + '/100</div>';
-    }
     const load = (args: ILoadedEventArgs): void => {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
+    }
+
+    const loaded = (args: ILoadedEventArgs): void => {
+        if (document.getElementById('pointervalue')) {
+            document.getElementById('pointervalue').innerHTML = args.gauge.axes[0].pointers[0].value.toString() + '/100';
+        }
     }
 
     const sliderChange = () => {
@@ -107,7 +106,7 @@ const ArcGauge = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div id='circular_gauge_sample' className='control-section'>
-                <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} resized={resized.bind(this)} load={load.bind(this)} ref={gauge} id='gauge'>
+                <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} load={load.bind(this)} loaded={loaded.bind(this)} ref={gauge} id='gauge'>
                     <Inject services={[Annotations]} />
                     <AxesDirective>
                         <AxisDirective radius='80%' startAngle={200} endAngle={160} minimum={1} maximum={100} lineStyle={{ width: 0 }} labelStyle={{ font: { fontFamily: 'inherit', size: '0px' } }} majorTicks={{ height: 0 }} minorTicks={{ height: 0 }}>

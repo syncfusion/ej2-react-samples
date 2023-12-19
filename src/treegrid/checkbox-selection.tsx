@@ -43,7 +43,7 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
             In this demo, Tree Grid mutliple selection has been enabled with selection persistance.
           </p>
           <p>
-            More information on the checkbox selection configuration can be found in this documentation section.
+            More information on the checkbox selection configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/selection/check-box-selection">documentation section</a>.
           </p>
         </div>
       </div>

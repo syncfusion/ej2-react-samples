@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import {
     StockChartComponent, StockChartSeriesCollectionDirective, StockChartSeriesDirective, Inject,ITooltipRenderEventArgs,Crosshair,IAxisLabelRenderEventArgs,
     DateTime, Tooltip, RangeTooltip, ColumnSeries, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
-    StockChartRowsDirective, StockChartRowDirective, StockChartAxesDirective, StockChartAxisDirective, IStockChartEventArgs, ChartTheme
+    StockChartRowsDirective, StockChartRowDirective, StockChartAxesDirective, StockChartAxisDirective, IStockChartEventArgs, ChartTheme, StockLegend
 } from '@syncfusion/ej2-react-charts';
 import {
     EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator,
@@ -35,47 +35,20 @@ export class MultiPane extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <StockChartComponent id='stockchartpane' 
-                        primaryYAxis={{
-                            lineStyle: { color: 'transparent' },
-                            majorTickLines: { color: 'transparent', width: 0 }
-                        }}
-                        primaryXAxis={{
-                            crosshairTooltip: { enable: true },
-                             majorGridLines: { width: 0 },
-                             valueType: 'DateTime',
-                        }}
-                        chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true, format: 'High : <b>${point.high}</b><br/>Low :<b>${point.low}</b><br/>Open : <b>${point.open}</b><br/>Close : <b>${point.close}</b><br/>Volume : <b>${point.volume}</b>' }}
-                        tooltipRender={tooltipRender}
-                        axisLabelRender={this.axisLabelRender.bind(this)}
-                        crosshair={{enable: true }}
-                        load={this.load.bind(this)}
-                        title= 'AAPL Historical'
-                    >
-                        <Inject services={[DateTime, Crosshair, Tooltip, RangeTooltip, ColumnSeries, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines,
-                        EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,
-                        AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator]} />
+                    <StockChartComponent id='stockchartpane' primaryYAxis={{ lineStyle: { color: 'transparent' }, majorTickLines: { color: 'transparent', height: 0 } }} primaryXAxis={{ crosshairTooltip: { enable: true }, majorGridLines: { width: 0 }, valueType: 'DateTime' }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, format:'High : <b>${point.high}</b><br/>Low :<b>${point.low}</b><br/>Open : <b>${point.open}</b><br/>Close : <b>${point.close}</b><br/>Volume : <b>${point.volume}</b>' }} tooltipRender={tooltipRender} axisLabelRender={this.axisLabelRender.bind(this)} crosshair={{ enable: true }} load={this.load.bind(this)} title='AAPL Historical' legendSettings={{ visible: true }}>
+                        <Inject services={[DateTime, Crosshair, Tooltip, RangeTooltip, ColumnSeries, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines, EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export, AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator, StockLegend]} />
                         <StockChartRowsDirective>
-                            <StockChartRowDirective height={'30%'}>
-                            </StockChartRowDirective>
-                            <StockChartRowDirective height={'70%'}>
-                            </StockChartRowDirective>
+                            <StockChartRowDirective height={'30%'} />
+                            <StockChartRowDirective height={'70%'} />
                         </StockChartRowsDirective>
                         <StockChartAxesDirective>
-                            <StockChartAxisDirective name='yAxis1' rowIndex={1} labelPosition={'Inside'} tickPosition={'Inside'} opposedPosition={true} lineStyle={{ color: 'transparent' }}
-                                majorTickLines={{ color: 'transparent' }}>
-                            </StockChartAxisDirective>
+                            <StockChartAxisDirective name='yAxis1' rowIndex={1} labelPosition={'Inside'} tickPosition={'Inside'} opposedPosition={true} lineStyle={{ color: 'transparent' }} majorTickLines={{ color: 'transparent' }} />
                         </StockChartAxesDirective>
                         <StockChartSeriesCollectionDirective>
-                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='close' type='Candle' yAxisName='yAxis1' name="Apple Inc" >
-                            </StockChartSeriesDirective>
-                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='volume' type='Column' enableTooltip={false} name="Volume" >
-                            </StockChartSeriesDirective>
+                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='close' type='Candle' yAxisName='yAxis1' name="Apple Inc" />
+                            <StockChartSeriesDirective dataSource={chartData} xName='x' yName='volume' type='Column' enableTooltip={false} name="Volume" />
                         </StockChartSeriesCollectionDirective>
                     </StockChartComponent>
                 </div>

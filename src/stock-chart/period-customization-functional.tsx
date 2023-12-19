@@ -55,14 +55,12 @@ const PeroidCustomization = () =>{
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure the dynamic stock chart.
-                    <code>LineSeries</code> is used to represent selected data value.
+                    In this example, you can see how to render and configure the dynamic stock chart. <code>LineSeries</code> is used to represent selected data value.
                 </p>
                 <br></br>
                 <p>Injecting Module</p>
                 <p>
-                    The Stock chart component features are segregated into individual feature-wise modules. To use date-time axis, inject the <code>DateTime</code> module using the
-                    <code>StockChart.Inject(DateTime)</code> method. To use the LineSeries, inject the <code>LineSeries</code> module using the <code>StockChart.Inject(LineSeries)</code> method.
+                    The Stock chart component features are segregated into individual feature-wise modules. To use date-time axis, inject the <code>DateTime</code> module using the <code>StockChart.Inject(DateTime)</code> method. To use the LineSeries, inject the <code>LineSeries</code> module using the <code>StockChart.Inject(LineSeries)</code> method.
                 </p>
             </div>
         </div>

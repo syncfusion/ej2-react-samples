@@ -14,7 +14,7 @@ export class Default extends SampleBase<{}, {}> {
   public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
   public selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
   public dictateOptions: ItemModel[] = [{ text: "Chinese" }, { text: "English" }, { text: "German" }, { text: "French" }];
-  public tableOptions: ItemModel[] = [{ text: "Insert Table" }, { text: "This device" }, { text: "Convert Table" }, { text: "Excel SpreadSheet" }];
+  public tableOptions: ItemModel[] = [{ text: "Insert Table" }, { text: "Draw Table" }, { text: "Convert Table" }, { text: "Excel SpreadSheet" }];
   public shapeOptions: ItemModel[] = [{ text: "Lines" }, { text: "Rectangles" }, { text: "Basic Arrows" }, { text: "Basic Shapes" }, { text: "FlowChart" }];
   public headerOptions: ItemModel[] = [{ text: "Insert Header" }, { text: "Edit Header" }, { text: "Remove Header" }];
   public footerOptions: ItemModel[] = [{ text: "Insert Footer" }, { text: "Edit Footer" }, { text: "Remove Footer" }];
@@ -100,19 +100,19 @@ public launchClick(args: LauncherClickEventArgs) {
                                                 </RibbonCollectionDirective>
                                             </RibbonCollectionsDirective>
                                         </RibbonGroupDirective>
-                                        <RibbonGroupDirective header="Font" groupIconCss="e-icons e-bold" isCollapsible={false} enableGroupOverflow={true} orientation="Row" cssClass='font-group'>
+                                        <RibbonGroupDirective header="Font" overflowHeader="More Font Options" groupIconCss="e-icons e-bold" isCollapsible={false} enableGroupOverflow={true} orientation="Row" cssClass='font-group'>
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                         <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontStyle, index: 3, width: '150px', allowFiltering: true, change: function (args) { if (args.itemData) { this.updateContent("Font Style -> " + args.itemData.text); } } }}>
+                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontStyle, index: 3, label: 'Font Style', width: '115px', popupWidth: '150px', allowFiltering: true, change: function (args) { if (args.itemData) { this.updateContent("Font Style -> " + args.itemData.text); } } }}>
                                                         </RibbonItemDirective>
-                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontSize, index: 3, width: '65px', popupWidth: '85px', allowFiltering: true, change: function (args) { if (args.itemData) { this.updateContent("Font Size -> " + args.itemData.text); } } }}>
+                                                        <RibbonItemDirective type="ComboBox" comboBoxSettings={{ dataSource: this.fontSize, index: 3, label: 'Font Size', width: '65px', popupWidth: '85px', allowFiltering: true, change: function (args) { if (args.itemData) { this.updateContent("Font Size -> " + args.itemData.text); } } }}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Multiple, items: [{iconCss: 'e-icons e-bold', content: 'Bold', selected: true, click: () => { this.updateContent("Bold") }}, {iconCss: 'e-icons e-italic', content: 'Italic', click: () => { this.updateContent("Italic") }}, {iconCss: 'e-icons e-underline', content: 'Underline', click: () => { this.updateContent("Underline") }}, {iconCss: 'e-icons e-strikethrough', content: 'Strikethrough', click: () => { this.updateContent("Strikethrough") }}, {iconCss: 'e-icons e-change-case', content: 'Change Case', click: () => { this.updateContent("Change Case") }}]}}>
+                                                        <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Multiple, header: 'Format Styles', items: [{iconCss: 'e-icons e-bold', content: 'Bold', selected: true, click: () => { this.updateContent("Bold") }}, {iconCss: 'e-icons e-italic', content: 'Italic', click: () => { this.updateContent("Italic") }}, {iconCss: 'e-icons e-underline', content: 'Underline', click: () => { this.updateContent("Underline") }}, {iconCss: 'e-icons e-strikethrough', content: 'Strikethrough', click: () => { this.updateContent("Strikethrough") }}, {iconCss: 'e-icons e-change-case', content: 'Change Case', click: () => { this.updateContent("Change Case") }}]}}>
                                                         </RibbonItemDirective>
                                                         <RibbonItemDirective type="ColorPicker" allowedSizes={RibbonItemSize.Small} displayOptions={DisplayMode.Simplified | DisplayMode.Classic} colorPickerSettings={{value: '#123456', change: function (args) { this.updateContent(args.currentValue.hex + " color"); }}}>
                                                         </RibbonItemDirective>
@@ -123,18 +123,18 @@ public launchClick(args: LauncherClickEventArgs) {
                                         <RibbonGroupDirective header="Paragraph" groupIconCss="e-icons e-align-center" orientation="Row">
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
-                                                    <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-decrease-indent", clicked: () => { this.updateContent("Decrease Indent"); } }}>
-                                                        </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-increase-indent", clicked: () => { this.updateContent("Increase Indent"); } }}>
-                                                        </RibbonItemDirective>
-                                                        <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-paragraph", clicked: () => { this.updateContent("Paragraph Mark"); } }}>
-                                                        </RibbonItemDirective>
-                                                    </RibbonItemsDirective>
+                                                <RibbonItemsDirective>
+                                                    <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-decrease-indent", content: 'Decrease Indent', clicked: function() { this.updateContent("Decrease Indent"); } }}>
+                                                    </RibbonItemDirective>
+                                                    <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-increase-indent", content: 'Increase Indent', clicked: function() { this.updateContent("Increase Indent"); } }}>
+                                                    </RibbonItemDirective>
+                                                    <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Small} buttonSettings={{ iconCss: "e-icons e-paragraph", content: 'Paragraph', clicked: function() { this.updateContent("Paragraph Mark"); } }}>
+                                                    </RibbonItemDirective>
+                                                </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Single, items: [{iconCss: 'e-icons e-align-left', selected: true, click: () => { this.updateContent("Align Left") }}, {iconCss: 'e-icons e-align-center', click: () => { this.updateContent("Align Center") }}, {iconCss: 'e-icons e-align-right', click: () => { this.updateContent("Align Right") }}, {iconCss: 'e-icons e-justify', click: () => { this.updateContent("Justify") }}]}}>
+                                                        <RibbonItemDirective type="GroupButton" allowedSizes={RibbonItemSize.Small} groupButtonSettings={{selection: RibbonGroupButtonSelection.Single, header: 'Alignment', items: [{iconCss: 'e-icons e-align-left', selected: true, click: () => { this.updateContent("Align Left") }}, {iconCss: 'e-icons e-align-center', click: () => { this.updateContent("Align Center") }}, {iconCss: 'e-icons e-align-right', click: () => { this.updateContent("Align Right") }}, {iconCss: 'e-icons e-justify', click: () => { this.updateContent("Justify") }}]}}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>
                                                 </RibbonCollectionDirective>
@@ -198,7 +198,7 @@ public launchClick(args: LauncherClickEventArgs) {
                                                 </RibbonCollectionDirective>
                                             </RibbonCollectionsDirective>
                                         </RibbonGroupDirective>
-                                        <RibbonGroupDirective header="Illustration" id="illustration" groupIconCss="e-icons e-image" enableGroupOverflow={true} orientation="Row">
+                                        <RibbonGroupDirective header="Illustration" overflowHeader="Illustrations" id="illustration" groupIconCss="e-icons e-image" enableGroupOverflow={true} orientation="Row">
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
@@ -242,7 +242,7 @@ public launchClick(args: LauncherClickEventArgs) {
                                                 </RibbonCollectionDirective>
                                             </RibbonCollectionsDirective>
                                         </RibbonGroupDirective>
-                                        <RibbonGroupDirective header="Link" groupIconCss="e-icons e-link" isCollapsible={false}>
+                                        <RibbonGroupDirective header="Links" groupIconCss="e-icons e-link" isCollapsible={false}>
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
@@ -318,7 +318,7 @@ public launchClick(args: LauncherClickEventArgs) {
                             <div className="content4"></div>
                             <ToastComponent id='toast' ref={toast => this.toastInstance = toast} position={{ X: 'Right' }}  width='auto' height={25} timeOut={2000} cssClass='e-toast-info' showCloseButton={true} target="#default-ribbonPlaceHolder" newestOnTop={true} animation={{ show: { effect: 'FadeIn' }, hide: { effect: 'FadeOut' } }} />
                         </div>
-                        <ListViewComponent id='default-pictureList' dataSource={['This device', 'Stock Images', 'Online Images']} showHeader={true} headerTitle="Insert Picture From" select={function (args) { this.updateContent("Picture -> " + args.text); }}></ListViewComponent>
+                        <ListViewComponent id='default-pictureList' dataSource={['This Device', 'Stock Images', 'Online Images']} showHeader={true} headerTitle="Insert Picture From" select={function (args) { this.updateContent("Picture -> " + args.text); }}></ListViewComponent>
                     </div>
                 </div>
             </div>

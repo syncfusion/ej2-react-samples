@@ -130,7 +130,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody> <tr style={{ height: '50px' }}>
                                     <td>
                                         <div>Intersect Action: </div>
                                     </td>
@@ -174,7 +174,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                                     <td style={{ padding: 10, width: '40%' }}>
                                         <NumericTextBoxComponent width={120} value={34} min={1} change={this.xwid.bind(this)} ref={d => this.widthElement = d} />
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>

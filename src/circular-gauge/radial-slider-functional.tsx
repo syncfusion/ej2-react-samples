@@ -1,6 +1,3 @@
-/**
- * Sample to design radial slider using the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useEffect, useRef } from 'react';
@@ -62,7 +59,7 @@ const RadialSlider = () => {
                 </CircularGaugeComponent>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates how to create a range slider by utilizing the functions available in the circular gauge.</p>
+                <p>This sample demonstrates how to create a range slider component by utilizing the functions available in the circular gauge.</p>
             </div>
             <div id="description">
                 <p>In this example, you can see how to render and configure a new range slider in the circular gauge. It is possible to achieve this by combining ranges and a marker pointer. The marker pointer has been made interactive, so the value changes as you drag it.</p>

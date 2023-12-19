@@ -89,7 +89,7 @@ const Grouping = () => {
                 <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '50%' }}>
                                     <div>Mode: </div>
                                 </td>
@@ -108,7 +108,7 @@ const Grouping = () => {
                                         <input type="range" name="clubvalue" onChange={onClubValue.bind(this)} ref={slider} defaultValue="9" min="0" max="27" id="clubvalue" style={{ marginLeft: '-5px' }} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>

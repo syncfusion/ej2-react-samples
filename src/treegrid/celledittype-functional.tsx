@@ -154,8 +154,7 @@ const EditType = () => {
           <code>Edit</code>module into the <code>services</code>.
         </p>
         <p>
-          More information on the selection configuration can be found in this
-          documentation section.
+          More information on the selection configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/editing/cell-editing">documentation section</a>.
         </p>
       </div>
     </div>

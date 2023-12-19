@@ -1,7 +1,3 @@
-/**
- * Sample for text pointer in the Circular Gauge
- */
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useEffect } from 'react';
@@ -34,7 +30,7 @@ const TextPointer = () => {
                     <AxesDirective>
                         <AxisDirective startAngle={270} endAngle={90} radius='120%' minimum={0} maximum={120} rangeGap={3} majorTicks={{ width: 0 }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ font: { size: '0px' } }}>
                             <PointersDirective>
-                                <PointerDirective pointerWidth={10} radius='60%' needleStartWidth={1} needleEndWidth={1} value={82} cap={{ radius: 0 }} animation={{ enable: false }} />
+                                <PointerDirective pointerWidth={10} radius='60%' needleStartWidth={1} needleEndWidth={1} value={82} cap={{ radius: 0 }} animation={{ enable: true }} />
                                 <PointerDirective radius='85%' type='Marker' value={20} text='Poor' markerShape='Text' animation={{ enable: false }} textStyle={{ size: '18px', fontFamily: 'inherit' }} />
                                 <PointerDirective radius='85%' type='Marker' value={60} text='Average' markerShape='Text' animation={{ enable: false }} textStyle={{ size: '18px', fontFamily: 'inherit' }} />
                                 <PointerDirective radius='85%' type='Marker' value={100} text='Good' markerShape='Text' animation={{ enable: false }} textStyle={{ size: '18px', fontFamily: 'inherit' }} />

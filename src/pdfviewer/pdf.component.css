@@ -1,20 +1,18 @@
-/* custom code start*/
-#magnificationToolbarItems {
-    position: absolute;
-    bottom: 66px;
-    display: block;
-    width: auto;
-    transform: rotate(90deg);
-    right: 7.5px;
-    z-index: 1001;
- }
+#pdfviewer {
+    height: 640px;
+}
 
 #magnificationToolbar {
     background: transparent;
-}
-
-.e-pv-zoom-out-sample {
-    transform: rotate(-90deg);
+    height: auto;
+    min-height: 56px;
+    width: auto;
+    border: none;
+    position: absolute;
+    z-index: 900;
+    top: calc(100% - 140px);
+    left: calc(100% - 150px);
+    transform: rotate(90deg);
 }
 
 div#magnificationToolbar.e-toolbar .e-toolbar-items {
@@ -26,12 +24,49 @@ div#magnificationToolbar.e-toolbar .e-toolbar-items {
     border-radius: 50%;
     min-height: 30px;
     min-width: 30px;
-    border: 0.5px solid #c8c8c8;
+    border: 1px solid #c8c8c8;
 }
 
-#topToolbar {
-    top: 0px;
-    z-index: 1001;
+#customToolbar {
+    top: 20px;
+    z-index: 900;
+}
+
+.e-bookmark-popup {
+    height: 300px;
+    max-width: 300px;
+}
+
+.e-text-search-popup {
+    height: 104px;
+    max-width: 348px;
+}
+
+.e-custom-search-input {
+    width: 234px;
+}
+
+.e-text-search-popup .e-footer-content,
+.e-bookmark-popup .e-footer-content {
+    padding: 0;
+    height: 0;
+}
+
+.search-button,
+.search-button:disabled,
+.search-button:focus,
+.search-button:hover {
+    background: transparent;
+    box-shadow: none;
+}
+
+#popup .e-dlg-content {
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.e-pv-bookmarks {
+    min-width: 234px;
 }
 
 .e-pv-current-page-number {
@@ -44,64 +79,9 @@ div#magnificationToolbar.e-toolbar .e-toolbar-items {
     border-width: 1px;
 }
 
-.e-pv-icons {
-    font-family: "e-pv-icons";
-    font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
-    line-height: 1;
-    text-transform: none;
+.e-btn-icon.e-pv-zoom-out-icon.e-icons {
+    transform: rotate(90deg);
 }
-
-.e-pdf-toolbar .e-icons::before {
-    font-family: 'e-pv-icons';
-}
-
-.e-pv-icon-search::before {
-    font-family: 'e-pv-icons';
-    font-size: 12px;
-}
-
-.e-pv-download-document-icon::before {
-    content: '\ed05';
-}
-
-.e-pv-print-document-icon::before {
-    content: '\ed08';
-}
-
-.e-pv-previous-page-navigation-icon::before {
-    content: '\ed01';
-}
-
-.e-pv-next-page-navigation-icon::before {
-    content: '\ed02';
-}
-
-.e-pv-zoom-out-sample::before {
-    content: '\ed03';
-}
-
-.e-pv-zoom-in-icon::before {
-    content: '\ed04';
-}
-
-.e-pv-fit-page::before {
-    content: '\ed12';
-}
-.e-pv-open-document-icon::before {
-    content: '\ed13';
-} 
-
-@font-face {
-    font-family: "e-pv-icons";
-    font-style: normal;
-    font-weight: normal;
-    src: url(data:application/x-font-ttf;charset=utf-8;base64,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Y3VzdG9tLXRvb2xiYXJjdXN0b20tdG9vbGJhclZlcnNpb24gMS4wY3VzdG9tLXRvb2xiYXJGb250IGdlbmVyYXRlZCB1c2luZyBTeW5jZnVzaW9uIE1ldHJvIFN0dWRpb3d3dy5zeW5jZnVzaW9uLmNvbQAgAGMAdQBzAHQAbwBtAC0AdABvAG8AbABiAGEAcgBSAGUAZwB1AGwAYQByAGMAdQBzAHQAbwBtAC0AdABvAG8AbABiAGEAcgBjAHUAcwB0AG8AbQAtAHQAbwBvAGwAYgBhAHIAVgBlAHIAcwBpAG8AbgAgADEALgAwAGMAdQBzAHQAbwBtAC0AdABvAG8AbABiAGEAcgBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIAB1AHMAaQBuAGcAIABTAHkAbgBjAGYAdQBzAGkAbwBuACAATQBlAHQAcgBvACAAUwB0AHUAZABpAG8AdwB3AHcALgBzAHkAbgBjAGYAdQBzAGkAbwBuAC4AYwBvAG0AAAAAAgAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAQIBAwEEAQUBBgEHAQgBCQEKAQsBDAENAQ4BDwAIVG9wLWljb24LZG93bi1hcnJvdzIKUFZfWm9vbW91dAlQVl9ab29taW4LUFZfRG93bmxvYWQLUFZfQm9va21hcmsJUFZfU2VhcmNoCFBWX1ByaW50C1BWX1ByZXZpb3VzB1BWX05leHQIUFZfQ2xvc2UMUFZfRml0VG9QYWdlB1BWX09wZW4AAA==) format('truetype');
-}
-/* custom code end*/
-
-/* style for standalone PDF Viewer */
 
 .flex-container {
     display: flex;
@@ -135,4 +115,156 @@ div#magnificationToolbar.e-toolbar .e-toolbar-items {
 .buttonSwitch {
     Width: 40px;
     Height: 24px;
+}
+
+.pdfviewer-document-list{
+
+    #defaultDialog {
+        left: 23%;
+        top: 0% ! important;
+    }
+    
+    #targetElement .dlgbtn {
+        margin-right: 10px;
+    }
+    
+    @media screen and (min-width: 150px) and (max-width: 480px) {
+        .control-section {
+            margin-bottom: 30px;
+        }
+    
+        .control-wrapper {
+            margin-bottom: 0px;
+        }
+    }
+    
+    #defaultDialog .form-title {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.70);
+    }
+    
+    #defaultDialog .e-error,
+    #defaultDialog .e-float-text {
+        font-weight: 500;
+    }
+    
+    #defaultDialog .e-custom-label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 20px;
+    }
+    
+    #defaultDialog #formId {
+        padding-top: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+        border-radius: 5px;
+        background: #f9f9f9;
+        height: 250px;
+        overflow-y: scroll;
+    }
+    
+    .material-dark #defaultDialog #formId,
+    .material3-dark #defaultDialog #formId,
+    .bootstrap5-dark #defaultDialog #formId {
+        background: #212529;
+    }
+    
+    .bootstrap-dark #defaultDialog #formId {
+        background: #1a1a1a;
+    }
+    
+    .fabric-dark #defaultDialog #formId {
+        background: #201f1f;
+    }
+    
+    .tailwind-dark #defaultDialog #formId {
+        background: #1f2937;
+    }
+    
+    .fluent-dark #defaultDialog #formId {
+        background: #111111;
+    }
+
+    .e-pv-fit-page-icon::before {
+        content: '\e91b';
+        font-family: "e-icons";
+    }
+   
+    
+    .material-dark #defaultDialog .form-title,
+    .material3-dark #defaultDialog .form-title,
+    .bootstrap-dark #defaultDialog .form-title,
+    .fabric-dark #defaultDialog .form-title,
+    .tailwind-dark #defaultDialog .form-title,
+    .bootstrap5-dark #defaultDialog .form-title,
+    .fluent-dark #defaultDialog .form-title {
+        color: rgb(249 249 249);
+    }
+    
+    .highcontrast #defaultDialog form,
+    .highcontrast #defaultDialog .header {
+        color: #fff;
+        background: #000000;
+    }
+    
+    #defaultDialog .header {
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    #defaultDialog .form-horizontal .form-group {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+    
+    #defaultDialog .e-submit-btn {
+        height: 40px;
+        width: 150px;
+    }
+    
+    #defaultDialog .e-reset-btn {
+        height: 40px;
+        width: 150px;
+    }
+    
+    #defaultDialog .submitRow {
+        width: 320px;
+        margin: 0px auto;
+        height: 100px;
+        padding-top: 25px;
+    }
+    
+    #defaultDialog #DialogChart {
+        text-align: center;
+    }
+    
+    #defaultDialog {
+        max-height: 500px;
+    }
+    
+    .file-name-container {
+        display: flex;
+        justify-content: left;
+    }
+    
+    .file-name-content {
+        display: flex;
+        align-items: center;
+    }
+    
+    .icon-and-text {
+        display: flex;
+        align-items: left;
+    }
+    
+    .file-name-text {
+        text-align: center;
+        margin-left: 8px;
+        margin-top: 5px;
+    }
 }

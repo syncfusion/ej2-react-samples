@@ -66,6 +66,7 @@ const LabelMaps = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td>
                                     <div style={{ paddingLeft: '0px' }}>Show Labels</div>
@@ -96,6 +97,7 @@ const LabelMaps = () => {
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

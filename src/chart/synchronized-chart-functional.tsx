@@ -16,6 +16,7 @@ let SAMPLE_CSS = `
 
 .row {
     display: flex;
+    margin: 0px;
 }
 
 .col {
@@ -293,7 +294,7 @@ let SynchronizedChart = () => {
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-            <div className="row">
+            <div className="row" style={{ margin: 0 }}>
                     <div className="col">
                         <ChartComponent
                             id="container1"
@@ -396,7 +397,7 @@ let SynchronizedChart = () => {
                         </ChartComponent>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row" style={{ margin: 0 }}>
                     <div className="col">
                         <ChartComponent
                             id="container3"

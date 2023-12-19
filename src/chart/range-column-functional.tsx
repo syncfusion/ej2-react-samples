@@ -38,7 +38,7 @@ const RangeColumn = () => {
                 {SAMPLE_CSS}
             </style>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 },  majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ labelFormat: '{value}˚C', maximum: 20, title: 'Temperature (In Celsius)', edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} title='Temperature Variation by Week' loaded={onChartLoad.bind(this)} load={load.bind(this)} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{ enable: true, header: "<b>${point.x}</b>",format: "Temperature : <b>${point.low} - ${point.high}</b>"}}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 },  majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ labelFormat: '{value}', maximum: 20, title: 'Temperature (In Celsius)', edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} title='Temperature Variation by Week' loaded={onChartLoad.bind(this)} load={load.bind(this)} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{ enable: true, header: '', format: '<b>${point.x}</b> <br> Low : <b>${point.low}°C</b> <br> High : <b>${point.high}°C'}}>
                     <Inject services={[RangeColumnSeries, Tooltip, Category, DataLabel, Highlight]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data}  high="high" low="low" xName='x' columnSpacing={0.1} type='RangeColumn' marker={{ dataLabel: { visible: true,  position: 'Outer'} }} />
@@ -53,8 +53,7 @@ const RangeColumn = () => {
                 <p>Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.</p>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    chart component features are segregated into individual feature-wise modules. To use range column series, we need to Injecting
-                    <code>RangeColumnSeries</code> module into <code>services</code>.
+                    chart component features are segregated into individual feature-wise modules. To use range column series, we need to Injecting <code>RangeColumnSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the range column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.

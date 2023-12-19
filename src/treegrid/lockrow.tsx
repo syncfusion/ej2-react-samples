@@ -131,21 +131,23 @@ export class LockRow extends SampleBase<{}, {}> {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr style={{ height: '50px' }}>
-                  <td style={{ width: '10%' }}>
-                      <div style={{paddingLeft:'0px'}}> Disable Rows </div>
+                    <td style={{ width: '10%' }}>
+                      <div style={{ paddingLeft: '0px' }}> Disable Rows </div>
                     </td>
                     <td style={{ width: '60%' }}>
                       <div>
-                         <MultiSelectComponent width="150px" id="lockrows" mode="CheckBox" value={this.rowValues}
+                        <MultiSelectComponent width="150px" id="lockrows" mode="CheckBox" value={this.rowValues}
                           dataSource={lockRowDropDownData} showDropDownIcon={true} popupHeight='350px'
                           select={this.select.bind(this)} removed={this.removed.bind(this)}
-                          ref={multiselect=> this.multiselectObj = multiselect}>
+                          ref={multiselect => this.multiselectObj = multiselect}>
                           <Inject services={[CheckBoxSelection]}></Inject>
-                          </MultiSelectComponent>
+                        </MultiSelectComponent>
                       </div>
                     </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
          </div>

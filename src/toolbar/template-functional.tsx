@@ -21,7 +21,7 @@ const Template = () => {
     }
     const dropDown = () => {
         return(
-            <div><ComboBoxComponent width={80} popupWidth={50} value='100%' dataSource={data} showClearButton={false} ></ComboBoxComponent></div>
+            <div><ComboBoxComponent width={80} popupWidth={80} value='100%' dataSource={data} showClearButton={false} ></ComboBoxComponent></div>
         );
     }
     const textBox = () => {

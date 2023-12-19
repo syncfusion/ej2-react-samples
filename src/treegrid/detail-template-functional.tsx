@@ -31,7 +31,7 @@ const DetailTemplate = () => {
                         padding: "5px 4px 2px 27px",
                     }}
                 >
-                    <img src={imag} />
+                    <img src={imag} alt={props.FullName} />
                 </div>
                 <div
                     style={{

@@ -40,7 +40,7 @@ const SAMPLE_CSS = `
     stop-color: #FEC200;
 } 
 .ellipse[id*=_Trackball_1] {
-  stroke-width: 1 !important;
+  strokeWidth: 1 !important;
 }
 .e-chart-focused:focus {
   outline: none !important;
@@ -118,7 +118,7 @@ function OverView() {
     return (
       <div className="template" >
         <AccumulationChartComponent style={{ "height": "100%", "width": "100%" }}
-        legendSettings={{ visible:false }} load={accumulationload.bind(this)} tooltip={{ enable: true , format:"${point.tooltip}"}} pointRender={onPointRender.bind(this)} enableSmartLabels={true}  enableBorderOnMouseMove={false}>
+        legendSettings={{ visible:false }} load={accumulationload.bind(this)} tooltip={{ enable: true , format:"${point.tooltip}"}} pointRender={onPointRender.bind(this)} enableSmartLabels={false}  enableBorderOnMouseMove={false}>
           <Inject services={[PieSeries, AccumulationTooltip, AccumulationDataLabel, AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]}></Inject>
           <AccumulationSeriesCollectionDirective>
 

@@ -60,8 +60,8 @@ const Momentum = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Momentum Indicator, we need to inject
-                    <code>MomentumIndicator</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Momentum Indicator, we need to 
+                    inject <code>MomentumIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the Momentum Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#momentum">documentation section</a>.

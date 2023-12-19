@@ -18,7 +18,7 @@ const DataVirtualization = () => {
     }, [])
 
     const dataManager: DataManager = new DataManager({
-        url: 'https://ej2services.syncfusion.com/react/development/api/VirtualEventData',
+        url: 'https://services.syncfusion.com/react/production/api/VirtualEventData',
         adaptor: new WebApiAdaptor,
         crossDomain: true
     });

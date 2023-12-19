@@ -16,9 +16,6 @@ const SAMPLE_CSS: any = `
     float: right; margin-right: 10p
 }`;
 // custom code end
-/**
- * Heatmap CellSelection sample
- */
 export class CellSelection extends SampleBase<{}, {}> {
     private heatmap: HeatMapComponent;
     private chart: ChartComponent;
@@ -33,13 +30,40 @@ export class CellSelection extends SampleBase<{}, {}> {
                 {/* custom code end */}    
                         <HeatMapComponent id='heatmap-container'style={{ height: '300px' }} ref={t => this.heatmap = t}
                             titleSettings={{
-                                text: 'Top export products 2014-2018, Value in USD million'
+                                text: 'Top export products 2014-2018, Value in USD million',
+                                textStyle: {
+                                    size: '15px',
+                                    fontWeight: '500',
+                                    fontStyle: 'Normal',
+                                    fontFamily:'inherit'
+                                }
                             }}
                             xAxis={{
                                 labels: ['Cereals', 'Meat', 'Spices', 'Tea', 'Edible Oil', 'Dairy Products', 'Wheat'],
+                                textStyle: {
+                                    fontFamily: 'inherit'
+                                }
                             }}
                             yAxis={{
-                                labels:['2014','2015','2016','2017','2018']
+                                labels:['2014','2015','2016','2017','2018'],
+                                textStyle: {
+                                    fontFamily: 'inherit'
+                                }
+                            }}
+                            cellSettings={{
+                                textStyle:{
+                                    fontFamily: 'inherit'
+                                }
+                            }}
+                            tooltipSettings ={{
+                                textStyle:{
+                                    fontFamily: 'inherit'
+                                }
+                            }}
+                            legendSettings = {{
+                                textStyle:{
+                                    fontFamily: 'inherit'
+                                }
                             }}
                             dataSource={(data as any).cellSelectionData}
                             allowSelection={true}
@@ -75,7 +99,7 @@ export class CellSelection extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-md-3 property-section">
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
                             <tbody>
                             <tr style={{ height: '50px' }}>
                             <td style={{ width: '40%' }}>
@@ -89,24 +113,19 @@ export class CellSelection extends SampleBase<{}, {}> {
                     </PropertyPane>
                 </div>
                 <div id="action-description">
-                    <p>
-                    This sample visualizes the revenue from the top exported products between the year 2014 and 2018, valued in USD million
-                    </p>
+                <p>This sample visualizes the revenue from the top exported products between the year 2014 and 2018, valued in USD million.</p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to selected the cell in heat map and render the column chart based on selected data.
+                        In this example, you can see how to selected the cell in heat map and render the column chart based on selected data.
                     </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in
-                        touch enabled devices.
-                    </p>
+                    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the <code>Tooltip</code> module
-                        using the <code>Heatmap.Inject(Tooltip)</code> method, and use a legend by injecting the <code>Legend</code> module using the
-                        <code>Heatmap.Inject(Legend)</code> method.               
+                        Heatmap component features are separated into discrete feature-based modules. To use a tooltip and the legend, inject the <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
                 </div>
             </div >
@@ -155,14 +174,18 @@ export class CellSelection extends SampleBase<{}, {}> {
         this.chart.refresh();
     };
     public load(args: IChartLoadedEventsArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        // custom code end
     }
     public loads(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
     private Change(args: IChangedEventArgs): void {
         this.heatmap.clearSelection();

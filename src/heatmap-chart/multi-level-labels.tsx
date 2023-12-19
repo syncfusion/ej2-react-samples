@@ -17,7 +17,7 @@ export class MultiLevelLabels extends SampleBase<{}, {}> {
                                 size: '15px',
                                 fontWeight: '500',
                                 fontStyle: 'Normal',
-                                fontFamily: 'Segoe UI'
+                                fontFamily: 'inherit'
                             }                
                         }}
                         xAxis= {{
@@ -30,13 +30,15 @@ export class MultiLevelLabels extends SampleBase<{}, {}> {
                             },
                             textStyle: {
                                 color: 'black',
+                                fontFamily: 'inherit'
                             },
                             multiLevelLabels: [
                                 {
                                     border: { type: 'Rectangle', color: '#a19d9d' },
                                     textStyle: {
                                         color: 'black',
-                                        fontWeight: 'Bold'
+                                        fontWeight: 'Bold',
+                                        fontFamily: 'inherit'
                                     },
                                     categories: [
                                         { start: 0, end: 2, text: 'Electronics', },
@@ -53,7 +55,8 @@ export class MultiLevelLabels extends SampleBase<{}, {}> {
                                 width: 0
                             },
                             textStyle: {
-                                color: 'black'
+                                color: 'black',
+                                fontFamily: 'inherit'
                             },
                             isInversed: true,
                             multiLevelLabels: [
@@ -61,7 +64,8 @@ export class MultiLevelLabels extends SampleBase<{}, {}> {
                                     border: { type: 'Brace', color: '#a19d9d' },
                                     textStyle: {
                                         color: 'black',
-                                        fontWeight: 'Bold'
+                                        fontWeight: 'Bold',
+                                        fontFamily: 'inherit'
                                     },
                                     categories: [
                                         { start: 0, end: 2, text: 'Q1' },
@@ -80,12 +84,20 @@ export class MultiLevelLabels extends SampleBase<{}, {}> {
                             { color: '#19307B' }
                             ],
                         }}
+                        tooltipSettings={{
+                            textStyle: {
+                                fontFamily: 'inherit'
+                            }
+                        }}
                         legendSettings={{
                             visible: false
                         }}
                         cellSettings= {{
                             border: {
                                 width: 0
+                            },
+                            textStyle: {
+                                fontFamily: 'inherit'
                             }
                         }}                
                         load={this.load.bind(this)}>
@@ -93,34 +105,27 @@ export class MultiLevelLabels extends SampleBase<{}, {}> {
                     </HeatMapComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                    This sample visualizes the product wise monthly sales revenue of the items sold by an online retailer in a year.
-                    The products are grouped based on the purchase domains and revenue is displayed as cell data.
-                    </p>
-                </div>
-                <div id="description">
-                    <p>
+                <p>
                     In this example, you can see how to group axis labels. 
-                    You can customize text in each level by using <code>alignment</code>, <code>textSytle</code> and <code>border</code> properties.
-                    </p>
-                    <p>
-                    Border of the axis labels can be customized by using <code>type</code> property.
-                    </p>
-                    <ul>
+                    You can customize text in each level by using <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/multiLevelLabelsModel/#alignment" target="_blank">alignment</a>,<a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/multiLevelLabelsModel/#textstyle" target="_blank">textStyle</a> and <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/multiLevelLabelsModel/#border" target="_blank">border</a> properties.
+                </p>
+                <p>
+                    Border of the axis labels can be customized by using <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/axisLabelBorderModel/#type" target="_blank">type</a> property.
+                </p>
+                <ul>
                     <li><code>Rectangle</code></li>
                     <li><code>Brace</code></li>
                     <li><code>WithoutTopBorder</code></li>
                     <li><code>WithoutBottomBorder</code></li>
                     <li><code>WithoutTopandBottomBorder</code></li>
-                    <li><code>withoutBorder</code>.</li>
-                    </ul>
-                    <br></br>
-                    <p><b>Injecting Module</b></p>
-                    <p>
-                        Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the <code>Tooltip</code> module
-                        using the <code>Heatmap.Inject(Tooltip)</code> method.
-                    </p>
-
+                    <li><code>WithoutBorder</code>.</li>
+                </ul>
+                <br></br>
+                <p> <b>Injecting Module</b></p>
+                <p>
+                    Heatmap component features are separated into discrete feature-based modules. To use a tooltip, inject the <a target="_blank"
+                    href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> module using the <code>{'<Inject services={[Tooltip]} />'}</code> method.
+                </p>
                 </div>
             </div >
         );
@@ -131,10 +136,12 @@ export class MultiLevelLabels extends SampleBase<{}, {}> {
         args.content = [args.xLabel + ' | ' + args.yLabel + ' : $ ' + (args.value as number / 10) + 'K'];
     };
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
         selectedTheme = selectedTheme.toLowerCase();
+        // custom code end
             if(selectedTheme === 'highcontrast' || selectedTheme === 'bootstrap5-dark' || selectedTheme === 'material-dark' || selectedTheme === 'fabric-dark' || selectedTheme === 'bootstrap-dark' || selectedTheme === 'tailwind-dark' || selectedTheme === 'material3-dark' || selectedTheme === 'fluent-dark')
             {
                 args.heatmap.xAxis.textStyle.color = 'White';

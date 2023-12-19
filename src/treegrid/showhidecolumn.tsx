@@ -63,43 +63,45 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr>
-                  <td style={{ width: '30%' }}>
+                    <td style={{ width: '30%' }}>
                       <div> Column </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div id='columnddl'>
-                         <DropDownListComponent width="96px" id="ddlelement"
-                            dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="taskID"
-                            ref={dropdown=> this.dropdownObj = dropdown} />
+                        <DropDownListComponent width="96px" id="ddlelement"
+                          dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="taskID"
+                          ref={dropdown => this.dropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr>
-                     <td style={{ width: '30%' }}>
-                        <div>
-                          <ButtonComponent id='hide' 
-                            ref={button=> this.buttonObj = button} onClick={ this.btnClick.bind(this) }> Hide </ButtonComponent>
-                        </div>
-                     </td>
-                     <td style={{ width: '70%' }}>
-                        <div>
-                          <ButtonComponent id='show' 
-                            ref={button=> this.buttonObj2 = button} onClick={ this.showClick.bind(this) }> Show </ButtonComponent>
-                        </div>
-                     </td>
+                    <td style={{ width: '30%' }}>
+                      <div>
+                        <ButtonComponent id='hide'
+                          ref={button => this.buttonObj = button} onClick={this.btnClick.bind(this)}> Hide </ButtonComponent>
+                      </div>
+                    </td>
+                    <td style={{ width: '70%' }}>
+                      <div>
+                        <ButtonComponent id='show'
+                          ref={button => this.buttonObj2 = button} onClick={this.showClick.bind(this)}> Show </ButtonComponent>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <td style={{ width: '30%' }}>
-                      <div style={{ paddingTop: '10px'}}> Hidden Columns</div>
+                      <div style={{ paddingTop: '10px' }}> Hidden Columns</div>
                     </td>
                     <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                       <div>
-                        <textarea id='hiddencolumns' style={{ resize: 'none', height:'65px', width:'92px', backgroundColor:'#fff', padding: '6px' }}
+                        <textarea id='hiddencolumns' style={{ resize: 'none', height: '65px', width: '92px', backgroundColor: '#fff', padding: '6px' }}
                           className='form-control'></textarea>
                       </div>
                     </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
         </div>

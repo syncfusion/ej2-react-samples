@@ -51,7 +51,12 @@ const PolarScatter = () => {
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
     const change = (): void => {
-       setType(dropElement.current.value as ChartSeriesType);
+        chartInstance.current.series[0].type = dropElement.current.value as ChartSeriesType;
+        chartInstance.current.series[1].type = dropElement.current.value as ChartSeriesType;
+        chartInstance.current.series[2].type = dropElement.current.value as ChartSeriesType;
+        chartInstance.current.series[0].animation.enable = false;
+        chartInstance.current.series[1].animation.enable = false;
+        chartInstance.current.series[2].animation.enable = false;
        chartInstance.current.refresh();
     };
     let droplist: { [key: string]: Object }[] = [
@@ -63,7 +68,7 @@ const PolarScatter = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ minimum: 0, maximum: 8, interval: 2 }} legendSettings= {{ visible: true, enableHighlight: true }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: '${point.text} : <b>${point.y}%</b>' }}>
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ labelFormat: '{value}%', minimum: 0, maximum: 8, interval: 2 }} legendSettings= {{ visible: true, enableHighlight: true }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, format: '${point.text} : <b>${point.y}%</b>' }}>
                         <Inject services={[Legend, Category, PolarSeries, RadarSeries, Highlight, ScatterSeries, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='text' yName='y' name='2015' type={type} drawType='Scatter' marker={{ height: 7, width: 7, dataLabel: { name: 'text' } }} />
@@ -75,7 +80,7 @@ const PolarScatter = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Series Type:</div>
                                 </td>
@@ -84,7 +89,7 @@ const PolarScatter = () => {
                                         <DropDownListComponent width={120} id="selmode" change={change.bind(this)} ref={dropElement} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value={type} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -98,8 +103,7 @@ const PolarScatter = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use scatter series, we need to inject
-                    <code>ScatterSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use scatter series, we need to inject <code>ScatterSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.

@@ -98,6 +98,7 @@ public template2: any = this.gridUrlTemplate;
           <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
                     <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <tbody>
                             <tr>
                                  <td style={{ width: '70%' }}>
                                     <div>Export template column </div>
@@ -106,6 +107,7 @@ public template2: any = this.gridUrlTemplate;
                                     <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} checked={true} change={this.onChanged.bind(this)}></CheckBoxComponent>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

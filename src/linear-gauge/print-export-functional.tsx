@@ -1,6 +1,3 @@
-/**
- * Sample for print and export in the Linear Gauge
- */
 import * as React from "react";
 import { useEffect, useRef } from "react";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, Annotations, ExportType, RangeDirective, RangesDirective, Print, PdfExport, ImageExport } from '@syncfusion/ej2-react-lineargauge';
@@ -119,7 +116,7 @@ const Export = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-8'>
-                    <LinearGaugeComponent load={load.bind(this)} id='gauge' background='transparent' allowPrint={true} allowPdfExport={true} allowImageExport={true} title='Speedometer' titleStyle={{ fontFamily: 'inherit' }} orientation='Horizontal' ref={gauge}>
+                    <LinearGaugeComponent load={load.bind(this)} id='gauge' allowPrint={true} allowPdfExport={true} allowImageExport={true} title='Speedometer' titleStyle={{ fontFamily: 'inherit' }} orientation='Horizontal' ref={gauge}>
                         <Inject services={[Annotations, Print, PdfExport, ImageExport]} />
                         <AxesDirective>
                             <AxisDirective minimum={0} maximum={120} line={{ width: 0 }} minorTicks={{ height: 7, width: 0, interval: 4 }} majorTicks={{ height: 0, width: 0, interval: 20 }} labelStyle={{ position: "Outside", font: { fontFamily: 'inherit' }, offset: 4 }}>
@@ -142,6 +139,7 @@ const Export = () => {
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                          <tbody>
                             <tr style={{ height: "50px" }}>
                                 <td>
                                     <div style={{ width: '80%', marginLeft: '-10px' }}>Export Type</div>
@@ -174,6 +172,7 @@ const Export = () => {
                                     </div>
                                 </td>
                             </tr>
+                          </tbody>
                         </table>
                     </PropertyPane>
                 </div>

@@ -60,9 +60,8 @@ const LineMultiLine = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use multi colored line series, we need to inject
-                    <code>MultiColoredLineSeries</code> module using
-                    <code>Chart.Inject(MultiColoredLineSeries)</code> method.
+                    Chart component features are segregated into individual feature-wise modules. To use multi colored line series, 
+                    we need to inject <code>MultiColoredLineSeries</code> module using <code>Chart.Inject(MultiColoredLineSeries)</code> method.
                 </p>
                 <p>
                     More information on the line series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.

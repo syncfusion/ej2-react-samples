@@ -127,6 +127,7 @@ const Layout = () => {
                             className="property-panel-table"
                             style={{ width: "100%", marginBottom: "20px" }}
                         >
+                            <tbody>
                             <tr>
                                 <td>
                                     <div style={{ paddingLeft: "0px" }}>Layout Type</div>
@@ -163,6 +164,7 @@ const Layout = () => {
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

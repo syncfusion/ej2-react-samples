@@ -1,6 +1,3 @@
-/**
- * Sample for marker pointer in the Linear Gauge
- */
 import * as React from "react";
 import { useEffect, useState, useRef } from "react";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, PointersDirective, PointerDirective, IPointerDragEventArgs, Orientation } from '@syncfusion/ej2-react-lineargauge';
@@ -17,6 +14,7 @@ const MarkerPointer = () => {
     }, [])
 
     const [gaugeWidth, setGaugeWidth] = useState<string>("150px");
+    const [gaugeTextWidth, setGaugeTextWidth] = useState<string>("168px");
     const [gaugeHeight, setGaugeHeight] = useState<string>("350px");
     const [gaugeOriention, setOrientation] = useState<Orientation>('Vertical');
     const [verticalColor, setVerticalColor] = useState<string>("white");
@@ -28,7 +26,7 @@ const MarkerPointer = () => {
     const [padding, setPadding] = useState<string>("4%");
     let invertedPointer = useRef<LinearGaugeComponent>(null);
     let circlePointer = useRef<LinearGaugeComponent>(null);
-    let diamondPointer = useRef<LinearGaugeComponent>(null);
+    let textPointer = useRef<LinearGaugeComponent>(null);
     let rectanglePointer = useRef<LinearGaugeComponent>(null);
     let multiplePointer = useRef<LinearGaugeComponent>(null);
 
@@ -100,19 +98,20 @@ const MarkerPointer = () => {
         }
     }
 
-    const dragEndDiamond = (args: IPointerDragEventArgs): void => {
-        diamondPointer.current.axes[0].pointers[0].animationDuration = 1500;
-        diamondPointer.current.axes[0].pointers[1].animationDuration = 1500;
+    const dragEndText = (args: IPointerDragEventArgs): void => {
+        textPointer.current.axes[0].pointers[0].animationDuration = 1500;
+        textPointer.current.axes[0].pointers[1].animationDuration = 1500;
     }
 
-    const dragStartDiamond = (args: IPointerDragEventArgs): void => {
-        diamondPointer.current.axes[0].pointers[0].animationDuration = 0;
-        diamondPointer.current.axes[0].pointers[1].animationDuration = 0;
+    const dragStartText = (args: IPointerDragEventArgs): void => {
+        textPointer.current.axes[0].pointers[0].animationDuration = 0;
+        textPointer.current.axes[0].pointers[1].animationDuration = 0;
     }
 
-    const dragMoveDiamond = (args: IPointerDragEventArgs): void => {
+    const dragMoveText = (args: IPointerDragEventArgs): void => {
         if (args.pointerIndex == 1) {
-            diamondPointer.current.setPointerValue(0, 0, args.currentValue);
+            textPointer.current.axes[0].pointers[1].text = Math.round(args.currentValue).toString() + " Points";
+            textPointer.current.setPointerValue(0, 0, args.currentValue);
         }
     }
 
@@ -175,7 +174,7 @@ const MarkerPointer = () => {
                 <pre style={{ border: 'hidden', backgroundColor: 'inherit' }}></pre>
                 <div id="containerBox" className="row" style={{ float: 'left', padding: padding, display: display }}></div>
                 <div id='containerInverted' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent dragEnd={dragEndTriangle} dragStart={dragStartTriangle} dragMove={dragMoveTriangle} load={load} id='invertedMarker' title='Inverted triangle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={invertedPointer}>
+                    <LinearGaugeComponent animationDuration={2000} dragEnd={dragEndTriangle} dragStart={dragStartTriangle} dragMove={dragMoveTriangle} load={load} id='invertedMarker' title='Inverted triangle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={invertedPointer}>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>
@@ -187,7 +186,7 @@ const MarkerPointer = () => {
                     </LinearGaugeComponent>
                 </div>
                 <div id='containerCircle' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent dragStart={dragStartCircle} dragEnd={dragEndCircle} dragMove={dragMoveCircle} load={load} title='Circle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='circleMarker' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={circlePointer}>
+                    <LinearGaugeComponent animationDuration={2000} dragStart={dragStartCircle} dragEnd={dragEndCircle} dragMove={dragMoveCircle} load={load} title='Circle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='circleMarker' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={circlePointer}>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>
@@ -198,20 +197,8 @@ const MarkerPointer = () => {
                         </AxesDirective>
                     </LinearGaugeComponent>
                 </div>
-                <div id='containerDiamond' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent dragStart={dragStartDiamond} dragEnd={dragEndDiamond} dragMove={dragMoveDiamond} load={load} title='Diamond' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='diamondMarker' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={diamondPointer}>
-                        <AxesDirective>
-                            <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
-                                <PointersDirective>
-                                    <PointerDirective value={50} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3' />
-                                    <PointerDirective value={50} enableDrag={true} height={15} width={15} placement='Near' markerType='Diamond' animationDuration={1500} />
-                                </PointersDirective>
-                            </AxisDirective>
-                        </AxesDirective>
-                    </LinearGaugeComponent>
-                </div>
                 <div id='containerRectangle' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent dragStart={dragStartRectangle} dragEnd={dragEndRectangle} dragMove={dragMoveRectangle} load={load} title='Rectangle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='rectangleMarker' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={rectanglePointer}>
+                    <LinearGaugeComponent animationDuration={2000} dragStart={dragStartRectangle} dragEnd={dragEndRectangle} dragMove={dragMoveRectangle} load={load} title='Rectangle' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='rectangleMarker' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={rectanglePointer}>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>
@@ -222,8 +209,20 @@ const MarkerPointer = () => {
                         </AxesDirective>
                     </LinearGaugeComponent>
                 </div>
+                <div id='containerText' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <LinearGaugeComponent dragStart={dragStartText} animationDuration={2000} dragEnd={dragEndText} dragMove={dragMoveText} load={load} title='Text' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='TextMarker' orientation={gaugeOriention} width={gaugeTextWidth} height={gaugeHeight} background='transparent' ref={textPointer}>
+                        <AxesDirective>
+                            <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
+                                <PointersDirective>
+                                    <PointerDirective value={50} height={5} width={5} placement='Near' type='Bar' animationDuration={1500} offset='12' color='#0074E3' />
+                                    <PointerDirective value={50} enableDrag={true} height={15} width={15} placement='Near' offset={-10} markerType='Text' text="50 Points" animationDuration={1500} />
+                                </PointersDirective>
+                            </AxisDirective>
+                        </AxesDirective>
+                    </LinearGaugeComponent>
+                </div>
                 <div id='containerMultiple' className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent dragStart={dragStartMultiple} dragEnd={dragEndMultiple} dragMove={dragMoveMultiple} load={load} title='Multiple pointers' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleMarkers' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={multiplePointer}>
+                    <LinearGaugeComponent animationDuration={2000} dragStart={dragStartMultiple} dragEnd={dragEndMultiple} dragMove={dragMoveMultiple} load={load} title='Multiple pointers' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleMarkers' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent' ref={multiplePointer}>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>
@@ -247,7 +246,7 @@ const MarkerPointer = () => {
                     More information on the marker pointer can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/pointers/#marker-pointer">documentation section</a>.
                 </p>
             </div>
-        </div >
+        </div>
     )
 }
 export default MarkerPointer;

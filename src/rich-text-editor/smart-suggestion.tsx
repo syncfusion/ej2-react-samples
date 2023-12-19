@@ -43,11 +43,13 @@
    private  fieldsData: { [key: string]: string }={ text: 'formatName', groupBy: 'formatType' };
  
    private toolbarSettings: ToolbarSettingsModel = {
-     items: ['Bold', 'Italic', 'Underline', 'StrikeThrough',
-     'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
-     'LowerCase', 'UpperCase', 'SuperScript', 'SubScript', '|',
-     'Formats', 'Alignments', 'NumberFormatList', 'BulletFormatList',
-     'Outdent', 'Indent', 'EmojiPicker', '|', 'CreateTable', 'CreateLink', 'Image', 'SourceCode', 'FullScreen', '|', 'Undo', 'Redo']
+     items: ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+       'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+       'LowerCase', 'UpperCase', '|',
+       'Formats', 'Alignments', '|', 'NumberFormatList', 'BulletFormatList', '|',
+       'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
+       '|', 'EmojiPicker', '|',
+       'SourceCode', 'FullScreen', '|', 'Undo', 'Redo']
    };
  
    public actionBegineHandler(args: any): void {
@@ -124,9 +126,11 @@
           this.beforeApplyFormat(true);
       }
       if ((args.itemData as  { [key: string]: Object }).command == 'OL') {
+          this.mentionObj.hidePopup();
           this.formatRTE.executeCommand('insertOrderedList');
       }
       else if ((args.itemData as  { [key: string]: Object }).command == 'UL') {
+          this.mentionObj.hidePopup();
           this.formatRTE.executeCommand('insertUnorderedList');
       }
       else if ((args.itemData as  { [key: string]: Object }).command == 'CreateTable') {
@@ -151,6 +155,7 @@
           this.formatRTE.showEmojiPicker();
       }
       else {
+          this.mentionObj.hidePopup();
           this.formatRTE.executeCommand('formatBlock', (args.itemData as  { [key: string]: Object }).command);
       }
    }
@@ -161,7 +166,7 @@
          <div className='control-section mention-inline-format-section' id="mentionFormat">
            <div className='rte-control-section' ref={this.mentionFormatIntegrationRef} id='mentionFormatIntegration'>
              <RichTextEditorComponent id="MentionInlineFormat" ref={(scope) => { this.formatRTE = scope }} toolbarSettings={this.toolbarSettings} placeholder="TType '/' and choose format"  actionBegin={this.actionBegineHandler.bind(this)} >
-               <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar]} />
+               <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker]} />
              </RichTextEditorComponent>
 
              <MentionComponent ref={(scope) => { this.mentionObj = scope }} id="mentionEditor" target="#MentionInlineFormat_rte-edit-view" mentionChar={'/'} allowSpaces={true} dataSource={this.data} fields={this.fieldsData} 

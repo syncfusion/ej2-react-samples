@@ -335,7 +335,7 @@ const sample_css = `
   background-color: transparent;
   border-color: transparent;
 }
-#exportBtn{
+#diagramexportBtn{
   background-color: transparent;
   border-color: transparent;
 }
@@ -378,7 +378,7 @@ let toolbarItems:any = [
   { prefixIcon: 'e-icons e-folder-open', tooltipText: 'Open Diagram', },
   { prefixIcon: 'e-icons e-save', tooltipText: 'Save Diagram' },
   { prefixIcon: 'e-print e-icons', tooltipText: 'Print Diagram'},
-  { type: 'Input', tooltipText: 'Export Diagram',template: '<button id="exportBtn" style="width:100%;"></button>'},
+  { type: 'Input', tooltipText: 'Export Diagram',template: '<button id="diagramexportBtn" style="width:100%;"></button>'},
           { type: 'Separator' },
   {disabled:true, prefixIcon: 'e-cut e-icons', tooltipText: 'Cut',cssClass:'tb-item-middle tb-item-lock-category' },
   {disabled:true,  prefixIcon: 'e-copy e-icons', tooltipText: 'Copy',cssClass:'tb-item-middle tb-item-lock-category' },
@@ -467,7 +467,7 @@ export class Default extends SampleBase<{}, {}> {
                             {text:'JPG'},{text:'PNG'},{text:'SVG'}
                     ], iconCss: 'e-icons e-export',  select: function (args) {onselectExport(args)},
                     });
-                    exportBtn.appendTo('#exportBtn');
+                    exportBtn.appendTo('#diagramexportBtn');
                     
                     let groupBtn:any  = new DropDownButton({
                         items: [

@@ -106,72 +106,74 @@ const SelectionAPI = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr>
-                <td style={{ width: "30%" }}>
-                  <div>
-                    <b>Select Rows</b>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: "20%" }}>
-                  <div style={{ paddingTop: "8px" }}>Start</div>
-                </td>
-                <td style={{ width: "80%", paddingRight: "10px" }}>
-                  <div id="numericbox" style={{ minWidth: "95px" }}>
-                    <NumericTextBoxComponent
-                      id="start"
-                      format="##"
-                      min={0}
-                      max={11}
-                      ref={numericObj}
-                      width="95px"
-                    ></NumericTextBoxComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: "20%" }}>
-                  <div style={{ paddingTop: "8px" }}> To </div>
-                </td>
-                <td style={{ width: "80%", paddingRight: "10px" }}>
-                  <div id="numericbox" style={{ minWidth: "95px" }}>
-                    <NumericTextBoxComponent
-                      id="to"
-                      format="##"
-                      min={0}
-                      max={11}
-                      ref={numericObj2}
-                      width="95px"
-                    ></NumericTextBoxComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan={2}>
-                  <div className="col-md-6">
-                    <ButtonComponent onClick={btnClick.bind(this)}>
-                      Select Row
-                    </ButtonComponent>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className="col-md-12">
-                    <b>Clear Selection</b>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan={2}>
-                  <div className="col-md-6" style={{ paddingBottom: "10px" }}>
-                    <ButtonComponent onClick={btnClick2.bind(this)}>
-                      Clear Selection
-                    </ButtonComponent>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td style={{ width: "30%" }}>
+                    <div>
+                      <b>Select Rows</b>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: "20%" }}>
+                    <div style={{ paddingTop: "8px" }}>Start</div>
+                  </td>
+                  <td style={{ width: "80%", paddingRight: "10px" }}>
+                    <div id="numericbox" style={{ minWidth: "95px" }}>
+                      <NumericTextBoxComponent
+                        id="start"
+                        format="##"
+                        min={0}
+                        max={11}
+                        ref={numericObj}
+                        width="95px"
+                      ></NumericTextBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: "20%" }}>
+                    <div style={{ paddingTop: "8px" }}> To </div>
+                  </td>
+                  <td style={{ width: "80%", paddingRight: "10px" }}>
+                    <div id="numericbox" style={{ minWidth: "95px" }}>
+                      <NumericTextBoxComponent
+                        id="to"
+                        format="##"
+                        min={0}
+                        max={11}
+                        ref={numericObj2}
+                        width="95px"
+                      ></NumericTextBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2}>
+                    <div className="col-md-6">
+                      <ButtonComponent onClick={btnClick.bind(this)}>
+                        Select Row
+                      </ButtonComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className="col-md-12">
+                      <b>Clear Selection</b>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2}>
+                    <div className="col-md-6" style={{ paddingBottom: "10px" }}>
+                      <ButtonComponent onClick={btnClick2.bind(this)}>
+                        Clear Selection
+                      </ButtonComponent>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -250,8 +252,7 @@ const SelectionAPI = () => {
           rows.
         </p>
         <p>
-          More information on the selection configuration can be found in this
-          documentation section.
+          More information on the selection configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/selection/selection">documentation section</a>.
         </p>
       </div>
     </div>

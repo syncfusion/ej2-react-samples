@@ -66,7 +66,10 @@ const Sorting = () => {
         chartInstance.current.series[1].animation.enable = false;
         chartInstance.current.series[2].animation.enable = false;
         chartInstance.current.series[3].animation.enable = false;
-        setDataSource(sortData);
+        chartInstance.current.series[0].dataSource = sortData;
+        chartInstance.current.series[1].dataSource = sortData;
+        chartInstance.current.series[2].dataSource = sortData;
+        chartInstance.current.series[3].dataSource = sortData;
         chartInstance.current.refresh();
     }
     return (
@@ -74,7 +77,7 @@ const Sorting = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, interval: 1, lineStyle: { width: 0 }, labelIntersectAction: 'Rotate45', valueType: 'Category' }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Sales', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}K' }} load={load.bind(this)} title="Vehicle Sales by Region" loaded={onChartLoad.bind(this)} legendSettings={{ visible: true }} tooltip={{ enable: true }}>
+                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ majorGridLines: { width: 0 }, minorGridLines: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }, interval: 1, lineStyle: { width: 0 }, labelIntersectAction: 'Rotate45', valueType: 'Category' }} width={'92%'} chartArea={{ border: { width: 0 } }} primaryYAxis={{ title: 'Sales', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, majorGridLines: { width: 1 }, minorGridLines: { width: 1 }, minorTickLines: { width: 0 }, labelFormat: '{value}K' }} load={load.bind(this)} title="Vehicle Sales by Region" loaded={onChartLoad.bind(this)} legendSettings={{ visible: true }} tooltip={{ enable: true }}>
                         <Inject services={[Category, StackingColumnSeries, Legend, Tooltip]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={dataSource} xName='x' yName='car' name="Car" type='StackingColumn' width={2} />
@@ -87,7 +90,7 @@ const Sorting = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Descending: </div>
                                 </td>
@@ -106,7 +109,7 @@ const Sorting = () => {
                                         <DropDownListComponent width="120px" id="selmode" change={change.bind(this)} ref={dropElement} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value="None" />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -120,11 +123,9 @@ const Sorting = () => {
                     This method determines whether the series data points should be sorted by their arguments or values.
                 </p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap a point in touch enabled devices.</p>
-                <p>Injecting Module</p>
+                <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject
-                    <code>StackingColumnSeries</code> module using
-                    <code>Chart.Inject(StackingColumnSeries)</code> method.
+                    Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject <code>StackingColumnSeries</code> module using <code>Chart.Inject(StackingColumnSeries)</code> method.
                 </p>
             </div>
         </div >

@@ -399,8 +399,8 @@ const MailMerge = () => {
                         cy="25"
                         r="20"
                         fill="none"
-                        stroke-width="6"
-                        stroke-miterlimit="10"
+                        strokeWidth="6"
+                        strokeMiterlimit="10"
                     />
                 </svg>
             </div>

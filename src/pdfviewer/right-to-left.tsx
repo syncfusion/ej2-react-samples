@@ -258,7 +258,7 @@ export class RightToLeft extends SampleBase<{}, {}> {
                 </div>
             </div>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent ref={(scope) => { this.viewer = scope; }}  id="container" documentPath="https://cdn.syncfusion.com/content/pdf/rtl-text.pdf"  enableRtl={true} locale='ar-AE' annotationSettings={{ author: 'مقبول' }} style={{ 'height': '640px' }}  >
+            <PdfViewerComponent ref={(scope) => { this.viewer = scope; }}  id="container" documentPath="https://cdn.syncfusion.com/content/pdf/rtl-text.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" enableRtl={true} locale='ar-AE' annotationSettings={{ author: 'مقبول' }} style={{ 'height': '640px' }}  >
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
             </PdfViewerComponent>
           </div>
@@ -287,7 +287,7 @@ export class RightToLeft extends SampleBase<{}, {}> {
             this.viewer.serviceUrl = '';
         }
         else {
-            this.viewer.serviceUrl = 'https://ej2services.syncfusion.com/react/development/api/pdfviewer';
+            this.viewer.serviceUrl = 'https://services.syncfusion.com/react/production/api/pdfviewer';
         }
         this.viewer.dataBind();
         this.viewer.load(this.viewer.documentPath, null);

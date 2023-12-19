@@ -225,11 +225,8 @@ function Default() {
                 <p><b>Injecting Module</b></p>
                 <p>
                     The range navigator component features are segregated into individual feature-wise modules.
-                    To use date-time axis, inject the
-                    <code>DateTime</code> module using
-                    <code>RangeNavigator.Inject(DateTime)</code> method.To use tooltip, inject the
-                    <code>RangeTooltip</code> module using
-                    <code>RangeNavigator.Inject(RangeTooltip)</code> method.
+                    To use date-time axis, inject the <code>DateTime</code> module using <code>RangeNavigator.Inject(DateTime)</code> method.
+                    To use tooltip, inject the <code>RangeTooltip</code> module using <code>RangeNavigator.Inject(RangeTooltip)</code> method.
                 </p>
             </div>
         </div>

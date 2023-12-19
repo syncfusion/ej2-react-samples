@@ -1,6 +1,3 @@
-/**
- * Sample to design slider using the Linear Gauge
- */
 import * as React from "react";
 import { useEffect, useRef } from "react";
 import { LinearGaugeComponent, Inject, GaugeTooltip, ILoadedEventArgs, LinearGaugeTheme, IPointerDragEventArgs, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';

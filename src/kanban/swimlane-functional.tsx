@@ -74,6 +74,7 @@ const Swimlane = () => {
                         className="property-panel-table"
                         style={{ width: "100%" }}
                     >
+                        <tbody>
                         <tr>
                             <td>
                                 <div>Sort Direction</div>
@@ -132,6 +133,7 @@ const Swimlane = () => {
                                 ></CheckBoxComponent>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </PropertyPane>
             </div>

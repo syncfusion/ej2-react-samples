@@ -85,116 +85,118 @@ const KeyBoard = () => {
                             className="property-panel-table"
                             style={{ width: "100%" }}
                         >
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Keys</b>
-                                </td>
-                                <td style={{ width: "70%" }}>
-                                    <b>Description</b>
-                                </td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>F2</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Cell edit</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Enter</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Save request</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Delete</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Delete row</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Ctrl + Shift + UpArrow</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Collapse Child Grid</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Ctrl + Shift + DownArrow</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Expand Child Grid</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Ctrl + UpArrow</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Collapse All</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Ctrl + DownArrow</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Expand All</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Ctrl + Home</b>
-                                </td>
-                                <td style={{ width: "30%" }}>First row selection</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Ctrl + End</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Last row selection</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Home</b>
-                                </td>
-                                <td style={{ width: "30%" }}>First cell selection</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>End</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Last cell selection</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Up Arrow</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Move row selection up</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Down Arrow</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Move row selection down</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Right Arrow</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Move Cell selection right</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Left Arrow</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Move Cell selection left</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Shift + Down/Up</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Multiple row Selection</td>
-                            </tr>
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <b>Alt + j</b>
-                                </td>
-                                <td style={{ width: "30%" }}>Focus Tree Grid element</td>
-                            </tr>
+                            <tbody>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Keys</b>
+                                    </td>
+                                    <td style={{ width: "70%" }}>
+                                        <b>Description</b>
+                                    </td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>F2</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Cell edit</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Enter</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Save request</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Delete</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Delete row</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Ctrl + Shift + UpArrow</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Collapse Child Grid</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Ctrl + Shift + DownArrow</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Expand Child Grid</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Ctrl + UpArrow</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Collapse All</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Ctrl + DownArrow</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Expand All</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Ctrl + Home</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>First row selection</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Ctrl + End</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Last row selection</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Home</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>First cell selection</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>End</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Last cell selection</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Up Arrow</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Move row selection up</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Down Arrow</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Move row selection down</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Right Arrow</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Move Cell selection right</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Left Arrow</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Move Cell selection left</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Shift + Down/Up</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Multiple row Selection</td>
+                                </tr>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <b>Alt + j</b>
+                                    </td>
+                                    <td style={{ width: "30%" }}>Focus Tree Grid element</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -406,8 +408,7 @@ const KeyBoard = () => {
                     </table>
                 </p>
                 <p>
-                    More information on the gridLines configuration can be found in this
-                    documentation section.
+                    More information on the gridLines configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/accessibility#keyboard-navigation">documentation section</a>.
                 </p>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-  ScheduleComponent, Day, Week, WorkWeek, Month, EventRenderedArgs, Inject, Resize, DragAndDrop
+  ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, EventRenderedArgs, Inject, Resize, DragAndDrop
 } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
@@ -45,7 +45,7 @@ export class EditorFieldValidation extends SampleBase<{}, {}> {
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='550px' selectedDate={new Date(2021, 0, 10)} ref={t => this.scheduleObj = t}
               eventSettings={{ dataSource: this.data, fields: this.fields }} eventRendered={this.onEventRendered.bind(this)}>
-              <Inject services={[Day, Week, WorkWeek, Month, Resize, DragAndDrop]} />
+              <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
             </ScheduleComponent>
           </div>
         </div>

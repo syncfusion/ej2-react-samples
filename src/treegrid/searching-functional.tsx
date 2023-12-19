@@ -82,22 +82,24 @@ const Search = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr>
-                <td style={{ width: "30%" }}>
-                  <div style={{ paddingTop: "10px" }}> Hierarchy Mode </div>
-                </td>
-                <td style={{ width: "70%" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="100px"
-                      id="selmode"
-                      change={onChange.bind(this)}
-                      dataSource={modes}
-                      value="Parent"
-                    />
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td style={{ width: "30%" }}>
+                    <div style={{ paddingTop: "10px" }}> Hierarchy Mode </div>
+                  </td>
+                  <td style={{ width: "70%" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="100px"
+                        id="selmode"
+                        change={onChange.bind(this)}
+                        dataSource={modes}
+                        value="Parent"
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -161,8 +163,7 @@ const Search = () => {
           module into the <code>services</code>.
         </p>
         <p>
-          More information on the searching configuration can be found in this
-          documentation section.
+          More information on the searching configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/searching">documentation section</a>.
         </p>
       </div>
     </div>

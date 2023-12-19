@@ -107,8 +107,6 @@ export class LeftPane extends React.Component<{}, {}> {
      */
     public treeControl: TreeViewComponent;
 
-    componentWillMount(): void { }
-
     componentDidMount(): void {
         select('#sb-left-back').addEventListener('click', showHideControlTree);
     }

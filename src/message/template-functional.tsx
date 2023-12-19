@@ -48,6 +48,7 @@ function Template() {
             <div id="description">
                 <p>The Message component has an option to customize the content with a custom structure. The content can be a string, paragraph, or any other HTML element.</p>
                 <p>In this sample, the Message component content is customized with HTML elements and React Button components.</p>
+                <p>More information about Message template can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/message/template">documentation</a> section.</p>
             </div>
         </div>
     );

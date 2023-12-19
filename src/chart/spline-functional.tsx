@@ -27,11 +27,11 @@ const SAMPLE_CSS = `
     @keyframes opac {
         0% {
             stroke-opacity: 1;
-            stroke-width: 0px;
+            strokeWidth: 0px;
         }
         100% {
             stroke-opacity: 0;
-            stroke-width: 10px;
+            strokeWidth: 10px;
         }
     }`;
 
@@ -87,8 +87,7 @@ const Spline = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use spline series, we need to inject
-                    <code>SplineSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use spline series, we need to inject <code>SplineSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the line series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.

@@ -47,13 +47,14 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
                     </PivotViewComponent>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates how to use a server-side pivot engine to obtain, process and return the summarized data via a remote service and display it in the pivot table.</p>
+                    <p>This sample demonstrates how to use a server-side pivot engine to obtain, process and return the summarized data
+                        via a remote service and display it in the pivot table.</p>
                 </div>
                 <div id="description">
                     <p>
-                        The Pivot Table's server-side pivot engine (external pivot engine) uses the Syncfusion package <a target="_blank"
-                            href="https://www.nuget.org/packages/Syncfusion.EJ2.Pivot/"> Syncfusion.EJ2.Pivot</a> to gather data from the data
-                        source and perform all pivot operations such as <a target="_blank"
+                        The Pivot Table's server-side pivot engine (external pivot engine) uses the Syncfusion package <a
+                        target="_blank" href="https://www.nuget.org/packages/Syncfusion.Pivot.Engine/"> Syncfusion.Pivot.Engine</a> to
+                        gather data from the data source and perform all pivot operations such as <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/pivotview/aggregation/#aggregation">
                             aggregation</a>, <a target="_blank"
                                 href="https://ej2.syncfusion.com/react/documentation/pivotview/filtering/#filtering">
@@ -68,8 +69,10 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         In this demo, the pivot table is shown with the virtualization option enabled through the <a target="_blank"
-                            href="https://ej2.syncfusion.com/react/documentation/api/pivotview/#enablevirtualization"> enableVirtualization</a> property
-                        and an external server engine. This would improve pivot table rendering performance when working with large amounts of data.
+                            href="https://ej2.syncfusion.com/react/documentation/api/pivotview/#enablevirtualization">
+                            enableVirtualization</a> property
+                        and an external server engine. This would improve pivot table rendering performance when working with large
+                        amounts of data.
                     </p>
                     <br />
                     <p>

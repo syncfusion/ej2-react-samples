@@ -1,6 +1,3 @@
-/**
- * Sample for containers in the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, Orientation, ContainerType, AxesDirective, AxisDirective, PointersDirective, PointerDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -75,6 +72,7 @@ export class Container extends SampleBase<{}, {}> {
                                     <col span={1} style={{width: "40%"}}></col>
                                     <col span={1} style={{width: "60%"}}></col>
                                 </colgroup>
+                                <tbody>
                                 <tr style={{ height: '42px' }}>
                                     <td>
                                         <div style={{ paddingLeft: '0px', fontSize: "14px" }}>Orientation</div>
@@ -85,8 +83,7 @@ export class Container extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                 </tr>
-                                <br />
-                                <tr style={{ height: '50px' }}>
+                                <tr style={{ height: '50px', paddingTop: '15px' }}>
                                     <td>
                                         <div style={{ marginTop: "-20px", paddingLeft: '0px', fontSize: "14px" }}>Container Type</div>
                                     </td>
@@ -96,6 +93,7 @@ export class Container extends SampleBase<{}, {}> {
                                         </div>
                                     </td>
                                 </tr>
+                               </tbody>
                             </table>
                         </PropertyPane>
                     </div>

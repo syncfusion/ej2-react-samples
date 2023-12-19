@@ -1,6 +1,3 @@
-/**
- * Sample to design Semi-circular Gauge using the Circular Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -223,7 +220,7 @@ export class SemiGauge extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div style={{ marginLeft: "-10px", fontSize: "14px" }}>Hide Intersecting Label</div>
+                                        <div style={{ marginLeft: "-10px", fontSize: "14px" }}>Hide Intersecting Labels</div>
                                     </td>
                                     <td style={{ width: '40% ' }}>
                                         <div style={{ paddingTop: '0px', paddingLeft: "0px" }}>

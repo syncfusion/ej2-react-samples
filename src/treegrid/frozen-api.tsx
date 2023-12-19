@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject } from '@syncfusion/ej2-react-treegrid';
+import { TreeGridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Sort } from '@syncfusion/ej2-react-treegrid';
 import { frozenSampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
@@ -101,7 +101,7 @@ export class FrozenAPI extends SampleBase<{}, {}> {
                 <ColumnDirective field="employeeID" headerText="EmployeeID" width="120" textAlign="Right"/>
                 <ColumnDirective field="approved" headerText="Approved" width="140" displayAsCheckBox={true} textAlign="Left" freeze="Right"/>
               </ColumnsDirective>
-              <Inject services={[Freeze]} />
+              <Inject services={[Freeze, Sort]} />
             </TreeGridComponent>
             <DialogComponent id="alertDialog" header='Frozen' visible={false} animationSettings={{ effect: 'None' }} width='300px' content='Atleast one Column should be in movable' ref={(alertdialog) => { this.alertDialogInstance = alertdialog }}
               target='.control-section' buttons={this.confirmButton} showCloseIcon={false} >

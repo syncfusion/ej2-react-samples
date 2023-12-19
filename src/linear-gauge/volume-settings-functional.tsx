@@ -1,6 +1,3 @@
-/**
- * Sample to design volume settings using the Linear Gauge
- */
 import * as React from "react";
 import { useEffect } from "react";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, AnnotationDirective, Annotations, AnnotationsDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -21,8 +18,8 @@ const SAMPLE_CSS = `
         font-style: normal;
     }
     
-    [class^="sf-icon-"],
-    [class*=" sf-icon-"] {
+    #lineargauge-volume-settings [class^="sf-icon-"],
+    #lineargauge-volume-settings [class*=" sf-icon-"] {
         font-family: 'font-v1' !important;
         color: white;
         speak: none;
@@ -37,23 +34,23 @@ const SAMPLE_CSS = `
         margin-left: 40%;
         margin-top: 70%;
     }
-    
-    .sf-icon-music:before {
+
+    #lineargauge-volume-settings .sf-icon-music:before {
         content: '\\e701';
         color: white !important;
     }
-    
-    .sf-icon-clock:before {
+
+    #lineargauge-volume-settings .sf-icon-clock:before {
         content: '\\e702';
         color: white !important;
         margin-left: 2px;
     }
-    
-    .sf-icon-tick:before {
+
+    #lineargauge-volume-settings .sf-icon-tick:before {
         content: '\\e704';
     }
-    
-    .sf-icon-bell:before {
+
+    #lineargauge-volume-settings .sf-icon-bell:before {
         content: '\\e706';
         color: white !important;
     }`;
@@ -74,7 +71,7 @@ const VolumeSettings = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <div className='container' style={{ paddingTop: "12px" }}>
+                <div id='lineargauge-volume-settings' className='container' style={{ paddingTop: "12px" }}>
                     <div style={{ padding: "6px" }}>
                         <LinearGaugeComponent load={load} background='transparent' id='gaugeone' width='60px' height='350px' orientation='Vertical' container={{ width: 30, roundedCornerRadius: 15, type: 'RoundedRectangle', border: { width: 1 }, backgroundColor: 'transparent' }}>
                             <Inject services={[Annotations]} />

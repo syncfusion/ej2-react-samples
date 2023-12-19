@@ -60,8 +60,7 @@ const StackedColumn100 = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use 100% stacking column series, we need to inject
-                    <code>StackingColumnSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use 100% stacking column series, we need to inject <code>StackingColumnSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the 100% stacking column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.

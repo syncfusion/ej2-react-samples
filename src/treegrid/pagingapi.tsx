@@ -90,64 +90,66 @@ export class PagingAPI extends SampleBase<{}, {}> {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr>
                     <td style={{ width: '60%' }}>
                       <div> Allow Paging </div>
                     </td>
                     <td style={{ width: '60%' }}>
                       <div>
-                        <CheckBoxComponent checked={true} change={ this.onChange.bind(this) } ></CheckBoxComponent>
+                        <CheckBoxComponent checked={true} change={this.onChange.bind(this)} ></CheckBoxComponent>
                       </div>
                     </td>
                   </tr>
                   <tr className='con-prop1'>
-                    <td style= {{ width: '50%' }}>
-                      <div style= {{ paddingTop: '7px' }}> Page Size Mode </div>
+                    <td style={{ width: '50%' }}>
+                      <div style={{ paddingTop: '7px' }}> Page Size Mode </div>
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='dropdown'>
                         <DropDownListComponent width="90px" id="sizemode" change={this.change.bind(this)}
-                            dataSource={this.type} fields={{ text: 'type', value: 'id' }} value="All"
-                            ref={dropdown=> this.sizemodeObj = dropdown} />
+                          dataSource={this.type} fields={{ text: 'type', value: 'id' }} value="All"
+                          ref={dropdown => this.sizemodeObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr className='con-prop2'>
-                    <td style= {{ width: '50%' }}>
-                      <div style= {{ paddingTop: '7px' }}> Page Size </div>
+                    <td style={{ width: '50%' }}>
+                      <div style={{ paddingTop: '7px' }}> Page Size </div>
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
                         <NumericTextBoxComponent id='pagesize' format='##' min={1} max={200} value={12} width='110px'
-                          ref={numeric=> this.pageSizeObj = numeric} change={this.changeNum.bind(this)}>
+                          ref={numeric => this.pageSizeObj = numeric} change={this.changeNum.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>
                     </td>
                   </tr>
                   <tr className='con-prop2'>
-                    <td style= {{ width: '50%' }}>
-                      <div style= {{ paddingTop: '7px' }}> Page Count </div>
+                    <td style={{ width: '50%' }}>
+                      <div style={{ paddingTop: '7px' }}> Page Count </div>
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
                         <NumericTextBoxComponent id='pagecount' format='##' min={1} max={4} value={2} width='110px'
-                          ref={numeric=> this.pageCountObj = numeric} change={this.countChange.bind(this)}>
+                          ref={numeric => this.pageCountObj = numeric} change={this.countChange.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>
                     </td>
                   </tr>
                   <tr className='con-prop2'>
-                    <td style= {{ width: '50%' }}>
-                      <div style= {{ paddingTop: '7px' }}> Current Page </div>
+                    <td style={{ width: '50%' }}>
+                      <div style={{ paddingTop: '7px' }}> Current Page </div>
                     </td>
                     <td style={{ width: '50%', paddingTop: '10px 10px 10px 0px' }}>
                       <div id='numericbox'>
                         <NumericTextBoxComponent id='currentpage' format='##' min={1} max={17} value={1} width='110px'
-                          ref={numeric=> this.currentPageObj = numeric} change={this.currentPageChange.bind(this)}>
+                          ref={numeric => this.currentPageObj = numeric} change={this.currentPageChange.bind(this)}>
                         </NumericTextBoxComponent>
                       </div>
                     </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
         </div>
@@ -177,7 +179,7 @@ export class PagingAPI extends SampleBase<{}, {}> {
             <code>Page</code> module into the <code>services</code>.
         </p>
         <p>
-          More information on the paging configuration can be found in the  documentation section.
+          More information on the paging configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/paging">documentation section</a>.
         </p>
         </div>
       </div>

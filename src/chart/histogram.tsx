@@ -37,59 +37,33 @@ export class Histogram extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
-                        load={this.load.bind(this)}
-                        primaryXAxis={{ majorGridLines: { width: 0 }, title: 'Score of Final Examination',  minimum: 0, maximum: 100 }}
-                        primaryYAxis={{
-                            title: 'Number of Students',
-                            minimum: 0, maximum: 50, interval: 10,
-                            majorTickLines: { width: 0 }, lineStyle: { width: 0 }
-                        }}
-                        chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        legendSettings={{ visible: false }}
-                        title='Examination Result' loaded={this.onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} load={this.load.bind(this)} primaryXAxis={{ majorGridLines: { width: 0 }, title: 'Score of Final Examination', minimum: 0, maximum: 100, edgeLabelPlacement: 'Shift' }} primaryYAxis={{ title: 'Number of Students', minimum: 0, maximum: 50, interval: 10, majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, header: " " }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ visible: false }} title='Examination Result' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[HistogramSeries, Legend, Tooltip, Category, DataLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={chartData}  yName='y' name='Score' type='Histogram'
-                                marker={{ dataLabel: { visible: true, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }}
-                               showNormalDistribution={true} columnWidth={0.99} binInterval={20}>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={chartData} yName='y' name='Score' type='Histogram' marker={{ visible: true, height: 7, width: 7, dataLabel: { visible: true, position: 'Top', font: {color: '#ffffff', fontWeight: "600"} } }} showNormalDistribution={true} columnWidth={0.99} binInterval={20} />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-               <p>
-        This sample visualizes the student's results of the final examination with histogram series in chart. 
-        Number of students between each interval is shown by using the data label.
-    </p>
+                    <p>This React Histogram Chart example visualizes final examination results. The number of students between each interval is shown in data labels.</p>
                 </div>
                 <div id="description">
+                    <p>In this example, you can see how to render and configure the histogram chart. The histogram chart is a bar (column) chart used for frequency distribution in which the widths of the bars are proportional to classes into which variables have been divided and the heights of the bars are proportional to class frequencies. The DataLabel property is used to present details on individual data points.</p>
                     <p>
-        In this example, you can see how to render and configure the histogram type charts.
-        Histogram type charts can provide a visual display of large amounts of data that are difficult to understand in a tabular or spreadsheet form.
-        You can use the <code>border</code> and <code>fill</code> properties to customize the vertical rectangle.
-        The <code>dataLabel</code> property is used to represent individual data and its value.
-                   </p>
-                    <p>
-                         Tooltip is enabled in this example.
-        To see the tooltip in action, hover the mouse over a point or tap a point in touch enabled devices.
-                   </p>
+                        Tooltip is enabled in this example.
+                        To see the tooltip in action, hover the mouse over a point or tap a point in touch enabled devices.
+                    </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules.
-        To use histogram series, you should inject the <code>HistogramSeries</code> module using the <code>Chart.Inject(HistogramSeries)</code> method.
-                  </p>
+                        To use histogram series, you should inject the <code>HistogramSeries</code> module using the <code>Chart.Inject(HistogramSeries)</code> method.
+                    </p>
                     <p>
-                        More information on the histogram series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/histogram">documentation section</a>.
-                  </p>
+                        More information on the histogram series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#histogram-series">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

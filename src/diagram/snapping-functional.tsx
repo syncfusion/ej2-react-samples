@@ -178,9 +178,6 @@ let nodes:NodeModel[] = [
     .text-content {
       margin-left: 10px;
     }
-    .e-checkbox-wrapper .e-label {
-      font-size: 12px !important;
-    }
     .e-radio + label .e-label {
       font-size: 12px !important;
     }

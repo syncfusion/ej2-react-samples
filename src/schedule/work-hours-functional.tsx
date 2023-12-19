@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, TimelineViews, TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop, WorkHoursModel, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
+import { useEffect, useState, useRef } from 'react';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, TimelineViews, TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop, WorkHoursModel, View } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -19,6 +19,7 @@ const WorkHours = () => {
   useEffect(() => {
     updateSampleSection();
   }, [])
+  const scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).employeeEventData, null, true) as Record<string, any>[];
   const [startTime, setStartTime] = useState<string>('08:00');
   const [endTime, setEndTime] = useState<string>('20:00');
@@ -27,7 +28,6 @@ const WorkHours = () => {
     start: startTime,
     end: endTime
   });
-  const [currentView, setCurrentView] = useState<View>('Week');
   const onSubmit = (): void => {
     setWorkHours({ ...workHours, start: startTime, end: endTime })
   }
@@ -37,17 +37,14 @@ const WorkHours = () => {
   const onEndTimeChange = (args: any) => {
     setEndTime(args.target.element.value)
   }
-  const onNavigating = (args: NavigatingEventArgs): void => {
-    setCurrentView(args.currentView as View);
-  }
   const onEventRendered = (args: EventRenderedArgs): void => {
-    applyCategoryColor(args, currentView);
+    applyCategoryColor(args, scheduleObj.current?.currentView as View);
   }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} workHours={workHours} eventRendered={onEventRendered} currentView={currentView} navigating={onNavigating}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} workHours={workHours} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />

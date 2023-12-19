@@ -27,7 +27,7 @@ const CrosshairChart = () => {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ majorGridLines: { width: 0 }, valueType: 'DateTime', crosshairTooltip: { enable: true }, labelFormat: 'MMM' }} load={load.bind(this)} primaryYAxis={{ minimum: 83, maximum: 87, interval: 1, title: 'Millions in USD', labelFormat: '{value}M', rowIndex: 0, crosshairTooltip: { enable: true } }} width={Browser.isDevice ? '100%' : '75%'} title='Conns,Inc Stock Details' loaded={onChartLoad.bind(this)} crosshair={{ enable: true }} legendSettings={{ visible: false }} zoomSettings={{ enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}>
+                <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ majorGridLines: { width: 0 }, valueType: 'DateTime', crosshairTooltip: { enable: true }, labelFormat: 'MMM' }} load={load.bind(this)} primaryYAxis={{ minimum: 83, maximum: 87, interval: 1, title: 'Millions in USD', labelFormat: '{value}M', rowIndex: 0, crosshairTooltip: { enable: true } }} width={Browser.isDevice ? '100%' : '75%'} title='Conns, Inc Stock Details' loaded={onChartLoad.bind(this)} crosshair={{ enable: true }} legendSettings={{ visible: false }} zoomSettings={{ enablePinchZooming: true, enableSelectionZooming: true, mode: 'X' }}>
                     <Inject services={[LineSeries, HiloOpenCloseSeries, Crosshair, DateTime, Zoom]} />
                     <AxesDirective>
                         <AxisDirective majorGridLines={{ width: 0 }} rowIndex={0} opposedPosition={true} minimum={82} maximum={88} interval={2} name='yAxis' title='Millions in USD (Stock)' crosshairTooltip={{ enable: true }} />
@@ -50,8 +50,7 @@ const CrosshairChart = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Crosshair, we need to inject
-                    <code>Crosshair</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Crosshair, we need to inject <code>Crosshair</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the Crosshair can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/cross-hair-and-track-ball/#trackball">documentation section</a>.

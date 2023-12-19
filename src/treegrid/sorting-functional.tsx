@@ -137,60 +137,62 @@ const Sorting = () => {
             className="property-panel-table"
             style={{ width: "100%" }}
           >
-            <tr>
-              <td style={{ width: "70%" }}>
-                <div> Order Name</div>
-              </td>
-              <td style={{ width: "30%", padding: "10px 10px 10px 0px" }}>
-                <div className="col-md-6">
-                  <CheckBoxComponent
-                    checked={true}
-                    change={orderNameChange.bind(this)}
-                    ref={orderNameObj}
-                  ></CheckBoxComponent>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ width: "70%" }}>
-                <div> Category </div>
-              </td>
-              <td style={{ width: "30%", padding: "10px 10px 10px 0px" }}>
-                <div className="col-md-6">
-                  <CheckBoxComponent
-                    checked={true}
-                    change={categoryChange.bind(this)}
-                    ref={categoryObj}
-                  ></CheckBoxComponent>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ width: "70%" }}>
-                <div> Order Date </div>
-              </td>
-              <td style={{ width: "30%", padding: "10px 10px 10px 0px" }}>
-                <div className="col-md-6">
-                  <CheckBoxComponent
-                    change={orderDateChange.bind(this)}
-                    ref={orderDateObj}
-                  ></CheckBoxComponent>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ width: "70%" }}>
-                <div> Units </div>
-              </td>
-              <td style={{ width: "30%", padding: "10px 10px 10px 0px" }}>
-                <div className="col-md-6">
-                  <CheckBoxComponent
-                    change={unitsChange.bind(this)}
-                    ref={unitsObj}
-                  ></CheckBoxComponent>
-                </div>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td style={{ width: "70%" }}>
+                  <div> Order Name</div>
+                </td>
+                <td style={{ width: "30%", padding: "10px 10px 10px 0px" }}>
+                  <div className="col-md-6">
+                    <CheckBoxComponent
+                      checked={true}
+                      change={orderNameChange.bind(this)}
+                      ref={orderNameObj}
+                    ></CheckBoxComponent>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style={{ width: "70%" }}>
+                  <div> Category </div>
+                </td>
+                <td style={{ width: "30%", padding: "10px 10px 10px 0px" }}>
+                  <div className="col-md-6">
+                    <CheckBoxComponent
+                      checked={true}
+                      change={categoryChange.bind(this)}
+                      ref={categoryObj}
+                    ></CheckBoxComponent>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style={{ width: "70%" }}>
+                  <div> Order Date </div>
+                </td>
+                <td style={{ width: "30%", padding: "10px 10px 10px 0px" }}>
+                  <div className="col-md-6">
+                    <CheckBoxComponent
+                      change={orderDateChange.bind(this)}
+                      ref={orderDateObj}
+                    ></CheckBoxComponent>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style={{ width: "70%" }}>
+                  <div> Units </div>
+                </td>
+                <td style={{ width: "30%", padding: "10px 10px 10px 0px" }}>
+                  <div className="col-md-6">
+                    <CheckBoxComponent
+                      change={unitsChange.bind(this)}
+                      ref={unitsObj}
+                    ></CheckBoxComponent>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div id="action-description">
@@ -241,8 +243,7 @@ const Sorting = () => {
             <code>Sort</code> module into the <code>services</code>.
           </p>
           <p>
-            More information on the sorting feature configuration can be found
-            in this documentation section.
+            More information on the sorting feature configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/sorting">documentation section</a>.
           </p>
         </div>
       </div>

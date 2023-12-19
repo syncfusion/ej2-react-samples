@@ -8,7 +8,7 @@ import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { DataUtil } from '@syncfusion/ej2-data';
-import { Browser, extend } from '@syncfusion/ej2-base';
+import { Browser, extend, isNullOrUndefined } from '@syncfusion/ej2-base';
 import './dialog-temp.css';
 
 export class DialogTemplate extends SampleBase<{}, {}> {
@@ -110,6 +110,15 @@ export class DialogFormTemplate extends React.Component<{}, {}> {
     }
     render(): any {
         let data: IOrderModel = this.state;
+        // react warning error purpose
+        if (data.isAdd) {
+            let keys: string[] = Object.keys(data);
+            for (let i: number = 0; i < keys.length; i++) {
+                if (data[keys[i]] !== 'isAdd' && isNullOrUndefined(data[keys[i]])) {
+                    data[keys[i]] = '';
+                }
+            }
+        }
         return (<div>
             <div className="form-row">
                 <div className="form-group col-md-6">

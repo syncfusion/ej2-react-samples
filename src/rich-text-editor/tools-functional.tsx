@@ -21,12 +21,12 @@ function Overview() {
     const hostUrl: string = 'https://ej2-aspcore-service.azurewebsites.net/';
 
     // Rich Text Editor items list
-    const items: string[] = ['FormatPainter', 'Bold', 'Italic', 'Underline', 'StrikeThrough',
-        'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
+    const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+        'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
         'LowerCase', 'UpperCase', '|',
-        'Formats', 'Alignments', 'NumberFormatList', 'BulletFormatList',
-        'Outdent', 'Indent', 'SuperScript', 'SubScript', 'EmojiPicker', '|',
-        'CreateTable', 'CreateLink', 'Image', 'Audio', 'Video', 'FileManager', '|', 'ClearFormat', 'Print',
+        'Formats', 'Alignments', '|', 'NumberFormatList', 'BulletFormatList', '|',
+        'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
+        '|', 'EmojiPicker', 'Print', '|',
         'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
     ];
     const fileManagerSettings: FileManagerSettingsModel = {

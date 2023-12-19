@@ -109,6 +109,12 @@ export class Default extends SampleBase<{}, {}> {
                 <div className="col-lg-8 control-section inplace-control-section default_layout">
                     <div className="control_wrapper">
                         <table>
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th></th>
+                                </tr>
+                            </thead>
                             <tr>
                                 <td>
                                     <label className="control-label" style={{ textAlign: 'left', fontSize: '14px', fontWeight: 400 }}>

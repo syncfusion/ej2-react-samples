@@ -58,8 +58,7 @@ const StepLine = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use step line series, we need to inject
-                    <code>StepLineSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use step line series, we need to inject <code>StepLineSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the StepLine series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.

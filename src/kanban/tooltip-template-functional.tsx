@@ -28,6 +28,7 @@ const TooltipTemplate = () => {
         return (
             <div className="e-kanbantooltiptemp">
                 <table>
+                    <tbody>
                     <tr>
                         <td className="e-kanban-card-details">
                             <table>
@@ -56,6 +57,7 @@ const TooltipTemplate = () => {
                             </table>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         );

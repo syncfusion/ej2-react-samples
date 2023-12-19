@@ -58,8 +58,7 @@ const Pyramid = () => {
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Pyramid series, we need to inject
-                    <code>PyramidSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Pyramid series, we need to inject <code>PyramidSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the pyramid series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/pyramid/">documentation section</a>.

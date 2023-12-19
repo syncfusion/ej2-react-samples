@@ -90,58 +90,60 @@ const SortingAPI = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr>
-                <td style={{ width: "20%" }}>
-                  <div> Column </div>
-                </td>
-                <td style={{ width: "80%", paddingRight: "10px" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="120px"
-                      id="columns"
-                      ref={columnName}
-                      dataSource={columnsName}
-                      fields={{ text: "name", value: "id" }}
-                      value="taskID"
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: "20%" }}>
-                  <div> Direction </div>
-                </td>
-                <td style={{ width: "80%", paddingRight: "10px" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="120px"
-                      id="direction"
-                      ref={sortDirection}
-                      dataSource={direction}
-                      fields={{ text: "name", value: "id" }}
-                      value="Ascending"
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: "30%" }}>
-                  <div>
-                    <ButtonComponent onClick={btnClick.bind(this)}>
-                      {" "}
-                      Sort{" "}
-                    </ButtonComponent>
-                  </div>
-                </td>
-                <td style={{ width: "70%", padding: "10px 10px 0px 0px" }}>
-                  <div>
-                    <ButtonComponent onClick={btnClick2.bind(this)}>
-                      {" "}
-                      Clear{" "}
-                    </ButtonComponent>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td style={{ width: "20%" }}>
+                    <div> Column </div>
+                  </td>
+                  <td style={{ width: "80%", paddingRight: "10px" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="120px"
+                        id="columns"
+                        ref={columnName}
+                        dataSource={columnsName}
+                        fields={{ text: "name", value: "id" }}
+                        value="taskID"
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: "20%" }}>
+                    <div> Direction </div>
+                  </td>
+                  <td style={{ width: "80%", paddingRight: "10px" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="120px"
+                        id="direction"
+                        ref={sortDirection}
+                        dataSource={direction}
+                        fields={{ text: "name", value: "id" }}
+                        value="Ascending"
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: "30%" }}>
+                    <div>
+                      <ButtonComponent onClick={btnClick.bind(this)}>
+                        {" "}
+                        Sort{" "}
+                      </ButtonComponent>
+                    </div>
+                  </td>
+                  <td style={{ width: "70%", padding: "10px 10px 0px 0px" }}>
+                    <div>
+                      <ButtonComponent onClick={btnClick2.bind(this)}>
+                        {" "}
+                        Clear{" "}
+                      </ButtonComponent>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -189,8 +191,7 @@ const SortingAPI = () => {
           <code>Sort</code> module into the <code>services</code>.
         </p>
         <p>
-          More information on the sorting feature configuration can be found in
-          this documentation section.
+          More information on the sorting feature configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/sorting">documentation section</a>.
         </p>
       </div>
     </div>

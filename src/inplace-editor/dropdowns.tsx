@@ -92,6 +92,12 @@ export class DropDowns extends SampleBase<{}, {}> {
                 <div className="col-lg-8 control-section inplace-control-section drop-down-layout">
                     <div className="control_wrapper">
                         <table>
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th></th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <tr>
                                     <td>

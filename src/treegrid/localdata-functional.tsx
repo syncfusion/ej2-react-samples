@@ -81,9 +81,9 @@ const LocalData = () => {
           source to the Tree Grid.
         </p>
         <p>
-          More information on the data binding can be found in this
-          documentation section.
-        </p>
+            More information on the local data binding can be found in this 
+            <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/treegrid/data-binding/local-data/'> documentation section.</a>
+          </p>
       </div>
     </div>
   );

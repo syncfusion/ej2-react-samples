@@ -16,9 +16,6 @@ const SAMPLE_CSS: any = `
         float: right; margin-right: 10p
     }`;
 // custom code end
-/**
- * Heatmap Inversed Axis sample
- */
 const InversedAxis = () => {
 
     useEffect(() => {
@@ -35,18 +32,24 @@ const InversedAxis = () => {
             size: '15px',
             fontWeight: '500',
             fontStyle: 'Normal',
-            fontFamily: 'Segoe UI'
+            fontFamily: 'inherit'
         }
     }
     let xAxis: AxisModel = {
         labels: ['China', 'India', 'USA', 'Indonesia', 'Brazil', 'Pakistan', 'Nigeria', 'Bangladesh', 'Russia', 'Mexico'],
         labelRotation: 45,
         labelIntersectAction: 'None',
-        isInversed: isXInversed
+        isInversed: isXInversed,
+        textStyle: {
+            fontFamily: 'inherit'
+        }
     }
     let yAxis: AxisModel = {
         labels: ['1965-1970', '1970-1975', '1975-1980', '1980-1985', '1985-1990', '1990-1995', '1995-2000', '2000-2005', '2005-2010', '2010-2015'],
-        isInversed: isYInversed
+        isInversed: isYInversed,
+        textStyle: {
+            fontFamily: 'inherit'
+        }
     }
     let paletteSettings: PaletteSettingsModel = {
         palette: [
@@ -66,9 +69,11 @@ const InversedAxis = () => {
     }
 
     const load = (args: ILoadedEventArgs): void => {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
 
     const valueXChange = (args: ChangeEventArgs): void => {
@@ -87,7 +92,7 @@ const InversedAxis = () => {
                 {/* custom code start */}
                 <style>{SAMPLE_CSS}</style>
                 {/* custom code end */}
-                <HeatMapComponent id='heatmap-container' ref={heatmap} titleSettings={title} xAxis={xAxis} yAxis={yAxis} dataSource={(data as any).inveredAxisData} cellSettings={cellSettings} paletteSettings={paletteSettings} load={load.bind(this)} legendSettings={{visible: false }}>
+                <HeatMapComponent id='heatmap-container' ref={heatmap} titleSettings={title} tooltipSettings={{ textStyle:{ fontFamily: 'inherit' } }} xAxis={xAxis} yAxis={yAxis} dataSource={(data as any).inveredAxisData} cellSettings={cellSettings} paletteSettings={paletteSettings} load={load.bind(this)} legendSettings={{visible: false }}>
                     <Inject services={[Legend, Tooltip]} />
                 </HeatMapComponent>
                 <div id="source">Source:
@@ -96,7 +101,7 @@ const InversedAxis = () => {
             </div>
             <div className="col-md-3 property-section">
                 <PropertyPane title='Properties'>
-                    <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                    <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
                         <tbody>
                             <tr id='' style={{ height: '50px' }}>
                                 <td style={{ width: '40%' }}>
@@ -121,16 +126,18 @@ const InversedAxis = () => {
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to reverse the axis origin for both axes, once the axis origin has been reversed
-                    the axis data will be displayed inverted. You can reverse the axis origin by enabling the <code>isInversed
-                    </code> property for each axis.
+                In this example, you can see how to reverse the axis origin for both axes, once the axis origin has been reversed
+                the axis data will be displayed inverted. You can reverse the axis origin by enabling the
+                <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/axisModel/#isinversed" target="_blank"> isInversed </a> property for each axis. 
                 </p>
-                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
-                <br></br>
-                <p><b>Injecting Module</b></p>
                 <p>
-                    Heatmap component features are segregated into individual feature-wise modules. To use a tooltip,
-                    inject the <code>Tooltip </code> module using the <code>Heatmap.Inject(Tooltip) </code> method.
+                    The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.
+                </p>
+                <br></br>
+                <p> <b>Injecting Module</b></p>
+                <p>
+                    Heatmap component features are separated into discrete feature-based modules. To use a tooltip, inject the <a target="_blank"
+                    href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> module using the <code>{'<Inject services={[Tooltip]} />'}</code> method.
                 </p>
             </div>
         </div >

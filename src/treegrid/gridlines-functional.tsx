@@ -83,23 +83,25 @@ const GridLines = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "60%" }}>
-                  <div>Grid Lines</div>
-                </td>
-                <td style={{ width: "60%" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="115px"
-                      id="selmode"
-                      change={change.bind(this)}
-                      dataSource={lines}
-                      fields={{ text: "type", value: "id" }}
-                      value="Vertical"
-                    />
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "60%" }}>
+                    <div>Grid Lines</div>
+                  </td>
+                  <td style={{ width: "60%" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="115px"
+                        id="selmode"
+                        change={change.bind(this)}
+                        dataSource={lines}
+                        fields={{ text: "type", value: "id" }}
+                        value="Vertical"
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -140,8 +142,7 @@ const GridLines = () => {
           values in the dropdown.
         </p>
         <p>
-          More information on the gridLines configuration can be found in this
-          documentation section.
+          More information on the gridLines configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/cell/cell#treegrid-lines">documentation section</a>.
         </p>
       </div>
     </div>

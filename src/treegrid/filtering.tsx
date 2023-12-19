@@ -43,17 +43,19 @@ export class Filtering extends SampleBase<{}, {}> {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr>
                     <td style={{ width: '30%' }}>
-                      <div style={{ paddingTop: '10px'}}> Hierarchy Mode </div>
+                      <div style={{ paddingTop: '10px' }}> Hierarchy Mode </div>
                     </td>
                     <td style={{ width: '70%' }}>
                       <div>
-                         <DropDownListComponent width="100px" id="selmode" change={this.onChange.bind(this)}
-                            dataSource={this.modes} value="Parent" />
+                        <DropDownListComponent width="100px" id="selmode" change={this.onChange.bind(this)}
+                          dataSource={this.modes} value="Parent" />
                       </div>
                     </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
          </div>
@@ -91,7 +93,7 @@ export class Filtering extends SampleBase<{}, {}> {
             <code>Filter</code> module into the <code>services</code>.
           </p>
           <p>
-            More information on the filter configuration can be found in this documentation section.
+            More information on the filter configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/filtering/filtering">documentation section</a>.
           </p>
       </div>
     </div>

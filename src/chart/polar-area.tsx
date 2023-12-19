@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType,
-    Legend, Category, AreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme, Tooltip
+    Legend, Category, AreaSeries, ILoadedEventArgs, PolarSeries, RadarSeries, ChartTheme, Tooltip, Highlight
 } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -43,77 +43,51 @@ export class PolarArea extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section row'>
                     <div className='col-md-8'>
-                        <ChartComponent id='charts' ref={chart => this.chartInstance = chart}
-                            primaryXAxis={{
-                                valueType: 'Category',
-                                labelPlacement: 'OnTicks',
-                                interval: 1,
-                                coefficient: Browser.isDevice ? 80 : 100
-                            }}
-                            primaryYAxis={{
-                                title: 'Revenue in Millions',
-                                labelFormat: '{value}M'
-                            }}
-                            load={this.load.bind(this)}
-                            tooltip={{enable: true}}
-                            title="Average Sales Comparison" loaded={this.onChartLoad.bind(this)}>
-                            <Inject services={[AreaSeries, Legend, Category, PolarSeries, RadarSeries, Tooltip]} />
+                        <ChartComponent id='charts' ref={chart => this.chartInstance = chart} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} primaryYAxis={{ title: 'Revenue in Millions', labelFormat: '{value}M' }} legendSettings= {{ visible: true, enableHighlight: true }} tooltip={{enable: true}} load={this.load.bind(this)} title="Average Sales Comparison" loaded={this.onChartLoad.bind(this)}>
+                            <Inject services={[AreaSeries, Legend, Category, PolarSeries, RadarSeries, Highlight, Tooltip]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y' name='Product A' width={2}
-                                    opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }}>
-                                </SeriesDirective>
-                                <SeriesDirective dataSource={data2} xName='x' yName='y' name='Product B' width={2}
-                                    opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }}>
-                                </SeriesDirective>
-                                <SeriesDirective dataSource={data3} xName='x' yName='y' name='Product C' width={2}
-                                    opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }}>
-                                </SeriesDirective>
+                                <SeriesDirective dataSource={data1} xName='x' yName='y' name='Product A' width={2} opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }} />
+                                <SeriesDirective dataSource={data2} xName='x' yName='y' name='Product B' width={2} opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }} />
+                                <SeriesDirective dataSource={data3} xName='x' yName='y' name='Product C' width={2} opacity={0.5} type='Polar' drawType='Area' border={{ color: 'transparent' }} />
                             </SeriesCollectionDirective>
                         </ChartComponent>
                     </div>
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody><tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Series Type:</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <DropDownListComponent width={120} id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Polar" />
+                                            <DropDownListComponent width={120} id="selmode" change={this.change.bind(this)} ref={d=>this.dropElement=d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value='Polar' />
                                         </div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample demonstrates polar series with area type for average sales comparison of products in recent year.  The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
-            </p>
+                    <p>This sample shows the average product sales comparison for 6 years in polar and radar charts.</p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the area type charts. Similar to line type series, but the area get closed and filled with series color.
-                   You can use <code>border</code>, <code>fill</code> properties to customize the area. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
-                   Legend is enabled in this example with series type shape.
-               </p>
+                        In this example, you can see how to render and configure polar and radar charts with an area series. Switching between polar and radar series can be done using <code>Series Type</code> in the property panel
+                    </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject
-                   <code>AreaSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
-              </p>
+                        Chart component features are segregated into individual feature-wise modules. To use area series, we need to 
+                        inject <code>AreaSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
+                    </p>
                     <p>
-                        More information on the polar and radar chart with an area series can be found in this &nbsp;
-                  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/polar#area">documentation section</a>.
-              </p>
+                        More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/#polar-chart">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

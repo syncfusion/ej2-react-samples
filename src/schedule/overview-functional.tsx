@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState, useCallback } from 'react';
 import { ButtonComponent, SwitchComponent, CheckBoxComponent, ChangeEventArgs as SwitchEventArgs } from '@syncfusion/ej2-react-buttons';
 import { TimePickerComponent, ChangeEventArgs as TimeEventArgs } from '@syncfusion/ej2-react-calendars';
 import { DropDownListComponent, ChangeEventArgs, MultiSelectComponent, MultiSelectChangeEventArgs, CheckBoxSelection } from '@syncfusion/ej2-react-dropdowns';
@@ -264,7 +264,7 @@ const Overview = () => {
     setIsTimelineView(args.checked);
   }
 
-  const timelineTemplate = () => {
+  const timelineTemplate = useCallback(() => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
@@ -273,9 +273,9 @@ const Overview = () => {
         <div className='text-child'>Timeline Views</div>
       </div >
     );
-  }
+  },[])
 
-  const groupTemplate = () => {
+  const groupTemplate = useCallback(() => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
@@ -284,9 +284,9 @@ const Overview = () => {
         <div className='text-child'>Grouping</div>
       </div>
     );
-  }
+  },[])
 
-  const gridlineTemplate = () => {
+  const gridlineTemplate = useCallback(() => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
@@ -295,9 +295,9 @@ const Overview = () => {
         <div className='text-child'>Gridlines</div>
       </div>
     );
-  }
+  },[])
 
-  const autoHeightTemplate = () => {
+  const autoHeightTemplate = useCallback(() => {
     return (
       <div className = 'template'>
         <div className='icon-child'>
@@ -306,7 +306,7 @@ const Overview = () => {
         <div className='text-child'>Row Auto Height</div>
       </div>
     );
-  }
+  },[])
 
   const getDateHeaderDay = (value: Date): string => {
     return intl.formatDate(value, { skeleton: 'E' });

@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, ChartTheme,
-    ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, ExportType, Export
+    ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, ExportType, Export, DataLabel
 } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
@@ -67,41 +67,20 @@ export class ChartExport extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section row'>
-                    <div className='col-md-9'>
-                        <ChartComponent id='charts' ref={chart => this.chartInstance = chart} style={{ textAlign: "center" }}
-                            primaryXAxis={{
-                                title: 'Countries',
-                                valueType: 'Category',
-                                majorGridLines: { width: 0 }
-                            }}
-                            chartArea={{ border: { width: 0 } }}
-                            legendSettings={{ visible: false }}
-                            primaryYAxis={{
-                                labelFormat: '{value}GW',
-                                minimum: 0,
-                                maximum: 40,
-                                interval: 10,
-                                majorGridLines: { width: 0 }
-                            }}
-                            pointRender={this.labelRender.bind(this)}
-                            load={this.load.bind(this)}
-                            title="Top 10 Countries Using Solar Power" loaded={this.onChartLoad.bind(this)}>
-                            <Inject services={[ColumnSeries, Category, Legend, Export]} />
+                    <div className='col-lg-9'>
+                        <ChartComponent id='charts' ref={chart=>this.chartInstance=chart} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelIntersectAction: "None", labelRotation: -45, interval: 1 }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ labelFormat: '{value}GW', minimum: 0, maximum: 40, interval: 10, lineStyle: {width : 0}, majorGridLines: { width: 2 }, minorTickLines: {width: 0}, majorTickLines: {width : 0} }} pointRender={this.labelRender.bind(this)} load={this.load.bind(this)} legendSettings={{ visible: false }} title="Top 10 Countries Using Solar Power" loaded={this.onChartLoad.bind(this)}>
+                            <Inject services={[ColumnSeries, Category, Legend, Export, DataLabel]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Measurements (in Gigawatt)'
-                                    type='Column'>
-                                </SeriesDirective>
+                                <SeriesDirective dataSource={data1} name='Measurements (in Gigawatt)' xName='x' yName='y' width={2} marker={{ dataLabel: { visible: true, name: 'DataLabelMappingName', enableRotation: Browser.isDevice ? true : false, angle: -90, position: 'Top', font: {  fontWeight: '600', color: '#ffffff', size: '9px' } } }} type='Column' />
                             </SeriesCollectionDirective>
                         </ChartComponent>
                     </div>
-                    <div className='col-md-3 property-section'>
+                    <div className='col-lg-3 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: "50px" }}>
+                            <tbody><tr style={{ height: "50px" }}>
                                     <td style={{ width: "30%" }}>
                                         Export Type:
                             </td>
@@ -123,11 +102,11 @@ export class ChartExport extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td>
-                                        <div id="btn-control"  style={{ 'marginLeft': '40%'}}>
-                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-export-icon' cssClass='e-flat' isPrimary={true}>Export</ButtonComponent>
+                                        <div id="btn-control" style={{ 'marginLeft': '50%' }}>
+                                            <ButtonComponent id="chart-export" iconCss='e-icons e-export icon' isPrimary={true}>Export</ButtonComponent>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>
@@ -136,7 +115,7 @@ export class ChartExport extends SampleBase<{}, {}> {
                     <p>This sample demonstrates client-side exporting of the chart, enabling you to export its data to Excel, PDF, and CSV formats. Additionally, it allows you to save the chart in image formats such as JPEG, PNG, and SVG.</p>
                 </div>
                 <div id="description">
-                    <p>In this example, you can see how the export functionality is configured. The rendered chart can be exported in JPEG, PNG, SVG, and PDF file types. Data from the chart can also be exported to Excel and CSV files.</p>
+                <p>In this example, you can see how the export functionality is configured. The rendered chart can be exported in JPEG, PNG, SVG, and PDF file types. Data from the chart can also be exported to Excel and CSV files.</p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use export, we need to inject <code>export</code> module into <code>services</code>.

@@ -1,6 +1,3 @@
-/**
- * Sample for multiple ranges in the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -35,7 +32,7 @@ export class MultipleRanges extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <CircularGaugeComponent load={this.load.bind(this)} id='multiple-ranges' background='transparent'>
+                    <CircularGaugeComponent load={this.load.bind(this)} animationDuration={2000} id='multiple-ranges' background='transparent'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective startAngle={230} endAngle={130} radius='90%' minimum={-30} maximum={120} hideIntersectingLabel={true}

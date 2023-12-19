@@ -110,42 +110,44 @@ const Reorders = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "30%" }}>
-                  <div style={{ paddingTop: "10px" }}> Column </div>
-                </td>
-                <td style={{ width: "70%", paddingRight: "10px" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="100px"
-                      id="columns"
-                      change={change.bind(this)}
-                      dataSource={columnNames}
-                      fields={{ text: "name", value: "id" }}
-                      value="taskID"
-                      ref={dropdownObj}
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "30%" }}>
-                  <div> Column Index </div>
-                </td>
-                <td style={{ width: "70%", paddingRight: "10px" }}>
-                  <div>
-                    <DropDownListComponent
-                      width="100px"
-                      id="columnindex"
-                      change={change2.bind(this)}
-                      dataSource={columnsIndex}
-                      fields={{ text: "name", value: "id" }}
-                      value="0"
-                      ref={dropdownObj2}
-                    />
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "30%" }}>
+                    <div style={{ paddingTop: "10px" }}> Column </div>
+                  </td>
+                  <td style={{ width: "70%", paddingRight: "10px" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="100px"
+                        id="columns"
+                        change={change.bind(this)}
+                        dataSource={columnNames}
+                        fields={{ text: "name", value: "id" }}
+                        value="taskID"
+                        ref={dropdownObj}
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "30%" }}>
+                    <div> Column Index </div>
+                  </td>
+                  <td style={{ width: "70%", paddingRight: "10px" }}>
+                    <div>
+                      <DropDownListComponent
+                        width="100px"
+                        id="columnindex"
+                        change={change2.bind(this)}
+                        dataSource={columnsIndex}
+                        fields={{ text: "name", value: "id" }}
+                        value="0"
+                        ref={dropdownObj2}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -173,9 +175,8 @@ const Reorders = () => {
             <code>Reorder</code> module into the <code>services</code>.
           </p>
           <p>
-            More information about Column Reorder can be found in this
-            documentation section.
-          </p>
+            More information about Column Reorder can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/column-reorder">documentation section</a>.
+         </p>
         </div>
       </div>
     </div>

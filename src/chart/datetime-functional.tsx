@@ -8,16 +8,16 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Lin
 import { updateSampleSection } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 export let data1: any[] = [
-    { x: new Date(2016, 2, 7), y: 6.3 },
-    { x: new Date(2016, 3, 15), y: 13.3 }, { x: new Date(2016, 4, 10), y: 18.0 },
-    { x: new Date(2016, 5, 17), y: 19.8 }, { x: new Date(2016, 6, 13), y: 18.1 },
-    { x: new Date(2016, 7, 11), y: 13.1 }, { x: new Date(2016, 8, 16), y: 4.1 }
+    { x: new Date(2016, 3, 1), y: 6.3 },
+    { x: new Date(2016, 4, 1), y: 13.3 }, { x: new Date(2016, 5, 1), y: 18.0 },
+    { x: new Date(2016, 6, 1), y: 19.8 }, { x: new Date(2016, 7, 1), y: 18.1 },
+    { x: new Date(2016, 8, 1), y: 13.1 }, { x: new Date(2016, 9, 1), y: 4.1 }
 ];
 export let data2: any[] = [
-    { x: new Date(2016, 2, 7), y: -5.3 },
-    { x: new Date(2016, 3, 15), y: 1.0 }, { x: new Date(2016, 4, 10), y: 6.9 },
-    { x: new Date(2016, 5, 17), y: 9.4 }, { x: new Date(2016, 6, 13), y: 7.6 },
-    { x: new Date(2016, 7, 11), y: 2.6 }, { x: new Date(2016, 8, 16), y: -4.9 }
+    { x: new Date(2016, 3, 1), y: -5.3 },
+    { x: new Date(2016, 4, 1), y: 1.0 }, { x: new Date(2016, 5, 1), y: 6.9 },
+    { x: new Date(2016, 6, 1), y: 9.4 }, { x: new Date(2016, 7, 1), y: 7.6 },
+    { x: new Date(2016, 8, 1), y: 2.6 }, { x: new Date(2016, 9, 1), y: -4.9 }
 ];
 const SAMPLE_CSS = `
     .control-fluid {
@@ -64,8 +64,7 @@ const DateTimeAxis = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use DateTime axis, we need to inject
-                    <code>DateTime</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use DateTime axis, we need to inject <code>DateTime</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the DateTime axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/date-time-axis/#datetime-axis">documentation section</a>.

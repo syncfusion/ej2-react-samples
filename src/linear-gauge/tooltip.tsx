@@ -1,7 +1,3 @@
-/**
- * Sample for tooltip in the Linear Gauge
- */
-
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, LinearGaugeTheme, IAxisLabelRenderEventArgs, ILoadedEventArgs, ILoadEventArgs, IResizeEventArgs, ITooltipRenderEventArgs, GaugeTooltip, AnnotationsDirective, Annotations, Inject, AnnotationDirective, AxesDirective, AxisDirective, PointersDirective, PointerDirective } from '@syncfusion/ej2-react-lineargauge';

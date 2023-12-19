@@ -129,7 +129,7 @@ const LazyLoading = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section' >
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chart} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', skeleton: 'yMMM', skeletonType: 'Date', scrollbarSettings: { range: { minimum: new Date(2009, 0, 1), maximum: new Date(2014, 0, 1) }, enable: true, pointsLength: 1000, enableZoom: false, height: 14 } }} primaryYAxis={{ title: 'Server Load', labelFormat: '{value}MB' }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, shared: true, header: '<b>${point.x}</b>', format: 'Server load : <b>${point.y}</b>' }} legendSettings={{ visible: true }} scrollEnd={scrollEnd.bind(this)} load={load.bind(this)} title='Network Load' height='450' width='100%' >
+                    <ChartComponent id='charts' ref={chart} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', skeleton: 'yMMM', skeletonType: 'Date', scrollbarSettings: { range: { minimum: new Date(2009, 0, 1), maximum: new Date(2014, 0, 1) }, enable: true, pointsLength: 1000, enableZoom: false, height: 14 } }} primaryYAxis={{ title: 'Server Load', labelFormat: '{value}MB' }} tooltip={{ enable: true, shared: true, header: '<b>${point.x}</b>', format: 'Server load : <b>${point.y}</b>' }} legendSettings={{ visible: true }} scrollEnd={scrollEnd.bind(this)} load={load.bind(this)} title='Network Load' height='450' width='100%' >
                         <Inject services={[LineSeries, DateTime, Tooltip, ScrollBar, Zoom, Crosshair]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={GetDateTimeData(new Date(2009, 0, 1), new Date(2009, 8, 1))} xName='x' yName='y'
@@ -141,7 +141,7 @@ const LazyLoading = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id="property" title="Properties" style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '40%' }}>
                                     <div>Lazy Load </div>
                                 </td>
@@ -180,7 +180,7 @@ const LazyLoading = () => {
                                         <NumericTextBoxComponent min={1000} max={10000} value={1000} step={100} enabled={false} format={'n'} width={120} ref={point => pointslength = point} id="pointslength" style={{ "width": "auto" }} change={pointChange.bind(this)} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>

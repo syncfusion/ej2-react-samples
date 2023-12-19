@@ -46,7 +46,7 @@ export class Overview extends SampleBase<{}, {}> {
           <div className="e-text">{props.Summary}</div>
         </div>
         <div className="e-card-custom-footer">
-          {props.Tags.split(",").map((tag: string) => <div className="e-card-tag-field e-tooltip-text">{tag}</div>)}
+          {props.Tags.split(",").map((tag: string) => <div className="e-card-tag-field e-tooltip-text" key={tag}>{tag}</div>)}
           <div className="e-card-avatar">{this.getString(props.Assignee)}</div>
         </div>
       </div >

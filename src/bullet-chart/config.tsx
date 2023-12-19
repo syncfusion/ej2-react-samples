@@ -12,6 +12,7 @@ export const BulletChartSampleOrder = [
         'component' : 'BulletChartMultipleData',
         'name': 'Multiple Data',
         'category': 'Bullet Chart',
+        'type': 'update',
         'order': '01',
         'description': 'This demo for Essential JS2 Bullet Chart control shows the default rendering of bullet graph with data.'
     },
@@ -46,6 +47,14 @@ export const BulletChartSampleOrder = [
         'order': '01',
         'category': 'Bullet Chart',
         'description': 'This demo for Essential JS2 Bullet Chart control shows the tooltip template rendering in bullet chart.'
+    },
+    {
+        'path': 'bullet-chart/orientation',
+        'component' : 'BulletChartOrientation',
+        'name': 'Orientation',
+        'order': '01',
+        'category': 'Bullet Chart',
+        'description': 'This demo for Essential JS2 Bullet Chart control shows the orientation sample. Bullet chart supports vertical and horizontal mode.'
     },
     {
         'path': 'bullet-chart/bullet-legend',

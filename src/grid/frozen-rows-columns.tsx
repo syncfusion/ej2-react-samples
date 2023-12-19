@@ -43,6 +43,7 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
         <div className='col-lg-4 property-section'>
             <PropertyPane title='Properties'>
               <table id="property" title="Properties" className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                 <tr>
                   <td style={{ width: '30%' }}>
                     <div>Frozen Rows </div>
@@ -74,6 +75,7 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
                     </div>
                   </td>
                 </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import { Ajax, Animation, L10n, setCulture, setCurrencyCode, loadCldr, Browser, createElement, closest, enableRipple, select, selectAll, registerLicense, getComponent } from '@syncfusion/ej2-base';
 import { Button } from '@syncfusion/ej2-react-buttons';
 import { ListBase } from '@syncfusion/ej2-react-lists';
@@ -276,7 +276,7 @@ function closeRightSidebar(args: EventArgs): void {
   if (targetEle && targetEle.closest('.e-popup')) args.cancel = true;
 }
 export function processDeviceDependables(): void {
-  if (Browser.isDevice || location.hash.indexOf('pdfviewer') !== -1) {
+  if (Browser.isDevice) {
     select('.sb-desktop-setting').classList.add('sb-hide');
   } else {
     select('.sb-desktop-setting').classList.remove('sb-hide');
@@ -788,13 +788,11 @@ function loadTheme(theme: string): void {
     (elasticlunr as any).clearStopWords();
     searchInstance = (elasticlunr as any).Index.load(searchJson);
 
-    ReactDOM.render(<LeftPane />
-      , document.getElementById('left-pane-component')
-    );
+    createRoot(document.getElementById('left-pane-component')).render(<LeftPane />);
     setTimeout(()=>{
     setSelectList();
     //removeOverlay();
-    ReactDOM.render(<Content />, document.getElementById('tab-component'));
+    createRoot(document.getElementById('tab-component')).render(<Content />);
     if (!isMobile) {
       document.querySelector('.sb-right-pane').scrollTop = 0;
     }

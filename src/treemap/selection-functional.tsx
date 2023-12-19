@@ -148,6 +148,7 @@ const Selection = () => {
 							className="property-panel-table"
 							style={{ width: "100%", marginBottom: "20px" }}
 						>
+						  <tbody>
 							<tr style={{ height: "50px" }}>
 								<td>
 									<div style={{ paddingLeft: "0px" }}>
@@ -228,6 +229,7 @@ const Selection = () => {
 									</div>
 								</td>
 							</tr>
+						  </tbody>
 						</table>
 					</PropertyPane>
 				</div>

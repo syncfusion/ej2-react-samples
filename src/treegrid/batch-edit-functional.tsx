@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Edit, Toolbar } from '@syncfusion/ej2-react-treegrid';
+import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject, Edit, Toolbar } from '@syncfusion/ej2-react-treegrid';
 import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -23,7 +23,6 @@ const Batch = () => {
   const validationRule1: Object = { date: true };
   const validationRule2: Object = { required: true, number: true };
   const editparams2: any = { params: { format: "n" } };
-  const pageSettings: Object = { pageCount: 5 };
   return (
     <div className="control-pane">
       <div className="control-section">
@@ -32,9 +31,7 @@ const Batch = () => {
           treeColumnIndex={1}
           childMapping="subtasks"
           height="350"
-          allowPaging={true}
           editSettings={editSettings}
-          pageSettings={pageSettings}
           toolbar={toolbarOptions}
           ref={treegridObj}
         >
@@ -72,7 +69,7 @@ const Batch = () => {
               edit={editparams2}
             />
           </ColumnsDirective>
-          <Inject services={[Page, Edit, Toolbar]} />
+          <Inject services={[ Edit, Toolbar]} />
         </TreeGridComponent>
       </div>
       <div id="action-description">

@@ -1,6 +1,3 @@
-/**
- * Sample to design clock using the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
@@ -42,8 +39,8 @@ export class Clock extends SampleBase<{}, {}> {
                 (): void => {
                     if (document.getElementById('axis-background')) {
                         if (this.NeedlePointer <= 12) {
-                            this.NeedlePointer += 0.2;
                             this.gauge.setPointerValue(0, 2, this.NeedlePointer);
+                            this.NeedlePointer += 0.2;
                         } else {
                             this.NeedlePointer = 0.2;
                         }

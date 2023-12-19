@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject } from '@syncfusion/ej2-react-treegrid';
+import { TreeGridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Sort } from '@syncfusion/ej2-react-treegrid';
 import { frozenSampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
@@ -182,7 +182,7 @@ const FrozenAPI = () => {
               freeze="Right"
             />
           </ColumnsDirective>
-          <Inject services={[Freeze]} />
+          <Inject services={[Freeze, Sort]} />
         </TreeGridComponent>
         <DialogComponent
           id="alertDialog"

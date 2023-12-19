@@ -161,7 +161,7 @@ const Dragdrop = () => {
         return (
             <ChartComponent height='300px' primaryXAxis={{ valueType: 'Category' }}>
                 <SeriesCollectionDirective>
-                    <SeriesDirective dataSource={chartData} xName='month' yName='sales' type='Line'> </SeriesDirective>
+                    <SeriesDirective dataSource={chartData} xName='month' yName='sales' type='Line' />
                 </SeriesCollectionDirective>
                 <Inject services={[LineSeries, Legend, Tooltip, DataLabel, Category]} />
             </ChartComponent>

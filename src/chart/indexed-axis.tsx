@@ -74,7 +74,6 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                                 isIndexed: true
                             }}
                             primaryYAxis={{
-                                title: 'GDP Growth Rate',
                                 labelFormat: '{value}%'
                             }}
                             chartArea={{ border: { width: 0 } }}
@@ -108,7 +107,7 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                     <div className='col-md-3 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody><tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Indexed:</div>
                                     </td>
@@ -117,7 +116,7 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                                             <input type="checkbox" id="isIndexed" defaultChecked={true} onChange={this.onChange.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.dropElement = d} />
                                         </div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>

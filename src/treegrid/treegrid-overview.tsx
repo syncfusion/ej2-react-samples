@@ -4,45 +4,50 @@ import { TreeGridComponent, ColumnsDirective, ColumnDirective, Filter, Sort, Reo
 import { countries } from './data';
 import { IFilter } from '@syncfusion/ej2-react-grids';
 import { SampleBase } from '../common/sample-base';
-import { QueryCellInfoEventArgs, ActionEventArgs, getObject } from '@syncfusion/ej2-grids';
+import { ActionEventArgs, getObject } from '@syncfusion/ej2-grids';
 import { addClass, isNullOrUndefined } from '@syncfusion/ej2-base';
 import './treegrid-overview.css';
+import { RatingComponent } from '@syncfusion/ej2-react-inputs';
 
 export class Overview extends SampleBase<{}, {}> {
   
   public gridTemplate(props): any { 
     var flagIconLocation = (props.parentItem)? props.parentItem.name : props.name;
     return (<div style={{display: 'inline'}}><div style={{display: 'inline-block'}}>
-    <img className='e-image' src={"src/treegrid/images/"+flagIconLocation+".png"}></img>     
+    <img className='e-image' src={"src/treegrid/images/"+flagIconLocation+".png"} alt = {flagIconLocation}></img>     
     </div><div style={{ display: 'inline-block', paddingLeft: '6px'}}>{props.name}</div></div>);
   }
 
   public treegridTemplate(props): any {
-    return (<div className='statustemp'>
-        <span className='statustxt'>{props.gdp} %</span>
-    </div>);
+    if (props.gdp < 2) {
+      return (
+        <div className="statustemp e-lowgdp">
+          <span className="statustxt e-lowgdp">{props.gdp} %</span>
+        </div>
+      );
+      }
+      else{
+        return (
+          <div className="statustemp">
+            <span className="statustxt">{props.gdp} %</span>
+          </div>
+        );
+      }
   }
 
   public treeratingTemplate(props): any {
-    if (props.rating) {
-      return (<div className='rating'>
-      <span className="star"></span>
-      <span className="star"></span>
-      <span className="star"></span>
-      <span className="star"></span>
-      <span className="star"></span>
-    </div>);
-    }
-    else {
-      return(<span></span>);
-    }
+    return (<div><RatingComponent value={props.rating} cssClass={'custom-rating'} readOnly={true}/></div>);
   }
 
   public treeunemployTemplate(props): any {
-    return (<div id='myProgress' className='pbar'>
-      <div id='myBar' className='bar'>
-        <div id='treegridlabel' className='barlabel'></div>
-      </div>
+    return (<div id="myProgress" className="pbar">
+    {props.unemployment <=4 ?
+            <div id="myBar" className="bar progressdisable" style={{ width: props.unemployment * 10 + "%" }}>
+      <div id="pbarlabel" className="barlabel">{props.unemployment + "%"}</div>
+    </div> :
+            <div id="myBar" className="bar" style={{ width: props.unemployment * 10 + "%" }}>
+      <div id="pbarlabel" className="barlabel">{props.unemployment + "%"}</div>
+    </div>}
     </div>);
   }
 
@@ -70,40 +75,6 @@ export class Overview extends SampleBase<{}, {}> {
   public populationValue(field: string, data: Object) {
     return data[field] / 1000000;
   }
-  private queryCellinfo(args: QueryCellInfoEventArgs): void {
-    if (args.column.field === 'gdp') {
-      if (args.data[args.column.field] < 2) {
-          args.cell.querySelector('.statustxt').classList.add('e-lowgdp');
-          args.cell.querySelector('.statustemp').classList.add('e-lowgdp');
-      }
-    }
-    if (args.column.field === 'rating') {
-      if (args.column.field === 'rating') {
-          for (let i: number = 0; i < args.data[args.column.field]; i++) {
-              args.cell.querySelectorAll('span')[i].classList.add('checked');
-          }
-      }
-    }
-    if (args.column.field === 'unemployment') {
-      if (args.data[args.column.field] <= 4) {
-          addClass([args.cell.querySelector('.bar')], ['progressdisable']);
-      }
-      (args.cell.querySelector('.bar')as HTMLElement).style.width = args.data[args.column.field] * 10 + '%';
-      args.cell.querySelector('.barlabel').textContent = args.data[args.column.field] + '%';
-    }
-     
-    if (args.column.field === 'name') {
-      let parentItem: ITreeData = getObject('parentItem', args.data);
-      let imageElement = (args.cell as Element).querySelector('.e-image') as HTMLImageElement;
-      if (isNullOrUndefined(parentItem)) {
-        let name: string = getObject('name', args.data);
-        imageElement.src = "src/treegrid/images/" + name + ".png";
-      } else {
-        let name: string = getObject('name', parentItem);
-        imageElement.src = "src/treegrid/images/" + name + ".png";
-      }
-    }
-  }
   public flagtemplate: any = this.gridTemplate;
   public gdptemplate: any = this.treegridTemplate;
   public ratingtemplate: any = this.treeratingTemplate;
@@ -122,8 +93,7 @@ export class Overview extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <TreeGridComponent dataSource={countries} childMapping='states' height='400' allowReordering={true}
-          allowFiltering={true} allowSorting={true} filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}
-          queryCellInfo={this.queryCellinfo.bind(this)}>
+          allowFiltering={true} allowSorting={true} filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}>
             <ColumnsDirective>
               <ColumnDirective field='name' headerText='Province' width='195' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
               <ColumnDirective field='population' headerText='Population (Million)' allowFiltering={false} valueAccessor={this.populationValue} textAlign='Right' width='200'></ColumnDirective>

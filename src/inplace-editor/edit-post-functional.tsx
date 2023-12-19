@@ -156,6 +156,12 @@ function UseCase() {
                 <div className='col-lg-4 property-section' id="editorProperty">
                     <PropertyPane title='Properties'>
                         <table id="property" title="Properties" className="property-panel-table">
+                            <thead>
+                                <tr>
+                                <th></th>
+                                <th></th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <tr>
                                     <td>

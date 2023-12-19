@@ -1,6 +1,3 @@
-/**
- * Sample for axis background in the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useEffect, useRef } from 'react';
@@ -40,7 +37,7 @@ const AxisBackGround = () => {
                     value: 90,
                     radius: '45%', markerWidth: 12, markerHeight: 12,
                     type: 'Marker', markerShape: 'Triangle', color: 'Orange',
-                    animation: { enable: false }
+                    animation: { enable: true, duration: 500 }
                 }], startAngle: 0, endAngle: 0, radius: '60%', lineStyle: { width: 0 }
             }]
         });

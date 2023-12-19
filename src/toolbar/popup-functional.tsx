@@ -84,22 +84,24 @@ const Popup = () => {
                     You can set priority to toolbar item using <strong><code> <a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#overflow"> overflow</a></code></strong>property. Possible values are as follows,
                 </p>
                 <table style={{ width: "100%" }}>
-                    <tr>
-                        <th><strong>Overflow</strong></th>
-                        <th><strong>Description</strong></th>
-                    </tr>
-                    <tr>
-                        <td><code>Show</code> </td>
-                        <td>To display the commands in toolbar with primary priority.</td>
-                    </tr>
-                    <tr>
-                        <td><code>Hide</code> </td>
-                        <td>To display the commands in popup with secondary priority.</td>
-                    </tr>
-                    <tr>
-                        <td><code>None (default) </code></td>
-                        <td>To display the commands with normal order without any priority.</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th><strong>Overflow</strong></th>
+                            <th><strong>Description</strong></th>
+                        </tr>
+                        <tr>
+                            <td><code>Show</code> </td>
+                            <td>To display the commands in toolbar with primary priority.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Hide</code> </td>
+                            <td>To display the commands in popup with secondary priority.</td>
+                        </tr>
+                        <tr>
+                            <td><code>None (default) </code></td>
+                            <td>To display the commands with normal order without any priority.</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

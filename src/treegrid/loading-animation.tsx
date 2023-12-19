@@ -44,16 +44,18 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
                     <div className='col-md-3 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
-                                <td style={{ width: '30%' }}>
-                                    <div> Indicator Type </div>
-                                </td>
-                                <td style={{ width: '70%' }}>
-                                    <div id='columnddl'>
-                                    <DropDownListComponent dataSource={this.indicatortypes} value="Shimmer" change={this.indicatorChange.bind(this)} fields={this.fields} ref={(indicateDropDown) => { this.indicatorDropDown = indicateDropDown; }}/>
-                                    </div>
-                                </td>
-                                </tr>
+                                <tbody>
+                                    <tr style={{ height: '50px' }}>
+                                        <td style={{ width: '30%' }}>
+                                            <div> Indicator Type </div>
+                                        </td>
+                                        <td style={{ width: '70%' }}>
+                                            <div id='columnddl'>
+                                                <DropDownListComponent dataSource={this.indicatortypes} value="Shimmer" change={this.indicatorChange.bind(this)} fields={this.fields} ref={(indicateDropDown) => { this.indicatorDropDown = indicateDropDown; }} />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </PropertyPane>
                     </div>

@@ -1,6 +1,3 @@
-/**
- * Sample to design radial slider using the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -84,7 +81,7 @@ export class RadialSlider extends SampleBase<{}, {}> {
                 </div>
                 <div id="action-description">
                     <p>
-                        This sample demonstrates how to create a range slider by utilizing the functions available in the circular gauge.
+                        This sample demonstrates how to create a range slider component by utilizing the functions available in the circular gauge.
                     </p>
                 </div>
                 <div id="description">

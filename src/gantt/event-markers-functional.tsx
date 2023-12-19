@@ -44,7 +44,7 @@ const EventMarkers = () => {
             <ColumnDirective field='Predecessor'></ColumnDirective>
           </ColumnsDirective>
           <EventMarkersDirective>
-            <EventMarkerDirective day={eventMarkerDay1} label= 'Project starts'></EventMarkerDirective>
+            <EventMarkerDirective day={eventMarkerDay1}></EventMarkerDirective>
             <EventMarkerDirective day={eventMarkerDay2} label='Design phase' ></EventMarkerDirective>
             <EventMarkerDirective day={eventMarkerDay3} label='Research phase' ></EventMarkerDirective>
             <EventMarkerDirective day={eventMarkerDay4} label='Production phase' ></EventMarkerDirective>

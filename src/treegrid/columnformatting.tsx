@@ -81,30 +81,32 @@ export class ColumnFormat extends SampleBase<{}, {}> {
         <div className='col-lg-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr style={{ height: '50px' }}>
-                  <td style={{ width: '20%' }}>
+                    <td style={{ width: '20%' }}>
                       <div style={{ paddingTop: '7px' }}> Column </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                         <DropDownListComponent width="100px" id="columns" change={this.change.bind(this)}
-                            dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="price"
-                            ref={dropdown=> this.dropdownObj = dropdown} />
+                        <DropDownListComponent width="100px" id="columns" change={this.change.bind(this)}
+                          dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="price"
+                          ref={dropdown => this.dropdownObj = dropdown} />
                       </div>
                     </td>
                   </tr>
                   <tr style={{ height: '50px' }}>
-                     <td style={{ width: '30%' }}>
-                        <div> Format </div>
-                     </td>
-                     <td style={{ width: '70%', paddingRight: '10px' }}>
-                        <div>
+                    <td style={{ width: '30%' }}>
+                      <div> Format </div>
+                    </td>
+                    <td style={{ width: '70%', paddingRight: '10px' }}>
+                      <div>
                         <DropDownListComponent width="100px" id="colformat" change={this.change2.bind(this)}
-                            dataSource={this.priceFormat} fields={{ text: 'format', value: 'id' }} value="c2"
-                            ref={dropdown=> this.dropdownObj2 = dropdown} />
-                        </div>
-                     </td>
+                          dataSource={this.priceFormat} fields={{ text: 'format', value: 'id' }} value="c2"
+                          ref={dropdown => this.dropdownObj2 = dropdown} />
+                      </div>
+                    </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
         </div>
@@ -120,7 +122,7 @@ export class ColumnFormat extends SampleBase<{}, {}> {
             The format can be specified by using <code>format</code> property of columns.</p>
             <p>In this demo, select the column and format from the property panel to format the corresponding column values.</p>
             <p>
-                More information about Column Formatting can be found in this documentation section.
+                More information about Column Formatting can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/columns#format">documentation section</a>.
             </p>
       </div>
     </div>

@@ -76,8 +76,7 @@ const RTL = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-                    <code>ColumnSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject <code>ColumnSeries</code> module into <code>services</code>.
                 </p>
                 <br />
                 <p>

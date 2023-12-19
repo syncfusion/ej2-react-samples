@@ -16,7 +16,7 @@ import {
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
 import { DataManager } from "@syncfusion/ej2-data";
-import { Query } from "@syncfusion/ej2/data";
+import { Query } from "@syncfusion/ej2-data";
 
 
 export interface EmployeeInfo {

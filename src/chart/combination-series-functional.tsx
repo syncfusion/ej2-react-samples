@@ -67,8 +67,7 @@ const CombinationSeries = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    In this example, we have used line and column series. To use column and line feature, we need to inject
-                    <code>ColumnSeries</code> <code>LineSeries</code> modules into <code>services</code>.
+                    In this example, we have used line and column series. To use column and line feature, we need to inject <code>ColumnSeries</code> and <code>LineSeries</code> modules into <code>services</code>.
                 </p>
                 <p>
                     More information on the Combination series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-series/#combination-series">documentation section</a>.

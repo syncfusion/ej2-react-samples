@@ -1,6 +1,3 @@
-/**
- * Sample for ranges in the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, Inject, PointersDirective, Gradient, PointerDirective, RangesDirective, RangeDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -96,7 +93,7 @@ export class Ranges extends SampleBase<{}, {}> {
                     <pre style= {{ border: 'hidden', backgroundColor: 'inherit' }}></pre>
                     <div id="containerBox" style={{ float: 'left', padding: '4%' }}></div>
                     <div id='containerDefault' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} id='defaultRange' title='Default' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation='Vertical' width='150px' height='350px' background='transparent' ref={defaultRange => this.defaultRange = defaultRange}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} id='defaultRange' title='Default' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation='Vertical' width='150px' height='350px' background='transparent' ref={defaultRange => this.defaultRange = defaultRange}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Outside' }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Outside' }} labelStyle={{ position: 'Outside', font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
@@ -112,7 +109,7 @@ export class Ranges extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id='containerExponential' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Exponential' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='exponentialRange' orientation='Vertical' width='150px' height='350px' background='transparent' ref={exponentialRange => this.exponentialRange = exponentialRange}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Exponential' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='exponentialRange' orientation='Vertical' width='150px' height='350px' background='transparent' ref={exponentialRange => this.exponentialRange = exponentialRange}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Outside' }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Outside' }} labelStyle={{ position: 'Outside', font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
@@ -130,7 +127,7 @@ export class Ranges extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id='containerConcave' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Concave' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='concaveRange' orientation='Vertical' width='150px' height='350px' background='transparent' ref={concaveRange => this.concaveRange = concaveRange}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Concave' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='concaveRange' orientation='Vertical' width='150px' height='350px' background='transparent' ref={concaveRange => this.concaveRange = concaveRange}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Outside' }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Outside' }} labelStyle={{ position: 'Outside', font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
@@ -146,7 +143,7 @@ export class Ranges extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id='containerGradient' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Gradient shader' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gradientRange' orientation='Vertical' width='150px' height='350px' background='transparent' ref={gradientRange => this.gradientRange = gradientRange}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Gradient shader' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gradientRange' orientation='Vertical' width='150px' height='350px' background='transparent' ref={gradientRange => this.gradientRange = gradientRange}>
                             <Inject services={[Gradient]} />
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Outside' }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Outside' }} labelStyle={{ position: 'Outside', font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
@@ -162,7 +159,7 @@ export class Ranges extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id='containerMultiple' className="col-xs-4 col-sm-4 col-lg-2 col-md-2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Multiple ranges' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleRange' orientation='Vertical' width='150px' height='350px' background='transparent' ref={multipleRange => this.multipleRange = multipleRange}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Multiple ranges' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleRange' orientation='Vertical' width='150px' height='350px' background='transparent' ref={multipleRange => this.multipleRange = multipleRange}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Outside' }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Outside' }} labelStyle={{ position: 'Outside', font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>

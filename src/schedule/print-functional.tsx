@@ -115,17 +115,15 @@ const PrintSchedule = () => {
       <div id='description'>
         <p>In this example, the Scheduler element is Printed by making use of the public method <code>print</code>.</p>
         <p>
-          <p>
-            Also, we can print the schedule based on the custom rendering by passing the <code>ScheduleModel</code> in the <code>print</code> method.
-            In the above demo, we have demonstrated the <code>print</code> method with the below properties of the <code>ScheduleModel</code>.
-          </p>
-          <ul>
-            <li>height</li>
-            <li>width</li>
-            <li>selectedDate</li>
-          </ul>
-          <strong>Module Injection</strong>
+          Also, we can print the schedule based on the custom rendering by passing the <code>ScheduleModel</code> in the <code>print</code> method.
+          In the above demo, we have demonstrated the <code>print</code> method with the below properties of the <code>ScheduleModel</code>.
         </p>
+        <ul>
+          <li>height</li>
+          <li>width</li>
+          <li>selectedDate</li>
+        </ul>
+        <strong>Module Injection</strong>
         <p>To start using Print functionality in Scheduler, we need to inject <code>Print</code> module into the services.</p>
       </div>
     </div>

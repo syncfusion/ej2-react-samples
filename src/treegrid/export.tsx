@@ -72,13 +72,15 @@ export class Export extends SampleBase<{}, {}> {
           </div>
         <div className='col-md-3 property-section'>
           <PropertyPane title='Export Customization'>
-              <table id='property'  className='property-panel-table' style={{ width: '100%' }}>
+              <table id='property' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr style={{ height: '50px' }}>
                     <td style={{ width: '60%' }}>
-                        <CheckBoxComponent checked={true} label="Persist collapsed state" labelPosition="Before"
-                         change={ this.onChange.bind(this) } ></CheckBoxComponent>
+                      <CheckBoxComponent checked={true} label="Persist collapsed state" labelPosition="Before"
+                        change={this.onChange.bind(this)} ></CheckBoxComponent>
                     </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
         </div>
@@ -95,7 +97,14 @@ export class Export extends SampleBase<{}, {}> {
           <p>Injecting Module:</p>
           <p>Tree Grid features are segregated into individual feature-wise modules. To use exporting feature, we need to inject <code>
             ExcelExport</code> and <code>PdfExport</code> module into the services.</p>
-          <p>More information on the Exporting can be found in the  documentation section.</p>
+          <p>
+            More information on the  
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/pdf-export/pdf-export">
+            Pdf exporting </a> and
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/excel-export/excel-export">
+            Excel exporting</a>
+            can be found in documentation section
+          </p>
         </div>
       </div>
     )

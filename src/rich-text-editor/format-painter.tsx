@@ -8,10 +8,10 @@ export class FormatPainterRTE extends SampleBase<{}, {}> {
 
     private formatPainterRTE: RichTextEditorComponent;
     private  toolbarSettings: ToolbarSettingsModel = {
-        items: ['FormatPainter','Bold', 'Italic', 'Underline', 'StrikeThrough',
-        'FontName', 'FontSize', 'FontColor', 'BackgroundColor', 'SuperScript', 'SubScript', '|',
-        'Formats', 'Alignments', 'NumberFormatList', 'BulletFormatList',
-        'Outdent', 'Indent', '|', 'CreateTable', 'CreateLink', 'Image', '|', 'Undo', 'Redo','SourceCode', 'FullScreen'] 
+        items: ['FormatPainter', 'Bold', 'Italic', 'Underline', 'StrikeThrough',
+            'SuperScript', 'SubScript', '|', 'FontName', 'FontSize', 'FontColor', 'BackgroundColor', 'LowerCase', 'UpperCase', '|',
+            'Formats', 'Alignments', 'OrderedList', 'UnorderedList', '|',
+            'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'SourceCode', 'Undo', 'Redo']
     };
     private setAllowedFormats (e: FocusOutEventArgs): void  {
         this.formatPainterRTE.formatPainterSettings.allowedFormats = e.value;

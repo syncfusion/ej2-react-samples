@@ -53,7 +53,9 @@ export class InversedAxis extends SampleBase<{}, {}> {
                             valueType: 'Category',
                             opposedPosition: true,
                             isInversed: true,
-                            majorGridLines: { width: 0 }
+                            majorGridLines: { width: 0 },
+                            majorTickLines : {width : 0},
+                            minorTickLines : {width : 0}
                         }}
                         load={this.load.bind(this)}
                         primaryYAxis={{
@@ -85,22 +87,21 @@ export class InversedAxis extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates inversed axis in chart to plot exchange rate over a period.
-            </p>
+                    <p>
+                    This sample uses an inverse axis in a chart to plot an exchange rate over a period of time.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
                         In this example, you can see how to inverse an axis in chart. Here both the X and Y axis are inversed using <code>isInversed</code> property.
-    </p>
+                    </p>
                     <p> DataLabel are used to represent individual data and its value.</p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
+                    </p>
                     <p>
-                        More information on inversed axis can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-axis.html#isInversed">documentation section</a>.
-    </p>
+                        More information on inversed axis can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-axis.html#isInversed">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

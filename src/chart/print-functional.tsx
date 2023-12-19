@@ -120,7 +120,7 @@ const Print = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-9'>
-                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ minimum: 0, labelFormat: '${value}k', maximum: 20, lineStyle: {width : 0}, minorTickLines: {width: 0}, majorTickLines: {width : 0} }} pointRender={labelRender.bind(this)} load={load.bind(this)} title="Sales Comparision" loaded={onChartLoad.bind(this)} >
+                    <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ labelFormat: '${value}k', minimum: 0, maximum: 20, interval: 4, lineStyle: { width: 0 }, majorGridLines: { width: 2 }, majorTickLines: { width: 0 } }} pointRender={labelRender.bind(this)} load={load.bind(this)} title="Sales Comparision" loaded={onChartLoad.bind(this)} >
                         <Inject services={[ColumnSeries, Category, Legend, DataLabel]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} type='Column' marker={{ dataLabel: { visible: true, name: 'dataLabelMappingName', position: 'Top', font: { fontWeight: '600', color: "#ffffff"} } }} />
@@ -129,17 +129,35 @@ const Print = () => {
                 </div>
                 <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                    <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <tbody>
+                                <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
                                     <div id="btn-control">
                                         <ButtonComponent id="chart-print" iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>
+            </div>
+            <div id="action-description">
+                <p>
+                    This sample demonstrates the print option in the charts.
+                </p>
+            </div>
+            <div id="description">
+                <p>
+                    By clicking the <b>Print</b> button, you can print a chart directly from the browser by calling the public method print.
+                </p>
+                <p>
+                    More information on the print can be found in this
+                    <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#print">documentation
+                        section</a>.
+                </p>
             </div>
         </div >
     )

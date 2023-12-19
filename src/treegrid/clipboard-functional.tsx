@@ -131,22 +131,24 @@ const Clipboard = () => {
                             className="property-panel-table"
                             style={{ width: "100%" }}
                         >
-                            <tr>
-                                <td style={{ width: "30%" }}>
-                                    <div style={{ paddingTop: "7px" }}> Hierarchy Mode </div>
-                                </td>
-                                <td style={{ width: "70%", paddingTop: "10px" }}>
-                                    <div>
-                                        <DropDownListComponent
-                                            width="99px"
-                                            id="selmode"
-                                            change={onChange.bind(this)}
-                                            dataSource={modes}
-                                            value="Parent"
-                                        />
-                                    </div>
-                                </td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td style={{ width: "30%" }}>
+                                        <div style={{ paddingTop: "7px" }}> Hierarchy Mode </div>
+                                    </td>
+                                    <td style={{ width: "70%", paddingTop: "10px" }}>
+                                        <div>
+                                            <DropDownListComponent
+                                                width="99px"
+                                                id="selmode"
+                                                change={onChange.bind(this)}
+                                                dataSource={modes}
+                                                value="Parent"
+                                            />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -176,17 +178,17 @@ const Clipboard = () => {
                 <p>
                     In this demo, selected rows data can be copied into the clipboard
                     using the below Keyboard shortcuts or toolbar interactions.
-                    <ul>
-                        <li>
-                            <code>Ctrl + C</code> - Selected rows or cells data without
-                            header.
-                        </li>
-                        <li>
-                            <code>Ctrl + Shift + H</code> - Selected rows or cells data with
-                            header.
-                        </li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>
+                        <code>Ctrl + C</code> - Selected rows or cells data without
+                        header.
+                    </li>
+                    <li>
+                        <code>Ctrl + Shift + H</code> - Selected rows or cells data with
+                        header.
+                    </li>
+                </ul>
                 <p>
                     Tree Grid provides support for a set of copy modes with{" "}
                     <code>copyHierarchyMode</code> property. The below are the type of

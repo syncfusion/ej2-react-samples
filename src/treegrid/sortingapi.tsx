@@ -56,14 +56,15 @@ export class SortingAPI extends SampleBase<{}, {}> {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
                   <tr>
                     <td style={{ width: '20%' }}>
                       <div> Column </div>
                     </td>
                     <td style={{ width: '80%', paddingRight: '10px' }}>
                       <div>
-                         <DropDownListComponent width="120px" id="columns" ref={columnname=> this.columnName = columnname}
-                            dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="taskID" />
+                        <DropDownListComponent width="120px" id="columns" ref={columnname => this.columnName = columnname}
+                          dataSource={this.columnsName} fields={{ text: 'name', value: 'id' }} value="taskID" />
                       </div>
                     </td>
                   </tr>
@@ -73,23 +74,24 @@ export class SortingAPI extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '80%', paddingRight: '10px' }}>
                       <div>
-                         <DropDownListComponent width="120px" id="direction" ref={sortdirection=> this.sortDirection = sortdirection}
-                            dataSource={this.direction} fields={{ text: 'name', value: 'id' }} value="Ascending" />
+                        <DropDownListComponent width="120px" id="direction" ref={sortdirection => this.sortDirection = sortdirection}
+                          dataSource={this.direction} fields={{ text: 'name', value: 'id' }} value="Ascending" />
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <td style={{ width: '30%' }}>
                       <div>
-                        <ButtonComponent onClick={ this.btnClick.bind(this) }> Sort </ButtonComponent>
+                        <ButtonComponent onClick={this.btnClick.bind(this)}> Sort </ButtonComponent>
                       </div>
                     </td>
-                    <td style={{ width: '70%',  padding: '10px 10px 0px 0px' }}>
+                    <td style={{ width: '70%', padding: '10px 10px 0px 0px' }}>
                       <div>
-                        <ButtonComponent onClick={ this.btnClick2.bind(this) }> Clear </ButtonComponent>
+                        <ButtonComponent onClick={this.btnClick2.bind(this)}> Clear </ButtonComponent>
                       </div>
                     </td>
                   </tr>
+                </tbody>
               </table>
           </PropertyPane>
         </div>
@@ -126,7 +128,7 @@ export class SortingAPI extends SampleBase<{}, {}> {
           <code>Sort</code> module into the <code>services</code>.
     </p>
     <p>
-        More information on the sorting feature configuration can be found in this documentation section.
+      More information on the sorting feature configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/sorting">documentation section</a>.
     </p>
       </div>
     </div>

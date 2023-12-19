@@ -15,9 +15,6 @@ const SAMPLE_CSS: any = `
     float: right; margin-right: 10p
 }`;
 // custom code end
-/**
- * Schedule Default sample
- */
 export class BubbleTypes extends SampleBase<{}, {}> {
     private heatmap: HeatMapComponent;
     private dropElement: DropDownListComponent;
@@ -47,16 +44,22 @@ export class BubbleTypes extends SampleBase<{}, {}> {
                                 size: '15px',
                                 fontWeight: '500',
                                 fontStyle: 'Normal',
-                                fontFamily: 'Segoe UI'
+                                fontFamily: 'inherit'
                             }
                         }}
                         xAxis={{
                             labels: ['Singapore', 'Spain', 'Australia', 'Germany', 'Belgium', 'USA', 'France', 'UK'],
                             labelRotation: 45,
-                            labelIntersectAction: 'None'
+                            labelIntersectAction: 'None',
+                            textStyle:{
+                                fontFamily: 'inherit'
+                            }                          
                         }}
                         yAxis={{
-                            labels: ['1995', '2000', '2005', '2010', '2015']
+                            labels: ['1995', '2000', '2005', '2010', '2015'],
+                            textStyle:{
+                                fontFamily: 'inherit'
+                            }
                         }}
                         dataSource={(data as any).tableBubbleData}
                         cellSettings={{
@@ -76,9 +79,17 @@ export class BubbleTypes extends SampleBase<{}, {}> {
                             { value: 78, color: '#FFFFDA' }
                             ],
                         }}
+                        tooltipSettings ={{
+                            textStyle:{
+                                fontFamily: 'inherit'
+                            }
+                        }}
                         load={this.load.bind(this)}
                         legendSettings={{
                             visible: true,
+                            textStyle:{
+                                fontFamily: 'inherit'
+                            }
                         }}>
                         <Inject services={[Legend, Tooltip]} />
                     </HeatMapComponent>
@@ -88,7 +99,7 @@ export class BubbleTypes extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-md-3 property-section">
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: -10 }}>
                             <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '40%' }}>
@@ -113,17 +124,16 @@ export class BubbleTypes extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to display the data points in bubble heatmap using multiple views such as bubble size, bubble shade and the sector. You can change the cell type to bubble by using the <code>tileType</code> property in <code>cellSettings</code>, and you can change the view of the bubble heatmap by using the bubbleType property in cellSettings.
+                      In this example, you can see how to display the data points in bubble heatmap using multiple views such as bubble size, bubble shade and the sector. You can change the cell type to bubble by using the <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/cellSettingsModel/#tiletype">tileType</a> property in <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/cellSettingsModel/">cellSettings</a> , and you can change the view of the bubble heatmap by using the <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/cellSettingsModel/#bubbletype">bubbleType</a> property in <code>cellSettings</code>.
                     </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                    </p>
+                    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over
+                        an item or tap an item on touch-enabled devices.</p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Heatmap component features are segregated into individual feature-wise modules. To use a tooltip,
-                        inject the <code>Tooltip </code>  module using the <code>Heatmap.Inject(Tooltip) </code> method, and use a
-                        legend by injecting the <code>Legend </code>  module using the <code>Heatmap.Inject(Legend) </code>  method.
+                        Heatmap component features are separated into discrete feature-based modules. To use a tooltip and the legend, inject the <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
                 </div>
             </div >
@@ -131,9 +141,11 @@ export class BubbleTypes extends SampleBase<{}, {}> {
     }
 
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
     private legendTooltip(args: ITooltipEventArgs): void {
         args.content = [args.xLabel + ' | ' + args.yLabel + ' : ' + args.value + ' %'];

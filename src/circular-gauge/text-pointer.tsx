@@ -1,7 +1,3 @@
-/**
- * Sample for text pointer in the Circular Gauge
- */
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
@@ -49,7 +45,7 @@ export class TextPointer extends SampleBase<{}, {}> {
                                 }}>
                                 <PointersDirective>
                                     <PointerDirective pointerWidth={10} radius='60%' needleStartWidth={1} needleEndWidth={1} value={82}
-                                        cap={{ radius: 0 }} animation={{ enable: false }}
+                                        cap={{ radius: 0 }} animation={{ enable: true }}
                                     >
                                     </PointerDirective>
                                     <PointerDirective radius='85%' type='Marker' value={20} text='Poor' markerShape='Text'

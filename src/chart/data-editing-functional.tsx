@@ -60,8 +60,7 @@ const DataEdit = () => {
                     In this example, you can see how to drag and drop the data points in the chart by setting Enable property in <code>ChartDataEditSettings</code> to <b>true</b>. Also, you can set data editing’s minimum and maximum range using the <code>MinY</code> and <code>MaxY</code> properties.
                 </p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use data editing, we need to inject
-                    <code>DataEditing</code> module using <code>Chart.Inject(DataEditing)</code> method.
+                    Chart component features are segregated into individual feature-wise modules. To use data editing, we need to inject <code>DataEditing</code> module using <code>Chart.Inject(DataEditing)</code> method.
                 </p> <br>
                 </br>
                 <p>

@@ -103,7 +103,7 @@ font-weight: normal;
 font-style: normal;
 }
 
-.default-ribbon-container [class^="sf-icon-"], .default-ribbon-container [class*=" sf-icon-"] {
+[class*="e-ribbon-"] [class^="sf-icon-"], [class*="e-ribbon-"] [class*="sf-icon-"] {
 font-family: 'ribbon' !important;
 speak: none;
 font-style: normal;
@@ -115,17 +115,17 @@ line-height: 1;
 -moz-osx-font-smoothing: grayscale;
 }
 
-.default-ribbon-container .sf-icon-3d-model:before { content: "\e700"; }
-.default-ribbon-container .sf-icon-shapes:before { content: "\e701"; }
-.default-ribbon-container .sf-icon-dictate:before { content: "\e702"; }
-.default-ribbon-container .sf-icon-chart:before { content: "\e703"; }
-.default-ribbon-container .sf-icon-screenshot:before { content: "\e704"; }
-.default-ribbon-container .sf-icon-smart-art:before { content: "\e706"; }
-.default-ribbon-container .sf-icon-share:before { content: "\e707"; }
-.default-ribbon-container .sf-icon-read:before { content: "\e708"; }
-.default-ribbon-container .sf-icon-web-layout:before { content: "\e709"; }
-.default-ribbon-container .sf-icon-mode:before { content: "\e70b"; }
-.default-ribbon-container .sf-icon-draft:before { content: "\e70c"; }
-.default-ribbon-container .sf-icon-reuse:before { content: "\e70f"; }
-.default-ribbon-container .sf-icon-editor:before { content: "\e70a"; }
-.default-ribbon-container .sf-icon-word:before { content: "\e70d"; }
+[class*="e-ribbon-"] .sf-icon-3d-model:before { content: "\e700"; }
+[class*="e-ribbon-"] .sf-icon-shapes:before { content: "\e701"; }
+[class*="e-ribbon-"] .sf-icon-dictate:before { content: "\e702"; }
+[class*="e-ribbon-"] .sf-icon-chart:before { content: "\e703"; }
+[class*="e-ribbon-"] .sf-icon-screenshot:before { content: "\e704"; }
+[class*="e-ribbon-"] .sf-icon-smart-art:before { content: "\e706"; }
+[class*="e-ribbon-"] .sf-icon-share:before { content: "\e707"; }
+[class*="e-ribbon-"] .sf-icon-read:before { content: "\e708"; }
+[class*="e-ribbon-"] .sf-icon-web-layout:before { content: "\e709"; }
+[class*="e-ribbon-"] .sf-icon-mode:before { content: "\e70b"; }
+[class*="e-ribbon-"] .sf-icon-draft:before { content: "\e70c"; }
+[class*="e-ribbon-"] .sf-icon-reuse:before { content: "\e70f"; }
+[class*="e-ribbon-"] .sf-icon-editor:before { content: "\e70a"; }
+[class*="e-ribbon-"] .sf-icon-word:before { content: "\e70d"; }

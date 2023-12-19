@@ -46,16 +46,16 @@ const Bar = () => {
     const [color, setColor] = useState<string>("e-green");
 
     const onChange = (args: SliderChangeEventArgs): void => {
-        if (args.value > 0 && args.value <= 25) {
+        if ((args.value as number) > 0 && (args.value as number) <= 25) {
             // Change handle and range bar color to green when
             setColor("e-green");
-        } else if (args.value > 25 && args.value <= 50) {
+        } else if ((args.value as number) > 25 && (args.value as number) <= 50) {
             // Change handle and range bar color to royal blue
             setColor("e-blue");
-        } else if (args.value > 50 && args.value <= 75) {
+        } else if ((args.value as number) > 50 && (args.value as number) <= 75) {
             // Change handle and range bar color to dark orange
             setColor("e-orange");
-        } else if (args.value > 75 && args.value <= 100) {
+        } else if ((args.value as number) > 75 && (args.value as number) <= 100) {
             // Change handle and range bar color to red
             setColor("e-red");
         }

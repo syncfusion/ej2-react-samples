@@ -17,7 +17,7 @@ export let dataValues = [];
     400, 390, 460, 470, 490, 420, 480, 470, 490, 330, 520, 480, 580, 590, 600,
     310, 480, 500, 400, 508, 480, 460, 700, 705, 480, 410, 480,
 ].map((value, index) => {
-    dataValues.push({ XValue: new Date(1900 + index, 1, 1), YValue: value });
+    dataValues.push({ XValue: new Date(1900 + index, 0, 1), YValue: value });
 });
 let content = "<div style='color:green; font-weight:bold; font-size:14px'>Medium</div>";
 let content1 = "<div style='color:blue; font-weight:bold;font-size:14px'>High</div>";
@@ -76,9 +76,8 @@ const LineZone = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use line series, we need to inject
-                    <code>MultiColoredLineSeries</code> module using
-                    <code>Chart.Inject(MultiColoredLineSeries)</code> method.
+                    Chart component features are segregated into individual feature-wise modules. To use line series, 
+                    we need to inject <code>MultiColoredLineSeries</code> module using <code>Chart.Inject(MultiColoredLineSeries)</code> method.
                 </p>
                 <p>
                     More information on the line series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.

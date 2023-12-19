@@ -104,7 +104,7 @@ export class DatetimeCategoryAxis extends SampleBase<{}, {}> {
                     <p>
                         Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap a point in touch enabled devices.
             </p>
-                    <p>Injecting Module</p>
+                    <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. For datetime category axis, you should inject
                 <code>DateTimeCategory</code> module by using

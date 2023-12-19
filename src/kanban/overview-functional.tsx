@@ -55,7 +55,7 @@ const Overview = () => {
                 </div>
                 <div className="e-card-custom-footer">
                     {props.Tags.split(",").map((tag: string) => (
-                        <div className="e-card-tag-field e-tooltip-text">{tag}</div>
+                        <div className="e-card-tag-field e-tooltip-text" key={tag}>{tag}</div>
                     ))}
                     <div className="e-card-avatar">{getString(props.Assignee)}</div>
                 </div>

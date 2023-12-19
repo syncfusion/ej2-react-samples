@@ -4,12 +4,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { AutoCompleteComponent, Inject, VirtualScroll } from '@syncfusion/ej2-react-dropdowns';
+import { Query, DataManager, WebApiAdaptor  } from '@syncfusion/ej2-data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
-import './default.css';
+import './virtual-scroll.css';
 import * as data from './dataSource.json';
 
-export class Virtualization extends SampleBase<{}, {}> {
+export class Default extends SampleBase<{}, {}> {
 
   private listObj: AutoCompleteComponent;
   // define the array of string
@@ -18,23 +19,67 @@ export class Virtualization extends SampleBase<{}, {}> {
     constructor(props: {}) {
         super(props);
 
-        for (let i: number = 1; i <= 150; i++) {
-            const item: { [key: string]: Object } = {
-                id: 'id' + i,
-                text: `Item ${i}`,
-            };
-            this.records.push(item); 
+        for (let i = 1; i <= 150; i++) {
+          let item: { [key: string]: Object } = {};
+          item.id = 'id' + i;
+          item.text = `Item ${i}`;
+  
+          // Generate a random number between 1 and 4 to determine the group
+          const randomGroup = Math.floor(Math.random() * 4) + 1;
+          switch (randomGroup) {
+            case 1:
+              item.group = 'Group A';
+              break;
+            case 2:
+              item.group = 'Group B';
+              break;
+            case 3:
+              item.group = 'Group C';
+              break;
+            case 4:
+              item.group = 'Group D';
+              break;
+            default:
+              break;
+          }
+          this.records.push(item);
         }
     }
-  private fields: object = { text: 'text', value: 'text' };
+    // bind the DataManager instance to dataSource property
+    public customerData: DataManager = new DataManager({
+      url: 'https://services.syncfusion.com/js/production/api/orders',
+      adaptor: new WebApiAdaptor ,
+      crossDomain: true
+  });
+  // maps the appropriate column to fields property
+  public fields: { [key: string]: string } = { value: 'text' };
+  public customerField: { [key: string]: string } = { value: 'OrderID' };
+  public groupField: { [key: string]: string } = { groupBy: 'group', value: 'text' };
 
   render() {
     return (
       <div id='combodefault' className='control-pane'>
         <div className='control-section'>
-          <div className='col-lg-12 control-wrappers'>
-            <div id='default'>
-              <AutoCompleteComponent id="datas" dataSource={this.records} ref={(AutoComplete) => { this.listObj = AutoComplete }} placeholder="e.g. Item 1" enableVirtualization={true} fields={this.fields} popupHeight="200px">
+          <div className='col-lg-6'>
+            <div id="local">
+              <h4> Local Data</h4>
+              <AutoCompleteComponent id="localdata" dataSource={this.records} placeholder="e.g. Item 1" enableVirtualization={true} fields={this.fields} popupHeight="200px">
+                <Inject services={[VirtualScroll]}/>
+              </AutoCompleteComponent>
+            </div>
+          </div>
+          <div className='col-lg-6'>
+            <div id="remote">
+              <h4>Remote Data</h4>
+              <AutoCompleteComponent id="remotedata" dataSource={this.customerData} placeholder="OrderId" enableVirtualization={true} fields={this.customerField} popupHeight="200px">
+                <Inject services={[VirtualScroll]}/>
+              </AutoCompleteComponent>
+            </div>
+          </div>
+          <div className='col-lg-6'>
+            <div id="remote">
+              <h4>Grouping</h4>
+              <AutoCompleteComponent id="groupdata" dataSource={this.records} placeholder="e.g. Item 1" enableVirtualization={true} fields={this.customerField} popupHeight="200px">
                 <Inject services={[VirtualScroll]}/>
               </AutoCompleteComponent>
             </div>

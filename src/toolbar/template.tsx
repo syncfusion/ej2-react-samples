@@ -15,7 +15,7 @@ export class Template extends SampleBase<{}, {}> {
             return (<div style={{display:'flex'}}><div><NumericTextBoxComponent width={45} value={0} min={0} max={100} showSpinButton={false} format='###.##'></NumericTextBoxComponent></div><span className='total-page'>of 100</span></div>);        
         }
         function dropDown() {
-            return(<div><ComboBoxComponent width={80} popupWidth={50} value='100%' dataSource={data} showClearButton={false} ></ComboBoxComponent></div>);
+            return(<div><ComboBoxComponent width={80} popupWidth={80} value='100%' dataSource={data} showClearButton={false} ></ComboBoxComponent></div>);
         }
         function textBox() {
             return(<div><TextBoxComponent ref={scope => { textboxObj = scope; }} placeholder='Find Text' created={onCreate.bind(this)}></TextBoxComponent></div>);

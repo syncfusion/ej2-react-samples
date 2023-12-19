@@ -4,11 +4,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { SampleBase } from '../common/sample-base';
-import {
-  AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,
-  Inject, AccumulationLegend, AccumulationDataLabel, PieSeries, IAccLoadedEventArgs, AccumulationTheme,
-  AccumulationTooltip
-} from '@syncfusion/ej2-react-charts';
+import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, Inject, AccumulationDataLabel, PieSeries, IAccLoadedEventArgs, AccumulationTheme, AccumulationTooltip } from '@syncfusion/ej2-react-charts';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
 
 export let data1: any[] = [
@@ -37,46 +33,29 @@ export class SmartLabels extends SampleBase<{}, {}> {
   render() {
     return (
       <div className='control-pane'>
-        <div className='control-section'>
-          <AccumulationChartComponent id='pie-chart'
-            title='Rio Olympics Gold'
-            tooltip={{ enable: true, format:'<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>' }}
-            load={this.load.bind(this)}
-            enableBorderOnMouseMove={false}
-            legendSettings={{
-              visible: false
-            }}
-            loaded={this.onChartLoad.bind(this)}>
-            <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
-            <AccumulationSeriesCollectionDirective>
-              <AccumulationSeriesDirective  dataSource={data1} xName='x' yName='y' startAngle={60}
-                dataLabel={{
-                  visible: true, position: 'Outside',
-                  connectorStyle: { length: '20px', type: 'Curve' }, name: 'text',
-                  font:  {fontWeight: '600' }
-                }}
-              >
-              </AccumulationSeriesDirective>
-            </AccumulationSeriesCollectionDirective>
-          </AccumulationChartComponent>
-        </div>
-        <div id="action-description">
-        <p>
-        This sample shows the gold medal count scored by each country at the Rio Olympic Games using smart labels on the chart.
-    </p>
-        </div>
-        <div id="description">
-          <p> In this example, you can see how the labels can be arranged smartly without overlapping. You can use the <code>EnableSmartLabels</code> property to enable or disable the support.</p>
-          <p style={{ fontWeight: 500 }}> Injecting Module </p>
-          <p> Accumulation chart component features are segregated into individual feature-wise modules. To use DataLabel, we need to inject <code>AccumulationDataLabel</code> into <code>services</code>.</p>
-          <p>
-                        More information on the pie series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/#smart-labels">documentation section</a>.
-                  </p>
-        </div>
-       
+          <div className='control-section'>
+              <AccumulationChartComponent id='pie-chart' title='Rio Olympics Gold' tooltip={{ enable: true, format: '<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>' }} load={this.load.bind(this)} enableBorderOnMouseMove={false} legendSettings={{ visible: false }} loaded={this.onChartLoad.bind(this)}>
+                  <Inject services={[AccumulationDataLabel, AccumulationTooltip, PieSeries]} />
+                  <AccumulationSeriesCollectionDirective>
+                      <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' startAngle={60} dataLabel={{ visible: true, position: 'Outside', connectorStyle: { length: '20px', type: 'Curve' }, name: 'text', font: { fontWeight: '600' } }} radius= {Browser.isDevice ? '40%' : '70%'} />
+                  </AccumulationSeriesCollectionDirective>
+              </AccumulationChartComponent>
+          </div>
+          <div id="action-description">
+              <p>This sample shows the gold medal count scored by each country at the Rio Olympic Games using smart labels on the chart.</p>
+          </div>
+          <div id="description">
+              <p> 
+                  In this example, you can see how the labels can be arranged smartly without overlapping. You can use the <code>EnableSmartLabels</code> property to enable or disable the support.
+              </p>
+              <p style={{ fontWeight: 500 }}> Injecting Module </p>
+              <p> Accumulation chart component features are segregated into individual feature-wise modules. To use DataLabel, we need to inject <code>AccumulationDataLabel</code> into <code>services</code>.</p>
+              <p>
+                  More information on the pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/#smart-labels">documentation section</a>.
+              </p>
+          </div>
       </div>
-    )
+  )    
   }
   public onChartLoad(args: IAccLoadedEventArgs): void {
     document.getElementById('pie-chart').setAttribute('title', '');

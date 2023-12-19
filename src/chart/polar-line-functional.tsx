@@ -67,16 +67,22 @@ const PolarLine = () => {
     const change = (): void => {
         chartInstance.series[0].type = dropElement.value as ChartSeriesType;
         chartInstance.series[1].type = dropElement.value as ChartSeriesType;
+        chartInstance.series[0].animation.enable = false;
+        chartInstance.series[1].animation.enable = false;
         chartInstance.refresh();
     };
     const closed = (): void => {
         chartInstance.series[0].isClosed = checkElement.checked;
         chartInstance.series[1].isClosed = checkElement.checked;
+        chartInstance.series[0].animation.enable = false;
+        chartInstance.series[1].animation.enable = false;
         chartInstance.refresh();
     };
     const isInversed = (): void => {
         chartInstance.primaryXAxis.isInversed = inversed.checked;
         chartInstance.primaryYAxis.isInversed = inversed.checked;
+        chartInstance.series[0].animation.enable = false;
+        chartInstance.series[1].animation.enable = false;
         chartInstance.refresh();
     }
     const startAngle = (): void => {
@@ -85,8 +91,6 @@ const PolarLine = () => {
         chartInstance.primaryXAxis.startAngle = parseInt(startangle.value);
         document.getElementById('st-lbl').innerHTML = 'Start Angle: ' + parseInt(startangle.value);
         chartInstance.refresh();
-        chartInstance.series[0].animation.enable = true;
-        chartInstance.series[1].animation.enable = true;
     }
     return (
         <div className='control-pane'>
@@ -113,17 +117,18 @@ const PolarLine = () => {
                             labelFormat: '{value}°C'
                         }}
                         title='Alaska Weather Statistics - 2016' loaded={onChartLoad.bind(this)}
+                        legendSettings={{ enableHighlight: true }}
                         tooltip={{ enable: true }}>
-                        <Inject services={[LineSeries, Legend, DataLabel, Category, PolarSeries, RadarSeries, Tooltip]} />
+                        <Inject services={[LineSeries, Legend, DataLabel, Category, PolarSeries, RadarSeries, Tooltip, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' yName='y' name='Germany' type='Polar'
                                 marker={{
-                                    visible: true, height: 10, width: 10, shape: 'Pentagon'
+                                    visible: true, height: 7, width: 7, shape: 'Pentagon', isFilled: true
                                 }} width={2}>
                             </SeriesDirective>
                             <SeriesDirective dataSource={data2} xName='x' yName='y' name='England' type='Polar'
                                 marker={{
-                                    visible: true, height: 10, width: 10, shape: 'Pentagon'
+                                    visible: true, height: 7, width: 7, shape: 'Pentagon', isFilled: true
                                 }} width={2}>
                             </SeriesDirective>
                         </SeriesCollectionDirective>
@@ -135,7 +140,7 @@ const PolarLine = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Series Type:</div>
                                 </td>
@@ -174,7 +179,7 @@ const PolarLine = () => {
                                         <input type="checkbox" id="isinversed" onChange={isInversed.bind(this)} style={{ marginLeft: '-5px' }} ref={d => inversed = d} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -195,8 +200,7 @@ const PolarLine = () => {
                 </br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use line series, we need to inject
-                   <code>LineSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use line series, we need to inject <code>LineSeries</code>, <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
              </p>
              <p>
                     More information on the polar and radar series with a line type chart can be found in this &nbsp;

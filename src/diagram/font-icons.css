@@ -37,10 +37,6 @@
   font-weight: 500;
 }
 
-.e-checkbox-wrapper .e-label {
-  font-size: 12px;
-}
-
 .e-selected-style {
   border-color: #006ce6;
   border-width: 2px;
@@ -533,17 +529,17 @@
   color: #fff;
   background-color: #333;
 }
-.bootstrap5 #exportBtn {
+.bootstrap5 #diagramexportBtn {
   color: #333;
 }
-.bootstrap4 #exportBtn {
+.bootstrap4 #expordiagramexportBtntBtn {
   color: #333;
 }
-.bootstrap5 #exportBtn:hover {
+.bootstrap5 #diagramexportBtn:hover {
   color: #fff;
   background-color: #333;
 }
-.bootstrap4 #exportBtn:hover {
+.bootstrap4 #diagramexportBtn:hover {
   color: #fff;
   background-color: #333;
 }

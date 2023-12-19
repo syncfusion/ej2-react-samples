@@ -1,6 +1,3 @@
-/**
- * Sample for showing tooltip in the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -69,7 +66,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                 </style>
                 <div className='control-section row'>
                     <div className='col-lg-12'>
-                        <CircularGaugeComponent background='transparent' loaded={this.onChartLoad.bind(this)} dragEnd={this.dragEnd.bind(this)} id='tooltip-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
+                        <CircularGaugeComponent background='transparent' animationDuration={2000} loaded={this.onChartLoad.bind(this)} dragEnd={this.dragEnd.bind(this)} id='tooltip-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true}
                             load={this.load.bind(this)}
                             tooltip={{
                                 enable: true,

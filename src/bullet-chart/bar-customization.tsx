@@ -57,6 +57,7 @@ export class BulletChartBarCustomization extends SampleBase<{}, {}> {
                 <div className='property-section col-md-4'>
                 <div className="property-panel-header">Properties</div>
                     <table>
+                    <tbody>
                     <tr style= {{ height: '50px'}}>
                             <td style={{ width: '50%' }}>
                                 <div className='prop-text'>Actual Value:</div>
@@ -135,6 +136,7 @@ export class BulletChartBarCustomization extends SampleBase<{}, {}> {
                                     }}></ColorPickerComponent>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div id="action-description">

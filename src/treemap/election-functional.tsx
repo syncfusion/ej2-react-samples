@@ -189,6 +189,7 @@ const Legend = () => {
                             className="property-panel-table"
                             style={{ width: "100%", marginBottom: "20px" }}
                         >
+                         <tbody>
                             <tr>
                                 <td style={{ paddingTop: "15px", width: "30%" }}>
                                     <div style={{ paddingLeft: "0px" }}>Type</div>
@@ -225,6 +226,7 @@ const Legend = () => {
                                     </div>
                                 </td>
                             </tr>
+                          </tbody>
                         </table>
                     </PropertyPane>
                 </div>

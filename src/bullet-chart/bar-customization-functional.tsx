@@ -54,6 +54,7 @@ function BulletChartBarCustomization() {
             <div className='property-section col-md-4'>
                 <div className="property-panel-header">Properties</div>
                 <table>
+                <tbody>
                     <tr style={{ height: '50px' }}>
                         <td style={{ width: '50%' }}>
                             <div className='prop-text'>Actual Value:</div>
@@ -132,6 +133,7 @@ function BulletChartBarCustomization() {
                                 }}></ColorPickerComponent>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
             <div id="action-description">

@@ -21,7 +21,7 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
         expandState: 'isExpand',
         child: 'subtasks'
     };
-    private ganttInstance: GanttComponent;
+    public ganttInstance: any;
     public resourceFields: any = {
         id: 'resourceId',
         name: 'resourceName',
@@ -39,14 +39,14 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
     public splitterSettings: any = {
         columnIndex: 2
     };
-    public dragDropChange(args): any {
+    public dragDropChange(args:any): any {
       if (args.checked) {
         this.ganttInstance.allowTaskbarDragAndDrop = true;
       } else {
         this.ganttInstance.allowTaskbarDragAndDrop = false;
       }
   }
-  public overlapChange(args): any {
+  public overlapChange(args:any): any {
       if (args.checked) {
         this.ganttInstance.allowTaskbarOverlap = true;
       } else {
@@ -67,7 +67,7 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
                 <div style={{ display: 'flex' }}>
                 <label htmlFor="checked" style={{ fontSize: '15px', margin: '0px 5px 0px 0px' }}> Allow Taskbar Drag And Drop </label>
                 <div>
-                <SwitchComponent id="checked" change={this.dragDropChange.bind(Thickness)}></SwitchComponent>
+                <SwitchComponent id="checked" change={this.dragDropChange.bind(this)}></SwitchComponent>
               </div>
               </div>
               <div style={{ display: 'flex' }}>

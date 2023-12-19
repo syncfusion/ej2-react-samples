@@ -5,10 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { PropertyPane } from '../common/property-pane';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    LineSeries, Legend, ILoadedEventArgs, ChartTheme
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, AreaSeries, ILoadedEventArgs, ChartTheme, DateTime, Legend } from '@syncfusion/ej2-react-charts';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -109,126 +106,127 @@ export class Performance extends SampleBase<{}, {}> {
         this.chart.refresh();
     }
     public onChartLoad(args: ILoadedEventArgs): void {
-        let dt2: number;
-        dt2 = new Date().getTime();
-        if (this.dt1) {
-            document.getElementById('performanceTime').innerHTML = (dt2 - this.dt1) + 'ms';
-        }
-        this.dt1 = 0;
+        let chart: Element = document.getElementById('charts');
+        chart.setAttribute('title', '');
     };
     public load(args: ILoadedEventArgs): void {
+        let series1: Object[] = [];
+        let point1: Object;
+        let pts;
+        let value = 0;
+        for (pts = 0; pts < 100000; pts++) {
+            if (pts % 3 == 0) {
+                value -= (Math.random() * (100) / 3) * 4;
+            }
+            else if (pts % 2 == 0) {
+                value += (Math.random() * (100) / 3) * 4;
+            }
+            if (value < 0) {
+                value = value * -1;
+            }
+            if (value >= 12000) {
+                value = Math.floor(Math.random() * 11000) + 1000;
+            }
+            point1 = { x: new Date(2005, 1, 1).setHours(pts), y: value };
+            series1.push(point1);
+        }
+        args.chart.series[0].dataSource = series1;
+        args.chart.series[0].xName = 'x';
+        args.chart.series[0].yName = 'y';
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];
+        args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
+        args.chart.series[0].border = { width: 2, color: borderColor[themes.indexOf(args.chart.theme.toLowerCase())] }
     };
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section '>
-                        <ChartComponent id='charts' ref={chart => this.chart = chart} loaded={this.onChartLoad.bind(this)}
-                            primaryXAxis={{
-                                interval: 1,
-                            intervalType: 'Years',
-                            valueType: 'DateTime',
-                            edgeLabelPlacement:'Shift',
-                            title: 'Years',
-                            majorGridLines: {width: 0}
-                            }}  primaryYAxis={{
-                                interval: 2000,
-                                minimum: 0,
-                                maximum: 12000,
-                                title: 'Values',
-                                lineStyle: { width: 0 },
-                                majorTickLines: { width: 0 }
-                            }}     title="Chart with 100k points"  width={Browser.isDevice ? '100%' : '90%'} load={this.load.bind(this)} legendSettings={{ visible: false }}>
-                            <Inject services={[LineSeries, Legend]} />
-                            <SeriesCollectionDirective>
-                                <SeriesDirective name='Series1' type='Line' animation={{ enable: false }}>
-                                </SeriesDirective>
-                            </SeriesCollectionDirective>
-                        </ChartComponent>
-                        <svg style={{ height: '0' }}>
-                <defs>
-                    <linearGradient id="material-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="fabric-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap4-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="highcontrast-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="tailwind-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap5-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="material-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="fabric-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="tailwind-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap5-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="fluent-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="fluent-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="material3-gradient-chart" style={{ opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="material3-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                </defs>
-            </svg>
-                  
+                <style>{SAMPLE_CSS}</style>
+                <div className='control-section'>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ intervalType: 'Years', valueType: 'DateTime', edgeLabelPlacement:'Shift', title: 'Years', majorGridLines: {width: 0} }}  primaryYAxis={{ interval: 2000, minimum: 0, maximum: 12000, title: 'Values', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: false }} title="Chart with 100k points" width={Browser.isDevice ? '100%' : '75%'} loaded={this.onChartLoad.bind(this)} load={this.load.bind(this)} >
+                        <Inject services={[AreaSeries,  DateTime, Legend]} />
+                        <SeriesCollectionDirective>
+                            <SeriesDirective name='Series1' type='Area' />
+                        </SeriesCollectionDirective>
+                    </ChartComponent>
+                    <svg style={{ height: '0' }}>
+                        <defs>
+                            <linearGradient id="material-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fabric-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap4-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="highcontrast-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="tailwind-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap5-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="material-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fabric-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="tailwind-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap5-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fluent-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fluent-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="material3-gradient-chart" style={{ opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="material3-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample demonstrates the performance of EJ2 chart to render 100K points in canvas mode.
-            </p>
+                    <p>This sample demonstrates the performance of React Charts rendering 100K data points.</p>
                 </div>
                 <div id="description">
-                    <p>
-                    Chart includes several data rendering optimizations to achieve the best possible performance when plotting large volumes of data as well as handling high frequency real-time data.In this demo, chart is rendered with 100K points in canvas mode.
-                    </p>
-                </div>
-            </div>
+                    <p>Charts includes several data-rendering optimizations to achieve the best possible performance when plotting large volumes of data and handling high-frequency, real-time data. In this demo, an area series is rendered with 100K points.</p>
+                </div>            
+            </div>        
         )
     }
 }

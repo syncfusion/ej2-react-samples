@@ -98,7 +98,7 @@ function RTLTree() {
                 obj.shape = {
                   type: "Native",
                   content:
-                    '<svg width="120" height="61"><g><line x1="0" x2="120" y1="60" y2="60" stroke-width="1" stroke= "black"></line>' +
+                    '<svg width="120" height="61"><g><line x1="0" x2="120" y1="60" y2="60" strokeWidth="1" stroke= "black"></line>' +
                     '<rect x="0" y="0" width="120" height="60" fill="transparent" stroke="none"></rect></g></svg>'
                 };
                 obj.style.strokeWidth = 0;

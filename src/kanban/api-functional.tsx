@@ -10,6 +10,8 @@ import { DialogComponent, ButtonPropsModel } from '@syncfusion/ej2-react-popups'
 import { SampleBase, updateSampleSection } from '../common/sample-base';
 import * as dataSource from './datasource.json';
 import './api.css';
+import { PropertyPane } from '../common/property-pane';
+
 /**
  * Kanban API sample
  */
@@ -141,63 +143,60 @@ const API = () => {
                 </div>
             </div>
             <div className="col-lg-3 property-section property-customization">
-                <div className="property-panel-section">
-                    <p className="property-panel-header header-customization">
-                        Add Column
-                    </p>
-                    <div className="property-panel-content">
-                        <form id="addForm">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <TextBoxComponent
-                                            ref={header}
-                                            id="text"
-                                            className="e-input"
-                                            type="text"
-                                            placeholder="Text Field"
-                                        ></TextBoxComponent>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <DropDownListComponent
-                                            id="key"
-                                            ref={dropObj}
-                                            dataSource={statusData}
-                                            placeholder="Key Field"
-                                        ></DropDownListComponent>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <NumericTextBoxComponent
-                                            ref={addIndex}
-                                            id="index"
-                                            format="###.##"
-                                            min={0}
-                                            value={0}
-                                            max={3}
-                                            placeholder="Index"
-                                        ></NumericTextBoxComponent>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="e-check">
-                                        <ButtonComponent
-                                            id="add"
-                                            type="button"
-                                            className="e-btn"
-                                            onClick={onAdd.bind(this)}
-                                        >
-                                            Add
-                                        </ButtonComponent>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                    <p className="property-panel-header">Delete Column</p>
+                <PropertyPane title="Add Column">
+                    <form id="addForm">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <TextBoxComponent
+                                        ref={header}
+                                        id="text"
+                                        className="e-input"
+                                        type="text"
+                                        placeholder="Text Field"
+                                    ></TextBoxComponent>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <DropDownListComponent
+                                        id="key"
+                                        ref={dropObj}
+                                        dataSource={statusData}
+                                        placeholder="Key Field"
+                                    ></DropDownListComponent>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <NumericTextBoxComponent
+                                        ref={addIndex}
+                                        id="index"
+                                        format="###.##"
+                                        min={0}
+                                        value={0}
+                                        max={3}
+                                        placeholder="Index"
+                                    ></NumericTextBoxComponent>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="e-check">
+                                    <ButtonComponent
+                                        id="add"
+                                        type="button"
+                                        className="e-btn"
+                                        onClick={onAdd.bind(this)}
+                                    >
+                                        Add
+                                    </ButtonComponent>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <p className="property-panel-header" style={{ width: '100%', padding: '22px 0 0 0' }}>Delete Column</p>
                     <div className="property-panel-content">
                         <form id="deleteForm">
                             <table>
@@ -231,7 +230,7 @@ const API = () => {
                             </table>
                         </form>
                     </div>
-                </div>
+                </PropertyPane>
             </div>
             <div id="action-description">
                 <p>

@@ -57,10 +57,6 @@ const SAMPLE_CSS = `.image-pattern-style {
         padding-bottom: 5px;
     }
 
-    .e-checkbox-wrapper .e-label {
-        font-size: 12px;
-    }
-
     .container-fluid {
         padding-left: 0px;
     }

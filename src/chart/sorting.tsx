@@ -104,7 +104,7 @@ export class Sorting extends SampleBase<{}, {}> {
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody> <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
                                         <div>Descending: </div>
                                     </td>
@@ -123,7 +123,7 @@ export class Sorting extends SampleBase<{}, {}> {
                                             <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="None" />
                                         </div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>
@@ -142,7 +142,7 @@ export class Sorting extends SampleBase<{}, {}> {
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap a point in touch enabled devices.
             </p>
-                    <p>Injecting Module</p>
+                    <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject
                 <code>StackingColumnSeries</code> module using

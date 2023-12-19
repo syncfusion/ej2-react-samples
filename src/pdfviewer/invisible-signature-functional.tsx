@@ -12,7 +12,6 @@ import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from 
 import { updateSampleSection } from '../common/sample-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { useState } from 'react';
-import { RouteComponentProps } from 'react-router';
 import './pdf.component.css';
 function InvisibleDigitalSignature() {
     React.useEffect(() => {
@@ -54,7 +53,7 @@ function InvisibleDigitalSignature() {
                 {/* Render the PDF Viewer */}
                 <PdfViewerComponent id="container" ref={(scope) => { viewer = scope; }} enableToolbar={false} enableNavigationToolbar={false}
                     documentLoad={documentLoaded}
-                    serviceUrl='https://ej2services.syncfusion.com/react/development/api/pdfviewer'
+                    serviceUrl='https://services.syncfusion.com/react/production/api/pdfviewer'
                     documentPath="InvisibleDigitalSignature.pdf"
                     addSignature={addSignature}
                     style={{ 'display': 'block', 'height': '640px' }}>
@@ -64,7 +63,11 @@ function InvisibleDigitalSignature() {
                 <input type="file" id="fileUpload" accept=".pdf" onChange={readFile.bind(this)} style={{ 'display': 'block', 'visibility': 'hidden', 'width': '0', 'height': '0' }} />
             </div>
         </div>
-        
+
+        <div id='sample'>
+            <div id='loader'>Loading....</div>
+        </div>
+
         <div id="action-description">
             <p>This sample demonstrates how to digitally sign a PDF document from code behind using Syncfusion's PDF Viewer and
                 PDF Library</p>
@@ -145,7 +148,7 @@ function InvisibleDigitalSignature() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(postData)
         };
-        const apiUrl = 'https://ej2services.syncfusion.com/react/development/api/pdfviewer/ValidateSignature';
+        const apiUrl = 'https://services.syncfusion.com/react/production/api/pdfviewer/ValidateSignature';
         fetch(apiUrl, options)
             .then(response => response.json())
             .then(body => {
@@ -221,3 +224,5 @@ function InvisibleDigitalSignature() {
     }
 }
 export default InvisibleDigitalSignature;
+
+

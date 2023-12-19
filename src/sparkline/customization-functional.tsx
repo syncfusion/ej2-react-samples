@@ -445,6 +445,7 @@ function Customization() {
                                 </td>
                                 <td style={{ "width": "50%" }}>
                                     <table>
+                                    <tbody>
                                         <tr>
                                             <td style={{ "padding": "5px" }}>All</td>
                                             <td>
@@ -475,6 +476,7 @@ function Customization() {
                                                 <CheckBoxComponent change={colorChange.bind(this)} ref={d => lowElement = d} id='low' disabled={true} />
                                             </td>
                                         </tr>
+                                        </tbody>
                                     </table>
                                 </td>
                             </tr>

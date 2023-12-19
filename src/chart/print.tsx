@@ -67,64 +67,29 @@ export class Print extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section row'>
-                    <div className='col-md-9'>
-                        <ChartComponent id='charts' ref={chart => this.chartInstance = chart}
-                            primaryXAxis={{
-                                title: 'Manager',
-                                valueType: 'Category',
-                                majorGridLines: { width: 0 },
-                                labelFormat: '${value}',
-                            }}
-                            chartArea={{ border: { width: 0 } }}
-                            primaryYAxis={{
-                                title: 'Sales',
-                                minimum: 0,
-                                maximum: 20000,
-                                majorGridLines: { width: 0 }
-                            }}
-                            pointRender={this.labelRender.bind(this)}
-                            load={this.load.bind(this)}
-                            title="Sales Comparision" loaded={this.onChartLoad.bind(this)}>
-                            <Inject services={[ColumnSeries, Category,DataLabel, Legend]} />
+                    <div className='col-lg-9'>
+                        <ChartComponent id='charts' ref={chart=>this.chartInstance=chart} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ labelFormat: '${value}k', minimum: 0, maximum: 20, interval: 4, lineStyle: { width: 0 }, majorGridLines: { width: 2 }, majorTickLines: { width: 0 } }} pointRender={this.labelRender.bind(this)} load={this.load.bind(this)} title="Sales Comparision" loaded={this.onChartLoad.bind(this)} >
+                            <Inject services={[ColumnSeries, Category, Legend, DataLabel]} />
                             <SeriesCollectionDirective>
-                                <SeriesDirective dataSource={data1} xName='x' yName='y' width={2}
-                                    type='Column'   marker={{ dataLabel: { visible: true, name: 'dataLabelMappingName', position: 'Top', font: { fontWeight: '600'} } }}>
-                                </SeriesDirective>
+                                <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} type='Column' marker={{ dataLabel: { visible: true, name: 'dataLabelMappingName', position: 'Top', font: { fontWeight: '600', color: "#ffffff"} } }} />
                             </SeriesCollectionDirective>
                         </ChartComponent>
                     </div>
-                    <div className='col-md-3 property-section'>
+                    <div className='col-lg-3 property-section'>
                         <PropertyPane title='Properties'>
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                <tr style={{ height: '50px' }}>
+                            <tbody> <tr style={{ height: '50px' }}>
                                     <td style={{ width: '100%' }}>
                                         <div id="btn-control">
-                                            <ButtonComponent onClick={this.onClick.bind(this)} iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
+                                            <ButtonComponent id="chart-print" iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr></tbody>
                             </table>
                         </PropertyPane>
                     </div>
-                </div>
-                <div id="action-description">
-                    <p>
-                        This sample illustrates the print feature in chart. By clicking <code>Print</code>, you can print the chart directly from the browser.
-            </p>
-                </div>
-                <div id="description">
-                    <p>
-                        In this example, you can see how to render and configure the print.
-                The rendered chart can be printed directly from the browser by calling the public method print.
-                </p>
-                    <p>
-                        More information on the print can be found in this &nbsp;
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#print">documentation section</a>.
-                </p>
                 </div>
             </div >
         )

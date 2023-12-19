@@ -33,7 +33,7 @@ export class RowTemplate extends SampleBase<{}, {}> {
             <td className="border">
                 <div>
                     <div style={{position:'relative' , display:'inline-block'}}>
-                        <img className="tempimg" src ={src} />
+                        <img className="tempimg" src ={src} alt={props.FullName} />
                     </div>
                     <div style={{display:'inline-block'}}>
                         <div style={{padding:'5px'}}>{props.Address}</div>

@@ -48,7 +48,7 @@ function Preview() {
         rteObj.refreshUI();
     }
     function updateValue() {
-        srcArea.innerHTML =  (Marked as any).marked((rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
+        srcArea.innerHTML =  Marked.marked((rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
     }
     function updateOrientation() { 
         if (Browser.isDevice) {
@@ -72,7 +72,7 @@ function Preview() {
     };
     return (
         <div className='control-pane'>
-            <div className='control-section onlineEditor' id="rtePreview">
+            <div className='control-section markdown-preview' id="rtePreview">
                 <div className="content-wrapper">
                 <SplitterComponent  ref={splitter => (splitterInstance = splitter)} height='450px' width='100%' resizing={onResizing.bind(this)} created={updateOrientation.bind(this)}>
                         <PanesDirective>

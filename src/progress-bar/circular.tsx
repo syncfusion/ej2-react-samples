@@ -86,6 +86,7 @@ export class ProgressBarDefault extends SampleBase<{}, {}> {
          }
     }
 
+
     render() {
         return (
             <div className='control-pane'>

@@ -5,9 +5,9 @@ import {
   MultiSelectChangeEventArgs,
   DropDownListComponent
 } from "@syncfusion/ej2-react-dropdowns";
+import { SampleBase } from "../common/sample-base";
 import { TextBoxComponent, ChangedEventArgs, TextBox } from '@syncfusion/ej2-react-inputs';
 import { BarcodeGeneratorComponent, TextPosition, Alignment } from "@syncfusion/ej2-react-barcode-generator";
-import { SampleBase } from "../common/sample-base";
 import {
   NumericTextBoxComponent,
   ChangeEventArgs as NumericChangeEventArgs,
@@ -35,10 +35,11 @@ let options: FormValidatorModel = {
 export class Default extends SampleBase<{}, {}> {
   public formObject: FormValidator;
   rendereComplete() {
-    let div: HTMLElement = (document.getElementsByClassName('sb-property-border')[0] as HTMLElement);
     this.formObject = new FormValidator('#form1', options);
+    //custom code start
+    let div:HTMLElement = (document.getElementsByClassName('sb-property-border')[0] as HTMLElement);
     div.style.left = '63%';
-
+    //custom code end
   }
 
   //public canShowError: boolean = false;

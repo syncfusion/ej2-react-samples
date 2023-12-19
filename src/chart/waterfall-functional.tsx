@@ -71,8 +71,7 @@ const Waterfall = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Waterfall series, we need to inject
-                    <code>WaterfallSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Waterfall series, we need to inject <code>WaterfallSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the Waterfall series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#waterfall-chart">documentation section</a>.

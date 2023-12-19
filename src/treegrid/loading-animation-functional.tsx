@@ -90,24 +90,26 @@ const LoadingAnimation = () => {
                             className="property-panel-table"
                             style={{ width: "100%" }}
                         >
-                            <tr style={{ height: "50px" }}>
-                                <td style={{ width: "30%" }}>
-                                    <div> Indicator Type </div>
-                                </td>
-                                <td style={{ width: "70%" }}>
-                                    <div id="columnddl">
-                                        <DropDownListComponent
-                                            dataSource={indicatortypes}
-                                            value="Shimmer"
-                                            change={indicatorChange.bind(this)}
-                                            fields={fields}
-                                            ref={(indicateDropDown) => {
-                                                indicatorDropDown = indicateDropDown;
-                                            }}
-                                        />
-                                    </div>
-                                </td>
-                            </tr>
+                            <tbody>
+                                <tr style={{ height: "50px" }}>
+                                    <td style={{ width: "30%" }}>
+                                        <div> Indicator Type </div>
+                                    </td>
+                                    <td style={{ width: "70%" }}>
+                                        <div id="columnddl">
+                                            <DropDownListComponent
+                                                dataSource={indicatortypes}
+                                                value="Shimmer"
+                                                change={indicatorChange.bind(this)}
+                                                fields={fields}
+                                                ref={(indicateDropDown) => {
+                                                    indicatorDropDown = indicateDropDown;
+                                                }}
+                                            />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

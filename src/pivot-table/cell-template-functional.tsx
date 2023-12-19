@@ -36,10 +36,7 @@ function CellTemplate () {
     }, [])
     
     let pivotObj: PivotViewComponent;
-
-    function cellTemplate(props): JSX.Element {
-        return (<span className="tempwrap e-pivot-trend-neutral pv-icons"></span>);
-    }
+    let cellTemplate: string = '<span class="tempwrap e-pivot-trend-neutral pv-icons"></span>';
 
     /* jshint ignore:start */
     function trend(): void {
@@ -160,7 +157,7 @@ function CellTemplate () {
         <div className='control-pane'>
             <div className='control-section' id='pivot-table-section'>
                 <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} gridSettings={{ columnWidth: 140 }}
-                    load={onLoad} dataBound={trend.bind(this)} ref={(pivotview) => { pivotObj = pivotview }} cellTemplate={cellTemplate.bind(this)}>
+                    load={onLoad} dataBound={trend.bind(this)} ref={(pivotview) => { pivotObj = pivotview }} cellTemplate={cellTemplate}>
                 </PivotViewComponent>
             </div>
             <div id="action-description">

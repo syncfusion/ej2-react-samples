@@ -281,7 +281,7 @@ export class LiveData extends SampleBase<{}, {}> {
         this.randomizeObjectData = this.randomizeObjectData.bind(this);
         return (
             <div className='control-pane'>
-                <div className='control-section' style={{ overflow: 'auto' }}>
+                <div className='control-section'>
                     <div style={{ marginBottom: '10px' }}>
                         <h4 style={{ display: 'inline-block', fontSize: '14px', paddingLeft: '5px' }}>
                             <strong>Feed Delay(ms)</strong>:

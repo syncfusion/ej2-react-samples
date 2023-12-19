@@ -1,7 +1,3 @@
-/**
- * Sample for custom labels in the Circular Gauge
- */
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useEffect } from 'react';
@@ -52,7 +48,7 @@ const CustomLabels = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <CircularGaugeComponent load={load.bind(this)} axisLabelRender={axisLabelRender.bind(this)} id='custom-labels' background='transparent'>
+                <CircularGaugeComponent load={load.bind(this)} animationDuration={2000} axisLabelRender={axisLabelRender.bind(this)} id='custom-labels' background='transparent'>
                     <Inject services={[Gradient]} />
                     <AxesDirective>
                         <AxisDirective startAngle={210} endAngle={150} radius='80%' minimum={0} maximum={8} majorTicks={{ width: 0, interval: 1 }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ offset: 10, font: { fontFamily: 'inherit' } }}>
@@ -68,7 +64,7 @@ const CustomLabels = () => {
                 </CircularGaugeComponent>
             </div>
             <div id="action-description">
-                <p>This example demonstrates how to introduce and position customer labels in a circular gauge. In addition, gradient colors are used on the circular gauge elements such as the pointer and range.</p>
+                <p>This example demonstrates how to introduce and position custom labels in a circular gauge. In addition, gradient colors are used on the circular gauge elements such as the pointer and range.</p>
             </div>
             <div id="description">
                 <p>

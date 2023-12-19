@@ -124,137 +124,136 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                <div className="row" style={{ textAlign: "center" }}>
-                    <div id="days">EUR Exchange Rate from USD</div>
-                </div>
-                 <div className="row">
-                    <RangeNavigatorComponent id='rangenavigator' 
-                        ref={rangenavigator => this.rangenavigator1 = rangenavigator} 
-                        style={{ textAlign: "center" }}
-                        labelPosition='Outside'
-                        valueType='DateTime'
-                        majorTickLines={{
-                            width: 0
-                        }}
-                       
-                        tooltip={{ enable: true, format: 'yyyy/MM/dd', displayMode: 'Always'}}
-                        value={[new Date('2011-01-01'), new Date('2013-12-31')]}
-                        width={Browser.isDevice ? '100%' : '80%'}
-                        load={this.rangeLoad.bind(this)}
-                        changed={this.changed.bind(this)} >
-                        <Inject services={[AreaSeries, DateTime, RangeTooltip]} />
-                        <RangenavigatorSeriesCollectionDirective>
-                            <RangenavigatorSeriesDirective dataSource={stockData} xName='x' yName='y' 
-                            type='Area' width={2} animation={{ enable: false }} border={{width:2}}>
-                            </RangenavigatorSeriesDirective>
-                        </RangenavigatorSeriesCollectionDirective>
-                    </RangeNavigatorComponent>
+                    <div className="row" style={{ textAlign: "center" }}>
+                        <div id="days">EUR Exchange Rate from USD</div>
                     </div>
-                <div className="row">
-                    <ChartComponent id='charts'  
-                      ref={chart => this.chart1 = chart} 
-                      style={{ textAlign: "center" }}
-                      primaryXAxis={{
-                            valueType: 'DateTime',
-                            edgeLabelPlacement: 'Shift',
-                            majorGridLines: { width: 0 }
-                        }}
-                        primaryYAxis={{
-                            labelFormat: 'n1',
-                            minimum: 0.6, 
-                            maximum: 1,
-                            interval: 0.1, 
-                            majorTickLines: { width: 0 }, 
-                            lineStyle: { width: 0 }
-                        }}
-                        width={Browser.isDevice ? '100%' : '80%'}
-                        axisLabelRender={this.labelRender.bind(this)}
-                        legendSettings={{visible: false}}
-                        load={this.chartLoad.bind(this)}
-                        height='350'
-                        chartArea={{ border: { width: 0 } }}
-                        tooltip={{
-                            enable: true, shared: true
-                        }}
-                        crosshair={{
-                            enable: false,
-                            lineType: 'None'
-                        }}>
-                        <Inject services={[Crosshair, DateTime, SplineSeries, Tooltip, ChartAnnotation, Legend]} />
-                        <SeriesCollectionDirective>
-                            <SeriesDirective name='Rate' type='Spline' dataSource={stockData} xName='x' yName='y' width={2}>
-                            </SeriesDirective>
-                        </SeriesCollectionDirective>
-                    </ChartComponent>
-                </div>
-                <svg style={{ height: '0' }}>
-                <defs>
-                    <linearGradient id="material-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="fabric-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap4-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="highcontrast-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-					<linearGradient id="tailwind-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                            <stop offset="0"></stop>
-                            <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap5-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="material-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="fabric-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="tailwind-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="bootstrap5-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="fluent-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="fluent-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="material3-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                    <linearGradient id="material3-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0"></stop>
-                        <stop offset="1"></stop>
-                    </linearGradient>
-                </defs>
-            </svg>
+                    <div className="row">
+                        <RangeNavigatorComponent id='rangenavigator'
+                            ref={rangenavigator => this.rangenavigator1 = rangenavigator}
+                            style={{ textAlign: "center" }}
+                            labelPosition='Outside'
+                            valueType='DateTime'
+                            majorTickLines={{
+                                width: 0
+                            }}
+    
+                            tooltip={{ enable: true, format: 'yyyy/MM/dd', displayMode: 'Always' }}
+                            value={[new Date('2011-01-01'), new Date('2013-12-31')]}
+                            width={Browser.isDevice ? '100%' : '80%'}
+                            load={this.rangeLoad.bind(this)}
+                            changed={this.changed.bind(this)} >
+                            <Inject services={[AreaSeries, DateTime, RangeTooltip]} />
+                            <RangenavigatorSeriesCollectionDirective>
+                                <RangenavigatorSeriesDirective dataSource={stockData} xName='x' yName='y'
+                                    type='Area' width={2} animation={{ enable: false }} border={{ width: 2 }}>
+                                </RangenavigatorSeriesDirective>
+                            </RangenavigatorSeriesCollectionDirective>
+                        </RangeNavigatorComponent>
+                    </div>
+                    <div className="row">
+                        <ChartComponent id='charts'
+                            ref={chart => this.chart1 = chart}
+                            style={{ textAlign: "center" }}
+                            primaryXAxis={{
+                                valueType: 'DateTime',
+                                edgeLabelPlacement: 'Shift',
+                                majorGridLines: { width: 0 }
+                            }}
+                            primaryYAxis={{
+                                labelFormat: 'n1',
+                                minimum: 0.6,
+                                maximum: 1,
+                                interval: 0.1,
+                                majorTickLines: { width: 0 },
+                                lineStyle: { width: 0 }
+                            }}
+                            width={Browser.isDevice ? '100%' : '80%'}
+                            legendSettings={{ visible: false }}
+                            load={this.chartLoad.bind(this)}
+                            height='350'
+                            chartArea={{ border: { width: 0 } }}
+                            tooltip={{
+                                enable: true, shared: true
+                            }}
+                            crosshair={{
+                                enable: false,
+                                lineType: 'None'
+                            }}>
+                            <Inject services={[Crosshair, DateTime, SplineSeries, Tooltip, ChartAnnotation, Legend]} />
+                            <SeriesCollectionDirective>
+                                <SeriesDirective name='Rate' type='Spline' dataSource={stockData} xName='x' yName='y' width={2}>
+                                </SeriesDirective>
+                            </SeriesCollectionDirective>
+                        </ChartComponent>
+                    </div>
+                    <svg style={{ height: '0' }}>
+                        <defs>
+                            <linearGradient id="material-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fabric-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap4-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="highcontrast-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="tailwind-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap5-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="material-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fabric-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="tailwind-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="bootstrap5-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fluent-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fluent-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="material3-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="material3-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
                 </div>
                 <div id="action-description">
                     <p>
@@ -263,16 +262,16 @@ export class DateTimeAxis extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        Date-time data is used in this sample, and the selected range values are showed with tooltip. 
-                        Date-time axis uses date-time scale and displays date-time values as axis labels. 
-                        To render date-time axis, set the <code>valueType</code> to <code>DateTime</code>. 
-                        Format of the axis label will be calculated based on the intervalType of the range navigator. 
-                        You can also directly set the format using the labelFormat property. 
+                        Date-time data is used in this sample, and the selected range values are showed with tooltip.
+                        Date-time axis uses date-time scale and displays date-time values as axis labels.
+                        To render date-time axis, set the <code>valueType</code> to <code>DateTime</code>.
+                        Format of the axis label will be calculated based on the intervalType of the range navigator.
+                        You can also directly set the format using the labelFormat property.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                    The range navigator component features are segregated into individual feature-wise modules. To use area series, inject the
+                        The range navigator component features are segregated into individual feature-wise modules. To use area series, inject the
                         <code>AreaSeries</code> module using
                         <code>RangeNavigator.Inject(AreaSeries)</code> method. To use date time axis, inject the
                         <code>DateTime</code> module using

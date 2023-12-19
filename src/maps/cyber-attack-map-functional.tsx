@@ -22,13 +22,13 @@ const SAMPLE_CSS = `
     @keyframes dash {
         from {
             stroke-dashoffset: 1000;
-            stroke-width: 1px;
+            strokeWidth: 1px;
             stroke: #D2691E;
         }
 
         to {
             stroke-dashoffset: 0;
-            stroke-width: 1px;
+            strokeWidth: 1px;
         }
 
         40% {

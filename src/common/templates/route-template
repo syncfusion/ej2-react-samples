@@ -3,9 +3,9 @@ import * as React from 'react';
 {{routerimports}}
 
 export const {{component}}Routes = (
-    <div>
+    <>
 {{routes}}
-    </div>
+    </>
 )
 
 export const {{component}}Category = {{category}}

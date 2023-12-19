@@ -133,11 +133,7 @@ const SAMPLE_CSS = `.image-pattern-style {
         font-size: 12px;
         font-weight: 500;
     }
-
-    .e-checkbox-wrapper .e-label {
-        font-size: 12px;
-    }
-
+    
     .property-panel-header {
         padding-top: 15px;
         padding-bottom: 5px

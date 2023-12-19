@@ -32,53 +32,24 @@ export class LogAxis extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
-                        primaryXAxis={{
-                            labelFormat: 'y',
-                            valueType: 'DateTime',
-                            edgeLabelPlacement: 'Shift'
-                        }}
-                        load={this.load.bind(this)}
-                        primaryYAxis={{
-                            valueType: 'Logarithmic',
-                            edgeLabelPlacement: 'Shift',
-                            minorTicksPerInterval: 5,
-                            majorGridLines: { width: 1.5 },
-                            minorTickLines: { width: 0, height: 4 },
-                            minimum: 0,
-                            maximum: 100000,
-                            interval: 1,
-                            title: Browser.isDevice ? '' : 'Profit',
-                            labelFormat: '${value}'
-                        }}
-                        legendSettings={{ visible: false }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        title='Product X Growth [1995-2005]' loaded={this.onChartLoad.bind(this)}
-                        tooltip={{ enable: true, header: 'Profit' }}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ labelFormat: 'y', valueType: 'DateTime', edgeLabelPlacement: 'Shift' }} load={this.load.bind(this)} primaryYAxis={{ valueType: 'Logarithmic', edgeLabelPlacement: 'Shift', minorTicksPerInterval: 5, majorGridLines: { width: 1.5 }, minorTickLines: { width: 0, height: 4 }, minimum: 0, maximum: 100000, interval: 1, labelFormat: '${value}' }} legendSettings={{ visible: false }} width={Browser.isDevice ? '100%' : '75%'} title='Product X Growth [1995-2005]' loaded={this.onChartLoad.bind(this)} tooltip={{ enable: true, header: '' }}>
                         <Inject services={[LineSeries, DateTime, Logarithmic, Legend, Tooltip]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} xName='x' name='Product X' yName='y' type='Line' width={2} marker={{ visible: true, height: 10, width: 10 }}>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={data} xName='x' name='Product X' yName='y' type='Line' width={2} marker={{ visible: true, height: 7, width: 7, isFilled: true }} />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample demonstrates the rendering of logarithmic axis in the chart.
-            </p>
+                    <p>This sample shows a logarithmic axis in a chart with data about the sales of a product between 1995 and 2005.</p>
                 </div>
                 <div id="description">
                     <p>
                         Logarithmic axis uses logarithmic scale and it is very useful in visualizing when the data has values with both lower order of magnitude (eg: 10^-6) and higher order of magnitude (eg: 10^6).
                         To render Logarithmic axis, set <code>valueType</code> in axis to <b>Logarithmic</b>.
                     </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                    </p>
+                    <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
@@ -86,8 +57,7 @@ export class LogAxis extends SampleBase<{}, {}> {
                         <code>Logarithmic</code> module using <code>servives</code>.
                     </p>
                     <p>
-                        More information on the Logarithmic axis can be found in this &nbsp;
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+                        More information on the Logarithmic axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/logarithmic-axis/">documentation section</a>.
                     </p>
                 </div>
             </div>

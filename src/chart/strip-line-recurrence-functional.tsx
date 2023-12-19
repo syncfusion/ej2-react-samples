@@ -69,7 +69,7 @@ const Striplinerecurrence = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>X Axis:</div>
                                 </td>
@@ -88,7 +88,7 @@ const Striplinerecurrence = () => {
                                         <input type="checkbox" id="yIndex" defaultChecked={true} onChange={yIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={ycheckElement} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -102,10 +102,9 @@ const Striplinerecurrence = () => {
                 </p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <br></br>
-                <p>Injecting Module</p>
+                <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-                    <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.
+                    Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.
                 </p>
                 <p>
                     More information on the strip line can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/strip-line/">documentation section</a>.

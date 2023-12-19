@@ -96,38 +96,40 @@ export class Default extends SampleBase<{}, {}> {
             <strong>Touch actions on Mobile mode</strong>
           </p>
           <table style={{ width: '100%' }}>
-            <tr>
-              <th style={{ width: '100px' }}>
-                <strong>Action</strong>
-              </th>
-              <th>
-                <strong>Description</strong>
-              </th>
-            </tr>
-            <tr>
-              <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Single Tap</td>
-              <td>
-                <ol style={{ paddingLeft: '12px' }}>
-                  <li>Single tapping on events, opens the popup showing event information</li>
-                  <li>Single tapping on cells, will display a “+” icon on the cell. Again tapping on it will open the
-                    new event editor.
-                  </li>
-                </ol>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Tap hold </td>
-              <td>
-                <ol style={{ paddingLeft: '12px' }}>
-                  <li>Tap holding on events, opens a small popup at the top holding the options to edit or delete and
-                    also displays the selected event's subject. As a continuation of this action, if user keeps on
-                    single tapping on other events, it will allow the multiple event selection. Also, the previous
-                    popup remains in opened state, showing the count of the number of events selected. </li>
-                  <li>Tap holding the events will also open the tooltip on Scheduler.</li>
-                  <li>Tap hold the event and try moving it over the scheduler to enable drag and drop action.</li>
-                </ol>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <th style={{ width: '100px' }}>
+                  <strong>Action</strong>
+                </th>
+                <th>
+                  <strong>Description</strong>
+                </th>
+              </tr>
+              <tr>
+                <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Single Tap</td>
+                <td>
+                  <ol style={{ paddingLeft: '12px' }}>
+                    <li>Single tapping on events, opens the popup showing event information</li>
+                    <li>Single tapping on cells, will display a “+” icon on the cell. Again tapping on it will open the new event editor.</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td style={{ verticalAlign: 'top', padding: '4px 0' }}>Tap hold </td>
+                <td>
+                  <ol style={{ paddingLeft: '12px' }}>
+                    <li>
+                      Tap holding on events, opens a small popup at the top holding the options to edit or delete and
+                      also displays the selected event's subject. As a continuation of this action, if user keeps on
+                      single tapping on other events, it will allow the multiple event selection. Also, the previous
+                      popup remains in opened state, showing the count of the number of events selected.
+                    </li>
+                    <li>Tap holding the events will also open the tooltip on Scheduler.</li>
+                    <li>Tap hold the event and try moving it over the scheduler to enable drag and drop action.</li>
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
           </table>
           <p>
             <strong>Module Injection</strong>

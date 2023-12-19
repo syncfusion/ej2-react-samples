@@ -59,6 +59,7 @@ const SelectionChart = () => {
         { value: 'Dots' },
         { value: 'Chessboard' },
         { value: 'Triangle' },
+        {value: 'Bubble'},
         { value: 'Tile' },
         { value: 'Grid' }
     ];
@@ -112,7 +113,7 @@ const SelectionChart = () => {
         <div className='control-pane'>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: 'Rotate90', majorGridLines: {width: 0}, majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ title: 'Distribution', labelFormat: '{value}%', lineStyle : {width : 0}, interval: 20 }} load={load.bind(this)} chartArea={{ border: { width: 0 } }} title='Age Distribution by Country' loaded={onChartLoad.bind(this)} legendSettings={{ visible: true, toggleVisibility: false }} selectionMode={selectMode} highlightMode={highlightMode} selectionPattern={selectPattern} highlightPattern={highlightPattern} isMultiSelect={isMultiSelect} highlightColor={highlightColor}>
+                    <ChartComponent id='charts' ref={chartInstance} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', interval: 1, labelIntersectAction: 'Rotate90', majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ title: 'Distribution', labelFormat: '{value}%', lineStyle : {width : 0}, interval: 20 }} load={load.bind(this)} chartArea={{ border: { width: 0 } }} title='Age Distribution by Country' loaded={onChartLoad.bind(this)} legendSettings={{ visible: true, toggleVisibility: false }} selectionMode={selectMode} highlightMode={highlightMode} selectionPattern={selectPattern} highlightPattern={highlightPattern} isMultiSelect={isMultiSelect} highlightColor={highlightColor}>
                         <Inject services={[Selection, ColumnSeries, Legend, Category, ScatterSeries, Highlight]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='x' width={2} yName='y' name='Age 0-14' type='Column' />
@@ -124,7 +125,7 @@ const SelectionChart = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Selection Mode:</div>
                                 </td>
@@ -179,7 +180,7 @@ const SelectionChart = () => {
                                         <DropDownListComponent width="120px" id="highpattern" change={hightlightPatternChange.bind(this)} ref={highlightDropDownList} dataSource={patternTypes2} fields={{ text: 'value', value: 'value' }} value="None" />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -207,8 +208,7 @@ const SelectionChart = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use selection feature, we need to inject
-                    <code>Selection</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use selection feature, we need to inject <code>Selection</code> module into <code>services</code>.
                 </p>
                 <br />
                 <p>

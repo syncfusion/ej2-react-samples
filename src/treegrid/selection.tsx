@@ -74,44 +74,46 @@ export class Selection extends SampleBase<{}, {}> {
         </div>
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
-            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-              <tr>
-                <td style={{ width: '30%' }}>
-                   <div style={{ paddingTop: '7px', paddingLeft: '2px' }}> Selection Type </div>
-                </td>
-                <td style={{ width: '70%', paddingRight: '10px' }}>
-                   <div>
-                      <DropDownListComponent width="100px" id="type" change={this.typeChange.bind(this)}
+              <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
+                  <tr>
+                    <td style={{ width: '30%' }}>
+                      <div style={{ paddingTop: '7px', paddingLeft: '2px' }}> Selection Type </div>
+                    </td>
+                    <td style={{ width: '70%', paddingRight: '10px' }}>
+                      <div>
+                        <DropDownListComponent width="100px" id="type" change={this.typeChange.bind(this)}
                           dataSource={this.types} fields={{ text: 'type', value: 'id' }} value="Multiple"
-                          ref={dropdown=> this.typeDropdownObj = dropdown} />
-                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: '30%', paddingLeft: '2px' }}>
-                   <div> Selection Mode </div>
-                </td>
-                <td style={{ width: '70%' }}>
-                   <div style={{ paddingRight: '10px', paddingBottom: '10px'}}>
-                      <DropDownListComponent width="100px" id="mode" change={this.modeChange.bind(this)}
+                          ref={dropdown => this.typeDropdownObj = dropdown} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ width: '30%', paddingLeft: '2px' }}>
+                      <div> Selection Mode </div>
+                    </td>
+                    <td style={{ width: '70%' }}>
+                      <div style={{ paddingRight: '10px', paddingBottom: '10px' }}>
+                        <DropDownListComponent width="100px" id="mode" change={this.modeChange.bind(this)}
                           dataSource={this.modes} fields={{ text: 'mode', value: 'id' }} value="Row"
-                          ref={dropdown=> this.modeDropdownObj = dropdown} />
-                   </div>
-                </td>
-              </tr>
-              <tr id='cellselection' style={{ display: 'none'}}>
-                <td style={{ width: '30%' }}>
-                   <div> Cell Selection Mode </div>
-                </td>
-                <td style={{ width: '70%' }}>
-                   <div style={{ paddingRight: '10px', paddingBottom: '10px'}}>
-                      <DropDownListComponent width="100px" id="cellmode" change={this.cellmodeChange.bind(this)}
+                          ref={dropdown => this.modeDropdownObj = dropdown} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id='cellselection' style={{ display: 'none' }}>
+                    <td style={{ width: '30%' }}>
+                      <div> Cell Selection Mode </div>
+                    </td>
+                    <td style={{ width: '70%' }}>
+                      <div style={{ paddingRight: '10px', paddingBottom: '10px' }}>
+                        <DropDownListComponent width="100px" id="cellmode" change={this.cellmodeChange.bind(this)}
                           dataSource={this.cellmodes} fields={{ text: 'mode', value: 'id' }} value="Flow"
-                          />
-                   </div>
-                </td>
-              </tr>
-            </table>
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
           </PropertyPane>
         </div>
         <div id="action-description">
@@ -148,7 +150,7 @@ export class Selection extends SampleBase<{}, {}> {
           <p>In this demo, select the selection type and selection mode from the properties panel to do the selection. The cell selection
               mode dropdown is enabled only when we select type as multiple and mode as cell in property panel.</p>
           <p>
-            More information on the selection configuration can be found in this documentation section.
+            More information on the selection configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/selection/selection">documentation section</a>.
           </p>
           </div>
         </div>

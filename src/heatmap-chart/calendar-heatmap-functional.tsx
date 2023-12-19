@@ -12,9 +12,6 @@ const SAMPLE_CSS: any = `
     padding: 0px !important;
 }`;
 // custom code end
-/**
- * Calender HeatMap sample
- */
 const CalendarHeatmap = () => {
 
     useEffect(() => {
@@ -43,6 +40,7 @@ const CalendarHeatmap = () => {
         labelFormat: 'MMM',
         increment: 7,
         labelIntersectAction: 'Rotate45',
+        textStyle: { fontFamily: 'inherit' } 
     }
 
     let title: TitleModel = {
@@ -51,7 +49,7 @@ const CalendarHeatmap = () => {
             size: '15px',
             fontWeight: '500',
             fontStyle: 'Normal',
-            fontFamily: 'Segoe UI'
+            fontFamily: 'inherit'
         }
     }
 
@@ -68,9 +66,11 @@ const CalendarHeatmap = () => {
     };
 
     const load = (args: ILoadedEventArgs): void => {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
 
     return (
@@ -79,7 +79,7 @@ const CalendarHeatmap = () => {
             <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container' titleSettings={title} height={'300px'} xAxis={xAxis} yAxis={{ labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], isInversed: true }} dataSource={(data as any).calendarDataSource} cellSettings={{ showLabel: false, border: { color: 'white' } }} tooltipRender={tooltipTemplate} paletteSettings={paletteSettings} load={load.bind(this)} legendSettings={{ position: 'Bottom', width: '20%', alignment: 'Near', showLabel: true, labelDisplayType: 'None', enableSmartLegend: true }}>
+                <HeatMapComponent id='heatmap-container' titleSettings={title} height={'300px'} xAxis={xAxis} yAxis={{ labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], isInversed: true, textStyle: { fontFamily: 'inherit' }   }} dataSource={(data as any).calendarDataSource} tooltipSettings={ {textStyle: { fontFamily: 'inherit' }} } cellSettings={{ showLabel: false, border: { color: 'white' } }} tooltipRender={tooltipTemplate} paletteSettings={paletteSettings} load={load.bind(this)} legendSettings={{ position: 'Bottom', width: '20%', alignment: 'Near', showLabel: true, labelDisplayType: 'None', enableSmartLegend: true, textStyle: { fontFamily: 'inherit' } }}>
                     <Inject services={[Legend, Tooltip]} />
                 </HeatMapComponent>
             </div>
@@ -88,13 +88,14 @@ const CalendarHeatmap = () => {
             </div>
             <div id="description">
                 <p>In this example, you can see how to display a calendar data using heatmap. You can make the axis labels to display at specific time intervals along the datetime axis using the showLabelOn property.</p>
-                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+                <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over
+                        an item or tap an item on touch-enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the
-                    <code>Tooltip </code>  module using the <code>Heatmap.Inject(Tooltip) </code> method, and use a legend by injecting
-                    the <code>Legend </code>  module using the <code>Heatmap.Inject(Legend) </code>  method.
+                        Heatmap component features are separated into discrete feature-based modules. To use a tooltip and the legend, inject the <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                 </p>
             </div>
         </div >

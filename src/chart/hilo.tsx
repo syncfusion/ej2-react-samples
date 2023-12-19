@@ -9,7 +9,7 @@ import {
     Crosshair, ChartTheme
 } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
-import { chartData } from './financial-data';
+import { chartData, chartValues } from './financial-data';
 import { Browser } from '@syncfusion/ej2-base';
 const SAMPLE_CSS = `
     .control-fluid {
@@ -27,68 +27,33 @@ export class Hilo extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
-                        primaryXAxis={{
-                            valueType: 'DateTime',
-                          minimum:new Date( '2016, 12, 31'),
-                          maximum:new Date( '2017, 9, 30'),
-                            crosshairTooltip: { enable: true },
-                            majorGridLines: { width: 0 }
-                        }}
-                        primaryYAxis={{
-                            title: 'Price',
-                            minimum: 100,
-                            maximum: 180,
-                            interval: 20,
-                            labelFormat: '${value}',
-                            lineStyle: { width: 0 },
-                            majorTickLines: { width: 0 }
-                        }}
-                        legendSettings={{ visible: false }}
-                        chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true, shared: true, enableMarker: false, format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b>" }}
-                        crosshair={{ enable: true, lineType: 'Vertical', line: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                      
-                        title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', crosshairTooltip: { enable: true }, edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} primaryYAxis={{ title: 'Price', minimum: 10, maximum: 180, interval: 20, labelFormat: '${value}', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} legendSettings={{ visible: false }} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, shared: true, enableMarker: false, header: "", format: "<b>Apple Inc.(AAPL)</b> <br> High : <b>${point.high}</b> <br> Low : <b>${point.low}</b>" }} crosshair={{ enable: false, lineType: 'Vertical', line: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} title='AAPL Historical' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[HiloSeries, Tooltip, DateTime, Logarithmic, Crosshair, Zoom]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={returnValue} xName='period' yName='low' name='Apple Inc' type='Hilo' low='low'
-                                high='high'>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={chartValues} xName='period' yName='low' name='Apple Inc' type='Hilo' low='low' high='high' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample visualizes the AAPL historical data with default HILO series in the chart. 
-                Tooltip and crosshair shows the information about the data and period.
-           </p>
+                    <p>This React Hilo Chart example visualizes the AAPL stock price with a default Hilo series in the chart. The tooltip and crosshair show information about the stock price.</p>
                 </div>
                 <div id="description">
-                    <p>
-                        In this example, you can see how to render and configure the Hilo type charts. Hilo type chart is used to represent the price movements in stock. You can use <code>border</code>, <code>fill</code> properties to customize the vertical rect.
-                   </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                   </p>
+                    <p>In this example, you can see how to render and configure the HILO series. This series shows the high and low stock values over a given period of time.</p>
+                    <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Hilo series, we need to inject
-                       <code>HiloSeries</code> module into <code>services</code>.
-                  </p>
+                        <code>HiloSeries</code> module into <code>services</code>.
+                    </p>
                     <p>
-                        More information on the HILO series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/high-low">documentation section</a>.
-                  </p>
+                        More information on the Hilo series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/financial-types/#hilo">documentation section</a>.
+                    </p>
                 </div>
             </div >
-        )
+        )    
     }
     public onChartLoad(args: ILoadedEventArgs): void {
         let  chart:  Element  =  document.getElementById('charts');

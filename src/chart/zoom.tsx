@@ -108,97 +108,70 @@ export class Zooming extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}
-                        primaryXAxis={{
-                            title: 'Years',
-                            valueType: 'DateTime',
-                            skeleton: 'yMMM',
-                            edgeLabelPlacement: 'Shift',
-                            majorGridLines: { width: 0 }
-                        }}
-                        load={this.load.bind(this)}
-                        primaryYAxis={{
-                            title: 'Profit ($)',
-                            rangePadding: 'None',
-                            lineStyle: { width: 0 },
-                            majorTickLines: { width: 0 }
-                        }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        chartArea={{ border: { width: 0 } }}
-                        legendSettings={{ visible: false }}
-                        zoomSettings={{
-                            enableMouseWheelZooming: true, enablePinchZooming: true,
-                            enableSelectionZooming: true, mode: 'X', enableScrollbar: true, 
-                            showToolbar: true
-                        }}
-                        title='Sales History of Product X' loaded={this.onChartLoad.bind(this)}>
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', edgeLabelPlacement: 'Shift', majorGridLines: { width: 0 } }} load={this.load.bind(this)} primaryYAxis={{ title: 'Profit ($)', rangePadding: 'None', lineStyle: { width: 0 }, labelFormat: "${value}k", majorTickLines: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} legendSettings={{ visible: false }} zoomSettings={{ enableMouseWheelZooming: true, enablePinchZooming: true, enableSelectionZooming: true, mode: 'X', showToolbar: true }} title='Sales History of Product X' loaded={this.onChartLoad.bind(this)}>
                         <Inject services={[SplineAreaSeries, DateTime, Legend, Zoom, ScrollBar]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} xName='x' yName='y' name='Product X' border={{ width: 2 }}
-                                animation={{ enable: false }} type='SplineArea'>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={data} xName='x' yName='y' name='Product X' border={{ width: 2 }} animation={{ enable: false }} type='SplineArea' />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <svg style={{ height: '0' }}>
                     <defs>
-                        <linearGradient id="material-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="material-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="fabric-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="fabric-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="bootstrap-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="bootstrap-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="bootstrap4-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="bootstrap4-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="highcontrast-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="highcontrast-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="tailwind-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
-                                <stop offset="0"></stop>
-                                <stop offset="1"></stop>
-                        </linearGradient>
-                        <linearGradient id="bootstrap5-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="tailwind-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="material-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="bootstrap5-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="fabric-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="material-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="bootstrap-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="fabric-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="tailwind-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="bootstrap-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="bootstrap5-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="tailwind-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="fluent-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="bootstrap5-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
-                        <linearGradient id="fluent-dark-gradient-chart" style={{opacity: 0.75}} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id="fluent-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0"></stop>
+                            <stop offset="1"></stop>
+                        </linearGradient>
+                        <linearGradient id="fluent-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0"></stop>
                             <stop offset="1"></stop>
                         </linearGradient>
@@ -213,9 +186,7 @@ export class Zooming extends SampleBase<{}, {}> {
                     </defs>
                 </svg>
                 <div id="action-description">
-                    <p>
-                        This sample demonstrates the zooming and panning features of the charts.
-                    </p>
+                    <p>This sample demonstrates the zooming and panning features of the charts.</p>
                 </div>
                 <div id="description">
                     <p>This sample shows the following zooming and panning behaviors.</p>
@@ -227,10 +198,10 @@ export class Zooming extends SampleBase<{}, {}> {
                         <li>Double tap to reset the zoomed chart.</li>
                     </ul>
                     <p>Chart component supports four types of zooming which can be set using <code>enableSelectionZooming</code>, <code>enablePinchZooming</code>, <code>enableMouseWheelZooming</code>, <code>enableDeferredZooming</code> property.</p>
-                    <p>Chart supports two mode of zooming which can be set using
-                        <code><a target="_blank"
-                            href="http://ej2.syncfusion.com/react/documentation/chart/api-zoomSettings.html#mode-string">mode</a></code> property.
-                        </p>
+                    <p>
+                        Chart supports two mode of zooming which can be set using
+                        <code><a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-zoomSettings.html#mode-string">mode</a></code> property.
+                    </p>
                     <ul>
                         <li><code>XY</code> - Zoom the chart with respect to both the axis.</li>
                         <li><code>X</code> - Zoom the chart with respect to horizontal axis.</li>
@@ -243,8 +214,7 @@ export class Zooming extends SampleBase<{}, {}> {
                         <code>Zoom</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the Zooming can be found in this &nbsp;
-                        <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-zoomSettings.html#properties">documentation section</a>.
+                        More information on the Zooming can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/zooming/">documentation section</a>.
                     </p>
                 </div>
             </div>

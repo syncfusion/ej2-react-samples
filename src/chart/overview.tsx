@@ -38,7 +38,7 @@ const SAMPLE_CSS = `
     stop-color: #FEC200;
 } 
 .ellipse[id*=_Trackball_1] {
-  stroke-width: 1 !important;
+  strokeWidth: 1 !important;
 }
 .e-chart-focused:focus {
   outline: none !important;

@@ -49,8 +49,7 @@ const HiloOpenClose = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use HiloOpenClose series, we need to inject
-                    <code>HiloOpenCloseSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use HiloOpenClose series, we need to inject <code>HiloOpenCloseSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the column series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/financial-types/#high-low-open-close">documentation section</a>.

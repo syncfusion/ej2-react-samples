@@ -35,6 +35,7 @@ function BulletChartRightToLeft() {
                     maximum={300}
                     interval={50}
                     title='Revenue YTD'
+                    subtitle='$ in Thousands'
                     enableRtl={true}
                     labelFormat='${value}K'
                     load={bulletLoad.bind(this)}

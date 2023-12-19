@@ -56,11 +56,10 @@ const LoadOnDemand = () => {
         </p>
         <p>
           With the virtualization feature enabled in remote data binding, only the root level records are fetched from the remote server at the initial load time.
-          So, need to set the <code>hasChild</code> property of GanttTaskFields that denotes whichever records have child records.
+          So, need to set the <code>hasChildMapping</code> property of <code>taskFields</code> that denotes whichever records have child records and set <code>loadChildOnDemand</code> property as false.
         </p>
         <p>
-          On expanding the root parent node, the child records will be fetched from the remote server. While vertical scrolling, tasks are
-          fetched dynamically from the remote server and are updated in the DOM as per the current viewport position.
+          When expanding the root parent node or scrolling vertically, the corresponding tasks are dynamically fetched from the remote server and then updated in the DOM based on the current viewport position.
         </p>
       </div>
     </div>

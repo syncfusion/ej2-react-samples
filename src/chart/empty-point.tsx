@@ -80,7 +80,7 @@
                      <div className='col-md-4 property-section'>
                          <PropertyPane title='Properties'>
                              <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                                 <tr style={{ height: '50px' }}>
+                             <tbody><tr style={{ height: '50px' }}>
                                      <td style={{ width: '60%' }}>
                                          <div>Series Type: </div>
                                      </td>
@@ -98,7 +98,7 @@
                                              <DropDownListComponent width="120px" id="selmode" change={this.mode.bind(this)} ref={d => this.modeElement = d} dataSource={this.modelist} fields={{ text: 'value', value: 'value' }} value="Gap" />
                                          </div>
                                      </td>
-                                 </tr>
+                                 </tr></tbody>
                              </table>
                          </PropertyPane>
                      </div>

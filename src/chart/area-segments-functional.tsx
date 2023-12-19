@@ -10,9 +10,9 @@ export let dataValues = [];
 [150, 71.5, 106.4, 100.25, 70.0, 106.0, 85.6, 78.5, 76.4, 86.1, 155.6, 160.4,].map((value, index) => {
     dataValues.push({ XValue: new Date(2016, index, 1), YValue: value });
 });
-let content = "<div style='color:#4ca1af; font-weight:bold'>Winter</div>";
-let content1 = "<div style='color:#ffa751; font-weight:bold'>Summer</div>";
-let content2 = "<div style='color:#1d976c; font-weight:bold'>Spring</div>";
+let content = "<div style='color:#4ca1af; font-weight:bold; font-size: 14px;'>Winter</div>";
+let content1 = "<div style='color:#ffa751; font-weight:bold; font-size: 14px;'>Summer</div>";
+let content2 = "<div style='color:#1d976c; font-weight:bold; font-size: 14px;'>Spring</div>";
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -81,7 +81,7 @@ const AreaMultiColored = () => {
         <div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
-                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime',  majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelFormat: 'MMM', intervalType: 'Months',   majorGridLines: { width: 0 }, interval: 1, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice? 'None' : 'Trim' }} primaryYAxis={{ labelFormat: '${value}K', rangePadding: 'None', minimum: 0, maximum: 200, interval: 50, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} tooltip={{ enable: true, shared: true, format: '${point.x} : <b>${point.y}</b>' }} legendSettings={{ visible: false }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title="US Season Retail Sales Growth" loaded={onChartLoad.bind(this)}>
+                <ChartComponent id="charts" style={{ textAlign: 'center' }} primaryXAxis={{ valueType: 'DateTime',  majorTickLines: {width : 0}, minorTickLines: {width: 0}, labelFormat: 'MMM', intervalType: 'Months',   majorGridLines: { width: 0 }, interval: 1, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice? 'None' : 'Trim' }} primaryYAxis={{ labelFormat: '${value}K', rangePadding: 'None', minimum: 0, maximum: 200, interval: 50, lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 } }} tooltip={{ enable: true, shared: true, header: '<b>Revenue</b>', format: '${point.x} : <b>${point.y}</b>' }} legendSettings={{ visible: false }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} width={Browser.isDevice ? '100%' : '75%'} title="US Season Retail Sales Growth" loaded={onChartLoad.bind(this)}>
                     <Inject services={[MultiColoredAreaSeries, DateTime, Tooltip, ChartAnnotation,]} />
                     <AnnotationsDirective>
                         <AnnotationDirective content={content} region="Series" x="18%" y="43%"></AnnotationDirective>
@@ -129,9 +129,7 @@ const AreaMultiColored = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject
-                    <code>MultiColoredAreaSeries</code> module using
-                    <code>Chart.Inject(MultiColoredAreaSeries)</code> method.
+                    Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject <code>MultiColoredAreaSeries</code> module using <code>Chart.Inject(MultiColoredAreaSeries)</code> method.
                 </p>
                 <p>
                     More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.

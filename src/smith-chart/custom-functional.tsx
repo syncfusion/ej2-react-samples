@@ -162,6 +162,7 @@ function Customization() {
             <div className='col-md-4 property-section'>
                 <PropertyPane title='Properties'>
                     <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+                    <tbody>
                         <tr style={{ "height": "35px" }}>
                             <td style={{ "width": "70%" }}>
                                 <div id='radius1'>Radius <span>&nbsp;&nbsp;&nbsp;1</span> </div>
@@ -233,6 +234,7 @@ function Customization() {
                                 </div>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </PropertyPane>
             </div>

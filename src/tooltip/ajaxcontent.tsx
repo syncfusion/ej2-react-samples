@@ -11,10 +11,10 @@ import { SampleBase } from '../common/sample-base';
 import './tooltip-sample.css';
 
 interface tooltipComponentProps {
-    content : string;
+    content? : string;
 }
 interface tooltipComponentState {
-    content : string;
+    content? : string;
 }
 export class AjaxContentTooltip extends SampleBase<tooltipComponentProps, tooltipComponentState> {
 

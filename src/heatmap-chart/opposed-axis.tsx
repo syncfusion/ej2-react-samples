@@ -15,9 +15,6 @@ const SAMPLE_CSS: any = `
     float: right; margin-right: 10p
 }`;
 // custom code end
-/**
- * Schedule Default sample
- */
 export class OpposedAxis extends SampleBase<{}, {}> {
     private heatmap: HeatMapComponent;
     render() {
@@ -36,7 +33,7 @@ export class OpposedAxis extends SampleBase<{}, {}> {
                                     size: '15px',
                                     fontWeight: '500',
                                     fontStyle: 'Normal',
-                                    fontFamily: 'Segoe UI'
+                                    fontFamily: 'inherit'
                                 }
                             }}
                             xAxis={{
@@ -45,11 +42,22 @@ export class OpposedAxis extends SampleBase<{}, {}> {
                                 opposedPosition: true,
                                 labelRotation: 45,
                                 labelIntersectAction: 'None',
+                                textStyle: {
+                                    fontFamily: 'inherit'
+                                }
+                            }}
+                            tooltipSettings={{
+                                textStyle: {
+                                    fontFamily: 'inherit'
+                                }
                             }}
                             yAxis={{
                                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May',
                                     'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-                                opposedPosition: true
+                                opposedPosition: true,
+                                textStyle: {
+                                    fontFamily: 'inherit'
+                                }
                             }}
                             dataSource={(data as any).opposedAxisData}
                             legendSettings={{
@@ -68,7 +76,7 @@ export class OpposedAxis extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-md-3 property-section">
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
                             <tbody>
                                 <tr id='' style={{ height: '50px' }}>
                                     <td style={{ width: '40%' }}>
@@ -95,18 +103,17 @@ export class OpposedAxis extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to change the display position of the axis. You can change the display position of
-                        axes by enabling the <code>opposedPosition </code> property for each axis.
+                      In this example, you can see how to change the display position of the axis. You can change the display position of axes by enabling the
+                      <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/axisModel/#opposedposition" target="_blank"> opposedPosition</a> property for each axis.
                     </p>
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a
-                        point in touch enabled devices.
+                      The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.
                     </p>
                     <br></br>
-                    <p><b>Injecting Module</b></p>
+                    <p> <b>Injecting Module</b></p>
                     <p>
-                        Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the
-                        <code>Tooltip </code> module using the <code>Heatmap.Inject(Tooltip) </code> method.
+                        Heatmap component features are separated into discrete feature-based modules. To use a tooltip, inject the <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> module using the <code>{'<Inject services={[Tooltip]} />'}</code> method.
                     </p>
                 </div>
             </div >
@@ -114,9 +121,11 @@ export class OpposedAxis extends SampleBase<{}, {}> {
     }
 
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
 
     private valueXChange(args: ChangeEventArgs): void {

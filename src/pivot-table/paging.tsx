@@ -75,21 +75,19 @@ export class Paging extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='col-lg-9 control-section component-section' style={{ overflow: 'auto' }}>
-                    <div className='content-wrapper'>
-                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={this.dataSourceSettings} width={'100%'} height={'600'} gridSettings={{ columnWidth: 120 }} pageSettings={{
-                            rowPageSize: 10,
-                            columnPageSize: 5,
-                            currentColumnPage: 1,
-                            currentRowPage: 1
-                        }} pagerSettings={{
-                            position: 'Bottom',
-                            enableCompactView: false,
-                            showColumnPager: true,
-                            showRowPager: true
-                        }} enablePaging={true}>
-                            <Inject services={[Pager]} />
-                        </PivotViewComponent>
-                    </div>
+                    <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} dataSourceSettings={this.dataSourceSettings} width={'100%'} height={'600'} gridSettings={{ columnWidth: 120 }} pageSettings={{
+                        rowPageSize: 10,
+                        columnPageSize: 5,
+                        currentColumnPage: 1,
+                        currentRowPage: 1
+                    }} pagerSettings={{
+                        position: 'Bottom',
+                        enableCompactView: false,
+                        showColumnPager: true,
+                        showRowPager: true
+                    }} enablePaging={true}>
+                        <Inject services={[Pager]} />
+                    </PivotViewComponent>
                 </div>
                 <div className="col-lg-3 property-section pivot-property-section">
                     <PropertyPane title='Properties'>

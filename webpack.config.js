@@ -1,5 +1,3 @@
-var webpack = require('webpack');
-
 module.exports = {
     mode : 'development',
     entry: { 'src/common/index.js': './src/common/index.js' },
@@ -26,29 +24,24 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    require.resolve('style-loader'),
+                    'style-loader',
                     {
-                        loader: require.resolve('css-loader'),
+                        loader: 'css-loader',
                         options: {
                             importLoaders: 1,
                             url: false
                         },
                     },
                     {
-                        loader: require.resolve('postcss-loader'),
+                        loader: 'postcss-loader',
                         options: {
-                            ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                            postcssOptions: {
+                                ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                            }
                         },
                     },
                 ],
             },
         ]
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('production')
-            }
-        })
-    ]
+    }
 }

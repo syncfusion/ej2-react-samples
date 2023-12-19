@@ -13,9 +13,7 @@ const SAMPLE_CSS: any = `
         float: right; margin-right: 10p
     }`;
 // custom code end
-/**
- * Schedule Default sample
- */
+
 const ColorAndSizeAttributes = () => {
 
     useEffect(() => {
@@ -66,7 +64,7 @@ const ColorAndSizeAttributes = () => {
             size: '15px',
             fontWeight: '500',
             fontStyle: 'Normal',
-            fontFamily: 'Segoe UI'
+            fontFamily: 'inherit'
         }
     }
     let dataSourceSettings: DataModel = {
@@ -92,9 +90,11 @@ const ColorAndSizeAttributes = () => {
     }
     
     const load = (args: ILoadedEventArgs): void => {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
 
     const legendTooltip = (args: ITooltipEventArgs): void => {
@@ -109,7 +109,7 @@ const ColorAndSizeAttributes = () => {
             <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container' titleSettings={title} xAxis={{ labels: ['2017', '2016', '2015', '2014', '2013', '2012'] }} yAxis={{ labels: ['Jan-Feb', 'Mar-Apr', 'May-Jun', 'Jul-Aug', 'Sep-Oct', 'Nov-Dec'] }} dataSource={jsonCellBubbleData} dataSourceSettings={dataSourceSettings} cellSettings={cellSettings} tooltipRender={legendTooltip} paletteSettings={paletteSettings} load={load.bind(this)} legendSettings={{ visible: true }}>
+                <HeatMapComponent id='heatmap-container' titleSettings={title} xAxis={{ labels: ['2017', '2016', '2015', '2014', '2013', '2012'], textStyle: { fontFamily: 'inherit' } }} yAxis={{ labels: ['Jan-Feb', 'Mar-Apr', 'May-Jun', 'Jul-Aug', 'Sep-Oct', 'Nov-Dec'], textStyle: { fontFamily: 'inherit' } }} dataSource={jsonCellBubbleData} dataSourceSettings={dataSourceSettings} cellSettings={cellSettings} tooltipRender={legendTooltip} paletteSettings={paletteSettings} load={load.bind(this)} tooltipSettings={{ textStyle: { fontFamily: 'inherit' } }} legendSettings={{ visible: true, textStyle: { fontFamily: 'inherit' } }}>
                     <Inject services={[Adaptor, Tooltip, Legend]} />
                 </HeatMapComponent>
                 <div id="source">Source:
@@ -120,15 +120,17 @@ const ColorAndSizeAttributes = () => {
                 <p>This sample illustrates the number of commercial air craft accidents and the fatalities across the world between 2012 and 2017. Each data point interprets the accident count and the fatality associated with the accident, the size of the bubble depicts the accident count and the shade of the bubble depicts the fatality count.</p>
             </div>
             <div id="description">
-                <p>
-                    In this example, you can see how to map more than one data for each data point or cell of the bubble heatmap. The size and shade parameters of the bubble is used to depict the data source values. The legend will be displayed only for the shade parameter of the bubble. For JSON data, you can specify which data source value should be mapped to either size or shade of the bubble parameters using the dataMapping property. The data source field should mapped to the size and color properties of the dataMapping property.In this example, you can see how to map more than one data for each data point or cell of the bubble heatmap. The <code>size</code> and <code>shade</code> parameters of the bubble is used to depict the data source values. The legend will be displayed only for the shade parameter of the bubble. For JSON data, you can specify which data source value should be mapped to either size or shade of the bubble parameters using the <code>dataMapping</code> property. The data source field should mapped to the <code>size</code> and <code>color</code> properties of the <code>dataMapping</code> property.
-                </p>
-                <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
-                <br></br>
-                <p><b>Injecting Module</b></p>
-                <p>
-                    Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the <code>Tooltip </code> module using the <code>Heatmap.Inject(Tooltip) </code> method.
-                </p>
+            <p>
+                    In this example, you can see how to map more than one data for each data point or cell of the bubble heatmap. The <code>size</code> and <code>shade</code> parameters of the bubble is used to depict the data source values. The legend will be displayed only for the shade parameter of the bubble. For JSON data, you can specify which data source value should be mapped to either size or shade of the bubble parameters using the <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/dataModel/#bubbledatamapping">bubbleDataMapping</a> property. The data source field should be mapped to the <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/bubbleDataModel/#size">size</a> and <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/bubbleDataModel/#color">color</a> properties of the <code>bubbleDataMapping</code> property.
+            </p>
+            <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
+            <br></br>
+            <p><b>Injecting Module</b></p>
+            <p>
+                Heatmap component features are separated into discrete feature-based modules. To use a tooltip, adaptor and the legend, inject the <a target="_blank"
+                href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a>, <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/adaptorType/" target='_blank'>Adaptor </a> and <a target="_blank"
+                href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Adaptor, Legend]} />'}</code> method.
+            </p>
             </div>
         </div >
     );

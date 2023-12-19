@@ -65,7 +65,9 @@ const DynamicWidget = () => {
             count = count + 1;
             (dashboardObj as any).current.addPanel(panel[0]);
             setIsVisible(false);
-            (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
+            setTimeout(function(){
+                (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
+            },20);
         };
         pieObj.current.onclick = () => {
             let countValue: string = count.toString();
@@ -76,7 +78,9 @@ const DynamicWidget = () => {
             count = count + 1;
             (dashboardObj as any).current.addPanel(panel[0]);
             setIsVisible(false);
-            (document.getElementById("_layout" + countValue).querySelector(".e-control.e-accumulationchart") as any).ej2_instances[0].refresh();
+            setTimeout(function(){
+                (document.getElementById("_layout" + countValue).querySelector(".e-control.e-accumulationchart") as any).ej2_instances[0].refresh();
+            },20);
         };
         splineObj.current.onclick = () => {
             let countValue: string = count.toString();
@@ -87,7 +91,9 @@ const DynamicWidget = () => {
             count = count + 1;
             (dashboardObj as any).current.addPanel(panel[0]);
             setIsVisible(false);
-            (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
+            setTimeout(function(){
+                (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
+            },20);
         };
     }
 
@@ -188,7 +194,7 @@ const DynamicWidget = () => {
     }
 
     return (
-        <Fragment>
+        <div>
             <div id='edit_target' className="control-section">
                 <div>
                     <div style={{ "width": "100%", "marginBottom": "10px", "marginTop": "10px", "height": "30px" }}>
@@ -206,6 +212,7 @@ const DynamicWidget = () => {
                     </PanelsDirective>
                 </DashboardLayoutComponent>
             </div>
+            <DialogComponent id="listdialog" width="500px" height="260px" visible={isVisible} header={"Add a widget"} showCloseIcon={true} animationSettings={{ effect: 'Zoom' }} isModal={true} target='#edit_target' content={content as any} />
             <div id="action-description">
                 <p>
                     The following sample demonstrates a editable dashboard layout. Initially the DashboardLayout component
@@ -217,9 +224,10 @@ const DynamicWidget = () => {
                     in mobile resolution.
                 </p>
             </div>
-            <div id="description">The following sample demonstrates about using the dashboard layout as an editable layout.</div>
-            <DialogComponent id="listdialog" width="500px" height="260px" visible={isVisible} header={"Add a widget"} showCloseIcon={true} animationSettings={{ effect: 'Zoom' }} isModal={true} target='#edit_target' content={content as any} />
-        </Fragment>
+            <div id="description">
+                <p>The following sample demonstrates about using the dashboard layout as an editable layout.</p>
+            </div>
+        </div>
     );
 }
 export default DynamicWidget;

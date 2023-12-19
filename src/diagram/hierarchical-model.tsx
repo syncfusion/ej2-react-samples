@@ -9,6 +9,7 @@ import {
   Diagram,
   NodeModel,
   ConnectorModel,
+  ConnectorConstraints,
   SnapConstraints,
   Inject,
   DiagramTools,
@@ -57,10 +58,6 @@ const SAMPLE_CSS = `.image-pattern-style {
     .row-header {
         font-size: 13px;
         font-weight: 500;
-    }
-
-    .e-checkbox-wrapper .e-label {
-        font-size: 12px;
     }
 
     .e-selected-style {
@@ -352,7 +349,7 @@ function connectorDefaults(
   connector.targetDecorator.shape = "None";
   connector.type = "Orthogonal";
   connector.style.strokeColor = "#6d6d6d";
-  connector.constraints = 0;
+  connector.constraints = ConnectorConstraints.None;
   connector.cornerRadius = 5;
   return connector;
 }

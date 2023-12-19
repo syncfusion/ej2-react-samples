@@ -146,6 +146,7 @@ const SelectionMaps = () => {
                 <div className="popup" id="closepopu" style={{ display: popup }}>
                     <span id="closebutton" style={closebutton} onClick={closeButtonClick}>x</span>
                     <table style={{ marginTop: '5px', width: 'auto' }}>
+                      <tbody>
                         <tr>
                             <td style={{ padding: '0.3px', float: 'left' }}>
                                 <label id="winner" style={{ color: '#666666', fontSize: 12, fontFamily: 'Roboto', fontWeight: 700 }}>{winner}</label>
@@ -190,6 +191,7 @@ const SelectionMaps = () => {
                                 <label>%</label>
                             </td>
                         </tr>
+                       </tbody>
                     </table>
                 </div>
             </div>

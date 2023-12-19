@@ -176,29 +176,31 @@ const LockRow = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "10%" }}>
-                  <div style={{ paddingLeft: "0px" }}> Disable Rows </div>
-                </td>
-                <td style={{ width: "60%" }}>
-                  <div>
-                    <MultiSelectComponent
-                      width="150px"
-                      id="lockrows"
-                      mode="CheckBox"
-                      value={rowValues}
-                      dataSource={lockRowDropDownData}
-                      showDropDownIcon={true}
-                      popupHeight="350px"
-                      select={select.bind(this)}
-                      removed={removed.bind(this)}
-                      ref={multiselectObj}
-                    >
-                      <Inject services={[CheckBoxSelection]}></Inject>
-                    </MultiSelectComponent>
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "10%" }}>
+                    <div style={{ paddingLeft: "0px" }}> Disable Rows </div>
+                  </td>
+                  <td style={{ width: "60%" }}>
+                    <div>
+                      <MultiSelectComponent
+                        width="150px"
+                        id="lockrows"
+                        mode="CheckBox"
+                        value={rowValues}
+                        dataSource={lockRowDropDownData}
+                        showDropDownIcon={true}
+                        popupHeight="350px"
+                        select={select.bind(this)}
+                        removed={removed.bind(this)}
+                        ref={multiselectObj}
+                      >
+                        <Inject services={[CheckBoxSelection]}></Inject>
+                      </MultiSelectComponent>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

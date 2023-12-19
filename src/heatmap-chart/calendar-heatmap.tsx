@@ -4,16 +4,12 @@ import { HeatMapComponent, Legend, Tooltip, ILoadedEventArgs, HeatMapTheme, Inje
 import * as data from './calendar-data-source.json';
 import { SampleBase } from '../common/sample-base';
 import { Internationalization } from "@syncfusion/ej2-base";
-
 // custom code start
 const SAMPLE_CSS: any = `
 #control-container {
     padding: 0px !important;
 }`;
 // custom code end
-/**
- * Schedule Default sample
- */
 export class CalendarHeatmap extends SampleBase<{}, {}> {
     render() {
         return (
@@ -31,7 +27,7 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
                                 size: '15px',
                                 fontWeight: '500',
                                 fontStyle: 'Normal',
-                                fontFamily: 'Segoe UI'
+                                fontFamily: 'inherit'
                             }
                         }}
                         height={'300px'}
@@ -45,10 +41,17 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
                             labelFormat: 'MMM',
                             increment: 7,
                             labelIntersectAction: 'Rotate45',
+                            textStyle: { fontFamily: 'inherit' }
+                        }}
+                        tooltipSettings ={{
+                            textStyle:{
+                                fontFamily: 'inherit'
+                            }
                         }}
                         yAxis={{
                             labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
                             isInversed: true,
+                            textStyle: { fontFamily: 'inherit' } 
                         }}
                         dataSource={(data as any).calendarDataSource}
                             cellSettings={{
@@ -73,7 +76,8 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
                             alignment: 'Near',
                             showLabel: true,
                             labelDisplayType: 'None',
-                            enableSmartLegend: true
+                            enableSmartLegend: true,
+                            textStyle: { fontFamily: 'inherit' } 
                         }}>
                         <Inject services={[Legend, Tooltip]} />
                     </HeatMapComponent>
@@ -89,16 +93,14 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
                         In this example, you can see how to display a calendar data using heatmap. You can make the axis labels to display
                         at specific time intervals along the datetime axis using the showLabelOn property.
                     </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point
-                        in touch enabled devices.
-                    </p>
+                    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over
+                        an item or tap an item on touch-enabled devices.</p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the
-                        <code>Tooltip </code>  module using the <code>Heatmap.Inject(Tooltip) </code> method, and use a legend by injecting
-                        the <code>Legend </code>  module using the <code>Heatmap.Inject(Legend) </code>  method.
+                            Heatmap component features are separated into discrete feature-based modules. To use a tooltip and the legend, inject the <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
                 </div>
             </div >
@@ -116,8 +118,10 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
         args.content = [(args.value === 0 ? 'No' : args.value) + ' ' + 'contributions' + '<br>' + value];
     };
     public load(args: ILoadedEventArgs): void {
+        // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        // custom code end
     };
 }

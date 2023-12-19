@@ -164,6 +164,7 @@ const Drilldown = () => {
                             className="property-panel-table"
                             style={{ width: "100%", marginBottom: "20px" }}
                         >
+                            <tbody>
                             <tr style={{ height: "50px" }}>
                                 <td>
                                     <div style={{ paddingLeft: "0px" }}>Drill Down View</div>
@@ -245,6 +246,7 @@ const Drilldown = () => {
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </PropertyPane>
                 </div>

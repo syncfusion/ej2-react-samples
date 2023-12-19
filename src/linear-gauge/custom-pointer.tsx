@@ -1,6 +1,3 @@
-/**
- * Sample for custom pointer in the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, Inject, PointersDirective, PointerDirective, AnnotationDirective, Annotations, AnnotationsDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -85,7 +82,7 @@ export class CustomPointer extends SampleBase<{}, {}> {
                     <pre style= {{ border: 'hidden', backgroundColor: 'inherit' }}></pre>
                     <div id="containerBox" style={{ float: 'left' }}></div>
                     <div id="containerText" className="col-xs-5 col-sm-5 col-lg-4 col-md-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} id='textWidget' title='Text widget' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation='Vertical' width='150px' height='350px' background='transparent' ref={textWidget => this.textWidget = textWidget}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} id='textWidget' title='Text widget' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation='Vertical' width='150px' height='350px' background='transparent' ref={textWidget => this.textWidget = textWidget}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
                                 <AxisDirective line={{ width: 20 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
@@ -102,7 +99,7 @@ export class CustomPointer extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id="containerIcon" className="col-xs-5 col-sm-5 col-lg-4 col-md-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Icon widget' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='iconWidget' orientation='Vertical' width='150px' height='350px' background='transparent' ref={iconWidget => this.iconWidget = iconWidget}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Icon widget' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='iconWidget' orientation='Vertical' width='150px' height='350px' background='transparent' ref={iconWidget => this.iconWidget = iconWidget}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 20 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
@@ -114,7 +111,7 @@ export class CustomPointer extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id="containerMultiple" className="col-xs-5 col-sm-5 col-lg-4 col-md-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Multiple widget pointers' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleWidget' orientation='Vertical' width='170px' height='350px' background='transparent' ref={multipleWidget => this.multipleWidget = multipleWidget}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Multiple widget pointers' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='multipleWidget' orientation='Vertical' width='170px' height='350px' background='transparent' ref={multipleWidget => this.multipleWidget = multipleWidget}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
                                 <AxisDirective line={{ width: 20 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { fontFamily: 'inherit', fontWeight: '499' } }} minimum={0} maximum={100} opposedPosition={true}>

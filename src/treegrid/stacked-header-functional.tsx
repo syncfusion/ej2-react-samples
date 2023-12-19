@@ -117,8 +117,7 @@ const Stacked = () => {
           under Price details.
         </p>
         <p>
-          More information on the stacked header configuration can be found in
-          this documentation section.
+          More information on the stacked header configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/column-resizing#resize-stacked-column">documentation section</a>.
         </p>
       </div>
     </div>

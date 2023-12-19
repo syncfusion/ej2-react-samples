@@ -1,6 +1,3 @@
-/**
- * Sample to design Arc Gauge using the Circular Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -67,10 +64,6 @@ export class ArcGauge extends SampleBase<{}, {}> {
 
     private gauge: CircularGaugeComponent;
     private sliderElement: SliderComponent;
-    public resized(args: IResizeEventArgs): void {
-        args.gauge.axes[0].annotations[0].content = '<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">' +
-        this.gauge.axes[0].pointers[0].value.toString() + '/100</div>';
-    }
     public load(args: ILoadedEventArgs): void {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
@@ -78,6 +71,12 @@ export class ArcGauge extends SampleBase<{}, {}> {
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as GaugeTheme;
         // custom code end
+    }
+
+    public loaded(args: ILoadedEventArgs): void {
+        if (document.getElementById('pointervalue')) {
+            document.getElementById('pointervalue').innerHTML = args.gauge.axes[0].pointers[0].value.toString() + '/100';
+        }
     }
 
     private sliderChange() {
@@ -109,7 +108,7 @@ export class ArcGauge extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div id='circular_gauge_sample' className='control-section'>
-                    <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} resized={this.resized.bind(this)} load={this.load.bind(this)} ref={gauge => this.gauge = gauge} id='gauge'>
+                    <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} load={this.load.bind(this)} loaded={this.loaded.bind(this)} ref={gauge => this.gauge = gauge} id='gauge'>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
                             <AxisDirective radius='80%' startAngle={200} endAngle={160} minimum={1} maximum={100}

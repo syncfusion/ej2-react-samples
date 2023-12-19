@@ -85,7 +85,7 @@ export class Grouping extends SampleBase<{}, {}> {
         <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                <tr style={{ height: '50px' }}>
+              <tbody><tr style={{ height: '50px' }}>
                   <td style={{ width: '50%' }}>
                     <div>Mode: </div>
                   </td>
@@ -105,6 +105,7 @@ export class Grouping extends SampleBase<{}, {}> {
                     </div>
                   </td>
                 </tr>
+                </tbody>
               </table>
             </PropertyPane>
       </div>

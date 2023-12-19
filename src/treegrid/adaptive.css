@@ -19,7 +19,7 @@
         vertical-align: top;
         width: calc(60% - 48px);
     }
-    .e-adaptive-demo .e-pager .e-pagesizes {
+    .e-treegrid .e-adaptive-demo .e-pager .e-pagesizes {
         display: none;
     }
     .e-adaptive-demo .e-pager .e-pagecountmsg {

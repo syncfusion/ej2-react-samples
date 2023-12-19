@@ -32,7 +32,7 @@ function BulletLegend() {
                     width={Browser.isDevice ? '100%' : '70%'}
                     height='160'
                     animation={{ enable: false }}
-                    tooltip={{ enable: false }}
+                    tooltip={{ enable: true }}
                     valueField='value'
                     targetField='target'
                     minimum={0}
@@ -57,6 +57,11 @@ function BulletLegend() {
             <div id="action-description">
                 <p>
                     This sample illustrates a bullet chart with legend. Legend is used to know what the colors and shapes represent in bullet chart.
+                </p>
+            </div>
+            <div id="description">
+                <p>
+                    Tooltip is enabled in this example, to see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
                 </p>
             </div>
         </ div>

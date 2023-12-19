@@ -70,31 +70,33 @@ export class Reorders extends SampleBase<{}, {}> {
         </div>
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
-            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-              <tr style={{ height: '50px' }}>
-                <td style={{ width: '30%' }}>
-                   <div style={{ paddingTop: '10px' }}> Column </div>
-                </td>
-                <td style={{ width: '70%', paddingRight: '10px' }}>
-                   <div>
-                      <DropDownListComponent width="100px" id="columns" change={this.change.bind(this)}
+              <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                <tbody>
+                  <tr style={{ height: '50px' }}>
+                    <td style={{ width: '30%' }}>
+                      <div style={{ paddingTop: '10px' }}> Column </div>
+                    </td>
+                    <td style={{ width: '70%', paddingRight: '10px' }}>
+                      <div>
+                        <DropDownListComponent width="100px" id="columns" change={this.change.bind(this)}
                           dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="taskID"
-                          ref={dropdown=> this.dropdownObj = dropdown} />
-                   </div>
-                </td>
-              </tr>
-              <tr style={{ height: '50px' }}>
-                <td style={{ width: '30%' }}>
-                   <div> Column Index </div>
-                </td>
-                <td style={{ width: '70%', paddingRight: '10px' }}>
-                   <div>
-                      <DropDownListComponent width="100px" id="columnindex" change={this.change2.bind(this)}
+                          ref={dropdown => this.dropdownObj = dropdown} />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr style={{ height: '50px' }}>
+                    <td style={{ width: '30%' }}>
+                      <div> Column Index </div>
+                    </td>
+                    <td style={{ width: '70%', paddingRight: '10px' }}>
+                      <div>
+                        <DropDownListComponent width="100px" id="columnindex" change={this.change2.bind(this)}
                           dataSource={this.columnsIndex} fields={{ text: 'name', value: 'id' }} value="0"
-                          ref={dropdown=> this.dropdownObj2 = dropdown} />
-                   </div>
-                </td>
-              </tr>
+                          ref={dropdown => this.dropdownObj2 = dropdown} />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -117,7 +119,7 @@ export class Reorders extends SampleBase<{}, {}> {
          <p>Tree Grid features are segregated into individual feature-wise modules. To use reordering feature, we need to
               inject <code>Reorder</code> module into the <code>services</code>.</p>
           <p>
-            More information about Column Reorder can be found in this documentation section.
+            More information about Column Reorder can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/column-reorder">documentation section</a>.
          </p>
         </div>
       </div>

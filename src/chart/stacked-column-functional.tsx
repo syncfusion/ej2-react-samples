@@ -65,9 +65,6 @@ const StackedColumn = () => {
                         <SeriesDirective dataSource={data4} xName='x' yName='y' name='BMW' columnWidth={0.6} border={{ width: 1, color: "white" }} type='StackingColumn' />
                     </SeriesCollectionDirective>
                 </ChartComponent>
-                <div style={{ float: 'right', marginRight: '10px' }}>
-                    Source: &nbsp; <a href="https://www.cyberagent.co.jp/en/newsinfo/press/detail/id=12026" target="_blank">www.cyberagent.co.jp</a>
-                </div>
             </div>
             <div id="action-description">
                 <p>This React stacked column chart example visualizes motor vehicle production by manufacturer with a default stacked column series. The legend in the sample shows more information about those series.</p>
@@ -82,8 +79,7 @@ const StackedColumn = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject
-                    <code>StackingColumnSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject <code>StackingColumnSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.

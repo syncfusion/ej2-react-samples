@@ -85,7 +85,7 @@ const SAMPLE_CSS = `
     }
     ellipse[id*=_Trackball_0] {
 
-        stroke-width: 1 !important;
+        strokeWidth: 1 !important;
     }`;
 
 /**
@@ -129,8 +129,7 @@ const Bubble = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use bubble series, we need to inject
-                    <code>BubbleSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use bubble series, we need to inject <code>BubbleSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the bubble series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bubble-chart">documentation section</a>.

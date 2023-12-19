@@ -19,6 +19,7 @@ export class BulletChartTooltip extends SampleBase<{}, {}> {
         return (
             <div id="wrap">
             <table style={{width:'100%', backgroundColor: '#ffffff', borderSpacing: '0px', borderCollapse:'separate', border: '1px solid grey', borderRadius:'10px', paddingTop:'5px', paddingBottom:'5px'}}>
+            <tbody>
                  <tr>
                     <td style={{fontWeight:'bold', color: 'black', paddingLeft: '5px', paddingTop: '2px', paddingBottom: '2px'}}>Sales</td>
                   </tr>
@@ -28,7 +29,7 @@ export class BulletChartTooltip extends SampleBase<{}, {}> {
                     <tr>
                         <td style={{paddingLeft: '5px', color:'black', paddingRight: '5px'}}>Current : {props.value} </td>
                     </tr>
-                   
+                    </tbody>
             </table>
     </div>
 

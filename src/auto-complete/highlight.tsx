@@ -38,6 +38,12 @@ export class Highlight extends SampleBase<{}, {}> {
           <div className='col-lg-4 property-section' id="filter-property">
             <PropertyPane title='Properties'>
               <table id="property" title="Properties" style={{ width: "100%", marginTop: "15px" }}>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
                 <tr>
                   <td style={{ width: "50%" }}>FilterType :</td>
                   <td> <DropDownListComponent id="filter-type" dataSource={this.filterData} change={this.onChange.bind(this)} placeholder="Select a type" text='Contains' />

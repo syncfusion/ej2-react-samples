@@ -40,7 +40,7 @@ export class UiVirtualization extends SampleBase<{}, {}> {
             let data: { [key: string]: string | object }[] = this.commonData.slice();
             let index: number;
             let spyIndex: number;
-            for (let i: number = 10; i <= ds[0]; i++) {
+            for (let i: number = 10; i <= (ds[0] as number); i++) {
                 while (index === spyIndex) {
                     index = parseInt((Math.random() * 10).toString(), 10);
                 }

@@ -145,7 +145,7 @@ export class DetailTemplateExport extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        The detail row template provides additional information about a data row which can be shown or hidden by clicking the
+                        The detail row template provides additional information about a data row which can shown or hidden by clicking the
                         expand or collapse button. The <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid#detailtemplate">
                             detailTemplate</a></code> property accepts either the string or HTML element`s ID value, which will be used as the
                         template for the detail row.
@@ -158,7 +158,7 @@ export class DetailTemplateExport extends SampleBase<{}, {}> {
                         The ExcelExport and PdfExport items are defined in the toolbar of the Grid. Actions are defined in
                         the <code><a target="_blank" className="code" href="https://helpej2.syncfusion.com/react/documentation/api/grid/#toolbarclick">toolbarClick</a></code> event
                         to export Grid data using <code><a target="_blank" className="code" href="https://helpej2.syncfusion.com/react/documentation/api/grid/#excelexport">excelExport</a>
-                        </code> and <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/api/grid#pdfexport">pdfExport</a></code> methods with the 
+                        </code> and <code><a target="_blank" className="code" href="http://ej2.syncfusion.com/react/documentation/api/grid#pdfexport">pdfExport</a></code> methods with the
                         <code>hierarchyExportMode</code> set to <code>All</code>.
                     </p>
                     <p>
@@ -173,7 +173,7 @@ export class DetailTemplateExport extends SampleBase<{}, {}> {
                     <p style={{ fontWeight: 500 }}>Injecting Module</p>
                     <p>
                         Grid features are segregated into individual feature-wise modules.
-                        To use the detail template, PdfExport and ExcelExport Grid features, inject <code>DetailRow</code>, 
+                        To use the detail template, PdfExport and ExcelExport Grid features, inject <code>DetailRow</code>,
                         <code>PdfExport</code>, <code>ExcelExport</code> modules into the <code>services</code>.
                     </p>
                     <p>

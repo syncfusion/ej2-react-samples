@@ -25,6 +25,16 @@ export class Performance extends SampleBase<{}, {}> {
 
         .e-bigger #performanceTime{
             margin-top: 8px;
+        }
+
+        @media(max-width: 440px) {
+            .control-pane .control-section .performance-time-container {
+                margin-bottom: 30px !important;
+        
+                #performanceTime {
+                    float: left;
+                }
+            }
         }`;
 
     private pivotObj: PivotViewComponent;
@@ -119,7 +129,7 @@ export class Performance extends SampleBase<{}, {}> {
                     {this.SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <div style={{ marginBottom: '15px' }}>
+                    <div className='performance-time-container' style={{ marginBottom: '15px' }}>
                         <DropDownListComponent id="performance" width='220' dataSource={this.ddlData} index={0} ref={(dropdownlist: any) => { this.ddObj = dropdownlist; }} fields={this.fields} change={this.onChange.bind(this)}
                             placeholder="Select a Data Range" popupHeight="240px">
                         </DropDownListComponent>

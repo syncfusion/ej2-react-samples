@@ -73,7 +73,7 @@ function RemoteData() {
             parentId: "ParentId",
             dataSource: new DataManager(
               {
-                url: "https://ej2services.syncfusion.com/react/development/api/RemoteData",
+                url: "https://services.syncfusion.com/react/production/api/RemoteData",
                 crossDomain: true
               }
             ),

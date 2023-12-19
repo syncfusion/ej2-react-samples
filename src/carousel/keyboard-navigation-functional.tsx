@@ -9,7 +9,7 @@ const KeyboardNavigation = () => {
   useEffect(() => {
     updateSampleSection();
     document.body.addEventListener("keydown", function (e) {
-      var carouselElement: HTMLElement = document.querySelector(".e-carousel");
+      var carouselElement: HTMLElement = document.querySelector(".e-carousel .e-carousel-slide-container");
       if (e.altKey && e.keyCode === 74 && carouselElement) {
         carouselElement.focus();
       }

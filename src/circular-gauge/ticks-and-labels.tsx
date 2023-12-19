@@ -1,6 +1,3 @@
-/**
- * Sample for ticks and labels in the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';

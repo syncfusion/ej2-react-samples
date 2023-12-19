@@ -7,6 +7,7 @@ import { BulletChartComponent, BulletRangeCollectionDirective, BulletRangeDirect
 import { IBulletLoadedEventArgs, ChartTheme } from '@syncfusion/ej2-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import { fabricColors, bootstrapColors, highContrastColors, materialColors, bootstarp5Colors, bootstarp5DarkColors, bootstrapDarkColors, tailwindColors, tailwindDarkColors, material3Colors, material3DarkColors, defaultColors, fluentColors } from './theme-color'
 
 const SAMPLE_CSS = `
       .control-fluid {
@@ -17,42 +18,50 @@ let data: Object[] = [
     {
         requiredStories: 20,
         completedStories: 25,
-        name: 'David'
+        name: 'David',
+        color: "#7f84e8"
     },
     {
         requiredStories: 25,
         completedStories: 20,
-        name: 'Asif'
+        name: 'Asif',
+        color: "#dd8abd"
     },
     {
         requiredStories: 15,
         completedStories: 10,
-        name: 'Thomas'
+        name: 'Thomas',
+        color: "#70ad47"
     },
     {
         requiredStories: 40,
         completedStories: 39,
-        name: 'Rohit'
+        name: 'Rohit',
+        color: "#f8b883"
     },
     {
         requiredStories: 35,
         completedStories: 40,
-        name: 'Virat'
+        name: 'Virat',
+        color: "#e56590"
     },
     {
         requiredStories: 28,
         completedStories: 25,
-        name: 'Jude'
+        name: 'Jude',
+        color: "#357cd2"
     },
     {
         requiredStories: 10,
         completedStories: 18,
-        name: 'Warner'
+        name: 'Warner',
+        color: "#404041"
     },
     {
         requiredStories: 30,
         completedStories: 28,
-        name: 'Malik'
+        name: 'Malik',
+        color: "#00bdae"
     }
 ];
 
@@ -83,7 +92,7 @@ function BulletChartMultipleData() {
                     minorTickLines={{ width: 0 }}
                     title='Sprint Planning'
                     titlePosition='Top'
-                    valueFill='#304560'
+                    valueFill='color'
                     targetColor='#304560'
                     subtitle='Estimated in story points'
                     load={bulletLoad.bind(this)}
@@ -98,12 +107,18 @@ function BulletChartMultipleData() {
             </ div>
             <div id="action-description">
                 <p>
-                    This sample illustrates a bullet chart with multiple local data. It displays multiple data in bullet chart.
+                    This sample illustrates a bullet chart with multiple datasets, allowing for the comparison of different values.
                 </p>
             </div>
             <div id="description">
                 <p>
-                    Tooltip is enabled in this example, to see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
+                    In this example, you can observe how multiple datasets are compared in a bullet chart. Here, each value bar is assigned a different color from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/bullet-chart/#datasource">dataSource</a>.
+                </p>
+                <p>
+                    <code>Tooltips</code> are enabled in this example, to see them in action, hover over a feature bar or comparative bar on the bullet chart.
+                </p>
+                <p>
+                More information on the data binding for the bullet chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/bullet-chart/data-binding">documentation section</a>.
                 </p>
             </div>
         </div>
@@ -115,6 +130,57 @@ function BulletChartMultipleData() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast') as ChartTheme;
+        let color: string[] = [];
+        switch (args.bulletChart.theme) {
+            case 'Fabric':
+                color = fabricColors;
+                break;
+            case 'Bootstrap4':
+            case 'Bootstrap':
+                color = bootstrapColors;
+                break;
+            case 'HighContrastLight':
+            case 'HighContrast':
+                color = highContrastColors;
+                break;
+            case 'MaterialDark':
+                color = materialColors;
+                break;
+            case 'FabricDark':
+                color = fabricColors;
+                break;
+            case 'BootstrapDark':
+                color = bootstrapDarkColors;
+                break;
+            case 'Tailwind':
+                color = tailwindColors;
+                break;
+            case 'TailwindDark':
+                color = tailwindDarkColors;
+                break;
+            case 'Bootstrap5':
+                color = bootstarp5Colors
+                break;
+            case 'Bootstrap5Dark':
+                color = bootstarp5DarkColors;
+                break;
+            case 'Fluent':
+            case 'FluentDark':
+                color = fluentColors;
+                break;
+            case 'Material3':
+                color = material3Colors;
+                break;
+            case 'Material3Dark':
+                color = material3DarkColors;
+                break;
+            default:
+                color = defaultColors;
+                break;
+        }
+        for (let i: number = 0; i < (args.bulletChart.dataSource as Object[]).length; i++) {
+            args.bulletChart.dataSource[i].color = color[i];
+        }
     }
 }
 export default BulletChartMultipleData;

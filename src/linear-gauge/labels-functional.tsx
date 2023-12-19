@@ -1,6 +1,3 @@
-/**
- * Sample for labels in the Linear Gauge
- */
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, IAxisLabelRenderEventArgs, Orientation } from '@syncfusion/ej2-react-lineargauge';
@@ -98,7 +95,7 @@ const Labels = () => {
                 <pre style={{ border: 'hidden', backgroundColor: 'inherit' }}></pre>
                 <div id="containerBox" style={{ float: 'left', display: display }}></div>
                 <div id="containerCustom" className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent load={load} id='customLabelGauge' title='Custom labels' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
+                    <LinearGaugeComponent load={load} animationDuration={1500} id='customLabelGauge' title='Custom labels' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 2.5, height: 3 }} majorTicks={{ interval: 5, height: 7, width: 1 }} labelStyle={{ format: '${value}', font: { fontFamily: 'inherit' } }} minimum={5} maximum={20} opposedPosition={true}>
                                 <PointersDirective>
@@ -127,7 +124,7 @@ const Labels = () => {
                     </LinearGaugeComponent>
                 </div>
                 <div id="containerOffset" className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent load={load} title='Label offset' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='offsetLabelGauge' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
+                    <LinearGaugeComponent load={load} animationDuration={1500} title='Label offset' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='offsetLabelGauge' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ offset: 5, font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>
@@ -138,7 +135,7 @@ const Labels = () => {
                     </LinearGaugeComponent>
                 </div>
                 <div id="containerCustomized" className={classStyle} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LinearGaugeComponent load={load} title='Label customization' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='customizedLabelGauge' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
+                    <LinearGaugeComponent load={load} animationDuration={1500} title='Label customization' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='customizedLabelGauge' orientation={gaugeOriention} width={gaugeWidth} height={gaugeHeight} background='transparent'>
                         <AxesDirective>
                             <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3 }} majorTicks={{ interval: 20, height: 7, width: 1 }} labelStyle={{ font: { color: '#F93106', fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                 <PointersDirective>

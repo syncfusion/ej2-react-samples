@@ -53,25 +53,28 @@ function ServerSideEngine() {
             </div>
             <div id="description">
                 <p>
-                    The Pivot Table's server-side pivot engine (external pivot engine) uses the Syncfusion package <a target="_blank"
-                        href="https://www.nuget.org/packages/Syncfusion.EJ2.Pivot/"> Syncfusion.EJ2.Pivot</a> to gather data from the data
-                    source and perform all pivot operations such as <a target="_blank"
+                    The Pivot Table's server-side pivot engine (external pivot engine) uses the Syncfusion package <a
+                    target="_blank" href="https://www.nuget.org/packages/Syncfusion.Pivot.Engine/"> Syncfusion.Pivot.Engine</a> to
+                    gather data from the data source and perform all pivot operations such as <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/aggregation/#aggregation">
                         aggregation</a>, <a target="_blank"
-                            href="https://ej2.syncfusion.com/react/documentation/pivotview/filtering/#filtering">
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/filtering/#filtering">
                         filtering</a>, <a target="_blank"
-                            href="https://ej2.syncfusion.com/react/documentation/pivotview/sorting/#sorting">
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/sorting/#sorting">
                         sorting</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/pivotview/grouping">
                         grouping</a>, and more on a separate hosted server and only paged
                     data is sent to the pivot table viewport via web service.
-                    The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/pivotview/dataSourceSettings/#url">
+                    The <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/api/pivotview/dataSourceSettings/#url">
                         dataSourceSettings-&gt;url</a> property allows this web service URL to be
                     connected to the pivot table.
                 </p>
                 <p>
                     In this demo, the pivot table is shown with the virtualization option enabled through the <a target="_blank"
-                        href="https://ej2.syncfusion.com/react/documentation/api/pivotview/#enablevirtualization"> enableVirtualization</a> property
-                    and an external server engine. This would improve pivot table rendering performance when working with large amounts of data.
+                        href="https://ej2.syncfusion.com/react/documentation/api/pivotview/#enablevirtualization">
+                        enableVirtualization</a> property
+                    and an external server engine. This would improve pivot table rendering performance when working with large
+                    amounts of data.
                 </p>
                 <br />
                 <p>

@@ -3,10 +3,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject,
-    RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, ChartTheme, DataLabel, Highlight
-} from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, RangeColumnSeries, Category, Tooltip, ILoadedEventArgs, ChartTheme, DataLabel, Highlight } from '@syncfusion/ej2-react-charts';
 import { SampleBase } from '../common/sample-base';
 import { Browser, EmitType } from '@syncfusion/ej2-base';
 
@@ -38,62 +35,30 @@ export class RangeColumn extends SampleBase<{}, {}> {
                     {SAMPLE_CSS}
                 </style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' style={{ textAlign: "center" }}    legendSettings={{ enableHighlight :true }}
-                        primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 } }}
-                        primaryYAxis={{ labelFormat: '{value}˚C', maximum: 20, title:'Temperature (In Celsius)', edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }}
-                        title='Temperature Variation' loaded={this.onChartLoad.bind(this)}
-                        load={this.load.bind(this)}
-                        chartArea={{ border: { width: 0 } }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                            tooltip={{
-                                enable: true,
-                                header:"<b>${point.x}</b>",
-                                format:"Temperature : <b>${point.low} - ${point.high}</b>"
-                            }}>
-                        <Inject services={[RangeColumnSeries, Tooltip, Category,  DataLabel, Highlight]} />
+                    <ChartComponent id='charts' style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 },  majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ labelFormat: '{value}', maximum: 20, title: 'Temperature (In Celsius)', edgeLabelPlacement: 'Shift', lineStyle: { width: 0 }, majorTickLines: { width: 0 } }} title='Temperature Variation by Week' loaded={this.onChartLoad.bind(this)} load={this.load.bind(this)} chartArea={{ border: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} tooltip={{ enable: true, header: '', format: '<b>${point.x}</b> <br> Low : <b>${point.low}°C</b> <br> High : <b>${point.high}°C'}}>
+                        <Inject services={[RangeColumnSeries, Tooltip, Category, DataLabel, Highlight]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} name='India' high="high" low="low" xName='x' columnSpacing={0.1} type='RangeColumn' marker={{
-                                     dataLabel: {
-                                        visible: true,
-                                        position: 'Outer',
-                                    }
-                                }}>
-                            </SeriesDirective>
-                            <SeriesDirective dataSource={data1} name='Germany' xName='x'high="high" low="low" columnSpacing={0.1} type='RangeColumn' marker={{
-                                     dataLabel: {
-                                        visible: true,
-                                        position: 'Outer',
-                                    }
-                                }}>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={data}  high="high" low="low" xName='x' columnSpacing={0.1} type='RangeColumn' marker={{ dataLabel: { visible: true,  position: 'Outer'} }} />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This React range column chart example visualizes the maximum and minimum temperatures for a week in different countries with the default range column series
-            </p>
+                    <p>This React range column chart example visualizes the maximum and minimum temperatures for a week in different countries with the default range column series</p>
                 </div>
                 <div id="description">
-                    <p>
-                    In this example, you can see how to render and configure the range column chart. The range column chart is used to display a range of data by plotting two y-values per data point. The two y-values are used as the upper and lower bounds of a column.
-                    </p>
-                    <p>
-                    Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
-                    </p>
-
+                    <p>In this example, you can see how to render and configure the range column chart. The range column chart is used to display a range of data by plotting two y-values per data point. The two y-values are used as the upper and lower bounds of a column.</p>
+                    <p>Tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.</p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         chart component features are segregated into individual feature-wise modules. To use range column series, we need to Injecting
                         <code>RangeColumnSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the range column series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/range-column">documentation section</a>.
+                        More information on the range column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
                     </p>
                 </div>
             </div>
-        )
+        )   
     }
     public onChartLoad(args: ILoadedEventArgs): void {
         let chart: Element = document.getElementById('charts');

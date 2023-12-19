@@ -135,10 +135,8 @@ export class Local extends SampleBase<{}, {}> {
                             </tbody>
                         </table>
                     </div>
-                    <div className='content-wrapper'>
-                        <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} load={this.onLoad.bind(this)} dataSourceSettings={this.jsonReport} width={'100%'} height={'290'} gridSettings={{ columnWidth: 120 }}>
-                        </PivotViewComponent>
-                    </div>
+                    <PivotViewComponent id='PivotView' ref={(pivotview) => { this.pivotObj = pivotview }} load={this.onLoad.bind(this)} dataSourceSettings={this.jsonReport} width={'100%'} height={'290'} gridSettings={{ columnWidth: 120 }}>
+                    </PivotViewComponent>
                 </div>
                 <div id="action-description">
                     <p>This sample demonstrates basic rendering of the pivot table bound to JSON or CSV data extracted from a local file.</p>

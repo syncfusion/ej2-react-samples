@@ -100,8 +100,7 @@ const CategoryAxis = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Category axis, we need to inject
-                    <code>Category</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Category axis, we need to inject <code>Category</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the Category axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/category-axis/">documentation section</a>.

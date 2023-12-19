@@ -161,6 +161,12 @@ export class UseCase extends SampleBase<{}, {}> {
                     <PropertyPane title='Properties'>
                         <table id="property" title="Properties" className="property-panel-table">
                             <tbody>
+                                <thead>
+                                    <tr>
+                                    <th></th>
+                                    <th></th>
+                                    </tr>
+                                </thead>
                                 <tr>
                                     <td>
                                         <div>Mode</div>

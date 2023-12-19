@@ -121,23 +121,25 @@ const Editing = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "30%" }}>
-                  <div> Edit Mode </div>
-                </td>
-                <td style={{ width: "70%" }}>
-                  <div id="columnddl">
-                    <DropDownListComponent
-                      width="125px"
-                      id="selmode"
-                      change={change.bind(this)}
-                      dataSource={editing}
-                      fields={{ text: "name", value: "id" }}
-                      value="CellEditing"
-                    />
-                  </div>
-                </td>
-              </tr>
+              <tbody>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "30%" }}>
+                    <div> Edit Mode </div>
+                  </td>
+                  <td style={{ width: "70%" }}>
+                    <div id="columnddl">
+                      <DropDownListComponent
+                        width="125px"
+                        id="selmode"
+                        change={change.bind(this)}
+                        dataSource={editing}
+                        fields={{ text: "name", value: "id" }}
+                        value="CellEditing"
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -210,8 +212,7 @@ const Editing = () => {
           <code>RowDD</code> module into the <code>services</code>.
         </p>
         <p>
-          More information on the selection configuration can be found in this
-          documentation section.
+          More information on the selection configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/editing/row-editing">documentation section</a>.
         </p>
       </div>
     </div>

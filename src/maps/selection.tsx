@@ -156,6 +156,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                     <div className="popup" id="closepopup">
                     <span id="closebutton">x</span>
                         <table style={{ marginTop: '5px', width: 'auto' }}>
+                          <tbody>
                             <tr>
                                 <td style={{padding: '0.3px', float: 'left' }}>
                                     <label id="winner" style= {{ color:'#666666',fontSize:12,fontFamily:'Roboto',fontWeight:700}}></label>
@@ -201,10 +202,8 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                                     <label>%</label>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
-
-                      
-
                     </div>
                 </div>
                 {/* Source Link */}

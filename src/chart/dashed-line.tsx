@@ -72,11 +72,11 @@
      @keyframes opac {
          0% {
              stroke-opacity: 1;
-             stroke-width: 0px;
+             strokeWidth: 0px;
          }
          100% {
              stroke-opacity: 0;
-             stroke-width: 10px;
+             strokeWidth: 10px;
          }
      }`;
  export class DashedLine extends SampleBase<{},{}> {

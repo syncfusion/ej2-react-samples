@@ -1,6 +1,3 @@
-/**
- * Sample for range color for axis in the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useEffect } from 'react';
@@ -29,7 +26,7 @@ const RangeColorAxis = () => {
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
-                <CircularGaugeComponent load={load.bind(this)} id='range-color' background='transparent'>
+                <CircularGaugeComponent load={load.bind(this)} animationDuration={2000} id='range-color' background='transparent'>
                     <AxesDirective>
                         <AxisDirective startAngle={0} endAngle={0} radius='100%' direction='AntiClockWise' majorTicks={{ position: 'Outside', width: 1, height: 25, interval: 10, useRangeColor: true }} lineStyle={{ width: 0 }} minorTicks={{ position: 'Outside', width: 1, height: 8, interval: 2, useRangeColor: true }} labelStyle={{ offset: 2, position: 'Outside', useRangeColor: true, hiddenLabel: 'First', font: { fontFamily: 'inherit' } }}>
                             <PointersDirective>

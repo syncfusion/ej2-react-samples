@@ -6,9 +6,10 @@ import * as ReactDOM from "react-dom";
 import {
     ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, CandleSeries, Category, Tooltip, DateTime,
     Zoom, Logarithmic, Crosshair, LineSeries, TmaIndicator, IndicatorsDirective, IndicatorDirective, ILoadedEventArgs,
-    ChartTheme
+    ChartTheme,
+    Legend
 } from '@syncfusion/ej2-react-charts';
-import { chartData } from './datasource';
+import { chartValues } from './financial-data';
 import { SampleBase } from '../common/sample-base';
 import { Browser } from '@syncfusion/ej2-base';
 
@@ -21,62 +22,33 @@ export class TMA extends SampleBase<{}, {}> {
     render() {
         return (
             <div className='control-pane'>
-                <style>
-                    {SAMPLE_CSS}
-                </style>
+                <style>{SAMPLE_CSS}</style>
                 <div className='control-section'>
-                    <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }}
-                        primaryXAxis={{
-                            valueType: 'DateTime',
-                            majorGridLines: { width: 0 },
-                            zoomFactor: 0.2, zoomPosition: 0.6,
-                            crosshairTooltip: { enable: true },
-                        }}
-                        primaryYAxis={{
-                            title: 'Price',
-                            labelFormat: '${value}M',
-                            minimum: 50, maximum: 170, interval: 30,
-                            majorGridLines: { width: 1 }, lineStyle: { width: 0 }
-                        }}
-                        width={Browser.isDevice ? '100%' : '75%'}
-                        chartArea={{ border: { width: 0 } }}
-                        tooltip={{ enable: true, shared: true }}
-                        crosshair={{ enable: true, lineType: 'Vertical' }}
-                        zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan : true}}
-                        title='AAPL 2012-2017' loaded={this.onChartLoad.bind(this)}>
-                        <Inject services={[CandleSeries, Category, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries, TmaIndicator]} />
+                    <ChartComponent id='charts' load={this.load.bind(this)} style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'DateTime', majorGridLines: { width: 0 }, zoomFactor: 0.2, zoomPosition: 0.6, crosshairTooltip: { enable: true } }} primaryYAxis={{ title: 'Price (In Million)', labelFormat: '${value}M', minimum: 50, maximum: 170, interval: 30, majorGridLines: { width: 1 }, lineStyle: { width: 0 } }} width={Browser.isDevice ? '100%' : '75%'} chartArea={{ border: { width: 0 } }} tooltip={{ enable: true, shared: true }} crosshair={{ enable: true, lineType: 'Vertical' }} zoomSettings={{ enableSelectionZooming: true, mode: 'X', enablePan: true }} title='AAPL Stock Price 2012-2017'    legendSettings = {{visible: false}} loaded={this.onChartLoad.bind(this)}>
+                        <Inject services={[CandleSeries, Category,Legend, Tooltip, DateTime, Zoom, Logarithmic, Crosshair, LineSeries, TmaIndicator]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={chartData} width={2} xName='x' yName='y' low='low' high='high' close='close' volume='volume' open='open' name='Apple Inc' bearFillColor='#2ecd71' bullFillColor='#e74c3d' type='Candle' animation={{ enable: false }}>
-                            </SeriesDirective>
+                            <SeriesDirective dataSource={chartValues} width={2} xName='period' yName='y' low='low' high='high' close='close' volume='volume' open='open'     name='Apple Inc'  bearFillColor='#2ecd71' bullFillColor='#e74c3d' type='Candle' animation={{ enable: false }} />
                         </SeriesCollectionDirective>
                         <IndicatorsDirective>
-                            <IndicatorDirective type='Tma' field='Close' seriesName='Apple Inc' fill='#6063ff' period={14} animation={{ enable: true }}>
-                            </IndicatorDirective>
+                            <IndicatorDirective type='Tma' field='Close' seriesName='Apple Inc' fill='#6063ff' period={14} animation={{ enable: true }} />
                         </IndicatorsDirective>
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>
-                        This sample illustrates a stock chart with candle series and a Triangle Moving Average indicator. Trackball shows the information about the stock and signal value of a day.
-           </p>
+                    <p>This sample illustrates a chart with candle series and a triangular moving average indicator. The trackball shows information about the stock and signal values for each day.</p>
                 </div>
                 <div id="description">
-                    <p>
-                        In this example, you can see how to render and configure the TMA Indicator.
-                   </p>
-                    <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                   </p>
+                    <p>In this example, you can see how to render and configure a triangle moving average indicator. The triangle moving average indicator is used to define the direction of the trend.</p>
+                    <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use TMA Indicator, we need to inject
-                       <code>TmaIndicator</code> module into <code>services</code>.
-                  </p>
+                        <code>TmaIndicator</code> module into <code>services</code>.
+                    </p>
                     <p>
-                        More information on the TMA Indicator can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-                  </p>
+                        More information on the TMA Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#triangular-moving-average-tma">documentation section</a>.
+                    </p>
                 </div>
             </div >
         )

@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
-import { GanttComponent, Inject, Filter, ColumnsDirective, ColumnDirective, Selection, VirtualScroll } from '@syncfusion/ej2-react-gantt';
+import { GanttComponent, Inject, Filter, ColumnsDirective, ColumnDirective, Selection, VirtualScroll, Sort } from '@syncfusion/ej2-react-gantt';
 import { virtualData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -56,7 +56,7 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
                   <ColumnDirective field='Duration'/>
                   <ColumnDirective field='Progress'/>
               </ColumnsDirective>
-              <Inject services={[Filter, Selection, VirtualScroll]} />
+              <Inject services={[Filter, Selection, VirtualScroll, Sort]} />
             </GanttComponent>
             </div>
           <div className='col-md-3 property-section'>

@@ -43,8 +43,7 @@ const InversedArea = () => {
                 <br></br>
                 <p>Injecting Module</p>
                 <p>
-                    The Stock chart component features are segregated into individual feature-wise modules. To use date-time axis, inject the <code>DateTime</code> module using the
-                    <code>StockChart.Inject(DateTime)</code> method. To use the AreaSeries, inject the <code>AreaSeries</code> module using the <code>StockChart.Inject(AreaSeries)</code> method.
+                    The Stock chart component features are segregated into individual feature-wise modules. To use date-time axis, inject the <code>DateTime</code> module using the <code>StockChart.Inject(DateTime)</code> method. To use the AreaSeries, inject the <code>AreaSeries</code> module using the <code>StockChart.Inject(AreaSeries)</code> method.
                 </p>
                 <p>
                     More information about the axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/axis-types">documentation section</a>.

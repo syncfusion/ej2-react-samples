@@ -1,6 +1,3 @@
-/**
- * Sample for ticks in Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, PointersDirective, PointerDirective } from '@syncfusion/ej2-react-lineargauge';
@@ -82,7 +79,7 @@ export class Ticks extends SampleBase<{}, {}> {
                     <pre style= {{ border: 'hidden', backgroundColor: 'inherit' }}></pre>
                     <div id="containerBox" style={{ float: 'left' }}></div>
                     <div id="containerOutside" className="col-xs-5 col-sm-5 col-lg-3 col-md-3" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} id='gaugeOutsideTick' title='Outside ticks' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation='Vertical' width='150px' height='350px' background='transparent' ref={gaugeOutsideTick => this.gaugeOutsideTick = gaugeOutsideTick}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} id='gaugeOutsideTick' title='Outside ticks' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} orientation='Vertical' width='150px' height='350px' background='transparent' ref={gaugeOutsideTick => this.gaugeOutsideTick = gaugeOutsideTick}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Outside' }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Outside' }} labelStyle={{ position: 'Outside', font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} opposedPosition={true}>
                                     <PointersDirective>
@@ -94,7 +91,7 @@ export class Ticks extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id="containerCross" className="col-xs-5 col-sm-5 col-lg-3 col-md-3" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Cross ticks' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gaugeCrossTick' orientation='Vertical' width='150px' height='350px' background='transparent' ref={gaugeCrossTick => this.gaugeCrossTick = gaugeCrossTick}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Cross ticks' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gaugeCrossTick' orientation='Vertical' width='150px' height='350px' background='transparent' ref={gaugeCrossTick => this.gaugeCrossTick = gaugeCrossTick}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Cross' }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Cross' }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100}>
                                     <PointersDirective>
@@ -106,7 +103,7 @@ export class Ticks extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id="containerInside" className="col-xs-5 col-sm-5 col-lg-3 col-md-3" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Inside ticks' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gaugeInsideTick' orientation='Vertical' width='150px' height='350px' background='transparent' ref={gaugeInsideTick => this.gaugeInsideTick = gaugeInsideTick}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Inside ticks' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gaugeInsideTick' orientation='Vertical' width='150px' height='350px' background='transparent' ref={gaugeInsideTick => this.gaugeInsideTick = gaugeInsideTick}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Inside' }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Inside' }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} isInversed={true} opposedPosition={true}>
                                     <PointersDirective>
@@ -118,7 +115,7 @@ export class Ticks extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id="containerOffset" className="col-xs-5 col-sm-5 col-lg-3 col-md-3" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent load={this.load.bind(this)} title='Ticks with offset' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gaugeOffsetTick' orientation='Vertical' width='150px' height='350px' background='transparent' ref={gaugeOffsetTick => this.gaugeOffsetTick = gaugeOffsetTick}>
+                        <LinearGaugeComponent load={this.load.bind(this)} animationDuration={2000} title='Ticks with offset' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='gaugeOffsetTick' orientation='Vertical' width='150px' height='350px' background='transparent' ref={gaugeOffsetTick => this.gaugeOffsetTick = gaugeOffsetTick}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 10, height: 3, position: 'Inside', offset: 10 }} majorTicks={{ interval: 20, height: 7, width: 1, position: 'Inside', offset: 10 }} labelStyle={{ font: { fontFamily: 'inherit' } }} minimum={0} maximum={100} isInversed={true} opposedPosition={true}>
                                     <PointersDirective>

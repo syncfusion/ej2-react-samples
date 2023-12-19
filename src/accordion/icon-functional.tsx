@@ -97,14 +97,12 @@ const Icons = () => {
         </div>
         <div id='description'>
           <p>
-            <p>
-              This Accordion is populated with icons which renders by mapping the <code>iconCss</code> field. This sample illustrates
-              the some of the games list.
-            </p>
-            <p>
-              More information about Accordion can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accordion/getting-started/">
+            This Accordion is populated with icons which renders by mapping the <code>iconCss</code> field. This sample illustrates
+            the some of the games list.
+          </p>
+          <p>
+            More information about Accordion can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accordion/getting-started/">
               documentation</a> section.
-            </p>
           </p>
         </div>
       </div>

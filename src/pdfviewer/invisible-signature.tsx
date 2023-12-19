@@ -10,9 +10,8 @@ import {
 import { MessageComponent } from '@syncfusion/ej2-react-notifications';
 import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
 import { SampleBase, updateSampleSection } from '../common/sample-base';
-import { RouteComponentProps } from 'react-router';
 import './pdf.component.css';
-export class InvisibleSignature extends SampleBase<{}, {}> {
+export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
     public viewer: PdfViewerComponent;
     public toolbar: ToolbarComponent;
     public fileName: string = '';
@@ -51,7 +50,7 @@ export class InvisibleSignature extends SampleBase<{}, {}> {
                     {/* Render the PDF Viewer */}
                     <PdfViewerComponent id="container" ref={(scope) => { this.viewer = scope; }} enableToolbar={false} enableNavigationToolbar={false}
                         documentLoad={this.documentLoaded}
-                        serviceUrl='https://ej2services.syncfusion.com/react/development/api/pdfviewer'
+                        serviceUrl='https://services.syncfusion.com/react/production/api/pdfviewer'
                         documentPath="InvisibleDigitalSignature.pdf"
                         addSignature={this.addSignature}
                         style={{ 'display': 'block', 'height': '640px' }}>
@@ -60,6 +59,10 @@ export class InvisibleSignature extends SampleBase<{}, {}> {
                     </PdfViewerComponent>
                     <input type="file" id="fileUpload" accept=".pdf" onChange={this.readFile.bind(this)} style={{ 'display': 'block', 'visibility': 'hidden', 'width': '0', 'height': '0' }} />
                 </div>
+            </div>
+
+            <div id='sample'>
+              <div id='loader'>Loading....</div>
             </div>
 
             <div id="action-description">
@@ -144,7 +147,7 @@ export class InvisibleSignature extends SampleBase<{}, {}> {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(postData)
         };
-        const apiUrl = 'https://ej2services.syncfusion.com/react/development/api/pdfviewer/ValidateSignature';
+        const apiUrl = 'https://services.syncfusion.com/react/production/api/pdfviewer/ValidateSignature';
         fetch(apiUrl, options)
             .then(response => response.json())
             .then(body => {
@@ -220,4 +223,5 @@ export class InvisibleSignature extends SampleBase<{}, {}> {
             }
         }
     }
+
 }

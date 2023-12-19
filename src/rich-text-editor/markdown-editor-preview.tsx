@@ -48,7 +48,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
         this.rteObj.refreshUI();
     }
     public updateValue() {
-        this.srcArea.innerHTML = (Marked as any).marked((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
+        this.srcArea.innerHTML = Marked.marked((this.rteObj.contentModule.getEditPanel() as HTMLTextAreaElement).value);
     }
     public updateOrientation() { 
         if (Browser.isDevice) {
@@ -73,7 +73,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
     render() {
         return (
             <div className='control-pane'>
-                <div className='control-section onlineEditor' id="rtePreview">
+                <div className='control-section markdown-preview' id="rtePreview">
                     <div className="content-wrapper">
                     <SplitterComponent ref={splitter => (this.splitterInstance = splitter)} height='450px' width='100%' resizing={this.onResizing.bind(this)} created={this.updateOrientation.bind(this)}>
                         <PanesDirective>

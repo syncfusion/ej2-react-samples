@@ -198,12 +198,12 @@ export class Orientation extends SampleBase<{}, {}> {
                         The User can also view different header styles of Tab component by selecting options from `Header Styles`
                         drop-down. Header styles changed by adding predefined classes in Tab root element and it class names listed below
                         <br />
-                        <ul>
-                            <li>Material and Fabric theme differentiates all the available tab header styles such as <code>e-fill</code>, <code>e-background e-accent</code>.</li>
-                            <li>In bootstrap theme, all the styles such as <code>e-fill</code> & <code>e-background e-accent</code> will have the same look with no difference.</li>
-                        </ul>
-                        If above classes not included in root element default style will applied in Tab component.
                     </p>
+                    <ul>
+                        <li>Material and Fabric theme differentiates all the available tab header styles such as <code>e-fill</code>, <code>e-background e-accent</code>.</li>
+                        <li>In bootstrap theme, all the styles such as <code>e-fill</code> & <code>e-background e-accent</code> will have the same look with no difference.</li>
+                    </ul>
+                    <p>If above classes not included in root element default style will applied in Tab component.</p>
                     <p>
                         More information about Tab can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">
                             documentation</a> section.

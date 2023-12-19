@@ -16,8 +16,8 @@ export let data1: any[] = [
     { x: 'Cambodia', y: 7.0 },
     { x: 'China', y: 6.9 },];
 export let data2: any[] = [
-    { x: 'Australia', y: 2.7 },
-    { x: 'Poland', y: 2.5 },
+    { x: 'Australia', y: 2.5 },
+    { x: 'Poland', y: 2.7 },
     { x: 'Singapore', y: 2.0 },
     { x: 'Canada', y: 1.4 },
     { x: 'Germany', y: 1.8 }
@@ -74,15 +74,15 @@ const IndexedAxis = () => {
                     <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', interval: 1, crosshairTooltip: { enable: false }, isIndexed: true, labelRotation: Browser.isDevice ? -45 : 0, labelIntersectAction: Browser.isDevice ? 'None' : 'Rotate45', majorTickLines: {width : 0}, minorTickLines: {width: 0} }} primaryYAxis={{ labelFormat: '{value}%', title: 'GDP Growth Rate' }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} title="GDP by Countries" loaded={onChartLoad.bind(this)} tooltip={{ enable: false}} crosshair={{ enable: false, lineType: 'Vertical' }}>
                         <Inject services={[Legend, Category, LineSeries, ColumnSeries,  Crosshair, DataLabel]} />
                         <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='2015' width={2} type='Column' marker={{ height: 10, width: 10, dataLabel: { visible: true, position: 'Top', enableRotation : Browser.isDevice ? true : false, angle: -90, font: { fontWeight: '600' } } }} />
-                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='2016' width={2} type='Column'  marker={{ height: 10, width: 10, dataLabel: { visible: true, position: 'Top', enableRotation : Browser.isDevice ? true : false, angle: -90, font: { fontWeight: '600' } } }} />
+                            <SeriesDirective dataSource={data1} xName='x' yName='y' name='2015' width={2} type='Column' marker={{ height: 10, width: 10, dataLabel: { visible: true, position: 'Top', enableRotation : Browser.isDevice ? true : false, angle: -90, font: {  size : Browser.isDevice ? '8px' : '11px' } } }} />
+                            <SeriesDirective dataSource={data2} xName='x' yName='y' name='2016' width={2} type='Column'  marker={{ height: 10, width: 10, dataLabel: { visible: true, position: 'Top', enableRotation : Browser.isDevice ? true : false, angle: -90, font: {  size : Browser.isDevice ? '8px' : '11px' } } }} />
                         </SeriesCollectionDirective>
                     </ChartComponent>
                 </div>
                 <div className='col-md-3 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Indexed:</div>
                                 </td>
@@ -91,7 +91,7 @@ const IndexedAxis = () => {
                                         <input type="checkbox" id="isIndexed" defaultChecked={true} onChange={onChange.bind(this)} style={{ marginLeft: '-5px' }} ref={dropElement} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>

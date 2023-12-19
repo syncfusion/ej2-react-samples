@@ -159,7 +159,6 @@ function RTL() {
                             valueType: 'DateTime',
                             crosshairTooltip: { enable: true },
                             edgeLabelPlacement: 'Shift',
-                            isInversed: true,
                             majorGridLines: { width: 0 }
                         }}
                         primaryYAxis={{
@@ -265,9 +264,7 @@ function RTL() {
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        The range navigator component features are segregated into individual feature-wise modules. To use area series, inject the
-                        <code>AreaSeries</code> module using the
-                        <code>RangeNavigator.Inject(AreaSeries)</code> method.
+                        The range navigator component features are segregated into individual feature-wise modules. To use area series, inject the <code>AreaSeries</code> module using the <code>RangeNavigator.Inject(AreaSeries)</code> method.
                     </p>
                 </div>
             </div>

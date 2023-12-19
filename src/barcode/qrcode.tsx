@@ -42,10 +42,11 @@ let options: FormValidatorModel = {
 export class QrCode extends SampleBase<{}, {}> {
   public formObject: FormValidator;
   rendereComplete() {
-    let div: HTMLElement = (document.getElementsByClassName('sb-property-border')[0] as HTMLElement);
     this.formObject = new FormValidator('#form1', options);
+    //custom code start
+    let div:HTMLElement = (document.getElementsByClassName('sb-property-border')[0] as HTMLElement);
     div.style.left = '63%';
-
+    //custom code end
   }
   render() {
     return (

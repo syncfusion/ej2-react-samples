@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, TimelineViews, TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Month, TimelineViews, TimelineMonth, EventRenderedArgs, Inject, Resize, DragAndDrop, View } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { extend } from '@syncfusion/ej2-base';
@@ -36,31 +36,28 @@ const HideWeekend = () => {
   const value: string[] = ['1', '3', '4', '5'];
   const [content, setContent] = useState<string>('Show');
   const [showWeekend, setShowWeekend] = useState<boolean>(false);
-  const [currentView, setCurrentView] = useState<View>('Week');
   const onChange = (args: any): void => {
     setContent(args.target.classList.contains('e-active') ? 'Hide' : 'Show');
     setShowWeekend(args.target.classList.contains('e-active') ? true : false);
   }
 
   const onMultiSelectChange = (args: MultiSelectChangeEventArgs): void => {
-    let value: number[] = (args.value as number[]).slice(0).map(Number).sort();
-    scheduleObj.current.workDays = value.length === 0 ? [0] : value;
-    scheduleObj.current.dataBind();
+    if (scheduleObj.current) {
+      const value: number[] = (args.value as number[]).slice(0).map(Number).sort();
+      scheduleObj.current.workDays = (value.length === 0 ? [0] : value) as number[];
+      scheduleObj.current.dataBind();
+    }
   }
 
   const OnEventRendered = (args: EventRenderedArgs): void => {
-    applyCategoryColor(args, currentView);
-  }
-
-  const onNavigating = (args: NavigatingEventArgs): void => {
-    setCurrentView(args.currentView as View);
+    applyCategoryColor(args, scheduleObj.current?.currentView as View);
   }
 
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-9 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} workDays={[1, 3, 4, 5]} workHours={{ start: '08:00' }} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} showWeekend={showWeekend} eventRendered={OnEventRendered} navigating={onNavigating} currentView={currentView}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} workDays={[1, 3, 4, 5]} workHours={{ start: '08:00' }} selectedDate={new Date(2021, 1, 15)} eventSettings={{ dataSource: data }} showWeekend={showWeekend} eventRendered={OnEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />

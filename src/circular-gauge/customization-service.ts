@@ -1,7 +1,3 @@
-/**
- * Dynamic source
- */
-
 import { CircularGauge, ILoadedEventArgs, GaugeTheme } from '@syncfusion/ej2-circulargauge';
 import { Annotations } from '@syncfusion/ej2-circulargauge';
 CircularGauge.Inject(Annotations);

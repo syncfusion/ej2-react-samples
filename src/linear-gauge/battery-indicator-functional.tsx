@@ -1,6 +1,3 @@
-/**
- * Sample to design battery indicator using the Linear Gauge
- */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";

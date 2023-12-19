@@ -87,12 +87,12 @@ export class BulletChartMultipleData extends SampleBase<{}, {}>{
                         minorTickLines={{ width: 0 }}
                         title='Sprint Planning'
                         titlePosition='Top'
-                        valueFill='#304560'
+                        valueFill='color'
                         targetColor='#304560'
-                        subtitle='Estimated in story points' 
-                        load={this.bulletLoad.bind(this)}      
+                        subtitle='Estimated in story points'
+                        load={this.bulletLoad.bind(this)}
                     >
-                        <Inject services={[BulletTooltip]}/>
+                        <Inject services={[BulletTooltip]} />
                         <BulletRangeCollectionDirective>
                             <BulletRangeDirective end={25} color='#DBE7F3'></BulletRangeDirective>
                             <BulletRangeDirective end={37} color='#BBCEE7'></BulletRangeDirective>
@@ -102,16 +102,22 @@ export class BulletChartMultipleData extends SampleBase<{}, {}>{
                 </ div>
                 <div id="action-description">
                     <p>
-                        This sample illustrates a bullet chart with multiple local data. It displays multiple data in bullet chart.
-            </p>
+                        This sample illustrates a bullet chart with multiple datasets, allowing for the comparison of different values.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                        Tooltip is enabled in this example, to see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
-            </p>
+                        In this example, you can observe how multiple datasets are compared in a bullet chart. Here, each value bar is assigned a different color from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/bullet-chart/#datasource">dataSource</a>.
+                    </p>
+                    <p>
+                        Tooltips are enabled; to experience the tooltips, hover over a feature bar or comparative bar on the bullet chart.
+                    </p>
+                    <p>
+                        More information on the data for the bullet chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/bullet-chart/data-binding">documentation section</a>.
+                    </p>
                 </div>
             </div>
-
+    
         )
     }
 }

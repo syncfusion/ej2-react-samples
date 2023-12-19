@@ -138,8 +138,7 @@ const ColumnTemplate = () => {
           SCRIPT element whose content is used as the template.
         </p>
         <p>
-          More information about Column Template can be found in this
-          documentation section.
+            More information about Column Formatting can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/columns#format">documentation section</a>.
         </p>
       </div>
     </div>

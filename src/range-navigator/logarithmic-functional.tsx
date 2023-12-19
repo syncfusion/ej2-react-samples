@@ -276,8 +276,7 @@ function LogarithmicAxis() {
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
-                        The range navigator component features are segregated into individual feature-wise modules. To use logarithmic axis, inject the  <code>Logarithmic</code> module using the
-                        <code>RangeNavigator.Inject(Logarithmic)</code> method.
+                        The range navigator component features are segregated into individual feature-wise modules. To use logarithmic axis, inject the  <code>Logarithmic</code> module using the <code>RangeNavigator.Inject(Logarithmic)</code> method.
                     </p>
                 </div>
             </div>

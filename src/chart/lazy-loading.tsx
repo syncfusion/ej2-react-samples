@@ -165,7 +165,7 @@ export class LazyLoading extends SampleBase<{}, {}> {
                     <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id="property" title="Properties" style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '40%' }}>
                                     <div>Lazy Load </div>
                                 </td>
@@ -213,7 +213,7 @@ export class LazyLoading extends SampleBase<{}, {}> {
                                             width={120} ref={point => this.pointslength = point} id="pointslength" style={{ "width": "auto" }} change={this.pointChange.bind(this)} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                         </PropertyPane>
                     </div>

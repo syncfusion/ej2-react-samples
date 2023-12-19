@@ -60,8 +60,8 @@ const Macd = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use MACD Indicator, we need to inject
-                    <code>MacdIndicator</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use MACD Indicator, we need to 
+                    inject <code>MacdIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the MACD Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#moving-average-convergence-divergence-macd">documentation section</a>.

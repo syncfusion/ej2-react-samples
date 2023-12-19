@@ -243,7 +243,9 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
             this.count = this.count + 1;
             this.dashboardObj.addPanel(panel[0]);
             this.dialogObj.visible = false;
-            (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
+            setTimeout(function(){
+                (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
+            },20);
         };
         document.getElementById('pietemplate').onclick = () => {
             let countValue: string = this.count.toString();
@@ -254,7 +256,9 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
             this.count = this.count + 1;
             this.dashboardObj.addPanel(panel[0]);
            this.dialogObj.visible = false;
-           (document.getElementById("_layout" + countValue).querySelector(".e-control.e-accumulationchart") as any).ej2_instances[0].refresh();
+           setTimeout(function(){
+                (document.getElementById("_layout" + countValue).querySelector(".e-control.e-accumulationchart") as any).ej2_instances[0].refresh();
+           },20);
         };
         document.getElementById('splinetemplate').onclick = () => {
             let countValue: string = this.count.toString();
@@ -265,7 +269,9 @@ export class DynamicWidget extends SampleBase<{}, {hideDialog: boolean;}> {
             this.count = this.count + 1;
             this.dashboardObj.addPanel(panel[0]);
             this.dialogObj.visible = false;
-            (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
+            setTimeout(function(){
+                (document.getElementById("_layout" + countValue).querySelector(".e-control.e-chart") as any).ej2_instances[0].refresh();
+            },20);
         };
     }
 

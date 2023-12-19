@@ -127,16 +127,18 @@ const Export = () => {
               className="property-panel-table"
               style={{ width: "100%" }}
             >
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "60%" }}>
-                  <CheckBoxComponent
-                    checked={true}
-                    label="Persist collapsed state"
-                    labelPosition="Before"
-                    change={onChange.bind(this)}
-                  ></CheckBoxComponent>
-                </td>
-              </tr>
+              <tbody>
+                <tr style={{ height: "50px" }}>
+                  <td style={{ width: "60%" }}>
+                    <CheckBoxComponent
+                      checked={true}
+                      label="Persist collapsed state"
+                      labelPosition="Before"
+                      change={onChange.bind(this)}
+                    ></CheckBoxComponent>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -171,8 +173,12 @@ const Export = () => {
           services.
         </p>
         <p>
-          More information on the Exporting can be found in the documentation
-          section.
+          More information on the  
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/pdf-export/pdf-export">
+          Pdf exporting </a> and
+          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/excel-export/excel-export">
+          Excel exporting</a>
+          can be found in documentation section.
         </p>
       </div>
     </div>

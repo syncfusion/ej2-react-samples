@@ -132,6 +132,7 @@ const Sorting = () => {
                         className="property-panel-table"
                         style={{ width: "100%" }}
                     >
+                        <tbody>
                         <tr>
                             <td>
                                 <div>Sort By</div>
@@ -195,6 +196,7 @@ const Sorting = () => {
                                 </ButtonComponent>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </PropertyPane>
             </div>

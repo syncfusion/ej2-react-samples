@@ -10,6 +10,7 @@ import { TextBoxComponent, InputEventArgs } from '@syncfusion/ej2-react-inputs';
 import { SampleBase, updateSampleSection } from '../common/sample-base';
 import './search-filter.css';
 import * as dataSource from './datasource.json';
+import { PropertyPane } from '../common/property-pane';
 
 /**
  * Kanban Search Filter sample
@@ -103,48 +104,48 @@ const SearchFilter = () => {
                 </div>
             </div>
             <div className="col-lg-3 property-section">
-                <div className="property-panel-section">
-                    <p className="property-panel-header">Filtering</p>
-                    <div className="filtering property-panel-content">
-                        <table className="e-filter-table">
-                            <tr>
-                                <td className="e-filter-label">
-                                    <div>Priority</div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <DropDownListComponent
-                                            id="priority_filter"
-                                            ref={priorityObj}
-                                            dataSource={priorityData}
-                                            select={prioritySelect.bind(this)}
-                                            value={value}
-                                            placeholder="Select a priority"
-                                        ></DropDownListComponent>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="e-filter-label">
-                                    <div>Status</div>
-                                </td>
-                                <td>
+                <PropertyPane title="Filtering">
+                    <table className="e-filter-table">
+                        <tbody>
+                        <tr>
+                            <td className="e-filter-label">
+                                <div>Priority</div>
+                            </td>
+                            <td>
+                                <div>
                                     <DropDownListComponent
-                                        id="status_filter"
-                                        ref={statusObj}
-                                        dataSource={statusData}
-                                        select={statusSelect.bind(this)}
+                                        id="priority_filter"
+                                        ref={priorityObj}
+                                        dataSource={priorityData}
+                                        select={prioritySelect.bind(this)}
                                         value={value}
-                                        fields={fields}
-                                        placeholder="Select a status"
+                                        placeholder="Select a priority"
                                     ></DropDownListComponent>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <p className="property-panel-header">Searching</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="e-filter-label">
+                                <div>Status</div>
+                            </td>
+                            <td>
+                                <DropDownListComponent
+                                    id="status_filter"
+                                    ref={statusObj}
+                                    dataSource={statusData}
+                                    select={statusSelect.bind(this)}
+                                    value={value}
+                                    fields={fields}
+                                    placeholder="Select a status"
+                                ></DropDownListComponent>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p className="property-panel-header" style={{ width: '100%', padding: '22px 0 0 0' }}>Searching</p>
                     <div className="filtering property-panel-content">
                         <table className="e-filter-table">
+                            <tbody>
                             <tr>
                                 <td>
                                     <div>
@@ -159,6 +160,7 @@ const SearchFilter = () => {
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                         <div className="e-reset-button">
                             <ButtonComponent
@@ -170,7 +172,7 @@ const SearchFilter = () => {
                             </ButtonComponent>
                         </div>
                     </div>
-                </div>
+                </PropertyPane>
             </div>
             <div id="action-description">
                 <p>

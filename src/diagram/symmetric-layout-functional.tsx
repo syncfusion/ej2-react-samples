@@ -60,10 +60,6 @@ padding-bottom: 15px;
   font-weight: 500;
 }
 
-.e-checkbox-wrapper .e-label {
-  font-size: 12px;
-}
-
 .e-selected-style {
   border-color: #006CE6;
   border-width: 2px;
@@ -105,7 +101,7 @@ function SymmetricLayout() {
       obj.shape = {
         type: "Native",
         content:
-          '<svg width="50" height="65"><g id="Server2_shape" fill="transparent" stroke="transparent" stroke-width="1"' +
+          '<svg width="50" height="65"><g id="Server2_shape" fill="transparent" stroke="transparent" strokeWidth="1"' +
           ' opacity="1" stroke-dasharray="" transform="translate(-15.517241379310343,-2.6329421835819375),' +
           'scale(1.7241379310344827,1.3774530437803194)" width="50" height="65"><g><g xmlns="http://www.w3.org/2000/svg">' +
           '<polygon fill="#DBD5DA" points="37.3,7.3 19.4,17.8 9.8,12.1 9.2,12.9 19,18.7 19,49 20,49 20,18.5 37.8,8.1  ">' +

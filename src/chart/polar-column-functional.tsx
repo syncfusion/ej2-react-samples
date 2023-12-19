@@ -44,7 +44,12 @@ const PolarColumn = () => {
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
     };
     const change = (): void => {
-        setType(dropElement.current.value as ChartSeriesType);
+        chartInstance.current.series[0].type = dropElement.current.value as ChartSeriesType;
+        chartInstance.current.series[1].type = dropElement.current.value as ChartSeriesType;
+        chartInstance.current.series[2].type = dropElement.current.value as ChartSeriesType;
+        chartInstance.current.series[0].animation.enable = false;
+        chartInstance.current.series[1].animation.enable = false;
+        chartInstance.current.series[2].animation.enable = false;
         chartInstance.current.refresh();
     };
     let droplist: { [key: string]: Object }[] = [
@@ -68,7 +73,7 @@ const PolarColumn = () => {
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
-                            <tr style={{ height: '50px' }}>
+                        <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
                                     <div>Series Type:</div>
                                 </td>
@@ -77,7 +82,7 @@ const PolarColumn = () => {
                                         <DropDownListComponent width={120} id="selmode" change={change.bind(this)} ref={dropElement} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value={type} />
                                     </div>
                                 </td>
-                            </tr>
+                            </tr></tbody>
                         </table>
                     </PropertyPane>
                 </div>
@@ -91,8 +96,8 @@ const PolarColumn = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-                    <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use column series, we need to 
+                    inject <code>PolarSeries</code> and <code>RadarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the polar-radar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/polar-radar/">documentation section</a>.

@@ -49,8 +49,7 @@ const TMA = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use TMA Indicator, we need to inject
-                    <code>TmaIndicator</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use TMA Indicator, we need to inject <code>TmaIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information on the TMA Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#triangular-moving-average-tma">documentation section</a>.

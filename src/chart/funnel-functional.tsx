@@ -25,14 +25,10 @@ const Funnel = () => {
         document.getElementById('funnel-chart').setAttribute('title', '');
     };
     const load = (args: IAccLoadedEventArgs): void => {
-        let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as AccumulationTheme;
-        if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
-            args.accumulation.series[0].width = '80%';
-            args.accumulation.series[0].height = '70%';
-        }
+        var funnelTheme = location.hash.split('/')[1];
+        funnelTheme = funnelTheme ? funnelTheme : 'Material';
+        args.accumulation.theme = (funnelTheme.charAt(0).toUpperCase() +
+            funnelTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as AccumulationTheme;
     };
     const onChartResized = (args: IAccResizeEventArgs): void => {
         let bounds: ClientRect = funnelObj.current.element.getBoundingClientRect();
@@ -66,8 +62,7 @@ const Funnel = () => {
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use Funnel series, we need to inject
-                    <code>FunnelSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use Funnel series, we need to inject <code>FunnelSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information about the funnel series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/funnel/">documentation section</a>.

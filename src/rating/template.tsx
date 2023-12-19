@@ -47,7 +47,7 @@ export class Template extends SampleBase<{}, {}> {
     private emptyTemplate(): JSX.Element {
         return (
             <svg width="35" height="25" className="e-rating-svg-icon">
-                <rect width="35" height="25" fill="transparent"  stroke-width="2" stroke="rgb(173,181,189)"/>
+                <rect width="35" height="25" fill="transparent"  strokeWidth="2" stroke="rgb(173,181,189)"/>
             </svg>
         );
     }
@@ -60,7 +60,7 @@ export class Template extends SampleBase<{}, {}> {
                         <stop className="end" offset="100%" />
                     </linearGradient>
                 </defs>
-                <rect width="35" height="25" fill={`url(#grad${props.index})`} stroke-width="2" stroke="rgb(173,181,189)"/>
+                <rect width="35" height="25" fill={`url(#grad${props.index})`} strokeWidth="2" stroke="rgb(173,181,189)"/>
             </svg>
         );
     }

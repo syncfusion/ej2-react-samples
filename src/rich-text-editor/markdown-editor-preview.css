@@ -2,7 +2,7 @@
     float: left;
     border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
-.onlineEditor .title {
+.markdown-preview .title {
     color: #333333;
     letter-spacing: 1px;
     padding-left: 10px;
@@ -10,7 +10,7 @@
     font-size: 12px !important;
     margin: 10px 0;
 }
-.onlineEditor .heading {
+.markdown-preview .heading {
     float: left;
     width: 100%;
     position: relative;

@@ -77,29 +77,31 @@ const RecurrenceEvents = () => {
           Scheduler events can be categorized into 3 types based on its time range and all-day type.
         </p>
         <table style={{ width: '100%' }}>
-          <tr>
-            <th style={{ width: '100px' }}>
-              <strong>Event</strong>
-            </th>
-            <th>
-              <strong>Description</strong>
-            </th>
-          </tr>
-          <tr>
-            <td style={{ padding: '4px 0' }}>Normal events</td>
-            <td>The events that has its start and end time duration on the same date.</td>
-          </tr>
-          <tr>
-            <td style={{ padding: '4px 0' }}>Spanned events</td>
-            <td>The events on which its start and end time spans over multiple days and usually displays together with all-day events.</td>
-          </tr>
-          <tr>
-            <td style={{ padding: '4px 0' }}>All-day events</td>
-            <td>
-              The events that are defined as all-day in its event object by setting <code>isAllDay</code> to true.
-              It usually renders at the date header section of the Scheduler where no time-cells are present.
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <th style={{ width: '100px' }}>
+                <strong>Event</strong>
+              </th>
+              <th>
+                <strong>Description</strong>
+              </th>
+            </tr>
+            <tr>
+              <td style={{ padding: '4px 0' }}>Normal events</td>
+              <td>The events that has its start and end time duration on the same date.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: '4px 0' }}>Spanned events</td>
+              <td>The events on which its start and end time spans over multiple days and usually displays together with all-day events.</td>
+            </tr>
+            <tr>
+              <td style={{ padding: '4px 0' }}>All-day events</td>
+              <td>
+                The events that are defined as all-day in its event object by setting <code>isAllDay</code> to true.
+                It usually renders at the date header section of the Scheduler where no time-cells are present.
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

@@ -84,6 +84,7 @@ export class CardTemplate extends SampleBase<{}, {}> {
                                                     </td>}
                                                     {(props.Category == 'Delivered' || props.Category == 'Served') && <td className="card-content">
                                                     <table>
+                                                      <tbody>
                                                         <tr>
                                                             <td className="e-description e-tooltip-text">
                                                                 {props.OrderID}
@@ -96,6 +97,7 @@ export class CardTemplate extends SampleBase<{}, {}> {
                                                                 <span className="e-kanban-date">{props.Date}</span>
                                                             </td>
                                                         </tr>
+                                                      </tbody>
                                                     </table>
                                                     </td>}
                                                 </tr>

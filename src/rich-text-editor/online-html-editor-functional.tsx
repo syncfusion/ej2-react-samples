@@ -22,10 +22,10 @@ function OnlineHtmlEditor() {
     // Rich Text Editor items list
     const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
         'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
-        'Formats', 'Alignments', 'NumberFormatList', 'BulletFormatList',
-        'Outdent', 'Indent', '|',
-        'CreateTable', 'CreateLink', 'Image', 'FileManager', '|', 'ClearFormat', 'Print',
-        'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
+        'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
+        'Outdent', 'Indent',
+        'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
+        '|', 'EmojiPicker', 'SourceCode', '|', 'Undo', 'Redo'
     ];
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {

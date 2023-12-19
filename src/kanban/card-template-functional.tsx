@@ -90,6 +90,7 @@ const CardTemplate = () => {
                                                             props.Category == "Served") && (
                                                                 <td className="card-content">
                                                                     <table>
+                                                                      <tbody>
                                                                         <tr>
                                                                             <td className="e-description e-tooltip-text">
                                                                                 {props.OrderID}
@@ -104,6 +105,7 @@ const CardTemplate = () => {
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
+                                                                      </tbody>
                                                                     </table>
                                                                 </td>
                                                             )}

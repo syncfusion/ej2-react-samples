@@ -90,7 +90,7 @@ const SAMPLE_CSS = `
     }
     ellipse[id*=_Trackball_0] {
 
-        stroke-width: 1 !important;
+        strokeWidth: 1 !important;
     } 
 `;
     

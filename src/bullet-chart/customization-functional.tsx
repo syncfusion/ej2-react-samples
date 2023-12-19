@@ -40,6 +40,7 @@ function BulletChartCustomization() {
                     interval={0.5}
                     title='Package Downloads'
                     subtitle='in Thousands'
+                    minorTickLines={{ width: 0}}
                     load={bulletLoad.bind(this)}
                     dataSource={[{ value: 1.7, target: 2.5 }]}>
                     <Inject services={[BulletTooltip]} />
@@ -53,6 +54,7 @@ function BulletChartCustomization() {
             <div className='property-section col-md-4'>
                 <div className="property-panel-header">Properties</div>
                 <table style={{ width: '100%' }}>
+                  <tbody>
                     <tr style={{ height: '50px' }}>
                         <td style={{ width: '50%' }}>
                             <div className='prop-text'>Start Color:</div>
@@ -128,6 +130,7 @@ function BulletChartCustomization() {
                                 }}></CheckBoxComponent>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
             <div id="action-description">

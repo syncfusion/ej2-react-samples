@@ -59,8 +59,7 @@ const SplineArea = () => {
                 <br></br>
                 <p><b>Injecting Module</b></p>
                 <p>
-                    Chart component features are segregated into individual feature-wise modules. To use spline area series, we need to inject
-                    <code>SplineAreaSeries</code> module into <code>services</code>.
+                    Chart component features are segregated into individual feature-wise modules. To use spline area series, we need to inject <code>SplineAreaSeries</code> module into <code>services</code>.
                 </p>
                 <p>
                     More information about area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.

@@ -1,6 +1,3 @@
-/**
- * Sample for track in the Linear Gauge
- */
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { LinearGaugeComponent, ILoadedEventArgs, LinearGaugeTheme, AxesDirective, AxisDirective, PointersDirective, PointerDirective, RangesDirective, RangeDirective, Orientation } from '@syncfusion/ej2-react-lineargauge';

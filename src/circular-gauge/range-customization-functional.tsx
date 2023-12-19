@@ -1,6 +1,3 @@
-/**
- * Sample for range customization in the Circular Gauge
- */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
@@ -175,12 +172,12 @@ const Range = () => {
                             </tbody>
                         </table>
                         <table id='property1' title='Properties' className='property-panel-table' style={{ width: '90%' }}>
-                            <tbody>
-                                <colgroup>
-                                    <col span={1} style={{ width: "35%" }}></col>
-                                    <col span={1} style={{ width: "45%" }}></col>
-                                    <col span={1} style={{ width: "20%" }}></col>
-                                </colgroup>
+                            <colgroup>
+                                <col span={1} style={{ width: "35%" }}></col>
+                                <col span={1} style={{ width: "45%" }}></col>
+                                <col span={1} style={{ width: "20%" }}></col>
+                            </colgroup>
+                               <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: "38%" }}>
                                         <div style={{ marginTop: "-10px", marginLeft: "-10px", fontSize: "14px" }}>Range Start </div>

@@ -1,12 +1,11 @@
 /**
  * Rich Text Editor Smart Suggestion sample
  */
- import { DialogType, HtmlEditor, Image, Audio, Video, Table, Inject, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+ import { DialogType, HtmlEditor, Image, Audio, Video, Table, Inject, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker } from '@syncfusion/ej2-react-richtexteditor';
  import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
  import * as React from 'react';
  import {updateSampleSection } from '../common/sample-base';
  import './smart-suggestion.css';
- import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-react-popups';
   
  function MentionFormatIntegration() {
   React.useEffect(() => {
@@ -16,7 +15,6 @@
    let saveSelection: NodeSelection;
    let selection: NodeSelection = new NodeSelection();
    let formatRTE: RichTextEditorComponent;
-   let dialogObj: DialogComponent;
    let mentionObj: MentionComponent;
    let rteSectionEle: HTMLDivElement = null;
    let mentionFormatIntegrationRef: React.Ref<HTMLDivElement> = (element) => {
@@ -33,7 +31,7 @@
         { formatName: "Numbered list", command: "OL", formatType: "Basic blocks", icon: "e-icons e-list-ordered icon", description: "Create an ordered list"},
         { formatName: "Bulleted list", command: "UL", formatType: "Basic blocks", icon: "e-icons e-list-unordered icon", description: "Create an unordered list"},
         { formatName: "Table", command: "CreateTable", formatType: "Basic blocks",icon: "e-icons e-table icon", description: "Insert a table"},
-        { formatName: "Emoji", command: "Emoji", formatType: "Inline", icon: "e-icons emoji",description: "Use emojis to express ideas and emoticons"},
+        { formatName: "Emoji picker", command: "EmojiPicker", formatType: "Inline", icon: "e-icons e-emoji icon",description: "Use emojis to express ideas and emoticons"},
         { formatName: "Image", command: "Image", formatType: "Media", icon: "e-icons e-image icon", description: "Add image to your page"},
         { formatName: "Audio", command: "Audio", formatType: "Media", icon: "e-icons e-audio icon", description: "Add audio to your page"},
         { formatName: "Video", command: "Video", formatType: "Media", icon: "e-icons e-video icon", description: "Add video to your page"}
@@ -42,11 +40,13 @@
    const  fieldsData: { [key: string]: string }={ text: 'formatName', groupBy: 'formatType' };
  
    const toolbarSettings: ToolbarSettingsModel = {
-     items: ['Bold', 'Italic', 'Underline', 'StrikeThrough',
-     'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
-     'LowerCase', 'UpperCase', 'SuperScript', 'SubScript', '|',
-     'Formats', 'Alignments', 'NumberFormatList', 'BulletFormatList',
-     'Outdent', 'Indent', '|', 'CreateTable', 'CreateLink', 'Image', 'SourceCode', 'FullScreen', '|', 'Undo', 'Redo']
+     items: ['Bold', 'Italic', 'Underline', 'StrikeThrough', 'SuperScript', 'SubScript', '|',
+       'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+       'LowerCase', 'UpperCase', '|',
+       'Formats', 'Alignments', '|', 'NumberFormatList', 'BulletFormatList', '|',
+       'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
+       '|', 'EmojiPicker', '|',
+       'SourceCode', 'FullScreen', '|', 'Undo', 'Redo']
    };
  
    function actionBegineHandler(args: any): void {
@@ -56,79 +56,6 @@
       }
     }
    }
- 
-   // Begins the process of inserting emoticons.
- 
-   const smileys: { [key: string]: string }[] = [
-     { content: '&#128512;', title: 'Grinning face' },
-     { content: '&#128513;', title: 'Grinning face with smiling eyes' },
-     { content: '&#128514;', title: 'Face with tears of joy' },
-     { content: '&#128515;', title: 'Smiling face with open mouth' },
-     { content: '&#128516;', title: 'Smiling face with open mouth and smiling eyes' },
-     { content: '&#128517;', title: 'Smiling face with open mouth and cold sweat' },
-     { content: '&#128518;', title: 'Smiling face with open mouth and tightly-closed eyes' },
-     { content: '&#128519;', title: 'Smiling face with halo' },
-     { content: '&#128520;', title: 'Smiling face with horns' },
-     { content: '&#128521;', title: 'Winking face' },
-     { content: '&#128522;', title: 'Smiling face with smiling eyes' },
-     { content: '&#128523;', title: 'Face savouring delicious food' },
-     { content: '&#128524;', title: 'Relieved face' },
-     { content: '&#128525;', title: 'Smiling face with heart-shaped eyes' },
-     { content: '&#128526;', title: 'Smiling face with sunglasses' },
-     { content: '&#128527;', title: 'Smirking face"' },
-     { content: '&#128528;', title: 'Neutral face' },
-     { content: '&#128529;', title: 'Expressionless face' },
-     { content: '&#128530;', title: 'Unamused face' },
-     { content: '&#128531;', title: 'Face with cold sweat' },
-     { content: '&#128532;', title: 'Pensive face' },
-     { content: '&#128533;', title: 'Confused face' },
-     { content: '&#128534;', title: 'Confounded face' },
-     { content: '&#128535;', title: 'Kissing face' },
-     { content: '&#128536;', title: 'Face throwing a kiss' },
-     { content: '&#128538;', title: 'Kissing face with smiling eyes' },
-     { content: '&#128539;', title: 'Face with stuck-out tongue' },
-     { content: '&#128540;', title: 'Face with stuck-out tongue and winking eye' },
-     { content: '&#128541;', title: 'Face with stuck-out tongue and tightly-closed eyes' },
-     { content: '&#128542;', title: 'Disappointed face' },
-     { title: 'Monkey Face', content: '&#128053;' },
-     { title: 'Monkey', content: '&#128018;' },
-     { title: 'Gorilla', content: '&#129421;' },
-     { title: 'Dog Face', content: '&#128054;' },
-     { title: 'Dog', content: '&#128021;' },
-     { title: 'Poodle', content: '&#128041;' },
-     { title: 'Wolf Face', content: '&#128058;' },
-     { title: 'Fox Face', content: '&#129418;' },
-     { title: 'Cat Face', content: '&#128049;' },
-     { title: 'Cat', content: '&#128008;' },
-     { title: 'Lion Face', content: '&#129409;' },
-     { title: 'Tiger Face', content: '&#128047;' },
-     { title: 'Tiger', content: '&#128005;' },
-     { title: 'Leopard', content: '&#128006;' },
-     { title: 'Horse Face', content: '&#128052;' },
-     { title: 'Horse', content: '&#128014;' },
-     { title: 'Unicorn Face', content: '&#129412;' },
-     { title: 'Deer', content: '&#129420;' },
-     { title: 'Cow Face', content: '&#128046;' },
-     { title: 'Ox', content: '&#128002;' },
-     { title: 'Water Buffalo', content: '&#128003;' },
-     { title: 'Cow', content: '&#128004;' },
-     { title: 'Pig Face', content: '&#128055;' },
-     { title: 'Pig', content: '&#128022;' },
-     { title: 'Boar', content: '&#128023;' },
-     { title: 'Pig Nose', content: '&#128061;' },
-     { title: 'Ram', content: '&#128015;' },
-     { title: 'Ewe', content: '&#128017;' },
-     { title: 'Goat', content: '&#128016;' },
-     { title: 'Camel', content: '&#128042;' }
-   ];
- 
-   const dialogButtons: ButtonPropsModel[] = [{ buttonModel: { content: "Insert", isPrimary: true }, click: onInsert.bind(this) },
-   { buttonModel: { content: 'Cancel' }, click: onCancel }];
-   let header: string = 'Insert Emoticons';
-
-  function onCreate(): void {
-    dialogObj.target = document.getElementById('mentionFormatIntegration');
-  }
 
   function beforeApplyFormat(isBlockFormat: Boolean):void{
       let range1: Range = formatRTE.getRange();
@@ -150,71 +77,16 @@
       let range2: Range = formatRTE.getRange();
       let node2: Node = formatRTE.formatter.editorManager.nodeCutter.GetSpliceNode(range2, node as HTMLElement);
       let previouNode: Node = node2.previousSibling;
-      node2.parentNode.removeChild(node2);
       const brTag: HTMLElement = document.createElement('br');
       if (node2.parentElement && node2.parentElement.innerHTML.length === 1) {
           node2.parentElement.appendChild(brTag);
       }
+      node2.parentNode.removeChild(node2);
       if(previouNode) {
           selection.setCursorPoint(document, previouNode as Element, previouNode.textContent.length);
       }
   }
- 
-   function onInsert(): void {
-    const activeElement: Element = dialogObj.element.querySelector('.char_block.e-active');
-    if (activeElement) {
-        if (formatRTE.formatter.getUndoRedoStack().length === 0) {
-            formatRTE.formatter.saveData();
-        }
-        beforeApplyFormat(false);
-        let range: Range =formatRTE.getRange();
-        selection.setCursorPoint(document, range.startContainer as Element, range.startOffset);
-        formatRTE.executeCommand('insertText', activeElement.textContent);
-        formatRTE.formatter.saveData();
-        formatRTE.formatter.enableUndo(formatRTE);
-    }
-    dialogOverlay();
-   }
- 
-   function dialogOverlay(): void {
-     let activeElement: Element = dialogObj.element.querySelector('.char_block.e-active');
-     if (activeElement) {
-       activeElement.classList.remove('e-active');
-     }
-     dialogObj.hide();
-   }
 
-   function dialogOpen(): void{
-      let emojiElement: HTMLElement = document.getElementById('rteEmoticons-smiley');
-      if (!emojiElement.children[0].classList.contains('e-active')) {
-        emojiElement.children[0].classList.add('e-active');
-      }
-   }
- 
-   function onCancel(): void {
-     let activeElement: Element = (this as any).element.querySelector('.char_block.e-active');
-     if (activeElement) {
-       activeElement.classList.remove('e-active');
-     }
-     (this as any).hide();
-   }
- 
-   function dialogCreate(): void {
-     var dialogContent = document.getElementById('emojiDialog');
-     dialogContent.onclick = (e: Event) => {
-       let target: HTMLElement = e.target as HTMLElement;
-       let activeElement: Element = dialogObj.element.querySelector('.char_block.e-active');
-       if (target.classList.contains('char_block')) {
-         target.classList.add('e-active');
-         if (activeElement) {
-           activeElement.classList.remove('e-active');
-         }
-       }
-     };
-   }
- 
-   // Ends the process of inserting emoticons
- 
     function itemTemplate(data: any): JSX.Element {
       return (
        <table className="format-table">
@@ -247,9 +119,11 @@
           beforeApplyFormat(true);
       }
       if ((args.itemData as  { [key: string]: Object }).command == 'OL') {
+          mentionObj.hidePopup();
           formatRTE.executeCommand('insertOrderedList');
       }
       else if ((args.itemData as  { [key: string]: Object }).command == 'UL') {
+          mentionObj.hidePopup();
           formatRTE.executeCommand('insertUnorderedList');
       }
       else if ((args.itemData as  { [key: string]: Object }).command == 'CreateTable') {
@@ -268,35 +142,24 @@
           mentionObj.hidePopup();
           formatRTE.showDialog(DialogType.InsertVideo);
       }
-      else if ((args.itemData as  { [key: string]: Object }).command == 'Emoji') {
-        dialogObj.element.style.display = 'block';
+      else if ((args.itemData as  { [key: string]: Object }).command == 'EmojiPicker') {
+          beforeApplyFormat(false);
           mentionObj.hidePopup();
-          dialogObj.show();
+          formatRTE.showEmojiPicker();
       }
       else {
+          mentionObj.hidePopup();
           formatRTE.executeCommand('formatBlock', (args.itemData as  { [key: string]: Object }).command);
       }
     }
- 
-   var smileyItems = smileys.map(function (smiley) {
-      return (
-          <div className='char_block' title={smiley.title} dangerouslySetInnerHTML={{ __html: smiley.content }}></div>
-      );
-    });
- 
+
     return (
       <div className='control-pane'>
         <div className='control-section mention-inline-format-section' id="mentionFormat">
           <div className='rte-control-section' ref={mentionFormatIntegrationRef} id='mentionFormatIntegration'>
-            <RichTextEditorComponent id="MentionInlineFormat" ref={(scope) => { formatRTE = scope }} toolbarSettings={toolbarSettings} placeholder="Type '/' and choose format"  actionBegin={actionBegineHandler.bind(this)} created={onCreate.bind(this)} >
-              <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar]} />
+            <RichTextEditorComponent id="MentionInlineFormat" ref={(scope) => { formatRTE = scope }} toolbarSettings={toolbarSettings} placeholder="Type '/' and choose format"  actionBegin={actionBegineHandler.bind(this)} >
+              <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker]} />
             </RichTextEditorComponent>
-
-            <DialogComponent id='emojiDialog' ref={(scope) => { dialogObj = scope }}
-                buttons={dialogButtons} overlayClick={dialogOverlay.bind(this)} created={dialogCreate.bind(this)} header={header} visible={false}
-                width='36%' isModal={true} open={dialogOpen.bind(this)}>
-                  <div id="rteEmoticons-smiley">{smileyItems}</div>
-            </DialogComponent>
     
             <MentionComponent ref={(scope) => { mentionObj = scope }} id="mentionEditor" target="#MentionInlineFormat_rte-edit-view" mentionChar={'/'} allowSpaces={true} dataSource={data} fields={fieldsData} 
               popupWidth="320px" popupHeight="290px" itemTemplate={itemTemplate} beforeOpen={beforeOpen} filtering={filtering}  select={appyCommand}></MentionComponent>

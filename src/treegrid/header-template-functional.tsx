@@ -33,6 +33,7 @@ const HeaderTemplate = () => {
                         width="20"
                         height="20"
                         className="taskName"
+                        alt="taskName"
                       />
                       <b className="e-header">Task Name</b>
                     </div>
@@ -54,6 +55,7 @@ const HeaderTemplate = () => {
                         width="20"
                         height="20"
                         className="startDate"
+                        alt="startDate"
                       />
                       <b className="e-header">Start Date</b>
                     </div>
@@ -72,6 +74,7 @@ const HeaderTemplate = () => {
                         width="20"
                         height="20"
                         className="resources"
+                        alt="resources"
                       />
                       <b className="e-header">Resources</b>
                     </div>
@@ -90,6 +93,7 @@ const HeaderTemplate = () => {
                         width="20"
                         height="20"
                         className="duration"
+                        alt="duration"
                       />
                       <b className="e-header">Duration</b>
                     </div>
@@ -109,6 +113,7 @@ const HeaderTemplate = () => {
                         width="20"
                         height="20"
                         className="progress-column"
+                        alt="progress-column"
                       />
                       <b className="e-header">Progress</b>
                     </div>
@@ -138,11 +143,9 @@ const HeaderTemplate = () => {
           In this demo, we have render customized template for all column
           headers.
         </p>
-        <p>
-          {" "}
-          More information about Header template can be found in this
-          documentation section.
-        </p>
+        <p> More information about Header template can be found in <a target="_blank" 
+        href="https://ej2.syncfusion.com/react/documentation/treegrid/columns/column-template/">
+        documentation section</a>.</p> 
       </div>
     </div>
   );

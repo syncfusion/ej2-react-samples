@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
-import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Timezone, EventRenderedArgs, Inject, Resize, DragAndDrop, View, NavigatingEventArgs } from '@syncfusion/ej2-react-schedule';
+import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Timezone, EventRenderedArgs, Inject, Resize, DragAndDrop, View } from '@syncfusion/ej2-react-schedule';
 import { applyCategoryColor } from './helper';
 import './schedule-component.css';
 import { Browser, extend } from '@syncfusion/ej2-base';
@@ -36,7 +36,6 @@ const TimeZone = () => {
   ];
   const fields: Record<string, any> = { text: 'text', value: 'value' };
   const [schedulerTimezone, setSchedulerTimezone] = useState<string>('UTC');
-  const [currentView, setCurrentView] = useState<View>("Week");
   // Here remove the local offset from events
   const onCreate = (): void => {
     for (let fifaEvent of fifaEvents) {
@@ -47,17 +46,14 @@ const TimeZone = () => {
   }
 
   const onEventRendered = (args: EventRenderedArgs): void => {
-    applyCategoryColor(args, currentView as View);
+    applyCategoryColor(args, scheduleObj.current?.currentView as View);
   }
 
   const onTimeZoneChange = (args: ChangeEventArgs): void => {
     setSchedulerTimezone(args.value as string)
-    scheduleObj.current.dataBind();
+    scheduleObj.current?.dataBind();
   }
 
-  const onNavigating = (args: NavigatingEventArgs): void => {
-    setCurrentView(args.currentView as View)
-  }
   return (
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
@@ -77,7 +73,7 @@ const TimeZone = () => {
               </tr>
             </tbody>
           </table>
-          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 5, 20)} timezone={schedulerTimezone} workHours={{ start: '11:00' }} eventSettings={{ dataSource: fifaEvents }} created={onCreate} eventRendered={onEventRendered} navigating={onNavigating} currentView={currentView}>
+          <ScheduleComponent width='100%' height='650px' ref={scheduleObj} selectedDate={new Date(2021, 5, 20)} timezone={schedulerTimezone} workHours={{ start: '11:00' }} eventSettings={{ dataSource: fifaEvents }} created={onCreate} eventRendered={onEventRendered}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]} />
           </ScheduleComponent>
         </div>

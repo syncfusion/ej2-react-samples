@@ -1,3 +1,7 @@
+.material3 .sb-reset-icon:before {
+    content: '\e7e7';
+}
+
 .material3 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
 .material3 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item:hover>.e-tab-wrap>.e-text-wrap>.e-tab-text,
 .material3 .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text,
