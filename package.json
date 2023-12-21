@@ -50,7 +50,7 @@
     "react-router-dom": "6.16.0",
     "marked": "5.1.2",
     "codemirror": "5.65.15",
-	"browser-sync": "^2.29.3"
+    "browser-sync": "^2.29.3"
   },
   "devDependencies": {
     "@microsoft/signalr": "7.0.11",
