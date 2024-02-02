@@ -89,7 +89,7 @@ let portmo: PointPortModel[] = [
   { id: 'port3', offset: { x: 0.5, y: 0.3 } },
   { id: 'port4', offset: { x: 0.5, y: 0.97 } }
 ];
-
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: 'Server1', offsetX: 80, offsetY: 75,
@@ -235,7 +235,7 @@ let nodes: NodeModel[] = [
     id: 'connector6', offsetX: 370, offsetY: 380
   }
 ];
-
+ //Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   {
     id: 'connectora', sourceID: 'Server1', targetID: 'WorkStation1',
@@ -375,28 +375,7 @@ let dropElement: HTMLElement = document.getElementsByClassName(
   "control-fluid"
 )[0] as HTMLElement;
 
-const SAMPLE_CSS = `
-@font-face {
-  font-family: 'e-ddb-icons1';
-  src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAAKAIAAAwAgT1MvMj1tSfIAAAEoAAAAVmNtYXDnEOdVAAABiAAAADZnbHlmdC1P4gAAAcgAAAAwaGVhZBJhohMAAADQAAAANmhoZWEIVQQDAAAArAAAACRobXR4CAAAAAAAAYAAAAAIbG9jYQAYAAAAAAHAAAAABm1heHABDgAUAAABCAAAACBuYW1lm+wy9gAAAfgAAAK1cG9zdLnsYngAAASwAAAAMAABAAAEAAAAAFwEAAAAAAAD+AABAAAAAAAAAAAAAAAAAAAAAgABAAAAAQAAgNcenF8PPPUACwQAAAAAANelrs4AAAAA16WuzgAAAAAD+AN6AAAACAACAAAAAAAAAAEAAAACAAgAAgAAAAAAAgAAAAoACgAAAP8AAAAAAAAAAQQAAZAABQAAAokCzAAAAI8CiQLMAAAB6wAyAQgAAAIABQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUGZFZABA5wDnAAQAAAAAXAQAAAAAAAABAAAAAAAABAAAAAQAAAAAAAACAAAAAwAAABQAAwABAAAAFAAEACIAAAAEAAQAAQAA5wD//wAA5wD//wAAAAEABAAAAAEAAAAAAAAAGAAAAAIAAAAAA/gDegACAAcAACUhCQEhATUhAQQC9P6G/YoBMQFF/YqGAjf+hgH0QwAAAAAAEgDeAAEAAAAAAAAAAQAAAAEAAAAAAAEAEwABAAEAAAAAAAIABwAUAAEAAAAAAAMAEwAbAAEAAAAAAAQAEwAuAAEAAAAAAAUACwBBAAEAAAAAAAYAEwBMAAEAAAAAAAoALABfAAEAAAAAAAsAEgCLAAMAAQQJAAAAAgCdAAMAAQQJAAEAJgCfAAMAAQQJAAIADgDFAAMAAQQJAAMAJgDTAAMAAQQJAAQAJgD5AAMAAQQJAAUAFgEfAAMAAQQJAAYAJgE1AAMAAQQJAAoAWAFbAAMAAQQJAAsAJAGzIERpYWdyYW1fU2hhcGVzX0ZPTlRSZWd1bGFyRGlhZ3JhbV9TaGFwZXNfRk9OVERpYWdyYW1fU2hhcGVzX0ZPTlRWZXJzaW9uIDEuMERpYWdyYW1fU2hhcGVzX0ZPTlRGb250IGdlbmVyYXRlZCB1c2luZyBTeW5jZnVzaW9uIE1ldHJvIFN0dWRpb3d3dy5zeW5jZnVzaW9uLmNvbQAgAEQAaQBhAGcAcgBhAG0AXwBTAGgAYQBwAGUAcwBfAEYATwBOAFQAUgBlAGcAdQBsAGEAcgBEAGkAYQBnAHIAYQBtAF8AUwBoAGEAcABlAHMAXwBGAE8ATgBUAEQAaQBhAGcAcgBhAG0AXwBTAGgAYQBwAGUAcwBfAEYATwBOAFQAVgBlAHIAcwBpAG8AbgAgADEALgAwAEQAaQBhAGcAcgBhAG0AXwBTAGgAYQBwAGUAcwBfAEYATwBOAFQARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAdQBzAGkAbgBnACAAUwB5AG4AYwBmAHUAcwBpAG8AbgAgAE0AZQB0AHIAbwAgAFMAdAB1AGQAaQBvAHcAdwB3AC4AcwB5AG4AYwBmAHUAcwBpAG8AbgAuAGMAbwBtAAAAAAIAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgECAQMABlNoYXBlcwAA) format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.e-ddb-icons1 {
-  font-family: 'e-ddb-icons1';
-  speak: none;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.e-toggle-palette::before {
+const SAMPLE_CSS = `.e-toggle-palette::before {
   content: "\e700"
 }
 .sb-mobile-palette {
@@ -463,29 +442,7 @@ const SAMPLE_CSS = `
   position: absolute;
   display: block;
   right: 15px;
-}
-.material #networkDiagram #palette-space .e-accordion {
-  border: none;
-}
-
-.material #networkDiagram #palette-space {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-}
-.material #dropArea {
-  border-width: 1px 0px 0px 0px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.12);
-}
-.fabric #networkDiagram .sb-mobile-diagram {
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
-}
-.bootstrap #networkDiagram .sb-mobile-diagram {
-  height: 554px;
-  margin-top: 5px;
-  border-radius: 4px;
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
-}
-`;
+}`;
 
 export class NetworkShapes extends SampleBase<{}, {}> {
 

@@ -18,11 +18,6 @@ import {
   NodeConstraints
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
-import { ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
-import {
-  DropDownListComponent,
-  ChangeEventArgs as DropDownChangeEventArgs
-} from "@syncfusion/ej2-react-dropdowns";
 
 let basicShapeModel: NodeModel[] = [
   {

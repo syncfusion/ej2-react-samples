@@ -1,4 +1,4 @@
-import { RichTextEditorComponent, HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Link, Image, Table, ToolbarSettingsModel, Inject } from "@syncfusion/ej2-react-richtexteditor";
+import { RichTextEditorComponent, HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Link, Image, Table, Audio, Video, ToolbarSettingsModel, Inject } from "@syncfusion/ej2-react-richtexteditor";
 import { TextBoxComponent, FocusOutEventArgs } from "@syncfusion/ej2-react-inputs";
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
@@ -137,7 +137,7 @@ function FormatPainterRTE(){
             <p>The Format Painter feature is segregated as an individual module. To use the format painter you can import and then inject it into the RichTextEditor.</p>
             <p>
                 To use Rich Text Editor feature, we need to inject  <code>'FormatPainter'</code> module using inject component and then adding the modules in the services prop. 
-                <code>[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table]</code>
+                <code>[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table, Audio, Video]</code>
             </p>
             </div>
         </div>

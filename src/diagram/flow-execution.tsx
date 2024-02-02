@@ -2,13 +2,6 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
   Node,
-  Canvas,
-  PathElement,
-  HorizontalAlignment,
-  DiagramElement,
-  TextElement,
-  PortVisibility,
-  HierarchicalTree,
   DataBinding,
   DiagramComponent,
   Diagram,
@@ -28,38 +21,35 @@ import {
   ISelectionChangeEventArgs
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
-import { DataManager } from "@syncfusion/ej2-data";
-import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
-import { ChangeEventArgs, NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
-import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import { RadioButtonComponent, ChangeArgs } from "@syncfusion/ej2-react-buttons";
 
-
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [];
 let port1: PointPortModel = { id: 'port1', offset: { x: 0.5, y: 1 } };
 let port: PointPortModel = { id: 'port', offset: { x: 1, y: 0.5 } };
-nodes.push(CreateNodes('node1', 100, 125, 'Terminator', 'Begin', 100, 35));
-nodes.push(CreateNodes('node2', 300, 125, 'Process', 'Specify collection', 120, 25, [port]));
-nodes.push(CreateNodes('node3', 500, 125, 'Decision', 'Particulars \n required?', 100, 50, [port1]));
-nodes.push(CreateNodes('node4', 730, 125, 'Process', 'Specify particulars', 90, 25));
-nodes.push(CreateNodes('node5', 500, 225, 'Process', 'Design collection', 100, 25, [port]));
-nodes.push(CreateNodes('node6', 500, 320, 'Process', 'Cluster of events', 100, 25));
-nodes.push(CreateNodes('node7', 500, 420, 'Process', 'Start the process', 100, 25));
-nodes.push(CreateNodes('node8', 730, 320, 'Process', 'Record and analyze \n results', 170, 25, [port]));
-nodes.push(CreateNodes('node9', 730, 420, 'Terminator', 'End ', 100, 35));
-
+nodes.push(createNodes('node1', 100, 125, 'Terminator', 'Begin', 100, 35));
+nodes.push(createNodes('node2', 300, 125, 'Process', 'Specify collection', 120, 25, [port]));
+nodes.push(createNodes('node3', 500, 125, 'Decision', 'Particulars \n required?', 100, 50, [port1]));
+nodes.push(createNodes('node4', 730, 125, 'Process', 'Specify particulars', 90, 25));
+nodes.push(createNodes('node5', 500, 225, 'Process', 'Design collection', 100, 25, [port]));
+nodes.push(createNodes('node6', 500, 320, 'Process', 'Cluster of events', 100, 25));
+nodes.push(createNodes('node7', 500, 420, 'Process', 'Start the process', 100, 25));
+nodes.push(createNodes('node8', 730, 320, 'Process', 'Record and analyze \n results', 170, 25, [port]));
+nodes.push(createNodes('node9', 730, 420, 'Terminator', 'End ', 100, 35));
+ //Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [];
-connectors.push(CreateConnector('connector1', 'node1', 'node2', ''));
-connectors.push(CreateConnector('connector2', 'node2', 'node3', ''));
-connectors.push(CreateConnector('connector3', 'node3', 'node4', 'Yes'));
-connectors.push(CreateConnector('connector4', 'node3', 'node5', 'No'));
-connectors.push(CreateConnector('connector5', 'node5', 'node6', ''));
-connectors.push(CreateConnector('connector6', 'node6', 'node7', ''));
-connectors.push(CreateConnector('connector7', 'node8', 'node6', ''));
-connectors.push(CreateConnector('connector8', 'node7', 'node9', ''));
-connectors.push(CreateConnector('connector10', 'node4', 'node5', '', 'Orthogonal', 'Bottom', 'port', 220));
+connectors.push(createConnector('connector1', 'node1', 'node2', ''));
+connectors.push(createConnector('connector2', 'node2', 'node3', ''));
+connectors.push(createConnector('connector3', 'node3', 'node4', 'Yes'));
+connectors.push(createConnector('connector4', 'node3', 'node5', 'No'));
+connectors.push(createConnector('connector5', 'node5', 'node6', ''));
+connectors.push(createConnector('connector6', 'node6', 'node7', ''));
+connectors.push(createConnector('connector7', 'node8', 'node6', ''));
+connectors.push(createConnector('connector8', 'node7', 'node9', ''));
+connectors.push(createConnector('connector10', 'node4', 'node5', '', 'Orthogonal', 'Bottom', 'port', 220));
 
 let SAMPLE_CSS = `
+/* For property panel */
 #flowExecitionPropertySection .row {
             margin-left: 0px;
             margin-right: 0px;
@@ -243,7 +233,7 @@ export class FlowExecution extends SampleBase<{}, {}> {
     );
   }
 }
-function CreateConnector(
+function createConnector(
   name: string, source: string, target: string, content: string, type?: Segments,
   direction?: Direction, targePort?: string, length?: number): ConnectorModel {
   let connector: ConnectorModel = {};
@@ -274,7 +264,7 @@ function CreateConnector(
   return connector;
 }
 
-function CreateNodes(
+function createNodes(
   name: string, offsetX: number, offsetY: number, shape: any, content: string,
   width: number, height: number, ports?: PointPortModel[]): NodeModel {
   let node: NodeModel = {};

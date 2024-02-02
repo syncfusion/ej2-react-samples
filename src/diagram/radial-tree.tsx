@@ -26,10 +26,6 @@ import { radialTree } from './diagram-data';
 
 import "./font-icons.css";
 
-
-const SAMPLE_CSS = `<style>
-<div class="property-section" style="padding-bottom: 0px">
-`;
 export interface DataInfo {
   [key: string]: string;
 }
@@ -43,7 +39,6 @@ export class Radial extends SampleBase<{}, {}> {
   render() {
     return (
       <div className="control-panel">
-        <style>SAMPLE_CSS</style>
         <div className="control-section">
         <div className="content-wrapper" style={{ width: "100%" }}>
             {/* create and add ZoomIn,ZoomOut and Reset options in ToolBar. */}

@@ -89,16 +89,16 @@ export class HierarchicalModel extends SampleBase<{}, {}> {
       if (target.className === "image-pattern-style") {
         switch (target.id) {
           case "toptobottom":
-            updatelayout(target, "TopToBottom");
+            updateLayout(target, "TopToBottom");
             break;
           case "bottomtotop":
-            updatelayout(target, "BottomToTop");
+            updateLayout(target, "BottomToTop");
             break;
           case "lefttoright":
-            updatelayout(target, "LeftToRight");
+            updateLayout(target, "LeftToRight");
             break;
           case "righttoleft":
-            updatelayout(target, "RightToLeft");
+            updateLayout(target, "RightToLeft");
             break;
         }
       }
@@ -355,7 +355,7 @@ function connectorDefaults(
 }
 
 //update the orientation of the Layout.
-function updatelayout(
+function updateLayout(
   target: HTMLElement,
   orientation: LayoutOrientation
 ): void {

@@ -221,34 +221,46 @@ const HeaderTemplate = () => {
     };
 
     const updateSQLContentTemplate = () => {
+        let codeMirrorEditor: any;
         content = updateSQLContent();
         /* custom code start */
         clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-sql-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-sql-content')[0], {
             parserfile: "codemirror/contrib/sql/js/parsesql.js",
             path: "codemirror/js/",
             stylesheet: "css/sqlcolors.css",
+            readOnly: true,
             matchBrackets: true,
             lineWrapping: true,
             textWrapping: true
         });
         codeMirrorEditor.setValue(content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-sql-content')[0].textContent = content;
+            (document.getElementsByClassName('e-sql-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
     const updateJSONContentTemplate = () => {
+        let codeMirrorEditor: any;
         let validRule: any = qryBldrObj.current.getValidRules(qryBldrObj.current.rule);
         content = JSON.stringify(validRule, null, 4);
         /* custom code start */
         clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0], {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here
         });
         codeMirrorEditor.setValue(content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-json-content')[0].textContent = content;
+            (document.getElementsByClassName('e-json-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
     const updateMongoContentTemplate = () => {
+        let codeMirrorEditor: any;
         mongoQuery = '{';
         const allRules: any = qryBldrObj.current.getValidRules();
         mongoQuery =  getMongoQuery(allRules);
@@ -256,23 +268,29 @@ const HeaderTemplate = () => {
         content = JSON.stringify(mongoJSON, null, 4);
         /* custom code start */
         clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-mongo-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-mongo-content')[0], {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here
         });
         codeMirrorEditor.setValue(content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-mongo-content')[0].textContent = content;
+            (document.getElementsByClassName('e-mongo-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
     const updateCELContentTemplate = () => {
+        let codeMirrorEditor: any;
         const allRules: any = qryBldrObj.current.getValidRules();
         celQuery = '';
         content = getCELQuery(allRules);
         /* custom code start */
         clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0], {
             parserfile: "codemirror/contrib/sql/js/parsesql.js",
             path: "codemirror/js/",
+            readOnly: true,
             stylesheet: "css/sqlcolors.css",
             matchBrackets: true,
             lineWrapping: true,
@@ -280,23 +298,33 @@ const HeaderTemplate = () => {
         });
         codeMirrorEditor.setValue(content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-cel-content')[0].textContent = content;
+            (document.getElementsByClassName('e-cel-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
     const updateSpCELContentTemplate = () => {
+        let codeMirrorEditor: any;
         spELQuery = '';
         const allRules: any = qryBldrObj.current.getValidRules();
         content = getSpELQuery(allRules);
         /* custom code start */
         clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0], {
             parserfile: "codemirror/contrib/sql/js/parsesql.js",
             path: "codemirror/js/",
             stylesheet: "css/sqlcolors.css",
             matchBrackets: true,
             lineWrapping: true,
-            textWrapping: true
+            textWrapping: true,
+            readOnly: true
         });
         codeMirrorEditor.setValue(content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-spel-content')[0].textContent = content;
+            (document.getElementsByClassName('e-spel-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
     /* custom code start */
     const clearHighlight = () => {

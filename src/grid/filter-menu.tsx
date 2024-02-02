@@ -15,7 +15,7 @@ export class FilterMenu extends SampleBase<{}, {}> {
 
     private gridInstance: GridComponent;
     private checkBoxInstance: CheckBoxComponent;
-    public hostUrl: string = 'https://ej2services.syncfusion.com/react/release/';
+    public hostUrl: string = 'https://services.syncfusion.com/react/production/';
     public data: DataManager = new DataManager({ url: this.hostUrl + 'api/UrlDataSource', adaptor: new UrlAdaptor  });
     public query: Query = new Query().addParams('dataCount', '10000');
     private filterType: { [key: string]: Object }[] = [

@@ -259,27 +259,7 @@ const SAMPLE_CSS = `
 
 .e-toggle-palette::before {
   content: "\e700"
-}
-
-.material #logicCircuit #palette-space .e-accordion {
-  border: none;
-}
-
-.material #logicCircuit #palette-space {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.bootstrap #logicCircuit .sb-mobile-diagram {
-  height: calc(100% - 5px);
-  margin-top: 5px;
-  border-radius: 4px;
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.fabric #logicCircuit .sb-mobile-diagram {
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
-}
-`
+}`
 function createNode(
   id: string,
   offsetX: number,
@@ -409,7 +389,7 @@ function LogicCircuit() {
                   id: "flow",
                   expanded: true,
                   symbols: items,
-                  title: "Flow Shapes"
+                  title: "Logic Gates"
                 },
                 {
                   id: "connectors",

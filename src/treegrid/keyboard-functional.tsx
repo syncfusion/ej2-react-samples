@@ -215,8 +215,8 @@ const KeyBoard = () => {
                     property which is set to true by default. The applicable key
                     combinations and its relative functionalities are listed below,
                 </p>
-                <p>
-                    <table>
+                <table>
+                    <tbody>
                         <tr>
                             <td>
                                 <b>Keys</b>
@@ -405,8 +405,8 @@ const KeyBoard = () => {
                             </td>
                             <td>Go to last pager</td>
                         </tr>
-                    </table>
-                </p>
+                    </tbody>
+                </table>
                 <p>
                     More information on the gridLines configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treegrid/accessibility#keyboard-navigation">documentation section</a>.
                 </p>

@@ -35,26 +35,6 @@ let shape: BasicShapeModel = {
   cornerRadius: 10
 };
 let diagramInstance: DiagramComponent;
-const SAMPLE_CSS = `.control-section {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 0px;
-  padding-left: 0px;
-}
-
-.container-fluid {
-  padding-left: 0px;
-}
-
-.property-panel-content {
-  padding-top: 0px !important;
-}
-
-@media (max-width: 550px) {
-  .property-panel-content {
-      padding-top: 0px !important;
-  }
-}`;
 
 export class KeyBoardInteraction extends SampleBase<{}, {}> {
   render() {
@@ -304,7 +284,7 @@ export class KeyBoardInteraction extends SampleBase<{}, {}> {
             return true;
           },
           execute: (): void => {
-            this.navigateToRighttSibling();
+            this.navigateToRightSibling();
           },
           gesture: { key: Keys.Right }
         },
@@ -350,7 +330,7 @@ export class KeyBoardInteraction extends SampleBase<{}, {}> {
   }
 
   //Navigation for RightSibling Node
-  public navigateToRighttSibling(): void {
+  public navigateToRightSibling(): void {
     let child: Node = diagramInstance.selectedItems.nodes[0] as Node;
     if (child.inEdges && child.inEdges.length > 0) {
       let connectorId: string = child.inEdges[0];

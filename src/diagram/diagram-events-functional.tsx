@@ -56,13 +56,6 @@ const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
     border: 1px solid #d9dedd;
   }
   
-  .material #diagramEventsControlSection  #palette-space .e-accordion {
-      border: none;
-  }
-  .material #diagramEventsControlSection #palette-space {
-     border: 1px solid rgba(0, 0, 0, 0.12);
-  }
-
   @media (max-width: 550px) {
     #diagramEventsControlSection .sb-mobile-palette {
       z-index: 19;

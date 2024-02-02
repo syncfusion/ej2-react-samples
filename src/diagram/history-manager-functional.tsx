@@ -17,12 +17,6 @@ import { DataManager } from "@syncfusion/ej2-data";
 import { updateSampleSection } from "../common/sample-base";
 import { ButtonComponent, CheckBoxComponent, ChangeArgs } from "@syncfusion/ej2-react-buttons";
 import {
-  DropDownListComponent
-} from "@syncfusion/ej2-react-dropdowns";
-import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
-import { Button } from "@syncfusion/ej2-buttons";
-import { DropDownList } from "@syncfusion/ej2-react-dropdowns";
-import {
   NumericTextBoxComponent,
   ChangeEventArgs
 } from "@syncfusion/ej2-react-inputs";
@@ -52,6 +46,7 @@ let SAMPLE_CSS = `#historyPropertySection .row {
             border-bottom: 1px solid #d9dedd;
             padding: 10px;
         }`
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: 'node1', offsetX: 400, offsetY: 30, style: { fill: '#FFB2B2', strokeColor: '#FFB2B2' }, width: 70, height: 40,
@@ -90,7 +85,7 @@ let nodes: NodeModel[] = [
     ]
   }
 ];
-
+ //Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   { id: 'connector1', sourceID: 'node1', targetID: 'node2' },
   { id: 'connector2', sourceID: 'node2', targetID: 'node3' },

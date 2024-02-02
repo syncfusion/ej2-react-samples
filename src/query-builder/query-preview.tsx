@@ -202,20 +202,26 @@ export class Template extends SampleBase<{}, {}> {
     }
 
     updateJSONContentTemplate = () => {
+        let codeMirrorEditor: any;
         let validRule: any = this.qryBldrObj.getValidRules(this.qryBldrObj.rule);
         this.content = JSON.stringify(validRule, null, 4);
         /* custom code start */
         this.clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0], {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here
         });
         codeMirrorEditor.setValue(this.content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-json-content')[0].textContent = this.content;
+            (document.getElementsByClassName('e-json-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
 
     updateMongoContentTemplate = () => {
+        let codeMirrorEditor: any;
         this.mongoQuery = '{';
         const allRules: any = this.qryBldrObj.getValidRules();
         this.mongoQuery =  getMongoQuery(allRules);
@@ -223,49 +229,65 @@ export class Template extends SampleBase<{}, {}> {
         this.content = JSON.stringify(mongoJSON, null, 4);
          /* custom code start */
         this.clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-mongo-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-mongo-content')[0], {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here
         });
         codeMirrorEditor.setValue(this.content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-mongo-content')[0].textContent = this.content;
+            (document.getElementsByClassName('e-mongo-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
 
     updateCELContentTemplate = () => {
+        let codeMirrorEditor: any;
         const allRules: any = this.qryBldrObj.getValidRules();
         this.celQuery = '';
         this.content = getCELQuery(allRules);
         /* custom code start */
         this.clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0], {
             parserfile: "codemirror/contrib/sql/js/parsesql.js",
             path: "codemirror/js/",
             stylesheet: "css/sqlcolors.css",
+            readOnly: true,
             matchBrackets: true,
             lineWrapping: true,
             textWrapping: true
         });
         codeMirrorEditor.setValue(this.content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-cel-content')[0].textContent = this.content;
+            (document.getElementsByClassName('e-cel-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
 
     updateSpCELContentTemplate = () => {
+        let codeMirrorEditor: any;
         this.spELQuery = '';
         const allRules: any = this.qryBldrObj.getValidRules();
         this.content = getSpELQuery(allRules);
         /* custom code start */
         this.clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0], {
             parserfile: "codemirror/contrib/sql/js/parsesql.js",
             path: "codemirror/js/",
             stylesheet: "css/sqlcolors.css",
+            readOnly: true,
             matchBrackets: true,
             lineWrapping: true,
             textWrapping: true
         });
         codeMirrorEditor.setValue(this.content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-spel-content')[0].textContent = this.content;
+            (document.getElementsByClassName('e-spel-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
 
     change= (args: any) => {
@@ -280,19 +302,25 @@ export class Template extends SampleBase<{}, {}> {
     }
     
     updateSQLContentTemplate = () => {
+        let codeMirrorEditor: any;
         this.content = this.updateSQLContent();
         /* custom code start */
         this.clearHighlight();
-        const codeMirrorEditor: any = CodeMirror.fromTextArea(document.getElementsByClassName('e-sql-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-sql-content')[0], {
             parserfile: "codemirror/contrib/sql/js/parsesql.js",
             path: "codemirror/js/",
             stylesheet: "css/sqlcolors.css",
+            readOnly: true,
             matchBrackets: true,
             lineWrapping: true,
             textWrapping: true
         });
         codeMirrorEditor.setValue(this.content);
         /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-sql-content')[0].textContent = this.content;
+            (document.getElementsByClassName('e-sql-content')[0] as HTMLElement).style.display = 'block';
+        }
     }
     updateSQLContent = () => {
         let content: any;

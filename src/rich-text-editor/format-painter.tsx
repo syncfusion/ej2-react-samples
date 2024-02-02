@@ -1,4 +1,4 @@
-import { RichTextEditorComponent, HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Link, Image, Table, ToolbarSettingsModel, Inject } from "@syncfusion/ej2-react-richtexteditor";
+import { RichTextEditorComponent, HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Link, Image, Table, Audio, Video, ToolbarSettingsModel, Inject } from "@syncfusion/ej2-react-richtexteditor";
 import { TextBoxComponent, FocusOutEventArgs } from "@syncfusion/ej2-react-inputs";
 import * as React from 'react';
 import { PropertyPane } from '../common/property-pane';
@@ -54,7 +54,7 @@ export class FormatPainterRTE extends SampleBase<{}, {}> {
                                     to <span style={{backgroundColor: 'rgb(198, 140, 83)'}}><strong>multiple sections</strong></span>. 
                                     It's a helpful tool for anyone who works with text editing regularly, such as writers, editors, and content creators.
                                 </p>
-                            <Inject services={[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table]} />
+                            <Inject services={[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table, Audio, Video, Audio, Video]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>

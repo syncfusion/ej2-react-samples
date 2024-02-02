@@ -253,10 +253,6 @@ const SAMPLE_CSS = `   .e-bigger #toolbar_diagram .e-icons.e-caret,
 #toolbar_diagram .e-icons.e-caret {
     font-size: 12px;
     margin-right: 0px;
-}
-
-#custombtn {
-    padding: 4px 0px 2px 4px;
 }`;
 export class PrintExport extends SampleBase<{}, {}> {
   rendereComplete() {
@@ -280,7 +276,7 @@ export class PrintExport extends SampleBase<{}, {}> {
     }
     return (
       <div className="control-pane">
-        <style>SAMPLE_CSS</style>
+        <style>{SAMPLE_CSS}</style>
         <div
           className="control-section"
         >

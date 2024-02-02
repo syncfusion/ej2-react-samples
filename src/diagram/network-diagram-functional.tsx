@@ -89,7 +89,7 @@ let portmo: PointPortModel[] = [
   { id: 'port3', offset: { x: 0.5, y: 0.3 } },
   { id: 'port4', offset: { x: 0.5, y: 0.97 } }
 ];
-
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: 'Server1', offsetX: 80, offsetY: 75,
@@ -235,7 +235,7 @@ let nodes: NodeModel[] = [
     id: 'connector6', offsetX: 370, offsetY: 380
   }
 ];
-
+ //Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   {
     id: 'connectora', sourceID: 'Server1', targetID: 'WorkStation1',

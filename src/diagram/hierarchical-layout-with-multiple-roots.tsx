@@ -22,6 +22,7 @@ export interface EmployeeInfo {
     Label: string;
   }
   let diagramInstance: DiagramComponent;
+  //Initialize dataSource for diagram
   let data:Object[] = [
     { id: 1, Label: 'Production Manager' },
     { id: 2, Label: 'Control Room', parentId: 1 },

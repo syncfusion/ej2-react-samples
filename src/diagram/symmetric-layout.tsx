@@ -28,48 +28,6 @@ export interface EmployeeInfo {
   Name: string;
 }
 
-const SAMPLE_CSS = `.image-pattern-style {
-  background-color: white;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 75px;
-  width: calc((100% - 12px) / 3);
-  cursor: pointer;
-  border: 1px solid #D5D5D5;
-  background-position: center;
-  float: left;
-}
-
-.image-pattern-style:hover {
-  border-color: gray;
-  border-width: 2px;
-}
-
-.property-panel-header {
-padding-top: 15px;
-padding-bottom: 15px;
-}
-
-.row {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-.row-header {
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.e-selected-style {
-  border-color: #006CE6;
-  border-width: 2px;
-}
-
-.diagram-control-pane .col-xs-6 {
-  padding-left: 0px;
-  padding-right: 0px;
-}`;
-
 let diagramInstance: DiagramComponent;
 let springLength: NumericTextBoxComponent;
 let springfactor: NumericTextBoxComponent;

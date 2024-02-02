@@ -218,18 +218,6 @@
 .e-diagram-export::before {
   content: "\e711";
 }
-.material .e-diagram-print::before {
-  content: "\e703";
-}
-.material .e-diagram-export::before {
-  content: "\e706";
-}
-.bootstrap .e-diagram-print::before {
-  content: "\e71b";
-}
-.bootstrap .e-diagram-export::before {
-  content: "\e71e";
-}
 
 .e-diagram-bold::before {
   content: "\e712";
@@ -242,30 +230,6 @@
 .e-diagram-underline::before {
   content: "\e716";
 }
-
-.material .e-diagram-bold::before {
-  content: "\e707";
-}
-
-.material .e-diagram-italic::before {
-  content: "\e70b";
-}
-
-.material .e-diagram-underline::before {
-  content: "\e702";
-}
-
-.bootstrap .e-diagram-bold::before {
-  content: "\e71f";
-}
-
-.bootstrap .e-diagram-italic::before {
-  content: "\e723";
-}
-
-.bootstrap .e-diagram-underline::before {
-  content: "\e71a";
-}
 .e-diagram-zoomin::before {
   content: "\e70c";
 }
@@ -276,30 +240,6 @@
 
 .e-diagram-reset::before {
   content: "\e715";
-}
-
-.material .e-diagram-zoomin::before {
-  content: "\e700";
-}
-
-.material .e-diagram-zoomout::before {
-  content: "\e701";
-}
-
-.material .e-diagram-reset::before {
-  content: "\e70a";
-}
-
-.bootstrap .e-diagram-zoomin::before {
-  content: "\e718";
-}
-
-.bootstrap .e-diagram-zoomout::before {
-  content: "\e719";
-}
-
-.bootstrap .e-diagram-reset::before {
-  content: "\e722";
 }
 .e-diagram-new::before {
   content: "\e70f";
@@ -313,30 +253,6 @@
   content: "\e713";
 }
 
-.material .e-diagram-new::before {
-  content: "\e704";
-}
-
-.material .e-diagram-save::before {
-  content: "\e705";
-}
-
-.material .e-diagram-open::before {
-  content: "\e708";
-}
-
-.bootstrap .e-diagram-new::before {
-  content: "\e71c";
-}
-
-.bootstrap .e-diagram-save::before {
-  content: "\e71d";
-}
-
-.bootstrap .e-diagram-open::before {
-  content: "\e720";
-}
-
 .e-ddb-crudicons.e-add::before {
   content: "\e705";
 }
@@ -347,30 +263,6 @@
    
 .e-ddb-crudicons.e-delete::before {
   content: "\e701";
-}
-
-.material .e-ddb-crudicons.e-add::before {
-  content: "\e704";
-}
-
-.material .e-ddb-crudicons.e-update::before {
-  content: "\e702";
-}
-
-.material .e-ddb-crudicons.e-delete::before {
-  content: "\e707";
-}
-
-.bootstrap .e-ddb-crudicons.e-add::before {
-  content: "\e706";
-}
-
-.bootstrap .e-ddb-crudicons.e-update::before {
-  content: "\e708";
-}
-
-.bootstrap .e-ddb-crudicons.e-delete::before {
-  content: "\e700";
 }
 
 #toolbar_diagram.e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-btn.e-tbtn-txt .e-icons.e-btn-icon  {
@@ -515,146 +407,6 @@
   content: '\e725';
 }
 
-.bootstrap5 #conTypeBtn {
-  color: #333;
-}
-.bootstrap4 #conTypeBtn {
-  color: #333;
-}
-.bootstrap5 #conTypeBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #conTypeBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #diagramexportBtn {
-  color: #333;
-}
-.bootstrap4 #expordiagramexportBtntBtn {
-  color: #333;
-}
-.bootstrap5 #diagramexportBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #diagramexportBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #shapesBtn {
-  color: #333;
-}
-.bootstrap4 #shapesBtn {
-  color: #333;
-}
-.bootstrap5 #shapesBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #shapesBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #alignBtn {
-  color: #333;
-}
-.bootstrap4 #alignBtn {
-  color: #333;
-}
-.bootstrap5 #alignBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #alignBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #distributeBtn {
-  color: #333;
-}
-.bootstrap4 #distributeBtn {
-  color: #333;
-}
-.bootstrap5 #distributeBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #distributeBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #orderBtn {
-  color: #333;
-}
-.bootstrap4 #orderBtn {
-  color: #333;
-}
-.bootstrap5 #orderBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #orderBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #groupBtn {
-  color: #333;
-}
-.bootstrap4 #groupBtn {
-  color: #333;
-}
-.bootstrap5 #groupBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #groupBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #rotateBtn {
-  color: #333;
-}
-.bootstrap4 #rotateBtn {
-  color: #333;
-}
-.bootstrap5 #rotateBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #rotateBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #flipBtn {
-  color: #333;
-}
-.bootstrap4 #flipBtn {
-  color: #333;
-}
-.bootstrap5 #flipBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #flipBtn:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap5 #btnZoomIncrement {
-  color: #333;
-}
-.bootstrap4 #btnZoomIncrement {
-  color: #333;
-}
-.bootstrap5 #btnZoomIncrement:hover {
-  color: #fff;
-  background-color: #333;
-}
-.bootstrap4 #btnZoomIncrement:hover {
-  color: #fff;
-  background-color: #333;
-}
 .disabledbutton {
   pointer-events: none;
   opacity: 0.4;

@@ -16,7 +16,7 @@ function FilterMenu() {
         margin-right: 15px;
     }`;
     let checkBoxInstance: CheckBoxComponent;
-    const hostUrl: string = 'https://ej2services.syncfusion.com/react/release/';
+    const hostUrl: string = 'https://services.syncfusion.com/react/production/';
     const data: DataManager = new DataManager({ url: hostUrl + 'api/UrlDataSource', adaptor: new UrlAdaptor  });
     const query: Query = new Query().addParams('dataCount', '10000');
     let gridInstance: GridComponent;

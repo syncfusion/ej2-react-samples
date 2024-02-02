@@ -32,43 +32,7 @@ import {
   ChangeEventArgs
 } from "@syncfusion/ej2-react-buttons";
 
-let shape: { [key: string]: Object }[] = [
-  { shapeName: "BasicShape", shapeId: "Basic" },
-  { shapeName: "FlowShape", shapeId: "Flow" },
-  { shapeName: "Connector", shapeId: "Segment" },
-  { shapeName: "Path", shapeId: "Path" },
-  { shapeName: "Image", shapeId: "Image" },
-  { shapeName: "SVG", shapeId: "SVG" },
-  { shapeName: "Text", shapeId: "Text" }
-];
-let basic: BasicShapes[] = [
-  "Rectangle",
-  "Ellipse",
-  "Hexagon",
-  "Parallelogram",
-  "Triangle",
-  "Plus",
-  "Star",
-  "Pentagon",
-  "Heptagon",
-  "Octagon",
-  "Trapezoid",
-  "Decagon",
-  "RightTriangle",
-  "Cylinder",
-  "Diamond"
-];
-let flow: FlowShapes[] = [
-  "Process",
-  "Decision",
-  "Document",
-  "PreDefinedProcess",
-  "Terminator",
-  "PaperTap",
-  "DirectData",
-  "SequentialData"
-];
-let connector: Segments[] = ["Straight", "Orthogonal"];
+
 let node: NodeModel;
 let diagramInstance: DiagramComponent;
 let interval: number[];
@@ -107,7 +71,9 @@ let snapSettings: SnapSettingsModel = {
   horizontalGridlines: gridlines,
   verticalGridlines: gridlines
 };
-const SAMPLE_CSS = `.image-pattern-style {
+const SAMPLE_CSS = `
+/* For changing drawing shapes in property panel */
+.image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;

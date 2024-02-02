@@ -2,12 +2,6 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {
   Node,
-  Canvas,
-  PathElement,
-  HorizontalAlignment,
-  DiagramElement,
-  TextElement,
-  PortVisibility,
   HierarchicalTree,
   DataBinding,
   DiagramComponent,
@@ -21,9 +15,8 @@ import {
   DiagramTools
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
-import { DataManager } from "@syncfusion/ej2-data";
-import { Point } from "@syncfusion/ej2-diagrams/src/diagram/primitives/point";
 
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: 'Equipment', width: 120, height: 40, offsetX: 300, offsetY: 80,
@@ -242,47 +235,47 @@ let nodes: NodeModel[] = [
 ];
 //Initializes the Connectors for the diagram
 let connectors: ConnectorModel[] = [
-  CreateConnector('equipellise', '5,5', 'Equipment', 'ellipse1', '#A52A2A', 2),
-  CreateConnector('connect12', '5,5', 'ellipse1', 'ellipse2', '#A52A2A', 2),
-  CreateConnector('connect13', '5,5', 'ellipse2', 'ellipse3', '#A52A2A', 2),
-  CreateConnector('connect14', '5,5', 'ellipse3', 'Colorellipse3', '#A52A2A', 2),
-  CreateConnector('connect15', '5,5', 'Environment', 'ellipse4', '#A52A2A', 2),
-  CreateConnector('connect16', '5,5', 'ellipse4', 'ellipse5', '#A52A2A', 2),
-  CreateConnector('connect17', '5,5', 'ellipse4', 'ellipse5', '#A52A2A', 2),
-  CreateConnector('connect18', '5,5', 'ellipse5', 'Colorellipse2', '#A52A2A', 2),
-  CreateConnector('connect19', '5,5', 'Person', 'ellipse6', '#A52A2A', 2),
-  CreateConnector('connect20', '5,5', 'ellipse6', 'ellipse7', '#A52A2A', 2),
-  CreateConnector('connect21', '5,5', 'ellipse7', 'ellipse8', '#A52A2A', 2),
-  CreateConnector('connect22', '5,5', 'ellipse8', 'ellipse9', '#A52A2A', 2),
-  CreateConnector('connect23', '5,5', 'ellipse9', 'Colorellipse1', '#A52A2A', 2),
-  CreateConnector('connect24', '5,5', 'Materials', 'ellipse15', '#A52A2A', 2),
-  CreateConnector('connect25', '5,5', 'ellipse15', 'ellipse10', '#A52A2A', 2),
-  CreateConnector('connect26', '5,5', 'ellipse10', 'Colorellipse3', '#A52A2A', 2),
-  CreateConnector('connect27', '5,5', 'Machine', 'ellipse13', '#A52A2A', 2),
-  CreateConnector('connect28', '5,5', 'ellipse13', 'ellipse14', '#A52A2A', 2),
-  CreateConnector('connect29', '5,5', 'ellipse14', 'Colorellipse2', '#A52A2A', 2),
-  CreateConnector('connect30', '5,5', 'Methods', 'ellipse11', '#A52A2A', 2),
-  CreateConnector('connect31', '5,5', 'ellipse11', 'ellipse12', '#A52A2A', 2),
-  CreateConnector('connect32', '5,5', 'ellipse12', 'Colorellipse1', '#A52A2A', 2),
-  CreateConnector('connect33', '', 'Colorellipse4', 'Colorellipse3', '#000000', 2),
-  CreateConnector('connect34', '', 'Colorellipse3', 'Colorellipse2', '#000000', 2),
-  CreateConnector('connect35', '', 'Colorellipse2', 'Colorellipse1', '#000000', 2),
-  CreateConnector('connect36', '', 'Colorellipse1', 'Colorellipse5', '#000000', 2),
-  CreateConnector('connect37', '5,5', 'TextPrograms', 'ellipse1', '#A52A2A', 2),
-  CreateConnector('connect38', '5,5', 'DataBooks', 'ellipse2', '#A52A2A', 2),
-  CreateConnector('connect39', '5,5', 'Fixtures', 'ellipse3', '#A52A2A', 2),
-  CreateConnector('connect40', '5,5', 'Ventilatorssound', 'ellipse4', '#A52A2A', 2),
-  CreateConnector('connect41', '5,5', 'Noise', 'ellipse5', '#A52A2A', 2),
-  CreateConnector('connect42', '5,5', 'Education', 'ellipse6', '#A52A2A', 2),
-  CreateConnector('connect43', '5,5', 'Motivation', 'ellipse7', '#A52A2A', 2),
-  CreateConnector('connect44', '5,5', 'Tiredness', 'ellipse8', '#A52A2A', 2),
-  CreateConnector('connect45', '5,5', 'Storer', 'ellipse9', '#A52A2A', 2),
-  CreateConnector('connect46', '5,5', 'Software', 'ellipse15', '#A52A2A', 2),
-  CreateConnector('connect47', '5,5', 'Computer', 'ellipse10', '#A52A2A', 2),
-  CreateConnector('connect48', '5,5', 'Procurement', 'ellipse13', '#A52A2A', 2),
-  CreateConnector('connect49', '5,5', 'Quality', 'ellipse14', '#A52A2A', 2),
-  CreateConnector('connect50', '5,5', 'Order', 'ellipse12', '#A52A2A', 2),
-  CreateConnector('connect51', '5,5', 'Standardization', 'ellipse11', '#A52A2A', 2)
+  createConnector('equipellise', '5,5', 'Equipment', 'ellipse1', '#A52A2A', 2),
+  createConnector('connect12', '5,5', 'ellipse1', 'ellipse2', '#A52A2A', 2),
+  createConnector('connect13', '5,5', 'ellipse2', 'ellipse3', '#A52A2A', 2),
+  createConnector('connect14', '5,5', 'ellipse3', 'Colorellipse3', '#A52A2A', 2),
+  createConnector('connect15', '5,5', 'Environment', 'ellipse4', '#A52A2A', 2),
+  createConnector('connect16', '5,5', 'ellipse4', 'ellipse5', '#A52A2A', 2),
+  createConnector('connect17', '5,5', 'ellipse4', 'ellipse5', '#A52A2A', 2),
+  createConnector('connect18', '5,5', 'ellipse5', 'Colorellipse2', '#A52A2A', 2),
+  createConnector('connect19', '5,5', 'Person', 'ellipse6', '#A52A2A', 2),
+  createConnector('connect20', '5,5', 'ellipse6', 'ellipse7', '#A52A2A', 2),
+  createConnector('connect21', '5,5', 'ellipse7', 'ellipse8', '#A52A2A', 2),
+  createConnector('connect22', '5,5', 'ellipse8', 'ellipse9', '#A52A2A', 2),
+  createConnector('connect23', '5,5', 'ellipse9', 'Colorellipse1', '#A52A2A', 2),
+  createConnector('connect24', '5,5', 'Materials', 'ellipse15', '#A52A2A', 2),
+  createConnector('connect25', '5,5', 'ellipse15', 'ellipse10', '#A52A2A', 2),
+  createConnector('connect26', '5,5', 'ellipse10', 'Colorellipse3', '#A52A2A', 2),
+  createConnector('connect27', '5,5', 'Machine', 'ellipse13', '#A52A2A', 2),
+  createConnector('connect28', '5,5', 'ellipse13', 'ellipse14', '#A52A2A', 2),
+  createConnector('connect29', '5,5', 'ellipse14', 'Colorellipse2', '#A52A2A', 2),
+  createConnector('connect30', '5,5', 'Methods', 'ellipse11', '#A52A2A', 2),
+  createConnector('connect31', '5,5', 'ellipse11', 'ellipse12', '#A52A2A', 2),
+  createConnector('connect32', '5,5', 'ellipse12', 'Colorellipse1', '#A52A2A', 2),
+  createConnector('connect33', '', 'Colorellipse4', 'Colorellipse3', '#000000', 2),
+  createConnector('connect34', '', 'Colorellipse3', 'Colorellipse2', '#000000', 2),
+  createConnector('connect35', '', 'Colorellipse2', 'Colorellipse1', '#000000', 2),
+  createConnector('connect36', '', 'Colorellipse1', 'Colorellipse5', '#000000', 2),
+  createConnector('connect37', '5,5', 'TextPrograms', 'ellipse1', '#A52A2A', 2),
+  createConnector('connect38', '5,5', 'DataBooks', 'ellipse2', '#A52A2A', 2),
+  createConnector('connect39', '5,5', 'Fixtures', 'ellipse3', '#A52A2A', 2),
+  createConnector('connect40', '5,5', 'Ventilatorssound', 'ellipse4', '#A52A2A', 2),
+  createConnector('connect41', '5,5', 'Noise', 'ellipse5', '#A52A2A', 2),
+  createConnector('connect42', '5,5', 'Education', 'ellipse6', '#A52A2A', 2),
+  createConnector('connect43', '5,5', 'Motivation', 'ellipse7', '#A52A2A', 2),
+  createConnector('connect44', '5,5', 'Tiredness', 'ellipse8', '#A52A2A', 2),
+  createConnector('connect45', '5,5', 'Storer', 'ellipse9', '#A52A2A', 2),
+  createConnector('connect46', '5,5', 'Software', 'ellipse15', '#A52A2A', 2),
+  createConnector('connect47', '5,5', 'Computer', 'ellipse10', '#A52A2A', 2),
+  createConnector('connect48', '5,5', 'Procurement', 'ellipse13', '#A52A2A', 2),
+  createConnector('connect49', '5,5', 'Quality', 'ellipse14', '#A52A2A', 2),
+  createConnector('connect50', '5,5', 'Order', 'ellipse12', '#A52A2A', 2),
+  createConnector('connect51', '5,5', 'Standardization', 'ellipse11', '#A52A2A', 2)
 ];
 let diagramInstance: DiagramComponent;
 
@@ -348,7 +341,7 @@ export class Fishbone extends SampleBase<{}, {}> {
 
 
 
-function CreateConnector(
+function createConnector(
   name: string, lineDashArray: string, source: string, target: string, lineColor: string, lineWidth: number): ConnectorModel {
   let connector: ConnectorModel = {};
   connector.id = name;

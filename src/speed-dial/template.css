@@ -50,6 +50,8 @@
     padding: 10px;
     background: transparent;
     position: relative;
+    display: flex;
+    align-items: end;
 }
 
 .speeddial-form .head .textEle {
@@ -61,7 +63,6 @@
 
 .speeddial-form .head .iconEle {
     width: 25px;
-    display: inline-block;
 }
 
 .speeddial-form .closeicon {

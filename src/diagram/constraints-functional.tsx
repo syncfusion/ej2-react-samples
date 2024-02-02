@@ -25,36 +25,10 @@ Diagram.Inject(ConnectorEditing);
 
 
 let diagramInstance: DiagramComponent;
-const SAMPLE_CSS = `.image-pattern-style {
-    background-color: white;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 75px;
-    width: calc((100% - 12px) / 3);
-    cursor: pointer;
-    border: 1px solid #d5d5d5;
-    background-position: center;
-    float: left;
-  }
-
-  .image-pattern-style:hover {
-    border-color: gray;
-    border-width: 2px;
-  }
-
+const SAMPLE_CSS = `
   .row {
     margin-left: 0px;
     margin-right: 0px;
-  }
-
-  .row-header {
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .e-selected-style {
-    border-color: #006ce6;
-    border-width: 2px;
   }`;
 let handles:UserHandleModel[]  = [
     {
@@ -518,7 +492,8 @@ function ConstraintsSample() {
   return (
     <div className="control-pane diagram-control-pane">
     <style>{SAMPLE_CSS}</style>
-    <div className="col-lg-9 control-section">
+    <div className="col-lg-10 control-section">
+      <div className="control-wrapper">
       <div
         className="content-wrapper"
         style={{ width: '100%', background: 'white' }}
@@ -605,6 +580,7 @@ function ConstraintsSample() {
         >
           <Inject services={[DiagramContextMenu, UndoRedo]} />
         </DiagramComponent>
+        </div>
       </div>
     </div>
     <div className="col-lg-2 property-section">

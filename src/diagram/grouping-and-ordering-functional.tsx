@@ -19,6 +19,7 @@ import { ColorPickerComponent, NumericTextBoxComponent } from "@syncfusion/ej2-r
 
 let diagramInstance: DiagramComponent;
 let toolbarEditor:ToolbarComponent;
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [
     {
       id: 'Diamond',
@@ -176,7 +177,7 @@ let nodes: NodeModel[] = [
       style: { strokeWidth: 2 },
     },
   ];
-  
+   //Initialize user handles
   let handles:UserHandleModel[]  = [
     {
       name: 'Clone',
@@ -212,7 +213,9 @@ let nodes: NodeModel[] = [
   
   let drawingNode:any;
 
-const sample_css = `.db-toolbar-container {
+const sample_css = `
+/* For toolbar size */
+.db-toolbar-container {
     width: 100% ;
    height: 44px;
 }
@@ -227,6 +230,7 @@ const sample_css = `.db-toolbar-container {
     height: 100%;
     float: right;
 }
+/* For making toolbar selection */
 .e-toolbar .e-toolbar-items .e-toolbar-item.tb-item-selected .e-tbar-btn.e-btn,
 .e-toolbar .e-toolbar-items .e-toolbar-item .e-dropdown-btn.tb-item-selected {
     background: #5f6161;

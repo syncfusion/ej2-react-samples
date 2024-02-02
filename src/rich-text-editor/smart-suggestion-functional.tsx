@@ -57,31 +57,21 @@
     }
    }
 
-  function beforeApplyFormat(isBlockFormat: Boolean):void{
-      let range1: Range = formatRTE.getRange();
-      let node: Node = formatRTE.formatter.editorManager.nodeSelection.getNodeCollection(range1)[0];
-      let blockNewLine = !(node.parentElement.innerHTML.replace(/&nbsp;|<br>/g, '').trim() == '/' || node.textContent.trim().indexOf('/')==0);
-      let blockNode: Node;
-      let startNode:Node = node;
-      if (blockNewLine && isBlockFormat) {
-          while (startNode != formatRTE.inputElement) {
-              blockNode = startNode;
-              startNode = startNode.parentElement;
-          }           
-      }          
-      let startPoint = range1.startOffset;
+  function beforeApplyFormat():void{
+      let currentRange: Range = formatRTE.getRange();
+      let node: Node = formatRTE.formatter.editorManager.nodeSelection.getNodeCollection(currentRange)[0];         
+      let startPoint = currentRange.startOffset;
       while(formatRTE.formatter.editorManager.nodeSelection.getRange(document).toString().indexOf("/") ==-1 ){
-          formatRTE.formatter.editorManager.nodeSelection.setSelectionText(document, node, node, startPoint, range1.endOffset);
+          formatRTE.formatter.editorManager.nodeSelection.setSelectionText(document, node, node, startPoint, currentRange.endOffset);
           startPoint--;
       }
-      let range2: Range = formatRTE.getRange();
-      let node2: Node = formatRTE.formatter.editorManager.nodeCutter.GetSpliceNode(range2, node as HTMLElement);
-      let previouNode: Node = node2.previousSibling;
-      const brTag: HTMLElement = document.createElement('br');
-      if (node2.parentElement && node2.parentElement.innerHTML.length === 1) {
-          node2.parentElement.appendChild(brTag);
+      let slashRange: Range = formatRTE.getRange();
+      let slashNode: Node = formatRTE.formatter.editorManager.nodeCutter.GetSpliceNode(slashRange, node as HTMLElement);
+      let previouNode: Node = slashNode.previousSibling;
+      if (slashNode.parentElement && slashNode.parentElement.innerHTML.length === 1) {
+          slashNode.parentElement.appendChild(document.createElement('br'));
       }
-      node2.parentNode.removeChild(node2);
+      slashNode.parentNode.removeChild(slashNode);
       if(previouNode) {
           selection.setCursorPoint(document, previouNode as Element, previouNode.textContent.length);
       }
@@ -115,41 +105,33 @@
       args.cancel = true;
       formatRTE.focusIn();
       saveSelection.restore();
-      if (!((args.itemData as  { [key: string]: Object }).formatType == 'Inline')) {
-          beforeApplyFormat(true);
+      if (args.itemData.formatType !== 'Inline') {
+        beforeApplyFormat();
       }
-      if ((args.itemData as  { [key: string]: Object }).command == 'OL') {
-          mentionObj.hidePopup();
+  
+      switch (args.itemData.command) {
+        case 'OL':
           formatRTE.executeCommand('insertOrderedList');
-      }
-      else if ((args.itemData as  { [key: string]: Object }).command == 'UL') {
-          mentionObj.hidePopup();
+          break;
+        case 'UL':
           formatRTE.executeCommand('insertUnorderedList');
-      }
-      else if ((args.itemData as  { [key: string]: Object }).command == 'CreateTable') {
-          mentionObj.hidePopup();
-          formatRTE.showDialog(DialogType.InsertTable);
-      }
-      else if ((args.itemData as  { [key: string]: Object }).command == 'Image') {
-          mentionObj.hidePopup();
-          formatRTE.showDialog(DialogType.InsertImage);
-      }
-      else if ((args.itemData as  { [key: string]: Object }).command == 'Audio') {
-          mentionObj.hidePopup();
-          formatRTE.showDialog(DialogType.InsertAudio);
-      }
-      else if ((args.itemData as  { [key: string]: Object }).command == 'Video') {
-          mentionObj.hidePopup();
-          formatRTE.showDialog(DialogType.InsertVideo);
-      }
-      else if ((args.itemData as  { [key: string]: Object }).command == 'EmojiPicker') {
-          beforeApplyFormat(false);
+          break;
+        case 'CreateTable':
+        case 'Image':
+        case 'Audio':
+        case 'Video':
+            mentionObj.hidePopup();
+            formatRTE.showDialog(args.itemData.command === 'Video'? DialogType.InsertVideo: args.itemData.command === 'Audio'
+                ? DialogType.InsertAudio: args.itemData.command === 'Image'? DialogType.InsertImage: DialogType.InsertTable);
+            break;
+        case 'EmojiPicker':
+          beforeApplyFormat();
           mentionObj.hidePopup();
           formatRTE.showEmojiPicker();
-      }
-      else {
-          mentionObj.hidePopup();
-          formatRTE.executeCommand('formatBlock', (args.itemData as  { [key: string]: Object }).command);
+          break;
+        default:
+          formatRTE.executeCommand('formatBlock', args.itemData.command);
+          break;
       }
     }
 

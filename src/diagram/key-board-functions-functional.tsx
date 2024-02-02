@@ -35,26 +35,7 @@ let shape: BasicShapeModel = {
   cornerRadius: 10
 };
 let diagramInstance: DiagramComponent;
-const SAMPLE_CSS = `.control-section {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 0px;
-  padding-left: 0px;
-}
 
-.container-fluid {
-  padding-left: 0px;
-}
-
-.property-panel-content {
-  padding-top: 0px !important;
-}
-
-@media (max-width: 550px) {
-  .property-panel-content {
-      padding-top: 0px !important;
-  }
-}`;
 function nodeDefaults(obj: Node): Node {
   if (!obj.children) {
     obj.shape = shape;
@@ -123,7 +104,7 @@ function getCommandManagerSettings(): CommandManagerModel {
           return true;
         },
         execute: (): void => {
-          navigateToRighttSibling();
+          navigateToRightSibling();
         },
         gesture: { key: Keys.Right }
       },
@@ -169,7 +150,7 @@ function navigateToParent(): void {
 }
 
 //Navigation for RightSibling Node
-function navigateToRighttSibling(): void {
+function navigateToRightSibling(): void {
   let child: Node = diagramInstance.selectedItems.nodes[0] as Node;
   if (child.inEdges && child.inEdges.length > 0) {
     let connectorId: string = child.inEdges[0];

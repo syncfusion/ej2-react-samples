@@ -3,7 +3,7 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel, Audio, Video, FormatPainter, EmojiPicker } from '@syncfusion/ej2-react-richtexteditor';
 import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
@@ -118,7 +118,7 @@ function IFrame() {
                                 <p>Creates bulleted and numbered lists.</p>
                             </li>
                         </ul>
-                        <Inject services={[Toolbar, Image, Link, HtmlEditor, Table, QuickToolbar, FileManager]} />
+                        <Inject services={[Toolbar, Image, Link, HtmlEditor, Table, QuickToolbar, FileManager, Audio, Video, FormatPainter, EmojiPicker]} />
                     </RichTextEditorComponent>
                 </div>
             </div>

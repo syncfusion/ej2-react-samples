@@ -117,7 +117,9 @@ let decoratorshape = [
   { shape: 'DoubleArrow', text: 'Double Arrow' }
 ];
 
-const SAMPLE_CSS = `.image-pattern-style {
+const SAMPLE_CSS = `
+/* For connector type and style change in property panel*/
+.image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -148,15 +150,6 @@ const SAMPLE_CSS = `.image-pattern-style {
         border-color: #006CE6;
         border-width: 2px;
     }
-
-    .e-colorpicker-wrapper .e-split-btn-wrapper .e-split-colorpicker.e-split-btn .e-selected-color .e-split-preview{
-        width: 100px!important;
-        margin-left: -40px!important;
-    }
-    .e-colorpicker-wrapper .e-split-btn-wrapper .e-split-colorpicker.e-split-btn{
-        width: 110px!important;
-    }
-
     label{
       display: inline-block;
       font-size: 13px;

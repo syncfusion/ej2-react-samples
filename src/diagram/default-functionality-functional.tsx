@@ -223,48 +223,6 @@ let connectors: ConnectorModel[] = [
     targetID: "node12"
   }
 ];
-const sample_css = `
-#conTypeBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#diagramexportBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#shapesBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#alignBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#distributeBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#orderBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#groupBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#rotateBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#flipBtn{
-  background-color: transparent;
-  border-color: transparent;
-}
-#btnZoomIncrement{
-  background-color: transparent;
-  border-color: transparent;
-}
-`;
 //Initialize the flowshapes for the symbol palatte
 let flowshapes: NodeModel[] = [
   { id: "Terminator", shape: { type: "Flow", shape: "Terminator" } },
@@ -464,6 +422,7 @@ function printDiagram(args:any) {
   options.pageWidth = diagramInstance.pageSettings.width;
   diagramInstance.print(options);
 }
+//To enable toolbar items.
 function enableItems()
 {
   toolbarEditor.items[6].disabled = false;
@@ -474,12 +433,14 @@ function enableItems()
   toolbarEditor.items[29].disabled = false;
   toolbarEditor.items[31].disabled = false;
 }
+//To disable toolbar items while multiselection.
 function disableMultiselectedItems()
 {
   toolbarEditor.items[22].disabled = true;
   toolbarEditor.items[23].disabled = true;
   toolbarEditor.items[27].disabled = true;
 }
+//To handle toolbar click
 function toolbarClick(args:any) {
   let item = args.item.tooltipText;
   switch (item) {
@@ -539,6 +500,7 @@ function toolbarClick(args:any) {
   }
   diagramInstance.dataBind();
 }
+//To change diagram zoom.
 function zoomChange(args:any){
   let zoomCurrentValue:any = (document.getElementById("btnZoomIncrement") as any).ej2_instances[0];
   let currentZoom:any = diagramInstance.scrollSettings.currentZoom;
@@ -645,6 +607,7 @@ function onSelectDistributeObjects(args:any){
       diagramInstance.distribute('RightToLeft');
   }
 }
+//To execute order commands
 function onSelectOrder(args:any){
   switch(args.item.text){
       case 'Bring Forward':
@@ -755,7 +718,6 @@ function historyChange(args:any){
 }
   return (
     <div className="control-pane">
-        <style>{sample_css}</style>
       <div className="control-section">
         <div style={{ width: "100%" }}>
         <div style={{display:'none'}}>

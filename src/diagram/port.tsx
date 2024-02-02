@@ -261,7 +261,7 @@ let node7Port: CustomPort[] = [
 let shape1: BasicShapeModel = { type: "Basic", shape: "Rectangle" };
 
 let shape2: BasicShapeModel = { type: "Basic", shape: "Diamond" };
-
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: "node1",
@@ -313,6 +313,7 @@ let nodes: NodeModel[] = [
     ports: node7Port
   }
 ];
+ //Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   {
     id: "connector1",
@@ -402,22 +403,6 @@ let visibility: { [key: string]: Object }[] = [
   { PortVisibility: PortVisibility.Connect, text: "Connect" }
 ];
 
-//Color collection of the Port.
-let color: { [key: string]: Object }[] = [
-  { text: "White", color: "white" },
-  { text: "#008080", color: "#008080" },
-  { text: "#E4B123", color: "#E4B123" },
-  { text: "#F05023", color: "#F05023" },
-  { text: "#3CB549", color: "#3CB549" },
-  { text: "#D572AD", color: "#D572AD" },
-  { text: "Black", color: "black" },
-  { text: "Goldenrod", color: "goldenrod" },
-  { text: "Indigo", color: "indigo" },
-  { text: "Chocolate", color: "chocolate" },
-  { text: "DarkGoldenRod", color: "darkgoldenrod" },
-  { text: "FireBrick", color: "firebrick" },
-  { text: "DarkRed", color: "darkred" }
-];
 
 //Shape collection of the Port.
 let shape: { [key: string]: Object }[] = [

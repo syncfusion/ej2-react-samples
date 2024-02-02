@@ -21,39 +21,7 @@ import { TooltipModel } from '@syncfusion/ej2-react-popups';
  * Tooltip sample
  */
 
-const SAMPLE_CSS = `#tooltipDiagramSection .image-pattern-style {
-    background-color: white;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 75px;
-    width: calc((100% - 12px) / 3);
-    cursor: pointer;
-    border: 1px solid #D5D5D5;
-    background-position: center;
-    float: left;
-}
-
-#tooltipDiagramSection .image-pattern-style:hover {
-    border-color: gray;
-    border-width: 2px;
-}
-
-#tooltipDiagramSection .row {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-#tooltipDiagramSection .row-header {
-    font-size: 13px;
-    font-weight: 500;
-}
-
-#tooltipDiagramSection .e-selected-style {
-    border-color: #006CE6;
-    border-width: 2px;
-}
-
-table{
+const SAMPLE_CSS = `table{
     border-collapse: separate;
 }
 .content-wrapper {
@@ -115,7 +83,7 @@ let modeDropdown: DropDownListComponent;
 let positionDropdown: DropDownListComponent;
 let contentDropdown: DropDownListComponent;
 let effectDropdown: DropDownListComponent;
-
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [
     {
         id: 'node1', width: 60, height: 60, offsetX: 35, offsetY: 120,
@@ -196,7 +164,7 @@ let nodes: NodeModel[] = [
     },
 ];
 
-
+ //Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
     { id: 'connector1', sourceID: 'node1', targetID: 'node2' },
     { id: 'connector2', sourceID: 'node2', targetID: 'node3' },
@@ -274,172 +242,174 @@ function Tooltip() {
             <div id='tooltipPropertySection' className='col-lg-4 property-section'>
                 <div className='property-panel-header' style={{ marginLeft: '0px' }}>Properties</div>
                 <table id='diagramTooltipPropertyPanel' title='Properties'>
-                    <tr style={{ paddingTop: "10px"}}>
-                        <td>
-                            <div>
-                                Relative Mode
-                            </div>
-                        </td>
-                        <td>
-                            <div style={{ paddingLeft: "15px" }}>
-                                <DropDownListComponent
-                                    id='mode'
-                                    ref={dropdown => (modeDropdown = dropdown)}
-                                    dataSource={modevalue}
-                                    fields={fields}
-                                    placeholder='select a mode value'
-                                    popupWidth='150'
-                                    width='85%'
-                                    index={0}
-                                    change={(args: any) => {
-                                        if (args.value === 'Mouse') {
-                                            diagramInstance.tooltip.relativeMode = 'Mouse';
-                                        } else {
-                                            diagramInstance.tooltip.relativeMode = 'Object';
-                                        }
-                                        diagramInstance.dataBind();
-                                    }}
-                                >
-                                </DropDownListComponent>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr style={{ paddingTop: "10px"}}>
-                        <td>
-                            <div>
-                                Position
-                            </div>
-                        </td>
-                        <td>
-                            <div style={{ paddingLeft: "15px" }}>
-                                <DropDownListComponent
-                                    id='position'
-                                    ref={dropdown => (positionDropdown = dropdown)}
-                                    dataSource={PositionValue}
-                                    fields={fields}
-                                    index={0}
-                                    placeholder='select a position'
-                                    popupWidth='150'
-                                    width='85%'
-                                    change={(args: any) => {
-                                        let nodes: NodeModel[] = diagramInstance.nodes;
-                                        for (let i: number = 0; i < nodes.length; i++) {
-                                            if (nodes[i].tooltip) {
-                                                nodes[i].tooltip.position = args.value;
-                                                diagramInstance.dataBind();
-                                            }
-                                        }
-                                    }}
-                                >
-                                </DropDownListComponent>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr style={{ paddingTop: "10px"}}>
-                        <td></td>
-                        <td>
-                            <div id='textContentDiv' className='row' style={{ display: 'none' }}>
+                    <tbody>
+                        <tr style={{ paddingTop: "10px"}}>
+                            <td>
                                 <div>
-                                    <TextBoxComponent
-                                        id='textContent'
-                                        placeholder='Enter text content'
-                                        floatLabelType='Auto'
-                                        change={(args: any) => {
-                                            diagramInstance.tooltip.content = args.value.toString();
-                                            diagramInstance.dataBind();
-                                        }}
-                                    >
-                                    </TextBoxComponent>
+                                    Relative Mode
                                 </div>
-                            </div>
-                            <div id='htmlContentDiv' className='row' style={{ display: 'none' }}>
-                                <div>
-                                    <TextBoxComponent
-                                        id='htmlContent'
-                                        placeholder='Enter html content'
-                                        floatLabelType='Auto'
+                            </td>
+                            <td>
+                                <div style={{ paddingLeft: "15px" }}>
+                                    <DropDownListComponent
+                                        id='mode'
+                                        ref={dropdown => (modeDropdown = dropdown)}
+                                        dataSource={modevalue}
+                                        fields={fields}
+                                        placeholder='select a mode value'
+                                        popupWidth='150'
+                                        width='85%'
+                                        index={0}
                                         change={(args: any) => {
-                                            let tooltipContent: HTMLDivElement = document.createElement('div');
-                                            let Description: any = args.value.toString();
-                                            tooltipContent.innerHTML = '<div style="background-color: #f4f4f4; color: black; border-width:1px;border-style: solid;border-color: #d3d3d3; border-radius: 8px;corner-radius:2px;white-space: nowrap;"> <span style="margin: 10px;"> ' + Description + ' </span>';
-                                            diagramInstance.tooltip.content = tooltipContent;
-                                            diagramInstance.dataBind();
-                                        }}
-                                    >
-                                    </TextBoxComponent>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr style={{ paddingTop: "10px"}}>
-                        <td>
-                            <div>
-                                Animation
-                            </div>
-                        </td>
-                        <td style={{ paddingLeft: "15px" }}>
-                            <NumericTextBoxComponent
-                                id='duration'
-                                value={1000}
-                                min={1000}
-                                max={6000}
-                                step={100}
-                                width={'85%'}
-                                change={(args: any) => {
-                                    diagramInstance.tooltip.animation.close.duration = args.value;
-                                    diagramInstance.tooltip.animation.open.duration = args.value;
-                                    diagramInstance.dataBind();
-                                }}
-                            ></NumericTextBoxComponent>
-                        </td>
-                    </tr>
-                    <tr style={{ paddingTop: "10px"}}>
-                        <td>
-                            <div>
-                                Effect
-                            </div>
-                        </td>
-                        <td>
-                            <div style={{ paddingLeft: "15px" }}>
-                                <DropDownListComponent
-                                    id='effect'
-                                    ref={dropdown => (effectDropdown = dropdown)}
-                                    dataSource={EffectValue}
-                                    fields={fields}
-                                    placeholder='select a effect'
-                                    popupWidth='150'
-                                    width='85%'
-                                    index={0}
-                                    change={(args: any) => {
-                                        diagramInstance.tooltip.animation.open.effect = args.value;
-                                        diagramInstance.tooltip.animation.close.effect = args.value;
-                                        diagramInstance.dataBind();
-                                    }}
-                                >
-                                </DropDownListComponent>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr style={{ paddingTop: "10px"}}>
-                            <td>Sticky Mode</td>
-                            <td style={{ paddingLeft: "15px",width:'70%' }}>
-                                <CheckBoxComponent
-                                    checked={false}
-                                    change={(args) => {
-                                        for (var j = 0; j < diagramInstance.nodes.length; j++) {
-                                            if (args.checked) {
-                                                (diagramInstance.tooltipObject as TooltipModel).isSticky = true;
-                                                diagramInstance.nodes[j].tooltip.isSticky = true;
+                                            if (args.value === 'Mouse') {
+                                                diagramInstance.tooltip.relativeMode = 'Mouse';
                                             } else {
-                                                (diagramInstance.tooltipObject as TooltipModel).isSticky = false;
-                                                diagramInstance.nodes[j].tooltip.isSticky = false;
+                                                diagramInstance.tooltip.relativeMode = 'Object';
                                             }
                                             diagramInstance.dataBind();
-                                        }
-                                    }}
-                                ></CheckBoxComponent>
+                                        }}
+                                    >
+                                    </DropDownListComponent>
+                                </div>
                             </td>
                         </tr>
+                        <tr style={{ paddingTop: "10px"}}>
+                            <td>
+                                <div>
+                                    Position
+                                </div>
+                            </td>
+                            <td>
+                                <div style={{ paddingLeft: "15px" }}>
+                                    <DropDownListComponent
+                                        id='position'
+                                        ref={dropdown => (positionDropdown = dropdown)}
+                                        dataSource={PositionValue}
+                                        fields={fields}
+                                        index={0}
+                                        placeholder='select a position'
+                                        popupWidth='150'
+                                        width='85%'
+                                        change={(args: any) => {
+                                            let nodes: NodeModel[] = diagramInstance.nodes;
+                                            for (let i: number = 0; i < nodes.length; i++) {
+                                                if (nodes[i].tooltip) {
+                                                    nodes[i].tooltip.position = args.value;
+                                                    diagramInstance.dataBind();
+                                                }
+                                            }
+                                        }}
+                                    >
+                                    </DropDownListComponent>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style={{ paddingTop: "10px"}}>
+                            <td></td>
+                            <td>
+                                <div id='textContentDiv' className='row' style={{ display: 'none' }}>
+                                    <div>
+                                        <TextBoxComponent
+                                            id='textContent'
+                                            placeholder='Enter text content'
+                                            floatLabelType='Auto'
+                                            change={(args: any) => {
+                                                diagramInstance.tooltip.content = args.value.toString();
+                                                diagramInstance.dataBind();
+                                            }}
+                                        >
+                                        </TextBoxComponent>
+                                    </div>
+                                </div>
+                                <div id='htmlContentDiv' className='row' style={{ display: 'none' }}>
+                                    <div>
+                                        <TextBoxComponent
+                                            id='htmlContent'
+                                            placeholder='Enter html content'
+                                            floatLabelType='Auto'
+                                            change={(args: any) => {
+                                                let tooltipContent: HTMLDivElement = document.createElement('div');
+                                                let Description: any = args.value.toString();
+                                                tooltipContent.innerHTML = '<div style="background-color: #f4f4f4; color: black; border-width:1px;border-style: solid;border-color: #d3d3d3; border-radius: 8px;corner-radius:2px;white-space: nowrap;"> <span style="margin: 10px;"> ' + Description + ' </span>';
+                                                diagramInstance.tooltip.content = tooltipContent;
+                                                diagramInstance.dataBind();
+                                            }}
+                                        >
+                                        </TextBoxComponent>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style={{ paddingTop: "10px"}}>
+                            <td>
+                                <div>
+                                    Animation
+                                </div>
+                            </td>
+                            <td style={{ paddingLeft: "15px" }}>
+                                <NumericTextBoxComponent
+                                    id='duration'
+                                    value={1000}
+                                    min={1000}
+                                    max={6000}
+                                    step={100}
+                                    width={'85%'}
+                                    change={(args: any) => {
+                                        diagramInstance.tooltip.animation.close.duration = args.value;
+                                        diagramInstance.tooltip.animation.open.duration = args.value;
+                                        diagramInstance.dataBind();
+                                    }}
+                                ></NumericTextBoxComponent>
+                            </td>
+                        </tr>
+                        <tr style={{ paddingTop: "10px"}}>
+                            <td>
+                                <div>
+                                    Effect
+                                </div>
+                            </td>
+                            <td>
+                                <div style={{ paddingLeft: "15px" }}>
+                                    <DropDownListComponent
+                                        id='effect'
+                                        ref={dropdown => (effectDropdown = dropdown)}
+                                        dataSource={EffectValue}
+                                        fields={fields}
+                                        placeholder='select a effect'
+                                        popupWidth='150'
+                                        width='85%'
+                                        index={0}
+                                        change={(args: any) => {
+                                            diagramInstance.tooltip.animation.open.effect = args.value;
+                                            diagramInstance.tooltip.animation.close.effect = args.value;
+                                            diagramInstance.dataBind();
+                                        }}
+                                    >
+                                    </DropDownListComponent>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style={{ paddingTop: "10px"}}>
+                                <td>Sticky Mode</td>
+                                <td style={{ paddingLeft: "15px",width:'70%' }}>
+                                    <CheckBoxComponent
+                                        checked={false}
+                                        change={(args) => {
+                                            for (var j = 0; j < diagramInstance.nodes.length; j++) {
+                                                if (args.checked) {
+                                                    (diagramInstance.tooltipObject as TooltipModel).isSticky = true;
+                                                    diagramInstance.nodes[j].tooltip.isSticky = true;
+                                                } else {
+                                                    (diagramInstance.tooltipObject as TooltipModel).isSticky = false;
+                                                    diagramInstance.nodes[j].tooltip.isSticky = false;
+                                                }
+                                                diagramInstance.dataBind();
+                                            }
+                                        }}
+                                    ></CheckBoxComponent>
+                                </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div id='action-description'>

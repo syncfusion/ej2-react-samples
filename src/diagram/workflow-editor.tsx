@@ -286,6 +286,7 @@ let connectors: ConnectorModel[] = [
 ];
 
 const sample_css = `
+/* To display the loading sign */
   .loading-indicator {
     border: 4px solid #f3f3f3;
     border-top: 4px solid #3498db;
@@ -295,7 +296,7 @@ const sample_css = `
     animation: spin 2s linear infinite;
   }
 
-
+  /* To display the success sign */
 .tick {
   display: none;
   animation: showTick 0.5s 0.2s forwards;
@@ -309,6 +310,19 @@ const sample_css = `
 }
 .tick {
   background-color:green;
+}
+/* To display the failure sign */
+.cross {
+display: none;
+animation: showTick 0.5s 0.2s forwards;
+font-size: 10px;
+width:15px;height:15px;
+padding-left: 4.5px;
+padding-top: 2.5px;
+line-height: 1;
+color: white;
+border-radius: 50%;
+background-color:red;
 }
 .e-play {
   content: '\e70C';

@@ -3,7 +3,7 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, IFrameSettingsModel, Audio, Video, FormatPainter, EmojiPicker} from '@syncfusion/ej2-react-richtexteditor';
 import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
@@ -24,7 +24,7 @@ export class IFrame extends SampleBase<{}, {}> {
     'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
     'LowerCase', 'UpperCase', '|',
     'Formats', 'Alignments', '|', 'NumberFormatList', 'BulletFormatList', '|',
-    'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'FileManager', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
+    'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'FileManager', 'Video', 'Audio', 'CreateTable', '|', 'ClearFormat',
     '|', 'EmojiPicker', 'Print', '|',
     'SourceCode', 'FullScreen', '|', 'Undo', 'Redo'
   ];
@@ -124,7 +124,7 @@ export class IFrame extends SampleBase<{}, {}> {
                   <p>Creates bulleted and numbered lists.</p>
                 </li>
               </ul>
-              <Inject services={[Toolbar, Image, Link, HtmlEditor, Table, QuickToolbar, FileManager]} />
+              <Inject services={[Toolbar, Image, Link, HtmlEditor, Table, QuickToolbar, FileManager, Audio, Video, EmojiPicker]} />
             </RichTextEditorComponent>
           </div>
         </div>

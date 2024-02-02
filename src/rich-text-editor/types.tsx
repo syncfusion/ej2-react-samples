@@ -4,7 +4,7 @@
 import { addClass, Browser, removeClass } from '@syncfusion/ej2-base';
 import { ChangeEventArgs as checked, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs, DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, ToolbarType } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, ToolbarType, EmojiPicker} from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -151,7 +151,7 @@ export class Type extends SampleBase<{}, {}> {
                 </li>
               </ol>
               <img alt="Logo" src="./src/rich-text-editor/images/RTEImage-Feather.png" />
-              <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
+              <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, EmojiPicker]} />
             </RichTextEditorComponent>
           </div>
           <div className='col-lg-4 property-section'>

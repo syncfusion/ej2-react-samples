@@ -71,7 +71,9 @@
 
 .e-query-preview .e-sql-content,
 .e-query-preview .e-mongo-content,
-.e-query-preview .e-json-content {
+.e-query-preview .e-json-content,
+.e-query-preview .e-cel-content,
+.e-query-preview .e-spel-content {
     margin: 10px;
     border: none;
     height: 180px;

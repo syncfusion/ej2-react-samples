@@ -33,7 +33,9 @@ export interface EmployeeInfo {
   Name: string;
 }
 
-const SAMPLE_CSS = `.image-pattern-style {
+const SAMPLE_CSS = `
+/* Property panel orientation and sub tree alignment */
+.image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;

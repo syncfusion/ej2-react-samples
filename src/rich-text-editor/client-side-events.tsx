@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
-import { RichTextEditorComponent, HtmlEditor, Table, Inject, Toolbar, Link, Image, QuickToolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Table, Inject, Toolbar, Link, Image, QuickToolbar, EmojiPicker } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { ActionBeginEventArgs, ActionCompleteEventArgs, ToolbarSettingsModel } from '@syncfusion/ej2-richtexteditor';
 import { PropertyPane } from '../common/property-pane';
@@ -238,7 +238,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                                     <p>Creates bulleted and numbered lists.</p>
                                 </li>
                             </ul>
-                            <Inject services={[HtmlEditor, Toolbar, Link, Table, Image, QuickToolbar]} />
+                            <Inject services={[HtmlEditor, Toolbar, Link, Table, Image, QuickToolbar, EmojiPicker]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>

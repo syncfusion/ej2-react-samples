@@ -181,6 +181,7 @@ function SymbolPalette() {
   }
   return (
     <div className="control-pane">
+       <style>{SAMPLE_CSS}</style>
       <div
         className="col-lg-8 control-section"
         id="palette-space"

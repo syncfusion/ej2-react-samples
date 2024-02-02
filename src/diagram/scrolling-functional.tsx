@@ -167,34 +167,15 @@ Diagram.Inject(UndoRedo);
     lineIntervals: interval,
   };
   const sample_css = `
-  .db-text {
-      float: left;
-      width: 20px;
-      text-align: center;
-      height: auto;
-      margin-top: 4px;
-      color: #8C8C8C;
-  }
-  
   .db-text-input {
       width: calc(100% - 15px);
       padding: 2px 2px 0px 0px;
   }
   
-  .db-text-input input {
-      width: 100%;
-      height: 100%;
-      border: none;
-  }
   .row{
     margin-right:-15px;
     margin-left:-15px;
-  }
-  .e-tab .e-content .e-item{
-    font-size:14px;
-  }
-  
-    `;
+  }`;
 let diagramInstance: DiagramComponent;
 let fontFamily:any;
 function ScrollingSample() {
@@ -411,7 +392,7 @@ function ScrollingSample() {
             </div>
             <div id="scrollableDiv">
               <div className="property-panel-header">Scrollable Area</div>
-              <div className="row db-prop-row" style={{ paddingTop: '1px' }}>
+              <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6"
                   style={{ paddingRight: '15px', width: '150px' }}
@@ -441,7 +422,7 @@ function ScrollingSample() {
                   </div>
                 </div>
               </div>
-              <div className="row db-prop-row" style={{ paddingTop: '1px' }}>
+              <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6"
                   style={{ paddingRight: '15px', width: '150px' }}
@@ -471,7 +452,7 @@ function ScrollingSample() {
                   </div>
                 </div>
               </div>
-              <div className="row db-prop-row" style={{ paddingTop: '1px' }}>
+              <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-left"
                   style={{ width: '150px' }}
@@ -499,7 +480,7 @@ function ScrollingSample() {
                   </div>
                 </div>
               </div>
-              <div className="row db-prop-row" style={{ paddingTop: '1px' }}>
+              <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-right"
                   style={{ width: '150px' }}
@@ -549,7 +530,7 @@ function ScrollingSample() {
             </div>
             <div id="autoScrollDiv" style={{ marginTop: '30px' }}>
               <div className="property-panel-header">AutoScroll border</div>
-              <div className="row db-prop-row" style={{ paddingTop: '1px' }}>
+              <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-left"
                   style={{ width: '150px' }}
@@ -577,7 +558,7 @@ function ScrollingSample() {
                   </div>
                 </div>
               </div>
-              <div className="row db-prop-row" style={{ paddingTop: '1px' }}>
+              <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-right"
                   style={{ width: '150px' }}
@@ -605,7 +586,7 @@ function ScrollingSample() {
                   </div>
                 </div>
               </div>
-              <div className="row db-prop-row" style={{ paddingTop: '1px' }}>
+              <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-left"
                   style={{ width: '150px' }}
@@ -633,7 +614,7 @@ function ScrollingSample() {
                   </div>
                 </div>
               </div>
-              <div className="row db-prop-row" style={{ paddingTop: '1px' }}>
+              <div className="row db-prop-row" style={{ paddingTop: '10px' }}>
                 <div
                   className="col-xs-6 db-col-right"
                   style={{ width: '150px' }}

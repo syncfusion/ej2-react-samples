@@ -25,7 +25,9 @@ import {
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 import { multiParentData } from './diagram-data';
 
-const SAMPLE_CSS = `.image-pattern-style {
+const SAMPLE_CSS = `
+/* For orientation and subtree alignment in property panel*/
+.image-pattern-style {
     background-color: white;
     background-size: contain;
     background-repeat: no-repeat;
@@ -56,8 +58,6 @@ const SAMPLE_CSS = `.image-pattern-style {
     border-color: #006CE6;
     border-width: 2px;
 }
-
-
 
 .diagram-control-pane .col-xs-6 {
     padding-left: 0px;

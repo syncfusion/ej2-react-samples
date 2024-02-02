@@ -383,7 +383,7 @@ const updateValue = function(rules: any, isNamedParameter: boolean, ruleVal: any
         } else {
             let namedField: any;
             if (rules[i].value instanceof Array) {
-                for (let j: number = 0; j < (rules[i].value).length.length; j++) {
+                for (let j: number = 0; j < (rules[i].value).length; j++) {
                     if (isNamedParameter) {
                         namedField = getNamedParameter(rules[i].field, namedParameters);
                     }

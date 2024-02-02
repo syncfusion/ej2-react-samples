@@ -1,6 +1,6 @@
 {
   "name": "@syncfusion/ej2-react-samples",
-  "version": "24.1.41",
+  "version": "24.2.3",
   "description": "Examples of React UI Components",
   "author": "Syncfusion Inc.",
   "license": "SEE LICENSE IN license",
@@ -49,8 +49,7 @@
     "react-router": "6.16.0",
     "react-router-dom": "6.16.0",
     "marked": "5.1.2",
-    "codemirror": "5.65.15",
-    "browser-sync": "^2.29.3"
+    "codemirror": "5.65.15"
   },
   "devDependencies": {
     "@microsoft/signalr": "7.0.11",
@@ -77,10 +76,11 @@
     "source-map-loader": "1.0.2",
     "style-loader": "2.0.0",
     "typescript": "5.2.2",
+    "sass": "^1.63.6",
+    "browser-sync": "^2.29.3",
     "webpack": "^4.41.5",
     "webpack-cli": "^4.1.0",
-    "webpack-stream": "^6.0.0",
-    "sass": "^1.63.6"
+    "webpack-stream": "^6.0.0"
   },
   "scripts": {
     "build": "gulp build",

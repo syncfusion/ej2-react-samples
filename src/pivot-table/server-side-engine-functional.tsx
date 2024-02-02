@@ -12,7 +12,7 @@ import './server-side-engine.css';
 let pivotObj: PivotViewComponent;
 
 let dataSourceSettings: IDataOptions = {
-    url: 'https://ej2services.syncfusion.com/react/development/api/pivot/post',
+    url: 'https://services.syncfusion.com/react/production/api/pivot/post',
     mode: 'Server',
     expandAll: false,
     enableSorting: true,

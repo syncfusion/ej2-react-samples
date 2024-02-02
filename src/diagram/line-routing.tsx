@@ -12,32 +12,7 @@ import {
   ConnectorBridging
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
-let SAMPLE_CSS = `.image-pattern-style {
-  background-color: white;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 75px;
-  width: calc((100% - 12px) / 3);
-  cursor: pointer;
-  border: 1px solid #D5D5D5;
-  background-position: center;
-  float: left;
-}
-
-.row {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-.row-header {
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.property-panel-header {
-  color: rgba(0, 0, 0, .7)
-}
-}`;
+ //Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: 'start', offsetX: 115, offsetY: 110,
@@ -118,7 +93,7 @@ let nodes: NodeModel[] = [
     ],
   }
 ];
-
+ //Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   {
     id: 'Connector1', sourceID: 'start', targetID: 'process',
@@ -163,7 +138,6 @@ export class LineRoutingSample extends SampleBase<{}, {}> {
   render() {
     return (
       <div className="control-pane">
-        <style>{SAMPLE_CSS}</style>
         <div className="control-section">
           <div className="content-wrapper" style={{ width: "100%" }}>
             <DiagramComponent
