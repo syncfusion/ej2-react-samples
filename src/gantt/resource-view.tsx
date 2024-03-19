@@ -25,6 +25,7 @@ export class ResourceView extends SampleBase<{}, {}> {
     unit: 'resourceUnit',
     group: 'resourceGroup'
   };
+  public taskType: any = "FixedWork";
   public editSettings: any = {
     allowAdding: true,
     allowEditing: true,
@@ -55,7 +56,7 @@ export class ResourceView extends SampleBase<{}, {}> {
           <GanttComponent id='ResourceView' dataSource={resourcesData} treeColumnIndex={1} viewType ='ResourceView'
             allowSelection={true}  allowResizing={true} highlightWeekends={true} toolbar={this.toolbar} toolbarClick={this.toolbarClick.bind(this)} editSettings={this.editSettings}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
+            taskFields={this.taskFields} taskType={this.taskType} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='410px' resources={resourceCollection} showOverAllocation= {true} ref={gantt => this.ganttInstance = gantt}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' visible ={false} ></ColumnDirective>

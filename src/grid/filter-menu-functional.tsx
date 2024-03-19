@@ -56,7 +56,7 @@ function FilterMenu() {
                         <ColumnDirective field='EmployeeID' headerText='Employee ID' width='120' textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='Employees' headerText='Employee Name' width='150'></ColumnDirective>
                         <ColumnDirective field='Designation' headerText='Designation' width='130' textAlign='Right' />
-                        <ColumnDirective field='CurrentSalary' headerText='CurrentSalary' width='120' format='C2' textAlign='Right' />
+                        <ColumnDirective field='CurrentSalary' headerText='CurrentSalary' width='120' format='C2' textAlign='Right'/>
                     </ColumnsDirective>
                     <Inject services={[Filter, Page, Sort]} />
                 </GridComponent>

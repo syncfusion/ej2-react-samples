@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Tooltip, Inject, ILoadedEventArgs, HeatMapTheme, ISelectedEventArgs, SelectedCellDetails } from '@syncfusion/ej2-react-heatmap';
+import { HeatMapComponent, Tooltip, Inject, ILoadedEventArgs, HeatMapTheme, ISelectedEventArgs, SelectedCellDetails, Legend as HeatMapLegend} from '@syncfusion/ej2-react-heatmap';
 import * as data from './cell-seletion-data.json';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
@@ -61,6 +61,7 @@ export class CellSelection extends SampleBase<{}, {}> {
                                 }
                             }}
                             legendSettings = {{
+                                visible:false,
                                 textStyle:{
                                     fontFamily: 'inherit'
                                 }
@@ -76,7 +77,7 @@ export class CellSelection extends SampleBase<{}, {}> {
                                     {color: '#86C843 '}
                                 ],                    
                             }}>
-                            <Inject services={[Tooltip]} />
+                            <Inject services={[Tooltip, HeatMapLegend]} />
                         </HeatMapComponent>
                         <ChartComponent id="container1" style={{height: '300px'}} ref={t => this.chart = t}
                             primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 } }}

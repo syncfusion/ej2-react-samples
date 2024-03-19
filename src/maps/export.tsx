@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     ProjectionType, MapsComponent, MapsTooltip, ExportType, Marker, MarkersDirective, MarkerDirective, ShapeLayerType,
     PdfExport, ImageExport, Inject, LayersDirective, LayerDirective, ILoadedEventArgs, MapsTheme
@@ -14,6 +13,7 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as worldMap from './map-data/world-map.json';
 const SAMPLE_CSS = `
 .control-fluid {
     padding: 0px !important;
@@ -96,7 +96,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip, PdfExport, ImageExport]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={worldMap}
                                     shapeSettings=
                                     {{
                                         fill: 'lightgrey',

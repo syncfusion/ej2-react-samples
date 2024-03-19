@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Sort, DetailRow, Toolbar, HierarchyGridPrintMode } from '@syncfusion/ej2-react-grids';
+import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Sort, DetailRow, Toolbar, HierarchyGridPrintMode, Page } from '@syncfusion/ej2-react-grids';
 import { employeeData, hierarchyOrderdata, customerData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
@@ -66,7 +66,7 @@ export class Print extends SampleBase<{}, {}> {
                   <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format='yMd' textAlign='Right' />
                   <ColumnDirective field='ReportsTo' headerText='Reports To' width='135' textAlign='Right' />
               </ColumnsDirective>
-              <Inject services={[DetailRow, Toolbar, Sort]} />
+              <Inject services={[DetailRow, Toolbar, Sort, Page]} />
           </GridComponent>
         </div>
 

@@ -19,7 +19,7 @@ import { ColorPickerComponent, NumericTextBoxComponent } from "@syncfusion/ej2-r
 
 let diagramInstance: DiagramComponent;
 let toolbarEditor:ToolbarComponent;
- //Initialize Diagram Nodes
+//Initialize Diagram Nodes
 let nodes: NodeModel[] = [
     {
       id: 'Diamond',
@@ -177,7 +177,7 @@ let nodes: NodeModel[] = [
       style: { strokeWidth: 2 },
     },
   ];
-   //Initialize user handles
+  //Initialize user handles
   let handles:UserHandleModel[]  = [
     {
       name: 'Clone',

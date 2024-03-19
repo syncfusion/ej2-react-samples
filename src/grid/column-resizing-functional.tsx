@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Inject, Sort} from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -12,15 +12,15 @@ function ColumnResizing() {
         <div className='control-pane'>
             <div className='control-section'>
                 <div style={{ overflowX: 'auto', marginLeft: '4px' }}>
-                    <GridComponent dataSource={orderDetails} allowResizing={true} height='400' width='850' autoFit={true} >
+                    <GridComponent dataSource={orderDetails} allowResizing={true} height='400' width='850' autoFit={true} allowSorting={true}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' minWidth='100' width='150' maxWidth='200' textAlign='Right'></ColumnDirective>
-                            <ColumnDirective field='CustomerName' headerText='Customer Name' minWidth='8' width='150' ></ColumnDirective>
-                            <ColumnDirective field='Freight' headerText='Freight' minWidth='8' width='120' format='C2' textAlign='Right' />
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' allowResizing={false} width='150' format='yMd' textAlign='Right' />
+                            <ColumnDirective field='CustomerName' headerText='Customer Name' minWidth='8' width='150'></ColumnDirective>
+                            <ColumnDirective field='Freight' headerText='Freight' minWidth='8' width='120' format='C2' textAlign='Right'/>
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' allowResizing={false} width='150' format='yMd' textAlign='Right'/>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' minWidth='8' width='150'></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Resize]} />
+                        <Inject services={[Resize, Sort]} />
                     </GridComponent>
                 </div>
             </div>

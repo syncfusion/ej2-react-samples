@@ -67,19 +67,8 @@ export class RangeSelection extends SampleBase<{}, {}> {
                 <div className='control-section row'>
                     <div className='col-md-8'>
                         <ChartComponent id='charts' ref={chart => this.chartInstance = chart}
-                            primaryXAxis={{
-                                minimum: 1970,
-                                maximum: 2016,
-                                majorGridLines: { width: 0 }
-                            }}
-                            primaryYAxis={{
-                                title: 'Sales',
-                                labelFormat: '{value}%',
-                                interval: 25,
-                                minimum: 0,
-                                maximum: 100,
-                                majorGridLines: { width: 0 }
-                            }}
+                            primaryXAxis={{ minimum: 1970, maximum: 2016, majorGridLines: { width: 0 }, majorTickLines: {width : 0}, minorTickLines: {width: 0} }}
+                            primaryYAxis={{ title: 'Sales', labelFormat: '{value}%', interval: 25, minimum: 0, maximum: 100, lineStyle: {width : 0}, majorTickLines: {width : 0}, minorTickLines: {width: 0} }}
                             chartArea={{ border: { width: 0 } }}
                             legendSettings={{ visible: true, toggleVisibility: false }}
                             title='Profit Comparision of A and B' loaded={this.onChartLoad.bind(this)}

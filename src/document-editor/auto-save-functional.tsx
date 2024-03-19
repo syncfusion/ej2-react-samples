@@ -27,6 +27,7 @@ const DocumentEditorAutoSave = () => {
         // tslint:enable
         container.current.documentEditor.open(JSON.stringify(defaultDocument));
         container.current.documentEditor.documentName = "Auto Save";
+        container.current.documentEditorSettings.showRuler = true;
         titleBar.updateDocumentTitle();
         container.current.documentChange = (): void => {
             titleBar.updateDocumentTitle();

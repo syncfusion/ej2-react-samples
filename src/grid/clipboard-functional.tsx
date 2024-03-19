@@ -25,10 +25,7 @@ function Clipboard() {
     }];
     function clickHandler(args: any) {
         if (gridInstance.getSelectedRecords().length > 0) {
-            let withHeader: boolean = false;
-            if (args.item.id === 'copyHeader') {
-                withHeader = true;
-            }
+            let withHeader: boolean = args.item.id === 'copyHeader' ? true : false;
             gridInstance.copy(withHeader);
         } else {
             alertDialogInstance.show();
@@ -37,12 +34,12 @@ function Clipboard() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings} toolbar={toolbarOptions} toolbarClick={clickHandler.bind(this)}>
+                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} toolbar={toolbarOptions} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings} toolbarClick={clickHandler.bind(this)}>
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
+                        <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' />
-                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
+                        <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170'></ColumnDirective>
+                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                     </ColumnsDirective>
                     <Inject services={[Page, Selection, Toolbar]} />

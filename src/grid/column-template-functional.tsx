@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import './sample.css';
@@ -20,7 +20,7 @@ function ColumnTemplate() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={employeeData} width='auto' height='359'>
+                <GridComponent dataSource={employeeData} width='auto' height='359' allowSorting={true}>
                     <ColumnsDirective>
                         <ColumnDirective headerText='Employee Image' width='180' template={template} textAlign='Center' />
                         <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' />
@@ -29,6 +29,7 @@ function ColumnTemplate() {
                         <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format='yMd' textAlign='Right' />
                         <ColumnDirective field='ReportsTo' headerText='Reports To' width='120' textAlign='Right' />
                     </ColumnsDirective>
+                    <Inject services={[Sort]} />
                 </GridComponent>
             </div>
             <div id="action-description">

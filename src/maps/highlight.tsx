@@ -4,13 +4,13 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Marker, MarkersDirective, MarkerDirective, Zoom, MapsTooltip
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as okalahomaMap from './map-data/okalahoma.json';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -101,9 +101,6 @@ let markers1: object[] = [
         longitude: -97.1191406, latitude: 34.5042932, name: 'Davis'
     },
     {
-        longitude: -98.0310059, latitude: 37.1537496, name: 'Anthony'
-    },
-    {
         longitude: -98.3564758, latitude: 36.7542898, name: 'Cherokee'
     },
     {
@@ -168,7 +165,7 @@ export class HighlightMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Marker,MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/okalahoma.json')}
+                                <LayerDirective shapeData={okalahomaMap}
                                     shapeSettings={{
                                         fill: '#F5F5F5',
                                         border:{ color: '#EEDA97', width: 1}

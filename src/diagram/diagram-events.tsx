@@ -55,6 +55,7 @@ const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
     float: left;
     border: 1px solid #d9dedd;
   }
+  
 
   @media (max-width: 550px) {
     #diagramEventsControlSection .sb-mobile-palette {
@@ -273,7 +274,7 @@ export class Events extends SampleBase<{}, {}> {
                                         id: "connectors",
                                         expanded: true,
                                         symbols: connectorSymbols,
-                                        iconCss: "e-ddb-icons e-connector",
+                                        iconCss: "e-ddb-icons e-diagram-connector",
                                         title: "Connectors"
                                     }
                                 ]}
@@ -370,6 +371,9 @@ export class Events extends SampleBase<{}, {}> {
                                 }}
                                 contextMenuClick={(args: MenuEventArgs) => {
                                     getEventDetails(args);
+                                }}
+                                contextMenuSettings={{
+                                    show: true
                                 }}
                                 //Sets the constraints of the SnapSettings
                                 snapSettings={{ constraints: SnapConstraints.None }}

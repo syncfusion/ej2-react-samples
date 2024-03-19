@@ -28,6 +28,7 @@ export interface EmployeeInfo {
   Name: string;
 }
 
+
 let diagramInstance: DiagramComponent;
 let springLength: NumericTextBoxComponent;
 let springfactor: NumericTextBoxComponent;

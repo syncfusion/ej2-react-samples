@@ -5,13 +5,13 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
     StockChartComponent, StockChartSeriesCollectionDirective, StockChartSeriesDirective, Inject,ITooltipRenderEventArgs, IStockChartEventArgs, ChartTheme,
-    DateTime, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines
+    DateTime, DateTimeCategory, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines
 } from '@syncfusion/ej2-react-charts';
 import {
     EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator,
     AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator , Export
 } from '@syncfusion/ej2-react-charts';
-import { chartData } from './indicator-data';
+import { defaultData } from './indicator-data';
 import { SampleBase } from '../common/sample-base';
 import { EmitType } from '@syncfusion/ej2-base';
 
@@ -40,7 +40,7 @@ export class Default extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <StockChartComponent id='stockchartdefault'
                         primaryXAxis={{
-                            valueType: 'DateTime',
+                            valueType: 'DateTimeCategory',
                             majorGridLines: { width: 0 }, majorTickLines: { color: 'transparent' },
                             crosshairTooltip: { enable: true }
                         }}
@@ -56,11 +56,11 @@ export class Default extends SampleBase<{}, {}> {
                         load={this.load.bind(this)}
                         title= 'AAPL Stock Price'
                     >
-                        <Inject services={[DateTime, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines, 
+                        <Inject services={[DateTime, DateTimeCategory, Tooltip, RangeTooltip, Crosshair, LineSeries, SplineSeries, CandleSeries, HiloOpenCloseSeries, HiloSeries, RangeAreaSeries, Trendlines, 
                         EmaIndicator, RsiIndicator, BollingerBands, TmaIndicator, MomentumIndicator, SmaIndicator, AtrIndicator, Export,
                         AccumulationDistributionIndicator, MacdIndicator, StochasticIndicator]} />
                         <StockChartSeriesCollectionDirective>
-                            <StockChartSeriesDirective dataSource={chartData} xName='x' 
+                            <StockChartSeriesDirective dataSource={defaultData} xName='x' 
                                 type='Candle'  animation={{ enable: true }}>
                             </StockChartSeriesDirective>
                         </StockChartSeriesCollectionDirective>

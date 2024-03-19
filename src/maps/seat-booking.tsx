@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Selection, ISelectionEventArgs
@@ -12,6 +11,7 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as seatSelection from './map-data/seat-selection.json';
 const SAMPLE_CSS = `
 #control-container {
     padding: 0px !important;
@@ -103,7 +103,7 @@ export class SeatBookingMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Selection]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/seat-selection.json')} geometryType='Normal'
+                                <LayerDirective shapeData={seatSelection} geometryType='Normal'
                                     shapeSettings={{
                                         colorValuePath: 'fill'
                                     }}

@@ -4,13 +4,13 @@
  //tslint:disable
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, NavigationLineSettingsModel, MapsTheme, LayersDirective, LayerDirective, MarkersDirective, MarkerDirective, Marker, Zoom, MapsTooltip, NavigationLine
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as data from './map-data/default-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
 .name {
@@ -135,7 +135,7 @@ export class CyberAttackMaps extends SampleBase<{}, {}> {
                     >
                         <Inject services={[Marker,MapsTooltip, NavigationLine]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                            <LayerDirective shapeData={worldMap}
                                 shapeSettings={{
                                     border: { color: '#D2691E', width: 0.5 },
                                     fill: '#FFFFE0'

@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView,
-    ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, Inject
+    ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer,Inject
 } from '@syncfusion/ej2-react-pdfviewer';
 import { updateSampleSection } from '../common/sample-base';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
@@ -16,6 +16,7 @@ function HandWrittenSignature() {
         updateSampleSection();
     }, [])
     let viewer: PdfViewerComponent;
+    let isInitialLoading: boolean =  true;
     return (<div>
         <div className='control-section'>
             <div className="flex-container">
@@ -29,7 +30,7 @@ function HandWrittenSignature() {
             </div>
             {/* Render the PDF Viewer */}
             <PdfViewerComponent ref={(scope) => { viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/handwritten-signature.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" documentLoad={documentLoaded} style={{ 'height': '640px' }}>
-                <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
+                <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
             </PdfViewerComponent>
         </div>
         <div id="action-description">
@@ -48,7 +49,10 @@ function HandWrittenSignature() {
     </div>
     );
     function documentLoaded() {
-        viewer.annotationModule.setAnnotationMode('HandWrittenSignature');
+        if (isInitialLoading) {
+            viewer.annotationModule.setAnnotationMode('HandWrittenSignature');
+            isInitialLoading = false;
+        }
     }
     function change(args){
         if (args.checked) {

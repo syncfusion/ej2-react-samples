@@ -19,7 +19,7 @@ const UiVirtualization = () => {
    }, [])
 
    const [time, setTime] = useState("0 ms");
-   const mobile = Browser.isDevice ? "ui-mobile" : "";
+    const mobile: string = Browser.isDevice ? "ui-mobile" : "";
    let listviewInstance = useRef<ListViewComponent>(null);
    let commonData: { [key: string]: string | object }[] = [];
    let dataSource: { [key: string]: { [key: string]: string | object }[] } = {};

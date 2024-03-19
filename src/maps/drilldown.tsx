@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, ILoadEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Selection, Highlight, IShapeSelectedEventArgs, MarkersDirective, MarkerDirective, Marker, MapsTooltip
@@ -12,6 +11,13 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as data from './map-data/default-datasource.json';
+import * as worldMap from './map-data/world-map.json';
+import * as africa from './map-data/africa.json';
+import * as europe from './map-data/europe.json';
+import * as asia from './map-data/asia.json';
+import * as northAmerica from './map-data/north-america.json';
+import * as southAmerica from './map-data/south-america.json';
+import * as oceania from './map-data/oceania.json';
 let datasource: any = data as any;
 // Data ref
 const SAMPLE_CSS = `
@@ -103,7 +109,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                     >
                         <Inject services={[Selection, Highlight, Marker, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} layerType='Geometry'
+                            <LayerDirective shapeData={worldMap} layerType='Geometry'
                                 shapePropertyPath='continent'
                                 shapeDataPath='continent'
                                 dataSource={datasource.default}
@@ -128,7 +134,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                     </MarkerDirective>
                                 </MarkersDirective>
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/africa.json')} layerType='Geometry'
+                            <LayerDirective shapeData={africa} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#80306A'
                                 }}
@@ -143,7 +149,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/europe.json')} layerType='Geometry'
+                            <LayerDirective shapeData={europe} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#622D6C'
                                 }}
@@ -157,7 +163,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/asia.json')} layerType='Geometry'
+                            <LayerDirective shapeData={asia} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#462A6D'
                                 }}
@@ -171,7 +177,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/north-america.json')} layerType='Geometry'
+                            <LayerDirective shapeData={northAmerica} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#C13664'
                                 }}
@@ -185,7 +191,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/south-america.json')} layerType='Geometry'
+                            <LayerDirective shapeData={southAmerica} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#9C3367'
                                 }}
@@ -199,7 +205,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/oceania.json')} layerType='Geometry'
+                            <LayerDirective shapeData={oceania} layerType='Geometry'
                                 shapeSettings={{
                                     fill: '#2A2870'
                                 }}

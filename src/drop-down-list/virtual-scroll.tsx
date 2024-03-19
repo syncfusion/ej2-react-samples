@@ -17,7 +17,6 @@ export class Default extends SampleBase<{}, {}> {
   private records: { [key: string]: Object }[] = [];
     constructor(props: {}) {
         super(props);
-
       for (let i = 1; i <= 150; i++) {
         let item: { [key: string]: Object } = {};
         item.id = 'id' + i;

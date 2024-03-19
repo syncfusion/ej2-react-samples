@@ -38,9 +38,6 @@ const StackedLine = () => {
                         <SeriesDirective dataSource={chartData} xName='x' yName='y3' name='Charle' width={2} type='StackingLine' marker={{ isFilled: true, visible: true, shape: 'Triangle', width: 6, height: 6 }} />
                     </SeriesCollectionDirective>
                 </ChartComponent>
-                <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                    <a href="https://www.cyberagent.co.jp/en/newsinfo/press/detail/id=12026" target="_blank">www.cyberagent.co.jp</a>
-                </div>
             </div>
             <div id="action-description">
                 <p>This React Stacked Line Chart example visualizes the family expenses data with a stacked line series in the chart to identify who spent more money in each category.</p>

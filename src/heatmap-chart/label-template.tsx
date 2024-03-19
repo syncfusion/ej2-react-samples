@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HeatMapComponent, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor } from '@syncfusion/ej2-react-heatmap';
+import { HeatMapComponent, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor, Legend } from '@syncfusion/ej2-react-heatmap';
 import { SampleBase } from '../common/sample-base';
 
 // custom code start
@@ -50,16 +50,31 @@ export class Label extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <HeatMapComponent id='heatmap-container'
                         xAxis={{
+                            title: {
+                                text: 'LIKELIHOOD',
+                                textStyle: {
+                                    fontFamily: 'inherit'
+                                }
+                            },
                             labels: ["Improbable", "Remote", "Occasional", "Probable", "Frequent"],
                             textStyle: {
                                 fontFamily: 'inherit'
                             }
                         }}
                         yAxis={{
+                            title: {
+                                text: 'IMPACT',
+                                textStyle: {
+                                    fontFamily: 'inherit'
+                                }
+                            },
                             labels: ["Negligible", "Low", "Moderate", "Significant", "Catastrophic"],
                             textStyle: {
                                 fontFamily: 'inherit'
                             }
+                        }}
+                        legendSettings = {{
+                            visible:false
                         }}
                         dataSourceSettings={{
                             isJsonData: true,
@@ -91,7 +106,7 @@ export class Label extends SampleBase<{}, {}> {
                             { value:48, color:"#ff6354" }
                             ],
                         }}>
-                        <Inject services={[Tooltip, Adaptor]} />
+                        <Inject services={[Tooltip, Adaptor, Legend]} />
                     </HeatMapComponent>
                  </div>
 

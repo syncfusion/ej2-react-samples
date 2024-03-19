@@ -104,7 +104,7 @@ let connectors: ConnectorModel[] = [
 
 const SAMPLE_CSS = `
 /* For connector type and style change in property panel*/
-.image-pattern-style {
+      .image-pattern-style {
         background-color: white;
         background-size: contain;
         background-repeat: no-repeat;
@@ -129,6 +129,10 @@ const SAMPLE_CSS = `
     .row-header {
         font-size: 13px;
         font-weight: 500;
+    }
+
+    .e-checkbox-wrapper .e-label {
+        font-size: 12px;
     }
 
     .e-selected-style {

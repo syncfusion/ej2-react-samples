@@ -2,7 +2,7 @@
  * Sample for linear progress bar
  */
  import * as React from "react";
- import { ProgressBarComponent, ILoadedEventArgs, ProgressTheme } from '@syncfusion/ej2-react-progressbar';
+ import { ProgressBarComponent, ILoadedEventArgs, ProgressTheme, Inject } from '@syncfusion/ej2-react-progressbar';
  import { EmitType } from '@syncfusion/ej2-base';
  import { SampleBase } from '../common/sample-base';
  

@@ -5,7 +5,7 @@ import { ChangeEventArgs as checked } from '@syncfusion/ej2-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-inputs';
 import { ButtonComponent, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
-import { Count, HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { Count, HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -79,7 +79,7 @@ function RTEApi() {
                                     <p>selectAll - select all content in RTE.</p>
                                 </li>
                             </ul>
-                            <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar]} />
+                            <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>
@@ -167,7 +167,7 @@ function RTEApi() {
                 </ul>
                 <p><b>Injecting Module</b></p>
                 <p>Rich Text Editor component features are segregated into individual feature-wise modules.
-                    To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                    To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, PasteCleanup</code> modules into the services.</p>
             </div>
         </div>
     );

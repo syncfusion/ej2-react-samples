@@ -7,6 +7,7 @@ import { hardwareData } from './data-source';
 import { GridComponent, Page, Inject, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 import { updateSampleSection } from "../common/sample-base";
+import './grid.css';
 
 const DataGrid = () => {
     useEffect(() => {
@@ -84,7 +85,7 @@ const DataGrid = () => {
         <div className="control-pane">
             <div className="control-section qb-section">
                 <div className="row">
-                    <div className="col-lg-12 control-section qb-section">
+                    <div className="col-lg-12 control-section qb-section" id='qb-section'>
                         <QueryBuilderComponent
                             width="100%"
                             dataSource={hardwareData}

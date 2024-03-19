@@ -28,7 +28,7 @@ const PieEmptyPoint = () => {
     let pie = useRef<AccumulationChartComponent>(null);
     let modeElement = useRef<DropDownListComponent>(null);
     const mode = (): void => {
-        setEmptyPointMode(modeElement.current.value as EmptyPointMode);
+        pie.current.series[0].emptyPointSettings.mode = modeElement.current.value as EmptyPointMode;
         pie.current.refresh();
     };
     let droplist: { [key: string]: Object }[] = [

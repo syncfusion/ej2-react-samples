@@ -78,7 +78,8 @@ const Resources = () => {
         }
         let scheduleData: Record<string, any>[] = extend([], dManager, null, true) as Record<string, any>[];
         let selectedResource: number[] = [];
-        let resourceCollection: HTMLElement[] = [].slice.call(document.querySelectorAll('.e-resource'));
+        const propertyTable: HTMLTableElement = document.querySelector('.property-panel-table');
+        let resourceCollection: HTMLElement[] = [].slice.call(propertyTable.querySelectorAll('.e-resource'));
         resourceCollection.forEach((element: HTMLElement, index: number) => {
             let resEle: Element | null = element.querySelector('.e-icons');
             if (resEle && resEle.classList.contains('e-check')) {

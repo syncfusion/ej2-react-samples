@@ -57,6 +57,10 @@ const SAMPLE_CSS = `.image-pattern-style {
         padding-bottom: 5px;
     }
 
+    .e-checkbox-wrapper .e-label {
+        font-size: 12px;
+    }
+
     .container-fluid {
         padding-left: 0px;
     }
@@ -220,13 +224,13 @@ function UserHandle() {
       if (target.className === "image-pattern-style") {
         switch (target.id) {
           case "left":
-            setuserhandleposition(0, "Bottom", target);
+            setUserHandlePosition(0, "Bottom", target);
             break;
           case "right":
-            setuserhandleposition(1, "Bottom", target);
+            setUserHandlePosition(1, "Bottom", target);
             break;
           case "topr":
-            setuserhandleposition(0, "Right", target);
+            setUserHandlePosition(0, "Right", target);
             break;
         }
       }
@@ -243,13 +247,13 @@ function UserHandle() {
       if (target.className === "image-pattern-style") {
         switch (target.id) {
           case "pattern1":
-            applyuserhandlestyle("#1E90FF", target);
+            applyUserHandleStyle("#1E90FF", target);
             break;
           case "pattern2":
-            applyuserhandlestyle("#3CB371", target);
+            applyUserHandleStyle("#3CB371", target);
             break;
           case "pattern3":
-            applyuserhandlestyle("#FF6347", target);
+            applyUserHandleStyle("#FF6347", target);
             break;
         }
       }
@@ -289,7 +293,7 @@ function UserHandle() {
     return tool;
   }
   //set the position of the userhandle.
-  function setuserhandleposition(
+  function setUserHandlePosition(
     offset: number,
     side: Side,
     target: HTMLElement
@@ -299,7 +303,7 @@ function UserHandle() {
     target.classList.add("e-selected-style");
   }
   //set the style of the userhandle.
-  function applyuserhandlestyle(bgcolor: string, target: HTMLElement): void {
+  function applyUserHandleStyle(bgcolor: string, target: HTMLElement): void {
     diagramInstance.selectedItems.userHandles[0].backgroundColor = bgcolor;
     diagramInstance.selectedItems.userHandles[0].pathColor = "White";
     target.classList.add("e-selected-style");

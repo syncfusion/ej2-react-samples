@@ -187,7 +187,9 @@ const sample_css = `.image-pattern-style {
   padding-bottom: 15px;
 }
 
-
+.e-checkbox-wrapper .e-label {
+  font-size: 12px;
+}
 
 .e-selected-style {
   border-color: #006CE6;
@@ -198,10 +200,6 @@ const sample_css = `.image-pattern-style {
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 5px;
-}
-
-.e-bigger .e-btn.e-small.e-icon-btn {
-  padding: 0px;
 }`;
 //Apply the appearence of the Annotation
 function changed(value: string): void {

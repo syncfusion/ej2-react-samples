@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Filter, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Filter, Inject, Sort } from '@syncfusion/ej2-react-grids';
 import { categoryData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import "./sample.css";
@@ -50,14 +50,14 @@ function Filtering() {
                         <DropDownListComponent id="ddlelement" dataSource={filData} fields={fields} change={onChange.bind(this)} placeholder="Select category to filter" width="200px" />
                     </div>
                 </div>
-                <GridComponent dataSource={categoryData} allowPaging={true} ref={grid => gridInstance = grid} pageSettings={{ pageSize: 10, pageCount: 5 }} allowFiltering={true}>
+                <GridComponent dataSource={categoryData} allowPaging={true} allowSorting={true} ref={grid => gridInstance = grid} pageSettings={{ pageSize: 10, pageCount: 5 }} allowFiltering={true}>
                     <ColumnsDirective>
                         <ColumnDirective field='CategoryName' headerText='Category Name' width='150'></ColumnDirective>
                         <ColumnDirective field='ProductName' headerText='Product Name' width='150'></ColumnDirective>
                         <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='Discontinued' headerText='Discontinued' width='150' textAlign='Center' displayAsCheckBox={true} type='boolean' ></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Filter, Page]} />
+                    <Inject services={[Filter, Page, Sort]} />
                 </GridComponent>
             </div>
 

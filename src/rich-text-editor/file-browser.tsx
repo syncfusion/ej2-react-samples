@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, QuickToolbar, Image, Link } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, QuickToolbar, Image, Link, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import { ToolbarSettingsModel, FileManager, FileManagerSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 
@@ -37,7 +37,7 @@ export class FileBrowser extends SampleBase<{}, {}> {
                                     <p><b>Get started Quick Toolbar to click on the image</b></p>
                                     <p>It is possible to add custom style on the selected image inside the RichTextEditor through the quick toolbar.</p>
                                     <img id='rteImageID' style={{ width: '300px', height: '300px', transform: 'rotate(0deg)'}} alt="Logo" src="./src/rich-text-editor/images/RTEImage-Feather.png" />
-                                <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, FileManager]} />
+                                <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, FileManager, PasteCleanup, Table, Video, Audio]} />
                             </RichTextEditorComponent>
                         </div>
                     </div>

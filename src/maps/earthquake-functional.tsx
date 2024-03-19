@@ -5,10 +5,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Zoom, Marker, MarkersDirective, MarkerDirective } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import * as asiaMap from './map-data/asia.json';
 const SAMPLE_CSS = `
     .pulse-css {
         width: 20px;
@@ -80,7 +80,7 @@ const EarthquakeMaps = () => {
                     <MapsComponent id="maps" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false, zoomFactor: 7 }} mapsArea={{ background: '#AEE2FA' }} titleSettings={{ text: '7.6 Magnitude earthquake strikes Sumatra - 2009', textStyle: { size: '18px' } }} centerPosition={{ latitude: 1.5053645409602877, longitude: 105.14038085937499 }}>
                         <Inject services={[Zoom, Marker]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/asia.json')} shapePropertyPath='name' shapeDataPath='name' shapeSettings={{ fill: '#FFFDCF', border: { color: '#3497C3', width: 0.5 } }}>
+                            <LayerDirective shapeData={asiaMap} shapePropertyPath='name' shapeDataPath='name' shapeSettings={{ fill: '#FFFDCF', border: { color: '#3497C3', width: 0.5 } }}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} height={100} width={100} animationDuration={0} template={marketTemp} dataSource={[{ latitude: 1.625758360412755, longitude: 106.5693359375 }]} />
                                 </MarkersDirective>

@@ -312,6 +312,7 @@ const SAMPLE_CSS = `
   right: 15px;
 }
 
+
 .e-toggle-palette::before {
   content: "\e700"
 }`;
@@ -410,9 +411,6 @@ export class UmlActivityDiagram extends SampleBase<{}, {}> {
                     obj.type = 'Orthogonal'; obj.cornerRadius = 10;
                     obj.targetDecorator = { shape: 'OpenArrow', style: { strokeColor: '#444', fill: '#444' } };
                   }
-                }}
-                created={()=>{
-                  diagramInstance.fitToPage({mode:'Width'});
                 }}
               ><Inject services={[UndoRedo]} />
               </DiagramComponent>

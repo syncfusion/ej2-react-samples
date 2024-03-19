@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -14,6 +13,7 @@ import {
 } from '@syncfusion/ej2-react-maps';
 import { SampleBase } from '../common/sample-base';
 import * as data from './map-data/legend-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -112,7 +112,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                         }}>
                         <Inject services={[Legend, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                            <LayerDirective shapeData={worldMap}
                                 shapePropertyPath='name'
                                 shapeDataPath='name'
                                 dataSource={datasource.legend}

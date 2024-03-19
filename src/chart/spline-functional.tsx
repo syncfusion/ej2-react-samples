@@ -27,11 +27,11 @@ const SAMPLE_CSS = `
     @keyframes opac {
         0% {
             stroke-opacity: 1;
-            strokeWidth: 0px;
+            stroke-width: 0px;
         }
         100% {
             stroke-opacity: 0;
-            strokeWidth: 10px;
+            stroke-width: 10px;
         }
     }`;
 

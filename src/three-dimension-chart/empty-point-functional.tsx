@@ -85,7 +85,7 @@ const EmptyPoint = () => {
                     <Inject services={[ColumnSeries3D, Category3D, Tooltip3D]} />
                     <Chart3DSeriesCollectionDirective>
                         <Chart3DSeriesDirective
-                            dataSource={data} type='Column' xName='x' yName='y' name='Gold' columnSpacing={0.1}>
+                            dataSource={data} type='Column' xName='x' yName='y' columnSpacing={0.1}>
                         </Chart3DSeriesDirective>
                     </Chart3DSeriesCollectionDirective>
                 </Chart3DComponent>

@@ -114,8 +114,8 @@ if (Browser.isDevice || isMobile) {
  */
 const urlRegex: RegExp = /(npmci\.syncfusion\.com|ej2\.syncfusion\.com)(\/)(development|production)*/;
 const sampleRegex: RegExp = /#\/(([^\/]+\/)+[^\/\.]+)/;
-const sbArray: string[] = ['angular', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc', 'vue', 'blazor'];
-const sbObj: { [index: string]: string } = { 'angular': 'angular', 'typescript': '', 'javascript': 'javascript', 'vue' : 'vue', 'blazor': 'blazor'};
+const sbArray: string[] = ['angular','nextjs', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc', 'vue', 'blazor'];
+const sbObj: { [index: string]: string } = { 'angular': 'angular', 'nextjs': 'nextjs', 'typescript': '', 'javascript': 'javascript', 'vue' : 'vue', 'blazor': 'blazor'};
 
 /**
  * constant for search operations
@@ -143,6 +143,13 @@ if (isMobile) {
   select('#left-sidebar').classList.add('sb-hide');
   leftToggle.classList.remove('toggle-active');
 }
+
+if (Browser.isDevice || isMobile) {
+  leftToggle.setAttribute('aria-expanded', 'false');
+} else {
+  leftToggle.setAttribute('aria-expanded', 'true');
+}
+
 /**
  * Tab View
  */
@@ -167,7 +174,8 @@ export function setSbLink(): void {
     let ele: HTMLFormElement = (select('#' + sb) as HTMLFormElement);
     if (sb === 'aspnetcore' || sb === 'aspnetmvc') {
        ele.href = sb === 'aspnetcore' ? 'https://ej2.syncfusion.com/aspnetcore/' : 'https://ej2.syncfusion.com/aspnetmvc/';
-
+    } else if (sb === 'nextjs') {
+        ele.href = 'https://ej2.syncfusion.com/nextjs/demos/';
     } else if (sb === 'blazor') {
         ele.href = 'https://blazor.syncfusion.com/demos/';
     } else {
@@ -406,6 +414,11 @@ function bindEvents(): void {
     e.stopPropagation();
     sbHeaderClick('changeSampleBrowser');
   });
+  document.getElementById('sb-switcher').addEventListener('keydown', function (e: KeyboardEvent) {
+    if (e.keyCode === 13 || e.keyCode === 32) {
+      sbHeaderClick('changeSampleBrowser');
+    }
+  });
   select('.sb-header-text-right').addEventListener('click', (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -416,6 +429,11 @@ function bindEvents(): void {
     e.stopPropagation();
     sbHeaderClick('changeTheme');
   });
+  headerThemeSwitch.addEventListener('keydown', function (e: KeyboardEvent) {
+    if (e.keyCode === 13 || e.keyCode === 32) {
+      sbHeaderClick('changeTheme');
+    }
+  });
   themeList.addEventListener('click', changeTheme);
   document.addEventListener('click', sbHeaderClick.bind(this, 'closePopup'));
   settingElement.addEventListener('click', (e: MouseEvent) => {
@@ -423,10 +441,20 @@ function bindEvents(): void {
     e.stopPropagation();
     sbHeaderClick('toggleSettings');
   });
+  settingElement.addEventListener('keydown', function (e: KeyboardEvent) {
+    if (e.keyCode === 13 || e.keyCode === 32) {
+      sbHeaderClick('toggleSettings');
+    }
+  });
   searchButton.addEventListener('click', (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     toggleSearchOverlay();
+  });
+  searchButton.addEventListener('keydown', function (e: KeyboardEvent) {
+    if (e.keyCode === 13 || e.keyCode === 32) {
+      toggleSearchOverlay();
+    }
   });
   document.getElementById('settings-popup').addEventListener('click', (e: MouseEvent) => {
     e.preventDefault();
@@ -439,6 +467,11 @@ function bindEvents(): void {
   inputele.addEventListener('keyup', onsearchInputChange);
   setResponsiveElement.addEventListener('click', setMouseOrTouch);
   leftToggle.addEventListener('click', toggleLeftPane);
+  leftToggle.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.keyCode === 13 || e.keyCode === 32) {
+      toggleLeftPane();
+    }
+  });
   mobileOverlay.addEventListener('click', toggleMobileOverlay);
   select('.sb-header-settings').addEventListener('click', viewMobilePrefPane);
   resetSearch.addEventListener('click', resetInput);
@@ -536,7 +569,7 @@ function onsearchInputChange(e: KeyboardEvent): void {
     let ele: any = ListBase.createList(createElement, dataSource, {
       fields: { id: 'uid', groupBy: 'component', text: 'name' },
       template: '<div class="e-text-content e-icon-wrapper" data="${path}" uid="${uid}">' +
-        '<span class="e-list-text" role="list-item">' +
+        '<span class="e-list-text">' +
         '${name}</span></div>',
       groupTemplate:
         '${if(items[0]["component"])}<div class="e-text-content"><span class="e-search-group">${items[0].component}</span>' +
@@ -660,6 +693,7 @@ export function toggleLeftPane(): void {
   isMobile = document.body.offsetWidth <= 550;
   select('#left-sidebar').classList.remove('sb-hide');
   let reverse: boolean = sidebar.isOpen;
+  leftToggle.setAttribute('aria-expanded', (!reverse).toString());
   if (!reverse) {
     leftToggle.classList.add('toggle-active');
 
@@ -796,7 +830,7 @@ function loadTheme(theme: string): void {
     if (!isMobile) {
       document.querySelector('.sb-right-pane').scrollTop = 0;
     }
-    });
+    }, 400);
     
   });
 }

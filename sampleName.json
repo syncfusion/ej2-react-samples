@@ -248,6 +248,16 @@
 	     "empty-point": "Column With null and 0 values"
         }
     },
+    "three-dimension-circular-chart": {
+        "ControlName": "3D Circular Chart",
+        "Samples": {
+         "pie": "Pie",
+	     "donut": "Donut",
+	     "pie-legend": "Pie with Legend",
+	     "selection": "Selection",
+         "pie-radius": "Pie with Various Radius"
+        }
+    },
     "chips": {
         "ControlName": "Chips",
         "Samples": {
@@ -1104,6 +1114,15 @@
         "Samples": {
             "default": "Default Functionalities",
             "multiline": "Multiline TextBox"
+        }
+    },
+    "textarea": {
+        "ControlName": "TextArea",
+        "Samples": {
+            "default": "Default Functionalities",
+            "floating-label": "Floating Label",
+            "resize": "Resize",
+            "api": "API"
         }
     },
     "timepicker": {

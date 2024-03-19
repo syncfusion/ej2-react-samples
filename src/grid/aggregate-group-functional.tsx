@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Aggregate, Group, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Page, Aggregate, Group, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective } from '@syncfusion/ej2-react-grids';
 import { categoryData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -22,7 +22,7 @@ function AggregateGroup() {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GridComponent dataSource={categoryData} allowPaging={true} pageSettings={pageSettings} allowGrouping={true} groupSettings={groupSettings}>
+        <GridComponent dataSource={categoryData} allowPaging={true} pageSettings={pageSettings} allowGrouping={true} groupSettings={groupSettings} allowSorting={true}>
           <ColumnsDirective>
             <ColumnDirective field='CategoryName' headerText='Category Name' width='70'></ColumnDirective>
             <ColumnDirective field='ProductName' headerText='Product Name' width='150'></ColumnDirective>
@@ -43,7 +43,7 @@ function AggregateGroup() {
               </AggregateColumnsDirective>
             </AggregateDirective>
           </AggregatesDirective>
-          <Inject services={[Page, Aggregate, Group]} />
+          <Inject services={[Page, Aggregate, Group, Sort]} />
         </GridComponent>
         <div id="action-description">
           <p>This sample demonstrates Aggregate functionality of the Grid. In this sample, both “Unit In Stock” and “Discontinued” columns are displayed their aggregate value in group footer.

@@ -26,7 +26,6 @@ Diagram.Inject(ConnectorEditing);
 
 let diagramInstance: DiagramComponent;
 const SAMPLE_CSS = `
-
   .row {
     margin-left: 0px;
     margin-right: 0px;
@@ -371,7 +370,7 @@ let handles:UserHandleModel[]  = [
         <div className="control-pane diagram-control-pane">
         <style>{SAMPLE_CSS}</style>
         <div className="col-lg-10 control-section">
-          <div  className="control-wrapper">
+        <div className="control-wrapper">
           <div
             className="content-wrapper"
             style={{ width: '100%', background: 'white' }}

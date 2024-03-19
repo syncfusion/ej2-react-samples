@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Edit, CommandColumn } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Edit, CommandColumn, Sort } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -16,7 +16,7 @@ export class CommandColumnEdit extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent id='gridcomp' dataSource={data}  allowPaging={true} pageSettings={{ pageCount: 5 }} editSettings={this.editSettings}>
+          <GridComponent id='gridcomp' dataSource={data}  allowPaging={true} pageSettings={{ pageCount: 5 }} allowSorting={true} editSettings={this.editSettings}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' isPrimaryKey={true} validationRules={this.validationRule}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRule}></ColumnDirective>
@@ -25,7 +25,7 @@ export class CommandColumnEdit extends SampleBase<{}, {}> {
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
               <ColumnDirective headerText='Manage Records' width='160' commands={this.commands}></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Page, CommandColumn, Edit]} />
+            <Inject services={[Page, CommandColumn, Edit, Sort]} />
           </GridComponent>
           <div id="action-description">
           <p>This sample demonstrates CRUD operations in Grid using command column. You can perform CRUD operations as follows,</p>

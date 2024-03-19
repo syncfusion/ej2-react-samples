@@ -23,7 +23,7 @@ import {
 import { updateSampleSection } from "../common/sample-base";
 import { RadioButtonComponent, ChangeArgs } from "@syncfusion/ej2-react-buttons";
 
- //Initialize Diagram Nodes
+//Initialize Diagram Nodes
 let nodes: NodeModel[] = [];
 let port1: PointPortModel = { id: 'port1', offset: { x: 0.5, y: 1 } };
 let port: PointPortModel = { id: 'port', offset: { x: 1, y: 0.5 } };
@@ -36,7 +36,7 @@ nodes.push(createNodes('node6', 500, 320, 'Process', 'Cluster of events', 100, 2
 nodes.push(createNodes('node7', 500, 420, 'Process', 'Start the process', 100, 25));
 nodes.push(createNodes('node8', 730, 320, 'Process', 'Record and analyze \n results', 170, 25, [port]));
 nodes.push(createNodes('node9', 730, 420, 'Terminator', 'End ', 100, 35));
- //Initialize Diagram Connectors
+
 let connectors: ConnectorModel[] = [];
 connectors.push(createConnector('connector1', 'node1', 'node2', ''));
 connectors.push(createConnector('connector2', 'node2', 'node3', ''));
@@ -49,7 +49,6 @@ connectors.push(createConnector('connector8', 'node7', 'node9', ''));
 connectors.push(createConnector('connector10', 'node4', 'node5', '', 'Orthogonal', 'Bottom', 'port', 220));
 
 let SAMPLE_CSS = `
-/* For property panel */
 #flowExecitionPropertySection .row {
             margin-left: 0px;
             margin-right: 0px;

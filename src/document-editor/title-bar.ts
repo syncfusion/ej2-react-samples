@@ -64,9 +64,11 @@ export class TitleBar {
         this.close = this.addButton('e-icons e-close e-de-padding-right',"", btnStyles, 'de-close', closeToolTip, false) as Button;
         this.print = this.addButton('e-de-icon-Print e-de-padding-right', printText, btnStyles, 'de-print', printToolTip, false) as Button;
         this.open = this.addButton('e-de-icon-Open e-de-padding-right', openText, btnStyles, 'de-open', openText, false) as Button;
-        let items: ItemModel[] = [
-            { text: 'Microsoft Word (.docx)', id: 'word' },
-            { text: 'Syncfusion Document Text (.sfdt)', id: 'sfdt' },
+        let items = [
+            { text: 'Syncfusion Document Text (*.sfdt)', id: 'sfdt' },
+            { text: 'Word Document (*.docx)', id: 'word' },
+            { text: 'Word Template (*.dotx)', id: 'dotx'},
+            { text: 'Plain Text (*.txt)', id: 'txt'},
         ];
         // tslint:disable-next-line:max-line-length
         this.export = this.addButton('e-de-icon-Download e-de-padding-right', downloadText, btnStyles, 'documenteditor-share', downloadToolTip, true, items) as DropDownButton;
@@ -81,9 +83,13 @@ export class TitleBar {
     }
     private setTooltipForPopup(): void {
         // tslint:disable-next-line:max-line-length
-        document.getElementById('documenteditor-share-popup').querySelectorAll('li')[0].setAttribute('title', 'Download a copy of this document to your computer as a DOCX file.');
+        document.getElementById('documenteditor-share-popup').querySelectorAll('li')[0].setAttribute('title', 'Download a copy of this document to your computer as an SFDT file.');
         // tslint:disable-next-line:max-line-length
-        document.getElementById('documenteditor-share-popup').querySelectorAll('li')[1].setAttribute('title', 'Download a copy of this document to your computer as an SFDT file.');
+        document.getElementById('documenteditor-share-popup').querySelectorAll('li')[1].setAttribute('title', 'Download a copy of this document to your computer as a DOCX file.');
+        // tslint:disable-next-line:max-line-length
+        document.getElementById('documenteditor-share-popup').querySelectorAll('li')[2].setAttribute('title', 'Download a copy of this document to your computer as a DOTX file.');
+        // tslint:disable-next-line:max-line-length
+        document.getElementById('documenteditor-share-popup').querySelectorAll('li')[3].setAttribute('title', 'Download a copy of this document to your computer as a TXT file.');
     }
     private wireEvents = (): void => {
         this.print.element.addEventListener('click', this.onPrint);
@@ -151,10 +157,16 @@ export class TitleBar {
         let value: string = args.item.id;
         switch (value) {
             case 'word':
-                this.save('Docx');
+                 this.save('Docx');
+                 break;
+             case 'sfdt':
+                 this.save('Sfdt');
+                 break;
+            case 'txt':
+                this.save('Txt');
                 break;
-            case 'sfdt':
-                this.save('Sfdt');
+            case 'dotx':
+                this.save('Dotx');
                 break;
         }
     }

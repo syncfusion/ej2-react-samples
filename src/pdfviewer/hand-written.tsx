@@ -4,13 +4,14 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView,
-ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, Inject } from '@syncfusion/ej2-react-pdfviewer';
+ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer,Inject } from '@syncfusion/ej2-react-pdfviewer';
 import { SampleBase } from '../common/sample-base';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import './pdf.component.css';
 
 export class HandWrittenSignature extends SampleBase<{}, {}> {
   public viewer: PdfViewerComponent;
+  public isInitialLoading: boolean =  true;
   render() {
     return (<div>
       <div className='control-section'>
@@ -25,7 +26,7 @@ export class HandWrittenSignature extends SampleBase<{}, {}> {
         </div>
             {/* Render the PDF Viewer */}
             <PdfViewerComponent ref={(scope) => { this.viewer = scope; }} id="container" documentPath="https://cdn.syncfusion.com/content/pdf/handwritten-signature.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" documentLoad = {this.documentLoaded} style={{ 'height': '640px' }}>
-                <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
+                <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner,PageOrganizer]} />
             </PdfViewerComponent>
           </div>
         <div id="action-description">
@@ -45,7 +46,10 @@ export class HandWrittenSignature extends SampleBase<{}, {}> {
     );
   }
   documentLoaded = () => {
-    this.viewer.annotationModule.setAnnotationMode('HandWrittenSignature');
+    if (this.isInitialLoading) {
+      this.viewer.annotationModule.setAnnotationMode('HandWrittenSignature');
+      this.isInitialLoading = false;
+    }
   }
   change = (args) => {
     if (args.checked) {

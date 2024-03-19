@@ -94,7 +94,7 @@ export function GetZoomingData(): any {
         } else {
             value -= Math.random();
         }
-        point1 = { x: new Date(1950, i + 2, i), y: value.toFixed(1) };
+        point1 = { x: new Date(1960, i + 1, i), y: Math.round(value) };
         series1.push(point1);
     }
     return { 'series1': series1 };
@@ -228,7 +228,7 @@ export class Zooming extends SampleBase<{}, {}> {
         
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        selectedTheme = selectedTheme ? selectedTheme : 'material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
         args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
         args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];

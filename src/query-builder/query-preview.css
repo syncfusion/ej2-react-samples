@@ -7,6 +7,7 @@
     border: 1px solid #e5e7eb;
     border-radius: 4px;
     height: 300px;
+    margin-bottom: 10px;
 }
 
 .e-query-preview .e-tab {
@@ -32,9 +33,11 @@
 }
 
 .e-query-preview .copy-tooltip {
+    margin: 10px 10px 0 10px;
+    position: unset;
     height: 32px;
     width: 32px;
-    position: absolute;
+    float: right;
     cursor: pointer;
     right: 12px;
     top: 12px;
@@ -92,3 +95,91 @@
 .e-query-preview .preview {
     margin-top: 20px;
 }
+
+#content-area {
+    height: 260px !important;
+    width: 100% !important;
+    overflow-x: hidden;
+    padding: 10px !important;
+}
+
+.e-text-area-content {
+    margin: 10px;
+    overflow: auto;
+    border: none;
+    width: 96%;
+}
+  
+.e-text-area-content:focus-visible {
+   outline: none;
+}
+
+.parent-container {
+    display: flex;
+    outline: none !important;
+}
+  
+.child {
+    border-radius: 4px;
+    padding: 10px;
+    margin: 5px;
+}
+  
+.left-content {
+    border: 1px solid #ccc;
+    width: 250px;
+}
+  
+.right-content {
+    width: 100%;
+}
+  
+.bottom-right-content {
+    margin-top: 25px;
+}
+  
+.left-header {
+   font-weight: 700;
+}
+  
+.property {
+    margin-top: 10px;
+}
+
+.e-text-area-content {
+    margin: 10px !important;
+    overflow: auto;
+    border: none;
+    width: 96%;
+}
+  
+.e-text-area-content:focus-visible {
+    outline: none;
+}
+
+.top-right-element {
+    padding-right: 20px;
+    height: 32px;
+}
+   
+.top-right-element .e-dropdown-btn {
+    float: right;
+}
+
+#dlgSpan.error {
+    color: red;
+    padding-left: 0px;
+}
+
+@media only screen and (max-width: 700px) {
+    .e-query-preview .e-sql-content,
+    .e-query-preview .e-mongo-content {
+        height: 160px;
+    }
+
+    .e-query-preview .copy-tooltip {
+       display: block !important;
+    }
+}
+
+

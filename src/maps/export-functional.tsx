@@ -5,13 +5,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, MapsTooltip, ExportType, Marker, MarkersDirective, MarkerDirective, ShapeLayerType, PdfExport, ImageExport, Inject, LayersDirective, LayerDirective, ILoadedEventArgs, MapsTheme } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as worldMap from './map-data/world-map.json';
 const SAMPLE_CSS = `
     .control-fluid {
         padding: 0px !important;
@@ -103,7 +103,7 @@ const ExportMaps = () => {
                     <MapsComponent ref={mapInstance} allowPdfExport={true} allowImageExport={true} id="maps" loaded={onMapsLoad} load={load} titleSettings={{ text: 'Location of the Wonders in the World', textStyle: { size: '16px' } }}>
                         <Inject services={[Marker, MapsTooltip, PdfExport, ImageExport]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapeSettings={{ fill: 'lightgrey', border: { color: 'black', width: 0.1 } }}>
+                            <LayerDirective shapeData={worldMap} shapeSettings={{ fill: 'lightgrey', border: { color: 'black', width: 0.1 } }}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} animationDuration={0} shape="Balloon" fill='#E13E40' width={15} height={20} dataSource={markerData} tooltipSettings={{ visible: true, valuePath: 'name' }} />
                                 </MarkersDirective>

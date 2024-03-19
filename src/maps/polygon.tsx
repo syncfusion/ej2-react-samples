@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Polygon } from '@syncfusion/ej2-react-maps';
+import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, Zoom, LayersDirective, LayerDirective, Polygon, MapsTooltip } from '@syncfusion/ej2-react-maps';
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
     .control-fluid {
@@ -30,8 +30,10 @@ export class PolygonLayer extends SampleBase<{}, {}> {
                             <LayersDirective>
                                 <LayerDirective urlTemplate='https://tile.openstreetmap.org/level/tileX/tileY.png' 
                                 polygonSettings={{       
+                                    tooltipSettings: { visible: true },
                                     polygons: [
                                     {
+                                        tooltipTemplate: '<div style="height: auto; width: 280px; background-color: #fff; padding: 10px;"><table style="padding:10px; border:1px solid #000;"><tr><td style="padding:5px; width: 40%; text-align: center;"><img src="src/maps/images/germany-flag.png" style="height:auto;width: 100%" alt="Germany" /></td><td style="padding:5px"><span style="font-size: 12px; font-weight: 500;display:block">Country Name : Germany</span><span style="font-size: 12px; font-weight: 500;display:block">Capital Name : Berlin</span><span style="font-size: 12px; font-weight: 500;display:block">Population : 83,252,474</span><span style="font-size: 12px; font-weight: 500;display:block">GDP : $4.509 trillion</span></td></tr></table></div>',
                                         points: [
                                             { longitude: 8.64898681640625, latitude: 54.909777539554824 },
                                             { longitude: 8.5638427734375, latitude: 54.90030293114211 },
@@ -1678,7 +1680,7 @@ export class PolygonLayer extends SampleBase<{}, {}> {
                                 ],}}
                                 />
                             </LayersDirective>
-                            <Inject services={[Polygon]} />
+                            <Inject services={[Polygon, MapsTooltip, Zoom]} />
                         </MapsComponent>
                     </div>
                 </div>
@@ -1693,10 +1695,11 @@ export class PolygonLayer extends SampleBase<{}, {}> {
                 </div>
             <div id="description">
                 <p>In this example, you can see how to display polygon shape over the map layer using <code>polygonSettings</code>. You can define the polygon shape using <code>points</code> property. You can use <code>fill</code>, <code>opacity</code>, <code>borderColor</code>, <code>borderWidth</code> and <code>borderOpacity</code> to customize the appearance of the polygon shape.</p>
+                <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a polygon or tap a polygon in touch enabled devices.</p>
                 <br/>
              <p><b>Injecting Module</b></p>
              <p>
-                Map component features are separated into discrete feature-based modules. To use polygon support, inject the <code>Polygon</code> module using the <code>{'<Inject services={[Polygon]} />'}</code> method.
+                Map component features are separated into discrete feature-based modules. To use polygon and its tooltip, inject the <code>Polygon</code> and <code>MapsTooltip</code> modules using the <code>{'<Inject services={[Polygon, MapsTooltip]} />'}</code> method.
              </p>
             </div>
             </div>

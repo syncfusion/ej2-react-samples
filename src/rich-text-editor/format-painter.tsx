@@ -54,7 +54,7 @@ export class FormatPainterRTE extends SampleBase<{}, {}> {
                                     to <span style={{backgroundColor: 'rgb(198, 140, 83)'}}><strong>multiple sections</strong></span>. 
                                     It's a helpful tool for anyone who works with text editing regularly, such as writers, editors, and content creators.
                                 </p>
-                            <Inject services={[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table, Audio, Video, Audio, Video]} />
+                            <Inject services={[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table, Audio, Video]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>
@@ -136,7 +136,7 @@ export class FormatPainterRTE extends SampleBase<{}, {}> {
             <p>The Format Painter feature is segregated as an individual module. To use the format painter you can import and then inject it into the RichTextEditor.</p>
             <p>
                 To use Rich Text Editor feature, we need to inject  <code>'FormatPainter'</code> module using inject component and then adding the modules in the services prop. 
-                <code>[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table]</code>
+                <code>[HtmlEditor, Toolbar, FormatPainter, QuickToolbar, Image, Link, Table, PasteCleanup]</code>
             </p>
             </div>
         </div>

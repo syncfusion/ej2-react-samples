@@ -44,7 +44,7 @@ function progessTemplate(props): any {
 let loc = { width: '31px', height: '24px' };
 function trustTemplate(props): any {
   var Trustworthiness = props.Trustworthiness == "Sufficient" ? 'src/grid/images/Sufficient.png' : props.Trustworthiness == "Insufficient" ? 'src/grid/images/Insufficient.png' : 'src/grid/images/Perfect.png';
-  return (<div> <img style={loc} src={Trustworthiness} />
+  return (<div> <img style={loc} src={Trustworthiness} alt="" />
     <span id="Trusttext">{props.Trustworthiness}</span></div>)
 }
 
@@ -63,7 +63,7 @@ function empTemplate(props): any {
 }
 function coltemplate(props): any {
   return (<div className="Mapimage">
-    <img src="src/grid/images/Map.png" className="e-image" /> <span>  </span>
+    <img src="src/grid/images/Map.png" className="e-image" alt="" /> <span>  </span>
     <span id="locationtext">{props.Location}</span>
   </div>)
 }
@@ -73,7 +73,7 @@ function trustdetails(props): any {
   }
   let loc = { width: '31px', height: '24px' };
   let Trustworthiness = props.Trustworthiness == "Sufficient" ? 'src/grid/images/Sufficient.png' : props.Trustworthiness == "Insufficient" ? 'src/grid/images/Insufficient.png' : 'src/grid/images/Perfect.png';
-  return (<div><img style={loc} src={Trustworthiness} /> <span id="Trusttext">{props.Trustworthiness}</span></div>);
+  return (<div><img style={loc} src={Trustworthiness} alt="" /> <span id="Trusttext">{props.Trustworthiness}</span></div>);
 }
 function ratingDetails(props): any {
   return (<RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true} />);
@@ -175,18 +175,25 @@ function OverView() {
       dReady = true;
       stTime = performance.now();
     });
-    document.getElementById('overviewgrid').addEventListener('DOMSubtreeModified', () => {
-      if (dReady && stTime && isDataChanged) {
-        let msgEle = document.getElementById('msg');
-        let val: any = (performance.now() - stTime).toFixed(0);
-        stTime = null;
-        dReady = false;
-        dtTime = false;
-        isDataChanged = false;
-        msgEle.innerHTML = 'Load Time: ' + "<b>" + val + "</b>" + '<b>ms</b>';
-        msgEle.classList.remove('e-hide')
-      }
-    })
+    var observer = new MutationObserver((mutations) => {
+      mutations.forEach(() => {
+        if (dReady && stTime && isDataChanged) {
+          let msgEle: Element = document.getElementById('msg') as Element;
+          let val: any = (performance.now() - stTime).toFixed(0);
+          stTime = null;
+          dReady = false;
+          dtTime = false;
+          isDataChanged = false;
+          msgEle.innerHTML = 'Load Time: ' + "<b>" + val + "</b>" + '<b>ms</b>';
+          msgEle.classList.remove('e-hide')
+        }
+      });
+    });
+    observer.observe(document.getElementById('overviewgrid') as Node, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
   }
   const gridFilter: any = {
     type: 'Menu'
@@ -241,7 +248,7 @@ function OverView() {
           The Grid is used to display and manipulate tabular data with configuration options to control
           the way the data is presented and manipulated.
           It will pull the data from a data source, such as an array of JSON objects, OData web services,
-          or <code><a target="_blank" className="code"
+          or <code><a target="_blank" className="code" aria-label="API link for documentation"
             href="https://ej2.syncfusion.com/documentation/api/data/dataManager/">
             DataManager</a></code> binding data fields to columns.
           Also, displaying a column header to identify the field with support for grouped records.
@@ -250,12 +257,12 @@ function OverView() {
           In this demo, Grid features such as <code>Virtual Scrolling, Filtering, Sorting, Column Template </code> etc... are used along with large data source.
         </p>
         <p>
-            You can follow the guidelines in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/virtual-scroll/#browser-height-limitation-in-virtual-scrolling-and-solution">
+            You can follow the guidelines in this <a target="_blank" aria-label="API link for documentation" href="https://ej2.syncfusion.com/react/documentation/grid/virtual-scroll/#browser-height-limitation-in-virtual-scrolling-and-solution">
           documentation</a> to get around the browser height restriction when loading and viewing millions of records.
         </p>
         <p>
           More information on the Grid instantiation can be found in this
-          <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/grid/getting-started"> documentation section</a>.
+          <a target="_blank" aria-label="API link for documentation" href="https://ej2.syncfusion.com/react/documentation/grid/getting-started"> documentation section</a>.
         </p>
       </div>
     </div>

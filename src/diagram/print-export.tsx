@@ -38,7 +38,7 @@ let shape: BasicShapeModel = {
   shape: "Rectangle",
   cornerRadius: 10
 };
-
+//Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: "sourceNode1",
@@ -167,7 +167,7 @@ let nodes: NodeModel[] = [
     annotations: [{ content: "Muscular Strength" }]
   }
 ];
-
+//Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   {
     id: "flowChartConnector1",

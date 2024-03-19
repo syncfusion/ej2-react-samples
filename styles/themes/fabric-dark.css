@@ -8,6 +8,13 @@
     margin-top: 6px;
 }
 
+.fabric-dark .e-samplestatus.new.tree,
+.fabric-dark .e-samplestatus.update.tree,
+.fabric-dark .e-samplestatus.preview.tree {
+    height: 22px;
+    margin-top: 4px;
+}
+
 /* fabric dark */
 .fabric-dark .sb-content,
 .fabric-dark textarea#ruleContent {

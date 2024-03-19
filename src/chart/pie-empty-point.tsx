@@ -47,12 +47,7 @@ export class PieEmptyPoint extends SampleBase<{}, {}> {
                 <AccumulationChartComponent id='pie-chart' ref={pie => this.pie = pie} title='Annual Product-Wise Profit Analysis' load={this.load.bind(this)} textRender={this.textRender.bind(this)} legendSettings={{ visible: false }} tooltip={{ enable: true,header:"", format: '<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>' }}   enableBorderOnMouseMove={false} loaded={this.onChartLoad.bind(this)}>
                             <Inject services={[PieSeries, AccumulationDataLabel, AccumulationTooltip]}/>
                             <AccumulationSeriesCollectionDirective>
-                                <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' name='Profit' dataLabel={{
-                                    visible: true, position: 'Inside', font: {
-                                        fontWeight: '600',
-                                        
-                                    }
-                                }} emptyPointSettings={{ fill: '#e6e6e6' }}> 
+                                <AccumulationSeriesDirective dataSource={data1} xName='x' yName='y' name='Profit' dataLabel={{ visible: true, position: 'Inside', enableRotation: true, font: { fontWeight: '600' } }} emptyPointSettings={{ fill: '#e6e6e6' }}> 
                                 </AccumulationSeriesDirective>
                             </AccumulationSeriesCollectionDirective>
                         </AccumulationChartComponent>

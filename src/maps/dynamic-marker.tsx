@@ -211,7 +211,6 @@ export class DynamicMarker extends SampleBase<{}, {}> {
         this.mapInstance.layers[0].navigationLineSettings = [];
         this.navigationLines = [];
         this.emptySavedLinePositions();
-        this.mapInstance.refresh();
         this.buttonInstance.disabled = true;
     };
 

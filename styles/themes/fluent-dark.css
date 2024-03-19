@@ -107,6 +107,16 @@ body.fluent-dark,
     color: #000000;
 }
 
+.fluent-dark .e-samplestatus.preview.tree {
+    margin-top: 6px;
+}
+
+.fluent-dark .e-samplestatus.update,
+.fluent-dark .e-samplestatus.new,
+.fluent-dark .e-samplestatus.preview {
+    margin: auto 0px;
+}
+
 .fluent-dark .sb-theme-popup li:hover.active .sb-theme-select {
     color: #0d6efd;
 }

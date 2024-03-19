@@ -53,7 +53,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
   };
   private contextMenuOpen(args: ContextMenuOpenEventArgs): void {
     let record: IGanttData = args.rowData;
-    if (args.type !== 'Header') {
+    if (args.type !== 'Header' && record) {
         if (!record.hasChildRecords) {
           args.hideItems.push('Collapse the Row');
           args.hideItems.push('Expand the Row');
@@ -69,10 +69,10 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
 
   private contextMenuClick(args: ContextMenuClickEventArgs): void {
     let record: IGanttData = args.rowData;
-    if (args.item.id === 'collapserow') {
+    if (args.item.id === 'collapserow' && record) {
         this.ganttInstance.collapseByID(Number(record.ganttProperties.taskId));
     }
-    if (args.item.id === 'expandrow') {
+    if (args.item.id === 'expandrow' && record) {
         this.ganttInstance.expandByID(Number(record.ganttProperties.taskId));
     }
   }

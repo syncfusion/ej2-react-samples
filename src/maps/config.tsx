@@ -95,7 +95,7 @@ export const MapSampleOrder: Object = [
         ], 'description': 'This demo for Essential JS2 Maps control depicts the facts about Africa continent and a direction compass in an annotation.', 'order': '02', 'category': 'Features'
     },
     {
-        'path': 'maps/polygon', 'type': 'new', 'component': 'Polygon', 'name': 'Polygon', 'sourceFiles': [   
+        'path': 'maps/polygon', 'type': 'update', 'component': 'Polygon', 'name': 'Polygon', 'sourceFiles': [   
             { 'displayName': 'polygon.tsx', 'path': './src/maps/polygon.tsx' },
             { 'displayName': 'polygon.jsx', 'path': './src/maps/polygon.jsx' }
         ], 'description': 'This demo for Essential JS2 Maps control depicts the polygon shape rendering over the OpenStreetMap.', 'order': '03', 'category': 'Polygon'

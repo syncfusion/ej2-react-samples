@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, QueryCellInfoEventArgs } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, QueryCellInfoEventArgs, Freeze } from '@syncfusion/ej2-react-grids';
 import { columnSpanData, ColumnSpanDataType } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -78,7 +78,7 @@ export class ColumnSpanning extends SampleBase<{}, {}> {
                     args.colSpan = 2;
                 }
                 break;
-            case 100010:
+            case 10010:
                 if (args.column.field === '9:00' || args.column.field === '2:30' ||
                     args.column.field === '4:00' || args.column.field === '11:30') {
                     args.colSpan = 3;
@@ -92,9 +92,9 @@ export class ColumnSpanning extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={columnSpanData} queryCellInfo={this.queryCellInfoEvent.bind(this)} allowTextWrap={true} height='auto' width='auto' gridLines='Both' >
+                    <GridComponent dataSource={columnSpanData} queryCellInfo={this.queryCellInfoEvent.bind(this)} allowTextWrap={true} height='auto' width='auto' gridLines='Both' allowSelection={false} enableHover={false} >
                         <ColumnsDirective>
-                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' isPrimaryKey={true} textAlign='Right'></ColumnDirective>
+                            <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' freeze= 'Left' isPrimaryKey={true} textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='EmployeeName' headerText='Employee Name' width='200' ></ColumnDirective>
                             <ColumnDirective field='9:00' headerText='9:00 AM' width='120'></ColumnDirective>
                             <ColumnDirective field='9:30' headerText='9:30 AM' width='120'></ColumnDirective>
@@ -111,20 +111,32 @@ export class ColumnSpanning extends SampleBase<{}, {}> {
                             <ColumnDirective field='4:30' headerText='4:30 PM' width='120'></ColumnDirective>
                             <ColumnDirective field='5:00' headerText='5:00 PM' width='120'></ColumnDirective>
                         </ColumnsDirective>
+                        <Inject services={[Freeze]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">
-                    <p>This sample demonstrates the Grid component with the column spanning feature. In this sample, we have spanned multiple
-        adjacent cells together.
-    </p>
-                </div>
-                <div id="description">
-                    <p>
-                        Grid allows to span the multiple adjacent cells. In <a href='https://ej2.syncfusion.com/react/documentation/api/grid/queryCellInfoEventArgs/'><code>QueryCellInfo</code></a> event, you can define the <code>colSpan</code> attribute to span the cells.
+                <p>This sample demonstrates the Grid component with the column spanning feature. In this sample, you will see multiple columns spanning.
+                </p>
+            </div>
+            <div id="description">
+            <p>
+                    This feature enables you to span multiple adjacent cells. Use the <code>colSpan</code> attribute to define how many cells are to be spanned in the <a href='https://ej2.syncfusion.com/react/documentation/api/grid/queryCellInfoEventArgs/'><code>QueryCellInfo</code></a> event. 
+                    Additionally, you can freeze columns at specific positions by setting the freeze property to left, right, center and fixed in the column definition.
             </p>
-                    <p>
-                        In this demo, Employee <b>Davolio</b> doing analysis from 9.00 AM to 10.00 AM, so that the cells have been spanned and
-                Employee <b>Buchamann</b> doing support work from 9.30 AM to 11.00 AM, so that the cells have been spanned.
+                <p>
+                    In this demo, you can see that the employee named <b>Davolio</b> is analyzing data from 9.00 AM to 10.00 AM, so the cells for that time are spanned. Similarly, another employee <b>Buchanan</b> is doing support work from 9.30 AM to 11.00 AM, and the cells are spanned accordingly. 
+                    Also, the <b>Employee ID</b> column is frozen to the left.
+            </p>
+            <p style={{ fontWeight: 500 }}>Injecting Module:</p>
+            <p>
+                Grid features are separated into feature-wise modules. 
+                To use the frozen rows and columns feature, inject the Freeze module using the <code>Grid.Inject(Freeze)</code> method.
+            </p>
+            <p>
+                More information on the column spanning can be found in this
+                <a target="_blank" 
+                href="https://ej2.syncfusion.com/react/documentation/grid/columns/column-spanning">
+                documentation section</a>.
             </p>
                 </div>
             </div>

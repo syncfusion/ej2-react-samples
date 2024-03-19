@@ -70,6 +70,7 @@ const GanttSelection = () => {
         <div className='col-lg-3 property-section'>
           <PropertyPane title='Properties'>
             <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+            <tbody>
               <tr>
                 <td style={{ width: '100%' }}>
                   <div style={{ fontSize: '15px' }}>
@@ -122,6 +123,7 @@ const GanttSelection = () => {
                   </div>
                 </td>
               </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

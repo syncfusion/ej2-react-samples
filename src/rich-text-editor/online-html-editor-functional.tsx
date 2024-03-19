@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import { RichTextEditorComponent, Toolbar, Inject, Image, Link, HtmlEditor } from '@syncfusion/ej2-react-richtexteditor';
-import { QuickToolbar, Table, ToolbarSettingsModel, ToolbarType, Count } from '@syncfusion/ej2-react-richtexteditor';
+import { QuickToolbar, Table, ToolbarSettingsModel, ToolbarType, Count, PasteCleanup, EmojiPicker, Audio ,Video, FormatPainter } from '@syncfusion/ej2-react-richtexteditor';
 import { createElement, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as CodeMirror from 'codemirror';
@@ -100,7 +100,7 @@ function OnlineHtmlEditor() {
                     <p>Create and edit the valid HTML code simply! You don't worry about the HTML syntax to format your text content. The WYSIWYG editor (left side view) provided the toolbar to make format text and insert images, tables, and more options.</p>
                     <h4>Don't worry about syntax</h4>
                     <p>The content editing works bi-directional, you can write the HTML code on the right-side view (code view), and changes will reflect in the WYSIWYG editor.</p>
-                    <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, Count]} />
+                    <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, Count, PasteCleanup, EmojiPicker, Audio ,Video, FormatPainter]} />
                 </RichTextEditorComponent>
             </div>
         );
@@ -117,7 +117,7 @@ function OnlineHtmlEditor() {
         <div className="control-pane">
             <div className='control-section onlineEditor'>
                 <div id="rte-online-sample-view">
-                    <SplitterComponent ref={splitter => (splitterInstance = splitter)} height='450px' width='100%' resizing={onResizing.bind(this)} created={updateOrientation.bind(this)}>
+                    <SplitterComponent id='splitter-rte-online-html-editor' ref={splitter => (splitterInstance = splitter)} height='450px' width='100%' resizing={onResizing.bind(this)} created={updateOrientation.bind(this)}>
                         <PanesDirective>
                             <PaneDirective resizable={true} size='50%' min="40%" cssClass='pane1' content={content1.bind(this)} ></PaneDirective>
                             <PaneDirective min="40%" cssClass='pane2' content={content2.bind(this)}></PaneDirective>

@@ -167,7 +167,7 @@ export class Dragdrop extends SampleBase<{}, {}> {
             adaptor: new ODataV4Adaptor,
             crossDomain: true
         });
-        return (<ScheduleComponent height='500px' selectedDate={new Date(2020, 9, 20)}
+        return (<ScheduleComponent height='500px' currentView='Month'
             eventSettings={{ dataSource: dataManger }} readonly={true}>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
         </ScheduleComponent>);

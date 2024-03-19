@@ -258,6 +258,7 @@ const Events = () => {
               title="Event Trace"
               style={{ width: "100%" }}
             >
+            <tbody>
               <tr>
                 <td>
                   <div
@@ -283,6 +284,7 @@ const Events = () => {
                   </div>
                 </td>
               </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

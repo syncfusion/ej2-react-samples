@@ -4,7 +4,7 @@
  import * as ReactDOM from 'react-dom';
  import * as React from 'react';
  import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView,
- ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, Inject, FormDesigner, TextFieldSettings, RadioButtonFieldSettings, InitialFieldSettings, CheckBoxFieldSettings, SignatureFieldSettings } from '@syncfusion/ej2-react-pdfviewer';
+ ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields,PageOrganizer, Inject, FormDesigner, TextFieldSettings, RadioButtonFieldSettings, InitialFieldSettings, CheckBoxFieldSettings, SignatureFieldSettings } from '@syncfusion/ej2-react-pdfviewer';
  import { SampleBase } from '../common/sample-base'; 
  import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
  import './pdf.component.css';
@@ -25,7 +25,7 @@
              </div>
              {/* Render the PDF Viewer */}
              <PdfViewerComponent id="container"  ref={(scope) => { this.viewer = scope; }} documentPath="https://cdn.syncfusion.com/content/pdf/form-designer.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" documentLoad={this.documentLoaded} validateFormFields={this.validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>
-                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
+                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
              </PdfViewerComponent>
            </div>
          <div id="action-description">

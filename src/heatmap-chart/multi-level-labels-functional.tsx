@@ -95,7 +95,6 @@ const MultiLevelLabels = () => {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
         selectedTheme = selectedTheme.toLowerCase();
-        // custom code end
         if (selectedTheme === 'highcontrast' || selectedTheme === 'bootstrap5-dark' || selectedTheme === 'material-dark' || selectedTheme === 'fabric-dark' || selectedTheme === 'bootstrap-dark' || selectedTheme === 'tailwind-dark' || selectedTheme === 'material3-dark' || selectedTheme === 'fluent-dark') {
             args.heatmap.xAxis.textStyle.color = 'White';
             args.heatmap.yAxis.textStyle.color = 'White';
@@ -108,6 +107,7 @@ const MultiLevelLabels = () => {
             args.heatmap.xAxis.multiLevelLabels[0].textStyle.color = 'Black';
             args.heatmap.yAxis.multiLevelLabels[0].textStyle.color = 'Black';
         }
+        // custom code end
     };
 
     return (

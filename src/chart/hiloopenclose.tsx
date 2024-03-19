@@ -41,9 +41,11 @@ export class HiloOpenClose extends SampleBase<{}, {}> {
                         }}
                         primaryYAxis={{
                             title: 'Price',
-							rangePadding: 'None',
                             labelFormat: 'n0',
                             lineStyle: { width: 0 },
+                            minimum: 40,
+                            maximum: 140,
+                            interval: 20,
                             majorTickLines: { width: 0 }
                         }}
                         chartArea={{ border: { width: 0 } }}

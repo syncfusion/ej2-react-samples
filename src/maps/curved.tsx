@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     Marker, MapsTooltip, MarkersDirective, MarkerDirective, NavigationLine, Zoom
@@ -12,6 +11,7 @@ import {
 import { SampleBase } from '../common/sample-base';
 import * as data1 from './map-data/curved-datasource.json';
 import * as data2 from './map-data/navigation-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource1: any = data1 as any;
 let datasource2: any = data2 as any;
 const SAMPLE_CSS = `
@@ -50,7 +50,7 @@ export class CurvedMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip, NavigationLine, Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={worldMap}
                                     shapeDataPath = {'name'}
                                     shapePropertyPath = {'name'}
                                     dataSource = {[

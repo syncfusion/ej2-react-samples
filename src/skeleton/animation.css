@@ -98,6 +98,7 @@
   /* List view customization */
   #skeleton-listview .e-list-item .e-avatar {
     color: white;
+    background-size: cover;
   }
   #skeleton-listview .e-list-item:nth-child(1) .e-avatar {
     background-color: #039be5;
@@ -110,25 +111,6 @@
   }
   #skeleton-listview .e-list-item:nth-child(8) .e-avatar {
     background-color: #0088;
-  }
-
-  body[class*="material3"] #skeleton-listview {
-    .pic01 {
-        background: url('./src/skeleton/images/1.png') rgba(var(--color-sf-primary)) center;  
-        background-size: cover;
-    }
-    .pic02 {
-        background: url('./src/skeleton/images/3.png') rgba(var(--color-sf-primary)) center;
-        background-size: cover;
-    }
-    .pic03 {
-        background: url('./src/skeleton/images/5.png') rgba(var(--color-sf-primary)) center;
-        background-size: cover;
-    }
-    .pic04 {
-        background: url('./src/skeleton/images/2.png') rgba(var(--color-sf-primary)) center;
-        background-size: cover;
-    }
   }
 
   #skeleton-listview .pic01 {

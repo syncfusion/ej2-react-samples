@@ -112,12 +112,12 @@ const APIs = () => {
  * slider property customization
  */
     let defaultObj = useRef<SliderComponent>(null);
-    let tooltip: object = { placement: 'Before', isVisible: true, showOn: 'Focus' };
+    let tooltip: object = { placement: 'Before', isVisible: true, showOn: 'Hover' };
     let ticks: object = { placement: 'Before', largeStep: 20 };
     const onValueChange = (args: any): void => {
         setValue(args.value);
     }
-
+    
     const onMinChange = (args: any): void => {
         setMin(args.value);
     }

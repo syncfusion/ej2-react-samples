@@ -24,6 +24,7 @@ const TreeGridColumnMenu = () => {
           pageSettings={{ pageSize: 10 }}
           allowSorting={true}
           allowFiltering={true}
+          allowResizing={true}
           showColumnMenu={true}
           filterSettings={{ type: "Menu" }}
         >

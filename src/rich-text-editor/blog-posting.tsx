@@ -4,7 +4,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { isNullOrUndefined as isNOU } from '@syncfusion/ej2-base';
 import './blog-posting.css';
@@ -206,7 +206,7 @@ export class Forums extends SampleBase<{}, {}> {
                             <div id="createpostholder">
                                 <form>
                                     <RichTextEditorComponent id="blogpost" ref={(richtexteditor) => { this.rteObj = richtexteditor }}>
-                                        <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
+                                        <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                                     </RichTextEditorComponent>
                                     <div id='buttonSection'>
                                         <ButtonComponent id="rteCancel" onClick={this.resetMessage.bind(this)} type='button'>Cancel</ButtonComponent>
@@ -227,7 +227,7 @@ export class Forums extends SampleBase<{}, {}> {
                         word content as HTML or Markdown format. So, Rich Text Editor can easily customized to use for blog posting, forums
                         as an editor for response.</p>
                     <p><b>Injecting Module</b></p>
-                    <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                    <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar, PasteCleanup</code> modules into the services.</p>
                 </div>
             </div >);
     }

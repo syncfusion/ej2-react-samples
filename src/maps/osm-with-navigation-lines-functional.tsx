@@ -30,9 +30,6 @@ const OSMNavigation = () => {
             <div className='control-section row'>
                 <div className='col-md-12'>
                     <MapsComponent id="maps" load={load} titleSettings={{ text: 'Flight route from Los Angeles to Mexico city', textStyle: { size: '16px' } }} centerPosition={{ latitude: 27.0902, longitude: -105.7129 }} zoomSettings={{ zoomFactor: 5, enable: false }}>
-                        <AnnotationsDirective>
-                            <AnnotationDirective content='<div style="height:18px;width:170px;background:white;text-align:center"><a href="https://www.openstreetmap.org/copyright"  target = "_blank" > © OpenStreetMap contributors </a></div >' verticalAlignment='Far' zIndex='1' x='-40' y='-20' horizontalAlignment='Far' />
-                        </AnnotationsDirective>
                         <Inject services={[Bubble, MapsTooltip, Zoom, Marker, NavigationLine]} />
                         <LayersDirective>
                             <LayerDirective layerType='OSM'>

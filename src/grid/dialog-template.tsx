@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar,
-    Edit, Inject, DialogEditEventArgs } from '@syncfusion/ej2-react-grids';
+    Edit, Inject, DialogEditEventArgs, Sort } from '@syncfusion/ej2-react-grids';
 import { SampleBase } from '../common/sample-base';
 import { data as orderData } from './data';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
@@ -35,7 +35,7 @@ export class DialogTemplate extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={orderData} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}
+          <GridComponent dataSource={orderData} toolbar={this.toolbarOptions} allowSorting={true} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}
             actionComplete={this.actionComplete.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
@@ -44,7 +44,7 @@ export class DialogTemplate extends SampleBase<{}, {}> {
               <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' ></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Page, Toolbar, Edit]} />
+            <Inject services={[Page, Toolbar, Edit, Sort]} />
           </GridComponent>
 
         <div id="action-description">

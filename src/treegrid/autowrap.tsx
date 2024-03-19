@@ -11,7 +11,7 @@ const SAMPLE_CSS = `
     }`;
 
 export class AutoWrap extends SampleBase<{}, {}> {
-
+ 
   render() {
     return (
       <div className='control-pane'>

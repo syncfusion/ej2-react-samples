@@ -5,13 +5,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MapsTooltip, Marker, MarkersDirective, MarkerDirective } from '@syncfusion/ej2-react-maps';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './map-data/top-population.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -63,7 +63,7 @@ const MarkerMaps = () => {
                 <MapsComponent id="maps" loaded={onMapsLoad} load={load} ref={mapInstance} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: false }} titleSettings={{ text: 'Top 25 populated cities in the world', textStyle: { size: '16px' } }}>
                     <Inject services={[Marker, MapsTooltip]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.population} shapeSettings={{ fill: '#C3E6ED' }}>
+                        <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.population} shapeSettings={{ fill: '#C3E6ED' }}>
                             <MarkersDirective>
                                 <MarkerDirective visible={true} animationDuration={0} shape='Circle' fill='white' width={10} border={{ color: '#285255', width: 2 }} dataSource={datasource.population} tooltipSettings={{ template: template, visible: true, valuePath: 'population' }} />
                             </MarkersDirective>

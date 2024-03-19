@@ -92,7 +92,7 @@ function data(count: number) {
             Price: Math.round(Math.random() * 5000) + 5000,
             Sold: Math.round(Math.random() * 80) + 10,
         });
-        if (dt / 4 == 1) {
+        if (dt / 2 == 1) {
             dt = 0;
         }
     }
@@ -144,8 +144,8 @@ function VirtualScrolling () {
                     </span>
                     <span id="performanceTime">Time Taken: 0 sec</span>
                 </div>
-                <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} enableVirtualization={true} width={Browser.isDevice ? '100%' : 860} height={300}
-                    gridSettings={{ columnWidth: 140 }} dataBound={onDataBound}>
+                <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} enableVirtualization={true} width={Browser.isDevice ? '100%' : 1200} height={300}
+                    gridSettings={{ columnWidth: 140 }} dataBound={onDataBound} virtualScrollSettings={{ allowSinglePage: true }}>
                     <Inject services={[VirtualScroll]} />
                 </PivotViewComponent>
             </div>
@@ -153,21 +153,30 @@ function VirtualScrolling () {
                 <p>This sample demonstrates the virtual scrolling option available for vertically and horizontally loading records and showing a large number of records with ease.</p>
             </div>
             <div id="description">
-                <p>The pivot table provides an optimized way to render rows and columns inside the view-port alone without calculating the value of the entire pivot.
-                    To enable virtual scrolling, set <code> enableVirtualization</code> property to true.
+                <p>The pivot table provides an optimized way to render rows and columns inside the view-port alone without
+                    calculating the value of the entire pivot. To enable virtual scrolling, set <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/api/pivotview/#enablevirtualization">
+                        enableVirtualization</a> property to <b>true</b>.
                 </p>
                 <p>
-                    <strong>NOTE:</strong> The <code> height</code> and <code> width</code> properties must be defined when enabling virtual
-                    scrolling option.
+                    In this sample, the <code>allowSinglePage</code> property is enabled by default, allowing
+                    only the current page data to be displayed in the pivot table view. Previously, we were showing both the previous and
+                    next pages along with the current page. The recent change has been introduced to enhance performance.
                 </p>
-                <br />
                 <p>
                     <strong>Injecting Module:</strong>
                 </p>
                 <p>
-                    The pivot table features are segregated into individual modules. To use the virtual scrolling option, inject
+                    The pivot table features are segregated into individual modules. To use the virtual scrolling option, we
+                    need to inject the
                     <code> VirtualScroll</code> module using the
                     <code> services</code> tag.
+                </p>
+                <br />
+                <p>
+                    More information on the virtual scrolling can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/documentation/pivotview/virtual-scrolling">
+                        documentation section</a>.
                 </p>
             </div>
         </div>

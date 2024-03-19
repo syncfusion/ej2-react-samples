@@ -3,7 +3,7 @@
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { RichTextEditorComponent, Inject, QuickToolbar, Image, Link, HtmlEditor, Toolbar, InlineModeModel, FormatModel, FontFamilyModel, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Inject, QuickToolbar, Image, Link, HtmlEditor, Toolbar, InlineModeModel, FormatModel, FontFamilyModel, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
@@ -47,7 +47,7 @@ function Inline() {
                         <RichTextEditorComponent id="inlineRTE" ref={(richtexteditor) => { rteObj = richtexteditor }}
                             inlineMode={inlineMode} toolbarSettings={toolbarSettings} format={format} fontFamily={fontFamily}>
                             <p>The sample is configured with the inline mode of the editor. Initially, the editor is rendered without a <a href="https://ej2.syncfusion.com/home/" target='_blank'>toolbar</a>. The toolbar becomes visible only when the content is selected.</p>
-                            <Inject services={[Image, Link, QuickToolbar, HtmlEditor, Toolbar]} />
+                            <Inject services={[Image, Link, QuickToolbar, HtmlEditor, Toolbar, PasteCleanup, Table, Video, Audio]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ function Inline() {
                 <p>The Rich Text Editor provides an option to display toolbar on demand using mode property. Set mode as inline to enable
                     inline editor. The toolbar becomes visible only when the content is selected</p>
                 <p><b>Injecting Module</b></p>
-                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar, PasteCleanup</code> modules into the services.</p>
             </div>
         </div>
     );

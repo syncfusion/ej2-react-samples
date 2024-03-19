@@ -210,6 +210,10 @@ export class MindMap extends SampleBase<{}, {}> {
                 return connector;
               }}
               getCustomTool={getTool}
+              scrollSettings={{
+                //Sets the scroll padding
+                padding: { left: 50, right: 50 }
+              }}
             >
               <Inject
                 services={[DataBinding, MindMapModule, HierarchicalTree]}

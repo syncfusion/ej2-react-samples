@@ -5,13 +5,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef } from "react";
-import { ColorMappingSettingsModel, MapAjax } from '@syncfusion/ej2-maps';
+import { ColorMappingSettingsModel } from '@syncfusion/ej2-maps';
 import { MapsTooltip, LayersDirective, MapsTheme, ILoadedEventArgs, LayerDirective, MapsComponent, Inject, Legend, ITooltipRenderEventArgs, Print } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import * as data from './map-data/print-datasource.json';
+import * as usa from './map-data/usa.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .e-play-icon::before {
@@ -122,7 +123,7 @@ const PrintMaps = () => {
                     <MapsComponent id="maps" tooltipRender={tooltipRender} loaded={onMapsLoad} load={load} allowPrint={true} ref={mapInstance} useGroupingSeparator={true} format={"n"} legendSettings={{ visible: true, mode: 'Interactive', position: 'Bottom', height: '10', width: '350', labelDisplayMode: 'Trim', alignment: 'Center', textStyle: { color: '#757575' } }} titleSettings={{ text: 'State-wise US population - 2010', textStyle: { size: '16px' } }}>
                         <Inject services={[Legend, MapsTooltip, Print]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource.print} tooltipSettings={{ visible: true, valuePath: 'population', format: 'State: ${name} <br> Population: ${population}' }} shapeSettings={{ colorValuePath: 'population', colorMapping: colorMap }} />
+                            <LayerDirective shapeData={usa} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource.print} tooltipSettings={{ visible: true, valuePath: 'population', format: 'State: ${name} <br> Population: ${population}' }} shapeSettings={{ colorValuePath: 'population', colorMapping: colorMap }} />
                         </LayersDirective>
                     </MapsComponent>
                     {/* Source Link */}

@@ -241,6 +241,7 @@ export class MailMerge extends SampleBase<{}, {}> {
         let item: any = this.toolbarOptions;
         this.container.toolbarItems = item;
         this.titleBar.updateDocumentTitle();
+        this.container.documentEditor.documentEditorSettings.showRuler = true;
         this.container.documentChange = (): void => {
             this.titleBar.updateDocumentTitle();
             this.container.documentEditor.focusIn();

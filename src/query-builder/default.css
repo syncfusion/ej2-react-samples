@@ -1,3 +1,30 @@
 .e-query-builder {
     margin: 0 auto;
 }
+
+.top-right-button {
+    height: 32px;
+    float: right;
+}
+
+#json-btn {
+    margin-left: 15px;
+}
+
+.json-content-area {
+    height: 260px !important;
+    width: 100% !important;
+    overflow-x: hidden;
+    padding: 10px !important;
+}
+
+#dlgSpan.error {
+    color: red;
+    padding-left: 0px;
+}
+
+@media only screen and (max-width: 700px) {
+    .e-query-json-preview .e-json-content {
+        width: 95%;
+    }
+}

@@ -38,10 +38,10 @@ const Highlight = () => {
                     <PropertyPane title='Properties'>
                         <table id="property" title="Properties" style={{ width: "100%", marginTop: "15px" }}>
                             <thead>
-                              <tr>
-                                <th></th>
-                                <th></th>
-                              </tr>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tr>
                                 <td style={{ width: "50%" }}>FilterType :</td>

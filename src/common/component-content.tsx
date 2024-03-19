@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { createRoot, Root } from 'react-dom/client';
 import { routes, category } from './all-routes';
 import { Ajax, Browser, createElement, detach, select } from '@syncfusion/ej2-base';
 import { GridComponent, ColumnsDirective, ColumnDirective, Edit, Toolbar, Page, Inject } from '@syncfusion/ej2-react-grids';
@@ -12,7 +11,6 @@ import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay, proces
 import * as samplesJSON from './all-routes';
 import { MyWindow } from './leftpane';
 import { setSelectList } from './leftpane';
-import { PropertyPane, PropertyPaneProps } from './property-pane';
 
 declare let CodeMirror: any;
 declare let window: MyWindow;
@@ -37,7 +35,6 @@ export let sourceTab1: Tab;
 export let srcTab: Tab;
 
 let mobilePropPane: Element = select('.sb-mobile-prop-pane');
-let mobilePropPaneRoot: Root = createRoot(mobilePropPane);
 
 let isMobile: boolean;
 let isFunctional: boolean = false;
@@ -192,7 +189,7 @@ function highlightCode(codeEle: Element, fileType: string): void {
         parentEle.replaceChild(textELe, codeEle);
         CodeMirror.fromTextArea(document.querySelector(`#${(parentEle as HTMLElement).id} .sb-src-code`), {
             mode: `${types[fileType]}`,
-            readOnly: 'nocursor',
+            readOnly: 'false',
             theme: `${selectedTheme.includes('-dark') || selectedTheme === 'highcontrast' ? 'mbo' : 'default'}`
         });
     }
@@ -393,6 +390,7 @@ function renderSampleHeader(): void {
     let controlElem: Element = select('[control-name="' + hash[2].toLowerCase() + '"]');
     controlName = controlElem ? controlElem.getAttribute('name') : toInitiaUpper(hash[2]);
     sampleNameElement.innerHTML = controlName;
+    sampleNameElement.setAttribute('title', controlName);
 
     /**
      * Bread Crumb
@@ -550,7 +548,6 @@ export function onComponentLoad(): void {
         processDeviceDependables();
     let propPanel: Element = select('#control-content .property-section');
     if (propPanel) {
-        propPanel.classList.remove('sb-hide');
         if (propRegex.test(propPanel.className)) {
             propBorder.classList.add('sb-prop-md-3');
             propBorder.classList.remove('sb-prop-md-4');
@@ -566,9 +563,7 @@ export function onComponentLoad(): void {
     isMobile = window.matchMedia('(max-width:550px)').matches;
     if (isMobile && mobileSetting) {
         if (propPanel) {
-            propPanel.classList.add('sb-hide');
             mobileSetting.classList.remove('sb-hide');
-            mobilePropPaneRoot.render(<PropertyPane title={PropertyPaneProps.title} children={PropertyPaneProps.children}/>);
         } else {
             select('.sb-mobile-setting').classList.add('sb-hide');
         }
@@ -626,13 +621,13 @@ export class Content extends React.Component<{}, {}>{
     }
     public tabRendered(): void {
         let hsplitter: string = '<div class="sb-toolbar-splitter sb-custom-item"></div>';
-        let openNewTemplate: string = '<div class="sb-custom-item sb-open-new-wrapper"><a id="openNew" target="_blank" aria-label="Open new window">' +
+        let openNewTemplate: string = '<div class="sb-custom-item sb-open-new-wrapper"><a id="openNew" target="_blank" role="tab" aria-label="Open new window">' +
             '<div class="sb-icons sb-icon-Popout"></div></a></div>';
-        let sampleNavigation: string = '<div class="sb-custom-item sample-navigation"><button id="prev-sample" class="sb-navigation-prev">' +
-            '<span class="sb-icons sb-icon-Previous"></span></button><button  id="next-sample" class="sb-navigation-next">' +
+        let sampleNavigation: string = '<div class="sb-custom-item sample-navigation"><button id="prev-sample" role="tab" aria-label="Navigate to previous sample" class="sb-navigation-prev">' +
+            '<span class="sb-icons sb-icon-Previous"></span></button><button  id="next-sample" role="tab" aria-label="Navigate to next sample" class="sb-navigation-next">' +
             '<span class="sb-icons sb-icon-Next"></span></button></div>';
         let plnrTemplate: string = '<span class="sb-icons sb-icons-plnkr"></span><span class="sb-plnkr-text">Edit in StackBlitz</span>';
-        let contentToolbarTemplate: string = '<div class="sb-desktop-setting"><button id="open-plnkr" class="sb-custom-item sb-plnr-section">' +
+        let contentToolbarTemplate: string = '<div class="sb-desktop-setting"><button id="open-plnkr" role="tab" aria-label="Open Edit in StackBlitz" tabindex="0" class="sb-custom-item sb-plnr-section">' +
             plnrTemplate + '</button>' + hsplitter + openNewTemplate + hsplitter + '</div>' + sampleNavigation +
             '<div class="sb-icons sb-mobile-setting sb-hide"></div>';
 

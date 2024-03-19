@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     ProjectionType, MapsTooltip, LayersDirective, MapsTheme, ILoadedEventArgs, LayerDirective, MapsComponent, Inject, Legend, SmartLabelMode, IntersectAction, ITooltipRenderEventArgs, Print
 } from '@syncfusion/ej2-react-maps';
@@ -14,6 +13,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import * as data from './map-data/print-datasource.json';
+import * as usa from './map-data/usa.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
 .e-play-icon::before {
@@ -85,7 +85,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Legend, MapsTooltip, Print]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={usa}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     dataSource={datasource.print}

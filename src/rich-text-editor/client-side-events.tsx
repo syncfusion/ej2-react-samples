@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { addClass, removeClass, Browser } from '@syncfusion/ej2-base';
-import { RichTextEditorComponent, HtmlEditor, Table, Inject, Toolbar, Link, Image, QuickToolbar, EmojiPicker } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Table, Inject, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, FileManager } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import { ActionBeginEventArgs, ActionCompleteEventArgs, ToolbarSettingsModel } from '@syncfusion/ej2-richtexteditor';
 import { PropertyPane } from '../common/property-pane';
@@ -238,7 +238,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                                     <p>Creates bulleted and numbered lists.</p>
                                 </li>
                             </ul>
-                            <Inject services={[HtmlEditor, Toolbar, Link, Table, Image, QuickToolbar, EmojiPicker]} />
+                            <Inject services={[HtmlEditor, Toolbar, Link, Table, Image, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, FileManager]} />
                         </RichTextEditorComponent>
                     </div>
                 </div>
@@ -295,7 +295,7 @@ export class RTEEvents extends SampleBase<{}, {}> {
                         <li><code>resizeStop</code> – Triggers only when stop resize the image</li>
                     </ul>
                     <p><b>Injecting Module</b></p>
-                    <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                    <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar, Table, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, FileManager</code> modules into the services.</p>
                 </div>
             </div>
         );

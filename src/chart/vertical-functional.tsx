@@ -34,7 +34,7 @@ const VerticalChart = () => {
                         <AxisDirective majorGridLines={{ width: 0 }} opposedPosition={true} title='Profit(In Percentage)' lineStyle={{ width: 0 }} minimum={0} maximum={4} interval={0.5} majorTickLines={{ width: 0 }} name='yAxis2' labelFormat='{value}%' />
                     </AxesDirective>
                     <SeriesCollectionDirective>
-                        <SeriesDirective width={2} dataSource={[ { Year: "2016", column: 13600 }, { Year: "2017", column: 12900 }, { Year: "2018", column: 12500 }, { Year: "2019", column: 14500 }, { Year: "2020", column: 14500 }, { Year: "2021", column: 12000 } ]} xName='Year' name="Sales" yName='column' type='Column' animation={{ enable: false }} />
+                        <SeriesDirective width={2} dataSource={[ { Year: "2016", column: 13600 }, { Year: "2017", column: 12900 }, { Year: "2018", column: 12500 }, { Year: "2019", column: 14500 }, { Year: "2020", column: 14500 }, { Year: "2021", column: 12000 } ]} xName='Year' name="Sales" yName='column' type='Column' />
                         <SeriesDirective width={2} dataSource={[ { Year: "2016", column: 13600, series: 0.5 }, { Year: "2017", series: 1.5 }, { Year: "2018", series: 3.5 }, { Year: "2019", series: 1.5 }, { Year: "2020", series: 3 }, { Year: "2021", series: 2.5 }]} yAxisName="yAxis2" name="Profit Margin" xName='Year' yName='series' type='Line' marker={{ visible: true,  width: 7, height: 7, isFilled: true }} />
                     </SeriesCollectionDirective>
                 </ChartComponent>

@@ -296,7 +296,7 @@ const sample_css = `
     animation: spin 2s linear infinite;
   }
 
-  /* To display the success sign */
+/* To display the success sign */
 .tick {
   display: none;
   animation: showTick 0.5s 0.2s forwards;
@@ -311,6 +311,9 @@ const sample_css = `
 .tick {
   background-color:green;
 }
+.e-play {
+  content: '\e70C';
+}
 /* To display the failure sign */
 .cross {
 display: none;
@@ -324,10 +327,6 @@ color: white;
 border-radius: 50%;
 background-color:red;
 }
-.e-play {
-  content: '\e70C';
-}
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

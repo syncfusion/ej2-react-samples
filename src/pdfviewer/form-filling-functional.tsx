@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView,
-    ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, Inject
+    ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer,Inject
 } from '@syncfusion/ej2-react-pdfviewer';
 import { updateSampleSection } from '../common/sample-base';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
@@ -29,7 +29,7 @@ function FormFilling() {
             </div>
             {/* Render the PDF Viewer */}
             <PdfViewerComponent id="container" ref={(scope) => { viewer = scope; }} documentPath="https://cdn.syncfusion.com/content/pdf/form-filling-document.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" validateFormFields={validateFormFields} enableFormFieldsValidation={true} showNotificationDialog={false} style={{ 'height': '640px' }}>
-                <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
+                <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner, PageOrganizer]} />
             </PdfViewerComponent>
         </div>
         <div id="action-description">

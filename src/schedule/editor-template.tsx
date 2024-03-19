@@ -18,6 +18,10 @@ import * as dataSource from './datasource.json';
 export class EditorTemplate extends SampleBase<{}, {}> {
   private scheduleObj: ScheduleComponent;
   private data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).doctorsEventData, null, true) as Record<string, any>[];
+  private fields = {
+    startTime: { name: 'StartTime', validation: { required: true } },
+    endTime: { name: 'EndTime', validation: { required: true } },
+  };
 
   private onEventRendered(args: EventRenderedArgs): void {
     switch (args.data.EventType) {
@@ -78,7 +82,7 @@ export class EditorTemplate extends SampleBase<{}, {}> {
         <div className='col-lg-12 control-section'>
           <div className='control-wrapper'>
             <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)}
-              ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.data }}
+              ref={schedule => this.scheduleObj = schedule} eventSettings={{ dataSource: this.data, fields: this.fields }}
               editorTemplate={this.editorTemplate.bind(this)} actionBegin={this.onActionBegin.bind(this)}
               editorHeaderTemplate={this.editorHeaderTemplate.bind(this)}
               showQuickInfo={false} eventRendered={this.onEventRendered.bind(this)}>

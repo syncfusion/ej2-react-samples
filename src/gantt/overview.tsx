@@ -175,23 +175,23 @@ export class Overview extends SampleBase<{}, {}> {
         switch (status) {
             case "In Progress":
                 this.statusStyleColor = (this.CurrentTheme) ? "#DFECFF" : "#2D3E57";
-                this.display = 'flex'; this.padding = '1px 12px'; this.gap = '10px'; this.width = '96px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
+                this.display = 'flex'; this.padding = '1.5px 12px'; this.gap = '10px'; this.width = '96px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
                 break;
             case "Open":
                 this.background = "red"; this.color = "white"; this.borderRadius = '15px'; this.padding = '6px';
                 break;
             case "On Hold":
                 this.statusStyleColor = (this.CurrentTheme) ? "#E4E4E7" : "#3C3B43";
-                this.display = 'flex'; this.padding = '1px 12px'; this.gap = '10px'; this.width = '78px';
+                this.display = 'flex'; this.padding = '1.5px 12px'; this.gap = '10px'; this.width = '78px';
                 this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
                 break;
             case "Completed":
                 this.statusStyleColor = (this.CurrentTheme) ? "#DFFFE2" : "#16501C";
-                this.display = 'flex'; this.padding = '1px 12px'; this.gap = '10px'; this.width = '98px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
+                this.display = 'flex'; this.padding = '1.5px 12px'; this.gap = '10px'; this.width = '98px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
                 break;
             case "High":
                 this.statusStyleColor = (this.CurrentTheme) ? "#FFEBE9" : "#48211D";
-                this.display = 'flex'; this.padding = '1px 12px'; this.gap = '10px'; this.width = '55px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
+                this.display = 'flex'; this.padding = '1.5px 12px'; this.gap = '10px'; this.width = '55px'; this.height = '24px'; this.borderRadius = '24px'; this.background = this.statusStyleColor;
                 break;
         }
         return { display: this.display, padding: this.padding, gap: this.gap, width: this.width, height: this.height, borderRadius: this.borderRadius, background: this.background, color: this.color };
@@ -229,19 +229,19 @@ export class Overview extends SampleBase<{}, {}> {
         switch (priority) {
             case "Low":
                 this.priorityStyle = (this.CurrentTheme) ? "#FFF6D1" : "#473F1E";
-                this.display = 'flex'; this.padding = '1px 12px'; this.gap = '10px'; this.width = '52px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
+                this.display = 'flex'; this.padding = '1.5px 12px'; this.gap = '10px'; this.width = '52px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
                 break;
             case "Normal":
                 this.priorityStyle = (this.CurrentTheme) ? "#F5DFFF" : "#4D2F5A";
-                this.display = 'flex'; this.padding = '1px 12px'; this.gap = '10px'; this.width = '73px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
+                this.display = 'flex'; this.padding = '1.5px 12px'; this.gap = '10px'; this.width = '73px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
                 break;
             case "Critical":
                 this.priorityStyle = (this.CurrentTheme) ? "#FFEBE9" : "#48211D";
-                this.display = 'flex'; this.padding = '1px 12px'; this.gap = '10px'; this.width = '72px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
+                this.display = 'flex'; this.padding = '1.5px 12px'; this.gap = '10px'; this.width = '72px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
                 break;
             case "High":
                 this.priorityStyle = (this.CurrentTheme) ? "#FFEBE9" : "#48211D";
-                this.display = 'flex'; this.padding = '1px 12px'; this.gap = '10px'; this.width = '55px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
+                this.display = 'flex'; this.padding = '1.5px 12px'; this.gap = '10px'; this.width = '55px'; this.height = '24px'; this.borderRadius = '24px'; this.backgroundPri = this.priorityStyle;
                 break;
         }
         return { display: this.display, padding: this.padding, gap: this.gap, width: this.width, height: this.height, borderRadius: this.borderRadius, backgroundPri: this.backgroundPri };

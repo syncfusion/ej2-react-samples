@@ -5,11 +5,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MapsTooltip, Marker, MarkersDirective, MarkerDirective, Zoom } from '@syncfusion/ej2-react-maps';
 import { PropertyPane } from '../common/property-pane';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './map-data/sales-map.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -33,7 +33,7 @@ const SalesMaps = () => {
                 <MapsComponent id="maps" load={load} useGroupingSeparator={true} tooltipDisplayMode={"Click"} format={"n"} zoomSettings={{ enable: true, mouseWheelZoom: false, pinchZooming: false }} titleSettings={{ text: 'Sales details of products in various countries', textStyle: { size: '16px' } }}>
                     <Inject services={[Marker, MapsTooltip, Zoom]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.salesmap} shapeSettings={{ fill: '#C3E6ED' }} markerClusterSettings={{ allowClustering: true, allowClusterExpand: true, shape: 'Image', height: 40, width: 40, labelStyle: { color: 'white' }, imageUrl: 'src/maps/images/cluster.svg' }}>
+                        <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.salesmap} shapeSettings={{ fill: '#C3E6ED' }} markerClusterSettings={{ allowClustering: true, allowClusterExpand: true, shape: 'Image', height: 40, width: 40, labelStyle: { color: 'white' }, imageUrl: 'src/maps/images/cluster.svg' }}>
                             <MarkersDirective>
                                <MarkerDirective visible={true} animationDuration={0} height={15} width={15} shape='Image' imageUrl='src/maps/images/ballon.png' dataSource={datasource.salesmap} tooltipSettings={{ format: '<b>Name</b> : ${name}<br><b>Product</b> : ${product}<br><b>Total value</b> : ${worth}', visible: true, valuePath: 'name' }} />
                             </MarkersDirective>

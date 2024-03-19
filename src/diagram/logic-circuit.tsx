@@ -282,7 +282,7 @@ export class LogicCircuit extends SampleBase<{}, {}> {
                 expandMode="Multiple"
                 palettes={[
                   {
-                    id: "flow",
+                    id: "logic",
                     expanded: true,
                     symbols: items,
                     title: "Logic Gates"

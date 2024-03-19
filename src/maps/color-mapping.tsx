@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
@@ -13,6 +12,7 @@ import {
     Legend, MapsTooltip,
 } from '@syncfusion/ej2-react-maps';
 import * as data from './map-data/color-mapping.json';
+import * as usa from './map-data/usa.json';
 let datasource: any = data as any;
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -277,7 +277,7 @@ export class ColorMap extends SampleBase<{}, {}> {
                         <LayersDirective>
                             <LayerDirective dataSource={datasource.color}
                                 shapeDataPath='State'
-                                shapeData={new MapAjax('./src/maps/map-data/usa.json')}
+                                shapeData={usa}
                                 shapePropertyPath='name'
                                 shapeSettings={{
                                     colorValuePath: 'inches',

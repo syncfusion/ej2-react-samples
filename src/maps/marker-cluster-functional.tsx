@@ -4,10 +4,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MarkersDirective, MarkerDirective, Marker, Legend, Zoom, MapsTooltip } from '@syncfusion/ej2-react-maps';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './map-data/marker-cluster.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -32,7 +32,7 @@ const MarkerCluster = () => {
                 <MapsComponent id="maps" load={load} useGroupingSeparator={true} format='n' zoomSettings={{ enable: true }} titleSettings={{ text: 'Top 50 largest cities in the World', textStyle: { size: '16px' } }}>
                     <Inject services={[Marker, MapsTooltip, Zoom]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapeSettings={{ fill: '#C1DFF5' }} markerClusterSettings={{ allowClustering: true, shape: 'Image', height: 40, width: 40, labelStyle: { color: 'white' }, imageUrl: 'src/maps/images/cluster.svg' }}>
+                        <LayerDirective shapeData={worldMap} shapeSettings={{ fill: '#C1DFF5' }} markerClusterSettings={{ allowClustering: true, shape: 'Image', height: 40, width: 40, labelStyle: { color: 'white' }, imageUrl: 'src/maps/images/cluster.svg' }}>
                             <MarkersDirective>
                                 <MarkerDirective visible={true} dataSource={datasource.cluster} shape='Image' imageUrl='src/maps/images/ballon.png' tooltipSettings={{ visible: true, valuePath: 'area', template: template }} height={20} width={20} animationDuration={0} />
                             </MarkersDirective>

@@ -2,7 +2,7 @@
 * Rich Text Editor Insert Media sample
 */
 import * as React from 'react';
-import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, ToolbarSettingsModel, Audio, Video } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, Toolbar, Inject, Image, Table, Link, HtmlEditor, QuickToolbar, ToolbarSettingsModel, Audio, Video, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import './insert-media.css';
 // Rich Text Editor items list
@@ -32,7 +32,7 @@ export class InsertMedia extends SampleBase<{}, {}> {
                             <p><b>Get started with Quick Toolbar to click on an audio</b></p>
                             <p>Using the quick toolbar, users can replace, display, and delete the selected audio.</p>
                             <p><audio controls><source src="https://assets.mixkit.co/sfx/preview/mixkit-rain-and-thunder-storm-2390.mp3" type="audio/mp3" /></audio></p>
-                            <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, Audio, Video]}/>
+                            <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, Audio, Video, PasteCleanup, Table]}/>
                         </RichTextEditorComponent>
                     </div>
                 </div> 
@@ -55,7 +55,7 @@ export class InsertMedia extends SampleBase<{}, {}> {
                         <li><code>Display</code> - display the audio as inline or with a break.</li>
                     </ul>
                     <p><b>Injecting Module</b></p>
-                    <p>Rich Text Editor features are segregated into individual feature-wise modules. To use the audio and video tool, we need to inject the audio and video module using the <code>RichTextEditor.Inject(Audio, Video)</code>.</p>
+                    <p>Rich Text Editor features are segregated into individual feature-wise modules. To use the audio and video tool, we need to inject the audio and video module using the <code>Audio, Video</code>.</p>
                     <p><b>Note:</b> For security reasons, the embed video URL is restricted in this demo. If you want to insert an embed URL video, set the <code>enableHtmlSanitizer</code> to false in your application.</p>
                 </div>
             </div>    

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Reorder, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Reorder, Inject, Sort } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -11,15 +11,15 @@ function Reordering() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={employeeData} allowReordering={true}>
+                <GridComponent dataSource={employeeData} allowReordering={true} allowSorting={true} >
                     <ColumnsDirective>
-                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='120' textAlign="Right"></ColumnDirective>
+                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' textAlign="Right"></ColumnDirective>
                         <ColumnDirective field='FirstName' headerText='Name' width='140'></ColumnDirective>
                         <ColumnDirective field='Title' headerText='Title' width='170' />
                         <ColumnDirective field='HireDate' headerText='Hired Date' width='120' format='yMd' textAlign="Right" />
                         <ColumnDirective field='ReportsTo' headerText='Reports To' width='120'></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Reorder]} />
+                    <Inject services={[Reorder, Sort]} />
                 </GridComponent>
             </div>
             <div id="action-description">

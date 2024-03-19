@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor insert emoticons sample
  */
-import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
@@ -33,7 +33,7 @@ function InsertEmoticons() {
                     <RichTextEditorComponent id="EmotionIconstRTE" ref={(scope) => { rteObj = scope }}
                         toolbarSettings={toolbarSettings}>
                             <div style={{display: 'block;' }}><p style={{ marginRight: '10px' }}>An emoji picker in a Rich Text Editor is a tool that allows users to easily add emojis or emoticons to their text. Typically, it is a small window or panel that displays a variety of emojis, arranged in different categories, such as smileys, animals, food, and so on. Users can select the desired emoji by clicking on it or by typing its name in a search bar. </p></div>  
-                        <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar, EmojiPicker]} />
+                        <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup, Table, Video, Audio]} />
                     </RichTextEditorComponent>
                 </div>
             </div>
@@ -46,7 +46,7 @@ function InsertEmoticons() {
             <p>In this demo, to enable this feature, configure the <b>EmojiPicker</b> command in the <a target='_blank' href='https://helpej2.syncfusion.com/react/documentation/api/rich-text-editor/toolbarSettingsModel/#items'>toolbarSettings.items</a> property.</p>
             <p>You can also insert an emoji by pressing the colon (:) which will open the emoji picker. Choose an emoji from the picker and insert it into the editor. The feature also provides the option to filter emojis based on the typing character.</p>
             <p><b>Injecting Module</b></p>
-            <p>The above features built as modules have to be included in your application. For example, to use image and link, we need to inject <code>HtmlEditor, Toolbar, Link, Image, QuickToolbar, EmojiPicker</code>.</p>
+            <p>The above features built as modules have to be included in your application. For example, to use image and link, we need to inject <code>HtmlEditor, Toolbar, Link, Image, QuickToolbar, EmojiPicker, PasteCleanup</code>.</p>
             </div>
         </div>
     );

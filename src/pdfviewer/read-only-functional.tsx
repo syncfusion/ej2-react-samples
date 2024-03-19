@@ -53,7 +53,6 @@ function ReadOnly() {
     );
 
     function created() {
-        var viewer = (document.getElementById('container') as any).ej2_instances[0];
         viewer.textFieldSettings = {
             isReadOnly: true,
         };

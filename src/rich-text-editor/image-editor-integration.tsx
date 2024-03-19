@@ -1,12 +1,14 @@
 /**
  * Rich Text Editor Image Editor Integration sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, NodeSelection } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, NodeSelection, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { SampleBase } from '../common/sample-base';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import { ImageEditorComponent } from '@syncfusion/ej2-react-image-editor';
+import { getComponent} from '@syncfusion/ej2-base';
+import { ImageEditor } from '@syncfusion/ej2-image-editor';
 import './image-editor-integration.css';
 
 export class ImageEditorIntegration extends SampleBase<{}, {}> {
@@ -54,12 +56,15 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
     });
     this.rteObj.formatter.saveData();
     this.rteObj.formatter.enableUndo(this.rteObj);
+    this.dispose();
     this.dialogObj.hide();
-    this.isLoaded = false;
+    this.imageELement.crossOrigin = null;
   }
   public onCancel(): void {
-    this.imageEditorObj.reset();
+    this.dispose();
     this.dialogObj.hide();
+    this.isLoaded = true;
+    this.imageELement.crossOrigin = null;
   }
   private quickToolbarSettings = {
     image: [
@@ -69,6 +74,9 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
       'Remove',
       '-',
       'InsertLink',
+      'OpenImageLink',
+      'EditImageLink',
+      'RemoveImageLink',
       'Display',
       'AltText',
       {
@@ -86,7 +94,21 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
       this.rteObj.quickToolbarModule.imageQTBar.hidePopup();
     }
   }
+  public dispose():void {
+    const imageEditorInstance = getComponent(document.getElementById('image-editor'), 'image-editor') as ImageEditor;
+    if (imageEditorInstance !== null && imageEditorInstance !== undefined) {
+        imageEditorInstance.destroy();
+    }
+  }
+public onClose():void {
+  this.dispose();
+  this.dialogObj.hide();
+  this.isLoaded = true;
+  this.imageELement.crossOrigin = null;
+}
   public OnBeforeOpen(): void {
+    this.dispose();
+    this.isLoaded = false;
     var selectNodes: any =
       this.rteObj.formatter.editorManager.nodeSelection.getNodeCollection(this.range);
     if (selectNodes.length == 1 && selectNodes[0].tagName == 'IMG') {
@@ -96,11 +118,20 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
       var ctx = canvas.getContext('2d');
       canvas.height = this.imageELement.offsetHeight;
       canvas.width = this.imageELement.offsetWidth;
+      var imageELe = this.imageELement;
+      var isLoded = this.isLoaded;
       this.imageELement.onload = function () {
-        ctx.drawImage(this.imageELement, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(imageELe, 0, 0, canvas.width, canvas.height);
         this.dataURL = canvas.toDataURL();
-        if (!this.isLoaded) {
-          this.imageEditorObj.open(this.dataURL);
+        if (!isLoded) {
+          this.imageEditorObj = new ImageEditor({
+            height: '450px',
+            created: function() {
+                this.imageEditorObj.open(this.dataURL);
+            }
+        });
+        this.imageEditorObj.appendTo('#image-editor');
+        isLoded = true;
         }
       };
     }
@@ -129,7 +160,7 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
                 It provides a variety of features, including image cropping, resizing, rotation, and more.
                 Additionally, it supports a wide range of image formats, including JPEG, PNG, and GIF.
                 </p>
-                <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
+                <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
             </RichTextEditorComponent>
             <DialogComponent
                 id="ImageEditorDialog"
@@ -142,9 +173,11 @@ export class ImageEditorIntegration extends SampleBase<{}, {}> {
                 width="800px"
                 height="550px"
                 isModal={true}
+                close={this.onClose.bind(this)}
             >
                 <div className="dialogContent">
                 <ImageEditorComponent
+                    id="image-editor"
                     height="400px"
                     ref={(imageEditor) => { this.imageEditorObj = imageEditor }}
                     toolbar={this.toolbar}

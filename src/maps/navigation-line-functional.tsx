@@ -5,12 +5,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, MapsTooltip, MarkersDirective, MarkerDirective, NavigationLine, Zoom } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as data1 from './map-data/penisular-marker.json';
 import * as data2 from './map-data/penisular-location.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource1: any = data1 as any;
 let datasource2: any = data2 as any;
 const SAMPLE_CSS = `
@@ -57,7 +57,7 @@ const NavigationLineMaps = () => {
                     <MapsComponent id="maps" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false, zoomFactor: 10 }} projectionType='Equirectangular' titleSettings={{ text: 'Shipping sea route between various cities', textStyle: { size: '18px' } }} mapsArea={{ background: '#4863A0' }} centerPosition={{ latitude: 25.54244147012483, longitude: -89.62646484375 }}>
                         <Inject services={[Zoom, Marker, MapsTooltip, NavigationLine]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapeSettings={{ fill: '#789071' }} navigationLineSettings={datasource2.location}>
+                            <LayerDirective shapeData={worldMap} shapeSettings={{ fill: '#789071' }} navigationLineSettings={datasource2.location}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} shape='Circle' fill='white' width={10} height={10} animationDuration={0} tooltipSettings={{ visible: true, valuePath: 'title' }} dataSource={datasource1.marker} />
                                     <MarkerDirective visible={true} template='<div id="marker1" style="font-size: 12px;color:white">ALTAMIRA</div>' dataSource={[{ latitude: 22.403410892712124, longitude: -100.0 }]} animationDuration={0} />

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
 import { GroupSettingsModel, FilterSettingsModel, ContextMenuItem, EditSettingsModel } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { SampleBase } from '../common/sample-base';
@@ -28,7 +28,7 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit'></ColumnDirective>
                             <ColumnDirective field='ShipCity' headerText='Ship City' width='150'></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />
+                        <Inject services={[Resize, Sort, ContextMenu, Page, ExcelExport, Edit, PdfExport]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">

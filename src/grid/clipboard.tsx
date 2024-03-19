@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar, Sort } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 import './sample.css';
@@ -23,10 +23,7 @@ export class Clipboard extends SampleBase<{}, {}> {
     }];
     clickHandler(args: any) {
         if(this.gridInstance.getSelectedRecords().length>0) {
-            let withHeader: boolean = false;
-            if (args.item.id === 'copyHeader') {
-                withHeader = true;
-            }
+            let withHeader: boolean = args.item.id === 'copyHeader' ? true : false;
             this.gridInstance.copy(withHeader);
         } else {
             this.alertDialogInstance.show();
@@ -36,15 +33,15 @@ export class Clipboard extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={data} ref={grid => this.gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={this.selectionsettings} toolbar={this.toolbarOptions} toolbarClick={this.clickHandler.bind(this)}>
+                    <GridComponent dataSource={data} ref={grid => this.gridInstance = grid} allowSorting={true} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={this.selectionsettings} toolbar={this.toolbarOptions} toolbarClick={this.clickHandler.bind(this)}>
                         <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right'></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-                            <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' />
-                            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
+                            <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170'></ColumnDirective>
+                            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit'></ColumnDirective>
                             <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Page, Selection, Toolbar]} />
+                        <Inject services={[Page, Selection, Toolbar, Sort]} />
                     </GridComponent>
                 </div>
                 <DialogComponent id="alertDialog" header='Copy with Header' visible={this.visible} animationSettings={this.animationSettings} width='300px' content='Atleast one row should be selected to copy with header' ref={alertdialog => this.alertDialogInstance = alertdialog}

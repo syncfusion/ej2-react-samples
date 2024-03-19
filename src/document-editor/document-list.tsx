@@ -58,6 +58,7 @@ export class DocumentList extends SampleBase<{}, { hideDialog: boolean; hideGrid
     this.container.documentEditor.acceptTab = true;
     this.container.documentEditor.resize();
     this.titleBar = new TitleBar(document.getElementById('documenteditor_titlebar'), this.container.documentEditor, true, false, this.dialogInstance);
+    this.container.documentEditor.documentEditorSettings.showRuler = true;
     this.onLoadDefault();
   }
 

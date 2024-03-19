@@ -24,6 +24,7 @@ const TableFormatView = () => {
         // tslint:enable
         container.current.documentEditor.open(JSON.stringify(defaultDocument));
         container.current.documentEditor.documentName = "Table Formatting";
+        container.current.documentEditorSettings.showRuler = true;
         titleBar.updateDocumentTitle();
         container.current.documentChange = (): void => {
             titleBar.updateDocumentTitle();

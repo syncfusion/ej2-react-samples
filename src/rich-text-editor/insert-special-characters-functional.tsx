@@ -2,7 +2,7 @@
  * Rich Text Editor custom toolbar sample
  */
 import { DialogComponent, ButtonPropsModel } from '@syncfusion/ej2-react-popups';
-import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, IToolbarItems, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
@@ -108,7 +108,7 @@ function InsertSpecialCharacters() {
                     <RichTextEditorComponent id="specialCharRTE" ref={(scope) => { rteObj = scope }}
                         toolbarSettings={toolbarSettings} actionComplete={actionCompleteHandler.bind(this)} created={onCreate.bind(this)}>
                         <div style={{ display: 'block' }}><p style={{ marginRight: '10px' }}>The custom command "insert special character" is configured as the last item of the toolbar. Click on the command and choose the special character you want to include from the popup.</p></div>
-                        <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar]} />
+                        <Inject services={[HtmlEditor, Toolbar, Link, Image, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                     </RichTextEditorComponent>
                     <DialogComponent id='customTbarDlg' ref={(scope) => { dialogObj = scope }}
                         buttons={dlgButtons} overlayClick={dialogOverlay.bind(this)} header={header} visible={false}
@@ -176,7 +176,7 @@ function InsertSpecialCharacters() {
                     You can also define the order and group where the command should be included.
                     Bind the action to the command by getting its instance. </p>
                 <p><b>Injecting Module</b></p>
-                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar, PasteCleanup</code> modules into the services.</p>
             </div>
         </div>
     );

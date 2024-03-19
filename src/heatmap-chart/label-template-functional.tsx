@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { HeatMapComponent, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor, AxisModel, PaletteSettingsModel, CellSettingsModel, DataModel } from '@syncfusion/ej2-react-heatmap';
+import { HeatMapComponent, Tooltip, ILoadedEventArgs, HeatMapTheme, Inject, Adaptor, AxisModel, PaletteSettingsModel, CellSettingsModel, DataModel, Legend } from '@syncfusion/ej2-react-heatmap';
 import { updateSampleSection } from '../common/sample-base';
 
 // custom code start
@@ -47,12 +47,24 @@ const Label = () => {
         { 'rowId': 'Frequent', 'columnId': 'Catastrophic', 'value': '100', 'image' : './src/heatmap-chart/images/red-tick.png' }];
 
     let xAxis: AxisModel = {
+        title: {
+            text: 'LIKELIHOOD',
+            textStyle: {
+                fontFamily: 'inherit'
+            }
+        },
         labels: ["Improbable", "Remote", "Occasional", "Probable", "Frequent"],
         textStyle: {
             fontFamily: 'inherit'
         }
     }
     let yAxis: AxisModel = {
+        title: {
+            text: 'IMPACT',
+            textStyle: {
+                fontFamily: 'inherit'
+            }
+        },
         labels: ["Negligible", "Low", "Moderate", "Significant", "Catastrophic"],
         textStyle: {
             fontFamily: 'inherit'
@@ -96,8 +108,8 @@ const Label = () => {
             <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
             <div className='control-section'>
-                <HeatMapComponent id='heatmap-container'  xAxis={xAxis}  tooltipSettings={{ textStyle: {fontFamily: 'inherit'}}}  yAxis={yAxis} dataSourceSettings={dataSourceSettings} dataSource={jsonCellData} cellSettings={cellSettings} load={load.bind(this)} paletteSettings={paletteSettings}>
-                    <Inject services={[Tooltip, Adaptor]} />
+                <HeatMapComponent id='heatmap-container'  xAxis={xAxis} legendSettings={{ visible:false}} tooltipSettings={{ textStyle: {fontFamily: 'inherit'}}}  yAxis={yAxis} dataSourceSettings={dataSourceSettings} dataSource={jsonCellData} cellSettings={cellSettings} load={load.bind(this)} paletteSettings={paletteSettings}>
+                    <Inject services={[Tooltip, Adaptor, Legend]} />
                 </HeatMapComponent>
             </div>
             <div id="action-description">
@@ -106,7 +118,7 @@ const Label = () => {
                 </p>
             </div>
             <div id="description">
-                <p>In this example, you can see how to use the <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/cellSettingsModel/#labeltemplate">labelTemplate</a> to display images in the HeatMap cells.The <code>labelTemplate</code> can be used to add any HTML elements into the HeatMap cells, such as images, text, and so on.</p>
+                <p>In this example, you can see how to use the <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/cellSettingsModel/#labeltemplate">labelTemplate</a> to display images in the HeatMap cells. The <code>labelTemplate</code> can be used to add any HTML elements into the HeatMap cells, such as images, text, and so on.</p>
                 <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
                 <br></br>
                 <p><b>Injecting Module</b></p>

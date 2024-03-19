@@ -3,12 +3,12 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MarkersDirective, MarkerDirective, Marker, Legend, Zoom, MapsTooltip
 } from '@syncfusion/ej2-react-maps';
 import { SampleBase } from '../common/sample-base';
 import * as data from './map-data/marker-cluster.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -35,7 +35,7 @@ export class MarkerCluster extends SampleBase<{}, {}> {
                         }}>
                         <Inject services={[Marker, MapsTooltip, Zoom]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                            <LayerDirective shapeData={worldMap}
                                 shapeSettings={{
                                     fill: '#C1DFF5'
                                 }}

@@ -18,7 +18,7 @@ import { ColorPickerComponent, NumericTextBoxComponent } from "@syncfusion/ej2-r
 
 let diagramInstance: DiagramComponent;
 let toolbarEditor:ToolbarComponent;
- //Initialize Diagram Nodes
+//Initialize Diagram Nodes
 let nodes: NodeModel[] = [
     {
       id: 'Diamond',

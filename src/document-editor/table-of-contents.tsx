@@ -56,6 +56,7 @@ export class TableOfContentsView extends SampleBase<{}, {}> {
         this.container.documentEditor.open(JSON.stringify(defaultDocument));
         this.container.documentEditor.documentName = 'Table of Contents';
         this.titleBar.updateDocumentTitle();
+        this.container.documentEditor.documentEditorSettings.showRuler = true;
         this.container.documentChange = (): void => {
         this.titleBar.updateDocumentTitle();
         this.container.documentEditor.focusIn();

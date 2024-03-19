@@ -47,6 +47,7 @@ const DocumentList = () => {
       titleBar.updateDocumentTitle();
       container.current.documentEditor.focusIn();
     };
+    container.current.documentEditorSettings.showRuler = true;
   };
 
   const rendereComplete = (): void => {

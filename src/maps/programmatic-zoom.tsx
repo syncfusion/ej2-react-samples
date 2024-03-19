@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     MapsTooltip, Marker, MarkersDirective, MarkerDirective, Zoom
@@ -14,6 +13,7 @@ import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-button
 import { PropertyPane } from '../common/property-pane';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as worldMap from './map-data/world-map.json';
 import * as data from './map-data/southamerica-country-capitals.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
@@ -51,7 +51,7 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
                     >
                         <Inject services={[Marker, MapsTooltip, Zoom]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                            <LayerDirective shapeData={worldMap}
                                 shapePropertyPath='name'
                                 shapeDataPath='Country'
                                 dataSource={datasource.southAmericaCountryCapitals}

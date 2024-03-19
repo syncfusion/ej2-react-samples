@@ -22,6 +22,7 @@ const TrackChanges = () => {
         // tslint:enable
         container.current.documentEditor.open(JSON.stringify(defaultDocument));
         container.current.documentEditor.documentName = "Track Changes";
+        container.current.documentEditorSettings.showRuler = true;
         titleBar.updateDocumentTitle();
         container.current.documentChange = (): void => {
             titleBar.updateDocumentTitle();

@@ -22,6 +22,7 @@ const ResourceAllocation = () => {
     resourceInfo: 'resources',
     type: 'taskType'
   };
+  const taskType: any = "FixedWork";
   const resourceFields: any = {
     id: 'resourceId',
     name: 'resourceName',
@@ -50,7 +51,7 @@ const ResourceAllocation = () => {
         <GanttComponent id='ResourceAllocation' dataSource={resourceData} treeColumnIndex={1}
           allowSelection={true} highlightWeekends={true} toolbar={toolbar} editSettings={editSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
-          taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings}
+          taskFields={taskFields} taskType={taskType} labelSettings={labelSettings} splitterSettings={splitterSettings}
           height='410px' resources={resourceResources} workUnit={workUnit}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>

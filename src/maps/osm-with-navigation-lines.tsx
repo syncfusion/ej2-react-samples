@@ -41,15 +41,6 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                                 zoomFactor: 5,
                                 enable: false
                             }}>
-                            <AnnotationsDirective>
-                                <AnnotationDirective
-                                    content='<div style="height:18px;width:170px;background:white;text-align:center"><a href="https://www.openstreetmap.org/copyright"  target = "_blank" > © OpenStreetMap contributors </a></div >'
-                                    verticalAlignment='Far'
-                                    zIndex='1' x='-40' y='-20'
-                                    horizontalAlignment='Far'
-                                >                                    
-                                </AnnotationDirective>
-                            </AnnotationsDirective>
                             <Inject services={[Bubble, MapsTooltip, Zoom, Marker, NavigationLine]} />
                             <LayersDirective>
                                 <LayerDirective layerType='OSM'>

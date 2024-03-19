@@ -32,7 +32,8 @@ export class MarkerPointer extends SampleBase<{}, {}> {
     }
 
     public verticalGauge(e: Event): void {
-        this.invertedPointer.width = this.circlePointer.width = this.textPointer.width = this.rectanglePointer.width = this.multiplePointer.width = '150px';
+        this.invertedPointer.width = this.circlePointer.width = this.rectanglePointer.width = this.multiplePointer.width = '150px';
+        this.textPointer.width = '168px';
         this.invertedPointer.height = this.circlePointer.height = this.textPointer.height = this.rectanglePointer.height = this.multiplePointer.height = '350px';
         this.invertedPointer.orientation = this.circlePointer.orientation = this.textPointer.orientation = this.rectanglePointer.orientation = this.multiplePointer.orientation = "Vertical";
         if (e.currentTarget != null) {
@@ -44,7 +45,7 @@ export class MarkerPointer extends SampleBase<{}, {}> {
                 document.getElementById('containerText').className = document.getElementById('containerRectangle').className =
                 document.getElementById('containerMultiple').className = "col-xs-4 col-sm-4 col-lg-2 col-md-2";
             document.getElementById('containerBox').style.display = "flex";
-            document.getElementById('containerBox').style.padding = "6%";
+            document.getElementById('containerBox').style.padding = "4%";
         }
     }
 

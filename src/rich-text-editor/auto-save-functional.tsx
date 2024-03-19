@@ -3,10 +3,11 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import { updateSampleSection } from '../common/sample-base';
 import './auto-save.css';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+import {isNullOrUndefined } from '@syncfusion/ej2-base';
 import { PropertyPane } from '../common/property-pane';
 function AutoSave() {
     React.useEffect(() => {
@@ -33,8 +34,10 @@ function AutoSave() {
         savingEle.style.display = 'block';
         savedELe.style.display = 'none';
         setTimeout(() => {
-            savingEle.style.display = 'none';
-            savedELe.style.display = 'block';
+            if (!isNullOrUndefined(savingEle) && !isNullOrUndefined(savedELe)) {
+                savingEle.style.display = 'none';
+                savedELe.style.display = 'block';
+            }
         }, 500);
     }
     function onChange(e) {
@@ -59,7 +62,7 @@ function AutoSave() {
                             <div>
                                 <p>Type or edit the content to be saved automatically in the editor</p>
                             </div>
-                            <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar]} />
+                            <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                         </RichTextEditorComponent>
                         <div id='statusEle' className='current-status'>
                             <div id='saving' ref={savingRef} style={{ display: 'none' }}>

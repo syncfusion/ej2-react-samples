@@ -383,6 +383,11 @@ L10n.load({
             "By URL": "حسب عنوان URL",
             "Page Break": "فاصل الصفحات",
             "Section Break": "فاصل المقطع",
+            "Page Breaks":  "فواصل الصفحة",
+            "Section Breaks": "فواصل القسم",
+            Column:'عمود',
+            "Next Page":"الصفحة التالية",
+            Continuous : "الصفحة التالية",
             "Header And Footer": "راس & تذييل",
             Options: "خيارات",
             Levels: "مستويات",
@@ -552,6 +557,7 @@ const RightToLeftView = () => {
         // tslint:enable
         container.current.documentEditor.open(JSON.stringify(defaultDocument));
         container.current.documentEditor.documentName = "الشروع";
+        container.current.documentEditorSettings.showRuler = true;
         titleBar.updateDocumentTitle();
         container.current.documentChange = (): void => {
             titleBar.updateDocumentTitle();

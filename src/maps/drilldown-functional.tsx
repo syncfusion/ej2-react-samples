@@ -5,11 +5,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, ILoadEventArgs, MapsTheme, LayersDirective, LayerDirective, Selection, Highlight, IShapeSelectedEventArgs, MarkersDirective, MarkerDirective, Marker, MapsTooltip } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './map-data/default-datasource.json';
+import * as worldMap from './map-data/world-map.json';
+import * as africa from './map-data/africa.json';
+import * as europe from './map-data/europe.json';
+import * as asia from './map-data/asia.json';
+import * as northAmerica from './map-data/north-america.json';
+import * as southAmerica from './map-data/south-america.json';
+import * as oceania from './map-data/oceania.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -118,17 +124,17 @@ const DrilldownMaps = () => {
                     <MapsComponent id="maps" ref={mapInstance} loaded={loaded} load={load} shapeSelected={shapeSelected.bind(this)} zoomSettings={{ enable: false }}>
                         <Inject services={[Selection, Highlight, Marker, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} layerType='Geometry' shapePropertyPath='continent' shapeDataPath='continent' dataSource={datasource.default} shapeSettings={{ colorValuePath: 'drillColor' }} selectionSettings={{ enable: false }} tooltipSettings={{ visible: true, valuePath: 'continent' }}>
+                            <LayerDirective shapeData={worldMap} layerType='Geometry' shapePropertyPath='continent' shapeDataPath='continent' dataSource={datasource.default} shapeSettings={{ colorValuePath: 'drillColor' }} selectionSettings={{ enable: false }} tooltipSettings={{ visible: true, valuePath: 'continent' }}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} template='<div style="font-size: 12px;color:white;text-shadow: 0px 1px 1px black;font-weight: 500;width:50px">{{:name}}</div>' animationDuration={0} dataSource={markers} />
                                 </MarkersDirective>
                             </LayerDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/africa.json')} layerType='Geometry' shapeSettings={{ fill: '#80306A' }} highlightSettings={{ enable: true, fill: '#80306A' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/europe.json')} layerType='Geometry' shapeSettings={{ fill: '#622D6C' }} highlightSettings={{ enable: true, fill: '#622D6C' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/asia.json')} layerType='Geometry' shapeSettings={{ fill: '#462A6D' }} highlightSettings={{ enable: true, fill: '#462A6D' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/north-america.json')} layerType='Geometry' shapeSettings={{ fill: '#C13664' }} highlightSettings={{ enable: true, fill: '#C13664' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/south-america.json')} layerType='Geometry' shapeSettings={{ fill: '#9C3367' }} highlightSettings={{ enable: true, fill: '#9C3367' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/oceania.json')} layerType='Geometry' shapeSettings={{ fill: '#2A2870' }} highlightSettings={{ enable: true, fill: '#2A2870' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={africa} layerType='Geometry' shapeSettings={{ fill: '#80306A' }} highlightSettings={{ enable: true, fill: '#80306A' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={europe} layerType='Geometry' shapeSettings={{ fill: '#622D6C' }} highlightSettings={{ enable: true, fill: '#622D6C' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={asia} layerType='Geometry' shapeSettings={{ fill: '#462A6D' }} highlightSettings={{ enable: true, fill: '#462A6D' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={northAmerica} layerType='Geometry' shapeSettings={{ fill: '#C13664' }} highlightSettings={{ enable: true, fill: '#C13664' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={southAmerica} layerType='Geometry' shapeSettings={{ fill: '#9C3367' }} highlightSettings={{ enable: true, fill: '#9C3367' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={oceania} layerType='Geometry' shapeSettings={{ fill: '#2A2870' }} highlightSettings={{ enable: true, fill: '#2A2870' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
                         </LayersDirective>
                     </MapsComponent>
                 </div>

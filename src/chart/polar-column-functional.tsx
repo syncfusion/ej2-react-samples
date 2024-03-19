@@ -4,7 +4,7 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from 'react';
 import * as ReactDOM from "react-dom";
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType, Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ChartSeriesType, Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight, ColumnSeries } from '@syncfusion/ej2-react-charts';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
@@ -62,7 +62,7 @@ const PolarColumn = () => {
             <div className='control-section row'>
                 <div className='col-md-8'>
                     <ChartComponent id='charts' ref={chartInstance} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', coefficient: Browser.isDevice ? 80 : 100, interval: 1 }} primaryYAxis={{ labelFormat: '{value}M' }} load={load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Top 10 Mobile Markets by Number of Subscriptions" loaded={onChartLoad.bind(this)} tooltip={{ enable: true, header: "", format: '<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>' }}>
-                        <Inject services={[Legend, Category, PolarSeries, RadarSeries,Highlight, Tooltip]} />
+                        <Inject services={[Legend, Category, PolarSeries, RadarSeries,Highlight, Tooltip, ColumnSeries]} />
                         <SeriesCollectionDirective>
                             <SeriesDirective dataSource={data1} xName='text' yName='y' name='Population' type={type} drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }} />
                             <SeriesDirective dataSource={data1} xName='text' yName='y1' name='Mobile Subscriptions' type={type} drawType='Column' border={{ color: 'white', width: 1 }} marker={{ dataLabel: { name: 'text' } }} />

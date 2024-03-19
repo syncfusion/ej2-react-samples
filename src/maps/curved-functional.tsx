@@ -5,11 +5,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, MapsTooltip, MarkersDirective, MarkerDirective, NavigationLine, Zoom, ShapeSettingsModel } from '@syncfusion/ej2-react-maps';
 import { updateSampleSection } from '../common/sample-base';
 import * as data1 from './map-data/curved-datasource.json';
 import * as data2 from './map-data/navigation-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -49,7 +49,7 @@ const CurvedMaps = () => {
                     <MapsComponent id="maps" loaded={onMapsLoad} load={load} centerPosition={{ latitude: 30.41078179084589, longitude: 90.52734374999999 }} zoomSettings={{ enable: false, zoomFactor: 3.5 }} mapsArea={{ background: '#AEE2FA' }} titleSettings={{ text: 'Flights from India to China', textStyle: { size: '16px' } }}>
                         <Inject services={[Marker, MapsTooltip, NavigationLine, Zoom]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapeDataPath={'name'} shapePropertyPath={'name'} dataSource={[{ name: 'India' }, { name: 'China' }]} shapeSettings={shapeSettings} navigationLineSettings={datasource2.navigation}>
+                            <LayerDirective shapeData={worldMap} shapeDataPath={'name'} shapePropertyPath={'name'} dataSource={[{ name: 'India' }, { name: 'China' }]} shapeSettings={shapeSettings} navigationLineSettings={datasource2.navigation}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} shape='Circle' fill='white' width={4} animationDuration={0} border={{ color: 'black', width: 1 }} dataSource={datasource1.location} />
                                     <MarkerDirective visible={true} dataSource={[{ 'name': 'New Delhi', 'latitude': 28.6139391, 'longitude': 77.2090212 }]} offset={{ x: -50, y: 10 }} template={markerTemplate} animationDuration={0} />

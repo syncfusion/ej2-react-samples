@@ -5,6 +5,7 @@ import { ListView } from '@syncfusion/ej2-lists';
 
 export function getEventDetails(args: any): void {
     let listView: any = document.getElementById('listview-def');
+    if (listView && listView.ej2_instances) {
     let listViewComponent: ListView = listView.ej2_instances[0];
     let selectedItems: any = listViewComponent.getSelectedItems();
     if (selectedItems.data.length > 0) {
@@ -13,6 +14,7 @@ export function getEventDetails(args: any): void {
             eventInformation(args);
         }
     } 
+  }   
 }
 
 function getName(selectedItems: any, args: any): boolean {

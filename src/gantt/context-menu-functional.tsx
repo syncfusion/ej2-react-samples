@@ -59,7 +59,7 @@ const ContextMenuItem = () => {
   };
   const contextMenuOpen = (args: ContextMenuOpenEventArgs): void => {
     let record: IGanttData = args.rowData;
-    if (args.type !== 'Header') {
+    if (args.type !== 'Header' && record) {
       if (!record.hasChildRecords) {
         args.hideItems.push('Collapse the Row');
         args.hideItems.push('Expand the Row');
@@ -74,10 +74,10 @@ const ContextMenuItem = () => {
   }
   const contextMenuClick = (args: ContextMenuClickEventArgs): void => {
     let record: IGanttData = args.rowData;
-    if (args.item.id === 'collapserow') {
+    if (args.item.id === 'collapserow' && record) {
       ganttInstance.current.collapseByID(Number(record.ganttProperties.taskId));
     }
-    if (args.item.id === 'expandrow') {
+    if (args.item.id === 'expandrow' && record) {
       ganttInstance.current.expandByID(Number(record.ganttProperties.taskId));
     }
   }

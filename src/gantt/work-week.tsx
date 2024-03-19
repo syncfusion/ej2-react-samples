@@ -74,6 +74,7 @@ export class WorkWeek extends SampleBase<{}, {}> {
           <div className='col-lg-4 property-section'>
             <PropertyPane title='Properties'>
               <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+              <tbody>
               <colgroup>
                 <col style={{width:'30%'}} />
                 <col style={{width:'70%'}} />
@@ -86,7 +87,7 @@ export class WorkWeek extends SampleBase<{}, {}> {
                   </td>
                   <td style={{ width: '70%' }}>
                     <div style={{ paddingTop: '0px'}}>
-                      <MultiSelectComponent ref={multiselect=> this.multiselectObj = multiselect} id="WorkWeek" style={{ padding: '2px;' }} mode="CheckBox" value={this.defaultValue}
+                    <MultiSelectComponent ref={multiselect=> this.multiselectObj = multiselect} id="WorkWeek" style={{ padding: '2px' }} mode="CheckBox" value={this.defaultValue}
                           dataSource={this.workDays} showDropDownIcon={true} popupHeight='350px' fields={{ text: 'day', value: 'id' }}
                           select={this.select.bind(this)} removed={this.removed.bind(this)}>
                           <Inject services={[CheckBoxSelection]}></Inject>
@@ -94,6 +95,7 @@ export class WorkWeek extends SampleBase<{}, {}> {
                     </div>
                   </td>
                 </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>

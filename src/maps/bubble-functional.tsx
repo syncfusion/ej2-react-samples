@@ -5,12 +5,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Bubble, IBubbleRenderingEventArgs, BubblesDirective, BubbleDirective, MapsTooltip, Zoom } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { internetUsers } from './map-data/population-data';
 import * as data from './map-data/bubble-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 interface Data {
     value?: number;
@@ -43,10 +43,10 @@ const BubbleMaps = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
-                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: false, horizontalAlignment: 'Near', toolBarOrientation: 'Vertical', toolbars: ['ZoomIn', 'ZoomOut', 'Reset'], pinchZooming: true }} bubbleRendering={bubbleRendering} titleSettings={{ text: 'Top 30 countries with highest Internet users', textStyle: { size: '16px' } }}>
+                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: true, horizontalAlignment: 'Near', toolBarOrientation: 'Vertical', toolbars: ['ZoomIn', 'ZoomOut', 'Reset'], pinchZooming: true }} bubbleRendering={bubbleRendering} titleSettings={{ text: 'Top 30 countries with highest Internet users', textStyle: { size: '16px' } }}>
                         <Inject services={[Bubble, MapsTooltip, Zoom]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource} shapeSettings={{ fill: '#E5E5E5' }}>
+                            <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource} shapeSettings={{ fill: '#E5E5E5' }}>
                                 <BubblesDirective>
                                     <BubbleDirective dataSource={internetUsers} visible={true} valuePath='value' colorValuePath='color' minRadius={3} maxRadius={70} opacity={0.8} tooltipSettings={{ visible: true, valuePath: 'population', template: template }} />
                                 </BubblesDirective>

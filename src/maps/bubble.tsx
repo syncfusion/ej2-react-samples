@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Bubble, IBubbleRenderingEventArgs, BubblesDirective, BubbleDirective, MapsTooltip, Zoom
@@ -13,6 +12,7 @@ import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { internetUsers } from './map-data/population-data';
 import * as data from './map-data/bubble-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 interface Data {
     value?: number;
@@ -38,7 +38,7 @@ export class BubbleMaps extends SampleBase<{}, {}> {
                         useGroupingSeparator = {true}
                         format = {"n"}
                             zoomSettings={{
-                                enable: false,
+                                enable: true,
                                 horizontalAlignment: 'Near',
                                 toolBarOrientation: 'Vertical',
                                 toolbars: [ 'ZoomIn', 'ZoomOut', 'Reset'],
@@ -54,7 +54,7 @@ export class BubbleMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Bubble, MapsTooltip, Zoom]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={worldMap}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     dataSource={datasource}

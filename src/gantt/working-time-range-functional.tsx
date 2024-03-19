@@ -87,6 +87,7 @@ const WorkingTimeRange = () => {
                 <col style={{ width: '55%' }} />
                 <col style={{ width: '45%' }} />
               </colgroup>
+              <tbody>
               <tr>
                 <td style={{ width: '100%' }}>
                   <div style={{ fontSize: '15px' }}>Work Start Time</div>
@@ -111,6 +112,7 @@ const WorkingTimeRange = () => {
                   </div>
                 </td>
               </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

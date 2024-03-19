@@ -40,9 +40,6 @@ export class StackedLine extends SampleBase<{}, {}>{
                         </SeriesDirective>
                     </SeriesCollectionDirective>
                 </ChartComponent>
-                <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                    <a href="https://www.cyberagent.co.jp/en/newsinfo/press/detail/id=12026" target="_blank">www.cyberagent.co.jp</a>
-                </div>
             </div>
                 <div id="action-description">
                 <p>

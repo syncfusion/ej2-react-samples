@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar, ExcelExport, PdfExport, Page } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Toolbar, ExcelExport, PdfExport, Page, ToolbarItems } from '@syncfusion/ej2-react-grids';
 import { productData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
@@ -13,7 +13,7 @@ function AdvancedExporting() {
   const month: string = ((new Date()).getMonth().toString()) + '/';
   const date: string = ((new Date()).getDate().toString()) + '/';
   const year: string = ((new Date()).getFullYear().toString());
-  const toolbarOptions: any = ['ExcelExport', 'PdfExport'];
+  const toolbarOptions: ToolbarItems[] = ['ExcelExport', 'PdfExport'];
   let gridInstance: GridComponent;
   function toolbarClick(args: ClickEventArgs): void {
     switch (args.item.id) {
@@ -188,15 +188,15 @@ function AdvancedExporting() {
       <div className='control-section'>
         <div>
           <GridComponent id="Grid" dataSource={productData} ref={grid => gridInstance = grid} toolbar={toolbarOptions}
-            allowExcelExport={true} allowPdfExport={true} toolbarClick={toolbarClick.bind(this)} allowPaging={true} pageSettings={{ pageCount: 2, pageSize: 10 }} >
+            allowExcelExport={true} allowPdfExport={true} toolbarClick={toolbarClick.bind(this)} allowSorting={true} allowPaging={true} pageSettings={{ pageCount: 2, pageSize: 10 }} >
             <ColumnsDirective>
               <ColumnDirective field='ProductID' headerText='Product ID' width='120' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='ProductName' headerText='Product Name' width='200'></ColumnDirective>
-              <ColumnDirective field='QuantityPerUnit' headerText='Quantity Per Unit' width='180' ></ColumnDirective>
-              <ColumnDirective field='UnitPrice' headerText='Units Price' width='150' textAlign='Right' format='C2' ></ColumnDirective>
-              <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='Right' ></ColumnDirective>
+              <ColumnDirective field='QuantityPerUnit' headerText='Quantity Per Unit' width='180'></ColumnDirective>
+              <ColumnDirective field='UnitPrice' headerText='Units Price' width='150' textAlign='Right' format='C2'></ColumnDirective>
+              <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='Right'></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Toolbar, ExcelExport, PdfExport, Page]} />
+            <Inject services={[Toolbar, ExcelExport, PdfExport, Page, Sort]} />
           </GridComponent>
         </div>
         <div id="description">

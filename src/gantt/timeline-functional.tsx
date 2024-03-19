@@ -33,6 +33,7 @@ const Timeline = () => {
   let topTierCount = useRef<NumericTextBoxComponent>(null);
   let bottomTierCount = useRef<NumericTextBoxComponent>(null);
   let timelineUnitSize = useRef<NumericTextBoxComponent>(null);
+  let multitaskbarcheckbox = useRef<CheckBoxComponent>(null);
   const projectStartDate = new Date('02/03/2019');
   const projectEndDate = new Date('03/23/2019');
   const timelineSettings: any = {
@@ -48,7 +49,7 @@ const Timeline = () => {
     rightLabel: 'taskName'
   };
   let splitterSettings: any = {
-    columnIndex: 0
+    columnIndex: 1
   };
   const yearformat: { [key: string]: Object }[] = [
     { id: 'MMM "yy', format: 'Jan "18' },
@@ -82,6 +83,13 @@ const Timeline = () => {
     { id: 'Day', unit: 'Day' },
     { id: 'Hour', unit: 'Hour' }
   ];
+  const multitaskbarCheck = (props): any => {
+    if (multitaskbarcheckbox.current.checked) {
+      ganttInstance.current.enableMultiTaskbar = true;
+    } else {
+      ganttInstance.current.enableMultiTaskbar = false;
+    }
+  }
   const topTierCick = (props): any => {
     if (topTierCheckbox.current.checked) {
       ganttInstance.current.timelineSettings.topTier.unit = 'Week';
@@ -199,17 +207,27 @@ const Timeline = () => {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <div className='col-lg-8'>
+        <div className='col-lg-9'>
           <GanttComponent id='Timeline' ref={ganttInstance} dataSource={projectData} renderBaseline={true} allowSorting={true}
             treeColumnIndex={1} allowSelection={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate}
             taskFields={taskFields} timelineSettings={timelineSettings} highlightWeekends={true}
-            height='410px' labelSettings={labelSettings} splitterSettings={splitterSettings}>
+            height='463px' labelSettings={labelSettings} splitterSettings={splitterSettings}>
+            <ColumnsDirective>
+              <ColumnDirective field='taskID' visible={false} ></ColumnDirective>
+              <ColumnDirective field='taskName' headerText='Name' width='250'></ColumnDirective>
+              <ColumnDirective field='StartDate' headerText='Start Date'></ColumnDirective>
+              <ColumnDirective field='endDate' headerText='End Date'></ColumnDirective>
+              <ColumnDirective field='duration' headerText='Duration'></ColumnDirective>
+              <ColumnDirective field='predecessor' headerText='Dependency'></ColumnDirective>
+              <ColumnDirective field='progress' headerText='Progress'></ColumnDirective>
+            </ColumnsDirective>
             <Inject services={[Selection, Sort, DayMarkers]} />
           </GanttComponent>
         </div>
-        <div className='col-lg-4 property-section'>
+        <div className='col-lg-3 property-section'>
           <PropertyPane title='Properties'>
             <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+            <tbody>
               <tr>
                 <td style={{ width: '30%' }}>
                   <div>Unit width</div>
@@ -316,7 +334,17 @@ const Timeline = () => {
                   </div>
                 </td>
               </tr>
-
+              <tr>
+                <td style={{width: '30%' }}>
+                  <div>Enable multitaskbar</div>
+                </td>
+                <td style={{width: '70%' }}>
+                  <div>
+                    <CheckBoxComponent ref={multitaskbarcheckbox} id="multitaskbarCheck" onClick={multitaskbarCheck.bind(this)} className="checkbox" checked={false} ></CheckBoxComponent>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>
@@ -347,6 +375,9 @@ const Timeline = () => {
         <p>
           Gantt component features are segregated into individual feature-wise modules. To use a selection support, inject the
           <code>Selection</code> module. To use markers in Gantt, inject the <code>DayMarkers</code> module.
+        </p>
+        <p>
+          If the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#enablemultitaskbar">enableMultiTaskbar</a> property is enabled, it displays child taskbars in the parent row when in collapsed state.
         </p>
       </div>
     </div>

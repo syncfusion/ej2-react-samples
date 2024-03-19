@@ -35,12 +35,12 @@ function Hierarchy() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={employeeData} childGrid={childGrid} allowSorting={true} >
+                <GridComponent dataSource={employeeData} childGrid={childGrid} allowSorting={true}>
                     <ColumnsDirective>
-                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' />
-                        <ColumnDirective field='FirstName' headerText='Name' width='125' />
+                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right'/>
+                        <ColumnDirective field='FirstName' headerText='Name' width='125'/>
                         <ColumnDirective field='Title' headerText='Title' width='180' />
-                        <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format={{ skeleton: 'yMd', type: 'date' }} textAlign='Right' />
+                        <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format={{ skeleton: 'yMd', type: 'date' }} textAlign='Right'/>
                         <ColumnDirective field='ReportsTo' headerText='Reports To' width='135' textAlign='Right' />
                     </ColumnsDirective>
                     <Inject services={[DetailRow, Page, Sort]} />

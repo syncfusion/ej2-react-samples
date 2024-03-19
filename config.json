@@ -129,6 +129,7 @@
 		"checkbox",
 		"dropdown",
 		"dropdown-button",
-		"virtualize"
+		"virtualize",
+		"textarea"
 	]
 }

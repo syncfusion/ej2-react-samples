@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor Mention integration sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -11,6 +11,7 @@ function MentionIntegration() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    let mentionObj;
     const data: { [key: string]: Object }[] = [
         { Name: "Selma Rose", Status: "active", Eimg: "2", EmailId: "selma@gmail.com" },
         { Name: "Maria", Status: "active", Eimg: "1", EmailId: "maria@gmail.com" },
@@ -54,7 +55,7 @@ function MentionIntegration() {
         );
     }
     function actionBegineHandler(args: any): void {
-        if (args.requestType === 'EnterAction') {
+        if (args.requestType === 'EnterAction' &&  mentionObj.element.classList.contains('e-popup-open')) {
             args.cancel = true;
         }
     }
@@ -65,12 +66,12 @@ function MentionIntegration() {
                     <RichTextEditorComponent id="mention_integration" placeholder="Type @ and tag the name" actionBegin={actionBegineHandler.bind(this)}  >
                         <p>Hello <a href="mailto:maria@gmail.com" title="maria@gmail.com">@Maria</a>, </p>
                         <p>Welcome to Mention demo, it easily integrates any editable element like input, textarea or any contenteditable supported element.</p>
-                        <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
+                        <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                     </RichTextEditorComponent>
                 </div>
             </div>
 
-            <MentionComponent id="mentionEditor" target="#mention_integration_rte-edit-view" suggestionCount={8} showMentionChar={false} allowSpaces={true} dataSource={data} fields={fieldsData}
+            <MentionComponent ref={(scope) => { mentionObj = scope; }} id="mentionEditor" target="#mention_integration_rte-edit-view" suggestionCount={8} showMentionChar={false} allowSpaces={true} dataSource={data} fields={fieldsData}
                 popupWidth="250px" popupHeight="200px" itemTemplate={itemTemplate} displayTemplate={displayTemplate}></MentionComponent>
 
             <div id="action-description">

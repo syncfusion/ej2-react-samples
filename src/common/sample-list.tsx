@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ButtonSampleOrder } from '../button/config';
 import { TooltipSampleOrder } from '../tooltip/config';
 import { TextBoxSampleOrder } from '../textboxes/config';
+import { TextAreaSampleOrder } from '../textarea/config';
 import { ComboBoxSampleOrder } from '../combo-box/config';
 import { AutoCompleteSampleOrder } from '../auto-complete/config';
 import { DropDownListSampleOrder } from '../drop-down-list/config';
@@ -77,16 +78,18 @@ import { RatingSampleOrder } from '../rating/config';
 import { RibbonSampleOrder } from '../ribbon/config';
 import { StepperSampleOrder } from '../stepper/config';
 import { ThreeDimensionChartList } from '../three-dimension-chart/config';
+import { Circular3DOrderList } from '../three-dimension-circular-chart/config';
+import { TimelineSampleOrder } from '../timeline/config';
 
 export let samplesList: any = [
     {
         'name': 'Data Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'grid', 'samples': GridSampleOrder
     },
     {
-        'name': 'Pivot Table', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
+        'name': 'Pivot Table', 'type': 'update', 'category': 'Grids', 'order': '03', 'path': 'pivot-table', 'samples': PivotViewSampleOrder
     },
     {
-        'name': 'Tree Grid', 'type':'update', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
+        'name': 'Tree Grid', 'category': 'Grids', 'order': '03', 'path': 'treegrid', 'samples': TreeGridSampleOrder, 'ftName' :'treegrid'
     },
     {
         'name': 'Spreadsheet', 'category': 'Grids', 'order': '03', 'path': 'spreadsheet', 'samples': SpreadsheetSampleOrder
@@ -95,7 +98,10 @@ export let samplesList: any = [
         'name': 'Charts', 'category': 'Data Visualization', 'order': '01', 'path': 'chart', 'samples': ChartSampleOrder, 'ftName': 'chart'
     },
      {
-         'name': '3D Chart', 'category': 'Data Visualization', 'order': '03', 'type': 'preview', 'path': 'three-dimension-chart', 'samples': ThreeDimensionChartList,
+         'name': '3D Chart', 'category': 'Data Visualization', 'order': '03', 'path': 'three-dimension-chart', 'samples': ThreeDimensionChartList,
+    },
+    {
+        'name': '3D Circular Chart', 'category': 'Data Visualization', 'order': '03', 'type': 'preview', 'path': 'three-dimension-circular-chart', 'samples': Circular3DOrderList,
     },
     {
         'name': 'Stock Chart', 'category': 'Data Visualization', 'order': '02', 'path': 'stock-chart', 'samples': StockChartSampleOrder
@@ -104,16 +110,16 @@ export let samplesList: any = [
         'name': 'Arc Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'arc-gauge', 'samples': ArcGaugeSampleOrder, 
     },
     {
-        'name': 'Circular Gauge', 'type':'update', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
+        'name': 'Circular Gauge', 'category': 'Data Visualization', 'order': '03', 'path': 'circular-gauge', 'samples': CircularGaugeSampleOrder, 'ftName' :'circulargauge'
     },
     {
-        'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'type': 'update', 'samples': DiagramSampleOrder
+        'name': 'Diagram', 'category': 'Data Visualization', 'order': '02', 'path': 'diagram', 'samples': DiagramSampleOrder
     },
     {
-        'name': 'HeatMap Chart', 'type':'update', 'category': 'Data Visualization', 'order': '06', 'path': 'heatmap-chart', 'samples': HeatmapSampleOrder, 'ftName' :'heatmap-chart'
+        'name': 'HeatMap Chart', 'category': 'Data Visualization', 'order': '06', 'path': 'heatmap-chart', 'samples': HeatmapSampleOrder, 'ftName' :'heatmap-chart'
     },
     {
-        'name': 'Linear Gauge', 'type':'update', 'category': 'Data Visualization', 'order': '04', 'path': 'linear-gauge', 'samples': LinearGaugeSampleOrder, 'ftName' :'lineargauge'
+        'name': 'Linear Gauge', 'category': 'Data Visualization', 'order': '04', 'path': 'linear-gauge', 'samples': LinearGaugeSampleOrder, 'ftName' :'lineargauge'
     },
     {
         'name': 'Maps', 'type':'update', 'category': 'Data Visualization', 'order': '07', 'path': 'maps', 'samples': MapSampleOrder, 'ftName' :'maps'
@@ -134,7 +140,7 @@ export let samplesList: any = [
         'name': 'TreeMap', 'category': 'Data Visualization', 'order': '11', 'path': 'treemap', 'samples': TreemapOrder, 'ftName' :'treemap'
     },
     {
-        'name': 'Bullet Chart', 'type':'update', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder,
+        'name': 'Bullet Chart', 'category': 'Data Visualization', 'order': '08', 'path': 'bullet-chart', 'samples': BulletChartSampleOrder,
     },
     {
         'name': 'Kanban', 'category': 'Data Visualization', 'order': '08', 'path': 'kanban', 'samples': KanbanSampleOrder, 'ftName': 'kanban'
@@ -155,7 +161,7 @@ export let samplesList: any = [
         'name': 'Image Editor', 'category': 'File Viewers & Editors', 'ftName': 'image-editor', 'order': '04', 'path': 'image-editor', 'type': 'update', 'samples': ImageEditorSampleOrder
     },
     {
-        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler', 'type': 'update'
+        'name': 'Scheduler', 'category': 'Calendars', 'order': '02', 'path': 'schedule', 'samples': ScheduleSampleOrder, 'ftName': 'scheduler'
     },
     {
         'name': 'Calendar', 'category': 'Calendars', 'order': '04', 'path': 'calendar', 'samples': CalendarSampleOrder
@@ -200,7 +206,7 @@ export let samplesList: any = [
         'name': 'Dropdown Tree', 'category': 'Dropdowns', 'order': '04', 'path': 'drop-down-tree', 'samples': DropDownTreeSampleOrder
     },
     {
-        'name': 'MultiSelect Dropdown', 'category': 'Dropdowns', 'order': '04', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
+        'name': 'MultiSelect Dropdown', 'category': 'Dropdowns', 'order': '04', 'type': 'update', 'path': 'multi-select', 'samples': MultiSelectSampleOrder
     },
     {
         'name': 'List Box', 'category': 'Dropdowns', 'ftName': 'list-box', 'order': '04', 'path': 'list-box', 'samples': ListBoxSampleOrder
@@ -239,13 +245,13 @@ export let samplesList: any = [
         'name': 'TreeView', 'category': 'Navigation', 'path': 'treeview', 'samples': TreeViewSampleOrder
     },
     {
-        'name': 'File Manager', 'category': 'Navigation', 'type': 'update', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
+        'name': 'File Manager', 'category': 'Navigation', 'path':'file-manager', 'samples': FileManagerSampleOrder, 'ftName': 'file-manager'
     },
     {
-        'name': 'Ribbon', 'category': 'Navigation', 'path':'ribbon', 'samples': RibbonSampleOrder, 'ftName': 'ribbon', 'type': 'preview'
+        'name': 'Ribbon', 'category': 'Navigation', 'type': 'update', 'path':'ribbon', 'samples': RibbonSampleOrder, 'ftName': 'ribbon'
     },
     {
-        'name': 'Stepper', 'category': 'Navigation', 'type': 'preview', 'path': 'stepper', 'samples': StepperSampleOrder, 'ftName': 'stepper'
+        'name': 'Stepper', 'category': 'Navigation', 'path': 'stepper', 'samples': StepperSampleOrder, 'ftName': 'stepper'
     },
     {
         'name': 'Badge', 'category': 'Notifications', 'order': '02', 'path': 'badge', 'samples': BadgeSampleOrder
@@ -264,6 +270,9 @@ export let samplesList: any = [
     },
     {
         'name': 'TextBox', 'category': 'Inputs', 'order': '04', 'path': 'textboxes', 'samples': TextBoxSampleOrder, 'ftName' :'textbox'
+    },
+    {
+        'name': 'TextArea', 'category': 'Inputs', 'type': 'preview', 'order': '04', 'path': 'textarea', 'samples': TextAreaSampleOrder, 'ftName' :'textarea',
     },
     {
         'name': 'Input Mask', 'category': 'Inputs', 'order': '04', 'path': 'maskedtextbox', 'samples': MaskedTextBoxOrder
@@ -302,7 +311,7 @@ export let samplesList: any = [
         'name': 'Predefined Dialogs', 'category': 'Layout', 'order': '05', 'path': 'predefined-dialogs', 'samples': PredefinedDialogSampleOrder
     },
     {
-        'name': 'ListView', 'category': 'Layout', 'type': 'update', 'order': '05', 'path': 'listview', 'samples': ListViewSampleOrder
+        'name': 'ListView', 'category': 'Layout', 'order': '05', 'path': 'listview', 'samples': ListViewSampleOrder
     },
     {
         'name': 'Tooltip', 'category': 'Layout', 'order': '05', 'path': 'tooltip', 'samples': TooltipSampleOrder
@@ -312,5 +321,8 @@ export let samplesList: any = [
     },
     {
         'name': 'Dashboard Layout', 'category': 'Layout', 'path': 'dashboard-layout', 'samples': DashboardLayoutSampleOrder
+    },
+    {
+        'name': 'Timeline', 'type': 'preview', 'category': 'Layout', 'path': 'timeline', 'samples': TimelineSampleOrder, "ftName" :"timeline"
     }
 ];

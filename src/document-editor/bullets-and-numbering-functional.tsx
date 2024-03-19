@@ -24,6 +24,7 @@ const BulletsAndNumberingView = () => {
         // tslint:enable
         container.current.documentEditor.open(JSON.stringify(defaultDocument));
         container.current.documentEditor.documentName = "Bullets and Numbering";
+        container.current.documentEditorSettings.showRuler = true;
         titleBar.updateDocumentTitle();
         container.current.documentChange = (): void => {
             titleBar.updateDocumentTitle();
@@ -69,8 +70,7 @@ const BulletsAndNumberingView = () => {
             <div id="description">
                 <div>
                     <p>
-                        In this example, you can use, add, or modify the list formatting in
-                        document editor.
+                        In this example, you can use, add, or modify the list formatting in document editor.
                     </p>
                     <p style={{ display: "block" }}>
                         {" "}

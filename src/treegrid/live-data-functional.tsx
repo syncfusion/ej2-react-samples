@@ -281,7 +281,7 @@ function LiveStream() {
                     </a> method.
                     The style of Tree Grid cells can be customized using the 
                     <a target="_blank"
-                    href="https://ej2.syncfusion.com/documentation/api/treegrid/#querycellinfo">queryCellInfo
+                    href="https://ej2.syncfusion.com/documentation/api/treegrid/#querycellinfo"> queryCellInfo
                     </a> event.
                 </p>
                 <p>In this demo,</p>

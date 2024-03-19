@@ -5,11 +5,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { ColorMappingSettingsModel, MapAjax } from '@syncfusion/ej2-maps';
+import { ColorMappingSettingsModel } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, Legend, MarkersDirective, MarkerDirective, IResizeEventArgs } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { AccumulationChart, PieSeries, AccumulationTooltip } from '@syncfusion/ej2-react-charts';
+import * as continentMap from './map-data/continent.json';
 AccumulationChart.Inject(PieSeries, AccumulationTooltip);
 const SAMPLE_CSS = `
     .control-fluid {
@@ -228,7 +229,7 @@ const PieMaps = () => {
                     <MapsComponent id="maps" resize={resize} loaded={onMapsLoad} load={load} titleSettings={{ text: 'Top 6 largest countries age group details', textStyle: { size: '16px' } }} zoomSettings={{ enable: false }} legendSettings={{ visible: true, position: 'Bottom' }}>
                         <Inject services={[Marker, Legend]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/continent.json')} shapeSettings={{ fill: '#E5E5E5', colorMapping: colorMapData }}>
+                            <LayerDirective shapeData={continentMap} shapeSettings={{ fill: '#E5E5E5', colorMapping: colorMapData }}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} animationDuration={0} template='<div id="marker4" style="margin-left:-35px;margin-top:-35px;position: absolute !important;"></div>' dataSource={[{ 'latitude': 35.746512259918504, 'longitude': 102.216796875 }]} />
                                     <MarkerDirective visible={true} animationDuration={0} template='<div id="marker1" style="margin-left:-35px;margin-top:-35px;position: absolute !important;"></div>' dataSource={[{ 'latitude': 61.938950426660604, 'longitude': 97.03125 }]} />

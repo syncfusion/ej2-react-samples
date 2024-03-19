@@ -98,7 +98,11 @@ const SAMPLE_CSS = `
         font-size: 12px;
         font-weight: 500;
     }
-    
+
+    .e-checkbox-wrapper .e-label {
+        font-size: 12px;
+    }
+
     .property-panel-header {
         padding-top: 15px;
         padding-bottom: 5px
@@ -164,7 +168,7 @@ function DrawingTools() {
             SetShape("Pentagon");
             break;
           case "shape5":
-            SetShape("Polygon");
+            SetShape("Triangle");
             break;
           case "straight":
             setdrawobject(null, { type: "Straight" });
@@ -470,7 +474,7 @@ function DrawingTools() {
               }}
             />
             <div
-              title="Polygon"
+              title="Triangle"
               className="image-pattern-style"
               id="shape5"
               style={{

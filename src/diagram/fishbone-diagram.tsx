@@ -16,7 +16,7 @@ import {
 } from "@syncfusion/ej2-react-diagrams";
 import { SampleBase } from "../common/sample-base";
 
- //Initialize Diagram Nodes
+//Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: 'Equipment', width: 120, height: 40, offsetX: 300, offsetY: 80,

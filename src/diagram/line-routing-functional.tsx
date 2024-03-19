@@ -12,7 +12,7 @@ import {
   ConnectorBridging
 } from "@syncfusion/ej2-react-diagrams";
 import { updateSampleSection } from "../common/sample-base";
- //Initialize Diagram Nodes
+//Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: 'start', offsetX: 115, offsetY: 110,
@@ -93,7 +93,7 @@ let nodes: NodeModel[] = [
     ],
   }
 ];
- //Initialize Diagram Connectors
+//Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   {
     id: 'Connector1', sourceID: 'start', targetID: 'process',

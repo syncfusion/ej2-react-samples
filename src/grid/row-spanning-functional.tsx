@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, QueryCellInfoEventArgs } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, QueryCellInfoEventArgs, Freeze } from '@syncfusion/ej2-react-grids';
 import { columnSpanData, ColumnSpanDataType } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -115,9 +115,9 @@ function RowSpanning() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={columnSpanData} queryCellInfo={queryCellInfoEvent.bind(this)} allowTextWrap={true} height='auto' width='auto' gridLines='Both' >
+                <GridComponent dataSource={columnSpanData} queryCellInfo={queryCellInfoEvent.bind(this)} allowTextWrap={true} height='auto' width='auto' gridLines='Both' allowSelection={true} enableHover={false} >
                     <ColumnsDirective>
-                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' isPrimaryKey={true} textAlign='Right'></ColumnDirective>
+                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' freeze= 'Left' isPrimaryKey={true} textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='EmployeeName' headerText='Employee Name' width='200' ></ColumnDirective>
                         <ColumnDirective field='9:00' headerText='9:00 AM' width='120'></ColumnDirective>
                         <ColumnDirective field='9:30' headerText='9:30 AM' width='120'></ColumnDirective>
@@ -137,29 +137,33 @@ function RowSpanning() {
                         <ColumnDirective field='4:30' headerText='4:30 PM' width='120'></ColumnDirective>
                         <ColumnDirective field='5:00' headerText='5:00 PM' width='120'></ColumnDirective>
                     </ColumnsDirective>
+                    <Inject services={[Freeze]} />
                 </GridComponent>
             </div>
             <div id="action-description">
-                <p>This sample demonstrates the Grid component with the row spanning feature. In this sample, we have spanned row cells together.
-                </p>
-            </div>
-            <div id="description">
+                    <p>This sample demonstrates the Grid component with the row spanning feature. In this sample, you will see multiple rows spanning.
+                    </p>
+                </div>
+                <div id="description">
                 <p>
-                    Grid allows to span the row cells. In <a href='https://ej2.syncfusion.com/react/documentation/api/grid/queryCellInfoEventArgs/'><code>QueryCellInfo</code></a>
-                    event, you can define the <code>rowSpan</code> attributes to span the cells.
-                </p>
-                <p>
-                    In this demo, Davolio cell is spanned to two rows in the EmployeeName column.
+                    This feature enables you to span multiple adjacent cells. Use the <code>rowSpan</code> attribute to define how many cells are to be spanned in the <a href='https://ej2.syncfusion.com/react/documentation/api/grid/queryCellInfoEventArgs/'><code>QueryCellInfo</code></a> event. 
+                    Additionally, you can freeze columns at specific positions by setting the freeze property to left, right, center and fixed in the column definition.
                 </p>
                 <p>
-                    Also Grid supports the spanning of rows and columns for same cells. Lunch Break cell is spanned to ten rows and three columns in the 1:00 column.
-                </p>
-                <p>
-                    More information on the row drag and drop can be found in this
-                    <a target="_blank"
-                        href="https://ej2.syncfusion.com/react/documentation/grid/row/row-drag-and-drop">
-                        documentation section</a>.
-                </p>
+                    In this demo, you can see that the <b>Davolio</b> cell is spanned to two rows in the employee named column. Similarly, the <b>Lunch Break</b> cell is spanned to ten rows and three columns in the 1:00 column. 
+                    Also, the <b>Employee ID</b> column is frozen to the left.
+            </p>
+            <p style={{ fontWeight: 500 }}>Injecting Module:</p>
+            <p>
+                Grid features are separated into feature-wise modules. 
+                To use the frozen rows and columns feature, inject the Freeze module using the <code>Grid.Inject(Freeze)</code> method.
+            </p>
+            <p>
+                More information on the row spanning can be found in this
+                <a target="_blank" 
+                href="https://ej2.syncfusion.com/react/documentation/grid/row/row-spanning">
+                documentation section</a>.
+            </p>
             </div>
         </div>
     )

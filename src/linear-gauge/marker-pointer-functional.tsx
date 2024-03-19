@@ -32,6 +32,7 @@ const MarkerPointer = () => {
 
     const horizontalGauge = (e: Event): void => {
         setGaugeWidth('450px');
+        setGaugeTextWidth('450px'); 
         setGaugeHeight('150px');
         setOrientation("Horizontal");
         if (e.currentTarget != null) {
@@ -47,6 +48,7 @@ const MarkerPointer = () => {
 
     const verticalGauge = (e: Event): void => {
         setGaugeWidth('150px');
+        setGaugeTextWidth('168px');
         setGaugeHeight('350px');
         setOrientation("Vertical");
         if (e.currentTarget != null) {
@@ -56,7 +58,7 @@ const MarkerPointer = () => {
             setHorizontalBgColor("white");
             setClassStyle("col-xs-4 col-sm-4 col-lg-2 col-md-2");
             setDisplay("flex");
-            setPadding("6%");
+            setPadding("4%");
         }
     }
 

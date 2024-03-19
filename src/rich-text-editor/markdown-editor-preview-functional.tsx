@@ -2,7 +2,7 @@
  * Rich Text Editor markdown preview sample
  */
 import { addClass, Browser, createElement, isNullOrUndefined, KeyboardEventArgs, removeClass } from '@syncfusion/ej2-base';
-import { Image, Inject, IToolbarItems, Link, MarkdownEditor, QuickToolbar, RichTextEditor, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, ActionCompleteEventArgs, HtmlEditor, Count, ToolbarType } from '@syncfusion/ej2-react-richtexteditor';
+import { Image, Inject, IToolbarItems, Link, MarkdownEditor, RichTextEditor, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, ActionCompleteEventArgs, HtmlEditor, ToolbarType } from '@syncfusion/ej2-react-richtexteditor';
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import * as Marked from 'marked';
 import * as React from 'react';
@@ -60,7 +60,7 @@ function Preview() {
         return (<div className="content">
             <RichTextEditorComponent id='defaultRTE' ref={(richtexteditor) => { rteObj = richtexteditor; }} editorMode='Markdown'  toolbarSettings={toolbarSettings} height='447px' saveInterval={1} created={onCreate.bind(this)} change={onChange.bind(this)} actionComplete={updateValue.bind(this)} value={value}>
 
-                <Inject services={[MarkdownEditor, Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, Count]} />
+                <Inject services={[MarkdownEditor, Toolbar, Image, Link, HtmlEditor, Table]} />
             </RichTextEditorComponent>
         </div>);
     };
@@ -74,7 +74,7 @@ function Preview() {
         <div className='control-pane'>
             <div className='control-section markdown-preview' id="rtePreview">
                 <div className="content-wrapper">
-                <SplitterComponent  ref={splitter => (splitterInstance = splitter)} height='450px' width='100%' resizing={onResizing.bind(this)} created={updateOrientation.bind(this)}>
+                <SplitterComponent id='splitter-rte-markdown-preview' ref={splitter => (splitterInstance = splitter)} height='450px' width='100%' resizing={onResizing.bind(this)} created={updateOrientation.bind(this)}>
                         <PanesDirective>
                             <PaneDirective resizable={true} size='50%' min="40%" cssClass='pane1' content={content1.bind(this)}></PaneDirective>
                             <PaneDirective min="40%" cssClass='pane2' content={content2.bind(this)}></PaneDirective>

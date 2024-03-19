@@ -93,6 +93,7 @@ const ReorderColumn = () => {
         <div className='col-md-3 property-section'>
           <PropertyPane title='Properties'>
             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+            <tbody>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '30%' }}>
                   <div style={{ paddingTop: '10px' }}> Column </div>
@@ -117,6 +118,7 @@ const ReorderColumn = () => {
                   </div>
                 </td>
               </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

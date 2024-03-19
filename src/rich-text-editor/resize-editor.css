@@ -14,8 +14,8 @@
 
 #resizeRTE.e-richtexteditor {
     max-width: 880px;
-    min-width: 200px;
-    min-height: 170px;
+    min-width: 250px;
+    min-height: 250px;
     max-height: 400px;
 }
 .control-section.resize-rte .e-popup.e-popup-open.e-dialog {

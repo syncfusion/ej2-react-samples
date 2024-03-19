@@ -2,11 +2,12 @@
  * Rich Text Editor Paste Cleanup sample
  */
 import { DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
-import { Count, HtmlEditor, Image, Inject, Link, PasteCleanup, PasteCleanupSettingsModel, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, PasteCleanup, PasteCleanupSettingsModel, QuickToolbar, RichTextEditorComponent, Toolbar, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import { isNullOrUndefined } from '@syncfusion/ej2-base';
 import './paste-cleanup.css';
 
 export class PasteCleanupRTE extends SampleBase<{}, {}> {
@@ -74,14 +75,22 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
         let deniedTagsElem: HTMLElement = this.deniedTagsEle;
         let deniedAttrsElem: HTMLElement = this.deniedAttributesEle;
         allowedStylePropsElem.addEventListener('blur', (e: FocusEvent) => {
-            this.rteObj.pasteCleanupSettings.allowedStyleProps = (eval)('[' + (e.target as HTMLInputElement).value + ']');
+            this.onPasteCleanupSettingsChange((e.target as HTMLInputElement).value, 'allowedStyleProps');
         });
         deniedAttrsElem.addEventListener('blur', (e: FocusEvent) => {
-            this.rteObj.pasteCleanupSettings.deniedAttrs = (eval)('[' + (e.target as HTMLInputElement).value + ']');
+            this.onPasteCleanupSettingsChange((e.target as HTMLInputElement).value, 'deniedAttrs');
         });
         deniedTagsElem.addEventListener('blur', (e: FocusEvent) => {
-            this.rteObj.pasteCleanupSettings.deniedTags = (eval)('[' + (e.target as HTMLInputElement).value + ']');
+            this.onPasteCleanupSettingsChange((e.target as HTMLInputElement).value, 'deniedTags');
         });
+        
+    }
+
+    public onPasteCleanupSettingsChange(value: any, settingsProperty: string): void {
+        if (!isNullOrUndefined(value)) {
+            const arrayValue = value.split(',').map((item) => item.trim().replace(/^['"]|['"]$/g, ''));
+            this.rteObj.pasteCleanupSettings[settingsProperty] = arrayValue.filter((prop) => prop !== '');
+        }
     }
 
     render() {
@@ -114,7 +123,7 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                                         <p>allowedStyleProperties - specifies the allowed style properties when pasting in Rich Text Editor.</p>
                                     </li>
                                 </ul>
-                                <Inject services={[Toolbar, Image, Link, HtmlEditor, Count, QuickToolbar, PasteCleanup]} />
+                                <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                             </RichTextEditorComponent>
                         </div>
                     </div>
@@ -201,7 +210,7 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                         </li>
                     </ul>
                     <p><b>Injecting Module</b></p>
-                    <p>The previous features were built as modules to be included in your application. For example, inject the <code>'PasteCleanup'</code> module using <code>RichTextEditor.Inject (Toolbar, Link, Image, QuickToolbar, Count, HtmlEditor, PasteCleanup)</code> to use the paste cleanup feature.</p>
+                    <p>The previous features were built as modules to be included in your application. For example, inject the <code>'PasteCleanup'</code> module using <code>Toolbar, Link, Image, QuickToolbar, Count, HtmlEditor, PasteCleanup</code> to use the paste cleanup feature.</p>
                 </div>
             </div>
         );

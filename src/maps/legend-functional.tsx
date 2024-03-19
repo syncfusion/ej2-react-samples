@@ -5,13 +5,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import { ColorMappingSettingsModel, LegendArrangement, MapAjax, Orientation } from '@syncfusion/ej2-maps';
+import { ColorMappingSettingsModel, LegendArrangement, Orientation } from '@syncfusion/ej2-maps';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Legend, MapsTooltip, ITooltipRenderEventArgs, LegendMode, LegendPosition } from '@syncfusion/ej2-react-maps';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './map-data/legend-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -49,37 +50,37 @@ const LegendMaps = () => {
         { color: null, label: null },
     ];
     const legendChange = (args: any) => {
-        setMode(args.value);
+        mapInstance.current.legendSettings.mode = legendElement.current.value as LegendMode;
         if (legendElement.current.value === 'Interactive') {
             if (mapInstance.current.legendSettings.orientation === 'Horizontal' || mapInstance.current.legendSettings.orientation === 'None') {
-                setLegendHeight('10');
-                setLegendWidth('');
+                mapInstance.current.legendSettings.height = '10';
+                mapInstance.current.legendSettings.width = '';
             } else {
-                setLegendHeight('70%');
-                setLegendWidth('10');
+                mapInstance.current.legendSettings.height = '70%';
+                mapInstance.current.legendSettings.width = '10';
             }
         } else {
-            setLegendHeight('');
-            setLegendWidth('');
+            mapInstance.current.legendSettings.height = '';
+            mapInstance.current.legendSettings.width = '';
         }
         mapInstance.current.refresh();
     };
     const legendPositionChange = (args: any) => {
-        setPosition(args.value);
+        mapInstance.current.legendSettings.position = legendPositionElement.current.value as LegendPosition;
         if (legendPositionElement.current.value === 'Left' || legendPositionElement.current.value === 'Right') {
-            setOrientation('Vertical');
+            mapInstance.current.legendSettings.orientation = 'Vertical';
             if (mapInstance.current.legendSettings.mode === 'Interactive') {
-                setLegendHeight('70%');
-                setLegendWidth('10');
+                mapInstance.current.legendSettings.height = '70%';
+                mapInstance.current.legendSettings.width = '10';
             } else {
-                setLegendHeight('');
-                setLegendWidth('');
+                mapInstance.current.legendSettings.height = '';
+                mapInstance.current.legendSettings.width = '';
             }
         } else {
-            setOrientation('Horizontal');
+            mapInstance.current.legendSettings.orientation = 'Horizontal';
             if (mapInstance.current.legendSettings.mode === 'Interactive') {
-                setLegendHeight('10');
-                setLegendWidth('');
+                mapInstance.current.legendSettings.height = '10';
+                mapInstance.current.legendSettings.width = '';
             }
         }
         mapInstance.current.refresh();
@@ -95,7 +96,7 @@ const LegendMaps = () => {
         mapInstance.current.refresh();
     };
     const toggleLegendChange = (args: ChangeEventArgs) => {
-        setIsEnableToggleLegend(args.checked);
+        mapInstance.current.legendSettings.toggleLegendSettings.enable = args.checked;
         mapInstance.current.refresh();
     };
     const onMapsLoad = (): void => {
@@ -122,7 +123,7 @@ const LegendMaps = () => {
                 <MapsComponent id="maps" tooltipRender={tooltip} loaded={onMapsLoad} load={load} ref={mapInstance} zoomSettings={{ enable: false }} legendSettings={{ visible: true, position: position, height: legendHeight, width: legendWidth, orientation: orientation, mode: mode, toggleLegendSettings: { enable: isEnableToggleLegend } }} titleSettings={{ text: 'Population density (per square kilometer) - 2015', textStyle: { size: '16px' } }}>
                     <Inject services={[Legend, MapsTooltip]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource.legend} tooltipSettings={{ visible: true, valuePath: 'name', format: '${name} : ${density}' }} shapeSettings={{ colorValuePath: 'density', colorMapping: colorMappingData }} />
+                        <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource.legend} tooltipSettings={{ visible: true, valuePath: 'name', format: '${name} : ${density}' }} shapeSettings={{ colorValuePath: 'density', colorMapping: colorMappingData }} />
                     </LayersDirective>
                 </MapsComponent>
                 {/* Source Link */}

@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, Legend,
     ProjectionType, MarkersDirective, MarkerDirective, IResizeEventArgs
@@ -13,6 +12,7 @@ import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import { AccumulationChart, PieSeries, AccumulationTooltip, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective } from '@syncfusion/ej2-react-charts';
 
+import * as continentMap from './map-data/continent.json';
 AccumulationChart.Inject(PieSeries, AccumulationTooltip);
 const SAMPLE_CSS = `
     .control-fluid {
@@ -46,7 +46,7 @@ export class PieMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/continent.json')}
+                                <LayerDirective shapeData={continentMap}
                                     shapeSettings={{
                                         fill: '#E5E5E5',
                                         colorMapping: [

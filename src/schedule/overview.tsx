@@ -341,9 +341,9 @@ export class Overview extends SampleBase<{}, {}> {
     let resourcePredicate: Predicate & any;
     for (let value of args.value) {
       if (resourcePredicate) {
-        resourcePredicate = resourcePredicate.or(new Predicate('CalendarId', 'equal', value));
+        resourcePredicate = resourcePredicate.or(new Predicate('CalendarId', 'equal', value as number));
       } else {
-        resourcePredicate = new Predicate('CalendarId', 'equal', value);
+        resourcePredicate = new Predicate('CalendarId', 'equal', value as number);
       }
     }
     this.scheduleObj.resources[0].query = resourcePredicate ? new Query().where(resourcePredicate) : new Query().where('CalendarId', 'equal', 1);

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import { HeatMapComponent, Tooltip, Inject, ILoadedEventArgs, HeatMapTheme, ISelectedEventArgs, SelectedCellDetails } from '@syncfusion/ej2-react-heatmap';
+import { HeatMapComponent, Tooltip, Inject, ILoadedEventArgs, HeatMapTheme, ISelectedEventArgs, SelectedCellDetails, Legend as HeatMapLegend } from '@syncfusion/ej2-react-heatmap';
 import * as data from './cell-seletion-data.json';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from "../common/property-pane";
@@ -66,7 +66,7 @@ const CellSelection = () => {
                 series[index].dataSource.push(columnData);
             }
         }
-        setSeries(series);
+        chart.current.series = series;
         chart.current.refresh();
     };
 
@@ -88,7 +88,7 @@ const CellSelection = () => {
 
     const Change = (): void => {
         heatmap.current.clearSelection();
-        setSeries((data as any).chartData);
+        chart.current.series =((data as any).chartData);
         chart.current.refresh();
     };
 
@@ -98,8 +98,8 @@ const CellSelection = () => {
                 {/* custom code start */}
                 <style>{SAMPLE_CSS}</style>
                 {/* custom code end */}
-                <HeatMapComponent id='heatmap-container' style={{ height: '300px' }} ref={heatmap} titleSettings={{ text: 'Top export products 2014-2018, Value in USD million', textStyle: {size: '15px',fontWeight: '500',fontStyle: 'Normal',fontFamily:'inherit'} }} cellSettings={{ textStyle:{fontFamily:'inherit'} }}  tooltipSettings ={{ textStyle:{fontFamily:'inherit'} }} legendSettings={{ textStyle:{fontFamily:'inherit'}}}  xAxis={{ labels: ['Cereals', 'Meat', 'Spices', 'Tea', 'Edible Oil', 'Dairy Products', 'Wheat'], textStyle:{fontFamily:'inherit'} }} yAxis={{ labels: ['2014', '2015', '2016', '2017', '2018'], textStyle:{fontFamily:'inherit'} }} dataSource={(data as any).cellSelectionData} allowSelection={true} showTooltip={true} load={loads} cellSelected={cellSelected} paletteSettings={{ palette: [ { color: '#3C5E62 ' }, { color: '#86C843 ' } ] }}>
-                    <Inject services={[Tooltip]} />
+                <HeatMapComponent id='heatmap-container' style={{ height: '300px' }} ref={heatmap} titleSettings={{ text: 'Top export products 2014-2018, Value in USD million', textStyle: {size: '15px',fontWeight: '500',fontStyle: 'Normal',fontFamily:'inherit'} }} cellSettings={{ textStyle:{fontFamily:'inherit'} }}  tooltipSettings ={{ textStyle:{fontFamily:'inherit'} }} legendSettings={{ visible:false, textStyle:{fontFamily:'inherit'}}}  xAxis={{ labels: ['Cereals', 'Meat', 'Spices', 'Tea', 'Edible Oil', 'Dairy Products', 'Wheat'], textStyle:{fontFamily:'inherit'} }} yAxis={{ labels: ['2014', '2015', '2016', '2017', '2018'], textStyle:{fontFamily:'inherit'} }} dataSource={(data as any).cellSelectionData} allowSelection={true} showTooltip={true} load={loads} cellSelected={cellSelected} paletteSettings={{ palette: [ { color: '#3C5E62 ' }, { color: '#86C843 ' } ] }}>
+                    <Inject services={[Tooltip, HeatMapLegend]} />
                 </HeatMapComponent>
                 <ChartComponent id="container1" style={{ height: '300px' }} ref={chart} primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 } }} chartArea={{ border: { width: 0 } }} primaryYAxis={{ majorGridLines: { width: 0 }, majorTickLines: { width: 0 }, lineStyle: { width: 0 }, labelStyle: { color: 'transparent' } }} series={series} load={load.bind(this)} tooltip={{ enable: true }}>
                     <Inject services={[ColumnSeries, Legend, DataLabel, Category, chartTooltip]} />

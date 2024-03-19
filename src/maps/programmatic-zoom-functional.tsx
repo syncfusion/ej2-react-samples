@@ -5,12 +5,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MapsTooltip, Marker, MarkersDirective, MarkerDirective, Zoom } from '@syncfusion/ej2-react-maps';
 import { CheckBoxComponent, ChangeEventArgs } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import * as worldMap from './map-data/world-map.json';
 import * as data from './map-data/southamerica-country-capitals.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
@@ -40,7 +40,7 @@ const ProgrammaticZoomMaps = () => {
                 <MapsComponent id="maps" load={load} ref={mapInstance} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: true, mouseWheelZoom: false, pinchZooming: false }} titleSettings={{ text: 'Capitals of South American countries', textStyle: { size: '16px' } }}>
                     <Inject services={[Marker, MapsTooltip, Zoom]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.southAmericaCountryCapitals} shapeSettings={{ fill: '#C3E6ED', border: { color: 'black', width: 0.3 } }}>
+                        <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.southAmericaCountryCapitals} shapeSettings={{ fill: '#C3E6ED', border: { color: 'black', width: 0.3 } }}>
                             <MarkersDirective>
                                 <MarkerDirective visible={true} animationDuration={0} height={20} width={20} shape='Image' imageUrl='src/maps/images/ballon.png' dataSource={datasource.southAmericaCountryCapitals} tooltipSettings={{ format: '<b>Capital</b> : ${name}<br><b>Country</b> : ${Country}', valuePath: 'name' }}></MarkerDirective>
                             </MarkersDirective>

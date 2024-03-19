@@ -9,13 +9,25 @@ import { expenseData } from './data-source';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import './template.css';
+import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
+import { getCELQuery, getSpELQuery } from './util';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
+declare let CodeMirror: any;
 export class Template extends SampleBase<{}, {}> {
     elem: HTMLElement;
     dropDownObj: DropDownList;
     boxObj: CheckBox;
     qryBldrObj: QueryBuilderComponent;
     radioButton: RadioButtonComponent;
+    tabObj: TabComponent;
+    headertext: any = [
+        { text: "CEL" },
+        { text: "SpEL" }
+    ];
+    spELQuery: string = '';
+    currentIndex: number = 0;
+    content: string;
     checked: boolean;
     txtAreaElem: Element = document.getElementById('ruleContent');
     validRule: RuleModel;
@@ -118,15 +130,6 @@ export class Template extends SampleBase<{}, {}> {
         }
     ];
 
-    updateRule(args: RuleChangeEventArgs): void {
-        this.txtAreaElem = document.getElementById('ruleContent');
-        if (this.radioButton.checked) {
-            (this.txtAreaElem as HTMLInputElement).value = this.qryBldrObj.getSqlFromRules(args.rule);
-        } else {
-            (this.txtAreaElem as HTMLInputElement).value = JSON.stringify(args.rule, null, 4);
-        }
-    }
-
     changeValue(): void {
         this.txtAreaElem = document.getElementById('ruleContent');
         this.validRule = this.qryBldrObj.getValidRules(this.qryBldrObj.rule);
@@ -184,6 +187,134 @@ export class Template extends SampleBase<{}, {}> {
         }
         ]
     };
+
+    CELTemplate = () => {
+        return (
+            <div className="preview-content" onClick={this.handleMouseEnter} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                <div className="e-preview-options">
+                    <div className="copy-tooltip" style={{ display: 'none' }} onClick={this.copyClipboard}>
+                        <TooltipComponent opensOn="Click" content="Copied to clipboard">
+                            <div className="e-icons copycode"></div>
+                        </TooltipComponent>
+                    </div>
+                </div>
+                <textarea className="e-cel-content" style={{ display: 'none' }}/>
+            </div>
+          );
+    };
+    SpELTemplate = () => {
+          return (
+            <div className="preview-content" onClick={this.handleMouseEnter} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                <div className="e-preview-options">
+                    <div className="copy-tooltip" style={{ display: 'none' }} onClick={this.copyClipboard}>
+                        <TooltipComponent opensOn="Click" content="Copied to clipboard">
+                            <div className="e-icons copycode"></div>
+                        </TooltipComponent>
+                    </div>
+                </div>
+                <textarea className="e-spel-content" style={{ display: 'none' }}/>
+            </div>
+        );
+    };
+    handleMouseEnter = () => {
+        let elem: any = document.getElementsByClassName("copy-tooltip");
+        for (var i: number = 0; i< elem.length; i++) {
+            if(this.tabObj.selectedItem == i) {
+                elem[i].style.display = 'block';
+            }
+        }
+    }
+    handleMouseLeave = () => {
+        let elem: any = document.getElementsByClassName("copy-tooltip");
+        for (var i: number = 0; i< elem.length; i++) {
+            if(this.tabObj.selectedItem == i) {
+                elem[i].style.display = 'none';
+            }
+        }
+    }
+    copyClipboard = (args: any) => {
+        navigator.clipboard.writeText(this.content);
+        setTimeout(function() {
+            (getComponent(args.target.closest('.e-tooltip'), 'tooltip') as any).close();
+        }, 1000);
+    };
+    updateCELContentTemplate = () => {
+        let codeMirrorEditor: any;
+        const allRules = this.qryBldrObj.getValidRules();
+        let celQuery: string = '';
+        celQuery = getCELQuery(allRules, celQuery);
+        this.content = celQuery
+        /* custom code start */
+        this.clearHighlight();
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0], {
+            parserfile: "codemirror/contrib/sql/js/parsesql.js",
+            path: "codemirror/js/",
+            stylesheet: "css/sqlcolors.css",
+            matchBrackets: true,
+            lineWrapping: true,
+            textWrapping: true
+        });
+        codeMirrorEditor.setValue(this.content);
+        /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-cel-content')[0].textContent = this.content;
+            (document.getElementsByClassName('e-cel-content')[0] as HTMLElement).style.display = 'block';
+        }
+    }
+    updateSpCELContentTemplate = () => {
+        let codeMirrorEditor: any;
+        this.spELQuery = '';
+        const allRules: any = this.qryBldrObj.getValidRules();
+        this.content = getSpELQuery(allRules);
+        /* custom code start */
+        this.clearHighlight();
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0], {
+            parserfile: "codemirror/contrib/sql/js/parsesql.js",
+            path: "codemirror/js/",
+            stylesheet: "css/sqlcolors.css",
+            matchBrackets: true,
+            lineWrapping: true,
+            textWrapping: true
+        });
+        codeMirrorEditor.setValue(this.content);
+        /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-spel-content')[0].textContent = this.content;
+            (document.getElementsByClassName('e-spel-content')[0] as HTMLElement).style.display = 'block';
+        }
+    }
+    tabCreated = () => {
+        setTimeout(function() {
+            this.updateCELContentTemplate();
+        }, 100);
+    };
+    updateContentTemplate = () => {
+        switch (this.currentIndex) {
+            case 0:
+                this.updateCELContentTemplate();
+                break;
+            case 1:
+                this.updateSpCELContentTemplate();
+                break;
+        }
+    };
+    changeTab = (args: any) => {
+        this.currentIndex = args.selectedIndex;
+        setTimeout(function() {
+            this.updateContentTemplate();
+        }, 100);
+    };
+    /* custom code start */
+    clearHighlight = () => {
+        let codeMirrorElem: any = document.getElementsByClassName('e-query-preview')[0].querySelectorAll('.CodeMirror');
+        for (let i: number = codeMirrorElem.length - 1; i >= 0; i--) {
+            codeMirrorElem[i].remove();
+        }
+    }
+    /* custom code end */
+    updateRule() {
+        this.updateContentTemplate();
+    }
     
     render() {
         if (!isNullOrUndefined(document.getElementById('right-pane'))) {
@@ -191,61 +322,43 @@ export class Template extends SampleBase<{}, {}> {
         }
         return (
             <div className='control-pane querybuilder-pane'>
-                <div className='col-lg-8 control-section'>
+                <div className='col-lg-12 control-section'>
                     <QueryBuilderComponent dataSource={expenseData} columns={this.filter} width='100%' rule={this.importRules}
                         ref={(scope) => { this.qryBldrObj = scope; }} created={this.onCreated.bind(this)}  ruleChange={this.updateRule.bind(this)} >
                     </QueryBuilderComponent>
+                    <div className="e-query-preview">
+                        <TabComponent id='defaultTab' ref={(scope) => {this.tabObj = scope; }} selected={this.changeTab} created={this.tabCreated}>
+                            <TabItemsDirective>
+                                <TabItemDirective header={this.headertext[0]} content={this.CELTemplate}/>
+                                <TabItemDirective header={this.headertext[1]} content={this.SpELTemplate}/>
+                            </TabItemsDirective>
+                        </TabComponent>
+                    </div>
                 </div>
-                <div className='col-lg-4 property-section'>
-                    <PropertyPane title='Properties'>
-                        <table id='qbproperypane' title='Properties'>
-                            <tr><td>
-                                <div className="row">
-                                    <RadioButtonComponent label='JSON' name='rule' value='sql' checked={true}
-                                        change={this.changeValue.bind(this)} ref={(scope) => { this.radioButton = scope; }}>
-                                    </RadioButtonComponent>
-                                </div>
-                            </td>
-                                <td>
-                                    <div className="row">
-                                        <RadioButtonComponent label='SQL' name='rule' value='sql'
-                                            change={this.changeValue.bind(this)} ref={(scope) => { this.radioButton = scope; }}>
-                                        </RadioButtonComponent>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan={2} >
-                                    <textarea id='ruleContent' readOnly={true} />
-                                </td>
-                            </tr>
-                        </table>
-                    </PropertyPane>
-                </div>
-
                 <div id='action-description'>
-                    <p>This sample demonstrates the integration of DropdownList, Slider components as Templates in the Query Builder
-        control.</p>
+                    <p>This sample demonstrates the integration of DropdownList, Slider
+                    components as Templates in the Query Builder component with showing different types of queries such as CEL and SpEL. The query preview can be changed using the tab component.</p>
                 </div>
                 <div id='description'>
                     <p> This sample illustrates the way to integrate drop-down components, Slider, Checkbox with Query Builder. The
                         applicable types of templates are:
-        <ul>
-                            <li>
-                                <code>DropDownList</code>
-                            </li>
-                            <li>
-                                <code>AutoComplete</code>
-                            </li>
-                            <li>
-                                <code>CheckBox</code>
-                            </li>
-                            <li>
-                                <code>Slider</code>
-                            </li>
-                        </ul>
                     </p>
-                    <p> In this sample also illustrates the created filters in JSON and SQL mode. </p>
+                    <ul>
+                        <li>
+                            <code>DropDownList</code>
+                        </li>
+                        <li>
+                            <code>AutoComplete</code>
+                        </li>
+                        <li>
+                            <code>CheckBox</code>
+                        </li>
+                        <li>
+                            <code>Slider</code>
+                        </li>
+                    </ul>
+                    <p> In this demo queries are exported and imported in CEL and SpEL formats. For Common Expression Language (CEL) output, use the "cel" format. CEL is used for validating data.
+For Spring Expression Language (SpEL) output, use the "spel" format. The Spring Expression Language (SpEL) is a powerful expression language that supports querying and manipulating an object graph at runtime.</p>
                     <p>
                         More information about Query Builder can be found in this 
         <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/query-builder/getting-started/'>

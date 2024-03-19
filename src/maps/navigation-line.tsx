@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Marker, MapsTooltip, MarkersDirective, MarkerDirective, NavigationLine, Zoom
@@ -13,6 +12,7 @@ import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as data1 from './map-data/penisular-marker.json';
 import * as data2 from './map-data/penisular-location.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource1: any = data1 as any;
 let datasource2: any = data2 as any;
 
@@ -69,7 +69,7 @@ export class NavigationLineMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Marker, MapsTooltip, NavigationLine]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={worldMap}
                                     shapeSettings={{
                                         fill: '#789071'
                                     }}

@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Zoom, Legend, DataLabel,
     ProjectionType, MapsTooltip, SmartLabelMode, IntersectAction
@@ -13,6 +12,7 @@ import { Browser } from '@syncfusion/ej2-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as usa from './map-data/usa.json';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -55,7 +55,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[DataLabel,MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={usa}
                                     dataLabelSettings={{
                                         visible: true,
                                         labelPath: 'name',

@@ -54,6 +54,7 @@ export class HyperlinksAndBookmarksView extends SampleBase<{}, {}> {
         this.container.documentEditor.documentName = 'Hyperlinks and Bookmarks';
         this.container.documentEditorSettings.showBookmarks = true;
         this.titleBar.updateDocumentTitle();
+        this.container.documentEditor.documentEditorSettings.showRuler = true;
         this.container.documentChange = (): void => {
         this.titleBar.updateDocumentTitle();
         this.container.documentEditor.focusIn();

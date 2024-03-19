@@ -5,9 +5,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MapsTooltip, Bubble, Zoom, AnnotationDirective, AnnotationsDirective } from '@syncfusion/ej2-react-maps';
 import { updateSampleSection } from '../common/sample-base';
+import * as africaMap from './map-data/africa.json';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -29,13 +29,10 @@ const OSMSubLayer = () => {
             <div className='control-section row'>
                 <div className='col-md-12'>
                     <MapsComponent id="maps" load={load} titleSettings={{ text: 'Location of Africa continent in the World map', textStyle: { size: '16px' } }} zoomSettings={{ enable: true }}>
-                        <AnnotationsDirective>
-                            <AnnotationDirective content='<div style="height:18px;width:170px;background:white;text-align:center"><a href="https://www.openstreetmap.org/copyright"  target = "_blank" > © OpenStreetMap contributors </a></div >' verticalAlignment='Far' zIndex='1' x='-40' y='-20' horizontalAlignment='Far' />
-                        </AnnotationsDirective>
                         <Inject services={[Bubble, MapsTooltip, Zoom]} />
                         <LayersDirective>
                             <LayerDirective layerType='OSM' />
-                            <LayerDirective type='SubLayer' animationDuration={0} shapeData={new MapAjax('./src/maps/map-data/africa.json')} shapeSettings={{ fill: '#5100a3', opacity: 0.4 }} />
+                            <LayerDirective type='SubLayer' animationDuration={0} shapeData={africaMap} shapeSettings={{ fill: '#5100a3', opacity: 0.4 }} />
                         </LayersDirective>
                     </MapsComponent>
                 </div>

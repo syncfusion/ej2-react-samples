@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, MapsTheme, LayersDirective, LayerDirective,
     MapsTooltip, ILoadEventArgs
@@ -12,6 +11,7 @@ import {
 import { SampleBase } from '../common/sample-base';
 import { SliderComponent, SliderChangeEventArgs } from "@syncfusion/ej2-react-inputs";
 import * as data from './map-data/population-growth.json';
+import * as northAmericaMap from './map-data/north-america.json';
 let datasource: any = data as any;
 let sliderVal: number | number[] = [-2 , 4];
 let colorCodes: string[] = ['#7E9CDC', '#DCD57E', '#7EDCA2', '#6EB5D0', '#A6DC7E', '#DCA87E', '#d075c6'];
@@ -72,7 +72,7 @@ export class MapSlider extends SampleBase<{}, {}> {
                         }}>
                         <Inject services={[ MapsTooltip ]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/north-america.json')}
+                            <LayerDirective shapeData={northAmericaMap}
                                 shapePropertyPath='name'
                                 shapeDataPath='name'
                                 dataSource={datasource.population}

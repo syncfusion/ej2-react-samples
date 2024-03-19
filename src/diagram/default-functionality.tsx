@@ -868,7 +868,9 @@ function zoomChange(args:any){
               }
               break;
       }
+    
       zoomCurrentValue.content = Math.round(diagramInstance.scrollSettings.currentZoom*100) + ' %';
+      
 }
 let asyncSettings:any;
 function onConnectorSelect(args:any){

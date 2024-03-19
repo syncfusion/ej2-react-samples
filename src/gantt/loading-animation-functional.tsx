@@ -65,6 +65,7 @@ const LoadingAnimation = () => {
       <div className='col-md-3 property-section'>
         <PropertyPane title='Properties'>
           <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+          <tbody>
             <tr>
               <td style={{ width: '50%',paddingLeft:0 }}>
                 <div style={{ paddingTop: '10px',paddingLeft:0 }}> Indicator Type </div>
@@ -76,6 +77,7 @@ const LoadingAnimation = () => {
                 </div>
               </td>
             </tr>
+            </tbody>
           </table>
         </PropertyPane>
       </div>

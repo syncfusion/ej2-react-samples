@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor Enter Key Configuration sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, PasteCleanup, Table, Video, Audio} from '@syncfusion/ej2-react-richtexteditor';
 import { DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -119,7 +119,7 @@ export class EnterKeyConfiguration extends SampleBase<{}, ITextValue> {
             <br/>
             <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { this.rteObj = richtexteditor }} change={this.onChange.bind(this)} created={this.onCreate.bind(this)}
                 height={220} saveInterval={1} value={ this.rteValue }>
-              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
+              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
             </RichTextEditorComponent>
             <br/>
             <label>Code View </label>

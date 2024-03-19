@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     GridComponent, Inject, ColumnsDirective, ColumnDirective, DetailRow, Toolbar,
-    PdfExport, ExcelExport
+    PdfExport, ExcelExport, Page
 } from '@syncfusion/ej2-react-grids';
 import { employeeData, hierarchyOrderdata, customerData } from './data';
 import { updateSampleSection } from '../common/sample-base';
@@ -58,7 +58,7 @@ function HierarchyExport() {
                         <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format='yMd' textAlign='Right' />
                         <ColumnDirective field='ReportsTo' headerText='Reports To' width='135' textAlign='Right' />
                     </ColumnsDirective>
-                    <Inject services={[DetailRow, Toolbar, PdfExport, ExcelExport]} />
+                    <Inject services={[DetailRow, Toolbar, PdfExport, ExcelExport, Page]} />
                 </GridComponent>
             </div>
             <div id="action-description">

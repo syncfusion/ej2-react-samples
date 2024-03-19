@@ -5,10 +5,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Marker, MarkersDirective, MarkerDirective } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import * as australia from './map-data/australia.json';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -44,7 +44,7 @@ const MarkerTemplateMaps = () => {
                     <MapsComponent id="maps" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} titleSettings={{ text: ' Australia cities weather details', textStyle: { size: '16px' } }}>
                         <Inject services={[Marker]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/australia.json')} tooltipSettings={{ visible: false }} shapeSettings={{ autofill: true, palette: ['#E2B247', '#88DB46', '#42C4E2', '#C08AF8', '#52BACC', '#F4CE2F', '#6986ED'], border: { width: 0.5, color: 'white' } }}>
+                            <LayerDirective shapeData={australia} tooltipSettings={{ visible: false }} shapeSettings={{ autofill: true, palette: ['#E2B247', '#88DB46', '#42C4E2', '#C08AF8', '#52BACC', '#F4CE2F', '#6986ED'], border: { width: 0.5, color: 'white' } }}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} height={30} width={30} template='<div id="marker1"><img style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clear.png" alt="Weather clear" /><p>{{:Name}}:{{:Temperature}}°C</p></div>' dataSource={[marker[0]]} />
                                     <MarkerDirective visible={true} height={30} width={30} template='<div id="marker1"><img style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clouds.png" alt="Weather cloud"/><p>{{:Name}}:{{:Temperature}}°C</p></div>' dataSource={[marker[1]]} />

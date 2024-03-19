@@ -16,7 +16,7 @@ const Data = () => {
     const localFields: Object = { text: 'Name', value: 'Code' };
     // bind the DataManager instance to dataSource property
     const dataRemote: DataManager = new DataManager({
-        url: 'https://services.syncfusion.com/react/production//api/Employees',
+        url: 'https://services.syncfusion.com/react/production/api/Employees',
         adaptor: new WebApiAdaptor,
         crossDomain: true
     });

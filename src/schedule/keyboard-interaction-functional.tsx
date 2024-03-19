@@ -16,7 +16,7 @@ const KeyboardInteraction = () => {
   useEffect(() => {
     updateSampleSection();
     document.body.addEventListener("keydown", (e: KeyboardEvent) => {
-      var scheduleElement = document.getElementById('Schedule');
+      var scheduleElement = document.getElementById('schedule');
       if (e.altKey && e.keyCode === 74 && scheduleElement) {
         scheduleElement.focus();
       }

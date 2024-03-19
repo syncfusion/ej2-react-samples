@@ -395,7 +395,7 @@ div#sample-header {
 }
 
 .sb-download-text {
-    color: #FFFFFF;
+    color: #111111;
 }
 
 .sb-download-wrapper {
@@ -814,7 +814,7 @@ div#sample-header {
 
 .sb-badge {
     border-radius: 2px;
-    font-size: 10px;
+    font-size: 11px;
     color: #ffffff;
     padding: 6px 8px;
     float: right;
@@ -829,15 +829,15 @@ div#sample-header {
 
 .e-samplestatus.new,
 .e-samplestatus.New {
-    background-color: #29bc4f;
+    background-color: #1d8739 ;
 }
 
 .e-samplestatus.update,
 .e-samplestatus.Update {
     background-color: #fff;
     /* height: 23px !important; */
-    border: 1px solid #29bc4f !important;
-    color: #29bc4f !important;
+    border: 1px solid #1d8739 !important;
+    color: #1d8739 !important;
 }
 
 .e-samplestatus.preview,
@@ -1130,7 +1130,7 @@ div#sample-header {
     padding-right: 8px;
     cursor: default;
     display: table-cell;
-    color: #898989;
+    color: #757575;
 }
 
 .sb-bread-crumb-text {
@@ -2000,7 +2000,7 @@ RTE toolbar not visible in fullscreen
     -moz-osx-font-smoothing: grayscale;
 }
 
-.banner-img {
+.ad-img {
     background: url(images/bg.jpg);
     background-size: cover;
     border-radius: 6px;
@@ -2011,7 +2011,7 @@ RTE toolbar not visible in fullscreen
     font-family: "Open Sans";
 }
 
-.banner-header {
+.ad-header {
     font-weight: 600;
     font-size: 23px;
     color: #FFFFFF;
@@ -2049,7 +2049,7 @@ RTE toolbar not visible in fullscreen
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.50);
 }
 
-.banner-wrapper {
+.ad-wrapper {
     width: 100%;
     padding: 15px 0 15px 0;
 }
@@ -2059,7 +2059,7 @@ RTE toolbar not visible in fullscreen
     margin-top: 22px;
 }
 
-.banner-cnt-pt {
+.ad-cnt-pt {
     display: table-cell;
 }
 
@@ -2070,7 +2070,7 @@ RTE toolbar not visible in fullscreen
     float: left;
 }
 
-.banner-cnt-icon {
+.ad-cnt-icon {
     padding: 3px;
     position: relative;
     top: 5px;
@@ -2089,11 +2089,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 1350px) and (max-width: 1450px) {
-    .banner-img {
+    .ad-img {
         height: 179px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2123,11 +2123,11 @@ RTE toolbar not visible in fullscreen
 
 
 @media only screen and (min-width: 1250px) and (max-width: 1349px) {
-    .banner-img {
+    .ad-img {
         height: 179px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2156,11 +2156,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 1201px) and (max-width: 1249px) {
-    .banner-img {
+    .ad-img {
         height: 192px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2189,11 +2189,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 1150px) and (max-width: 1200px) {
-    .banner-img {
+    .ad-img {
         height: 210px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -13px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2223,11 +2223,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 1050px) and (max-width: 1149px) {
-    .banner-img {
+    .ad-img {
         height: 218px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2252,11 +2252,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 950px) and (max-width: 1049px) {
-    .banner-img {
+    .ad-img {
         height: 230px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2285,11 +2285,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 850px) and (max-width: 949px) {
-    .banner-img {
+    .ad-img {
         height: 256px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(106% - 30px);
@@ -2319,11 +2319,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 750px) and (max-width: 849px) {
-    .banner-img {
+    .ad-img {
         height: 236px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2348,11 +2348,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 650px) and (max-width: 749px) {
-    .banner-img {
+    .ad-img {
         height: 236px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2377,11 +2377,11 @@ RTE toolbar not visible in fullscreen
 }
 
 @media only screen and (min-width: 550px) and (max-width: 649px) {
-    .banner-img {
+    .ad-img {
         height: 261px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2401,17 +2401,17 @@ RTE toolbar not visible in fullscreen
         margin-top: 61px;
     }
 
-    .banner-cnt-pt {
+    .ad-cnt-pt {
         display: flex;
     }
 }
 
 @media only screen and (min-width: 450px) and (max-width: 549px) {
-    .banner-img {
+    .ad-img {
         height: 261px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(100% - 30px);
@@ -2431,17 +2431,17 @@ RTE toolbar not visible in fullscreen
         margin-top: 61px;
     }
 
-    .banner-cnt-pt {
+    .ad-cnt-pt {
         display: flex;
     }
 }
 
 @media only screen and (min-width: 350px) and (max-width: 449px) {
-    .banner-img {
+    .ad-img {
         height: 330px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(101% - 30px);
@@ -2461,17 +2461,17 @@ RTE toolbar not visible in fullscreen
         margin-top: 97px;
     }
 
-    .banner-cnt-pt {
+    .ad-cnt-pt {
         display: flex;
     }
 }
 
 @media only screen and (min-width: 300px) and (max-width: 349px) {
-    .banner-img {
+    .ad-img {
         height: 313px;
     }
 
-    .banner-header {
+    .ad-header {
         margin-top: -4px;
         text-align: center;
         width: calc(103% - 30px);
@@ -2492,7 +2492,7 @@ RTE toolbar not visible in fullscreen
         margin-top: 90px;
     }
 
-    .banner-cnt-pt {
+    .ad-cnt-pt {
         display: flex;
     }
 }

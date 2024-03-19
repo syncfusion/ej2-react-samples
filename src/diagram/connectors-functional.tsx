@@ -150,6 +150,7 @@ const SAMPLE_CSS = `
         border-color: #006CE6;
         border-width: 2px;
     }
+
     label{
       display: inline-block;
       font-size: 13px;

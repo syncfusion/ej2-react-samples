@@ -16,6 +16,7 @@ const FormFields = () => {
         "https://services.syncfusion.com/react/production/api/documenteditor/";
     let container: DocumentEditorContainerComponent;
     let titleBar: TitleBar;
+    let settings =  {showRuler: true};
     const onLoadDefault = (): void => {
         // tslint:disable
         let defaultDocument: object = {
@@ -60,6 +61,7 @@ const FormFields = () => {
                         enableToolbar={true}
                         showPropertiesPane={false}
                         locale="en-US"
+                        documentEditorSettings={settings}
                     />
                 </div>
             </div>

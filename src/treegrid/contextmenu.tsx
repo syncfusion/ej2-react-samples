@@ -24,7 +24,7 @@ export class TreeContextMenu extends SampleBase<{}, {}> {
         <div className='control-section'>
           <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
             editSettings={this.editSettings} pageSettings={this.pageSettings} contextMenuItems={this.contextMenuItems} allowSorting={true}
-            allowExcelExport={true} allowPdfExport={true}>
+            allowExcelExport={true} allowPdfExport={true} allowResizing={true}>
             <ColumnsDirective>
               <ColumnDirective field='taskID' headerText='Task ID' width='80' textAlign='Right' validationRules={this.validationRule}
                 isPrimaryKey={true}></ColumnDirective>

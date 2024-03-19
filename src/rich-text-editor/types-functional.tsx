@@ -4,7 +4,7 @@
 import { addClass, Browser, removeClass } from '@syncfusion/ej2-base';
 import { ChangeEventArgs as checked, CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs, DropDownListComponent, FieldSettingsModel } from '@syncfusion/ej2-react-dropdowns';
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, ToolbarType, EmojiPicker } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, ToolbarType, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, Table} from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PropertyPane } from '../common/property-pane';
@@ -145,7 +145,7 @@ function Type() {
                             </li>
                         </ol>
                         <img alt="Logo" style={{ width:'300px'}} src="./src/rich-text-editor/images/RTEImage-Feather.png" />
-                        <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, EmojiPicker]} />
+                        <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, Table]} />
                     </RichTextEditorComponent>
                 </div>
                 <div className='col-lg-4 property-section'>
@@ -186,7 +186,7 @@ function Type() {
                     <li><code>Scrollable</code>: All the elements are displayed in a single line with horizontal scrolling enabled.</li>
                 </ul>
                 <p><b>Injecting Module</b></p>
-                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar</code> modules into the services.</p>
+                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar, EmojiPicker, PasteCleanup, Audio, Video, FormatPainter, Table</code> modules into the services.</p>
             </div>
         </div >
     );

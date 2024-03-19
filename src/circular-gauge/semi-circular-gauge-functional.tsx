@@ -43,15 +43,15 @@ const SemiGauge = () => {
 
     const angleChange = (e: ChangeEventArgs) => {
         if (e.checked) {
-            setXValue(null);
-            setYValue(null);
-            setIsMoveToCenter(true);
+            gauge.current.centerX = null;
+            gauge.current.centerY = null;
+            gauge.current.moveToCenter = true;
             setDisabled(true);
         } else {
-            setXValue(xElement.current.value + '%');
-            setYValue(yElement.current.value + '%');
+            gauge.current.centerX = xElement.current.value + '%';
+            gauge.current.centerY = yElement.current.value + '%'; 
             setDisabled(false);
-            setIsMoveToCenter(false);
+            gauge.current.moveToCenter = false;
         }
         gauge.current.refresh();
     }

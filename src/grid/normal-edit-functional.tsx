@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Edit, Toolbar, NewRowPosition } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Edit, Toolbar, NewRowPosition, Sort } from '@syncfusion/ej2-react-grids';
 import { orderDataSource } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -11,9 +11,10 @@ function NormalEdit() {
     updateSampleSection();
   }, [])
   const toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
-  const editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top' };
+  const editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, showAddNewRow: true, newRowPosition: 'Top' };
   const editparams: any = { params: { popupHeight: '300px' } };
-  const validationRule: Object = { required: true };
+  const customeridRule: Object = { required: true, minLength: 5};
+  const freightRule: Object = { required: true, min: 0};
   const orderidRules: Object = { required: true, number: true };
   const pageSettings: Object = { pageCount: 5 };
   const format: any = { type: 'dateTime', format: 'M/d/y hh:mm a' };
@@ -37,21 +38,22 @@ function NormalEdit() {
 
   function ddChange(): void {
     gridInstance.editSettings.newRowPosition = dropDownInstance.value as NewRowPosition;
+    gridInstance.refresh();
   }
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-md-9'>
-          <GridComponent dataSource={orderDataSource} ref={grid => gridInstance = grid} toolbar={toolbarOptions} allowPaging={true} editSettings={editSettings} pageSettings={pageSettings}
+          <GridComponent dataSource={orderDataSource} ref={grid => gridInstance = grid} toolbar={toolbarOptions} allowSorting={true} allowPaging={true} editSettings={editSettings} pageSettings={pageSettings}
             actionBegin={actionBegin.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
-              <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={validationRule}></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='140' format='C2' textAlign='Right' editType='numericedit' ></ColumnDirective>
+              <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={customeridRule}></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='140' format='C2' textAlign='Right' validationRules={freightRule} editType='numericedit' ></ColumnDirective>
               <ColumnDirective field='OrderDate' headerText='Order Date' editType='datetimepickeredit' format={format} width='160' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={editparams} ></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Page, Toolbar, Edit]} />
+            <Inject services={[Page, Toolbar, Edit, Sort]} />
           </GridComponent>
         </div>
 
@@ -74,38 +76,46 @@ function NormalEdit() {
           </PropertyPane>
         </div>
         <div id="action-description">
-          <p>This sample demonstrates CRUD operations in Grid. You can perform CRUD operations as follows,</p>
-          <ul>
-            <li><code>Add</code> -  To add new record, click Add toolbar button </li>
-            <li><code>Edit</code> - To edit record, double click a row or click toolbar Edit button after selected a row </li>
-            <li><code>Delete</code> - To delete record, click toolbar Delete button after selected a row </li>
-            <li><code>Update</code>,<code>Cancel</code> - You can save or discard changes by click toolbar Update and cancel button respectively</li>
-          </ul>
-          <p>By default, a new row will be added at the top of the grid. You can change it by setting <code>editSettings.newRowPosition</code> as <code>Bottom</code></p>
-        </div>
+        <p>In this demo, you can edit the currently selected record by changing the state of the corresponding record to edit. You can carry out the following CRUD operations:</p>
+         <ul>
+                <li><code>Add</code> -  To add a new record, click the add toolbar button. </li>
+                <li><code>Edit</code> - To edit record, double click a cell. </li>
+                <li><code>Delete</code> - To delete a record, click the toolbar delete button after selecting a row. </li>
+                <li><code>Update</code> and <code>Cancel</code> - Save or discard changes by clicking the toolbar update and cancel button respectively.</li>
+            </ul>
+            <p>By default, a new row will be added at the top of the grid. You can change it by setting <code>editSettings.newRowPosition</code> as <code>Bottom</code></p>
+           </div>
         <div id="description">
-          <p> The Grid supports CRUD operations. This CRUD operations can be configured in Grid using
+          <p> Grid supports CRUD operations. This CRUD operations can be configured using
             <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/react/documentation/api/grid/editSettings/">
-              editSettings</a></code>. Also, it has different modes to manipulate the datasource.
+            editSettings</a></code>. It also has the following modes to manipulate the datasource.
           </p>
-          <p>The available modes are,</p>
           <ul>
-            <li><code>Normal</code></li>
-            <li><code>Dialog</code></li>
-            <li><code>Batch</code></li>
+              <li><code>Normal</code></li>
+              <li><code>Dialog</code></li>
+              <li><code>Batch</code></li>
           </ul>
           <p>
-            In this demo, Normal mode is enabled for editing. You can start edit any row by double clicking on it or clicking on toolbar’s
-            <code>Edit</code> button, then the currently selected row will be changed to edited state. You can change the row values
-            and save edited data to datasource.
+              In the normal edit mode, when you start editing the currently selected record is changed to edit state. You can edit any row by double clicking it or clicking the toolbar’s
+              <code>Edit</code> button. You can change the row values and save edited data to the data source.
+          </p>
+          <p>
+              In order to add a new record easily, the grid content always displays a blank "add new row".
+              You can enable this feature by setting the <code>showAddNewRow</code> property of <code>editSettings</code> to true.
           </p>
           <p style={{ fontWeight: 500 }}>Injecting Module</p>
           <p>
-            Grid features are segregated into individual feature-wise modules. To use editing feature, we need to inject
+            Grid features are separated into feature-wise modules. To use the editing feature, inject
             <code><a target="_blank" className="code"
-              href="https://ej2.syncfusion.com/react/documentation/api/grid/edit/">
-              Edit
+            href="https://ej2.syncfusion.com/react/documentation/api/grid/edit/">
+            Edit
             </a></code> module into the <code>services</code>.
+          </p>
+          <p>
+            More information on the inline editing can be found in this 
+            <a target="_blank"
+              href="https://ej2.syncfusion.com/react/documentation/grid/editing/in-line-editing">
+              documentation section</a>.
           </p>
         </div>
       </div>

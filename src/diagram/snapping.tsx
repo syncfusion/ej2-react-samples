@@ -178,13 +178,17 @@ let nodes:NodeModel[] = [
     .text-content {
       margin-left: 10px;
     }
-  
+    
     #properties_Container {
       width: 300px;
       float: left;
       height: 600px;
       margin-top: 30px;
     }
+  .row-header {
+    font-size: 15px;
+    font-weight: 500;
+  }
   .property-section .e-remove-selection {
     cursor: not-allowed;
   }

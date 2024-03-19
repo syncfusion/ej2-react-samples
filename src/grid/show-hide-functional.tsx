@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Sort } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { addClass, removeClass } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -11,6 +11,7 @@ function ShowHide() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+
     let flag: boolean = false;
     let gridInstance: GridComponent;
     let ToolbarInstance: ToolbarComponent;
@@ -63,16 +64,16 @@ function ShowHide() {
                     </ItemsDirective>
                 </ToolbarComponent>
                 <br />
-                <GridComponent dataSource={orderDetails} ref={grid => gridInstance = grid} dataBound={dataBound.bind(this)} allowPaging={true} >
+                <GridComponent dataSource={orderDetails} ref={grid => gridInstance = grid} dataBound={dataBound.bind(this)} allowPaging={true} allowSorting={true}>
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' width='150' textAlign='Right'></ColumnDirective>
-                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='170'></ColumnDirective>
-                        <ColumnDirective field='OrderDate' headerText='Order Date' width='155' format='yMd' textAlign='Right' />
-                        <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='Right' />
-                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' width='155' textAlign='Right' ></ColumnDirective>
+                    <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
+                            <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
+                            <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right'/>
+                            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'/>
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                         <ColumnDirective field='ShipCountry' headerText='Ship Country' width='170'></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page]} />
+                    <Inject services={[Page, Sort]} />
                 </GridComponent>
             </div>
             <div id="action-description">

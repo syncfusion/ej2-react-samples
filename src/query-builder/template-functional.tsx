@@ -10,7 +10,11 @@ import { expenseData } from './data-source';
 import { PropertyPane } from '../common/property-pane';
 import { updateSampleSection } from '../common/sample-base';
 import './template.css';
+import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import { getCELQuery, getSpELQuery } from './util';
 
+declare let CodeMirror: any;
 const Template = () => {
     useEffect(() => {
         updateSampleSection();
@@ -19,10 +23,15 @@ const Template = () => {
     let dropDownObj = useRef<DropDownList>(null);
     let boxObj = useRef<CheckBox>(null);
     let qryBldrObj = useRef<QueryBuilderComponent>(null);
-    let radioButton = useRef<RadioButtonComponent>(null);
+    let tabObj: any = useRef<TabComponent>(null);
     let checked: boolean;
-    let txtAreaElem = useRef<HTMLTextAreaElement>(null);
-    let validRule: RuleModel;
+    let headertext: any = [
+        { text: "CEL" },
+        { text: "SpEL" }
+    ];
+    let spELQuery: string = '';
+    let currentIndex: number = 0;
+    let content: string;
     let filter: ColumnsModel[] = [
         {
             field: "Category",
@@ -159,28 +168,6 @@ const Template = () => {
             ],
         },
     ];
-    const updateRule = (args: RuleChangeEventArgs): void => {
-        if (radioButton.current.checked) {
-            txtAreaElem.current.value = qryBldrObj.current.getSqlFromRules(args.rule);
-        } else {
-            txtAreaElem.current.value = JSON.stringify(args.rule, null, 4);
-        }
-    };
-    const changeValue = (): void => {
-        validRule = qryBldrObj.current.getValidRules(qryBldrObj.current.rule);
-        if (radioButton.current.checked) {
-            txtAreaElem.current.value = qryBldrObj.current.getSqlFromRules(validRule);
-        } else {
-            txtAreaElem.current.value = JSON.stringify(validRule, null, 4);
-        }
-    };
-    const onCreated = (): void => {
-        txtAreaElem.current.value = JSON.stringify(
-            qryBldrObj.current.getValidRules(qryBldrObj.current.rule),
-            null,
-            4
-        );
-    };
 
     // Handler used to reposition the tooltip on page scroll
     const onScroll = (): void => {
@@ -238,87 +225,174 @@ const Template = () => {
         document.getElementById("right-pane").addEventListener("scroll", onScroll);
     }
 
+    const CELTemplate = () => {
+        return (
+            <div className="preview-content" onClick={handleMouseEnter} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <div className="e-preview-options">
+                    <div className="copy-tooltip" style={{ display: 'none' }} onClick={copyClipboard}>
+                        <TooltipComponent opensOn="Click" content="Copied to clipboard">
+                            <div className="e-icons copycode"></div>
+                        </TooltipComponent>
+                    </div>
+                </div>
+                <textarea className="e-cel-content" style={{ display: 'none' }}/>
+            </div>
+          );
+    };
+    const SpELTemplate = () => {
+          return (
+            <div className="preview-content" onClick={handleMouseEnter} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <div className="e-preview-options">
+                    <div className="copy-tooltip" style={{ display: 'none' }} onClick={copyClipboard}>
+                        <TooltipComponent opensOn="Click" content="Copied to clipboard">
+                            <div className="e-icons copycode"></div>
+                        </TooltipComponent>
+                    </div>
+                </div>
+                <textarea className="e-spel-content" style={{ display: 'none' }}/>
+            </div>
+        );
+    };
+    const handleMouseEnter = () => {
+        let elem: any = document.getElementsByClassName("copy-tooltip");
+        for (var i: number = 0; i< elem.length; i++) {
+            if(tabObj.current.selectedItem == i) {
+                elem[i].style.display = 'block';
+            }
+        }
+    }
+    const handleMouseLeave = () => {
+        let elem: any = document.getElementsByClassName("copy-tooltip");
+        for (var i: number = 0; i< elem.length; i++) {
+            if(tabObj.current.selectedItem == i) {
+                elem[i].style.display = 'none';
+            }
+        }
+    }
+    const copyClipboard = (args: any) => {
+        navigator.clipboard.writeText(content);
+        setTimeout(function() {
+            (getComponent(args.target.closest('.e-tooltip'), 'tooltip') as any).close();
+        }, 1000);
+    };
+    const updateCELContentTemplate = () => {
+        let codeMirrorEditor: any;
+        const allRules = qryBldrObj.current.getValidRules();
+        let celQuery: string = '';
+        celQuery = getCELQuery(allRules, celQuery);
+        content = celQuery
+        /* custom code start */
+        clearHighlight();
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0], {
+            parserfile: "codemirror/contrib/sql/js/parsesql.js",
+            path: "codemirror/js/",
+            stylesheet: "css/sqlcolors.css",
+            matchBrackets: true,
+            lineWrapping: true,
+            textWrapping: true
+        });
+        codeMirrorEditor.setValue(content);
+        /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-cel-content')[0].textContent = content;
+            (document.getElementsByClassName('e-cel-content')[0] as HTMLElement).style.display = 'block';
+        }
+    }
+    const updateSpCELContentTemplate = () => {
+        let codeMirrorEditor: any;
+        spELQuery = '';
+        const allRules: any = qryBldrObj.current.getValidRules();
+        content = getSpELQuery(allRules);
+        /* custom code start */
+        clearHighlight();
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0], {
+            parserfile: "codemirror/contrib/sql/js/parsesql.js",
+            path: "codemirror/js/",
+            stylesheet: "css/sqlcolors.css",
+            matchBrackets: true,
+            lineWrapping: true,
+            textWrapping: true
+        });
+        codeMirrorEditor.setValue(content);
+        /* custom code end */
+        if (!codeMirrorEditor) {
+            document.getElementsByClassName('e-spel-content')[0].textContent = content;
+            (document.getElementsByClassName('e-spel-content')[0] as HTMLElement).style.display = 'block';
+        }
+    }
+    const tabCreated = () => {
+        setTimeout(function() {
+            updateCELContentTemplate();
+        }, 100);
+    };
+    const updateContentTemplate = () => {
+        switch (currentIndex) {
+            case 0:
+                updateCELContentTemplate();
+                break;
+            case 1:
+                updateSpCELContentTemplate();
+                break;
+        }
+    };
+    const changeTab = (args: any) => {
+        currentIndex = args.selectedIndex;
+        setTimeout(function() {
+            updateContentTemplate();
+        }, 100);
+    };
+    /* custom code start */
+    const clearHighlight = () => {
+        let codeMirrorElem: any = document.getElementsByClassName('e-query-preview')[0].querySelectorAll('.CodeMirror');
+        for (let i: number = codeMirrorElem.length - 1; i >= 0; i--) {
+            codeMirrorElem[i].remove();
+        }
+    }
+    /* custom code end */
+    const updateRule = () => {
+        updateContentTemplate();
+    }
     return (
         <div className="control-pane querybuilder-pane">
-            <div className="col-lg-8 control-section">
-                <QueryBuilderComponent
-                    dataSource={expenseData}
-                    columns={filter}
-                    width="100%"
-                    rule={importRules}
-                    ref={qryBldrObj}
-                    created={onCreated}
-                    ruleChange={updateRule}
-                ></QueryBuilderComponent>
+            <div className="col-lg-12 control-section">
+                <QueryBuilderComponent dataSource={expenseData} columns={filter} width="100%" rule={importRules} ref={qryBldrObj} ruleChange={updateRule}></QueryBuilderComponent>
+                <div className="e-query-preview">
+                        <TabComponent id='defaultTab' ref={tabObj} selected={changeTab} created={tabCreated}>
+                            <TabItemsDirective>
+                                <TabItemDirective header={headertext[0]} content={CELTemplate}/>
+                                <TabItemDirective header={headertext[1]} content={SpELTemplate}/>
+                            </TabItemsDirective>
+                        </TabComponent>
+                </div>
             </div>
-            <div className="col-lg-4 property-section">
-                <PropertyPane title="Properties">
-                    <table id="qbproperypane" title="Properties">
-                        <tr>
-                            <td>
-                                <div className="row">
-                                    <RadioButtonComponent
-                                        label="JSON"
-                                        name="rule"
-                                        value="sql"
-                                        checked={true}
-                                        change={changeValue}
-                                        ref={radioButton}
-                                    ></RadioButtonComponent>
-                                </div>
-                            </td>
-                            <td>
-                                <div className="row">
-                                    <RadioButtonComponent
-                                        label="SQL"
-                                        name="rule"
-                                        value="sql"
-                                        change={changeValue}
-                                        ref={radioButton}
-                                    ></RadioButtonComponent>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2}>
-                                <textarea id="ruleContent" readOnly={true} ref={txtAreaElem} />
-                            </td>
-                        </tr>
-                    </table>
-                </PropertyPane>
-            </div>
-
             <div id="action-description">
-                <p>
-                    This sample demonstrates the integration of DropdownList, Slider
-                    components as Templates in the Query Builder control.
-                </p>
+                <p>This sample demonstrates the integration of the Dropdown List and Slider components as templates in the Query Builder component and also showing the different types of queries such as CEL and SpEL. The query preview can be changed using the tab component.</p>
             </div>
             <div id="description">
                 <p>
-                    {" "}
+                {" "}
                     This sample illustrates the way to integrate drop-down components,
                     Slider, Checkbox with Query Builder. The applicable types of templates
                     are:
-                    <ul>
-                        <li>
-                            <code>DropDownList</code>
-                        </li>
-                        <li>
-                            <code>AutoComplete</code>
-                        </li>
-                        <li>
-                            <code>CheckBox</code>
-                        </li>
-                        <li>
-                            <code>Slider</code>
-                        </li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>
+                        <code>DropDownList</code>
+                    </li>
+                    <li>
+                        <code>AutoComplete</code>
+                    </li>
+                    <li>
+                        <code>CheckBox</code>
+                    </li>
+                    <li>
+                        <code>Slider</code>
+                    </li>
+                </ul>
                 <p>
                     {" "}
-                    In this sample also illustrates the created filters in JSON and SQL
-                    mode.{" "}
+                    In this demo queries are exported and imported in CEL and SpEL formats. For Common Expression Language (CEL) output, use the "cel" format. CEL is used for validating data.
+For Spring Expression Language (SpEL) output, use the "spel" format. The Spring Expression Language (SpEL) is a powerful expression language that supports querying and manipulating an object graph at runtime.{" "}
                 </p>
                 <p>
                     More information about Query Builder can be found in this

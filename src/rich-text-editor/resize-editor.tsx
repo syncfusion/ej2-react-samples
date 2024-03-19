@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor Resizable sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, Resize, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, Resize, RichTextEditorComponent, Toolbar, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { SampleBase } from '../common/sample-base';
@@ -19,7 +19,7 @@ export class ResizableEditor extends SampleBase<{}, {}> {
             <RichTextEditorComponent id="resizeRTE" enableResize={this.resize} height='250px'>
             <p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content. 
                 Users can format their content using standard toolbar commands.</p>
-              <Inject services={[HtmlEditor, Toolbar, Image, Link, Resize, QuickToolbar]} />
+              <Inject services={[HtmlEditor, Toolbar, Image, Link, Resize, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
             </RichTextEditorComponent>
           </div>
         </div>

@@ -119,7 +119,7 @@ export class SymbolPalette extends SampleBase<{}, {}> {
   render() {
     return (
       <div className="control-pane">
-         <style>{SAMPLE_CSS}</style>
+        <style>{SAMPLE_CSS}</style>
         <div
           className="col-lg-8 control-section"
           id="palette-space"
@@ -170,80 +170,76 @@ export class SymbolPalette extends SampleBase<{}, {}> {
         >
         <div className="property-panel-header">Properties</div>
           <table id="property" title="Properties">
-            <thead>
-            </thead>
-            <tbody>
-              <tr>
-                <td style={{ width: "45%" }}>
-                  <div>Expandable: </div>
-                </td>
-                <td style={{ width: "60%" }}>
-                  {/* DropDownList is used to change the expandMode of the Symbolpallete. */}
-                  <DropDownListComponent
-                    id="expand"
-                    index={1}
-                    ref={expandRef => (expand = expandRef)}
-                    dataSource={expandMode}
-                    change={() => {
-                      palette.expandMode = expand.value as ExpandMode;
-                      palette.dataBind();
-                    }}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: "45%" }}>
-                  <div>Symbol Size: </div>
-                </td>
-                <td style={{ width: "60%" }}>
-                  {/* NumericTextBox is used to apply the size of the Symbol. */}
-                  <NumericTextBoxComponent
-                    id="size"
-                    value={80}
-                    min={40}
-                    max={100}
-                    width={120}
-                    step={5}
-                    format="##.##"
-                    change={() => {
-                      palette.symbolHeight = size.value;
-                      palette.symbolWidth = size.value;
-                    }}
-                    ref={sizeRef => (size = sizeRef)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: "45%", paddingBottom: "10px" }}>
-                  <div>Animation: </div>
-                </td>
-                <td style={{ width: "60%", paddingBottom: "10px" }}>
-                  {/* Enable or disable the animation of the symbol palette. */}
-                  <CheckBoxComponent
-                    id="animation"
-                    checked={true}
-                    change={onAnimationChange}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: "45%", paddingBottom: "10px" }}>
-                  <div>Item Text: </div>
-                </td>
-                <td style={{ width: "60%", paddingBottom: "10px" }}>
-                  <CheckBoxComponent id="itemtext" change={onItemTextChange} />
-                </td>
-              </tr>
-              <tr>
-                <td style={{ width: '45%', paddingBottom: '10px' }}>
-                  <div>Header Icon: </div>
-                </td>
-                <td style={{ width: '60%', paddingBottom: '10px' }}>
-                  <CheckBoxComponent id="headericon" checked={true} change={onHeaderIconChange} />
-                </td>
+            <tr>
+              <td style={{ width: "45%" }}>
+                <div>Expandable: </div>
+              </td>
+              <td style={{ width: "60%" }}>
+                {/* DropDownList is used to change the expandMode of the Symbolpallete. */}
+                <DropDownListComponent
+                  id="expand"
+                  index={1}
+                  ref={expandRef => (expand = expandRef)}
+                  dataSource={expandMode}
+                  change={() => {
+                    palette.expandMode = expand.value as ExpandMode;
+                    palette.dataBind();
+                  }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ width: "45%" }}>
+                <div>Symbol Size: </div>
+              </td>
+              <td style={{ width: "60%" }}>
+                {/* NumericTextBox is used to apply the size of the Symbol. */}
+                <NumericTextBoxComponent
+                  id="size"
+                  value={80}
+                  min={40}
+                  max={100}
+                  width={120}
+                  step={5}
+                  format="##.##"
+                  change={() => {
+                    palette.symbolHeight = size.value;
+                    palette.symbolWidth = size.value;
+                  }}
+                  ref={sizeRef => (size = sizeRef)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ width: "45%", paddingBottom: "10px" }}>
+                <div>Animation: </div>
+              </td>
+              <td style={{ width: "60%", paddingBottom: "10px" }}>
+                {/* Enable or disable the animation of the symbol palette. */}
+                <CheckBoxComponent
+                  id="animation"
+                  checked={true}
+                  change={onAnimationChange}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ width: "45%", paddingBottom: "10px" }}>
+                <div>Item Text: </div>
+              </td>
+              <td style={{ width: "60%", paddingBottom: "10px" }}>
+                <CheckBoxComponent id="itemtext" change={onItemTextChange} />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ width: '45%', paddingBottom: '10px' }}>
+                <div>Header Icon: </div>
+              </td>
+              <td style={{ width: '60%', paddingBottom: '10px' }}>
+                <CheckBoxComponent id="headericon" checked={true} change={onHeaderIconChange} />
+              </td>
 
-              </tr>
-            </tbody>
+            </tr>
           </table>
         </div>
         <div id="action-description">

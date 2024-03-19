@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Aggregate, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Page, Aggregate, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -18,11 +18,11 @@ function AggregateDefault() {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GridComponent dataSource={data} allowPaging={true} pageSettings={pageSettings}>
+        <GridComponent dataSource={data} allowPaging={true} pageSettings={pageSettings} allowSorting={true}>
           <ColumnsDirective>
             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' ></ColumnDirective>
-            <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' ></ColumnDirective>
+            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'></ColumnDirective>
+            <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170'></ColumnDirective>
             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
           </ColumnsDirective>
           <AggregatesDirective>
@@ -37,7 +37,7 @@ function AggregateDefault() {
               </AggregateColumnsDirective>
             </AggregateDirective>
           </AggregatesDirective>
-          <Inject services={[Page, Aggregate]} />
+          <Inject services={[Page, Aggregate, Sort]} />
         </GridComponent>
         <div id="action-description">
           <p>This sample demonstrates aggregate functionality of the Grid. In this sample, the aggregate value for the column “Freight” is displayed in column footer.</p>

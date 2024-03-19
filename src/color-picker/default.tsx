@@ -23,7 +23,7 @@ export class Default extends SampleBase<{}, {}> {
           <p>
             The ColorPicker component is a user interface to select and adjust color values. This supports various color specifications like RGB (Red Green Blue), HSV (Hue Saturation Value), and Hex codes.</p>
           <p>
-            In this sample, the ColorPicker popup contains picker area, slider to adjust hue and opacity value, input textarea, and control buttons.</p>
+            In this sample, the ColorPicker popup contains picker area, slider to adjust hue and opacity value, input textarea, and control buttons.
             <ul>
               <li>Drag the handle in the picker area to select your favorite color.</li>
               <li>You can manually set the color by typing the color values in the input text boxes.</li>
@@ -37,7 +37,9 @@ export class Default extends SampleBase<{}, {}> {
             <p>
               More information about ColorPicker can be found in this
               <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/color-picker/getting-started"> documentation section</a>.</p>
+          </p>
         </div>
+
       </div>
     )
   }

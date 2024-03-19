@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor Smart Suggestion sample
  */
- import { DialogType, HtmlEditor, Image, Audio, Video, Table, Inject, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker } from '@syncfusion/ej2-react-richtexteditor';
+ import { DialogType, HtmlEditor, Image, Audio, Video, Table, Inject, Link, NodeSelection, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, EmojiPicker, PasteCleanup, FormatPainter } from '@syncfusion/ej2-react-richtexteditor';
  import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
  import * as React from 'react';
  import {updateSampleSection } from '../common/sample-base';
@@ -121,13 +121,15 @@
         case 'Audio':
         case 'Video':
             mentionObj.hidePopup();
-            formatRTE.showDialog(args.itemData.command === 'Video'? DialogType.InsertVideo: args.itemData.command === 'Audio'
-                ? DialogType.InsertAudio: args.itemData.command === 'Image'? DialogType.InsertImage: DialogType.InsertTable);
+            setTimeout(() => {
+              formatRTE.showDialog(args.itemData.command === 'Video' ? DialogType.InsertVideo : args.itemData.command === 'Audio'
+                ? DialogType.InsertAudio : args.itemData.command === 'Image' ? DialogType.InsertImage : DialogType.InsertTable);
+            }, 150);
             break;
         case 'EmojiPicker':
           beforeApplyFormat();
           mentionObj.hidePopup();
-          formatRTE.showEmojiPicker();
+          setTimeout(() => { formatRTE.showEmojiPicker(); }, 150);
           break;
         default:
           formatRTE.executeCommand('formatBlock', args.itemData.command);
@@ -140,7 +142,7 @@
         <div className='control-section mention-inline-format-section' id="mentionFormat">
           <div className='rte-control-section' ref={mentionFormatIntegrationRef} id='mentionFormatIntegration'>
             <RichTextEditorComponent id="MentionInlineFormat" ref={(scope) => { formatRTE = scope }} toolbarSettings={toolbarSettings} placeholder="Type '/' and choose format"  actionBegin={actionBegineHandler.bind(this)} >
-              <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker]} />
+              <Inject services={[HtmlEditor, Toolbar, Image, Audio, Table, Video, Link, QuickToolbar, EmojiPicker, PasteCleanup, FormatPainter]} />
             </RichTextEditorComponent>
     
             <MentionComponent ref={(scope) => { mentionObj = scope }} id="mentionEditor" target="#MentionInlineFormat_rte-edit-view" mentionChar={'/'} allowSpaces={true} dataSource={data} fields={fieldsData} 

@@ -11,19 +11,19 @@ import {
 } from '@syncfusion/ej2-react-charts';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 export let data1: any[] = [
-  { 'x': 'China', y: 26, text: 'China: 26' },
+  { 'x': 'Australia', y: 26, text: 'Australia: 26' },
   { 'x': 'Russia', y: 19, text: 'Russia: 19' },
   { 'x': 'Germany', y: 17, text: 'Germany: 17' },
   { 'x': 'Japan', y: 12, text: 'Japan: 12' },
-  { 'x': 'France', y: 10, text: 'France: 10' },
+  { 'x': 'China', y: 10, text: 'China: 10' },
   { 'x': 'South Korea', y: 9, text: 'South Korea: 9' },
   { 'x': 'Great Britain', y: 27, text: 'Great Britain: 27' },
   { 'x': 'Italy', y: 8, text: 'Italy: 8' },
-  { 'x': 'Australia', y: 8, text: 'Australia: 8' },
-  { 'x': 'Netherlands', y: 8, text: 'Netherlands: 8' },
+  { 'x': 'France', y: 8, text: 'France: 8' },
+  { 'x': 'Spain', y: 7, text: 'Spain: 7' },
   { 'x': 'Hungary', y: 8, text: 'Hungary: 8' },
   { 'x': 'Brazil', y: 7, text: 'Brazil: 7' },
-  { 'x': 'Spain', y: 7, text: 'Spain: 7' },
+  { 'x': 'Netherlands', y: 8, text: 'Netherlands: 8' },
   { 'x': 'Kenya', y: 6, text: 'Kenya: 6' },
 ];
 
@@ -69,14 +69,7 @@ export class Grouping extends SampleBase<{}, {}> {
                   groupTo='9' groupMode='Point' startAngle={0}
                   endAngle={360}
                   innerRadius='0%'
-                  dataLabel={{
-                    visible: true,
-                    position: 'Outside',
-                    connectorStyle: { type: 'Line', length: '5%' },
-                    font: {
-                      fontWeight: '600'
-                    }
-                  }}
+                  dataLabel={{ visible: true, position: 'Outside', connectorStyle: { type: 'Curve', length: '20px' }, font: { fontWeight: '600' } }}
                 >
                 </AccumulationSeriesDirective>
               </AccumulationSeriesCollectionDirective>

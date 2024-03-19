@@ -54,6 +54,7 @@ export class TableFormatView extends SampleBase<{}, {}> {
         this.container.documentEditor.open(JSON.stringify(defaultDocument));
         this.container.documentEditor.documentName = 'Table Formatting';
         this.titleBar.updateDocumentTitle();
+        this.container.documentEditor.documentEditorSettings.showRuler = true;
         this.container.documentChange = (): void => {
         this.titleBar.updateDocumentTitle();
         this.container.documentEditor.focusIn();

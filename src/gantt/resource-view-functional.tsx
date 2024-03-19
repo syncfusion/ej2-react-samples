@@ -23,6 +23,7 @@ const ResourceView = () => {
     work: 'work',
     child: 'subtasks'
   };
+  const taskType: any = "FixedWork";
   const resourceFields: any = {
     id: 'resourceId',
     name: 'resourceName',
@@ -58,7 +59,7 @@ const ResourceView = () => {
         <GanttComponent id='ResourceView' dataSource={resourcesData} treeColumnIndex={1} viewType='ResourceView'
           allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={toolbar} toolbarClick={toolbarClick.bind(this)} editSettings={editSettings}
           projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
-          taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings}
+          taskFields={taskFields} taskType={taskType} labelSettings={labelSettings} splitterSettings={splitterSettings}
           height='410px' resources={resourceCollection} showOverAllocation={true} ref={ganttInstance}>
           <ColumnsDirective>
             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>

@@ -31,7 +31,7 @@ export class Batch extends SampleBase<{}, {}> {
               <ColumnDirective field='duration' headerText='Duration' width='140' editType='numericedit' textAlign='Right'
                 validationRules={this.validationRule2} edit={this.editparams2} />
             </ColumnsDirective>
-            <Inject services={[ Edit, Toolbar]}/>
+            <Inject services={[Edit, Toolbar]}/>
           </TreeGridComponent>
           </div>
         <div id="action-description">

@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     PdfViewerComponent, Toolbar,FormDesigner,FormFields, Magnification, Navigation, LinkAnnotation, BookmarkView,
-    ThumbnailView, Print, TextSelection, TextSearch, Inject
+    ThumbnailView, Print, TextSelection, TextSearch,PageOrganizer, Inject
 } from '@syncfusion/ej2-react-pdfviewer';
 import { MessageComponent } from '@syncfusion/ej2-react-notifications';
 import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
@@ -36,9 +36,9 @@ export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
                     <div className='e-pdf-toolbar'>
                         <ToolbarComponent ref={(scope) => { this.toolbar = scope; }} clicked={this.clickHandler.bind(this)}>
                             <ItemsDirective>
-                                <ItemDirective prefixIcon='e-pv-open-document-icon' id='file_Open' tooltipText='Open' cssClass='e-pv-button-container'></ItemDirective>
+                                <ItemDirective prefixIcon='e-icons e-folder-open' id='file_Open' tooltipText='Open' cssClass='e-pv-button-container'></ItemDirective>
                                 <ItemDirective text="Complete Signing"  id='pdfviewer_sign' tooltipText='Finish Signing' disabled={this.buttonVisiblity} align="Right"></ItemDirective>
-                                <ItemDirective prefixIcon='e-pv-download-document-icon' tooltipText="Download" id='download' disabled={this.downloadVisiblity} align="Right"  cssClass= 'e-pv-download-document-container'></ItemDirective>
+                                <ItemDirective prefixIcon='e-icons e-download' tooltipText="Download" id='download' disabled={this.downloadVisiblity} align="Right"  cssClass= 'e-pv-download-document-container'></ItemDirective>
                             </ItemsDirective>
                         </ToolbarComponent>
                     </div>
@@ -54,7 +54,7 @@ export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
                         documentPath="InvisibleDigitalSignature.pdf"
                         addSignature={this.addSignature}
                         style={{ 'display': 'block', 'height': '640px' }}>
-                        <Inject services={[Magnification, FormFields, FormDesigner, Navigation, LinkAnnotation, BookmarkView,
+                        <Inject services={[Magnification, FormFields, FormDesigner, Navigation, LinkAnnotation, BookmarkView,PageOrganizer,
                             ThumbnailView, Print, TextSelection, TextSearch]} />
                     </PdfViewerComponent>
                     <input type="file" id="fileUpload" accept=".pdf" onChange={this.readFile.bind(this)} style={{ 'display': 'block', 'visibility': 'hidden', 'width': '0', 'height': '0' }} />

@@ -26,6 +26,12 @@
     #qbproperypane .row {
         margin-left: 0;
     }
+
+    @media only screen and (max-width: 700px) {
+        .e-query-preview .copy-tooltip {
+           display: block !important;
+        }
+    }
 /* custom code end */
 	.highcontrast textarea#ruleContent {
 	  background-color: #000;

@@ -32,7 +32,7 @@ export class Integration extends SampleBase<{}, {}> {
     public jsonDataSource: object[] = [];
 
     onDataBound(): void {
-        if (this.onInit) {
+        if (this.onInit && this.pivotObj.grid.getRows().length > 1) {
             this.pivotObj.grid.selectionModule.selectCellsByRange({ cellIndex: 1, rowIndex: 1 }, { cellIndex: 3, rowIndex: 4 });
         }
     }

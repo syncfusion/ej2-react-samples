@@ -12,7 +12,6 @@ export const BulletChartSampleOrder = [
         'component' : 'BulletChartMultipleData',
         'name': 'Multiple Data',
         'category': 'Bullet Chart',
-        'type': 'update',
         'order': '01',
         'description': 'This demo for Essential JS2 Bullet Chart control shows the default rendering of bullet graph with data.'
     },

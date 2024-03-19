@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor default sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, Table, Video, Audio, PasteCleanup} from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
@@ -50,7 +50,7 @@ function Default() {
                                 <p>Creates bulleted and numbered lists.</p>
                             </li>
                         </ul>
-                        <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
+                        <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, Table, Video, Audio, PasteCleanup]} />
                     </RichTextEditorComponent>
                 </div>
             </div>

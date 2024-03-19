@@ -12,6 +12,7 @@ import { SampleBase } from '../common/sample-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DatePicker } from '@syncfusion/ej2-calendars';
 import * as dataSource from './datasource.json';
+import { PropertyPane } from '../common/property-pane';
 
 /**
  * Sample for searching appointments
@@ -142,13 +143,10 @@ export class SearchEvents extends SampleBase<{}, {}> {
           </div>
         </div>
         <div className='col-lg-3 property-section property-customization'>
-          <div className="property-panel-section">
-            <p className="property-panel-header header-customization" style={{ width: '100%' }}>Search by all event fields</p>
-            <div className="property-panel-content">
-              <input className="e-input" type="text" placeholder="Enter the Search text" onKeyUp={this.globalSearch.bind(this)} />
-            </div>
+          <PropertyPane title='Search by all event fields'>
+            <input className="e-input" type="text" placeholder="Enter the Search text" onKeyUp={this.globalSearch.bind(this)} />
             <form className="event-search" id="form-search">
-              <p className="property-panel-header header-customization" style={{ width: '100%' }}>Search by specific event fields</p>
+              <p className="property-panel-header header-customization" style={{ width: '100%', padding: '22px 0 0 0' }}>Search by specific event fields</p>
               <table id="property-specific" style={{ width: '100%' }}>
                 <tbody>
                   <tr className="row">
@@ -185,7 +183,7 @@ export class SearchEvents extends SampleBase<{}, {}> {
                 </tbody>
               </table>
             </form>
-          </div>
+          </PropertyPane>
         </div>
         <div id="action-description">
           <p>This example showcases the search results of Scheduler appointments in a grid. When the user provides the

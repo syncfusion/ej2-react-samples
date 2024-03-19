@@ -5,11 +5,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax, ShapeSettingsModel } from '@syncfusion/ej2-maps';
+import { ShapeSettingsModel } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MapsTooltip, Legend, ITooltipRenderEventArgs } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './map-data/tooltip-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -55,7 +56,7 @@ const TooltipMaps = () => {
                     <MapsComponent id="maps" tooltipRender={tooltipRender} loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Left', orientation: 'Vertical', height: '70%', width: '10', textStyle: { color: '#757575' } }} titleSettings={{ text: 'Finalist in Cricket World Cup', textStyle: { size: '16px' } }}>
                         <Inject services={[MapsTooltip, Legend]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource} tooltipSettings={{ visible: true, valuePath: 'name', template: template }} shapeSettings={shapeSetting} />
+                            <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource} tooltipSettings={{ visible: true, valuePath: 'name', template: template }} shapeSettings={shapeSetting} />
                         </LayersDirective>
                     </MapsComponent>
                 </div>

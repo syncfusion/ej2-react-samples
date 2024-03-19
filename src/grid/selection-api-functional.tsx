@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Page, Selection, Inject, SelectionSettings } from '@syncfusion/ej2-react-grids';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { data } from './data';
@@ -74,16 +74,16 @@ function SelectionAPI() {
                     </ItemsDirective>
                 </ToolbarComponent>
                 <br />
-                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings}
+                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} allowSorting={true} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings}
                     rowSelecting={selectingEvents} cellSelecting={selectingEvents}>
                     <ColumnsDirective>
                         <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
                         <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' />
-                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
+                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right'/>
+                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'/>
                         <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Selection]} />
+                    <Inject services={[Page, Selection, Sort]} />
                 </GridComponent>
             </div>
             <div id="action-description">

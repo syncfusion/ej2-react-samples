@@ -5,11 +5,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useState } from "react";
-import { MapAjax, ShapeSettingsModel } from '@syncfusion/ej2-maps';
+import { ShapeSettingsModel } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, IShapeSelectedEventArgs, Selection, Highlight, MapsTooltip, Legend } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
+import * as usa from './map-data/usa.json';
 import * as data from './map-data/selection-datasource.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
@@ -139,7 +140,7 @@ const SelectionMaps = () => {
                     <MapsComponent id="container" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} titleSettings={{ text: 'USA Election Results - 2016', textStyle: { size: '16px' } }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Top', width: '80%', textStyle: { fontWeight: '400', size: '14px', color: '#757575' } }} shapeSelected={shapeSelected.bind(this)}>
                         <Inject services={[MapsTooltip, Selection, Highlight, Legend]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')} shapePropertyPath='name' shapeDataPath='State' dataSource={datasource} tooltipSettings={{ visible: false }} highlightSettings={{ enable: true, fill: '#A3B0D0' }} selectionSettings={{ enable: true, fill: '#4C515B', opacity: 1 }} shapeSettings={shapeSetting} />
+                            <LayerDirective shapeData={usa} shapePropertyPath='name' shapeDataPath='State' dataSource={datasource} tooltipSettings={{ visible: false }} highlightSettings={{ enable: true, fill: '#A3B0D0' }} selectionSettings={{ enable: true, fill: '#4C515B', opacity: 1 }} shapeSettings={shapeSetting} />
                         </LayersDirective>
                     </MapsComponent>
                 </div>

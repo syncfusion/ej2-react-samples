@@ -167,6 +167,7 @@ Diagram.Inject(UndoRedo);
     lineIntervals: interval,
   };
   const sample_css = `
+  
   .db-text-input {
       width: calc(100% - 15px);
       padding: 2px 2px 0px 0px;

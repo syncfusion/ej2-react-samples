@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Sort } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -11,15 +11,16 @@ function StickyHeader() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={data} enableStickyHeader={true}>
+                <GridComponent dataSource={data} enableStickyHeader={true} allowSorting={true}>
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' width='150' textAlign='Right'></ColumnDirective>
-                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='160'></ColumnDirective>
-                        <ColumnDirective field='OrderDate' headerText='Order Date' width='155' format='yMd' textAlign='Right' />
-                        <ColumnDirective field='Freight' headerText='Freight' width='130' format='C2' textAlign='Right' />
-                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='155' format='yMd' textAlign='Right'></ColumnDirective>
+                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
+                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
+                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right'/>
+                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'/>
+                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                         <ColumnDirective field='ShipName' headerText='Ship Name' width='170'></ColumnDirective>
                     </ColumnsDirective>
+                    <Inject services={[Sort]} />
                 </GridComponent>
             </div>
             <div id="action-description">

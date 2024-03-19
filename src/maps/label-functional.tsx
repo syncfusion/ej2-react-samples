@@ -5,12 +5,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Zoom, Legend, DataLabel, MapsTooltip, SmartLabelMode, IntersectAction } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { ChangeEventArgs, DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as usa from './map-data/usa.json';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -58,7 +58,7 @@ const LabelMaps = () => {
                     <MapsComponent id="maps" loaded={onMapsLoad} load={load} ref={mapInstance} zoomSettings={{ enable: false }}>
                         <Inject services={[DataLabel, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')} dataLabelSettings={{ visible: true, labelPath: 'name', smartLabelMode: 'Trim', intersectionAction: 'None' }} shapeSettings={{ autofill: true }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={usa} dataLabelSettings={{ visible: true, labelPath: 'name', smartLabelMode: 'Trim', intersectionAction: 'None' }} shapeSettings={{ autofill: true }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
                         </LayersDirective>
                     </MapsComponent>
                 </div>

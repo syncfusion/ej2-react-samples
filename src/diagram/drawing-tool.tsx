@@ -100,6 +100,10 @@ const SAMPLE_CSS = `
         font-weight: 500;
     }
 
+    .e-checkbox-wrapper .e-label {
+        font-size: 12px;
+    }
+
     .property-panel-header {
         padding-top: 15px;
         padding-bottom: 5px

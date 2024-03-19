@@ -5,10 +5,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, NavigationLineSettingsModel, MapsTheme, LayersDirective, LayerDirective, MarkersDirective, MarkerDirective, Marker, MapsTooltip, NavigationLine } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
+import * as worldMap from './map-data/world-map.json';
 const SAMPLE_CSS = `
     .name {
         margin-top: -6px;
@@ -297,7 +297,7 @@ const CyberAttackMaps = () => {
                 <MapsComponent id="container" loaded={loaded} load={load} zoomSettings={{ enable: false }} titleSettings={{ text: 'Cyber Attack Map of United States', textStyle: { size: '16px' } }}>
                     <Inject services={[Marker, MapsTooltip, NavigationLine]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapeSettings={{ border: { color:'#D2691E', width: 0.5 }, fill: '#FFFFE0' }} navigationLineSettings={navigationLineData}>
+                        <LayerDirective shapeData={worldMap} shapeSettings={{ border: { color:'#D2691E', width: 0.5 }, fill: '#FFFFE0' }} navigationLineSettings={navigationLineData}>
                             <MarkersDirective>
                                 <MarkerDirective visible={true} template='<div id="marker_template"><div class="pulse-css"><br /><div class="name">{{:name}}</div></div></div>' animationDuration={0} height={15} width={15} dataSource={markerData} />
                                 <MarkerDirective visible={true} template='<div id="parent_template"><div class="parent_css"><br/><div class="name" style="margin-left: -10px;margin-top: -2px">United States</div></div></div>' height={20} width={20} animationDuration={0} dataSource={[{ latitude: 39.864171, longitude: -100.854833 }]} />

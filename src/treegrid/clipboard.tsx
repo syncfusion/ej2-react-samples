@@ -95,12 +95,11 @@ export class Clipboard extends SampleBase<{}, {}> {
     </p>
     <p>In this demo, selected rows data can be copied into the clipboard using the below Keyboard shortcuts or toolbar
         interactions.
-    </p>     
+    </p>
     <ul>
         <li><code>Ctrl + C</code> - Selected rows or cells data without header.</li>
         <li><code>Ctrl + Shift + H</code> - Selected rows or cells data with header.</li>
     </ul>
-    
     <p>Tree Grid provides support for a set of copy modes with <code>copyHierarchyMode</code> property.
      The below are the type of copy mode available in Tree Grid. </p>
     <ul>

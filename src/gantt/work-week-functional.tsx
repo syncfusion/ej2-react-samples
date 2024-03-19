@@ -77,10 +77,12 @@ const WorkWeek = () => {
         <div className='col-lg-4 property-section'>
           <PropertyPane title='Properties'>
             <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+            
               <colgroup>
                 <col style={{ width: '30%' }} />
                 <col style={{ width: '70%' }} />
               </colgroup>
+              <tbody>
               <tr>
                 <td style={{ width: '30%' }}>
                   <div>
@@ -89,7 +91,7 @@ const WorkWeek = () => {
                 </td>
                 <td style={{ width: '70%' }}>
                   <div style={{ paddingTop: '0px' }}>
-                    <MultiSelectComponent ref={multiselectObj} id="WorkWeek" style={{ padding: '2px;' }} mode="CheckBox" value={defaultValue}
+                  <MultiSelectComponent ref={multiselectObj} id="WorkWeek" style={{ padding: '2px' }} mode="CheckBox" value={defaultValue}
                       dataSource={workDays} showDropDownIcon={true} popupHeight='350px' fields={{ text: 'day', value: 'id' }}
                       select={select.bind(this)} removed={removed.bind(this)}>
                       <Inject services={[CheckBoxSelection]}></Inject>
@@ -97,6 +99,7 @@ const WorkWeek = () => {
                   </div>
                 </td>
               </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

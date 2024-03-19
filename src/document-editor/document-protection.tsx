@@ -12,7 +12,7 @@ export class DocumentProtection extends SampleBase<{}, {}> {
     private hostUrl: string = 'https://services.syncfusion.com/react/production/api/documenteditor/';
     public container: DocumentEditorContainerComponent;
     public titleBar: TitleBar;
-
+    public settings ={showRuler: true};
     public userList: string[] = ['engineer@mycompany.com', 'manager@mycompany.com'];
     public rendereComplete(): void {
         window.onbeforeunload = function () {
@@ -32,7 +32,7 @@ export class DocumentProtection extends SampleBase<{}, {}> {
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
-                       height={'590px'} serviceUrl={this.hostUrl} enableToolbar={true} locale='en-US' />
+                       height={'590px'} serviceUrl={this.hostUrl} enableToolbar={true} locale='en-US' documentEditorSettings={this.settings} />
                 </div>
             </div>
             <div className="col-lg-3 property-section">

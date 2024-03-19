@@ -5,12 +5,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import { ColorMappingSettingsModel, MapAjax } from '@syncfusion/ej2-maps';
+import { ColorMappingSettingsModel } from '@syncfusion/ej2-maps';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Legend, MapsTooltip } from '@syncfusion/ej2-react-maps';
 import * as data from './map-data/color-mapping.json';
+import * as usa from './map-data/usa.json';
 let datasource: any = data as any;
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
@@ -244,7 +245,7 @@ const ColorMap = () => {
                 <MapsComponent id="maps" load={load} ref={mapInstance} titleSettings={{ text: 'Spring Precipitation Averages of US States', textStyle: { size: '16px' } }} zoomSettings={{ enable: false }} legendSettings={{ visible: true, position: 'Bottom', height: '10', width: '80%', mode: 'Interactive', titleStyle: { size: '18px', color: '#757575' }, textStyle: { color: '#757575' }, title: { text: 'Inches' } }}>
                     <Inject services={[Legend, MapsTooltip]} />
                     <LayersDirective>
-                        <LayerDirective dataSource={datasource.color} shapeDataPath='State' shapeData={new MapAjax('./src/maps/map-data/usa.json')} shapePropertyPath='name' shapeSettings={{ colorValuePath: 'inches', fill: '#E5E5E5', colorMapping: colorMappingData }} tooltipSettings={{ visible: true, valuePath: 'State', template: template }} />
+                        <LayerDirective dataSource={datasource.color} shapeDataPath='State' shapeData={usa} shapePropertyPath='name' shapeSettings={{ colorValuePath: 'inches', fill: '#E5E5E5', colorMapping: colorMappingData }} tooltipSettings={{ visible: true, valuePath: 'State', template: template }} />
                     </LayersDirective>
                 </MapsComponent>
                 {/* Source Link */}

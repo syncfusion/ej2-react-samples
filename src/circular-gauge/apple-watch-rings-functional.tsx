@@ -11,7 +11,7 @@ import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
 #apple-watch-rings .panel {
-    width: 190px !important;
+    width: 200px !important;
     height: 70px !important;
     margin-left: 5% !important;
     margin-top: 10% !important;
@@ -23,12 +23,12 @@ const SAMPLE_CSS = `
 #apple-watch-rings .content {
     float: left !important;
     margin-left: 62px !important;
-    margin-top: 10px !important;
+    margin-top: -65px !important;
     text-align: left !important;
     border: 0px solid #dddddd;
     min-height: auto;
-    position: absolute;
-    width: 130px;
+    width: 150px;
+    height: auto;
 }
 
 @media screen and (max-width: 1160px) {
@@ -45,7 +45,7 @@ const SAMPLE_CSS = `
     }
 
     #apple-watch-rings .content {
-        margin-top: 15px !important;
+        margin-top: -60px !important;
     }
 
     #apple-watch-rings .divide {
@@ -68,7 +68,7 @@ const SAMPLE_CSS = `
 
     #apple-watch-rings .content {
         margin-left: 63px !important;
-        margin-top: 10px !important;
+        margin-top: -60px !important;
     }
 
     #apple-watch-rings .firstcontent {
@@ -110,7 +110,7 @@ const SAMPLE_CSS = `
     }
 
     #apple-watch-rings .content {
-        margin-top: 11% !important;
+        margin-top: -33% !important;
     }
 }
 

@@ -12,7 +12,6 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
   private rowInstance: NumericTextBoxComponent;
   private columnInstance: NumericTextBoxComponent;
   public grid: GridComponent;
-
   /* After clicking 'Set' button, the `frozenRows` and `frozenColumns` values will be updated in Grid */
   btnClick(): void {
     this.grid.frozenRows = this.rowInstance.value;
@@ -27,10 +26,10 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
           <GridComponent dataSource={orderDetails} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} allowSorting={true} allowMultiSorting={false} ref={g => this.grid = g}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' />
-              <ColumnDirective field='CustomerID' headerText='Customer ID' width='130'></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2'/>
+              <ColumnDirective field='CustomerID' headerText='Customer ID' width='150'></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='180'></ColumnDirective>
-              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right' />
+              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right'/>
               <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='180' format='yMd' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='300'></ColumnDirective>
               <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270'></ColumnDirective>

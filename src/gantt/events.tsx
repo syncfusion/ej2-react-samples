@@ -193,6 +193,7 @@ export class Events extends SampleBase<{}, {}> {
           <div className='col-lg-3 property-section'>
             <PropertyPane title='Event Trace'>
               <table id="property" className="property-panel-table" title="Event Trace" style={{ width: '100%' }}>
+              <tbody>
                 <tr>
                   <td>
                     <div className="eventarea" style={{ height: '346px', overflow: 'auto' }}>
@@ -207,7 +208,7 @@ export class Events extends SampleBase<{}, {}> {
                     </div>
                   </td>
                 </tr>
-
+                </tbody>
               </table>
             </PropertyPane>
           </div>

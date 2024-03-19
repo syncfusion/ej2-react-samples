@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar, ToolbarItems, EditSettingsModel, Edit } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -8,8 +8,8 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
 
     public selectionsettings: Object = { persistSelection: true };
     private gridInstance: GridComponent;
-    public toolbarOptions: any = ['Delete'];
-    public editSettings: any = { allowDeleting: true };
+    public toolbarOptions: ToolbarItems[] = ['Delete'];
+    public editSettings: EditSettingsModel = {allowDeleting: true};
 
     render() {
         return (
@@ -18,11 +18,11 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
                     <GridComponent dataSource={data} ref={grid => this.gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={this.selectionsettings} toolbar={this.toolbarOptions} editSettings={this.editSettings}>
                         <ColumnsDirective>
                         <ColumnDirective type='checkbox' width='50'></ColumnDirective>
-                            <ColumnDirective field='OrderID' isPrimaryKey={true} headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
-                            <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-                            <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' />
-                            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
+                        <ColumnDirective field='OrderID' isPrimaryKey={true} headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
+                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
+                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' />
+                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
+                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                         </ColumnsDirective>
                         <Inject services={[Page, Selection, Toolbar, Edit]} />
                     </GridComponent>

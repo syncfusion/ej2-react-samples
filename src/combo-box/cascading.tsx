@@ -37,7 +37,7 @@ export class Cascading extends SampleBase<{}, {}> {
     // enable the state ComboBox
     this.stateObj.enabled = this.countryObj.value != null;
     // query the data source based on country ComboBox selected value
-    let tempQuery: Query = new Query().where('CountryId', 'equal', this.countryObj.value);
+    let tempQuery: Query = new Query().where('CountryId', 'equal', this.countryObj.value as string);
     this.stateObj.query = tempQuery;
     // clear the existing selection in state ComboBox
     this.stateObj.text = null;
@@ -53,7 +53,7 @@ export class Cascading extends SampleBase<{}, {}> {
   public stateChange(): void {
     this.cityObj.enabled = true;
     // query the data source based on state ComboBox selected value
-    let tempQuery1: Query = new Query().where('StateId', 'equal', this.stateObj.value);
+    let tempQuery1: Query = new Query().where('StateId', 'equal', this.stateObj.value as string);
     this.cityObj.query = tempQuery1;
     //clear the existing selection
     this.cityObj.text = null;

@@ -4,17 +4,15 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, Marker, MarkerDirective, Zoom, DataLabel, MarkersDirective, MapsTooltip
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
-import * as data from './map-data/california.json';
-let datasource: any = data as any;
-import * as data1 from './map-data/texas.json';
-let datasource1: any = data1 as any;
+import * as california from './map-data/california.json';
+import * as texas from './map-data/texas.json';
+import * as usa from './map-data/usa.json';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -67,7 +65,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, Zoom, DataLabel, Marker, MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/usa.json')}
+                                <LayerDirective shapeData={usa}
                                     shapeSettings={{
                                         fill: '#E5E5E5',
                                         border: {
@@ -86,7 +84,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
                                     }}
                                 >
                                 </LayerDirective>
-                                <LayerDirective shapeData={datasource} type='SubLayer'
+                                <LayerDirective shapeData={california} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.6)',
@@ -133,7 +131,7 @@ export class MultilayerMaps extends SampleBase<{}, {}> {
 
                                 </LayerDirective>
 
-                                <LayerDirective shapeData={datasource1} type='SubLayer'
+                                <LayerDirective shapeData={texas} type='SubLayer'
                                 shapeSettings={
                                     {
                                         fill: 'rgba(141, 206, 255, 0.5)',

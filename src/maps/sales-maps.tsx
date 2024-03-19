@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, MapsTooltip, Marker, MarkersDirective, MarkerDirective, Zoom
@@ -13,6 +12,7 @@ import {
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import * as data from './map-data/sales-map.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -44,7 +44,7 @@ export class SalesMaps extends SampleBase<{}, {}> {
                     >
                         <Inject services={[Marker, MapsTooltip, Zoom]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                            <LayerDirective shapeData={worldMap}
                                 shapePropertyPath='name'
                                 shapeDataPath='Country'
                                 dataSource={datasource.salesmap}

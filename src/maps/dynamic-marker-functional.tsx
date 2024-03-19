@@ -100,7 +100,6 @@ const DynamicMarker = () => {
         mapInstance.current.layers[0].navigationLineSettings = [];
         navigationLines = [];
         emptySavedLinePositions();
-        mapInstance.current.refresh();
         setIsButtonDisabled(true);
     };
     const addMarker = (args: any) => {

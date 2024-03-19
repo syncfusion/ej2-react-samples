@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, FilterType, Column, freezeDirection } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, FilterType, Column, freezeDirection, Sort, Freeze } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
@@ -88,17 +88,18 @@ function FrozenAPI() {
           </div>
         </div>
 
-        <GridComponent ref={g => grid = g} dataSource={orderDetails} height='350' frozenRows={2} enableHover={false}>
+        <GridComponent ref={g => grid = g} dataSource={orderDetails} height='350' frozenRows={2} enableHover={false} allowSorting={true}>
           <ColumnsDirective>
             <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' freeze='Left'></ColumnDirective>
-            <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' textAlign='Right' />
+            <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' textAlign='Right'/>
             <ColumnDirective field='CustomerID' headerText='Customer ID' width='130' freeze='Right'></ColumnDirective>
-            <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right' />
+            <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right'/>
             <ColumnDirective field='ShipName' headerText='Ship Name' width='300'></ColumnDirective>
             <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270' freeze='Fixed'></ColumnDirective>
             <ColumnDirective field='ShipCity' headerText='Ship City' width='250'></ColumnDirective>
             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250'></ColumnDirective>
           </ColumnsDirective>
+          <Inject services={[Sort, Freeze]} />
         </GridComponent>
       </div>
 

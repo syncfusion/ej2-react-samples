@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar, ToolbarItems, EditSettingsModel, Edit} from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -10,8 +10,8 @@ function CheckboxSelection() {
     }, [])
     const selectionsettings: Object = { persistSelection: true };
     let gridInstance: GridComponent;
-    const toolbarOptions: any = ['Delete'];
-    const editSettings: any = { allowDeleting: true };
+    const toolbarOptions: ToolbarItems[] = ['Delete'];
+    const editSettings: EditSettingsModel = {allowDeleting: true};
 
     return (
         <div className='control-pane'>

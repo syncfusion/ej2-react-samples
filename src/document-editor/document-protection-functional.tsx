@@ -17,6 +17,7 @@ const DocumentProtection = () => {
         "https://services.syncfusion.com/react/production/api/documenteditor/";
     let container = useRef<DocumentEditorContainerComponent>(null);
     let titleBar: TitleBar;
+    let settings={showRuler: true};
     let userList: string[] = ["engineer@mycompany.com", "manager@mycompany.com"];
     const onChange = (event: ChangeEventArgs): void => {
         container.current.documentEditor.currentUser = event.value as string;
@@ -64,6 +65,7 @@ const DocumentProtection = () => {
                         serviceUrl={hostUrl}
                         enableToolbar={true}
                         locale="en-US"
+                        documentEditorSettings={settings}
                     />
                 </div>
             </div>

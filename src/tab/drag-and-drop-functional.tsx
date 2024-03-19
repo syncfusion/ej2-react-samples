@@ -175,7 +175,7 @@ const Dragdrop = () => {
             crossDomain: true
         });
         return (
-            <ScheduleComponent height='500px' selectedDate={new Date(2020, 9, 20)} eventSettings={{ dataSource: dataManger }} readonly={true}>
+            <ScheduleComponent height='500px' currentView='Month' eventSettings={{ dataSource: dataManger }} readonly={true}>
                 <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
             </ScheduleComponent>
         );

@@ -89,7 +89,7 @@ export class ApiTooltip extends SampleBase<{}, {}> {
                         </TooltipComponent>
                     </div>
 
-                    <div className="col-lg-4 property-section">
+                    <div className="col-lg-4 property-section tooltip-api">
                         <PropertyPane title="Properties">
                             <table id="property" title="Properties">
                                 <tbody>

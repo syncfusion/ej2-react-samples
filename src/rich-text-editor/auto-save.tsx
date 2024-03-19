@@ -3,10 +3,11 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { RichTextEditorComponent, HtmlEditor, Inject, Toolbar, Image, Link, QuickToolbar, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import { SampleBase } from '../common/sample-base';
 import './auto-save.css';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
+import {isNullOrUndefined } from '@syncfusion/ej2-base';
 import { PropertyPane } from '../common/property-pane';
 export class AutoSave extends SampleBase<{}, {}> {
     private rteObj: RichTextEditorComponent;
@@ -37,8 +38,10 @@ export class AutoSave extends SampleBase<{}, {}> {
         this.savingEle.style.display = 'block';
         this.savedEle.style.display = 'none';
         setTimeout(() => {
-            this.savingEle.style.display = 'none';
-            this.savedEle.style.display = 'block';
+            if (!isNullOrUndefined(this.savingEle) && !isNullOrUndefined(this.savedEle)) {
+                this.savingEle.style.display = 'none';
+                this.savedEle.style.display = 'block';
+            }
         }, 500);
     }
 
@@ -66,7 +69,7 @@ export class AutoSave extends SampleBase<{}, {}> {
                                 <div>
                                     <p>Type or edit the content to be saved automatically in the editor</p>
                                 </div>
-                                <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar]} />
+                                <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                             </RichTextEditorComponent>
                             <div id='statusEle' className='current-status'>
                                 <div id='saving' ref={this.savingRef} style={{ display: 'none' }}>

@@ -4,7 +4,7 @@
 import * as React from "react";
 import { useEffect } from 'react';
 import * as ReactDOM from "react-dom";
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, ILoadedEventArgs, PolarSeries, RadarSeries, Tooltip, ChartTheme, Highlight, StackingColumnSeries } from '@syncfusion/ej2-react-charts';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 export let data1: any[] = [
@@ -47,7 +47,7 @@ const PolarStackedColumn = () => {
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <ChartComponent id='charts'style={{ textAlign: "center" }} primaryXAxis={{ valueType: 'Category', labelPlacement: 'OnTicks', interval: 1, coefficient: Browser.isDevice ? 80 : 100 }} load={load.bind(this)} legendSettings= {{ visible: true, enableHighlight: true }} title="Wind Rose Chart" loaded={onChartLoad.bind(this)} tooltip={{ enable: true }}>
-                    <Inject services={[Tooltip, Legend,Highlight, Category, PolarSeries, RadarSeries]} />
+                    <Inject services={[Tooltip, Legend,Highlight, Category, PolarSeries, RadarSeries, StackingColumnSeries]} />
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' name='6-9' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />
                         <SeriesDirective dataSource={data1} xName='x' yName='y1' name='9-11' type='Polar' drawType='StackingColumn' border={{ color: 'white', width: 1 }} />

@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor print sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, PasteCleanup, Table, Video, Audio } from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
@@ -38,7 +38,7 @@ function Print() {
                             <li><p>Contains undo/redo manager.</p></li>
                             <li><p>Creates bulleted and numbered lists.</p></li>
                         </ul>
-                        <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar]} />
+                        <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                     </RichTextEditorComponent>
                 </div>
             </div>

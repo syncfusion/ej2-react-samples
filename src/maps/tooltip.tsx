@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, MapsTooltip, Legend, ITooltipRenderEventArgs
@@ -13,6 +12,7 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as data from './map-data/tooltip-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -53,7 +53,7 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[MapsTooltip, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')}
+                                <LayerDirective shapeData={worldMap}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     dataSource={datasource}

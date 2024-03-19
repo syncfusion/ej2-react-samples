@@ -56,6 +56,7 @@ const SAMPLE_CSS = `#diagramEventsControlSection .sb-mobile-palette {
     border: 1px solid #d9dedd;
   }
   
+
   @media (max-width: 550px) {
     #diagramEventsControlSection .sb-mobile-palette {
       z-index: 19;
@@ -276,7 +277,7 @@ function Events() {
                                     id: "connectors",
                                     expanded: true,
                                     symbols: connectorSymbols,
-                                    iconCss: "e-ddb-icons e-connector",
+                                    iconCss: "e-ddb-icons e-diagram-connector",
                                     title: "Connectors"
                                 }
                             ]}
@@ -293,7 +294,7 @@ function Events() {
                             }}
                             getSymbolInfo={(symbol: NodeModel): SymbolInfo => {
                                 return { fit: true };
-                            }}
+                            }} 
                         ><Inject services={[UndoRedo, DiagramContextMenu]} />
                         </SymbolPaletteComponent>
                     </div>
@@ -373,6 +374,9 @@ function Events() {
                             }}
                             contextMenuClick={(args: MenuEventArgs) => {
                                 getEventDetails(args);
+                            }}
+                            contextMenuSettings={{
+                                show: true
                             }}
                             //Sets the constraints of the SnapSettings
                             snapSettings={{ constraints: SnapConstraints.None }}

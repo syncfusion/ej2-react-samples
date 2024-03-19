@@ -187,6 +187,10 @@ const sample_css = `.image-pattern-style {
   padding-bottom: 15px;
 }
 
+.e-checkbox-wrapper .e-label {
+  font-size: 12px;
+}
+
 .e-selected-style {
   border-color: #006CE6;
   border-width: 2px;

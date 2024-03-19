@@ -5,13 +5,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import { MapAjax, ShapeSettingsModel } from '@syncfusion/ej2-maps';
+import { ShapeSettingsModel } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Zoom, Legend, ProjectionType, MapsTooltip } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { ChangeEventArgs, DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import * as data from './map-data/projection-datasource.json';
+import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -42,7 +43,7 @@ const ProjectionMaps = () => {
         colorValuePath: 'Membership'
     }
     const change = (args: ChangeEventArgs): void => {
-        setProjectionType(args.value as ProjectionType);
+        mapInstance.current.projectionType = args.value as ProjectionType;
         mapInstance.current.refresh();
     }
     const onMapsLoad = (): void => {
@@ -64,7 +65,7 @@ const ProjectionMaps = () => {
                     <MapsComponent id="maps" loaded={onMapsLoad} load={load} ref={mapInstance} zoomSettings={{ enable: false }} legendSettings={{ visible: true }} titleSettings={{ text: 'Members of the UN Security Council', textStyle: { size: '16px' }, subtitleSettings: { text: '- In 2017', alignment: 'Far' } }} projectionType={projectionType}>
                         <Inject services={[Zoom, Legend, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/world-map.json')} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.projection} tooltipSettings={{ visible: true, valuePath: 'Country' }} shapeSettings={shapeSettings} />
+                            <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='Country' dataSource={datasource.projection} tooltipSettings={{ visible: true, valuePath: 'Country' }} shapeSettings={shapeSettings} />
                         </LayersDirective>
                     </MapsComponent>
                 </div>

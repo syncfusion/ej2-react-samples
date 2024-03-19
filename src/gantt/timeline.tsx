@@ -29,6 +29,7 @@ export class Timeline extends SampleBase<{}, {}> {
   private topTierCount: NumericTextBoxComponent;
   private bottomTierCount: NumericTextBoxComponent;
   private timelineUnitSize: NumericTextBoxComponent;
+  private multitaskbarcheckbox: CheckBoxComponent;
   public projectStartDate = new Date('02/03/2019');
   public projectEndDate = new Date('03/23/2019');
   public timelineSettings: any = {
@@ -44,7 +45,7 @@ export class Timeline extends SampleBase<{}, {}> {
     rightLabel: 'taskName'
   };
   private splitterSettings: any = {
-    columnIndex: 0
+    columnIndex: 1
   };
   public yearformat: { [key: string]: Object }[] = [
     { id: 'MMM "yy', format: 'Jan "18' },
@@ -160,23 +161,40 @@ export class Timeline extends SampleBase<{}, {}> {
     let width: number = e.value;
     this.ganttInstance.timelineSettings.timelineUnitSize = width;
   }
+  public multitaskbarCheck(props): any {
+    if (this.multitaskbarcheckbox.checked) {
+      this.ganttInstance.enableMultiTaskbar = true;
+    } else {
+      this.ganttInstance.enableMultiTaskbar = false;
+    }
+  }
   private unitField: any = { text: 'unit', value: 'id' }
   private formatField: any = { text: 'format', value: 'id' };
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <div className='col-lg-8'>
+          <div className='col-lg-9'>
             <GanttComponent id='Timeline' ref={gantt => this.ganttInstance = gantt} dataSource={projectData} renderBaseline={true} allowSorting={true}
               treeColumnIndex={1} allowSelection={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
               taskFields={this.taskFields} timelineSettings={this.timelineSettings} highlightWeekends={true}
-              height='410px' labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}>
+              height='463px' labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}>
+              <ColumnsDirective>
+                <ColumnDirective field='taskID' visible={false} ></ColumnDirective>
+                <ColumnDirective field='taskName' headerText='Name' width='250'></ColumnDirective>
+                <ColumnDirective field='StartDate' headerText='Start Date'></ColumnDirective>
+                <ColumnDirective field='endDate' headerText='End Date'></ColumnDirective>
+                <ColumnDirective field='duration' headerText='Duration'></ColumnDirective>
+                <ColumnDirective field='predecessor' headerText='Dependency'></ColumnDirective>
+                <ColumnDirective field='progress' headerText='Progress'></ColumnDirective>
+              </ColumnsDirective>
               <Inject services={[Selection, Sort, DayMarkers]} />
             </GanttComponent>
           </div>
-          <div className='col-lg-4 property-section'>
+          <div className='col-lg-3 property-section'>
             <PropertyPane title='Properties'>
               <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
+              <tbody>
                 <tr>
                   <td style={{ width: '30%' }}>
                     <div>Unit width</div>
@@ -283,7 +301,17 @@ export class Timeline extends SampleBase<{}, {}> {
                     </div>
                   </td>
                 </tr>
-
+                <tr>
+                  <td style={{width: '30% ' }}>
+                    <div>Enable multitaskbar</div>
+                  </td>
+                  <td style={{width: '70%' }}>
+                    <div>
+                      <CheckBoxComponent ref={CheckBox => this.multitaskbarcheckbox = CheckBox} id="multitaskbarCheck" onClick={this.multitaskbarCheck.bind(this)} className="checkbox" checked={false} ></CheckBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
               </table>
             </PropertyPane>
           </div>
@@ -315,10 +343,14 @@ export class Timeline extends SampleBase<{}, {}> {
             Gantt component features are segregated into individual feature-wise modules. To use a selection support, inject the
             <code>Selection</code> module. To use markers in Gantt, inject the <code>DayMarkers</code> module.
           </p>
+          <p>
+            If the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#enablemultitaskbar">enableMultiTaskbar</a> property is enabled, it displays child taskbars in the parent row when in collapsed state.
+          </p>
         </div>
       </div>
     )
   }
+  
   private updateUnitWidth(unit: string, tier: string): void {
    let topUnit: string = tier === 'top' ? unit : this.ganttInstance.timelineSettings.topTier.unit;
    let bottomUnit: string = tier === 'bottom' ? unit : this.ganttInstance.timelineSettings.bottomTier.unit;

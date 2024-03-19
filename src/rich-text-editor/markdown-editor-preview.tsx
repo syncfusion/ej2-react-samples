@@ -2,7 +2,7 @@
  * Rich Text Editor markdown preview sample
  */
 import { addClass, Browser, createElement, isNullOrUndefined, KeyboardEventArgs, removeClass } from '@syncfusion/ej2-base';
-import { Image, Inject, IToolbarItems, Link, MarkdownEditor, QuickToolbar, RichTextEditor, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, ActionCompleteEventArgs, Count, HtmlEditor, ToolbarType } from '@syncfusion/ej2-react-richtexteditor';
+import { Image, Inject, IToolbarItems, Link, MarkdownEditor, RichTextEditor, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel, ActionCompleteEventArgs, HtmlEditor, ToolbarType } from '@syncfusion/ej2-react-richtexteditor';
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-react-layouts';
 import * as Marked from 'marked';
 import * as React from 'react';
@@ -60,7 +60,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
         return (<div className="content">
             <RichTextEditorComponent id='defaultRTE' ref={(richtexteditor) => { this.rteObj = richtexteditor; }} editorMode='Markdown' toolbarSettings={this.toolbarSettings} height='447px' saveInterval={1} created={this.onCreate.bind(this)} change={this.onChange.bind(this)} actionComplete={this.updateValue.bind(this)} value={this.value}>
 
-                <Inject services={[MarkdownEditor, Toolbar, Image, Link, HtmlEditor, QuickToolbar, Table, Count]} />
+                <Inject services={[MarkdownEditor, Toolbar, Image, Link, HtmlEditor, Table]} />
             </RichTextEditorComponent>
         </div>);
     };
@@ -75,7 +75,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
             <div className='control-pane'>
                 <div className='control-section markdown-preview' id="rtePreview">
                     <div className="content-wrapper">
-                    <SplitterComponent ref={splitter => (this.splitterInstance = splitter)} height='450px' width='100%' resizing={this.onResizing.bind(this)} created={this.updateOrientation.bind(this)}>
+                    <SplitterComponent id='splitter-rte-markdown-preview' ref={splitter => (this.splitterInstance = splitter)} height='450px' width='100%' resizing={this.onResizing.bind(this)} created={this.updateOrientation.bind(this)}>
                         <PanesDirective>
                             <PaneDirective resizable={true} size='50%' min="40%" cssClass='pane1' content={this.content1.bind(this)}></PaneDirective>
                             <PaneDirective min="40%" cssClass='pane2' content={this.content2.bind(this)}></PaneDirective>

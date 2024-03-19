@@ -17,8 +17,8 @@ export class ColumnMenuSample extends SampleBase<{}, {}> {
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='200' textAlign='Right' showInColumnChooser={false}></ColumnDirective>
                             <ColumnDirective field='CustomerName' headerText='Customer Name' width='200'></ColumnDirective>
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' width='200' textAlign='Right' />
-                            <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='Right' />
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' format='yMd' width='200' textAlign='Right'/>
+                            <ColumnDirective field='Freight' headerText='Freight' width='150' format='C2' textAlign='Right'/>
                             <ColumnDirective field='ShipName' headerText='Ship Name' visible={false} width='200'></ColumnDirective>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='200'></ColumnDirective>
                         </ColumnsDirective>

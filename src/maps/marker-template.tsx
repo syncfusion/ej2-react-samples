@@ -4,13 +4,13 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     Marker, MarkersDirective, MarkerDirective
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as australia from './map-data/australia.json';
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -48,7 +48,7 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/australia.json')}
+                                <LayerDirective shapeData={australia}
                                     tooltipSettings={{
                                         visible: false
                                     }}

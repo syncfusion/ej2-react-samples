@@ -372,6 +372,11 @@ L10n.load({
             "By URL": "حسب عنوان URL",
             "Page Break": "فاصل الصفحات",
             "Section Break": "فاصل المقطع",
+            'Page Breaks':  'فواصل الصفحة',
+            'Section Breaks': 'فواصل القسم',
+            'Column': 'عمود',
+            'Next Page': 'الصفحة التالية',
+            'Continuous': 'الصفحة التالية',
             "Header And Footer": "راس & تذييل",
             "Options": "خيارات",
             "Levels": "مستويات",
@@ -554,6 +559,7 @@ export class RightToLeftView extends SampleBase<{}, {}> {
         this.container.documentEditor.open(JSON.stringify(defaultDocument));
         this.container.documentEditor.documentName = 'الشروع';
         this.titleBar.updateDocumentTitle();
+        this.container.documentEditor.documentEditorSettings.showRuler = true;
         this.container.documentChange = (): void => {
             this.titleBar.updateDocumentTitle();
             this.container.documentEditor.focusIn();

@@ -5,11 +5,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, ProjectionType, Selection, ISelectionEventArgs } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import * as seatSelection from './map-data/seat-selection.json';
 const SAMPLE_CSS = `
     #control-container {
         padding: 0px !important;
@@ -108,7 +108,7 @@ const SeatBookingMaps = () => {
                         <MapsComponent id="maps" load={load} zoomSettings={{ enable: false }} height="400" itemSelection={shapeSelected}>
                             <Inject services={[Selection]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/seat-selection.json')} geometryType='Normal' shapeSettings={{ colorValuePath: 'fill' }} selectionSettings={{ enable: true, opacity: 1, enableMultiSelect: true }} />
+                                <LayerDirective shapeData={seatSelection} geometryType='Normal' shapeSettings={{ colorValuePath: 'fill' }} selectionSettings={{ enable: true, opacity: 1, enableMultiSelect: true }} />
                             </LayersDirective>
                         </MapsComponent>
                     </div>

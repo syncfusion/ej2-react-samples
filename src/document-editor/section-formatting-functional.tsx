@@ -24,6 +24,7 @@ const SectionFormatView = () => {
         // tslint:enable
         container.documentEditor.open(JSON.stringify(defaultDocument));
         container.documentEditor.documentName = "Section Formatting";
+        container.documentEditor.documentEditorSettings.showRuler = true;
         titleBar.updateDocumentTitle();
         container.documentChange = (): void => {
             titleBar.updateDocumentTitle();

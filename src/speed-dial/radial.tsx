@@ -51,14 +51,12 @@ export class Radial extends SampleBase<{}, {}> {
                     </p>
                 </div>
                 <div id="description">
-                    <p>
-                        The default display mode is linear. The display mode of the Speed Dial component can be changed using the <code>mode</code> property to <code>Radial</code>. Radial display of action items can be customized using the below properties of <code>radialSettings</code>.
-                        <ul>
-                            <li><code>offSet</code>: Specify the position of the action items along the offset-path.</li>
-                            <li><code>direction</code>: Denote whether to arrange action items in a clock or anti-clockwise direction.</li>
-                            <li><code>startAngle</code> and <code>endAngle</code>: Specify the start and end angles in radial direction. By default, angle is calculated based on the <code>position</code>property.</li>
-                        </ul>
-                    </p>
+                    <p> The default display mode is linear. The display mode of the Speed Dial component can be changed using the <code>mode</code> property to <code>Radial</code>. Radial display of action items can be customized using the below properties of <code>radialSettings</code>. </p>
+                    <ul>
+                        <li><code>offSet</code>: Specify the position of the action items along the offset-path.</li>
+                        <li><code>direction</code>: Denote whether to arrange action items in a clock or anti-clockwise direction.</li>
+                        <li><code>startAngle</code> and <code>endAngle</code>: Specify the start and end angles in radial direction. By default, angle is calculated based on the <code>position</code>property.</li>
+                    </ul>
                 </div>
             </div>
         )

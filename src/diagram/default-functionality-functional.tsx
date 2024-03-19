@@ -223,6 +223,7 @@ let connectors: ConnectorModel[] = [
     targetID: "node12"
   }
 ];
+
 //Initialize the flowshapes for the symbol palatte
 let flowshapes: NodeModel[] = [
   { id: "Terminator", shape: { type: "Flow", shape: "Terminator" } },

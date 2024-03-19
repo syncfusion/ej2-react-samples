@@ -2,7 +2,7 @@
  * Rich Text Editor custom format sample
  */
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
-import { Image, Inject, ToolbarSettingsModel, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { Image, Inject, ToolbarSettingsModel, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, RichTextEditorComponent, Toolbar, Table} from '@syncfusion/ej2-react-richtexteditor';
 import * as Marked from 'marked';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -88,7 +88,7 @@ function CustomFormat() {
                         height='260px' editorMode='Markdown'
                         formatter={formatter}
                         valueTemplate={template} created={rendereComplete} toolbarSettings={toolbarSettings} >
-                        <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar]} />
+                        <Inject services={[MarkdownEditor, Toolbar, Image, Link, Table]} />
                     </RichTextEditorComponent>
                 </div>
             </div>
@@ -101,7 +101,7 @@ function CustomFormat() {
                 The Rich Text Editor allows you to customize the markdown syntax by overriding its default syntax. Configure the customized
                 markdown syntax using the <code>formatter</code>property
                 <p><b>Injecting Module</b></p>
-                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, QuickToolbar</code> modules into the services.</p>
+                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor</code> modules into the services.</p>
                 <p>The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
             </div>
         </div>

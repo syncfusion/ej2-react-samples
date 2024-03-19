@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { Internationalization } from '@syncfusion/ej2-base';
-import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, ExportDetailTemplateEventArgs, ExcelExport, Inject, PdfExport, Toolbar } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, ExportDetailTemplateEventArgs, ExcelExport, Inject, PdfExport, Toolbar, Sort } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { updateSampleSection } from '../common/sample-base';
@@ -135,7 +135,7 @@ function DetailTemplateExport() {
                             <ColumnDirective field='Title' headerText='Name' width='240' />
                             <ColumnDirective field='Country' headerText='Country' width='180' />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, ExcelExport, PdfExport, Toolbar]} />
+                        <Inject services={[DetailRow, ExcelExport, PdfExport, Toolbar, Sort]} />
                     </GridComponent>
             </div>
             

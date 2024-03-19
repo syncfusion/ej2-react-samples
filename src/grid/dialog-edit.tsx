@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject, Sort } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -15,7 +15,7 @@ export class DialogEdit extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}>
+          <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} allowSorting={true} editSettings={this.editSettings} pageSettings={this.pageSettings}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRules}></ColumnDirective>
@@ -23,7 +23,7 @@ export class DialogEdit extends SampleBase<{}, {}> {
               <ColumnDirective field='OrderDate' headerText='Order Date' editType='datepickeredit' format='yMd' width='170' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Page, Toolbar, Edit]} />
+            <Inject services={[Page, Toolbar, Edit, Sort]} />
           </GridComponent>
         <div id="action-description">
            <p>This sample demonstrates CRUD operations in Grid. You can perform CRUD operations as follows,</p>

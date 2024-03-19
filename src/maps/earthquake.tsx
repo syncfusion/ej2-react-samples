@@ -4,13 +4,13 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Zoom, Marker,
     ProjectionType, MarkersDirective, MarkerDirective
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
+import * as asiaMap from './map-data/asia.json';
 const SAMPLE_CSS = `
 .pulse-css {
     width: 20px;
@@ -92,7 +92,7 @@ export class EarthquakeMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Zoom, Marker]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/asia.json')}
+                                <LayerDirective shapeData={asiaMap}
                                     shapePropertyPath='name'
                                     shapeDataPath='name'
                                     shapeSettings={{

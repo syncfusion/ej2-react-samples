@@ -83,6 +83,10 @@ const SAMPLE_CSS = `
         border-width: 2px;
     }
 
+    .e-checkbox-wrapper .e-label {
+        font-size: 12px;
+    }
+
     .diagram-control-pane .col-xs-6 {
         padding-left: 0px;
         padding-right: 0px;

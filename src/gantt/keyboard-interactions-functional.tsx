@@ -58,6 +58,7 @@ const KeyboardInteraction = () => {
         <div className='col-lg-3 property-section' style={{ height: '450px', overflow: 'auto' }}>
           <PropertyPane title='Event Trace'>
             <table id="property" title="Properties">
+            <tbody>
               <tr style={{ height: '50px' }}>
                 <td style={{ width: '30%' }}>
                   <b>Keys</b>
@@ -194,6 +195,7 @@ const KeyboardInteraction = () => {
                   Focus Task
                 </td>
               </tr>
+              </tbody>
             </table>
           </PropertyPane>
         </div>

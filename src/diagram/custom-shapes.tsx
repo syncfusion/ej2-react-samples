@@ -13,7 +13,7 @@ import { DateRangePickerComponent, RangeEventArgs } from '@syncfusion/ej2-react-
 import { expenseData } from './diagram-data';
 let shape: HtmlModel = { type: "HTML" };
 let constraints: any = NodeConstraints.Default & ~NodeConstraints.Resize & ~NodeConstraints.Rotate;
- //Initialize Diagram Nodes
+//Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: 'node', offsetX: 409, offsetY: -151, width: 250, height: 30, shape: shape, constraints: constraints

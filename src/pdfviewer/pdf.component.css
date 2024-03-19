@@ -1,6 +1,18 @@
 #pdfviewer {
     height: 640px;
 }
+#linear-pdfviewer{
+    width: fit-content;
+}
+#uploader-pdfviewer{
+    display: none;
+}
+.content-wrapper-pdfviewer{
+    border: 1px dashed #c3c3cc;
+    position: relative;
+    text-align: center;
+    padding: 20px 0 10px;
+}
 
 #magnificationToolbar {
     background: transparent;
@@ -115,6 +127,22 @@ div#magnificationToolbar.e-toolbar .e-toolbar-items {
 .buttonSwitch {
     Width: 40px;
     Height: 24px;
+}
+
+.pdfviewer-property-section {
+    padding: 20px 15px;
+}
+
+.pdfviewer-contextmenu-checkbox-label {
+    padding: 10px;
+}
+
+.pdfviewer-control-section {
+    border-right: 1px solid #D7D7D7;
+}
+
+.pdfviewer-property-container {
+    padding: 20px 15px;
 }
 
 .pdfviewer-document-list{

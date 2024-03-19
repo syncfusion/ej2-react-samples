@@ -92,7 +92,7 @@ public template2: any = this.gridUrlTemplate;
               <ColumnDirective field='HireDate' headerText='Hire Date' width='120' format='yMd' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='Address' width='180' allowGrouping={false}></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Toolbar, ExcelExport, PdfExport, Group]} />
+            <Inject services={[Toolbar, ExcelExport, PdfExport, Group, Sort]} />
           </GridComponent>
           </div>
           <div className='col-lg-3 property-section'>

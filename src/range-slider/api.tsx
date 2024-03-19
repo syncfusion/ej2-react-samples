@@ -100,7 +100,7 @@ export class APIs extends SampleBase<{}, {}> {
  * slider property customization
  */
     private defaultObj: SliderComponent;
-    public tooltip: object = { placement: 'Before', isVisible: true, showOn: 'Focus' };
+    public tooltip: object = { placement: 'Before', isVisible: true, showOn: 'Hover' };
     public ticks: object = { placement: 'Before', largeStep: 20 };
     public tooltipplacement: { [key: string]: Object }[] = [{ text: 'Before', value: 'Before' }, { text: 'After', value: 'After' }];
     public ticksplacement: { [key: string]: Object }[] = [{ text: 'Before', value: 'Before' }, { text: 'After', value: 'After' }, { text: 'Both', value: 'Both' }, { text: 'None', value: 'None' }];

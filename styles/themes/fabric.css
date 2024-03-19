@@ -7,3 +7,10 @@
 
     margin-top: 6px;
 }
+
+.fabric .e-samplestatus.new.tree,
+.fabric .e-samplestatus.update.tree,
+.fabric .e-samplestatus.preview.tree {
+    height: 22px;
+    margin-top: 4px;
+}

@@ -36,11 +36,10 @@ let options: FormValidatorModel = {
 export class Code39Extd extends SampleBase<{}, {}> {
   public formObject: FormValidator;
   rendereComplete() {
-    this.formObject = new FormValidator('#form1', options);
-    //custom code start
     let div:HTMLElement = (document.getElementsByClassName('sb-property-border')[0] as HTMLElement);
+    this.formObject = new FormValidator('#form1', options);
     div.style.left = '63%';
-    //custom code end
+
   }
   render() {
     return (

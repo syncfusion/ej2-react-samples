@@ -5,11 +5,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, MapsTooltip, Legend, Marker } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import * as data from './map-data/heatmap-datasource.json';
+import * as indiaMap from './map-data/india.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -76,7 +76,7 @@ const HeatMaps = () => {
                     <MapsComponent id="maps" loaded={onMapsLoad} load={load} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: false }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Bottom', height: '10', width: '350', alignment: 'Center', labelDisplayMode: 'Trim', textStyle: { color: '#757575' } }} titleSettings={{ text: "State wise India's population - 2011", textStyle: { size: '16px' } }}>
                         <Inject services={[Marker, MapsTooltip, Legend]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={new MapAjax('./src/maps/map-data/india.json')} shapePropertyPath='NAME_1' shapeDataPath='Name' dataSource={datasource.heatmap} tooltipSettings={{ visible: true, valuePath: 'population', format: 'State: ${Name} <br> Population: ${population}' }} shapeSettings={{ colorValuePath: 'population', colorMapping: colormapping }} />
+                            <LayerDirective shapeData={indiaMap} shapePropertyPath='NAME_1' shapeDataPath='Name' dataSource={datasource.heatmap} tooltipSettings={{ visible: true, valuePath: 'population', format: 'State: ${Name} <br> Population: ${population}' }} shapeSettings={{ colorValuePath: 'population', colorMapping: colormapping }} />
                         </LayersDirective>
                     </MapsComponent>
                 </div>

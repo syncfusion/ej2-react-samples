@@ -42,7 +42,7 @@ const Cascading = () => {
     const countryChange = (args: ChangeEventArgs): void => {
         setStateEnabled(args.value != null);
         // query the data source based on country DropDownList selected value
-        let tempQuery = new Query().where('CountryId', 'equal', args.value);
+        let tempQuery = new Query().where('CountryId', 'equal', args.value as string);
         setStateQuery(tempQuery);
         // clear the existing selection.
         setStateText(null);
@@ -57,7 +57,7 @@ const Cascading = () => {
     const stateChange = (args: ChangeEventArgs): void => {
         setCityEnabled(args.value != null);
         // query the data source based on state DropDownList selected value
-        let tempQuery1 = new Query().where('StateId', 'equal', args.value);
+        let tempQuery1 = new Query().where('StateId', 'equal', args.value as string);
         setCityQuery(tempQuery1);
         // clear the existing selection.
         setCityText(null);

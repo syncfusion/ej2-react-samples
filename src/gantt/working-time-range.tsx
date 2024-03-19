@@ -85,6 +85,7 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
                 <col style={{width:'55%'}} />
                 <col style={{width:'45%'}} />
               </colgroup>
+              <tbody>
                 <tr>
                   <td style={{ width: '100%' }}>
                     <div style={{ fontSize: '15px' }}>Work Start Time</div>
@@ -102,6 +103,7 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
                     <div style={{ fontSize: '15px' }}>Work End Time</div>
                   </td>
                 </tr>
+                </tbody>
                 <tr>
                   <td style={{ width: '100%' }}>
                     <div style={{ paddingTop: '0px'}}>

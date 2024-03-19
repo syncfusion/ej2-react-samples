@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import {
     MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective,
     ProjectionType, MapsTooltip, Legend, Marker, MarkersDirective, MarkerDirective
@@ -12,6 +11,7 @@ import {
 import { Browser } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as data from './map-data/heatmap-datasource.json';
+import * as indiaMap from './map-data/india.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
     .control-fluid {
@@ -74,7 +74,7 @@ export class HeatMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[Marker, MapsTooltip, Legend]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={new MapAjax('./src/maps/map-data/india.json')}
+                                <LayerDirective shapeData={indiaMap}
                                     shapePropertyPath='NAME_1'
                                     shapeDataPath='Name'
                                     dataSource={datasource.heatmap}

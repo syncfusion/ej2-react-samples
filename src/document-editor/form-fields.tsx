@@ -11,6 +11,7 @@ export class FormFields extends SampleBase<{}, {}> {
     private hostUrl: string = 'https://services.syncfusion.com/react/production/api/documenteditor/';
     public container: DocumentEditorContainerComponent;
     public titleBar: TitleBar;
+    public settings =  {showRuler: true};
     public rendereComplete(): void {
         window.onbeforeunload = function () {
             return 'Want to save your changes?';
@@ -27,7 +28,7 @@ export class FormFields extends SampleBase<{}, {}> {
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
-                       height={'590px'} serviceUrl={this.hostUrl} enableToolbar={true} showPropertiesPane={false} locale='en-US'  />
+                       height={'590px'} serviceUrl={this.hostUrl} enableToolbar={true} showPropertiesPane={false} locale='en-US' documentEditorSettings={this.settings}  />
                 </div>
             </div>
             <div id="action-description">
@@ -52,6 +53,7 @@ export class FormFields extends SampleBase<{}, {}> {
         this.container.documentEditor.open(JSON.stringify(defaultDocument));
         this.container.documentEditor.documentName = 'Form Fields';
         this.titleBar.updateDocumentTitle();
+        this.container.documentEditor.documentEditorSettings.showRuler = true;
         this.container.documentChange = (): void => {
         this.titleBar.updateDocumentTitle();
         this.container.documentEditor.focusIn();

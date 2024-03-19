@@ -54,6 +54,7 @@ export class Notes extends SampleBase<{}, {}> {
         this.titleBar.updateDocumentTitle();
         this.container.documentChange = (): void => {
         this.titleBar.updateDocumentTitle();
+        this.container.documentEditor.documentEditorSettings.showRuler = true;
         this.container.documentEditor.focusIn();
         };
     }

@@ -4,6 +4,8 @@ import { SampleBase } from '../common/sample-base';
 import { DocumentEditorContainerComponent, Toolbar } from '@syncfusion/ej2-react-documenteditor';
 import { TitleBar } from './title-bar';
 import './default.component.css';
+import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
+import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 DocumentEditorContainerComponent.Inject(Toolbar);
 
 // tslint:disable:max-line-length
@@ -21,13 +23,31 @@ export class Ruler extends SampleBase<{}, {}> {
         this.titleBar = new TitleBar(document.getElementById('documenteditor_titlebar'), this.container.documentEditor, true);
         this.onLoadDefault();
     }
+        // function to handle the CheckBox change event
+    private onChange = (args: ChangeEventArgs) => {
+        this.container.documentEditorSettings.showRuler = args.checked;
+    }
     render() {
         return (<div className='control-pane'>
-            <div className='control-section'>
+            <div>
+            <div className="col-lg-9 control-section">
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
-                       height={'590px'} serviceUrl={this.hostUrl} enableToolbar={true} locale='en-US'  />
+                       height={'590px'} serviceUrl={this.hostUrl} enableToolbar={true} locale='en-US' />
+                </div>
+            </div>
+            <div className="col-lg-3 property-section">
+                    <div style={{ paddingTop: '20px' }}>
+                        <b>Document Editor settings</b>
+                    </div>
+                    <table style={{ marginTop: '20px', marginBottom: '30px' }}>
+                        <tr>
+                            <td style={{ width: '100%' }}>                
+                            <CheckBoxComponent checked={true} label='Ruler' change={this.onChange.bind(this)}></CheckBoxComponent>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div id="action-description">

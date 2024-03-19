@@ -19,6 +19,10 @@ const EditorTemplate = () => {
   }, [])
   let scheduleObj = useRef<ScheduleComponent>(null);
   const data: Record<string, any>[] = extend([], (dataSource as Record<string, any>).doctorsEventData, null, true) as Record<string, any>[];
+  const fields = {
+    startTime: { name: 'StartTime', validation: { required: true } },
+    endTime: { name: 'EndTime', validation: { required: true } },
+  };
 
   const onEventRendered = (args: EventRenderedArgs): void => {
     switch (args.data.EventType) {
@@ -93,7 +97,7 @@ const EditorTemplate = () => {
     <div className='schedule-control-section'>
       <div className='col-lg-12 control-section'>
         <div className='control-wrapper'>
-          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={scheduleObj} eventSettings={{ dataSource: data }} editorTemplate={editorTemplate} editorHeaderTemplate={editorHeaderTemplate} actionBegin={onActionBegin} showQuickInfo={false} eventRendered={onEventRendered}>
+          <ScheduleComponent width='100%' height='650px' selectedDate={new Date(2021, 1, 15)} ref={scheduleObj} eventSettings={{ dataSource: data, fields: fields }} editorTemplate={editorTemplate} editorHeaderTemplate={editorHeaderTemplate} actionBegin={onActionBegin} showQuickInfo={false} eventRendered={onEventRendered}>
             <ViewsDirective>
               <ViewDirective option='Day' />
               <ViewDirective option='Week' />
@@ -106,7 +110,7 @@ const EditorTemplate = () => {
       </div>
       <div id='action-description'>
         <p>
-          This demo illustrates the way of customizing the default editor window with custom template option and the customized
+          This demo illustrates the way of customizing the default editor window with a custom template option and the customized
           design is automatically replaced onto the usual event editor. Here, a doctor's daily appointment with his patients is listed
           out and shaded with specific color based on its status.
         </p>

@@ -38,7 +38,7 @@ function Cascading() {
         // enable the state ComboBox
         stateObj.enabled = countryObj.value != null;
         // query the data source based on country ComboBox selected value
-        let tempQuery: Query = new Query().where('CountryId', 'equal', countryObj.value);
+        let tempQuery: Query = new Query().where('CountryId', 'equal', countryObj.value as string);
         stateObj.query = tempQuery;
         // clear the existing selection in state ComboBox
         stateObj.text = null;
@@ -54,7 +54,7 @@ function Cascading() {
     function stateChange(): void {
         cityObj.enabled = true;
         // query the data source based on state ComboBox selected value
-        let tempQuery1: Query = new Query().where('StateId', 'equal', stateObj.value);
+        let tempQuery1: Query = new Query().where('StateId', 'equal', stateObj.value as string);
         cityObj.query = tempQuery1;
         //clear the existing selection
         cityObj.text = null;

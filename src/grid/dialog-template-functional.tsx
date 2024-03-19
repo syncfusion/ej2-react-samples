@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
-    GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar,
+    GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Sort,
     Edit, Inject, DialogEditEventArgs
 } from '@syncfusion/ej2-react-grids';
 import { updateSampleSection } from '../common/sample-base';
@@ -38,7 +38,7 @@ function DialogTemplate() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={orderData} toolbar={toolbarOptions} allowPaging={true} editSettings={editSettings} pageSettings={pageSettings}
+                <GridComponent dataSource={orderData} toolbar={toolbarOptions} allowSorting={true} allowPaging={true} editSettings={editSettings} pageSettings={pageSettings}
                     actionComplete={actionComplete.bind(this)}>
                     <ColumnsDirective>
                         <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
@@ -47,7 +47,7 @@ function DialogTemplate() {
                         <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' ></ColumnDirective>
                         <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' ></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Toolbar, Edit]} />
+                    <Inject services={[Page, Toolbar, Edit, Sort]} />
                 </GridComponent>
 
                 <div id="action-description">

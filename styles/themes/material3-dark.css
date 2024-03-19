@@ -356,7 +356,7 @@ body.material3-dark,
 
 .material3-dark .e-samplestatus.new.tree,
 .material3-dark .e-samplestatus.update.tree,
-.e-samplestatus.preview.tree {
+.material3-dark .e-samplestatus.preview.tree {
     margin: 6px 0;
     height: 22px;
     margin-top: 0px;

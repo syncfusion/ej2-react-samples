@@ -161,7 +161,9 @@ let basicShapes: NodeModel[] = [
     lineColor: '#e0e0e0',
     lineIntervals: interval,
   };
-  const sample_css = `.db-text-input {
+  const sample_css = `
+  
+  .db-text-input {
       width: calc(100% - 15px);
       padding: 2px 2px 0px 0px;
   }

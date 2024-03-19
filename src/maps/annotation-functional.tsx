@@ -5,9 +5,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useEffect } from "react";
-import { MapAjax } from '@syncfusion/ej2-maps';
 import { MapsComponent, Inject, ILoadedEventArgs, MapsTheme, LayersDirective, LayerDirective, Annotations, Marker, MarkersDirective, MarkerDirective } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
+import * as africaContinent from './map-data/africa-continent.json';
 import { updateSampleSection } from '../common/sample-base';
 const SAMPLE_CSS = `
     .control-fluid {
@@ -54,7 +54,7 @@ const AnnotationMaps = () => {
                 <MapsComponent id="maps" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} annotations={[ { content: '#maps-annotation', x: '0%', y: '70%' }, { content: '#compass-maps', x: '85%', y: '5%' } ]}>
                     <Inject services={[Annotations, Marker]} />
                     <LayersDirective>
-                        <LayerDirective shapeData={new MapAjax('./src/maps/map-data/africa-continent.json')} shapePropertyPath='name' shapeDataPath='name' shapeSettings={{ fill: 'url(#grad1)' }}>
+                        <LayerDirective shapeData={africaContinent} shapePropertyPath='name' shapeDataPath='name' shapeSettings={{ fill: 'url(#grad1)' }}>
                             <MarkersDirective>
                                 <MarkerDirective visible={true} animationDuration={1} template='<h3 style="color:white">{{:name}}</h3>' dataSource={[{ name: 'Africa', latitude: 13.97274101999902, longitude: 20.390625 }]} />
                             </MarkersDirective>

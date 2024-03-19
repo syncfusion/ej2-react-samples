@@ -1,6 +1,6 @@
 .e-querybuilder {
     margin: 4% auto;
 }
-.qb-section {
-    min-height: auto;
+#qb-section {
+    min-height: auto !important;
 }

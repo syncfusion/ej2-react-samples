@@ -25,6 +25,7 @@ const HyperlinksAndBookmarksView = () => {
         container.current.documentEditor.open(JSON.stringify(defaultDocument));
         container.current.documentEditor.documentName = "Hyperlinks and Bookmarks";
         container.current.documentEditorSettings.showBookmarks = true;
+        container.current.documentEditorSettings.showRuler = true;
         titleBar.updateDocumentTitle();
         container.current.documentChange = (): void => {
             titleBar.updateDocumentTitle();

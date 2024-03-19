@@ -2,7 +2,7 @@
  * Rich Text Editor markdown overview sample
  */
 import { createElement, KeyboardEventArgs } from '@syncfusion/ej2-base';
-import { Image, Inject, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, QuickToolbar, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { Image, Inject, IToolbarItems, Link, MarkdownEditor, MarkdownFormatter, RichTextEditorComponent, Table, Toolbar, ToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
 import * as Marked from 'marked';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -99,7 +99,7 @@ function MarkDown() {
                     <RichTextEditorComponent id="markdownRTE"
                         ref={(richtexteditor) => { rteObj = richtexteditor }} editorMode='Markdown'
                         height='250px' valueTemplate={template} formatter={formatter} created={rendereComplete} toolbarSettings={toolbarSettings} >
-                        <Inject services={[MarkdownEditor, Toolbar, Image, Link, QuickToolbar, Table]} />
+                        <Inject services={[MarkdownEditor, Toolbar, Image, Link, Table]} />
                     </RichTextEditorComponent>
                 </div>
             </div>
@@ -120,7 +120,7 @@ function MarkDown() {
                     <li><code>Tables</code> – Allows you to insert a table with header.</li>
                 </ul>
                 <p><b>Injecting Module</b></p>
-                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, QuickToolbar, Table</code> modules into the services.</p>
+                <p>Rich Text Editor component features are segregated into individual feature-wise modules. To use Rich Text Editor feature, we need to inject <code>Toolbar, Link, Image, MarkdownEditor, Table</code> modules into the services.</p>
                 <p>The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
             </div>
         </div>

@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor quick format toolbar sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, FormatPainter, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, ToolbarType, QuickToolbarSettingsModel } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, FormatPainter, RichTextEditorComponent, Toolbar, ToolbarSettingsModel, ToolbarType, QuickToolbarSettingsModel, PasteCleanup, Table, Video, Audio} from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { updateSampleSection } from '../common/sample-base';
@@ -75,7 +75,7 @@ function QuickFormatToolbar () {
                         </p>
                         <img src="https://media.istockphoto.com/id/494417257/photo/photovoltaic-panels.jpg?s=612x612&w=0&amp;k=20&amp;c=USdqOh0Pjuyv-jOB-ny5JPV6VQ1U5PvPo-xgBuhKPxc=" width="300px" className="e-rte-image e-imginline"/>
                     </p>
-                        <Inject services={[HtmlEditor, Toolbar, Image, Link, FormatPainter, QuickToolbar]} />
+                        <Inject services={[HtmlEditor, Toolbar, Image, Link, FormatPainter, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                     </RichTextEditorComponent>
                 </div>
             </div>
@@ -91,7 +91,7 @@ function QuickFormatToolbar () {
                 quickToolbarSettings.text</a> property.</p>
                 <p><b>Injecting Module</b></p>
                 <p>The above features built as modules have to be included in your application. For example, to use image and link, 
-                inject the specific module using <code>RichTextEditor.Inject (Toolbar, Link, Image, HtmlEditor, QuickToolbar, FormatPainter)</code>.</p>
+                inject the specific module using <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar, FormatPainter, PasteCleanup</code>.</p>
             </div>
         </div>
     );

@@ -1,12 +1,14 @@
 /**
  * Rich Text Editor Image Editor integration sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, NodeSelection } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, NodeSelection, PasteCleanup, Table, Video, Audio} from '@syncfusion/ej2-react-richtexteditor';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
 import { ImageEditorComponent } from '@syncfusion/ej2-react-image-editor';
 import { updateSampleSection } from '../common/sample-base';
+import { getComponent } from '@syncfusion/ej2-base';
+import { ImageEditor } from '@syncfusion/ej2-image-editor';
 import './image-editor-integration.css';
 function ImageEditorIntegration() {
     React.useEffect(() => {
@@ -56,13 +58,28 @@ function ImageEditorIntegration() {
       });
       rteObj.formatter.saveData();
       rteObj.formatter.enableUndo(rteObj);
+      dispose();
       dialogObj.hide();
-      isLoaded = false;
+      imageELement.crossOrigin = null;
     }
   
     function onCancel() {
-      imageEditorObj.reset();
+      dispose();
       dialogObj.hide();
+      isLoaded = true;
+      imageELement.crossOrigin = null;
+    }
+    function dispose() {
+      const imageEditorInstance = getComponent(document.getElementById('image-editor'), 'image-editor') as ImageEditor;
+      if (imageEditorInstance !== null && imageEditorInstance !== undefined) {
+        imageEditorInstance.destroy();
+      }
+    }
+    function onClose() {
+      dispose();
+      dialogObj.hide();
+      isLoaded = true;
+      imageELement.crossOrigin = null;
     }
     function onToolbarClick(args) {
       if (args.item.tooltipText === 'Image Editor') {
@@ -73,6 +90,8 @@ function ImageEditorIntegration() {
       }
     }
     function OnBeforeOpen() {
+      dispose();
+      isLoaded = false;
       var selectNodes =
         rteObj.formatter.editorManager.nodeSelection.getNodeCollection(range);
       if (selectNodes.length == 1 && selectNodes[0].tagName == 'IMG') {
@@ -82,11 +101,20 @@ function ImageEditorIntegration() {
         var ctx = canvas.getContext('2d');
         canvas.height = imageELement.offsetHeight;
         canvas.width = imageELement.offsetWidth;
+        var imageELe = imageELement;
+        var isLoded = isLoaded;
         imageELement.onload = function () {
-          ctx.drawImage(imageELement, 0, 0, canvas.width, canvas.height);
+          ctx.drawImage(imageELe, 0, 0, canvas.width, canvas.height);
           dataURL = canvas.toDataURL();
-          if (!isLoaded) {
-            imageEditorObj.open(dataURL);
+          if (!isLoded) {
+            imageEditorObj = new ImageEditor({
+              height: '450px',
+              created: function () {
+                imageEditorObj.open(dataURL);
+              },
+            });
+            imageEditorObj.appendTo('#image-editor');
+            isLoded = true;
           }
         };
       }
@@ -99,6 +127,9 @@ function ImageEditorIntegration() {
         'Remove',
         '-',
         'InsertLink',
+        'OpenImageLink',
+        'EditImageLink',
+        'RemoveImageLink',
         'Display',
         'AltText',
         {
@@ -133,7 +164,7 @@ function ImageEditorIntegration() {
                 It provides a variety of features, including image cropping, resizing, rotation, and more.
                 Additionally, it supports a wide range of image formats, including JPEG, PNG, and GIF.
                 </p>
-                <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
+                <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
             </RichTextEditorComponent>
             <DialogComponent
                 id="ImageEditorDialog"
@@ -148,9 +179,11 @@ function ImageEditorIntegration() {
                 width="800px"
                 height="550px"
                 isModal={true}
+                close={onClose}
             >
                 <div className="dialogContent">
                 <ImageEditorComponent
+                    id="image-editor"
                     height="400px"
                     ref={(scope) => {
                     imageEditorObj = scope;

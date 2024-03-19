@@ -21,6 +21,7 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
         expandState: 'isExpand',
         child: 'subtasks'
     };
+    public taskType: any = 'FixedWork';
     public ganttInstance: any;
     public resourceFields: any = {
         id: 'resourceId',
@@ -81,7 +82,7 @@ export class ResourceMultiTaskbar extends SampleBase<{}, {}> {
                     <GanttComponent id='ResourceMultiTaskbar' ref={gantt => this.ganttInstance = gantt} dataSource={multiTaskbarData} treeColumnIndex={1} viewType='ResourceView' enableMultiTaskbar= {true}
                         allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={this.toolbar} editSettings={this.editSettings}
                         projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
-                        taskFields={this.taskFields} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
+                        taskFields={this.taskFields} taskType={this.taskType} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
                         height='410px' resources={resources} showOverAllocation= {true}>
                         <ColumnsDirective>
                             <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>

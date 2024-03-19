@@ -132,6 +132,7 @@ const MailMerge = () => {
         // tslint:enable
         container.current.documentEditor.open(JSON.stringify(defaultDocument));
         container.current.documentEditor.documentName = "Mail Merge";
+        container.current.documentEditorSettings.showRuler = true;
         let item: any = toolbarOptions;
         container.current.toolbarItems = item;
         titleBar.updateDocumentTitle();

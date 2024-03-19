@@ -18,6 +18,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
     resourceInfo: 'resources',
     type: 'taskType'
   };
+  public taskType: any = 'FixedWork';
   public resourceFields: any = {
     id: 'resourceId',
     name: 'resourceName',
@@ -47,7 +48,7 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
           <GanttComponent id='ResourceAllocation' dataSource={resourceData} treeColumnIndex={1}
             allowSelection={true} highlightWeekends={true} toolbar={this.toolbar} editSettings={this.editSettings}
             projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate} resourceFields={this.resourceFields}
-            taskFields={this.taskFields} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
+            taskFields={this.taskFields} taskType={this.taskType} labelSettings={this.labelSettings} splitterSettings={this.splitterSettings}
             height='410px' resources={resourceResources} workUnit={this.workUnit}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID'visible ={false} ></ColumnDirective>

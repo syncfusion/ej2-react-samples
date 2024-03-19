@@ -1,7 +1,7 @@
 /**
  * Rich Text Editor Mention integration sample
  */
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar, PasteCleanup } from '@syncfusion/ej2-react-richtexteditor';
 import { MentionComponent } from '@syncfusion/ej2-react-dropdowns';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -9,7 +9,7 @@ import { SampleBase } from '../common/sample-base';
 import './mention-integration.css';
 
 export class MentionIntegration extends SampleBase<{}, {}> {
-
+  public mentionObj : MentionComponent;
   private data: { [key: string]: Object }[] = [
          { Name: "Selma Rose", Status: "active", Eimg: "2", EmailId: "selma@gmail.com" },
         { Name: "Maria", Status: "active", Eimg: "1", EmailId: "maria@gmail.com" },
@@ -55,7 +55,7 @@ export class MentionIntegration extends SampleBase<{}, {}> {
       );
   }
   public actionBegineHandler(args: any): void {
-    if (args.requestType === 'EnterAction') {
+    if (args.requestType === 'EnterAction' &&  this.mentionObj.element.classList.contains('e-popup-open')) {
       args.cancel = true;
     }
   }
@@ -67,12 +67,12 @@ export class MentionIntegration extends SampleBase<{}, {}> {
             <RichTextEditorComponent id="mention_integration" placeholder="Type @ and tag the name"  actionBegin={this.actionBegineHandler.bind(this)}  >
             <p>Hello <span contentEditable={false} className='e-mention-chip'><a href="mailto:maria@gmail.com" title="maria@gmail.com">@Maria</a></span>&#8203;</p>
             <p>Welcome to the mention integration with rich text editor demo. Type <code>@</code> character and tag user from the suggestion list. </p>
-              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
+              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup]} />
             </RichTextEditorComponent>
           </div>
         </div>
 
-        <MentionComponent id="mentionEditor" target="#mention_integration_rte-edit-view" suggestionCount={8} showMentionChar={false}  allowSpaces={true} dataSource={this.data} fields={this.fieldsData} 
+        <MentionComponent ref={(scope) => { this.mentionObj = scope; }} id="mentionEditor" target="#mention_integration_rte-edit-view" suggestionCount={8} showMentionChar={false}  allowSpaces={true} dataSource={this.data} fields={this.fieldsData} 
                 popupWidth="250px" popupHeight="200px" itemTemplate={this.itemTemplate} displayTemplate={this.displayTemplate}></MentionComponent>
 
         <div id="action-description">

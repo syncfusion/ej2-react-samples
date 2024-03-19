@@ -9,7 +9,7 @@ import { SampleBase } from '../common/sample-base';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
 import './pdf.component.css';
 
-export class Default extends SampleBase<{}, {}> {
+export class ReadOnly extends SampleBase<{}, {}> {
   public viewer: PdfViewerComponent;
   render() {
     return ( <div>
@@ -24,7 +24,7 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
             </div>
             {/* Render the PDF Viewer */}
-            <PdfViewerComponent ref={(scope) => { this.viewer = scope; }}  id="container" documentPath="https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib"  style={{ 'height': '640px' }}>
+            <PdfViewerComponent ref={(scope) => { this.viewer = scope; }}  id="container" documentPath="https://cdn.syncfusion.com/content/pdf/restricted-formfield.pdf" resourceUrl = "https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib" created={this.created} enableStickyNotesAnnotation={false} annotationSettings={{isLock:true}} style={{ 'height': '640px' }}>
                 <Inject services={[Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormFields, FormDesigner]} />
             </PdfViewerComponent>
           </div>
@@ -42,6 +42,42 @@ export class Default extends SampleBase<{}, {}> {
         </div>
         );
     }
+    public created(){
+        var viewer=(document.getElementById('container')as any).ej2_instances[0];
+        viewer.textFieldSettings = {
+            isReadOnly: true,
+        };
+
+        viewer.radioButtonFieldSettings = {
+            isReadOnly: true,
+        };
+
+        viewer.DropdownFieldSettings = {
+            isReadOnly: true,
+        };
+        viewer.checkBoxFieldSettings = {
+            isReadOnly: true,
+        };
+        viewer.signatureFieldSettings = {
+            isReadOnly: true,
+        };
+        viewer.listBoxFieldSettings = {
+            isReadOnly: true,
+        };
+        viewer.passwordFieldSettings = {
+            isReadOnly: true,
+        };
+        viewer.initialFieldSettings = {
+            isReadOnly: true,
+        };
+
+        viewer.contextMenuOption = "None";
+        viewer.toolbarSettings = {
+            showTooltip: true, toolbarItems: ['OpenOption', 'PageNavigationTool', 'MagnificationTool', 'PanTool', 'PrintOption']
+        };
+        viewer.dataBind();
+    }
+
 
     change = (args) => {
         if (args.checked) {

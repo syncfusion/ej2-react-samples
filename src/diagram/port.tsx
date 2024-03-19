@@ -261,7 +261,7 @@ let node7Port: CustomPort[] = [
 let shape1: BasicShapeModel = { type: "Basic", shape: "Rectangle" };
 
 let shape2: BasicShapeModel = { type: "Basic", shape: "Diamond" };
- //Initialize Diagram Nodes
+//Initialize Diagram Nodes
 let nodes: NodeModel[] = [
   {
     id: "node1",
@@ -313,7 +313,7 @@ let nodes: NodeModel[] = [
     ports: node7Port
   }
 ];
- //Initialize Diagram Connectors
+//Initialize Diagram Connectors
 let connectors: ConnectorModel[] = [
   {
     id: "connector1",

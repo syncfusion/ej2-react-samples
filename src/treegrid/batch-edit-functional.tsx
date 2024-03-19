@@ -69,7 +69,7 @@ const Batch = () => {
               edit={editparams2}
             />
           </ColumnsDirective>
-          <Inject services={[ Edit, Toolbar]} />
+          <Inject services={[Edit, Toolbar]} />
         </TreeGridComponent>
       </div>
       <div id="action-description">

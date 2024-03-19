@@ -23,6 +23,7 @@ const ResourceMultiTaskbar = () => {
         expandState: 'isExpand',
         child: 'subtasks'
     };
+    const taskType = 'FixedWork';
     let ganttInstance = useRef<GanttComponent>(null);
     const dragDropChange = (args): any => {
         if (args.checked) {
@@ -82,7 +83,7 @@ const ResourceMultiTaskbar = () => {
                 <GanttComponent id='ResourceMultiTaskbar' ref={ganttInstance} dataSource={multiTaskbarData} treeColumnIndex={1} viewType='ResourceView' enableMultiTaskbar={true}
                     allowSelection={true} allowResizing={true} highlightWeekends={true} toolbar={toolbar} editSettings={editSettings}
                     projectStartDate={projectStartDate} projectEndDate={projectEndDate} resourceFields={resourceFields}
-                    taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings}
+                    taskFields={taskFields} taskType={taskType} labelSettings={labelSettings} splitterSettings={splitterSettings}
                     height='410px' resources={resources} showOverAllocation={true}>
                     <ColumnsDirective>
                         <ColumnDirective field='TaskID' visible={false} ></ColumnDirective>
