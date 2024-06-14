@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar,
-    Edit, Inject, DialogEditEventArgs, Sort } from '@syncfusion/ej2-react-grids';
+    Edit, Inject, DialogEditEventArgs, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { SampleBase } from '../common/sample-base';
 import { data as orderData } from './data';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
@@ -12,6 +12,7 @@ import { Browser, extend, isNullOrUndefined } from '@syncfusion/ej2-base';
 import './dialog-temp.css';
 
 export class DialogTemplate extends SampleBase<{}, {}> {
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
   public toolbarOptions: any = ['Add', 'Edit', 'Delete'];
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog', template: this.dialogTemplate };
   public validationRules = { required: true };
@@ -35,7 +36,7 @@ export class DialogTemplate extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={orderData} toolbar={this.toolbarOptions} allowSorting={true} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}
+          <GridComponent dataSource={orderData} toolbar={this.toolbarOptions} allowSorting={true} allowFiltering={true} filterSettings={this.filterSettings} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}
             actionComplete={this.actionComplete.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
@@ -44,7 +45,7 @@ export class DialogTemplate extends SampleBase<{}, {}> {
               <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' ></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Page, Toolbar, Edit, Sort]} />
+            <Inject services={[Page, Toolbar, Edit, Sort, Filter]} />
           </GridComponent>
 
         <div id="action-description">

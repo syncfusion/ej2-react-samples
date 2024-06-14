@@ -51,7 +51,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
           <p style={{ fontWeight: 500 }}> Injecting Module </p>
           <p> Accumulation chart component features are segregated into individual feature-wise modules. To use DataLabel, we need to inject <code>AccumulationDataLabel</code> into <code>services</code>.</p>
           <p>
-              More information on the pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/#smart-labels">documentation section</a>.
+            More information on the smart labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label#smart-labels" aria-label="Navigate to the documentation for Smart Labels in React Accumulation Chart component">documentation section</a>.
           </p>
       </div>
   </div>
@@ -65,7 +65,7 @@ export class SmartLabels extends SampleBase<{}, {}> {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
     args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-    replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
+    replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
   };
       
 }

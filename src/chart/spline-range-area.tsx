@@ -50,31 +50,31 @@ export class SplineRangeArea extends SampleBase<{}, {}> {
                         </SeriesCollectionDirective>
                     </ChartComponent>
                  </div>
-                 <div id="action-description">
-                     <p>
-                         This sample shows the monthly difference in temperature between two different countries using the spline range area series in the chart.
-                     </p>
-                 </div>
-                 <div id="description">
-                     <p>
-                         In this example, you can see how to render and configure the spline range area type chart.
-                         You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the spline range area.
-                         <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
-                     </p>
-                     <p>
-                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                     </p>
-                     <br></br>
-                     <p><b>Injecting Module:</b></p>
-                     <p>
-                         Chart component features are segregated into individual feature-wise modules. To use SplineRangeArea series, we need to inject
-                         <code>SplineRangeAreaSeries</code> module into <code>services</code>.
-                     </p>
-                     <p>
-                         More information on the spline range area series can be found in this
-                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline-range-area">documentation section</a>.
-                     </p>
-                 </div>
+                <div id="action-description">
+                    <p>
+                        This sample shows the monthly difference in temperature between two different countries using the spline range area series in the chart.
+                    </p>
+                </div>
+                <div id="description">
+                    <p>
+                        In this example, you can see how to render and configure the spline range area type chart.
+                        You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties to customize the spline range area.
+                        <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+                    </p>
+                    <p>
+                        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    </p>
+                    <br></br>
+                    <p><b>Injecting Module:</b></p>
+                    <p>
+                        Chart component features are segregated into individual feature-wise modules. To use SplineRangeArea series, we need to inject
+                        <code>SplineRangeAreaSeries</code> module into <code>services</code>.
+                    </p>
+                    <p>
+                        More information on the spline range area series can be found in this
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline-range-area" aria-label="Navigate to the documentation for Spline Range Area Chart in React Chart component">documentation section</a>.
+                    </p>
+                </div>
              </div>
          )
      }
@@ -86,7 +86,7 @@ export class SplineRangeArea extends SampleBase<{}, {}> {
      public load(args: ILoadedEventArgs): void {
          let selectedTheme: string = location.hash.split('/')[1];
          selectedTheme = selectedTheme ? selectedTheme : 'Material';
-         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
      };
  }
  

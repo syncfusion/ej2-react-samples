@@ -49,7 +49,7 @@ export class SemiPie extends SampleBase<{}, {}> {
               In this example, you can see how to render a semi pie chart using <code>StartAngle</code> and <code>EndAngle</code> properties. Data labels are wrapped to fit inside the pie slice.
           </p>                
           <p>
-              More information on the data labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/">documentation section</a>.
+              More information on the data labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/" aria-label="Navigate to the documentation for DataLabel in React Accumulation Chart component">documentation section</a>.
           </p>
       </div>
   </div>

@@ -81,7 +81,7 @@ export class Color extends SampleBase<{}, {}> {
                 <div key={key}>
                   <div className="row">
                     <div className="col-md-12">
-                      <h5>{props.colorMode}</h5>
+                      <h1>{props.colorMode}</h1>
                     </div>
                   </div>
                   <div className="row">

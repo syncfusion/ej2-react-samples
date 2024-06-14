@@ -53,14 +53,17 @@ const WorkWeek = () => {
     leftLabel: 'TaskName'
   };
   const workWeek: any = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  const projectStartDate: Date = new Date('03/24/2019');
-  const projectEndDate: Date = new Date('07/06/2019');
+  const projectStartDate: Date = new Date('03/24/2024');
+  const projectEndDate: Date = new Date('07/06/2024');
+  const splitterSettings: any = {
+    columnIndex: 1
+  };
   return (
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-lg-8'>
           <GanttComponent id='WorkWeek' ref={ganttInstance} dataSource={projectNewData} treeColumnIndex={1}
-            highlightWeekends={true} taskFields={taskFields} labelSettings={labelSettings} height='410px'
+            highlightWeekends={true} taskFields={taskFields} labelSettings={labelSettings} splitterSettings={splitterSettings} height='410px'
             projectStartDate={projectStartDate} projectEndDate={projectEndDate}>
             <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
@@ -86,13 +89,13 @@ const WorkWeek = () => {
               <tr>
                 <td style={{ width: '30%' }}>
                   <div>
-                    <h5>Working Days</h5>
+                    <label htmlFor="WorkWeek">Working Days</label>
                   </div>
                 </td>
                 <td style={{ width: '70%' }}>
                   <div style={{ paddingTop: '0px' }}>
                   <MultiSelectComponent ref={multiselectObj} id="WorkWeek" style={{ padding: '2px' }} mode="CheckBox" value={defaultValue}
-                      dataSource={workDays} showDropDownIcon={true} popupHeight='350px' fields={{ text: 'day', value: 'id' }}
+                      dataSource={workDays} showDropDownIcon={true} popupHeight='350px'width={200} fields={{ text: 'day', value: 'id' }}
                       select={select.bind(this)} removed={removed.bind(this)}>
                       <Inject services={[CheckBoxSelection]}></Inject>
                     </MultiSelectComponent>

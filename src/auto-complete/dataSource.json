@@ -124,5 +124,27 @@
         { "Name": "Nancy Davolio", "Eimg": "4", "Designation": "Product Manager", "Country": "USA" },
         { "Name": "Robert King", "Eimg": "8", "Designation": "Developer ", "Country": "England" },
         { "Name": "Steven Buchanan", "Eimg": "10", "Designation": "CEO", "Country": "England" }
+    ],
+    "statusData": [
+        { "Status": "Open", "State": false },
+        { "Status": "Waiting for Customer", "State": false },
+        { "Status": "On Hold", "State": true },
+        { "Status": "Follow-up", "State": false },
+        { "Status": "Closed", "State": true },
+        { "Status": "Solved", "State": false },
+        { "Status": "Feature Request", "State": false }
+    ],
+    "vegetables": [
+        { "Vegetable": "Cabbage", "Category": "Leafy and Salad", "State": true },
+        { "Vegetable": "Pumpkins", "Category": "Leafy and Salad", "State": false },
+        { "Vegetable": "Spinach", "Category": "Leafy and Salad", "State": true },
+        { "Vegetable": "Wheat grass", "Category": "Leafy and Salad", "State": false },
+        { "Vegetable": "Yarrow", "Category": "Leafy and Salad", "State": false },
+        { "Vegetable": "Chickpea", "Category": "Beans", "State": true },
+        { "Vegetable": "Green bean", "Category": "Beans", "State": false },
+        { "Vegetable": "Horse gram", "Category": "Beans", "State": true },
+        { "Vegetable": "Garlic", "Category": "Bulb and Stem", "State": false },
+        { "Vegetable": "Nopal", "Category": "Bulb and Stem", "State": true },
+        { "Vegetable": "Onion", "Category": "Bulb and Stem", "State": false }
     ]
 }

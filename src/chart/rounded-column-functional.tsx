@@ -70,6 +70,12 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'material3') {
         if (args.series.yName == "Rate")
             args.fill = "grey";
+    } else if (selectedTheme === 'fluent2-dark') {
+        if (args.series.yName == "Rate")
+            args.fill = "#f9fafb";
+    } else if (selectedTheme === 'fluent2') {
+        if (args.series.yName == "Rate")
+            args.fill = "grey";
     } else {
         if (args.series.yName == "Rate")
             args.fill = "grey";
@@ -83,12 +89,12 @@ const RoundedColumn = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const loaded = (args: ILoadedEventArgs): void => {
         let chart: Element = document.getElementById('charts2');
         chart.setAttribute('title', '');
-    }; 
+    };
     return (
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
@@ -114,10 +120,10 @@ const RoundedColumn = () => {
                     Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject <code>ColumnSeries</code> module into <code>services</code>
                 </p>
                 <p>
-                    More information on the column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
+                    More information on the column series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for Column Chart in React Chart Component">documentation section</a>.
                 </p>
             </div>
         </div>
-    )    
+    )
 }
 export default RoundedColumn;

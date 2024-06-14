@@ -234,7 +234,9 @@ body.material3-dark,
 .material3-dark .sb-theme-popup li:hover,
 .material3-dark .sb-search-result .e-list-item:hover,
 .material3-dark .sb-left-pane .e-listview .e-list-item:hover,
-.material3-dark .sb-control-navigation .e-treeview .e-list-item.e-active>.e-fullrow {
+.material3-dark .sb-control-navigation .e-treeview .e-list-item.e-active>.e-fullrow,
+.material3-dark .sb-themeswitch-btn:hover,
+.material3-dark .sb-themeswitch-btn.active {
     background-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -397,4 +399,21 @@ body.material3-dark,
 
 .material3-dark .sb-left-pane .e-treeview .e-list-item.e-active.e-hover>.e-text-content .e-list-text {
     color: #000 !important;
+}
+
+.material3-dark .sb-nextjs-icon {
+    fill: #ffffff;
+}
+
+.material3-dark .sb-nextjs-icon .sb-nextjs-pathb,
+.material3-dark .sb-nextjs-icon .sb-nextjs-pathc {
+    fill: #333333;
+}
+
+.material3-dark #sb-nextjs-btn.e-btn.e-link {
+    color: rgb(208, 188, 255);
+} 
+
+.material3-dark #sb-nextjs-btn.e-link:hover {
+    color: #846ebb;
 }

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { PivotViewComponent, IDataOptions, PivotFieldListComponent, Inject, CalculatedField } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, PivotFieldListComponent, Inject, CalculatedField, FieldList } from '@syncfusion/ej2-react-pivotview';
 import { IDataSet } from '@syncfusion/ej2-react-pivotview';
 import { Browser, setStyleAttribute, prepend } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -100,6 +100,7 @@ function DeferUpdate () {
             </style>
             <div className="control-section">
                 <PivotViewComponent id='PivotView' ref={d => pivotObj = d} enginePopulated={afterPivotPopulate.bind(this)} width={'99%'} height={'620'} allowDeferLayoutUpdate={true} gridSettings={{ columnWidth: 140 }}>
+                <Inject services={[CalculatedField, FieldList]} />
                 </PivotViewComponent>
                 <PivotFieldListComponent id='PivotFieldList' ref={d => fieldlistObj = d} enginePopulated={afterPopulate.bind(this)} dataSourceSettings={dataSourceSettings} renderMode={"Fixed"} allowDeferLayoutUpdate={true} allowCalculatedField={true} load={onLoad} dataBound={ondataBound.bind(this)}>
                     <Inject services={[CalculatedField]} />
@@ -117,6 +118,11 @@ function DeferUpdate () {
                 </p>
                 <p>
                     In general, this feature can be enabled by setting  <code>allowDeferLayoutUpdate</code> as true.
+                </p><br />
+                <p>
+                    More information on the defer layout update can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/defer-update">
+                    documentation section</a>.
                 </p>
             </div>
         </div>

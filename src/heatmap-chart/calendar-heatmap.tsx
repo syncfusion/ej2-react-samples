@@ -10,10 +10,12 @@ const SAMPLE_CSS: any = `
     padding: 0px !important;
 }`;
 // custom code end
-export class CalendarHeatmap extends SampleBase<{}, {}> {
+export class CalendarHeatmap extends SampleBase<{}, {}> { 
+    
+    borderColor: string = 'white';
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
@@ -55,9 +57,9 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
                         }}
                         dataSource={(data as any).calendarDataSource}
                             cellSettings={{
-                            showLabel: false,
-                            border: { color: 'white' }
-                        }}
+                                showLabel: false,
+                                border: { color: this.borderColor }
+                            }}
                         tooltipRender={this.tooltipTemplate}
                         paletteSettings={{
                             palette: [{ value: 0, color: 'rgb(238,238,238)', label: 'no contributions' },
@@ -82,13 +84,14 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
                         <Inject services={[Legend, Tooltip]} />
                     </HeatMapComponent>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of HeatMap sample">
                     <p>
                         This sample visualizes the summary of user activities in GitLab account such as merge requests,
                         push events and comments across 52 weeks in a year.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                     <p>
                         In this example, you can see how to display a calendar data using heatmap. You can make the axis labels to display
                         at specific time intervals along the datetime axis using the showLabelOn property.
@@ -102,8 +105,8 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
                             href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         );
     }
     private tooltipTemplate(args: ITooltipEventArgs): void {
@@ -121,7 +124,11 @@ export class CalendarHeatmap extends SampleBase<{}, {}> {
         // custom code start
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;
+        args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as HeatMapTheme;        
         // custom code end
+        this.borderColor = 'white';
+        if (args.heatmap.theme === 'HighContrast' || args.heatmap.theme.indexOf("Dark") > -1) {
+            this.borderColor = 'black';
+        }
     };
 }

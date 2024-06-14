@@ -15,7 +15,7 @@ const Default = () => {
         <div className='control-section tbar-control-section' style={{ paddingBottom: '100px'}}>
           <div className= 'control toolbar-sample tbar-sample'  style={{ width: '80%', maxWidth: "none"}}>
             {/* Render the Toolbar Component */}
-            <h5 style={{ display: 'inline-block' }}>Simple Toolbar</h5>
+            <h1 style={{ display: 'inline-block' }}>Simple Toolbar</h1>
             <ToolbarComponent>
               <ItemsDirective>
                   <ItemDirective prefixIcon = 'e-icons e-cut'  tooltipText = 'Cut'/>
@@ -38,7 +38,7 @@ const Default = () => {
             </ToolbarComponent>
             <br></br>
             <br></br>
-            <h5 style={{ display: 'inline-block' }}>Scrollable Toolbar</h5>
+            <h1 style={{ display: 'inline-block' }}>Scrollable Toolbar</h1>
             <ToolbarComponent overflowMode='Scrollable' id="toolbar_scrollable" >
               <ItemsDirective>
                 <ItemDirective prefixIcon='e-icons e-cut' tooltipText='Cut' text='Cut' />
@@ -68,7 +68,7 @@ const Default = () => {
             </ToolbarComponent>
             <br></br>
             <br></br>
-            <h5 style={{ display: 'inline-block' }}>Popup Toolbar</h5>
+            <h1 style={{ display: 'inline-block' }}>Popup Toolbar</h1>
             <ToolbarComponent overflowMode='Popup' id="toolbar_popup">
               <ItemsDirective>
                 <ItemDirective prefixIcon='e-icons e-cut' tooltipText='Cut' text='Cut' />
@@ -98,7 +98,7 @@ const Default = () => {
             </ToolbarComponent>
             <br></br>
             <br></br>
-            <h5 style={{ display: 'inline-block' }}>MultiRow Toolbar</h5>
+            <h1 style={{ display: 'inline-block' }}>MultiRow Toolbar</h1>
             <ToolbarComponent overflowMode='MultiRow' id="toolbar_multirow">
               <ItemsDirective>
                 <ItemDirective prefixIcon='e-icons e-cut' tooltipText='Cut' text='Cut' />
@@ -128,7 +128,7 @@ const Default = () => {
             </ToolbarComponent>
             <br></br>
             <br></br>
-            <h5 style={{ display: 'inline-block' }}>Extended Toolbar</h5>
+            <h1 style={{ display: 'inline-block' }}>Extended Toolbar</h1>
             <ToolbarComponent overflowMode='Extended' id="toolbar_extended">
               <ItemsDirective>
                 <ItemDirective prefixIcon='e-icons e-cut' tooltipText='Cut' text='Cut' />

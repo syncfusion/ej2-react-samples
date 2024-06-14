@@ -48,8 +48,8 @@ export class SortingAPI extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/25/2019');
-  public projectEndDate: Date = new Date('07/28/2019');
+  public projectStartDate: Date = new Date('03/25/2024');
+  public projectEndDate: Date = new Date('07/28/2024');
 
   render() {
     return (

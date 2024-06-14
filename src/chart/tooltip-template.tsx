@@ -27,7 +27,7 @@ export class ChartTooltipTemplate extends SampleBase<{}, {}> {
                 <table style={{ width: '100%', border: '1px solid black' }} className="table-borderless">
                 <tbody> <tr>
                         <th rowSpan={2} style={{ backgroundColor: '#C1272D' }}>
-                            <img src='src/chart/images/grain.png' />
+                            <img src='src/chart/images/grain.png' alt="Grain Picture"/>
                         </th>
                         <td style={{ height: '25px', width: '50px', backgroundColor: '#C1272D', fontSize: '14px', color: '#E7C554', fontWeight: 'bold', paddingLeft: '5px' }}>{props.y}</td>
                     </tr>
@@ -107,7 +107,7 @@ Tooltip is enabled in this example, to see the tooltip in action, hover a point 
                    </p>
                     <p>
                         More information on the line series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/series/#type">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/tool-tip/" aria-label="Navigate to the documentation for Tooltip Template in React Chart component">documentation section</a>.
                    </p>
                 </div>
             </div>

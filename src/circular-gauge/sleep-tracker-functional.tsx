@@ -32,7 +32,7 @@ const SleepTracker = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} axisLabelRender={axisLabelRender.bind(this)} id='custom-labels' background='transparent'>
@@ -49,29 +49,30 @@ const SleepTracker = () => {
                                 <RangeDirective start={4.7} end={9} startWidth={4} endWidth={4} color='#d7d3ed' />
                             </RangesDirective>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div style="font-size:15px;border-radius: 20px;border: 2px solid gray;padding: 5px 4px 5px;width: 93%;text-align: center;margin-left: 67px;">Mon, 5 Apr</div>' angle={342} radius='129%' zIndex='1' />
-                                <AnnotationDirective content='<div style="font-size:15px;margin-left:25px">07 hrs 43 mins</div>' angle={185} radius='120%' zIndex='1' />
-                                <AnnotationDirective content='<div style="font-size:15px;margin-left: 34px;">Sleep Time</div>' angle={185} radius='140%' zIndex='1' />
-                                <AnnotationDirective content='<div style="color:#6453D0;font-size:15px;margin-top: 54px;margin-left:28px"><p style="text-align: center;">4 Apr</p><p style="margin-top: -10px;">9:00 PM</p></div>' angle={285} radius='60%' zIndex='1' />
-                                <AnnotationDirective content='<div style="color:#6453D0;margin-top: -8px;"> - </div>' angle={0} radius='0%' zIndex='1' />
-                                <AnnotationDirective content='<div style="color:#6453D0;font-size:15px;margin-left: -15px;margin-top: 56px;"><p style="text-align: center;">5 Apr </p><p style="margin-top: -10px;">4:43 AM</p></div>' angle={70} radius='50%' zIndex='1' />
+                                <AnnotationDirective description='Mon, 5 Apr' content='<div style="font-size:15px;border-radius: 20px;border: 2px solid gray;padding: 5px 4px 5px;width: 93%;text-align: center;margin-left: 67px;">Mon, 5 Apr</div>' angle={342} radius='129%' zIndex='1' />
+                                <AnnotationDirective description='07 hrs 43 mins' content='<div style="font-size:15px;margin-left:25px">07 hrs 43 mins</div>' angle={185} radius='120%' zIndex='1' />
+                                <AnnotationDirective description='Sleep time' content='<div style="font-size:15px;margin-left: 34px;">Sleep Time</div>' angle={185} radius='140%' zIndex='1' />
+                                <AnnotationDirective description='4 Apr 9:00 PM' content='<div style="color:#6453D0;font-size:15px;margin-top: 54px;margin-left:28px"><p style="text-align: center;">4 Apr</p><p style="margin-top: -10px;">9:00 PM</p></div>' angle={285} radius='60%' zIndex='1' />
+                                <AnnotationDirective description='-' content='<div style="color:#6453D0;margin-top: -8px;"> - </div>' angle={0} radius='0%' zIndex='1' />
+                                <AnnotationDirective description='5 Apr 4:43 AM' content='<div style="color:#6453D0;font-size:15px;margin-left: -15px;margin-top: 56px;"><p style="text-align: center;">5 Apr </p><p style="margin-top: -10px;">4:43 AM</p></div>' angle={70} radius='50%' zIndex='1' />
                             </AnnotationsDirective>
                         </AxisDirective>
                     </AxesDirective>
                 </CircularGaugeComponent>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample represents the number of hours slept by a person using a sleep tracker. The sleep tracker also displays the start and end time of each sleep cycle.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to make the circular gauge look like a sleep tracker. Additionally, the date, start and end time, and duration of sleep are all displayed.
                 </p>
                 <p>
                     More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
                 </p>
-            </div>
-        </div >
+            </section>
+        </main>
     )
 }
 export default SleepTracker;

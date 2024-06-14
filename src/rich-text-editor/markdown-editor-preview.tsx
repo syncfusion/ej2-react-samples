@@ -26,10 +26,11 @@ We can add our own custom formation syntax for the Markdown formation, [sample l
 The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content`;
 
     // Rich Text Editor items list
-    public items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'OrderedList',
+    public items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'Blockquote', 'OrderedList',
         'UnorderedList', '|', 'CreateLink', 'Image', 'CreateTable', '|', 'Undo', 'Redo'];
     public textArea: HTMLElement;
     public srcArea: HTMLElement;
+    public placeholder: string = 'Enter your text here...';
     //Rich Text Editor ToolbarSettings
     public toolbarSettings: ToolbarSettingsModel = {
         items: this.items,

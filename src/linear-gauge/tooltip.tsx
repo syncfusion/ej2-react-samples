@@ -92,7 +92,7 @@ export class Tooltip extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -101,13 +101,13 @@ export class Tooltip extends SampleBase<{}, {}> {
                         tooltip={{ enable: true, showAtMousePosition: true, textStyle: { fontFamily: 'inherit' } }} >
                         <Inject services={[Annotations, GaugeTooltip]} />
                         <AxesDirective>
-                            <AxisDirective minimum={0} maximum={10} majorTicks={{ interval: 1, height: 20, color: '#9E9E9E' }} minorTicks={{ interval: 0.2, height: 10, color: '#9E9E9E' }} line={{ offset: 140 }} labelStyle={{ font: { fontFamily: 'inherit' } }}>
+                            <AxisDirective minimum={0} maximum={10} majorTicks={{ interval: 1, height: 20, color: '#9E9E9E' }} minorTicks={{ interval: 0.2, height: 10, color: '#9E9E9E' }} line={{ offset: 140, color: '#a6a6a6' }} labelStyle={{ font: { fontFamily: 'inherit' } }}>
                                 <PointersDirective>
                                     <PointerDirective type='Bar' value={5.4} color='#ff66b3' offset={15}>
                                     </PointerDirective>
                                 </PointersDirective>
                             </AxisDirective>
-                            <AxisDirective opposedPosition={true} minimum={0} maximum={25} majorTicks={{ interval: 1, height: 20, color: '#9E9E9E' }} minorTicks={{ interval: 0.2, height: 10, color: '#9E9E9E' }} line={{ offset: -140 }} labelStyle={{ font: { fontFamily: 'inherit' } }}>
+                            <AxisDirective opposedPosition={true} minimum={0} maximum={25} majorTicks={{ interval: 1, height: 20, color: '#9E9E9E' }} minorTicks={{ interval: 0.2, height: 10, color: '#9E9E9E' }} line={{ offset: -140, color: '#a6a6a6' }} labelStyle={{ font: { fontFamily: 'inherit' } }}>
                                 <PointersDirective>
                                     <PointerDirective type='Bar' value={16.5} color='#4d94ff' offset={-15}>
                                     </PointerDirective>
@@ -132,20 +132,21 @@ export class Tooltip extends SampleBase<{}, {}> {
                         </AnnotationsDirective>
                     </LinearGaugeComponent>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample depicts the linear gauge as a measuring scale and shows the tooltip in the linear gauge.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         The tooltip is used to track the current value that is closest to the mouse position or touch contact. When using a touch-enabled device, the tooltip is displayed by hovering or tapping.
                     </p>
                     <p>
                         More information about tooltip can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/user-interaction/#tooltip">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+        </main>
         )
     }
 }

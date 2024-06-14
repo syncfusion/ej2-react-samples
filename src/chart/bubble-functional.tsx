@@ -7,7 +7,7 @@ import * as ReactDOM from "react-dom";
 import { EmitType } from '@syncfusion/ej2-base';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, BubbleSeries, Tooltip, IPointRenderEventArgs, ILoadedEventArgs, ChartTheme, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Browser } from '@syncfusion/ej2-base';
-import { bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors } from './theme-color';
+import { bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, bubbleMaterial3Colors, pointMaterial3Colors, bubbleMaterial3DarkColors, pointMaterial3DarkColors, pointFluent2Colors, bubbleFluent2Colors, pointFluent2DarkColors, bubbleFluent2DarkColors } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -57,6 +57,13 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     } else if (selectedTheme === 'material3-dark') {
         args.fill = bubbleMaterial3DarkColors[args.point.index % 10];
         args.border.color = pointMaterial3DarkColors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent2') {
+        args.fill = bubbleFluent2Colors[args.point.index % 10];
+        args.border.color = pointFluent2Colors[args.point.index % 10];
+    }
+    else if (selectedTheme === 'fluent2-dark') {
+        args.fill = bubbleFluent2DarkColors[args.point.index % 10];
+        args.border.color = pointFluent2DarkColors[args.point.index % 10];
     }
 };
 export let data: any[] = [
@@ -103,7 +110,7 @@ const Bubble = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -132,7 +139,7 @@ const Bubble = () => {
                     Chart component features are segregated into individual feature-wise modules. To use bubble series, we need to inject <code>BubbleSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the bubble series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bubble-chart">documentation section</a>.
+                    More information on the bubble series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bubble-chart" aria-label="Navigate to the documentation for Bubble Chart in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

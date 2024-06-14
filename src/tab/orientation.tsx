@@ -205,7 +205,7 @@ export class Orientation extends SampleBase<{}, {}> {
                     </ul>
                     <p>If above classes not included in root element default style will applied in Tab component.</p>
                     <p>
-                        More information about Tab can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">
+                        More information about Tab can be found in this <a aria-label="Tab getting started" target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/">
                             documentation</a> section.
                     </p>
                 </div>

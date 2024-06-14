@@ -50,7 +50,7 @@ const DefaultMaps = () => {
         // custom code end
     };
     return (
-        <div className='control-panel'>
+        <main><div className='control-panel'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <MapsComponent id="maps" loaded={onMapsLoad.bind(this)} load={load} zoomSettings={{ enable: false }} legendSettings={{ visible: true }} titleSettings={{ text: 'YouTube office locations', textStyle: { size: '16px' } }}>
@@ -69,10 +69,11 @@ const DefaultMaps = () => {
             <div style={{ float: 'right', marginRight: '10px' }}>
                 Source:<a href="https://craft.co/youtube/locations" target="_blank">craft.co/youtube/locations</a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample visualizes the continents in the world by rendering these in a map layer. Also marks the office locations of YouTube in the world using markers. </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker template is used to display the names for shapes. Legend is enabled in this example to represent each continent.</p>
                 <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.</p>
                 <br />
@@ -80,8 +81,8 @@ const DefaultMaps = () => {
                 <p>
                     Maps component features are segregated into individual feature-wise modules. To use a legend, inject the <code>Legend</code> module using the <code>Maps.Inject(Legend)</code> method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default DefaultMaps;

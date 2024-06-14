@@ -58,7 +58,7 @@ const ProjectionMaps = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
@@ -72,7 +72,7 @@ const ProjectionMaps = () => {
                 {/* Property Panel */}
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                            <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
@@ -93,15 +93,16 @@ const ProjectionMaps = () => {
             <div style={{ float: 'right', marginRight: '10px' }}>
                 Source:<a href="https://en.wikipedia.org/wiki/List_of_members_of_the_United_Nations_Security_Council" target="_blank">en.wikipedia.org</a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample illustrates the details of permanent and non-permanent countries in the UN security council, in 2017. Projection of a map can be changed by using the projection type in properties panel.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to render a map with various projections. You can use the ColorMapping property to customize the color of the shapes. Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.</p>
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p>Maps component features are segregated into individual feature-wise modules. To use a legend, inject the Legend module using the Maps.Inject(Legend) method.</p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default ProjectionMaps;

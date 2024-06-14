@@ -45,23 +45,11 @@ const HtmlContentTooltip = () => {
         return (
             <div id="democontent" className="democontent">
                 <h3 style={{ marginTop: '10px' }}>Eastern Bluebird</h3>
+                <hr style={{ marginTop: '10px 0px' }} />
                 <img id="bird" src='./src/tooltip/images/bird.png' alt="bird_image" />
                 <p>
                     The <a href="https://en.wikipedia.org/wiki/Eastern_bluebird" target="_blank"> Eastern Bluebird </a>
-                    is easily found in open fields and sparse woodland areas, including along woodland edges. These are
-                    <i>cavity-nesting birds</i>
-                    and a pair of eastern bluebirds will raise 2-3 broods annually, with 2-8 light blue or whitish eggs
-                    per brood.
-                </p>
-                <hr style={{ marginTop: '10px 0px' }} />
-                <p>
-                    Eastern bluebirds can be very vocal in flocks. Their calls include a rapid, mid-tone chatter and
-                    several long dropping pitch
-                    calls.
-                </p>
-                <p>
-                    Source:<br />
-                    <a href="https://en.wikipedia.org/wiki/Eastern_bluebird" target="_blank">https://en.wikipedia.org/wiki/Eastern_bluebird</a>
+                    is easily found in open fields and sparse woodland areas, including along woodland edges.
                 </p>
             </div>
         );

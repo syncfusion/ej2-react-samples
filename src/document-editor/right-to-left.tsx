@@ -372,11 +372,11 @@ L10n.load({
             "By URL": "حسب عنوان URL",
             "Page Break": "فاصل الصفحات",
             "Section Break": "فاصل المقطع",
-            'Page Breaks':  'فواصل الصفحة',
-            'Section Breaks': 'فواصل القسم',
-            'Column': 'عمود',
-            'Next Page': 'الصفحة التالية',
-            'Continuous': 'الصفحة التالية',
+            "Page Breaks":  "فواصل الصفحة",
+            'Section Breaks': "فواصل القسم",
+            "Column": "عمود",
+            "Next Page": "الصفحة التالية",
+            "Continuous": "الصفحة التالية",
             "Header And Footer": "راس & تذييل",
             "Options": "خيارات",
             "Levels": "مستويات",
@@ -521,6 +521,35 @@ export class RightToLeftView extends SampleBase<{}, {}> {
     private hostUrl: string = 'https://services.syncfusion.com/react/production/api/documenteditor/';
     public container: DocumentEditorContainerComponent;
     public titleBar: TitleBar;
+        public toolbarOptions: any = [
+        'New',
+        'Open',
+        'Separator',
+        'Undo',
+        'Redo',
+        'Separator',
+        'Image',
+        'Table',
+        'Hyperlink',
+        'Bookmark',
+        'TableOfContents',
+        'Separator',
+        'Header',
+        'Footer',
+        'PageSetup',
+        'PageNumber',
+        'Break',
+        'Separator',
+        'Find',
+        'Separator',
+        'Comments',
+        'TrackChanges',
+        'Separator',
+        'LocalClipboard',
+        'Separator',
+        'FormFields',
+        'UpdateFields',
+    ];
     public rendereComplete(): void {
         window.onbeforeunload = function () {
             return 'Want to save your changes?';
@@ -537,7 +566,7 @@ export class RightToLeftView extends SampleBase<{}, {}> {
                 <div id='documenteditor_titlebar' className="e-de-ctn-title"></div>
                 <div id="documenteditor_container_body">
                     <DocumentEditorContainerComponent id="container" ref={(scope) => { this.container = scope; }} style={{ 'display': 'block' }}
-                       height={'590px'} serviceUrl={this.hostUrl} enableRtl={true} locale='ar-AE' enableToolbar={true} />
+                       height={'590px'} serviceUrl={this.hostUrl} toolbarItems={this.toolbarOptions} enableRtl={true} locale='ar-AE' enableToolbar={true} />
                 </div>
             </div>
             <div id="action-description">

@@ -38,7 +38,7 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -111,12 +111,13 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
 <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/Africa" target="_blank">en.wikipedia.org</a>
     </div>
-                <div id="action-description">
+</div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                     This sample depicts the facts about Africa in an annotation. The shape of Africa is filled with gradient color.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>
                 In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker template is used to display the names for shapes. Legend is enabled in this example to represent each continent.
                 </p>
@@ -125,8 +126,8 @@ export class AnnotationMaps extends SampleBase<{}, {}> {
                     <p>
                          Maps component features are segregated into individual feature-wise modules. To use an annotation, inject the Annotations module using the Maps.Inject(Annotations) method.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {

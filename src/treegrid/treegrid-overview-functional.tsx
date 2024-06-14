@@ -27,7 +27,7 @@ const Overview = () => {
             alt = {flagIconLocation}
           ></img>
         </div>
-        <div style={{ display: "inline-block", paddingLeft: "6px" }}>
+        <div style={{ display: "inline-block", paddingLeft: "6px", verticalAlign: 'middle' }}>
           {props.name}
         </div>
       </div>
@@ -96,6 +96,7 @@ const Overview = () => {
       <div>
         <img
           src="src/treegrid/images/__Normal.png"
+          alt="Normal"
           style={{ filter: "brightness(150%)" }}
           className={classValue}
         ></img>
@@ -121,7 +122,7 @@ const Overview = () => {
   };
 
   return (
-    <div className="control-pane">
+    <div className="control-pane" role="control" aria-label="Tree Grid Control">
       <div className="control-section">
         <TreeGridComponent
           dataSource={countries}
@@ -136,7 +137,7 @@ const Overview = () => {
             <ColumnDirective
               field="name"
               headerText="Province"
-              width="195"
+              width="210"
               template={flagtemplate}
               filter={provinceFilter}
             ></ColumnDirective>

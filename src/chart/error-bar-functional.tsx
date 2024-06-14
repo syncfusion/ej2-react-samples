@@ -12,7 +12,7 @@ import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
-import { createBrowserHistory } from "history";
+
 export let data1: any[] = [
     { x: 'Printer', y: 750, error: 50}, { x: 'Desktop', y: 500, error: 70  }, { x: 'Charger', y: 550, error: 60  },
     { x: 'Mobile', y: 575, error: 80  }, { x: 'Keyboard', y: 400, error: 20  },
@@ -41,7 +41,7 @@ const  ErrorBarChart = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if (selectedTheme === 'bootstrap5' || selectedTheme === 'fluent') {
             args.chart.highlightColor = '#c7e9b6';
         }
@@ -75,14 +75,14 @@ const  ErrorBarChart = () => {
                 </ul>
                 <br></br>
                 <p>
-                    The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+                    The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the Tooltip property reference for React Chart">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>
                     The Charts component’s features are segregated into individual feature modules. To use error bar, we need to inject <code>ErrorBar</code> into the <code>@services</code> section.
                 </p>
                 <p>
-                    More information on the error bar can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#error-bar-chart">documentation section</a>.
+                    More information on the error bar can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#error-bar-chart" aria-label="Navigate to the documentation for Error Bar in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

@@ -27,6 +27,7 @@ function Remote () {
         crossDomain: true
     });
     let jsonReport: IDataOptions = {
+        url: '',
         dataSource: remoteData as DataManager,
         type: 'JSON',
         expandAll: true,
@@ -71,7 +72,7 @@ function Remote () {
 
     return (
         <div className='control-pane'>
-            <div className='control-section component-section' style={{ overflow: 'auto' }}>
+            <div className='control-section component-section'>
                 <div id='dropdown-control' style={{ marginBottom: '5px' }}>
                     <table style={{ width: '350px' }}>
                         <tbody>
@@ -113,6 +114,12 @@ function Remote () {
                                 In this demo, remote data is bound by assigning service data as an instance of
                 <code>DataManager</code> to the
                 <code>dataSourceSettings-&gt;dataSource</code> property. But for CSV, the service URL is directly set to <code>url</code> for remote data consumption.
+                <br />
+                <p>
+                    More information on the Essential JS2 Pivot Table can be found in these <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/data-binding#binding-json-data-via-remote">JSON</a> & <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/data-binding#binding-csv-data-via-remote">CSV</a> documentation section.
+                </p>
             </div>
         </div>
     )

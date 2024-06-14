@@ -16,7 +16,7 @@ export class Resize extends SampleBase<{}, {}> {
     private resizeRibbonObj: Ribbon;
 
     public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
-    public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
+    public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced Find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
     public selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
     public dictateOptions: ItemModel[] = [{ text: "Chinese" }, { text: "English" }, { text: "German" }, { text: "French" }];
     public tableOptions: ItemModel[] = [{ text: "Insert Table" }, { text: "Draw Table" }, { text: "Convert Table" }, { text: "Excel SpreadSheet" }];
@@ -346,7 +346,7 @@ export class Resize extends SampleBase<{}, {}> {
                             </RibbonComponent>
                             <div id="ribbonPlaceHolder">
                                 <div style={{ width: '100%', height: '40px' }}>
-                                    <h4 style={{ margin: '0 0 0 15px' }}>Resize Ribbon</h4>
+                                    <p className='displayText'>Resize Ribbon</p>
                                     <div id='ribbonSlider' style={{ width: '200px', margin: '0 15px' }}>
                                         <SliderComponent id='slider' ref={slider => { this.sliderRef = slider }} min={350} change={this.onChange.bind(this)} created={this.onCreated.bind(this)} />
                                     </div>

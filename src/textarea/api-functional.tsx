@@ -44,10 +44,10 @@ const Api = () => {
 
     return (
         <div className='control-pane'>
-            <div className="col-lg-8 control-section api-textarea">
+            <div id="textarea-sample"  className="col-lg-8 control-section api-textarea">
                 <div className="content-wrapper">
                     <div className="api-row">
-                        <TextAreaComponent id="api" placeholder="Enter your comments" floatLabelType="Auto" enabled={isEnabled} readonly={isReadonly} showClearButton={showClearIcon} rowsCount={rows} maxLength={maxLength} columnsCount={cols} value={value} ref={textareaObj}></TextAreaComponent>
+                        <TextAreaComponent id="api" placeholder="Enter your comments" floatLabelType="Auto" enabled={isEnabled} readonly={isReadonly} showClearButton={showClearIcon} rows={rows} maxLength={maxLength} cols={cols} value={value} ref={textareaObj}></TextAreaComponent>
                     </div>
                 </div>
             </div>

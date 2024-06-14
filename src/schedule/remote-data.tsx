@@ -34,7 +34,7 @@ export class RemoteData extends SampleBase<{}, {}> {
         <div id='description'>
           <p>
             Scheduler can be bound to remote services by assigning the <code>dataSource</code> property with the instance of
-            <code><a target="_blank" className='code' href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a>
+            <code><a aria-label="Data Manager" target="_blank" className='code' href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a>
             </code>.
           </p>
           <p>The DataManager here acts as an interface between the service endpoint and the Scheduler, and will require the below minimal

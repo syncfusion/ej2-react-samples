@@ -246,3 +246,20 @@ body.highcontrast,
 .highcontrast .e-samplestatus.update.tree {
     margin-top: 4px !important;
 }
+
+.highcontrast .sb-nextjs-icon {
+    fill: #ffffff;
+}
+
+.highcontrast .sb-nextjs-icon .sb-nextjs-pathb,
+.highcontrast .sb-nextjs-icon .sb-nextjs-pathc {
+    fill: #333333;
+}
+
+.highcontrast #sb-nextjs-btn.e-btn.e-link {
+    color: #ffd939  ;
+} 
+
+.highcontrast #sb-nextjs-btn.e-link:hover {
+    color: #dbb828 ;
+}

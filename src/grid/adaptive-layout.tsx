@@ -193,7 +193,7 @@ export class AdaptiveLayout extends SampleBase<{}, {}> {
                   </td>
                   <td>
                     <div>
-                      <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} change={this.onChange.bind(this)} ></CheckBoxComponent>
+                      <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} change={this.onChange.bind(this)} aria-label="Enable horizontal row mode" ></CheckBoxComponent>
                     </div>
                   </td>
                 </tr>

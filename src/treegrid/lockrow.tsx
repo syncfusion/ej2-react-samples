@@ -57,6 +57,15 @@ const SAMPLE1_CSS = `
   padding-left : 0px !important;
   padding-top: 0px !important;
 }
+.fluent2 .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .38) !important;
+}
+.fluent2-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.fluent2-highcontrast .disableRow .e-rowcell{
+  color: #757575 !important;
+}
 `;
 {/* custom code end */}
 export class LockRow extends SampleBase<{}, {}> {
@@ -101,7 +110,7 @@ export class LockRow extends SampleBase<{}, {}> {
 
    render() {
     return (
-      <div className='control-pane'>
+      <div className='control-pane' role="control" aria-label="Tree Grid Control">
         <style>
           {SAMPLE_CSS}
         </style>
@@ -129,7 +138,7 @@ export class LockRow extends SampleBase<{}, {}> {
           </TreeGridComponent>
         </div>
         <div className='col-md-3 property-section'>
-          <PropertyPane title='Properties'>
+          <PropertyPane title='Properties' aria-label="Property Pane">
               <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                 <tbody>
                   <tr style={{ height: '50px' }}>
@@ -141,7 +150,7 @@ export class LockRow extends SampleBase<{}, {}> {
                         <MultiSelectComponent width="150px" id="lockrows" mode="CheckBox" value={this.rowValues}
                           dataSource={lockRowDropDownData} showDropDownIcon={true} popupHeight='350px'
                           select={this.select.bind(this)} removed={this.removed.bind(this)}
-                          ref={multiselect => this.multiselectObj = multiselect}>
+                          ref={multiselect => this.multiselectObj = multiselect} aria-label="Select Rows to Disable">
                           <Inject services={[CheckBoxSelection]}></Inject>
                         </MultiSelectComponent>
                       </div>

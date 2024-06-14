@@ -44,7 +44,7 @@ const PieEmptyPoint = () => {
     const load = (args: IAccLoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
     };
     const textRender = (args: { text: string; point: { x: string; y: string; }; }) => {
         args.text = args.point.x + ": $" + args.point.y + "K";
@@ -88,7 +88,7 @@ const PieEmptyPoint = () => {
                 </p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <p>
-                    More information on the empty points can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/empty-points/">documentation section</a>.
+                    More information on the empty points can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/empty-points/" aria-label="Navigate to the documentation for Empty Points in React Accumulation Chart component">documentation section</a>.
                 </p>
             </div>
         </div >

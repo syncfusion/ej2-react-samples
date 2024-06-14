@@ -12,6 +12,8 @@ const FloatingLabel = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
+    const rows = 5;
+    const cols = 300;
     const [floatLabelType, setFloatLabelType] = useState<FloatLabelType>('Auto');
     const textareaObj = useRef<TextAreaComponent>(null);
     let floatLabelData: { [key: string]: Object }[];
@@ -27,10 +29,10 @@ const FloatingLabel = () => {
     }
     return (
         <div className='control-pane'>
-            <div className="col-lg-8 control-section floatinglabel">
+            <div id="textarea-sample" className="col-lg-8 control-section floatinglabel">
                 <div className="content-wrapper">
                     <div className="floatinglabel-row">
-                        <TextAreaComponent id="floatlabel" placeholder="Enter your comments" floatLabelType={floatLabelType} ref={textareaObj}></TextAreaComponent>
+                        <TextAreaComponent id="floatlabel" placeholder="Enter your comments" floatLabelType={floatLabelType} ref={textareaObj}   rows={rows} cols={cols} ></TextAreaComponent>
                     </div>
                 </div>
             </div>

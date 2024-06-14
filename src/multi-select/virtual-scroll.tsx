@@ -1,5 +1,5 @@
 /**
- * DropDownList Default Sample
+ * MultiSelect Virtualization Sample
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
@@ -61,7 +61,7 @@ export class Default extends SampleBase<{}, {}> {
   public fields: { [key: string]: string } = { text: 'text', value: 'id' };
   public customerField: { [key: string]: string } = { text: 'OrderID', value: 'OrderID' };
   public groupField: { [key: string]: string } = { groupBy: 'group', text: 'text', value: 'id' };
-  private value =  ["20003", "10025", "10044", "custom"];
+  private value =  ['id10', 'id50', 'id100', "custom"];
   private headerTemplate(data: any): JSX.Element {
     return (
       <div className="header"><span style={{ marginLeft: '17px' }}>Items Info</span></div>
@@ -137,7 +137,7 @@ export class Default extends SampleBase<{}, {}> {
           </div>
           <div className="multi-control-wrapper">
             <h4>Default Values</h4>
-            <MultiSelectComponent id="databind" ref={(scope) => { this.databindObj = scope; }} dataSource={this.customerData} placeholder="e.g. OrderID" value={this.value} mode="Default" allowFiltering={true} enableVirtualization={true} allowCustomValue={true} showDropDownIcon={true} hideSelectedItem={true} closePopupOnSelect={true} fields={this.customerField} popupHeight="200px" >
+            <MultiSelectComponent id="databind" ref={(scope) => { this.databindObj = scope; }} dataSource={this.records} placeholder="e.g. Item 1" value={this.value} mode="Default" allowFiltering={true} enableVirtualization={true} allowCustomValue={true} showDropDownIcon={true} hideSelectedItem={true} closePopupOnSelect={true} fields={this.fields} popupHeight="200px" >
               <Inject services={[VirtualScroll]} />
             </MultiSelectComponent>
           </div>

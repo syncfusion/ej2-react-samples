@@ -57,7 +57,7 @@ const MultipleSeries = () => {
                     To use the Legend, inject the <code>StockLegend</code> module using the <code>StockChart.Inject(StockLegend)</code> method.
                 </p>
                 <p>
-                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">documentation section</a>.
+                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types" aria-label="Navigate to the documentation for React Stock Chart series types">documentation section</a>.
                 </p>
             </div>
         </div >

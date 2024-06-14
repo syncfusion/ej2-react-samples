@@ -64,7 +64,7 @@ const Pointers = () => {
     };
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <div className="row" style={{ margin: '0px' }}>
@@ -171,17 +171,18 @@ const Pointers = () => {
                         </div>
                     </div>
                 </div>
-                <div id="action-description">
-                    <p>This sample demonstrates the various pointer types available in the circular gauge.</p>
                 </div>
-                <div id="description">
+        </div>
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
+                    <p>This sample demonstrates the various pointer types available in the circular gauge.</p>
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>In this example, you can see how to customize the pointer for an axis in the circular gauge. The circular gauge supports a variety of pointers, including marker, needle, and range bar. Additionally, the pointer can be customized, and multiple pointers can also be enabled.</p>
                     <p>
                         More information on the pointers can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-pointers/">documentation section</a>.
                     </p>
-                </div>
-            </div>
-        </div>
+                </section>
+        </main>
     )
 }
 export default Pointers;

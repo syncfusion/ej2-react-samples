@@ -109,6 +109,18 @@
     content: '\e700';
 }
 
+.fluent2 .sample_container.avatar-types .e-people,
+.fluent2-dark .sample_container.avatar-types .e-people,
+.fluent2-highcontrast .sample_container.avatar-types .e-people {
+    font-family: 'e-icons';
+}
+
+.fluent2 .sample_container.avatar-types .e-people:before,
+.fluent2-dark .sample_container.avatar-types .e-people:before,
+.fluent2-highcontrast .sample_container.avatar-types .e-people:before  {
+    content: '\e7b4';
+}
+
 .sample_container.avatar-types .e-avatar .e-people.icons {
     font-size: 24px;
 }

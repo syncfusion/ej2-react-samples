@@ -12,7 +12,7 @@ const RemoteData = () => {
         updateSampleSection();
     }, [])
     let dataManger: DataManager = new DataManager({
-        url: "https://ej2services.syncfusion.com/react/development/api/Kanban",
+        url: "https://services.syncfusion.com/react/production/api/Kanban",
         crossDomain: true,
     });
     const dialogOpen = (args: DialogEventArgs): void => {

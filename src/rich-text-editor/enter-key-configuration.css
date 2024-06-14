@@ -39,7 +39,7 @@
     overflow: inherit;
     overflow-x: inherit;
 }
-.bootstrap-dark .CodeMirror-scroll, .bootstrap5-dark .CodeMirror-scroll, .fluent-dark .CodeMirror-scroll,.material3-dark .CodeMirror-scroll, .fabric-dark .CodeMirror-scroll, .material-dark .CodeMirror-scroll, .tailwind-dark .CodeMirror-scroll, .highcontrast .CodeMirror-scroll{
+.bootstrap-dark .CodeMirror-scroll, .bootstrap5-dark .CodeMirror-scroll, .fluent-dark .CodeMirror-scroll, .fluent2-dark .CodeMirror-scroll, .material3-dark .CodeMirror-scroll, .fabric-dark .CodeMirror-scroll, .material-dark .CodeMirror-scroll, .tailwind-dark .CodeMirror-scroll, .highcontrast .CodeMirror-scroll{
     color: #fff;
 }
 .bootstrap-dark .CodeMirror-scroll{
@@ -48,7 +48,8 @@
 .bootstrap5-dark .CodeMirror-scrol{
    background-color: #212529;
 }
-.fluent-dark .CodeMirror-scroll{
+.fluent-dark .CodeMirror-scroll,
+.fluent2-dark .CodeMirror-scroll{
    background-color: #1b1a19;
 }
 .material3-dark .CodeMirror-scroll{

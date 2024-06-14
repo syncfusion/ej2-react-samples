@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Edit, Toolbar, NewRowPosition, Sort} from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Edit, Toolbar, NewRowPosition, Sort, FilterSettingsModel, Filter} from '@syncfusion/ej2-react-grids';
 import { orderDataSource } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 export class NormalEdit extends SampleBase<{}, {}> {
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
   public toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, showAddNewRow: true, newRowPosition: 'Top' };
   public editparams: any = { params: { popupHeight: '300px' } };
@@ -42,7 +43,7 @@ export class NormalEdit extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className='col-md-9'>
-            <GridComponent dataSource={orderDataSource} ref={grid => this.gridInstance = grid} allowSorting={true} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}
+            <GridComponent dataSource={orderDataSource} ref={grid => this.gridInstance = grid} allowSorting={true}allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings} pageSettings={this.pageSettings}
             actionBegin={this.actionBegin.bind(this)}>
               <ColumnsDirective>
                 <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
@@ -51,7 +52,7 @@ export class NormalEdit extends SampleBase<{}, {}> {
                 <ColumnDirective field='OrderDate' headerText='Order Date' editType='datetimepickeredit' format= {this.format} width='160' ></ColumnDirective>
                 <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
               </ColumnsDirective>
-              <Inject services={[Page, Toolbar, Edit, Sort]} />
+              <Inject services={[Page, Toolbar, Edit, Sort, Filter]} />
             </GridComponent>
           </div>
 

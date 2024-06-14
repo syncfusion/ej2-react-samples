@@ -10,7 +10,8 @@ import { SampleBase } from '../common/sample-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
-
+import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
+    
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -87,7 +88,7 @@ const SAMPLE_CSS = `
 export class Export extends SampleBase<{}, {}> {
     private gauge: LinearGaugeComponent;
     private mode: DropDownListComponent;
-
+    private textElement: TextBoxComponent;
     private type: { [key: string]: Object }[] = [
         { value: 'JPEG' },
         { value: 'PNG' },
@@ -109,13 +110,13 @@ export class Export extends SampleBase<{}, {}> {
     }
 
     public onClickExport(e: Event): void {
-        let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
+        let fileName: string = this.textElement.value;
         this.gauge.export((this.mode.value as ExportType), fileName);
     }
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -153,7 +154,7 @@ export class Export extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' role="none" title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                               <tbody>
                                 <tr style={{ height: "50px" }}>
                                     <td>
@@ -170,8 +171,8 @@ export class Export extends SampleBase<{}, {}> {
                                         <div style={{ width: '80%', marginLeft: '-10px' }}>File Name</div>
                                     </td>
                                     <td>
-                                        <div className="e-float-input" style={{ 'marginTop': '0px' }}>
-                                            <input type="text" defaultValue="Linear Gauge" id="fileName" style={{ "width": "100%", padding: "0px", paddingLeft: '5px' }} />
+                                        <div style={{ 'marginTop': '0px', height: '45px' }}>
+                                            <TextBoxComponent className="e-input" value='Linear Gauge' style={{ width: '100%', padding: "0px", paddingLeft: '5px' }} id="fileName" ref={d => this.textElement = d}></TextBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
@@ -192,20 +193,21 @@ export class Export extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample demonstrates the print and export functionalities of the linear gauge.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to print and export the rendered linear gauge. You can add print functionality by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#print">print</a> method when <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#allowprint">allowPrint</a> is set as <b>true</b>. Also, you can add export functionality by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#export">export</a> method when <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#allowimageexport">allowImageExport</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#allowpdfexport">allowPdfExport</a> are set as <b>true</b>. The linear gauge can be exported to JPEG, PNG, SVG, and PDF formats.
                     </p>
                     <p>
                         More information about print and export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/print-and-export/">documentation section</a>.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         )
     }
 }

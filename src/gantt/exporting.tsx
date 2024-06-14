@@ -5,7 +5,7 @@ import { editingData, editingResources } from './data';
 import { SampleBase } from '../common/sample-base';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { CheckBoxComponent, SwitchComponent } from '@syncfusion/ej2-react-buttons';
-
+import './resource.css';
 export class Exporting extends SampleBase<{}, {}> {
   private ganttInstance: GanttComponent;
   public isFitToWidth: any;
@@ -27,8 +27,8 @@ export class Exporting extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     position: "35%"
   };
-  public projectStartDate: Date = new Date('03/25/2019');
-  public projectEndDate: Date = new Date('07/28/2019');
+  public projectStartDate: Date = new Date('03/25/2024');
+  public projectEndDate: Date = new Date('07/28/2024');
   public gridLines: any = 'Both';
   public toolbar: any = ['ExcelExport', 'CsvExport', 'PdfExport'];
   public timelineSettings: any = {
@@ -42,33 +42,33 @@ export class Exporting extends SampleBase<{}, {}> {
   };
   public eventMarkers: any = [
             {
-                day: new Date('04/02/2019'),
+                day: new Date('04/02/2024'),
             }, {
-                day: new Date("04/09/2019"),
+                day: new Date("04/09/2024"),
                 label: 'Research phase'
             }, {
-                day: new Date("04/30/2019"),
+                day: new Date("04/30/2024"),
                 label: 'Design phase'
             }, {
-                day: new Date("05/23/2019"),
+                day: new Date("05/23/2024"),
                 label: 'Production phase'
             }, {
-                day: new Date("06/20/2019"),
+                day: new Date("06/20/2024"),
                 label: 'Sales and marketing phase'
             }
         ];
   public holidays: any = [
             {
-                from: new Date('04/04/2019'),
-                to: new Date('04/04/2019'),
+                from: new Date('04/04/2024'),
+                to: new Date('04/04/2024'),
                 label: 'Local Holiday'
             }, {
-                from: new Date('04/19/2019'),
-                to: new Date('04/19/2019'),
+                from: new Date('04/19/2024'),
+                to: new Date('04/19/2024'),
                 label: 'Good Friday'
             }, {
-                from: new Date('04/30/2019'),
-                to: new Date('04/30/2019'),
+                from: new Date('04/30/2024'),
+                to: new Date('04/30/2024'),
                 label: 'Release Holiday'
             }, 
         ];
@@ -104,7 +104,7 @@ export class Exporting extends SampleBase<{}, {}> {
         <div className='control-section'>
         <div style={{ display: 'flex' }}>
             <div style={{ display: 'flex' }}>
-                <label htmlFor="unchecked" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> AutoFit in Pdf Export </label>
+                <label htmlFor="unchecked"  id ="drag" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> AutoFit in Pdf Export </label>
               <div>
                 <SwitchComponent id="unchecked" checked={false} change={this.autofit.bind(this)}></SwitchComponent>
               </div>

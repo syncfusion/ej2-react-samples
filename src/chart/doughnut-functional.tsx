@@ -43,6 +43,9 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
     else if (selectedTheme.indexOf('highcontrast') > -1) {
         args.border.color = '#000000';
     }
+    else if (selectedTheme.indexOf('fluent2') > -1) {
+        args.fill = seriesColor[args.point.index % 10];
+    }
     else {
         args.border.color = '#FFFFFF';
     }
@@ -67,7 +70,7 @@ const AccumulationDoughnut = () => {
     const load = (args: IAccLoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i, 'Contrast') as AccumulationTheme;
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
     };
     return (
         <div className='control-pane'>
@@ -92,7 +95,7 @@ const AccumulationDoughnut = () => {
                     The Charts component’s features are segregated into individual feature modules. To use pie chart, we need to inject <code>PieSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information about the donut series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/">documentation section</a>.
+                    More information about the donut series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/" aria-label="Navigate to the documentation for Doughnut Chart in React accumulation Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

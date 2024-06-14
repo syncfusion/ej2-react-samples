@@ -142,11 +142,17 @@ const ZoomingMaps = () => {
         setRange1(parseInt(animationElement.current.value.toString(), 10) + 'ms');
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
-                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} ref={mapInstance} zoomSettings={{ enable: true, pinchZooming: true, toolbars: ['Zoom', 'ZoomIn', 'ZoomOut', 'Pan', 'Reset'] }}>
+                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} ref={mapInstance}
+                    zoomSettings={{ enable: true, pinchZooming: true,
+                        toolbarSettings: {
+                            buttonSettings: {
+                                toolbarItems: ['Zoom', 'ZoomIn', 'ZoomOut', 'Pan', 'Reset']
+                            }
+                        }}}>
                         <Inject services={[Zoom]} />
                         <LayersDirective>
                             <LayerDirective shapeData={worldMap} shapePropertyPath='continent' shapeDataPath='continent' dataSource={datasource} animationDuration={500} shapeSettings={{ autofill: true, colorValuePath: 'color' }} />
@@ -155,7 +161,7 @@ const ZoomingMaps = () => {
                 </div>
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
+                        <table role='none' id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                            <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td>
@@ -237,18 +243,19 @@ const ZoomingMaps = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample depicts the zooming and panning options in the maps. You can customize these options by changing the Zooming, Panning, Mouse wheel zoom, Pinch zoom, Single-click zoom, and Double-click zoom in the Properties panel.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to zoom and pan the map. The support has been provided for zooming with the toolbar, rectangle zoom, pinch zoom, mouse wheel zoom, single-click, and double-click zoom.Panning can be enabled or disabled using the Panning option. When it is disabled, the map will switch to zooming mode.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p>
                     Maps component features are segregated into individual feature-wise modules. To use the zooming feature, inject the <code>zoom</code> module using the Maps.Inject(zoom) method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default ZoomingMaps;

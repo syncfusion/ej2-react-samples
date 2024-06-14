@@ -82,7 +82,7 @@ const Default = () => {
           change the slide items using previous and next icons.
         </p>
         <p>
-          More information about React Carousel component can be found in this <a target='_blank'
+          More information about React Carousel component can be found in this <a aria-label="Carousel getting started" target='_blank'
           href="https://ej2.syncfusion.com/documentation/carousel/getting-started/">documentation section</a>.
         </p>
       </div>

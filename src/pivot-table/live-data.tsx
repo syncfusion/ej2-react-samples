@@ -269,8 +269,7 @@ export class LiveData extends SampleBase<{}, {}> {
         // eslint-disable-next-line no-restricted-globals
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
 
     render() {
@@ -283,10 +282,10 @@ export class LiveData extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section'>
                     <div style={{ marginBottom: '10px' }}>
-                        <h4 style={{ display: 'inline-block', fontSize: '14px', paddingLeft: '5px' }}>
+                        <div style={{ display: 'inline-block', fontSize: '14px', paddingLeft: '5px' }}>
                             <strong>Feed Delay(ms)</strong>:
-                        </h4>
-                        <NumericTextBoxComponent format="N0" value={5000} min={5000} step={1000} width={'150px'} style={{ marginLeft: '7px' }} ref={(scope: NumericTextBoxComponent) => { this.feedDelayInput = scope; }} />
+                        </div>
+                        <NumericTextBoxComponent format="N0" value={5000} min={5000} step={1000} width={'150px'} style={{ marginLeft: '7px' }} placeholder={'0'} ref={(scope: NumericTextBoxComponent) => { this.feedDelayInput = scope; }} />
                         <ButtonComponent id="update1" ref={(scope) => { this.updateButton = scope; }} onClick={this.updateClick.bind(this)} style={{ marginLeft: '10px' }}>
                             Start Updating...
                         </ButtonComponent>
@@ -331,7 +330,12 @@ export class LiveData extends SampleBase<{}, {}> {
                             Displayed the <strong>"Change(%)"</strong> values in the pivot table as red for negative values and
                             green for positive values using the cell template concept.
                         </li>
-                    </ul>
+                    </ul><br />
+                    <p>
+                        More information on the Essential JS2 Pivot Table can be found in these <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/row-and-column#cell-template">Cell Template</a> & <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/pivot-chart">Pivot Chart</a> documentation section.
+                </p>
                 </div>
             </div>
         );

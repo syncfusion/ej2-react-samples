@@ -123,7 +123,7 @@ export class ProgressBarProgressSegment extends SampleBase<{}, {}> {
                         <div>
                             <div className="col-lg-12 col-sm-12 progressbar-mode"></div>
                             <div id="linearSegment">
-                                <ProgressBarComponent id="linearSegment"
+                                <ProgressBarComponent id="progress-linearSegment"
                                     ref={segment1 => this.linearSeg = segment1}
                                     type='Linear'
                                     height='30'
@@ -146,7 +146,7 @@ export class ProgressBarProgressSegment extends SampleBase<{}, {}> {
                         <div>
                             <div className="col-lg-12 col-sm-12 progressbar-mode"></div>
                             <div id="circularSegment">
-                                <ProgressBarComponent id="circularSegment"
+                                <ProgressBarComponent id="progress-circularSegment"
                                     ref={segment2 => this.circularSeg = segment2}
                                     type='Circular'
                                     height='200px'

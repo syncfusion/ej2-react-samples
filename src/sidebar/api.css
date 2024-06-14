@@ -62,6 +62,7 @@
 }
 #api-wrapper #apiclose:before {
     content: "\e109";
+    font-family: "e-sidebar-icons";
 }
 .inline-element.right {
     width: 80px;

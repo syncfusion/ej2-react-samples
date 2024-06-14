@@ -16,14 +16,14 @@ const ColumnTemplate = () => {
       if (gantt.enableRtl) {
         return (
           <div className='columnTemplate'>
-            <img src={src} height='40px' width='40px' />
+            <img src={src} height='40px' width='40px' alt={props.ganttProperties.resourceNames}/>
             <div style={{ display: "inline-block", width: '100%', position: "relative", right: "30px" }}>{props.ganttProperties.resourceNames}</div>
           </div>);
       }
       else {
         return (
           <div className='columnTemplate'>
-            <img src={src} height='40px' width='40px' />
+            <img src={src} height='40px' width='40px' alt={props.ganttProperties.resourceNames}/>
             <div style={{ display: "inline-block", width: '100%', position: "relative", left: "30px" }}>{props.ganttProperties.resourceNames}</div>
           </div>);
       }
@@ -53,8 +53,8 @@ const ColumnTemplate = () => {
   const splitterSettings: any = {
     columnIndex: 3
   };
-  const projectStartDate: Date = new Date('03/24/2019');
-  const projectEndDate: Date = new Date('07/06/2019');
+  const projectStartDate: Date = new Date('03/24/2024');
+  const projectEndDate: Date = new Date('07/06/2024');
   return (
     <div className='control-pane'>
       <div className='control-section'>

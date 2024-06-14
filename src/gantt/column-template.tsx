@@ -13,14 +13,14 @@ export class ColumnTemplate extends SampleBase<{}, {}> {
     if (gantt.enableRtl) {
         return (
           <div className='columnTemplate'>
-            <img src={src} height='40px' width='40px' />
+            <img src={src} height='40px' width='40px' alt={props.ganttProperties.resourceNames}/>
             <div style={{ display: "inline-block", width: '100%', position: "relative", right: "30px" }}>{props.ganttProperties.resourceNames}</div>
           </div>);
       }
       else {
         return (
           <div className='columnTemplate'>
-            <img src={src} height='40px' width='40px' />
+            <img src={src} height='40px' width='40px' alt={props.ganttProperties.resourceNames}/>
             <div style={{ display: "inline-block", width: '100%', position: "relative", left: "30px" }}>{props.ganttProperties.resourceNames}</div>
           </div>);
       }
@@ -50,8 +50,8 @@ public template: any = this.columnTemplate.bind(this);
   public splitterSettings: any = {
     columnIndex: 3
 };
-  public projectStartDate: Date = new Date('03/24/2019');
-  public projectEndDate: Date = new Date('07/06/2019');
+  public projectStartDate: Date = new Date('03/24/2024');
+  public projectEndDate: Date = new Date('07/06/2024');
   render() {
     return (
     <div className='control-pane'>

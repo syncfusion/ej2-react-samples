@@ -113,6 +113,9 @@ const Default = () => {
                     <li>
                         <b>Resize</b> : The image can be resized to cater to the user's preferences and needs, enhancing the adaptability and usability of the content.
                     </li>
+                    <li>
+                        <b>Z-Order</b> : Adjust the positioning of annotations to manage the layering of elements, essential for creating polished designs.
+                    </li>
                 </ul>
                 <p>
                     More information about Image Editor can be found in this

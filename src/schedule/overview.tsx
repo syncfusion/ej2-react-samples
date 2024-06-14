@@ -314,19 +314,19 @@ export class Overview extends SampleBase<{}, {}> {
   private getWeather(value: Date) {
     switch (value.getDay()) {
       case 0:
-        return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" />';
+        return '<img class="weather-image"  src= "src/schedule/images/weather-clear.svg" alt="Clear Weather"/>';
       case 1:
-        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/>';
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg" alt="Clouds Weather"/>';
       case 2:
-        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/>';
+        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg" alt="Rain Weather"/>';
       case 3:
-        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/>';
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg" alt="Clouds Weather"/>';
       case 4:
-        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg"/>';
+        return '<img class="weather-image" src="src/schedule/images/weather-rain.svg" alt="Rain Weather"//>';
       case 5:
-        return '<img class="weather-image" src="src/schedule/images/weather-clear.svg"/>';
+        return '<img class="weather-image" src="src/schedule/images/weather-clear.svg" alt="Clear Weather"/>';
       case 6:
-        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg"/>';
+        return '<img class="weather-image" src="src/schedule/images/weather-clouds.svg" alt="Clouds Weather"/>';
       default:
         return null;
     }
@@ -626,8 +626,7 @@ export class Overview extends SampleBase<{}, {}> {
                           popupHeight={150} change={(args: ChangeEventArgs) => {
                             this.scheduleObj.timezone = args.value as string;
                             this.updateLiveTime();
-                            (document.querySelector('.schedule-overview #timezoneBtn') as HTMLElement).innerHTML =
-                              '<span class="e-btn-icon e-icons e-time-zone e-icon-left"></span>' + args.itemData.text;
+                            (document.querySelector('.schedule-overview #timezoneBtn') as HTMLElement).innerHTML = args.itemData.text;
                           }} />
                       </div>
                     </div>
@@ -732,7 +731,7 @@ export class Overview extends SampleBase<{}, {}> {
           </div>
         </div >
         <div id="action-description">
-          <p>This <a href="https://www.syncfusion.com/react-ui-components/react-scheduler" target="_blank">React Scheduler example</a> demonstrates the overview of React Scheduler with its overall features. Use the toolbar buttons
+          <p>This <a aria-label="React scheduler example" href="https://www.syncfusion.com/react-ui-components/react-scheduler" target="_blank">React Scheduler example</a> demonstrates the overview of React Scheduler with its overall features. Use the toolbar buttons
             to play with Scheduler functionalities.</p>
         </div>
         <div id="description">

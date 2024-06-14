@@ -65,8 +65,7 @@ function ChartIntegration () {
     function chartOnLoad(args): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
 
     return (
@@ -150,6 +149,11 @@ function ChartIntegration () {
                     to inject the
                                 <code> PivotChart</code> module into the
                                 <code> services</code>.
+                </p><br />
+                <p>
+                    More information on the pivot chart can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/pivot-chart">
+                    documentation section</a>.
                 </p>
             </div >
         </div >

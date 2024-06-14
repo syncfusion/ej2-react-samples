@@ -19,7 +19,7 @@ export class Default extends SampleBase<{}, {}> {
     public load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
-        args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as SparklineTheme;
+        args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as SparklineTheme;
     }
     
     render() {
@@ -1097,7 +1097,7 @@ export class Default extends SampleBase<{}, {}> {
                 </div>
                 {/* Source Link */}
                 <div style={{ "float": "right", "marginRight": "10px" }}>Source:
-                <a href="https://www.indexmundi.com/g/g.aspx?v=21&amp;v=21000&amp;v=24&amp;v=25&amp;v=27&amp;c=as&amp;c=ch&amp;c=fr&amp;c=gm&amp;c=in&amp;c=rs&amp;c=sn&amp;c=sz&amp;c=uk&amp;c=us&amp;l=en/" target="_blank"> www.indexmundi.com</a>
+                <a href="https://www.indexmundi.com/g/g.aspx?v=21&amp;v=21000&amp;v=24&amp;v=25&amp;v=27&amp;c=as&amp;c=ch&amp;c=fr&amp;c=gm&amp;c=in&amp;c=rs&amp;c=sn&amp;c=sz&amp;c=uk&amp;c=us&amp;l=en/" target="_blank" aria-label="Navigate to the documentation for indexmundi"> www.indexmundi.com</a>
                 </div>
                 <div id="action-description">
                     <p>

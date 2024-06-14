@@ -175,6 +175,11 @@ function ConditionalFormattingClass () {
                     To enable conditional formatting, inject
                     <code> ConditionalFormatting</code> module using the
                     <code> services</code> tag.
+                </p><br />
+                <p>
+                    More information on the conditional formatting can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/conditional-formatting">
+                    documentation section</a>.
                 </p>
             </div>
         </div>

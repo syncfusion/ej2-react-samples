@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, FilterType, Column, freezeDirection, Sort, Freeze } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, FilterType, Column, freezeDirection, Sort, Freeze, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { updateSampleSection } from '../common/sample-base';
@@ -15,6 +15,12 @@ function FrozenAPI() {
   let columnDropDown: DropDownListComponent;
   let alertDialogInstance: DialogComponent;
   let refresh: boolean = true;
+  const filterSettings: FilterSettingsModel = {type: 'Excel'};
+  const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  const customeridRule: Object = { required: true, minLength: 5};
+  const orderidRules: Object = { required: true, number: true };
+  const freightRules: Object = { required: true, min: 0 };
   const columnNames: { [key: string]: Object }[] = [
     { id: 'OrderID', name: 'Order ID' },
     { id: 'Freight', name: 'Freight' },
@@ -88,18 +94,18 @@ function FrozenAPI() {
           </div>
         </div>
 
-        <GridComponent ref={g => grid = g} dataSource={orderDetails} height='350' frozenRows={2} enableHover={false} allowSorting={true}>
+        <GridComponent ref={g => grid = g} dataSource={orderDetails} height='350' frozenRows={2} enableHover={false} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar}>
           <ColumnsDirective>
-            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' freeze='Left'></ColumnDirective>
-            <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' textAlign='Right'/>
-            <ColumnDirective field='CustomerID' headerText='Customer ID' width='130' freeze='Right'></ColumnDirective>
-            <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right'/>
+            <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' freeze='Left' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+            <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'/>
+            <ColumnDirective field='CustomerID' headerText='Customer ID' width='130' freeze='Right' validationRules={customeridRule}></ColumnDirective>
+            <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right' editType='datepickeredit'/>
             <ColumnDirective field='ShipName' headerText='Ship Name' width='300'></ColumnDirective>
             <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270' freeze='Fixed'></ColumnDirective>
             <ColumnDirective field='ShipCity' headerText='Ship City' width='250'></ColumnDirective>
-            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250'></ColumnDirective>
+            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250' editType='dropdownedit'></ColumnDirective>
           </ColumnsDirective>
-          <Inject services={[Sort, Freeze]} />
+          <Inject services={[Sort, Freeze, Toolbar, Filter, Edit]} />
         </GridComponent>
       </div>
 

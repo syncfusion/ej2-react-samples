@@ -11,10 +11,10 @@ import { ItemModel, MenuEventArgs, TabComponent, TabItemDirective, TabItemsDirec
 import { AnimationSettingsModel, DialogComponent, TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { employeeData } from './data-source';
 import { DropDownButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
+import * as CodeMirror from 'codemirror';
 
 QueryBuilderComponent.Inject(QueryLibrary);
 
-declare let CodeMirror: any;
 const frameworkTemplate = (props) => {
     let ds = ["React", "Angular", "Vue", "TypeScript", "JavaScript"];
     let state = Object.assign({}, props);
@@ -22,7 +22,12 @@ const frameworkTemplate = (props) => {
     const frameworkChange = (event) => {
         let qryBldrObj: any = getComponent(document.getElementById('querybuilder'), 'query-builder');
         let elem = document.getElementById(args.ruleID).querySelector('.e-rule-value');
-        qryBldrObj.notifyChange(event.value, elem, 'value');
+        let rule = qryBldrObj.getRule(event.element);
+        if (rule.operator == "in" || rule.operator == "notin") {
+            qryBldrObj.notifyChange([event.value], elem, 'value');
+        } else {
+            qryBldrObj.notifyChange(event.value, elem, 'value');
+        }
     }
     return (<div><DropDownListComponent dataSource={ds} value={args.rule.value} change={frameworkChange} /></div>);
 };
@@ -153,7 +158,7 @@ export class Template extends SampleBase<{}, {}> {
         this.content = mongoQuery;
         /* custom code start */
         this.clearHighlight();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-mongo-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-mongo-content')[0] as any, {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here
@@ -174,13 +179,10 @@ export class Template extends SampleBase<{}, {}> {
         this.content = this.updateSQLContent();
         /* custom code start */
         this.clearHighlight();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-sql-content')[0], {
-            parserfile: "codemirror/contrib/sql/js/parsesql.js",
-            path: "codemirror/js/",
-            stylesheet: "css/sqlcolors.css",
-            matchBrackets: true,
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-sql-content')[0] as any, {
+            readOnly: true,
             lineWrapping: true,
-            textWrapping: true
+            theme: 'default', // Set your desired theme here
         });
         codeMirrorEditor.setValue(this.content);
         /* custom code end */

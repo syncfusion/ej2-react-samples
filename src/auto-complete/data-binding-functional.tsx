@@ -43,14 +43,14 @@ const Data = () => {
             <div className='control-section'>
                 <div className='col-lg-9'>
                     <div className='col-lg-6'>
-                        <div id="local">
-                            <h4> Local Data</h4>
+                        <div className='drop-down-list-content' id="local">
+                        <label className="h4"> Local Data</label>
                             <AutoCompleteComponent id="country" dataSource={countries} fields={localFields} popupHeight="250px" placeholder="e.g. Australia" autofill={autofill} filterType='StartsWith' />
                         </div>
                     </div>
                     <div className='col-lg-6'>
-                        <div id="remote">
-                            <h4>Remote Data</h4>
+                        <div className='drop-down-list-content' id="remote">
+                        <label className="h4">Remote Data</label>
                             <AutoCompleteComponent id="products" dataSource={productData} query={query} sortOrder="Ascending" fields={remoteFields} autofill={autofill} placeholder="e.g. Andrew Fuller" suggestionCount={5} filterType='StartsWith' />
                         </div>
                     </div>

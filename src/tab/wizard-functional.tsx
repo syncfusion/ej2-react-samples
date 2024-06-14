@@ -431,13 +431,13 @@ const Wizard = () => {
             </div>
             <div id="description">
                 <p>
-                    Tab items can be disabled dynamically by passing the index and boolean value to the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tab/#enabletab">enableTab</a> method.
+                    Tab items can be disabled dynamically by passing the index and boolean value to the <a aria-label="enable tab"  target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/tab/#enabletab">enableTab</a> method.
                 </p>
                 <p>
                     You can design wizard like sample with Tab using the in-built API and customizing the content with proper validations.
                 </p>
                 <p>
-                    More information about Tab can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/"> documentation</a> section.
+                    More information about Tab can be found in this <a aria-label="Documentation" target="_blank" href="https://ej2.syncfusion.com/react/documentation/tab/getting-started/"> documentation</a> section.
                 </p>
             </div>
         </div >

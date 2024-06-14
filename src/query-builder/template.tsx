@@ -12,8 +12,8 @@ import './template.css';
 import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { getCELQuery, getSpELQuery } from './util';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import * as CodeMirror from 'codemirror';
 
-declare let CodeMirror: any;
 export class Template extends SampleBase<{}, {}> {
     elem: HTMLElement;
     dropDownObj: DropDownList;
@@ -246,13 +246,10 @@ export class Template extends SampleBase<{}, {}> {
         this.content = celQuery
         /* custom code start */
         this.clearHighlight();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0], {
-            parserfile: "codemirror/contrib/sql/js/parsesql.js",
-            path: "codemirror/js/",
-            stylesheet: "css/sqlcolors.css",
-            matchBrackets: true,
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0] as any, {
+            readOnly: true,
+            theme: 'default',
             lineWrapping: true,
-            textWrapping: true
         });
         codeMirrorEditor.setValue(this.content);
         /* custom code end */
@@ -268,13 +265,10 @@ export class Template extends SampleBase<{}, {}> {
         this.content = getSpELQuery(allRules);
         /* custom code start */
         this.clearHighlight();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0], {
-            parserfile: "codemirror/contrib/sql/js/parsesql.js",
-            path: "codemirror/js/",
-            stylesheet: "css/sqlcolors.css",
-            matchBrackets: true,
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0] as any, {
+            readOnly: true,
+            theme: 'default',
             lineWrapping: true,
-            textWrapping: true
         });
         codeMirrorEditor.setValue(this.content);
         /* custom code end */

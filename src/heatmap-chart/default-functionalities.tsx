@@ -11,7 +11,7 @@ const SAMPLE_CSS: any = `
 export class Default extends SampleBase<{}, {}> {
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
@@ -61,13 +61,14 @@ export class Default extends SampleBase<{}, {}> {
                         <Inject services={[Legend, Tooltip, Adaptor]} />
                     </HeatMapComponent>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of HeatMap sample">
                     <p>
                         This sample visualizes the sales revenue of items sold by the employees in a week, where the revenue
                         for the day is displayed in 1000 USD as cell data.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render a heat map with the provided data source. The palette color is applied
                         to the items in heat map. The default legend is enabled in this example to represent the items.
@@ -81,8 +82,8 @@ export class Default extends SampleBase<{}, {}> {
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         );
     }
 

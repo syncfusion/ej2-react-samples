@@ -22,6 +22,7 @@ function RTEApi() {
     const Numericvalue: number = 1000;
     const min: number = 555;
     const max: number = 2000;
+    const placeholder: string = "Maximum Length";
     const format: string = 'n0';
     const numericChange = (e: ChangeEventArgs): void => {
         rteObj.maxLength = e.value;

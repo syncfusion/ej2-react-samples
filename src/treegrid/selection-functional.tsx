@@ -7,6 +7,15 @@ import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
+const SAMPLE_CSS = `
+  .fluent2,
+  .fluent2-dark,
+  .fluent2-highcontrast {
+    #selectiondd1 .e-input-group {
+      width: 110px !important;
+    }
+}`;
+
 const Selection = () => {
   useEffect(() => {
     updateSampleSection();
@@ -59,6 +68,11 @@ const Selection = () => {
   };
   return (
     <div className="control-pane">
+      {/* custom code start */}
+      <style>
+          {SAMPLE_CSS}
+        </style>
+        {/* custom code end */}
       <div className="control-section">
         <div className="col-md-9">
           <TreeGridComponent
@@ -124,7 +138,7 @@ const Selection = () => {
                     </div>
                   </td>
                   <td style={{ width: "70%", paddingRight: "10px" }}>
-                    <div>
+                    <div id='selectiondd1'>
                       <DropDownListComponent
                         width="100px"
                         id="type"

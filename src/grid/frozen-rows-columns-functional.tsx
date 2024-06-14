@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Resize, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Resize, Sort, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
@@ -15,6 +15,12 @@ function FrozenRows() {
   let rowInstance: NumericTextBoxComponent;
   let columnInstance: NumericTextBoxComponent;
   let grid: GridComponent;
+  const filterSettings: FilterSettingsModel = {type: 'Excel'};
+  const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  const customeridRule: Object = { required: true, minLength: 5};
+  const orderidRules: Object = { required: true, number: true };
+  const freightRules: Object = { required: true, min: 0 };
   /* After clicking 'Set' button, the `frozenRows` and `frozenColumns` values will be updated in Grid */
   function btnClick(): void {
     grid.frozenRows = rowInstance.value;
@@ -25,20 +31,20 @@ function FrozenRows() {
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-lg-8'>
-          <GridComponent dataSource={orderDetails} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} allowSorting={true} allowMultiSorting={false} ref={g => grid = g}>
+          <GridComponent dataSource={orderDetails} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} allowMultiSorting={false} ref={g => grid = g}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2'/>
-              <ColumnDirective field='CustomerID' headerText='Customer ID' width='130'></ColumnDirective>
-              <ColumnDirective field='CustomerName' headerText='Customer Name' width='180'></ColumnDirective>
-              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right'/>
-              <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='180' format='yMd' textAlign='Right'></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' validationRules={freightRules} editType='numericedit'/>
+              <ColumnDirective field='CustomerID' headerText='Customer ID' width='130' validationRules={customeridRule}></ColumnDirective>
+              <ColumnDirective field='CustomerName' headerText='Customer Name' width='180' validationRules={customeridRule}></ColumnDirective>
+              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right' editType='datepickeredit'/>
+              <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='180' format='yMd' textAlign='Right' editType='datepickeredit'></ColumnDirective>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='300'></ColumnDirective>
               <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270'></ColumnDirective>
               <ColumnDirective field='ShipCity' headerText='Ship City' width='250'></ColumnDirective>
-              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250'></ColumnDirective>
+              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250' editType='dropdownedit'></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Freeze, Resize, Sort]} />
+            <Inject services={[Freeze, Resize, Sort, Toolbar, Filter, Edit]} />
           </GridComponent>
         </div>
         <div className='col-lg-4 property-section'>
@@ -52,7 +58,7 @@ function FrozenRows() {
                 <td style={{ width: '70%', paddingRight: '10px' }}>
                   <div style={{ minWidth: '148px' }}>
                     {/* Render NumericTextbox component with specific range for frozen rows */}
-                    <NumericTextBoxComponent min={0} max={5} validateDecimalOnType={true} decimals={0} format='n' value={2} ref={numeric => rowInstance = numeric}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent min={0} max={5} validateDecimalOnType={true} decimals={0} format='n' value={2} ref={numeric => rowInstance = numeric} aria-label="Frozen rows"></NumericTextBoxComponent>
                   </div>
                 </td>
               </tr>
@@ -63,7 +69,7 @@ function FrozenRows() {
                 <td style={{ width: '70%', paddingRight: '10px' }}>
                   <div style={{ minWidth: '148px' }}>
                     {/* Render NumericTextbox component with specific range for frozen columns */}
-                    <NumericTextBoxComponent min={0} max={Browser.isDevice ? 1 : 2} validateDecimalOnType={true} decimals={0} format='n' value={1} ref={numeric => columnInstance = numeric}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent min={0} max={Browser.isDevice ? 1 : 2} validateDecimalOnType={true} decimals={0} format='n' value={1} ref={numeric => columnInstance = numeric} aria-label="Frozen columns"></NumericTextBoxComponent>
                   </div>
                 </td>
               </tr>

@@ -25,8 +25,8 @@ const LocalData = () => {
   const splitterSettings: any = {
     position: "35%"
   };
-  const projectStartDate: Date = new Date('03/24/2019');
-  const projectEndDate: Date = new Date('07/06/2019');
+  const projectStartDate: Date = new Date('03/24/2024');
+  const projectEndDate: Date = new Date('07/06/2024');
 
   return (
     <div className='control-pane'>

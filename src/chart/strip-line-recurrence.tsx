@@ -88,21 +88,21 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                             <tbody><tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>X Axis:</div>
+                                        <div id="xAxis">X Axis:</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <input type="checkbox" id="xIndex" defaultChecked={true} onChange={this.xIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.xcheckElement = d} />
+                                            <input type="checkbox" id="xIndex" defaultChecked={true} onChange={this.xIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.xcheckElement = d} aria-labelledby="Checkbox checked"/>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>Y Axis:</div>
+                                        <div id="yAxis">Y Axis:</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <input type="checkbox" id="yIndex" defaultChecked={true} onChange={this.yIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.ycheckElement = d} />
+                                            <input type="checkbox" id="yIndex" defaultChecked={true} onChange={this.yIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.ycheckElement = d} aria-labelledby="Checkbox checked"/>
                                         </div>
                                     </td>
                                 </tr></tbody>
@@ -114,7 +114,7 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                     <p>
                         This sample visualizes the Olympic medal count in Rio with default column series in the chart.
                         Data points values are showed by using data label.
-            </p>
+                    </p>
                 </div>
                 <div id="description">
                     <p>
@@ -122,20 +122,20 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
                         the frequency, count, total or average of data in different categories. You can use <code>border</code>,
                         <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual
                         data and its value.
-                </p>
+                    </p>
                     <p>
                         Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-                </p>
+                    </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-        <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.
-    </p>
+                        <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.
+                    </p>
                     <p>
                         More information on the column series can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-    </p>
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/strip-line#recurrence-stripline" aria-label="Navigate to the documentation for Recurrence Stripline in React Chart component">documentation section</a>.
+                    </p>
                 </div>
             </div>);
     }
@@ -146,7 +146,7 @@ export class Striplinerecurrence extends SampleBase<{}, {}> {
     load(args) {
         let selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

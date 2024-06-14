@@ -27,7 +27,7 @@ export class RenderMode extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div>
+            <main><div>
                 <div className='col-md-9 control-section'>
                     {/* custom code start */}
                     <style>
@@ -92,7 +92,7 @@ export class RenderMode extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-md-3 property-section">
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: -10 }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: -10 }}>
                             <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
@@ -113,14 +113,15 @@ export class RenderMode extends SampleBase<{}, {}> {
                         </table>
                     </PropertyPane>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of HeatMap sample">
                     <p>
                         This sample visualizes the net migration rate for the northern European countries over the years. The data label
                         is disabled in this sample, the tooltip displays the data point values.  In property panel, the options are
                         available to change the rendering mode between Canvas and SVG means of radio button.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                     <p>
                         In this example, you can see how to change the rendering mode between <code>Canvas</code> and <code>SVG</code> types in Heatmap. You can change the rendering mode using the <a href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/rendering-mode" target="_blank">renderingMode</a> property.
                     </p>
@@ -132,8 +133,8 @@ export class RenderMode extends SampleBase<{}, {}> {
                             href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
-                </div>
-            </div >
+                </section>
+            </main>
         );
     }
 

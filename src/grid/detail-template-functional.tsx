@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { Internationalization } from '@syncfusion/ej2-base';
-import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, Inject, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, Inject, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import "./sample.css";
@@ -16,6 +16,7 @@ function DetailTemplate() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
     const format = (value: Date) => {
         return instance.formatDate(value, { skeleton: 'yMd', type: 'date' });
     }
@@ -74,14 +75,14 @@ function DetailTemplate() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={employeeData} detailTemplate={template.bind(this)} width='auto' allowSorting={true}>
+                <GridComponent dataSource={employeeData} detailTemplate={template.bind(this)} width='auto' allowSorting={true} allowFiltering={true} filterSettings={filterSettings}>
                     <ColumnsDirective>
                         <ColumnDirective field='FirstName' headerText='First Name' width='110' />
                         <ColumnDirective field='LastName' headerText='Last Name' width='110' />
                         <ColumnDirective field='Title' headerText='Name' width='150' />
                         <ColumnDirective field='Country' headerText='Country' width='110' />
                     </ColumnsDirective>
-                    <Inject services={[DetailRow, Sort]} />
+                    <Inject services={[DetailRow, Sort, Filter]} />
                 </GridComponent>
             </div>
             <div id="action-description">

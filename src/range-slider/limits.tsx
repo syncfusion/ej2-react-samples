@@ -130,58 +130,58 @@ export class Limits extends SampleBase<{}, {}> {
                                 <tbody>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">MinStart</div>
+                                            <div id="minStartLabel" className="userselect">MinStart</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
                                             <NumericTextBoxComponent value={10} min={0} max={100} change={this.minStart.bind(this)} ref={(obj) => {
                                                 this.minStartObj = obj;
-                                            }} />
+                                            }} aria-labelledby="minStartLabel"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">MinEnd</div>
+                                            <div id="minEndLabel" className="userselect">MinEnd</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
                                             <NumericTextBoxComponent value={40} min={0} max={100} change={this.minEnd.bind(this)} ref={(obj) => {
                                                 this.minEndObj = obj;
-                                            }} />
+                                            }} aria-labelledby="minEndLabel"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">MaxStart</div>
+                                            <div id="maxStartLabel" className="userselect">MaxStart</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
                                             <NumericTextBoxComponent value={60} min={0} max={100} change={this.maxStart.bind(this)} ref={(obj) => {
                                                 this.maxStartObj = obj;
-                                            }} />
+                                            }} aria-labelledby="maxStartLabel"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">MaxEnd</div>
+                                            <div id="maxEndLabel" className="userselect">MaxEnd</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
                                             <NumericTextBoxComponent value={90} min={0} max={100} change={this.maxEnd.bind(this)} ref={(obj) => {
                                                 this.maxEndObj = obj;
-                                            }} />
+                                            }} aria-labelledby="maxEndLabel"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">Lock First Handle</div>
+                                            <div id="lockFirstHandleLabel" className="userselect">Lock First Handle</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
-                                            <CheckBoxComponent ref={(scope) => { this.fixOneObj = scope; }} change={this.fixOneChange.bind(this)} />
+                                            <CheckBoxComponent ref={(scope) => { this.fixOneObj = scope; }} change={this.fixOneChange.bind(this)}  aria-labelledby="lockFirstHandleLabel"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">Lock Second Handle</div>
+                                            <div id="lockSecondHandleLabel" className="userselect">Lock Second Handle</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
-                                            <CheckBoxComponent ref={(scope) => { this.fixTwoObj = scope; }} change={this.fixTwoChange.bind(this)} />
+                                            <CheckBoxComponent ref={(scope) => { this.fixTwoObj = scope; }} change={this.fixTwoChange.bind(this)}  aria-labelledby="lockSecondHandleLabel"/>
                                         </td>
                                     </tr>
                                 </tbody>

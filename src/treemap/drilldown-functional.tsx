@@ -19,11 +19,16 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { Alignment } from "@syncfusion/ej2-charts";
+import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
+
 import * as data from './treemap-data/drilldown-sample.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
-    .control-fluid {
-        padding: 0px !important;
+    .drilldown-checkbox {
+        padding-left: 0px !important;
+    }
+    .e-view.fluent2 #property .drilldown-checkbox, .e-view.fluent2-dark #property .drilldown-checkbox {
+        padding-left: 0px; margin-left: -10px;
     }`;
 const Drilldown = () => {
     useEffect(() => {
@@ -33,6 +38,7 @@ const Drilldown = () => {
     let nameElement = useRef<HTMLInputElement>(null);
     let headerElement = useRef<DropDownListComponent>(null);
     let labelElement = useRef<DropDownListComponent>(null);
+    let textElement: TextBoxComponent;
     const drillViewChange = (args: ChangeEventArgs) => {
         let value: boolean = args.checked;
         treemapInstance.current.drillDownView = value;
@@ -44,7 +50,7 @@ const Drilldown = () => {
         treemapInstance.current.refresh();
     };
     const breadCrumbTextChange = (args: ChangeEventArgs) => {
-        let value: string = nameElement.current.value;
+        let value: string = textElement.value;
         treemapInstance.current.breadcrumbConnector = value;
         treemapInstance.current.refresh();
     };
@@ -93,7 +99,7 @@ const Drilldown = () => {
         }
     };
     return (
-        <div className="control-pane">
+        <main><div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-md-9">
@@ -158,7 +164,7 @@ const Drilldown = () => {
                 {/* Property Panel */}
                 <div className="col-md-3 property-section">
                     <PropertyPane title="Properties">
-                        <table
+                        <table role='none'
                             id="property"
                             title="Properties"
                             className="property-panel-table"
@@ -170,7 +176,7 @@ const Drilldown = () => {
                                     <div style={{ paddingLeft: "0px" }}>Drill Down View</div>
                                 </td>
                                 <td>
-                                    <div style={{ paddingTop: "0px", paddingLeft: "0px" }}>
+                                    <div className="drilldown-checkbox" style={{ paddingTop: "0px"}}>
                                         <CheckBoxComponent
                                             id="drillView"
                                             checked={false}
@@ -184,7 +190,7 @@ const Drilldown = () => {
                                     <div style={{ paddingLeft: "0px" }}>Enable Bread Crumb</div>
                                 </td>
                                 <td>
-                                    <div style={{ paddingTop: "0px", paddingLeft: "0px" }}>
+                                    <div className="drilldown-checkbox" style={{ paddingTop: "0px" }}>
                                         <CheckBoxComponent
                                             id="breadCrumb"
                                             checked={false}
@@ -198,15 +204,8 @@ const Drilldown = () => {
                                     <div style={{ paddingLeft: "0px" }}>Bread Crumb Text</div>
                                 </td>
                                 <td>
-                                    <div style={{ marginLeft: "10px" }}>
-                                        <input
-                                            id="breadCrumbText"
-                                            ref={nameElement}
-                                            type="text"
-                                            defaultValue=" - "
-                                            style={{ width: "100%" }}
-                                            onChange={breadCrumbTextChange.bind(this)}
-                                        />
+                                    <div style={{ marginLeft: "0px" }}>
+                                        <TextBoxComponent className="e-input" value=' - ' style={{ width: '100%' }} id="fileName" ref={d => textElement = d} onChange={breadCrumbTextChange.bind(this)}></TextBoxComponent>
                                     </div>
                                 </td>
                             </tr>
@@ -260,7 +259,8 @@ const Drilldown = () => {
                     en.wikipedia.org
                 </a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of TreeMap sample">
                 <p>
                     This sample demonstrates drill-down with the continents at the top
                     level followed by regions and countries. By clicking a continent, you
@@ -268,8 +268,8 @@ const Drilldown = () => {
                     Customizations can be done in the treemap, by using the options in the
                     properties panel
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render a TreeMap with multiple
                     items and drill it further. Change the drill down view and enable the
@@ -279,8 +279,8 @@ const Drilldown = () => {
                     The tooltip is enabled in this example. To see the tooltip in action,
                     hover the mouse over an item or tap an item in touch-enabled devices.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 export default Drilldown;

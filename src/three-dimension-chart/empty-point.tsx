@@ -93,7 +93,7 @@ export class CylindricalColumn extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information on the column 3D chart be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for React 3D column chart">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -104,7 +104,7 @@ export class CylindricalColumn extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     public onChartLoad(args: Chart3DLoadedEventArgs): void {
         let chart: Element = document.getElementById('charts');

@@ -238,7 +238,7 @@ function DrillDown () {
                                     </td>
                                     <td>
                                         <div>
-                                            <DropDownListComponent enabled={true} ref={(scope) => { optionsdll = scope; }} type="text" tabIndex={1} change={onChangeOption.bind(this)} width={"98%"}
+                                            <DropDownListComponent enabled={true} ref={(scope) => { optionsdll = scope; }} type="text" tabIndex={0} change={onChangeOption.bind(this)} width={"98%"}
                                                 id="etype" dataSource={options} fields={{ value: 'value', text: 'text' }} value='rowHeaders' />
                                         </div>
                                     </td>
@@ -350,7 +350,12 @@ function DrillDown () {
                     <td style={{ paddingTop: '3px' }}>Allows to expand specific header(s) within the respective field available in the pivot table's row or column axes.
                             It can be achieved by specifying the respective field name and its member(s), aka header name(s), inside the <code>drilledMembers</code> property in the <code>dataSourceSettings</code>.</td>
                 </tr>
-            </table>
+                </table><br />
+                <p>
+                    More information on the drill down can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/drill-down">
+                    documentation section</a>.
+                </p>
             </div>
         </div>
     )

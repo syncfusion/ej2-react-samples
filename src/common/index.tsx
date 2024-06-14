@@ -8,7 +8,7 @@ import { DataManager, DataUtil, Query } from '@syncfusion/ej2-data';
 import { Popup, Tooltip } from '@syncfusion/ej2-react-popups';
 import { DropDownList } from '@syncfusion/ej2-react-dropdowns'
 import { ImageEditorComponent } from '@syncfusion/ej2-react-image-editor';
-import * as elasticlunr from './lib/elasticlunr';
+import * as elasticlunr from 'elasticlunr';
 import * as searchJson from './search-index.json';
 import { LeftPane, setSelectList } from './leftpane';
 import { Sidebar, EventArgs } from '@syncfusion/ej2-navigations';
@@ -22,6 +22,7 @@ import * as arCultureData from '../common/cldr-data/main/ar/all.json';
 import * as swissCultureDate from '../common/cldr-data/main/fr-CH/all.json';
 import * as enCultureData from '../common/cldr-data/main/en/all.json';
 import * as chinaCultureData from '../common/cldr-data/main/zh/all.json';
+import { useEffect, useState } from 'react';
 let cBlock: string[] = ['ts-src-tab', 'html-src-tab'];
 const matchedCurrency: { [key: string]: string } = {
   'en': 'USD',
@@ -53,9 +54,9 @@ let resizeManualTrigger: boolean = false;
 /**
  * default theme on sample loaded
  */
-export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'material3';
+export let selectedTheme: string = location.hash.split('/')[1] || localStorage.getItem('ej2-theme') || 'fluent2';
 localStorage.removeItem('ej2-theme');
-const themeCollection: string[] = ['fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'material', 'material-dark', 'material3', 'material3-dark', 'fabric', 'fabric-dark', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'highcontrast'];
+const themeCollection: string[] = ['material3', 'bootstrap5', 'fluent2', 'tailwind', 'highcontrast', 'fluent'];
 let themeList: HTMLElement = document.getElementById('themelist');
 
 /**
@@ -86,6 +87,7 @@ let openedPopup: any;
 let headerThemeSwitch: HTMLElement = document.getElementById('header-theme-switcher');
 let prevAction: string;
 let themeDropDown: DropDownList;
+let themeModeDropDown: DropDownList;
 let cultureDropDown: DropDownList;
 let currencyDropDown: DropDownList;
 let newYear: number = new Date().getFullYear();
@@ -109,12 +111,17 @@ if (Browser.isDevice || isMobile) {
   sidebar.appendTo('#left-sidebar');
 }
 
+let openNew: Tooltip = new Tooltip({
+  content: 'Open Next.js Demos'
+});
+openNew.appendTo('.sb-nextjs-wrapper');
+
 /**
  * constant to process the sample url
  */
 const urlRegex: RegExp = /(npmci\.syncfusion\.com|ej2\.syncfusion\.com)(\/)(development|production)*/;
 const sampleRegex: RegExp = /#\/(([^\/]+\/)+[^\/\.]+)/;
-const sbArray: string[] = ['angular','nextjs', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc', 'vue', 'blazor'];
+const sbArray: string[] = ['angular', 'nextjs', 'typescript', 'javascript', 'aspnetcore', 'aspnetmvc', 'vue', 'blazor'];
 const sbObj: { [index: string]: string } = { 'angular': 'angular', 'nextjs': 'nextjs', 'typescript': '', 'javascript': 'javascript', 'vue' : 'vue', 'blazor': 'blazor'};
 
 /**
@@ -138,16 +145,29 @@ overlay();
 /**
  * Mobile View
  */
+const thememode=document.getElementById('theme-mode');
+const mobilemodeicon=document.getElementById('mobile-mode-icon');
 if (isMobile) {
   select('.sb-left-pane-footer').appendChild(select('.sb-footer-left'));
   select('#left-sidebar').classList.add('sb-hide');
   leftToggle.classList.remove('toggle-active');
+  if (selectedTheme.includes('highcontrast')) {
+    thememode.classList.add('hidden');
+  }
+  if (selectedTheme.includes('-dark')) {
+    mobilemodeicon.classList.add('pane-light-theme');
+  }
+  else {
+    mobilemodeicon.classList.add('pane-dark-theme');
+  }
 }
 
 if (Browser.isDevice || isMobile) {
   leftToggle.setAttribute('aria-expanded', 'false');
+  select('.sb-nextjs-mobile-wrapper').classList.toggle('sb-hide');
 } else {
   leftToggle.setAttribute('aria-expanded', 'true');
+  select('.sb-nextjs-wrapper').classList.toggle('sb-hide');
 }
 
 /**
@@ -174,9 +194,11 @@ export function setSbLink(): void {
     let ele: HTMLFormElement = (select('#' + sb) as HTMLFormElement);
     if (sb === 'aspnetcore' || sb === 'aspnetmvc') {
        ele.href = sb === 'aspnetcore' ? 'https://ej2.syncfusion.com/aspnetcore/' : 'https://ej2.syncfusion.com/aspnetmvc/';
+
     } else if (sb === 'nextjs') {
-        ele.href = 'https://ej2.syncfusion.com/nextjs/demos/';
-    } else if (sb === 'blazor') {
+      ele.href = 'https://ej2.syncfusion.com/nextjs/demos/';
+    }
+    else if (sb === 'blazor') {
         ele.href = 'https://blazor.syncfusion.com/demos/';
     } else {
       ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :
@@ -245,8 +267,27 @@ function renderSbPopups(): void {
   switcherPopup.hide();
   themeSwitherPopup.hide();
   themeDropDown = new DropDownList({
-    index: 0,
-    change: (e: any) => { switchTheme(e.value); }
+    index: themeCollection.indexOf(selectedTheme.split('-')[0]),
+    change: (e: any) => {
+      if (selectedTheme.includes('-dark') && !e.value.includes('highcontrast')) {
+        switchTheme(e.value + '-dark');
+      }
+      else {
+        switchTheme(e.value);
+      }
+     }
+  });
+  themeModeDropDown = new DropDownList({
+    index: selectedTheme.includes('-dark') ? 1 : 0,
+    change: (e: any) => {
+      const mode = e.value;
+      if (mode === 'Dark' && !selectedTheme.includes('highcontrast')) {
+        switchTheme(selectedTheme + '-dark');
+      }
+      else {
+        switchTheme(selectedTheme.replace('-dark', ''))
+      }
+    }
   });
   cultureDropDown = new DropDownList({
     index: 0,
@@ -268,6 +309,7 @@ function renderSbPopups(): void {
   cultureDropDown.appendTo('#sb-setting-culture');
   currencyDropDown.appendTo('#sb-setting-currency');
   themeDropDown.appendTo('#sb-setting-theme');
+  themeModeDropDown.appendTo('#sb-theme-mode');
 
   /**
    * add header to element
@@ -300,7 +342,8 @@ function changeTheme(e: MouseEvent): void {
   let target: Element = e.target as HTMLElement;
   target = closest(target, 'li');
   let themeName: string = target.id;
-  switchTheme(themeName);
+  const newTheme = (selectedTheme.includes('-dark') && !themeName.includes('highcontrast') ) ? (themeName + '-dark') : themeName;
+  switchTheme(newTheme);
   let imageEditorElem = document.querySelector(".e-image-editor") as HTMLElement;
   if (imageEditorElem != null) {
     let imageEditor: ImageEditorComponent = getComponent(document.getElementById(imageEditorElem.id), 'image-editor') as ImageEditorComponent;
@@ -535,6 +578,7 @@ function onsearchInputChange(e: KeyboardEvent): void {
     expand: true,
     boolean: 'AND',
   });
+  val.map((item) => item['doc'] = searchInstance.documentStore.docs[item.ref]);
   let value: any = [];
   if (Browser.isDevice) {
       for (let file of val) {
@@ -806,8 +850,8 @@ function loadTheme(theme: string): void {
     }
   }
   body.classList.add(theme);
-  themeList.querySelector('.active').classList.remove('active');
-  themeList.querySelector('#' + theme).classList.add('active');
+  const activeTheme = theme.replace('-dark', '');
+  themeList.querySelector('#' + activeTheme).classList.add('active');
   let ajax: Ajax = new Ajax('./styles/' + theme + '.css', 'GET', true);
   ajax.send().then((result: any) => {
     let doc: HTMLFormElement = document.getElementById('themelink') as HTMLFormElement;
@@ -838,3 +882,27 @@ function loadTheme(theme: string): void {
 if ('serviceWorker' in navigator){
   navigator.serviceWorker.register('/src/service-worker.js');
   }
+
+/**
+ *  themeChangebutton
+ */
+function ThemeChangeButton() {
+  const [isVisible, setIsVisible] = useState(!selectedTheme.includes('highcontrast'));
+  const handleButton = () => {
+    const isDark = selectedTheme.includes('-dark');
+    const isNewThemeDark = isDark ? selectedTheme.replace('-dark', '') : (selectedTheme + '-dark');
+    switchTheme(isNewThemeDark);
+  }
+  useEffect(() => {
+    setIsVisible(!selectedTheme.includes('highcontrast'));
+  }, [selectedTheme])
+  const buttonClasses = `sb-themeswitch-btn ${!isVisible ? 'hidden' : ''}`;
+  return (
+    <button className={buttonClasses} onClick={handleButton}><span className={`sb-icons ${selectedTheme.includes('-dark') ? 'dark-theme' : 'light-theme'}`}></span>{selectedTheme.includes('-dark') ? 'LIGHT' : 'DARK'}</button>
+  )
+}
+
+if (!isMobile) {
+  createRoot(document.getElementById('dark-light-content')).render(<ThemeChangeButton />);
+  thememode.classList.add('hidden');
+}

@@ -20,13 +20,13 @@ export class Checklist extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
             <div id="flat-list">
-                <h4>Flat List</h4>
+                <p className="displayText">Flat List</p>
 
                 {/* ListView element */}
                 <ListViewComponent id="sample-list-flat" dataSource={flatList} showCheckBox={true}></ListViewComponent>
             </div>
             <div id="group-list">
-                <h4>Group List</h4>
+                <p className="displayText">Group List</p>
 
                 {/* Group ListView element */}
                 <ListViewComponent id="sample-list-group" dataSource={groupData} fields={this.fields}

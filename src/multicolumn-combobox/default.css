@@ -1,0 +1,19 @@
+.control-wrapper.multicolumn {
+    margin: 0 auto;
+    width: 500px;
+}
+
+@media screen and (max-width: 480px) {
+    .control-wrapper.multicolumn {
+        width: 300px;
+    }
+}
+
+.property-section .right-side {
+    padding-left: 10px;
+}
+
+.property-section .left-side {
+    padding: 5px;
+    width: 25%
+}

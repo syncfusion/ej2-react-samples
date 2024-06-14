@@ -25,7 +25,7 @@ export class TextPointer extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -79,19 +79,20 @@ export class TextPointer extends SampleBase<{}, {}> {
                         </AxesDirective>
                     </CircularGaugeComponent>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
                     <p>
                         This sample visualizes the performance outcome of a work using the text pointer in the circular gauge.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>In this example, you can see how to use a text to customize the pointer in the circular gauge. The text can be added to the circular gauge's pointer primarily through the use of the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/pointerModel/#type">type</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/pointerModel/#markershape">markerShape</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/pointerModel/#text">text</a> properties in the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/pointerModel/">PointersDirective</a>.
                     </p>
                     <p>
                         More information on the pointers can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-pointers/">documentation section</a>.
                     </p>
-                </div>
-            </div >
+                </section>
+            </main>
         )
     }
 }

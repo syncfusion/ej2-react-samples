@@ -20,7 +20,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -43,10 +43,10 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                             }}>
                             <Inject services={[Bubble, MapsTooltip, Zoom, Marker, NavigationLine]} />
                             <LayersDirective>
-                                <LayerDirective layerType='OSM'>
+                                <LayerDirective urlTemplate="https://tile.openstreetmap.org/level/tileX/tileY.png">
                                     <MarkersDirective>
                                     <MarkerDirective visible={true}
-                                        template='<div><img src="src/maps/images/group.svg" style="height:15px;width:15px;"></img></div>'
+                                        template='<div><img alt="Group image" src="src/maps/images/group.svg" style="height:15px;width:15px;"></img></div>'
                                         dataSource={[{
                                             name: 'Mexico City',
                                             latitude: 23.6445,
@@ -58,7 +58,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                                         }}>
                                     </MarkerDirective>
                                     <MarkerDirective visible={true}
-                                        template='<div><img src="src/maps/images/ballon.png" style="height:30px;width:20px;"></img></div>'
+                                        template='<div><img alt="Balloon image" src="src/maps/images/ballon.png" style="height:30px;width:20px;"></img></div>'
                                         dataSource={[{
                                             name: 'Mexico City',
                                             latitude: 24.2005,
@@ -70,7 +70,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                                         }}>
                                     </MarkerDirective>
                                     <MarkerDirective visible={true}
-                                        template='<div style= "font-weight:500; font-size: 13px; text-align: left">Mexico</div>'
+                                        template='<div style= "font-weight:500; font-size: 13px; text-align: left, color:#000;">Mexico</div>'
                                         dataSource={[{
                                             name: 'Mexico City',
                                             latitude: 24.0005,
@@ -78,7 +78,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                                         }]}>
                                     </MarkerDirective>
                                     <MarkerDirective visible={true}
-                                        template='<div><img src="src/maps/images/oval.svg" style="height:15px;width:15px;"></img></div>'
+                                        template='<div><img alt="Oval image" src="src/maps/images/oval.svg" style="height:15px;width:15px;"></img></div>'
                                         dataSource={[{                                            
                                             name: 'Los Angeles',
                                             latitude: 34.0522,
@@ -90,7 +90,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                                         }}>
                                     </MarkerDirective>
                                     <MarkerDirective visible={true}
-                                        template='<div><div style="text-align: right; font-weight:500; font-size: 13px;">Los Angeles</br>International Airport</div></div>'
+                                        template='<div><div style="text-align: right; font-weight:500; font-size: 13px; color: #000;">Los Angeles</br>International Airport</div></div>'
                                         dataSource={[{                                            
                                             name: 'Los Angeles City',
                                             latitude: 34.7000,
@@ -98,7 +98,7 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                                         }]}>
                                     </MarkerDirective>
                                     <MarkerDirective visible={true}
-                                        template='<div><img src="src/maps/images/map-tooltip.svg" style="height:50px;width:100px;"></img></div>'
+                                        template='<div><img alt="Map tooltip" src="src/maps/images/map-tooltip.svg" style="height:50px;width:100px;"></img></div>'
                                         dataSource={[{
                                             latitude: 28.5,
                                             longitude: -110.400            
@@ -127,12 +127,13 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                 <div style={{float: 'right', marginRight: '10px' }}>Source: 
                     <a href="https://www.google.co.in/maps/dir/Los+Angeles,+CA,+USA/Mexico+City,+Mexico/@26.3645122,-117.6940069,5z/data=!4m14!4m13!1m5!1m1!1s0x80c2c75ddc27da13:0xe22fdf6f254608f4!2m2!1d-118.2436849!2d34.0522342!1m5!1m1!1s0x85ce0036b1352927:0xdefd9e4ee8d18a5b!2m2!1d-99.1013498!2d19.2464696!3e4?hl=en" target="_blank">www.google.co.in/maps</a>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                         This sample illustrates the flight route from Los Angeles to Mexico City using Navigation lines feature in the OpenStreetMap.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render the navigation lines on the OpenStreetMap. Also denoted the source and destination locations using marker template.
                     </p>
@@ -141,8 +142,8 @@ export class OSMNavigation extends SampleBase<{}, {}> {
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a marker, inject the Marker module using the <code>Maps.Inject(Marker)</code> method.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     

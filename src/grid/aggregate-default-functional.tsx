@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Page, Aggregate, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Page, Aggregate, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -15,15 +15,22 @@ function AggregateDefault() {
     return (<span>Average: {props.Average}</span>)
   }
   const pageSettings: Object = { pageCount: 5 };
+  const filterSettings: FilterSettingsModel = {type: 'Excel'};
+  const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  const customeridRule: Object = { required: true, minLength: 5};
+  const orderidRules: Object = { required: true, number: true };
+  const freightRules: Object = { required: true, min: 0 };
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GridComponent dataSource={data} allowPaging={true} pageSettings={pageSettings} allowSorting={true}>
+        <GridComponent dataSource={data} allowPaging={true} pageSettings={pageSettings} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar}>
           <ColumnsDirective>
-            <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'></ColumnDirective>
-            <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170'></ColumnDirective>
-            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
+            <ColumnDirective field='OrderID' headerText='Order ID' width='150' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+            <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={customeridRule}></ColumnDirective>
+            <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit' ></ColumnDirective>
+            <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' editType='datepickeredit'></ColumnDirective>
+            <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit'></ColumnDirective>
           </ColumnsDirective>
           <AggregatesDirective>
             <AggregateDirective>
@@ -37,7 +44,7 @@ function AggregateDefault() {
               </AggregateColumnsDirective>
             </AggregateDirective>
           </AggregatesDirective>
-          <Inject services={[Page, Aggregate, Sort]} />
+          <Inject services={[Page, Aggregate, Sort, Toolbar, Edit, Filter]} />
         </GridComponent>
         <div id="action-description">
           <p>This sample demonstrates aggregate functionality of the Grid. In this sample, the aggregate value for the column “Freight” is displayed in column footer.</p>

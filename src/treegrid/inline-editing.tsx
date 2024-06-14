@@ -6,6 +6,15 @@ import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
+const SAMPLE_CSS = `
+.fluent2,
+.fluent2-dark,
+.fluent2-highcontrast {
+    #columnddl .e-input-group {
+        width: 130px !important;
+    }
+}`;
+
 export class Editing extends SampleBase<{}, {}> {
 
   public treegridObj: TreeGridComponent;
@@ -35,6 +44,11 @@ export class Editing extends SampleBase<{}, {}> {
   render() {
     return (
       <div className='control-pane'>
+        {/* custom code start */}
+        <style>
+          {SAMPLE_CSS}
+        </style>
+        {/* custom code end */}
         <div className='control-section'>
          <div className = 'col-md-9'>
             <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true} selectedRowIndex={2}

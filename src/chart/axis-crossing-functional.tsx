@@ -44,7 +44,7 @@ const AxisCrossing = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const change = (): void => {
         if (dropElement.current.value === 'X') {
@@ -102,21 +102,21 @@ const AxisCrossing = () => {
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Crosses Value:</div>
+                                    <div id="crossValue">Crosses Value:</div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <NumericTextBoxComponent value={0} min={-8} max={8} width={120} step={2} change={crosshingValue.bind(this)} style={{ marginLeft: '-5px' }} ref={numericValue} />
+                                        <NumericTextBoxComponent value={0} min={-8} max={8} width={120} step={2} change={crosshingValue.bind(this)} style={{ marginLeft: '-5px' }} ref={numericValue} aria-labelledby="Text"/>
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Placing Label Near to Axis Line:</div>
+                                    <div id="axis">Placing Label Near to Axis Line:</div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <input type="checkbox" id="axisElements" onChange={(e) => handleCheckboxChange(e)} style={{ marginLeft: '-5px' }} defaultChecked={true} ref={checkboxElement} />
+                                        <input type="checkbox" id="axisElements" onChange={(e) => handleCheckboxChange(e)} style={{ marginLeft: '-5px' }} defaultChecked={true} ref={checkboxElement} aria-labelledby="Checkbox checked"/>
                                     </div>
                                 </td>
                             </tr>
@@ -139,7 +139,7 @@ const AxisCrossing = () => {
                     If the axis name is not valid, primaryXAxis or primaryYAxis will be used for crossing, by default.
                 </p>
                 <p>
-                    More information on the smart axis labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-customization/#axis-crossing">documentation section</a>.
+                    More information on the smart axis labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-customization/#axis-crossing" aria-label="Navigate to the documentation for Axis Crossing in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div >

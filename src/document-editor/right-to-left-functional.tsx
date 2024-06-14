@@ -549,6 +549,35 @@ const RightToLeftView = () => {
         "https://services.syncfusion.com/react/production/api/documenteditor/";
     let container = useRef<DocumentEditorContainerComponent>(null);
     let titleBar: TitleBar;
+    let toolbarOptions: any = [
+        'New',
+        'Open',
+        'Separator',
+        'Undo',
+        'Redo',
+        'Separator',
+        'Image',
+        'Table',
+        'Hyperlink',
+        'Bookmark',
+        'TableOfContents',
+        'Separator',
+        'Header',
+        'Footer',
+        'PageSetup',
+        'PageNumber',
+        'Break',
+        'Separator',
+        'Find',
+        'Separator',
+        'Comments',
+        'TrackChanges',
+        'Separator',
+        'LocalClipboard',
+        'Separator',
+        'FormFields',
+        'UpdateFields',
+    ];
     const onLoadDefault = (): void => {
         // tslint:disable
         let defaultDocument: object = {
@@ -593,6 +622,7 @@ const RightToLeftView = () => {
                         enableRtl={true}
                         locale="ar-AE"
                         enableToolbar={true}
+                        toolbarItems={toolbarOptions} 
                     />
                 </div>
             </div>

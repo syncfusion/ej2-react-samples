@@ -207,7 +207,7 @@ function Filtering () {
                                             <div>
                                                 <MultiSelectComponent id="checkbox" placeholder="Select members" ref={(scope) => { valuesddl = scope; }} dataSource={values}
                                                     fields={field} mode="CheckBox" showClearButton={true} enableSelectionOrder={false} showDropDownIcon={true}
-                                                    select={select.bind(this)} removed={removed.bind(this)} open={open.bind(this)}>
+                                                    select={select.bind(this)} removed={removed.bind(this)} open={open.bind(this)} aria-expanded={'false'}>
                                                     <Inject services={[CheckBoxSelection]} />
                                                 </MultiSelectComponent>
                                             </div>
@@ -248,6 +248,11 @@ function Filtering () {
                         <code> name</code> and
                         <code> items</code> options inside the
                         <code> filterSettings</code> property in the pivot table.
+                    </p><br />
+                    <p>
+                        More information on the filtering can be found in this <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/filtering">
+                        documentation section</a>.
                     </p>
                 </div>
             </div>

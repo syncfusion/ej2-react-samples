@@ -47,7 +47,7 @@ export class Funnel extends SampleBase<{}, {}> {
               Chart component features are segregated into individual feature-wise modules. To use Funnel series, we need to inject <code>FunnelSeries</code> module into <code>services</code>.
           </p>
           <p>
-              More information about the funnel series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/funnel/">documentation section</a>.
+              More information about the funnel series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/accumulation-chart/funnel/" aria-label="Navigate to the documentation for Funnel in React Accumulation Chart component">documentation section</a>.
           </p>
       </div>
   </div>
@@ -64,7 +64,7 @@ export class Funnel extends SampleBase<{}, {}> {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
     args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
    
   };
  

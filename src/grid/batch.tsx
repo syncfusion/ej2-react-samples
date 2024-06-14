@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Edit, Toolbar, Page, Inject, Sort, BeforeAutoFillEventArgs } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Edit, Toolbar, Page, Inject, Sort, BeforeAutoFillEventArgs, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class BatchEdit extends SampleBase<{}, {}> {
   public toolbarOptions: any = ['Add', 'Delete', 'Update', 'Cancel'];
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Batch' };
   public editparams: any = { params: { popupHeight: '300px' } };
   public customeridRule: Object = { required: true, minLength: 5};
@@ -18,7 +19,7 @@ export class BatchEdit extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className='col-md-9'>
-              <GridComponent dataSource={data} pageSettings={this.pageSettings} allowSorting={true} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings}>
+              <GridComponent dataSource={data} pageSettings={this.pageSettings} allowSorting={true} toolbar={this.toolbarOptions} allowPaging={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings}>
                 <ColumnsDirective>
                   <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
                   <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.customeridRule}></ColumnDirective>
@@ -26,7 +27,7 @@ export class BatchEdit extends SampleBase<{}, {}> {
                   <ColumnDirective field='OrderDate' headerText='Order Date' editType='datepickeredit' format='yMd' width='170'></ColumnDirective>
                   <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
                 </ColumnsDirective>
-                <Inject services={[Page, Toolbar, Edit, Sort]} />
+                <Inject services={[Page, Toolbar, Edit, Sort, Filter]} />
               </GridComponent>
             </div>
 

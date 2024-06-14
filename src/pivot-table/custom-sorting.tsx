@@ -264,7 +264,7 @@ export class CustomSorting extends SampleBase<{}, {}> {
                                     <td>
                                         <div>
                                             <DropDownListComponent enabled={true} ref={(scope) => { this.fieldsObj = scope; }}
-                                                change={this.onChange.bind(this)} width={"98%"} id="etype" type='text' tabIndex={1}
+                                                change={this.onChange.bind(this)} width={"98%"} id="etype" type='text' tabIndex={0}
                                                 dataSource={this.fields} index={0} fields={{ text: 'caption', value: 'Order' }} />
                                         </div>
                                     </td>
@@ -282,7 +282,7 @@ export class CustomSorting extends SampleBase<{}, {}> {
                                                 width={"98%"} placeholder="Select headers" id="etype"
                                                 type='text' tabIndex={1} dataSource={this.data} mode='CheckBox'
                                                 showDropDownIcon={true} showClearButton={false} enableSelectionOrder={false}
-                                                fields={{ text: 'Member' }}>
+                                                fields={{ text: 'Member' }} aria-label={'multiselect'}>
                                                 <Inject services={[CheckBoxSelection]} />
                                                 </MultiSelectComponent>
                                         </div>
@@ -314,13 +314,20 @@ export class CustomSorting extends SampleBase<{}, {}> {
                 </div>
             </div>
                 <div id="action-description">
-                <p>This sample demonstrates ordering used-defined member(s), aka header name(s), of specific field in row and column axes in ascending or descending order.</p>
+                    <p>This sample demonstrates ordering used-defined member(s), aka header name(s), of specific field in row and column axes in ascending or descending order.</p>
                 </div>
                 <div id="description">
-                <p>In this sample, any field from the <b>Field</b> dropdown list and its member(s), aka header name(s), from the <b>Headers</b> dropdown list can be ordered ascending or descending.
-             It is possible to achieve this by setting the <code>enableSorting</code> property to <b>true</b>, 
-             as well as the field name, sort order, and member(s) (which can be in any order) inside the pivot table's <code>sortSettings</code> property.
-             The <code>dataSourceSettings</code> includes <code>enableSorting</code> and <code>sortSettings</code> properties.</p>
+                    <p>
+                        In this sample, any field from the <b>Field</b> dropdown list and its member(s), aka header name(s), from the <b>Headers</b> dropdown list can be ordered ascending or descending.
+                        It is possible to achieve this by setting the <code>enableSorting</code> property to <b>true</b>, 
+                        as well as the field name, sort order, and member(s) (which can be in any order) inside the pivot table's <code>sortSettings</code> property.
+                        The <code>dataSourceSettings</code> includes <code>enableSorting</code> and <code>sortSettings</code> properties.
+                    </p><br />
+                    <p>
+                        More information on the custom sorting can be found in this <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/sorting#custom-sorting">
+                        documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

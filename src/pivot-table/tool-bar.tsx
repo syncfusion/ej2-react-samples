@@ -120,8 +120,7 @@ export class PivotToolbar extends SampleBase<{}, {}> {
     chartOnLoad(args): void {
         let selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
     render() {
         return (
@@ -220,7 +219,12 @@ export class PivotToolbar extends SampleBase<{}, {}> {
                             </td>
                             <td>Provides option to alter the report dynamically through UI.</td>
                         </tr>
-                    </table>
+                    </table><br />
+                    <p>
+                        More information on the toolbar can be found in this <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/tool-bar">
+                        documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

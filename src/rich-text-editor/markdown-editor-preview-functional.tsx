@@ -26,10 +26,11 @@ function Preview() {
       
   The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content`;
     // Rich Text Editor items list
-    const items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'OrderedList',
+    const items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|', 'Formats', 'Blockquote', 'OrderedList',
     'UnorderedList', '|', 'CreateLink', 'Image', 'CreateTable', '|', 'Undo', 'Redo'];
     let textArea: HTMLElement;
     let srcArea: Element;
+    let placeholder: string = 'Enter your text here...';
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {
         items: items,

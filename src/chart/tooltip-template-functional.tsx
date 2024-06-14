@@ -25,7 +25,7 @@ const ChartTooltipTemplate = () => {
     }, [])
     let template: string =
         '<div id="Tooltip"><table style="width:100%;  border: 1px solid black;" class="table-borderless">' +
-        '<tbody><tr><th rowspan="2" style="background-color: #C1272D"><img src="https://ej2.syncfusion.com/react/demos/src/chart/images/grain.png" />' +
+        '<tbody><tr><th rowspan="2" style="background-color: #C1272D"><img src="https://ej2.syncfusion.com/react/demos/src/chart/images/grain.png" alt="Grain Picture"/>' +
         '</th><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 14px; color: #E7C554; font-weight: bold; padding-left: 5px">' +
         '${x}</td></tr><tr ><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 18px; color: #FFFFFF; font-weight: bold; padding-left: 5px">${y}B</td>' +
         '</tr></tbody></table></div>';
@@ -60,7 +60,7 @@ const ChartTooltipTemplate = () => {
                     Chart component features are segregated into individual feature-wise modules. To use Tooltip, we need to inject <code>Tooltip</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information about the tooltip can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/tool-tip/">documentation section</a>.
+                    More information about the tooltip can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/tool-tip/" aria-label="Navigate to the documentation for Tooltip Template in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

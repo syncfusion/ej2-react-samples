@@ -25,7 +25,7 @@ const LocalData = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const GetLocalData = (): any => {
         let series1: Object[] = [];
@@ -73,7 +73,7 @@ const LocalData = () => {
                 </p>
                 <p>In this demo, the list of objects is assigned as the data source to the Charts control. The chart can be bound to IEnumerable, IQueryable, and ObservableCollection data sources.</p>
                 <p>
-                    More information about the local data binding can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#local-data">documentation section</a>.
+                    More information about the local data binding can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#local-data" aria-label="Navigate to the documentation for Local Data in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

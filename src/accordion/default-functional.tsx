@@ -64,7 +64,7 @@ const Default = () => {
           available space. This sample illustrates the simple Accordion rendering with <code>multiple</code> expand mode.
         </p>
         <p>
-          More information about Accordion can be found in this <a target="_blank"
+          More information about Accordion can be found in this <a aria-label="Accordion getting started" target="_blank"
           href="https://ej2.syncfusion.com/react/documentation/accordion/getting-started/">
           documentation</a> section.
         </p>

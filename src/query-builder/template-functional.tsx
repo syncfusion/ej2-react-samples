@@ -13,8 +13,8 @@ import './template.css';
 import { TabComponent, TabItemDirective, TabItemsDirective } from '@syncfusion/ej2-react-navigations';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { getCELQuery, getSpELQuery } from './util';
+import * as CodeMirror from 'codemirror';
 
-declare let CodeMirror: any;
 const Template = () => {
     useEffect(() => {
         updateSampleSection();
@@ -283,13 +283,10 @@ const Template = () => {
         content = celQuery
         /* custom code start */
         clearHighlight();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0], {
-            parserfile: "codemirror/contrib/sql/js/parsesql.js",
-            path: "codemirror/js/",
-            stylesheet: "css/sqlcolors.css",
-            matchBrackets: true,
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-cel-content')[0] as any, {
+            readOnly: true,
+            theme: 'default',
             lineWrapping: true,
-            textWrapping: true
         });
         codeMirrorEditor.setValue(content);
         /* custom code end */
@@ -305,13 +302,10 @@ const Template = () => {
         content = getSpELQuery(allRules);
         /* custom code start */
         clearHighlight();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0], {
-            parserfile: "codemirror/contrib/sql/js/parsesql.js",
-            path: "codemirror/js/",
-            stylesheet: "css/sqlcolors.css",
-            matchBrackets: true,
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-spel-content')[0] as any, {
+            readOnly: true,
+            theme: 'default',
             lineWrapping: true,
-            textWrapping: true
         });
         codeMirrorEditor.setValue(content);
         /* custom code end */

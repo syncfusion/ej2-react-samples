@@ -88,13 +88,13 @@ export class Grouping extends SampleBase<{}, {}> {
                 </tr>
                 <tr style={{ height: '50px' }}>
                   <td style={{ width: '60%' }}>
-                    <div>Group To:
+                    <div id="groupValue">Group To:
                         <p id="clubtext" style={{ fontWeight: 'normal' }}>9</p>
                     </div>
                   </td>
                   <td style={{ width: '40%' }}>
                     <div>
-                      <input type="range" name="clubvalue" onChange={this.onClubvalue.bind(this)} ref={slider => this.slider = slider} defaultValue="9" min="0" max="27" id="clubvalue" style={{ marginLeft: '-5px' }} />
+                      <input type="range" name="clubvalue" onChange={this.onClubvalue.bind(this)} ref={slider => this.slider = slider} defaultValue="9" min="0" max="27" id="clubvalue" style={{ marginLeft: '-5px' }} aria-labelledby="Slider"/>
                     </div>
                   </td>
                 </tr>
@@ -113,9 +113,8 @@ export class Grouping extends SampleBase<{}, {}> {
           
           <p> A tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.</p>
         <p>
-                        More information on the pie series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#pie-chart">documentation section</a>.
-                  </p>
+          More information on the grouping in pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/grouping" aria-label="Navigate to the documentation for Grouping in React Accumulation Chart component">documentation section</a>.
+        </p>
         </div>
       
       </div>

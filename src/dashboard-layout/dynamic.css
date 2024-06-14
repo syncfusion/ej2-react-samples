@@ -113,3 +113,28 @@ body.fluent.e-bigger #edit_target .e-btn.e-primary,  body.fluent-dark.e-bigger #
 #edit_dashboard{
     display: block;
 }
+
+.e-bigger.bootstrap5 #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.e-bigger.bootstrap5-dark #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.e-bigger.material #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.e-bigger.material-dark #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.material3 #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.material3-dark #togglebtn.e-btn .e-btn-icon.e-icon-left {
+    margin-left: 0em;
+    width: 1em;
+}
+
+.e-bigger.material3 #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.e-bigger.material3-dark #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.e-bigger.tailwind-dark #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.e-bigger.fabric #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.e-bigger.fabric-dark #togglebtn.e-btn .e-btn-icon.e-icon-left {
+    margin-left: -0.5em;
+    width: 1em;
+}
+
+.e-bigger.tailwind #togglebtn.e-btn .e-btn-icon.e-icon-left,
+.e-bigger.tailwind-dark #togglebtn.e-btn .e-btn-icon.e-icon-left {
+    margin-left: -0.2em;
+    width: 1em;
+}

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Sort, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Sort, Inject, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -8,20 +8,26 @@ function Sorting() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
+    const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    const customeridRule: Object = { required: true, minLength: 5};
+    const orderidRules: Object = { required: true, number: true };
+    const freightRules: Object = { required: true, min: 0 };
     const sortingOptions: Object = { columns: [{ field: 'Freight', direction: 'Ascending' }, { field: 'CustomerName', direction: 'Descending' }] };
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={data} allowPaging={true} allowSorting={true} pageSettings={{ pageCount: 5 }} sortSettings={sortingOptions}>
+                <GridComponent dataSource={data} allowPaging={true} allowSorting={true} pageSettings={{ pageCount: 5 }} sortSettings={sortingOptions} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar}>
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
-                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right'/>
-                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'/>
-                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
-                        <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
+                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign="Right" validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={customeridRule}></ColumnDirective>
+                        <ColumnDirective field='OrderDate' headerText='Order Date' width='130' format='yMd' textAlign='Right' editType='datepickeredit'/>
+                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'/>
+                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right" editType='datepickeredit'></ColumnDirective>
+                        <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit'></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Sort]} />
+                    <Inject services={[Page, Sort, Toolbar, Filter, Edit]} />
                 </GridComponent>
             </div>
             <div id="action-description">

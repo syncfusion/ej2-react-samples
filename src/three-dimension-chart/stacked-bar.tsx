@@ -83,7 +83,7 @@ export class StackedBar extends SampleBase<{}, {}> {
                         <code>StackingBarSeries3D</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the 3D chart can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bar-chart">documentation section</a>.
+                        More information on the 3D chart can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bar-chart" aria-label="Navigate to the documentation for React 3D bar chart">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -98,7 +98,7 @@ export class StackedBar extends SampleBase<{}, {}> {
     public load(args: Chart3DLoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
 
 }

@@ -21,7 +21,7 @@ export class Default extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -45,20 +45,21 @@ export class Default extends SampleBase<{}, {}> {
                         </AnnotationsDirective>
                     </LinearGaugeComponent>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample shows the linear gauge's basic rendering, which includes an axis, a pointer, major ticks, minor ticks and annotation.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         The linear gauge control shows scale values in either horizontal or vertical orientation. Axis, range, ticks, pointer, and container properties can be used to customize the basic appearance of the linear gauge.
                     </p>
                     <p>
                         More information on the linear gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/getting-started/">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+        </main>
         )
     }
 }

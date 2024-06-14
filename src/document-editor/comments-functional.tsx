@@ -122,7 +122,6 @@ const Comments = () => {
                         <li>Add or edit a comment.</li>
                         <li>Reply to a comment.</li>
                         <li>Resolving the comment discussion.</li>
-                        <li>@mention in comments.</li>
                     </ul>
                     <p style={{ display: "block" }}>
                         {" "}

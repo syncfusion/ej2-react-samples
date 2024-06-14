@@ -70,6 +70,7 @@ export class ProfilePicture extends SampleBase<{}, {}> {
 
     private dlgResetButtonClick(): void {
         this.imageEditorInstance.reset();
+        this.imageEditorInstance.select('circle');
     }
 
     private dlgRotateButtonClick(): void {

@@ -71,7 +71,7 @@ const SelectionChart = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const change = (): void => {
         setSelectMode(dropElement.current.value as SelectionMode);
@@ -137,10 +137,10 @@ const SelectionChart = () => {
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '80%' }}>
-                                    <div>Enable Multi-selection:</div>
+                                    <div id="multiSelection">Enable Multi-selection:</div>
                                 </td>
                                 <td style={{ width: '20%' }}>
-                                    <div><input type="checkbox" id="select" onChange={check.bind(this)} ref={checkElement} /></div>
+                                    <div><input type="checkbox" id="select" onChange={check.bind(this)} ref={checkElement} aria-labelledby="Checkbox unchecked"/></div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
@@ -163,11 +163,11 @@ const SelectionChart = () => {
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '80%' }}>
-                                    <div>Enable Hightlight Pattern:</div>
+                                    <div id="highLight">Enable Hightlight Pattern:</div>
                                 </td>
                                 <td style={{ width: '20%' }}>
                                     <div>
-                                        <input type="checkbox" id="highlightCheckbox" ref={checkBoxObj} onChange={highlightChange.bind(this)} />
+                                        <input type="checkbox" id="highlightCheckbox" ref={checkBoxObj} onChange={highlightChange.bind(this)} aria-labelledby="Checkbox unchecked"/>
                                     </div>
                                 </td>
                             </tr>
@@ -212,7 +212,7 @@ const SelectionChart = () => {
                 </p>
                 <br />
                 <p>
-                    More information about selection can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/selection/">documentation section</a>.
+                    More information about selection can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/selection/" aria-label="Navigate to the documentation for Selection in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

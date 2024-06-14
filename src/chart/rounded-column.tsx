@@ -107,24 +107,24 @@ export class RoundedColumn extends SampleBase<{}, {}> {
                     </ChartComponent>
                      </div>
                 <div id="action-description">
-                <p>
-                This sample shows the literacy rate by country in 2015 with the default column series in the chart.
-            </p>
+                    <p>
+                        This sample shows the literacy rate by country in 2015 with the default column series in the chart.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure the column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories. You can use the <code>ChartCornerRadius</code> option to customize the vertical rectangle, resulting in a rounded column.
-    </p>
+                        In this example, you can see how to render and configure the column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories. You can use the <code>ChartCornerRadius</code> option to customize the vertical rectangle, resulting in a rounded column.
+                    </p>
                     <br />
                     <p style={{ "fontWeight": 500 }}>Injecting Module</p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject
-        <code>ColumnSeries</code> module into <code>services</code>
-    </p>
+                        <code>ColumnSeries</code> module into <code>services</code>
+                    </p>
                     <p>
                         More information on the column series can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column">documentation section</a>.
-    </p>
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for Column Chart in React Chart Component">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )
@@ -137,7 +137,7 @@ export class RoundedColumn extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
    
         

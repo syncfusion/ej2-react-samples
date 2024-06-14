@@ -36,7 +36,7 @@ function ValueSorting () {
 
     return (
         <div className='control-pane'>
-            <div className='control-section' style={{ overflow: 'auto' }}>
+            <div className='control-section'>
                 <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'300'} showFieldList={true} enableValueSorting={true} gridSettings={{columnWidth: 140}}>
                     <Inject services={[FieldList]} />
                 </PivotViewComponent>
@@ -56,7 +56,12 @@ function ValueSorting () {
                                 value column needs to be sorted. The string which is used to separate the headers is given in the property
                 <code>headerDelimiters</code>. The sorting direction is performed by the
                 <code>sortOrder</code> property.</p>
-            </div>
+            </div><br />
+            <p>
+                More information on the value sorting can be found in this <a target="_blank"
+                    href="https://ej2.syncfusion.com/react/documentation/pivotview/sorting#value-sorting">
+                documentation section</a>.
+            </p>
         </div>
     )
 }

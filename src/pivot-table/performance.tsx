@@ -161,7 +161,7 @@ export class Performance extends SampleBase<{}, {}> {
                     <p>
                         More information on the virtual scrolling can be found in this <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/pivotview/virtual-scrolling">
-                            documentation section</a>.
+                        documentation section</a>.
                     </p>
                 </div>
             </div>

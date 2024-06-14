@@ -5,34 +5,82 @@ import { workTimeRange } from './data';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
-
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 export class WorkingTimeRange extends SampleBase<{}, {}> {
   private ganttInstance: GanttComponent;
   private workStartTime: NumericTextBoxComponent;
   private workEndTime: NumericTextBoxComponent;
+  private workStartTime1: NumericTextBoxComponent;
+  private workEndTime1: NumericTextBoxComponent;
+  public selectObj: DropDownListComponent;
   public isTimeUpdated: boolean = false;
-  public updateTime(): any {
-    let defaultDate: string = "08/08/2016", startDate: Date = new Date(defaultDate), endDate: Date = new Date(defaultDate);
-    let decPlace: number =  this.workStartTime.value - Math.floor(this.workStartTime.value);
-    startDate.setHours(this.workStartTime.value);
-    startDate.setMinutes(decPlace * 60);
-    decPlace = this.workEndTime.value - Math.floor(this.workEndTime.value);
-    endDate.setHours(this.workEndTime.value);
-    endDate.setMinutes(decPlace * 60);
-       
-    /*Validate time value and update the time range*/
-    if (startDate.getTime() < endDate.getTime() && this.isTimeUpdated == false) {
-      let workingTime: object[] = [{ from: this.workStartTime.value, to: this.workEndTime.value }];
-      this.ganttInstance.dayWorkingTime = workingTime;
-      this.isTimeUpdated = false;
-    }
-    else {
-      this.isTimeUpdated = true;
-      this.workStartTime.value = this.ganttInstance.dayWorkingTime[0].from;
-      this.workEndTime.value = this.ganttInstance.dayWorkingTime[this.ganttInstance.dayWorkingTime.length - 1].to;
+  public workDays: { [key: string]: Object }[] = [
+    { id: 'Monday', day: 'Monday' },
+    { id: 'Tuesday', day: 'Tuesday' },
+    { id: 'Wednesday', day: 'Wednesday' },
+    { id: 'Thursday', day: 'Thursday' },
+    { id: 'Friday', day: 'Friday' },
+];
+public defaultValue: string = "Monday";
+  private select(args: any): void {
+    let startTime: number = 8;
+    let endTime: number = 17;
+    for(let i=0;i<this.ganttInstance.weekWorkingTime.length;i++) {
+        if(this.ganttInstance.weekWorkingTime[i].dayOfWeek === args.item.innerText) {
+            startTime = this.ganttInstance.weekWorkingTime[i].timeRange[0].from;
+            endTime = this.ganttInstance.weekWorkingTime[i].timeRange[0].to;
+            break;
         }
-    this.isTimeUpdated = false;
+    }
+    this.workStartTime1.value = startTime;
+    this.workEndTime1.value = endTime;
   };
+  private change1(args: any): void {
+    if (this.workStartTime.value >= this.workEndTime.value) {
+            if(this.workStartTime.value < 24) {
+               this.workEndTime.value = this.workStartTime.value + 1.00;
+            }
+            else {
+                this.workEndTime.value = 0.00;
+            }
+        }
+  };
+  private change2(args: any): void {
+    if (this.workStartTime1.value >= this.workEndTime1.value) {
+            if(this.workStartTime1.value < 24) {
+               this.workEndTime1.value = this.workStartTime1.value + 1.00;
+            }
+            else {
+                this.workEndTime1.value = 0.00;
+            }
+        }
+  };
+  private perform(): void {
+    let selectedDay = this.selectObj.value;
+    let workingTime: any = [];
+    let weekWorkingTime = this.ganttInstance.weekWorkingTime;
+    let isUpdated = false;
+    for (let i = 0; i < weekWorkingTime.length; i++) {
+      workingTime.push({ dayOfWeek: weekWorkingTime[i].dayOfWeek, timeRange: weekWorkingTime[i].timeRange });
+    }
+    for(let i=0;i<workingTime.length;i++) {
+        if(workingTime[i].dayOfWeek === selectedDay) {
+            workingTime[i].dayOfWeek= workingTime[i].dayOfWeek;
+            workingTime[i].timeRange = [{ from: this.workStartTime1.value, to: this.workEndTime1.value }]
+            isUpdated = true;
+            break;
+        }
+    }
+    if(!isUpdated) {
+      workingTime.push({ dayOfWeek: selectedDay, timeRange: [{ from: this.workStartTime1.value, to: this.workEndTime1.value }] });
+    }
+    this.ganttInstance.weekWorkingTime = workingTime;
+  }
+  private update(): void {
+    let workingTime = [{ from: this.workStartTime.value, to: this.workEndTime.value }];
+    this.ganttInstance.dayWorkingTime = workingTime;
+  }
   public taskFields: any = {
     id: 'TaskID',
     name: 'TaskName',
@@ -55,8 +103,11 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  public projectStartDate: Date = new Date('04/02/2019');
-  public projectEndDate: Date = new Date('04/28/2019');
+  public projectStartDate: Date = new Date('04/02/2024');
+  public projectEndDate: Date = new Date('04/28/2024');
+  public splitterSettings = {
+    columnIndex: 1
+};
   render() {
     return (
       <div className='control-pane'>
@@ -64,11 +115,10 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
           <div className='col-lg-8'>
             <GanttComponent id='WorkingTimeRange' ref={gantt => this.ganttInstance = gantt} dataSource={workTimeRange}
               highlightWeekends={true} taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
-              timelineSettings={this.timelineSettings} durationUnit={this.durationUnit}
+              timelineSettings={this.timelineSettings} durationUnit={this.durationUnit} splitterSettings={this.splitterSettings}
               projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
-              <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
-              <ColumnDirective field='TaskName' width='250'></ColumnDirective>
+              <ColumnDirective field='TaskName' width='270'></ColumnDirective>
               <ColumnDirective field='StartDate'></ColumnDirective>
               <ColumnDirective field='EndDate'></ColumnDirective>
               <ColumnDirective field='Duration'></ColumnDirective>
@@ -86,28 +136,84 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
                 <col style={{width:'45%'}} />
               </colgroup>
               <tbody>
-                <tr>
+              <tr>
+                <td style={{ width: '100%' }}>
+                  <label htmlFor='Time range'>Time Range for all days</label>
+                </td>
+              </tr>
+              <tr>
                   <td style={{ width: '100%' }}>
-                    <div style={{ fontSize: '15px' }}>Work Start Time</div>
+                  <div id='workStartTime' style={{marginLeft: '10px', marginTop:"10px"}}>Work Start Time</div>
                   </td>
-                </tr>
-                <tr>
                   <td style={{ width: '100%' }}>
                     <div style={{ paddingTop: '0px'}}>
-                    <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime = NumericTextBox} value={8} min={0} max={24} showSpinButton={true} width='150px' step={0.5} change={this.updateTime.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime = NumericTextBox} id='workStart' value={8} min={0} max={24} showSpinButton={true} change={this.change1.bind(this)} width='120px' step={0.5}></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td style={{ width: '100%' }}>
-                    <div style={{ fontSize: '15px' }}>Work End Time</div>
+                  <div id='workEndTime' style={{marginLeft: '10px', marginTop:"10px"}}>Work End Time</div>
+                  </td>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ paddingTop: '0px'}}>
+                    <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime = NumericTextBox} id='workEnd' value={8} min={0} max={24} showSpinButton={true} change={this.change1.bind(this)} width='120px' step={0.5}></NumericTextBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: '30%' }}>
+                    <div>
+                      <ButtonComponent onClick={this.update.bind(this)}> Update for all days </ButtonComponent>
+                    </div>
                   </td>
                 </tr>
                 </tbody>
+                <br></br>
                 <tr>
                   <td style={{ width: '100%' }}>
+                  <label htmlFor='Time Range'>Time range for each day</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: '30%' }}>
+                    <div>
+                      <div id="WorkWeek">Working Days</div>
+                    </div>
+                  </td>
+                  <td style={{ width: '70%' }}>
+                    <div style={{ paddingTop: '0px', paddingLeft: '0px'}}>
+                    <DropDownListComponent ref={dropselect=> this.selectObj = dropselect} id="WorkWeek" style={{ padding: '2px' }} value={this.defaultValue}
+                          dataSource={this.workDays} width='100%' popupHeight='350px' fields={{ text: 'day', value: 'id' }}
+                          select={this.select.bind(this)}>
+                      </DropDownListComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%' }}>
+                  <div id='workStart' style={{marginLeft: '10px', marginTop:"10px"}}>Work Start Time</div>
+                  </td>
+                  <td style={{ width: '100%' }}>
                     <div style={{ paddingTop: '0px'}}>
-                    <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime = NumericTextBox} value={17} min={0} max={24} showSpinButton={true} width='150px' step={0.5} change={this.updateTime.bind(this)}></NumericTextBoxComponent>
+                    <NumericTextBoxComponent ref={NumericTextBox => this.workStartTime1 = NumericTextBox} id='workStart' value={8} min={0} max={24} showSpinButton={true} change={this.change2.bind(this)} width='120px' step={0.5}></NumericTextBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: '100%' }}>
+                  <div id='workEnd' style={{marginLeft: '10px', marginTop:"10px"}}>Work End Time</div>
+                  </td>
+                  <td style={{ width: '100%' }}>
+                    <div style={{ paddingTop: '0px'}}>
+                    <NumericTextBoxComponent ref={NumericTextBox => this.workEndTime1 = NumericTextBox} id='workEnd' value={8} min={0} max={24} showSpinButton={true} change={this.change2.bind(this)} width='120px' step={0.5}></NumericTextBoxComponent>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ width: '30%' }}>
+                    <div>
+                      <ButtonComponent onClick={this.perform.bind(this)}> Update for each day </ButtonComponent>
                     </div>
                   </td>
                 </tr>
@@ -121,18 +227,26 @@ export class WorkingTimeRange extends SampleBase<{}, {}> {
 
         <div id="description">
         <p>
-        In this example, you can see how to render a Gantt chart with the provided data source and customizable working hours in a day. You can split the working hours in a day to one or more range. So, You can also provide the <code>dayWorkingTime</code> property value as array of object collection. Gantt chart also supports different <code>durationUnit</code> values as follows:
-        <li><code>day</code></li>
-        <li><code>hour</code></li>       
-        <li><code>minute</code></li>
-    </p>
-    <p>Given duration in dataSource will be considered with this unit. In this demo, the <code>hour</code> unit is used to render taskbars in day hour timeline mode. Gantt chart supports only 24hours format as of now. The working hours will differ between organizations. This feature will be helpful to keep track of each task and resource task status based on the working time of company.</p>
-          <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
-            <code>Selection</code>, <code>DayMarkers</code> modules.
+        In this example, you can see how to render a Gantt chart with the provided data source and customizable working hours in a day. You can split the working hours in a day to one or more range. So, you can also provide the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#dayworkingtime">
+          dayworkingtime</a> property value as array of object collection. Gantt chart also supports different <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#durationunit">
+          durationUnit</a> values as follows:
+          <ul>
+          <li><code>day</code></li>
+          <li><code>hour</code></li>
+          <li><code>minute</code></li>
+          </ul>
         </p>
-        </div>
+        <p>You can also set different working time range for different working days using <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#weekworkingtime">
+        weekWorkingTime</a> property. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/gantt/#weekworkingtime">
+        weekWorkingTime</a> property enables you to specify different working hours for each day of the week in your Gantt chart.
+        By configuring this property, you can ensure that tasks are only scheduled during defined working periods, avoiding non-working hours.</p>
+        <p>Given duration in dataSource will be considered with this unit. In this demo, the <code>hour</code> unit is used to render taskbars in day hour timeline mode. Gantt chart supports only 24hours format as of now. The working hours will differ between organizations. This feature will be helpful to keep track of each task and resource task status based on the working time of company.</p>
+        <p>
+          Gantt component features are segregated into individual feature-wise modules. To use a selection support and event markers we need to inject the
+          <code>Selection</code>, <code>DayMarkers</code> modules.
+        </p>
       </div>
+    </div>
     )
   }
 }

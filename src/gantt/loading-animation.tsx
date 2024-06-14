@@ -69,7 +69,7 @@ export class LoadingAnimation extends SampleBase<{}, {}> {
               </td>
               <td style={{ width: '70%' }}>
               <div>
-              <DropDownListComponent width="100px" id="seltype" change={this.onChange.bind(this)}
+              <DropDownListComponent width="110px" id="seltype" change={this.onChange.bind(this)}
                 dataSource={this.filterType} value="Shimmer" />
               </div>
               </td>

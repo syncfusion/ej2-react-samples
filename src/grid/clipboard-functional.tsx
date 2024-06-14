@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import './sample.css';
@@ -11,7 +11,12 @@ function Clipboard() {
         updateSampleSection();
     }, [])
     const selectionsettings: Object = { type: 'Multiple' };
-    const toolbarOptions: any = [{ text: 'Copy', tooltipText: 'Copy', prefixIcon: 'e-copy', id: 'copy' }, { text: 'Copy With Header', tooltipText: 'Copy With Header', prefixIcon: 'e-copy', id: 'copyHeader' }];
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
+    const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    const customeridRule: Object = { required: true, minLength: 5};
+    const orderidRules: Object = { required: true, number: true };
+    const freightRules: Object = { required: true, min: 0 };
+    const toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', { text: 'Copy', tooltipText: 'Copy', prefixIcon: 'e-copy', id: 'copy' }, { text: 'Copy With Header', tooltipText: 'Copy With Header', prefixIcon: 'e-copy', id: 'copyHeader' }];
     let gridInstance: GridComponent;
     const visible = false;
     const animationSettings: Object = { effect: 'None' };
@@ -24,25 +29,27 @@ function Clipboard() {
         buttonModel: { content: 'OK', isPrimary: true }
     }];
     function clickHandler(args: any) {
-        if (gridInstance.getSelectedRecords().length > 0) {
-            let withHeader: boolean = args.item.id === 'copyHeader' ? true : false;
-            gridInstance.copy(withHeader);
-        } else {
-            alertDialogInstance.show();
+        if (args.item.id === 'copy' || args.item.id === 'copyHeader') {
+            if (gridInstance.getSelectedRecords().length > 0) {
+                let withHeader: boolean = args.item.id === 'copyHeader' ? true : false;
+                gridInstance.copy(withHeader);
+            } else {
+                alertDialogInstance.show();
+            }
         }
     }
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} toolbar={toolbarOptions} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings} toolbarClick={clickHandler.bind(this)}>
+                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} toolbar={toolbarOptions} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings} toolbarClick={clickHandler.bind(this)}>
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right'></ColumnDirective>
-                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-                        <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170'></ColumnDirective>
-                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'></ColumnDirective>
-                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
+                        <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+                        <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={customeridRule}></ColumnDirective>
+                        <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' editType='datepickeredit'></ColumnDirective>
+                        <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={freightRules} editType='numericedit'></ColumnDirective>
+                        <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right" editType='dropdownedit'></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Selection, Toolbar]} />
+                    <Inject services={[Page, Selection, Toolbar, Edit, Filter]} />
                 </GridComponent>
             </div>
             <DialogComponent id="alertDialog" header='Copy with Header' visible={visible} animationSettings={animationSettings} width='300px' content='Atleast one row should be selected to copy with header' ref={alertdialog => alertDialogInstance = alertdialog}

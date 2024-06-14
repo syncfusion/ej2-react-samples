@@ -113,7 +113,7 @@ const Clock = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent loaded={onChartLoad.bind(this)} resized={onResized.bind(this)} load={load.bind(this)} id='axis-background' background='transparent' ref={gauge}>
@@ -126,23 +126,24 @@ const Clock = () => {
                                 <PointerDirective radius='90%' value={12} pointerWidth={3} needleStartWidth={1} animation={{ enable: false }} color='#00A8B5' cap={{ radius: 5, color: 'white', border: { width: 1, color: '#00A8B5' } }} needleTail={{ length: '25%', color: '#00A8B5' }} />
                             </PointersDirective>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div id="subGaugeOne" style="margin-left: -50%"></div>' angle={290} radius='0%' zIndex='1' />
-                                <AnnotationDirective content='<div id="subGaugeTwo" style="margin-left: -110%;margin-top: -50%;"></div>' angle={90} radius='0%' zIndex='1' />
+                                <AnnotationDirective description='Sub gauge one' content='<div id="subGaugeOne" style="margin-left: -50%"></div>' angle={290} radius='0%' zIndex='1' />
+                                <AnnotationDirective description='Sub gauge two' content='<div id="subGaugeTwo" style="margin-left: -110%;margin-top: -50%;"></div>' angle={90} radius='0%' zIndex='1' />
                             </AnnotationsDirective>
                         </AxisDirective>
                     </AxesDirective>
                 </CircularGaugeComponent>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample demonstrates how to create an analog clock that displays the time.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>In this example, a clock has been created by adding axis, minor ticks, major ticks, and needles in a circular gauge and customizing it accordingly. In addition, the clock ticks, displaying the time in a lively manner.</p>
                 <p>
                     More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+    </main>
     )
 }
 export default Clock;

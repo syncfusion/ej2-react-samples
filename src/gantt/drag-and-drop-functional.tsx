@@ -32,8 +32,8 @@ const DragAndDrop = () => {
     allowTaskbarEditing: true,
     showDeleteConfirmDialog: true
   };
-  const projectStartDate: Date = new Date('03/25/2019');
-  const projectEndDate: Date = new Date('07/06/2019');
+  const projectStartDate: Date = new Date('03/25/2024');
+  const projectEndDate: Date = new Date('07/06/2024');
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };

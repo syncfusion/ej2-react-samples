@@ -176,41 +176,41 @@ const APIs = () => {
                             <tbody>
                                 <tr>
                                     <td style={{ width: '50%' }}>
-                                        <div className="userselect">Value</div>
+                                        <div id="valueLabel" className="userselect">Value</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
                                         <div>
-                                            <NumericTextBoxComponent value={value} format='n0' change={onValueChange.bind(this)} />
+                                            <NumericTextBoxComponent value={value} format='n0' change={onValueChange.bind(this)} aria-labelledby="valueLabel"/>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style={{ width: '50%' }}>
-                                        <div className="userselect">Min</div>
+                                        <div id="minLabel" className="userselect">Min</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
                                         <div>
-                                            <NumericTextBoxComponent value={0} format='n0' change={onMinChange.bind(this)} />
+                                            <NumericTextBoxComponent value={0} format='n0' change={onMinChange.bind(this)} aria-labelledby="minLabel"/>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style={{ width: '50%' }}>
-                                        <div className="userselect">Max</div>
+                                        <div id="maxLabel" className="userselect">Max</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
                                         <div>
-                                            <NumericTextBoxComponent value={100} format='n0' change={onMaxChange.bind(this)} />
+                                            <NumericTextBoxComponent value={100} format='n0' change={onMaxChange.bind(this)} aria-labelledby="maxLabel"/>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style={{ width: '50%' }}>
-                                        <div className="userselect">Step</div>
+                                        <div id="stepLabel" className="userselect">Step</div>
                                     </td>
                                     <td style={{ width: '50%' }}>
                                         <div>
-                                            <NumericTextBoxComponent value={1} change={onStepChange.bind(this)} />
+                                            <NumericTextBoxComponent value={1} change={onStepChange.bind(this)} aria-labelledby="stepLabel"/>
                                         </div>
                                     </td>
                                 </tr>

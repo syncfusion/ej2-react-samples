@@ -34,8 +34,8 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
     position: "35%"
   };
   private ganttInstance: GanttComponent;
-  public projectStartDate: Date = new Date('03/25/2019');
-  public projectEndDate: Date = new Date('07/28/2019');
+  public projectStartDate: Date = new Date('03/25/2024');
+  public projectEndDate: Date = new Date('07/28/2024');
   public gridLines: any = 'Both';
   public toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll'];
   public timelineSettings: any = {
@@ -53,7 +53,7 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
   };
   private contextMenuOpen(args: ContextMenuOpenEventArgs): void {
     let record: IGanttData = args.rowData;
-    if (args.type !== 'Header' && record) {
+    if (args.type !== 'Header') {
         if (!record.hasChildRecords) {
           args.hideItems.push('Collapse the Row');
           args.hideItems.push('Expand the Row');
@@ -69,10 +69,10 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
 
   private contextMenuClick(args: ContextMenuClickEventArgs): void {
     let record: IGanttData = args.rowData;
-    if (args.item.id === 'collapserow' && record) {
+    if (args.item.id === 'collapserow') {
         this.ganttInstance.collapseByID(Number(record.ganttProperties.taskId));
     }
-    if (args.item.id === 'expandrow' && record) {
+    if (args.item.id === 'expandrow') {
         this.ganttInstance.expandByID(Number(record.ganttProperties.taskId));
     }
   }
@@ -80,10 +80,10 @@ export class ContextMenuItem extends SampleBase<{}, {}> {
   'SortAscending', 'SortDescending', 'Add', 'DeleteDependency', 'Convert', 'Indent', 'Outdent',
   {text: 'Collapse the Row', target: '.e-content', id: 'collapserow'} as ContextMenuItemModel,
   {text: 'Expand the Row', target: '.e-content', id: 'expandrow'} as ContextMenuItemModel];
-  public eventMarkerDay1: Date = new Date('4/17/2019');
-  public eventMarkerDay2: Date = new Date('5/3/2019');
-  public eventMarkerDay3: Date = new Date('6/7/2019');
-  public eventMarkerDay4: Date = new Date('7/16/2019');
+  public eventMarkerDay1: Date = new Date('4/17/2024');
+  public eventMarkerDay2: Date = new Date('5/3/2024');
+  public eventMarkerDay3: Date = new Date('6/7/2024');
+  public eventMarkerDay4: Date = new Date('7/16/2024');
   render() {
     return (
       <div className='control-pane'>

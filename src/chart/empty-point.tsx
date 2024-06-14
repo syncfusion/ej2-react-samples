@@ -86,7 +86,7 @@
                                      </td>
                                      <td style={{ width: '40%' }}>
                                          <div>
-                                             <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Column" />
+                                             <DropDownListComponent width="120px" id="selchange" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Column" />
                                          </div>
                                      </td>
                                  </tr>
@@ -117,8 +117,8 @@
                          Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                  </p>
                      <p>
-                         More information on the empty points can be found in this &nbsp;
-                     <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        More information on the empty points can be found in this &nbsp;
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#empty-points" aria-label="Navigate to the documentation for Empty points in React Chart component">documentation section</a>.
                  </p>
                  </div>
              </div >
@@ -132,7 +132,7 @@
          let selectedTheme: string = location.hash.split('/')[1];
          selectedTheme = selectedTheme ? selectedTheme : 'Material';
          args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").
-         replace(/light/i, "Light").replace(/contrast/i,'Contrast')  as ChartTheme;
+         replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast')  as ChartTheme;
      };
          
  }

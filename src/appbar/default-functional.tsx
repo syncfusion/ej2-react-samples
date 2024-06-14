@@ -17,7 +17,7 @@ const Default = () => {
                     <div className="default-appbar-container">
                         <div className="row">
                             <div className="col-md-12">
-                                <h5>Simple AppBar</h5>
+                                <h1>Simple AppBar</h1>
                             </div>
                         </div>
                         <div className="row">
@@ -33,7 +33,7 @@ const Default = () => {
                         <br />
                         <div className="row">
                             <div className="col-md-12">
-                                <h5>Prominent</h5>
+                                <h1>Prominent</h1>
                             </div>
                         </div>
                         <div className="row">
@@ -49,7 +49,7 @@ const Default = () => {
                         <br />
                         <div className="row">
                             <div className="col-md-12">
-                                <h5>Dense</h5>
+                                <h1>Dense</h1>
                             </div>
                         </div>
                         <div className="row">

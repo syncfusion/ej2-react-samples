@@ -8,17 +8,20 @@ import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 const SAMPLE_CSS = `
-    .control-fluid {
-        padding: 0px !important;
-    }
-
     #tickOffset, #tickHeight, #labelOffset {
         width: 76%;
     }
     #offset, #height, #labelOffsetValue {
         margin-left: -45px;
     }
-
+    .tickCheckbox {
+        margin-left: -10px !important;
+        padding-top: 0px !important;
+        padding-left: 10px;
+    }
+    .e-view.fluent2 #property .tickCheckbox, .e-view.fluent2-dark #property .tickCheckbox {
+        padding-left: 0px;
+    }
     @media screen and (max-width: 420px) {
         #tickOffset, #tickHeight, #labelOffset {
             width: 72%;
@@ -155,7 +158,7 @@ const Labels = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-8'>
@@ -176,7 +179,7 @@ const Labels = () => {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '95%', overflow: 'hidden' }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '95%', overflow: 'hidden' }}>
                             <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td>
@@ -282,7 +285,7 @@ const Labels = () => {
                                         <div style={{ marginLeft: "-10px", fontSize: "14px" }}> Show Last Label </div>
                                     </td>
                                     <td style={{ "width": "40%" }}>
-                                        <div className='labelCheckbox' style={{ marginLeft: "-10px", paddingTop: "0px" }}>
+                                        <div className='labelCheckbox tickCheckbox'>
                                             <CheckBoxComponent change={showLastLabel.bind(this)} ref={lastLabel} id='enable' disabled={false} style={{ paddingLeft: "0px" }} />
                                         </div>
                                     </td>
@@ -292,10 +295,11 @@ const Labels = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample demonstrates how to customize the ticks and labels on an axis. The position, offset, and height of the ticks and labels can be changed.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render and configure the ticks and labels of an axis in the circular gauge.
                     Labels are units that are used to display the values on the axis. Labels can be customized using <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/labelModel/'>labelStyle</a>.
@@ -304,8 +308,8 @@ const Labels = () => {
                 <p>
                     More information on the ticks and labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-axes/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default Labels;

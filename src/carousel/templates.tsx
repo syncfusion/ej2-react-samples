@@ -106,7 +106,7 @@ export class Templates extends SampleBase<{}, {}> {
             and <code>nextButtonTemplate</code>. The indicators are customized using <code>indicatorsTemplate</code>. The carousel item is customized using <code>template</code> option.
           </p>
           <p>
-            More information about customizing React Carousel component can be found in this <a target='_blank' href="https://ej2.syncfusion.com/documentation/carousel/getting-started">documentation section</a>.
+            More information about customizing React Carousel component can be found in this <a aria-label="Documentation section" target='_blank' href="https://ej2.syncfusion.com/documentation/carousel/getting-started">documentation section</a>.
           </p>
         </div>
       </div>

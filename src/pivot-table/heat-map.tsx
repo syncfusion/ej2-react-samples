@@ -86,7 +86,7 @@ export class HeatMap extends SampleBase<{}, {}> {
                <p>
                   More information on the cell template can be found in this <a target="_blank"
                      href="https://ej2.syncfusion.com/react/documentation/pivotview/row-and-column#cell-template">
-                     documentation section</a>.
+                  documentation section</a>.
                </p>
             </div>
          </div>

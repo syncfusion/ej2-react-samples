@@ -228,6 +228,12 @@ span.e-label .offer {
 .fluent-dark .pricing-slider,
 .fluent-dark #pricing-slider .label-text,
 .fluent-dark #pricing-slider .sub-heading,
+.fluent2-dark .pricing-slider,
+.fluent2-dark #pricing-slider .label-text,
+.fluent2-dark #pricing-slider .sub-heading,
+.fluent2-highcontrast .pricing-slider,
+.fluent2-highcontrast #pricing-slider .label-text,
+.fluent2-highcontrast #pricing-slider .sub-heading,
 .tailwind-dark .pricing-slider,
 .tailwind-dark #pricing-slider .label-text,
 .tailwind-dark #pricing-slider .sub-heading,
@@ -275,6 +281,18 @@ span.e-label .offer {
 .fluent-dark #StorgeDialog,
 .fluent-dark #CloudDialog,
 .fluent-dark #processorDialog,
+.fluent2-dark #dollar,
+.fluent2-dark #value,
+.fluent2-dark #dialog-header,
+.fluent2-dark #StorgeDialog,
+.fluent2-dark #CloudDialog,
+.fluent2-dark #processorDialog,
+.fluent2-highcontrast #dollar,
+.fluent2-highcontrast #value,
+.fluent2-highcontrast #dialog-header,
+.fluent2-highcontrast #StorgeDialog,
+.fluent2-highcontrast #CloudDialog,
+.fluent2-highcontrast #processorDialog,
 .bootstrap-dark #dollar,
 .bootstrap-dark #value,
 .bootstrap-dark #dialog-header,
@@ -302,6 +320,8 @@ span.e-label .offer {
 .bootstrap5-dark #pricing-slider .row,
 .fabric-dark #pricing-slider .row,
 .fluent-dark #pricing-slider .row,
+.fluent2-dark #pricing-slider .row,
+.fluent2-highcontrast #pricing-slider .row,
 .material-dark #pricing-slider .row,
 .material3-dark #pricing-slider .row {
     border: 1px solid #969696;
@@ -313,6 +333,8 @@ span.e-label .offer {
 .bootstrap5-dark #cloud-right-pane,
 .fabric-dark #cloud-right-pane,
 .fluent-dark #cloud-right-pane,
+.fluent2-dark #cloud-right-pane,
+.fluent2-contrast #cloud-right-pane,
 .material-dark #cloud-right-pane,
 .material3-dark #cloud-right-pane {
     border-left: 1px solid #969696;
@@ -328,6 +350,10 @@ span.e-label .offer {
 .fabric-dark #pricing-slider #cloud-right-pane .btn-size,
 .fluent-dark #cloud-slider-text,
 .fluent-dark #pricing-slider #cloud-right-pane .btn-size,
+.fluent2-dark #cloud-slider-text,
+.fluent2-dark #pricing-slider #cloud-right-pane .btn-size,
+.fluent2-highcontrast #cloud-slider-text,
+.fluent2-highcontrast #pricing-slider #cloud-right-pane .btn-size,
 .bootstrap-dark #cloud-slider-text,
 .bootstrap-dark #pricing-slider #cloud-right-pane .btn-size,
 .bootstrap5-dark #cloud-slider-text,
@@ -343,6 +369,8 @@ span.e-label .offer {
 .bootstrap-dark #processor,
 .fabric-dark #processor,
 .fluent-dark #processor,
+.fluent2-dark #processor,
+.fluent2-highcontrast #processor,
 .material-dark #processor,
 .material3-dark #processor {
     background-color: #AE80FF;
@@ -354,6 +382,8 @@ span.e-label .offer {
 .bootstrap5-dark #memory,
 .fabric-dark #memory,
 .fluent-dark #memory,
+.fluent2-dark #memory,
+.fluent2-highcontrast #memory,
 .material-dark #memory,
 .material3-dark #memory {
     background-color: #7ED321;
@@ -365,6 +395,8 @@ span.e-label .offer {
 .bootstrap-dark #storage,
 .fabric-dark #storage,
 .fluent-dark #storage,
+.fluent2-dark #storage,
+.fluent2-highcontrast #storage,
 .material-dark #storage,
 .material3-dark #storage {
     background-color: #61A4EF;
@@ -376,6 +408,8 @@ span.e-label .offer {
 .bootstrap5-dark #cloud-left-pane,
 .fabric-dark #cloud-left-pane,
 .fluent-dark #cloud-left-pane,
+.fluent2-dark #cloud-left-pane,
+.fluent2-highcontrast #cloud-left-pane,
 .material-dark #cloud-left-pane,
 .material3-dark #cloud-left-pane {
     background-color: #1a1a1a;
@@ -387,6 +421,8 @@ span.e-label .offer {
 .bootstrap5-dark #cloud-right-pane,
 .fabric-dark #cloud-right-pane,
 .fluent-dark #cloud-right-pane,
+.fluent2-dark #cloud-right-pane,
+.fluent2-highcontrast #cloud-right-pane,
 .material-dark #cloud-right-pane,
 .material3-dark #cloud-right-pane {
     background-color: #000;
@@ -412,6 +448,14 @@ span.e-label .offer {
 .fluent-dark #memoryPriceName,
 .fluent-dark #storgePriceName,
 .fluent-dark #cloudPriceName,
+.fluent2-dark #processorPriceName,
+.fluent2-dark #memoryPriceName,
+.fluent2-dark #storgePriceName,
+.fluent2-dark #cloudPriceName,
+.fluent-highcontrast #processorPriceName,
+.fluent-highcontrast #memoryPriceName,
+.fluent-highcontrast #storgePriceName,
+.fluent-highcontrast #cloudPriceName,
 .bootstrap5-dark #processorPriceName,
 .bootstrap5-dark #memoryPriceName,
 .bootstrap5-dark #storgePriceName,

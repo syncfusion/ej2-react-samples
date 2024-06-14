@@ -60,12 +60,12 @@ const Ticks = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ margin: 'auto', padding: '10px' }}>
-                        <table>
+                        <table role='none'>
                             <tbody>
                                 <tr>
                                     <td>
@@ -126,18 +126,19 @@ const Ticks = () => {
                     </LinearGaugeComponent>
                 </div>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of Linear Gauge sample">
                 <p>This sample shows ticks in various positions such as inside, middle, and outside. Additionally, the position of the ticks can be customized using offset.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render and configure ticks in the linear gauge. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/tickModel/#position">position</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/tickModel/#offset">offset</a> properties in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/tickModel/">majorTicks</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/tickModel/">minorTicks</a> are used to position the ticks as well as provide offset.
                 </p>
                 <p>
                     More information on the ticks can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/axis/#ticks-customization">documentation section</a>.
                 </p>
-            </div>
-        </div >
+            </section>
+    </main>
     )
 }
 export default Ticks; 

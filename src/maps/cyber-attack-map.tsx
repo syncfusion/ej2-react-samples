@@ -118,7 +118,7 @@ export class CyberAttackMaps extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-panel'>
+            <main><div className='control-panel'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -273,12 +273,13 @@ export class CyberAttackMaps extends SampleBase<{}, {}> {
                 <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://craft.co/youtube/locations" target="_blank">craft.co/youtube/locations</a>
        </div>
-                <div id="action-description">
+    </div>
+                <section id="action-description" aria-label="Description of Maps sample">
     <p>
         This sample depicts a cyber attack map, which displays the cyber attacks and threats from various countries to USA, using navigation lines and marker.
     </p>
-</div>
-<div id="description">
+</section>
+<section id="description" aria-label="Description of the Maps features demonstrated in this sample">
     <p>
         In this example, you can see how to dynamically display a navigation line with linear animation. Marker
         templates are added to denote the source and destination locations. Any custom HTML element can be used as a
@@ -291,8 +292,8 @@ export class CyberAttackMaps extends SampleBase<{}, {}> {
         the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method, and use the navigation lines
         by injecting the <code>NavigationLine</code> module.
     </p>
-</div>
-        </div>
+</section>
+</main>
         )
     }
     

@@ -48,7 +48,7 @@ const Spline = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
 
     return (
@@ -60,8 +60,8 @@ const Spline = () => {
                 <ChartComponent id='charts' style={{ textAlign: "center" }} ref={chartInstance} primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, labelIntersectAction: 'Rotate90', majorTickLines: {width: 0}, minorTickLines: {width : 0} }} width={Browser.isDevice ? '100%' : '75%'} legendSettings={{ enableHighlight: true }} chartArea={{ border: { width: 0 } }} load={load.bind(this)} primaryYAxis={{labelFormat: '{value}°C', lineStyle: { width: 0 }, majorTickLines: { width: 0 }, minorTickLines: { width: 0 }}} tooltip={{ enable: true }} title='NC Weather Report - 2016' loaded={onChartLoad.bind(this)}>
                     <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation, Highlight]} />
                     <AnnotationsDirective>
-                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" style="width: 41px; height: 41px"/></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top' />             
-                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png"   style="width: 41px; height: 41px"/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top' />
+                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" alt="Cloud Picture" style="width: 41px; height: 41px"/></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top' />             
+                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png" alt="Sunny Picture" style="width: 41px; height: 41px"/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top' />
                     </AnnotationsDirective>
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Max Temp' type='Spline' marker={{ visible: true, width: 10, height: 10 }} />
@@ -70,7 +70,7 @@ const Spline = () => {
                     </SeriesCollectionDirective>
                 </ChartComponent>
                 <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                    <a href="http://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank">www.worldweatheronline.com</a>
+                    <a href="http://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank" aria-label="Navigate to the documentation for world weather online">www.worldweatheronline.com</a>
                 </div>
             </div>
             <div id="action-description">
@@ -90,7 +90,7 @@ const Spline = () => {
                     Chart component features are segregated into individual feature-wise modules. To use spline series, we need to inject <code>SplineSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the line series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
+                    More information on the line series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline" aria-label="Navigate to the documentation for Spline Chart in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

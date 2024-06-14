@@ -58,8 +58,8 @@ const Overview = () =>  {
     const splitterSettings: any = {
         position: "57%"
     };
-    const projectStartDate: Date = new Date('12/17/2021');
-    const projectEndDate: Date = new Date('10/26/2022');
+    const projectStartDate: Date = new Date('12/17/2023');
+    const projectEndDate: Date = new Date('10/26/2024');
     const gridLines: any = 'Vertical';
 
     const  change =(args: any ): any =>{
@@ -90,9 +90,9 @@ const Overview = () =>  {
         taskLabel: '${Progress}%',
         rightLabel: 'Assignee'
     };
-    const eventMarkerDay1: Date = new Date('04/04/2022');
-    const eventMarkerDay2: Date = new Date('06/30/2022');
-    const eventMarkerDay3: Date = new Date('09/29/2022');
+    const eventMarkerDay1: Date = new Date('04/04/2024');
+    const eventMarkerDay2: Date = new Date('06/30/2024');
+    const eventMarkerDay3: Date = new Date('09/29/2024');
 
     const statustemplate = (props): any => {
         let sts = Status(props.taskData.Status);
@@ -273,7 +273,7 @@ const Overview = () =>  {
     const template: any = columnTemplate.bind(this);
     const statusTemplate: any = statustemplate.bind(this);
     const priorityTemplate: any = prioritytemplate.bind(this);
-    const toolbarOptions: any = ['ExpandAll', 'CollapseAll', { type: "Input", align: "Right", tooltipText: "Change View", template: new DropDownList({ dataSource: dataList, width: "85px", placeholder: "View", change: change, fields: { text: 'Text', value: 'ID' } }) }]
+    const toolbarOptions: any = ['ExpandAll', 'CollapseAll', { type: "Input", align: "Right", tooltipText: "Change View", template: new DropDownList({ dataSource: dataList, width: "100px", placeholder: "View", change: change, fields: { text: 'Text', value: 'ID' } }) }]
 
     return (
             <div className='control-pane'>
@@ -299,8 +299,8 @@ const Overview = () =>  {
                             <EventMarkerDirective day={eventMarkerDay3} label='Q-3 Release' ></EventMarkerDirective>
                         </EventMarkersDirective>
                         <HolidaysDirective>
-                            <HolidayDirective from='01/01/2022' to='01/01/2022' label='New year Holiday'></HolidayDirective>
-                            <HolidayDirective from='12/25/2021' to='12/26/2021' label='Christmas Holidays'></HolidayDirective>
+                            <HolidayDirective from='01/01/2024' to='01/01/2024' label='New year Holiday'></HolidayDirective>
+                            <HolidayDirective from='12/25/2023' to='12/26/2023' label='Christmas Holidays'></HolidayDirective>
                         </HolidaysDirective>
                         <Inject services={[Edit, Selection, Toolbar, DayMarkers, ColumnMenu, Filter, Sort, Resize]} />
                     </GanttComponent>

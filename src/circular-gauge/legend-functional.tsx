@@ -8,8 +8,11 @@ import { DropDownListComponent, DropDownList } from '@syncfusion/ej2-react-dropd
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
+    .legendPadding {
+        padding-top: 0px; margin-left: 0px; margin-top: 3px; padding-left:10px
+    }
+    .e-view.fluent2 #property .legendPadding, .e-view.fluent2-dark #property .legendPadding {
+        padding-top: 0px; margin-left: 0px !important; margin-top: 3px; padding-left:0px !important;
     }`;
 
 const Circle = () => {
@@ -92,9 +95,14 @@ const Circle = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <div className='control-section row'>
                 <div className='col-lg-8'>
+                    {/* custom code start */}
+                        <style>
+                            {SAMPLE_CSS}
+                        </style>
+                    {/* custom code end */}
                     <CircularGaugeComponent load={load.bind(this)} background='transparent' id='range-container' loaded={onChartLoad.bind(this)} title='Measure of wind speed in km/h' titleStyle={{ fontFamily: 'inherit' }} legendSettings={{ visible: true, position: "Bottom", textStyle: { fontFamily: 'inherit', size: '12px' } }} ref={gauge}>
                         <Inject services={[Annotations, Legend]} />
                         <AxesDirective>
@@ -119,14 +127,14 @@ const Circle = () => {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: '-10px' }}>
                             <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '20%' }}>
                                         <div id='enablePointer' style={{ fontSize: "14px" }}>Show Legend</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div style={{ paddingTop: '0px', marginLeft: "0px", marginTop: "3px" }}>
+                                        <div className='legendPadding'>
                                             <CheckBoxComponent id='enable' checked={true} change={enableLegend.bind(this)} />
                                         </div>
                                     </td>
@@ -136,7 +144,7 @@ const Circle = () => {
                                         <div id='enable' style={{ fontSize: "14px" }}>Show range when the legend item is toggled</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
-                                        <div style={{ paddingTop: '0px', marginLeft: "0px", marginTop: "3px" }}>
+                                        <div className='legendPadding'>
                                             <CheckBoxComponent id='enableToggle' checked={true} change={enableToggleLegend.bind(this)} />
                                         </div>
                                     </td>
@@ -176,16 +184,17 @@ const Circle = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample directs the visualization of moving wind types based on their speed via the legend of the circular gauge component. The visibility, shape, alignment, and position of the legend can all be customized.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>The legend provides useful information for interpreting what the circular gauge's axis range displays, and it can be represented in a variety of colors, shapes, and other identifiers depending on the data. To do so, use the <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/legendSettingsModel/'>legendSettings</a> and its properties.</p>
                 <p>
                     More information on the legend can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-legend/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+    </main>
     )
 }
 export default Circle;

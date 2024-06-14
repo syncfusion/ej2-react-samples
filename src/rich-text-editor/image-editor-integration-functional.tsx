@@ -157,6 +157,7 @@ function ImageEditorIntegration() {
                     id="img1"
                     style={{ height: 335 }}
                     src="./src/rich-text-editor/images/bridge.png"
+                    aria-label="Bridge"
                 ></img>
                 </p>
                 <p>

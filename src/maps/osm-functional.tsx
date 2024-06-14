@@ -32,14 +32,14 @@ const OSMMaps = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
                     <MapsComponent id="maps" load={load} titleSettings={{ text: 'Headquarters of the United Nations', textStyle: { size: '16px' } }} centerPosition={{ latitude: 40.7209, longitude: -73.968 }} zoomSettings={{ zoomFactor: 9, enable: false }}>
                         <Inject services={[Bubble, MapsTooltip, Zoom, Marker]} />
                         <LayersDirective>
-                            <LayerDirective layerType='OSM' animationDuration={0}>
+                            <LayerDirective urlTemplate="https://tile.openstreetmap.org/level/tileX/tileY.png" animationDuration={0}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} template='<div><img src="src/maps/images/ballon.png" style="height:30px;width:20px;"></img></div>' dataSource={data1} tooltipSettings={{ visible: true, valuePath: 'name' }} />
                                 </MarkersDirective>
@@ -56,18 +56,19 @@ const OSMMaps = () => {
             <div style={{ float: 'right', marginRight: '10px' }}>
                 Source:<a href="https://en.wikipedia.org/wiki/Headquarters_of_the_United_Nations" target="_blank">en.wikipedia.org</a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample visualizes the location of United Nations Headquarters in the OpenStreetMap with marker.Tooltip is displayed for marker.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to render the OpenStreetMap. Denoted the location of United Nations Headquarters using marker. EJ2 Dialog is displayed on the top of the marker. Also enabled zooming feature to zoom and pan the map for detailed analysis.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p>
                     Maps component features are segregated into individual feature-wise modules. To use a marker, inject the Marker module using the <code>Maps.Inject(Marker)</code> method and zoom module using <code>maps.Inject(Zoom)</code> method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default OSMMaps;

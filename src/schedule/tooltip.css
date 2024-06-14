@@ -29,6 +29,10 @@
   background-color: #313033;
 }
 
+.fluent2 .e-schedule-event-tooltip .tooltip-wrap .image {
+  background-color: #242424;
+}
+
 .e-schedule-event-tooltip .tooltip-wrap .content-area {
   padding-left: 6px;
   font-size: 12px;

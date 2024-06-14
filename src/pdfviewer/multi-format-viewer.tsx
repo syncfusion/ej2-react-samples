@@ -301,23 +301,29 @@ export class MultiFormatViewer extends SampleBase<{}, {}>{
           <p>This sample shows how it loads various file types like PDFs, images, and Microsoft Office documents (Word, Excel, PowerPoint) into the PDF Viewer.</p>
         </div>
         <div id="description">
-          <p>
-            This sample provides a hands-on demonstration of the PDF Viewer's ability to load and display a diverse range of file formats, including PDFs, images, and Microsoft Office documents such as Word, Excel, and PowerPoint files. Users can interact with the sample in the following ways:
-          </p>
-          <ul>
-            <li>Use the Browse button to select any file of interest.</li>
-            <li>Alternatively, drag and drop a chosen file into the designated file pick area.</li>
-            <li>Once a valid file is selected, it will be seamlessly loaded into the PDF Viewer located below, allowing users to easily view and interact with the content.</li>
-            <li>Support for various file formats, including:</li>
-            <ul>
-              <li>PDF - '.pdf'</li>
-              <li>Excel - '.xlsx','.xls'</li>
-              <li>Image - '.jpeg','.jpg','.png','.bmp'</li>
-              <li>PowerPoint - '.pptx','.pptm','.potx','.potm'</li>
-              <li>Word - '.doc','.docx','dot','dotx','docm','dotm','rtf'</li>
-            </ul>
-          </ul>
-        </div>
+      <p>
+        This sample provides a hands-on demonstration of the PDF Viewer's ability to load and display a diverse range of file formats, including PDFs, images, and Microsoft Office documents such as Word, Excel, and PowerPoint files. Users can interact with the sample in the following ways:
+      </p>
+      <ul>
+        <li>Use the Browse button to select any file of interest.</li>
+        <li>Alternatively, drag and drop a chosen file into the designated file pick area.</li>
+        <li>Once a valid file is selected, it will be seamlessly loaded into the PDF Viewer located below, allowing users to easily view and interact with the content.</li>
+        <li>Support for various file formats, including:</li>
+        <ul>
+          <li>PDF - '.pdf'</li>
+          <li>Excel - '.xlsx','.xls'</li>
+          <li>Image - '.jpeg','.jpg','.png','.bmp'</li>
+          <li>PowerPoint - '.pptx','.pptm','.potx','.potm'</li>
+          <li>Word - '.doc','.docx','dot','dotx','docm','dotm','rtf'</li>
+        </ul>
+      </ul>
+      <p>Note : The PDF conversions are performed using the appropriate libraries, while the role of the PDF Viewer is solely to display the converted PDF document.</p>
+      <p>
+        More information on the PDF Viewer instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/pdfviewer/getting-started">
+          documentation section
+        </a>.
+      </p>
+    </div>
       </div>
     );
   }

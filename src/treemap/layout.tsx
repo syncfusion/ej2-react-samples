@@ -55,7 +55,7 @@ export class Layout extends SampleBase<{}, {}> {
 	
 	render() {
 		return (
-			<div className='control-pane'>
+			<main><div className='control-pane'>
 				<style>
 					{SAMPLE_CSS}
 				</style>
@@ -104,7 +104,7 @@ export class Layout extends SampleBase<{}, {}> {
 					{/* Property Panel */}
 					<div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+							<table role='none' id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 							<tbody>
 								<tr>
 									<td>
@@ -131,13 +131,14 @@ export class Layout extends SampleBase<{}, {}> {
 						</PropertyPane>
 					</div>
 				</div>
-				<div id="action-description">
+			</div>
+				<section id="action-description" aria-label="Description of TreeMap sample">
 					<p>
 					This sample orders the countries based on the unemployment rate by rendering TreeMap in the right-to-left (RTL)
         	direction
 					</p>
-				</div>
-				<div id="description">
+				</section>
+				<section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
 					<p>
 					In this example, you can see how to render a TreeMap from the right-to-left direction. The tooltip is enabled in
         this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch-enabled
@@ -146,8 +147,8 @@ export class Layout extends SampleBase<{}, {}> {
 				The tooltip is enabled in this example. To see the tooltip in action,
         hover the mouse over an item or tap an item in touch-enabled devices.
 				</p>
-				</div>
-			</div>
+				</section>
+			</main>
 		)
 	}
 }

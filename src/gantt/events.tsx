@@ -39,8 +39,8 @@ export class Events extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/24/2019');
-  public projectEndDate: Date = new Date('07/06/2019');
+  public projectStartDate: Date = new Date('03/24/2024');
+  public projectEndDate: Date = new Date('07/06/2024');
   public created(): void {
     this.appendElement('Gantt <b>created</b> event called<hr>');
   }

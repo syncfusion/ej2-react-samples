@@ -1,10 +1,11 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class DialogEdit extends SampleBase<{}, {}> {
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
   public toolbarOptions: any = ['Add', 'Edit', 'Delete'];
   public editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   public editparams: any = { params: { popupHeight: '300px' } };
@@ -15,7 +16,7 @@ export class DialogEdit extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} allowSorting={true} editSettings={this.editSettings} pageSettings={this.pageSettings}>
+          <GridComponent dataSource={data} toolbar={this.toolbarOptions} allowPaging={true} allowSorting={true} allowFiltering={true} filterSettings={this.filterSettings} editSettings={this.editSettings} pageSettings={this.pageSettings}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
               <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.validationRules}></ColumnDirective>

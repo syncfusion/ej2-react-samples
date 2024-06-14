@@ -30,8 +30,8 @@ export class Timeline extends SampleBase<{}, {}> {
   private bottomTierCount: NumericTextBoxComponent;
   private timelineUnitSize: NumericTextBoxComponent;
   private multitaskbarcheckbox: CheckBoxComponent;
-  public projectStartDate = new Date('02/03/2019');
-  public projectEndDate = new Date('03/23/2019');
+  public projectStartDate = new Date('02/03/2024');
+  public projectEndDate = new Date('03/23/2024');
   public timelineSettings: any = {
     topTier: {
       format: 'MMM dd, yyyy',
@@ -174,7 +174,7 @@ export class Timeline extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <div className='col-lg-9'>
+          <div className='col-lg-8'>
             <GanttComponent id='Timeline' ref={gantt => this.ganttInstance = gantt} dataSource={projectData} renderBaseline={true} allowSorting={true}
               treeColumnIndex={1} allowSelection={true} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}
               taskFields={this.taskFields} timelineSettings={this.timelineSettings} highlightWeekends={true}
@@ -191,13 +191,13 @@ export class Timeline extends SampleBase<{}, {}> {
               <Inject services={[Selection, Sort, DayMarkers]} />
             </GanttComponent>
           </div>
-          <div className='col-lg-3 property-section'>
+          <div className='col-lg-4 property-section'>
             <PropertyPane title='Properties'>
               <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
               <tbody>
                 <tr>
                   <td style={{ width: '30%' }}>
-                    <div>Unit width</div>
+                    <label>Unit width</label>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div>
@@ -218,7 +218,7 @@ export class Timeline extends SampleBase<{}, {}> {
                 </tr>
                 <tr>
                   <td style={{ width: '30%' }}>
-                    <div>Count</div>
+                    <label>Count</label>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div>
@@ -267,7 +267,7 @@ export class Timeline extends SampleBase<{}, {}> {
                 </tr>
                 <tr>
                   <td style={{ width: '30%' }}>
-                    <div>Count</div>
+                    <label>Count</label>
                   </td>
                   <td style={{ width: '70%' }}>
                     <div>

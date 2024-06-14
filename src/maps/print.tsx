@@ -54,7 +54,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -70,10 +70,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
                                 height: '10',
                                 width: '350',
                                 labelDisplayMode: 'Trim',
-                                alignment: 'Center',
-                                textStyle: {
-                                    color: '#757575'
-                                },
+                                alignment: 'Center'
                             }}
 
                             titleSettings={{
@@ -136,7 +133,7 @@ export class PrintMaps extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                               <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '100%' }}>
@@ -150,13 +147,13 @@ export class PrintMaps extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
-
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                         This sample illustrates the print feature in Maps. By clicking the Print button, you can print the maps directly from the browser.
              </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                     <p>
 						In this example, you can see how to render and configure the print functionality. The rendered maps can
                         be printed directly from the browser by calling the <code>print</code> method when
@@ -172,8 +169,8 @@ export class PrintMaps extends SampleBase<{}, {}> {
                     <p>
                         More information on print can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/maps/print/#print">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {

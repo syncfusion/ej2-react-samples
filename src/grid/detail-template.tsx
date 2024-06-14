@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { Internationalization } from '@syncfusion/ej2-base';
-import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, Inject, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, Inject, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data';
 import { SampleBase } from '../common/sample-base';
 import "./sample.css";
@@ -17,7 +17,7 @@ export class DetailTemplate extends SampleBase<{}, {}> {
     public format = (value: Date) => {
         return instance.formatDate(value, { skeleton: 'yMd', type: 'date' });
     }
-
+    public filterSettings: FilterSettingsModel = {type: 'Excel'};
     public gridTemplate(props): any {
         var src = 'src/grid/images/' + props.EmployeeID + '.png';
         return (<table className="detailtable" style={{ width: "100%" }} >
@@ -73,14 +73,14 @@ export class DetailTemplate extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={employeeData} detailTemplate={this.template.bind(this)} width='auto' allowSorting={true}>
+                    <GridComponent dataSource={employeeData} detailTemplate={this.template.bind(this)} width='auto' allowSorting={true} allowFiltering={true} filterSettings={this.filterSettings}>
                         <ColumnsDirective>
                             <ColumnDirective field='FirstName' headerText='First Name' width='110' />
                             <ColumnDirective field='LastName' headerText='Last Name' width='110' />
                             <ColumnDirective field='Title' headerText='Name' width='150' />
                             <ColumnDirective field='Country' headerText='Country' width='110' />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Sort]} />
+                        <Inject services={[DetailRow, Sort, Filter]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">

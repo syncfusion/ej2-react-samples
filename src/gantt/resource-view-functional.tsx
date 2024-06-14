@@ -42,8 +42,8 @@ const ResourceView = () => {
   const splitterSettings: any = {
     columnIndex: 3
   };
-  const projectStartDate: Date = new Date('03/28/2019');
-  const projectEndDate: Date = new Date('05/18/2019');
+  const projectStartDate: Date = new Date('03/28/2024');
+  const projectEndDate: Date = new Date('05/18/2024');
   const labelSettings: any = {
     rightLabel: 'resources',
     taskLabel: 'Progress'

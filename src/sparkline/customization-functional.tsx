@@ -298,7 +298,7 @@ function Customization() {
     function load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
-        args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as SparklineTheme;
+        args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as SparklineTheme;
     }
 
 
@@ -420,7 +420,7 @@ function Customization() {
                     </div>
                 </div>
                 {/* Source Link */}
-                <div style={{ "float": "right", "marginRight": "10px" }}>Source: <a href=" http://carsalesbase.com/global-car-sales-2017" target="_blank">carsalesbase.com</a>
+                <div style={{ "float": "right", "marginRight": "10px" }}>Source: <a href=" http://carsalesbase.com/global-car-sales-2017" target="_blank" aria-label="Navigate to the documentation for car sales base">carsalesbase.com</a>
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, FilterType, Column, freezeDirection, Sort, Freeze } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, FilterType, Column, freezeDirection, Sort, Freeze, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { DropDownListComponent, ChangeEventArgs } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
@@ -13,6 +13,12 @@ export class FrozenAPI extends SampleBase<{}, {}> {
   private columnDropDown: DropDownListComponent;
   private alertDialogInstance: DialogComponent;
   public refresh: boolean = true;
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
+  public toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  public editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  public customeridRule: Object = { required: true, minLength: 5};
+  public orderidRules: Object = { required: true, number: true };
+  public freightRules: Object = { required: true, min: 0 };
   public columnNames: { [key: string]: Object }[] = [
     { id: 'OrderID', name: 'Order ID' },
     { id: 'Freight', name: 'Freight' },
@@ -88,18 +94,18 @@ export class FrozenAPI extends SampleBase<{}, {}> {
             </div>
           </div>
 
-          <GridComponent ref={g => this.grid = g} dataSource={orderDetails} height='350' frozenRows={2} enableHover={false} allowSorting={true}>
+          <GridComponent ref={g => this.grid = g} dataSource={orderDetails} height='350' frozenRows={2} enableHover={false} allowSorting={true}editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' freeze='Left'></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' textAlign='Right'/>
-              <ColumnDirective field='CustomerID' headerText='Customer ID' width='130' freeze='Right'></ColumnDirective>
-              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right'/>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' freeze='Left' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit'/>
+              <ColumnDirective field='CustomerID' headerText='Customer ID' width='130' freeze='Right' validationRules={this.customeridRule}></ColumnDirective>
+              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right' editType='datepickeredit'/>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='300'></ColumnDirective>
               <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270' freeze='Fixed'></ColumnDirective>
               <ColumnDirective field='ShipCity' headerText='Ship City' width='250'></ColumnDirective>
-              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250'></ColumnDirective>
+              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250' editType='dropdownedit'></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Sort, Freeze]} />
+            <Inject services={[Sort, Freeze, Toolbar, Filter, Edit]} />
           </GridComponent>
         </div>
                                                                                                                                                                     

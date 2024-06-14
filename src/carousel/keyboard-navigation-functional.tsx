@@ -115,7 +115,7 @@ const KeyboardNavigation = () => {
                 </ul>
                 <p>
                     More information about React Carousel component keyboard navigations can be found in this
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/carousel/getting-started/"> documentation</a> section.
+                    <a aria-label="Documentation" target="_blank" href="https://ej2.syncfusion.com/react/documentation/carousel/getting-started/"> documentation</a> section.
                 </p>
             </div>
         </div>

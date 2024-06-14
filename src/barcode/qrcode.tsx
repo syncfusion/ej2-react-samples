@@ -78,10 +78,10 @@ export class QrCode extends SampleBase<{}, {}> {
           <div id="propertypanel" className="e-remove-selection">
             <div className="property-section-content">
               <div className="row sb-child-row">
-                <div className="col-xs-2 top" style={{ paddingLeft: "0px" }}>
+                <div className="col-xs-2 top left">
                   Value
                 </div>
-                <div className="col-xs-10" style={{ paddingLeft: "0px" }}>
+                <div className="col-xs-10 left">
                 <form id="form1" method="post">
                   <div id='barcodevaluediv'>
                   <TextBoxComponent
@@ -97,10 +97,10 @@ export class QrCode extends SampleBase<{}, {}> {
             </div>
             <div className="row sb-child-row">
               <div>
-                <div className="col-xs-2 top" style={{ paddingLeft: "0px", paddingRight: "20px" }}>
+                <div className="col-xs-2 top left">
                   Width
                     </div>
-                <div className="col-xs-3" style={{ width: "33%", paddingLeft: "0px" }}>
+                <div className="col-xs-4 left">
                   <NumericTextBoxComponent
                     //ref={widthRef => (portWidthNum = widthRef)}
                     id="width"
@@ -113,10 +113,10 @@ export class QrCode extends SampleBase<{}, {}> {
                     change={barcodewidthChange}
                   />
                 </div>
-                <div className="rightProperty">
-                  height
+                <div className="col-xs-2 top left">
+                  Height
                     </div>
-                <div className="col-xs-3" style={{ width: "33%", paddingLeft: "0px" }}>
+                <div className="col-xs-4 left">
                   <NumericTextBoxComponent
                     //ref={widthRef => (portWidthNum = widthRef)}
                     id="width"
@@ -131,41 +131,41 @@ export class QrCode extends SampleBase<{}, {}> {
                 </div>
               </div>
             </div>
-            <div className="row sb-child-row" style={{ marginTop: "20px" }}>
-              <div className="col-xs-6" style={{ paddingLeft: "0px" }}>
-                <div className="col-xs-1" style={{ paddingLeft: "0px" }}>
+            <div className="row sb-child-row" style={{ marginTop: "20px"}}>
+              <div className="col-xs-6 left">
+                <div className="col-xs-2 left">
                   <CheckBoxComponent
                     id="textVisibility"
                     checked={true}
                     change={textVisibility}
                   />
                 </div>
-                <div className="col-xs-10">Text Visibility</div>
+                <div className="col-xs-10 left">Text Visibility</div>
               </div>
-              <div className="col-xs-4" style={{ paddingLeft: '0px', marginLeft: '13px' }}>
-                <div className="col-xs-1" style={{ paddingLeft: '0px' }}>
+              <div className="col-xs-6 left">
+                <div className="col-xs-2 left">
                   <CheckBoxComponent
                     id="svgMode"
                     checked={true}
                     change={modeChange}
                   />
                 </div>
-                <div className="svgTextClass">SVG Mode</div>
+                <div className="col-xs-10 left">SVG Mode</div>
               </div>
 
             </div>
             <div className="row sb-child-row">
-              <div style={{ marginTop: "2px" }}>
-                <div className="col-xs-2" style={{ marginTop: "0px" }}>BG Color</div>
-                <div className="col-xs-4" style={{ marginLeft: "0px" }}>
+              <div style={{ marginTop: "10px" }}>
+                <div className="col-xs-3 top left" style={{ marginTop: "5px"}}>BG Color</div>
+                <div className="col-xs-3 left">
                   <ColorPickerComponent
                     id="bgcolor"
                     value="#000"
                     change={barCodeColorChange}
                   />
                 </div>
-                <div className="col-xs-2" style={{ width: '18%', paddingLeft: '12px', marginTop: '5px' }}>Fore Color</div>
-                <div className="col-xs-3" style={{ paddingLeft: "2px" }}>
+                <div className="col-xs-3 top left" style={{marginTop: '5px'}}>Fore Color</div>
+                <div className="col-xs-3 left">
                   <ColorPickerComponent
                     id="forecolor"
                     value="#000"
@@ -176,8 +176,8 @@ export class QrCode extends SampleBase<{}, {}> {
             </div>
             <div className="property-panel-header">Margin</div>
             <div className="row sb-child-row">
-              <div className="col-xs-2 top" style={{ paddingLeft: '0px' }}>Left</div>
-              <div className="col-xs-3" style={{ width: '33%', paddingLeft: '0px' }}>
+              <div className="col-xs-2 top left">Left</div>
+              <div className="col-xs-4 left">
                 <NumericTextBoxComponent
                   id="marginLeft"
                   enabled={true}
@@ -189,8 +189,8 @@ export class QrCode extends SampleBase<{}, {}> {
                   change={barcodeMarginLeft}
                 />
               </div>
-              <div className="rightProperty">Right</div>
-              <div className="col-xs-3" style={{ width: '33%', paddingLeft: '0px' }}>
+              <div className="col-xs-2 top left">Right</div>
+              <div className="col-xs-4 left">
                 <NumericTextBoxComponent
                   id="marginRight"
                   enabled={true}
@@ -205,8 +205,8 @@ export class QrCode extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className="row sb-child-row">
-              <div className="col-xs-2 top" style={{ paddingLeft: '0px' }}>Top</div>
-              <div className="col-xs-3" style={{ width: '33%', paddingLeft: '0px' }}>
+              <div className="col-xs-2 top left">Top</div>
+              <div className="col-xs-4 left">
                 <div style={{ paddingBottom: '8px' }}>
                   <NumericTextBoxComponent
                     id="marginbottom"
@@ -220,8 +220,8 @@ export class QrCode extends SampleBase<{}, {}> {
                   />
                 </div>
               </div>
-              <div className="rightProperty">Bottom</div>
-              <div className="col-xs-3" style={{ width: '33%', paddingLeft: '0px' }}>
+              <div className="col-xs-2 top left">Bottom</div>
+              <div className="col-xs-4 left">
                 <NumericTextBoxComponent
                   id="marginBottom"
                   enabled={true}
@@ -236,8 +236,8 @@ export class QrCode extends SampleBase<{}, {}> {
             </div>
           </div>
           <div className="row sb-child-row">
-            <div className="col-xs-2 top" style={{ paddingLeft: '0px' }}>Version</div>
-            <div className="col-xs-3" style={{ width: '33%', paddingLeft: '0px' }}>
+            <div className="col-xs-5 top left">Version</div>
+            <div className="col-xs-7 left">
               <div className="padding-bottom: 8px">
                 <NumericTextBoxComponent
                   id="version"
@@ -254,8 +254,8 @@ export class QrCode extends SampleBase<{}, {}> {
             </div>
           </div>
           <div className="row sb-child-row">
-            <div className="col-xs-2 top"style={{ paddingLeft: '0px' }}>Error Correction Level</div>
-            <div className="col-xs-3" style={{ width:'33%',paddingLeft: '0px' }}>
+            <div className="col-xs-5 top left">Error Correction Level</div>
+            <div className="col-xs-7 left">
                 <div className="padding-bottom: 8px">
                 <DropDownListComponent
                 id="position"
@@ -428,6 +428,9 @@ const sample_css = `
 
 .top {
   margin-top: 10px;
+}
+.left{
+  padding-left: 0px;
 }
 
 .centercontrol {

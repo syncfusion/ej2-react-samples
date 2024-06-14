@@ -200,7 +200,7 @@ export class Zooming extends SampleBase<{}, {}> {
                     <p>Chart component supports four types of zooming which can be set using <code>enableSelectionZooming</code>, <code>enablePinchZooming</code>, <code>enableMouseWheelZooming</code>, <code>enableDeferredZooming</code> property.</p>
                     <p>
                         Chart supports two mode of zooming which can be set using
-                        <code><a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-zoomSettings.html#mode-string">mode</a></code> property.
+                        <code><a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/zoomSettings/#mode" aria-label="Navigate to the Mode property reference for React ChartZoomSettings">mode</a></code> property.
                     </p>
                     <ul>
                         <li><code>XY</code> - Zoom the chart with respect to both the axis.</li>
@@ -214,7 +214,7 @@ export class Zooming extends SampleBase<{}, {}> {
                         <code>Zoom</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the Zooming can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/zooming/">documentation section</a>.
+                        More information on the Zooming can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/zooming/" aria-label="Navigate to the documentation for Zooming in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -229,7 +229,7 @@ export class Zooming extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
         args.chart.series[0].border.color = borderColor[themes.indexOf(args.chart.theme.toLowerCase())];
     };

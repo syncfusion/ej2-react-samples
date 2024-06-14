@@ -24,7 +24,7 @@ function AutoSave() {
     let rteObj: RichTextEditorComponent;
     let switchObj: SwitchComponent;
     // Rich Text Editor items list
-    const items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments',
+    const items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote',
         'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode', 'Undo', 'Redo'];
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {
@@ -80,7 +80,7 @@ function AutoSave() {
             <div className='col-lg-4 property-section' id="rteAPIProperty">
                 <PropertyPane title='Properties'>
                     <label htmlFor="checked" style={{ padding: "10px 72px 10px 0" }}> Auto Save </label>
-                    <SwitchComponent id="checked" ref={(scope) => { switchObj = scope }} change={onChange.bind(this)} checked={true}></SwitchComponent>
+                    <SwitchComponent id="checked" ref={(scope) => { switchObj = scope }} change={onChange.bind(this)} checked={true} ></SwitchComponent>
                 </PropertyPane>
 
             </div>

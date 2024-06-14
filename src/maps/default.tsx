@@ -27,7 +27,7 @@ export class DefaultMaps extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-panel'>
+            <main><div className='control-panel'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -99,11 +99,12 @@ export class DefaultMaps extends SampleBase<{}, {}> {
                 <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://craft.co/youtube/locations" target="_blank">craft.co/youtube/locations</a>
        </div>
-                <div id="action-description">
+</div>
+                <section id="action-description" aria-label="Description of Maps sample">
                 <p>
                 This sample visualizes the continents in the world by rendering these in a map layer. Also marks the office locations of YouTube in the world using markers. </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
             <p>
             In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker template is used to display the names for shapes. Legend is enabled in this example to represent each continent.
             </p>
@@ -115,8 +116,8 @@ export class DefaultMaps extends SampleBase<{}, {}> {
             <p>
             Maps component features are segregated into individual feature-wise modules. To use a legend, inject the <code>Legend</code> module using the <code>Maps.Inject(Legend)</code> method.
             </p>
-            </div>
-        </div>
+            </section>
+        </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {

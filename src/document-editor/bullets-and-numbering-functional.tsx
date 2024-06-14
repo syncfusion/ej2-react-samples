@@ -70,7 +70,8 @@ const BulletsAndNumberingView = () => {
             <div id="description">
                 <div>
                     <p>
-                        In this example, you can use, add, or modify the list formatting in document editor.
+                        In this example, you can use, add, or modify the list formatting in
+                        document editor.
                     </p>
                     <p style={{ display: "block" }}>
                         {" "}

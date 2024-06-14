@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { Internationalization } from '@syncfusion/ej2-base';
-import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, ExportDetailTemplateEventArgs, ExcelExport, Inject, PdfExport, Toolbar, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, DetailRow, ExportDetailTemplateEventArgs, ExcelExport, Inject, PdfExport, Toolbar, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { updateSampleSection } from '../common/sample-base';
@@ -17,6 +17,7 @@ function DetailTemplateExport() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
     const toolbarOptions: any = ['ExcelExport', 'PdfExport'];
     let gridInstance: GridComponent;
     const format = (value: Date) => {
@@ -127,7 +128,7 @@ function DetailTemplateExport() {
         <div className='control-pane'>
             <div className='control-section'>
             <GridComponent id='DetailTemplateExport' dataSource={employeeData} ref={grid => gridInstance = grid} toolbar={toolbarOptions}
-                        allowExcelExport={true} allowSorting={true} allowPdfExport={true} toolbarClick={toolbarClick.bind(this)}
+                        allowExcelExport={true} allowSorting={true} allowFiltering={true} filterSettings={filterSettings} allowPdfExport={true} toolbarClick={toolbarClick.bind(this)}
                         detailTemplate={template.bind(this)} exportDetailTemplate={exportDetailTemplate.bind(this)} width='auto'>
                         <ColumnsDirective>
                             <ColumnDirective field='FirstName' headerText='First Name' width='110' />
@@ -135,7 +136,7 @@ function DetailTemplateExport() {
                             <ColumnDirective field='Title' headerText='Name' width='240' />
                             <ColumnDirective field='Country' headerText='Country' width='180' />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, ExcelExport, PdfExport, Toolbar, Sort]} />
+                        <Inject services={[DetailRow, ExcelExport, PdfExport, Toolbar, Sort, Filter]} />
                     </GridComponent>
             </div>
             

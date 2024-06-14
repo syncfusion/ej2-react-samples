@@ -114,8 +114,8 @@ export class NumericAxis extends SampleBase<{}, {}> {
                     </div>
                     <div id="description">
                         <p>
-                        Numeric axis is used to plot numeric data in range navigator. To render numeric axis, set <code>valueType</code> to <code>Double</code>,
-                        Tooltip is enabled in this example, to see the tooltip in action, while the selected range is changed
+                        Numeric axis is used to plot numeric data in range navigator. To render numeric axis, set <code>valueType</code> to <code>Double</code>.
+                        Tooltip is enabled in this example, to see the tooltip in action, while the selected range is changed.
                         </p>
                     </div>
                 </div>
@@ -168,7 +168,7 @@ export class NumericAxis extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
     public renderTooltip(args:IRangeTooltipRenderEventArgs):void{

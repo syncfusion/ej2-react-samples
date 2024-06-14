@@ -14,6 +14,14 @@ const SAMPLE_CSS = `
     padding-bottom: 1px !important;
   }
 
+  .fluent2,
+  .fluent2-dark,
+  .fluent2-highcontrast {
+    .e-treegrid .e-summarycell.e-templatecell .e-input-group {
+      width: 150px !important;
+    }
+  }
+
   .e-summarycell.e-templatecell {
     pointer-events:visible !important;
   }`;

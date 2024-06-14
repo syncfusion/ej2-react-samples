@@ -95,7 +95,7 @@ const TooltipTemplate = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             {/* custom code start */}
             <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
@@ -104,10 +104,11 @@ const TooltipTemplate = () => {
                     <Inject services={[Legend, Tooltip]} />
                 </HeatMapComponent>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of HeatMap sample">
                 <p>This sample visualizes the crude oil production of the non-OPEC countries over the years. The data point values displayed are in million barrels per day units.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                 <p>
                     In this example, you can see how to customize the tooltip content in the HeatMap. You can customize the tooltip content by using the <a href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip#tooltip-template" target="_blank">template</a> property.
                 </p>
@@ -121,8 +122,8 @@ const TooltipTemplate = () => {
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                 </p>
-            </div>
-        </div >
+            </section>
+        </main>
     );
 }
 export default TooltipTemplate;

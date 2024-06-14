@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Sort, Page, Aggregate, Edit, Toolbar, Group, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective} from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Sort, Page, Aggregate, Edit, Toolbar, Group, AggregateColumnsDirective, FilterSettingsModel, Filter, AggregateColumnDirective, AggregateDirective, AggregatesDirective} from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -15,6 +15,7 @@ export class ReactiveAggregate extends SampleBase<{}, {}> {
     return(<span>Average: {props.Average}</span>)
   } 
   public pageSettings: Object = { pageCount: 5};
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
   public groupSettings: Object = {showDropArea:false, columns:['CustomerID']};
   public toolbarOptions: any = ['Delete', 'Update', 'Cancel'];
   public editSettings: any = { allowEditing: true, allowDeleting: true, mode: 'Batch' };
@@ -22,7 +23,7 @@ export class ReactiveAggregate extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={data} allowPaging={true} pageSettings={this.pageSettings} allowSorting={true} toolbar={this.toolbarOptions} editSettings={this.editSettings} allowGrouping={true} groupSettings={this.groupSettings}>
+          <GridComponent dataSource={data} allowPaging={true} pageSettings={this.pageSettings} allowSorting={true} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbarOptions} editSettings={this.editSettings} allowGrouping={true} groupSettings={this.groupSettings}>
             <ColumnsDirective>             
             <ColumnDirective field='OrderID' headerText='Customer Name' isPrimaryKey={true} width='150'></ColumnDirective>
               <ColumnDirective field='CustomerID' headerText='Customer ID' width='150'></ColumnDirective>
@@ -47,7 +48,7 @@ export class ReactiveAggregate extends SampleBase<{}, {}> {
                   </AggregateColumnsDirective>
                 </AggregateDirective>
             </AggregatesDirective>
-            <Inject services={[Page,Aggregate, Edit, Toolbar, Group, Edit, Sort]} />
+            <Inject services={[Page,Aggregate, Edit, Toolbar, Group, Sort, Filter]} />
           </GridComponent>
           <div id="action-description">
             <p>This sample demonstrates reactive aggregate update on data change functionality of the Grid. In this sample, the batch editing  is enabled and the corresponding aggregate values will be refreshed when 'Freight' cell value is changed.</p>

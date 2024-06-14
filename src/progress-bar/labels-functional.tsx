@@ -49,7 +49,7 @@ const ProgressBarLabels = () => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
         if (args.progressBar.theme === 'Material') {
             args.progressBar.trackColor = '#EAEAEA';
         }
@@ -69,26 +69,26 @@ const ProgressBarLabels = () => {
             <div className='control-section'>
                 <div className="row linear-parent">
                     <div id="success" className="linear-progress">
-                        <ProgressBarComponent id="success" ref={linearOne} type='Linear' height='40' width='100%' showProgressValue={true}
+                        <ProgressBarComponent id="progress-success" ref={linearOne} type='Linear' height='40' width='100%' showProgressValue={true}
                             value={40} trackThickness={24} progressThickness={24} labelStyle={{ textAlignment: 'Center', text: '40% Complete (Success)', color: '#ffffff' }}
                             role='Success' animation={animation}
                             load={progressLoad.bind(this)}>
                         </ProgressBarComponent>
                     </div>
                     <div id="info" className="linear-progress">
-                        <ProgressBarComponent id="info" ref={linearTwo} type='Linear' height='40' width='100%' showProgressValue={true}
+                        <ProgressBarComponent id="progress-info" ref={linearTwo} type='Linear' height='40' width='100%' showProgressValue={true}
                             value={50} trackThickness={24} progressThickness={24} labelStyle={{ textAlignment: 'Center', text: '50% Complete (Info)', color: '#ffffff' }}
                             role='Info' animation={animation} load={progressLoad.bind(this)}>
                         </ProgressBarComponent>
                     </div>
                     <div id="warning" className="linear-progress">
-                        <ProgressBarComponent id="warning" ref={linearThree} type='Linear' height='40' width='100%' showProgressValue={true}
+                        <ProgressBarComponent id="progress-warning" ref={linearThree} type='Linear' height='40' width='100%' showProgressValue={true}
                             value={60} trackThickness={24} progressThickness={24} labelStyle={{ textAlignment: 'Center', text: '60% Complete (Warning)', color: '#ffffff' }}
                             role='Warning' animation={animation} load={progressLoad.bind(this)} >
                         </ProgressBarComponent>
                     </div>
                     <div id="danger" className="linear-progress">
-                        <ProgressBarComponent id="danger" ref={linearFour} type='Linear' height='40' width='100%' showProgressValue={true}
+                        <ProgressBarComponent id="progress-danger" ref={linearFour} type='Linear' height='40' width='100%' showProgressValue={true}
                             value={70} trackThickness={24} progressThickness={24} labelStyle={{ textAlignment: 'Center', text: '70% Complete (Danger)', color: '#ffffff' }}
                             role='Danger' animation={animation} load={progressLoad.bind(this)}>
                         </ProgressBarComponent>

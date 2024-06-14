@@ -95,7 +95,7 @@ function MultipleExport() {
                 <div>Export grids in same sheet</div>
               </td>
               <td style={{ width: '30%', padding: '10px 10px 10px 0px' }}>
-                <CheckBoxComponent ref={(scope) => { checkboxObj = scope; }} checked={true}></CheckBoxComponent>
+                <CheckBoxComponent ref={(scope) => { checkboxObj = scope; }} checked={true} aria-label="Export Grids in same sheet"></CheckBoxComponent>
               </td>
             </tr>
             </tbody>

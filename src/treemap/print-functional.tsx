@@ -18,12 +18,10 @@ import {
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
 import { updateSampleSection } from '../common/sample-base';
+import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import * as data from './treemap-data/product.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
-    .control-fluid {
-        padding: 0px !important;
-    }
     #btn-control {
         width: 100%;
         text-align: center;
@@ -39,6 +37,7 @@ const PrintExport = () => {
     let treemapInstance = useRef<TreeMapComponent>(null);
     let mode = useRef<DropDownListComponent>(null);
     let nameElement = useRef<HTMLInputElement>(null);
+    let textElement: TextBoxComponent;
     // Code for Property Panel
     let droplist: { [key: string]: Object }[] = [
         { text: "JPEG", value: "JPEG" },
@@ -50,7 +49,7 @@ const PrintExport = () => {
         treemapInstance.current.print();
     };
     const onClick1 = (e: Event): void => {
-        let fileName: string = nameElement.current.value;
+        let fileName: string = textElement.value;
         treemapInstance.current.export(mode.current.value as ExportType, fileName);
     };
     const load = (args: ILoadedEventArgs): void => {
@@ -63,7 +62,7 @@ const PrintExport = () => {
         // custom code end
     };
     return (
-        <div className="control-pane">
+        <main><div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-md-9">
@@ -124,7 +123,7 @@ const PrintExport = () => {
                 {/* Property Panel */}
                 <div className="col-md-3 property-section">
                     <PropertyPane title="Properties">
-                        <table
+                        <table role='none'
                             id="property"
                             title="Properties"
                             className="property-panel-table"
@@ -159,16 +158,10 @@ const PrintExport = () => {
                                 </td>
                                 <td>
                                     <div
-                                        className="e-float-input"
                                         style={{ marginTop: "0px", paddingLeft: "0px" }}
                                     >
-                                        <input
-                                            id="fileName"
-                                            ref={nameElement}
-                                            type="text"
-                                            defaultValue="TreeMap"
-                                            style={{ padding: "0px", paddingLeft: "5px" }}
-                                        />
+                                        
+                                    <TextBoxComponent className="e-input" value='TreeMap' style={{ width: '100%', padding: "0px", paddingLeft: "5px" }} id="fileName" ref={d => textElement = d}></TextBoxComponent>
                                     </div>
                                 </td>
                             </tr>
@@ -205,13 +198,14 @@ const PrintExport = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of TreeMap sample">
                 <p>
                     This sample depicts the top 10 best-selling smartphone brands. Print
                     and export options have been enabled in this sample.
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
                 <p>
                     In this example, you can see how to export and print the rendered
                     treemap. The TreeMap can be exported to JPEG, PNG, SVG, and PDF
@@ -238,8 +232,8 @@ const PrintExport = () => {
                     </a>
                     .
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 export default PrintExport;

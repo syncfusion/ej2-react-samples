@@ -105,19 +105,26 @@ function PivotToolbar() {
     let toolbarOptions: any = ['New', 'Save', 'SaveAs', 'Rename', 'Remove', 'Load',
         'Grid', 'Chart', 'Export', 'SubTotal', 'GrandTotal', 'Formatting', 'FieldList'];
 
-    function cellTemplate(args): any {
-        if (args.cellInfo && args.cellInfo.axis === 'value' && pivotObj.pivotValues[args.cellInfo.rowIndex] && pivotObj.pivotValues[args.cellInfo.rowIndex][0].hasChild) {
-            if (args.targetCell.classList.contains(args.cellInfo.cssClass)) {
-                args.targetCell.classList.remove(args.cellInfo.cssClass);
-                args.cellInfo.style = undefined;
+    function queryCellInfo(args): any {
+        if (args.cell && args.cell.classList.contains('e-valuescontent') && args.data && args.data[0].hasChild) {
+            let pivotValues: any; let colIndex: number = Number(args.cell.getAttribute('data-colindex'));
+            if (!isNaN(colIndex)) {
+                pivotValues = pivotObj.pivotValues[args.data[colIndex].rowIndex][args.data[colIndex].colIndex];
+            }
+            if (pivotValues && args.cell && args.cell.classList.contains(pivotValues.cssClass)) {
+                args.cell.classList.remove(pivotValues.cssClass);
+                pivotValues.style = undefined;
             }
         }
+    }
+
+    function cellTemplate(args): any {
         if (args.cellInfo && args.cellInfo.axis === 'row' && args.cellInfo.valueSort.axis === 'university') {
             let imgElement: Element = createElement('img', {
                 className: 'university-logo',
                 attrs: {
                     'src': UniversityData[args.cellInfo.index[0]].logo as string,
-                    'alt': args.cellInfo.formattedText as string,
+                    'alt': args.cellInfo.formattedText as string + ' Image',
                     'width': '30',
                     'height': '30'
                 },
@@ -223,8 +230,7 @@ function PivotToolbar() {
     function chartOnLoad(args): void {
         let selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
     function chartSeriesCreated(args): void {
         pivotObj.chartSettings.chartSeries.legendShape = pivotObj.chartSettings.chartSeries.type === 'Polar' ? 'Rectangle' : 'SeriesType';
@@ -243,7 +249,8 @@ function PivotToolbar() {
                         showGroupingBar={true} allowGrouping={true} enableVirtualization={true} enableValueSorting={true} allowDeferLayoutUpdate={true} allowDrillThrough={true} gridSettings={{
                             columnWidth: 120, allowSelection: true, rowHeight: 36,
                             selectionSettings: { mode: 'Cell', type: 'Multiple', cellSelectionMode: 'Box' },
-                            excelQueryCellInfo: excelQueryCellInfo.bind(this)
+                            excelQueryCellInfo: excelQueryCellInfo.bind(this),
+                            queryCellInfo: queryCellInfo.bind(this)
                         }} allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={toolbarOptions}
                         newReport={newReport.bind(this)} renameReport={renameReport.bind(this)} removeReport={removeReport.bind(this)} loadReport={loadReport.bind(this)} fetchReport={fetchReport.bind(this)}
                         saveReport={saveReport.bind(this)} toolbarRender={beforeToolbarRender.bind(this)} chartSettings={{ title: 'Top Universities Analysis', load: chartOnLoad.bind(this) }} chartSeriesCreated={chartSeriesCreated.bind(this)} enableFieldSearching={true}>
@@ -289,7 +296,7 @@ function PivotToolbar() {
                 <p>
                     More information on the Essential JS2 Pivot Table can be found in this <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/pivotview/getting-started/#getting-started">
-                        documentation section</a>.
+                    documentation section</a>.
                 </p>
             </div>
         </div>

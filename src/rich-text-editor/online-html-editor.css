@@ -100,7 +100,8 @@
       background-color: #201F1F;
       color: #fff;
     }
-    .fluent-dark .CodeMirror-gutters, .fluent-dark .CodeMirror {
+    .fluent-dark .CodeMirror-gutters, .fluent-dark .CodeMirror,
+    .fluent2-dark .CodeMirror-gutters, .fluent2-dark .CodeMirror {
       background-color: #1B1A19;
       color: #fff;
     }
@@ -128,7 +129,7 @@
       background-color: #000000;
       color: #fff;
     }
-    .fabric-dark .title, .bootstrap5-dark .title, .bootstrap-dark .title, .fluent-dark .title, 
+    .fabric-dark .title, .bootstrap5-dark .title, .bootstrap-dark .title, .fluent-dark .title, .fluent2-dark .title, 
     .material-dark .title, .tailwind-dark .title, .highcontrast .title,.material3-dark .title {
       color: #fff;
     }

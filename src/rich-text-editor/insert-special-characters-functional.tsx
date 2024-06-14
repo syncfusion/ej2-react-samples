@@ -27,7 +27,7 @@ function InsertSpecialCharacters() {
     let saveSelection: NodeSelection;
     let dialogObj: DialogComponent;
     // Rich Text Editor items list
-    const items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'OrderedList',
+    const items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote', 'OrderedList',
         'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode',
         {
             tooltipText: 'Insert Symbol',

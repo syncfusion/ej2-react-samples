@@ -110,7 +110,7 @@ const DrilldownMaps = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div id="button" className="backLabel" style={{ display: button }}>
@@ -124,17 +124,17 @@ const DrilldownMaps = () => {
                     <MapsComponent id="maps" ref={mapInstance} loaded={loaded} load={load} shapeSelected={shapeSelected.bind(this)} zoomSettings={{ enable: false }}>
                         <Inject services={[Selection, Highlight, Marker, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={worldMap} layerType='Geometry' shapePropertyPath='continent' shapeDataPath='continent' dataSource={datasource.default} shapeSettings={{ colorValuePath: 'drillColor' }} selectionSettings={{ enable: false }} tooltipSettings={{ visible: true, valuePath: 'continent' }}>
+                            <LayerDirective shapeData={worldMap} shapePropertyPath='continent' shapeDataPath='continent' dataSource={datasource.default} shapeSettings={{ colorValuePath: 'drillColor' }} selectionSettings={{ enable: false }} tooltipSettings={{ visible: true, valuePath: 'continent' }}>
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} template='<div style="font-size: 12px;color:white;text-shadow: 0px 1px 1px black;font-weight: 500;width:50px">{{:name}}</div>' animationDuration={0} dataSource={markers} />
                                 </MarkersDirective>
                             </LayerDirective>
-                            <LayerDirective shapeData={africa} layerType='Geometry' shapeSettings={{ fill: '#80306A' }} highlightSettings={{ enable: true, fill: '#80306A' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={europe} layerType='Geometry' shapeSettings={{ fill: '#622D6C' }} highlightSettings={{ enable: true, fill: '#622D6C' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={asia} layerType='Geometry' shapeSettings={{ fill: '#462A6D' }} highlightSettings={{ enable: true, fill: '#462A6D' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={northAmerica} layerType='Geometry' shapeSettings={{ fill: '#C13664' }} highlightSettings={{ enable: true, fill: '#C13664' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={southAmerica} layerType='Geometry' shapeSettings={{ fill: '#9C3367' }} highlightSettings={{ enable: true, fill: '#9C3367' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
-                            <LayerDirective shapeData={oceania} layerType='Geometry' shapeSettings={{ fill: '#2A2870' }} highlightSettings={{ enable: true, fill: '#2A2870' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={africa} shapeSettings={{ fill: '#80306A' }} highlightSettings={{ enable: true, fill: '#80306A' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={europe} shapeSettings={{ fill: '#622D6C' }} highlightSettings={{ enable: true, fill: '#622D6C' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={asia} shapeSettings={{ fill: '#462A6D' }} highlightSettings={{ enable: true, fill: '#462A6D' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={northAmerica} shapeSettings={{ fill: '#C13664' }} highlightSettings={{ enable: true, fill: '#C13664' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={southAmerica} shapeSettings={{ fill: '#9C3367' }} highlightSettings={{ enable: true, fill: '#9C3367' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
+                            <LayerDirective shapeData={oceania} shapeSettings={{ fill: '#2A2870' }} highlightSettings={{ enable: true, fill: '#2A2870' }} tooltipSettings={{ visible: true, valuePath: 'name' }} />
                         </LayersDirective>
                     </MapsComponent>
                 </div>
@@ -144,13 +144,14 @@ const DrilldownMaps = () => {
                     <p id="content" style={{ fontSize: '16px', color: 'grey', textAlign: 'center' }}>{content}</p>
                 </i>
             </div>
-            <div id="action-description">
-                <p>This sample demonstrates drill down with all the continents in the initial view. By clicking a continent, you can view all the countries available in that continent.</p>
-            </div>
-            <div id="description">
-                <p>In this example, you can see how to display an another layer by clicking a shape in previous layer. Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices</p>
-            </div>
         </div>
+            <section id="action-description" aria-label="Description of Maps sample">
+                <p>This sample demonstrates drill down with all the continents in the initial view. By clicking a continent, you can view all the countries available in that continent.</p>
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
+                <p>In this example, you can see how to display an another layer by clicking a shape in previous layer. Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices</p>
+            </section>
+        </main>
     )
 }
 export default DrilldownMaps;

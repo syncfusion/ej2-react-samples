@@ -40,7 +40,7 @@ export class PieRadius extends SampleBase<{}, {}> {
                   Accumulation Chart component features are segregated into individual feature-wise modules.To use pie chart, you need to inject <code>AccumulationLegend</code> into <code>services</code>.
               </p>
               <p>
-                  More information about the pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#various-radius-pie-chart">documentation section</a>.
+                  More information about the pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#various-radius-pie-chart" aria-label="Navigate to the documentation for Various Radius Pie Chart in React Accumulation Chart component">documentation section</a>.
               </p>
           </div>
       </div>

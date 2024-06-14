@@ -39,11 +39,22 @@ const BubbleMaps = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
-                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: true, horizontalAlignment: 'Near', toolBarOrientation: 'Vertical', toolbars: ['ZoomIn', 'ZoomOut', 'Reset'], pinchZooming: true }} bubbleRendering={bubbleRendering} titleSettings={{ text: 'Top 30 countries with highest Internet users', textStyle: { size: '16px' } }}>
+                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} useGroupingSeparator={true} format={"n"}
+                        zoomSettings={{
+                            enable: true,
+                            toolbarSettings: {
+                                orientation: 'Vertical',
+                                horizontalAlignment: 'Near',
+                                buttonSettings: {
+                                    toolbarItems: ['ZoomIn', 'ZoomOut', 'Reset']
+                                }
+                            }, pinchZooming: true
+                        }}
+                        bubbleRendering={bubbleRendering} titleSettings={{ text: 'Top 30 countries with highest Internet users', textStyle: { size: '16px' } }}>
                         <Inject services={[Bubble, MapsTooltip, Zoom]} />
                         <LayersDirective>
                             <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource} shapeSettings={{ fill: '#E5E5E5' }}>
@@ -59,10 +70,11 @@ const BubbleMaps = () => {
                     Source: <a href="https://en.wikipedia.org/wiki/List_of_countries_by_number_of_Internet_users" target="_blank">en.wikipedia.org</a>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample illustrates the top 30 countries which has highest Internet users in bubbles of the year 2016.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to render the bubbles for each shape in a map. Values of the shapes can be determined from the size and color of the bubbles. You can bind the desired colors from the data source to the bubbles.</p>
                 <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a bubble or tap a bubble in touch enabled devices.</p>
                 <br />
@@ -70,8 +82,8 @@ const BubbleMaps = () => {
                 <p>
                     Maps component features are segregated into individual feature-wise modules. To use the bubbles, inject the <code>Bubble</code> module using the <code>Maps.Inject(Bubble)</code> method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default BubbleMaps;

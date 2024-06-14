@@ -1,5 +1,5 @@
 /**
- * DropDownList Default Sample
+ * MultiSelect Virtualization Sample
  */
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
@@ -92,38 +92,38 @@ const Default = () => {
     
     // maps the appropriate column to fields property
     const fields: { [key: string]: string } = { text: 'text', value: 'id' };
-    const value =  ["20003", "10025", "10044", "custom"];
+    const value =  ['id10', 'id50', 'id100', "custom"];
     const customerField: { [key: string]: string } = { text: 'OrderID', value: 'OrderID' };
     const groupField: { [key: string]: string } = {  groupBy: 'group', text: 'text', value: 'id' };
     return (
         <div id="dropdowndefault" className='control-pane'>
         <div className="control-section col-lg-8">
           <div className="multi-control-wrapper">
-            <h4>Local Data</h4>
+          <label className="h4">Local Data</label>
             <MultiSelectComponent id="local" dataSource={records} placeholder="e.g. Item 1" mode="Box" allowFiltering={allowFiltering} enableVirtualization={true} allowCustomValue={allowCustomValue} showDropDownIcon={true} hideSelectedItem={hideSelectedItem} closePopupOnSelect={closePopupOnSelect} fields={fields} popupHeight="200px" >
               <Inject services={[VirtualScroll]} />
             </MultiSelectComponent>
           </div>
           <div className="multi-control-wrapper">
-            <h4>Remote Data</h4>
+          <label className="h4">Remote Data</label>
             <MultiSelectComponent id="remote" dataSource={customerData} placeholder="e.g. OrderID" mode="Delimiter" allowFiltering={allowFiltering} enableVirtualization={true} allowCustomValue={allowCustomValue} showDropDownIcon={true} hideSelectedItem={hideSelectedItem} closePopupOnSelect={closePopupOnSelect} fields={customerField} popupHeight="200px" >
               <Inject services={[VirtualScroll]} />
             </MultiSelectComponent>
           </div>
           <div className="multi-control-wrapper">
-            <h4>Default Values</h4>
-            <MultiSelectComponent id="databind" value={value} dataSource={customerData} placeholder="e.g. OrderID" mode="Default" allowFiltering={allowFiltering} enableVirtualization={true} allowCustomValue={allowCustomValue} showDropDownIcon={true} hideSelectedItem={hideSelectedItem} closePopupOnSelect={closePopupOnSelect} fields={customerField} popupHeight="200px" >
+          <label className="h4">Default Values</label>
+            <MultiSelectComponent id="databind" value={value} dataSource={records} placeholder="e.g. Item 1" mode="Default" allowFiltering={allowFiltering} enableVirtualization={true} allowCustomValue={allowCustomValue} showDropDownIcon={true} hideSelectedItem={hideSelectedItem} closePopupOnSelect={closePopupOnSelect} fields={fields} popupHeight="200px" >
               <Inject services={[VirtualScroll]} />
             </MultiSelectComponent>
           </div>
           <div className="multi-control-wrapper">
-            <h4>Grouping</h4>
+            <label className="h4" >Grouping</label>
             <MultiSelectComponent id="group" dataSource={records} placeholder="e.g. Item 1" mode="CheckBox" allowFiltering={allowFiltering} enableSelectionOrder={false} enableVirtualization={true} allowCustomValue={allowCustomValue} showDropDownIcon={true} fields={groupField} popupHeight="200px" >
               <Inject services={[VirtualScroll, CheckBoxSelection]} />
             </MultiSelectComponent>
           </div>
           <div className="multi-control-wrapper">
-            <h4>Template</h4>
+          <label className="h4">Template</label>
             <MultiSelectComponent id="Template" dataSource={records} placeholder="e.g. Item 1" mode="Default" allowFiltering={allowFiltering} enableVirtualization={true} allowCustomValue={allowCustomValue} showDropDownIcon={true} hideSelectedItem={hideSelectedItem} closePopupOnSelect={closePopupOnSelect} fields={fields} popupHeight="200px" itemTemplate={itemTemplate} valueTemplate={valueTemplate} headerTemplate={headerTemplate} >
               <Inject services={[VirtualScroll]} />
             </MultiSelectComponent>

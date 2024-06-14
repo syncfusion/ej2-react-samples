@@ -1,24 +1,30 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Inject, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Inject, Sort, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class ColumnResizing extends SampleBase<{}, {}> {
+    public filterSettings: FilterSettingsModel = {type: 'Excel'};
+    public toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    public editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    public customeridRule: Object = { required: true, minLength: 5};
+    public orderidRules: Object = { required: true, number: true };
+    public freightRules: Object = { required: true, min: 0 };
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
                     <div style={{ overflowX: 'auto', marginLeft: '4px' }}>
-                        <GridComponent dataSource={orderDetails} allowResizing={true} height='400' width='850' autoFit={true} allowSorting={true}>
+                        <GridComponent dataSource={orderDetails} allowResizing={true} height='400' width='850' autoFit={true} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar}>
                             <ColumnsDirective>
-                            <ColumnDirective field='OrderID' headerText='Order ID' minWidth='100' width='150' maxWidth='200' textAlign='Right'></ColumnDirective>
-                            <ColumnDirective field='CustomerName' headerText='Customer Name' minWidth='100' width='150'></ColumnDirective>
-                            <ColumnDirective field='Freight' headerText='Freight' minWidth='100' width='120' format='C2' textAlign='Right'/>
-                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' allowResizing={false} width='150' format='yMd' textAlign='Right'/>
-                            <ColumnDirective field='ShipCountry' headerText='Ship Country' minWidth='100' width='150'></ColumnDirective>
+                            <ColumnDirective field='OrderID' headerText='Order ID' minWidth='100' width='150' maxWidth='200' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+                            <ColumnDirective field='CustomerName' headerText='Customer Name' minWidth='100' width='150' validationRules={this.customeridRule}></ColumnDirective>
+                            <ColumnDirective field='Freight' headerText='Freight' minWidth='100' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit'/>
+                            <ColumnDirective field='ShippedDate' headerText='Shipped Date' allowResizing={false} width='150' format='yMd' textAlign='Right' editType='datepickeredit'/>
+                            <ColumnDirective field='ShipCountry' headerText='Ship Country' minWidth='100' width='150' editType='dropdownedit'></ColumnDirective>
                             </ColumnsDirective>
-                            <Inject services={[Resize, Sort]} />
+                            <Inject services={[Resize, Sort, Toolbar, Filter, Edit]} />
                         </GridComponent>
                     </div>
                 </div>

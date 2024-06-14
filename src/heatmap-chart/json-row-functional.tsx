@@ -97,7 +97,7 @@ const JsonRow = () => {
     };
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             {/* custom code start */}
             <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
@@ -109,11 +109,11 @@ const JsonRow = () => {
             <div id="source">Source:
                 <a href="https://en.wikipedia.org/wiki/2016_Summer_Olympics_medal_table" target="_blank">https://en.wikipedia.org/</a>
             </div>
-
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of HeatMap sample">
                 <p>This sample visualizes the overall Olympic medals won by the countries in all the summer Olympic events from the year 2000 to 2016.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                 <p>
                     In this example, you can see how to bind JSON data and configure the Heatmap using the data adaptor support. You can bind
                 the JSON data with information for each row to the Heatmap using
@@ -129,8 +129,8 @@ const JsonRow = () => {
                     href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a>, <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/adaptorType/" target='_blank'>Adaptor </a> and <a target="_blank"
                     href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Adaptor, Legend]} />'}</code> method.
                 </p>
-            </div>
-        </div >
+            </section>
+        </main>
     );
 }
 export default JsonRow;

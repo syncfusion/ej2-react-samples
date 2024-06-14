@@ -59,8 +59,8 @@ const ProgressBarCustomContents = () => {
         duration: 2000,
         delay: 0,
     };
-    const content1: string = `<img src="src/progress-bar/images/material-pause.svg"></img>`;
-    const content2: string = `<img src="src/progress-bar/images/material-Download.svg"></img>`;
+    const content1: string = `<img src="src/progress-bar/images/material-pause.svg" alt="Pause Icon"></img>`;
+    const content2: string = `<img src="src/progress-bar/images/material-Download.svg" alt="Download Icon"></img>`;
     const content3: string = '<div id="point1" style="font-size:20px;font-weight:bold;color:#b52123;fill:#b52123"><span>80%</span></div>';
     const annotationColors: {
         material: string,
@@ -79,19 +79,21 @@ const ProgressBarCustomContents = () => {
         fluentdark: string,
         material3: string,
         material3dark: string
-    } = { fluent: '#0D6EFD', fluentdark: '#0D6EFD',  material: '#e91e63', fabric: '#0078D6', bootstrap: '#317ab9', bootstrap4: '#007bff', highcontrast: '#FFD939', tailwind: '#4F46E5', bootstrap5: '#0D6EFD', bootstrap5dark: '#0D6EFD', bootstrapdark: '#9A9A9A', fabricdark: '#9A9A9A', materialdark: '#9A9A9A', tailwinddark: '#22D3EE', material3 : '#6750A4', material3dark: '#D0BCFF' };
+        fluent2: string,
+        fluent2dark: string,
+    } = { fluent: '#0D6EFD', fluentdark: '#0D6EFD',  material: '#e91e63', fabric: '#0078D6', bootstrap: '#317ab9', bootstrap4: '#007bff', highcontrast: '#FFD939', tailwind: '#4F46E5', bootstrap5: '#0D6EFD', bootstrap5dark: '#0D6EFD', bootstrapdark: '#9A9A9A', fabricdark: '#9A9A9A', materialdark: '#9A9A9A', tailwinddark: '#22D3EE',material3 : '#6750A4', material3dark: '#D0BCFF', fluent2: '#0F6CBD', fluent2dark: '#115EA3' };
     const progressLoad: EmitType<ILoadedEventArgs> = (args: ILoadedEventArgs) => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
         if (args.progressBar.element.id === 'label-container') {
             // tslint:disable-next-line:max-line-length
             args.progressBar.annotations[0].content = '<div id="point1" class="plabeltxt" style="color: ' + annotationColors[selectedTheme.replace(/-/i, '')] + ' "><span>80%</span></div>';
         } else if (args.progressBar.element.id === 'download-container') {
-            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-Download.svg"></img>';
+            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-Download.svg" alt="Download Icon"></img>';
         } else {
-            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-pause.svg"></img>';
+            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-pause.svg" alt="Pause Icon"></img>';
         }
     }
     const reloadClick = (): void => {
@@ -104,7 +106,7 @@ const ProgressBarCustomContents = () => {
         clearTimeout1 = +setTimeout(
             () => {
                 //tslint:disable-next-line
-                pausePlay.current.annotations[0].content = '<img src="src/progress-bar/images/' + (pausePlay.current.theme).toLowerCase() + '-Play.svg"></img>';
+                pausePlay.current.annotations[0].content = '<img src="src/progress-bar/images/' + (pausePlay.current.theme).toLowerCase() + '-Play.svg" alt="Play Icon"></img>';
                 pausePlay.current.dataBind();
             },
             2000);
@@ -115,7 +117,7 @@ const ProgressBarCustomContents = () => {
         clearTimeout2 = +setTimeout(
             () => {
                 //tslint:disable-next-line
-                downloadProgress.current.annotations[0].content = '<img src="src/progress-bar/images/' + (downloadProgress.current.theme).toLowerCase() + '-Tick.svg"></img>';
+                downloadProgress.current.annotations[0].content = '<img src="src/progress-bar/images/' + (downloadProgress.current.theme).toLowerCase() + '-Tick.svg" alt="Tick Icon"></img>';
                 downloadProgress.current.dataBind();
             },
             2000);

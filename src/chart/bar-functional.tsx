@@ -34,7 +34,7 @@ const Bar = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -64,7 +64,7 @@ const Bar = () => {
                     Chart component features are segregated into individual feature-wise modules. To use bar series, we need to inject <code>BarSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the bar series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#bar-chart">documentation section</a>.
+                    More information on the bar series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/bar" aria-label="Navigate to the documentation for Bar Chart in ASP.NET Core Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

@@ -60,14 +60,14 @@ export class Track extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
                 <div className="control-section">
                     <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ margin: 'auto', padding: '10px' }}>
-                            <table>
+                            <table role='none'>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -149,20 +149,21 @@ export class Track extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample demonstrates the basic axis, its edge style, range color for axis, inversed and opposed axis.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure axis in the linear gauge. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/containerModel/#roundedcornerradius"> roundedCornerRadius</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/labelModel/#userangecolor"> useRangeColor</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/axisModel/#isinversed"> isInversed</a>, and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/axisModel/#opposedposition"> opposedPosition</a> properties can be used to set the edge style, range color for axis, inversed and opposed axis respectively.
                     </p>
                     <p>
                         More information on the axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/axis/#axis-in-react-linear-gauge">documentation section</a>.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         )
     }
 }

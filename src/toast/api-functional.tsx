@@ -233,14 +233,14 @@ function Api () {
                         <div className="col-lg-6 padding">
                             <div className="input-form">
                                 <div className="e-float-input">
-                                    <input id="toast_input_title" ref={toastInputTitleRef} className='e-input' required />
+                                    <input id="toast_input_title" ref={toastInputTitleRef} aria-label="title" className='e-input' required />
                                     <span className="e-float-line"></span>
                                     <label className="e-float-text">Enter the title</label>
                                 </div>
                             </div>
                             <div className="input-form">
                                 <div className="e-float-input">
-                                    <textarea className='e-input' ref={toastInputContentRef} id='toast_input_content' rows={3} required></textarea>
+                                    <textarea className='e-input' ref={toastInputContentRef} aria-label="content" id='toast_input_content' rows={3} required></textarea>
                                     <label className="e-float-text">Enter the content</label>
                                 </div>
                             </div>
@@ -272,7 +272,7 @@ function Api () {
                         </div>
                         <div className="col-lg-6 padding">
                             <div className="input-form">
-                                <h4> Show Animation</h4>
+                                <h1 className="h4"> Show Animation</h1>
                                 <div className="e-float-input">
                                     <input className="e-input" id="showDuration" ref={showDurationRef} defaultValue="400" required />
                                     <span className="e-float-line"></span>
@@ -286,7 +286,7 @@ function Api () {
                                 <DropDownListComponent ref={(dropdownlist) => { dropDownListShow = dropdownlist }} id="ShowAnimation" dataSource={animationData} fields={animationFields} placeholder="Select an Animation" change={showChange.bind(this)} value={animationValue} />
                             </div>
                             <div className="input-form e-group">
-                                <h4> Hide Animation</h4>
+                                <h2 className="h4"> Hide Animation</h2>
                                 <div className="e-float-input">
                                     <input className="e-input" id="hideDuration" ref={hideDurationRef} defaultValue="400" required />
                                     <span className="e-float-line"></span>

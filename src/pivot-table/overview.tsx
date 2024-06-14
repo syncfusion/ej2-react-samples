@@ -100,19 +100,26 @@ export class PivotOverview extends SampleBase<{}, {}> {
     public toolbarOptions: any = ['New', 'Save', 'SaveAs', 'Rename', 'Remove', 'Load',
         'Grid', 'Chart', 'Export', 'SubTotal', 'GrandTotal', 'Formatting', 'FieldList'];
 
-    cellTemplate(args): any {
-        if (args.cellInfo && args.cellInfo.axis === 'value' && this.pivotObj.pivotValues[args.cellInfo.rowIndex] && this.pivotObj.pivotValues[args.cellInfo.rowIndex][0].hasChild) {
-            if (args.targetCell.classList.contains(args.cellInfo.cssClass)) {
-                args.targetCell.classList.remove(args.cellInfo.cssClass);
-                args.cellInfo.style = undefined;
+    queryCellInfo(args): any {
+        if (args.cell && args.cell.classList.contains('e-valuescontent') && args.data && args.data[0].hasChild) {
+            let pivotValues: any; let colIndex: number = Number(args.cell.getAttribute('data-colindex'));
+            if (!isNaN(colIndex)) {
+                pivotValues = this.pivotObj.pivotValues[args.data[colIndex].rowIndex][args.data[colIndex].colIndex];
+            }
+            if (pivotValues && args.cell && args.cell.classList.contains(pivotValues.cssClass)) {
+                args.cell.classList.remove(pivotValues.cssClass);
+                pivotValues.style = undefined;
             }
         }
+    }
+
+    cellTemplate(args): any {
         if (args.cellInfo && args.cellInfo.axis === 'row' && args.cellInfo.valueSort.axis === 'university') {
             let imgElement: Element = createElement('img', {
                 className: 'university-logo',
                 attrs: {
                     'src': UniversityData[args.cellInfo.index[0]].logo as string,
-                    'alt': args.cellInfo.formattedText as string,
+                    'alt': args.cellInfo.formattedText as string + ' Image',
                     'width': '30',
                     'height': '30'
                 },
@@ -224,8 +231,7 @@ export class PivotOverview extends SampleBase<{}, {}> {
     chartOnLoad(args): void {
         let selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
     chartSeriesCreated(args): void {
         this.pivotObj.chartSettings.chartSeries.legendShape = this.pivotObj.chartSettings.chartSeries.type === 'Polar' ? 'Rectangle' : 'SeriesType';
@@ -244,7 +250,8 @@ export class PivotOverview extends SampleBase<{}, {}> {
                             showGroupingBar={true} allowGrouping={true} enableVirtualization={true} enableValueSorting={true} allowDeferLayoutUpdate={true} allowDrillThrough={true} gridSettings={{
                                 columnWidth: 120, allowSelection: true, rowHeight: 36,
                                 selectionSettings: { mode: 'Cell', type: 'Multiple', cellSelectionMode: 'Box' },
-                                excelQueryCellInfo: this.excelQueryCellInfo.bind(this)
+                                excelQueryCellInfo: this.excelQueryCellInfo.bind(this),
+                                queryCellInfo: this.queryCellInfo.bind(this)
                             }} allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={this.toolbarOptions}
                             newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
                             saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Top Universities Analysis', load: this.chartOnLoad.bind(this) }} chartSeriesCreated={this.chartSeriesCreated.bind(this)} enableFieldSearching={true}>
@@ -290,7 +297,7 @@ export class PivotOverview extends SampleBase<{}, {}> {
                     <p>
                         More information on the Essential JS2 Pivot Table can be found in this <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/pivotview/getting-started/#getting-started">
-                            documentation section</a>.
+                        documentation section</a>.
                     </p>
                 </div>
             </div>

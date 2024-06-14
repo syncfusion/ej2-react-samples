@@ -29,8 +29,8 @@ const ToolbarTemplate = () => {
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  const projectStartDate: Date = new Date('03/24/2019');
-  const projectEndDate: Date = new Date('07/06/2019');
+  const projectStartDate: Date = new Date('03/24/2024');
+  const projectEndDate: Date = new Date('07/06/2024');
 
   const toolbarClick = (args: ClickEventArgs): void => {
     if (args.item.text === 'Quick Filter') {

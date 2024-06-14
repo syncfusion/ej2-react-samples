@@ -67,12 +67,13 @@ export class DirectoryUpload extends SampleBase<{},{}> {
                 <div id="description">
                 <p>In this demo, a folder upload enabled by setting <code>directoryUpload</code> as true.
                    It allows to select or drop a folder to upload all its contents including hierarchy folders and files.</p>
-                <p>The folder (directory) upload is supported for the following file system providers,
-                    <li> Physical provider</li> 
-                    <li> NodeJS provider</li>
-                    <li> Azure provider</li>
-                    <li> Amazon S3 provider</li>
-                </p>
+                <p>The folder (directory) upload is supported for the following file system providers, </p>
+                    <ul>
+                        <li> Physical provider</li> 
+                        <li> NodeJS provider</li>
+                        <li> Azure provider</li>
+                        <li> Amazon S3 provider</li>
+                    </ul>
                     <p>The File Manager component is used to explore a file system through a web application, similar to the windows explorer for windows.
                         It supports all the basic file operations such as create, rename, delete and so on.</p>
 

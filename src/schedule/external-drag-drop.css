@@ -85,7 +85,9 @@
      border-color: transparent;
      box-shadow: none !important;
  }
-
+ .fluent2-highcontrast .treeview-external-drag .e-list-item.e-hover>.e-text-content .e-list-text {
+     color: #fff;
+ }
  .treeview-external-drag .e-text-content, .e-bigger .treeview-external-drag .e-text-content, .treeview-external-drag.e-rtl .e-text-content, .e-bigger .treeview-external-drag.e-rtl .e-text-content {
      padding: 0;
      background-color: inherit;

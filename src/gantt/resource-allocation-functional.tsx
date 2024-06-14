@@ -39,8 +39,8 @@ const ResourceAllocation = () => {
   const splitterSettings: any = {
     columnIndex: 5.1
   };
-  const projectStartDate: Date = new Date('03/28/2019');
-  const projectEndDate: Date = new Date('07/28/2019');
+  const projectStartDate: Date = new Date('03/28/2024');
+  const projectEndDate: Date = new Date('07/28/2024');
   const labelSettings: any = {
     rightLabel: 'resources'
   };

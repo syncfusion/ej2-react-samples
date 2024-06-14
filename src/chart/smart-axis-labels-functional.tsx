@@ -12,7 +12,7 @@ import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import {  fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors  } from './theme-color';
+import {  fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, fluent2Colors, fluent2DarkColors  } from './theme-color';
 import { NumericTextBoxComponent } from "@syncfusion/ej2-react-inputs";
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -47,6 +47,10 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = pointMaterial3DarkColors[args.point.index % 10];
     } else if (selectedTheme === 'material3') {
         args.fill = pointMaterial3Colors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent2') {
+        args.fill = fluent2Colors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent2-dark') {
+        args.fill = fluent2DarkColors[args.point.index % 10];
     }
 };
 export let data1: any[] = [{ x: 'South Korea', y: 39 }, { x: 'India', y: 61 },
@@ -156,7 +160,7 @@ function SmartAxisLabels() {
                                 </td>
                                 <td>
                                     <div>
-                                        <DropDownListComponent width="120px" id="selmode" change={change.bind(this)} ref={d => dropElement = d} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value="Hide" />
+                                        <DropDownListComponent width="120px" id="selchange" change={change.bind(this)} ref={d => dropElement = d} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value="Hide" />
                                     </div>
                                 </td>
                             </tr>
@@ -179,20 +183,20 @@ function SmartAxisLabels() {
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Enable Trim:</div>
+                                    <div id="trim">Enable Trim:</div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <input type="checkbox" id="trimmode" defaultChecked={false} onChange={trim.bind(this)} style={{ marginLeft: '-5px' }} ref={d => checkElement = d} />
+                                        <input type="checkbox" id="trimmode" defaultChecked={false} onChange={trim.bind(this)} style={{ marginLeft: '-5px' }} ref={d => checkElement = d} aria-labelledby="Checkbox unchecked"/>
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Maximum Label Width:</div>
+                                    <div id="labelWidth">Maximum Label Width:</div>
                                 </td>
                                 <td style={{ padding: 10, width: '40%' }}>
-                                    <NumericTextBoxComponent width={120} value={34} min={1} change={xwid.bind(this)} ref={d => widthElement = d} />
+                                    <NumericTextBoxComponent width={120} value={34} min={1} change={xwid.bind(this)} ref={d => widthElement = d} aria-labelledby="Text"/>
                                 </td>
                             </tr></tbody>
                         </table>
@@ -227,7 +231,7 @@ function SmartAxisLabels() {
                     <li><code>Shift</code> - Shifts the edge labels.</li>
                 </ul>
                 <p>
-                    More information on the smart axis labels can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the smart axis labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-labels#smart-axis-labels" aria-label="Navigate to the documentation for Smart Axis Labels in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div >
@@ -240,7 +244,7 @@ function SmartAxisLabels() {
     function load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
 }
 export default SmartAxisLabels;

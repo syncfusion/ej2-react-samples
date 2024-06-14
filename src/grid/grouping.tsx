@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Group, Edit, Toolbar, Sort, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Group, Edit, Toolbar, Sort, Inject, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { orderDataSource } from './data';
 import { SampleBase } from '../common/sample-base';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
@@ -13,7 +13,7 @@ export class Grouping extends SampleBase<{}, {}> {
     public validationRule: Object = { required: true};
     public orderidRules: Object = { required: true, number: true };
     public format: any = {type:'dateTime',format:'M/d/y hh:mm a'};
-
+    public filterSettings: FilterSettingsModel = {type: 'Excel'};
     public groupOptions: Object = { showGroupedColumn: false, columns: ['ShipCountry'] };
     private gridInstance: GridComponent;
     private visible = false;
@@ -46,7 +46,7 @@ export class Grouping extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={orderDataSource} allowPaging={true} ref={ grid => this.gridInstance = grid} toolbar={this.toolbarOptions} pageSettings={{ pageCount: 5 }} editSettings={this.editSettings} allowGrouping={true} groupSettings={this.groupOptions} allowSorting={true} height="320"
+                    <GridComponent dataSource={orderDataSource} allowPaging={true} ref={ grid => this.gridInstance = grid} toolbar={this.toolbarOptions} pageSettings={{ pageCount: 5 }} allowFiltering={true} filterSettings={this.filterSettings} editSettings={this.editSettings} allowGrouping={true} groupSettings={this.groupOptions} allowSorting={true} height="320"
                     dataBound={this.dataBound.bind(this)} load={this.load} created={this.created}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
@@ -55,7 +55,7 @@ export class Grouping extends SampleBase<{}, {}> {
                             <ColumnDirective field='OrderDate' headerText='Order Date' editType='datetimepickeredit' allowGrouping={false} format= {this.format} width='160' ></ColumnDirective>
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={this.editparams} ></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Page, Group, Sort, Edit, Toolbar]} />
+                        <Inject services={[Page, Group, Sort, Edit, Toolbar, Filter]} />
                     </GridComponent>
                     <DialogComponent id="alertDialog" header='Grouping' visible={this.visible} animationSettings={this.animationSettings} width='300px' content='Grouping is disabled for this column' ref={alertdialog => this.alertDialogInstance = alertdialog} target='.control-section' buttons={this.alertButtons} ></DialogComponent>
                     <div className="e-dsalign">Source:

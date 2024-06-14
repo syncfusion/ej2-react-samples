@@ -75,16 +75,16 @@ export class API extends SampleBase<{}, {}> {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td> Opposite content </td>
-                                    <td> <SwitchComponent checked={true} change={(args) => this.handleTogglers(args, 'oppositeContent')}></SwitchComponent> </td>
+                                    <td><label htmlFor="opposite"> Opposite content </label></td>
+                                    <td> <SwitchComponent id='opposite' checked={true} change={(args) => this.handleTogglers(args, 'oppositeContent')}></SwitchComponent> </td>
                                 </tr>
                                 <tr>
-                                    <td> Show Icon </td>
-                                    <td> <SwitchComponent checked={true} change={(args) => this.handleTogglers(args, 'dotCss')}></SwitchComponent> </td>
+                                    <td><label htmlFor="icon"> Show Icon </label></td>
+                                    <td> <SwitchComponent id='icon' checked={true} change={(args) => this.handleTogglers(args, 'dotCss')}></SwitchComponent> </td>
                                 </tr>
                                 <tr>
-                                    <td> Reverse </td>
-                                    <td> <SwitchComponent change={(args) => this.setState({ isReverse: args.checked })}></SwitchComponent> </td>
+                                    <td><label htmlFor="reverse"> Reverse </label></td>
+                                    <td> <SwitchComponent id='reverse' change={(args) => this.setState({ isReverse: args.checked })}></SwitchComponent> </td>
                                 </tr>
                             </tbody>
                         </table>

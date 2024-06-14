@@ -181,7 +181,7 @@ function SummaryCustomization() {
                                 <td style={{ width: 'auto' }}>
                                     <div>
                                         <DropDownListComponent enabled={true} ref={(scope) => { optionsdll = scope; }}
-                                            change={onChange0.bind(this)} width={"100%"} id="options" type='text' tabIndex={1}
+                                            change={onChange0.bind(this)} width={"100%"} id="options" type='text' tabIndex={0}
                                             dataSource={options} fields={{ value: 'value', text: 'text' }} value="grandTotals" />
                                     </div>
                                 </td>
@@ -416,7 +416,12 @@ function SummaryCustomization() {
                                         showSubTotals</a> property as <b>false</b> inside the field definition.</td>
                         </tr>
                     </tbody>
-                </table>
+                </table><br />
+                <p>
+                    More information on the show/hide totals can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/show-hide-totals">
+                    documentation section</a>.
+                </p>
             </div>
         </div>
     )

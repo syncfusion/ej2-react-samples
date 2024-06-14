@@ -15,16 +15,16 @@ export class EventMarkers extends SampleBase<{}, {}> {
     dependency: 'Predecessor',
     child: 'subtasks'
   };
-  public eventMarkerDay1: Date = new Date('04/02/2019');
-  public eventMarkerDay2: Date = new Date('04/09/2019');
-  public eventMarkerDay3: Date = new Date('04/19/2019');
-  public eventMarkerDay4: Date = new Date('05/23/2019');
-  public eventMarkerDay5: Date = new Date('06/20/2019');
+  public eventMarkerDay1: Date = new Date('04/02/2024');
+  public eventMarkerDay2: Date = new Date('04/09/2024');
+  public eventMarkerDay3: Date = new Date('04/19/2024');
+  public eventMarkerDay4: Date = new Date('05/23/2024');
+  public eventMarkerDay5: Date = new Date('06/20/2024');
   public labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  public projectStartDate: Date = new Date('03/24/2019');
-  public projectEndDate: Date = new Date('07/06/2019');
+  public projectStartDate: Date = new Date('03/24/2024');
+  public projectEndDate: Date = new Date('07/06/2024');
   render() {
     return (
       <div className='control-pane'>

@@ -70,7 +70,7 @@ const Api = () => {
                   </td>
                   <td style={{ width: '50%', paddingRight: '0px' }}>
                     <div style={{ maxWidth: '200px' }}>
-                      <input id="hex-input" ref={hexInput} type="text" className="e-input" maxLength={9} onInput={changeValue.bind(hexInput)} />
+                      <input id="hex-input" aria-label="Value" ref={hexInput} type="text" className="e-input" maxLength={9} onInput={changeValue.bind(hexInput)} />
                     </div>
                   </td>
                 </tr>
@@ -89,7 +89,7 @@ const Api = () => {
                     <div>Disable</div>
                   </td>
                   <td style={{ width: '50%', paddingRight: '0px', paddingTop: '13px' }}>
-                    <CheckBoxComponent id="disabled" checked={false} change={onDisableChange} />
+                    <CheckBoxComponent id="disabled" aria-label="Disable" checked={false} change={onDisableChange} />
                   </td>
                 </tr>
                 <tr>
@@ -97,7 +97,7 @@ const Api = () => {
                     <div>Show Buttons</div>
                   </td>
                   <td style={{ width: '50%', paddingRight: '0px', paddingTop: '15px' }}>
-                    <CheckBoxComponent id="button" checked={true} change={onButtonChange} />
+                    <CheckBoxComponent id="button" aria-label="Show Buttons" checked={true} change={onButtonChange} />
                   </td>
                 </tr>
                 <tr>
@@ -105,7 +105,7 @@ const Api = () => {
                     <div>Mode Switcher</div>
                   </td>
                   <td style={{ width: '50%', paddingRight: '0px', paddingTop: '15px', paddingBottom: '10px' }}>
-                    <CheckBoxComponent id="mode-switch" checked={true} change={onModeChange} />
+                    <CheckBoxComponent id="mode-switch" aria-label="Mode Switcher" checked={true} change={onModeChange} />
                   </td>
                 </tr>
               </tbody>

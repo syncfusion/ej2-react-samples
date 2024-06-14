@@ -15,7 +15,7 @@ export class Overview extends SampleBase<{}, {}> {
     var flagIconLocation = (props.parentItem)? props.parentItem.name : props.name;
     return (<div style={{display: 'inline'}}><div style={{display: 'inline-block'}}>
     <img className='e-image' src={"src/treegrid/images/"+flagIconLocation+".png"} alt = {flagIconLocation}></img>     
-    </div><div style={{ display: 'inline-block', paddingLeft: '6px'}}>{props.name}</div></div>);
+    </div><div style={{ display: 'inline-block', paddingLeft: '6px',verticalAlign: 'middle'}}>{props.name}</div></div>);
   }
 
   public treegridTemplate(props): any {
@@ -69,7 +69,7 @@ export class Overview extends SampleBase<{}, {}> {
     if (props.timezone.indexOf('-') !== -1) {
       classValue = 'negativeTimeZone';
   }
-    return (<div><img src='src/treegrid/images/__Normal.png' style={{ filter: "brightness(150%)"}} className={classValue}></img><span style={{ paddingLeft: '7px'}}>{props.timezone}</span>)</div>);
+    return (<div><img src='src/treegrid/images/__Normal.png' alt="Normal" style={{ filter: "brightness(150%)"}} className={classValue}></img><span style={{ paddingLeft: '7px'}}>{props.timezone}</span>)</div>);
   }
 
   public populationValue(field: string, data: Object) {
@@ -90,12 +90,12 @@ export class Overview extends SampleBase<{}, {}> {
 
   render() {
     return (
-      <div className='control-pane'>
+      <div className='control-pane' role="control" aria-label="Tree Grid Control">
         <div className='control-section'>
           <TreeGridComponent dataSource={countries} childMapping='states' height='400' allowReordering={true}
           allowFiltering={true} allowSorting={true} filterSettings={{ type:'Menu', hierarchyMode:'Parent'}}>
             <ColumnsDirective>
-              <ColumnDirective field='name' headerText='Province' width='195' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
+              <ColumnDirective field='name' headerText='Province' width='210' template={this.flagtemplate} filter={this.Filter}></ColumnDirective>
               <ColumnDirective field='population' headerText='Population (Million)' allowFiltering={false} valueAccessor={this.populationValue} textAlign='Right' width='200'></ColumnDirective>
               <ColumnDirective field='gdp' headerText='GDP Rate %' width='155' template={this.gdptemplate} />
               <ColumnDirective field='rating' headerText='Credit Rating' width='190' template={this.ratingtemplate}  />

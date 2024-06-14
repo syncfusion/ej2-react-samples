@@ -194,7 +194,7 @@
                    </p>
                     <p>
                         More information on the dashed line series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line#series-customization">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line#series-customization" aria-label="Navigate to the documentation for Series customization in React Chart component">documentation section</a>.
                    </p>
                 </div>
             </div>
@@ -212,7 +212,7 @@
         let selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if (selectedTheme && selectedTheme.indexOf('fabric-dark') > -1) {
           annotationColor = 'dark'
         } else if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {

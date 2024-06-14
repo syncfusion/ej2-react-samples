@@ -60,7 +60,7 @@ export class Tooltip extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -89,7 +89,7 @@ export class Tooltip extends SampleBase<{}, {}> {
                             <AxesDirective>
                                 <AxisDirective startAngle={240} endAngle={120} radius='90%' minimum={0} maximum={120}
                                     majorTicks={{
-                                        color: 'white', offset: -5, height: 12
+                                        color: 'white', offset: -4, height: 10
                                     }}
                                     lineStyle={{ width: 0 }}
                                     minorTicks={{
@@ -115,20 +115,21 @@ export class Tooltip extends SampleBase<{}, {}> {
                         </CircularGaugeComponent>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
                     <p>
                         This sample helps in visualizing the tooltip of the pointer and the range in a circular gauge.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to display the tooltip for the pointer and the range in a circular gauge. The <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/tooltipSettingsModel/'>tooltip</a> settings is used to enable and customize the tooltip. To see the tooltip in action, hover your mouse over the pointer or the range, or tap them on touch-enabled devices.
                     </p>
                     <p>
                         More information on the tooltip can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-user-interaction/">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
 }

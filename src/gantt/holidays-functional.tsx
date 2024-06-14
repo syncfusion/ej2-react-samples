@@ -22,8 +22,8 @@ const Holidays = () => {
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  const projectStartDate: Date = new Date('03/24/2019');
-  const projectEndDate: Date = new Date('07/06/2019');
+  const projectStartDate: Date = new Date('03/24/2024');
+  const projectEndDate: Date = new Date('07/06/2024');
   return (
     <div className='control-pane'>
       <div className='control-section'>
@@ -40,9 +40,9 @@ const Holidays = () => {
             <ColumnDirective field='Progress'></ColumnDirective>
           </ColumnsDirective>
           <HolidaysDirective>
-            <HolidayDirective from='04/04/2019' to='04/04/2019' label='Local Holiday'></HolidayDirective>
-            <HolidayDirective from='04/19/2019' to='04/19/2019' label='Good Friday'></HolidayDirective>
-            <HolidayDirective from='04/30/2019' to='04/30/2019' label='Release Holiday'></HolidayDirective>
+            <HolidayDirective from='04/04/2024' to='04/04/2024' label='Local Holiday'></HolidayDirective>
+            <HolidayDirective from='04/19/2024' to='04/19/2024' label='Good Friday'></HolidayDirective>
+            <HolidayDirective from='04/30/2024' to='04/30/2024' label='Release Holiday'></HolidayDirective>
           </HolidaysDirective>
           <Inject services={[Selection, DayMarkers]} />
         </GanttComponent>

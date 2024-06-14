@@ -68,7 +68,7 @@ export class Filtering extends SampleBase<{}, {}> {
                                         <div>Enable Filterbar operator </div>
                                     </td>
                                     <td style={{ width: '30%', padding: '10px 10px 10px 0px' }}>
-                                        <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} change={this.onChanged.bind(this)}></CheckBoxComponent>
+                                        <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} change={this.onChanged.bind(this)} aria-label="Enable Filterbar operator"></CheckBoxComponent>
                                     </td>
                                 </tr>
                             </tbody>

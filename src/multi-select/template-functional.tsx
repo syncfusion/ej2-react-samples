@@ -47,7 +47,7 @@ const Templates = () => {
         <div id='multitemp' className='control-pane'>
             <div className='control-section'>
                 <div id='multitemplate' className="control-styles">
-                    <h4>Template</h4>
+                <label className="h4">Template</label>
                     <MultiSelectComponent id="multiTemplate" dataSource={employeesData} fields={fields} mode="Box" placeholder="Select employee" itemTemplate={itemTemplate} valueTemplate={valueTemplate} headerTemplate={headerTemplate} />
                 </div>
             </div>

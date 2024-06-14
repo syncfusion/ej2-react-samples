@@ -48,7 +48,7 @@ const OHLC = () => {
                 </StockChartComponent>
             </div>
             <div id="action-description">
-                <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart">React Stock Chart</a> example visualizes the AAPL stock price with OHLC chart. Tooltip and crosshair show the information about the data and period.</p>
+                <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart" aria-label="React Stock Chart in OHLC">React Stock Chart</a> example visualizes the AAPL stock price with OHLC chart. Tooltip and crosshair show the information about the data and period.</p>
             </div>
             <div id="description">
                 <p>
@@ -64,7 +64,7 @@ const OHLC = () => {
                     inject the <code>DateTime</code> module into <code>services</code>. To use the OHLC, inject the <code>HiloOpenCloseSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">documentation section</a>.
+                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types" aria-label="Navigate to the documentation for React Stock Chart series types">documentation section</a>.
                 </p>
             </div>
         </div>

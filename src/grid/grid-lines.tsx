@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
-import { GridComponent, ColumnsDirective, ColumnDirective, GridLine, Page, Inject, Sort, Toolbar, ToolbarItems, EditSettingsModel, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, GridLine, Page, Inject, Sort, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data';
 import { addClass, removeClass } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
@@ -10,6 +10,11 @@ export class GridLines extends SampleBase<{}, {}> {
 
     public lines: String = "Default";
     private gridInstance: GridComponent;
+    public filterSettings: FilterSettingsModel = {type: 'Excel'};
+    public toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    public editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    public firstnameRule: Object = { required: true, minLength: 5};
+    public employeeidRules: Object = { required: true, number: true };
     public click(e: MouseEvent): void {
         let element: HTMLElement = e.target as HTMLElement;
 
@@ -40,14 +45,14 @@ export class GridLines extends SampleBase<{}, {}> {
                         </ItemsDirective>
                     </ToolbarComponent>
                     <br />
-                    <GridComponent dataSource={employeeData} ref={grid => this.gridInstance = grid} gridLines='Default' allowSorting={true}>
+                    <GridComponent dataSource={employeeData} ref={grid => this.gridInstance = grid} gridLines='Default' allowSorting={true}editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar}>
                         <ColumnsDirective>
-                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' />
-                        <ColumnDirective field='FirstName' headerText='FirstName' width='125'/>
+                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' validationRules={this.employeeidRules} isPrimaryKey={true}/>
+                        <ColumnDirective field='FirstName' headerText='FirstName' width='125' validationRules={this.firstnameRule}/>
                         <ColumnDirective field='Title' headerText='Title' width='180' />
-                        <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format={{ skeleton: 'yMd', type: 'date' }} textAlign='Right'/>
+                        <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format={{ skeleton: 'yMd', type: 'date' }} textAlign='Right' editType='datepickeredit'/>
                         </ColumnsDirective>
-                        <Inject services={[Sort, Toolbar, Edit]} />
+                        <Inject services={[Sort, Toolbar, Edit, Filter]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">

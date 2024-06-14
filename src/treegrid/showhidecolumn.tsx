@@ -7,6 +7,15 @@ import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
+// custom code start
+const SAMPLE_CSS = `
+.fluent2 .btn,
+.fluent2-dark .btn,
+.fluent2-highcontrast .btn{
+  outline: none !important;
+}`;
+// custom code end
+
 
 export class ShowHideColumn extends SampleBase<{}, {}> {
 
@@ -47,6 +56,9 @@ export class ShowHideColumn extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
+          <style>
+            {SAMPLE_CSS}
+          </style>
           <div className = 'col-md-9'>
             <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping='subtasks' height='350' allowPaging={true} 
               ref={treegrid=> this.treegridObj = treegrid} pageSettings={{ pageSize: 10 }}>

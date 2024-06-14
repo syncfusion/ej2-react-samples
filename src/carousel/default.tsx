@@ -63,7 +63,7 @@ export class Default extends SampleBase<{}, {}> {
             slideshow of natural images has been showcased with the help of <code>items</code> property.</p>
           <p>By default, the slide will be changed automatically with the interval of <b>5 seconds.</b> You can also manually
             change the slide items using previous and next icons.</p>
-          <p>More information about React Carousel component can be found in this <a target='_blank'
+          <p>More information about React Carousel component can be found in this <a aria-label="Carousel getting started" target='_blank'
             href="https://ej2.syncfusion.com/documentation/carousel/getting-started/">documentation section</a>.</p>
         </div>
       </div>

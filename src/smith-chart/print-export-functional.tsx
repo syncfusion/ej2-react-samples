@@ -21,18 +21,75 @@ const SAMPLE_CSS = `
          text-align: center;
          text-transform:none !important;
      }
-     .e-export-icon::before {
-         content: '\\e728';
-     }
-     .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
-         content: '\\e75d';
-     }
-     .e-play-icon::before {
-         content: "\\e728";
-     }
-     .e-play-icon::before {
-         content: "\\e813";
-     }`;
+     .e-print-icon::before {
+        content: '\\e34b';
+    }
+ 
+    .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before {
+        content: '\\e7df';
+    }
+ 
+    .e-view.bootstrap .e-print-icon::before {
+        content: '\\ebd2';
+    }
+ 
+   .e-view.bootstrap4 .e-print-icon::before {
+        content: '\\e743';
+    }
+ 
+    .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
+        content: '\\e76c';
+    }
+ 
+    .e-view.highcontrast .e-print-icon::before {
+        content: '\\ebf9';
+    }
+ 
+    .e-view.bootstrap5 .e-print-icon::before, .e-view.bootstrap5-dark .e-print-icon::before {
+        content: '\\e75d';
+    }
+ 
+    .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+        content: '\\e75d';
+    }
+    .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before, .e-view.fluent2-highcontrast .e-print-icon::before {
+        content: '\\e75d';
+    }
+    .e-view.material3 .e-print-icon::before, .e-view.material3-dark .e-print-icon::before {
+        content: '\\e75d';
+    }
+    .e-export-icon::before {
+        content: '\\e728';
+    }
+ 
+    .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before {
+        content: '\\e710';
+    }
+ 
+    .e-view.bootstrap4 .e-icons.e-export::before {
+        content: '\\e7bf';
+    }
+ 
+    .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
+        content: '\\e7bf';
+    }
+ 
+    .e-view.highcontrast .e-export-icon::before {
+        content: '\\e710';
+    }
+ 
+    .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
+        content: '\\e72e';
+    }
+    .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {
+        content: '\\e72e';
+    }
+    .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before, .e-view.fluent2-highcontrast .e-export-icon::before {
+        content: '\\e72e';
+    }
+    .e-view.material3 .e-export-icon::before, .e-view.material3-dark .e-export-icon::before {
+        content: '\\e72e';
+    }`;
 // custom code end
 function Print() {
     React.useEffect(() => {
@@ -67,7 +124,7 @@ function Print() {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as SmithchartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as SmithchartTheme;
     }
 
     return (
@@ -119,11 +176,11 @@ function Print() {
                         </tr>
                         <tr style={{ 'height': '50px' }}>
                             <td style={{ 'width': '40%' }}>
-                                <div>File Name</div>
+                                <div id="filename">File Name</div>
                             </td>
                             <td style={{ 'width': '60%' }}>
                                 <div className="e-float-input" style={{ 'marginTop': '0px', 'marginLeft': '-10px' }}>
-                                    <input id="fileName" ref={d => nameElement = d} type="text" defaultValue="Smith chart" style={{ "width": "100px" }} />
+                                    <input id="fileName" ref={d => nameElement = d} type="text" defaultValue="Smith chart" style={{ "width": "100px" }} aria-labelledby="Smith Chart"/>
                                 </div>
                             </td>
                         </tr>

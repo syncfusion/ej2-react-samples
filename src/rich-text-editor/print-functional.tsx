@@ -12,7 +12,7 @@ function Print() {
     }, [])
     let rteObj: RichTextEditorComponent;
     // Rich Text Editor items list
-    const items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments',
+    const items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote',
         'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode', 'Undo', 'Redo', 'Print'];
     //Rich Text Editor ToolbarSettings
     const toolbarSettings: ToolbarSettingsModel = {

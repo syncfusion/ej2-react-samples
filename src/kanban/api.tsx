@@ -99,7 +99,7 @@ export class API extends SampleBase<{}, {}> {
                         </DialogComponent>
                     </div>
                 </div>
-                <div className="col-lg-3 property-section property-customization">
+                <div className="col-lg-3 property-section property-customization" id="apiKanbanProperty">
                     <PropertyPane title="Add Column">
                         <form id="addForm">
                             <table>

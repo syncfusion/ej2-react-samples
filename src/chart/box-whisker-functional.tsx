@@ -8,7 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Category, I
 import { PropertyPane } from '../common/property-pane';
 import { Browser } from '@syncfusion/ej2-base';
 import { EmitType } from '@syncfusion/ej2-base';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors } from './theme-color';
+import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors, pointFluent2Colors, pointFluent2DarkColors } from './theme-color';
 import { updateSampleSection } from '../common/sample-base';
 export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEventArgs): void => {
     let selectedTheme: string = location.hash.split('/')[1];
@@ -43,8 +43,12 @@ export let pointRender: EmitType<IPointRenderEventArgs> = (args: IPointRenderEve
         args.fill = pointMaterial3DarkColors[args.point.index % 10];
     } else if (selectedTheme === 'material3') {
         args.fill = pointMaterial3Colors[args.point.index % 10];
-    }
-};
+    } else if (selectedTheme === 'fluent2') {
+        args.fill = pointFluent2Colors[args.point.index % 10];
+    } else if (selectedTheme === 'fluent2-dark') {
+        args.fill = pointFluent2DarkColors[args.point.index % 10];
+    };
+}
 
 export let data1: any[] = [
     { x: 'Development', y: [22, 22, 23, 25, 25, 25, 26, 27, 27, 28, 28, 29, 30, 32, 34, 32, 34, 36, 35, 38] },
@@ -76,7 +80,7 @@ const BoxWhisker = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -101,7 +105,7 @@ const BoxWhisker = () => {
                     Chart component features are segregated into individual feature-wise modules. To use BoxAndWhisker series, we need to inject <code>BoxAndWhiskerSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the Box and Whisker series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#boxplotmode">documentation section</a>.
+                    More information on the Box and Whisker series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#boxplotmode" aria-label="Navigate to the documentation for Box and Whisker in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

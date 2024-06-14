@@ -22,7 +22,7 @@ const StepsCounter = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <LinearGaugeComponent load={load} animationDuration={3000} background='transparent' id='gauge' orientation='Horizontal'>
@@ -43,16 +43,17 @@ const StepsCounter = () => {
                     </AnnotationsDirective>
                 </LinearGaugeComponent>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of Linear Gauge sample">
                 <p>This sample shows a linear gauge displaying the number of steps taken by a person in a day.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                 <p>In this example, you can see how to render and configure a linear gauge to look like a steps counter. This can be accomplished by combining axis, range, pointer and annotations.</p>
                 <p>
                     More information on the linear gauge can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/getting-started/">documentation section</a>.
                 </p>
-            </div>
-        </div >
+            </section>
+    </main>
     )
 }
 export default StepsCounter;

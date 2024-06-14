@@ -79,8 +79,8 @@ export class TooltipTemplate extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/24/2019');
-  public projectEndDate: Date = new Date('05/04/2019');
+  public projectStartDate: Date = new Date('03/24/2024');
+  public projectEndDate: Date = new Date('05/04/2024');
   render() {
     return (
       <div className='control-pane'>

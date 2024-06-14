@@ -23,13 +23,13 @@ export class BatteryIndicator extends SampleBase<{}, {}> {
         if (args.gauge.theme == 'Bootstrap5Dark' || args.gauge.theme == 'TailwindDark') {
             this.borderColor = "#4b5563";
         }
-        if (args.gauge.theme == 'FabricDark' || args.gauge.theme == 'BootstrapDark' || args.gauge.theme == 'MaterialDark' || args.gauge.theme == 'HighContrast' || args.gauge.theme == 'Material' || args.gauge.theme == 'Fabric' || args.gauge.theme == 'Bootstrap') {
+        if (args.gauge.theme == 'Fluent2HighContrast' || args.gauge.theme == 'FabricDark' || args.gauge.theme == 'BootstrapDark' || args.gauge.theme == 'MaterialDark' || args.gauge.theme == 'HighContrast' || args.gauge.theme == 'Material' || args.gauge.theme == 'Fabric' || args.gauge.theme == 'Bootstrap') {
             this.borderColor = "#bfbfbf";
         }
-        if (args.gauge.theme == 'Fluent') {
+        if (args.gauge.theme == 'Fluent' || args.gauge.theme == 'Fluent2') {
             this.borderColor = "#EDEBE9";
         }
-        if (args.gauge.theme == 'FluentDark') {
+        if (args.gauge.theme == 'FluentDark' || args.gauge.theme == 'Fluent2Dark') {
             this.borderColor = "#292827";
         }
         if (args.gauge.theme == 'Bootstrap5' || args.gauge.theme == 'Tailwind') {
@@ -40,7 +40,7 @@ export class BatteryIndicator extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -79,20 +79,21 @@ export class BatteryIndicator extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample shows the battery indicator charged up to 75% by utilizing the linear gauge's functionalities.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure a linear gauge to look like a battery indicator. This can be accomplished by combining axis, pointer, multiple ranges, and multiple annotation.
                     </p>
                     <p>
                         More information on the linear gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/getting-started/">documentation section</a>.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         )
     }
 } 

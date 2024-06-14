@@ -37,7 +37,7 @@ const CheckBoxGrouping = () => {
         <div id="checkboxgroup" className='control-pane'>
             <div className='control-section col-lg-12'>
                 <div id="multigroup" className="control-styles">
-                    <h4>Grouping with CheckBox</h4>
+                <label className="h4">Grouping with CheckBox</label>
                     <MultiSelectComponent id="checkbox" dataSource={vegetables} filterBarPlaceholder={filterBarPlaceholder}
                         fields={checkFields} placeholder={checkWaterMark} mode={mode} showSelectAll={true}
                         enableGroupCheckBox={enableGroupCheckBox} showDropDownIcon={true} enableSelectionOrder={false}>

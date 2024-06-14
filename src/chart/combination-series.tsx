@@ -42,7 +42,7 @@ export class CombinationSeries extends SampleBase<{}, {}> {
                         </SeriesCollectionDirective>
                     </ChartComponent>
                     <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                        <a href="http://perspectives.pictet.com/2016/01/29/growth-accelerated-markedly-in-france-and-spain-in-2015/" target="_blank">perspectives.pictet.com</a>
+                        <a href="http://perspectives.pictet.com/2016/01/29/growth-accelerated-markedly-in-france-and-spain-in-2015/" target="_blank" aria-label="Navigate to the documentation for perspectives pictet">perspectives.pictet.com</a>
                     </div>
                 </div>
                 <div id="action-description">
@@ -60,7 +60,7 @@ export class CombinationSeries extends SampleBase<{}, {}> {
                         <code>ColumnSeries</code> <code>LineSeries</code> modules into <code>services</code>.
                     </p>
                     <p>
-                        More information on the Combination series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-series/#combination-series">documentation section</a>.
+                        More information on the Combination series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-series/#combination-series" aria-label="Navigate to the documentation for Multiple Series in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -75,7 +75,7 @@ export class CombinationSeries extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

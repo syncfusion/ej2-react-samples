@@ -23,7 +23,7 @@ const OutlookLayout = () => {
         { Name: 'Illa Russo', content: 'Annual conference', content2: 'Hi jeani Moresa', id: '4', order: 0 },
         { Name: 'Camden Macmellon', content: 'Reference request- Camden hester', content2: 'Hello Kerry Best', order: 0 },
         { Name: 'Garth Owen', content: 'Application for job Title', content2: 'Hello Illa Russo', id: '2', order: 0 },
-        { Name: 'Ursula Patterson', content: 'Programmaer Position Applicant', content2: 'Hello Kerry best', id: '2', order: 0 }
+        { Name: 'Ursula Patterson', content: 'Programmaer Position Applicant', content2: 'Hello Kerry best', id: '3', order: 0 }
     ];
 
     const nodeTemplate = (data: any) => {
@@ -67,19 +67,19 @@ const OutlookLayout = () => {
                             <tr>
                                 <td><button className='e-btn e-flat e-outline'>To...</button></td>
                                 <td id='firstname-target'>
-                                    <TextBoxComponent id="firstname"  />
+                                    <TextBoxComponent id="firstname" aria-label="firstname" />
                                 </td>
                             </tr>
                             <tr>
                                 <td><button className='e-btn e-flat e-outline'>Cc...</button></td>
                                 <td id='lastname-target'>
-                                    <TextBoxComponent id="lastname"  />
+                                    <TextBoxComponent id="lastname" aria-label="lastname" />
                                 </td>
                             </tr>
                             <tr>
                                 <td><div id='subject-text'>Subject</div></td>
                                 <td id='subject-target'>
-                                    <TextBoxComponent id="subject" />
+                                    <TextBoxComponent id="subject" aria-label="subject" />
                                 </td>
                             </tr>
                         </table>

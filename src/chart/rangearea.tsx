@@ -37,7 +37,7 @@
                   <code>RangeAreaSeries</code> module into <code>services</code>.
               </p>
               <p>
-                  More information about area type series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                  More information about area type series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/range-area" aria-label="Navigate to the documentation for Range Area in React Chart component">documentation section</a>.
               </p>
           </div>
       </div>
@@ -51,7 +51,7 @@
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
     public seriesRender(args: ISeriesRenderEventArgs) {

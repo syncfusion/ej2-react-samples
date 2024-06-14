@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { createSpinner, showSpinner, hideSpinner, DialogUtility } from '@syncfusion/ej2-popups';
+import { createSpinner, showSpinner, hideSpinner } from '@syncfusion/ej2-popups';
 import { SampleBase } from '../common/sample-base';
 import { DocumentEditorContainerComponent, Toolbar } from '@syncfusion/ej2-react-documenteditor';
 import { TitleBar } from './title-bar';
@@ -76,7 +76,7 @@ export class Export extends SampleBase<{}, {}> {
                 </div>
             </div>
             <div id="action-description">
-                <p>This example illustrates how to efficiently export a document to various formats using the DocumentEditor. You can seamlessly convert your content into formats such as PDF, RTF, HTML, ODT, Plain Text, Word Template, and Markdown.</p>
+                <p>This example illustrates how to efficiently export a document to various formats using the DocumentEditor. You can seamlessly convert your content into formats such as PDF, RTF, HTML, ODT, WordML, Plain Text, Word Template, and Markdown.</p>
             </div>
             <div id="description">
                 <p>In this example, Document Editor provides exporting of the document as follows</p>
@@ -265,17 +265,7 @@ export class Export extends SampleBase<{}, {}> {
                     hideSpinner(element);
                 }
             };
-            http.onloadend = function() {
-                hideSpinner(element);
-            };
-            http.onerror = function() {
-                DialogUtility.alert({
-                    title: "Information",
-                    content: "Error in establishing connection with web server.",
-                    okButton: {  text: "OK" },
-                    closeOnEscape: true,
-                });
-            };
+
             // Send the request with JSON.stringify(sfdt) as the request body
             http.send(JSON.stringify(sfdt));
         }

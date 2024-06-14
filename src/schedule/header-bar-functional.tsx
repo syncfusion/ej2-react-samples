@@ -132,7 +132,7 @@ const HeaderBar = () => {
         <p>
           In this demo, a popup has been designed separately with a person’s profile info and kept in a hidden state initially. A custom
           item has been added to the Scheduler header bar by using the
-          <code><a href="https://ej2.syncfusion.com/react/documentation/api/schedule/#toolbaritems">toolbarItems</a></code> property.
+          <code><a aria-label="Toolbar items" href="https://ej2.syncfusion.com/react/documentation/api/schedule/#toolbaritems">toolbarItems</a></code> property.
           Here, the default items such as previous, next, date range text, and today have been used along with external icon as custom items.
         </p>
         <p>

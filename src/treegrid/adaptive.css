@@ -8,6 +8,18 @@
     .e-adaptive-demo .e-pager {
         padding: 13px 0;
     }
+    .fluent2,
+    .fluent2-dark,
+    .fluent2-highcontrast {
+        .e-adaptive-demo .e-pager {
+            .e-mfirst,
+            .e-mprev,
+            .e-mnext,
+            .e-mlast {
+                padding: 1% 3.4%;
+            }
+        }
+    }
     .e-adaptive-demo .e-pager div.e-parentmsgbar {
         box-sizing: border-box;
         display: inline-block;

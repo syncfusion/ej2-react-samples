@@ -20,7 +20,7 @@ const Resize = () => {
     let resizeRibbonObj = useRef<RibbonComponent>(null);
 
     const pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
-    const findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
+    const findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced Find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
     const selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
     const dictateOptions: ItemModel[] = [{ text: "Chinese" }, { text: "English" }, { text: "German" }, { text: "French" }];
     const tableOptions: ItemModel[] = [{ text: "Insert Table" }, { text: "Draw Table" }, { text: "Convert Table" }, { text: "Excel SpreadSheet" }];
@@ -351,7 +351,7 @@ const Resize = () => {
                         </RibbonComponent>
                         <div id="ribbonPlaceHolder">
                             <div style={{ width: '100%', height: '40px' }}>
-                                <h4 style={{ margin: '0 0 0 15px' }}>Resize Ribbon</h4>
+                                <p className='displayText'>Resize Ribbon</p>
                                 <div id='ribbonSlider' style={{ width: '200px', margin: '0 15px' }}>
                                     <SliderComponent id='slider' ref={sliderRef} min={350} change={onChange.bind(this)} created={onCreated.bind(this)} />
                                 </div>

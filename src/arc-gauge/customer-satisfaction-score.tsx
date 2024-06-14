@@ -27,7 +27,7 @@
  
    render() {
      return (
-       <div className='control-pane'>
+       <main><div className='control-pane'>
          <style>
            {SAMPLE_CSS}
          </style>
@@ -59,20 +59,21 @@
              </AxesDirective>
            </CircularGaugeComponent>
          </div>
-         <div id="action-description">
+         </div>
+         <section id="action-description" aria-label="Description of Circular Gauge sample">
            <p>
              This sample shows an arc gauge with a real-time scenario of a customer satisfaction score ranging from 0 to 10.
            </p>
-         </div>
-         <div id="description">
+         </section>
+         <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
            <p>
              In this example, you can see how to render an arc gauge showing customer satisfaction score. You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/axisModel/">axes</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/">ranges</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/annotationModel/">annotations</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/legendSettingsModel/">legend</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/tooltipSettingsModel/">tooltip</a> oriented properties to customize the appearance of the arc gauge, in order to achieve the desired outcome.
            </p>
            <p>
              More information on the arc gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
            </p>
-         </div>
-       </div>
+         </section>
+      </main>
      )
    }
  }

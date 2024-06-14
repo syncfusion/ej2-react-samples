@@ -31,7 +31,7 @@ const AreaEmpty = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className="control-pane">
@@ -56,7 +56,7 @@ const AreaEmpty = () => {
                     Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject <code>AreaSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                    More information on the area series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data#empty-points" aria-label="Navigate to the documentation for Empty points in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

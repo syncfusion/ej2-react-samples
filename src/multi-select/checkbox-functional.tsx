@@ -63,7 +63,7 @@ const CheckBox = () => {
         <div id="multichecbox" className='control-pane'>
             <div className='control-section col-lg-8'>
                 <div id="multigroup" className="control-styles">
-                    <h4>CheckBox</h4>
+                <label className="h4">CheckBox</label>
                     <MultiSelectComponent id="checkbox" dataSource={countries}
                         fields={checkFields} placeholder="Select countries" value={null} mode="CheckBox" showSelectAll={showSelectAll} showDropDownIcon={showDropDownIcon}
                         enableSelectionOrder={enableSelectionOrder} filterBarPlaceholder="Search countries" popupHeight="350px">

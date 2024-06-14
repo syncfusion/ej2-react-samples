@@ -97,3 +97,11 @@
 .fluent .sb-source-code-section .e-toolbar .e-toolbar-items {
     vertical-align: middle;
 }
+
+.fluent #sb-nextjs-btn.e-btn.e-link {
+    color: #0278d7   ;
+} 
+
+.fluent #sb-nextjs-btn.e-link:hover {
+    color: #0767b5  ;
+}

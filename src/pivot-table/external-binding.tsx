@@ -109,8 +109,7 @@ export class Integration extends SampleBase<{}, {}> {
                 load: (args: ILoadedEventArgs) => {
                     let selectedTheme: string = location.hash.split('/')[1];
                     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-                    args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-                        replace(/-dark/i, "Dark") as HeatMapTheme;
+                    args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as HeatMapTheme;
                 },
             }, '#heatmap');
         } else {
@@ -153,6 +152,11 @@ export class Integration extends SampleBase<{}, {}> {
                         <code>selectionSettings</code> property. The <code>cellSelected</code> event gets fired on every selection
                         operation performed in the pivot table. This event returns the selected cell information, like row header name,
                         column header name, measure name, and value. Based on this information, the heatmap will be plotted.
+                    </p><br />
+                    <p>
+                        More information on the Essential JS2 Pivot Table can be found in these <a target='_blank'
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/row-and-column#selection">Selection</a> & <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/getting-started">Heatmap</a> documentation section.
                     </p>
                 </div>
             </div>

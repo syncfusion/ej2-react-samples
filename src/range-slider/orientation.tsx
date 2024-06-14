@@ -172,13 +172,13 @@ export class Orientation extends SampleBase<{}, {}> {
                         in Vertical Orientation</li>
                         <li>Reverse – allows to render the component in reverse order. To utilise this, set the maximum value to the Min
             property and set the minimum value to the Max property</li>
-                        <p>The dragInterval is used to drag both handles using the range bar which is also applicable only to the range slider.</p>
-                        <p>
-                            In this demo we can see the Default, MinRange and Range slider types.
-                        </p>
-                        <p>For more information, we can refer the
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/getting-started/#orientation">Orientation</a> section from the documentation.</p>
                     </ul>
+                    <p>The dragInterval is used to drag both handles using the range bar which is also applicable only to the range slider.</p>
+                    <p>
+                        In this demo we can see the Default, MinRange and Range slider types.
+                    </p>
+                    <p>For more information, we can refer the
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/range-slider/getting-started/#orientation">Orientation</a> section from the documentation.</p>
                 </div>
             </div>
 

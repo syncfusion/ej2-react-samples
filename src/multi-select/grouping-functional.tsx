@@ -19,7 +19,7 @@ const Grouping = () => {
         <div id='multigroup' className='control-pane'>
             <div className='control-section'>
                 <div id="ms-multigroup" className="control-styles">
-                    <h4>Grouping</h4>
+                <label className="h4">Grouping</label>
                     <MultiSelectComponent id="grouping" dataSource={vegetableData} fields={groupFields} placeholder="Select vegetables" />
                 </div>
             </div>

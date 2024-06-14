@@ -190,7 +190,7 @@ function Default () {
 
     return (
         <div className='control-pane'>
-            <div className='control-section' style={{ overflow: 'auto' }}>
+            <div className='control-section'>
                 <PivotViewComponent id='PivotView' dataSourceSettings={dataSourceSettings} width={'100%'} height={'290'} gridSettings={{columnWidth: 140}}>
                 </PivotViewComponent>
             </div>
@@ -204,6 +204,11 @@ function Default () {
                 </p>
                 <p>
                     In this demo, the pivot table is populated with its minimum default settings.
+                </p><br />
+                <p>
+                    More information on the Essential JS2 Pivot Table can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/getting-started#adding-pivot-table-component">
+                    documentation section</a>.
                 </p>
             </div>
         </div>

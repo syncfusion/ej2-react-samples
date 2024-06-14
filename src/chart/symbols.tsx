@@ -43,7 +43,7 @@ export class Symbols extends SampleBase<{}, {}> {
                         </SeriesCollectionDirective>
                     </ChartComponent>
                     <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                        <a href="http://www.marketingprofs.com/charts/2012/7064/facebook-stats-five-years-of-worldwide-growth" target="_blank">www.marketingprofs.com</a>
+                        <a href="http://www.marketingprofs.com/charts/2012/7064/facebook-stats-five-years-of-worldwide-growth" target="_blank" aria-label="Navigate to the documentation for marketing profs">www.marketingprofs.com</a>
                     </div>
                 </div>
                 <div id="action-description">
@@ -56,7 +56,7 @@ export class Symbols extends SampleBase<{}, {}> {
                     <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                     <br></br>
                     <p>
-                        More information on the marker can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-markers/">documentation section</a>.
+                        More information on the marker can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-markers/" aria-label="Navigate to the documentation for Data Markers in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -71,7 +71,7 @@ export class Symbols extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

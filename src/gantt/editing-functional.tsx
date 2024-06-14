@@ -35,8 +35,8 @@ const Editing = () => {
   const splitterSettings: any = {
     position: "35%"
   };
-  const projectStartDate: Date = new Date('03/25/2019');
-  const projectEndDate: Date = new Date('07/28/2019');
+  const projectStartDate: Date = new Date('03/25/2024');
+  const projectEndDate: Date = new Date('07/28/2024');
   const gridLines: any = 'Both';
   const toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll', 'Indent', 'Outdent'];
   const timelineSettings: any = {
@@ -52,10 +52,10 @@ const Editing = () => {
     leftLabel: 'TaskName',
     rightLabel: 'resources'
   };
-  const eventMarkerDay1: Date = new Date('4/17/2019');
-  const eventMarkerDay2: Date = new Date('5/3/2019');
-  const eventMarkerDay3: Date = new Date('6/7/2019');
-  const eventMarkerDay4: Date = new Date('7/16/2019');
+  const eventMarkerDay1: Date = new Date('4/17/2024');
+  const eventMarkerDay2: Date = new Date('5/3/2024');
+  const eventMarkerDay3: Date = new Date('6/7/2024');
+  const eventMarkerDay4: Date = new Date('7/16/2024');
 
   return (
     <div className='control-pane'>

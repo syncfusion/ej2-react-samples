@@ -49,7 +49,9 @@ function KeyboardNavigation() {
                 <li><span className="keys"><kbd>Alt</kbd>+<kbd>W</kbd></span><span className="keydescription">- Move the focus to the grid content element</span></li>
               </ul>
             </li>
-            <hr />
+          </ul>
+          <hr />
+          <ul>
             <li><b> PAGER</b>
               <ul>
                 <li><span className="keys"><kbd>Page down</kbd> / <kbd>Right arrow</kbd></span><span className="keydescription">- Navigates to the next page.</span></li>
@@ -61,7 +63,9 @@ function KeyboardNavigation() {
                 <li><span className="keys"><kbd>End</kbd> / <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Page down</kbd></span><span className="keydescription">- Navigates to the last page.</span></li>
               </ul>
             </li>
-            <hr />
+          </ul>
+          <hr />
+          <ul>
             <li><b>SELECTION</b>
               <ul>
                 <li><span className="keys"><kbd>Shift</kbd>+<kbd>Down arrow</kbd></span><span className="keydescription">- Extends the row/cell selection downwards from the selected row/cell.</span></li>
@@ -77,7 +81,9 @@ function KeyboardNavigation() {
                 <li><span className="keys"><kbd>Left arrow</kbd></span><span className="keydescription">- Moves to the left cell selection from the selected cell.</span></li>
               </ul>
             </li>
-            <hr />
+          </ul>
+          <hr />
+          <ul>
             <li><b>EDITING</b>
               <ul>
                 <li><span className="keys"><kbd>F2</kbd></span><span className="keydescription">- Starts editing of selected row if Mode is Normal/Dialog or Starts editing of selected cell if Mode is Batch.</span></li>
@@ -89,13 +95,17 @@ function KeyboardNavigation() {
                 <li><span className="keys"><kbd>Shift</kbd>+<kbd>Enter</kbd></span><span className="keydescription"></span>- Saves the current cell and starts editing the previous row cell if Mode is Batch.</li>
               </ul>
             </li>
-            <hr />
+          </ul>
+          <hr />
+          <ul>
             <li> <b>FILTERING</b>
               <ul>
                 <li><span className="keys"><kbd>Alt</kbd>+<kbd>Down arrow</kbd></span><span className="keydescription">- Opens the filter menu excel, menu and checkbox filter when its header element is in focused state.</span> </li>
               </ul>
             </li>
-            <hr />
+          </ul>
+          <hr />
+          <ul>
             <li><b>SORTING</b>
               <ul>
                 <li><span className="keys"><kbd>Enter</kbd></span><span className="keydescription">- Performs sorting, ascending/descending on a column when its header element is in focused state.</span> </li>
@@ -103,7 +113,9 @@ function KeyboardNavigation() {
                 <li><span className="keys"><kbd>Shift</kbd>+<kbd>Enter</kbd></span><span className="keydescription">- Clears sorting for the focused header column.</span> </li>
               </ul>
             </li>
-            <hr />
+          </ul>
+          <hr />
+          <ul>
             <li><b>GROUPING</b>
               <ul>
                 <li><span className="keys"><kbd>Ctrl</kbd>+<kbd>Down arrow</kbd></span><span className="keydescription"></span>- Expands all the Visible Group.</li>
@@ -112,8 +124,8 @@ function KeyboardNavigation() {
                 <li><span className="keys"><kbd>Enter</kbd></span><span className="keydescription"></span>- If the current cell is an expand/collapse cell then expands/collapses the current group/detailrow/childgrid.</li>
               </ul>
             </li>
-            <hr />
           </ul>
+          <hr />
         </div>
       </div>
     </div>

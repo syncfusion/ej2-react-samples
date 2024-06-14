@@ -21,7 +21,7 @@ export class CellSelection extends SampleBase<{}, {}> {
     private chart: ChartComponent;
     render() {
         return (
-            <div>
+            <main><div>
                 <div className='col-md-9 control-section'>
                 {/* custom code start */}
                     <style>
@@ -100,7 +100,7 @@ export class CellSelection extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-md-3 property-section">
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
                             <tbody>
                             <tr style={{ height: '50px' }}>
                             <td style={{ width: '40%' }}>
@@ -113,10 +113,11 @@ export class CellSelection extends SampleBase<{}, {}> {
                         </table>
                     </PropertyPane>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of HeatMap sample">
                 <p>This sample visualizes the revenue from the top exported products between the year 2014 and 2018, valued in USD million.</p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                     <p>
                         In this example, you can see how to selected the cell in heat map and render the column chart based on selected data.
                     </p>
@@ -128,8 +129,8 @@ export class CellSelection extends SampleBase<{}, {}> {
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         );
     }
     public cellSelected(args: ISelectedEventArgs): void {

@@ -65,7 +65,7 @@ export class PartialVisible extends SampleBase<{}, {}> {
           </p>
           <p>See also
           </p>
-          <p><a target='_blank'
+          <p><a aria-label="Carousel Getting Started" target='_blank'
             href="https://ej2.syncfusion.com/react/documentation/carousel/getting-started/">React Carousel Getting Started</a>.
           </p>
         </div>

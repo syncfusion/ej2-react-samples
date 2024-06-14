@@ -488,10 +488,8 @@ function Serialization() {
             type="file"
             id="fileupload"
             asyncSettings={{
-              saveUrl:
-                "https://aspnetmvc.syncfusion.com/services/api/uploadbox/Save",
-              removeUrl:
-                "https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove"
+              saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
+              removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove'
             }}
             success={onUploadSuccess}
           />
@@ -521,6 +519,11 @@ function Serialization() {
           <code>UndoRedo</code> module into <code>services</code>. To enable
           context menu, inject <code>DiagramContextMenu</code> module into{" "}
           <code>services</code>.
+        </p>
+        <p>
+          The uploader API control is used to load the JSON data into a diagram asynchronously. Define the properties
+          <code>saveUrl</code>, which will receive the uploaded files and save them on the server, and <code>removeUrl</code>,
+          which will receive the file information and handle the removal of files from the server.
         </p>
         <br />
       </div>

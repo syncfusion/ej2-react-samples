@@ -139,7 +139,7 @@ export class Legend extends SampleBase<{}, {}> {
 
 	render() {
 		return (
-			<div className='control-pane'>
+			<main><div className='control-pane'>
 				<style>
 					{SAMPLE_CSS}
 				</style>
@@ -188,7 +188,7 @@ export class Legend extends SampleBase<{}, {}> {
 					{/* Property Panel */}
 					<div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+							<table role='none' id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 							  <tbody>
 								<tr>
 									<td style={{ paddingTop: '15px', width: '30%' }}>
@@ -215,12 +215,13 @@ export class Legend extends SampleBase<{}, {}> {
 						</PropertyPane>
 					</div>
 				</div>
-				<div id="action-description">
+			</div>
+				<section id="action-description" aria-label="Description of TreeMap sample">
 					<p>
 					This sample visualizes the 2016 United States presidential election results. The type and position of the legends can be changed using the Type and Position options in the properties panel.
             		</p>
-				</div>
-				<div id="description">
+				</section>
+				<section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
 					<p>
 						In this example, you can see the type of legend available in TreeMap. The equal color mapping is applied based on certain value.
 						<br /><br />
@@ -231,8 +232,8 @@ export class Legend extends SampleBase<{}, {}> {
 					<p>
 						The TreeMap component features are segregated into individual  modules by feature. To use a legend, inject the <code>Legend</code> module using the <code>TreeMap.Inject(TreeMapLegend)</code> method.
                     </p>
-				</div>
-			</div>
+				</section>
+			</main>
 		)
 	}
 }

@@ -99,12 +99,11 @@ export class LocalData extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        The Chart supports data binding.
-                         The <code> <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#datasource-object---datamanager">dataSource</a></code> property can be assigned either with the array of JavaScript objects or instance of <code><a target="_blank"
-                            href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a></code>.</p>
+                        The Charts control supports data binding. The <code>DataSource</code> property can be assigned either as list of objects or with instance of DataManager.
+                    </p>
                     <p>In this demo, the array of JavaScript objects is assigned as the data source to the Chart.</p>
                     <p>
-                    More information about the local data binding can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#local-data">documentation section</a>.
+                        More information about the local data binding can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#local-data" aria-label="Navigate to the documentation for Local Data in React Chart component">documentation section</a>.
                    </p>
                 </div>
             </div>
@@ -119,7 +118,7 @@ export class LocalData extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

@@ -80,7 +80,7 @@ const DashedLine = () => {
         args.chart.annotations[1].content = '<div style="color:black; font-weight:bold;">Forecast</div>';
         let selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1) {
             args.chart.annotations[0].content = '<div style="color:white; font-weight:bold;">Actual</div>';
             args.chart.annotations[1].content = '<div style="color:white; font-weight:bold;">Forecast</div>';
@@ -115,6 +115,10 @@ const DashedLine = () => {
             annotationColor = 'dark'
         } else if (selectedTheme === 'material3') {
             annotationColor = 'light'
+        } else if (selectedTheme === 'fluent2') {
+            annotationColor = 'light';
+        } else if (selectedTheme === 'fluent2-dark') {
+            annotationColor = 'dark';
         } else {
             annotationColor = 'light'
         }
@@ -162,7 +166,7 @@ const DashedLine = () => {
                     Chart component features are segregated into individual feature-wise modules. To use line series, we need to inject <code>LineSeries</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the line series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
+                    More information on the line series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line#series-customization" aria-label="Navigate to the documentation for Series customization in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

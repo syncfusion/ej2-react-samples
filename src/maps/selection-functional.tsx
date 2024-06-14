@@ -133,11 +133,11 @@ const SelectionMaps = () => {
         setClosebutton({ ...closebutton, display: 'none' });
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
-                    <MapsComponent id="container" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} titleSettings={{ text: 'USA Election Results - 2016', textStyle: { size: '16px' } }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Top', width: '80%', textStyle: { fontWeight: '400', size: '14px', color: '#757575' } }} shapeSelected={shapeSelected.bind(this)}>
+                    <MapsComponent id="container" loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} titleSettings={{ text: 'USA Election Results - 2016', textStyle: { size: '16px' } }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Top', width: '80%', textStyle: { fontWeight: '400', size: '14px' } }} shapeSelected={shapeSelected.bind(this)}>
                         <Inject services={[MapsTooltip, Selection, Highlight, Legend]} />
                         <LayersDirective>
                             <LayerDirective shapeData={usa} shapePropertyPath='name' shapeDataPath='State' dataSource={datasource} tooltipSettings={{ visible: false }} highlightSettings={{ enable: true, fill: '#A3B0D0' }} selectionSettings={{ enable: true, fill: '#4C515B', opacity: 1 }} shapeSettings={shapeSetting} />
@@ -146,7 +146,7 @@ const SelectionMaps = () => {
                 </div>
                 <div className="popup" id="closepopu" style={{ display: popup }}>
                     <span id="closebutton" style={closebutton} onClick={closeButtonClick}>x</span>
-                    <table style={{ marginTop: '5px', width: 'auto' }}>
+                    <table role='none' style={{ marginTop: '5px', width: 'auto' }}>
                       <tbody>
                         <tr>
                             <td style={{ padding: '0.3px', float: 'left' }}>
@@ -200,18 +200,19 @@ const SelectionMaps = () => {
             <div style={{ float: 'right', marginRight: '10px' }}>
                 Source:<a href="https://en.wikipedia.org/wiki/United_States_presidential_election,_2016" target="_blank">en.wikipedia.org</a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample visualizes USA president election results in the year 2016. Vote details of a state will be displayed in a popup on clicking a state. Placed interactive legend at the top of the map.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to apply various styles for a shape in the map, when it is clicked or mouse hovered.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p>
                     Maps component features are segregated into individual feature-wise modules. To use selection, inject the <code>Selection</code> module using the <code>Maps.Inject(Selection)</code> method, and use highlight by injecting the <code>Highlight</code> module.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default SelectionMaps;

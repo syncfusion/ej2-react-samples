@@ -13,7 +13,7 @@ let sliderValue: number = 60;
 const SAMPLE_CSS = `
     .e-view.fluent div.e-handle-first, .e-view.fluent-dark div.e-handle-first,
     .e-view.fabric div.e-handle-first, .e-view.fabric-dark div.e-handle-first {
-       margin-top: -0.5px; 
+        margin-top: -0.5px; 
     }
     .e-view.material3 div.e-handle-first, .e-view.material3-dark div.e-handle-first {
         margin-top: 5px;
@@ -22,8 +22,23 @@ const SAMPLE_CSS = `
     .e-view.highcontrast div.e-handle-first {
         margin-top: 1px;
     }
+    .e-view.highcontrast div.e-handle-first {
+        margin-top: 0px;
+    }
     .e-view.bootstrap5 div.e-handle-first, .e-view.bootstrap5-dark div.e-handle-first, .e-view.material div.e-handle-first, .e-view.material-dark div.e-handle-first {
         margin-top: -1px;
+    }
+    .e-view.fluent2 div.e-handle-first, .e-view.fluent2-highcontrast div.e-handle-first {
+        margin-top: 2.5px;
+    }
+    .e-view.fluent2-dark div.e-handle-first {
+        margin-top: 2px;
+    }
+    .e-view.material3 div.e-handle-first, .e-view.material3-dark div.e-handle-first {
+        margin-top: 4px;
+    }
+    .e-view.bootstrap5 div.e-handle-first, .e-view.bootstrap5-dark div.e-handle-first {
+        margin-top: -2px;
     }
     .control-fluid {
 		padding: 0px !important;
@@ -103,7 +118,7 @@ export class ArcGauge extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -123,10 +138,10 @@ export class ArcGauge extends SampleBase<{}, {}> {
                                 minorTicks={{ height: 0 }}>
                                 <AnnotationsDirective>
                                     <AnnotationDirective
-                                        content='<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">60/100</div>'
+                                        description='RangeBar pointer value from the slider' content='<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">60/100</div>'
                                         angle={0} radius='0%' zIndex='1' />
                                     <AnnotationDirective content='<div id="slider" style="height:70px;width:250px;"></div>'
-                                        angle={0} radius='-100%' zIndex='1' />
+                                        description='Slider' angle={0} radius='-100%' zIndex='1' />
                                 </AnnotationsDirective>
                                 <RangesDirective>
                                     <RangeDirective
@@ -147,20 +162,21 @@ export class ArcGauge extends SampleBase<{}, {}> {
                     <SliderComponent className='sliderwrap' id="slider" style={{ width: '250px', marginTop: '-45px' }} type='MinRange' min={0} max={100} value={sliderValue}
                         limits={{ enabled: true, minStart: 0, minEnd: 100 }} change={this.sliderChange.bind(this)} ref={d => this.sliderElement = d} />
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
                     <p>
                         This sample shows the work progress using a circular gauge and a range bar pointer with rounded corners.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render the range and range bar pointer with rounded corners. A slider is placed at the bottom of the circular gauge using annotation to change the range bar pointer value. Based on the value, the color of the pointer can also be changed.
                     </p>
                     <p>
                         More information on the ranges can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-ranges/">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+        </main>
         )
     }
 }

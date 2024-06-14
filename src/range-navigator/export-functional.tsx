@@ -19,11 +19,12 @@ import { dataCollection } from './export-data';
 export let zoomFactor: number;
 export let zoomPosition: number;
 export let dateTimeData: Object[] = dataCollection;
-export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Bootstrap5', 'Tailwind', 'MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Bootstrap4', 'Fluent', 'FluentDark', 'Material3', 'Material3Dark'];
-export let borderColor: string[] = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#6355C7', '#4F46E5', '#FF4081', '#007897', '#428BCA', '#22D3EE', '#8F80F4', '#FFD939', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF'];
+export let themes: string[] = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Bootstrap5', 'Tailwind', 'MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Bootstrap4', 'Fluent', 'FluentDark', 'Material3', 'Material3Dark', 'Fluent2', 'Fluent2Dark'];
+export let borderColor: string[] = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#6355C7', '#4F46E5', '#FF4081', '#007897', '#428BCA', '#22D3EE', '#8F80F4', '#FFD939', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF', '#6200EE', '#9BB449'];
 export let regionColor: string[] = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(99, 85, 199, 0.3)',
     'rgba(79, 70, 229, 0.3)', 'rgba(255, 64, 129, 0.3)', 'rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(34, 211, 238, 0.3)', 'rgba(143, 128, 244, 0.3)',
-    'rgba(255, 217, 57, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(99, 85, 199, 0.3)', 'rgba(78, 170, 255, 0.3)'];
+    'rgba(255, 217, 57, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(99, 85, 199, 0.3)', 'rgba(78, 170, 255, 0.3)',
+    'rgba(98, 0, 238, 0.3)', 'rgba(155, 180, 73, 0.3)', 'rgba(155, 180, 73, 0.3)'];
 
 const SAMPLE_CSS = `
          .control-fluid {
@@ -67,7 +68,12 @@ const SAMPLE_CSS = `
          .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
              content: '\\e75d';
          }
- 
+         .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before, .e-view.fluent2-highcontrast .e-print-icon::before {
+            content: '\\e75d';
+        }
+        .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before, .e-view.fluent2-highcontrast .e-export-icon::before {
+            content: '\\e72e';
+        }
          .e-view.highcontrast .e-print-icon::before {
              content: '\\ebf9';
          }
@@ -198,12 +204,12 @@ function RangeExport() {
                                 </td>
                             </tr>
                             <tr style={{ height: "50px" }}>
-                                <td style={{ width: "40%" }}>
+                                <td style={{ width: "40%" }} id="filename">
                                     File Name:
                                 </td>
                                 <td style={{ width: "60%" }}>
                                     <div className="e-float-input" style={{ 'width': '100px', 'marginTop': '0px' }}>
-                                        <input type="text" defaultValue="Chart" id="fileName" style={{ "marginLeft": "-10px" }} />
+                                        <input type="text" defaultValue="Chart" id="fileName" style={{ "marginLeft": "-10px" }} aria-labelledby="Chart"/>
                                     </div>
                                 </td>
                             </tr>
@@ -216,7 +222,7 @@ function RangeExport() {
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td>
-                                    <div id="btn-control" style={{ 'marginLeft': '20px' }}>
+                                    <div id="btn-control" style={{ 'marginLeft': '50%' }}>
                                         <ButtonComponent id="range-print" iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                     </div>
                                 </td>
@@ -238,7 +244,7 @@ function RangeExport() {
                     The rendered range navigator can be exported as either JPEG, PNG, or SVG format. It can be achieved using the Blob. It is supported only in modern browsers.
                 </p>
                 <p>
-                    More information on the export can be found in this <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                    More information on the export can be found in this <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype" aria-label="Navigate to the documentation for series in EJ2 TypeScript Chart component">documentation section</a>.
                 </p>
             </div>
         </div >
@@ -259,7 +265,7 @@ function RangeExport() {
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         let chartTheme: string = args.chart.theme;
         args.chart.series[0].fill = regionColor[themes.indexOf(chartTheme)];
         args.chart.series[0].border.color = borderColor[themes.indexOf(chartTheme)];
@@ -270,7 +276,7 @@ function RangeExport() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
 
     function exportClick(e: Event): void {

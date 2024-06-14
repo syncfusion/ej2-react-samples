@@ -33,8 +33,8 @@ export class UnscheduledTask extends SampleBase<{}, {}> {
     {field: 'EndDate', width: 120 },        
     {field: 'Duration', width: 90 }         
   ];
-  public projectStartDate: any = new Date('01/01/2019');
-  public projectEndDate:any = new Date('01/20/2019');
+  public projectStartDate: any = new Date('01/01/2024');
+  public projectEndDate:any = new Date('01/20/2024');
   public toolbarClickEvent(): void {
     var data = {
       Duration: null,

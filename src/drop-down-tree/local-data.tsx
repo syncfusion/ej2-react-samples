@@ -19,13 +19,13 @@ export class LocalData extends SampleBase<{}, {}> {
         <div className='control-section dropdowntree-local'>
           <div className='col-lg-6'>
             <div id="local">
-              <h4> Hierarchical Data</h4>
+              <p className="displayText"> Hierarchical Data</p>
               <DropDownTreeComponent id="ddtlocal" fields={this.fields} popupHeight="200px" placeholder="Select an item" />
             </div>
           </div>
           <div className='col-lg-6'>
             <div id="local">
-              <h4>List Data</h4>
+              <p className="displayText">List Data</p>
               <DropDownTreeComponent id="ddtlist" fields={this.listfields} popupHeight="200px" placeholder="Select an item" />
             </div>
           </div>

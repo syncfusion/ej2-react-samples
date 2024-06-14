@@ -136,7 +136,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                                     </td>
                                     <td>
                                         <div>
-                                            <DropDownListComponent width="120px" id="selmode" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Hide" />
+                                            <DropDownListComponent width="120px" id="selchange" change={this.change.bind(this)} ref={d => this.dropElement = d} dataSource={this.droplist} fields={{ text: 'value', value: 'value' }} value="Hide" />
                                         </div>
                                     </td>
                                 </tr>
@@ -159,20 +159,20 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>Enable Trim:</div>
+                                        <div id="trim">Enable Trim:</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <input type="checkbox" id="trimmode" defaultChecked={false} onChange={this.trim.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.checkElement = d} />
+                                            <input type="checkbox" id="trimmode" defaultChecked={false} onChange={this.trim.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.checkElement = d} aria-labelledby="Checkbox unchecked"/>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>Maximum Label Width:</div>
+                                        <div id="labelWidth">Maximum Label Width:</div>
                                     </td>
                                     <td style={{ padding: 10, width: '40%' }}>
-                                        <NumericTextBoxComponent width={120} value={34} min={1} change={this.xwid.bind(this)} ref={d => this.widthElement = d} />
+                                        <NumericTextBoxComponent width={120} value={34} min={1} change={this.xwid.bind(this)} ref={d => this.widthElement = d} aria-labelledby="Text"/>
                                     </td>
                                 </tr></tbody>
                             </table>
@@ -210,7 +210,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
                     </ul>
                     <p>
                         More information on the smart axis labels can be found in this &nbsp;
-                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-labels#smart-axis-labels" aria-label="Navigate to the documentation for Smart Axis Labels in React Chart component">documentation section</a>.
                 </p>
                 </div>
             </div >
@@ -225,7 +225,7 @@ export class SmartAxisLabels extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

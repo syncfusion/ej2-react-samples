@@ -43,7 +43,7 @@ const ProgressBarStripes = () => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as ProgressTheme;
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ProgressTheme;
         if (args.progressBar.theme === 'Material') {
             args.progressBar.trackColor = '#eee';
         }
@@ -70,26 +70,26 @@ const ProgressBarStripes = () => {
             <div className='control-section'>
                 <div className="row linear-parent">
                     <div id="success" className="linear-progress">
-                        <ProgressBarComponent id="success" type='Linear' height='30' width='100%' value={20} progressThickness={progressThickness}
+                        <ProgressBarComponent id="progress-success" type='Linear' height='30' width='100%' value={20} progressThickness={progressThickness}
                             trackThickness={trackThickness} role="Success" isStriped={true} animation={animation}
                             load={progressLoad.bind(this)}>
                         </ProgressBarComponent>
                     </div>
                     <div id="info" className="linear-progress">
-                        <ProgressBarComponent id="info" type='Linear' height='30' width='100%' value={40} progressThickness={progressThickness}
+                        <ProgressBarComponent id="progress-info" type='Linear' height='30' width='100%' value={40} progressThickness={progressThickness}
                             trackThickness={trackThickness} isStriped={true} role='Info' animation={animation}
                             load={progressLoad.bind(this)}>
                         </ProgressBarComponent>
                     </div>
                     <div id="warning" className="linear-progress">
-                        <ProgressBarComponent id="warning" type='Linear' height='30' width='100%' value={70}
+                        <ProgressBarComponent id="progress-warning" type='Linear' height='30' width='100%' value={70}
                             progressThickness={progressThickness} trackThickness={trackThickness}
                             isStriped={true} role='Warning' animation={animation} load={progressLoad.bind(this)}
                         >
                         </ProgressBarComponent>
                     </div>
                     <div id="danger" className="linear-progress">
-                        <ProgressBarComponent id="danger" type='Linear' height='30' width='100%' value={100}
+                        <ProgressBarComponent id="progress-danger" type='Linear' height='30' width='100%' value={100}
                             progressThickness={progressThickness} trackThickness={trackThickness} 
                             isStriped={true} role='Danger' animation={animation} load={progressLoad.bind(this)}>
                         </ProgressBarComponent>

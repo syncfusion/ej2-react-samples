@@ -24,7 +24,7 @@ const TMA = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -52,7 +52,7 @@ const TMA = () => {
                     Chart component features are segregated into individual feature-wise modules. To use TMA Indicator, we need to inject <code>TmaIndicator</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the TMA Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#triangular-moving-average-tma">documentation section</a>.
+                    More information on the TMA Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#triangular-moving-average-tma" aria-label="Navigate to the documentation for Triangular Moving Average in technical indicators of React Chart component">documentation section</a>.
                 </p>
             </div>
         </div >

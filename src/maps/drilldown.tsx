@@ -86,7 +86,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -109,7 +109,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                     >
                         <Inject services={[Selection, Highlight, Marker, MapsTooltip]} />
                         <LayersDirective>
-                            <LayerDirective shapeData={worldMap} layerType='Geometry'
+                            <LayerDirective shapeData={worldMap}
                                 shapePropertyPath='continent'
                                 shapeDataPath='continent'
                                 dataSource={datasource.default}
@@ -134,7 +134,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                     </MarkerDirective>
                                 </MarkersDirective>
                             </LayerDirective>
-                            <LayerDirective shapeData={africa} layerType='Geometry'
+                            <LayerDirective shapeData={africa}
                                 shapeSettings={{
                                     fill: '#80306A'
                                 }}
@@ -149,7 +149,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={europe} layerType='Geometry'
+                            <LayerDirective shapeData={europe}
                                 shapeSettings={{
                                     fill: '#622D6C'
                                 }}
@@ -163,7 +163,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={asia} layerType='Geometry'
+                            <LayerDirective shapeData={asia}
                                 shapeSettings={{
                                     fill: '#462A6D'
                                 }}
@@ -177,7 +177,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={northAmerica} layerType='Geometry'
+                            <LayerDirective shapeData={northAmerica}
                                 shapeSettings={{
                                     fill: '#C13664'
                                 }}
@@ -191,7 +191,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={southAmerica} layerType='Geometry'
+                            <LayerDirective shapeData={southAmerica}
                                 shapeSettings={{
                                     fill: '#9C3367'
                                 }}
@@ -205,7 +205,7 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                                 }}
                             >
                             </LayerDirective>
-                            <LayerDirective shapeData={oceania} layerType='Geometry'
+                            <LayerDirective shapeData={oceania}
                                 shapeSettings={{
                                     fill: '#2A2870'
                                 }}
@@ -224,17 +224,18 @@ export class DrilldownMaps extends SampleBase<{}, {}> {
                 </div>
             </div>
             <div><i><p id="content" style={{fontSize: '16px',color:'grey',textAlign:'center'}}>Click on a shape to drill</p></i></div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>
                 This sample demonstrates drill down with all the continents in the initial view. By clicking a continent, you can view all the countries available in that continent.
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
               <p>
                  In this example, you can see how to display an another layer by clicking a shape in previous layer. Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices
              </p>
-            </div>
-            </div >
+            </section>
+        </main>
         )
     }
     //public onMapsLoad(args: ILoadedEventArgs): void {

@@ -18,7 +18,7 @@
  export class OSMLegend extends SampleBase<{}, {}> {
      render() {
          return (
-             <div className='control-pane'>
+             <main><div className='control-pane'>
                  <style>
                      {SAMPLE_CSS}
                  </style>
@@ -36,7 +36,7 @@
                             zoomSettings={{ zoomFactor: 2, enable: true }}>
                              <Inject services={[Marker, Legend, MapsTooltip, Zoom]} />
                              <LayersDirective>
-                                 <LayerDirective layerType='OSM'>
+                                 <LayerDirective urlTemplate="https://tile.openstreetmap.org/level/tileX/tileY.png">
                                     <MarkersDirective>
                                         <MarkerDirective visible={true} shape ='Circle' legendText='name' height={15} width= {15} colorValuePath = 'color'
                                             tooltipSettings={{
@@ -61,13 +61,14 @@
                              </LayersDirective>
                          </MapsComponent>
                      </div>
-                 </div>                 
-                 <div id="action-description">
+                 </div>   
+            </div>              
+                 <section id="action-description" aria-label="Description of Maps sample">
                      <p>
                      This sample illustrates the world's top 10 most populated cities by displaying markers in their locations and legend with the city names.
                      </p>
-                 </div>
-                 <div id="description">
+                 </section>
+                 <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                      <p>
                         In this example, you can see how to display markers and a legend on the OpenStreetMap. To enable the legend, set the <code>visible</code> property in <code>legendSettings</code> to <b>true</b>, and then use properties like <code>title</code>, <code>position</code>, <code>type</code>, <code>height</code>, <code>width</code>, and so on to customize the legend.
                      </p>
@@ -76,8 +77,8 @@
                      <p>
                         The maps component features are segregated into individual modules by feature. To use markers and a legend, we need to inject the <code>Marker</code> and <code>Legend</code> module into services.
                      </p>
-                 </div>
-             </div>
+                 </section>
+            </main>
          )
      }
 

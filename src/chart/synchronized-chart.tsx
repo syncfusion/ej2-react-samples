@@ -270,7 +270,7 @@ export class SynchronizedChart extends SampleBase<{}, {}>{
                     </p>
                     <p>
                         More information on the area series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/area">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/cross-hair-and-track-ball" aria-label="Navigate to the documentation for Crosshair and Trackball in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div >
@@ -419,7 +419,7 @@ export class SynchronizedChart extends SampleBase<{}, {}>{
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         let themeColor: string[] = [];
         let materialColors: string[] = ['#00bdae', '#404041', '#357cd2', '#e56590'];
         let materialDarkColors: string[] = ['#9ECB08', '#56AEFF', '#C57AFF', '#61EAA9'];

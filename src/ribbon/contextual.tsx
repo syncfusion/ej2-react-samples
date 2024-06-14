@@ -16,7 +16,7 @@ export class Contextual extends SampleBase<{}, {}> {
     private placeholderElement: HTMLElement = null;
 
     public pasteOptions: ItemModel[] = [{ text: "Keep Source Format" }, { text: "Merge Format" }, { text: "Keep Text Only" }];
-    public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
+    public findOptions: ItemModel[] = [{ text: "Find", iconCss: "e-icons e-search" }, { text: "Advanced Find", iconCss: "e-icons e-search" }, { text: "Go to", iconCss: "e-icons e-arrow-right" }];
     public selectOptions: ItemModel[] = [{ text: "Select All" }, { text: "Select Objects" }];
     public dictateOptions: ItemModel[] = [{ text: "Chinese" }, { text: "English" }, { text: "German" }, { text: "French" }];
     public tableOptions: ItemModel[] = [{ text: "Insert Table" }, { text: "Draw Table" }, { text: "Convert Table" }, { text: "Excel SpreadSheet" }];
@@ -128,87 +128,6 @@ export class Contextual extends SampleBase<{}, {}> {
                 <div className='col-lg-12 control-section contextual-tab'>
                     <div id="ribbonContainer">
                         <RibbonComponent id='ribbon' ref={ribbon => { this.ribbonObj = ribbon }} enablePersistence={true} fileMenu={{ visible: true, menuItems: this.fileOptions, select: this.fileSelect }} launcherIconClick={this.launchClick}>
-                            {/* Contextual tab starts */}
-                            <RibbonContextualTabsDirective>
-                                <RibbonContextualTabDirective visible={true}>
-                                    <RibbonTabsDirective>
-                                        <RibbonTabDirective id="TableDesign" header='Table Design'>
-                                            <RibbonGroupsDirective>
-                                                <RibbonGroupDirective header="Table Style" groupIconCss="e-icons e-field-settings">
-                                                    <RibbonCollectionsDirective>
-                                                        <RibbonCollectionDirective>
-                                                            <RibbonItemsDirective>
-                                                                <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-field-settings", content: "Table Style", items: this.tableDropdownOptions, select: function(args) { this.updateContent("Table Style -> " + args.item.text); } }}>
-                                                                </RibbonItemDirective>
-                                                            </RibbonItemsDirective>
-                                                        </RibbonCollectionDirective>
-                                                    </RibbonCollectionsDirective>
-                                                </RibbonGroupDirective>
-                                                <RibbonGroupDirective header="Borders Style" groupIconCss="e-icons e-field-settings">
-                                                    <RibbonCollectionsDirective>
-                                                        <RibbonCollectionDirective>
-                                                            <RibbonItemsDirective>
-                                                                <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-border-all", content: "Borders", items: this.borderDropdownOptions, select: function(args) { this.updateContent("Borders -> " + args.item.text); } }}>
-                                                                </RibbonItemDirective>
-                                                            </RibbonItemsDirective>
-                                                        </RibbonCollectionDirective>
-                                                    </RibbonCollectionsDirective>
-                                                </RibbonGroupDirective>
-                                            </RibbonGroupsDirective>
-                                        </RibbonTabDirective>
-
-                                        <RibbonTabDirective id="TableLayout" header='Table Layout'>
-                                            <RibbonGroupsDirective>
-                                                <RibbonGroupDirective header="Data" groupIconCss="e-icons e-custom-sort">
-                                                    <RibbonCollectionsDirective>
-                                                        <RibbonCollectionDirective>
-                                                            <RibbonItemsDirective>
-                                                                <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "e-icons e-sort-ascending", content: "Sort Table Ascending", clicked: function() { this.updateContent("Sort Table Ascending"); } }}>
-                                                                </RibbonItemDirective>
-                                                            </RibbonItemsDirective>
-                                                        </RibbonCollectionDirective>
-                                                        <RibbonCollectionDirective>
-                                                            <RibbonItemsDirective>
-                                                                <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "e-icons e-sort-descending", content: "Sort Table Descending", clicked: function() { this.updateContent("Sort Table Descending"); } }}>
-                                                                </RibbonItemDirective>
-                                                            </RibbonItemsDirective>
-                                                        </RibbonCollectionDirective>
-                                                    </RibbonCollectionsDirective>
-                                                </RibbonGroupDirective>
-                                                <RibbonGroupDirective header="Merge" groupIconCss="e-icons e-merge-cells">
-                                                    <RibbonCollectionsDirective>
-                                                        <RibbonCollectionDirective>
-                                                            <RibbonItemsDirective>
-                                                                <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-merge-cells", content: "Merge", items: this.mergeDropdownOptions, select: function(args) { this.updateContent("Merge -> " + args.item.text); } }}>
-                                                                </RibbonItemDirective>
-                                                            </RibbonItemsDirective>
-                                                        </RibbonCollectionDirective>
-                                                    </RibbonCollectionsDirective>
-                                                </RibbonGroupDirective>
-                                            </RibbonGroupsDirective>
-                                        </RibbonTabDirective>
-                                    </RibbonTabsDirective>
-                                </RibbonContextualTabDirective>
-                                <RibbonContextualTabDirective visible={false}>
-                                    <RibbonTabsDirective>
-                                        <RibbonTabDirective id="Format" header='Picture Format'>
-                                            <RibbonGroupsDirective>
-                                                <RibbonGroupDirective header="Background" groupIconCss="e-icons e-image">
-                                                    <RibbonCollectionsDirective>
-                                                        <RibbonCollectionDirective>
-                                                            <RibbonItemsDirective>
-                                                                <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "e-icons e-image", content: "Remove Background", clicked: function() { this.updateContent("Remove Background"); } }}>
-                                                                </RibbonItemDirective>
-                                                            </RibbonItemsDirective>
-                                                        </RibbonCollectionDirective>
-                                                    </RibbonCollectionsDirective>
-                                                </RibbonGroupDirective>
-                                            </RibbonGroupsDirective>
-                                        </RibbonTabDirective>
-                                    </RibbonTabsDirective>
-                                </RibbonContextualTabDirective>
-                            </RibbonContextualTabsDirective>
-                            {/* Contextual tab ends */}
                             <RibbonTabsDirective>
                                 <RibbonTabDirective header='Home'>
                                     <RibbonGroupsDirective>
@@ -442,6 +361,87 @@ export class Contextual extends SampleBase<{}, {}> {
                                     </RibbonGroupsDirective>
                                 </RibbonTabDirective>
                             </RibbonTabsDirective>
+                            {/* Contextual tab starts */}
+                            <RibbonContextualTabsDirective>
+                                <RibbonContextualTabDirective visible={true}>
+                                    <RibbonTabsDirective>
+                                        <RibbonTabDirective id="TableDesign" header='Table Design'>
+                                            <RibbonGroupsDirective>
+                                                <RibbonGroupDirective header="Table Style" groupIconCss="e-icons e-field-settings">
+                                                    <RibbonCollectionsDirective>
+                                                        <RibbonCollectionDirective>
+                                                            <RibbonItemsDirective>
+                                                                <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-field-settings", content: "Table Style", items: this.tableDropdownOptions, select: function(args) { this.updateContent("Table Style -> " + args.item.text); } }}>
+                                                                </RibbonItemDirective>
+                                                            </RibbonItemsDirective>
+                                                        </RibbonCollectionDirective>
+                                                    </RibbonCollectionsDirective>
+                                                </RibbonGroupDirective>
+                                                <RibbonGroupDirective header="Borders Style" groupIconCss="e-icons e-field-settings">
+                                                    <RibbonCollectionsDirective>
+                                                        <RibbonCollectionDirective>
+                                                            <RibbonItemsDirective>
+                                                                <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-border-all", content: "Borders", items: this.borderDropdownOptions, select: function(args) { this.updateContent("Borders -> " + args.item.text); } }}>
+                                                                </RibbonItemDirective>
+                                                            </RibbonItemsDirective>
+                                                        </RibbonCollectionDirective>
+                                                    </RibbonCollectionsDirective>
+                                                </RibbonGroupDirective>
+                                            </RibbonGroupsDirective>
+                                        </RibbonTabDirective>
+
+                                        <RibbonTabDirective id="TableLayout" header='Table Layout'>
+                                            <RibbonGroupsDirective>
+                                                <RibbonGroupDirective header="Data" groupIconCss="e-icons e-custom-sort">
+                                                    <RibbonCollectionsDirective>
+                                                        <RibbonCollectionDirective>
+                                                            <RibbonItemsDirective>
+                                                                <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "e-icons e-sort-ascending", content: "Sort Table Ascending", clicked: function() { this.updateContent("Sort Table Ascending"); } }}>
+                                                                </RibbonItemDirective>
+                                                            </RibbonItemsDirective>
+                                                        </RibbonCollectionDirective>
+                                                        <RibbonCollectionDirective>
+                                                            <RibbonItemsDirective>
+                                                                <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "e-icons e-sort-descending", content: "Sort Table Descending", clicked: function() { this.updateContent("Sort Table Descending"); } }}>
+                                                                </RibbonItemDirective>
+                                                            </RibbonItemsDirective>
+                                                        </RibbonCollectionDirective>
+                                                    </RibbonCollectionsDirective>
+                                                </RibbonGroupDirective>
+                                                <RibbonGroupDirective header="Merge" groupIconCss="e-icons e-merge-cells">
+                                                    <RibbonCollectionsDirective>
+                                                        <RibbonCollectionDirective>
+                                                            <RibbonItemsDirective>
+                                                                <RibbonItemDirective type="DropDown" allowedSizes={RibbonItemSize.Large} dropDownSettings={{ iconCss: "e-icons e-merge-cells", content: "Merge", items: this.mergeDropdownOptions, select: function(args) { this.updateContent("Merge -> " + args.item.text); } }}>
+                                                                </RibbonItemDirective>
+                                                            </RibbonItemsDirective>
+                                                        </RibbonCollectionDirective>
+                                                    </RibbonCollectionsDirective>
+                                                </RibbonGroupDirective>
+                                            </RibbonGroupsDirective>
+                                        </RibbonTabDirective>
+                                    </RibbonTabsDirective>
+                                </RibbonContextualTabDirective>
+                                <RibbonContextualTabDirective visible={false}>
+                                    <RibbonTabsDirective>
+                                        <RibbonTabDirective id="Format" header='Picture Format'>
+                                            <RibbonGroupsDirective>
+                                                <RibbonGroupDirective header="Background" groupIconCss="e-icons e-image">
+                                                    <RibbonCollectionsDirective>
+                                                        <RibbonCollectionDirective>
+                                                            <RibbonItemsDirective>
+                                                                <RibbonItemDirective type="Button" allowedSizes={RibbonItemSize.Large} buttonSettings={{ iconCss: "e-icons e-image", content: "Remove Background", clicked: function() { this.updateContent("Remove Background"); } }}>
+                                                                </RibbonItemDirective>
+                                                            </RibbonItemsDirective>
+                                                        </RibbonCollectionDirective>
+                                                    </RibbonCollectionsDirective>
+                                                </RibbonGroupDirective>
+                                            </RibbonGroupsDirective>
+                                        </RibbonTabDirective>
+                                    </RibbonTabsDirective>
+                                </RibbonContextualTabDirective>
+                            </RibbonContextualTabsDirective>
+                            {/* Contextual tab ends */}                            
                             <Inject services={[RibbonFileMenu, RibbonColorPicker, RibbonContextualTab]} />
                         </RibbonComponent>
                         <div id="contextual-ribbonPlaceHolder" ref={holder => { this.placeholderElement = holder }}>

@@ -147,7 +147,7 @@ export class Speedometer extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -225,7 +225,7 @@ export class Speedometer extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' style={{ width: '100%' }}>
+                        <table id='property' role='none' title='Properties' style={{ width: '100%' }}>
                             <tbody>
                                 <tr style={{ height: '50px'}}>
                                     <td style={{ width: '60%', fontSize: '14px'}}>
@@ -251,20 +251,21 @@ export class Speedometer extends SampleBase<{}, {}> {
                         </table>
                     </PropertyPane>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
                     <p>
                         This sample depicts the appearance of a speedometer rendered using the circular gauge. The pointer value is dynamically updated with random values in this case.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to make a circular gauge look like a speedometer. Using the options in the properties panel, a gap can be added between ranges or ranges can be combined to form a single range.
                     </p>
                     <p>
                         More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section </a>.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
 }

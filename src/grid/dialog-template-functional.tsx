@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Sort,
-    Edit, Inject, DialogEditEventArgs
+    Edit, Inject, DialogEditEventArgs, FilterSettingsModel, Filter
 } from '@syncfusion/ej2-react-grids';
 import { updateSampleSection } from '../common/sample-base';
 import { data as orderData } from './data';
@@ -17,6 +17,7 @@ function DialogTemplate() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
     const toolbarOptions: any = ['Add', 'Edit', 'Delete'];
     const editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog', template: dialogTemplate };
     const validationRules = { required: true };
@@ -38,7 +39,7 @@ function DialogTemplate() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={orderData} toolbar={toolbarOptions} allowSorting={true} allowPaging={true} editSettings={editSettings} pageSettings={pageSettings}
+                <GridComponent dataSource={orderData} toolbar={toolbarOptions} allowSorting={true} allowFiltering={true} filterSettings={filterSettings} allowPaging={true} editSettings={editSettings} pageSettings={pageSettings}
                     actionComplete={actionComplete.bind(this)}>
                     <ColumnsDirective>
                         <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
@@ -47,7 +48,7 @@ function DialogTemplate() {
                         <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' ></ColumnDirective>
                         <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' ></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Toolbar, Edit, Sort]} />
+                    <Inject services={[Page, Toolbar, Edit, Sort, Filter]} />
                 </GridComponent>
 
                 <div id="action-description">

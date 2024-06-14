@@ -16,9 +16,6 @@ import * as usa from './map-data/usa.json';
 let datasource: any = data as any;
 import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
-    }
     .toolback {
         border-radius: 4px;
         border: 1px #abb9c6;
@@ -42,6 +39,12 @@ const SAMPLE_CSS = `
     }
     .tailwind .opacityCheckbox, .tailwind-dark .opacityCheckbox, .fabric .opacityCheckbox, .fabric-dark .opacityCheckbox{
         margin-top: -7px;
+    }
+    .colorOpacityCheckBox {
+        padding-left: 0px;margin-top: -10px;margin-left: -7px;
+    }
+    .e-view.fluent2 #property .colorOpacityCheckBox, .e-view.fluent2-dark #property .colorOpacityCheckBox {
+        padding-left: 0px;margin-top: -10px;margin-left: -6px;
     }`;
 export class ColorMap extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
@@ -245,7 +248,7 @@ export class ColorMap extends SampleBase<{}, {}> {
     
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -265,11 +268,7 @@ export class ColorMap extends SampleBase<{}, {}> {
                             position: 'Bottom', height: '10',
                             width: '80%', mode: 'Interactive',
                             titleStyle: {
-                                size: '18px',
-                                color: '#757575'
-                            },
-                            textStyle: {
-                                color: '#757575'
+                                size: '18px'
                             },
                             title: { text: 'Inches' }
                         }}>
@@ -326,7 +325,7 @@ export class ColorMap extends SampleBase<{}, {}> {
                 {/* Property Panel */}
 					<div className='col-lg-4 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+							<table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
                               <tbody>
                                 <tr>
 									<td>
@@ -343,7 +342,7 @@ export class ColorMap extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>Change Opacity</div>
 									</td>
 									<td>
-										<div className='opacityCheckbox' style={{ paddingLeft: '0px', marginTop: '-10px' }}>
+										<div className='opacityCheckbox colorOpacityCheckBox'>
 											<CheckBoxComponent id='opacity' checked={false} change={this.opacityChange.bind(this)} ref={d => this.opacityElement = d} disabled={true} style={{ paddingLeft: '0px' }}/>
 										</div>
 									</td>
@@ -372,12 +371,13 @@ export class ColorMap extends SampleBase<{}, {}> {
 							</table>
 						</PropertyPane>
 					</div>
-                <div id="action-description">
+                </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                        This sample shows the average amount of rainfall and snowfall in spring season of all the states in US. Color mapping is applied to the shapes.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render a map with color mapping. Range color mapping and desaturation color mapping groups the shapes based on the inches value, where the equal color mapping groups based on the category (low, moderate or high) values. Legend is enabled in this example to represent each color mapping.
                     </p>
@@ -389,8 +389,8 @@ export class ColorMap extends SampleBase<{}, {}> {
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use the legend, inject the <code>Legend</code> module using the <code>Maps.Inject(Legend)</code> method.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
 }

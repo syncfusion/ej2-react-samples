@@ -12,7 +12,7 @@ export class Print extends SampleBase<{}, {}> {
     private rteObj: RichTextEditorComponent;
 
     // Rich Text Editor items list
-    private items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments',
+    private items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote',
         'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode', 'Undo', 'Redo', 'Print'];
 
     //Rich Text Editor ToolbarSettings

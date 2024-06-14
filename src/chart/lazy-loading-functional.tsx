@@ -40,7 +40,7 @@ const LazyLoading = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const minChange = (args: ChangedEventArgs): void => {
         chart.current.primaryXAxis.scrollbarSettings.range.minimum = args.value;
@@ -173,11 +173,11 @@ const LazyLoading = () => {
                             </tr>
                             <tr style={{ width: '40%' }}>
                                 <td>
-                                    <div>Point Length </div>
+                                    <div id="pointLength">Point Length </div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <NumericTextBoxComponent min={1000} max={10000} value={1000} step={100} enabled={false} format={'n'} width={120} ref={point => pointslength = point} id="pointslength" style={{ "width": "auto" }} change={pointChange.bind(this)} />
+                                        <NumericTextBoxComponent min={1000} max={10000} value={1000} step={100} enabled={false} format={'n'} width={120} ref={point => pointslength = point} id="pointslength" style={{ "width": "auto" }} change={pointChange.bind(this)} aria-labelledby="Text"/>
                                     </div>
                                 </td>
                             </tr></tbody>
@@ -199,7 +199,7 @@ const LazyLoading = () => {
                     inject <code>ScrollBar</code> and <code>Zoom</code> modules into <code>services</code>.
                 </p>
                 <p>
-                    More information about the lazy loading can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#lazy-loading">documentation section</a>.
+                    More information about the lazy loading can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#lazy-loading" aria-label="Navigate to the documentation for Lazy loading in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

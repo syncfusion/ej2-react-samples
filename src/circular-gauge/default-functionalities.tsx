@@ -25,7 +25,7 @@ export class Default extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -55,20 +55,21 @@ export class Default extends SampleBase<{}, {}> {
                         </AxesDirective>
                     </CircularGaugeComponent>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
                     <p>
                         This sample shows the circular gauge's basic rendering, which includes an axis and a pointer.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>
                         In this example, an axis with a pointer is used, and you can use <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/axisModel/'>AxesDirective</a> and <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/pointerModel/'>PointersDirective</a> to get the circular gauge's basic appearance. The circular gauge component helps in the visualization of numerical scale values on a circular scale.
                     </p>
                     <p>
                         More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+        </main>
         )
     }
 }

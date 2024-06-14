@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Edit, Toolbar, NewRowPosition, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Page, Edit, Toolbar, NewRowPosition, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { orderDataSource } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
@@ -10,6 +10,7 @@ function NormalEdit() {
   React.useEffect(() => {
     updateSampleSection();
   }, [])
+  const filterSettings: FilterSettingsModel = {type: 'Excel'};
   const toolbarOptions: any = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
   const editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, showAddNewRow: true, newRowPosition: 'Top' };
   const editparams: any = { params: { popupHeight: '300px' } };
@@ -44,7 +45,7 @@ function NormalEdit() {
     <div className='control-pane'>
       <div className='control-section'>
         <div className='col-md-9'>
-          <GridComponent dataSource={orderDataSource} ref={grid => gridInstance = grid} toolbar={toolbarOptions} allowSorting={true} allowPaging={true} editSettings={editSettings} pageSettings={pageSettings}
+          <GridComponent dataSource={orderDataSource} ref={grid => gridInstance = grid} toolbar={toolbarOptions} allowSorting={true} allowFiltering={true} filterSettings={filterSettings} allowPaging={true} editSettings={editSettings} pageSettings={pageSettings}
             actionBegin={actionBegin.bind(this)}>
             <ColumnsDirective>
               <ColumnDirective field='OrderID' headerText='Order ID' width='140' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
@@ -53,7 +54,7 @@ function NormalEdit() {
               <ColumnDirective field='OrderDate' headerText='Order Date' editType='datetimepickeredit' format={format} width='160' ></ColumnDirective>
               <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={editparams} ></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Page, Toolbar, Edit, Sort]} />
+            <Inject services={[Page, Toolbar, Edit, Sort, Filter]} />
           </GridComponent>
         </div>
 

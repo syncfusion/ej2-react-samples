@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Resize, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Freeze, Inject, Resize, Sort, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
@@ -12,6 +12,12 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
   private rowInstance: NumericTextBoxComponent;
   private columnInstance: NumericTextBoxComponent;
   public grid: GridComponent;
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
+  public toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  public editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  public customeridRule: Object = { required: true, minLength: 5};
+  public orderidRules: Object = { required: true, number: true };
+  public freightRules: Object = { required: true, min: 0 };
   /* After clicking 'Set' button, the `frozenRows` and `frozenColumns` values will be updated in Grid */
   btnClick(): void {
     this.grid.frozenRows = this.rowInstance.value;
@@ -23,20 +29,20 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
       <div className='control-pane'>
         <div className='control-section'>
           <div className='col-lg-8'>
-          <GridComponent dataSource={orderDetails} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} allowSorting={true} allowMultiSorting={false} ref={g => this.grid = g}>
+          <GridComponent dataSource={orderDetails} height='350' frozenRows={2} frozenColumns={1} allowSelection={false} enableHover={false} allowResizing={true} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowMultiSorting={false} ref={g => this.grid = g}>
             <ColumnsDirective>
-              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2'/>
-              <ColumnDirective field='CustomerID' headerText='Customer ID' width='150'></ColumnDirective>
-              <ColumnDirective field='CustomerName' headerText='Customer Name' width='180'></ColumnDirective>
-              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right'/>
-              <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='180' format='yMd' textAlign='Right'></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='125' format='C2' validationRules={this.freightRules} editType='numericedit'/>
+              <ColumnDirective field='CustomerID' headerText='Customer ID' width='150' validationRules={this.customeridRule}></ColumnDirective>
+              <ColumnDirective field='CustomerName' headerText='Customer Name' width='180' validationRules={this.customeridRule}></ColumnDirective>
+              <ColumnDirective field='OrderDate' headerText='Order Date' width='150' format='yMd' textAlign='Right' editType='datepickeredit'/>
+              <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='180' format='yMd' textAlign='Right' editType='datepickeredit'></ColumnDirective>
               <ColumnDirective field='ShipName' headerText='Ship Name' width='300'></ColumnDirective>
               <ColumnDirective field='ShipAddress' headerText='Ship Address' width='270'></ColumnDirective>
               <ColumnDirective field='ShipCity' headerText='Ship City' width='250'></ColumnDirective>
-              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250'></ColumnDirective>
+              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='250' editType='dropdownedit'></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Freeze, Resize, Sort]} />
+            <Inject services={[Freeze, Resize, Sort, Toolbar, Filter, Edit]} />
           </GridComponent>
         </div>
         <div className='col-lg-4 property-section'>
@@ -50,7 +56,7 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
                   <td style={{ width: '70%', paddingRight: '10px' }}>
                     <div style={{ minWidth: '148px' }}>
                       {/* Render NumericTextbox component with specific range for frozen rows */}
-                      <NumericTextBoxComponent min={0} max={5} validateDecimalOnType={true} decimals={0} format='n' value={2} ref={numeric => this.rowInstance = numeric}></NumericTextBoxComponent>
+                      <NumericTextBoxComponent min={0} max={5} validateDecimalOnType={true} decimals={0} format='n' value={2} ref={numeric => this.rowInstance = numeric} aria-label="Frozen rows"></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>
@@ -61,7 +67,7 @@ export class FrozenRowsColumns extends SampleBase<{}, {}> {
                   <td style={{ width: '70%', paddingRight: '10px' }}>
                     <div style={{ minWidth: '148px' }}>
                       {/* Render NumericTextbox component with specific range for frozen columns */}
-                      <NumericTextBoxComponent min={0} max={Browser.isDevice ? 1 : 2} validateDecimalOnType={true} decimals={0} format='n' value={1} ref={numeric => this.columnInstance = numeric}></NumericTextBoxComponent>
+                      <NumericTextBoxComponent min={0} max={Browser.isDevice ? 1 : 2} validateDecimalOnType={true} decimals={0} format='n' value={1} ref={numeric => this.columnInstance = numeric} aria-label="Frozen columns"></NumericTextBoxComponent>
                     </div>
                   </td>
                 </tr>

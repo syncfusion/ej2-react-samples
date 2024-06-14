@@ -155,16 +155,14 @@ function OverView() {
         </DashboardLayoutComponent>
       </div>
       <div id="action-description">
-                <p>
-                This sample shows an overview of <a target="_blank" href="https://www.syncfusion.com/react-components/react-charts" >React Charts</a> that allows users to visualize data easily and take decisions based on it. There are different types of charts to create feature rich apps.
-            </p>
+                <p>This sample shows an overview of <a target="_blank" href="https://www.syncfusion.com/react-components/react-charts" aria-label="Navigate to explore the Syncfusion React Charts">React Charts</a> that allows users to visualize data easily and take decisions based on it. There are different types of charts to create feature rich apps.</p>
                 </div>
                 <div id="description">
                     <p>
                     The React Chart is a well-crafted charting component to visualize data.In this example, you will see how to render and configure line, column, and pie charts with different features such as highlight, legend, tooltip, and annotation . The Chart uses <code>SfDataManager</code>, which supports both RESTful JSON data services binding and IEnumerable binding. 
                     </p>
                     <p>
-                    More information on the React Chart types can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line">documentation section</a>.
+                    More information on the React Chart types can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/line" aria-label="Navigate to the documentation for Line Chart in React Chart component">documentation section</a>.
                     </p>
                 </div>
 <svg style={{ height: '0' }}>
@@ -184,7 +182,7 @@ function OverView() {
   function load(args: ILoadedEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];
     selectedTheme = selectedTheme ? selectedTheme : 'Material';
-    args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+    args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     args.chart.series[0].fill = 'url(#' + 'gradient-chart)';
     args.chart.series[1].fill = 'url(#' + 'gradient-chart1)'; 
 };
@@ -192,7 +190,7 @@ function accumulationload(args: IAccLoadedEventArgs): void {
   let selectedTheme: string = location.hash.split('/')[1];
   selectedTheme = selectedTheme ? selectedTheme : 'Material';
   args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-  replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
+  replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
 };
 function onPointRender(args: IAccPointRenderEventArgs): void {
     let selectedTheme: string = location.hash.split('/')[1];

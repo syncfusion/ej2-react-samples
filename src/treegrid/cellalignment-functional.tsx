@@ -107,7 +107,7 @@ const CellAlign = () => {
                   <td style={{ width: "70%", paddingRight: "10px" }}>
                     <div>
                       <DropDownListComponent
-                        width="95px"
+                        width="110px"
                         id="columns"
                         change={change.bind(this)}
                         dataSource={columnNames}
@@ -125,7 +125,7 @@ const CellAlign = () => {
                   <td style={{ width: "70%", padding: "10px 10px 10px 0px" }}>
                     <div>
                       <DropDownListComponent
-                        width="95px"
+                        width="110px"
                         id="alignment"
                         change={change2.bind(this)}
                         dataSource={alignment}

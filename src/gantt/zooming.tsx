@@ -22,8 +22,8 @@ export class Zooming extends SampleBase<{}, {}> {
    position: "35%"
   };
   public toolbar: any = ['ZoomIn','ZoomOut','ZoomToFit'];
-  public projectStartDate: Date = new Date('03/24/2019');
-  public projectEndDate: Date = new Date('04/28/2019');
+  public projectStartDate: Date = new Date('03/24/2024');
+  public projectEndDate: Date = new Date('04/28/2024');
   render() {
     return (
       <div className='control-pane'>

@@ -57,10 +57,10 @@ export class Overview extends SampleBase<{}, {}> {
     public splitterSettings: any = {
         position: "57%"
     };
-    public projectStartDate: Date = new Date('12/17/2021');
-    public projectEndDate: Date = new Date('10/26/2022');
+    public projectStartDate: Date = new Date('12/17/2023');
+    public projectEndDate: Date = new Date('10/26/2024');
     public gridLines: any = 'Vertical';
-    public toolbarOptions: any = ['ExpandAll', 'CollapseAll', { type: "Input", align: "Right", tooltipText: "Change View", template: new DropDownList({ dataSource: this.dataList, width: "85px", placeholder: "View", change: this.change, fields: { text: 'Text', value: 'ID' } }) }]
+    public toolbarOptions: any = ['ExpandAll', 'CollapseAll', { type: "Input", align: "Right", tooltipText: "Change View", template: new DropDownList({ dataSource: this.dataList, width: "100px", placeholder: "View", change: this.change, fields: { text: 'Text', value: 'ID' } }) }]
 
     public change(args: any) {
         let gantt = (document.getElementsByClassName('e-gantt')[0] as any).ej2_instances[0];
@@ -90,9 +90,9 @@ export class Overview extends SampleBase<{}, {}> {
         taskLabel: '${Progress}%',
         rightLabel: 'Assignee'
     };
-    public eventMarkerDay1: Date = new Date('04/04/2022');
-    public eventMarkerDay2: Date = new Date('06/30/2022');
-    public eventMarkerDay3: Date = new Date('09/29/2022');
+    public eventMarkerDay1: Date = new Date('04/04/2024');
+    public eventMarkerDay2: Date = new Date('06/30/2024');
+    public eventMarkerDay3: Date = new Date('09/29/2024');
 
     public statustemplate(props: any) {
         let sts = this.Status(props.taskData.Status);
@@ -296,8 +296,8 @@ export class Overview extends SampleBase<{}, {}> {
                             <EventMarkerDirective day={this.eventMarkerDay3} label='Q-3 Release' ></EventMarkerDirective>
                         </EventMarkersDirective>
                         <HolidaysDirective>
-                            <HolidayDirective from='01/01/2022' to='01/01/2022' label='New year Holiday'></HolidayDirective>
-                            <HolidayDirective from='12/25/2021' to='12/26/2021' label='Christmas Holidays'></HolidayDirective>
+                            <HolidayDirective from='01/01/2024' to='01/01/2024' label='New year Holiday'></HolidayDirective>
+                            <HolidayDirective from='12/25/2023' to='12/26/2023' label='Christmas Holidays'></HolidayDirective>
                         </HolidaysDirective>
                         <Inject services={[Edit, Selection, Toolbar, DayMarkers, ColumnMenu, Filter, Sort, Resize]} />
                     </GanttComponent>

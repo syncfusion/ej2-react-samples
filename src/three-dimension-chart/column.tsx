@@ -64,7 +64,7 @@ export class Column extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information on the 3D chart can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for React 3D column chart">documentation section</a>.
                     </p>
                 </div>
             </div>

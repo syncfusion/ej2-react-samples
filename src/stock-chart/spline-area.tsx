@@ -51,7 +51,7 @@ export class SplineArea extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure stock chart to visualize the stock data with spline area series. Use series <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/stock-chart/stockSeries/#type">type</a> as <b>SplineArea</b> to render a spline area series.
+                        In this example, you can see how to render and configure stock chart to visualize the stock data with spline area series. Use series <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/stock-chart/stockSeries/#type" aria-label="Navigate to the type property reference for React Stock Chart component">type</a> as <b>SplineArea</b> to render a spline area series.
                     </p>
                     <p>
                         <code>Crosshair</code> is enabled in this example. To see the crosshair in action, hover the chart or tap on it in touch enabled devices.
@@ -63,7 +63,7 @@ export class SplineArea extends SampleBase<{}, {}> {
                         <code>StockChart.Inject(DateTime)</code> method. To use the SplineAreaSeries, inject the <code>SplineAreaSeries</code> module using the <code>StockChart.Inject(SplineAreaSeries)</code> method.
                     </p>
                     <p>
-                        More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">documentation section</a>.
+                        More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types" aria-label="Navigate to the documentation for Stock Chart Series Types">documentation section</a>.
                     </p>
                 </div>
             </div>

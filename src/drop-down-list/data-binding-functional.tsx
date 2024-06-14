@@ -33,14 +33,14 @@ const Data = () => {
         <div className='control-pane'>
             <div className='control-section'>
                 <div className='col-lg-6'>
-                    <div id="local">
-                        <h4> Local Data</h4>
+                    <div className='drop-down-list-content' id="local">
+                        <label className="h4"> Local Data</label>
                         <DropDownListComponent id="games" dataSource={sportsData} fields={localFields} placeholder="Select a game" popupHeight="220px" />
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div id="remote">
-                        <h4>Remote Data</h4>
+                    <div className='drop-down-list-content' id="remote">
+                        <label className="h4">Remote Data</label>
                         <DropDownListComponent id="customers" dataSource={customerData} sortOrder="Ascending" query={query} fields={remoteFields} placeholder="Select a name" popupHeight="220px" />
                     </div>
                 </div>

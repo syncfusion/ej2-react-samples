@@ -8,8 +8,13 @@ import { ILoadedEventArgs } from '@syncfusion/ej2-circulargauge';
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
+    .angleCheckBox {
+        padding-top: 0px !important;
+        padding-left: 0px !important;
+        margin-left: 0px
+    }
+    .e-view.fluent2 #property .angleCheckBox, .e-view.fluent2-dark #property .angleCheckBox {
+        padding-top: 0px; padding-left: 0px; margin-left: -8px
     }`;
 
 const SemiGauge = () => {
@@ -97,7 +102,7 @@ const SemiGauge = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='col-lg-8 control-section'>
                 <CircularGaugeComponent centerX={xValue} centerY={yValue} moveToCenter={isMoveToCenter} background='transparent' load={load.bind(this)} ref={gauge} id='gauge'>
@@ -113,7 +118,7 @@ const SemiGauge = () => {
             {/* Property Panel */}
             <div className='col-lg-4 property-section'>
                 <PropertyPane title='Properties'>
-                    <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', overflow: 'hidden' }}>
+                    <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', overflow: 'hidden' }}>
                         <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td>
@@ -165,7 +170,7 @@ const SemiGauge = () => {
                                     <div style={{ marginLeft: "-10px", fontSize: "14px" }}>Radius based on angle</div>
                                 </td>
                                 <td style={{ width: '40% ' }}>
-                                    <div style={{ paddingTop: '0px', paddingLeft: "0px" }}>
+                                    <div className="angleCheckBox">
                                         <CheckBoxComponent id='angle' change={angleChange.bind(this)} style={{ paddingLeft: '0px' }} />
                                     </div>
                                 </td>
@@ -205,7 +210,7 @@ const SemiGauge = () => {
                                     <div style={{ marginLeft: "-10px", fontSize: "14px" }}>Hide Intersecting Labels</div>
                                 </td>
                                 <td style={{ width: '40% ' }}>
-                                    <div style={{ paddingTop: '0px', paddingLeft: "0px" }}>
+                                    <div className="angleCheckBox">
                                         <CheckBoxComponent id='hidelabel' checked={true} change={hideLabel.bind(this)} style={{ paddingLeft: '0px' }} />
                                     </div>
                                 </td>
@@ -214,16 +219,17 @@ const SemiGauge = () => {
                     </table>
                 </PropertyPane>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample shows how to create semi-circular or quarter-circular gauges by modifying a circular gauge with different start and end angles.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>In this example, a circular gauge is rendered with different start and end angles to create semi-circular or quarter-circular gauges. The radius, start angle, end angle, and center position of the circular gauge can all be customized using the options in the properties panel.</p>
                 <p>
                     More information on the semi-circular or quarter-circular gauges can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-appearance/#radius-calculation-based-on-angles">documentation section </a>.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default SemiGauge;

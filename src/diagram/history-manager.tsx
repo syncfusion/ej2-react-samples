@@ -39,7 +39,7 @@ let SAMPLE_CSS = `#historyPropertySection .row {
         }
 
         #historyPropertySection .heading {
-            color: #807f7f;
+            color: #4e4949;
             font-size: 15px;
             height: 50px;
             width: 100%;

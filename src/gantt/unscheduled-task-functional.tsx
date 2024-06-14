@@ -37,8 +37,8 @@ const UnscheduledTask = () => {
     { field: 'EndDate', width: 120 },
     { field: 'Duration', width: 90 }
   ];
-  const projectStartDate: any = new Date('01/01/2019');
-  const projectEndDate: any = new Date('01/20/2019');
+  const projectStartDate: any = new Date('01/01/2024');
+  const projectEndDate: any = new Date('01/20/2024');
   const toolbarClickEvent = (): void => {
     var data = {
       Duration: null,

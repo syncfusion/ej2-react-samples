@@ -34,8 +34,8 @@ const TaskMode = () => {
     showDeleteConfirmDialog: true
   };
   const toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll'];
-  const projectStartDate: Date = new Date('02/20/2017');
-  const projectEndDate: Date = new Date('03/30/2017');
+  const projectStartDate: Date = new Date('02/20/2024');
+  const projectEndDate: Date = new Date('03/30/2024');
 
   return (
     <div className='control-pane'>

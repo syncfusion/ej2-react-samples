@@ -35,7 +35,7 @@ const DateTimeAxis = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -51,7 +51,7 @@ const DateTimeAxis = () => {
                     </SeriesCollectionDirective>
                 </ChartComponent>
                 <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                    <a href="http://www.yr.no/place/USA/Alaska/Hatcher_Pass/statistics.html" target="_blank">www.yr.no</a>
+                    <a href="http://www.yr.no/place/USA/Alaska/Hatcher_Pass/statistics.html" target="_blank" aria-label="Navigate to the documentation for yr">www.yr.no</a>
                 </div>
             </div>
             <div id="action-description">
@@ -67,7 +67,7 @@ const DateTimeAxis = () => {
                     Chart component features are segregated into individual feature-wise modules. To use DateTime axis, we need to inject <code>DateTime</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the DateTime axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/date-time-axis/#datetime-axis">documentation section</a>.
+                    More information on the DateTime axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/date-time-axis/#datetime-axis" aria-label="Navigate to the documentation for Date Time Axis in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

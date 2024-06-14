@@ -48,6 +48,7 @@ export class Default extends SampleBase<{}, {}> {
                         <li><b>Reset</b> : Revert all the edited states and load the original image.</li>
                         <li><b>Save</b> : Save the edited image in JPEG, PNG, and SVG formats.</li>
                         <li><b>Annotation</b> : Text, rectangle, ellipse, and line annotation shapes are supported.</li>
+                        <li><b>Z-Order</b> : Adjust the positioning of annotations to manage the layering of elements, essential for creating polished designs.</li>
                     </ul>
                     <p>
                         More information about Image Editor can be found in this 

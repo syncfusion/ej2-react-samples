@@ -33,7 +33,7 @@ const Default = () => {
                 : "Country: ${Continent}<br>Company: ${Company}<br>Sales: ${Sales}";
     };
     return (
-        <div className="control-pane">
+        <main><div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <TreeMapComponent
@@ -92,14 +92,15 @@ const Default = () => {
                     www.factorywarrantylist.com
                 </a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of TreeMap sample">
                 <p>
                     This sample visualizes the sales of cars across various countries in
                     2017 by rendering the countries at the top level and car manufacturing
                     companies as leaf items.
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render a TreeMap with the provided
                     data source. The palette color is applied to the items in TreeMap. The
@@ -119,8 +120,8 @@ const Default = () => {
                     a legend by injecting the <code>Legend</code> module using the{" "}
                     <code>TreeMap.Inject(TreeMapLegend)</code> method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 export default Default;

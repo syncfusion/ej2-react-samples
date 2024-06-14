@@ -123,6 +123,24 @@
     padding: 0 16px;
 }
 
+.fluent2 #sblist-wrapper #listToolbar,
+.fluent2-dark #sblist-wrapper #listToolbar,
+.fluent2-highcontrast #sblist-wrapper #listToolbar {
+    border-width: 1px;
+}
+
+.fluent2 #wrapper #listSidebarList,
+.fluent2-dark #wrapper #listSidebarList,
+.fluent2-highcontrast #wrapper #listSidebarList {
+    border: 0;
+}
+
+.fluent2 .e-template-list .e-list-item,
+.fluent2-dark .e-template-list .e-list-item,
+.fluent2-highcontrast .e-template-list .e-list-item {
+    padding: 4px 16px;
+}
+
 #sidebarList {
     display: inline-flex;
     width: 100%;

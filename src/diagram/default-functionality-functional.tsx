@@ -692,8 +692,8 @@ function refreshOverflow(){
   }, 100);
 }
 asyncSettings = {
-  saveUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Save',
-  removeUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Remove',
+  saveUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Save',
+  removeUrl: 'https://services.syncfusion.com/react/production/api/FileUploader/Remove'
 };
 function onUploadSuccess(args:any) {
   let file = args.file;

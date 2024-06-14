@@ -22,7 +22,7 @@ export class TooltipMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -39,10 +39,6 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                                 orientation: 'Vertical',
                                 height: '70%',
                                 width: '10',
-                                textStyle: {
-                                    color: '#757575'
-                                }
-
                             }}
                             titleSettings={{
                                 text: 'Finalist in Cricket World Cup',
@@ -98,12 +94,13 @@ export class TooltipMaps extends SampleBase<{}, {}> {
                 <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/List_of_Cricket_World_Cup_finals" target="_blank">en.wikipedia.org</a>
     </div>
-                <div id="action-description">
+</div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                     This sample depicts the countries that were appeared in the finals of Cricket World Cup and their counts. By hovering the mouse over the shapes, county name, finalist count, and winning count will be displayed in the tooltip template.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>
                  In this example, you can see how to render the custom HTML element as tooltip. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices. Also, the interactive legend has been placed at the left of the map. 
                </p>
@@ -112,8 +109,8 @@ export class TooltipMaps extends SampleBase<{}, {}> {
              <p>
                Maps component features are segregated into individual feature-wise modules. To use a tooltip, inject the Tooltip module using the Maps.Inject(Tooltip) method.
             </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {

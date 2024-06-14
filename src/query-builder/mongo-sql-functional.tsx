@@ -10,11 +10,10 @@ import { ItemModel, MenuEventArgs, TabComponent, TabItemDirective, TabItemsDirec
 import { AnimationSettingsModel, DialogComponent, TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { employeeData } from './data-source';
 import { DropDownButtonComponent } from '@syncfusion/ej2-react-splitbuttons';
+import * as CodeMirror from 'codemirror';
 
 QueryBuilderComponent.Inject(QueryLibrary);
 
-
-declare let CodeMirror: any;
 let headertext: any = [
     { text: "SQL" },
     { text: "MongoDB" }
@@ -49,7 +48,12 @@ const frameworkTemplate = (props) => {
     const frameworkChange = (event: any) => {
         let qryBldrObj: any = getComponent(document.getElementById('querybuilder'), 'query-builder');
         let elem: any = document.getElementById(args.ruleID).querySelector('.e-rule-value');
-        qryBldrObj.notifyChange(event.value, elem, 'value');
+        let rule = qryBldrObj.getRule(event.element);
+        if (rule.operator == "in" || rule.operator == "notin") {
+            qryBldrObj.notifyChange([event.value], elem, 'value');
+        } else {
+            qryBldrObj.notifyChange(event.value, elem, 'value');
+        }
     }
     return (<div><DropDownListComponent dataSource={ds} value={args.rule.value} change={frameworkChange} /></div>);
 };
@@ -169,13 +173,10 @@ const MongoSQlTemplate = () => {
         content = updateSQLContent();
         /* custom code start */
         clearHighlight();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-sql-content')[0], {
-            parserfile: "codemirror/contrib/sql/js/parsesql.js",
-            path: "codemirror/js/",
-            stylesheet: "css/sqlcolors.css",
-            matchBrackets: true,
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-sql-content')[0] as any, {
+            readOnly: true,
+            theme: 'default',  // Set your desired theme here
             lineWrapping: true,
-            textWrapping: true
         });
         codeMirrorEditor.setValue(content);
         /* custom code end */
@@ -192,7 +193,7 @@ const MongoSQlTemplate = () => {
         content = mongoQuery;
         /* custom code start */
         clearHighlight();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-mongo-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-mongo-content')[0] as any, {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here

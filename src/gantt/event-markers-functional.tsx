@@ -19,16 +19,16 @@ const EventMarkers = () => {
     dependency: 'Predecessor',
     child: 'subtasks'
   };
-  const eventMarkerDay1: Date = new Date('04/02/2019');
-  const eventMarkerDay2: Date = new Date('04/09/2019');
-  const eventMarkerDay3: Date = new Date('04/19/2019');
-  const eventMarkerDay4: Date = new Date('05/23/2019');
-  const eventMarkerDay5: Date = new Date('06/20/2019');
+  const eventMarkerDay1: Date = new Date('04/02/2024');
+  const eventMarkerDay2: Date = new Date('04/09/2024');
+  const eventMarkerDay3: Date = new Date('04/19/2024');
+  const eventMarkerDay4: Date = new Date('05/23/2024');
+  const eventMarkerDay5: Date = new Date('06/20/2024');
   const labelSettings: any = {
     leftLabel: 'TaskName'
   };
-  const projectStartDate: Date = new Date('03/24/2019');
-  const projectEndDate: Date = new Date('07/06/2019');
+  const projectStartDate: Date = new Date('03/24/2024');
+  const projectEndDate: Date = new Date('07/06/2024');
   return (
     <div className='control-pane'>
       <div className='control-section'>

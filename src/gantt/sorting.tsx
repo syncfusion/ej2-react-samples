@@ -24,8 +24,8 @@ export class Sorting extends SampleBase<{}, {}> {
   public sortSettings: any = {
     columns: [{ field: 'TaskName', direction: 'Ascending' }, { field: 'TaskID', direction: 'Ascending' }]
   };
-  public projectStartDate: Date = new Date('03/25/2019');
-  public projectEndDate: Date = new Date('07/28/2019');
+  public projectStartDate: Date = new Date('03/25/2024');
+  public projectEndDate: Date = new Date('07/28/2024');
   render() {
     return (
       <div className='control-pane'>

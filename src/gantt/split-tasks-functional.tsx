@@ -35,8 +35,8 @@ const SplitTasks = () => {
     leftLabel: 'TaskName',
     taskLabel: '${Progress}%'
   };
-  const projectStartDate: Date = new Date('01/30/2019');
-  const projectEndDate: Date = new Date('03/04/2019');
+  const projectStartDate: Date = new Date('01/30/2024');
+  const projectEndDate: Date = new Date('03/04/2024');
   return (
     <div className='control-pane'>
       <div className='control-section'>

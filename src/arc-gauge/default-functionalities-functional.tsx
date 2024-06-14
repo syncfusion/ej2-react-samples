@@ -49,7 +49,8 @@ const Default = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main>
+            <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} id="gauge" background="transparent" height="500px" title="Female (% usage) on popular social network" titleStyle={{ size: '18px', fontFamily: 'inherit' }} >
@@ -57,16 +58,16 @@ const Default = () => {
                     <AxesDirective>
                         <AxisDirective startAngle={0} endAngle={270} minimum={0} maximum={100} majorTicks={{ width: 0 }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ font: { size: '0px', }, }} >
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div class="titleText" style="color:#c8eab7;">YouTube</div>' angle={344} radius="94%" zIndex="1" />
-                                <AnnotationDirective content='<div class="titleText" style="color:#82cdbc;">Instagram</div>' angle={340} radius="81%" zIndex="1" />
-                                <AnnotationDirective content='<div class="titleText" style="color:#43b6c4;">Twitter</div>' angle={340} radius="66%" zIndex="1" />
-                                <AnnotationDirective content='<div class="titleText" style="color:#1d91bf;">Facebook</div>' angle={332} radius="55%" zIndex="1" />
-                                <AnnotationDirective content='<div class="titleText" style="color:#205ea8;">TikTok</div>' angle={328} radius="40%" zIndex="1" />
-                                <AnnotationDirective content='<div class="annotation">68%</div>' angle={191} radius="89%" zIndex="1" />
-                                <AnnotationDirective content='<div class="annotation">43%</div>' angle={125} radius="75%" zIndex="1" />
-                                <AnnotationDirective content='<div class="annotation">21%</div>' angle={67} radius="62%" zIndex="1" />
-                                <AnnotationDirective content='<div class="annotation">75%</div>' angle={215} radius="48%" zIndex="1" />
-                                <AnnotationDirective content='<div class="annotation">44%</div>' angle={133} radius="33%" zIndex="1" />
+                                <AnnotationDirective content='<div class="titleText" style="color:#c8eab7;">YouTube</div>' description="Youtube" angle={344} radius="94%" zIndex="1" />
+                                <AnnotationDirective content='<div class="titleText" style="color:#82cdbc;">Instagram</div>' description="Instagram" angle={340} radius="81%" zIndex="1" />
+                                <AnnotationDirective content='<div class="titleText" style="color:#43b6c4;">Twitter</div>' description="Twitter" angle={340} radius="66%" zIndex="1" />
+                                <AnnotationDirective content='<div class="titleText" style="color:#1d91bf;">Facebook</div>' description="Facebook" angle={332} radius="55%" zIndex="1" />
+                                <AnnotationDirective content='<div class="titleText" style="color:#205ea8;">TikTok</div>' description="TikTok" angle={328} radius="40%" zIndex="1" />
+                                <AnnotationDirective content='<div class="annotation">68%</div>' description="68%" angle={191} radius="89%" zIndex="1" />
+                                <AnnotationDirective content='<div class="annotation">43%</div>' description="43%" angle={125} radius="75%" zIndex="1" />
+                                <AnnotationDirective content='<div class="annotation">21%</div>' description="21%" angle={67} radius="62%" zIndex="1" />
+                                <AnnotationDirective content='<div class="annotation">75%</div>' description="75%" angle={215} radius="48%" zIndex="1" />
+                                <AnnotationDirective content='<div class="annotation">44%</div>' description="44%" angle={133} radius="33%" zIndex="1" />
                             </AnnotationsDirective>
                             <PointersDirective>
                                 <PointerDirective pointerWidth={0} cap={{ radius: 0, border: { width: 0 } }} />
@@ -87,18 +88,19 @@ const Default = () => {
                     </AxesDirective>
                 </CircularGaugeComponent>
             </div>
-            <div id="action-description">
-                <p>This sample shows the arc gauge's default rendering. It also shows the most popular social media platforms and the percentage of female users.</p>
-            </div>
-            <div id="description">
-                <p>
-                    In this example, you can see how to render a default arc gauge. The arc gauge helps in the visualization of numerical values of scales in a semi-circular manner. You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/axisModel/">axes</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/">ranges</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/annotationModel/">annotations</a> oriented properties to customize the default appearance of the arc gauge.
-                </p>
-                <p>
-                    More information on the arc gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
-                </p>
-            </div>
         </div>
+        <section id="action-description" aria-label="Description of Circular Gauge sample">
+            <p>This sample shows the arc gauge's default rendering. It also shows the most popular social media platforms and the percentage of female users.</p>
+        </section>
+        <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
+            <p>
+                In this example, you can see how to render a default arc gauge. The arc gauge helps in the visualization of numerical values of scales in a semi-circular manner. You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/axisModel/">axes</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/">ranges</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/annotationModel/">annotations</a> oriented properties to customize the default appearance of the arc gauge.
+            </p>
+            <p>
+                More information on the arc gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
+            </p>
+        </section>
+    </main>
     )
 }
 export default Default; 

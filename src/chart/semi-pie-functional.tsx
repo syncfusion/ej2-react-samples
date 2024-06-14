@@ -36,7 +36,7 @@ const SemiPie = () => {
     const load = (args: IAccLoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as AccumulationTheme;
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
     };
     return (
         <div className='control-pane'>
@@ -60,7 +60,7 @@ const SemiPie = () => {
                     In this example, you can see how to render a semi pie chart using <code>StartAngle</code> and <code>EndAngle</code> properties. Data labels are wrapped to fit inside the pie slice.
                 </p>                
                 <p>
-                    More information on the data labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/">documentation section</a>.
+                    More information on the data labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/data-label/" aria-label="Navigate to the documentation for DataLabel in React Accumulation Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

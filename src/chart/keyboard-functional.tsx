@@ -21,6 +21,10 @@ let tailwindColors: string[] = ["#5A61F6", "#65A30D", "#334155", "#14B8A6", "#8B
 let tailwindDarkColors: string[] = ["#8B5CF6", "#22D3EE", "#F87171", "#4ADE80", "#E879F9", "#FCD34D", "#F97316", "#2DD4BF", "#F472B6", "#10B981"];
 let material3Colors: string[] = ["#6355C7", "#00AEE0", "#FFB400", "#F7523F", "#963C70", "#FD7400", "#4BE0BC", "#2196F5", "#DE3D8A", "#162F88"];
 let material3DarkColors: string[] = ["#4EAAFF", "#FA4EAB", "#FFF500", "#17EA58", "#38FFE7", "#FF9E45", "#B3F32F", "#B93CE4", "#FC5664", "#9B55FF"];
+let fluent2Colors: string[] = ["#6200EE", "#09AF74", "#0076E5", "#CB3587", "#E7910F", "#0364DE", "#66CD15", "#F3A93C", "#107C10",
+"#C19C00"];
+let fluent2DarkColors: string[] = ["#9BB449", "#2A72D5", "#43B786", "#3F579A", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266",
+"#0B6A0B", "#C19C00"];
 
 const SAMPLE_CSS = `
     .control-fluid {
@@ -120,7 +124,7 @@ const KeyboardNavigation = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         FontColor = args.chart.theme.indexOf("Dark") > -1 || args.chart.theme.indexOf("HighContrast") > -1 ? "#F3F2F1" : "#353535";
         let FillColors: any;
         if (args.chart.theme === 'MaterialDark') {
@@ -165,6 +169,14 @@ const KeyboardNavigation = () => {
         }
         else if (args.chart.theme === 'Material3Dark') {
             FillColors = material3DarkColors;
+            FontColor = "#FFFFFF";
+        }
+        else if (args.chart.theme === 'Fluent2') {
+            FillColors = fluent2Colors;
+            FontColor = "#000000";
+        }
+        else if (args.chart.theme === 'Fluent2Dark') {
+            FillColors = fluent2DarkColors;
             FontColor = "#FFFFFF";
         }
         else {

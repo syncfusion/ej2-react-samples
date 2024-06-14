@@ -51,8 +51,8 @@ export class ProgressBarCustomContents extends SampleBase<{}, {}> {
     private downloadProgress: ProgressBarComponent;
     private clearTimeout1: number;
     private clearTimeout2: number;
-    private content1: string = `<img src="src/progress-bar/images/material-pause.svg"></img>`;
-    private content2: string = `<img src="src/progress-bar/images/material-Download.svg"></img>`;
+    private content1: string = `<img src="src/progress-bar/images/material-pause.svg" alt="Pause Icon"></img>`;
+    private content2: string = `<img src="src/progress-bar/images/material-Download.svg" alt="Download Icon"></img>`;
     private content3: string = '<div id="point1" style="font-size:20px;font-weight:bold;color:#b52123;fill:#b52123"><span>80%</span></div>';
     private annotationColors: {
         material: string,
@@ -81,9 +81,9 @@ export class ProgressBarCustomContents extends SampleBase<{}, {}> {
             // tslint:disable-next-line:max-line-length
             args.progressBar.annotations[0].content = '<div id="point1" class="plabeltxt" style="color: ' + this.annotationColors[selectedTheme.replace(/-/i, '')] + ' "><span>80%</span></div>';
         } else if (args.progressBar.element.id === 'download-container') {
-            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-Download.svg"></img>';
+            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-Download.svg" alt="Download Icon"></img>';
         } else {
-            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-pause.svg"></img>';
+            args.progressBar.annotations[0].content = '<img src="src/progress-bar/images/' + selectedTheme.replace(/-/i, '') + '-pause.svg" alt="Pause Icon"></img>';
         }
     }
     private reloadClick(): void {
@@ -96,7 +96,7 @@ export class ProgressBarCustomContents extends SampleBase<{}, {}> {
         this.clearTimeout1 = +setTimeout(
             () => {
                 //tslint:disable-next-line
-                this.pausePlay.annotations[0].content = '<img src="src/progress-bar/images/' + (this.pausePlay.theme).toLowerCase() + '-Play.svg"></img>';
+                this.pausePlay.annotations[0].content = '<img src="src/progress-bar/images/' + (this.pausePlay.theme).toLowerCase() + '-Play.svg" alt="Play Icon"></img>';
                 this.pausePlay.dataBind();
             },
             2000);
@@ -107,7 +107,7 @@ export class ProgressBarCustomContents extends SampleBase<{}, {}> {
         this.clearTimeout2 = +setTimeout(
             () => {
                 //tslint:disable-next-line
-                this.downloadProgress.annotations[0].content = '<img src="src/progress-bar/images/' + (this.downloadProgress.theme).toLowerCase() + '-Tick.svg"></img>';
+                this.downloadProgress.annotations[0].content = '<img src="src/progress-bar/images/' + (this.downloadProgress.theme).toLowerCase() + '-Tick.svg" alt="Tick Icon"></img>';
                 this.downloadProgress.dataBind();
             },
             2000);

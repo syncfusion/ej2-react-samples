@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
-    ProjectionType, MapsComponent, MapsTooltip, ExportType, Marker, MarkersDirective, MarkerDirective, ShapeLayerType,
+    ProjectionType, MapsComponent, MapsTooltip, ExportType, Marker, MarkersDirective, MarkerDirective,
     PdfExport, ImageExport, Inject, LayersDirective, LayerDirective, ILoadedEventArgs, MapsTheme
 } from '@syncfusion/ej2-react-maps';
 import { Browser } from '@syncfusion/ej2-base';
@@ -13,12 +13,9 @@ import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
+import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import * as worldMap from './map-data/world-map.json';
 const SAMPLE_CSS = `
-.control-fluid {
-    padding: 0px !important;
-}
-
 #btn-control {
     width: 100%;
     text-align: center;
@@ -56,6 +53,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     private mode: DropDownListComponent;
     private mapType: DropDownListComponent;
+    private textElement: TextBoxComponent;
     private type: { [key: string]: Object }[] = [
         { value: 'JPEG' },
         { value: 'PNG' },
@@ -68,19 +66,22 @@ export class ExportMaps extends SampleBase<{}, {}> {
     ];
     private mapTypeChange(): void {
         if (this.mapType.value === 'OSM') {
+            this.mapInstance.layers[0].urlTemplate = "https://tile.openstreetmap.org/level/tileX/tileY.png";
+            this.mapInstance.layers[0].shapeData = null;
             if (this.mode.value === 'SVG') {
                 this.mode.value = 'JPEG';
             }
             this.mode.dataSource = this.type.slice(0, 3);
         } else {
+            this.mapInstance.layers[0].shapeData = worldMap;
+            this.mapInstance.layers[0].urlTemplate = '';
             this.mode.dataSource = this.type;
         }
-        this.mapInstance.layers[0].layerType = this.mapType.value as ShapeLayerType;
         this.mapInstance.refresh();
     }
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -135,7 +136,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                               <tbody>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "20%" }}>
@@ -162,8 +163,8 @@ export class ExportMaps extends SampleBase<{}, {}> {
                                        <div style={{marginLeft: '-10px'}}>FileName</div>
                         </td>
                                     <td>
-                                        <div className="e-float-input" style={{ marginTop: '0px' }}>
-                                            <input type="text" defaultValue="Maps" id="fileName" style={{ "width": "100%", padding: '0px', paddingLeft: '5px' }} />
+                                        <div style={{ marginTop: '0px' }}>
+                                            <TextBoxComponent className="e-input" value='1' style={{ width: '100%', padding: '0px', paddingLeft: '5px' }} id="fileName" ref={d => this.textElement = d}></TextBoxComponent>
                                         </div>
                                     </td>
                                 </tr>
@@ -179,12 +180,13 @@ export class ExportMaps extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                         This sample illustrates the exporting feature in Maps. You can modify the map type to geometric or OSM using the Map type dropdown list in this sample. By clicking the Export button, you can export the map in PNG, JPEG, SVG or in PDF formats.
                 </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                     <p>
                     In this example, you can see how to render and configure the export functionality. The rendered map
                         can be exported as either JPEG, PNG, SVG and PDF formats. Also this sample visualizes the locations of
@@ -201,8 +203,8 @@ export class ExportMaps extends SampleBase<{}, {}> {
                    More information on export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/maps/print/#export">documentation section</a>.
                   </p>
 
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {
@@ -220,7 +222,7 @@ export class ExportMaps extends SampleBase<{}, {}> {
     };
     
     public onClick(e: Event): void {
-        let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
+        let fileName: string = this.textElement.value;
         this.mapInstance.export((this.mode.value as ExportType), fileName);
     }
 }

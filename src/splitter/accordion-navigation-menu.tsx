@@ -179,7 +179,7 @@ export class AccordionIntegration extends SampleBase<{}, {}> {
         break;
       case 1:
         this.splitterInstance.paneSettings[1].content =
-          "<div class = 'accordion-splitter-content'> <h4>About ASP.NET MVC</h4>The Model-View-Controller (MVC) architectural pattern separates an application into three main components: the model, the view, and the controller. The ASP.NET MVC framework provides an alternative to the ASP.NET Web Forms pattern for creating Web applications. The ASP.NET MVC framework is a lightweight, highly testable presentation framework that (as with Web Forms-based applications) is integrated with existing ASP.NET features, such as master pages.</div>";
+          "<div class = 'accordion-splitter-content'> <label class='h4'>About ASP.NET MVC</label>The Model-View-Controller (MVC) architectural pattern separates an application into three main components: the model, the view, and the controller. The ASP.NET MVC framework provides an alternative to the ASP.NET Web Forms pattern for creating Web applications. The ASP.NET MVC framework is a lightweight, highly testable presentation framework that (as with Web Forms-based applications) is integrated with existing ASP.NET features, such as master pages.</div>";
         break;
       case 2:
         this.splitterInstance.paneSettings[1].content =

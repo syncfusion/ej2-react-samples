@@ -24,7 +24,7 @@ const SplineRangeArea = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     
     return (
@@ -48,10 +48,10 @@ const SplineRangeArea = () => {
             <div id="description">
                 <p>
                     In this example, you can see how to render and configure the spline range area type chart.
-                    You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/border/">border</a> and <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/chart/seriesModel/#fill">fill</a> properties to customize the spline range area. Both <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/marker/">marker</a> and <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/chart/dataLabel/">dataLabel</a> are used to represent individual data and its value.
+                    You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/border/" aria-label="Navigate to the Border property reference for React Chart Series">border</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/seriesModel/#fill" aria-label="Navigate to the Fill property reference for React Chart Series">fill</a> properties to customize the spline range area. Both <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/marker/" aria-label="Navigate to the documentation for Data markers in React Chart component">marker</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/dataLabel/" aria-label="Navigate to the documentation for DataLabel in React Chart component">dataLabel</a> are used to represent individual data and its value.
                 </p>
                 <p>
-                The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/">tooltip</a> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the documentation for Tooltip in React Chart component">tooltip</a> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
                 <br></br>
                 <p><b>Injecting Module:</b></p>

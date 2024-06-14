@@ -68,7 +68,7 @@ const VolumeSettings = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div id='lineargauge-volume-settings' className='container' style={{ paddingTop: "12px" }}>
@@ -122,16 +122,17 @@ const VolumeSettings = () => {
                     </div>
                 </div>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of Linear Gauge sample">
                 <p>This sample demonstrates volume adjustments made for music/video and alarm clock applications.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                 <p>In this example, you can see how to render and configure a linear gauge to look like a sound tracker. This can be accomplished by combining axis, pointer and annotation.</p>
                 <p>
                     More information on the linear gauge can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/getting-started/">documentation section</a>.
                 </p>
-            </div>
-        </div >
+            </section>
+    </main>
     )
 }
 export default VolumeSettings;

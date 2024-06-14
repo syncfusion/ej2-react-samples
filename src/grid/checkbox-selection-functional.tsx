@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar, ToolbarItems, EditSettingsModel, Edit} from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar, ToolbarItems, EditSettingsModel, Edit, FilterSettingsModel, Filter} from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -10,13 +10,14 @@ function CheckboxSelection() {
     }, [])
     const selectionsettings: Object = { persistSelection: true };
     let gridInstance: GridComponent;
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
     const toolbarOptions: ToolbarItems[] = ['Delete'];
     const editSettings: EditSettingsModel = {allowDeleting: true};
 
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={selectionsettings} toolbar={toolbarOptions} editSettings={editSettings}>
+                <GridComponent dataSource={data} ref={grid => gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} allowFiltering={true} filterSettings={filterSettings} selectionSettings={selectionsettings} toolbar={toolbarOptions} editSettings={editSettings}>
                     <ColumnsDirective>
                         <ColumnDirective type='checkbox' width='50'></ColumnDirective>
                         <ColumnDirective field='OrderID' isPrimaryKey={true} headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
@@ -25,7 +26,7 @@ function CheckboxSelection() {
                         <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
                         <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Selection, Toolbar, Edit]} />
+                    <Inject services={[Page, Selection, Toolbar, Edit, Filter]} />
                 </GridComponent>
             </div>
             <div id="action-description">

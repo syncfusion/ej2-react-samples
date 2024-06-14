@@ -31,8 +31,8 @@ export class SplitTasks extends SampleBase<{}, {}> {
     leftLabel: 'TaskName',
     taskLabel: '${Progress}%'
   };
-  public projectStartDate: Date = new Date('01/30/2019');
-  public projectEndDate: Date = new Date('03/04/2019');
+  public projectStartDate: Date = new Date('01/30/2024');
+  public projectEndDate: Date = new Date('03/04/2024');
   render() {
     return (
       <div className='control-pane'>

@@ -101,11 +101,11 @@ const StockEvents = () => {
                 </StockChartComponent>
             </div>
             <div id="action-description">
-                <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart">React Stock Chart</a> example visualizes the AAPL stock price with spline chart. Crosshair show the information about the data and period.</p>
+                <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart" aria-label="React Stock Chart with Stock Events">React Stock Chart</a> example visualizes the AAPL stock price with spline chart. Crosshair show the information about the data and period.</p>
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure a stock chart with <a target="_blank" href="https://ej2.syncfusion.com/vue/documentation/api/stock-chart/stockEventsSettings/">StockEvents</a> to mark specific events such as market open and close, highest or lowest price reached, year/quarter start and end on a chart for a specific date.
+                    In this example, you can see how to render and configure a stock chart with <a target="_blank" href="https://ej2.syncfusion.com/vue/documentation/api/stock-chart/stockEventsSettings/" aria-label="Navigate to the class reference for React Stock Chart StockEvents">StockEvents</a> to mark specific events such as market open and close, highest or lowest price reached, year/quarter start and end on a chart for a specific date.
                 </p>
                 <p>
                     <code>Crosshair</code> is enabled in this example. To see the crosshair in action, hover the chart or tap on touch enabled devices.

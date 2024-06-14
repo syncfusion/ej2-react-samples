@@ -29,7 +29,7 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -65,42 +65,42 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
                                         <MarkerDirective visible={true}
                                             height={30}
                                             width={30}
-                                            template='<div id="marker1"><img style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clear.png" alt="Weather clear" /><p>{{:Name}}:{{:Temperature}}°C</p></div>'
+                                            template='<div><img alt="Marker weather clear image" style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clear.png" alt="Weather clear" /><p>{{:Name}}:{{:Temperature}}°C</p></div>'
                                             dataSource={[marker[0]]}
                                         >
                                         </MarkerDirective>
                                         <MarkerDirective visible={true}
                                             height={30}
                                             width={30}
-                                            template='<div id="marker1"><img style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clouds.png" alt="Weather cloud"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
+                                            template='<div><img alt="Marker weather cloud image" style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clouds.png" alt="Weather cloud"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
                                             dataSource={[marker[1]]}
                                         >
                                         </MarkerDirective>
                                         <MarkerDirective visible={true}
                                             height={30}
                                             width={30}
-                                            template='<div id="marker1"><img style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clear.png" alt="Weather clear"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
+                                            template='<div><img alt="Marker weather clear image" style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clear.png" alt="Weather clear"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
                                             dataSource={[marker[2]]}
                                         >
                                         </MarkerDirective>
                                         <MarkerDirective visible={true}
                                             height={30}
                                             width={30}
-                                            template='<div id="marker1"><img style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-rain.png" alt="Weather rain"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
+                                            template='<div><img alt="Marker weather rain image" style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-rain.png" alt="Weather rain"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
                                             dataSource={[marker[3]]}
                                         >
                                         </MarkerDirective>
                                         <MarkerDirective visible={true}
                                             height={30}
                                             width={30}
-                                            template='<div id="marker1"><img style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clear.png" alt="Weather clear"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
+                                            template='<div><img alt="Marker weather clear image" style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clear.png" alt="Weather clear"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
                                             dataSource={[marker[4]]}
                                         >
                                         </MarkerDirective>
                                         <MarkerDirective visible={true}
                                             height={30}
                                             width={30}
-                                            template='<div id="marker1"><img style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clouds.png" alt="Weather cloud"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
+                                            template='<div><img alt="Marker weather cloud image" style="height:30px;width:30px;display:block;  margin: auto;" src="src/maps/images/weather-clouds.png" alt="Weather cloud"/><p>{{:Name}}:{{:Temperature}}°C</p></div>'
                                             dataSource={[marker[5]]}
                                         >
                                         </MarkerDirective>
@@ -110,12 +110,13 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
                         </MapsComponent>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                 <p>
                   This sample indicates the temperature of various cities of Australia in marker templates.
                 </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                    <p>
                      In this example, you can see how to place a template as a marker in the map. Any custom HTML elements can be used as a marker. You can use the autoFill property in the shapeSettings to apply the default palette colors to the shapes.
                     </p>
@@ -124,8 +125,8 @@ export class MarkerTemplateMaps extends SampleBase<{}, {}> {
                             <p>
                                  Maps component features are segregated into individual feature-wise modules. To use a marker template, inject the Marker module using the Maps.Inject(Marker) method.
                             </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {

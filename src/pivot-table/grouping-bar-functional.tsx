@@ -120,6 +120,11 @@ function GroupingBarSample () {
                     to inject the
                     <code> GroupingBar</code> module into the
                     <code> services</code>.
+                </p><br />
+                <p>
+                    More information on the grouping bar can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/grouping-bar">
+                    documentation section</a>.
                 </p>
             </div>
         </div>

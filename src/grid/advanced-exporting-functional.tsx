@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Toolbar, ExcelExport, PdfExport, Page, ToolbarItems } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Toolbar, ExcelExport, PdfExport, Page, ToolbarItems, Filter, Edit, EditSettingsModel, FilterSettingsModel } from '@syncfusion/ej2-react-grids';
 import { productData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
@@ -13,7 +13,11 @@ function AdvancedExporting() {
   const month: string = ((new Date()).getMonth().toString()) + '/';
   const date: string = ((new Date()).getDate().toString()) + '/';
   const year: string = ((new Date()).getFullYear().toString());
-  const toolbarOptions: ToolbarItems[] = ['ExcelExport', 'PdfExport'];
+  const filterSettings: FilterSettingsModel = {type: 'Excel'};
+  const toolbarOptions: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'ExcelExport', 'PdfExport'];
+  const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  const productnameRule: Object = { required: true, minLength: 5};
+  const productidRules: Object = { required: true, number: true };
   let gridInstance: GridComponent;
   function toolbarClick(args: ClickEventArgs): void {
     switch (args.item.id) {
@@ -58,7 +62,7 @@ function AdvancedExporting() {
             index: 5,
             cells: [
               { index: 1, colSpan: 2, value: 'Tel +1 888.936.8638 Fax +1 919.573.0306' },
-              { index: 4, value: 'CUSOTMER ID', style: { fontColor: '#C67878', bold: true } },
+              { index: 4, value: 'CUSTOMER ID', style: { fontColor: '#C67878', bold: true } },
               { index: 5, value: 'TERMS', width: 150, style: { fontColor: '#C67878', bold: true } }
             ]
           },
@@ -188,15 +192,15 @@ function AdvancedExporting() {
       <div className='control-section'>
         <div>
           <GridComponent id="Grid" dataSource={productData} ref={grid => gridInstance = grid} toolbar={toolbarOptions}
-            allowExcelExport={true} allowPdfExport={true} toolbarClick={toolbarClick.bind(this)} allowSorting={true} allowPaging={true} pageSettings={{ pageCount: 2, pageSize: 10 }} >
+            allowExcelExport={true} allowPdfExport={true} toolbarClick={toolbarClick.bind(this)} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} allowPaging={true} pageSettings={{ pageCount: 2, pageSize: 10 }} >
             <ColumnsDirective>
-              <ColumnDirective field='ProductID' headerText='Product ID' width='120' textAlign='Right'></ColumnDirective>
-              <ColumnDirective field='ProductName' headerText='Product Name' width='200'></ColumnDirective>
+              <ColumnDirective field='ProductID' headerText='Product ID' width='120' textAlign='Right' validationRules={productidRules} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='ProductName' headerText='Product Name' width='200' validationRules={productnameRule}></ColumnDirective>
               <ColumnDirective field='QuantityPerUnit' headerText='Quantity Per Unit' width='180'></ColumnDirective>
-              <ColumnDirective field='UnitPrice' headerText='Units Price' width='150' textAlign='Right' format='C2'></ColumnDirective>
+              <ColumnDirective field='UnitPrice' headerText='Units Price' width='150' textAlign='Right' format='C2' editType='numericedit'></ColumnDirective>
               <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='Right'></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Toolbar, ExcelExport, PdfExport, Page, Sort]} />
+            <Inject services={[Toolbar, ExcelExport, PdfExport, Page, Sort, Filter, Edit]} />
           </GridComponent>
         </div>
         <div id="description">

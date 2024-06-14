@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar, ToolbarItems, EditSettingsModel, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, SelectionSettings, Toolbar, ToolbarItems, EditSettingsModel, Edit, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class CheckboxSelection extends SampleBase<{}, {}> {
 
     public selectionsettings: Object = { persistSelection: true };
+    public filterSettings: FilterSettingsModel = {type: 'Excel'};
     private gridInstance: GridComponent;
     public toolbarOptions: ToolbarItems[] = ['Delete'];
     public editSettings: EditSettingsModel = {allowDeleting: true};
@@ -15,7 +16,7 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={data} ref={grid => this.gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} selectionSettings={this.selectionsettings} toolbar={this.toolbarOptions} editSettings={this.editSettings}>
+                    <GridComponent dataSource={data} ref={grid => this.gridInstance = grid} enableHover={false} allowPaging={true} pageSettings={{ pageCount: 5 }} allowFiltering={true} filterSettings={this.filterSettings} selectionSettings={this.selectionsettings} toolbar={this.toolbarOptions} editSettings={this.editSettings}>
                         <ColumnsDirective>
                         <ColumnDirective type='checkbox' width='50'></ColumnDirective>
                         <ColumnDirective field='OrderID' isPrimaryKey={true} headerText='Order ID' width='120' textAlign="Right"></ColumnDirective>
@@ -24,7 +25,7 @@ export class CheckboxSelection extends SampleBase<{}, {}> {
                         <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' />
                         <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign="Right"></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Page, Selection, Toolbar, Edit]} />
+                        <Inject services={[Page, Selection, Toolbar, Edit, Filter]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">

@@ -68,7 +68,7 @@ export class Default extends SampleBase<{}, {}> {
 
                     <div className="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                            <ButtonComponent cssClass='e-small e-round' iconCss='e-btn-sb-icons e-add-icon' isPrimary></ButtonComponent>
+                            <ButtonComponent cssClass='e-small e-round' iconCss='e-btn-sb-icons e-add-icon' aria-label="button" isPrimary></ButtonComponent>
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-lg-6 col-md-6">

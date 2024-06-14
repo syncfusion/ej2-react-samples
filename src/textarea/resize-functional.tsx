@@ -12,6 +12,8 @@ const Resize = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
+    const rows = 5;
+    const cols = 300;
     const [resizeMode, setResizeMode] = useState<Resize>('Vertical');
     const textareaObj = useRef<TextAreaComponent>(null);
     let resizeModeData: { [key: string]: Object }[];
@@ -28,10 +30,10 @@ const Resize = () => {
     }
     return (
         <div className='control-pane'>
-            <div className="col-lg-8 control-section resize">
+            <div id="textarea-sample" className="col-lg-8 control-section resize">
                 <div className="content-wrapper">
                     <div className="resize-row">
-                        <TextAreaComponent id="resize" placeholder="Enter your comments" floatLabelType="Auto" resizeMode={resizeMode} ref={textareaObj}></TextAreaComponent>
+                        <TextAreaComponent id="resize" placeholder="Enter your comments" floatLabelType="Auto" resizeMode={resizeMode} ref={textareaObj}  rows={rows} cols={cols} ></TextAreaComponent>
                     </div>
                 </div>
             </div>

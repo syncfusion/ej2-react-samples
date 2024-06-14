@@ -14,8 +14,8 @@ import { SampleBase } from '../common/sample-base';
 import * as data from './treemap-data/import.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
+	.e-view.fluent2 #property .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #property .e-checkbox-wrapper .e-icons {
+        margin-left: 0px;
     }`;
 
 export class Selection extends SampleBase<{}, {}> {
@@ -69,7 +69,7 @@ export class Selection extends SampleBase<{}, {}> {
 	
 	render() {
 		return (
-			<div className='control-pane'>
+			<main><div className='control-pane'>
 				<style>
 					{SAMPLE_CSS}
 				</style>
@@ -113,7 +113,7 @@ export class Selection extends SampleBase<{}, {}> {
 					{/* Property Panel */}
 					<div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+							<table role='none' id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
 							  <tbody>
 								<tr style={{"height": "50px"}}>
 									<td>
@@ -172,13 +172,14 @@ export class Selection extends SampleBase<{}, {}> {
 						</PropertyPane>
 					</div>
 				</div>
-				<div id="action-description">
+		</div>
+				<section id="action-description" aria-label="Description of TreeMap sample">
 					<p>
 
 						This sample depicts the details of goods imported by Japan. Selection and highlight options have been enabled in this sample.
             </p>
-				</div>
-				<div id="description">
+				</section>
+				<section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
 					<p>
 						In this example, you can see the modes available for performing highlight and selection in TreeMap. It can be either enabled or disabled.
                     </p>
@@ -187,8 +188,8 @@ export class Selection extends SampleBase<{}, {}> {
 					<p>
 						TreeMap component features are segregated into individual feature-wise modules. To use highlight and selection, inject the <code>Selection</code> module using the <code>TreeMap.Inject(TreeMapSelection)</code>inject the <code>Highlight</code> module using the <code>TreeMap.Inject(TreeMapHighlight)</code> method.
                     </p>
-				</div>
-			</div>
+				</section>
+			</main>
 		)
 	}
 }

@@ -98,6 +98,7 @@ const LoadingAnimation = () => {
                                     <td style={{ width: "70%" }}>
                                         <div id="columnddl">
                                             <DropDownListComponent
+                                                width="110px"
                                                 dataSource={indicatortypes}
                                                 value="Shimmer"
                                                 change={indicatorChange.bind(this)}

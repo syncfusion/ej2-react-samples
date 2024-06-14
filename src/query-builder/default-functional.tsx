@@ -9,8 +9,8 @@ import './default.css';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { AnimationSettingsModel, DialogComponent, TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { getComponent } from '@syncfusion/ej2/base';
+import * as CodeMirror from 'codemirror';
 
-declare let CodeMirror: any;
 const Default = () => {
     useEffect(() => {
         updateSampleSection();
@@ -28,7 +28,7 @@ const Default = () => {
         let validRule: any = qbObj.current.getValidRules(qbObj.current.rule);
         content = JSON.stringify(validRule, null, 4);
         txtAreaElem.current.value = content;
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0] as any, {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here
@@ -42,7 +42,7 @@ const Default = () => {
         txtAreaElem.current.value = content;
         /* custom code start */
         document.querySelector('.e-query-preview .preview-content').childNodes[1].remove();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0] as any, {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here
@@ -203,7 +203,7 @@ const Default = () => {
                                 </div>
                             </div>
                             <div className="preview-content">
-                                <textarea className='e-json-content' ref={txtAreaElem}></textarea>
+                                <textarea className='e-json-content' title="JSON Content" ref={txtAreaElem}></textarea>
                             </div>
                         </div>
                     </div>

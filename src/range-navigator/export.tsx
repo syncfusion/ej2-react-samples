@@ -44,60 +44,73 @@ const SAMPLE_CSS = `
         }
         
         .e-print-icon::before {
-            content: "\\e34b";
+            content: '\e34b';
         }
-        
-        .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before
-        {
-            content: '\\e7df';
+     
+        .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before {
+            content: '\e7df';
         }
-        
+     
         .e-view.bootstrap .e-print-icon::before {
-            content: '\\ebd2';
+            content: '\ebd2';
         }
-        
-        .e-view.bootstrap4 .e-print-icon::before {
-            content: '\\e743';
+     
+       .e-view.bootstrap4 .e-print-icon::before {
+            content: '\e743';
         }
-        
+     
         .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
-            content: '\\e76c';
+            content: '\e76c';
         }
-        
-        .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
-            content: '\\e75d';
-        }
-
+     
         .e-view.highcontrast .e-print-icon::before {
-            content: '\\ebf9';
+            content: '\ebf9';
         }
-        
+     
         .e-view.bootstrap5 .e-print-icon::before, .e-view.bootstrap5-dark .e-print-icon::before {
-            content: '\\e75d';
+            content: '\e75d';
         }
-        
+     
+        .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+            content: '\e75d';
+        }
+        .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before, .e-view.fluent2-highcontrast .e-print-icon::before {
+            content: '\e75d';
+        }
+        .e-view.material3 .e-print-icon::before, .e-view.material3-dark .e-print-icon::before {
+            content: '\e75d';
+        }
         .e-export-icon::before {
-            content: '\\e728';
+            content: '\e728';
         }
-        
-        .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before  {
-            content: '\\e710';
+     
+        .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before {
+            content: '\e710';
         }
-        
+     
         .e-view.bootstrap4 .e-export-icon::before {
-            content: '\\e780';
+            content: '\e780';
         }
-        
+     
         .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
-            content: '\\e7bf';
+            content: '\e7bf';
         }
-        
+     
         .e-view.highcontrast .e-export-icon::before {
-            content: '\\e710';
+            content: '\e710';
         }
-        
+     
         .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
-            content: '\\e72e';
+            content: '\e72e';
+        }
+        .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {
+            content: '\e72e';
+        }
+        .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before, .e-view.fluent2-highcontrast .e-export-icon::before {
+            content: '\e72e';
+        }
+        .e-view.material3 .e-export-icon::before, .e-view.material3-dark .e-export-icon::before {
+            content: '\e72e';
         }
         `;
 export class RangeExport extends SampleBase<{}, {}> {
@@ -188,12 +201,12 @@ export class RangeExport extends SampleBase<{}, {}> {
                                     </td>
                                 </tr>
                                 <tr style={{ height: "50px" }}>
-                                    <td style={{ width: "40%" }}>
+                                    <td style={{ width: "40%" }} id="filename">
                                         File Name:
                                     </td>
                                     <td style={{ width: "60%" }}>
                                         <div className="e-float-input" style={{ 'width': '100px', 'marginTop': '0px' }}>
-                                            <input type="text" defaultValue="Chart" id="fileName" style={{ "marginLeft": "-10px" }} />
+                                            <input type="text" defaultValue="Chart" id="fileName" style={{ "marginLeft": "-10px" }} aria-labelledby="Chart"/>
                                         </div>
                                     </td>
                                 </tr>
@@ -206,7 +219,7 @@ export class RangeExport extends SampleBase<{}, {}> {
                                 </tr>
                                 <tr style={{ height: '50px' }}>
                                     <td>
-                                        <div id="btn-control" style={{ 'marginLeft': '20px' }}>
+                                        <div id="btn-control" style={{ 'marginLeft': '50%' }}>
                                             <ButtonComponent id="range-print" iconCss='e-icons e-print-icon' cssClass='e-flat' isPrimary={true}>Print</ButtonComponent>
                                         </div>
                                     </td>
@@ -229,7 +242,7 @@ export class RangeExport extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information on the export can be found in this
-                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype" aria-label="Navigate to the documentation for series in EJ2 TypeScript Chart component">documentation section</a>.
                     </p>
                 </div>
             </div >
@@ -250,7 +263,7 @@ export class RangeExport extends SampleBase<{}, {}> {
         args.chart.primaryXAxis.zoomPosition = zoomPosition;
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         let chartTheme: string = args.chart.theme;
         args.chart.series[0].fill = regionColor[themes.indexOf(chartTheme)];
         args.chart.series[0].border.color = borderColor[themes.indexOf(chartTheme)];
@@ -261,7 +274,7 @@ export class RangeExport extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     
     public exportClick(e: Event): void {

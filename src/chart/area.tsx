@@ -103,22 +103,22 @@
                  <p>
                  This React Area Chart example visualizes music sales data by format in US by using a default area series in the chart.
              </p>
-                 </div>
-                 <div id="description">
-                     <p>
-                     In this example, you can see how the area type chart can be rendered and configured. It is like the line chart, which represents time-dependent data and shows trends at equal intervals, but the area is closed and filled with the color of the series.
+                </div>
+                <div id="description">
+                    <p>
+                        In this example, you can see how the area type chart can be rendered and configured. It is like the line chart, which represents time-dependent data and shows trends at equal intervals, but the area is closed and filled with the color of the series.
                     </p>
-                     <br></br>
-                     <p><b>Injecting Module</b></p>
-                     <p>
-                         Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject
+                    <br></br>
+                    <p><b>Injecting Module</b></p>
+                    <p>
+                        Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject
                         <code>AreaSeries</code> module into <code>services</code>.
-                   </p>
-                     <p>
-                         More information on the area series can be found in this &nbsp;
-                       <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/area">documentation section</a>.
-                   </p>
-                 </div>
+                    </p>
+                    <p>
+                        More information on the area series can be found in this &nbsp;
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/area" aria-label="Navigate to the documentation for Area Chart in React Chart component">documentation section</a>.
+                    </p>
+                </div>
              </div>
          )
      }
@@ -131,7 +131,7 @@
          let selectedTheme: string = location.hash.split('/')[1];
          selectedTheme = selectedTheme ? selectedTheme : 'Material';
          args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-             replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+             replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
      };
          
  }

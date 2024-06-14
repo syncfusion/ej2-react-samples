@@ -23,7 +23,7 @@ export class Thermometer extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -52,17 +52,18 @@ export class Thermometer extends SampleBase<{}, {}> {
                         </AnnotationsDirective>
                     </LinearGaugeComponent>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample shows a thermometer that displays temperature in both degrees and fahrenheit.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure a linear gauge to look like a thermometer. More information about containers can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/appearance/#customizing-the-linear-gauge-container">documentation section</a>.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         )
     }
 }

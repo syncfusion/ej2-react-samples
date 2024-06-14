@@ -10,7 +10,7 @@ export class FormatPainterRTE extends SampleBase<{}, {}> {
     private  toolbarSettings: ToolbarSettingsModel = {
         items: ['FormatPainter', 'Bold', 'Italic', 'Underline', 'StrikeThrough',
             'SuperScript', 'SubScript', '|', 'FontName', 'FontSize', 'FontColor', 'BackgroundColor', 'LowerCase', 'UpperCase', '|',
-            'Formats', 'Alignments', 'OrderedList', 'UnorderedList', '|',
+            'Formats', 'Alignments', 'Blockquote', 'OrderedList', 'UnorderedList', '|',
             'Outdent', 'Indent', '|', 'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'SourceCode', 'Undo', 'Redo']
     };
     private setAllowedFormats (e: FocusOutEventArgs): void  {
@@ -117,11 +117,9 @@ export class FormatPainterRTE extends SampleBase<{}, {}> {
             <p>The following settings are available to customize the format painter in the <code>formatPainterSettings</code> property.</p>
             <ul>
                 <li><p>Fill the <code>Allowed Formats</code> input with selectors only whose format styles will be allowed. For example: </p></li>
-                    <ul>
                         <li>
                             <code>span; strong; em; </code> as the input allows only the span, strong, and em format styles to be copied.
                         </li>
-                    </ul>
                     <li><p>Fill the <code>Denied Formats</code> input with selectors only whose format styles will be explicitly prohibited. For example:</p>
                     <ul>
                         <li>

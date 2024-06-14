@@ -52,9 +52,9 @@ export class RangeStepArea extends SampleBase<{}, {}> {
                     <p>This React range step area chart example illustrates the minimum and maximum temperatures for different days using the default range step area series.</p>
                  </div>
                  <div id="description">
-                    <p> In this example, you can see how to render and configure a range step area type chart. You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/border/">border</a> and <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/chart/seriesModel/#fill">fill</a> properties to customize the range step area. Both <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/marker/">markers</a> and <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/chart/dataLabel/">dataLabels</a> are used to represent data points and their values.</p>
+                    <p> In this example, you can see how to render and configure a range step area type chart. You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/border/" aria-label="Navigate to the Border property reference for React Chart Series">border</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/seriesModel/#fill" aria-label="Navigate to the Fill property reference for React Chart Series">fill</a> properties to customize the range step area. Both <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/marker/" aria-label="Navigate to the documentation for Data markers in React Chart component">markers</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/dataLabel/" aria-label="Navigate to the documentation for DataLabel in React Chart component">dataLabels</a> are used to represent data points and their values.</p>
                     <p>
-                        The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+                        The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the documentation for Tooltip in React Chart component">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                     </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
@@ -62,7 +62,7 @@ export class RangeStepArea extends SampleBase<{}, {}> {
                         The Charts component’s features are segregated into individual feature modules by feature. To use range step area series, we need to inject the <code>RangeStepAreaSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information about the area type series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                        More information about the area type series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/range-step-area" aria-label="Navigate to the documentation for Range Step Area in React Charts component">documentation section</a>.
                     </p>
                  </div>
              </div>
@@ -76,7 +76,7 @@ export class RangeStepArea extends SampleBase<{}, {}> {
      public load(args: ILoadedEventArgs): void {
          let selectedTheme: string = location.hash.split('/')[1];
          selectedTheme = selectedTheme ? selectedTheme : 'Material';
-         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
          switch (selectedTheme) {
             case 'bootstrap5':
                 {

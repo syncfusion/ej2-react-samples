@@ -64,7 +64,7 @@ const IndexedAxis = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -84,11 +84,11 @@ const IndexedAxis = () => {
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                         <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Indexed:</div>
+                                    <div id="indexed">Indexed:</div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <input type="checkbox" id="isIndexed" defaultChecked={true} onChange={onChange.bind(this)} style={{ marginLeft: '-5px' }} ref={dropElement} />
+                                        <input type="checkbox" id="isIndexed" defaultChecked={true} onChange={onChange.bind(this)} style={{ marginLeft: '-5px' }} ref={dropElement} aria-labelledby="Checkbox checked"/>
                                     </div>
                                 </td>
                             </tr></tbody>
@@ -106,7 +106,7 @@ const IndexedAxis = () => {
                     The category axis is also rendered on the basis of the index values in the data source. To render the indexed category axis, set <code>ValueType</code> to Category and <code>IsIndexed</code> property to <b>true</b>.
                 </p>
                 <p>
-                    More information on the indexed axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/category-axis/#indexed-category-axis">documentation section</a>.
+                    More information on the indexed axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/category-axis/#indexed-category-axis" aria-label="Navigate to the documentation for Indexed category Axis in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

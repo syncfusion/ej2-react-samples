@@ -82,7 +82,7 @@
   .custom-timeline .content-container .repo-name {
     font-family: Tahoma, Verdana !important;
     font-size: 11px;
-    color: #6ea4e6;
+    color: #2f77cf;
   }
   
   .custom-timeline .template-container .mention-group {
@@ -182,4 +182,15 @@
     .custom-timeline .template-container .mention-group {
       padding: 5px;
     }
+  }
+
+  /* Generic dark theme modifications */
+  body[class$="-dark"] .custom-timeline .template-container .indicator,
+  .highcontrast .custom-timeline .template-container .indicator {
+    color: #000;
+  }
+
+  body[class$="-dark"] .custom-timeline .template-container .mention-group:hover,
+  .highcontrast .custom-timeline .template-container .mention-group:hover {
+    background-color: #545353;
   }

@@ -76,7 +76,7 @@ function ImageSample() {
                             <p>Rich Text Editor allows inserting images from online sources as well as the local computers where you want to insert the image in your content.</p>
                             <p><b>Get started Quick Toolbar to click on the image</b></p>
                             <p>It is possible to add custom style on the selected image inside the Rich Text Editor through the quick toolbar.</p>
-                            <img id='rteImageID' style={{ width: '300px', height: '300px', transform: 'rotate(0deg)' }} alt="Logo" src="./src/rich-text-editor/images/RTEImage-Feather.png" />
+                            <img id='rteImageID' style={{ width: '300px', height: '300px', transform: 'rotate(0deg)' }} alt="Logo" src="https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Portrait.png" />
                             <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                         </RichTextEditorComponent>
                     </div>

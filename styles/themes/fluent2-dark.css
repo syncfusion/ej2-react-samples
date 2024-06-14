@@ -1,0 +1,280 @@
+.fluent2-dark .sb-content,
+.fluent2-dark textarea#ruleContent{
+    background: #1f1f1f;
+}
+.fluent2-dark .sb-home-link,
+.fluent2-dark .sb-bread-crumb .sb-bread-crumb-text>div {
+    color:#ADADAD;
+}
+.fluent2-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-text-content .e-list-text,
+.fluent2-dark .sb-left-pane .e-treeview .e-list-item.e-hover>.e-text-content .e-list-text {
+    color: #fff;
+}
+.fluent2-dark .sb-content-tab .e-content.sb-sample-content-area {
+	background: transparent;
+}
+.fluent2-dark .sb-content-tab .e-tab-header.e-horizontal-bottom {
+    border-radius: 0 0 12px 12px;
+}
+.fluent2-dark .sb-content-tab .e-tab-header.sb-content-tab-header {
+    border-radius: 12px 12px 0 0;
+}
+.fluent2-dark #sb-content {
+    border-radius:12px;
+}
+body.fluent2-dark,
+.fluent2-dark #sb-header-text,
+.fluent2-dark .sb-switch-popup a {
+    color: #fff;
+}
+.fluent2-dark .sb-content-tab > .e-tab > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item:hover > .e-tab-wrap > .e-text-wrap > .e-tab-text,
+.fluent2-dark .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text,
+.fluent2-dark .sb-source-section .e-tab .e-tab-header .e-toolbar-item:hover .e-tab-text,
+.fluent2-dark .control-name,
+.fluent2-dark .sb-switch-popup li:first-child {
+    color: #479EF5;
+}
+.fluent2-dark .sb-header,
+.fluent2-dark .sb-search-result .e-list-group-item {
+    background: #292929;
+}
+.fluent2-dark .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-indicator,
+.fluent2-dark .sb-source-code-section .e-toolbar-items .e-indicator {
+   background: #479EF5;
+}
+.fluent2-dark #left-sidebar {
+    background:  #525252;
+}
+.fluent2-dark .sb-icon-Dropdown,
+.fluent2-dark .sb-icon-Search,
+.fluent2-dark .sb-icon-Settings-Preferences,
+.fluent2-dark .sb-icon-Back {
+    color: #D6D6D6;
+}
+
+.fluent2-dark #left-sidebar {
+    border: none;
+}
+.fluent2-dark .sb-mobile-right-pane {
+    background:  #1f1f1f;
+}
+.fluent2-dark .hljs-string,
+.fluent2-dark .hljs-title,
+.fluent2-dark .hljs-section,
+.fluent2-dark .hljs-attribute,
+.fluent2-dark .hljs-literal,
+.fluent2-dark .hljs-template-tag,
+.fluent2-dark .hljs-template-variable,
+.fluent2-dark .hljs-type,
+.fluent2-dark .hljs-addition,
+.fluent2-dark .e-icons.back-icon,
+.fluent2-dark .sb-plnr-section,
+.fluent2-dark .sb-bread-crumb,
+.fluent2-dark .sb-component-name .sb-sample-text,
+.fluent2-dark .description-header,
+.fluent2-dark .sb-setting-translate,
+.fluent2-dark .sample-navigation>button:hover,
+.fluent2-dark .sb-left-pane .e-listview .e-list-group-item {
+    color: #FFF;
+}
+.fluent2-dark .sb-theme-popup {
+    border: unset;
+}
+.fluent2-dark .sb-icon-Hamburger,
+.fluent2-dark .sb-footer-links a,
+.fluent2-dark .description-section a {
+    color:#479EF5;
+}
+.fluent2-dark .sb-icon-Hamburger:active{
+color:white;
+}
+.fluent2-dark .sb-content-section,
+.fluent2-dark .sb-switch-popup .fluent2-dark .sb-content-tab-header,
+.fluent2-dark .sb-content-section .sb-content-tab-header {
+    background:  #1f1f1f;
+    border-color: #525252;
+}
+.fluent2-dark .sb-toolbar-splitter,
+.fluent2-dark .sb-theme-splitter,
+.fluent2-dark .sb-download-splitter,
+.fluent2-dark #fn-btn {
+    border-left: 1px solid #525252;
+}
+.fluent2-dark .sb-footer {
+    border-top: 1px solid #525252;
+}
+.fluent2-dark .sample-navigation>button:hover,
+.fluent2-dark .sb-plnr-section,
+.fluent2-dark .sb-icon-Popout:hover{
+   color: #479EF5;
+}
+.fluent2-dark .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item > .e-tab-wrap > .e-text-wrap > .e-tab-text,
+.fluent2-dark .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item > .e-tab-wrap > .e-text-wrap > .e-tab-text {
+   color: #ffffff;
+}
+.fluent2-dark code,
+.fluent2-dark .sb-switch-popup,
+.fluent2-dark .sb-setting-popup,
+.fluent2-dark .sb-search-result,
+.fluent2-dark .sb-src-code,
+.fluent2-dark .sb-api-section,
+.fluent2-dark .sb-theme-popup,
+.fluent2-dark .copy-tooltip,
+.fluent2-dark .e-icons.copycode,
+.fluent2-dark #search-input-wrapper input,
+.fluent2-dark #search-input-wrapper input::placeholder {
+    color: #ffffff;
+    background:  #1f1f1f;
+}
+.fluent2-dark .sb-search-btn:hover,
+.fluent2-dark .sb-search-btn.active,
+.fluent2-dark .sb-setting-btn:hover,
+.fluent2-dark .sb-setting-btn.active,
+.fluent2-dark .sb-switch-popup li:hover,
+.fluent2-dark .theme-wrapper:hover,
+.fluent2-dark .theme-wrapper.active,
+.fluent2-dark .sb-theme-popup li:hover,
+.fluent2-dark .sb-search-result .e-list-item:hover,
+.fluent2-dark .sb-left-pane .e-listview .e-list-item:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+.fluent2-dark .setting-responsive .sb-responsive-items {
+    width: 104px;
+    background-color: #363636;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid transparent;
+    display: table-cell;
+    cursor: pointer;
+}
+.fluent2-dark .setting-responsive .sb-responsive-items.active {
+    background-color: #479EF5;
+    color: black;
+}
+.fluent2-dark .sb-left-pane .e-listview .e-list-item.e-active,
+.fluent2-dark .cont {
+    background-color:#2e2e2e;
+    color: #fff;
+}
+.fluent2-dark .sb-left-pane .e-listview .e-list-item.e-hover {
+    background-color: #333;
+}
+.fluent2-dark .sb-left-pane {
+    background:  #1F1F1F;
+}
+.fluent2-dark .sb-body-overlay{
+    background: #1F1F1F;
+}
+
+.fluent2-dark .sb-mobile-left-pane{
+    background: #1F1F1F;
+}
+.fluent2-dark .sb-mobilefooter>.e-btn.e-flat {
+    background:  #292929;
+    color: #fff;
+}
+.fluent2-dark .sb-mobilefooter>.e-btn.e-flat:hover {
+    color: #ADADAD;
+}
+.fluent2-dark .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
+    background-color: #333;
+}
+.fluent2-dark .sb-header-text-left,.fluent2-dark .sb-header-text-right,.fluent2-dark .sb-reset-icon {
+    color:#ffffff;
+}
+.fluent2-dark.e-bigger .e-badge.sb-badge.e-samplestatus.New, .fluent2-dark.e-bigger .e-badge.sb-badge.e-samplestatus.new,
+.fluent2-dark.e-bigger .e-badge.sb-badge.e-samplestatus.Update, .fluent2-dark.e-bigger .e-badge.sb-badge.e-samplestatus.update,
+.fluent2-dark.e-bigger .e-badge.sb-badge.e-samplestatus.Preview, .fluent2-dark.e-bigger .e-badge.sb-badge.e-samplestatus.preview {
+    font-size: 10px;
+    border-radius: 2px;
+    height: 24px;
+    margin: 9px 11px 0px 0px;
+}
+
+.fluent2-dark .sb-badge {
+    border-radius: 2px;
+    font-size: 10px;
+    color: #ffffff;
+    padding: 2px 6px;
+    float: right;
+    align-items: center;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.fluent2-dark .e-samplestatus.new.tree, .fluent2-dark .e-samplestatus.update.tree,.fluent2-dark .e-samplestatus.preview.tree,
+.fluent2-dark .e-samplestatus.New.tree, .fluent2-dark .e-samplestatus.Update.tree,.fluent2-dark .e-samplestatus.Preview.tree {
+    margin: 4px 0px 0px 0px;
+    height: 22px;
+}
+
+.fluent2-dark .e-samplestatus.new,.fluent2-dark .e-samplestatus.update,.fluent2-dark .e-samplestatus.preview,
+.fluent2-dark .e-samplestatus.New,.fluent2-dark .e-samplestatus.Update,.fluent2-dark .e-samplestatus.Preview {
+    margin: 5px 5px 0px 0px;
+    height: 22px;
+}
+
+.fluent2-dark .sb-reset-icon:before {
+    content: '\e7e7';
+}
+.fluent2-dark .sb-left-pane .e-treeview .e-list-item.e-active > .e-fullrow {
+    background-color: #2e2e2e;
+    border-color: #2e2e2e;
+}
+.fluent2-dark .sb-theme-popup li:hover .sb-theme-select {
+    color: transparent;
+}
+.fluent2-dark .sb-search-result .e-list-group-item {
+    background-color: #1f1f1f !important;
+}
+.fluent2-dark .sb-search-result .e-list-group-item {
+    color: #479EF5;
+}
+.fluent2-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background: #479EF5;
+}
+.fluent2-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text, .fluent2-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item:hover>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.fluent2-dark .sb-theme-popup li.active .sb-theme-select {
+    color: #479EF5 !important;
+}
+.fluent2-dark .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.fluent2-dark .sample-navigation,
+.fluent2-dark .sb-icon-Popout,
+.fluent2-dark .sb-mobile-setting::before {
+    color: #D6D6D6;
+}
+.fluent2-dark .sb-themeswitch-btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+.fluent2-dark .copycode::before {
+    content: '\e77c';
+}
+.fluent2-dark.e-bigger .sb-content-toolbar {
+    padding: unset;
+}
+.fluent2-dark .sb-setting-popup .sb-setting-header,
+.fluent2-dark .property-panel-header {
+    border-bottom: 1px solid #525252;
+}
+@media (min-width: 1200px) {
+    .fluent2-dark .sb-property-border {
+        border: 0.5px solid #525252;
+    }
+}
+
+.fluent2-dark .sb-nextjs-icon {
+    fill: #ffffff;
+}
+
+.fluent2-dark .sb-nextjs-icon .sb-nextjs-pathb,
+.fluent2-dark .sb-nextjs-icon .sb-nextjs-pathc {
+    fill: #333333;
+}
+
+.fluent2-dark #sb-nextjs-btn.e-btn.e-link {
+    color: #479EF5;
+} 
+
+.fluent2-dark #sb-nextjs-btn.e-link:hover {
+    color: #0f6cbd;
+}

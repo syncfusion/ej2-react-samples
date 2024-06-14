@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Page, Aggregate, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective} from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Page, Aggregate, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit} from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { SampleBase } from '../common/sample-base';
 
@@ -12,16 +12,23 @@ export class AggregateDefault extends SampleBase<{}, {}> {
     return(<span>Average: {props.Average}</span>)
   }
   public pageSettings: Object = { pageCount: 5};
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
+  public toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  public editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  public customeridRule: Object = { required: true, minLength: 5};
+  public orderidRules: Object = { required: true, number: true };
+  public freightRules: Object = { required: true, min: 0 };
   render() {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={data} allowPaging={true} pageSettings={this.pageSettings} allowSorting={true}>
+          <GridComponent dataSource={data} allowPaging={true} pageSettings={this.pageSettings} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar}>
             <ColumnsDirective>             
-              <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' ></ColumnDirective>
-              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'></ColumnDirective>
-              <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170'></ColumnDirective>
-              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
+              <ColumnDirective field='OrderID' headerText='Order ID' width='150' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+              <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={this.customeridRule}></ColumnDirective>
+              <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit' ></ColumnDirective>
+              <ColumnDirective field='OrderDate' headerText='Order Date' format='yMd' width='170' editType='datepickeredit'></ColumnDirective>
+              <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit'></ColumnDirective>
             </ColumnsDirective>
             <AggregatesDirective>
                 <AggregateDirective>
@@ -35,7 +42,7 @@ export class AggregateDefault extends SampleBase<{}, {}> {
                   </AggregateColumnsDirective>
                 </AggregateDirective>
             </AggregatesDirective>
-            <Inject services={[Page,Aggregate, Sort]} />
+            <Inject services={[Page,Aggregate, Sort, Toolbar, Edit, Filter]} />
           </GridComponent>     
 
         <div id="action-description">

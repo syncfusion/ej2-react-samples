@@ -29,7 +29,7 @@ const SelectionLimit = () => {
         <div id="multichecbox" className='control-pane'>
             <div className='control-section col-lg-8'>
                 <div id="multigroup" className="control-styles">
-                    <h4>Selection Limit</h4>
+                <label className="h4">Selection Limit</label>
                     <MultiSelectComponent id="checkbox" dataSource={countries}
                         fields={checkFields} placeholder="Select countries" mode="CheckBox" value={value}
                         showDropDownIcon={true} maximumSelectionLength={maximumSelectionLength} filterBarPlaceholder="Search countries" popupHeight="350px">
@@ -46,7 +46,7 @@ const SelectionLimit = () => {
                             </td>
                             <td>
                                 <div>
-                                    <NumericTextBoxComponent id='length' format="n0" max={countries.length} value={maximumSelectionLength} min={1} />
+                                    <NumericTextBoxComponent id='length' aria-label="number"  format="n0" max={countries.length} value={maximumSelectionLength} min={1} />
                                 </div>
                             </td>
                         </tr>

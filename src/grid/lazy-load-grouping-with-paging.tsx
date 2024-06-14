@@ -12,7 +12,7 @@ export class LazyLoadGrouping extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent dataSource={this.lazyLoadData} allowSorting={true} allowPaging={true} allowGrouping={true} groupSettings={this.groupOptions}>
+                    <GridComponent dataSource={this.lazyLoadData} allowSorting={true} allowPaging={true} height={400} allowGrouping={true} groupSettings={this.groupOptions}>
                         <ColumnsDirective>
                             <ColumnDirective field='OrderID' headerText='Order ID' textAlign="Right" width='120' ></ColumnDirective>
                             <ColumnDirective field='ProductName' headerText='Product Name' width='160' ></ColumnDirective>

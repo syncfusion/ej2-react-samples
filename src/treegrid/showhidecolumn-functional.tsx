@@ -8,6 +8,15 @@ import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
+// custom code start
+const SAMPLE_CSS = `
+.fluent2 .btn,
+.fluent2-dark .btn,
+.fluent2-highcontrast .btn{
+  outline: none !important;
+}`;
+// custom code end
+
 const ShowHideColumn = () => {
   useEffect(() => {
     updateSampleSection();
@@ -73,6 +82,7 @@ const ShowHideColumn = () => {
   return (
     <div className="control-pane">
       <div className="control-section">
+      <style>{SAMPLE_CSS}</style>
         <div className="col-md-9">
           <TreeGridComponent
             dataSource={sampleData}

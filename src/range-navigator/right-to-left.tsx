@@ -285,7 +285,7 @@ export class RTL extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         let chartTheme: string= args.chart.theme;
         args.chart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
         args.chart.series[0].border.color = borderColor[themes.indexOf(chartTheme.toLowerCase())];
@@ -297,7 +297,7 @@ export class RTL extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+                 replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         let rangeTheme: string= args.rangeNavigator.theme;
         args.rangeNavigator.series[0].type = "Area";
         args.rangeNavigator.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';

@@ -68,7 +68,7 @@ export class Api extends SampleBase<{}, ApiSample> {
                     </td>
                     <td style={{ width: '50%', paddingRight: '0px' }}>
                       <div style={{ maxWidth: '200px' }}>
-                        <input id="hex-input" ref="hexInput" type="text" className="e-input" maxLength={9} onInput={this.changeValue.bind(this)} />
+                        <input id="hex-input" aria-label="Value" ref="hexInput" type="text" className="e-input" maxLength={9} onInput={this.changeValue.bind(this)} />
                       </div>
                     </td>
                   </tr>
@@ -87,7 +87,7 @@ export class Api extends SampleBase<{}, ApiSample> {
                       <div>Disable</div>
                     </td>
                     <td style={{ width: '50%', paddingRight: '0px', paddingTop: '13px' }}>
-                      <CheckBoxComponent id="disabled" checked={false} change={this.onDisableChange.bind(this)} />
+                      <CheckBoxComponent id="disabled" aria-label="Disable" checked={false} change={this.onDisableChange.bind(this)} />
                     </td>
                   </tr>
                   <tr>
@@ -95,7 +95,7 @@ export class Api extends SampleBase<{}, ApiSample> {
                       <div>Show Buttons</div>
                     </td>
                     <td style={{ width: '50%', paddingRight: '0px', paddingTop: '15px' }}>
-                      <CheckBoxComponent id="button" checked={true} change={this.onButtonChange.bind(this)} />
+                      <CheckBoxComponent id="button"  aria-label="Show Buttons" checked={true} change={this.onButtonChange.bind(this)} />
                     </td>
                   </tr>
                   <tr>
@@ -103,7 +103,7 @@ export class Api extends SampleBase<{}, ApiSample> {
                       <div>Mode Switcher</div>
                     </td>
                     <td style={{ width: '50%', paddingRight: '0px', paddingTop: '15px', paddingBottom: '10px' }}>
-                      <CheckBoxComponent id="mode-switch" checked={true} change={this.onModeChange.bind(this)} />
+                      <CheckBoxComponent id="mode-switch" aria-label="Mode Switcher" checked={true} change={this.onModeChange.bind(this)} />
                     </td>
                   </tr>
                 </tbody>

@@ -84,7 +84,7 @@ export class Drilldown extends SampleBase<{}, {}> {
                     <p> Accumulation chart component features are segregated into individual feature-wise modules. To use datalabel, we need to inject DataLabel module <code>AccumulationDataLabel</code> into services </p>
                     <p>
                         More information on the pie series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#pie-chart">documentation section</a>.
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#pie-chart" aria-label="Navigate to the documentation for Pie Chart in React Accumulation Chart component">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -121,7 +121,7 @@ export class Drilldown extends SampleBase<{}, {}> {
             }
             this.pie.annotations = [{
                 content: '<div id="back" style="cursor:pointer; padding: 3px; width: 30px; height: 30px;">' +
-                '<img src="./src/chart/images/back.png" id="imgback" />', region: 'Series', x: '50%', y: '50%'
+                '<img src="./src/chart/images/back.png" id="imgback" alt="Back Icon"/>', region: 'Series', x: '50%', y: '50%'
             }];
             this.pie.series[0].innerRadius = '30%';
             this.pie.series[0].explode = false;
@@ -168,11 +168,11 @@ export class Drilldown extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as AccumulationTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
         if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1){
             args.accumulation.series[0].dataLabel.font.color="white";
             if (args.accumulation.annotations[0]) {
-                args.accumulation.annotations[0].content = '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" /><div>';
+                args.accumulation.annotations[0].content = '<div id= "white" style="cursor:pointer;padding:3px;width:30px; height:30px;"><img src="./src/chart/images/white.png" id="back" alt="White Icon"/><div>';
             }
          }
     };

@@ -42,7 +42,7 @@ const DatetimeCategoryAxis = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -74,7 +74,7 @@ const DatetimeCategoryAxis = () => {
                     Chart component features are segregated into individual feature-wise modules. For datetime category axis, you should inject <code>DateTimeCategory</code> module by using <code>Chart.Inject(DateTimeCategory)</code>method.
                 </p>
                 <p>
-                    More information on the date time category can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/date-time-axis/#datetimecategory-axis">documentation section</a>.
+                    More information on the date time category can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/date-time-axis/#datetimecategory-axis" aria-label="Navigate to the documentation for Date Time Category Axis in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div >

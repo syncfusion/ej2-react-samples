@@ -27,13 +27,13 @@ export class LocalData extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div className='col-lg-6 nested-data'>
             <div className='content'>
-              <h4>Hierarchical Data</h4>
+              <p className="displayText">Hierarchical Data</p>
               <TreeViewComponent id='tree' fields={this.fields} />
             </div>
           </div>
           <div className='col-lg-6 list-data'>
             <div className='content'>
-              <h4>List Data</h4>
+              <p className="displayText">List Data</p>
               <TreeViewComponent id='listtree' fields={this.listfields} />
             </div>
           </div>

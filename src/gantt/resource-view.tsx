@@ -38,8 +38,8 @@ export class ResourceView extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 3
   };
-  public projectStartDate: Date = new Date('03/28/2019');
-  public projectEndDate: Date = new Date('05/18/2019');
+  public projectStartDate: Date = new Date('03/28/2024');
+  public projectEndDate: Date = new Date('05/18/2024');
   public labelSettings: any = {
     rightLabel: 'resources',
     taskLabel: 'Progress'

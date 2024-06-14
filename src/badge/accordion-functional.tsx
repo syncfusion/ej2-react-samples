@@ -16,14 +16,16 @@ const Accordion = () => {
     const accordionTemplate = () => {
         return (
             <div>
-                <li className='msg'>
-                    <span className='e-acrdn-icons e-content-icon people'></span>
-                    Message Thread
-                </li>
-                <li className='msg'>
-                    <span className='e-acrdn-icons e-content-icon people'></span>
-                    Message Thread
-                </li>
+                <ul>
+                    <li className='msg'>
+                        <span className='e-acrdn-icons e-content-icon people'></span>
+                        Message Thread
+                    </li>
+                    <li className='msg'>
+                        <span className='e-acrdn-icons e-content-icon people'></span>
+                        Message Thread
+                    </li>
+                </ul>
             </div>
         );
     }

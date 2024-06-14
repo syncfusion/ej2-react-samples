@@ -91,7 +91,7 @@ const RuleTemplate = () => {
                     />
                 </div>
                 <div className="e-rule-value-delete">
-                    <button className="e-removerule e-custom-delete e-rule-delete e-css e-btn e-small e-round">
+                    <button className="e-removerule e-custom-delete e-rule-delete e-css e-btn e-small e-round" title="Delete Rule">
                         <span className="e-btn-icon e-icons e-delete-icon" />
                     </button>
                 </div>

@@ -93,7 +93,7 @@ export class MultipleExport extends SampleBase<{}, {}> {
                                     <div>Export Grids in same sheet</div>
                                 </td>
                                 <td style={{ width: '30%', padding: '10px 10px 10px 0px' }}>
-                                    <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} checked={true}></CheckBoxComponent>
+                                    <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} checked={true} aria-label="Export Grids in same sheet"></CheckBoxComponent>
                                 </td>
                             </tr>
                             </tbody>

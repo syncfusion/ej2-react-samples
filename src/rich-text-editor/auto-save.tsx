@@ -13,7 +13,7 @@ export class AutoSave extends SampleBase<{}, {}> {
     private rteObj: RichTextEditorComponent;
     private switchObj: SwitchComponent;
     // Rich Text Editor items list
-    private items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments',
+    private items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote',
         'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode', 'Undo', 'Redo'];
     //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
@@ -87,7 +87,7 @@ export class AutoSave extends SampleBase<{}, {}> {
                 <div className='col-lg-4 property-section' id="rteAPIProperty">
                     <PropertyPane title='Properties'>
                         <label htmlFor="checked" style={{ padding: "10px 72px 10px 0" }}> Auto Save </label>
-                        <SwitchComponent id="checked" ref={(scope) => { this.switchObj = scope }} change={this.onChange.bind(this)} checked={true}></SwitchComponent>
+                        <SwitchComponent id="checked" ref={(scope) => { this.switchObj = scope }} change={this.onChange.bind(this)} checked={true} ></SwitchComponent>
                     </PropertyPane>
 
                 </div>

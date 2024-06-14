@@ -69,15 +69,15 @@ export class Default extends SampleBase<{}, {}> {
             <li>MinRange – allows us to select a single value, but highlights with a range selection from the min value to the current
                 handle value</li>
             <li>Range – allows us to select a range of values with two handles, where the handles was connected with a range selection</li>
-            <p>
-              In this demo we can see the Default, MinRange and Range slider types.
-            </p>
-            <p>
-              More information on the Slider instantiation can be found in this
-                <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/range-slider/getting-started.html">
-                documentation section</a>
-            </p>
           </ul>
+          <p>
+            In this demo we can see the Default, MinRange and Range slider types.
+          </p>
+          <p>
+            More information on the Slider instantiation can be found in this
+              <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/range-slider/getting-started.html">
+              documentation section</a>
+          </p>
         </div>
       </div>
     )

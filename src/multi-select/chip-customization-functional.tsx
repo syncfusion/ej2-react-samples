@@ -35,7 +35,7 @@ const ChipCustomization = () => {
         <div className='col-lg-12 control-pane'>
             <div className='control-section ms-chip-customize'>
                 <div id='multi-customize' className="control-styles">
-                    <h4>Chip Customization</h4>
+                <label className="h4">Chip Customization</label>
                     <MultiSelectComponent id="chip-customization" value={colorValues} dataSource={colorsData} fields={fields} mode="Box" placeholder="Favorite Colors" tagging={onTagging.bind(this)} />
                 </div>
             </div>

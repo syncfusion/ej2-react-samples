@@ -55,7 +55,7 @@ export class InversedArea extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure stock chart to visualize the stock data with inversed axis and it can be inversed by setting <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/stock-chart/stockChartAxis/#isinversed">isInversed</a> property as <b>true</b>.
+                        In this example, you can see how to render and configure stock chart to visualize the stock data with inversed axis and it can be inversed by setting <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/stock-chart/stockChartAxis/#isinversed" aria-label="Navigate to the isInversed property reference for React Stock Chart Axis">isInversed</a> property as <b>true</b>.
                     </p>
                     <p>
                         <code>Crosshair</code> is enabled in this example. To see the crosshair in action, hover the chart or tap on touch enabled devices.
@@ -67,7 +67,7 @@ export class InversedArea extends SampleBase<{}, {}> {
                         <code>StockChart.Inject(DateTime)</code> method. To use the AreaSeries, inject the <code>AreaSeries</code> module using the <code>StockChart.Inject(AreaSeries)</code> method.
                     </p>
                     <p>
-                        More information about the axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/axis-types">documentation section</a>.
+                        More information about the axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/axis-types" aria-label="Navigate to the documentation for Axis types in React Stock Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>

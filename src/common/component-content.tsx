@@ -11,8 +11,14 @@ import { viewMobilePropPane, selectedTheme, sampleOverlay, removeOverlay, proces
 import * as samplesJSON from './all-routes';
 import { MyWindow } from './leftpane';
 import { setSelectList } from './leftpane';
+import * as CodeMirror from 'codemirror';
+import 'codemirror/mode/javascript/javascript.js';
+import 'codemirror/mode/jsx/jsx.js';
+import 'codemirror/mode/xml/xml.js';
+import 'codemirror/mode/css/css.js';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/mbo.css';
 
-declare let CodeMirror: any;
 declare let window: MyWindow;
 let samLength: number;
 // Regex for hidden code removal
@@ -189,8 +195,8 @@ function highlightCode(codeEle: Element, fileType: string): void {
         parentEle.replaceChild(textELe, codeEle);
         CodeMirror.fromTextArea(document.querySelector(`#${(parentEle as HTMLElement).id} .sb-src-code`), {
             mode: `${types[fileType]}`,
-            readOnly: 'false',
-            theme: `${selectedTheme.includes('-dark') || selectedTheme === 'highcontrast' ? 'mbo' : 'default'}`
+            readOnly: true,
+            theme: `${selectedTheme.includes('-dark') || selectedTheme.includes('highcontrast') ? 'mbo' : 'default'}`
         });
     }
   }

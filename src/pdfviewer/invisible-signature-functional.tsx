@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     PdfViewerComponent, Toolbar,FormDesigner,FormFields, Magnification, Navigation, LinkAnnotation, BookmarkView,
-    ThumbnailView, Print, TextSelection, TextSearch, PageOrganizer,Inject
+    ThumbnailView, Print, TextSelection, Annotation, TextSearch, PageOrganizer,Inject
 } from '@syncfusion/ej2-react-pdfviewer';
 import { MessageComponent } from '@syncfusion/ej2-react-notifications';
 import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
@@ -58,7 +58,7 @@ function InvisibleDigitalSignature() {
                     addSignature={addSignature}
                     style={{ 'display': 'block', 'height': '640px' }}>
                     <Inject services={[Magnification,FormFields,FormDesigner, Navigation, LinkAnnotation, BookmarkView,
-                        ThumbnailView, Print, TextSelection, TextSearch,PageOrganizer]} />
+                        ThumbnailView, Print, TextSelection, Annotation, TextSearch,PageOrganizer]} />
                 </PdfViewerComponent>
                 <input type="file" id="fileUpload" accept=".pdf" onChange={readFile.bind(this)} style={{ 'display': 'block', 'visibility': 'hidden', 'width': '0', 'height': '0' }} />
             </div>

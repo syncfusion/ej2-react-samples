@@ -38,7 +38,7 @@ export class Comments extends SampleBase<{}, {}> {
     ];
     public container: DocumentEditorContainerComponent;
     public titleBar: TitleBar;
-    public settings =  {showRuler: true, mentionSettings: { dataSource: this.mentionData, fields: { text: 'Name' }}};
+    public settings =  {showRuler: true, mentionSettings: { dataSource: this.mentionData, fields: { text: 'Name' }}};;
     public rendereComplete(): void {
         window.onbeforeunload = function () {
             return 'Want to save your changes?';
@@ -69,7 +69,6 @@ export class Comments extends SampleBase<{}, {}> {
         <li>Add or edit a comment.</li>
         <li>Reply to a comment.</li>
         <li>Resolving the comment discussion.</li>
-        <li>@mention in comments.</li>
     </ul>
                     <p style={{ 'display': 'block' }}> More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/document-editor/comments/">documentation section.</a>
                     </p>

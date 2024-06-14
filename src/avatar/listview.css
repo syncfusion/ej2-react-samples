@@ -89,7 +89,7 @@ body.material-dark #letterAvatarList .e-list-item {
 
 #letterAvatarList .listWrapper .e-avatar {
     position: absolute;
-    font-size: 10px;
+    font-size: 16px;
     left: 5px;
 }
 
@@ -133,7 +133,28 @@ body.material-dark #letterAvatarList .e-list-item {
 }
 
 body.bootstrap4 #letterAvatarList .e-list-item .e-avatar{
-    top: calc(100% - 45px);
+    top: calc(100% - 27px);
+}
+
+body.fabric #letterAvatarList .e-list-item .e-avatar,
+body.fabric-dark #letterAvatarList .e-list-item .e-avatar{
+    top: calc(100% - 37px);
+}
+
+body.bootstrap #letterAvatarList .e-list-item .e-avatar,
+body.bootstrap-dark #letterAvatarList .e-list-item .e-avatar{
+    top: calc(100% - 35px);
+}
+
+body.tailwind #letterAvatarList .e-list-item .e-avatar,
+body.material #letterAvatarList .e-list-item .e-avatar,
+body.material-dark #letterAvatarList .e-list-item .e-avatar,
+body.material3 #letterAvatarList .e-list-item .e-avatar,
+body.material3-dark #letterAvatarList .e-list-item .e-avatar,
+.fluent2 #letterAvatarList .e-list-item .e-avatar,
+.fluent2-dark #letterAvatarList .e-list-item .e-avatar,
+.fluent2-highcontrast #letterAvatarList .e-list-item .e-avatar {
+    top: calc(100% - 40px);
 }
 
 body.bootstrap #letterAvatarList .e-list-item,

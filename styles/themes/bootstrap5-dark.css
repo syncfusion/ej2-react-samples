@@ -123,7 +123,9 @@ body.bootstrap5-dark,
 .bootstrap5-dark .theme-wrapper.active,
 .bootstrap5-dark .sb-theme-popup li:hover,
 .bootstrap5-dark .sb-search-result .e-list-item:hover,
-.bootstrap5-dark .sb-left-pane .e-listview .e-list-item:hover {
+.bootstrap5-dark .sb-left-pane .e-listview .e-list-item:hover,
+.bootstrap5-dark .sb-themeswitch-btn:hover,
+.bootstrap5-dark .sb-themeswitch-btn.active {
     background-color: #363636;
 
 }
@@ -227,4 +229,13 @@ body.bootstrap5-dark,
 .bootstrap5-dark .sb-theme-popup li:hover.active .sb-theme-select,
 .bootstrap5-dark .sb-left-pane .e-treeview .e-list-item.e-active>.e-text-content .e-list-text {
     color: white !important;
+}
+
+.bootstrap5-dark .sb-nextjs-icon {
+    fill: #ffffff;
+}
+
+.bootstrap5-dark .sb-nextjs-icon .sb-nextjs-pathb,
+.bootstrap5-dark .sb-nextjs-icon .sb-nextjs-pathc {
+    fill: #333333;
 }

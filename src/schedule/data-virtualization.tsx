@@ -51,7 +51,7 @@ export class DataVirtualization extends SampleBase<{}, {}> {
                 <div id="description">
                     <p>
                         In this example, the lazy loading option is enabled in timeline month and month views to load 1000 resources, and data from remote service is bound to the Scheduler
-                        using the instance of <code><a target="_blank" className='code' href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a></code>.
+                        using the instance of <code><a aria-label="Data Manager" target="_blank" className='code' href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a></code>.
                         To enable the on-demand loading of events in the Scheduler, set the <code>enableLazyLoading</code> property to <code>true</code> within the view-specific settings.
                     </p>
                 </div>

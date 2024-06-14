@@ -159,8 +159,7 @@ export class CellTemplate extends SampleBase<{}, {}> {
                     </PivotViewComponent>
                 </div>
                 <div id="action-description">
-                    <p> In this sample, we demonstrate on how to provide templates for each pivot table value cell based on user
-                        requirement.</p>
+                    <p>In this sample, we demonstrate on how to provide templates for each pivot table value cell based on user requirement.</p>
                 </div>
                 <div id="description">
                     <p>
@@ -171,6 +170,11 @@ export class CellTemplate extends SampleBase<{}, {}> {
                         To calculate the trend, we have applied conditions for each cell using pivot values from a
                         <code>dataBound</code> event.
                         Based on the applied condition, we are showing the appropriate trend icons.
+                    </p><br />
+                    <p>
+                        More information on the cell template can be found in this <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/row-and-column#cell-template">
+                        documentation section</a>.
                     </p>
                 </div>
             </div>

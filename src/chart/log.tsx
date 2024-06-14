@@ -57,7 +57,7 @@ export class LogAxis extends SampleBase<{}, {}> {
                         <code>Logarithmic</code> module using <code>servives</code>.
                     </p>
                     <p>
-                        More information on the Logarithmic axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/logarithmic-axis/">documentation section</a>.
+                        More information on the Logarithmic axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/logarithmic-axis/" aria-label="Navigate to the documentation for Logarithmic axis in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -72,7 +72,7 @@ export class LogAxis extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

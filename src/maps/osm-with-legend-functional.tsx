@@ -36,14 +36,14 @@ const OSMLegend = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
                     <MapsComponent id="maps" load={load} useGroupingSeparator={true} format={"n"} titleSettings={{ text: 'Top 10 populated cities in the World', textStyle: { size: '16px', fontFamily: 'inherit' } }} legendSettings={{ visible: true, position: 'Float', location: { x: 10, y: 262 }, textStyle: { color: '#000000', fontFamily: 'inherit' }, height: '170px', type: 'Markers', background: '#E6E6E6' }} zoomSettings={{ zoomFactor: 2, enable: true }}>
                         <Inject services={[Marker, Legend, MapsTooltip, Zoom]} />
                         <LayersDirective>
-                            <LayerDirective layerType='OSM'>
+                            <LayerDirective urlTemplate="https://tile.openstreetmap.org/level/tileX/tileY.png">
                                 <MarkersDirective>
                                     <MarkerDirective visible={true} shape='Circle' legendText='name' height={15} width={15} colorValuePath='color' tooltipSettings={{ visible: true, valuePath: 'population', format: 'City Name: ${name} <br> Population: ${population} million', textStyle: { fontFamily: 'inherit' } }} dataSource={markerData} />
                                 </MarkersDirective>
@@ -52,10 +52,11 @@ const OSMLegend = () => {
                     </MapsComponent>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample illustrates the world's top 10 most populated cities by displaying markers in their locations and legend with the city names.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>
                     In this example, you can see how to display markers and a legend on the OpenStreetMap. To enable the legend, set the <code>visible</code> property in <code>legendSettings</code> to <b>true</b>, and then use properties like <code>title</code>, <code>position</code>, <code>type</code>, <code>height</code>, <code>width</code>, and so on to customize the legend.
                 </p>
@@ -64,8 +65,8 @@ const OSMLegend = () => {
                 <p>
                     The maps component features are segregated into individual modules by feature. To use markers and a legend, we need to inject the <code>Marker</code> and <code>Legend</code> module into services.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default OSMLegend;

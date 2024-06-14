@@ -81,9 +81,9 @@ export class Spline extends SampleBase<{}, {}> {
                         animationComplete={this.animationComplete.bind(this)}>
                         <Inject services={[SplineSeries, Legend, Category, Tooltip, ChartAnnotation, Highlight]} />
                         <AnnotationsDirective>
-                            <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" style={{width: "41px"; height: "41px"}} /></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top'>
+                            <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" alt="Cloud Picture" style={{width: "41px"; height: "41px"}} /></div>' x='Sun' y={2} coordinateUnits='Point' verticalAlignment='Top'>
                             </AnnotationDirective>
-                            <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png"   style={{width: "41px"; height: "41px"}}/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top'>
+                            <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png" alt="Sunny Picture" style={{width: "41px"; height: "41px"}}/></div>' x='Tue' y={33} coordinateUnits='Point' verticalAlignment='Top'>
                             </AnnotationDirective>
                         </AnnotationsDirective>
                         <SeriesCollectionDirective>
@@ -102,7 +102,7 @@ export class Spline extends SampleBase<{}, {}> {
                         </SeriesCollectionDirective>
                     </ChartComponent>
                     <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                         <a href="http://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank">www.worldweatheronline.com</a>
+                         <a href="http://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank" aria-label="Navigate to the documentation for world weather online">www.worldweatheronline.com</a>
                     </div>
                 </div>
                 <div id="action-description">
@@ -126,7 +126,7 @@ export class Spline extends SampleBase<{}, {}> {
                     </p>
                     <p>
                     More information on the spline series can be found in this &nbsp;
-                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline">documentation section</a>.
+                         <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/spline" aria-label="Navigate to the documentation for Spline Chart in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -145,7 +145,7 @@ export class Spline extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

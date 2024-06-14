@@ -29,7 +29,7 @@ export class ArrayRow extends SampleBase<{}, {}> {
     ];
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
@@ -89,12 +89,13 @@ export class ArrayRow extends SampleBase<{}, {}> {
                         <Inject services={[Tooltip]} />
                     </HeatMapComponent>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of HeatMap sample">
                     <p>
                         This sample visualizes the GDP growth rate for the countries which are the world’s major economies over the years.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                     <p>
                         In this example, you can see how to bind array object as data source for heatmap and configure the Heatmap using
                         the data adaptor support. You can directly bind the array object to the Heatmap data source with default property
@@ -107,8 +108,8 @@ export class ArrayRow extends SampleBase<{}, {}> {
                         Heatmap component features are separated into discrete feature-based modules. To use a tooltip, inject the <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> module using the <code>{'<Inject services={[Tooltip]} />'}</code> method.
                     </p>
-                </div>
-            </div >
+                </section>
+            </main>
         );
     }
 

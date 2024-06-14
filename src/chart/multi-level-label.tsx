@@ -146,7 +146,7 @@ export class Multilevellabels extends SampleBase<{}, {}> {
                     </ul>
                     <p>
                         More information on the multi level labels can be found in this &nbsp;
-                    <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-labels#multilevel-labels" aria-label="Navigate to the documentation for Multilevel Labels in React Chart component">documentation section</a>.
                 </p>
                 </div>
             </div >
@@ -162,7 +162,7 @@ export class Multilevellabels extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

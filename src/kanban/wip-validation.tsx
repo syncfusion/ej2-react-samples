@@ -98,7 +98,7 @@ export class WIPValidation extends SampleBase<{}, {}> {
                         </DialogComponent>
                     </div>
                 </div>
-                <div className="col-lg-3 property-section property-customization">
+                <div className="col-lg-3 property-section property-customization" id="wipValidationProperty">
                     <PropertyPane title="Constraint">
                         <table className="e-constraint-table">
                             <tbody>

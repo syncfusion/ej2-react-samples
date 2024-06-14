@@ -6,7 +6,7 @@ import { updateSampleSection } from '../common/sample-base';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { PropertyPane } from '../common/property-pane';
-
+import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 const SAMPLE_CSS = `
     .control-fluid {
 		padding: 0px !important;
@@ -19,7 +19,7 @@ const Export = () => {
 
     let mode = useRef<DropDownListComponent>(null);
     let gauge = useRef<CircularGaugeComponent>(null);
-    let fileNameObj = useRef<HTMLInputElement>(null);
+    let textElement: TextBoxComponent;
     let type: { [key: string]: Object }[] = [
         { value: 'JPEG' },
         { value: 'PNG' },
@@ -40,11 +40,11 @@ const Export = () => {
     }
 
     const onClickExport = (e: Event): void => {
-        gauge.current.export((mode.current.value as ExportType), fileNameObj.current.value);
+        gauge.current.export((mode.current.value as ExportType), textElement.value);
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-lg-8'>
@@ -67,7 +67,7 @@ const Export = () => {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                           <tbody>
                             <tr style={{ height: "50px" }}>
                                 <td>
@@ -84,8 +84,8 @@ const Export = () => {
                                     <div style={{ paddingLeft: '0px', fontSize: '14px' }}>File Name</div>
                                 </td>
                                 <td>
-                                    <div className="e-float-input" style={{ 'marginTop': '0px' }}>
-                                        <input type="text" defaultValue="Circular Gauge" id="fileName" style={{ "width": "100%", padding: '0px', paddingLeft: '5px' }} ref={fileNameObj} />
+                                    <div style={{ 'marginTop': '0px' }}>
+                                        <TextBoxComponent className="e-input" value='Circular Gauge' style={{ width: '100%', padding: '0px', paddingLeft: '5px' }} id="fileName" ref={d => textElement = d}></TextBoxComponent>
                                     </div>
                                 </td>
                             </tr>
@@ -102,18 +102,19 @@ const Export = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample demonstrates the print and export functionalities of the circular gauge.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to print and export the rendered circular gauge. You can add print functionality by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#print">print</a> method when <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#allowprint">allowPrint</a> is set as <b>true</b>. Also, you can add export functionality by using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#export">export</a> method when <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#allowimageexport">allowImageExport</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#allowpdfexport">allowPdfExport</a> are set as <b>true</b>. The circular gauge can be exported to JPEG, PNG, SVG, and PDF formats.
                 </p>
                 <p>
                     More information about print and export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-print-and-export/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default Export;

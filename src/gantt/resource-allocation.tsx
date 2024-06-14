@@ -35,8 +35,8 @@ export class ResourceAllocation extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 5.1
   };
-  public projectStartDate: Date = new Date('03/28/2019');
-  public projectEndDate: Date = new Date('07/28/2019');
+  public projectStartDate: Date = new Date('03/28/2024');
+  public projectEndDate: Date = new Date('07/28/2024');
   public labelSettings: any = {
     rightLabel: 'resources'
   };

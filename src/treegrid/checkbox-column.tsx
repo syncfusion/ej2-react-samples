@@ -15,6 +15,7 @@ const SAMPLE_CSS = `
   height: 18px;
   width: 18px;
 }`;
+
 // custom code end
 export class CheckboxColumn extends SampleBase<{}, {}> {
 

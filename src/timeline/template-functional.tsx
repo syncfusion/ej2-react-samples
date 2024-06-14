@@ -34,7 +34,7 @@ const Template = () => {
             <span className="e-icons e-more-vertical-1"></span>
           </div>
           {
-            props.currentItem == 1 &&
+            props.itemIndex == 1 &&
             (
               <div className="content-container">
                 <span className="e-icons e-lock">
@@ -49,7 +49,7 @@ const Template = () => {
             )
           }
           {
-            props.currentItem == 2 &&
+            props.itemIndex == 2 &&
             (
               <div className="mention-group">
                 <svg className="color-pr" viewBox="0 0 16 16" version="1.1" width="16" height="16"
@@ -58,7 +58,7 @@ const Template = () => {
                   </path>
                 </svg>
                 <div className="mention-content">
-                  <h5 style={{ fontWeight: "bold" }}> 87231 - Updated Roadmap for new control </h5>
+                  <p style={{ fontWeight: "bold" }}> 87231 - Updated Roadmap for new control </p>
                   <span> Updated new control roadmap </span>
                   <div className="diffstats">
                     <span className="color-success"> +95 </span>

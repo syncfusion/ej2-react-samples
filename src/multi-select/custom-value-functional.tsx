@@ -28,7 +28,7 @@ const CustomTag = () => {
         <div className='control-pane'>
             <div className='control-section'>
                 <div id='multidefault' className="control-styles">
-                    <h4>Custom Values</h4>
+                <label className="h4"> Custom Values</label>
                     <MultiSelectComponent id="customelement" dataSource={gameList} fields={fields} mode="Box" placeholder="Favorite sports" allowCustomValue={true} />
                 </div>
             </div>

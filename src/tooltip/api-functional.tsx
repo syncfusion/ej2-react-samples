@@ -105,7 +105,7 @@
                                     </td>
                                     <td style={{ width: "50%", paddingRight: "10px" }}>
                                         <div>
-                                            <NumericTextBoxComponent id="height" value={height} change={onHeightChange.bind(this)} />
+                                            <NumericTextBoxComponent id="height" value={height} change={onHeightChange.bind(this)} aria-label="height value" />
                                         </div>
                                     </td>
                                 </tr>
@@ -115,7 +115,7 @@
                                     </td>
                                     <td style={{ width: "50%", paddingRight: "10px" }}>
                                         <div>
-                                            <NumericTextBoxComponent id="width" className="e-input" value={width} change={onWidthChange.bind(this)} />
+                                            <NumericTextBoxComponent id="width" className="e-input" value={width} change={onWidthChange.bind(this)} aria-label="width value" />
                                         </div>
                                     </td>
                                 </tr>
@@ -135,7 +135,7 @@
                                     </td>
                                     <td style={{ width: "50%", paddingRight: "10px" }}>
                                         <div>
-                                            <CheckBoxComponent id="sticky" checked={isSticky} change={checkboxChange.bind(this)} />
+                                            <CheckBoxComponent id="sticky" checked={isSticky} change={checkboxChange.bind(this)} aria-label="sticky" />
                                         </div>
                                     </td>
                                 </tr>

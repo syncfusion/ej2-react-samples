@@ -1,11 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Page, Aggregate, Group, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective} from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Page, Aggregate, Group, AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective, FilterSettingsModel, Filter} from '@syncfusion/ej2-react-grids';
 import { categoryData } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class AggregateGroup extends SampleBase<{}, {}> {  
   public pageSettings: Object = { pageCount: 5};
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
   public groupSettings: Object = {showDropArea:false, columns:['CategoryName']};
   public groupFooterSum(props):any{
     return(<span>Total units: {props.Sum}</span>)
@@ -20,7 +21,7 @@ export class AggregateGroup extends SampleBase<{}, {}> {
     return (
       <div className='control-pane'>
         <div className='control-section'>
-          <GridComponent dataSource={categoryData} allowPaging={true} allowSorting={true} pageSettings={this.pageSettings} allowGrouping={true} groupSettings={this.groupSettings}>
+          <GridComponent dataSource={categoryData} allowPaging={true} allowSorting={true} pageSettings={this.pageSettings} allowGrouping={true} groupSettings={this.groupSettings} allowFiltering={true} filterSettings={this.filterSettings}>
             <ColumnsDirective>             
               <ColumnDirective field='CategoryName' headerText='Category Name' width='70'></ColumnDirective>
               <ColumnDirective field='ProductName' headerText='Product Name' width='150'></ColumnDirective>
@@ -41,7 +42,7 @@ export class AggregateGroup extends SampleBase<{}, {}> {
                   </AggregateColumnsDirective>
                 </AggregateDirective>
             </AggregatesDirective>
-            <Inject services={[Page,Aggregate, Group, Sort]} />
+            <Inject services={[Page,Aggregate, Group, Sort, Filter]} />
           </GridComponent>   
           <div id="action-description">
          <p>This sample demonstrates Aggregate functionality of the Grid. In this sample, both “Unit In Stock” and “Discontinued” columns are displayed their aggregate value in group footer.

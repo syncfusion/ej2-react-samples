@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Resize, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Resize, Sort, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -8,16 +8,20 @@ function StackedHeader() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
+    const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    const orderidRules: Object = { required: true, number: true };
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={orderDetails} allowPaging={true} allowResizing={true} allowSorting={true} >
+                <GridComponent dataSource={orderDetails} allowPaging={true} allowResizing={true} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} >
                     <ColumnsDirective>
-                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
-                        <ColumnDirective columns={[{ field: 'OrderDate', headerText: 'Order Date', format: 'yMd', width: 130, textAlign: 'Right' }, { field: 'Freight', headerText: 'Freight ($)', width: 120, format: 'C1', textAlign: 'Right' }]} headerText='Order Details' ></ColumnDirective>
-                        <ColumnDirective columns={[{ field: 'ShippedDate', headerText: 'Shipped Date', format: 'yMd', textAlign: 'Right', width: 150 }, { field: 'ShipCountry', headerText: 'Ship Country', width: 150 }]} headerText='Ship Details' />
+                        <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
+                        <ColumnDirective columns={[{ field: 'OrderDate', headerText: 'Order Date', format: 'yMd', width: 130, textAlign: 'Right', editType: 'datepickeredit' }, { field: 'Freight', headerText: 'Freight ($)', width: 120, format: 'C1', textAlign: 'Right', editType: 'numericedit', validationRules: { required: true, min: 0 } }]} headerText='Order Details' ></ColumnDirective>
+                        <ColumnDirective columns={[{ field: 'ShippedDate', headerText: 'Shipped Date', format: 'yMd', textAlign: 'Right', width: 150, editType:'datepickeredit' }, { field: 'ShipCountry', headerText: 'Ship Country', width: 150, editType: 'dropdownedit' }]} headerText='Ship Details' />
                     </ColumnsDirective>
-                    <Inject services={[Page, Resize, Sort]} />
+                    <Inject services={[Page, Resize, Sort, Toolbar, Filter, Edit]} />
                 </GridComponent>
             </div>
             <div id="action-description">

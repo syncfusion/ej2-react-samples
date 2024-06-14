@@ -23,7 +23,7 @@ const MultipleRanges = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} animationDuration={2000} id='multiple-ranges' background='transparent'>
@@ -57,18 +57,19 @@ const MultipleRanges = () => {
                     </AxesDirective>
                 </CircularGaugeComponent>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample shows temperature variations in a circular gauge using multiple ranges. In addition, the needle pointer and annotation help in displaying the temperature that has been measured.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render and configure multiple ranges in the circular gauge. The <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/'>RangesDirective</a> collection can be used to define multiple ranges, each of which points to a different start and end value.
                 </p>
                 <p>
                     More information on the ranges can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-ranges/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default MultipleRanges;

@@ -7,7 +7,7 @@ export const routes = (
     <HashRouter>
         <Routes>
 {{routerCollection}}
-            <Route path= '/' element={<Navigate replace to="material3/grid/overview" />} />
+            <Route path= '/' element={<Navigate replace to="fluent2/grid/overview" />} />
         </Routes>
     </HashRouter>
 )

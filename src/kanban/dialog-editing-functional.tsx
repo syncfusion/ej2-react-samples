@@ -51,9 +51,6 @@ const DialogEditing = () => {
         kanbanObj.current.openDialog("Add", cardDetails);
     };
     const KanbanDialogFormTemplate = (props) => {
-        useEffect(() => {
-            updateSampleSection();
-        }, []);
         let assigneeData: string[] = [
             "Nancy Davloio",
             "Andrew Fuller",

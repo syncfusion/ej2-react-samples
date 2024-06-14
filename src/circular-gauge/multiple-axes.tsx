@@ -91,7 +91,7 @@ export class Axes extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -154,7 +154,7 @@ export class Axes extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
+                            <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -217,20 +217,21 @@ export class Axes extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
                     <p>
                         This sample illustrates the multiple axes in the circular gauge as well as the options for changing the direction, start, and end angle of an axis.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure multiple axes in the circular gauge. To render multiple axes in the circular gauge, use the axes collection, and each axis can be customized with pointers and ticks.
                     </p>
                     <p>
                         More information on the multiple axes can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-axes/#multiple-axes">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
 }

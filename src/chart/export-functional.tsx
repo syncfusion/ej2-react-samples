@@ -8,7 +8,7 @@ import { ChartComponent, SeriesCollectionDirective, SeriesDirective, ChartTheme,
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { } from '@syncfusion/ej2-react-inputs';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors } from './theme-color';
+import { pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors , fluent2Colors, fluent2DarkColors} from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -26,27 +26,36 @@ const SAMPLE_CSS = `
         text-align: center;
     }
 
-    .e-export-icon::before {
+    .e-icons.e-export::before {
         content: '\\e728';
     }
-    
-    .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before  {
+ 
+    .e-view.fabric .e-icons.e-export::before, .e-view.fabric-dark .e-icons.e-export::before {
         content: '\\e710';
     }
-    
-    .e-view.bootstrap4 .e-export-icon::before {
+ 
+    .e-view.bootstrap4 .e-icons.e-export::before {
         content: '\\e780';
     }
-    
-    .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
+ 
+    .e-view.tailwind-dark .e-icons.e-export::before, .e-view.tailwind .e-icons.e-export::before {
         content: '\\e7bf';
     }
-    
-    .e-view.highcontrast .e-export-icon::before {
+ 
+    .e-view.highcontrast .e-icons.e-export::before {
         content: '\\e710';
     }
-    
-    .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
+ 
+    .e-view.bootstrap5 .e-icons.e-export::before, .e-view.bootstrap5-dark .e-icons.e-export::before {
+        content: '\\e72e';
+    }
+    .e-view.fluent .e-icons.e-export::before, .e-view.fluent-dark .e-icons.e-export::before {
+        content: '\\e72e';
+    }
+    .e-view.fluent2 .e-icons.e-export::before, .e-view.fluent2-dark .e-icons.e-export::before, .e-view.fluent2-highcontrast .e-icons.e-export::before {
+        content: '\\e72e';
+    }
+    .e-view.material3 .e-icons.e-export::before, .e-view.material3-dark .e-icons.e-export::before {
         content: '\\e72e';
     }`;
 const ChartExport = () => {
@@ -73,7 +82,7 @@ const ChartExport = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const labelRender = (args: IPointRenderEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
@@ -108,6 +117,10 @@ const ChartExport = () => {
             args.fill = pointMaterial3DarkColors[args.point.index % 10];
         } else if (selectedTheme === 'material3') {
             args.fill = pointMaterial3Colors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent2') {
+            args.fill = fluent2Colors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent2-dark') {
+            args.fill = fluent2DarkColors[args.point.index % 10];
         }
     }
     const onClick = (e: Event): void => {
@@ -137,10 +150,10 @@ const ChartExport = () => {
                                 </td>
                             </tr>
                             <tr style={{ height: "50px" }}>
-                                <td style={{ width: "40%" }}>File Name:</td>
+                                <td style={{ width: "40%" }} id="exportFile">File Name:</td>
                                 <td style={{ width: "40%" }}>
                                     <div className="e-float-input" style={{ 'marginTop': '0px', "marginLeft": "-10px" }}>
-                                        <input type="text" ref={inputObj} defaultValue="Chart" id="fileName" style={{ "width": "90px" }} />
+                                        <input type="text" ref={inputObj} defaultValue="Chart" id="fileName" style={{ "width": "90px" }} aria-labelledby="Chart"/>
                                     </div>
                                 </td>
                             </tr>
@@ -165,7 +178,7 @@ const ChartExport = () => {
                     Chart component features are segregated into individual feature-wise modules. To use export, we need to inject <code>export</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#export">documentation section</a>.
+                    More information on the export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#export" aria-label="Navigate to the documentation for Export in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div >

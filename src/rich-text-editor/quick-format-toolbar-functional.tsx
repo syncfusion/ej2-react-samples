@@ -24,7 +24,7 @@ function QuickFormatToolbar () {
             <div className='control-section' id="rte">
                 <div className='rte-control-section'>
                     <RichTextEditorComponent id="quickRTE" ref={(richtexteditor) => { rteObj = richtexteditor }} toolbarSettings={toolbarSettings} quickToolbarSettings={quickToolbarSettings}>
-                    <p>
+                    <div>
                         <p>Solar energy is radiant light and heat from the sun that is harnessed and converted into usable forms of energy. It
                         is a clean, renewable, and abundant source of power that has a wide range of applications across various sectors.
                         Solar energy is typically harnessed through solar technologies, such as photovoltaic (PV) cells and solar thermal
@@ -74,7 +74,7 @@ function QuickFormatToolbar () {
                             electric public transportation.
                         </p>
                         <img src="https://media.istockphoto.com/id/494417257/photo/photovoltaic-panels.jpg?s=612x612&w=0&amp;k=20&amp;c=USdqOh0Pjuyv-jOB-ny5JPV6VQ1U5PvPo-xgBuhKPxc=" width="300px" className="e-rte-image e-imginline"/>
-                    </p>
+                    </div>
                         <Inject services={[HtmlEditor, Toolbar, Image, Link, FormatPainter, QuickToolbar, PasteCleanup, Table, Video, Audio]} />
                     </RichTextEditorComponent>
                 </div>

@@ -3,6 +3,10 @@
   margin: 0 5px;
 }
 
+.color-appbar-section h1 {
+  font-size: 18px;
+}
+
 .color-appbar-section .e-appbar-icon-menu {
   display: none;
 }

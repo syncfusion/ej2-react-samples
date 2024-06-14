@@ -20,11 +20,11 @@ const Gallery = () => {
             select: (args: GallerySelectEventArgs) => {
                 updateContent("Gallery -> " + args.currentItem.content);
             },
-            popupWidth: '580px',
+            popupWidth: '544px',
             itemCount: 3,
             groups: [{
                     itemWidth: '100',
-                    itemHeight: '30',
+                    itemHeight: '40',
                     header: 'Title and Headings',
                     items: [
                         {
@@ -50,7 +50,7 @@ const Gallery = () => {
                     ]
                 }, {
                     itemWidth: '100',
-                    itemHeight: '30',
+                    itemHeight: '40',
                     header: 'Data and Model',
                     items: [
                         {
@@ -76,7 +76,7 @@ const Gallery = () => {
                     ]
                 }, {
                     itemWidth: '100',
-                    itemHeight: '30',
+                    itemHeight: '40',
                     header: 'Good, Bad and Neutral',
                     items: [{
                             content: 'Normal',
@@ -184,7 +184,7 @@ const Gallery = () => {
                                             <RibbonCollectionsDirective>
                                                 <RibbonCollectionDirective>
                                                     <RibbonItemsDirective>
-                                                        <RibbonItemDirective type="Gallery" id="pastebtn" allowedSizes={RibbonItemSize.Large}
+                                                        <RibbonItemDirective type="Gallery" allowedSizes={RibbonItemSize.Large}
                                                             gallerySettings={gallerySettings}>
                                                         </RibbonItemDirective>
                                                     </RibbonItemsDirective>

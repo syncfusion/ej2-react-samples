@@ -7,7 +7,7 @@ import { BulletChartComponent, BulletRangeCollectionDirective, BulletRangeDirect
 import { IBulletLoadedEventArgs, ChartTheme } from '@syncfusion/ej2-charts';
 import { Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
-import { fabricColors, bootstrapColors, highContrastColors, materialColors, bootstarp5Colors, bootstarp5DarkColors, bootstrapDarkColors, tailwindColors, tailwindDarkColors, material3Colors, material3DarkColors, defaultColors, fluentColors } from './theme-color'
+import { fabricColors, bootstrapColors, highContrastColors, materialColors, bootstarp5Colors, bootstarp5DarkColors, bootstrapDarkColors, tailwindColors, tailwindDarkColors, material3Colors, material3DarkColors, defaultColors, fluentColors, fluent2Colors, fluent2DarkColors  } from './theme-color'
 
 const SAMPLE_CSS = `
       .control-fluid {
@@ -112,13 +112,13 @@ function BulletChartMultipleData() {
             </div>
             <div id="description">
                 <p>
-                    In this example, you can observe how multiple datasets are compared in a bullet chart. Here, each value bar is assigned a different color from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/bullet-chart/#datasource">dataSource</a>.
+                    In this example, you can observe how multiple datasets are compared in a bullet chart. Here, each value bar is assigned a different color from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/bullet-chart/#datasource" aria-label="Navigate to the dataSource property reference for React Bullet Chart component">dataSource</a>.
                 </p>
                 <p>
                     <code>Tooltips</code> are enabled in this example, to see them in action, hover over a feature bar or comparative bar on the bullet chart.
                 </p>
                 <p>
-                More information on the data binding for the bullet chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/bullet-chart/data-binding">documentation section</a>.
+                    More information on the data binding for the bullet chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/bullet-chart/data-binding" aria-label="Navigate to the documentation for Data Binding in React Bullet Chart component">documentation section</a>.
                 </p>
             </div>
         </div>
@@ -129,7 +129,7 @@ function BulletChartMultipleData() {
         chart.setAttribute('title', '');
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         let color: string[] = [];
         switch (args.bulletChart.theme) {
             case 'Fabric':
@@ -173,6 +173,12 @@ function BulletChartMultipleData() {
                 break;
             case 'Material3Dark':
                 color = material3DarkColors;
+                break;
+            case "Fluent2":
+                color = fluent2Colors;
+                break;
+            case "Fluent2Dark":
+                color = fluent2DarkColors;
                 break;
             default:
                 color = defaultColors;

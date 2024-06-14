@@ -46,7 +46,7 @@ const MultilayerMaps = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
@@ -74,16 +74,17 @@ const MultilayerMaps = () => {
             <div style={{ float: 'right', marginRight: '10px' }}>
                 Source:<a href="http://www.samsung.com/semiconductor/about-us/location/" target="_blank">www.samsung.com</a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample depicts the layers along with sublayers. Countries in the African and Australian continents are rendered in the sublayers.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render a sublayer in map. Sublayers are used to render the desired shapes over the existing layers. Any number of sublayers can be added to a map. You can use the <code>fill</code>, <code>width</code>, and <code>color</code> properties in the border to customize the appearance of the shapes.
                 </p>
                 <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.</p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default MultilayerMaps;

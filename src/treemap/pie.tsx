@@ -173,7 +173,7 @@ export class Pie extends SampleBase<{}, {}> {
 
 	render() {
 		return (
-			<div className='control-pane'>
+			<main><div className='control-pane'>
 				<style>
 					{SAMPLE_CSS}
 				</style>
@@ -212,19 +212,20 @@ export class Pie extends SampleBase<{}, {}> {
        <a href="http://en.worldstat.info/Asia/" target="_blank">en.worldstat.info</a>
 					</div>
 				</div>
-				<div id="action-description">
+			</div>
+				<section id="action-description" aria-label="Description of TreeMap sample">
 					<p>
 						This sample visualizes the population level of various continents in 2011 based on the gender and age group.
             </p>
-				</div>
-				<div id="description">
+				</section>
+				<section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
 					<p>
 						In this example, you can see how to render a pie chart as a template for leaf items in TreeMap. Any custom HTML element can be rendered as label template.
 						<br /><br />
 						Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch enabled devices.
 					</p>
-				</div>
-			</div>
+				</section>
+			</main>
 		)
 	}
 }

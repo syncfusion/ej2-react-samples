@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -8,10 +8,11 @@ function Localbinding() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={data} allowPaging={true} pageSettings={{ pageCount: 5 }} allowSorting={true}>
+                <GridComponent dataSource={data} allowPaging={true} pageSettings={{ pageCount: 5 }} allowSorting={true} allowFiltering={true} filterSettings={filterSettings}>
                     <ColumnsDirective>
                         <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
@@ -20,7 +21,7 @@ function Localbinding() {
                         <ColumnDirective field='ShippedDate' headerText='Shipped Date' width='130' format='yMd' textAlign='Right'></ColumnDirective>
                         <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150'></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Page, Sort]} />
+                    <Inject services={[Page, Sort, Filter]} />
                 </GridComponent>
             </div>
             <div id="action-description">

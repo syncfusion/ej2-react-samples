@@ -14,13 +14,6 @@
     font-size: 14px;
 }
 
-.sb-sample-content-area {
-    min-height: 255px !important;
-}
-.control-section {
-    min-height: 255px !important;
-}
-
 .pivot-property-section .e-multiselect {
     padding: 0px !important;
 }

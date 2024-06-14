@@ -79,13 +79,13 @@ const Swipeable = () => {
                                     <div className='e-card-stacked'>
                                         <div className="e-card-content" style={{ height: '175px' }}>New York City has been described as the cultural, financial, and media capital of the world, and exerts a significant impact upon commerce and etc...</div>
                                         <div className="e-card-actions">
-                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }}>
+                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }} aria-label="button">
                                                 <span className="e-fav-icon cb-icons "></span>
                                             </button>
-                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }}>
+                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }} aria-label="button">
                                                 <span className="e-like-icon cb-icons "></span>
                                             </button>
-                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }}>
+                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }} aria-label="button">
                                                 <span className="e-share-icon cb-icons "></span>
                                             </button>
                                         </div>
@@ -96,13 +96,13 @@ const Swipeable = () => {
                                     <div className='e-card-stacked'>
                                         <div className="e-card-content" style={{ height: '175px' }}>Malaysia is one of the Southeast Asian countries, on a peninsula of the Asian continent, to a certain extent; it can be recognized as part of the Asian continent.</div>
                                         <div className="e-card-actions">
-                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }}>
+                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }} aria-label="button">
                                                 <span className="e-fav-icon cb-icons "></span>
                                             </button>
-                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }}>
+                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }} aria-label="button">
                                                 <span className="e-like-icon cb-icons "></span>
                                             </button>
-                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }}>
+                                            <button style={{ padding: '0px', border: '0px', height: '24px', width: '24px' }} aria-label="button">
                                                 <span className="e-share-icon cb-icons "></span>
                                             </button>
                                         </div>

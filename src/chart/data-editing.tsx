@@ -59,7 +59,7 @@ export class DataEdit extends SampleBase<{}, {}> {
                     </p> <br>
                     </br>
                     <p>
-                        More information on the Data Editing can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-editing/">documentation section</a>.
+                        More information on the Data Editing can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/data-editing/" aria-label="Navigate to the documentation for Data Editing in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -73,6 +73,6 @@ export class DataEdit extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
 }

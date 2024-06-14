@@ -24,14 +24,14 @@ function MarkDown() {
   We can add our own custom formation syntax for the Markdown formation, [sample link](https://ej2.syncfusion.com/home/).
       
   The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content`;
-
+    const placeholder: string = 'Enter your text here...';
     // Rich Text Editor items list
     const items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|',
-        'Formats', 'OrderedList', 'UnorderedList', 'SuperScript', 'SubScript', '|',
+        'Formats', 'Blockquote', 'OrderedList', 'UnorderedList', 'SuperScript', 'SubScript', '|',
         'CreateLink', 'Image', 'CreateTable', '|',
         {
             tooltipText: 'Preview',
-            template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
+            template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn" aria-label="Preview Code" >' +
                 '<span class="e-btn-icon e-md-preview e-icons"></span></button>'
         }, '|', 'Undo', 'Redo'];
 
@@ -85,10 +85,10 @@ function MarkDown() {
             fullPreview();
             if ((e.currentTarget as HTMLElement).classList.contains('e-active')) {
                 rteObj.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
-                    'UnorderedList', 'SuperScript', 'SubScript', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Undo', 'Redo']);
+                    'UnorderedList', 'SuperScript', 'SubScript', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Blockquote', 'Undo', 'Redo']);
             } else {
                 rteObj.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
-                    'UnorderedList', 'SuperScript', 'SubScript', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Undo', 'Redo']);
+                    'UnorderedList', 'SuperScript', 'SubScript', 'CreateLink', 'Image', 'CreateTable', 'Formats', 'Blockquote', 'Undo', 'Redo']);
             }
         });
     }

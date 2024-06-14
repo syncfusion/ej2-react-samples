@@ -37,8 +37,8 @@ export class GridLines extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('03/24/2019');
-  public projectEndDate: Date = new Date('07/06/2019');
+  public projectStartDate: Date = new Date('03/24/2024');
+  public projectEndDate: Date = new Date('07/06/2024');
 
   render() {
     return (
@@ -76,7 +76,7 @@ export class GridLines extends SampleBase<{}, {}> {
                   <td style={{ width: '100%' }}>
                     <div>
                       <DropDownListComponent ref={dropdown => this.dropdownObj = dropdown} id='gridLines' dataSource={this.linesData} fields={{ text: 'type', value: 'id' }}
-                        value='Both' change={this.changeLine.bind(this)}></DropDownListComponent>
+                        value='Both' width={120} change={this.changeLine.bind(this)}></DropDownListComponent>
                     </div>
                   </td>
                 </tr>

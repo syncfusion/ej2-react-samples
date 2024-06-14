@@ -149,6 +149,11 @@ function Sorting () {
                     <code> name</code> and
                     <code> order</code> options inside the
                     <code> sortSettings</code> property in the pivot table.
+                </p><br />
+                <p>
+                    More information on the sorting can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/sorting">
+                    documentation section</a>.
                 </p>
             </div>
         </div>

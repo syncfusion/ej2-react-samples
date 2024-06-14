@@ -69,29 +69,29 @@ export class StackedArea extends SampleBase<{}, {}> {
             </SeriesCollectionDirective>
           </ChartComponent>
                     <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                         <a href="https://www.gov.uk/" target='_blank'>www.gov.uk</a>
+                         <a href="https://www.gov.uk/" target='_blank' aria-label="Navigate to the documentation for gov">www.gov.uk</a>
                     </div>
                 </div>
-                <div id="action-description">
-                <p>
-                This React Stacked Area example visualizes the amount of sales by payment mode with default stacked area series. A legend in the sample shows information about the series.
-            </p>
-                </div>
-                <div id="description">
-                    <p>
-                    In this example, you can see how to render and configure the stacked area chart. This chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.
-                    </p>
-                    <br></br>
-                    <p><b>Injecting Module</b></p>
-                    <p>
-                        Chart component features are segregated into individual feature-wise modules. To use stacking area series, we need to inject
-                        <code>StackingAreaSeries</code> module into <code>services</code>.
-                    </p>
-                    <p>
-                    More information about stacked area series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-area">documentation section</a>.
-                    </p>
-                </div>
+        <div id="action-description">
+          <p>
+            This React Stacked Area example visualizes the amount of sales by payment mode with default stacked area series. A legend in the sample shows information about the series.
+          </p>
+        </div>
+        <div id="description">
+          <p>
+            In this example, you can see how to render and configure the stacked area chart. This chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.
+          </p>
+          <br></br>
+          <p><b>Injecting Module</b></p>
+          <p>
+            Chart component features are segregated into individual feature-wise modules. To use stacking area series, we need to inject
+            <code>StackingAreaSeries</code> module into <code>services</code>.
+          </p>
+          <p>
+            More information about stacked area series can be found in this &nbsp;
+            <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-area" aria-label="Navigate to the documentation for Stacked Area Chart in React Chart component">documentation section</a>.
+          </p>
+        </div>
             </div>
         )
     }
@@ -104,7 +104,7 @@ export class StackedArea extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme =(selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

@@ -21,8 +21,8 @@ export class SelfReferenceData extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     columnIndex: 2
   };
-  public projectStartDate: Date = new Date('01/28/2019');
-  public projectEndDate: Date = new Date('03/10/2019');
+  public projectStartDate: Date = new Date('01/28/2024');
+  public projectEndDate: Date = new Date('03/10/2024');
   render() {
     return (
       <div className='control-pane'>

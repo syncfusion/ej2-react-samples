@@ -109,11 +109,11 @@ export class IndexedAxis extends SampleBase<{}, {}> {
                             <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                             <tbody><tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
-                                        <div>Indexed:</div>
+                                        <div id="indexed">Indexed:</div>
                                     </td>
                                     <td style={{ width: '40%' }}>
                                         <div>
-                                            <input type="checkbox" id="isIndexed" defaultChecked={true} onChange={this.onChange.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.dropElement = d} />
+                                            <input type="checkbox" id="isIndexed" defaultChecked={true} onChange={this.onChange.bind(this)} style={{ marginLeft: '-5px' }} ref={d => this.dropElement = d} aria-labelledby="Checkbox checked"/>
                                         </div>
                                     </td>
                                 </tr></tbody>
@@ -135,7 +135,7 @@ export class IndexedAxis extends SampleBase<{}, {}> {
             </p>
                     <p>
                         More information on the indexed axis can be found in this &nbsp;
-                   <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/category-axis/#indexed-category-axis" aria-label="Navigate to the documentation for Indexed category Axis in React Chart component">documentation section</a>.
                </p>
                 </div>
             </div>
@@ -149,7 +149,7 @@ export class IndexedAxis extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

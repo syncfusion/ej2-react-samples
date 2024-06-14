@@ -1,24 +1,24 @@
-.property-panel-content .e-filter-table {
+#searchFilterProperty .property-panel-content .e-filter-table {
     width: 100%;
 }
 
-.property-panel-content .e-filter-label {
+#searchFilterProperty .property-panel-content .e-filter-label {
     width: 30%
 }
 
-.property-panel-content .e-reset-button {
+#searchFilterProperty .property-panel-content .e-reset-button {
     padding-top: 13px;
     text-align: center;
 }
 
-.property-panel-content td {
+#searchFilterProperty .property-panel-content td {
     padding-top: 10px;
 }
 
-.property-panel-header {
+#searchFilterProperty .property-panel-header {
     padding-bottom: 0px;
 }
 
-.kanban-control-section .filtering.property-panel-content {
+#searchFilterProperty .kanban-control-section .filtering.property-panel-content {
     min-height: 0px;
 }

@@ -11,7 +11,6 @@ import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType } from '@syncfusion/ej2-base';
-import { createBrowserHistory } from "history";
 
 let series1: Object[] = [
     { Period : 1947, Rupees : 4.76 },
@@ -63,7 +62,7 @@ const Trend = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -101,7 +100,7 @@ const Trend = () => {
                     Chart component features are segregated into individual feature-wise modules. To use Trend Line series, we need to inject <code>Trendlines</code> module into <code>services</code>.
                 </p>
                 <p>
-                    More information on the TrendLines can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/trend-lines/">documentation section</a>.
+                    More information on the TrendLines can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/trend-lines/" aria-label="Navigate to the documentation for Trend Lines in React Chart Component">documentation section</a>.
                 </p>
             </div>
         </div >

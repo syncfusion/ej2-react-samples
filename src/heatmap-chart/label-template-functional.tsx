@@ -78,7 +78,7 @@ const Label = () => {
         ],
     }
     let cellSettings: CellSettingsModel = {
-        labelTemplate:'<div><img src="${image}" style="width: 35px; height: 35px;"/></div>',
+        labelTemplate:'<div><img alt="Description of the label template" src="${image}" style="width: 35px; height: 35px;"/></div>',
         border: {                           
             color: 'white'
         },
@@ -103,7 +103,7 @@ const Label = () => {
     };
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             {/* custom code start */}
             <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
@@ -112,12 +112,13 @@ const Label = () => {
                     <Inject services={[Tooltip, Adaptor, Legend]} />
                 </HeatMapComponent>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of HeatMap sample">
                 <p>
                     This sample illustrates a comprehensive view of the likelihood and impact of an organization’s risks. Risks that fall into the HeatMap's green zones require no action. Action is required in the yellow areas. Risks that fall into the red zone require immediate action.
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                 <p>In this example, you can see how to use the <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/api/heatmap/cellSettingsModel/#labeltemplate">labelTemplate</a> to display images in the HeatMap cells. The <code>labelTemplate</code> can be used to add any HTML elements into the HeatMap cells, such as images, text, and so on.</p>
                 <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
                 <br></br>
@@ -127,8 +128,8 @@ const Label = () => {
                     href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/adaptorType/" target='_blank'>Adaptor </a> module using the <code>{'<Inject services={[Tooltip, Adaptor]} />'}</code> method.
                 </p>
                 <p>More information about label template can be found in this <a target='_blank' href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/appearance#template">documentation section</a>.</p>
-            </div>
-        </div >
+            </section>
+        </main>
     );
 }
 export default Label;

@@ -28,7 +28,7 @@ export class LegendPlacement extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div>
+            <main><div>
                 <div className='col-md-8 control-section'>
                 {/* custom code start */}
                     <style>
@@ -95,7 +95,7 @@ export class LegendPlacement extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-md-4 property-section">
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
                             <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td style={{ width: '60%' }}>
@@ -113,14 +113,15 @@ export class LegendPlacement extends SampleBase<{}, {}> {
                         </table>
                     </PropertyPane>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of HeatMap sample">
                     <p>
                         This sample visualizes the hourly weather forecast for some major European cities. The data label is disabled in
                         this sample, the tooltip displays the data point values.  In property panel, the options are available to change the
                         display position of the Heatmap legend axes by means of dropdown.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                     <p>
                         In this example, you can see how to change the display position of the Heatmap legend. You can change the display position
                         of legend to left, right, bottom and top by using the
@@ -137,8 +138,8 @@ export class LegendPlacement extends SampleBase<{}, {}> {
                             href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
                     </p>
-                </div>
-            </div >
+                </section>
+            </main>
         );
     }
 

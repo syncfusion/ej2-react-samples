@@ -133,7 +133,9 @@ body.material-dark,
 .material-dark .theme-wrapper.active,
 .material-dark .sb-theme-popup li:hover,
 .material-dark .sb-search-result .e-list-item:hover,
-.material-dark .sb-left-pane .e-listview .e-list-item:hover {
+.material-dark .sb-left-pane .e-listview .e-list-item:hover,
+.material-dark .sb-themeswitch-btn:hover,
+.material-dark .sb-themeswitch-btn.active {
     background-color: #636363 !important;
 }
 

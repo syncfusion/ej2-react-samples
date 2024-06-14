@@ -6,7 +6,6 @@ import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
-
 export class CellAlign extends SampleBase<{}, {}> {
 
   public treegridObj: TreeGridComponent;
@@ -67,7 +66,7 @@ export class CellAlign extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
                       <div>
-                        <DropDownListComponent width="95px" id="columns" change={this.change.bind(this)}
+                        <DropDownListComponent width="110px" id="columns" change={this.change.bind(this)}
                           dataSource={this.columnNames} fields={{ text: 'name', value: 'id' }} value="taskID"
                           ref={dropdown => this.dropdownObj = dropdown} />
                       </div>
@@ -79,7 +78,7 @@ export class CellAlign extends SampleBase<{}, {}> {
                     </td>
                     <td style={{ width: '70%', padding: '10px 10px 10px 0px' }}>
                       <div>
-                        <DropDownListComponent width="95px" id="alignment" change={this.change2.bind(this)}
+                        <DropDownListComponent width="110px" id="alignment" change={this.change2.bind(this)}
                           dataSource={this.alignment} fields={{ text: 'name', value: 'id' }} value="Right"
                           ref={dropdown => this.dropdownObj2 = dropdown} />
                       </div>

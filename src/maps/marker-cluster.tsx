@@ -18,7 +18,7 @@ export class MarkerCluster extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-panel'>
+            <main><div className='control-panel'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -74,11 +74,12 @@ export class MarkerCluster extends SampleBase<{}, {}> {
                 <div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="http://www.citymayors.com/statistics/largest-cities-population-125.html" target="_blank">www.citymayors.com</a>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                         This sample illustrates the world's top 50 cities by showing the markers in their locations and clustering the markers to avoid intersecting. </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                     <p>
                         In this example, you can see how to display multiple markers in the same region without intersecting each other. If a marker intersects, it will be clustered and the total number of markers will be displayed over the cluster. When zooming in, the number of clusters will be decreased, and the individual marker will be displayed. When zooming out, markers that intersect will again be clustered. You can use the "clusterSettings" property in "layer" to enable marker clustering.
             </p>
@@ -90,8 +91,8 @@ export class MarkerCluster extends SampleBase<{}, {}> {
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a marker and cluster, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
             </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     

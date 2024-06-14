@@ -41,7 +41,7 @@ export class DataBinding extends SampleBase<{}, {}> {
     return (<div className="card">
       <img src={props.ImgPath} alt={props.Title} className="card-img-top" style={{ height: "210px", width: "100%" }} />
       <div className="card-body" style={{ padding: "1rem" }}>
-        <h5 className="card-title">{props.Title}</h5>
+        <h1 className="card-title">{props.Title}</h1>
         <p className="card-text">{props.Content}</p>
       </div>
     </div>);
@@ -59,7 +59,7 @@ export class DataBinding extends SampleBase<{}, {}> {
           </div></div>
         <div id="action-description">
           <p>
-            This sample demonstrates the basic rendering of the <a href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component.
+            This sample demonstrates the basic rendering of the <a aria-label="React Carousel" href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component.
           </p>
         </div>
         <div id="description">

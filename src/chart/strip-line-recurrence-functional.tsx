@@ -51,7 +51,7 @@ const Striplinerecurrence = () => {
     const load = (args) => {
         let selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -71,21 +71,21 @@ const Striplinerecurrence = () => {
                         <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                         <tbody><tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>X Axis:</div>
+                                    <div id="xAxis">X Axis:</div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <input type="checkbox" id="xIndex" defaultChecked={true} onChange={xIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={xcheckElement} />
+                                        <input type="checkbox" id="xIndex" defaultChecked={true} onChange={xIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={xcheckElement} aria-labelledby="Checkbox checked"/>
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Y Axis:</div>
+                                    <div id="yAxis">Y Axis:</div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <input type="checkbox" id="yIndex" defaultChecked={true} onChange={yIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={ycheckElement} />
+                                        <input type="checkbox" id="yIndex" defaultChecked={true} onChange={yIndex.bind(this)} style={{ marginLeft: '-5px' }} ref={ycheckElement} aria-labelledby="Checkbox checked"/>
                                     </div>
                                 </td>
                             </tr></tbody>
@@ -107,7 +107,7 @@ const Striplinerecurrence = () => {
                     Chart component features are segregated into individual feature-wise modules. To use column series, we need to inject <code>ColumnSeries</code> module using <code>Chart.Inject(ColumnSeries)</code> method.
                 </p>
                 <p>
-                    More information on the strip line can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/strip-line/">documentation section</a>.
+                    More information on the strip line can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/strip-line#recurrence-stripline" aria-label="Navigate to the documentation for Recurrence Stripline in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

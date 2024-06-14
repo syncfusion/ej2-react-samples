@@ -62,7 +62,7 @@ const PolarLine = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const change = (): void => {
         chartInstance.series[0].type = dropElement.value as ChartSeriesType;
@@ -134,7 +134,7 @@ const PolarLine = () => {
                         </SeriesCollectionDirective>
                     </ChartComponent>
                     <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                     <a href="http://www.yr.no/place/USA/Alaska/Hatcher_Pass/statistics.html" target="_blank">www.yr.no</a>
+                     <a href="http://www.yr.no/place/USA/Alaska/Hatcher_Pass/statistics.html" target="_blank" aria-label="Navigate to the documentation for yr">www.yr.no</a>
                     </div>
                 </div>
                 <div className='col-md-4 property-section'>
@@ -152,11 +152,11 @@ const PolarLine = () => {
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Closed: </div>
+                                    <div id="closed">Closed: </div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <input type="checkbox" id="isClosed" defaultChecked={true} onChange={closed.bind(this)} style={{ marginLeft: '-5px' }} ref={d => checkElement = d} />
+                                        <input type="checkbox" id="isClosed" defaultChecked={true} onChange={closed.bind(this)} style={{ marginLeft: '-5px' }} ref={d => checkElement = d} aria-labelledby="Checkbox checked"/>
                                     </div>
                                 </td>
                             </tr>
@@ -166,17 +166,17 @@ const PolarLine = () => {
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div data-role="rangeslider">
-                                        <input type="range" defaultValue="0" min="0" max="360" id="startangle" onChange={startAngle.bind(this)} style={{ marginLeft: '-5px' }} ref={d => startangle = d} />
+                                        <input type="range" defaultValue="0" min="0" max="360" id="startangle" onChange={startAngle.bind(this)} style={{ marginLeft: '-5px' }} ref={d => startangle = d} aria-labelledby="Slider"/>
                                     </div>
                                 </td>
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Inversed: </div>
+                                    <div id="inversed">Inversed: </div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <input type="checkbox" id="isinversed" onChange={isInversed.bind(this)} style={{ marginLeft: '-5px' }} ref={d => inversed = d} />
+                                        <input type="checkbox" id="isinversed" onChange={isInversed.bind(this)} style={{ marginLeft: '-5px' }} ref={d => inversed = d} aria-labelledby="Checkbox unchecked"/>
                                     </div>
                                 </td>
                             </tr></tbody>
@@ -204,7 +204,7 @@ const PolarLine = () => {
              </p>
              <p>
                     More information on the polar and radar series with a line type chart can be found in this &nbsp;
-              <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/polar#line">documentation section</a>.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/polar#line" aria-label="Navigate to the documentation for Polar Line in React Chart component">documentation section</a>.
           </p>
             </div>
         </div>

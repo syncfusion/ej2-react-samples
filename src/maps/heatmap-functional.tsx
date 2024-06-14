@@ -69,11 +69,11 @@ const HeatMaps = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
-                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: false }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Bottom', height: '10', width: '350', alignment: 'Center', labelDisplayMode: 'Trim', textStyle: { color: '#757575' } }} titleSettings={{ text: "State wise India's population - 2011", textStyle: { size: '16px' } }}>
+                    <MapsComponent id="maps" loaded={onMapsLoad} load={load} useGroupingSeparator={true} format={"n"} zoomSettings={{ enable: false }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Bottom', height: '10', width: '350', alignment: 'Center', labelDisplayMode: 'Trim' }} titleSettings={{ text: "State wise India's population - 2011", textStyle: { size: '16px' } }}>
                         <Inject services={[Marker, MapsTooltip, Legend]} />
                         <LayersDirective>
                             <LayerDirective shapeData={indiaMap} shapePropertyPath='NAME_1' shapeDataPath='Name' dataSource={datasource.heatmap} tooltipSettings={{ visible: true, valuePath: 'population', format: 'State: ${Name} <br> Population: ${population}' }} shapeSettings={{ colorValuePath: 'population', colorMapping: colormapping }} />
@@ -85,14 +85,15 @@ const HeatMaps = () => {
             <div style={{ float: 'right', marginRight: '10px' }}>
                 Source:<a href="https://en.wikipedia.org/wiki/List_of_states_and_union_territories_of_India_by_population" target="_blank">en.wikipedia.org</a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample visualizes the state wise population of India in the year 2011. Color for each state will be applied based on its value.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to apply the desired colors for the shapes, if its value is within the specified range using the ColorMapping property. Also, the interactive legend has been placed at the bottom of the map.</p>
                 <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.</p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default HeatMaps;

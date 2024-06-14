@@ -65,7 +65,7 @@ export class RecurrenceEvents extends SampleBase<{}, {}> {
           <p>
             In this demo, the recurrence events are defined with different repeat patterns.
             It can be defined through <code>recurrenceRule</code> field which should accept the valid rule string following
-            the <a target="_blank" href="https://tools.ietf.org/html/rfc5545#section-3.3.10">iCalendar</a> specifications.
+            the <a aria-label="iCalender" target="_blank" href="https://tools.ietf.org/html/rfc5545#section-3.3.10">iCalendar</a> specifications.
             The recurring events are differentiated from other events by a repeat marker added
             to the right-bottom of it. These events can repeat on daily, weekly, monthly or yearly basis.
           </p>

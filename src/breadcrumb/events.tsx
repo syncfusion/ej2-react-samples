@@ -72,7 +72,7 @@ export class Events extends SampleBase<{}, {}> {
           <table id="property" title="Event Trace">
             <tr>
               <td>
-                <div className="eventarea" style={{ height: "245px", overflow: "auto" }}>
+                <div className="eventarea" tabIndex={0} style={{ height: "245px", overflow: "auto" }}>
                   <span className="EventLog" id="EventLog" style={{ wordBreak: "normal" }}></span>
                 </div>
               </td>

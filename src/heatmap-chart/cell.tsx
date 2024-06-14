@@ -29,7 +29,7 @@ export class ArrayCell extends SampleBase<{}, {}> {
     ];
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 {/* custom code start */}
                 <style>
                     {SAMPLE_CSS}
@@ -92,13 +92,14 @@ export class ArrayCell extends SampleBase<{}, {}> {
                         <Inject services={[Adaptor, Tooltip]} />
                     </HeatMapComponent>
                 </div>
-                <div id="action-description">
+            </div>    
+                <section id="action-description" aria-label="Description of HeatMap sample">
                     <p>
                         This sample visualizes the percentage growth rate of individuals using the internet in a country
                         compared to the overall population to the country.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                     <p>
                         In this example, you can see how to bind two-dimensional array object as datasource for
                         heatmap and configure the Heatmap using the data adaptor support.
@@ -110,8 +111,8 @@ export class ArrayCell extends SampleBase<{}, {}> {
                         Heatmap component features are separated into discrete feature-based modules. To use a tooltip and the adaptor, inject the <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/adaptorType/" target='_blank'>Adaptor </a> module using the <code>{'<Inject services={[Tooltip, Adaptor]} />'}</code> method.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         );
     }
 

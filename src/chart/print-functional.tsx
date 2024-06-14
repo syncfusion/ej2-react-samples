@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import * as ReactDOM from "react-dom";
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, ChartTheme, ILoadedEventArgs, Category, ColumnSeries, Inject, IPointRenderEventArgs, Legend, DataLabel } from '@syncfusion/ej2-react-charts';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors } from './theme-color';
+import { fabricColors, bootstrapColors, materialColors, highContrastColors, fluentColors, fluentDarkColors, bubbleFabricColors, bubbleMaterialDarkColors, bubbleMaterialColors, bubbleBootstrap5DarkColors, bubbleBootstrapColors, bubbleHighContrastColors, bubbleFluentDarkColors, bubbleFluentColors, bubbleTailwindDarkColors, bubbleTailwindColors, pointFabricColors, pointMaterialDarkColors, pointMaterialColors, pointBootstrap5DarkColors, pointBootstrapColors, pointHighContrastColors, pointFluentDarkColors, pointFluentColors, pointTailwindDarkColors, pointTailwindColors, bubbleBootstrap5Colors, pointBootstrap5Colors, pointMaterial3DarkColors, pointMaterial3Colors , fluent2Colors, fluent2DarkColors} from './theme-color';
 import { PropertyPane } from '../common/property-pane';
 import { EmitType, Browser } from '@syncfusion/ej2-base';
 import { updateSampleSection } from '../common/sample-base';
@@ -24,38 +24,39 @@ const SAMPLE_CSS = `
     }
 
     .e-print-icon::before {
-        content: "\\e34b";
+        content: '\\e34b';
     }
-    
-    .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before
-    {
+ 
+    .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before {
         content: '\\e7df';
     }
-    
+ 
     .e-view.bootstrap .e-print-icon::before {
         content: '\\ebd2';
     }
-    
-    .e-view.bootstrap4 .e-print-icon::before {
+ 
+   .e-view.bootstrap4 .e-print-icon::before {
         content: '\\e743';
     }
-    
+ 
     .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before {
         content: '\\e76c';
     }
-
-    .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
-        content: '\\e75d';
-    }
-    
+ 
     .e-view.highcontrast .e-print-icon::before {
         content: '\\ebf9';
     }
-    
+ 
     .e-view.bootstrap5 .e-print-icon::before, .e-view.bootstrap5-dark .e-print-icon::before {
         content: '\\e75d';
     }
-    
+ 
+    .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+        content: '\\e75d';
+    }
+    .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before, .e-view.fluent2-highcontrast .e-print-icon::before {
+        content: '\\e75d';
+    }
     .e-view.material3 .e-print-icon::before, .e-view.material3-dark .e-print-icon::before {
         content: '\\e75d';
     }
@@ -75,7 +76,7 @@ const Print = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     const labelRender = (args: IPointRenderEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
@@ -110,6 +111,10 @@ const Print = () => {
             args.fill = pointMaterial3DarkColors[args.point.index % 10];
         } else if (selectedTheme === 'material3') {
             args.fill = pointMaterial3Colors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent2') {
+            args.fill = fluent2Colors[args.point.index % 10];
+        } else if (selectedTheme === 'fluent2-dark') {
+            args.fill = fluent2DarkColors[args.point.index % 10];
         }
     }
     const onClick = (e: Event): void => {
@@ -131,6 +136,11 @@ const Print = () => {
                     <PropertyPane title='Properties'>
                     <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                             <tbody>
+                                <tr style={{height: '50px'}}>
+                                    <td style={{textAlign: 'center'}}>
+                                        <b>Print the chart</b>
+                                    </td>
+                                </tr>
                                 <tr style={{ height: '50px' }}>
                                 <td style={{ width: '100%' }}>
                                     <div id="btn-control">
@@ -154,9 +164,7 @@ const Print = () => {
                 </p>
                 <p>
                     More information on the print can be found in this
-                    <a target="_blank"
-                        href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#print">documentation
-                        section</a>.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-print/#print" aria-label="Navigate to the documentation for Print in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div >

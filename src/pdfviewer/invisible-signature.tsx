@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import {
     PdfViewerComponent, Toolbar,FormDesigner,FormFields, Magnification, Navigation, LinkAnnotation, BookmarkView,
-    ThumbnailView, Print, TextSelection, TextSearch,PageOrganizer, Inject
+    ThumbnailView, Print, TextSelection,Annotation, TextSearch,PageOrganizer, Inject
 } from '@syncfusion/ej2-react-pdfviewer';
 import { MessageComponent } from '@syncfusion/ej2-react-notifications';
 import { ToolbarComponent, ItemsDirective, ItemDirective, ClickEventArgs } from '@syncfusion/ej2-react-navigations';
@@ -38,7 +38,7 @@ export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
                             <ItemsDirective>
                                 <ItemDirective prefixIcon='e-icons e-folder-open' id='file_Open' tooltipText='Open' cssClass='e-pv-button-container'></ItemDirective>
                                 <ItemDirective text="Complete Signing"  id='pdfviewer_sign' tooltipText='Finish Signing' disabled={this.buttonVisiblity} align="Right"></ItemDirective>
-                                <ItemDirective prefixIcon='e-icons e-download' tooltipText="Download" id='download' disabled={this.downloadVisiblity} align="Right"  cssClass= 'e-pv-download-document-container'></ItemDirective>
+                                <ItemDirective prefixIcon='e-icons e-download' tooltipText="Download" id='download' cssClass= 'e-pv-download-document-container' disabled={this.downloadVisiblity} align="Right"></ItemDirective>
                             </ItemsDirective>
                         </ToolbarComponent>
                     </div>
@@ -55,7 +55,7 @@ export class InvisibleDigitalSignature extends SampleBase<{}, {}> {
                         addSignature={this.addSignature}
                         style={{ 'display': 'block', 'height': '640px' }}>
                         <Inject services={[Magnification, FormFields, FormDesigner, Navigation, LinkAnnotation, BookmarkView,PageOrganizer,
-                            ThumbnailView, Print, TextSelection, TextSearch]} />
+                            ThumbnailView, Annotation, Print, TextSelection, TextSearch]} />
                     </PdfViewerComponent>
                     <input type="file" id="fileUpload" accept=".pdf" onChange={this.readFile.bind(this)} style={{ 'display': 'block', 'visibility': 'hidden', 'width': '0', 'height': '0' }} />
                 </div>

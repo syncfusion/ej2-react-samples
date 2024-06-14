@@ -69,7 +69,7 @@ export class CylindricalColumn extends SampleBase<{}, {}> {
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can observe the rendering and configuration of a cylindrical column chart. The cylindrical column chart serves the purpose of comparing the frequency, count, total, or average of data across various categories using a cylindrical shape.                    </p>
+                        In this example, you can observe the rendering and configuration of a cylindrical column chart. The cylindrical column chart serves the purpose of comparing the frequency, count, total, or average of data across various categories using a cylindrical shape.</p>
                     <p>
                         Tooltips have been enabled in this example. To experience the tooltip functionality, simply hover over a point or tap on it in touch-enabled devices.                    </p>
                     <p><b>Injecting Module</b></p>
@@ -78,7 +78,7 @@ export class CylindricalColumn extends SampleBase<{}, {}> {
                     </p>
                     <p>
                         More information on the column series can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column#cylindrical-column-chart" aria-label="Navigate to the documentation for Cylindrical Column in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -89,7 +89,7 @@ export class CylindricalColumn extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
 
 }

@@ -28,8 +28,8 @@ const Sorting = () => {
   const sortSettings: any = {
     columns: [{ field: 'TaskName', direction: 'Ascending' }, { field: 'TaskID', direction: 'Ascending' }]
   };
-  const projectStartDate: Date = new Date('03/25/2019');
-  const projectEndDate: Date = new Date('07/28/2019');
+  const projectStartDate: Date = new Date('03/25/2024');
+  const projectEndDate: Date = new Date('07/28/2024');
   return (
     <div className='control-pane'>
       <div className='control-section'>

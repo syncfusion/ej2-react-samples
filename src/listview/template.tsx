@@ -24,7 +24,7 @@ export class Template extends SampleBase<{}, {}> {
             <div className={data.category !== undefined ? "clearfix desc e-list-wrapper e-list-multi-line e-list-avatar'" : "clearfix e-list-wrapper e-list-multi-line e-list-avatar"} >
                 {
                     data.imgSrc !== "" ?
-                        <img className='e-avatar' src={`${data.imgSrc}`} /> : ""
+                        <img className='e-avatar' src={`${data.imgSrc}`} alt="image" /> : ""
                 }
                 <span className="e-list-item-header">{data.title} </span>
                 <span className="e-list-content e-text-overflow" dangerouslySetInnerHTML={{ __html: data.description }} ></span>

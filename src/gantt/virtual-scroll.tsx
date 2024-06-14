@@ -20,8 +20,8 @@ export class Virtualscroll extends SampleBase<{}, {}> {
   public labelSettings: any = {
     taskLabel: 'Progress'
   };
-  public projectStartDate: Date = new Date('04/01/2019');
-  public projectEndDate: Date = new Date('12/31/2025');
+  public projectStartDate: Date = new Date('04/01/2024');
+  public projectEndDate: Date = new Date('12/31/2030');
   render() {
     return (
       <div className='control-pane'>

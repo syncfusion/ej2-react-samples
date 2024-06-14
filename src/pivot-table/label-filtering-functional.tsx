@@ -262,6 +262,11 @@ function LabelFilter () {
                 <b> "User Interaction &gt; Field List"</b> sample and open the filter dialog to experience the same.
                             For API details, refer to the
                 <b> "Field List"</b> sample description.
+                </p><br />
+                <p>
+                    More information on the label filtering can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/filtering#label-filtering">
+                    documentation section</a>.
                 </p>
             </div>
         </div>

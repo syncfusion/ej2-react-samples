@@ -30,7 +30,7 @@ const Filtering = () => {
         <div className='control-pane'>
             <div className='control-section'>
                 <div id='multifilter' className="control-styles">
-                    <h4>Filtering</h4>
+                <label className="h4">Filtering</label>
                     <MultiSelectComponent id="comboelement" dataSource={dataLocal} filtering={onFiltering.bind(this)} allowFiltering={true} fields={fields} placeholder="Select countries" />
                 </div>
             </div>

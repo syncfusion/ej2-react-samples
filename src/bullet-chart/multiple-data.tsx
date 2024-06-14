@@ -62,7 +62,7 @@ export class BulletChartMultipleData extends SampleBase<{}, {}>{
         chart.setAttribute('title',  '');
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/light/i, 'Light').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
     render() {
         return (
@@ -107,13 +107,13 @@ export class BulletChartMultipleData extends SampleBase<{}, {}>{
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can observe how multiple datasets are compared in a bullet chart. Here, each value bar is assigned a different color from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/bullet-chart/#datasource">dataSource</a>.
+                        In this example, you can observe how multiple datasets are compared in a bullet chart. Here, each value bar is assigned a different color from the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/bullet-chart/#datasource" aria-label="Navigate to the dataSource property reference for React Bullet Chart component">dataSource</a>.
                     </p>
                     <p>
                         Tooltips are enabled; to experience the tooltips, hover over a feature bar or comparative bar on the bullet chart.
                     </p>
                     <p>
-                        More information on the data for the bullet chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/bullet-chart/data-binding">documentation section</a>.
+                        More information on the data for the bullet chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/bullet-chart/data-binding" aria-label="Navigate to the documentation for Data Binding in React Bullet Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>

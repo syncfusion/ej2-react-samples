@@ -34,9 +34,9 @@ export class CodeEditor extends SampleBase<{}, {}> {
     private bottomPaneContent(): JSX.Element {
         return(
             <div className="splitter-editor-content">
-                <h3 className="h3">Preview of sample</h3>
+                <label className="h3">Preview of sample</label>
                 <div className="splitter-image">
-                    <img className="img1" src="https://ej2.syncfusion.com/demos/src/listview/images/albert.png" style={imgStyle} />
+                    <img className="img1" src="https://ej2.syncfusion.com/demos/src/listview/images/albert.png" alt="albert" style={imgStyle} />
                 </div>
             </div>
         )
@@ -44,7 +44,7 @@ export class CodeEditor extends SampleBase<{}, {}> {
     private firstPaneContent(): JSX.Element {
         return(
             <div className="splitter-editor-content">
-                <h3 className="h3">HTML</h3>
+                <label className="h3">HTML</label>
                 <div className="code-preview">
                     &lt;<span>!DOCTYPE html&gt;</span>
                     <div>&lt;<span>html&gt;</span></div>
@@ -62,7 +62,7 @@ export class CodeEditor extends SampleBase<{}, {}> {
     private secondPaneContent(): JSX.Element {
         return(
             <div className="splitter-editor-content">
-                <h3 className="h3">CSS</h3>
+                <label className="h3">CSS</label>
                 <div className="code-preview">
                     <span>img &#123; </span>
                     <div id="code-text">margin:<span>0 auto;</span></div>
@@ -76,7 +76,7 @@ export class CodeEditor extends SampleBase<{}, {}> {
     private thirdPaneContent(): JSX.Element {
         return(
             <div className="splitter-editor-content">
-            <h3 className="h3">JavaScript</h3>
+            <label className="h3">JavaScript</label>
                 <div className="code-preview">
                     <span>var</span> image = document.getElementById("custom-image");
                     <div>image.addEventListener("click", function() &#123; </div>

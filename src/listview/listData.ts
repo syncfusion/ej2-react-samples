@@ -380,11 +380,11 @@ export let groupDataSource: any = [
     { Name: 'SIM cards', id: '3', content: 'AT&T', class: 'sim', category: 'Wireless & networks', order: 0 },
     { Name: 'Display', content: 'Adaptive brightness is OFF', id: '4', class: 'display', category: 'Device', order: 1 },
     { Name: 'Sound', content: 'Ringer volume at 50%', id: '5', class: 'sound', category: 'Device', order: 1 },
-    { Name: 'Battery', content: '85%', id: '5', class: 'battery', category: 'Device', order: 1 },
-    { Name: 'Users', content: 'Signed in as Albert', id: '6', class: 'user', category: 'Device', order: 1 },
-    { Name: 'Location', content: 'ON / High accuracy', id: '7', class: 'location', category: 'Personal', order: 2 },
-    { Name: 'Security', id: '8', content: 'Screen Lock', class: 'security', category: 'Personal', order: 2 },
-    { Name: 'Languages & input', content: 'English (US)', id: '9', class: 'language', category: 'Personal', order: 2 }
+    { Name: 'Battery', content: '85%', id: '6', class: 'battery', category: 'Device', order: 1 },
+    { Name: 'Users', content: 'Signed in as Albert', id: '7', class: 'user', category: 'Device', order: 1 },
+    { Name: 'Location', content: 'ON / High accuracy', id: '8', class: 'location', category: 'Personal', order: 2 },
+    { Name: 'Security', id: '9', content: 'Screen Lock', class: 'security', category: 'Personal', order: 2 },
+    { Name: 'Languages & input', content: 'English (US)', id: '10', class: 'language', category: 'Personal', order: 2 }
 ];
 
 export let callHistoryData: { [key: string]: Object }[] = [
@@ -395,19 +395,19 @@ export let callHistoryData: { [key: string]: Object }[] = [
     { text: 'Jones', id: 'missed-02', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
     { text: 'Brown', id: 'received-03', icon: 'e-custom', type: 'received',
         group: 'Received', time: 'Yesterday', category: 'Yesterday' },
-    { text: 'Anderson', id: 'received-01', icon: 'e-custom', type: 'received',
+    { text: 'Anderson', id: 'received-04', icon: 'e-custom', type: 'received',
         group: 'Received', time: '12 hours ago', category: 'Today' },
-    { text: 'Thomas', id: 'received-02', icon: 'e-custom', type: 'received',
+    { text: 'Thomas', id: 'received-05', icon: 'e-custom', type: 'received',
         group: 'Received', time: 'Yesterday', category: 'Yesterday' },
-    { text: 'Jackson', id: 'missed-01', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
-    { text: 'Emily', id: 'missed-01', icon: 'e-custom', type: 'missed', group: 'Missed', time: '14 hours ago', category: 'Today' },
-    { text: 'White', id: 'missed-02', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
-    { text: 'Jones', id: 'missed-02', icon: 'e-custom', type: 'missed', group: 'Missed', time: '18 hours ago', category: 'Today' },
-    { text: 'Grace', id: 'missed-02', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
-    { text: 'Brooklyn', id: 'missed-02', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
-    { text: 'Arianna', id: 'received-01', icon: 'e-custom', type: 'received',
+    { text: 'Jackson', id: 'missed-03', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
+    { text: 'Emily', id: 'missed-04', icon: 'e-custom', type: 'missed', group: 'Missed', time: '14 hours ago', category: 'Today' },
+    { text: 'White', id: 'missed-05', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
+    { text: 'Jones', id: 'missed-06', icon: 'e-custom', type: 'missed', group: 'Missed', time: '18 hours ago', category: 'Today' },
+    { text: 'Grace', id: 'missed-07', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
+    { text: 'Brooklyn', id: 'missed-08', icon: 'e-custom', type: 'missed', group: 'Missed', time: 'Yesterday', category: 'Yesterday' },
+    { text: 'Arianna', id: 'received-06', icon: 'e-custom', type: 'received',
         group: 'Received', time: 'Yesterday', category: 'Yesterday' },
-    { text: 'Katherine', id: 'received-02', icon: 'e-custom', type: 'received',
+    { text: 'Katherine', id: 'received-07', icon: 'e-custom', type: 'received',
         group: 'Received', time: 'Yesterday', category: 'Yesterday' },
 ];
 
@@ -542,16 +542,16 @@ export let groupData: { [key: string]: Object }[] = [
 ];
 //Define an array of JSON data
 export let foodData: { [key: string]: Object }[] = [
-    { text: 'Hamburger', id: 'list-01', price: '$10', src: 'src/listview/images/hamburger.jpg', type: 'non-veg', description: 'A patty of ground beef grilled and placed between two halves of a bun with slices of lettuce and mayonnaise', rating: 3 },
-    { text: 'Cheeseburger', id: 'list-02', price: '$12', src: 'src/listview/images/cheeseburger.jpg', type: 'veg', description: 'A hamburger with a slice of melted cheese on top of the meat patty, added near the end of the cooking time', rating: 4 },
-    { text: 'Sandwich', id: 'list-03', price: '$8', src: 'src/listview/images/sandwich.jpg', type: 'veg', description: 'A combination of vegetables, sliced cheese or meat, placed on or between slices of bread with layer of ingredients', rating: 5 },
-    { text: 'Milkshake', id: 'list-04', price: '$6', src: 'src/listview/images/milkshake.jpg', type: 'veg', description: 'A sweet beverage made by blending milk, ice cream, and flavorings or fruit syrup into a thick, sweet, cold mixture', rating: 3 },
-    { text: 'Muffin', id: 'list-05', price: '$11', src: 'src/listview/images/muffin.jpg', type: 'veg', description: 'Muffins are single-serving quick breads, which rise with the help of baking soda or baking powder and eggs instead of yeast', rating: 4 },
-    { text: 'Pizza', id: 'list-06', price: '$22', src: 'src/listview/images/pizza.jpg', type: 'veg', description: 'A combination of a flattened disk of bread dough with olive oil, oregano, tomato, mozzarella cheese', rating: 3 },
-    { text: 'Onion ring', id: 'list-07', price: '$10', src: 'src/listview/images/onionrings.jpg', type: 'veg', description: 'Consists of a cross-sectional "ring" of onion dipped in bread crumbs and then deep fried; variant is made with onion paste.', rating: 4 },
-    { text: 'Sausage', id: 'list-08', price: '$15', src: 'src/listview/images/sausage.jpg', type: 'veg', description: 'Sausage is a combination of minced/ground meat, a binder, water and seasonings, mild but strongly spiced', rating: 5 },
-    { text: 'Pretzel', id: 'list-09', price: '$25', src: 'src/listview/images/pretzel.jpg', type: 'veg', description: 'Made from a rope of dough, the pretzel is briefly boiled and then glazed with egg, salted, and baked', rating: 3 },
-    { text: 'Pancake', id: 'list-10', price: '$23', src: 'src/listview/images/pancake.jpg', type: 'veg', description: 'A combination of eggs, milk on a hot surface such as a griddle or frying pan, often frying with oil or butter', rating: 4 },
+    { text: 'Hamburger', id: 'list-01', price: '$10', src: 'src/listview/images/hamburger.jpg', altText: 'hamburger', type: 'non-veg', description: 'A patty of ground beef grilled and placed between two halves of a bun with slices of lettuce and mayonnaise', rating: 3 },
+    { text: 'Cheeseburger', id: 'list-02', price: '$12', src: 'src/listview/images/cheeseburger.jpg', altText: 'cheeseburger', type: 'veg', description: 'A hamburger with a slice of melted cheese on top of the meat patty, added near the end of the cooking time', rating: 4 },
+    { text: 'Sandwich', id: 'list-03', price: '$8', src: 'src/listview/images/sandwich.jpg', altText: 'sandwich', type: 'veg', description: 'A combination of vegetables, sliced cheese or meat, placed on or between slices of bread with layer of ingredients', rating: 5 },
+    { text: 'Milkshake', id: 'list-04', price: '$6', src: 'src/listview/images/milkshake.jpg', altText: 'milkshake', type: 'veg', description: 'A sweet beverage made by blending milk, ice cream, and flavorings or fruit syrup into a thick, sweet, cold mixture', rating: 3 },
+    { text: 'Muffin', id: 'list-05', price: '$11', src: 'src/listview/images/muffin.jpg', altText: 'muffin', type: 'veg', description: 'Muffins are single-serving quick breads, which rise with the help of baking soda or baking powder and eggs instead of yeast', rating: 4 },
+    { text: 'Pizza', id: 'list-06', price: '$22', src: 'src/listview/images/pizza.jpg', altText: 'pizza', type: 'veg', description: 'A combination of a flattened disk of bread dough with olive oil, oregano, tomato, mozzarella cheese', rating: 3 },
+    { text: 'Onion ring', id: 'list-07', price: '$10', src: 'src/listview/images/onionrings.jpg', altText: 'onionrings', type: 'veg', description: 'Consists of a cross-sectional "ring" of onion dipped in bread crumbs and then deep fried; variant is made with onion paste.', rating: 4 },
+    { text: 'Sausage', id: 'list-08', price: '$15', src: 'src/listview/images/sausage.jpg', altText: 'sausage', type: 'veg', description: 'Sausage is a combination of minced/ground meat, a binder, water and seasonings, mild but strongly spiced', rating: 5 },
+    { text: 'Pretzel', id: 'list-09', price: '$25', src: 'src/listview/images/pretzel.jpg', altText: 'pretzel', type: 'veg', description: 'Made from a rope of dough, the pretzel is briefly boiled and then glazed with egg, salted, and baked', rating: 3 },
+    { text: 'Pancake', id: 'list-10', price: '$23', src: 'src/listview/images/pancake.jpg', altText: 'pancake', type: 'veg', description: 'A combination of eggs, milk on a hot surface such as a griddle or frying pan, often frying with oil or butter', rating: 4 },
 ];
 //Define an array of JSON data
 export let foodItems: { [key: string]: Object }[] = [

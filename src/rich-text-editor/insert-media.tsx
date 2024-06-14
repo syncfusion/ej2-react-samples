@@ -9,7 +9,7 @@ import './insert-media.css';
 export class InsertMedia extends SampleBase<{}, {}> {
     private rteObj: RichTextEditorComponent;
      // Rich Text Editor items list
-    private items: string[] =  ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', 'Audio', 'Video', '|', 'SourceCode', 'Undo', 'Redo'];
+    private items: string[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote', 'OrderedList', 'UnorderedList', '|', 'CreateLink', 'Image', 'Audio', 'Video', '|', 'SourceCode', 'Undo', 'Redo'];
       //Rich Text Editor ToolbarSettings
     private toolbarSettings: ToolbarSettingsModel = {
         items: this.items
@@ -24,14 +24,14 @@ export class InsertMedia extends SampleBase<{}, {}> {
                         <p>Rich Text Editor allows inserting video and audio from online sources and the local computers where you want to insert a video and audio into your content.</p>
                             <p><b>Get started with Quick Toolbar to click on a video</b></p>
                             <p>Using the quick toolbar, users can replace, align, display, dimension, and delete the selected video.</p>
-                            <p><video controls>
+                            <p><video style={{ width: '30%' }} controls>
                                 <source
-                                src="https://www.w3schools.com/tags/movie.mp4"
+                                    src="https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Ocean-Waves.mp4"
                                 type="video/mp4" />
                             </video></p>   
                             <p><b>Get started with Quick Toolbar to click on an audio</b></p>
                             <p>Using the quick toolbar, users can replace, display, and delete the selected audio.</p>
-                            <p><audio controls><source src="https://assets.mixkit.co/sfx/preview/mixkit-rain-and-thunder-storm-2390.mp3" type="audio/mp3" /></audio></p>
+                            <p><audio controls><source src="https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Audio.wav" type="audio/mp3" /></audio></p>
                             <Inject services={[Link, Image, HtmlEditor, Toolbar, QuickToolbar, Audio, Video, PasteCleanup, Table]}/>
                         </RichTextEditorComponent>
                     </div>

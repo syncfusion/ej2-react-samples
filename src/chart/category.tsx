@@ -99,7 +99,7 @@ export class CategoryAxis extends SampleBase<{}, {}> {
                         </SeriesCollectionDirective>
                     </ChartComponent>
                     <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                         <a href="http://www.internetworldstats.com/top20.htm" target="_blank">www.internetworldstats.com</a>
+                         <a href="http://www.internetworldstats.com/top20.htm" target="_blank" aria-label="Navigate to the documentation for internet world stats">www.internetworldstats.com</a>
                     </div>
                 </div>
                 <div id="action-description">
@@ -123,7 +123,7 @@ export class CategoryAxis extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the Category axis can be found in this &nbsp;
-                      <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/category-axis/" aria-label="Navigate to the documentation for Category Axis in React Chart component">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -138,7 +138,7 @@ export class CategoryAxis extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
 }

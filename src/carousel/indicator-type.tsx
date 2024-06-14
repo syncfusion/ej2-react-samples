@@ -28,7 +28,7 @@ export class IndicatorType extends SampleBase<{}, {}> {
         <div className='control-section indicator-type-section'>
             <div className="row">
                 <div className='col-lg-6 carousel-sample'>
-                <h4>Default Indicator</h4>
+                <h1>Default Indicator</h1>
                 <CarouselComponent cssClass="indicator-type" indicatorsType='Default' autoPlay={false}>
                     <CarouselItemsDirective>
                     <CarouselItemDirective template={this.itemTemplate1.bind(this)} />
@@ -40,7 +40,7 @@ export class IndicatorType extends SampleBase<{}, {}> {
                 </CarouselComponent>
                 </div>
                 <div className='col-lg-6 carousel-sample'>
-                <h4>Dynamic Indicator</h4>
+                <h1>Dynamic Indicator</h1>
                 <CarouselComponent cssClass="indicator-type" indicatorsType='Dynamic' autoPlay={false}>
                     <CarouselItemsDirective>
                     <CarouselItemDirective template={this.itemTemplate1.bind(this)} />
@@ -54,7 +54,7 @@ export class IndicatorType extends SampleBase<{}, {}> {
           </div>
           <div className="row">
                 <div className='col-lg-6 carousel-sample'>
-                <h4>Fraction Indicator</h4>
+                <h1>Fraction Indicator</h1>
                 <CarouselComponent cssClass="indicator-type" indicatorsType='Fraction' autoPlay={false}>
                     <CarouselItemsDirective>
                     <CarouselItemDirective template={this.itemTemplate1.bind(this)} />
@@ -66,7 +66,7 @@ export class IndicatorType extends SampleBase<{}, {}> {
                 </CarouselComponent>
                 </div>
                 <div className='col-lg-6 carousel-sample'>
-                <h4>Progress Indicator</h4>
+                <h1>Progress Indicator</h1>
                 <CarouselComponent cssClass="indicator-type" indicatorsType='Progress' autoPlay={false}>
                     <CarouselItemsDirective>
                     <CarouselItemDirective template={this.itemTemplate1.bind(this)} />

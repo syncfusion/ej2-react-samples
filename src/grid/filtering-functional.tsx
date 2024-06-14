@@ -70,7 +70,7 @@ function Filtering() {
                                     <div>Enable Filterbar operator </div>
                                 </td>
                                 <td style={{ width: '30%', padding: '10px 10px 10px 0px' }}>
-                                    <CheckBoxComponent ref={(scope) => { checkboxObj = scope; }} change={onChanged.bind(this)}></CheckBoxComponent>
+                                    <CheckBoxComponent ref={(scope) => { checkboxObj = scope; }} change={onChanged.bind(this)} aria-label="Enable Filterbar operator"></CheckBoxComponent>
                                 </td>
                             </tr>
                         </tbody>

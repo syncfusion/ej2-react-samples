@@ -11,8 +11,11 @@ import { updateSampleSection } from '../common/sample-base';
 import * as data from './treemap-data/color.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
-    .control-fluid {
-        padding: 0px !important;
+    .colorMappingPadding {
+        margin-left: -10px;margin-top: -10px;padding-left: 10px;
+    }
+    .e-view.fluent2 #property .colorMappingPadding, .e-view.fluent2-dark #property .colorMappingPadding {
+        margin-left: -8px;margin-top: -10px;padding-left: 0px;
     }`;
 const ColorMapping = () => {
     useEffect(() => {
@@ -296,7 +299,7 @@ const ColorMapping = () => {
         // custom code end
     };
     return (
-        <div className="control-pane">
+        <main><div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-md-9">
@@ -371,7 +374,7 @@ const ColorMapping = () => {
                 {/* Property Panel */}
                 <div className="col-md-3 property-section">
                     <PropertyPane title="Properties">
-                        <table
+                        <table role="none"
                             id="property"
                             title="Properties"
                             className="property-panel-table"
@@ -401,7 +404,7 @@ const ColorMapping = () => {
                                     <div style={{ paddingLeft: "0px" }}>Change Opacity</div>
                                 </td>
                                 <td>
-                                    <div style={{ marginLeft: "-10px", marginTop: "-10px" }}>
+                                    <div className="colorMappingPadding">
                                         <CheckBoxComponent
                                             id="opacity"
                                             checked={false}
@@ -458,14 +461,15 @@ const ColorMapping = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of TreeMap sample">
                 <p>
                     This sample visualizes the top 10 largest islands in the world based
                     on area. The color mapping is applied to the items to differentiate
                     them from other items.
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render a tree map with color
                     mapping. The range color mapping and desaturation color mapping group
@@ -484,8 +488,8 @@ const ColorMapping = () => {
                     by feature. To use a legend, inject the <code>Legend</code> module
                     using the <code>TreeMap.Inject(TreeMapLegend)</code> method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 export default ColorMapping;

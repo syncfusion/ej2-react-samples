@@ -28,9 +28,9 @@ const ButtonGroup = () => {
                         <div className="row">
                             <p className="h5">Default</p>
                             <div id="bgicon" className="e-btn-group">
-                                <ButtonComponent iconCss='bg-icons e-btngrp-watch'></ButtonComponent>
-                                <ButtonComponent iconCss='bg-icons e-btngrp-star'></ButtonComponent>
-                                <ButtonComponent iconCss='bg-icons e-btngrp-download'></ButtonComponent>
+                                <ButtonComponent iconCss='bg-icons e-btngrp-watch' aria-label="watch"></ButtonComponent>
+                                <ButtonComponent iconCss='bg-icons e-btngrp-star' aria-label="star"></ButtonComponent>
+                                <ButtonComponent iconCss='bg-icons e-btngrp-download' aria-label="download"></ButtonComponent>
                             </div>
                         </div>
                         <div className="row">

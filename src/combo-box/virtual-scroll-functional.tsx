@@ -57,24 +57,24 @@ const Default = () => {
         <div id='combodefault' className='control-pane'>
             <div className='control-section'>
                 <div className='col-lg-6'>
-                    <div id="local">
-                        <h4> Local Data</h4>
+                    <div className='drop-down-list-content' id="local">
+                    <label className="h4">Local Data</label>
                         <ComboBoxComponent id="localdata" dataSource={records} placeholder="e.g. Item 1" allowFiltering={true} enableVirtualization={true} fields={fields} popupHeight="200px" >
                                 <Inject services={[VirtualScroll]}/>
                             </ComboBoxComponent>
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div id="remote">
-                        <h4>Remote Data</h4>
+                    <div className='drop-down-list-content' id="remote">
+                    <label className="h4">Remote Data</label>
                         <ComboBoxComponent id="remotedata" dataSource={customerData} placeholder="OrderId" allowFiltering={true} enableVirtualization={true} fields={customerField} popupHeight="200px" >
                                 <Inject services={[VirtualScroll]}/>
                             </ComboBoxComponent>
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div id="remote">
-                        <h4>Grouping</h4>
+                    <div className='drop-down-list-content' id="group">
+                    <label className="h4">Grouping</label>
                         <ComboBoxComponent id="groupdata" dataSource={records} placeholder="e.g. Item 1" allowFiltering={true} enableVirtualization={true} fields={groupField} popupHeight="200px" >
                                 <Inject services={[VirtualScroll]}/>
                             </ComboBoxComponent>

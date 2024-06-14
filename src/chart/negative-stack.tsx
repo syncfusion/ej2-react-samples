@@ -74,27 +74,27 @@ export class NegativeStack extends SampleBase<{}, {}> {
                     </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates a stacked bar chart with negative data points. Data point values are shown in data labels.
-            </p>
+                    <p>
+                        This sample illustrates a stacked bar chart with negative data points. Data point values are shown in data labels.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
-                    In this example, you can see how to render and configure negative values in a stacked bar chart. The stacked bar chart stacks points in the series horizontally. You can also use the <code>StackingGroup</code> property to group stacked collections based on category.
-              </p>
+                        In this example, you can see how to render and configure negative values in a stacked bar chart. The stacked bar chart stacks points in the series horizontally. You can also use the <code>StackingGroup</code> property to group stacked collections based on category.
+                    </p>
                     <p>
-                    <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
-             </p>
+                        <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+                    </p>
                     <br></br>
                     <p><b>Injecting Module</b></p>
                     <p>
                         Chart component features are segregated into individual feature-wise modules. To use Stackingbar series, we need to inject
-               <code>StackingBarSeries</code> module into <code>services</code>.
-             </p>
+                        <code>StackingBarSeries</code> module into <code>services</code>.
+                    </p>
                     <p>
                         More information on the stacked bar series can be found in this &nbsp;
-                <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-bar">documentation section</a>.
-             </p>
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stack-bar" aria-label="Navigate to the documentation for Stacked Bar in React Chart component">documentation section</a>.
+                    </p>
                 </div>
             </div>
         )
@@ -108,7 +108,7 @@ export class NegativeStack extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     
         

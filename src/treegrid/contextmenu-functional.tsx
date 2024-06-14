@@ -59,7 +59,7 @@ const TreeContextMenu = () => {
           allowSorting={true}
           allowExcelExport={true}
           allowPdfExport={true}
-          allowResizing={true}
+        allowResizing={true}
         >
           <ColumnsDirective>
             <ColumnDirective

@@ -89,7 +89,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -112,8 +112,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                                 width: '80%',
                                 textStyle: {
                                     fontWeight: '400',
-                                    size: '14px',
-                                    color: '#757575'
+                                    size: '14px'
                                 }
                             }}
                             shapeSelected={this.shapeSelected.bind(this)}
@@ -155,7 +154,7 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                     
                     <div className="popup" id="closepopup">
                     <span id="closebutton">x</span>
-                        <table style={{ marginTop: '5px', width: 'auto' }}>
+                        <table  role='none' style={{ marginTop: '5px', width: 'auto' }}>
                           <tbody>
                             <tr>
                                 <td style={{padding: '0.3px', float: 'left' }}>
@@ -210,12 +209,13 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                 <div style={{float: 'right', marginRight: '10px'}}>Source: 
        <a href="https://en.wikipedia.org/wiki/United_States_presidential_election,_2016" target="_blank">en.wikipedia.org</a>
     </div>
-                <div id="action-description">
+</div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                     This sample visualizes USA president election results in the year 2016. Vote details of a state will be displayed in a popup on clicking a state. Placed interactive legend at the top of the map.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>
                 In this example, you can see how to apply various styles for a shape in the map, when it is clicked or mouse hovered.
                 </p>
@@ -224,8 +224,8 @@ export class SelectionMaps extends SampleBase<{}, {}> {
                 <p>
                    Maps component features are segregated into individual feature-wise modules. To use selection, inject the <code>Selection</code> module using the <code>Maps.Inject(Selection)</code> method, and use highlight by injecting the <code>Highlight</code> module.
                 </p>
-            </div>  
-            </div>
+            </section>  
+        </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {

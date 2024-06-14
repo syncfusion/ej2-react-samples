@@ -8,8 +8,8 @@ import './default.css';
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { AnimationSettingsModel, DialogComponent, TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { getComponent } from '@syncfusion/ej2/base';
+import * as CodeMirror from 'codemirror';
 
-declare let CodeMirror: any;
 export class Default extends SampleBase<{}, {}> {
     public content: string;
     public txtAreaElem: HTMLTextAreaElement;
@@ -20,6 +20,16 @@ export class Default extends SampleBase<{}, {}> {
         if(Browser.isDevice) {
            this.qbObj.summaryView = true;
         }
+        let codeMirrorEditor: any;
+        let validRule: any = this.qbObj.getValidRules(this.qbObj.rule);
+        this.content = JSON.stringify(validRule, null, 4);
+        this.txtAreaElem.value = this.content;
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0] as any, {
+            mode: 'javascript',
+            readOnly: true,
+            theme: 'default' // Set your desired theme here
+        });
+        codeMirrorEditor.setValue(this.content);
     }
     columnData: ColumnsModel[] = [
         {
@@ -81,7 +91,7 @@ export class Default extends SampleBase<{}, {}> {
         this.txtAreaElem.value = this.content;
         /* custom code start */
         document.querySelector('.e-query-preview .preview-content').childNodes[1].remove();
-        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0], {
+        codeMirrorEditor = CodeMirror.fromTextArea(document.getElementsByClassName('e-json-content')[0] as any, {
             mode: 'javascript',
             readOnly: true,
             theme: 'default' // Set your desired theme here
@@ -166,7 +176,7 @@ export class Default extends SampleBase<{}, {}> {
                                 </div>
                             </div>
                             <div className="preview-content">
-                                <textarea className='e-json-content' ref={(scope) => { this.txtAreaElem = scope; }}></textarea>
+                                <textarea className='e-json-content' title="JSON Content" ref={(scope) => { this.txtAreaElem = scope; }}></textarea>
                             </div>
                         </div>
                         </div>

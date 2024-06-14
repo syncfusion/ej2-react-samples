@@ -49,7 +49,7 @@ export class Default extends SampleBase<tooltipComponentProps, tooltipComponentS
                   </td>
                   <td style={{ width: '70%', paddingRight: '10px' }}>
                     <div>
-                      <select id='ddl' name='ddl' onChange={this.change.bind(this)} className='form-control' style={{ padding: '6px' }} >
+                      <select id='ddl' name='ddl' onChange={this.change.bind(this)} className='form-control' style={{ padding: '6px' }} aria-label="positions" >
                         <option value="TopLeft">Top Left</option>
                         <option value="TopCenter" selected>Top Center</option>
                         <option value="TopRight">Top Right</option>

@@ -108,7 +108,13 @@ function Exporting () {
                 <p>
                     Choose the export document type in the dropdown list available inside the property panel and click the export button to export
                     the pivot table to the selected document format.
-                </p>
+                </p><br />
+                <p>
+                        More information on the exporting can be found in these <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/excel-export">Excel Export</a> , <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/excel-export#csv-export">CSV Export</a> & <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/pdf-export">PDF Export</a> documentation section.
+                    </p>
             </div>
         </div>
     )

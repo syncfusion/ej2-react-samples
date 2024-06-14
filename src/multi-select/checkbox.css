@@ -24,3 +24,8 @@
 .e-bigger .e-specific.e-multiselect.e-input-group .e-ddl-icon::before {
     transform: translateY(2px);
 }
+.control-styles .h4 {
+    font-size: 16px;
+    margin: 0 0 10px;
+    font-weight: bold;
+}

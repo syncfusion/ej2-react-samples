@@ -7,6 +7,16 @@ import { sampleData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
+const SAMPLE_CSS = `
+.fluent2,
+.fluent2-dark,
+.fluent2-highcontrast {
+    #columnddl .e-input-group {
+        width: 130px !important;
+    }
+}`;
+
+
 const Editing = () => {
   useEffect(() => {
     updateSampleSection();
@@ -62,6 +72,11 @@ const Editing = () => {
   };
   return (
     <div className="control-pane">
+      {/* custom code start */}
+      <style>
+          {SAMPLE_CSS}
+      </style>
+      {/* custom code end */}
       <div className="control-section">
         <div className="col-md-9">
           <TreeGridComponent

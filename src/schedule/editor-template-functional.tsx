@@ -110,7 +110,7 @@ const EditorTemplate = () => {
       </div>
       <div id='action-description'>
         <p>
-          This demo illustrates the way of customizing the default editor window with a custom template option and the customized
+          This demo illustrates the way of customizing the default editor window with custom template option and the customized
           design is automatically replaced onto the usual event editor. Here, a doctor's daily appointment with his patients is listed
           out and shaded with specific color based on its status.
         </p>

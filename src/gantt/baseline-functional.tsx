@@ -18,8 +18,8 @@ const Baseline = () => {
     baselineEndDate: 'BaselineEndDate'
   };
   let ganttInstance: GanttComponent;
-  const projectStartDate = new Date('03/05/2018 09:30:00 AM');
-  const projectEndDate = new Date('03/05/2018 07:00:00 PM');
+  const projectStartDate = new Date('03/05/2024 09:30:00 AM');
+  const projectEndDate = new Date('03/05/2024 07:00:00 PM');
   const timelineSettings: any = {
     timelineUnitSize: 65,
     topTier: {

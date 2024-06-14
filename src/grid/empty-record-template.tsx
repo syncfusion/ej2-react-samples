@@ -9,9 +9,15 @@ import './empty-record-template.css';
 export class EmptyRecordTemplate extends SampleBase<{}, {}> {
     
     public emptyMessageTemplate(): any {
+        let src: string = '';
+        if (document.body.classList.value.indexOf('dark') > -1 || document.body.classList.value.indexOf('highcontrast') > -1) {
+            src = "src/grid/images/emptyRecordTemplate_dark.svg";
+        } else {
+            src = "src/grid/images/emptyRecordTemplate_light.svg";
+        }
         return (
             <div className='emptyRecordTemplate'>
-                <img src="src/grid/images/emptyRecordTemplate.svg" className="e-emptyRecord" alt="No record"/>
+                <img src={src} className="e-emptyRecord" alt="No record"/>
                 <span>There is no data available to display at the moment.</span>
             </div>
         );

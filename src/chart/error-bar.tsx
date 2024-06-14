@@ -127,14 +127,14 @@ export class ErrorBarChart extends SampleBase<{}, {}> {
                     </ul>
                     <br></br>
                     <p>
-                        The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+                        The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the Tooltip property reference for React Chart">tooltip</a> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
                     </p>
                     <p><b>Injecting Module</b></p>
                     <p>
                         The Charts component’s features are segregated into individual feature modules. To use error bar, we need to inject <code>ErrorBar</code> into the <code>@services</code> section.
                     </p>
                     <p>
-                        More information on the error bar can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#error-bar-chart">documentation section</a>.
+                        More information on the error bar can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/other-types/#error-bar-chart" aria-label="Navigate to the documentation for Error Bar in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -148,7 +148,7 @@ export class ErrorBarChart extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").
-        replace(/light/i, "Light").replace(/contrast/i,'Contrast')  as ChartTheme;
+        replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast')  as ChartTheme;
     };
         
 }

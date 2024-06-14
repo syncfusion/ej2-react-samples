@@ -47,7 +47,7 @@ function Series() {
     function load(args: ISparklineLoadedEventArgs): void {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
-        args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast') as SparklineTheme;
+        args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as SparklineTheme;
     }
 
     return (
@@ -223,7 +223,7 @@ function Series() {
             </div>
             <div id="action-description">
                 <p>
-                    This sample depicts the various types of series available in sparkline
+                    This sample depicts the various types of series available in sparkline.
                 </p>
             </div>
             <div id="description">

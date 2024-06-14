@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Sort, DetailRow, Toolbar, HierarchyGridPrintMode, Page } from '@syncfusion/ej2-react-grids';
+import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Sort, DetailRow, Toolbar, HierarchyGridPrintMode, Page, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { employeeData, hierarchyOrderdata, customerData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { ToolbarComponent, ItemsDirective, ItemDirective } from '@syncfusion/ej2-react-navigations';
@@ -11,6 +11,11 @@ function Print() {
         updateSampleSection();
     }, [])
     let grid: GridComponent;
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
+    const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'Print'];
+    const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    const firstnameRule: Object = { required: true, minLength: 5};
+    const employeeidRules: Object = { required: true, number: true };
     const secondChildGrid: any = {
         dataSource: customerData,
         queryString: 'CustomerID',
@@ -59,16 +64,16 @@ function Print() {
                     </ItemsDirective>
                 </ToolbarComponent>
                 <br />
-                <GridComponent ref={r => grid = r} dataSource={employeeData} childGrid={childGrid} toolbar={['Print']}
+                <GridComponent ref={r => grid = r} dataSource={employeeData} childGrid={childGrid} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar}
                     allowSorting={true} hierarchyPrintMode={'All'}>
                     <ColumnsDirective>
-                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' />
-                        <ColumnDirective field='FirstName' headerText='Name' width='125' />
+                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='125' textAlign='Right' validationRules={employeeidRules} isPrimaryKey={true}/>
+                        <ColumnDirective field='FirstName' headerText='Name' width='125' validationRules={firstnameRule}/>
                         <ColumnDirective field='Title' headerText='Title' width='180' />
-                        <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format='yMd' textAlign='Right' />
+                        <ColumnDirective field='HireDate' headerText='Hire Date' width='135' format='yMd' textAlign='Right' editType='datepickeredit'/>
                         <ColumnDirective field='ReportsTo' headerText='Reports To' width='135' textAlign='Right' />
                     </ColumnsDirective>
-                    <Inject services={[DetailRow, Toolbar, Sort, Page]} />
+                    <Inject services={[DetailRow, Toolbar, Sort, Page, Filter, Edit]} />
                 </GridComponent>
             </div>
 

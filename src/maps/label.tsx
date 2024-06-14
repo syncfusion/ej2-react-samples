@@ -42,7 +42,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -55,7 +55,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
                         >
                             <Inject services={[DataLabel,MapsTooltip]} />
                             <LayersDirective>
-                                <LayerDirective shapeData={usa}
+                                <LayerDirective shapeData={usa} shapePropertyPath='iso_3166_2'
                                     dataLabelSettings={{
                                         visible: true,
                                         labelPath: 'name',
@@ -77,7 +77,7 @@ export class LabelMaps extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-md-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tbody>
                                 <tr style={{ height: '50px' }}>
                                     <td>
@@ -113,12 +113,13 @@ export class LabelMaps extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                 <p>
                   This sample visualizes the names of all the states in USA in data labels. Options have been provided to change the intersect action and smart labels mode of the data labels.
                 </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>
                    In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker templates are used to display the names for shapes and mark specific locations. Legend is enabled in this example to represent each continent.
                 </p>
@@ -130,8 +131,8 @@ export class LabelMaps extends SampleBase<{}, {}> {
                 <p>
                    Maps component features are segregated into individual feature-wise modules. To use a marker, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method, and use a legend by injecting the <code>Legend</code> module.
                 </p>
-            </div>
-            </div>
+            </section>
+        </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {

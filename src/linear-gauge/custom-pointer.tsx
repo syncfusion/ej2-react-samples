@@ -58,14 +58,14 @@ export class CustomPointer extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
                 <div className="control-section">
                     <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ margin: 'auto', padding: '10px' }}>
-                            <table>
+                            <table role='none'>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -130,20 +130,21 @@ export class CustomPointer extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample demonstrates the inclusion of text and image pointers in the linear gauge. Additionally, multiple pointer support is enabled.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure text and image pointers in the linear gauge. The properties available in  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/pointerModel/">PointerDirective</a> and  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/annotationModel/">AnnotationDirective</a> help in the customization of the text and image pointers in the linear gauge.
                     </p>
                     <p>
                         More information on the pointers can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/pointers/">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+        </main>
         )
     }
 }

@@ -59,7 +59,7 @@ export class Print extends SampleBase<{}, {}> {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as SmithchartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as SmithchartTheme;
     }
     render() {
         return (
@@ -111,11 +111,11 @@ export class Print extends SampleBase<{}, {}> {
                             </tr>
                             <tr style={{ 'height': '50px' }}>
                                 <td style={{ 'width': '40%' }}>
-                                    <div>File Name</div>
+                                    <div id="filename">File Name</div>
                                 </td>
                                 <td style={{ 'width': '60%' }}>
                                     <div className="e-float-input" style={{ 'marginTop': '0px', 'marginLeft': '-10px' }}>
-                                        <input id="fileName" ref={d => this.nameElement = d} type="text" defaultValue="Smith chart" style={{ "width": "100px" }} />
+                                        <input id="fileName" ref={d => this.nameElement = d} type="text" defaultValue="Smith chart" style={{ "width": "100px" }} aria-labelledby="Smith Chart"/>
                                     </div>
                                 </td>
                             </tr>

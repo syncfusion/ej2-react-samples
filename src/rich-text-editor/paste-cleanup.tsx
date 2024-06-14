@@ -196,13 +196,11 @@ export class PasteCleanupRTE extends SampleBase<{}, {}> {
                                 <li><code>['a[href, target]']</code> - paste the content by filtering anchor tags that have the 'href' and 'target' attributes.</li>
                             </ul>
                         </li>
-                        <br />
                         <li>Fill the <code>denied attributes</code> to paste the content by filtering out these attributes from the content. For example:
                             <ul>
                                 <code>['id', 'title']</code> - This will remove the attributes 'id' and 'title' from all tags.
                             </ul>
                         </li>
-                        <br />
                         <li>Fill the <code>allowed style properties</code> to paste the content by accepting these style attributes and removing other attributes. For example:
                             <ul>
                                 <code>['color', 'margin']</code> - This will allow only the style properties 'color' and 'margin' in each pasted element.

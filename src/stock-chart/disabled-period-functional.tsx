@@ -37,6 +37,15 @@ const SAMPLE_CSS = `
     #material3-dark-gradient-chart stop {
         stop-color: #4EAAFF;
     }
+    #fluent2-gradient-chart stop {
+        stop-color: #6200EE;
+    }
+    #fluent2-highcontrast-gradient-chart stop {
+        stop-color: #9BB449;
+    }
+    #fluent2-dark-gradient-chart stop {
+        stop-color: #9BB449;
+    }
     #control-container {
         padding: 0px !important;
     }`;
@@ -92,6 +101,18 @@ const PeriodSelector = () => {
                                 <stop offset="0"></stop>
                                 <stop offset="1"></stop>
                             </linearGradient>
+                            <linearGradient id="fluent2-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fluent2-highcontrast-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
+                            <linearGradient id="fluent2-dark-gradient-chart" style={{ opacity: 0.75 }} className="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0"></stop>
+                                <stop offset="1"></stop>
+                            </linearGradient>
                         </defs>
                     </svg>
                 </div>
@@ -101,7 +122,7 @@ const PeriodSelector = () => {
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure stock chart to visualize the stock data. The <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/stock-chart/stockChartModel/#enableperiodselector">enablePeriodSelector</a> property allows to toggle the visibility of period selector.
+                    In this example, you can see how to render and configure stock chart to visualize the stock data. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/stock-chart/stockChartModel/#enableperiodselector" aria-label="Navigate to the enablePeriodSelector property reference for React Stock Chart component">enablePeriodSelector</a> property allows to toggle the visibility of period selector.
                 </p>
                 <p>
                     <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.
@@ -113,7 +134,7 @@ const PeriodSelector = () => {
                     the <code>DateTime</code> module using the <code>StockChart.Inject(DateTime)</code> method.  To use the AreaSeries, inject the <code>AreaSeries</code> module using the <code>StockChart.Inject(AreaSeries)</code> method.
                 </p>
                 <p>
-                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">documentation section</a>.
+                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types" aria-label="Navigate to the documentation for React Stock Chart series types">documentation section</a>.
                 </p>
             </div>
         </div>

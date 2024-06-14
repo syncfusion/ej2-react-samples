@@ -54,6 +54,9 @@ const SAMPLE_CSS = `
      #switchname{
          font-size: 16px; margin-right: 2%
      }
+     #switchname-0{
+        font-size: 16px; margin-right: 2%
+    }
      .e-switch-wrapper {
          margin-top: 5%;
          width: 15%
@@ -96,13 +99,13 @@ function PeriodSelectorCandle() {
                         </div>
                     </div>
                     <div className="col-sm-4">
-                        <label id="switchname" htmlFor="checked"> Closing Price </label>
+                        <label id="switchname-0" htmlFor="checked-0"> Closing Price </label>
                         <SwitchComponent id="checked" checked={true}
                             name="Closing Value"
                             value="Closing Value"
                             cssClass="custom-iOS" change={switchChanged.bind(this)}>
                         </SwitchComponent>
-                        <label id="switchname" htmlFor="checked"> OHLC </label>
+                        <label id="switchname" htmlFor="checked-1"> OHLC </label>
                     </div>
                 </div>
                 <div className="row">
@@ -279,7 +282,7 @@ function PeriodSelectorCandle() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         args.chart.tooltip.format = args.chart.series[0].type === 'Candle' ?
             '${point.x}<br/>High : <b>${point.high}</b><br/>Low : <b>${point.low}</b><br/>' +
             'Open : <b>${point.open}</b><br/>Close : <b>${point.close}</b>' :
@@ -290,7 +293,7 @@ function PeriodSelectorCandle() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         args.rangeNavigator.periodSelectorSettings.height = document.body.className.indexOf('e-bigger') > -1 ? 56 : 42;
         range1Rendered = true;
     };
@@ -298,7 +301,7 @@ function PeriodSelectorCandle() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         args.rangeNavigator.dateTimeModule = new DateTime(args.rangeNavigator as any);
         range2Rendered = true;
     };

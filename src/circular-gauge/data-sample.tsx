@@ -9,9 +9,6 @@ import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
-    }
     .imageStyle {
         width: 16px;
         height: 16px;
@@ -21,7 +18,6 @@ const SAMPLE_CSS = `
     .fontDes {
         float: right;
         padding-left: 5px;
-        color:#424242;
         font-size:20px;
         font-family:inherit";
     }
@@ -129,7 +125,7 @@ export class SampleData extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -154,16 +150,17 @@ export class SampleData extends SampleBase<{}, {}> {
                                                     width: 0,
                                                     height: 0
                                                 }} labelStyle={{
+												    format:'positive {value}',
                                                     position: 'Outside',
                                                     font: { size: '0', color: 'transparent' }
                                                 }}>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective
-                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for Germany"/><div class="fontDes">${pointers[0].value}%</div></div></div>'
+                                                        description='Positive arrow' content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for Germany"/><div class="fontDes">${pointers[0].value}%</div></div></div>'
                                                         angle={180} zIndex='1'
                                                         radius='30%' />
                                                     <AnnotationDirective
-                                                        content='<div class="fontDes1">Germany</div>'
+                                                        description='Germany' content='<div class="fontDes1">Germany</div>'
                                                         angle={180} zIndex='1'
                                                         radius='65%' />
                                                 </AnnotationsDirective>
@@ -205,16 +202,17 @@ export class SampleData extends SampleBase<{}, {}> {
                                                     width: 0,
                                                     height: 0
                                                 }} labelStyle={{
+												    format:'positive {value} ',
                                                     position: 'Outside',
                                                     font: { size: '0', color: 'transprent' }
                                                 }}>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective
-                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for USA" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
+                                                        description=' Positive arrow ' content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/positive.png" alt="Positive value for USA" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
                                                         angle={180} zIndex='1'
                                                         radius='30%' />
                                                     <AnnotationDirective
-                                                        content='<div class="fontDes1">USA</div>'
+                                                        description='USA' content='<div class="fontDes1">USA</div>'
                                                         angle={180} zIndex='1'
                                                         radius='65%' />
                                                 </AnnotationsDirective>
@@ -256,16 +254,17 @@ export class SampleData extends SampleBase<{}, {}> {
                                                     width: 0,
                                                     height: 0
                                                 }} labelStyle={{
+												    format:'negative {value}',
                                                     position: 'Outside',
                                                     font: { size: '0', color: 'transparent' }
                                                 }}>
                                                 <AnnotationsDirective>
                                                     <AnnotationDirective
-                                                        content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/negative.png" alt="Negative value for UK" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
+                                                        description='Negative arrow' content='<div id="templateWrap"><img class="imageStyle" src="src/circular-gauge/images/negative.png" alt="Negative value for UK" /><div class="fontDes">${pointers[0].value}%</div></div></div>'
                                                         angle={180} zIndex='1'
                                                         radius='30%' />
                                                     <AnnotationDirective
-                                                        content='<div class="fontDes1">UK</div>'
+                                                        description='UK' content='<div class="fontDes1">UK</div>'
                                                         angle={180} zIndex='1'
                                                         radius='65%' />
                                                 </AnnotationsDirective>
@@ -307,22 +306,22 @@ export class SampleData extends SampleBase<{}, {}> {
                             </div>
                         </div>
                     </div>
-                    <div id="action-description">
-                        <p>
-                            This sample shows live stock price data displayed in multiple circular gauges.
-                        </p>
-                    </div>
-                    <div id="description">
-                        <p>
-                            The pointer value in the circular gauge can be dynamically updated using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#setpointervalue">setPointerValue</a> method. In this example, the stock price changes across countries are displayed in multiple circular gauges.
-                        </p>
-                        <p>
-                            More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
-                        </p>
-                    </div>
                 </div>
             </div>
-
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
+                    <p>
+                        This sample shows live stock price data displayed in multiple circular gauges.
+                    </p>
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
+                    <p>
+                        The pointer value in the circular gauge can be dynamically updated using the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#setpointervalue">setPointerValue</a> method. In this example, the stock price changes across countries are displayed in multiple circular gauges.
+                    </p>
+                    <p>
+                        More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
+                    </p>
+                </section>
+        </main>
         )
     }
 }

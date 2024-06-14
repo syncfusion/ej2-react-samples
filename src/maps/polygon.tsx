@@ -11,7 +11,7 @@ export class PolygonLayer extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -33,7 +33,7 @@ export class PolygonLayer extends SampleBase<{}, {}> {
                                     tooltipSettings: { visible: true },
                                     polygons: [
                                     {
-                                        tooltipTemplate: '<div style="height: auto; width: 280px; background-color: #fff; padding: 10px;"><table style="padding:10px; border:1px solid #000;"><tr><td style="padding:5px; width: 40%; text-align: center;"><img src="src/maps/images/germany-flag.png" style="height:auto;width: 100%" alt="Germany" /></td><td style="padding:5px"><span style="font-size: 12px; font-weight: 500;display:block">Country Name : Germany</span><span style="font-size: 12px; font-weight: 500;display:block">Capital Name : Berlin</span><span style="font-size: 12px; font-weight: 500;display:block">Population : 83,252,474</span><span style="font-size: 12px; font-weight: 500;display:block">GDP : $4.509 trillion</span></td></tr></table></div>',
+                                        tooltipTemplate: '<div style="height: auto; width: 280px; background-color: #fff; color: #000; padding: 10px;"><table style="padding:10px; border:1px solid #000;"><tr><td style="padding:5px; width: 40%; text-align: center;"><img src="src/maps/images/germany-flag.png" style="height:auto;width: 100%" alt="Germany" /></td><td style="padding:5px"><span style="font-size: 12px; font-weight: 500;display:block">Country Name : Germany</span><span style="font-size: 12px; font-weight: 500;display:block">Capital Name : Berlin</span><span style="font-size: 12px; font-weight: 500;display:block">Population : 83,252,474</span><span style="font-size: 12px; font-weight: 500;display:block">GDP : $4.509 trillion</span></td></tr></table></div>',
                                         points: [
                                             { longitude: 8.64898681640625, latitude: 54.909777539554824 },
                                             { longitude: 8.5638427734375, latitude: 54.90030293114211 },
@@ -1688,12 +1688,13 @@ export class PolygonLayer extends SampleBase<{}, {}> {
                     <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>
                 </div>
                 <br/>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>
                   This sample uses polygons to highlight the Germany region on OpenStreetMap.
                 </p>
-                </div>
-            <div id="description">
+                </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to display polygon shape over the map layer using <code>polygonSettings</code>. You can define the polygon shape using <code>points</code> property. You can use <code>fill</code>, <code>opacity</code>, <code>borderColor</code>, <code>borderWidth</code> and <code>borderOpacity</code> to customize the appearance of the polygon shape.</p>
                 <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a polygon or tap a polygon in touch enabled devices.</p>
                 <br/>
@@ -1701,8 +1702,8 @@ export class PolygonLayer extends SampleBase<{}, {}> {
              <p>
                 Map component features are separated into discrete feature-based modules. To use polygon and its tooltip, inject the <code>Polygon</code> and <code>MapsTooltip</code> modules using the <code>{'<Inject services={[Polygon, MapsTooltip]} />'}</code> method.
              </p>
-            </div>
-            </div>
+            </section>
+        </main>
         )
     }
     

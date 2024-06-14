@@ -179,6 +179,7 @@
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+    table-layout: fixed;
 }
 
 .e-accordion table th,
@@ -186,7 +187,7 @@
     font-weight: normal;
     padding: 5px;
     text-align: left;
-    border: 1px solid #ddd
+    border: 1px solid #ddd;
 }
 
 .product_title {

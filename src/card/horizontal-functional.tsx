@@ -56,7 +56,7 @@ const Horizontal = () => {
                                         </div>
                                         <img src='./src/card/images/Trimmer.png' alt="Trimmer"/>
                                     </div>
-                                    <div className="e-card e-card-horizontal" id="horizontal_product">
+                                    <div className="e-card e-card-horizontal" id="horizontal_product1">
                                         <img src='./src/card/images/Camera.png' style={{ height: '214px' }} alt="Camera"/>
                                         <div className='e-card-stacked'>
                                             <div className="e-card-header">

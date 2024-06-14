@@ -18,6 +18,8 @@ export class FloatingLabel extends SampleBase<{}, {}> {
         ];
         this.fields = { text: 'Label', value: 'Id' };
     }
+    private rows = 5;
+    private cols = 300;
     private value: string = 'Auto';
     private floatLabelData: { [key: string]: Object }[];
     private fields: object;
@@ -38,10 +40,10 @@ export class FloatingLabel extends SampleBase<{}, {}> {
     public render(): JSX.Element {
         return (
             <div className='control-pane'>
-                <div className="col-lg-8 control-section floatinglabel">
+                <div id="textarea-sample" className="col-lg-8 control-section floatinglabel">
                     <div className="content-wrapper">
                         <div className="floatinglabel-row">
-                            <TextAreaComponent id="floatlabel" placeholder="Enter your comments" floatLabelType="Auto" ref={(scope) => { this.textareaObj = scope }}></TextAreaComponent>
+                            <TextAreaComponent id="floatlabel" placeholder="Enter your comments" floatLabelType="Auto" ref={(scope) => { this.textareaObj = scope }}  rows={this.rows} cols={this.cols} ></TextAreaComponent>
                         </div>
                     </div>
                 </div>

@@ -170,7 +170,9 @@ body.fluent-dark,
 .fluent-dark .theme-wrapper.active,
 .fluent-dark .sb-theme-popup li:hover,
 .fluent-dark .sb-search-result .e-list-item:hover,
-.fluent-dark .sb-left-pane .e-listview .e-list-item:hover {
+.fluent-dark .sb-left-pane .e-listview .e-list-item:hover,
+.fluent-dark .sb-themeswitch-btn:hover,
+.fluent-dark .sb-themeswitch-btn.active {
     background-color: #252423;
 
 }
@@ -355,4 +357,21 @@ body.fluent-dark,
 
 .fluent-dark .sb-source-code-section .e-toolbar .e-toolbar-items {
     vertical-align: middle;
+}
+
+.fluent-dark .sb-nextjs-icon {
+    fill: #ffffff;
+}
+
+.fluent-dark .sb-nextjs-icon .sb-nextjs-pathb,
+.fluent-dark .sb-nextjs-icon .sb-nextjs-pathc {
+    fill: #333333;
+}
+
+.fluent-dark #sb-nextjs-btn.e-btn.e-link {
+    color: #0d6efd    ;
+} 
+
+.fluent-dark #sb-nextjs-btn.e-link:hover {
+    color: #1663d7   ;
 }

@@ -8,6 +8,13 @@
   display: block;
 }
 
+p.displayText {
+  margin: 0 0 0 15px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
 .e-bigger #resize-pictureList .e-list-header {
   background-color: white;
  }

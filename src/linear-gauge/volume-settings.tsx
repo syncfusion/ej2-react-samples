@@ -68,7 +68,7 @@ export class VolumeSettings extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -78,7 +78,7 @@ export class VolumeSettings extends SampleBase<{}, {}> {
                             <LinearGaugeComponent load={this.load.bind(this)} background='transparent' id='gaugeone' width='60px' height='350px' orientation='Vertical' container={{ width: 30, roundedCornerRadius: 15, type: 'RoundedRectangle', border: { width: 1 }, backgroundColor: 'transparent' }}>
                                 <Inject services={[Annotations]} />
                                 <AxesDirective>
-                                    <AxisDirective minimum={0} maximum={100} line={{ width: 0 }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ font: { size: '0px' } }}>
+                                    <AxisDirective minimum={0} maximum={100} line={{ width: 0 }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ format:'Music {value} %', font: { size: '0px' } }}>
                                         <PointersDirective>
                                             <PointerDirective value={100} width={30} color='#0074E3' type='Bar' position='Cross' roundedCornerRadius={15} offset={-15}>
                                             </PointerDirective>
@@ -97,7 +97,7 @@ export class VolumeSettings extends SampleBase<{}, {}> {
                             <LinearGaugeComponent load={this.load.bind(this)} background='transparent' id='gaugetwo' width='60px' height='350px' orientation='Vertical' container={{ width: 30, roundedCornerRadius: 15, type: 'RoundedRectangle', border: { width: 1 }, backgroundColor: 'transparent' }}>
                                 <Inject services={[Annotations]} />
                                 <AxesDirective>
-                                    <AxisDirective minimum={0} maximum={100} line={{ width: 0 }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ font: { size: '0px' } }}>
+                                    <AxisDirective minimum={0} maximum={100} line={{ width: 0 }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ format:'Bell {value} %', font: { size: '0px' } }}>
                                         <PointersDirective>
                                             <PointerDirective value={85} width={30} color='#0074E3' type='Bar' position='Cross' roundedCornerRadius={15} offset={-15}>
                                             </PointerDirective>
@@ -116,7 +116,7 @@ export class VolumeSettings extends SampleBase<{}, {}> {
                             <LinearGaugeComponent load={this.load.bind(this)} background='transparent' id='gaugethree' width='60px' height='350px' orientation='Vertical' container={{ width: 30, roundedCornerRadius: 15, type: 'RoundedRectangle', border: { width: 1 }, backgroundColor: 'transparent' }}>
                                 <Inject services={[Annotations]} />
                                 <AxesDirective>
-                                    <AxisDirective minimum={0} maximum={100} line={{ width: 0 }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ font: { size: '0px' } }}>
+                                    <AxisDirective minimum={0} maximum={100} line={{ width: 0 }} minorTicks={{ interval: 10, height: 0 }} majorTicks={{ interval: 20, height: 0 }} labelStyle={{ format:'Clock {value} %', font: { size: '0px' } }}>
                                         <PointersDirective>
                                             <PointerDirective value={65} width={30} color='#0074E3' type='Bar' position='Cross' roundedCornerRadius={15} offset={-15}>
                                             </PointerDirective>
@@ -133,20 +133,21 @@ export class VolumeSettings extends SampleBase<{}, {}> {
                         </div>
                     </div>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample demonstrates volume adjustments made for music/video and alarm clock applications.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure a linear gauge to look like a sound tracker. This can be accomplished by combining axis, pointer and annotation.
                     </p>
                     <p>
                         More information on the linear gauge can be found in this  <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/getting-started/">documentation section</a>.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         )
     }
 } 

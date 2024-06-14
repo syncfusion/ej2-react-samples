@@ -126,7 +126,9 @@ body.fabric-dark,
 .fabric-dark .theme-wrapper.active,
 .fabric-dark .sb-theme-popup li:hover,
 .fabric-dark .sb-search-result .e-list-item:hover,
-.fabric-dark .sb-left-pane .e-listview .e-list-item:hover {
+.fabric-dark .sb-left-pane .e-listview .e-list-item:hover,
+.fabric-dark .sb-themeswitch-btn:hover,
+.fabric-dark .sb-themeswitch-btn.active {
     background-color: #4b4b4b !important;
 }
 

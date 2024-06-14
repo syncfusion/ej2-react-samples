@@ -112,5 +112,27 @@
         { "Name": "Nancy Davolio", "Eimg": "4", "Designation": "Product Manager", "Country": "USA" },
         { "Name": "Robert King", "Eimg": "8", "Designation": "Developer ", "Country": "England" },
         { "Name": "Steven Buchanan", "Eimg": "10", "Designation": "CEO", "Country": "England" }
+    ],
+    "status": [
+        { "ID": "item1", "Text": "Open", "State": false },
+        { "ID": "item2", "Text": "Waiting for Customer", "State": false },
+        { "ID": "item3", "Text": "On Hold", "State": true },
+        { "ID": "item4", "Text": "Follow-up", "State": false },
+        { "ID": "item5", "Text": "Closed", "State": true },
+        { "ID": "item6", "Text": "Solved", "State": false },
+        { "ID": "item7", "Text": "Feature Request", "State": false }
+    ],
+    "vegetables": [
+        { "Vegetable": "Cabbage", "Category": "Leafy and Salad", "ID": "item1", "State": true },
+        { "Vegetable": "Pumpkins", "Category": "Leafy and Salad", "ID": "item2", "State": false },
+        { "Vegetable": "Spinach", "Category": "Leafy and Salad", "ID": "item3", "State": true },
+        { "Vegetable": "Wheat grass", "Category": "Leafy and Salad", "ID": "item4", "State": false },
+        { "Vegetable": "Yarrow", "Category": "Leafy and Salad", "ID": "item5", "State": false },
+        { "Vegetable": "Chickpea", "Category": "Beans", "ID": "item6", "State": true },
+        { "Vegetable": "Green bean", "Category": "Beans", "ID": "item7", "State": false },
+        { "Vegetable": "Horse gram", "Category": "Beans", "ID": "item8", "State": true },
+        { "Vegetable": "Garlic", "Category": "Bulb and Stem", "ID": "item9", "State": false },
+        { "Vegetable": "Nopal", "Category": "Bulb and Stem", "ID": "item10", "State": true },
+        { "Vegetable": "Onion", "Category": "Bulb and Stem", "ID": "item11", "State": false }
     ]
 }

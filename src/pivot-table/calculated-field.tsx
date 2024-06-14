@@ -68,11 +68,17 @@ export class CalculatedFieldClass extends SampleBase<{}, {}> {
                     <p>The calculated field feature allows users to create custom fields which are not present in the actual data. Users can
                         create these fields using basic mathematical expression collaborating with existing fields. Calculated fields can
                         be created through UI dialog as well as code behind and it can be enabled by setting <code>allowCalculatedField</code> as true. The
-                            <code> calculatedFieldSettings</code> property is available to configure the calculated field in code behind.
-                            <br />
+                        <code> calculatedFieldSettings</code> property is available to configure the calculated field in code behind.
+                        <br />
                         <br />The pivot table features are segregated into individual modules. To add calculated field, we need to inject
-                            <code> CalculatedField</code> module into the
-                            <code> services</code>.</p>
+                        <code> CalculatedField</code> module into the
+                        <code> services</code>.
+                    </p><br />
+                    <p>
+                        More information on the calculated field can be found in this <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/calculated-field">
+                        documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

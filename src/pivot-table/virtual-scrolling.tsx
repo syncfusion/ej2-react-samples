@@ -141,8 +141,8 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                         </span>
                         <span id="performanceTime">Time Taken: 0 sec</span>
                     </div>
-                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} enableVirtualization={true} width={Browser.isDevice ? '100%' : 1200} height={300}
-                        gridSettings={{ columnWidth: 140 }} dataBound={this.onDataBound} virtualScrollSettings={{ allowSinglePage: true }}>
+                    <PivotViewComponent id='PivotView' ref={(pivotview) => { pivotObj = pivotview }} dataSourceSettings={dataSourceSettings} enableVirtualization={true} width={'100%'} height={300}
+                        dataBound={this.onDataBound} virtualScrollSettings={{ allowSinglePage: true }}>
                         <Inject services={[VirtualScroll]} />
                     </PivotViewComponent>
                 </div>
@@ -168,12 +168,11 @@ export class VirtualScrolling extends SampleBase<{}, {}> {
                         need to inject the
                         <code> VirtualScroll</code> module using the
                         <code> services</code> tag.
-                    </p>
-                    <br />
+                    </p><br />
                     <p>
                         More information on the virtual scrolling can be found in this <a target="_blank"
-                            href="https://ej2.syncfusion.com/documentation/pivotview/virtual-scrolling">
-                            documentation section</a>.
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/virtual-scrolling">
+                        documentation section</a>.
                     </p>
                 </div>
             </div>

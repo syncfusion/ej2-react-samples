@@ -22,6 +22,7 @@ export class RTEApi extends SampleBase<{}, {}> {
     private Numericvalue: number = 1000;
     private min: number = 555;
     private max: number = 2000;
+    private placeholder: string = "Maximum Length";
     private format: string = 'n0';
     private numericChange = (e: ChangeEventArgs): void => {
         this.rteObj.maxLength = e.value;

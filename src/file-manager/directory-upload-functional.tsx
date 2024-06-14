@@ -69,12 +69,13 @@ const DirectoryUpload = () => {
                     It allows to select or drop a folder to upload all its contents including hierarchy folders and files.
                 </p>
                 <p>
-                    The folder (directory) upload is supported for the following file system providers,
+                    The folder (directory) upload is supported for the following file system providers, </p>
+                <ul>
                     <li> Physical provider</li> 
                     <li> NodeJS provider</li>
                     <li> Azure provider</li>
                     <li> Amazon S3 provider</li>
-                </p>
+                </ul>
                 <p>The File Manager component is used to explore a file system through a web application, similar to the windows explorer for windows. It supports all the basic file operations such as create, rename, delete and so on.</p>
                 <p>
                     <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install 

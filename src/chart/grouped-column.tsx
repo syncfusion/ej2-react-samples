@@ -208,7 +208,7 @@ export class GroupedColumn extends SampleBase<{}, {}> {
                   <br />
                     <p>
                         More information about the grouped column series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column#grouped-column">documentation section</a>.
+                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column#grouped-column" aria-label="Navigate to the documentation for Grouped Column in React Chart component">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -223,7 +223,7 @@ export class GroupedColumn extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
          if (selectedTheme === 'highcontrast') {
             args.chart.series[0].marker.dataLabel.font.color = '#000000';
             args.chart.series[1].marker.dataLabel.font.color = '#000000';

@@ -154,12 +154,13 @@ const MarkerPointer = () => {
     }
 
     return (
+        <main>
         <div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ margin: 'auto', padding: '10px' }}>
-                        <table>
+                        <table role='none'>
                             <tbody>
                                 <tr>
                                     <td>
@@ -237,18 +238,19 @@ const MarkerPointer = () => {
                     </LinearGaugeComponent>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Linear Gauge sample">
                 <p>This sample shows the various marker pointer shapes available in the linear gauge. Additionally, multiple marker pointer, animation and drag support are enabled.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render and configure marker pointer in the linear gauge. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/pointerModel/">PointersDirective</a> collection is useful for displaying multiple pointers. The properties available in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/pointerModel/">PointerDirective</a> help in the customization of the marker pointer in the linear gauge. Drag pointers are assisted by the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#dragstart">dragStart</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#dragend">dragEnd</a> events.
                 </p>
                 <p>
                     More information on the marker pointer can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/pointers/#marker-pointer">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+    </main>
     )
 }
 export default MarkerPointer;

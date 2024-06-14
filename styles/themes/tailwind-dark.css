@@ -131,7 +131,9 @@ body.tailwind-dark,
 .tailwind-dark .theme-wrapper.active,
 .tailwind-dark .sb-theme-popup li:hover,
 .tailwind-dark .sb-search-result .e-list-item:hover,
-.tailwind-dark .sb-left-pane .e-listview .e-list-item:hover {
+.tailwind-dark .sb-left-pane .e-listview .e-list-item:hover,
+.tailwind-dark .sb-themeswitch-btn:hover,
+.tailwind-dark .sb-themeswitch-btn.active {
     background-color: rgb(107, 114, 128) !important;
 }
 
@@ -239,4 +241,13 @@ body.tailwind-dark,
 
 .tailwind-dark .sb-source-code-section .e-toolbar .e-toolbar-items {
     vertical-align: middle;
+}
+
+.tailwind-dark .sb-nextjs-icon {
+    fill: #ffffff;
+}
+
+.tailwind-dark .sb-nextjs-icon .sb-nextjs-pathb,
+.tailwind-dark .sb-nextjs-icon .sb-nextjs-pathc {
+    fill: #333333;
 }

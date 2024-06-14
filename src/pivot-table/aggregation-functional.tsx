@@ -164,6 +164,11 @@ function Aggregation () {
                 </p>
                 <p>
                     To achieve aggregation through UI, navigate to <b>"User Interaction &gt; Field List"</b> sample and click and open the value field settings menu to experience the same.
+                </p><br />
+                <p>
+                    More information on the aggregation can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/aggregation">
+                    documentation section</a>.
                 </p>
             </div>
         </div>

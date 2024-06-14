@@ -54,13 +54,13 @@ function DatetimeCategoryAxis() {
                 </p>
             </div>
             <div id="description">
-                <p>In this example, you can see how to render and configure a stock chart to visualize stock data using the <code>DateTimeCategory</code> axis type. Use series <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">type</a> as <code>Spline</code> to render a spline series.</p>
+                <p>In this example, you can see how to render and configure a stock chart to visualize stock data using the <code>DateTimeCategory</code> axis type. Use series <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types" aria-label="Navigate to the type property reference for React Stock Chart series">type</a> as <code>Spline</code> to render a spline series.</p>
                 <p>
                     <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.
                 </p>
                 <p>
                     More information about axis types can be found in this 
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/axis-types">documentation section</a>.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/axis-types" aria-label="Navigate to the documentation for axis types in React Stock Chart component">documentation section</a>.
                 </p>
                 <p><b>Injecting Module</b></p>
                 <p>
@@ -80,7 +80,7 @@ function DatetimeCategoryAxis() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
 }
 export default DatetimeCategoryAxis;

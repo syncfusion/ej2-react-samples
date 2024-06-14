@@ -34,7 +34,7 @@ const Numeric = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if (selectedTheme === 'highcontrast') {
             args.chart.series[0].fill = '#57BCFF';
             args.chart.series[1].fill = '#E58184';
@@ -52,7 +52,7 @@ const Numeric = () => {
                     </SeriesCollectionDirective>
                 </ChartComponent>
                 <div style={{ float: 'right', marginRight: '10px' }}>Source: &nbsp;
-                    <a href="http://www.espncricinfo.com/icc-world-twenty20-2016/engine/current/match/951373.html" target="_blank">www.espncricinfo.com</a>
+                    <a href="http://www.espncricinfo.com/icc-world-twenty20-2016/engine/current/match/951373.html" target="_blank" aria-label="Navigate to the documentation for espncricinfo">www.espncricinfo.com</a>
                 </div>
             </div>
             <div id="action-description">
@@ -64,7 +64,7 @@ const Numeric = () => {
                 </p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <p>
-                    More information on the Numeric axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/numeric-axis/">documentation section</a>.
+                    More information on the Numeric axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/numeric-axis/" aria-label="Navigate to the documentation for Numeric Axis in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

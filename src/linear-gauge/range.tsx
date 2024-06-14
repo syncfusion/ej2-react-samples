@@ -69,14 +69,14 @@ export class Ranges extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
                 <div className="control-section">
                     <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ margin: 'auto', padding: '10px' }}>
-                            <table>
+                            <table role='none'>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -176,20 +176,21 @@ export class Ranges extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample demonstrates the various customization options for the linear gauge's range. For example, an exponential appearance, a gradient color, and a multiple range.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure ranges in the linear gauge. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/rangeModel/">RangesDirective</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/rangeModel/">RangeDirective</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/linearGradientModel/">linearGradient</a> are used to display multiple ranges, perform range customization, and apply gradient colors, respectively.
                     </p>
                     <p>
                         More information on the ranges can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/ranges/">documentation section</a>.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         )
     }
 } 

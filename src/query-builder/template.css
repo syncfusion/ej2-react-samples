@@ -36,3 +36,10 @@
 	.highcontrast textarea#ruleContent {
 	  background-color: #000;
 	}
+
+    .fluent2-dark .e-query-preview .e-icons.copycode,
+    .fluent2-highcontrast .e-query-preview .e-icons.copycode {
+        background-color: black;
+        padding-bottom: 3px;
+        color: white;
+    }

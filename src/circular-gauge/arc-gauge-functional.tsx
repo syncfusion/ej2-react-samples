@@ -20,8 +20,23 @@ const SAMPLE_CSS = `
     .e-view.highcontrast div.e-handle-first {
         margin-top: 1px;
     }
+    .e-view.highcontrast div.e-handle-first {
+        margin-top: 0px;
+    }
     .e-view.bootstrap5 div.e-handle-first, .e-view.bootstrap5-dark div.e-handle-first, .e-view.material div.e-handle-first, .e-view.material-dark div.e-handle-first {
         margin-top: -1px;
+    }
+    .e-view.fluent2 div.e-handle-first, .e-view.fluent2-highcontrast div.e-handle-first {
+        margin-top: 2.5px;
+    }
+    .e-view.fluent2-dark div.e-handle-first {
+        margin-top: 2px;
+    }
+    .e-view.material3 div.e-handle-first, .e-view.material3-dark div.e-handle-first {
+        margin-top: 4px;
+    }
+    .e-view.bootstrap5 div.e-handle-first, .e-view.bootstrap5-dark div.e-handle-first {
+        margin-top: -2px;
     }
     .control-fluid {
 		padding: 0px !important;
@@ -103,7 +118,7 @@ const ArcGauge = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div id='circular_gauge_sample' className='control-section'>
                 <CircularGaugeComponent title='Progress Tracker' background='transparent' titleStyle={{ fontFamily: 'inherit' }} load={load.bind(this)} loaded={loaded.bind(this)} ref={gauge} id='gauge'>
@@ -111,8 +126,8 @@ const ArcGauge = () => {
                     <AxesDirective>
                         <AxisDirective radius='80%' startAngle={200} endAngle={160} minimum={1} maximum={100} lineStyle={{ width: 0 }} labelStyle={{ font: { fontFamily: 'inherit', size: '0px' } }} majorTicks={{ height: 0 }} minorTicks={{ height: 0 }}>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">60/100</div>' angle={0} radius='0%' zIndex='1' />
-                                <AnnotationDirective content='<div id="slider" style="height:70px;width:250px;"></div>' angle={0} radius='-100%' zIndex='1' />
+                                <AnnotationDirective description='RangeBar pointer value from the slider' content='<div id="pointervalue" style="font-size:35px;width:120px;text-align:center;margin-top:-15px;">60/100</div>' angle={0} radius='0%' zIndex='1' />
+                                <AnnotationDirective description='Slider' content='<div id="slider" style="height:70px;width:250px;"></div>' angle={0} radius='-100%' zIndex='1' />
                             </AnnotationsDirective>
                             <RangesDirective>
                                 <RangeDirective start={1} end={100} radius='90%' startWidth={30} endWidth={30} color='#E0E0E0' roundedCornerRadius={20} />
@@ -125,16 +140,17 @@ const ArcGauge = () => {
                 </CircularGaugeComponent>
                 <SliderComponent className='sliderwrap' id="slider" style={{ width: '250px', marginTop: '-45px' }} type='MinRange' min={0} max={100} value={sliderValue} limits={{ enabled: true, minStart: 0, minEnd: 100 }} change={sliderChange.bind(this)} ref={sliderElement} />
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample shows the work progress using a circular gauge and a range bar pointer with rounded corners.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>In this example, you can see how to render the range and range bar pointer with rounded corners. A slider is placed at the bottom of the circular gauge using annotation to change the range bar pointer value. Based on the value, the color of the pointer can also be changed.</p>
                 <p>
                     More information on the ranges can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-ranges/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+    </main>
     )
 }
 export default ArcGauge;

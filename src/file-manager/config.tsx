@@ -1,5 +1,6 @@
 export const FileManagerSampleOrder: Object = [
     { 'path': 'file-manager/overview', 'component': 'Overview', 'name': 'Overview', 'description': 'This example demonstrates full view of the File Manager like a windows explorer UI  in a React File Manager.', 'order': '01', 'category': 'File Manager', 'api': '{"FileManager":["ajaxSettings", "view"] }'},
+    { 'path': 'file-manager/flat-data', 'component': 'FlatData', 'type':'new', 'name': 'Flat Data', 'description': 'This example demonstrates how to render the File Manager with flat data in a React File Manager. It uses a flat data object as an array of JSON for rendering.', 'order': '01', 'category': 'File Manager'},
     { 'path': 'file-manager/custom-thumbnail', 'component': 'CustomThumbnail', 'name': 'Custom Thumbnails', 'description': 'This example demonstrates the how to use the custom thumbnails for files and folders in a React File Manager.', 'order': '01', 'category': 'File Manager', 'api': '{"FileManager":["ajaxSettings"] }',
     'sourceFiles': [
         { 'displayName': 'custom-thumbnail.tsx', 'path': 'src/file-manager/custom-thumbnail.tsx' },

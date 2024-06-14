@@ -1,11 +1,16 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, RowDD, Inject, Sort} from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, RowDD, Inject, Sort, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit} from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { SampleBase } from '../common/sample-base';
 
 export class Source extends SampleBase<{}, {}> {
-
+    public filterSettings: FilterSettingsModel = {type: 'Excel'};
+    public toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    public editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    public customeridRule: Object = { required: true, minLength: 5};
+    public orderidRules: Object = { required: true, number: true };
+    public freightRules: Object = { required: true, min: 0 };
     public data: Object[] = orderDetails;
     public rowDropSettings: Object = { targetID: 'DestGrid' };
     public srcSelectionSettings: Object = { type: 'Multiple' };
@@ -18,23 +23,23 @@ export class Source extends SampleBase<{}, {}> {
                     <p>Drag and Drop Rows between two Grids</p>
                     <div style={{ display: 'inline-block' }}>
                         <div style={{ float: 'left', width: '49%' }}>
-                            <GridComponent id="Grid" dataSource={this.data} allowPaging={true} pageSettings={{ pageCount: 1 }} allowSorting={true} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings} selectionSettings={this.srcSelectionSettings}>
+                            <GridComponent id="Grid" dataSource={this.data} allowPaging={true} pageSettings={{ pageCount: 1 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings} selectionSettings={this.srcSelectionSettings}>
                                 <ColumnsDirective>
-                                <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
-                                <ColumnDirective field='CustomerName' headerText='Customer Name' width='130'></ColumnDirective>
-                                <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'/>
+                                <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+                                <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={this.customeridRule}></ColumnDirective>
+                                <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit'/>
                                 </ColumnsDirective>
-                                <Inject services={[Page, RowDD, Sort]} />
+                                <Inject services={[Page, RowDD, Sort, Toolbar, Filter, Edit]} />
                             </GridComponent>
                         </div>
                         <div style={{ float: 'right', width: '49%' }}>
-                            <GridComponent id="DestGrid" allowPaging={true} pageSettings={{ pageCount: 2 }} allowSorting={true} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings2} selectionSettings={this.destSelectionSettings}>
+                            <GridComponent id="DestGrid" allowPaging={true} pageSettings={{ pageCount: 2 }} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} toolbar={this.toolbar} allowRowDragAndDrop={true} rowDropSettings={this.rowDropSettings2} selectionSettings={this.destSelectionSettings}>
                                 <ColumnsDirective>
-                                <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
-                                <ColumnDirective field='CustomerName' headerText='Customer Name' width='130'></ColumnDirective>
-                                <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'/>
+                                <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={this.orderidRules} isPrimaryKey={true}></ColumnDirective>
+                                <ColumnDirective field='CustomerName' headerText='Customer Name' width='130' validationRules={this.customeridRule}></ColumnDirective>
+                                <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' validationRules={this.freightRules} editType='numericedit'/>
                                 </ColumnsDirective>
-                                <Inject services={[Page, RowDD, Sort]} />
+                                <Inject services={[Page, RowDD, Sort, Toolbar, Filter, Edit]} />
                             </GridComponent>
                         </div>
                     </div>

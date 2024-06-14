@@ -21,19 +21,19 @@ const Default = () => {
             <div id="multisection" className='control-section'>
                 <div id="multidefault">
                     <div className="control-styles">
-                        <h4>Default Mode</h4>
+                    <label className="h4"> Default Mode</label>
                         <div>
                             <MultiSelectComponent id="defaultelement" dataSource={sportsData} mode="Default" fields={fields} placeholder="Favorite Sports" />
                         </div>
                     </div>
                     <div className="control-styles">
-                        <h4>Box Mode</h4>
+                    <label className="h4">Box Mode</label>
                         <div>
                             <MultiSelectComponent id="boxelement" dataSource={sportsData} mode="Box" fields={fields} placeholder="Favorite Sports" />
                         </div>
                     </div>
                     <div className="control-styles">
-                        <h4> Delimiter Mode</h4>
+                    <label className="h4">Delimiter Mode</label>
                         <div>
                             <MultiSelectComponent id="delimiterelement" dataSource={sportsData} mode="Delimiter" fields={fields} placeholder="Favorite Sports" />
                         </div>

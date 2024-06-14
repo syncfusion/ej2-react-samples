@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { PivotViewComponent, IDataOptions, IDataSet, PivotFieldListComponent, Inject, CalculatedField, PivotFieldList } from '@syncfusion/ej2-react-pivotview';
+import { PivotViewComponent, IDataOptions, IDataSet, PivotFieldListComponent, Inject, FieldList as fieldList, CalculatedField } from '@syncfusion/ej2-react-pivotview';
 import { Browser, setStyleAttribute } from '@syncfusion/ej2-base';
 import { SampleBase } from '../common/sample-base';
 import * as pivotData from './pivot-data/Pivot_Data.json';
@@ -85,7 +85,7 @@ export class FieldList extends SampleBase<{}, {}> {
                 </style>
                 <div className="control-section" style={{ overflow: 'auto' }}>
                     <PivotViewComponent id='PivotView' ref={d => this.pivotObj = d} enginePopulated={this.afterPivotPopulate.bind(this)} width={'99%'} height={'580'} gridSettings={{ columnWidth: 140 }}>
-                    <Inject services={[CalculatedField, PivotFieldList]} />
+                    <Inject services={[CalculatedField, fieldList]} />
                     </PivotViewComponent>
                     <PivotFieldListComponent id='PivotFieldList' ref={(d: any) => this.fieldlistObj = d} enginePopulated={this.afterPopulate.bind(this)} dataSourceSettings={dataSourceSettings} renderMode={"Fixed"} allowCalculatedField={true} enableFieldSearching={true} load={this.onLoad} dataBound={this.ondataBound.bind(this)}>
                         <Inject services={[CalculatedField]} />
@@ -112,6 +112,11 @@ export class FieldList extends SampleBase<{}, {}> {
                     <p>
                         <strong>NOTE:</strong> To enable calculated field, inject
                         <code> CalculatedField</code>
+                    </p><br />
+                    <p>
+                        More information on the field list can be found in this <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/field-list">
+                        documentation section</a>.
                     </p>
                 </div>
             </div>

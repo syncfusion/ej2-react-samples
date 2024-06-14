@@ -14,6 +14,56 @@
     padding: 20px 0 10px;
 }
 
+.e-pv-e-sign-form-field-property{
+    width: 72px;
+    height: 72px;
+    margin: 9px;
+    border: 1px solid lightgrey!important;
+    border-radius: 8px;
+    display: grid;
+    place-content: center;
+}
+
+#e-pv-e-sign-save{
+    border: 1px solid black;
+    border-radius: 16px;
+}
+
+#e-pv-e-sign-finishbtn{
+    border: 1px solid black;
+    border-radius: 16px;
+    font-size: 12px;
+}
+.e-pv-e-sign-user-dropdown .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::before,.e-pv-e-sign-user-dropdown .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::after{
+    width:0px;
+}
+
+#e-pv-e-sign-user-field{    
+    color: #222933;
+    font-family: Heebo, open sans, "sans-serif", -apple-system, BlinkMacSystemFont;
+    border-radius: 4px;
+    display: flex;     
+    position: relative;
+    left: 1px;    
+}
+#e-pv-e-sign-toolbar-user-viewer.e-toolbar .e-toolbar-items .e-toolbar-left .e-toolbar-item:first-child{
+    margin-left: 0px !important;
+}
+
+#e-pv-e-sign-toolbar-user-viewer{
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 1px 0px rgba(0, 0, 0, 0.30);
+    z-index: 1111;
+}
+#e-pv-e-sign-defaultSidebar{    
+    height:640px;
+    position: absolute;    
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+}
+
+.e-pv-e-sign-user-dropdown > :first-child {
+    border: none !important;
+}
+
 #magnificationToolbar {
     background: transparent;
     height: auto;

@@ -31,7 +31,7 @@ const StackedLine100 = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className="control-pane">
@@ -66,7 +66,7 @@ const StackedLine100 = () => {
                     Chart component features are segregated into individual feature-wise modules. To use 100% stacking line series, we need to inject <code>StackingLineSeries</code>  module into <code>services</code>.
                 </p>
                 <p>
-                    More information about the line series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
+                    More information about the line series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/stacked-line" aria-label="Navigate to the documentation for 100% Stacked Line Chart in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

@@ -43,7 +43,7 @@ const Navigator = () => {
             </div>
             <div id="description">
                 <p>
-                    In this example, you can see how to render and configure stock chart to visualize the stock data. The <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/stock-chart/stockChartModel/#enableselector">enableSelector</a> property allows to toggle the visibility of range selector.
+                    In this example, you can see how to render and configure stock chart to visualize the stock data. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/stock-chart/stockChartModel/#enableselector" aria-label="Navigate to the enableSelector property reference for React Stock Chart component">enableSelector</a> property allows to toggle the visibility of range selector.
                 </p>
                 <p>
                     <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.
@@ -55,7 +55,7 @@ const Navigator = () => {
                     the <code>DateTime</code> module using the <code>StockChart.Inject(DateTime)</code> method.  To use the LineSeries, inject the <code>LineSeries</code> module using the <code>StockChart.Inject(LineSeries)</code> method.
                 </p>
                 <p>
-                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types">documentation section</a>.
+                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types" aria-label="Navigate to the documentation for React Stock Chart series types">documentation section</a>.
                 </p>
             </div>
         </div>

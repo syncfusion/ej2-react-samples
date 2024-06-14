@@ -16,6 +16,10 @@
     font-size: 18px;
 }
 
+.toolbar-sample h1 {
+    font-size: 18px;
+}
+
 @media only screen and (min-width: 1224px) {
     .toolbar-sample {
         width: 700px;

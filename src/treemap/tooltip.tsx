@@ -29,7 +29,7 @@ export class Tooltip extends SampleBase<{}, {}> {
 	
 	render() {
 		return (
-			<div className='control-pane'>
+			<main><div className='control-pane'>
 				<style>
 					{SAMPLE_CSS}
 				</style>
@@ -110,19 +110,20 @@ export class Tooltip extends SampleBase<{}, {}> {
 				<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://en.wikipedia.org/wiki/List_of_international_airports_by_country" target="_blank">en.wikipedia.org</a>
 				</div>
-				<div id="action-description">
+			</div >
+				<section id="action-description" aria-label="Description of TreeMap sample">
 					<p>
 						This sample depicts the number of international airports available in various countries in South America. On hover, the items details will be displayed in tooltip.
             </p>
-				</div>
-				<div id="description">
+				</section>
+				<section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
 					<p>
 						In this example, you can see how to apply equal color mapping and apply colors to TreeMap items based on certain value.
 						<br /><br />
 						Tooltip template is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch enabled devices.
 					</p>
-				</div>
-			</div >
+				</section>
+			</main>
 		)
 	}
 }

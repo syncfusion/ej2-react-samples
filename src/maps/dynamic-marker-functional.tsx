@@ -12,12 +12,17 @@ import { updateSampleSection } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
-    }
     .e-input[disabled] {
         border-bottom-color: inherit;
         background-image: none;
+    }
+    .dynamicCheckBox {
+        padding-left: 0px;
+        margin-left: 0px;
+    }
+    .e-view.fluent2 #property .dynamicCheckBox, .e-view.fluent2-dark #property .dynamicCheckBox {
+        padding-left: 0px;
+        margin-left: -10px !important;
     }`;
 const DynamicMarker = () => {
     useEffect(() => {
@@ -142,13 +147,13 @@ const DynamicMarker = () => {
         }
     };
     return (
-        <div className='control-panel'>
+        <main><div className='control-panel'>
             <style>{SAMPLE_CSS}</style>
             <div className='col-lg-9 control-section'>
                 <MapsComponent id="container" load={load} click={click.bind(this)} ref={mapInstance} zoomSettings={{ enable: true }}>
                     <Inject services={[Marker, NavigationLine, Zoom]} />
                     <LayersDirective>
-                        <LayerDirective layerType='OSM' />
+                        <LayerDirective urlTemplate="https://tile.openstreetmap.org/level/tileX/tileY.png" />
                     </LayersDirective>
                 </MapsComponent>
                 <div>
@@ -161,14 +166,14 @@ const DynamicMarker = () => {
             </div>
             <div className="col-lg-3 property-section">
                 <PropertyPane title='Properties'>
-                    <table id="property" title="Properties" style={{ width: '100%', marginTop: '5px' }}>
+                    <table id="property" role='none' title="Properties" style={{ width: '100%', marginTop: '5px' }}>
                         <tbody>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '50%' }}>
                                     <div style={{ padding: '0px', display: 'inline-block' }}>Marker</div>
                                 </td>
                                 <td style={{ width: '50%' }}>
-                                    <div style={{ marginLeft: '0px', marginTop: '-2px' }}>
+                                    <div className="dynamicCheckBox" style={{ marginLeft: '0px', marginTop: '-2px' }}>
                                         <CheckBoxComponent id='marker' change={markerChange.bind(this)} checked />
                                     </div>
                                 </td>
@@ -178,7 +183,7 @@ const DynamicMarker = () => {
                                     <div style={{ padding: '0px' }}>Line</div>
                                 </td>
                                 <td style={{ width: '50%' }}>
-                                    <div style={{ marginLeft: '0px', marginTop: '-2px' }}>
+                                    <div className="dynamicCheckBox" style={{ marginLeft: '0px', marginTop: '-2px' }}>
                                         <CheckBoxComponent id='line' change={lineChange} />
                                     </div>
                                 </td>
@@ -188,7 +193,7 @@ const DynamicMarker = () => {
                                     <div style={{ padding: '0px' }}>Connecting line</div>
                                 </td>
                                 <td style={{ width: '50%' }}>
-                                    <div style={{ marginLeft: '0px', marginTop: '-2px' }}>
+                                    <div className="dynamicCheckBox" style={{ marginLeft: '0px', marginTop: '-2px' }}>
                                         <CheckBoxComponent id='connect' change={connectLineChange.bind(this)} ref={connectLineInstance} disabled />
                                     </div>
                                 </td>
@@ -224,18 +229,19 @@ const DynamicMarker = () => {
                     </table>
                 </PropertyPane>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample shows how custom markers and lines can be dynamically added to our maps with UI interaction. Marker or line can be chosen from the properties panel.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>Using UI interaction, the markers or line can be added as follows: You can get the currently clicked geo location by passing "PointerEvent" or "MouseEvent" argument and layer index to the "getGeoLocation" method. Then, use that geo position to place the marker or line in the appropriate position.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p>
                     The features of maps component are segregated into individual feature-wise modules. To use navigation lines and marker, you need to inject the <code>NavigationLine </code> and <code>Marker </code> module using the <code>Maps.Inject(NavigationLine, Marker)</code> method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default DynamicMarker;

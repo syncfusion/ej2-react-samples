@@ -76,7 +76,7 @@ const Events = () => {
           <table id="property" title="Event Trace">
             <tr>
               <td>
-                <div className="eventarea" ref={eventObj} style={{ height: "245px", overflow: "auto" }}>
+                <div className="eventarea" tabIndex={0} ref={eventObj} style={{ height: "245px", overflow: "auto" }}>
                   <span className="EventLog" id="EventLog" style={{ wordBreak: "normal" }} dangerouslySetInnerHTML={{ __html: eventLog }}></span>
                 </div>
               </td>

@@ -14,11 +14,11 @@ const Default = () => {
         <div>
             <div className="control-section">
                 <div id="chip-default-wrapper">
-                    <div className="chips-headers">Chips</div>
+                    <div id="chips" className="chips-headers">Chips</div>
 
                     <div className="sample-padding">
                         {/* initialize default chip component */}
-                        <ChipListComponent id="chip-default" >
+                        <ChipListComponent id="chip-default" aria-labelledby="chips">
                             <ChipsDirective>
                                 <ChipDirective text="Apple" cssClass="e-primary"></ChipDirective>
                                 <ChipDirective text="Microsoft" cssClass="e-info"></ChipDirective>
@@ -31,11 +31,11 @@ const Default = () => {
 
                     <div className="separator"></div>
 
-                    <div className="chips-headers">Input Chips</div>
+                    <div id="inputChips" className="chips-headers">Input Chips</div>
 
                     <div className="sample-padding">
                         {/* initialize avatar chip component */}
-                        <ChipListComponent id="chip-avatar" enableDelete={true}>
+                        <ChipListComponent id="chip-avatar" enableDelete={true} aria-labelledby="inputChips">
                             <ChipsDirective>
                                 <ChipDirective text="Anne" leadingIconCss="anne"></ChipDirective>
                                 <ChipDirective text="Janet" leadingIconCss="janet"></ChipDirective>
@@ -47,11 +47,11 @@ const Default = () => {
 
                     <div className="separator"></div>
 
-                    <div className="chips-headers">Filter Chips</div>
+                    <div id="filterChips" className="chips-headers">Filter Chips</div>
 
                     <div className="sample-padding">
                         {/* initialize filter chip component */}
-                        <ChipListComponent id="chip-filter" selectedChips={[1, 3]} selection="Multiple">
+                        <ChipListComponent id="chip-filter" selectedChips={[1, 3]} selection="Multiple" aria-labelledby="filterChips">
                             <ChipsDirective>
                                 <ChipDirective text="Extra small" ></ChipDirective>
                                 <ChipDirective text="Small" ></ChipDirective>
@@ -64,11 +64,11 @@ const Default = () => {
 
                     <div className="separator"></div>
 
-                    <div className="chips-headers">Choice Chips</div>
+                    <div id="choiceChips" className="chips-headers">Choice Chips</div>
 
                     <div className="sample-padding">
                         {/* initialize choice chip component */}
-                        <ChipListComponent id="chip-choice" selection="Single" cssClass="e-outline" selectedChips={[1]} >
+                        <ChipListComponent id="chip-choice" selection="Single" cssClass="e-outline" selectedChips={[1]} aria-labelledby="choiceChips">
                             <ChipsDirective>
                                 <ChipDirective text="Send a text" leadingIconCss="text"></ChipDirective>
                                 <ChipDirective text="Set a reminder" leadingIconCss="alarm"></ChipDirective>

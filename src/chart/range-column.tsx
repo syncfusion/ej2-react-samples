@@ -54,7 +54,7 @@ export class RangeColumn extends SampleBase<{}, {}> {
                         <code>RangeColumnSeries</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the range column series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#column-charts">documentation section</a>.
+                        More information on the range column series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/range-column" aria-label="Navigate to the documentation for Range Column in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>

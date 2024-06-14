@@ -67,14 +67,14 @@ export class Default extends SampleBase<{}, {}> {
                     </StockChartComponent>
                 </div>
                 <div id="action-description">
-                    <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart">React Stock Chart</a> example visualizes the AAPL stock price with candle chart. Tooltip and crosshair show the information about the data and period.</p>
+                    <p>This <a target="_blank" href="https://www.syncfusion.com/react-components/react-stock-chart" aria-label="Default React Stock Chart">React Stock Chart</a> example visualizes the AAPL stock price with candle chart. Tooltip and crosshair show the information about the data and period.</p>
                 </div>
                 <div id="description">
                     <p>
-                        In this example, you can see how to render and configure the stock chart. The candle type series chart shows financial data and trends at equal intervals. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/period-selector">Period Selector</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/range-selector">Range Selector</a> can be used to select a range with specified periods.
+                        In this example, you can see how to render and configure the stock chart. The candle type series chart shows financial data and trends at equal intervals. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/period-selector" aria-label="Navigate to the documentation for Period Selector in React Stock Chart component">Period Selector</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/range-selector" aria-label="Navigate to the documentation for Range Selector in React Stock Chart component">Range Selector</a> can be used to select a range with specified periods.
                     </p>
                     <p>
-                        Stock Chart provides support to 10 types of <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/technical-indicators">Technical Indicators</a> namely <code>Accumulation Distribution</code>, <code>ATR</code>, <code>EMA</code>, <code>SMA</code>, <code>TMA</code>, <code>Momentum</code>, <code>MACD</code>, <code>RSI</code>, <code>Stochastic</code>, <code>Bollinger Band</code>. By using indicator dropdown box, add and remove the required indicator types.
+                        Stock Chart provides support to 10 types of <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/technical-indicators" aria-label="Navigate to the documentation for Technical Indicators in React Stock Chart component">Technical Indicators</a> namely <code>Accumulation Distribution</code>, <code>ATR</code>, <code>EMA</code>, <code>SMA</code>, <code>TMA</code>, <code>Momentum</code>, <code>MACD</code>, <code>RSI</code>, <code>Stochastic</code>, <code>Bollinger Band</code>. By using indicator dropdown box, add and remove the required indicator types.
                     </p>
                     <p>
                         <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.
@@ -90,7 +90,7 @@ export class Default extends SampleBase<{}, {}> {
                         <code>StockChart.Inject(CandleSeries)</code> method.
                     </p>
                     <p>
-                        More information about the stock charts can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/getting-started">documentation section</a>.
+                        More information about the stock charts can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/getting-started" aria-label="Navigate to the documentation for getting started with React Stock Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>

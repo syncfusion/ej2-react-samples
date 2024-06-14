@@ -18,7 +18,7 @@ const CurvedMaps = () => {
     useEffect(() => {
         updateSampleSection();
     }, [])
-    let markerTemplate = '<div id="marker1" style="font-size:12px;color:black;font-weight:500">{{:name}}' + "</div>";
+    let markerTemplate = '<div style="font-size:12px;color:black;font-weight:500">{{:name}}' + "</div>";
     let datasource1: any = data1 as any;
     let datasource2: any = data2 as any;
     let shapeSettings: ShapeSettingsModel = {
@@ -42,7 +42,7 @@ const CurvedMaps = () => {
         // custom code end
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
@@ -71,17 +71,18 @@ const CurvedMaps = () => {
                     Source:<a href="https://www.tibettravel.org/nepal-map/nepal-india-map.html" target="_blank">www.tibettravel.org</a>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample demonstrates the flight routes from India to China.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to render the curved lines between two points in a map. You can use the dashArray, width, and color properties to customize the appearance of the navigation lines..</p>
                 <p>Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a maker in touch enabled devices.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p> Maps component features are segregated into individual feature-wise modules. To use the navigation lines, inject the NavigationLines module using the Maps.Inject(NavigationLines)method.</p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default CurvedMaps;

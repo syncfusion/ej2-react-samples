@@ -6,6 +6,14 @@ import { sampleData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
+const SAMPLE_CSS = `
+  .fluent2,
+  .fluent2-dark,
+  .fluent2-highcontrast {
+    #selectiondd1 .e-input-group {
+      width: 110px !important;
+    }
+}`;
 export class Selection extends SampleBase<{}, {}> {
 
   private typeDropdownObj: DropDownListComponent;
@@ -57,6 +65,11 @@ export class Selection extends SampleBase<{}, {}> {
   render() {
     return (
       <div className='control-pane'>
+      {/* custom code start */}
+      <style>
+          {SAMPLE_CSS}
+        </style>
+        {/* custom code end */}
         <div className='control-section'>
           <div className = 'col-md-9'>
             <TreeGridComponent dataSource={sampleData} treeColumnIndex={1} childMapping= 'subtasks' height='350' allowPaging={true}
@@ -81,7 +94,7 @@ export class Selection extends SampleBase<{}, {}> {
                       <div style={{ paddingTop: '7px', paddingLeft: '2px' }}> Selection Type </div>
                     </td>
                     <td style={{ width: '70%', paddingRight: '10px' }}>
-                      <div>
+                      <div id='selectiondd1'>
                         <DropDownListComponent width="100px" id="type" change={this.typeChange.bind(this)}
                           dataSource={this.types} fields={{ text: 'type', value: 'id' }} value="Multiple"
                           ref={dropdown => this.typeDropdownObj = dropdown} />

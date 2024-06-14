@@ -125,6 +125,7 @@ const SAMPLE_CSS = `
     width: 17px;
     margin-left: 2px;
     margin-bottom: 4px;
+    margin-top: 3px;
 }
 
 .material #gaugeTwo_Axis_0_Annotation_0 .firstAnnotation, .material-dark #gaugeTwo_Axis_0_Annotation_0 .firstAnnotation {
@@ -160,6 +161,7 @@ const SAMPLE_CSS = `
     width: 17px;
     margin-left: 2px;
     margin-bottom: 4px;
+    margin-top: 2px;
 }
 
 .material #gaugeThree_Axis_0_Annotation_0 .secondAnnotation, .material-dark #gaugeThree_Axis_0_Annotation_0 .secondAnnotation {
@@ -193,7 +195,7 @@ const SAMPLE_CSS = `
 .tailwind #gaugeFour_Axis_0_Annotation_0 .thirdAnnotation, .tailwind-dark #gaugeFour_Axis_0_Annotation_0 .thirdAnnotation {
     height: 17px;
     width: 17px;
-    margin-top: -7px;
+    margin-top: -2px;
     margin-left: 1px;
 }
 
@@ -266,7 +268,7 @@ const AppleWatchGauge = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section' id="apple-watch-rings">
                 <div className="col-xs-10 col-sm-10 col-lg-8 col-md-8">
@@ -274,11 +276,11 @@ const AppleWatchGauge = () => {
                         <CircularGaugeComponent load={load.bind(this)} id='gaugeOne' background='transparent' height={"400px"} width={"400px"}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
-                                <AxisDirective startAngle={0} endAngle={360} minimum={0} maximum={100} lineStyle={{ width: 0 }} labelStyle={{ font: { size: '0px', color: 'transparent' }, position: 'Inside', useRangeColor: true }} majorTicks={{ height: 0 }} minorTicks={{ height: 0 }}>
+                                <AxisDirective startAngle={0} endAngle={360} minimum={0} maximum={100} lineStyle={{ width: 0 }} labelStyle={{ format:'Red Gauge {value}', font: { size: '0px', color: 'transparent' }, position: 'Inside', useRangeColor: true }} majorTicks={{ height: 0 }} minorTicks={{ height: 0 }}>
                                     <AnnotationsDirective>
-                                        <AnnotationDirective content='<div id="annotation1"><img style="width:22px;height:22 px;" src="src/circular-gauge/images/image1.svg" /></div>' angle={8} radius='80%' zIndex='1' />
-                                        <AnnotationDirective content='<div id="annotation2"><img style="width:22px;height:22px;" src="src/circular-gauge/images/image2.svg" /></div>' angle={11} radius='58%' zIndex='1' />
-                                        <AnnotationDirective content='<div id="annotation3"><img style="width:22px;height:22px;" src="src/circular-gauge/images/image3.svg" /></div>' angle={16} radius='36%' zIndex='1' />
+                                        <AnnotationDirective description='The Gauge is indicated with a red arrow' content='<div id="annotation1"><img alt="Red arrow" style="width:22px;height:22 px;" src="src/circular-gauge/images/image1.svg" /></div>' angle={8} radius='80%' zIndex='1' />
+                                        <AnnotationDirective content='<div id="annotation2"><img alt="Green arrow" style="width:22px;height:22px;" src="src/circular-gauge/images/image2.svg" /></div>' angle={11} radius='58%' zIndex='1' />
+                                        <AnnotationDirective content='<div id="annotation3"><img alt="Blue arrow" style="width:22px;height:22px;" src="src/circular-gauge/images/image3.svg" /></div>' angle={16} radius='36%' zIndex='1' />
                                     </AnnotationsDirective>
                                     <RangesDirective>
                                         <RangeDirective start={0} end={100} radius='90%' startWidth={40} endWidth={40} color='#fa114f' opacity={0.2} />
@@ -286,9 +288,9 @@ const AppleWatchGauge = () => {
                                         <RangeDirective start={0} end={100} radius='46%' startWidth={40} endWidth={40} color='#00d8fe' opacity={0.2} />
                                     </RangesDirective>
                                     <PointersDirective>
-                                        <PointerDirective animation={{ enable: true }} value={65} radius='90%' color='#fa114f' pointerWidth={40} type='RangeBar' roundedCornerRadius={25} />
-                                        <PointerDirective animation={{ enable: true }} value={43} radius='68%' color='#99ff01' pointerWidth={40} type='RangeBar' roundedCornerRadius={25} />
-                                        <PointerDirective animation={{ enable: true }} value={58} radius='46%' color='#00d8fe' pointerWidth={40} type='RangeBar' roundedCornerRadius={25} />
+                                        <PointerDirective description='RangeBar pointer value :65' animation={{ enable: true }} value={65} radius='90%' color='#fa114f' pointerWidth={40} type='RangeBar' roundedCornerRadius={25} />
+                                        <PointerDirective description='RangeBar pointer value :43' animation={{ enable: true }} value={43} radius='68%' color='#99ff01' pointerWidth={40} type='RangeBar' roundedCornerRadius={25} />
+                                        <PointerDirective description='RangeBar pointer value :58' animation={{ enable: true }} value={58} radius='46%' color='#00d8fe' pointerWidth={40} type='RangeBar' roundedCornerRadius={25} />
                                     </PointersDirective>
                                 </AxisDirective>
                             </AxesDirective>
@@ -373,16 +375,17 @@ const AppleWatchGauge = () => {
                     </div>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample resembles the appearance of Apple watch rings. This is similar to an activity tracker, which records the specifics of each move, exercise, and stand.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>In this example, you can see how to make the circular gauge look like the Apple watch rings. Ranges have rounded corners and annotations are used to indicate the move, exercise, and stand values.</p>
                 <p>
                     More information on the annotations can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-annotations/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+    </main>
     )
 }
 export default AppleWatchGauge;

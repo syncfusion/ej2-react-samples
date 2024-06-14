@@ -37,7 +37,7 @@ const Direction = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} id='direction-gauge' background='transparent' axisLabelRender={onLabelRender.bind(this)}>
@@ -52,18 +52,19 @@ const Direction = () => {
                     </AxesDirective>
                 </CircularGaugeComponent>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample demonstrates how to create a direction compass by modifying the circular gauge's functionalities to meet the needs of the user.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>
                     In this example, a direction compass has been depicted by adding a couple of needle pointers in the circular gauge and customizing labels to show the direction.
                 </p>
                 <p>
                     More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+    </main>
     )
 }
 export default Direction;

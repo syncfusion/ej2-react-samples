@@ -29,7 +29,7 @@ function Templates (){
     const cusPosition: PositionDataModel = { X: 'Right' };
     const tempPosition: PositionDataModel = !Browser.isDevice ? { X: 'Right', Y: 'Bottom' } : { X: 'Center', Y: 'Top' };
     const tempTarget: HTMLElement | Element | string = !Browser.isDevice ? document.body : '#toast_template_target';
-    const template: string = '<div class="e-toast-template">${if(image)}<img class="e-toast-icon e-toast-image" src="${image.url}" />${/if} ${if(from || subject)}<div class="e-toast-message">${if(from)}<div class="e-toast-title">${from}</div>${/if} ${if(subject)}<div class="e-toast-content">${subject}</div>${/if}</div>${/if}</div>';
+    const template: string = '<div class="e-toast-template">${if(image)}<img class="e-toast-icon e-toast-image" src="${image.url}" alt="img" />${/if} ${if(from || subject)}<div class="e-toast-message">${if(from)}<div class="e-toast-title">${from}</div>${/if} ${if(subject)}<div class="e-toast-content">${subject}</div>${/if}</div>${/if}</div>';
     const toastData: { [key: string]: Object }[] = [
         { from: ' Anjolie Stokes', subject: 'Networking Referral', image: { url: 'src/toast/resource/laura.png' }, },
         { from: ' Ila Russo', subject: 'Business dinner invitation', image: { url: 'src/toast/resource/janat.png' }, },
@@ -131,7 +131,7 @@ function Templates (){
                                     Olive Way by 10:00PM </div>
                         </div>
                     </div>
-                    <img src="./src/toast/resource/map.jpg" width="100%" height="70%" />
+                    <img src="./src/toast/resource/map.jpg" alt="map" width="100%" height="70%" />
                     <div className="snooze"> Snooze for </div>
                     <div id='snoozedropDown'>
                         <DropDownListComponent id="snoozeDD" dataSource={snoozeData} ref={(dropdownlist) => { listObj = dropdownlist }} change={listChange.bind(this)} placeholder={waterMark} value={value} popupHeight={height} />

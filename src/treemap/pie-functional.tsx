@@ -200,7 +200,7 @@ const Pie = () => {
         return new Object({ name: dataName, data: dataSource });
     };
     return (
-        <div className="control-pane">
+        <main><div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-md-12">
@@ -257,13 +257,14 @@ const Pie = () => {
                     </a>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of TreeMap sample">
                 <p>
                     This sample visualizes the population level of various continents in
                     2011 based on the gender and age group.
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render a pie chart as a template
                     for leaf items in TreeMap. Any custom HTML element can be rendered as
@@ -273,8 +274,8 @@ const Pie = () => {
                     Tooltip is enabled in this example. To see the tooltip in action,
                     hover the mouse over an item or tap an item in touch enabled devices.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 export default Pie;

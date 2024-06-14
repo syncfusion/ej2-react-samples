@@ -1,25 +1,25 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Sort, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Sort, Inject, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { categoryData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { PropertyPane } from '../common/property-pane';
 
 export class Searching extends SampleBase<{}, {}> {
-
+    public filterSettings: FilterSettingsModel = {type: 'Excel'};
     public toolbarOptions: any = ['Search'];
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section row'>
-                    <GridComponent dataSource={categoryData} toolbar={this.toolbarOptions} allowSorting={true} allowPaging={true} pageSettings={{ pageSize: 10, pageCount: 5 }} >
+                    <GridComponent dataSource={categoryData} toolbar={this.toolbarOptions} allowSorting={true} allowFiltering={true} filterSettings={this.filterSettings} allowPaging={true} pageSettings={{ pageSize: 10, pageCount: 5 }} >
                         <ColumnsDirective>
                             <ColumnDirective field='CategoryName' headerText='Category Name' width='170'></ColumnDirective>
                             <ColumnDirective field='ProductName' headerText='Product Name' width='150'></ColumnDirective>
                             <ColumnDirective field='QuantityPerUnit' headerText='Quantity PerUnit' width='180' textAlign='Right' />
                             <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='Right' />
                         </ColumnsDirective>
-                        <Inject services={[Toolbar, Page, Sort]} />
+                        <Inject services={[Toolbar, Page, Sort, Filter]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">

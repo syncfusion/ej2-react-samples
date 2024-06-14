@@ -16,13 +16,14 @@ export class CustomFormat extends SampleBase<{}, {}> {
     // set the value to Rich Text Editor
     private template: string = `The sample is configured with customized markdown syntax using the __formatter__ property. Type the content and click the toolbar item to view customized markdown syntax. For unordered list, you need to add a plus sign before the word (e.g., + list1). Or To make a phrase bold, you need to add two underscores before and after the phrase (e.g., __this text is bold__).`;
 
+    private placeholder: string = "Enter your text here...";
     // Rich Text Editor items list
     private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'StrikeThrough', '|',
-        'Formats', 'OrderedList', 'UnorderedList', '|',
+        'Formats', 'Blockquote', 'OrderedList', 'UnorderedList', '|',
         'CreateLink', 'Image', '|',
         {
             tooltipText: 'Preview',
-            template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn">' +
+            template: '<button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn"  aria-label="Preview Code">' +
                 '<span class="e-btn-icon e-icons e-md-preview"></span></button>'
         }, 'Undo', 'Redo'];
 

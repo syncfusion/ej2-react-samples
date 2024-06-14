@@ -36,7 +36,7 @@ const RadialSlider = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} dragMove={dragMove.bind(this)} enablePointerDrag={true} id='custom-labels' ref={gauge} background='transparent'>
@@ -58,16 +58,17 @@ const RadialSlider = () => {
                     </AxesDirective>
                 </CircularGaugeComponent>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample demonstrates how to create a range slider component by utilizing the functions available in the circular gauge.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>In this example, you can see how to render and configure a new range slider in the circular gauge. It is possible to achieve this by combining ranges and a marker pointer. The marker pointer has been made interactive, so the value changes as you drag it.</p>
                 <p>
                     More information on the circular gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
                 </p>
-            </div>
-        </div >
+            </section>
+        </main>
     )
 }
 export default RadialSlider;

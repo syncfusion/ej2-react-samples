@@ -74,7 +74,7 @@ const LargeData = () => {
     };
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             {/* custom code start */}
             <style>{SAMPLE_CSS}</style>
             {/* custom code end */}
@@ -83,10 +83,11 @@ const LargeData = () => {
                     <Inject services={[Legend, Tooltip, Adaptor]} />
                 </HeatMapComponent>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of HeatMap sample">
                 <p>This sample visualizes the annual traffic report of an airport with the number of flight arrivals in a year. The data label is disabled in this sample, the tooltip displays the data point values.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
             <p>
                 In this example, you can see how to switch the Heatmap to canvas rendering mode.The rendering performance will be better in <code>Canvas</code> rendering mode, while loading large datasets. You can switch the rendering mode for Heatmap between <code>SVG</code> and <code>Canvas</code> using the <a href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/rendering-mode" target="_blank">renderingMode</a> property. When the <code>renderingMode</code> property is set to <code>Auto</code>, the rendering mode will be switched automatically based of the size of data source to improve the rendering performance.
             </p>
@@ -98,8 +99,8 @@ const LargeData = () => {
                     href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> and <a target="_blank"
                     href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/legend">Legend</a> module using the <code>{'<Inject services={[Tooltip, Legend]} />'}</code> method.
             </p>
-            </div>
-        </div >
+            </section>
+        </main>
     );
 }
 export default LargeData;

@@ -13,11 +13,11 @@ export class Gallery extends SampleBase<{}, {}> {
   public gallerySettings: RibbonGallerySettingsModel = (
     {
         select: this.gallerySelect,
-        popupWidth: '580px',
+        popupWidth: '544px',
         itemCount: 3,
         groups: [{
                 itemWidth: '100',
-                itemHeight: '30',
+                itemHeight: '40',
                 header: 'Title and Headings',
                 items: [
                     {
@@ -43,7 +43,7 @@ export class Gallery extends SampleBase<{}, {}> {
                 ]
             }, {
                 itemWidth: '100',
-                itemHeight: '30',
+                itemHeight: '40',
                 header: 'Data and Model',
                 items: [
                     {
@@ -69,7 +69,7 @@ export class Gallery extends SampleBase<{}, {}> {
                 ]
             }, {
                 itemWidth: '100',
-                itemHeight: '30',
+                itemHeight: '40',
                 header: 'Good, Bad and Neutral',
                 items: [{
                         content: 'Normal',

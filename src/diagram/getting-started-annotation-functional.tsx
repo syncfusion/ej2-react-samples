@@ -513,6 +513,7 @@ function GettingStartedAnnotation() {
                       id="bold"
                       iconCss={"e-diagram-icons e-diagram-bold"}
                       ref={boldref => (bold = boldref)}
+                      aria-label="bold"
                     >
                       {" "}
                     </ButtonComponent>
@@ -523,6 +524,7 @@ function GettingStartedAnnotation() {
                       id="italic"
                       iconCss={"e-diagram-icons e-diagram-italic"}
                       ref={italicref => (italic = italicref)}
+                      aria-label="italic"
                     >
                       {" "}
                     </ButtonComponent>
@@ -533,6 +535,7 @@ function GettingStartedAnnotation() {
                       id="underline"
                       iconCss={"e-diagram-icons e-diagram-underline"}
                       ref={underLineref => (underLine = underLineref)}
+                      aria-label="underline"
                     >
                       {" "}
                     </ButtonComponent>
@@ -576,6 +579,7 @@ function GettingStartedAnnotation() {
                         changed("fontsize");
                       }}
                       ref={fontsize => (fontSize = fontsize)}
+                      aria-label="font-size-textBox"
                     />
                   </div>
                   <div className="col-xs-4 column-style">

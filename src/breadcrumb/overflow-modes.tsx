@@ -87,7 +87,7 @@ export class OverflowModes extends SampleBase<{}, {}> {
               </div>
             </div>
             <div className="row material2">
-              <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+              <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" aria-hidden= 'true'>
               <BreadcrumbComponent enableNavigation={false} maxItems={3} overflowMode='Wrap'>
                   <BreadcrumbItemsDirective>
                     <BreadcrumbItemDirective text="Home" url="./" />

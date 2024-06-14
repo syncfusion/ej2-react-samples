@@ -27,6 +27,8 @@
 .tailwind-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
 .fluent #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
 .fluent-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.fluent2 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
+.fluent2-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
 .bootstrap5 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
 .bootstrap5-dark #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
 .material3 #rteCustomFormat .e-icon-btn.e-active .e-md-preview::before,
@@ -40,6 +42,8 @@
 .bootstrap5-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
 .fluent #rteCustomFormat .e-icon-btn .e-md-preview::before,
 .fluent-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.fluent2 #rteCustomFormat .e-icon-btn .e-md-preview::before,
+.fluent2-dark #rteCustomFormat .e-icon-btn .e-md-preview::before,
 .material3 #rteCustomFormat .e-icon-btn .e-md-preview::before,
 .material3-dark #rteCustomFormat .e-icon-btn .e-md-preview::before {
     content: '\e7de';

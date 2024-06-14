@@ -92,7 +92,7 @@ export class Grouping extends SampleBase<{}, {}> {
                                             <MultiSelectComponent id="dategroup" dataSource={groupData}
                                                 mode="CheckBox" enableSelectionOrder={false} showDropDownIcon={true} popupWidth={'150'} width={'150'} value={selectedGroups}
                                                 placeholder={'Search group'} filterBarPlaceholder={'Search group'}
-                                                select={this.applyGroupSettings.bind(this)} removed={this.applyGroupSettings.bind(this)}>
+                                                select={this.applyGroupSettings.bind(this)} removed={this.applyGroupSettings.bind(this)} aria-label={'multiselect'}>
                                                 <Inject services={[CheckBoxSelection]} />
                                             </MultiSelectComponent>
                                         </div>
@@ -162,9 +162,13 @@ export class Grouping extends SampleBase<{}, {}> {
                             </td>
                             <td>Specifies the interval value to group the number field.</td>
                         </tr>
-                    </table>
+                    </table><br />
+                    <p>
+                        More information on the grouping can be found in this <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/grouping">
+                        documentation section</a>.
+                    </p>
                 </div>
-
             </div>
         )
     }

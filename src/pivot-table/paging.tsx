@@ -273,6 +273,11 @@ export class Paging extends SampleBase<{}, {}> {
                         need to inject the
                         <code>Pager</code> module using the
                         <code> services</code> tag.
+                    </p><br />
+                    <p>
+                        More information on the paging can be found in this <a target="_blank"
+                            href="https://ej2.syncfusion.com/react/documentation/pivotview/paging">
+                        documentation section</a>.
                     </p>
                 </div>
             </div>

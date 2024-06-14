@@ -108,7 +108,9 @@ body.bootstrap-dark,
 .bootstrap-dark .theme-wrapper.active,
 .bootstrap-dark .sb-theme-popup li:hover,
 .bootstrap-dark .sb-search-result .e-list-item:hover,
-.bootstrap-dark .sb-left-pane .e-listview .e-list-item:hover {
+.bootstrap-dark .sb-left-pane .e-listview .e-list-item:hover,
+.bootstrap-dark .sb-themeswitch-btn:hover,
+.bootstrap-dark .sb-themeswitch-btn.active {
     background-color: #363636 !important;
 }
 

@@ -14,6 +14,7 @@ export class Format extends SampleBase<{}, {}> {
     if (args.cell.innerHTML === 'High') {
       let x: HTMLElement = document.createElement('IMG');
       x.setAttribute('src', 'src/treegrid/images/__High.png');
+      x.setAttribute('alt', 'High');
       x.setAttribute('height', '15px');
       let span: HTMLElement = document.createElement('span');
       span.innerHTML = args.cell.innerHTML;
@@ -24,6 +25,7 @@ export class Format extends SampleBase<{}, {}> {
     } else if (args.cell.innerHTML === 'Critical') {
      let y: HTMLElement = document.createElement('IMG');
      y.setAttribute('src', 'src/treegrid/images/__Critical.png');
+     y.setAttribute('alt', 'Critical');
      y.setAttribute('height', '15px');
      let span: HTMLElement = document.createElement('span');
      span.innerHTML = args.cell.innerHTML;
@@ -34,6 +36,7 @@ export class Format extends SampleBase<{}, {}> {
     } else if (args.cell.innerHTML === 'Low') {
      let z: HTMLElement = document.createElement('IMG');
      z.setAttribute('src', 'src/treegrid/images/__Low.png');
+     z.setAttribute('alt', 'Low');
      z.setAttribute('height', '15px');
      let span: HTMLElement = document.createElement('span');
      span.innerHTML = args.cell.innerHTML;
@@ -44,6 +47,7 @@ export class Format extends SampleBase<{}, {}> {
     } else if (args.cell.innerHTML === 'Normal') {
      let a: HTMLElement = document.createElement('IMG');
      a.setAttribute('src', 'src/treegrid/images/__Normal.png');
+     a.setAttribute('alt', 'Normal');
      a.setAttribute('height', '15px');
      let span: HTMLElement = document.createElement('span');
      span.innerHTML = args.cell.innerHTML;

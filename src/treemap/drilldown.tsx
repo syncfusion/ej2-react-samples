@@ -12,18 +12,23 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-buttons";
 import { PropertyPane } from '../common/property-pane';
 import { Alignment } from "@syncfusion/ej2-charts";
+import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
+    
 import * as data from './treemap-data/drilldown-sample.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
-		}`;
+	.drilldown-checkbox {
+        padding-left: 0px !important;
+    }
+    .e-view.fluent2 #property .drilldown-checkbox, .e-view.fluent2-dark #property .drilldown-checkbox {
+        padding-left: 0px; margin-left: -10px;
+    }`;
 
 export class Drilldown extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
 	private prevTime: Date;
 	private curTime: Date;
-	private nameElement: HTMLInputElement;
+	private nameElement: TextBoxComponent;
 	private headerElement: DropDownListComponent;
 	private labelElement: DropDownListComponent;
 	private breadCrumbElement: CheckBoxComponent;
@@ -39,7 +44,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 		this.treemapInstance.refresh();
 	}
 	private breadCrumbTextChange(args: ChangeEventArgs) {
-		let value: string = (document.getElementById('breadCrumbText') as HTMLInputElement).value;
+		let value: string = this.nameElement.value;
 		this.treemapInstance.breadcrumbConnector = value;
 		this.treemapInstance.refresh();
 	}
@@ -88,7 +93,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 
 	render() {
 		return (
-			<div className='control-pane'>
+			<main><div className='control-pane'>
 				<style>
 					{SAMPLE_CSS}
 				</style>
@@ -127,14 +132,14 @@ export class Drilldown extends SampleBase<{}, {}> {
 				 {/* Property Panel */}
 				 <div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
-						<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+						<table role='none' id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
                   <tbody>
                   <tr style={{ height: '50px' }}>
 									<td>
 										<div style={{ paddingLeft: '0px' }}>Drill Down View</div>
 									</td>
 									<td>
-										<div style={{ paddingTop: '0px', paddingLeft: '0px' }}>
+										<div className="drilldown-checkbox" style={{ paddingTop: '0px' }}>
 											<CheckBoxComponent id='drillView' checked={false} change={this.drillViewChange.bind(this)} ref={d => this.drillviewElement = d}/>
 										</div>
 									</td>									
@@ -144,7 +149,7 @@ export class Drilldown extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>Enable Bread Crumb</div>
 									</td>
 									<td>
-										<div style={{ paddingTop: '0px', paddingLeft: '0px' }}>
+										<div className="drilldown-checkbox" style={{ paddingTop: '0px'}}>
 										<CheckBoxComponent id='breadCrumb' checked={false} change={this.breadCrumbChange.bind(this)} ref={d => this.breadCrumbElement = d}/>
 										</div>
 									</td>
@@ -154,9 +159,9 @@ export class Drilldown extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>Bread Crumb Text</div>
 									</td>
 									<td>
-										<div style={{ marginLeft: '10px'}} >
-                    <input id="breadCrumbText" ref={d => this.nameElement = d} type='text' defaultValue=' - ' style={{ width: '100%'}} onChange={this.breadCrumbTextChange.bind(this)}/>
-                    </div>
+										<div style={{ marginLeft: '0px'}} >
+											<TextBoxComponent className="e-input" value=' - ' style={{ width: '100%' }} id="breadCrumbText" ref={d => this.nameElement = d} onChange={this.breadCrumbTextChange.bind(this)}></TextBoxComponent>
+                    					</div>
 									</td>
 								</tr>	
 								<tr style={{ height: '50px' }}>
@@ -187,12 +192,13 @@ export class Drilldown extends SampleBase<{}, {}> {
 				<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href="https://en.wikipedia.org/wiki/List_of_continents_by_population" target="_blank">en.wikipedia.org</a>
 				</div>
-				<div id="action-description">
+			</div>
+				<section id="action-description" aria-label="Description of TreeMap sample">
 					<p>
 					This sample demonstrates drill-down with the continents at the top level followed by regions and countries. By clicking a continent, you can view all the countries available in that continent clearly. Customizations can be done in the treemap, by using the options in the properties panel
 					</p>
-				</div>
-				<div id="description">
+				</section>
+				<section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
 					<p>
 					In this example, you can see how to render a TreeMap with multiple items and drill it further. Change the drill down view and enable the breadcrumb using the options available in the properties panel.
 					</p>
@@ -200,8 +206,8 @@ export class Drilldown extends SampleBase<{}, {}> {
         The tooltip is enabled in this example.
         To see the tooltip in action, hover the mouse over an item or tap an item in touch-enabled devices.
     		</p>
-				</div>
-				</div>
+				</section>
+			</main>
 		)
 	}
 }

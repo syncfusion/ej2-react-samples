@@ -160,7 +160,7 @@ export class API extends SampleBase<{}, {}> {
         </div>
         <div id="action-description">
           <p>
-            This sample demonstrates the properties available in the <a href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component.
+            This sample demonstrates the properties available in the <a aria-label="React Carousel" href="https://www.syncfusion.com/react-ui-components/react-carousel" target="_blank">React Carousel</a> component.
           </p>
         </div>
         <div id="description">

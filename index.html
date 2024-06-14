@@ -26,14 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"></link>
     <link rel="shortcut icon" href="favicon.ico" />
     <style id="themelink"></style>
-    <link rel="stylesheet" href="./src/common/codemirror/lib/codemirror.css">
-    <link rel="stylesheet" href="./src/common/codemirror/theme/mbo.css">
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
-    <script src="./src/common/codemirror/lib/codemirror.js"></script>
-    <script src="./src/common/codemirror/mode/javascript/javascript.js"></script>
-    <script src="./src/common/codemirror/mode/jsx/jsx.js"></script>
-    <script src="./src/common/codemirror/mode/xml/xml.js"></script>
-    <script src="./src/common/codemirror/mode/css/css.js"></script>
     <script>
         var orgin = location.origin;
         var baseref = location.href.split('#')[0].replace(orgin, '');
@@ -113,6 +106,43 @@
                 </div>
             </div>
             <div class='sb-header-right sb-right sb-table'>
+                <div class='sb-header-item sb-table-cell sb-nextjs-wrapper sb-hide'>
+                    <a href='https://ej2.syncfusion.com/nextjs/demos' target="_blank"
+                        aria-label="Next.js Demos (Opens in a new window)">
+                        <button id='sb-nextjs-btn' type="button" class='e-btn e-lib e-link'>
+                            <span class='sb-nextjs-text'>NEXT.JS DEMOS</span>
+                        </button>
+                    </a>
+                </div>
+                <div class='sb-header-item sb-table-cell sb-nextjs-mobile-wrapper sb-hide'>
+                    <a href='https://ej2.syncfusion.com/nextjs/demos' target="_blank"
+                        aria-label="Next.js Demos (Opens in a new window)">
+                        <svg class="sb-nextjs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="20">
+                            <mask height="180" id="a" maskUnits="userSpaceOnUse" width="180" x="0" y="0"
+                                style="mask-type:alpha">
+                                <circle cx="90" cy="90" r="90" />
+                            </mask>
+                            <g mask="url(#a)">
+                                <circle cx="90" cy="90" data-circle="true" r="90" />
+                                <path class="sb-nextjs-pathb" d="M149.508 157.52 69.142 54H54v71.97h12.114V69.384l73.885 95.461a90 90 0 0 0 9.509-7.325"
+                                    fill="url(#b)" />
+                                <path class="sb-nextjs-pathc" fill="url(#c)" d="M115 54h12v72h-12z" />
+                            </g>
+                            <defs>
+                                <linearGradient gradientUnits="userSpaceOnUse" id="b" x1="109" x2="144.5" y1="116.5"
+                                    y2="160.5">
+                                    <stop stop-color="#fff" />
+                                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                </linearGradient>
+                                <linearGradient gradientUnits="userSpaceOnUse" id="c" x1="121" x2="120.799" y1="54"
+                                    y2="106.875">
+                                    <stop stop-color="#fff" />
+                                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+                </div>
                 <div class="sb-header-item sb-table-cell">
                     <div id="header-theme-switcher" role="button" tabindex="0" class="theme-wrapper" title="Theme selection" class="theme-wrapper">
                         <div id="sb-theme-text" class="sb-theme-text">
@@ -123,6 +153,8 @@
                         </div>
                     </div>
                 </div>
+                <div class="sb-table-cell" id="dark-light-content"></div>
+                <div class="sb-table-cell sb-theme-splitter sb-download-splitter"></div>
                 <div class='sb-header-item sb-table-cell sb-search-wrapper'>
                     <div class='sb-search-btn' role="button" tabindex="0" aria-label="toggle sample search" id='sb-trigger-search'>
                         <span class='sb-settings sb-icons sb-icon-Search' role="presentation"></span>
@@ -182,69 +214,29 @@
             </div>
             <div id='theme-switcher-popup' class='sb-theme-popup'>
                 <ul id="themelist" class="options">
-                    <li class="e-list" id="fluent">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Fluent</span>
-                    </li>
-                    <li class="e-list" id="fluent-dark">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Fluent Dark</span>
-                    </li>
-                    <li class="e-list" id="bootstrap5">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Bootstrap v5</span>
-                    </li>
-                    <li class="e-list" id="bootstrap5-dark">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Bootstrap v5 dark</span>
-                    </li>
-                    <li class="e-list" id="tailwind">
-                    <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                    <span class="switch-text">Tailwind CSS</span>
-                    </li>
-                    <li class="e-list" id="tailwind-dark">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Tailwind CSS Dark</span>
-                    </li>
-                    <li class='e-list' id="material">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Material</span>
-                    </li>
-                    <li class="e-list" id="material-dark">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Material Dark</span>
-                    </li>
-                    <li class='active' id="material3">
+                    <li class="e-list" id="material3">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Material 3</span>
                     </li>
-                    <li class="e-list" id="material3-dark">
+                    <li class="e-list" id="bootstrap5">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Material 3 Dark</span>
+                        <span class="switch-text">Bootstrap 5</span>
                     </li>
-                    <li id="fabric">
+                    <li class="e-list" id="fluent2">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Fabric</span>
+                        <span class="switch-text">Fluent 2</span>
                     </li>
-                    <li class="e-list" id="fabric-dark">
+                    <li class="e-list" id="tailwind">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Fabric Dark</span>
-                    </li>
-                    <li class="e-list" id="bootstrap4">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Bootstrap v4</span>
-                    </li>
-                    <li class="e-list" id="bootstrap">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Bootstrap</span>
-                    </li>
-                    <li class="e-list" id="bootstrap-dark">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Bootstrap Dark</span>
-                    </li>
+                        <span class="switch-text">Tailwind CSS</span>
+                        </li>
                     <li class="e-list" id="highcontrast">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">High Contrast</span>
+                    </li>
+                    <li class="e-list" id="fluent">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Fluent</span>
                     </li>
                     <div class="sb-theme-studio"><a target="_blank" href="https://ej2.syncfusion.com/themestudio/?theme=material" aria-label="Go to Theme Studio">Go to Theme Studio</a></div>
                 </ul>
@@ -262,22 +254,12 @@
                         </div>
                         <div class='setting-content  setting-theme-change'>
                             <select id='sb-setting-theme' class='sb-setting-theme-select'>
-                                <option value="fluent">Fluent</option>
-                                <option value="fluent-dark">Fluent Dark</option>
-                                <option value="bootstrap5">Bootstrap v5</option>
-                                <option value="bootstrap5-dark">Bootstrap v5 Dark</option>
-                                <option value="tailwind">Tailwind CSS</option>
-                                <option value="tailwind-dark">Tailwind CSS Dark</option>
-                                <option value="material">Material</option>
-                                <option value="material-dark">Material Dark</option>
-                                <option value="material3">Material 3</option>
-                                <option value="material3-dark">Material 3 Dark</option>
-                                <option value="fabric">Fabric</option>
-                                <option value="fabric-dark">Fabric Dark</option>
-                                <option value="bootstrap4">Bootstrap v4</option>
-                                <option value="bootstrap">Bootstrap</option>
-                                <option value="bootstrap-dark">Bootstrap Dark</option>
+                                <option value="material3">Material 3</option> 
+                                <option value="bootstrap5">Bootstrap 5</option>
+                                <option value="fluent2">Fluent 2</option>
+                                <option value="tailwind">Tailwind CSS</option>                                    
                                 <option value="highcontrast">High Contrast</option>
+                                <option value="fluent">Fluent</option>
                             </select>
                         </div>
                     </div>
@@ -289,6 +271,18 @@
                         <div class='setting-content btn-group setting-responsive'>
                             <div id='touch' class="sb-responsive-items set-border-radious-touch">Touch</div>
                             <div id='mouse' class="sb-responsive-items set-border-radious-mouse">Mouse</div>
+                        </div>
+                    </div>
+                    <div class="sb-setting-item" id="theme-mode">
+                        <div class="theme-mode-label">
+                            <div class="sb-icons " id="mobile-mode-icon"></div>
+                            <div class='mode-label'>Theme Modes</div>
+                        </div>
+                        <div class="sb-theme-option">
+                            <select id="sb-theme-mode">
+                                <option value="Light">Light Mode</option>
+                                <option value="Dark">Dark Mode</option>
+                            </select>
                         </div>
                     </div>
                     <div class='sb-setting-item sb-setting-culture'>
@@ -353,25 +347,25 @@
                     <div id='tab-component'></div>
                     <div class='description-section sb-rightpane-padding'>
                     </div>
-                    <div class="ad-wrapper">
-                        <div id='ad-image' class="ad-img">
+                    <div class="banner-wrapper">
+                        <div id='ad-image' class="banner-img">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="col-sm-12">
-                                        <div id="ad-banner-head" class="ad-header">Transform your React web apps today with Syncfusion React components</div>
+                                        <div id="banner-head" class="banner-header">Transform your React web apps today with Syncfusion React components</div>
                                     </div>
                                     <div class="col-sm-12 cnt-area">
                                         <div class="content-area">
-                                            <div class="ad-cnt-pt">
-                                                <div class="ad-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
+                                            <div class="banner-cnt-pt">
+                                                <div class="banner-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
                                                 <div class="cnt-text">80+ high-performance and responsive UI components</div>
                                             </div>
-                                            <div class="ad-cnt-pt">
-                                                <div class="ad-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
+                                            <div class="banner-cnt-pt">
+                                                <div class="banner-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
                                                 <div class="cnt-text">Dedicated support</div>
                                             </div>
-                                            <div class="ad-cnt-pt">
-                                                <div class="ad-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
+                                            <div class="banner-cnt-pt">
+                                                <div class="banner-cnt-icon click-icon sb-icons sb-icon-icon-selection"></div>
                                                 <div class="cnt-text">Hassle-free licensing</div>
                                             </div>
                                         </div>

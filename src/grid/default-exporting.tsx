@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar, ExcelExport, PdfExport, Group, ExcelQueryCellInfoEventArgs, PdfQueryCellInfoEventArgs, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, Toolbar, ExcelExport, PdfExport, Group, ExcelQueryCellInfoEventArgs, PdfQueryCellInfoEventArgs, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { employeeDetails } from './data';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { SampleBase } from '../common/sample-base';
@@ -8,6 +8,7 @@ import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { ChangeEventArgs } from '@syncfusion/ej2-buttons';
 import { PropertyPane } from '../common/property-pane';
 export class Exporting extends SampleBase<{}, {}> {
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
   public toolbarOptions: any = ['ExcelExport', 'PdfExport', 'CsvExport'];
   private gridInstance: GridComponent;
   public checkboxObj: CheckBoxComponent;
@@ -82,7 +83,7 @@ public template2: any = this.gridUrlTemplate;
       <div className='control-pane'>
         <div className='col-lg-9 control-section'>
           <GridComponent id='DefaultExport' dataSource={employeeDetails} ref={ grid => this.gridInstance = grid} toolbar={this.toolbarOptions}
-          allowExcelExport={true} allowSorting={true} allowPdfExport={true} allowGrouping={true} toolbarClick={this.toolbarClick.bind(this)}
+          allowExcelExport={true} allowSorting={true} allowFiltering={true} filterSettings={this.filterSettings} allowPdfExport={true} allowGrouping={true} toolbarClick={this.toolbarClick.bind(this)}
            dataBound={this.dataBound.bind(this)} excelQueryCellInfo={this.exportQueryCellInfo.bind(this)} pdfQueryCellInfo={this.exportQueryCellInfo.bind(this)} height='350'>
             <ColumnsDirective>
               <ColumnDirective headerText='Employee Image' width='150' template={this.template1} textAlign='Center'></ColumnDirective>
@@ -92,7 +93,7 @@ public template2: any = this.gridUrlTemplate;
               <ColumnDirective field='HireDate' headerText='Hire Date' width='120' format='yMd' textAlign='Right'></ColumnDirective>
               <ColumnDirective field='Address' width='180' allowGrouping={false}></ColumnDirective>
             </ColumnsDirective>
-            <Inject services={[Toolbar, ExcelExport, PdfExport, Group, Sort]} />
+            <Inject services={[Toolbar, ExcelExport, PdfExport, Group, Sort, Filter]} />
           </GridComponent>
           </div>
           <div className='col-lg-3 property-section'>
@@ -104,7 +105,7 @@ public template2: any = this.gridUrlTemplate;
                                     <div>Export template column </div>
                                 </td>
                                 <td style={{ width: '30%', padding: '10px 10px 10px 0px' }}>
-                                    <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} checked={true} change={this.onChanged.bind(this)}></CheckBoxComponent>
+                                    <CheckBoxComponent ref={(scope) => { this.checkboxObj = scope; }} checked={true} change={this.onChanged.bind(this)} aria-label="Export template column"></CheckBoxComponent>
                                 </td>
                             </tr>
                             </tbody>

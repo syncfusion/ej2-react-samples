@@ -392,6 +392,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                         id="bold"
                         iconCss={"e-diagram-icons e-diagram-bold"}
                         ref={boldref => (bold = boldref)}
+                        aria-label="bold"
                       >
                         {" "}
                       </ButtonComponent>
@@ -402,6 +403,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                         id="italic"
                         iconCss={"e-diagram-icons e-diagram-italic"}
                         ref={italicref => (italic = italicref)}
+                        aria-label="italic"
                       >
                         {" "}
                       </ButtonComponent>
@@ -412,6 +414,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                         id="underline"
                         iconCss={"e-diagram-icons e-diagram-underline"}
                         ref={underLineref => (underLine = underLineref)}
+                        aria-label="underline"
                       >
                         {" "}
                       </ButtonComponent>
@@ -455,6 +458,7 @@ export class GettingStartedAnnotation extends SampleBase<{}, {}> {
                           changed("fontsize");
                         }}
                         ref={fontsize => (fontSize = fontsize)}
+                        aria-label="font-size-textBox"
                       />
                     </div>
                     <div className="col-xs-4 column-style">

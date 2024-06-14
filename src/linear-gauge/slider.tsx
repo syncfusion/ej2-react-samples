@@ -28,7 +28,7 @@ export class Slider extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -64,20 +64,21 @@ export class Slider extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample demonstrates how to create a slider by utilizing the functionalities available in the linear gauge.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure a new slider in the linear gauge. This can be accomplished by combining axis, range, and pointer. The pointer has been made interactive, so the value changes as you drag it.
                     </p>
                     <p>
                         More information on the linear gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/getting-started/">documentation section</a>.
                     </p>
-                </div>
-            </div >
+                </section>
+        </main>
         )
     }
 } 

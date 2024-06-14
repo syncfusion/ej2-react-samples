@@ -276,175 +276,191 @@ export const ChartSampleOrder: Object = [
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the performance chart.'
     },
     {
-        'path': 'chart/polar-line', 'component': 'PolarLine', 'name': 'Line', 'order': '11', 'category': 'Polar Radar',
+        'path': 'chart/update-spline', 'component': 'UpdateSpline', 'name': 'Spline updating each second', 'order': '11', 'category': 'Real-time Charts',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.', 'type': 'new'
+    },
+    {
+        'path': 'chart/live-stock-data', 'component': 'LiveStock', 'name': 'Live stock data', 'order': '11', 'category': 'Real-time Charts',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.', 'type': 'new'
+    },
+    {
+        'path': 'chart/update-data-source', 'component': 'UpdateDataSource', 'name': 'Update data source', 'order': '11', 'category': 'Real-time Charts',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.', 'type': 'new'
+    },
+    {
+        'path': 'chart/click-add-point', 'component': 'ClickAddPoint', 'name': 'Click to add a point', 'order': '11', 'category': 'Real-time Charts',
+        'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the real time charts.', 'type': 'new'
+    },
+    {
+        'path': 'chart/polar-line', 'component': 'PolarLine', 'name': 'Line', 'order': '12', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render line in polar and radar charts.'
     },
     {
-        'path': 'chart/polar-spline', 'component': 'PolarSpline', 'name': 'Spline', 'order': '11', 'category': 'Polar Radar',
+        'path': 'chart/polar-spline', 'component': 'PolarSpline', 'name': 'Spline', 'order': '12', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render spline in polar and radar charts.'
     },
     {
-        'path': 'chart/polar-area', 'component': 'PolarArea', 'name': 'Area', 'order': '11', 'category': 'Polar Radar',
+        'path': 'chart/polar-area', 'component': 'PolarArea', 'name': 'Area', 'order': '12', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render area in polar and radar charts.'
     },
     {
-        'path': 'chart/polar-stackedarea', 'component': 'PolarStackedArea', 'name': 'Stacked Area', 'order': '11', 'category': 'Polar Radar',
+        'path': 'chart/polar-stackedarea', 'component': 'PolarStackedArea', 'name': 'Stacked Area', 'order': '12', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render stacking area in polar and radar charts.'
     },
     {
-        'path': 'chart/polar-scatter', 'component': 'PolarScatter', 'name': 'Scatter', 'order': '11', 'category': 'Polar Radar',
+        'path': 'chart/polar-scatter', 'component': 'PolarScatter', 'name': 'Scatter', 'order': '12', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render scatter in polar and radar charts.'
     },
     {
-        'path': 'chart/polar-column', 'component': 'PolarColumn', 'name': 'Column', 'order': '11', 'category': 'Polar Radar',
+        'path': 'chart/polar-column', 'component': 'PolarColumn', 'name': 'Column', 'order': '12', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render column in polar and radar charts.'
     },
     {
-        'path': 'chart/polar-stackedcolumn', 'component': 'PolarStackedColumn', 'name': 'Wind Rose', 'order': '11', 'category': 'Polar Radar',
+        'path': 'chart/polar-stackedcolumn', 'component': 'PolarStackedColumn', 'name': 'Wind Rose', 'order': '12', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render wind rose using stacking column in polar and radar charts.'
     },
     {
-        'path': 'chart/polar-rangecolumn', 'component': 'PolarRangeColumn', 'name': 'Range Column', 'order': '11', 'category': 'Polar Radar',
+        'path': 'chart/polar-rangecolumn', 'component': 'PolarRangeColumn', 'name': 'Range Column', 'order': '12', 'category': 'Polar Radar',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render range column in polar and radar charts.'
     },
     {
-        'path': 'chart/local-data', 'component': 'LocalData', 'name': 'Local Data', 'order': '12', 'category': 'Data Binding',
+        'path': 'chart/local-data', 'component': 'LocalData', 'name': 'Local Data', 'order': '13', 'category': 'Data Binding',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the local-data chart.'
     },
     {
-        'path': 'chart/remote-data', 'component': 'RemoteData', 'name': 'Remote Data', 'order': '12', 'category': 'Data Binding',
+        'path': 'chart/remote-data', 'component': 'RemoteData', 'name': 'Remote Data', 'order': '13', 'category': 'Data Binding',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the remote-data chart.'
     },
     {
-        'path': 'chart/lazy-loading', 'component': 'LazyLoading', 'name': 'Lazy Loading', 'order': '12', 'category': 'Data Binding',
+        'path': 'chart/lazy-loading', 'component': 'LazyLoading', 'name': 'Lazy Loading', 'order': '13', 'category': 'Data Binding',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the lazy-loading chart.'
     },
     {
-        'path': 'chart/numeric-axis', 'component': 'Numeric', 'name': 'Numeric Axis', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/numeric-axis', 'component': 'Numeric', 'name': 'Numeric Axis', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to plot numeric data with the help of numeric axis in charts.'
     },
     {
-        'path': 'chart/datetime', 'component': 'DateTimeAxis', 'name': 'DateTime Axis', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/datetime', 'component': 'DateTimeAxis', 'name': 'DateTime Axis', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the date-time axis in charts.'
     },
     {
-        'path': 'chart/datetime-category', 'component': 'DatetimeCategoryAxis', 'name': 'DateTime Category Axis', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/datetime-category', 'component': 'DatetimeCategoryAxis', 'name': 'DateTime Category Axis', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the date-time category axis in charts.'
     },
     {
-        'path': 'chart/category', 'component': 'CategoryAxis', 'name': 'Category Axis', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/category', 'component': 'CategoryAxis', 'name': 'Category Axis', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the category axis in charts.'
     },
     {
-        'path': 'chart/indexed-axis', 'component': 'IndexedAxis', 'name': 'Indexed Category Axis', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/indexed-axis', 'component': 'IndexedAxis', 'name': 'Indexed Category Axis', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the indexed category axis in charts.'
     },
     {
-        'path': 'chart/log', 'component': 'LogAxis', 'name': 'Log Axis', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/log', 'component': 'LogAxis', 'name': 'Log Axis', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the logarithmic axis in charts.'
     },
     {
-        'path': 'chart/multiple-axis', 'component': 'MultipleAxis', 'name': 'Multiple Axis', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/multiple-axis', 'component': 'MultipleAxis', 'name': 'Multiple Axis', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the mulitple axis in charts.'
     },
     {
-        'path': 'chart/inversed', 'component': 'InversedAxis', 'name': 'Inversed Axis', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/inversed', 'component': 'InversedAxis', 'name': 'Inversed Axis', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to invert the axis in charts.'
     },
     {
-        'path': 'chart/stripline', 'component': 'Stripline', 'name': 'Stripline', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/stripline', 'component': 'Stripline', 'name': 'Stripline', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to invert the axis in charts.'
     },
     {
-        'path': 'chart/strip-line-recurrence', 'component': 'Striplinerecurrence', 'name': 'Strip Line Recurrence', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/strip-line-recurrence', 'component': 'Striplinerecurrence', 'name': 'Strip Line Recurrence', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the strip line recurrence in charts.'
     },
     {
-        'path': 'chart/smart-axis-labels', 'component': 'SmartAxisLabels', 'name': 'Smart Labels', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/smart-axis-labels', 'component': 'SmartAxisLabels', 'name': 'Smart Labels', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to arrange the labels smartly without overlapping with each other.'
     },
     {
-        'path': 'chart/multi-level-label', 'component': 'Multilevellabels', 'name': 'Multi Level Labels', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/multi-level-label', 'component': 'Multilevellabels', 'name': 'Multi Level Labels', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to group the axis labels. '
     },
     {
-        'path': 'chart/axis-crossing', 'component': 'AxisCrossing', 'name': 'Axes Crossing', 'order': '13', 'category': 'Chart Axes',
+        'path': 'chart/axis-crossing', 'component': 'AxisCrossing', 'name': 'Axes Crossing', 'order': '14', 'category': 'Chart Axes',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the behaviour of the axis crossing in chart.'
     },
     {
-        'path': 'chart/sorting', 'component': 'Sorting', 'name': 'Sorting', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/sorting', 'component': 'Sorting', 'name': 'Sorting', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to sort the series data in chart.'
     },
     {
-        'path': 'chart/symbols', 'component': 'Symbols', 'name': 'Symbols', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/symbols', 'component': 'Symbols', 'name': 'Symbols', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the marker symbols for data points.'
     },
     {
-        'path': 'chart/rtl', 'component': 'RTL', 'name': 'RTL', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/rtl', 'component': 'RTL', 'name': 'RTL', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the RTL feature in chart.'
     },
     {
-        'path': 'chart/annotation', 'component': 'Annotation', 'name': 'Annotation', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/annotation', 'component': 'Annotation', 'name': 'Annotation', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to add more information to the chart using annotation.'
     },
     {
-        'path': 'chart/synchronized-chart', 'component': 'SynchronizedChart', 'name': 'Synchronized Charts', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/synchronized-chart', 'component': 'SynchronizedChart', 'name': 'Synchronized Charts', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the synchronized chart.'
     },
     {
-        'path': 'chart/datalabel-template', 'component': 'DataLabelTemplate', 'name': 'DataLabel Template', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/datalabel-template', 'component': 'DataLabelTemplate', 'name': 'DataLabel Template', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the data label template.'
     },
     {
-        'path': 'chart/tooltip-template', 'component': 'ChartTooltipTemplate', 'name' :'Tooltip Template', 'order' : '14','category': 'Chart Customization',
+        'path': 'chart/tooltip-template', 'component': 'ChartTooltipTemplate', 'name' :'Tooltip Template', 'order' : '15','category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the tooltip template.'
     },
     {
-        'path': 'chart/vertical', 'component': 'VerticalChart', 'name': 'Vertical Chart', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/vertical', 'component': 'VerticalChart', 'name': 'Vertical Chart', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the vertical chart.'
     },
     {
-        'path': 'chart/empty-point', 'component': 'EmptyPoint', 'name': 'Empty Points', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/empty-point', 'component': 'EmptyPoint', 'name': 'Empty Points', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the empty points.'
     },
     {
-        'path': 'chart/range-color-mapping', 'component': 'RangeColorMapping', 'name': 'Range Color Mapping', 'order': '14', 'category': 'Chart Customization',
+        'path': 'chart/range-color-mapping', 'component': 'RangeColorMapping', 'name': 'Range Color Mapping', 'order': '15', 'category': 'Chart Customization',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to render and configure the range color mapping.'
     },
     {
-        'path': 'chart/print', 'component': 'Print', 'name': 'Print', 'order': '15', 'category': 'Print and Export',
+        'path': 'chart/print', 'component': 'Print', 'name': 'Print', 'order': '16', 'category': 'Print and Export',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates how to print the entire chart.'
     },
     {
-        'path': 'chart/export', 'component': 'ChartExport', 'name': 'Export', 'order': '15', 'category': 'Print and Export',
+        'path': 'chart/export', 'component': 'ChartExport', 'name': 'Export', 'order': '16', 'category': 'Print and Export',
         'description': 'This demo for Essential JS2 Chart control shows how to export the charts to Excel, PDF, and image formats such as SVG, JPEG, and PNG at client-side.'
     },
     {
-        'path': 'chart/selection', 'component': 'SelectionChart', 'name': 'Selection', 'order': '16', 'category': 'User Interaction', 
+        'path': 'chart/selection', 'component': 'SelectionChart', 'name': 'Selection', 'order': '17', 'category': 'User Interaction', 
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the selection behavior in chart.'
     },
     {
-        'path': 'chart/range-selection', 'component': 'RangeSelection', 'name': 'Range Selection', 'order': '16', 'category': 'User Interaction',
+        'path': 'chart/range-selection', 'component': 'RangeSelection', 'name': 'Range Selection', 'order': '17', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the range selection behavior in chart.'
     },    
     {
-        'path': 'chart/keyboard', 'component': 'KeyboardNavigation', 'name': 'Keyboard Navigation', 'order': '16', 'category': 'User Interaction',
+        'path': 'chart/keyboard', 'component': 'KeyboardNavigation', 'name': 'Keyboard Navigation', 'order': '17', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JS2 Chart control shows how to use the keyboard for the charts functions.'
     },
     {
-        'path': 'chart/crosshair', 'component': 'CrosshairChart', 'name': 'Crosshair', 'order': '16', 'category': 'User Interaction',
+        'path': 'chart/crosshair', 'component': 'CrosshairChart', 'name': 'Crosshair', 'order': '17', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the crosshair behavior in chart.'
     },
     {
-        'path': 'chart/trackball', 'component': 'TrackballChart', 'name': 'Trackball', 'order': '16', 'category': 'User Interaction',
+        'path': 'chart/trackball', 'component': 'TrackballChart', 'name': 'Trackball', 'order': '17', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the trackball behavior in chart.'
     },
     {
-        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'order': '16', 'category': 'User Interaction',
+        'path': 'chart/zoom', 'component': 'Zooming', 'name': 'Zooming and Panning', 'order': '17', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the zooming behavior in chart.'
     },
     {
-        'path': 'chart/data-editing', 'component': 'DataEdit', 'name': 'Data Editing', 'order': '16', 'category': 'User Interaction',
+        'path': 'chart/data-editing', 'component': 'DataEdit', 'name': 'Data Editing', 'order': '17', 'category': 'User Interaction',
         'description': 'This demo sample for Essential JavaScript2 Chart control demonstrates the data-editing behavior in chart.'
     }
 ]

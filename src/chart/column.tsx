@@ -64,7 +64,7 @@ export class Column extends SampleBase<{}, {}> {
                   </p>
                     <p>
                         More information on the column series can be found in this &nbsp;
-                      <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for Column Chart in React Chart component">documentation section</a>.
                   </p>
                 </div>
             </div>
@@ -77,7 +77,7 @@ export class Column extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
          if (selectedTheme === 'highcontrast') {
             args.chart.series[0].marker.dataLabel.font.color = '#000000';
             args.chart.series[1].marker.dataLabel.font.color = '#000000';

@@ -129,7 +129,7 @@ export class Range extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
             <style>
                 {SAMPLE_CSS}
             </style>
@@ -177,7 +177,7 @@ export class Range extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <tbody>
                                     <tr style={{ height: '50px' }}>
                                         <td style={{width: '30%'}}>
@@ -193,7 +193,7 @@ export class Range extends SampleBase<{}, {}> {
                                     </tr>
                                 </tbody>
                             </table>
-                            <table id='property1' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
+                            <table id='property1' role='none' title='Properties' className='property-panel-table' style={{ width: '100%' }}>
                                 <colgroup>
                                     <col span={1} style={{ width: "35%" }}></col>
                                     <col span={1} style={{ width: "45%" }}></col>
@@ -281,20 +281,21 @@ export class Range extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
                     <p>
                         This sample demonstrates how to highlight a region in an axis using ranges in the circular gauge. The width, corner radius, and start and end range of a range can all be customized.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure the ranges in the circular gauge. Ranges are used to group the axis values, and you can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/#start">start</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/#end">end</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/#color">color</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/#startwidth">startWidth</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/#endwidth">endWidth</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/#radius">radius</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/#roundedcornerradius">roundedCornerRadius</a> properties to customize them. In addition, an axis with multiple ranges is shown in the circular gauge component, as well as options to customize the range properties via the property panel.
                     </p>
                     <p>
                         More information on the ranges can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-ranges/">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
 }

@@ -61,7 +61,7 @@ export class ProgressBarLabels extends SampleBase<{}, {}> {
                 <div className='control-section'>
                     <div className="row linear-parent">
                         <div id="success" className="linear-progress">
-                            <ProgressBarComponent id="success"
+                            <ProgressBarComponent id="progress-success"
                                 ref={linear1 => this.linearOne = linear1}
                                 type='Linear'
                                 height='40'
@@ -86,7 +86,7 @@ export class ProgressBarLabels extends SampleBase<{}, {}> {
                             </ProgressBarComponent>
                         </div>
                         <div id="info" className="linear-progress">
-                            <ProgressBarComponent id="info"
+                            <ProgressBarComponent id="progress-info"
                                 ref={linear2 => this.linearTwo = linear2}
                                 type='Linear'
                                 height='40'
@@ -111,7 +111,7 @@ export class ProgressBarLabels extends SampleBase<{}, {}> {
                             </ProgressBarComponent>
                         </div>
                         <div id="warning" className="linear-progress">
-                            <ProgressBarComponent id="warning"
+                            <ProgressBarComponent id="progress-warning"
                                 ref={linear3 => this.linearThree = linear3}
                                 type='Linear'
                                 height='40'
@@ -136,7 +136,7 @@ export class ProgressBarLabels extends SampleBase<{}, {}> {
                             </ProgressBarComponent>
                         </div>
                         <div id="danger" className="linear-progress">
-                            <ProgressBarComponent id="danger"
+                            <ProgressBarComponent id="progress-danger"
                                 ref={linear4 => this.linearFour = linear4}
                                 type='Linear'
                                 height='40'

@@ -95,7 +95,7 @@ const SeatBookingMaps = () => {
         }
     }
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-8'>
@@ -115,7 +115,7 @@ const SeatBookingMaps = () => {
                 </div>
                 <div className='col-md-4 property-section'>
                     <PropertyPane title='Seat Selection'>
-                        <table id='property' className='property-panel-table' style={{ width: '100%' }}>
+                        <table id='property' role='none' className='property-panel-table' style={{ width: '100%' }}>
                             <tbody>
                                 <tr style={{ height: '30px' }}>
                                     <td>
@@ -147,10 +147,11 @@ const SeatBookingMaps = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample demonstrates the rendering of normal geometry type shapes on the map. We have rendered normal geometry type shapes to represent the bus seat selection layout. Available, booked, and selected seats will be displayed in different colors.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render the normal geometry type shapes on the map. Selection is enabled in this sample. You can use the <code>fill</code>, <code>width</code>, and <code>color</code> properties in the <code>selectionSettings</code> to customize the appearance of the shapes after selection.
                 </p>
@@ -159,8 +160,8 @@ const SeatBookingMaps = () => {
                 <p>
                     Maps component features are segregated into individual feature-wise modules. To use the selection, inject the <code>Selection</code> module using the <code>Maps.Inject(Selection)</code> method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default SeatBookingMaps;

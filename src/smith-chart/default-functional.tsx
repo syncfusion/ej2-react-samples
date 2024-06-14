@@ -42,7 +42,7 @@ function Default() {
         let theme: string = location.hash.split('/')[1];
         theme = theme ? theme : 'Material';
         args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as SmithchartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as SmithchartTheme;
     }
 
 
@@ -111,10 +111,8 @@ function Default() {
                 <p>
                     In this example, you can see how to render a Smith chart with multiple series. Legend has been enabled to denote the series in Smith chart.</p>
                 <p>
-
                     Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a data point or tap a data point in touch enabled devices
                 </p><br />
-
                 <b>Injecting Module</b><br /><br />
                 <p>
                     Smith chart component features are segregated into individual feature-wise modules. To use a tooltip, inject the  <code>Tooltip</code> module using the <code>SmithChart.Inject(TooltipRender)</code> method, and use a legend by injecting the <code>Legend</code> module using the <code>SmithChart.Inject(Legend)</code> method.

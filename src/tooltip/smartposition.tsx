@@ -11,8 +11,9 @@ import { SampleBase } from '../common/sample-base';
 const SAMPLE_CSS = `
 #targetContainer {
     border: 1px solid #dddddd;
-    margin: 15px;
     min-height: 350px;
+    position: relative;
+    overflow: hidden;
 }
 #demoSmart {
     background-image: url('./src/tooltip/images/smartposition.png');

@@ -1,0 +1,77 @@
+/*fluent2 theme*/
+
+.fluent2 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.fluent2 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item>.e-tab-wrap>.e-text-wrap>.e-tab-text:hover,
+.fluent2 .sb-content-tab.e-tab>.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator,
+.fluent2 .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text,
+.fluent2 .sb-source-section .e-tab .e-tab-header .e-toolbar-item:hover .e-tab-text,
+.fluent2 .control-name,
+.fluent2 .sb-icon-Hamburger,
+.fluent2 .sb-footer-links a,
+.fluent2 .sb-plnr-section,
+.fluent2 .sb-open-new-wrapper a:hover,
+.fluent2 .sample-navigation > button:hover {
+    color: #0f6cbd !important;
+}
+
+.fluent2 .sb-left-pane .e-listview .e-list-item.e-hover,
+.fluent2 .sb-left-pane .e-listview .e-list-item.e-active,
+.fluent2 .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
+    background-color: #d2ebff;
+}
+
+.fluent2 .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-indicator {
+    background: #0f6cbd;
+}
+
+.fluent2 #left-sidebar {
+    background: #fff;
+}
+
+.fluent2 .sb-content-tab .e-content.sb-sample-content-area {
+	background: transparent;
+}
+
+.fluent2 .sb-content-tab .e-tab-header.e-horizontal-bottom {
+    border-radius: 0 0 12px 12px;
+}
+.fluent2 .sb-content-tab .e-tab-header.sb-content-tab-header {
+    border-radius: 12px 12px 0 0;
+}
+
+.fluent2 #sb-content {
+    border-radius: 12px;
+}
+
+.fluent2 .e-samplestatus.new.tree, .fluent2 .e-samplestatus.update.tree, .fluent2 .e-samplestatus.preview.tree,
+.fluent2 .e-samplestatus.New.tree, .fluent2 .e-samplestatus.Update.tree, .fluent2 .e-samplestatus.Preview.tree {
+    margin: 4px 0px 0px 0px;
+    height: 22px;
+}
+
+.fluent2.e-bigger .e-badge.sb-badge.e-samplestatus.New, .fluent2.e-bigger .e-badge.sb-badge.e-samplestatus.new,
+.fluent2.e-bigger .e-badge.sb-badge.e-samplestatus.Update, .fluent2.e-bigger .e-badge.sb-badge.e-samplestatus.update,
+.fluent2.e-bigger .e-badge.sb-badge.e-samplestatus.Preview, .fluent2.e-bigger .e-badge.sb-badge.e-samplestatus.preview {
+    font-size: 10px;
+    border-radius: 2px;
+    height: 24px;
+    margin: 9px 11px 0px 0px;
+}
+.fluent2 .sb-reset-icon::before {
+    content: '\e7e7';
+}
+.fluent2 .copycode::before{
+    content:'\e77c';
+    font-size:25px;
+}
+.fluent2 .e-samplestatus.new,.fluent2 .e-samplestatus.update,.fluent2 .e-samplestatus.preview,
+.fluent2 .e-samplestatus.New,.fluent2 .e-samplestatus.Update,.fluent2 .e-samplestatus.Preview {
+    margin: 5px 5px 0px 0px;
+    height: 22px;
+}
+.fluent2 .sb-theme-popup li:hover .sb-theme-select {
+    color: transparent;
+}
+.fluent2 .sb-badge {
+    padding: 2px 6px;
+}

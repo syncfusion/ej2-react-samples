@@ -35,7 +35,7 @@ const MultipleAxis = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className='control-pane'>
@@ -47,8 +47,8 @@ const MultipleAxis = () => {
                         <AxisDirective majorGridLines={{ width: 0 }} rowIndex={0} opposedPosition={true} lineStyle={{ width: 0 }} minimum={24} maximum={36} interval={2} majorTickLines={{ width: 0 }} name='yAxis1' labelFormat='{value}°C' />
                     </AxesDirective>
                     <AnnotationsDirective>
-                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png"  style={{width: "41px"; height: "41px"}}/></div>' x='Sun' y={62} coordinateUnits='Point' verticalAlignment='Top' />
-                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png"  style={{width: "41px"; height: "41px"}}/></div>' x='Sat' y={35} coordinateUnits='Point' yAxisName='yAxis1' />
+                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/cloud.png" alt="Cloud Picture" style={{width: "41px"; height: "41px"}}/></div>' x='Sun' y={62} coordinateUnits='Point' verticalAlignment='Top' />
+                        <AnnotationDirective content='<div id="chart_cloud"><img src="src/chart/images/sunny.png" alt="Sunny Picture" style={{width: "41px"; height: "41px"}}/></div>' x='Sat' y={35} coordinateUnits='Point' yAxisName='yAxis1' />
                     </AnnotationsDirective>
                     <SeriesCollectionDirective>
                         <SeriesDirective dataSource={data1} xName='x' yName='y' width={2} name='Germany' type='Column'   marker={{ visible: true, width: 7, height: 7 }} />
@@ -65,7 +65,7 @@ const MultipleAxis = () => {
                 </p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <p>
-                    More information on the multiple axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-customization/#multiple-axis">documentation section</a>.
+                    More information on the multiple axis can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/axis-customization/#multiple-axis" aria-label="Navigate to the documentation for Multiple Axis in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

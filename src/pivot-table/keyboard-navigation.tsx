@@ -6,6 +6,7 @@ import {
     FetchReportArgs, LoadReportArgs, RemoveReportArgs, RenameReportArgs, ToolbarArgs,
     NumberFormatting
 } from '@syncfusion/ej2-react-pivotview';
+import { ChartTheme } from '@syncfusion/ej2-react-charts';
 import { Pivot_Data } from './data-source';
 import { SampleBase } from '../common/sample-base';
 import './tool-bar.css';
@@ -122,14 +123,13 @@ export class PivotKeyboardNavigation extends SampleBase<{}, {}> {
     chartOnLoad(args): void {
         let selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme =
-            selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1);
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
     render() {
         return (
             <div className='control-pane'>
                 <div className='control-section' id='pivot-table-section' style={{ overflow: 'initial' }}>
-                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'450'} showFieldList={true} gridSettings={{ columnWidth: 140 }}
+                    <PivotViewComponent id='PivotView' ref={(scope) => { this.pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'450'} enableValueSorting={true} showFieldList={true} gridSettings={{ columnWidth: 140 }}
                         allowExcelExport={true} allowNumberFormatting={true} allowConditionalFormatting={true} showGroupingBar={true} allowDrillThrough={true} showTooltip={false} allowPdfExport={true} showToolbar={true} allowCalculatedField={true} toolbar={this.toolbarOptions}
                         newReport={this.newReport.bind(this)} renameReport={this.renameReport.bind(this)} removeReport={this.removeReport.bind(this)} loadReport={this.loadReport.bind(this)} fetchReport={this.fetchReport.bind(this)}
                         saveReport={this.saveReport.bind(this)} toolbarRender={this.beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis', load: this.chartOnLoad.bind(this) }} editSettings={{ allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', allowEditOnDblClick: true }}>
@@ -524,8 +524,12 @@ export class PivotKeyboardNavigation extends SampleBase<{}, {}> {
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-                    <p>More information can be found in this <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/pivotview/accessibility'>documentation section</a>.</p>
+                    </ul><br />
+                    <p>
+                        More information on the keyboard navigation can be found in this <a target='_blank'
+                            href='https://ej2.syncfusion.com/react/documentation/pivotview/accessibility#keyboard-interaction'>
+                        documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

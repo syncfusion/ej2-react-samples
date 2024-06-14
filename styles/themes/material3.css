@@ -78,3 +78,11 @@
     content: '\e77c';
     font-size: 25px;
 }
+
+.material3 #sb-nextjs-btn.e-btn.e-link {
+    color: #6750a4;
+} 
+
+.material3 #sb-nextjs-btn.e-link:hover {
+    color: #5a4b80;
+}

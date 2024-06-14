@@ -393,7 +393,12 @@ export class HyperLink extends SampleBase<{}, {}> {
                             </td>
                             <td>Allows to set the visibility of hyperlink to specific row/column based on the given header text.</td>
                         </tr>
-                    </table>
+                    </table><br />
+                    <p>
+                        More information on the hyperlink can be found in this <a target='_blank'
+                            href='https://ej2.syncfusion.com/react/documentation/pivotview/hyper-link'>
+                        documentation section</a>.
+                    </p>
                 </div>
             </div>
         )

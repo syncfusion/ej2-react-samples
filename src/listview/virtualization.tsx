@@ -24,16 +24,16 @@ export class UiVirtualization extends SampleBase<{}, {}> {
     constructor(props: any) {
         super(props);
         this.commonData = [
-            { name: 'Nancy', icon: 'N', id: '0', },
-            { name: 'Andrew', icon: 'A', id: '1' },
-            { name: 'Janet', icon: 'J', id: '2' },
-            { name: 'Margaret', imgUrl: './src/listview/images/margaret.png', id: '3' },
-            { name: 'Steven', icon: 'S', id: '4' },
-            { name: 'Laura', imgUrl: './src/listview/images/laura.png', id: '5' },
-            { name: 'Robert', icon: 'R', id: '6' },
-            { name: 'Michael', icon: 'M', id: '7' },
-            { name: 'Albert', imgUrl: './src/listview/images/albert.png', id: '8' },
-            { name: 'Nolan', icon: 'N', id: '9' }
+            { name: 'Nancy', icon: 'N', id: '0', altText: "" },
+            { name: 'Andrew', icon: 'A', id: '1', altText: "" },
+            { name: 'Janet', icon: 'J', id: '2', altText: "" },
+            { name: 'Margaret', imgUrl: './src/listview/images/margaret.png', id: '3', altText: "" },
+            { name: 'Steven', icon: 'S', id: '4', altText: "" },
+            { name: 'Laura', imgUrl: './src/listview/images/laura.png', id: '5', altText: "" },
+            { name: 'Robert', icon: 'R', id: '6', altText: "" },
+            { name: 'Michael', icon: 'M', id: '7', altText: "" },
+            { name: 'Albert', imgUrl: './src/listview/images/albert.png', id: '8', altText: "" },
+            { name: 'Nolan', icon: 'N', id: '9', altText: "" }
         ];
 
         [[1010, 'data1'], [5010, 'data5'], [10010, 'data10'], [25010, 'data25']].forEach((ds: string[] | number[]) => {
@@ -55,7 +55,7 @@ export class UiVirtualization extends SampleBase<{}, {}> {
         return (
             <div className="e-list-wrapper e-list-avatar">
                 <span className={`e-avatar e-avatar-circle ${data.icon} ${data.imgUrl ? 'hideUI' : 'showUI'}`}>{data.icon}</span>
-                <img className={`e-avatar e-avatar-circle ${data.imgUrl ? 'showUI' : 'hideUI'}`} src={data.imgUrl ? data.imgUrl : ' '} />
+                <img className={`e-avatar e-avatar-circle ${data.imgUrl ? 'showUI' : 'hideUI'}`} src={data.imgUrl ? data.imgUrl : ' '} alt={data.altText} />
                 <span className="e-list-content">{data.name}</span>
             </div>
         );

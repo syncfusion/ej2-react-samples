@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Reorder, Inject, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Reorder, Inject, Sort, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { employeeData } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -8,18 +8,23 @@ function Reordering() {
     React.useEffect(() => {
         updateSampleSection();
     }, [])
+    const filterSettings: FilterSettingsModel = {type: 'Excel'};
+    const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    const firstnameRule: Object = { required: true, minLength: 5};
+    const employeeidRules: Object = { required: true, number: true };
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={employeeData} allowReordering={true} allowSorting={true} >
+                <GridComponent dataSource={employeeData} allowReordering={true} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar}>
                     <ColumnsDirective>
-                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' textAlign="Right"></ColumnDirective>
-                        <ColumnDirective field='FirstName' headerText='Name' width='140'></ColumnDirective>
+                        <ColumnDirective field='EmployeeID' headerText='Employee ID' width='150' textAlign="Right" validationRules={employeeidRules} isPrimaryKey={true}></ColumnDirective>
+                        <ColumnDirective field='FirstName' headerText='Name' width='140' validationRules={firstnameRule}></ColumnDirective>
                         <ColumnDirective field='Title' headerText='Title' width='170' />
-                        <ColumnDirective field='HireDate' headerText='Hired Date' width='120' format='yMd' textAlign="Right" />
+                        <ColumnDirective field='HireDate' headerText='Hired Date' width='120' format='yMd' textAlign="Right" editType='datepickeredit' />
                         <ColumnDirective field='ReportsTo' headerText='Reports To' width='120'></ColumnDirective>
                     </ColumnsDirective>
-                    <Inject services={[Reorder, Sort]} />
+                    <Inject services={[Reorder, Sort, Toolbar, Filter, Edit]} />
                 </GridComponent>
             </div>
             <div id="action-description">

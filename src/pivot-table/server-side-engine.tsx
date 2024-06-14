@@ -86,7 +86,7 @@ export class ServerSideEngine extends SampleBase<{}, {}> {
                     <p>
                         More information about server-side aggregation can be found in this <a target="_blank"
                             href="https://ej2.syncfusion.com/react/documentation/pivotview/server-side-pivot-engine">
-                            documentation section</a>.
+                        documentation section</a>.
                     </p>
                 </div>
             </div>

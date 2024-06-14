@@ -22,7 +22,7 @@ function OnlineHtmlEditor() {
     // Rich Text Editor items list
     const items: string[] = ['Bold', 'Italic', 'Underline', 'StrikeThrough',
         'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
-        'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
+        'Formats', 'Alignments', 'Blockquote', 'OrderedList', 'UnorderedList',
         'Outdent', 'Indent',
         'CreateLink', 'Image', 'Video', 'Audio', 'CreateTable', '|', 'FormatPainter', 'ClearFormat',
         '|', 'EmojiPicker', 'SourceCode', '|', 'Undo', 'Redo'
@@ -45,7 +45,8 @@ function OnlineHtmlEditor() {
         }
     }
     function updateHtmlValue(): void {
-        textArea.innerHTML = myCodeMirror.getValue();
+        rteObj.value = myCodeMirror.getValue();
+        rteObj.dataBind();
     }
     function onChange(): void {
         updateValue();

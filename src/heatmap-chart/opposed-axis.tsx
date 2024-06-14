@@ -13,13 +13,20 @@ const SAMPLE_CSS: any = `
 }
 #source{
     float: right; margin-right: 10p
+}
+.opposedCheckBox {
+    padding-left: 0px !important;
+    margin-left: 0px;
+}
+.e-view.fluent2 #property .opposedCheckBox, .e-view.fluent2-dark #property .opposedCheckBox {
+    padding-left: 0px; margin-left: -7px;
 }`;
 // custom code end
 export class OpposedAxis extends SampleBase<{}, {}> {
     private heatmap: HeatMapComponent;
     render() {
         return (
-            <div>
+            <main><div>
                 <div className='col-md-9 control-section'>
                     {/* custom code start */}
                     <style>
@@ -76,32 +83,37 @@ export class OpposedAxis extends SampleBase<{}, {}> {
                 </div>
                 <div className="col-md-3 property-section">
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft:-10 }}>
                             <tbody>
                                 <tr id='' style={{ height: '50px' }}>
                                     <td style={{ width: '40%' }}>
-                                        <CheckBoxComponent id='XOpposedPosition' checked={true} label='Change X-Axis Position'
-                                            change={this.valueXChange.bind(this)} ></CheckBoxComponent>
+                                        <div className="opposedCheckBox">
+                                            <CheckBoxComponent id='XOpposedPosition' checked={true} label='Change X-Axis Position'
+                                                change={this.valueXChange.bind(this)} ></CheckBoxComponent>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr id='' style={{ height: '50px' }}>
                                     <td style={{ width: '40%' }}>
-                                        <CheckBoxComponent id='YOpposedPosition' checked={true} label='Change Y-Axis Position'
-                                            change={this.valueYChange.bind(this)} ></CheckBoxComponent>
+                                        <div className="opposedCheckBox">
+                                            <CheckBoxComponent id='YOpposedPosition' checked={true} label='Change Y-Axis Position'
+                                                change={this.valueYChange.bind(this)} ></CheckBoxComponent>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </PropertyPane>
                 </div>
-                <div id="action-description">
+            </div >
+                <section id="action-description" aria-label="Description of HeatMap sample">
                     <p>
                         This sample illustrates the monthly flight arrivals at JFK international airport, New York.
                         The data label is disabled in this sample, the tooltip displays the data point values.  In property panel,
                         the options are available to change the position of the axes by means of checkbox for each axis.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the HeatMap features demonstrated in this sample">
                     <p>
                       In this example, you can see how to change the display position of the axis. You can change the display position of axes by enabling the
                       <a href="https://ej2.syncfusion.com/react/documentation/api/heatmap/axisModel/#opposedposition" target="_blank"> opposedPosition</a> property for each axis.
@@ -115,8 +127,8 @@ export class OpposedAxis extends SampleBase<{}, {}> {
                         Heatmap component features are separated into discrete feature-based modules. To use a tooltip, inject the <a target="_blank"
                         href="https://ej2.syncfusion.com/react/documentation/heatmap-chart/tooltip">Tooltip</a> module using the <code>{'<Inject services={[Tooltip]} />'}</code> method.
                     </p>
-                </div>
-            </div >
+                </section>
+            </main>
         );
     }
 

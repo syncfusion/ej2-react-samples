@@ -7,8 +7,15 @@ import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-button
 import { updateSampleSection } from '../common/sample-base';
 
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
+    .pointerDragCheckBox {
+        padding-left: 10px;
+        margin-left: -4px;
+        padding-top: 0px;
+    }
+    .e-view.fluent2 #property .pointerDragCheckBox, .e-view.fluent2-dark #property .pointerDragCheckBox {
+        padding-left: 0px;
+        margin-left: -4px !important;
+        padding-top: 0px;
     }`;
 const Drag = () => {
 
@@ -89,9 +96,14 @@ const Drag = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <div className='control-section row'>
                 <div className='col-lg-8'>
+                    {/* custom code start */}
+                        <style>
+                            {SAMPLE_CSS}
+                        </style>
+                    {/* custom code end */}
                     <CircularGaugeComponent load={load.bind(this)} loaded={onChartLoad.bind(this)} background='transparent' dragMove={dragMove.bind(this)} dragEnd={dragEnd.bind(this)} id='drag-container' ref={gauge} enablePointerDrag={true} enableRangeDrag={false}>
                         <Inject services={[Annotations]} />
                         <AxesDirective>
@@ -117,7 +129,7 @@ const Drag = () => {
                 {/* Property Panel */}
                 <div className='col-lg-4 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
                             <tbody>
                                 <tr style={{ height: "50px" }}>
                                     <td style={{ width: "50%" }}>
@@ -139,7 +151,7 @@ const Drag = () => {
                                         <div id='enablePointer' style={{ width: "90%", fontSize: "14px" }}>Allow Pointer Drag</div>
                                     </td>
                                     <td style={{ width: "49%" }}>
-                                        <div style={{ paddingTop: "0px", marginLeft: "-4px" }}>
+                                        <div className='pointerDragCheckBox'>
                                             <CheckBoxComponent id='enable' checked={true} change={pointerDragChange.bind(this)} ref={pointerDrag} />
                                         </div>
                                     </td>
@@ -149,7 +161,7 @@ const Drag = () => {
                                         <div id='enablePointer' style={{ width: "90%", fontSize: "14px" }}>Allow Ranges Drag</div>
                                     </td>
                                     <td style={{ width: "40%" }}>
-                                        <div style={{ paddingTop: "0px", marginLeft: "-4px" }}>
+                                        <div className='pointerDragCheckBox'>
                                             <CheckBoxComponent id='rangeDragEnable' checked={false} change={rangesDragChange.bind(this)} ref={rangesDrag} />
                                         </div>
                                     </td>
@@ -159,18 +171,19 @@ const Drag = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
                 <p>This sample illustrates dragging a pointer and a range in a circular gauge. End-user can drag the pointer and the range by enabling the pointer drag and range drag options.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to move the pointer and range in the circular gauge via drag action. The <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#enablepointerdrag'>enablePointerDrag</a> property can be used to enable or disable the pointer drag functionality. Similarly, the <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#enablerangedrag'>enableRangeDrag</a> property can be used to enable or disable the range drag functionality.
                 </p>
                 <p>
                     More information on the pointer drag can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-pointers/#dragging-pointer">documentation section</a>. Likewise, the range drag information can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-ranges/#dragging-range">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default Drag;

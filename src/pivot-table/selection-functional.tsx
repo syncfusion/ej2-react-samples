@@ -163,6 +163,11 @@ function Selection () {
                 desired selection process.
                     The selected cell information can be seen in the Event Trace part with the help of the <code>cellSelected</code>
                     event.
+                </p><br />
+                <p>
+                    More information on the selection can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/row-and-column#selection">
+                    documentation section</a>.
                 </p>
             </div>
         </div>

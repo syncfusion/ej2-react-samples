@@ -128,14 +128,13 @@ function OlapSample () {
     function chartOnLoad(args): void {
         let selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark") as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     }
     
     return (
         <div className='control-pane'>
             <div className='control-section' id='pivot-table-section' style={{ overflow: 'initial' }}>
-                <PivotViewComponent id='PivotView' ref={(scope) => { pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'500'} showFieldList={true} showGroupingBar={true} gridSettings={{ columnWidth: 140 }}
+                <PivotViewComponent id='PivotView' ref={(scope) => { pivotObj = scope; }} dataSourceSettings={dataSourceSettings} width={'100%'} height={'500'} enableValueSorting={true} showFieldList={true} showGroupingBar={true} gridSettings={{ columnWidth: 140 }}
                     allowExcelExport={true} allowConditionalFormatting={true} allowPdfExport={true} showToolbar={true} enableFieldSearching={true} allowCalculatedField={true} displayOption={{ view: 'Both' }} toolbar={toolbarOptions}
                     newReport={newReport.bind(this)} renameReport={renameReport.bind(this)} removeReport={removeReport.bind(this)} loadReport={loadReport.bind(this)} fetchReport={fetchReport.bind(this)}
                     saveReport={saveReport.bind(this)} toolbarRender={beforeToolbarRender.bind(this)} chartSettings={{ title: 'Sales Analysis', load: chartOnLoad.bind(this) }}>
@@ -231,7 +230,12 @@ function OlapSample () {
                         </td>
                         <td>Provides option to alter the report dynamically through UI.</td>
                     </tr>
-                </table>
+                </table><br />
+                <p>
+                    More information on the olap can be found in this <a target="_blank"
+                        href="https://ej2.syncfusion.com/react/documentation/pivotview/olap">
+                    documentation section</a>.
+                </p>
             </div>
         </div>
     )

@@ -49,11 +49,11 @@ const TooltipMaps = () => {
         }
     };
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section row'>
                 <div className='col-md-12'>
-                    <MapsComponent id="maps" tooltipRender={tooltipRender} loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Left', orientation: 'Vertical', height: '70%', width: '10', textStyle: { color: '#757575' } }} titleSettings={{ text: 'Finalist in Cricket World Cup', textStyle: { size: '16px' } }}>
+                    <MapsComponent id="maps" tooltipRender={tooltipRender} loaded={onMapsLoad} load={load} zoomSettings={{ enable: false }} legendSettings={{ visible: true, mode: 'Interactive', position: 'Left', orientation: 'Vertical', height: '70%', width: '10' }} titleSettings={{ text: 'Finalist in Cricket World Cup', textStyle: { size: '16px' } }}>
                         <Inject services={[MapsTooltip, Legend]} />
                         <LayersDirective>
                             <LayerDirective shapeData={worldMap} shapePropertyPath='name' shapeDataPath='name' dataSource={datasource} tooltipSettings={{ visible: true, valuePath: 'name', template: template }} shapeSettings={shapeSetting} />
@@ -65,16 +65,17 @@ const TooltipMaps = () => {
             <div style={{ float: 'right', marginRight: '10px' }}>
                 Source:<a href="https://en.wikipedia.org/wiki/List_of_Cricket_World_Cup_finals" target="_blank">en.wikipedia.org</a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Maps sample">
                 <p>This sample depicts the countries that were appeared in the finals of Cricket World Cup and their counts. By hovering the mouse over the shapes, county name, finalist count, and winning count will be displayed in the tooltip template.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                 <p>In this example, you can see how to render the custom HTML element as tooltip. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices. Also, the interactive legend has been placed at the left of the map.</p>
                 <br />
                 <p style={{ fontWeight: 500 }}>Injecting Module</p>
                 <p>Maps component features are segregated into individual feature-wise modules. To use a tooltip, inject the Tooltip module using the Maps.Inject(Tooltip) method.</p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default TooltipMaps;

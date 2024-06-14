@@ -182,4 +182,17 @@
     }
 }
 
+.highcontrast .mongo-text-area,
+.fluent2-dark .mongo-text-area,
+.fluent2-highcontrast .mongo-text-area {
+    background-color: #1f1f1f;
+}
+
+.fluent2-dark .e-query-preview .e-icons.copycode,
+.fluent2-highcontrast .e-query-preview .e-icons.copycode {
+    background-color: black;
+    padding-bottom: 3px;
+    color: white;
+}
+
 

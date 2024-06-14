@@ -49,19 +49,19 @@ const KeyPerformanceIndicator = () => {
     };
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className='control-section'>
                 <CircularGaugeComponent load={load.bind(this)} id="gauge" background="transparent" >
                     <Inject services={[Annotations, Gradient]} />
                     <AxesDirective>
-                        <AxisDirective startAngle={220} endAngle={140} radius="90%" minimum={0} maximum={100} majorTicks={{ width: 0, }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ font: { size: '0px' }, position: 'Outside', offset: -18, }}>
+                        <AxisDirective startAngle={220} endAngle={140} radius="90%" minimum={0} maximum={100} majorTicks={{ width: 0, }} lineStyle={{ width: 0 }} minorTicks={{ width: 0 }} labelStyle={{ format:'{value} %', font: { size: '0px' }, position: 'Outside', offset: -18, }}>
                             <AnnotationsDirective>
-                                <AnnotationDirective content='<div class="triangle-up"></div>' angle={279} radius="33%" zIndex="1" ></AnnotationDirective>
-                                <AnnotationDirective content='<div class="text" style="color:#84cbb5;">Current</div>' angle={0} radius="25%" zIndex="1" ></AnnotationDirective>
-                                <AnnotationDirective content='<div class="percentage" style="color:#84cbb5;">76.6%</div>' angle={125} radius="12%" zIndex="1"></AnnotationDirective>
-                                <AnnotationDirective content='<div style="font-size:22px;font-family:inherit;">0</div>' angle={213} radius="83%" zIndex="1" ></AnnotationDirective>
-                                <AnnotationDirective content='<div style="font-size:22px;font-family:inherit;">100</div>' angle={150} radius="83%" zIndex="1" ></AnnotationDirective>
+                                <AnnotationDirective content='<div class="triangle-up"></div>' description="Triangle" angle={279} radius="33%" zIndex="1" ></AnnotationDirective>
+                                <AnnotationDirective content='<div class="text" style="color:#84cbb5;">Current</div>' description="Current" angle={0} radius="25%" zIndex="1" ></AnnotationDirective>
+                                <AnnotationDirective content='<div class="percentage" style="color:#84cbb5;">76.6%</div>' description="76.6%" angle={125} radius="12%" zIndex="1"></AnnotationDirective>
+                                <AnnotationDirective content='<div style="font-size:22px;font-family:inherit;">0</div>' description="0" angle={213} radius="83%" zIndex="1" ></AnnotationDirective>
+                                <AnnotationDirective content='<div style="font-size:22px;font-family:inherit;">100</div>' description="100" angle={150} radius="83%" zIndex="1" ></AnnotationDirective>
                             </AnnotationsDirective>
                             <PointersDirective>
                                 <PointerDirective value={30} radius="82%" type="Marker" markerShape="Circle" markerWidth={30} markerHeight={30} animation={{ enable: false, }} color="#bdbdbf" />
@@ -76,18 +76,19 @@ const KeyPerformanceIndicator = () => {
                     </AxesDirective>
                 </CircularGaugeComponent>
             </div>
-            <div id="action-description">
-                <p>This sample shows an arc gauge with a key performance indicator (KPI), which is a measurable value that shows how an organization meets key business objectives.</p>
             </div>
-            <div id="description">
+            <section id="action-description" aria-label="Description of Circular Gauge sample">
+                <p>This sample shows an arc gauge with a key performance indicator (KPI), which is a measurable value that shows how an organization meets key business objectives.</p>
+            </section>
+            <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render an arc gauge showing key performance indicator (KPI). You can use <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/axisModel/">axes</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/rangeModel/">ranges</a>, <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/pointerModel/">pointers</a> and <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/circular-gauge/annotationModel/">annotations</a> oriented properties to customize the appearance of the arc gauge, in order to achieve the desired outcome.
                 </p>
                 <p>
                     More information on the arc gauge can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/getting-started/">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
 export default KeyPerformanceIndicator;

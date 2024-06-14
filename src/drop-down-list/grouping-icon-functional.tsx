@@ -27,14 +27,14 @@ const Grouping = () => {
         <div className='control-pane'>
             <div className='control-section' id='dropIcon'>
                 <div className='col-lg-6'>
-                    <div id="group">
-                        <h4>Grouping</h4>
+                    <div className='drop-down-list-content' id="group">
+                    <label className="h4">Grouping</label>
                         <DropDownListComponent id="vegetables" dataSource={vegetableData} fields={groupFields} placeholder="Select a vegetable" popupHeight="220px" />
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div id="icon">
-                        <h4> Icons</h4>
+                    <div className='drop-down-list-content' id="icon">
+                    <label className="h4"> Icons</label>
                         <DropDownListComponent id="icons" dataSource={socialMediaData} fields={iconFields} placeholder="Select a social media" popupHeight="220px" />
                     </div>
                 </div>

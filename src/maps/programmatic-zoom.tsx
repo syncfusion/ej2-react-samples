@@ -29,7 +29,7 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -90,7 +90,7 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
                 {/* Property Panel */}
                 <div className='col-lg-3 property-section'>
                     <PropertyPane title='Properties'>
-                        <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft:'-10px' }}>
+                        <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', marginLeft:'-10px' }}>
                            <tbody>
                             <tr style={{ height: "50px" }}>
                                 <td style={{ width: "70%" }}>
@@ -106,12 +106,13 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
                         </table>
                     </PropertyPane>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                         This sample visualizes the capitals of all the countries in the South America continent by displaying the markers in their locations.
                </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                     <p>
                         In this example, you can see how to zoom the maps dynamically based on the location of the markers in the map. The map is scaled and the center position
                     is changed based on the markers location. This is achieved by setting true to the <code>shouldZoomInitially</code> property in <code>zoomSettings</code>.
@@ -124,8 +125,8 @@ export class ProgrammaticZoomMaps extends SampleBase<{}, {}> {
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a data label, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
                 </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     

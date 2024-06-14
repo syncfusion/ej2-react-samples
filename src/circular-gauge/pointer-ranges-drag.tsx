@@ -9,8 +9,15 @@ import { CheckBoxComponent, ChangeEventArgs } from "@syncfusion/ej2-react-button
 import { SampleBase } from '../common/sample-base';
 
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
+    .pointerDragCheckBox {
+        padding-left: 10px;
+        margin-left: -4px;
+        padding-top: 0px;
+    }
+    .e-view.fluent2 #property .pointerDragCheckBox, .e-view.fluent2-dark #property .pointerDragCheckBox {
+        padding-left: 0px;
+        margin-left: -4px !important;
+        padding-top: 0px;
     }`;
 
 export class Drag extends SampleBase<{}, {}> {
@@ -88,9 +95,14 @@ export class Drag extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <div className='control-section row'>
                     <div className='col-lg-8'>
+                        {/* custom code start */}
+                            <style>
+                                {SAMPLE_CSS}
+                            </style>
+                        {/* custom code end */}
                         <CircularGaugeComponent load={this.load.bind(this)} loaded={this.onChartLoad.bind(this)} background='transparent' dragMove={this.dragMove.bind(this)} dragEnd={this.dragEnd.bind(this)} id='drag-container' ref={gauge => this.gauge = gauge} enablePointerDrag={true} enableRangeDrag={false}>
                             <Inject services={[Annotations]} />
                             <AxesDirective>
@@ -119,9 +131,9 @@ export class Drag extends SampleBase<{}, {}> {
                                             needleTail={{
                                                 length: '0%', color: '#E5C31C'
                                             }} color='#E5C31C' />
-                                        <PointerDirective value={70} radius='110%' color='#E5C31C' markerWidth={20} markerHeight={20} type='Marker' markerShape='InvertedTriangle' ></PointerDirective>
+                                        <PointerDirective description='Marker pointer value : 70' value={70} radius='110%' color='#E5C31C' markerWidth={20} markerHeight={20} type='Marker' markerShape='InvertedTriangle' ></PointerDirective>
                                     </PointersDirective>
-                                    <PointerDirective value={70} type="Marker" markerShape='InvertedTriangle' radius='110%' markerHeight={20} color='#E5C31C' markerWidth={20} />
+                                    <PointerDirective description='Needle pointer value : 70' value={70} type="Marker" markerShape='InvertedTriangle' radius='110%' markerHeight={20} color='#E5C31C' markerWidth={20} />
                                     <RangesDirective>
                                         <RangeDirective start={0} end={40} radius='108%' color='#30B32D' startWidth={8} endWidth={8} />
                                         <RangeDirective start={40} end={100} radius='108%' color='#E5C31C' startWidth={8} endWidth={8} />
@@ -134,7 +146,7 @@ export class Drag extends SampleBase<{}, {}> {
                     {/* Property Panel */}
                     <div className='col-lg-4 property-section'>
                         <PropertyPane title='Properties'>
-                            <table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
+                            <table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginLeft: "-10px" }}>
                                 <tbody>
                                     <tr style={{ height: "50px" }}>
                                         <td style={{ width: "50%" }}>
@@ -156,7 +168,7 @@ export class Drag extends SampleBase<{}, {}> {
                                             <div id='enablePointer' style={{ width: "90%", fontSize:"14px" }}>Allow Pointer Drag</div>
                                         </td>
                                         <td style={{ width: "49%" }}>
-                                            <div style={{ paddingTop: "0px", marginLeft: "-4px" }}>
+                                            <div className='pointerDragCheckBox'>
                                                 <CheckBoxComponent id='enable' checked={true} change={this.pointerDragChange.bind(this)} ref={d => this.pointerDrag = d} />
                                             </div>
                                         </td>
@@ -166,7 +178,7 @@ export class Drag extends SampleBase<{}, {}> {
                                             <div id='enablePointer' style={{ width: "90%", fontSize:"14px" }}>Allow Ranges Drag</div>
                                         </td>
                                         <td style={{ width: "40%" }}>
-                                            <div style={{ paddingTop: "0px", marginLeft: "-4px" }}>
+                                            <div className='pointerDragCheckBox'>
                                                 <CheckBoxComponent id='rangeDragEnable' checked={false} change={this.rangesDragChange.bind(this)} ref={d => this.rangesDrag = d} />
                                             </div>
                                         </td>
@@ -176,20 +188,21 @@ export class Drag extends SampleBase<{}, {}> {
                         </PropertyPane>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Circular Gauge sample">
                     <p>
                         This sample illustrates dragging a pointer and a range in a circular gauge. End-user can drag the pointer and the range by enabling the pointer drag and range drag options.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Circular Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to move the pointer and range in the circular gauge via drag action. The <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#enablepointerdrag'>enablePointerDrag</a> property can be used to enable or disable the pointer drag functionality. Similarly, the <a target='_blank' href='https://ej2.syncfusion.com/react/documentation/api/circular-gauge/#enablerangedrag'>enableRangeDrag</a> property can be used to enable or disable the range drag functionality.
                     </p>
                     <p>
                         More information on the pointer drag can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-pointers/#dragging-pointer">documentation section</a>. Likewise, the range drag information can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/circular-gauge/gauge-ranges/#dragging-range">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
 }

@@ -50,7 +50,7 @@ const Datalabel = () => {
         // custom code end
     };
     return (
-        <div className="control-pane">
+        <main><div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-md-9">
@@ -124,7 +124,7 @@ const Datalabel = () => {
                 {/* Property Panel */}
                 <div className="col-md-3 property-section">
                     <PropertyPane title="Properties">
-                        <table
+                        <table role='none'
                             id="property"
                             title="Properties"
                             className="property-panel-table"
@@ -156,14 +156,15 @@ const Datalabel = () => {
                     </PropertyPane>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of TreeMap sample">
                 <p>
                     This sample illustrates the population level of various countries in
                     2017. The leaf items’ labels intersect action can be changed by using
                     the <code>Label Intersect Action</code> in properties panel.
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
                 <p>
                     In this example, you can see the various label intersect actions
                     available in TreeMap. Range color mapping has been specified, and the
@@ -182,8 +183,8 @@ const Datalabel = () => {
                     a legend by injecting the <code>Legend</code> module using the{" "}
                     <code>TreeMap.Inject(TreeMapLegend)</code> method.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 export default Datalabel;

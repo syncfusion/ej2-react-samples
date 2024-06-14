@@ -1,0 +1,10 @@
+.control-wrapper.keyboard-multicolumn {
+    margin: 0 auto;
+    width: 500px;
+}
+
+@media screen and (max-width: 480px) {
+    .control-wrapper.keyboard-multicolumn {
+        width: 300px;
+    }
+}

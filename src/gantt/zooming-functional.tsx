@@ -26,8 +26,8 @@ const Zooming = () => {
     position: "35%"
   };
   const toolbar: any = ['ZoomIn', 'ZoomOut', 'ZoomToFit'];
-  const projectStartDate: Date = new Date('03/24/2019');
-  const projectEndDate: Date = new Date('04/28/2019');
+  const projectStartDate: Date = new Date('03/24/2024');
+  const projectEndDate: Date = new Date('04/28/2024');
   return (
     <div className='control-pane'>
       <div className='control-section'>

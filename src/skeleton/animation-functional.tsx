@@ -156,12 +156,12 @@ const Animation = () => {
                     <button id="reloadSkeleton" className="e-btn e-primary" onClick={reload}>Reload</button>
                 </div>
                 <div className="col-sm-6">
-                    <h5>Fade Effect</h5>
+                    <p className='displayText'>Fade Effect</p>
                     <br />
                     {fade}
                 </div>
                 <div className="col-sm-6">
-                    <h5>Pulse Effect</h5>
+                    <p className='displayText'>Pulse Effect</p>
                     <br />
                     {pulse}
                 </div>

@@ -153,10 +153,11 @@ function LiveStream() {
         <div className='control-pane'>
             <div className='control-section row'>
             <div style={{ marginBottom: '10px' }}>
-                    <h4 style={{ display: 'inline-block', fontSize: '14px', paddingLeft:'5px' }}>
-                        Feed Delay(ms):
-                    </h4>
+            <label htmlFor="feedDelayInput" style={{ display: 'inline-block',fontSize: '14px', paddingLeft: '5px' }}>
+                        <b>Feed Delay(ms):</b>
+                    </label>
                     <NumericTextBoxComponent
+                        id="feedDelayInput"
                         format="N0"
                         value={1000}
                         min={100}
@@ -167,6 +168,7 @@ function LiveStream() {
                         ref={(scope) => {
                             feedDelayInput = scope;
                         }}
+                        aria-label="Feed Delay in milliseconds"
                     />
                     <ButtonComponent
                         id="update1"
@@ -175,6 +177,7 @@ function LiveStream() {
                         }}
                         onClick={updateClick}
                         style={{ marginLeft: '10px' }}
+                        aria-label="Start Data Update"
                     >
                         Start Data Update
                     </ButtonComponent>
@@ -185,6 +188,7 @@ function LiveStream() {
                         }}
                         onClick={clearClick}
                         style={{ marginLeft: '10px' }}
+                        aria-label="Stop Data Update"
                     >
                         Stop Data Update
                     </ButtonComponent>
@@ -281,7 +285,7 @@ function LiveStream() {
                     </a> method.
                     The style of Tree Grid cells can be customized using the 
                     <a target="_blank"
-                    href="https://ej2.syncfusion.com/documentation/api/treegrid/#querycellinfo"> queryCellInfo
+                    href="https://ej2.syncfusion.com/documentation/api/treegrid/#querycellinfo">queryCellInfo
                     </a> event.
                 </p>
                 <p>In this demo,</p>

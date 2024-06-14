@@ -49,8 +49,11 @@ export class WorkWeek extends SampleBase<{}, {}> {
     leftLabel: 'TaskName'
   };
   public workWeek: any = ["Monday", "Tuesday", "Wednesday","Thursday","Friday"];
-  public projectStartDate: Date = new Date('03/24/2019');
-  public projectEndDate: Date = new Date('07/06/2019');
+  public projectStartDate: Date = new Date('03/24/2024');
+  public projectEndDate: Date = new Date('07/06/2024');
+  public splitterSettings = {
+    columnIndex: 1
+  };
   render() {
     return (
       <div className='control-pane'>
@@ -58,7 +61,7 @@ export class WorkWeek extends SampleBase<{}, {}> {
           <div className='col-lg-8'>
             <GanttComponent id='WorkWeek' ref={gantt => this.ganttInstance = gantt} dataSource={projectNewData} treeColumnIndex={1}
               highlightWeekends={true} taskFields={this.taskFields} labelSettings={this.labelSettings} height='410px'
-              projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
+              splitterSettings={this.splitterSettings} projectStartDate={this.projectStartDate} projectEndDate={this.projectEndDate}>
               <ColumnsDirective>
               <ColumnDirective field='TaskID' width='80' ></ColumnDirective>
               <ColumnDirective field='TaskName' width='250'></ColumnDirective>
@@ -82,7 +85,7 @@ export class WorkWeek extends SampleBase<{}, {}> {
                 <tr>
                   <td style={{ width: '30%' }}>
                     <div>
-                      <h5>Working Days</h5>
+                      <label htmlFor="WorkWeek">Working Days</label>
                     </div>
                   </td>
                   <td style={{ width: '70%' }}>

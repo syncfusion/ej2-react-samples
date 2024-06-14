@@ -38,18 +38,18 @@ export class VerticalChart extends SampleBase<{}, {}> {
                 </ChartComponent>
                 </div>
                 <div id="action-description">
-                <p>
-                This sample illustrates the vertical chart by changing the orientation of x-axis to vertical and y-axis to horizontal.
-            </p>
+                    <p>
+                        This sample illustrates the vertical chart by changing the orientation of x-axis to vertical and y-axis to horizontal.
+                    </p>
                 </div>
                 <div id="description">
                     <p>
                         In this example, you can see how to render and configure the vertical type charts.
-    To render a chart in vertical manner, you can use <code>isTransposed</code> in chart.
-  </p>
+                        To render a chart in vertical manner, you can use <code>isTransposed</code> in chart.
+                    </p>
                     <p>
                         More information on the isTransposed can be found in this &nbsp;
-                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/vertical">documentation section</a>.
+                        <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/vertical" aria-label="Navigate to the documentation for Vertical Chart in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div>
@@ -71,7 +71,7 @@ export class VerticalChart extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
         
     public liveData(data: any[], series: Series): any[] {

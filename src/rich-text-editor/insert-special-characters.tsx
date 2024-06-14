@@ -32,7 +32,7 @@ export class InsertSpecialCharacters extends SampleBase<{}, {}> {
   public saveSelection: NodeSelection;
   public dialogObj: DialogComponent;
   // Rich Text Editor items list
-  private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'OrderedList',
+  private items: (string | IToolbarItems)[] = ['Bold', 'Italic', 'Underline', '|', 'Formats', 'Alignments', 'Blockquote', 'OrderedList',
     'UnorderedList', '|', 'CreateLink', 'Image', '|', 'SourceCode',
     {
       tooltipText: 'Insert Symbol',

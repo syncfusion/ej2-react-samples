@@ -42,7 +42,7 @@ const DetailsView = () => {
     let template: string = '<div class="e-list-wrapper e-list-avatar">' +
         '<span class="e-avatar e-avatar-circle ${icon} ${$imgUrl ? \'hideUI\' : \'showUI\' }">' +
         '${icon}</span> <img class="e-avatar e-avatar-circle ${$imgUrl ? \'showUI\' : \'hideUI\' }" ' +
-        'src="${imgUrl}" />' +
+        'src="${imgUrl}" alt="${name}" />' +
         '<span class="e-list-content">${name}</span></div>';
 
     const onSelect = (e: SelectEventArgs): void => {

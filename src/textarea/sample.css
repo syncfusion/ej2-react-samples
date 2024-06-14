@@ -8,10 +8,8 @@
     padding: 15px 0px;
 }
 
-.control-label {
-    padding: 24px 0px 0px 0px;
-    font-size: 12px;
-    opacity: 0.54;
+#textarea-sample .e-multi-line-input {
+    max-width: 100%;
 }
 
 @media only screen and (max-width: 480px) {
@@ -46,7 +44,8 @@
 .fabric-dark .row.material,
 .bootstrap-dark .row.material,
 .fluent .row.material,
-.fluent-dark .row.material {
+.fluent-dark .row.material,
+.fluent2 .row.material {
     display: none;
 }
 

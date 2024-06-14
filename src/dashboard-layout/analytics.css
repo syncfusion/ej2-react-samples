@@ -16,6 +16,9 @@
     line-height: 35px;
   }
 
+  .fluent-dark #analytic_dashboard .card-content.text,
+  .fluent2-dark #analytic_dashboard .card-content.text,
+  .fluent2-highcontrast #analytic_dashboard .card-content.text
   .bootstrap5-dark #analytic_dashboard .card-content.text,
   .tailwind-dark #analytic_dashboard .card-content.text,
   .material-dark #analytic_dashboard .card-content.text,
@@ -345,6 +348,16 @@ body.highcontrast #target_dash .header {
   border-bottom: 1px solid #969696;
 }
 
+.fluent2-dark #dashboard_sidebar_section,
+.fluent2-highcontrast #dashboard_sidebar_section {
+  border: 1px solid var(--color-sf-border-light);
+}
+
+.fluent2-dark #target_dash .header,
+.fluent2-highcontrast #target_dash .header {
+  border-bottom: 1px solid var(--color-sf-border-light);
+}
+
 body.highcontrast #dockSideDash .e-icons::before {
   color: #fff;
 }
@@ -364,6 +377,9 @@ body.highcontrast #analytic_dashboard.e-dashboardlayout.e-control .e-panel .e-pa
   background: #fff;
 }
 
+.fluent2-dark #dockSideDash li.sidebar-item.filterHover,
+.fluent-dark #dockSideDash li.sidebar-item.filterHover,
+.fluent2-highcontrast #dockSideDash li.sidebar-item.filterHover,
 body.bootstrap-dark #dockSideDash li.sidebar-item.filterHover,
 body.material-dark #dockSideDash li.sidebar-item.filterHover,
 body.fabric-dark #dockSideDash li.sidebar-item.filterHover,

@@ -75,7 +75,7 @@ const AreaMultiColored = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     return (
         <div className="control-pane">
@@ -121,10 +121,10 @@ const AreaMultiColored = () => {
             <div id="description">
                 <p>
                     In this example, you can see how to render and configure the points in a particular range by using <code>MultiColoredArea</code> series.
-                    Points within the range can be configured with <a target="_blank" href="https://helpej2.syncfusion.com/react/documentation/api/chart/chartSegment/#color">color</a> property in chart segment.
+                    Points within the range can be configured with <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/chartSegment/#color" aria-label="Navigate to the color property reference for React Chart component">color</a> property in chart segment.
                 </p>
                 <p>
-                    The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/">tooltip</a> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+                    The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/chart/tooltip/" aria-label="Navigate to the tooltip property reference for React Chart component">tooltip</a> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
                 </p>
                 <br></br>
                 <p><b>Injecting Module</b></p>
@@ -132,7 +132,7 @@ const AreaMultiColored = () => {
                     Chart component features are segregated into individual feature-wise modules. To use area series, we need to inject <code>MultiColoredAreaSeries</code> module using <code>Chart.Inject(MultiColoredAreaSeries)</code> method.
                 </p>
                 <p>
-                    More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts">documentation section</a>.
+                    More information on the area series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#area-charts" aria-label="Navigate to the documentation for Multicolored Area Chart in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

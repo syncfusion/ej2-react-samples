@@ -30,13 +30,13 @@ const Data = () => {
         <div className='control-pane'>
             <div className='control-section'>
                 <div id="multilocal" className="control-styles">
-                    <h4> Local Data</h4>
+                <label className="h4"> Local Data</label>
                     <div>
                         <MultiSelectComponent id="localData" dataSource={countries} fields={localFields} placeholder="Select countries" />
                     </div>
                 </div>
                 <div id="multiremote" className="control-styles">
-                    <h4>Remote Data</h4>
+                <label className="h4">Remote Data</label>
                     <div>
                         <MultiSelectComponent id="remoteData" dataSource={dataRemote} query={query} fields={remoteFields} sortOrder="Ascending" placeholder="Select names" />
                     </div>

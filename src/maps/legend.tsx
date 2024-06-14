@@ -16,8 +16,11 @@ import * as data from './map-data/legend-datasource.json';
 import * as worldMap from './map-data/world-map.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
+    .e-view.fluent2 #property .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #property .e-checkbox-wrapper .e-icons {
+        margin-left: 0px;
+    }
+    .legendModeCheckBox {
+        padding-left: 10px;
     }`;
 export class LegendMaps extends SampleBase<{}, {}> {
     private mapInstance: MapsComponent;
@@ -91,7 +94,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
     }
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
@@ -156,13 +159,13 @@ export class LegendMaps extends SampleBase<{}, {}> {
                 {/* Property Panel */}
 					<div className='col-lg-4 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
+							<table id='property' role='none' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px' }}>
                               <tbody>
                                 <tr>
 									<td>
 										<div style={{ paddingLeft: '0px' }}>Legend mode</div>
 									</td>
-									<td>
+									<td className="legendModeCheckBox">
 										<div style={{ marginLeft: '0px' }}>
 											<DropDownListComponent id="legendmode" width="100%" index={0} change={this.legendChange.bind(this)} ref={d => this.legendElement = d} dataSource={this.droplist} fields={{ text: 'text', value: 'value' }} />
 										</div>
@@ -172,7 +175,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
 									<td>
 										<div style={{ paddingLeft: '0px' }}>Legend position </div>
 									</td>
-									<td>
+									<td className="legendModeCheckBox">
 										<div style={{ marginLeft: '0px' }}>
 											<DropDownListComponent id="legendPosition" width="100%" index={0} change={this.legendPositionChange.bind(this)} ref={d => this.legendPositionElement = d} dataSource={this.positionList} fields={{ text: 'text', value: 'value' }} />
 										</div>
@@ -182,7 +185,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                                     <td>
                                         <div className="property-text" style= {{padding: "0px"}}>Show legend for remaining data source items</div>
                                     </td>
-                                    <td>
+                                    <td className="legendModeCheckBox">
                                         <div className="col" style={{ marginLeft: '0px', paddingLeft: '0px', marginTop: '-19px' }}>
 											<CheckBoxComponent id="datasource" change={this.dataChange.bind(this)} style={{ paddingLeft: '0px' }}/>
 										</div>
@@ -192,7 +195,7 @@ export class LegendMaps extends SampleBase<{}, {}> {
                                     <td>
                                         <div className="property-text" style= {{ padding: "0px"}}>Show population density when the legend item is toggled</div>
                                     </td>
-                                    <td>
+                                    <td className="legendModeCheckBox">
                                         <div className="col" style={{ marginLeft: '0px', paddingLeft: '0px', marginTop: '-19px' }}>
 											<CheckBoxComponent id="toggleLegend" change={this.toggleLegendChange.bind(this)} style={{ paddingLeft: '0px' }}/>
 										</div>
@@ -202,12 +205,13 @@ export class LegendMaps extends SampleBase<{}, {}> {
 							</table>
 						</PropertyPane>
 					</div>
-                <div id="action-description">
+                </div>
+                <section id="action-description" aria-label="Description of Maps sample">
                     <p>
                         This sample visualizes grouping of countries in the legends based on its population density. The legend will be displayed at the top of the map.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
                     <p>
                        In this example, you can see how to render a legend in the maps. A legend item denotes the value of a shape. Any number of legend items can be added to the legend. You can bind the desired colors to the shapes, if its values are within the specified range using the ColorMapping property. You can also show or hide color mapping related to population density when toggling the legend item
                     </p>
@@ -219,8 +223,8 @@ export class LegendMaps extends SampleBase<{}, {}> {
                     <p>
                         Maps component features are segregated into individual feature-wise modules. To use a legend, inject the Legend module using the Maps.Inject(Legend) method.
                     </p>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
     public onMapsLoad(args: ILoadedEventArgs): void {

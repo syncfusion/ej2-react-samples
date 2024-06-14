@@ -20,7 +20,7 @@ chartAnnotation.push({ content: '<div id="exchangeRate"></div>', coordinateUnits
 
 export let selectedTheme: string = location.hash.split('/')[1];
 selectedTheme = selectedTheme ? selectedTheme : 'Material';
-export let theme: ChartTheme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+export let theme: ChartTheme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
 export let backgroundColor: string = 'white';
 getAnnotation(aus, getSeriesColor(theme)[0]);
 getAnnotation(sl, getSeriesColor(theme)[1]);
@@ -118,8 +118,8 @@ function NumericAxis() {
                 </div>
                 <div id="description">
                     <p>
-                        Numeric axis is used to plot numeric data in range navigator. To render numeric axis, set <code>valueType</code> to <code>Double</code>,
-                        Tooltip is enabled in this example, to see the tooltip in action, while the selected range is changed
+                        Numeric axis is used to plot numeric data in range navigator. To render numeric axis, set <code>valueType</code> to <code>Double</code>.
+                        Tooltip is enabled in this example, to see the tooltip in action, while the selected range is changed.
                     </p>
                 </div>
             </div>
@@ -172,7 +172,7 @@ function NumericAxis() {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
 
     function renderTooltip(args: IRangeTooltipRenderEventArgs): void {

@@ -151,10 +151,11 @@ export class LiveStream extends SampleBase<{}, {}> {
             <div className='control-pane'>
                 <div className='control-section row'>
                     <div style={{ marginBottom: '10px' }}>
-                        <h4 style={{ display: 'inline-block', fontSize: '14px', paddingLeft: '5px' }}>
-                            Feed Delay(ms):
-                        </h4>
+                    <label htmlFor="feedDelayInput" style={{ display: 'inline-block',fontSize: '14px', paddingLeft: '5px' }}>
+                        <b>Feed Delay(ms):</b>
+                    </label>
                         <NumericTextBoxComponent
+                            id="feedDelayInput"
                             format="N0"
                             value={1000}
                             min={100}
@@ -165,6 +166,7 @@ export class LiveStream extends SampleBase<{}, {}> {
                             ref={(scope) => {
                                 this.feedDelayInput = scope;
                             }}
+                            aria-label="Feed Delay in milliseconds"
                         />
                         <ButtonComponent
                             id="update"
@@ -173,6 +175,7 @@ export class LiveStream extends SampleBase<{}, {}> {
                             }}
                             onClick={this.updateClick}
                             style={{ marginLeft: '10px' }}
+                            aria-label="Start Data Update"
                         >
                             Start Data Update
                         </ButtonComponent>
@@ -183,6 +186,7 @@ export class LiveStream extends SampleBase<{}, {}> {
                             }}
                             onClick={this.clearClick}
                             style={{ marginLeft: '10px' }}
+                            aria-label="Stop Data Update"
                         >
                             Stop Data Update
                         </ButtonComponent>

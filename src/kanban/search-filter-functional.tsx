@@ -103,7 +103,7 @@ const SearchFilter = () => {
                     </KanbanComponent>
                 </div>
             </div>
-            <div className="col-lg-3 property-section">
+            <div className="col-lg-3 property-section" id="searchFilterProperty">
                 <PropertyPane title="Filtering">
                     <table className="e-filter-table">
                         <tbody>

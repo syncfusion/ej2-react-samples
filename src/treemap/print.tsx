@@ -11,12 +11,10 @@ import {
 import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { PropertyPane } from '../common/property-pane';
 import { SampleBase } from '../common/sample-base';
+import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import * as data from './treemap-data/product.json';
 let datasource: any = data as any;
 const SAMPLE_CSS = `
-    .control-fluid {
-		padding: 0px !important;
-    }
 	#btn-control {
         width: 100%;
 		text-align: center;
@@ -30,6 +28,7 @@ export class PrintExport extends SampleBase<{}, {}> {
 	private treemapInstance: TreeMapComponent;
 	private mode: DropDownListComponent;
 	private nameElement: HTMLInputElement;
+	private textElement: TextBoxComponent;
  // Code for Property Panel
 	private droplist: { [key: string]: Object }[] = [
 		{ text: 'JPEG', value: 'JPEG' },
@@ -42,7 +41,7 @@ export class PrintExport extends SampleBase<{}, {}> {
 		this.treemapInstance.print();
 	}
 	public onClick1(e: Event): void {
-		let fileName: string = (document.getElementById('fileName') as HTMLInputElement).value;
+		let fileName: string = this.textElement.value;
 		this.treemapInstance.export((this.mode.value as ExportType), fileName);
 	}
  
@@ -57,7 +56,7 @@ export class PrintExport extends SampleBase<{}, {}> {
 	
 	render() {
 		return (
-			<div className='control-pane'>
+			<main><div className='control-pane'>
 				<style>
 					{SAMPLE_CSS}
 				</style>
@@ -102,7 +101,7 @@ export class PrintExport extends SampleBase<{}, {}> {
 					{/* Property Panel */}
 					<div className='col-md-3 property-section'>
 						<PropertyPane title='Properties'>
-							<table id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', overflow: 'hidden' }}>
+							<table role='none' id='property' title='Properties' className='property-panel-table' style={{ width: '100%', marginBottom: '20px', overflow: 'hidden' }}>
 							  <tbody>
 								<tr>
 									<td>
@@ -119,8 +118,8 @@ export class PrintExport extends SampleBase<{}, {}> {
 										<div style={{ paddingLeft: '0px' }}>File Name</div>
 									</td>
 									<td>
-										<div className="e-float-input" style={{ marginTop: '0px', paddingLeft: '0px' }}>
-											<input id="fileName" ref={d => this.nameElement = d} type="text" defaultValue="TreeMap" style={{ padding: '0px', paddingLeft: '5px' }}/>
+										<div style={{ marginTop: '0px', paddingLeft: '0px' }}>
+											<TextBoxComponent className="e-input" value='TreeMap' style={{ width: '100%', padding: '0px', paddingLeft: '5px' }} id="width" ref={d => this.textElement = d}></TextBoxComponent>
 										</div>
 									</td>
 								</tr>
@@ -143,12 +142,13 @@ export class PrintExport extends SampleBase<{}, {}> {
 						</PropertyPane>
 					</div>
 				</div>
-				<div id="action-description">
+			</div >
+				<section id="action-description" aria-label="Description of TreeMap sample">
 					<p>
 						This sample depicts the top 10 best-selling smartphone brands. Print and export options have been enabled in this sample.
             </p>
-				</div>
-				<div id="description">
+				</section>
+				<section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
 					<p>
 					In this example, you can see how to export and print the rendered treemap. The TreeMap can
 						be exported to JPEG, PNG, SVG, and PDF formats. Print functionality is done by <code>print</code>
@@ -163,8 +163,8 @@ export class PrintExport extends SampleBase<{}, {}> {
 					<p>
         				More information on print and export can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/treemap/print-and-export">documentation section</a>.
     				</p>
-				</div>
-			</div >
+				</section>
+			</main>
 		)
 	}
 }

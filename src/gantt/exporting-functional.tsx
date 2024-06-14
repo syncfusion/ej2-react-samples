@@ -6,7 +6,7 @@ import { editingData, editingResources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { SwitchComponent } from '@syncfusion/ej2-react-buttons';
-
+import './resource.css';
 const Exporting = () => {
   useEffect(() => {
     updateSampleSection();
@@ -31,8 +31,8 @@ const Exporting = () => {
   const splitterSettings: any = {
     position: "35%"
   };
-  const projectStartDate: Date = new Date('03/25/2019');
-  const projectEndDate: Date = new Date('07/28/2019');
+  const projectStartDate: Date = new Date('03/25/2024');
+  const projectEndDate: Date = new Date('07/28/2024');
   const gridLines: any = 'Both';
   const toolbar: any = ['ExcelExport', 'CsvExport', 'PdfExport'];
   const timelineSettings: any = {
@@ -46,33 +46,33 @@ const Exporting = () => {
   };
   const eventMarkers: any = [
             {
-                day: new Date('04/02/2019'),
+                day: new Date('04/02/2024'),
             }, {
-                day: new Date("04/09/2019"),
+                day: new Date("04/09/2024"),
                 label: 'Research phase'
             }, {
-                day: new Date("04/30/2019"),
+                day: new Date("04/30/2024"),
                 label: 'Design phase'
             }, {
-                day: new Date("05/23/2019"),
+                day: new Date("05/23/2024"),
                 label: 'Production phase'
             }, {
-                day: new Date("06/20/2019"),
+                day: new Date("06/20/2024"),
                 label: 'Sales and marketing phase'
             }
         ];
   const holidays: any = [
             {
-                from: new Date('04/04/2019'),
-                to: new Date('04/04/2019'),
+                from: new Date('04/04/2024'),
+                to: new Date('04/04/2024'),
                 label: 'Local Holiday'
             }, {
-                from: new Date('04/19/2019'),
-                to: new Date('04/19/2019'),
+                from: new Date('04/19/2024'),
+                to: new Date('04/19/2024'),
                 label: 'Good Friday'
             }, {
-                from: new Date('04/30/2019'),
-                to: new Date('04/30/2019'),
+                from: new Date('04/30/2024'),
+                to: new Date('04/30/2024'),
                 label: 'Release Holiday'
             }, 
         ];
@@ -106,7 +106,7 @@ const Exporting = () => {
       <div className='control-section'>
       <div style={{ display: 'flex' }}>
             <div style={{ display: 'flex' }}>
-                <label htmlFor="unchecked" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> AutoFit in Pdf Export </label>
+                <label htmlFor="unchecked" id ="drag" style={{ fontSize: '15px', margin: '0px 5px 0px 5px'}}> AutoFit in Pdf Export </label>
               <div>
                 <SwitchComponent id="unchecked" checked={false} change={autofit.bind(this)}></SwitchComponent>
               </div>

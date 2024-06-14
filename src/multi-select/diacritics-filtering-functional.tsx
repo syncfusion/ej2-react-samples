@@ -19,7 +19,7 @@ const DiacriticsFiltering = () => {
         <div className='control-pane'>
             <div className='control-section'>
                 <div id='multifilter' className="control-styles">
-                    <h4>Diacritics Filtering</h4>
+                <label className="h4"> Diacritics Filtering</label>
                     <MultiSelectComponent id="diacritics" ignoreAccent={true} allowFiltering={true} dataSource={diacriticsData} placeholder="e.g: gul" />
                 </div>
             </div>

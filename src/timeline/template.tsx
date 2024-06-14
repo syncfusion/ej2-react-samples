@@ -57,7 +57,7 @@ export class Template extends SampleBase<{}, {}> {
                                     </path>
                                 </svg>
                                 <div className="mention-content">
-                                    <h5 style={{ fontWeight: "bold" }}> 87231 - Updated Roadmap for new control </h5>
+                                    <p style={{ fontWeight: "bold" }}> 87231 - Updated Roadmap for new control </p>
                                     <span> Updated new control roadmap </span>
                                     <div className="diffstats">
                                         <span className="color-success"> +95 </span>

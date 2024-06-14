@@ -73,7 +73,7 @@ const Alignment = () => {
             <div id="description">
                 <p>
                     <strong>Toolbar</strong> commands can be aligned in left , right and center positions. By default, all the
-                    commands are left aligned. User can customize the alignment of each toolbar item using <code><a target="_blank" className="code"
+                    commands are left aligned. User can customize the alignment of each toolbar item using <code><a aria-label="align" target="_blank" className="code"
                         href="https://ej2.syncfusion.com/react/documentation/api/toolbar/item/#align">  align</a></code> property. Possible
                     values are as follows.
                 </p>

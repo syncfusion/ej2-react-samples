@@ -171,42 +171,42 @@ export class APIs extends SampleBase<{}, {}> {
                                 <tbody>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">Value</div>
+                                            <div id="valueLabel" className="userselect">Value</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
                                             <div>
                                                 <NumericTextBoxComponent value={30} format='n0' change={this.onValueChange.bind(this)}
-                                                    ref={(value) => { this.numbericValue = value }} />
+                                                    ref={(value) => { this.numbericValue = value }} aria-labelledby="valueLabel"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">Min</div>
+                                            <div id="minLabel" className="userselect">Min</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
                                             <div>
-                                                <NumericTextBoxComponent value={0} format='n0' change={this.onMinChange.bind(this)} />
+                                                <NumericTextBoxComponent value={0} format='n0' change={this.onMinChange.bind(this)} aria-labelledby="minLabel"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">Max</div>
+                                            <div id="maxLabel" className="userselect">Max</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
                                             <div>
-                                                <NumericTextBoxComponent value={100} format='n0' change={this.onMaxChange.bind(this)} />
+                                                <NumericTextBoxComponent value={100} format='n0' change={this.onMaxChange.bind(this)} aria-labelledby="maxLabel"/>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style={{ width: '50%' }}>
-                                            <div className="userselect">Step</div>
+                                            <div id="stepLabel" className="userselect">Step</div>
                                         </td>
                                         <td style={{ width: '50%' }}>
                                             <div>
-                                                <NumericTextBoxComponent value={1} change={this.onStepChange.bind(this)} />
+                                                <NumericTextBoxComponent value={1} change={this.onStepChange.bind(this)} aria-labelledby="stepLabel"/>
                                             </div>
                                         </td>
                                     </tr>

@@ -24,10 +24,10 @@ export class Api extends SampleBase<{}, {}> {
         this.textareaObj.readonly = args.checked;
     }
     private rowHandler(args: any): void {
-        this.textareaObj.rowsCount = args.value;
+        this.textareaObj.rows = args.value;
     }
     private columnHandler(args: any): void {
-        this.textareaObj.columnsCount = args.value;
+        this.textareaObj.cols = args.value;
     }
     private maxLengthHandler(args: any): void {
         this.textareaObj.maxLength = args.value;
@@ -42,7 +42,7 @@ export class Api extends SampleBase<{}, {}> {
     public render(): JSX.Element {
         return (
             <div className='control-pane'>
-                <div className="col-lg-8 control-section api-textarea">
+                <div id="textarea-sample"  className="col-lg-8 control-section api-textarea">
                     <div className="content-wrapper">
                         <div className="api-row">
                             <TextAreaComponent id="api" placeholder="Enter your comments" floatLabelType="Auto" ref={(scope) => { this.textareaObj = scope }}></TextAreaComponent>

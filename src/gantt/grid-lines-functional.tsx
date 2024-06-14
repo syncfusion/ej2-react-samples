@@ -40,8 +40,8 @@ const GridLines = () => {
   const splitterSettings: any = {
     columnIndex: 2
   };
-  const projectStartDate: Date = new Date('03/24/2019');
-  const projectEndDate: Date = new Date('07/06/2019');
+  const projectStartDate: Date = new Date('03/24/2024');
+  const projectEndDate: Date = new Date('07/06/2024');
   return (
     <div className='control-pane'>
       <div className='control-section'>
@@ -77,7 +77,7 @@ const GridLines = () => {
                 <td style={{ width: '100%' }}>
                   <div>
                     <DropDownListComponent id='gridLines' dataSource={linesData} fields={{ text: 'type', value: 'id' }}
-                      value='Both' change={changeLine.bind(this)}></DropDownListComponent>
+                      value='Both' width={120} change={changeLine.bind(this)}></DropDownListComponent>
                   </div>
                 </td>
               </tr>

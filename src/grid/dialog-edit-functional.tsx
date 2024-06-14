@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Toolbar, Edit, Inject, Sort, FilterSettingsModel, Filter } from '@syncfusion/ej2-react-grids';
 import { data } from './data';
 import { updateSampleSection } from '../common/sample-base';
 
@@ -8,6 +8,7 @@ function DialogEdit() {
   React.useEffect(() => {
     updateSampleSection();
   }, [])
+  const filterSettings: FilterSettingsModel = {type: 'Excel'};
   const toolbarOptions: any = ['Add', 'Edit', 'Delete'];
   const editSettings: any = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   const editparams: any = { params: { popupHeight: '300px' } };
@@ -17,7 +18,7 @@ function DialogEdit() {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GridComponent dataSource={data} toolbar={toolbarOptions} allowPaging={true} allowSorting={true} editSettings={editSettings} pageSettings={pageSettings}>
+        <GridComponent dataSource={data} toolbar={toolbarOptions} allowPaging={true} allowSorting={true} allowFiltering={true} filterSettings={filterSettings} editSettings={editSettings} pageSettings={pageSettings}>
           <ColumnsDirective>
             <ColumnDirective field='OrderID' headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} isPrimaryKey={true}></ColumnDirective>
             <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={validationRules}></ColumnDirective>
@@ -25,7 +26,7 @@ function DialogEdit() {
             <ColumnDirective field='OrderDate' headerText='Order Date' editType='datepickeredit' format='yMd' width='170' ></ColumnDirective>
             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit' edit={editparams} ></ColumnDirective>
           </ColumnsDirective>
-          <Inject services={[Page, Toolbar, Edit, Sort]} />
+          <Inject services={[Page, Toolbar, Edit, Sort, Filter]} />
         </GridComponent>
         <div id="action-description">
           <p>This sample demonstrates CRUD operations in Grid. You can perform CRUD operations as follows,</p>

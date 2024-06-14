@@ -67,7 +67,7 @@ const EmptyPoint = () => {
     const load = (args: ILoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast') as ChartTheme;          
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/light/i, "Light").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;          
     };
    
     return (
@@ -91,7 +91,7 @@ const EmptyPoint = () => {
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <DropDownListComponent width="120px" id="selmode"  change={change.bind(this)} ref={dropElement} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value={chartType} />
+                                        <DropDownListComponent width="120px" id="selchange"  change={change.bind(this)} ref={dropElement} dataSource={droplist} fields={{ text: 'value', value: 'value' }} value={chartType} />
                                     </div>
                                 </td>
                             </tr>
@@ -117,7 +117,7 @@ const EmptyPoint = () => {
                 </p>
                 <p>Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
                 <p>
-                    More information on the empty points can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#empty-points">documentation section</a>.
+                    More information on the empty points can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/working-with-data/#empty-points" aria-label="Navigate to the documentation for Empty points in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div >

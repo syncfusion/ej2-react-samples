@@ -181,7 +181,7 @@ const API = () => {
                     <code>interval</code>, <code>showPlayButton</code>, <code>loop</code> using the property panel.
                 </p>
                 <p>
-                    More information about the properties available in the Carousel component can be found in this <a target='_blank' href="https://ej2.syncfusion.com/documentation/api/carousel/">documentation section</a>.
+                    More information about the properties available in the Carousel component can be found in this <a aria-label="documentation section" target='_blank' href="https://ej2.syncfusion.com/documentation/api/carousel/">documentation section</a>.
                 </p>
             </div>
         </div >

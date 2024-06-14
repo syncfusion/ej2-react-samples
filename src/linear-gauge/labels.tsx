@@ -13,6 +13,7 @@ export class Labels extends SampleBase<{}, {}> {
     private textLabelGauge: LinearGaugeComponent;
     private offsetLabelGauge: LinearGaugeComponent;
     private customizedLabelGauge: LinearGaugeComponent;
+    private pointerColor: string = '#E5E7EB';
 
     public load(args: ILoadedEventArgs): void {
         // custom code start
@@ -21,6 +22,18 @@ export class Labels extends SampleBase<{}, {}> {
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
             selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
         // custom code end
+    }
+    public textLabelLoad(args: ILoadedEventArgs): void {
+        // custom code start
+        let selectedTheme: string = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() +
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
+        // custom code end
+        this.pointerColor = '#E5E7EB';
+        if (args.gauge.theme === 'Fluent2Dark') {
+            this.pointerColor  = '#292827';
+        }
     }
 
     public axisLabelRender(args: IAxisLabelRenderEventArgs): void {
@@ -68,14 +81,14 @@ export class Labels extends SampleBase<{}, {}> {
 
     render() {
         return (
-            <div className='control-pane'>
+            <main><div className='control-pane'>
                 <style>
                     {SAMPLE_CSS}
                 </style>
                 <div className="control-section">
                     <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ margin: 'auto', padding: '10px' }}>
-                            <table>
+                            <table role='none'>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -104,7 +117,7 @@ export class Labels extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                     <div id="containerText" className="col-xs-5 col-sm-5 col-lg-3 col-md-3" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <LinearGaugeComponent axisLabelRender={this.axisLabelRender.bind(this)} load={this.load.bind(this)} title='Text labels' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='textLabelGauge' orientation='Vertical' width='150px' height='350px' background='transparent' ref={textLabelGauge => this.textLabelGauge = textLabelGauge}>
+                        <LinearGaugeComponent axisLabelRender={this.axisLabelRender.bind(this)} load={this.textLabelLoad.bind(this)} title='Text labels' titleStyle={{ fontFamily: 'inherit', fontWeight: '499' }} id='textLabelGauge' orientation='Vertical' width='150px' height='350px' background='transparent' ref={textLabelGauge => this.textLabelGauge = textLabelGauge}>
                             <AxesDirective>
                                 <AxisDirective line={{ width: 5 }} minorTicks={{ interval: 2.5, height: 0 }} majorTicks={{ interval: 5, height: 0 }} labelStyle={{ offset: 10, font: { fontFamily: 'inherit' } }} minimum={5} maximum={20} opposedPosition={true}>
                                     <PointersDirective>
@@ -114,7 +127,7 @@ export class Labels extends SampleBase<{}, {}> {
                                         </PointerDirective>
                                         <PointerDirective width={15} height={15} value={10} color='#0DC9AB' placement="Near" markerType="Circle" offset={7}>
                                         </PointerDirective>
-                                        <PointerDirective width={15} height={15} value={5} color='#E5E7EB' placement="Near" markerType="Circle" offset={7}>
+                                        <PointerDirective width={15} height={15} value={5} color={this.pointerColor} placement="Near" markerType="Circle" offset={7}>
                                         </PointerDirective>
                                     </PointersDirective>
                                     <RangesDirective>
@@ -150,20 +163,21 @@ export class Labels extends SampleBase<{}, {}> {
                         </LinearGaugeComponent>
                     </div>
                 </div>
-                <div id="action-description">
+            </div>
+                <section id="action-description" aria-label="Description of Linear Gauge sample">
                     <p>
                         This sample demonstrates the various options for customizing the axis labels, such as styling, formatting, replacing text, and setting offset in the linear gauge.
                     </p>
-                </div>
-                <div id="description">
+                </section>
+                <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                     <p>
                         In this example, you can see how to render and configure axis labels in the linear gauge. The properties in the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/axisModel/#labelstyle">labelStyle</a> can be used to style, format, and offset the label, while the label's text can be changed dynamically via the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#axislabelrender">axisLabelRender</a> event.
                     </p>
                     <p>
                         More information on the axis labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/axis/#labels-customization">documentation section</a>.
                     </p>
-                </div>
-            </div>
+                </section>
+        </main>
         )
     }
 }

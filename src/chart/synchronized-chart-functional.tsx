@@ -53,7 +53,7 @@ let SynchronizedChart = () => {
         args.chart.primaryXAxis.labelRotation = Browser.isDevice ? -45 : 0;
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         let themeColor: string[] = [];
         let materialColors: string[] = ['#00bdae', '#404041', '#357cd2', '#e56590'];
         let materialDarkColors: string[] = ['#9ECB08', '#56AEFF', '#C57AFF', '#61EAA9'];
@@ -69,6 +69,8 @@ let SynchronizedChart = () => {
         let fabricdarkColors: string[] = ['#4472c4', '#ed7d31', '#ffc000', '#70ad47'];
         let material3Colors: string[] = ['#6355C7', '#00AEE0', '#FFB400', '#F7523F'];
         let material3DarkColors: string[] = ['#4EAAFF', '#FA4EAB', '#FFF500', '#17EA58'];
+        let fluent2Colors: string[] = ['#6200EE', '#09AF74', '#0076E5', '#CB3587'];
+        let fluent2DarkColors: string[] = ['#9BB449', '#2A72D5', '#43B786', '#3F579A'];
         // check the theme
         if (args.chart.theme === 'MaterialDark') {
             themeColor = materialDarkColors;
@@ -114,6 +116,12 @@ let SynchronizedChart = () => {
         }
         else if (args.chart.theme === 'Material3Dark') {
             themeColor = material3DarkColors;
+        }
+        else if (args.chart.theme === 'Fluent2') {
+            themeColor = fluent2Colors;
+        }
+        else if (args.chart.theme === 'Fluent2Dark') {
+            themeColor = fluent2DarkColors;
         }
         else {
             themeColor = fluentColors;
@@ -516,7 +524,7 @@ let SynchronizedChart = () => {
                 </p>
                 <p>
                     More information on the area series can be found in this &nbsp;
-                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/chart-types/area">documentation section</a>.
+                    <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/cross-hair-and-track-ball" aria-label="Navigate to the documentation for Crosshair and Trackball in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div >

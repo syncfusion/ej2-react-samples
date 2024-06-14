@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Selection, RowDD, Group, Inject, Sort } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Selection, RowDD, Group, Inject, Sort, Toolbar, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { DialogComponent } from '@syncfusion/ej2-react-popups';
@@ -10,6 +10,12 @@ function DragWithinGrid() {
     updateSampleSection();
   }, [])
   let gridInstance: GridComponent;
+  const filterSettings: FilterSettingsModel = {type: 'Excel'};
+  const toolbar: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  const editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  const customeridRule: Object = { required: true, minLength: 5};
+  const orderidRules: Object = { required: true, number: true };
+  const freightRules: Object = { required: true, min: 0 };
   const visible = false;
   const animationSettings: Object = { effect: 'None' };
   let alertDialogInstance: DialogComponent;
@@ -30,16 +36,16 @@ function DragWithinGrid() {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <GridComponent ref={grid => gridInstance = grid} dataSource={orderDetails} allowRowDragAndDrop={true} allowSorting={true} allowGrouping={true} height='400' selectionSettings={{ type: 'Multiple' }} created={created}>
+        <GridComponent ref={grid => gridInstance = grid} dataSource={orderDetails} allowRowDragAndDrop={true} allowSorting={true} editSettings={editSettings} allowFiltering={true} filterSettings={filterSettings} toolbar={toolbar} allowGrouping={true} height='400' selectionSettings={{ type: 'Multiple' }} created={created}>
           <ColumnsDirective>
-            <ColumnDirective field='OrderID' isPrimaryKey={true} headerText='Order ID' width='120' textAlign='Right'></ColumnDirective>
-            <ColumnDirective field='CustomerName' headerText='Customer Name' width='150'></ColumnDirective>
-            <ColumnDirective field='OrderDate' headerText='Order Date' width='100' format='yMd' textAlign='Right'/>
+            <ColumnDirective field='OrderID' isPrimaryKey={true} headerText='Order ID' width='120' textAlign='Right' validationRules={orderidRules} ></ColumnDirective>
+            <ColumnDirective field='CustomerName' headerText='Customer Name' width='150' validationRules={customeridRule}></ColumnDirective>
+            <ColumnDirective field='OrderDate' headerText='Order Date' width='100' format='yMd' textAlign='Right' editType='datepickeredit'/>
             <ColumnDirective field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right'/>
             <ColumnDirective field='ShipCity' headerText='Ship City' width='150'></ColumnDirective>
             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' allowGrouping={false}></ColumnDirective>
           </ColumnsDirective>
-          <Inject services={[RowDD, Selection, Group, Sort]} />
+          <Inject services={[RowDD, Selection, Group, Sort, Toolbar, Filter, Edit]} />
         </GridComponent>
         <DialogComponent id="alertDialog" header='Grouping' visible={visible} animationSettings={animationSettings} width='300px' content='Grouping is disabled for this column' ref={alertdialog => alertDialogInstance = alertdialog} target='.control-section' buttons={alertButtons} ></DialogComponent>
       </div>

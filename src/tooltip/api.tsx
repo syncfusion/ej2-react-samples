@@ -121,6 +121,7 @@ export class ApiTooltip extends SampleBase<{}, {}> {
                                                     ref={t => (this.height = t)}
                                                     value={45}
                                                     change={this.onHeightChange.bind(this)}
+                                                    aria-label="height value"
                                                 />
                                             </div>
                                         </td>
@@ -137,6 +138,7 @@ export class ApiTooltip extends SampleBase<{}, {}> {
                                                     className="e-input"
                                                     value={100}
                                                     change={this.onWidthChange.bind(this)}
+                                                    aria-label="width value"
                                                 />
                                             </div>
                                         </td>
@@ -167,6 +169,7 @@ export class ApiTooltip extends SampleBase<{}, {}> {
                                                     id="sticky"
                                                     ref={t => (this.sticky = t)}
                                                     change={this.checkboxChange.bind(this)}
+                                                    aria-label="sticky"
                                                 />
                                             </div>
                                         </td>

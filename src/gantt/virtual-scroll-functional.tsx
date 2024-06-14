@@ -24,8 +24,8 @@ const Virtualscroll = () => {
   const labelSettings: any = {
     taskLabel: 'Progress'
   };
-  const projectStartDate: Date = new Date('04/01/2019');
-  const projectEndDate: Date = new Date('12/31/2025');
+  const projectStartDate: Date = new Date('04/01/2024');
+  const projectEndDate: Date = new Date('12/31/2030');
   return (
     <div className='control-pane'>
       <div className='control-section'>

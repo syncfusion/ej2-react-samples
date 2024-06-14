@@ -1,12 +1,13 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Page, ExcelExport, PdfExport, Edit, Inject, Filter } from '@syncfusion/ej2-react-grids';
 import { GroupSettingsModel, FilterSettingsModel, ContextMenuItem, EditSettingsModel } from '@syncfusion/ej2-react-grids';
 import { orderDetails } from './data';
 import { SampleBase } from '../common/sample-base';
 import './grid-context-menu.css';
 
 export class ContextMenuSample extends SampleBase<{}, {}> {
+    public filterSettings: FilterSettingsModel = {type: 'Excel'};
     public groupOptions: GroupSettingsModel = { showGroupedColumn: true };
     public contextMenuItems: ContextMenuItem[] = ['AutoFit', 'AutoFitAll',
         'SortAscending', 'SortDescending', 'Copy', 'Edit', 'Delete', 'Save',
@@ -17,7 +18,7 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
         return (
             <div className='control-pane'>
                 <div className='control-section'>
-                    <GridComponent id='gridcomp' dataSource={orderDetails} allowPaging={true} allowSorting={true}
+                    <GridComponent id='gridcomp' dataSource={orderDetails} allowPaging={true} allowSorting={true} allowFiltering={true} filterSettings={this.filterSettings}
                         allowExcelExport={true} allowPdfExport={true} contextMenuItems={this.contextMenuItems}
                         editSettings={this.editing}>
                         <ColumnsDirective>
@@ -28,7 +29,7 @@ export class ContextMenuSample extends SampleBase<{}, {}> {
                             <ColumnDirective field='ShipCountry' headerText='Ship Country' width='150' editType='dropdownedit'></ColumnDirective>
                             <ColumnDirective field='ShipCity' headerText='Ship City' width='150'></ColumnDirective>
                         </ColumnsDirective>
-                        <Inject services={[Resize, Sort, ContextMenu, Page, ExcelExport, Edit, PdfExport]} />
+                        <Inject services={[Resize, Sort, ContextMenu, Page, ExcelExport, Edit, PdfExport, Filter]} />
                     </GridComponent>
                 </div>
                 <div id="action-description">

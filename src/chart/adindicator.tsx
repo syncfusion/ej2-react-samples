@@ -59,7 +59,7 @@ export class AccumulationDistribution extends SampleBase<{}, {}> {
                         <code>AccumulationDistributionIndicator</code> module into <code>services</code>.
                     </p>
                     <p>
-                        More information on the Accumulation Distribution Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#accumulation-distribution">documentation section</a>.
+                        More information on the Accumulation Distribution Indicator can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/chart/technical-indicators/#accumulation-distribution" aria-label="Navigate to the documentation for Accumulation Distribution in React Chart component">documentation section</a>.
                     </p>
                 </div>
             </div >
@@ -74,7 +74,7 @@ export class AccumulationDistribution extends SampleBase<{}, {}> {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
     };
     
 

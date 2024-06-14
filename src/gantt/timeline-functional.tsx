@@ -34,8 +34,8 @@ const Timeline = () => {
   let bottomTierCount = useRef<NumericTextBoxComponent>(null);
   let timelineUnitSize = useRef<NumericTextBoxComponent>(null);
   let multitaskbarcheckbox = useRef<CheckBoxComponent>(null);
-  const projectStartDate = new Date('02/03/2019');
-  const projectEndDate = new Date('03/23/2019');
+  const projectStartDate = new Date('02/03/2024');
+  const projectEndDate = new Date('03/23/2024');
   const timelineSettings: any = {
     topTier: {
       format: 'MMM dd, yyyy',
@@ -207,7 +207,7 @@ const Timeline = () => {
   return (
     <div className='control-pane'>
       <div className='control-section'>
-        <div className='col-lg-9'>
+        <div className='col-lg-8'>
           <GanttComponent id='Timeline' ref={ganttInstance} dataSource={projectData} renderBaseline={true} allowSorting={true}
             treeColumnIndex={1} allowSelection={true} projectStartDate={projectStartDate} projectEndDate={projectEndDate}
             taskFields={taskFields} timelineSettings={timelineSettings} highlightWeekends={true}
@@ -224,13 +224,13 @@ const Timeline = () => {
             <Inject services={[Selection, Sort, DayMarkers]} />
           </GanttComponent>
         </div>
-        <div className='col-lg-3 property-section'>
+        <div className='col-lg-4 property-section'>
           <PropertyPane title='Properties'>
             <table id="property" className="property-panel-table" title="Properties" style={{ width: '100%' }}>
             <tbody>
               <tr>
                 <td style={{ width: '30%' }}>
-                  <div>Unit width</div>
+                  <label>Unit width</label>
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
@@ -251,7 +251,7 @@ const Timeline = () => {
               </tr>
               <tr>
                 <td style={{ width: '30%' }}>
-                  <div>Count</div>
+                  <label>Count</label>
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>
@@ -300,7 +300,7 @@ const Timeline = () => {
               </tr>
               <tr>
                 <td style={{ width: '30%' }}>
-                  <div>Count</div>
+                  <label>Count</label>
                 </td>
                 <td style={{ width: '70%' }}>
                   <div>

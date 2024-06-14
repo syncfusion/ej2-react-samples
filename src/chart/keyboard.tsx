@@ -303,7 +303,7 @@ export class KeyboardNavigation extends SampleBase<{}, {}> {
     public load(args: ILoadedEventArgs): void {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         FontColor = args.chart.theme.indexOf("Dark") > -1 || args.chart.theme.indexOf("Highcontrast") > -1 ? "#F3F2F1" : "#353535";
         let FillColors: any;
         if (args.chart.theme === 'MaterialDark') {

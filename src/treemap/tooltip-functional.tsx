@@ -32,7 +32,7 @@ const Tooltip = () => {
         // custom code end
     };
     return (
-        <div className="control-pane">
+        <main><div className="control-pane">
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-md-12">
@@ -125,14 +125,15 @@ const Tooltip = () => {
                     en.wikipedia.org
                 </a>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of TreeMap sample">
                 <p>
                     This sample depicts the number of international airports available in
                     various countries in South America. On hover, the items details will
                     be displayed in tooltip.
                 </p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
                 <p>
                     In this example, you can see how to apply equal color mapping and
                     apply colors to TreeMap items based on certain value.
@@ -142,8 +143,8 @@ const Tooltip = () => {
                     action, hover the mouse over an item or tap an item in touch enabled
                     devices.
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 export default Tooltip;

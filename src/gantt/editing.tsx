@@ -31,8 +31,8 @@ export class Editing extends SampleBase<{}, {}> {
   public splitterSettings: any = {
     position: "35%"
   };
-  public projectStartDate: Date = new Date('03/25/2019');
-  public projectEndDate: Date = new Date('07/28/2019');
+  public projectStartDate: Date = new Date('03/25/2024');
+  public projectEndDate: Date = new Date('07/28/2024');
   public gridLines: any = 'Both';
   public toolbar: any = ['Add', 'Edit', 'Update', 'Delete', 'Cancel', 'ExpandAll', 'CollapseAll', 'Indent', 'Outdent'];
   public timelineSettings: any = {
@@ -48,10 +48,10 @@ export class Editing extends SampleBase<{}, {}> {
     leftLabel: 'TaskName',
     rightLabel: 'resources'
   };
-  public eventMarkerDay1: Date = new Date('4/17/2019');
-  public eventMarkerDay2: Date = new Date('5/3/2019');
-  public eventMarkerDay3: Date = new Date('6/7/2019');
-  public eventMarkerDay4: Date = new Date('7/16/2019');
+  public eventMarkerDay1: Date = new Date('4/17/2024');
+  public eventMarkerDay2: Date = new Date('5/3/2024');
+  public eventMarkerDay3: Date = new Date('6/7/2024');
+  public eventMarkerDay4: Date = new Date('7/16/2024');
   render() {
     return (
       <div className='control-pane'>

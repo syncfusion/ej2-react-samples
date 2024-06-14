@@ -58,6 +58,15 @@ const SAMPLE1_CSS = `
   padding-left : 0px !important;
   padding-top: 0px !important;
 }
+.fluent2 .disableRow .e-rowcell{
+  color: rgba(0, 0, 0, .38) !important;
+}
+.fluent2-dark .disableRow .e-rowcell{
+  color: #757575 !important;
+}
+.fluent2-highcontrast .disableRow .e-rowcell{
+  color: #757575 !important;
+}
 `;
 {/* custom code end */ }
 const LockRow = () => {
@@ -110,7 +119,7 @@ const LockRow = () => {
     treegridObj.current.refresh();
   };
   return (
-    <div className="control-pane">
+    <div className="control-pane" role="control" aria-label="Tree Grid Control">
       <style>{SAMPLE_CSS}</style>
       {/* custom code start */}
       <style>{SAMPLE1_CSS}</style>
@@ -169,7 +178,7 @@ const LockRow = () => {
           </TreeGridComponent>
         </div>
         <div className="col-md-3 property-section">
-          <PropertyPane title="Properties">
+          <PropertyPane title="Properties" aria-label="Property Pane">
             <table
               id="property"
               title="Properties"
@@ -194,6 +203,7 @@ const LockRow = () => {
                         select={select.bind(this)}
                         removed={removed.bind(this)}
                         ref={multiselectObj}
+                        aria-label="Select Rows to Disable"
                       >
                         <Inject services={[CheckBoxSelection]}></Inject>
                       </MultiSelectComponent>

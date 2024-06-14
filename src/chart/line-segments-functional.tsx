@@ -37,7 +37,7 @@ const LineZone = () => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).
-            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast') as ChartTheme;
+            replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as ChartTheme;
         if (selectedTheme === 'highcontrast') {
             args.chart.series[0].segments[0].color = 'red';
             args.chart.series[0].segments[1].color = 'green';
@@ -80,7 +80,7 @@ const LineZone = () => {
                     we need to inject <code>MultiColoredLineSeries</code> module using <code>Chart.Inject(MultiColoredLineSeries)</code> method.
                 </p>
                 <p>
-                    More information on the line series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts">documentation section</a>.
+                    More information on the line series can be found in this <a target="_blank" href="http://ej2.syncfusion.com/react/documentation/chart/chart-types/#line-charts" aria-label="Navigate to the documentation for Line Chart in React Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

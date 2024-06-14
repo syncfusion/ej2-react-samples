@@ -74,12 +74,12 @@ const BarPointer = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ margin: 'auto', padding: '10px' }}>
-                        <table>
+                        <table role='none'>
                             <tbody>
                                 <tr>
                                     <td>
@@ -153,18 +153,19 @@ const BarPointer = () => {
                     </LinearGaugeComponent>
                 </div>
             </div>
-            <div id="action-description">
+        </div >
+            <section id="action-description" aria-label="Description of Linear Gauge sample">
                 <p>This sample shows the various bar pointer shapes available in the linear gauge. Additionally, multiple bar pointer and animation support are enabled.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render and configure bar pointer in the linear gauge. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/pointerModel/">PointersDirective</a> collection is useful for displaying multiple pointers. The properties available in <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/pointerModel/">PointerDirective</a> help in the customization of the bar pointer in the linear gauge.
                 </p>
                 <p>
                     More information on the bar pointer can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/pointers/#bar-pointer">documentation section</a>.
                 </p>
-            </div>
-        </div >
+            </section>
+    </main>
     )
 }
 export default BarPointer;

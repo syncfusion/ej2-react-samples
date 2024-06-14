@@ -14,7 +14,7 @@ function LazyLoadGrouping() {
     return (
         <div className='control-pane'>
             <div className='control-section'>
-                <GridComponent dataSource={lazyLoadData} allowPaging={true} allowGrouping={true} groupSettings={groupOptions}>
+                <GridComponent dataSource={lazyLoadData} allowPaging={true} height={400} allowGrouping={true} groupSettings={groupOptions}>
                     <ColumnsDirective>
                         <ColumnDirective field='OrderID' headerText='Order ID' textAlign="Right" width='120' ></ColumnDirective>
                         <ColumnDirective field='ProductName' headerText='Product Name' width='160' ></ColumnDirective>

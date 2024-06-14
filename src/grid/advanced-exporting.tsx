@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Toolbar, ExcelExport, PdfExport, Page, ToolbarItems } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Sort, Inject, Toolbar, ExcelExport, PdfExport, Page, ToolbarItems, FilterSettingsModel, EditSettingsModel, Filter, Edit } from '@syncfusion/ej2-react-grids';
 import { productData } from './data';
 import { SampleBase } from '../common/sample-base';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
@@ -10,7 +10,11 @@ export class AdvancedExporting extends SampleBase<{}, {}> {
   private month: string = ((new Date()).getMonth().toString()) + '/';
   private date: string = ((new Date()).getDate().toString()) + '/';
   private year: string = ((new Date()).getFullYear().toString());
-  public toolbarOptions: ToolbarItems[] = ['ExcelExport', 'PdfExport'];
+  public filterSettings: FilterSettingsModel = {type: 'Excel'};
+  public toolbarOptions: ToolbarItems[] = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'ExcelExport', 'PdfExport'];
+  public editSettings: EditSettingsModel = { allowEditing: true, allowAdding: true, allowDeleting: true };
+  public productnameRule: Object = { required: true, minLength: 5};
+  public productidRules: Object = { required: true, number: true };
   private gridInstance: GridComponent;
   public toolbarClick(args: ClickEventArgs): void {
     switch (args.item.id) {
@@ -55,7 +59,7 @@ export class AdvancedExporting extends SampleBase<{}, {}> {
             index: 5,
             cells: [
               { index: 1, colSpan: 2, value: 'Tel +1 888.936.8638 Fax +1 919.573.0306' },
-              { index: 4, value: 'CUSOTMER ID', style: { fontColor: '#C67878', bold: true } },
+              { index: 4, value: 'CUSTOMER ID', style: { fontColor: '#C67878', bold: true } },
               { index: 5, value: 'TERMS', width: 150, style: { fontColor: '#C67878', bold: true } }
             ]
           },
@@ -186,15 +190,15 @@ export class AdvancedExporting extends SampleBase<{}, {}> {
         <div className='control-section'>
           <div>
             <GridComponent id="Grid" dataSource={productData} ref={grid => this.gridInstance = grid} toolbar={this.toolbarOptions}
-              allowExcelExport={true} allowPdfExport={true} toolbarClick={this.toolbarClick.bind(this)} allowPaging={true} allowSorting={true} pageSettings={{ pageCount: 2, pageSize: 10 }} >
+              allowExcelExport={true} allowPdfExport={true} toolbarClick={this.toolbarClick.bind(this)} allowPaging={true} allowSorting={true} editSettings={this.editSettings} allowFiltering={true} filterSettings={this.filterSettings} pageSettings={{ pageCount: 2, pageSize: 10 }} >
                 <ColumnsDirective>
-                  <ColumnDirective field='ProductID' headerText='Product ID' width='120' textAlign='Right'></ColumnDirective>
-                  <ColumnDirective field='ProductName' headerText='Product Name' width='200'></ColumnDirective>
+                  <ColumnDirective field='ProductID' headerText='Product ID' width='120' textAlign='Right' validationRules={this.productidRules} isPrimaryKey={true}></ColumnDirective>
+                  <ColumnDirective field='ProductName' headerText='Product Name' width='200' validationRules={this.productnameRule}></ColumnDirective>
                   <ColumnDirective field='QuantityPerUnit' headerText='Quantity Per Unit' width='180' ></ColumnDirective>
-                  <ColumnDirective field='UnitPrice' headerText='Units Price' width='150' textAlign='Right' format='C2'></ColumnDirective>
+                  <ColumnDirective field='UnitPrice' headerText='Units Price' width='150' textAlign='Right' format='C2' editType='numericedit'></ColumnDirective>
                   <ColumnDirective field='UnitsInStock' headerText='Units In Stock' width='150' textAlign='Right'></ColumnDirective>
                 </ColumnsDirective>
-                <Inject services={[Toolbar, ExcelExport, PdfExport, Page, Sort]} />
+                <Inject services={[Toolbar, ExcelExport, PdfExport, Page, Sort, Filter, Edit]} />
             </GridComponent>
           </div>
           <div id="description">

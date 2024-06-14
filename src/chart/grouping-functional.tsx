@@ -73,7 +73,7 @@ const Grouping = () => {
     const load = (args: IAccLoadedEventArgs): void => {
         let selectedTheme: string = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast') as AccumulationTheme;
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i,'Contrast').replace(/-highContrast/i, 'HighContrast') as AccumulationTheme;
     };
     return (
         <div className='control-pane'>
@@ -99,13 +99,13 @@ const Grouping = () => {
                             </tr>
                             <tr style={{ height: '50px' }}>
                                 <td style={{ width: '60%' }}>
-                                    <div>Group To:
+                                    <div id="groupValue">Group To:
                                         <p id="clubtext" style={{ fontWeight: 'normal' }}>{clubText}</p>
                                     </div>
                                 </td>
                                 <td style={{ width: '40%' }}>
                                     <div>
-                                        <input type="range" name="clubvalue" onChange={onClubValue.bind(this)} ref={slider} defaultValue="9" min="0" max="27" id="clubvalue" style={{ marginLeft: '-5px' }} />
+                                        <input type="range" name="clubvalue" onChange={onClubValue.bind(this)} ref={slider} defaultValue="9" min="0" max="27" id="clubvalue" style={{ marginLeft: '-5px' }} aria-labelledby="Slider"/>
                                     </div>
                                 </td>
                             </tr></tbody>
@@ -122,7 +122,7 @@ const Grouping = () => {
                 </p>
                 <p> A tooltip is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.</p>
                 <p>
-                    More information on the pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/pie-dough-nut/#pie-chart">documentation section</a>.
+                    More information on the grouping in pie series can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/accumulation-chart/grouping" aria-label="Navigate to the documentation for Grouping in React Accumulation Chart component">documentation section</a>.
                 </p>
             </div>
         </div>

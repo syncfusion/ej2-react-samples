@@ -5,7 +5,7 @@ import { GanttComponent, DayMarkers, Inject, Selection, Toolbar, Edit, Resize, C
 import { multiTaskbarData, resources } from './data';
 import { updateSampleSection } from '../common/sample-base';
 import { CheckBoxComponent, CheckBox, SwitchComponent } from '@syncfusion/ej2-react-buttons';
-
+import './resource.css';
 const ResourceMultiTaskbar = () => {
     useEffect(() => {
         updateSampleSection();
@@ -56,8 +56,8 @@ const ResourceMultiTaskbar = () => {
     const splitterSettings: any = {
         columnIndex: 2
     };
-    const projectStartDate: Date = new Date('03/28/2019');
-    const projectEndDate: Date = new Date('05/18/2019');
+    const projectStartDate: Date = new Date('03/24/2024');
+    const projectEndDate: Date = new Date('05/18/2024');
     const labelSettings: any = {
         taskLabel: 'TaskName'
     };
@@ -67,15 +67,15 @@ const ResourceMultiTaskbar = () => {
             <div className='col-lg-12'>
             <div style={{ display: 'flex' }}>
               <div style={{ display: 'flex' }}>
-                <label htmlFor="checked" style={{ fontSize: '15px', margin: '0px 5px 0px 0px' }}> Allow Taskbar Drag And Drop </label>
+                <label id ="drag" htmlFor="checked" style={{ fontSize: '15px', margin: '0px 5px 0px 0px' ,marginTop:"2.5px"}}> Allow Taskbar Drag And Drop </label>
                 <div>
-                <SwitchComponent id="checked" change={dragDropChange.bind(this)}></SwitchComponent>
+                <SwitchComponent id="checked"   style={{top:'-6px'}} change={dragDropChange.bind(this)}></SwitchComponent>
               </div>
               </div>
               <div style={{ display: 'flex' }}>
-                <label htmlFor="unchecked" style={{ fontSize: '15px', margin: '0px 5px 0px 5px' }}> Allow Taskbar Overlap </label>
+                <label id ="drag" htmlFor="unchecked" style={{ fontSize: '15px', margin: '0px 5px 0px 5px',marginTop:"2.5px" }}> Allow Taskbar Overlap </label>
                 <div>
-                <SwitchComponent id="unchecked" checked={true} change={overlapChange.bind(this)}></SwitchComponent>
+                <SwitchComponent id="unchecked"  checked={true} change={overlapChange.bind(this)}></SwitchComponent>
               </div>
               </div>
             </div>

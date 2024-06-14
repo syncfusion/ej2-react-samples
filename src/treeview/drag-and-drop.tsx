@@ -69,21 +69,21 @@ render() {
             <div className="col-lg-12 control-section custom-tree">
               <div className= "control-wrapper">
                 <div className="col-lg-4 tree1-data">
-                    <h4>TreeView-1</h4>
+                    <p className="displayText">TreeView-1</p>
                     <div className="content">
                         <TreeViewComponent id='tree1' fields={this.field}  nodeDragStop={this.onDragStop.bind(this)} created={this.onCreate.bind(this)} allowDragAndDrop={this.allowDragAndDrop} />
                     </div>
                 </div>
                 <div className="col-lg-4 tree2-data">
-                    <h4>TreeView-2</h4>
+                    <p className="displayText">TreeView-2</p>
                     <div className="content">
                         <TreeViewComponent id='tree2' fields={this.fields}   nodeDragStop={this.onDragStop.bind(this)} allowDragAndDrop={this.allowDragAndDrops} />
                     </div>
                 </div>
                 <div className="col-lg-4 tree3-data">
-                    <h4>ListView</h4>
+                    <p className="displayText">ListView</p>
                     <div className="content">
-                        <div id="list">
+                        <div>
                         <ListViewComponent id="list" className="e-droppable" dataSource={ [] }ref={(list) => { this.listObj = list }} actionComplete={this.actionBegin.bind(this)} cssClass={'custom-list'} template="<div><span>${text}</span><span id=${iconId} class=${class}></span></div>" /> 
                         </div>
                     </div>

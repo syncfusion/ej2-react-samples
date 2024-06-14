@@ -14,8 +14,8 @@ export class Baseline extends SampleBase<{}, {}> {
     baselineEndDate: 'BaselineEndDate'
   };
   private ganttInstance: GanttComponent;
-  public projectStartDate = new Date('03/05/2018 09:30:00 AM');
-  public projectEndDate = new Date('03/05/2018 07:00:00 PM');
+  public projectStartDate = new Date('03/05/2024 09:30:00 AM');
+  public projectEndDate = new Date('03/05/2024 07:00:00 PM');
   public timelineSettings: any = {
     timelineUnitSize: 65,
     topTier: {

@@ -29,7 +29,7 @@ export class Customization extends SampleBase<{}, {}> {
 	
 	render() {
 		return (
-			<div className='control-pane'>
+			<main><div className='control-pane'>
 				<style>
 					{SAMPLE_CSS}
 				</style>
@@ -52,7 +52,7 @@ export class Customization extends SampleBase<{}, {}> {
 							templatePosition: 'Center',
 							border: { color: 'black', width: 0.5 },
 							labelFormat: ' ${Sport} - ${Gold}',
-							labelTemplate: '<div style="pointer-events: none;"><img src="src/treemap/image/{{:GameImage}}" style="height:{{:ItemHeight}};width:{{:ItemWidth}};"></img></div>'
+							labelTemplate: '<div style="pointer-events: none;"><img alt="Custom label template for illustrations" src="src/treemap/image/{{:GameImage}}" style="height:{{:ItemHeight}};width:{{:ItemWidth}};"></img></div>'
 						}}>
 						<Inject services={[TreeMapTooltip]} />
 					</TreeMapComponent>
@@ -61,12 +61,13 @@ export class Customization extends SampleBase<{}, {}> {
 				<div style={{ float: 'right', marginRight: '10px' }}>Source:
        <a href=" https://en.wikipedia.org/wiki/United_States_at_the_2016_Summer_Olympics" target="_blank"> en.wikipedia.org</a>
 				</div>
-				<div id="action-description">
+			</div>
+				<section id="action-description" aria-label="Description of TreeMap sample">
 					<p>
 						This sample depicts the gold medal categories of the 2016 U.S. Summer Olympics. Each category is denoted with label template.
             </p>
-				</div>
-				<div id="description">
+				</section>
+				<section id="description" aria-label="Description of the TreeMap features demonstrated in this sample">
 					<p>
 						In this example, you can see how to place custom HTML templates in the TreeMap items. The default text of the labels also have been formatted.
 						<br/><br/>
@@ -77,8 +78,8 @@ export class Customization extends SampleBase<{}, {}> {
 					<p>
 						TreeMap component features are segregated into individual feature-wise modules. To use a tooltip, inject the <code>Tooltip</code> module using the <code>TreeMap.Inject(TreeMapTooltip)</code> method.
                     </p>
-				</div>
-			</div>
+				</section>
+			</main>
 		)
 	}
 }

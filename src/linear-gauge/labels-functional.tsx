@@ -22,6 +22,7 @@ const Labels = () => {
     const [horizontalBgColor, setHorizontalBgColor] = useState<string>("white");
     const [classStyle, setClassStyle] = useState<string>("col-xs-5 col-sm-5 col-lg-3 col-md-3");
     const [display, setDisplay] = useState<string>("flex");
+    const [pointerColor, setPointerColor] = useState<string>("#E5E7EB");
     
     const load = (args: ILoadedEventArgs): void => {
         // custom code start
@@ -29,6 +30,10 @@ const Labels = () => {
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
         args.gauge.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast')) as LinearGaugeTheme;
         // custom code end
+        setPointerColor('#E5E7EB');
+        if (args.gauge.theme === 'Fluent2Dark') {
+            setPointerColor('#292827');
+        }
     }
 
     const axisLabelRender = (args: IAxisLabelRenderEventArgs): void => {
@@ -73,12 +78,12 @@ const Labels = () => {
     }
 
     return (
-        <div className='control-pane'>
+        <main><div className='control-pane'>
             <style>{SAMPLE_CSS}</style>
             <div className="control-section">
                 <div className="col-xs-12 col-sm-12 col-lg-12 col-md-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ margin: 'auto', padding: '10px' }}>
-                        <table>
+                        <table role='none'>
                             <tbody>
                                 <tr>
                                     <td>
@@ -113,7 +118,7 @@ const Labels = () => {
                                     <PointerDirective width={15} height={15} value={20} color='#0DC9AB' placement="Near" markerType="Circle" offset={7} />
                                     <PointerDirective width={15} height={15} value={15} color='#0DC9AB' placement="Near" markerType="Circle" offset={7} />
                                     <PointerDirective width={15} height={15} value={10} color='#0DC9AB' placement="Near" markerType="Circle" offset={7} />
-                                    <PointerDirective width={15} height={15} value={5} color='#E5E7EB' placement="Near" markerType="Circle" offset={7} />
+                                    <PointerDirective width={15} height={15} value={5} color={pointerColor} placement="Near" markerType="Circle" offset={7} />
                                 </PointersDirective>
                                 <RangesDirective>
                                     <RangeDirective start={15} end={20} startWidth={5} endWidth={5} color='#0DC9AB' />
@@ -146,18 +151,19 @@ const Labels = () => {
                     </LinearGaugeComponent>
                 </div>
             </div>
-            <div id="action-description">
+        </div>
+            <section id="action-description" aria-label="Description of Linear Gauge sample">
                 <p>This sample demonstrates the various options for customizing the axis labels, such as styling, formatting, replacing text, and setting offset in the linear gauge.</p>
-            </div>
-            <div id="description">
+            </section>
+            <section id="description" aria-label="Description of the Linear Gauge features demonstrated in this sample">
                 <p>
                     In this example, you can see how to render and configure axis labels in the linear gauge. The properties in the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/axisModel/#labelstyle">labelStyle</a> can be used to style, format, and offset the label, while the label's text can be changed dynamically via the <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/linear-gauge/#axislabelrender">axisLabelRender</a> event.
                 </p>
                 <p>
                     More information on the axis labels can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/linear-gauge/axis/#labels-customization">documentation section</a>.
                 </p>
-            </div>
-        </div>
+            </section>
+    </main>
     )
 }
 export default Labels;
